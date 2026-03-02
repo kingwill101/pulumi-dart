@@ -6,15 +6,15 @@ import 'x509_extension.dart';
 /// SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
 class SubjectAltNames {
   /// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
-  final List<X509Extension>? customSans;
+  final pulumi.Input<List<X509Extension>>? customSans;
   /// Contains only valid, fully-qualified host names.
-  final List<String>? dnsNames;
+  final pulumi.Input<List<String>>? dnsNames;
   /// Contains only valid RFC 2822 E-mail addresses.
-  final List<String>? emailAddresses;
+  final pulumi.Input<List<String>>? emailAddresses;
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// Contains only valid RFC 3986 URIs.
-  final List<String>? uris;
+  final pulumi.Input<List<String>>? uris;
 
   /// Creates a new [SubjectAltNames].
   /// [customSans] Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
@@ -32,7 +32,7 @@ class SubjectAltNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customSans': ?customSans == null ? null : pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(customSans!, (value) => value.toMap()),
+      'customSans': ?pulumi.Input.mapOptionalInputValue<List<X509Extension>, List<Map<String, dynamic>>>(customSans, (value) => pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dnsNames': ?dnsNames,
       'emailAddresses': ?emailAddresses,
       'ipAddresses': ?ipAddresses,
@@ -42,11 +42,11 @@ class SubjectAltNames {
 
   factory SubjectAltNames.fromMap(Map<String, dynamic> map) {
     return SubjectAltNames(
-      customSans: map['customSans'] == null ? null : pulumi.Input.decodeList<X509Extension>(map['customSans'], (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>())),
-      dnsNames: map['dnsNames'] == null ? null : (map['dnsNames'] as List).cast<String>(),
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      uris: map['uris'] == null ? null : (map['uris'] as List).cast<String>(),
+      customSans: map['customSans'] == null ? null : (pulumi.Input.decodeList<X509Extension>(map['customSans'], (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

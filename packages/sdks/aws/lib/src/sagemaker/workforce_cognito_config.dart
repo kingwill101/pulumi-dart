@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceCognitoConfig {
   /// The client ID for your Amazon Cognito user pool.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// ID for your Amazon Cognito user pool.
-  final String userPool;
+  final pulumi.Input<String> userPool;
 
   /// Creates a new [WorkforceCognitoConfig].
   /// [clientId] The client ID for your Amazon Cognito user pool.
@@ -24,8 +25,8 @@ class WorkforceCognitoConfig {
 
   factory WorkforceCognitoConfig.fromMap(Map<String, dynamic> map) {
     return WorkforceCognitoConfig(
-      clientId: map['clientId'] as String,
-      userPool: map['userPool'] as String,
+      clientId: (map['clientId'] as String).input(),
+      userPool: (map['userPool'] as String).input(),
     );
   }
 }

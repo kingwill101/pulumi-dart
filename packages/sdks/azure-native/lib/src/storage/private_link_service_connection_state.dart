@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A collection of information about the state of the connection between service consumer and provider.
 class PrivateLinkServiceConnectionState {
   /// A message indicating if changes on the service provider require any updates on the consumer.
-  final String? actionRequired;
+  final pulumi.Input<String>? actionRequired;
   /// The reason for approval/rejection of the connection.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionState].
   /// [actionRequired] A message indicating if changes on the service provider require any updates on the consumer.
@@ -30,9 +31,9 @@ class PrivateLinkServiceConnectionState {
 
   factory PrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionState(
-      actionRequired: map['actionRequired'] == null ? null : map['actionRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      actionRequired: map['actionRequired'] == null ? null : (map['actionRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetLoadBalancerBackendAddressPoolArgs {
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group.
   GetLoadBalancerBackendAddressPoolArgs({
-    required pulumi.Output<String> backendAddressPoolName,
-    required pulumi.Output<String> loadBalancerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      backendAddressPoolName = pulumi.Input.asInput<String>(backendAddressPoolName),
-      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.backendAddressPoolName,
+    required this.loadBalancerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLoadBalancerBackendAddressPoolArgs {
 
   factory GetLoadBalancerBackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerBackendAddressPoolArgs(
-      backendAddressPoolName: pulumi.Output.create<String>(map['backendAddressPoolName'] as String),
-      loadBalancerName: pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      backendAddressPoolName: (map['backendAddressPoolName'] as String).input(),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

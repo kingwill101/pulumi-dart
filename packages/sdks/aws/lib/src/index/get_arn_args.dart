@@ -15,11 +15,9 @@ class GetArnArgs {
   /// [arn] ARN to parse.
   /// [id] Optional.
   GetArnArgs({
-    required pulumi.Output<String> arn,
-    pulumi.Output<String>? id,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      id = pulumi.Input.asOptionalInput<String>(id);
+    required this.arn,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetArnArgs {
 
   factory GetArnArgs.fromMap(Map<String, dynamic> map) {
     return GetArnArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      arn: (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class ProjectDefaultNetworkTierState {
   /// [networkTier] The default network tier to be configured for the project.
   /// [project] The ID of the project in which the resource belongs. If it
   ProjectDefaultNetworkTierState({
-    pulumi.Output<String>? networkTier,
-    pulumi.Output<String>? project,
-  }) :
-      networkTier = pulumi.Input.asOptionalInput<String>(networkTier),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.networkTier,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class ProjectDefaultNetworkTierState {
 
   factory ProjectDefaultNetworkTierState.fromMap(Map<String, dynamic> map) {
     return ProjectDefaultNetworkTierState(
-      networkTier: map['networkTier'] == null ? null : pulumi.Output.create<String>(map['networkTier'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      networkTier: map['networkTier'] == null ? null : (map['networkTier'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

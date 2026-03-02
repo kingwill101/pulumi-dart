@@ -13,9 +13,8 @@ class GetManagementLockAtSubscriptionLevelArgs {
   /// Creates a new [GetManagementLockAtSubscriptionLevelArgs].
   /// [lockName] The name of the lock to get.
   GetManagementLockAtSubscriptionLevelArgs({
-    required pulumi.Output<String> lockName,
-  }) :
-      lockName = pulumi.Input.asInput<String>(lockName);
+    required this.lockName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetManagementLockAtSubscriptionLevelArgs {
 
   factory GetManagementLockAtSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementLockAtSubscriptionLevelArgs(
-      lockName: pulumi.Output.create<String>(map['lockName'] as String),
+      lockName: (map['lockName'] as String).input(),
     );
   }
 }

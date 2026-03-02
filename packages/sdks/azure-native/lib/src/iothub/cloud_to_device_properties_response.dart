@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feedback_properties_response.dart';
 
 /// The IoT hub cloud-to-device messaging properties.
 class CloudToDevicePropertiesResponse {
   /// The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final String? defaultTtlAsIso8601;
+  final pulumi.Input<String>? defaultTtlAsIso8601;
   /// The properties of the feedback queue for cloud-to-device messages.
-  final FeedbackPropertiesResponse? feedback;
+  final pulumi.Input<FeedbackPropertiesResponse>? feedback;
   /// The max delivery count for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final int? maxDeliveryCount;
+  final pulumi.Input<int>? maxDeliveryCount;
 
   /// Creates a new [CloudToDevicePropertiesResponse].
   /// [defaultTtlAsIso8601] The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -24,16 +25,16 @@ class CloudToDevicePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultTtlAsIso8601': ?defaultTtlAsIso8601,
-      'feedback': ?feedback == null ? null : feedback!.toMap(),
+      'feedback': ?pulumi.Input.mapOptionalInputValue<FeedbackPropertiesResponse, Map<String, dynamic>>(feedback, (value) => value.toMap()),
       'maxDeliveryCount': ?maxDeliveryCount,
     };
   }
 
   factory CloudToDevicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CloudToDevicePropertiesResponse(
-      defaultTtlAsIso8601: map['defaultTtlAsIso8601'] == null ? null : map['defaultTtlAsIso8601'] as String,
-      feedback: map['feedback'] == null ? null : FeedbackPropertiesResponse.fromMap((map['feedback'] as Map).cast<String, dynamic>()),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : map['maxDeliveryCount'] as int,
+      defaultTtlAsIso8601: map['defaultTtlAsIso8601'] == null ? null : (map['defaultTtlAsIso8601'] as String).input(),
+      feedback: map['feedback'] == null ? null : (FeedbackPropertiesResponse.fromMap((map['feedback'] as Map).cast<String, dynamic>())).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
     );
   }
 }

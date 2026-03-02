@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataQualityRulesRuleSetExpectation {
   /// Expected values for the column value.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetDataQualityRulesRuleSetExpectation].
   /// [values] Expected values for the column value.
@@ -19,7 +20,7 @@ class GetDataQualityRulesRuleSetExpectation {
 
   factory GetDataQualityRulesRuleSetExpectation.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesRuleSetExpectation(
-      values: (map['values'] as List).cast<String>(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -17,13 +17,10 @@ class ControlPolicyOrderState {
   /// [direction] The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   /// [order] The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
   ControlPolicyOrderState({
-    pulumi.Output<String>? aclUuid,
-    pulumi.Output<String>? direction,
-    pulumi.Output<int>? order,
-  }) :
-      aclUuid = pulumi.Input.asOptionalInput<String>(aclUuid),
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      order = pulumi.Input.asOptionalInput<int>(order);
+    this.aclUuid,
+    this.direction,
+    this.order,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ControlPolicyOrderState {
 
   factory ControlPolicyOrderState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyOrderState(
-      aclUuid: map['aclUuid'] == null ? null : pulumi.Output.create<String>(map['aclUuid'] as String),
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
     );
   }
 }

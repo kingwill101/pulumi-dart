@@ -51,33 +51,20 @@ class TopicArgs {
   /// [status] The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
   /// [supportOrdering] Boolean flag which controls whether the Topic supports ordering.
   TopicArgs({
-    pulumi.Output<String>? autoDeleteOnIdle,
-    pulumi.Output<bool>? batchedOperationsEnabled,
-    pulumi.Output<String>? defaultMessageTtl,
-    pulumi.Output<String>? duplicateDetectionHistoryTimeWindow,
-    pulumi.Output<bool>? expressEnabled,
-    pulumi.Output<int>? maxMessageSizeInKilobytes,
-    pulumi.Output<int>? maxSizeInMegabytes,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceId,
-    pulumi.Output<bool>? partitioningEnabled,
-    pulumi.Output<bool>? requiresDuplicateDetection,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? supportOrdering,
-  }) :
-      autoDeleteOnIdle = pulumi.Input.asOptionalInput<String>(autoDeleteOnIdle),
-      batchedOperationsEnabled = pulumi.Input.asOptionalInput<bool>(batchedOperationsEnabled),
-      defaultMessageTtl = pulumi.Input.asOptionalInput<String>(defaultMessageTtl),
-      duplicateDetectionHistoryTimeWindow = pulumi.Input.asOptionalInput<String>(duplicateDetectionHistoryTimeWindow),
-      expressEnabled = pulumi.Input.asOptionalInput<bool>(expressEnabled),
-      maxMessageSizeInKilobytes = pulumi.Input.asOptionalInput<int>(maxMessageSizeInKilobytes),
-      maxSizeInMegabytes = pulumi.Input.asOptionalInput<int>(maxSizeInMegabytes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      partitioningEnabled = pulumi.Input.asOptionalInput<bool>(partitioningEnabled),
-      requiresDuplicateDetection = pulumi.Input.asOptionalInput<bool>(requiresDuplicateDetection),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      supportOrdering = pulumi.Input.asOptionalInput<bool>(supportOrdering);
+    this.autoDeleteOnIdle,
+    this.batchedOperationsEnabled,
+    this.defaultMessageTtl,
+    this.duplicateDetectionHistoryTimeWindow,
+    this.expressEnabled,
+    this.maxMessageSizeInKilobytes,
+    this.maxSizeInMegabytes,
+    this.name,
+    required this.namespaceId,
+    this.partitioningEnabled,
+    this.requiresDuplicateDetection,
+    this.status,
+    this.supportOrdering,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : pulumi.Output.create<String>(map['autoDeleteOnIdle'] as String),
-      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : pulumi.Output.create<bool>(map['batchedOperationsEnabled'] as bool),
-      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : pulumi.Output.create<String>(map['defaultMessageTtl'] as String),
-      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : pulumi.Output.create<String>(map['duplicateDetectionHistoryTimeWindow'] as String),
-      expressEnabled: map['expressEnabled'] == null ? null : pulumi.Output.create<bool>(map['expressEnabled'] as bool),
-      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : pulumi.Output.create<int>(map['maxMessageSizeInKilobytes'] as int),
-      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : pulumi.Output.create<int>(map['maxSizeInMegabytes'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
-      partitioningEnabled: map['partitioningEnabled'] == null ? null : pulumi.Output.create<bool>(map['partitioningEnabled'] as bool),
-      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : pulumi.Output.create<bool>(map['requiresDuplicateDetection'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      supportOrdering: map['supportOrdering'] == null ? null : pulumi.Output.create<bool>(map['supportOrdering'] as bool),
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle'] as String).input(),
+      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : (map['batchedOperationsEnabled'] as bool).input(),
+      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : (map['defaultMessageTtl'] as String).input(),
+      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow'] as String).input(),
+      expressEnabled: map['expressEnabled'] == null ? null : (map['expressEnabled'] as bool).input(),
+      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes'] as int).input(),
+      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      partitioningEnabled: map['partitioningEnabled'] == null ? null : (map['partitioningEnabled'] as bool).input(),
+      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering'] as bool).input(),
     );
   }
 }

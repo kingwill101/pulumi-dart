@@ -37,21 +37,14 @@ class GetNatGatewayArgs {
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] ID of the VPC that the NAT Gateway resides in.
   GetNatGatewayArgs({
-    pulumi.Output<List<GetNatGatewayFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNatGatewayFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.filters,
+    this.id,
+    this.region,
+    this.state,
+    this.subnetId,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class GetNatGatewayArgs {
 
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNatGatewayFilter>>(pulumi.Input.decodeList<GetNatGatewayFilter>(map['filters'], (value) => GetNatGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNatGatewayFilter>(map['filters'], (value) => GetNatGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

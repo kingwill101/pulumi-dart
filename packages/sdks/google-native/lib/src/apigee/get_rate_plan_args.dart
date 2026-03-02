@@ -16,13 +16,10 @@ class GetRatePlanArgs {
   /// [organizationId] Required.
   /// [rateplanId] Required.
   GetRatePlanArgs({
-    required pulumi.Output<String> apiproductId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> rateplanId,
-  }) :
-      apiproductId = pulumi.Input.asInput<String>(apiproductId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      rateplanId = pulumi.Input.asInput<String>(rateplanId);
+    required this.apiproductId,
+    required this.organizationId,
+    required this.rateplanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRatePlanArgs {
 
   factory GetRatePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetRatePlanArgs(
-      apiproductId: pulumi.Output.create<String>(map['apiproductId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      rateplanId: pulumi.Output.create<String>(map['rateplanId'] as String),
+      apiproductId: (map['apiproductId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      rateplanId: (map['rateplanId'] as String).input(),
     );
   }
 }

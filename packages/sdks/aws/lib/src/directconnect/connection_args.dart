@@ -39,25 +39,16 @@ class ConnectionArgs {
   /// [skipDestroy] Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ConnectionArgs({
-    required pulumi.Output<String> bandwidth,
-    pulumi.Output<String>? encryptionMode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? requestMacsec,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bandwidth = pulumi.Input.asInput<String>(bandwidth),
-      encryptionMode = pulumi.Input.asOptionalInput<String>(encryptionMode),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestMacsec = pulumi.Input.asOptionalInput<bool>(requestMacsec),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.bandwidth,
+    this.encryptionMode,
+    required this.location,
+    this.name,
+    this.providerName,
+    this.region,
+    this.requestMacsec,
+    this.skipDestroy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      bandwidth: pulumi.Output.create<String>(map['bandwidth'] as String),
-      encryptionMode: map['encryptionMode'] == null ? null : pulumi.Output.create<String>(map['encryptionMode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestMacsec: map['requestMacsec'] == null ? null : pulumi.Output.create<bool>(map['requestMacsec'] as bool),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bandwidth: (map['bandwidth'] as String).input(),
+      encryptionMode: map['encryptionMode'] == null ? null : (map['encryptionMode'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestMacsec: map['requestMacsec'] == null ? null : (map['requestMacsec'] as bool).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

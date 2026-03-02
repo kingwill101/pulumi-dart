@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointClientLoginBannerOption {
-  final String bannerText;
-  final bool enabled;
+  final pulumi.Input<String> bannerText;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetEndpointClientLoginBannerOption].
   /// [bannerText] Required.
@@ -22,8 +23,8 @@ class GetEndpointClientLoginBannerOption {
 
   factory GetEndpointClientLoginBannerOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientLoginBannerOption(
-      bannerText: map['bannerText'] as String,
-      enabled: map['enabled'] as bool,
+      bannerText: (map['bannerText'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

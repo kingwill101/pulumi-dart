@@ -14,45 +14,45 @@ import 'transaction_info_response.dart';
 
 class JobStatisticsResponse {
   /// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
-  final double completionRatio;
+  final pulumi.Input<double> completionRatio;
   /// Statistics for a copy job.
-  final JobStatistics5Response copy;
+  final pulumi.Input<JobStatistics5Response> copy;
   /// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Statistics for data masking. Present only for query and extract jobs.
-  final DataMaskingStatisticsResponse dataMaskingStatistics;
+  final pulumi.Input<DataMaskingStatisticsResponse> dataMaskingStatistics;
   /// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Statistics for an extract job.
-  final JobStatistics4Response extract;
+  final pulumi.Input<JobStatistics4Response> extract;
   /// Statistics for a load job.
-  final JobStatistics3Response load;
+  final pulumi.Input<JobStatistics3Response> load;
   /// Number of child jobs executed.
-  final String numChildJobs;
+  final pulumi.Input<String> numChildJobs;
   /// If this is a child job, the id of the parent.
-  final String parentJobId;
+  final pulumi.Input<String> parentJobId;
   /// Statistics for a query job.
-  final JobStatistics2Response query;
+  final pulumi.Input<JobStatistics2Response> query;
   /// Quotas which delayed this job's start time.
-  final List<String> quotaDeferments;
+  final pulumi.Input<List<String>> quotaDeferments;
   /// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-  final String reservationId;
+  final pulumi.Input<String> reservationId;
   /// Job resource usage breakdown by reservation.
-  final List<JobStatisticsReservationUsageItemResponse> reservationUsage;
+  final pulumi.Input<List<JobStatisticsReservationUsageItemResponse>> reservationUsage;
   /// [Preview] Statistics for row-level security. Present only for query and extract jobs.
-  final RowLevelSecurityStatisticsResponse rowLevelSecurityStatistics;
+  final pulumi.Input<RowLevelSecurityStatisticsResponse> rowLevelSecurityStatistics;
   /// Statistics for a child job of a script.
-  final ScriptStatisticsResponse scriptStatistics;
+  final pulumi.Input<ScriptStatisticsResponse> scriptStatistics;
   /// [Preview] Information of the session if this job is part of one.
-  final SessionInfoResponse sessionInfo;
+  final pulumi.Input<SessionInfoResponse> sessionInfo;
   /// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// [Deprecated] Use the bytes processed in the query statistics instead.
-  final String totalBytesProcessed;
+  final pulumi.Input<String> totalBytesProcessed;
   /// Slot-milliseconds for the job.
-  final String totalSlotMs;
+  final pulumi.Input<String> totalSlotMs;
   /// [Alpha] Information of the multi-statement transaction if this job is part of one.
-  final TransactionInfoResponse transactionInfo;
+  final pulumi.Input<TransactionInfoResponse> transactionInfo;
 
   /// Creates a new [JobStatisticsResponse].
   /// [completionRatio] [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
@@ -101,50 +101,50 @@ class JobStatisticsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completionRatio': completionRatio,
-      'copy': copy.toMap(),
+      'copy': pulumi.Input.mapInputValue<JobStatistics5Response, Map<String, dynamic>>(copy, (value) => value.toMap()),
       'creationTime': creationTime,
-      'dataMaskingStatistics': dataMaskingStatistics.toMap(),
+      'dataMaskingStatistics': pulumi.Input.mapInputValue<DataMaskingStatisticsResponse, Map<String, dynamic>>(dataMaskingStatistics, (value) => value.toMap()),
       'endTime': endTime,
-      'extract': extract.toMap(),
-      'load': load.toMap(),
+      'extract': pulumi.Input.mapInputValue<JobStatistics4Response, Map<String, dynamic>>(extract, (value) => value.toMap()),
+      'load': pulumi.Input.mapInputValue<JobStatistics3Response, Map<String, dynamic>>(load, (value) => value.toMap()),
       'numChildJobs': numChildJobs,
       'parentJobId': parentJobId,
-      'query': query.toMap(),
+      'query': pulumi.Input.mapInputValue<JobStatistics2Response, Map<String, dynamic>>(query, (value) => value.toMap()),
       'quotaDeferments': quotaDeferments,
       'reservationId': reservationId,
-      'reservationUsage': pulumi.Input.encodeList<JobStatisticsReservationUsageItemResponse, Map<String, dynamic>>(reservationUsage, (value) => value.toMap()),
-      'rowLevelSecurityStatistics': rowLevelSecurityStatistics.toMap(),
-      'scriptStatistics': scriptStatistics.toMap(),
-      'sessionInfo': sessionInfo.toMap(),
+      'reservationUsage': pulumi.Input.mapInputValue<List<JobStatisticsReservationUsageItemResponse>, List<Map<String, dynamic>>>(reservationUsage, (value) => pulumi.Input.encodeList<JobStatisticsReservationUsageItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rowLevelSecurityStatistics': pulumi.Input.mapInputValue<RowLevelSecurityStatisticsResponse, Map<String, dynamic>>(rowLevelSecurityStatistics, (value) => value.toMap()),
+      'scriptStatistics': pulumi.Input.mapInputValue<ScriptStatisticsResponse, Map<String, dynamic>>(scriptStatistics, (value) => value.toMap()),
+      'sessionInfo': pulumi.Input.mapInputValue<SessionInfoResponse, Map<String, dynamic>>(sessionInfo, (value) => value.toMap()),
       'startTime': startTime,
       'totalBytesProcessed': totalBytesProcessed,
       'totalSlotMs': totalSlotMs,
-      'transactionInfo': transactionInfo.toMap(),
+      'transactionInfo': pulumi.Input.mapInputValue<TransactionInfoResponse, Map<String, dynamic>>(transactionInfo, (value) => value.toMap()),
     };
   }
 
   factory JobStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return JobStatisticsResponse(
-      completionRatio: map['completionRatio'] as double,
-      copy: JobStatistics5Response.fromMap((map['copy'] as Map).cast<String, dynamic>()),
-      creationTime: map['creationTime'] as String,
-      dataMaskingStatistics: DataMaskingStatisticsResponse.fromMap((map['dataMaskingStatistics'] as Map).cast<String, dynamic>()),
-      endTime: map['endTime'] as String,
-      extract: JobStatistics4Response.fromMap((map['extract'] as Map).cast<String, dynamic>()),
-      load: JobStatistics3Response.fromMap((map['load'] as Map).cast<String, dynamic>()),
-      numChildJobs: map['numChildJobs'] as String,
-      parentJobId: map['parentJobId'] as String,
-      query: JobStatistics2Response.fromMap((map['query'] as Map).cast<String, dynamic>()),
-      quotaDeferments: (map['quotaDeferments'] as List).cast<String>(),
-      reservationId: map['reservationId'] as String,
-      reservationUsage: pulumi.Input.decodeList<JobStatisticsReservationUsageItemResponse>(map['reservationUsage'], (value) => JobStatisticsReservationUsageItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      rowLevelSecurityStatistics: RowLevelSecurityStatisticsResponse.fromMap((map['rowLevelSecurityStatistics'] as Map).cast<String, dynamic>()),
-      scriptStatistics: ScriptStatisticsResponse.fromMap((map['scriptStatistics'] as Map).cast<String, dynamic>()),
-      sessionInfo: SessionInfoResponse.fromMap((map['sessionInfo'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
-      totalBytesProcessed: map['totalBytesProcessed'] as String,
-      totalSlotMs: map['totalSlotMs'] as String,
-      transactionInfo: TransactionInfoResponse.fromMap((map['transactionInfo'] as Map).cast<String, dynamic>()),
+      completionRatio: (map['completionRatio'] as double).input(),
+      copy: (JobStatistics5Response.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      dataMaskingStatistics: (DataMaskingStatisticsResponse.fromMap((map['dataMaskingStatistics'] as Map).cast<String, dynamic>())).input(),
+      endTime: (map['endTime'] as String).input(),
+      extract: (JobStatistics4Response.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
+      load: (JobStatistics3Response.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
+      numChildJobs: (map['numChildJobs'] as String).input(),
+      parentJobId: (map['parentJobId'] as String).input(),
+      query: (JobStatistics2Response.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
+      quotaDeferments: ((map['quotaDeferments'] as List).cast<String>()).input(),
+      reservationId: (map['reservationId'] as String).input(),
+      reservationUsage: (pulumi.Input.decodeList<JobStatisticsReservationUsageItemResponse>(map['reservationUsage'], (value) => JobStatisticsReservationUsageItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rowLevelSecurityStatistics: (RowLevelSecurityStatisticsResponse.fromMap((map['rowLevelSecurityStatistics'] as Map).cast<String, dynamic>())).input(),
+      scriptStatistics: (ScriptStatisticsResponse.fromMap((map['scriptStatistics'] as Map).cast<String, dynamic>())).input(),
+      sessionInfo: (SessionInfoResponse.fromMap((map['sessionInfo'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
+      totalBytesProcessed: (map['totalBytesProcessed'] as String).input(),
+      totalSlotMs: (map['totalSlotMs'] as String).input(),
+      transactionInfo: (TransactionInfoResponse.fromMap((map['transactionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

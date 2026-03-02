@@ -22,15 +22,11 @@ class GetSharedImageVersionsArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists.
   /// [tagsFilter] A mapping of tags to filter the list of images against.
   GetSharedImageVersionsArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> imageName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tagsFilter,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      imageName = pulumi.Input.asInput<String>(imageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tagsFilter = pulumi.Input.asOptionalInput<Map<String, String>>(tagsFilter);
+    required this.galleryName,
+    required this.imageName,
+    required this.resourceGroupName,
+    this.tagsFilter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSharedImageVersionsArgs {
 
   factory GetSharedImageVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tagsFilter: map['tagsFilter'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsFilter'] as Map).cast<String, String>()),
+      galleryName: (map['galleryName'] as String).input(),
+      imageName: (map['imageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter'] as Map).cast<String, String>()).input(),
     );
   }
 }

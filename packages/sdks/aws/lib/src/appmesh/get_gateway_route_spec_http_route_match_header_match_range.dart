@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange {
-  final int end;
-  final int start;
+  final pulumi.Input<int> end;
+  final pulumi.Input<int> start;
 
   /// Creates a new [GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange].
   /// [end] Required.
@@ -22,8 +23,8 @@ class GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange {
 
   factory GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteMatchHeaderMatchRange(
-      end: map['end'] as int,
-      start: map['start'] as int,
+      end: (map['end'] as int).input(),
+      start: (map['start'] as int).input(),
     );
   }
 }

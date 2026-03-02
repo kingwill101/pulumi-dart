@@ -25,15 +25,11 @@ class SecurityProfileV2Args {
   /// [profileAssessmentConfigs] A map of the assessment name and the assessment config.
   /// [profileId] Resource ID of the security profile.
   SecurityProfileV2Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>> profileAssessmentConfigs,
-    required pulumi.Output<String> profileId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      profileAssessmentConfigs = pulumi.Input.asInput<List<SecurityProfileV2ProfileAssessmentConfig>>(profileAssessmentConfigs),
-      profileId = pulumi.Input.asInput<String>(profileId);
+    this.description,
+    required this.orgId,
+    required this.profileAssessmentConfigs,
+    required this.profileId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class SecurityProfileV2Args {
 
   factory SecurityProfileV2Args.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      profileAssessmentConfigs: pulumi.Output.create<List<SecurityProfileV2ProfileAssessmentConfig>>(pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      profileId: pulumi.Output.create<String>(map['profileId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      profileAssessmentConfigs: (pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileId: (map['profileId'] as String).input(),
     );
   }
 }

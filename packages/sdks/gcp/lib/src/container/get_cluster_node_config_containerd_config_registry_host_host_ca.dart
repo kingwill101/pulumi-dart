@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeConfigContainerdConfigRegistryHostHostCa {
   /// URI for the Secret Manager secret that hosts the certificate.
-  final String gcpSecretManagerSecretUri;
+  final pulumi.Input<String> gcpSecretManagerSecretUri;
 
   /// Creates a new [GetClusterNodeConfigContainerdConfigRegistryHostHostCa].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the certificate.
@@ -19,7 +20,7 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHostCa {
 
   factory GetClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigContainerdConfigRegistryHostHostCa(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] as String,
+      gcpSecretManagerSecretUri: (map['gcpSecretManagerSecretUri'] as String).input(),
     );
   }
 }

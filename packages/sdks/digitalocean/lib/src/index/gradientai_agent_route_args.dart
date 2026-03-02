@@ -24,17 +24,12 @@ class GradientaiAgentRouteArgs {
   /// [rollback] Optional.
   /// [routeName] A name for the route.
   GradientaiAgentRouteArgs({
-    required pulumi.Output<String> childAgentUuid,
-    pulumi.Output<String>? ifCase,
-    required pulumi.Output<String> parentAgentUuid,
-    pulumi.Output<bool>? rollback,
-    pulumi.Output<String>? routeName,
-  }) :
-      childAgentUuid = pulumi.Input.asInput<String>(childAgentUuid),
-      ifCase = pulumi.Input.asOptionalInput<String>(ifCase),
-      parentAgentUuid = pulumi.Input.asInput<String>(parentAgentUuid),
-      rollback = pulumi.Input.asOptionalInput<bool>(rollback),
-      routeName = pulumi.Input.asOptionalInput<String>(routeName);
+    required this.childAgentUuid,
+    this.ifCase,
+    required this.parentAgentUuid,
+    this.rollback,
+    this.routeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GradientaiAgentRouteArgs {
 
   factory GradientaiAgentRouteArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentRouteArgs(
-      childAgentUuid: pulumi.Output.create<String>(map['childAgentUuid'] as String),
-      ifCase: map['ifCase'] == null ? null : pulumi.Output.create<String>(map['ifCase'] as String),
-      parentAgentUuid: pulumi.Output.create<String>(map['parentAgentUuid'] as String),
-      rollback: map['rollback'] == null ? null : pulumi.Output.create<bool>(map['rollback'] as bool),
-      routeName: map['routeName'] == null ? null : pulumi.Output.create<String>(map['routeName'] as String),
+      childAgentUuid: (map['childAgentUuid'] as String).input(),
+      ifCase: map['ifCase'] == null ? null : (map['ifCase'] as String).input(),
+      parentAgentUuid: (map['parentAgentUuid'] as String).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
     );
   }
 }

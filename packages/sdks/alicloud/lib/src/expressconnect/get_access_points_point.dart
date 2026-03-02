@@ -5,25 +5,25 @@ import 'get_access_points_point_access_point_feature_model.dart';
 
 class GetAccessPointsPoint {
   /// Query to the Access Point Feature Model.
-  final List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels;
+  final pulumi.Input<List<GetAccessPointsPointAccessPointFeatureModel>> accessPointFeatureModels;
   /// The Access Point ID.
-  final String accessPointId;
+  final pulumi.Input<String> accessPointId;
   /// Access Point Name.
-  final String accessPointName;
+  final pulumi.Input<String> accessPointName;
   /// The Access Point Is Located an ID.
-  final String attachedRegionNo;
+  final pulumi.Input<String> attachedRegionNo;
   /// The Access Point Description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The Access Point Belongs to the Operator.
-  final String hostOperator;
+  final pulumi.Input<String> hostOperator;
   /// The ID of the Access Point.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Location of the Access Point.
-  final String location;
+  final pulumi.Input<String> location;
   /// The Physical Connection to Which the Access Point State.
-  final String status;
+  final pulumi.Input<String> status;
   /// The Physical Connection to Which the Network Type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAccessPointsPoint].
   /// [accessPointFeatureModels] Query to the Access Point Feature Model.
@@ -51,7 +51,7 @@ class GetAccessPointsPoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPointFeatureModels': pulumi.Input.encodeList<GetAccessPointsPointAccessPointFeatureModel, Map<String, dynamic>>(accessPointFeatureModels, (value) => value.toMap()),
+      'accessPointFeatureModels': pulumi.Input.mapInputValue<List<GetAccessPointsPointAccessPointFeatureModel>, List<Map<String, dynamic>>>(accessPointFeatureModels, (value) => pulumi.Input.encodeList<GetAccessPointsPointAccessPointFeatureModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'accessPointId': accessPointId,
       'accessPointName': accessPointName,
       'attachedRegionNo': attachedRegionNo,
@@ -66,16 +66,16 @@ class GetAccessPointsPoint {
 
   factory GetAccessPointsPoint.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsPoint(
-      accessPointFeatureModels: pulumi.Input.decodeList<GetAccessPointsPointAccessPointFeatureModel>(map['accessPointFeatureModels'], (value) => GetAccessPointsPointAccessPointFeatureModel.fromMap((value as Map).cast<String, dynamic>())),
-      accessPointId: map['accessPointId'] as String,
-      accessPointName: map['accessPointName'] as String,
-      attachedRegionNo: map['attachedRegionNo'] as String,
-      description: map['description'] as String,
-      hostOperator: map['hostOperator'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      accessPointFeatureModels: (pulumi.Input.decodeList<GetAccessPointsPointAccessPointFeatureModel>(map['accessPointFeatureModels'], (value) => GetAccessPointsPointAccessPointFeatureModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPointId: (map['accessPointId'] as String).input(),
+      accessPointName: (map['accessPointName'] as String).input(),
+      attachedRegionNo: (map['attachedRegionNo'] as String).input(),
+      description: (map['description'] as String).input(),
+      hostOperator: (map['hostOperator'] as String).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

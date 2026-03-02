@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_networking_ips_ip_address_vpc_nat11.dart';
 
 class GetNetworkingIpsIpAddress {
   /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-  final String address;
+  final pulumi.Input<String> address;
   /// The default gateway for this address.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The ID of the interface this address is assigned to.
-  final int interfaceId;
+  final pulumi.Input<int> interfaceId;
   /// The ID of the Linode this address currently belongs to.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
   /// The number of bits set in the subnet mask.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// Whether this is a public or private IP address.
-  final bool public;
+  final pulumi.Input<bool> public;
   /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-  final String rdns;
+  final pulumi.Input<String> rdns;
   /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-  final String region;
+  final pulumi.Input<String> region;
   /// Whether this IP address is a reserved IP.
-  final bool reserved;
+  final pulumi.Input<bool> reserved;
   /// The mask that separates host bits from network bits for this address.
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
   /// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-  final String type;
+  final pulumi.Input<String> type;
   /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-  final GetNetworkingIpsIpAddressVpcNat11 vpcNat11;
+  final pulumi.Input<GetNetworkingIpsIpAddressVpcNat11> vpcNat11;
 
   /// Creates a new [GetNetworkingIpsIpAddress].
   /// [address] The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
@@ -69,24 +70,24 @@ class GetNetworkingIpsIpAddress {
       'reserved': reserved,
       'subnetMask': subnetMask,
       'type': type,
-      'vpcNat11': vpcNat11.toMap(),
+      'vpcNat11': pulumi.Input.mapInputValue<GetNetworkingIpsIpAddressVpcNat11, Map<String, dynamic>>(vpcNat11, (value) => value.toMap()),
     };
   }
 
   factory GetNetworkingIpsIpAddress.fromMap(Map<String, dynamic> map) {
     return GetNetworkingIpsIpAddress(
-      address: map['address'] as String,
-      gateway: map['gateway'] as String,
-      interfaceId: map['interfaceId'] as int,
-      linodeId: map['linodeId'] as int,
-      prefix: map['prefix'] as int,
-      public: map['public'] as bool,
-      rdns: map['rdns'] as String,
-      region: map['region'] as String,
-      reserved: map['reserved'] as bool,
-      subnetMask: map['subnetMask'] as String,
-      type: map['type'] as String,
-      vpcNat11: GetNetworkingIpsIpAddressVpcNat11.fromMap((map['vpcNat11'] as Map).cast<String, dynamic>()),
+      address: (map['address'] as String).input(),
+      gateway: (map['gateway'] as String).input(),
+      interfaceId: (map['interfaceId'] as int).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      prefix: (map['prefix'] as int).input(),
+      public: (map['public'] as bool).input(),
+      rdns: (map['rdns'] as String).input(),
+      region: (map['region'] as String).input(),
+      reserved: (map['reserved'] as bool).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpcNat11: (GetNetworkingIpsIpAddressVpcNat11.fromMap((map['vpcNat11'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

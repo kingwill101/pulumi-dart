@@ -24,15 +24,11 @@ class DataShareAuthorizationArgs {
   /// [dataShareArn] Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DataShareAuthorizationArgs({
-    pulumi.Output<bool>? allowWrites,
-    required pulumi.Output<String> consumerIdentifier,
-    required pulumi.Output<String> dataShareArn,
-    pulumi.Output<String>? region,
-  }) :
-      allowWrites = pulumi.Input.asOptionalInput<bool>(allowWrites),
-      consumerIdentifier = pulumi.Input.asInput<String>(consumerIdentifier),
-      dataShareArn = pulumi.Input.asInput<String>(dataShareArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.allowWrites,
+    required this.consumerIdentifier,
+    required this.dataShareArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DataShareAuthorizationArgs {
 
   factory DataShareAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareAuthorizationArgs(
-      allowWrites: map['allowWrites'] == null ? null : pulumi.Output.create<bool>(map['allowWrites'] as bool),
-      consumerIdentifier: pulumi.Output.create<String>(map['consumerIdentifier'] as String),
-      dataShareArn: pulumi.Output.create<String>(map['dataShareArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      allowWrites: map['allowWrites'] == null ? null : (map['allowWrites'] as bool).input(),
+      consumerIdentifier: (map['consumerIdentifier'] as String).input(),
+      dataShareArn: (map['dataShareArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

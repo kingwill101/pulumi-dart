@@ -24,13 +24,10 @@ class GetLocalGatewaysArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match
   GetLocalGatewaysArgs({
-    pulumi.Output<List<GetLocalGatewaysFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetLocalGatewaysFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class GetLocalGatewaysArgs {
 
   factory GetLocalGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewaysArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetLocalGatewaysFilter>>(pulumi.Input.decodeList<GetLocalGatewaysFilter>(map['filters'], (value) => GetLocalGatewaysFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewaysFilter>(map['filters'], (value) => GetLocalGatewaysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

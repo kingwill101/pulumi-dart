@@ -25,17 +25,12 @@ class SubnetCidrReservationArgs {
   /// [reservationType] The type of reservation to create. Valid values: `explicit`, `prefix`
   /// [subnetId] The ID of the subnet to create the reservation for.
   SubnetCidrReservationArgs({
-    required pulumi.Output<String> cidrBlock,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> reservationType,
-    required pulumi.Output<String> subnetId,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reservationType = pulumi.Input.asInput<String>(reservationType),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.cidrBlock,
+    this.description,
+    this.region,
+    required this.reservationType,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SubnetCidrReservationArgs {
 
   factory SubnetCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return SubnetCidrReservationArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reservationType: pulumi.Output.create<String>(map['reservationType'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reservationType: (map['reservationType'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

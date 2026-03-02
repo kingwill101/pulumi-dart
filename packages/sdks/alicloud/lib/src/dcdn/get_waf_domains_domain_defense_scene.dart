@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafDomainsDomainDefenseScene {
   /// The type of protection policy.
-  final String defenseScene;
+  final pulumi.Input<String> defenseScene;
   /// The protection policy ID.
-  final String policyId;
+  final pulumi.Input<String> policyId;
 
   /// Creates a new [GetWafDomainsDomainDefenseScene].
   /// [defenseScene] The type of protection policy.
@@ -24,8 +25,8 @@ class GetWafDomainsDomainDefenseScene {
 
   factory GetWafDomainsDomainDefenseScene.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsDomainDefenseScene(
-      defenseScene: map['defenseScene'] as String,
-      policyId: map['policyId'] as String,
+      defenseScene: (map['defenseScene'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

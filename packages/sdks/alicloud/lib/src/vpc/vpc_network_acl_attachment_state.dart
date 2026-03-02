@@ -19,15 +19,11 @@ class VpcNetworkAclAttachmentState {
   /// [resourceType] The type of the associated resource. Valid values: `VSwitch`.
   /// [status] The status of the Network Acl Attachment.
   VpcNetworkAclAttachmentState({
-    pulumi.Output<String>? networkAclId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-  }) :
-      networkAclId = pulumi.Input.asOptionalInput<String>(networkAclId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.networkAclId,
+    this.resourceId,
+    this.resourceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VpcNetworkAclAttachmentState {
 
   factory VpcNetworkAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcNetworkAclAttachmentState(
-      networkAclId: map['networkAclId'] == null ? null : pulumi.Output.create<String>(map['networkAclId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

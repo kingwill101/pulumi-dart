@@ -26,17 +26,12 @@ class ThingTypeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   ThingTypeArgs({
-    pulumi.Output<bool>? deprecated,
-    pulumi.Output<String>? name,
-    pulumi.Output<ThingTypeProperties>? properties,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deprecated = pulumi.Input.asOptionalInput<bool>(deprecated),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      properties = pulumi.Input.asOptionalInput<ThingTypeProperties>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deprecated,
+    this.name,
+    this.properties,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ThingTypeArgs {
 
   factory ThingTypeArgs.fromMap(Map<String, dynamic> map) {
     return ThingTypeArgs(
-      deprecated: map['deprecated'] == null ? null : pulumi.Output.create<bool>(map['deprecated'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ThingTypeProperties>(ThingTypeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (ThingTypeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ScopeAssignmentArgs {
   /// [scope] The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use 'subscriptions/{subscription-id}' for a subscription, 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
   /// [scopeAssignmentName] The name of the scope assignment to create.
   ScopeAssignmentArgs({
-    pulumi.Output<String>? assignedManagedNetwork,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? scopeAssignmentName,
-  }) :
-      assignedManagedNetwork = pulumi.Input.asOptionalInput<String>(assignedManagedNetwork),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      scope = pulumi.Input.asInput<String>(scope),
-      scopeAssignmentName = pulumi.Input.asOptionalInput<String>(scopeAssignmentName);
+    this.assignedManagedNetwork,
+    this.location,
+    required this.scope,
+    this.scopeAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ScopeAssignmentArgs {
 
   factory ScopeAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ScopeAssignmentArgs(
-      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : pulumi.Output.create<String>(map['assignedManagedNetwork'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      scopeAssignmentName: map['scopeAssignmentName'] == null ? null : pulumi.Output.create<String>(map['scopeAssignmentName'] as String),
+      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : (map['assignedManagedNetwork'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      scopeAssignmentName: map['scopeAssignmentName'] == null ? null : (map['scopeAssignmentName'] as String).input(),
     );
   }
 }

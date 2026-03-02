@@ -48,31 +48,19 @@ class BillingAccountSinkArgs {
   /// [outputVersionFormat] Deprecated. This field is unused.
   /// [uniqueWriterIdentity] Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
   BillingAccountSinkArgs({
-    pulumi.Output<BigQueryOptions>? bigqueryOptions,
-    required pulumi.Output<String> billingAccountId,
-    pulumi.Output<String>? customWriterIdentity,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<LogExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    pulumi.Output<bool>? includeChildren,
-    pulumi.Output<String>? name,
-    pulumi.Output<BillingAccountSinkOutputVersionFormat>? outputVersionFormat,
-    pulumi.Output<bool>? uniqueWriterIdentity,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<BigQueryOptions>(bigqueryOptions),
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      customWriterIdentity = pulumi.Input.asOptionalInput<String>(customWriterIdentity),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<LogExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      includeChildren = pulumi.Input.asOptionalInput<bool>(includeChildren),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputVersionFormat = pulumi.Input.asOptionalInput<BillingAccountSinkOutputVersionFormat>(outputVersionFormat),
-      uniqueWriterIdentity = pulumi.Input.asOptionalInput<bool>(uniqueWriterIdentity);
+    this.bigqueryOptions,
+    required this.billingAccountId,
+    this.customWriterIdentity,
+    this.description,
+    required this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    this.includeChildren,
+    this.name,
+    this.outputVersionFormat,
+    this.uniqueWriterIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class BillingAccountSinkArgs {
 
   factory BillingAccountSinkArgs.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<BigQueryOptions>(BigQueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : pulumi.Output.create<String>(map['customWriterIdentity'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<LogExclusion>>(pulumi.Input.decodeList<LogExclusion>(map['exclusions'], (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      includeChildren: map['includeChildren'] == null ? null : pulumi.Output.create<bool>(map['includeChildren'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputVersionFormat: map['outputVersionFormat'] == null ? null : pulumi.Output.create<BillingAccountSinkOutputVersionFormat>(BillingAccountSinkOutputVersionFormat.fromValue(map['outputVersionFormat'] as String)),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : pulumi.Output.create<bool>(map['uniqueWriterIdentity'] as bool),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions'], (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputVersionFormat: map['outputVersionFormat'] == null ? null : (BillingAccountSinkOutputVersionFormat.fromValue(map['outputVersionFormat'] as String)).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
     );
   }
 }

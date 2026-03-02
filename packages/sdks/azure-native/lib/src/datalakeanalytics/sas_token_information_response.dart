@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SAS token information.
 class SasTokenInformationResponse {
   /// The access token for the associated Azure Storage Container.
-  final String accessToken;
+  final pulumi.Input<String> accessToken;
 
   /// Creates a new [SasTokenInformationResponse].
   /// [accessToken] The access token for the associated Azure Storage Container.
@@ -20,7 +21,7 @@ class SasTokenInformationResponse {
 
   factory SasTokenInformationResponse.fromMap(Map<String, dynamic> map) {
     return SasTokenInformationResponse(
-      accessToken: map['accessToken'] as String,
+      accessToken: (map['accessToken'] as String).input(),
     );
   }
 }

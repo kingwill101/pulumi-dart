@@ -55,35 +55,21 @@ class BuildxBuilderArgs {
   /// [remote] Configuration block for the Remote driver.
   /// [use] Set the current builder instance as the default for the current context.
   BuildxBuilderArgs({
-    pulumi.Output<bool>? append,
-    pulumi.Output<bool>? bootstrap,
-    pulumi.Output<String>? buildkitConfig,
-    pulumi.Output<String>? buildkitFlags,
-    pulumi.Output<BuildxBuilderDockerContainer>? dockerContainer,
-    pulumi.Output<String>? driver,
-    pulumi.Output<Map<String, String>>? driverOptions,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<BuildxBuilderKubernetes>? kubernetes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? node,
-    pulumi.Output<List<String>>? platforms,
-    pulumi.Output<BuildxBuilderRemote>? remote,
-    pulumi.Output<bool>? use,
-  }) :
-      append = pulumi.Input.asOptionalInput<bool>(append),
-      bootstrap = pulumi.Input.asOptionalInput<bool>(bootstrap),
-      buildkitConfig = pulumi.Input.asOptionalInput<String>(buildkitConfig),
-      buildkitFlags = pulumi.Input.asOptionalInput<String>(buildkitFlags),
-      dockerContainer = pulumi.Input.asOptionalInput<BuildxBuilderDockerContainer>(dockerContainer),
-      driver = pulumi.Input.asOptionalInput<String>(driver),
-      driverOptions = pulumi.Input.asOptionalInput<Map<String, String>>(driverOptions),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      kubernetes = pulumi.Input.asOptionalInput<BuildxBuilderKubernetes>(kubernetes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      node = pulumi.Input.asOptionalInput<String>(node),
-      platforms = pulumi.Input.asOptionalInput<List<String>>(platforms),
-      remote = pulumi.Input.asOptionalInput<BuildxBuilderRemote>(remote),
-      use = pulumi.Input.asOptionalInput<bool>(use);
+    this.append,
+    this.bootstrap,
+    this.buildkitConfig,
+    this.buildkitFlags,
+    this.dockerContainer,
+    this.driver,
+    this.driverOptions,
+    this.endpoint,
+    this.kubernetes,
+    this.name,
+    this.node,
+    this.platforms,
+    this.remote,
+    this.use,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class BuildxBuilderArgs {
 
   factory BuildxBuilderArgs.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderArgs(
-      append: map['append'] == null ? null : pulumi.Output.create<bool>(map['append'] as bool),
-      bootstrap: map['bootstrap'] == null ? null : pulumi.Output.create<bool>(map['bootstrap'] as bool),
-      buildkitConfig: map['buildkitConfig'] == null ? null : pulumi.Output.create<String>(map['buildkitConfig'] as String),
-      buildkitFlags: map['buildkitFlags'] == null ? null : pulumi.Output.create<String>(map['buildkitFlags'] as String),
-      dockerContainer: map['dockerContainer'] == null ? null : pulumi.Output.create<BuildxBuilderDockerContainer>(BuildxBuilderDockerContainer.fromMap((map['dockerContainer'] as Map).cast<String, dynamic>())),
-      driver: map['driver'] == null ? null : pulumi.Output.create<String>(map['driver'] as String),
-      driverOptions: map['driverOptions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['driverOptions'] as Map).cast<String, String>()),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      kubernetes: map['kubernetes'] == null ? null : pulumi.Output.create<BuildxBuilderKubernetes>(BuildxBuilderKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      node: map['node'] == null ? null : pulumi.Output.create<String>(map['node'] as String),
-      platforms: map['platforms'] == null ? null : pulumi.Output.create<List<String>>((map['platforms'] as List).cast<String>()),
-      remote: map['remote'] == null ? null : pulumi.Output.create<BuildxBuilderRemote>(BuildxBuilderRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())),
-      use: map['use'] == null ? null : pulumi.Output.create<bool>(map['use'] as bool),
+      append: map['append'] == null ? null : (map['append'] as bool).input(),
+      bootstrap: map['bootstrap'] == null ? null : (map['bootstrap'] as bool).input(),
+      buildkitConfig: map['buildkitConfig'] == null ? null : (map['buildkitConfig'] as String).input(),
+      buildkitFlags: map['buildkitFlags'] == null ? null : (map['buildkitFlags'] as String).input(),
+      dockerContainer: map['dockerContainer'] == null ? null : (BuildxBuilderDockerContainer.fromMap((map['dockerContainer'] as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions'] as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      kubernetes: map['kubernetes'] == null ? null : (BuildxBuilderKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      node: map['node'] == null ? null : (map['node'] as String).input(),
+      platforms: map['platforms'] == null ? null : ((map['platforms'] as List).cast<String>()).input(),
+      remote: map['remote'] == null ? null : (BuildxBuilderRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      use: map['use'] == null ? null : (map['use'] as bool).input(),
     );
   }
 }

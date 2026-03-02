@@ -7,20 +7,20 @@ import 'managed_network_provision_status.dart';
 /// Managed Network settings for a machine learning workspace.
 class ManagedNetworkSettings {
   /// A flag to indicate if monitoring needs to be enabled for the managed network firewall.
-  final bool? enableFirewallLog;
+  final pulumi.Input<bool>? enableFirewallLog;
   /// A flag to indicate if monitoring needs to be enabled for the managed network.
-  final bool? enableNetworkMonitor;
+  final pulumi.Input<bool>? enableNetworkMonitor;
   /// Public IP address assigned to the Azure Firewall.
-  final String? firewallPublicIpAddress;
+  final pulumi.Input<String>? firewallPublicIpAddress;
   /// Firewall Sku used for FQDN Rules
-  final String? firewallSku;
+  final pulumi.Input<String>? firewallSku;
   /// Isolation mode for the managed network of a machine learning workspace.
-  final String? isolationMode;
+  final pulumi.Input<String>? isolationMode;
   /// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
-  final String? managedNetworkKind;
-  final Map<String, FqdnOutboundRule>? outboundRules;
+  final pulumi.Input<String>? managedNetworkKind;
+  final pulumi.Input<Map<String, FqdnOutboundRule>>? outboundRules;
   /// Status of the Provisioning for the managed network of a machine learning workspace.
-  final ManagedNetworkProvisionStatus? status;
+  final pulumi.Input<ManagedNetworkProvisionStatus>? status;
 
   /// Creates a new [ManagedNetworkSettings].
   /// [enableFirewallLog] A flag to indicate if monitoring needs to be enabled for the managed network firewall.
@@ -50,21 +50,21 @@ class ManagedNetworkSettings {
       'firewallSku': ?firewallSku,
       'isolationMode': ?isolationMode,
       'managedNetworkKind': ?managedNetworkKind,
-      'outboundRules': ?outboundRules == null ? null : pulumi.Input.encodeMapValues<FqdnOutboundRule, Map<String, dynamic>>(outboundRules!, (value) => value.toMap()),
-      'status': ?status == null ? null : status!.toMap(),
+      'outboundRules': ?pulumi.Input.mapOptionalInputValue<Map<String, FqdnOutboundRule>, Map<String, Map<String, dynamic>>>(outboundRules, (value) => pulumi.Input.encodeMapValues<FqdnOutboundRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'status': ?pulumi.Input.mapOptionalInputValue<ManagedNetworkProvisionStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ManagedNetworkSettings.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkSettings(
-      enableFirewallLog: map['enableFirewallLog'] == null ? null : map['enableFirewallLog'] as bool,
-      enableNetworkMonitor: map['enableNetworkMonitor'] == null ? null : map['enableNetworkMonitor'] as bool,
-      firewallPublicIpAddress: map['firewallPublicIpAddress'] == null ? null : map['firewallPublicIpAddress'] as String,
-      firewallSku: map['firewallSku'] == null ? null : map['firewallSku'] as String,
-      isolationMode: map['isolationMode'] == null ? null : map['isolationMode'] as String,
-      managedNetworkKind: map['managedNetworkKind'] == null ? null : map['managedNetworkKind'] as String,
-      outboundRules: map['outboundRules'] == null ? null : pulumi.Input.decodeMapValues<FqdnOutboundRule>(map['outboundRules'], (value) => FqdnOutboundRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : ManagedNetworkProvisionStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      enableFirewallLog: map['enableFirewallLog'] == null ? null : (map['enableFirewallLog'] as bool).input(),
+      enableNetworkMonitor: map['enableNetworkMonitor'] == null ? null : (map['enableNetworkMonitor'] as bool).input(),
+      firewallPublicIpAddress: map['firewallPublicIpAddress'] == null ? null : (map['firewallPublicIpAddress'] as String).input(),
+      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku'] as String).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
+      managedNetworkKind: map['managedNetworkKind'] == null ? null : (map['managedNetworkKind'] as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeMapValues<FqdnOutboundRule>(map['outboundRules'], (value) => FqdnOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (ManagedNetworkProvisionStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

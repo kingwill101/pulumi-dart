@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'build_context.dart';
 import 'inference_container_properties.dart';
 
 /// Environment version details.
 class EnvironmentVersion {
   /// Defines if image needs to be rebuilt based on base image changes.
-  final String? autoRebuild;
+  final pulumi.Input<String>? autoRebuild;
   /// Configuration settings for Docker build context.
-  final BuildContext? build;
+  final pulumi.Input<BuildContext>? build;
   /// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
   /// <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
-  final String? condaFile;
+  final pulumi.Input<String>? condaFile;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Name of the image that will be used for the environment.
   /// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Defines configuration specific to inference.
-  final InferenceContainerProperties? inferenceConfig;
+  final pulumi.Input<InferenceContainerProperties>? inferenceConfig;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The OS type of the environment.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Stage in the environment lifecycle assigned to this environment
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [EnvironmentVersion].
   /// [autoRebuild] Defines if image needs to be rebuilt based on base image changes.
@@ -63,11 +64,11 @@ class EnvironmentVersion {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoRebuild': ?autoRebuild,
-      'build': ?build == null ? null : build!.toMap(),
+      'build': ?pulumi.Input.mapOptionalInputValue<BuildContext, Map<String, dynamic>>(build, (value) => value.toMap()),
       'condaFile': ?condaFile,
       'description': ?description,
       'image': ?image,
-      'inferenceConfig': ?inferenceConfig == null ? null : inferenceConfig!.toMap(),
+      'inferenceConfig': ?pulumi.Input.mapOptionalInputValue<InferenceContainerProperties, Map<String, dynamic>>(inferenceConfig, (value) => value.toMap()),
       'isAnonymous': ?isAnonymous,
       'isArchived': ?isArchived,
       'osType': ?osType,
@@ -79,18 +80,18 @@ class EnvironmentVersion {
 
   factory EnvironmentVersion.fromMap(Map<String, dynamic> map) {
     return EnvironmentVersion(
-      autoRebuild: map['autoRebuild'] == null ? null : map['autoRebuild'] as String,
-      build: map['build'] == null ? null : BuildContext.fromMap((map['build'] as Map).cast<String, dynamic>()),
-      condaFile: map['condaFile'] == null ? null : map['condaFile'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      image: map['image'] == null ? null : map['image'] as String,
-      inferenceConfig: map['inferenceConfig'] == null ? null : InferenceContainerProperties.fromMap((map['inferenceConfig'] as Map).cast<String, dynamic>()),
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      autoRebuild: map['autoRebuild'] == null ? null : (map['autoRebuild'] as String).input(),
+      build: map['build'] == null ? null : (BuildContext.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
+      condaFile: map['condaFile'] == null ? null : (map['condaFile'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      inferenceConfig: map['inferenceConfig'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceConfig'] as Map).cast<String, dynamic>())).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

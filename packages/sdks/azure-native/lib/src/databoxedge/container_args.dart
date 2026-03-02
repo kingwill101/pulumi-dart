@@ -25,17 +25,12 @@ class ContainerArgs {
   /// [resourceGroupName] The resource group name.
   /// [storageAccountName] The Storage Account Name
   ContainerArgs({
-    pulumi.Output<String>? containerName,
-    required pulumi.Output<String> dataFormat,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageAccountName,
-  }) :
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      dataFormat = pulumi.Input.asInput<String>(dataFormat),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName);
+    this.containerName,
+    required this.dataFormat,
+    required this.deviceName,
+    required this.resourceGroupName,
+    required this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ContainerArgs {
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      dataFormat: pulumi.Output.create<String>(map['dataFormat'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      dataFormat: (map['dataFormat'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
     );
   }
 }

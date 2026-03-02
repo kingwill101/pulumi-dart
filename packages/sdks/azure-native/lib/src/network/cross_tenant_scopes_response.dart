@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cross tenant scopes.
 class CrossTenantScopesResponse {
   /// List of management groups.
-  final List<String> managementGroups;
+  final pulumi.Input<List<String>> managementGroups;
   /// List of subscriptions.
-  final List<String> subscriptions;
+  final pulumi.Input<List<String>> subscriptions;
   /// Tenant ID.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [CrossTenantScopesResponse].
   /// [managementGroups] List of management groups.
@@ -30,9 +31,9 @@ class CrossTenantScopesResponse {
 
   factory CrossTenantScopesResponse.fromMap(Map<String, dynamic> map) {
     return CrossTenantScopesResponse(
-      managementGroups: (map['managementGroups'] as List).cast<String>(),
-      subscriptions: (map['subscriptions'] as List).cast<String>(),
-      tenantId: map['tenantId'] as String,
+      managementGroups: ((map['managementGroups'] as List).cast<String>()).input(),
+      subscriptions: ((map['subscriptions'] as List).cast<String>()).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

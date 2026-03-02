@@ -26,15 +26,11 @@ class TableArgs {
   /// [name] Output only. The name of the Table. Format:
   /// [type] The database type.
   TableArgs({
-    pulumi.Output<String>? database,
-    pulumi.Output<TableHiveOptions>? hiveOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-  }) :
-      database = pulumi.Input.asOptionalInput<String>(database),
-      hiveOptions = pulumi.Input.asOptionalInput<TableHiveOptions>(hiveOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.database,
+    this.hiveOptions,
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      hiveOptions: map['hiveOptions'] == null ? null : pulumi.Output.create<TableHiveOptions>(TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

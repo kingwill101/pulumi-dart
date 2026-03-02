@@ -22,17 +22,12 @@ class LocalRulestackPrefixListState {
   /// [prefixLists] Specifies a list of Prefixes.
   /// [rulestackId] The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.
   LocalRulestackPrefixListState({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? prefixLists,
-    pulumi.Output<String>? rulestackId,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      prefixLists = pulumi.Input.asOptionalInput<List<String>>(prefixLists),
-      rulestackId = pulumi.Input.asOptionalInput<String>(rulestackId);
+    this.auditComment,
+    this.description,
+    this.name,
+    this.prefixLists,
+    this.rulestackId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class LocalRulestackPrefixListState {
 
   factory LocalRulestackPrefixListState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackPrefixListState(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      prefixLists: map['prefixLists'] == null ? null : pulumi.Output.create<List<String>>((map['prefixLists'] as List).cast<String>()),
-      rulestackId: map['rulestackId'] == null ? null : pulumi.Output.create<String>(map['rulestackId'] as String),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists'] as List).cast<String>()).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
     );
   }
 }

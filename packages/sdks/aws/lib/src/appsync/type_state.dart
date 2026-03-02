@@ -28,21 +28,14 @@ class TypeState {
   /// [name] The type name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   TypeState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? definition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      definition = pulumi.Input.asOptionalInput<String>(definition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.apiId,
+    this.arn,
+    this.definition,
+    this.description,
+    this.format,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class TypeState {
 
   factory TypeState.fromMap(Map<String, dynamic> map) {
     return TypeState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      definition: map['definition'] == null ? null : pulumi.Output.create<String>(map['definition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

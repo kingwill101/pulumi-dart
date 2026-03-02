@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_config_homepage_setting_shortcut_icon.dart';
 
 class WidgetConfigHomepageSettingShortcut {
   /// Destination URL of shortcut.
-  final String? destinationUri;
+  final pulumi.Input<String>? destinationUri;
   /// Icon URL of shortcut.
   /// Structure is documented below.
-  final WidgetConfigHomepageSettingShortcutIcon? icon;
+  final pulumi.Input<WidgetConfigHomepageSettingShortcutIcon>? icon;
   /// Title of the shortcut.
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [WidgetConfigHomepageSettingShortcut].
   /// [destinationUri] Destination URL of shortcut.
@@ -24,16 +25,16 @@ class WidgetConfigHomepageSettingShortcut {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationUri': ?destinationUri,
-      'icon': ?icon == null ? null : icon!.toMap(),
+      'icon': ?pulumi.Input.mapOptionalInputValue<WidgetConfigHomepageSettingShortcutIcon, Map<String, dynamic>>(icon, (value) => value.toMap()),
       'title': ?title,
     };
   }
 
   factory WidgetConfigHomepageSettingShortcut.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSettingShortcut(
-      destinationUri: map['destinationUri'] == null ? null : map['destinationUri'] as String,
-      icon: map['icon'] == null ? null : WidgetConfigHomepageSettingShortcutIcon.fromMap((map['icon'] as Map).cast<String, dynamic>()),
-      title: map['title'] == null ? null : map['title'] as String,
+      destinationUri: map['destinationUri'] == null ? null : (map['destinationUri'] as String).input(),
+      icon: map['icon'] == null ? null : (WidgetConfigHomepageSettingShortcutIcon.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

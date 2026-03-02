@@ -22,15 +22,11 @@ class DefaultCreditSpecificationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   DefaultCreditSpecificationArgs({
-    required pulumi.Output<String> cpuCredits,
-    required pulumi.Output<String> instanceFamily,
-    pulumi.Output<String>? region,
-    pulumi.Output<DefaultCreditSpecificationTimeouts>? timeouts,
-  }) :
-      cpuCredits = pulumi.Input.asInput<String>(cpuCredits),
-      instanceFamily = pulumi.Input.asInput<String>(instanceFamily),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<DefaultCreditSpecificationTimeouts>(timeouts);
+    required this.cpuCredits,
+    required this.instanceFamily,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DefaultCreditSpecificationArgs {
 
   factory DefaultCreditSpecificationArgs.fromMap(Map<String, dynamic> map) {
     return DefaultCreditSpecificationArgs(
-      cpuCredits: pulumi.Output.create<String>(map['cpuCredits'] as String),
-      instanceFamily: pulumi.Output.create<String>(map['instanceFamily'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DefaultCreditSpecificationTimeouts>(DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      cpuCredits: (map['cpuCredits'] as String).input(),
+      instanceFamily: (map['instanceFamily'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

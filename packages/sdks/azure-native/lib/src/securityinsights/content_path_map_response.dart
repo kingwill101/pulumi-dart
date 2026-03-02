@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The mapping of content type to a repo path.
 class ContentPathMapResponse {
   /// Content type.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// The path to the content.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [ContentPathMapResponse].
   /// [contentType] Content type.
@@ -25,8 +26,8 @@ class ContentPathMapResponse {
 
   factory ContentPathMapResponse.fromMap(Map<String, dynamic> map) {
     return ContentPathMapResponse(
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

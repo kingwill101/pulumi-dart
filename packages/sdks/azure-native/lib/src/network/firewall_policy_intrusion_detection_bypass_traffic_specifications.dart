@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Intrusion detection bypass traffic specification.
 class FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
   /// Description of the bypass traffic rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of destination IP addresses or ranges for this rule.
-  final List<String>? destinationAddresses;
+  final pulumi.Input<List<String>>? destinationAddresses;
   /// List of destination IpGroups for this rule.
-  final List<String>? destinationIpGroups;
+  final pulumi.Input<List<String>>? destinationIpGroups;
   /// List of destination ports or ranges.
-  final List<String>? destinationPorts;
+  final pulumi.Input<List<String>>? destinationPorts;
   /// Name of the bypass traffic rule.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The rule bypass protocol.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// List of source IP addresses or ranges for this rule.
-  final List<String>? sourceAddresses;
+  final pulumi.Input<List<String>>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final List<String>? sourceIpGroups;
+  final pulumi.Input<List<String>>? sourceIpGroups;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionBypassTrafficSpecifications].
   /// [description] Description of the bypass traffic rule.
@@ -55,14 +56,14 @@ class FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
 
   factory FirewallPolicyIntrusionDetectionBypassTrafficSpecifications.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionBypassTrafficSpecifications(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddresses: map['destinationAddresses'] == null ? null : (map['destinationAddresses'] as List).cast<String>(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : (map['destinationIpGroups'] as List).cast<String>(),
-      destinationPorts: map['destinationPorts'] == null ? null : (map['destinationPorts'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : (map['sourceIpGroups'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
+      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups'] as List).cast<String>()).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
     );
   }
 }

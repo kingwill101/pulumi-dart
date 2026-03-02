@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Load balancing settings for a backend pool
 class HealthProbeSettingsModelResponse {
   /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Configures which HTTP method to use to probe the backends defined under backendPools.
-  final String? healthProbeMethod;
+  final pulumi.Input<String>? healthProbeMethod;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The number of seconds between health probes.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The path to use for the health probe. Default is /
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Protocol scheme to use for this probe
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Resource status.
-  final String resourceState;
+  final pulumi.Input<String> resourceState;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [HealthProbeSettingsModelResponse].
   /// [enabledState] Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
@@ -60,15 +61,15 @@ class HealthProbeSettingsModelResponse {
 
   factory HealthProbeSettingsModelResponse.fromMap(Map<String, dynamic> map) {
     return HealthProbeSettingsModelResponse(
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      healthProbeMethod: map['healthProbeMethod'] == null ? null : map['healthProbeMethod'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      resourceState: map['resourceState'] as String,
-      type: map['type'] as String,
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      healthProbeMethod: map['healthProbeMethod'] == null ? null : (map['healthProbeMethod'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceState: (map['resourceState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

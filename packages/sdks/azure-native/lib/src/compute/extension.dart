@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_service_extension_properties.dart';
 
 /// Describes a cloud service Extension.
 class Extension {
   /// The name of the extension.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Extension Properties.
-  final CloudServiceExtensionProperties? properties;
+  final pulumi.Input<CloudServiceExtensionProperties>? properties;
 
   /// Creates a new [Extension].
   /// [name] The name of the extension.
@@ -20,14 +21,14 @@ class Extension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<CloudServiceExtensionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory Extension.fromMap(Map<String, dynamic> map) {
     return Extension(
-      name: map['name'] == null ? null : map['name'] as String,
-      properties: map['properties'] == null ? null : CloudServiceExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (CloudServiceExtensionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioPulseAudioOutput {
   /// Sets the output latency for the PipeWire audio device.
-  final double? latency;
+  final pulumi.Input<double>? latency;
   /// Sets the name for the PipeWire audio output.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Sets the stream name for the PipeWire audio output.
-  final String? streamName;
+  final pulumi.Input<String>? streamName;
 
   /// Creates a new [DomainDevicesAudioPulseAudioOutput].
   /// [latency] Sets the output latency for the PipeWire audio device.
@@ -29,9 +30,9 @@ class DomainDevicesAudioPulseAudioOutput {
 
   factory DomainDevicesAudioPulseAudioOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPulseAudioOutput(
-      latency: map['latency'] == null ? null : map['latency'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      streamName: map['streamName'] == null ? null : map['streamName'] as String,
+      latency: map['latency'] == null ? null : (map['latency'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
     );
   }
 }

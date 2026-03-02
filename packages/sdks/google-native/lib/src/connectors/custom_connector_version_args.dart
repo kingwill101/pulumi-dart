@@ -38,25 +38,16 @@ class CustomConnectorVersionArgs {
   /// [specLocation] Optional. Location of the custom connector spec.
   /// [type] Type of the customConnector.
   CustomConnectorVersionArgs({
-    required pulumi.Output<AuthConfig> authConfig,
-    required pulumi.Output<String> customConnectorId,
-    required pulumi.Output<String> customConnectorVersionId,
-    required pulumi.Output<DestinationConfig> destinationConfig,
-    pulumi.Output<bool>? enableBackendDestinationConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? specLocation,
-    required pulumi.Output<CustomConnectorVersionType> type,
-  }) :
-      authConfig = pulumi.Input.asInput<AuthConfig>(authConfig),
-      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
-      customConnectorVersionId = pulumi.Input.asInput<String>(customConnectorVersionId),
-      destinationConfig = pulumi.Input.asInput<DestinationConfig>(destinationConfig),
-      enableBackendDestinationConfig = pulumi.Input.asOptionalInput<bool>(enableBackendDestinationConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specLocation = pulumi.Input.asOptionalInput<String>(specLocation),
-      type = pulumi.Input.asInput<CustomConnectorVersionType>(type);
+    required this.authConfig,
+    required this.customConnectorId,
+    required this.customConnectorVersionId,
+    required this.destinationConfig,
+    this.enableBackendDestinationConfig,
+    this.labels,
+    this.project,
+    this.specLocation,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class CustomConnectorVersionArgs {
 
   factory CustomConnectorVersionArgs.fromMap(Map<String, dynamic> map) {
     return CustomConnectorVersionArgs(
-      authConfig: pulumi.Output.create<AuthConfig>(AuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      customConnectorId: pulumi.Output.create<String>(map['customConnectorId'] as String),
-      customConnectorVersionId: pulumi.Output.create<String>(map['customConnectorVersionId'] as String),
-      destinationConfig: pulumi.Output.create<DestinationConfig>(DestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())),
-      enableBackendDestinationConfig: map['enableBackendDestinationConfig'] == null ? null : pulumi.Output.create<bool>(map['enableBackendDestinationConfig'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      specLocation: map['specLocation'] == null ? null : pulumi.Output.create<String>(map['specLocation'] as String),
-      type: pulumi.Output.create<CustomConnectorVersionType>(CustomConnectorVersionType.fromValue(map['type'] as String)),
+      authConfig: (AuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      customConnectorId: (map['customConnectorId'] as String).input(),
+      customConnectorVersionId: (map['customConnectorVersionId'] as String).input(),
+      destinationConfig: (DestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      enableBackendDestinationConfig: map['enableBackendDestinationConfig'] == null ? null : (map['enableBackendDestinationConfig'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      specLocation: map['specLocation'] == null ? null : (map['specLocation'] as String).input(),
+      type: (CustomConnectorVersionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

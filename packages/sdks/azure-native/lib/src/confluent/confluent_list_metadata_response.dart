@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata of the list
 class ConfluentListMetadataResponse {
   /// First page of the list
-  final String? first;
+  final pulumi.Input<String>? first;
   /// Last page of the list
-  final String? last;
+  final pulumi.Input<String>? last;
   /// Next page of the list
-  final String? next;
+  final pulumi.Input<String>? next;
   /// Previous page of the list
-  final String? prev;
+  final pulumi.Input<String>? prev;
   /// Total size of the list
-  final int? totalSize;
+  final pulumi.Input<int>? totalSize;
 
   /// Creates a new [ConfluentListMetadataResponse].
   /// [first] First page of the list
@@ -40,11 +41,11 @@ class ConfluentListMetadataResponse {
 
   factory ConfluentListMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ConfluentListMetadataResponse(
-      first: map['first'] == null ? null : map['first'] as String,
-      last: map['last'] == null ? null : map['last'] as String,
-      next: map['next'] == null ? null : map['next'] as String,
-      prev: map['prev'] == null ? null : map['prev'] as String,
-      totalSize: map['totalSize'] == null ? null : map['totalSize'] as int,
+      first: map['first'] == null ? null : (map['first'] as String).input(),
+      last: map['last'] == null ? null : (map['last'] as String).input(),
+      next: map['next'] == null ? null : (map['next'] as String).input(),
+      prev: map['prev'] == null ? null : (map['prev'] as String).input(),
+      totalSize: map['totalSize'] == null ? null : (map['totalSize'] as int).input(),
     );
   }
 }

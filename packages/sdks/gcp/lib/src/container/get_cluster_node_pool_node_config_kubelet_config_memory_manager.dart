@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigKubeletConfigMemoryManager {
   /// The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [GetClusterNodePoolNodeConfigKubeletConfigMemoryManager].
   /// [policy] The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
@@ -19,7 +20,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigMemoryManager {
 
   factory GetClusterNodePoolNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigKubeletConfigMemoryManager(
-      policy: map['policy'] as String,
+      policy: (map['policy'] as String).input(),
     );
   }
 }

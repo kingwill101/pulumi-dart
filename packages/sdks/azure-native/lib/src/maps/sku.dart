@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU of the Maps Account.
 class Sku {
   /// The name of the SKU, in standard format (such as G2).
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [Sku].
   /// [name] The name of the SKU, in standard format (such as G2).
@@ -20,7 +21,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

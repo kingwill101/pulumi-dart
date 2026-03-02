@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 class ClusterPropertiesKeyEncryptionKeyIdentity {
   /// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
-  final String? identityType;
+  final pulumi.Input<String>? identityType;
   /// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-  final String? userAssignedIdentityResourceId;
+  final pulumi.Input<String>? userAssignedIdentityResourceId;
 
   /// Creates a new [ClusterPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Only userAssignedIdentity is supported in this API version; other types may be supported in the future
@@ -25,8 +26,8 @@ class ClusterPropertiesKeyEncryptionKeyIdentity {
 
   factory ClusterPropertiesKeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
     return ClusterPropertiesKeyEncryptionKeyIdentity(
-      identityType: map['identityType'] == null ? null : map['identityType'] as String,
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : map['userAssignedIdentityResourceId'] as String,
+      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicePlacementConstraint {
   /// Cluster query language expression
-  final String expression;
+  final pulumi.Input<String> expression;
   /// Constraint type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetServicePlacementConstraint].
   /// [expression] Cluster query language expression
@@ -24,8 +25,8 @@ class GetServicePlacementConstraint {
 
   factory GetServicePlacementConstraint.fromMap(Map<String, dynamic> map) {
     return GetServicePlacementConstraint(
-      expression: map['expression'] as String,
-      type: map['type'] as String,
+      expression: (map['expression'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

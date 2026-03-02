@@ -42,29 +42,18 @@ class EndpointState {
   /// [threatExceptions] Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
   /// [updateTime] Last update timestamp in RFC 3339 text format.
   EndpointState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endpointForwardingRule,
-    pulumi.Output<String>? endpointIp,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? severity,
-    pulumi.Output<List<String>>? threatExceptions,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointForwardingRule = pulumi.Input.asOptionalInput<String>(endpointForwardingRule),
-      endpointIp = pulumi.Input.asOptionalInput<String>(endpointIp),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      severity = pulumi.Input.asOptionalInput<String>(severity),
-      threatExceptions = pulumi.Input.asOptionalInput<List<String>>(threatExceptions),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.endpointForwardingRule,
+    this.endpointIp,
+    this.location,
+    this.name,
+    this.network,
+    this.project,
+    this.severity,
+    this.threatExceptions,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointForwardingRule: map['endpointForwardingRule'] == null ? null : pulumi.Output.create<String>(map['endpointForwardingRule'] as String),
-      endpointIp: map['endpointIp'] == null ? null : pulumi.Output.create<String>(map['endpointIp'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      severity: map['severity'] == null ? null : pulumi.Output.create<String>(map['severity'] as String),
-      threatExceptions: map['threatExceptions'] == null ? null : pulumi.Output.create<List<String>>((map['threatExceptions'] as List).cast<String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointForwardingRule: map['endpointForwardingRule'] == null ? null : (map['endpointForwardingRule'] as String).input(),
+      endpointIp: map['endpointIp'] == null ? null : (map['endpointIp'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions'] as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

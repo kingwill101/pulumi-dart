@@ -29,19 +29,13 @@ class CustomHostnameBindingState {
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
   /// [virtualIp] The virtual IP address assigned to the hostname if IP based SSL is enabled.
   CustomHostnameBindingState({
-    pulumi.Output<String>? appServiceName,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sslState,
-    pulumi.Output<String>? thumbprint,
-    pulumi.Output<String>? virtualIp,
-  }) :
-      appServiceName = pulumi.Input.asOptionalInput<String>(appServiceName),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sslState = pulumi.Input.asOptionalInput<String>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint),
-      virtualIp = pulumi.Input.asOptionalInput<String>(virtualIp);
+    this.appServiceName,
+    this.hostname,
+    this.resourceGroupName,
+    this.sslState,
+    this.thumbprint,
+    this.virtualIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CustomHostnameBindingState {
 
   factory CustomHostnameBindingState.fromMap(Map<String, dynamic> map) {
     return CustomHostnameBindingState(
-      appServiceName: map['appServiceName'] == null ? null : pulumi.Output.create<String>(map['appServiceName'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<String>(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
-      virtualIp: map['virtualIp'] == null ? null : pulumi.Output.create<String>(map['virtualIp'] as String),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp'] as String).input(),
     );
   }
 }

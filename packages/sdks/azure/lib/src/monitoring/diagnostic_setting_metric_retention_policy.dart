@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiagnosticSettingMetricRetentionPolicy {
-  final int? days;
-  final bool enabled;
+  final pulumi.Input<int>? days;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [DiagnosticSettingMetricRetentionPolicy].
   /// [days] Optional.
@@ -22,8 +23,8 @@ class DiagnosticSettingMetricRetentionPolicy {
 
   factory DiagnosticSettingMetricRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingMetricRetentionPolicy(
-      days: map['days'] == null ? null : map['days'] as int,
-      enabled: map['enabled'] as bool,
+      days: map['days'] == null ? null : (map['days'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

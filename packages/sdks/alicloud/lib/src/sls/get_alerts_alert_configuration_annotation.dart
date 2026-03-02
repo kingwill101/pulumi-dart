@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertsAlertConfigurationAnnotation {
   /// Field name.
-  final String key;
+  final pulumi.Input<String> key;
   /// Field value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAlertsAlertConfigurationAnnotation].
   /// [key] Field name.
@@ -24,8 +25,8 @@ class GetAlertsAlertConfigurationAnnotation {
 
   factory GetAlertsAlertConfigurationAnnotation.fromMap(Map<String, dynamic> map) {
     return GetAlertsAlertConfigurationAnnotation(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetPermissionBindingArgs {
   /// [permissionBindingName] Name of the permission binding.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   GetPermissionBindingArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> permissionBindingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      permissionBindingName = pulumi.Input.asInput<String>(permissionBindingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.namespaceName,
+    required this.permissionBindingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPermissionBindingArgs {
 
   factory GetPermissionBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionBindingArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      permissionBindingName: pulumi.Output.create<String>(map['permissionBindingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      permissionBindingName: (map['permissionBindingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

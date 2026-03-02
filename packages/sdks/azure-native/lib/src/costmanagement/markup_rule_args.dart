@@ -38,25 +38,16 @@ class MarkupRuleArgs {
   /// [percentage] The markup percentage of the rule.
   /// [startDate] Starting date of the markup rule.
   MarkupRuleArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> billingProfileId,
-    required pulumi.Output<CustomerMetadata> customerDetails,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? endDate,
-    pulumi.Output<String>? name,
-    required pulumi.Output<double> percentage,
-    required pulumi.Output<String> startDate,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      billingProfileId = pulumi.Input.asInput<String>(billingProfileId),
-      customerDetails = pulumi.Input.asInput<CustomerMetadata>(customerDetails),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      percentage = pulumi.Input.asInput<double>(percentage),
-      startDate = pulumi.Input.asInput<String>(startDate);
+    required this.billingAccountId,
+    required this.billingProfileId,
+    required this.customerDetails,
+    this.description,
+    this.eTag,
+    this.endDate,
+    this.name,
+    required this.percentage,
+    required this.startDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class MarkupRuleArgs {
 
   factory MarkupRuleArgs.fromMap(Map<String, dynamic> map) {
     return MarkupRuleArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      billingProfileId: pulumi.Output.create<String>(map['billingProfileId'] as String),
-      customerDetails: pulumi.Output.create<CustomerMetadata>(CustomerMetadata.fromMap((map['customerDetails'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      endDate: map['endDate'] == null ? null : pulumi.Output.create<String>(map['endDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      percentage: pulumi.Output.create<double>(map['percentage'] as double),
-      startDate: pulumi.Output.create<String>(map['startDate'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      billingProfileId: (map['billingProfileId'] as String).input(),
+      customerDetails: (CustomerMetadata.fromMap((map['customerDetails'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      percentage: (map['percentage'] as double).input(),
+      startDate: (map['startDate'] as String).input(),
     );
   }
 }

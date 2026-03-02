@@ -27,17 +27,12 @@ class RouterGrantAssociationArgs {
   /// [instanceRegionId] The ID of the region where the authorized network instance is located.
   /// [instanceType] The type of the network instance. Value:
   RouterGrantAssociationArgs({
-    required pulumi.Output<String> ecrId,
-    required pulumi.Output<int> ecrOwnerAliUid,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> instanceRegionId,
-    required pulumi.Output<String> instanceType,
-  }) :
-      ecrId = pulumi.Input.asInput<String>(ecrId),
-      ecrOwnerAliUid = pulumi.Input.asInput<int>(ecrOwnerAliUid),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceRegionId = pulumi.Input.asInput<String>(instanceRegionId),
-      instanceType = pulumi.Input.asInput<String>(instanceType);
+    required this.ecrId,
+    required this.ecrOwnerAliUid,
+    required this.instanceId,
+    required this.instanceRegionId,
+    required this.instanceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class RouterGrantAssociationArgs {
 
   factory RouterGrantAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouterGrantAssociationArgs(
-      ecrId: pulumi.Output.create<String>(map['ecrId'] as String),
-      ecrOwnerAliUid: pulumi.Output.create<int>(map['ecrOwnerAliUid'] as int),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceRegionId: pulumi.Output.create<String>(map['instanceRegionId'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
+      ecrId: (map['ecrId'] as String).input(),
+      ecrOwnerAliUid: (map['ecrOwnerAliUid'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceRegionId: (map['instanceRegionId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

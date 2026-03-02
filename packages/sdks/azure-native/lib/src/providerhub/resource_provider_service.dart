@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource provider service.
 class ResourceProviderService {
   /// The service name.
-  final String? serviceName;
+  final pulumi.Input<String>? serviceName;
   /// The status.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ResourceProviderService].
   /// [serviceName] The service name.
@@ -25,8 +26,8 @@ class ResourceProviderService {
 
   factory ResourceProviderService.fromMap(Map<String, dynamic> map) {
     return ResourceProviderService(
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

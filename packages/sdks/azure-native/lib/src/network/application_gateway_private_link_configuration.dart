@@ -6,11 +6,11 @@ import 'application_gateway_private_link_ip_configuration.dart';
 /// Private Link Configuration on an application gateway.
 class ApplicationGatewayPrivateLinkConfiguration {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// An array of application gateway private link ip configurations.
-  final List<ApplicationGatewayPrivateLinkIpConfiguration>? ipConfigurations;
+  final pulumi.Input<List<ApplicationGatewayPrivateLinkIpConfiguration>>? ipConfigurations;
   /// Name of the private link configuration that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ApplicationGatewayPrivateLinkConfiguration].
   /// [id] Resource ID.
@@ -25,16 +25,16 @@ class ApplicationGatewayPrivateLinkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<ApplicationGatewayPrivateLinkIpConfiguration, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayPrivateLinkIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayPrivateLinkIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
     };
   }
 
   factory ApplicationGatewayPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPrivateLinkConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<ApplicationGatewayPrivateLinkIpConfiguration>(map['ipConfigurations'], (value) => ApplicationGatewayPrivateLinkIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPrivateLinkIpConfiguration>(map['ipConfigurations'], (value) => ApplicationGatewayPrivateLinkIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

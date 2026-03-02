@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_upsolver_s3_output_format_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
-  final String bucketName;
-  final String? bucketPrefix;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig s3OutputFormatConfig;
+  final pulumi.Input<String> bucketName;
+  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig> s3OutputFormatConfig;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver].
   /// [bucketName] Required.
@@ -21,15 +22,15 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
     return <String, dynamic>{
       'bucketName': bucketName,
       'bucketPrefix': ?bucketPrefix,
-      's3OutputFormatConfig': s3OutputFormatConfig.toMap(),
+      's3OutputFormatConfig': pulumi.Input.mapInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig, Map<String, dynamic>>(s3OutputFormatConfig, (value) => value.toMap()),
     };
   }
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver(
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] == null ? null : map['bucketPrefix'] as String,
-      s3OutputFormatConfig: FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig'] as Map).cast<String, dynamic>()),
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      s3OutputFormatConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

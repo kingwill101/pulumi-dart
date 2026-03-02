@@ -25,17 +25,12 @@ class PolicyAttachmentArgs {
   /// [principalType] The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   /// [resourceGroupId] The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
   PolicyAttachmentArgs({
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> policyType,
-    required pulumi.Output<String> principalName,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> resourceGroupId,
-  }) :
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyType = pulumi.Input.asInput<String>(policyType),
-      principalName = pulumi.Input.asInput<String>(principalName),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      resourceGroupId = pulumi.Input.asInput<String>(resourceGroupId);
+    required this.policyName,
+    required this.policyType,
+    required this.principalName,
+    required this.principalType,
+    required this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: pulumi.Output.create<String>(map['policyType'] as String),
-      principalName: pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupId: pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
+      principalName: (map['principalName'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
     );
   }
 }

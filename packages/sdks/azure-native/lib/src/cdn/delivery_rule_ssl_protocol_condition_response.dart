@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_protocol_match_condition_parameters_response.dart';
 
 /// Defines the SslProtocol condition for the delivery rule.
 class DeliveryRuleSslProtocolConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'SslProtocol'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final SslProtocolMatchConditionParametersResponse parameters;
+  final pulumi.Input<SslProtocolMatchConditionParametersResponse> parameters;
 
   /// Creates a new [DeliveryRuleSslProtocolConditionResponse].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleSslProtocolConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<SslProtocolMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleSslProtocolConditionResponse.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleSslProtocolConditionResponse(
-      name: map['name'] as String,
-      parameters: SslProtocolMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (SslProtocolMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,19 +27,13 @@ class SubscriptionPubsubV1beta2Args {
   /// [subscriptionId] Required.
   /// [topic] The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.
   SubscriptionPubsubV1beta2Args({
-    pulumi.Output<int>? ackDeadlineSeconds,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<PushConfigPubsubV1beta2>? pushConfig,
-    required pulumi.Output<String> subscriptionId,
-    pulumi.Output<String>? topic,
-  }) :
-      ackDeadlineSeconds = pulumi.Input.asOptionalInput<int>(ackDeadlineSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pushConfig = pulumi.Input.asOptionalInput<PushConfigPubsubV1beta2>(pushConfig),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.ackDeadlineSeconds,
+    this.name,
+    this.project,
+    this.pushConfig,
+    required this.subscriptionId,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class SubscriptionPubsubV1beta2Args {
 
   factory SubscriptionPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return SubscriptionPubsubV1beta2Args(
-      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : pulumi.Output.create<int>(map['ackDeadlineSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pushConfig: map['pushConfig'] == null ? null : pulumi.Output.create<PushConfigPubsubV1beta2>(PushConfigPubsubV1beta2.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta2.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

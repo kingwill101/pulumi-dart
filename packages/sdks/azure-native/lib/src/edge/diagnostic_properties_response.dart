@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a Diagnostic resource.
 class DiagnosticPropertiesResponse {
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DiagnosticPropertiesResponse].
   /// [provisioningState] The status of the last operation.
@@ -20,7 +21,7 @@ class DiagnosticPropertiesResponse {
 
   factory DiagnosticPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

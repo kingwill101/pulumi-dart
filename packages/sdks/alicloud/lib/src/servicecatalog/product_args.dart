@@ -22,15 +22,11 @@ class ProductArgs {
   /// [productType] The type of the product
   /// [providerName] The provider name of the product
   ProductArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> productName,
-    required pulumi.Output<String> productType,
-    required pulumi.Output<String> providerName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      productName = pulumi.Input.asInput<String>(productName),
-      productType = pulumi.Input.asInput<String>(productType),
-      providerName = pulumi.Input.asInput<String>(providerName);
+    this.description,
+    required this.productName,
+    required this.productType,
+    required this.providerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      productType: pulumi.Output.create<String>(map['productType'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      productName: (map['productName'] as String).input(),
+      productType: (map['productType'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

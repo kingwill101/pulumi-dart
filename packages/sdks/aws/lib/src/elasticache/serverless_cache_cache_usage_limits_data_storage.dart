@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessCacheCacheUsageLimitsDataStorage {
   /// The upper limit for data storage the cache is set to use. Must be between 1 and 5,000.
-  final int? maximum;
+  final pulumi.Input<int>? maximum;
   /// The lower limit for data storage the cache is set to use. Must be between 1 and 5,000.
-  final int? minimum;
+  final pulumi.Input<int>? minimum;
   /// The unit that the storage is measured in, in GB.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [ServerlessCacheCacheUsageLimitsDataStorage].
   /// [maximum] The upper limit for data storage the cache is set to use. Must be between 1 and 5,000.
@@ -29,9 +30,9 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
 
   factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: map['maximum'] == null ? null : map['maximum'] as int,
-      minimum: map['minimum'] == null ? null : map['minimum'] as int,
-      unit: map['unit'] as String,
+      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum'] as int).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

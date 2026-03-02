@@ -32,21 +32,14 @@ class FrontdoorRuleState {
   /// [name] The name which should be used for this Front Door Rule. Possible values must be between 1 and 260 characters in length, begin with a letter and may contain only letters and numbers. Changing this forces a new Front Door Rule to be created.
   /// [order] The order in which the rules will be applied for the Front Door Endpoint. The order value should be sequential and begin at `1`(e.g. `1`, `2`, `3`...). A Front Door Rule with a lesser order value will be applied before a rule with a greater order value.
   FrontdoorRuleState({
-    pulumi.Output<FrontdoorRuleActions>? actions,
-    pulumi.Output<String>? behaviorOnMatch,
-    pulumi.Output<String>? cdnFrontdoorRuleSetId,
-    pulumi.Output<String>? cdnFrontdoorRuleSetName,
-    pulumi.Output<FrontdoorRuleConditions>? conditions,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? order,
-  }) :
-      actions = pulumi.Input.asOptionalInput<FrontdoorRuleActions>(actions),
-      behaviorOnMatch = pulumi.Input.asOptionalInput<String>(behaviorOnMatch),
-      cdnFrontdoorRuleSetId = pulumi.Input.asOptionalInput<String>(cdnFrontdoorRuleSetId),
-      cdnFrontdoorRuleSetName = pulumi.Input.asOptionalInput<String>(cdnFrontdoorRuleSetName),
-      conditions = pulumi.Input.asOptionalInput<FrontdoorRuleConditions>(conditions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      order = pulumi.Input.asOptionalInput<int>(order);
+    this.actions,
+    this.behaviorOnMatch,
+    this.cdnFrontdoorRuleSetId,
+    this.cdnFrontdoorRuleSetName,
+    this.conditions,
+    this.name,
+    this.order,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class FrontdoorRuleState {
 
   factory FrontdoorRuleState.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<FrontdoorRuleActions>(FrontdoorRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>())),
-      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : pulumi.Output.create<String>(map['behaviorOnMatch'] as String),
-      cdnFrontdoorRuleSetId: map['cdnFrontdoorRuleSetId'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorRuleSetId'] as String),
-      cdnFrontdoorRuleSetName: map['cdnFrontdoorRuleSetName'] == null ? null : pulumi.Output.create<String>(map['cdnFrontdoorRuleSetName'] as String),
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<FrontdoorRuleConditions>(FrontdoorRuleConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      order: map['order'] == null ? null : pulumi.Output.create<int>(map['order'] as int),
+      actions: map['actions'] == null ? null : (FrontdoorRuleActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
+      behaviorOnMatch: map['behaviorOnMatch'] == null ? null : (map['behaviorOnMatch'] as String).input(),
+      cdnFrontdoorRuleSetId: map['cdnFrontdoorRuleSetId'] == null ? null : (map['cdnFrontdoorRuleSetId'] as String).input(),
+      cdnFrontdoorRuleSetName: map['cdnFrontdoorRuleSetName'] == null ? null : (map['cdnFrontdoorRuleSetName'] as String).input(),
+      conditions: map['conditions'] == null ? null : (FrontdoorRuleConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
     );
   }
 }

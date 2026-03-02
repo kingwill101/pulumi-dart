@@ -24,15 +24,11 @@ class LicationLoadBalancerSubnetAssociationArgs {
   /// [subnetId] The ID of the subnet which the Application Gateway for Containers associated to.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Association.
   LicationLoadBalancerSubnetAssociationArgs({
-    required pulumi.Output<String> applicationLoadBalancerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationLoadBalancerId = pulumi.Input.asInput<String>(applicationLoadBalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationLoadBalancerId,
+    this.name,
+    required this.subnetId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class LicationLoadBalancerSubnetAssociationArgs {
 
   factory LicationLoadBalancerSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerSubnetAssociationArgs(
-      applicationLoadBalancerId: pulumi.Output.create<String>(map['applicationLoadBalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationLoadBalancerId: (map['applicationLoadBalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

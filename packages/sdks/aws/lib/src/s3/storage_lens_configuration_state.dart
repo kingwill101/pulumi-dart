@@ -29,21 +29,14 @@ class StorageLensConfigurationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   StorageLensConfigurationState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? region,
-    pulumi.Output<StorageLensConfigurationStorageLensConfiguration>? storageLensConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageLensConfiguration = pulumi.Input.asOptionalInput<StorageLensConfigurationStorageLensConfiguration>(storageLensConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accountId,
+    this.arn,
+    this.configId,
+    this.region,
+    this.storageLensConfiguration,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class StorageLensConfigurationState {
 
   factory StorageLensConfigurationState.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageLensConfiguration: map['storageLensConfiguration'] == null ? null : pulumi.Output.create<StorageLensConfigurationStorageLensConfiguration>(StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageLensConfiguration: map['storageLensConfiguration'] == null ? null : (StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

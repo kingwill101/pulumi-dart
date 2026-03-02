@@ -14,11 +14,9 @@ class GetGroupArgs {
   /// [groupId] Required.
   /// [project] Optional.
   GetGroupArgs({
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? project,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.groupId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      groupId: (map['groupId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

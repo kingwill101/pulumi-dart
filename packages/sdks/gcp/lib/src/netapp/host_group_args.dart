@@ -42,23 +42,15 @@ class HostGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] Type of the host group.
   HostGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<String>> hosts,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> osType,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hosts = pulumi.Input.asInput<List<String>>(hosts),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osType = pulumi.Input.asInput<String>(osType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asInput<String>(type);
+    this.description,
+    required this.hosts,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.osType,
+    this.project,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class HostGroupArgs {
 
   factory HostGroupArgs.fromMap(Map<String, dynamic> map) {
     return HostGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hosts: pulumi.Output.create<List<String>>((map['hosts'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osType: pulumi.Output.create<String>(map['osType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hosts: ((map['hosts'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

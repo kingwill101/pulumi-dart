@@ -28,19 +28,13 @@ class SenderUsernameArgs {
   /// [senderUsername] The valid sender Username.
   /// [username] A sender senderUsername to be used when sending emails.
   SenderUsernameArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> emailServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? senderUsername,
-    required pulumi.Output<String> username,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      senderUsername = pulumi.Input.asOptionalInput<String>(senderUsername),
-      username = pulumi.Input.asInput<String>(username);
+    this.displayName,
+    required this.domainName,
+    required this.emailServiceName,
+    required this.resourceGroupName,
+    this.senderUsername,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SenderUsernameArgs {
 
   factory SenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return SenderUsernameArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      senderUsername: map['senderUsername'] == null ? null : pulumi.Output.create<String>(map['senderUsername'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      senderUsername: map['senderUsername'] == null ? null : (map['senderUsername'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

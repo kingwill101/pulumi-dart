@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountDeletionCheckTaskNotAllowReason {
   /// The ID of the check item.
-  final String checkId;
+  final pulumi.Input<String> checkId;
   /// The name of the cloud service to which the check item belongs.
-  final String checkName;
+  final pulumi.Input<String> checkName;
   /// The description of the check item.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetAccountDeletionCheckTaskNotAllowReason].
   /// [checkId] The ID of the check item.
@@ -29,9 +30,9 @@ class GetAccountDeletionCheckTaskNotAllowReason {
 
   factory GetAccountDeletionCheckTaskNotAllowReason.fromMap(Map<String, dynamic> map) {
     return GetAccountDeletionCheckTaskNotAllowReason(
-      checkId: map['checkId'] as String,
-      checkName: map['checkName'] as String,
-      description: map['description'] as String,
+      checkId: (map['checkId'] as String).input(),
+      checkName: (map['checkName'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

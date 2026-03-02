@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'existing_log_group.dart';
 import 'log_group.dart';
 
 /// Log group with default setup unless explicitly skipped.
 class DefaultLogGroup {
   /// Arguments to use instead of the default values during creation.
-  final LogGroup? args;
+  final pulumi.Input<LogGroup>? args;
   /// Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  final ExistingLogGroup? existing;
+  final pulumi.Input<ExistingLogGroup>? existing;
   /// Skip creation of the log group.
-  final bool? skip;
+  final pulumi.Input<bool>? skip;
 
   /// Creates a new [DefaultLogGroup].
   /// [args] Arguments to use instead of the default values during creation.
@@ -24,17 +25,17 @@ class DefaultLogGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'args': ?args == null ? null : args!.toMap(),
-      'existing': ?existing == null ? null : existing!.toMap(),
+      'args': ?pulumi.Input.mapOptionalInputValue<LogGroup, Map<String, dynamic>>(args, (value) => value.toMap()),
+      'existing': ?pulumi.Input.mapOptionalInputValue<ExistingLogGroup, Map<String, dynamic>>(existing, (value) => value.toMap()),
       'skip': ?skip,
     };
   }
 
   factory DefaultLogGroup.fromMap(Map<String, dynamic> map) {
     return DefaultLogGroup(
-      args: map['args'] == null ? null : LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>()),
-      existing: map['existing'] == null ? null : ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>()),
-      skip: map['skip'] == null ? null : map['skip'] as bool,
+      args: map['args'] == null ? null : (LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
+      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
     );
   }
 }

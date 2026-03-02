@@ -24,15 +24,11 @@ class TagOptionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] Tag option value.
   TagOptionArgs({
-    pulumi.Output<bool>? active,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> value,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      key = pulumi.Input.asInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      value = pulumi.Input.asInput<String>(value);
+    this.active,
+    required this.key,
+    this.region,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class TagOptionArgs {
 
   factory TagOptionArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      key: (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class TopicAuthorizationRuleArgs {
   /// [send] Grants send access to this this Authorization Rule. Defaults to `false`.
   /// [topicId] Specifies the ID of the ServiceBus Topic. Changing this forces a new resource to be created.
   TopicAuthorizationRuleArgs({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? send,
-    required pulumi.Output<String> topicId,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      send = pulumi.Input.asOptionalInput<bool>(send),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    this.listen,
+    this.manage,
+    this.name,
+    this.send,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class TopicAuthorizationRuleArgs {
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

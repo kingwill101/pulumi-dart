@@ -42,27 +42,17 @@ class GetZonesArgs {
   /// [resourceGroupId] The ID of the resource group to which the zone belongs.
   /// [searchMode] The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
   GetZonesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? queryRegionId,
-    pulumi.Output<String>? queryVpcId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? searchMode,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      queryRegionId = pulumi.Input.asOptionalInput<String>(queryRegionId),
-      queryVpcId = pulumi.Input.asOptionalInput<String>(queryVpcId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      searchMode = pulumi.Input.asOptionalInput<String>(searchMode);
+    this.enableDetails,
+    this.ids,
+    this.keyword,
+    this.lang,
+    this.nameRegex,
+    this.outputFile,
+    this.queryRegionId,
+    this.queryVpcId,
+    this.resourceGroupId,
+    this.searchMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      queryRegionId: map['queryRegionId'] == null ? null : pulumi.Output.create<String>(map['queryRegionId'] as String),
-      queryVpcId: map['queryVpcId'] == null ? null : pulumi.Output.create<String>(map['queryVpcId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      searchMode: map['searchMode'] == null ? null : pulumi.Output.create<String>(map['searchMode'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      queryRegionId: map['queryRegionId'] == null ? null : (map['queryRegionId'] as String).input(),
+      queryVpcId: map['queryVpcId'] == null ? null : (map['queryVpcId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      searchMode: map['searchMode'] == null ? null : (map['searchMode'] as String).input(),
     );
   }
 }

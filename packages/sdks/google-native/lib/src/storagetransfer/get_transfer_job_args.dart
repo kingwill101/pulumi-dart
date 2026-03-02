@@ -14,11 +14,9 @@ class GetTransferJobArgs {
   /// [projectId] Required.
   /// [transferJobId] Required.
   GetTransferJobArgs({
-    required pulumi.Output<String> projectId,
-    required pulumi.Output<String> transferJobId,
-  }) :
-      projectId = pulumi.Input.asInput<String>(projectId),
-      transferJobId = pulumi.Input.asInput<String>(transferJobId);
+    required this.projectId,
+    required this.transferJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetTransferJobArgs {
 
   factory GetTransferJobArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferJobArgs(
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      transferJobId: pulumi.Output.create<String>(map['transferJobId'] as String),
+      projectId: (map['projectId'] as String).input(),
+      transferJobId: (map['transferJobId'] as String).input(),
     );
   }
 }

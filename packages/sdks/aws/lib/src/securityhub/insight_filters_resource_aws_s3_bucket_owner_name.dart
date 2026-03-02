@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersResourceAwsS3BucketOwnerName {
-  final String comparison;
-  final String value;
+  final pulumi.Input<String> comparison;
+  final pulumi.Input<String> value;
 
   /// Creates a new [InsightFiltersResourceAwsS3BucketOwnerName].
   /// [comparison] Required.
@@ -22,8 +23,8 @@ class InsightFiltersResourceAwsS3BucketOwnerName {
 
   factory InsightFiltersResourceAwsS3BucketOwnerName.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsS3BucketOwnerName(
-      comparison: map['comparison'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

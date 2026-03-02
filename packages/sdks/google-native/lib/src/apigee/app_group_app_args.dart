@@ -42,29 +42,18 @@ class AppGroupAppArgs {
   /// [scopes] Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
   /// [status] Status of the App. Valid values include `approved` or `revoked`.
   AppGroupAppArgs({
-    pulumi.Output<List<String>>? apiProducts,
-    pulumi.Output<String>? appGroup,
-    pulumi.Output<String>? appId,
-    required pulumi.Output<String> appgroupId,
-    pulumi.Output<List<GoogleCloudApigeeV1Attribute>>? attributes,
-    pulumi.Output<String>? callbackUrl,
-    pulumi.Output<String>? keyExpiresIn,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<String>? status,
-  }) :
-      apiProducts = pulumi.Input.asOptionalInput<List<String>>(apiProducts),
-      appGroup = pulumi.Input.asOptionalInput<String>(appGroup),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      appgroupId = pulumi.Input.asInput<String>(appgroupId),
-      attributes = pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1Attribute>>(attributes),
-      callbackUrl = pulumi.Input.asOptionalInput<String>(callbackUrl),
-      keyExpiresIn = pulumi.Input.asOptionalInput<String>(keyExpiresIn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.apiProducts,
+    this.appGroup,
+    this.appId,
+    required this.appgroupId,
+    this.attributes,
+    this.callbackUrl,
+    this.keyExpiresIn,
+    this.name,
+    required this.organizationId,
+    this.scopes,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class AppGroupAppArgs {
 
   factory AppGroupAppArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupAppArgs(
-      apiProducts: map['apiProducts'] == null ? null : pulumi.Output.create<List<String>>((map['apiProducts'] as List).cast<String>()),
-      appGroup: map['appGroup'] == null ? null : pulumi.Output.create<String>(map['appGroup'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      appgroupId: pulumi.Output.create<String>(map['appgroupId'] as String),
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<GoogleCloudApigeeV1Attribute>>(pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))),
-      callbackUrl: map['callbackUrl'] == null ? null : pulumi.Output.create<String>(map['callbackUrl'] as String),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : pulumi.Output.create<String>(map['keyExpiresIn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
+      appGroup: map['appGroup'] == null ? null : (map['appGroup'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appgroupId: (map['appgroupId'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
+      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

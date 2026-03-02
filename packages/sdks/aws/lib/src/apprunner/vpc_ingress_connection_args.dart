@@ -26,17 +26,12 @@ class VpcIngressConnectionArgs {
   /// [serviceArn] The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VpcIngressConnectionArgs({
-    required pulumi.Output<VpcIngressConnectionIngressVpcConfiguration> ingressVpcConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ingressVpcConfiguration = pulumi.Input.asInput<VpcIngressConnectionIngressVpcConfiguration>(ingressVpcConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asInput<String>(serviceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.ingressVpcConfiguration,
+    this.name,
+    this.region,
+    required this.serviceArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class VpcIngressConnectionArgs {
 
   factory VpcIngressConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcIngressConnectionArgs(
-      ingressVpcConfiguration: pulumi.Output.create<VpcIngressConnectionIngressVpcConfiguration>(VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: pulumi.Output.create<String>(map['serviceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ingressVpcConfiguration: (VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: (map['serviceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

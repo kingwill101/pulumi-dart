@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Broker Diagnostic Self check properties
 class SelfCheckResponse {
   /// The self check interval.
-  final int? intervalSeconds;
+  final pulumi.Input<int>? intervalSeconds;
   /// The toggle to enable/disable self check.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The timeout for self check.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [SelfCheckResponse].
   /// [intervalSeconds] The self check interval.
@@ -30,9 +31,9 @@ class SelfCheckResponse {
 
   factory SelfCheckResponse.fromMap(Map<String, dynamic> map) {
     return SelfCheckResponse(
-      intervalSeconds: map['intervalSeconds'] == null ? null : map['intervalSeconds'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

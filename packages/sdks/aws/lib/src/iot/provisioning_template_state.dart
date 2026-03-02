@@ -44,31 +44,19 @@ class ProvisioningTemplateState {
   /// [templateBody] The JSON formatted contents of the fleet provisioning template.
   /// [type] The type you define in a provisioning template.
   ProvisioningTemplateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? defaultVersionId,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<ProvisioningTemplatePreProvisioningHook>? preProvisioningHook,
-    pulumi.Output<String>? provisioningRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? templateBody,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      defaultVersionId = pulumi.Input.asOptionalInput<int>(defaultVersionId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preProvisioningHook = pulumi.Input.asOptionalInput<ProvisioningTemplatePreProvisioningHook>(preProvisioningHook),
-      provisioningRoleArn = pulumi.Input.asOptionalInput<String>(provisioningRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      templateBody = pulumi.Input.asOptionalInput<String>(templateBody),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.defaultVersionId,
+    this.description,
+    this.enabled,
+    this.name,
+    this.preProvisioningHook,
+    this.provisioningRoleArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.templateBody,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ProvisioningTemplateState {
 
   factory ProvisioningTemplateState.fromMap(Map<String, dynamic> map) {
     return ProvisioningTemplateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      defaultVersionId: map['defaultVersionId'] == null ? null : pulumi.Output.create<int>(map['defaultVersionId'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preProvisioningHook: map['preProvisioningHook'] == null ? null : pulumi.Output.create<ProvisioningTemplatePreProvisioningHook>(ProvisioningTemplatePreProvisioningHook.fromMap((map['preProvisioningHook'] as Map).cast<String, dynamic>())),
-      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : pulumi.Output.create<String>(map['provisioningRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      templateBody: map['templateBody'] == null ? null : pulumi.Output.create<String>(map['templateBody'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      defaultVersionId: map['defaultVersionId'] == null ? null : (map['defaultVersionId'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preProvisioningHook: map['preProvisioningHook'] == null ? null : (ProvisioningTemplatePreProvisioningHook.fromMap((map['preProvisioningHook'] as Map).cast<String, dynamic>())).input(),
+      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : (map['provisioningRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

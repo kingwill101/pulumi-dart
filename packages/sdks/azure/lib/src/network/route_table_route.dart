@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteTableRoute {
   /// The destination to which the route applies. Can be CIDR (such as `10.1.0.0/16`) or [Azure Service Tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) (such as `ApiManagement`, `AzureBackup` or `AzureMonitor`) format.
-  final String addressPrefix;
+  final pulumi.Input<String> addressPrefix;
   /// The name of the route.
-  final String name;
+  final pulumi.Input<String> name;
   /// Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is `VirtualAppliance`.
-  final String? nextHopInIpAddress;
+  final pulumi.Input<String>? nextHopInIpAddress;
   /// The type of Azure hop the packet should be sent to. Possible values are `VirtualNetworkGateway`, `VnetLocal`, `Internet`, `VirtualAppliance` and `None`.
-  final String nextHopType;
+  final pulumi.Input<String> nextHopType;
 
   /// Creates a new [RouteTableRoute].
   /// [addressPrefix] The destination to which the route applies. Can be CIDR (such as `10.1.0.0/16`) or [Azure Service Tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) (such as `ApiManagement`, `AzureBackup` or `AzureMonitor`) format.
@@ -34,10 +35,10 @@ class RouteTableRoute {
 
   factory RouteTableRoute.fromMap(Map<String, dynamic> map) {
     return RouteTableRoute(
-      addressPrefix: map['addressPrefix'] as String,
-      name: map['name'] as String,
-      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : map['nextHopInIpAddress'] as String,
-      nextHopType: map['nextHopType'] as String,
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      name: (map['name'] as String).input(),
+      nextHopInIpAddress: map['nextHopInIpAddress'] == null ? null : (map['nextHopInIpAddress'] as String).input(),
+      nextHopType: (map['nextHopType'] as String).input(),
     );
   }
 }

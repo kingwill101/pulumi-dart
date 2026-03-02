@@ -19,13 +19,10 @@ class GetExpressRouteCircuitAuthorizationArgs {
   /// [circuitName] The name of the express route circuit.
   /// [resourceGroupName] The name of the resource group.
   GetExpressRouteCircuitAuthorizationArgs({
-    required pulumi.Output<String> authorizationName,
-    required pulumi.Output<String> circuitName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationName = pulumi.Input.asInput<String>(authorizationName),
-      circuitName = pulumi.Input.asInput<String>(circuitName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authorizationName,
+    required this.circuitName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExpressRouteCircuitAuthorizationArgs {
 
   factory GetExpressRouteCircuitAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitAuthorizationArgs(
-      authorizationName: pulumi.Output.create<String>(map['authorizationName'] as String),
-      circuitName: pulumi.Output.create<String>(map['circuitName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationName: (map['authorizationName'] as String).input(),
+      circuitName: (map['circuitName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

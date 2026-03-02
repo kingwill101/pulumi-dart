@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig {
   /// A flag that indicates whether additional CloudWatch metrics are enabled for a given CloudFront distribution. Valid values are `Enabled` and `Disabled`. See below.
-  final String realtimeMetricsSubscriptionStatus;
+  final pulumi.Input<String> realtimeMetricsSubscriptionStatus;
 
   /// Creates a new [MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig].
   /// [realtimeMetricsSubscriptionStatus] A flag that indicates whether additional CloudWatch metrics are enabled for a given CloudFront distribution. Valid values are `Enabled` and `Disabled`. See below.
@@ -19,7 +20,7 @@ class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionCon
 
   factory MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig(
-      realtimeMetricsSubscriptionStatus: map['realtimeMetricsSubscriptionStatus'] as String,
+      realtimeMetricsSubscriptionStatus: (map['realtimeMetricsSubscriptionStatus'] as String).input(),
     );
   }
 }

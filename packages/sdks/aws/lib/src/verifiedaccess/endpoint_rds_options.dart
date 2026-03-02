@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointRdsOptions {
-  final int? port;
-  final String? protocol;
-  final String? rdsDbClusterArn;
-  final String? rdsDbInstanceArn;
-  final String? rdsDbProxyArn;
-  final String? rdsEndpoint;
-  final List<String>? subnetIds;
+  final pulumi.Input<int>? port;
+  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String>? rdsDbClusterArn;
+  final pulumi.Input<String>? rdsDbInstanceArn;
+  final pulumi.Input<String>? rdsDbProxyArn;
+  final pulumi.Input<String>? rdsEndpoint;
+  final pulumi.Input<List<String>>? subnetIds;
 
   /// Creates a new [EndpointRdsOptions].
   /// [port] Optional.
@@ -42,13 +43,13 @@ class EndpointRdsOptions {
 
   factory EndpointRdsOptions.fromMap(Map<String, dynamic> map) {
     return EndpointRdsOptions(
-      port: map['port'] == null ? null : map['port'] as int,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      rdsDbClusterArn: map['rdsDbClusterArn'] == null ? null : map['rdsDbClusterArn'] as String,
-      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null ? null : map['rdsDbInstanceArn'] as String,
-      rdsDbProxyArn: map['rdsDbProxyArn'] == null ? null : map['rdsDbProxyArn'] as String,
-      rdsEndpoint: map['rdsEndpoint'] == null ? null : map['rdsEndpoint'] as String,
-      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      rdsDbClusterArn: map['rdsDbClusterArn'] == null ? null : (map['rdsDbClusterArn'] as String).input(),
+      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null ? null : (map['rdsDbInstanceArn'] as String).input(),
+      rdsDbProxyArn: map['rdsDbProxyArn'] == null ? null : (map['rdsDbProxyArn'] as String).input(),
+      rdsEndpoint: map['rdsEndpoint'] == null ? null : (map['rdsEndpoint'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }
 }

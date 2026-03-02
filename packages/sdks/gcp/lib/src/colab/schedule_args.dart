@@ -46,29 +46,18 @@ class ScheduleArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [startTime] The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
   ScheduleArgs({
-    pulumi.Output<bool>? allowQueueing,
-    required pulumi.Output<ScheduleCreateNotebookExecutionJobRequest> createNotebookExecutionJobRequest,
-    required pulumi.Output<String> cron,
-    pulumi.Output<String>? desiredState,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? endTime,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> maxConcurrentRunCount,
-    pulumi.Output<String>? maxRunCount,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? startTime,
-  }) :
-      allowQueueing = pulumi.Input.asOptionalInput<bool>(allowQueueing),
-      createNotebookExecutionJobRequest = pulumi.Input.asInput<ScheduleCreateNotebookExecutionJobRequest>(createNotebookExecutionJobRequest),
-      cron = pulumi.Input.asInput<String>(cron),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      location = pulumi.Input.asInput<String>(location),
-      maxConcurrentRunCount = pulumi.Input.asInput<String>(maxConcurrentRunCount),
-      maxRunCount = pulumi.Input.asOptionalInput<String>(maxRunCount),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.allowQueueing,
+    required this.createNotebookExecutionJobRequest,
+    required this.cron,
+    this.desiredState,
+    required this.displayName,
+    this.endTime,
+    required this.location,
+    required this.maxConcurrentRunCount,
+    this.maxRunCount,
+    this.project,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      allowQueueing: map['allowQueueing'] == null ? null : pulumi.Output.create<bool>(map['allowQueueing'] as bool),
-      createNotebookExecutionJobRequest: pulumi.Output.create<ScheduleCreateNotebookExecutionJobRequest>(ScheduleCreateNotebookExecutionJobRequest.fromMap((map['createNotebookExecutionJobRequest'] as Map).cast<String, dynamic>())),
-      cron: pulumi.Output.create<String>(map['cron'] as String),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      maxConcurrentRunCount: pulumi.Output.create<String>(map['maxConcurrentRunCount'] as String),
-      maxRunCount: map['maxRunCount'] == null ? null : pulumi.Output.create<String>(map['maxRunCount'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing'] as bool).input(),
+      createNotebookExecutionJobRequest: (ScheduleCreateNotebookExecutionJobRequest.fromMap((map['createNotebookExecutionJobRequest'] as Map).cast<String, dynamic>())).input(),
+      cron: (map['cron'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      location: (map['location'] as String).input(),
+      maxConcurrentRunCount: (map['maxConcurrentRunCount'] as String).input(),
+      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

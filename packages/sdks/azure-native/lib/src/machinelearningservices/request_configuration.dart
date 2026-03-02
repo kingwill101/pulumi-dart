@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scoring requests configuration.
 class RequestConfiguration {
   /// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
-  final int? maxConcurrentRequestsPerInstance;
+  final pulumi.Input<int>? maxConcurrentRequestsPerInstance;
   /// The scoring timeout in ISO 8601 format.
   /// Defaults to 5000ms.
-  final String? requestTimeout;
+  final pulumi.Input<String>? requestTimeout;
 
   /// Creates a new [RequestConfiguration].
   /// [maxConcurrentRequestsPerInstance] The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
@@ -26,8 +27,8 @@ class RequestConfiguration {
 
   factory RequestConfiguration.fromMap(Map<String, dynamic> map) {
     return RequestConfiguration(
-      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : map['maxConcurrentRequestsPerInstance'] as int,
-      requestTimeout: map['requestTimeout'] == null ? null : map['requestTimeout'] as String,
+      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : (map['maxConcurrentRequestsPerInstance'] as int).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as String).input(),
     );
   }
 }

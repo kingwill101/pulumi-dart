@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetDelimitedTextAzureBlobFsLocation {
   /// Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicFileSystemEnabled;
+  final pulumi.Input<bool>? dynamicFileSystemEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicFilenameEnabled;
+  final pulumi.Input<bool>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicPathEnabled;
+  final pulumi.Input<bool>? dynamicPathEnabled;
   /// The storage data lake gen2 file system on the Azure Blob Storage Account hosting the file.
-  final String? fileSystem;
+  final pulumi.Input<String>? fileSystem;
   /// The filename of the file.
-  final String? filename;
+  final pulumi.Input<String>? filename;
   /// The folder path to the file.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [DatasetDelimitedTextAzureBlobFsLocation].
   /// [dynamicFileSystemEnabled] Is the `file_system` using dynamic expression, function or system variables? Defaults to `false`.
@@ -44,12 +45,12 @@ class DatasetDelimitedTextAzureBlobFsLocation {
 
   factory DatasetDelimitedTextAzureBlobFsLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextAzureBlobFsLocation(
-      dynamicFileSystemEnabled: map['dynamicFileSystemEnabled'] == null ? null : map['dynamicFileSystemEnabled'] as bool,
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : map['dynamicFilenameEnabled'] as bool,
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : map['dynamicPathEnabled'] as bool,
-      fileSystem: map['fileSystem'] == null ? null : map['fileSystem'] as String,
-      filename: map['filename'] == null ? null : map['filename'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      dynamicFileSystemEnabled: map['dynamicFileSystemEnabled'] == null ? null : (map['dynamicFileSystemEnabled'] as bool).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

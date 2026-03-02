@@ -8,42 +8,42 @@ import 'parameter_specification.dart';
 /// Linked service for Teradata data source.
 class TeradataLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// AuthenticationType to be used for connection.
-  final String? authenticationType;
+  final pulumi.Input<String>? authenticationType;
   /// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
-  final dynamic characterSet;
+  final pulumi.Input<dynamic>? characterSet;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
-  final dynamic httpsPortNumber;
+  final pulumi.Input<dynamic>? httpsPortNumber;
   /// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
-  final dynamic maxRespSize;
+  final pulumi.Input<dynamic>? maxRespSize;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// Password for authentication.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
-  final dynamic portNumber;
+  final pulumi.Input<dynamic>? portNumber;
   /// Server name for connection. Type: string (or Expression with resultType string).
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
-  final dynamic sslMode;
+  final pulumi.Input<dynamic>? sslMode;
   /// Type of linked service.
   /// Expected value is 'Teradata'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
-  final dynamic useDataEncryption;
+  final pulumi.Input<dynamic>? useDataEncryption;
   /// Username for authentication. Type: string (or Expression with resultType string).
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [TeradataLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -90,14 +90,14 @@ class TeradataLinkedService {
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
       'characterSet': ?characterSet,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'httpsPortNumber': ?httpsPortNumber,
       'maxRespSize': ?maxRespSize,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'portNumber': ?portNumber,
       'server': ?server,
       'sslMode': ?sslMode,
@@ -110,24 +110,24 @@ class TeradataLinkedService {
 
   factory TeradataLinkedService.fromMap(Map<String, dynamic> map) {
     return TeradataLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] == null ? null : map['authenticationType'] as String,
-      characterSet: map['characterSet'] == null ? null : map['characterSet'],
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      httpsPortNumber: map['httpsPortNumber'] == null ? null : map['httpsPortNumber'],
-      maxRespSize: map['maxRespSize'] == null ? null : map['maxRespSize'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      portNumber: map['portNumber'] == null ? null : map['portNumber'],
-      server: map['server'] == null ? null : map['server'],
-      sslMode: map['sslMode'] == null ? null : map['sslMode'],
-      type: map['type'] as String,
-      useDataEncryption: map['useDataEncryption'] == null ? null : map['useDataEncryption'],
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      characterSet: map['characterSet'] == null ? null : (map['characterSet']).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      httpsPortNumber: map['httpsPortNumber'] == null ? null : (map['httpsPortNumber']).input(),
+      maxRespSize: map['maxRespSize'] == null ? null : (map['maxRespSize']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      portNumber: map['portNumber'] == null ? null : (map['portNumber']).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']).input(),
+      type: (map['type'] as String).input(),
+      useDataEncryption: map['useDataEncryption'] == null ? null : (map['useDataEncryption']).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

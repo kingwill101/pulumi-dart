@@ -5,9 +5,9 @@ import 'domain_devices_channel_source_pty_sec_label.dart';
 
 class DomainDevicesChannelSourcePty {
   /// Sets the path for the PTY source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final List<DomainDevicesChannelSourcePtySecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesChannelSourcePtySecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesChannelSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesChannelSourcePty {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesChannelSourcePtySecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesChannelSourcePtySecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesChannelSourcePtySecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesChannelSourcePty.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourcePty(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesChannelSourcePtySecLabel>(map['secLabels'], (value) => DomainDevicesChannelSourcePtySecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesChannelSourcePtySecLabel>(map['secLabels'], (value) => DomainDevicesChannelSourcePtySecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

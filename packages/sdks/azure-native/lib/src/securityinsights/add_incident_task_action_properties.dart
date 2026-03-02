@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes an automation rule action to add a task to an incident.
 class AddIncidentTaskActionProperties {
   /// The description of the task.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The title of the task.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [AddIncidentTaskActionProperties].
   /// [description] The description of the task.
@@ -25,8 +26,8 @@ class AddIncidentTaskActionProperties {
 
   factory AddIncidentTaskActionProperties.fromMap(Map<String, dynamic> map) {
     return AddIncidentTaskActionProperties(
-      description: map['description'] == null ? null : map['description'] as String,
-      title: map['title'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

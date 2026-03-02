@@ -16,13 +16,10 @@ class GetManagedZoneArgs {
   /// [managedZone] Required.
   /// [project] Optional.
   GetManagedZoneArgs({
-    pulumi.Output<String>? clientOperationId,
-    required pulumi.Output<String> managedZone,
-    pulumi.Output<String>? project,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.clientOperationId,
+    required this.managedZone,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetManagedZoneArgs {
 
   factory GetManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      managedZone: (map['managedZone'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

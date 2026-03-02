@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deployment on error behavior with additional details.
 class OnErrorDeploymentExtendedResponse {
   /// The deployment to be used on error case.
-  final String? deploymentName;
+  final pulumi.Input<String>? deploymentName;
   /// The state of the provisioning for the on error deployment.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [OnErrorDeploymentExtendedResponse].
   /// [deploymentName] The deployment to be used on error case.
@@ -30,9 +31,9 @@ class OnErrorDeploymentExtendedResponse {
 
   factory OnErrorDeploymentExtendedResponse.fromMap(Map<String, dynamic> map) {
     return OnErrorDeploymentExtendedResponse(
-      deploymentName: map['deploymentName'] == null ? null : map['deploymentName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

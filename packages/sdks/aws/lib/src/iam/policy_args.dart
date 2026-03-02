@@ -31,21 +31,14 @@ class PolicyArgs {
   /// [policy] Policy document. This is a JSON formatted string. For more information about building AWS IAM policy documents, see the AWS IAM Policy Document Guide
   /// [tags] Map of resource tags for the IAM Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   PolicyArgs({
-    pulumi.Output<int>? delayAfterPolicyCreationInMs,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    required pulumi.Output<String> policy,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      delayAfterPolicyCreationInMs = pulumi.Input.asOptionalInput<int>(delayAfterPolicyCreationInMs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      policy = pulumi.Input.asInput<String>(policy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.delayAfterPolicyCreationInMs,
+    this.description,
+    this.name,
+    this.namePrefix,
+    this.path,
+    required this.policy,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : pulumi.Output.create<int>(map['delayAfterPolicyCreationInMs'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : (map['delayAfterPolicyCreationInMs'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class TrafficQosAssociationState {
   /// [qosId] The QoS policy ID.
   /// [status] The status of the associated instance. Value:
   TrafficQosAssociationState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? qosId,
-    pulumi.Output<String>? status,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      qosId = pulumi.Input.asOptionalInput<String>(qosId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.instanceId,
+    this.instanceType,
+    this.qosId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class TrafficQosAssociationState {
 
   factory TrafficQosAssociationState.fromMap(Map<String, dynamic> map) {
     return TrafficQosAssociationState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      qosId: map['qosId'] == null ? null : pulumi.Output.create<String>(map['qosId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

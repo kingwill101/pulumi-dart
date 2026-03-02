@@ -39,25 +39,16 @@ class RepositoryReleaseConfigState {
   /// [repository] A reference to the Dataform repository
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
   RepositoryReleaseConfigState({
-    pulumi.Output<RepositoryReleaseConfigCodeCompilationConfig>? codeCompilationConfig,
-    pulumi.Output<String>? cronSchedule,
-    pulumi.Output<String>? gitCommitish,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>? recentScheduledReleaseRecords,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? repository,
-    pulumi.Output<String>? timeZone,
-  }) :
-      codeCompilationConfig = pulumi.Input.asOptionalInput<RepositoryReleaseConfigCodeCompilationConfig>(codeCompilationConfig),
-      cronSchedule = pulumi.Input.asOptionalInput<String>(cronSchedule),
-      gitCommitish = pulumi.Input.asOptionalInput<String>(gitCommitish),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recentScheduledReleaseRecords = pulumi.Input.asOptionalInput<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>(recentScheduledReleaseRecords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repository = pulumi.Input.asOptionalInput<String>(repository),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.codeCompilationConfig,
+    this.cronSchedule,
+    this.gitCommitish,
+    this.name,
+    this.project,
+    this.recentScheduledReleaseRecords,
+    this.region,
+    this.repository,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class RepositoryReleaseConfigState {
 
   factory RepositoryReleaseConfigState.fromMap(Map<String, dynamic> map) {
     return RepositoryReleaseConfigState(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : pulumi.Output.create<RepositoryReleaseConfigCodeCompilationConfig>(RepositoryReleaseConfigCodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())),
-      cronSchedule: map['cronSchedule'] == null ? null : pulumi.Output.create<String>(map['cronSchedule'] as String),
-      gitCommitish: map['gitCommitish'] == null ? null : pulumi.Output.create<String>(map['gitCommitish'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recentScheduledReleaseRecords: map['recentScheduledReleaseRecords'] == null ? null : pulumi.Output.create<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>>(pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(map['recentScheduledReleaseRecords'], (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repository: map['repository'] == null ? null : pulumi.Output.create<String>(map['repository'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (RepositoryReleaseConfigCodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
+      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recentScheduledReleaseRecords: map['recentScheduledReleaseRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(map['recentScheduledReleaseRecords'], (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

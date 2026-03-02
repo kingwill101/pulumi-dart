@@ -57,35 +57,21 @@ class ImageBuilderArgs {
   /// [tags] Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Configuration block for the VPC configuration for the image builder. See below.
   ImageBuilderArgs({
-    pulumi.Output<List<ImageBuilderAccessEndpoint>>? accessEndpoints,
-    pulumi.Output<String>? appstreamAgentVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<ImageBuilderDomainJoinInfo>? domainJoinInfo,
-    pulumi.Output<bool>? enableDefaultInternetAccess,
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? imageArn,
-    pulumi.Output<String>? imageName,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ImageBuilderVpcConfig>? vpcConfig,
-  }) :
-      accessEndpoints = pulumi.Input.asOptionalInput<List<ImageBuilderAccessEndpoint>>(accessEndpoints),
-      appstreamAgentVersion = pulumi.Input.asOptionalInput<String>(appstreamAgentVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      domainJoinInfo = pulumi.Input.asOptionalInput<ImageBuilderDomainJoinInfo>(domainJoinInfo),
-      enableDefaultInternetAccess = pulumi.Input.asOptionalInput<bool>(enableDefaultInternetAccess),
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      imageArn = pulumi.Input.asOptionalInput<String>(imageArn),
-      imageName = pulumi.Input.asOptionalInput<String>(imageName),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcConfig = pulumi.Input.asOptionalInput<ImageBuilderVpcConfig>(vpcConfig);
+    this.accessEndpoints,
+    this.appstreamAgentVersion,
+    this.description,
+    this.displayName,
+    this.domainJoinInfo,
+    this.enableDefaultInternetAccess,
+    this.iamRoleArn,
+    this.imageArn,
+    this.imageName,
+    required this.instanceType,
+    this.name,
+    this.region,
+    this.tags,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class ImageBuilderArgs {
 
   factory ImageBuilderArgs.fromMap(Map<String, dynamic> map) {
     return ImageBuilderArgs(
-      accessEndpoints: map['accessEndpoints'] == null ? null : pulumi.Output.create<List<ImageBuilderAccessEndpoint>>(pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(map['accessEndpoints'], (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      appstreamAgentVersion: map['appstreamAgentVersion'] == null ? null : pulumi.Output.create<String>(map['appstreamAgentVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      domainJoinInfo: map['domainJoinInfo'] == null ? null : pulumi.Output.create<ImageBuilderDomainJoinInfo>(ImageBuilderDomainJoinInfo.fromMap((map['domainJoinInfo'] as Map).cast<String, dynamic>())),
-      enableDefaultInternetAccess: map['enableDefaultInternetAccess'] == null ? null : pulumi.Output.create<bool>(map['enableDefaultInternetAccess'] as bool),
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      imageArn: map['imageArn'] == null ? null : pulumi.Output.create<String>(map['imageArn'] as String),
-      imageName: map['imageName'] == null ? null : pulumi.Output.create<String>(map['imageName'] as String),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<ImageBuilderVpcConfig>(ImageBuilderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      accessEndpoints: map['accessEndpoints'] == null ? null : (pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(map['accessEndpoints'], (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appstreamAgentVersion: map['appstreamAgentVersion'] == null ? null : (map['appstreamAgentVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      domainJoinInfo: map['domainJoinInfo'] == null ? null : (ImageBuilderDomainJoinInfo.fromMap((map['domainJoinInfo'] as Map).cast<String, dynamic>())).input(),
+      enableDefaultInternetAccess: map['enableDefaultInternetAccess'] == null ? null : (map['enableDefaultInternetAccess'] as bool).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      imageArn: map['imageArn'] == null ? null : (map['imageArn'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (ImageBuilderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

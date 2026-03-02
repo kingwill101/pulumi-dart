@@ -38,25 +38,16 @@ class LocationAzureBlobArgs {
   /// [subdirectory] Path segments if you want to limit your transfer to a virtual directory in the container.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LocationAzureBlobArgs({
-    pulumi.Output<String>? accessTier,
-    required pulumi.Output<List<String>> agentArns,
-    required pulumi.Output<String> authenticationType,
-    pulumi.Output<String>? blobType,
-    required pulumi.Output<String> containerUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<LocationAzureBlobSasConfiguration>? sasConfiguration,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<String>(accessTier),
-      agentArns = pulumi.Input.asInput<List<String>>(agentArns),
-      authenticationType = pulumi.Input.asInput<String>(authenticationType),
-      blobType = pulumi.Input.asOptionalInput<String>(blobType),
-      containerUrl = pulumi.Input.asInput<String>(containerUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sasConfiguration = pulumi.Input.asOptionalInput<LocationAzureBlobSasConfiguration>(sasConfiguration),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessTier,
+    required this.agentArns,
+    required this.authenticationType,
+    this.blobType,
+    required this.containerUrl,
+    this.region,
+    this.sasConfiguration,
+    this.subdirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class LocationAzureBlobArgs {
 
   factory LocationAzureBlobArgs.fromMap(Map<String, dynamic> map) {
     return LocationAzureBlobArgs(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<String>(map['accessTier'] as String),
-      agentArns: pulumi.Output.create<List<String>>((map['agentArns'] as List).cast<String>()),
-      authenticationType: pulumi.Output.create<String>(map['authenticationType'] as String),
-      blobType: map['blobType'] == null ? null : pulumi.Output.create<String>(map['blobType'] as String),
-      containerUrl: pulumi.Output.create<String>(map['containerUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sasConfiguration: map['sasConfiguration'] == null ? null : pulumi.Output.create<LocationAzureBlobSasConfiguration>(LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration'] as Map).cast<String, dynamic>())),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      agentArns: ((map['agentArns'] as List).cast<String>()).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      blobType: map['blobType'] == null ? null : (map['blobType'] as String).input(),
+      containerUrl: (map['containerUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sasConfiguration: map['sasConfiguration'] == null ? null : (LocationAzureBlobSasConfiguration.fromMap((map['sasConfiguration'] as Map).cast<String, dynamic>())).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

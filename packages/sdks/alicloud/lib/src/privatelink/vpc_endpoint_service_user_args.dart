@@ -22,15 +22,11 @@ class VpcEndpointServiceUserArgs {
   /// [userArn] The whitelist in the format of ARN.
   /// [userId] The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
   VpcEndpointServiceUserArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<String>? userArn,
-    required pulumi.Output<String> userId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      userArn = pulumi.Input.asOptionalInput<String>(userArn),
-      userId = pulumi.Input.asInput<String>(userId);
+    this.dryRun,
+    required this.serviceId,
+    this.userArn,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcEndpointServiceUserArgs {
 
   factory VpcEndpointServiceUserArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceUserArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      userArn: map['userArn'] == null ? null : pulumi.Output.create<String>(map['userArn'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      userArn: map['userArn'] == null ? null : (map['userArn'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

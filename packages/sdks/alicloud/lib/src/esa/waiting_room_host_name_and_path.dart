@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WaitingRoomHostNameAndPath {
   /// The domain name.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The path.
-  final String path;
+  final pulumi.Input<String> path;
   /// The subdomain.
-  final String subdomain;
+  final pulumi.Input<String> subdomain;
 
   /// Creates a new [WaitingRoomHostNameAndPath].
   /// [domain] The domain name.
@@ -29,9 +30,9 @@ class WaitingRoomHostNameAndPath {
 
   factory WaitingRoomHostNameAndPath.fromMap(Map<String, dynamic> map) {
     return WaitingRoomHostNameAndPath(
-      domain: map['domain'] as String,
-      path: map['path'] as String,
-      subdomain: map['subdomain'] as String,
+      domain: (map['domain'] as String).input(),
+      path: (map['path'] as String).input(),
+      subdomain: (map['subdomain'] as String).input(),
     );
   }
 }

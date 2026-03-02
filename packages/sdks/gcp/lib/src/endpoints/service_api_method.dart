@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceApiMethod {
   /// The simple name of the endpoint as described in the config.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type URL for the request to this API.
-  final String? requestType;
+  final pulumi.Input<String>? requestType;
   /// The type URL for the response from this API.
-  final String? responseType;
+  final pulumi.Input<String>? responseType;
   /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-  final String? syntax;
+  final pulumi.Input<String>? syntax;
 
   /// Creates a new [ServiceApiMethod].
   /// [name] The simple name of the endpoint as described in the config.
@@ -34,10 +35,10 @@ class ServiceApiMethod {
 
   factory ServiceApiMethod.fromMap(Map<String, dynamic> map) {
     return ServiceApiMethod(
-      name: map['name'] == null ? null : map['name'] as String,
-      requestType: map['requestType'] == null ? null : map['requestType'] as String,
-      responseType: map['responseType'] == null ? null : map['responseType'] as String,
-      syntax: map['syntax'] == null ? null : map['syntax'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestType: map['requestType'] == null ? null : (map['requestType'] as String).input(),
+      responseType: map['responseType'] == null ? null : (map['responseType'] as String).input(),
+      syntax: map['syntax'] == null ? null : (map['syntax'] as String).input(),
     );
   }
 }

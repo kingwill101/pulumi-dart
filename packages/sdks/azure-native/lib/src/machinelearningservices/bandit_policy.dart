@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an early termination policy based on slack criteria, and a frequency and delay interval for evaluation
 class BanditPolicy {
   /// Number of intervals by which to delay the first evaluation.
-  final int? delayEvaluation;
+  final pulumi.Input<int>? delayEvaluation;
   /// Interval (number of runs) between policy evaluations.
-  final int? evaluationInterval;
+  final pulumi.Input<int>? evaluationInterval;
   /// Expected value is 'Bandit'.
-  final String policyType;
+  final pulumi.Input<String> policyType;
   /// Absolute distance allowed from the best performing run.
-  final double? slackAmount;
+  final pulumi.Input<double>? slackAmount;
   /// Ratio of the allowed distance from the best performing run.
-  final double? slackFactor;
+  final pulumi.Input<double>? slackFactor;
 
   /// Creates a new [BanditPolicy].
   /// [delayEvaluation] Number of intervals by which to delay the first evaluation.
@@ -40,11 +41,11 @@ class BanditPolicy {
 
   factory BanditPolicy.fromMap(Map<String, dynamic> map) {
     return BanditPolicy(
-      delayEvaluation: map['delayEvaluation'] == null ? null : map['delayEvaluation'] as int,
-      evaluationInterval: map['evaluationInterval'] == null ? null : map['evaluationInterval'] as int,
-      policyType: map['policyType'] as String,
-      slackAmount: map['slackAmount'] == null ? null : map['slackAmount'] as double,
-      slackFactor: map['slackFactor'] == null ? null : map['slackFactor'] as double,
+      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation'] as int).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as int).input(),
+      policyType: (map['policyType'] as String).input(),
+      slackAmount: map['slackAmount'] == null ? null : (map['slackAmount'] as double).input(),
+      slackFactor: map['slackFactor'] == null ? null : (map['slackFactor'] as double).input(),
     );
   }
 }

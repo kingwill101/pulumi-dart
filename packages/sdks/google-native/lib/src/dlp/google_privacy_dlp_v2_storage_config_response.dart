@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_options_response.dart';
 import 'google_privacy_dlp_v2_cloud_storage_options_response.dart';
 import 'google_privacy_dlp_v2_datastore_options_response.dart';
@@ -9,14 +10,14 @@ import 'google_privacy_dlp_v2_timespan_config_response.dart';
 /// Shared message indicating Cloud storage type.
 class GooglePrivacyDlpV2StorageConfigResponse {
   /// BigQuery options.
-  final GooglePrivacyDlpV2BigQueryOptionsResponse bigQueryOptions;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryOptionsResponse> bigQueryOptions;
   /// Cloud Storage options.
-  final GooglePrivacyDlpV2CloudStorageOptionsResponse cloudStorageOptions;
+  final pulumi.Input<GooglePrivacyDlpV2CloudStorageOptionsResponse> cloudStorageOptions;
   /// Google Cloud Datastore options.
-  final GooglePrivacyDlpV2DatastoreOptionsResponse datastoreOptions;
+  final pulumi.Input<GooglePrivacyDlpV2DatastoreOptionsResponse> datastoreOptions;
   /// Hybrid inspection options.
-  final GooglePrivacyDlpV2HybridOptionsResponse hybridOptions;
-  final GooglePrivacyDlpV2TimespanConfigResponse timespanConfig;
+  final pulumi.Input<GooglePrivacyDlpV2HybridOptionsResponse> hybridOptions;
+  final pulumi.Input<GooglePrivacyDlpV2TimespanConfigResponse> timespanConfig;
 
   /// Creates a new [GooglePrivacyDlpV2StorageConfigResponse].
   /// [bigQueryOptions] BigQuery options.
@@ -34,21 +35,21 @@ class GooglePrivacyDlpV2StorageConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQueryOptions': bigQueryOptions.toMap(),
-      'cloudStorageOptions': cloudStorageOptions.toMap(),
-      'datastoreOptions': datastoreOptions.toMap(),
-      'hybridOptions': hybridOptions.toMap(),
-      'timespanConfig': timespanConfig.toMap(),
+      'bigQueryOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryOptionsResponse, Map<String, dynamic>>(bigQueryOptions, (value) => value.toMap()),
+      'cloudStorageOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CloudStorageOptionsResponse, Map<String, dynamic>>(cloudStorageOptions, (value) => value.toMap()),
+      'datastoreOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DatastoreOptionsResponse, Map<String, dynamic>>(datastoreOptions, (value) => value.toMap()),
+      'hybridOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2HybridOptionsResponse, Map<String, dynamic>>(hybridOptions, (value) => value.toMap()),
+      'timespanConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2TimespanConfigResponse, Map<String, dynamic>>(timespanConfig, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2StorageConfigResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StorageConfigResponse(
-      bigQueryOptions: GooglePrivacyDlpV2BigQueryOptionsResponse.fromMap((map['bigQueryOptions'] as Map).cast<String, dynamic>()),
-      cloudStorageOptions: GooglePrivacyDlpV2CloudStorageOptionsResponse.fromMap((map['cloudStorageOptions'] as Map).cast<String, dynamic>()),
-      datastoreOptions: GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap((map['datastoreOptions'] as Map).cast<String, dynamic>()),
-      hybridOptions: GooglePrivacyDlpV2HybridOptionsResponse.fromMap((map['hybridOptions'] as Map).cast<String, dynamic>()),
-      timespanConfig: GooglePrivacyDlpV2TimespanConfigResponse.fromMap((map['timespanConfig'] as Map).cast<String, dynamic>()),
+      bigQueryOptions: (GooglePrivacyDlpV2BigQueryOptionsResponse.fromMap((map['bigQueryOptions'] as Map).cast<String, dynamic>())).input(),
+      cloudStorageOptions: (GooglePrivacyDlpV2CloudStorageOptionsResponse.fromMap((map['cloudStorageOptions'] as Map).cast<String, dynamic>())).input(),
+      datastoreOptions: (GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap((map['datastoreOptions'] as Map).cast<String, dynamic>())).input(),
+      hybridOptions: (GooglePrivacyDlpV2HybridOptionsResponse.fromMap((map['hybridOptions'] as Map).cast<String, dynamic>())).input(),
+      timespanConfig: (GooglePrivacyDlpV2TimespanConfigResponse.fromMap((map['timespanConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

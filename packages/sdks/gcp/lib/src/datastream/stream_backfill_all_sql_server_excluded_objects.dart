@@ -6,7 +6,7 @@ import 'stream_backfill_all_sql_server_excluded_objects_schema.dart';
 class StreamBackfillAllSqlServerExcludedObjects {
   /// SQL Server schemas/databases in the database server
   /// Structure is documented below.
-  final List<StreamBackfillAllSqlServerExcludedObjectsSchema> schemas;
+  final pulumi.Input<List<StreamBackfillAllSqlServerExcludedObjectsSchema>> schemas;
 
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjects].
   /// [schemas] SQL Server schemas/databases in the database server
@@ -16,13 +16,13 @@ class StreamBackfillAllSqlServerExcludedObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemas': pulumi.Input.encodeList<StreamBackfillAllSqlServerExcludedObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+      'schemas': pulumi.Input.mapInputValue<List<StreamBackfillAllSqlServerExcludedObjectsSchema>, List<Map<String, dynamic>>>(schemas, (value) => pulumi.Input.encodeList<StreamBackfillAllSqlServerExcludedObjectsSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StreamBackfillAllSqlServerExcludedObjects.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjects(
-      schemas: pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchema>(map['schemas'], (value) => StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
+      schemas: (pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchema>(map['schemas'], (value) => StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

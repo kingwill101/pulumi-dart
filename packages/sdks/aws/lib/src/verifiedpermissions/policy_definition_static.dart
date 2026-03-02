@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionStatic {
   /// The description of the static policy.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The statement of the static policy.
-  final String statement;
+  final pulumi.Input<String> statement;
 
   /// Creates a new [PolicyDefinitionStatic].
   /// [description] The description of the static policy.
@@ -24,8 +25,8 @@ class PolicyDefinitionStatic {
 
   factory PolicyDefinitionStatic.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionStatic(
-      description: map['description'] == null ? null : map['description'] as String,
-      statement: map['statement'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      statement: (map['statement'] as String).input(),
     );
   }
 }

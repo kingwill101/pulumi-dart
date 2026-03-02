@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceDevice {
   /// A description for the device.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of the device.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// Amazon Web Services Internet of Things (IoT) object name.
-  final String? iotThingName;
+  final pulumi.Input<String>? iotThingName;
 
   /// Creates a new [DeviceDevice].
   /// [description] A description for the device.
@@ -29,9 +30,9 @@ class DeviceDevice {
 
   factory DeviceDevice.fromMap(Map<String, dynamic> map) {
     return DeviceDevice(
-      description: map['description'] == null ? null : map['description'] as String,
-      deviceName: map['deviceName'] as String,
-      iotThingName: map['iotThingName'] == null ? null : map['iotThingName'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      iotThingName: map['iotThingName'] == null ? null : (map['iotThingName'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the data lake storage account associated with the workspace
 class DataLakeStorageAccountDetails {
   /// Account URL
-  final String? accountUrl;
+  final pulumi.Input<String>? accountUrl;
   /// Create managed private endpoint to this storage account or not
-  final bool? createManagedPrivateEndpoint;
+  final pulumi.Input<bool>? createManagedPrivateEndpoint;
   /// Filesystem name
-  final String? filesystem;
+  final pulumi.Input<String>? filesystem;
   /// ARM resource Id of this storage account
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [DataLakeStorageAccountDetails].
   /// [accountUrl] Account URL
@@ -35,10 +36,10 @@ class DataLakeStorageAccountDetails {
 
   factory DataLakeStorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return DataLakeStorageAccountDetails(
-      accountUrl: map['accountUrl'] == null ? null : map['accountUrl'] as String,
-      createManagedPrivateEndpoint: map['createManagedPrivateEndpoint'] == null ? null : map['createManagedPrivateEndpoint'] as bool,
-      filesystem: map['filesystem'] == null ? null : map['filesystem'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
+      createManagedPrivateEndpoint: map['createManagedPrivateEndpoint'] == null ? null : (map['createManagedPrivateEndpoint'] as bool).input(),
+      filesystem: map['filesystem'] == null ? null : (map['filesystem'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

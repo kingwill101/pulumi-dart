@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupAzureAppPushReceiver {
   /// The email address of this receiver.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetActionGroupAzureAppPushReceiver].
   /// [emailAddress] The email address of this receiver.
@@ -24,8 +25,8 @@ class GetActionGroupAzureAppPushReceiver {
 
   factory GetActionGroupAzureAppPushReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupAzureAppPushReceiver(
-      emailAddress: map['emailAddress'] as String,
-      name: map['name'] as String,
+      emailAddress: (map['emailAddress'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

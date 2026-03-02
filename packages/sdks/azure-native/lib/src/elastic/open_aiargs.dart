@@ -23,15 +23,11 @@ class OpenAIArgs {
   /// [properties] Open AI Integration details.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   OpenAIArgs({
-    pulumi.Output<String>? integrationName,
-    required pulumi.Output<String> monitorName,
-    pulumi.Output<OpenAIIntegrationProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      integrationName = pulumi.Input.asOptionalInput<String>(integrationName),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      properties = pulumi.Input.asOptionalInput<OpenAIIntegrationProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.integrationName,
+    required this.monitorName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class OpenAIArgs {
 
   factory OpenAIArgs.fromMap(Map<String, dynamic> map) {
     return OpenAIArgs(
-      integrationName: map['integrationName'] == null ? null : pulumi.Output.create<String>(map['integrationName'] as String),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<OpenAIIntegrationProperties>(OpenAIIntegrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      integrationName: map['integrationName'] == null ? null : (map['integrationName'] as String).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      properties: map['properties'] == null ? null : (OpenAIIntegrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

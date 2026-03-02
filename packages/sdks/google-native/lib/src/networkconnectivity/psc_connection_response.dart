@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_rpc_error_info_response.dart';
 import 'google_rpc_status_response.dart';
 
 /// Information about a specific Private Service Connect connection.
 class PscConnectionResponse {
   /// The resource reference of the consumer address.
-  final String consumerAddress;
+  final pulumi.Input<String> consumerAddress;
   /// The resource reference of the PSC Forwarding Rule within the consumer VPC.
-  final String consumerForwardingRule;
+  final pulumi.Input<String> consumerForwardingRule;
   /// The project where the PSC connection is created.
-  final String consumerTargetProject;
+  final pulumi.Input<String> consumerTargetProject;
   /// The most recent error during operating this connection.
-  final GoogleRpcStatusResponse error;
+  final pulumi.Input<GoogleRpcStatusResponse> error;
   /// The error info for the latest error during operating this connection.
-  final GoogleRpcErrorInfoResponse errorInfo;
+  final pulumi.Input<GoogleRpcErrorInfoResponse> errorInfo;
   /// The error type indicates whether the error is consumer facing, producer facing or system internal.
-  final String errorType;
+  final pulumi.Input<String> errorType;
   /// The last Compute Engine operation to setup PSC connection.
-  final String gceOperation;
+  final pulumi.Input<String> gceOperation;
   /// The PSC connection id of the PSC forwarding rule.
-  final String pscConnectionId;
+  final pulumi.Input<String> pscConnectionId;
   /// State of the PSC Connection
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [PscConnectionResponse].
   /// [consumerAddress] The resource reference of the consumer address.
@@ -51,8 +52,8 @@ class PscConnectionResponse {
       'consumerAddress': consumerAddress,
       'consumerForwardingRule': consumerForwardingRule,
       'consumerTargetProject': consumerTargetProject,
-      'error': error.toMap(),
-      'errorInfo': errorInfo.toMap(),
+      'error': pulumi.Input.mapInputValue<GoogleRpcStatusResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'errorInfo': pulumi.Input.mapInputValue<GoogleRpcErrorInfoResponse, Map<String, dynamic>>(errorInfo, (value) => value.toMap()),
       'errorType': errorType,
       'gceOperation': gceOperation,
       'pscConnectionId': pscConnectionId,
@@ -62,15 +63,15 @@ class PscConnectionResponse {
 
   factory PscConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PscConnectionResponse(
-      consumerAddress: map['consumerAddress'] as String,
-      consumerForwardingRule: map['consumerForwardingRule'] as String,
-      consumerTargetProject: map['consumerTargetProject'] as String,
-      error: GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      errorInfo: GoogleRpcErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
-      errorType: map['errorType'] as String,
-      gceOperation: map['gceOperation'] as String,
-      pscConnectionId: map['pscConnectionId'] as String,
-      state: map['state'] as String,
+      consumerAddress: (map['consumerAddress'] as String).input(),
+      consumerForwardingRule: (map['consumerForwardingRule'] as String).input(),
+      consumerTargetProject: (map['consumerTargetProject'] as String).input(),
+      error: (GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      errorInfo: (GoogleRpcErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>())).input(),
+      errorType: (map['errorType'] as String).input(),
+      gceOperation: (map['gceOperation'] as String).input(),
+      pscConnectionId: (map['pscConnectionId'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

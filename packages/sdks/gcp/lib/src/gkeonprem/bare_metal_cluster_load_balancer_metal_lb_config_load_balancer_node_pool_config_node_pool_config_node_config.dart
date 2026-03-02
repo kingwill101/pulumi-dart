@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
   /// The map of Kubernetes labels (key/value pairs) to be applied to
@@ -12,10 +13,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// The default IPv4 address for SSH access and Kubernetes node.
   /// Example: 192.168.0.1
-  final String? nodeIp;
+  final pulumi.Input<String>? nodeIp;
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
@@ -34,8 +35,8 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
   factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig(
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      nodeIp: map['nodeIp'] == null ? null : map['nodeIp'] as String,
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      nodeIp: map['nodeIp'] == null ? null : (map['nodeIp'] as String).input(),
     );
   }
 }

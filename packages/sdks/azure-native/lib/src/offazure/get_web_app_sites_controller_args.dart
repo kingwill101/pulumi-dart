@@ -19,13 +19,10 @@ class GetWebAppSitesControllerArgs {
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
   GetWebAppSitesControllerArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> webAppSiteName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      webAppSiteName = pulumi.Input.asInput<String>(webAppSiteName);
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.webAppSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppSitesControllerArgs {
 
   factory GetWebAppSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppSitesControllerArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      webAppSiteName: pulumi.Output.create<String>(map['webAppSiteName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      webAppSiteName: (map['webAppSiteName'] as String).input(),
     );
   }
 }

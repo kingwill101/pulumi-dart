@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteMapRuleMatchCriterion {
   /// A list of AS paths which this criterion matches.
-  final List<String>? asPaths;
+  final pulumi.Input<List<String>>? asPaths;
   /// A list of BGP communities which this criterion matches.
-  final List<String>? communities;
+  final pulumi.Input<List<String>>? communities;
   /// The match condition to apply the rule of the Route Map. Possible values are `Contains`, `Equals`, `NotContains`, `NotEquals` and `Unknown`.
-  final String matchCondition;
+  final pulumi.Input<String> matchCondition;
   /// A list of route prefixes which this criterion matches.
-  final List<String>? routePrefixes;
+  final pulumi.Input<List<String>>? routePrefixes;
 
   /// Creates a new [RouteMapRuleMatchCriterion].
   /// [asPaths] A list of AS paths which this criterion matches.
@@ -34,10 +35,10 @@ class RouteMapRuleMatchCriterion {
 
   factory RouteMapRuleMatchCriterion.fromMap(Map<String, dynamic> map) {
     return RouteMapRuleMatchCriterion(
-      asPaths: map['asPaths'] == null ? null : (map['asPaths'] as List).cast<String>(),
-      communities: map['communities'] == null ? null : (map['communities'] as List).cast<String>(),
-      matchCondition: map['matchCondition'] as String,
-      routePrefixes: map['routePrefixes'] == null ? null : (map['routePrefixes'] as List).cast<String>(),
+      asPaths: map['asPaths'] == null ? null : ((map['asPaths'] as List).cast<String>()).input(),
+      communities: map['communities'] == null ? null : ((map['communities'] as List).cast<String>()).input(),
+      matchCondition: (map['matchCondition'] as String).input(),
+      routePrefixes: map['routePrefixes'] == null ? null : ((map['routePrefixes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetKeyPairsArgs {
   /// [nameRegex] A regex string to filter results by Key Pair name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetKeyPairsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyPairFingerPrint,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyPairFingerPrint = pulumi.Input.asOptionalInput<String>(keyPairFingerPrint),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.keyPairFingerPrint,
+    this.nameRegex,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetKeyPairsArgs {
 
   factory GetKeyPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyPairFingerPrint: map['keyPairFingerPrint'] == null ? null : pulumi.Output.create<String>(map['keyPairFingerPrint'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyPairFingerPrint: map['keyPairFingerPrint'] == null ? null : (map['keyPairFingerPrint'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

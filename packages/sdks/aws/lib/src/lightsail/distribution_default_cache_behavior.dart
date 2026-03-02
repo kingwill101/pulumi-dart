@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionDefaultCacheBehavior {
   /// Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
-  final String behavior;
+  final pulumi.Input<String> behavior;
 
   /// Creates a new [DistributionDefaultCacheBehavior].
   /// [behavior] Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
@@ -19,7 +20,7 @@ class DistributionDefaultCacheBehavior {
 
   factory DistributionDefaultCacheBehavior.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehavior(
-      behavior: map['behavior'] as String,
+      behavior: (map['behavior'] as String).input(),
     );
   }
 }

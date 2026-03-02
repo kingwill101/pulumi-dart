@@ -19,13 +19,10 @@ class AssociationArgs {
   /// [scope] The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
   /// [targetResourceId] The REST resource instance of the target resource for this association.
   AssociationArgs({
-    pulumi.Output<String>? associationName,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      associationName = pulumi.Input.asOptionalInput<String>(associationName),
-      scope = pulumi.Input.asInput<String>(scope),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.associationName,
+    required this.scope,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AssociationArgs {
 
   factory AssociationArgs.fromMap(Map<String, dynamic> map) {
     return AssociationArgs(
-      associationName: map['associationName'] == null ? null : pulumi.Output.create<String>(map['associationName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

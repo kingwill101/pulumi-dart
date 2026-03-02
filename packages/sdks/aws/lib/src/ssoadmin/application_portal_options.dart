@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_portal_options_sign_in_options.dart';
 
 class ApplicationPortalOptions {
   /// Sign-in options for the access portal. See `sign_in_options` below.
-  final ApplicationPortalOptionsSignInOptions? signInOptions;
+  final pulumi.Input<ApplicationPortalOptionsSignInOptions>? signInOptions;
   /// Indicates whether this application is visible in the access portal. Valid values are `ENABLED` and `DISABLED`.
-  final String? visibility;
+  final pulumi.Input<String>? visibility;
 
   /// Creates a new [ApplicationPortalOptions].
   /// [signInOptions] Sign-in options for the access portal. See `sign_in_options` below.
@@ -18,15 +19,15 @@ class ApplicationPortalOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signInOptions': ?signInOptions == null ? null : signInOptions!.toMap(),
+      'signInOptions': ?pulumi.Input.mapOptionalInputValue<ApplicationPortalOptionsSignInOptions, Map<String, dynamic>>(signInOptions, (value) => value.toMap()),
       'visibility': ?visibility,
     };
   }
 
   factory ApplicationPortalOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationPortalOptions(
-      signInOptions: map['signInOptions'] == null ? null : ApplicationPortalOptionsSignInOptions.fromMap((map['signInOptions'] as Map).cast<String, dynamic>()),
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      signInOptions: map['signInOptions'] == null ? null : (ApplicationPortalOptionsSignInOptions.fromMap((map['signInOptions'] as Map).cast<String, dynamic>())).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for RegistryEndpoint trust provided through a secret.
 class RegistryEndpointTrustedSigningKeySecret {
   /// The name of the secret.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
   /// RegistryEndpointTrustedSigningKeyType values
   /// Expected value is 'Secret'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RegistryEndpointTrustedSigningKeySecret].
   /// [secretRef] The name of the secret.
@@ -26,8 +27,8 @@ class RegistryEndpointTrustedSigningKeySecret {
 
   factory RegistryEndpointTrustedSigningKeySecret.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointTrustedSigningKeySecret(
-      secretRef: map['secretRef'] as String,
-      type: map['type'] as String,
+      secretRef: (map['secretRef'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

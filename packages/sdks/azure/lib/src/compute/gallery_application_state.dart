@@ -37,27 +37,17 @@ class GalleryApplicationState {
   /// [supportedOsType] The type of the Operating System supported for the Gallery Application. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Gallery Application.
   GalleryApplicationState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endOfLifeDate,
-    pulumi.Output<String>? eula,
-    pulumi.Output<String>? galleryId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privacyStatementUri,
-    pulumi.Output<String>? releaseNoteUri,
-    pulumi.Output<String>? supportedOsType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endOfLifeDate = pulumi.Input.asOptionalInput<String>(endOfLifeDate),
-      eula = pulumi.Input.asOptionalInput<String>(eula),
-      galleryId = pulumi.Input.asOptionalInput<String>(galleryId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privacyStatementUri = pulumi.Input.asOptionalInput<String>(privacyStatementUri),
-      releaseNoteUri = pulumi.Input.asOptionalInput<String>(releaseNoteUri),
-      supportedOsType = pulumi.Input.asOptionalInput<String>(supportedOsType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.endOfLifeDate,
+    this.eula,
+    this.galleryId,
+    this.location,
+    this.name,
+    this.privacyStatementUri,
+    this.releaseNoteUri,
+    this.supportedOsType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class GalleryApplicationState {
 
   factory GalleryApplicationState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : pulumi.Output.create<String>(map['endOfLifeDate'] as String),
-      eula: map['eula'] == null ? null : pulumi.Output.create<String>(map['eula'] as String),
-      galleryId: map['galleryId'] == null ? null : pulumi.Output.create<String>(map['galleryId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : pulumi.Output.create<String>(map['privacyStatementUri'] as String),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : pulumi.Output.create<String>(map['releaseNoteUri'] as String),
-      supportedOsType: map['supportedOsType'] == null ? null : pulumi.Output.create<String>(map['supportedOsType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      galleryId: map['galleryId'] == null ? null : (map['galleryId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      supportedOsType: map['supportedOsType'] == null ? null : (map['supportedOsType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

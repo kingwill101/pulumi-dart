@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectsProjectPropertiesTableLifecycle {
   /// Project type
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetProjectsProjectPropertiesTableLifecycle].
   /// [type] Project type
@@ -24,8 +25,8 @@ class GetProjectsProjectPropertiesTableLifecycle {
 
   factory GetProjectsProjectPropertiesTableLifecycle.fromMap(Map<String, dynamic> map) {
     return GetProjectsProjectPropertiesTableLifecycle(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

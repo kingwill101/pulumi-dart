@@ -19,15 +19,11 @@ class AuthPolicyState {
   /// [resourceIdentifier] The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
   /// [state] The state of the auth policy. The auth policy is only active when the auth type is set to `AWS_IAM`. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is `NONE`, then, any auth policy you provide will remain inactive.
   AuthPolicyState({
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceIdentifier,
-    pulumi.Output<String>? state,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceIdentifier = pulumi.Input.asOptionalInput<String>(resourceIdentifier),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.policy,
+    this.region,
+    this.resourceIdentifier,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AuthPolicyState {
 
   factory AuthPolicyState.fromMap(Map<String, dynamic> map) {
     return AuthPolicyState(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

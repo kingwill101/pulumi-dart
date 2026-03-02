@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualHostsHost {
   /// The ID of the Virtual Host.
-  final String id;
+  final pulumi.Input<String> id;
   /// InstanceId.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// VirtualHostName.
-  final String virtualHostName;
+  final pulumi.Input<String> virtualHostName;
 
   /// Creates a new [GetVirtualHostsHost].
   /// [id] The ID of the Virtual Host.
@@ -29,9 +30,9 @@ class GetVirtualHostsHost {
 
   factory GetVirtualHostsHost.fromMap(Map<String, dynamic> map) {
     return GetVirtualHostsHost(
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      virtualHostName: map['virtualHostName'] as String,
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

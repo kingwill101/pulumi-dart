@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields {
   /// Field name for the answer.
-  final String? answerField;
+  final pulumi.Input<String>? answerField;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields].
   /// [answerField] Field name for the answer.
@@ -19,7 +20,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields(
-      answerField: map['answerField'] == null ? null : map['answerField'] as String,
+      answerField: map['answerField'] == null ? null : (map['answerField'] as String).input(),
     );
   }
 }

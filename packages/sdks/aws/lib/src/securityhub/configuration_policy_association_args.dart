@@ -19,13 +19,10 @@ class ConfigurationPolicyAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetId] The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
   ConfigurationPolicyAssociationArgs({
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> targetId,
-  }) :
-      policyId = pulumi.Input.asInput<String>(policyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetId = pulumi.Input.asInput<String>(targetId);
+    required this.policyId,
+    this.region,
+    required this.targetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConfigurationPolicyAssociationArgs {
 
   factory ConfigurationPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyAssociationArgs(
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetId: pulumi.Output.create<String>(map['targetId'] as String),
+      policyId: (map['policyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

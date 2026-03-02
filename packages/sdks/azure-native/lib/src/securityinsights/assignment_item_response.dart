@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An entity describing a content item.
 class AssignmentItemResponse {
   /// The resource id of the content item
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [AssignmentItemResponse].
   /// [resourceId] The resource id of the content item
@@ -20,7 +21,7 @@ class AssignmentItemResponse {
 
   factory AssignmentItemResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentItemResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AzureDisk CSI Driver settings for the storage profile.
 class ManagedClusterStorageProfileDiskCSIDriver {
   /// Whether to enable AzureDisk CSI Driver. The default value is true.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ManagedClusterStorageProfileDiskCSIDriver].
   /// [enabled] Whether to enable AzureDisk CSI Driver. The default value is true.
@@ -20,7 +21,7 @@ class ManagedClusterStorageProfileDiskCSIDriver {
 
   factory ManagedClusterStorageProfileDiskCSIDriver.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileDiskCSIDriver(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

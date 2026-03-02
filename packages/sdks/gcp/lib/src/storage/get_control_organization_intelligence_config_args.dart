@@ -13,9 +13,8 @@ class GetControlOrganizationIntelligenceConfigArgs {
   /// Creates a new [GetControlOrganizationIntelligenceConfigArgs].
   /// [name] The id of GCP organization.
   GetControlOrganizationIntelligenceConfigArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetControlOrganizationIntelligenceConfigArgs {
 
   factory GetControlOrganizationIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_details_response.dart';
 import 'system_data_response.dart';
 
 /// Describes a license in a hybrid machine.
 class LicenseResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// Describes the properties of a License.
-  final LicenseDetailsResponse? licenseDetails;
+  final pulumi.Input<LicenseDetailsResponse>? licenseDetails;
   /// The type of the license resource.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The geo-location where the resource lives
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Describes the tenant id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [LicenseResponse].
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -53,12 +54,12 @@ class LicenseResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'licenseDetails': ?licenseDetails == null ? null : licenseDetails!.toMap(),
+      'licenseDetails': ?pulumi.Input.mapOptionalInputValue<LicenseDetailsResponse, Map<String, dynamic>>(licenseDetails, (value) => value.toMap()),
       'licenseType': ?licenseType,
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'tags': ?tags,
       'tenantId': ?tenantId,
       'type': type,
@@ -67,16 +68,16 @@ class LicenseResponse {
 
   factory LicenseResponse.fromMap(Map<String, dynamic> map) {
     return LicenseResponse(
-      id: map['id'] as String,
-      licenseDetails: map['licenseDetails'] == null ? null : LicenseDetailsResponse.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>()),
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetailsResponse.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

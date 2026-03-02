@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetThemePermission {
   /// List of IAM actions to grant or revoke permissions on.
-  final List<String> actions;
+  final pulumi.Input<List<String>> actions;
   /// ARN of the principal. See the [ResourcePermission documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ResourcePermission.html) for the applicable ARN values.
-  final String principal;
+  final pulumi.Input<String> principal;
 
   /// Creates a new [GetThemePermission].
   /// [actions] List of IAM actions to grant or revoke permissions on.
@@ -24,8 +25,8 @@ class GetThemePermission {
 
   factory GetThemePermission.fromMap(Map<String, dynamic> map) {
     return GetThemePermission(
-      actions: (map['actions'] as List).cast<String>(),
-      principal: map['principal'] as String,
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      principal: (map['principal'] as String).input(),
     );
   }
 }

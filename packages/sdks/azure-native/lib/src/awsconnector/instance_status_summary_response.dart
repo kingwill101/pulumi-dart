@@ -7,9 +7,9 @@ import 'summary_status_enum_value_response.dart';
 /// Definition of InstanceStatusSummary
 class InstanceStatusSummaryResponse {
   /// <p>The system instance health or application instance health.</p>
-  final List<InstanceStatusDetailsResponse>? details;
+  final pulumi.Input<List<InstanceStatusDetailsResponse>>? details;
   /// <p>The status.</p>
-  final SummaryStatusEnumValueResponse? status;
+  final pulumi.Input<SummaryStatusEnumValueResponse>? status;
 
   /// Creates a new [InstanceStatusSummaryResponse].
   /// [details] <p>The system instance health or application instance health.</p>
@@ -21,15 +21,15 @@ class InstanceStatusSummaryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details': ?details == null ? null : pulumi.Input.encodeList<InstanceStatusDetailsResponse, Map<String, dynamic>>(details!, (value) => value.toMap()),
-      'status': ?status == null ? null : status!.toMap(),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<InstanceStatusDetailsResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<InstanceStatusDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'status': ?pulumi.Input.mapOptionalInputValue<SummaryStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory InstanceStatusSummaryResponse.fromMap(Map<String, dynamic> map) {
     return InstanceStatusSummaryResponse(
-      details: map['details'] == null ? null : pulumi.Input.decodeList<InstanceStatusDetailsResponse>(map['details'], (value) => InstanceStatusDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : SummaryStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<InstanceStatusDetailsResponse>(map['details'], (value) => InstanceStatusDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (SummaryStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

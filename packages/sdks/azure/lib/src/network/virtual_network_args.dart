@@ -66,35 +66,21 @@ class VirtualNetworkArgs {
   /// [subnets] Can be specified multiple times to define multiple subnets. Each `subnet` block supports fields documented below.
   /// [tags] A mapping of tags to assign to the resource.
   VirtualNetworkArgs({
-    pulumi.Output<List<String>>? addressSpaces,
-    pulumi.Output<String>? bgpCommunity,
-    pulumi.Output<VirtualNetworkDdosProtectionPlan>? ddosProtectionPlan,
-    pulumi.Output<List<String>>? dnsServers,
-    pulumi.Output<String>? edgeZone,
-    pulumi.Output<VirtualNetworkEncryption>? encryption,
-    pulumi.Output<int>? flowTimeoutInMinutes,
-    pulumi.Output<List<VirtualNetworkIpAddressPool>>? ipAddressPools,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateEndpointVnetPolicies,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<VirtualNetworkSubnet>>? subnets,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressSpaces = pulumi.Input.asOptionalInput<List<String>>(addressSpaces),
-      bgpCommunity = pulumi.Input.asOptionalInput<String>(bgpCommunity),
-      ddosProtectionPlan = pulumi.Input.asOptionalInput<VirtualNetworkDdosProtectionPlan>(ddosProtectionPlan),
-      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
-      edgeZone = pulumi.Input.asOptionalInput<String>(edgeZone),
-      encryption = pulumi.Input.asOptionalInput<VirtualNetworkEncryption>(encryption),
-      flowTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(flowTimeoutInMinutes),
-      ipAddressPools = pulumi.Input.asOptionalInput<List<VirtualNetworkIpAddressPool>>(ipAddressPools),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateEndpointVnetPolicies = pulumi.Input.asOptionalInput<String>(privateEndpointVnetPolicies),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnets = pulumi.Input.asOptionalInput<List<VirtualNetworkSubnet>>(subnets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addressSpaces,
+    this.bgpCommunity,
+    this.ddosProtectionPlan,
+    this.dnsServers,
+    this.edgeZone,
+    this.encryption,
+    this.flowTimeoutInMinutes,
+    this.ipAddressPools,
+    this.location,
+    this.name,
+    this.privateEndpointVnetPolicies,
+    required this.resourceGroupName,
+    this.subnets,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,20 +103,20 @@ class VirtualNetworkArgs {
 
   factory VirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkArgs(
-      addressSpaces: map['addressSpaces'] == null ? null : pulumi.Output.create<List<String>>((map['addressSpaces'] as List).cast<String>()),
-      bgpCommunity: map['bgpCommunity'] == null ? null : pulumi.Output.create<String>(map['bgpCommunity'] as String),
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : pulumi.Output.create<VirtualNetworkDdosProtectionPlan>(VirtualNetworkDdosProtectionPlan.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
-      edgeZone: map['edgeZone'] == null ? null : pulumi.Output.create<String>(map['edgeZone'] as String),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<VirtualNetworkEncryption>(VirtualNetworkEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['flowTimeoutInMinutes'] as int),
-      ipAddressPools: map['ipAddressPools'] == null ? null : pulumi.Output.create<List<VirtualNetworkIpAddressPool>>(pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(map['ipAddressPools'], (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateEndpointVnetPolicies: map['privateEndpointVnetPolicies'] == null ? null : pulumi.Output.create<String>(map['privateEndpointVnetPolicies'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnets: map['subnets'] == null ? null : pulumi.Output.create<List<VirtualNetworkSubnet>>(pulumi.Input.decodeList<VirtualNetworkSubnet>(map['subnets'], (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressSpaces: map['addressSpaces'] == null ? null : ((map['addressSpaces'] as List).cast<String>()).input(),
+      bgpCommunity: map['bgpCommunity'] == null ? null : (map['bgpCommunity'] as String).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (VirtualNetworkDdosProtectionPlan.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
+      encryption: map['encryption'] == null ? null : (VirtualNetworkEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : (map['flowTimeoutInMinutes'] as int).input(),
+      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(map['ipAddressPools'], (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateEndpointVnetPolicies: map['privateEndpointVnetPolicies'] == null ? null : (map['privateEndpointVnetPolicies'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkSubnet>(map['subnets'], (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

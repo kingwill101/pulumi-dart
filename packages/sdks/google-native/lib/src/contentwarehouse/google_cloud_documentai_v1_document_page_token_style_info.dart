@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_type_color.dart';
 
 /// Font and other text style attributes.
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /// Color of the background.
-  final GoogleTypeColor? backgroundColor;
+  final pulumi.Input<GoogleTypeColor>? backgroundColor;
   /// Whether the text is bold (equivalent to font_weight is at least `700`).
-  final bool? bold;
+  final pulumi.Input<bool>? bold;
   /// Font size in points (`1` point is `¹⁄₇₂` inches).
-  final int? fontSize;
+  final pulumi.Input<int>? fontSize;
   /// Name or style of the font.
-  final String? fontType;
+  final pulumi.Input<String>? fontType;
   /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
-  final int? fontWeight;
+  final pulumi.Input<int>? fontWeight;
   /// Whether the text is handwritten.
-  final bool? handwritten;
+  final pulumi.Input<bool>? handwritten;
   /// Whether the text is italic.
-  final bool? italic;
+  final pulumi.Input<bool>? italic;
   /// Letter spacing in points.
-  final double? letterSpacing;
+  final pulumi.Input<double>? letterSpacing;
   /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
-  final double? pixelFontSize;
+  final pulumi.Input<double>? pixelFontSize;
   /// Whether the text is in small caps.
-  final bool? smallcaps;
+  final pulumi.Input<bool>? smallcaps;
   /// Whether the text is strikethrough.
-  final bool? strikeout;
+  final pulumi.Input<bool>? strikeout;
   /// Whether the text is a subscript.
-  final bool? subscript;
+  final pulumi.Input<bool>? subscript;
   /// Whether the text is a superscript.
-  final bool? superscript;
+  final pulumi.Input<bool>? superscript;
   /// Color of the text.
-  final GoogleTypeColor? textColor;
+  final pulumi.Input<GoogleTypeColor>? textColor;
   /// Whether the text is underlined.
-  final bool? underlined;
+  final pulumi.Input<bool>? underlined;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo].
   /// [backgroundColor] Color of the background.
@@ -71,7 +72,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundColor': ?backgroundColor == null ? null : backgroundColor!.toMap(),
+      'backgroundColor': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(backgroundColor, (value) => value.toMap()),
       'bold': ?bold,
       'fontSize': ?fontSize,
       'fontType': ?fontType,
@@ -84,28 +85,28 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
       'strikeout': ?strikeout,
       'subscript': ?subscript,
       'superscript': ?superscript,
-      'textColor': ?textColor == null ? null : textColor!.toMap(),
+      'textColor': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(textColor, (value) => value.toMap()),
       'underlined': ?underlined,
     };
   }
 
   factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(
-      backgroundColor: map['backgroundColor'] == null ? null : GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>()),
-      bold: map['bold'] == null ? null : map['bold'] as bool,
-      fontSize: map['fontSize'] == null ? null : map['fontSize'] as int,
-      fontType: map['fontType'] == null ? null : map['fontType'] as String,
-      fontWeight: map['fontWeight'] == null ? null : map['fontWeight'] as int,
-      handwritten: map['handwritten'] == null ? null : map['handwritten'] as bool,
-      italic: map['italic'] == null ? null : map['italic'] as bool,
-      letterSpacing: map['letterSpacing'] == null ? null : map['letterSpacing'] as double,
-      pixelFontSize: map['pixelFontSize'] == null ? null : map['pixelFontSize'] as double,
-      smallcaps: map['smallcaps'] == null ? null : map['smallcaps'] as bool,
-      strikeout: map['strikeout'] == null ? null : map['strikeout'] as bool,
-      subscript: map['subscript'] == null ? null : map['subscript'] as bool,
-      superscript: map['superscript'] == null ? null : map['superscript'] as bool,
-      textColor: map['textColor'] == null ? null : GoogleTypeColor.fromMap((map['textColor'] as Map).cast<String, dynamic>()),
-      underlined: map['underlined'] == null ? null : map['underlined'] as bool,
+      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
+      bold: map['bold'] == null ? null : (map['bold'] as bool).input(),
+      fontSize: map['fontSize'] == null ? null : (map['fontSize'] as int).input(),
+      fontType: map['fontType'] == null ? null : (map['fontType'] as String).input(),
+      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight'] as int).input(),
+      handwritten: map['handwritten'] == null ? null : (map['handwritten'] as bool).input(),
+      italic: map['italic'] == null ? null : (map['italic'] as bool).input(),
+      letterSpacing: map['letterSpacing'] == null ? null : (map['letterSpacing'] as double).input(),
+      pixelFontSize: map['pixelFontSize'] == null ? null : (map['pixelFontSize'] as double).input(),
+      smallcaps: map['smallcaps'] == null ? null : (map['smallcaps'] as bool).input(),
+      strikeout: map['strikeout'] == null ? null : (map['strikeout'] as bool).input(),
+      subscript: map['subscript'] == null ? null : (map['subscript'] as bool).input(),
+      superscript: map['superscript'] == null ? null : (map['superscript'] as bool).input(),
+      textColor: map['textColor'] == null ? null : (GoogleTypeColor.fromMap((map['textColor'] as Map).cast<String, dynamic>())).input(),
+      underlined: map['underlined'] == null ? null : (map['underlined'] as bool).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetAs3DeviceInformationArgs {
   /// [applications] Optional.
   /// [tenant] Required.
   GetAs3DeviceInformationArgs({
-    pulumi.Output<List<String>>? applications,
-    required pulumi.Output<String> tenant,
-  }) :
-      applications = pulumi.Input.asOptionalInput<List<String>>(applications),
-      tenant = pulumi.Input.asInput<String>(tenant);
+    this.applications,
+    required this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetAs3DeviceInformationArgs {
 
   factory GetAs3DeviceInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetAs3DeviceInformationArgs(
-      applications: map['applications'] == null ? null : pulumi.Output.create<List<String>>((map['applications'] as List).cast<String>()),
-      tenant: pulumi.Output.create<String>(map['tenant'] as String),
+      applications: map['applications'] == null ? null : ((map['applications'] as List).cast<String>()).input(),
+      tenant: (map['tenant'] as String).input(),
     );
   }
 }

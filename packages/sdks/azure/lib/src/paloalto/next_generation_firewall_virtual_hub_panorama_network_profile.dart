@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaNetworkProfile {
   /// Specifies a list of Public IP IDs to use for Egress NAT.
-  final List<String>? egressNatIpAddressIds;
-  final List<String>? egressNatIpAddresses;
-  final String? ipOfTrustForUserDefinedRoutes;
+  final pulumi.Input<List<String>>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>>? egressNatIpAddresses;
+  final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
   /// The ID of the Palo Alto Network Virtual Appliance in the VHub. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
-  final String networkVirtualApplianceId;
+  final pulumi.Input<String> networkVirtualApplianceId;
   /// Specifies a list of Public IP IDs to use for this Next Generation Firewall.
-  final List<String> publicIpAddressIds;
-  final List<String>? publicIpAddresses;
+  final pulumi.Input<List<String>> publicIpAddressIds;
+  final pulumi.Input<List<String>>? publicIpAddresses;
   /// Specifies a list of trusted ranges to use for the Network.
-  final List<String>? trustedAddressRanges;
-  final String? trustedSubnetId;
-  final String? untrustedSubnetId;
+  final pulumi.Input<List<String>>? trustedAddressRanges;
+  final pulumi.Input<String>? trustedSubnetId;
+  final pulumi.Input<String>? untrustedSubnetId;
   /// The ID of the Virtual Hub this Next generation Fireall will be deployed in. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
-  final String virtualHubId;
+  final pulumi.Input<String> virtualHubId;
 
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaNetworkProfile].
   /// [egressNatIpAddressIds] Specifies a list of Public IP IDs to use for Egress NAT.
@@ -59,16 +60,16 @@ class NextGenerationFirewallVirtualHubPanoramaNetworkProfile {
 
   factory NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaNetworkProfile(
-      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : (map['egressNatIpAddressIds'] as List).cast<String>(),
-      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : (map['egressNatIpAddresses'] as List).cast<String>(),
-      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : map['ipOfTrustForUserDefinedRoutes'] as String,
-      networkVirtualApplianceId: map['networkVirtualApplianceId'] as String,
-      publicIpAddressIds: (map['publicIpAddressIds'] as List).cast<String>(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : (map['publicIpAddresses'] as List).cast<String>(),
-      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : (map['trustedAddressRanges'] as List).cast<String>(),
-      trustedSubnetId: map['trustedSubnetId'] == null ? null : map['trustedSubnetId'] as String,
-      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : map['untrustedSubnetId'] as String,
-      virtualHubId: map['virtualHubId'] as String,
+      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds'] as List).cast<String>()).input(),
+      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses'] as List).cast<String>()).input(),
+      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes'] as String).input(),
+      networkVirtualApplianceId: (map['networkVirtualApplianceId'] as String).input(),
+      publicIpAddressIds: ((map['publicIpAddressIds'] as List).cast<String>()).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
+      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges'] as List).cast<String>()).input(),
+      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId'] as String).input(),
+      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId'] as String).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class RuntimeEnvironmentArgs {
   /// [tags] Resource tags.
   /// [version] Version of Language
   RuntimeEnvironmentArgs({
-    required pulumi.Output<String> automationAccountName,
-    pulumi.Output<Map<String, String>>? defaultPackages,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? runtimeEnvironmentName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      defaultPackages = pulumi.Input.asOptionalInput<Map<String, String>>(defaultPackages),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runtimeEnvironmentName = pulumi.Input.asOptionalInput<String>(runtimeEnvironmentName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.automationAccountName,
+    this.defaultPackages,
+    this.description,
+    this.language,
+    this.location,
+    required this.resourceGroupName,
+    this.runtimeEnvironmentName,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RuntimeEnvironmentArgs {
 
   factory RuntimeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeEnvironmentArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      defaultPackages: map['defaultPackages'] == null ? null : pulumi.Output.create<Map<String, String>>((map['defaultPackages'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runtimeEnvironmentName: map['runtimeEnvironmentName'] == null ? null : pulumi.Output.create<String>(map['runtimeEnvironmentName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      defaultPackages: map['defaultPackages'] == null ? null : ((map['defaultPackages'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runtimeEnvironmentName: map['runtimeEnvironmentName'] == null ? null : (map['runtimeEnvironmentName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

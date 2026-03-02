@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Linked service reference type.
 class LinkedServiceReference {
   /// Arguments for LinkedService.
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Reference LinkedService name.
-  final String referenceName;
+  final pulumi.Input<String> referenceName;
   /// Linked service reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [LinkedServiceReference].
   /// [parameters] Arguments for LinkedService.
@@ -30,9 +31,9 @@ class LinkedServiceReference {
 
   factory LinkedServiceReference.fromMap(Map<String, dynamic> map) {
     return LinkedServiceReference(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      referenceName: map['referenceName'] as String,
-      type: map['type'] as String,
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      referenceName: (map['referenceName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

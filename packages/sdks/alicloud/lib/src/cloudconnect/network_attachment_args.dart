@@ -16,11 +16,9 @@ class NetworkAttachmentArgs {
   /// [ccnId] The ID of the CCN instance.
   /// [sagId] The ID of the Smart Access Gateway instance.
   NetworkAttachmentArgs({
-    required pulumi.Output<String> ccnId,
-    required pulumi.Output<String> sagId,
-  }) :
-      ccnId = pulumi.Input.asInput<String>(ccnId),
-      sagId = pulumi.Input.asInput<String>(sagId);
+    required this.ccnId,
+    required this.sagId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class NetworkAttachmentArgs {
 
   factory NetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentArgs(
-      ccnId: pulumi.Output.create<String>(map['ccnId'] as String),
-      sagId: pulumi.Output.create<String>(map['sagId'] as String),
+      ccnId: (map['ccnId'] as String).input(),
+      sagId: (map['sagId'] as String).input(),
     );
   }
 }

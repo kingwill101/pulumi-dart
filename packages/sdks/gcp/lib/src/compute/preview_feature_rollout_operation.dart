@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'preview_feature_rollout_operation_rollout_input.dart';
 
 class PreviewFeatureRolloutOperation {
   /// The input for the rollout operation.
   /// Structure is documented below.
-  final PreviewFeatureRolloutOperationRolloutInput? rolloutInput;
+  final pulumi.Input<PreviewFeatureRolloutOperationRolloutInput>? rolloutInput;
 
   /// Creates a new [PreviewFeatureRolloutOperation].
   /// [rolloutInput] The input for the rollout operation.
@@ -15,13 +16,13 @@ class PreviewFeatureRolloutOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rolloutInput': ?rolloutInput == null ? null : rolloutInput!.toMap(),
+      'rolloutInput': ?pulumi.Input.mapOptionalInputValue<PreviewFeatureRolloutOperationRolloutInput, Map<String, dynamic>>(rolloutInput, (value) => value.toMap()),
     };
   }
 
   factory PreviewFeatureRolloutOperation.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperation(
-      rolloutInput: map['rolloutInput'] == null ? null : PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput'] as Map).cast<String, dynamic>()),
+      rolloutInput: map['rolloutInput'] == null ? null : (PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

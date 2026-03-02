@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesApic {
   /// Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
-  final String? eoi;
+  final pulumi.Input<String>? eoi;
 
   /// Creates a new [DomainFeaturesApic].
   /// [eoi] Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
@@ -19,7 +20,7 @@ class DomainFeaturesApic {
 
   factory DomainFeaturesApic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesApic(
-      eoi: map['eoi'] == null ? null : map['eoi'] as String,
+      eoi: map['eoi'] == null ? null : (map['eoi'] as String).input(),
     );
   }
 }

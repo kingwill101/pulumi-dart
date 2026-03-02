@@ -43,27 +43,17 @@ class AvailabilitySetArgs {
   /// [tags] Resource tags.
   /// [virtualMachines] A list of references to all virtual machines in the availability set.
   AvailabilitySetArgs({
-    pulumi.Output<String>? availabilitySetName,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? platformFaultDomainCount,
-    pulumi.Output<int>? platformUpdateDomainCount,
-    pulumi.Output<SubResource>? proximityPlacementGroup,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ScheduledEventsPolicy>? scheduledEventsPolicy,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<SubResource>>? virtualMachines,
-  }) :
-      availabilitySetName = pulumi.Input.asOptionalInput<String>(availabilitySetName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      platformFaultDomainCount = pulumi.Input.asOptionalInput<int>(platformFaultDomainCount),
-      platformUpdateDomainCount = pulumi.Input.asOptionalInput<int>(platformUpdateDomainCount),
-      proximityPlacementGroup = pulumi.Input.asOptionalInput<SubResource>(proximityPlacementGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduledEventsPolicy = pulumi.Input.asOptionalInput<ScheduledEventsPolicy>(scheduledEventsPolicy),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMachines = pulumi.Input.asOptionalInput<List<SubResource>>(virtualMachines);
+    this.availabilitySetName,
+    this.location,
+    this.platformFaultDomainCount,
+    this.platformUpdateDomainCount,
+    this.proximityPlacementGroup,
+    required this.resourceGroupName,
+    this.scheduledEventsPolicy,
+    this.sku,
+    this.tags,
+    this.virtualMachines,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class AvailabilitySetArgs {
 
   factory AvailabilitySetArgs.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetArgs(
-      availabilitySetName: map['availabilitySetName'] == null ? null : pulumi.Output.create<String>(map['availabilitySetName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : pulumi.Output.create<int>(map['platformFaultDomainCount'] as int),
-      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : pulumi.Output.create<int>(map['platformUpdateDomainCount'] as int),
-      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : pulumi.Output.create<SubResource>(SubResource.fromMap((map['proximityPlacementGroup'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduledEventsPolicy: map['scheduledEventsPolicy'] == null ? null : pulumi.Output.create<ScheduledEventsPolicy>(ScheduledEventsPolicy.fromMap((map['scheduledEventsPolicy'] as Map).cast<String, dynamic>())),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualMachines: map['virtualMachines'] == null ? null : pulumi.Output.create<List<SubResource>>(pulumi.Input.decodeList<SubResource>(map['virtualMachines'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
+      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount'] as int).input(),
+      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : (map['platformUpdateDomainCount'] as int).input(),
+      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (SubResource.fromMap((map['proximityPlacementGroup'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduledEventsPolicy: map['scheduledEventsPolicy'] == null ? null : (ScheduledEventsPolicy.fromMap((map['scheduledEventsPolicy'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['virtualMachines'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

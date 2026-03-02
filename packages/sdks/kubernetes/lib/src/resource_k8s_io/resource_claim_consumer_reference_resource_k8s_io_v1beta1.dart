@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim.
 class ResourceClaimConsumerReferenceResourceK8sIoV1beta1 {
   /// APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
-  final String? apiGroup;
+  final pulumi.Input<String>? apiGroup;
   /// Name is the name of resource being referenced.
-  final String name;
+  final pulumi.Input<String> name;
   /// Resource is the type of resource being referenced, for example "pods".
-  final String resource;
+  final pulumi.Input<String> resource;
   /// UID identifies exactly one incarnation of the resource.
-  final String uid;
+  final pulumi.Input<String> uid;
 
   /// Creates a new [ResourceClaimConsumerReferenceResourceK8sIoV1beta1].
   /// [apiGroup] APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
@@ -35,10 +36,10 @@ class ResourceClaimConsumerReferenceResourceK8sIoV1beta1 {
 
   factory ResourceClaimConsumerReferenceResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimConsumerReferenceResourceK8sIoV1beta1(
-      apiGroup: map['apiGroup'] == null ? null : map['apiGroup'] as String,
-      name: map['name'] as String,
-      resource: map['resource'] as String,
-      uid: map['uid'] as String,
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      name: (map['name'] as String).input(),
+      resource: (map['resource'] as String).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

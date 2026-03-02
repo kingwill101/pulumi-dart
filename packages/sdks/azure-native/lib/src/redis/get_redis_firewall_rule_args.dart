@@ -19,13 +19,10 @@ class GetRedisFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [ruleName] The name of the firewall rule.
   GetRedisFirewallRuleArgs({
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleName,
-  }) :
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.cacheName,
+    required this.resourceGroupName,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRedisFirewallRuleArgs {
 
   factory GetRedisFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRedisFirewallRuleArgs(
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      cacheName: (map['cacheName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

@@ -5,12 +5,12 @@ import 'edge_cache_service_routing_path_matcher_route_rule.dart';
 
 class EdgeCacheServiceRoutingPathMatcher {
   /// A human-readable description of the resource.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name to which this PathMatcher is referred by the HostRule.
-  final String name;
+  final pulumi.Input<String> name;
   /// The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
   /// Structure is documented below.
-  final List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules;
+  final pulumi.Input<List<EdgeCacheServiceRoutingPathMatcherRouteRule>> routeRules;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcher].
   /// [description] A human-readable description of the resource.
@@ -26,15 +26,15 @@ class EdgeCacheServiceRoutingPathMatcher {
     return <String, dynamic>{
       'description': ?description,
       'name': name,
-      'routeRules': pulumi.Input.encodeList<EdgeCacheServiceRoutingPathMatcherRouteRule, Map<String, dynamic>>(routeRules, (value) => value.toMap()),
+      'routeRules': pulumi.Input.mapInputValue<List<EdgeCacheServiceRoutingPathMatcherRouteRule>, List<Map<String, dynamic>>>(routeRules, (value) => pulumi.Input.encodeList<EdgeCacheServiceRoutingPathMatcherRouteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EdgeCacheServiceRoutingPathMatcher.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcher(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      routeRules: pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRule>(map['routeRules'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      routeRules: (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRule>(map['routeRules'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

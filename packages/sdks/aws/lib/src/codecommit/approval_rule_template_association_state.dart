@@ -16,13 +16,10 @@ class ApprovalRuleTemplateAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] The name of the repository that you want to associate with the template.
   ApprovalRuleTemplateAssociationState({
-    pulumi.Output<String>? approvalRuleTemplateName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? repositoryName,
-  }) :
-      approvalRuleTemplateName = pulumi.Input.asOptionalInput<String>(approvalRuleTemplateName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asOptionalInput<String>(repositoryName);
+    this.approvalRuleTemplateName,
+    this.region,
+    this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ApprovalRuleTemplateAssociationState {
 
   factory ApprovalRuleTemplateAssociationState.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateAssociationState(
-      approvalRuleTemplateName: map['approvalRuleTemplateName'] == null ? null : pulumi.Output.create<String>(map['approvalRuleTemplateName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: map['repositoryName'] == null ? null : pulumi.Output.create<String>(map['repositoryName'] as String),
+      approvalRuleTemplateName: map['approvalRuleTemplateName'] == null ? null : (map['approvalRuleTemplateName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
     );
   }
 }

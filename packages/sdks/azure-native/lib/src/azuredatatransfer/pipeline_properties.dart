@@ -6,15 +6,15 @@ import 'subscriber.dart';
 /// Properties of pipeline
 class PipelineProperties {
   /// Display name of this pipeline
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The flow types allowed for this pipeline
-  final List<String>? flowTypes;
+  final pulumi.Input<List<String>>? flowTypes;
   /// The policies for this pipeline
-  final List<String>? policies;
+  final pulumi.Input<List<String>>? policies;
   /// Remote cloud of the data to be transferred or received
-  final String remoteCloud;
+  final pulumi.Input<String> remoteCloud;
   /// Subscribers of this resource
-  final List<Subscriber>? subscribers;
+  final pulumi.Input<List<Subscriber>>? subscribers;
 
   /// Creates a new [PipelineProperties].
   /// [displayName] Display name of this pipeline
@@ -36,17 +36,17 @@ class PipelineProperties {
       'flowTypes': ?flowTypes,
       'policies': ?policies,
       'remoteCloud': remoteCloud,
-      'subscribers': ?subscribers == null ? null : pulumi.Input.encodeList<Subscriber, Map<String, dynamic>>(subscribers!, (value) => value.toMap()),
+      'subscribers': ?pulumi.Input.mapOptionalInputValue<List<Subscriber>, List<Map<String, dynamic>>>(subscribers, (value) => pulumi.Input.encodeList<Subscriber, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PipelineProperties.fromMap(Map<String, dynamic> map) {
     return PipelineProperties(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      flowTypes: map['flowTypes'] == null ? null : (map['flowTypes'] as List).cast<String>(),
-      policies: map['policies'] == null ? null : (map['policies'] as List).cast<String>(),
-      remoteCloud: map['remoteCloud'] as String,
-      subscribers: map['subscribers'] == null ? null : pulumi.Input.decodeList<Subscriber>(map['subscribers'], (value) => Subscriber.fromMap((value as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      flowTypes: map['flowTypes'] == null ? null : ((map['flowTypes'] as List).cast<String>()).input(),
+      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      remoteCloud: (map['remoteCloud'] as String).input(),
+      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<Subscriber>(map['subscribers'], (value) => Subscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

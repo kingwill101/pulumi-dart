@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQueueOutboundCallerConfig {
   /// Specifies the caller ID name.
-  final String outboundCallerIdName;
+  final pulumi.Input<String> outboundCallerIdName;
   /// Specifies the caller ID number.
-  final String outboundCallerIdNumberId;
+  final pulumi.Input<String> outboundCallerIdNumberId;
   /// Outbound whisper flow to be used during an outbound call.
-  final String outboundFlowId;
+  final pulumi.Input<String> outboundFlowId;
 
   /// Creates a new [GetQueueOutboundCallerConfig].
   /// [outboundCallerIdName] Specifies the caller ID name.
@@ -29,9 +30,9 @@ class GetQueueOutboundCallerConfig {
 
   factory GetQueueOutboundCallerConfig.fromMap(Map<String, dynamic> map) {
     return GetQueueOutboundCallerConfig(
-      outboundCallerIdName: map['outboundCallerIdName'] as String,
-      outboundCallerIdNumberId: map['outboundCallerIdNumberId'] as String,
-      outboundFlowId: map['outboundFlowId'] as String,
+      outboundCallerIdName: (map['outboundCallerIdName'] as String).input(),
+      outboundCallerIdNumberId: (map['outboundCallerIdNumberId'] as String).input(),
+      outboundFlowId: (map['outboundFlowId'] as String).input(),
     );
   }
 }

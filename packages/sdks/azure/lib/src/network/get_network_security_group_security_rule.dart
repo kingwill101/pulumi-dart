@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkSecurityGroupSecurityRule {
   /// Is network traffic is allowed or denied?
-  final String access;
+  final pulumi.Input<String> access;
   /// The description for this rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// CIDR or destination IP range or * to match any IP.
-  final String destinationAddressPrefix;
+  final pulumi.Input<String> destinationAddressPrefix;
   /// A list of CIDRs or destination IP ranges.
-  final List<String> destinationAddressPrefixes;
+  final pulumi.Input<List<String>> destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
-  final List<String>? destinationApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>>? destinationApplicationSecurityGroupIds;
   /// The Destination Port or Range.
-  final String destinationPortRange;
-  final List<String> destinationPortRanges;
+  final pulumi.Input<String> destinationPortRange;
+  final pulumi.Input<List<String>> destinationPortRanges;
   /// The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// Specifies the Name of the Network Security Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The priority of the rule
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The network protocol this rule applies to.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// CIDR or source IP range or * to match any IP.
-  final String sourceAddressPrefix;
+  final pulumi.Input<String> sourceAddressPrefix;
   /// A list of CIDRs or source IP ranges.
-  final List<String> sourceAddressPrefixes;
+  final pulumi.Input<List<String>> sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
-  final List<String>? sourceApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>>? sourceApplicationSecurityGroupIds;
   /// The Source Port or Range.
-  final String sourcePortRange;
-  final List<String> sourcePortRanges;
+  final pulumi.Input<String> sourcePortRange;
+  final pulumi.Input<List<String>> sourcePortRanges;
 
   /// Creates a new [GetNetworkSecurityGroupSecurityRule].
   /// [access] Is network traffic is allowed or denied?
@@ -92,22 +93,22 @@ class GetNetworkSecurityGroupSecurityRule {
 
   factory GetNetworkSecurityGroupSecurityRule.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupSecurityRule(
-      access: map['access'] as String,
-      description: map['description'] as String,
-      destinationAddressPrefix: map['destinationAddressPrefix'] as String,
-      destinationAddressPrefixes: (map['destinationAddressPrefixes'] as List).cast<String>(),
-      destinationApplicationSecurityGroupIds: map['destinationApplicationSecurityGroupIds'] == null ? null : (map['destinationApplicationSecurityGroupIds'] as List).cast<String>(),
-      destinationPortRange: map['destinationPortRange'] as String,
-      destinationPortRanges: (map['destinationPortRanges'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      sourceAddressPrefix: map['sourceAddressPrefix'] as String,
-      sourceAddressPrefixes: (map['sourceAddressPrefixes'] as List).cast<String>(),
-      sourceApplicationSecurityGroupIds: map['sourceApplicationSecurityGroupIds'] == null ? null : (map['sourceApplicationSecurityGroupIds'] as List).cast<String>(),
-      sourcePortRange: map['sourcePortRange'] as String,
-      sourcePortRanges: (map['sourcePortRanges'] as List).cast<String>(),
+      access: (map['access'] as String).input(),
+      description: (map['description'] as String).input(),
+      destinationAddressPrefix: (map['destinationAddressPrefix'] as String).input(),
+      destinationAddressPrefixes: ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
+      destinationApplicationSecurityGroupIds: map['destinationApplicationSecurityGroupIds'] == null ? null : ((map['destinationApplicationSecurityGroupIds'] as List).cast<String>()).input(),
+      destinationPortRange: (map['destinationPortRange'] as String).input(),
+      destinationPortRanges: ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      sourceAddressPrefix: (map['sourceAddressPrefix'] as String).input(),
+      sourceAddressPrefixes: ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
+      sourceApplicationSecurityGroupIds: map['sourceApplicationSecurityGroupIds'] == null ? null : ((map['sourceApplicationSecurityGroupIds'] as List).cast<String>()).input(),
+      sourcePortRange: (map['sourcePortRange'] as String).input(),
+      sourcePortRanges: ((map['sourcePortRanges'] as List).cast<String>()).input(),
     );
   }
 }

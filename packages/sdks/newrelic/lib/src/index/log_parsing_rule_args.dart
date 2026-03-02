@@ -34,23 +34,15 @@ class LogParsingRuleArgs {
   /// [name] Name of rule.
   /// [nrql] The NRQL to match events to the parsing rule.
   LogParsingRuleArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? attribute,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> grok,
-    required pulumi.Output<String> lucene,
-    pulumi.Output<bool>? matched,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nrql,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      attribute = pulumi.Input.asOptionalInput<String>(attribute),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      grok = pulumi.Input.asInput<String>(grok),
-      lucene = pulumi.Input.asInput<String>(lucene),
-      matched = pulumi.Input.asOptionalInput<bool>(matched),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nrql = pulumi.Input.asInput<String>(nrql);
+    this.accountId,
+    this.attribute,
+    required this.enabled,
+    required this.grok,
+    required this.lucene,
+    this.matched,
+    this.name,
+    required this.nrql,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class LogParsingRuleArgs {
 
   factory LogParsingRuleArgs.fromMap(Map<String, dynamic> map) {
     return LogParsingRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      attribute: map['attribute'] == null ? null : pulumi.Output.create<String>(map['attribute'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      grok: pulumi.Output.create<String>(map['grok'] as String),
-      lucene: pulumi.Output.create<String>(map['lucene'] as String),
-      matched: map['matched'] == null ? null : pulumi.Output.create<bool>(map['matched'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nrql: pulumi.Output.create<String>(map['nrql'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      grok: (map['grok'] as String).input(),
+      lucene: (map['lucene'] as String).input(),
+      matched: map['matched'] == null ? null : (map['matched'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nrql: (map['nrql'] as String).input(),
     );
   }
 }

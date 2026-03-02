@@ -6,13 +6,13 @@ import 'error_model_response.dart';
 /// Gets the account error details.
 class AccountStatusResponseErrorDetails {
   /// Gets or sets the code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Gets or sets the details.
-  final List<ErrorModelResponse> details;
+  final pulumi.Input<List<ErrorModelResponse>> details;
   /// Gets or sets the messages.
-  final String message;
+  final pulumi.Input<String> message;
   /// Gets or sets the target.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [AccountStatusResponseErrorDetails].
   /// [code] Gets or sets the code.
@@ -29,7 +29,7 @@ class AccountStatusResponseErrorDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'details': pulumi.Input.encodeList<ErrorModelResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
+      'details': pulumi.Input.mapInputValue<List<ErrorModelResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<ErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
       'target': target,
     };
@@ -37,10 +37,10 @@ class AccountStatusResponseErrorDetails {
 
   factory AccountStatusResponseErrorDetails.fromMap(Map<String, dynamic> map) {
     return AccountStatusResponseErrorDetails(
-      code: map['code'] as String,
-      details: pulumi.Input.decodeList<ErrorModelResponse>(map['details'], (value) => ErrorModelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
-      target: map['target'] as String,
+      code: (map['code'] as String).input(),
+      details: (pulumi.Input.decodeList<ErrorModelResponse>(map['details'], (value) => ErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

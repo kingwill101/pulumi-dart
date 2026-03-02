@@ -42,19 +42,13 @@ class RegionalParameterArgs {
   /// [parameterId] This must be unique within the project.
   /// [project] The ID of the project in which the resource belongs.
   RegionalParameterArgs({
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parameterId,
-    pulumi.Output<String>? project,
-  }) :
-      format = pulumi.Input.asOptionalInput<String>(format),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      parameterId = pulumi.Input.asInput<String>(parameterId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.format,
+    this.kmsKey,
+    this.labels,
+    required this.location,
+    required this.parameterId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,12 +63,12 @@ class RegionalParameterArgs {
 
   factory RegionalParameterArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterArgs(
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parameterId: pulumi.Output.create<String>(map['parameterId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      parameterId: (map['parameterId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

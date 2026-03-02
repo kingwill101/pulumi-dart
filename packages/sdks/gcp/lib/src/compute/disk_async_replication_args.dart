@@ -19,11 +19,9 @@ class DiskAsyncReplicationArgs {
   /// [primaryDisk] The primary disk (source of replication).
   /// [secondaryDisk] The secondary disk (target of replication). You can specify only one value. Structure is documented below.
   DiskAsyncReplicationArgs({
-    required pulumi.Output<String> primaryDisk,
-    required pulumi.Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk,
-  }) :
-      primaryDisk = pulumi.Input.asInput<String>(primaryDisk),
-      secondaryDisk = pulumi.Input.asInput<DiskAsyncReplicationSecondaryDisk>(secondaryDisk);
+    required this.primaryDisk,
+    required this.secondaryDisk,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class DiskAsyncReplicationArgs {
 
   factory DiskAsyncReplicationArgs.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationArgs(
-      primaryDisk: pulumi.Output.create<String>(map['primaryDisk'] as String),
-      secondaryDisk: pulumi.Output.create<DiskAsyncReplicationSecondaryDisk>(DiskAsyncReplicationSecondaryDisk.fromMap((map['secondaryDisk'] as Map).cast<String, dynamic>())),
+      primaryDisk: (map['primaryDisk'] as String).input(),
+      secondaryDisk: (DiskAsyncReplicationSecondaryDisk.fromMap((map['secondaryDisk'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetRegionSecurityPolicyComputeBetaArgs {
   /// [region] Required.
   /// [securityPolicy] Required.
   GetRegionSecurityPolicyComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> securityPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+    this.project,
+    required this.region,
+    required this.securityPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionSecurityPolicyComputeBetaArgs {
 
   factory GetRegionSecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      securityPolicy: pulumi.Output.create<String>(map['securityPolicy'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      securityPolicy: (map['securityPolicy'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Neighbor Address properties.
 class NeighborAddress {
   /// IP Address.
-  final String? address;
+  final pulumi.Input<String>? address;
 
   /// Creates a new [NeighborAddress].
   /// [address] IP Address.
@@ -20,7 +21,7 @@ class NeighborAddress {
 
   factory NeighborAddress.fromMap(Map<String, dynamic> map) {
     return NeighborAddress(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
     );
   }
 }

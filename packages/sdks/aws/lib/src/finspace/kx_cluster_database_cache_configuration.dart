@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KxClusterDatabaseCacheConfiguration {
   /// Type of disk cache.
-  final String cacheType;
+  final pulumi.Input<String> cacheType;
   /// Paths within the database to cache.
-  final List<String>? dbPaths;
+  final pulumi.Input<List<String>>? dbPaths;
 
   /// Creates a new [KxClusterDatabaseCacheConfiguration].
   /// [cacheType] Type of disk cache.
@@ -24,8 +25,8 @@ class KxClusterDatabaseCacheConfiguration {
 
   factory KxClusterDatabaseCacheConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterDatabaseCacheConfiguration(
-      cacheType: map['cacheType'] as String,
-      dbPaths: map['dbPaths'] == null ? null : (map['dbPaths'] as List).cast<String>(),
+      cacheType: (map['cacheType'] as String).input(),
+      dbPaths: map['dbPaths'] == null ? null : ((map['dbPaths'] as List).cast<String>()).input(),
     );
   }
 }

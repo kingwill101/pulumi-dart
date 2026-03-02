@@ -28,25 +28,16 @@ class ApplicationArgs {
   /// [template] Required.
   /// [version] Optional.
   ApplicationArgs({
-    pulumi.Output<bool>? blueGreen,
-    pulumi.Output<bool>? blueGreenConfirm,
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? environment,
-    pulumi.Output<bool>? latestImage,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> template,
-    pulumi.Output<String>? version,
-  }) :
-      blueGreen = pulumi.Input.asOptionalInput<bool>(blueGreen),
-      blueGreenConfirm = pulumi.Input.asOptionalInput<bool>(blueGreenConfirm),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asOptionalInput<Map<String, String>>(environment),
-      latestImage = pulumi.Input.asOptionalInput<bool>(latestImage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      template = pulumi.Input.asInput<String>(template),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.blueGreen,
+    this.blueGreenConfirm,
+    required this.clusterName,
+    this.description,
+    this.environment,
+    this.latestImage,
+    this.name,
+    required this.template,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,15 +55,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      blueGreen: map['blueGreen'] == null ? null : pulumi.Output.create<bool>(map['blueGreen'] as bool),
-      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : pulumi.Output.create<bool>(map['blueGreenConfirm'] as bool),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<Map<String, String>>((map['environment'] as Map).cast<String, String>()),
-      latestImage: map['latestImage'] == null ? null : pulumi.Output.create<bool>(map['latestImage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      template: pulumi.Output.create<String>(map['template'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen'] as bool).input(),
+      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm'] as bool).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      latestImage: map['latestImage'] == null ? null : (map['latestImage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      template: (map['template'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

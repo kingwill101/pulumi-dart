@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about application versions
 class ApplicationVersionResponse {
   /// Is Deprecated
-  final bool isDeprecated;
+  final pulumi.Input<bool> isDeprecated;
   /// Is Latest
-  final bool isLatest;
+  final pulumi.Input<bool> isLatest;
   /// Is Preview
-  final bool isPreview;
+  final pulumi.Input<bool> isPreview;
   /// Application Version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ApplicationVersionResponse].
   /// [isDeprecated] Is Deprecated
@@ -35,10 +36,10 @@ class ApplicationVersionResponse {
 
   factory ApplicationVersionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionResponse(
-      isDeprecated: map['isDeprecated'] as bool,
-      isLatest: map['isLatest'] as bool,
-      isPreview: map['isPreview'] as bool,
-      version: map['version'] as String,
+      isDeprecated: (map['isDeprecated'] as bool).input(),
+      isLatest: (map['isLatest'] as bool).input(),
+      isPreview: (map['isPreview'] as bool).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

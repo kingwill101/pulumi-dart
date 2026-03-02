@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_profile_rulesets.dart';
 
 /// Defines the full set of properties for a FlowProfile resource.
 class FlowProfileProperties {
   /// A user-defined description of the FlowProfile.
-  final String description;
+  final pulumi.Input<String> description;
   /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
-  final String replicationScenario;
+  final pulumi.Input<String> replicationScenario;
   /// A set of configurable rulesets applied to this FlowProfile.
-  final FlowProfileRulesets? rulesets;
+  final pulumi.Input<FlowProfileRulesets>? rulesets;
   /// The operational status of the FlowProfile.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [FlowProfileProperties].
   /// [description] A user-defined description of the FlowProfile.
@@ -29,17 +30,17 @@ class FlowProfileProperties {
     return <String, dynamic>{
       'description': description,
       'replicationScenario': replicationScenario,
-      'rulesets': ?rulesets == null ? null : rulesets!.toMap(),
+      'rulesets': ?pulumi.Input.mapOptionalInputValue<FlowProfileRulesets, Map<String, dynamic>>(rulesets, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory FlowProfileProperties.fromMap(Map<String, dynamic> map) {
     return FlowProfileProperties(
-      description: map['description'] as String,
-      replicationScenario: map['replicationScenario'] as String,
-      rulesets: map['rulesets'] == null ? null : FlowProfileRulesets.fromMap((map['rulesets'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      replicationScenario: (map['replicationScenario'] as String).input(),
+      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesets.fromMap((map['rulesets'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

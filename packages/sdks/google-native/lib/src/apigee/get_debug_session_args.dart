@@ -20,17 +20,12 @@ class GetDebugSessionArgs {
   /// [organizationId] Required.
   /// [revisionId] Required.
   GetDebugSessionArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> debugsessionId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> revisionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      debugsessionId = pulumi.Input.asInput<String>(debugsessionId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      revisionId = pulumi.Input.asInput<String>(revisionId);
+    required this.apiId,
+    required this.debugsessionId,
+    required this.environmentId,
+    required this.organizationId,
+    required this.revisionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDebugSessionArgs {
 
   factory GetDebugSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetDebugSessionArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      debugsessionId: pulumi.Output.create<String>(map['debugsessionId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      revisionId: pulumi.Output.create<String>(map['revisionId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      debugsessionId: (map['debugsessionId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      revisionId: (map['revisionId'] as String).input(),
     );
   }
 }

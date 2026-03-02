@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is deprecated and has no effect. Do not use.
 class LogConfigDataAccessOptionsResponseComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final String logMode;
+  final pulumi.Input<String> logMode;
 
   /// Creates a new [LogConfigDataAccessOptionsResponseComputeV1].
   /// [logMode] This is deprecated and has no effect. Do not use.
@@ -20,7 +21,7 @@ class LogConfigDataAccessOptionsResponseComputeV1 {
 
   factory LogConfigDataAccessOptionsResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptionsResponseComputeV1(
-      logMode: map['logMode'] as String,
+      logMode: (map['logMode'] as String).input(),
     );
   }
 }

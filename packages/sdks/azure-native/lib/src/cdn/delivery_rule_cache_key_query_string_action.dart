@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_key_query_string_action_parameters.dart';
 
 /// Defines the cache-key query string action for the delivery rule.
 class DeliveryRuleCacheKeyQueryStringAction {
   /// The name of the action for the delivery rule.
   /// Expected value is 'CacheKeyQueryString'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the action.
-  final CacheKeyQueryStringActionParameters parameters;
+  final pulumi.Input<CacheKeyQueryStringActionParameters> parameters;
 
   /// Creates a new [DeliveryRuleCacheKeyQueryStringAction].
   /// [name] The name of the action for the delivery rule.
@@ -21,14 +22,14 @@ class DeliveryRuleCacheKeyQueryStringAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<CacheKeyQueryStringActionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleCacheKeyQueryStringAction.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleCacheKeyQueryStringAction(
-      name: map['name'] as String,
-      parameters: CacheKeyQueryStringActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (CacheKeyQueryStringActionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

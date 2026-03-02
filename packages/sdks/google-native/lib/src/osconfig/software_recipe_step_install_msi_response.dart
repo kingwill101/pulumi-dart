@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Installs an MSI file.
 class SoftwareRecipeStepInstallMsiResponse {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-  final List<int> allowedExitCodes;
+  final pulumi.Input<List<int>> allowedExitCodes;
   /// The id of the relevant artifact in the recipe.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
   /// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
-  final List<String> flags;
+  final pulumi.Input<List<String>> flags;
 
   /// Creates a new [SoftwareRecipeStepInstallMsiResponse].
   /// [allowedExitCodes] Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
@@ -30,9 +31,9 @@ class SoftwareRecipeStepInstallMsiResponse {
 
   factory SoftwareRecipeStepInstallMsiResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepInstallMsiResponse(
-      allowedExitCodes: (map['allowedExitCodes'] as List).cast<int>(),
-      artifactId: map['artifactId'] as String,
-      flags: (map['flags'] as List).cast<String>(),
+      allowedExitCodes: ((map['allowedExitCodes'] as List).cast<int>()).input(),
+      artifactId: (map['artifactId'] as String).input(),
+      flags: ((map['flags'] as List).cast<String>()).input(),
     );
   }
 }

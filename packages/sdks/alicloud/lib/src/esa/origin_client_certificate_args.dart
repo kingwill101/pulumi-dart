@@ -25,17 +25,12 @@ class OriginClientCertificateArgs {
   /// [privateKey] The private key of the certificate.
   /// [siteId] Site ID.
   OriginClientCertificateArgs({
-    required pulumi.Output<String> certificate,
-    pulumi.Output<List<String>>? hostnames,
-    pulumi.Output<String>? originClientCertificateName,
-    required pulumi.Output<String> privateKey,
-    required pulumi.Output<String> siteId,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      hostnames = pulumi.Input.asOptionalInput<List<String>>(hostnames),
-      originClientCertificateName = pulumi.Input.asOptionalInput<String>(originClientCertificateName),
-      privateKey = pulumi.Input.asInput<String>(privateKey),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    required this.certificate,
+    this.hostnames,
+    this.originClientCertificateName,
+    required this.privateKey,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class OriginClientCertificateArgs {
 
   factory OriginClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginClientCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      hostnames: map['hostnames'] == null ? null : pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      originClientCertificateName: map['originClientCertificateName'] == null ? null : pulumi.Output.create<String>(map['originClientCertificateName'] as String),
-      privateKey: pulumi.Output.create<String>(map['privateKey'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      certificate: (map['certificate'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      originClientCertificateName: map['originClientCertificateName'] == null ? null : (map['originClientCertificateName'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

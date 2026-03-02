@@ -48,31 +48,19 @@ class ClassificationJobArgs {
   /// [scheduleFrequency] The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `job_type` property to `ONE_TIME`. (documented below)
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClassificationJobArgs({
-    pulumi.Output<List<String>>? customDataIdentifierIds,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? initialRun,
-    pulumi.Output<String>? jobStatus,
-    required pulumi.Output<String> jobType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    required pulumi.Output<ClassificationJobS3JobDefinition> s3JobDefinition,
-    pulumi.Output<int>? samplingPercentage,
-    pulumi.Output<ClassificationJobScheduleFrequency>? scheduleFrequency,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customDataIdentifierIds = pulumi.Input.asOptionalInput<List<String>>(customDataIdentifierIds),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      initialRun = pulumi.Input.asOptionalInput<bool>(initialRun),
-      jobStatus = pulumi.Input.asOptionalInput<String>(jobStatus),
-      jobType = pulumi.Input.asInput<String>(jobType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3JobDefinition = pulumi.Input.asInput<ClassificationJobS3JobDefinition>(s3JobDefinition),
-      samplingPercentage = pulumi.Input.asOptionalInput<int>(samplingPercentage),
-      scheduleFrequency = pulumi.Input.asOptionalInput<ClassificationJobScheduleFrequency>(scheduleFrequency),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customDataIdentifierIds,
+    this.description,
+    this.initialRun,
+    this.jobStatus,
+    required this.jobType,
+    this.name,
+    this.namePrefix,
+    this.region,
+    required this.s3JobDefinition,
+    this.samplingPercentage,
+    this.scheduleFrequency,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class ClassificationJobArgs {
 
   factory ClassificationJobArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationJobArgs(
-      customDataIdentifierIds: map['customDataIdentifierIds'] == null ? null : pulumi.Output.create<List<String>>((map['customDataIdentifierIds'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      initialRun: map['initialRun'] == null ? null : pulumi.Output.create<bool>(map['initialRun'] as bool),
-      jobStatus: map['jobStatus'] == null ? null : pulumi.Output.create<String>(map['jobStatus'] as String),
-      jobType: pulumi.Output.create<String>(map['jobType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3JobDefinition: pulumi.Output.create<ClassificationJobS3JobDefinition>(ClassificationJobS3JobDefinition.fromMap((map['s3JobDefinition'] as Map).cast<String, dynamic>())),
-      samplingPercentage: map['samplingPercentage'] == null ? null : pulumi.Output.create<int>(map['samplingPercentage'] as int),
-      scheduleFrequency: map['scheduleFrequency'] == null ? null : pulumi.Output.create<ClassificationJobScheduleFrequency>(ClassificationJobScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customDataIdentifierIds: map['customDataIdentifierIds'] == null ? null : ((map['customDataIdentifierIds'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      initialRun: map['initialRun'] == null ? null : (map['initialRun'] as bool).input(),
+      jobStatus: map['jobStatus'] == null ? null : (map['jobStatus'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3JobDefinition: (ClassificationJobS3JobDefinition.fromMap((map['s3JobDefinition'] as Map).cast<String, dynamic>())).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as int).input(),
+      scheduleFrequency: map['scheduleFrequency'] == null ? null : (ClassificationJobScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

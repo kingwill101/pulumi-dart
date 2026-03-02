@@ -19,13 +19,10 @@ class PublishTaskArgs {
   /// [bizType] The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   /// [dataIdLists] Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   PublishTaskArgs({
-    pulumi.Output<String>? agentKey,
-    required pulumi.Output<String> bizType,
-    pulumi.Output<List<String>>? dataIdLists,
-  }) :
-      agentKey = pulumi.Input.asOptionalInput<String>(agentKey),
-      bizType = pulumi.Input.asInput<String>(bizType),
-      dataIdLists = pulumi.Input.asOptionalInput<List<String>>(dataIdLists);
+    this.agentKey,
+    required this.bizType,
+    this.dataIdLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PublishTaskArgs {
 
   factory PublishTaskArgs.fromMap(Map<String, dynamic> map) {
     return PublishTaskArgs(
-      agentKey: map['agentKey'] == null ? null : pulumi.Output.create<String>(map['agentKey'] as String),
-      bizType: pulumi.Output.create<String>(map['bizType'] as String),
-      dataIdLists: map['dataIdLists'] == null ? null : pulumi.Output.create<List<String>>((map['dataIdLists'] as List).cast<String>()),
+      agentKey: map['agentKey'] == null ? null : (map['agentKey'] as String).input(),
+      bizType: (map['bizType'] as String).input(),
+      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists'] as List).cast<String>()).input(),
     );
   }
 }

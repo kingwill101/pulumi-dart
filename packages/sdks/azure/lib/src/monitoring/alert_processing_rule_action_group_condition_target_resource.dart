@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertProcessingRuleActionGroupConditionTargetResource {
   /// The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// A list of values to match for a given condition. The values should be valid resource IDs.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [AlertProcessingRuleActionGroupConditionTargetResource].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
@@ -24,8 +25,8 @@ class AlertProcessingRuleActionGroupConditionTargetResource {
 
   factory AlertProcessingRuleActionGroupConditionTargetResource.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleActionGroupConditionTargetResource(
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

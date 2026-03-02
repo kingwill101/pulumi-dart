@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings {
   /// Data objects marked for deletion are deleted after this many days.
   /// Must be at least `1`.
-  final int nonCurrentDays;
+  final pulumi.Input<int> nonCurrentDays;
   /// Unreferenced data objects are marked for deletion after this many days.
   /// Must be at least `1`.
-  final int unreferencedDays;
+  final pulumi.Input<int> unreferencedDays;
 
   /// Creates a new [TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings].
   /// [nonCurrentDays] Data objects marked for deletion are deleted after this many days.
@@ -26,8 +27,8 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings 
 
   factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings(
-      nonCurrentDays: map['nonCurrentDays'] as int,
-      unreferencedDays: map['unreferencedDays'] as int,
+      nonCurrentDays: (map['nonCurrentDays'] as int).input(),
+      unreferencedDays: (map['unreferencedDays'] as int).input(),
     );
   }
 }

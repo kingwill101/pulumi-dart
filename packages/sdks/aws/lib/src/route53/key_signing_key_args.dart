@@ -24,15 +24,11 @@ class KeySigningKeyArgs {
   /// [name] Name of the key-signing key (KSK). Must be unique for each key-signing key in the same hosted zone.
   /// [status] Status of the key-signing key (KSK). Valid values: `ACTIVE`, `INACTIVE`. Defaults to `ACTIVE`.
   KeySigningKeyArgs({
-    required pulumi.Output<String> hostedZoneId,
-    required pulumi.Output<String> keyManagementServiceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? status,
-  }) :
-      hostedZoneId = pulumi.Input.asInput<String>(hostedZoneId),
-      keyManagementServiceArn = pulumi.Input.asInput<String>(keyManagementServiceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.hostedZoneId,
+    required this.keyManagementServiceArn,
+    this.name,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class KeySigningKeyArgs {
 
   factory KeySigningKeyArgs.fromMap(Map<String, dynamic> map) {
     return KeySigningKeyArgs(
-      hostedZoneId: pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      keyManagementServiceArn: pulumi.Output.create<String>(map['keyManagementServiceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
+      keyManagementServiceArn: (map['keyManagementServiceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

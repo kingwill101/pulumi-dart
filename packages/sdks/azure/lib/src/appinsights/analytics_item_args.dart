@@ -28,19 +28,13 @@ class AnalyticsItemArgs {
   /// [scope] The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
   /// [type] The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   AnalyticsItemArgs({
-    required pulumi.Output<String> applicationInsightsId,
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? functionAlias,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> type,
-  }) :
-      applicationInsightsId = pulumi.Input.asInput<String>(applicationInsightsId),
-      content = pulumi.Input.asInput<String>(content),
-      functionAlias = pulumi.Input.asOptionalInput<String>(functionAlias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scope = pulumi.Input.asInput<String>(scope),
-      type = pulumi.Input.asInput<String>(type);
+    required this.applicationInsightsId,
+    required this.content,
+    this.functionAlias,
+    this.name,
+    required this.scope,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AnalyticsItemArgs {
 
   factory AnalyticsItemArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemArgs(
-      applicationInsightsId: pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      functionAlias: map['functionAlias'] == null ? null : pulumi.Output.create<String>(map['functionAlias'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      applicationInsightsId: (map['applicationInsightsId'] as String).input(),
+      content: (map['content'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

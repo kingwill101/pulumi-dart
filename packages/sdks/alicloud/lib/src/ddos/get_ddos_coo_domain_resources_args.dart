@@ -22,15 +22,11 @@ class GetDdosCooDomainResourcesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [queryDomainPattern] Match the pattern.
   GetDdosCooDomainResourcesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<List<String>>? instanceIds,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? queryDomainPattern,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      queryDomainPattern = pulumi.Input.asOptionalInput<String>(queryDomainPattern);
+    this.ids,
+    this.instanceIds,
+    this.outputFile,
+    this.queryDomainPattern,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDdosCooDomainResourcesArgs {
 
   factory GetDdosCooDomainResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooDomainResourcesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      queryDomainPattern: map['queryDomainPattern'] == null ? null : pulumi.Output.create<String>(map['queryDomainPattern'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      queryDomainPattern: map['queryDomainPattern'] == null ? null : (map['queryDomainPattern'] as String).input(),
     );
   }
 }

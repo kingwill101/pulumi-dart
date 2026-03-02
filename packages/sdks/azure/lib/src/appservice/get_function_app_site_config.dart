@@ -7,45 +7,45 @@ import 'get_function_app_site_config_scm_ip_restriction.dart';
 
 class GetFunctionAppSiteConfig {
   /// Is the app loaded at all times?
-  final bool alwaysOn;
+  final pulumi.Input<bool> alwaysOn;
   /// The number of workers this function app can scale out to. Only applicable to apps on the Consumption and Premium plan.
-  final int appScaleLimit;
-  final String autoSwapSlotName;
+  final pulumi.Input<int> appScaleLimit;
+  final pulumi.Input<String> autoSwapSlotName;
   /// A `cors` block as defined above.
-  final GetFunctionAppSiteConfigCors cors;
+  final pulumi.Input<GetFunctionAppSiteConfigCors> cors;
   /// The version of the .NET framework's CLR used in this App Service.
-  final String dotnetFrameworkVersion;
+  final pulumi.Input<String> dotnetFrameworkVersion;
   /// The number of minimum instances for this function app. Only applicable to apps on the Premium plan.
-  final int elasticInstanceMinimum;
+  final pulumi.Input<int> elasticInstanceMinimum;
   /// State of FTP / FTPS service for this AppService.
-  final String ftpsState;
-  final String healthCheckPath;
+  final pulumi.Input<String> ftpsState;
+  final pulumi.Input<String> healthCheckPath;
   /// Is HTTP2 Enabled on this App Service?
-  final bool http2Enabled;
+  final pulumi.Input<bool> http2Enabled;
   /// One or more `ip_restriction` blocks as defined above.
-  final List<GetFunctionAppSiteConfigIpRestriction> ipRestrictions;
+  final pulumi.Input<List<GetFunctionAppSiteConfigIpRestriction>> ipRestrictions;
   /// Java version hosted by the function app in Azure.
-  final String javaVersion;
+  final pulumi.Input<String> javaVersion;
   /// Linux App Framework and version for the AppService.
-  final String linuxFxVersion;
+  final pulumi.Input<String> linuxFxVersion;
   /// The minimum supported TLS version for this App Service.
-  final String minTlsVersion;
+  final pulumi.Input<String> minTlsVersion;
   /// The number of pre-warmed instances for this function app. Only applicable to apps on the Premium plan.
-  final int preWarmedInstanceCount;
+  final pulumi.Input<int> preWarmedInstanceCount;
   /// Is Runtime Scale Monitoring Enabled on this function app?
-  final bool runtimeScaleMonitoringEnabled;
+  final pulumi.Input<bool> runtimeScaleMonitoringEnabled;
   /// One or more `scm_ip_restriction` blocks as defined above.
-  final List<GetFunctionAppSiteConfigScmIpRestriction> scmIpRestrictions;
+  final pulumi.Input<List<GetFunctionAppSiteConfigScmIpRestriction>> scmIpRestrictions;
   /// The type of Source Control enabled for this App Service.
-  final String scmType;
+  final pulumi.Input<String> scmType;
   /// IP security restrictions for scm to use main.
-  final bool scmUseMainIpRestriction;
+  final pulumi.Input<bool> scmUseMainIpRestriction;
   /// Does the App Service run in 32 bit mode, rather than 64 bit mode?
-  final bool use32BitWorkerProcess;
+  final pulumi.Input<bool> use32BitWorkerProcess;
   /// (Optional) Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied?
-  final bool vnetRouteAllEnabled;
+  final pulumi.Input<bool> vnetRouteAllEnabled;
   /// Are WebSockets enabled for this App Service?
-  final bool websocketsEnabled;
+  final pulumi.Input<bool> websocketsEnabled;
 
   /// Creates a new [GetFunctionAppSiteConfig].
   /// [alwaysOn] Is the app loaded at all times?
@@ -98,19 +98,19 @@ class GetFunctionAppSiteConfig {
       'alwaysOn': alwaysOn,
       'appScaleLimit': appScaleLimit,
       'autoSwapSlotName': autoSwapSlotName,
-      'cors': cors.toMap(),
+      'cors': pulumi.Input.mapInputValue<GetFunctionAppSiteConfigCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'dotnetFrameworkVersion': dotnetFrameworkVersion,
       'elasticInstanceMinimum': elasticInstanceMinimum,
       'ftpsState': ftpsState,
       'healthCheckPath': healthCheckPath,
       'http2Enabled': http2Enabled,
-      'ipRestrictions': pulumi.Input.encodeList<GetFunctionAppSiteConfigIpRestriction, Map<String, dynamic>>(ipRestrictions, (value) => value.toMap()),
+      'ipRestrictions': pulumi.Input.mapInputValue<List<GetFunctionAppSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<GetFunctionAppSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'javaVersion': javaVersion,
       'linuxFxVersion': linuxFxVersion,
       'minTlsVersion': minTlsVersion,
       'preWarmedInstanceCount': preWarmedInstanceCount,
       'runtimeScaleMonitoringEnabled': runtimeScaleMonitoringEnabled,
-      'scmIpRestrictions': pulumi.Input.encodeList<GetFunctionAppSiteConfigScmIpRestriction, Map<String, dynamic>>(scmIpRestrictions, (value) => value.toMap()),
+      'scmIpRestrictions': pulumi.Input.mapInputValue<List<GetFunctionAppSiteConfigScmIpRestriction>, List<Map<String, dynamic>>>(scmIpRestrictions, (value) => pulumi.Input.encodeList<GetFunctionAppSiteConfigScmIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmType': scmType,
       'scmUseMainIpRestriction': scmUseMainIpRestriction,
       'use32BitWorkerProcess': use32BitWorkerProcess,
@@ -121,27 +121,27 @@ class GetFunctionAppSiteConfig {
 
   factory GetFunctionAppSiteConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfig(
-      alwaysOn: map['alwaysOn'] as bool,
-      appScaleLimit: map['appScaleLimit'] as int,
-      autoSwapSlotName: map['autoSwapSlotName'] as String,
-      cors: GetFunctionAppSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      dotnetFrameworkVersion: map['dotnetFrameworkVersion'] as String,
-      elasticInstanceMinimum: map['elasticInstanceMinimum'] as int,
-      ftpsState: map['ftpsState'] as String,
-      healthCheckPath: map['healthCheckPath'] as String,
-      http2Enabled: map['http2Enabled'] as bool,
-      ipRestrictions: pulumi.Input.decodeList<GetFunctionAppSiteConfigIpRestriction>(map['ipRestrictions'], (value) => GetFunctionAppSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      javaVersion: map['javaVersion'] as String,
-      linuxFxVersion: map['linuxFxVersion'] as String,
-      minTlsVersion: map['minTlsVersion'] as String,
-      preWarmedInstanceCount: map['preWarmedInstanceCount'] as int,
-      runtimeScaleMonitoringEnabled: map['runtimeScaleMonitoringEnabled'] as bool,
-      scmIpRestrictions: pulumi.Input.decodeList<GetFunctionAppSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => GetFunctionAppSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      scmType: map['scmType'] as String,
-      scmUseMainIpRestriction: map['scmUseMainIpRestriction'] as bool,
-      use32BitWorkerProcess: map['use32BitWorkerProcess'] as bool,
-      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] as bool,
-      websocketsEnabled: map['websocketsEnabled'] as bool,
+      alwaysOn: (map['alwaysOn'] as bool).input(),
+      appScaleLimit: (map['appScaleLimit'] as int).input(),
+      autoSwapSlotName: (map['autoSwapSlotName'] as String).input(),
+      cors: (GetFunctionAppSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      dotnetFrameworkVersion: (map['dotnetFrameworkVersion'] as String).input(),
+      elasticInstanceMinimum: (map['elasticInstanceMinimum'] as int).input(),
+      ftpsState: (map['ftpsState'] as String).input(),
+      healthCheckPath: (map['healthCheckPath'] as String).input(),
+      http2Enabled: (map['http2Enabled'] as bool).input(),
+      ipRestrictions: (pulumi.Input.decodeList<GetFunctionAppSiteConfigIpRestriction>(map['ipRestrictions'], (value) => GetFunctionAppSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      javaVersion: (map['javaVersion'] as String).input(),
+      linuxFxVersion: (map['linuxFxVersion'] as String).input(),
+      minTlsVersion: (map['minTlsVersion'] as String).input(),
+      preWarmedInstanceCount: (map['preWarmedInstanceCount'] as int).input(),
+      runtimeScaleMonitoringEnabled: (map['runtimeScaleMonitoringEnabled'] as bool).input(),
+      scmIpRestrictions: (pulumi.Input.decodeList<GetFunctionAppSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => GetFunctionAppSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scmType: (map['scmType'] as String).input(),
+      scmUseMainIpRestriction: (map['scmUseMainIpRestriction'] as bool).input(),
+      use32BitWorkerProcess: (map['use32BitWorkerProcess'] as bool).input(),
+      vnetRouteAllEnabled: (map['vnetRouteAllEnabled'] as bool).input(),
+      websocketsEnabled: (map['websocketsEnabled'] as bool).input(),
     );
   }
 }

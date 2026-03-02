@@ -19,13 +19,10 @@ class ConnectionAssociationArgs {
   /// [lagId] The ID of the LAG with which to associate the connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ConnectionAssociationArgs({
-    required pulumi.Output<String> connectionId,
-    required pulumi.Output<String> lagId,
-    pulumi.Output<String>? region,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      lagId = pulumi.Input.asInput<String>(lagId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.connectionId,
+    required this.lagId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConnectionAssociationArgs {
 
   factory ConnectionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionAssociationArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      lagId: pulumi.Output.create<String>(map['lagId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      lagId: (map['lagId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

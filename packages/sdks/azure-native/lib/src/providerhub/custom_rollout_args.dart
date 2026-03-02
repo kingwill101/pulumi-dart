@@ -20,13 +20,10 @@ class CustomRolloutArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [rolloutName] The rollout name.
   CustomRolloutArgs({
-    required pulumi.Output<CustomRolloutProperties> properties,
-    required pulumi.Output<String> providerNamespace,
-    pulumi.Output<String>? rolloutName,
-  }) :
-      properties = pulumi.Input.asInput<CustomRolloutProperties>(properties),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      rolloutName = pulumi.Input.asOptionalInput<String>(rolloutName);
+    required this.properties,
+    required this.providerNamespace,
+    this.rolloutName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class CustomRolloutArgs {
 
   factory CustomRolloutArgs.fromMap(Map<String, dynamic> map) {
     return CustomRolloutArgs(
-      properties: pulumi.Output.create<CustomRolloutProperties>(CustomRolloutProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      rolloutName: map['rolloutName'] == null ? null : pulumi.Output.create<String>(map['rolloutName'] as String),
+      properties: (CustomRolloutProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      rolloutName: map['rolloutName'] == null ? null : (map['rolloutName'] as String).input(),
     );
   }
 }

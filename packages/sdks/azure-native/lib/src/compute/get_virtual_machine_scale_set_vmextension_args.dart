@@ -25,17 +25,12 @@ class GetVirtualMachineScaleSetVMExtensionArgs {
   /// [vmExtensionName] The name of the virtual machine extension.
   /// [vmScaleSetName] The name of the VM scale set.
   GetVirtualMachineScaleSetVMExtensionArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmExtensionName,
-    required pulumi.Output<String> vmScaleSetName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmExtensionName = pulumi.Input.asInput<String>(vmExtensionName),
-      vmScaleSetName = pulumi.Input.asInput<String>(vmScaleSetName);
+    this.expand,
+    required this.instanceId,
+    required this.resourceGroupName,
+    required this.vmExtensionName,
+    required this.vmScaleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetVirtualMachineScaleSetVMExtensionArgs {
 
   factory GetVirtualMachineScaleSetVMExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMExtensionArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmExtensionName: pulumi.Output.create<String>(map['vmExtensionName'] as String),
-      vmScaleSetName: pulumi.Output.create<String>(map['vmScaleSetName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmExtensionName: (map['vmExtensionName'] as String).input(),
+      vmScaleSetName: (map['vmScaleSetName'] as String).input(),
     );
   }
 }

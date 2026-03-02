@@ -7,7 +7,7 @@ class VMwareClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final List<VMwareClusterValidationCheckStatusResult>? results;
+  final pulumi.Input<List<VMwareClusterValidationCheckStatusResult>>? results;
 
   /// Creates a new [VMwareClusterValidationCheckStatus].
   /// [results] (Output)
@@ -17,13 +17,13 @@ class VMwareClusterValidationCheckStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': ?results == null ? null : pulumi.Input.encodeList<VMwareClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'results': ?pulumi.Input.mapOptionalInputValue<List<VMwareClusterValidationCheckStatusResult>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<VMwareClusterValidationCheckStatusResult, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VMwareClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterValidationCheckStatus(
-      results: map['results'] == null ? null : pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(map['results'], (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(map['results'], (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

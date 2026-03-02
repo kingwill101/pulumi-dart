@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn {
   /// Column name.
-  final String? column;
+  final pulumi.Input<String>? column;
   /// (Output)
   /// The Spanner data type. Full data types list can be found here:
   /// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// (Output)
   /// Whether the column is a primary key.
-  final bool? isPrimaryKey;
+  final pulumi.Input<bool>? isPrimaryKey;
   /// (Output)
   /// The ordinal position of the column in the table.
-  final int? ordinalPosition;
+  final pulumi.Input<int>? ordinalPosition;
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn].
   /// [column] Column name.
@@ -38,10 +39,10 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn {
 
   factory StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn(
-      column: map['column'] == null ? null : map['column'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      isPrimaryKey: map['isPrimaryKey'] == null ? null : map['isPrimaryKey'] as bool,
-      ordinalPosition: map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
+      column: map['column'] == null ? null : (map['column'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      isPrimaryKey: map['isPrimaryKey'] == null ? null : (map['isPrimaryKey'] as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
     );
   }
 }

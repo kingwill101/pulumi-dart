@@ -26,19 +26,13 @@ class ReferenceArgs {
   /// [refers] The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
   /// [resourceType] The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   ReferenceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> refers,
-    pulumi.Output<String>? resourceType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      refers = pulumi.Input.asInput<String>(refers),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    this.description,
+    required this.environmentId,
+    this.name,
+    required this.organizationId,
+    required this.refers,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ReferenceArgs {
 
   factory ReferenceArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      refers: pulumi.Output.create<String>(map['refers'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      refers: (map['refers'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

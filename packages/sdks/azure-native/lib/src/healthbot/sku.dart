@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_name.dart';
 
 /// The resource model definition representing SKU
 class Sku {
   /// The name of the Azure Health Bot SKU
-  final SkuName name;
+  final pulumi.Input<SkuName> name;
 
   /// Creates a new [Sku].
   /// [name] The name of the Azure Health Bot SKU
@@ -15,13 +16,13 @@ class Sku {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name.value,
+      'name': pulumi.Input.mapInputValue<SkuName, String>(name, (value) => value.value),
     };
   }
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: SkuName.fromValue(map['name'] as String),
+      name: (SkuName.fromValue(map['name'] as String)).input(),
     );
   }
 }

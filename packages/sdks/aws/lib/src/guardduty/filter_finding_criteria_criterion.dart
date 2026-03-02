@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFindingCriteriaCriterion {
   /// List of string values to be evaluated.
-  final List<String>? equals;
+  final pulumi.Input<List<String>>? equals;
   /// The name of the field to be evaluated. The full list of field names can be found in [AWS documentation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_filter-findings.html#filter_criteria).
-  final String field;
+  final pulumi.Input<String> field;
   /// A value to be evaluated. Accepts either an integer or a date in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final String? greaterThan;
+  final pulumi.Input<String>? greaterThan;
   /// A value to be evaluated. Accepts either an integer or a date in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final String? greaterThanOrEqual;
+  final pulumi.Input<String>? greaterThanOrEqual;
   /// A value to be evaluated. Accepts either an integer or a date in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final String? lessThan;
+  final pulumi.Input<String>? lessThan;
   /// A value to be evaluated. Accepts either an integer or a date in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final String? lessThanOrEqual;
+  final pulumi.Input<String>? lessThanOrEqual;
   /// List of string values to be evaluated as matching conditions.
-  final List<String>? matches;
+  final pulumi.Input<List<String>>? matches;
   /// List of string values to be evaluated.
-  final List<String>? notEquals;
+  final pulumi.Input<List<String>>? notEquals;
   /// List of string values to be evaluated as non-matching conditions.
-  final List<String>? notMatches;
+  final pulumi.Input<List<String>>? notMatches;
 
   /// Creates a new [FilterFindingCriteriaCriterion].
   /// [equals] List of string values to be evaluated.
@@ -59,15 +60,15 @@ class FilterFindingCriteriaCriterion {
 
   factory FilterFindingCriteriaCriterion.fromMap(Map<String, dynamic> map) {
     return FilterFindingCriteriaCriterion(
-      equals: map['equals'] == null ? null : (map['equals'] as List).cast<String>(),
-      field: map['field'] as String,
-      greaterThan: map['greaterThan'] == null ? null : map['greaterThan'] as String,
-      greaterThanOrEqual: map['greaterThanOrEqual'] == null ? null : map['greaterThanOrEqual'] as String,
-      lessThan: map['lessThan'] == null ? null : map['lessThan'] as String,
-      lessThanOrEqual: map['lessThanOrEqual'] == null ? null : map['lessThanOrEqual'] as String,
-      matches: map['matches'] == null ? null : (map['matches'] as List).cast<String>(),
-      notEquals: map['notEquals'] == null ? null : (map['notEquals'] as List).cast<String>(),
-      notMatches: map['notMatches'] == null ? null : (map['notMatches'] as List).cast<String>(),
+      equals: map['equals'] == null ? null : ((map['equals'] as List).cast<String>()).input(),
+      field: (map['field'] as String).input(),
+      greaterThan: map['greaterThan'] == null ? null : (map['greaterThan'] as String).input(),
+      greaterThanOrEqual: map['greaterThanOrEqual'] == null ? null : (map['greaterThanOrEqual'] as String).input(),
+      lessThan: map['lessThan'] == null ? null : (map['lessThan'] as String).input(),
+      lessThanOrEqual: map['lessThanOrEqual'] == null ? null : (map['lessThanOrEqual'] as String).input(),
+      matches: map['matches'] == null ? null : ((map['matches'] as List).cast<String>()).input(),
+      notEquals: map['notEquals'] == null ? null : ((map['notEquals'] as List).cast<String>()).input(),
+      notMatches: map['notMatches'] == null ? null : ((map['notMatches'] as List).cast<String>()).input(),
     );
   }
 }

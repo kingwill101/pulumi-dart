@@ -22,15 +22,11 @@ class InstanceDesiredUserCreatedEndpointsState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The name of the region of the Memorystore instance these endpoints should be added to.
   InstanceDesiredUserCreatedEndpointsState({
-    pulumi.Output<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>>? desiredUserCreatedEndpoints,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      desiredUserCreatedEndpoints = pulumi.Input.asOptionalInput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>>(desiredUserCreatedEndpoints),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.desiredUserCreatedEndpoints,
+    this.name,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class InstanceDesiredUserCreatedEndpointsState {
 
   factory InstanceDesiredUserCreatedEndpointsState.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsState(
-      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : pulumi.Output.create<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>>(pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints'], (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints'], (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

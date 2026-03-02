@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigOverlayAnimationAnimationFadeXy {
   /// Normalized x coordinate.
-  final double? x;
+  final pulumi.Input<double>? x;
   /// Normalized y coordinate.
-  final double? y;
+  final pulumi.Input<double>? y;
 
   /// Creates a new [JobTemplateConfigOverlayAnimationAnimationFadeXy].
   /// [x] Normalized x coordinate.
@@ -24,8 +25,8 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXy {
 
   factory JobTemplateConfigOverlayAnimationAnimationFadeXy.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOverlayAnimationAnimationFadeXy(
-      x: map['x'] == null ? null : map['x'] as double,
-      y: map['y'] == null ? null : map['y'] as double,
+      x: map['x'] == null ? null : (map['x'] as double).input(),
+      y: map['y'] == null ? null : (map['y'] as double).input(),
     );
   }
 }

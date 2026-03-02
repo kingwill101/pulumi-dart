@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCacheRedisConfiguration {
   /// Specifies if Microsoft Entra (AAD) authentication is enabled.
-  final bool activeDirectoryAuthenticationEnabled;
-  final bool aofBackupEnabled;
-  final String aofStorageConnectionString0;
-  final String aofStorageConnectionString1;
-  final bool authenticationEnabled;
-  final String dataPersistenceAuthenticationMethod;
-  final int maxclients;
+  final pulumi.Input<bool> activeDirectoryAuthenticationEnabled;
+  final pulumi.Input<bool> aofBackupEnabled;
+  final pulumi.Input<String> aofStorageConnectionString0;
+  final pulumi.Input<String> aofStorageConnectionString1;
+  final pulumi.Input<bool> authenticationEnabled;
+  final pulumi.Input<String> dataPersistenceAuthenticationMethod;
+  final pulumi.Input<int> maxclients;
   /// Value in megabytes reserved to accommodate for memory fragmentation.
-  final int maxfragmentationmemoryReserved;
+  final pulumi.Input<int> maxfragmentationmemoryReserved;
   /// The max-memory delta for this Redis instance.
-  final int maxmemoryDelta;
+  final pulumi.Input<int> maxmemoryDelta;
   /// How Redis will select what to remove when `maxmemory` is reached.
-  final String maxmemoryPolicy;
+  final pulumi.Input<String> maxmemoryPolicy;
   /// The value in megabytes reserved for non-cache usage e.g. failover
-  final int maxmemoryReserved;
-  final String notifyKeyspaceEvents;
+  final pulumi.Input<int> maxmemoryReserved;
+  final pulumi.Input<String> notifyKeyspaceEvents;
   /// Is Backup Enabled? Only supported on Premium SKUs.
-  final bool rdbBackupEnabled;
+  final pulumi.Input<bool> rdbBackupEnabled;
   /// The Backup Frequency in Minutes. Only supported on Premium SKUs.
-  final int rdbBackupFrequency;
+  final pulumi.Input<int> rdbBackupFrequency;
   /// The maximum number of snapshots that can be created as a backup.
-  final int rdbBackupMaxSnapshotCount;
+  final pulumi.Input<int> rdbBackupMaxSnapshotCount;
   /// The Connection String to the Storage Account. Only supported for Premium SKUs.
-  final String rdbStorageConnectionString;
+  final pulumi.Input<String> rdbStorageConnectionString;
   /// The ID of the Subscription containing the Storage Account.
-  final String storageAccountSubscriptionId;
+  final pulumi.Input<String> storageAccountSubscriptionId;
 
   /// Creates a new [GetCacheRedisConfiguration].
   /// [activeDirectoryAuthenticationEnabled] Specifies if Microsoft Entra (AAD) authentication is enabled.
@@ -92,23 +93,23 @@ class GetCacheRedisConfiguration {
 
   factory GetCacheRedisConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCacheRedisConfiguration(
-      activeDirectoryAuthenticationEnabled: map['activeDirectoryAuthenticationEnabled'] as bool,
-      aofBackupEnabled: map['aofBackupEnabled'] as bool,
-      aofStorageConnectionString0: map['aofStorageConnectionString0'] as String,
-      aofStorageConnectionString1: map['aofStorageConnectionString1'] as String,
-      authenticationEnabled: map['authenticationEnabled'] as bool,
-      dataPersistenceAuthenticationMethod: map['dataPersistenceAuthenticationMethod'] as String,
-      maxclients: map['maxclients'] as int,
-      maxfragmentationmemoryReserved: map['maxfragmentationmemoryReserved'] as int,
-      maxmemoryDelta: map['maxmemoryDelta'] as int,
-      maxmemoryPolicy: map['maxmemoryPolicy'] as String,
-      maxmemoryReserved: map['maxmemoryReserved'] as int,
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] as String,
-      rdbBackupEnabled: map['rdbBackupEnabled'] as bool,
-      rdbBackupFrequency: map['rdbBackupFrequency'] as int,
-      rdbBackupMaxSnapshotCount: map['rdbBackupMaxSnapshotCount'] as int,
-      rdbStorageConnectionString: map['rdbStorageConnectionString'] as String,
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] as String,
+      activeDirectoryAuthenticationEnabled: (map['activeDirectoryAuthenticationEnabled'] as bool).input(),
+      aofBackupEnabled: (map['aofBackupEnabled'] as bool).input(),
+      aofStorageConnectionString0: (map['aofStorageConnectionString0'] as String).input(),
+      aofStorageConnectionString1: (map['aofStorageConnectionString1'] as String).input(),
+      authenticationEnabled: (map['authenticationEnabled'] as bool).input(),
+      dataPersistenceAuthenticationMethod: (map['dataPersistenceAuthenticationMethod'] as String).input(),
+      maxclients: (map['maxclients'] as int).input(),
+      maxfragmentationmemoryReserved: (map['maxfragmentationmemoryReserved'] as int).input(),
+      maxmemoryDelta: (map['maxmemoryDelta'] as int).input(),
+      maxmemoryPolicy: (map['maxmemoryPolicy'] as String).input(),
+      maxmemoryReserved: (map['maxmemoryReserved'] as int).input(),
+      notifyKeyspaceEvents: (map['notifyKeyspaceEvents'] as String).input(),
+      rdbBackupEnabled: (map['rdbBackupEnabled'] as bool).input(),
+      rdbBackupFrequency: (map['rdbBackupFrequency'] as int).input(),
+      rdbBackupMaxSnapshotCount: (map['rdbBackupMaxSnapshotCount'] as int).input(),
+      rdbStorageConnectionString: (map['rdbStorageConnectionString'] as String).input(),
+      storageAccountSubscriptionId: (map['storageAccountSubscriptionId'] as String).input(),
     );
   }
 }

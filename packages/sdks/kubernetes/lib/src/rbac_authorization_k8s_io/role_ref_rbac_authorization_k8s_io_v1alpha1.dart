@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RoleRef contains information that points to the role being used
 class RoleRefRbacAuthorizationK8sIoV1alpha1 {
   /// APIGroup is the group for the resource being referenced
-  final String apiGroup;
+  final pulumi.Input<String> apiGroup;
   /// Kind is the type of resource being referenced
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name is the name of resource being referenced
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RoleRefRbacAuthorizationK8sIoV1alpha1].
   /// [apiGroup] APIGroup is the group for the resource being referenced
@@ -30,9 +31,9 @@ class RoleRefRbacAuthorizationK8sIoV1alpha1 {
 
   factory RoleRefRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return RoleRefRbacAuthorizationK8sIoV1alpha1(
-      apiGroup: map['apiGroup'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      apiGroup: (map['apiGroup'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

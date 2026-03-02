@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_alloydb_settings.dart';
 
 class ConnectionProfileAlloydb {
   /// Required. The AlloyDB cluster ID that this connection profile is associated with.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// Immutable. Metadata used to create the destination AlloyDB cluster.
   /// Structure is documented below.
-  final ConnectionProfileAlloydbSettings? settings;
+  final pulumi.Input<ConnectionProfileAlloydbSettings>? settings;
 
   /// Creates a new [ConnectionProfileAlloydb].
   /// [clusterId] Required. The AlloyDB cluster ID that this connection profile is associated with.
@@ -20,14 +21,14 @@ class ConnectionProfileAlloydb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': clusterId,
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'settings': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileAlloydbSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory ConnectionProfileAlloydb.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydb(
-      clusterId: map['clusterId'] as String,
-      settings: map['settings'] == null ? null : ConnectionProfileAlloydbSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      clusterId: (map['clusterId'] as String).input(),
+      settings: map['settings'] == null ? null : (ConnectionProfileAlloydbSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

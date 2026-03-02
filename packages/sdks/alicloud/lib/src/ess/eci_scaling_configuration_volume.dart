@@ -6,43 +6,43 @@ import 'eci_scaling_configuration_volume_config_file_volume_config_file_to_path.
 class EciScalingConfigurationVolume {
   /// ConfigFileVolumeConfigFileToPaths.
   /// See `config_file_volume_config_file_to_paths` below for details.
-  final List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>? configFileVolumeConfigFileToPaths;
+  final pulumi.Input<List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>>? configFileVolumeConfigFileToPaths;
   /// The default permissions on the ConfigFileVolume.
-  final int? configFileVolumeDefaultMode;
+  final pulumi.Input<int>? configFileVolumeDefaultMode;
   /// The ID of DiskVolume.
-  final String? diskVolumeDiskId;
+  final pulumi.Input<String>? diskVolumeDiskId;
   /// The disk size of DiskVolume.
-  final int? diskVolumeDiskSize;
+  final pulumi.Input<int>? diskVolumeDiskSize;
   /// The system type of DiskVolume.
-  final String? diskVolumeFsType;
+  final pulumi.Input<String>? diskVolumeFsType;
   /// The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
-  final String? emptyDirVolumeMedium;
+  final pulumi.Input<String>? emptyDirVolumeMedium;
   /// The storage size of the EmptyDirVolume. Unit: GiB or MiB.
-  final String? emptyDirVolumeSizeLimit;
+  final pulumi.Input<String>? emptyDirVolumeSizeLimit;
   /// The name of the FlexVolume driver.
-  final String? flexVolumeDriver;
+  final pulumi.Input<String>? flexVolumeDriver;
   /// The type of the mounted file system. The default value is determined by the script
   /// of FlexVolume.
-  final String? flexVolumeFsType;
+  final pulumi.Input<String>? flexVolumeFsType;
   /// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
   /// string.
-  final String? flexVolumeOptions;
+  final pulumi.Input<String>? flexVolumeOptions;
   /// The absolute path on the host.
-  final String? hostPathVolumePath;
+  final pulumi.Input<String>? hostPathVolumePath;
   /// The type of the host path. Examples: File, Directory, and Socket.
-  final String? hostPathVolumeType;
+  final pulumi.Input<String>? hostPathVolumeType;
   /// The name of the volume.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The path to the NFS volume.
-  final String? nfsVolumePath;
+  final pulumi.Input<String>? nfsVolumePath;
   /// The nfs volume read only. Default to `false`.
-  final bool? nfsVolumeReadOnly;
+  final pulumi.Input<bool>? nfsVolumeReadOnly;
   /// The address of the NFS server.
   ///
   /// > **NOTE:** Every volume mounted must have a name and type attributes.
-  final String? nfsVolumeServer;
+  final pulumi.Input<String>? nfsVolumeServer;
   /// The type of the volume.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [EciScalingConfigurationVolume].
   /// [configFileVolumeConfigFileToPaths] ConfigFileVolumeConfigFileToPaths.
@@ -84,7 +84,7 @@ class EciScalingConfigurationVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configFileVolumeConfigFileToPaths': ?configFileVolumeConfigFileToPaths == null ? null : pulumi.Input.encodeList<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath, Map<String, dynamic>>(configFileVolumeConfigFileToPaths!, (value) => value.toMap()),
+      'configFileVolumeConfigFileToPaths': ?pulumi.Input.mapOptionalInputValue<List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>, List<Map<String, dynamic>>>(configFileVolumeConfigFileToPaths, (value) => pulumi.Input.encodeList<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configFileVolumeDefaultMode': ?configFileVolumeDefaultMode,
       'diskVolumeDiskId': ?diskVolumeDiskId,
       'diskVolumeDiskSize': ?diskVolumeDiskSize,
@@ -106,23 +106,23 @@ class EciScalingConfigurationVolume {
 
   factory EciScalingConfigurationVolume.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationVolume(
-      configFileVolumeConfigFileToPaths: map['configFileVolumeConfigFileToPaths'] == null ? null : pulumi.Input.decodeList<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>(map['configFileVolumeConfigFileToPaths'], (value) => EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath.fromMap((value as Map).cast<String, dynamic>())),
-      configFileVolumeDefaultMode: map['configFileVolumeDefaultMode'] == null ? null : map['configFileVolumeDefaultMode'] as int,
-      diskVolumeDiskId: map['diskVolumeDiskId'] == null ? null : map['diskVolumeDiskId'] as String,
-      diskVolumeDiskSize: map['diskVolumeDiskSize'] == null ? null : map['diskVolumeDiskSize'] as int,
-      diskVolumeFsType: map['diskVolumeFsType'] == null ? null : map['diskVolumeFsType'] as String,
-      emptyDirVolumeMedium: map['emptyDirVolumeMedium'] == null ? null : map['emptyDirVolumeMedium'] as String,
-      emptyDirVolumeSizeLimit: map['emptyDirVolumeSizeLimit'] == null ? null : map['emptyDirVolumeSizeLimit'] as String,
-      flexVolumeDriver: map['flexVolumeDriver'] == null ? null : map['flexVolumeDriver'] as String,
-      flexVolumeFsType: map['flexVolumeFsType'] == null ? null : map['flexVolumeFsType'] as String,
-      flexVolumeOptions: map['flexVolumeOptions'] == null ? null : map['flexVolumeOptions'] as String,
-      hostPathVolumePath: map['hostPathVolumePath'] == null ? null : map['hostPathVolumePath'] as String,
-      hostPathVolumeType: map['hostPathVolumeType'] == null ? null : map['hostPathVolumeType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nfsVolumePath: map['nfsVolumePath'] == null ? null : map['nfsVolumePath'] as String,
-      nfsVolumeReadOnly: map['nfsVolumeReadOnly'] == null ? null : map['nfsVolumeReadOnly'] as bool,
-      nfsVolumeServer: map['nfsVolumeServer'] == null ? null : map['nfsVolumeServer'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      configFileVolumeConfigFileToPaths: map['configFileVolumeConfigFileToPaths'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>(map['configFileVolumeConfigFileToPaths'], (value) => EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configFileVolumeDefaultMode: map['configFileVolumeDefaultMode'] == null ? null : (map['configFileVolumeDefaultMode'] as int).input(),
+      diskVolumeDiskId: map['diskVolumeDiskId'] == null ? null : (map['diskVolumeDiskId'] as String).input(),
+      diskVolumeDiskSize: map['diskVolumeDiskSize'] == null ? null : (map['diskVolumeDiskSize'] as int).input(),
+      diskVolumeFsType: map['diskVolumeFsType'] == null ? null : (map['diskVolumeFsType'] as String).input(),
+      emptyDirVolumeMedium: map['emptyDirVolumeMedium'] == null ? null : (map['emptyDirVolumeMedium'] as String).input(),
+      emptyDirVolumeSizeLimit: map['emptyDirVolumeSizeLimit'] == null ? null : (map['emptyDirVolumeSizeLimit'] as String).input(),
+      flexVolumeDriver: map['flexVolumeDriver'] == null ? null : (map['flexVolumeDriver'] as String).input(),
+      flexVolumeFsType: map['flexVolumeFsType'] == null ? null : (map['flexVolumeFsType'] as String).input(),
+      flexVolumeOptions: map['flexVolumeOptions'] == null ? null : (map['flexVolumeOptions'] as String).input(),
+      hostPathVolumePath: map['hostPathVolumePath'] == null ? null : (map['hostPathVolumePath'] as String).input(),
+      hostPathVolumeType: map['hostPathVolumeType'] == null ? null : (map['hostPathVolumeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfsVolumePath: map['nfsVolumePath'] == null ? null : (map['nfsVolumePath'] as String).input(),
+      nfsVolumeReadOnly: map['nfsVolumeReadOnly'] == null ? null : (map['nfsVolumeReadOnly'] as bool).input(),
+      nfsVolumeServer: map['nfsVolumeServer'] == null ? null : (map['nfsVolumeServer'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

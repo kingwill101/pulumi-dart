@@ -46,27 +46,17 @@ class FirewallArgs {
   /// [outbounds] A firewall rule that specifies what outbound network traffic is allowed.
   /// [tags] A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
   FirewallArgs({
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> inboundPolicy,
-    pulumi.Output<List<FirewallInbound>>? inbounds,
-    pulumi.Output<List<int>>? interfaces,
-    required pulumi.Output<String> label,
-    pulumi.Output<List<int>>? linodes,
-    pulumi.Output<List<int>>? nodebalancers,
-    required pulumi.Output<String> outboundPolicy,
-    pulumi.Output<List<FirewallOutbound>>? outbounds,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      inboundPolicy = pulumi.Input.asInput<String>(inboundPolicy),
-      inbounds = pulumi.Input.asOptionalInput<List<FirewallInbound>>(inbounds),
-      interfaces = pulumi.Input.asOptionalInput<List<int>>(interfaces),
-      label = pulumi.Input.asInput<String>(label),
-      linodes = pulumi.Input.asOptionalInput<List<int>>(linodes),
-      nodebalancers = pulumi.Input.asOptionalInput<List<int>>(nodebalancers),
-      outboundPolicy = pulumi.Input.asInput<String>(outboundPolicy),
-      outbounds = pulumi.Input.asOptionalInput<List<FirewallOutbound>>(outbounds),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.disabled,
+    required this.inboundPolicy,
+    this.inbounds,
+    this.interfaces,
+    required this.label,
+    this.linodes,
+    this.nodebalancers,
+    required this.outboundPolicy,
+    this.outbounds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      inboundPolicy: pulumi.Output.create<String>(map['inboundPolicy'] as String),
-      inbounds: map['inbounds'] == null ? null : pulumi.Output.create<List<FirewallInbound>>(pulumi.Input.decodeList<FirewallInbound>(map['inbounds'], (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))),
-      interfaces: map['interfaces'] == null ? null : pulumi.Output.create<List<int>>((map['interfaces'] as List).cast<int>()),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      linodes: map['linodes'] == null ? null : pulumi.Output.create<List<int>>((map['linodes'] as List).cast<int>()),
-      nodebalancers: map['nodebalancers'] == null ? null : pulumi.Output.create<List<int>>((map['nodebalancers'] as List).cast<int>()),
-      outboundPolicy: pulumi.Output.create<String>(map['outboundPolicy'] as String),
-      outbounds: map['outbounds'] == null ? null : pulumi.Output.create<List<FirewallOutbound>>(pulumi.Input.decodeList<FirewallOutbound>(map['outbounds'], (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      inboundPolicy: (map['inboundPolicy'] as String).input(),
+      inbounds: map['inbounds'] == null ? null : (pulumi.Input.decodeList<FirewallInbound>(map['inbounds'], (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interfaces: map['interfaces'] == null ? null : ((map['interfaces'] as List).cast<int>()).input(),
+      label: (map['label'] as String).input(),
+      linodes: map['linodes'] == null ? null : ((map['linodes'] as List).cast<int>()).input(),
+      nodebalancers: map['nodebalancers'] == null ? null : ((map['nodebalancers'] as List).cast<int>()).input(),
+      outboundPolicy: (map['outboundPolicy'] as String).input(),
+      outbounds: map['outbounds'] == null ? null : (pulumi.Input.decodeList<FirewallOutbound>(map['outbounds'], (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

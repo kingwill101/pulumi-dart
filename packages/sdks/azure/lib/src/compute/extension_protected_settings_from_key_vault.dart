@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionProtectedSettingsFromKeyVault {
   /// The URL to the Key Vault Secret which stores the protected settings.
-  final String secretUrl;
+  final pulumi.Input<String> secretUrl;
   /// The ID of the source Key Vault.
-  final String sourceVaultId;
+  final pulumi.Input<String> sourceVaultId;
 
   /// Creates a new [ExtensionProtectedSettingsFromKeyVault].
   /// [secretUrl] The URL to the Key Vault Secret which stores the protected settings.
@@ -24,8 +25,8 @@ class ExtensionProtectedSettingsFromKeyVault {
 
   factory ExtensionProtectedSettingsFromKeyVault.fromMap(Map<String, dynamic> map) {
     return ExtensionProtectedSettingsFromKeyVault(
-      secretUrl: map['secretUrl'] as String,
-      sourceVaultId: map['sourceVaultId'] as String,
+      secretUrl: (map['secretUrl'] as String).input(),
+      sourceVaultId: (map['sourceVaultId'] as String).input(),
     );
   }
 }

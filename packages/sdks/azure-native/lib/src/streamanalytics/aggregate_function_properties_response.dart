@@ -8,15 +8,15 @@ import 'function_output_response.dart';
 /// The properties that are associated with an aggregate function.
 class AggregateFunctionPropertiesResponse {
   /// The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
-  final AzureMachineLearningWebServiceFunctionBindingResponse? binding;
+  final pulumi.Input<AzureMachineLearningWebServiceFunctionBindingResponse>? binding;
   /// The current entity tag for the function. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
-  final String etag;
-  final List<FunctionInputResponse>? inputs;
+  final pulumi.Input<String> etag;
+  final pulumi.Input<List<FunctionInputResponse>>? inputs;
   /// Describes the output of a function.
-  final FunctionOutputResponse? output;
+  final pulumi.Input<FunctionOutputResponse>? output;
   /// Indicates the type of function.
   /// Expected value is 'Aggregate'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AggregateFunctionPropertiesResponse].
   /// [binding] The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
@@ -34,21 +34,21 @@ class AggregateFunctionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binding': ?binding == null ? null : binding!.toMap(),
+      'binding': ?pulumi.Input.mapOptionalInputValue<AzureMachineLearningWebServiceFunctionBindingResponse, Map<String, dynamic>>(binding, (value) => value.toMap()),
       'etag': etag,
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeList<FunctionInputResponse, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
-      'output': ?output == null ? null : output!.toMap(),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<List<FunctionInputResponse>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<FunctionInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'output': ?pulumi.Input.mapOptionalInputValue<FunctionOutputResponse, Map<String, dynamic>>(output, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory AggregateFunctionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AggregateFunctionPropertiesResponse(
-      binding: map['binding'] == null ? null : AzureMachineLearningWebServiceFunctionBindingResponse.fromMap((map['binding'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<FunctionInputResponse>(map['inputs'], (value) => FunctionInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      output: map['output'] == null ? null : FunctionOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBindingResponse.fromMap((map['binding'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInputResponse>(map['inputs'], (value) => FunctionInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (FunctionOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'orchestrated_virtual_machine_scale_set_extension_protected_settings_from_key_vault.dart';
 
 class OrchestratedVirtualMachineScaleSetExtension {
   /// Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.
-  final bool? autoUpgradeMinorVersionEnabled;
+  final pulumi.Input<bool>? autoUpgradeMinorVersionEnabled;
   /// An ordered list of Extension names which Virtual Machine Scale Set should provision after VM creation.
-  final List<String>? extensionsToProvisionAfterVmCreations;
+  final pulumi.Input<List<String>>? extensionsToProvisionAfterVmCreations;
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`.
   ///
   /// > **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
-  final bool? failureSuppressionEnabled;
+  final pulumi.Input<bool>? failureSuppressionEnabled;
   /// A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
-  final String? forceExtensionExecutionOnChange;
+  final pulumi.Input<String>? forceExtensionExecutionOnChange;
   /// The name for the Virtual Machine Scale Set Extension.
-  final String name;
+  final pulumi.Input<String> name;
   /// A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
   ///
   /// > **Note:** Keys within the `protected_settings` block are notoriously case-sensitive, where the casing required (e.g. `TitleCase` vs `snakeCase`) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
-  final String? protectedSettings;
+  final pulumi.Input<String>? protectedSettings;
   /// A `protected_settings_from_key_vault` block as defined below.
   ///
   /// > **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
-  final OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault? protectedSettingsFromKeyVault;
+  final pulumi.Input<OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>? protectedSettingsFromKeyVault;
   /// Specifies the Publisher of the Extension.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// A JSON String which specifies Settings for the Extension.
-  final String? settings;
+  final pulumi.Input<String>? settings;
   /// Specifies the Type of the Extension.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.
-  final String typeHandlerVersion;
+  final pulumi.Input<String> typeHandlerVersion;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetExtension].
   /// [autoUpgradeMinorVersionEnabled] Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.
@@ -66,7 +67,7 @@ class OrchestratedVirtualMachineScaleSetExtension {
       'forceExtensionExecutionOnChange': ?forceExtensionExecutionOnChange,
       'name': name,
       'protectedSettings': ?protectedSettings,
-      'protectedSettingsFromKeyVault': ?protectedSettingsFromKeyVault == null ? null : protectedSettingsFromKeyVault!.toMap(),
+      'protectedSettingsFromKeyVault': ?pulumi.Input.mapOptionalInputValue<OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault, Map<String, dynamic>>(protectedSettingsFromKeyVault, (value) => value.toMap()),
       'publisher': publisher,
       'settings': ?settings,
       'type': type,
@@ -76,17 +77,17 @@ class OrchestratedVirtualMachineScaleSetExtension {
 
   factory OrchestratedVirtualMachineScaleSetExtension.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetExtension(
-      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : map['autoUpgradeMinorVersionEnabled'] as bool,
-      extensionsToProvisionAfterVmCreations: map['extensionsToProvisionAfterVmCreations'] == null ? null : (map['extensionsToProvisionAfterVmCreations'] as List).cast<String>(),
-      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : map['failureSuppressionEnabled'] as bool,
-      forceExtensionExecutionOnChange: map['forceExtensionExecutionOnChange'] == null ? null : map['forceExtensionExecutionOnChange'] as String,
-      name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'] as String,
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>()),
-      publisher: map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'] as String,
-      type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] as String,
+      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled'] as bool).input(),
+      extensionsToProvisionAfterVmCreations: map['extensionsToProvisionAfterVmCreations'] == null ? null : ((map['extensionsToProvisionAfterVmCreations'] as List).cast<String>()).input(),
+      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled'] as bool).input(),
+      forceExtensionExecutionOnChange: map['forceExtensionExecutionOnChange'] == null ? null : (map['forceExtensionExecutionOnChange'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
+      publisher: (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      type: (map['type'] as String).input(),
+      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

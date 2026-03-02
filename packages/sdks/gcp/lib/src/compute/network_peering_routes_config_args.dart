@@ -36,21 +36,14 @@ class NetworkPeeringRoutesConfigArgs {
   /// [peering] Name of the peering.
   /// [project] The ID of the project in which the resource belongs.
   NetworkPeeringRoutesConfigArgs({
-    required pulumi.Output<bool> exportCustomRoutes,
-    pulumi.Output<bool>? exportSubnetRoutesWithPublicIp,
-    required pulumi.Output<bool> importCustomRoutes,
-    pulumi.Output<bool>? importSubnetRoutesWithPublicIp,
-    required pulumi.Output<String> network,
-    required pulumi.Output<String> peering,
-    pulumi.Output<String>? project,
-  }) :
-      exportCustomRoutes = pulumi.Input.asInput<bool>(exportCustomRoutes),
-      exportSubnetRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(exportSubnetRoutesWithPublicIp),
-      importCustomRoutes = pulumi.Input.asInput<bool>(importCustomRoutes),
-      importSubnetRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(importSubnetRoutesWithPublicIp),
-      network = pulumi.Input.asInput<String>(network),
-      peering = pulumi.Input.asInput<String>(peering),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.exportCustomRoutes,
+    this.exportSubnetRoutesWithPublicIp,
+    required this.importCustomRoutes,
+    this.importSubnetRoutesWithPublicIp,
+    required this.network,
+    required this.peering,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class NetworkPeeringRoutesConfigArgs {
 
   factory NetworkPeeringRoutesConfigArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringRoutesConfigArgs(
-      exportCustomRoutes: pulumi.Output.create<bool>(map['exportCustomRoutes'] as bool),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['exportSubnetRoutesWithPublicIp'] as bool),
-      importCustomRoutes: pulumi.Output.create<bool>(map['importCustomRoutes'] as bool),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['importSubnetRoutesWithPublicIp'] as bool),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      peering: pulumi.Output.create<String>(map['peering'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      exportCustomRoutes: (map['exportCustomRoutes'] as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
+      importCustomRoutes: (map['importCustomRoutes'] as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
+      network: (map['network'] as String).input(),
+      peering: (map['peering'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

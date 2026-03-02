@@ -37,23 +37,15 @@ class MasterSitesControllerArgs {
   /// [sites] Gets or sets the sites that are a part of Master Site.
   /// [tags] Resource tags.
   MasterSitesControllerArgs({
-    pulumi.Output<bool>? allowMultipleSites,
-    pulumi.Output<String>? customerStorageAccountArmId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteName,
-    pulumi.Output<List<String>>? sites,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      allowMultipleSites = pulumi.Input.asOptionalInput<bool>(allowMultipleSites),
-      customerStorageAccountArmId = pulumi.Input.asOptionalInput<String>(customerStorageAccountArmId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName),
-      sites = pulumi.Input.asOptionalInput<List<String>>(sites),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.allowMultipleSites,
+    this.customerStorageAccountArmId,
+    this.location,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.siteName,
+    this.sites,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class MasterSitesControllerArgs {
 
   factory MasterSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return MasterSitesControllerArgs(
-      allowMultipleSites: map['allowMultipleSites'] == null ? null : pulumi.Output.create<bool>(map['allowMultipleSites'] as bool),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : pulumi.Output.create<String>(map['customerStorageAccountArmId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
-      sites: map['sites'] == null ? null : pulumi.Output.create<List<String>>((map['sites'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      allowMultipleSites: map['allowMultipleSites'] == null ? null : (map['allowMultipleSites'] as bool).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      sites: map['sites'] == null ? null : ((map['sites'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

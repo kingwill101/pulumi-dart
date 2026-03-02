@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// Rate limit key name applicable only for the following key types:
   /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
   /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-  final String enforceOnKeyName;
+  final pulumi.Input<String> enforceOnKeyName;
   /// Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
   /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
@@ -18,7 +19,7 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
   /// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
-  final String enforceOnKeyType;
+  final pulumi.Input<String> enforceOnKeyType;
 
   /// Creates a new [GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig].
   /// [enforceOnKeyName] Rate limit key name applicable only for the following key types:
@@ -37,8 +38,8 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
 
   factory GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig(
-      enforceOnKeyName: map['enforceOnKeyName'] as String,
-      enforceOnKeyType: map['enforceOnKeyType'] as String,
+      enforceOnKeyName: (map['enforceOnKeyName'] as String).input(),
+      enforceOnKeyType: (map['enforceOnKeyType'] as String).input(),
     );
   }
 }

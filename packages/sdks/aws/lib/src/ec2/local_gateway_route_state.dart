@@ -19,15 +19,11 @@ class LocalGatewayRouteState {
   /// [localGatewayVirtualInterfaceGroupId] Identifier of EC2 Local Gateway Virtual Interface Group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LocalGatewayRouteState({
-    pulumi.Output<String>? destinationCidrBlock,
-    pulumi.Output<String>? localGatewayRouteTableId,
-    pulumi.Output<String>? localGatewayVirtualInterfaceGroupId,
-    pulumi.Output<String>? region,
-  }) :
-      destinationCidrBlock = pulumi.Input.asOptionalInput<String>(destinationCidrBlock),
-      localGatewayRouteTableId = pulumi.Input.asOptionalInput<String>(localGatewayRouteTableId),
-      localGatewayVirtualInterfaceGroupId = pulumi.Input.asOptionalInput<String>(localGatewayVirtualInterfaceGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.destinationCidrBlock,
+    this.localGatewayRouteTableId,
+    this.localGatewayVirtualInterfaceGroupId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class LocalGatewayRouteState {
 
   factory LocalGatewayRouteState.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteState(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['destinationCidrBlock'] as String),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : pulumi.Output.create<String>(map['localGatewayRouteTableId'] as String),
-      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] == null ? null : pulumi.Output.create<String>(map['localGatewayVirtualInterfaceGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
+      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] == null ? null : (map['localGatewayVirtualInterfaceGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

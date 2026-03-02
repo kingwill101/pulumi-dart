@@ -17,11 +17,9 @@ class CustomPropertyArgs {
   /// [propertyKey] The Custom attribute key.
   /// [propertyValues] Custom attribute sets the value of. See `property_values` below.
   CustomPropertyArgs({
-    required pulumi.Output<String> propertyKey,
-    pulumi.Output<List<CustomPropertyPropertyValue>>? propertyValues,
-  }) :
-      propertyKey = pulumi.Input.asInput<String>(propertyKey),
-      propertyValues = pulumi.Input.asOptionalInput<List<CustomPropertyPropertyValue>>(propertyValues);
+    required this.propertyKey,
+    this.propertyValues,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class CustomPropertyArgs {
 
   factory CustomPropertyArgs.fromMap(Map<String, dynamic> map) {
     return CustomPropertyArgs(
-      propertyKey: pulumi.Output.create<String>(map['propertyKey'] as String),
-      propertyValues: map['propertyValues'] == null ? null : pulumi.Output.create<List<CustomPropertyPropertyValue>>(pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))),
+      propertyKey: (map['propertyKey'] as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'temporary_resource_limits_config.dart';
 
 /// Desired properties of the Frontend Instances of the DMQTT Broker
 class BackendChain {
   /// Partitions is desired number of physical backend chains of the given distributed MQTT broker.
-  final int partitions;
+  final pulumi.Input<int> partitions;
   /// Redundancy Factor is desired numbers of broker instances in one chain.
-  final int redundancyFactor;
+  final pulumi.Input<int> redundancyFactor;
   /// Defines whether disk transfer is enabled or not.
-  final bool? temporaryDiskTransferEnabled;
+  final pulumi.Input<bool>? temporaryDiskTransferEnabled;
   /// Defines the percentage usage of buffer pool above which disk transfer will start.
-  final int? temporaryDiskTransferHighWatermarkPercent;
+  final pulumi.Input<int>? temporaryDiskTransferHighWatermarkPercent;
   /// Defines the percentage usage of buffer pool below which disk transfer will stop.
-  final int? temporaryDiskTransferLowWatermarkPercent;
+  final pulumi.Input<int>? temporaryDiskTransferLowWatermarkPercent;
   /// Defines the limits for memory usage percent of the backend instances of the MQTT broker.
-  final int? temporaryMaxBackendMemUsagePercent;
+  final pulumi.Input<int>? temporaryMaxBackendMemUsagePercent;
   /// Defines the limits for resources of the backend instances of the MQTT broker.
-  final TemporaryResourceLimitsConfig? temporaryResourceLimits;
+  final pulumi.Input<TemporaryResourceLimitsConfig>? temporaryResourceLimits;
   /// Number of logical backend workers per pod.
-  final int? workers;
+  final pulumi.Input<int>? workers;
 
   /// Creates a new [BackendChain].
   /// [partitions] Partitions is desired number of physical backend chains of the given distributed MQTT broker.
@@ -49,21 +50,21 @@ class BackendChain {
       'temporaryDiskTransferHighWatermarkPercent': ?temporaryDiskTransferHighWatermarkPercent,
       'temporaryDiskTransferLowWatermarkPercent': ?temporaryDiskTransferLowWatermarkPercent,
       'temporaryMaxBackendMemUsagePercent': ?temporaryMaxBackendMemUsagePercent,
-      'temporaryResourceLimits': ?temporaryResourceLimits == null ? null : temporaryResourceLimits!.toMap(),
+      'temporaryResourceLimits': ?pulumi.Input.mapOptionalInputValue<TemporaryResourceLimitsConfig, Map<String, dynamic>>(temporaryResourceLimits, (value) => value.toMap()),
       'workers': ?workers,
     };
   }
 
   factory BackendChain.fromMap(Map<String, dynamic> map) {
     return BackendChain(
-      partitions: map['partitions'] as int,
-      redundancyFactor: map['redundancyFactor'] as int,
-      temporaryDiskTransferEnabled: map['temporaryDiskTransferEnabled'] == null ? null : map['temporaryDiskTransferEnabled'] as bool,
-      temporaryDiskTransferHighWatermarkPercent: map['temporaryDiskTransferHighWatermarkPercent'] == null ? null : map['temporaryDiskTransferHighWatermarkPercent'] as int,
-      temporaryDiskTransferLowWatermarkPercent: map['temporaryDiskTransferLowWatermarkPercent'] == null ? null : map['temporaryDiskTransferLowWatermarkPercent'] as int,
-      temporaryMaxBackendMemUsagePercent: map['temporaryMaxBackendMemUsagePercent'] == null ? null : map['temporaryMaxBackendMemUsagePercent'] as int,
-      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : TemporaryResourceLimitsConfig.fromMap((map['temporaryResourceLimits'] as Map).cast<String, dynamic>()),
-      workers: map['workers'] == null ? null : map['workers'] as int,
+      partitions: (map['partitions'] as int).input(),
+      redundancyFactor: (map['redundancyFactor'] as int).input(),
+      temporaryDiskTransferEnabled: map['temporaryDiskTransferEnabled'] == null ? null : (map['temporaryDiskTransferEnabled'] as bool).input(),
+      temporaryDiskTransferHighWatermarkPercent: map['temporaryDiskTransferHighWatermarkPercent'] == null ? null : (map['temporaryDiskTransferHighWatermarkPercent'] as int).input(),
+      temporaryDiskTransferLowWatermarkPercent: map['temporaryDiskTransferLowWatermarkPercent'] == null ? null : (map['temporaryDiskTransferLowWatermarkPercent'] as int).input(),
+      temporaryMaxBackendMemUsagePercent: map['temporaryMaxBackendMemUsagePercent'] == null ? null : (map['temporaryMaxBackendMemUsagePercent'] as int).input(),
+      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfig.fromMap((map['temporaryResourceLimits'] as Map).cast<String, dynamic>())).input(),
+      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
     );
   }
 }

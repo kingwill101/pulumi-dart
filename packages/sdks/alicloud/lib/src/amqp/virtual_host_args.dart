@@ -16,11 +16,9 @@ class VirtualHostArgs {
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
   VirtualHostArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> virtualHostName,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      virtualHostName = pulumi.Input.asInput<String>(virtualHostName);
+    required this.instanceId,
+    required this.virtualHostName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class VirtualHostArgs {
 
   factory VirtualHostArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHostArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      virtualHostName: pulumi.Output.create<String>(map['virtualHostName'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      virtualHostName: (map['virtualHostName'] as String).input(),
     );
   }
 }

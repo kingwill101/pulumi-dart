@@ -47,23 +47,15 @@ class ShareArgs {
   /// [storageAccountId] Specifies the storage account in which to create the share.
   /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
   ShareArgs({
-    pulumi.Output<String>? accessTier,
-    pulumi.Output<List<ShareAcl>>? acls,
-    pulumi.Output<String>? enabledProtocol,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> quota,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<String>(accessTier),
-      acls = pulumi.Input.asOptionalInput<List<ShareAcl>>(acls),
-      enabledProtocol = pulumi.Input.asOptionalInput<String>(enabledProtocol),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quota = pulumi.Input.asInput<int>(quota),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.accessTier,
+    this.acls,
+    this.enabledProtocol,
+    this.metadata,
+    this.name,
+    required this.quota,
+    this.storageAccountId,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +72,14 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<String>(map['accessTier'] as String),
-      acls: map['acls'] == null ? null : pulumi.Output.create<List<ShareAcl>>(pulumi.Input.decodeList<ShareAcl>(map['acls'], (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))),
-      enabledProtocol: map['enabledProtocol'] == null ? null : pulumi.Output.create<String>(map['enabledProtocol'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quota: pulumi.Output.create<int>(map['quota'] as int),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<ShareAcl>(map['acls'], (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledProtocol: map['enabledProtocol'] == null ? null : (map['enabledProtocol'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quota: (map['quota'] as int).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

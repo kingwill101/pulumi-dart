@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_records_resource_record_set_geoproximity_location_coordinates.dart';
 
 class GetRecordsResourceRecordSetGeoproximityLocation {
   /// The AWS Region the resource you are directing DNS traffic to, is in.
-  final String awsRegion;
+  final pulumi.Input<String> awsRegion;
   /// The bias increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
-  final int bias;
+  final pulumi.Input<int> bias;
   /// Contains the longitude and latitude for a geographic region.
-  final GetRecordsResourceRecordSetGeoproximityLocationCoordinates coordinates;
+  final pulumi.Input<GetRecordsResourceRecordSetGeoproximityLocationCoordinates> coordinates;
   /// An AWS Local Zone Group.
-  final String localZoneGroup;
+  final pulumi.Input<String> localZoneGroup;
 
   /// Creates a new [GetRecordsResourceRecordSetGeoproximityLocation].
   /// [awsRegion] The AWS Region the resource you are directing DNS traffic to, is in.
@@ -28,17 +29,17 @@ class GetRecordsResourceRecordSetGeoproximityLocation {
     return <String, dynamic>{
       'awsRegion': awsRegion,
       'bias': bias,
-      'coordinates': coordinates.toMap(),
+      'coordinates': pulumi.Input.mapInputValue<GetRecordsResourceRecordSetGeoproximityLocationCoordinates, Map<String, dynamic>>(coordinates, (value) => value.toMap()),
       'localZoneGroup': localZoneGroup,
     };
   }
 
   factory GetRecordsResourceRecordSetGeoproximityLocation.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetGeoproximityLocation(
-      awsRegion: map['awsRegion'] as String,
-      bias: map['bias'] as int,
-      coordinates: GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates'] as Map).cast<String, dynamic>()),
-      localZoneGroup: map['localZoneGroup'] as String,
+      awsRegion: (map['awsRegion'] as String).input(),
+      bias: (map['bias'] as int).input(),
+      coordinates: (GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates'] as Map).cast<String, dynamic>())).input(),
+      localZoneGroup: (map['localZoneGroup'] as String).input(),
     );
   }
 }

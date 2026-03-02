@@ -10,7 +10,7 @@ class TagTemplateFieldTypeEnumType {
   /// and renaming of enum values are not supported.
   /// Can have up to 500 allowed values.
   /// Structure is documented below.
-  final List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues;
+  final pulumi.Input<List<TagTemplateFieldTypeEnumTypeAllowedValue>> allowedValues;
 
   /// Creates a new [TagTemplateFieldTypeEnumType].
   /// [allowedValues] The set of allowed values for this enum. The display names of the
@@ -20,13 +20,13 @@ class TagTemplateFieldTypeEnumType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedValues': pulumi.Input.encodeList<TagTemplateFieldTypeEnumTypeAllowedValue, Map<String, dynamic>>(allowedValues, (value) => value.toMap()),
+      'allowedValues': pulumi.Input.mapInputValue<List<TagTemplateFieldTypeEnumTypeAllowedValue>, List<Map<String, dynamic>>>(allowedValues, (value) => pulumi.Input.encodeList<TagTemplateFieldTypeEnumTypeAllowedValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TagTemplateFieldTypeEnumType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldTypeEnumType(
-      allowedValues: pulumi.Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(map['allowedValues'], (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap((value as Map).cast<String, dynamic>())),
+      allowedValues: (pulumi.Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(map['allowedValues'], (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class UserGroupAttachmentArgs {
   /// [groupName] The name of group.
   /// [userName] The name of user.
   UserGroupAttachmentArgs({
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> userName,
-  }) :
-      groupName = pulumi.Input.asInput<String>(groupName),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.groupName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class UserGroupAttachmentArgs {
 
   factory UserGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupAttachmentArgs(
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      groupName: (map['groupName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

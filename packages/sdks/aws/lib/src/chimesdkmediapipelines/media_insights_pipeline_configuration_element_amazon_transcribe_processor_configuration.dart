@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration {
   /// Labels all personally identifiable information (PII) identified in Transcript events.
-  final String? contentIdentificationType;
+  final pulumi.Input<String>? contentIdentificationType;
   /// Redacts all personally identifiable information (PII) identified in Transcript events.
-  final String? contentRedactionType;
+  final pulumi.Input<String>? contentRedactionType;
   /// Enables partial result stabilization in Transcript events.
-  final bool? enablePartialResultsStabilization;
+  final pulumi.Input<bool>? enablePartialResultsStabilization;
   /// Filters partial Utterance events from delivery to the insights target.
-  final bool? filterPartialResults;
+  final pulumi.Input<bool>? filterPartialResults;
   /// Language code for the transcription model.
-  final String languageCode;
+  final pulumi.Input<String> languageCode;
   /// Name of custom language model for transcription.
-  final String? languageModelName;
+  final pulumi.Input<String>? languageModelName;
   /// Level of stability to use when partial results stabilization is enabled.
-  final String? partialResultsStability;
+  final pulumi.Input<String>? partialResultsStability;
   /// Types of personally identifiable information (PII) to redact from a Transcript event.
-  final String? piiEntityTypes;
+  final pulumi.Input<String>? piiEntityTypes;
   /// Enables speaker partitioning (diarization) in your Transcript events.
-  final bool? showSpeakerLabel;
+  final pulumi.Input<bool>? showSpeakerLabel;
   /// Method for applying a vocabulary filter to Transcript events.
-  final String? vocabularyFilterMethod;
+  final pulumi.Input<String>? vocabularyFilterMethod;
   /// Name of the custom vocabulary filter to use when processing Transcript events.
-  final String? vocabularyFilterName;
+  final pulumi.Input<String>? vocabularyFilterName;
   /// Name of the custom vocabulary to use when processing Transcript events.
-  final String? vocabularyName;
+  final pulumi.Input<String>? vocabularyName;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration].
   /// [contentIdentificationType] Labels all personally identifiable information (PII) identified in Transcript events.
@@ -74,18 +75,18 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfigur
 
   factory MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration(
-      contentIdentificationType: map['contentIdentificationType'] == null ? null : map['contentIdentificationType'] as String,
-      contentRedactionType: map['contentRedactionType'] == null ? null : map['contentRedactionType'] as String,
-      enablePartialResultsStabilization: map['enablePartialResultsStabilization'] == null ? null : map['enablePartialResultsStabilization'] as bool,
-      filterPartialResults: map['filterPartialResults'] == null ? null : map['filterPartialResults'] as bool,
-      languageCode: map['languageCode'] as String,
-      languageModelName: map['languageModelName'] == null ? null : map['languageModelName'] as String,
-      partialResultsStability: map['partialResultsStability'] == null ? null : map['partialResultsStability'] as String,
-      piiEntityTypes: map['piiEntityTypes'] == null ? null : map['piiEntityTypes'] as String,
-      showSpeakerLabel: map['showSpeakerLabel'] == null ? null : map['showSpeakerLabel'] as bool,
-      vocabularyFilterMethod: map['vocabularyFilterMethod'] == null ? null : map['vocabularyFilterMethod'] as String,
-      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : map['vocabularyFilterName'] as String,
-      vocabularyName: map['vocabularyName'] == null ? null : map['vocabularyName'] as String,
+      contentIdentificationType: map['contentIdentificationType'] == null ? null : (map['contentIdentificationType'] as String).input(),
+      contentRedactionType: map['contentRedactionType'] == null ? null : (map['contentRedactionType'] as String).input(),
+      enablePartialResultsStabilization: map['enablePartialResultsStabilization'] == null ? null : (map['enablePartialResultsStabilization'] as bool).input(),
+      filterPartialResults: map['filterPartialResults'] == null ? null : (map['filterPartialResults'] as bool).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      languageModelName: map['languageModelName'] == null ? null : (map['languageModelName'] as String).input(),
+      partialResultsStability: map['partialResultsStability'] == null ? null : (map['partialResultsStability'] as String).input(),
+      piiEntityTypes: map['piiEntityTypes'] == null ? null : (map['piiEntityTypes'] as String).input(),
+      showSpeakerLabel: map['showSpeakerLabel'] == null ? null : (map['showSpeakerLabel'] as bool).input(),
+      vocabularyFilterMethod: map['vocabularyFilterMethod'] == null ? null : (map['vocabularyFilterMethod'] as String).input(),
+      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : (map['vocabularyFilterName'] as String).input(),
+      vocabularyName: map['vocabularyName'] == null ? null : (map['vocabularyName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ListPolicyFragmentReferencesArgs {
   /// [skip] Number of records to skip.
   /// [top] Number of records to return.
   ListPolicyFragmentReferencesArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<int>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      skip = pulumi.Input.asOptionalInput<int>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.id,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ListPolicyFragmentReferencesArgs {
 
   factory ListPolicyFragmentReferencesArgs.fromMap(Map<String, dynamic> map) {
     return ListPolicyFragmentReferencesArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<int>(map['skip'] as int),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      id: (map['id'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

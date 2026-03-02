@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxToolVersionToolOpenApiSpecTlsConfigCaCert {
   /// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
@@ -13,9 +14,9 @@ class CxToolVersionToolOpenApiSpecTlsConfigCaCert {
   /// -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
   /// ```
   /// A base64-encoded string.
-  final String cert;
+  final pulumi.Input<String> cert;
   /// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
-  final String displayName;
+  final pulumi.Input<String> displayName;
 
   /// Creates a new [CxToolVersionToolOpenApiSpecTlsConfigCaCert].
   /// [cert] The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
@@ -34,8 +35,8 @@ class CxToolVersionToolOpenApiSpecTlsConfigCaCert {
 
   factory CxToolVersionToolOpenApiSpecTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecTlsConfigCaCert(
-      cert: map['cert'] as String,
-      displayName: map['displayName'] as String,
+      cert: (map['cert'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

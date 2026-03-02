@@ -1,62 +1,63 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCrossRegionBackupsBackup {
   /// The time when the cross-region data backup file was generated.
-  final String backupEndTime;
+  final pulumi.Input<String> backupEndTime;
   /// The method that is used to generate the cross-region data backup file. Valid values:
   /// `L` - logical backup.
   /// `P` - physical backup.
-  final String backupMethod;
+  final pulumi.Input<String> backupMethod;
   /// The level at which the cross-region data backup file is generated.
   /// `0` - instance-level backup.
   /// `1` - database-level backup.
-  final String backupSetScale;
+  final pulumi.Input<String> backupSetScale;
   /// TThe status of the cross-region data backup. Valid values:
   /// `0` - The cross-region data backup is successful.
   /// `1` - The cross-region data backup failed.
-  final int backupSetStatus;
+  final pulumi.Input<int> backupSetStatus;
   /// The time when the cross-region data backup started.
-  final String backupStartTime;
+  final pulumi.Input<String> backupStartTime;
   /// The type of the cross-region data backup. Valid values:F: full data backup
   /// `F` - full data backup.
   /// `I` - incremental data backup.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The RDS edition of the instance. Valid values:
   /// `Basic` - Basic Edition.
   /// `HighAvailability` - High-availability Edition.
   /// `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
-  final String category;
+  final pulumi.Input<String> category;
   /// The point in time that is indicated by the data in the cross-region data backup file.
-  final String consistentTime;
+  final pulumi.Input<String> consistentTime;
   /// The external URL from which you can download the cross-region data backup file.
-  final String crossBackupDownloadLink;
+  final pulumi.Input<String> crossBackupDownloadLink;
   /// The ID of the cross-region data backup file.
-  final String crossBackupId;
+  final pulumi.Input<String> crossBackupId;
   /// The ID of the destination region where the cross-region data backup file of the instance is stored.
-  final String crossBackupRegion;
+  final pulumi.Input<String> crossBackupRegion;
   /// The name of the compressed package that contains the cross-region data backup file.
-  final String crossBackupSetFile;
+  final pulumi.Input<String> crossBackupSetFile;
   /// The location where the cross-region data backup file is stored.
-  final String crossBackupSetLocation;
+  final pulumi.Input<String> crossBackupSetLocation;
   /// The size of the cross-region data backup file. Unit: bytes.
-  final int crossBackupSetSize;
+  final pulumi.Input<int> crossBackupSetSize;
   /// The storage type.
-  final String dbInstanceStorageType;
+  final pulumi.Input<String> dbInstanceStorageType;
   /// The engine of the database.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The version of the database engine.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// The ID of the cross-region data backup file.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
-  final int instanceId;
+  final pulumi.Input<int> instanceId;
   /// The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String recoveryBeginTime;
+  final pulumi.Input<String> recoveryBeginTime;
   /// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String recoveryEndTime;
+  final pulumi.Input<String> recoveryEndTime;
   /// An array that consists of the regions to which the cross-region data backup file can be restored.
-  final List<String> restoreRegions;
+  final pulumi.Input<List<String>> restoreRegions;
 
   /// Creates a new [GetCrossRegionBackupsBackup].
   /// [backupEndTime] The time when the cross-region data backup file was generated.
@@ -135,28 +136,28 @@ class GetCrossRegionBackupsBackup {
 
   factory GetCrossRegionBackupsBackup.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionBackupsBackup(
-      backupEndTime: map['backupEndTime'] as String,
-      backupMethod: map['backupMethod'] as String,
-      backupSetScale: map['backupSetScale'] as String,
-      backupSetStatus: map['backupSetStatus'] as int,
-      backupStartTime: map['backupStartTime'] as String,
-      backupType: map['backupType'] as String,
-      category: map['category'] as String,
-      consistentTime: map['consistentTime'] as String,
-      crossBackupDownloadLink: map['crossBackupDownloadLink'] as String,
-      crossBackupId: map['crossBackupId'] as String,
-      crossBackupRegion: map['crossBackupRegion'] as String,
-      crossBackupSetFile: map['crossBackupSetFile'] as String,
-      crossBackupSetLocation: map['crossBackupSetLocation'] as String,
-      crossBackupSetSize: map['crossBackupSetSize'] as int,
-      dbInstanceStorageType: map['dbInstanceStorageType'] as String,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as int,
-      recoveryBeginTime: map['recoveryBeginTime'] as String,
-      recoveryEndTime: map['recoveryEndTime'] as String,
-      restoreRegions: (map['restoreRegions'] as List).cast<String>(),
+      backupEndTime: (map['backupEndTime'] as String).input(),
+      backupMethod: (map['backupMethod'] as String).input(),
+      backupSetScale: (map['backupSetScale'] as String).input(),
+      backupSetStatus: (map['backupSetStatus'] as int).input(),
+      backupStartTime: (map['backupStartTime'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      category: (map['category'] as String).input(),
+      consistentTime: (map['consistentTime'] as String).input(),
+      crossBackupDownloadLink: (map['crossBackupDownloadLink'] as String).input(),
+      crossBackupId: (map['crossBackupId'] as String).input(),
+      crossBackupRegion: (map['crossBackupRegion'] as String).input(),
+      crossBackupSetFile: (map['crossBackupSetFile'] as String).input(),
+      crossBackupSetLocation: (map['crossBackupSetLocation'] as String).input(),
+      crossBackupSetSize: (map['crossBackupSetSize'] as int).input(),
+      dbInstanceStorageType: (map['dbInstanceStorageType'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as int).input(),
+      recoveryBeginTime: (map['recoveryBeginTime'] as String).input(),
+      recoveryEndTime: (map['recoveryEndTime'] as String).input(),
+      restoreRegions: ((map['restoreRegions'] as List).cast<String>()).input(),
     );
   }
 }

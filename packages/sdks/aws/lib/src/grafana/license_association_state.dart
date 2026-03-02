@@ -25,19 +25,13 @@ class LicenseAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] The workspace id.
   LicenseAssociationState({
-    pulumi.Output<String>? freeTrialExpiration,
-    pulumi.Output<String>? grafanaToken,
-    pulumi.Output<String>? licenseExpiration,
-    pulumi.Output<String>? licenseType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      freeTrialExpiration = pulumi.Input.asOptionalInput<String>(freeTrialExpiration),
-      grafanaToken = pulumi.Input.asOptionalInput<String>(grafanaToken),
-      licenseExpiration = pulumi.Input.asOptionalInput<String>(licenseExpiration),
-      licenseType = pulumi.Input.asOptionalInput<String>(licenseType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.freeTrialExpiration,
+    this.grafanaToken,
+    this.licenseExpiration,
+    this.licenseType,
+    this.region,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class LicenseAssociationState {
 
   factory LicenseAssociationState.fromMap(Map<String, dynamic> map) {
     return LicenseAssociationState(
-      freeTrialExpiration: map['freeTrialExpiration'] == null ? null : pulumi.Output.create<String>(map['freeTrialExpiration'] as String),
-      grafanaToken: map['grafanaToken'] == null ? null : pulumi.Output.create<String>(map['grafanaToken'] as String),
-      licenseExpiration: map['licenseExpiration'] == null ? null : pulumi.Output.create<String>(map['licenseExpiration'] as String),
-      licenseType: map['licenseType'] == null ? null : pulumi.Output.create<String>(map['licenseType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      freeTrialExpiration: map['freeTrialExpiration'] == null ? null : (map['freeTrialExpiration'] as String).input(),
+      grafanaToken: map['grafanaToken'] == null ? null : (map['grafanaToken'] as String).input(),
+      licenseExpiration: map['licenseExpiration'] == null ? null : (map['licenseExpiration'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_lf_tag_table_with_columns_column_wildcard.dart';
 
 class ResourceLfTagTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
   /// Set of column names for the table.
-  final List<String>? columnNames;
+  final pulumi.Input<List<String>>? columnNames;
   /// Option to add column wildcard. See Column Wildcard for more details.
-  final ResourceLfTagTableWithColumnsColumnWildcard? columnWildcard;
+  final pulumi.Input<ResourceLfTagTableWithColumnsColumnWildcard>? columnWildcard;
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Name of the table resource.
   ///
   /// The following arguments are optional:
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceLfTagTableWithColumns].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
@@ -34,7 +35,7 @@ class ResourceLfTagTableWithColumns {
     return <String, dynamic>{
       'catalogId': ?catalogId,
       'columnNames': ?columnNames,
-      'columnWildcard': ?columnWildcard == null ? null : columnWildcard!.toMap(),
+      'columnWildcard': ?pulumi.Input.mapOptionalInputValue<ResourceLfTagTableWithColumnsColumnWildcard, Map<String, dynamic>>(columnWildcard, (value) => value.toMap()),
       'databaseName': databaseName,
       'name': name,
     };
@@ -42,11 +43,11 @@ class ResourceLfTagTableWithColumns {
 
   factory ResourceLfTagTableWithColumns.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagTableWithColumns(
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      columnNames: map['columnNames'] == null ? null : (map['columnNames'] as List).cast<String>(),
-      columnWildcard: map['columnWildcard'] == null ? null : ResourceLfTagTableWithColumnsColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>()),
-      databaseName: map['databaseName'] as String,
-      name: map['name'] as String,
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      columnWildcard: map['columnWildcard'] == null ? null : (ResourceLfTagTableWithColumnsColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>())).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

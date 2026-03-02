@@ -43,25 +43,16 @@ class EventHubArgs {
   /// [retentionDescription] A `retention_description` block as defined below.
   /// [status] Specifies the status of the Event Hub resource. Possible values are `Active`, `Disabled` and `SendDisabled`. Defaults to `Active`.
   EventHubArgs({
-    pulumi.Output<EventHubCaptureDescription>? captureDescription,
-    pulumi.Output<int>? messageRetention,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? namespaceName,
-    required pulumi.Output<int> partitionCount,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<EventHubRetentionDescription>? retentionDescription,
-    pulumi.Output<String>? status,
-  }) :
-      captureDescription = pulumi.Input.asOptionalInput<EventHubCaptureDescription>(captureDescription),
-      messageRetention = pulumi.Input.asOptionalInput<int>(messageRetention),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      namespaceName = pulumi.Input.asOptionalInput<String>(namespaceName),
-      partitionCount = pulumi.Input.asInput<int>(partitionCount),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      retentionDescription = pulumi.Input.asOptionalInput<EventHubRetentionDescription>(retentionDescription),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.captureDescription,
+    this.messageRetention,
+    this.name,
+    this.namespaceId,
+    this.namespaceName,
+    required this.partitionCount,
+    this.resourceGroupName,
+    this.retentionDescription,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class EventHubArgs {
 
   factory EventHubArgs.fromMap(Map<String, dynamic> map) {
     return EventHubArgs(
-      captureDescription: map['captureDescription'] == null ? null : pulumi.Output.create<EventHubCaptureDescription>(EventHubCaptureDescription.fromMap((map['captureDescription'] as Map).cast<String, dynamic>())),
-      messageRetention: map['messageRetention'] == null ? null : pulumi.Output.create<int>(map['messageRetention'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      namespaceName: map['namespaceName'] == null ? null : pulumi.Output.create<String>(map['namespaceName'] as String),
-      partitionCount: pulumi.Output.create<int>(map['partitionCount'] as int),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDescription: map['retentionDescription'] == null ? null : pulumi.Output.create<EventHubRetentionDescription>(EventHubRetentionDescription.fromMap((map['retentionDescription'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      captureDescription: map['captureDescription'] == null ? null : (EventHubCaptureDescription.fromMap((map['captureDescription'] as Map).cast<String, dynamic>())).input(),
+      messageRetention: map['messageRetention'] == null ? null : (map['messageRetention'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      partitionCount: (map['partitionCount'] as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      retentionDescription: map['retentionDescription'] == null ? null : (EventHubRetentionDescription.fromMap((map['retentionDescription'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class GetAlertPolicyArgs {
   /// [incidentPreference] The rollup strategy for the policy, which can have one of the following values:
   /// [name] The name of the alert policy in New Relic.
   GetAlertPolicyArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? incidentPreference,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      incidentPreference = pulumi.Input.asOptionalInput<String>(incidentPreference),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    this.incidentPreference,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetAlertPolicyArgs {
 
   factory GetAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertPolicyArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      incidentPreference: map['incidentPreference'] == null ? null : pulumi.Output.create<String>(map['incidentPreference'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

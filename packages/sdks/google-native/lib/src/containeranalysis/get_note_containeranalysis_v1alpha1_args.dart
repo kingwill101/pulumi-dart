@@ -14,11 +14,9 @@ class GetNoteContaineranalysisV1alpha1Args {
   /// [noteId] Required.
   /// [project] Optional.
   GetNoteContaineranalysisV1alpha1Args({
-    required pulumi.Output<String> noteId,
-    pulumi.Output<String>? project,
-  }) :
-      noteId = pulumi.Input.asInput<String>(noteId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.noteId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetNoteContaineranalysisV1alpha1Args {
 
   factory GetNoteContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1alpha1Args(
-      noteId: pulumi.Output.create<String>(map['noteId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      noteId: (map['noteId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

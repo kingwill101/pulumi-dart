@@ -75,35 +75,21 @@ class OauthClientState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The state of the OauthClient.
   OauthClientState({
-    pulumi.Output<List<String>>? allowedGrantTypes,
-    pulumi.Output<List<String>>? allowedRedirectUris,
-    pulumi.Output<List<String>>? allowedScopes,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? oauthClientId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-  }) :
-      allowedGrantTypes = pulumi.Input.asOptionalInput<List<String>>(allowedGrantTypes),
-      allowedRedirectUris = pulumi.Input.asOptionalInput<List<String>>(allowedRedirectUris),
-      allowedScopes = pulumi.Input.asOptionalInput<List<String>>(allowedScopes),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauthClientId = pulumi.Input.asOptionalInput<String>(oauthClientId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.allowedGrantTypes,
+    this.allowedRedirectUris,
+    this.allowedScopes,
+    this.clientId,
+    this.clientType,
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.expireTime,
+    this.location,
+    this.name,
+    this.oauthClientId,
+    this.project,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -126,20 +112,20 @@ class OauthClientState {
 
   factory OauthClientState.fromMap(Map<String, dynamic> map) {
     return OauthClientState(
-      allowedGrantTypes: map['allowedGrantTypes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedGrantTypes'] as List).cast<String>()),
-      allowedRedirectUris: map['allowedRedirectUris'] == null ? null : pulumi.Output.create<List<String>>((map['allowedRedirectUris'] as List).cast<String>()),
-      allowedScopes: map['allowedScopes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedScopes'] as List).cast<String>()),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oauthClientId: map['oauthClientId'] == null ? null : pulumi.Output.create<String>(map['oauthClientId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      allowedGrantTypes: map['allowedGrantTypes'] == null ? null : ((map['allowedGrantTypes'] as List).cast<String>()).input(),
+      allowedRedirectUris: map['allowedRedirectUris'] == null ? null : ((map['allowedRedirectUris'] as List).cast<String>()).input(),
+      allowedScopes: map['allowedScopes'] == null ? null : ((map['allowedScopes'] as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oauthClientId: map['oauthClientId'] == null ? null : (map['oauthClientId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

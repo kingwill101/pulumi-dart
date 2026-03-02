@@ -52,29 +52,18 @@ class AssistantState {
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] The type of web grounding to use.
   AssistantState({
-    pulumi.Output<String>? assistantId,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<AssistantCustomerPolicy>? customerPolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? engineId,
-    pulumi.Output<AssistantGenerationConfig>? generationConfig,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? webGroundingType,
-  }) :
-      assistantId = pulumi.Input.asOptionalInput<String>(assistantId),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      customerPolicy = pulumi.Input.asOptionalInput<AssistantCustomerPolicy>(customerPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      engineId = pulumi.Input.asOptionalInput<String>(engineId),
-      generationConfig = pulumi.Input.asOptionalInput<AssistantGenerationConfig>(generationConfig),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webGroundingType = pulumi.Input.asOptionalInput<String>(webGroundingType);
+    this.assistantId,
+    this.collectionId,
+    this.customerPolicy,
+    this.description,
+    this.displayName,
+    this.engineId,
+    this.generationConfig,
+    this.location,
+    this.name,
+    this.project,
+    this.webGroundingType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class AssistantState {
 
   factory AssistantState.fromMap(Map<String, dynamic> map) {
     return AssistantState(
-      assistantId: map['assistantId'] == null ? null : pulumi.Output.create<String>(map['assistantId'] as String),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      customerPolicy: map['customerPolicy'] == null ? null : pulumi.Output.create<AssistantCustomerPolicy>(AssistantCustomerPolicy.fromMap((map['customerPolicy'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      engineId: map['engineId'] == null ? null : pulumi.Output.create<String>(map['engineId'] as String),
-      generationConfig: map['generationConfig'] == null ? null : pulumi.Output.create<AssistantGenerationConfig>(AssistantGenerationConfig.fromMap((map['generationConfig'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      webGroundingType: map['webGroundingType'] == null ? null : pulumi.Output.create<String>(map['webGroundingType'] as String),
+      assistantId: map['assistantId'] == null ? null : (map['assistantId'] as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      customerPolicy: map['customerPolicy'] == null ? null : (AssistantCustomerPolicy.fromMap((map['customerPolicy'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
+      generationConfig: map['generationConfig'] == null ? null : (AssistantGenerationConfig.fromMap((map['generationConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
     );
   }
 }

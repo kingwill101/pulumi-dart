@@ -38,27 +38,17 @@ class FsxOpenZfsFileSystemState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] The URL of the FSx for openzfs location that was described.
   FsxOpenZfsFileSystemState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? fsxFilesystemArn,
-    pulumi.Output<FsxOpenZfsFileSystemProtocol>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupArns,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? uri,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      fsxFilesystemArn = pulumi.Input.asOptionalInput<String>(fsxFilesystemArn),
-      protocol = pulumi.Input.asOptionalInput<FsxOpenZfsFileSystemProtocol>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asOptionalInput<List<String>>(securityGroupArns),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.arn,
+    this.creationTime,
+    this.fsxFilesystemArn,
+    this.protocol,
+    this.region,
+    this.securityGroupArns,
+    this.subdirectory,
+    this.tags,
+    this.tagsAll,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class FsxOpenZfsFileSystemState {
 
   factory FsxOpenZfsFileSystemState.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : pulumi.Output.create<String>(map['fsxFilesystemArn'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<FsxOpenZfsFileSystemProtocol>(FsxOpenZfsFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: map['securityGroupArns'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
+      protocol: map['protocol'] == null ? null : (FsxOpenZfsFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

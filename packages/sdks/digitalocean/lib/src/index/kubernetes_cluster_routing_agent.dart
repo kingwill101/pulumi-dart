@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterRoutingAgent {
   /// Boolean flag whether the routing-agent should be enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterRoutingAgent].
   /// [enabled] Boolean flag whether the routing-agent should be enabled or not.
@@ -19,7 +20,7 @@ class KubernetesClusterRoutingAgent {
 
   factory KubernetesClusterRoutingAgent.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterRoutingAgent(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

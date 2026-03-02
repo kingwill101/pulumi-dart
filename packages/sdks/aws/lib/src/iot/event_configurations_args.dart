@@ -16,11 +16,9 @@ class EventConfigurationsArgs {
   /// [eventConfigurations] Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EventConfigurationsArgs({
-    required pulumi.Output<Map<String, bool>> eventConfigurations,
-    pulumi.Output<String>? region,
-  }) :
-      eventConfigurations = pulumi.Input.asInput<Map<String, bool>>(eventConfigurations),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.eventConfigurations,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class EventConfigurationsArgs {
 
   factory EventConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return EventConfigurationsArgs(
-      eventConfigurations: pulumi.Output.create<Map<String, bool>>((map['eventConfigurations'] as Map).cast<String, bool>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      eventConfigurations: ((map['eventConfigurations'] as Map).cast<String, bool>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

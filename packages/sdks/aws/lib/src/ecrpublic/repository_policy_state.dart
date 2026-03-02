@@ -19,15 +19,11 @@ class RepositoryPolicyState {
   /// [registryId] The registry ID where the repository was created.
   /// [repositoryName] Name of the repository to apply the policy.
   RepositoryPolicyState({
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<String>? repositoryName,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryName = pulumi.Input.asOptionalInput<String>(repositoryName);
+    this.policy,
+    this.region,
+    this.registryId,
+    this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RepositoryPolicyState {
 
   factory RepositoryPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryPolicyState(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryName: map['repositoryName'] == null ? null : pulumi.Output.create<String>(map['repositoryName'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
     );
   }
 }

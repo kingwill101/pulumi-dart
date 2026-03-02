@@ -58,31 +58,19 @@ class SearchEngineArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
   SearchEngineArgs({
-    pulumi.Output<String>? appType,
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<SearchEngineCommonConfig>? commonConfig,
-    required pulumi.Output<List<String>> dataStoreIds,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> engineId,
-    pulumi.Output<Map<String, String>>? features,
-    pulumi.Output<String>? industryVertical,
-    pulumi.Output<String>? kmsKeyName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<SearchEngineSearchEngineConfig> searchEngineConfig,
-  }) :
-      appType = pulumi.Input.asOptionalInput<String>(appType),
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      commonConfig = pulumi.Input.asOptionalInput<SearchEngineCommonConfig>(commonConfig),
-      dataStoreIds = pulumi.Input.asInput<List<String>>(dataStoreIds),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      features = pulumi.Input.asOptionalInput<Map<String, String>>(features),
-      industryVertical = pulumi.Input.asOptionalInput<String>(industryVertical),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      searchEngineConfig = pulumi.Input.asInput<SearchEngineSearchEngineConfig>(searchEngineConfig);
+    this.appType,
+    required this.collectionId,
+    this.commonConfig,
+    required this.dataStoreIds,
+    required this.displayName,
+    required this.engineId,
+    this.features,
+    this.industryVertical,
+    this.kmsKeyName,
+    required this.location,
+    this.project,
+    required this.searchEngineConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,18 +91,18 @@ class SearchEngineArgs {
 
   factory SearchEngineArgs.fromMap(Map<String, dynamic> map) {
     return SearchEngineArgs(
-      appType: map['appType'] == null ? null : pulumi.Output.create<String>(map['appType'] as String),
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      commonConfig: map['commonConfig'] == null ? null : pulumi.Output.create<SearchEngineCommonConfig>(SearchEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())),
-      dataStoreIds: pulumi.Output.create<List<String>>((map['dataStoreIds'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      engineId: pulumi.Output.create<String>(map['engineId'] as String),
-      features: map['features'] == null ? null : pulumi.Output.create<Map<String, String>>((map['features'] as Map).cast<String, String>()),
-      industryVertical: map['industryVertical'] == null ? null : pulumi.Output.create<String>(map['industryVertical'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      searchEngineConfig: pulumi.Output.create<SearchEngineSearchEngineConfig>(SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      collectionId: (map['collectionId'] as String).input(),
+      commonConfig: map['commonConfig'] == null ? null : (SearchEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      dataStoreIds: ((map['dataStoreIds'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      engineId: (map['engineId'] as String).input(),
+      features: map['features'] == null ? null : ((map['features'] as Map).cast<String, String>()).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      searchEngineConfig: (SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

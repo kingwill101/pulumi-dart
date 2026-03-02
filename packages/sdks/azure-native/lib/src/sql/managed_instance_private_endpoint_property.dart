@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedInstancePrivateEndpointProperty {
   /// Resource id of the private endpoint.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [ManagedInstancePrivateEndpointProperty].
   /// [id] Resource id of the private endpoint.
@@ -19,7 +20,7 @@ class ManagedInstancePrivateEndpointProperty {
 
   factory ManagedInstancePrivateEndpointProperty.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateEndpointProperty(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

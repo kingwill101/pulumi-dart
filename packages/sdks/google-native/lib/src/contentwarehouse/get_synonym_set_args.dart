@@ -16,13 +16,10 @@ class GetSynonymSetArgs {
   /// [project] Optional.
   /// [synonymSetId] Required.
   GetSynonymSetArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> synonymSetId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      synonymSetId = pulumi.Input.asInput<String>(synonymSetId);
+    required this.location,
+    this.project,
+    required this.synonymSetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSynonymSetArgs {
 
   factory GetSynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return GetSynonymSetArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      synonymSetId: pulumi.Output.create<String>(map['synonymSetId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      synonymSetId: (map['synonymSetId'] as String).input(),
     );
   }
 }

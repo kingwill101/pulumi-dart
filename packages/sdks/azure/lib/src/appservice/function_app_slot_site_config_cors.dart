@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionAppSlotSiteConfigCors {
   /// A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// Are credentials supported?
-  final bool? supportCredentials;
+  final pulumi.Input<bool>? supportCredentials;
 
   /// Creates a new [FunctionAppSlotSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
@@ -24,8 +25,8 @@ class FunctionAppSlotSiteConfigCors {
 
   factory FunctionAppSlotSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotSiteConfigCors(
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      supportCredentials: map['supportCredentials'] == null ? null : map['supportCredentials'] as bool,
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
     );
   }
 }

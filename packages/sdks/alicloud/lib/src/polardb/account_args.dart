@@ -46,25 +46,16 @@ class AccountArgs {
   /// [kmsEncryptedPassword] An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
   /// [kmsEncryptionContext] An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   AccountArgs({
-    pulumi.Output<String>? accountDescription,
-    pulumi.Output<String>? accountLockState,
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? accountPassword,
-    pulumi.Output<String>? accountPasswordValidTime,
-    pulumi.Output<String>? accountType,
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? kmsEncryptedPassword,
-    pulumi.Output<Map<String, String>>? kmsEncryptionContext,
-  }) :
-      accountDescription = pulumi.Input.asOptionalInput<String>(accountDescription),
-      accountLockState = pulumi.Input.asOptionalInput<String>(accountLockState),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      accountPasswordValidTime = pulumi.Input.asOptionalInput<String>(accountPasswordValidTime),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      kmsEncryptedPassword = pulumi.Input.asOptionalInput<String>(kmsEncryptedPassword),
-      kmsEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(kmsEncryptionContext);
+    this.accountDescription,
+    this.accountLockState,
+    required this.accountName,
+    this.accountPassword,
+    this.accountPasswordValidTime,
+    this.accountType,
+    required this.dbClusterId,
+    this.kmsEncryptedPassword,
+    this.kmsEncryptionContext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : pulumi.Output.create<String>(map['accountDescription'] as String),
-      accountLockState: map['accountLockState'] == null ? null : pulumi.Output.create<String>(map['accountLockState'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      accountPasswordValidTime: map['accountPasswordValidTime'] == null ? null : pulumi.Output.create<String>(map['accountPasswordValidTime'] as String),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : pulumi.Output.create<String>(map['kmsEncryptedPassword'] as String),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['kmsEncryptionContext'] as Map).cast<String, String>()),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountLockState: map['accountLockState'] == null ? null : (map['accountLockState'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      accountPasswordValidTime: map['accountPasswordValidTime'] == null ? null : (map['accountPasswordValidTime'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
     );
   }
 }

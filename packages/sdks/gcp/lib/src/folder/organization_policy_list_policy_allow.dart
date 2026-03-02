@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationPolicyListPolicyAllow {
   /// The policy allows or denies all values.
-  final bool? all;
+  final pulumi.Input<bool>? all;
   /// The policy can define specific values that are allowed or denied.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [OrganizationPolicyListPolicyAllow].
   /// [all] The policy allows or denies all values.
@@ -24,8 +25,8 @@ class OrganizationPolicyListPolicyAllow {
 
   factory OrganizationPolicyListPolicyAllow.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyListPolicyAllow(
-      all: map['all'] == null ? null : map['all'] as bool,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -39,25 +39,16 @@ class SecurityConnectorArgs {
   /// [securityConnectorName] The security connector name.
   /// [tags] A list of key value pairs that describe the resource.
   SecurityConnectorArgs({
-    pulumi.Output<AwsEnvironmentData>? environmentData,
-    pulumi.Output<String>? environmentName,
-    pulumi.Output<String>? hierarchyIdentifier,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<CspmMonitorAwsOffering>>? offerings,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityConnectorName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      environmentData = pulumi.Input.asOptionalInput<AwsEnvironmentData>(environmentData),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      hierarchyIdentifier = pulumi.Input.asOptionalInput<String>(hierarchyIdentifier),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      offerings = pulumi.Input.asOptionalInput<List<CspmMonitorAwsOffering>>(offerings),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityConnectorName = pulumi.Input.asOptionalInput<String>(securityConnectorName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.environmentData,
+    this.environmentName,
+    this.hierarchyIdentifier,
+    this.kind,
+    this.location,
+    this.offerings,
+    required this.resourceGroupName,
+    this.securityConnectorName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class SecurityConnectorArgs {
 
   factory SecurityConnectorArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConnectorArgs(
-      environmentData: map['environmentData'] == null ? null : pulumi.Output.create<AwsEnvironmentData>(AwsEnvironmentData.fromMap((map['environmentData'] as Map).cast<String, dynamic>())),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      hierarchyIdentifier: map['hierarchyIdentifier'] == null ? null : pulumi.Output.create<String>(map['hierarchyIdentifier'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      offerings: map['offerings'] == null ? null : pulumi.Output.create<List<CspmMonitorAwsOffering>>(pulumi.Input.decodeList<CspmMonitorAwsOffering>(map['offerings'], (value) => CspmMonitorAwsOffering.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityConnectorName: map['securityConnectorName'] == null ? null : pulumi.Output.create<String>(map['securityConnectorName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      environmentData: map['environmentData'] == null ? null : (AwsEnvironmentData.fromMap((map['environmentData'] as Map).cast<String, dynamic>())).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      hierarchyIdentifier: map['hierarchyIdentifier'] == null ? null : (map['hierarchyIdentifier'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      offerings: map['offerings'] == null ? null : (pulumi.Input.decodeList<CspmMonitorAwsOffering>(map['offerings'], (value) => CspmMonitorAwsOffering.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityConnectorName: map['securityConnectorName'] == null ? null : (map['securityConnectorName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

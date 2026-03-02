@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedKubernetesDeleteOption {
   /// The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
-  final String? deleteMode;
+  final pulumi.Input<String>? deleteMode;
   /// The type of resources that are created by cluster. Valid values:
   /// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
   /// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
@@ -34,7 +35,7 @@ class ManagedKubernetesDeleteOption {
   /// resource_type = "SLS_ControlPlane"
   /// }
   /// ```
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Creates a new [ManagedKubernetesDeleteOption].
   /// [deleteMode] The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
@@ -53,8 +54,8 @@ class ManagedKubernetesDeleteOption {
 
   factory ManagedKubernetesDeleteOption.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesDeleteOption(
-      deleteMode: map['deleteMode'] == null ? null : map['deleteMode'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      deleteMode: map['deleteMode'] == null ? null : (map['deleteMode'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

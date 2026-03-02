@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Support information for the content item.
 class MetadataSupportResponse {
   /// Email of support contact
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Link for support help, like to support page to open a ticket etc.
-  final String? link;
+  final pulumi.Input<String>? link;
   /// Name of the support contact. Company or person.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of support for content item
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [MetadataSupportResponse].
   /// [email] Email of support contact
@@ -35,10 +36,10 @@ class MetadataSupportResponse {
 
   factory MetadataSupportResponse.fromMap(Map<String, dynamic> map) {
     return MetadataSupportResponse(
-      email: map['email'] == null ? null : map['email'] as String,
-      link: map['link'] == null ? null : map['link'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      link: map['link'] == null ? null : (map['link'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

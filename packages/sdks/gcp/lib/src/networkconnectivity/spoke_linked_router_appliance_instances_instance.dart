@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeLinkedRouterApplianceInstancesInstance {
   /// The IP address on the VM to use for peering.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The URI of the virtual machine resource
-  final String virtualMachine;
+  final pulumi.Input<String> virtualMachine;
 
   /// Creates a new [SpokeLinkedRouterApplianceInstancesInstance].
   /// [ipAddress] The IP address on the VM to use for peering.
@@ -24,8 +25,8 @@ class SpokeLinkedRouterApplianceInstancesInstance {
 
   factory SpokeLinkedRouterApplianceInstancesInstance.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedRouterApplianceInstancesInstance(
-      ipAddress: map['ipAddress'] as String,
-      virtualMachine: map['virtualMachine'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      virtualMachine: (map['virtualMachine'] as String).input(),
     );
   }
 }

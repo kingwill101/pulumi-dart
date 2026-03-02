@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes destination endpoint for routing traffic.
 class GatewayDestinationResponse {
   /// Name of the service fabric Mesh application.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// name of the endpoint in the service.
-  final String endpointName;
+  final pulumi.Input<String> endpointName;
   /// service that contains the endpoint.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [GatewayDestinationResponse].
   /// [applicationName] Name of the service fabric Mesh application.
@@ -30,9 +31,9 @@ class GatewayDestinationResponse {
 
   factory GatewayDestinationResponse.fromMap(Map<String, dynamic> map) {
     return GatewayDestinationResponse(
-      applicationName: map['applicationName'] as String,
-      endpointName: map['endpointName'] as String,
-      serviceName: map['serviceName'] as String,
+      applicationName: (map['applicationName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

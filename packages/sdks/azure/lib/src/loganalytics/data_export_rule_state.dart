@@ -28,21 +28,14 @@ class DataExportRuleState {
   /// [tableNames] A list of table names to export to the destination resource, for example: `["Heartbeat", "SecurityEvent"]`.
   /// [workspaceResourceId] The resource ID of the workspace. Changing this forces a new Log Analytics Data Export Rule to be created.
   DataExportRuleState({
-    pulumi.Output<String>? destinationResourceId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? exportRuleId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<String>>? tableNames,
-    pulumi.Output<String>? workspaceResourceId,
-  }) :
-      destinationResourceId = pulumi.Input.asOptionalInput<String>(destinationResourceId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      exportRuleId = pulumi.Input.asOptionalInput<String>(exportRuleId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tableNames = pulumi.Input.asOptionalInput<List<String>>(tableNames),
-      workspaceResourceId = pulumi.Input.asOptionalInput<String>(workspaceResourceId);
+    this.destinationResourceId,
+    this.enabled,
+    this.exportRuleId,
+    this.name,
+    this.resourceGroupName,
+    this.tableNames,
+    this.workspaceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DataExportRuleState {
 
   factory DataExportRuleState.fromMap(Map<String, dynamic> map) {
     return DataExportRuleState(
-      destinationResourceId: map['destinationResourceId'] == null ? null : pulumi.Output.create<String>(map['destinationResourceId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      exportRuleId: map['exportRuleId'] == null ? null : pulumi.Output.create<String>(map['exportRuleId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableNames: map['tableNames'] == null ? null : pulumi.Output.create<List<String>>((map['tableNames'] as List).cast<String>()),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : pulumi.Output.create<String>(map['workspaceResourceId'] as String),
+      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      exportRuleId: map['exportRuleId'] == null ? null : (map['exportRuleId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class LoadBalancerPolicyArgs {
   /// [policyTypeName] The policy type.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LoadBalancerPolicyArgs({
-    required pulumi.Output<String> loadBalancerName,
-    pulumi.Output<List<LoadBalancerPolicyPolicyAttribute>>? policyAttributes,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> policyTypeName,
-    pulumi.Output<String>? region,
-  }) :
-      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-      policyAttributes = pulumi.Input.asOptionalInput<List<LoadBalancerPolicyPolicyAttribute>>(policyAttributes),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyTypeName = pulumi.Input.asInput<String>(policyTypeName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.loadBalancerName,
+    this.policyAttributes,
+    required this.policyName,
+    required this.policyTypeName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class LoadBalancerPolicyArgs {
 
   factory LoadBalancerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerPolicyArgs(
-      loadBalancerName: pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      policyAttributes: map['policyAttributes'] == null ? null : pulumi.Output.create<List<LoadBalancerPolicyPolicyAttribute>>(pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes'], (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyTypeName: pulumi.Output.create<String>(map['policyTypeName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      policyAttributes: map['policyAttributes'] == null ? null : (pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes'], (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyTypeName: (map['policyTypeName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

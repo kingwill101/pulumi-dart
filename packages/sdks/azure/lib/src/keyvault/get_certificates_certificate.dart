@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificatesCertificate {
   /// Whether this certificate is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The ID of this certificate.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of certificate.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tags of this certificate.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetCertificatesCertificate].
   /// [enabled] Whether this certificate is enabled.
@@ -34,10 +35,10 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

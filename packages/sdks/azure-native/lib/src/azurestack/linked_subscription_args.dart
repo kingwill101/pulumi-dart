@@ -25,17 +25,12 @@ class LinkedSubscriptionArgs {
   /// [registrationResourceId] The identifier associated with the device registration.
   /// [resourceGroup] Name of the resource group.
   LinkedSubscriptionArgs({
-    required pulumi.Output<String> linkedSubscriptionId,
-    pulumi.Output<String>? linkedSubscriptionName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> registrationResourceId,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      linkedSubscriptionId = pulumi.Input.asInput<String>(linkedSubscriptionId),
-      linkedSubscriptionName = pulumi.Input.asOptionalInput<String>(linkedSubscriptionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      registrationResourceId = pulumi.Input.asInput<String>(registrationResourceId),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.linkedSubscriptionId,
+    this.linkedSubscriptionName,
+    this.location,
+    required this.registrationResourceId,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LinkedSubscriptionArgs {
 
   factory LinkedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LinkedSubscriptionArgs(
-      linkedSubscriptionId: pulumi.Output.create<String>(map['linkedSubscriptionId'] as String),
-      linkedSubscriptionName: map['linkedSubscriptionName'] == null ? null : pulumi.Output.create<String>(map['linkedSubscriptionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      registrationResourceId: pulumi.Output.create<String>(map['registrationResourceId'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      linkedSubscriptionId: (map['linkedSubscriptionId'] as String).input(),
+      linkedSubscriptionName: map['linkedSubscriptionName'] == null ? null : (map['linkedSubscriptionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      registrationResourceId: (map['registrationResourceId'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

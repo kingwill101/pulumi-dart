@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicySecurityHeadersConfigXssProtection {
   /// Whether CloudFront includes the mode=block directive in the X-XSS-Protection header.
-  final bool modeBlock;
+  final pulumi.Input<bool> modeBlock;
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
   /// Boolean value that determines the value of the X-XSS-Protection HTTP response header. When this setting is true, the value of the X-XSS-Protection header is 1. When this setting is false, the value of the X-XSS-Protection header is 0.
-  final bool protection;
+  final pulumi.Input<bool> protection;
   /// Whether CloudFront sets a reporting URI in the X-XSS-Protection header.
-  final String reportUri;
+  final pulumi.Input<String> reportUri;
 
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigXssProtection].
   /// [modeBlock] Whether CloudFront includes the mode=block directive in the X-XSS-Protection header.
@@ -34,10 +35,10 @@ class GetResponseHeadersPolicySecurityHeadersConfigXssProtection {
 
   factory GetResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigXssProtection(
-      modeBlock: map['modeBlock'] as bool,
-      override: map['override'] as bool,
-      protection: map['protection'] as bool,
-      reportUri: map['reportUri'] as String,
+      modeBlock: (map['modeBlock'] as bool).input(),
+      override: (map['override'] as bool).input(),
+      protection: (map['protection'] as bool).input(),
+      reportUri: (map['reportUri'] as String).input(),
     );
   }
 }

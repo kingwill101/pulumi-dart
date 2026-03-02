@@ -34,23 +34,15 @@ class CustomConnectorArgs {
   /// [name] Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   /// [project] Optional.
   CustomConnectorArgs({
-    required pulumi.Output<String> customConnectorId,
-    required pulumi.Output<CustomConnectorCustomConnectorType> customConnectorType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? logo,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
-      customConnectorType = pulumi.Input.asInput<CustomConnectorCustomConnectorType>(customConnectorType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      logo = pulumi.Input.asOptionalInput<String>(logo),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.customConnectorId,
+    required this.customConnectorType,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.logo,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CustomConnectorArgs {
 
   factory CustomConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CustomConnectorArgs(
-      customConnectorId: pulumi.Output.create<String>(map['customConnectorId'] as String),
-      customConnectorType: pulumi.Output.create<CustomConnectorCustomConnectorType>(CustomConnectorCustomConnectorType.fromValue(map['customConnectorType'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      logo: map['logo'] == null ? null : pulumi.Output.create<String>(map['logo'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      customConnectorId: (map['customConnectorId'] as String).input(),
+      customConnectorType: (CustomConnectorCustomConnectorType.fromValue(map['customConnectorType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      logo: map['logo'] == null ? null : (map['logo'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -42,29 +42,18 @@ class BucketState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] URL of the bucket.
   BucketState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? availabilityZone,
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? supportCode,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? url,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      supportCode = pulumi.Input.asOptionalInput<String>(supportCode),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.arn,
+    this.availabilityZone,
+    this.bundleId,
+    this.createdAt,
+    this.forceDelete,
+    this.name,
+    this.region,
+    this.supportCode,
+    this.tags,
+    this.tagsAll,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class BucketState {
 
   factory BucketState.fromMap(Map<String, dynamic> map) {
     return BucketState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      supportCode: map['supportCode'] == null ? null : pulumi.Output.create<String>(map['supportCode'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

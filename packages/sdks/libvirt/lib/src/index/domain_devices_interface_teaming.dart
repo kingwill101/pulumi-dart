@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceTeaming {
   /// Specifies if the teaming configuration is persistent across reboots.
-  final String? persistent;
+  final pulumi.Input<String>? persistent;
   /// Defines the type of teaming used for the PCI device.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DomainDevicesInterfaceTeaming].
   /// [persistent] Specifies if the teaming configuration is persistent across reboots.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceTeaming {
 
   factory DomainDevicesInterfaceTeaming.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceTeaming(
-      persistent: map['persistent'] == null ? null : map['persistent'] as String,
-      type: map['type'] as String,
+      persistent: map['persistent'] == null ? null : (map['persistent'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerHealthcheck {
   /// the number of seconds between between two consecutive health checks
-  final int checkIntervalSeconds;
+  final pulumi.Input<int> checkIntervalSeconds;
   /// the number of times a health check must pass for a backend droplet to be marked 'healthy' and be re-added to the pool
-  final int healthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
   /// the path on the backend Droplets to which the Load Balancer will send a request
-  final String path;
+  final pulumi.Input<String> path;
   /// the port on the backend droplets on which the health check will attempt a connection
-  final int port;
+  final pulumi.Input<int> port;
   /// the protocol used for health checks sent to the backend droplets
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// the number of seconds to wait for a response until marking a health check as failed
-  final int responseTimeoutSeconds;
+  final pulumi.Input<int> responseTimeoutSeconds;
   /// The number of times a health check must fail for a backend droplet to be marked 'unhealthy' and be removed from the pool
-  final int unhealthyThreshold;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetLoadBalancerHealthcheck].
   /// [checkIntervalSeconds] the number of seconds between between two consecutive health checks
@@ -49,13 +50,13 @@ class GetLoadBalancerHealthcheck {
 
   factory GetLoadBalancerHealthcheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerHealthcheck(
-      checkIntervalSeconds: map['checkIntervalSeconds'] as int,
-      healthyThreshold: map['healthyThreshold'] as int,
-      path: map['path'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      responseTimeoutSeconds: map['responseTimeoutSeconds'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      checkIntervalSeconds: (map['checkIntervalSeconds'] as int).input(),
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      responseTimeoutSeconds: (map['responseTimeoutSeconds'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

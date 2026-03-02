@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionJwtValidationAdditionalClaim {
-  final String format;
-  final String name;
-  final List<String> values;
+  final pulumi.Input<String> format;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetListenerDefaultActionJwtValidationAdditionalClaim].
   /// [format] Required.
@@ -26,9 +27,9 @@ class GetListenerDefaultActionJwtValidationAdditionalClaim {
 
   factory GetListenerDefaultActionJwtValidationAdditionalClaim.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionJwtValidationAdditionalClaim(
-      format: map['format'] as String,
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      format: (map['format'] as String).input(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

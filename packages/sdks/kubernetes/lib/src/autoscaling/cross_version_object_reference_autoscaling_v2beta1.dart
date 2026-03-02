@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CrossVersionObjectReference contains enough information to let you identify the referred resource.
 class CrossVersionObjectReferenceAutoscalingV2beta1 {
   /// API version of the referent
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CrossVersionObjectReferenceAutoscalingV2beta1].
   /// [apiVersion] API version of the referent
@@ -30,9 +31,9 @@ class CrossVersionObjectReferenceAutoscalingV2beta1 {
 
   factory CrossVersionObjectReferenceAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return CrossVersionObjectReferenceAutoscalingV2beta1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

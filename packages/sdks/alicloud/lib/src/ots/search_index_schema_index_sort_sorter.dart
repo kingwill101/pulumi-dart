@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SearchIndexSchemaIndexSortSorter {
   /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-  final String? fieldName;
+  final pulumi.Input<String>? fieldName;
   /// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
-  final String? order;
+  final pulumi.Input<String>? order;
   /// Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
-  final String? sorterType;
+  final pulumi.Input<String>? sorterType;
 
   /// Creates a new [SearchIndexSchemaIndexSortSorter].
   /// [fieldName] The name of the field that is used to sort data. only required if sorter_type is FieldSort.
@@ -34,10 +35,10 @@ class SearchIndexSchemaIndexSortSorter {
 
   factory SearchIndexSchemaIndexSortSorter.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchemaIndexSortSorter(
-      fieldName: map['fieldName'] == null ? null : map['fieldName'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      sorterType: map['sorterType'] == null ? null : map['sorterType'] as String,
+      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      sorterType: map['sorterType'] == null ? null : (map['sorterType'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPortfoliosPortfolio {
   /// The creation time of the portfolio
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the portfolio
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the portfolio
-  final String id;
+  final pulumi.Input<String> id;
   /// The ARN of the portfolio
-  final String portfolioArn;
+  final pulumi.Input<String> portfolioArn;
   /// The ID of the portfolio
-  final String portfolioId;
+  final pulumi.Input<String> portfolioId;
   /// The name of the portfolio
-  final String portfolioName;
+  final pulumi.Input<String> portfolioName;
   /// The provider name of the portfolio
-  final String providerName;
+  final pulumi.Input<String> providerName;
 
   /// Creates a new [GetPortfoliosPortfolio].
   /// [createTime] The creation time of the portfolio
@@ -49,13 +50,13 @@ class GetPortfoliosPortfolio {
 
   factory GetPortfoliosPortfolio.fromMap(Map<String, dynamic> map) {
     return GetPortfoliosPortfolio(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      portfolioArn: map['portfolioArn'] as String,
-      portfolioId: map['portfolioId'] as String,
-      portfolioName: map['portfolioName'] as String,
-      providerName: map['providerName'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      portfolioArn: (map['portfolioArn'] as String).input(),
+      portfolioId: (map['portfolioId'] as String).input(),
+      portfolioName: (map['portfolioName'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

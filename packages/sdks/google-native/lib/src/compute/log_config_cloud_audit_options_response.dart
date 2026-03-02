@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_logging_options_response.dart';
 
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCloudAuditOptionsResponse {
   /// This is deprecated and has no effect. Do not use.
-  final AuthorizationLoggingOptionsResponse authorizationLoggingOptions;
+  final pulumi.Input<AuthorizationLoggingOptionsResponse> authorizationLoggingOptions;
   /// This is deprecated and has no effect. Do not use.
-  final String logName;
+  final pulumi.Input<String> logName;
 
   /// Creates a new [LogConfigCloudAuditOptionsResponse].
   /// [authorizationLoggingOptions] This is deprecated and has no effect. Do not use.
@@ -19,15 +20,15 @@ class LogConfigCloudAuditOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationLoggingOptions': authorizationLoggingOptions.toMap(),
+      'authorizationLoggingOptions': pulumi.Input.mapInputValue<AuthorizationLoggingOptionsResponse, Map<String, dynamic>>(authorizationLoggingOptions, (value) => value.toMap()),
       'logName': logName,
     };
   }
 
   factory LogConfigCloudAuditOptionsResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigCloudAuditOptionsResponse(
-      authorizationLoggingOptions: AuthorizationLoggingOptionsResponse.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>()),
-      logName: map['logName'] as String,
+      authorizationLoggingOptions: (AuthorizationLoggingOptionsResponse.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      logName: (map['logName'] as String).input(),
     );
   }
 }

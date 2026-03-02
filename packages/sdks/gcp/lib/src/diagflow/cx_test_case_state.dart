@@ -43,25 +43,16 @@ class CxTestCaseState {
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
   CxTestCaseState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<CxTestCaseLastTestResult>>? lastTestResults,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<CxTestCaseTestCaseConversationTurn>>? testCaseConversationTurns,
-    pulumi.Output<CxTestCaseTestConfig>? testConfig,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      lastTestResults = pulumi.Input.asOptionalInput<List<CxTestCaseLastTestResult>>(lastTestResults),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      testCaseConversationTurns = pulumi.Input.asOptionalInput<List<CxTestCaseTestCaseConversationTurn>>(testCaseConversationTurns),
-      testConfig = pulumi.Input.asOptionalInput<CxTestCaseTestConfig>(testConfig);
+    this.creationTime,
+    this.displayName,
+    this.lastTestResults,
+    this.name,
+    this.notes,
+    this.parent,
+    this.tags,
+    this.testCaseConversationTurns,
+    this.testConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class CxTestCaseState {
 
   factory CxTestCaseState.fromMap(Map<String, dynamic> map) {
     return CxTestCaseState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      lastTestResults: map['lastTestResults'] == null ? null : pulumi.Output.create<List<CxTestCaseLastTestResult>>(pulumi.Input.decodeList<CxTestCaseLastTestResult>(map['lastTestResults'], (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : pulumi.Output.create<List<CxTestCaseTestCaseConversationTurn>>(pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(map['testCaseConversationTurns'], (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>()))),
-      testConfig: map['testConfig'] == null ? null : pulumi.Output.create<CxTestCaseTestConfig>(CxTestCaseTestConfig.fromMap((map['testConfig'] as Map).cast<String, dynamic>())),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      lastTestResults: map['lastTestResults'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResult>(map['lastTestResults'], (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(map['testCaseConversationTurns'], (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testConfig: map['testConfig'] == null ? null : (CxTestCaseTestConfig.fromMap((map['testConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID for a Logical Network.
 class LogicalNetworkArmReference {
   /// The Azure Resource ID for a Logical Network.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [LogicalNetworkArmReference].
   /// [id] The Azure Resource ID for a Logical Network.
@@ -20,7 +21,7 @@ class LogicalNetworkArmReference {
 
   factory LogicalNetworkArmReference.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArmReference(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

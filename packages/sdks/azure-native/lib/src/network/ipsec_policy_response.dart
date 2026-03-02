@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An IPSec Policy configuration for a virtual network gateway connection.
 class IpsecPolicyResponse {
   /// The DH Group used in IKE Phase 1 for initial SA.
-  final String dhGroup;
+  final pulumi.Input<String> dhGroup;
   /// The IKE encryption algorithm (IKE phase 2).
-  final String ikeEncryption;
+  final pulumi.Input<String> ikeEncryption;
   /// The IKE integrity algorithm (IKE phase 2).
-  final String ikeIntegrity;
+  final pulumi.Input<String> ikeIntegrity;
   /// The IPSec encryption algorithm (IKE phase 1).
-  final String ipsecEncryption;
+  final pulumi.Input<String> ipsecEncryption;
   /// The IPSec integrity algorithm (IKE phase 1).
-  final String ipsecIntegrity;
+  final pulumi.Input<String> ipsecIntegrity;
   /// The Pfs Group used in IKE Phase 2 for new child SA.
-  final String pfsGroup;
+  final pulumi.Input<String> pfsGroup;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-  final int saDataSizeKilobytes;
+  final pulumi.Input<int> saDataSizeKilobytes;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  final int saLifeTimeSeconds;
+  final pulumi.Input<int> saLifeTimeSeconds;
 
   /// Creates a new [IpsecPolicyResponse].
   /// [dhGroup] The DH Group used in IKE Phase 1 for initial SA.
@@ -55,14 +56,14 @@ class IpsecPolicyResponse {
 
   factory IpsecPolicyResponse.fromMap(Map<String, dynamic> map) {
     return IpsecPolicyResponse(
-      dhGroup: map['dhGroup'] as String,
-      ikeEncryption: map['ikeEncryption'] as String,
-      ikeIntegrity: map['ikeIntegrity'] as String,
-      ipsecEncryption: map['ipsecEncryption'] as String,
-      ipsecIntegrity: map['ipsecIntegrity'] as String,
-      pfsGroup: map['pfsGroup'] as String,
-      saDataSizeKilobytes: map['saDataSizeKilobytes'] as int,
-      saLifeTimeSeconds: map['saLifeTimeSeconds'] as int,
+      dhGroup: (map['dhGroup'] as String).input(),
+      ikeEncryption: (map['ikeEncryption'] as String).input(),
+      ikeIntegrity: (map['ikeIntegrity'] as String).input(),
+      ipsecEncryption: (map['ipsecEncryption'] as String).input(),
+      ipsecIntegrity: (map['ipsecIntegrity'] as String).input(),
+      pfsGroup: (map['pfsGroup'] as String).input(),
+      saDataSizeKilobytes: (map['saDataSizeKilobytes'] as int).input(),
+      saLifeTimeSeconds: (map['saLifeTimeSeconds'] as int).input(),
     );
   }
 }

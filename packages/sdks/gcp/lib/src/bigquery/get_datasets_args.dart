@@ -14,9 +14,8 @@ class GetDatasetsArgs {
   /// Creates a new [GetDatasetsArgs].
   /// [project] The ID of the project in which the resource belongs.
   GetDatasetsArgs({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class GetDatasetsArgs {
 
   factory GetDatasetsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetsArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class ConnectionFunctionState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ConnectionFunctionState({
-    pulumi.Output<String>? connectionFunctionArn,
-    pulumi.Output<String>? connectionFunctionCode,
-    pulumi.Output<ConnectionFunctionConnectionFunctionConfig>? connectionFunctionConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? liveStageEtag,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publish,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      connectionFunctionArn = pulumi.Input.asOptionalInput<String>(connectionFunctionArn),
-      connectionFunctionCode = pulumi.Input.asOptionalInput<String>(connectionFunctionCode),
-      connectionFunctionConfig = pulumi.Input.asOptionalInput<ConnectionFunctionConnectionFunctionConfig>(connectionFunctionConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      liveStageEtag = pulumi.Input.asOptionalInput<String>(liveStageEtag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publish = pulumi.Input.asOptionalInput<bool>(publish),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.connectionFunctionArn,
+    this.connectionFunctionCode,
+    this.connectionFunctionConfig,
+    this.etag,
+    this.liveStageEtag,
+    this.name,
+    this.publish,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ConnectionFunctionState {
 
   factory ConnectionFunctionState.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionState(
-      connectionFunctionArn: map['connectionFunctionArn'] == null ? null : pulumi.Output.create<String>(map['connectionFunctionArn'] as String),
-      connectionFunctionCode: map['connectionFunctionCode'] == null ? null : pulumi.Output.create<String>(map['connectionFunctionCode'] as String),
-      connectionFunctionConfig: map['connectionFunctionConfig'] == null ? null : pulumi.Output.create<ConnectionFunctionConnectionFunctionConfig>(ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      liveStageEtag: map['liveStageEtag'] == null ? null : pulumi.Output.create<String>(map['liveStageEtag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publish: map['publish'] == null ? null : pulumi.Output.create<bool>(map['publish'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      connectionFunctionArn: map['connectionFunctionArn'] == null ? null : (map['connectionFunctionArn'] as String).input(),
+      connectionFunctionCode: map['connectionFunctionCode'] == null ? null : (map['connectionFunctionCode'] as String).input(),
+      connectionFunctionConfig: map['connectionFunctionConfig'] == null ? null : (ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      liveStageEtag: map['liveStageEtag'] == null ? null : (map['liveStageEtag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

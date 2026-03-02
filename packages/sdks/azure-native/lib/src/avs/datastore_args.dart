@@ -34,21 +34,14 @@ class DatastoreArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DatastoreArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? datastoreName,
-    pulumi.Output<DiskPoolVolume>? diskPoolVolume,
-    pulumi.Output<ElasticSanVolume>? elasticSanVolume,
-    pulumi.Output<NetAppVolume>? netAppVolume,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      datastoreName = pulumi.Input.asOptionalInput<String>(datastoreName),
-      diskPoolVolume = pulumi.Input.asOptionalInput<DiskPoolVolume>(diskPoolVolume),
-      elasticSanVolume = pulumi.Input.asOptionalInput<ElasticSanVolume>(elasticSanVolume),
-      netAppVolume = pulumi.Input.asOptionalInput<NetAppVolume>(netAppVolume),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    this.datastoreName,
+    this.diskPoolVolume,
+    this.elasticSanVolume,
+    this.netAppVolume,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      datastoreName: map['datastoreName'] == null ? null : pulumi.Output.create<String>(map['datastoreName'] as String),
-      diskPoolVolume: map['diskPoolVolume'] == null ? null : pulumi.Output.create<DiskPoolVolume>(DiskPoolVolume.fromMap((map['diskPoolVolume'] as Map).cast<String, dynamic>())),
-      elasticSanVolume: map['elasticSanVolume'] == null ? null : pulumi.Output.create<ElasticSanVolume>(ElasticSanVolume.fromMap((map['elasticSanVolume'] as Map).cast<String, dynamic>())),
-      netAppVolume: map['netAppVolume'] == null ? null : pulumi.Output.create<NetAppVolume>(NetAppVolume.fromMap((map['netAppVolume'] as Map).cast<String, dynamic>())),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
+      diskPoolVolume: map['diskPoolVolume'] == null ? null : (DiskPoolVolume.fromMap((map['diskPoolVolume'] as Map).cast<String, dynamic>())).input(),
+      elasticSanVolume: map['elasticSanVolume'] == null ? null : (ElasticSanVolume.fromMap((map['elasticSanVolume'] as Map).cast<String, dynamic>())).input(),
+      netAppVolume: map['netAppVolume'] == null ? null : (NetAppVolume.fromMap((map['netAppVolume'] as Map).cast<String, dynamic>())).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

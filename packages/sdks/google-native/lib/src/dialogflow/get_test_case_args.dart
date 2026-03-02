@@ -18,15 +18,11 @@ class GetTestCaseArgs {
   /// [project] Optional.
   /// [testCaseId] Required.
   GetTestCaseArgs({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> testCaseId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testCaseId = pulumi.Input.asInput<String>(testCaseId);
+    required this.agentId,
+    required this.location,
+    this.project,
+    required this.testCaseId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetTestCaseArgs {
 
   factory GetTestCaseArgs.fromMap(Map<String, dynamic> map) {
     return GetTestCaseArgs(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      testCaseId: pulumi.Output.create<String>(map['testCaseId'] as String),
+      agentId: (map['agentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      testCaseId: (map['testCaseId'] as String).input(),
     );
   }
 }

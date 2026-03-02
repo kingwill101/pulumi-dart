@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the source to which safety providers applies.
 class SafetyProviderConfigResponse {
   /// If blocking would occur.
-  final bool? blocking;
+  final pulumi.Input<bool>? blocking;
   /// Name of RAI Safety Provider.
-  final String? safetyProviderName;
+  final pulumi.Input<String>? safetyProviderName;
   /// Content source to apply the Content Filters.
-  final String? source;
+  final pulumi.Input<String>? source;
 
   /// Creates a new [SafetyProviderConfigResponse].
   /// [blocking] If blocking would occur.
@@ -30,9 +31,9 @@ class SafetyProviderConfigResponse {
 
   factory SafetyProviderConfigResponse.fromMap(Map<String, dynamic> map) {
     return SafetyProviderConfigResponse(
-      blocking: map['blocking'] == null ? null : map['blocking'] as bool,
-      safetyProviderName: map['safetyProviderName'] == null ? null : map['safetyProviderName'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
+      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

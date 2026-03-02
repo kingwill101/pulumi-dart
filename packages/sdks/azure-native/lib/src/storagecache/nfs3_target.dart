@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties pertaining to the Nfs3Target
 class Nfs3Target {
   /// IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-  final String? target;
+  final pulumi.Input<String>? target;
   /// Identifies the StorageCache usage model to be used for this storage target.
-  final String? usageModel;
+  final pulumi.Input<String>? usageModel;
   /// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
-  final int? verificationTimer;
+  final pulumi.Input<int>? verificationTimer;
   /// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
-  final int? writeBackTimer;
+  final pulumi.Input<int>? writeBackTimer;
 
   /// Creates a new [Nfs3Target].
   /// [target] IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
@@ -35,10 +36,10 @@ class Nfs3Target {
 
   factory Nfs3Target.fromMap(Map<String, dynamic> map) {
     return Nfs3Target(
-      target: map['target'] == null ? null : map['target'] as String,
-      usageModel: map['usageModel'] == null ? null : map['usageModel'] as String,
-      verificationTimer: map['verificationTimer'] == null ? null : map['verificationTimer'] as int,
-      writeBackTimer: map['writeBackTimer'] == null ? null : map['writeBackTimer'] as int,
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      usageModel: map['usageModel'] == null ? null : (map['usageModel'] as String).input(),
+      verificationTimer: map['verificationTimer'] == null ? null : (map['verificationTimer'] as int).input(),
+      writeBackTimer: map['writeBackTimer'] == null ? null : (map['writeBackTimer'] as int).input(),
     );
   }
 }

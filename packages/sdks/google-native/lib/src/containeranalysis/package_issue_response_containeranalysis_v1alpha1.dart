@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vulnerability_location_response.dart';
 
 /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 class PackageIssueResponseContaineranalysisV1alpha1 {
   /// The location of the vulnerability.
-  final VulnerabilityLocationResponse affectedLocation;
+  final pulumi.Input<VulnerabilityLocationResponse> affectedLocation;
   /// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
-  final String effectiveSeverity;
+  final pulumi.Input<String> effectiveSeverity;
   /// The location of the available fix for vulnerability.
-  final VulnerabilityLocationResponse fixedLocation;
+  final pulumi.Input<VulnerabilityLocationResponse> fixedLocation;
   /// The type of package (e.g. OS, MAVEN, GO).
-  final String packageType;
-  final String severityName;
+  final pulumi.Input<String> packageType;
+  final pulumi.Input<String> severityName;
 
   /// Creates a new [PackageIssueResponseContaineranalysisV1alpha1].
   /// [affectedLocation] The location of the vulnerability.
@@ -30,9 +31,9 @@ class PackageIssueResponseContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'affectedLocation': affectedLocation.toMap(),
+      'affectedLocation': pulumi.Input.mapInputValue<VulnerabilityLocationResponse, Map<String, dynamic>>(affectedLocation, (value) => value.toMap()),
       'effectiveSeverity': effectiveSeverity,
-      'fixedLocation': fixedLocation.toMap(),
+      'fixedLocation': pulumi.Input.mapInputValue<VulnerabilityLocationResponse, Map<String, dynamic>>(fixedLocation, (value) => value.toMap()),
       'packageType': packageType,
       'severityName': severityName,
     };
@@ -40,11 +41,11 @@ class PackageIssueResponseContaineranalysisV1alpha1 {
 
   factory PackageIssueResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return PackageIssueResponseContaineranalysisV1alpha1(
-      affectedLocation: VulnerabilityLocationResponse.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>()),
-      effectiveSeverity: map['effectiveSeverity'] as String,
-      fixedLocation: VulnerabilityLocationResponse.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>()),
-      packageType: map['packageType'] as String,
-      severityName: map['severityName'] as String,
+      affectedLocation: (VulnerabilityLocationResponse.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>())).input(),
+      effectiveSeverity: (map['effectiveSeverity'] as String).input(),
+      fixedLocation: (VulnerabilityLocationResponse.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>())).input(),
+      packageType: (map['packageType'] as String).input(),
+      severityName: (map['severityName'] as String).input(),
     );
   }
 }

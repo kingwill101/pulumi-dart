@@ -26,17 +26,12 @@ class ProjectPolicyArgs {
   /// [resourcePolicies] Resource policies that are a part of this project policy.
   /// [scopes] Resources that have access to the shared resources that are a part of this project policy.
   ProjectPolicyArgs({
-    required pulumi.Output<String> devCenterName,
-    pulumi.Output<String>? projectPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ResourcePolicy>>? resourcePolicies,
-    pulumi.Output<List<String>>? scopes,
-  }) :
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      projectPolicyName = pulumi.Input.asOptionalInput<String>(projectPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourcePolicies = pulumi.Input.asOptionalInput<List<ResourcePolicy>>(resourcePolicies),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes);
+    required this.devCenterName,
+    this.projectPolicyName,
+    required this.resourceGroupName,
+    this.resourcePolicies,
+    this.scopes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ProjectPolicyArgs {
 
   factory ProjectPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProjectPolicyArgs(
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      projectPolicyName: map['projectPolicyName'] == null ? null : pulumi.Output.create<String>(map['projectPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Output.create<List<ResourcePolicy>>(pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
+      devCenterName: (map['devCenterName'] as String).input(),
+      projectPolicyName: map['projectPolicyName'] == null ? null : (map['projectPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

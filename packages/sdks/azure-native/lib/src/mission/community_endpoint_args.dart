@@ -29,19 +29,13 @@ class CommunityEndpointArgs {
   /// [ruleCollection] Community Endpoint Rule Collection.
   /// [tags] Resource tags.
   CommunityEndpointArgs({
-    pulumi.Output<String>? communityEndpointName,
-    required pulumi.Output<String> communityName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<CommunityEndpointDestinationRule>> ruleCollection,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      communityEndpointName = pulumi.Input.asOptionalInput<String>(communityEndpointName),
-      communityName = pulumi.Input.asInput<String>(communityName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollection = pulumi.Input.asInput<List<CommunityEndpointDestinationRule>>(ruleCollection),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.communityEndpointName,
+    required this.communityName,
+    this.location,
+    required this.resourceGroupName,
+    required this.ruleCollection,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CommunityEndpointArgs {
 
   factory CommunityEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CommunityEndpointArgs(
-      communityEndpointName: map['communityEndpointName'] == null ? null : pulumi.Output.create<String>(map['communityEndpointName'] as String),
-      communityName: pulumi.Output.create<String>(map['communityName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollection: pulumi.Output.create<List<CommunityEndpointDestinationRule>>(pulumi.Input.decodeList<CommunityEndpointDestinationRule>(map['ruleCollection'], (value) => CommunityEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      communityEndpointName: map['communityEndpointName'] == null ? null : (map['communityEndpointName'] as String).input(),
+      communityName: (map['communityName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollection: (pulumi.Input.decodeList<CommunityEndpointDestinationRule>(map['ruleCollection'], (value) => CommunityEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Business case report details.
 class ReportDetailsResponse {
   /// Report status.
-  final String reportStatus;
+  final pulumi.Input<String> reportStatus;
   /// Report type.
-  final String reportType;
+  final pulumi.Input<String> reportType;
 
   /// Creates a new [ReportDetailsResponse].
   /// [reportStatus] Report status.
@@ -25,8 +26,8 @@ class ReportDetailsResponse {
 
   factory ReportDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReportDetailsResponse(
-      reportStatus: map['reportStatus'] as String,
-      reportType: map['reportType'] as String,
+      reportStatus: (map['reportStatus'] as String).input(),
+      reportType: (map['reportType'] as String).input(),
     );
   }
 }

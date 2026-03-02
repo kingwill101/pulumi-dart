@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IAppTableRow {
-  final List<String>? rows;
+  final pulumi.Input<List<String>>? rows;
 
   /// Creates a new [IAppTableRow].
   /// [rows] Optional.
@@ -18,7 +19,7 @@ class IAppTableRow {
 
   factory IAppTableRow.fromMap(Map<String, dynamic> map) {
     return IAppTableRow(
-      rows: map['rows'] == null ? null : (map['rows'] as List).cast<String>(),
+      rows: map['rows'] == null ? null : ((map['rows'] as List).cast<String>()).input(),
     );
   }
 }

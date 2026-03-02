@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents configuration for the VMware VCenter for the user cluster.
 class VmwareVCenterConfigResponse {
   /// The vCenter IP address.
-  final String address;
+  final pulumi.Input<String> address;
   /// Contains the vCenter CA certificate public key for SSL verification.
-  final String caCertData;
+  final pulumi.Input<String> caCertData;
   /// The name of the vCenter cluster for the user cluster.
-  final String cluster;
+  final pulumi.Input<String> cluster;
   /// The name of the vCenter datacenter for the user cluster.
-  final String datacenter;
+  final pulumi.Input<String> datacenter;
   /// The name of the vCenter datastore for the user cluster.
-  final String datastore;
+  final pulumi.Input<String> datastore;
   /// The name of the vCenter folder for the user cluster.
-  final String folder;
+  final pulumi.Input<String> folder;
   /// The name of the vCenter resource pool for the user cluster.
-  final String resourcePool;
+  final pulumi.Input<String> resourcePool;
   /// The name of the vCenter storage policy for the user cluster.
-  final String storagePolicyName;
+  final pulumi.Input<String> storagePolicyName;
 
   /// Creates a new [VmwareVCenterConfigResponse].
   /// [address] The vCenter IP address.
@@ -55,14 +56,14 @@ class VmwareVCenterConfigResponse {
 
   factory VmwareVCenterConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareVCenterConfigResponse(
-      address: map['address'] as String,
-      caCertData: map['caCertData'] as String,
-      cluster: map['cluster'] as String,
-      datacenter: map['datacenter'] as String,
-      datastore: map['datastore'] as String,
-      folder: map['folder'] as String,
-      resourcePool: map['resourcePool'] as String,
-      storagePolicyName: map['storagePolicyName'] as String,
+      address: (map['address'] as String).input(),
+      caCertData: (map['caCertData'] as String).input(),
+      cluster: (map['cluster'] as String).input(),
+      datacenter: (map['datacenter'] as String).input(),
+      datastore: (map['datastore'] as String).input(),
+      folder: (map['folder'] as String).input(),
+      resourcePool: (map['resourcePool'] as String).input(),
+      storagePolicyName: (map['storagePolicyName'] as String).input(),
     );
   }
 }

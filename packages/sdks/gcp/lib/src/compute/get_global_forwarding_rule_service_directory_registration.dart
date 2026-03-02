@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGlobalForwardingRuleServiceDirectoryRegistration {
   /// Service Directory namespace to register the forwarding rule under.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// [Optional] Service Directory region to register this global forwarding rule under.
   /// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
   /// Google APIs Forwarding Rules on the same network should use the same Service
   /// Directory region.
-  final String serviceDirectoryRegion;
+  final pulumi.Input<String> serviceDirectoryRegion;
 
   /// Creates a new [GetGlobalForwardingRuleServiceDirectoryRegistration].
   /// [namespace] Service Directory namespace to register the forwarding rule under.
@@ -27,8 +28,8 @@ class GetGlobalForwardingRuleServiceDirectoryRegistration {
 
   factory GetGlobalForwardingRuleServiceDirectoryRegistration.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleServiceDirectoryRegistration(
-      namespace: map['namespace'] as String,
-      serviceDirectoryRegion: map['serviceDirectoryRegion'] as String,
+      namespace: (map['namespace'] as String).input(),
+      serviceDirectoryRegion: (map['serviceDirectoryRegion'] as String).input(),
     );
   }
 }

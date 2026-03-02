@@ -47,27 +47,17 @@ class ProfileState {
   /// [trafficRoutingMethod] Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// [trafficViewEnabled] Indicates whether Traffic View is enabled for the Traffic Manager profile.
   ProfileState({
-    pulumi.Output<ProfileDnsConfig>? dnsConfig,
-    pulumi.Output<String>? fqdn,
-    pulumi.Output<int>? maxReturn,
-    pulumi.Output<ProfileMonitorConfig>? monitorConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? profileStatus,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? trafficRoutingMethod,
-    pulumi.Output<bool>? trafficViewEnabled,
-  }) :
-      dnsConfig = pulumi.Input.asOptionalInput<ProfileDnsConfig>(dnsConfig),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      maxReturn = pulumi.Input.asOptionalInput<int>(maxReturn),
-      monitorConfig = pulumi.Input.asOptionalInput<ProfileMonitorConfig>(monitorConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      profileStatus = pulumi.Input.asOptionalInput<String>(profileStatus),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trafficRoutingMethod = pulumi.Input.asOptionalInput<String>(trafficRoutingMethod),
-      trafficViewEnabled = pulumi.Input.asOptionalInput<bool>(trafficViewEnabled);
+    this.dnsConfig,
+    this.fqdn,
+    this.maxReturn,
+    this.monitorConfig,
+    this.name,
+    this.profileStatus,
+    this.resourceGroupName,
+    this.tags,
+    this.trafficRoutingMethod,
+    this.trafficViewEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,16 +76,16 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      dnsConfig: map['dnsConfig'] == null ? null : pulumi.Output.create<ProfileDnsConfig>(ProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())),
-      fqdn: map['fqdn'] == null ? null : pulumi.Output.create<String>(map['fqdn'] as String),
-      maxReturn: map['maxReturn'] == null ? null : pulumi.Output.create<int>(map['maxReturn'] as int),
-      monitorConfig: map['monitorConfig'] == null ? null : pulumi.Output.create<ProfileMonitorConfig>(ProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      profileStatus: map['profileStatus'] == null ? null : pulumi.Output.create<String>(map['profileStatus'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : pulumi.Output.create<String>(map['trafficRoutingMethod'] as String),
-      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : pulumi.Output.create<bool>(map['trafficViewEnabled'] as bool),
+      dnsConfig: map['dnsConfig'] == null ? null : (ProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn'] as int).input(),
+      monitorConfig: map['monitorConfig'] == null ? null : (ProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : (map['trafficRoutingMethod'] as String).input(),
+      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled'] as bool).input(),
     );
   }
 }

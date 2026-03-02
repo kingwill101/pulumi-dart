@@ -31,19 +31,13 @@ class WorkforcePoolProviderKeyArgs {
   /// [use] The purpose of the key.
   /// [workforcePoolId] The ID of the workforce pool.
   WorkforcePoolProviderKeyArgs({
-    required pulumi.Output<WorkforcePoolProviderKeyKeyData> keyData,
-    required pulumi.Output<String> keyId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> providerId,
-    required pulumi.Output<String> use,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      keyData = pulumi.Input.asInput<WorkforcePoolProviderKeyKeyData>(keyData),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      location = pulumi.Input.asInput<String>(location),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      use = pulumi.Input.asInput<String>(use),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    required this.keyData,
+    required this.keyId,
+    required this.location,
+    required this.providerId,
+    required this.use,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class WorkforcePoolProviderKeyArgs {
 
   factory WorkforcePoolProviderKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyArgs(
-      keyData: pulumi.Output.create<WorkforcePoolProviderKeyKeyData>(WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      use: pulumi.Output.create<String>(map['use'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      keyData: (WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
+      keyId: (map['keyId'] as String).input(),
+      location: (map['location'] as String).input(),
+      providerId: (map['providerId'] as String).input(),
+      use: (map['use'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

@@ -48,25 +48,16 @@ class TaasTapMirrorV2State {
   /// [remoteIp] The remote IP of the Tap Mirror, this will be the remote
   /// [tenantId] The owner of the Tap Mirror. Required if admin wants to
   TaasTapMirrorV2State({
-    pulumi.Output<String>? description,
-    pulumi.Output<TaasTapMirrorV2Directions>? directions,
-    pulumi.Output<String>? mirrorType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? portId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? remoteIp,
-    pulumi.Output<String>? tenantId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directions = pulumi.Input.asOptionalInput<TaasTapMirrorV2Directions>(directions),
-      mirrorType = pulumi.Input.asOptionalInput<String>(mirrorType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portId = pulumi.Input.asOptionalInput<String>(portId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteIp = pulumi.Input.asOptionalInput<String>(remoteIp),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.description,
+    this.directions,
+    this.mirrorType,
+    this.name,
+    this.portId,
+    this.projectId,
+    this.region,
+    this.remoteIp,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,15 +75,15 @@ class TaasTapMirrorV2State {
 
   factory TaasTapMirrorV2State.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2State(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directions: map['directions'] == null ? null : pulumi.Output.create<TaasTapMirrorV2Directions>(TaasTapMirrorV2Directions.fromMap((map['directions'] as Map).cast<String, dynamic>())),
-      mirrorType: map['mirrorType'] == null ? null : pulumi.Output.create<String>(map['mirrorType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteIp: map['remoteIp'] == null ? null : pulumi.Output.create<String>(map['remoteIp'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directions: map['directions'] == null ? null : (TaasTapMirrorV2Directions.fromMap((map['directions'] as Map).cast<String, dynamic>())).input(),
+      mirrorType: map['mirrorType'] == null ? null : (map['mirrorType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteIp: map['remoteIp'] == null ? null : (map['remoteIp'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LUN to expose the Azure Managed Disk.
 class IscsiLun {
   /// Azure Resource ID of the Managed Disk.
-  final String managedDiskAzureResourceId;
+  final pulumi.Input<String> managedDiskAzureResourceId;
   /// User defined name for iSCSI LUN; example: "lun0"
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [IscsiLun].
   /// [managedDiskAzureResourceId] Azure Resource ID of the Managed Disk.
@@ -25,8 +26,8 @@ class IscsiLun {
 
   factory IscsiLun.fromMap(Map<String, dynamic> map) {
     return IscsiLun(
-      managedDiskAzureResourceId: map['managedDiskAzureResourceId'] as String,
-      name: map['name'] as String,
+      managedDiskAzureResourceId: (map['managedDiskAzureResourceId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

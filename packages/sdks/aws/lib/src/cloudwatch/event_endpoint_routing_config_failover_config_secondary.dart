@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventEndpointRoutingConfigFailoverConfigSecondary {
   /// The name of the secondary Region.
-  final String? route;
+  final pulumi.Input<String>? route;
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigSecondary].
   /// [route] The name of the secondary Region.
@@ -19,7 +20,7 @@ class EventEndpointRoutingConfigFailoverConfigSecondary {
 
   factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigSecondary(
-      route: map['route'] == null ? null : map['route'] as String,
+      route: map['route'] == null ? null : (map['route'] as String).input(),
     );
   }
 }

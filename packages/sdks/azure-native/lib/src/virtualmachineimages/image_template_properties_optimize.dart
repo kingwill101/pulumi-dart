@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_template_properties_vm_boot.dart';
 
 /// Specifies optimization to be performed on image.
 class ImageTemplatePropertiesOptimize {
   /// Optimization is applied on the image for a faster VM boot.
-  final ImageTemplatePropertiesVmBoot? vmBoot;
+  final pulumi.Input<ImageTemplatePropertiesVmBoot>? vmBoot;
 
   /// Creates a new [ImageTemplatePropertiesOptimize].
   /// [vmBoot] Optimization is applied on the image for a faster VM boot.
@@ -15,13 +16,13 @@ class ImageTemplatePropertiesOptimize {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vmBoot': ?vmBoot == null ? null : vmBoot!.toMap(),
+      'vmBoot': ?pulumi.Input.mapOptionalInputValue<ImageTemplatePropertiesVmBoot, Map<String, dynamic>>(vmBoot, (value) => value.toMap()),
     };
   }
 
   factory ImageTemplatePropertiesOptimize.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesOptimize(
-      vmBoot: map['vmBoot'] == null ? null : ImageTemplatePropertiesVmBoot.fromMap((map['vmBoot'] as Map).cast<String, dynamic>()),
+      vmBoot: map['vmBoot'] == null ? null : (ImageTemplatePropertiesVmBoot.fromMap((map['vmBoot'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

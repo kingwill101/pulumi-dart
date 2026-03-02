@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueStackdriverLoggingConfig {
   /// Specifies the fraction of operations to write to Stackdriver Logging.
   /// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
   /// default and means that no operations are logged.
-  final double samplingRatio;
+  final pulumi.Input<double> samplingRatio;
 
   /// Creates a new [QueueStackdriverLoggingConfig].
   /// [samplingRatio] Specifies the fraction of operations to write to Stackdriver Logging.
@@ -21,7 +22,7 @@ class QueueStackdriverLoggingConfig {
 
   factory QueueStackdriverLoggingConfig.fromMap(Map<String, dynamic> map) {
     return QueueStackdriverLoggingConfig(
-      samplingRatio: map['samplingRatio'] as double,
+      samplingRatio: (map['samplingRatio'] as double).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A class represent the control record synchronized from app compliance.
 class ControlSyncRecordResponse {
   /// The Id of the control. e.g. "Operational_Security_10"
-  final String? controlId;
+  final pulumi.Input<String>? controlId;
   /// Control status synchronized from app compliance.
-  final String? controlStatus;
+  final pulumi.Input<String>? controlStatus;
 
   /// Creates a new [ControlSyncRecordResponse].
   /// [controlId] The Id of the control. e.g. "Operational_Security_10"
@@ -25,8 +26,8 @@ class ControlSyncRecordResponse {
 
   factory ControlSyncRecordResponse.fromMap(Map<String, dynamic> map) {
     return ControlSyncRecordResponse(
-      controlId: map['controlId'] == null ? null : map['controlId'] as String,
-      controlStatus: map['controlStatus'] == null ? null : map['controlStatus'] as String,
+      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
+      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus'] as String).input(),
     );
   }
 }

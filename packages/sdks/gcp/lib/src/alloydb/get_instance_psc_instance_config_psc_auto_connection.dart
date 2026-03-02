@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancePscInstanceConfigPscAutoConnection {
   /// The consumer network for the PSC service automation, example:
@@ -7,17 +8,17 @@ class GetInstancePscInstanceConfigPscAutoConnection {
   /// The consumer network might be hosted a different project than the
   /// consumer project. The API expects the consumer project specified to be
   /// the project ID (and not the project number)
-  final String consumerNetwork;
+  final pulumi.Input<String> consumerNetwork;
   /// The status of the service connection policy.
-  final String consumerNetworkStatus;
+  final pulumi.Input<String> consumerNetworkStatus;
   /// The consumer project to which the PSC service automation endpoint will
   /// be created. The API expects the consumer project to be the project ID(
   /// and not the project number).
-  final String consumerProject;
+  final pulumi.Input<String> consumerProject;
   /// The IP address of the PSC service automation endpoint.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The status of the PSC service automation connection.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstancePscInstanceConfigPscAutoConnection].
   /// [consumerNetwork] The consumer network for the PSC service automation, example:
@@ -45,11 +46,11 @@ class GetInstancePscInstanceConfigPscAutoConnection {
 
   factory GetInstancePscInstanceConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return GetInstancePscInstanceConfigPscAutoConnection(
-      consumerNetwork: map['consumerNetwork'] as String,
-      consumerNetworkStatus: map['consumerNetworkStatus'] as String,
-      consumerProject: map['consumerProject'] as String,
-      ipAddress: map['ipAddress'] as String,
-      status: map['status'] as String,
+      consumerNetwork: (map['consumerNetwork'] as String).input(),
+      consumerNetworkStatus: (map['consumerNetworkStatus'] as String).input(),
+      consumerProject: (map['consumerProject'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

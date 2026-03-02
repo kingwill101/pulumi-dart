@@ -6,21 +6,21 @@ import 'plan_notification_details_response.dart';
 /// List of stop sell offers and plans notifications.
 class StopSellOffersPlansNotificationsListPropertiesResponse {
   /// The offer display name
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The icon url
-  final String icon;
+  final pulumi.Input<String> icon;
   /// A value indicating whether entire offer is in stop sell or only few of its plans
-  final bool isEntire;
+  final pulumi.Input<bool> isEntire;
   /// The notification message code
-  final double messageCode;
+  final pulumi.Input<double> messageCode;
   /// The offer id
-  final String offerId;
+  final pulumi.Input<String> offerId;
   /// The list of removed plans notifications
-  final List<PlanNotificationDetailsResponse> plans;
+  final pulumi.Input<List<PlanNotificationDetailsResponse>> plans;
   /// True if the offer has public plans
-  final bool publicContext;
+  final pulumi.Input<bool> publicContext;
   /// The subscriptions related to private plans
-  final List<String> subscriptionsIds;
+  final pulumi.Input<List<String>> subscriptionsIds;
 
   /// Creates a new [StopSellOffersPlansNotificationsListPropertiesResponse].
   /// [displayName] The offer display name
@@ -49,7 +49,7 @@ class StopSellOffersPlansNotificationsListPropertiesResponse {
       'isEntire': isEntire,
       'messageCode': messageCode,
       'offerId': offerId,
-      'plans': pulumi.Input.encodeList<PlanNotificationDetailsResponse, Map<String, dynamic>>(plans, (value) => value.toMap()),
+      'plans': pulumi.Input.mapInputValue<List<PlanNotificationDetailsResponse>, List<Map<String, dynamic>>>(plans, (value) => pulumi.Input.encodeList<PlanNotificationDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicContext': publicContext,
       'subscriptionsIds': subscriptionsIds,
     };
@@ -57,14 +57,14 @@ class StopSellOffersPlansNotificationsListPropertiesResponse {
 
   factory StopSellOffersPlansNotificationsListPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StopSellOffersPlansNotificationsListPropertiesResponse(
-      displayName: map['displayName'] as String,
-      icon: map['icon'] as String,
-      isEntire: map['isEntire'] as bool,
-      messageCode: map['messageCode'] as double,
-      offerId: map['offerId'] as String,
-      plans: pulumi.Input.decodeList<PlanNotificationDetailsResponse>(map['plans'], (value) => PlanNotificationDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      publicContext: map['publicContext'] as bool,
-      subscriptionsIds: (map['subscriptionsIds'] as List).cast<String>(),
+      displayName: (map['displayName'] as String).input(),
+      icon: (map['icon'] as String).input(),
+      isEntire: (map['isEntire'] as bool).input(),
+      messageCode: (map['messageCode'] as double).input(),
+      offerId: (map['offerId'] as String).input(),
+      plans: (pulumi.Input.decodeList<PlanNotificationDetailsResponse>(map['plans'], (value) => PlanNotificationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicContext: (map['publicContext'] as bool).input(),
+      subscriptionsIds: ((map['subscriptionsIds'] as List).cast<String>()).input(),
     );
   }
 }

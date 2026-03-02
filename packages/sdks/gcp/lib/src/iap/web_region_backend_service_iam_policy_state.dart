@@ -26,17 +26,12 @@ class WebRegionBackendServiceIamPolicyState {
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
   WebRegionBackendServiceIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? webRegionBackendService,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      webRegionBackendService = pulumi.Input.asOptionalInput<String>(webRegionBackendService);
+    this.etag,
+    this.policyData,
+    this.project,
+    this.region,
+    this.webRegionBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class WebRegionBackendServiceIamPolicyState {
 
   factory WebRegionBackendServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WebRegionBackendServiceIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      webRegionBackendService: map['webRegionBackendService'] == null ? null : pulumi.Output.create<String>(map['webRegionBackendService'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      webRegionBackendService: map['webRegionBackendService'] == null ? null : (map['webRegionBackendService'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deployment dependency information.
 class BasicDependencyResponse {
   /// The ID of the dependency.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The dependency resource name.
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
   /// The dependency resource type.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Creates a new [BasicDependencyResponse].
   /// [id] The ID of the dependency.
@@ -30,9 +31,9 @@ class BasicDependencyResponse {
 
   factory BasicDependencyResponse.fromMap(Map<String, dynamic> map) {
     return BasicDependencyResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

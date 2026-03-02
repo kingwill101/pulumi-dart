@@ -59,31 +59,19 @@ class CloudControlArgs {
   /// [severity] Possible values:
   /// [supportedCloudProviders] cloud providers supported
   CloudControlArgs({
-    pulumi.Output<List<String>>? categories,
-    required pulumi.Output<String> cloudControlId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? findingCategory,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organization,
-    pulumi.Output<List<CloudControlParameterSpec>>? parameterSpecs,
-    pulumi.Output<String>? remediationSteps,
-    pulumi.Output<List<CloudControlRule>>? rules,
-    pulumi.Output<String>? severity,
-    pulumi.Output<List<String>>? supportedCloudProviders,
-  }) :
-      categories = pulumi.Input.asOptionalInput<List<String>>(categories),
-      cloudControlId = pulumi.Input.asInput<String>(cloudControlId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      findingCategory = pulumi.Input.asOptionalInput<String>(findingCategory),
-      location = pulumi.Input.asInput<String>(location),
-      organization = pulumi.Input.asInput<String>(organization),
-      parameterSpecs = pulumi.Input.asOptionalInput<List<CloudControlParameterSpec>>(parameterSpecs),
-      remediationSteps = pulumi.Input.asOptionalInput<String>(remediationSteps),
-      rules = pulumi.Input.asOptionalInput<List<CloudControlRule>>(rules),
-      severity = pulumi.Input.asOptionalInput<String>(severity),
-      supportedCloudProviders = pulumi.Input.asOptionalInput<List<String>>(supportedCloudProviders);
+    this.categories,
+    required this.cloudControlId,
+    this.description,
+    this.displayName,
+    this.findingCategory,
+    required this.location,
+    required this.organization,
+    this.parameterSpecs,
+    this.remediationSteps,
+    this.rules,
+    this.severity,
+    this.supportedCloudProviders,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,18 +92,18 @@ class CloudControlArgs {
 
   factory CloudControlArgs.fromMap(Map<String, dynamic> map) {
     return CloudControlArgs(
-      categories: map['categories'] == null ? null : pulumi.Output.create<List<String>>((map['categories'] as List).cast<String>()),
-      cloudControlId: pulumi.Output.create<String>(map['cloudControlId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      findingCategory: map['findingCategory'] == null ? null : pulumi.Output.create<String>(map['findingCategory'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      parameterSpecs: map['parameterSpecs'] == null ? null : pulumi.Output.create<List<CloudControlParameterSpec>>(pulumi.Input.decodeList<CloudControlParameterSpec>(map['parameterSpecs'], (value) => CloudControlParameterSpec.fromMap((value as Map).cast<String, dynamic>()))),
-      remediationSteps: map['remediationSteps'] == null ? null : pulumi.Output.create<String>(map['remediationSteps'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<CloudControlRule>>(pulumi.Input.decodeList<CloudControlRule>(map['rules'], (value) => CloudControlRule.fromMap((value as Map).cast<String, dynamic>()))),
-      severity: map['severity'] == null ? null : pulumi.Output.create<String>(map['severity'] as String),
-      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : pulumi.Output.create<List<String>>((map['supportedCloudProviders'] as List).cast<String>()),
+      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      cloudControlId: (map['cloudControlId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      findingCategory: map['findingCategory'] == null ? null : (map['findingCategory'] as String).input(),
+      location: (map['location'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      parameterSpecs: map['parameterSpecs'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpec>(map['parameterSpecs'], (value) => CloudControlParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediationSteps: map['remediationSteps'] == null ? null : (map['remediationSteps'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CloudControlRule>(map['rules'], (value) => CloudControlRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : ((map['supportedCloudProviders'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata pertaining to creation and last modification of the resource.
 class AccountResourceResponseSystemData {
   /// The timestamp of resource creation (UTC).
-  final String? createdAt;
+  final pulumi.Input<String>? createdAt;
   /// The type of identity that created the resource.
-  final String? createdByType;
+  final pulumi.Input<String>? createdByType;
   /// The timestamp of resource last modification (UTC)
-  final String? lastModifiedAt;
+  final pulumi.Input<String>? lastModifiedAt;
   /// The type of identity that last modified the resource.
-  final String? lastModifiedByType;
+  final pulumi.Input<String>? lastModifiedByType;
 
   /// Creates a new [AccountResourceResponseSystemData].
   /// [createdAt] The timestamp of resource creation (UTC).
@@ -35,10 +36,10 @@ class AccountResourceResponseSystemData {
 
   factory AccountResourceResponseSystemData.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseSystemData(
-      createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
-      createdByType: map['createdByType'] == null ? null : map['createdByType'] as String,
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : map['lastModifiedAt'] as String,
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : map['lastModifiedByType'] as String,
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdByType: map['createdByType'] == null ? null : (map['createdByType'] as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
+      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType'] as String).input(),
     );
   }
 }

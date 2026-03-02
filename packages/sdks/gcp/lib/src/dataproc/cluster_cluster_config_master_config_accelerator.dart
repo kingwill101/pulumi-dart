@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigMasterConfigAccelerator {
   /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -9,9 +10,9 @@ class ClusterClusterConfigMasterConfigAccelerator {
   /// if you are trying to use accelerators in a given zone.
   ///
   /// - - -
-  final int acceleratorCount;
+  final pulumi.Input<int> acceleratorCount;
   /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
 
   /// Creates a new [ClusterClusterConfigMasterConfigAccelerator].
   /// [acceleratorCount] The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -30,8 +31,8 @@ class ClusterClusterConfigMasterConfigAccelerator {
 
   factory ClusterClusterConfigMasterConfigAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigMasterConfigAccelerator(
-      acceleratorCount: map['acceleratorCount'] as int,
-      acceleratorType: map['acceleratorType'] as String,
+      acceleratorCount: (map['acceleratorCount'] as int).input(),
+      acceleratorType: (map['acceleratorType'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterRdmaSharedDevicePlugin {
   /// Boolean flag whether the component is enabled or not.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterRdmaSharedDevicePlugin].
   /// [enabled] Boolean flag whether the component is enabled or not.
@@ -19,7 +20,7 @@ class KubernetesClusterRdmaSharedDevicePlugin {
 
   factory KubernetesClusterRdmaSharedDevicePlugin.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterRdmaSharedDevicePlugin(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

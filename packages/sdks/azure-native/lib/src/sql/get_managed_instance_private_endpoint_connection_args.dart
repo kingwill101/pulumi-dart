@@ -19,13 +19,10 @@ class GetManagedInstancePrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedInstancePrivateEndpointConnectionArgs({
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.managedInstanceName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedInstancePrivateEndpointConnectionArgs {
 
   factory GetManagedInstancePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstancePrivateEndpointConnectionArgs(
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppRegistry {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
-  final String identity;
+  final pulumi.Input<String> identity;
   /// The name of the Secret Reference containing the password value for the user on the Container Registry.
-  final String passwordSecretName;
+  final pulumi.Input<String> passwordSecretName;
   /// The hostname for the Container Registry.
-  final String server;
+  final pulumi.Input<String> server;
   /// The username used for this Container Registry.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetAppRegistry].
   /// [identity] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
@@ -34,10 +35,10 @@ class GetAppRegistry {
 
   factory GetAppRegistry.fromMap(Map<String, dynamic> map) {
     return GetAppRegistry(
-      identity: map['identity'] as String,
-      passwordSecretName: map['passwordSecretName'] as String,
-      server: map['server'] as String,
-      username: map['username'] as String,
+      identity: (map['identity'] as String).input(),
+      passwordSecretName: (map['passwordSecretName'] as String).input(),
+      server: (map['server'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

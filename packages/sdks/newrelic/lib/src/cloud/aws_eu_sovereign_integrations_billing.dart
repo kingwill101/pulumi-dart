@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsEuSovereignIntegrationsBilling {
   /// The data polling interval in seconds
-  final int? metricsPollingInterval;
+  final pulumi.Input<int>? metricsPollingInterval;
 
   /// Creates a new [AwsEuSovereignIntegrationsBilling].
   /// [metricsPollingInterval] The data polling interval in seconds
@@ -19,7 +20,7 @@ class AwsEuSovereignIntegrationsBilling {
 
   factory AwsEuSovereignIntegrationsBilling.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignIntegrationsBilling(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : map['metricsPollingInterval'] as int,
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
     );
   }
 }

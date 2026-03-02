@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The object attributes managed by the Azure Key Vault service.
 class KeyAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
-  final double created;
+  final pulumi.Input<double> created;
   /// Determines whether or not the object is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Expiry date in seconds since 1970-01-01T00:00:00Z.
-  final double? expires;
+  final pulumi.Input<double>? expires;
   /// Indicates if the private key can be exported.
-  final bool? exportable;
+  final pulumi.Input<bool>? exportable;
   /// Not before date in seconds since 1970-01-01T00:00:00Z.
-  final double? notBefore;
+  final pulumi.Input<double>? notBefore;
   /// The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval.
-  final String recoveryLevel;
+  final pulumi.Input<String> recoveryLevel;
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
-  final double updated;
+  final pulumi.Input<double> updated;
 
   /// Creates a new [KeyAttributesResponse].
   /// [created] Creation time in seconds since 1970-01-01T00:00:00Z.
@@ -50,13 +51,13 @@ class KeyAttributesResponse {
 
   factory KeyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KeyAttributesResponse(
-      created: map['created'] as double,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      expires: map['expires'] == null ? null : map['expires'] as double,
-      exportable: map['exportable'] == null ? null : map['exportable'] as bool,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as double,
-      recoveryLevel: map['recoveryLevel'] as String,
-      updated: map['updated'] as double,
+      created: (map['created'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as double).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as double).input(),
+      recoveryLevel: (map['recoveryLevel'] as String).input(),
+      updated: (map['updated'] as double).input(),
     );
   }
 }

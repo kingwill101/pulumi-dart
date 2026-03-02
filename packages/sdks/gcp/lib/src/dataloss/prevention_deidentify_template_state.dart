@@ -39,23 +39,15 @@ class PreventionDeidentifyTemplateState {
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [updateTime] The last update timestamp of an deidentifyTemplate. Set by the server.
   PreventionDeidentifyTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig>? deidentifyConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<String>? templateId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deidentifyConfig = pulumi.Input.asOptionalInput<PreventionDeidentifyTemplateDeidentifyConfig>(deidentifyConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.deidentifyConfig,
+    this.description,
+    this.displayName,
+    this.name,
+    this.parent,
+    this.templateId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class PreventionDeidentifyTemplateState {
 
   factory PreventionDeidentifyTemplateState.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deidentifyConfig: map['deidentifyConfig'] == null ? null : pulumi.Output.create<PreventionDeidentifyTemplateDeidentifyConfig>(PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

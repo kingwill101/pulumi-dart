@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage Discovery Scope. This had added validations
 class StorageDiscoveryScope {
   /// Display name of the collection
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Resource types for the collection
-  final List<String> resourceTypes;
+  final pulumi.Input<List<String>> resourceTypes;
   /// The storage account tags keys to filter
-  final List<String>? tagKeysOnly;
+  final pulumi.Input<List<String>>? tagKeysOnly;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [StorageDiscoveryScope].
   /// [displayName] Display name of the collection
@@ -35,10 +36,10 @@ class StorageDiscoveryScope {
 
   factory StorageDiscoveryScope.fromMap(Map<String, dynamic> map) {
     return StorageDiscoveryScope(
-      displayName: map['displayName'] as String,
-      resourceTypes: (map['resourceTypes'] as List).cast<String>(),
-      tagKeysOnly: map['tagKeysOnly'] == null ? null : (map['tagKeysOnly'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      displayName: (map['displayName'] as String).input(),
+      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      tagKeysOnly: map['tagKeysOnly'] == null ? null : ((map['tagKeysOnly'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

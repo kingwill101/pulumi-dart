@@ -6,7 +6,7 @@ import 'lifecycle_policy_rule.dart';
 /// Represents an ECR lifecycle policy document.
 class LifecyclePolicyDocument {
   /// The rules that comprise the lifecycle policy.
-  final List<LifecyclePolicyRule> rules;
+  final pulumi.Input<List<LifecyclePolicyRule>> rules;
 
   /// Creates a new [LifecyclePolicyDocument].
   /// [rules] The rules that comprise the lifecycle policy.
@@ -16,13 +16,13 @@ class LifecyclePolicyDocument {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<LifecyclePolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LifecyclePolicyDocument.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyDocument(
-      rules: pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules'], (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (pulumi.Input.decodeList<LifecyclePolicyRule>(map['rules'], (value) => LifecyclePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

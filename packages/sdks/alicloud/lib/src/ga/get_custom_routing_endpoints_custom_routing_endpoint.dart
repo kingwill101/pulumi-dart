@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomRoutingEndpointsCustomRoutingEndpoint {
   /// The ID of the GA instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The ID of the Custom Routing Endpoint.
-  final String customRoutingEndpointId;
+  final pulumi.Input<String> customRoutingEndpointId;
   /// The ID of the endpoint (vSwitch).
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The ID of the endpoint group.
-  final String endpointGroupId;
+  final pulumi.Input<String> endpointGroupId;
   /// The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the custom routing listener.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// The access policy of traffic for the specified endpoint.
-  final String trafficToEndpointPolicy;
+  final pulumi.Input<String> trafficToEndpointPolicy;
   /// The backend service type of the endpoint.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetCustomRoutingEndpointsCustomRoutingEndpoint].
   /// [acceleratorId] The ID of the GA instance.
@@ -54,14 +55,14 @@ class GetCustomRoutingEndpointsCustomRoutingEndpoint {
 
   factory GetCustomRoutingEndpointsCustomRoutingEndpoint.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointsCustomRoutingEndpoint(
-      acceleratorId: map['acceleratorId'] as String,
-      customRoutingEndpointId: map['customRoutingEndpointId'] as String,
-      endpoint: map['endpoint'] as String,
-      endpointGroupId: map['endpointGroupId'] as String,
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] as String,
-      type: map['type'] as String,
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      customRoutingEndpointId: (map['customRoutingEndpointId'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      trafficToEndpointPolicy: (map['trafficToEndpointPolicy'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

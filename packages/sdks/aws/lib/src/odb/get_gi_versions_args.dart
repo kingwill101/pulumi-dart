@@ -16,11 +16,9 @@ class GetGiVersionsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shape] The system shape.
   GetGiVersionsArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shape,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shape = pulumi.Input.asOptionalInput<String>(shape);
+    this.region,
+    this.shape,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGiVersionsArgs {
 
   factory GetGiVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetGiVersionsArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shape: map['shape'] == null ? null : pulumi.Output.create<String>(map['shape'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
     );
   }
 }

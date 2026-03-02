@@ -24,17 +24,12 @@ class UserStackAssociationState {
   /// [stackName] Name of the stack that is associated with the user.
   /// [userName] Email address of the user who is associated with the stack.
   UserStackAssociationState({
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? sendEmailNotification,
-    pulumi.Output<String>? stackName,
-    pulumi.Output<String>? userName,
-  }) :
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sendEmailNotification = pulumi.Input.asOptionalInput<bool>(sendEmailNotification),
-      stackName = pulumi.Input.asOptionalInput<String>(stackName),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.authenticationType,
+    this.region,
+    this.sendEmailNotification,
+    this.stackName,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class UserStackAssociationState {
 
   factory UserStackAssociationState.fromMap(Map<String, dynamic> map) {
     return UserStackAssociationState(
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['sendEmailNotification'] as bool),
-      stackName: map['stackName'] == null ? null : pulumi.Output.create<String>(map['stackName'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

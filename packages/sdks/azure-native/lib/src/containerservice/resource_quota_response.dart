@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource quota for the namespace.
 class ResourceQuotaResponse {
   /// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-  final String? cpuLimit;
+  final pulumi.Input<String>? cpuLimit;
   /// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-  final String? cpuRequest;
+  final pulumi.Input<String>? cpuRequest;
   /// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-  final String? memoryLimit;
+  final pulumi.Input<String>? memoryLimit;
   /// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-  final String? memoryRequest;
+  final pulumi.Input<String>? memoryRequest;
 
   /// Creates a new [ResourceQuotaResponse].
   /// [cpuLimit] CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
@@ -35,10 +36,10 @@ class ResourceQuotaResponse {
 
   factory ResourceQuotaResponse.fromMap(Map<String, dynamic> map) {
     return ResourceQuotaResponse(
-      cpuLimit: map['cpuLimit'] == null ? null : map['cpuLimit'] as String,
-      cpuRequest: map['cpuRequest'] == null ? null : map['cpuRequest'] as String,
-      memoryLimit: map['memoryLimit'] == null ? null : map['memoryLimit'] as String,
-      memoryRequest: map['memoryRequest'] == null ? null : map['memoryRequest'] as String,
+      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit'] as String).input(),
+      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest'] as String).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as String).input(),
+      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest'] as String).input(),
     );
   }
 }

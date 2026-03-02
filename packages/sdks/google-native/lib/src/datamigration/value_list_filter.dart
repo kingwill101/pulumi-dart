@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'value_list_filter_value_present_list.dart';
 
 /// A list of values to filter by in ConditionalColumnSetValue
 class ValueListFilter {
   /// Whether to ignore case when filtering by values. Defaults to false
-  final bool ignoreCase;
+  final pulumi.Input<bool> ignoreCase;
   /// Indicates whether the filter matches rows with values that are present in the list or those with values not present in it.
-  final ValueListFilterValuePresentList valuePresentList;
+  final pulumi.Input<ValueListFilterValuePresentList> valuePresentList;
   /// The list to be used to filter by
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ValueListFilter].
   /// [ignoreCase] Whether to ignore case when filtering by values. Defaults to false
@@ -24,16 +25,16 @@ class ValueListFilter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ignoreCase': ignoreCase,
-      'valuePresentList': valuePresentList.value,
+      'valuePresentList': pulumi.Input.mapInputValue<ValueListFilterValuePresentList, String>(valuePresentList, (value) => value.value),
       'values': values,
     };
   }
 
   factory ValueListFilter.fromMap(Map<String, dynamic> map) {
     return ValueListFilter(
-      ignoreCase: map['ignoreCase'] as bool,
-      valuePresentList: ValueListFilterValuePresentList.fromValue(map['valuePresentList'] as String),
-      values: (map['values'] as List).cast<String>(),
+      ignoreCase: (map['ignoreCase'] as bool).input(),
+      valuePresentList: (ValueListFilterValuePresentList.fromValue(map['valuePresentList'] as String)).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

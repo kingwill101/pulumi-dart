@@ -19,13 +19,10 @@ class AppregistryAttributeGroupAssociationArgs {
   /// [attributeGroupId] ID of the attribute group to associate with the application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AppregistryAttributeGroupAssociationArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> attributeGroupId,
-    pulumi.Output<String>? region,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      attributeGroupId = pulumi.Input.asInput<String>(attributeGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationId,
+    required this.attributeGroupId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AppregistryAttributeGroupAssociationArgs {
 
   factory AppregistryAttributeGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AppregistryAttributeGroupAssociationArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      attributeGroupId: pulumi.Output.create<String>(map['attributeGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      attributeGroupId: (map['attributeGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

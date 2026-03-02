@@ -44,19 +44,13 @@ class AiFeatureStoreIamMemberArgs {
   /// [region] The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   AiFeatureStoreIamMemberArgs({
-    pulumi.Output<AiFeatureStoreIamMemberCondition>? condition,
-    required pulumi.Output<String> featurestore,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AiFeatureStoreIamMemberCondition>(condition),
-      featurestore = pulumi.Input.asInput<String>(featurestore),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.featurestore,
+    required this.member,
+    this.project,
+    this.region,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class AiFeatureStoreIamMemberArgs {
 
   factory AiFeatureStoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AiFeatureStoreIamMemberCondition>(AiFeatureStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AiFeatureStoreIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      featurestore: (map['featurestore'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

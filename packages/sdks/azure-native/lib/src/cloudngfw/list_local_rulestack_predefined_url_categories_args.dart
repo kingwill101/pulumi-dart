@@ -20,15 +20,11 @@ class ListLocalRulestackPredefinedUrlCategoriesArgs {
   /// [skip] Optional.
   /// [top] Optional.
   ListLocalRulestackPredefinedUrlCategoriesArgs({
-    required pulumi.Output<String> localRulestackName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skip,
-    pulumi.Output<int>? top,
-  }) :
-      localRulestackName = pulumi.Input.asInput<String>(localRulestackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.localRulestackName,
+    required this.resourceGroupName,
+    this.skip,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ListLocalRulestackPredefinedUrlCategoriesArgs {
 
   factory ListLocalRulestackPredefinedUrlCategoriesArgs.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackPredefinedUrlCategoriesArgs(
-      localRulestackName: pulumi.Output.create<String>(map['localRulestackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      localRulestackName: (map['localRulestackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

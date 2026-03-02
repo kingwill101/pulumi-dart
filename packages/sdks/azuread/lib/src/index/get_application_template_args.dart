@@ -18,11 +18,9 @@ class GetApplicationTemplateArgs {
   /// [displayName] Specifies the display name of the templated application.
   /// [templateId] Specifies the ID of the templated application.
   GetApplicationTemplateArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? templateId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.displayName,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetApplicationTemplateArgs {
 
   factory GetApplicationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationTemplateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

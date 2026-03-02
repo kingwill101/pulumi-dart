@@ -64,33 +64,20 @@ class StreamArgs {
   /// [sourceConfig] Source connection profile configuration.
   /// [streamId] The stream identifier.
   StreamArgs({
-    pulumi.Output<StreamBackfillAll>? backfillAll,
-    pulumi.Output<Map<String, dynamic>>? backfillNone,
-    pulumi.Output<bool>? createWithoutValidation,
-    pulumi.Output<String>? customerManagedEncryptionKey,
-    pulumi.Output<String>? desiredState,
-    required pulumi.Output<StreamDestinationConfig> destinationConfig,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<StreamRuleSet>>? ruleSets,
-    required pulumi.Output<StreamSourceConfig> sourceConfig,
-    required pulumi.Output<String> streamId,
-  }) :
-      backfillAll = pulumi.Input.asOptionalInput<StreamBackfillAll>(backfillAll),
-      backfillNone = pulumi.Input.asOptionalInput<Map<String, dynamic>>(backfillNone),
-      createWithoutValidation = pulumi.Input.asOptionalInput<bool>(createWithoutValidation),
-      customerManagedEncryptionKey = pulumi.Input.asOptionalInput<String>(customerManagedEncryptionKey),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      destinationConfig = pulumi.Input.asInput<StreamDestinationConfig>(destinationConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleSets = pulumi.Input.asOptionalInput<List<StreamRuleSet>>(ruleSets),
-      sourceConfig = pulumi.Input.asInput<StreamSourceConfig>(sourceConfig),
-      streamId = pulumi.Input.asInput<String>(streamId);
+    this.backfillAll,
+    this.backfillNone,
+    this.createWithoutValidation,
+    this.customerManagedEncryptionKey,
+    this.desiredState,
+    required this.destinationConfig,
+    required this.displayName,
+    this.labels,
+    required this.location,
+    this.project,
+    this.ruleSets,
+    required this.sourceConfig,
+    required this.streamId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,19 +99,19 @@ class StreamArgs {
 
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
-      backfillAll: map['backfillAll'] == null ? null : pulumi.Output.create<StreamBackfillAll>(StreamBackfillAll.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())),
-      backfillNone: map['backfillNone'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['backfillNone'] as Map).cast<String, dynamic>()),
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : pulumi.Output.create<bool>(map['createWithoutValidation'] as bool),
-      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedEncryptionKey'] as String),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      destinationConfig: pulumi.Output.create<StreamDestinationConfig>(StreamDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ruleSets: map['ruleSets'] == null ? null : pulumi.Output.create<List<StreamRuleSet>>(pulumi.Input.decodeList<StreamRuleSet>(map['ruleSets'], (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>()))),
-      sourceConfig: pulumi.Output.create<StreamSourceConfig>(StreamSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())),
-      streamId: pulumi.Output.create<String>(map['streamId'] as String),
+      backfillAll: map['backfillAll'] == null ? null : (StreamBackfillAll.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())).input(),
+      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone'] as Map).cast<String, dynamic>()).input(),
+      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation'] as bool).input(),
+      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      destinationConfig: (StreamDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<StreamRuleSet>(map['ruleSets'], (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConfig: (StreamSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
+      streamId: (map['streamId'] as String).input(),
     );
   }
 }

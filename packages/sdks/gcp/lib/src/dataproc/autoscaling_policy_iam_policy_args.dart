@@ -28,15 +28,11 @@ class AutoscalingPolicyIamPolicyArgs {
   /// [policyId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   AutoscalingPolicyIamPolicyArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> policyData,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.location,
+    required this.policyData,
+    required this.policyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class AutoscalingPolicyIamPolicyArgs {
 
   factory AutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

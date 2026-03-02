@@ -22,15 +22,11 @@ class ListIssueResourcesArgs {
   /// [issueName] The name of the IssueResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListIssueResourcesArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> issueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      issueName = pulumi.Input.asInput<String>(issueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureMonitorWorkspaceName,
+    this.filter,
+    required this.issueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListIssueResourcesArgs {
 
   factory ListIssueResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      issueName: pulumi.Output.create<String>(map['issueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      issueName: (map['issueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

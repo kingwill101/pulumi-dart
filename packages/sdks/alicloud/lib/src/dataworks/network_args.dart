@@ -19,13 +19,10 @@ class NetworkArgs {
   /// [vpcId] Virtual Private Cloud ID of network resources
   /// [vswitchId] The vSwitch ID of the network resource.
   NetworkArgs({
-    required pulumi.Output<String> dwResourceGroupId,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      dwResourceGroupId = pulumi.Input.asInput<String>(dwResourceGroupId),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.dwResourceGroupId,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      dwResourceGroupId: pulumi.Output.create<String>(map['dwResourceGroupId'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      dwResourceGroupId: (map['dwResourceGroupId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

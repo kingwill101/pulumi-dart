@@ -6,12 +6,12 @@ import 'cluster_master_authorized_networks_config_cidr_block.dart';
 class ClusterMasterAuthorizedNetworksConfig {
   /// External networks that can access the
   /// Kubernetes cluster master through HTTPS.
-  final List<ClusterMasterAuthorizedNetworksConfigCidrBlock>? cidrBlocks;
+  final pulumi.Input<List<ClusterMasterAuthorizedNetworksConfigCidrBlock>>? cidrBlocks;
   /// Whether Kubernetes master is
   /// accessible via Google Compute Engine Public IPs.
-  final bool? gcpPublicCidrsAccessEnabled;
+  final pulumi.Input<bool>? gcpPublicCidrsAccessEnabled;
   /// Whether authorized networks is enforced on the private endpoint or not.
-  final bool? privateEndpointEnforcementEnabled;
+  final pulumi.Input<bool>? privateEndpointEnforcementEnabled;
 
   /// Creates a new [ClusterMasterAuthorizedNetworksConfig].
   /// [cidrBlocks] External networks that can access the
@@ -25,7 +25,7 @@ class ClusterMasterAuthorizedNetworksConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': ?cidrBlocks == null ? null : pulumi.Input.encodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock, Map<String, dynamic>>(cidrBlocks!, (value) => value.toMap()),
+      'cidrBlocks': ?pulumi.Input.mapOptionalInputValue<List<ClusterMasterAuthorizedNetworksConfigCidrBlock>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gcpPublicCidrsAccessEnabled': ?gcpPublicCidrsAccessEnabled,
       'privateEndpointEnforcementEnabled': ?privateEndpointEnforcementEnabled,
     };
@@ -33,9 +33,9 @@ class ClusterMasterAuthorizedNetworksConfig {
 
   factory ClusterMasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMasterAuthorizedNetworksConfig(
-      cidrBlocks: map['cidrBlocks'] == null ? null : pulumi.Input.decodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>())),
-      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : map['gcpPublicCidrsAccessEnabled'] as bool,
-      privateEndpointEnforcementEnabled: map['privateEndpointEnforcementEnabled'] == null ? null : map['privateEndpointEnforcementEnabled'] as bool,
+      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : (map['gcpPublicCidrsAccessEnabled'] as bool).input(),
+      privateEndpointEnforcementEnabled: map['privateEndpointEnforcementEnabled'] == null ? null : (map['privateEndpointEnforcementEnabled'] as bool).input(),
     );
   }
 }

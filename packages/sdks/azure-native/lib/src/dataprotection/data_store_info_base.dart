@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataStoreInfo base
 class DataStoreInfoBase {
   /// type of datastore; Operational/Vault/Archive
-  final String dataStoreType;
+  final pulumi.Input<String> dataStoreType;
   /// Type of Datasource object, used to initialize the right inherited type
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [DataStoreInfoBase].
   /// [dataStoreType] type of datastore; Operational/Vault/Archive
@@ -25,8 +26,8 @@ class DataStoreInfoBase {
 
   factory DataStoreInfoBase.fromMap(Map<String, dynamic> map) {
     return DataStoreInfoBase(
-      dataStoreType: map['dataStoreType'] as String,
-      objectType: map['objectType'] as String,
+      dataStoreType: (map['dataStoreType'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

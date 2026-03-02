@@ -31,21 +31,14 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
   /// [targetBaseModel] Gets or sets target base model.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ListInferenceGroupDeltaModelsAsyncArgs({
-    pulumi.Output<int>? count,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skipToken,
-    pulumi.Output<String>? targetBaseModel,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      count = pulumi.Input.asOptionalInput<int>(count),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken),
-      targetBaseModel = pulumi.Input.asOptionalInput<String>(targetBaseModel),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.count,
+    required this.groupName,
+    required this.poolName,
+    required this.resourceGroupName,
+    this.skipToken,
+    this.targetBaseModel,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
 
   factory ListInferenceGroupDeltaModelsAsyncArgs.fromMap(Map<String, dynamic> map) {
     return ListInferenceGroupDeltaModelsAsyncArgs(
-      count: map['count'] == null ? null : pulumi.Output.create<int>(map['count'] as int),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
-      targetBaseModel: map['targetBaseModel'] == null ? null : pulumi.Output.create<String>(map['targetBaseModel'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      groupName: (map['groupName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

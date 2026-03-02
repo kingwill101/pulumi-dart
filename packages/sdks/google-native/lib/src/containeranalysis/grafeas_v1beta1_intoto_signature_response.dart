@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A signature object consists of the KeyID used and the signature itself.
 class GrafeasV1beta1IntotoSignatureResponse {
-  final String keyid;
-  final String sig;
+  final pulumi.Input<String> keyid;
+  final pulumi.Input<String> sig;
 
   /// Creates a new [GrafeasV1beta1IntotoSignatureResponse].
   /// [keyid] Required.
@@ -23,8 +24,8 @@ class GrafeasV1beta1IntotoSignatureResponse {
 
   factory GrafeasV1beta1IntotoSignatureResponse.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoSignatureResponse(
-      keyid: map['keyid'] as String,
-      sig: map['sig'] as String,
+      keyid: (map['keyid'] as String).input(),
+      sig: (map['sig'] as String).input(),
     );
   }
 }

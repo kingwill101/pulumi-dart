@@ -8,23 +8,23 @@ import 'required_traffic_response.dart';
 /// Service network profile payload
 class NetworkProfileResponse {
   /// Name of the resource group containing network resources for customer apps in Azure Spring Apps
-  final String? appNetworkResourceGroup;
+  final pulumi.Input<String>? appNetworkResourceGroup;
   /// Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
-  final String? appSubnetId;
+  final pulumi.Input<String>? appSubnetId;
   /// Ingress configuration payload for Azure Spring Apps resource.
-  final IngressConfigResponse? ingressConfig;
+  final pulumi.Input<IngressConfigResponse>? ingressConfig;
   /// Desired outbound IP resources for Azure Spring Apps resource.
-  final NetworkProfileResponseOutboundIPs outboundIPs;
+  final pulumi.Input<NetworkProfileResponseOutboundIPs> outboundIPs;
   /// The egress traffic type of Azure Spring Apps VNet instances.
-  final String? outboundType;
+  final pulumi.Input<String>? outboundType;
   /// Required inbound or outbound traffics for Azure Spring Apps resource.
-  final List<RequiredTrafficResponse> requiredTraffics;
+  final pulumi.Input<List<RequiredTrafficResponse>> requiredTraffics;
   /// Azure Spring Apps service reserved CIDR
-  final String? serviceCidr;
+  final pulumi.Input<String>? serviceCidr;
   /// Name of the resource group containing network resources of Azure Spring Apps Service Runtime
-  final String? serviceRuntimeNetworkResourceGroup;
+  final pulumi.Input<String>? serviceRuntimeNetworkResourceGroup;
   /// Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
-  final String? serviceRuntimeSubnetId;
+  final pulumi.Input<String>? serviceRuntimeSubnetId;
 
   /// Creates a new [NetworkProfileResponse].
   /// [appNetworkResourceGroup] Name of the resource group containing network resources for customer apps in Azure Spring Apps
@@ -52,10 +52,10 @@ class NetworkProfileResponse {
     return <String, dynamic>{
       'appNetworkResourceGroup': ?appNetworkResourceGroup,
       'appSubnetId': ?appSubnetId,
-      'ingressConfig': ?ingressConfig == null ? null : ingressConfig!.toMap(),
-      'outboundIPs': outboundIPs.toMap(),
+      'ingressConfig': ?pulumi.Input.mapOptionalInputValue<IngressConfigResponse, Map<String, dynamic>>(ingressConfig, (value) => value.toMap()),
+      'outboundIPs': pulumi.Input.mapInputValue<NetworkProfileResponseOutboundIPs, Map<String, dynamic>>(outboundIPs, (value) => value.toMap()),
       'outboundType': ?outboundType,
-      'requiredTraffics': pulumi.Input.encodeList<RequiredTrafficResponse, Map<String, dynamic>>(requiredTraffics, (value) => value.toMap()),
+      'requiredTraffics': pulumi.Input.mapInputValue<List<RequiredTrafficResponse>, List<Map<String, dynamic>>>(requiredTraffics, (value) => pulumi.Input.encodeList<RequiredTrafficResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceCidr': ?serviceCidr,
       'serviceRuntimeNetworkResourceGroup': ?serviceRuntimeNetworkResourceGroup,
       'serviceRuntimeSubnetId': ?serviceRuntimeSubnetId,
@@ -64,15 +64,15 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : map['appNetworkResourceGroup'] as String,
-      appSubnetId: map['appSubnetId'] == null ? null : map['appSubnetId'] as String,
-      ingressConfig: map['ingressConfig'] == null ? null : IngressConfigResponse.fromMap((map['ingressConfig'] as Map).cast<String, dynamic>()),
-      outboundIPs: NetworkProfileResponseOutboundIPs.fromMap((map['outboundIPs'] as Map).cast<String, dynamic>()),
-      outboundType: map['outboundType'] == null ? null : map['outboundType'] as String,
-      requiredTraffics: pulumi.Input.decodeList<RequiredTrafficResponse>(map['requiredTraffics'], (value) => RequiredTrafficResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceCidr: map['serviceCidr'] == null ? null : map['serviceCidr'] as String,
-      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : map['serviceRuntimeNetworkResourceGroup'] as String,
-      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : map['serviceRuntimeSubnetId'] as String,
+      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup'] as String).input(),
+      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId'] as String).input(),
+      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfigResponse.fromMap((map['ingressConfig'] as Map).cast<String, dynamic>())).input(),
+      outboundIPs: (NetworkProfileResponseOutboundIPs.fromMap((map['outboundIPs'] as Map).cast<String, dynamic>())).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
+      requiredTraffics: (pulumi.Input.decodeList<RequiredTrafficResponse>(map['requiredTraffics'], (value) => RequiredTrafficResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
+      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup'] as String).input(),
+      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId'] as String).input(),
     );
   }
 }

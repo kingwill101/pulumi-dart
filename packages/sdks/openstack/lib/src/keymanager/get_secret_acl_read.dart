@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecretAclRead {
   /// The date the secret ACL was created.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Whether the secret is accessible project wide.
-  final bool? projectAccess;
+  final pulumi.Input<bool>? projectAccess;
   /// The date the secret ACL was last updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// The list of user IDs, which are allowed to access the secret, when
   /// `project_access` is set to `false`.
-  final List<String>? users;
+  final pulumi.Input<List<String>>? users;
 
   /// Creates a new [GetSecretAclRead].
   /// [createdAt] The date the secret ACL was created.
@@ -35,10 +36,10 @@ class GetSecretAclRead {
 
   factory GetSecretAclRead.fromMap(Map<String, dynamic> map) {
     return GetSecretAclRead(
-      createdAt: map['createdAt'] as String,
-      projectAccess: map['projectAccess'] == null ? null : map['projectAccess'] as bool,
-      updatedAt: map['updatedAt'] as String,
-      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
+      createdAt: (map['createdAt'] as String).input(),
+      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess'] as bool).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

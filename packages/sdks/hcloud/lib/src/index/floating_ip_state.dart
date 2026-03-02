@@ -34,25 +34,16 @@ class FloatingIpState {
   /// [serverId] Server to assign the Floating IP to. Optional if `home_location` argument is passed.
   /// [type] Type of the Floating IP. `ipv4` `ipv6`
   FloatingIpState({
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? homeLocation,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? ipNetwork,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? serverId,
-    pulumi.Output<String>? type,
-  }) :
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      homeLocation = pulumi.Input.asOptionalInput<String>(homeLocation),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      ipNetwork = pulumi.Input.asOptionalInput<String>(ipNetwork),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.deleteProtection,
+    this.description,
+    this.homeLocation,
+    this.ipAddress,
+    this.ipNetwork,
+    this.labels,
+    this.name,
+    this.serverId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class FloatingIpState {
 
   factory FloatingIpState.fromMap(Map<String, dynamic> map) {
     return FloatingIpState(
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      homeLocation: map['homeLocation'] == null ? null : pulumi.Output.create<String>(map['homeLocation'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      ipNetwork: map['ipNetwork'] == null ? null : pulumi.Output.create<String>(map['ipNetwork'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      homeLocation: map['homeLocation'] == null ? null : (map['homeLocation'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipNetwork: map['ipNetwork'] == null ? null : (map['ipNetwork'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

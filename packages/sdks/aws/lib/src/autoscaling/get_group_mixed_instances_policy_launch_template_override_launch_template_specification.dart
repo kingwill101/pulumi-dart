@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification {
   /// ID of the launch template.
-  final String launchTemplateId;
+  final pulumi.Input<String> launchTemplateId;
   /// Name of the launch template.
-  final String launchTemplateName;
+  final pulumi.Input<String> launchTemplateName;
   /// Template version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification].
   /// [launchTemplateId] ID of the launch template.
@@ -29,9 +30,9 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificat
 
   factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification(
-      launchTemplateId: map['launchTemplateId'] as String,
-      launchTemplateName: map['launchTemplateName'] as String,
-      version: map['version'] as String,
+      launchTemplateId: (map['launchTemplateId'] as String).input(),
+      launchTemplateName: (map['launchTemplateName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

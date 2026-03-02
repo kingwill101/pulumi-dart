@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterCapacityResponse {
   /// The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
-  final double? availableApplianceStorageGB;
+  final pulumi.Input<double>? availableApplianceStorageGB;
   /// The remaining number of cores that are available in this cluster for workload use.
-  final double? availableCoreCount;
+  final pulumi.Input<double>? availableCoreCount;
   /// The remaining machine or host-based storage in GB available for workload use. Measured in gibibytes.
-  final double? availableHostStorageGB;
+  final pulumi.Input<double>? availableHostStorageGB;
   /// The remaining memory in GB that are available in this cluster for workload use. Measured in gibibytes.
-  final double? availableMemoryGB;
+  final pulumi.Input<double>? availableMemoryGB;
   /// The total appliance-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
-  final double? totalApplianceStorageGB;
+  final pulumi.Input<double>? totalApplianceStorageGB;
   /// The total number of cores that are supported by this cluster for workload use.
-  final double? totalCoreCount;
+  final pulumi.Input<double>? totalCoreCount;
   /// The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
-  final double? totalHostStorageGB;
+  final pulumi.Input<double>? totalHostStorageGB;
   /// The total memory supported by this cluster for workload use. Measured in gibibytes.
-  final double? totalMemoryGB;
+  final pulumi.Input<double>? totalMemoryGB;
 
   /// Creates a new [ClusterCapacityResponse].
   /// [availableApplianceStorageGB] The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
@@ -54,14 +55,14 @@ class ClusterCapacityResponse {
 
   factory ClusterCapacityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterCapacityResponse(
-      availableApplianceStorageGB: map['availableApplianceStorageGB'] == null ? null : map['availableApplianceStorageGB'] as double,
-      availableCoreCount: map['availableCoreCount'] == null ? null : map['availableCoreCount'] as double,
-      availableHostStorageGB: map['availableHostStorageGB'] == null ? null : map['availableHostStorageGB'] as double,
-      availableMemoryGB: map['availableMemoryGB'] == null ? null : map['availableMemoryGB'] as double,
-      totalApplianceStorageGB: map['totalApplianceStorageGB'] == null ? null : map['totalApplianceStorageGB'] as double,
-      totalCoreCount: map['totalCoreCount'] == null ? null : map['totalCoreCount'] as double,
-      totalHostStorageGB: map['totalHostStorageGB'] == null ? null : map['totalHostStorageGB'] as double,
-      totalMemoryGB: map['totalMemoryGB'] == null ? null : map['totalMemoryGB'] as double,
+      availableApplianceStorageGB: map['availableApplianceStorageGB'] == null ? null : (map['availableApplianceStorageGB'] as double).input(),
+      availableCoreCount: map['availableCoreCount'] == null ? null : (map['availableCoreCount'] as double).input(),
+      availableHostStorageGB: map['availableHostStorageGB'] == null ? null : (map['availableHostStorageGB'] as double).input(),
+      availableMemoryGB: map['availableMemoryGB'] == null ? null : (map['availableMemoryGB'] as double).input(),
+      totalApplianceStorageGB: map['totalApplianceStorageGB'] == null ? null : (map['totalApplianceStorageGB'] as double).input(),
+      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount'] as double).input(),
+      totalHostStorageGB: map['totalHostStorageGB'] == null ? null : (map['totalHostStorageGB'] as double).input(),
+      totalMemoryGB: map['totalMemoryGB'] == null ? null : (map['totalMemoryGB'] as double).input(),
     );
   }
 }

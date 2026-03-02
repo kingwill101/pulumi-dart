@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'probe_properties_response.dart';
 
 /// Load balancer health probes
 class ProbeResponse {
   /// name of the load balancer health probe
-  final String name;
+  final pulumi.Input<String> name;
   /// load balancer rule properties
-  final ProbePropertiesResponse properties;
+  final pulumi.Input<ProbePropertiesResponse> properties;
 
   /// Creates a new [ProbeResponse].
   /// [name] name of the load balancer health probe
@@ -20,14 +21,14 @@ class ProbeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': properties.toMap(),
+      'properties': pulumi.Input.mapInputValue<ProbePropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
     };
   }
 
   factory ProbeResponse.fromMap(Map<String, dynamic> map) {
     return ProbeResponse(
-      name: map['name'] as String,
-      properties: ProbePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      properties: (ProbePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

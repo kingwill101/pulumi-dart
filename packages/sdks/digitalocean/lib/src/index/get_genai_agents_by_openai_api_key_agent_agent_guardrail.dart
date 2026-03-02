@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
   /// Agent UUID for the Guardrail
-  final String? agentUuid;
+  final pulumi.Input<String>? agentUuid;
   /// Created At timestamp for the Guardrail
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Default response for the Guardrail
-  final String? defaultResponse;
+  final pulumi.Input<String>? defaultResponse;
   /// Description of the Guardrail
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Guardrail UUID
-  final String? guardrailUuid;
+  final pulumi.Input<String>? guardrailUuid;
   /// Indicates if the Guardrail is attached
-  final bool isAttached;
+  final pulumi.Input<bool> isAttached;
   /// Indicates if the Guardrail is default
-  final bool? isDefault;
+  final pulumi.Input<bool>? isDefault;
   /// Name of Guardrail
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the Guardrail
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Type of the Guardrail
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Updated At timestamp for the Guardrail
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// Guardrail UUID
-  final String? uuid;
+  final pulumi.Input<String>? uuid;
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail].
   /// [agentUuid] Agent UUID for the Guardrail
@@ -74,18 +75,18 @@ class GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
 
   factory GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail(
-      agentUuid: map['agentUuid'] == null ? null : map['agentUuid'] as String,
-      createdAt: map['createdAt'] as String,
-      defaultResponse: map['defaultResponse'] == null ? null : map['defaultResponse'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      guardrailUuid: map['guardrailUuid'] == null ? null : map['guardrailUuid'] as String,
-      isAttached: map['isAttached'] as bool,
-      isDefault: map['isDefault'] == null ? null : map['isDefault'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
-      updatedAt: map['updatedAt'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
+      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid'] as String).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      defaultResponse: map['defaultResponse'] == null ? null : (map['defaultResponse'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid'] as String).input(),
+      isAttached: (map['isAttached'] as bool).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

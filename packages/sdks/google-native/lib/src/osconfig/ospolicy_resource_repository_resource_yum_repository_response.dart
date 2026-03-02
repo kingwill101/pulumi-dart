@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
 class OSPolicyResourceRepositoryResourceYumRepositoryResponse {
   /// The location of the repository directory.
-  final String baseUrl;
+  final pulumi.Input<String> baseUrl;
   /// The display name of the repository.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// URIs of GPG keys.
-  final List<String> gpgKeys;
+  final pulumi.Input<List<String>> gpgKeys;
 
   /// Creates a new [OSPolicyResourceRepositoryResourceYumRepositoryResponse].
   /// [baseUrl] The location of the repository directory.
@@ -30,9 +31,9 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponse {
 
   factory OSPolicyResourceRepositoryResourceYumRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResourceYumRepositoryResponse(
-      baseUrl: map['baseUrl'] as String,
-      displayName: map['displayName'] as String,
-      gpgKeys: (map['gpgKeys'] as List).cast<String>(),
+      baseUrl: (map['baseUrl'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      gpgKeys: ((map['gpgKeys'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordAlias {
   /// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
-  final bool evaluateTargetHealth;
+  final pulumi.Input<bool> evaluateTargetHealth;
   /// DNS domain name for a CloudFront distribution, S3 bucket, ELB, AWS Global Accelerator, or another resource record set in this hosted zone.
-  final String name;
+  final pulumi.Input<String> name;
   /// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, AWS Global Accelerator, or Route 53 hosted zone. See `resource_elb.zone_id` for example.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [RecordAlias].
   /// [evaluateTargetHealth] Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
@@ -29,9 +30,9 @@ class RecordAlias {
 
   factory RecordAlias.fromMap(Map<String, dynamic> map) {
     return RecordAlias(
-      evaluateTargetHealth: map['evaluateTargetHealth'] as bool,
-      name: map['name'] as String,
-      zoneId: map['zoneId'] as String,
+      evaluateTargetHealth: (map['evaluateTargetHealth'] as bool).input(),
+      name: (map['name'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

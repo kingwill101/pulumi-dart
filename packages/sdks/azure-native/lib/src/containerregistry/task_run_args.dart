@@ -33,21 +33,14 @@ class TaskRunArgs {
   /// [runRequest] The request (parameters) for the run
   /// [taskRunName] The name of the task run.
   TaskRunArgs({
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<IdentityProperties>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<DockerBuildRequest>? runRequest,
-    pulumi.Output<String>? taskRunName,
-  }) :
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      identity = pulumi.Input.asOptionalInput<IdentityProperties>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runRequest = pulumi.Input.asOptionalInput<DockerBuildRequest>(runRequest),
-      taskRunName = pulumi.Input.asOptionalInput<String>(taskRunName);
+    this.forceUpdateTag,
+    this.identity,
+    this.location,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.runRequest,
+    this.taskRunName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class TaskRunArgs {
 
   factory TaskRunArgs.fromMap(Map<String, dynamic> map) {
     return TaskRunArgs(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityProperties>(IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runRequest: map['runRequest'] == null ? null : pulumi.Output.create<DockerBuildRequest>(DockerBuildRequest.fromMap((map['runRequest'] as Map).cast<String, dynamic>())),
-      taskRunName: map['taskRunName'] == null ? null : pulumi.Output.create<String>(map['taskRunName'] as String),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runRequest: map['runRequest'] == null ? null : (DockerBuildRequest.fromMap((map['runRequest'] as Map).cast<String, dynamic>())).input(),
+      taskRunName: map['taskRunName'] == null ? null : (map['taskRunName'] as String).input(),
     );
   }
 }

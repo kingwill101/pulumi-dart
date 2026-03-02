@@ -34,21 +34,14 @@ class CassandraTableState {
   /// [schema] A `schema` block as defined below.
   /// [throughput] The throughput of Cassandra KeySpace (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   CassandraTableState({
-    pulumi.Output<int>? analyticalStorageTtl,
-    pulumi.Output<CassandraTableAutoscaleSettings>? autoscaleSettings,
-    pulumi.Output<String>? cassandraKeyspaceId,
-    pulumi.Output<int>? defaultTtl,
-    pulumi.Output<String>? name,
-    pulumi.Output<CassandraTableSchema>? schema,
-    pulumi.Output<int>? throughput,
-  }) :
-      analyticalStorageTtl = pulumi.Input.asOptionalInput<int>(analyticalStorageTtl),
-      autoscaleSettings = pulumi.Input.asOptionalInput<CassandraTableAutoscaleSettings>(autoscaleSettings),
-      cassandraKeyspaceId = pulumi.Input.asOptionalInput<String>(cassandraKeyspaceId),
-      defaultTtl = pulumi.Input.asOptionalInput<int>(defaultTtl),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      schema = pulumi.Input.asOptionalInput<CassandraTableSchema>(schema),
-      throughput = pulumi.Input.asOptionalInput<int>(throughput);
+    this.analyticalStorageTtl,
+    this.autoscaleSettings,
+    this.cassandraKeyspaceId,
+    this.defaultTtl,
+    this.name,
+    this.schema,
+    this.throughput,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class CassandraTableState {
 
   factory CassandraTableState.fromMap(Map<String, dynamic> map) {
     return CassandraTableState(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : pulumi.Output.create<int>(map['analyticalStorageTtl'] as int),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : pulumi.Output.create<CassandraTableAutoscaleSettings>(CassandraTableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())),
-      cassandraKeyspaceId: map['cassandraKeyspaceId'] == null ? null : pulumi.Output.create<String>(map['cassandraKeyspaceId'] as String),
-      defaultTtl: map['defaultTtl'] == null ? null : pulumi.Output.create<int>(map['defaultTtl'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<CassandraTableSchema>(CassandraTableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())),
-      throughput: map['throughput'] == null ? null : pulumi.Output.create<int>(map['throughput'] as int),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (CassandraTableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      cassandraKeyspaceId: map['cassandraKeyspaceId'] == null ? null : (map['cassandraKeyspaceId'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      schema: map['schema'] == null ? null : (CassandraTableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
     );
   }
 }

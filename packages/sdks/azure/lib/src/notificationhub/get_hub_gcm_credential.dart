@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHubGcmCredential {
   /// The API Key associated with the Google Cloud Messaging service.
-  final String apiKey;
+  final pulumi.Input<String> apiKey;
 
   /// Creates a new [GetHubGcmCredential].
   /// [apiKey] The API Key associated with the Google Cloud Messaging service.
@@ -19,7 +20,7 @@ class GetHubGcmCredential {
 
   factory GetHubGcmCredential.fromMap(Map<String, dynamic> map) {
     return GetHubGcmCredential(
-      apiKey: map['apiKey'] as String,
+      apiKey: (map['apiKey'] as String).input(),
     );
   }
 }

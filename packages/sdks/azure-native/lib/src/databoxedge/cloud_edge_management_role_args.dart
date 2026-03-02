@@ -26,17 +26,12 @@ class CloudEdgeManagementRoleArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleStatus] Role status.
   CloudEdgeManagementRoleArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleStatus,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      kind = pulumi.Input.asInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleStatus = pulumi.Input.asInput<String>(roleStatus);
+    required this.deviceName,
+    required this.kind,
+    this.name,
+    required this.resourceGroupName,
+    required this.roleStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class CloudEdgeManagementRoleArgs {
 
   factory CloudEdgeManagementRoleArgs.fromMap(Map<String, dynamic> map) {
     return CloudEdgeManagementRoleArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleStatus: pulumi.Output.create<String>(map['roleStatus'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleStatus: (map['roleStatus'] as String).input(),
     );
   }
 }

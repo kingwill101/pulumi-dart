@@ -16,11 +16,9 @@ class FunctionAppActiveSlotArgs {
   /// [overwriteNetworkConfig] The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
   /// [slotId] The ID of the Slot to swap with `Production`.
   FunctionAppActiveSlotArgs({
-    pulumi.Output<bool>? overwriteNetworkConfig,
-    required pulumi.Output<String> slotId,
-  }) :
-      overwriteNetworkConfig = pulumi.Input.asOptionalInput<bool>(overwriteNetworkConfig),
-      slotId = pulumi.Input.asInput<String>(slotId);
+    this.overwriteNetworkConfig,
+    required this.slotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FunctionAppActiveSlotArgs {
 
   factory FunctionAppActiveSlotArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppActiveSlotArgs(
-      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : pulumi.Output.create<bool>(map['overwriteNetworkConfig'] as bool),
-      slotId: pulumi.Output.create<String>(map['slotId'] as String),
+      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig'] as bool).input(),
+      slotId: (map['slotId'] as String).input(),
     );
   }
 }

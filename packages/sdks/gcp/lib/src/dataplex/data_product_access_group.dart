@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_product_access_group_principal.dart';
 
 class DataProductAccessGroup {
   /// Description of the access group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// User friendly display name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Unique identifier of the access group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The identifier for this object. Format specified above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The principal entity.
   /// Structure is documented below.
-  final DataProductAccessGroupPrincipal principal;
+  final pulumi.Input<DataProductAccessGroupPrincipal> principal;
 
   /// Creates a new [DataProductAccessGroup].
   /// [description] Description of the access group.
@@ -35,17 +36,17 @@ class DataProductAccessGroup {
       'displayName': displayName,
       'groupId': groupId,
       'id': id,
-      'principal': principal.toMap(),
+      'principal': pulumi.Input.mapInputValue<DataProductAccessGroupPrincipal, Map<String, dynamic>>(principal, (value) => value.toMap()),
     };
   }
 
   factory DataProductAccessGroup.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroup(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      principal: DataProductAccessGroupPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      principal: (DataProductAccessGroupPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'action_group_response.dart';
 /// A list of Activity Log Alert rule actions.
 class ActionListResponse {
   /// The list of the Action Groups.
-  final List<ActionGroupResponse>? actionGroups;
+  final pulumi.Input<List<ActionGroupResponse>>? actionGroups;
 
   /// Creates a new [ActionListResponse].
   /// [actionGroups] The list of the Action Groups.
@@ -16,13 +16,13 @@ class ActionListResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionGroups': ?actionGroups == null ? null : pulumi.Input.encodeList<ActionGroupResponse, Map<String, dynamic>>(actionGroups!, (value) => value.toMap()),
+      'actionGroups': ?pulumi.Input.mapOptionalInputValue<List<ActionGroupResponse>, List<Map<String, dynamic>>>(actionGroups, (value) => pulumi.Input.encodeList<ActionGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ActionListResponse.fromMap(Map<String, dynamic> map) {
     return ActionListResponse(
-      actionGroups: map['actionGroups'] == null ? null : pulumi.Input.decodeList<ActionGroupResponse>(map['actionGroups'], (value) => ActionGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actionGroups: map['actionGroups'] == null ? null : (pulumi.Input.decodeList<ActionGroupResponse>(map['actionGroups'], (value) => ActionGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

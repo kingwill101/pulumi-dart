@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Git integration settings
 class WorkspaceRepositoryConfigurationResponse {
   /// Account name
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Collaboration branch
-  final String? collaborationBranch;
+  final pulumi.Input<String>? collaborationBranch;
   /// GitHub Enterprise host name. For example: `https://github.mydomain.com`
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// The last commit ID
-  final String? lastCommitId;
+  final pulumi.Input<String>? lastCommitId;
   /// VSTS project name
-  final String? projectName;
+  final pulumi.Input<String>? projectName;
   /// Repository name
-  final String? repositoryName;
+  final pulumi.Input<String>? repositoryName;
   /// Root folder to use in the repository
-  final String? rootFolder;
+  final pulumi.Input<String>? rootFolder;
   /// The VSTS tenant ID
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkspaceRepositoryConfigurationResponse].
   /// [accountName] Account name
@@ -60,15 +61,15 @@ class WorkspaceRepositoryConfigurationResponse {
 
   factory WorkspaceRepositoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceRepositoryConfigurationResponse(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      collaborationBranch: map['collaborationBranch'] == null ? null : map['collaborationBranch'] as String,
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      lastCommitId: map['lastCommitId'] == null ? null : map['lastCommitId'] as String,
-      projectName: map['projectName'] == null ? null : map['projectName'] as String,
-      repositoryName: map['repositoryName'] == null ? null : map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] == null ? null : map['rootFolder'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      collaborationBranch: map['collaborationBranch'] == null ? null : (map['collaborationBranch'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      rootFolder: map['rootFolder'] == null ? null : (map['rootFolder'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VPC
 class VPC {
   /// *Private hosted zones only:* The ID of an Amazon VPC.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// *Private hosted zones only:* The region that an Amazon VPC was created in.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
-  final String? vpcRegion;
+  final pulumi.Input<String>? vpcRegion;
 
   /// Creates a new [VPC].
   /// [vpcId] *Private hosted zones only:* The ID of an Amazon VPC.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
@@ -25,8 +26,8 @@ class VPC {
 
   factory VPC.fromMap(Map<String, dynamic> map) {
     return VPC(
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vpcRegion: map['vpcRegion'] == null ? null : map['vpcRegion'] as String,
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
     );
   }
 }

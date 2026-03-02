@@ -31,23 +31,15 @@ class HostedConfigurationVersionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [versionNumber] Version number of the hosted configuration.
   HostedConfigurationVersionState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? configurationProfileId,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? versionNumber,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configurationProfileId = pulumi.Input.asOptionalInput<String>(configurationProfileId),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      versionNumber = pulumi.Input.asOptionalInput<int>(versionNumber);
+    this.applicationId,
+    this.arn,
+    this.configurationProfileId,
+    this.content,
+    this.contentType,
+    this.description,
+    this.region,
+    this.versionNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class HostedConfigurationVersionState {
 
   factory HostedConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configurationProfileId: map['configurationProfileId'] == null ? null : pulumi.Output.create<String>(map['configurationProfileId'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      versionNumber: map['versionNumber'] == null ? null : pulumi.Output.create<int>(map['versionNumber'] as int),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configurationProfileId: map['configurationProfileId'] == null ? null : (map['configurationProfileId'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
     );
   }
 }

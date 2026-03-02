@@ -52,35 +52,21 @@ class ScheduledActionArgs {
   /// [viewId] The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   /// [weeksOfMonths] Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `days_of_week`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
   ScheduledActionArgs({
-    pulumi.Output<int>? dayOfMonth,
-    pulumi.Output<List<String>>? daysOfWeeks,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> emailAddressSender,
-    required pulumi.Output<List<String>> emailAddresses,
-    required pulumi.Output<String> emailSubject,
-    required pulumi.Output<String> endDate,
-    required pulumi.Output<String> frequency,
-    pulumi.Output<int>? hourOfDay,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> startDate,
-    required pulumi.Output<String> viewId,
-    pulumi.Output<List<String>>? weeksOfMonths,
-  }) :
-      dayOfMonth = pulumi.Input.asOptionalInput<int>(dayOfMonth),
-      daysOfWeeks = pulumi.Input.asOptionalInput<List<String>>(daysOfWeeks),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      emailAddressSender = pulumi.Input.asInput<String>(emailAddressSender),
-      emailAddresses = pulumi.Input.asInput<List<String>>(emailAddresses),
-      emailSubject = pulumi.Input.asInput<String>(emailSubject),
-      endDate = pulumi.Input.asInput<String>(endDate),
-      frequency = pulumi.Input.asInput<String>(frequency),
-      hourOfDay = pulumi.Input.asOptionalInput<int>(hourOfDay),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startDate = pulumi.Input.asInput<String>(startDate),
-      viewId = pulumi.Input.asInput<String>(viewId),
-      weeksOfMonths = pulumi.Input.asOptionalInput<List<String>>(weeksOfMonths);
+    this.dayOfMonth,
+    this.daysOfWeeks,
+    required this.displayName,
+    required this.emailAddressSender,
+    required this.emailAddresses,
+    required this.emailSubject,
+    required this.endDate,
+    required this.frequency,
+    this.hourOfDay,
+    this.message,
+    this.name,
+    required this.startDate,
+    required this.viewId,
+    this.weeksOfMonths,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      dayOfMonth: map['dayOfMonth'] == null ? null : pulumi.Output.create<int>(map['dayOfMonth'] as int),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : pulumi.Output.create<List<String>>((map['daysOfWeeks'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      emailAddressSender: pulumi.Output.create<String>(map['emailAddressSender'] as String),
-      emailAddresses: pulumi.Output.create<List<String>>((map['emailAddresses'] as List).cast<String>()),
-      emailSubject: pulumi.Output.create<String>(map['emailSubject'] as String),
-      endDate: pulumi.Output.create<String>(map['endDate'] as String),
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      hourOfDay: map['hourOfDay'] == null ? null : pulumi.Output.create<int>(map['hourOfDay'] as int),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startDate: pulumi.Output.create<String>(map['startDate'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : pulumi.Output.create<List<String>>((map['weeksOfMonths'] as List).cast<String>()),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      emailAddressSender: (map['emailAddressSender'] as String).input(),
+      emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
+      endDate: (map['endDate'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startDate: (map['startDate'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<String>()).input(),
     );
   }
 }

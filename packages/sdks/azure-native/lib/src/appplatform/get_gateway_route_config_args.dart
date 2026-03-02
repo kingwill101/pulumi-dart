@@ -22,15 +22,11 @@ class GetGatewayRouteConfigArgs {
   /// [routeConfigName] The name of the Spring Cloud Gateway route config.
   /// [serviceName] The name of the Service resource.
   GetGatewayRouteConfigArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> routeConfigName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeConfigName = pulumi.Input.asInput<String>(routeConfigName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.gatewayName,
+    required this.resourceGroupName,
+    required this.routeConfigName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGatewayRouteConfigArgs {
 
   factory GetGatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteConfigArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeConfigName: pulumi.Output.create<String>(map['routeConfigName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeConfigName: (map['routeConfigName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

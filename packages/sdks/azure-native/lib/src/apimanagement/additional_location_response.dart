@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_management_service_sku_properties_response.dart';
 import 'virtual_network_configuration_response.dart';
 
 /// Description of an additional API Management resource location.
 class AdditionalLocationResponse {
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
-  final bool? disableGateway;
+  final pulumi.Input<bool>? disableGateway;
   /// Gateway URL of the API Management service in the Region.
-  final String gatewayRegionalUrl;
+  final pulumi.Input<String> gatewayRegionalUrl;
   /// The location name of the additional region among Azure Data center regions.
-  final String location;
+  final pulumi.Input<String> location;
   /// Property can be used to enable NAT Gateway for this API Management service.
-  final String? natGatewayState;
+  final pulumi.Input<String>? natGatewayState;
   /// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
-  final List<String> outboundPublicIPAddresses;
+  final pulumi.Input<List<String>> outboundPublicIPAddresses;
   /// Compute Platform Version running the service.
-  final String platformVersion;
+  final pulumi.Input<String> platformVersion;
   /// Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU.
-  final List<String> privateIPAddresses;
+  final pulumi.Input<List<String>> privateIPAddresses;
   /// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU.
-  final List<String> publicIPAddresses;
+  final pulumi.Input<List<String>> publicIPAddresses;
   /// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
-  final String? publicIpAddressId;
+  final pulumi.Input<String>? publicIpAddressId;
   /// SKU properties of the API Management service.
-  final ApiManagementServiceSkuPropertiesResponse sku;
+  final pulumi.Input<ApiManagementServiceSkuPropertiesResponse> sku;
   /// Virtual network configuration for the location.
-  final VirtualNetworkConfigurationResponse? virtualNetworkConfiguration;
+  final pulumi.Input<VirtualNetworkConfigurationResponse>? virtualNetworkConfiguration;
   /// A list of availability zones denoting where the resource needs to come from.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [AdditionalLocationResponse].
   /// [disableGateway] Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
@@ -69,26 +70,26 @@ class AdditionalLocationResponse {
       'privateIPAddresses': privateIPAddresses,
       'publicIPAddresses': publicIPAddresses,
       'publicIpAddressId': ?publicIpAddressId,
-      'sku': sku.toMap(),
-      'virtualNetworkConfiguration': ?virtualNetworkConfiguration == null ? null : virtualNetworkConfiguration!.toMap(),
+      'sku': pulumi.Input.mapInputValue<ApiManagementServiceSkuPropertiesResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'virtualNetworkConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkConfigurationResponse, Map<String, dynamic>>(virtualNetworkConfiguration, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory AdditionalLocationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalLocationResponse(
-      disableGateway: map['disableGateway'] == null ? null : map['disableGateway'] as bool,
-      gatewayRegionalUrl: map['gatewayRegionalUrl'] as String,
-      location: map['location'] as String,
-      natGatewayState: map['natGatewayState'] == null ? null : map['natGatewayState'] as String,
-      outboundPublicIPAddresses: (map['outboundPublicIPAddresses'] as List).cast<String>(),
-      platformVersion: map['platformVersion'] as String,
-      privateIPAddresses: (map['privateIPAddresses'] as List).cast<String>(),
-      publicIPAddresses: (map['publicIPAddresses'] as List).cast<String>(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : map['publicIpAddressId'] as String,
-      sku: ApiManagementServiceSkuPropertiesResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : VirtualNetworkConfigurationResponse.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      disableGateway: map['disableGateway'] == null ? null : (map['disableGateway'] as bool).input(),
+      gatewayRegionalUrl: (map['gatewayRegionalUrl'] as String).input(),
+      location: (map['location'] as String).input(),
+      natGatewayState: map['natGatewayState'] == null ? null : (map['natGatewayState'] as String).input(),
+      outboundPublicIPAddresses: ((map['outboundPublicIPAddresses'] as List).cast<String>()).input(),
+      platformVersion: (map['platformVersion'] as String).input(),
+      privateIPAddresses: ((map['privateIPAddresses'] as List).cast<String>()).input(),
+      publicIPAddresses: ((map['publicIPAddresses'] as List).cast<String>()).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      sku: (ApiManagementServiceSkuPropertiesResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (VirtualNetworkConfigurationResponse.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

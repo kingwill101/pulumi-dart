@@ -41,23 +41,15 @@ class EngineModelArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [regions] The list of regions where the model is going to be deployed.
   EngineModelArgs({
-    pulumi.Output<EngineModelDefaultVersion>? defaultVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? onlinePredictionConsoleLogging,
-    pulumi.Output<bool>? onlinePredictionLogging,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? regions,
-  }) :
-      defaultVersion = pulumi.Input.asOptionalInput<EngineModelDefaultVersion>(defaultVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      onlinePredictionConsoleLogging = pulumi.Input.asOptionalInput<bool>(onlinePredictionConsoleLogging),
-      onlinePredictionLogging = pulumi.Input.asOptionalInput<bool>(onlinePredictionLogging),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regions = pulumi.Input.asOptionalInput<String>(regions);
+    this.defaultVersion,
+    this.description,
+    this.labels,
+    this.name,
+    this.onlinePredictionConsoleLogging,
+    this.onlinePredictionLogging,
+    this.project,
+    this.regions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class EngineModelArgs {
 
   factory EngineModelArgs.fromMap(Map<String, dynamic> map) {
     return EngineModelArgs(
-      defaultVersion: map['defaultVersion'] == null ? null : pulumi.Output.create<EngineModelDefaultVersion>(EngineModelDefaultVersion.fromMap((map['defaultVersion'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : pulumi.Output.create<bool>(map['onlinePredictionConsoleLogging'] as bool),
-      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : pulumi.Output.create<bool>(map['onlinePredictionLogging'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<String>(map['regions'] as String),
+      defaultVersion: map['defaultVersion'] == null ? null : (EngineModelDefaultVersion.fromMap((map['defaultVersion'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      onlinePredictionConsoleLogging: map['onlinePredictionConsoleLogging'] == null ? null : (map['onlinePredictionConsoleLogging'] as bool).input(),
+      onlinePredictionLogging: map['onlinePredictionLogging'] == null ? null : (map['onlinePredictionLogging'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regions: map['regions'] == null ? null : (map['regions'] as String).input(),
     );
   }
 }

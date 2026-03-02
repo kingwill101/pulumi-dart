@@ -37,27 +37,17 @@ class HybridRunbookWorkerState {
   /// [workerName] The name of HybridWorker.
   /// [workerType] The type of the HybridWorker, the possible values are `HybridV1` and `HybridV2`.
   HybridRunbookWorkerState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<String>? ip,
-    pulumi.Output<String>? lastSeenDateTime,
-    pulumi.Output<String>? registrationDateTime,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? vmResourceId,
-    pulumi.Output<String>? workerGroupName,
-    pulumi.Output<String>? workerId,
-    pulumi.Output<String>? workerName,
-    pulumi.Output<String>? workerType,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      ip = pulumi.Input.asOptionalInput<String>(ip),
-      lastSeenDateTime = pulumi.Input.asOptionalInput<String>(lastSeenDateTime),
-      registrationDateTime = pulumi.Input.asOptionalInput<String>(registrationDateTime),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      vmResourceId = pulumi.Input.asOptionalInput<String>(vmResourceId),
-      workerGroupName = pulumi.Input.asOptionalInput<String>(workerGroupName),
-      workerId = pulumi.Input.asOptionalInput<String>(workerId),
-      workerName = pulumi.Input.asOptionalInput<String>(workerName),
-      workerType = pulumi.Input.asOptionalInput<String>(workerType);
+    this.automationAccountName,
+    this.ip,
+    this.lastSeenDateTime,
+    this.registrationDateTime,
+    this.resourceGroupName,
+    this.vmResourceId,
+    this.workerGroupName,
+    this.workerId,
+    this.workerName,
+    this.workerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class HybridRunbookWorkerState {
 
   factory HybridRunbookWorkerState.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      ip: map['ip'] == null ? null : pulumi.Output.create<String>(map['ip'] as String),
-      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : pulumi.Output.create<String>(map['lastSeenDateTime'] as String),
-      registrationDateTime: map['registrationDateTime'] == null ? null : pulumi.Output.create<String>(map['registrationDateTime'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmResourceId: map['vmResourceId'] == null ? null : pulumi.Output.create<String>(map['vmResourceId'] as String),
-      workerGroupName: map['workerGroupName'] == null ? null : pulumi.Output.create<String>(map['workerGroupName'] as String),
-      workerId: map['workerId'] == null ? null : pulumi.Output.create<String>(map['workerId'] as String),
-      workerName: map['workerName'] == null ? null : pulumi.Output.create<String>(map['workerName'] as String),
-      workerType: map['workerType'] == null ? null : pulumi.Output.create<String>(map['workerType'] as String),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : (map['lastSeenDateTime'] as String).input(),
+      registrationDateTime: map['registrationDateTime'] == null ? null : (map['registrationDateTime'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId'] as String).input(),
+      workerGroupName: map['workerGroupName'] == null ? null : (map['workerGroupName'] as String).input(),
+      workerId: map['workerId'] == null ? null : (map['workerId'] as String).input(),
+      workerName: map['workerName'] == null ? null : (map['workerName'] as String).input(),
+      workerType: map['workerType'] == null ? null : (map['workerType'] as String).input(),
     );
   }
 }

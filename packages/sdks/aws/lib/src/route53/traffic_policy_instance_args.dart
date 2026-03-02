@@ -25,17 +25,12 @@ class TrafficPolicyInstanceArgs {
   /// [trafficPolicyVersion] Version of the traffic policy
   /// [ttl] TTL that you want Amazon Route 53 to assign to all the resource record sets that it creates in the specified hosted zone.
   TrafficPolicyInstanceArgs({
-    required pulumi.Output<String> hostedZoneId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> trafficPolicyId,
-    required pulumi.Output<int> trafficPolicyVersion,
-    required pulumi.Output<int> ttl,
-  }) :
-      hostedZoneId = pulumi.Input.asInput<String>(hostedZoneId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      trafficPolicyId = pulumi.Input.asInput<String>(trafficPolicyId),
-      trafficPolicyVersion = pulumi.Input.asInput<int>(trafficPolicyVersion),
-      ttl = pulumi.Input.asInput<int>(ttl);
+    required this.hostedZoneId,
+    this.name,
+    required this.trafficPolicyId,
+    required this.trafficPolicyVersion,
+    required this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TrafficPolicyInstanceArgs {
 
   factory TrafficPolicyInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyInstanceArgs(
-      hostedZoneId: pulumi.Output.create<String>(map['hostedZoneId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      trafficPolicyId: pulumi.Output.create<String>(map['trafficPolicyId'] as String),
-      trafficPolicyVersion: pulumi.Output.create<int>(map['trafficPolicyVersion'] as int),
-      ttl: pulumi.Output.create<int>(map['ttl'] as int),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      trafficPolicyId: (map['trafficPolicyId'] as String).input(),
+      trafficPolicyVersion: (map['trafficPolicyVersion'] as int).input(),
+      ttl: (map['ttl'] as int).input(),
     );
   }
 }

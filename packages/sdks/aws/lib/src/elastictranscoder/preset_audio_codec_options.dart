@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PresetAudioCodecOptions {
   /// The bit depth of a sample is how many bits of information are included in the audio samples. Valid values are `16` and `24`. (FLAC/PCM Only)
-  final String? bitDepth;
+  final pulumi.Input<String>? bitDepth;
   /// The order the bits of a PCM sample are stored in. The supported value is LittleEndian. (PCM Only)
-  final String? bitOrder;
+  final pulumi.Input<String>? bitOrder;
   /// If you specified AAC for Audio:Codec, choose the AAC profile for the output file.
-  final String? profile;
+  final pulumi.Input<String>? profile;
   /// Whether audio samples are represented with negative and positive numbers (signed) or only positive numbers (unsigned). The supported value is Signed. (PCM Only)
-  final String? signed;
+  final pulumi.Input<String>? signed;
 
   /// Creates a new [PresetAudioCodecOptions].
   /// [bitDepth] The bit depth of a sample is how many bits of information are included in the audio samples. Valid values are `16` and `24`. (FLAC/PCM Only)
@@ -34,10 +35,10 @@ class PresetAudioCodecOptions {
 
   factory PresetAudioCodecOptions.fromMap(Map<String, dynamic> map) {
     return PresetAudioCodecOptions(
-      bitDepth: map['bitDepth'] == null ? null : map['bitDepth'] as String,
-      bitOrder: map['bitOrder'] == null ? null : map['bitOrder'] as String,
-      profile: map['profile'] == null ? null : map['profile'] as String,
-      signed: map['signed'] == null ? null : map['signed'] as String,
+      bitDepth: map['bitDepth'] == null ? null : (map['bitDepth'] as String).input(),
+      bitOrder: map['bitOrder'] == null ? null : (map['bitOrder'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      signed: map['signed'] == null ? null : (map['signed'] as String).input(),
     );
   }
 }

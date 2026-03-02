@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'patch_deployment_rollout_disruption_budget.dart';
 
 class PatchDeploymentRollout {
@@ -9,10 +10,10 @@ class PatchDeploymentRollout {
   /// For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
   /// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
   /// Structure is documented below.
-  final PatchDeploymentRolloutDisruptionBudget disruptionBudget;
+  final pulumi.Input<PatchDeploymentRolloutDisruptionBudget> disruptionBudget;
   /// Mode of the patch rollout.
   /// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [PatchDeploymentRollout].
   /// [disruptionBudget] The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
@@ -24,15 +25,15 @@ class PatchDeploymentRollout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disruptionBudget': disruptionBudget.toMap(),
+      'disruptionBudget': pulumi.Input.mapInputValue<PatchDeploymentRolloutDisruptionBudget, Map<String, dynamic>>(disruptionBudget, (value) => value.toMap()),
       'mode': mode,
     };
   }
 
   factory PatchDeploymentRollout.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRollout(
-      disruptionBudget: PatchDeploymentRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] as String,
+      disruptionBudget: (PatchDeploymentRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>())).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

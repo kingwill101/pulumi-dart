@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dbbackup_policy_properties_response.dart';
 import 'existing_recovery_services_vault_response.dart';
 
 /// Defines the SQL Backup data for a virtual instance for SAP.
 class SqlBackupDataResponse {
   /// Defines the policy properties for database backup.
-  final DBBackupPolicyPropertiesResponse backupPolicy;
+  final pulumi.Input<DBBackupPolicyPropertiesResponse> backupPolicy;
   /// The type of backup, VM, SQL or HANA.
   /// Expected value is 'SQL'.
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The properties of the recovery services vault used for backup.
-  final ExistingRecoveryServicesVaultResponse recoveryServicesVault;
+  final pulumi.Input<ExistingRecoveryServicesVaultResponse> recoveryServicesVault;
 
   /// Creates a new [SqlBackupDataResponse].
   /// [backupPolicy] Defines the policy properties for database backup.
@@ -25,17 +26,17 @@ class SqlBackupDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupPolicy': backupPolicy.toMap(),
+      'backupPolicy': pulumi.Input.mapInputValue<DBBackupPolicyPropertiesResponse, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
       'backupType': backupType,
-      'recoveryServicesVault': recoveryServicesVault.toMap(),
+      'recoveryServicesVault': pulumi.Input.mapInputValue<ExistingRecoveryServicesVaultResponse, Map<String, dynamic>>(recoveryServicesVault, (value) => value.toMap()),
     };
   }
 
   factory SqlBackupDataResponse.fromMap(Map<String, dynamic> map) {
     return SqlBackupDataResponse(
-      backupPolicy: DBBackupPolicyPropertiesResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>()),
-      backupType: map['backupType'] as String,
-      recoveryServicesVault: ExistingRecoveryServicesVaultResponse.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>()),
+      backupPolicy: (DBBackupPolicyPropertiesResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      backupType: (map['backupType'] as String).input(),
+      recoveryServicesVault: (ExistingRecoveryServicesVaultResponse.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

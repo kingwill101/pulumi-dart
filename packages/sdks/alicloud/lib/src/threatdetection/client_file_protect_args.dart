@@ -34,23 +34,15 @@ class ClientFileProtectArgs {
   /// [status] rule status 0 is disable 1 is enable.
   /// [switchId] switch id.
   ClientFileProtectArgs({
-    pulumi.Output<int>? alertLevel,
-    required pulumi.Output<List<String>> fileOps,
-    required pulumi.Output<List<String>> filePaths,
-    required pulumi.Output<List<String>> procPaths,
-    required pulumi.Output<String> ruleAction,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<int>? status,
-    pulumi.Output<String>? switchId,
-  }) :
-      alertLevel = pulumi.Input.asOptionalInput<int>(alertLevel),
-      fileOps = pulumi.Input.asInput<List<String>>(fileOps),
-      filePaths = pulumi.Input.asInput<List<String>>(filePaths),
-      procPaths = pulumi.Input.asInput<List<String>>(procPaths),
-      ruleAction = pulumi.Input.asInput<String>(ruleAction),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      switchId = pulumi.Input.asOptionalInput<String>(switchId);
+    this.alertLevel,
+    required this.fileOps,
+    required this.filePaths,
+    required this.procPaths,
+    required this.ruleAction,
+    required this.ruleName,
+    this.status,
+    this.switchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ClientFileProtectArgs {
 
   factory ClientFileProtectArgs.fromMap(Map<String, dynamic> map) {
     return ClientFileProtectArgs(
-      alertLevel: map['alertLevel'] == null ? null : pulumi.Output.create<int>(map['alertLevel'] as int),
-      fileOps: pulumi.Output.create<List<String>>((map['fileOps'] as List).cast<String>()),
-      filePaths: pulumi.Output.create<List<String>>((map['filePaths'] as List).cast<String>()),
-      procPaths: pulumi.Output.create<List<String>>((map['procPaths'] as List).cast<String>()),
-      ruleAction: pulumi.Output.create<String>(map['ruleAction'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      switchId: map['switchId'] == null ? null : pulumi.Output.create<String>(map['switchId'] as String),
+      alertLevel: map['alertLevel'] == null ? null : (map['alertLevel'] as int).input(),
+      fileOps: ((map['fileOps'] as List).cast<String>()).input(),
+      filePaths: ((map['filePaths'] as List).cast<String>()).input(),
+      procPaths: ((map['procPaths'] as List).cast<String>()).input(),
+      ruleAction: (map['ruleAction'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      switchId: map['switchId'] == null ? null : (map['switchId'] as String).input(),
     );
   }
 }

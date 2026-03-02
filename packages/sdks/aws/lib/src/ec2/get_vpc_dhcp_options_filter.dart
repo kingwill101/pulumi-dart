@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcDhcpOptionsFilter {
   /// Name of the field to filter.
-  final String name;
+  final pulumi.Input<String> name;
   /// Set of values for filtering.
   ///
   /// For more information about filtering, see the [EC2 API documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html).
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetVpcDhcpOptionsFilter].
   /// [name] Name of the field to filter.
@@ -26,8 +27,8 @@ class GetVpcDhcpOptionsFilter {
 
   factory GetVpcDhcpOptionsFilter.fromMap(Map<String, dynamic> map) {
     return GetVpcDhcpOptionsFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

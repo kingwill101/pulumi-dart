@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of static CIDR resource.
 class StaticCidrProperties {
   /// List of IP address prefixes of the resource.
-  final List<String>? addressPrefixes;
-  final String? description;
+  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<String>? description;
   /// Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
-  final String? numberOfIPAddressesToAllocate;
+  final pulumi.Input<String>? numberOfIPAddressesToAllocate;
 
   /// Creates a new [StaticCidrProperties].
   /// [addressPrefixes] List of IP address prefixes of the resource.
@@ -29,9 +30,9 @@ class StaticCidrProperties {
 
   factory StaticCidrProperties.fromMap(Map<String, dynamic> map) {
     return StaticCidrProperties(
-      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      numberOfIPAddressesToAllocate: map['numberOfIPAddressesToAllocate'] == null ? null : map['numberOfIPAddressesToAllocate'] as String,
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      numberOfIPAddressesToAllocate: map['numberOfIPAddressesToAllocate'] == null ? null : (map['numberOfIPAddressesToAllocate'] as String).input(),
     );
   }
 }

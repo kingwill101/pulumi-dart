@@ -38,25 +38,16 @@ class TableArgs {
   /// [project] Optional.
   /// [tableId] The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
   TableArgs({
-    pulumi.Output<ChangeStreamConfig>? changeStreamConfig,
-    pulumi.Output<Map<String, String>>? columnFamilies,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<TableGranularity>? granularity,
-    pulumi.Output<List<Split>>? initialSplits,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tableId,
-  }) :
-      changeStreamConfig = pulumi.Input.asOptionalInput<ChangeStreamConfig>(changeStreamConfig),
-      columnFamilies = pulumi.Input.asOptionalInput<Map<String, String>>(columnFamilies),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      granularity = pulumi.Input.asOptionalInput<TableGranularity>(granularity),
-      initialSplits = pulumi.Input.asOptionalInput<List<Split>>(initialSplits),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+    this.changeStreamConfig,
+    this.columnFamilies,
+    this.deletionProtection,
+    this.granularity,
+    this.initialSplits,
+    required this.instanceId,
+    this.name,
+    this.project,
+    required this.tableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      changeStreamConfig: map['changeStreamConfig'] == null ? null : pulumi.Output.create<ChangeStreamConfig>(ChangeStreamConfig.fromMap((map['changeStreamConfig'] as Map).cast<String, dynamic>())),
-      columnFamilies: map['columnFamilies'] == null ? null : pulumi.Output.create<Map<String, String>>((map['columnFamilies'] as Map).cast<String, String>()),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      granularity: map['granularity'] == null ? null : pulumi.Output.create<TableGranularity>(TableGranularity.fromValue(map['granularity'] as String)),
-      initialSplits: map['initialSplits'] == null ? null : pulumi.Output.create<List<Split>>(pulumi.Input.decodeList<Split>(map['initialSplits'], (value) => Split.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tableId: pulumi.Output.create<String>(map['tableId'] as String),
+      changeStreamConfig: map['changeStreamConfig'] == null ? null : (ChangeStreamConfig.fromMap((map['changeStreamConfig'] as Map).cast<String, dynamic>())).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : ((map['columnFamilies'] as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      granularity: map['granularity'] == null ? null : (TableGranularity.fromValue(map['granularity'] as String)).input(),
+      initialSplits: map['initialSplits'] == null ? null : (pulumi.Input.decodeList<Split>(map['initialSplits'], (value) => Split.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

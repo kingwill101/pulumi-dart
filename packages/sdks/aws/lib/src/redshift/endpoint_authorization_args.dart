@@ -25,17 +25,12 @@ class EndpointAuthorizationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcIds] The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   EndpointAuthorizationArgs({
-    required pulumi.Output<String> account,
-    required pulumi.Output<String> clusterIdentifier,
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? vpcIds,
-  }) :
-      account = pulumi.Input.asInput<String>(account),
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds);
+    required this.account,
+    required this.clusterIdentifier,
+    this.forceDelete,
+    this.region,
+    this.vpcIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EndpointAuthorizationArgs {
 
   factory EndpointAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAuthorizationArgs(
-      account: pulumi.Output.create<String>(map['account'] as String),
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
+      account: (map['account'] as String).input(),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -6,23 +6,23 @@ import 'configuration_parameter.dart';
 /// Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
 class GuestConfigurationNavigation {
   /// Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
-  final String? assignmentType;
+  final pulumi.Input<String>? assignmentType;
   /// The configuration parameters for the guest configuration.
-  final List<ConfigurationParameter>? configurationParameter;
+  final pulumi.Input<List<ConfigurationParameter>>? configurationParameter;
   /// The protected configuration parameters for the guest configuration.
-  final List<ConfigurationParameter>? configurationProtectedParameter;
+  final pulumi.Input<List<ConfigurationParameter>>? configurationProtectedParameter;
   /// Combined hash of the guest configuration package and configuration parameters.
-  final String? contentHash;
+  final pulumi.Input<String>? contentHash;
   /// Managed identity with storage access of the guest configuration package and configuration parameters.
-  final String? contentManagedIdentity;
+  final pulumi.Input<String>? contentManagedIdentity;
   /// Uri of the storage where guest configuration package is uploaded.
-  final String? contentUri;
+  final pulumi.Input<String>? contentUri;
   /// Kind of the guest configuration. For example:DSC
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Name of the guest configuration.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Version of the guest configuration.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [GuestConfigurationNavigation].
   /// [assignmentType] Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
@@ -49,8 +49,8 @@ class GuestConfigurationNavigation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assignmentType': ?assignmentType,
-      'configurationParameter': ?configurationParameter == null ? null : pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(configurationParameter!, (value) => value.toMap()),
-      'configurationProtectedParameter': ?configurationProtectedParameter == null ? null : pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(configurationProtectedParameter!, (value) => value.toMap()),
+      'configurationParameter': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationParameter>, List<Map<String, dynamic>>>(configurationParameter, (value) => pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configurationProtectedParameter': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationParameter>, List<Map<String, dynamic>>>(configurationProtectedParameter, (value) => pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'contentHash': ?contentHash,
       'contentManagedIdentity': ?contentManagedIdentity,
       'contentUri': ?contentUri,
@@ -62,15 +62,15 @@ class GuestConfigurationNavigation {
 
   factory GuestConfigurationNavigation.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationNavigation(
-      assignmentType: map['assignmentType'] == null ? null : map['assignmentType'] as String,
-      configurationParameter: map['configurationParameter'] == null ? null : pulumi.Input.decodeList<ConfigurationParameter>(map['configurationParameter'], (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>())),
-      configurationProtectedParameter: map['configurationProtectedParameter'] == null ? null : pulumi.Input.decodeList<ConfigurationParameter>(map['configurationProtectedParameter'], (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>())),
-      contentHash: map['contentHash'] == null ? null : map['contentHash'] as String,
-      contentManagedIdentity: map['contentManagedIdentity'] == null ? null : map['contentManagedIdentity'] as String,
-      contentUri: map['contentUri'] == null ? null : map['contentUri'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
+      configurationParameter: map['configurationParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameter>(map['configurationParameter'], (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationProtectedParameter: map['configurationProtectedParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameter>(map['configurationProtectedParameter'], (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
+      contentManagedIdentity: map['contentManagedIdentity'] == null ? null : (map['contentManagedIdentity'] as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

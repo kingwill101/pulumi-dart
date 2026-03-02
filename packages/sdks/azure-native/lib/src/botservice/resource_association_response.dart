@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about resource association
 class ResourceAssociationResponse {
   /// Access Mode of the resource association
-  final String? accessMode;
+  final pulumi.Input<String>? accessMode;
   /// Name of the resource association
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ResourceAssociationResponse].
   /// [accessMode] Access Mode of the resource association
@@ -25,8 +26,8 @@ class ResourceAssociationResponse {
 
   factory ResourceAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationResponse(
-      accessMode: map['accessMode'] == null ? null : map['accessMode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

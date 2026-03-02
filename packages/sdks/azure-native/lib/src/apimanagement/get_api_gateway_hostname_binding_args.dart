@@ -19,13 +19,10 @@ class GetApiGatewayHostnameBindingArgs {
   /// [hostnameBindingName] Gateway hostname binding identifier. Must be unique in the scope of parent Gateway entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetApiGatewayHostnameBindingArgs({
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> hostnameBindingName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      hostnameBindingName = pulumi.Input.asInput<String>(hostnameBindingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.gatewayName,
+    required this.hostnameBindingName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetApiGatewayHostnameBindingArgs {
 
   factory GetApiGatewayHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayHostnameBindingArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      hostnameBindingName: pulumi.Output.create<String>(map['hostnameBindingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      hostnameBindingName: (map['hostnameBindingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

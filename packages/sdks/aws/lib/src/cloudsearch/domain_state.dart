@@ -40,27 +40,17 @@ class DomainState {
   /// [scalingParameters] Domain scaling parameters. Documented below.
   /// [searchServiceEndpoint] The service endpoint for requesting search results from a search domain.
   DomainState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? documentServiceEndpoint,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<DomainEndpointOptions>? endpointOptions,
-    pulumi.Output<List<DomainIndexField>>? indexFields,
-    pulumi.Output<bool>? multiAz,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<DomainScalingParameters>? scalingParameters,
-    pulumi.Output<String>? searchServiceEndpoint,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      documentServiceEndpoint = pulumi.Input.asOptionalInput<String>(documentServiceEndpoint),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      endpointOptions = pulumi.Input.asOptionalInput<DomainEndpointOptions>(endpointOptions),
-      indexFields = pulumi.Input.asOptionalInput<List<DomainIndexField>>(indexFields),
-      multiAz = pulumi.Input.asOptionalInput<bool>(multiAz),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingParameters = pulumi.Input.asOptionalInput<DomainScalingParameters>(scalingParameters),
-      searchServiceEndpoint = pulumi.Input.asOptionalInput<String>(searchServiceEndpoint);
+    this.arn,
+    this.documentServiceEndpoint,
+    this.domainId,
+    this.endpointOptions,
+    this.indexFields,
+    this.multiAz,
+    this.name,
+    this.region,
+    this.scalingParameters,
+    this.searchServiceEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      documentServiceEndpoint: map['documentServiceEndpoint'] == null ? null : pulumi.Output.create<String>(map['documentServiceEndpoint'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      endpointOptions: map['endpointOptions'] == null ? null : pulumi.Output.create<DomainEndpointOptions>(DomainEndpointOptions.fromMap((map['endpointOptions'] as Map).cast<String, dynamic>())),
-      indexFields: map['indexFields'] == null ? null : pulumi.Output.create<List<DomainIndexField>>(pulumi.Input.decodeList<DomainIndexField>(map['indexFields'], (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))),
-      multiAz: map['multiAz'] == null ? null : pulumi.Output.create<bool>(map['multiAz'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingParameters: map['scalingParameters'] == null ? null : pulumi.Output.create<DomainScalingParameters>(DomainScalingParameters.fromMap((map['scalingParameters'] as Map).cast<String, dynamic>())),
-      searchServiceEndpoint: map['searchServiceEndpoint'] == null ? null : pulumi.Output.create<String>(map['searchServiceEndpoint'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      documentServiceEndpoint: map['documentServiceEndpoint'] == null ? null : (map['documentServiceEndpoint'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      endpointOptions: map['endpointOptions'] == null ? null : (DomainEndpointOptions.fromMap((map['endpointOptions'] as Map).cast<String, dynamic>())).input(),
+      indexFields: map['indexFields'] == null ? null : (pulumi.Input.decodeList<DomainIndexField>(map['indexFields'], (value) => DomainIndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiAz: map['multiAz'] == null ? null : (map['multiAz'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingParameters: map['scalingParameters'] == null ? null : (DomainScalingParameters.fromMap((map['scalingParameters'] as Map).cast<String, dynamic>())).input(),
+      searchServiceEndpoint: map['searchServiceEndpoint'] == null ? null : (map['searchServiceEndpoint'] as String).input(),
     );
   }
 }

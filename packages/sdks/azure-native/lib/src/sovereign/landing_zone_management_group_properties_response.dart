@@ -6,9 +6,9 @@ import 'policy_initiative_assignment_properties_response.dart';
 /// The 'Landing Zones' management group properties..
 class LandingZoneManagementGroupPropertiesResponse {
   /// Management group name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Array of policy initiatives applied to the management group.
-  final List<PolicyInitiativeAssignmentPropertiesResponse> policyInitiativesAssignmentProperties;
+  final pulumi.Input<List<PolicyInitiativeAssignmentPropertiesResponse>> policyInitiativesAssignmentProperties;
 
   /// Creates a new [LandingZoneManagementGroupPropertiesResponse].
   /// [name] Management group name.
@@ -21,14 +21,14 @@ class LandingZoneManagementGroupPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'policyInitiativesAssignmentProperties': pulumi.Input.encodeList<PolicyInitiativeAssignmentPropertiesResponse, Map<String, dynamic>>(policyInitiativesAssignmentProperties, (value) => value.toMap()),
+      'policyInitiativesAssignmentProperties': pulumi.Input.mapInputValue<List<PolicyInitiativeAssignmentPropertiesResponse>, List<Map<String, dynamic>>>(policyInitiativesAssignmentProperties, (value) => pulumi.Input.encodeList<PolicyInitiativeAssignmentPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LandingZoneManagementGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LandingZoneManagementGroupPropertiesResponse(
-      name: map['name'] as String,
-      policyInitiativesAssignmentProperties: pulumi.Input.decodeList<PolicyInitiativeAssignmentPropertiesResponse>(map['policyInitiativesAssignmentProperties'], (value) => PolicyInitiativeAssignmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      policyInitiativesAssignmentProperties: (pulumi.Input.decodeList<PolicyInitiativeAssignmentPropertiesResponse>(map['policyInitiativesAssignmentProperties'], (value) => PolicyInitiativeAssignmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

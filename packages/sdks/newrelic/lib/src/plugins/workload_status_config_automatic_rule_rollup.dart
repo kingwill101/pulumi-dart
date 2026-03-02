@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadStatusConfigAutomaticRuleRollup {
   /// The rollup strategy that is applied to a group of entities.
-  final String strategy;
+  final pulumi.Input<String> strategy;
   /// Type of threshold defined for the rule. This is an optional field that only applies when strategy is WORST_STATUS_WINS. Use a threshold to roll up the worst status only after a certain amount of entities are not operational.
-  final String? thresholdType;
+  final pulumi.Input<String>? thresholdType;
   /// Threshold value defined for the rule. This optional field is used in combination with thresholdType. If the threshold type is null, the threshold value will be ignored.
-  final int? thresholdValue;
+  final pulumi.Input<int>? thresholdValue;
 
   /// Creates a new [WorkloadStatusConfigAutomaticRuleRollup].
   /// [strategy] The rollup strategy that is applied to a group of entities.
@@ -29,9 +30,9 @@ class WorkloadStatusConfigAutomaticRuleRollup {
 
   factory WorkloadStatusConfigAutomaticRuleRollup.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomaticRuleRollup(
-      strategy: map['strategy'] as String,
-      thresholdType: map['thresholdType'] == null ? null : map['thresholdType'] as String,
-      thresholdValue: map['thresholdValue'] == null ? null : map['thresholdValue'] as int,
+      strategy: (map['strategy'] as String).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue'] as int).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetRegionUrlMapComputeV1Args {
   /// [region] Required.
   /// [urlMap] Required.
   GetRegionUrlMapComputeV1Args({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> urlMap,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+    this.project,
+    required this.region,
+    required this.urlMap,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionUrlMapComputeV1Args {
 
   factory GetRegionUrlMapComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionUrlMapComputeV1Args(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      urlMap: pulumi.Output.create<String>(map['urlMap'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      urlMap: (map['urlMap'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KafkaClusterPrivateLinkConfigurationIpConfiguration {
   /// The name of the IP configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The private IP address of the IP configuration.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// The private IP allocation method. Possible values are `Dynamic` and `Static`.
-  final String? privateIpAllocationMethod;
+  final pulumi.Input<String>? privateIpAllocationMethod;
   /// The ID of the Subnet within the Virtual Network where the IP configuration should be provisioned.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [KafkaClusterPrivateLinkConfigurationIpConfiguration].
   /// [name] The name of the IP configuration.
@@ -39,11 +40,11 @@ class KafkaClusterPrivateLinkConfigurationIpConfiguration {
 
   factory KafkaClusterPrivateLinkConfigurationIpConfiguration.fromMap(Map<String, dynamic> map) {
     return KafkaClusterPrivateLinkConfigurationIpConfiguration(
-      name: map['name'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : map['privateIpAllocationMethod'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

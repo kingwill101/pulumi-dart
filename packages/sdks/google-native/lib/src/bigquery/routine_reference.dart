@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutineReference {
   /// The ID of the dataset containing this routine.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the project containing this routine.
-  final String project;
+  final pulumi.Input<String> project;
   /// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-  final String routineId;
+  final pulumi.Input<String> routineId;
 
   /// Creates a new [RoutineReference].
   /// [datasetId] The ID of the dataset containing this routine.
@@ -29,9 +30,9 @@ class RoutineReference {
 
   factory RoutineReference.fromMap(Map<String, dynamic> map) {
     return RoutineReference(
-      datasetId: map['datasetId'] as String,
-      project: map['project'] as String,
-      routineId: map['routineId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      project: (map['project'] as String).input(),
+      routineId: (map['routineId'] as String).input(),
     );
   }
 }

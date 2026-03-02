@@ -19,13 +19,10 @@ class ChannelPartnerLinkArgs {
   /// [linkState] State of the channel partner link.
   /// [resellerCloudIdentityId] Cloud Identity ID of the linked reseller.
   ChannelPartnerLinkArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<ChannelPartnerLinkLinkState> linkState,
-    required pulumi.Output<String> resellerCloudIdentityId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      linkState = pulumi.Input.asInput<ChannelPartnerLinkLinkState>(linkState),
-      resellerCloudIdentityId = pulumi.Input.asInput<String>(resellerCloudIdentityId);
+    required this.accountId,
+    required this.linkState,
+    required this.resellerCloudIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ChannelPartnerLinkArgs {
 
   factory ChannelPartnerLinkArgs.fromMap(Map<String, dynamic> map) {
     return ChannelPartnerLinkArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      linkState: pulumi.Output.create<ChannelPartnerLinkLinkState>(ChannelPartnerLinkLinkState.fromValue(map['linkState'] as String)),
-      resellerCloudIdentityId: pulumi.Output.create<String>(map['resellerCloudIdentityId'] as String),
+      accountId: (map['accountId'] as String).input(),
+      linkState: (ChannelPartnerLinkLinkState.fromValue(map['linkState'] as String)).input(),
+      resellerCloudIdentityId: (map['resellerCloudIdentityId'] as String).input(),
     );
   }
 }

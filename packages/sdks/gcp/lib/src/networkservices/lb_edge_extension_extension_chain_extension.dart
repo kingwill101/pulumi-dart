@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LbEdgeExtensionExtensionChainExtension {
   /// Determines how the proxy behaves if the call to the extension fails or times out.
@@ -8,22 +9,22 @@ class LbEdgeExtensionExtensionChainExtension {
   /// When set to FALSE: * If response headers have not been delivered to the downstream client,
   /// a generic 500 error is returned to the client. The error response can be tailored by
   /// configuring a custom error response in the load balancer.
-  final bool? failOpen;
+  final pulumi.Input<bool>? failOpen;
   /// List of the HTTP headers to forward to the extension (from the client or backend).
   /// If omitted, all headers are sent. Each element is a string indicating the header name.
-  final List<String>? forwardHeaders;
+  final pulumi.Input<List<String>>? forwardHeaders;
   /// The name for this extension. The name is logged as part of the HTTP request logs.
   /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
   /// and the last a letter or a number.
-  final String name;
+  final pulumi.Input<String> name;
   /// The reference to the service that runs the extension.
   /// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
   /// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
-  final String service;
+  final pulumi.Input<String> service;
   /// A set of events during request or response processing for which this extension is called.
   /// This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
-  final List<String>? supportedEvents;
+  final pulumi.Input<List<String>>? supportedEvents;
 
   /// Creates a new [LbEdgeExtensionExtensionChainExtension].
   /// [failOpen] Determines how the proxy behaves if the call to the extension fails or times out.
@@ -51,11 +52,11 @@ class LbEdgeExtensionExtensionChainExtension {
 
   factory LbEdgeExtensionExtensionChainExtension.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionExtensionChainExtension(
-      failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      forwardHeaders: map['forwardHeaders'] == null ? null : (map['forwardHeaders'] as List).cast<String>(),
-      name: map['name'] as String,
-      service: map['service'] as String,
-      supportedEvents: map['supportedEvents'] == null ? null : (map['supportedEvents'] as List).cast<String>(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
+      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
+      service: (map['service'] as String).input(),
+      supportedEvents: map['supportedEvents'] == null ? null : ((map['supportedEvents'] as List).cast<String>()).input(),
     );
   }
 }

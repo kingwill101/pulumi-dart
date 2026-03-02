@@ -6,22 +6,22 @@ import 'trigger_pipeline_reference.dart';
 /// Trigger that runs every time a custom event is received.
 class CustomEventsTrigger {
   /// List of tags that can be used for describing the trigger.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Trigger description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The list of event types that cause this trigger to fire.
-  final List<dynamic> events;
+  final pulumi.Input<List<dynamic>> events;
   /// Pipelines that need to be started.
-  final List<TriggerPipelineReference>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReference>>? pipelines;
   /// The ARM resource ID of the Azure Event Grid Topic.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final String? subjectBeginsWith;
+  final pulumi.Input<String>? subjectBeginsWith;
   /// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final String? subjectEndsWith;
+  final pulumi.Input<String>? subjectEndsWith;
   /// Trigger type.
   /// Expected value is 'CustomEventsTrigger'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CustomEventsTrigger].
   /// [annotations] List of tags that can be used for describing the trigger.
@@ -48,7 +48,7 @@ class CustomEventsTrigger {
       'annotations': ?annotations,
       'description': ?description,
       'events': events,
-      'pipelines': ?pipelines == null ? null : pulumi.Input.encodeList<TriggerPipelineReference, Map<String, dynamic>>(pipelines!, (value) => value.toMap()),
+      'pipelines': ?pulumi.Input.mapOptionalInputValue<List<TriggerPipelineReference>, List<Map<String, dynamic>>>(pipelines, (value) => pulumi.Input.encodeList<TriggerPipelineReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scope': scope,
       'subjectBeginsWith': ?subjectBeginsWith,
       'subjectEndsWith': ?subjectEndsWith,
@@ -58,14 +58,14 @@ class CustomEventsTrigger {
 
   factory CustomEventsTrigger.fromMap(Map<String, dynamic> map) {
     return CustomEventsTrigger(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      events: (map['events'] as List).cast<dynamic>(),
-      pipelines: map['pipelines'] == null ? null : pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>())),
-      scope: map['scope'] as String,
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : map['subjectBeginsWith'] as String,
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : map['subjectEndsWith'] as String,
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      events: ((map['events'] as List).cast<dynamic>()).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: (map['scope'] as String).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

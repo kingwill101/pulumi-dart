@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SloWindowsBasedSliMetricMeanInRangeRange {
   /// max value for the range (inclusive). If not given,
   /// will be set to "infinity", defining an open range
   /// ">= range.min"
-  final double? max;
+  final pulumi.Input<double>? max;
   /// Min value for the range (inclusive). If not given,
   /// will be set to "-infinity", defining an open range
   /// "< range.max"
-  final double? min;
+  final pulumi.Input<double>? min;
 
   /// Creates a new [SloWindowsBasedSliMetricMeanInRangeRange].
   /// [max] max value for the range (inclusive). If not given,
@@ -28,8 +29,8 @@ class SloWindowsBasedSliMetricMeanInRangeRange {
 
   factory SloWindowsBasedSliMetricMeanInRangeRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricMeanInRangeRange(
-      max: map['max'] == null ? null : map['max'] as double,
-      min: map['min'] == null ? null : map['min'] as double,
+      max: map['max'] == null ? null : (map['max'] as double).input(),
+      min: map['min'] == null ? null : (map['min'] as double).input(),
     );
   }
 }

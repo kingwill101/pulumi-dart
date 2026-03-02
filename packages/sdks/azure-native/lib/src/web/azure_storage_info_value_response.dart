@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Files or Blob Storage access information value for dictionary storage.
 class AzureStorageInfoValueResponse {
   /// Access key for the storage account.
-  final String? accessKey;
+  final pulumi.Input<String>? accessKey;
   /// Name of the storage account.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Path to mount the storage within the site's runtime environment.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// Mounting protocol to use for the storage account.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Name of the file share (container name, for Blob storage).
-  final String? shareName;
+  final pulumi.Input<String>? shareName;
   /// State of the storage account.
-  final String state;
+  final pulumi.Input<String> state;
   /// Type of storage.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AzureStorageInfoValueResponse].
   /// [accessKey] Access key for the storage account.
@@ -50,13 +51,13 @@ class AzureStorageInfoValueResponse {
 
   factory AzureStorageInfoValueResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValueResponse(
-      accessKey: map['accessKey'] == null ? null : map['accessKey'] as String,
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      shareName: map['shareName'] == null ? null : map['shareName'] as String,
-      state: map['state'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      state: (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

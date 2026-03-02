@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProducerImageShareGroupMembersMember {
   /// When the member was created.
-  final String created;
+  final pulumi.Input<String> created;
   /// When the member will expire.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The label of the member.
-  final String label;
+  final pulumi.Input<String> label;
   /// The ID of the Image Share Group for which to list members.
-  final int sharegroupId;
+  final pulumi.Input<int> sharegroupId;
   /// The status of the member.
-  final String status;
+  final pulumi.Input<String> status;
   /// The UUID of member's token.
-  final String tokenUuid;
+  final pulumi.Input<String> tokenUuid;
   /// When the member was last updated.
-  final String updated;
+  final pulumi.Input<String> updated;
 
   /// Creates a new [GetProducerImageShareGroupMembersMember].
   /// [created] When the member was created.
@@ -49,13 +50,13 @@ class GetProducerImageShareGroupMembersMember {
 
   factory GetProducerImageShareGroupMembersMember.fromMap(Map<String, dynamic> map) {
     return GetProducerImageShareGroupMembersMember(
-      created: map['created'] as String,
-      expiry: map['expiry'] as String,
-      label: map['label'] as String,
-      sharegroupId: map['sharegroupId'] as int,
-      status: map['status'] as String,
-      tokenUuid: map['tokenUuid'] as String,
-      updated: map['updated'] as String,
+      created: (map['created'] as String).input(),
+      expiry: (map['expiry'] as String).input(),
+      label: (map['label'] as String).input(),
+      sharegroupId: (map['sharegroupId'] as int).input(),
+      status: (map['status'] as String).input(),
+      tokenUuid: (map['tokenUuid'] as String).input(),
+      updated: (map['updated'] as String).input(),
     );
   }
 }

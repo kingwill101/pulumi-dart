@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'amazon_s3_compatible_read_settings.dart';
 import 'binary_read_settings.dart';
 
 /// A copy activity Binary source.
 class BinarySource {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Binary format settings.
-  final BinaryReadSettings? formatSettings;
+  final pulumi.Input<BinaryReadSettings>? formatSettings;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Binary store settings.
-  final AmazonS3CompatibleReadSettings? storeSettings;
+  final pulumi.Input<AmazonS3CompatibleReadSettings>? storeSettings;
   /// Copy source type.
   /// Expected value is 'BinarySource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BinarySource].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -42,24 +43,24 @@ class BinarySource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disableMetricsCollection': ?disableMetricsCollection,
-      'formatSettings': ?formatSettings == null ? null : formatSettings!.toMap(),
+      'formatSettings': ?pulumi.Input.mapOptionalInputValue<BinaryReadSettings, Map<String, dynamic>>(formatSettings, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sourceRetryCount': ?sourceRetryCount,
       'sourceRetryWait': ?sourceRetryWait,
-      'storeSettings': ?storeSettings == null ? null : storeSettings!.toMap(),
+      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AmazonS3CompatibleReadSettings, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory BinarySource.fromMap(Map<String, dynamic> map) {
     return BinarySource(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      formatSettings: map['formatSettings'] == null ? null : BinaryReadSettings.fromMap((map['formatSettings'] as Map).cast<String, dynamic>()),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      storeSettings: map['storeSettings'] == null ? null : AmazonS3CompatibleReadSettings.fromMap((map['storeSettings'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      formatSettings: map['formatSettings'] == null ? null : (BinaryReadSettings.fromMap((map['formatSettings'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettings.fromMap((map['storeSettings'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

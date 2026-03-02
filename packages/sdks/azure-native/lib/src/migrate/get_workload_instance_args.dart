@@ -22,15 +22,11 @@ class GetWorkloadInstanceArgs {
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [workloadInstanceName] Workload instance name.
   GetWorkloadInstanceArgs({
-    required pulumi.Output<String> modernizeProjectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    required pulumi.Output<String> workloadInstanceName,
-  }) :
-      modernizeProjectName = pulumi.Input.asInput<String>(modernizeProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      workloadInstanceName = pulumi.Input.asInput<String>(workloadInstanceName);
+    required this.modernizeProjectName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    required this.workloadInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWorkloadInstanceArgs {
 
   factory GetWorkloadInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadInstanceArgs(
-      modernizeProjectName: pulumi.Output.create<String>(map['modernizeProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      workloadInstanceName: pulumi.Output.create<String>(map['workloadInstanceName'] as String),
+      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workloadInstanceName: (map['workloadInstanceName'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class LiteReservationArgs {
   /// [region] The region of the pubsub lite reservation.
   /// [throughputCapacity] The reserved throughput capacity. Every unit of throughput capacity is
   LiteReservationArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> throughputCapacity,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      throughputCapacity = pulumi.Input.asInput<int>(throughputCapacity);
+    this.name,
+    this.project,
+    this.region,
+    required this.throughputCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class LiteReservationArgs {
 
   factory LiteReservationArgs.fromMap(Map<String, dynamic> map) {
     return LiteReservationArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      throughputCapacity: pulumi.Output.create<int>(map['throughputCapacity'] as int),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      throughputCapacity: (map['throughputCapacity'] as int).input(),
     );
   }
 }

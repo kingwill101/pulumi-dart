@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RunBookDraftContentLinkHash {
   /// Specifies the hash algorithm used to hash the content.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// Specifies the expected hash value of the content.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [RunBookDraftContentLinkHash].
   /// [algorithm] Specifies the hash algorithm used to hash the content.
@@ -24,8 +25,8 @@ class RunBookDraftContentLinkHash {
 
   factory RunBookDraftContentLinkHash.fromMap(Map<String, dynamic> map) {
     return RunBookDraftContentLinkHash(
-      algorithm: map['algorithm'] as String,
-      value: map['value'] as String,
+      algorithm: (map['algorithm'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

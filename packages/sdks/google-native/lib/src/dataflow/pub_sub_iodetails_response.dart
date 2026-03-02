@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a Pub/Sub connector used by the job.
 class PubSubIODetailsResponse {
   /// Subscription used in the connection.
-  final String subscription;
+  final pulumi.Input<String> subscription;
   /// Topic accessed in the connection.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [PubSubIODetailsResponse].
   /// [subscription] Subscription used in the connection.
@@ -25,8 +26,8 @@ class PubSubIODetailsResponse {
 
   factory PubSubIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return PubSubIODetailsResponse(
-      subscription: map['subscription'] as String,
-      topic: map['topic'] as String,
+      subscription: (map['subscription'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

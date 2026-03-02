@@ -66,33 +66,20 @@ class AuthzPolicyState {
   /// [target] Specifies the set of resources to which this policy should be applied to.
   /// [updateTime] The timestamp when the resource was updated.
   AuthzPolicyState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<AuthzPolicyCustomProvider>? customProvider,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<List<AuthzPolicyHttpRule>>? httpRules,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<AuthzPolicyTarget>? target,
-    pulumi.Output<String>? updateTime,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customProvider = pulumi.Input.asOptionalInput<AuthzPolicyCustomProvider>(customProvider),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      httpRules = pulumi.Input.asOptionalInput<List<AuthzPolicyHttpRule>>(httpRules),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      target = pulumi.Input.asOptionalInput<AuthzPolicyTarget>(target),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.action,
+    this.createTime,
+    this.customProvider,
+    this.description,
+    this.effectiveLabels,
+    this.httpRules,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.target,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,19 +101,19 @@ class AuthzPolicyState {
 
   factory AuthzPolicyState.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customProvider: map['customProvider'] == null ? null : pulumi.Output.create<AuthzPolicyCustomProvider>(AuthzPolicyCustomProvider.fromMap((map['customProvider'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      httpRules: map['httpRules'] == null ? null : pulumi.Output.create<List<AuthzPolicyHttpRule>>(pulumi.Input.decodeList<AuthzPolicyHttpRule>(map['httpRules'], (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      target: map['target'] == null ? null : pulumi.Output.create<AuthzPolicyTarget>(AuthzPolicyTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customProvider: map['customProvider'] == null ? null : (AuthzPolicyCustomProvider.fromMap((map['customProvider'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      httpRules: map['httpRules'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRule>(map['httpRules'], (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      target: map['target'] == null ? null : (AuthzPolicyTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

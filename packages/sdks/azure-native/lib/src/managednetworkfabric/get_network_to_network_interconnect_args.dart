@@ -19,13 +19,10 @@ class GetNetworkToNetworkInterconnectArgs {
   /// [networkToNetworkInterconnectName] Name of the Network to Network Interconnect.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkToNetworkInterconnectArgs({
-    required pulumi.Output<String> networkFabricName,
-    required pulumi.Output<String> networkToNetworkInterconnectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkFabricName = pulumi.Input.asInput<String>(networkFabricName),
-      networkToNetworkInterconnectName = pulumi.Input.asInput<String>(networkToNetworkInterconnectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkFabricName,
+    required this.networkToNetworkInterconnectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkToNetworkInterconnectArgs {
 
   factory GetNetworkToNetworkInterconnectArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkToNetworkInterconnectArgs(
-      networkFabricName: pulumi.Output.create<String>(map['networkFabricName'] as String),
-      networkToNetworkInterconnectName: pulumi.Output.create<String>(map['networkToNetworkInterconnectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkFabricName: (map['networkFabricName'] as String).input(),
+      networkToNetworkInterconnectName: (map['networkToNetworkInterconnectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

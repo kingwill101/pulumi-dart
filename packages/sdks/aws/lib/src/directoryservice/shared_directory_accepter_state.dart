@@ -25,19 +25,13 @@ class SharedDirectoryAccepterState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedDirectoryId] Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   SharedDirectoryAccepterState({
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? ownerDirectoryId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sharedDirectoryId,
-  }) :
-      method = pulumi.Input.asOptionalInput<String>(method),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      ownerDirectoryId = pulumi.Input.asOptionalInput<String>(ownerDirectoryId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedDirectoryId = pulumi.Input.asOptionalInput<String>(sharedDirectoryId);
+    this.method,
+    this.notes,
+    this.ownerAccountId,
+    this.ownerDirectoryId,
+    this.region,
+    this.sharedDirectoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SharedDirectoryAccepterState {
 
   factory SharedDirectoryAccepterState.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterState(
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      ownerDirectoryId: map['ownerDirectoryId'] == null ? null : pulumi.Output.create<String>(map['ownerDirectoryId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : pulumi.Output.create<String>(map['sharedDirectoryId'] as String),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      ownerDirectoryId: map['ownerDirectoryId'] == null ? null : (map['ownerDirectoryId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : (map['sharedDirectoryId'] as String).input(),
     );
   }
 }

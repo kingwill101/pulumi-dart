@@ -6,7 +6,7 @@ import 'node_spec.dart';
 /// Details of the TPU resource(s) being requested.
 class Tpu {
   /// The TPU node(s) being requested.
-  final List<NodeSpec>? nodeSpec;
+  final pulumi.Input<List<NodeSpec>>? nodeSpec;
 
   /// Creates a new [Tpu].
   /// [nodeSpec] The TPU node(s) being requested.
@@ -16,13 +16,13 @@ class Tpu {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSpec': ?nodeSpec == null ? null : pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(nodeSpec!, (value) => value.toMap()),
+      'nodeSpec': ?pulumi.Input.mapOptionalInputValue<List<NodeSpec>, List<Map<String, dynamic>>>(nodeSpec, (value) => pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Tpu.fromMap(Map<String, dynamic> map) {
     return Tpu(
-      nodeSpec: map['nodeSpec'] == null ? null : pulumi.Input.decodeList<NodeSpec>(map['nodeSpec'], (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>())),
+      nodeSpec: map['nodeSpec'] == null ? null : (pulumi.Input.decodeList<NodeSpec>(map['nodeSpec'], (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

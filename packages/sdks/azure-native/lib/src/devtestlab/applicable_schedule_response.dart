@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schedule_response.dart';
 
 /// Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
 class ApplicableScheduleResponse {
   /// The identifier of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
-  final ScheduleResponse? labVmsShutdown;
+  final pulumi.Input<ScheduleResponse>? labVmsShutdown;
   /// The auto-startup schedule, if one has been set at the lab or lab resource level.
-  final ScheduleResponse? labVmsStartup;
+  final pulumi.Input<ScheduleResponse>? labVmsStartup;
   /// The location of the resource.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name of the resource.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tags of the resource.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicableScheduleResponse].
   /// [id] The identifier of the resource.
@@ -40,8 +41,8 @@ class ApplicableScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'labVmsShutdown': ?labVmsShutdown == null ? null : labVmsShutdown!.toMap(),
-      'labVmsStartup': ?labVmsStartup == null ? null : labVmsStartup!.toMap(),
+      'labVmsShutdown': ?pulumi.Input.mapOptionalInputValue<ScheduleResponse, Map<String, dynamic>>(labVmsShutdown, (value) => value.toMap()),
+      'labVmsStartup': ?pulumi.Input.mapOptionalInputValue<ScheduleResponse, Map<String, dynamic>>(labVmsStartup, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'tags': ?tags,
@@ -51,13 +52,13 @@ class ApplicableScheduleResponse {
 
   factory ApplicableScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicableScheduleResponse(
-      id: map['id'] as String,
-      labVmsShutdown: map['labVmsShutdown'] == null ? null : ScheduleResponse.fromMap((map['labVmsShutdown'] as Map).cast<String, dynamic>()),
-      labVmsStartup: map['labVmsStartup'] == null ? null : ScheduleResponse.fromMap((map['labVmsStartup'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      labVmsShutdown: map['labVmsShutdown'] == null ? null : (ScheduleResponse.fromMap((map['labVmsShutdown'] as Map).cast<String, dynamic>())).input(),
+      labVmsStartup: map['labVmsStartup'] == null ? null : (ScheduleResponse.fromMap((map['labVmsStartup'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

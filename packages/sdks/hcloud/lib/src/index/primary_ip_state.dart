@@ -43,29 +43,18 @@ class PrimaryIpState {
   /// [name] Name of the Primary IP.
   /// [type] Type of the Primary IP. `ipv4` or `ipv6`
   PrimaryIpState({
-    pulumi.Output<int>? assigneeId,
-    pulumi.Output<String>? assigneeType,
-    pulumi.Output<bool>? autoDelete,
-    pulumi.Output<String>? datacenter,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? ipNetwork,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? type,
-  }) :
-      assigneeId = pulumi.Input.asOptionalInput<int>(assigneeId),
-      assigneeType = pulumi.Input.asOptionalInput<String>(assigneeType),
-      autoDelete = pulumi.Input.asOptionalInput<bool>(autoDelete),
-      datacenter = pulumi.Input.asOptionalInput<String>(datacenter),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      ipNetwork = pulumi.Input.asOptionalInput<String>(ipNetwork),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.assigneeId,
+    this.assigneeType,
+    this.autoDelete,
+    this.datacenter,
+    this.deleteProtection,
+    this.ipAddress,
+    this.ipNetwork,
+    this.labels,
+    this.location,
+    this.name,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class PrimaryIpState {
 
   factory PrimaryIpState.fromMap(Map<String, dynamic> map) {
     return PrimaryIpState(
-      assigneeId: map['assigneeId'] == null ? null : pulumi.Output.create<int>(map['assigneeId'] as int),
-      assigneeType: map['assigneeType'] == null ? null : pulumi.Output.create<String>(map['assigneeType'] as String),
-      autoDelete: map['autoDelete'] == null ? null : pulumi.Output.create<bool>(map['autoDelete'] as bool),
-      datacenter: map['datacenter'] == null ? null : pulumi.Output.create<String>(map['datacenter'] as String),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      ipNetwork: map['ipNetwork'] == null ? null : pulumi.Output.create<String>(map['ipNetwork'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId'] as int).input(),
+      assigneeType: map['assigneeType'] == null ? null : (map['assigneeType'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
+      datacenter: map['datacenter'] == null ? null : (map['datacenter'] as String).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipNetwork: map['ipNetwork'] == null ? null : (map['ipNetwork'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

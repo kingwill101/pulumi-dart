@@ -39,25 +39,16 @@ class AccessArgs {
   /// [role] Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
   /// [serverId] The Server ID of the Transfer Server (e.g., `s-12345678`)
   AccessArgs({
-    required pulumi.Output<String> externalId,
-    pulumi.Output<String>? homeDirectory,
-    pulumi.Output<List<AccessHomeDirectoryMapping>>? homeDirectoryMappings,
-    pulumi.Output<String>? homeDirectoryType,
-    pulumi.Output<String>? policy,
-    pulumi.Output<AccessPosixProfile>? posixProfile,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    required pulumi.Output<String> serverId,
-  }) :
-      externalId = pulumi.Input.asInput<String>(externalId),
-      homeDirectory = pulumi.Input.asOptionalInput<String>(homeDirectory),
-      homeDirectoryMappings = pulumi.Input.asOptionalInput<List<AccessHomeDirectoryMapping>>(homeDirectoryMappings),
-      homeDirectoryType = pulumi.Input.asOptionalInput<String>(homeDirectoryType),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      posixProfile = pulumi.Input.asOptionalInput<AccessPosixProfile>(posixProfile),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    required this.externalId,
+    this.homeDirectory,
+    this.homeDirectoryMappings,
+    this.homeDirectoryType,
+    this.policy,
+    this.posixProfile,
+    this.region,
+    this.role,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AccessArgs {
 
   factory AccessArgs.fromMap(Map<String, dynamic> map) {
     return AccessArgs(
-      externalId: pulumi.Output.create<String>(map['externalId'] as String),
-      homeDirectory: map['homeDirectory'] == null ? null : pulumi.Output.create<String>(map['homeDirectory'] as String),
-      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : pulumi.Output.create<List<AccessHomeDirectoryMapping>>(pulumi.Input.decodeList<AccessHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      homeDirectoryType: map['homeDirectoryType'] == null ? null : pulumi.Output.create<String>(map['homeDirectoryType'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      posixProfile: map['posixProfile'] == null ? null : pulumi.Output.create<AccessPosixProfile>(AccessPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      externalId: (map['externalId'] as String).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
+      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : (pulumi.Input.decodeList<AccessHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => AccessHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      homeDirectoryType: map['homeDirectoryType'] == null ? null : (map['homeDirectoryType'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      posixProfile: map['posixProfile'] == null ? null : (AccessPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

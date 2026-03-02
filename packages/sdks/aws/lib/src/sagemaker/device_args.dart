@@ -20,13 +20,10 @@ class DeviceArgs {
   /// [deviceFleetName] The name of the Device Fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DeviceArgs({
-    required pulumi.Output<DeviceDevice> device,
-    required pulumi.Output<String> deviceFleetName,
-    pulumi.Output<String>? region,
-  }) :
-      device = pulumi.Input.asInput<DeviceDevice>(device),
-      deviceFleetName = pulumi.Input.asInput<String>(deviceFleetName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.device,
+    required this.deviceFleetName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      device: pulumi.Output.create<DeviceDevice>(DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())),
-      deviceFleetName: pulumi.Output.create<String>(map['deviceFleetName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      device: (DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())).input(),
+      deviceFleetName: (map['deviceFleetName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

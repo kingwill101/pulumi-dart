@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingRuleStepAdjustment {
   /// The lower bound of step.
-  final String? metricIntervalLowerBound;
+  final pulumi.Input<String>? metricIntervalLowerBound;
   /// The upper bound of step.
-  final String? metricIntervalUpperBound;
+  final pulumi.Input<String>? metricIntervalUpperBound;
   /// The adjust value of step.
-  final int? scalingAdjustment;
+  final pulumi.Input<int>? scalingAdjustment;
 
   /// Creates a new [ScalingRuleStepAdjustment].
   /// [metricIntervalLowerBound] The lower bound of step.
@@ -29,9 +30,9 @@ class ScalingRuleStepAdjustment {
 
   factory ScalingRuleStepAdjustment.fromMap(Map<String, dynamic> map) {
     return ScalingRuleStepAdjustment(
-      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : map['metricIntervalLowerBound'] as String,
-      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : map['metricIntervalUpperBound'] as String,
-      scalingAdjustment: map['scalingAdjustment'] == null ? null : map['scalingAdjustment'] as int,
+      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : (map['metricIntervalLowerBound'] as String).input(),
+      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : (map['metricIntervalUpperBound'] as String).input(),
+      scalingAdjustment: map['scalingAdjustment'] == null ? null : (map['scalingAdjustment'] as int).input(),
     );
   }
 }

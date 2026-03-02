@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeNeuronDevice {
-  final int coreCount;
-  final int coreVersion;
-  final int count;
+  final pulumi.Input<int> coreCount;
+  final pulumi.Input<int> coreVersion;
+  final pulumi.Input<int> count;
   /// Size of the instance memory, in MiB.
-  final int memorySize;
-  final String name;
+  final pulumi.Input<int> memorySize;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetInstanceTypeNeuronDevice].
   /// [coreCount] Required.
@@ -35,11 +36,11 @@ class GetInstanceTypeNeuronDevice {
 
   factory GetInstanceTypeNeuronDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeNeuronDevice(
-      coreCount: map['coreCount'] as int,
-      coreVersion: map['coreVersion'] as int,
-      count: map['count'] as int,
-      memorySize: map['memorySize'] as int,
-      name: map['name'] as String,
+      coreCount: (map['coreCount'] as int).input(),
+      coreVersion: (map['coreVersion'] as int).input(),
+      count: (map['count'] as int).input(),
+      memorySize: (map['memorySize'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

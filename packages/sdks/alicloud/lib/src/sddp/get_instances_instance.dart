@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// Whether the required RAM authorization is configured.
-  final bool authed;
-  final String id;
+  final pulumi.Input<bool> authed;
+  final pulumi.Input<String> id;
   /// The ID of the instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The number of instances.
-  final String instanceNum;
+  final pulumi.Input<String> instanceNum;
   /// Whether the authorized MaxCompute (ODPS) assets.
-  final bool odpsSet;
+  final pulumi.Input<bool> odpsSet;
   /// Whether the authorized oss assets.
-  final bool ossBucketSet;
+  final pulumi.Input<bool> ossBucketSet;
   /// The OSS size of the instance.
-  final String ossSize;
+  final pulumi.Input<String> ossSize;
   /// The payment type of the resource. Valid values: `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Whether the authorized rds assets.
-  final bool rdsSet;
+  final pulumi.Input<bool> rdsSet;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstancesInstance].
   /// [authed] Whether the required RAM authorization is configured.
@@ -63,16 +64,16 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      authed: map['authed'] as bool,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceNum: map['instanceNum'] as String,
-      odpsSet: map['odpsSet'] as bool,
-      ossBucketSet: map['ossBucketSet'] as bool,
-      ossSize: map['ossSize'] as String,
-      paymentType: map['paymentType'] as String,
-      rdsSet: map['rdsSet'] as bool,
-      status: map['status'] as String,
+      authed: (map['authed'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceNum: (map['instanceNum'] as String).input(),
+      odpsSet: (map['odpsSet'] as bool).input(),
+      ossBucketSet: (map['ossBucketSet'] as bool).input(),
+      ossSize: (map['ossSize'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      rdsSet: (map['rdsSet'] as bool).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

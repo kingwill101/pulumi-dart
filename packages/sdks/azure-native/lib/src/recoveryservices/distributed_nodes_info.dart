@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is used to represent the various nodes of the distributed container.
 class DistributedNodesInfo {
   /// Name of the node under a distributed container.
-  final String? nodeName;
+  final pulumi.Input<String>? nodeName;
   /// ARM resource id of the node
-  final String? sourceResourceId;
+  final pulumi.Input<String>? sourceResourceId;
   /// Status of this Node.
   /// Failed | Succeeded
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DistributedNodesInfo].
   /// [nodeName] Name of the node under a distributed container.
@@ -31,9 +32,9 @@ class DistributedNodesInfo {
 
   factory DistributedNodesInfo.fromMap(Map<String, dynamic> map) {
     return DistributedNodesInfo(
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

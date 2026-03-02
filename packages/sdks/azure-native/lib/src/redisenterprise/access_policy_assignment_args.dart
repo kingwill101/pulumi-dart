@@ -29,19 +29,13 @@ class AccessPolicyAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [user] The user associated with the access policy.
   AccessPolicyAssignmentArgs({
-    pulumi.Output<String>? accessPolicyAssignmentName,
-    required pulumi.Output<String> accessPolicyName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<AccessPolicyAssignmentPropertiesUser> user,
-  }) :
-      accessPolicyAssignmentName = pulumi.Input.asOptionalInput<String>(accessPolicyAssignmentName),
-      accessPolicyName = pulumi.Input.asInput<String>(accessPolicyName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      user = pulumi.Input.asInput<AccessPolicyAssignmentPropertiesUser>(user);
+    this.accessPolicyAssignmentName,
+    required this.accessPolicyName,
+    required this.clusterName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AccessPolicyAssignmentArgs {
 
   factory AccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: map['accessPolicyAssignmentName'] == null ? null : pulumi.Output.create<String>(map['accessPolicyAssignmentName'] as String),
-      accessPolicyName: pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      user: pulumi.Output.create<AccessPolicyAssignmentPropertiesUser>(AccessPolicyAssignmentPropertiesUser.fromMap((map['user'] as Map).cast<String, dynamic>())),
+      accessPolicyAssignmentName: map['accessPolicyAssignmentName'] == null ? null : (map['accessPolicyAssignmentName'] as String).input(),
+      accessPolicyName: (map['accessPolicyName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      user: (AccessPolicyAssignmentPropertiesUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

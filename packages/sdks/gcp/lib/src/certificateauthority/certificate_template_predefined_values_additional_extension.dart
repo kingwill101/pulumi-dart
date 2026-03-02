@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_template_predefined_values_additional_extension_object_id.dart';
 
 class CertificateTemplatePredefinedValuesAdditionalExtension {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-  final bool? critical;
+  final pulumi.Input<bool>? critical;
   /// Required. The OID for this X.509 extension.
   /// Structure is documented below.
-  final CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
+  final pulumi.Input<CertificateTemplatePredefinedValuesAdditionalExtensionObjectId> objectId;
   /// Required. The value of this X.509 extension.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [CertificateTemplatePredefinedValuesAdditionalExtension].
   /// [critical] Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
@@ -24,16 +25,16 @@ class CertificateTemplatePredefinedValuesAdditionalExtension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': ?critical,
-      'objectId': objectId.toMap(),
+      'objectId': pulumi.Input.mapInputValue<CertificateTemplatePredefinedValuesAdditionalExtensionObjectId, Map<String, dynamic>>(objectId, (value) => value.toMap()),
       'value': value,
     };
   }
 
   factory CertificateTemplatePredefinedValuesAdditionalExtension.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesAdditionalExtension(
-      critical: map['critical'] == null ? null : map['critical'] as bool,
-      objectId: CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
-      value: map['value'] as String,
+      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      objectId: (CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>())).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

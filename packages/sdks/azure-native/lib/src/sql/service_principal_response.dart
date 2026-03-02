@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The managed instance's service principal configuration for a resource.
 class ServicePrincipalResponse {
   /// The Azure Active Directory application client id.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Azure Active Directory application object id.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Azure Active Directory tenant id.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// Service principal type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServicePrincipalResponse].
   /// [clientId] The Azure Active Directory application client id.
@@ -35,10 +36,10 @@ class ServicePrincipalResponse {
 
   factory ServicePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalResponse(
-      clientId: map['clientId'] as String,
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      clientId: (map['clientId'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

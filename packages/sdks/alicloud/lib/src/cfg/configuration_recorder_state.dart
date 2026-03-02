@@ -24,17 +24,12 @@ class ConfigurationRecorderState {
   /// [resourceTypes] A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
   /// [status] Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
   ConfigurationRecorderState({
-    pulumi.Output<bool>? enterpriseEdition,
-    pulumi.Output<String>? organizationEnableStatus,
-    pulumi.Output<int>? organizationMasterId,
-    pulumi.Output<List<String>>? resourceTypes,
-    pulumi.Output<String>? status,
-  }) :
-      enterpriseEdition = pulumi.Input.asOptionalInput<bool>(enterpriseEdition),
-      organizationEnableStatus = pulumi.Input.asOptionalInput<String>(organizationEnableStatus),
-      organizationMasterId = pulumi.Input.asOptionalInput<int>(organizationMasterId),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.enterpriseEdition,
+    this.organizationEnableStatus,
+    this.organizationMasterId,
+    this.resourceTypes,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ConfigurationRecorderState {
 
   factory ConfigurationRecorderState.fromMap(Map<String, dynamic> map) {
     return ConfigurationRecorderState(
-      enterpriseEdition: map['enterpriseEdition'] == null ? null : pulumi.Output.create<bool>(map['enterpriseEdition'] as bool),
-      organizationEnableStatus: map['organizationEnableStatus'] == null ? null : pulumi.Output.create<String>(map['organizationEnableStatus'] as String),
-      organizationMasterId: map['organizationMasterId'] == null ? null : pulumi.Output.create<int>(map['organizationMasterId'] as int),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      enterpriseEdition: map['enterpriseEdition'] == null ? null : (map['enterpriseEdition'] as bool).input(),
+      organizationEnableStatus: map['organizationEnableStatus'] == null ? null : (map['organizationEnableStatus'] as String).input(),
+      organizationMasterId: map['organizationMasterId'] == null ? null : (map['organizationMasterId'] as int).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

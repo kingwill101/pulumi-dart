@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metric of the Query
 class GoogleCloudApigeeV1SecurityReportQueryMetric {
   /// Aggregation function: avg, min, max, or sum.
-  final String? aggregationFunction;
+  final pulumi.Input<String>? aggregationFunction;
   /// Alias for the metric. Alias will be used to replace metric name in query results.
-  final String? alias;
+  final pulumi.Input<String>? alias;
   /// Metric name.
-  final String name;
+  final pulumi.Input<String> name;
   /// One of `+`, `-`, `/`, `%`, `*`.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// Operand value should be provided when operator is set.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityReportQueryMetric].
   /// [aggregationFunction] Aggregation function: avg, min, max, or sum.
@@ -40,11 +41,11 @@ class GoogleCloudApigeeV1SecurityReportQueryMetric {
 
   factory GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityReportQueryMetric(
-      aggregationFunction: map['aggregationFunction'] == null ? null : map['aggregationFunction'] as String,
-      alias: map['alias'] == null ? null : map['alias'] as String,
-      name: map['name'] as String,
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      aggregationFunction: map['aggregationFunction'] == null ? null : (map['aggregationFunction'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      name: (map['name'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

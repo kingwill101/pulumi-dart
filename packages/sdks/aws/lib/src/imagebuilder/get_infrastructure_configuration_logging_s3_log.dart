@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInfrastructureConfigurationLoggingS3Log {
   /// Name of the S3 Bucket for logging.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// Key prefix for S3 Bucket logging.
-  final String s3KeyPrefix;
+  final pulumi.Input<String> s3KeyPrefix;
 
   /// Creates a new [GetInfrastructureConfigurationLoggingS3Log].
   /// [s3BucketName] Name of the S3 Bucket for logging.
@@ -24,8 +25,8 @@ class GetInfrastructureConfigurationLoggingS3Log {
 
   factory GetInfrastructureConfigurationLoggingS3Log.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationLoggingS3Log(
-      s3BucketName: map['s3BucketName'] as String,
-      s3KeyPrefix: map['s3KeyPrefix'] as String,
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3KeyPrefix: (map['s3KeyPrefix'] as String).input(),
     );
   }
 }

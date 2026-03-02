@@ -44,29 +44,18 @@ class SharedAccessPolicyState {
   /// [secondaryKey] The secondary key used to create the authentication token.
   /// [serviceConnect] Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
   SharedAccessPolicyState({
-    pulumi.Output<bool>? deviceConnect,
-    pulumi.Output<String>? iothubName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? primaryConnectionString,
-    pulumi.Output<String>? primaryKey,
-    pulumi.Output<bool>? registryRead,
-    pulumi.Output<bool>? registryWrite,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? secondaryConnectionString,
-    pulumi.Output<String>? secondaryKey,
-    pulumi.Output<bool>? serviceConnect,
-  }) :
-      deviceConnect = pulumi.Input.asOptionalInput<bool>(deviceConnect),
-      iothubName = pulumi.Input.asOptionalInput<String>(iothubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      primaryConnectionString = pulumi.Input.asOptionalInput<String>(primaryConnectionString),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      registryRead = pulumi.Input.asOptionalInput<bool>(registryRead),
-      registryWrite = pulumi.Input.asOptionalInput<bool>(registryWrite),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secondaryConnectionString = pulumi.Input.asOptionalInput<String>(secondaryConnectionString),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      serviceConnect = pulumi.Input.asOptionalInput<bool>(serviceConnect);
+    this.deviceConnect,
+    this.iothubName,
+    this.name,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.registryRead,
+    this.registryWrite,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
+    this.serviceConnect,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class SharedAccessPolicyState {
 
   factory SharedAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return SharedAccessPolicyState(
-      deviceConnect: map['deviceConnect'] == null ? null : pulumi.Output.create<bool>(map['deviceConnect'] as bool),
-      iothubName: map['iothubName'] == null ? null : pulumi.Output.create<String>(map['iothubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionString'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      registryRead: map['registryRead'] == null ? null : pulumi.Output.create<bool>(map['registryRead'] as bool),
-      registryWrite: map['registryWrite'] == null ? null : pulumi.Output.create<bool>(map['registryWrite'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionString'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      serviceConnect: map['serviceConnect'] == null ? null : pulumi.Output.create<bool>(map['serviceConnect'] as bool),
+      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect'] as bool).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      registryRead: map['registryRead'] == null ? null : (map['registryRead'] as bool).input(),
+      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect'] as bool).input(),
     );
   }
 }

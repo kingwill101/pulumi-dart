@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlContainerConflictResolutionPolicy {
   /// The conflict resolution path in the case of `LastWriterWins` mode.
-  final String? conflictResolutionPath;
+  final pulumi.Input<String>? conflictResolutionPath;
   /// The procedure to resolve conflicts in the case of `Custom` mode.
-  final String? conflictResolutionProcedure;
+  final pulumi.Input<String>? conflictResolutionProcedure;
   /// Indicates the conflict resolution mode. Possible values include: `LastWriterWins`, `Custom`.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [SqlContainerConflictResolutionPolicy].
   /// [conflictResolutionPath] The conflict resolution path in the case of `LastWriterWins` mode.
@@ -29,9 +30,9 @@ class SqlContainerConflictResolutionPolicy {
 
   factory SqlContainerConflictResolutionPolicy.fromMap(Map<String, dynamic> map) {
     return SqlContainerConflictResolutionPolicy(
-      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : map['conflictResolutionPath'] as String,
-      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : map['conflictResolutionProcedure'] as String,
-      mode: map['mode'] as String,
+      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath'] as String).input(),
+      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure'] as String).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

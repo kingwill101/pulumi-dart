@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMachineTypesMachineTypeBundledLocalSsd {
   /// The default disk interface if the interface is not specified.
-  final String defaultInterface;
+  final pulumi.Input<String> defaultInterface;
   /// The number of partitions.
-  final int partitionCount;
+  final pulumi.Input<int> partitionCount;
 
   /// Creates a new [GetMachineTypesMachineTypeBundledLocalSsd].
   /// [defaultInterface] The default disk interface if the interface is not specified.
@@ -24,8 +25,8 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
 
   factory GetMachineTypesMachineTypeBundledLocalSsd.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeBundledLocalSsd(
-      defaultInterface: map['defaultInterface'] as String,
-      partitionCount: map['partitionCount'] as int,
+      defaultInterface: (map['defaultInterface'] as String).input(),
+      partitionCount: (map['partitionCount'] as int).input(),
     );
   }
 }

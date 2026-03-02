@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectDataDeliveryCloudwatchLogs {
   /// The name of the log group where the project stores evaluation events.
-  final String? logGroup;
+  final pulumi.Input<String>? logGroup;
 
   /// Creates a new [ProjectDataDeliveryCloudwatchLogs].
   /// [logGroup] The name of the log group where the project stores evaluation events.
@@ -19,7 +20,7 @@ class ProjectDataDeliveryCloudwatchLogs {
 
   factory ProjectDataDeliveryCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ProjectDataDeliveryCloudwatchLogs(
-      logGroup: map['logGroup'] == null ? null : map['logGroup'] as String,
+      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
     );
   }
 }

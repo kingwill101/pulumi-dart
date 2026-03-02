@@ -13,11 +13,9 @@ class SettingState {
   /// [enabled] Boolean flag to enable/disable data access.
   /// [settingName] The setting to manage. Possible values are `MCAS` , `WDATP`, `WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW`, `WDATP_UNIFIED_SOLUTION` and `Sentinel`. Changing this forces a new resource to be created.
   SettingState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? settingName,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      settingName = pulumi.Input.asOptionalInput<String>(settingName);
+    this.enabled,
+    this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SettingState {
 
   factory SettingState.fromMap(Map<String, dynamic> map) {
     return SettingState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      settingName: map['settingName'] == null ? null : pulumi.Output.create<String>(map['settingName'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetResourceGroupArgs {
   /// Creates a new [GetResourceGroupArgs].
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   GetResourceGroupArgs({
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetResourceGroupArgs {
 
   factory GetResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

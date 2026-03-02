@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobStoppingCondition {
   /// Maximum number of objects that can be labeled by human workers.
-  final int maxHumanLabeledObjectCount;
+  final pulumi.Input<int> maxHumanLabeledObjectCount;
   /// Maximum number of input data objects that should be labeled.
-  final int maxPercentageOfInputDatasetLabeled;
+  final pulumi.Input<int> maxPercentageOfInputDatasetLabeled;
 
   /// Creates a new [LabelingJobStoppingCondition].
   /// [maxHumanLabeledObjectCount] Maximum number of objects that can be labeled by human workers.
@@ -24,8 +25,8 @@ class LabelingJobStoppingCondition {
 
   factory LabelingJobStoppingCondition.fromMap(Map<String, dynamic> map) {
     return LabelingJobStoppingCondition(
-      maxHumanLabeledObjectCount: map['maxHumanLabeledObjectCount'] as int,
-      maxPercentageOfInputDatasetLabeled: map['maxPercentageOfInputDatasetLabeled'] as int,
+      maxHumanLabeledObjectCount: (map['maxHumanLabeledObjectCount'] as int).input(),
+      maxPercentageOfInputDatasetLabeled: (map['maxPercentageOfInputDatasetLabeled'] as int).input(),
     );
   }
 }

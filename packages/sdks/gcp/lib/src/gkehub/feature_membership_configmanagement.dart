@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_membership_configmanagement_config_sync.dart';
 import 'feature_membership_configmanagement_hierarchy_controller.dart';
 import 'feature_membership_configmanagement_policy_controller.dart';
 
 class FeatureMembershipConfigmanagement {
   /// Config Sync configuration for the cluster. Structure is documented below.
-  final FeatureMembershipConfigmanagementConfigSync? configSync;
+  final pulumi.Input<FeatureMembershipConfigmanagementConfigSync>? configSync;
   /// Hierarchy Controller configuration for the cluster. Structure is documented below.
   /// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
   /// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
   /// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
   /// to migrate from Hierarchy Controller to HNC.
-  final FeatureMembershipConfigmanagementHierarchyController? hierarchyController;
+  final pulumi.Input<FeatureMembershipConfigmanagementHierarchyController>? hierarchyController;
   /// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
-  final String? management;
+  final pulumi.Input<String>? management;
   /// Policy Controller configuration for the cluster. Structure is documented below.
   /// Configuring Policy Controller through the configmanagement feature is no longer recommended.
   /// Use the policycontroller feature instead.
-  final FeatureMembershipConfigmanagementPolicyController? policyController;
+  final pulumi.Input<FeatureMembershipConfigmanagementPolicyController>? policyController;
   /// Version of Config Sync installed.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [FeatureMembershipConfigmanagement].
   /// [configSync] Config Sync configuration for the cluster. Structure is documented below.
@@ -38,21 +39,21 @@ class FeatureMembershipConfigmanagement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configSync': ?configSync == null ? null : configSync!.toMap(),
-      'hierarchyController': ?hierarchyController == null ? null : hierarchyController!.toMap(),
+      'configSync': ?pulumi.Input.mapOptionalInputValue<FeatureMembershipConfigmanagementConfigSync, Map<String, dynamic>>(configSync, (value) => value.toMap()),
+      'hierarchyController': ?pulumi.Input.mapOptionalInputValue<FeatureMembershipConfigmanagementHierarchyController, Map<String, dynamic>>(hierarchyController, (value) => value.toMap()),
       'management': ?management,
-      'policyController': ?policyController == null ? null : policyController!.toMap(),
+      'policyController': ?pulumi.Input.mapOptionalInputValue<FeatureMembershipConfigmanagementPolicyController, Map<String, dynamic>>(policyController, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory FeatureMembershipConfigmanagement.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagement(
-      configSync: map['configSync'] == null ? null : FeatureMembershipConfigmanagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>()),
-      hierarchyController: map['hierarchyController'] == null ? null : FeatureMembershipConfigmanagementHierarchyController.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>()),
-      management: map['management'] == null ? null : map['management'] as String,
-      policyController: map['policyController'] == null ? null : FeatureMembershipConfigmanagementPolicyController.fromMap((map['policyController'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      configSync: map['configSync'] == null ? null : (FeatureMembershipConfigmanagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>())).input(),
+      hierarchyController: map['hierarchyController'] == null ? null : (FeatureMembershipConfigmanagementHierarchyController.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>())).input(),
+      management: map['management'] == null ? null : (map['management'] as String).input(),
+      policyController: map['policyController'] == null ? null : (FeatureMembershipConfigmanagementPolicyController.fromMap((map['policyController'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

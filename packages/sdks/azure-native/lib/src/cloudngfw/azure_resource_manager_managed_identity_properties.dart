@@ -6,9 +6,9 @@ import 'azure_resource_manager_user_assigned_identity.dart';
 /// The properties of the managed service identities assigned to this resource.
 class AzureResourceManagerManagedIdentityProperties {
   /// The type of managed identity assigned to this resource.
-  final String type;
+  final pulumi.Input<String> type;
   /// The identities assigned to this resource by the user.
-  final Map<String, AzureResourceManagerUserAssignedIdentity>? userAssignedIdentities;
+  final pulumi.Input<Map<String, AzureResourceManagerUserAssignedIdentity>>? userAssignedIdentities;
 
   /// Creates a new [AzureResourceManagerManagedIdentityProperties].
   /// [type] The type of managed identity assigned to this resource.
@@ -21,14 +21,14 @@ class AzureResourceManagerManagedIdentityProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'type': type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<AzureResourceManagerUserAssignedIdentity, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, AzureResourceManagerUserAssignedIdentity>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<AzureResourceManagerUserAssignedIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureResourceManagerManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerManagedIdentityProperties(
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentity>(map['userAssignedIdentities'], (value) => AzureResourceManagerUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentity>(map['userAssignedIdentities'], (value) => AzureResourceManagerUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

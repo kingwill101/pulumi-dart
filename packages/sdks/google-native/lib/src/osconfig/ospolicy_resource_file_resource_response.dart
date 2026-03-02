@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_resource_file_response.dart';
 
 /// A resource that manages the state of a file.
 class OSPolicyResourceFileResourceResponse {
   /// A a file with this content. The size of the content is limited to 32KiB.
-  final String content;
+  final pulumi.Input<String> content;
   /// A remote or local source.
-  final OSPolicyResourceFileResponse file;
+  final pulumi.Input<OSPolicyResourceFileResponse> file;
   /// The absolute path of the file within the VM.
-  final String path;
+  final pulumi.Input<String> path;
   /// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// Desired state of the file.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [OSPolicyResourceFileResourceResponse].
   /// [content] A a file with this content. The size of the content is limited to 32KiB.
@@ -32,7 +33,7 @@ class OSPolicyResourceFileResourceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'content': content,
-      'file': file.toMap(),
+      'file': pulumi.Input.mapInputValue<OSPolicyResourceFileResponse, Map<String, dynamic>>(file, (value) => value.toMap()),
       'path': path,
       'permissions': permissions,
       'state': state,
@@ -41,11 +42,11 @@ class OSPolicyResourceFileResourceResponse {
 
   factory OSPolicyResourceFileResourceResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileResourceResponse(
-      content: map['content'] as String,
-      file: OSPolicyResourceFileResponse.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      path: map['path'] as String,
-      permissions: map['permissions'] as String,
-      state: map['state'] as String,
+      content: (map['content'] as String).input(),
+      file: (OSPolicyResourceFileResponse.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      path: (map['path'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

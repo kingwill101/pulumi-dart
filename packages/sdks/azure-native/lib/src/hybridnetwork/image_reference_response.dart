@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The image reference properties.
 class ImageReferenceResponse {
   /// Specifies in decimal numbers, the exact version of image used to create the virtual machine.
-  final String? exactVersion;
+  final pulumi.Input<String>? exactVersion;
   /// Specifies the offer of the image used to create the virtual machine.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// The image publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// The image SKU.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ImageReferenceResponse].
   /// [exactVersion] Specifies in decimal numbers, the exact version of image used to create the virtual machine.
@@ -40,11 +41,11 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      exactVersion: map['exactVersion'] == null ? null : map['exactVersion'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      exactVersion: map['exactVersion'] == null ? null : (map['exactVersion'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

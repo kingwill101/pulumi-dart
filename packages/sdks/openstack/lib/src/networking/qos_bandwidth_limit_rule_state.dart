@@ -27,17 +27,12 @@ class QosBandwidthLimitRuleState {
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
   /// [region] The region in which to obtain the V2 Networking client.
   QosBandwidthLimitRuleState({
-    pulumi.Output<String>? direction,
-    pulumi.Output<int>? maxBurstKbps,
-    pulumi.Output<int>? maxKbps,
-    pulumi.Output<String>? qosPolicyId,
-    pulumi.Output<String>? region,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      maxBurstKbps = pulumi.Input.asOptionalInput<int>(maxBurstKbps),
-      maxKbps = pulumi.Input.asOptionalInput<int>(maxKbps),
-      qosPolicyId = pulumi.Input.asOptionalInput<String>(qosPolicyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.direction,
+    this.maxBurstKbps,
+    this.maxKbps,
+    this.qosPolicyId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class QosBandwidthLimitRuleState {
 
   factory QosBandwidthLimitRuleState.fromMap(Map<String, dynamic> map) {
     return QosBandwidthLimitRuleState(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      maxBurstKbps: map['maxBurstKbps'] == null ? null : pulumi.Output.create<int>(map['maxBurstKbps'] as int),
-      maxKbps: map['maxKbps'] == null ? null : pulumi.Output.create<int>(map['maxKbps'] as int),
-      qosPolicyId: map['qosPolicyId'] == null ? null : pulumi.Output.create<String>(map['qosPolicyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps'] as int).input(),
+      maxKbps: map['maxKbps'] == null ? null : (map['maxKbps'] as int).input(),
+      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ThroughputPoolArgs {
   /// [tags] Resource tags.
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
   ThroughputPoolArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maxThroughput,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? throughputPoolName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxThroughput = pulumi.Input.asOptionalInput<int>(maxThroughput),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      throughputPoolName = pulumi.Input.asOptionalInput<String>(throughputPoolName);
+    this.location,
+    this.maxThroughput,
+    required this.resourceGroupName,
+    this.tags,
+    this.throughputPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ThroughputPoolArgs {
 
   factory ThroughputPoolArgs.fromMap(Map<String, dynamic> map) {
     return ThroughputPoolArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maxThroughput: map['maxThroughput'] == null ? null : pulumi.Output.create<int>(map['maxThroughput'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      throughputPoolName: map['throughputPoolName'] == null ? null : pulumi.Output.create<String>(map['throughputPoolName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      throughputPoolName: map['throughputPoolName'] == null ? null : (map['throughputPoolName'] as String).input(),
     );
   }
 }

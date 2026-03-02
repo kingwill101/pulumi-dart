@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpointResponse {
   /// The IP address of this network endpoint.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The port of this network endpoint.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [NetworkEndpointResponse].
   /// [ipAddress] The IP address of this network endpoint.
@@ -25,8 +26,8 @@ class NetworkEndpointResponse {
 
   factory NetworkEndpointResponse.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointResponse(
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] as int,
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

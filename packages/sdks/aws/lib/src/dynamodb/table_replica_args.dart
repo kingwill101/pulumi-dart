@@ -33,21 +33,14 @@ class TableReplicaArgs {
   /// [tableClassOverride] Storage class of the table replica. Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`. If not used, the table replica will use the same class as the global table.
   /// [tags] Map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TableReplicaArgs({
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    required pulumi.Output<String> globalTableArn,
-    pulumi.Output<String>? kmsKeyArn,
-    pulumi.Output<bool>? pointInTimeRecovery,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tableClassOverride,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      globalTableArn = pulumi.Input.asInput<String>(globalTableArn),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      pointInTimeRecovery = pulumi.Input.asOptionalInput<bool>(pointInTimeRecovery),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableClassOverride = pulumi.Input.asOptionalInput<String>(tableClassOverride),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deletionProtectionEnabled,
+    required this.globalTableArn,
+    this.kmsKeyArn,
+    this.pointInTimeRecovery,
+    this.region,
+    this.tableClassOverride,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class TableReplicaArgs {
 
   factory TableReplicaArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicaArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      globalTableArn: pulumi.Output.create<String>(map['globalTableArn'] as String),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : pulumi.Output.create<bool>(map['pointInTimeRecovery'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableClassOverride: map['tableClassOverride'] == null ? null : pulumi.Output.create<String>(map['tableClassOverride'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      globalTableArn: (map['globalTableArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : (map['pointInTimeRecovery'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableClassOverride: map['tableClassOverride'] == null ? null : (map['tableClassOverride'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

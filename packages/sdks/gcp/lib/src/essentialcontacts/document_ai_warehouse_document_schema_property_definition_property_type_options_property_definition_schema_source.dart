@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource {
   /// The schema name in the source.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The Doc AI processor type name.
-  final String? processorType;
+  final pulumi.Input<String>? processorType;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.
@@ -24,8 +25,8 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource(
-      name: map['name'] == null ? null : map['name'] as String,
-      processorType: map['processorType'] == null ? null : map['processorType'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      processorType: map['processorType'] == null ? null : (map['processorType'] as String).input(),
     );
   }
 }

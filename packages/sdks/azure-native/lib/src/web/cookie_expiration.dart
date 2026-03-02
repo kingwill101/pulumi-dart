@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cookie_expiration_convention.dart';
 
 /// The configuration settings of the session cookie's expiration.
 class CookieExpiration {
   /// The convention used when determining the session cookie's expiration.
-  final CookieExpirationConvention? convention;
+  final pulumi.Input<CookieExpirationConvention>? convention;
   /// The time after the request is made when the session cookie should expire.
-  final String? timeToExpiration;
+  final pulumi.Input<String>? timeToExpiration;
 
   /// Creates a new [CookieExpiration].
   /// [convention] The convention used when determining the session cookie's expiration.
@@ -19,15 +20,15 @@ class CookieExpiration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'convention': ?convention == null ? null : convention!.value,
+      'convention': ?pulumi.Input.mapOptionalInputValue<CookieExpirationConvention, String>(convention, (value) => value.value),
       'timeToExpiration': ?timeToExpiration,
     };
   }
 
   factory CookieExpiration.fromMap(Map<String, dynamic> map) {
     return CookieExpiration(
-      convention: map['convention'] == null ? null : CookieExpirationConvention.fromValue(map['convention'] as String),
-      timeToExpiration: map['timeToExpiration'] == null ? null : map['timeToExpiration'] as String,
+      convention: map['convention'] == null ? null : (CookieExpirationConvention.fromValue(map['convention'] as String)).input(),
+      timeToExpiration: map['timeToExpiration'] == null ? null : (map['timeToExpiration'] as String).input(),
     );
   }
 }

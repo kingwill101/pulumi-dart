@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentClassifierVpcConfig {
   /// List of security group IDs.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// List of VPC subnets.
-  final List<String> subnets;
+  final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [DocumentClassifierVpcConfig].
   /// [securityGroupIds] List of security group IDs.
@@ -24,8 +25,8 @@ class DocumentClassifierVpcConfig {
 
   factory DocumentClassifierVpcConfig.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnets: (map['subnets'] as List).cast<String>(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }
 }

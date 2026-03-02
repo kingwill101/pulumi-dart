@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_filter_expression_not_or_cost_categories.dart';
 import 'budget_filter_expression_not_or_dimensions.dart';
 import 'budget_filter_expression_not_or_tags.dart';
 
 class BudgetFilterExpressionNotOr {
   /// (Optional) A Cost Category Filter block.
-  final BudgetFilterExpressionNotOrCostCategories? costCategories;
+  final pulumi.Input<BudgetFilterExpressionNotOrCostCategories>? costCategories;
   /// (Optional) A Dimension Filter block.
-  final BudgetFilterExpressionNotOrDimensions? dimensions;
+  final pulumi.Input<BudgetFilterExpressionNotOrDimensions>? dimensions;
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final BudgetFilterExpressionNotOrTags? tags;
+  final pulumi.Input<BudgetFilterExpressionNotOrTags>? tags;
 
   /// Creates a new [BudgetFilterExpressionNotOr].
   /// [costCategories] (Optional) A Cost Category Filter block.
@@ -24,17 +25,17 @@ class BudgetFilterExpressionNotOr {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategories': ?costCategories == null ? null : costCategories!.toMap(),
-      'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'costCategories': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotOrCostCategories, Map<String, dynamic>>(costCategories, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotOrDimensions, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<BudgetFilterExpressionNotOrTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory BudgetFilterExpressionNotOr.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNotOr(
-      costCategories: map['costCategories'] == null ? null : BudgetFilterExpressionNotOrCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>()),
-      dimensions: map['dimensions'] == null ? null : BudgetFilterExpressionNotOrDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : BudgetFilterExpressionNotOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionNotOrCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionNotOrDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetFilterExpressionNotOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

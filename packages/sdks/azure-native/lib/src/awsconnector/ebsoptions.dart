@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_type_enum_value.dart';
 
 /// Definition of EBSOptions
 class EBSOptions {
   /// <p>Indicates whether EBS volumes are attached to data nodes in an OpenSearch Service domain.</p>
-  final bool? ebsEnabled;
+  final pulumi.Input<bool>? ebsEnabled;
   /// <p>Specifies the baseline input/output (I/O) performance of EBS volumes attached to data nodes. Applicable only for the <code>gp3</code> and provisioned IOPS EBS volume types.</p>
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// <p>Specifies the throughput (in MiB/s) of the EBS volumes attached to data nodes. Applicable only for the <code>gp3</code> volume type.</p>
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
   /// <p>Specifies the size (in GiB) of EBS volumes attached to data nodes.</p>
-  final int? volumeSize;
+  final pulumi.Input<int>? volumeSize;
   /// <p>Specifies the type of EBS volumes attached to data nodes.</p>
-  final VolumeTypeEnumValue? volumeType;
+  final pulumi.Input<VolumeTypeEnumValue>? volumeType;
 
   /// Creates a new [EBSOptions].
   /// [ebsEnabled] <p>Indicates whether EBS volumes are attached to data nodes in an OpenSearch Service domain.</p>
@@ -35,17 +36,17 @@ class EBSOptions {
       'iops': ?iops,
       'throughput': ?throughput,
       'volumeSize': ?volumeSize,
-      'volumeType': ?volumeType == null ? null : volumeType!.toMap(),
+      'volumeType': ?pulumi.Input.mapOptionalInputValue<VolumeTypeEnumValue, Map<String, dynamic>>(volumeType, (value) => value.toMap()),
     };
   }
 
   factory EBSOptions.fromMap(Map<String, dynamic> map) {
     return EBSOptions(
-      ebsEnabled: map['ebsEnabled'] == null ? null : map['ebsEnabled'] as bool,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null ? null : VolumeTypeEnumValue.fromMap((map['volumeType'] as Map).cast<String, dynamic>()),
+      ebsEnabled: map['ebsEnabled'] == null ? null : (map['ebsEnabled'] as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      volumeType: map['volumeType'] == null ? null : (VolumeTypeEnumValue.fromMap((map['volumeType'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

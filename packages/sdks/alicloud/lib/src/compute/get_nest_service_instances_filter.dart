@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNestServiceInstancesFilter {
   /// The name of the service.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Set of values that are accepted for the given field.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GetNestServiceInstancesFilter].
   /// [name] The name of the service.
@@ -24,8 +25,8 @@ class GetNestServiceInstancesFilter {
 
   factory GetNestServiceInstancesFilter.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesFilter(
-      name: map['name'] == null ? null : map['name'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

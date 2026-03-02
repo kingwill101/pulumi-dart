@@ -5,7 +5,7 @@ import 'group_role_management_policy_activation_rules_approval_stage_primary_app
 
 class GroupRoleManagementPolicyActivationRulesApprovalStage {
   /// The IDs of the users or groups who can approve the activation
-  final List<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover> primaryApprovers;
+  final pulumi.Input<List<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover>> primaryApprovers;
 
   /// Creates a new [GroupRoleManagementPolicyActivationRulesApprovalStage].
   /// [primaryApprovers] The IDs of the users or groups who can approve the activation
@@ -15,13 +15,13 @@ class GroupRoleManagementPolicyActivationRulesApprovalStage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryApprovers': pulumi.Input.encodeList<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover, Map<String, dynamic>>(primaryApprovers, (value) => value.toMap()),
+      'primaryApprovers': pulumi.Input.mapInputValue<List<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover>, List<Map<String, dynamic>>>(primaryApprovers, (value) => pulumi.Input.encodeList<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GroupRoleManagementPolicyActivationRulesApprovalStage.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyActivationRulesApprovalStage(
-      primaryApprovers: pulumi.Input.decodeList<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover>(map['primaryApprovers'], (value) => GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.fromMap((value as Map).cast<String, dynamic>())),
+      primaryApprovers: (pulumi.Input.decodeList<GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover>(map['primaryApprovers'], (value) => GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

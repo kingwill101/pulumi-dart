@@ -25,17 +25,12 @@ class KeyArgs {
   /// [partition] Partition of ssl certificate key
   /// [passphrase] Passphrase on key.
   KeyArgs({
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? fullPath,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? passphrase,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      name = pulumi.Input.asInput<String>(name),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      passphrase = pulumi.Input.asOptionalInput<String>(passphrase);
+    required this.content,
+    this.fullPath,
+    required this.name,
+    this.partition,
+    this.passphrase,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      passphrase: map['passphrase'] == null ? null : pulumi.Output.create<String>(map['passphrase'] as String),
+      content: (map['content'] as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
     );
   }
 }

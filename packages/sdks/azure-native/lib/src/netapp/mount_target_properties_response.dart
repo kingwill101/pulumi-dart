@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mount target properties
 class MountTargetPropertiesResponse {
   /// UUID v4 used to identify the MountTarget
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The mount target's IPv4 address
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// UUID v4 used to identify the MountTarget
-  final String mountTargetId;
+  final pulumi.Input<String> mountTargetId;
   /// The SMB server's Fully Qualified Domain Name, FQDN
-  final String? smbServerFqdn;
+  final pulumi.Input<String>? smbServerFqdn;
 
   /// Creates a new [MountTargetPropertiesResponse].
   /// [fileSystemId] UUID v4 used to identify the MountTarget
@@ -35,10 +36,10 @@ class MountTargetPropertiesResponse {
 
   factory MountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MountTargetPropertiesResponse(
-      fileSystemId: map['fileSystemId'] as String,
-      ipAddress: map['ipAddress'] as String,
-      mountTargetId: map['mountTargetId'] as String,
-      smbServerFqdn: map['smbServerFqdn'] == null ? null : map['smbServerFqdn'] as String,
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      mountTargetId: (map['mountTargetId'] as String).input(),
+      smbServerFqdn: map['smbServerFqdn'] == null ? null : (map['smbServerFqdn'] as String).input(),
     );
   }
 }

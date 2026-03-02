@@ -69,31 +69,19 @@ class DataStoreArgs {
   /// [skipDefaultSchemaCreation] A boolean flag indicating whether to skip the default schema creation for
   /// [solutionTypes] The solutions that the data store enrolls.
   DataStoreArgs({
-    pulumi.Output<DataStoreAdvancedSiteSearchConfig>? advancedSiteSearchConfig,
-    required pulumi.Output<String> contentConfig,
-    pulumi.Output<bool>? createAdvancedSiteSearch,
-    required pulumi.Output<String> dataStoreId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<DataStoreDocumentProcessingConfig>? documentProcessingConfig,
-    required pulumi.Output<String> industryVertical,
-    pulumi.Output<String>? kmsKeyName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? skipDefaultSchemaCreation,
-    pulumi.Output<List<String>>? solutionTypes,
-  }) :
-      advancedSiteSearchConfig = pulumi.Input.asOptionalInput<DataStoreAdvancedSiteSearchConfig>(advancedSiteSearchConfig),
-      contentConfig = pulumi.Input.asInput<String>(contentConfig),
-      createAdvancedSiteSearch = pulumi.Input.asOptionalInput<bool>(createAdvancedSiteSearch),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      documentProcessingConfig = pulumi.Input.asOptionalInput<DataStoreDocumentProcessingConfig>(documentProcessingConfig),
-      industryVertical = pulumi.Input.asInput<String>(industryVertical),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      skipDefaultSchemaCreation = pulumi.Input.asOptionalInput<bool>(skipDefaultSchemaCreation),
-      solutionTypes = pulumi.Input.asOptionalInput<List<String>>(solutionTypes);
+    this.advancedSiteSearchConfig,
+    required this.contentConfig,
+    this.createAdvancedSiteSearch,
+    required this.dataStoreId,
+    required this.displayName,
+    this.documentProcessingConfig,
+    required this.industryVertical,
+    this.kmsKeyName,
+    required this.location,
+    this.project,
+    this.skipDefaultSchemaCreation,
+    this.solutionTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,18 +102,18 @@ class DataStoreArgs {
 
   factory DataStoreArgs.fromMap(Map<String, dynamic> map) {
     return DataStoreArgs(
-      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : pulumi.Output.create<DataStoreAdvancedSiteSearchConfig>(DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig'] as Map).cast<String, dynamic>())),
-      contentConfig: pulumi.Output.create<String>(map['contentConfig'] as String),
-      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : pulumi.Output.create<bool>(map['createAdvancedSiteSearch'] as bool),
-      dataStoreId: pulumi.Output.create<String>(map['dataStoreId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : pulumi.Output.create<DataStoreDocumentProcessingConfig>(DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig'] as Map).cast<String, dynamic>())),
-      industryVertical: pulumi.Output.create<String>(map['industryVertical'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : pulumi.Output.create<bool>(map['skipDefaultSchemaCreation'] as bool),
-      solutionTypes: map['solutionTypes'] == null ? null : pulumi.Output.create<List<String>>((map['solutionTypes'] as List).cast<String>()),
+      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : (DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig'] as Map).cast<String, dynamic>())).input(),
+      contentConfig: (map['contentConfig'] as String).input(),
+      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch'] as bool).input(),
+      dataStoreId: (map['dataStoreId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : (DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig'] as Map).cast<String, dynamic>())).input(),
+      industryVertical: (map['industryVertical'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : (map['skipDefaultSchemaCreation'] as bool).input(),
+      solutionTypes: map['solutionTypes'] == null ? null : ((map['solutionTypes'] as List).cast<String>()).input(),
     );
   }
 }

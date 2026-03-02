@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLinuxWebAppSiteConfigApplicationStack {
   /// The docker image, including tag, used by this Linux Web App.
-  final String dockerImageName;
+  final pulumi.Input<String> dockerImageName;
   /// The User Name to use for authentication against the registry to pull the image.
-  final String dockerRegistryPassword;
+  final pulumi.Input<String> dockerRegistryPassword;
   /// The URL of the container registry where the `docker_image_name` is located.
-  final String dockerRegistryUrl;
+  final pulumi.Input<String> dockerRegistryUrl;
   /// The User Name to use for authentication against the registry to pull the image.
-  final String dockerRegistryUsername;
+  final pulumi.Input<String> dockerRegistryUsername;
   /// The version of .NET in use.
-  final String dotnetVersion;
-  final String goVersion;
+  final pulumi.Input<String> dotnetVersion;
+  final pulumi.Input<String> goVersion;
   /// The Java server type.
-  final String javaServer;
+  final pulumi.Input<String> javaServer;
   /// The Version of the `java_server` in use.
-  final String javaServerVersion;
+  final pulumi.Input<String> javaServerVersion;
   /// The Version of Java in use.
-  final String javaVersion;
+  final pulumi.Input<String> javaVersion;
   /// The version of Node in use.
-  final String nodeVersion;
+  final pulumi.Input<String> nodeVersion;
   /// The version of PHP in use.
-  final String phpVersion;
+  final pulumi.Input<String> phpVersion;
   /// The version of Python in use.
-  final String pythonVersion;
+  final pulumi.Input<String> pythonVersion;
   /// The version of Ruby in use.
-  final String rubyVersion;
+  final pulumi.Input<String> rubyVersion;
 
   /// Creates a new [GetLinuxWebAppSiteConfigApplicationStack].
   /// [dockerImageName] The docker image, including tag, used by this Linux Web App.
@@ -78,19 +79,19 @@ class GetLinuxWebAppSiteConfigApplicationStack {
 
   factory GetLinuxWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigApplicationStack(
-      dockerImageName: map['dockerImageName'] as String,
-      dockerRegistryPassword: map['dockerRegistryPassword'] as String,
-      dockerRegistryUrl: map['dockerRegistryUrl'] as String,
-      dockerRegistryUsername: map['dockerRegistryUsername'] as String,
-      dotnetVersion: map['dotnetVersion'] as String,
-      goVersion: map['goVersion'] as String,
-      javaServer: map['javaServer'] as String,
-      javaServerVersion: map['javaServerVersion'] as String,
-      javaVersion: map['javaVersion'] as String,
-      nodeVersion: map['nodeVersion'] as String,
-      phpVersion: map['phpVersion'] as String,
-      pythonVersion: map['pythonVersion'] as String,
-      rubyVersion: map['rubyVersion'] as String,
+      dockerImageName: (map['dockerImageName'] as String).input(),
+      dockerRegistryPassword: (map['dockerRegistryPassword'] as String).input(),
+      dockerRegistryUrl: (map['dockerRegistryUrl'] as String).input(),
+      dockerRegistryUsername: (map['dockerRegistryUsername'] as String).input(),
+      dotnetVersion: (map['dotnetVersion'] as String).input(),
+      goVersion: (map['goVersion'] as String).input(),
+      javaServer: (map['javaServer'] as String).input(),
+      javaServerVersion: (map['javaServerVersion'] as String).input(),
+      javaVersion: (map['javaVersion'] as String).input(),
+      nodeVersion: (map['nodeVersion'] as String).input(),
+      phpVersion: (map['phpVersion'] as String).input(),
+      pythonVersion: (map['pythonVersion'] as String).input(),
+      rubyVersion: (map['rubyVersion'] as String).input(),
     );
   }
 }

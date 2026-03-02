@@ -6,9 +6,9 @@ import 'light_house_authorization_response.dart';
 /// The third party provider authorization.
 class ProviderHubMetadataThirdPartyProviderAuthorizationResponse {
   /// The authorizations.
-  final List<LightHouseAuthorizationResponse>? authorizations;
+  final pulumi.Input<List<LightHouseAuthorizationResponse>>? authorizations;
   /// The managed by tenant id.
-  final String? managedByTenantId;
+  final pulumi.Input<String>? managedByTenantId;
 
   /// Creates a new [ProviderHubMetadataThirdPartyProviderAuthorizationResponse].
   /// [authorizations] The authorizations.
@@ -20,15 +20,15 @@ class ProviderHubMetadataThirdPartyProviderAuthorizationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizations': ?authorizations == null ? null : pulumi.Input.encodeList<LightHouseAuthorizationResponse, Map<String, dynamic>>(authorizations!, (value) => value.toMap()),
+      'authorizations': ?pulumi.Input.mapOptionalInputValue<List<LightHouseAuthorizationResponse>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<LightHouseAuthorizationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'managedByTenantId': ?managedByTenantId,
     };
   }
 
   factory ProviderHubMetadataThirdPartyProviderAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderHubMetadataThirdPartyProviderAuthorizationResponse(
-      authorizations: map['authorizations'] == null ? null : pulumi.Input.decodeList<LightHouseAuthorizationResponse>(map['authorizations'], (value) => LightHouseAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      managedByTenantId: map['managedByTenantId'] == null ? null : map['managedByTenantId'] as String,
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<LightHouseAuthorizationResponse>(map['authorizations'], (value) => LightHouseAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId'] as String).input(),
     );
   }
 }

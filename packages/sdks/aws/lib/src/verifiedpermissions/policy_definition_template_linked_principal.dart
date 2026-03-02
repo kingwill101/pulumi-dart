@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionTemplateLinkedPrincipal {
   /// The entity ID of the principal.
-  final String entityId;
+  final pulumi.Input<String> entityId;
   /// The entity type of the principal.
-  final String entityType;
+  final pulumi.Input<String> entityType;
 
   /// Creates a new [PolicyDefinitionTemplateLinkedPrincipal].
   /// [entityId] The entity ID of the principal.
@@ -24,8 +25,8 @@ class PolicyDefinitionTemplateLinkedPrincipal {
 
   factory PolicyDefinitionTemplateLinkedPrincipal.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionTemplateLinkedPrincipal(
-      entityId: map['entityId'] as String,
-      entityType: map['entityType'] as String,
+      entityId: (map['entityId'] as String).input(),
+      entityType: (map['entityType'] as String).input(),
     );
   }
 }

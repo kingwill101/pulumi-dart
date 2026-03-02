@@ -5,13 +5,13 @@ import 'get_windows_web_app_backup_schedule.dart';
 
 class GetWindowsWebAppBackup {
   /// Is the Backup enabled?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The name of this Windows Web App.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `schedule` block as defined below.
-  final List<GetWindowsWebAppBackupSchedule> schedules;
+  final pulumi.Input<List<GetWindowsWebAppBackupSchedule>> schedules;
   /// The SAS URL to the container.
-  final String storageAccountUrl;
+  final pulumi.Input<String> storageAccountUrl;
 
   /// Creates a new [GetWindowsWebAppBackup].
   /// [enabled] Is the Backup enabled?
@@ -29,17 +29,17 @@ class GetWindowsWebAppBackup {
     return <String, dynamic>{
       'enabled': enabled,
       'name': name,
-      'schedules': pulumi.Input.encodeList<GetWindowsWebAppBackupSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules': pulumi.Input.mapInputValue<List<GetWindowsWebAppBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetWindowsWebAppBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageAccountUrl': storageAccountUrl,
     };
   }
 
   factory GetWindowsWebAppBackup.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppBackup(
-      enabled: map['enabled'] as bool,
-      name: map['name'] as String,
-      schedules: pulumi.Input.decodeList<GetWindowsWebAppBackupSchedule>(map['schedules'], (value) => GetWindowsWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccountUrl: map['storageAccountUrl'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      schedules: (pulumi.Input.decodeList<GetWindowsWebAppBackupSchedule>(map['schedules'], (value) => GetWindowsWebAppBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountUrl: (map['storageAccountUrl'] as String).input(),
     );
   }
 }

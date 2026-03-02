@@ -25,17 +25,12 @@ class TrustedAccessRoleBindingArgs {
   /// [sourceResourceId] The ARM resource ID of source resource that trusted access is configured for.
   /// [trustedAccessRoleBindingName] The name of trusted access role binding.
   TrustedAccessRoleBindingArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<List<String>> roles,
-    required pulumi.Output<String> sourceResourceId,
-    pulumi.Output<String>? trustedAccessRoleBindingName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      roles = pulumi.Input.asInput<List<String>>(roles),
-      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId),
-      trustedAccessRoleBindingName = pulumi.Input.asOptionalInput<String>(trustedAccessRoleBindingName);
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.roles,
+    required this.sourceResourceId,
+    this.trustedAccessRoleBindingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TrustedAccessRoleBindingArgs {
 
   factory TrustedAccessRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return TrustedAccessRoleBindingArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      roles: pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
-      trustedAccessRoleBindingName: map['trustedAccessRoleBindingName'] == null ? null : pulumi.Output.create<String>(map['trustedAccessRoleBindingName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      roles: ((map['roles'] as List).cast<String>()).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      trustedAccessRoleBindingName: map['trustedAccessRoleBindingName'] == null ? null : (map['trustedAccessRoleBindingName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guest_policies_recipe_install_step_archive_extraction.dart';
 import 'guest_policies_recipe_install_step_dpkg_installation.dart';
 import 'guest_policies_recipe_install_step_file_copy.dart';
@@ -11,25 +12,25 @@ import 'guest_policies_recipe_install_step_script_run.dart';
 class GuestPoliciesRecipeInstallStep {
   /// Extracts an archive into the specified directory.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepArchiveExtraction? archiveExtraction;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepArchiveExtraction>? archiveExtraction;
   /// Installs a deb file via dpkg.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepDpkgInstallation? dpkgInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepDpkgInstallation>? dpkgInstallation;
   /// Copies a file onto the instance.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepFileCopy? fileCopy;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepFileCopy>? fileCopy;
   /// Executes an artifact or local file.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepFileExec? fileExec;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepFileExec>? fileExec;
   /// Installs an MSI file.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepMsiInstallation? msiInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepMsiInstallation>? msiInstallation;
   /// Installs an rpm file via the rpm utility.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepRpmInstallation? rpmInstallation;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepRpmInstallation>? rpmInstallation;
   /// Runs commands in a shell.
   /// Structure is documented below.
-  final GuestPoliciesRecipeInstallStepScriptRun? scriptRun;
+  final pulumi.Input<GuestPoliciesRecipeInstallStepScriptRun>? scriptRun;
 
   /// Creates a new [GuestPoliciesRecipeInstallStep].
   /// [archiveExtraction] Extracts an archive into the specified directory.
@@ -51,25 +52,25 @@ class GuestPoliciesRecipeInstallStep {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'archiveExtraction': ?archiveExtraction == null ? null : archiveExtraction!.toMap(),
-      'dpkgInstallation': ?dpkgInstallation == null ? null : dpkgInstallation!.toMap(),
-      'fileCopy': ?fileCopy == null ? null : fileCopy!.toMap(),
-      'fileExec': ?fileExec == null ? null : fileExec!.toMap(),
-      'msiInstallation': ?msiInstallation == null ? null : msiInstallation!.toMap(),
-      'rpmInstallation': ?rpmInstallation == null ? null : rpmInstallation!.toMap(),
-      'scriptRun': ?scriptRun == null ? null : scriptRun!.toMap(),
+      'archiveExtraction': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepArchiveExtraction, Map<String, dynamic>>(archiveExtraction, (value) => value.toMap()),
+      'dpkgInstallation': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepDpkgInstallation, Map<String, dynamic>>(dpkgInstallation, (value) => value.toMap()),
+      'fileCopy': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepFileCopy, Map<String, dynamic>>(fileCopy, (value) => value.toMap()),
+      'fileExec': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepFileExec, Map<String, dynamic>>(fileExec, (value) => value.toMap()),
+      'msiInstallation': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepMsiInstallation, Map<String, dynamic>>(msiInstallation, (value) => value.toMap()),
+      'rpmInstallation': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepRpmInstallation, Map<String, dynamic>>(rpmInstallation, (value) => value.toMap()),
+      'scriptRun': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesRecipeInstallStepScriptRun, Map<String, dynamic>>(scriptRun, (value) => value.toMap()),
     };
   }
 
   factory GuestPoliciesRecipeInstallStep.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStep(
-      archiveExtraction: map['archiveExtraction'] == null ? null : GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>()),
-      dpkgInstallation: map['dpkgInstallation'] == null ? null : GuestPoliciesRecipeInstallStepDpkgInstallation.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>()),
-      fileCopy: map['fileCopy'] == null ? null : GuestPoliciesRecipeInstallStepFileCopy.fromMap((map['fileCopy'] as Map).cast<String, dynamic>()),
-      fileExec: map['fileExec'] == null ? null : GuestPoliciesRecipeInstallStepFileExec.fromMap((map['fileExec'] as Map).cast<String, dynamic>()),
-      msiInstallation: map['msiInstallation'] == null ? null : GuestPoliciesRecipeInstallStepMsiInstallation.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>()),
-      rpmInstallation: map['rpmInstallation'] == null ? null : GuestPoliciesRecipeInstallStepRpmInstallation.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>()),
-      scriptRun: map['scriptRun'] == null ? null : GuestPoliciesRecipeInstallStepScriptRun.fromMap((map['scriptRun'] as Map).cast<String, dynamic>()),
+      archiveExtraction: map['archiveExtraction'] == null ? null : (GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>())).input(),
+      dpkgInstallation: map['dpkgInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepDpkgInstallation.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>())).input(),
+      fileCopy: map['fileCopy'] == null ? null : (GuestPoliciesRecipeInstallStepFileCopy.fromMap((map['fileCopy'] as Map).cast<String, dynamic>())).input(),
+      fileExec: map['fileExec'] == null ? null : (GuestPoliciesRecipeInstallStepFileExec.fromMap((map['fileExec'] as Map).cast<String, dynamic>())).input(),
+      msiInstallation: map['msiInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepMsiInstallation.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>())).input(),
+      rpmInstallation: map['rpmInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepRpmInstallation.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>())).input(),
+      scriptRun: map['scriptRun'] == null ? null : (GuestPoliciesRecipeInstallStepScriptRun.fromMap((map['scriptRun'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

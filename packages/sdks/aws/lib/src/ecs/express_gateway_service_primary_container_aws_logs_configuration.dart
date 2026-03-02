@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
   /// CloudWatch log group name.
-  final String logGroup;
+  final pulumi.Input<String> logGroup;
   /// Prefix for log stream names. If not specified, a default prefix will be used.
-  final String logStreamPrefix;
+  final pulumi.Input<String> logStreamPrefix;
 
   /// Creates a new [ExpressGatewayServicePrimaryContainerAwsLogsConfiguration].
   /// [logGroup] CloudWatch log group name.
@@ -24,8 +25,8 @@ class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
 
   factory ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServicePrimaryContainerAwsLogsConfiguration(
-      logGroup: map['logGroup'] as String,
-      logStreamPrefix: map['logStreamPrefix'] as String,
+      logGroup: (map['logGroup'] as String).input(),
+      logStreamPrefix: (map['logStreamPrefix'] as String).input(),
     );
   }
 }

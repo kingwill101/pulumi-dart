@@ -26,17 +26,12 @@ class GetUserSharedAccessTokenArgs {
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   GetUserSharedAccessTokenArgs({
-    required pulumi.Output<String> expiry,
-    required pulumi.Output<KeyType> keyType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> userId,
-  }) :
-      expiry = pulumi.Input.asInput<String>(expiry),
-      keyType = pulumi.Input.asInput<KeyType>(keyType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.expiry,
+    required this.keyType,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetUserSharedAccessTokenArgs {
 
   factory GetUserSharedAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSharedAccessTokenArgs(
-      expiry: pulumi.Output.create<String>(map['expiry'] as String),
-      keyType: pulumi.Output.create<KeyType>(KeyType.fromValue(map['keyType'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      expiry: (map['expiry'] as String).input(),
+      keyType: (KeyType.fromValue(map['keyType'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

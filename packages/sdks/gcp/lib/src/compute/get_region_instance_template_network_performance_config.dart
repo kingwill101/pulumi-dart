@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionInstanceTemplateNetworkPerformanceConfig {
   /// The egress bandwidth tier for the instance.
-  final String totalEgressBandwidthTier;
+  final pulumi.Input<String> totalEgressBandwidthTier;
 
   /// Creates a new [GetRegionInstanceTemplateNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier for the instance.
@@ -19,7 +20,7 @@ class GetRegionInstanceTemplateNetworkPerformanceConfig {
 
   factory GetRegionInstanceTemplateNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
+      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
     );
   }
 }

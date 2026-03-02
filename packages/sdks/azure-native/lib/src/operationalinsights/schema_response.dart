@@ -6,27 +6,27 @@ import 'column_response.dart';
 /// Table's schema.
 class SchemaResponse {
   /// Table category.
-  final List<String> categories;
+  final pulumi.Input<List<String>> categories;
   /// A list of table custom columns.
-  final List<ColumnResponse>? columns;
+  final pulumi.Input<List<ColumnResponse>>? columns;
   /// Table description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Table display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Table labels.
-  final List<String> labels;
+  final pulumi.Input<List<String>> labels;
   /// Table name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of solutions the table is affiliated with
-  final List<String> solutions;
+  final pulumi.Input<List<String>> solutions;
   /// Table's creator.
-  final String source;
+  final pulumi.Input<String> source;
   /// A list of table standard columns.
-  final List<ColumnResponse> standardColumns;
+  final pulumi.Input<List<ColumnResponse>> standardColumns;
   /// The subtype describes what APIs can be used to interact with the table, and what features are available against it.
-  final String tableSubType;
+  final pulumi.Input<String> tableSubType;
   /// Table's creator.
-  final String tableType;
+  final pulumi.Input<String> tableType;
 
   /// Creates a new [SchemaResponse].
   /// [categories] Table category.
@@ -57,14 +57,14 @@ class SchemaResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'categories': categories,
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?pulumi.Input.mapOptionalInputValue<List<ColumnResponse>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'displayName': ?displayName,
       'labels': labels,
       'name': ?name,
       'solutions': solutions,
       'source': source,
-      'standardColumns': pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(standardColumns, (value) => value.toMap()),
+      'standardColumns': pulumi.Input.mapInputValue<List<ColumnResponse>, List<Map<String, dynamic>>>(standardColumns, (value) => pulumi.Input.encodeList<ColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableSubType': tableSubType,
       'tableType': tableType,
     };
@@ -72,17 +72,17 @@ class SchemaResponse {
 
   factory SchemaResponse.fromMap(Map<String, dynamic> map) {
     return SchemaResponse(
-      categories: (map['categories'] as List).cast<String>(),
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<ColumnResponse>(map['columns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      labels: (map['labels'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      solutions: (map['solutions'] as List).cast<String>(),
-      source: map['source'] as String,
-      standardColumns: pulumi.Input.decodeList<ColumnResponse>(map['standardColumns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tableSubType: map['tableSubType'] as String,
-      tableType: map['tableType'] as String,
+      categories: ((map['categories'] as List).cast<String>()).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnResponse>(map['columns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: ((map['labels'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      solutions: ((map['solutions'] as List).cast<String>()).input(),
+      source: (map['source'] as String).input(),
+      standardColumns: (pulumi.Input.decodeList<ColumnResponse>(map['standardColumns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableSubType: (map['tableSubType'] as String).input(),
+      tableType: (map['tableType'] as String).input(),
     );
   }
 }

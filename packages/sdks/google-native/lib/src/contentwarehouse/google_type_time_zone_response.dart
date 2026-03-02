@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 class GoogleTypeTimeZoneResponse {
   /// Optional. IANA Time Zone Database version number, e.g. "2019a".
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GoogleTypeTimeZoneResponse].
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -20,7 +21,7 @@ class GoogleTypeTimeZoneResponse {
 
   factory GoogleTypeTimeZoneResponse.fromMap(Map<String, dynamic> map) {
     return GoogleTypeTimeZoneResponse(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

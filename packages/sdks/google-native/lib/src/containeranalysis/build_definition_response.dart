@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor_response.dart';
 
 class BuildDefinitionResponse {
-  final String buildType;
-  final Map<String, String> externalParameters;
-  final Map<String, String> internalParameters;
-  final List<ResourceDescriptorResponse> resolvedDependencies;
+  final pulumi.Input<String> buildType;
+  final pulumi.Input<Map<String, String>> externalParameters;
+  final pulumi.Input<Map<String, String>> internalParameters;
+  final pulumi.Input<List<ResourceDescriptorResponse>> resolvedDependencies;
 
   /// Creates a new [BuildDefinitionResponse].
   /// [buildType] Required.
@@ -26,16 +26,16 @@ class BuildDefinitionResponse {
       'buildType': buildType,
       'externalParameters': externalParameters,
       'internalParameters': internalParameters,
-      'resolvedDependencies': pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(resolvedDependencies, (value) => value.toMap()),
+      'resolvedDependencies': pulumi.Input.mapInputValue<List<ResourceDescriptorResponse>, List<Map<String, dynamic>>>(resolvedDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BuildDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return BuildDefinitionResponse(
-      buildType: map['buildType'] as String,
-      externalParameters: (map['externalParameters'] as Map).cast<String, String>(),
-      internalParameters: (map['internalParameters'] as Map).cast<String, String>(),
-      resolvedDependencies: pulumi.Input.decodeList<ResourceDescriptorResponse>(map['resolvedDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      buildType: (map['buildType'] as String).input(),
+      externalParameters: ((map['externalParameters'] as Map).cast<String, String>()).input(),
+      internalParameters: ((map['internalParameters'] as Map).cast<String, String>()).input(),
+      resolvedDependencies: (pulumi.Input.decodeList<ResourceDescriptorResponse>(map['resolvedDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of the API Bridge.
 class ApiBridgePropertiesResponse {
   /// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
-  final List<String>? allowedAddressPrefixes;
+  final pulumi.Input<List<String>>? allowedAddressPrefixes;
   /// The activation state of the API Bridge for this Communications Gateway
-  final String? configureApiBridge;
+  final pulumi.Input<String>? configureApiBridge;
   /// FQDNs for sending requests to the API Bridge endpoint
-  final List<String> endpointFqdns;
+  final pulumi.Input<List<String>> endpointFqdns;
 
   /// Creates a new [ApiBridgePropertiesResponse].
   /// [allowedAddressPrefixes] The allowed source IP addresses or CIDR ranges for accessing the API Bridge
@@ -30,9 +31,9 @@ class ApiBridgePropertiesResponse {
 
   factory ApiBridgePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiBridgePropertiesResponse(
-      allowedAddressPrefixes: map['allowedAddressPrefixes'] == null ? null : (map['allowedAddressPrefixes'] as List).cast<String>(),
-      configureApiBridge: map['configureApiBridge'] == null ? null : map['configureApiBridge'] as String,
-      endpointFqdns: (map['endpointFqdns'] as List).cast<String>(),
+      allowedAddressPrefixes: map['allowedAddressPrefixes'] == null ? null : ((map['allowedAddressPrefixes'] as List).cast<String>()).input(),
+      configureApiBridge: map['configureApiBridge'] == null ? null : (map['configureApiBridge'] as String).input(),
+      endpointFqdns: ((map['endpointFqdns'] as List).cast<String>()).input(),
     );
   }
 }

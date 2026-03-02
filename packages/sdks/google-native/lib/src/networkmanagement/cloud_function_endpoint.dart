@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Wrapper for Cloud Function attributes.
 class CloudFunctionEndpoint {
   /// A [Cloud Function](https://cloud.google.com/functions) name.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [CloudFunctionEndpoint].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
@@ -20,7 +21,7 @@ class CloudFunctionEndpoint {
 
   factory CloudFunctionEndpoint.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpoint(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

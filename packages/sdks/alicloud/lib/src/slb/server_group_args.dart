@@ -27,17 +27,12 @@ class ServerGroupArgs {
   /// [servers] The list of backend servers to be added. See `servers` below.
   /// [tags] A mapping of tags to assign to the resource.
   ServerGroupArgs({
-    pulumi.Output<bool>? deleteProtectionValidation,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ServerGroupServer>>? servers,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servers = pulumi.Input.asOptionalInput<List<ServerGroupServer>>(servers),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deleteProtectionValidation,
+    required this.loadBalancerId,
+    this.name,
+    this.servers,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servers: map['servers'] == null ? null : pulumi.Output.create<List<ServerGroupServer>>(pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

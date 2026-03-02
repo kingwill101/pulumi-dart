@@ -8,29 +8,29 @@ import 'referenced_resource_response.dart';
 /// Site network service properties.
 class SiteNetworkServicePropertiesFormatResponse {
   /// The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
-  final Map<String, ReferencedResourceResponse>? desiredStateConfigurationGroupValueReferences;
+  final pulumi.Input<Map<String, ReferencedResourceResponse>>? desiredStateConfigurationGroupValueReferences;
   /// The last state of the site network service resource.
-  final Map<String, ReferencedResourceResponse> lastStateConfigurationGroupValueReferences;
+  final pulumi.Input<Map<String, ReferencedResourceResponse>> lastStateConfigurationGroupValueReferences;
   /// The network service design version for the site network service.
-  final String lastStateNetworkServiceDesignVersionName;
+  final pulumi.Input<String> lastStateNetworkServiceDesignVersionName;
   /// Managed resource group configuration.
-  final ManagedResourceGroupConfigurationResponse? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfigurationResponse>? managedResourceGroupConfiguration;
   /// The network service design group name for the site network service.
-  final String networkServiceDesignGroupName;
+  final pulumi.Input<String> networkServiceDesignGroupName;
   /// The network service design version for the site network service.
-  final String networkServiceDesignVersionName;
+  final pulumi.Input<String> networkServiceDesignVersionName;
   /// The location of the network service design offering.
-  final String networkServiceDesignVersionOfferingLocation;
+  final pulumi.Input<String> networkServiceDesignVersionOfferingLocation;
   /// The network service design version resource reference.
-  final OpenDeploymentResourceReferenceResponse? networkServiceDesignVersionResourceReference;
+  final pulumi.Input<OpenDeploymentResourceReferenceResponse>? networkServiceDesignVersionResourceReference;
   /// The provisioning state of the site network service resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The publisher name for the site network service.
-  final String publisherName;
+  final pulumi.Input<String> publisherName;
   /// The scope of the publisher.
-  final String publisherScope;
+  final pulumi.Input<String> publisherScope;
   /// The site details
-  final ReferencedResourceResponse? siteReference;
+  final pulumi.Input<ReferencedResourceResponse>? siteReference;
 
   /// Creates a new [SiteNetworkServicePropertiesFormatResponse].
   /// [desiredStateConfigurationGroupValueReferences] The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
@@ -62,35 +62,35 @@ class SiteNetworkServicePropertiesFormatResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desiredStateConfigurationGroupValueReferences': ?desiredStateConfigurationGroupValueReferences == null ? null : pulumi.Input.encodeMapValues<ReferencedResourceResponse, Map<String, dynamic>>(desiredStateConfigurationGroupValueReferences!, (value) => value.toMap()),
-      'lastStateConfigurationGroupValueReferences': pulumi.Input.encodeMapValues<ReferencedResourceResponse, Map<String, dynamic>>(lastStateConfigurationGroupValueReferences, (value) => value.toMap()),
+      'desiredStateConfigurationGroupValueReferences': ?pulumi.Input.mapOptionalInputValue<Map<String, ReferencedResourceResponse>, Map<String, Map<String, dynamic>>>(desiredStateConfigurationGroupValueReferences, (value) => pulumi.Input.encodeMapValues<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastStateConfigurationGroupValueReferences': pulumi.Input.mapInputValue<Map<String, ReferencedResourceResponse>, Map<String, Map<String, dynamic>>>(lastStateConfigurationGroupValueReferences, (value) => pulumi.Input.encodeMapValues<ReferencedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastStateNetworkServiceDesignVersionName': lastStateNetworkServiceDesignVersionName,
-      'managedResourceGroupConfiguration': ?managedResourceGroupConfiguration == null ? null : managedResourceGroupConfiguration!.toMap(),
+      'managedResourceGroupConfiguration': ?pulumi.Input.mapOptionalInputValue<ManagedResourceGroupConfigurationResponse, Map<String, dynamic>>(managedResourceGroupConfiguration, (value) => value.toMap()),
       'networkServiceDesignGroupName': networkServiceDesignGroupName,
       'networkServiceDesignVersionName': networkServiceDesignVersionName,
       'networkServiceDesignVersionOfferingLocation': networkServiceDesignVersionOfferingLocation,
-      'networkServiceDesignVersionResourceReference': ?networkServiceDesignVersionResourceReference == null ? null : networkServiceDesignVersionResourceReference!.toMap(),
+      'networkServiceDesignVersionResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReferenceResponse, Map<String, dynamic>>(networkServiceDesignVersionResourceReference, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'publisherName': publisherName,
       'publisherScope': publisherScope,
-      'siteReference': ?siteReference == null ? null : siteReference!.toMap(),
+      'siteReference': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(siteReference, (value) => value.toMap()),
     };
   }
 
   factory SiteNetworkServicePropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return SiteNetworkServicePropertiesFormatResponse(
-      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastStateConfigurationGroupValueReferences: pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['lastStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastStateNetworkServiceDesignVersionName: map['lastStateNetworkServiceDesignVersionName'] as String,
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
-      networkServiceDesignGroupName: map['networkServiceDesignGroupName'] as String,
-      networkServiceDesignVersionName: map['networkServiceDesignVersionName'] as String,
-      networkServiceDesignVersionOfferingLocation: map['networkServiceDesignVersionOfferingLocation'] as String,
-      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : OpenDeploymentResourceReferenceResponse.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      publisherName: map['publisherName'] as String,
-      publisherScope: map['publisherScope'] as String,
-      siteReference: map['siteReference'] == null ? null : ReferencedResourceResponse.fromMap((map['siteReference'] as Map).cast<String, dynamic>()),
+      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastStateConfigurationGroupValueReferences: (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['lastStateConfigurationGroupValueReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastStateNetworkServiceDesignVersionName: (map['lastStateNetworkServiceDesignVersionName'] as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkServiceDesignGroupName: (map['networkServiceDesignGroupName'] as String).input(),
+      networkServiceDesignVersionName: (map['networkServiceDesignVersionName'] as String).input(),
+      networkServiceDesignVersionOfferingLocation: (map['networkServiceDesignVersionOfferingLocation'] as String).input(),
+      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publisherName: (map['publisherName'] as String).input(),
+      publisherScope: (map['publisherScope'] as String).input(),
+      siteReference: map['siteReference'] == null ? null : (ReferencedResourceResponse.fromMap((map['siteReference'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

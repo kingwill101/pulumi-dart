@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
 class GPUDriverInstallationConfigResponseContainerV1beta1 {
   /// Mode for how the GPU driver is installed.
-  final String gpuDriverVersion;
+  final pulumi.Input<String> gpuDriverVersion;
 
   /// Creates a new [GPUDriverInstallationConfigResponseContainerV1beta1].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
@@ -20,7 +21,7 @@ class GPUDriverInstallationConfigResponseContainerV1beta1 {
 
   factory GPUDriverInstallationConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfigResponseContainerV1beta1(
-      gpuDriverVersion: map['gpuDriverVersion'] as String,
+      gpuDriverVersion: (map['gpuDriverVersion'] as String).input(),
     );
   }
 }

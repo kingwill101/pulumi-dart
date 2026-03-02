@@ -7,27 +7,27 @@ import 'get_machine_types_machine_type_deprecated.dart';
 
 class GetMachineTypesMachineType {
   /// A list of accelerator configurations assigned to this machine type. Structure is documented below.
-  final List<GetMachineTypesMachineTypeAccelerator> accelerators;
+  final pulumi.Input<List<GetMachineTypesMachineTypeAccelerator>> accelerators;
   /// The configuration of bundled local SSD for the machine type. Structure is documented below.
-  final List<GetMachineTypesMachineTypeBundledLocalSsd> bundledLocalSsds;
+  final pulumi.Input<List<GetMachineTypesMachineTypeBundledLocalSsd>> bundledLocalSsds;
   /// The deprecation status associated with this machine type. Structure is documented below.
-  final List<GetMachineTypesMachineTypeDeprecated> deprecateds;
+  final pulumi.Input<List<GetMachineTypesMachineTypeDeprecated>> deprecateds;
   /// A textual description of the machine type.
-  final String description;
+  final pulumi.Input<String> description;
   /// The number of virtual CPUs that are available to the instance.
-  final int guestCpus;
+  final pulumi.Input<int> guestCpus;
   /// Whether this machine type has a shared CPU.
-  final bool isSharedCpus;
+  final pulumi.Input<bool> isSharedCpus;
   /// The maximum persistent disks allowed.
-  final int maximumPersistentDisks;
+  final pulumi.Input<int> maximumPersistentDisks;
   /// The maximum total persistent disks size (GB) allowed.
-  final int maximumPersistentDisksSizeGb;
+  final pulumi.Input<int> maximumPersistentDisksSizeGb;
   /// The amount of physical memory available to the instance, defined in MB.
-  final int memoryMb;
+  final pulumi.Input<int> memoryMb;
   /// The name of the machine type.
-  final String name;
+  final pulumi.Input<String> name;
   /// The server-defined URL for the machine type.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
 
   /// Creates a new [GetMachineTypesMachineType].
   /// [accelerators] A list of accelerator configurations assigned to this machine type. Structure is documented below.
@@ -57,9 +57,9 @@ class GetMachineTypesMachineType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accelerators': pulumi.Input.encodeList<GetMachineTypesMachineTypeAccelerator, Map<String, dynamic>>(accelerators, (value) => value.toMap()),
-      'bundledLocalSsds': pulumi.Input.encodeList<GetMachineTypesMachineTypeBundledLocalSsd, Map<String, dynamic>>(bundledLocalSsds, (value) => value.toMap()),
-      'deprecateds': pulumi.Input.encodeList<GetMachineTypesMachineTypeDeprecated, Map<String, dynamic>>(deprecateds, (value) => value.toMap()),
+      'accelerators': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bundledLocalSsds': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeBundledLocalSsd>, List<Map<String, dynamic>>>(bundledLocalSsds, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeBundledLocalSsd, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deprecateds': pulumi.Input.mapInputValue<List<GetMachineTypesMachineTypeDeprecated>, List<Map<String, dynamic>>>(deprecateds, (value) => pulumi.Input.encodeList<GetMachineTypesMachineTypeDeprecated, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': description,
       'guestCpus': guestCpus,
       'isSharedCpus': isSharedCpus,
@@ -73,17 +73,17 @@ class GetMachineTypesMachineType {
 
   factory GetMachineTypesMachineType.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineType(
-      accelerators: pulumi.Input.decodeList<GetMachineTypesMachineTypeAccelerator>(map['accelerators'], (value) => GetMachineTypesMachineTypeAccelerator.fromMap((value as Map).cast<String, dynamic>())),
-      bundledLocalSsds: pulumi.Input.decodeList<GetMachineTypesMachineTypeBundledLocalSsd>(map['bundledLocalSsds'], (value) => GetMachineTypesMachineTypeBundledLocalSsd.fromMap((value as Map).cast<String, dynamic>())),
-      deprecateds: pulumi.Input.decodeList<GetMachineTypesMachineTypeDeprecated>(map['deprecateds'], (value) => GetMachineTypesMachineTypeDeprecated.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      guestCpus: map['guestCpus'] as int,
-      isSharedCpus: map['isSharedCpus'] as bool,
-      maximumPersistentDisks: map['maximumPersistentDisks'] as int,
-      maximumPersistentDisksSizeGb: map['maximumPersistentDisksSizeGb'] as int,
-      memoryMb: map['memoryMb'] as int,
-      name: map['name'] as String,
-      selfLink: map['selfLink'] as String,
+      accelerators: (pulumi.Input.decodeList<GetMachineTypesMachineTypeAccelerator>(map['accelerators'], (value) => GetMachineTypesMachineTypeAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bundledLocalSsds: (pulumi.Input.decodeList<GetMachineTypesMachineTypeBundledLocalSsd>(map['bundledLocalSsds'], (value) => GetMachineTypesMachineTypeBundledLocalSsd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecateds: (pulumi.Input.decodeList<GetMachineTypesMachineTypeDeprecated>(map['deprecateds'], (value) => GetMachineTypesMachineTypeDeprecated.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (map['description'] as String).input(),
+      guestCpus: (map['guestCpus'] as int).input(),
+      isSharedCpus: (map['isSharedCpus'] as bool).input(),
+      maximumPersistentDisks: (map['maximumPersistentDisks'] as int).input(),
+      maximumPersistentDisksSizeGb: (map['maximumPersistentDisksSizeGb'] as int).input(),
+      memoryMb: (map['memoryMb'] as int).input(),
+      name: (map['name'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
     );
   }
 }

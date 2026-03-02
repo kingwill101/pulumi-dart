@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Hierarchy, to tag Sites / Hierarchy Provider nodes with what they represent
 class Hierarchy {
   /// Description of Hierarchy
-  final String description;
+  final pulumi.Input<String> description;
   /// Name of Hierarchy
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [Hierarchy].
   /// [description] Description of Hierarchy
@@ -25,8 +26,8 @@ class Hierarchy {
 
   factory Hierarchy.fromMap(Map<String, dynamic> map) {
     return Hierarchy(
-      description: map['description'] as String,
-      name: map['name'] as String,
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

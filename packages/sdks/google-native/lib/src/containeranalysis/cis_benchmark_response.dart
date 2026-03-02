@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A compliance check that is a CIS benchmark.
 class CisBenchmarkResponse {
-  final int profileLevel;
-  final String severity;
+  final pulumi.Input<int> profileLevel;
+  final pulumi.Input<String> severity;
 
   /// Creates a new [CisBenchmarkResponse].
   /// [profileLevel] Required.
@@ -23,8 +24,8 @@ class CisBenchmarkResponse {
 
   factory CisBenchmarkResponse.fromMap(Map<String, dynamic> map) {
     return CisBenchmarkResponse(
-      profileLevel: map['profileLevel'] as int,
-      severity: map['severity'] as String,
+      profileLevel: (map['profileLevel'] as int).input(),
+      severity: (map['severity'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information of orphaned users on the SQL server database.
 class OrphanedUserInfoResponse {
   /// Parent database of the user
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// Name of the orphaned user
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [OrphanedUserInfoResponse].
   /// [databaseName] Parent database of the user
@@ -25,8 +26,8 @@ class OrphanedUserInfoResponse {
 
   factory OrphanedUserInfoResponse.fromMap(Map<String, dynamic> map) {
     return OrphanedUserInfoResponse(
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

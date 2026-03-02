@@ -34,23 +34,15 @@ class GetSqlServerInstanceTelemetryArgs {
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [startTime] The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used.
   GetSqlServerInstanceTelemetryArgs({
-    pulumi.Output<String>? aggregationType,
-    pulumi.Output<List<String>>? databaseNames,
-    required pulumi.Output<String> datasetName,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? interval,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerInstanceName,
-    pulumi.Output<String>? startTime,
-  }) :
-      aggregationType = pulumi.Input.asOptionalInput<String>(aggregationType),
-      databaseNames = pulumi.Input.asOptionalInput<List<String>>(databaseNames),
-      datasetName = pulumi.Input.asInput<String>(datasetName),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asInput<String>(sqlServerInstanceName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime);
+    this.aggregationType,
+    this.databaseNames,
+    required this.datasetName,
+    this.endTime,
+    this.interval,
+    required this.resourceGroupName,
+    required this.sqlServerInstanceName,
+    this.startTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetSqlServerInstanceTelemetryArgs {
 
   factory GetSqlServerInstanceTelemetryArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceTelemetryArgs(
-      aggregationType: map['aggregationType'] == null ? null : pulumi.Output.create<String>(map['aggregationType'] as String),
-      databaseNames: map['databaseNames'] == null ? null : pulumi.Output.create<List<String>>((map['databaseNames'] as List).cast<String>()),
-      datasetName: pulumi.Output.create<String>(map['datasetName'] as String),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
+      aggregationType: map['aggregationType'] == null ? null : (map['aggregationType'] as String).input(),
+      databaseNames: map['databaseNames'] == null ? null : ((map['databaseNames'] as List).cast<String>()).input(),
+      datasetName: (map['datasetName'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

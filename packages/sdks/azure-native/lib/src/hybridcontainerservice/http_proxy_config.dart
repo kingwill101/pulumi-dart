@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configurations for provisioning the cluster with HTTP proxy servers.
 class HttpProxyConfig {
   /// The HTTP proxy server endpoint to use.
-  final String? httpProxy;
+  final pulumi.Input<String>? httpProxy;
   /// The HTTPS proxy server endpoint to use.
-  final String? httpsProxy;
+  final pulumi.Input<String>? httpsProxy;
   /// The endpoints that should not go through proxy.
-  final List<String>? noProxy;
+  final pulumi.Input<List<String>>? noProxy;
   /// Password to use for connecting to proxy server
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Alternative CA cert to use for connecting to proxy servers.
-  final String? trustedCa;
+  final pulumi.Input<String>? trustedCa;
   /// Username to use for connecting to proxy server
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [HttpProxyConfig].
   /// [httpProxy] The HTTP proxy server endpoint to use.
@@ -45,12 +46,12 @@ class HttpProxyConfig {
 
   factory HttpProxyConfig.fromMap(Map<String, dynamic> map) {
     return HttpProxyConfig(
-      httpProxy: map['httpProxy'] == null ? null : map['httpProxy'] as String,
-      httpsProxy: map['httpsProxy'] == null ? null : map['httpsProxy'] as String,
-      noProxy: map['noProxy'] == null ? null : (map['noProxy'] as List).cast<String>(),
-      password: map['password'] == null ? null : map['password'] as String,
-      trustedCa: map['trustedCa'] == null ? null : map['trustedCa'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy'] as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
+      noProxy: map['noProxy'] == null ? null : ((map['noProxy'] as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

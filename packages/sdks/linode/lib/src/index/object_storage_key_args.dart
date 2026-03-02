@@ -22,13 +22,10 @@ class ObjectStorageKeyArgs {
   /// [label] The label given to this key. For display purposes only.
   /// [regions] A set of regions where the key will grant access to create buckets.
   ObjectStorageKeyArgs({
-    pulumi.Output<List<ObjectStorageKeyBucketAccess>>? bucketAccesses,
-    required pulumi.Output<String> label,
-    pulumi.Output<List<String>>? regions,
-  }) :
-      bucketAccesses = pulumi.Input.asOptionalInput<List<ObjectStorageKeyBucketAccess>>(bucketAccesses),
-      label = pulumi.Input.asInput<String>(label),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions);
+    this.bucketAccesses,
+    required this.label,
+    this.regions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ObjectStorageKeyArgs {
 
   factory ObjectStorageKeyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyArgs(
-      bucketAccesses: map['bucketAccesses'] == null ? null : pulumi.Output.create<List<ObjectStorageKeyBucketAccess>>(pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses'], (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))),
-      label: pulumi.Output.create<String>(map['label'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
+      bucketAccesses: map['bucketAccesses'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses'], (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: (map['label'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
     );
   }
 }

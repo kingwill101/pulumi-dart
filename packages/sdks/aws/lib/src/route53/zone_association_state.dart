@@ -19,15 +19,11 @@ class ZoneAssociationState {
   /// [vpcRegion] The VPC's region. Defaults to the region of the AWS provider.
   /// [zoneId] The private hosted zone to associate.
   ZoneAssociationState({
-    pulumi.Output<String>? owningAccount,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vpcRegion,
-    pulumi.Output<String>? zoneId,
-  }) :
-      owningAccount = pulumi.Input.asOptionalInput<String>(owningAccount),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vpcRegion = pulumi.Input.asOptionalInput<String>(vpcRegion),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.owningAccount,
+    this.vpcId,
+    this.vpcRegion,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ZoneAssociationState {
 
   factory ZoneAssociationState.fromMap(Map<String, dynamic> map) {
     return ZoneAssociationState(
-      owningAccount: map['owningAccount'] == null ? null : pulumi.Output.create<String>(map['owningAccount'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcRegion: map['vpcRegion'] == null ? null : pulumi.Output.create<String>(map['vpcRegion'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      owningAccount: map['owningAccount'] == null ? null : (map['owningAccount'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

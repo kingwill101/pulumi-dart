@@ -7,13 +7,13 @@ import 'mhsmvirtual_network_rule.dart';
 /// A set of rules governing the network accessibility of a managed hsm pool.
 class MHSMNetworkRuleSet {
   /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
-  final String? bypass;
+  final pulumi.Input<String>? bypass;
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
-  final String? defaultAction;
+  final pulumi.Input<String>? defaultAction;
   /// The list of IP address rules.
-  final List<MHSMIPRule>? ipRules;
+  final pulumi.Input<List<MHSMIPRule>>? ipRules;
   /// The list of virtual network rules.
-  final List<MHSMVirtualNetworkRule>? virtualNetworkRules;
+  final pulumi.Input<List<MHSMVirtualNetworkRule>>? virtualNetworkRules;
 
   /// Creates a new [MHSMNetworkRuleSet].
   /// [bypass] Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
@@ -31,17 +31,17 @@ class MHSMNetworkRuleSet {
     return <String, dynamic>{
       'bypass': ?bypass,
       'defaultAction': ?defaultAction,
-      'ipRules': ?ipRules == null ? null : pulumi.Input.encodeList<MHSMIPRule, Map<String, dynamic>>(ipRules!, (value) => value.toMap()),
-      'virtualNetworkRules': ?virtualNetworkRules == null ? null : pulumi.Input.encodeList<MHSMVirtualNetworkRule, Map<String, dynamic>>(virtualNetworkRules!, (value) => value.toMap()),
+      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<MHSMIPRule>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<MHSMIPRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualNetworkRules': ?pulumi.Input.mapOptionalInputValue<List<MHSMVirtualNetworkRule>, List<Map<String, dynamic>>>(virtualNetworkRules, (value) => pulumi.Input.encodeList<MHSMVirtualNetworkRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MHSMNetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return MHSMNetworkRuleSet(
-      bypass: map['bypass'] == null ? null : map['bypass'] as String,
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction'] as String,
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<MHSMIPRule>(map['ipRules'], (value) => MHSMIPRule.fromMap((value as Map).cast<String, dynamic>())),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : pulumi.Input.decodeList<MHSMVirtualNetworkRule>(map['virtualNetworkRules'], (value) => MHSMVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>())),
+      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<MHSMIPRule>(map['ipRules'], (value) => MHSMIPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<MHSMVirtualNetworkRule>(map['virtualNetworkRules'], (value) => MHSMVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

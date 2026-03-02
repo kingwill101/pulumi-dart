@@ -47,31 +47,19 @@ class NatGatewayArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] VPC ID where this NAT Gateway will be created. Required when `availability_mode` is set to `regional`.
   NatGatewayArgs({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<String>? availabilityMode,
-    pulumi.Output<List<NatGatewayAvailabilityZoneAddress>>? availabilityZoneAddresses,
-    pulumi.Output<String>? connectivityType,
-    pulumi.Output<String>? privateIp,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? secondaryAllocationIds,
-    pulumi.Output<int>? secondaryPrivateIpAddressCount,
-    pulumi.Output<List<String>>? secondaryPrivateIpAddresses,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      availabilityMode = pulumi.Input.asOptionalInput<String>(availabilityMode),
-      availabilityZoneAddresses = pulumi.Input.asOptionalInput<List<NatGatewayAvailabilityZoneAddress>>(availabilityZoneAddresses),
-      connectivityType = pulumi.Input.asOptionalInput<String>(connectivityType),
-      privateIp = pulumi.Input.asOptionalInput<String>(privateIp),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondaryAllocationIds = pulumi.Input.asOptionalInput<List<String>>(secondaryAllocationIds),
-      secondaryPrivateIpAddressCount = pulumi.Input.asOptionalInput<int>(secondaryPrivateIpAddressCount),
-      secondaryPrivateIpAddresses = pulumi.Input.asOptionalInput<List<String>>(secondaryPrivateIpAddresses),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.allocationId,
+    this.availabilityMode,
+    this.availabilityZoneAddresses,
+    this.connectivityType,
+    this.privateIp,
+    this.region,
+    this.secondaryAllocationIds,
+    this.secondaryPrivateIpAddressCount,
+    this.secondaryPrivateIpAddresses,
+    this.subnetId,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class NatGatewayArgs {
 
   factory NatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayArgs(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      availabilityMode: map['availabilityMode'] == null ? null : pulumi.Output.create<String>(map['availabilityMode'] as String),
-      availabilityZoneAddresses: map['availabilityZoneAddresses'] == null ? null : pulumi.Output.create<List<NatGatewayAvailabilityZoneAddress>>(pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(map['availabilityZoneAddresses'], (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      connectivityType: map['connectivityType'] == null ? null : pulumi.Output.create<String>(map['connectivityType'] as String),
-      privateIp: map['privateIp'] == null ? null : pulumi.Output.create<String>(map['privateIp'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secondaryAllocationIds: map['secondaryAllocationIds'] == null ? null : pulumi.Output.create<List<String>>((map['secondaryAllocationIds'] as List).cast<String>()),
-      secondaryPrivateIpAddressCount: map['secondaryPrivateIpAddressCount'] == null ? null : pulumi.Output.create<int>(map['secondaryPrivateIpAddressCount'] as int),
-      secondaryPrivateIpAddresses: map['secondaryPrivateIpAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['secondaryPrivateIpAddresses'] as List).cast<String>()),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      availabilityMode: map['availabilityMode'] == null ? null : (map['availabilityMode'] as String).input(),
+      availabilityZoneAddresses: map['availabilityZoneAddresses'] == null ? null : (pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(map['availabilityZoneAddresses'], (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType'] as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secondaryAllocationIds: map['secondaryAllocationIds'] == null ? null : ((map['secondaryAllocationIds'] as List).cast<String>()).input(),
+      secondaryPrivateIpAddressCount: map['secondaryPrivateIpAddressCount'] == null ? null : (map['secondaryPrivateIpAddressCount'] as int).input(),
+      secondaryPrivateIpAddresses: map['secondaryPrivateIpAddresses'] == null ? null : ((map['secondaryPrivateIpAddresses'] as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

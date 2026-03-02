@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAttachmentFilter {
   /// Name of the field to filter by, as defined by the [underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
-  final String name;
+  final pulumi.Input<String> name;
   /// List of one or more values for the filter.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetAttachmentFilter].
   /// [name] Name of the field to filter by, as defined by the [underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
@@ -24,8 +25,8 @@ class GetAttachmentFilter {
 
   factory GetAttachmentFilter.fromMap(Map<String, dynamic> map) {
     return GetAttachmentFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

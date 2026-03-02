@@ -37,21 +37,14 @@ class PrivateConnectionArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
   PrivateConnectionArgs({
-    pulumi.Output<bool>? createWithoutValidation,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig,
-  }) :
-      createWithoutValidation = pulumi.Input.asOptionalInput<bool>(createWithoutValidation),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vpcPeeringConfig = pulumi.Input.asInput<PrivateConnectionVpcPeeringConfig>(vpcPeeringConfig);
+    this.createWithoutValidation,
+    this.displayName,
+    this.labels,
+    required this.location,
+    required this.privateConnectionId,
+    this.project,
+    required this.vpcPeeringConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class PrivateConnectionArgs {
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : pulumi.Output.create<bool>(map['createWithoutValidation'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vpcPeeringConfig: pulumi.Output.create<PrivateConnectionVpcPeeringConfig>(PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())),
+      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vpcPeeringConfig: (PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

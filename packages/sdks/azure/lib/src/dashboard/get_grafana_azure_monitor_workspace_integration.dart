@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGrafanaAzureMonitorWorkspaceIntegration {
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [GetGrafanaAzureMonitorWorkspaceIntegration].
   /// [resourceId] Required.
@@ -18,7 +19,7 @@ class GetGrafanaAzureMonitorWorkspaceIntegration {
 
   factory GetGrafanaAzureMonitorWorkspaceIntegration.fromMap(Map<String, dynamic> map) {
     return GetGrafanaAzureMonitorWorkspaceIntegration(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

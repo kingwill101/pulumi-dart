@@ -19,13 +19,10 @@ class GetCertificateArgs {
   /// [certificateName] The name of certificate.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetCertificateArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> certificateName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      certificateName = pulumi.Input.asInput<String>(certificateName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.certificateName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      certificateName: pulumi.Output.create<String>(map['certificateName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of the trusted signing account.
 class AccountSkuResponse {
   /// Name of the SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AccountSkuResponse].
   /// [name] Name of the SKU.
@@ -20,7 +21,7 @@ class AccountSkuResponse {
 
   factory AccountSkuResponse.fromMap(Map<String, dynamic> map) {
     return AccountSkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -9,38 +9,38 @@ import 'user_property.dart';
 /// Data Lake Analytics U-SQL activity.
 class DataLakeAnalyticsUSQLActivity {
   /// Compilation mode of U-SQL. Must be one of these values : Semantic, Full and SingleBox. Type: string (or Expression with resultType string).
-  final dynamic compilationMode;
+  final pulumi.Input<dynamic>? compilationMode;
   /// The maximum number of nodes simultaneously used to run the job. Default value is 1. Type: integer (or Expression with resultType integer), minimum: 1.
-  final dynamic degreeOfParallelism;
+  final pulumi.Input<dynamic>? degreeOfParallelism;
   /// Activity depends on condition.
-  final List<ActivityDependency>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>>? dependsOn;
   /// Activity description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Linked service reference.
-  final LinkedServiceReference? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
   /// Activity name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final String? onInactiveMarkAs;
+  final pulumi.Input<String>? onInactiveMarkAs;
   /// Parameters for U-SQL job request.
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Activity policy.
-  final ActivityPolicy? policy;
+  final pulumi.Input<ActivityPolicy>? policy;
   /// Determines which jobs out of all that are queued should be selected to run first. The lower the number, the higher the priority. Default value is 1000. Type: integer (or Expression with resultType integer), minimum: 1.
-  final dynamic priority;
+  final pulumi.Input<dynamic>? priority;
   /// Runtime version of the U-SQL engine to use. Type: string (or Expression with resultType string).
-  final dynamic runtimeVersion;
+  final pulumi.Input<dynamic>? runtimeVersion;
   /// Script linked service reference.
-  final LinkedServiceReference scriptLinkedService;
+  final pulumi.Input<LinkedServiceReference> scriptLinkedService;
   /// Case-sensitive path to folder that contains the U-SQL script. Type: string (or Expression with resultType string).
-  final dynamic scriptPath;
+  final pulumi.Input<dynamic> scriptPath;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Type of activity.
   /// Expected value is 'DataLakeAnalyticsU-SQL'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Activity user properties.
-  final List<UserProperty>? userProperties;
+  final pulumi.Input<List<UserProperty>>? userProperties;
 
   /// Creates a new [DataLakeAnalyticsUSQLActivity].
   /// [compilationMode] Compilation mode of U-SQL. Must be one of these values : Semantic, Full and SingleBox. Type: string (or Expression with resultType string).
@@ -82,41 +82,41 @@ class DataLakeAnalyticsUSQLActivity {
     return <String, dynamic>{
       'compilationMode': ?compilationMode,
       'degreeOfParallelism': ?degreeOfParallelism,
-      'dependsOn': ?dependsOn == null ? null : pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(dependsOn!, (value) => value.toMap()),
+      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
-      'linkedServiceName': ?linkedServiceName == null ? null : linkedServiceName!.toMap(),
+      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'parameters': ?parameters,
-      'policy': ?policy == null ? null : policy!.toMap(),
+      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'priority': ?priority,
       'runtimeVersion': ?runtimeVersion,
-      'scriptLinkedService': scriptLinkedService.toMap(),
+      'scriptLinkedService': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(scriptLinkedService, (value) => value.toMap()),
       'scriptPath': scriptPath,
       'state': ?state,
       'type': type,
-      'userProperties': ?userProperties == null ? null : pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(userProperties!, (value) => value.toMap()),
+      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DataLakeAnalyticsUSQLActivity.fromMap(Map<String, dynamic> map) {
     return DataLakeAnalyticsUSQLActivity(
-      compilationMode: map['compilationMode'] == null ? null : map['compilationMode'],
-      degreeOfParallelism: map['degreeOfParallelism'] == null ? null : map['degreeOfParallelism'],
-      dependsOn: map['dependsOn'] == null ? null : pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      linkedServiceName: map['linkedServiceName'] == null ? null : LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : map['onInactiveMarkAs'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      policy: map['policy'] == null ? null : ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] == null ? null : map['priority'],
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'],
-      scriptLinkedService: LinkedServiceReference.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>()),
-      scriptPath: map['scriptPath'],
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] as String,
-      userProperties: map['userProperties'] == null ? null : pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>())),
+      compilationMode: map['compilationMode'] == null ? null : (map['compilationMode']).input(),
+      degreeOfParallelism: map['degreeOfParallelism'] == null ? null : (map['degreeOfParallelism']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']).input(),
+      scriptLinkedService: (LinkedServiceReference.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>())).input(),
+      scriptPath: (map['scriptPath']).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

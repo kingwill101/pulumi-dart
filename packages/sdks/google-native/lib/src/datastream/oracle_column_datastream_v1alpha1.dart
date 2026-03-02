@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Oracle Column.
 class OracleColumnDatastreamV1alpha1 {
   /// Column name.
-  final String? columnName;
+  final pulumi.Input<String>? columnName;
   /// The Oracle data type.
-  final String? dataType;
+  final pulumi.Input<String>? dataType;
   /// Column encoding.
-  final String? encoding;
+  final pulumi.Input<String>? encoding;
   /// Column length.
-  final int? length;
+  final pulumi.Input<int>? length;
   /// Whether or not the column can accept a null value.
-  final bool? nullable;
+  final pulumi.Input<bool>? nullable;
   /// The ordinal position of the column in the table.
-  final int? ordinalPosition;
+  final pulumi.Input<int>? ordinalPosition;
   /// Column precision.
-  final int? precision;
+  final pulumi.Input<int>? precision;
   /// Whether or not the column represents a primary key.
-  final bool? primaryKey;
+  final pulumi.Input<bool>? primaryKey;
   /// Column scale.
-  final int? scale;
+  final pulumi.Input<int>? scale;
 
   /// Creates a new [OracleColumnDatastreamV1alpha1].
   /// [columnName] Column name.
@@ -60,15 +61,15 @@ class OracleColumnDatastreamV1alpha1 {
 
   factory OracleColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleColumnDatastreamV1alpha1(
-      columnName: map['columnName'] == null ? null : map['columnName'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      length: map['length'] == null ? null : map['length'] as int,
-      nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      ordinalPosition: map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
-      precision: map['precision'] == null ? null : map['precision'] as int,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as bool,
-      scale: map['scale'] == null ? null : map['scale'] as int,
+      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      length: map['length'] == null ? null : (map['length'] as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
+      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
+      scale: map['scale'] == null ? null : (map['scale'] as int).input(),
     );
   }
 }

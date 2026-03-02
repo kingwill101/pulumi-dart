@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the Image Specifications
 class ImageResponse {
   /// Image reference
-  final String? reference;
+  final pulumi.Input<String>? reference;
   /// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ImageResponse].
   /// [reference] Image reference
@@ -25,8 +26,8 @@ class ImageResponse {
 
   factory ImageResponse.fromMap(Map<String, dynamic> map) {
     return ImageResponse(
-      reference: map['reference'] == null ? null : map['reference'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

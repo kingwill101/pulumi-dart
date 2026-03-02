@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOntapStorageVirtualMachineEndpointNf {
-  final String dnsName;
-  final List<String> ipAddresses;
+  final pulumi.Input<String> dnsName;
+  final pulumi.Input<List<String>> ipAddresses;
 
   /// Creates a new [GetOntapStorageVirtualMachineEndpointNf].
   /// [dnsName] Required.
@@ -22,8 +23,8 @@ class GetOntapStorageVirtualMachineEndpointNf {
 
   factory GetOntapStorageVirtualMachineEndpointNf.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineEndpointNf(
-      dnsName: map['dnsName'] as String,
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
+      dnsName: (map['dnsName'] as String).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

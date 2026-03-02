@@ -20,13 +20,10 @@ class GetGrafanaArgs {
   /// [name] Name of the grafana dashboard.
   /// [resourceGroupName] Name of the resource group where resource belongs to.
   GetGrafanaArgs({
-    pulumi.Output<GetGrafanaIdentity>? identity,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      identity = pulumi.Input.asOptionalInput<GetGrafanaIdentity>(identity),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.identity,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetGrafanaArgs {
 
   factory GetGrafanaArgs.fromMap(Map<String, dynamic> map) {
     return GetGrafanaArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<GetGrafanaIdentity>(GetGrafanaIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      identity: map['identity'] == null ? null : (GetGrafanaIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

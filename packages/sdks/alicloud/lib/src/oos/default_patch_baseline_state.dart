@@ -13,11 +13,9 @@ class DefaultPatchBaselineState {
   /// [patchBaselineId] The ID of the patch baseline.
   /// [patchBaselineName] The name of the patch baseline.
   DefaultPatchBaselineState({
-    pulumi.Output<String>? patchBaselineId,
-    pulumi.Output<String>? patchBaselineName,
-  }) :
-      patchBaselineId = pulumi.Input.asOptionalInput<String>(patchBaselineId),
-      patchBaselineName = pulumi.Input.asOptionalInput<String>(patchBaselineName);
+    this.patchBaselineId,
+    this.patchBaselineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class DefaultPatchBaselineState {
 
   factory DefaultPatchBaselineState.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineState(
-      patchBaselineId: map['patchBaselineId'] == null ? null : pulumi.Output.create<String>(map['patchBaselineId'] as String),
-      patchBaselineName: map['patchBaselineName'] == null ? null : pulumi.Output.create<String>(map['patchBaselineName'] as String),
+      patchBaselineId: map['patchBaselineId'] == null ? null : (map['patchBaselineId'] as String).input(),
+      patchBaselineName: map['patchBaselineName'] == null ? null : (map['patchBaselineName'] as String).input(),
     );
   }
 }

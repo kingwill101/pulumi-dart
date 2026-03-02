@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionVpnBgpConfig {
   /// The authentication keys for BGP routing protocols.
-  final String? authKey;
+  final pulumi.Input<String>? authKey;
   /// Local asn.
-  final int? localAsn;
+  final pulumi.Input<int>? localAsn;
   /// Local bgp IP.
-  final String? localBgpIp;
+  final pulumi.Input<String>? localBgpIp;
   /// The counterpart autonomous system number.
-  final int? peerAsn;
+  final pulumi.Input<int>? peerAsn;
   /// The BGP address on the other side.
-  final String? peerBgpIp;
+  final pulumi.Input<String>? peerBgpIp;
   /// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// BGP Tunnel CIDR.
-  final String? tunnelCidr;
+  final pulumi.Input<String>? tunnelCidr;
 
   /// Creates a new [GetConnectionsConnectionVpnBgpConfig].
   /// [authKey] The authentication keys for BGP routing protocols.
@@ -49,13 +50,13 @@ class GetConnectionsConnectionVpnBgpConfig {
 
   factory GetConnectionsConnectionVpnBgpConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionVpnBgpConfig(
-      authKey: map['authKey'] == null ? null : map['authKey'] as String,
-      localAsn: map['localAsn'] == null ? null : map['localAsn'] as int,
-      localBgpIp: map['localBgpIp'] == null ? null : map['localBgpIp'] as String,
-      peerAsn: map['peerAsn'] == null ? null : map['peerAsn'] as int,
-      peerBgpIp: map['peerBgpIp'] == null ? null : map['peerBgpIp'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tunnelCidr: map['tunnelCidr'] == null ? null : map['tunnelCidr'] as String,
+      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
+      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr'] as String).input(),
     );
   }
 }

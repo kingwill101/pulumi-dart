@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
 class OSPolicyResourcePackageResourceYUMOsconfigV1alpha {
   /// Package name.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [OSPolicyResourcePackageResourceYUMOsconfigV1alpha].
   /// [name] Package name.
@@ -20,7 +21,7 @@ class OSPolicyResourcePackageResourceYUMOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceYUMOsconfigV1alpha(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class DirectoryState {
   /// [tags] A mapping of tags which should be assigned to the AAD B2C Directory.
   /// [tenantId] The Tenant ID for the AAD B2C tenant.
   DirectoryState({
-    pulumi.Output<String>? billingType,
-    pulumi.Output<String>? countryCode,
-    pulumi.Output<String>? dataResidencyLocation,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? effectiveStartDate,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      billingType = pulumi.Input.asOptionalInput<String>(billingType),
-      countryCode = pulumi.Input.asOptionalInput<String>(countryCode),
-      dataResidencyLocation = pulumi.Input.asOptionalInput<String>(dataResidencyLocation),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      effectiveStartDate = pulumi.Input.asOptionalInput<String>(effectiveStartDate),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.billingType,
+    this.countryCode,
+    this.dataResidencyLocation,
+    this.displayName,
+    this.domainName,
+    this.effectiveStartDate,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class DirectoryState {
 
   factory DirectoryState.fromMap(Map<String, dynamic> map) {
     return DirectoryState(
-      billingType: map['billingType'] == null ? null : pulumi.Output.create<String>(map['billingType'] as String),
-      countryCode: map['countryCode'] == null ? null : pulumi.Output.create<String>(map['countryCode'] as String),
-      dataResidencyLocation: map['dataResidencyLocation'] == null ? null : pulumi.Output.create<String>(map['dataResidencyLocation'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      effectiveStartDate: map['effectiveStartDate'] == null ? null : pulumi.Output.create<String>(map['effectiveStartDate'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      dataResidencyLocation: map['dataResidencyLocation'] == null ? null : (map['dataResidencyLocation'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      effectiveStartDate: map['effectiveStartDate'] == null ? null : (map['effectiveStartDate'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

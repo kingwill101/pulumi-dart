@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActionGroupAzureFunctionReceiver {
   /// The Azure resource ID of the function app.
-  final String functionAppResourceId;
+  final pulumi.Input<String> functionAppResourceId;
   /// The function name in the function app.
-  final String functionName;
+  final pulumi.Input<String> functionName;
   /// The HTTP trigger url where HTTP request sent to.
-  final String httpTriggerUrl;
+  final pulumi.Input<String> httpTriggerUrl;
   /// The name of the Azure Function receiver.
-  final String name;
+  final pulumi.Input<String> name;
   /// Enables or disables the common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupAzureFunctionReceiver].
   /// [functionAppResourceId] The Azure resource ID of the function app.
@@ -39,11 +40,11 @@ class ActionGroupAzureFunctionReceiver {
 
   factory ActionGroupAzureFunctionReceiver.fromMap(Map<String, dynamic> map) {
     return ActionGroupAzureFunctionReceiver(
-      functionAppResourceId: map['functionAppResourceId'] as String,
-      functionName: map['functionName'] as String,
-      httpTriggerUrl: map['httpTriggerUrl'] as String,
-      name: map['name'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
+      functionAppResourceId: (map['functionAppResourceId'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      httpTriggerUrl: (map['httpTriggerUrl'] as String).input(),
+      name: (map['name'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

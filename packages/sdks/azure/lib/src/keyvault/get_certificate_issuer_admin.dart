@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCertificateIssuerAdmin {
   /// E-mail address of the admin.
-  final String emailAddress;
+  final pulumi.Input<String> emailAddress;
   /// First name of the admin.
-  final String firstName;
+  final pulumi.Input<String> firstName;
   /// Last name of the admin.
-  final String lastName;
+  final pulumi.Input<String> lastName;
   /// Phone number of the admin.
-  final String phone;
+  final pulumi.Input<String> phone;
 
   /// Creates a new [GetCertificateIssuerAdmin].
   /// [emailAddress] E-mail address of the admin.
@@ -34,10 +35,10 @@ class GetCertificateIssuerAdmin {
 
   factory GetCertificateIssuerAdmin.fromMap(Map<String, dynamic> map) {
     return GetCertificateIssuerAdmin(
-      emailAddress: map['emailAddress'] as String,
-      firstName: map['firstName'] as String,
-      lastName: map['lastName'] as String,
-      phone: map['phone'] as String,
+      emailAddress: (map['emailAddress'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      phone: (map['phone'] as String).input(),
     );
   }
 }

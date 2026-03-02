@@ -19,13 +19,10 @@ class SnapshotScheduleAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduleIdentifier] The snapshot schedule identifier.
   SnapshotScheduleAssociationArgs({
-    required pulumi.Output<String> clusterIdentifier,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scheduleIdentifier,
-  }) :
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleIdentifier = pulumi.Input.asInput<String>(scheduleIdentifier);
+    required this.clusterIdentifier,
+    this.region,
+    required this.scheduleIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SnapshotScheduleAssociationArgs {
 
   factory SnapshotScheduleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationArgs(
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleIdentifier: pulumi.Output.create<String>(map['scheduleIdentifier'] as String),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleIdentifier: (map['scheduleIdentifier'] as String).input(),
     );
   }
 }

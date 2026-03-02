@@ -52,35 +52,21 @@ class CollaborationState {
   /// [tagsAll] Optional.
   /// [updateTime] Date and time the collaboration was last updated.
   CollaborationState({
-    pulumi.Output<String>? analyticsEngine,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? creatorDisplayName,
-    pulumi.Output<List<String>>? creatorMemberAbilities,
-    pulumi.Output<CollaborationDataEncryptionMetadata>? dataEncryptionMetadata,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<CollaborationMember>>? members,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? queryLogStatus,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? updateTime,
-  }) :
-      analyticsEngine = pulumi.Input.asOptionalInput<String>(analyticsEngine),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      creatorDisplayName = pulumi.Input.asOptionalInput<String>(creatorDisplayName),
-      creatorMemberAbilities = pulumi.Input.asOptionalInput<List<String>>(creatorMemberAbilities),
-      dataEncryptionMetadata = pulumi.Input.asOptionalInput<CollaborationDataEncryptionMetadata>(dataEncryptionMetadata),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      members = pulumi.Input.asOptionalInput<List<CollaborationMember>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queryLogStatus = pulumi.Input.asOptionalInput<String>(queryLogStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.analyticsEngine,
+    this.arn,
+    this.createTime,
+    this.creatorDisplayName,
+    this.creatorMemberAbilities,
+    this.dataEncryptionMetadata,
+    this.description,
+    this.members,
+    this.name,
+    this.queryLogStatus,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class CollaborationState {
 
   factory CollaborationState.fromMap(Map<String, dynamic> map) {
     return CollaborationState(
-      analyticsEngine: map['analyticsEngine'] == null ? null : pulumi.Output.create<String>(map['analyticsEngine'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      creatorDisplayName: map['creatorDisplayName'] == null ? null : pulumi.Output.create<String>(map['creatorDisplayName'] as String),
-      creatorMemberAbilities: map['creatorMemberAbilities'] == null ? null : pulumi.Output.create<List<String>>((map['creatorMemberAbilities'] as List).cast<String>()),
-      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : pulumi.Output.create<CollaborationDataEncryptionMetadata>(CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<CollaborationMember>>(pulumi.Input.decodeList<CollaborationMember>(map['members'], (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queryLogStatus: map['queryLogStatus'] == null ? null : pulumi.Output.create<String>(map['queryLogStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      analyticsEngine: map['analyticsEngine'] == null ? null : (map['analyticsEngine'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      creatorDisplayName: map['creatorDisplayName'] == null ? null : (map['creatorDisplayName'] as String).input(),
+      creatorMemberAbilities: map['creatorMemberAbilities'] == null ? null : ((map['creatorMemberAbilities'] as List).cast<String>()).input(),
+      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : (CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<CollaborationMember>(map['members'], (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queryLogStatus: map['queryLogStatus'] == null ? null : (map['queryLogStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

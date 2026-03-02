@@ -20,13 +20,10 @@ class TableArgs {
   /// [name] The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   TableArgs({
-    pulumi.Output<List<TableAcl>>? acls,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> storageAccountName,
-  }) :
-      acls = pulumi.Input.asOptionalInput<List<TableAcl>>(acls),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountName = pulumi.Input.asInput<String>(storageAccountName);
+    this.acls,
+    this.name,
+    required this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      acls: map['acls'] == null ? null : pulumi.Output.create<List<TableAcl>>(pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountName: pulumi.Output.create<String>(map['storageAccountName'] as String),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountName: (map['storageAccountName'] as String).input(),
     );
   }
 }

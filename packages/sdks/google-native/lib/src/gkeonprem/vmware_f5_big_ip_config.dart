@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents configuration parameters for an F5 BIG-IP load balancer.
 class VmwareF5BigIpConfig {
   /// The load balancer's IP address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The preexisting partition to be used by the load balancer. This partition is usually created for the admin cluster for example: 'my-f5-admin-partition'.
-  final String? partition;
+  final pulumi.Input<String>? partition;
   /// The pool name. Only necessary, if using SNAT.
-  final String? snatPool;
+  final pulumi.Input<String>? snatPool;
 
   /// Creates a new [VmwareF5BigIpConfig].
   /// [address] The load balancer's IP address.
@@ -30,9 +31,9 @@ class VmwareF5BigIpConfig {
 
   factory VmwareF5BigIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareF5BigIpConfig(
-      address: map['address'] == null ? null : map['address'] as String,
-      partition: map['partition'] == null ? null : map['partition'] as String,
-      snatPool: map['snatPool'] == null ? null : map['snatPool'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      snatPool: map['snatPool'] == null ? null : (map['snatPool'] as String).input(),
     );
   }
 }

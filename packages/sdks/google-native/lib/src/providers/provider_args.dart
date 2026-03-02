@@ -28,19 +28,13 @@ class ProviderArgs {
   /// [region] The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
   /// [zone] The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
   ProviderArgs({
-    pulumi.Output<String>? appendUserAgent,
-    pulumi.Output<bool>? disablePartnerName,
-    pulumi.Output<String>? partnerName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? zone,
-  }) :
-      appendUserAgent = pulumi.Input.asOptionalInput<String>(appendUserAgent),
-      disablePartnerName = pulumi.Input.asOptionalInput<bool>(disablePartnerName),
-      partnerName = pulumi.Input.asOptionalInput<String>(partnerName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.appendUserAgent,
+    this.disablePartnerName,
+    this.partnerName,
+    this.project,
+    this.region,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      appendUserAgent: map['appendUserAgent'] == null ? null : pulumi.Output.create<String>(map['appendUserAgent'] as String),
-      disablePartnerName: map['disablePartnerName'] == null ? null : pulumi.Output.create<bool>(map['disablePartnerName'] as bool),
-      partnerName: map['partnerName'] == null ? null : pulumi.Output.create<String>(map['partnerName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      appendUserAgent: map['appendUserAgent'] == null ? null : (map['appendUserAgent'] as String).input(),
+      disablePartnerName: map['disablePartnerName'] == null ? null : (map['disablePartnerName'] as bool).input(),
+      partnerName: map['partnerName'] == null ? null : (map['partnerName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

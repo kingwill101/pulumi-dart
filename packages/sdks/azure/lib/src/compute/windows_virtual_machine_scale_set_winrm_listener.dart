@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsVirtualMachineScaleSetWinrmListener {
   /// The Secret URL of a Key Vault Certificate, which must be specified when `protocol` is set to `Https`. Changing this forces a new resource to be created.
   ///
   /// > **Note:** This can be sourced from the `secret_id` field within the `azure.keyvault.Certificate` Resource.
-  final String? certificateUrl;
+  final pulumi.Input<String>? certificateUrl;
   /// The Protocol of the WinRM Listener. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [WindowsVirtualMachineScaleSetWinrmListener].
   /// [certificateUrl] The Secret URL of a Key Vault Certificate, which must be specified when `protocol` is set to `Https`. Changing this forces a new resource to be created.
@@ -26,8 +27,8 @@ class WindowsVirtualMachineScaleSetWinrmListener {
 
   factory WindowsVirtualMachineScaleSetWinrmListener.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetWinrmListener(
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
-      protocol: map['protocol'] as String,
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

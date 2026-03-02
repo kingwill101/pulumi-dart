@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_id.dart';
 import 'scale_settings.dart';
 import 'user_account_credentials.dart';
@@ -8,27 +9,27 @@ import 'virtual_machine_image.dart';
 /// AML Compute properties
 class AmlComputeProperties {
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final bool? enableNodePublicIp;
+  final pulumi.Input<bool>? enableNodePublicIp;
   /// Network is isolated or not
-  final bool? isolatedNetwork;
+  final pulumi.Input<bool>? isolatedNetwork;
   /// Compute OS Type
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// A property bag containing additional properties.
-  final dynamic propertyBag;
+  final pulumi.Input<dynamic>? propertyBag;
   /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-  final String? remoteLoginPortPublicAccess;
+  final pulumi.Input<String>? remoteLoginPortPublicAccess;
   /// Scale settings for AML Compute
-  final ScaleSettings? scaleSettings;
+  final pulumi.Input<ScaleSettings>? scaleSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final ResourceId? subnet;
+  final pulumi.Input<ResourceId>? subnet;
   /// Credentials for an administrator user account that will be created on each compute node.
-  final UserAccountCredentials? userAccountCredentials;
+  final pulumi.Input<UserAccountCredentials>? userAccountCredentials;
   /// Virtual Machine image for AML Compute - windows only
-  final VirtualMachineImage? virtualMachineImage;
+  final pulumi.Input<VirtualMachineImage>? virtualMachineImage;
   /// Virtual Machine priority
-  final String? vmPriority;
+  final pulumi.Input<String>? vmPriority;
   /// Virtual Machine Size
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [AmlComputeProperties].
   /// [enableNodePublicIp] Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
@@ -63,10 +64,10 @@ class AmlComputeProperties {
       'osType': ?osType,
       'propertyBag': ?propertyBag,
       'remoteLoginPortPublicAccess': ?remoteLoginPortPublicAccess,
-      'scaleSettings': ?scaleSettings == null ? null : scaleSettings!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
-      'userAccountCredentials': ?userAccountCredentials == null ? null : userAccountCredentials!.toMap(),
-      'virtualMachineImage': ?virtualMachineImage == null ? null : virtualMachineImage!.toMap(),
+      'scaleSettings': ?pulumi.Input.mapOptionalInputValue<ScaleSettings, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'userAccountCredentials': ?pulumi.Input.mapOptionalInputValue<UserAccountCredentials, Map<String, dynamic>>(userAccountCredentials, (value) => value.toMap()),
+      'virtualMachineImage': ?pulumi.Input.mapOptionalInputValue<VirtualMachineImage, Map<String, dynamic>>(virtualMachineImage, (value) => value.toMap()),
       'vmPriority': ?vmPriority,
       'vmSize': ?vmSize,
     };
@@ -74,17 +75,17 @@ class AmlComputeProperties {
 
   factory AmlComputeProperties.fromMap(Map<String, dynamic> map) {
     return AmlComputeProperties(
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : map['enableNodePublicIp'] as bool,
-      isolatedNetwork: map['isolatedNetwork'] == null ? null : map['isolatedNetwork'] as bool,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      propertyBag: map['propertyBag'] == null ? null : map['propertyBag'],
-      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : map['remoteLoginPortPublicAccess'] as String,
-      scaleSettings: map['scaleSettings'] == null ? null : ScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      userAccountCredentials: map['userAccountCredentials'] == null ? null : UserAccountCredentials.fromMap((map['userAccountCredentials'] as Map).cast<String, dynamic>()),
-      virtualMachineImage: map['virtualMachineImage'] == null ? null : VirtualMachineImage.fromMap((map['virtualMachineImage'] as Map).cast<String, dynamic>()),
-      vmPriority: map['vmPriority'] == null ? null : map['vmPriority'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
+      isolatedNetwork: map['isolatedNetwork'] == null ? null : (map['isolatedNetwork'] as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']).input(),
+      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : (map['remoteLoginPortPublicAccess'] as String).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (ScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      userAccountCredentials: map['userAccountCredentials'] == null ? null : (UserAccountCredentials.fromMap((map['userAccountCredentials'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineImage: map['virtualMachineImage'] == null ? null : (VirtualMachineImage.fromMap((map['virtualMachineImage'] as Map).cast<String, dynamic>())).input(),
+      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

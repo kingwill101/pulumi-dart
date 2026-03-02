@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobCopyDestinationEncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
   /// The BigQuery Service Account associated with your project requires access to this encryption key.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
   /// (Output)
   /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
-  final String? kmsKeyVersion;
+  final pulumi.Input<String>? kmsKeyVersion;
 
   /// Creates a new [JobCopyDestinationEncryptionConfiguration].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
@@ -26,8 +27,8 @@ class JobCopyDestinationEncryptionConfiguration {
 
   factory JobCopyDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return JobCopyDestinationEncryptionConfiguration(
-      kmsKeyName: map['kmsKeyName'] as String,
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : map['kmsKeyVersion'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
     );
   }
 }

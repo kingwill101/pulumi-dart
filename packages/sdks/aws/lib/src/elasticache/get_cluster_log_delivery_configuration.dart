@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterLogDeliveryConfiguration {
-  final String destination;
-  final String destinationType;
-  final String logFormat;
-  final String logType;
+  final pulumi.Input<String> destination;
+  final pulumi.Input<String> destinationType;
+  final pulumi.Input<String> logFormat;
+  final pulumi.Input<String> logType;
 
   /// Creates a new [GetClusterLogDeliveryConfiguration].
   /// [destination] Required.
@@ -30,10 +31,10 @@ class GetClusterLogDeliveryConfiguration {
 
   factory GetClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetClusterLogDeliveryConfiguration(
-      destination: map['destination'] as String,
-      destinationType: map['destinationType'] as String,
-      logFormat: map['logFormat'] as String,
-      logType: map['logType'] as String,
+      destination: (map['destination'] as String).input(),
+      destinationType: (map['destinationType'] as String).input(),
+      logFormat: (map['logFormat'] as String).input(),
+      logType: (map['logType'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class L2NetworkAttachmentConfiguration {
   /// The resource ID of the network that is being configured for attachment.
-  final String networkId;
+  final pulumi.Input<String> networkId;
   /// The indicator of how this network will be utilized by the Kubernetes cluster.
-  final String? pluginType;
+  final pulumi.Input<String>? pluginType;
 
   /// Creates a new [L2NetworkAttachmentConfiguration].
   /// [networkId] The resource ID of the network that is being configured for attachment.
@@ -24,8 +25,8 @@ class L2NetworkAttachmentConfiguration {
 
   factory L2NetworkAttachmentConfiguration.fromMap(Map<String, dynamic> map) {
     return L2NetworkAttachmentConfiguration(
-      networkId: map['networkId'] as String,
-      pluginType: map['pluginType'] == null ? null : map['pluginType'] as String,
+      networkId: (map['networkId'] as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
     );
   }
 }

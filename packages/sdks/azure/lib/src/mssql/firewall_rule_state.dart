@@ -21,15 +21,11 @@ class FirewallRuleState {
   /// [serverId] The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The starting IP address to allow through the firewall for this rule.
   FirewallRuleState({
-    pulumi.Output<String>? endIpAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asOptionalInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      startIpAddress = pulumi.Input.asOptionalInput<String>(startIpAddress);
+    this.endIpAddress,
+    this.name,
+    this.serverId,
+    this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class FirewallRuleState {
 
   factory FirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      startIpAddress: map['startIpAddress'] == null ? null : pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
     );
   }
 }

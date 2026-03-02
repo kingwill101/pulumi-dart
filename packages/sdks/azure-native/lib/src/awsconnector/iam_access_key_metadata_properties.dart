@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_iam_access_key_metadata_properties.dart';
 
 /// Definition of IamAccessKeyMetadata
 class IamAccessKeyMetadataProperties {
   /// Amazon Resource Name (ARN)
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// AWS Account ID
-  final String? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
   /// AWS Properties
-  final AwsIamAccessKeyMetadataProperties? awsProperties;
+  final pulumi.Input<AwsIamAccessKeyMetadataProperties>? awsProperties;
   /// AWS Region
-  final String? awsRegion;
+  final pulumi.Input<String>? awsRegion;
   /// AWS Source Schema
-  final String? awsSourceSchema;
+  final pulumi.Input<String>? awsSourceSchema;
   /// AWS Tags
-  final Map<String, String>? awsTags;
+  final pulumi.Input<Map<String, String>>? awsTags;
   /// Public Cloud Connectors Resource ID
-  final String? publicCloudConnectorsResourceId;
+  final pulumi.Input<String>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final String? publicCloudResourceName;
+  final pulumi.Input<String>? publicCloudResourceName;
 
   /// Creates a new [IamAccessKeyMetadataProperties].
   /// [arn] Amazon Resource Name (ARN)
@@ -45,7 +46,7 @@ class IamAccessKeyMetadataProperties {
     return <String, dynamic>{
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
-      'awsProperties': ?awsProperties == null ? null : awsProperties!.toMap(),
+      'awsProperties': ?pulumi.Input.mapOptionalInputValue<AwsIamAccessKeyMetadataProperties, Map<String, dynamic>>(awsProperties, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
       'awsSourceSchema': ?awsSourceSchema,
       'awsTags': ?awsTags,
@@ -56,14 +57,14 @@ class IamAccessKeyMetadataProperties {
 
   factory IamAccessKeyMetadataProperties.fromMap(Map<String, dynamic> map) {
     return IamAccessKeyMetadataProperties(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
-      awsProperties: map['awsProperties'] == null ? null : AwsIamAccessKeyMetadataProperties.fromMap((map['awsProperties'] as Map).cast<String, dynamic>()),
-      awsRegion: map['awsRegion'] == null ? null : map['awsRegion'] as String,
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : map['awsSourceSchema'] as String,
-      awsTags: map['awsTags'] == null ? null : (map['awsTags'] as Map).cast<String, String>(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : map['publicCloudConnectorsResourceId'] as String,
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : map['publicCloudResourceName'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsProperties: map['awsProperties'] == null ? null : (AwsIamAccessKeyMetadataProperties.fromMap((map['awsProperties'] as Map).cast<String, dynamic>())).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema'] as String).input(),
+      awsTags: map['awsTags'] == null ? null : ((map['awsTags'] as Map).cast<String, String>()).input(),
+      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId'] as String).input(),
+      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName'] as String).input(),
     );
   }
 }

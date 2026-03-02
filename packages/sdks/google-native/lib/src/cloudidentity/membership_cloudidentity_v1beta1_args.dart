@@ -23,15 +23,11 @@ class MembershipCloudidentityV1beta1Args {
   /// [preferredMemberKey] Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
   /// [roles] The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
   MembershipCloudidentityV1beta1Args({
-    required pulumi.Output<String> groupId,
-    pulumi.Output<EntityKeyCloudidentityV1beta1>? memberKey,
-    required pulumi.Output<EntityKeyCloudidentityV1beta1> preferredMemberKey,
-    pulumi.Output<List<MembershipRoleCloudidentityV1beta1>>? roles,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      memberKey = pulumi.Input.asOptionalInput<EntityKeyCloudidentityV1beta1>(memberKey),
-      preferredMemberKey = pulumi.Input.asInput<EntityKeyCloudidentityV1beta1>(preferredMemberKey),
-      roles = pulumi.Input.asOptionalInput<List<MembershipRoleCloudidentityV1beta1>>(roles);
+    required this.groupId,
+    this.memberKey,
+    required this.preferredMemberKey,
+    this.roles,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MembershipCloudidentityV1beta1Args {
 
   factory MembershipCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MembershipCloudidentityV1beta1Args(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      memberKey: map['memberKey'] == null ? null : pulumi.Output.create<EntityKeyCloudidentityV1beta1>(EntityKeyCloudidentityV1beta1.fromMap((map['memberKey'] as Map).cast<String, dynamic>())),
-      preferredMemberKey: pulumi.Output.create<EntityKeyCloudidentityV1beta1>(EntityKeyCloudidentityV1beta1.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<MembershipRoleCloudidentityV1beta1>>(pulumi.Input.decodeList<MembershipRoleCloudidentityV1beta1>(map['roles'], (value) => MembershipRoleCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      groupId: (map['groupId'] as String).input(),
+      memberKey: map['memberKey'] == null ? null : (EntityKeyCloudidentityV1beta1.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
+      preferredMemberKey: (EntityKeyCloudidentityV1beta1.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRoleCloudidentityV1beta1>(map['roles'], (value) => MembershipRoleCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

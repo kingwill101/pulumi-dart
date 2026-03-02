@@ -14,11 +14,9 @@ class GetImageComputeBetaArgs {
   /// [image] Required.
   /// [project] Optional.
   GetImageComputeBetaArgs({
-    required pulumi.Output<String> image,
-    pulumi.Output<String>? project,
-  }) :
-      image = pulumi.Input.asInput<String>(image),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.image,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetImageComputeBetaArgs {
 
   factory GetImageComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetImageComputeBetaArgs(
-      image: pulumi.Output.create<String>(map['image'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      image: (map['image'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

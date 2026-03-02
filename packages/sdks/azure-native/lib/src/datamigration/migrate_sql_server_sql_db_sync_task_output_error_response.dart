@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reportable_exception_response.dart';
 
 class MigrateSqlServerSqlDbSyncTaskOutputErrorResponse {
   /// Migration error
-  final ReportableExceptionResponse error;
+  final pulumi.Input<ReportableExceptionResponse> error;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Result type
   /// Expected value is 'ErrorOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
 
   /// Creates a new [MigrateSqlServerSqlDbSyncTaskOutputErrorResponse].
   /// [error] Migration error
@@ -23,7 +24,7 @@ class MigrateSqlServerSqlDbSyncTaskOutputErrorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ReportableExceptionResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'id': id,
       'resultType': resultType,
     };
@@ -31,9 +32,9 @@ class MigrateSqlServerSqlDbSyncTaskOutputErrorResponse {
 
   factory MigrateSqlServerSqlDbSyncTaskOutputErrorResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbSyncTaskOutputErrorResponse(
-      error: ReportableExceptionResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      resultType: map['resultType'] as String,
+      error: (ReportableExceptionResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
     );
   }
 }

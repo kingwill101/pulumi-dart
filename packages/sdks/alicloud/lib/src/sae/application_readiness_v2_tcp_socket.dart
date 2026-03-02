@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationReadinessV2TcpSocket {
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ApplicationReadinessV2TcpSocket].
   /// [port] Optional.
@@ -18,7 +19,7 @@ class ApplicationReadinessV2TcpSocket {
 
   factory ApplicationReadinessV2TcpSocket.fromMap(Map<String, dynamic> map) {
     return ApplicationReadinessV2TcpSocket(
-      port: map['port'] == null ? null : map['port'] as int,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

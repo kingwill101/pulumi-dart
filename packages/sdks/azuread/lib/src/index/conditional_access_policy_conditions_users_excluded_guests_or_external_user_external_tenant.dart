@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
   /// A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
-  final List<String>? members;
+  final pulumi.Input<List<String>>? members;
   /// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
-  final String membershipKind;
+  final pulumi.Input<String> membershipKind;
 
   /// Creates a new [ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant].
   /// [members] A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
@@ -24,8 +25,8 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
 
   factory ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant(
-      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
-      membershipKind: map['membershipKind'] as String,
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      membershipKind: (map['membershipKind'] as String).input(),
     );
   }
 }

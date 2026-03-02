@@ -16,11 +16,9 @@ class GetVirtualWanArgs {
   /// [resourceGroupName] The resource group name of the VirtualWan.
   /// [virtualWANName] The name of the VirtualWAN being retrieved.
   GetVirtualWanArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualWANName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualWANName = pulumi.Input.asInput<String>(virtualWANName);
+    required this.resourceGroupName,
+    required this.virtualWANName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVirtualWanArgs {
 
   factory GetVirtualWanArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualWanArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualWANName: pulumi.Output.create<String>(map['virtualWANName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualWANName: (map['virtualWANName'] as String).input(),
     );
   }
 }

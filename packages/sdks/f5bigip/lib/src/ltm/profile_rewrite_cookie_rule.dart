@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileRewriteCookieRule {
-  final String clientDomain;
-  final String clientPath;
+  final pulumi.Input<String> clientDomain;
+  final pulumi.Input<String> clientPath;
   /// Name of the cookie rewrite rule.
-  final String ruleName;
-  final String serverDomain;
-  final String serverPath;
+  final pulumi.Input<String> ruleName;
+  final pulumi.Input<String> serverDomain;
+  final pulumi.Input<String> serverPath;
 
   /// Creates a new [ProfileRewriteCookieRule].
   /// [clientDomain] Required.
@@ -35,11 +36,11 @@ class ProfileRewriteCookieRule {
 
   factory ProfileRewriteCookieRule.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteCookieRule(
-      clientDomain: map['clientDomain'] as String,
-      clientPath: map['clientPath'] as String,
-      ruleName: map['ruleName'] as String,
-      serverDomain: map['serverDomain'] as String,
-      serverPath: map['serverPath'] as String,
+      clientDomain: (map['clientDomain'] as String).input(),
+      clientPath: (map['clientPath'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      serverDomain: (map['serverDomain'] as String).input(),
+      serverPath: (map['serverPath'] as String).input(),
     );
   }
 }

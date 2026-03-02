@@ -19,13 +19,10 @@ class FindingAggregatorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [specifiedRegions] List of regions to include or exclude (required if `linking_mode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
   FindingAggregatorArgs({
-    required pulumi.Output<String> linkingMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? specifiedRegions,
-  }) :
-      linkingMode = pulumi.Input.asInput<String>(linkingMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      specifiedRegions = pulumi.Input.asOptionalInput<List<String>>(specifiedRegions);
+    required this.linkingMode,
+    this.region,
+    this.specifiedRegions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class FindingAggregatorArgs {
 
   factory FindingAggregatorArgs.fromMap(Map<String, dynamic> map) {
     return FindingAggregatorArgs(
-      linkingMode: pulumi.Output.create<String>(map['linkingMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      specifiedRegions: map['specifiedRegions'] == null ? null : pulumi.Output.create<List<String>>((map['specifiedRegions'] as List).cast<String>()),
+      linkingMode: (map['linkingMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      specifiedRegions: map['specifiedRegions'] == null ? null : ((map['specifiedRegions'] as List).cast<String>()).input(),
     );
   }
 }

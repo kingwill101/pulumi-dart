@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'host_type.dart';
 import 'ssl_state.dart';
 
 /// SSL-enabled hostname.
 class HostNameSslState {
   /// Indicates whether the hostname is a standard or repository hostname.
-  final HostType? hostType;
+  final pulumi.Input<HostType>? hostType;
   /// Hostname.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// SSL type.
-  final SslState? sslState;
+  final pulumi.Input<SslState>? sslState;
   /// SSL certificate thumbprint.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
   /// Set to <code>true</code> to update existing hostname.
-  final bool? toUpdate;
+  final pulumi.Input<bool>? toUpdate;
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
-  final String? virtualIP;
+  final pulumi.Input<String>? virtualIP;
 
   /// Creates a new [HostNameSslState].
   /// [hostType] Indicates whether the hostname is a standard or repository hostname.
@@ -36,9 +37,9 @@ class HostNameSslState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostType': ?hostType == null ? null : hostType!.value,
+      'hostType': ?pulumi.Input.mapOptionalInputValue<HostType, String>(hostType, (value) => value.value),
       'name': ?name,
-      'sslState': ?sslState == null ? null : sslState!.value,
+      'sslState': ?pulumi.Input.mapOptionalInputValue<SslState, String>(sslState, (value) => value.value),
       'thumbprint': ?thumbprint,
       'toUpdate': ?toUpdate,
       'virtualIP': ?virtualIP,
@@ -47,12 +48,12 @@ class HostNameSslState {
 
   factory HostNameSslState.fromMap(Map<String, dynamic> map) {
     return HostNameSslState(
-      hostType: map['hostType'] == null ? null : HostType.fromValue(map['hostType'] as String),
-      name: map['name'] == null ? null : map['name'] as String,
-      sslState: map['sslState'] == null ? null : SslState.fromValue(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
-      toUpdate: map['toUpdate'] == null ? null : map['toUpdate'] as bool,
-      virtualIP: map['virtualIP'] == null ? null : map['virtualIP'] as String,
+      hostType: map['hostType'] == null ? null : (HostType.fromValue(map['hostType'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sslState: map['sslState'] == null ? null : (SslState.fromValue(map['sslState'] as String)).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      toUpdate: map['toUpdate'] == null ? null : (map['toUpdate'] as bool).input(),
+      virtualIP: map['virtualIP'] == null ? null : (map['virtualIP'] as String).input(),
     );
   }
 }

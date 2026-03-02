@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionGitlabConfigReadAuthorizerCredential {
   /// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  final String userTokenSecretVersion;
+  final pulumi.Input<String> userTokenSecretVersion;
   /// (Output)
   /// Output only. The username associated to this token.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionGitlabConfigReadAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
@@ -25,8 +26,8 @@ class ConnectionGitlabConfigReadAuthorizerCredential {
 
   factory ConnectionGitlabConfigReadAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabConfigReadAuthorizerCredential(
-      userTokenSecretVersion: map['userTokenSecretVersion'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

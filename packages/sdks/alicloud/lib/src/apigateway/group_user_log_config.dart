@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupUserLogConfig {
   /// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
-  final String? jwtClaims;
+  final pulumi.Input<String>? jwtClaims;
   /// The query params to be record, support multi query params split by `,`. Set `*` to record all.
-  final String? queryString;
+  final pulumi.Input<String>? queryString;
   /// Whether to record the request body.
-  final bool? requestBody;
+  final pulumi.Input<bool>? requestBody;
   /// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
-  final String? requestHeaders;
+  final pulumi.Input<String>? requestHeaders;
   /// Whether to record the response body.
-  final bool? responseBody;
+  final pulumi.Input<bool>? responseBody;
   /// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
-  final String? responseHeaders;
+  final pulumi.Input<String>? responseHeaders;
 
   /// Creates a new [GroupUserLogConfig].
   /// [jwtClaims] The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
@@ -44,12 +45,12 @@ class GroupUserLogConfig {
 
   factory GroupUserLogConfig.fromMap(Map<String, dynamic> map) {
     return GroupUserLogConfig(
-      jwtClaims: map['jwtClaims'] == null ? null : map['jwtClaims'] as String,
-      queryString: map['queryString'] == null ? null : map['queryString'] as String,
-      requestBody: map['requestBody'] == null ? null : map['requestBody'] as bool,
-      requestHeaders: map['requestHeaders'] == null ? null : map['requestHeaders'] as String,
-      responseBody: map['responseBody'] == null ? null : map['responseBody'] as bool,
-      responseHeaders: map['responseHeaders'] == null ? null : map['responseHeaders'] as String,
+      jwtClaims: map['jwtClaims'] == null ? null : (map['jwtClaims'] as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as bool).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : (map['requestHeaders'] as String).input(),
+      responseBody: map['responseBody'] == null ? null : (map['responseBody'] as bool).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : (map['responseHeaders'] as String).input(),
     );
   }
 }

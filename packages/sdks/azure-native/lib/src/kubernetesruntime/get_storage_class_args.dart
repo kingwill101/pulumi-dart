@@ -16,11 +16,9 @@ class GetStorageClassArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [storageClassName] The name of the the storage class
   GetStorageClassArgs({
-    required pulumi.Output<String> resourceUri,
-    required pulumi.Output<String> storageClassName,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      storageClassName = pulumi.Input.asInput<String>(storageClassName);
+    required this.resourceUri,
+    required this.storageClassName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageClassArgs {
 
   factory GetStorageClassArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageClassArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      storageClassName: pulumi.Output.create<String>(map['storageClassName'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
+      storageClassName: (map['storageClassName'] as String).input(),
     );
   }
 }

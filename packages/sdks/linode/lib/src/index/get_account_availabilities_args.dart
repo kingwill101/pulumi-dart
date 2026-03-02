@@ -13,9 +13,8 @@ class GetAccountAvailabilitiesArgs {
   /// Creates a new [GetAccountAvailabilitiesArgs].
   /// [filters] Optional.
   GetAccountAvailabilitiesArgs({
-    pulumi.Output<List<GetAccountAvailabilitiesFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetAccountAvailabilitiesFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccountAvailabilitiesArgs {
 
   factory GetAccountAvailabilitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAvailabilitiesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetAccountAvailabilitiesFilter>>(pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(map['filters'], (value) => GetAccountAvailabilitiesFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(map['filters'], (value) => GetAccountAvailabilitiesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

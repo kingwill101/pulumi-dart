@@ -31,21 +31,14 @@ class ReplicationVaultArgs {
   /// [vaultName] The name of the backup vault.
   /// [vaultStorageClass] Backup Vault Storage Class
   ReplicationVaultArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encryptType,
-    pulumi.Output<String>? kmsKeyId,
-    required pulumi.Output<String> replicationSourceRegionId,
-    required pulumi.Output<String> replicationSourceVaultId,
-    required pulumi.Output<String> vaultName,
-    pulumi.Output<String>? vaultStorageClass,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptType = pulumi.Input.asOptionalInput<String>(encryptType),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      replicationSourceRegionId = pulumi.Input.asInput<String>(replicationSourceRegionId),
-      replicationSourceVaultId = pulumi.Input.asInput<String>(replicationSourceVaultId),
-      vaultName = pulumi.Input.asInput<String>(vaultName),
-      vaultStorageClass = pulumi.Input.asOptionalInput<String>(vaultStorageClass);
+    this.description,
+    this.encryptType,
+    this.kmsKeyId,
+    required this.replicationSourceRegionId,
+    required this.replicationSourceVaultId,
+    required this.vaultName,
+    this.vaultStorageClass,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ReplicationVaultArgs {
 
   factory ReplicationVaultArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationVaultArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptType: map['encryptType'] == null ? null : pulumi.Output.create<String>(map['encryptType'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      replicationSourceRegionId: pulumi.Output.create<String>(map['replicationSourceRegionId'] as String),
-      replicationSourceVaultId: pulumi.Output.create<String>(map['replicationSourceVaultId'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : pulumi.Output.create<String>(map['vaultStorageClass'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      replicationSourceRegionId: (map['replicationSourceRegionId'] as String).input(),
+      replicationSourceVaultId: (map['replicationSourceVaultId'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
     );
   }
 }

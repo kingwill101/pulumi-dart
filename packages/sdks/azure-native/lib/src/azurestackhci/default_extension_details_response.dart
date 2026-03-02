@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties for a particular default extension category.
 class DefaultExtensionDetailsResponse {
   /// Default extension category
-  final String category;
+  final pulumi.Input<String> category;
   /// Consent time for extension category
-  final String consentTime;
+  final pulumi.Input<String> consentTime;
 
   /// Creates a new [DefaultExtensionDetailsResponse].
   /// [category] Default extension category
@@ -25,8 +26,8 @@ class DefaultExtensionDetailsResponse {
 
   factory DefaultExtensionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DefaultExtensionDetailsResponse(
-      category: map['category'] as String,
-      consentTime: map['consentTime'] as String,
+      category: (map['category'] as String).input(),
+      consentTime: (map['consentTime'] as String).input(),
     );
   }
 }

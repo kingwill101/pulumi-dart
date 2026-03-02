@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcPeeringConnectionAccepterAccepter {
   /// Indicates whether a local VPC can resolve public DNS hostnames to
   /// private IP addresses when queried from instances in a peer VPC.
-  final bool? allowRemoteVpcDnsResolution;
+  final pulumi.Input<bool>? allowRemoteVpcDnsResolution;
 
   /// Creates a new [VpcPeeringConnectionAccepterAccepter].
   /// [allowRemoteVpcDnsResolution] Indicates whether a local VPC can resolve public DNS hostnames to
@@ -20,7 +21,7 @@ class VpcPeeringConnectionAccepterAccepter {
 
   factory VpcPeeringConnectionAccepterAccepter.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepterAccepter(
-      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : map['allowRemoteVpcDnsResolution'] as bool,
+      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : (map['allowRemoteVpcDnsResolution'] as bool).input(),
     );
   }
 }

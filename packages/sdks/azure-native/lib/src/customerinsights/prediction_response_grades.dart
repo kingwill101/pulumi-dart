@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The definition of a prediction grade.
 class PredictionResponseGrades {
   /// Name of the grade.
-  final String? gradeName;
+  final pulumi.Input<String>? gradeName;
   /// Maximum score threshold.
-  final int? maxScoreThreshold;
+  final pulumi.Input<int>? maxScoreThreshold;
   /// Minimum score threshold.
-  final int? minScoreThreshold;
+  final pulumi.Input<int>? minScoreThreshold;
 
   /// Creates a new [PredictionResponseGrades].
   /// [gradeName] Name of the grade.
@@ -30,9 +31,9 @@ class PredictionResponseGrades {
 
   factory PredictionResponseGrades.fromMap(Map<String, dynamic> map) {
     return PredictionResponseGrades(
-      gradeName: map['gradeName'] == null ? null : map['gradeName'] as String,
-      maxScoreThreshold: map['maxScoreThreshold'] == null ? null : map['maxScoreThreshold'] as int,
-      minScoreThreshold: map['minScoreThreshold'] == null ? null : map['minScoreThreshold'] as int,
+      gradeName: map['gradeName'] == null ? null : (map['gradeName'] as String).input(),
+      maxScoreThreshold: map['maxScoreThreshold'] == null ? null : (map['maxScoreThreshold'] as int).input(),
+      minScoreThreshold: map['minScoreThreshold'] == null ? null : (map['minScoreThreshold'] as int).input(),
     );
   }
 }

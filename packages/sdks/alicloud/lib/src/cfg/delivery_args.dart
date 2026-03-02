@@ -64,27 +64,17 @@ class DeliveryArgs {
   /// [oversizedDataOssTargetArn] The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
   /// [status] The status of the delivery channel. Valid values:
   DeliveryArgs({
-    pulumi.Output<bool>? configurationItemChangeNotification,
-    pulumi.Output<bool>? configurationSnapshot,
-    pulumi.Output<String>? deliveryChannelCondition,
-    pulumi.Output<String>? deliveryChannelName,
-    required pulumi.Output<String> deliveryChannelTargetArn,
-    required pulumi.Output<String> deliveryChannelType,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? nonCompliantNotification,
-    pulumi.Output<String>? oversizedDataOssTargetArn,
-    pulumi.Output<int>? status,
-  }) :
-      configurationItemChangeNotification = pulumi.Input.asOptionalInput<bool>(configurationItemChangeNotification),
-      configurationSnapshot = pulumi.Input.asOptionalInput<bool>(configurationSnapshot),
-      deliveryChannelCondition = pulumi.Input.asOptionalInput<String>(deliveryChannelCondition),
-      deliveryChannelName = pulumi.Input.asOptionalInput<String>(deliveryChannelName),
-      deliveryChannelTargetArn = pulumi.Input.asInput<String>(deliveryChannelTargetArn),
-      deliveryChannelType = pulumi.Input.asInput<String>(deliveryChannelType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      nonCompliantNotification = pulumi.Input.asOptionalInput<bool>(nonCompliantNotification),
-      oversizedDataOssTargetArn = pulumi.Input.asOptionalInput<String>(oversizedDataOssTargetArn),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.configurationItemChangeNotification,
+    this.configurationSnapshot,
+    this.deliveryChannelCondition,
+    this.deliveryChannelName,
+    required this.deliveryChannelTargetArn,
+    required this.deliveryChannelType,
+    this.description,
+    this.nonCompliantNotification,
+    this.oversizedDataOssTargetArn,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,16 +93,16 @@ class DeliveryArgs {
 
   factory DeliveryArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryArgs(
-      configurationItemChangeNotification: map['configurationItemChangeNotification'] == null ? null : pulumi.Output.create<bool>(map['configurationItemChangeNotification'] as bool),
-      configurationSnapshot: map['configurationSnapshot'] == null ? null : pulumi.Output.create<bool>(map['configurationSnapshot'] as bool),
-      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : pulumi.Output.create<String>(map['deliveryChannelCondition'] as String),
-      deliveryChannelName: map['deliveryChannelName'] == null ? null : pulumi.Output.create<String>(map['deliveryChannelName'] as String),
-      deliveryChannelTargetArn: pulumi.Output.create<String>(map['deliveryChannelTargetArn'] as String),
-      deliveryChannelType: pulumi.Output.create<String>(map['deliveryChannelType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      nonCompliantNotification: map['nonCompliantNotification'] == null ? null : pulumi.Output.create<bool>(map['nonCompliantNotification'] as bool),
-      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : pulumi.Output.create<String>(map['oversizedDataOssTargetArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      configurationItemChangeNotification: map['configurationItemChangeNotification'] == null ? null : (map['configurationItemChangeNotification'] as bool).input(),
+      configurationSnapshot: map['configurationSnapshot'] == null ? null : (map['configurationSnapshot'] as bool).input(),
+      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition'] as String).input(),
+      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName'] as String).input(),
+      deliveryChannelTargetArn: (map['deliveryChannelTargetArn'] as String).input(),
+      deliveryChannelType: (map['deliveryChannelType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      nonCompliantNotification: map['nonCompliantNotification'] == null ? null : (map['nonCompliantNotification'] as bool).input(),
+      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

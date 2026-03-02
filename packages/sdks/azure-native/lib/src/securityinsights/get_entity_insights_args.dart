@@ -31,21 +31,14 @@ class GetEntityInsightsArgs {
   /// [startTime] The start timeline date, so the results returned are after this date.
   /// [workspaceName] The name of the workspace.
   GetEntityInsightsArgs({
-    pulumi.Output<bool>? addDefaultExtendedTimeRange,
-    required pulumi.Output<String> endTime,
-    required pulumi.Output<String> entityId,
-    pulumi.Output<List<String>>? insightQueryIds,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startTime,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      addDefaultExtendedTimeRange = pulumi.Input.asOptionalInput<bool>(addDefaultExtendedTimeRange),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      entityId = pulumi.Input.asInput<String>(entityId),
-      insightQueryIds = pulumi.Input.asOptionalInput<List<String>>(insightQueryIds),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.addDefaultExtendedTimeRange,
+    required this.endTime,
+    required this.entityId,
+    this.insightQueryIds,
+    required this.resourceGroupName,
+    required this.startTime,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetEntityInsightsArgs {
 
   factory GetEntityInsightsArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityInsightsArgs(
-      addDefaultExtendedTimeRange: map['addDefaultExtendedTimeRange'] == null ? null : pulumi.Output.create<bool>(map['addDefaultExtendedTimeRange'] as bool),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      entityId: pulumi.Output.create<String>(map['entityId'] as String),
-      insightQueryIds: map['insightQueryIds'] == null ? null : pulumi.Output.create<List<String>>((map['insightQueryIds'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      addDefaultExtendedTimeRange: map['addDefaultExtendedTimeRange'] == null ? null : (map['addDefaultExtendedTimeRange'] as bool).input(),
+      endTime: (map['endTime'] as String).input(),
+      entityId: (map['entityId'] as String).input(),
+      insightQueryIds: map['insightQueryIds'] == null ? null : ((map['insightQueryIds'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

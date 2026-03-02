@@ -30,19 +30,13 @@ class SpringbootsiteArgs {
   /// [springbootsitesName] The springbootsites name.
   /// [tags] Resource tags.
   SpringbootsiteArgs({
-    pulumi.Output<SpringbootsitesModelExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? location,
-    pulumi.Output<SpringbootsitesProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? springbootsitesName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<SpringbootsitesModelExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<SpringbootsitesProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      springbootsitesName = pulumi.Input.asOptionalInput<String>(springbootsitesName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.springbootsitesName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SpringbootsiteArgs {
 
   factory SpringbootsiteArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootsiteArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<SpringbootsitesModelExtendedLocation>(SpringbootsitesModelExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SpringbootsitesProperties>(SpringbootsitesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      springbootsitesName: map['springbootsitesName'] == null ? null : pulumi.Output.create<String>(map['springbootsitesName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (SpringbootsitesModelExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (SpringbootsitesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      springbootsitesName: map['springbootsitesName'] == null ? null : (map['springbootsitesName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

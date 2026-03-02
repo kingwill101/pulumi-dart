@@ -24,19 +24,13 @@ class NetworkSubnetState {
   /// [type] Type of subnet. `server`, `cloud` or `vswitch`
   /// [vswitchId] ID of the vswitch, Required if type is `vswitch`
   NetworkSubnetState({
-    pulumi.Output<String>? gateway,
-    pulumi.Output<String>? ipRange,
-    pulumi.Output<int>? networkId,
-    pulumi.Output<String>? networkZone,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? vswitchId,
-  }) :
-      gateway = pulumi.Input.asOptionalInput<String>(gateway),
-      ipRange = pulumi.Input.asOptionalInput<String>(ipRange),
-      networkId = pulumi.Input.asOptionalInput<int>(networkId),
-      networkZone = pulumi.Input.asOptionalInput<String>(networkZone),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vswitchId = pulumi.Input.asOptionalInput<int>(vswitchId);
+    this.gateway,
+    this.ipRange,
+    this.networkId,
+    this.networkZone,
+    this.type,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class NetworkSubnetState {
 
   factory NetworkSubnetState.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetState(
-      gateway: map['gateway'] == null ? null : pulumi.Output.create<String>(map['gateway'] as String),
-      ipRange: map['ipRange'] == null ? null : pulumi.Output.create<String>(map['ipRange'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<int>(map['networkId'] as int),
-      networkZone: map['networkZone'] == null ? null : pulumi.Output.create<String>(map['networkZone'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<int>(map['vswitchId'] as int),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
+      networkZone: map['networkZone'] == null ? null : (map['networkZone'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as int).input(),
     );
   }
 }

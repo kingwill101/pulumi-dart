@@ -22,15 +22,11 @@ class PipelineCloudRuleArgs {
   /// [name] The name of the rule. This must be unique within an account.
   /// [nrql] The NRQL query that defines the data to be processed by this Pipeline Cloud Rule.
   PipelineCloudRuleArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nrql,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nrql = pulumi.Input.asInput<String>(nrql);
+    this.accountId,
+    this.description,
+    this.name,
+    required this.nrql,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PipelineCloudRuleArgs {
 
   factory PipelineCloudRuleArgs.fromMap(Map<String, dynamic> map) {
     return PipelineCloudRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nrql: pulumi.Output.create<String>(map['nrql'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nrql: (map['nrql'] as String).input(),
     );
   }
 }

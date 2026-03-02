@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
   /// IPsec Auth algorithm.
-  final String ipsecAuthAlg;
+  final pulumi.Input<String> ipsecAuthAlg;
   /// IPsec Encript algorithm.
-  final String ipsecEncAlg;
+  final pulumi.Input<String> ipsecEncAlg;
   /// IPsec lifetime.
-  final int ipsecLifetime;
+  final pulumi.Input<int> ipsecLifetime;
   /// DH Group.
-  final String ipsecPfs;
+  final pulumi.Input<String> ipsecPfs;
 
   /// Creates a new [GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig].
   /// [ipsecAuthAlg] IPsec Auth algorithm.
@@ -34,10 +35,10 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
 
   factory GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig(
-      ipsecAuthAlg: map['ipsecAuthAlg'] as String,
-      ipsecEncAlg: map['ipsecEncAlg'] as String,
-      ipsecLifetime: map['ipsecLifetime'] as int,
-      ipsecPfs: map['ipsecPfs'] as String,
+      ipsecAuthAlg: (map['ipsecAuthAlg'] as String).input(),
+      ipsecEncAlg: (map['ipsecEncAlg'] as String).input(),
+      ipsecLifetime: (map['ipsecLifetime'] as int).input(),
+      ipsecPfs: (map['ipsecPfs'] as String).input(),
     );
   }
 }

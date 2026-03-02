@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsSnsSubscription
 class AwsSnsSubscriptionPropertiesResponse {
   /// <p>The subscription's endpoint (format depends on the protocol).</p>
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// <p>The subscription's owner.</p>
-  final String? owner;
+  final pulumi.Input<String>? owner;
   /// <p>The subscription's protocol.</p>
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// <p>The subscription's ARN.</p>
-  final String? subscriptionArn;
+  final pulumi.Input<String>? subscriptionArn;
   /// <p>The ARN of the subscription's topic.</p>
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
 
   /// Creates a new [AwsSnsSubscriptionPropertiesResponse].
   /// [endpoint] <p>The subscription's endpoint (format depends on the protocol).</p>
@@ -40,11 +41,11 @@ class AwsSnsSubscriptionPropertiesResponse {
 
   factory AwsSnsSubscriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSnsSubscriptionPropertiesResponse(
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      subscriptionArn: map['subscriptionArn'] == null ? null : map['subscriptionArn'] as String,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      subscriptionArn: map['subscriptionArn'] == null ? null : (map['subscriptionArn'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

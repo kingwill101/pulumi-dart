@@ -55,33 +55,20 @@ class TopicArgs {
   /// [tags] Tags of the resource.
   /// [topicName] Name of the topic.
   TopicArgs({
-    pulumi.Output<String>? dataResidencyBoundary,
-    pulumi.Output<bool>? disableLocalAuth,
-    pulumi.Output<EventTypeInfo>? eventTypeInfo,
-    pulumi.Output<IdentityInfo>? identity,
-    pulumi.Output<List<InboundIpRule>>? inboundIpRules,
-    pulumi.Output<String>? inputSchema,
-    pulumi.Output<JsonInputSchemaMapping>? inputSchemaMapping,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minimumTlsVersionAllowed,
-    pulumi.Output<String>? publicNetworkAccess,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topicName,
-  }) :
-      dataResidencyBoundary = pulumi.Input.asOptionalInput<String>(dataResidencyBoundary),
-      disableLocalAuth = pulumi.Input.asOptionalInput<bool>(disableLocalAuth),
-      eventTypeInfo = pulumi.Input.asOptionalInput<EventTypeInfo>(eventTypeInfo),
-      identity = pulumi.Input.asOptionalInput<IdentityInfo>(identity),
-      inboundIpRules = pulumi.Input.asOptionalInput<List<InboundIpRule>>(inboundIpRules),
-      inputSchema = pulumi.Input.asOptionalInput<String>(inputSchema),
-      inputSchemaMapping = pulumi.Input.asOptionalInput<JsonInputSchemaMapping>(inputSchemaMapping),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumTlsVersionAllowed = pulumi.Input.asOptionalInput<String>(minimumTlsVersionAllowed),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.dataResidencyBoundary,
+    this.disableLocalAuth,
+    this.eventTypeInfo,
+    this.identity,
+    this.inboundIpRules,
+    this.inputSchema,
+    this.inputSchemaMapping,
+    this.location,
+    this.minimumTlsVersionAllowed,
+    this.publicNetworkAccess,
+    required this.resourceGroupName,
+    this.tags,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      dataResidencyBoundary: map['dataResidencyBoundary'] == null ? null : pulumi.Output.create<String>(map['dataResidencyBoundary'] as String),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : pulumi.Output.create<bool>(map['disableLocalAuth'] as bool),
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : pulumi.Output.create<EventTypeInfo>(EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityInfo>(IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Output.create<List<InboundIpRule>>(pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      inputSchema: map['inputSchema'] == null ? null : pulumi.Output.create<String>(map['inputSchema'] as String),
-      inputSchemaMapping: map['inputSchemaMapping'] == null ? null : pulumi.Output.create<JsonInputSchemaMapping>(JsonInputSchemaMapping.fromMap((map['inputSchemaMapping'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersionAllowed'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      dataResidencyBoundary: map['dataResidencyBoundary'] == null ? null : (map['dataResidencyBoundary'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
+      inputSchemaMapping: map['inputSchemaMapping'] == null ? null : (JsonInputSchemaMapping.fromMap((map['inputSchemaMapping'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

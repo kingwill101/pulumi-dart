@@ -6,9 +6,9 @@ import 'network_interface_response.dart';
 /// Specifies the network settings for the Azure Bare Metal Instance disks.
 class NetworkProfileResponse {
   /// Specifies the circuit id for connecting to express route.
-  final String? circuitId;
+  final pulumi.Input<String>? circuitId;
   /// Specifies the network interfaces for the Azure Bare Metal Instance.
-  final List<NetworkInterfaceResponse>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [circuitId] Specifies the circuit id for connecting to express route.
@@ -21,14 +21,14 @@ class NetworkProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'circuitId': ?circuitId,
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      circuitId: map['circuitId'] == null ? null : map['circuitId'] as String,
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      circuitId: map['circuitId'] == null ? null : (map['circuitId'] as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanStageTargetContactTargetInfo {
   /// The Amazon Resource Name (ARN) of the contact.
-  final String? contactId;
+  final pulumi.Input<String>? contactId;
   /// A Boolean value determining if the contact's acknowledgement stops the progress of stages in the plan.
-  final bool isEssential;
+  final pulumi.Input<bool> isEssential;
 
   /// Creates a new [PlanStageTargetContactTargetInfo].
   /// [contactId] The Amazon Resource Name (ARN) of the contact.
@@ -24,8 +25,8 @@ class PlanStageTargetContactTargetInfo {
 
   factory PlanStageTargetContactTargetInfo.fromMap(Map<String, dynamic> map) {
     return PlanStageTargetContactTargetInfo(
-      contactId: map['contactId'] == null ? null : map['contactId'] as String,
-      isEssential: map['isEssential'] as bool,
+      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
+      isEssential: (map['isEssential'] as bool).input(),
     );
   }
 }

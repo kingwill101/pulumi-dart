@@ -29,19 +29,13 @@ class OutboundEndpointArgs {
   /// [subnet] The reference to the subnet used for the outbound endpoint.
   /// [tags] Resource tags.
   OutboundEndpointArgs({
-    required pulumi.Output<String> dnsResolverName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? outboundEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<SubResource> subnet,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dnsResolverName = pulumi.Input.asInput<String>(dnsResolverName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      outboundEndpointName = pulumi.Input.asOptionalInput<String>(outboundEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnet = pulumi.Input.asInput<SubResource>(subnet),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.dnsResolverName,
+    this.location,
+    this.outboundEndpointName,
+    required this.resourceGroupName,
+    required this.subnet,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class OutboundEndpointArgs {
 
   factory OutboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return OutboundEndpointArgs(
-      dnsResolverName: pulumi.Output.create<String>(map['dnsResolverName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      outboundEndpointName: map['outboundEndpointName'] == null ? null : pulumi.Output.create<String>(map['outboundEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnet: pulumi.Output.create<SubResource>(SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dnsResolverName: (map['dnsResolverName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      outboundEndpointName: map['outboundEndpointName'] == null ? null : (map['outboundEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnet: (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

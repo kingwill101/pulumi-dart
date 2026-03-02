@@ -34,21 +34,14 @@ class VpcFirewallIpsConfigState {
   /// [runMode] IPS defense mode. Value:
   /// [vpcFirewallId] The ID of the VPC firewall instance. Value:
   VpcFirewallIpsConfigState({
-    pulumi.Output<int>? basicRules,
-    pulumi.Output<int>? enableAllPatch,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<String>? ruleClass,
-    pulumi.Output<int>? runMode,
-    pulumi.Output<String>? vpcFirewallId,
-  }) :
-      basicRules = pulumi.Input.asOptionalInput<int>(basicRules),
-      enableAllPatch = pulumi.Input.asOptionalInput<int>(enableAllPatch),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      ruleClass = pulumi.Input.asOptionalInput<String>(ruleClass),
-      runMode = pulumi.Input.asOptionalInput<int>(runMode),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId);
+    this.basicRules,
+    this.enableAllPatch,
+    this.lang,
+    this.memberUid,
+    this.ruleClass,
+    this.runMode,
+    this.vpcFirewallId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class VpcFirewallIpsConfigState {
 
   factory VpcFirewallIpsConfigState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallIpsConfigState(
-      basicRules: map['basicRules'] == null ? null : pulumi.Output.create<int>(map['basicRules'] as int),
-      enableAllPatch: map['enableAllPatch'] == null ? null : pulumi.Output.create<int>(map['enableAllPatch'] as int),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      ruleClass: map['ruleClass'] == null ? null : pulumi.Output.create<String>(map['ruleClass'] as String),
-      runMode: map['runMode'] == null ? null : pulumi.Output.create<int>(map['runMode'] as int),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
+      basicRules: map['basicRules'] == null ? null : (map['basicRules'] as int).input(),
+      enableAllPatch: map['enableAllPatch'] == null ? null : (map['enableAllPatch'] as int).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass'] as String).input(),
+      runMode: map['runMode'] == null ? null : (map['runMode'] as int).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
     );
   }
 }

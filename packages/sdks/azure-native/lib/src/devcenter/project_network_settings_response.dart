@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network settings for the project.
 class ProjectNetworkSettingsResponse {
   /// Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
-  final String microsoftHostedNetworkEnableStatus;
+  final pulumi.Input<String> microsoftHostedNetworkEnableStatus;
 
   /// Creates a new [ProjectNetworkSettingsResponse].
   /// [microsoftHostedNetworkEnableStatus] Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
@@ -20,7 +21,7 @@ class ProjectNetworkSettingsResponse {
 
   factory ProjectNetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProjectNetworkSettingsResponse(
-      microsoftHostedNetworkEnableStatus: map['microsoftHostedNetworkEnableStatus'] as String,
+      microsoftHostedNetworkEnableStatus: (map['microsoftHostedNetworkEnableStatus'] as String).input(),
     );
   }
 }

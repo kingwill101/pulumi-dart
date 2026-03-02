@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gce_instance_filter_response.dart';
 
 /// Message describing resource filters
 class ResourceFilterResponse {
   /// Filter compute engine resource
-  final GceInstanceFilterResponse gceInstanceFilter;
+  final pulumi.Input<GceInstanceFilterResponse> gceInstanceFilter;
   /// The label used for filter resource
-  final Map<String, String> inclusionLabels;
+  final pulumi.Input<Map<String, String>> inclusionLabels;
   /// The id pattern for filter resource
-  final List<String> resourceIdPatterns;
+  final pulumi.Input<List<String>> resourceIdPatterns;
   /// The scopes of evaluation resource
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [ResourceFilterResponse].
   /// [gceInstanceFilter] Filter compute engine resource
@@ -27,7 +28,7 @@ class ResourceFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstanceFilter': gceInstanceFilter.toMap(),
+      'gceInstanceFilter': pulumi.Input.mapInputValue<GceInstanceFilterResponse, Map<String, dynamic>>(gceInstanceFilter, (value) => value.toMap()),
       'inclusionLabels': inclusionLabels,
       'resourceIdPatterns': resourceIdPatterns,
       'scopes': scopes,
@@ -36,10 +37,10 @@ class ResourceFilterResponse {
 
   factory ResourceFilterResponse.fromMap(Map<String, dynamic> map) {
     return ResourceFilterResponse(
-      gceInstanceFilter: GceInstanceFilterResponse.fromMap((map['gceInstanceFilter'] as Map).cast<String, dynamic>()),
-      inclusionLabels: (map['inclusionLabels'] as Map).cast<String, String>(),
-      resourceIdPatterns: (map['resourceIdPatterns'] as List).cast<String>(),
-      scopes: (map['scopes'] as List).cast<String>(),
+      gceInstanceFilter: (GceInstanceFilterResponse.fromMap((map['gceInstanceFilter'] as Map).cast<String, dynamic>())).input(),
+      inclusionLabels: ((map['inclusionLabels'] as Map).cast<String, String>()).input(),
+      resourceIdPatterns: ((map['resourceIdPatterns'] as List).cast<String>()).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstanceSettingInsightsConfig {
   /// True if Query Insights feature is enabled.
-  final bool queryInsightsEnabled;
+  final pulumi.Input<bool> queryInsightsEnabled;
   /// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.
-  final int queryPlansPerMinute;
+  final pulumi.Input<int> queryPlansPerMinute;
   /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
-  final int queryStringLength;
+  final pulumi.Input<int> queryStringLength;
   /// True if Query Insights will record application tags from query when enabled.
-  final bool recordApplicationTags;
+  final pulumi.Input<bool> recordApplicationTags;
   /// True if Query Insights will record client address when enabled.
-  final bool recordClientAddress;
+  final pulumi.Input<bool> recordClientAddress;
 
   /// Creates a new [GetDatabaseInstanceSettingInsightsConfig].
   /// [queryInsightsEnabled] True if Query Insights feature is enabled.
@@ -39,11 +40,11 @@ class GetDatabaseInstanceSettingInsightsConfig {
 
   factory GetDatabaseInstanceSettingInsightsConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingInsightsConfig(
-      queryInsightsEnabled: map['queryInsightsEnabled'] as bool,
-      queryPlansPerMinute: map['queryPlansPerMinute'] as int,
-      queryStringLength: map['queryStringLength'] as int,
-      recordApplicationTags: map['recordApplicationTags'] as bool,
-      recordClientAddress: map['recordClientAddress'] as bool,
+      queryInsightsEnabled: (map['queryInsightsEnabled'] as bool).input(),
+      queryPlansPerMinute: (map['queryPlansPerMinute'] as int).input(),
+      queryStringLength: (map['queryStringLength'] as int).input(),
+      recordApplicationTags: (map['recordApplicationTags'] as bool).input(),
+      recordClientAddress: (map['recordClientAddress'] as bool).input(),
     );
   }
 }

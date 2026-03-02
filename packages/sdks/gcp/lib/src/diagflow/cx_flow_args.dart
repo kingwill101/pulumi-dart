@@ -75,29 +75,18 @@ class CxFlowArgs {
   /// [transitionRouteGroups] A flow's transition route group serve two purposes:
   /// [transitionRoutes] A flow's transition routes serve two purposes:
   CxFlowArgs({
-    pulumi.Output<CxFlowAdvancedSettings>? advancedSettings,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<CxFlowEventHandler>>? eventHandlers,
-    pulumi.Output<bool>? isDefaultStartFlow,
-    pulumi.Output<CxFlowKnowledgeConnectorSettings>? knowledgeConnectorSettings,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<CxFlowNluSettings>? nluSettings,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<String>>? transitionRouteGroups,
-    pulumi.Output<List<CxFlowTransitionRoute>>? transitionRoutes,
-  }) :
-      advancedSettings = pulumi.Input.asOptionalInput<CxFlowAdvancedSettings>(advancedSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      eventHandlers = pulumi.Input.asOptionalInput<List<CxFlowEventHandler>>(eventHandlers),
-      isDefaultStartFlow = pulumi.Input.asOptionalInput<bool>(isDefaultStartFlow),
-      knowledgeConnectorSettings = pulumi.Input.asOptionalInput<CxFlowKnowledgeConnectorSettings>(knowledgeConnectorSettings),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      nluSettings = pulumi.Input.asOptionalInput<CxFlowNluSettings>(nluSettings),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      transitionRouteGroups = pulumi.Input.asOptionalInput<List<String>>(transitionRouteGroups),
-      transitionRoutes = pulumi.Input.asOptionalInput<List<CxFlowTransitionRoute>>(transitionRoutes);
+    this.advancedSettings,
+    this.description,
+    required this.displayName,
+    this.eventHandlers,
+    this.isDefaultStartFlow,
+    this.knowledgeConnectorSettings,
+    this.languageCode,
+    this.nluSettings,
+    this.parent,
+    this.transitionRouteGroups,
+    this.transitionRoutes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,17 +106,17 @@ class CxFlowArgs {
 
   factory CxFlowArgs.fromMap(Map<String, dynamic> map) {
     return CxFlowArgs(
-      advancedSettings: map['advancedSettings'] == null ? null : pulumi.Output.create<CxFlowAdvancedSettings>(CxFlowAdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      eventHandlers: map['eventHandlers'] == null ? null : pulumi.Output.create<List<CxFlowEventHandler>>(pulumi.Input.decodeList<CxFlowEventHandler>(map['eventHandlers'], (value) => CxFlowEventHandler.fromMap((value as Map).cast<String, dynamic>()))),
-      isDefaultStartFlow: map['isDefaultStartFlow'] == null ? null : pulumi.Output.create<bool>(map['isDefaultStartFlow'] as bool),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : pulumi.Output.create<CxFlowKnowledgeConnectorSettings>(CxFlowKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      nluSettings: map['nluSettings'] == null ? null : pulumi.Output.create<CxFlowNluSettings>(CxFlowNluSettings.fromMap((map['nluSettings'] as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : pulumi.Output.create<List<String>>((map['transitionRouteGroups'] as List).cast<String>()),
-      transitionRoutes: map['transitionRoutes'] == null ? null : pulumi.Output.create<List<CxFlowTransitionRoute>>(pulumi.Input.decodeList<CxFlowTransitionRoute>(map['transitionRoutes'], (value) => CxFlowTransitionRoute.fromMap((value as Map).cast<String, dynamic>()))),
+      advancedSettings: map['advancedSettings'] == null ? null : (CxFlowAdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandler>(map['eventHandlers'], (value) => CxFlowEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isDefaultStartFlow: map['isDefaultStartFlow'] == null ? null : (map['isDefaultStartFlow'] as bool).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxFlowKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      nluSettings: map['nluSettings'] == null ? null : (CxFlowNluSettings.fromMap((map['nluSettings'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups'] as List).cast<String>()).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<CxFlowTransitionRoute>(map['transitionRoutes'], (value) => CxFlowTransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

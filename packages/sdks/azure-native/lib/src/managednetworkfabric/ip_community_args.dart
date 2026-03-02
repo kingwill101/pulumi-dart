@@ -29,19 +29,13 @@ class IpCommunityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   IpCommunityArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? ipCommunityName,
-    required pulumi.Output<List<IpCommunityRule>> ipCommunityRules,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      ipCommunityName = pulumi.Input.asOptionalInput<String>(ipCommunityName),
-      ipCommunityRules = pulumi.Input.asInput<List<IpCommunityRule>>(ipCommunityRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    this.ipCommunityName,
+    required this.ipCommunityRules,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IpCommunityArgs {
 
   factory IpCommunityArgs.fromMap(Map<String, dynamic> map) {
     return IpCommunityArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      ipCommunityName: map['ipCommunityName'] == null ? null : pulumi.Output.create<String>(map['ipCommunityName'] as String),
-      ipCommunityRules: pulumi.Output.create<List<IpCommunityRule>>(pulumi.Input.decodeList<IpCommunityRule>(map['ipCommunityRules'], (value) => IpCommunityRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      ipCommunityName: map['ipCommunityName'] == null ? null : (map['ipCommunityName'] as String).input(),
+      ipCommunityRules: (pulumi.Input.decodeList<IpCommunityRule>(map['ipCommunityRules'], (value) => IpCommunityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

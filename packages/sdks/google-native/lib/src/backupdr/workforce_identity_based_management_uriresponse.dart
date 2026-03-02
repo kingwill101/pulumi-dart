@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.
 class WorkforceIdentityBasedManagementURIResponse {
   /// First party Management URI for Google Identities.
-  final String firstPartyManagementUri;
+  final pulumi.Input<String> firstPartyManagementUri;
   /// Third party Management URI for External Identity Providers.
-  final String thirdPartyManagementUri;
+  final pulumi.Input<String> thirdPartyManagementUri;
 
   /// Creates a new [WorkforceIdentityBasedManagementURIResponse].
   /// [firstPartyManagementUri] First party Management URI for Google Identities.
@@ -25,8 +26,8 @@ class WorkforceIdentityBasedManagementURIResponse {
 
   factory WorkforceIdentityBasedManagementURIResponse.fromMap(Map<String, dynamic> map) {
     return WorkforceIdentityBasedManagementURIResponse(
-      firstPartyManagementUri: map['firstPartyManagementUri'] as String,
-      thirdPartyManagementUri: map['thirdPartyManagementUri'] as String,
+      firstPartyManagementUri: (map['firstPartyManagementUri'] as String).input(),
+      thirdPartyManagementUri: (map['thirdPartyManagementUri'] as String).input(),
     );
   }
 }

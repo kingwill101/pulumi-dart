@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
   /// The group attribute field.
-  final String groupAttributeField;
+  final pulumi.Input<String> groupAttributeField;
   /// The user name attribute field.
-  final String userNameAttributeField;
+  final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [GetIndexUserTokenConfigurationJsonTokenTypeConfiguration].
   /// [groupAttributeField] The group attribute field.
@@ -24,8 +25,8 @@ class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
 
   factory GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfigurationJsonTokenTypeConfiguration(
-      groupAttributeField: map['groupAttributeField'] as String,
-      userNameAttributeField: map['userNameAttributeField'] as String,
+      groupAttributeField: (map['groupAttributeField'] as String).input(),
+      userNameAttributeField: (map['userNameAttributeField'] as String).input(),
     );
   }
 }

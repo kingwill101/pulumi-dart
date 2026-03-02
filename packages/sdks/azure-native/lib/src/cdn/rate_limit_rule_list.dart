@@ -6,7 +6,7 @@ import 'rate_limit_rule.dart';
 /// Defines contents of rate limit rules
 class RateLimitRuleList {
   /// List of rules
-  final List<RateLimitRule>? rules;
+  final pulumi.Input<List<RateLimitRule>>? rules;
 
   /// Creates a new [RateLimitRuleList].
   /// [rules] List of rules
@@ -16,13 +16,13 @@ class RateLimitRuleList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<RateLimitRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RateLimitRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RateLimitRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RateLimitRuleList.fromMap(Map<String, dynamic> map) {
     return RateLimitRuleList(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RateLimitRule>(map['rules'], (value) => RateLimitRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RateLimitRule>(map['rules'], (value) => RateLimitRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class RouteArgs {
   /// [resourceGroupName] The name of the resource group under which the IotHub Route resource has to be created. Changing this forces a new resource to be created.
   /// [source] The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`.
   RouteArgs({
-    pulumi.Output<String>? condition,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> endpointNames,
-    required pulumi.Output<String> iothubName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> source,
-  }) :
-      condition = pulumi.Input.asOptionalInput<String>(condition),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      endpointNames = pulumi.Input.asInput<String>(endpointNames),
-      iothubName = pulumi.Input.asInput<String>(iothubName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asInput<String>(source);
+    this.condition,
+    required this.enabled,
+    required this.endpointNames,
+    required this.iothubName,
+    this.name,
+    required this.resourceGroupName,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<String>(map['condition'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      endpointNames: pulumi.Output.create<String>(map['endpointNames'] as String),
-      iothubName: pulumi.Output.create<String>(map['iothubName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      endpointNames: (map['endpointNames'] as String).input(),
+      iothubName: (map['iothubName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

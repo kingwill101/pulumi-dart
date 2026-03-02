@@ -20,13 +20,10 @@ class GetPolicyDocumentArgs {
   /// [statements] Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
   /// [version] Version of the RAM policy document. Valid value is `1`. Default value is `1`.
   GetPolicyDocumentArgs({
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<GetPolicyDocumentStatement>>? statements,
-    pulumi.Output<String>? version,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      statements = pulumi.Input.asOptionalInput<List<GetPolicyDocumentStatement>>(statements),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.outputFile,
+    this.statements,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetPolicyDocumentArgs {
 
   factory GetPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      statements: map['statements'] == null ? null : pulumi.Output.create<List<GetPolicyDocumentStatement>>(pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

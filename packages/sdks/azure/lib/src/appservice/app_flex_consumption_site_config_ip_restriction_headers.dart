@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppFlexConsumptionSiteConfigIpRestrictionHeaders {
   /// Specifies a list of Azure Front Door IDs.
-  final List<String>? xAzureFdids;
+  final pulumi.Input<List<String>>? xAzureFdids;
   /// Specifies if a Front Door Health Probe should be expected. The only possible value is `1`.
-  final String? xFdHealthProbe;
+  final pulumi.Input<String>? xFdHealthProbe;
   /// Specifies a list of addresses for which matching should be applied. Omitting this value means allow any.
-  final List<String>? xForwardedFors;
+  final pulumi.Input<List<String>>? xForwardedFors;
   /// Specifies a list of Hosts for which matching should be applied.
-  final List<String>? xForwardedHosts;
+  final pulumi.Input<List<String>>? xForwardedHosts;
 
   /// Creates a new [AppFlexConsumptionSiteConfigIpRestrictionHeaders].
   /// [xAzureFdids] Specifies a list of Azure Front Door IDs.
@@ -34,10 +35,10 @@ class AppFlexConsumptionSiteConfigIpRestrictionHeaders {
 
   factory AppFlexConsumptionSiteConfigIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionSiteConfigIpRestrictionHeaders(
-      xAzureFdids: map['xAzureFdids'] == null ? null : (map['xAzureFdids'] as List).cast<String>(),
-      xFdHealthProbe: map['xFdHealthProbe'] == null ? null : map['xFdHealthProbe'] as String,
-      xForwardedFors: map['xForwardedFors'] == null ? null : (map['xForwardedFors'] as List).cast<String>(),
-      xForwardedHosts: map['xForwardedHosts'] == null ? null : (map['xForwardedHosts'] as List).cast<String>(),
+      xAzureFdids: map['xAzureFdids'] == null ? null : ((map['xAzureFdids'] as List).cast<String>()).input(),
+      xFdHealthProbe: map['xFdHealthProbe'] == null ? null : (map['xFdHealthProbe'] as String).input(),
+      xForwardedFors: map['xForwardedFors'] == null ? null : ((map['xForwardedFors'] as List).cast<String>()).input(),
+      xForwardedHosts: map['xForwardedHosts'] == null ? null : ((map['xForwardedHosts'] as List).cast<String>()).input(),
     );
   }
 }

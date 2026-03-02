@@ -46,31 +46,19 @@ class HanaInstanceArgs {
   /// [validateCertificate] Specifies whether to verify the SSL certificate of the SAP HANA database.
   /// [vaultId] The ID of the backup vault.
   HanaInstanceArgs({
-    pulumi.Output<String>? alertSetting,
-    pulumi.Output<List<String>>? ecsInstanceIds,
-    pulumi.Output<String>? hanaName,
-    pulumi.Output<String>? host,
-    pulumi.Output<int>? instanceNumber,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? sid,
-    pulumi.Output<bool>? useSsl,
-    pulumi.Output<String>? userName,
-    pulumi.Output<bool>? validateCertificate,
-    required pulumi.Output<String> vaultId,
-  }) :
-      alertSetting = pulumi.Input.asOptionalInput<String>(alertSetting),
-      ecsInstanceIds = pulumi.Input.asOptionalInput<List<String>>(ecsInstanceIds),
-      hanaName = pulumi.Input.asOptionalInput<String>(hanaName),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instanceNumber = pulumi.Input.asOptionalInput<int>(instanceNumber),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      sid = pulumi.Input.asOptionalInput<String>(sid),
-      useSsl = pulumi.Input.asOptionalInput<bool>(useSsl),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      validateCertificate = pulumi.Input.asOptionalInput<bool>(validateCertificate),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.alertSetting,
+    this.ecsInstanceIds,
+    this.hanaName,
+    this.host,
+    this.instanceNumber,
+    this.password,
+    this.resourceGroupId,
+    this.sid,
+    this.useSsl,
+    this.userName,
+    this.validateCertificate,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class HanaInstanceArgs {
 
   factory HanaInstanceArgs.fromMap(Map<String, dynamic> map) {
     return HanaInstanceArgs(
-      alertSetting: map['alertSetting'] == null ? null : pulumi.Output.create<String>(map['alertSetting'] as String),
-      ecsInstanceIds: map['ecsInstanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['ecsInstanceIds'] as List).cast<String>()),
-      hanaName: map['hanaName'] == null ? null : pulumi.Output.create<String>(map['hanaName'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instanceNumber: map['instanceNumber'] == null ? null : pulumi.Output.create<int>(map['instanceNumber'] as int),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      sid: map['sid'] == null ? null : pulumi.Output.create<String>(map['sid'] as String),
-      useSsl: map['useSsl'] == null ? null : pulumi.Output.create<bool>(map['useSsl'] as bool),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      validateCertificate: map['validateCertificate'] == null ? null : pulumi.Output.create<bool>(map['validateCertificate'] as bool),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
+      ecsInstanceIds: map['ecsInstanceIds'] == null ? null : ((map['ecsInstanceIds'] as List).cast<String>()).input(),
+      hanaName: map['hanaName'] == null ? null : (map['hanaName'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instanceNumber: map['instanceNumber'] == null ? null : (map['instanceNumber'] as int).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      validateCertificate: map['validateCertificate'] == null ? null : (map['validateCertificate'] as bool).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

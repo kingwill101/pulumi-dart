@@ -16,11 +16,9 @@ class OneDashboardJsonArgs {
   /// [accountId] Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   /// [json] The JSON export of a dashboard. [The JSON can be exported from the UI](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/#dashboards)
   OneDashboardJsonArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> json,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      json = pulumi.Input.asInput<String>(json);
+    this.accountId,
+    required this.json,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class OneDashboardJsonArgs {
 
   factory OneDashboardJsonArgs.fromMap(Map<String, dynamic> map) {
     return OneDashboardJsonArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      json: pulumi.Output.create<String>(map['json'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      json: (map['json'] as String).input(),
     );
   }
 }

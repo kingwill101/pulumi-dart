@@ -25,17 +25,12 @@ class ManagedInstanceKeyArgs {
   /// [serverKeyType] The key type like 'ServiceManaged', 'AzureKeyVault'.
   /// [uri] The URI of the key. If the ServerKeyType is AzureKeyVault, then the URI is required.
   ManagedInstanceKeyArgs({
-    pulumi.Output<String>? keyName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverKeyType,
-    pulumi.Output<String>? uri,
-  }) :
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverKeyType = pulumi.Input.asInput<String>(serverKeyType),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.keyName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+    required this.serverKeyType,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ManagedInstanceKeyArgs {
 
   factory ManagedInstanceKeyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceKeyArgs(
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverKeyType: pulumi.Output.create<String>(map['serverKeyType'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverKeyType: (map['serverKeyType'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Protected item dynamic memory config.
 class ProtectedItemDynamicMemoryConfig {
   /// Gets or sets maximum memory in MB.
-  final double maximumMemoryInMegaBytes;
+  final pulumi.Input<double> maximumMemoryInMegaBytes;
   /// Gets or sets minimum memory in MB.
-  final double minimumMemoryInMegaBytes;
+  final pulumi.Input<double> minimumMemoryInMegaBytes;
   /// Gets or sets target memory buffer in %.
-  final int targetMemoryBufferPercentage;
+  final pulumi.Input<int> targetMemoryBufferPercentage;
 
   /// Creates a new [ProtectedItemDynamicMemoryConfig].
   /// [maximumMemoryInMegaBytes] Gets or sets maximum memory in MB.
@@ -30,9 +31,9 @@ class ProtectedItemDynamicMemoryConfig {
 
   factory ProtectedItemDynamicMemoryConfig.fromMap(Map<String, dynamic> map) {
     return ProtectedItemDynamicMemoryConfig(
-      maximumMemoryInMegaBytes: map['maximumMemoryInMegaBytes'] as double,
-      minimumMemoryInMegaBytes: map['minimumMemoryInMegaBytes'] as double,
-      targetMemoryBufferPercentage: map['targetMemoryBufferPercentage'] as int,
+      maximumMemoryInMegaBytes: (map['maximumMemoryInMegaBytes'] as double).input(),
+      minimumMemoryInMegaBytes: (map['minimumMemoryInMegaBytes'] as double).input(),
+      targetMemoryBufferPercentage: (map['targetMemoryBufferPercentage'] as int).input(),
     );
   }
 }

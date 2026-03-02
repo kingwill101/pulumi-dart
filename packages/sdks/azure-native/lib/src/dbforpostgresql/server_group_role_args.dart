@@ -32,23 +32,15 @@ class ServerGroupRoleArgs {
   /// [roleType] Optional.
   /// [tenantId] A type definition that refers the id to an Azure Resource Manager resource.
   ServerGroupRoleArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> objectId,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? roleType,
-    pulumi.Output<String>? tenantId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      objectId = pulumi.Input.asInput<String>(objectId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      roleType = pulumi.Input.asOptionalInput<String>(roleType),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.clusterName,
+    required this.objectId,
+    this.password,
+    required this.principalType,
+    required this.resourceGroupName,
+    this.roleName,
+    this.roleType,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ServerGroupRoleArgs {
 
   factory ServerGroupRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupRoleArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      objectId: pulumi.Output.create<String>(map['objectId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      roleType: map['roleType'] == null ? null : pulumi.Output.create<String>(map['roleType'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
   /// The relative resource name of the binauthz platform policy to audit. GKE
   /// platform policies have the following format:
   /// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE
@@ -21,7 +22,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
 
   factory FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

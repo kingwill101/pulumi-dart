@@ -5,13 +5,13 @@ import 'eligible_approver.dart';
 
 class ApprovalRuleConfig {
   /// Whether self-approval is allowed.
-  final bool allowSelfApproval;
+  final pulumi.Input<bool> allowSelfApproval;
   /// List of eligible approvers.
-  final List<EligibleApprover> eligibleApprovers;
+  final pulumi.Input<List<EligibleApprover>> eligibleApprovers;
   /// Number of approvals required.
-  final int numApprovalsRequired;
+  final pulumi.Input<int> numApprovalsRequired;
   /// Whether reapproval is required on changes.
-  final bool requireReapprovalOnChange;
+  final pulumi.Input<bool> requireReapprovalOnChange;
 
   /// Creates a new [ApprovalRuleConfig].
   /// [allowSelfApproval] Whether self-approval is allowed.
@@ -28,7 +28,7 @@ class ApprovalRuleConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowSelfApproval': allowSelfApproval,
-      'eligibleApprovers': pulumi.Input.encodeList<EligibleApprover, Map<String, dynamic>>(eligibleApprovers, (value) => value.toMap()),
+      'eligibleApprovers': pulumi.Input.mapInputValue<List<EligibleApprover>, List<Map<String, dynamic>>>(eligibleApprovers, (value) => pulumi.Input.encodeList<EligibleApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
       'numApprovalsRequired': numApprovalsRequired,
       'requireReapprovalOnChange': requireReapprovalOnChange,
     };
@@ -36,10 +36,10 @@ class ApprovalRuleConfig {
 
   factory ApprovalRuleConfig.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleConfig(
-      allowSelfApproval: map['allowSelfApproval'] as bool,
-      eligibleApprovers: pulumi.Input.decodeList<EligibleApprover>(map['eligibleApprovers'], (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>())),
-      numApprovalsRequired: map['numApprovalsRequired'] as int,
-      requireReapprovalOnChange: map['requireReapprovalOnChange'] as bool,
+      allowSelfApproval: (map['allowSelfApproval'] as bool).input(),
+      eligibleApprovers: (pulumi.Input.decodeList<EligibleApprover>(map['eligibleApprovers'], (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numApprovalsRequired: (map['numApprovalsRequired'] as int).input(),
+      requireReapprovalOnChange: (map['requireReapprovalOnChange'] as bool).input(),
     );
   }
 }

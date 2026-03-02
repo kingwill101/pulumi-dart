@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Certificate datastore credentials configuration.
 class CertificateDatastoreCredentialsResponse {
   /// Authority URL used for authentication.
-  final String? authorityUrl;
+  final pulumi.Input<String>? authorityUrl;
   /// [Required] Service principal client ID.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'Certificate'.
-  final String credentialsType;
+  final pulumi.Input<String> credentialsType;
   /// Resource the service principal has access to.
-  final String? resourceUrl;
+  final pulumi.Input<String>? resourceUrl;
   /// [Required] ID of the tenant to which the service principal belongs.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// [Required] Thumbprint of the certificate used for authentication.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
 
   /// Creates a new [CertificateDatastoreCredentialsResponse].
   /// [authorityUrl] Authority URL used for authentication.
@@ -46,12 +47,12 @@ class CertificateDatastoreCredentialsResponse {
 
   factory CertificateDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateDatastoreCredentialsResponse(
-      authorityUrl: map['authorityUrl'] == null ? null : map['authorityUrl'] as String,
-      clientId: map['clientId'] as String,
-      credentialsType: map['credentialsType'] as String,
-      resourceUrl: map['resourceUrl'] == null ? null : map['resourceUrl'] as String,
-      tenantId: map['tenantId'] as String,
-      thumbprint: map['thumbprint'] as String,
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      credentialsType: (map['credentialsType'] as String).input(),
+      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
     );
   }
 }

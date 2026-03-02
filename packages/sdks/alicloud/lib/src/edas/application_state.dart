@@ -40,29 +40,18 @@ class ApplicationState {
   /// [packageVersion] The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   /// [warUrl] The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
   ApplicationState({
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<int>? buildPackId,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? descriotion,
-    pulumi.Output<List<String>>? ecuInfos,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? healthCheckUrl,
-    pulumi.Output<String>? logicalRegionId,
-    pulumi.Output<String>? packageType,
-    pulumi.Output<String>? packageVersion,
-    pulumi.Output<String>? warUrl,
-  }) :
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      buildPackId = pulumi.Input.asOptionalInput<int>(buildPackId),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      descriotion = pulumi.Input.asOptionalInput<String>(descriotion),
-      ecuInfos = pulumi.Input.asOptionalInput<List<String>>(ecuInfos),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      healthCheckUrl = pulumi.Input.asOptionalInput<String>(healthCheckUrl),
-      logicalRegionId = pulumi.Input.asOptionalInput<String>(logicalRegionId),
-      packageType = pulumi.Input.asOptionalInput<String>(packageType),
-      packageVersion = pulumi.Input.asOptionalInput<String>(packageVersion),
-      warUrl = pulumi.Input.asOptionalInput<String>(warUrl);
+    this.applicationName,
+    this.buildPackId,
+    this.clusterId,
+    this.descriotion,
+    this.ecuInfos,
+    this.groupId,
+    this.healthCheckUrl,
+    this.logicalRegionId,
+    this.packageType,
+    this.packageVersion,
+    this.warUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      buildPackId: map['buildPackId'] == null ? null : pulumi.Output.create<int>(map['buildPackId'] as int),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      descriotion: map['descriotion'] == null ? null : pulumi.Output.create<String>(map['descriotion'] as String),
-      ecuInfos: map['ecuInfos'] == null ? null : pulumi.Output.create<List<String>>((map['ecuInfos'] as List).cast<String>()),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      healthCheckUrl: map['healthCheckUrl'] == null ? null : pulumi.Output.create<String>(map['healthCheckUrl'] as String),
-      logicalRegionId: map['logicalRegionId'] == null ? null : pulumi.Output.create<String>(map['logicalRegionId'] as String),
-      packageType: map['packageType'] == null ? null : pulumi.Output.create<String>(map['packageType'] as String),
-      packageVersion: map['packageVersion'] == null ? null : pulumi.Output.create<String>(map['packageVersion'] as String),
-      warUrl: map['warUrl'] == null ? null : pulumi.Output.create<String>(map['warUrl'] as String),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      buildPackId: map['buildPackId'] == null ? null : (map['buildPackId'] as int).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      descriotion: map['descriotion'] == null ? null : (map['descriotion'] as String).input(),
+      ecuInfos: map['ecuInfos'] == null ? null : ((map['ecuInfos'] as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      healthCheckUrl: map['healthCheckUrl'] == null ? null : (map['healthCheckUrl'] as String).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
+      warUrl: map['warUrl'] == null ? null : (map['warUrl'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'a2_acontainer_mapping_input.dart';
 
 /// Configure pairing input properties.
 class CreateProtectionContainerMappingInputProperties {
   /// Applicable policy.
-  final String? policyId;
+  final pulumi.Input<String>? policyId;
   /// Provider specific input for pairing.
-  final A2AContainerMappingInput? providerSpecificInput;
+  final pulumi.Input<A2AContainerMappingInput>? providerSpecificInput;
   /// The target unique protection container name.
-  final String? targetProtectionContainerId;
+  final pulumi.Input<String>? targetProtectionContainerId;
 
   /// Creates a new [CreateProtectionContainerMappingInputProperties].
   /// [policyId] Applicable policy.
@@ -24,16 +25,16 @@ class CreateProtectionContainerMappingInputProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'policyId': ?policyId,
-      'providerSpecificInput': ?providerSpecificInput == null ? null : providerSpecificInput!.toMap(),
+      'providerSpecificInput': ?pulumi.Input.mapOptionalInputValue<A2AContainerMappingInput, Map<String, dynamic>>(providerSpecificInput, (value) => value.toMap()),
       'targetProtectionContainerId': ?targetProtectionContainerId,
     };
   }
 
   factory CreateProtectionContainerMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateProtectionContainerMappingInputProperties(
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      providerSpecificInput: map['providerSpecificInput'] == null ? null : A2AContainerMappingInput.fromMap((map['providerSpecificInput'] as Map).cast<String, dynamic>()),
-      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : map['targetProtectionContainerId'] as String,
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2AContainerMappingInput.fromMap((map['providerSpecificInput'] as Map).cast<String, dynamic>())).input(),
+      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId'] as String).input(),
     );
   }
 }

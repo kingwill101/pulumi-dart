@@ -20,13 +20,10 @@ class RetentionPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
   RetentionPolicyArgs({
-    pulumi.Output<RetentionPolicyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schedulerName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<RetentionPolicyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schedulerName = pulumi.Input.asInput<String>(schedulerName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.schedulerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RetentionPolicyArgs {
 
   factory RetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<RetentionPolicyProperties>(RetentionPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedulerName: pulumi.Output.create<String>(map['schedulerName'] as String),
+      properties: map['properties'] == null ? null : (RetentionPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schedulerName: (map['schedulerName'] as String).input(),
     );
   }
 }

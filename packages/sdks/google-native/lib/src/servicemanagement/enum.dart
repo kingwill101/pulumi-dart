@@ -9,17 +9,17 @@ import 'source_context.dart';
 /// Enum type definition.
 class Enum {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
-  final String? edition;
+  final pulumi.Input<String>? edition;
   /// Enum value definitions.
-  final List<EnumValue>? enumvalue;
+  final pulumi.Input<List<EnumValue>>? enumvalue;
   /// Enum type name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Protocol buffer options.
-  final List<Option>? options;
+  final pulumi.Input<List<Option>>? options;
   /// The source context.
-  final SourceContext? sourceContext;
+  final pulumi.Input<SourceContext>? sourceContext;
   /// The source syntax.
-  final EnumSyntax? syntax;
+  final pulumi.Input<EnumSyntax>? syntax;
 
   /// Creates a new [Enum].
   /// [edition] The source edition string, only valid when syntax is SYNTAX_EDITIONS.
@@ -40,22 +40,22 @@ class Enum {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'edition': ?edition,
-      'enumvalue': ?enumvalue == null ? null : pulumi.Input.encodeList<EnumValue, Map<String, dynamic>>(enumvalue!, (value) => value.toMap()),
+      'enumvalue': ?pulumi.Input.mapOptionalInputValue<List<EnumValue>, List<Map<String, dynamic>>>(enumvalue, (value) => pulumi.Input.encodeList<EnumValue, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': ?name,
-      'options': ?options == null ? null : pulumi.Input.encodeList<Option, Map<String, dynamic>>(options!, (value) => value.toMap()),
-      'sourceContext': ?sourceContext == null ? null : sourceContext!.toMap(),
-      'syntax': ?syntax == null ? null : syntax!.value,
+      'options': ?pulumi.Input.mapOptionalInputValue<List<Option>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<Option, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceContext': ?pulumi.Input.mapOptionalInputValue<SourceContext, Map<String, dynamic>>(sourceContext, (value) => value.toMap()),
+      'syntax': ?pulumi.Input.mapOptionalInputValue<EnumSyntax, String>(syntax, (value) => value.value),
     };
   }
 
   factory Enum.fromMap(Map<String, dynamic> map) {
     return Enum(
-      edition: map['edition'] == null ? null : map['edition'] as String,
-      enumvalue: map['enumvalue'] == null ? null : pulumi.Input.decodeList<EnumValue>(map['enumvalue'], (value) => EnumValue.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : map['name'] as String,
-      options: map['options'] == null ? null : pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: map['sourceContext'] == null ? null : SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>()),
-      syntax: map['syntax'] == null ? null : EnumSyntax.fromValue(map['syntax'] as String),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      enumvalue: map['enumvalue'] == null ? null : (pulumi.Input.decodeList<EnumValue>(map['enumvalue'], (value) => EnumValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
+      syntax: map['syntax'] == null ? null : (EnumSyntax.fromValue(map['syntax'] as String)).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Transfers the call in Telephony Gateway.
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse {
   /// The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
-  final String phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse].
   /// [phoneNumber] The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse(
-      phoneNumber: map['phoneNumber'] as String,
+      phoneNumber: (map['phoneNumber'] as String).input(),
     );
   }
 }

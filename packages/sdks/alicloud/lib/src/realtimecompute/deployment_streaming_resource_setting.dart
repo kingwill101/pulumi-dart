@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_streaming_resource_setting_basic_resource_setting.dart';
 import 'deployment_streaming_resource_setting_expert_resource_setting.dart';
 
 class DeploymentStreamingResourceSetting {
   /// Resource settings for basic mode See `basic_resource_setting` below.
-  final DeploymentStreamingResourceSettingBasicResourceSetting? basicResourceSetting;
+  final pulumi.Input<DeploymentStreamingResourceSettingBasicResourceSetting>? basicResourceSetting;
   /// Expert mode resource settings See `expert_resource_setting` below.
-  final DeploymentStreamingResourceSettingExpertResourceSetting? expertResourceSetting;
+  final pulumi.Input<DeploymentStreamingResourceSettingExpertResourceSetting>? expertResourceSetting;
   /// Resource mode used in streaming mode, valid values: BASIC or EXPERT
-  final String? resourceSettingMode;
+  final pulumi.Input<String>? resourceSettingMode;
 
   /// Creates a new [DeploymentStreamingResourceSetting].
   /// [basicResourceSetting] Resource settings for basic mode See `basic_resource_setting` below.
@@ -23,17 +24,17 @@ class DeploymentStreamingResourceSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicResourceSetting': ?basicResourceSetting == null ? null : basicResourceSetting!.toMap(),
-      'expertResourceSetting': ?expertResourceSetting == null ? null : expertResourceSetting!.toMap(),
+      'basicResourceSetting': ?pulumi.Input.mapOptionalInputValue<DeploymentStreamingResourceSettingBasicResourceSetting, Map<String, dynamic>>(basicResourceSetting, (value) => value.toMap()),
+      'expertResourceSetting': ?pulumi.Input.mapOptionalInputValue<DeploymentStreamingResourceSettingExpertResourceSetting, Map<String, dynamic>>(expertResourceSetting, (value) => value.toMap()),
       'resourceSettingMode': ?resourceSettingMode,
     };
   }
 
   factory DeploymentStreamingResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentStreamingResourceSetting(
-      basicResourceSetting: map['basicResourceSetting'] == null ? null : DeploymentStreamingResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>()),
-      expertResourceSetting: map['expertResourceSetting'] == null ? null : DeploymentStreamingResourceSettingExpertResourceSetting.fromMap((map['expertResourceSetting'] as Map).cast<String, dynamic>()),
-      resourceSettingMode: map['resourceSettingMode'] == null ? null : map['resourceSettingMode'] as String,
+      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      expertResourceSetting: map['expertResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingExpertResourceSetting.fromMap((map['expertResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      resourceSettingMode: map['resourceSettingMode'] == null ? null : (map['resourceSettingMode'] as String).input(),
     );
   }
 }

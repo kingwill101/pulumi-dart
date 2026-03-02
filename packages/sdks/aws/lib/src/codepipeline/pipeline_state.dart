@@ -53,33 +53,20 @@ class PipelineState {
   /// [triggers] A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
   /// [variables] A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
   PipelineState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<PipelineArtifactStore>>? artifactStores,
-    pulumi.Output<String>? executionMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pipelineType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<List<PipelineStage>>? stages,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<PipelineTriggerAll>>? triggerAlls,
-    pulumi.Output<List<PipelineTrigger>>? triggers,
-    pulumi.Output<List<PipelineVariable>>? variables,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      artifactStores = pulumi.Input.asOptionalInput<List<PipelineArtifactStore>>(artifactStores),
-      executionMode = pulumi.Input.asOptionalInput<String>(executionMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelineType = pulumi.Input.asOptionalInput<String>(pipelineType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      stages = pulumi.Input.asOptionalInput<List<PipelineStage>>(stages),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      triggerAlls = pulumi.Input.asOptionalInput<List<PipelineTriggerAll>>(triggerAlls),
-      triggers = pulumi.Input.asOptionalInput<List<PipelineTrigger>>(triggers),
-      variables = pulumi.Input.asOptionalInput<List<PipelineVariable>>(variables);
+    this.arn,
+    this.artifactStores,
+    this.executionMode,
+    this.name,
+    this.pipelineType,
+    this.region,
+    this.roleArn,
+    this.stages,
+    this.tags,
+    this.tagsAll,
+    this.triggerAlls,
+    this.triggers,
+    this.variables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      artifactStores: map['artifactStores'] == null ? null : pulumi.Output.create<List<PipelineArtifactStore>>(pulumi.Input.decodeList<PipelineArtifactStore>(map['artifactStores'], (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>()))),
-      executionMode: map['executionMode'] == null ? null : pulumi.Output.create<String>(map['executionMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelineType: map['pipelineType'] == null ? null : pulumi.Output.create<String>(map['pipelineType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      stages: map['stages'] == null ? null : pulumi.Output.create<List<PipelineStage>>(pulumi.Input.decodeList<PipelineStage>(map['stages'], (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      triggerAlls: map['triggerAlls'] == null ? null : pulumi.Output.create<List<PipelineTriggerAll>>(pulumi.Input.decodeList<PipelineTriggerAll>(map['triggerAlls'], (value) => PipelineTriggerAll.fromMap((value as Map).cast<String, dynamic>()))),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<PipelineTrigger>>(pulumi.Input.decodeList<PipelineTrigger>(map['triggers'], (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>()))),
-      variables: map['variables'] == null ? null : pulumi.Output.create<List<PipelineVariable>>(pulumi.Input.decodeList<PipelineVariable>(map['variables'], (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      artifactStores: map['artifactStores'] == null ? null : (pulumi.Input.decodeList<PipelineArtifactStore>(map['artifactStores'], (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      executionMode: map['executionMode'] == null ? null : (map['executionMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelineType: map['pipelineType'] == null ? null : (map['pipelineType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<PipelineStage>(map['stages'], (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      triggerAlls: map['triggerAlls'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAll>(map['triggerAlls'], (value) => PipelineTriggerAll.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<PipelineTrigger>(map['triggers'], (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<PipelineVariable>(map['variables'], (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

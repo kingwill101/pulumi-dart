@@ -25,17 +25,12 @@ class GetSecurityUserRuleArgs {
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
   /// [ruleName] The name of the rule.
   GetSecurityUserRuleArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionName,
-    required pulumi.Output<String> ruleName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asInput<String>(ruleCollectionName),
-      ruleName = pulumi.Input.asInput<String>(ruleName);
+    required this.configurationName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    required this.ruleCollectionName,
+    required this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSecurityUserRuleArgs {
 
   factory GetSecurityUserRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityUserRuleArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: pulumi.Output.create<String>(map['ruleCollectionName'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

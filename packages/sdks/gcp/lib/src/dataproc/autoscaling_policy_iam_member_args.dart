@@ -46,19 +46,13 @@ class AutoscalingPolicyIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   AutoscalingPolicyIamMemberArgs({
-    pulumi.Output<AutoscalingPolicyIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<AutoscalingPolicyIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    this.location,
+    required this.member,
+    required this.policyId,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,12 +67,12 @@ class AutoscalingPolicyIamMemberArgs {
 
   factory AutoscalingPolicyIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<AutoscalingPolicyIamMemberCondition>(AutoscalingPolicyIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (AutoscalingPolicyIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

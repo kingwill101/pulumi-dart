@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomModelTrainingMetric {
   /// Loss metric associated with the customization job.
-  final double trainingLoss;
+  final pulumi.Input<double> trainingLoss;
 
   /// Creates a new [GetCustomModelTrainingMetric].
   /// [trainingLoss] Loss metric associated with the customization job.
@@ -19,7 +20,7 @@ class GetCustomModelTrainingMetric {
 
   factory GetCustomModelTrainingMetric.fromMap(Map<String, dynamic> map) {
     return GetCustomModelTrainingMetric(
-      trainingLoss: map['trainingLoss'] as double,
+      trainingLoss: (map['trainingLoss'] as double).input(),
     );
   }
 }

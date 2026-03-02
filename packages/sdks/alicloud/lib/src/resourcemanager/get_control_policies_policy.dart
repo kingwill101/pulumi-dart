@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetControlPoliciesPolicy {
   /// The count of policy attachment.
-  final int attachmentCount;
+  final pulumi.Input<int> attachmentCount;
   /// The name of policy.
-  final String controlPolicyName;
+  final pulumi.Input<String> controlPolicyName;
   /// The description of policy.
-  final String description;
+  final pulumi.Input<String> description;
   /// The effect scope.
-  final String effectScope;
+  final pulumi.Input<String> effectScope;
   /// The ID of the Control Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The policy document.
-  final String policyDocument;
+  final pulumi.Input<String> policyDocument;
   /// The ID of policy.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The type of policy.
-  final String policyType;
+  final pulumi.Input<String> policyType;
 
   /// Creates a new [GetControlPoliciesPolicy].
   /// [attachmentCount] The count of policy attachment.
@@ -54,14 +55,14 @@ class GetControlPoliciesPolicy {
 
   factory GetControlPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesPolicy(
-      attachmentCount: map['attachmentCount'] as int,
-      controlPolicyName: map['controlPolicyName'] as String,
-      description: map['description'] as String,
-      effectScope: map['effectScope'] as String,
-      id: map['id'] as String,
-      policyDocument: map['policyDocument'] as String,
-      policyId: map['policyId'] as String,
-      policyType: map['policyType'] as String,
+      attachmentCount: (map['attachmentCount'] as int).input(),
+      controlPolicyName: (map['controlPolicyName'] as String).input(),
+      description: (map['description'] as String).input(),
+      effectScope: (map['effectScope'] as String).input(),
+      id: (map['id'] as String).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
     );
   }
 }

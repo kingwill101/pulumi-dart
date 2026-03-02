@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionActionPointAction {
   /// Information about the action.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The action name.
-  final String name;
+  final pulumi.Input<String> name;
   /// An Amazon Resource Name (ARN) for an Identity and Access Management assume role.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
   /// The extension URI associated to the action point in the extension definition. The URI can be an Amazon Resource Name (ARN) for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ExtensionActionPointAction].
   /// [description] Information about the action.
@@ -34,10 +35,10 @@ class ExtensionActionPointAction {
 
   factory ExtensionActionPointAction.fromMap(Map<String, dynamic> map) {
     return ExtensionActionPointAction(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      uri: map['uri'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

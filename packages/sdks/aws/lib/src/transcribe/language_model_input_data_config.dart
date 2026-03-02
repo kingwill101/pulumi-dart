@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LanguageModelInputDataConfig {
   /// IAM role with access to S3 bucket.
-  final String dataAccessRoleArn;
+  final pulumi.Input<String> dataAccessRoleArn;
   /// S3 URI where training data is located.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
   /// S3 URI where tuning data is located.
   ///
   /// The following arguments are optional:
-  final String? tuningDataS3Uri;
+  final pulumi.Input<String>? tuningDataS3Uri;
 
   /// Creates a new [LanguageModelInputDataConfig].
   /// [dataAccessRoleArn] IAM role with access to S3 bucket.
@@ -31,9 +32,9 @@ class LanguageModelInputDataConfig {
 
   factory LanguageModelInputDataConfig.fromMap(Map<String, dynamic> map) {
     return LanguageModelInputDataConfig(
-      dataAccessRoleArn: map['dataAccessRoleArn'] as String,
-      s3Uri: map['s3Uri'] as String,
-      tuningDataS3Uri: map['tuningDataS3Uri'] == null ? null : map['tuningDataS3Uri'] as String,
+      dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
+      s3Uri: (map['s3Uri'] as String).input(),
+      tuningDataS3Uri: map['tuningDataS3Uri'] == null ? null : (map['tuningDataS3Uri'] as String).input(),
     );
   }
 }

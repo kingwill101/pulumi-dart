@@ -16,13 +16,10 @@ class AccountRaiBlocklistState {
   /// [description] A short description for the Cognitive Account Rai Blocklist.
   /// [name] The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   AccountRaiBlocklistState({
-    pulumi.Output<String>? cognitiveAccountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-  }) :
-      cognitiveAccountId = pulumi.Input.asOptionalInput<String>(cognitiveAccountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.cognitiveAccountId,
+    this.description,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AccountRaiBlocklistState {
 
   factory AccountRaiBlocklistState.fromMap(Map<String, dynamic> map) {
     return AccountRaiBlocklistState(
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -29,23 +29,15 @@ class ContextDialogflowV2beta1Args {
   /// [sessionId] Required.
   /// [userId] Required.
   ContextDialogflowV2beta1Args({
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<int>? lifespanCount,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> sessionId,
-    required pulumi.Output<String> userId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      lifespanCount = pulumi.Input.asOptionalInput<int>(lifespanCount),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.environmentId,
+    this.lifespanCount,
+    this.location,
+    required this.name,
+    this.parameters,
+    this.project,
+    required this.sessionId,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,14 +54,14 @@ class ContextDialogflowV2beta1Args {
 
   factory ContextDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return ContextDialogflowV2beta1Args(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      lifespanCount: map['lifespanCount'] == null ? null : pulumi.Output.create<int>(map['lifespanCount'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      lifespanCount: map['lifespanCount'] == null ? null : (map['lifespanCount'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sessionId: (map['sessionId'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

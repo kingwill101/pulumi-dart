@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_spec_response.dart';
 
 /// TaskTemplateSpec describes the data a task should have when created from a template.
 class TaskTemplateSpecResponse {
   /// Optional. Specification of the desired behavior of the task.
-  final TaskSpecResponse spec;
+  final pulumi.Input<TaskSpecResponse> spec;
 
   /// Creates a new [TaskTemplateSpecResponse].
   /// [spec] Optional. Specification of the desired behavior of the task.
@@ -15,13 +16,13 @@ class TaskTemplateSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'spec': spec.toMap(),
+      'spec': pulumi.Input.mapInputValue<TaskSpecResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
     };
   }
 
   factory TaskTemplateSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpecResponse(
-      spec: TaskSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      spec: (TaskSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

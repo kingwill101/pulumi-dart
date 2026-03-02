@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterfaceVpcIpv4Address {
   /// The VPC IPv4 address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The 1:1 NAT address for this VPC IPv4 address.
-  final String nat11Address;
+  final pulumi.Input<String> nat11Address;
   /// Whether this is the primary VPC IPv4 address.
-  final bool primary;
+  final pulumi.Input<bool> primary;
 
   /// Creates a new [GetInterfaceVpcIpv4Address].
   /// [address] The VPC IPv4 address.
@@ -29,9 +30,9 @@ class GetInterfaceVpcIpv4Address {
 
   factory GetInterfaceVpcIpv4Address.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVpcIpv4Address(
-      address: map['address'] as String,
-      nat11Address: map['nat11Address'] as String,
-      primary: map['primary'] as bool,
+      address: (map['address'] as String).input(),
+      nat11Address: (map['nat11Address'] as String).input(),
+      primary: (map['primary'] as bool).input(),
     );
   }
 }

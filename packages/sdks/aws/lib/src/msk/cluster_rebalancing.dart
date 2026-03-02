@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRebalancing {
   /// The status of intelligent rebalancing. Valid values: `ACTIVE`, `PAUSED`. Default is `ACTIVE` for new Express-based clusters.
   ///
   /// > **NOTE:** Intelligent rebalancing is only available for MSK Provisioned clusters with Express brokers. When enabled, you cannot use third-party rebalancing tools such as Cruise Control. See [AWS MSK Intelligent Rebalancing](https://docs.aws.amazon.com/msk/latest/developerguide/intelligent-rebalancing.html) for more information.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ClusterRebalancing].
   /// [status] The status of intelligent rebalancing. Valid values: `ACTIVE`, `PAUSED`. Default is `ACTIVE` for new Express-based clusters.
@@ -21,7 +22,7 @@ class ClusterRebalancing {
 
   factory ClusterRebalancing.fromMap(Map<String, dynamic> map) {
     return ClusterRebalancing(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

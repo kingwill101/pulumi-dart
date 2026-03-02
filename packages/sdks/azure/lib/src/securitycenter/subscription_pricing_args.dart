@@ -23,15 +23,11 @@ class SubscriptionPricingArgs {
   /// [subplan] Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
   /// [tier] The pricing tier to use. Possible values are `Free` and `Standard`.
   SubscriptionPricingArgs({
-    pulumi.Output<List<SubscriptionPricingExtension>>? extensions,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? subplan,
-    required pulumi.Output<String> tier,
-  }) :
-      extensions = pulumi.Input.asOptionalInput<List<SubscriptionPricingExtension>>(extensions),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      subplan = pulumi.Input.asOptionalInput<String>(subplan),
-      tier = pulumi.Input.asInput<String>(tier);
+    this.extensions,
+    this.resourceType,
+    this.subplan,
+    required this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SubscriptionPricingArgs {
 
   factory SubscriptionPricingArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionPricingArgs(
-      extensions: map['extensions'] == null ? null : pulumi.Output.create<List<SubscriptionPricingExtension>>(pulumi.Input.decodeList<SubscriptionPricingExtension>(map['extensions'], (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      subplan: map['subplan'] == null ? null : pulumi.Output.create<String>(map['subplan'] as String),
-      tier: pulumi.Output.create<String>(map['tier'] as String),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<SubscriptionPricingExtension>(map['extensions'], (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      subplan: map['subplan'] == null ? null : (map['subplan'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

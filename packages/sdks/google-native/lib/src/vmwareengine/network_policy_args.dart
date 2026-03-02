@@ -36,25 +36,16 @@ class NetworkPolicyArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [vmwareEngineNetwork] Optional. The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   NetworkPolicyArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> edgeServicesCidr,
-    pulumi.Output<NetworkService>? externalIp,
-    pulumi.Output<NetworkService>? internetAccess,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkPolicyId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
-      externalIp = pulumi.Input.asOptionalInput<NetworkService>(externalIp),
-      internetAccess = pulumi.Input.asOptionalInput<NetworkService>(internetAccess),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      vmwareEngineNetwork = pulumi.Input.asOptionalInput<String>(vmwareEngineNetwork);
+    this.description,
+    required this.edgeServicesCidr,
+    this.externalIp,
+    this.internetAccess,
+    this.location,
+    required this.networkPolicyId,
+    this.project,
+    this.requestId,
+    this.vmwareEngineNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      edgeServicesCidr: pulumi.Output.create<String>(map['edgeServicesCidr'] as String),
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<NetworkService>(NetworkService.fromMap((map['externalIp'] as Map).cast<String, dynamic>())),
-      internetAccess: map['internetAccess'] == null ? null : pulumi.Output.create<NetworkService>(NetworkService.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkPolicyId: pulumi.Output.create<String>(map['networkPolicyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      edgeServicesCidr: (map['edgeServicesCidr'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (NetworkService.fromMap((map['externalIp'] as Map).cast<String, dynamic>())).input(),
+      internetAccess: map['internetAccess'] == null ? null : (NetworkService.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkPolicyId: (map['networkPolicyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
     );
   }
 }

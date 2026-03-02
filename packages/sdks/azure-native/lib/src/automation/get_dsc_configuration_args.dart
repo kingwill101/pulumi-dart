@@ -19,13 +19,10 @@ class GetDscConfigurationArgs {
   /// [configurationName] The configuration name.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetDscConfigurationArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.configurationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDscConfigurationArgs {
 
   factory GetDscConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetDscConfigurationArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      configurationName: (map['configurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

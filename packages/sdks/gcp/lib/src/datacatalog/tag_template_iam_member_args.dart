@@ -45,19 +45,13 @@ class TagTemplateIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
   TagTemplateIamMemberArgs({
-    pulumi.Output<TagTemplateIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> tagTemplate,
-  }) :
-      condition = pulumi.Input.asOptionalInput<TagTemplateIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      tagTemplate = pulumi.Input.asInput<String>(tagTemplate);
+    this.condition,
+    required this.member,
+    this.project,
+    this.region,
+    required this.role,
+    required this.tagTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class TagTemplateIamMemberArgs {
 
   factory TagTemplateIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<TagTemplateIamMemberCondition>(TagTemplateIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tagTemplate: pulumi.Output.create<String>(map['tagTemplate'] as String),
+      condition: map['condition'] == null ? null : (TagTemplateIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      tagTemplate: (map['tagTemplate'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Representation for transformation matrix, intended to be compatible and used with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
   /// Number of columns in the matrix.
-  final int cols;
+  final pulumi.Input<int> cols;
   /// The matrix data.
-  final String data;
+  final pulumi.Input<String> data;
   /// Number of rows in the matrix.
-  final int rows;
+  final pulumi.Input<int> rows;
   /// This encodes information about what data type the matrix uses. For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV primitive data types, please refer to https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  final int type;
+  final pulumi.Input<int> type;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageMatrixResponse].
   /// [cols] Number of columns in the matrix.
@@ -35,10 +36,10 @@ class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
 
   factory GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageMatrixResponse(
-      cols: map['cols'] as int,
-      data: map['data'] as String,
-      rows: map['rows'] as int,
-      type: map['type'] as int,
+      cols: (map['cols'] as int).input(),
+      data: (map['data'] as String).input(),
+      rows: (map['rows'] as int).input(),
+      type: (map['type'] as int).input(),
     );
   }
 }

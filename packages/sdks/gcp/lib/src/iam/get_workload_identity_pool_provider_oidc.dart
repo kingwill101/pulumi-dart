@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkloadIdentityPoolProviderOidc {
   /// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
@@ -14,9 +15,9 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// '''
-  final List<String> allowedAudiences;
+  final pulumi.Input<List<String>> allowedAudiences;
   /// The OIDC issuer URL.
-  final String issuerUri;
+  final pulumi.Input<String> issuerUri;
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
   /// use the 'jwks_uri' from the discovery document fetched from the
@@ -40,7 +41,7 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// ]
   /// }
   /// '''
-  final String jwksJson;
+  final pulumi.Input<String> jwksJson;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderOidc].
   /// [allowedAudiences] Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
@@ -62,9 +63,9 @@ class GetWorkloadIdentityPoolProviderOidc {
 
   factory GetWorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderOidc(
-      allowedAudiences: (map['allowedAudiences'] as List).cast<String>(),
-      issuerUri: map['issuerUri'] as String,
-      jwksJson: map['jwksJson'] as String,
+      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
+      issuerUri: (map['issuerUri'] as String).input(),
+      jwksJson: (map['jwksJson'] as String).input(),
     );
   }
 }

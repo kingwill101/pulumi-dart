@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the Azure Active Directory login flow.
 class AzureActiveDirectoryLogin {
   /// <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
-  final bool? disableWWWAuthenticate;
+  final pulumi.Input<bool>? disableWWWAuthenticate;
   /// Login parameters to send to the OpenID Connect authorization endpoint when
   /// a user logs in. Each parameter must be in the form "key=value".
-  final List<String>? loginParameters;
+  final pulumi.Input<List<String>>? loginParameters;
 
   /// Creates a new [AzureActiveDirectoryLogin].
   /// [disableWWWAuthenticate] <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
@@ -26,8 +27,8 @@ class AzureActiveDirectoryLogin {
 
   factory AzureActiveDirectoryLogin.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryLogin(
-      disableWWWAuthenticate: map['disableWWWAuthenticate'] == null ? null : map['disableWWWAuthenticate'] as bool,
-      loginParameters: map['loginParameters'] == null ? null : (map['loginParameters'] as List).cast<String>(),
+      disableWWWAuthenticate: map['disableWWWAuthenticate'] == null ? null : (map['disableWWWAuthenticate'] as bool).input(),
+      loginParameters: map['loginParameters'] == null ? null : ((map['loginParameters'] as List).cast<String>()).input(),
     );
   }
 }

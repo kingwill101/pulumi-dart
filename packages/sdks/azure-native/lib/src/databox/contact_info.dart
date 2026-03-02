@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contact Info.
 class ContactInfo {
   /// Contact name of the person.
-  final String contactName;
+  final pulumi.Input<String> contactName;
   /// Mobile number of the contact person.
-  final String? mobile;
+  final pulumi.Input<String>? mobile;
   /// Phone number of the contact person.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// Phone extension number of the contact person.
-  final String? phoneExtension;
+  final pulumi.Input<String>? phoneExtension;
 
   /// Creates a new [ContactInfo].
   /// [contactName] Contact name of the person.
@@ -35,10 +36,10 @@ class ContactInfo {
 
   factory ContactInfo.fromMap(Map<String, dynamic> map) {
     return ContactInfo(
-      contactName: map['contactName'] as String,
-      mobile: map['mobile'] == null ? null : map['mobile'] as String,
-      phone: map['phone'] as String,
-      phoneExtension: map['phoneExtension'] == null ? null : map['phoneExtension'] as String,
+      contactName: (map['contactName'] as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      phone: (map['phone'] as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
     );
   }
 }

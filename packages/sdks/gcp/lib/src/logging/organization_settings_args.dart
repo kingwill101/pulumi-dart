@@ -22,15 +22,11 @@ class OrganizationSettingsArgs {
   /// [organization] The organization for which to retrieve or configure settings.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
   OrganizationSettingsArgs({
-    pulumi.Output<bool>? disableDefaultSink,
-    pulumi.Output<String>? kmsKeyName,
-    required pulumi.Output<String> organization,
-    pulumi.Output<String>? storageLocation,
-  }) :
-      disableDefaultSink = pulumi.Input.asOptionalInput<bool>(disableDefaultSink),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      organization = pulumi.Input.asInput<String>(organization),
-      storageLocation = pulumi.Input.asOptionalInput<String>(storageLocation);
+    this.disableDefaultSink,
+    this.kmsKeyName,
+    required this.organization,
+    this.storageLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OrganizationSettingsArgs {
 
   factory OrganizationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSettingsArgs(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : pulumi.Output.create<bool>(map['disableDefaultSink'] as bool),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<String>(map['storageLocation'] as String),
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink'] as bool).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      organization: (map['organization'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class TableBucketReplicationArgs {
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this replication configuration.
   TableBucketReplicationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    pulumi.Output<TableBucketReplicationRule>? rule,
-    required pulumi.Output<String> tableBucketArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      rule = pulumi.Input.asOptionalInput<TableBucketReplicationRule>(rule),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+    this.region,
+    required this.role,
+    this.rule,
+    required this.tableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TableBucketReplicationArgs {
 
   factory TableBucketReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<TableBucketReplicationRule>(TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      tableBucketArn: pulumi.Output.create<String>(map['tableBucketArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      rule: map['rule'] == null ? null : (TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }
 }

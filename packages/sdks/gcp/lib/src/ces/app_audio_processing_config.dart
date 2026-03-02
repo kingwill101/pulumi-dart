@@ -9,14 +9,14 @@ class AppAudioProcessingConfig {
   /// Configuration for the ambient sound to be played with the synthesized agent
   /// response, to enhance the naturalness of the conversation.
   /// Structure is documented below.
-  final AppAudioProcessingConfigAmbientSoundConfig? ambientSoundConfig;
+  final pulumi.Input<AppAudioProcessingConfigAmbientSoundConfig>? ambientSoundConfig;
   /// Configuration for how the user barge-in activities should be handled.
   /// Structure is documented below.
-  final AppAudioProcessingConfigBargeInConfig? bargeInConfig;
+  final pulumi.Input<AppAudioProcessingConfigBargeInConfig>? bargeInConfig;
   /// The duration of user inactivity (no speech or interaction) before the agent
   /// prompts the user for reengagement. If not set, the agent will not prompt
   /// the user for reengagement.
-  final String? inactivityTimeout;
+  final pulumi.Input<String>? inactivityTimeout;
   /// Configuration of how the agent response should be synthesized, mapping from
   /// the language code to SynthesizeSpeechConfig.
   /// If the configuration for the specified language code is not found, the
@@ -25,7 +25,7 @@ class AppAudioProcessingConfig {
   /// then "en" configuration will be used.
   /// Note: Language code is case-insensitive.
   /// Structure is documented below.
-  final List<AppAudioProcessingConfigSynthesizeSpeechConfig>? synthesizeSpeechConfigs;
+  final pulumi.Input<List<AppAudioProcessingConfigSynthesizeSpeechConfig>>? synthesizeSpeechConfigs;
 
   /// Creates a new [AppAudioProcessingConfig].
   /// [ambientSoundConfig] Configuration for the ambient sound to be played with the synthesized agent
@@ -41,19 +41,19 @@ class AppAudioProcessingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ambientSoundConfig': ?ambientSoundConfig == null ? null : ambientSoundConfig!.toMap(),
-      'bargeInConfig': ?bargeInConfig == null ? null : bargeInConfig!.toMap(),
+      'ambientSoundConfig': ?pulumi.Input.mapOptionalInputValue<AppAudioProcessingConfigAmbientSoundConfig, Map<String, dynamic>>(ambientSoundConfig, (value) => value.toMap()),
+      'bargeInConfig': ?pulumi.Input.mapOptionalInputValue<AppAudioProcessingConfigBargeInConfig, Map<String, dynamic>>(bargeInConfig, (value) => value.toMap()),
       'inactivityTimeout': ?inactivityTimeout,
-      'synthesizeSpeechConfigs': ?synthesizeSpeechConfigs == null ? null : pulumi.Input.encodeList<AppAudioProcessingConfigSynthesizeSpeechConfig, Map<String, dynamic>>(synthesizeSpeechConfigs!, (value) => value.toMap()),
+      'synthesizeSpeechConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppAudioProcessingConfigSynthesizeSpeechConfig>, List<Map<String, dynamic>>>(synthesizeSpeechConfigs, (value) => pulumi.Input.encodeList<AppAudioProcessingConfigSynthesizeSpeechConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppAudioProcessingConfig.fromMap(Map<String, dynamic> map) {
     return AppAudioProcessingConfig(
-      ambientSoundConfig: map['ambientSoundConfig'] == null ? null : AppAudioProcessingConfigAmbientSoundConfig.fromMap((map['ambientSoundConfig'] as Map).cast<String, dynamic>()),
-      bargeInConfig: map['bargeInConfig'] == null ? null : AppAudioProcessingConfigBargeInConfig.fromMap((map['bargeInConfig'] as Map).cast<String, dynamic>()),
-      inactivityTimeout: map['inactivityTimeout'] == null ? null : map['inactivityTimeout'] as String,
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : pulumi.Input.decodeList<AppAudioProcessingConfigSynthesizeSpeechConfig>(map['synthesizeSpeechConfigs'], (value) => AppAudioProcessingConfigSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>())),
+      ambientSoundConfig: map['ambientSoundConfig'] == null ? null : (AppAudioProcessingConfigAmbientSoundConfig.fromMap((map['ambientSoundConfig'] as Map).cast<String, dynamic>())).input(),
+      bargeInConfig: map['bargeInConfig'] == null ? null : (AppAudioProcessingConfigBargeInConfig.fromMap((map['bargeInConfig'] as Map).cast<String, dynamic>())).input(),
+      inactivityTimeout: map['inactivityTimeout'] == null ? null : (map['inactivityTimeout'] as String).input(),
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : (pulumi.Input.decodeList<AppAudioProcessingConfigSynthesizeSpeechConfig>(map['synthesizeSpeechConfigs'], (value) => AppAudioProcessingConfigSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetConnectionRaiPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
   GetConnectionRaiPolicyArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> raiPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      raiPolicyName = pulumi.Input.asInput<String>(raiPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.connectionName,
+    required this.raiPolicyName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetConnectionRaiPolicyArgs {
 
   factory GetConnectionRaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionRaiPolicyArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      raiPolicyName: pulumi.Output.create<String>(map['raiPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      raiPolicyName: (map['raiPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

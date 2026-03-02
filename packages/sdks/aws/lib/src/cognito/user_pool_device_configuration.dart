@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolDeviceConfiguration {
   /// Whether a challenge is required on a new device. Only applicable to a new device.
-  final bool? challengeRequiredOnNewDevice;
+  final pulumi.Input<bool>? challengeRequiredOnNewDevice;
   /// Whether a device is only remembered on user prompt. `false` equates to "Always" remember, `true` is "User Opt In," and not using a `device_configuration` block is "No."
-  final bool? deviceOnlyRememberedOnUserPrompt;
+  final pulumi.Input<bool>? deviceOnlyRememberedOnUserPrompt;
 
   /// Creates a new [UserPoolDeviceConfiguration].
   /// [challengeRequiredOnNewDevice] Whether a challenge is required on a new device. Only applicable to a new device.
@@ -24,8 +25,8 @@ class UserPoolDeviceConfiguration {
 
   factory UserPoolDeviceConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolDeviceConfiguration(
-      challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] == null ? null : map['challengeRequiredOnNewDevice'] as bool,
-      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] == null ? null : map['deviceOnlyRememberedOnUserPrompt'] as bool,
+      challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] == null ? null : (map['challengeRequiredOnNewDevice'] as bool).input(),
+      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] == null ? null : (map['deviceOnlyRememberedOnUserPrompt'] as bool).input(),
     );
   }
 }

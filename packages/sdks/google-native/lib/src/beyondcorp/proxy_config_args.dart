@@ -35,23 +35,15 @@ class ProxyConfigArgs {
   /// [routingInfo] Routing info to direct traffic to the proxy server.
   /// [transportInfo] Transport layer information to verify for the proxy server.
   ProxyConfigArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo>? encryptionInfo,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> partnerTenantId,
-    required pulumi.Output<String> proxyUri,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo> routingInfo,
-    required pulumi.Output<GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo> transportInfo,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionInfo = pulumi.Input.asOptionalInput<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo>(encryptionInfo),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
-      proxyUri = pulumi.Input.asInput<String>(proxyUri),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      routingInfo = pulumi.Input.asInput<GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo>(routingInfo),
-      transportInfo = pulumi.Input.asInput<GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo>(transportInfo);
+    this.displayName,
+    this.encryptionInfo,
+    required this.organizationId,
+    required this.partnerTenantId,
+    required this.proxyUri,
+    this.requestId,
+    required this.routingInfo,
+    required this.transportInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ProxyConfigArgs {
 
   factory ProxyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProxyConfigArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionInfo: map['encryptionInfo'] == null ? null : pulumi.Output.create<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo>(GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      partnerTenantId: pulumi.Output.create<String>(map['partnerTenantId'] as String),
-      proxyUri: pulumi.Output.create<String>(map['proxyUri'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      routingInfo: pulumi.Output.create<GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo>(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap((map['routingInfo'] as Map).cast<String, dynamic>())),
-      transportInfo: pulumi.Output.create<GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo>(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap((map['transportInfo'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionInfo: map['encryptionInfo'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      proxyUri: (map['proxyUri'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      routingInfo: (GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap((map['routingInfo'] as Map).cast<String, dynamic>())).input(),
+      transportInfo: (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap((map['transportInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

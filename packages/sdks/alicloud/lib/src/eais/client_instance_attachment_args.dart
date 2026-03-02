@@ -25,17 +25,12 @@ class ClientInstanceAttachmentArgs {
   /// [instanceId] The EAIS instance ID.
   /// [status] The status of the resource
   ClientInstanceAttachmentArgs({
-    pulumi.Output<String>? category,
-    required pulumi.Output<String> clientInstanceId,
-    pulumi.Output<String>? eiInstanceType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      clientInstanceId = pulumi.Input.asInput<String>(clientInstanceId),
-      eiInstanceType = pulumi.Input.asOptionalInput<String>(eiInstanceType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.category,
+    required this.clientInstanceId,
+    this.eiInstanceType,
+    required this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClientInstanceAttachmentArgs {
 
   factory ClientInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ClientInstanceAttachmentArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      clientInstanceId: pulumi.Output.create<String>(map['clientInstanceId'] as String),
-      eiInstanceType: map['eiInstanceType'] == null ? null : pulumi.Output.create<String>(map['eiInstanceType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      clientInstanceId: (map['clientInstanceId'] as String).input(),
+      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class RouteFilterArgs {
   /// [rules] Collection of RouteFilterRules contained within a route filter.
   /// [tags] Resource tags.
   RouteFilterArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeFilterName,
-    pulumi.Output<List<RouteFilterRuleNetwork>>? rules,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeFilterName = pulumi.Input.asOptionalInput<String>(routeFilterName),
-      rules = pulumi.Input.asOptionalInput<List<RouteFilterRuleNetwork>>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.routeFilterName,
+    this.rules,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class RouteFilterArgs {
 
   factory RouteFilterArgs.fromMap(Map<String, dynamic> map) {
     return RouteFilterArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeFilterName: map['routeFilterName'] == null ? null : pulumi.Output.create<String>(map['routeFilterName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RouteFilterRuleNetwork>>((map['rules'] as List).cast<RouteFilterRuleNetwork>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeFilterName: map['routeFilterName'] == null ? null : (map['routeFilterName'] as String).input(),
+      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<RouteFilterRuleNetwork>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

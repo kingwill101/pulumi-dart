@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride {
   /// The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
-  final String? deviceName;
+  final pulumi.Input<String>? deviceName;
   /// The Elastic Inference accelerator type to use.
-  final String? deviceType;
+  final pulumi.Input<String>? deviceType;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride].
   /// [deviceName] The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
@@ -24,8 +25,8 @@ class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride
 
   factory PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride(
-      deviceName: map['deviceName'] == null ? null : map['deviceName'] as String,
-      deviceType: map['deviceType'] == null ? null : map['deviceType'] as String,
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceType: map['deviceType'] == null ? null : (map['deviceType'] as String).input(),
     );
   }
 }

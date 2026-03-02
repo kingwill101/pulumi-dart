@@ -29,19 +29,13 @@ class IpExtendedCommunityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   IpExtendedCommunityArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? ipExtendedCommunityName,
-    required pulumi.Output<List<IpExtendedCommunityRule>> ipExtendedCommunityRules,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      ipExtendedCommunityName = pulumi.Input.asOptionalInput<String>(ipExtendedCommunityName),
-      ipExtendedCommunityRules = pulumi.Input.asInput<List<IpExtendedCommunityRule>>(ipExtendedCommunityRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    this.ipExtendedCommunityName,
+    required this.ipExtendedCommunityRules,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IpExtendedCommunityArgs {
 
   factory IpExtendedCommunityArgs.fromMap(Map<String, dynamic> map) {
     return IpExtendedCommunityArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      ipExtendedCommunityName: map['ipExtendedCommunityName'] == null ? null : pulumi.Output.create<String>(map['ipExtendedCommunityName'] as String),
-      ipExtendedCommunityRules: pulumi.Output.create<List<IpExtendedCommunityRule>>(pulumi.Input.decodeList<IpExtendedCommunityRule>(map['ipExtendedCommunityRules'], (value) => IpExtendedCommunityRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      ipExtendedCommunityName: map['ipExtendedCommunityName'] == null ? null : (map['ipExtendedCommunityName'] as String).input(),
+      ipExtendedCommunityRules: (pulumi.Input.decodeList<IpExtendedCommunityRule>(map['ipExtendedCommunityRules'], (value) => IpExtendedCommunityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

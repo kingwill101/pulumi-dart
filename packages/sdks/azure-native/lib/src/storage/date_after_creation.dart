@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Object to define snapshot and version action conditions.
 class DateAfterCreation {
   /// Value indicating the age in days after creation
-  final double daysAfterCreationGreaterThan;
+  final pulumi.Input<double> daysAfterCreationGreaterThan;
   /// Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied.
-  final double? daysAfterLastTierChangeGreaterThan;
+  final pulumi.Input<double>? daysAfterLastTierChangeGreaterThan;
 
   /// Creates a new [DateAfterCreation].
   /// [daysAfterCreationGreaterThan] Value indicating the age in days after creation
@@ -25,8 +26,8 @@ class DateAfterCreation {
 
   factory DateAfterCreation.fromMap(Map<String, dynamic> map) {
     return DateAfterCreation(
-      daysAfterCreationGreaterThan: map['daysAfterCreationGreaterThan'] as double,
-      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : map['daysAfterLastTierChangeGreaterThan'] as double,
+      daysAfterCreationGreaterThan: (map['daysAfterCreationGreaterThan'] as double).input(),
+      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan'] as double).input(),
     );
   }
 }

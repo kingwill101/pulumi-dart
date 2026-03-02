@@ -30,21 +30,14 @@ class WaiterArgs {
   /// [success] [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
   /// [timeout] [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
   WaiterArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<EndCondition>? failure,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<EndCondition>? success,
-    pulumi.Output<String>? timeout,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      failure = pulumi.Input.asOptionalInput<EndCondition>(failure),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      success = pulumi.Input.asOptionalInput<EndCondition>(success),
-      timeout = pulumi.Input.asOptionalInput<String>(timeout);
+    required this.configId,
+    this.failure,
+    this.name,
+    this.project,
+    this.requestId,
+    this.success,
+    this.timeout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class WaiterArgs {
 
   factory WaiterArgs.fromMap(Map<String, dynamic> map) {
     return WaiterArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      failure: map['failure'] == null ? null : pulumi.Output.create<EndCondition>(EndCondition.fromMap((map['failure'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      success: map['success'] == null ? null : pulumi.Output.create<EndCondition>(EndCondition.fromMap((map['success'] as Map).cast<String, dynamic>())),
-      timeout: map['timeout'] == null ? null : pulumi.Output.create<String>(map['timeout'] as String),
+      configId: (map['configId'] as String).input(),
+      failure: map['failure'] == null ? null : (EndCondition.fromMap((map['failure'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      success: map['success'] == null ? null : (EndCondition.fromMap((map['success'] as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

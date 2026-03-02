@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLocationsLocation {
   /// Name of the closest city to the Location. City name and optionally state in short form.
-  final String city;
+  final pulumi.Input<String> city;
   /// Country the Location resides in. ISO 3166-1 alpha-2 code of the country.
-  final String country;
+  final pulumi.Input<String> country;
   /// Description of the Location.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the Location.
-  final int id;
+  final pulumi.Input<int> id;
   /// Latitude of the city closest to the Location.
-  final double latitude;
+  final pulumi.Input<double> latitude;
   /// Longitude of the city closest to the Location.
-  final double longitude;
+  final pulumi.Input<double> longitude;
   /// Name of the Location.
-  final String name;
+  final pulumi.Input<String> name;
   /// Name of the Network Zone this Location resides in.
-  final String networkZone;
+  final pulumi.Input<String> networkZone;
 
   /// Creates a new [GetLocationsLocation].
   /// [city] Name of the closest city to the Location. City name and optionally state in short form.
@@ -54,14 +55,14 @@ class GetLocationsLocation {
 
   factory GetLocationsLocation.fromMap(Map<String, dynamic> map) {
     return GetLocationsLocation(
-      city: map['city'] as String,
-      country: map['country'] as String,
-      description: map['description'] as String,
-      id: map['id'] as int,
-      latitude: map['latitude'] as double,
-      longitude: map['longitude'] as double,
-      name: map['name'] as String,
-      networkZone: map['networkZone'] as String,
+      city: (map['city'] as String).input(),
+      country: (map['country'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as int).input(),
+      latitude: (map['latitude'] as double).input(),
+      longitude: (map['longitude'] as double).input(),
+      name: (map['name'] as String).input(),
+      networkZone: (map['networkZone'] as String).input(),
     );
   }
 }

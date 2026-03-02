@@ -27,17 +27,12 @@ class StandardsControlAssociationArgs {
   /// [standardsArn] The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
   StandardsControlAssociationArgs({
-    required pulumi.Output<String> associationStatus,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityControlId,
-    required pulumi.Output<String> standardsArn,
-    pulumi.Output<String>? updatedReason,
-  }) :
-      associationStatus = pulumi.Input.asInput<String>(associationStatus),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityControlId = pulumi.Input.asInput<String>(securityControlId),
-      standardsArn = pulumi.Input.asInput<String>(standardsArn),
-      updatedReason = pulumi.Input.asOptionalInput<String>(updatedReason);
+    required this.associationStatus,
+    this.region,
+    required this.securityControlId,
+    required this.standardsArn,
+    this.updatedReason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class StandardsControlAssociationArgs {
 
   factory StandardsControlAssociationArgs.fromMap(Map<String, dynamic> map) {
     return StandardsControlAssociationArgs(
-      associationStatus: pulumi.Output.create<String>(map['associationStatus'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityControlId: pulumi.Output.create<String>(map['securityControlId'] as String),
-      standardsArn: pulumi.Output.create<String>(map['standardsArn'] as String),
-      updatedReason: map['updatedReason'] == null ? null : pulumi.Output.create<String>(map['updatedReason'] as String),
+      associationStatus: (map['associationStatus'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityControlId: (map['securityControlId'] as String).input(),
+      standardsArn: (map['standardsArn'] as String).input(),
+      updatedReason: map['updatedReason'] == null ? null : (map['updatedReason'] as String).input(),
     );
   }
 }

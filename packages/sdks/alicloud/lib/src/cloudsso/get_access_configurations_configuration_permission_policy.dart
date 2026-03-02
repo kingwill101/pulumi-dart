@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessConfigurationsConfigurationPermissionPolicy {
   /// The Creation time of policy.
-  final String addTime;
+  final pulumi.Input<String> addTime;
   /// The Content of Policy.
-  final String permissionPolicyDocument;
+  final pulumi.Input<String> permissionPolicyDocument;
   /// The Policy Name of policy.
-  final String permissionPolicyName;
+  final pulumi.Input<String> permissionPolicyName;
   /// The Policy Type of policy. Valid values: `System`, `Inline`.
-  final String permissionPolicyType;
+  final pulumi.Input<String> permissionPolicyType;
 
   /// Creates a new [GetAccessConfigurationsConfigurationPermissionPolicy].
   /// [addTime] The Creation time of policy.
@@ -34,10 +35,10 @@ class GetAccessConfigurationsConfigurationPermissionPolicy {
 
   factory GetAccessConfigurationsConfigurationPermissionPolicy.fromMap(Map<String, dynamic> map) {
     return GetAccessConfigurationsConfigurationPermissionPolicy(
-      addTime: map['addTime'] as String,
-      permissionPolicyDocument: map['permissionPolicyDocument'] as String,
-      permissionPolicyName: map['permissionPolicyName'] as String,
-      permissionPolicyType: map['permissionPolicyType'] as String,
+      addTime: (map['addTime'] as String).input(),
+      permissionPolicyDocument: (map['permissionPolicyDocument'] as String).input(),
+      permissionPolicyName: (map['permissionPolicyName'] as String).input(),
+      permissionPolicyType: (map['permissionPolicyType'] as String).input(),
     );
   }
 }

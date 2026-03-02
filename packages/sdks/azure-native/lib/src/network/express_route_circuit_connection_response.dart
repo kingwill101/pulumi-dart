@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ipv6_circuit_connection_config_response.dart';
 import 'sub_resource_response.dart';
 
 /// Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
 class ExpressRouteCircuitConnectionResponse {
   /// /29 IP address space to carve out Customer addresses for tunnels.
-  final String? addressPrefix;
+  final pulumi.Input<String>? addressPrefix;
   /// The authorization key.
-  final String? authorizationKey;
+  final pulumi.Input<String>? authorizationKey;
   /// Express Route Circuit connection state.
-  final String circuitConnectionStatus;
+  final pulumi.Input<String> circuitConnectionStatus;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
-  final SubResourceResponse? expressRouteCircuitPeering;
+  final pulumi.Input<SubResourceResponse>? expressRouteCircuitPeering;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// IPv6 Address PrefixProperties of the express route circuit connection.
-  final Ipv6CircuitConnectionConfigResponse? ipv6CircuitConnectionConfig;
+  final pulumi.Input<Ipv6CircuitConnectionConfigResponse>? ipv6CircuitConnectionConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Reference to Express Route Circuit Private Peering Resource of the peered circuit.
-  final SubResourceResponse? peerExpressRouteCircuitPeering;
+  final pulumi.Input<SubResourceResponse>? peerExpressRouteCircuitPeering;
   /// The provisioning state of the express route circuit connection resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExpressRouteCircuitConnectionResponse].
   /// [addressPrefix] /29 IP address space to carve out Customer addresses for tunnels.
@@ -60,11 +61,11 @@ class ExpressRouteCircuitConnectionResponse {
       'authorizationKey': ?authorizationKey,
       'circuitConnectionStatus': circuitConnectionStatus,
       'etag': etag,
-      'expressRouteCircuitPeering': ?expressRouteCircuitPeering == null ? null : expressRouteCircuitPeering!.toMap(),
+      'expressRouteCircuitPeering': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(expressRouteCircuitPeering, (value) => value.toMap()),
       'id': ?id,
-      'ipv6CircuitConnectionConfig': ?ipv6CircuitConnectionConfig == null ? null : ipv6CircuitConnectionConfig!.toMap(),
+      'ipv6CircuitConnectionConfig': ?pulumi.Input.mapOptionalInputValue<Ipv6CircuitConnectionConfigResponse, Map<String, dynamic>>(ipv6CircuitConnectionConfig, (value) => value.toMap()),
       'name': ?name,
-      'peerExpressRouteCircuitPeering': ?peerExpressRouteCircuitPeering == null ? null : peerExpressRouteCircuitPeering!.toMap(),
+      'peerExpressRouteCircuitPeering': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(peerExpressRouteCircuitPeering, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'type': type,
     };
@@ -72,17 +73,17 @@ class ExpressRouteCircuitConnectionResponse {
 
   factory ExpressRouteCircuitConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
-      circuitConnectionStatus: map['circuitConnectionStatus'] as String,
-      etag: map['etag'] as String,
-      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : SubResourceResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : Ipv6CircuitConnectionConfigResponse.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      circuitConnectionStatus: (map['circuitConnectionStatus'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfigResponse.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

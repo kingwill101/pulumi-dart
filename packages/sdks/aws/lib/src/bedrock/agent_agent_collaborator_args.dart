@@ -38,25 +38,16 @@ class AgentAgentCollaboratorArgs {
   /// [relayConversationHistory] Configure relaying the history to the collaborator.
   /// [timeouts] Optional.
   AgentAgentCollaboratorArgs({
-    required pulumi.Output<AgentAgentCollaboratorAgentDescriptor> agentDescriptor,
-    required pulumi.Output<String> agentId,
-    pulumi.Output<String>? agentVersion,
-    required pulumi.Output<String> collaborationInstruction,
-    required pulumi.Output<String> collaboratorName,
-    pulumi.Output<bool>? prepareAgent,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? relayConversationHistory,
-    pulumi.Output<AgentAgentCollaboratorTimeouts>? timeouts,
-  }) :
-      agentDescriptor = pulumi.Input.asInput<AgentAgentCollaboratorAgentDescriptor>(agentDescriptor),
-      agentId = pulumi.Input.asInput<String>(agentId),
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      collaborationInstruction = pulumi.Input.asInput<String>(collaborationInstruction),
-      collaboratorName = pulumi.Input.asInput<String>(collaboratorName),
-      prepareAgent = pulumi.Input.asOptionalInput<bool>(prepareAgent),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relayConversationHistory = pulumi.Input.asOptionalInput<String>(relayConversationHistory),
-      timeouts = pulumi.Input.asOptionalInput<AgentAgentCollaboratorTimeouts>(timeouts);
+    required this.agentDescriptor,
+    required this.agentId,
+    this.agentVersion,
+    required this.collaborationInstruction,
+    required this.collaboratorName,
+    this.prepareAgent,
+    this.region,
+    this.relayConversationHistory,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class AgentAgentCollaboratorArgs {
 
   factory AgentAgentCollaboratorArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentCollaboratorArgs(
-      agentDescriptor: pulumi.Output.create<AgentAgentCollaboratorAgentDescriptor>(AgentAgentCollaboratorAgentDescriptor.fromMap((map['agentDescriptor'] as Map).cast<String, dynamic>())),
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      collaborationInstruction: pulumi.Output.create<String>(map['collaborationInstruction'] as String),
-      collaboratorName: pulumi.Output.create<String>(map['collaboratorName'] as String),
-      prepareAgent: map['prepareAgent'] == null ? null : pulumi.Output.create<bool>(map['prepareAgent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relayConversationHistory: map['relayConversationHistory'] == null ? null : pulumi.Output.create<String>(map['relayConversationHistory'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentAgentCollaboratorTimeouts>(AgentAgentCollaboratorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      agentDescriptor: (AgentAgentCollaboratorAgentDescriptor.fromMap((map['agentDescriptor'] as Map).cast<String, dynamic>())).input(),
+      agentId: (map['agentId'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      collaborationInstruction: (map['collaborationInstruction'] as String).input(),
+      collaboratorName: (map['collaboratorName'] as String).input(),
+      prepareAgent: map['prepareAgent'] == null ? null : (map['prepareAgent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relayConversationHistory: map['relayConversationHistory'] == null ? null : (map['relayConversationHistory'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentAgentCollaboratorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

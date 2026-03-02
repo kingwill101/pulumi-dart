@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Sku description for a namespace
 class SkuResponse {
   /// Gets or sets the capacity of the resource
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Gets or sets the Sku Family
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Namespace SKU name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Gets or sets the Sku size
-  final String? size;
+  final pulumi.Input<String>? size;
   /// Gets or sets the tier of particular sku
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SkuResponse].
   /// [capacity] Gets or sets the capacity of the resource
@@ -40,11 +41,11 @@ class SkuResponse {
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

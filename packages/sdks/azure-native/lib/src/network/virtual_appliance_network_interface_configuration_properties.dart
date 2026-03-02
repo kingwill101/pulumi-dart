@@ -5,7 +5,7 @@ import 'virtual_appliance_ipconfiguration.dart';
 
 /// Represents a single NIC configuration properties.
 class VirtualApplianceNetworkInterfaceConfigurationProperties {
-  final List<VirtualApplianceIPConfiguration>? ipConfigurations;
+  final pulumi.Input<List<VirtualApplianceIPConfiguration>>? ipConfigurations;
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfigurationProperties].
   /// [ipConfigurations] Optional.
@@ -15,13 +15,13 @@ class VirtualApplianceNetworkInterfaceConfigurationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<VirtualApplianceIPConfiguration, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualApplianceIPConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualApplianceIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNetworkInterfaceConfigurationProperties(
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<VirtualApplianceIPConfiguration>(map['ipConfigurations'], (value) => VirtualApplianceIPConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceIPConfiguration>(map['ipConfigurations'], (value) => VirtualApplianceIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -56,33 +56,20 @@ class KubeEnvironmentArgs {
   /// [staticIp] Static IP of the KubeEnvironment
   /// [tags] Resource tags.
   KubeEnvironmentArgs({
-    pulumi.Output<String>? aksResourceID,
-    pulumi.Output<AppLogsConfiguration>? appLogsConfiguration,
-    pulumi.Output<ArcConfiguration>? arcConfiguration,
-    pulumi.Output<ContainerAppsConfiguration>? containerAppsConfiguration,
-    pulumi.Output<String>? environmentType,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    pulumi.Output<bool>? internalLoadBalancerEnabled,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? staticIp,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      aksResourceID = pulumi.Input.asOptionalInput<String>(aksResourceID),
-      appLogsConfiguration = pulumi.Input.asOptionalInput<AppLogsConfiguration>(appLogsConfiguration),
-      arcConfiguration = pulumi.Input.asOptionalInput<ArcConfiguration>(arcConfiguration),
-      containerAppsConfiguration = pulumi.Input.asOptionalInput<ContainerAppsConfiguration>(containerAppsConfiguration),
-      environmentType = pulumi.Input.asOptionalInput<String>(environmentType),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      internalLoadBalancerEnabled = pulumi.Input.asOptionalInput<bool>(internalLoadBalancerEnabled),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      staticIp = pulumi.Input.asOptionalInput<String>(staticIp),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.aksResourceID,
+    this.appLogsConfiguration,
+    this.arcConfiguration,
+    this.containerAppsConfiguration,
+    this.environmentType,
+    this.extendedLocation,
+    this.internalLoadBalancerEnabled,
+    this.kind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.staticIp,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,19 +91,19 @@ class KubeEnvironmentArgs {
 
   factory KubeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return KubeEnvironmentArgs(
-      aksResourceID: map['aksResourceID'] == null ? null : pulumi.Output.create<String>(map['aksResourceID'] as String),
-      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : pulumi.Output.create<AppLogsConfiguration>(AppLogsConfiguration.fromMap((map['appLogsConfiguration'] as Map).cast<String, dynamic>())),
-      arcConfiguration: map['arcConfiguration'] == null ? null : pulumi.Output.create<ArcConfiguration>(ArcConfiguration.fromMap((map['arcConfiguration'] as Map).cast<String, dynamic>())),
-      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : pulumi.Output.create<ContainerAppsConfiguration>(ContainerAppsConfiguration.fromMap((map['containerAppsConfiguration'] as Map).cast<String, dynamic>())),
-      environmentType: map['environmentType'] == null ? null : pulumi.Output.create<String>(map['environmentType'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : pulumi.Output.create<bool>(map['internalLoadBalancerEnabled'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      staticIp: map['staticIp'] == null ? null : pulumi.Output.create<String>(map['staticIp'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      aksResourceID: map['aksResourceID'] == null ? null : (map['aksResourceID'] as String).input(),
+      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : (AppLogsConfiguration.fromMap((map['appLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arcConfiguration: map['arcConfiguration'] == null ? null : (ArcConfiguration.fromMap((map['arcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : (ContainerAppsConfiguration.fromMap((map['containerAppsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      environmentType: map['environmentType'] == null ? null : (map['environmentType'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : (map['internalLoadBalancerEnabled'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      staticIp: map['staticIp'] == null ? null : (map['staticIp'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

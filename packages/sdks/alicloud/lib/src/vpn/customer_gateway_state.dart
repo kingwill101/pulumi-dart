@@ -30,21 +30,14 @@ class CustomerGatewayState {
   /// [name] . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
   /// [tags] tag.
   CustomerGatewayState({
-    pulumi.Output<String>? asn,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? customerGatewayName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      asn = pulumi.Input.asOptionalInput<String>(asn),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      customerGatewayName = pulumi.Input.asOptionalInput<String>(customerGatewayName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.asn,
+    this.createTime,
+    this.customerGatewayName,
+    this.description,
+    this.ipAddress,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class CustomerGatewayState {
 
   factory CustomerGatewayState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayState(
-      asn: map['asn'] == null ? null : pulumi.Output.create<String>(map['asn'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      customerGatewayName: map['customerGatewayName'] == null ? null : pulumi.Output.create<String>(map['customerGatewayName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      asn: map['asn'] == null ? null : (map['asn'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      customerGatewayName: map['customerGatewayName'] == null ? null : (map['customerGatewayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

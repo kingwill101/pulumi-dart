@@ -8,25 +8,25 @@ import 'ssischild_package.dart';
 /// SSIS package location.
 class SSISPackageLocation {
   /// The package access credential.
-  final SSISAccessCredential? accessCredential;
+  final pulumi.Input<SSISAccessCredential>? accessCredential;
   /// The embedded child package list.
-  final List<SSISChildPackage>? childPackages;
+  final pulumi.Input<List<SSISChildPackage>>? childPackages;
   /// The configuration file access credential.
-  final SSISAccessCredential? configurationAccessCredential;
+  final pulumi.Input<SSISAccessCredential>? configurationAccessCredential;
   /// The configuration file of the package execution. Type: string (or Expression with resultType string).
-  final dynamic configurationPath;
+  final pulumi.Input<dynamic>? configurationPath;
   /// The embedded package content. Type: string (or Expression with resultType string).
-  final dynamic packageContent;
+  final pulumi.Input<dynamic>? packageContent;
   /// The embedded package last modified date.
-  final String? packageLastModifiedDate;
+  final pulumi.Input<String>? packageLastModifiedDate;
   /// The package name.
-  final String? packageName;
+  final pulumi.Input<String>? packageName;
   /// Password of the package.
-  final AzureKeyVaultSecretReference? packagePassword;
+  final pulumi.Input<AzureKeyVaultSecretReference>? packagePassword;
   /// The SSIS package path. Type: string (or Expression with resultType string).
-  final dynamic packagePath;
+  final pulumi.Input<dynamic>? packagePath;
   /// The type of SSIS package location.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SSISPackageLocation].
   /// [accessCredential] The package access credential.
@@ -54,14 +54,14 @@ class SSISPackageLocation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessCredential': ?accessCredential == null ? null : accessCredential!.toMap(),
-      'childPackages': ?childPackages == null ? null : pulumi.Input.encodeList<SSISChildPackage, Map<String, dynamic>>(childPackages!, (value) => value.toMap()),
-      'configurationAccessCredential': ?configurationAccessCredential == null ? null : configurationAccessCredential!.toMap(),
+      'accessCredential': ?pulumi.Input.mapOptionalInputValue<SSISAccessCredential, Map<String, dynamic>>(accessCredential, (value) => value.toMap()),
+      'childPackages': ?pulumi.Input.mapOptionalInputValue<List<SSISChildPackage>, List<Map<String, dynamic>>>(childPackages, (value) => pulumi.Input.encodeList<SSISChildPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configurationAccessCredential': ?pulumi.Input.mapOptionalInputValue<SSISAccessCredential, Map<String, dynamic>>(configurationAccessCredential, (value) => value.toMap()),
       'configurationPath': ?configurationPath,
       'packageContent': ?packageContent,
       'packageLastModifiedDate': ?packageLastModifiedDate,
       'packageName': ?packageName,
-      'packagePassword': ?packagePassword == null ? null : packagePassword!.toMap(),
+      'packagePassword': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(packagePassword, (value) => value.toMap()),
       'packagePath': ?packagePath,
       'type': ?type,
     };
@@ -69,16 +69,16 @@ class SSISPackageLocation {
 
   factory SSISPackageLocation.fromMap(Map<String, dynamic> map) {
     return SSISPackageLocation(
-      accessCredential: map['accessCredential'] == null ? null : SSISAccessCredential.fromMap((map['accessCredential'] as Map).cast<String, dynamic>()),
-      childPackages: map['childPackages'] == null ? null : pulumi.Input.decodeList<SSISChildPackage>(map['childPackages'], (value) => SSISChildPackage.fromMap((value as Map).cast<String, dynamic>())),
-      configurationAccessCredential: map['configurationAccessCredential'] == null ? null : SSISAccessCredential.fromMap((map['configurationAccessCredential'] as Map).cast<String, dynamic>()),
-      configurationPath: map['configurationPath'] == null ? null : map['configurationPath'],
-      packageContent: map['packageContent'] == null ? null : map['packageContent'],
-      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : map['packageLastModifiedDate'] as String,
-      packageName: map['packageName'] == null ? null : map['packageName'] as String,
-      packagePassword: map['packagePassword'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['packagePassword'] as Map).cast<String, dynamic>()),
-      packagePath: map['packagePath'] == null ? null : map['packagePath'],
-      type: map['type'] == null ? null : map['type'] as String,
+      accessCredential: map['accessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['accessCredential'] as Map).cast<String, dynamic>())).input(),
+      childPackages: map['childPackages'] == null ? null : (pulumi.Input.decodeList<SSISChildPackage>(map['childPackages'], (value) => SSISChildPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationAccessCredential: map['configurationAccessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['configurationAccessCredential'] as Map).cast<String, dynamic>())).input(),
+      configurationPath: map['configurationPath'] == null ? null : (map['configurationPath']).input(),
+      packageContent: map['packageContent'] == null ? null : (map['packageContent']).input(),
+      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      packagePassword: map['packagePassword'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['packagePassword'] as Map).cast<String, dynamic>())).input(),
+      packagePath: map['packagePath'] == null ? null : (map['packagePath']).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

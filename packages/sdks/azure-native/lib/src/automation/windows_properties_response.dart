@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Windows specific update configuration.
 class WindowsPropertiesResponse {
   /// KB numbers excluded from the software update configuration.
-  final List<String>? excludedKbNumbers;
+  final pulumi.Input<List<String>>? excludedKbNumbers;
   /// KB numbers included from the software update configuration.
-  final List<String>? includedKbNumbers;
+  final pulumi.Input<List<String>>? includedKbNumbers;
   /// Update classification included in the software update configuration. A comma separated string with required values
-  final String? includedUpdateClassifications;
+  final pulumi.Input<String>? includedUpdateClassifications;
   /// Reboot setting for the software update configuration.
-  final String? rebootSetting;
+  final pulumi.Input<String>? rebootSetting;
 
   /// Creates a new [WindowsPropertiesResponse].
   /// [excludedKbNumbers] KB numbers excluded from the software update configuration.
@@ -35,10 +36,10 @@ class WindowsPropertiesResponse {
 
   factory WindowsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WindowsPropertiesResponse(
-      excludedKbNumbers: map['excludedKbNumbers'] == null ? null : (map['excludedKbNumbers'] as List).cast<String>(),
-      includedKbNumbers: map['includedKbNumbers'] == null ? null : (map['includedKbNumbers'] as List).cast<String>(),
-      includedUpdateClassifications: map['includedUpdateClassifications'] == null ? null : map['includedUpdateClassifications'] as String,
-      rebootSetting: map['rebootSetting'] == null ? null : map['rebootSetting'] as String,
+      excludedKbNumbers: map['excludedKbNumbers'] == null ? null : ((map['excludedKbNumbers'] as List).cast<String>()).input(),
+      includedKbNumbers: map['includedKbNumbers'] == null ? null : ((map['includedKbNumbers'] as List).cast<String>()).input(),
+      includedUpdateClassifications: map['includedUpdateClassifications'] == null ? null : (map['includedUpdateClassifications'] as String).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
     );
   }
 }

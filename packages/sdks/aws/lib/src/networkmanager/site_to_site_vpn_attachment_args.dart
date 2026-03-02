@@ -24,15 +24,11 @@ class SiteToSiteVpnAttachmentArgs {
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpnConnectionArn] ARN of the site-to-site VPN connection.
   SiteToSiteVpnAttachmentArgs({
-    required pulumi.Output<String> coreNetworkId,
-    pulumi.Output<String>? routingPolicyLabel,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpnConnectionArn,
-  }) :
-      coreNetworkId = pulumi.Input.asInput<String>(coreNetworkId),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpnConnectionArn = pulumi.Input.asInput<String>(vpnConnectionArn);
+    required this.coreNetworkId,
+    this.routingPolicyLabel,
+    this.tags,
+    required this.vpnConnectionArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class SiteToSiteVpnAttachmentArgs {
 
   factory SiteToSiteVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SiteToSiteVpnAttachmentArgs(
-      coreNetworkId: pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpnConnectionArn: pulumi.Output.create<String>(map['vpnConnectionArn'] as String),
+      coreNetworkId: (map['coreNetworkId'] as String).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpnConnectionArn: (map['vpnConnectionArn'] as String).input(),
     );
   }
 }

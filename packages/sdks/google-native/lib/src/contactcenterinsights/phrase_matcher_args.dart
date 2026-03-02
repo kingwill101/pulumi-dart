@@ -38,25 +38,16 @@ class PhraseMatcherArgs {
   /// [type] The type of this phrase matcher.
   /// [versionTag] The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
   PhraseMatcherArgs({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>>? phraseMatchRuleGroups,
-    pulumi.Output<String>? project,
-    pulumi.Output<PhraseMatcherRoleMatch>? roleMatch,
-    required pulumi.Output<PhraseMatcherType> type,
-    pulumi.Output<String>? versionTag,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phraseMatchRuleGroups = pulumi.Input.asOptionalInput<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>>(phraseMatchRuleGroups),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      roleMatch = pulumi.Input.asOptionalInput<PhraseMatcherRoleMatch>(roleMatch),
-      type = pulumi.Input.asInput<PhraseMatcherType>(type),
-      versionTag = pulumi.Input.asOptionalInput<String>(versionTag);
+    this.active,
+    this.displayName,
+    this.location,
+    this.name,
+    this.phraseMatchRuleGroups,
+    this.project,
+    this.roleMatch,
+    required this.type,
+    this.versionTag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class PhraseMatcherArgs {
 
   factory PhraseMatcherArgs.fromMap(Map<String, dynamic> map) {
     return PhraseMatcherArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phraseMatchRuleGroups: map['phraseMatchRuleGroups'] == null ? null : pulumi.Output.create<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>>(pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>(map['phraseMatchRuleGroups'], (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      roleMatch: map['roleMatch'] == null ? null : pulumi.Output.create<PhraseMatcherRoleMatch>(PhraseMatcherRoleMatch.fromValue(map['roleMatch'] as String)),
-      type: pulumi.Output.create<PhraseMatcherType>(PhraseMatcherType.fromValue(map['type'] as String)),
-      versionTag: map['versionTag'] == null ? null : pulumi.Output.create<String>(map['versionTag'] as String),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phraseMatchRuleGroups: map['phraseMatchRuleGroups'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>(map['phraseMatchRuleGroups'], (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      roleMatch: map['roleMatch'] == null ? null : (PhraseMatcherRoleMatch.fromValue(map['roleMatch'] as String)).input(),
+      type: (PhraseMatcherType.fromValue(map['type'] as String)).input(),
+      versionTag: map['versionTag'] == null ? null : (map['versionTag'] as String).input(),
     );
   }
 }

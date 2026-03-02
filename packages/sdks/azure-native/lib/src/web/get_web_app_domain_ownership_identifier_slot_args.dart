@@ -22,15 +22,11 @@ class GetWebAppDomainOwnershipIdentifierSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   GetWebAppDomainOwnershipIdentifierSlotArgs({
-    required pulumi.Output<String> domainOwnershipIdentifierName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      domainOwnershipIdentifierName = pulumi.Input.asInput<String>(domainOwnershipIdentifierName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    required this.domainOwnershipIdentifierName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWebAppDomainOwnershipIdentifierSlotArgs {
 
   factory GetWebAppDomainOwnershipIdentifierSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppDomainOwnershipIdentifierSlotArgs(
-      domainOwnershipIdentifierName: pulumi.Output.create<String>(map['domainOwnershipIdentifierName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      domainOwnershipIdentifierName: (map['domainOwnershipIdentifierName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkstationConfigEncryptionKey {
   /// The name of the Google Cloud KMS encryption key.
-  final String kmsKey;
+  final pulumi.Input<String> kmsKey;
   /// The service account to use with the specified KMS key.
-  final String kmsKeyServiceAccount;
+  final pulumi.Input<String> kmsKeyServiceAccount;
 
   /// Creates a new [WorkstationConfigEncryptionKey].
   /// [kmsKey] The name of the Google Cloud KMS encryption key.
@@ -24,8 +25,8 @@ class WorkstationConfigEncryptionKey {
 
   factory WorkstationConfigEncryptionKey.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigEncryptionKey(
-      kmsKey: map['kmsKey'] as String,
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] as String,
+      kmsKey: (map['kmsKey'] as String).input(),
+      kmsKeyServiceAccount: (map['kmsKeyServiceAccount'] as String).input(),
     );
   }
 }

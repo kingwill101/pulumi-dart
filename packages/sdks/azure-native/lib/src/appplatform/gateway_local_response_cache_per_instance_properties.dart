@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Spring Cloud Gateway local response cache per instance properties.
 class GatewayLocalResponseCachePerInstanceProperties {
   /// The type of the response cache.
   /// Expected value is 'LocalCachePerInstance'.
-  final String responseCacheType;
+  final pulumi.Input<String> responseCacheType;
   /// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
-  final String? size;
+  final pulumi.Input<String>? size;
   /// Time before a cached entry is expired (300s, 5m, 1h...)
-  final String? timeToLive;
+  final pulumi.Input<String>? timeToLive;
 
   /// Creates a new [GatewayLocalResponseCachePerInstanceProperties].
   /// [responseCacheType] The type of the response cache.
@@ -31,9 +32,9 @@ class GatewayLocalResponseCachePerInstanceProperties {
 
   factory GatewayLocalResponseCachePerInstanceProperties.fromMap(Map<String, dynamic> map) {
     return GatewayLocalResponseCachePerInstanceProperties(
-      responseCacheType: map['responseCacheType'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as String,
+      responseCacheType: (map['responseCacheType'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
     );
   }
 }

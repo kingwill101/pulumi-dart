@@ -22,15 +22,11 @@ class GetServiceArgs {
   /// [serviceName] Name of the ECS Service
   /// [tags] Resource tags.
   GetServiceArgs({
-    required pulumi.Output<String> clusterArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterArn = pulumi.Input.asInput<String>(clusterArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterArn,
+    this.region,
+    required this.serviceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      clusterArn: pulumi.Output.create<String>(map['clusterArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterArn: (map['clusterArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

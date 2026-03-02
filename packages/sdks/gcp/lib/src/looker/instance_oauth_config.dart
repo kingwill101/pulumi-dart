@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceOauthConfig {
   /// The client ID for the Oauth config.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client secret for the Oauth config.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// Creates a new [InstanceOauthConfig].
   /// [clientId] The client ID for the Oauth config.
@@ -24,8 +25,8 @@ class InstanceOauthConfig {
 
   factory InstanceOauthConfig.fromMap(Map<String, dynamic> map) {
     return InstanceOauthConfig(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
     );
   }
 }

@@ -41,23 +41,15 @@ class BackupVaultArgs {
   /// [name] The resource name of the backup vault. Needs to be unique per location.
   /// [project] The ID of the project in which the resource belongs.
   BackupVaultArgs({
-    pulumi.Output<String>? backupRegion,
-    pulumi.Output<BackupVaultBackupRetentionPolicy>? backupRetentionPolicy,
-    pulumi.Output<String>? backupVaultType,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      backupRegion = pulumi.Input.asOptionalInput<String>(backupRegion),
-      backupRetentionPolicy = pulumi.Input.asOptionalInput<BackupVaultBackupRetentionPolicy>(backupRetentionPolicy),
-      backupVaultType = pulumi.Input.asOptionalInput<String>(backupVaultType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.backupRegion,
+    this.backupRetentionPolicy,
+    this.backupVaultType,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      backupRegion: map['backupRegion'] == null ? null : pulumi.Output.create<String>(map['backupRegion'] as String),
-      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : pulumi.Output.create<BackupVaultBackupRetentionPolicy>(BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy'] as Map).cast<String, dynamic>())),
-      backupVaultType: map['backupVaultType'] == null ? null : pulumi.Output.create<String>(map['backupVaultType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupRegion: map['backupRegion'] == null ? null : (map['backupRegion'] as String).input(),
+      backupRetentionPolicy: map['backupRetentionPolicy'] == null ? null : (BackupVaultBackupRetentionPolicy.fromMap((map['backupRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      backupVaultType: map['backupVaultType'] == null ? null : (map['backupVaultType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

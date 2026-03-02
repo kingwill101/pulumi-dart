@@ -47,29 +47,18 @@ class GlobalClusterArgs {
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   GlobalClusterArgs({
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineLifecycleSupport,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<bool>? forceDestroy,
-    required pulumi.Output<String> globalClusterIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceDbClusterIdentifier,
-    pulumi.Output<bool>? storageEncrypted,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineLifecycleSupport = pulumi.Input.asOptionalInput<String>(engineLifecycleSupport),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      globalClusterIdentifier = pulumi.Input.asInput<String>(globalClusterIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceDbClusterIdentifier = pulumi.Input.asOptionalInput<String>(sourceDbClusterIdentifier),
-      storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databaseName,
+    this.deletionProtection,
+    this.engine,
+    this.engineLifecycleSupport,
+    this.engineVersion,
+    this.forceDestroy,
+    required this.globalClusterIdentifier,
+    this.region,
+    this.sourceDbClusterIdentifier,
+    this.storageEncrypted,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class GlobalClusterArgs {
 
   factory GlobalClusterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalClusterArgs(
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineLifecycleSupport: map['engineLifecycleSupport'] == null ? null : pulumi.Output.create<String>(map['engineLifecycleSupport'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      globalClusterIdentifier: pulumi.Output.create<String>(map['globalClusterIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['sourceDbClusterIdentifier'] as String),
-      storageEncrypted: map['storageEncrypted'] == null ? null : pulumi.Output.create<bool>(map['storageEncrypted'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineLifecycleSupport: map['engineLifecycleSupport'] == null ? null : (map['engineLifecycleSupport'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_credentials_amplitude.dart';
 import 'connector_profile_connector_profile_config_connector_profile_credentials_custom_connector.dart';
 import 'connector_profile_connector_profile_config_connector_profile_credentials_datadog.dart';
@@ -21,41 +22,41 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentials {
   /// The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude? amplitude;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude>? amplitude;
   /// The connector-specific profile credentials required when using the custom connector. See Custom Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector? customConnector;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector>? customConnector;
   /// Connector-specific credentials required when using Datadog. See Datadog Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog? datadog;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog>? datadog;
   /// The connector-specific credentials required when using Dynatrace. See Dynatrace Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace? dynatrace;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace>? dynatrace;
   /// The connector-specific credentials required when using Google Analytics. See Google Analytics Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics? googleAnalytics;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics>? googleAnalytics;
   /// The connector-specific credentials required when using Amazon Honeycode. See Honeycode Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode? honeycode;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode>? honeycode;
   /// The connector-specific credentials required when using Infor Nexus. See Infor Nexus Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus? inforNexus;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus>? inforNexus;
   /// Connector-specific credentials required when using Marketo. See Marketo Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo? marketo;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo>? marketo;
   /// Connector-specific credentials required when using Amazon Redshift. See Redshift Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift? redshift;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift>? redshift;
   /// The connector-specific credentials required when using Salesforce. See Salesforce Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce? salesforce;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce>? salesforce;
   /// The connector-specific credentials required when using SAPOData. See SAPOData Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData? sapoData;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData>? sapoData;
   /// The connector-specific credentials required when using ServiceNow. See ServiceNow Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow? serviceNow;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow>? serviceNow;
   /// Connector-specific credentials required when using Singular. See Singular Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular? singular;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular>? singular;
   /// Connector-specific credentials required when using Slack. See Slack Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack? slack;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack>? slack;
   /// The connector-specific credentials required when using Snowflake. See Snowflake Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake? snowflake;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake>? snowflake;
   /// The connector-specific credentials required when using Trend Micro. See Trend Micro Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro? trendmicro;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro>? trendmicro;
   /// Connector-specific credentials required when using Veeva. See Veeva Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva? veeva;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva>? veeva;
   /// Connector-specific credentials required when using Zendesk. See Zendesk Connector Profile Credentials for more details.
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk? zendesk;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk>? zendesk;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentials].
   /// [amplitude] The connector-specific credentials required when using Amplitude. See Amplitude Connector Profile Credentials for more details.
@@ -99,47 +100,47 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentials {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amplitude': ?amplitude == null ? null : amplitude!.toMap(),
-      'customConnector': ?customConnector == null ? null : customConnector!.toMap(),
-      'datadog': ?datadog == null ? null : datadog!.toMap(),
-      'dynatrace': ?dynatrace == null ? null : dynatrace!.toMap(),
-      'googleAnalytics': ?googleAnalytics == null ? null : googleAnalytics!.toMap(),
-      'honeycode': ?honeycode == null ? null : honeycode!.toMap(),
-      'inforNexus': ?inforNexus == null ? null : inforNexus!.toMap(),
-      'marketo': ?marketo == null ? null : marketo!.toMap(),
-      'redshift': ?redshift == null ? null : redshift!.toMap(),
-      'salesforce': ?salesforce == null ? null : salesforce!.toMap(),
-      'sapoData': ?sapoData == null ? null : sapoData!.toMap(),
-      'serviceNow': ?serviceNow == null ? null : serviceNow!.toMap(),
-      'singular': ?singular == null ? null : singular!.toMap(),
-      'slack': ?slack == null ? null : slack!.toMap(),
-      'snowflake': ?snowflake == null ? null : snowflake!.toMap(),
-      'trendmicro': ?trendmicro == null ? null : trendmicro!.toMap(),
-      'veeva': ?veeva == null ? null : veeva!.toMap(),
-      'zendesk': ?zendesk == null ? null : zendesk!.toMap(),
+      'amplitude': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude, Map<String, dynamic>>(amplitude, (value) => value.toMap()),
+      'customConnector': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector, Map<String, dynamic>>(customConnector, (value) => value.toMap()),
+      'datadog': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog, Map<String, dynamic>>(datadog, (value) => value.toMap()),
+      'dynatrace': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace, Map<String, dynamic>>(dynatrace, (value) => value.toMap()),
+      'googleAnalytics': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics, Map<String, dynamic>>(googleAnalytics, (value) => value.toMap()),
+      'honeycode': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode, Map<String, dynamic>>(honeycode, (value) => value.toMap()),
+      'inforNexus': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus, Map<String, dynamic>>(inforNexus, (value) => value.toMap()),
+      'marketo': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo, Map<String, dynamic>>(marketo, (value) => value.toMap()),
+      'redshift': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift, Map<String, dynamic>>(redshift, (value) => value.toMap()),
+      'salesforce': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce, Map<String, dynamic>>(salesforce, (value) => value.toMap()),
+      'sapoData': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData, Map<String, dynamic>>(sapoData, (value) => value.toMap()),
+      'serviceNow': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow, Map<String, dynamic>>(serviceNow, (value) => value.toMap()),
+      'singular': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular, Map<String, dynamic>>(singular, (value) => value.toMap()),
+      'slack': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack, Map<String, dynamic>>(slack, (value) => value.toMap()),
+      'snowflake': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake, Map<String, dynamic>>(snowflake, (value) => value.toMap()),
+      'trendmicro': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro, Map<String, dynamic>>(trendmicro, (value) => value.toMap()),
+      'veeva': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva, Map<String, dynamic>>(veeva, (value) => value.toMap()),
+      'zendesk': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk, Map<String, dynamic>>(zendesk, (value) => value.toMap()),
     };
   }
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentials(
-      amplitude: map['amplitude'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude.fromMap((map['amplitude'] as Map).cast<String, dynamic>()),
-      customConnector: map['customConnector'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector.fromMap((map['customConnector'] as Map).cast<String, dynamic>()),
-      datadog: map['datadog'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>()),
-      dynatrace: map['dynatrace'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace.fromMap((map['dynatrace'] as Map).cast<String, dynamic>()),
-      googleAnalytics: map['googleAnalytics'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics.fromMap((map['googleAnalytics'] as Map).cast<String, dynamic>()),
-      honeycode: map['honeycode'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode.fromMap((map['honeycode'] as Map).cast<String, dynamic>()),
-      inforNexus: map['inforNexus'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus.fromMap((map['inforNexus'] as Map).cast<String, dynamic>()),
-      marketo: map['marketo'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap((map['marketo'] as Map).cast<String, dynamic>()),
-      redshift: map['redshift'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>()),
-      salesforce: map['salesforce'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap((map['salesforce'] as Map).cast<String, dynamic>()),
-      sapoData: map['sapoData'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData.fromMap((map['sapoData'] as Map).cast<String, dynamic>()),
-      serviceNow: map['serviceNow'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>()),
-      singular: map['singular'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular.fromMap((map['singular'] as Map).cast<String, dynamic>()),
-      slack: map['slack'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap((map['slack'] as Map).cast<String, dynamic>()),
-      snowflake: map['snowflake'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>()),
-      trendmicro: map['trendmicro'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap((map['trendmicro'] as Map).cast<String, dynamic>()),
-      veeva: map['veeva'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva.fromMap((map['veeva'] as Map).cast<String, dynamic>()),
-      zendesk: map['zendesk'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap((map['zendesk'] as Map).cast<String, dynamic>()),
+      amplitude: map['amplitude'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude.fromMap((map['amplitude'] as Map).cast<String, dynamic>())).input(),
+      customConnector: map['customConnector'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector.fromMap((map['customConnector'] as Map).cast<String, dynamic>())).input(),
+      datadog: map['datadog'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog.fromMap((map['datadog'] as Map).cast<String, dynamic>())).input(),
+      dynatrace: map['dynatrace'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace.fromMap((map['dynatrace'] as Map).cast<String, dynamic>())).input(),
+      googleAnalytics: map['googleAnalytics'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics.fromMap((map['googleAnalytics'] as Map).cast<String, dynamic>())).input(),
+      honeycode: map['honeycode'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode.fromMap((map['honeycode'] as Map).cast<String, dynamic>())).input(),
+      inforNexus: map['inforNexus'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus.fromMap((map['inforNexus'] as Map).cast<String, dynamic>())).input(),
+      marketo: map['marketo'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap((map['marketo'] as Map).cast<String, dynamic>())).input(),
+      redshift: map['redshift'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>())).input(),
+      salesforce: map['salesforce'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap((map['salesforce'] as Map).cast<String, dynamic>())).input(),
+      sapoData: map['sapoData'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData.fromMap((map['sapoData'] as Map).cast<String, dynamic>())).input(),
+      serviceNow: map['serviceNow'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow.fromMap((map['serviceNow'] as Map).cast<String, dynamic>())).input(),
+      singular: map['singular'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular.fromMap((map['singular'] as Map).cast<String, dynamic>())).input(),
+      slack: map['slack'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap((map['slack'] as Map).cast<String, dynamic>())).input(),
+      snowflake: map['snowflake'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>())).input(),
+      trendmicro: map['trendmicro'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap((map['trendmicro'] as Map).cast<String, dynamic>())).input(),
+      veeva: map['veeva'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva.fromMap((map['veeva'] as Map).cast<String, dynamic>())).input(),
+      zendesk: map['zendesk'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk.fromMap((map['zendesk'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

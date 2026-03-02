@@ -13,9 +13,8 @@ class GetVpcArgs {
   /// Creates a new [GetVpcArgs].
   /// [id] The unique id of this VPC.
   GetVpcArgs({
-    required pulumi.Output<String> id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVpcArgs {
 
   factory GetVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetThroughputPoolAccountArgs {
   /// [throughputPoolAccountName] Cosmos DB global database account in a Throughput Pool
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
   GetThroughputPoolAccountArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> throughputPoolAccountName,
-    required pulumi.Output<String> throughputPoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      throughputPoolAccountName = pulumi.Input.asInput<String>(throughputPoolAccountName),
-      throughputPoolName = pulumi.Input.asInput<String>(throughputPoolName);
+    required this.resourceGroupName,
+    required this.throughputPoolAccountName,
+    required this.throughputPoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetThroughputPoolAccountArgs {
 
   factory GetThroughputPoolAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetThroughputPoolAccountArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      throughputPoolAccountName: pulumi.Output.create<String>(map['throughputPoolAccountName'] as String),
-      throughputPoolName: pulumi.Output.create<String>(map['throughputPoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      throughputPoolAccountName: (map['throughputPoolAccountName'] as String).input(),
+      throughputPoolName: (map['throughputPoolName'] as String).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class GetQosDscpMarkingRuleArgs {
   /// [qosPolicyId] The QoS policy reference.
   /// [region] The region in which to obtain the V2 Networking client.
   GetQosDscpMarkingRuleArgs({
-    pulumi.Output<int>? dscpMark,
-    required pulumi.Output<String> qosPolicyId,
-    pulumi.Output<String>? region,
-  }) :
-      dscpMark = pulumi.Input.asOptionalInput<int>(dscpMark),
-      qosPolicyId = pulumi.Input.asInput<String>(qosPolicyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dscpMark,
+    required this.qosPolicyId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetQosDscpMarkingRuleArgs {
 
   factory GetQosDscpMarkingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetQosDscpMarkingRuleArgs(
-      dscpMark: map['dscpMark'] == null ? null : pulumi.Output.create<int>(map['dscpMark'] as int),
-      qosPolicyId: pulumi.Output.create<String>(map['qosPolicyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dscpMark: map['dscpMark'] == null ? null : (map['dscpMark'] as int).input(),
+      qosPolicyId: (map['qosPolicyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

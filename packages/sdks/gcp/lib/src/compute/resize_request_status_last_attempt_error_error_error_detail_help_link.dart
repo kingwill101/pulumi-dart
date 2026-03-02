@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   /// An optional description of this resize-request.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// The URL of the link.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.
@@ -25,8 +26,8 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
 
   factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink(
-      description: map['description'] == null ? null : map['description'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

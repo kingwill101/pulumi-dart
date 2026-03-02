@@ -16,11 +16,9 @@ class GetPolicyArgs {
   /// [policyName] The name of the Web Application Firewall Policy.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   GetPolicyArgs({
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.policyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      policyName: (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

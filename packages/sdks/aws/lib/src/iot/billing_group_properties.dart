@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BillingGroupProperties {
   /// A description of the Billing Group.
-  final String? description;
+  final pulumi.Input<String>? description;
 
   /// Creates a new [BillingGroupProperties].
   /// [description] A description of the Billing Group.
@@ -19,7 +20,7 @@ class BillingGroupProperties {
 
   factory BillingGroupProperties.fromMap(Map<String, dynamic> map) {
     return BillingGroupProperties(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

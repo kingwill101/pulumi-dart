@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ShardingInstanceConfigServerList {
   /// The connection address of the Config Server node.
-  final String? connectString;
+  final pulumi.Input<String>? connectString;
   /// The max connections of the Config Server node.
-  final int? maxConnections;
+  final pulumi.Input<int>? maxConnections;
   /// The maximum IOPS of the Config Server node.
-  final int? maxIops;
+  final pulumi.Input<int>? maxIops;
   /// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
-  final String? nodeClass;
+  final pulumi.Input<String>? nodeClass;
   /// The description of the Config Server node.
-  final String? nodeDescription;
+  final pulumi.Input<String>? nodeDescription;
   /// The ID of the Config Server node.
-  final String? nodeId;
+  final pulumi.Input<String>? nodeId;
   /// The storage space of the ConfigServer node.
-  final int? nodeStorage;
+  final pulumi.Input<int>? nodeStorage;
   /// The connection port of the Config Server node.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ShardingInstanceConfigServerList].
   /// [connectString] The connection address of the Config Server node.
@@ -54,14 +55,14 @@ class ShardingInstanceConfigServerList {
 
   factory ShardingInstanceConfigServerList.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceConfigServerList(
-      connectString: map['connectString'] == null ? null : map['connectString'] as String,
-      maxConnections: map['maxConnections'] == null ? null : map['maxConnections'] as int,
-      maxIops: map['maxIops'] == null ? null : map['maxIops'] as int,
-      nodeClass: map['nodeClass'] == null ? null : map['nodeClass'] as String,
-      nodeDescription: map['nodeDescription'] == null ? null : map['nodeDescription'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      nodeStorage: map['nodeStorage'] == null ? null : map['nodeStorage'] as int,
-      port: map['port'] == null ? null : map['port'] as int,
+      connectString: map['connectString'] == null ? null : (map['connectString'] as String).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
+      maxIops: map['maxIops'] == null ? null : (map['maxIops'] as int).input(),
+      nodeClass: map['nodeClass'] == null ? null : (map['nodeClass'] as String).input(),
+      nodeDescription: map['nodeDescription'] == null ? null : (map['nodeDescription'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

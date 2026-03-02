@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlTowerControlParameter {
   /// The name of the parameter.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ControlTowerControlParameter].
   /// [key] The name of the parameter.
@@ -24,8 +25,8 @@ class ControlTowerControlParameter {
 
   factory ControlTowerControlParameter.fromMap(Map<String, dynamic> map) {
     return ControlTowerControlParameter(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

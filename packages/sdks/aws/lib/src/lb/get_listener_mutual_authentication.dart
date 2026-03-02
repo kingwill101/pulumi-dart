@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerMutualAuthentication {
-  final String advertiseTrustStoreCaNames;
-  final bool ignoreClientCertificateExpiry;
-  final String mode;
-  final String trustStoreArn;
+  final pulumi.Input<String> advertiseTrustStoreCaNames;
+  final pulumi.Input<bool> ignoreClientCertificateExpiry;
+  final pulumi.Input<String> mode;
+  final pulumi.Input<String> trustStoreArn;
 
   /// Creates a new [GetListenerMutualAuthentication].
   /// [advertiseTrustStoreCaNames] Required.
@@ -30,10 +31,10 @@ class GetListenerMutualAuthentication {
 
   factory GetListenerMutualAuthentication.fromMap(Map<String, dynamic> map) {
     return GetListenerMutualAuthentication(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] as String,
-      ignoreClientCertificateExpiry: map['ignoreClientCertificateExpiry'] as bool,
-      mode: map['mode'] as String,
-      trustStoreArn: map['trustStoreArn'] as String,
+      advertiseTrustStoreCaNames: (map['advertiseTrustStoreCaNames'] as String).input(),
+      ignoreClientCertificateExpiry: (map['ignoreClientCertificateExpiry'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      trustStoreArn: (map['trustStoreArn'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NoteRelatedUrl {
   /// Label to describe usage of the URL
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Specific URL associated with the resource.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [NoteRelatedUrl].
   /// [label] Label to describe usage of the URL
@@ -24,8 +25,8 @@ class NoteRelatedUrl {
 
   factory NoteRelatedUrl.fromMap(Map<String, dynamic> map) {
     return NoteRelatedUrl(
-      label: map['label'] == null ? null : map['label'] as String,
-      url: map['url'] as String,
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

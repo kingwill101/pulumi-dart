@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorPlan {
   /// Specifies the billing cycles. Possible values are `MONTHLY`, `WEEKLY` and `YEARLY`. Defaults to `MONTHLY`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String? billingCycle;
+  final pulumi.Input<String>? billingCycle;
   /// Specifies the date when plan was applied. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String effectiveDate;
+  final pulumi.Input<String> effectiveDate;
   /// Specifies the plan id published by NewRelic. The only possible value is `newrelic-pay-as-you-go-free-live`. Defaults to `newrelic-pay-as-you-go-free-live`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String? planId;
+  final pulumi.Input<String>? planId;
   /// Specifies the usage type. Possible values are `COMMITTED` and `PAYG`. Defaults to `PAYG`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final String? usageType;
+  final pulumi.Input<String>? usageType;
 
   /// Creates a new [MonitorPlan].
   /// [billingCycle] Specifies the billing cycles. Possible values are `MONTHLY`, `WEEKLY` and `YEARLY`. Defaults to `MONTHLY`. Changing this forces a new Azure Native New Relic Monitor to be created.
@@ -34,10 +35,10 @@ class MonitorPlan {
 
   factory MonitorPlan.fromMap(Map<String, dynamic> map) {
     return MonitorPlan(
-      billingCycle: map['billingCycle'] == null ? null : map['billingCycle'] as String,
-      effectiveDate: map['effectiveDate'] as String,
-      planId: map['planId'] == null ? null : map['planId'] as String,
-      usageType: map['usageType'] == null ? null : map['usageType'] as String,
+      billingCycle: map['billingCycle'] == null ? null : (map['billingCycle'] as String).input(),
+      effectiveDate: (map['effectiveDate'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
 class AutoscalingLimitsResponse {
   /// Maximum number of nodes to scale up to.
-  final int maxServeNodes;
+  final pulumi.Input<int> maxServeNodes;
   /// Minimum number of nodes to scale down to.
-  final int minServeNodes;
+  final pulumi.Input<int> minServeNodes;
 
   /// Creates a new [AutoscalingLimitsResponse].
   /// [maxServeNodes] Maximum number of nodes to scale up to.
@@ -25,8 +26,8 @@ class AutoscalingLimitsResponse {
 
   factory AutoscalingLimitsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingLimitsResponse(
-      maxServeNodes: map['maxServeNodes'] as int,
-      minServeNodes: map['minServeNodes'] as int,
+      maxServeNodes: (map['maxServeNodes'] as int).input(),
+      minServeNodes: (map['minServeNodes'] as int).input(),
     );
   }
 }

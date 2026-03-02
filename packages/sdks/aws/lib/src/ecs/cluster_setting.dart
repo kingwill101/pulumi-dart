@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterSetting {
   /// Name of the setting to manage. Valid values: `containerInsights`.
-  final String name;
+  final pulumi.Input<String> name;
   /// Value to assign to the setting. Valid values: `enhanced`, `enabled`, `disabled`.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ClusterSetting].
   /// [name] Name of the setting to manage. Valid values: `containerInsights`.
@@ -24,8 +25,8 @@ class ClusterSetting {
 
   factory ClusterSetting.fromMap(Map<String, dynamic> map) {
     return ClusterSetting(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetPartnerArgs {
   /// Creates a new [GetPartnerArgs].
   /// [partnerId] Id of the Partner
   GetPartnerArgs({
-    required pulumi.Output<String> partnerId,
-  }) :
-      partnerId = pulumi.Input.asInput<String>(partnerId);
+    required this.partnerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPartnerArgs {
 
   factory GetPartnerArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerArgs(
-      partnerId: pulumi.Output.create<String>(map['partnerId'] as String),
+      partnerId: (map['partnerId'] as String).input(),
     );
   }
 }

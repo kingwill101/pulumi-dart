@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerGroupConnectionDrainConfig {
   /// Indicates whether connection draining is enabled. Valid values:
-  final bool? connectionDrainEnabled;
+  final pulumi.Input<bool>? connectionDrainEnabled;
   /// The timeout period of connection draining.
   ///
   /// Unit: seconds
@@ -11,7 +12,7 @@ class ServerGroupConnectionDrainConfig {
   /// Valid values: `1` to `3600`.
   ///
   /// Default value: `300`.
-  final int? connectionDrainTimeout;
+  final pulumi.Input<int>? connectionDrainTimeout;
 
   /// Creates a new [ServerGroupConnectionDrainConfig].
   /// [connectionDrainEnabled] Indicates whether connection draining is enabled. Valid values:
@@ -30,8 +31,8 @@ class ServerGroupConnectionDrainConfig {
 
   factory ServerGroupConnectionDrainConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupConnectionDrainConfig(
-      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : map['connectionDrainEnabled'] as bool,
-      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : map['connectionDrainTimeout'] as int,
+      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled'] as bool).input(),
+      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout'] as int).input(),
     );
   }
 }

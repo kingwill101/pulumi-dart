@@ -28,21 +28,14 @@ class LinkArgs {
   /// [name] The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
   /// [project] Optional.
   LinkArgs({
-    pulumi.Output<Map<String, dynamic>>? bigqueryDataset,
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> linkId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      bigqueryDataset = pulumi.Input.asOptionalInput<Map<String, dynamic>>(bigqueryDataset),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      linkId = pulumi.Input.asInput<String>(linkId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bigqueryDataset,
+    required this.bucketId,
+    this.description,
+    required this.linkId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      bigqueryDataset: map['bigqueryDataset'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['bigqueryDataset'] as Map).cast<String, dynamic>()),
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      linkId: pulumi.Output.create<String>(map['linkId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bigqueryDataset: map['bigqueryDataset'] == null ? null : ((map['bigqueryDataset'] as Map).cast<String, dynamic>()).input(),
+      bucketId: (map['bucketId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      linkId: (map['linkId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

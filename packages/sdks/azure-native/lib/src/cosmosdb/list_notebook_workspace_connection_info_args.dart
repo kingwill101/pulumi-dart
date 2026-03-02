@@ -19,13 +19,10 @@ class ListNotebookWorkspaceConnectionInfoArgs {
   /// [notebookWorkspaceName] The name of the notebook workspace resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListNotebookWorkspaceConnectionInfoArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> notebookWorkspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      notebookWorkspaceName = pulumi.Input.asInput<String>(notebookWorkspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.notebookWorkspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListNotebookWorkspaceConnectionInfoArgs {
 
   factory ListNotebookWorkspaceConnectionInfoArgs.fromMap(Map<String, dynamic> map) {
     return ListNotebookWorkspaceConnectionInfoArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      notebookWorkspaceName: pulumi.Output.create<String>(map['notebookWorkspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      notebookWorkspaceName: (map['notebookWorkspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

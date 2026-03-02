@@ -20,13 +20,10 @@ class VariableValueArgs {
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
   VariableValueArgs({
-    required pulumi.Output<List<PolicyVariableValueColumnValue>> values,
-    required pulumi.Output<String> variableName,
-    pulumi.Output<String>? variableValueName,
-  }) :
-      values = pulumi.Input.asInput<List<PolicyVariableValueColumnValue>>(values),
-      variableName = pulumi.Input.asInput<String>(variableName),
-      variableValueName = pulumi.Input.asOptionalInput<String>(variableValueName);
+    required this.values,
+    required this.variableName,
+    this.variableValueName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class VariableValueArgs {
 
   factory VariableValueArgs.fromMap(Map<String, dynamic> map) {
     return VariableValueArgs(
-      values: pulumi.Output.create<List<PolicyVariableValueColumnValue>>(pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values'], (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))),
-      variableName: pulumi.Output.create<String>(map['variableName'] as String),
-      variableValueName: map['variableValueName'] == null ? null : pulumi.Output.create<String>(map['variableValueName'] as String),
+      values: (pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values'], (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variableName: (map['variableName'] as String).input(),
+      variableValueName: map['variableValueName'] == null ? null : (map['variableValueName'] as String).input(),
     );
   }
 }

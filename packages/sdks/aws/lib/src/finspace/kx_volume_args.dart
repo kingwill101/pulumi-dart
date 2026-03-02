@@ -41,25 +41,16 @@ class KxVolumeArgs {
   /// [tags] A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
   /// [type] The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
   KxVolumeArgs({
-    required pulumi.Output<List<String>> availabilityZones,
-    required pulumi.Output<String> azMode,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<KxVolumeNas1Configuration>>? nas1Configurations,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      availabilityZones = pulumi.Input.asInput<List<String>>(availabilityZones),
-      azMode = pulumi.Input.asInput<String>(azMode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nas1Configurations = pulumi.Input.asOptionalInput<List<KxVolumeNas1Configuration>>(nas1Configurations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    required this.availabilityZones,
+    required this.azMode,
+    this.description,
+    required this.environmentId,
+    this.name,
+    this.nas1Configurations,
+    this.region,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class KxVolumeArgs {
 
   factory KxVolumeArgs.fromMap(Map<String, dynamic> map) {
     return KxVolumeArgs(
-      availabilityZones: pulumi.Output.create<List<String>>((map['availabilityZones'] as List).cast<String>()),
-      azMode: pulumi.Output.create<String>(map['azMode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nas1Configurations: map['nas1Configurations'] == null ? null : pulumi.Output.create<List<KxVolumeNas1Configuration>>(pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations'], (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
+      azMode: (map['azMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nas1Configurations: map['nas1Configurations'] == null ? null : (pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations'], (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

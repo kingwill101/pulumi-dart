@@ -25,17 +25,12 @@ class JobPrivateEndpointArgs {
   /// [serverName] The name of the server.
   /// [targetServerAzureResourceId] ARM resource id of the server the private endpoint will target.
   JobPrivateEndpointArgs({
-    required pulumi.Output<String> jobAgentName,
-    pulumi.Output<String>? privateEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> targetServerAzureResourceId,
-  }) :
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      privateEndpointName = pulumi.Input.asOptionalInput<String>(privateEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      targetServerAzureResourceId = pulumi.Input.asInput<String>(targetServerAzureResourceId);
+    required this.jobAgentName,
+    this.privateEndpointName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.targetServerAzureResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class JobPrivateEndpointArgs {
 
   factory JobPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return JobPrivateEndpointArgs(
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      privateEndpointName: map['privateEndpointName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      targetServerAzureResourceId: pulumi.Output.create<String>(map['targetServerAzureResourceId'] as String),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      targetServerAzureResourceId: (map['targetServerAzureResourceId'] as String).input(),
     );
   }
 }

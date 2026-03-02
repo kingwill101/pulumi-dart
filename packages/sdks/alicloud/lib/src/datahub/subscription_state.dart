@@ -25,19 +25,13 @@ class SubscriptionState {
   /// [subId] The identidy of the subscription, generate from server side.
   /// [topicName] The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
   SubscriptionState({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? lastModifyTime,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<String>? subId,
-    pulumi.Output<String>? topicName,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      lastModifyTime = pulumi.Input.asOptionalInput<String>(lastModifyTime),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      subId = pulumi.Input.asOptionalInput<String>(subId),
-      topicName = pulumi.Input.asOptionalInput<String>(topicName);
+    this.comment,
+    this.createTime,
+    this.lastModifyTime,
+    this.projectName,
+    this.subId,
+    this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      lastModifyTime: map['lastModifyTime'] == null ? null : pulumi.Output.create<String>(map['lastModifyTime'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      subId: map['subId'] == null ? null : pulumi.Output.create<String>(map['subId'] as String),
-      topicName: map['topicName'] == null ? null : pulumi.Output.create<String>(map['topicName'] as String),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      subId: map['subId'] == null ? null : (map['subId'] as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
     );
   }
 }

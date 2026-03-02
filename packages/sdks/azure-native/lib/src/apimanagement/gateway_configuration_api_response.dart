@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
 class GatewayConfigurationApiResponse {
   /// Hostname to which the agent connects to propagate configuration to the cloud.
-  final String hostname;
+  final pulumi.Input<String> hostname;
 
   /// Creates a new [GatewayConfigurationApiResponse].
   /// [hostname] Hostname to which the agent connects to propagate configuration to the cloud.
@@ -20,7 +21,7 @@ class GatewayConfigurationApiResponse {
 
   factory GatewayConfigurationApiResponse.fromMap(Map<String, dynamic> map) {
     return GatewayConfigurationApiResponse(
-      hostname: map['hostname'] as String,
+      hostname: (map['hostname'] as String).input(),
     );
   }
 }

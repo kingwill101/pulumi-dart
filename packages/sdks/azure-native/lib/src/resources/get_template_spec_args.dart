@@ -19,13 +19,10 @@ class GetTemplateSpecArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [templateSpecName] Name of the Template Spec.
   GetTemplateSpecArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> templateSpecName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      templateSpecName = pulumi.Input.asInput<String>(templateSpecName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.templateSpecName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTemplateSpecArgs {
 
   factory GetTemplateSpecArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      templateSpecName: pulumi.Output.create<String>(map['templateSpecName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      templateSpecName: (map['templateSpecName'] as String).input(),
     );
   }
 }

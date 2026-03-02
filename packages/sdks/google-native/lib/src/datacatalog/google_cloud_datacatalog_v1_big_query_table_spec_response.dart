@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_table_spec_response.dart';
 import 'google_cloud_datacatalog_v1_view_spec_response.dart';
 
 /// Describes a BigQuery table.
 class GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
   /// The table source type.
-  final String tableSourceType;
+  final pulumi.Input<String> tableSourceType;
   /// Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
-  final GoogleCloudDatacatalogV1TableSpecResponse tableSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1TableSpecResponse> tableSpec;
   /// Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
-  final GoogleCloudDatacatalogV1ViewSpecResponse viewSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1ViewSpecResponse> viewSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryTableSpecResponse].
   /// [tableSourceType] The table source type.
@@ -25,16 +26,16 @@ class GoogleCloudDatacatalogV1BigQueryTableSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'tableSourceType': tableSourceType,
-      'tableSpec': tableSpec.toMap(),
-      'viewSpec': viewSpec.toMap(),
+      'tableSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1TableSpecResponse, Map<String, dynamic>>(tableSpec, (value) => value.toMap()),
+      'viewSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1ViewSpecResponse, Map<String, dynamic>>(viewSpec, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDatacatalogV1BigQueryTableSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BigQueryTableSpecResponse(
-      tableSourceType: map['tableSourceType'] as String,
-      tableSpec: GoogleCloudDatacatalogV1TableSpecResponse.fromMap((map['tableSpec'] as Map).cast<String, dynamic>()),
-      viewSpec: GoogleCloudDatacatalogV1ViewSpecResponse.fromMap((map['viewSpec'] as Map).cast<String, dynamic>()),
+      tableSourceType: (map['tableSourceType'] as String).input(),
+      tableSpec: (GoogleCloudDatacatalogV1TableSpecResponse.fromMap((map['tableSpec'] as Map).cast<String, dynamic>())).input(),
+      viewSpec: (GoogleCloudDatacatalogV1ViewSpecResponse.fromMap((map['viewSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

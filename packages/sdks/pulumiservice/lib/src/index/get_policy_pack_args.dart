@@ -19,13 +19,10 @@ class GetPolicyPackArgs {
   /// [policyPackName] The name of the policy pack.
   /// [version] The version number of the policy pack. If not specified, returns the latest version.
   GetPolicyPackArgs({
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> policyPackName,
-    pulumi.Output<int>? version,
-  }) :
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      policyPackName = pulumi.Input.asInput<String>(policyPackName),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    required this.organizationName,
+    required this.policyPackName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPolicyPackArgs {
 
   factory GetPolicyPackArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyPackArgs(
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      policyPackName: pulumi.Output.create<String>(map['policyPackName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      organizationName: (map['organizationName'] as String).input(),
+      policyPackName: (map['policyPackName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

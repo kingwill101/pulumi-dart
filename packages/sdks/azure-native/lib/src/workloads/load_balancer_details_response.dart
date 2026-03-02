@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Load Balancer details such as Load Balancer ID.
 class LoadBalancerDetailsResponse {
   /// Fully qualified resource ID for the load balancer.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [LoadBalancerDetailsResponse].
   /// [id] Fully qualified resource ID for the load balancer.
@@ -20,7 +21,7 @@ class LoadBalancerDetailsResponse {
 
   factory LoadBalancerDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerDetailsResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

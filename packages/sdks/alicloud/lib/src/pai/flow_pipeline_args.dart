@@ -16,11 +16,9 @@ class FlowPipelineArgs {
   /// [manifest] The pipeline definition. For more information, see the sample pipeline definition).
   /// [workspaceId] The ID of the workspace.
   FlowPipelineArgs({
-    required pulumi.Output<String> manifest,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      manifest = pulumi.Input.asInput<String>(manifest),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.manifest,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class FlowPipelineArgs {
 
   factory FlowPipelineArgs.fromMap(Map<String, dynamic> map) {
     return FlowPipelineArgs(
-      manifest: pulumi.Output.create<String>(map['manifest'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      manifest: (map['manifest'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

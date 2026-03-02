@@ -17,11 +17,9 @@ class TenantConfigurationArgs {
   /// [configurationName] The name of the Configuration
   /// [properties] The resource-specific properties for this resource.
   TenantConfigurationArgs({
-    pulumi.Output<String>? configurationName,
-    pulumi.Output<ConfigurationProperties>? properties,
-  }) :
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      properties = pulumi.Input.asOptionalInput<ConfigurationProperties>(properties);
+    this.configurationName,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class TenantConfigurationArgs {
 
   factory TenantConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TenantConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConfigurationProperties>(ConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

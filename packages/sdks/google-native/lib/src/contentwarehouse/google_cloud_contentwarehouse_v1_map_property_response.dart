@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 class GoogleCloudContentwarehouseV1MapPropertyResponse {
   /// Unordered map of dynamically typed values.
-  final Map<String, String> fields;
+  final pulumi.Input<Map<String, String>> fields;
 
   /// Creates a new [GoogleCloudContentwarehouseV1MapPropertyResponse].
   /// [fields] Unordered map of dynamically typed values.
@@ -20,7 +21,7 @@ class GoogleCloudContentwarehouseV1MapPropertyResponse {
 
   factory GoogleCloudContentwarehouseV1MapPropertyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1MapPropertyResponse(
-      fields: (map['fields'] as Map).cast<String, String>(),
+      fields: ((map['fields'] as Map).cast<String, String>()).input(),
     );
   }
 }

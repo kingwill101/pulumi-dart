@@ -19,13 +19,10 @@ class GetNamespaceDeviceArgs {
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNamespaceDeviceArgs({
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deviceName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamespaceDeviceArgs {
 
   factory GetNamespaceDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDeviceArgs(
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deviceName: (map['deviceName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -6,7 +6,7 @@ import '../meta/condition.dart';
 /// ServiceCIDRStatus describes the current state of the ServiceCIDR.
 class ServiceCIDRStatusNetworkingK8sIoV1beta1 {
   /// conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
-  final List<Condition>? conditions;
+  final pulumi.Input<List<Condition>>? conditions;
 
   /// Creates a new [ServiceCIDRStatusNetworkingK8sIoV1beta1].
   /// [conditions] conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
@@ -16,13 +16,13 @@ class ServiceCIDRStatusNetworkingK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceCIDRStatusNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRStatusNetworkingK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

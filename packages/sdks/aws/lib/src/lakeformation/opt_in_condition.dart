@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInCondition {
   /// List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
-  final String? expression;
+  final pulumi.Input<String>? expression;
 
   /// Creates a new [OptInCondition].
   /// [expression] List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
@@ -19,7 +20,7 @@ class OptInCondition {
 
   factory OptInCondition.fromMap(Map<String, dynamic> map) {
     return OptInCondition(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
     );
   }
 }

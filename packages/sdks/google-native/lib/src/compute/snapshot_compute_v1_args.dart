@@ -50,33 +50,20 @@ class SnapshotComputeV1Args {
   /// [sourceDiskForRecoveryCheckpoint] The source disk whose recovery checkpoint will be used to create this snapshot.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   SnapshotComputeV1Args({
-    pulumi.Output<String>? chainName,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? locationHint,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<CustomerEncryptionKeyComputeV1>? snapshotEncryptionKey,
-    pulumi.Output<SnapshotSnapshotTypeComputeV1>? snapshotType,
-    pulumi.Output<String>? sourceDisk,
-    pulumi.Output<CustomerEncryptionKeyComputeV1>? sourceDiskEncryptionKey,
-    pulumi.Output<String>? sourceDiskForRecoveryCheckpoint,
-    pulumi.Output<List<String>>? storageLocations,
-  }) :
-      chainName = pulumi.Input.asOptionalInput<String>(chainName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      locationHint = pulumi.Input.asOptionalInput<String>(locationHint),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      snapshotEncryptionKey = pulumi.Input.asOptionalInput<CustomerEncryptionKeyComputeV1>(snapshotEncryptionKey),
-      snapshotType = pulumi.Input.asOptionalInput<SnapshotSnapshotTypeComputeV1>(snapshotType),
-      sourceDisk = pulumi.Input.asOptionalInput<String>(sourceDisk),
-      sourceDiskEncryptionKey = pulumi.Input.asOptionalInput<CustomerEncryptionKeyComputeV1>(sourceDiskEncryptionKey),
-      sourceDiskForRecoveryCheckpoint = pulumi.Input.asOptionalInput<String>(sourceDiskForRecoveryCheckpoint),
-      storageLocations = pulumi.Input.asOptionalInput<List<String>>(storageLocations);
+    this.chainName,
+    this.description,
+    this.labels,
+    this.locationHint,
+    this.name,
+    this.project,
+    this.requestId,
+    this.snapshotEncryptionKey,
+    this.snapshotType,
+    this.sourceDisk,
+    this.sourceDiskEncryptionKey,
+    this.sourceDiskForRecoveryCheckpoint,
+    this.storageLocations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class SnapshotComputeV1Args {
 
   factory SnapshotComputeV1Args.fromMap(Map<String, dynamic> map) {
     return SnapshotComputeV1Args(
-      chainName: map['chainName'] == null ? null : pulumi.Output.create<String>(map['chainName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      locationHint: map['locationHint'] == null ? null : pulumi.Output.create<String>(map['locationHint'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : pulumi.Output.create<CustomerEncryptionKeyComputeV1>(CustomerEncryptionKeyComputeV1.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())),
-      snapshotType: map['snapshotType'] == null ? null : pulumi.Output.create<SnapshotSnapshotTypeComputeV1>(SnapshotSnapshotTypeComputeV1.fromValue(map['snapshotType'] as String)),
-      sourceDisk: map['sourceDisk'] == null ? null : pulumi.Output.create<String>(map['sourceDisk'] as String),
-      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : pulumi.Output.create<CustomerEncryptionKeyComputeV1>(CustomerEncryptionKeyComputeV1.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())),
-      sourceDiskForRecoveryCheckpoint: map['sourceDiskForRecoveryCheckpoint'] == null ? null : pulumi.Output.create<String>(map['sourceDiskForRecoveryCheckpoint'] as String),
-      storageLocations: map['storageLocations'] == null ? null : pulumi.Output.create<List<String>>((map['storageLocations'] as List).cast<String>()),
+      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      snapshotType: map['snapshotType'] == null ? null : (SnapshotSnapshotTypeComputeV1.fromValue(map['snapshotType'] as String)).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      sourceDiskForRecoveryCheckpoint: map['sourceDiskForRecoveryCheckpoint'] == null ? null : (map['sourceDiskForRecoveryCheckpoint'] as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
     );
   }
 }

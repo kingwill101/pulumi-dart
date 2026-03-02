@@ -29,19 +29,13 @@ class BiReservationState {
   /// [size] Size of a reservation, in bytes.
   /// [updateTime] The last update timestamp of a reservation.
   BiReservationState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<BiReservationPreferredTable>>? preferredTables,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? updateTime,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preferredTables = pulumi.Input.asOptionalInput<List<BiReservationPreferredTable>>(preferredTables),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.location,
+    this.name,
+    this.preferredTables,
+    this.project,
+    this.size,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class BiReservationState {
 
   factory BiReservationState.fromMap(Map<String, dynamic> map) {
     return BiReservationState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preferredTables: map['preferredTables'] == null ? null : pulumi.Output.create<List<BiReservationPreferredTable>>(pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables'], (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preferredTables: map['preferredTables'] == null ? null : (pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables'], (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

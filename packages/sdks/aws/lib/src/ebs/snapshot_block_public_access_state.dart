@@ -13,11 +13,9 @@ class SnapshotBlockPublicAccessState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
   SnapshotBlockPublicAccessState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.region,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SnapshotBlockPublicAccessState {
 
   factory SnapshotBlockPublicAccessState.fromMap(Map<String, dynamic> map) {
     return SnapshotBlockPublicAccessState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

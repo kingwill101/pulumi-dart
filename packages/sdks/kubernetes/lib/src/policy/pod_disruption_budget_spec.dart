@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/label_selector.dart';
 
 /// PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
 class PodDisruptionBudgetSpec {
   /// An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
-  final int? maxUnavailable;
+  final pulumi.Input<int>? maxUnavailable;
   /// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
-  final int? minAvailable;
+  final pulumi.Input<int>? minAvailable;
   /// Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
-  final LabelSelector? selector;
+  final pulumi.Input<LabelSelector>? selector;
   /// UnhealthyPodEvictionPolicy defines the criteria for when unhealthy pods should be considered for eviction. Current implementation considers healthy pods, as pods that have status.conditions item with type="Ready",status="True".
   ///
   /// Valid policies are IfHealthyBudget and AlwaysAllow. If no policy is specified, the default behavior will be used, which corresponds to the IfHealthyBudget policy.
@@ -19,7 +20,7 @@ class PodDisruptionBudgetSpec {
   /// AlwaysAllow policy means that all running pods (status.phase="Running"), but not yet healthy are considered disrupted and can be evicted regardless of whether the criteria in a PDB is met. This means perspective running pods of a disrupted application might not get a chance to become healthy. Healthy pods will be subject to the PDB for eviction.
   ///
   /// Additional policies may be added in the future. Clients making eviction decisions should disallow eviction of unhealthy pods if they encounter an unrecognized policy in this field.
-  final String? unhealthyPodEvictionPolicy;
+  final pulumi.Input<String>? unhealthyPodEvictionPolicy;
 
   /// Creates a new [PodDisruptionBudgetSpec].
   /// [maxUnavailable] An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
@@ -37,17 +38,17 @@ class PodDisruptionBudgetSpec {
     return <String, dynamic>{
       'maxUnavailable': ?maxUnavailable,
       'minAvailable': ?minAvailable,
-      'selector': ?selector == null ? null : selector!.toMap(),
+      'selector': ?pulumi.Input.mapOptionalInputValue<LabelSelector, Map<String, dynamic>>(selector, (value) => value.toMap()),
       'unhealthyPodEvictionPolicy': ?unhealthyPodEvictionPolicy,
     };
   }
 
   factory PodDisruptionBudgetSpec.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetSpec(
-      maxUnavailable: map['maxUnavailable'] == null ? null : map['maxUnavailable'] as int,
-      minAvailable: map['minAvailable'] == null ? null : map['minAvailable'] as int,
-      selector: map['selector'] == null ? null : LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>()),
-      unhealthyPodEvictionPolicy: map['unhealthyPodEvictionPolicy'] == null ? null : map['unhealthyPodEvictionPolicy'] as String,
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
+      minAvailable: map['minAvailable'] == null ? null : (map['minAvailable'] as int).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      unhealthyPodEvictionPolicy: map['unhealthyPodEvictionPolicy'] == null ? null : (map['unhealthyPodEvictionPolicy'] as String).input(),
     );
   }
 }

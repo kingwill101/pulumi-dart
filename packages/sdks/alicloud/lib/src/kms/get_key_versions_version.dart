@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyVersionsVersion {
   /// Date and time when the key version was created (UTC time).
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// (Removed from v1.124.4) It has been removed and using `create_time` instead.
-  final String creationDate;
+  final pulumi.Input<String> creationDate;
   /// ID of the KMS KeyVersion resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The id of kms key.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// ID of the key version.
-  final String keyVersionId;
+  final pulumi.Input<String> keyVersionId;
 
   /// Creates a new [GetKeyVersionsVersion].
   /// [createTime] Date and time when the key version was created (UTC time).
@@ -39,11 +40,11 @@ class GetKeyVersionsVersion {
 
   factory GetKeyVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetKeyVersionsVersion(
-      createTime: map['createTime'] as String,
-      creationDate: map['creationDate'] as String,
-      id: map['id'] as String,
-      keyId: map['keyId'] as String,
-      keyVersionId: map['keyVersionId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      creationDate: (map['creationDate'] as String).input(),
+      id: (map['id'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
+      keyVersionId: (map['keyVersionId'] as String).input(),
     );
   }
 }

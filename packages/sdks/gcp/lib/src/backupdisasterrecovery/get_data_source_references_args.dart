@@ -18,13 +18,10 @@ class GetDataSourceReferencesArgs {
   /// [project] - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
   GetDataSourceReferencesArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resourceType,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType);
+    required this.location,
+    this.project,
+    this.resourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetDataSourceReferencesArgs {
 
   factory GetDataSourceReferencesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
     );
   }
 }

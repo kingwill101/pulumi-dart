@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of a monitored resource.
 class MonitoredResourcePropertiesResponse {
   /// The version of the monitored resource agent version.
-  final String agentVersion;
+  final pulumi.Input<String> agentVersion;
   /// ComputerName of the monitored resource.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// The connection status of the monitored resource.
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// The domain name associated with the monitored resource.
-  final String? domainName;
+  final pulumi.Input<String>? domainName;
   /// The health status of the monitored resource.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// Install type of monitored resource.
-  final String installType;
+  final pulumi.Input<String> installType;
   /// The management server endpoint to which the monitored resource is directed.
-  final String managementServerEndpoint;
-  final String provisioningState;
+  final pulumi.Input<String> managementServerEndpoint;
+  final pulumi.Input<String> provisioningState;
   /// ArmId of the monitored resource.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Location of the monitored resource.
-  final String? resourceLocation;
+  final pulumi.Input<String>? resourceLocation;
 
   /// Creates a new [MonitoredResourcePropertiesResponse].
   /// [agentVersion] The version of the monitored resource agent version.
@@ -64,16 +65,16 @@ class MonitoredResourcePropertiesResponse {
 
   factory MonitoredResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoredResourcePropertiesResponse(
-      agentVersion: map['agentVersion'] as String,
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      connectionStatus: map['connectionStatus'] as String,
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      healthStatus: map['healthStatus'] as String,
-      installType: map['installType'] as String,
-      managementServerEndpoint: map['managementServerEndpoint'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceLocation: map['resourceLocation'] == null ? null : map['resourceLocation'] as String,
+      agentVersion: (map['agentVersion'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      healthStatus: (map['healthStatus'] as String).input(),
+      installType: (map['installType'] as String).input(),
+      managementServerEndpoint: (map['managementServerEndpoint'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation'] as String).input(),
     );
   }
 }

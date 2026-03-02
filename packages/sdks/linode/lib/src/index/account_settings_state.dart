@@ -28,21 +28,14 @@ class AccountSettingsState {
   /// [networkHelper] Enables network helper across all users by default for new Linodes and Linode Configs.
   /// [objectStorage] A string describing the status of this account's Object Storage service enrollment.
   AccountSettingsState({
-    pulumi.Output<bool>? backupsEnabled,
-    pulumi.Output<String>? interfacesForNewLinodes,
-    pulumi.Output<String>? longviewSubscription,
-    pulumi.Output<String>? maintenancePolicy,
-    pulumi.Output<bool>? managed,
-    pulumi.Output<bool>? networkHelper,
-    pulumi.Output<String>? objectStorage,
-  }) :
-      backupsEnabled = pulumi.Input.asOptionalInput<bool>(backupsEnabled),
-      interfacesForNewLinodes = pulumi.Input.asOptionalInput<String>(interfacesForNewLinodes),
-      longviewSubscription = pulumi.Input.asOptionalInput<String>(longviewSubscription),
-      maintenancePolicy = pulumi.Input.asOptionalInput<String>(maintenancePolicy),
-      managed = pulumi.Input.asOptionalInput<bool>(managed),
-      networkHelper = pulumi.Input.asOptionalInput<bool>(networkHelper),
-      objectStorage = pulumi.Input.asOptionalInput<String>(objectStorage);
+    this.backupsEnabled,
+    this.interfacesForNewLinodes,
+    this.longviewSubscription,
+    this.maintenancePolicy,
+    this.managed,
+    this.networkHelper,
+    this.objectStorage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AccountSettingsState {
 
   factory AccountSettingsState.fromMap(Map<String, dynamic> map) {
     return AccountSettingsState(
-      backupsEnabled: map['backupsEnabled'] == null ? null : pulumi.Output.create<bool>(map['backupsEnabled'] as bool),
-      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : pulumi.Output.create<String>(map['interfacesForNewLinodes'] as String),
-      longviewSubscription: map['longviewSubscription'] == null ? null : pulumi.Output.create<String>(map['longviewSubscription'] as String),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : pulumi.Output.create<String>(map['maintenancePolicy'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<bool>(map['managed'] as bool),
-      networkHelper: map['networkHelper'] == null ? null : pulumi.Output.create<bool>(map['networkHelper'] as bool),
-      objectStorage: map['objectStorage'] == null ? null : pulumi.Output.create<String>(map['objectStorage'] as String),
+      backupsEnabled: map['backupsEnabled'] == null ? null : (map['backupsEnabled'] as bool).input(),
+      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : (map['interfacesForNewLinodes'] as String).input(),
+      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription'] as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      networkHelper: map['networkHelper'] == null ? null : (map['networkHelper'] as bool).input(),
+      objectStorage: map['objectStorage'] == null ? null : (map['objectStorage'] as String).input(),
     );
   }
 }

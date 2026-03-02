@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesTpmBackendEmulatorSourceFile {
   /// Sets the path to the file source for the emulator TPM backend.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorSourceFile].
   /// [path] Sets the path to the file source for the emulator TPM backend.
@@ -19,7 +20,7 @@ class DomainDevicesTpmBackendEmulatorSourceFile {
 
   factory DomainDevicesTpmBackendEmulatorSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorSourceFile(
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

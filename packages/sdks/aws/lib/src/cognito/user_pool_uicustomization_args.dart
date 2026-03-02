@@ -25,17 +25,12 @@ class UserPoolUICustomizationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID for the user pool.
   UserPoolUICustomizationArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? css,
-    pulumi.Output<String>? imageFile,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> userPoolId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      css = pulumi.Input.asOptionalInput<String>(css),
-      imageFile = pulumi.Input.asOptionalInput<String>(imageFile),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asInput<String>(userPoolId);
+    this.clientId,
+    this.css,
+    this.imageFile,
+    this.region,
+    required this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class UserPoolUICustomizationArgs {
 
   factory UserPoolUICustomizationArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolUICustomizationArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      css: map['css'] == null ? null : pulumi.Output.create<String>(map['css'] as String),
-      imageFile: map['imageFile'] == null ? null : pulumi.Output.create<String>(map['imageFile'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: pulumi.Output.create<String>(map['userPoolId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      css: map['css'] == null ? null : (map['css'] as String).input(),
+      imageFile: map['imageFile'] == null ? null : (map['imageFile'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

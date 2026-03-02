@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolMountAzureBlobFileSystem {
   /// The Azure Storage Account key.
-  final String accountKey;
+  final pulumi.Input<String> accountKey;
   /// The Batch Account name associated with the Batch pool.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
-  final String blobfuseOptions;
+  final pulumi.Input<String> blobfuseOptions;
   /// The Azure Blob Storage Container name.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// The ARM resource id of the user assigned identity. This property is mutually exclusive with both `account_key` and `sas_key`; exactly one must be specified.
-  final String identityId;
+  final pulumi.Input<String> identityId;
   /// The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
-  final String relativeMountPath;
+  final pulumi.Input<String> relativeMountPath;
   /// The Azure Storage SAS token. This property is mutually exclusive with both `account_key` and `identity_id`; exactly one must be specified.
-  final String sasKey;
+  final pulumi.Input<String> sasKey;
 
   /// Creates a new [GetPoolMountAzureBlobFileSystem].
   /// [accountKey] The Azure Storage Account key.
@@ -49,13 +50,13 @@ class GetPoolMountAzureBlobFileSystem {
 
   factory GetPoolMountAzureBlobFileSystem.fromMap(Map<String, dynamic> map) {
     return GetPoolMountAzureBlobFileSystem(
-      accountKey: map['accountKey'] as String,
-      accountName: map['accountName'] as String,
-      blobfuseOptions: map['blobfuseOptions'] as String,
-      containerName: map['containerName'] as String,
-      identityId: map['identityId'] as String,
-      relativeMountPath: map['relativeMountPath'] as String,
-      sasKey: map['sasKey'] as String,
+      accountKey: (map['accountKey'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      blobfuseOptions: (map['blobfuseOptions'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      identityId: (map['identityId'] as String).input(),
+      relativeMountPath: (map['relativeMountPath'] as String).input(),
+      sasKey: (map['sasKey'] as String).input(),
     );
   }
 }

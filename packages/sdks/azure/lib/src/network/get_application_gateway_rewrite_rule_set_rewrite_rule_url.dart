@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
   /// The components used to rewrite the URL.
-  final String components;
+  final pulumi.Input<String> components;
   /// The URL path to rewrite.
-  final String path;
+  final pulumi.Input<String> path;
   /// The query string to rewrite.
-  final String queryString;
+  final pulumi.Input<String> queryString;
   /// Whether the URL path map is reevaluated after this rewrite has been applied.
-  final bool reroute;
+  final pulumi.Input<bool> reroute;
 
   /// Creates a new [GetApplicationGatewayRewriteRuleSetRewriteRuleUrl].
   /// [components] The components used to rewrite the URL.
@@ -34,10 +35,10 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
 
   factory GetApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayRewriteRuleSetRewriteRuleUrl(
-      components: map['components'] as String,
-      path: map['path'] as String,
-      queryString: map['queryString'] as String,
-      reroute: map['reroute'] as bool,
+      components: (map['components'] as String).input(),
+      path: (map['path'] as String).input(),
+      queryString: (map['queryString'] as String).input(),
+      reroute: (map['reroute'] as bool).input(),
     );
   }
 }

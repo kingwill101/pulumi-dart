@@ -56,31 +56,19 @@ class RouterState {
   /// [region] Region where the router resides.
   /// [selfLink] The URI of the created resource.
   RouterState({
-    pulumi.Output<RouterBgp>? bgp,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? encryptedInterconnectRouter,
-    pulumi.Output<RouterMd5AuthenticationKeys>? md5AuthenticationKeys,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nccGateway,
-    pulumi.Output<String>? network,
-    pulumi.Output<RouterParams>? params,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-  }) :
-      bgp = pulumi.Input.asOptionalInput<RouterBgp>(bgp),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encryptedInterconnectRouter = pulumi.Input.asOptionalInput<bool>(encryptedInterconnectRouter),
-      md5AuthenticationKeys = pulumi.Input.asOptionalInput<RouterMd5AuthenticationKeys>(md5AuthenticationKeys),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nccGateway = pulumi.Input.asOptionalInput<String>(nccGateway),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      params = pulumi.Input.asOptionalInput<RouterParams>(params),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.bgp,
+    this.creationTimestamp,
+    this.description,
+    this.encryptedInterconnectRouter,
+    this.md5AuthenticationKeys,
+    this.name,
+    this.nccGateway,
+    this.network,
+    this.params,
+    this.project,
+    this.region,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,18 +89,18 @@ class RouterState {
 
   factory RouterState.fromMap(Map<String, dynamic> map) {
     return RouterState(
-      bgp: map['bgp'] == null ? null : pulumi.Output.create<RouterBgp>(RouterBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : pulumi.Output.create<bool>(map['encryptedInterconnectRouter'] as bool),
-      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : pulumi.Output.create<RouterMd5AuthenticationKeys>(RouterMd5AuthenticationKeys.fromMap((map['md5AuthenticationKeys'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nccGateway: map['nccGateway'] == null ? null : pulumi.Output.create<String>(map['nccGateway'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      params: map['params'] == null ? null : pulumi.Output.create<RouterParams>(RouterParams.fromMap((map['params'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      bgp: map['bgp'] == null ? null : (RouterBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : (map['encryptedInterconnectRouter'] as bool).input(),
+      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : (RouterMd5AuthenticationKeys.fromMap((map['md5AuthenticationKeys'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nccGateway: map['nccGateway'] == null ? null : (map['nccGateway'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      params: map['params'] == null ? null : (RouterParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

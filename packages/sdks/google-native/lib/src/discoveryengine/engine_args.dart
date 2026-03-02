@@ -55,35 +55,21 @@ class EngineArgs {
   /// [similarDocumentsConfig] Additional config specs for a `similar-items` engine.
   /// [solutionType] The solutions of the engine.
   EngineArgs({
-    pulumi.Output<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig>? chatEngineConfig,
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig>? commonConfig,
-    pulumi.Output<List<String>>? dataStoreIds,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> engineId,
-    pulumi.Output<EngineIndustryVertical>? industryVertical,
-    pulumi.Output<String>? location,
-    pulumi.Output<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig>? searchEngineConfig,
-    pulumi.Output<Map<String, dynamic>>? similarDocumentsConfig,
-    required pulumi.Output<EngineSolutionType> solutionType,
-  }) :
-      chatEngineConfig = pulumi.Input.asOptionalInput<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig>(chatEngineConfig),
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      commonConfig = pulumi.Input.asOptionalInput<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig>(commonConfig),
-      dataStoreIds = pulumi.Input.asOptionalInput<List<String>>(dataStoreIds),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      industryVertical = pulumi.Input.asOptionalInput<EngineIndustryVertical>(industryVertical),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mediaRecommendationEngineConfig = pulumi.Input.asOptionalInput<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig>(mediaRecommendationEngineConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      searchEngineConfig = pulumi.Input.asOptionalInput<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig>(searchEngineConfig),
-      similarDocumentsConfig = pulumi.Input.asOptionalInput<Map<String, dynamic>>(similarDocumentsConfig),
-      solutionType = pulumi.Input.asInput<EngineSolutionType>(solutionType);
+    this.chatEngineConfig,
+    required this.collectionId,
+    this.commonConfig,
+    this.dataStoreIds,
+    required this.displayName,
+    required this.engineId,
+    this.industryVertical,
+    this.location,
+    this.mediaRecommendationEngineConfig,
+    this.name,
+    this.project,
+    this.searchEngineConfig,
+    this.similarDocumentsConfig,
+    required this.solutionType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class EngineArgs {
 
   factory EngineArgs.fromMap(Map<String, dynamic> map) {
     return EngineArgs(
-      chatEngineConfig: map['chatEngineConfig'] == null ? null : pulumi.Output.create<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig>(GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())),
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      commonConfig: map['commonConfig'] == null ? null : pulumi.Output.create<GoogleCloudDiscoveryengineV1alphaEngineCommonConfig>(GoogleCloudDiscoveryengineV1alphaEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())),
-      dataStoreIds: map['dataStoreIds'] == null ? null : pulumi.Output.create<List<String>>((map['dataStoreIds'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      engineId: pulumi.Output.create<String>(map['engineId'] as String),
-      industryVertical: map['industryVertical'] == null ? null : pulumi.Output.create<EngineIndustryVertical>(EngineIndustryVertical.fromValue(map['industryVertical'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : pulumi.Output.create<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig>(GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      searchEngineConfig: map['searchEngineConfig'] == null ? null : pulumi.Output.create<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig>(GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())),
-      similarDocumentsConfig: map['similarDocumentsConfig'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['similarDocumentsConfig'] as Map).cast<String, dynamic>()),
-      solutionType: pulumi.Output.create<EngineSolutionType>(EngineSolutionType.fromValue(map['solutionType'] as String)),
+      chatEngineConfig: map['chatEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())).input(),
+      collectionId: (map['collectionId'] as String).input(),
+      commonConfig: map['commonConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      engineId: (map['engineId'] as String).input(),
+      industryVertical: map['industryVertical'] == null ? null : (EngineIndustryVertical.fromValue(map['industryVertical'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      searchEngineConfig: map['searchEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())).input(),
+      similarDocumentsConfig: map['similarDocumentsConfig'] == null ? null : ((map['similarDocumentsConfig'] as Map).cast<String, dynamic>()).input(),
+      solutionType: (EngineSolutionType.fromValue(map['solutionType'] as String)).input(),
     );
   }
 }

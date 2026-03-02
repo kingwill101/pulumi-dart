@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Sql Server database on the Cloud SQL instance.
 class SqlServerDatabaseDetailsResponse {
   /// The version of SQL Server with which the database is to be made compatible
-  final int compatibilityLevel;
+  final pulumi.Input<int> compatibilityLevel;
   /// The recovery model of a SQL Server database
-  final String recoveryModel;
+  final pulumi.Input<String> recoveryModel;
 
   /// Creates a new [SqlServerDatabaseDetailsResponse].
   /// [compatibilityLevel] The version of SQL Server with which the database is to be made compatible
@@ -25,8 +26,8 @@ class SqlServerDatabaseDetailsResponse {
 
   factory SqlServerDatabaseDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetailsResponse(
-      compatibilityLevel: map['compatibilityLevel'] as int,
-      recoveryModel: map['recoveryModel'] as String,
+      compatibilityLevel: (map['compatibilityLevel'] as int).input(),
+      recoveryModel: (map['recoveryModel'] as String).input(),
     );
   }
 }

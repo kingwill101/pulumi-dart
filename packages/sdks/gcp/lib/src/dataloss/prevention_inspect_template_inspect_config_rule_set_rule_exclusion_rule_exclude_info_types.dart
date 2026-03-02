@@ -6,7 +6,7 @@ import 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
   /// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
   /// Structure is documented below.
-  final List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes;
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>> infoTypes;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes].
   /// [infoTypes] If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
@@ -16,13 +16,13 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes': pulumi.Input.encodeList<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType, Map<String, dynamic>>(infoTypes, (value) => value.toMap()),
+      'infoTypes': pulumi.Input.mapInputValue<List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>, List<Map<String, dynamic>>>(infoTypes, (value) => pulumi.Input.encodeList<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(
-      infoTypes: pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>(map['infoTypes'], (value) => PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap((value as Map).cast<String, dynamic>())),
+      infoTypes: (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType>(map['infoTypes'], (value) => PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetPriorityMix {
   /// Specifies the base number of VMs of `Regular` priority that will be created before any VMs of priority `Spot` are created. Possible values are integers between `0` and `1000`. Defaults to `0`.
-  final int? baseRegularCount;
+  final pulumi.Input<int>? baseRegularCount;
   /// Specifies the desired percentage of VM instances that are of `Regular` priority after the base count has been reached. Possible values are integers between `0` and `100`. Defaults to `0`.
-  final int? regularPercentageAboveBase;
+  final pulumi.Input<int>? regularPercentageAboveBase;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetPriorityMix].
   /// [baseRegularCount] Specifies the base number of VMs of `Regular` priority that will be created before any VMs of priority `Spot` are created. Possible values are integers between `0` and `1000`. Defaults to `0`.
@@ -24,8 +25,8 @@ class OrchestratedVirtualMachineScaleSetPriorityMix {
 
   factory OrchestratedVirtualMachineScaleSetPriorityMix.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetPriorityMix(
-      baseRegularCount: map['baseRegularCount'] == null ? null : map['baseRegularCount'] as int,
-      regularPercentageAboveBase: map['regularPercentageAboveBase'] == null ? null : map['regularPercentageAboveBase'] as int,
+      baseRegularCount: map['baseRegularCount'] == null ? null : (map['baseRegularCount'] as int).input(),
+      regularPercentageAboveBase: map['regularPercentageAboveBase'] == null ? null : (map['regularPercentageAboveBase'] as int).input(),
     );
   }
 }

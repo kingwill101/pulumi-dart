@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents security alert timeline item.
 class SecurityAlertTimelineItemResponse {
   /// The name of the alert type.
-  final String alertType;
+  final pulumi.Input<String> alertType;
   /// The alert azure resource id.
-  final String azureResourceId;
+  final pulumi.Input<String> azureResourceId;
   /// The alert description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The alert name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The alert end time.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// The intent of the alert.
-  final String intent;
+  final pulumi.Input<String> intent;
   /// The entity query kind
   /// Expected value is 'SecurityAlert'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The alert product name.
-  final String? productName;
+  final pulumi.Input<String>? productName;
   /// The alert severity.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// The alert start time.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// The techniques of the alert.
-  final List<String>? techniques;
+  final pulumi.Input<List<String>>? techniques;
   /// The alert generated time.
-  final String timeGenerated;
+  final pulumi.Input<String> timeGenerated;
 
   /// Creates a new [SecurityAlertTimelineItemResponse].
   /// [alertType] The name of the alert type.
@@ -76,18 +77,18 @@ class SecurityAlertTimelineItemResponse {
 
   factory SecurityAlertTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return SecurityAlertTimelineItemResponse(
-      alertType: map['alertType'] as String,
-      azureResourceId: map['azureResourceId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      endTimeUtc: map['endTimeUtc'] as String,
-      intent: map['intent'] as String,
-      kind: map['kind'] as String,
-      productName: map['productName'] == null ? null : map['productName'] as String,
-      severity: map['severity'] as String,
-      startTimeUtc: map['startTimeUtc'] as String,
-      techniques: map['techniques'] == null ? null : (map['techniques'] as List).cast<String>(),
-      timeGenerated: map['timeGenerated'] as String,
+      alertType: (map['alertType'] as String).input(),
+      azureResourceId: (map['azureResourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      intent: (map['intent'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      techniques: map['techniques'] == null ? null : ((map['techniques'] as List).cast<String>()).input(),
+      timeGenerated: (map['timeGenerated'] as String).input(),
     );
   }
 }

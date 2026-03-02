@@ -25,17 +25,12 @@ class BrowserApplicationArgs {
   /// [loaderType] Determines the browser loader configured. Valid values are `SPA`, `PRO`, and `LITE`. The default is `SPA`. Refer to the [browser agent loader documentation](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/#agent-types) for more information on valid loader types.
   /// [name] The name of the browser application.
   BrowserApplicationArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? cookiesEnabled,
-    pulumi.Output<bool>? distributedTracingEnabled,
-    pulumi.Output<String>? loaderType,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      cookiesEnabled = pulumi.Input.asOptionalInput<bool>(cookiesEnabled),
-      distributedTracingEnabled = pulumi.Input.asOptionalInput<bool>(distributedTracingEnabled),
-      loaderType = pulumi.Input.asOptionalInput<String>(loaderType),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    this.cookiesEnabled,
+    this.distributedTracingEnabled,
+    this.loaderType,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BrowserApplicationArgs {
 
   factory BrowserApplicationArgs.fromMap(Map<String, dynamic> map) {
     return BrowserApplicationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      cookiesEnabled: map['cookiesEnabled'] == null ? null : pulumi.Output.create<bool>(map['cookiesEnabled'] as bool),
-      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : pulumi.Output.create<bool>(map['distributedTracingEnabled'] as bool),
-      loaderType: map['loaderType'] == null ? null : pulumi.Output.create<String>(map['loaderType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled'] as bool).input(),
+      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled'] as bool).input(),
+      loaderType: map['loaderType'] == null ? null : (map['loaderType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

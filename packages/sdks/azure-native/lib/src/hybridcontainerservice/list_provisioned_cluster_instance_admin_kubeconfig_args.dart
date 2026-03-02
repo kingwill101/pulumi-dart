@@ -13,9 +13,8 @@ class ListProvisionedClusterInstanceAdminKubeconfigArgs {
   /// Creates a new [ListProvisionedClusterInstanceAdminKubeconfigArgs].
   /// [connectedClusterResourceUri] The fully qualified Azure Resource Manager identifier of the connected cluster resource.
   ListProvisionedClusterInstanceAdminKubeconfigArgs({
-    required pulumi.Output<String> connectedClusterResourceUri,
-  }) :
-      connectedClusterResourceUri = pulumi.Input.asInput<String>(connectedClusterResourceUri);
+    required this.connectedClusterResourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListProvisionedClusterInstanceAdminKubeconfigArgs {
 
   factory ListProvisionedClusterInstanceAdminKubeconfigArgs.fromMap(Map<String, dynamic> map) {
     return ListProvisionedClusterInstanceAdminKubeconfigArgs(
-      connectedClusterResourceUri: pulumi.Output.create<String>(map['connectedClusterResourceUri'] as String),
+      connectedClusterResourceUri: (map['connectedClusterResourceUri'] as String).input(),
     );
   }
 }

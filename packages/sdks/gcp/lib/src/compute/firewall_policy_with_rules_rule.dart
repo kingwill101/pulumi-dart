@@ -7,41 +7,41 @@ import 'firewall_policy_with_rules_rule_target_secure_tag.dart';
 class FirewallPolicyWithRulesRule {
   /// The Action to perform when the client connection triggers the rule. Can currently be either
   /// "allow", "deny", "apply_security_profile_group" or "goto_next".
-  final String action;
+  final pulumi.Input<String> action;
   /// A description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
   /// Possible values are: `INGRESS`, `EGRESS`.
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// Denotes whether the firewall policy rule is disabled. When set to true,
   /// the firewall policy rule is not enforced and traffic behaves as if it did
   /// not exist. If this is unspecified, the firewall policy rule will be
   /// enabled.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the
   /// configured export destination in Stackdriver.
-  final bool? enableLogging;
+  final pulumi.Input<bool>? enableLogging;
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
-  final FirewallPolicyWithRulesRuleMatch match;
+  final pulumi.Input<FirewallPolicyWithRulesRuleMatch> match;
   /// An integer indicating the priority of a rule in the list. The priority must be a value
   /// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
   /// highest priority and 2147483647 is the lowest priority.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// An optional name for the rule. This field is not a unique identifier
   /// and can be updated.
-  final String? ruleName;
+  final pulumi.Input<String>? ruleName;
   /// A fully-qualified URL of a SecurityProfile resource instance.
   /// Example:
   /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action is 'apply_security_profile_group'.
-  final String? securityProfileGroup;
+  final pulumi.Input<String>? securityProfileGroup;
   /// A list of network resource URLs to which this rule applies.
   /// This field allows you to control which network's VMs get
   /// this rule. If this field is left blank, all VMs
   /// within the organization will receive the rule.
-  final List<String>? targetResources;
+  final pulumi.Input<List<String>>? targetResources;
   /// A list of secure tags that controls which instances the firewall rule
   /// applies to. If <code>targetSecureTag</code> are specified, then the
   /// firewall rule applies only to instances in the VPC network that have one
@@ -54,13 +54,13 @@ class FirewallPolicyWithRulesRule {
   /// to all instances on the specified network.
   /// Maximum number of target secure tags allowed is 256.
   /// Structure is documented below.
-  final List<FirewallPolicyWithRulesRuleTargetSecureTag>? targetSecureTags;
+  final pulumi.Input<List<FirewallPolicyWithRulesRuleTargetSecureTag>>? targetSecureTags;
   /// A list of service accounts indicating the sets of
   /// instances that are applied with this rule.
-  final List<String>? targetServiceAccounts;
+  final pulumi.Input<List<String>>? targetServiceAccounts;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
-  final bool? tlsInspect;
+  final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [FirewallPolicyWithRulesRule].
   /// [action] The Action to perform when the client connection triggers the rule. Can currently be either
@@ -99,12 +99,12 @@ class FirewallPolicyWithRulesRule {
       'direction': ?direction,
       'disabled': ?disabled,
       'enableLogging': ?enableLogging,
-      'match': match.toMap(),
+      'match': pulumi.Input.mapInputValue<FirewallPolicyWithRulesRuleMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
       'priority': priority,
       'ruleName': ?ruleName,
       'securityProfileGroup': ?securityProfileGroup,
       'targetResources': ?targetResources,
-      'targetSecureTags': ?targetSecureTags == null ? null : pulumi.Input.encodeList<FirewallPolicyWithRulesRuleTargetSecureTag, Map<String, dynamic>>(targetSecureTags!, (value) => value.toMap()),
+      'targetSecureTags': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyWithRulesRuleTargetSecureTag>, List<Map<String, dynamic>>>(targetSecureTags, (value) => pulumi.Input.encodeList<FirewallPolicyWithRulesRuleTargetSecureTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetServiceAccounts': ?targetServiceAccounts,
       'tlsInspect': ?tlsInspect,
     };
@@ -112,19 +112,19 @@ class FirewallPolicyWithRulesRule {
 
   factory FirewallPolicyWithRulesRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyWithRulesRule(
-      action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      enableLogging: map['enableLogging'] == null ? null : map['enableLogging'] as bool,
-      match: FirewallPolicyWithRulesRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] as int,
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : map['securityProfileGroup'] as String,
-      targetResources: map['targetResources'] == null ? null : (map['targetResources'] as List).cast<String>(),
-      targetSecureTags: map['targetSecureTags'] == null ? null : pulumi.Input.decodeList<FirewallPolicyWithRulesRuleTargetSecureTag>(map['targetSecureTags'], (value) => FirewallPolicyWithRulesRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>())),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : (map['targetServiceAccounts'] as List).cast<String>(),
-      tlsInspect: map['tlsInspect'] == null ? null : map['tlsInspect'] as bool,
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      match: (FirewallPolicyWithRulesRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      priority: (map['priority'] as int).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyWithRulesRuleTargetSecureTag>(map['targetSecureTags'], (value) => FirewallPolicyWithRulesRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
     );
   }
 }

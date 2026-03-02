@@ -32,21 +32,14 @@ class ReferenceDataSetArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Key-value pairs of additional properties for the resource.
   ReferenceDataSetArgs({
-    pulumi.Output<String>? dataStringComparisonBehavior,
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<List<ReferenceDataSetKeyProperty>> keyProperties,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? referenceDataSetName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataStringComparisonBehavior = pulumi.Input.asOptionalInput<String>(dataStringComparisonBehavior),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      keyProperties = pulumi.Input.asInput<List<ReferenceDataSetKeyProperty>>(keyProperties),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      referenceDataSetName = pulumi.Input.asOptionalInput<String>(referenceDataSetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataStringComparisonBehavior,
+    required this.environmentName,
+    required this.keyProperties,
+    this.location,
+    this.referenceDataSetName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ReferenceDataSetArgs {
 
   factory ReferenceDataSetArgs.fromMap(Map<String, dynamic> map) {
     return ReferenceDataSetArgs(
-      dataStringComparisonBehavior: map['dataStringComparisonBehavior'] == null ? null : pulumi.Output.create<String>(map['dataStringComparisonBehavior'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      keyProperties: pulumi.Output.create<List<ReferenceDataSetKeyProperty>>(pulumi.Input.decodeList<ReferenceDataSetKeyProperty>(map['keyProperties'], (value) => ReferenceDataSetKeyProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      referenceDataSetName: map['referenceDataSetName'] == null ? null : pulumi.Output.create<String>(map['referenceDataSetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataStringComparisonBehavior: map['dataStringComparisonBehavior'] == null ? null : (map['dataStringComparisonBehavior'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      keyProperties: (pulumi.Input.decodeList<ReferenceDataSetKeyProperty>(map['keyProperties'], (value) => ReferenceDataSetKeyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      referenceDataSetName: map['referenceDataSetName'] == null ? null : (map['referenceDataSetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

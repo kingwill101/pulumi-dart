@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The schedule property associated with the entity.
 class ScheduleAssociationProperty {
   /// Gets or sets the name of the Schedule.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ScheduleAssociationProperty].
   /// [name] Gets or sets the name of the Schedule.
@@ -20,7 +21,7 @@ class ScheduleAssociationProperty {
 
   factory ScheduleAssociationProperty.fromMap(Map<String, dynamic> map) {
     return ScheduleAssociationProperty(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

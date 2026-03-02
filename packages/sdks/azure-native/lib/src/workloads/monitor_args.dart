@@ -49,31 +49,19 @@ class MonitorArgs {
   /// [tags] Resource tags.
   /// [zoneRedundancyPreference] Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
   MonitorArgs({
-    pulumi.Output<String>? appLocation,
-    pulumi.Output<AppServicePlanConfiguration>? appServicePlanConfiguration,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logAnalyticsWorkspaceArmId,
-    pulumi.Output<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<String>? monitorSubnet,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routingPreference,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? zoneRedundancyPreference,
-  }) :
-      appLocation = pulumi.Input.asOptionalInput<String>(appLocation),
-      appServicePlanConfiguration = pulumi.Input.asOptionalInput<AppServicePlanConfiguration>(appServicePlanConfiguration),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logAnalyticsWorkspaceArmId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceArmId),
-      managedResourceGroupConfiguration = pulumi.Input.asOptionalInput<ManagedResourceGroupConfiguration>(managedResourceGroupConfiguration),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      monitorSubnet = pulumi.Input.asOptionalInput<String>(monitorSubnet),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingPreference = pulumi.Input.asOptionalInput<String>(routingPreference),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundancyPreference = pulumi.Input.asOptionalInput<String>(zoneRedundancyPreference);
+    this.appLocation,
+    this.appServicePlanConfiguration,
+    this.identity,
+    this.location,
+    this.logAnalyticsWorkspaceArmId,
+    this.managedResourceGroupConfiguration,
+    this.monitorName,
+    this.monitorSubnet,
+    required this.resourceGroupName,
+    this.routingPreference,
+    this.tags,
+    this.zoneRedundancyPreference,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      appLocation: map['appLocation'] == null ? null : pulumi.Output.create<String>(map['appLocation'] as String),
-      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : pulumi.Output.create<AppServicePlanConfiguration>(AppServicePlanConfiguration.fromMap((map['appServicePlanConfiguration'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceArmId'] as String),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : pulumi.Output.create<ManagedResourceGroupConfiguration>(ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      monitorSubnet: map['monitorSubnet'] == null ? null : pulumi.Output.create<String>(map['monitorSubnet'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingPreference: map['routingPreference'] == null ? null : pulumi.Output.create<String>(map['routingPreference'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : pulumi.Output.create<String>(map['zoneRedundancyPreference'] as String),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
+      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : (AppServicePlanConfiguration.fromMap((map['appServicePlanConfiguration'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : (map['logAnalyticsWorkspaceArmId'] as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      monitorSubnet: map['monitorSubnet'] == null ? null : (map['monitorSubnet'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingPreference: map['routingPreference'] == null ? null : (map['routingPreference'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : (map['zoneRedundancyPreference'] as String).input(),
     );
   }
 }

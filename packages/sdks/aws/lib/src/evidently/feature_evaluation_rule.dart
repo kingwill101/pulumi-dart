@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureEvaluationRule {
   /// The name for the new feature. Minimum length of `1`. Maximum length of `127`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This value is `aws.evidently.splits` if this is an evaluation rule for a launch, and it is `aws.evidently.onlineab` if this is an evaluation rule for an experiment.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [FeatureEvaluationRule].
   /// [name] The name for the new feature. Minimum length of `1`. Maximum length of `127`.
@@ -24,8 +25,8 @@ class FeatureEvaluationRule {
 
   factory FeatureEvaluationRule.fromMap(Map<String, dynamic> map) {
     return FeatureEvaluationRule(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

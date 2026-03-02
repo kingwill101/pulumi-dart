@@ -51,33 +51,20 @@ class SpokeArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [spokeId] Required. Unique id for the spoke to create.
   SpokeArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? group,
-    pulumi.Output<String>? hub,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<LinkedInterconnectAttachments>? linkedInterconnectAttachments,
-    pulumi.Output<LinkedRouterApplianceInstances>? linkedRouterApplianceInstances,
-    pulumi.Output<LinkedVpcNetwork>? linkedVpcNetwork,
-    pulumi.Output<LinkedVpnTunnels>? linkedVpnTunnels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> spokeId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      hub = pulumi.Input.asOptionalInput<String>(hub),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      linkedInterconnectAttachments = pulumi.Input.asOptionalInput<LinkedInterconnectAttachments>(linkedInterconnectAttachments),
-      linkedRouterApplianceInstances = pulumi.Input.asOptionalInput<LinkedRouterApplianceInstances>(linkedRouterApplianceInstances),
-      linkedVpcNetwork = pulumi.Input.asOptionalInput<LinkedVpcNetwork>(linkedVpcNetwork),
-      linkedVpnTunnels = pulumi.Input.asOptionalInput<LinkedVpnTunnels>(linkedVpnTunnels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      spokeId = pulumi.Input.asInput<String>(spokeId);
+    this.description,
+    this.group,
+    this.hub,
+    this.labels,
+    this.linkedInterconnectAttachments,
+    this.linkedRouterApplianceInstances,
+    this.linkedVpcNetwork,
+    this.linkedVpnTunnels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    required this.spokeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class SpokeArgs {
 
   factory SpokeArgs.fromMap(Map<String, dynamic> map) {
     return SpokeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      hub: map['hub'] == null ? null : pulumi.Output.create<String>(map['hub'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : pulumi.Output.create<LinkedInterconnectAttachments>(LinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>())),
-      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : pulumi.Output.create<LinkedRouterApplianceInstances>(LinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>())),
-      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : pulumi.Output.create<LinkedVpcNetwork>(LinkedVpcNetwork.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>())),
-      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : pulumi.Output.create<LinkedVpnTunnels>(LinkedVpnTunnels.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      spokeId: pulumi.Output.create<String>(map['spokeId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      hub: map['hub'] == null ? null : (map['hub'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : (LinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>())).input(),
+      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (LinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>())).input(),
+      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : (LinkedVpcNetwork.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : (LinkedVpnTunnels.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      spokeId: (map['spokeId'] as String).input(),
     );
   }
 }

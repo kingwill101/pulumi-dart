@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The entrypoint for the application.
 class Entrypoint {
   /// The format should be a shell command that can be fed to bash -c.
-  final String? shell;
+  final pulumi.Input<String>? shell;
 
   /// Creates a new [Entrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
@@ -20,7 +21,7 @@ class Entrypoint {
 
   factory Entrypoint.fromMap(Map<String, dynamic> map) {
     return Entrypoint(
-      shell: map['shell'] == null ? null : map['shell'] as String,
+      shell: map['shell'] == null ? null : (map['shell'] as String).input(),
     );
   }
 }

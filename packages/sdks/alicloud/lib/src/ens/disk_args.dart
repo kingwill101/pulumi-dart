@@ -41,25 +41,16 @@ class DiskArgs {
   /// [snapshotId] The ID of the snapshot used to create the cloud disk.
   /// [tags] The label to which the instance is bound.
   DiskArgs({
-    required pulumi.Output<String> category,
-    pulumi.Output<String>? diskName,
-    pulumi.Output<bool>? encrypted,
-    required pulumi.Output<String> ensRegionId,
-    pulumi.Output<String>? kmsKeyId,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      diskName = pulumi.Input.asOptionalInput<String>(diskName),
-      encrypted = pulumi.Input.asOptionalInput<bool>(encrypted),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.category,
+    this.diskName,
+    this.encrypted,
+    required this.ensRegionId,
+    this.kmsKeyId,
+    required this.paymentType,
+    this.size,
+    this.snapshotId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class DiskArgs {
 
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      diskName: map['diskName'] == null ? null : pulumi.Output.create<String>(map['diskName'] as String),
-      encrypted: map['encrypted'] == null ? null : pulumi.Output.create<bool>(map['encrypted'] as bool),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: (map['category'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfidentialLedgerCertificateBasedSecurityPrincipal {
   /// The Ledger Role to grant this Certificate Security Principal.
-  final String ledgerRoleName;
+  final pulumi.Input<String> ledgerRoleName;
   /// The public key, in PEM format, of the certificate used by this identity to authenticate with the Confidential Ledger.
-  final String pemPublicKey;
+  final pulumi.Input<String> pemPublicKey;
 
   /// Creates a new [GetConfidentialLedgerCertificateBasedSecurityPrincipal].
   /// [ledgerRoleName] The Ledger Role to grant this Certificate Security Principal.
@@ -24,8 +25,8 @@ class GetConfidentialLedgerCertificateBasedSecurityPrincipal {
 
   factory GetConfidentialLedgerCertificateBasedSecurityPrincipal.fromMap(Map<String, dynamic> map) {
     return GetConfidentialLedgerCertificateBasedSecurityPrincipal(
-      ledgerRoleName: map['ledgerRoleName'] as String,
-      pemPublicKey: map['pemPublicKey'] as String,
+      ledgerRoleName: (map['ledgerRoleName'] as String).input(),
+      pemPublicKey: (map['pemPublicKey'] as String).input(),
     );
   }
 }

@@ -49,33 +49,20 @@ class InferenceProfileState {
   /// [type] The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
   /// [updatedAt] The time at which the inference profile was last updated.
   InferenceProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? description,
-    pulumi.Output<InferenceProfileModelSource>? modelSource,
-    pulumi.Output<List<InferenceProfileModel>>? models,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<InferenceProfileTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      modelSource = pulumi.Input.asOptionalInput<InferenceProfileModelSource>(modelSource),
-      models = pulumi.Input.asOptionalInput<List<InferenceProfileModel>>(models),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<InferenceProfileTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.arn,
+    this.createdAt,
+    this.description,
+    this.modelSource,
+    this.models,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.type,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class InferenceProfileState {
 
   factory InferenceProfileState.fromMap(Map<String, dynamic> map) {
     return InferenceProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      modelSource: map['modelSource'] == null ? null : pulumi.Output.create<InferenceProfileModelSource>(InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>())),
-      models: map['models'] == null ? null : pulumi.Output.create<List<InferenceProfileModel>>(pulumi.Input.decodeList<InferenceProfileModel>(map['models'], (value) => InferenceProfileModel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InferenceProfileTimeouts>(InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      modelSource: map['modelSource'] == null ? null : (InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>())).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<InferenceProfileModel>(map['models'], (value) => InferenceProfileModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LoadBalancer
 class LoadBalancerResponse {
   /// The name of the container (as it appears in a container definition) to associate with the load balancer. You need to specify the container name when configuring the target group for an Amazon ECS load balancer.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// The port on the container to associate with the load balancer. This port must correspond to a ``containerPort`` in the task definition the tasks in the service are using. For tasks that use the EC2 launch type, the container instance they're launched on must allow ingress traffic on the ``hostPort`` of the port mapping.
-  final int? containerPort;
+  final pulumi.Input<int>? containerPort;
   /// The name of the load balancer to associate with the Amazon ECS service or task set. If you are using an Application Load Balancer or a Network Load Balancer the load balancer name parameter should be omitted.
-  final String? loadBalancerName;
+  final pulumi.Input<String>? loadBalancerName;
   /// The full Amazon Resource Name (ARN) of the Elastic Load Balancing target group or groups associated with a service or task set. A target group ARN is only specified when using an Application Load Balancer or Network Load Balancer.  For services using the ``ECS`` deployment controller, you can specify one or multiple target groups. For more information, see [Registering multiple target groups with a service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/register-multiple-targetgroups.html) in the *Amazon Elastic Container Service Developer Guide*. For services using the ``CODE_DEPLOY`` deployment controller, you're required to define two target groups for the load balancer. For more information, see [Blue/green deployment with CodeDeploy](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-bluegreen.html) in the *Amazon Elastic Container Service Developer Guide*.  If your service's task definition uses the ``awsvpc`` network mode, you must choose ``ip`` as the target type, not ``instance``. Do this when creating your target groups because tasks that use the ``awsvpc`` network mode are associated with an elastic network interface, not an Amazon EC2 instance. This network mode is required for the Fargate launch type.
-  final String? targetGroupArn;
+  final pulumi.Input<String>? targetGroupArn;
 
   /// Creates a new [LoadBalancerResponse].
   /// [containerName] The name of the container (as it appears in a container definition) to associate with the load balancer. You need to specify the container name when configuring the target group for an Amazon ECS load balancer.
@@ -35,10 +36,10 @@ class LoadBalancerResponse {
 
   factory LoadBalancerResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResponse(
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      containerPort: map['containerPort'] == null ? null : map['containerPort'] as int,
-      loadBalancerName: map['loadBalancerName'] == null ? null : map['loadBalancerName'] as String,
-      targetGroupArn: map['targetGroupArn'] == null ? null : map['targetGroupArn'] as String,
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
     );
   }
 }

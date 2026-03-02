@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_bucketing_config.dart';
 import 'google_privacy_dlp_v2_character_mask_config.dart';
 import 'google_privacy_dlp_v2_crypto_deterministic_config.dart';
@@ -14,29 +15,29 @@ import 'google_privacy_dlp_v2_time_part_config.dart';
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformation {
   /// Bucketing
-  final GooglePrivacyDlpV2BucketingConfig? bucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2BucketingConfig>? bucketingConfig;
   /// Mask
-  final GooglePrivacyDlpV2CharacterMaskConfig? characterMaskConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CharacterMaskConfig>? characterMaskConfig;
   /// Deterministic Crypto
-  final GooglePrivacyDlpV2CryptoDeterministicConfig? cryptoDeterministicConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoDeterministicConfig>? cryptoDeterministicConfig;
   /// Crypto
-  final GooglePrivacyDlpV2CryptoHashConfig? cryptoHashConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoHashConfig>? cryptoHashConfig;
   /// Ffx-Fpe
-  final GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig? cryptoReplaceFfxFpeConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig>? cryptoReplaceFfxFpeConfig;
   /// Date Shift
-  final GooglePrivacyDlpV2DateShiftConfig? dateShiftConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DateShiftConfig>? dateShiftConfig;
   /// Fixed size bucketing
-  final GooglePrivacyDlpV2FixedSizeBucketingConfig? fixedSizeBucketingConfig;
+  final pulumi.Input<GooglePrivacyDlpV2FixedSizeBucketingConfig>? fixedSizeBucketingConfig;
   /// Redact
-  final Map<String, dynamic>? redactConfig;
+  final pulumi.Input<Map<String, dynamic>>? redactConfig;
   /// Replace with a specified value.
-  final GooglePrivacyDlpV2ReplaceValueConfig? replaceConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceValueConfig>? replaceConfig;
   /// Replace with a value randomly drawn (with replacement) from a dictionary.
-  final GooglePrivacyDlpV2ReplaceDictionaryConfig? replaceDictionaryConfig;
+  final pulumi.Input<GooglePrivacyDlpV2ReplaceDictionaryConfig>? replaceDictionaryConfig;
   /// Replace with infotype
-  final Map<String, dynamic>? replaceWithInfoTypeConfig;
+  final pulumi.Input<Map<String, dynamic>>? replaceWithInfoTypeConfig;
   /// Time extraction
-  final GooglePrivacyDlpV2TimePartConfig? timePartConfig;
+  final pulumi.Input<GooglePrivacyDlpV2TimePartConfig>? timePartConfig;
 
   /// Creates a new [GooglePrivacyDlpV2PrimitiveTransformation].
   /// [bucketingConfig] Bucketing
@@ -68,35 +69,35 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bucketingConfig': ?bucketingConfig == null ? null : bucketingConfig!.toMap(),
-      'characterMaskConfig': ?characterMaskConfig == null ? null : characterMaskConfig!.toMap(),
-      'cryptoDeterministicConfig': ?cryptoDeterministicConfig == null ? null : cryptoDeterministicConfig!.toMap(),
-      'cryptoHashConfig': ?cryptoHashConfig == null ? null : cryptoHashConfig!.toMap(),
-      'cryptoReplaceFfxFpeConfig': ?cryptoReplaceFfxFpeConfig == null ? null : cryptoReplaceFfxFpeConfig!.toMap(),
-      'dateShiftConfig': ?dateShiftConfig == null ? null : dateShiftConfig!.toMap(),
-      'fixedSizeBucketingConfig': ?fixedSizeBucketingConfig == null ? null : fixedSizeBucketingConfig!.toMap(),
+      'bucketingConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BucketingConfig, Map<String, dynamic>>(bucketingConfig, (value) => value.toMap()),
+      'characterMaskConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CharacterMaskConfig, Map<String, dynamic>>(characterMaskConfig, (value) => value.toMap()),
+      'cryptoDeterministicConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CryptoDeterministicConfig, Map<String, dynamic>>(cryptoDeterministicConfig, (value) => value.toMap()),
+      'cryptoHashConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CryptoHashConfig, Map<String, dynamic>>(cryptoHashConfig, (value) => value.toMap()),
+      'cryptoReplaceFfxFpeConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig, Map<String, dynamic>>(cryptoReplaceFfxFpeConfig, (value) => value.toMap()),
+      'dateShiftConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DateShiftConfig, Map<String, dynamic>>(dateShiftConfig, (value) => value.toMap()),
+      'fixedSizeBucketingConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2FixedSizeBucketingConfig, Map<String, dynamic>>(fixedSizeBucketingConfig, (value) => value.toMap()),
       'redactConfig': ?redactConfig,
-      'replaceConfig': ?replaceConfig == null ? null : replaceConfig!.toMap(),
-      'replaceDictionaryConfig': ?replaceDictionaryConfig == null ? null : replaceDictionaryConfig!.toMap(),
+      'replaceConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2ReplaceValueConfig, Map<String, dynamic>>(replaceConfig, (value) => value.toMap()),
+      'replaceDictionaryConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2ReplaceDictionaryConfig, Map<String, dynamic>>(replaceDictionaryConfig, (value) => value.toMap()),
       'replaceWithInfoTypeConfig': ?replaceWithInfoTypeConfig,
-      'timePartConfig': ?timePartConfig == null ? null : timePartConfig!.toMap(),
+      'timePartConfig': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2TimePartConfig, Map<String, dynamic>>(timePartConfig, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2PrimitiveTransformation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PrimitiveTransformation(
-      bucketingConfig: map['bucketingConfig'] == null ? null : GooglePrivacyDlpV2BucketingConfig.fromMap((map['bucketingConfig'] as Map).cast<String, dynamic>()),
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : GooglePrivacyDlpV2CharacterMaskConfig.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      cryptoDeterministicConfig: map['cryptoDeterministicConfig'] == null ? null : GooglePrivacyDlpV2CryptoDeterministicConfig.fromMap((map['cryptoDeterministicConfig'] as Map).cast<String, dynamic>()),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : GooglePrivacyDlpV2CryptoHashConfig.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      cryptoReplaceFfxFpeConfig: map['cryptoReplaceFfxFpeConfig'] == null ? null : GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromMap((map['cryptoReplaceFfxFpeConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : GooglePrivacyDlpV2DateShiftConfig.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
-      fixedSizeBucketingConfig: map['fixedSizeBucketingConfig'] == null ? null : GooglePrivacyDlpV2FixedSizeBucketingConfig.fromMap((map['fixedSizeBucketingConfig'] as Map).cast<String, dynamic>()),
-      redactConfig: map['redactConfig'] == null ? null : (map['redactConfig'] as Map).cast<String, dynamic>(),
-      replaceConfig: map['replaceConfig'] == null ? null : GooglePrivacyDlpV2ReplaceValueConfig.fromMap((map['replaceConfig'] as Map).cast<String, dynamic>()),
-      replaceDictionaryConfig: map['replaceDictionaryConfig'] == null ? null : GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap((map['replaceDictionaryConfig'] as Map).cast<String, dynamic>()),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : (map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>(),
-      timePartConfig: map['timePartConfig'] == null ? null : GooglePrivacyDlpV2TimePartConfig.fromMap((map['timePartConfig'] as Map).cast<String, dynamic>()),
+      bucketingConfig: map['bucketingConfig'] == null ? null : (GooglePrivacyDlpV2BucketingConfig.fromMap((map['bucketingConfig'] as Map).cast<String, dynamic>())).input(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : (GooglePrivacyDlpV2CharacterMaskConfig.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoDeterministicConfig: map['cryptoDeterministicConfig'] == null ? null : (GooglePrivacyDlpV2CryptoDeterministicConfig.fromMap((map['cryptoDeterministicConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (GooglePrivacyDlpV2CryptoHashConfig.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
+      cryptoReplaceFfxFpeConfig: map['cryptoReplaceFfxFpeConfig'] == null ? null : (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromMap((map['cryptoReplaceFfxFpeConfig'] as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : (GooglePrivacyDlpV2DateShiftConfig.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
+      fixedSizeBucketingConfig: map['fixedSizeBucketingConfig'] == null ? null : (GooglePrivacyDlpV2FixedSizeBucketingConfig.fromMap((map['fixedSizeBucketingConfig'] as Map).cast<String, dynamic>())).input(),
+      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig'] as Map).cast<String, dynamic>()).input(),
+      replaceConfig: map['replaceConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceValueConfig.fromMap((map['replaceConfig'] as Map).cast<String, dynamic>())).input(),
+      replaceDictionaryConfig: map['replaceDictionaryConfig'] == null ? null : (GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap((map['replaceDictionaryConfig'] as Map).cast<String, dynamic>())).input(),
+      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>()).input(),
+      timePartConfig: map['timePartConfig'] == null ? null : (GooglePrivacyDlpV2TimePartConfig.fromMap((map['timePartConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

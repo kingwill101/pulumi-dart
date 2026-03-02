@@ -28,21 +28,14 @@ class AccountAssignmentState {
   /// [targetId] An AWS account identifier, typically a 10-12 digit string.
   /// [targetType] The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
   AccountAssignmentState({
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? permissionSetArn,
-    pulumi.Output<String>? principalId,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetId,
-    pulumi.Output<String>? targetType,
-  }) :
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asOptionalInput<String>(permissionSetArn),
-      principalId = pulumi.Input.asOptionalInput<String>(principalId),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetId = pulumi.Input.asOptionalInput<String>(targetId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.instanceArn,
+    this.permissionSetArn,
+    this.principalId,
+    this.principalType,
+    this.region,
+    this.targetId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AccountAssignmentState {
 
   factory AccountAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccountAssignmentState(
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      permissionSetArn: map['permissionSetArn'] == null ? null : pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetId: map['targetId'] == null ? null : pulumi.Output.create<String>(map['targetId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

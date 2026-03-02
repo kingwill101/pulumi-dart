@@ -35,23 +35,15 @@ class ResourceBridgeApplianceArgs {
   /// [resourceGroupName] Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Resource Bridge Appliance.
   ResourceBridgeApplianceArgs({
-    required pulumi.Output<String> distro,
-    required pulumi.Output<ResourceBridgeApplianceIdentity> identity,
-    required pulumi.Output<String> infrastructureProvider,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicKeyBase64,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      distro = pulumi.Input.asInput<String>(distro),
-      identity = pulumi.Input.asInput<ResourceBridgeApplianceIdentity>(identity),
-      infrastructureProvider = pulumi.Input.asInput<String>(infrastructureProvider),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKeyBase64 = pulumi.Input.asOptionalInput<String>(publicKeyBase64),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.distro,
+    required this.identity,
+    required this.infrastructureProvider,
+    this.location,
+    this.name,
+    this.publicKeyBase64,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ResourceBridgeApplianceArgs {
 
   factory ResourceBridgeApplianceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceBridgeApplianceArgs(
-      distro: pulumi.Output.create<String>(map['distro'] as String),
-      identity: pulumi.Output.create<ResourceBridgeApplianceIdentity>(ResourceBridgeApplianceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      infrastructureProvider: pulumi.Output.create<String>(map['infrastructureProvider'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKeyBase64: map['publicKeyBase64'] == null ? null : pulumi.Output.create<String>(map['publicKeyBase64'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      distro: (map['distro'] as String).input(),
+      identity: (ResourceBridgeApplianceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      infrastructureProvider: (map['infrastructureProvider'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKeyBase64: map['publicKeyBase64'] == null ? null : (map['publicKeyBase64'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

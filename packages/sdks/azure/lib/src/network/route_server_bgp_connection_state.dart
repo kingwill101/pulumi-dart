@@ -19,15 +19,11 @@ class RouteServerBgpConnectionState {
   /// [peerIp] The peer ip address for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   /// [routeServerId] The ID of the Route Server within which this Bgp connection should be created. Changing this forces a new resource to be created.
   RouteServerBgpConnectionState({
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? peerAsn,
-    pulumi.Output<String>? peerIp,
-    pulumi.Output<String>? routeServerId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerAsn = pulumi.Input.asOptionalInput<int>(peerAsn),
-      peerIp = pulumi.Input.asOptionalInput<String>(peerIp),
-      routeServerId = pulumi.Input.asOptionalInput<String>(routeServerId);
+    this.name,
+    this.peerAsn,
+    this.peerIp,
+    this.routeServerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RouteServerBgpConnectionState {
 
   factory RouteServerBgpConnectionState.fromMap(Map<String, dynamic> map) {
     return RouteServerBgpConnectionState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<int>(map['peerAsn'] as int),
-      peerIp: map['peerIp'] == null ? null : pulumi.Output.create<String>(map['peerIp'] as String),
-      routeServerId: map['routeServerId'] == null ? null : pulumi.Output.create<String>(map['routeServerId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
+      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
     );
   }
 }

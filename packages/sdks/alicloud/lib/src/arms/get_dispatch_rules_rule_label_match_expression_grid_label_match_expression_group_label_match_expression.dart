@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
   /// The key of the tag of the dispatch rule.
-  final String key;
+  final pulumi.Input<String> key;
   /// The operator used in the dispatch rule.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The value of the tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression].
   /// [key] The key of the tag of the dispatch rule.
@@ -29,9 +30,9 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
 
   factory GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

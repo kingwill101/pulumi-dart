@@ -27,19 +27,13 @@ class VpcEndpointLinkedVpcState {
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
   VpcEndpointLinkedVpcState({
-    pulumi.Output<bool>? enableCreateDnsRecordInPvzt,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? moduleName,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      enableCreateDnsRecordInPvzt = pulumi.Input.asOptionalInput<bool>(enableCreateDnsRecordInPvzt),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      moduleName = pulumi.Input.asOptionalInput<String>(moduleName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.enableCreateDnsRecordInPvzt,
+    this.instanceId,
+    this.moduleName,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class VpcEndpointLinkedVpcState {
 
   factory VpcEndpointLinkedVpcState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcState(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : pulumi.Output.create<bool>(map['enableCreateDnsRecordInPvzt'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      moduleName: map['moduleName'] == null ? null : pulumi.Output.create<String>(map['moduleName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

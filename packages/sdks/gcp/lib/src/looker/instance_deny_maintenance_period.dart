@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_deny_maintenance_period_end_date.dart';
 import 'instance_deny_maintenance_period_start_date.dart';
 import 'instance_deny_maintenance_period_time.dart';
@@ -7,13 +8,13 @@ import 'instance_deny_maintenance_period_time.dart';
 class InstanceDenyMaintenancePeriod {
   /// Required. Start date of the deny maintenance period
   /// Structure is documented below.
-  final InstanceDenyMaintenancePeriodEndDate endDate;
+  final pulumi.Input<InstanceDenyMaintenancePeriodEndDate> endDate;
   /// Required. Start date of the deny maintenance period
   /// Structure is documented below.
-  final InstanceDenyMaintenancePeriodStartDate startDate;
+  final pulumi.Input<InstanceDenyMaintenancePeriodStartDate> startDate;
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
-  final InstanceDenyMaintenancePeriodTime time;
+  final pulumi.Input<InstanceDenyMaintenancePeriodTime> time;
 
   /// Creates a new [InstanceDenyMaintenancePeriod].
   /// [endDate] Required. Start date of the deny maintenance period
@@ -27,17 +28,17 @@ class InstanceDenyMaintenancePeriod {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': endDate.toMap(),
-      'startDate': startDate.toMap(),
-      'time': time.toMap(),
+      'endDate': pulumi.Input.mapInputValue<InstanceDenyMaintenancePeriodEndDate, Map<String, dynamic>>(endDate, (value) => value.toMap()),
+      'startDate': pulumi.Input.mapInputValue<InstanceDenyMaintenancePeriodStartDate, Map<String, dynamic>>(startDate, (value) => value.toMap()),
+      'time': pulumi.Input.mapInputValue<InstanceDenyMaintenancePeriodTime, Map<String, dynamic>>(time, (value) => value.toMap()),
     };
   }
 
   factory InstanceDenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return InstanceDenyMaintenancePeriod(
-      endDate: InstanceDenyMaintenancePeriodEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: InstanceDenyMaintenancePeriodStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
-      time: InstanceDenyMaintenancePeriodTime.fromMap((map['time'] as Map).cast<String, dynamic>()),
+      endDate: (InstanceDenyMaintenancePeriodEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      startDate: (InstanceDenyMaintenancePeriodStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
+      time: (InstanceDenyMaintenancePeriodTime.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

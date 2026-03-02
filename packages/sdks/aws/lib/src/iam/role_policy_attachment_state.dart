@@ -13,11 +13,9 @@ class RolePolicyAttachmentState {
   /// [policyArn] The ARN of the policy you want to apply
   /// [role] The name of the IAM role to which the policy should be applied
   RolePolicyAttachmentState({
-    pulumi.Output<String>? policyArn,
-    pulumi.Output<String>? role,
-  }) :
-      policyArn = pulumi.Input.asOptionalInput<String>(policyArn),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.policyArn,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class RolePolicyAttachmentState {
 
   factory RolePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentState(
-      policyArn: map['policyArn'] == null ? null : pulumi.Output.create<String>(map['policyArn'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

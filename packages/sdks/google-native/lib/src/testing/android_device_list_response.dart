@@ -6,7 +6,7 @@ import 'android_device_response.dart';
 /// A list of Android device configurations in which the test is to be executed.
 class AndroidDeviceListResponse {
   /// A list of Android devices.
-  final List<AndroidDeviceResponse> androidDevices;
+  final pulumi.Input<List<AndroidDeviceResponse>> androidDevices;
 
   /// Creates a new [AndroidDeviceListResponse].
   /// [androidDevices] A list of Android devices.
@@ -16,13 +16,13 @@ class AndroidDeviceListResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidDevices': pulumi.Input.encodeList<AndroidDeviceResponse, Map<String, dynamic>>(androidDevices, (value) => value.toMap()),
+      'androidDevices': pulumi.Input.mapInputValue<List<AndroidDeviceResponse>, List<Map<String, dynamic>>>(androidDevices, (value) => pulumi.Input.encodeList<AndroidDeviceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AndroidDeviceListResponse.fromMap(Map<String, dynamic> map) {
     return AndroidDeviceListResponse(
-      androidDevices: pulumi.Input.decodeList<AndroidDeviceResponse>(map['androidDevices'], (value) => AndroidDeviceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      androidDevices: (pulumi.Input.decodeList<AndroidDeviceResponse>(map['androidDevices'], (value) => AndroidDeviceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class GetTableArgs {
   /// [serverSideEncryption] Optional.
   /// [tags] Optional.
   GetTableArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-    pulumi.Output<GetTableServerSideEncryption>? serverSideEncryption,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverSideEncryption = pulumi.Input.asOptionalInput<GetTableServerSideEncryption>(serverSideEncryption),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.name,
+    this.region,
+    this.serverSideEncryption,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : pulumi.Output.create<GetTableServerSideEncryption>(GetTableServerSideEncryption.fromMap((map['serverSideEncryption'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : (GetTableServerSideEncryption.fromMap((map['serverSideEncryption'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

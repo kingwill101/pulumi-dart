@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The QoSPolicyOverrides of a cluster.
 class QosPolicyOverrides {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final String? bandwidthPercentageSMB;
+  final pulumi.Input<String>? bandwidthPercentageSMB;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final String? priorityValue8021ActionCluster;
+  final pulumi.Input<String>? priorityValue8021ActionCluster;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final String? priorityValue8021ActionSMB;
+  final pulumi.Input<String>? priorityValue8021ActionSMB;
 
   /// Creates a new [QosPolicyOverrides].
   /// [bandwidthPercentageSMB] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
@@ -30,9 +31,9 @@ class QosPolicyOverrides {
 
   factory QosPolicyOverrides.fromMap(Map<String, dynamic> map) {
     return QosPolicyOverrides(
-      bandwidthPercentageSMB: map['bandwidthPercentageSMB'] == null ? null : map['bandwidthPercentageSMB'] as String,
-      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : map['priorityValue8021ActionCluster'] as String,
-      priorityValue8021ActionSMB: map['priorityValue8021ActionSMB'] == null ? null : map['priorityValue8021ActionSMB'] as String,
+      bandwidthPercentageSMB: map['bandwidthPercentageSMB'] == null ? null : (map['bandwidthPercentageSMB'] as String).input(),
+      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster'] as String).input(),
+      priorityValue8021ActionSMB: map['priorityValue8021ActionSMB'] == null ? null : (map['priorityValue8021ActionSMB'] as String).input(),
     );
   }
 }

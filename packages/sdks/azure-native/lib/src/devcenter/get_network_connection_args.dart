@@ -16,11 +16,9 @@ class GetNetworkConnectionArgs {
   /// [networkConnectionName] Name of the Network Connection that can be applied to a Pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkConnectionArgs({
-    required pulumi.Output<String> networkConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkConnectionName = pulumi.Input.asInput<String>(networkConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkConnectionArgs {
 
   factory GetNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkConnectionArgs(
-      networkConnectionName: pulumi.Output.create<String>(map['networkConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkConnectionName: (map['networkConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

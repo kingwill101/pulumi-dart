@@ -43,21 +43,14 @@ class ClusterIAMBindingState {
   /// [region] The region in which the cluster belongs. If it
   /// [role] The role that should be applied. Only one
   ClusterIAMBindingState({
-    pulumi.Output<String>? cluster,
-    pulumi.Output<ClusterIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      cluster = pulumi.Input.asOptionalInput<String>(cluster),
-      condition = pulumi.Input.asOptionalInput<ClusterIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.cluster,
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,13 +66,13 @@ class ClusterIAMBindingState {
 
   factory ClusterIAMBindingState.fromMap(Map<String, dynamic> map) {
     return ClusterIAMBindingState(
-      cluster: map['cluster'] == null ? null : pulumi.Output.create<String>(map['cluster'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<ClusterIAMBindingCondition>(ClusterIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      condition: map['condition'] == null ? null : (ClusterIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

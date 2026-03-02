@@ -46,31 +46,19 @@ class ExternalKeyArgs {
   /// [tags] A key-value map of tags to assign to the key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [validTo] Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the CMK becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   ExternalKeyArgs({
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    pulumi.Output<int>? deletionWindowInDays,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? keyMaterialBase64,
-    pulumi.Output<String>? keySpec,
-    pulumi.Output<String>? keyUsage,
-    pulumi.Output<bool>? multiRegion,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? validTo,
-  }) :
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      deletionWindowInDays = pulumi.Input.asOptionalInput<int>(deletionWindowInDays),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      keyMaterialBase64 = pulumi.Input.asOptionalInput<String>(keyMaterialBase64),
-      keySpec = pulumi.Input.asOptionalInput<String>(keySpec),
-      keyUsage = pulumi.Input.asOptionalInput<String>(keyUsage),
-      multiRegion = pulumi.Input.asOptionalInput<bool>(multiRegion),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validTo = pulumi.Input.asOptionalInput<String>(validTo);
+    this.bypassPolicyLockoutSafetyCheck,
+    this.deletionWindowInDays,
+    this.description,
+    this.enabled,
+    this.keyMaterialBase64,
+    this.keySpec,
+    this.keyUsage,
+    this.multiRegion,
+    this.policy,
+    this.region,
+    this.tags,
+    this.validTo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ExternalKeyArgs {
 
   factory ExternalKeyArgs.fromMap(Map<String, dynamic> map) {
     return ExternalKeyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : pulumi.Output.create<int>(map['deletionWindowInDays'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : pulumi.Output.create<String>(map['keyMaterialBase64'] as String),
-      keySpec: map['keySpec'] == null ? null : pulumi.Output.create<String>(map['keySpec'] as String),
-      keyUsage: map['keyUsage'] == null ? null : pulumi.Output.create<String>(map['keyUsage'] as String),
-      multiRegion: map['multiRegion'] == null ? null : pulumi.Output.create<bool>(map['multiRegion'] as bool),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validTo: map['validTo'] == null ? null : pulumi.Output.create<String>(map['validTo'] as String),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : (map['keyMaterialBase64'] as String).input(),
+      keySpec: map['keySpec'] == null ? null : (map['keySpec'] as String).input(),
+      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
+      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion'] as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validTo: map['validTo'] == null ? null : (map['validTo'] as String).input(),
     );
   }
 }

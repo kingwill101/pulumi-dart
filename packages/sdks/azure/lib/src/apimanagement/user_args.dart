@@ -42,27 +42,17 @@ class UserArgs {
   /// [state] The state of this user. Possible values are `active`, `blocked` and `pending`.
   /// [userId] The Identifier for this User, which must be unique within the API Management Service. Changing this forces a new resource to be created.
   UserArgs({
-    required pulumi.Output<String> apiManagementName,
-    pulumi.Output<String>? confirmation,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> firstName,
-    required pulumi.Output<String> lastName,
-    pulumi.Output<String>? note,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    required pulumi.Output<String> userId,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      confirmation = pulumi.Input.asOptionalInput<String>(confirmation),
-      email = pulumi.Input.asInput<String>(email),
-      firstName = pulumi.Input.asInput<String>(firstName),
-      lastName = pulumi.Input.asInput<String>(lastName),
-      note = pulumi.Input.asOptionalInput<String>(note),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.apiManagementName,
+    this.confirmation,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    this.note,
+    this.password,
+    required this.resourceGroupName,
+    this.state,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      confirmation: map['confirmation'] == null ? null : pulumi.Output.create<String>(map['confirmation'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      firstName: pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: pulumi.Output.create<String>(map['lastName'] as String),
-      note: map['note'] == null ? null : pulumi.Output.create<String>(map['note'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      confirmation: map['confirmation'] == null ? null : (map['confirmation'] as String).input(),
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      note: map['note'] == null ? null : (map['note'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

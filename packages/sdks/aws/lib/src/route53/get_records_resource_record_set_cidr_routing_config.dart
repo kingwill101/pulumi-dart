@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRecordsResourceRecordSetCidrRoutingConfig {
   /// The CIDR collection ID.
-  final String collectionId;
+  final pulumi.Input<String> collectionId;
   /// The CIDR collection location name.
-  final String locationName;
+  final pulumi.Input<String> locationName;
 
   /// Creates a new [GetRecordsResourceRecordSetCidrRoutingConfig].
   /// [collectionId] The CIDR collection ID.
@@ -24,8 +25,8 @@ class GetRecordsResourceRecordSetCidrRoutingConfig {
 
   factory GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetCidrRoutingConfig(
-      collectionId: map['collectionId'] as String,
-      locationName: map['locationName'] as String,
+      collectionId: (map['collectionId'] as String).input(),
+      locationName: (map['locationName'] as String).input(),
     );
   }
 }

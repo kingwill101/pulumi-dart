@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterPostInstallScript {
   /// The parameters of the script.
-  final String args;
+  final pulumi.Input<String> args;
   /// The download path of the script.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetClustersClusterPostInstallScript].
   /// [args] The parameters of the script.
@@ -24,8 +25,8 @@ class GetClustersClusterPostInstallScript {
 
   factory GetClustersClusterPostInstallScript.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterPostInstallScript(
-      args: map['args'] as String,
-      url: map['url'] as String,
+      args: (map['args'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

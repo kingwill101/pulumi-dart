@@ -19,13 +19,10 @@ class GetWorkloadNetworkVMGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmGroupId] ID of the VM group.
   GetWorkloadNetworkVMGroupArgs({
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmGroupId,
-  }) :
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmGroupId = pulumi.Input.asInput<String>(vmGroupId);
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    required this.vmGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWorkloadNetworkVMGroupArgs {
 
   factory GetWorkloadNetworkVMGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkVMGroupArgs(
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmGroupId: pulumi.Output.create<String>(map['vmGroupId'] as String),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmGroupId: (map['vmGroupId'] as String).input(),
     );
   }
 }

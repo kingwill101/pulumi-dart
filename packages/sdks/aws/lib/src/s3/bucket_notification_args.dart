@@ -33,19 +33,13 @@ class BucketNotificationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topics] Notification configuration to SNS Topic. See below.
   BucketNotificationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<bool>? eventbridge,
-    pulumi.Output<List<BucketNotificationLambdaFunction>>? lambdaFunctions,
-    pulumi.Output<List<BucketNotificationQueue>>? queues,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<BucketNotificationTopic>>? topics,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      eventbridge = pulumi.Input.asOptionalInput<bool>(eventbridge),
-      lambdaFunctions = pulumi.Input.asOptionalInput<List<BucketNotificationLambdaFunction>>(lambdaFunctions),
-      queues = pulumi.Input.asOptionalInput<List<BucketNotificationQueue>>(queues),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      topics = pulumi.Input.asOptionalInput<List<BucketNotificationTopic>>(topics);
+    required this.bucket,
+    this.eventbridge,
+    this.lambdaFunctions,
+    this.queues,
+    this.region,
+    this.topics,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class BucketNotificationArgs {
 
   factory BucketNotificationArgs.fromMap(Map<String, dynamic> map) {
     return BucketNotificationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      eventbridge: map['eventbridge'] == null ? null : pulumi.Output.create<bool>(map['eventbridge'] as bool),
-      lambdaFunctions: map['lambdaFunctions'] == null ? null : pulumi.Output.create<List<BucketNotificationLambdaFunction>>(pulumi.Input.decodeList<BucketNotificationLambdaFunction>(map['lambdaFunctions'], (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>()))),
-      queues: map['queues'] == null ? null : pulumi.Output.create<List<BucketNotificationQueue>>(pulumi.Input.decodeList<BucketNotificationQueue>(map['queues'], (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      topics: map['topics'] == null ? null : pulumi.Output.create<List<BucketNotificationTopic>>(pulumi.Input.decodeList<BucketNotificationTopic>(map['topics'], (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: (map['bucket'] as String).input(),
+      eventbridge: map['eventbridge'] == null ? null : (map['eventbridge'] as bool).input(),
+      lambdaFunctions: map['lambdaFunctions'] == null ? null : (pulumi.Input.decodeList<BucketNotificationLambdaFunction>(map['lambdaFunctions'], (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queues: map['queues'] == null ? null : (pulumi.Input.decodeList<BucketNotificationQueue>(map['queues'], (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<BucketNotificationTopic>(map['topics'], (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

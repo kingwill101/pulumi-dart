@@ -25,17 +25,12 @@ class SapDatabaseInstanceArgs {
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   /// [tags] Resource tags.
   SapDatabaseInstanceArgs({
-    pulumi.Output<String>? databaseInstanceName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapVirtualInstanceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseInstanceName = pulumi.Input.asOptionalInput<String>(databaseInstanceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapVirtualInstanceName = pulumi.Input.asInput<String>(sapVirtualInstanceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.databaseInstanceName,
+    this.location,
+    required this.resourceGroupName,
+    required this.sapVirtualInstanceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SapDatabaseInstanceArgs {
 
   factory SapDatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapDatabaseInstanceArgs(
-      databaseInstanceName: map['databaseInstanceName'] == null ? null : pulumi.Output.create<String>(map['databaseInstanceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapVirtualInstanceName: pulumi.Output.create<String>(map['sapVirtualInstanceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseInstanceName: map['databaseInstanceName'] == null ? null : (map['databaseInstanceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapVirtualInstanceName: (map['sapVirtualInstanceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

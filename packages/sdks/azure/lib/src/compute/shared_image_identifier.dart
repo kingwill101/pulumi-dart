@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SharedImageIdentifier {
   /// The Offer Name for this Shared Image. Changing this forces a new resource to be created.
-  final String offer;
+  final pulumi.Input<String> offer;
   /// The Publisher Name for this Gallery Image. Changing this forces a new resource to be created.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The Name of the SKU for this Gallery Image. Changing this forces a new resource to be created.
-  final String sku;
+  final pulumi.Input<String> sku;
 
   /// Creates a new [SharedImageIdentifier].
   /// [offer] The Offer Name for this Shared Image. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class SharedImageIdentifier {
 
   factory SharedImageIdentifier.fromMap(Map<String, dynamic> map) {
     return SharedImageIdentifier(
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

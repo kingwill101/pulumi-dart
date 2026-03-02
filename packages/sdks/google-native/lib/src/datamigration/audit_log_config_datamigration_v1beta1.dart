@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'audit_log_config_log_type_datamigration_v1beta1.dart';
 
 /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 class AuditLogConfigDatamigrationV1beta1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-  final List<String>? exemptedMembers;
+  final pulumi.Input<List<String>>? exemptedMembers;
   /// The log type that this config enables.
-  final AuditLogConfigLogTypeDatamigrationV1beta1? logType;
+  final pulumi.Input<AuditLogConfigLogTypeDatamigrationV1beta1>? logType;
 
   /// Creates a new [AuditLogConfigDatamigrationV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -20,14 +21,14 @@ class AuditLogConfigDatamigrationV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType': ?logType == null ? null : logType!.value,
+      'logType': ?pulumi.Input.mapOptionalInputValue<AuditLogConfigLogTypeDatamigrationV1beta1, String>(logType, (value) => value.value),
     };
   }
 
   factory AuditLogConfigDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigDatamigrationV1beta1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : AuditLogConfigLogTypeDatamigrationV1beta1.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeDatamigrationV1beta1.fromValue(map['logType'] as String)).input(),
     );
   }
 }

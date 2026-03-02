@@ -28,21 +28,14 @@ class ScimServerCredentialState {
   /// [expireTime] (Available since v1.245.0) The time when the SCIM credential expires.
   /// [status] The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
   ScimServerCredentialState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? credentialId,
-    pulumi.Output<String>? credentialSecretFile,
-    pulumi.Output<String>? credentialType,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? status,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      credentialId = pulumi.Input.asOptionalInput<String>(credentialId),
-      credentialSecretFile = pulumi.Input.asOptionalInput<String>(credentialSecretFile),
-      credentialType = pulumi.Input.asOptionalInput<String>(credentialType),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.createTime,
+    this.credentialId,
+    this.credentialSecretFile,
+    this.credentialType,
+    this.directoryId,
+    this.expireTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ScimServerCredentialState {
 
   factory ScimServerCredentialState.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      credentialId: map['credentialId'] == null ? null : pulumi.Output.create<String>(map['credentialId'] as String),
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : pulumi.Output.create<String>(map['credentialSecretFile'] as String),
-      credentialType: map['credentialType'] == null ? null : pulumi.Output.create<String>(map['credentialType'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
+      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile'] as String).input(),
+      credentialType: map['credentialType'] == null ? null : (map['credentialType'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountSasPolicy {
   /// The SAS expiration action. Possible values are `Log` and `Block`. Defaults to `Log`.
-  final String? expirationAction;
+  final pulumi.Input<String>? expirationAction;
   /// The SAS expiration period in format of `DD.HH:MM:SS`.
-  final String expirationPeriod;
+  final pulumi.Input<String> expirationPeriod;
 
   /// Creates a new [AccountSasPolicy].
   /// [expirationAction] The SAS expiration action. Possible values are `Log` and `Block`. Defaults to `Log`.
@@ -24,8 +25,8 @@ class AccountSasPolicy {
 
   factory AccountSasPolicy.fromMap(Map<String, dynamic> map) {
     return AccountSasPolicy(
-      expirationAction: map['expirationAction'] == null ? null : map['expirationAction'] as String,
-      expirationPeriod: map['expirationPeriod'] as String,
+      expirationAction: map['expirationAction'] == null ? null : (map['expirationAction'] as String).input(),
+      expirationPeriod: (map['expirationPeriod'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of OwnershipControlsRule
 class OwnershipControlsRuleResponse {
   /// Specifies an object ownership rule.
-  final String? objectOwnership;
+  final pulumi.Input<String>? objectOwnership;
 
   /// Creates a new [OwnershipControlsRuleResponse].
   /// [objectOwnership] Specifies an object ownership rule.
@@ -20,7 +21,7 @@ class OwnershipControlsRuleResponse {
 
   factory OwnershipControlsRuleResponse.fromMap(Map<String, dynamic> map) {
     return OwnershipControlsRuleResponse(
-      objectOwnership: map['objectOwnership'] == null ? null : map['objectOwnership'] as String,
+      objectOwnership: map['objectOwnership'] == null ? null : (map['objectOwnership'] as String).input(),
     );
   }
 }

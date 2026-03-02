@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobStatisticsReservationUsageItemResponse {
   /// Reservation name or "unreserved" for on-demand resources usage.
-  final String name;
+  final pulumi.Input<String> name;
   /// Slot-milliseconds the job spent in the given reservation.
-  final String slotMs;
+  final pulumi.Input<String> slotMs;
 
   /// Creates a new [JobStatisticsReservationUsageItemResponse].
   /// [name] Reservation name or "unreserved" for on-demand resources usage.
@@ -24,8 +25,8 @@ class JobStatisticsReservationUsageItemResponse {
 
   factory JobStatisticsReservationUsageItemResponse.fromMap(Map<String, dynamic> map) {
     return JobStatisticsReservationUsageItemResponse(
-      name: map['name'] as String,
-      slotMs: map['slotMs'] as String,
+      name: (map['name'] as String).input(),
+      slotMs: (map['slotMs'] as String).input(),
     );
   }
 }

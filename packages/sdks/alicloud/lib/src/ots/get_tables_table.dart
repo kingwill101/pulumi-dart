@@ -5,19 +5,19 @@ import 'get_tables_table_defined_column.dart';
 import 'get_tables_table_primary_key.dart';
 
 class GetTablesTable {
-  final List<GetTablesTableDefinedColumn> definedColumns;
+  final pulumi.Input<List<GetTablesTableDefinedColumn>> definedColumns;
   /// ID of the table. The value is `<instance_name>:<table_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of OTS instance.
-  final String instanceName;
+  final pulumi.Input<String> instanceName;
   /// The maximum number of versions stored in this table.
-  final int maxVersion;
+  final pulumi.Input<int> maxVersion;
   /// The property of `TableMeta` which indicates the structure information of a table.
-  final List<GetTablesTablePrimaryKey> primaryKeys;
+  final pulumi.Input<List<GetTablesTablePrimaryKey>> primaryKeys;
   /// The table name of the OTS which could not be changed.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// The retention time of data stored in this table.
-  final int timeToLive;
+  final pulumi.Input<int> timeToLive;
 
   /// Creates a new [GetTablesTable].
   /// [definedColumns] Required.
@@ -39,11 +39,11 @@ class GetTablesTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definedColumns': pulumi.Input.encodeList<GetTablesTableDefinedColumn, Map<String, dynamic>>(definedColumns, (value) => value.toMap()),
+      'definedColumns': pulumi.Input.mapInputValue<List<GetTablesTableDefinedColumn>, List<Map<String, dynamic>>>(definedColumns, (value) => pulumi.Input.encodeList<GetTablesTableDefinedColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'instanceName': instanceName,
       'maxVersion': maxVersion,
-      'primaryKeys': pulumi.Input.encodeList<GetTablesTablePrimaryKey, Map<String, dynamic>>(primaryKeys, (value) => value.toMap()),
+      'primaryKeys': pulumi.Input.mapInputValue<List<GetTablesTablePrimaryKey>, List<Map<String, dynamic>>>(primaryKeys, (value) => pulumi.Input.encodeList<GetTablesTablePrimaryKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableName': tableName,
       'timeToLive': timeToLive,
     };
@@ -51,13 +51,13 @@ class GetTablesTable {
 
   factory GetTablesTable.fromMap(Map<String, dynamic> map) {
     return GetTablesTable(
-      definedColumns: pulumi.Input.decodeList<GetTablesTableDefinedColumn>(map['definedColumns'], (value) => GetTablesTableDefinedColumn.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      instanceName: map['instanceName'] as String,
-      maxVersion: map['maxVersion'] as int,
-      primaryKeys: pulumi.Input.decodeList<GetTablesTablePrimaryKey>(map['primaryKeys'], (value) => GetTablesTablePrimaryKey.fromMap((value as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] as String,
-      timeToLive: map['timeToLive'] as int,
+      definedColumns: (pulumi.Input.decodeList<GetTablesTableDefinedColumn>(map['definedColumns'], (value) => GetTablesTableDefinedColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      maxVersion: (map['maxVersion'] as int).input(),
+      primaryKeys: (pulumi.Input.decodeList<GetTablesTablePrimaryKey>(map['primaryKeys'], (value) => GetTablesTablePrimaryKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: (map['tableName'] as String).input(),
+      timeToLive: (map['timeToLive'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointServiceResourcesResource {
   /// The ID of the Vpc Endpoint Service Resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of Resource.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The type of Resource.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [GetVpcEndpointServiceResourcesResource].
   /// [id] The ID of the Vpc Endpoint Service Resource.
@@ -29,9 +30,9 @@ class GetVpcEndpointServiceResourcesResource {
 
   factory GetVpcEndpointServiceResourcesResource.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceResourcesResource(
-      id: map['id'] as String,
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
+      id: (map['id'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

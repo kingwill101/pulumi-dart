@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VPCRouteEntryNextHopNextHopRelatedInfo {
   /// InstanceId
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// InstanceType
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The region of the instance associated with the next hop.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
 
   /// Creates a new [VPCRouteEntryNextHopNextHopRelatedInfo].
   /// [instanceId] InstanceId
@@ -29,9 +30,9 @@ class VPCRouteEntryNextHopNextHopRelatedInfo {
 
   factory VPCRouteEntryNextHopNextHopRelatedInfo.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryNextHopNextHopRelatedInfo(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class TableReplicationArgs {
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableArn] ARN referencing the Table that owns this replication configuration.
   TableReplicationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-    pulumi.Output<TableReplicationRule>? rule,
-    required pulumi.Output<String> tableArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role),
-      rule = pulumi.Input.asOptionalInput<TableReplicationRule>(rule),
-      tableArn = pulumi.Input.asInput<String>(tableArn);
+    this.region,
+    required this.role,
+    this.rule,
+    required this.tableArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TableReplicationArgs {
 
   factory TableReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<TableReplicationRule>(TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      tableArn: pulumi.Output.create<String>(map['tableArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
+      rule: map['rule'] == null ? null : (TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      tableArn: (map['tableArn'] as String).input(),
     );
   }
 }

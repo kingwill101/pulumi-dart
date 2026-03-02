@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
 class EncryptionSettingsResponse {
   /// The secret name which is referenced for EncryptionKey.
-  final String? containerAppAuthEncryptionSecretName;
+  final pulumi.Input<String>? containerAppAuthEncryptionSecretName;
   /// The secret name which is referenced for SigningKey.
-  final String? containerAppAuthSigningSecretName;
+  final pulumi.Input<String>? containerAppAuthSigningSecretName;
 
   /// Creates a new [EncryptionSettingsResponse].
   /// [containerAppAuthEncryptionSecretName] The secret name which is referenced for EncryptionKey.
@@ -25,8 +26,8 @@ class EncryptionSettingsResponse {
 
   factory EncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsResponse(
-      containerAppAuthEncryptionSecretName: map['containerAppAuthEncryptionSecretName'] == null ? null : map['containerAppAuthEncryptionSecretName'] as String,
-      containerAppAuthSigningSecretName: map['containerAppAuthSigningSecretName'] == null ? null : map['containerAppAuthSigningSecretName'] as String,
+      containerAppAuthEncryptionSecretName: map['containerAppAuthEncryptionSecretName'] == null ? null : (map['containerAppAuthEncryptionSecretName'] as String).input(),
+      containerAppAuthSigningSecretName: map['containerAppAuthSigningSecretName'] == null ? null : (map['containerAppAuthSigningSecretName'] as String).input(),
     );
   }
 }

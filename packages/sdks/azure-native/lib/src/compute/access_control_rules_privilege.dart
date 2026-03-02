@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an Access Control Rule Privilege.
 class AccessControlRulesPrivilege {
   /// The name of the privilege.
-  final String name;
+  final pulumi.Input<String> name;
   /// The HTTP path corresponding to the privilege.
-  final String path;
+  final pulumi.Input<String> path;
   /// The query parameters to match in the path.
-  final Map<String, String>? queryParameters;
+  final pulumi.Input<Map<String, String>>? queryParameters;
 
   /// Creates a new [AccessControlRulesPrivilege].
   /// [name] The name of the privilege.
@@ -30,9 +31,9 @@ class AccessControlRulesPrivilege {
 
   factory AccessControlRulesPrivilege.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesPrivilege(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

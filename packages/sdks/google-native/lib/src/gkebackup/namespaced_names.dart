@@ -6,7 +6,7 @@ import 'namespaced_name.dart';
 /// A list of namespaced Kubernetes resources.
 class NamespacedNames {
   /// Optional. A list of namespaced Kubernetes resources.
-  final List<NamespacedName>? namespacedNames;
+  final pulumi.Input<List<NamespacedName>>? namespacedNames;
 
   /// Creates a new [NamespacedNames].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.
@@ -16,13 +16,13 @@ class NamespacedNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespacedNames': ?namespacedNames == null ? null : pulumi.Input.encodeList<NamespacedName, Map<String, dynamic>>(namespacedNames!, (value) => value.toMap()),
+      'namespacedNames': ?pulumi.Input.mapOptionalInputValue<List<NamespacedName>, List<Map<String, dynamic>>>(namespacedNames, (value) => pulumi.Input.encodeList<NamespacedName, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NamespacedNames.fromMap(Map<String, dynamic> map) {
     return NamespacedNames(
-      namespacedNames: map['namespacedNames'] == null ? null : pulumi.Input.decodeList<NamespacedName>(map['namespacedNames'], (value) => NamespacedName.fromMap((value as Map).cast<String, dynamic>())),
+      namespacedNames: map['namespacedNames'] == null ? null : (pulumi.Input.decodeList<NamespacedName>(map['namespacedNames'], (value) => NamespacedName.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

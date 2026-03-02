@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets private link service connection state.
 class VaultPrivateLinkServiceConnectionStateResponse {
   /// Gets or sets actions required.
-  final String actionsRequired;
+  final pulumi.Input<String> actionsRequired;
   /// Gets or sets description.
-  final String description;
+  final pulumi.Input<String> description;
   /// Gets or sets the status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [VaultPrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] Gets or sets actions required.
@@ -30,9 +31,9 @@ class VaultPrivateLinkServiceConnectionStateResponse {
 
   factory VaultPrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return VaultPrivateLinkServiceConnectionStateResponse(
-      actionsRequired: map['actionsRequired'] as String,
-      description: map['description'] as String,
-      status: map['status'] as String,
+      actionsRequired: (map['actionsRequired'] as String).input(),
+      description: (map['description'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File share-related limits in the specified subscription/location.
 class FileShareLimitsResponse {
   /// The maximum number of private endpoint connections allowed for a file share.
-  final int maxFileSharePrivateEndpointConnections;
+  final pulumi.Input<int> maxFileSharePrivateEndpointConnections;
   /// The maximum number of snapshots allowed per file share.
-  final int maxFileShareSnapshots;
+  final pulumi.Input<int> maxFileShareSnapshots;
   /// The maximum number of subnets that can be associated with a file share.
-  final int maxFileShareSubnets;
+  final pulumi.Input<int> maxFileShareSubnets;
   /// The maximum number of file shares that can be created.
-  final int maxFileShares;
+  final pulumi.Input<int> maxFileShares;
   /// The maximum provisioned IOPS (Input/Output Operations Per Second) for a file share.
-  final int maxProvisionedIOPerSec;
+  final pulumi.Input<int> maxProvisionedIOPerSec;
   /// The maximum provisioned storage in GiB for a file share.
-  final int maxProvisionedStorageGiB;
+  final pulumi.Input<int> maxProvisionedStorageGiB;
   /// The maximum provisioned throughput in MiB/s for a file share.
-  final int maxProvisionedThroughputMiBPerSec;
+  final pulumi.Input<int> maxProvisionedThroughputMiBPerSec;
   /// The minimum provisioned IOPS (Input/Output Operations Per Second) for a file share.
-  final int minProvisionedIOPerSec;
+  final pulumi.Input<int> minProvisionedIOPerSec;
   /// The minimum provisioned storage in GiB for a file share.
-  final int minProvisionedStorageGiB;
+  final pulumi.Input<int> minProvisionedStorageGiB;
   /// The minimum provisioned throughput in MiB/s for a file share.
-  final int minProvisionedThroughputMiBPerSec;
+  final pulumi.Input<int> minProvisionedThroughputMiBPerSec;
 
   /// Creates a new [FileShareLimitsResponse].
   /// [maxFileSharePrivateEndpointConnections] The maximum number of private endpoint connections allowed for a file share.
@@ -65,16 +66,16 @@ class FileShareLimitsResponse {
 
   factory FileShareLimitsResponse.fromMap(Map<String, dynamic> map) {
     return FileShareLimitsResponse(
-      maxFileSharePrivateEndpointConnections: map['maxFileSharePrivateEndpointConnections'] as int,
-      maxFileShareSnapshots: map['maxFileShareSnapshots'] as int,
-      maxFileShareSubnets: map['maxFileShareSubnets'] as int,
-      maxFileShares: map['maxFileShares'] as int,
-      maxProvisionedIOPerSec: map['maxProvisionedIOPerSec'] as int,
-      maxProvisionedStorageGiB: map['maxProvisionedStorageGiB'] as int,
-      maxProvisionedThroughputMiBPerSec: map['maxProvisionedThroughputMiBPerSec'] as int,
-      minProvisionedIOPerSec: map['minProvisionedIOPerSec'] as int,
-      minProvisionedStorageGiB: map['minProvisionedStorageGiB'] as int,
-      minProvisionedThroughputMiBPerSec: map['minProvisionedThroughputMiBPerSec'] as int,
+      maxFileSharePrivateEndpointConnections: (map['maxFileSharePrivateEndpointConnections'] as int).input(),
+      maxFileShareSnapshots: (map['maxFileShareSnapshots'] as int).input(),
+      maxFileShareSubnets: (map['maxFileShareSubnets'] as int).input(),
+      maxFileShares: (map['maxFileShares'] as int).input(),
+      maxProvisionedIOPerSec: (map['maxProvisionedIOPerSec'] as int).input(),
+      maxProvisionedStorageGiB: (map['maxProvisionedStorageGiB'] as int).input(),
+      maxProvisionedThroughputMiBPerSec: (map['maxProvisionedThroughputMiBPerSec'] as int).input(),
+      minProvisionedIOPerSec: (map['minProvisionedIOPerSec'] as int).input(),
+      minProvisionedStorageGiB: (map['minProvisionedStorageGiB'] as int).input(),
+      minProvisionedThroughputMiBPerSec: (map['minProvisionedThroughputMiBPerSec'] as int).input(),
     );
   }
 }

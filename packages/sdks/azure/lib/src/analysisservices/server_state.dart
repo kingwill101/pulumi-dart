@@ -41,29 +41,18 @@ class ServerState {
   /// [sku] SKU for the Analysis Services Server. Possible values are: `D1`, `B1`, `B2`, `S0`, `S1`, `S2`, `S4`, `S8`, `S9`, `S8v2` and `S9v2`.
   /// [tags] A mapping of tags to assign to the resource.
   ServerState({
-    pulumi.Output<List<String>>? adminUsers,
-    pulumi.Output<String>? backupBlobContainerUri,
-    pulumi.Output<List<ServerIpv4FirewallRule>>? ipv4FirewallRules,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? powerBiServiceEnabled,
-    pulumi.Output<String>? querypoolConnectionMode,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverFullName,
-    pulumi.Output<String>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adminUsers = pulumi.Input.asOptionalInput<List<String>>(adminUsers),
-      backupBlobContainerUri = pulumi.Input.asOptionalInput<String>(backupBlobContainerUri),
-      ipv4FirewallRules = pulumi.Input.asOptionalInput<List<ServerIpv4FirewallRule>>(ipv4FirewallRules),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      powerBiServiceEnabled = pulumi.Input.asOptionalInput<bool>(powerBiServiceEnabled),
-      querypoolConnectionMode = pulumi.Input.asOptionalInput<String>(querypoolConnectionMode),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverFullName = pulumi.Input.asOptionalInput<String>(serverFullName),
-      sku = pulumi.Input.asOptionalInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adminUsers,
+    this.backupBlobContainerUri,
+    this.ipv4FirewallRules,
+    this.location,
+    this.name,
+    this.powerBiServiceEnabled,
+    this.querypoolConnectionMode,
+    this.resourceGroupName,
+    this.serverFullName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class ServerState {
 
   factory ServerState.fromMap(Map<String, dynamic> map) {
     return ServerState(
-      adminUsers: map['adminUsers'] == null ? null : pulumi.Output.create<List<String>>((map['adminUsers'] as List).cast<String>()),
-      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : pulumi.Output.create<String>(map['backupBlobContainerUri'] as String),
-      ipv4FirewallRules: map['ipv4FirewallRules'] == null ? null : pulumi.Output.create<List<ServerIpv4FirewallRule>>(pulumi.Input.decodeList<ServerIpv4FirewallRule>(map['ipv4FirewallRules'], (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      powerBiServiceEnabled: map['powerBiServiceEnabled'] == null ? null : pulumi.Output.create<bool>(map['powerBiServiceEnabled'] as bool),
-      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : pulumi.Output.create<String>(map['querypoolConnectionMode'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverFullName: map['serverFullName'] == null ? null : pulumi.Output.create<String>(map['serverFullName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers'] as List).cast<String>()).input(),
+      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri'] as String).input(),
+      ipv4FirewallRules: map['ipv4FirewallRules'] == null ? null : (pulumi.Input.decodeList<ServerIpv4FirewallRule>(map['ipv4FirewallRules'], (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      powerBiServiceEnabled: map['powerBiServiceEnabled'] == null ? null : (map['powerBiServiceEnabled'] as bool).input(),
+      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (map['querypoolConnectionMode'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverFullName: map['serverFullName'] == null ? null : (map['serverFullName'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

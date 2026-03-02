@@ -29,21 +29,14 @@ class RegistryImageState {
   /// [sha256Digest] The sha256 digest of the image.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
   RegistryImageState({
-    pulumi.Output<RegistryImageAuthConfig>? authConfig,
-    pulumi.Output<RegistryImageBuild>? build,
-    pulumi.Output<bool>? insecureSkipVerify,
-    pulumi.Output<bool>? keepRemotely,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sha256Digest,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      authConfig = pulumi.Input.asOptionalInput<RegistryImageAuthConfig>(authConfig),
-      build = pulumi.Input.asOptionalInput<RegistryImageBuild>(build),
-      insecureSkipVerify = pulumi.Input.asOptionalInput<bool>(insecureSkipVerify),
-      keepRemotely = pulumi.Input.asOptionalInput<bool>(keepRemotely),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sha256Digest = pulumi.Input.asOptionalInput<String>(sha256Digest),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.authConfig,
+    this.build,
+    this.insecureSkipVerify,
+    this.keepRemotely,
+    this.name,
+    this.sha256Digest,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class RegistryImageState {
 
   factory RegistryImageState.fromMap(Map<String, dynamic> map) {
     return RegistryImageState(
-      authConfig: map['authConfig'] == null ? null : pulumi.Output.create<RegistryImageAuthConfig>(RegistryImageAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      build: map['build'] == null ? null : pulumi.Output.create<RegistryImageBuild>(RegistryImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : pulumi.Output.create<bool>(map['insecureSkipVerify'] as bool),
-      keepRemotely: map['keepRemotely'] == null ? null : pulumi.Output.create<bool>(map['keepRemotely'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sha256Digest: map['sha256Digest'] == null ? null : pulumi.Output.create<String>(map['sha256Digest'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      authConfig: map['authConfig'] == null ? null : (RegistryImageAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      build: map['build'] == null ? null : (RegistryImageBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sha256Digest: map['sha256Digest'] == null ? null : (map['sha256Digest'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -59,33 +59,20 @@ class PermissionsState {
   /// [table] Configuration block for a table resource. Detailed below.
   /// [tableWithColumns] Configuration block for a table with columns resource. Detailed below.
   PermissionsState({
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<bool>? catalogResource,
-    pulumi.Output<PermissionsDataCellsFilter>? dataCellsFilter,
-    pulumi.Output<PermissionsDataLocation>? dataLocation,
-    pulumi.Output<PermissionsDatabase>? database,
-    pulumi.Output<PermissionsLfTag>? lfTag,
-    pulumi.Output<PermissionsLfTagPolicy>? lfTagPolicy,
-    pulumi.Output<List<String>>? permissions,
-    pulumi.Output<List<String>>? permissionsWithGrantOptions,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<PermissionsTable>? table,
-    pulumi.Output<PermissionsTableWithColumns>? tableWithColumns,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      catalogResource = pulumi.Input.asOptionalInput<bool>(catalogResource),
-      dataCellsFilter = pulumi.Input.asOptionalInput<PermissionsDataCellsFilter>(dataCellsFilter),
-      dataLocation = pulumi.Input.asOptionalInput<PermissionsDataLocation>(dataLocation),
-      database = pulumi.Input.asOptionalInput<PermissionsDatabase>(database),
-      lfTag = pulumi.Input.asOptionalInput<PermissionsLfTag>(lfTag),
-      lfTagPolicy = pulumi.Input.asOptionalInput<PermissionsLfTagPolicy>(lfTagPolicy),
-      permissions = pulumi.Input.asOptionalInput<List<String>>(permissions),
-      permissionsWithGrantOptions = pulumi.Input.asOptionalInput<List<String>>(permissionsWithGrantOptions),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      table = pulumi.Input.asOptionalInput<PermissionsTable>(table),
-      tableWithColumns = pulumi.Input.asOptionalInput<PermissionsTableWithColumns>(tableWithColumns);
+    this.catalogId,
+    this.catalogResource,
+    this.dataCellsFilter,
+    this.dataLocation,
+    this.database,
+    this.lfTag,
+    this.lfTagPolicy,
+    this.permissions,
+    this.permissionsWithGrantOptions,
+    this.principal,
+    this.region,
+    this.table,
+    this.tableWithColumns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,19 +94,19 @@ class PermissionsState {
 
   factory PermissionsState.fromMap(Map<String, dynamic> map) {
     return PermissionsState(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      catalogResource: map['catalogResource'] == null ? null : pulumi.Output.create<bool>(map['catalogResource'] as bool),
-      dataCellsFilter: map['dataCellsFilter'] == null ? null : pulumi.Output.create<PermissionsDataCellsFilter>(PermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())),
-      dataLocation: map['dataLocation'] == null ? null : pulumi.Output.create<PermissionsDataLocation>(PermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())),
-      database: map['database'] == null ? null : pulumi.Output.create<PermissionsDatabase>(PermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())),
-      lfTag: map['lfTag'] == null ? null : pulumi.Output.create<PermissionsLfTag>(PermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())),
-      lfTagPolicy: map['lfTagPolicy'] == null ? null : pulumi.Output.create<PermissionsLfTagPolicy>(PermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<String>>((map['permissions'] as List).cast<String>()),
-      permissionsWithGrantOptions: map['permissionsWithGrantOptions'] == null ? null : pulumi.Output.create<List<String>>((map['permissionsWithGrantOptions'] as List).cast<String>()),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      table: map['table'] == null ? null : pulumi.Output.create<PermissionsTable>(PermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())),
-      tableWithColumns: map['tableWithColumns'] == null ? null : pulumi.Output.create<PermissionsTableWithColumns>(PermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogResource: map['catalogResource'] == null ? null : (map['catalogResource'] as bool).input(),
+      dataCellsFilter: map['dataCellsFilter'] == null ? null : (PermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())).input(),
+      dataLocation: map['dataLocation'] == null ? null : (PermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (PermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
+      lfTag: map['lfTag'] == null ? null : (PermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())).input(),
+      lfTagPolicy: map['lfTagPolicy'] == null ? null : (PermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      permissionsWithGrantOptions: map['permissionsWithGrantOptions'] == null ? null : ((map['permissionsWithGrantOptions'] as List).cast<String>()).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      table: map['table'] == null ? null : (PermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : (PermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

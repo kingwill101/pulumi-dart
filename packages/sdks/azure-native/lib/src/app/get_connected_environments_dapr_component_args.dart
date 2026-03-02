@@ -19,13 +19,10 @@ class GetConnectedEnvironmentsDaprComponentArgs {
   /// [connectedEnvironmentName] Name of the connected environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConnectedEnvironmentsDaprComponentArgs({
-    required pulumi.Output<String> componentName,
-    required pulumi.Output<String> connectedEnvironmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      componentName = pulumi.Input.asInput<String>(componentName),
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.componentName,
+    required this.connectedEnvironmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectedEnvironmentsDaprComponentArgs {
 
   factory GetConnectedEnvironmentsDaprComponentArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentsDaprComponentArgs(
-      componentName: pulumi.Output.create<String>(map['componentName'] as String),
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      componentName: (map['componentName'] as String).input(),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

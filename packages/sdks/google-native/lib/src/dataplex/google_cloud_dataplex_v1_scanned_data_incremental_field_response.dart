@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A data range denoted by a pair of start/end values of a field.
 class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
   /// Value that marks the end of the range.
-  final String end;
+  final pulumi.Input<String> end;
   /// The field that contains values which monotonically increases over time (e.g. a timestamp column).
-  final String field;
+  final pulumi.Input<String> field;
   /// Value that marks the start of the range.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse].
   /// [end] Value that marks the end of the range.
@@ -30,9 +31,9 @@ class GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
 
   factory GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse(
-      end: map['end'] as String,
-      field: map['field'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      field: (map['field'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

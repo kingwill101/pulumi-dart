@@ -16,11 +16,9 @@ class GetSqlServerInstanceArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   GetSqlServerInstanceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerInstanceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asInput<String>(sqlServerInstanceName);
+    required this.resourceGroupName,
+    required this.sqlServerInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSqlServerInstanceArgs {
 
   factory GetSqlServerInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
     );
   }
 }

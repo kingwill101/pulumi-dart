@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh {
   /// Sets the profile ID for the VNTag8011QBH virtual port parameters.
-  final String? profileId;
+  final pulumi.Input<String>? profileId;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh].
   /// [profileId] Sets the profile ID for the VNTag8011QBH virtual port parameters.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh {
 
   factory DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh(
-      profileId: map['profileId'] == null ? null : map['profileId'] as String,
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
     );
   }
 }

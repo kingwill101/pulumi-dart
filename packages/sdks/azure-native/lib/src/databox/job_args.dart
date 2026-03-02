@@ -44,27 +44,17 @@ class JobArgs {
   /// [tags] The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
   /// [transferType] Type of the data transfer.
   JobArgs({
-    pulumi.Output<JobDeliveryInfo>? deliveryInfo,
-    pulumi.Output<String>? deliveryType,
-    pulumi.Output<DataBoxCustomerDiskJobDetails>? details,
-    pulumi.Output<ResourceIdentity>? identity,
-    pulumi.Output<String>? jobName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transferType,
-  }) :
-      deliveryInfo = pulumi.Input.asOptionalInput<JobDeliveryInfo>(deliveryInfo),
-      deliveryType = pulumi.Input.asOptionalInput<String>(deliveryType),
-      details = pulumi.Input.asOptionalInput<DataBoxCustomerDiskJobDetails>(details),
-      identity = pulumi.Input.asOptionalInput<ResourceIdentity>(identity),
-      jobName = pulumi.Input.asOptionalInput<String>(jobName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transferType = pulumi.Input.asInput<String>(transferType);
+    this.deliveryInfo,
+    this.deliveryType,
+    this.details,
+    this.identity,
+    this.jobName,
+    this.location,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    required this.transferType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      deliveryInfo: map['deliveryInfo'] == null ? null : pulumi.Output.create<JobDeliveryInfo>(JobDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())),
-      deliveryType: map['deliveryType'] == null ? null : pulumi.Output.create<String>(map['deliveryType'] as String),
-      details: map['details'] == null ? null : pulumi.Output.create<DataBoxCustomerDiskJobDetails>(DataBoxCustomerDiskJobDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ResourceIdentity>(ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      jobName: map['jobName'] == null ? null : pulumi.Output.create<String>(map['jobName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transferType: pulumi.Output.create<String>(map['transferType'] as String),
+      deliveryInfo: map['deliveryInfo'] == null ? null : (JobDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
+      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType'] as String).input(),
+      details: map['details'] == null ? null : (DataBoxCustomerDiskJobDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transferType: (map['transferType'] as String).input(),
     );
   }
 }

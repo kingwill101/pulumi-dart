@@ -7,19 +7,19 @@ import 'sub_resource_response.dart';
 /// A backend pool is a collection of backends that can be routed to.
 class BackendPoolResponse {
   /// The set of backends for this pool
-  final List<BackendResponse>? backends;
+  final pulumi.Input<List<BackendResponse>>? backends;
   /// L7 health probe settings for a backend pool
-  final SubResourceResponse? healthProbeSettings;
+  final pulumi.Input<SubResourceResponse>? healthProbeSettings;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Load balancing settings for a backend pool
-  final SubResourceResponse? loadBalancingSettings;
+  final pulumi.Input<SubResourceResponse>? loadBalancingSettings;
   /// Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Resource status.
-  final String resourceState;
+  final pulumi.Input<String> resourceState;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BackendPoolResponse].
   /// [backends] The set of backends for this pool
@@ -41,10 +41,10 @@ class BackendPoolResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': ?backends == null ? null : pulumi.Input.encodeList<BackendResponse, Map<String, dynamic>>(backends!, (value) => value.toMap()),
-      'healthProbeSettings': ?healthProbeSettings == null ? null : healthProbeSettings!.toMap(),
+      'backends': ?pulumi.Input.mapOptionalInputValue<List<BackendResponse>, List<Map<String, dynamic>>>(backends, (value) => pulumi.Input.encodeList<BackendResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthProbeSettings': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(healthProbeSettings, (value) => value.toMap()),
       'id': ?id,
-      'loadBalancingSettings': ?loadBalancingSettings == null ? null : loadBalancingSettings!.toMap(),
+      'loadBalancingSettings': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(loadBalancingSettings, (value) => value.toMap()),
       'name': ?name,
       'resourceState': resourceState,
       'type': type,
@@ -53,13 +53,13 @@ class BackendPoolResponse {
 
   factory BackendPoolResponse.fromMap(Map<String, dynamic> map) {
     return BackendPoolResponse(
-      backends: map['backends'] == null ? null : pulumi.Input.decodeList<BackendResponse>(map['backends'], (value) => BackendResponse.fromMap((value as Map).cast<String, dynamic>())),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : SubResourceResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : SubResourceResponse.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      resourceState: map['resourceState'] as String,
-      type: map['type'] as String,
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<BackendResponse>(map['backends'], (value) => BackendResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (SubResourceResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (SubResourceResponse.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceState: (map['resourceState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

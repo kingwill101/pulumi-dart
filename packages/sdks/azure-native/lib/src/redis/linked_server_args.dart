@@ -29,19 +29,13 @@ class LinkedServerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverRole] Role of the linked server.
   LinkedServerArgs({
-    required pulumi.Output<String> linkedRedisCacheId,
-    required pulumi.Output<String> linkedRedisCacheLocation,
-    pulumi.Output<String>? linkedServerName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ReplicationRole> serverRole,
-  }) :
-      linkedRedisCacheId = pulumi.Input.asInput<String>(linkedRedisCacheId),
-      linkedRedisCacheLocation = pulumi.Input.asInput<String>(linkedRedisCacheLocation),
-      linkedServerName = pulumi.Input.asOptionalInput<String>(linkedServerName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverRole = pulumi.Input.asInput<ReplicationRole>(serverRole);
+    required this.linkedRedisCacheId,
+    required this.linkedRedisCacheLocation,
+    this.linkedServerName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.serverRole,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class LinkedServerArgs {
 
   factory LinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServerArgs(
-      linkedRedisCacheId: pulumi.Output.create<String>(map['linkedRedisCacheId'] as String),
-      linkedRedisCacheLocation: pulumi.Output.create<String>(map['linkedRedisCacheLocation'] as String),
-      linkedServerName: map['linkedServerName'] == null ? null : pulumi.Output.create<String>(map['linkedServerName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverRole: pulumi.Output.create<ReplicationRole>(ReplicationRole.fromValue(map['serverRole'] as String)),
+      linkedRedisCacheId: (map['linkedRedisCacheId'] as String).input(),
+      linkedRedisCacheLocation: (map['linkedRedisCacheLocation'] as String).input(),
+      linkedServerName: map['linkedServerName'] == null ? null : (map['linkedServerName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverRole: (ReplicationRole.fromValue(map['serverRole'] as String)).input(),
     );
   }
 }

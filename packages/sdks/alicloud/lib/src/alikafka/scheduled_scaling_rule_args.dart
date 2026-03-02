@@ -47,29 +47,18 @@ class ScheduledScalingRuleArgs {
   /// [timeZone] The time zone (Coordinated Universal Time).
   /// [weeklyTypes] The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
   ScheduledScalingRuleArgs({
-    required pulumi.Output<int> durationMinutes,
-    pulumi.Output<bool>? enable,
-    required pulumi.Output<int> firstScheduledTime,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? repeatType,
-    required pulumi.Output<int> reservedPubFlow,
-    required pulumi.Output<int> reservedSubFlow,
-    required pulumi.Output<String> ruleName,
-    required pulumi.Output<String> scheduleType,
-    required pulumi.Output<String> timeZone,
-    pulumi.Output<List<String>>? weeklyTypes,
-  }) :
-      durationMinutes = pulumi.Input.asInput<int>(durationMinutes),
-      enable = pulumi.Input.asOptionalInput<bool>(enable),
-      firstScheduledTime = pulumi.Input.asInput<int>(firstScheduledTime),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      repeatType = pulumi.Input.asOptionalInput<String>(repeatType),
-      reservedPubFlow = pulumi.Input.asInput<int>(reservedPubFlow),
-      reservedSubFlow = pulumi.Input.asInput<int>(reservedSubFlow),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      scheduleType = pulumi.Input.asInput<String>(scheduleType),
-      timeZone = pulumi.Input.asInput<String>(timeZone),
-      weeklyTypes = pulumi.Input.asOptionalInput<List<String>>(weeklyTypes);
+    required this.durationMinutes,
+    this.enable,
+    required this.firstScheduledTime,
+    required this.instanceId,
+    this.repeatType,
+    required this.reservedPubFlow,
+    required this.reservedSubFlow,
+    required this.ruleName,
+    required this.scheduleType,
+    required this.timeZone,
+    this.weeklyTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class ScheduledScalingRuleArgs {
 
   factory ScheduledScalingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledScalingRuleArgs(
-      durationMinutes: pulumi.Output.create<int>(map['durationMinutes'] as int),
-      enable: map['enable'] == null ? null : pulumi.Output.create<bool>(map['enable'] as bool),
-      firstScheduledTime: pulumi.Output.create<int>(map['firstScheduledTime'] as int),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      repeatType: map['repeatType'] == null ? null : pulumi.Output.create<String>(map['repeatType'] as String),
-      reservedPubFlow: pulumi.Output.create<int>(map['reservedPubFlow'] as int),
-      reservedSubFlow: pulumi.Output.create<int>(map['reservedSubFlow'] as int),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      scheduleType: pulumi.Output.create<String>(map['scheduleType'] as String),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
-      weeklyTypes: map['weeklyTypes'] == null ? null : pulumi.Output.create<List<String>>((map['weeklyTypes'] as List).cast<String>()),
+      durationMinutes: (map['durationMinutes'] as int).input(),
+      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      firstScheduledTime: (map['firstScheduledTime'] as int).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      repeatType: map['repeatType'] == null ? null : (map['repeatType'] as String).input(),
+      reservedPubFlow: (map['reservedPubFlow'] as int).input(),
+      reservedSubFlow: (map['reservedSubFlow'] as int).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      scheduleType: (map['scheduleType'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
+      weeklyTypes: map['weeklyTypes'] == null ? null : ((map['weeklyTypes'] as List).cast<String>()).input(),
     );
   }
 }

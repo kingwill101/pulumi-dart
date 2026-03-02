@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiskAsyncReplicationResponse {
   /// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
-  final String consistencyGroupPolicy;
+  final pulumi.Input<String> consistencyGroupPolicy;
   /// ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
-  final String consistencyGroupPolicyId;
+  final pulumi.Input<String> consistencyGroupPolicyId;
   /// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
-  final String disk;
+  final pulumi.Input<String> disk;
   /// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
-  final String diskId;
+  final pulumi.Input<String> diskId;
 
   /// Creates a new [DiskAsyncReplicationResponse].
   /// [consistencyGroupPolicy] URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
@@ -34,10 +35,10 @@ class DiskAsyncReplicationResponse {
 
   factory DiskAsyncReplicationResponse.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationResponse(
-      consistencyGroupPolicy: map['consistencyGroupPolicy'] as String,
-      consistencyGroupPolicyId: map['consistencyGroupPolicyId'] as String,
-      disk: map['disk'] as String,
-      diskId: map['diskId'] as String,
+      consistencyGroupPolicy: (map['consistencyGroupPolicy'] as String).input(),
+      consistencyGroupPolicyId: (map['consistencyGroupPolicyId'] as String).input(),
+      disk: (map['disk'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
     );
   }
 }

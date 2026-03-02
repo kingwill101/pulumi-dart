@@ -18,15 +18,11 @@ class GetPeeredDnsDomainArgs {
   /// [project] Required.
   /// [service] Required.
   GetPeeredDnsDomainArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> network,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> service,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    required this.name,
+    required this.network,
+    required this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetPeeredDnsDomainArgs {
 
   factory GetPeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeredDnsDomainArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

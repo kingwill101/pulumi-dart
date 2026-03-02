@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes product display information.
 class DisplayInfoResponse {
   /// Configuration display name.
-  final String configurationDisplayName;
+  final pulumi.Input<String> configurationDisplayName;
   /// Product family display name.
-  final String productFamilyDisplayName;
+  final pulumi.Input<String> productFamilyDisplayName;
 
   /// Creates a new [DisplayInfoResponse].
   /// [configurationDisplayName] Configuration display name.
@@ -25,8 +26,8 @@ class DisplayInfoResponse {
 
   factory DisplayInfoResponse.fromMap(Map<String, dynamic> map) {
     return DisplayInfoResponse(
-      configurationDisplayName: map['configurationDisplayName'] as String,
-      productFamilyDisplayName: map['productFamilyDisplayName'] as String,
+      configurationDisplayName: (map['configurationDisplayName'] as String).input(),
+      productFamilyDisplayName: (map['productFamilyDisplayName'] as String).input(),
     );
   }
 }

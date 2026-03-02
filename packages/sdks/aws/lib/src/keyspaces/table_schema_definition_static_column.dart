@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionStaticColumn {
   /// The name of the static column.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [TableSchemaDefinitionStaticColumn].
   /// [name] The name of the static column.
@@ -19,7 +20,7 @@ class TableSchemaDefinitionStaticColumn {
 
   factory TableSchemaDefinitionStaticColumn.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinitionStaticColumn(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

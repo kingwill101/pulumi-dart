@@ -21,15 +21,11 @@ class AgentcoreWorkloadIdentityState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workloadIdentityArn] ARN of the Workload Identity.
   AgentcoreWorkloadIdentityState({
-    pulumi.Output<List<String>>? allowedResourceOauth2ReturnUrls,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workloadIdentityArn,
-  }) :
-      allowedResourceOauth2ReturnUrls = pulumi.Input.asOptionalInput<List<String>>(allowedResourceOauth2ReturnUrls),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workloadIdentityArn = pulumi.Input.asOptionalInput<String>(workloadIdentityArn);
+    this.allowedResourceOauth2ReturnUrls,
+    this.name,
+    this.region,
+    this.workloadIdentityArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class AgentcoreWorkloadIdentityState {
 
   factory AgentcoreWorkloadIdentityState.fromMap(Map<String, dynamic> map) {
     return AgentcoreWorkloadIdentityState(
-      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : pulumi.Output.create<List<String>>((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workloadIdentityArn: map['workloadIdentityArn'] == null ? null : pulumi.Output.create<String>(map['workloadIdentityArn'] as String),
+      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : ((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workloadIdentityArn: map['workloadIdentityArn'] == null ? null : (map['workloadIdentityArn'] as String).input(),
     );
   }
 }

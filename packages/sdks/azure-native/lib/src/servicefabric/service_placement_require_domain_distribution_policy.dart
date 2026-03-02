@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the policy to be used for placement of a Service Fabric service where two replicas
 /// from the same partition should never be placed in the same fault or upgrade domain.
@@ -12,10 +13,10 @@
 /// policy should be set.
 class ServicePlacementRequireDomainDistributionPolicy {
   /// The name of the domain that should used for placement as per this policy.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'RequiredDomainDistribution'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServicePlacementRequireDomainDistributionPolicy].
   /// [domainName] The name of the domain that should used for placement as per this policy.
@@ -34,8 +35,8 @@ class ServicePlacementRequireDomainDistributionPolicy {
 
   factory ServicePlacementRequireDomainDistributionPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePlacementRequireDomainDistributionPolicy(
-      domainName: map['domainName'] as String,
-      type: map['type'] as String,
+      domainName: (map['domainName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

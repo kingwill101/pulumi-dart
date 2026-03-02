@@ -25,17 +25,12 @@ class GatewayCertificateAuthorityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GatewayCertificateAuthorityArgs({
-    pulumi.Output<String>? certificateId,
-    required pulumi.Output<String> gatewayId,
-    pulumi.Output<bool>? isTrusted,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      isTrusted = pulumi.Input.asOptionalInput<bool>(isTrusted),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.certificateId,
+    required this.gatewayId,
+    this.isTrusted,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GatewayCertificateAuthorityArgs {
 
   factory GatewayCertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCertificateAuthorityArgs(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      gatewayId: pulumi.Output.create<String>(map['gatewayId'] as String),
-      isTrusted: map['isTrusted'] == null ? null : pulumi.Output.create<bool>(map['isTrusted'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

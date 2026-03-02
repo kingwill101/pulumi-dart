@@ -21,13 +21,10 @@ class RecoveryGroupArgs {
   /// [recoveryGroupName] A unique name describing the recovery group.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   RecoveryGroupArgs({
-    pulumi.Output<List<String>>? cells,
-    required pulumi.Output<String> recoveryGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      cells = pulumi.Input.asOptionalInput<List<String>>(cells),
-      recoveryGroupName = pulumi.Input.asInput<String>(recoveryGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.cells,
+    required this.recoveryGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class RecoveryGroupArgs {
 
   factory RecoveryGroupArgs.fromMap(Map<String, dynamic> map) {
     return RecoveryGroupArgs(
-      cells: map['cells'] == null ? null : pulumi.Output.create<List<String>>((map['cells'] as List).cast<String>()),
-      recoveryGroupName: pulumi.Output.create<String>(map['recoveryGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      cells: map['cells'] == null ? null : ((map['cells'] as List).cast<String>()).input(),
+      recoveryGroupName: (map['recoveryGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

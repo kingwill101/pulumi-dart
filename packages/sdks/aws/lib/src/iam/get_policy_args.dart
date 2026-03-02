@@ -26,15 +26,11 @@ class GetPolicyArgs {
   /// [pathPrefix] Prefix of the path to the IAM policy.
   /// [tags] Key-value mapping of tags for the IAM Policy.
   GetPolicyArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pathPrefix,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.arn,
+    this.name,
+    this.pathPrefix,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathPrefix: map['pathPrefix'] == null ? null : pulumi.Output.create<String>(map['pathPrefix'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

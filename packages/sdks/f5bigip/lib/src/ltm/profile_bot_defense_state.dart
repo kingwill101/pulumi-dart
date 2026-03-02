@@ -22,17 +22,12 @@ class ProfileBotDefenseState {
   /// [name] Name of the Bot Defense profile
   /// [template] Profile templates specify Mitigation and Verification Settings default values. possible ptions `balanced`,`relaxed` and `strict`
   ProfileBotDefenseState({
-    pulumi.Output<String>? defaultsFrom,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? enforcementMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? template,
-  }) :
-      defaultsFrom = pulumi.Input.asOptionalInput<String>(defaultsFrom),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enforcementMode = pulumi.Input.asOptionalInput<String>(enforcementMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      template = pulumi.Input.asOptionalInput<String>(template);
+    this.defaultsFrom,
+    this.description,
+    this.enforcementMode,
+    this.name,
+    this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ProfileBotDefenseState {
 
   factory ProfileBotDefenseState.fromMap(Map<String, dynamic> map) {
     return ProfileBotDefenseState(
-      defaultsFrom: map['defaultsFrom'] == null ? null : pulumi.Output.create<String>(map['defaultsFrom'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enforcementMode: map['enforcementMode'] == null ? null : pulumi.Output.create<String>(map['enforcementMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

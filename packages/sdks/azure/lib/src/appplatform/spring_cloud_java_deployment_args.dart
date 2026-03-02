@@ -32,21 +32,14 @@ class SpringCloudJavaDeploymentArgs {
   /// [runtimeVersion] Specifies the runtime version of the Spring Cloud Deployment. Possible Values are `Java_8`, `Java_11` and `Java_17`. Defaults to `Java_8`.
   /// [springCloudAppId] Specifies the id of the Spring Cloud Application in which to create the Deployment. Changing this forces a new resource to be created.
   SpringCloudJavaDeploymentArgs({
-    pulumi.Output<Map<String, String>>? environmentVariables,
-    pulumi.Output<int>? instanceCount,
-    pulumi.Output<String>? jvmOptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<SpringCloudJavaDeploymentQuota>? quota,
-    pulumi.Output<String>? runtimeVersion,
-    required pulumi.Output<String> springCloudAppId,
-  }) :
-      environmentVariables = pulumi.Input.asOptionalInput<Map<String, String>>(environmentVariables),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      jvmOptions = pulumi.Input.asOptionalInput<String>(jvmOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      quota = pulumi.Input.asOptionalInput<SpringCloudJavaDeploymentQuota>(quota),
-      runtimeVersion = pulumi.Input.asOptionalInput<String>(runtimeVersion),
-      springCloudAppId = pulumi.Input.asInput<String>(springCloudAppId);
+    this.environmentVariables,
+    this.instanceCount,
+    this.jvmOptions,
+    this.name,
+    this.quota,
+    this.runtimeVersion,
+    required this.springCloudAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SpringCloudJavaDeploymentArgs {
 
   factory SpringCloudJavaDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudJavaDeploymentArgs(
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Output.create<Map<String, String>>((map['environmentVariables'] as Map).cast<String, String>()),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      jvmOptions: map['jvmOptions'] == null ? null : pulumi.Output.create<String>(map['jvmOptions'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      quota: map['quota'] == null ? null : pulumi.Output.create<SpringCloudJavaDeploymentQuota>(SpringCloudJavaDeploymentQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())),
-      runtimeVersion: map['runtimeVersion'] == null ? null : pulumi.Output.create<String>(map['runtimeVersion'] as String),
-      springCloudAppId: pulumi.Output.create<String>(map['springCloudAppId'] as String),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      quota: map['quota'] == null ? null : (SpringCloudJavaDeploymentQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      springCloudAppId: (map['springCloudAppId'] as String).input(),
     );
   }
 }

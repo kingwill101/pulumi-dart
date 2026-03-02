@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'export_dataset_configuration_response.dart';
 
 /// The definition for data in the export.
 class ExportDatasetResponse {
   /// The export dataset configuration.
-  final ExportDatasetConfigurationResponse? configuration;
+  final pulumi.Input<ExportDatasetConfigurationResponse>? configuration;
   /// The granularity of rows in the export. Currently only 'Daily' is supported.
-  final String? granularity;
+  final pulumi.Input<String>? granularity;
 
   /// Creates a new [ExportDatasetResponse].
   /// [configuration] The export dataset configuration.
@@ -19,15 +20,15 @@ class ExportDatasetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ExportDatasetConfigurationResponse, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'granularity': ?granularity,
     };
   }
 
   factory ExportDatasetResponse.fromMap(Map<String, dynamic> map) {
     return ExportDatasetResponse(
-      configuration: map['configuration'] == null ? null : ExportDatasetConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      granularity: map['granularity'] == null ? null : map['granularity'] as String,
+      configuration: map['configuration'] == null ? null : (ExportDatasetConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
     );
   }
 }

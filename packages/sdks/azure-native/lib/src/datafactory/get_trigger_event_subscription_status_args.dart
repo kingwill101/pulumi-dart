@@ -19,13 +19,10 @@ class GetTriggerEventSubscriptionStatusArgs {
   /// [resourceGroupName] The resource group name.
   /// [triggerName] The trigger name.
   GetTriggerEventSubscriptionStatusArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> triggerName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggerName = pulumi.Input.asInput<String>(triggerName);
+    required this.factoryName,
+    required this.resourceGroupName,
+    required this.triggerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTriggerEventSubscriptionStatusArgs {
 
   factory GetTriggerEventSubscriptionStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerEventSubscriptionStatusArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggerName: pulumi.Output.create<String>(map['triggerName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggerName: (map['triggerName'] as String).input(),
     );
   }
 }

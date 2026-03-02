@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecWorkerAutoscalingMetricsCpu {
   /// The average target CPU utilization for the component.
-  final int percent;
+  final pulumi.Input<int> percent;
 
   /// Creates a new [AppSpecWorkerAutoscalingMetricsCpu].
   /// [percent] The average target CPU utilization for the component.
@@ -19,7 +20,7 @@ class AppSpecWorkerAutoscalingMetricsCpu {
 
   factory AppSpecWorkerAutoscalingMetricsCpu.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerAutoscalingMetricsCpu(
-      percent: map['percent'] as int,
+      percent: (map['percent'] as int).input(),
     );
   }
 }

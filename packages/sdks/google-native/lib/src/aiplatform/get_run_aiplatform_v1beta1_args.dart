@@ -20,17 +20,12 @@ class GetRunAiplatformV1beta1Args {
   /// [runId] Required.
   /// [tensorboardId] Required.
   GetRunAiplatformV1beta1Args({
-    required pulumi.Output<String> experimentId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runId,
-    required pulumi.Output<String> tensorboardId,
-  }) :
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+    required this.experimentId,
+    required this.location,
+    this.project,
+    required this.runId,
+    required this.tensorboardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetRunAiplatformV1beta1Args {
 
   factory GetRunAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetRunAiplatformV1beta1Args(
-      experimentId: pulumi.Output.create<String>(map['experimentId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runId: pulumi.Output.create<String>(map['runId'] as String),
-      tensorboardId: pulumi.Output.create<String>(map['tensorboardId'] as String),
+      experimentId: (map['experimentId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runId: (map['runId'] as String).input(),
+      tensorboardId: (map['tensorboardId'] as String).input(),
     );
   }
 }

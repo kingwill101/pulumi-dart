@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
   /// Lifecycle Initialization Phase Callback Instructions.
-  final List<String> commands;
+  final pulumi.Input<List<String>> commands;
   /// The execution entry of the callback method, which is similar to the request handler.
-  final String handler;
+  final pulumi.Input<String> handler;
   /// The maximum running time of the function, in seconds.
-  final int timeout;
+  final pulumi.Input<int> timeout;
 
   /// Creates a new [GetV3FunctionsFunctionInstanceLifecycleConfigInitializer].
   /// [commands] Lifecycle Initialization Phase Callback Instructions.
@@ -29,9 +30,9 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
 
   factory GetV3FunctionsFunctionInstanceLifecycleConfigInitializer.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionInstanceLifecycleConfigInitializer(
-      commands: (map['commands'] as List).cast<String>(),
-      handler: map['handler'] as String,
-      timeout: map['timeout'] as int,
+      commands: ((map['commands'] as List).cast<String>()).input(),
+      handler: (map['handler'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
     );
   }
 }

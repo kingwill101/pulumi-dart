@@ -19,13 +19,10 @@ class GetKnowledgeSourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webAgentName] The name of the web agent.
   GetKnowledgeSourceArgs({
-    required pulumi.Output<String> knowledgeSourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> webAgentName,
-  }) :
-      knowledgeSourceName = pulumi.Input.asInput<String>(knowledgeSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      webAgentName = pulumi.Input.asInput<String>(webAgentName);
+    required this.knowledgeSourceName,
+    required this.resourceGroupName,
+    required this.webAgentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKnowledgeSourceArgs {
 
   factory GetKnowledgeSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeSourceArgs(
-      knowledgeSourceName: pulumi.Output.create<String>(map['knowledgeSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      webAgentName: pulumi.Output.create<String>(map['webAgentName'] as String),
+      knowledgeSourceName: (map['knowledgeSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      webAgentName: (map['webAgentName'] as String).input(),
     );
   }
 }

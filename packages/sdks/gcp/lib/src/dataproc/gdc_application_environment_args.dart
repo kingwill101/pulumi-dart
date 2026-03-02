@@ -44,25 +44,16 @@ class GdcApplicationEnvironmentArgs {
   /// [serviceinstance] The id of the service instance to which this application environment belongs.
   /// [sparkApplicationEnvironmentConfig] Represents the SparkApplicationEnvironmentConfig.
   GdcApplicationEnvironmentArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? applicationEnvironmentId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceinstance,
-    pulumi.Output<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>? sparkApplicationEnvironmentConfig,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      applicationEnvironmentId = pulumi.Input.asOptionalInput<String>(applicationEnvironmentId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceinstance = pulumi.Input.asInput<String>(serviceinstance),
-      sparkApplicationEnvironmentConfig = pulumi.Input.asOptionalInput<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>(sparkApplicationEnvironmentConfig);
+    this.annotations,
+    this.applicationEnvironmentId,
+    this.displayName,
+    this.labels,
+    required this.location,
+    this.namespace,
+    this.project,
+    required this.serviceinstance,
+    this.sparkApplicationEnvironmentConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class GdcApplicationEnvironmentArgs {
 
   factory GdcApplicationEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GdcApplicationEnvironmentArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      applicationEnvironmentId: map['applicationEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['applicationEnvironmentId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceinstance: pulumi.Output.create<String>(map['serviceinstance'] as String),
-      sparkApplicationEnvironmentConfig: map['sparkApplicationEnvironmentConfig'] == null ? null : pulumi.Output.create<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>(GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((map['sparkApplicationEnvironmentConfig'] as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      applicationEnvironmentId: map['applicationEnvironmentId'] == null ? null : (map['applicationEnvironmentId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceinstance: (map['serviceinstance'] as String).input(),
+      sparkApplicationEnvironmentConfig: map['sparkApplicationEnvironmentConfig'] == null ? null : (GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.fromMap((map['sparkApplicationEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

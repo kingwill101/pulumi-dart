@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobEventTriggerConfigScaleRuleAuthentication {
   /// Name of the secret from which to pull the auth params.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// Trigger Parameter that uses the secret.
-  final String triggerParameter;
+  final pulumi.Input<String> triggerParameter;
 
   /// Creates a new [JobEventTriggerConfigScaleRuleAuthentication].
   /// [secretName] Name of the secret from which to pull the auth params.
@@ -24,8 +25,8 @@ class JobEventTriggerConfigScaleRuleAuthentication {
 
   factory JobEventTriggerConfigScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScaleRuleAuthentication(
-      secretName: map['secretName'] as String,
-      triggerParameter: map['triggerParameter'] as String,
+      secretName: (map['secretName'] as String).input(),
+      triggerParameter: (map['triggerParameter'] as String).input(),
     );
   }
 }

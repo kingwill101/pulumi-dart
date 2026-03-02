@@ -6,7 +6,7 @@ import 'upstream_policy.dart';
 /// Virtual repository configuration.
 class VirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
-  final List<UpstreamPolicy>? upstreamPolicies;
+  final pulumi.Input<List<UpstreamPolicy>>? upstreamPolicies;
 
   /// Creates a new [VirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
@@ -16,13 +16,13 @@ class VirtualRepositoryConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'upstreamPolicies': ?upstreamPolicies == null ? null : pulumi.Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(upstreamPolicies!, (value) => value.toMap()),
+      'upstreamPolicies': ?pulumi.Input.mapOptionalInputValue<List<UpstreamPolicy>, List<Map<String, dynamic>>>(upstreamPolicies, (value) => pulumi.Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return VirtualRepositoryConfig(
-      upstreamPolicies: map['upstreamPolicies'] == null ? null : pulumi.Input.decodeList<UpstreamPolicy>(map['upstreamPolicies'], (value) => UpstreamPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      upstreamPolicies: map['upstreamPolicies'] == null ? null : (pulumi.Input.decodeList<UpstreamPolicy>(map['upstreamPolicies'], (value) => UpstreamPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

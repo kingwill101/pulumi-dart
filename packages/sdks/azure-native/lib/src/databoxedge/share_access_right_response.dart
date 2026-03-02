@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the mapping between this particular user and the type of access he has on shares on this device.
 class ShareAccessRightResponse {
   /// Type of access to be allowed on the share for this user.
-  final String accessType;
+  final pulumi.Input<String> accessType;
   /// The share ID.
-  final String shareId;
+  final pulumi.Input<String> shareId;
 
   /// Creates a new [ShareAccessRightResponse].
   /// [accessType] Type of access to be allowed on the share for this user.
@@ -25,8 +26,8 @@ class ShareAccessRightResponse {
 
   factory ShareAccessRightResponse.fromMap(Map<String, dynamic> map) {
     return ShareAccessRightResponse(
-      accessType: map['accessType'] as String,
-      shareId: map['shareId'] as String,
+      accessType: (map['accessType'] as String).input(),
+      shareId: (map['shareId'] as String).input(),
     );
   }
 }

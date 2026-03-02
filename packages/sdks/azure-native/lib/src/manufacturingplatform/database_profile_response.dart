@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to Database Resource
 class DatabaseProfileResponse {
   /// Resource Id of Cosmos Resource
-  final String cosmosId;
+  final pulumi.Input<String> cosmosId;
 
   /// Creates a new [DatabaseProfileResponse].
   /// [cosmosId] Resource Id of Cosmos Resource
@@ -20,7 +21,7 @@ class DatabaseProfileResponse {
 
   factory DatabaseProfileResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseProfileResponse(
-      cosmosId: map['cosmosId'] as String,
+      cosmosId: (map['cosmosId'] as String).input(),
     );
   }
 }

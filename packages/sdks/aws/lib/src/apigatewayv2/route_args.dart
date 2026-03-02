@@ -53,33 +53,20 @@ class RouteArgs {
   /// [routeResponseSelectionExpression] The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
   /// [target] Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an `aws.apigatewayv2.Integration` resource.
   RouteArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<bool>? apiKeyRequired,
-    pulumi.Output<List<String>>? authorizationScopes,
-    pulumi.Output<String>? authorizationType,
-    pulumi.Output<String>? authorizerId,
-    pulumi.Output<String>? modelSelectionExpression,
-    pulumi.Output<String>? operationName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? requestModels,
-    pulumi.Output<List<RouteRequestParameter>>? requestParameters,
-    required pulumi.Output<String> routeKey,
-    pulumi.Output<String>? routeResponseSelectionExpression,
-    pulumi.Output<String>? target,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      apiKeyRequired = pulumi.Input.asOptionalInput<bool>(apiKeyRequired),
-      authorizationScopes = pulumi.Input.asOptionalInput<List<String>>(authorizationScopes),
-      authorizationType = pulumi.Input.asOptionalInput<String>(authorizationType),
-      authorizerId = pulumi.Input.asOptionalInput<String>(authorizerId),
-      modelSelectionExpression = pulumi.Input.asOptionalInput<String>(modelSelectionExpression),
-      operationName = pulumi.Input.asOptionalInput<String>(operationName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestModels = pulumi.Input.asOptionalInput<Map<String, String>>(requestModels),
-      requestParameters = pulumi.Input.asOptionalInput<List<RouteRequestParameter>>(requestParameters),
-      routeKey = pulumi.Input.asInput<String>(routeKey),
-      routeResponseSelectionExpression = pulumi.Input.asOptionalInput<String>(routeResponseSelectionExpression),
-      target = pulumi.Input.asOptionalInput<String>(target);
+    required this.apiId,
+    this.apiKeyRequired,
+    this.authorizationScopes,
+    this.authorizationType,
+    this.authorizerId,
+    this.modelSelectionExpression,
+    this.operationName,
+    this.region,
+    this.requestModels,
+    this.requestParameters,
+    required this.routeKey,
+    this.routeResponseSelectionExpression,
+    this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : pulumi.Output.create<bool>(map['apiKeyRequired'] as bool),
-      authorizationScopes: map['authorizationScopes'] == null ? null : pulumi.Output.create<List<String>>((map['authorizationScopes'] as List).cast<String>()),
-      authorizationType: map['authorizationType'] == null ? null : pulumi.Output.create<String>(map['authorizationType'] as String),
-      authorizerId: map['authorizerId'] == null ? null : pulumi.Output.create<String>(map['authorizerId'] as String),
-      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['modelSelectionExpression'] as String),
-      operationName: map['operationName'] == null ? null : pulumi.Output.create<String>(map['operationName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestModels: map['requestModels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['requestModels'] as Map).cast<String, String>()),
-      requestParameters: map['requestParameters'] == null ? null : pulumi.Output.create<List<RouteRequestParameter>>(pulumi.Input.decodeList<RouteRequestParameter>(map['requestParameters'], (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      routeKey: pulumi.Output.create<String>(map['routeKey'] as String),
-      routeResponseSelectionExpression: map['routeResponseSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['routeResponseSelectionExpression'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
+      apiId: (map['apiId'] as String).input(),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
+      authorizationScopes: map['authorizationScopes'] == null ? null : ((map['authorizationScopes'] as List).cast<String>()).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
+      authorizerId: map['authorizerId'] == null ? null : (map['authorizerId'] as String).input(),
+      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : (map['modelSelectionExpression'] as String).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestModels: map['requestModels'] == null ? null : ((map['requestModels'] as Map).cast<String, String>()).input(),
+      requestParameters: map['requestParameters'] == null ? null : (pulumi.Input.decodeList<RouteRequestParameter>(map['requestParameters'], (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeKey: (map['routeKey'] as String).input(),
+      routeResponseSelectionExpression: map['routeResponseSelectionExpression'] == null ? null : (map['routeResponseSelectionExpression'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

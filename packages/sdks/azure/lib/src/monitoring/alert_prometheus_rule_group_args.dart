@@ -41,27 +41,17 @@ class AlertPrometheusRuleGroupArgs {
   /// [scopes] Specifies the resource ID of the Azure Monitor Workspace.
   /// [tags] A mapping of tags to assign to the Alert Management Prometheus Rule Group.
   AlertPrometheusRuleGroupArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? interval,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? ruleGroupEnabled,
-    required pulumi.Output<List<AlertPrometheusRuleGroupRule>> rules,
-    required pulumi.Output<List<String>> scopes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      interval = pulumi.Input.asOptionalInput<String>(interval),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleGroupEnabled = pulumi.Input.asOptionalInput<bool>(ruleGroupEnabled),
-      rules = pulumi.Input.asInput<List<AlertPrometheusRuleGroupRule>>(rules),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.clusterName,
+    this.description,
+    this.interval,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.ruleGroupEnabled,
+    required this.rules,
+    required this.scopes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class AlertPrometheusRuleGroupArgs {
 
   factory AlertPrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return AlertPrometheusRuleGroupArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleGroupEnabled: map['ruleGroupEnabled'] == null ? null : pulumi.Output.create<bool>(map['ruleGroupEnabled'] as bool),
-      rules: pulumi.Output.create<List<AlertPrometheusRuleGroupRule>>(pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(map['rules'], (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scopes: pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleGroupEnabled: map['ruleGroupEnabled'] == null ? null : (map['ruleGroupEnabled'] as bool).input(),
+      rules: (pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(map['rules'], (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

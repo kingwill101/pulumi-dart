@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification {
-  final String deletionCharacter;
-  final String endCharacter;
-  final int endTimeoutMs;
-  final int maxLength;
+  final pulumi.Input<String> deletionCharacter;
+  final pulumi.Input<String> endCharacter;
+  final pulumi.Input<int> endTimeoutMs;
+  final pulumi.Input<int> maxLength;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification].
   /// [deletionCharacter] Required.
@@ -30,10 +31,10 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
 
   factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
-      deletionCharacter: map['deletionCharacter'] as String,
-      endCharacter: map['endCharacter'] as String,
-      endTimeoutMs: map['endTimeoutMs'] as int,
-      maxLength: map['maxLength'] as int,
+      deletionCharacter: (map['deletionCharacter'] as String).input(),
+      endCharacter: (map['endCharacter'] as String).input(),
+      endTimeoutMs: (map['endTimeoutMs'] as int).input(),
+      maxLength: (map['maxLength'] as int).input(),
     );
   }
 }

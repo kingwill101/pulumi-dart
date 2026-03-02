@@ -32,21 +32,14 @@ class SnapshotScheduleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   SnapshotScheduleArgs({
-    required pulumi.Output<List<String>> definitions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? identifier,
-    pulumi.Output<String>? identifierPrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      definitions = pulumi.Input.asInput<List<String>>(definitions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      identifierPrefix = pulumi.Input.asOptionalInput<String>(identifierPrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.definitions,
+    this.description,
+    this.forceDestroy,
+    this.identifier,
+    this.identifierPrefix,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SnapshotScheduleArgs {
 
   factory SnapshotScheduleArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleArgs(
-      definitions: pulumi.Output.create<List<String>>((map['definitions'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      identifierPrefix: map['identifierPrefix'] == null ? null : pulumi.Output.create<String>(map['identifierPrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      definitions: ((map['definitions'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      identifierPrefix: map['identifierPrefix'] == null ? null : (map['identifierPrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

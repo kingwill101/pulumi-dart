@@ -6,15 +6,15 @@ import 'get_lke_types_type_region_price.dart';
 
 class GetLkeTypesType {
   /// The ID representing the Kubernetes type.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Kubernetes type label is for display purposes only.
-  final String label;
+  final pulumi.Input<String> label;
   /// Cost in US dollars, broken down into hourly and monthly charges.
-  final List<GetLkeTypesTypePrice> prices;
+  final pulumi.Input<List<GetLkeTypesTypePrice>> prices;
   /// A list of region-specific prices for this LKE Type.
-  final List<GetLkeTypesTypeRegionPrice> regionPrices;
+  final pulumi.Input<List<GetLkeTypesTypeRegionPrice>> regionPrices;
   /// The monthly outbound transfer amount, in MB.
-  final int transfer;
+  final pulumi.Input<int> transfer;
 
   /// Creates a new [GetLkeTypesType].
   /// [id] The ID representing the Kubernetes type.
@@ -34,19 +34,19 @@ class GetLkeTypesType {
     return <String, dynamic>{
       'id': id,
       'label': label,
-      'prices': pulumi.Input.encodeList<GetLkeTypesTypePrice, Map<String, dynamic>>(prices, (value) => value.toMap()),
-      'regionPrices': pulumi.Input.encodeList<GetLkeTypesTypeRegionPrice, Map<String, dynamic>>(regionPrices, (value) => value.toMap()),
+      'prices': pulumi.Input.mapInputValue<List<GetLkeTypesTypePrice>, List<Map<String, dynamic>>>(prices, (value) => pulumi.Input.encodeList<GetLkeTypesTypePrice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regionPrices': pulumi.Input.mapInputValue<List<GetLkeTypesTypeRegionPrice>, List<Map<String, dynamic>>>(regionPrices, (value) => pulumi.Input.encodeList<GetLkeTypesTypeRegionPrice, Map<String, dynamic>>(value, (value) => value.toMap())),
       'transfer': transfer,
     };
   }
 
   factory GetLkeTypesType.fromMap(Map<String, dynamic> map) {
     return GetLkeTypesType(
-      id: map['id'] as String,
-      label: map['label'] as String,
-      prices: pulumi.Input.decodeList<GetLkeTypesTypePrice>(map['prices'], (value) => GetLkeTypesTypePrice.fromMap((value as Map).cast<String, dynamic>())),
-      regionPrices: pulumi.Input.decodeList<GetLkeTypesTypeRegionPrice>(map['regionPrices'], (value) => GetLkeTypesTypeRegionPrice.fromMap((value as Map).cast<String, dynamic>())),
-      transfer: map['transfer'] as int,
+      id: (map['id'] as String).input(),
+      label: (map['label'] as String).input(),
+      prices: (pulumi.Input.decodeList<GetLkeTypesTypePrice>(map['prices'], (value) => GetLkeTypesTypePrice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionPrices: (pulumi.Input.decodeList<GetLkeTypesTypeRegionPrice>(map['regionPrices'], (value) => GetLkeTypesTypeRegionPrice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transfer: (map['transfer'] as int).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_graph_source_settings_response.dart';
 
 /// DataflowGraph source node properties.
 class DataflowGraphSourceNodeResponse {
   /// Name of the node.
-  final String name;
+  final pulumi.Input<String> name;
   /// DataflowGraph node types.
   /// Expected value is 'Source'.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// Source configuration.
-  final DataflowGraphSourceSettingsResponse sourceSettings;
+  final pulumi.Input<DataflowGraphSourceSettingsResponse> sourceSettings;
 
   /// Creates a new [DataflowGraphSourceNodeResponse].
   /// [name] Name of the node.
@@ -26,15 +27,15 @@ class DataflowGraphSourceNodeResponse {
     return <String, dynamic>{
       'name': name,
       'nodeType': nodeType,
-      'sourceSettings': sourceSettings.toMap(),
+      'sourceSettings': pulumi.Input.mapInputValue<DataflowGraphSourceSettingsResponse, Map<String, dynamic>>(sourceSettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowGraphSourceNodeResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphSourceNodeResponse(
-      name: map['name'] as String,
-      nodeType: map['nodeType'] as String,
-      sourceSettings: DataflowGraphSourceSettingsResponse.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      sourceSettings: (DataflowGraphSourceSettingsResponse.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

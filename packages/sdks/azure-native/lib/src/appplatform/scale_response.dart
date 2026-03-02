@@ -6,11 +6,11 @@ import 'scale_rule_response.dart';
 /// Azure Spring Apps scaling configurations.
 class ScaleResponse {
   /// Optional. Maximum number of container replicas. Defaults to 10 if not set.
-  final int? maxReplicas;
+  final pulumi.Input<int>? maxReplicas;
   /// Optional. Minimum number of container replicas.
-  final int? minReplicas;
+  final pulumi.Input<int>? minReplicas;
   /// Scaling rules.
-  final List<ScaleRuleResponse>? rules;
+  final pulumi.Input<List<ScaleRuleResponse>>? rules;
 
   /// Creates a new [ScaleResponse].
   /// [maxReplicas] Optional. Maximum number of container replicas. Defaults to 10 if not set.
@@ -26,15 +26,15 @@ class ScaleResponse {
     return <String, dynamic>{
       'maxReplicas': ?maxReplicas,
       'minReplicas': ?minReplicas,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ScaleRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ScaleResponse.fromMap(Map<String, dynamic> map) {
     return ScaleResponse(
-      maxReplicas: map['maxReplicas'] == null ? null : map['maxReplicas'] as int,
-      minReplicas: map['minReplicas'] == null ? null : map['minReplicas'] as int,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters used to create a new virtual network rule while creating a new Data Lake Store account.
 class CreateVirtualNetworkRuleWithAccountParameters {
   /// The unique name of the virtual network rule to create.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource identifier for the subnet.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [CreateVirtualNetworkRuleWithAccountParameters].
   /// [name] The unique name of the virtual network rule to create.
@@ -25,8 +26,8 @@ class CreateVirtualNetworkRuleWithAccountParameters {
 
   factory CreateVirtualNetworkRuleWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return CreateVirtualNetworkRuleWithAccountParameters(
-      name: map['name'] as String,
-      subnetId: map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

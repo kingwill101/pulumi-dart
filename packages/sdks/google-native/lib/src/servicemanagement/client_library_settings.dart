@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_library_settings_launch_stage.dart';
 import 'cpp_settings.dart';
 import 'dotnet_settings.dart';
@@ -13,27 +14,27 @@ import 'ruby_settings.dart';
 /// Details about how and where to publish client libraries.
 class ClientLibrarySettings {
   /// Settings for C++ client libraries.
-  final CppSettings? cppSettings;
+  final pulumi.Input<CppSettings>? cppSettings;
   /// Settings for .NET client libraries.
-  final DotnetSettings? dotnetSettings;
+  final pulumi.Input<DotnetSettings>? dotnetSettings;
   /// Settings for Go client libraries.
-  final GoSettings? goSettings;
+  final pulumi.Input<GoSettings>? goSettings;
   /// Settings for legacy Java features, supported in the Service YAML.
-  final JavaSettings? javaSettings;
+  final pulumi.Input<JavaSettings>? javaSettings;
   /// Launch stage of this version of the API.
-  final ClientLibrarySettingsLaunchStage? launchStage;
+  final pulumi.Input<ClientLibrarySettingsLaunchStage>? launchStage;
   /// Settings for Node client libraries.
-  final NodeSettings? nodeSettings;
+  final pulumi.Input<NodeSettings>? nodeSettings;
   /// Settings for PHP client libraries.
-  final PhpSettings? phpSettings;
+  final pulumi.Input<PhpSettings>? phpSettings;
   /// Settings for Python client libraries.
-  final PythonSettings? pythonSettings;
+  final pulumi.Input<PythonSettings>? pythonSettings;
   /// When using transport=rest, the client request will encode enums as numbers rather than strings.
-  final bool? restNumericEnums;
+  final pulumi.Input<bool>? restNumericEnums;
   /// Settings for Ruby client libraries.
-  final RubySettings? rubySettings;
+  final pulumi.Input<RubySettings>? rubySettings;
   /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ClientLibrarySettings].
   /// [cppSettings] Settings for C++ client libraries.
@@ -63,33 +64,33 @@ class ClientLibrarySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cppSettings': ?cppSettings == null ? null : cppSettings!.toMap(),
-      'dotnetSettings': ?dotnetSettings == null ? null : dotnetSettings!.toMap(),
-      'goSettings': ?goSettings == null ? null : goSettings!.toMap(),
-      'javaSettings': ?javaSettings == null ? null : javaSettings!.toMap(),
-      'launchStage': ?launchStage == null ? null : launchStage!.value,
-      'nodeSettings': ?nodeSettings == null ? null : nodeSettings!.toMap(),
-      'phpSettings': ?phpSettings == null ? null : phpSettings!.toMap(),
-      'pythonSettings': ?pythonSettings == null ? null : pythonSettings!.toMap(),
+      'cppSettings': ?pulumi.Input.mapOptionalInputValue<CppSettings, Map<String, dynamic>>(cppSettings, (value) => value.toMap()),
+      'dotnetSettings': ?pulumi.Input.mapOptionalInputValue<DotnetSettings, Map<String, dynamic>>(dotnetSettings, (value) => value.toMap()),
+      'goSettings': ?pulumi.Input.mapOptionalInputValue<GoSettings, Map<String, dynamic>>(goSettings, (value) => value.toMap()),
+      'javaSettings': ?pulumi.Input.mapOptionalInputValue<JavaSettings, Map<String, dynamic>>(javaSettings, (value) => value.toMap()),
+      'launchStage': ?pulumi.Input.mapOptionalInputValue<ClientLibrarySettingsLaunchStage, String>(launchStage, (value) => value.value),
+      'nodeSettings': ?pulumi.Input.mapOptionalInputValue<NodeSettings, Map<String, dynamic>>(nodeSettings, (value) => value.toMap()),
+      'phpSettings': ?pulumi.Input.mapOptionalInputValue<PhpSettings, Map<String, dynamic>>(phpSettings, (value) => value.toMap()),
+      'pythonSettings': ?pulumi.Input.mapOptionalInputValue<PythonSettings, Map<String, dynamic>>(pythonSettings, (value) => value.toMap()),
       'restNumericEnums': ?restNumericEnums,
-      'rubySettings': ?rubySettings == null ? null : rubySettings!.toMap(),
+      'rubySettings': ?pulumi.Input.mapOptionalInputValue<RubySettings, Map<String, dynamic>>(rubySettings, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory ClientLibrarySettings.fromMap(Map<String, dynamic> map) {
     return ClientLibrarySettings(
-      cppSettings: map['cppSettings'] == null ? null : CppSettings.fromMap((map['cppSettings'] as Map).cast<String, dynamic>()),
-      dotnetSettings: map['dotnetSettings'] == null ? null : DotnetSettings.fromMap((map['dotnetSettings'] as Map).cast<String, dynamic>()),
-      goSettings: map['goSettings'] == null ? null : GoSettings.fromMap((map['goSettings'] as Map).cast<String, dynamic>()),
-      javaSettings: map['javaSettings'] == null ? null : JavaSettings.fromMap((map['javaSettings'] as Map).cast<String, dynamic>()),
-      launchStage: map['launchStage'] == null ? null : ClientLibrarySettingsLaunchStage.fromValue(map['launchStage'] as String),
-      nodeSettings: map['nodeSettings'] == null ? null : NodeSettings.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>()),
-      phpSettings: map['phpSettings'] == null ? null : PhpSettings.fromMap((map['phpSettings'] as Map).cast<String, dynamic>()),
-      pythonSettings: map['pythonSettings'] == null ? null : PythonSettings.fromMap((map['pythonSettings'] as Map).cast<String, dynamic>()),
-      restNumericEnums: map['restNumericEnums'] == null ? null : map['restNumericEnums'] as bool,
-      rubySettings: map['rubySettings'] == null ? null : RubySettings.fromMap((map['rubySettings'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      cppSettings: map['cppSettings'] == null ? null : (CppSettings.fromMap((map['cppSettings'] as Map).cast<String, dynamic>())).input(),
+      dotnetSettings: map['dotnetSettings'] == null ? null : (DotnetSettings.fromMap((map['dotnetSettings'] as Map).cast<String, dynamic>())).input(),
+      goSettings: map['goSettings'] == null ? null : (GoSettings.fromMap((map['goSettings'] as Map).cast<String, dynamic>())).input(),
+      javaSettings: map['javaSettings'] == null ? null : (JavaSettings.fromMap((map['javaSettings'] as Map).cast<String, dynamic>())).input(),
+      launchStage: map['launchStage'] == null ? null : (ClientLibrarySettingsLaunchStage.fromValue(map['launchStage'] as String)).input(),
+      nodeSettings: map['nodeSettings'] == null ? null : (NodeSettings.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>())).input(),
+      phpSettings: map['phpSettings'] == null ? null : (PhpSettings.fromMap((map['phpSettings'] as Map).cast<String, dynamic>())).input(),
+      pythonSettings: map['pythonSettings'] == null ? null : (PythonSettings.fromMap((map['pythonSettings'] as Map).cast<String, dynamic>())).input(),
+      restNumericEnums: map['restNumericEnums'] == null ? null : (map['restNumericEnums'] as bool).input(),
+      rubySettings: map['rubySettings'] == null ? null : (RubySettings.fromMap((map['rubySettings'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

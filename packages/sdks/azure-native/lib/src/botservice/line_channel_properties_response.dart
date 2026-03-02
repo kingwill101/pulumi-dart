@@ -6,11 +6,11 @@ import 'line_registration_response.dart';
 /// The parameters to provide for the Line channel.
 class LineChannelPropertiesResponse {
   /// Callback Url to enter in line registration.
-  final String callbackUrl;
+  final pulumi.Input<String> callbackUrl;
   /// Whether this channel is validated for the bot
-  final bool isValidated;
+  final pulumi.Input<bool> isValidated;
   /// The list of line channel registrations
-  final List<LineRegistrationResponse> lineRegistrations;
+  final pulumi.Input<List<LineRegistrationResponse>> lineRegistrations;
 
   /// Creates a new [LineChannelPropertiesResponse].
   /// [callbackUrl] Callback Url to enter in line registration.
@@ -26,15 +26,15 @@ class LineChannelPropertiesResponse {
     return <String, dynamic>{
       'callbackUrl': callbackUrl,
       'isValidated': isValidated,
-      'lineRegistrations': pulumi.Input.encodeList<LineRegistrationResponse, Map<String, dynamic>>(lineRegistrations, (value) => value.toMap()),
+      'lineRegistrations': pulumi.Input.mapInputValue<List<LineRegistrationResponse>, List<Map<String, dynamic>>>(lineRegistrations, (value) => pulumi.Input.encodeList<LineRegistrationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LineChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LineChannelPropertiesResponse(
-      callbackUrl: map['callbackUrl'] as String,
-      isValidated: map['isValidated'] as bool,
-      lineRegistrations: pulumi.Input.decodeList<LineRegistrationResponse>(map['lineRegistrations'], (value) => LineRegistrationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      isValidated: (map['isValidated'] as bool).input(),
+      lineRegistrations: (pulumi.Input.decodeList<LineRegistrationResponse>(map['lineRegistrations'], (value) => LineRegistrationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

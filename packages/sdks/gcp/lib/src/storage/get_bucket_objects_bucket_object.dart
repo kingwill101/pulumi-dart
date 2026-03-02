@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketObjectsBucketObject {
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
-  final String contentType;
+  final pulumi.Input<String> contentType;
   /// A url reference to download this object.
-  final String mediaLink;
+  final pulumi.Input<String> mediaLink;
   /// The name of the object.
-  final String name;
+  final pulumi.Input<String> name;
   /// A url reference to this object.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
 
   /// Creates a new [GetBucketObjectsBucketObject].
   /// [contentType] [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
@@ -39,11 +40,11 @@ class GetBucketObjectsBucketObject {
 
   factory GetBucketObjectsBucketObject.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsBucketObject(
-      contentType: map['contentType'] as String,
-      mediaLink: map['mediaLink'] as String,
-      name: map['name'] as String,
-      selfLink: map['selfLink'] as String,
-      storageClass: map['storageClass'] as String,
+      contentType: (map['contentType'] as String).input(),
+      mediaLink: (map['mediaLink'] as String).input(),
+      name: (map['name'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
     );
   }
 }

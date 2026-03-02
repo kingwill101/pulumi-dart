@@ -40,27 +40,17 @@ class PortalArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   PortalArgs({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<String>? browserSettingsArn,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<int>? maxConcurrentSessions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<PortalTimeouts>? timeouts,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      browserSettingsArn = pulumi.Input.asOptionalInput<String>(browserSettingsArn),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      maxConcurrentSessions = pulumi.Input.asOptionalInput<int>(maxConcurrentSessions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<PortalTimeouts>(timeouts);
+    this.additionalEncryptionContext,
+    this.authenticationType,
+    this.browserSettingsArn,
+    this.customerManagedKey,
+    this.displayName,
+    this.instanceType,
+    this.maxConcurrentSessions,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class PortalArgs {
 
   factory PortalArgs.fromMap(Map<String, dynamic> map) {
     return PortalArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : pulumi.Output.create<String>(map['browserSettingsArn'] as String),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : pulumi.Output.create<int>(map['maxConcurrentSessions'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<PortalTimeouts>(PortalTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      browserSettingsArn: map['browserSettingsArn'] == null ? null : (map['browserSettingsArn'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : (map['maxConcurrentSessions'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (PortalTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

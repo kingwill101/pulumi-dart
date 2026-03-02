@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SynchronizationSecretCredential {
   /// The key of the secret.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value of the secret.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SynchronizationSecretCredential].
   /// [key] The key of the secret.
@@ -24,8 +25,8 @@ class SynchronizationSecretCredential {
 
   factory SynchronizationSecretCredential.fromMap(Map<String, dynamic> map) {
     return SynchronizationSecretCredential(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

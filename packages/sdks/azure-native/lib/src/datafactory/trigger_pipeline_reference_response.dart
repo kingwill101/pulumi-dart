@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_reference_response.dart';
 
 /// Pipeline that needs to be triggered with the given parameters.
 class TriggerPipelineReferenceResponse {
   /// Pipeline parameters.
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
   /// Pipeline reference.
-  final PipelineReferenceResponse? pipelineReference;
+  final pulumi.Input<PipelineReferenceResponse>? pipelineReference;
 
   /// Creates a new [TriggerPipelineReferenceResponse].
   /// [parameters] Pipeline parameters.
@@ -20,14 +21,14 @@ class TriggerPipelineReferenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'parameters': ?parameters,
-      'pipelineReference': ?pipelineReference == null ? null : pipelineReference!.toMap(),
+      'pipelineReference': ?pulumi.Input.mapOptionalInputValue<PipelineReferenceResponse, Map<String, dynamic>>(pipelineReference, (value) => value.toMap()),
     };
   }
 
   factory TriggerPipelineReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TriggerPipelineReferenceResponse(
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
-      pipelineReference: map['pipelineReference'] == null ? null : PipelineReferenceResponse.fromMap((map['pipelineReference'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      pipelineReference: map['pipelineReference'] == null ? null : (PipelineReferenceResponse.fromMap((map['pipelineReference'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

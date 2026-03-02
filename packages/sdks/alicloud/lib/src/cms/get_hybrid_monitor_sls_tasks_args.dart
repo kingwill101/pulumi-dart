@@ -26,19 +26,13 @@ class GetHybridMonitorSlsTasksArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   GetHybridMonitorSlsTasksArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+    this.ids,
+    this.keyword,
+    this.namespace,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class GetHybridMonitorSlsTasksArgs {
 
   factory GetHybridMonitorSlsTasksArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorSlsTasksArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
     );
   }
 }

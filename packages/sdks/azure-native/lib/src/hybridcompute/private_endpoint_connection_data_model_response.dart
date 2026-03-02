@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_connection_properties_response.dart';
 
 /// The Data Model for a Private Endpoint Connection associated with a Private Link Scope
 class PrivateEndpointConnectionDataModelResponse {
   /// The ARM Resource Id of the Private Endpoint.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Name of the Private Endpoint.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Private Endpoint Connection properties.
-  final PrivateEndpointConnectionPropertiesResponse? properties;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse>? properties;
   /// Azure resource type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionDataModelResponse].
   /// [id] The ARM Resource Id of the Private Endpoint.
@@ -29,17 +30,17 @@ class PrivateEndpointConnectionDataModelResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionDataModelResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionDataModelResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

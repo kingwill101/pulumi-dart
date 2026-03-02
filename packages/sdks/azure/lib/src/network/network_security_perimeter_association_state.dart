@@ -22,15 +22,11 @@ class NetworkSecurityPerimeterAssociationState {
   /// [networkSecurityPerimeterProfileId] The ID of the Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Association to be created.
   /// [resourceId] The ID of the associated resource. Changing this forces a new Network Security Perimeter Association to be created.
   NetworkSecurityPerimeterAssociationState({
-    pulumi.Output<String>? accessMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkSecurityPerimeterProfileId,
-    pulumi.Output<String>? resourceId,
-  }) :
-      accessMode = pulumi.Input.asOptionalInput<String>(accessMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSecurityPerimeterProfileId = pulumi.Input.asOptionalInput<String>(networkSecurityPerimeterProfileId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.accessMode,
+    this.name,
+    this.networkSecurityPerimeterProfileId,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkSecurityPerimeterAssociationState {
 
   factory NetworkSecurityPerimeterAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAssociationState(
-      accessMode: map['accessMode'] == null ? null : pulumi.Output.create<String>(map['accessMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : pulumi.Output.create<String>(map['networkSecurityPerimeterProfileId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSecurityPerimeterProfileId: map['networkSecurityPerimeterProfileId'] == null ? null : (map['networkSecurityPerimeterProfileId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

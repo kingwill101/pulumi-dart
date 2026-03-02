@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message storing info about the first admin user. Next ID: 3
 class AdminUserResponse {
   /// Optional. Last/family name of the first admin user.
-  final String familyName;
+  final pulumi.Input<String> familyName;
   /// Optional. First/given name of the first admin user.
-  final String givenName;
+  final pulumi.Input<String> givenName;
 
   /// Creates a new [AdminUserResponse].
   /// [familyName] Optional. Last/family name of the first admin user.
@@ -25,8 +26,8 @@ class AdminUserResponse {
 
   factory AdminUserResponse.fromMap(Map<String, dynamic> map) {
     return AdminUserResponse(
-      familyName: map['familyName'] as String,
-      givenName: map['givenName'] as String,
+      familyName: (map['familyName'] as String).input(),
+      givenName: (map['givenName'] as String).input(),
     );
   }
 }

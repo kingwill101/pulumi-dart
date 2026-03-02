@@ -28,19 +28,13 @@ class GetFoldersArgs {
   /// [parentFolderId] The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
   /// [queryKeyword] The keyword used for the query, such as a folder name. Fuzzy match is supported.
   GetFoldersArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? parentFolderId,
-    pulumi.Output<String>? queryKeyword,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      parentFolderId = pulumi.Input.asOptionalInput<String>(parentFolderId),
-      queryKeyword = pulumi.Input.asOptionalInput<String>(queryKeyword);
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.parentFolderId,
+    this.queryKeyword,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      parentFolderId: map['parentFolderId'] == null ? null : pulumi.Output.create<String>(map['parentFolderId'] as String),
-      queryKeyword: map['queryKeyword'] == null ? null : pulumi.Output.create<String>(map['queryKeyword'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId'] as String).input(),
+      queryKeyword: map['queryKeyword'] == null ? null : (map['queryKeyword'] as String).input(),
     );
   }
 }

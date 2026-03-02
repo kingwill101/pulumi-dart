@@ -6,7 +6,7 @@ import 'postgresql_schema_response.dart';
 /// PostgreSQL database structure.
 class PostgresqlRdbmsResponse {
   /// PostgreSQL schemas in the database server.
-  final List<PostgresqlSchemaResponse> postgresqlSchemas;
+  final pulumi.Input<List<PostgresqlSchemaResponse>> postgresqlSchemas;
 
   /// Creates a new [PostgresqlRdbmsResponse].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
@@ -16,13 +16,13 @@ class PostgresqlRdbmsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlSchemas': pulumi.Input.encodeList<PostgresqlSchemaResponse, Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap()),
+      'postgresqlSchemas': pulumi.Input.mapInputValue<List<PostgresqlSchemaResponse>, List<Map<String, dynamic>>>(postgresqlSchemas, (value) => pulumi.Input.encodeList<PostgresqlSchemaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PostgresqlRdbmsResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbmsResponse(
-      postgresqlSchemas: pulumi.Input.decodeList<PostgresqlSchemaResponse>(map['postgresqlSchemas'], (value) => PostgresqlSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlSchemas: (pulumi.Input.decodeList<PostgresqlSchemaResponse>(map['postgresqlSchemas'], (value) => PostgresqlSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

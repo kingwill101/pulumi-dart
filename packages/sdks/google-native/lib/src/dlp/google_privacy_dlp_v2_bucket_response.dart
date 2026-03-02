@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_value_response.dart';
 
 /// Bucket is represented as a range, along with replacement values.
 class GooglePrivacyDlpV2BucketResponse {
   /// Upper bound of the range, exclusive; type must match min.
-  final GooglePrivacyDlpV2ValueResponse max;
+  final pulumi.Input<GooglePrivacyDlpV2ValueResponse> max;
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
-  final GooglePrivacyDlpV2ValueResponse min;
+  final pulumi.Input<GooglePrivacyDlpV2ValueResponse> min;
   /// Replacement value for this bucket.
-  final GooglePrivacyDlpV2ValueResponse replacementValue;
+  final pulumi.Input<GooglePrivacyDlpV2ValueResponse> replacementValue;
 
   /// Creates a new [GooglePrivacyDlpV2BucketResponse].
   /// [max] Upper bound of the range, exclusive; type must match min.
@@ -23,17 +24,17 @@ class GooglePrivacyDlpV2BucketResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'max': max.toMap(),
-      'min': min.toMap(),
-      'replacementValue': replacementValue.toMap(),
+      'max': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(max, (value) => value.toMap()),
+      'min': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(min, (value) => value.toMap()),
+      'replacementValue': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(replacementValue, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2BucketResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketResponse(
-      max: GooglePrivacyDlpV2ValueResponse.fromMap((map['max'] as Map).cast<String, dynamic>()),
-      min: GooglePrivacyDlpV2ValueResponse.fromMap((map['min'] as Map).cast<String, dynamic>()),
-      replacementValue: GooglePrivacyDlpV2ValueResponse.fromMap((map['replacementValue'] as Map).cast<String, dynamic>()),
+      max: (GooglePrivacyDlpV2ValueResponse.fromMap((map['max'] as Map).cast<String, dynamic>())).input(),
+      min: (GooglePrivacyDlpV2ValueResponse.fromMap((map['min'] as Map).cast<String, dynamic>())).input(),
+      replacementValue: (GooglePrivacyDlpV2ValueResponse.fromMap((map['replacementValue'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

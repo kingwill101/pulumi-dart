@@ -27,17 +27,12 @@ class ResourcePolicyArgs {
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the workspace to attach the resource-based policy to.
   ResourcePolicyArgs({
-    required pulumi.Output<String> policyDocument,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? revisionId,
-    pulumi.Output<ResourcePolicyTimeouts>? timeouts,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-      timeouts = pulumi.Input.asOptionalInput<ResourcePolicyTimeouts>(timeouts),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.policyDocument,
+    this.region,
+    this.revisionId,
+    this.timeouts,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revisionId: map['revisionId'] == null ? null : pulumi.Output.create<String>(map['revisionId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourcePolicyTimeouts>(ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      policyDocument: (map['policyDocument'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

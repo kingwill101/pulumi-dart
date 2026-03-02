@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Document processor properties
 class DocumentProcessorPropertiesResponse {
   /// The managed resource provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
-  final String spoTenantId;
+  final pulumi.Input<String> spoTenantId;
   /// The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
-  final String spoTenantUrl;
+  final pulumi.Input<String> spoTenantUrl;
 
   /// Creates a new [DocumentProcessorPropertiesResponse].
   /// [provisioningState] The managed resource provisioning state.
@@ -30,9 +31,9 @@ class DocumentProcessorPropertiesResponse {
 
   factory DocumentProcessorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DocumentProcessorPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      spoTenantId: map['spoTenantId'] as String,
-      spoTenantUrl: map['spoTenantUrl'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      spoTenantId: (map['spoTenantId'] as String).input(),
+      spoTenantUrl: (map['spoTenantUrl'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetRegionCommitmentArgs {
   /// [project] Optional.
   /// [region] Required.
   GetRegionCommitmentArgs({
-    required pulumi.Output<String> commitment,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      commitment = pulumi.Input.asInput<String>(commitment),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.commitment,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetRegionCommitmentArgs {
 
   factory GetRegionCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionCommitmentArgs(
-      commitment: pulumi.Output.create<String>(map['commitment'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      commitment: (map['commitment'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

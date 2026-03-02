@@ -12,16 +12,16 @@ class AutonomousDatabaseProperties {
   /// (Output)
   /// The amount of storage currently being used for user and system data, in
   /// terabytes.
-  final double? actualUsedDataStorageSizeTb;
+  final pulumi.Input<double>? actualUsedDataStorageSizeTb;
   /// (Output)
   /// The amount of storage currently allocated for the database tables and
   /// billed for, rounded up in terabytes.
-  final double? allocatedStorageSizeTb;
+  final pulumi.Input<double>? allocatedStorageSizeTb;
   /// (Output)
   /// Oracle APEX Application Development.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseApex
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesApexDetail>? apexDetails;
+  final pulumi.Input<List<AutonomousDatabasePropertiesApexDetail>>? apexDetails;
   /// (Output)
   /// This field indicates the status of Data Guard and Access control for the
   /// Autonomous Database. The field's value is null if Data Guard is disabled
@@ -31,38 +31,38 @@ class AutonomousDatabaseProperties {
   /// FALSE if both Data Guard and Access Control are enabled, and the Autonomous
   /// Database is using a different IP access control list (ACL) for standby
   /// compared to primary.
-  final bool? arePrimaryAllowlistedIpsUsed;
+  final pulumi.Input<bool>? arePrimaryAllowlistedIpsUsed;
   /// (Output)
   /// The Autonomous Container Database OCID.
-  final String? autonomousContainerDatabaseId;
+  final pulumi.Input<String>? autonomousContainerDatabaseId;
   /// (Output)
   /// The list of available Oracle Database upgrade versions for an Autonomous
   /// Database.
-  final List<String>? availableUpgradeVersions;
+  final pulumi.Input<List<String>>? availableUpgradeVersions;
   /// The retention period for the Autonomous Database. This field is specified
   /// in days, can range from 1 day to 60 days, and has a default value of
   /// 60 days.
-  final int? backupRetentionPeriodDays;
+  final pulumi.Input<int>? backupRetentionPeriodDays;
   /// The character set for the Autonomous Database. The default is AL32UTF8.
-  final String? characterSet;
+  final pulumi.Input<String>? characterSet;
   /// The number of compute servers for the Autonomous Database.
-  final double? computeCount;
+  final pulumi.Input<double>? computeCount;
   /// (Output)
   /// The connection string used to connect to the Autonomous Database.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionStrings
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesConnectionString>? connectionStrings;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionString>>? connectionStrings;
   /// (Output)
   /// The URLs for accessing Oracle Application Express (APEX) and SQL Developer
   /// Web with a browser from a Compute instance.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesConnectionUrl>? connectionUrls;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionUrl>>? connectionUrls;
   /// The number of CPU cores to be made available to the database.
-  final int? cpuCoreCount;
+  final pulumi.Input<int>? cpuCoreCount;
   /// The list of customer contacts.
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesCustomerContact>? customerContacts;
+  final pulumi.Input<List<AutonomousDatabasePropertiesCustomerContact>>? customerContacts;
   /// (Output)
   /// The current state of the Data Safe registration for the
   /// Autonomous Database.
@@ -73,11 +73,11 @@ class AutonomousDatabaseProperties {
   /// DEREGISTERING
   /// NOT_REGISTERED
   /// FAILED
-  final String? dataSafeState;
+  final pulumi.Input<String>? dataSafeState;
   /// The size of the data stored in the database, in gigabytes.
-  final int? dataStorageSizeGb;
+  final pulumi.Input<int>? dataStorageSizeGb;
   /// The size of the data stored in the database, in terabytes.
-  final int? dataStorageSizeTb;
+  final pulumi.Input<int>? dataStorageSizeTb;
   /// (Output)
   /// The current state of database management for the Autonomous Database.
   /// Possible values:
@@ -88,49 +88,49 @@ class AutonomousDatabaseProperties {
   /// NOT_ENABLED
   /// FAILED_ENABLING
   /// FAILED_DISABLING
-  final String? databaseManagementState;
+  final pulumi.Input<String>? databaseManagementState;
   /// The edition of the Autonomous Databases.
   /// Possible values:
   /// DATABASE_EDITION_UNSPECIFIED
   /// STANDARD_EDITION
   /// ENTERPRISE_EDITION
-  final String? dbEdition;
+  final pulumi.Input<String>? dbEdition;
   /// The Oracle Database version for the Autonomous Database.
-  final String? dbVersion;
+  final pulumi.Input<String>? dbVersion;
   /// Possible values:
   /// DB_WORKLOAD_UNSPECIFIED
   /// OLTP
   /// DW
   /// AJD
   /// APEX
-  final String dbWorkload;
+  final pulumi.Input<String> dbWorkload;
   /// (Output)
   /// This field indicates the number of seconds of data loss during a Data
   /// Guard failover.
-  final String? failedDataRecoveryDuration;
+  final pulumi.Input<String>? failedDataRecoveryDuration;
   /// This field indicates if auto scaling is enabled for the Autonomous Database
   /// CPU core count.
-  final bool? isAutoScalingEnabled;
+  final pulumi.Input<bool>? isAutoScalingEnabled;
   /// (Output)
   /// This field indicates whether the Autonomous Database has local (in-region)
   /// Data Guard enabled.
-  final bool? isLocalDataGuardEnabled;
+  final pulumi.Input<bool>? isLocalDataGuardEnabled;
   /// This field indicates if auto scaling is enabled for the Autonomous Database
   /// storage.
-  final bool? isStorageAutoScalingEnabled;
+  final pulumi.Input<bool>? isStorageAutoScalingEnabled;
   /// The license type used for the Autonomous Database.
   /// Possible values:
   /// LICENSE_TYPE_UNSPECIFIED
   /// LICENSE_INCLUDED
   /// BRING_YOUR_OWN_LICENSE
-  final String licenseType;
+  final pulumi.Input<String> licenseType;
   /// (Output)
   /// The details of the current lifestyle state of the Autonomous Database.
-  final String? lifecycleDetails;
+  final pulumi.Input<String>? lifecycleDetails;
   /// (Output)
   /// This field indicates the maximum data loss limit for an Autonomous
   /// Database, in seconds.
-  final int? localAdgAutoFailoverMaxDataLossLimit;
+  final pulumi.Input<int>? localAdgAutoFailoverMaxDataLossLimit;
   /// (Output)
   /// This field indicates the local disaster recovery (DR) type of an
   /// Autonomous Database.
@@ -138,52 +138,52 @@ class AutonomousDatabaseProperties {
   /// LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
   /// ADG
   /// BACKUP_BASED
-  final String? localDisasterRecoveryType;
+  final pulumi.Input<String>? localDisasterRecoveryType;
   /// (Output)
   /// Autonomous Data Guard standby database details.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesLocalStandbyDb>? localStandbyDbs;
+  final pulumi.Input<List<AutonomousDatabasePropertiesLocalStandbyDb>>? localStandbyDbs;
   /// (Output)
   /// The date and time when maintenance will begin.
-  final String? maintenanceBeginTime;
+  final pulumi.Input<String>? maintenanceBeginTime;
   /// (Output)
   /// The date and time when maintenance will end.
-  final String? maintenanceEndTime;
+  final pulumi.Input<String>? maintenanceEndTime;
   /// The maintenance schedule of the Autonomous Database.
   /// Possible values:
   /// MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
   /// EARLY
   /// REGULAR
-  final String? maintenanceScheduleType;
+  final pulumi.Input<String>? maintenanceScheduleType;
   /// (Output)
   /// The amount of memory enabled per ECPU, in gigabytes.
-  final int? memoryPerOracleComputeUnitGbs;
+  final pulumi.Input<int>? memoryPerOracleComputeUnitGbs;
   /// (Output)
   /// The memory assigned to in-memory tables in an Autonomous Database.
-  final int? memoryTableGbs;
+  final pulumi.Input<int>? memoryTableGbs;
   /// This field specifies if the Autonomous Database requires mTLS connections.
-  final bool? mtlsConnectionRequired;
+  final pulumi.Input<bool>? mtlsConnectionRequired;
   /// The national character set for the Autonomous Database. The default is
   /// AL16UTF16.
-  final String? nCharacterSet;
+  final pulumi.Input<String>? nCharacterSet;
   /// (Output)
   /// The long term backup schedule of the Autonomous Database.
-  final String? nextLongTermBackupTime;
+  final pulumi.Input<String>? nextLongTermBackupTime;
   /// (Output)
   /// The Oracle Cloud Infrastructure link for the Autonomous Database.
-  final String? ociUrl;
+  final pulumi.Input<String>? ociUrl;
   /// (Output)
   /// OCID of the Autonomous Database.
   /// https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-  final String? ocid;
+  final pulumi.Input<String>? ocid;
   /// (Output)
   /// This field indicates the current mode of the Autonomous Database.
   /// Possible values:
   /// OPEN_MODE_UNSPECIFIED
   /// READ_ONLY
   /// READ_WRITE
-  final String? openMode;
+  final pulumi.Input<String>? openMode;
   /// Possible values:
   /// OPERATIONS_INSIGHTS_STATE_UNSPECIFIED
   /// ENABLING
@@ -192,39 +192,39 @@ class AutonomousDatabaseProperties {
   /// NOT_ENABLED
   /// FAILED_ENABLING
   /// FAILED_DISABLING
-  final String? operationsInsightsState;
+  final pulumi.Input<String>? operationsInsightsState;
   /// (Output)
   /// The list of OCIDs of standby databases located in Autonomous Data Guard
   /// remote regions that are associated with the source database.
-  final List<String>? peerDbIds;
+  final pulumi.Input<List<String>>? peerDbIds;
   /// (Output)
   /// The permission level of the Autonomous Database.
   /// Possible values:
   /// PERMISSION_LEVEL_UNSPECIFIED
   /// RESTRICTED
   /// UNRESTRICTED
-  final String? permissionLevel;
+  final pulumi.Input<String>? permissionLevel;
   /// (Output)
   /// The private endpoint for the Autonomous Database.
-  final String? privateEndpoint;
+  final pulumi.Input<String>? privateEndpoint;
   /// The private endpoint IP address for the Autonomous Database.
-  final String? privateEndpointIp;
+  final pulumi.Input<String>? privateEndpointIp;
   /// The private endpoint label for the Autonomous Database.
-  final String? privateEndpointLabel;
+  final pulumi.Input<String>? privateEndpointLabel;
   /// (Output)
   /// The refresh mode of the cloned Autonomous Database.
   /// Possible values:
   /// REFRESHABLE_MODE_UNSPECIFIED
   /// AUTOMATIC
   /// MANUAL
-  final String? refreshableMode;
+  final pulumi.Input<String>? refreshableMode;
   /// (Output)
   /// The refresh State of the clone.
   /// Possible values:
   /// REFRESHABLE_STATE_UNSPECIFIED
   /// REFRESHING
   /// NOT_REFRESHING
-  final String? refreshableState;
+  final pulumi.Input<String>? refreshableState;
   /// (Output)
   /// The Data Guard role of the Autonomous Database.
   /// Possible values:
@@ -234,17 +234,17 @@ class AutonomousDatabaseProperties {
   /// DISABLED_STANDBY
   /// BACKUP_COPY
   /// SNAPSHOT_STANDBY
-  final String? role;
+  final pulumi.Input<String>? role;
   /// (Output)
   /// The list and details of the scheduled operations of the Autonomous
   /// Database.
   /// Structure is documented below.
-  final List<AutonomousDatabasePropertiesScheduledOperationDetail>? scheduledOperationDetails;
+  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetail>>? scheduledOperationDetails;
   /// The ID of the Oracle Cloud Infrastructure vault secret.
-  final String? secretId;
+  final pulumi.Input<String>? secretId;
   /// (Output)
   /// The SQL Web Developer URL for the Autonomous Database.
-  final String? sqlWebDeveloperUrl;
+  final pulumi.Input<String>? sqlWebDeveloperUrl;
   /// (Output)
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -269,20 +269,20 @@ class AutonomousDatabaseProperties {
   /// UPGRADING
   /// INACCESSIBLE
   /// STANDBY
-  final String? state;
+  final pulumi.Input<String>? state;
   /// (Output)
   /// The list of available regions that can be used to create a clone for the
   /// Autonomous Database.
-  final List<String>? supportedCloneRegions;
+  final pulumi.Input<List<String>>? supportedCloneRegions;
   /// (Output)
   /// The storage space used by automatic backups of Autonomous Database, in
   /// gigabytes.
-  final double? totalAutoBackupStorageSizeGbs;
+  final pulumi.Input<double>? totalAutoBackupStorageSizeGbs;
   /// (Output)
   /// The storage space used by Autonomous Database, in gigabytes.
-  final int? usedDataStorageSizeTbs;
+  final pulumi.Input<int>? usedDataStorageSizeTbs;
   /// The ID of the Oracle Cloud Infrastructure vault.
-  final String? vaultId;
+  final pulumi.Input<String>? vaultId;
 
   /// Creates a new [AutonomousDatabaseProperties].
   /// [actualUsedDataStorageSizeTb] (Output)
@@ -406,17 +406,17 @@ class AutonomousDatabaseProperties {
     return <String, dynamic>{
       'actualUsedDataStorageSizeTb': ?actualUsedDataStorageSizeTb,
       'allocatedStorageSizeTb': ?allocatedStorageSizeTb,
-      'apexDetails': ?apexDetails == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesApexDetail, Map<String, dynamic>>(apexDetails!, (value) => value.toMap()),
+      'apexDetails': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesApexDetail>, List<Map<String, dynamic>>>(apexDetails, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesApexDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'arePrimaryAllowlistedIpsUsed': ?arePrimaryAllowlistedIpsUsed,
       'autonomousContainerDatabaseId': ?autonomousContainerDatabaseId,
       'availableUpgradeVersions': ?availableUpgradeVersions,
       'backupRetentionPeriodDays': ?backupRetentionPeriodDays,
       'characterSet': ?characterSet,
       'computeCount': ?computeCount,
-      'connectionStrings': ?connectionStrings == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesConnectionString, Map<String, dynamic>>(connectionStrings!, (value) => value.toMap()),
-      'connectionUrls': ?connectionUrls == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesConnectionUrl, Map<String, dynamic>>(connectionUrls!, (value) => value.toMap()),
+      'connectionStrings': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesConnectionString>, List<Map<String, dynamic>>>(connectionStrings, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesConnectionString, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionUrls': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesConnectionUrl>, List<Map<String, dynamic>>>(connectionUrls, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesConnectionUrl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cpuCoreCount': ?cpuCoreCount,
-      'customerContacts': ?customerContacts == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesCustomerContact, Map<String, dynamic>>(customerContacts!, (value) => value.toMap()),
+      'customerContacts': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesCustomerContact>, List<Map<String, dynamic>>>(customerContacts, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesCustomerContact, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataSafeState': ?dataSafeState,
       'dataStorageSizeGb': ?dataStorageSizeGb,
       'dataStorageSizeTb': ?dataStorageSizeTb,
@@ -432,7 +432,7 @@ class AutonomousDatabaseProperties {
       'lifecycleDetails': ?lifecycleDetails,
       'localAdgAutoFailoverMaxDataLossLimit': ?localAdgAutoFailoverMaxDataLossLimit,
       'localDisasterRecoveryType': ?localDisasterRecoveryType,
-      'localStandbyDbs': ?localStandbyDbs == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesLocalStandbyDb, Map<String, dynamic>>(localStandbyDbs!, (value) => value.toMap()),
+      'localStandbyDbs': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesLocalStandbyDb>, List<Map<String, dynamic>>>(localStandbyDbs, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesLocalStandbyDb, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maintenanceBeginTime': ?maintenanceBeginTime,
       'maintenanceEndTime': ?maintenanceEndTime,
       'maintenanceScheduleType': ?maintenanceScheduleType,
@@ -453,7 +453,7 @@ class AutonomousDatabaseProperties {
       'refreshableMode': ?refreshableMode,
       'refreshableState': ?refreshableState,
       'role': ?role,
-      'scheduledOperationDetails': ?scheduledOperationDetails == null ? null : pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetail, Map<String, dynamic>>(scheduledOperationDetails!, (value) => value.toMap()),
+      'scheduledOperationDetails': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesScheduledOperationDetail>, List<Map<String, dynamic>>>(scheduledOperationDetails, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretId': ?secretId,
       'sqlWebDeveloperUrl': ?sqlWebDeveloperUrl,
       'state': ?state,
@@ -466,63 +466,63 @@ class AutonomousDatabaseProperties {
 
   factory AutonomousDatabaseProperties.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseProperties(
-      actualUsedDataStorageSizeTb: map['actualUsedDataStorageSizeTb'] == null ? null : map['actualUsedDataStorageSizeTb'] as double,
-      allocatedStorageSizeTb: map['allocatedStorageSizeTb'] == null ? null : map['allocatedStorageSizeTb'] as double,
-      apexDetails: map['apexDetails'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesApexDetail>(map['apexDetails'], (value) => AutonomousDatabasePropertiesApexDetail.fromMap((value as Map).cast<String, dynamic>())),
-      arePrimaryAllowlistedIpsUsed: map['arePrimaryAllowlistedIpsUsed'] == null ? null : map['arePrimaryAllowlistedIpsUsed'] as bool,
-      autonomousContainerDatabaseId: map['autonomousContainerDatabaseId'] == null ? null : map['autonomousContainerDatabaseId'] as String,
-      availableUpgradeVersions: map['availableUpgradeVersions'] == null ? null : (map['availableUpgradeVersions'] as List).cast<String>(),
-      backupRetentionPeriodDays: map['backupRetentionPeriodDays'] == null ? null : map['backupRetentionPeriodDays'] as int,
-      characterSet: map['characterSet'] == null ? null : map['characterSet'] as String,
-      computeCount: map['computeCount'] == null ? null : map['computeCount'] as double,
-      connectionStrings: map['connectionStrings'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionString>(map['connectionStrings'], (value) => AutonomousDatabasePropertiesConnectionString.fromMap((value as Map).cast<String, dynamic>())),
-      connectionUrls: map['connectionUrls'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionUrl>(map['connectionUrls'], (value) => AutonomousDatabasePropertiesConnectionUrl.fromMap((value as Map).cast<String, dynamic>())),
-      cpuCoreCount: map['cpuCoreCount'] == null ? null : map['cpuCoreCount'] as int,
-      customerContacts: map['customerContacts'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesCustomerContact>(map['customerContacts'], (value) => AutonomousDatabasePropertiesCustomerContact.fromMap((value as Map).cast<String, dynamic>())),
-      dataSafeState: map['dataSafeState'] == null ? null : map['dataSafeState'] as String,
-      dataStorageSizeGb: map['dataStorageSizeGb'] == null ? null : map['dataStorageSizeGb'] as int,
-      dataStorageSizeTb: map['dataStorageSizeTb'] == null ? null : map['dataStorageSizeTb'] as int,
-      databaseManagementState: map['databaseManagementState'] == null ? null : map['databaseManagementState'] as String,
-      dbEdition: map['dbEdition'] == null ? null : map['dbEdition'] as String,
-      dbVersion: map['dbVersion'] == null ? null : map['dbVersion'] as String,
-      dbWorkload: map['dbWorkload'] as String,
-      failedDataRecoveryDuration: map['failedDataRecoveryDuration'] == null ? null : map['failedDataRecoveryDuration'] as String,
-      isAutoScalingEnabled: map['isAutoScalingEnabled'] == null ? null : map['isAutoScalingEnabled'] as bool,
-      isLocalDataGuardEnabled: map['isLocalDataGuardEnabled'] == null ? null : map['isLocalDataGuardEnabled'] as bool,
-      isStorageAutoScalingEnabled: map['isStorageAutoScalingEnabled'] == null ? null : map['isStorageAutoScalingEnabled'] as bool,
-      licenseType: map['licenseType'] as String,
-      lifecycleDetails: map['lifecycleDetails'] == null ? null : map['lifecycleDetails'] as String,
-      localAdgAutoFailoverMaxDataLossLimit: map['localAdgAutoFailoverMaxDataLossLimit'] == null ? null : map['localAdgAutoFailoverMaxDataLossLimit'] as int,
-      localDisasterRecoveryType: map['localDisasterRecoveryType'] == null ? null : map['localDisasterRecoveryType'] as String,
-      localStandbyDbs: map['localStandbyDbs'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesLocalStandbyDb>(map['localStandbyDbs'], (value) => AutonomousDatabasePropertiesLocalStandbyDb.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceBeginTime: map['maintenanceBeginTime'] == null ? null : map['maintenanceBeginTime'] as String,
-      maintenanceEndTime: map['maintenanceEndTime'] == null ? null : map['maintenanceEndTime'] as String,
-      maintenanceScheduleType: map['maintenanceScheduleType'] == null ? null : map['maintenanceScheduleType'] as String,
-      memoryPerOracleComputeUnitGbs: map['memoryPerOracleComputeUnitGbs'] == null ? null : map['memoryPerOracleComputeUnitGbs'] as int,
-      memoryTableGbs: map['memoryTableGbs'] == null ? null : map['memoryTableGbs'] as int,
-      mtlsConnectionRequired: map['mtlsConnectionRequired'] == null ? null : map['mtlsConnectionRequired'] as bool,
-      nCharacterSet: map['nCharacterSet'] == null ? null : map['nCharacterSet'] as String,
-      nextLongTermBackupTime: map['nextLongTermBackupTime'] == null ? null : map['nextLongTermBackupTime'] as String,
-      ociUrl: map['ociUrl'] == null ? null : map['ociUrl'] as String,
-      ocid: map['ocid'] == null ? null : map['ocid'] as String,
-      openMode: map['openMode'] == null ? null : map['openMode'] as String,
-      operationsInsightsState: map['operationsInsightsState'] == null ? null : map['operationsInsightsState'] as String,
-      peerDbIds: map['peerDbIds'] == null ? null : (map['peerDbIds'] as List).cast<String>(),
-      permissionLevel: map['permissionLevel'] == null ? null : map['permissionLevel'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : map['privateEndpoint'] as String,
-      privateEndpointIp: map['privateEndpointIp'] == null ? null : map['privateEndpointIp'] as String,
-      privateEndpointLabel: map['privateEndpointLabel'] == null ? null : map['privateEndpointLabel'] as String,
-      refreshableMode: map['refreshableMode'] == null ? null : map['refreshableMode'] as String,
-      refreshableState: map['refreshableState'] == null ? null : map['refreshableState'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      scheduledOperationDetails: map['scheduledOperationDetails'] == null ? null : pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetail>(map['scheduledOperationDetails'], (value) => AutonomousDatabasePropertiesScheduledOperationDetail.fromMap((value as Map).cast<String, dynamic>())),
-      secretId: map['secretId'] == null ? null : map['secretId'] as String,
-      sqlWebDeveloperUrl: map['sqlWebDeveloperUrl'] == null ? null : map['sqlWebDeveloperUrl'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      supportedCloneRegions: map['supportedCloneRegions'] == null ? null : (map['supportedCloneRegions'] as List).cast<String>(),
-      totalAutoBackupStorageSizeGbs: map['totalAutoBackupStorageSizeGbs'] == null ? null : map['totalAutoBackupStorageSizeGbs'] as double,
-      usedDataStorageSizeTbs: map['usedDataStorageSizeTbs'] == null ? null : map['usedDataStorageSizeTbs'] as int,
-      vaultId: map['vaultId'] == null ? null : map['vaultId'] as String,
+      actualUsedDataStorageSizeTb: map['actualUsedDataStorageSizeTb'] == null ? null : (map['actualUsedDataStorageSizeTb'] as double).input(),
+      allocatedStorageSizeTb: map['allocatedStorageSizeTb'] == null ? null : (map['allocatedStorageSizeTb'] as double).input(),
+      apexDetails: map['apexDetails'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesApexDetail>(map['apexDetails'], (value) => AutonomousDatabasePropertiesApexDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arePrimaryAllowlistedIpsUsed: map['arePrimaryAllowlistedIpsUsed'] == null ? null : (map['arePrimaryAllowlistedIpsUsed'] as bool).input(),
+      autonomousContainerDatabaseId: map['autonomousContainerDatabaseId'] == null ? null : (map['autonomousContainerDatabaseId'] as String).input(),
+      availableUpgradeVersions: map['availableUpgradeVersions'] == null ? null : ((map['availableUpgradeVersions'] as List).cast<String>()).input(),
+      backupRetentionPeriodDays: map['backupRetentionPeriodDays'] == null ? null : (map['backupRetentionPeriodDays'] as int).input(),
+      characterSet: map['characterSet'] == null ? null : (map['characterSet'] as String).input(),
+      computeCount: map['computeCount'] == null ? null : (map['computeCount'] as double).input(),
+      connectionStrings: map['connectionStrings'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionString>(map['connectionStrings'], (value) => AutonomousDatabasePropertiesConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionUrls: map['connectionUrls'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionUrl>(map['connectionUrls'], (value) => AutonomousDatabasePropertiesConnectionUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuCoreCount: map['cpuCoreCount'] == null ? null : (map['cpuCoreCount'] as int).input(),
+      customerContacts: map['customerContacts'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesCustomerContact>(map['customerContacts'], (value) => AutonomousDatabasePropertiesCustomerContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSafeState: map['dataSafeState'] == null ? null : (map['dataSafeState'] as String).input(),
+      dataStorageSizeGb: map['dataStorageSizeGb'] == null ? null : (map['dataStorageSizeGb'] as int).input(),
+      dataStorageSizeTb: map['dataStorageSizeTb'] == null ? null : (map['dataStorageSizeTb'] as int).input(),
+      databaseManagementState: map['databaseManagementState'] == null ? null : (map['databaseManagementState'] as String).input(),
+      dbEdition: map['dbEdition'] == null ? null : (map['dbEdition'] as String).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
+      dbWorkload: (map['dbWorkload'] as String).input(),
+      failedDataRecoveryDuration: map['failedDataRecoveryDuration'] == null ? null : (map['failedDataRecoveryDuration'] as String).input(),
+      isAutoScalingEnabled: map['isAutoScalingEnabled'] == null ? null : (map['isAutoScalingEnabled'] as bool).input(),
+      isLocalDataGuardEnabled: map['isLocalDataGuardEnabled'] == null ? null : (map['isLocalDataGuardEnabled'] as bool).input(),
+      isStorageAutoScalingEnabled: map['isStorageAutoScalingEnabled'] == null ? null : (map['isStorageAutoScalingEnabled'] as bool).input(),
+      licenseType: (map['licenseType'] as String).input(),
+      lifecycleDetails: map['lifecycleDetails'] == null ? null : (map['lifecycleDetails'] as String).input(),
+      localAdgAutoFailoverMaxDataLossLimit: map['localAdgAutoFailoverMaxDataLossLimit'] == null ? null : (map['localAdgAutoFailoverMaxDataLossLimit'] as int).input(),
+      localDisasterRecoveryType: map['localDisasterRecoveryType'] == null ? null : (map['localDisasterRecoveryType'] as String).input(),
+      localStandbyDbs: map['localStandbyDbs'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesLocalStandbyDb>(map['localStandbyDbs'], (value) => AutonomousDatabasePropertiesLocalStandbyDb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maintenanceBeginTime: map['maintenanceBeginTime'] == null ? null : (map['maintenanceBeginTime'] as String).input(),
+      maintenanceEndTime: map['maintenanceEndTime'] == null ? null : (map['maintenanceEndTime'] as String).input(),
+      maintenanceScheduleType: map['maintenanceScheduleType'] == null ? null : (map['maintenanceScheduleType'] as String).input(),
+      memoryPerOracleComputeUnitGbs: map['memoryPerOracleComputeUnitGbs'] == null ? null : (map['memoryPerOracleComputeUnitGbs'] as int).input(),
+      memoryTableGbs: map['memoryTableGbs'] == null ? null : (map['memoryTableGbs'] as int).input(),
+      mtlsConnectionRequired: map['mtlsConnectionRequired'] == null ? null : (map['mtlsConnectionRequired'] as bool).input(),
+      nCharacterSet: map['nCharacterSet'] == null ? null : (map['nCharacterSet'] as String).input(),
+      nextLongTermBackupTime: map['nextLongTermBackupTime'] == null ? null : (map['nextLongTermBackupTime'] as String).input(),
+      ociUrl: map['ociUrl'] == null ? null : (map['ociUrl'] as String).input(),
+      ocid: map['ocid'] == null ? null : (map['ocid'] as String).input(),
+      openMode: map['openMode'] == null ? null : (map['openMode'] as String).input(),
+      operationsInsightsState: map['operationsInsightsState'] == null ? null : (map['operationsInsightsState'] as String).input(),
+      peerDbIds: map['peerDbIds'] == null ? null : ((map['peerDbIds'] as List).cast<String>()).input(),
+      permissionLevel: map['permissionLevel'] == null ? null : (map['permissionLevel'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (map['privateEndpoint'] as String).input(),
+      privateEndpointIp: map['privateEndpointIp'] == null ? null : (map['privateEndpointIp'] as String).input(),
+      privateEndpointLabel: map['privateEndpointLabel'] == null ? null : (map['privateEndpointLabel'] as String).input(),
+      refreshableMode: map['refreshableMode'] == null ? null : (map['refreshableMode'] as String).input(),
+      refreshableState: map['refreshableState'] == null ? null : (map['refreshableState'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      scheduledOperationDetails: map['scheduledOperationDetails'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetail>(map['scheduledOperationDetails'], (value) => AutonomousDatabasePropertiesScheduledOperationDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
+      sqlWebDeveloperUrl: map['sqlWebDeveloperUrl'] == null ? null : (map['sqlWebDeveloperUrl'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      supportedCloneRegions: map['supportedCloneRegions'] == null ? null : ((map['supportedCloneRegions'] as List).cast<String>()).input(),
+      totalAutoBackupStorageSizeGbs: map['totalAutoBackupStorageSizeGbs'] == null ? null : (map['totalAutoBackupStorageSizeGbs'] as double).input(),
+      usedDataStorageSizeTbs: map['usedDataStorageSizeTbs'] == null ? null : (map['usedDataStorageSizeTbs'] as int).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

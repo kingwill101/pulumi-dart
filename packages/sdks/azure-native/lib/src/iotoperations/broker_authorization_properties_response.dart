@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_config_response.dart';
 
 /// BrokerAuthorization Resource properties
 class BrokerAuthorizationPropertiesResponse {
   /// The list of authorization policies supported by the Authorization Resource.
-  final AuthorizationConfigResponse authorizationPolicies;
+  final pulumi.Input<AuthorizationConfigResponse> authorizationPolicies;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [BrokerAuthorizationPropertiesResponse].
   /// [authorizationPolicies] The list of authorization policies supported by the Authorization Resource.
@@ -19,15 +20,15 @@ class BrokerAuthorizationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationPolicies': authorizationPolicies.toMap(),
+      'authorizationPolicies': pulumi.Input.mapInputValue<AuthorizationConfigResponse, Map<String, dynamic>>(authorizationPolicies, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory BrokerAuthorizationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthorizationPropertiesResponse(
-      authorizationPolicies: AuthorizationConfigResponse.fromMap((map['authorizationPolicies'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      authorizationPolicies: (AuthorizationConfigResponse.fromMap((map['authorizationPolicies'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

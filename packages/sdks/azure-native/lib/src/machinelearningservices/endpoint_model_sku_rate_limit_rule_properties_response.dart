@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_model_sku_rate_limit_rule_pattern_properties_response.dart';
 
 class EndpointModelSkuRateLimitRulePropertiesResponse {
-  final double? count;
+  final pulumi.Input<double>? count;
   /// If the dynamic throttling is enabled.
-  final bool? dynamicThrottlingEnabled;
-  final String? key;
-  final List<EndpointModelSkuRateLimitRulePatternPropertiesResponse>? matchPatterns;
-  final double? minCount;
-  final double? renewalPeriod;
+  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<String>? key;
+  final pulumi.Input<List<EndpointModelSkuRateLimitRulePatternPropertiesResponse>>? matchPatterns;
+  final pulumi.Input<double>? minCount;
+  final pulumi.Input<double>? renewalPeriod;
 
   /// Creates a new [EndpointModelSkuRateLimitRulePropertiesResponse].
   /// [count] Optional.
@@ -33,7 +33,7 @@ class EndpointModelSkuRateLimitRulePropertiesResponse {
       'count': ?count,
       'dynamicThrottlingEnabled': ?dynamicThrottlingEnabled,
       'key': ?key,
-      'matchPatterns': ?matchPatterns == null ? null : pulumi.Input.encodeList<EndpointModelSkuRateLimitRulePatternPropertiesResponse, Map<String, dynamic>>(matchPatterns!, (value) => value.toMap()),
+      'matchPatterns': ?pulumi.Input.mapOptionalInputValue<List<EndpointModelSkuRateLimitRulePatternPropertiesResponse>, List<Map<String, dynamic>>>(matchPatterns, (value) => pulumi.Input.encodeList<EndpointModelSkuRateLimitRulePatternPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'minCount': ?minCount,
       'renewalPeriod': ?renewalPeriod,
     };
@@ -41,12 +41,12 @@ class EndpointModelSkuRateLimitRulePropertiesResponse {
 
   factory EndpointModelSkuRateLimitRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitRulePropertiesResponse(
-      count: map['count'] == null ? null : map['count'] as double,
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : map['dynamicThrottlingEnabled'] as bool,
-      key: map['key'] == null ? null : map['key'] as String,
-      matchPatterns: map['matchPatterns'] == null ? null : pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePatternPropertiesResponse>(map['matchPatterns'], (value) => EndpointModelSkuRateLimitRulePatternPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      minCount: map['minCount'] == null ? null : map['minCount'] as double,
-      renewalPeriod: map['renewalPeriod'] == null ? null : map['renewalPeriod'] as double,
+      count: map['count'] == null ? null : (map['count'] as double).input(),
+      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      matchPatterns: map['matchPatterns'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePatternPropertiesResponse>(map['matchPatterns'], (value) => EndpointModelSkuRateLimitRulePatternPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount'] as double).input(),
+      renewalPeriod: map['renewalPeriod'] == null ? null : (map['renewalPeriod'] as double).input(),
     );
   }
 }

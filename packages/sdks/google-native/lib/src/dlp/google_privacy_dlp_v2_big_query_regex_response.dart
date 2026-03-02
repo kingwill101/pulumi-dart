@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
 class GooglePrivacyDlpV2BigQueryRegexResponse {
   /// If unset, this property matches all datasets.
-  final String datasetIdRegex;
+  final pulumi.Input<String> datasetIdRegex;
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-  final String projectIdRegex;
+  final pulumi.Input<String> projectIdRegex;
   /// If unset, this property matches all tables.
-  final String tableIdRegex;
+  final pulumi.Input<String> tableIdRegex;
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryRegexResponse].
   /// [datasetIdRegex] If unset, this property matches all datasets.
@@ -30,9 +31,9 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
 
   factory GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexResponse(
-      datasetIdRegex: map['datasetIdRegex'] as String,
-      projectIdRegex: map['projectIdRegex'] as String,
-      tableIdRegex: map['tableIdRegex'] as String,
+      datasetIdRegex: (map['datasetIdRegex'] as String).input(),
+      projectIdRegex: (map['projectIdRegex'] as String).input(),
+      tableIdRegex: (map['tableIdRegex'] as String).input(),
     );
   }
 }

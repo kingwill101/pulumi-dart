@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inquiry_validation.dart';
 
 /// Details of an inquired protectable item.
 class WorkloadInquiryDetails {
   /// Inquiry validation such as permissions and other backup validations.
-  final InquiryValidation? inquiryValidation;
+  final pulumi.Input<InquiryValidation>? inquiryValidation;
   /// Contains the protectable item Count inside this Container.
-  final double? itemCount;
+  final pulumi.Input<double>? itemCount;
   /// Type of the Workload such as SQL, Oracle etc.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkloadInquiryDetails].
   /// [inquiryValidation] Inquiry validation such as permissions and other backup validations.
@@ -23,7 +24,7 @@ class WorkloadInquiryDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inquiryValidation': ?inquiryValidation == null ? null : inquiryValidation!.toMap(),
+      'inquiryValidation': ?pulumi.Input.mapOptionalInputValue<InquiryValidation, Map<String, dynamic>>(inquiryValidation, (value) => value.toMap()),
       'itemCount': ?itemCount,
       'type': ?type,
     };
@@ -31,9 +32,9 @@ class WorkloadInquiryDetails {
 
   factory WorkloadInquiryDetails.fromMap(Map<String, dynamic> map) {
     return WorkloadInquiryDetails(
-      inquiryValidation: map['inquiryValidation'] == null ? null : InquiryValidation.fromMap((map['inquiryValidation'] as Map).cast<String, dynamic>()),
-      itemCount: map['itemCount'] == null ? null : map['itemCount'] as double,
-      type: map['type'] == null ? null : map['type'] as String,
+      inquiryValidation: map['inquiryValidation'] == null ? null : (InquiryValidation.fromMap((map['inquiryValidation'] as Map).cast<String, dynamic>())).input(),
+      itemCount: map['itemCount'] == null ? null : (map['itemCount'] as double).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

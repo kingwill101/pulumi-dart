@@ -16,11 +16,9 @@ class RetentionConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriodInDays] The number of days AWS Config stores historical information.
   RetentionConfigurationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> retentionPeriodInDays,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionPeriodInDays = pulumi.Input.asInput<int>(retentionPeriodInDays);
+    this.region,
+    required this.retentionPeriodInDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class RetentionConfigurationArgs {
 
   factory RetentionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RetentionConfigurationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionPeriodInDays: pulumi.Output.create<int>(map['retentionPeriodInDays'] as int),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
     );
   }
 }

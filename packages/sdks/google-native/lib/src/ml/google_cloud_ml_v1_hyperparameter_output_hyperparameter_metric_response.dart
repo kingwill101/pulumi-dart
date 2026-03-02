@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An observed value of a metric.
 class GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse {
   /// The objective value at this training step.
-  final double objectiveValue;
+  final pulumi.Input<double> objectiveValue;
   /// The global training step for this metric.
-  final String trainingStep;
+  final pulumi.Input<String> trainingStep;
 
   /// Creates a new [GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse].
   /// [objectiveValue] The objective value at this training step.
@@ -25,8 +26,8 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse {
 
   factory GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse(
-      objectiveValue: map['objectiveValue'] as double,
-      trainingStep: map['trainingStep'] as String,
+      objectiveValue: (map['objectiveValue'] as double).input(),
+      trainingStep: (map['trainingStep'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GremlinGraphUniqueKey {
   /// A list of paths to use for this unique key. Changing this forces a new resource to be created.
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
 
   /// Creates a new [GremlinGraphUniqueKey].
   /// [paths] A list of paths to use for this unique key. Changing this forces a new resource to be created.
@@ -19,7 +20,7 @@ class GremlinGraphUniqueKey {
 
   factory GremlinGraphUniqueKey.fromMap(Map<String, dynamic> map) {
     return GremlinGraphUniqueKey(
-      paths: (map['paths'] as List).cast<String>(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContainerAclRead {
   /// The date the container ACL was created.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Whether the container is accessible project wide.
-  final bool? projectAccess;
+  final pulumi.Input<bool>? projectAccess;
   /// The date the container ACL was last updated.
-  final String updatedAt;
+  final pulumi.Input<String> updatedAt;
   /// The list of user IDs, which are allowed to access the container,
   /// when `project_access` is set to `false`.
-  final List<String>? users;
+  final pulumi.Input<List<String>>? users;
 
   /// Creates a new [GetContainerAclRead].
   /// [createdAt] The date the container ACL was created.
@@ -35,10 +36,10 @@ class GetContainerAclRead {
 
   factory GetContainerAclRead.fromMap(Map<String, dynamic> map) {
     return GetContainerAclRead(
-      createdAt: map['createdAt'] as String,
-      projectAccess: map['projectAccess'] == null ? null : map['projectAccess'] as bool,
-      updatedAt: map['updatedAt'] as String,
-      users: map['users'] == null ? null : (map['users'] as List).cast<String>(),
+      createdAt: (map['createdAt'] as String).input(),
+      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess'] as bool).input(),
+      updatedAt: (map['updatedAt'] as String).input(),
+      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
     );
   }
 }

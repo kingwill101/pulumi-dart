@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Email notification of an autoscale event.
 class EmailNotification {
   /// the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
-  final List<String>? customEmails;
+  final pulumi.Input<List<String>>? customEmails;
   /// a value indicating whether to send email to subscription administrator.
-  final bool? sendToSubscriptionAdministrator;
+  final pulumi.Input<bool>? sendToSubscriptionAdministrator;
   /// a value indicating whether to send email to subscription co-administrators.
-  final bool? sendToSubscriptionCoAdministrators;
+  final pulumi.Input<bool>? sendToSubscriptionCoAdministrators;
 
   /// Creates a new [EmailNotification].
   /// [customEmails] the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
@@ -30,9 +31,9 @@ class EmailNotification {
 
   factory EmailNotification.fromMap(Map<String, dynamic> map) {
     return EmailNotification(
-      customEmails: map['customEmails'] == null ? null : (map['customEmails'] as List).cast<String>(),
-      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : map['sendToSubscriptionAdministrator'] as bool,
-      sendToSubscriptionCoAdministrators: map['sendToSubscriptionCoAdministrators'] == null ? null : map['sendToSubscriptionCoAdministrators'] as bool,
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
+      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator'] as bool).input(),
+      sendToSubscriptionCoAdministrators: map['sendToSubscriptionCoAdministrators'] == null ? null : (map['sendToSubscriptionCoAdministrators'] as bool).input(),
     );
   }
 }

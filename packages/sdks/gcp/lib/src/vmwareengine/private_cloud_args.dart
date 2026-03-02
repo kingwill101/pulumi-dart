@@ -43,25 +43,16 @@ class PrivateCloudArgs {
   /// [sendDeletionDelayHoursIfZero] While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
   /// [type] Initial type of the private cloud.
   PrivateCloudArgs({
-    pulumi.Output<int>? deletionDelayHours,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> location,
-    required pulumi.Output<PrivateCloudManagementCluster> managementCluster,
-    pulumi.Output<String>? name,
-    required pulumi.Output<PrivateCloudNetworkConfig> networkConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? sendDeletionDelayHoursIfZero,
-    pulumi.Output<String>? type,
-  }) :
-      deletionDelayHours = pulumi.Input.asOptionalInput<int>(deletionDelayHours),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asInput<String>(location),
-      managementCluster = pulumi.Input.asInput<PrivateCloudManagementCluster>(managementCluster),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkConfig = pulumi.Input.asInput<PrivateCloudNetworkConfig>(networkConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sendDeletionDelayHoursIfZero = pulumi.Input.asOptionalInput<bool>(sendDeletionDelayHoursIfZero),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.deletionDelayHours,
+    this.description,
+    required this.location,
+    required this.managementCluster,
+    this.name,
+    required this.networkConfig,
+    this.project,
+    this.sendDeletionDelayHoursIfZero,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      deletionDelayHours: map['deletionDelayHours'] == null ? null : pulumi.Output.create<int>(map['deletionDelayHours'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      managementCluster: pulumi.Output.create<PrivateCloudManagementCluster>(PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkConfig: pulumi.Output.create<PrivateCloudNetworkConfig>(PrivateCloudNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] == null ? null : pulumi.Output.create<bool>(map['sendDeletionDelayHoursIfZero'] as bool),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      deletionDelayHours: map['deletionDelayHours'] == null ? null : (map['deletionDelayHours'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: (map['location'] as String).input(),
+      managementCluster: (PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkConfig: (PrivateCloudNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] == null ? null : (map['sendDeletionDelayHoursIfZero'] as bool).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

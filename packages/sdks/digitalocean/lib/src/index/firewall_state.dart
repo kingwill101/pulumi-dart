@@ -43,23 +43,15 @@ class FirewallState {
   /// [status] A status string indicating the current state of the Firewall.
   /// [tags] The names of the Tags assigned to the Firewall (max. 5).
   FirewallState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<List<int>>? dropletIds,
-    pulumi.Output<List<FirewallInboundRule>>? inboundRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<FirewallOutboundRule>>? outboundRules,
-    pulumi.Output<List<FirewallPendingChange>>? pendingChanges,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      dropletIds = pulumi.Input.asOptionalInput<List<int>>(dropletIds),
-      inboundRules = pulumi.Input.asOptionalInput<List<FirewallInboundRule>>(inboundRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outboundRules = pulumi.Input.asOptionalInput<List<FirewallOutboundRule>>(outboundRules),
-      pendingChanges = pulumi.Input.asOptionalInput<List<FirewallPendingChange>>(pendingChanges),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.createdAt,
+    this.dropletIds,
+    this.inboundRules,
+    this.name,
+    this.outboundRules,
+    this.pendingChanges,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class FirewallState {
 
   factory FirewallState.fromMap(Map<String, dynamic> map) {
     return FirewallState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      dropletIds: map['dropletIds'] == null ? null : pulumi.Output.create<List<int>>((map['dropletIds'] as List).cast<int>()),
-      inboundRules: map['inboundRules'] == null ? null : pulumi.Output.create<List<FirewallInboundRule>>(pulumi.Input.decodeList<FirewallInboundRule>(map['inboundRules'], (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outboundRules: map['outboundRules'] == null ? null : pulumi.Output.create<List<FirewallOutboundRule>>(pulumi.Input.decodeList<FirewallOutboundRule>(map['outboundRules'], (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>()))),
-      pendingChanges: map['pendingChanges'] == null ? null : pulumi.Output.create<List<FirewallPendingChange>>(pulumi.Input.decodeList<FirewallPendingChange>(map['pendingChanges'], (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      dropletIds: map['dropletIds'] == null ? null : ((map['dropletIds'] as List).cast<int>()).input(),
+      inboundRules: map['inboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallInboundRule>(map['inboundRules'], (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallOutboundRule>(map['outboundRules'], (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pendingChanges: map['pendingChanges'] == null ? null : (pulumi.Input.decodeList<FirewallPendingChange>(map['pendingChanges'], (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

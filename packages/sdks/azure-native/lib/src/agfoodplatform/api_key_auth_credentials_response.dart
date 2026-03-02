@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_properties_response.dart';
 
 /// ApiKeyAuthCredentials class for ApiKey based Auth.
 class ApiKeyAuthCredentialsResponse {
   /// Properties of the key vault.
-  final KeyVaultPropertiesResponse apiKey;
+  final pulumi.Input<KeyVaultPropertiesResponse> apiKey;
   /// Enum for different types of AuthCredentials supported.
   /// Expected value is 'ApiKeyAuthCredentials'.
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [ApiKeyAuthCredentialsResponse].
   /// [apiKey] Properties of the key vault.
@@ -20,15 +21,15 @@ class ApiKeyAuthCredentialsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKey': apiKey.toMap(),
+      'apiKey': pulumi.Input.mapInputValue<KeyVaultPropertiesResponse, Map<String, dynamic>>(apiKey, (value) => value.toMap()),
       'kind': kind,
     };
   }
 
   factory ApiKeyAuthCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyAuthCredentialsResponse(
-      apiKey: KeyVaultPropertiesResponse.fromMap((map['apiKey'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
+      apiKey: (KeyVaultPropertiesResponse.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
     );
   }
 }

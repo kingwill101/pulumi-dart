@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cmkidentity_definition.dart';
 
 /// Definition of CMK for the factory.
 class EncryptionConfiguration {
   /// User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
-  final CMKIdentityDefinition? identity;
+  final pulumi.Input<CMKIdentityDefinition>? identity;
   /// The name of the key in Azure Key Vault to use as Customer Managed Key.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// The version of the key used for CMK. If not provided, latest version will be used.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// The url of the Azure Key Vault used for CMK.
-  final String vaultBaseUrl;
+  final pulumi.Input<String> vaultBaseUrl;
 
   /// Creates a new [EncryptionConfiguration].
   /// [identity] User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
@@ -27,7 +28,7 @@ class EncryptionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<CMKIdentityDefinition, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'keyName': keyName,
       'keyVersion': ?keyVersion,
       'vaultBaseUrl': vaultBaseUrl,
@@ -36,10 +37,10 @@ class EncryptionConfiguration {
 
   factory EncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return EncryptionConfiguration(
-      identity: map['identity'] == null ? null : CMKIdentityDefinition.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      keyName: map['keyName'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      vaultBaseUrl: map['vaultBaseUrl'] as String,
+      identity: map['identity'] == null ? null : (CMKIdentityDefinition.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyName: (map['keyName'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      vaultBaseUrl: (map['vaultBaseUrl'] as String).input(),
     );
   }
 }

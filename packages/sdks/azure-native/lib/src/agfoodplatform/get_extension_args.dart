@@ -19,13 +19,10 @@ class GetExtensionArgs {
   /// [extensionId] Id of extension resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetExtensionArgs({
-    required pulumi.Output<String> dataManagerForAgricultureResourceName,
-    required pulumi.Output<String> extensionId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataManagerForAgricultureResourceName = pulumi.Input.asInput<String>(dataManagerForAgricultureResourceName),
-      extensionId = pulumi.Input.asInput<String>(extensionId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataManagerForAgricultureResourceName,
+    required this.extensionId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExtensionArgs {
 
   factory GetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionArgs(
-      dataManagerForAgricultureResourceName: pulumi.Output.create<String>(map['dataManagerForAgricultureResourceName'] as String),
-      extensionId: pulumi.Output.create<String>(map['extensionId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
+      extensionId: (map['extensionId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

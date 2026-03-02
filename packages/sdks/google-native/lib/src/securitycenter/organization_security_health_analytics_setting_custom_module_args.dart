@@ -26,17 +26,12 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// [name] Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   /// [organizationId] Required.
   OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
-    pulumi.Output<GoogleCloudSecuritycenterV1CustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState>? enablementState,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      customConfig = pulumi.Input.asOptionalInput<GoogleCloudSecuritycenterV1CustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState>(enablementState),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<GoogleCloudSecuritycenterV1CustomConfig>(GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState>(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

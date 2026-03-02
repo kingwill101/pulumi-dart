@@ -22,15 +22,11 @@ class GetCassandraResourceCassandraViewArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [viewName] Cosmos DB view name.
   GetCassandraResourceCassandraViewArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> keyspaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> viewName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      keyspaceName = pulumi.Input.asInput<String>(keyspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      viewName = pulumi.Input.asInput<String>(viewName);
+    required this.accountName,
+    required this.keyspaceName,
+    required this.resourceGroupName,
+    required this.viewName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCassandraResourceCassandraViewArgs {
 
   factory GetCassandraResourceCassandraViewArgs.fromMap(Map<String, dynamic> map) {
     return GetCassandraResourceCassandraViewArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      keyspaceName: pulumi.Output.create<String>(map['keyspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      viewName: pulumi.Output.create<String>(map['viewName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      keyspaceName: (map['keyspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      viewName: (map['viewName'] as String).input(),
     );
   }
 }

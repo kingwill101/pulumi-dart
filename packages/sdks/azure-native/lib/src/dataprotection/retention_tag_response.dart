@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Retention tag
 class RetentionTagResponse {
   /// Retention Tag version.
-  final String eTag;
+  final pulumi.Input<String> eTag;
   /// Retention Tag version.
-  final String id;
+  final pulumi.Input<String> id;
   /// Retention Tag Name to relate it to retention rule.
-  final String tagName;
+  final pulumi.Input<String> tagName;
 
   /// Creates a new [RetentionTagResponse].
   /// [eTag] Retention Tag version.
@@ -30,9 +31,9 @@ class RetentionTagResponse {
 
   factory RetentionTagResponse.fromMap(Map<String, dynamic> map) {
     return RetentionTagResponse(
-      eTag: map['eTag'] as String,
-      id: map['id'] as String,
-      tagName: map['tagName'] as String,
+      eTag: (map['eTag'] as String).input(),
+      id: (map['id'] as String).input(),
+      tagName: (map['tagName'] as String).input(),
     );
   }
 }

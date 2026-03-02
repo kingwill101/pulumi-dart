@@ -30,19 +30,13 @@ class DomainEntryArgs {
   /// [target] Target of the domain entry.
   /// [type] Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   DomainEntryArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<bool>? isAlias,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> target,
-    required pulumi.Output<String> type,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      isAlias = pulumi.Input.asOptionalInput<bool>(isAlias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asInput<String>(target),
-      type = pulumi.Input.asInput<String>(type);
+    required this.domainName,
+    this.isAlias,
+    this.name,
+    this.region,
+    required this.target,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DomainEntryArgs {
 
   factory DomainEntryArgs.fromMap(Map<String, dynamic> map) {
     return DomainEntryArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      isAlias: map['isAlias'] == null ? null : pulumi.Output.create<bool>(map['isAlias'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: pulumi.Output.create<String>(map['target'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      domainName: (map['domainName'] as String).input(),
+      isAlias: map['isAlias'] == null ? null : (map['isAlias'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: (map['target'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

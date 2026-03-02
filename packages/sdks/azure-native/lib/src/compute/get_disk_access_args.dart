@@ -16,11 +16,9 @@ class GetDiskAccessArgs {
   /// [diskAccessName] The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiskAccessArgs({
-    required pulumi.Output<String> diskAccessName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskAccessName = pulumi.Input.asInput<String>(diskAccessName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskAccessName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiskAccessArgs {
 
   factory GetDiskAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskAccessArgs(
-      diskAccessName: pulumi.Output.create<String>(map['diskAccessName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskAccessName: (map['diskAccessName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

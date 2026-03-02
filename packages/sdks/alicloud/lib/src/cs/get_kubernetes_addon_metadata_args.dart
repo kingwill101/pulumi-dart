@@ -19,13 +19,10 @@ class GetKubernetesAddonMetadataArgs {
   /// [name] The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `alicloud.cs.getKubernetesAddons`.
   /// [version] The version of the cluster addon.
   GetKubernetesAddonMetadataArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> version,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asInput<String>(name),
-      version = pulumi.Input.asInput<String>(version);
+    required this.clusterId,
+    required this.name,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKubernetesAddonMetadataArgs {
 
   factory GetKubernetesAddonMetadataArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonMetadataArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

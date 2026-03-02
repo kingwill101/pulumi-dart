@@ -31,21 +31,14 @@ class EventApiDestinationArgs {
   /// [name] The name of the new API Destination. The name must be unique for your account. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EventApiDestinationArgs({
-    required pulumi.Output<String> connectionArn,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> httpMethod,
-    required pulumi.Output<String> invocationEndpoint,
-    pulumi.Output<int>? invocationRateLimitPerSecond,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      connectionArn = pulumi.Input.asInput<String>(connectionArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpMethod = pulumi.Input.asInput<String>(httpMethod),
-      invocationEndpoint = pulumi.Input.asInput<String>(invocationEndpoint),
-      invocationRateLimitPerSecond = pulumi.Input.asOptionalInput<int>(invocationRateLimitPerSecond),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.connectionArn,
+    this.description,
+    required this.httpMethod,
+    required this.invocationEndpoint,
+    this.invocationRateLimitPerSecond,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EventApiDestinationArgs {
 
   factory EventApiDestinationArgs.fromMap(Map<String, dynamic> map) {
     return EventApiDestinationArgs(
-      connectionArn: pulumi.Output.create<String>(map['connectionArn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpMethod: pulumi.Output.create<String>(map['httpMethod'] as String),
-      invocationEndpoint: pulumi.Output.create<String>(map['invocationEndpoint'] as String),
-      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : pulumi.Output.create<int>(map['invocationRateLimitPerSecond'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      connectionArn: (map['connectionArn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpMethod: (map['httpMethod'] as String).input(),
+      invocationEndpoint: (map['invocationEndpoint'] as String).input(),
+      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : (map['invocationRateLimitPerSecond'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

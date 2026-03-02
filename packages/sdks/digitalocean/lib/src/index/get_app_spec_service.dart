@@ -17,50 +17,50 @@ import 'get_app_spec_service_termination.dart';
 
 class GetAppSpecService {
   /// Describes an alert policy for the component.
-  final List<GetAppSpecServiceAlert>? alerts;
+  final pulumi.Input<List<GetAppSpecServiceAlert>>? alerts;
   /// Configuration for automatically scaling this component based on metrics.
-  final GetAppSpecServiceAutoscaling? autoscaling;
+  final pulumi.Input<GetAppSpecServiceAutoscaling>? autoscaling;
   /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-  final GetAppSpecServiceBitbucket? bitbucket;
+  final pulumi.Input<GetAppSpecServiceBitbucket>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final String? buildCommand;
+  final pulumi.Input<String>? buildCommand;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final GetAppSpecServiceCors? cors;
+  final pulumi.Input<GetAppSpecServiceCors>? cors;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final String? dockerfilePath;
+  final pulumi.Input<String>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final String? environmentSlug;
+  final pulumi.Input<String>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final List<GetAppSpecServiceEnv>? envs;
+  final pulumi.Input<List<GetAppSpecServiceEnv>>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-  final GetAppSpecServiceGit? git;
+  final pulumi.Input<GetAppSpecServiceGit>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final GetAppSpecServiceGithub? github;
+  final pulumi.Input<GetAppSpecServiceGithub>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final GetAppSpecServiceGitlab? gitlab;
+  final pulumi.Input<GetAppSpecServiceGitlab>? gitlab;
   /// A health check to determine the availability of this component.
-  final GetAppSpecServiceHealthCheck? healthCheck;
+  final pulumi.Input<GetAppSpecServiceHealthCheck>? healthCheck;
   /// The internal port on which this service's run command will listen.
-  final int httpPort;
+  final pulumi.Input<int> httpPort;
   /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final GetAppSpecServiceImage? image;
+  final pulumi.Input<GetAppSpecServiceImage>? image;
   /// The amount of instances that this component should be scaled to.
-  final int? instanceCount;
+  final pulumi.Input<int>? instanceCount;
   /// The instance size to use for this component.
-  final String? instanceSizeSlug;
+  final pulumi.Input<String>? instanceSizeSlug;
   /// A list of ports on which this service will listen for internal traffic.
-  final List<int> internalPorts;
+  final pulumi.Input<List<int>> internalPorts;
   /// Describes a log forwarding destination.
-  final List<GetAppSpecServiceLogDestination>? logDestinations;
+  final pulumi.Input<List<GetAppSpecServiceLogDestination>>? logDestinations;
   /// The name of the component.
-  final String name;
-  final List<GetAppSpecServiceRoute> routes;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<GetAppSpecServiceRoute>> routes;
   /// An optional run command to override the component's default.
-  final String runCommand;
+  final pulumi.Input<String> runCommand;
   /// An optional path to the working directory to use for the build.
-  final String? sourceDir;
+  final pulumi.Input<String>? sourceDir;
   /// Contains a component's termination parameters.
-  final GetAppSpecServiceTermination? termination;
+  final pulumi.Input<GetAppSpecServiceTermination>? termination;
 
   /// Creates a new [GetAppSpecService].
   /// [alerts] Describes an alert policy for the component.
@@ -114,57 +114,57 @@ class GetAppSpecService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': ?alerts == null ? null : pulumi.Input.encodeList<GetAppSpecServiceAlert, Map<String, dynamic>>(alerts!, (value) => value.toMap()),
-      'autoscaling': ?autoscaling == null ? null : autoscaling!.toMap(),
-      'bitbucket': ?bitbucket == null ? null : bitbucket!.toMap(),
+      'alerts': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecServiceAlert>, List<Map<String, dynamic>>>(alerts, (value) => pulumi.Input.encodeList<GetAppSpecServiceAlert, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'autoscaling': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceAutoscaling, Map<String, dynamic>>(autoscaling, (value) => value.toMap()),
+      'bitbucket': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceBitbucket, Map<String, dynamic>>(bitbucket, (value) => value.toMap()),
       'buildCommand': ?buildCommand,
-      'cors': ?cors == null ? null : cors!.toMap(),
+      'cors': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'dockerfilePath': ?dockerfilePath,
       'environmentSlug': ?environmentSlug,
-      'envs': ?envs == null ? null : pulumi.Input.encodeList<GetAppSpecServiceEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
-      'git': ?git == null ? null : git!.toMap(),
-      'github': ?github == null ? null : github!.toMap(),
-      'gitlab': ?gitlab == null ? null : gitlab!.toMap(),
-      'healthCheck': ?healthCheck == null ? null : healthCheck!.toMap(),
+      'envs': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecServiceEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<GetAppSpecServiceEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'git': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceGit, Map<String, dynamic>>(git, (value) => value.toMap()),
+      'github': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceGithub, Map<String, dynamic>>(github, (value) => value.toMap()),
+      'gitlab': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceGitlab, Map<String, dynamic>>(gitlab, (value) => value.toMap()),
+      'healthCheck': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceHealthCheck, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
       'httpPort': httpPort,
-      'image': ?image == null ? null : image!.toMap(),
+      'image': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceImage, Map<String, dynamic>>(image, (value) => value.toMap()),
       'instanceCount': ?instanceCount,
       'instanceSizeSlug': ?instanceSizeSlug,
       'internalPorts': internalPorts,
-      'logDestinations': ?logDestinations == null ? null : pulumi.Input.encodeList<GetAppSpecServiceLogDestination, Map<String, dynamic>>(logDestinations!, (value) => value.toMap()),
+      'logDestinations': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecServiceLogDestination>, List<Map<String, dynamic>>>(logDestinations, (value) => pulumi.Input.encodeList<GetAppSpecServiceLogDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'routes': pulumi.Input.encodeList<GetAppSpecServiceRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes': pulumi.Input.mapInputValue<List<GetAppSpecServiceRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<GetAppSpecServiceRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'runCommand': runCommand,
       'sourceDir': ?sourceDir,
-      'termination': ?termination == null ? null : termination!.toMap(),
+      'termination': ?pulumi.Input.mapOptionalInputValue<GetAppSpecServiceTermination, Map<String, dynamic>>(termination, (value) => value.toMap()),
     };
   }
 
   factory GetAppSpecService.fromMap(Map<String, dynamic> map) {
     return GetAppSpecService(
-      alerts: map['alerts'] == null ? null : pulumi.Input.decodeList<GetAppSpecServiceAlert>(map['alerts'], (value) => GetAppSpecServiceAlert.fromMap((value as Map).cast<String, dynamic>())),
-      autoscaling: map['autoscaling'] == null ? null : GetAppSpecServiceAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>()),
-      bitbucket: map['bitbucket'] == null ? null : GetAppSpecServiceBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>()),
-      buildCommand: map['buildCommand'] == null ? null : map['buildCommand'] as String,
-      cors: map['cors'] == null ? null : GetAppSpecServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      dockerfilePath: map['dockerfilePath'] == null ? null : map['dockerfilePath'] as String,
-      environmentSlug: map['environmentSlug'] == null ? null : map['environmentSlug'] as String,
-      envs: map['envs'] == null ? null : pulumi.Input.decodeList<GetAppSpecServiceEnv>(map['envs'], (value) => GetAppSpecServiceEnv.fromMap((value as Map).cast<String, dynamic>())),
-      git: map['git'] == null ? null : GetAppSpecServiceGit.fromMap((map['git'] as Map).cast<String, dynamic>()),
-      github: map['github'] == null ? null : GetAppSpecServiceGithub.fromMap((map['github'] as Map).cast<String, dynamic>()),
-      gitlab: map['gitlab'] == null ? null : GetAppSpecServiceGitlab.fromMap((map['gitlab'] as Map).cast<String, dynamic>()),
-      healthCheck: map['healthCheck'] == null ? null : GetAppSpecServiceHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
-      httpPort: map['httpPort'] as int,
-      image: map['image'] == null ? null : GetAppSpecServiceImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      instanceCount: map['instanceCount'] == null ? null : map['instanceCount'] as int,
-      instanceSizeSlug: map['instanceSizeSlug'] == null ? null : map['instanceSizeSlug'] as String,
-      internalPorts: (map['internalPorts'] as List).cast<int>(),
-      logDestinations: map['logDestinations'] == null ? null : pulumi.Input.decodeList<GetAppSpecServiceLogDestination>(map['logDestinations'], (value) => GetAppSpecServiceLogDestination.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      routes: pulumi.Input.decodeList<GetAppSpecServiceRoute>(map['routes'], (value) => GetAppSpecServiceRoute.fromMap((value as Map).cast<String, dynamic>())),
-      runCommand: map['runCommand'] as String,
-      sourceDir: map['sourceDir'] == null ? null : map['sourceDir'] as String,
-      termination: map['termination'] == null ? null : GetAppSpecServiceTermination.fromMap((map['termination'] as Map).cast<String, dynamic>()),
+      alerts: map['alerts'] == null ? null : (pulumi.Input.decodeList<GetAppSpecServiceAlert>(map['alerts'], (value) => GetAppSpecServiceAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscaling: map['autoscaling'] == null ? null : (GetAppSpecServiceAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
+      bitbucket: map['bitbucket'] == null ? null : (GetAppSpecServiceBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>())).input(),
+      buildCommand: map['buildCommand'] == null ? null : (map['buildCommand'] as String).input(),
+      cors: map['cors'] == null ? null : (GetAppSpecServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath'] as String).input(),
+      environmentSlug: map['environmentSlug'] == null ? null : (map['environmentSlug'] as String).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<GetAppSpecServiceEnv>(map['envs'], (value) => GetAppSpecServiceEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      git: map['git'] == null ? null : (GetAppSpecServiceGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (GetAppSpecServiceGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
+      gitlab: map['gitlab'] == null ? null : (GetAppSpecServiceGitlab.fromMap((map['gitlab'] as Map).cast<String, dynamic>())).input(),
+      healthCheck: map['healthCheck'] == null ? null : (GetAppSpecServiceHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
+      httpPort: (map['httpPort'] as int).input(),
+      image: map['image'] == null ? null : (GetAppSpecServiceImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceSizeSlug: map['instanceSizeSlug'] == null ? null : (map['instanceSizeSlug'] as String).input(),
+      internalPorts: ((map['internalPorts'] as List).cast<int>()).input(),
+      logDestinations: map['logDestinations'] == null ? null : (pulumi.Input.decodeList<GetAppSpecServiceLogDestination>(map['logDestinations'], (value) => GetAppSpecServiceLogDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      routes: (pulumi.Input.decodeList<GetAppSpecServiceRoute>(map['routes'], (value) => GetAppSpecServiceRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runCommand: (map['runCommand'] as String).input(),
+      sourceDir: map['sourceDir'] == null ? null : (map['sourceDir'] as String).input(),
+      termination: map['termination'] == null ? null : (GetAppSpecServiceTermination.fromMap((map['termination'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

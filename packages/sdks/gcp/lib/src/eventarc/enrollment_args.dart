@@ -47,25 +47,16 @@ class EnrollmentArgs {
   /// [messageBus] Resource name of the message bus identifying the source of the messages. It
   /// [project] The ID of the project in which the resource belongs.
   EnrollmentArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> celMatch,
-    required pulumi.Output<String> destination,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> enrollmentId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> messageBus,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      celMatch = pulumi.Input.asInput<String>(celMatch),
-      destination = pulumi.Input.asInput<String>(destination),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enrollmentId = pulumi.Input.asInput<String>(enrollmentId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      messageBus = pulumi.Input.asInput<String>(messageBus),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    required this.celMatch,
+    required this.destination,
+    this.displayName,
+    required this.enrollmentId,
+    this.labels,
+    required this.location,
+    required this.messageBus,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class EnrollmentArgs {
 
   factory EnrollmentArgs.fromMap(Map<String, dynamic> map) {
     return EnrollmentArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      celMatch: pulumi.Output.create<String>(map['celMatch'] as String),
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enrollmentId: pulumi.Output.create<String>(map['enrollmentId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      messageBus: pulumi.Output.create<String>(map['messageBus'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      celMatch: (map['celMatch'] as String).input(),
+      destination: (map['destination'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enrollmentId: (map['enrollmentId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      messageBus: (map['messageBus'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

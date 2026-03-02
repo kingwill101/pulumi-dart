@@ -13,11 +13,9 @@ class ConnectionConfirmationState {
   /// [connectionId] The ID of the hosted connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ConnectionConfirmationState({
-    pulumi.Output<String>? connectionId,
-    pulumi.Output<String>? region,
-  }) :
-      connectionId = pulumi.Input.asOptionalInput<String>(connectionId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.connectionId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ConnectionConfirmationState {
 
   factory ConnectionConfirmationState.fromMap(Map<String, dynamic> map) {
     return ConnectionConfirmationState(
-      connectionId: map['connectionId'] == null ? null : pulumi.Output.create<String>(map['connectionId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

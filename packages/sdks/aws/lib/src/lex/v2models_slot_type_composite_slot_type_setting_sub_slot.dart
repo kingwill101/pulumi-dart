@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   /// Name of a constituent sub slot inside a composite slot.
-  final String name;
+  final pulumi.Input<String> name;
   /// Unique identifier assigned to a slot type.
   /// This refers to either a built-in slot type or the unique `slot_type_id` of a custom slot type.
-  final String slotTypeId;
+  final pulumi.Input<String> slotTypeId;
 
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSettingSubSlot].
   /// [name] Name of a constituent sub slot inside a composite slot.
@@ -25,8 +26,8 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
 
   factory V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeCompositeSlotTypeSettingSubSlot(
-      name: map['name'] as String,
-      slotTypeId: map['slotTypeId'] as String,
+      name: (map['name'] as String).input(),
+      slotTypeId: (map['slotTypeId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetRegionalParametersArgs {
   /// [location] The location of regional parameter.
   /// [project] The ID of the project.
   GetRegionalParametersArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.filter,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegionalParametersArgs {
 
   factory GetRegionalParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParametersArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

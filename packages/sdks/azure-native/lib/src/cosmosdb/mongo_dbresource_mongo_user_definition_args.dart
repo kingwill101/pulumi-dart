@@ -38,25 +38,16 @@ class MongoDBResourceMongoUserDefinitionArgs {
   /// [roles] The set of roles inherited by the User Definition.
   /// [userName] The user name for User Definition.
   MongoDBResourceMongoUserDefinitionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? customData,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? mechanisms,
-    pulumi.Output<String>? mongoUserDefinitionId,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<Role>>? roles,
-    pulumi.Output<String>? userName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      customData = pulumi.Input.asOptionalInput<String>(customData),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      mechanisms = pulumi.Input.asOptionalInput<String>(mechanisms),
-      mongoUserDefinitionId = pulumi.Input.asOptionalInput<String>(mongoUserDefinitionId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roles = pulumi.Input.asOptionalInput<List<Role>>(roles),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    required this.accountName,
+    this.customData,
+    this.databaseName,
+    this.mechanisms,
+    this.mongoUserDefinitionId,
+    this.password,
+    required this.resourceGroupName,
+    this.roles,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class MongoDBResourceMongoUserDefinitionArgs {
 
   factory MongoDBResourceMongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MongoDBResourceMongoUserDefinitionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      customData: map['customData'] == null ? null : pulumi.Output.create<String>(map['customData'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      mechanisms: map['mechanisms'] == null ? null : pulumi.Output.create<String>(map['mechanisms'] as String),
-      mongoUserDefinitionId: map['mongoUserDefinitionId'] == null ? null : pulumi.Output.create<String>(map['mongoUserDefinitionId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<Role>>(pulumi.Input.decodeList<Role>(map['roles'], (value) => Role.fromMap((value as Map).cast<String, dynamic>()))),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      mechanisms: map['mechanisms'] == null ? null : (map['mechanisms'] as String).input(),
+      mongoUserDefinitionId: map['mongoUserDefinitionId'] == null ? null : (map['mongoUserDefinitionId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<Role>(map['roles'], (value) => Role.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

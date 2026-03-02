@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseReceivedMetadata {
   /// A list of allowed operations.
-  final List<String> allowedOperations;
+  final pulumi.Input<List<String>> allowedOperations;
   /// Received status.
-  final String receivedStatus;
+  final pulumi.Input<String> receivedStatus;
   /// Received status reason.
-  final String receivedStatusReason;
+  final pulumi.Input<String> receivedStatusReason;
 
   /// Creates a new [GetReceivedLicenseReceivedMetadata].
   /// [allowedOperations] A list of allowed operations.
@@ -29,9 +30,9 @@ class GetReceivedLicenseReceivedMetadata {
 
   factory GetReceivedLicenseReceivedMetadata.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseReceivedMetadata(
-      allowedOperations: (map['allowedOperations'] as List).cast<String>(),
-      receivedStatus: map['receivedStatus'] as String,
-      receivedStatusReason: map['receivedStatusReason'] as String,
+      allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
+      receivedStatus: (map['receivedStatus'] as String).input(),
+      receivedStatusReason: (map['receivedStatusReason'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Customer end point to store and retrieve data during a contact with the spacecraft.
 class EndPointResponse {
   /// Name of an end point.
-  final String endPointName;
+  final pulumi.Input<String> endPointName;
   /// IP Address (IPv4).
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// TCP port to listen on to receive data.
-  final String port;
+  final pulumi.Input<String> port;
   /// Protocol either UDP or TCP.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [EndPointResponse].
   /// [endPointName] Name of an end point.
@@ -35,10 +36,10 @@ class EndPointResponse {
 
   factory EndPointResponse.fromMap(Map<String, dynamic> map) {
     return EndPointResponse(
-      endPointName: map['endPointName'] as String,
-      ipAddress: map['ipAddress'] as String,
-      port: map['port'] as String,
-      protocol: map['protocol'] as String,
+      endPointName: (map['endPointName'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      port: (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

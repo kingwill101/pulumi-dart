@@ -22,15 +22,11 @@ class DatastoreArgs {
   /// [organizationId] Required.
   /// [targetType] Destination storage type. Supported types `gcs` or `bigquery`.
   DatastoreArgs({
-    pulumi.Output<GoogleCloudApigeeV1DatastoreConfig>? datastoreConfig,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? targetType,
-  }) :
-      datastoreConfig = pulumi.Input.asOptionalInput<GoogleCloudApigeeV1DatastoreConfig>(datastoreConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+    this.datastoreConfig,
+    required this.displayName,
+    required this.organizationId,
+    this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreConfig: map['datastoreConfig'] == null ? null : pulumi.Output.create<GoogleCloudApigeeV1DatastoreConfig>(GoogleCloudApigeeV1DatastoreConfig.fromMap((map['datastoreConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      datastoreConfig: map['datastoreConfig'] == null ? null : (GoogleCloudApigeeV1DatastoreConfig.fromMap((map['datastoreConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
     );
   }
 }

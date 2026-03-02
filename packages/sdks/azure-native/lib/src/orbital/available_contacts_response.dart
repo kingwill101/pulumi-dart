@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'available_contacts_response_spacecraft.dart';
 
 /// Customer retrieves list of Available Contacts for a spacecraft resource. Later, one of the available contact can be selected to create a contact.
 class AvailableContactsResponse {
   /// Azimuth of the antenna at the end of the contact in decimal degrees.
-  final double endAzimuthDegrees;
+  final pulumi.Input<double> endAzimuthDegrees;
   /// Spacecraft elevation above the horizon at contact end.
-  final double endElevationDegrees;
+  final pulumi.Input<double> endElevationDegrees;
   /// Name of Azure Ground Station.
-  final String groundStationName;
+  final pulumi.Input<String> groundStationName;
   /// Maximum elevation of the antenna during the contact in decimal degrees.
-  final double maximumElevationDegrees;
+  final pulumi.Input<double> maximumElevationDegrees;
   /// Time to lost receiving a signal (ISO 8601 UTC standard).
-  final String rxEndTime;
+  final pulumi.Input<String> rxEndTime;
   /// Earliest time to receive a signal (ISO 8601 UTC standard).
-  final String rxStartTime;
+  final pulumi.Input<String> rxStartTime;
   /// The reference to the spacecraft resource.
-  final AvailableContactsResponseSpacecraft? spacecraft;
+  final pulumi.Input<AvailableContactsResponseSpacecraft>? spacecraft;
   /// Azimuth of the antenna at the start of the contact in decimal degrees.
-  final double startAzimuthDegrees;
+  final pulumi.Input<double> startAzimuthDegrees;
   /// Spacecraft elevation above the horizon at contact start.
-  final double startElevationDegrees;
+  final pulumi.Input<double> startElevationDegrees;
   /// Time at which antenna transmit will be disabled (ISO 8601 UTC standard).
-  final String txEndTime;
+  final pulumi.Input<String> txEndTime;
   /// Time at which antenna transmit will be enabled (ISO 8601 UTC standard).
-  final String txStartTime;
+  final pulumi.Input<String> txStartTime;
 
   /// Creates a new [AvailableContactsResponse].
   /// [endAzimuthDegrees] Azimuth of the antenna at the end of the contact in decimal degrees.
@@ -61,7 +62,7 @@ class AvailableContactsResponse {
       'maximumElevationDegrees': maximumElevationDegrees,
       'rxEndTime': rxEndTime,
       'rxStartTime': rxStartTime,
-      'spacecraft': ?spacecraft == null ? null : spacecraft!.toMap(),
+      'spacecraft': ?pulumi.Input.mapOptionalInputValue<AvailableContactsResponseSpacecraft, Map<String, dynamic>>(spacecraft, (value) => value.toMap()),
       'startAzimuthDegrees': startAzimuthDegrees,
       'startElevationDegrees': startElevationDegrees,
       'txEndTime': txEndTime,
@@ -71,17 +72,17 @@ class AvailableContactsResponse {
 
   factory AvailableContactsResponse.fromMap(Map<String, dynamic> map) {
     return AvailableContactsResponse(
-      endAzimuthDegrees: map['endAzimuthDegrees'] as double,
-      endElevationDegrees: map['endElevationDegrees'] as double,
-      groundStationName: map['groundStationName'] as String,
-      maximumElevationDegrees: map['maximumElevationDegrees'] as double,
-      rxEndTime: map['rxEndTime'] as String,
-      rxStartTime: map['rxStartTime'] as String,
-      spacecraft: map['spacecraft'] == null ? null : AvailableContactsResponseSpacecraft.fromMap((map['spacecraft'] as Map).cast<String, dynamic>()),
-      startAzimuthDegrees: map['startAzimuthDegrees'] as double,
-      startElevationDegrees: map['startElevationDegrees'] as double,
-      txEndTime: map['txEndTime'] as String,
-      txStartTime: map['txStartTime'] as String,
+      endAzimuthDegrees: (map['endAzimuthDegrees'] as double).input(),
+      endElevationDegrees: (map['endElevationDegrees'] as double).input(),
+      groundStationName: (map['groundStationName'] as String).input(),
+      maximumElevationDegrees: (map['maximumElevationDegrees'] as double).input(),
+      rxEndTime: (map['rxEndTime'] as String).input(),
+      rxStartTime: (map['rxStartTime'] as String).input(),
+      spacecraft: map['spacecraft'] == null ? null : (AvailableContactsResponseSpacecraft.fromMap((map['spacecraft'] as Map).cast<String, dynamic>())).input(),
+      startAzimuthDegrees: (map['startAzimuthDegrees'] as double).input(),
+      startElevationDegrees: (map['startElevationDegrees'] as double).input(),
+      txEndTime: (map['txEndTime'] as String).input(),
+      txStartTime: (map['txStartTime'] as String).input(),
     );
   }
 }

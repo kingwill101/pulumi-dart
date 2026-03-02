@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsVirtualMachineOsImageNotification {
   /// Length of time a notification to be sent to the VM on the instance metadata server till the VM gets OS upgraded. The only possible value is `PT15M`. Defaults to `PT15M`.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
 
   /// Creates a new [WindowsVirtualMachineOsImageNotification].
   /// [timeout] Length of time a notification to be sent to the VM on the instance metadata server till the VM gets OS upgraded. The only possible value is `PT15M`. Defaults to `PT15M`.
@@ -19,7 +20,7 @@ class WindowsVirtualMachineOsImageNotification {
 
   factory WindowsVirtualMachineOsImageNotification.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineOsImageNotification(
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
     );
   }
 }

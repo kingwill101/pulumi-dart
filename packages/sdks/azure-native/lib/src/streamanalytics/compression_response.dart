@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes how input data is compressed
 class CompressionResponse {
   /// Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CompressionResponse].
   /// [type] Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
@@ -20,7 +21,7 @@ class CompressionResponse {
 
   factory CompressionResponse.fromMap(Map<String, dynamic> map) {
     return CompressionResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

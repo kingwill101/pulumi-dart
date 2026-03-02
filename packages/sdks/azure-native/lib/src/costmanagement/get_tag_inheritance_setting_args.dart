@@ -16,11 +16,9 @@ class GetTagInheritanceSettingArgs {
   /// [scope] The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   /// [type] Setting type.
   GetTagInheritanceSettingArgs({
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> type,
-  }) :
-      scope = pulumi.Input.asInput<String>(scope),
-      type = pulumi.Input.asInput<String>(type);
+    required this.scope,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTagInheritanceSettingArgs {
 
   factory GetTagInheritanceSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetTagInheritanceSettingArgs(
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      scope: (map['scope'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

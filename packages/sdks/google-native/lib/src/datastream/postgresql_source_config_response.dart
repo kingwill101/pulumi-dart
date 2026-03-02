@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_rdbms_response.dart';
 
 /// PostgreSQL data source configuration
 class PostgresqlSourceConfigResponse {
   /// PostgreSQL objects to exclude from the stream.
-  final PostgresqlRdbmsResponse excludeObjects;
+  final pulumi.Input<PostgresqlRdbmsResponse> excludeObjects;
   /// PostgreSQL objects to include in the stream.
-  final PostgresqlRdbmsResponse includeObjects;
+  final pulumi.Input<PostgresqlRdbmsResponse> includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-  final int maxConcurrentBackfillTasks;
+  final pulumi.Input<int> maxConcurrentBackfillTasks;
   /// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
-  final String publication;
+  final pulumi.Input<String> publication;
   /// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
-  final String replicationSlot;
+  final pulumi.Input<String> replicationSlot;
 
   /// Creates a new [PostgresqlSourceConfigResponse].
   /// [excludeObjects] PostgreSQL objects to exclude from the stream.
@@ -31,8 +32,8 @@ class PostgresqlSourceConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludeObjects': excludeObjects.toMap(),
-      'includeObjects': includeObjects.toMap(),
+      'excludeObjects': pulumi.Input.mapInputValue<PostgresqlRdbmsResponse, Map<String, dynamic>>(excludeObjects, (value) => value.toMap()),
+      'includeObjects': pulumi.Input.mapInputValue<PostgresqlRdbmsResponse, Map<String, dynamic>>(includeObjects, (value) => value.toMap()),
       'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks,
       'publication': publication,
       'replicationSlot': replicationSlot,
@@ -41,11 +42,11 @@ class PostgresqlSourceConfigResponse {
 
   factory PostgresqlSourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlSourceConfigResponse(
-      excludeObjects: PostgresqlRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>()),
-      includeObjects: PostgresqlRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>()),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] as int,
-      publication: map['publication'] as String,
-      replicationSlot: map['replicationSlot'] as String,
+      excludeObjects: (PostgresqlRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
+      includeObjects: (PostgresqlRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: (map['maxConcurrentBackfillTasks'] as int).input(),
+      publication: (map['publication'] as String).input(),
+      replicationSlot: (map['replicationSlot'] as String).input(),
     );
   }
 }

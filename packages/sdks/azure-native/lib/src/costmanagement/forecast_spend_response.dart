@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The forecasted cost which is being tracked for a budget.
 ///
 /// Supported for CategoryType(s): Cost.
 class ForecastSpendResponse {
   /// The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
-  final double amount;
+  final pulumi.Input<double> amount;
   /// The unit of measure for the budget amount.
-  final String unit;
+  final pulumi.Input<String> unit;
 
   /// Creates a new [ForecastSpendResponse].
   /// [amount] The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
@@ -27,8 +28,8 @@ class ForecastSpendResponse {
 
   factory ForecastSpendResponse.fromMap(Map<String, dynamic> map) {
     return ForecastSpendResponse(
-      amount: map['amount'] as double,
-      unit: map['unit'] as String,
+      amount: (map['amount'] as double).input(),
+      unit: (map['unit'] as String).input(),
     );
   }
 }

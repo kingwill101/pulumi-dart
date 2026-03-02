@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateRevocationDetail {
   /// (Output)
   /// Indicates why a Certificate was revoked.
-  final String? revocationState;
+  final pulumi.Input<String>? revocationState;
   /// (Output)
   /// The time at which this Certificate was revoked.
-  final String? revocationTime;
+  final pulumi.Input<String>? revocationTime;
 
   /// Creates a new [CertificateRevocationDetail].
   /// [revocationState] (Output)
@@ -26,8 +27,8 @@ class CertificateRevocationDetail {
 
   factory CertificateRevocationDetail.fromMap(Map<String, dynamic> map) {
     return CertificateRevocationDetail(
-      revocationState: map['revocationState'] == null ? null : map['revocationState'] as String,
-      revocationTime: map['revocationTime'] == null ? null : map['revocationTime'] as String,
+      revocationState: map['revocationState'] == null ? null : (map['revocationState'] as String).input(),
+      revocationTime: map['revocationTime'] == null ? null : (map['revocationTime'] as String).input(),
     );
   }
 }

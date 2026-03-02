@@ -22,15 +22,11 @@ class GetADLSGen2FileSystemDataSetMappingArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
   GetADLSGen2FileSystemDataSetMappingArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> dataSetMappingName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareSubscriptionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      dataSetMappingName = pulumi.Input.asInput<String>(dataSetMappingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asInput<String>(shareSubscriptionName);
+    required this.accountName,
+    required this.dataSetMappingName,
+    required this.resourceGroupName,
+    required this.shareSubscriptionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetADLSGen2FileSystemDataSetMappingArgs {
 
   factory GetADLSGen2FileSystemDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetADLSGen2FileSystemDataSetMappingArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      dataSetMappingName: pulumi.Output.create<String>(map['dataSetMappingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      dataSetMappingName: (map['dataSetMappingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
     );
   }
 }

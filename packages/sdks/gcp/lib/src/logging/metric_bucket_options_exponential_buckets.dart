@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricBucketOptionsExponentialBuckets {
   /// Must be greater than 1.
-  final double growthFactor;
+  final pulumi.Input<double> growthFactor;
   /// Must be greater than 0.
-  final int numFiniteBuckets;
+  final pulumi.Input<int> numFiniteBuckets;
   /// Must be greater than 0.
-  final double scale;
+  final pulumi.Input<double> scale;
 
   /// Creates a new [MetricBucketOptionsExponentialBuckets].
   /// [growthFactor] Must be greater than 1.
@@ -29,9 +30,9 @@ class MetricBucketOptionsExponentialBuckets {
 
   factory MetricBucketOptionsExponentialBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsExponentialBuckets(
-      growthFactor: map['growthFactor'] as double,
-      numFiniteBuckets: map['numFiniteBuckets'] as int,
-      scale: map['scale'] as double,
+      growthFactor: (map['growthFactor'] as double).input(),
+      numFiniteBuckets: (map['numFiniteBuckets'] as int).input(),
+      scale: (map['scale'] as double).input(),
     );
   }
 }

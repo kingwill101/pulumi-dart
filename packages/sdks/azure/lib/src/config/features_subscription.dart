@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesSubscription {
-  final bool? preventCancellationOnDestroy;
+  final pulumi.Input<bool>? preventCancellationOnDestroy;
 
   /// Creates a new [FeaturesSubscription].
   /// [preventCancellationOnDestroy] Optional.
@@ -18,7 +19,7 @@ class FeaturesSubscription {
 
   factory FeaturesSubscription.fromMap(Map<String, dynamic> map) {
     return FeaturesSubscription(
-      preventCancellationOnDestroy: map['preventCancellationOnDestroy'] == null ? null : map['preventCancellationOnDestroy'] as bool,
+      preventCancellationOnDestroy: map['preventCancellationOnDestroy'] == null ? null : (map['preventCancellationOnDestroy'] as bool).input(),
     );
   }
 }

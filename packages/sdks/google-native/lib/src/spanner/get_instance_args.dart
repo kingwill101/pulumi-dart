@@ -16,13 +16,10 @@ class GetInstanceArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   GetInstanceArgs({
-    pulumi.Output<String>? fieldMask,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-  }) :
-      fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.fieldMask,
+    required this.instanceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      fieldMask: map['fieldMask'] == null ? null : pulumi.Output.create<String>(map['fieldMask'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

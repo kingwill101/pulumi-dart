@@ -40,27 +40,17 @@ class AutoImportJobArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   AutoImportJobArgs({
-    pulumi.Output<String>? adminStatus,
-    required pulumi.Output<String> amlFilesystemName,
-    pulumi.Output<String>? autoImportJobName,
-    pulumi.Output<List<String>>? autoImportPrefixes,
-    pulumi.Output<String>? conflictResolutionMode,
-    pulumi.Output<bool>? enableDeletions,
-    pulumi.Output<String>? location,
-    pulumi.Output<double>? maximumErrors,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      adminStatus = pulumi.Input.asOptionalInput<String>(adminStatus),
-      amlFilesystemName = pulumi.Input.asInput<String>(amlFilesystemName),
-      autoImportJobName = pulumi.Input.asOptionalInput<String>(autoImportJobName),
-      autoImportPrefixes = pulumi.Input.asOptionalInput<List<String>>(autoImportPrefixes),
-      conflictResolutionMode = pulumi.Input.asOptionalInput<String>(conflictResolutionMode),
-      enableDeletions = pulumi.Input.asOptionalInput<bool>(enableDeletions),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumErrors = pulumi.Input.asOptionalInput<double>(maximumErrors),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.adminStatus,
+    required this.amlFilesystemName,
+    this.autoImportJobName,
+    this.autoImportPrefixes,
+    this.conflictResolutionMode,
+    this.enableDeletions,
+    this.location,
+    this.maximumErrors,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class AutoImportJobArgs {
 
   factory AutoImportJobArgs.fromMap(Map<String, dynamic> map) {
     return AutoImportJobArgs(
-      adminStatus: map['adminStatus'] == null ? null : pulumi.Output.create<String>(map['adminStatus'] as String),
-      amlFilesystemName: pulumi.Output.create<String>(map['amlFilesystemName'] as String),
-      autoImportJobName: map['autoImportJobName'] == null ? null : pulumi.Output.create<String>(map['autoImportJobName'] as String),
-      autoImportPrefixes: map['autoImportPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['autoImportPrefixes'] as List).cast<String>()),
-      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : pulumi.Output.create<String>(map['conflictResolutionMode'] as String),
-      enableDeletions: map['enableDeletions'] == null ? null : pulumi.Output.create<bool>(map['enableDeletions'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumErrors: map['maximumErrors'] == null ? null : pulumi.Output.create<double>(map['maximumErrors'] as double),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus'] as String).input(),
+      amlFilesystemName: (map['amlFilesystemName'] as String).input(),
+      autoImportJobName: map['autoImportJobName'] == null ? null : (map['autoImportJobName'] as String).input(),
+      autoImportPrefixes: map['autoImportPrefixes'] == null ? null : ((map['autoImportPrefixes'] as List).cast<String>()).input(),
+      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : (map['conflictResolutionMode'] as String).input(),
+      enableDeletions: map['enableDeletions'] == null ? null : (map['enableDeletions'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumErrors: map['maximumErrors'] == null ? null : (map['maximumErrors'] as double).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

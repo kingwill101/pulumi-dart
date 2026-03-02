@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountApiKeysResponse {
-  final String? key1;
-  final String? key2;
+  final pulumi.Input<String>? key1;
+  final pulumi.Input<String>? key2;
 
   /// Creates a new [AccountApiKeysResponse].
   /// [key1] Optional.
@@ -22,8 +23,8 @@ class AccountApiKeysResponse {
 
   factory AccountApiKeysResponse.fromMap(Map<String, dynamic> map) {
     return AccountApiKeysResponse(
-      key1: map['key1'] == null ? null : map['key1'] as String,
-      key2: map['key2'] == null ? null : map['key2'] as String,
+      key1: map['key1'] == null ? null : (map['key1'] as String).input(),
+      key2: map['key2'] == null ? null : (map['key2'] as String).input(),
     );
   }
 }

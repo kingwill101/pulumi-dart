@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specification.dart';
 
 class V2modelsIntentConfirmationSettingCodeHook {
   /// Whether a dialog code hook is used when the intent is activated.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// Whether a Lambda function should be invoked for the dialog.
-  final bool enableCodeHookInvocation;
+  final pulumi.Input<bool> enableCodeHookInvocation;
   /// Label that indicates the dialog step from which the dialog code hook is happening.
-  final String? invocationLabel;
+  final pulumi.Input<String>? invocationLabel;
   /// Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See `post_code_hook_specification`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification? postCodeHookSpecification;
+  final pulumi.Input<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification>? postCodeHookSpecification;
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHook].
   /// [active] Whether a dialog code hook is used when the intent is activated.
@@ -29,16 +30,16 @@ class V2modelsIntentConfirmationSettingCodeHook {
       'active': active,
       'enableCodeHookInvocation': enableCodeHookInvocation,
       'invocationLabel': ?invocationLabel,
-      'postCodeHookSpecification': ?postCodeHookSpecification == null ? null : postCodeHookSpecification!.toMap(),
+      'postCodeHookSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification, Map<String, dynamic>>(postCodeHookSpecification, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentConfirmationSettingCodeHook.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHook(
-      active: map['active'] as bool,
-      enableCodeHookInvocation: map['enableCodeHookInvocation'] as bool,
-      invocationLabel: map['invocationLabel'] == null ? null : map['invocationLabel'] as String,
-      postCodeHookSpecification: map['postCodeHookSpecification'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification.fromMap((map['postCodeHookSpecification'] as Map).cast<String, dynamic>()),
+      active: (map['active'] as bool).input(),
+      enableCodeHookInvocation: (map['enableCodeHookInvocation'] as bool).input(),
+      invocationLabel: map['invocationLabel'] == null ? null : (map['invocationLabel'] as String).input(),
+      postCodeHookSpecification: map['postCodeHookSpecification'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecification.fromMap((map['postCodeHookSpecification'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

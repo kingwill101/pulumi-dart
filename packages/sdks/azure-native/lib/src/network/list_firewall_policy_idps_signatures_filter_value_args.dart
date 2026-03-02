@@ -19,13 +19,10 @@ class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
   ListFirewallPolicyIdpsSignaturesFilterValueArgs({
-    pulumi.Output<String>? filterName,
-    required pulumi.Output<String> firewallPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      filterName = pulumi.Input.asOptionalInput<String>(filterName),
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.filterName,
+    required this.firewallPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
 
   factory ListFirewallPolicyIdpsSignaturesFilterValueArgs.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignaturesFilterValueArgs(
-      filterName: map['filterName'] == null ? null : pulumi.Output.create<String>(map['filterName'] as String),
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

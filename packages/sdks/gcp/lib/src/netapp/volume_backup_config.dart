@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeBackupConfig {
   /// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
-  final List<String>? backupPolicies;
+  final pulumi.Input<List<String>>? backupPolicies;
   /// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
   /// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
-  final String? backupVault;
+  final pulumi.Input<String>? backupVault;
   /// When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
-  final bool? scheduledBackupEnabled;
+  final pulumi.Input<bool>? scheduledBackupEnabled;
 
   /// Creates a new [VolumeBackupConfig].
   /// [backupPolicies] Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
@@ -30,9 +31,9 @@ class VolumeBackupConfig {
 
   factory VolumeBackupConfig.fromMap(Map<String, dynamic> map) {
     return VolumeBackupConfig(
-      backupPolicies: map['backupPolicies'] == null ? null : (map['backupPolicies'] as List).cast<String>(),
-      backupVault: map['backupVault'] == null ? null : map['backupVault'] as String,
-      scheduledBackupEnabled: map['scheduledBackupEnabled'] == null ? null : map['scheduledBackupEnabled'] as bool,
+      backupPolicies: map['backupPolicies'] == null ? null : ((map['backupPolicies'] as List).cast<String>()).input(),
+      backupVault: map['backupVault'] == null ? null : (map['backupVault'] as String).input(),
+      scheduledBackupEnabled: map['scheduledBackupEnabled'] == null ? null : (map['scheduledBackupEnabled'] as bool).input(),
     );
   }
 }

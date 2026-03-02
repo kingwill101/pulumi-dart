@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Istio egress gateway configuration.
 class IstioEgressGateway {
   /// Whether to enable the egress gateway.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Name of the gateway configuration custom resource for the Istio add-on egress gateway. Must be specified when enabling the Istio egress gateway. Must be deployed in the same namespace that the Istio egress gateway will be deployed in.
-  final String? gatewayConfigurationName;
+  final pulumi.Input<String>? gatewayConfigurationName;
   /// Name of the Istio add-on egress gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// Namespace that the Istio add-on egress gateway should be deployed in. If unspecified, the default is aks-istio-egress.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [IstioEgressGateway].
   /// [enabled] Whether to enable the egress gateway.
@@ -35,10 +36,10 @@ class IstioEgressGateway {
 
   factory IstioEgressGateway.fromMap(Map<String, dynamic> map) {
     return IstioEgressGateway(
-      enabled: map['enabled'] as bool,
-      gatewayConfigurationName: map['gatewayConfigurationName'] == null ? null : map['gatewayConfigurationName'] as String,
-      name: map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      gatewayConfigurationName: map['gatewayConfigurationName'] == null ? null : (map['gatewayConfigurationName'] as String).input(),
+      name: (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

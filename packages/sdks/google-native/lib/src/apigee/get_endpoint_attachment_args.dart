@@ -14,11 +14,9 @@ class GetEndpointAttachmentArgs {
   /// [endpointAttachmentId] Required.
   /// [organizationId] Required.
   GetEndpointAttachmentArgs({
-    required pulumi.Output<String> endpointAttachmentId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      endpointAttachmentId = pulumi.Input.asInput<String>(endpointAttachmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.endpointAttachmentId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetEndpointAttachmentArgs {
 
   factory GetEndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAttachmentArgs(
-      endpointAttachmentId: pulumi.Output.create<String>(map['endpointAttachmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      endpointAttachmentId: (map['endpointAttachmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines reference to a public IP.
 class PublicIpReferenceResponse {
   /// Gets the ARM resource ID of the tracked resource being referenced.
-  final String sourceArmResourceId;
+  final pulumi.Input<String> sourceArmResourceId;
 
   /// Creates a new [PublicIpReferenceResponse].
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
@@ -20,7 +21,7 @@ class PublicIpReferenceResponse {
 
   factory PublicIpReferenceResponse.fromMap(Map<String, dynamic> map) {
     return PublicIpReferenceResponse(
-      sourceArmResourceId: map['sourceArmResourceId'] as String,
+      sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
     );
   }
 }

@@ -73,35 +73,21 @@ class ServerGroupArgs {
   /// [tags] Label.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the server group belongs.
   ServerGroupArgs({
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<bool>? anyPortEnabled,
-    pulumi.Output<bool>? connectionDrain,
-    pulumi.Output<bool>? connectionDrainEnabled,
-    pulumi.Output<int>? connectionDrainTimeout,
-    pulumi.Output<ServerGroupHealthCheck>? healthCheck,
-    pulumi.Output<bool>? preserveClientIpEnabled,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? scheduler,
-    required pulumi.Output<String> serverGroupName,
-    pulumi.Output<String>? serverGroupType,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcId,
-  }) :
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      anyPortEnabled = pulumi.Input.asOptionalInput<bool>(anyPortEnabled),
-      connectionDrain = pulumi.Input.asOptionalInput<bool>(connectionDrain),
-      connectionDrainEnabled = pulumi.Input.asOptionalInput<bool>(connectionDrainEnabled),
-      connectionDrainTimeout = pulumi.Input.asOptionalInput<int>(connectionDrainTimeout),
-      healthCheck = pulumi.Input.asOptionalInput<ServerGroupHealthCheck>(healthCheck),
-      preserveClientIpEnabled = pulumi.Input.asOptionalInput<bool>(preserveClientIpEnabled),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      scheduler = pulumi.Input.asOptionalInput<String>(scheduler),
-      serverGroupName = pulumi.Input.asInput<String>(serverGroupName),
-      serverGroupType = pulumi.Input.asOptionalInput<String>(serverGroupType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.addressIpVersion,
+    this.anyPortEnabled,
+    this.connectionDrain,
+    this.connectionDrainEnabled,
+    this.connectionDrainTimeout,
+    this.healthCheck,
+    this.preserveClientIpEnabled,
+    this.protocol,
+    this.resourceGroupId,
+    this.scheduler,
+    required this.serverGroupName,
+    this.serverGroupType,
+    this.tags,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,20 +110,20 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      anyPortEnabled: map['anyPortEnabled'] == null ? null : pulumi.Output.create<bool>(map['anyPortEnabled'] as bool),
-      connectionDrain: map['connectionDrain'] == null ? null : pulumi.Output.create<bool>(map['connectionDrain'] as bool),
-      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : pulumi.Output.create<bool>(map['connectionDrainEnabled'] as bool),
-      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : pulumi.Output.create<int>(map['connectionDrainTimeout'] as int),
-      healthCheck: map['healthCheck'] == null ? null : pulumi.Output.create<ServerGroupHealthCheck>(ServerGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())),
-      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : pulumi.Output.create<bool>(map['preserveClientIpEnabled'] as bool),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      scheduler: map['scheduler'] == null ? null : pulumi.Output.create<String>(map['scheduler'] as String),
-      serverGroupName: pulumi.Output.create<String>(map['serverGroupName'] as String),
-      serverGroupType: map['serverGroupType'] == null ? null : pulumi.Output.create<String>(map['serverGroupType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      anyPortEnabled: map['anyPortEnabled'] == null ? null : (map['anyPortEnabled'] as bool).input(),
+      connectionDrain: map['connectionDrain'] == null ? null : (map['connectionDrain'] as bool).input(),
+      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled'] as bool).input(),
+      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout'] as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (ServerGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
+      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : (map['preserveClientIpEnabled'] as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      serverGroupName: (map['serverGroupName'] as String).input(),
+      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

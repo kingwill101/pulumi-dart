@@ -19,13 +19,10 @@ class GetEnclaveEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   GetEnclaveEndpointArgs({
-    required pulumi.Output<String> enclaveEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualEnclaveName,
-  }) :
-      enclaveEndpointName = pulumi.Input.asInput<String>(enclaveEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualEnclaveName = pulumi.Input.asInput<String>(virtualEnclaveName);
+    required this.enclaveEndpointName,
+    required this.resourceGroupName,
+    required this.virtualEnclaveName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEnclaveEndpointArgs {
 
   factory GetEnclaveEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEnclaveEndpointArgs(
-      enclaveEndpointName: pulumi.Output.create<String>(map['enclaveEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualEnclaveName: pulumi.Output.create<String>(map['virtualEnclaveName'] as String),
+      enclaveEndpointName: (map['enclaveEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
     );
   }
 }

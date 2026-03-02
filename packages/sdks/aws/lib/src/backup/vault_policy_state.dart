@@ -19,15 +19,11 @@ class VaultPolicyState {
   /// [policy] The backup vault access policy document in JSON format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   VaultPolicyState({
-    pulumi.Output<String>? backupVaultArn,
-    pulumi.Output<String>? backupVaultName,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-  }) :
-      backupVaultArn = pulumi.Input.asOptionalInput<String>(backupVaultArn),
-      backupVaultName = pulumi.Input.asOptionalInput<String>(backupVaultName),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.backupVaultArn,
+    this.backupVaultName,
+    this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class VaultPolicyState {
 
   factory VaultPolicyState.fromMap(Map<String, dynamic> map) {
     return VaultPolicyState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : pulumi.Output.create<String>(map['backupVaultArn'] as String),
-      backupVaultName: map['backupVaultName'] == null ? null : pulumi.Output.create<String>(map['backupVaultName'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      backupVaultArn: map['backupVaultArn'] == null ? null : (map['backupVaultArn'] as String).input(),
+      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

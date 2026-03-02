@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_link_bgp_settings.dart';
 import 'vpn_link_provider_properties.dart';
 
 /// VpnSiteLink Resource.
 class VpnSiteLink {
   /// The set of bgp properties.
-  final VpnLinkBgpSettings? bgpProperties;
+  final pulumi.Input<VpnLinkBgpSettings>? bgpProperties;
   /// FQDN of vpn-site-link.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The ip-address for the vpn-site-link.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The link provider properties.
-  final VpnLinkProviderProperties? linkProperties;
+  final pulumi.Input<VpnLinkProviderProperties>? linkProperties;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [VpnSiteLink].
   /// [bgpProperties] The set of bgp properties.
@@ -36,23 +37,23 @@ class VpnSiteLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpProperties': ?bgpProperties == null ? null : bgpProperties!.toMap(),
+      'bgpProperties': ?pulumi.Input.mapOptionalInputValue<VpnLinkBgpSettings, Map<String, dynamic>>(bgpProperties, (value) => value.toMap()),
       'fqdn': ?fqdn,
       'id': ?id,
       'ipAddress': ?ipAddress,
-      'linkProperties': ?linkProperties == null ? null : linkProperties!.toMap(),
+      'linkProperties': ?pulumi.Input.mapOptionalInputValue<VpnLinkProviderProperties, Map<String, dynamic>>(linkProperties, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory VpnSiteLink.fromMap(Map<String, dynamic> map) {
     return VpnSiteLink(
-      bgpProperties: map['bgpProperties'] == null ? null : VpnLinkBgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>()),
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      linkProperties: map['linkProperties'] == null ? null : VpnLinkProviderProperties.fromMap((map['linkProperties'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
+      bgpProperties: map['bgpProperties'] == null ? null : (VpnLinkBgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      linkProperties: map['linkProperties'] == null ? null : (VpnLinkProviderProperties.fromMap((map['linkProperties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

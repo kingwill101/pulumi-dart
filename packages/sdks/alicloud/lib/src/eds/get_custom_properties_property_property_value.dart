@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomPropertiesPropertyPropertyValue {
   /// The value of an attribute.
-  final String propertyValue;
+  final pulumi.Input<String> propertyValue;
   /// The value of an attribute id.
-  final String propertyValueId;
+  final pulumi.Input<String> propertyValueId;
 
   /// Creates a new [GetCustomPropertiesPropertyPropertyValue].
   /// [propertyValue] The value of an attribute.
@@ -24,8 +25,8 @@ class GetCustomPropertiesPropertyPropertyValue {
 
   factory GetCustomPropertiesPropertyPropertyValue.fromMap(Map<String, dynamic> map) {
     return GetCustomPropertiesPropertyPropertyValue(
-      propertyValue: map['propertyValue'] as String,
-      propertyValueId: map['propertyValueId'] as String,
+      propertyValue: (map['propertyValue'] as String).input(),
+      propertyValueId: (map['propertyValueId'] as String).input(),
     );
   }
 }

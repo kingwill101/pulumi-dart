@@ -24,17 +24,12 @@ class AiLogicPromptTemplateLockState {
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] The ID of the prompt template.
   AiLogicPromptTemplateLockState({
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? templateId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.location,
+    this.locked,
+    this.name,
+    this.project,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class AiLogicPromptTemplateLockState {
 
   factory AiLogicPromptTemplateLockState.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

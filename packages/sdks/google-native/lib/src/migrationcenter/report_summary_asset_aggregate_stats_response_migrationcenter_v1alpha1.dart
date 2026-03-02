@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_summary_chart_data_response_migrationcenter_v1alpha1.dart';
 import 'report_summary_histogram_chart_data_response_migrationcenter_v1alpha1.dart';
 import 'report_summary_utilization_chart_data_response_migrationcenter_v1alpha1.dart';
@@ -7,31 +8,31 @@ import 'report_summary_utilization_chart_data_response_migrationcenter_v1alpha1.
 /// Aggregate statistics for a collection of assets.
 class ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 {
   /// Count of assets grouped by age.
-  final ReportSummaryChartDataResponseMigrationcenterV1alpha1 assetAge;
+  final pulumi.Input<ReportSummaryChartDataResponseMigrationcenterV1alpha1> assetAge;
   /// Histogram showing a distribution of CPU core counts.
-  final ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1 coreCountHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1> coreCountHistogram;
   /// Histogram showing a distribution of memory sizes.
-  final ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1 memoryBytesHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1> memoryBytesHistogram;
   /// Total memory split into Used/Free buckets.
-  final ReportSummaryChartDataResponseMigrationcenterV1alpha1 memoryUtilization;
+  final pulumi.Input<ReportSummaryChartDataResponseMigrationcenterV1alpha1> memoryUtilization;
   /// Total memory split into Used/Free buckets.
-  final ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1 memoryUtilizationChart;
+  final pulumi.Input<ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1> memoryUtilizationChart;
   /// Count of assets grouped by Operating System families.
-  final ReportSummaryChartDataResponseMigrationcenterV1alpha1 operatingSystem;
+  final pulumi.Input<ReportSummaryChartDataResponseMigrationcenterV1alpha1> operatingSystem;
   /// Histogram showing a distribution of memory sizes.
-  final ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1 storageBytesHistogram;
+  final pulumi.Input<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1> storageBytesHistogram;
   /// Total storage split into Used/Free buckets.
-  final ReportSummaryChartDataResponseMigrationcenterV1alpha1 storageUtilization;
+  final pulumi.Input<ReportSummaryChartDataResponseMigrationcenterV1alpha1> storageUtilization;
   /// Total memory split into Used/Free buckets.
-  final ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1 storageUtilizationChart;
+  final pulumi.Input<ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1> storageUtilizationChart;
   /// Count of the number of unique assets in this collection.
-  final String totalAssets;
+  final pulumi.Input<String> totalAssets;
   /// Sum of the CPU core count of all the assets in this collection.
-  final String totalCores;
+  final pulumi.Input<String> totalCores;
   /// Sum of the memory in bytes of all the assets in this collection.
-  final String totalMemoryBytes;
+  final pulumi.Input<String> totalMemoryBytes;
   /// Sum of persistent storage in bytes of all the assets in this collection.
-  final String totalStorageBytes;
+  final pulumi.Input<String> totalStorageBytes;
 
   /// Creates a new [ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1].
   /// [assetAge] Count of assets grouped by age.
@@ -65,15 +66,15 @@ class ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetAge': assetAge.toMap(),
-      'coreCountHistogram': coreCountHistogram.toMap(),
-      'memoryBytesHistogram': memoryBytesHistogram.toMap(),
-      'memoryUtilization': memoryUtilization.toMap(),
-      'memoryUtilizationChart': memoryUtilizationChart.toMap(),
-      'operatingSystem': operatingSystem.toMap(),
-      'storageBytesHistogram': storageBytesHistogram.toMap(),
-      'storageUtilization': storageUtilization.toMap(),
-      'storageUtilizationChart': storageUtilizationChart.toMap(),
+      'assetAge': pulumi.Input.mapInputValue<ReportSummaryChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(assetAge, (value) => value.toMap()),
+      'coreCountHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(coreCountHistogram, (value) => value.toMap()),
+      'memoryBytesHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(memoryBytesHistogram, (value) => value.toMap()),
+      'memoryUtilization': pulumi.Input.mapInputValue<ReportSummaryChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(memoryUtilization, (value) => value.toMap()),
+      'memoryUtilizationChart': pulumi.Input.mapInputValue<ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(memoryUtilizationChart, (value) => value.toMap()),
+      'operatingSystem': pulumi.Input.mapInputValue<ReportSummaryChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(operatingSystem, (value) => value.toMap()),
+      'storageBytesHistogram': pulumi.Input.mapInputValue<ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(storageBytesHistogram, (value) => value.toMap()),
+      'storageUtilization': pulumi.Input.mapInputValue<ReportSummaryChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(storageUtilization, (value) => value.toMap()),
+      'storageUtilizationChart': pulumi.Input.mapInputValue<ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1, Map<String, dynamic>>(storageUtilizationChart, (value) => value.toMap()),
       'totalAssets': totalAssets,
       'totalCores': totalCores,
       'totalMemoryBytes': totalMemoryBytes,
@@ -83,19 +84,19 @@ class ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 {
 
   factory ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1(
-      assetAge: ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['assetAge'] as Map).cast<String, dynamic>()),
-      coreCountHistogram: ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['coreCountHistogram'] as Map).cast<String, dynamic>()),
-      memoryBytesHistogram: ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryBytesHistogram'] as Map).cast<String, dynamic>()),
-      memoryUtilization: ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryUtilization'] as Map).cast<String, dynamic>()),
-      memoryUtilizationChart: ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryUtilizationChart'] as Map).cast<String, dynamic>()),
-      operatingSystem: ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>()),
-      storageBytesHistogram: ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageBytesHistogram'] as Map).cast<String, dynamic>()),
-      storageUtilization: ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageUtilization'] as Map).cast<String, dynamic>()),
-      storageUtilizationChart: ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageUtilizationChart'] as Map).cast<String, dynamic>()),
-      totalAssets: map['totalAssets'] as String,
-      totalCores: map['totalCores'] as String,
-      totalMemoryBytes: map['totalMemoryBytes'] as String,
-      totalStorageBytes: map['totalStorageBytes'] as String,
+      assetAge: (ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['assetAge'] as Map).cast<String, dynamic>())).input(),
+      coreCountHistogram: (ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['coreCountHistogram'] as Map).cast<String, dynamic>())).input(),
+      memoryBytesHistogram: (ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryBytesHistogram'] as Map).cast<String, dynamic>())).input(),
+      memoryUtilization: (ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryUtilization'] as Map).cast<String, dynamic>())).input(),
+      memoryUtilizationChart: (ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1.fromMap((map['memoryUtilizationChart'] as Map).cast<String, dynamic>())).input(),
+      operatingSystem: (ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>())).input(),
+      storageBytesHistogram: (ReportSummaryHistogramChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageBytesHistogram'] as Map).cast<String, dynamic>())).input(),
+      storageUtilization: (ReportSummaryChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageUtilization'] as Map).cast<String, dynamic>())).input(),
+      storageUtilizationChart: (ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1.fromMap((map['storageUtilizationChart'] as Map).cast<String, dynamic>())).input(),
+      totalAssets: (map['totalAssets'] as String).input(),
+      totalCores: (map['totalCores'] as String).input(),
+      totalMemoryBytes: (map['totalMemoryBytes'] as String).input(),
+      totalStorageBytes: (map['totalStorageBytes'] as String).input(),
     );
   }
 }

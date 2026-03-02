@@ -27,19 +27,13 @@ class ResourceState {
   /// [resourceId] The ID of the Resource.
   /// [userAccessParam] Used to define the access parameters for the user. See `user_access_param` below.
   ResourceState({
-    pulumi.Output<String>? clusterDesc,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<ResourceMachineTypes>? machineTypes,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<ResourceUserAccessParam>? userAccessParam,
-  }) :
-      clusterDesc = pulumi.Input.asOptionalInput<String>(clusterDesc),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      machineTypes = pulumi.Input.asOptionalInput<ResourceMachineTypes>(machineTypes),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      userAccessParam = pulumi.Input.asOptionalInput<ResourceUserAccessParam>(userAccessParam);
+    this.clusterDesc,
+    this.clusterId,
+    this.clusterName,
+    this.machineTypes,
+    this.resourceId,
+    this.userAccessParam,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      clusterDesc: map['clusterDesc'] == null ? null : pulumi.Output.create<String>(map['clusterDesc'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      machineTypes: map['machineTypes'] == null ? null : pulumi.Output.create<ResourceMachineTypes>(ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      userAccessParam: map['userAccessParam'] == null ? null : pulumi.Output.create<ResourceUserAccessParam>(ResourceUserAccessParam.fromMap((map['userAccessParam'] as Map).cast<String, dynamic>())),
+      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      machineTypes: map['machineTypes'] == null ? null : (ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      userAccessParam: map['userAccessParam'] == null ? null : (ResourceUserAccessParam.fromMap((map['userAccessParam'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

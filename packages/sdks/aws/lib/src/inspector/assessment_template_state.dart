@@ -35,25 +35,16 @@ class AssessmentTemplateState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetArn] The assessment target ARN to attach the template to.
   AssessmentTemplateState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? duration,
-    pulumi.Output<List<AssessmentTemplateEventSubscription>>? eventSubscriptions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? rulesPackageArns,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetArn,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      duration = pulumi.Input.asOptionalInput<int>(duration),
-      eventSubscriptions = pulumi.Input.asOptionalInput<List<AssessmentTemplateEventSubscription>>(eventSubscriptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rulesPackageArns = pulumi.Input.asOptionalInput<List<String>>(rulesPackageArns),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetArn = pulumi.Input.asOptionalInput<String>(targetArn);
+    this.arn,
+    this.duration,
+    this.eventSubscriptions,
+    this.name,
+    this.region,
+    this.rulesPackageArns,
+    this.tags,
+    this.tagsAll,
+    this.targetArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class AssessmentTemplateState {
 
   factory AssessmentTemplateState.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<int>(map['duration'] as int),
-      eventSubscriptions: map['eventSubscriptions'] == null ? null : pulumi.Output.create<List<AssessmentTemplateEventSubscription>>(pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rulesPackageArns: map['rulesPackageArns'] == null ? null : pulumi.Output.create<List<String>>((map['rulesPackageArns'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetArn: map['targetArn'] == null ? null : pulumi.Output.create<String>(map['targetArn'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      eventSubscriptions: map['eventSubscriptions'] == null ? null : (pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(map['eventSubscriptions'], (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rulesPackageArns: map['rulesPackageArns'] == null ? null : ((map['rulesPackageArns'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
     );
   }
 }

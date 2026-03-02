@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupContainerReadinessProbeHttpGet {
-  final String? path;
-  final int? port;
+  final pulumi.Input<String>? path;
+  final pulumi.Input<int>? port;
   /// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-  final String? scheme;
+  final pulumi.Input<String>? scheme;
 
   /// Creates a new [ContainerGroupContainerReadinessProbeHttpGet].
   /// [path] Optional.
@@ -27,9 +28,9 @@ class ContainerGroupContainerReadinessProbeHttpGet {
 
   factory ContainerGroupContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerReadinessProbeHttpGet(
-      path: map['path'] == null ? null : map['path'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      scheme: map['scheme'] == null ? null : map['scheme'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
     );
   }
 }

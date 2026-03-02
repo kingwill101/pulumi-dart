@@ -9,13 +9,13 @@ class AllocationResultResourceK8sIoV1alpha2 {
   /// This field will get set by the resource driver after it has allocated the resource to inform the scheduler where it can schedule Pods using the ResourceClaim.
   ///
   /// Setting this field is optional. If null, the resource is available everywhere.
-  final NodeSelector? availableOnNodes;
+  final pulumi.Input<NodeSelector>? availableOnNodes;
   /// ResourceHandles contain the state associated with an allocation that should be maintained throughout the lifetime of a claim. Each ResourceHandle contains data that should be passed to a specific kubelet plugin once it lands on a node. This data is returned by the driver after a successful allocation and is opaque to Kubernetes. Driver documentation may explain to users how to interpret this data if needed.
   ///
   /// Setting this field is optional. It has a maximum size of 32 entries. If null (or empty), it is assumed this allocation will be processed by a single kubelet plugin with no ResourceHandle data attached. The name of the kubelet plugin invoked will match the DriverName set in the ResourceClaimStatus this AllocationResult is embedded in.
-  final List<ResourceHandle>? resourceHandles;
+  final pulumi.Input<List<ResourceHandle>>? resourceHandles;
   /// Shareable determines whether the resource supports more than one consumer at a time.
-  final bool? shareable;
+  final pulumi.Input<bool>? shareable;
 
   /// Creates a new [AllocationResultResourceK8sIoV1alpha2].
   /// [availableOnNodes] This field will get set by the resource driver after it has allocated the resource to inform the scheduler where it can schedule Pods using the ResourceClaim.
@@ -29,17 +29,17 @@ class AllocationResultResourceK8sIoV1alpha2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableOnNodes': ?availableOnNodes == null ? null : availableOnNodes!.toMap(),
-      'resourceHandles': ?resourceHandles == null ? null : pulumi.Input.encodeList<ResourceHandle, Map<String, dynamic>>(resourceHandles!, (value) => value.toMap()),
+      'availableOnNodes': ?pulumi.Input.mapOptionalInputValue<NodeSelector, Map<String, dynamic>>(availableOnNodes, (value) => value.toMap()),
+      'resourceHandles': ?pulumi.Input.mapOptionalInputValue<List<ResourceHandle>, List<Map<String, dynamic>>>(resourceHandles, (value) => pulumi.Input.encodeList<ResourceHandle, Map<String, dynamic>>(value, (value) => value.toMap())),
       'shareable': ?shareable,
     };
   }
 
   factory AllocationResultResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return AllocationResultResourceK8sIoV1alpha2(
-      availableOnNodes: map['availableOnNodes'] == null ? null : NodeSelector.fromMap((map['availableOnNodes'] as Map).cast<String, dynamic>()),
-      resourceHandles: map['resourceHandles'] == null ? null : pulumi.Input.decodeList<ResourceHandle>(map['resourceHandles'], (value) => ResourceHandle.fromMap((value as Map).cast<String, dynamic>())),
-      shareable: map['shareable'] == null ? null : map['shareable'] as bool,
+      availableOnNodes: map['availableOnNodes'] == null ? null : (NodeSelector.fromMap((map['availableOnNodes'] as Map).cast<String, dynamic>())).input(),
+      resourceHandles: map['resourceHandles'] == null ? null : (pulumi.Input.decodeList<ResourceHandle>(map['resourceHandles'], (value) => ResourceHandle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
     );
   }
 }

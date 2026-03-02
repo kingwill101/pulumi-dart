@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxEnvironmentVersionConfig {
   /// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [CxEnvironmentVersionConfig].
   /// [version] Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
@@ -19,7 +20,7 @@ class CxEnvironmentVersionConfig {
 
   factory CxEnvironmentVersionConfig.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentVersionConfig(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

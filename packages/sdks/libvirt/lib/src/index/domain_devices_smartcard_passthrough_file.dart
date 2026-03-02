@@ -5,11 +5,11 @@ import 'domain_devices_smartcard_passthrough_file_sec_label.dart';
 
 class DomainDevicesSmartcardPassthroughFile {
   /// Specifies if data should be appended to the file used as a source.
-  final String? append;
+  final pulumi.Input<String>? append;
   /// Sets the file path for the RNG source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the file source in the EGD backend.
-  final List<DomainDevicesSmartcardPassthroughFileSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesSmartcardPassthroughFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesSmartcardPassthroughFile].
   /// [append] Specifies if data should be appended to the file used as a source.
@@ -25,15 +25,15 @@ class DomainDevicesSmartcardPassthroughFile {
     return <String, dynamic>{
       'append': ?append,
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesSmartcardPassthroughFileSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesSmartcardPassthroughFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesSmartcardPassthroughFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesSmartcardPassthroughFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughFile(
-      append: map['append'] == null ? null : map['append'] as String,
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughFileSecLabel>(map['secLabels'], (value) => DomainDevicesSmartcardPassthroughFileSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      append: map['append'] == null ? null : (map['append'] as String).input(),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughFileSecLabel>(map['secLabels'], (value) => DomainDevicesSmartcardPassthroughFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

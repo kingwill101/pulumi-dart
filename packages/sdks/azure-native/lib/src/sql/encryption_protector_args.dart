@@ -28,19 +28,13 @@ class EncryptionProtectorArgs {
   /// [serverKeyType] The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
   /// [serverName] The name of the server.
   EncryptionProtectorArgs({
-    pulumi.Output<bool>? autoRotationEnabled,
-    pulumi.Output<String>? encryptionProtectorName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverKeyName,
-    required pulumi.Output<String> serverKeyType,
-    required pulumi.Output<String> serverName,
-  }) :
-      autoRotationEnabled = pulumi.Input.asOptionalInput<bool>(autoRotationEnabled),
-      encryptionProtectorName = pulumi.Input.asOptionalInput<String>(encryptionProtectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverKeyName = pulumi.Input.asOptionalInput<String>(serverKeyName),
-      serverKeyType = pulumi.Input.asInput<String>(serverKeyType),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    this.autoRotationEnabled,
+    this.encryptionProtectorName,
+    required this.resourceGroupName,
+    this.serverKeyName,
+    required this.serverKeyType,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class EncryptionProtectorArgs {
 
   factory EncryptionProtectorArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionProtectorArgs(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoRotationEnabled'] as bool),
-      encryptionProtectorName: map['encryptionProtectorName'] == null ? null : pulumi.Output.create<String>(map['encryptionProtectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverKeyName: map['serverKeyName'] == null ? null : pulumi.Output.create<String>(map['serverKeyName'] as String),
-      serverKeyType: pulumi.Output.create<String>(map['serverKeyType'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
+      encryptionProtectorName: map['encryptionProtectorName'] == null ? null : (map['encryptionProtectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverKeyName: map['serverKeyName'] == null ? null : (map['serverKeyName'] as String).input(),
+      serverKeyType: (map['serverKeyType'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

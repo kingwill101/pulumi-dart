@@ -29,19 +29,13 @@ class RolloutArgs {
   /// [serviceName] The name of the service associated with this Rollout.
   /// [trafficPercentStrategy] Google Service Control selects service configurations based on traffic percentage.
   RolloutArgs({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<Map<String, dynamic>>? deleteServiceStrategy,
-    pulumi.Output<String>? rolloutId,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<TrafficPercentStrategy>? trafficPercentStrategy,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      deleteServiceStrategy = pulumi.Input.asOptionalInput<Map<String, dynamic>>(deleteServiceStrategy),
-      rolloutId = pulumi.Input.asOptionalInput<String>(rolloutId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      trafficPercentStrategy = pulumi.Input.asOptionalInput<TrafficPercentStrategy>(trafficPercentStrategy);
+    this.createTime,
+    this.createdBy,
+    this.deleteServiceStrategy,
+    this.rolloutId,
+    required this.serviceName,
+    this.trafficPercentStrategy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RolloutArgs {
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['deleteServiceStrategy'] as Map).cast<String, dynamic>()),
-      rolloutId: map['rolloutId'] == null ? null : pulumi.Output.create<String>(map['rolloutId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : pulumi.Output.create<TrafficPercentStrategy>(TrafficPercentStrategy.fromMap((map['trafficPercentStrategy'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : ((map['deleteServiceStrategy'] as Map).cast<String, dynamic>()).input(),
+      rolloutId: map['rolloutId'] == null ? null : (map['rolloutId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : (TrafficPercentStrategy.fromMap((map['trafficPercentStrategy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

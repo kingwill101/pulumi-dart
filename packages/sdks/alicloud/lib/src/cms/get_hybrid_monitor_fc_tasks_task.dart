@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHybridMonitorFcTasksTask {
   /// Create the timestamp of the monitoring task. Unit: milliseconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the monitoring task.
-  final String hybridMonitorFcTaskId;
+  final pulumi.Input<String> hybridMonitorFcTaskId;
   /// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The index warehouse where the host belongs.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The ID of the member account.
-  final String targetUserId;
+  final pulumi.Input<String> targetUserId;
   /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-  final String yarmConfig;
+  final pulumi.Input<String> yarmConfig;
 
   /// Creates a new [GetHybridMonitorFcTasksTask].
   /// [createTime] Create the timestamp of the monitoring task. Unit: milliseconds.
@@ -44,12 +45,12 @@ class GetHybridMonitorFcTasksTask {
 
   factory GetHybridMonitorFcTasksTask.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorFcTasksTask(
-      createTime: map['createTime'] as String,
-      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] as String,
-      id: map['id'] as String,
-      namespace: map['namespace'] as String,
-      targetUserId: map['targetUserId'] as String,
-      yarmConfig: map['yarmConfig'] as String,
+      createTime: (map['createTime'] as String).input(),
+      hybridMonitorFcTaskId: (map['hybridMonitorFcTaskId'] as String).input(),
+      id: (map['id'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      targetUserId: (map['targetUserId'] as String).input(),
+      yarmConfig: (map['yarmConfig'] as String).input(),
     );
   }
 }

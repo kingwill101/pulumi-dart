@@ -38,25 +38,16 @@ class TrunkedNetworkArgs {
   /// [trunkedNetworkName] The name of the trunked network.
   /// [vlans] The list of vlans that are selected from the isolation domains for trunking.
   TrunkedNetworkArgs({
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? hybridAksPluginType,
-    pulumi.Output<String>? interfaceName,
-    required pulumi.Output<List<String>> isolationDomainIds,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? trunkedNetworkName,
-    required pulumi.Output<List<double>> vlans,
-  }) :
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      hybridAksPluginType = pulumi.Input.asOptionalInput<String>(hybridAksPluginType),
-      interfaceName = pulumi.Input.asOptionalInput<String>(interfaceName),
-      isolationDomainIds = pulumi.Input.asInput<List<String>>(isolationDomainIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trunkedNetworkName = pulumi.Input.asOptionalInput<String>(trunkedNetworkName),
-      vlans = pulumi.Input.asInput<List<double>>(vlans);
+    required this.extendedLocation,
+    this.hybridAksPluginType,
+    this.interfaceName,
+    required this.isolationDomainIds,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.trunkedNetworkName,
+    required this.vlans,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class TrunkedNetworkArgs {
 
   factory TrunkedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkArgs(
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : pulumi.Output.create<String>(map['hybridAksPluginType'] as String),
-      interfaceName: map['interfaceName'] == null ? null : pulumi.Output.create<String>(map['interfaceName'] as String),
-      isolationDomainIds: pulumi.Output.create<List<String>>((map['isolationDomainIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trunkedNetworkName: map['trunkedNetworkName'] == null ? null : pulumi.Output.create<String>(map['trunkedNetworkName'] as String),
-      vlans: pulumi.Output.create<List<double>>((map['vlans'] as List).cast<double>()),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      isolationDomainIds: ((map['isolationDomainIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trunkedNetworkName: map['trunkedNetworkName'] == null ? null : (map['trunkedNetworkName'] as String).input(),
+      vlans: ((map['vlans'] as List).cast<double>()).input(),
     );
   }
 }

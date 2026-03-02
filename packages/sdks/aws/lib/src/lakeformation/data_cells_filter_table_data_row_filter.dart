@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCellsFilterTableDataRowFilter {
   /// (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: `all_rows_wildcard {}`.
-  final Map<String, dynamic>? allRowsWildcard;
+  final pulumi.Input<Map<String, dynamic>>? allRowsWildcard;
   /// (Optional) A PartiQL predicate expression for row-level filtering.
-  final String? filterExpression;
+  final pulumi.Input<String>? filterExpression;
 
   /// Creates a new [DataCellsFilterTableDataRowFilter].
   /// [allRowsWildcard] (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: `all_rows_wildcard {}`.
@@ -24,8 +25,8 @@ class DataCellsFilterTableDataRowFilter {
 
   factory DataCellsFilterTableDataRowFilter.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataRowFilter(
-      allRowsWildcard: map['allRowsWildcard'] == null ? null : (map['allRowsWildcard'] as Map).cast<String, dynamic>(),
-      filterExpression: map['filterExpression'] == null ? null : map['filterExpression'] as String,
+      allRowsWildcard: map['allRowsWildcard'] == null ? null : ((map['allRowsWildcard'] as Map).cast<String, dynamic>()).input(),
+      filterExpression: map['filterExpression'] == null ? null : (map['filterExpression'] as String).input(),
     );
   }
 }

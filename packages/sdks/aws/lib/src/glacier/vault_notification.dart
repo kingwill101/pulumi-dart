@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VaultNotification {
   /// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
-  final List<String> events;
+  final pulumi.Input<List<String>> events;
   /// The SNS Topic ARN.
-  final String snsTopic;
+  final pulumi.Input<String> snsTopic;
 
   /// Creates a new [VaultNotification].
   /// [events] You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
@@ -24,8 +25,8 @@ class VaultNotification {
 
   factory VaultNotification.fromMap(Map<String, dynamic> map) {
     return VaultNotification(
-      events: (map['events'] as List).cast<String>(),
-      snsTopic: map['snsTopic'] as String,
+      events: ((map['events'] as List).cast<String>()).input(),
+      snsTopic: (map['snsTopic'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class SecretVersionState {
   /// [versionId] The unique identifier of the version of the secret.
   /// [versionStages] Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
   SecretVersionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? hasSecretStringWo,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretBinary,
-    pulumi.Output<String>? secretId,
-    pulumi.Output<String>? secretString,
-    pulumi.Output<String>? secretStringWo,
-    pulumi.Output<int>? secretStringWoVersion,
-    pulumi.Output<String>? versionId,
-    pulumi.Output<List<String>>? versionStages,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      hasSecretStringWo = pulumi.Input.asOptionalInput<bool>(hasSecretStringWo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretBinary = pulumi.Input.asOptionalInput<String>(secretBinary),
-      secretId = pulumi.Input.asOptionalInput<String>(secretId),
-      secretString = pulumi.Input.asOptionalInput<String>(secretString),
-      secretStringWo = pulumi.Input.asOptionalInput<String>(secretStringWo),
-      secretStringWoVersion = pulumi.Input.asOptionalInput<int>(secretStringWoVersion),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId),
-      versionStages = pulumi.Input.asOptionalInput<List<String>>(versionStages);
+    this.arn,
+    this.hasSecretStringWo,
+    this.region,
+    this.secretBinary,
+    this.secretId,
+    this.secretString,
+    this.secretStringWo,
+    this.secretStringWoVersion,
+    this.versionId,
+    this.versionStages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class SecretVersionState {
 
   factory SecretVersionState.fromMap(Map<String, dynamic> map) {
     return SecretVersionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      hasSecretStringWo: map['hasSecretStringWo'] == null ? null : pulumi.Output.create<bool>(map['hasSecretStringWo'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretBinary: map['secretBinary'] == null ? null : pulumi.Output.create<String>(map['secretBinary'] as String),
-      secretId: map['secretId'] == null ? null : pulumi.Output.create<String>(map['secretId'] as String),
-      secretString: map['secretString'] == null ? null : pulumi.Output.create<String>(map['secretString'] as String),
-      secretStringWo: map['secretStringWo'] == null ? null : pulumi.Output.create<String>(map['secretStringWo'] as String),
-      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : pulumi.Output.create<int>(map['secretStringWoVersion'] as int),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
-      versionStages: map['versionStages'] == null ? null : pulumi.Output.create<List<String>>((map['versionStages'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      hasSecretStringWo: map['hasSecretStringWo'] == null ? null : (map['hasSecretStringWo'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretBinary: map['secretBinary'] == null ? null : (map['secretBinary'] as String).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
+      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
+      secretStringWo: map['secretStringWo'] == null ? null : (map['secretStringWo'] as String).input(),
+      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : (map['secretStringWoVersion'] as int).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionStages: map['versionStages'] == null ? null : ((map['versionStages'] as List).cast<String>()).input(),
     );
   }
 }

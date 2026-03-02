@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a reference to a volume resource.
 class VolumeReferenceResponse {
   /// The path within the container at which the volume should be mounted. Only valid path characters are allowed.
-  final String destinationPath;
+  final pulumi.Input<String> destinationPath;
   /// Name of the volume being referenced.
-  final String name;
+  final pulumi.Input<String> name;
   /// The flag indicating whether the volume is read only. Default is 'false'.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [VolumeReferenceResponse].
   /// [destinationPath] The path within the container at which the volume should be mounted. Only valid path characters are allowed.
@@ -30,9 +31,9 @@ class VolumeReferenceResponse {
 
   factory VolumeReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VolumeReferenceResponse(
-      destinationPath: map['destinationPath'] as String,
-      name: map['name'] as String,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
+      destinationPath: (map['destinationPath'] as String).input(),
+      name: (map['name'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
     );
   }
 }

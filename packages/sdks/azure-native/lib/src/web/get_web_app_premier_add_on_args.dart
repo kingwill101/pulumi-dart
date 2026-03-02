@@ -19,13 +19,10 @@ class GetWebAppPremierAddOnArgs {
   /// [premierAddOnName] Add-on name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetWebAppPremierAddOnArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> premierAddOnName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      premierAddOnName = pulumi.Input.asInput<String>(premierAddOnName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.premierAddOnName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebAppPremierAddOnArgs {
 
   factory GetWebAppPremierAddOnArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPremierAddOnArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      premierAddOnName: pulumi.Output.create<String>(map['premierAddOnName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      premierAddOnName: (map['premierAddOnName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

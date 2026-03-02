@@ -34,21 +34,14 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   AccountArgs({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<List<ActiveDirectory>>? activeDirectories,
-    pulumi.Output<AccountEncryption>? encryption,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      activeDirectories = pulumi.Input.asOptionalInput<List<ActiveDirectory>>(activeDirectories),
-      encryption = pulumi.Input.asOptionalInput<AccountEncryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountName,
+    this.activeDirectories,
+    this.encryption,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      activeDirectories: map['activeDirectories'] == null ? null : pulumi.Output.create<List<ActiveDirectory>>(pulumi.Input.decodeList<ActiveDirectory>(map['activeDirectories'], (value) => ActiveDirectory.fromMap((value as Map).cast<String, dynamic>()))),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<AccountEncryption>(AccountEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      activeDirectories: map['activeDirectories'] == null ? null : (pulumi.Input.decodeList<ActiveDirectory>(map['activeDirectories'], (value) => ActiveDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryption: map['encryption'] == null ? null : (AccountEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

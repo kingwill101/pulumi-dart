@@ -12,37 +12,37 @@ import 'temporary_disk_response.dart';
 /// App resource properties payload
 class AppResourcePropertiesResponse {
   /// Collection of addons
-  final Map<String, dynamic>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
   /// List of custom persistent disks
-  final List<CustomPersistentDiskResourceResponse>? customPersistentDisks;
+  final pulumi.Input<List<CustomPersistentDiskResourceResponse>>? customPersistentDisks;
   /// Indicate if end to end TLS is enabled.
-  final bool? enableEndToEndTLS;
+  final pulumi.Input<bool>? enableEndToEndTLS;
   /// Fully qualified dns Name.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// App ingress settings payload.
-  final IngressSettingsResponse? ingressSettings;
+  final pulumi.Input<IngressSettingsResponse>? ingressSettings;
   /// Collection of loaded certificates
-  final List<LoadedCertificateResponse>? loadedCertificates;
+  final pulumi.Input<List<LoadedCertificateResponse>>? loadedCertificates;
   /// Persistent disk settings
-  final PersistentDiskResponse? persistentDisk;
+  final pulumi.Input<PersistentDiskResponse>? persistentDisk;
   /// Provisioning state of the App
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether the App exposes public endpoint
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// Collection of auth secrets
-  final List<SecretResponse>? secrets;
+  final pulumi.Input<List<SecretResponse>>? secrets;
   /// Temporary disk settings
-  final TemporaryDiskResponse? temporaryDisk;
+  final pulumi.Input<TemporaryDiskResponse>? temporaryDisk;
   /// State of test endpoint auth.
-  final String? testEndpointAuthState;
+  final pulumi.Input<String>? testEndpointAuthState;
   /// URL of the App
-  final String url;
+  final pulumi.Input<String> url;
   /// Additional App settings in vnet injection instance
-  final AppVNetAddonsResponse? vnetAddons;
+  final pulumi.Input<AppVNetAddonsResponse>? vnetAddons;
   /// The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  final String? workloadProfileName;
+  final pulumi.Input<String>? workloadProfileName;
 
   /// Creates a new [AppResourcePropertiesResponse].
   /// [addonConfigs] Collection of addons
@@ -83,42 +83,42 @@ class AppResourcePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonConfigs': ?addonConfigs,
-      'customPersistentDisks': ?customPersistentDisks == null ? null : pulumi.Input.encodeList<CustomPersistentDiskResourceResponse, Map<String, dynamic>>(customPersistentDisks!, (value) => value.toMap()),
+      'customPersistentDisks': ?pulumi.Input.mapOptionalInputValue<List<CustomPersistentDiskResourceResponse>, List<Map<String, dynamic>>>(customPersistentDisks, (value) => pulumi.Input.encodeList<CustomPersistentDiskResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableEndToEndTLS': ?enableEndToEndTLS,
       'fqdn': fqdn,
       'httpsOnly': ?httpsOnly,
-      'ingressSettings': ?ingressSettings == null ? null : ingressSettings!.toMap(),
-      'loadedCertificates': ?loadedCertificates == null ? null : pulumi.Input.encodeList<LoadedCertificateResponse, Map<String, dynamic>>(loadedCertificates!, (value) => value.toMap()),
-      'persistentDisk': ?persistentDisk == null ? null : persistentDisk!.toMap(),
+      'ingressSettings': ?pulumi.Input.mapOptionalInputValue<IngressSettingsResponse, Map<String, dynamic>>(ingressSettings, (value) => value.toMap()),
+      'loadedCertificates': ?pulumi.Input.mapOptionalInputValue<List<LoadedCertificateResponse>, List<Map<String, dynamic>>>(loadedCertificates, (value) => pulumi.Input.encodeList<LoadedCertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'persistentDisk': ?pulumi.Input.mapOptionalInputValue<PersistentDiskResponse, Map<String, dynamic>>(persistentDisk, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'public': ?public,
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
-      'temporaryDisk': ?temporaryDisk == null ? null : temporaryDisk!.toMap(),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<SecretResponse>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'temporaryDisk': ?pulumi.Input.mapOptionalInputValue<TemporaryDiskResponse, Map<String, dynamic>>(temporaryDisk, (value) => value.toMap()),
       'testEndpointAuthState': ?testEndpointAuthState,
       'url': url,
-      'vnetAddons': ?vnetAddons == null ? null : vnetAddons!.toMap(),
+      'vnetAddons': ?pulumi.Input.mapOptionalInputValue<AppVNetAddonsResponse, Map<String, dynamic>>(vnetAddons, (value) => value.toMap()),
       'workloadProfileName': ?workloadProfileName,
     };
   }
 
   factory AppResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppResourcePropertiesResponse(
-      addonConfigs: map['addonConfigs'] == null ? null : (map['addonConfigs'] as Map).cast<String, dynamic>(),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : pulumi.Input.decodeList<CustomPersistentDiskResourceResponse>(map['customPersistentDisks'], (value) => CustomPersistentDiskResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : map['enableEndToEndTLS'] as bool,
-      fqdn: map['fqdn'] as String,
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      ingressSettings: map['ingressSettings'] == null ? null : IngressSettingsResponse.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>()),
-      loadedCertificates: map['loadedCertificates'] == null ? null : pulumi.Input.decodeList<LoadedCertificateResponse>(map['loadedCertificates'], (value) => LoadedCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      persistentDisk: map['persistentDisk'] == null ? null : PersistentDiskResponse.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      public: map['public'] == null ? null : map['public'] as bool,
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<SecretResponse>(map['secrets'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
-      temporaryDisk: map['temporaryDisk'] == null ? null : TemporaryDiskResponse.fromMap((map['temporaryDisk'] as Map).cast<String, dynamic>()),
-      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : map['testEndpointAuthState'] as String,
-      url: map['url'] as String,
-      vnetAddons: map['vnetAddons'] == null ? null : AppVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>()),
-      workloadProfileName: map['workloadProfileName'] == null ? null : map['workloadProfileName'] as String,
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
+      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<CustomPersistentDiskResourceResponse>(map['customPersistentDisks'], (value) => CustomPersistentDiskResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : (map['enableEndToEndTLS'] as bool).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (IngressSettingsResponse.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())).input(),
+      loadedCertificates: map['loadedCertificates'] == null ? null : (pulumi.Input.decodeList<LoadedCertificateResponse>(map['loadedCertificates'], (value) => LoadedCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistentDisk: map['persistentDisk'] == null ? null : (PersistentDiskResponse.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      temporaryDisk: map['temporaryDisk'] == null ? null : (TemporaryDiskResponse.fromMap((map['temporaryDisk'] as Map).cast<String, dynamic>())).input(),
+      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : (map['testEndpointAuthState'] as String).input(),
+      url: (map['url'] as String).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (AppVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
     );
   }
 }

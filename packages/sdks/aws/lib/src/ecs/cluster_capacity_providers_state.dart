@@ -20,15 +20,11 @@ class ClusterCapacityProvidersState {
   /// [defaultCapacityProviderStrategies] Set of capacity provider strategies to use by default for the cluster. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ClusterCapacityProvidersState({
-    pulumi.Output<List<String>>? capacityProviders,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>? defaultCapacityProviderStrategies,
-    pulumi.Output<String>? region,
-  }) :
-      capacityProviders = pulumi.Input.asOptionalInput<List<String>>(capacityProviders),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      defaultCapacityProviderStrategies = pulumi.Input.asOptionalInput<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>(defaultCapacityProviderStrategies),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.capacityProviders,
+    this.clusterName,
+    this.defaultCapacityProviderStrategies,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class ClusterCapacityProvidersState {
 
   factory ClusterCapacityProvidersState.fromMap(Map<String, dynamic> map) {
     return ClusterCapacityProvidersState(
-      capacityProviders: map['capacityProviders'] == null ? null : pulumi.Output.create<List<String>>((map['capacityProviders'] as List).cast<String>()),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      defaultCapacityProviderStrategies: map['defaultCapacityProviderStrategies'] == null ? null : pulumi.Output.create<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>(pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(map['defaultCapacityProviderStrategies'], (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      capacityProviders: map['capacityProviders'] == null ? null : ((map['capacityProviders'] as List).cast<String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      defaultCapacityProviderStrategies: map['defaultCapacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(map['defaultCapacityProviderStrategies'], (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetDataQualityRulesArgs {
   /// [location] The location where the referenced data profile scan resides.
   /// [project] The ID of the project in which the datascan belongs.
   GetDataQualityRulesArgs({
-    required pulumi.Output<String> dataScanId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataScanId = pulumi.Input.asInput<String>(dataScanId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataScanId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDataQualityRulesArgs {
 
   factory GetDataQualityRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesArgs(
-      dataScanId: pulumi.Output.create<String>(map['dataScanId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataScanId: (map['dataScanId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

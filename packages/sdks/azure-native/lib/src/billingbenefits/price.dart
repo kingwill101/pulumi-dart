@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Price {
-  final double? amount;
+  final pulumi.Input<double>? amount;
   /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  final String? currencyCode;
+  final pulumi.Input<String>? currencyCode;
 
   /// Creates a new [Price].
   /// [amount] Optional.
@@ -23,8 +24,8 @@ class Price {
 
   factory Price.fromMap(Map<String, dynamic> map) {
     return Price(
-      amount: map['amount'] == null ? null : map['amount'] as double,
-      currencyCode: map['currencyCode'] == null ? null : map['currencyCode'] as String,
+      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
     );
   }
 }

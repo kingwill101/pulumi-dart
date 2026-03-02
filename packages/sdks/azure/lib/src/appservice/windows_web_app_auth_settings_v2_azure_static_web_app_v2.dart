@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppAuthSettingsV2AzureStaticWebAppV2 {
   /// The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
 
   /// Creates a new [WindowsWebAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
@@ -19,7 +20,7 @@ class WindowsWebAppAuthSettingsV2AzureStaticWebAppV2 {
 
   factory WindowsWebAppAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppAuthSettingsV2AzureStaticWebAppV2(
-      clientId: map['clientId'] as String,
+      clientId: (map['clientId'] as String).input(),
     );
   }
 }

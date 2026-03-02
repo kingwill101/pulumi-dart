@@ -22,15 +22,11 @@ class GetApplicationTypeVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] The application type version.
   GetApplicationTypeVersionArgs({
-    required pulumi.Output<String> applicationTypeName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> version,
-  }) :
-      applicationTypeName = pulumi.Input.asInput<String>(applicationTypeName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asInput<String>(version);
+    required this.applicationTypeName,
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApplicationTypeVersionArgs {
 
   factory GetApplicationTypeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationTypeVersionArgs(
-      applicationTypeName: pulumi.Output.create<String>(map['applicationTypeName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      applicationTypeName: (map['applicationTypeName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

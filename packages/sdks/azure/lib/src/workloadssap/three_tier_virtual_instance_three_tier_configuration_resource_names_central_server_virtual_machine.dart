@@ -5,15 +5,15 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_cent
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine {
   /// One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
-  final List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk>? dataDisks;
+  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk>>? dataDisks;
   /// The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
-  final String? hostName;
+  final pulumi.Input<String>? hostName;
   /// A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
-  final List<String>? networkInterfaceNames;
+  final pulumi.Input<List<String>>? networkInterfaceNames;
   /// The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
-  final String? osDiskName;
+  final pulumi.Input<String>? osDiskName;
   /// The full name of the Virtual Machine in a single server SAP system. Changing this forces a new resource to be created.
-  final String? virtualMachineName;
+  final pulumi.Input<String>? virtualMachineName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine].
   /// [dataDisks] One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
@@ -31,7 +31,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVi
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': ?dataDisks == null ? null : pulumi.Input.encodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk, Map<String, dynamic>>(dataDisks!, (value) => value.toMap()),
+      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostName': ?hostName,
       'networkInterfaceNames': ?networkInterfaceNames,
       'osDiskName': ?osDiskName,
@@ -41,11 +41,11 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVi
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine(
-      dataDisks: map['dataDisks'] == null ? null : pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk>(map['dataDisks'], (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk.fromMap((value as Map).cast<String, dynamic>())),
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      networkInterfaceNames: map['networkInterfaceNames'] == null ? null : (map['networkInterfaceNames'] as List).cast<String>(),
-      osDiskName: map['osDiskName'] == null ? null : map['osDiskName'] as String,
-      virtualMachineName: map['virtualMachineName'] == null ? null : map['virtualMachineName'] as String,
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk>(map['dataDisks'], (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachineDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      networkInterfaceNames: map['networkInterfaceNames'] == null ? null : ((map['networkInterfaceNames'] as List).cast<String>()).input(),
+      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName'] as String).input(),
+      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName'] as String).input(),
     );
   }
 }

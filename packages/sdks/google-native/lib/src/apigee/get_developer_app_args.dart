@@ -20,17 +20,12 @@ class GetDeveloperAppArgs {
   /// [organizationId] Required.
   /// [query] Optional.
   GetDeveloperAppArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> developerId,
-    pulumi.Output<String>? entity,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? query,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      query = pulumi.Input.asOptionalInput<String>(query);
+    required this.appId,
+    required this.developerId,
+    this.entity,
+    required this.organizationId,
+    this.query,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDeveloperAppArgs {
 
   factory GetDeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      developerId: pulumi.Output.create<String>(map['developerId'] as String),
-      entity: map['entity'] == null ? null : pulumi.Output.create<String>(map['entity'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      query: map['query'] == null ? null : pulumi.Output.create<String>(map['query'] as String),
+      appId: (map['appId'] as String).input(),
+      developerId: (map['developerId'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
     );
   }
 }

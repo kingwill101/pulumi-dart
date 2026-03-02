@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deprecated.
 class AvailableVersionResponse {
   /// Reason for availability.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Kubernetes version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [AvailableVersionResponse].
   /// [reason] Reason for availability.
@@ -25,8 +26,8 @@ class AvailableVersionResponse {
 
   factory AvailableVersionResponse.fromMap(Map<String, dynamic> map) {
     return AvailableVersionResponse(
-      reason: map['reason'] as String,
-      version: map['version'] as String,
+      reason: (map['reason'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the IP address of the network interface.
 class IpAddress {
   /// Specifies the IP address of the network interface.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Creates a new [IpAddress].
   /// [ipAddress] Specifies the IP address of the network interface.
@@ -20,7 +21,7 @@ class IpAddress {
 
   factory IpAddress.fromMap(Map<String, dynamic> map) {
     return IpAddress(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

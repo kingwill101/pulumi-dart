@@ -71,31 +71,19 @@ class AgentArgs {
   /// [tier] The agent tier. If not specified, TIER_STANDARD is assumed.
   /// [timeZone] The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
   AgentArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? avatarUri,
-    pulumi.Output<double>? classificationThreshold,
-    required pulumi.Output<String> defaultLanguageCode,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableLogging,
-    pulumi.Output<String>? matchMode,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? supportedLanguageCodes,
-    pulumi.Output<String>? tier,
-    required pulumi.Output<String> timeZone,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      avatarUri = pulumi.Input.asOptionalInput<String>(avatarUri),
-      classificationThreshold = pulumi.Input.asOptionalInput<double>(classificationThreshold),
-      defaultLanguageCode = pulumi.Input.asInput<String>(defaultLanguageCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      matchMode = pulumi.Input.asOptionalInput<String>(matchMode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      supportedLanguageCodes = pulumi.Input.asOptionalInput<List<String>>(supportedLanguageCodes),
-      tier = pulumi.Input.asOptionalInput<String>(tier),
-      timeZone = pulumi.Input.asInput<String>(timeZone);
+    this.apiVersion,
+    this.avatarUri,
+    this.classificationThreshold,
+    required this.defaultLanguageCode,
+    this.description,
+    required this.displayName,
+    this.enableLogging,
+    this.matchMode,
+    this.project,
+    this.supportedLanguageCodes,
+    this.tier,
+    required this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,18 +104,18 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      avatarUri: map['avatarUri'] == null ? null : pulumi.Output.create<String>(map['avatarUri'] as String),
-      classificationThreshold: map['classificationThreshold'] == null ? null : pulumi.Output.create<double>(map['classificationThreshold'] as double),
-      defaultLanguageCode: pulumi.Output.create<String>(map['defaultLanguageCode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableLogging: map['enableLogging'] == null ? null : pulumi.Output.create<bool>(map['enableLogging'] as bool),
-      matchMode: map['matchMode'] == null ? null : pulumi.Output.create<String>(map['matchMode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedLanguageCodes'] as List).cast<String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      avatarUri: map['avatarUri'] == null ? null : (map['avatarUri'] as String).input(),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
+      defaultLanguageCode: (map['defaultLanguageCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      matchMode: map['matchMode'] == null ? null : (map['matchMode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : ((map['supportedLanguageCodes'] as List).cast<String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
     );
   }
 }

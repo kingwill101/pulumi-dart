@@ -62,27 +62,17 @@ class InstanceArgs {
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
   InstanceArgs({
-    pulumi.Output<String>? appKey,
-    pulumi.Output<String>? diskCategory,
-    pulumi.Output<String>? duration,
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? instanceAlias,
-    required pulumi.Output<String> instanceClass,
-    required pulumi.Output<String> instanceStorage,
-    required pulumi.Output<String> paymentType,
-    required pulumi.Output<String> vswitchId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      appKey = pulumi.Input.asOptionalInput<String>(appKey),
-      diskCategory = pulumi.Input.asOptionalInput<String>(diskCategory),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      instanceAlias = pulumi.Input.asOptionalInput<String>(instanceAlias),
-      instanceClass = pulumi.Input.asInput<String>(instanceClass),
-      instanceStorage = pulumi.Input.asInput<String>(instanceStorage),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.appKey,
+    this.diskCategory,
+    this.duration,
+    this.engineType,
+    this.instanceAlias,
+    required this.instanceClass,
+    required this.instanceStorage,
+    required this.paymentType,
+    required this.vswitchId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,16 +91,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      appKey: map['appKey'] == null ? null : pulumi.Output.create<String>(map['appKey'] as String),
-      diskCategory: map['diskCategory'] == null ? null : pulumi.Output.create<String>(map['diskCategory'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      instanceAlias: map['instanceAlias'] == null ? null : pulumi.Output.create<String>(map['instanceAlias'] as String),
-      instanceClass: pulumi.Output.create<String>(map['instanceClass'] as String),
-      instanceStorage: pulumi.Output.create<String>(map['instanceStorage'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      appKey: map['appKey'] == null ? null : (map['appKey'] as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias'] as String).input(),
+      instanceClass: (map['instanceClass'] as String).input(),
+      instanceStorage: (map['instanceStorage'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

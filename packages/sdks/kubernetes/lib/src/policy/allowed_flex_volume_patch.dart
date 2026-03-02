@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
 class AllowedFlexVolumePatch {
   /// driver is the name of the Flexvolume driver.
-  final String? driver;
+  final pulumi.Input<String>? driver;
 
   /// Creates a new [AllowedFlexVolumePatch].
   /// [driver] driver is the name of the Flexvolume driver.
@@ -20,7 +21,7 @@ class AllowedFlexVolumePatch {
 
   factory AllowedFlexVolumePatch.fromMap(Map<String, dynamic> map) {
     return AllowedFlexVolumePatch(
-      driver: map['driver'] == null ? null : map['driver'] as String,
+      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
     );
   }
 }

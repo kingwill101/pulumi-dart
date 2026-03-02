@@ -16,11 +16,9 @@ class GetAssociatedTenantArgs {
   /// [associatedTenantName] The ID that uniquely identifies a tenant.
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   GetAssociatedTenantArgs({
-    required pulumi.Output<String> associatedTenantName,
-    required pulumi.Output<String> billingAccountName,
-  }) :
-      associatedTenantName = pulumi.Input.asInput<String>(associatedTenantName),
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName);
+    required this.associatedTenantName,
+    required this.billingAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAssociatedTenantArgs {
 
   factory GetAssociatedTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetAssociatedTenantArgs(
-      associatedTenantName: pulumi.Output.create<String>(map['associatedTenantName'] as String),
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
+      associatedTenantName: (map['associatedTenantName'] as String).input(),
+      billingAccountName: (map['billingAccountName'] as String).input(),
     );
   }
 }

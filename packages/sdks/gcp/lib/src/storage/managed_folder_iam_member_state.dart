@@ -39,19 +39,13 @@ class ManagedFolderIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   ManagedFolderIamMemberState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<ManagedFolderIamMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? managedFolder,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      condition = pulumi.Input.asOptionalInput<ManagedFolderIamMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      managedFolder = pulumi.Input.asOptionalInput<String>(managedFolder),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.bucket,
+    this.condition,
+    this.etag,
+    this.managedFolder,
+    this.member,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class ManagedFolderIamMemberState {
 
   factory ManagedFolderIamMemberState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamMemberState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<ManagedFolderIamMemberCondition>(ManagedFolderIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      managedFolder: map['managedFolder'] == null ? null : pulumi.Output.create<String>(map['managedFolder'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      condition: map['condition'] == null ? null : (ManagedFolderIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      managedFolder: map['managedFolder'] == null ? null : (map['managedFolder'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

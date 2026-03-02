@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesSlbRule {
   /// Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
-  final String domain;
+  final pulumi.Input<String> domain;
   /// Rule ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Rule name.
-  final String name;
+  final pulumi.Input<String> name;
   /// ID of the linked VServer group.
-  final String serverGroupId;
+  final pulumi.Input<String> serverGroupId;
   /// Path in the HTTP request where the rule applies (e.g. "/image").
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GetRulesSlbRule].
   /// [domain] Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
@@ -39,11 +40,11 @@ class GetRulesSlbRule {
 
   factory GetRulesSlbRule.fromMap(Map<String, dynamic> map) {
     return GetRulesSlbRule(
-      domain: map['domain'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      serverGroupId: map['serverGroupId'] as String,
-      url: map['url'] as String,
+      domain: (map['domain'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

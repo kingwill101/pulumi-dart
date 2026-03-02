@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputSource {
   /// The key used to extract the password from EC2 Parameter store.
-  final String passwordParam;
+  final pulumi.Input<String> passwordParam;
   /// The URL where the stream is pulled from.
-  final String url;
+  final pulumi.Input<String> url;
   /// The username for the input source.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [InputSource].
   /// [passwordParam] The key used to extract the password from EC2 Parameter store.
@@ -29,9 +30,9 @@ class InputSource {
 
   factory InputSource.fromMap(Map<String, dynamic> map) {
     return InputSource(
-      passwordParam: map['passwordParam'] as String,
-      url: map['url'] as String,
-      username: map['username'] as String,
+      passwordParam: (map['passwordParam'] as String).input(),
+      url: (map['url'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

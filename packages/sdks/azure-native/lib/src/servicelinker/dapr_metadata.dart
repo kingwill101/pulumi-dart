@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The dapr component metadata.
 class DaprMetadata {
   /// The description of the metadata, returned from configuration api
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Metadata property name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value indicating whether the metadata is required or not
-  final String? required;
+  final pulumi.Input<String>? required;
   /// The secret name where dapr could get value
-  final String? secretRef;
+  final pulumi.Input<String>? secretRef;
   /// Metadata property value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DaprMetadata].
   /// [description] The description of the metadata, returned from configuration api
@@ -40,11 +41,11 @@ class DaprMetadata {
 
   factory DaprMetadata.fromMap(Map<String, dynamic> map) {
     return DaprMetadata(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      required: map['required'] == null ? null : map['required'] as String,
-      secretRef: map['secretRef'] == null ? null : map['secretRef'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

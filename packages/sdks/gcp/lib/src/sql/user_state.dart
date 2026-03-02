@@ -61,29 +61,18 @@ class UserState {
   /// [sqlServerUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the
   UserState({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<UserPasswordPolicy>? passwordPolicy,
-    pulumi.Output<String>? passwordWo,
-    pulumi.Output<int>? passwordWoVersion,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<UserSqlServerUserDetail>>? sqlServerUserDetails,
-    pulumi.Output<String>? type,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordPolicy = pulumi.Input.asOptionalInput<UserPasswordPolicy>(passwordPolicy),
-      passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
-      passwordWoVersion = pulumi.Input.asOptionalInput<int>(passwordWoVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sqlServerUserDetails = pulumi.Input.asOptionalInput<List<UserSqlServerUserDetail>>(sqlServerUserDetails),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.deletionPolicy,
+    this.host,
+    this.instance,
+    this.name,
+    this.password,
+    this.passwordPolicy,
+    this.passwordWo,
+    this.passwordWoVersion,
+    this.project,
+    this.sqlServerUserDetails,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,17 +92,17 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordPolicy: map['passwordPolicy'] == null ? null : pulumi.Output.create<UserPasswordPolicy>(UserPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())),
-      passwordWo: map['passwordWo'] == null ? null : pulumi.Output.create<String>(map['passwordWo'] as String),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : pulumi.Output.create<int>(map['passwordWoVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sqlServerUserDetails: map['sqlServerUserDetails'] == null ? null : pulumi.Output.create<List<UserSqlServerUserDetail>>(pulumi.Input.decodeList<UserSqlServerUserDetail>(map['sqlServerUserDetails'], (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>()))),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sqlServerUserDetails: map['sqlServerUserDetails'] == null ? null : (pulumi.Input.decodeList<UserSqlServerUserDetail>(map['sqlServerUserDetails'], (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

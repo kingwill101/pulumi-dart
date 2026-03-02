@@ -26,17 +26,12 @@ class GatewayRouteConfigArgs {
   /// [routeConfigName] The name of the Spring Cloud Gateway route config.
   /// [serviceName] The name of the Service resource.
   GatewayRouteConfigArgs({
-    required pulumi.Output<String> gatewayName,
-    pulumi.Output<GatewayRouteConfigProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeConfigName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      properties = pulumi.Input.asOptionalInput<GatewayRouteConfigProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeConfigName = pulumi.Input.asOptionalInput<String>(routeConfigName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.gatewayName,
+    this.properties,
+    required this.resourceGroupName,
+    this.routeConfigName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GatewayRouteConfigArgs {
 
   factory GatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigArgs(
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GatewayRouteConfigProperties>(GatewayRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeConfigName: map['routeConfigName'] == null ? null : pulumi.Output.create<String>(map['routeConfigName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      gatewayName: (map['gatewayName'] as String).input(),
+      properties: map['properties'] == null ? null : (GatewayRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeConfigName: map['routeConfigName'] == null ? null : (map['routeConfigName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

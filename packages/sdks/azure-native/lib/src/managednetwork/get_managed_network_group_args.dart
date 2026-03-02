@@ -19,13 +19,10 @@ class GetManagedNetworkGroupArgs {
   /// [managedNetworkName] The name of the Managed Network.
   /// [resourceGroupName] The name of the resource group.
   GetManagedNetworkGroupArgs({
-    required pulumi.Output<String> managedNetworkGroupName,
-    required pulumi.Output<String> managedNetworkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      managedNetworkGroupName = pulumi.Input.asInput<String>(managedNetworkGroupName),
-      managedNetworkName = pulumi.Input.asInput<String>(managedNetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.managedNetworkGroupName,
+    required this.managedNetworkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedNetworkGroupArgs {
 
   factory GetManagedNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedNetworkGroupArgs(
-      managedNetworkGroupName: pulumi.Output.create<String>(map['managedNetworkGroupName'] as String),
-      managedNetworkName: pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      managedNetworkGroupName: (map['managedNetworkGroupName'] as String).input(),
+      managedNetworkName: (map['managedNetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

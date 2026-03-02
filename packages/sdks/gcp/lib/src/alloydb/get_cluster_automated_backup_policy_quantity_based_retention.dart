@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAutomatedBackupPolicyQuantityBasedRetention {
   /// The number of backups to retain.
-  final int count;
+  final pulumi.Input<int> count;
 
   /// Creates a new [GetClusterAutomatedBackupPolicyQuantityBasedRetention].
   /// [count] The number of backups to retain.
@@ -19,7 +20,7 @@ class GetClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   factory GetClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return GetClusterAutomatedBackupPolicyQuantityBasedRetention(
-      count: map['count'] as int,
+      count: (map['count'] as int).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Evaluates whether each column value lies between a specified range.
 class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
-  final String? maxValue;
+  final pulumi.Input<String>? maxValue;
   /// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
-  final String? minValue;
+  final pulumi.Input<String>? minValue;
   /// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-  final bool? strictMaxEnabled;
+  final pulumi.Input<bool>? strictMaxEnabled;
   /// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
-  final bool? strictMinEnabled;
+  final pulumi.Input<bool>? strictMinEnabled;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRangeExpectation].
   /// [maxValue] Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
@@ -35,10 +36,10 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRangeExpectation(
-      maxValue: map['maxValue'] == null ? null : map['maxValue'] as String,
-      minValue: map['minValue'] == null ? null : map['minValue'] as String,
-      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : map['strictMaxEnabled'] as bool,
-      strictMinEnabled: map['strictMinEnabled'] == null ? null : map['strictMinEnabled'] as bool,
+      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
+      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled'] as bool).input(),
+      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled'] as bool).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class SinkPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sinkIdentifier] ARN of the sink to attach this policy to.
   SinkPolicyArgs({
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> sinkIdentifier,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sinkIdentifier = pulumi.Input.asInput<String>(sinkIdentifier);
+    required this.policy,
+    this.region,
+    required this.sinkIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SinkPolicyArgs {
 
   factory SinkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SinkPolicyArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sinkIdentifier: pulumi.Output.create<String>(map['sinkIdentifier'] as String),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sinkIdentifier: (map['sinkIdentifier'] as String).input(),
     );
   }
 }

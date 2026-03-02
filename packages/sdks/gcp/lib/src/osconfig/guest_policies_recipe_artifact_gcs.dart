@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesRecipeArtifactGcs {
   /// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
   /// this value would be my-bucket.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
   /// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
-  final int? generation;
+  final pulumi.Input<int>? generation;
   /// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
   /// this value would be foo/bar.
-  final String? object;
+  final pulumi.Input<String>? object;
 
   /// Creates a new [GuestPoliciesRecipeArtifactGcs].
   /// [bucket] Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
@@ -32,9 +33,9 @@ class GuestPoliciesRecipeArtifactGcs {
 
   factory GuestPoliciesRecipeArtifactGcs.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeArtifactGcs(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as int,
-      object: map['object'] == null ? null : map['object'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
     );
   }
 }

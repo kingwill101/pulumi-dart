@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountsAccountDatabasePrivilege {
   /// The type of permission for the account.
-  final String accountPrivilege;
+  final pulumi.Input<String> accountPrivilege;
   /// The specific permissions corresponding to the type of account permissions.
-  final String accountPrivilegeDetail;
+  final pulumi.Input<String> accountPrivilegeDetail;
   /// Database name.
-  final String dbName;
+  final pulumi.Input<String> dbName;
 
   /// Creates a new [GetAccountsAccountDatabasePrivilege].
   /// [accountPrivilege] The type of permission for the account.
@@ -29,9 +30,9 @@ class GetAccountsAccountDatabasePrivilege {
 
   factory GetAccountsAccountDatabasePrivilege.fromMap(Map<String, dynamic> map) {
     return GetAccountsAccountDatabasePrivilege(
-      accountPrivilege: map['accountPrivilege'] as String,
-      accountPrivilegeDetail: map['accountPrivilegeDetail'] as String,
-      dbName: map['dbName'] as String,
+      accountPrivilege: (map['accountPrivilege'] as String).input(),
+      accountPrivilegeDetail: (map['accountPrivilegeDetail'] as String).input(),
+      dbName: (map['dbName'] as String).input(),
     );
   }
 }

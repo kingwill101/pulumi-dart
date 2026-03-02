@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications {
   /// The additional recipients to notify
-  final List<String>? additionalRecipients;
+  final pulumi.Input<List<String>>? additionalRecipients;
   /// Whether the default recipients are notified
-  final bool defaultRecipients;
+  final pulumi.Input<bool> defaultRecipients;
   /// What level of notifications are sent
-  final String notificationLevel;
+  final pulumi.Input<String> notificationLevel;
 
   /// Creates a new [GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications].
   /// [additionalRecipients] The additional recipients to notify
@@ -29,9 +30,9 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifica
 
   factory GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications(
-      additionalRecipients: map['additionalRecipients'] == null ? null : (map['additionalRecipients'] as List).cast<String>(),
-      defaultRecipients: map['defaultRecipients'] as bool,
-      notificationLevel: map['notificationLevel'] as String,
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
+      defaultRecipients: (map['defaultRecipients'] as bool).input(),
+      notificationLevel: (map['notificationLevel'] as String).input(),
     );
   }
 }

@@ -16,27 +16,27 @@ import 'edifact_validation_settings.dart';
 /// The Edifact agreement protocol settings.
 class EdifactProtocolSettings {
   /// The EDIFACT acknowledgement settings.
-  final EdifactAcknowledgementSettings acknowledgementSettings;
+  final pulumi.Input<EdifactAcknowledgementSettings> acknowledgementSettings;
   /// The EDIFACT delimiter override settings.
-  final List<EdifactDelimiterOverride>? edifactDelimiterOverrides;
+  final pulumi.Input<List<EdifactDelimiterOverride>>? edifactDelimiterOverrides;
   /// The EDIFACT envelope override settings.
-  final List<EdifactEnvelopeOverride>? envelopeOverrides;
+  final pulumi.Input<List<EdifactEnvelopeOverride>>? envelopeOverrides;
   /// The EDIFACT envelope settings.
-  final EdifactEnvelopeSettings envelopeSettings;
+  final pulumi.Input<EdifactEnvelopeSettings> envelopeSettings;
   /// The EDIFACT framing settings.
-  final EdifactFramingSettings framingSettings;
+  final pulumi.Input<EdifactFramingSettings> framingSettings;
   /// The EDIFACT message filter.
-  final EdifactMessageFilter messageFilter;
+  final pulumi.Input<EdifactMessageFilter> messageFilter;
   /// The EDIFACT message filter list.
-  final List<EdifactMessageIdentifier>? messageFilterList;
+  final pulumi.Input<List<EdifactMessageIdentifier>>? messageFilterList;
   /// The EDIFACT processing Settings.
-  final EdifactProcessingSettings processingSettings;
+  final pulumi.Input<EdifactProcessingSettings> processingSettings;
   /// The EDIFACT schema references.
-  final List<EdifactSchemaReference> schemaReferences;
+  final pulumi.Input<List<EdifactSchemaReference>> schemaReferences;
   /// The EDIFACT validation override settings.
-  final List<EdifactValidationOverride>? validationOverrides;
+  final pulumi.Input<List<EdifactValidationOverride>>? validationOverrides;
   /// The EDIFACT validation settings.
-  final EdifactValidationSettings validationSettings;
+  final pulumi.Input<EdifactValidationSettings> validationSettings;
 
   /// Creates a new [EdifactProtocolSettings].
   /// [acknowledgementSettings] The EDIFACT acknowledgement settings.
@@ -66,33 +66,33 @@ class EdifactProtocolSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acknowledgementSettings': acknowledgementSettings.toMap(),
-      'edifactDelimiterOverrides': ?edifactDelimiterOverrides == null ? null : pulumi.Input.encodeList<EdifactDelimiterOverride, Map<String, dynamic>>(edifactDelimiterOverrides!, (value) => value.toMap()),
-      'envelopeOverrides': ?envelopeOverrides == null ? null : pulumi.Input.encodeList<EdifactEnvelopeOverride, Map<String, dynamic>>(envelopeOverrides!, (value) => value.toMap()),
-      'envelopeSettings': envelopeSettings.toMap(),
-      'framingSettings': framingSettings.toMap(),
-      'messageFilter': messageFilter.toMap(),
-      'messageFilterList': ?messageFilterList == null ? null : pulumi.Input.encodeList<EdifactMessageIdentifier, Map<String, dynamic>>(messageFilterList!, (value) => value.toMap()),
-      'processingSettings': processingSettings.toMap(),
-      'schemaReferences': pulumi.Input.encodeList<EdifactSchemaReference, Map<String, dynamic>>(schemaReferences, (value) => value.toMap()),
-      'validationOverrides': ?validationOverrides == null ? null : pulumi.Input.encodeList<EdifactValidationOverride, Map<String, dynamic>>(validationOverrides!, (value) => value.toMap()),
-      'validationSettings': validationSettings.toMap(),
+      'acknowledgementSettings': pulumi.Input.mapInputValue<EdifactAcknowledgementSettings, Map<String, dynamic>>(acknowledgementSettings, (value) => value.toMap()),
+      'edifactDelimiterOverrides': ?pulumi.Input.mapOptionalInputValue<List<EdifactDelimiterOverride>, List<Map<String, dynamic>>>(edifactDelimiterOverrides, (value) => pulumi.Input.encodeList<EdifactDelimiterOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'envelopeOverrides': ?pulumi.Input.mapOptionalInputValue<List<EdifactEnvelopeOverride>, List<Map<String, dynamic>>>(envelopeOverrides, (value) => pulumi.Input.encodeList<EdifactEnvelopeOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'envelopeSettings': pulumi.Input.mapInputValue<EdifactEnvelopeSettings, Map<String, dynamic>>(envelopeSettings, (value) => value.toMap()),
+      'framingSettings': pulumi.Input.mapInputValue<EdifactFramingSettings, Map<String, dynamic>>(framingSettings, (value) => value.toMap()),
+      'messageFilter': pulumi.Input.mapInputValue<EdifactMessageFilter, Map<String, dynamic>>(messageFilter, (value) => value.toMap()),
+      'messageFilterList': ?pulumi.Input.mapOptionalInputValue<List<EdifactMessageIdentifier>, List<Map<String, dynamic>>>(messageFilterList, (value) => pulumi.Input.encodeList<EdifactMessageIdentifier, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'processingSettings': pulumi.Input.mapInputValue<EdifactProcessingSettings, Map<String, dynamic>>(processingSettings, (value) => value.toMap()),
+      'schemaReferences': pulumi.Input.mapInputValue<List<EdifactSchemaReference>, List<Map<String, dynamic>>>(schemaReferences, (value) => pulumi.Input.encodeList<EdifactSchemaReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationOverrides': ?pulumi.Input.mapOptionalInputValue<List<EdifactValidationOverride>, List<Map<String, dynamic>>>(validationOverrides, (value) => pulumi.Input.encodeList<EdifactValidationOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationSettings': pulumi.Input.mapInputValue<EdifactValidationSettings, Map<String, dynamic>>(validationSettings, (value) => value.toMap()),
     };
   }
 
   factory EdifactProtocolSettings.fromMap(Map<String, dynamic> map) {
     return EdifactProtocolSettings(
-      acknowledgementSettings: EdifactAcknowledgementSettings.fromMap((map['acknowledgementSettings'] as Map).cast<String, dynamic>()),
-      edifactDelimiterOverrides: map['edifactDelimiterOverrides'] == null ? null : pulumi.Input.decodeList<EdifactDelimiterOverride>(map['edifactDelimiterOverrides'], (value) => EdifactDelimiterOverride.fromMap((value as Map).cast<String, dynamic>())),
-      envelopeOverrides: map['envelopeOverrides'] == null ? null : pulumi.Input.decodeList<EdifactEnvelopeOverride>(map['envelopeOverrides'], (value) => EdifactEnvelopeOverride.fromMap((value as Map).cast<String, dynamic>())),
-      envelopeSettings: EdifactEnvelopeSettings.fromMap((map['envelopeSettings'] as Map).cast<String, dynamic>()),
-      framingSettings: EdifactFramingSettings.fromMap((map['framingSettings'] as Map).cast<String, dynamic>()),
-      messageFilter: EdifactMessageFilter.fromMap((map['messageFilter'] as Map).cast<String, dynamic>()),
-      messageFilterList: map['messageFilterList'] == null ? null : pulumi.Input.decodeList<EdifactMessageIdentifier>(map['messageFilterList'], (value) => EdifactMessageIdentifier.fromMap((value as Map).cast<String, dynamic>())),
-      processingSettings: EdifactProcessingSettings.fromMap((map['processingSettings'] as Map).cast<String, dynamic>()),
-      schemaReferences: pulumi.Input.decodeList<EdifactSchemaReference>(map['schemaReferences'], (value) => EdifactSchemaReference.fromMap((value as Map).cast<String, dynamic>())),
-      validationOverrides: map['validationOverrides'] == null ? null : pulumi.Input.decodeList<EdifactValidationOverride>(map['validationOverrides'], (value) => EdifactValidationOverride.fromMap((value as Map).cast<String, dynamic>())),
-      validationSettings: EdifactValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>()),
+      acknowledgementSettings: (EdifactAcknowledgementSettings.fromMap((map['acknowledgementSettings'] as Map).cast<String, dynamic>())).input(),
+      edifactDelimiterOverrides: map['edifactDelimiterOverrides'] == null ? null : (pulumi.Input.decodeList<EdifactDelimiterOverride>(map['edifactDelimiterOverrides'], (value) => EdifactDelimiterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envelopeOverrides: map['envelopeOverrides'] == null ? null : (pulumi.Input.decodeList<EdifactEnvelopeOverride>(map['envelopeOverrides'], (value) => EdifactEnvelopeOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envelopeSettings: (EdifactEnvelopeSettings.fromMap((map['envelopeSettings'] as Map).cast<String, dynamic>())).input(),
+      framingSettings: (EdifactFramingSettings.fromMap((map['framingSettings'] as Map).cast<String, dynamic>())).input(),
+      messageFilter: (EdifactMessageFilter.fromMap((map['messageFilter'] as Map).cast<String, dynamic>())).input(),
+      messageFilterList: map['messageFilterList'] == null ? null : (pulumi.Input.decodeList<EdifactMessageIdentifier>(map['messageFilterList'], (value) => EdifactMessageIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processingSettings: (EdifactProcessingSettings.fromMap((map['processingSettings'] as Map).cast<String, dynamic>())).input(),
+      schemaReferences: (pulumi.Input.decodeList<EdifactSchemaReference>(map['schemaReferences'], (value) => EdifactSchemaReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationOverrides: map['validationOverrides'] == null ? null : (pulumi.Input.decodeList<EdifactValidationOverride>(map['validationOverrides'], (value) => EdifactValidationOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationSettings: (EdifactValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

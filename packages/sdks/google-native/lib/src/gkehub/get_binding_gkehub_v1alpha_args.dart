@@ -18,15 +18,11 @@ class GetBindingGkehubV1alphaArgs {
   /// [membershipId] Required.
   /// [project] Optional.
   GetBindingGkehubV1alphaArgs({
-    required pulumi.Output<String> bindingId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-  }) :
-      bindingId = pulumi.Input.asInput<String>(bindingId),
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bindingId,
+    required this.location,
+    required this.membershipId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetBindingGkehubV1alphaArgs {
 
   factory GetBindingGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetBindingGkehubV1alphaArgs(
-      bindingId: pulumi.Output.create<String>(map['bindingId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bindingId: (map['bindingId'] as String).input(),
+      location: (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

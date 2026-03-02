@@ -16,11 +16,9 @@ class GetPolicyExemptionArgs {
   /// [policyExemptionName] The name of the policy exemption to delete.
   /// [scope] The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   GetPolicyExemptionArgs({
-    required pulumi.Output<String> policyExemptionName,
-    required pulumi.Output<String> scope,
-  }) :
-      policyExemptionName = pulumi.Input.asInput<String>(policyExemptionName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.policyExemptionName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPolicyExemptionArgs {
 
   factory GetPolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyExemptionArgs(
-      policyExemptionName: pulumi.Output.create<String>(map['policyExemptionName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      policyExemptionName: (map['policyExemptionName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

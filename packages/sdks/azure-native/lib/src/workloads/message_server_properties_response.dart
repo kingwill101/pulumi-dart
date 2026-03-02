@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the SAP message server properties.
 class MessageServerPropertiesResponse {
   /// Defines the health of SAP Instances.
-  final String health;
+  final pulumi.Input<String> health;
   /// message server SAP Hostname.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// message server HTTP Port.
-  final double httpPort;
+  final pulumi.Input<double> httpPort;
   /// message server HTTPS Port.
-  final double httpsPort;
+  final pulumi.Input<double> httpsPort;
   /// message server internal MS port.
-  final double internalMsPort;
+  final pulumi.Input<double> internalMsPort;
   /// message server IP Address.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// message server port.
-  final double msPort;
+  final pulumi.Input<double> msPort;
 
   /// Creates a new [MessageServerPropertiesResponse].
   /// [health] Defines the health of SAP Instances.
@@ -50,13 +51,13 @@ class MessageServerPropertiesResponse {
 
   factory MessageServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MessageServerPropertiesResponse(
-      health: map['health'] as String,
-      hostname: map['hostname'] as String,
-      httpPort: map['httpPort'] as double,
-      httpsPort: map['httpsPort'] as double,
-      internalMsPort: map['internalMsPort'] as double,
-      ipAddress: map['ipAddress'] as String,
-      msPort: map['msPort'] as double,
+      health: (map['health'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      httpPort: (map['httpPort'] as double).input(),
+      httpsPort: (map['httpsPort'] as double).input(),
+      internalMsPort: (map['internalMsPort'] as double).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      msPort: (map['msPort'] as double).input(),
     );
   }
 }

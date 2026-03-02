@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LkeClusterPoolAutoscaler {
   /// The maximum number of nodes to autoscale to.
-  final int max;
+  final pulumi.Input<int> max;
   /// The minimum number of nodes to autoscale to.
-  final int min;
+  final pulumi.Input<int> min;
 
   /// Creates a new [LkeClusterPoolAutoscaler].
   /// [max] The maximum number of nodes to autoscale to.
@@ -24,8 +25,8 @@ class LkeClusterPoolAutoscaler {
 
   factory LkeClusterPoolAutoscaler.fromMap(Map<String, dynamic> map) {
     return LkeClusterPoolAutoscaler(
-      max: map['max'] as int,
-      min: map['min'] as int,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

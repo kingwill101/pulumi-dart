@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationsApplication {
   /// The name of the application.
-  final String applicationName;
+  final pulumi.Input<String> applicationName;
   /// The Created time of the application.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Application group description information.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Application. The value is formate as <application_name>.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The Updated time of the application.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetApplicationsApplication].
   /// [applicationName] The name of the application.
@@ -49,13 +50,13 @@ class GetApplicationsApplication {
 
   factory GetApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplication(
-      applicationName: map['applicationName'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      updateTime: map['updateTime'] as String,
+      applicationName: (map['applicationName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

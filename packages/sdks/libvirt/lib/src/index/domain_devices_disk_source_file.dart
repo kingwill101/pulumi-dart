@@ -5,11 +5,11 @@ import 'domain_devices_disk_source_file_sec_label.dart';
 
 class DomainDevicesDiskSourceFile {
   /// Sets the file descriptor group for the file specified in the backing store source.
-  final String? fdGroup;
+  final pulumi.Input<String>? fdGroup;
   /// Specifies the actual file referenced in the backing store source configuration.
-  final String? file;
+  final pulumi.Input<String>? file;
   /// Configures the security label associated with the file in the backing store source.
-  final List<DomainDevicesDiskSourceFileSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskSourceFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskSourceFile].
   /// [fdGroup] Sets the file descriptor group for the file specified in the backing store source.
@@ -25,15 +25,15 @@ class DomainDevicesDiskSourceFile {
     return <String, dynamic>{
       'fdGroup': ?fdGroup,
       'file': ?file,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskSourceFileSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskSourceFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskSourceFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceFile(
-      fdGroup: map['fdGroup'] == null ? null : map['fdGroup'] as String,
-      file: map['file'] == null ? null : map['file'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup'] as String).input(),
+      file: map['file'] == null ? null : (map['file'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceIntegrationKmsServerSideEncryption {
   /// KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Specifies whether KMS integration is enabled. Valid values are `DISABLED` and `ENABLED`.
-  final String? optInStatus;
+  final pulumi.Input<String>? optInStatus;
   /// Type of KMS key used. Valid values are `CUSTOMER_MANAGED_KEY` and `AWS_OWNED_KMS_KEY`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ServiceIntegrationKmsServerSideEncryption].
   /// [kmsKeyId] KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.
@@ -29,9 +30,9 @@ class ServiceIntegrationKmsServerSideEncryption {
 
   factory ServiceIntegrationKmsServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationKmsServerSideEncryption(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      optInStatus: map['optInStatus'] == null ? null : map['optInStatus'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      optInStatus: map['optInStatus'] == null ? null : (map['optInStatus'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetMonitorGroupInstancesArgs {
   /// [keyword] Optional.
   /// [outputFile] Optional.
   GetMonitorGroupInstancesArgs({
-    required pulumi.Output<String> ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asInput<String>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.ids,
+    this.keyword,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetMonitorGroupInstancesArgs {
 
   factory GetMonitorGroupInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupInstancesArgs(
-      ids: pulumi.Output.create<String>(map['ids'] as String),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: (map['ids'] as String).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

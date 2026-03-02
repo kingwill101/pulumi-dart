@@ -5,9 +5,9 @@ import 'wire_group_endpoint_interconnect.dart';
 
 class WireGroupEndpoint {
   /// The identifier for this object. Format specified above.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// Structure is documented below.
-  final List<WireGroupEndpointInterconnect>? interconnects;
+  final pulumi.Input<List<WireGroupEndpointInterconnect>>? interconnects;
 
   /// Creates a new [WireGroupEndpoint].
   /// [endpoint] The identifier for this object. Format specified above.
@@ -20,14 +20,14 @@ class WireGroupEndpoint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpoint': endpoint,
-      'interconnects': ?interconnects == null ? null : pulumi.Input.encodeList<WireGroupEndpointInterconnect, Map<String, dynamic>>(interconnects!, (value) => value.toMap()),
+      'interconnects': ?pulumi.Input.mapOptionalInputValue<List<WireGroupEndpointInterconnect>, List<Map<String, dynamic>>>(interconnects, (value) => pulumi.Input.encodeList<WireGroupEndpointInterconnect, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory WireGroupEndpoint.fromMap(Map<String, dynamic> map) {
     return WireGroupEndpoint(
-      endpoint: map['endpoint'] as String,
-      interconnects: map['interconnects'] == null ? null : pulumi.Input.decodeList<WireGroupEndpointInterconnect>(map['interconnects'], (value) => WireGroupEndpointInterconnect.fromMap((value as Map).cast<String, dynamic>())),
+      endpoint: (map['endpoint'] as String).input(),
+      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<WireGroupEndpointInterconnect>(map['interconnects'], (value) => WireGroupEndpointInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

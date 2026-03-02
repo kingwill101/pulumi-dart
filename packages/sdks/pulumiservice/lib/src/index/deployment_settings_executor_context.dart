@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The executor context defines information about the executor where the deployment is executed. If unspecified, the default 'pulumi/pulumi' image is used.
 class DeploymentSettingsExecutorContext {
   /// Allows overriding the default executor image with a custom image. E.g. 'pulumi/pulumi-nodejs:latest'
-  final String executorImage;
+  final pulumi.Input<String> executorImage;
 
   /// Creates a new [DeploymentSettingsExecutorContext].
   /// [executorImage] Allows overriding the default executor image with a custom image. E.g. 'pulumi/pulumi-nodejs:latest'
@@ -20,7 +21,7 @@ class DeploymentSettingsExecutorContext {
 
   factory DeploymentSettingsExecutorContext.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsExecutorContext(
-      executorImage: map['executorImage'] as String,
+      executorImage: (map['executorImage'] as String).input(),
     );
   }
 }

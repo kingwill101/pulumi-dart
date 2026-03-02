@@ -28,19 +28,13 @@ class DatabaseConnectionPoolArgs {
   /// [size] The desired size of the PGBouncer connection pool.
   /// [user] The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
   DatabaseConnectionPoolArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> dbName,
-    required pulumi.Output<String> mode,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> size,
-    pulumi.Output<String>? user,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      dbName = pulumi.Input.asInput<String>(dbName),
-      mode = pulumi.Input.asInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      size = pulumi.Input.asInput<int>(size),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    required this.clusterId,
+    required this.dbName,
+    required this.mode,
+    this.name,
+    required this.size,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class DatabaseConnectionPoolArgs {
 
   factory DatabaseConnectionPoolArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseConnectionPoolArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      dbName: pulumi.Output.create<String>(map['dbName'] as String),
-      mode: pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      dbName: (map['dbName'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      size: (map['size'] as int).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

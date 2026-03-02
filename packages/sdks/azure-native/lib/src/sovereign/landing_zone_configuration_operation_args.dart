@@ -23,15 +23,11 @@ class LandingZoneConfigurationOperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   LandingZoneConfigurationOperationArgs({
-    required pulumi.Output<String> landingZoneAccountName,
-    pulumi.Output<String>? landingZoneConfigurationName,
-    pulumi.Output<LandingZoneConfigurationResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      landingZoneAccountName = pulumi.Input.asInput<String>(landingZoneAccountName),
-      landingZoneConfigurationName = pulumi.Input.asOptionalInput<String>(landingZoneConfigurationName),
-      properties = pulumi.Input.asOptionalInput<LandingZoneConfigurationResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.landingZoneAccountName,
+    this.landingZoneConfigurationName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class LandingZoneConfigurationOperationArgs {
 
   factory LandingZoneConfigurationOperationArgs.fromMap(Map<String, dynamic> map) {
     return LandingZoneConfigurationOperationArgs(
-      landingZoneAccountName: pulumi.Output.create<String>(map['landingZoneAccountName'] as String),
-      landingZoneConfigurationName: map['landingZoneConfigurationName'] == null ? null : pulumi.Output.create<String>(map['landingZoneConfigurationName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<LandingZoneConfigurationResourceProperties>(LandingZoneConfigurationResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      landingZoneAccountName: (map['landingZoneAccountName'] as String).input(),
+      landingZoneConfigurationName: map['landingZoneConfigurationName'] == null ? null : (map['landingZoneConfigurationName'] as String).input(),
+      properties: map['properties'] == null ? null : (LandingZoneConfigurationResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

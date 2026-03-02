@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remediation_remediation_type_containeranalysis_v1alpha1.dart';
 import 'uri.dart';
 
 /// Specifies details on how to handle (and presumably, fix) a vulnerability.
 class RemediationContaineranalysisV1alpha1 {
   /// Contains a comprehensive human-readable discussion of the remediation.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// The type of remediation that can be applied.
-  final RemediationRemediationTypeContaineranalysisV1alpha1? remediationType;
+  final pulumi.Input<RemediationRemediationTypeContaineranalysisV1alpha1>? remediationType;
   /// Contains the URL where to obtain the remediation.
-  final URI? remediationUri;
+  final pulumi.Input<URI>? remediationUri;
 
   /// Creates a new [RemediationContaineranalysisV1alpha1].
   /// [details] Contains a comprehensive human-readable discussion of the remediation.
@@ -25,16 +26,16 @@ class RemediationContaineranalysisV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'details': ?details,
-      'remediationType': ?remediationType == null ? null : remediationType!.value,
-      'remediationUri': ?remediationUri == null ? null : remediationUri!.toMap(),
+      'remediationType': ?pulumi.Input.mapOptionalInputValue<RemediationRemediationTypeContaineranalysisV1alpha1, String>(remediationType, (value) => value.value),
+      'remediationUri': ?pulumi.Input.mapOptionalInputValue<URI, Map<String, dynamic>>(remediationUri, (value) => value.toMap()),
     };
   }
 
   factory RemediationContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return RemediationContaineranalysisV1alpha1(
-      details: map['details'] == null ? null : map['details'] as String,
-      remediationType: map['remediationType'] == null ? null : RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(map['remediationType'] as String),
-      remediationUri: map['remediationUri'] == null ? null : URI.fromMap((map['remediationUri'] as Map).cast<String, dynamic>()),
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      remediationType: map['remediationType'] == null ? null : (RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(map['remediationType'] as String)).input(),
+      remediationUri: map['remediationUri'] == null ? null : (URI.fromMap((map['remediationUri'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class GroupSubscriptionAssociationState {
   /// [managementGroupId] The ID of the Management Group to associate the Subscription with. Changing this forces a new Management to be created.
   /// [subscriptionId] The ID of the Subscription to be associated with the Management Group. Changing this forces a new Management to be created.
   GroupSubscriptionAssociationState({
-    pulumi.Output<String>? managementGroupId,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      managementGroupId = pulumi.Input.asOptionalInput<String>(managementGroupId),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.managementGroupId,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class GroupSubscriptionAssociationState {
 
   factory GroupSubscriptionAssociationState.fromMap(Map<String, dynamic> map) {
     return GroupSubscriptionAssociationState(
-      managementGroupId: map['managementGroupId'] == null ? null : pulumi.Output.create<String>(map['managementGroupId'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHoneypotNodesNode {
   /// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
-  final bool allowHoneypotAccessInternet;
+  final pulumi.Input<bool> allowHoneypotAccessInternet;
   /// Number of probes available.
-  final int availableProbeNum;
-  final String createTime;
+  final pulumi.Input<int> availableProbeNum;
+  final pulumi.Input<String> createTime;
   /// The ID of the Honeypot management node.
-  final String id;
+  final pulumi.Input<String> id;
   /// Honeypot management node id.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The name of the management node.
-  final String nodeName;
+  final pulumi.Input<String> nodeName;
   /// Release the collection of network segments.
-  final List<String> securityGroupProbeIpLists;
-  final int status;
+  final pulumi.Input<List<String>> securityGroupProbeIpLists;
+  final pulumi.Input<int> status;
 
   /// Creates a new [GetHoneypotNodesNode].
   /// [allowHoneypotAccessInternet] Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
@@ -52,14 +53,14 @@ class GetHoneypotNodesNode {
 
   factory GetHoneypotNodesNode.fromMap(Map<String, dynamic> map) {
     return GetHoneypotNodesNode(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] as bool,
-      availableProbeNum: map['availableProbeNum'] as int,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      nodeId: map['nodeId'] as String,
-      nodeName: map['nodeName'] as String,
-      securityGroupProbeIpLists: (map['securityGroupProbeIpLists'] as List).cast<String>(),
-      status: map['status'] as int,
+      allowHoneypotAccessInternet: (map['allowHoneypotAccessInternet'] as bool).input(),
+      availableProbeNum: (map['availableProbeNum'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      nodeName: (map['nodeName'] as String).input(),
+      securityGroupProbeIpLists: ((map['securityGroupProbeIpLists'] as List).cast<String>()).input(),
+      status: (map['status'] as int).input(),
     );
   }
 }

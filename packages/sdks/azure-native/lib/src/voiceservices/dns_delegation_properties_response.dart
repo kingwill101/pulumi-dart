@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of a DNS Domain delegated to the Communications Gateway.
 class DnsDelegationPropertiesResponse {
   /// Domain name to delegate
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// The Azure-hosted DNS Name Servers for the delegated DNS Zones
-  final List<String> nameServers;
+  final pulumi.Input<List<String>> nameServers;
 
   /// Creates a new [DnsDelegationPropertiesResponse].
   /// [domain] Domain name to delegate
@@ -25,8 +26,8 @@ class DnsDelegationPropertiesResponse {
 
   factory DnsDelegationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DnsDelegationPropertiesResponse(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      nameServers: (map['nameServers'] as List).cast<String>(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }
 }

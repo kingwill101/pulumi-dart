@@ -26,17 +26,12 @@ class TrustAnchorArgs {
   /// [source] The source of trust, documented below
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TrustAnchorArgs({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<TrustAnchorNotificationSetting>>? notificationSettings,
-    required pulumi.Output<TrustAnchorSource> source,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationSettings = pulumi.Input.asOptionalInput<List<TrustAnchorNotificationSetting>>(notificationSettings),
-      source = pulumi.Input.asInput<TrustAnchorSource>(source),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.enabled,
+    this.name,
+    this.notificationSettings,
+    required this.source,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TrustAnchorArgs {
 
   factory TrustAnchorArgs.fromMap(Map<String, dynamic> map) {
     return TrustAnchorArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationSettings: map['notificationSettings'] == null ? null : pulumi.Output.create<List<TrustAnchorNotificationSetting>>(pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings'], (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      source: pulumi.Output.create<TrustAnchorSource>(TrustAnchorSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings'], (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: (TrustAnchorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

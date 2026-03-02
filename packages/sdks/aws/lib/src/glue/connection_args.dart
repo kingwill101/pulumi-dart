@@ -45,27 +45,17 @@ class ConnectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ConnectionArgs({
-    pulumi.Output<Map<String, String>>? athenaProperties,
-    pulumi.Output<String>? catalogId,
-    pulumi.Output<Map<String, String>>? connectionProperties,
-    pulumi.Output<String>? connectionType,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? matchCriterias,
-    pulumi.Output<String>? name,
-    pulumi.Output<ConnectionPhysicalConnectionRequirements>? physicalConnectionRequirements,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      athenaProperties = pulumi.Input.asOptionalInput<Map<String, String>>(athenaProperties),
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      connectionProperties = pulumi.Input.asOptionalInput<Map<String, String>>(connectionProperties),
-      connectionType = pulumi.Input.asOptionalInput<String>(connectionType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      matchCriterias = pulumi.Input.asOptionalInput<List<String>>(matchCriterias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      physicalConnectionRequirements = pulumi.Input.asOptionalInput<ConnectionPhysicalConnectionRequirements>(physicalConnectionRequirements),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.athenaProperties,
+    this.catalogId,
+    this.connectionProperties,
+    this.connectionType,
+    this.description,
+    this.matchCriterias,
+    this.name,
+    this.physicalConnectionRequirements,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      athenaProperties: map['athenaProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['athenaProperties'] as Map).cast<String, String>()),
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      connectionProperties: map['connectionProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['connectionProperties'] as Map).cast<String, String>()),
-      connectionType: map['connectionType'] == null ? null : pulumi.Output.create<String>(map['connectionType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      matchCriterias: map['matchCriterias'] == null ? null : pulumi.Output.create<List<String>>((map['matchCriterias'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      physicalConnectionRequirements: map['physicalConnectionRequirements'] == null ? null : pulumi.Output.create<ConnectionPhysicalConnectionRequirements>(ConnectionPhysicalConnectionRequirements.fromMap((map['physicalConnectionRequirements'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      athenaProperties: map['athenaProperties'] == null ? null : ((map['athenaProperties'] as Map).cast<String, String>()).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : ((map['connectionProperties'] as Map).cast<String, String>()).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      matchCriterias: map['matchCriterias'] == null ? null : ((map['matchCriterias'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      physicalConnectionRequirements: map['physicalConnectionRequirements'] == null ? null : (ConnectionPhysicalConnectionRequirements.fromMap((map['physicalConnectionRequirements'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

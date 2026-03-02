@@ -29,21 +29,14 @@ class ClusterArgs {
   /// [requestId] Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [stretchedClusterConfig] Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
   ClusterArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<Map<String, String>> nodeTypeConfigs,
-    required pulumi.Output<String> privateCloudId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<StretchedClusterConfig>? stretchedClusterConfig,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      nodeTypeConfigs = pulumi.Input.asInput<Map<String, String>>(nodeTypeConfigs),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      stretchedClusterConfig = pulumi.Input.asOptionalInput<StretchedClusterConfig>(stretchedClusterConfig);
+    required this.clusterId,
+    this.location,
+    required this.nodeTypeConfigs,
+    required this.privateCloudId,
+    this.project,
+    this.requestId,
+    this.stretchedClusterConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      nodeTypeConfigs: pulumi.Output.create<Map<String, String>>((map['nodeTypeConfigs'] as Map).cast<String, String>()),
-      privateCloudId: pulumi.Output.create<String>(map['privateCloudId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : pulumi.Output.create<StretchedClusterConfig>(StretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())),
+      clusterId: (map['clusterId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

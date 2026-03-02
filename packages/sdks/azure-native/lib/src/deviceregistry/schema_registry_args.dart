@@ -38,25 +38,16 @@ class SchemaRegistryArgs {
   /// [storageAccountContainerUrl] The Storage Account's Container URL where schemas will be stored.
   /// [tags] Resource tags.
   SchemaRegistryArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<SystemAssignedServiceIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> namespace,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? schemaRegistryName,
-    required pulumi.Output<String> storageAccountContainerUrl,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<SystemAssignedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaRegistryName = pulumi.Input.asOptionalInput<String>(schemaRegistryName),
-      storageAccountContainerUrl = pulumi.Input.asInput<String>(storageAccountContainerUrl),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.displayName,
+    this.identity,
+    this.location,
+    required this.namespace,
+    required this.resourceGroupName,
+    this.schemaRegistryName,
+    required this.storageAccountContainerUrl,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class SchemaRegistryArgs {
 
   factory SchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SystemAssignedServiceIdentity>(SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaRegistryName: map['schemaRegistryName'] == null ? null : pulumi.Output.create<String>(map['schemaRegistryName'] as String),
-      storageAccountContainerUrl: pulumi.Output.create<String>(map['storageAccountContainerUrl'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaRegistryName: map['schemaRegistryName'] == null ? null : (map['schemaRegistryName'] as String).input(),
+      storageAccountContainerUrl: (map['storageAccountContainerUrl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

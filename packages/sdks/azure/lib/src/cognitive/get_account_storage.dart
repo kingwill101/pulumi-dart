@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountStorage {
   /// The client ID of the managed identity associated with the storage resource.
-  final String identityClientId;
+  final pulumi.Input<String> identityClientId;
   /// The ID of the Storage Account resource associated with this Cognitive Services Account.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [GetAccountStorage].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
@@ -24,8 +25,8 @@ class GetAccountStorage {
 
   factory GetAccountStorage.fromMap(Map<String, dynamic> map) {
     return GetAccountStorage(
-      identityClientId: map['identityClientId'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      identityClientId: (map['identityClientId'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

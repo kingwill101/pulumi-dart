@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceHostInstanceInfo {
   /// The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String dataSyncTime;
+  final pulumi.Input<String> dataSyncTime;
   /// The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  final String logSyncTime;
+  final pulumi.Input<String> logSyncTime;
   /// The ID of the instance.
-  final String nodeId;
+  final pulumi.Input<String> nodeId;
   /// The type of the node.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// The region ID of the instance.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The synchronization status.
-  final String syncStatus;
+  final pulumi.Input<String> syncStatus;
   /// The ID of the zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstanceHostInstanceInfo].
   /// [dataSyncTime] The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -49,13 +50,13 @@ class GetInstancesInstanceHostInstanceInfo {
 
   factory GetInstancesInstanceHostInstanceInfo.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceHostInstanceInfo(
-      dataSyncTime: map['dataSyncTime'] as String,
-      logSyncTime: map['logSyncTime'] as String,
-      nodeId: map['nodeId'] as String,
-      nodeType: map['nodeType'] as String,
-      regionId: map['regionId'] as String,
-      syncStatus: map['syncStatus'] as String,
-      zoneId: map['zoneId'] as String,
+      dataSyncTime: (map['dataSyncTime'] as String).input(),
+      logSyncTime: (map['logSyncTime'] as String).input(),
+      nodeId: (map['nodeId'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      syncStatus: (map['syncStatus'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

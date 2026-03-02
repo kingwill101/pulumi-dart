@@ -16,13 +16,10 @@ class GetOrganizationReplayPolicysimulatorV1beta1Args {
   /// [organizationId] Required.
   /// [replayId] Required.
   GetOrganizationReplayPolicysimulatorV1beta1Args({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> replayId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      replayId = pulumi.Input.asInput<String>(replayId);
+    required this.location,
+    required this.organizationId,
+    required this.replayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetOrganizationReplayPolicysimulatorV1beta1Args {
 
   factory GetOrganizationReplayPolicysimulatorV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetOrganizationReplayPolicysimulatorV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      replayId: pulumi.Output.create<String>(map['replayId'] as String),
+      location: (map['location'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      replayId: (map['replayId'] as String).input(),
     );
   }
 }

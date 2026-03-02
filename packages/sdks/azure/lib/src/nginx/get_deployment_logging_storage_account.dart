@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDeploymentLoggingStorageAccount {
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// The name of this NGINX Deployment.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDeploymentLoggingStorageAccount].
   /// [containerName] Required.
@@ -23,8 +24,8 @@ class GetDeploymentLoggingStorageAccount {
 
   factory GetDeploymentLoggingStorageAccount.fromMap(Map<String, dynamic> map) {
     return GetDeploymentLoggingStorageAccount(
-      containerName: map['containerName'] as String,
-      name: map['name'] as String,
+      containerName: (map['containerName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

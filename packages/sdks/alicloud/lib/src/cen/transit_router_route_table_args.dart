@@ -25,17 +25,12 @@ class TransitRouterRouteTableArgs {
   /// [transitRouterRouteTableDescription] The description of the transit router route table.
   /// [transitRouterRouteTableName] The name of the transit router route table.
   TransitRouterRouteTableArgs({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> transitRouterId,
-    pulumi.Output<String>? transitRouterRouteTableDescription,
-    pulumi.Output<String>? transitRouterRouteTableName,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId),
-      transitRouterRouteTableDescription = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableDescription),
-      transitRouterRouteTableName = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableName);
+    this.dryRun,
+    this.tags,
+    required this.transitRouterId,
+    this.transitRouterRouteTableDescription,
+    this.transitRouterRouteTableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class TransitRouterRouteTableArgs {
 
   factory TransitRouterRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableDescription'] as String),
-      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableName'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription'] as String).input(),
+      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName'] as String).input(),
     );
   }
 }

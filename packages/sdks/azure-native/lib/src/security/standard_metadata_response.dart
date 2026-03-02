@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The standard metadata
 class StandardMetadataResponse {
   /// Standard Created by object id (GUID)
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Standard creation date
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// Standard last updated by object id (GUID)
-  final String lastUpdatedBy;
+  final pulumi.Input<String> lastUpdatedBy;
   /// Standard last update date
-  final String lastUpdatedOn;
+  final pulumi.Input<String> lastUpdatedOn;
 
   /// Creates a new [StandardMetadataResponse].
   /// [createdBy] Standard Created by object id (GUID)
@@ -35,10 +36,10 @@ class StandardMetadataResponse {
 
   factory StandardMetadataResponse.fromMap(Map<String, dynamic> map) {
     return StandardMetadataResponse(
-      createdBy: map['createdBy'] as String,
-      createdOn: map['createdOn'] as String,
-      lastUpdatedBy: map['lastUpdatedBy'] as String,
-      lastUpdatedOn: map['lastUpdatedOn'] as String,
+      createdBy: (map['createdBy'] as String).input(),
+      createdOn: (map['createdOn'] as String).input(),
+      lastUpdatedBy: (map['lastUpdatedBy'] as String).input(),
+      lastUpdatedOn: (map['lastUpdatedOn'] as String).input(),
     );
   }
 }

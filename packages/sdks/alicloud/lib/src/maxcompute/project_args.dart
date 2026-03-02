@@ -48,29 +48,18 @@ class ProjectArgs {
   /// [tags] The tag of the resource
   /// [threeTierModel] Indicates whether data storage by schema is supported. Valid values:
   ProjectArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? defaultQuota,
-    pulumi.Output<ProjectIpWhiteList>? ipWhiteList,
-    pulumi.Output<String>? isLogical,
-    pulumi.Output<String>? productType,
-    pulumi.Output<String>? projectName,
-    pulumi.Output<ProjectProperties>? properties,
-    pulumi.Output<ProjectSecurityProperties>? securityProperties,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? threeTierModel,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      defaultQuota = pulumi.Input.asOptionalInput<String>(defaultQuota),
-      ipWhiteList = pulumi.Input.asOptionalInput<ProjectIpWhiteList>(ipWhiteList),
-      isLogical = pulumi.Input.asOptionalInput<String>(isLogical),
-      productType = pulumi.Input.asOptionalInput<String>(productType),
-      projectName = pulumi.Input.asOptionalInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<ProjectProperties>(properties),
-      securityProperties = pulumi.Input.asOptionalInput<ProjectSecurityProperties>(securityProperties),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      threeTierModel = pulumi.Input.asOptionalInput<bool>(threeTierModel);
+    this.comment,
+    this.defaultQuota,
+    this.ipWhiteList,
+    this.isLogical,
+    this.productType,
+    this.projectName,
+    this.properties,
+    this.securityProperties,
+    this.status,
+    this.tags,
+    this.threeTierModel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      defaultQuota: map['defaultQuota'] == null ? null : pulumi.Output.create<String>(map['defaultQuota'] as String),
-      ipWhiteList: map['ipWhiteList'] == null ? null : pulumi.Output.create<ProjectIpWhiteList>(ProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>())),
-      isLogical: map['isLogical'] == null ? null : pulumi.Output.create<String>(map['isLogical'] as String),
-      productType: map['productType'] == null ? null : pulumi.Output.create<String>(map['productType'] as String),
-      projectName: map['projectName'] == null ? null : pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ProjectProperties>(ProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      securityProperties: map['securityProperties'] == null ? null : pulumi.Output.create<ProjectSecurityProperties>(ProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      threeTierModel: map['threeTierModel'] == null ? null : pulumi.Output.create<bool>(map['threeTierModel'] as bool),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota'] as String).input(),
+      ipWhiteList: map['ipWhiteList'] == null ? null : (ProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>())).input(),
+      isLogical: map['isLogical'] == null ? null : (map['isLogical'] as String).input(),
+      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      securityProperties: map['securityProperties'] == null ? null : (ProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      threeTierModel: map['threeTierModel'] == null ? null : (map['threeTierModel'] as bool).input(),
     );
   }
 }

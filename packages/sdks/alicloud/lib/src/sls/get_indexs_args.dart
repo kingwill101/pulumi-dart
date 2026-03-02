@@ -22,15 +22,11 @@ class GetIndexsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
   GetIndexsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> logstoreName,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> projectName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      logstoreName = pulumi.Input.asInput<String>(logstoreName),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      projectName = pulumi.Input.asInput<String>(projectName);
+    this.ids,
+    required this.logstoreName,
+    this.outputFile,
+    required this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetIndexsArgs {
 
   factory GetIndexsArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      logstoreName: pulumi.Output.create<String>(map['logstoreName'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      logstoreName: (map['logstoreName'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
     );
   }
 }

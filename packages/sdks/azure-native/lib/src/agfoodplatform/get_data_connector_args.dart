@@ -19,13 +19,10 @@ class GetDataConnectorArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDataConnectorArgs({
-    required pulumi.Output<String> dataConnectorName,
-    required pulumi.Output<String> dataManagerForAgricultureResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dataConnectorName = pulumi.Input.asInput<String>(dataConnectorName),
-      dataManagerForAgricultureResourceName = pulumi.Input.asInput<String>(dataManagerForAgricultureResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dataConnectorName,
+    required this.dataManagerForAgricultureResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDataConnectorArgs {
 
   factory GetDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetDataConnectorArgs(
-      dataConnectorName: pulumi.Output.create<String>(map['dataConnectorName'] as String),
-      dataManagerForAgricultureResourceName: pulumi.Output.create<String>(map['dataManagerForAgricultureResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dataConnectorName: (map['dataConnectorName'] as String).input(),
+      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

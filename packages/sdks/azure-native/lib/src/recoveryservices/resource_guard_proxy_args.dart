@@ -31,21 +31,14 @@ class ResourceGuardProxyArgs {
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
   ResourceGuardProxyArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? location,
-    pulumi.Output<ResourceGuardProxyBase>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceGuardProxyName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vaultName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ResourceGuardProxyBase>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceGuardProxyName = pulumi.Input.asOptionalInput<String>(resourceGuardProxyName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    this.eTag,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.resourceGuardProxyName,
+    this.tags,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ResourceGuardProxyArgs {
 
   factory ResourceGuardProxyArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGuardProxyArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ResourceGuardProxyBase>(ResourceGuardProxyBase.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceGuardProxyName: map['resourceGuardProxyName'] == null ? null : pulumi.Output.create<String>(map['resourceGuardProxyName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ResourceGuardProxyBase.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceGuardProxyName: map['resourceGuardProxyName'] == null ? null : (map['resourceGuardProxyName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

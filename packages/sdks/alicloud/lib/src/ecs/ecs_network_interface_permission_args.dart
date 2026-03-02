@@ -22,15 +22,11 @@ class EcsNetworkInterfacePermissionArgs {
   /// [networkInterfaceId] The ID of the network interface.
   /// [permission] The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
   EcsNetworkInterfacePermissionArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<bool>? force,
-    required pulumi.Output<String> networkInterfaceId,
-    required pulumi.Output<String> permission,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      networkInterfaceId = pulumi.Input.asInput<String>(networkInterfaceId),
-      permission = pulumi.Input.asInput<String>(permission);
+    required this.accountId,
+    this.force,
+    required this.networkInterfaceId,
+    required this.permission,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EcsNetworkInterfacePermissionArgs {
 
   factory EcsNetworkInterfacePermissionArgs.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfacePermissionArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      networkInterfaceId: pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      permission: pulumi.Output.create<String>(map['permission'] as String),
+      accountId: (map['accountId'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      permission: (map['permission'] as String).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableTimePartitioning {
   /// Number of milliseconds for which to keep the
   /// storage for a partition.
-  final int? expirationMs;
+  final pulumi.Input<int>? expirationMs;
   /// The field used to determine how to create a time-based
   /// partition. If time-based partitioning is enabled without this value, the
   /// table is partitioned based on the load time.
-  final String? field;
+  final pulumi.Input<String>? field;
   /// If set to true, queries over this table
   /// require a partition filter that can be used for partition elimination to be
   /// specified. `require_partition_filter` is deprecated and will be removed in
   /// a future major release. Use the top level field with the same name instead.
-  final bool? requirePartitionFilter;
+  final pulumi.Input<bool>? requirePartitionFilter;
   /// The supported types are DAY, HOUR, MONTH, and YEAR,
   /// which will generate one partition per day, hour, month, and year, respectively.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TableTimePartitioning].
   /// [expirationMs] Number of milliseconds for which to keep the
@@ -41,10 +42,10 @@ class TableTimePartitioning {
 
   factory TableTimePartitioning.fromMap(Map<String, dynamic> map) {
     return TableTimePartitioning(
-      expirationMs: map['expirationMs'] == null ? null : map['expirationMs'] as int,
-      field: map['field'] == null ? null : map['field'] as String,
-      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : map['requirePartitionFilter'] as bool,
-      type: map['type'] as String,
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as int).input(),
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

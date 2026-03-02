@@ -16,11 +16,9 @@ class GetAssignmentArgs {
   /// [assignmentName] Name of the blueprint assignment.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   GetAssignmentArgs({
-    required pulumi.Output<String> assignmentName,
-    required pulumi.Output<String> resourceScope,
-  }) :
-      assignmentName = pulumi.Input.asInput<String>(assignmentName),
-      resourceScope = pulumi.Input.asInput<String>(resourceScope);
+    required this.assignmentName,
+    required this.resourceScope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAssignmentArgs {
 
   factory GetAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssignmentArgs(
-      assignmentName: pulumi.Output.create<String>(map['assignmentName'] as String),
-      resourceScope: pulumi.Output.create<String>(map['resourceScope'] as String),
+      assignmentName: (map['assignmentName'] as String).input(),
+      resourceScope: (map['resourceScope'] as String).input(),
     );
   }
 }

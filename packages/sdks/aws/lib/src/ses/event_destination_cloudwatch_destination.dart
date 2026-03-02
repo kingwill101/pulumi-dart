@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventDestinationCloudwatchDestination {
   /// The default value for the event
-  final String defaultValue;
+  final pulumi.Input<String> defaultValue;
   /// The name for the dimension
-  final String dimensionName;
+  final pulumi.Input<String> dimensionName;
   /// The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
-  final String valueSource;
+  final pulumi.Input<String> valueSource;
 
   /// Creates a new [EventDestinationCloudwatchDestination].
   /// [defaultValue] The default value for the event
@@ -29,9 +30,9 @@ class EventDestinationCloudwatchDestination {
 
   factory EventDestinationCloudwatchDestination.fromMap(Map<String, dynamic> map) {
     return EventDestinationCloudwatchDestination(
-      defaultValue: map['defaultValue'] as String,
-      dimensionName: map['dimensionName'] as String,
-      valueSource: map['valueSource'] as String,
+      defaultValue: (map['defaultValue'] as String).input(),
+      dimensionName: (map['dimensionName'] as String).input(),
+      valueSource: (map['valueSource'] as String).input(),
     );
   }
 }

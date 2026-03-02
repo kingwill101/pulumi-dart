@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Device erasure details with erasure completion status and erasureordestructionlog sas key
 class DeviceErasureDetailsResponse {
   /// Holds the device erasure completion status
-  final String deviceErasureStatus;
+  final pulumi.Input<String> deviceErasureStatus;
   /// Shared access key to download cleanup or destruction certificate for device
-  final String erasureOrDestructionCertificateSasKey;
+  final pulumi.Input<String> erasureOrDestructionCertificateSasKey;
 
   /// Creates a new [DeviceErasureDetailsResponse].
   /// [deviceErasureStatus] Holds the device erasure completion status
@@ -25,8 +26,8 @@ class DeviceErasureDetailsResponse {
 
   factory DeviceErasureDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DeviceErasureDetailsResponse(
-      deviceErasureStatus: map['deviceErasureStatus'] as String,
-      erasureOrDestructionCertificateSasKey: map['erasureOrDestructionCertificateSasKey'] as String,
+      deviceErasureStatus: (map['deviceErasureStatus'] as String).input(),
+      erasureOrDestructionCertificateSasKey: (map['erasureOrDestructionCertificateSasKey'] as String).input(),
     );
   }
 }

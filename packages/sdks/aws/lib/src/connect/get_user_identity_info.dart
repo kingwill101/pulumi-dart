@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserIdentityInfo {
   /// The email address.
-  final String email;
+  final pulumi.Input<String> email;
   /// The first name.
-  final String firstName;
+  final pulumi.Input<String> firstName;
   /// The last name.
-  final String lastName;
+  final pulumi.Input<String> lastName;
   /// The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
-  final String secondaryEmail;
+  final pulumi.Input<String> secondaryEmail;
 
   /// Creates a new [GetUserIdentityInfo].
   /// [email] The email address.
@@ -34,10 +35,10 @@ class GetUserIdentityInfo {
 
   factory GetUserIdentityInfo.fromMap(Map<String, dynamic> map) {
     return GetUserIdentityInfo(
-      email: map['email'] as String,
-      firstName: map['firstName'] as String,
-      lastName: map['lastName'] as String,
-      secondaryEmail: map['secondaryEmail'] as String,
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      secondaryEmail: (map['secondaryEmail'] as String).input(),
     );
   }
 }

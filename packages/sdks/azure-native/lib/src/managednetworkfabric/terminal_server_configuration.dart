@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Network and credentials configuration currently applied to terminal server.
 class TerminalServerConfiguration {
   /// Password for the terminal server connection.
-  final String password;
+  final pulumi.Input<String> password;
   /// IPv4 Address Prefix.
-  final String primaryIpv4Prefix;
+  final pulumi.Input<String> primaryIpv4Prefix;
   /// IPv6 Address Prefix.
-  final String? primaryIpv6Prefix;
+  final pulumi.Input<String>? primaryIpv6Prefix;
   /// Secondary IPv4 Address Prefix.
-  final String secondaryIpv4Prefix;
+  final pulumi.Input<String> secondaryIpv4Prefix;
   /// Secondary IPv6 Address Prefix.
-  final String? secondaryIpv6Prefix;
+  final pulumi.Input<String>? secondaryIpv6Prefix;
   /// Serial Number of Terminal server.
-  final String? serialNumber;
+  final pulumi.Input<String>? serialNumber;
   /// Username for the terminal server connection.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [TerminalServerConfiguration].
   /// [password] Password for the terminal server connection.
@@ -50,13 +51,13 @@ class TerminalServerConfiguration {
 
   factory TerminalServerConfiguration.fromMap(Map<String, dynamic> map) {
     return TerminalServerConfiguration(
-      password: map['password'] as String,
-      primaryIpv4Prefix: map['primaryIpv4Prefix'] as String,
-      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : map['primaryIpv6Prefix'] as String,
-      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] as String,
-      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : map['secondaryIpv6Prefix'] as String,
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
-      username: map['username'] as String,
+      password: (map['password'] as String).input(),
+      primaryIpv4Prefix: (map['primaryIpv4Prefix'] as String).input(),
+      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix'] as String).input(),
+      secondaryIpv4Prefix: (map['secondaryIpv4Prefix'] as String).input(),
+      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix'] as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

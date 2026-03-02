@@ -65,35 +65,21 @@ class ApiConfigState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serviceConfigId] The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
   ApiConfigState({
-    pulumi.Output<String>? api,
-    pulumi.Output<String>? apiConfigId,
-    pulumi.Output<String>? apiConfigIdPrefix,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<ApiConfigGatewayConfig>? gatewayConfig,
-    pulumi.Output<List<ApiConfigGrpcService>>? grpcServices,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<ApiConfigManagedServiceConfig>>? managedServiceConfigs,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ApiConfigOpenapiDocument>>? openapiDocuments,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? serviceConfigId,
-  }) :
-      api = pulumi.Input.asOptionalInput<String>(api),
-      apiConfigId = pulumi.Input.asOptionalInput<String>(apiConfigId),
-      apiConfigIdPrefix = pulumi.Input.asOptionalInput<String>(apiConfigIdPrefix),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      gatewayConfig = pulumi.Input.asOptionalInput<ApiConfigGatewayConfig>(gatewayConfig),
-      grpcServices = pulumi.Input.asOptionalInput<List<ApiConfigGrpcService>>(grpcServices),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      managedServiceConfigs = pulumi.Input.asOptionalInput<List<ApiConfigManagedServiceConfig>>(managedServiceConfigs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      openapiDocuments = pulumi.Input.asOptionalInput<List<ApiConfigOpenapiDocument>>(openapiDocuments),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      serviceConfigId = pulumi.Input.asOptionalInput<String>(serviceConfigId);
+    this.api,
+    this.apiConfigId,
+    this.apiConfigIdPrefix,
+    this.displayName,
+    this.effectiveLabels,
+    this.gatewayConfig,
+    this.grpcServices,
+    this.labels,
+    this.managedServiceConfigs,
+    this.name,
+    this.openapiDocuments,
+    this.project,
+    this.pulumiLabels,
+    this.serviceConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,20 +102,20 @@ class ApiConfigState {
 
   factory ApiConfigState.fromMap(Map<String, dynamic> map) {
     return ApiConfigState(
-      api: map['api'] == null ? null : pulumi.Output.create<String>(map['api'] as String),
-      apiConfigId: map['apiConfigId'] == null ? null : pulumi.Output.create<String>(map['apiConfigId'] as String),
-      apiConfigIdPrefix: map['apiConfigIdPrefix'] == null ? null : pulumi.Output.create<String>(map['apiConfigIdPrefix'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      gatewayConfig: map['gatewayConfig'] == null ? null : pulumi.Output.create<ApiConfigGatewayConfig>(ApiConfigGatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())),
-      grpcServices: map['grpcServices'] == null ? null : pulumi.Output.create<List<ApiConfigGrpcService>>(pulumi.Input.decodeList<ApiConfigGrpcService>(map['grpcServices'], (value) => ApiConfigGrpcService.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      managedServiceConfigs: map['managedServiceConfigs'] == null ? null : pulumi.Output.create<List<ApiConfigManagedServiceConfig>>(pulumi.Input.decodeList<ApiConfigManagedServiceConfig>(map['managedServiceConfigs'], (value) => ApiConfigManagedServiceConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      openapiDocuments: map['openapiDocuments'] == null ? null : pulumi.Output.create<List<ApiConfigOpenapiDocument>>(pulumi.Input.decodeList<ApiConfigOpenapiDocument>(map['openapiDocuments'], (value) => ApiConfigOpenapiDocument.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      serviceConfigId: map['serviceConfigId'] == null ? null : pulumi.Output.create<String>(map['serviceConfigId'] as String),
+      api: map['api'] == null ? null : (map['api'] as String).input(),
+      apiConfigId: map['apiConfigId'] == null ? null : (map['apiConfigId'] as String).input(),
+      apiConfigIdPrefix: map['apiConfigIdPrefix'] == null ? null : (map['apiConfigIdPrefix'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      gatewayConfig: map['gatewayConfig'] == null ? null : (ApiConfigGatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())).input(),
+      grpcServices: map['grpcServices'] == null ? null : (pulumi.Input.decodeList<ApiConfigGrpcService>(map['grpcServices'], (value) => ApiConfigGrpcService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      managedServiceConfigs: map['managedServiceConfigs'] == null ? null : (pulumi.Input.decodeList<ApiConfigManagedServiceConfig>(map['managedServiceConfigs'], (value) => ApiConfigManagedServiceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      openapiDocuments: map['openapiDocuments'] == null ? null : (pulumi.Input.decodeList<ApiConfigOpenapiDocument>(map['openapiDocuments'], (value) => ApiConfigOpenapiDocument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      serviceConfigId: map['serviceConfigId'] == null ? null : (map['serviceConfigId'] as String).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class AclState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userNames] Set of MemoryDB user names to be included in this ACL.
   AclState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? minimumEngineVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<String>>? userNames,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      minimumEngineVersion = pulumi.Input.asOptionalInput<String>(minimumEngineVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userNames = pulumi.Input.asOptionalInput<List<String>>(userNames);
+    this.arn,
+    this.minimumEngineVersion,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.userNames,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : pulumi.Output.create<String>(map['minimumEngineVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userNames: map['userNames'] == null ? null : pulumi.Output.create<List<String>>((map['userNames'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : (map['minimumEngineVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userNames: map['userNames'] == null ? null : ((map['userNames'] as List).cast<String>()).input(),
     );
   }
 }

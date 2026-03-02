@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Feature of a resource, which controls the runtime behavior.
 class SignalRFeatureResponse {
@@ -8,11 +9,11 @@ class SignalRFeatureResponse {
   /// - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively.
   /// - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively.
   /// - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature.
-  final String flag;
+  final pulumi.Input<String> flag;
   /// Optional properties related to this feature.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Value of the feature flag. See Azure SignalR service document https://docs.microsoft.com/azure/azure-signalr/ for allowed values.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SignalRFeatureResponse].
   /// [flag] FeatureFlags is the supported features of Azure SignalR service.
@@ -34,9 +35,9 @@ class SignalRFeatureResponse {
 
   factory SignalRFeatureResponse.fromMap(Map<String, dynamic> map) {
     return SignalRFeatureResponse(
-      flag: map['flag'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      value: map['value'] as String,
+      flag: (map['flag'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

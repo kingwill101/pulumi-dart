@@ -6,45 +6,45 @@ import 'application_security_group_response.dart';
 /// Network security rule.
 class SecurityRuleResponse {
   /// The network traffic is allowed or denied.
-  final String access;
+  final pulumi.Input<String> access;
   /// A description for this rule. Restricted to 140 chars.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  final String? destinationAddressPrefix;
+  final pulumi.Input<String>? destinationAddressPrefix;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final List<String>? destinationAddressPrefixes;
+  final pulumi.Input<List<String>>? destinationAddressPrefixes;
   /// The application security group specified as destination.
-  final List<ApplicationSecurityGroupResponse>? destinationApplicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? destinationApplicationSecurityGroups;
   /// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final String? destinationPortRange;
+  final pulumi.Input<String>? destinationPortRange;
   /// The destination port ranges.
-  final List<String>? destinationPortRanges;
+  final pulumi.Input<List<String>>? destinationPortRanges;
   /// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// Network protocol this rule applies to.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The provisioning state of the security rule resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
-  final String? sourceAddressPrefix;
+  final pulumi.Input<String>? sourceAddressPrefix;
   /// The CIDR or source IP ranges.
-  final List<String>? sourceAddressPrefixes;
+  final pulumi.Input<List<String>>? sourceAddressPrefixes;
   /// The application security group specified as source.
-  final List<ApplicationSecurityGroupResponse>? sourceApplicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? sourceApplicationSecurityGroups;
   /// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final String? sourcePortRange;
+  final pulumi.Input<String>? sourcePortRange;
   /// The source port ranges.
-  final List<String>? sourcePortRanges;
+  final pulumi.Input<List<String>>? sourcePortRanges;
   /// The type of the resource.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [SecurityRuleResponse].
   /// [access] The network traffic is allowed or denied.
@@ -96,7 +96,7 @@ class SecurityRuleResponse {
       'description': ?description,
       'destinationAddressPrefix': ?destinationAddressPrefix,
       'destinationAddressPrefixes': ?destinationAddressPrefixes,
-      'destinationApplicationSecurityGroups': ?destinationApplicationSecurityGroups == null ? null : pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(destinationApplicationSecurityGroups!, (value) => value.toMap()),
+      'destinationApplicationSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<ApplicationSecurityGroupResponse>, List<Map<String, dynamic>>>(destinationApplicationSecurityGroups, (value) => pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'destinationPortRange': ?destinationPortRange,
       'destinationPortRanges': ?destinationPortRanges,
       'direction': direction,
@@ -108,7 +108,7 @@ class SecurityRuleResponse {
       'provisioningState': provisioningState,
       'sourceAddressPrefix': ?sourceAddressPrefix,
       'sourceAddressPrefixes': ?sourceAddressPrefixes,
-      'sourceApplicationSecurityGroups': ?sourceApplicationSecurityGroups == null ? null : pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(sourceApplicationSecurityGroups!, (value) => value.toMap()),
+      'sourceApplicationSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<ApplicationSecurityGroupResponse>, List<Map<String, dynamic>>>(sourceApplicationSecurityGroups, (value) => pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourcePortRange': ?sourcePortRange,
       'sourcePortRanges': ?sourcePortRanges,
       'type': ?type,
@@ -117,26 +117,26 @@ class SecurityRuleResponse {
 
   factory SecurityRuleResponse.fromMap(Map<String, dynamic> map) {
     return SecurityRuleResponse(
-      access: map['access'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : map['destinationAddressPrefix'] as String,
-      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : (map['destinationAddressPrefixes'] as List).cast<String>(),
-      destinationApplicationSecurityGroups: map['destinationApplicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['destinationApplicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      destinationPortRange: map['destinationPortRange'] == null ? null : map['destinationPortRange'] as String,
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : (map['destinationPortRanges'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : map['sourceAddressPrefix'] as String,
-      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : (map['sourceAddressPrefixes'] as List).cast<String>(),
-      sourceApplicationSecurityGroups: map['sourceApplicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['sourceApplicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourcePortRange: map['sourcePortRange'] == null ? null : map['sourcePortRange'] as String,
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      access: (map['access'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : (map['destinationAddressPrefix'] as String).input(),
+      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
+      destinationApplicationSecurityGroups: map['destinationApplicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['destinationApplicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : (map['sourceAddressPrefix'] as String).input(),
+      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
+      sourceApplicationSecurityGroups: map['sourceApplicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(map['sourceApplicationSecurityGroups'], (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

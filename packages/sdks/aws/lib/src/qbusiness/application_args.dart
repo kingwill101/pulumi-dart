@@ -40,25 +40,16 @@ class ApplicationArgs {
   /// [tags] Optional.
   /// [timeouts] Optional.
   ApplicationArgs({
-    required pulumi.Output<ApplicationAttachmentsConfiguration> attachmentsConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<ApplicationEncryptionConfiguration>? encryptionConfiguration,
-    required pulumi.Output<String> iamServiceRoleArn,
-    required pulumi.Output<String> identityCenterInstanceArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ApplicationTimeouts>? timeouts,
-  }) :
-      attachmentsConfiguration = pulumi.Input.asInput<ApplicationAttachmentsConfiguration>(attachmentsConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<ApplicationEncryptionConfiguration>(encryptionConfiguration),
-      iamServiceRoleArn = pulumi.Input.asInput<String>(iamServiceRoleArn),
-      identityCenterInstanceArn = pulumi.Input.asInput<String>(identityCenterInstanceArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ApplicationTimeouts>(timeouts);
+    required this.attachmentsConfiguration,
+    this.description,
+    required this.displayName,
+    this.encryptionConfiguration,
+    required this.iamServiceRoleArn,
+    required this.identityCenterInstanceArn,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      attachmentsConfiguration: pulumi.Output.create<ApplicationAttachmentsConfiguration>(ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<ApplicationEncryptionConfiguration>(ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      iamServiceRoleArn: pulumi.Output.create<String>(map['iamServiceRoleArn'] as String),
-      identityCenterInstanceArn: pulumi.Output.create<String>(map['identityCenterInstanceArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ApplicationTimeouts>(ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      attachmentsConfiguration: (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      iamServiceRoleArn: (map['iamServiceRoleArn'] as String).input(),
+      identityCenterInstanceArn: (map['identityCenterInstanceArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

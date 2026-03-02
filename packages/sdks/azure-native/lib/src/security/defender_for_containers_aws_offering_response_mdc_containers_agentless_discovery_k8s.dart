@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Microsoft Defender container agentless discovery K8s configuration
 class DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
   /// The cloud role ARN in AWS for this feature
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
   /// Is Microsoft Defender container agentless discovery K8s enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
@@ -25,8 +26,8 @@ class DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s
 
   factory DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

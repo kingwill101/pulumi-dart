@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DbInstanceDesiredSecurityIpList {
   /// Security group name.
-  final String? groupName;
+  final pulumi.Input<String>? groupName;
   /// The IP list of Security group. Each single IP value should be Separated by comma.
-  final String? securityIpList;
+  final pulumi.Input<String>? securityIpList;
 
   /// Creates a new [DbInstanceDesiredSecurityIpList].
   /// [groupName] Security group name.
@@ -24,8 +25,8 @@ class DbInstanceDesiredSecurityIpList {
 
   factory DbInstanceDesiredSecurityIpList.fromMap(Map<String, dynamic> map) {
     return DbInstanceDesiredSecurityIpList(
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
-      securityIpList: map['securityIpList'] == null ? null : map['securityIpList'] as String,
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sku for ARM resource
 class Sku {
   /// Sku name
-  final String name;
+  final pulumi.Input<String> name;
   /// Sku tier
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [Sku].
   /// [name] Sku name
@@ -25,8 +26,8 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
 class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse {
   /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
-  final double confidenceLevel;
+  final pulumi.Input<double> confidenceLevel;
   /// Lower bound of the interval.
-  final double lowerBound;
+  final pulumi.Input<double> lowerBound;
   /// The percent change between an experiment metric's value and the value for its control.
-  final double ratio;
+  final pulumi.Input<double> ratio;
   /// Upper bound of the interval.
-  final double upperBound;
+  final pulumi.Input<double> upperBound;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse].
   /// [confidenceLevel] The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
@@ -35,10 +36,10 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse {
 
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse(
-      confidenceLevel: map['confidenceLevel'] as double,
-      lowerBound: map['lowerBound'] as double,
-      ratio: map['ratio'] as double,
-      upperBound: map['upperBound'] as double,
+      confidenceLevel: (map['confidenceLevel'] as double).input(),
+      lowerBound: (map['lowerBound'] as double).input(),
+      ratio: (map['ratio'] as double).input(),
+      upperBound: (map['upperBound'] as double).input(),
     );
   }
 }

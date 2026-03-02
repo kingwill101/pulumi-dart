@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatasetExternalCatalogDatasetOption {
   /// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
   /// database locationUri. Maximum length of 1024 characters.
-  final String defaultStorageLocationUri;
+  final pulumi.Input<String> defaultStorageLocationUri;
   /// A map of key value pairs defining the parameters and properties of the open source schema.
   /// Maximum size of 2Mib.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
 
   /// Creates a new [GetDatasetExternalCatalogDatasetOption].
   /// [defaultStorageLocationUri] The storage location URI for all tables in the dataset. Equivalent to hive metastore's
@@ -26,8 +27,8 @@ class GetDatasetExternalCatalogDatasetOption {
 
   factory GetDatasetExternalCatalogDatasetOption.fromMap(Map<String, dynamic> map) {
     return GetDatasetExternalCatalogDatasetOption(
-      defaultStorageLocationUri: map['defaultStorageLocationUri'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
+      defaultStorageLocationUri: (map['defaultStorageLocationUri'] as String).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
     );
   }
 }

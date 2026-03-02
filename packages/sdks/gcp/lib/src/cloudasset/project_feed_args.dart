@@ -54,23 +54,15 @@ class ProjectFeedArgs {
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [project] The ID of the project in which the resource belongs.
   ProjectFeedArgs({
-    pulumi.Output<List<String>>? assetNames,
-    pulumi.Output<List<String>>? assetTypes,
-    pulumi.Output<String>? billingProject,
-    pulumi.Output<ProjectFeedCondition>? condition,
-    pulumi.Output<String>? contentType,
-    required pulumi.Output<String> feedId,
-    required pulumi.Output<ProjectFeedFeedOutputConfig> feedOutputConfig,
-    pulumi.Output<String>? project,
-  }) :
-      assetNames = pulumi.Input.asOptionalInput<List<String>>(assetNames),
-      assetTypes = pulumi.Input.asOptionalInput<List<String>>(assetTypes),
-      billingProject = pulumi.Input.asOptionalInput<String>(billingProject),
-      condition = pulumi.Input.asOptionalInput<ProjectFeedCondition>(condition),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      feedId = pulumi.Input.asInput<String>(feedId),
-      feedOutputConfig = pulumi.Input.asInput<ProjectFeedFeedOutputConfig>(feedOutputConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.assetNames,
+    this.assetTypes,
+    this.billingProject,
+    this.condition,
+    this.contentType,
+    required this.feedId,
+    required this.feedOutputConfig,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,14 +79,14 @@ class ProjectFeedArgs {
 
   factory ProjectFeedArgs.fromMap(Map<String, dynamic> map) {
     return ProjectFeedArgs(
-      assetNames: map['assetNames'] == null ? null : pulumi.Output.create<List<String>>((map['assetNames'] as List).cast<String>()),
-      assetTypes: map['assetTypes'] == null ? null : pulumi.Output.create<List<String>>((map['assetTypes'] as List).cast<String>()),
-      billingProject: map['billingProject'] == null ? null : pulumi.Output.create<String>(map['billingProject'] as String),
-      condition: map['condition'] == null ? null : pulumi.Output.create<ProjectFeedCondition>(ProjectFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      feedId: pulumi.Output.create<String>(map['feedId'] as String),
-      feedOutputConfig: pulumi.Output.create<ProjectFeedFeedOutputConfig>(ProjectFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
+      billingProject: map['billingProject'] == null ? null : (map['billingProject'] as String).input(),
+      condition: map['condition'] == null ? null : (ProjectFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      feedId: (map['feedId'] as String).input(),
+      feedOutputConfig: (ProjectFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

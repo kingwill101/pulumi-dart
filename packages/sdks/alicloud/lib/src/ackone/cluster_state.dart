@@ -28,19 +28,13 @@ class ClusterState {
   /// [profile] Cluster attributes. Valid values: 'Default', 'XFlow'.
   /// [status] The status of the resource.
   ClusterState({
-    pulumi.Output<bool>? argocdEnabled,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<ClusterNetwork>? network,
-    pulumi.Output<String>? profile,
-    pulumi.Output<String>? status,
-  }) :
-      argocdEnabled = pulumi.Input.asOptionalInput<bool>(argocdEnabled),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      network = pulumi.Input.asOptionalInput<ClusterNetwork>(network),
-      profile = pulumi.Input.asOptionalInput<String>(profile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.argocdEnabled,
+    this.clusterName,
+    this.createTime,
+    this.network,
+    this.profile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      argocdEnabled: map['argocdEnabled'] == null ? null : pulumi.Output.create<bool>(map['argocdEnabled'] as bool),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<ClusterNetwork>(ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      argocdEnabled: map['argocdEnabled'] == null ? null : (map['argocdEnabled'] as bool).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      network: map['network'] == null ? null : (ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

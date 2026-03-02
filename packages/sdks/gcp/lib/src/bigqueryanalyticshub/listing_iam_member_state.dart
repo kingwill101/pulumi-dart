@@ -48,23 +48,15 @@ class ListingIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   ListingIamMemberState({
-    pulumi.Output<ListingIamMemberCondition>? condition,
-    pulumi.Output<String>? dataExchangeId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? listingId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ListingIamMemberCondition>(condition),
-      dataExchangeId = pulumi.Input.asOptionalInput<String>(dataExchangeId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      listingId = pulumi.Input.asOptionalInput<String>(listingId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.dataExchangeId,
+    this.etag,
+    this.listingId,
+    this.location,
+    this.member,
+    this.project,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,14 +73,14 @@ class ListingIamMemberState {
 
   factory ListingIamMemberState.fromMap(Map<String, dynamic> map) {
     return ListingIamMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ListingIamMemberCondition>(ListingIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dataExchangeId: map['dataExchangeId'] == null ? null : pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      listingId: map['listingId'] == null ? null : pulumi.Output.create<String>(map['listingId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (ListingIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      listingId: map['listingId'] == null ? null : (map['listingId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

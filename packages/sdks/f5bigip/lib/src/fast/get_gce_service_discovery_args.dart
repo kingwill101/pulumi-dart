@@ -45,31 +45,19 @@ class GetGceServiceDiscoveryArgs {
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
   GetGceServiceDiscoveryArgs({
-    pulumi.Output<String>? addressRealm,
-    pulumi.Output<bool>? credentialUpdate,
-    pulumi.Output<String>? encodedCredentials,
-    pulumi.Output<String>? minimumMonitors,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? projectId,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> tagKey,
-    required pulumi.Output<String> tagValue,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? undetectableAction,
-    pulumi.Output<String>? updateInterval,
-  }) :
-      addressRealm = pulumi.Input.asOptionalInput<String>(addressRealm),
-      credentialUpdate = pulumi.Input.asOptionalInput<bool>(credentialUpdate),
-      encodedCredentials = pulumi.Input.asOptionalInput<String>(encodedCredentials),
-      minimumMonitors = pulumi.Input.asOptionalInput<String>(minimumMonitors),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asInput<String>(region),
-      tagKey = pulumi.Input.asInput<String>(tagKey),
-      tagValue = pulumi.Input.asInput<String>(tagValue),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      undetectableAction = pulumi.Input.asOptionalInput<String>(undetectableAction),
-      updateInterval = pulumi.Input.asOptionalInput<String>(updateInterval);
+    this.addressRealm,
+    this.credentialUpdate,
+    this.encodedCredentials,
+    this.minimumMonitors,
+    this.port,
+    this.projectId,
+    required this.region,
+    required this.tagKey,
+    required this.tagValue,
+    this.type,
+    this.undetectableAction,
+    this.updateInterval,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class GetGceServiceDiscoveryArgs {
 
   factory GetGceServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetGceServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : pulumi.Output.create<String>(map['addressRealm'] as String),
-      credentialUpdate: map['credentialUpdate'] == null ? null : pulumi.Output.create<bool>(map['credentialUpdate'] as bool),
-      encodedCredentials: map['encodedCredentials'] == null ? null : pulumi.Output.create<String>(map['encodedCredentials'] as String),
-      minimumMonitors: map['minimumMonitors'] == null ? null : pulumi.Output.create<String>(map['minimumMonitors'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      tagKey: pulumi.Output.create<String>(map['tagKey'] as String),
-      tagValue: pulumi.Output.create<String>(map['tagValue'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      undetectableAction: map['undetectableAction'] == null ? null : pulumi.Output.create<String>(map['undetectableAction'] as String),
-      updateInterval: map['updateInterval'] == null ? null : pulumi.Output.create<String>(map['updateInterval'] as String),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
+      encodedCredentials: map['encodedCredentials'] == null ? null : (map['encodedCredentials'] as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: (map['region'] as String).input(),
+      tagKey: (map['tagKey'] as String).input(),
+      tagValue: (map['tagValue'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
     );
   }
 }

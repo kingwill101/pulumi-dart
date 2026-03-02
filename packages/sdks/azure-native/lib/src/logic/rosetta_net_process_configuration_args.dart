@@ -51,33 +51,20 @@ class RosettaNetProcessConfigurationArgs {
   /// [rosettaNetProcessConfigurationName] The integration account RosettaNet ProcessConfiguration name.
   /// [tags] The resource tags.
   RosettaNetProcessConfigurationArgs({
-    required pulumi.Output<RosettaNetPipActivitySettings> activitySettings,
-    pulumi.Output<String>? description,
-    required pulumi.Output<RosettaNetPipRoleSettings> initiatorRoleSettings,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> processCode,
-    required pulumi.Output<String> processName,
-    required pulumi.Output<String> processVersion,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<RosettaNetPipRoleSettings> responderRoleSettings,
-    pulumi.Output<String>? rosettaNetProcessConfigurationName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      activitySettings = pulumi.Input.asInput<RosettaNetPipActivitySettings>(activitySettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      initiatorRoleSettings = pulumi.Input.asInput<RosettaNetPipRoleSettings>(initiatorRoleSettings),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      processCode = pulumi.Input.asInput<String>(processCode),
-      processName = pulumi.Input.asInput<String>(processName),
-      processVersion = pulumi.Input.asInput<String>(processVersion),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      responderRoleSettings = pulumi.Input.asInput<RosettaNetPipRoleSettings>(responderRoleSettings),
-      rosettaNetProcessConfigurationName = pulumi.Input.asOptionalInput<String>(rosettaNetProcessConfigurationName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.activitySettings,
+    this.description,
+    required this.initiatorRoleSettings,
+    required this.integrationAccountName,
+    this.location,
+    this.metadata,
+    required this.processCode,
+    required this.processName,
+    required this.processVersion,
+    required this.resourceGroupName,
+    required this.responderRoleSettings,
+    this.rosettaNetProcessConfigurationName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class RosettaNetProcessConfigurationArgs {
 
   factory RosettaNetProcessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RosettaNetProcessConfigurationArgs(
-      activitySettings: pulumi.Output.create<RosettaNetPipActivitySettings>(RosettaNetPipActivitySettings.fromMap((map['activitySettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      initiatorRoleSettings: pulumi.Output.create<RosettaNetPipRoleSettings>(RosettaNetPipRoleSettings.fromMap((map['initiatorRoleSettings'] as Map).cast<String, dynamic>())),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      processCode: pulumi.Output.create<String>(map['processCode'] as String),
-      processName: pulumi.Output.create<String>(map['processName'] as String),
-      processVersion: pulumi.Output.create<String>(map['processVersion'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      responderRoleSettings: pulumi.Output.create<RosettaNetPipRoleSettings>(RosettaNetPipRoleSettings.fromMap((map['responderRoleSettings'] as Map).cast<String, dynamic>())),
-      rosettaNetProcessConfigurationName: map['rosettaNetProcessConfigurationName'] == null ? null : pulumi.Output.create<String>(map['rosettaNetProcessConfigurationName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      activitySettings: (RosettaNetPipActivitySettings.fromMap((map['activitySettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      initiatorRoleSettings: (RosettaNetPipRoleSettings.fromMap((map['initiatorRoleSettings'] as Map).cast<String, dynamic>())).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      processCode: (map['processCode'] as String).input(),
+      processName: (map['processName'] as String).input(),
+      processVersion: (map['processVersion'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      responderRoleSettings: (RosettaNetPipRoleSettings.fromMap((map['responderRoleSettings'] as Map).cast<String, dynamic>())).input(),
+      rosettaNetProcessConfigurationName: map['rosettaNetProcessConfigurationName'] == null ? null : (map['rosettaNetProcessConfigurationName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

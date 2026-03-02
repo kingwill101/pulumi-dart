@@ -49,35 +49,21 @@ class ReportDefinitionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeUnit] The frequency on which report data are measured and displayed.  Valid values are: `DAILY`, `HOURLY`, `MONTHLY`.
   ReportDefinitionState({
-    pulumi.Output<List<String>>? additionalArtifacts,
-    pulumi.Output<List<String>>? additionalSchemaElements,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? compression,
-    pulumi.Output<String>? format,
-    pulumi.Output<bool>? refreshClosedReports,
-    pulumi.Output<String>? reportName,
-    pulumi.Output<String>? reportVersioning,
-    pulumi.Output<String>? s3Bucket,
-    pulumi.Output<String>? s3Prefix,
-    pulumi.Output<String>? s3Region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? timeUnit,
-  }) :
-      additionalArtifacts = pulumi.Input.asOptionalInput<List<String>>(additionalArtifacts),
-      additionalSchemaElements = pulumi.Input.asOptionalInput<List<String>>(additionalSchemaElements),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      compression = pulumi.Input.asOptionalInput<String>(compression),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      refreshClosedReports = pulumi.Input.asOptionalInput<bool>(refreshClosedReports),
-      reportName = pulumi.Input.asOptionalInput<String>(reportName),
-      reportVersioning = pulumi.Input.asOptionalInput<String>(reportVersioning),
-      s3Bucket = pulumi.Input.asOptionalInput<String>(s3Bucket),
-      s3Prefix = pulumi.Input.asOptionalInput<String>(s3Prefix),
-      s3Region = pulumi.Input.asOptionalInput<String>(s3Region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeUnit = pulumi.Input.asOptionalInput<String>(timeUnit);
+    this.additionalArtifacts,
+    this.additionalSchemaElements,
+    this.arn,
+    this.compression,
+    this.format,
+    this.refreshClosedReports,
+    this.reportName,
+    this.reportVersioning,
+    this.s3Bucket,
+    this.s3Prefix,
+    this.s3Region,
+    this.tags,
+    this.tagsAll,
+    this.timeUnit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,20 +86,20 @@ class ReportDefinitionState {
 
   factory ReportDefinitionState.fromMap(Map<String, dynamic> map) {
     return ReportDefinitionState(
-      additionalArtifacts: map['additionalArtifacts'] == null ? null : pulumi.Output.create<List<String>>((map['additionalArtifacts'] as List).cast<String>()),
-      additionalSchemaElements: map['additionalSchemaElements'] == null ? null : pulumi.Output.create<List<String>>((map['additionalSchemaElements'] as List).cast<String>()),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      compression: map['compression'] == null ? null : pulumi.Output.create<String>(map['compression'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      refreshClosedReports: map['refreshClosedReports'] == null ? null : pulumi.Output.create<bool>(map['refreshClosedReports'] as bool),
-      reportName: map['reportName'] == null ? null : pulumi.Output.create<String>(map['reportName'] as String),
-      reportVersioning: map['reportVersioning'] == null ? null : pulumi.Output.create<String>(map['reportVersioning'] as String),
-      s3Bucket: map['s3Bucket'] == null ? null : pulumi.Output.create<String>(map['s3Bucket'] as String),
-      s3Prefix: map['s3Prefix'] == null ? null : pulumi.Output.create<String>(map['s3Prefix'] as String),
-      s3Region: map['s3Region'] == null ? null : pulumi.Output.create<String>(map['s3Region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeUnit: map['timeUnit'] == null ? null : pulumi.Output.create<String>(map['timeUnit'] as String),
+      additionalArtifacts: map['additionalArtifacts'] == null ? null : ((map['additionalArtifacts'] as List).cast<String>()).input(),
+      additionalSchemaElements: map['additionalSchemaElements'] == null ? null : ((map['additionalSchemaElements'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      refreshClosedReports: map['refreshClosedReports'] == null ? null : (map['refreshClosedReports'] as bool).input(),
+      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
+      reportVersioning: map['reportVersioning'] == null ? null : (map['reportVersioning'] as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
+      s3Region: map['s3Region'] == null ? null : (map['s3Region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sdk_version_sdk_support_status.dart';
 
 /// The version of the SDK used to run the job.
 class SdkVersion {
   /// The support status for this SDK version.
-  final SdkVersionSdkSupportStatus? sdkSupportStatus;
+  final pulumi.Input<SdkVersionSdkSupportStatus>? sdkSupportStatus;
   /// The version of the SDK used to run the job.
-  final String? version;
+  final pulumi.Input<String>? version;
   /// A readable string describing the version of the SDK.
-  final String? versionDisplayName;
+  final pulumi.Input<String>? versionDisplayName;
 
   /// Creates a new [SdkVersion].
   /// [sdkSupportStatus] The support status for this SDK version.
@@ -23,7 +24,7 @@ class SdkVersion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sdkSupportStatus': ?sdkSupportStatus == null ? null : sdkSupportStatus!.value,
+      'sdkSupportStatus': ?pulumi.Input.mapOptionalInputValue<SdkVersionSdkSupportStatus, String>(sdkSupportStatus, (value) => value.value),
       'version': ?version,
       'versionDisplayName': ?versionDisplayName,
     };
@@ -31,9 +32,9 @@ class SdkVersion {
 
   factory SdkVersion.fromMap(Map<String, dynamic> map) {
     return SdkVersion(
-      sdkSupportStatus: map['sdkSupportStatus'] == null ? null : SdkVersionSdkSupportStatus.fromValue(map['sdkSupportStatus'] as String),
-      version: map['version'] == null ? null : map['version'] as String,
-      versionDisplayName: map['versionDisplayName'] == null ? null : map['versionDisplayName'] as String,
+      sdkSupportStatus: map['sdkSupportStatus'] == null ? null : (SdkVersionSdkSupportStatus.fromValue(map['sdkSupportStatus'] as String)).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
+      versionDisplayName: map['versionDisplayName'] == null ? null : (map['versionDisplayName'] as String).input(),
     );
   }
 }

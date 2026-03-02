@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisAlternatePathHint {
   /// The Amazon Resource Name (ARN) of the component.
-  final String? componentArn;
+  final pulumi.Input<String>? componentArn;
   /// The ID of the component.
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
 
   /// Creates a new [NetworkInsightsAnalysisAlternatePathHint].
   /// [componentArn] The Amazon Resource Name (ARN) of the component.
@@ -24,8 +25,8 @@ class NetworkInsightsAnalysisAlternatePathHint {
 
   factory NetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisAlternatePathHint(
-      componentArn: map['componentArn'] == null ? null : map['componentArn'] as String,
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
+      componentArn: map['componentArn'] == null ? null : (map['componentArn'] as String).input(),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
     );
   }
 }

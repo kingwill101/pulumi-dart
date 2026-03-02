@@ -40,27 +40,17 @@ class CustomerArgs {
   /// [orgPostalAddress] The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
   /// [primaryContactInfo] Primary contact info.
   CustomerArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? alternateEmail,
-    pulumi.Output<String>? channelPartnerId,
-    required pulumi.Output<String> channelPartnerLinkId,
-    pulumi.Output<String>? correlationId,
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? languageCode,
-    required pulumi.Output<String> orgDisplayName,
-    required pulumi.Output<GoogleTypePostalAddress> orgPostalAddress,
-    pulumi.Output<GoogleCloudChannelV1ContactInfo>? primaryContactInfo,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      alternateEmail = pulumi.Input.asOptionalInput<String>(alternateEmail),
-      channelPartnerId = pulumi.Input.asOptionalInput<String>(channelPartnerId),
-      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
-      correlationId = pulumi.Input.asOptionalInput<String>(correlationId),
-      domain = pulumi.Input.asInput<String>(domain),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      orgDisplayName = pulumi.Input.asInput<String>(orgDisplayName),
-      orgPostalAddress = pulumi.Input.asInput<GoogleTypePostalAddress>(orgPostalAddress),
-      primaryContactInfo = pulumi.Input.asOptionalInput<GoogleCloudChannelV1ContactInfo>(primaryContactInfo);
+    required this.accountId,
+    this.alternateEmail,
+    this.channelPartnerId,
+    required this.channelPartnerLinkId,
+    this.correlationId,
+    required this.domain,
+    this.languageCode,
+    required this.orgDisplayName,
+    required this.orgPostalAddress,
+    this.primaryContactInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class CustomerArgs {
 
   factory CustomerArgs.fromMap(Map<String, dynamic> map) {
     return CustomerArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      alternateEmail: map['alternateEmail'] == null ? null : pulumi.Output.create<String>(map['alternateEmail'] as String),
-      channelPartnerId: map['channelPartnerId'] == null ? null : pulumi.Output.create<String>(map['channelPartnerId'] as String),
-      channelPartnerLinkId: pulumi.Output.create<String>(map['channelPartnerLinkId'] as String),
-      correlationId: map['correlationId'] == null ? null : pulumi.Output.create<String>(map['correlationId'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      orgDisplayName: pulumi.Output.create<String>(map['orgDisplayName'] as String),
-      orgPostalAddress: pulumi.Output.create<GoogleTypePostalAddress>(GoogleTypePostalAddress.fromMap((map['orgPostalAddress'] as Map).cast<String, dynamic>())),
-      primaryContactInfo: map['primaryContactInfo'] == null ? null : pulumi.Output.create<GoogleCloudChannelV1ContactInfo>(GoogleCloudChannelV1ContactInfo.fromMap((map['primaryContactInfo'] as Map).cast<String, dynamic>())),
+      accountId: (map['accountId'] as String).input(),
+      alternateEmail: map['alternateEmail'] == null ? null : (map['alternateEmail'] as String).input(),
+      channelPartnerId: map['channelPartnerId'] == null ? null : (map['channelPartnerId'] as String).input(),
+      channelPartnerLinkId: (map['channelPartnerLinkId'] as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      orgDisplayName: (map['orgDisplayName'] as String).input(),
+      orgPostalAddress: (GoogleTypePostalAddress.fromMap((map['orgPostalAddress'] as Map).cast<String, dynamic>())).input(),
+      primaryContactInfo: map['primaryContactInfo'] == null ? null : (GoogleCloudChannelV1ContactInfo.fromMap((map['primaryContactInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

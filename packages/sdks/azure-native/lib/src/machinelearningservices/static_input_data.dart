@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Static input data definition.
 class StaticInputData {
   /// Mapping of column names to special uses.
-  final Map<String, String>? columns;
+  final pulumi.Input<Map<String, String>>? columns;
   /// The context metadata of the data source.
-  final String? dataContext;
+  final pulumi.Input<String>? dataContext;
   /// Monitoring input data type enum.
   /// Expected value is 'Static'.
-  final String inputDataType;
+  final pulumi.Input<String> inputDataType;
   /// [Required] Specifies the type of job.
-  final String jobInputType;
+  final pulumi.Input<String> jobInputType;
   /// Reference to the component asset used to preprocess the data.
-  final String? preprocessingComponentId;
+  final pulumi.Input<String>? preprocessingComponentId;
   /// [Required] Input Asset URI.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// [Required] The end date of the data window.
-  final String windowEnd;
+  final pulumi.Input<String> windowEnd;
   /// [Required] The start date of the data window.
-  final String windowStart;
+  final pulumi.Input<String> windowStart;
 
   /// Creates a new [StaticInputData].
   /// [columns] Mapping of column names to special uses.
@@ -56,14 +57,14 @@ class StaticInputData {
 
   factory StaticInputData.fromMap(Map<String, dynamic> map) {
     return StaticInputData(
-      columns: map['columns'] == null ? null : (map['columns'] as Map).cast<String, String>(),
-      dataContext: map['dataContext'] == null ? null : map['dataContext'] as String,
-      inputDataType: map['inputDataType'] as String,
-      jobInputType: map['jobInputType'] as String,
-      preprocessingComponentId: map['preprocessingComponentId'] == null ? null : map['preprocessingComponentId'] as String,
-      uri: map['uri'] as String,
-      windowEnd: map['windowEnd'] as String,
-      windowStart: map['windowStart'] as String,
+      columns: map['columns'] == null ? null : ((map['columns'] as Map).cast<String, String>()).input(),
+      dataContext: map['dataContext'] == null ? null : (map['dataContext'] as String).input(),
+      inputDataType: (map['inputDataType'] as String).input(),
+      jobInputType: (map['jobInputType'] as String).input(),
+      preprocessingComponentId: map['preprocessingComponentId'] == null ? null : (map['preprocessingComponentId'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      windowEnd: (map['windowEnd'] as String).input(),
+      windowStart: (map['windowStart'] as String).input(),
     );
   }
 }

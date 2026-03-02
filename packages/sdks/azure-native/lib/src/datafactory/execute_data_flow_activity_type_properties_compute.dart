@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute properties for data flow activity.
 class ExecuteDataFlowActivityTypePropertiesCompute {
   /// Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
-  final dynamic computeType;
+  final pulumi.Input<dynamic>? computeType;
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
-  final dynamic coreCount;
+  final pulumi.Input<dynamic>? coreCount;
 
   /// Creates a new [ExecuteDataFlowActivityTypePropertiesCompute].
   /// [computeType] Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
@@ -25,8 +26,8 @@ class ExecuteDataFlowActivityTypePropertiesCompute {
 
   factory ExecuteDataFlowActivityTypePropertiesCompute.fromMap(Map<String, dynamic> map) {
     return ExecuteDataFlowActivityTypePropertiesCompute(
-      computeType: map['computeType'] == null ? null : map['computeType'],
-      coreCount: map['coreCount'] == null ? null : map['coreCount'],
+      computeType: map['computeType'] == null ? null : (map['computeType']).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']).input(),
     );
   }
 }

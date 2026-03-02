@@ -19,13 +19,10 @@ class GetWebPubSubReplicaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   GetWebPubSubReplicaArgs({
-    required pulumi.Output<String> replicaName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      replicaName = pulumi.Input.asInput<String>(replicaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.replicaName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebPubSubReplicaArgs {
 
   factory GetWebPubSubReplicaArgs.fromMap(Map<String, dynamic> map) {
     return GetWebPubSubReplicaArgs(
-      replicaName: pulumi.Output.create<String>(map['replicaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      replicaName: (map['replicaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

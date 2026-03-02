@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_server_configuration.dart';
 import 'central_server_configuration.dart';
 import 'database_configuration.dart';
@@ -11,24 +12,24 @@ import 'three_tier_full_resource_names.dart';
 /// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 class ThreeTierConfiguration {
   /// The application resource group where SAP system resources will be deployed.
-  final String appResourceGroup;
+  final pulumi.Input<String> appResourceGroup;
   /// The application server configuration.
-  final ApplicationServerConfiguration applicationServer;
+  final pulumi.Input<ApplicationServerConfiguration> applicationServer;
   /// The central server configuration.
-  final CentralServerConfiguration centralServer;
+  final pulumi.Input<CentralServerConfiguration> centralServer;
   /// The set of custom names to be used for underlying azure resources that are part of the SAP system.
-  final ThreeTierFullResourceNames? customResourceNames;
+  final pulumi.Input<ThreeTierFullResourceNames>? customResourceNames;
   /// The database configuration.
-  final DatabaseConfiguration databaseServer;
+  final pulumi.Input<DatabaseConfiguration> databaseServer;
   /// The type of SAP deployment, single server or Three tier.
   /// Expected value is 'ThreeTier'.
-  final String deploymentType;
+  final pulumi.Input<String> deploymentType;
   /// The high availability configuration.
-  final HighAvailabilityConfiguration? highAvailabilityConfig;
+  final pulumi.Input<HighAvailabilityConfiguration>? highAvailabilityConfig;
   /// Network configuration common to all servers
-  final NetworkConfiguration? networkConfiguration;
+  final pulumi.Input<NetworkConfiguration>? networkConfiguration;
   /// The storage configuration.
-  final StorageConfiguration? storageConfiguration;
+  final pulumi.Input<StorageConfiguration>? storageConfiguration;
 
   /// Creates a new [ThreeTierConfiguration].
   /// [appResourceGroup] The application resource group where SAP system resources will be deployed.
@@ -55,28 +56,28 @@ class ThreeTierConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appResourceGroup': appResourceGroup,
-      'applicationServer': applicationServer.toMap(),
-      'centralServer': centralServer.toMap(),
-      'customResourceNames': ?customResourceNames == null ? null : customResourceNames!.toMap(),
-      'databaseServer': databaseServer.toMap(),
+      'applicationServer': pulumi.Input.mapInputValue<ApplicationServerConfiguration, Map<String, dynamic>>(applicationServer, (value) => value.toMap()),
+      'centralServer': pulumi.Input.mapInputValue<CentralServerConfiguration, Map<String, dynamic>>(centralServer, (value) => value.toMap()),
+      'customResourceNames': ?pulumi.Input.mapOptionalInputValue<ThreeTierFullResourceNames, Map<String, dynamic>>(customResourceNames, (value) => value.toMap()),
+      'databaseServer': pulumi.Input.mapInputValue<DatabaseConfiguration, Map<String, dynamic>>(databaseServer, (value) => value.toMap()),
       'deploymentType': deploymentType,
-      'highAvailabilityConfig': ?highAvailabilityConfig == null ? null : highAvailabilityConfig!.toMap(),
-      'networkConfiguration': ?networkConfiguration == null ? null : networkConfiguration!.toMap(),
-      'storageConfiguration': ?storageConfiguration == null ? null : storageConfiguration!.toMap(),
+      'highAvailabilityConfig': ?pulumi.Input.mapOptionalInputValue<HighAvailabilityConfiguration, Map<String, dynamic>>(highAvailabilityConfig, (value) => value.toMap()),
+      'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
+      'storageConfiguration': ?pulumi.Input.mapOptionalInputValue<StorageConfiguration, Map<String, dynamic>>(storageConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ThreeTierConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierConfiguration(
-      appResourceGroup: map['appResourceGroup'] as String,
-      applicationServer: ApplicationServerConfiguration.fromMap((map['applicationServer'] as Map).cast<String, dynamic>()),
-      centralServer: CentralServerConfiguration.fromMap((map['centralServer'] as Map).cast<String, dynamic>()),
-      customResourceNames: map['customResourceNames'] == null ? null : ThreeTierFullResourceNames.fromMap((map['customResourceNames'] as Map).cast<String, dynamic>()),
-      databaseServer: DatabaseConfiguration.fromMap((map['databaseServer'] as Map).cast<String, dynamic>()),
-      deploymentType: map['deploymentType'] as String,
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : HighAvailabilityConfiguration.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>()),
-      networkConfiguration: map['networkConfiguration'] == null ? null : NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
-      storageConfiguration: map['storageConfiguration'] == null ? null : StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
+      appResourceGroup: (map['appResourceGroup'] as String).input(),
+      applicationServer: (ApplicationServerConfiguration.fromMap((map['applicationServer'] as Map).cast<String, dynamic>())).input(),
+      centralServer: (CentralServerConfiguration.fromMap((map['centralServer'] as Map).cast<String, dynamic>())).input(),
+      customResourceNames: map['customResourceNames'] == null ? null : (ThreeTierFullResourceNames.fromMap((map['customResourceNames'] as Map).cast<String, dynamic>())).input(),
+      databaseServer: (DatabaseConfiguration.fromMap((map['databaseServer'] as Map).cast<String, dynamic>())).input(),
+      deploymentType: (map['deploymentType'] as String).input(),
+      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (HighAvailabilityConfiguration.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

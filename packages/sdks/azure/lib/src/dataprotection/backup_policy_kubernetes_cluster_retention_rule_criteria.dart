@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPolicyKubernetesClusterRetentionRuleCriteria {
   /// Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.
-  final String? absoluteCriteria;
+  final pulumi.Input<String>? absoluteCriteria;
   /// Possible values are `Monday`, `Tuesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`. Changing this forces a new resource to be created.
-  final List<String>? daysOfWeeks;
+  final pulumi.Input<List<String>>? daysOfWeeks;
   /// Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new resource to be created.
-  final List<String>? monthsOfYears;
+  final pulumi.Input<List<String>>? monthsOfYears;
   /// Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new resource to be created.
-  final List<String>? scheduledBackupTimes;
+  final pulumi.Input<List<String>>? scheduledBackupTimes;
   /// Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new resource to be created.
   ///
   /// > **Note:** When not using `absolute_criteria`, you must use exactly one of `days_of_month` or `days_of_week`. Regarding the remaining two properties, `weeks_of_month` and `months_of_year`, you may use either, both, or neither. If you would like to set multiple intervals, you may do so by using multiple `retention_rule` blocks.
-  final List<String>? weeksOfMonths;
+  final pulumi.Input<List<String>>? weeksOfMonths;
 
   /// Creates a new [BackupPolicyKubernetesClusterRetentionRuleCriteria].
   /// [absoluteCriteria] Possible values are `AllBackup`, `FirstOfDay`, `FirstOfWeek`, `FirstOfMonth` and `FirstOfYear`. These values mean the first successful backup of the day/week/month/year. Changing this forces a new resource to be created.
@@ -41,11 +42,11 @@ class BackupPolicyKubernetesClusterRetentionRuleCriteria {
 
   factory BackupPolicyKubernetesClusterRetentionRuleCriteria.fromMap(Map<String, dynamic> map) {
     return BackupPolicyKubernetesClusterRetentionRuleCriteria(
-      absoluteCriteria: map['absoluteCriteria'] == null ? null : map['absoluteCriteria'] as String,
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : (map['daysOfWeeks'] as List).cast<String>(),
-      monthsOfYears: map['monthsOfYears'] == null ? null : (map['monthsOfYears'] as List).cast<String>(),
-      scheduledBackupTimes: map['scheduledBackupTimes'] == null ? null : (map['scheduledBackupTimes'] as List).cast<String>(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : (map['weeksOfMonths'] as List).cast<String>(),
+      absoluteCriteria: map['absoluteCriteria'] == null ? null : (map['absoluteCriteria'] as String).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      monthsOfYears: map['monthsOfYears'] == null ? null : ((map['monthsOfYears'] as List).cast<String>()).input(),
+      scheduledBackupTimes: map['scheduledBackupTimes'] == null ? null : ((map['scheduledBackupTimes'] as List).cast<String>()).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<String>()).input(),
     );
   }
 }

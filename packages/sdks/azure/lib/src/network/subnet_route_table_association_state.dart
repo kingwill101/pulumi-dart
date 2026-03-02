@@ -15,11 +15,9 @@ class SubnetRouteTableAssociationState {
   /// [routeTableId] The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
   SubnetRouteTableAssociationState({
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? subnetId,
-  }) :
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+    this.routeTableId,
+    this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class SubnetRouteTableAssociationState {
 
   factory SubnetRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return SubnetRouteTableAssociationState(
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

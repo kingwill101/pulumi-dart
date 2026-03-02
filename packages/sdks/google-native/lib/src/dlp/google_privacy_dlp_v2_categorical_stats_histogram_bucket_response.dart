@@ -6,15 +6,15 @@ import 'google_privacy_dlp_v2_value_frequency_response.dart';
 /// Histogram of value frequencies in the column.
 class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
   /// Total number of values in this bucket.
-  final String bucketSize;
+  final pulumi.Input<String> bucketSize;
   /// Total number of distinct values in this bucket.
-  final String bucketValueCount;
+  final pulumi.Input<String> bucketValueCount;
   /// Sample of value frequencies in this bucket. The total number of values returned per bucket is capped at 20.
-  final List<GooglePrivacyDlpV2ValueFrequencyResponse> bucketValues;
+  final pulumi.Input<List<GooglePrivacyDlpV2ValueFrequencyResponse>> bucketValues;
   /// Lower bound on the value frequency of the values in this bucket.
-  final String valueFrequencyLowerBound;
+  final pulumi.Input<String> valueFrequencyLowerBound;
   /// Upper bound on the value frequency of the values in this bucket.
-  final String valueFrequencyUpperBound;
+  final pulumi.Input<String> valueFrequencyUpperBound;
 
   /// Creates a new [GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse].
   /// [bucketSize] Total number of values in this bucket.
@@ -34,7 +34,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
     return <String, dynamic>{
       'bucketSize': bucketSize,
       'bucketValueCount': bucketValueCount,
-      'bucketValues': pulumi.Input.encodeList<GooglePrivacyDlpV2ValueFrequencyResponse, Map<String, dynamic>>(bucketValues, (value) => value.toMap()),
+      'bucketValues': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2ValueFrequencyResponse>, List<Map<String, dynamic>>>(bucketValues, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2ValueFrequencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'valueFrequencyLowerBound': valueFrequencyLowerBound,
       'valueFrequencyUpperBound': valueFrequencyUpperBound,
     };
@@ -42,11 +42,11 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse {
 
   factory GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse(
-      bucketSize: map['bucketSize'] as String,
-      bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      valueFrequencyLowerBound: map['valueFrequencyLowerBound'] as String,
-      valueFrequencyUpperBound: map['valueFrequencyUpperBound'] as String,
+      bucketSize: (map['bucketSize'] as String).input(),
+      bucketValueCount: (map['bucketValueCount'] as String).input(),
+      bucketValues: (pulumi.Input.decodeList<GooglePrivacyDlpV2ValueFrequencyResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2ValueFrequencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valueFrequencyLowerBound: (map['valueFrequencyLowerBound'] as String).input(),
+      valueFrequencyUpperBound: (map['valueFrequencyUpperBound'] as String).input(),
     );
   }
 }

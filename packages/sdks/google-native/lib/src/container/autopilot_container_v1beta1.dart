@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_policy_config_container_v1beta1.dart';
 
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class AutopilotContainerV1beta1 {
   /// ConversionStatus shows conversion status.
-  final Map<String, dynamic>? conversionStatus;
+  final pulumi.Input<Map<String, dynamic>>? conversionStatus;
   /// Enable Autopilot
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Workload policy configuration for Autopilot.
-  final WorkloadPolicyConfigContainerV1beta1? workloadPolicyConfig;
+  final pulumi.Input<WorkloadPolicyConfigContainerV1beta1>? workloadPolicyConfig;
 
   /// Creates a new [AutopilotContainerV1beta1].
   /// [conversionStatus] ConversionStatus shows conversion status.
@@ -25,15 +26,15 @@ class AutopilotContainerV1beta1 {
     return <String, dynamic>{
       'conversionStatus': ?conversionStatus,
       'enabled': ?enabled,
-      'workloadPolicyConfig': ?workloadPolicyConfig == null ? null : workloadPolicyConfig!.toMap(),
+      'workloadPolicyConfig': ?pulumi.Input.mapOptionalInputValue<WorkloadPolicyConfigContainerV1beta1, Map<String, dynamic>>(workloadPolicyConfig, (value) => value.toMap()),
     };
   }
 
   factory AutopilotContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AutopilotContainerV1beta1(
-      conversionStatus: map['conversionStatus'] == null ? null : (map['conversionStatus'] as Map).cast<String, dynamic>(),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : WorkloadPolicyConfigContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>()),
+      conversionStatus: map['conversionStatus'] == null ? null : ((map['conversionStatus'] as Map).cast<String, dynamic>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : (WorkloadPolicyConfigContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

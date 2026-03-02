@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicensesFilter {
   /// Name of the field to filter by, as defined by
@@ -121,9 +122,9 @@ class GetReceivedLicensesFilter {
   ///             values:
   ///               - ""
   /// ```
-  final String name;
+  final pulumi.Input<String> name;
   /// Set of values that are accepted for the given field.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetReceivedLicensesFilter].
   /// [name] Name of the field to filter by, as defined by
@@ -142,8 +143,8 @@ class GetReceivedLicensesFilter {
 
   factory GetReceivedLicensesFilter.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicensesFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

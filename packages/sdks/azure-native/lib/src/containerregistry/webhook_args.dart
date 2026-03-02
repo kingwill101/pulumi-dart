@@ -40,27 +40,17 @@ class WebhookArgs {
   /// [tags] The tags for the webhook.
   /// [webhookName] The name of the webhook.
   WebhookArgs({
-    required pulumi.Output<List<String>> actions,
-    pulumi.Output<Map<String, String>>? customHeaders,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<String> serviceUri,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? webhookName,
-  }) :
-      actions = pulumi.Input.asInput<List<String>>(actions),
-      customHeaders = pulumi.Input.asOptionalInput<Map<String, String>>(customHeaders),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      serviceUri = pulumi.Input.asInput<String>(serviceUri),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      webhookName = pulumi.Input.asOptionalInput<String>(webhookName);
+    required this.actions,
+    this.customHeaders,
+    this.location,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.scope,
+    required this.serviceUri,
+    this.status,
+    this.tags,
+    this.webhookName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      actions: pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      customHeaders: map['customHeaders'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customHeaders'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      serviceUri: pulumi.Output.create<String>(map['serviceUri'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      webhookName: map['webhookName'] == null ? null : pulumi.Output.create<String>(map['webhookName'] as String),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      customHeaders: map['customHeaders'] == null ? null : ((map['customHeaders'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      webhookName: map['webhookName'] == null ? null : (map['webhookName'] as String).input(),
     );
   }
 }

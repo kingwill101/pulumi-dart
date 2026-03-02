@@ -53,31 +53,19 @@ class BlockchainNodesState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The timestamp at which the blockchain node was last updated.
   BlockchainNodesState({
-    pulumi.Output<String>? blockchainNodeId,
-    pulumi.Output<String>? blockchainType,
-    pulumi.Output<List<BlockchainNodesConnectionInfo>>? connectionInfos,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<BlockchainNodesEthereumDetails>? ethereumDetails,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      blockchainNodeId = pulumi.Input.asOptionalInput<String>(blockchainNodeId),
-      blockchainType = pulumi.Input.asOptionalInput<String>(blockchainType),
-      connectionInfos = pulumi.Input.asOptionalInput<List<BlockchainNodesConnectionInfo>>(connectionInfos),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      ethereumDetails = pulumi.Input.asOptionalInput<BlockchainNodesEthereumDetails>(ethereumDetails),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.blockchainNodeId,
+    this.blockchainType,
+    this.connectionInfos,
+    this.createTime,
+    this.effectiveLabels,
+    this.ethereumDetails,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class BlockchainNodesState {
 
   factory BlockchainNodesState.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesState(
-      blockchainNodeId: map['blockchainNodeId'] == null ? null : pulumi.Output.create<String>(map['blockchainNodeId'] as String),
-      blockchainType: map['blockchainType'] == null ? null : pulumi.Output.create<String>(map['blockchainType'] as String),
-      connectionInfos: map['connectionInfos'] == null ? null : pulumi.Output.create<List<BlockchainNodesConnectionInfo>>(pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(map['connectionInfos'], (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      ethereumDetails: map['ethereumDetails'] == null ? null : pulumi.Output.create<BlockchainNodesEthereumDetails>(BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      blockchainNodeId: map['blockchainNodeId'] == null ? null : (map['blockchainNodeId'] as String).input(),
+      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType'] as String).input(),
+      connectionInfos: map['connectionInfos'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(map['connectionInfos'], (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

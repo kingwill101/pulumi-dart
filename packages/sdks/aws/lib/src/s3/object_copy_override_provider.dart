@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_copy_override_provider_default_tags.dart';
 
 class ObjectCopyOverrideProvider {
   /// Override the provider `default_tags` configuration block.
-  final ObjectCopyOverrideProviderDefaultTags? defaultTags;
+  final pulumi.Input<ObjectCopyOverrideProviderDefaultTags>? defaultTags;
 
   /// Creates a new [ObjectCopyOverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
@@ -14,13 +15,13 @@ class ObjectCopyOverrideProvider {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultTags': ?defaultTags == null ? null : defaultTags!.toMap(),
+      'defaultTags': ?pulumi.Input.mapOptionalInputValue<ObjectCopyOverrideProviderDefaultTags, Map<String, dynamic>>(defaultTags, (value) => value.toMap()),
     };
   }
 
   factory ObjectCopyOverrideProvider.fromMap(Map<String, dynamic> map) {
     return ObjectCopyOverrideProvider(
-      defaultTags: map['defaultTags'] == null ? null : ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>()),
+      defaultTags: map['defaultTags'] == null ? null : (ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

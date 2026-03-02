@@ -27,19 +27,13 @@ class BucketObjectLockConfigurationV2State {
   /// [rule] Configuration block for specifying the Object Lock rule for the specified object. See below.
   /// [token] This argument is deprecated and no longer needed to enable Object Lock.
   BucketObjectLockConfigurationV2State({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? objectLockEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<BucketObjectLockConfigurationV2Rule>? rule,
-    pulumi.Output<String>? token,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      objectLockEnabled = pulumi.Input.asOptionalInput<String>(objectLockEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rule = pulumi.Input.asOptionalInput<BucketObjectLockConfigurationV2Rule>(rule),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.bucket,
+    this.expectedBucketOwner,
+    this.objectLockEnabled,
+    this.region,
+    this.rule,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class BucketObjectLockConfigurationV2State {
 
   factory BucketObjectLockConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationV2State(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : pulumi.Output.create<String>(map['objectLockEnabled'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<BucketObjectLockConfigurationV2Rule>(BucketObjectLockConfigurationV2Rule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rule: map['rule'] == null ? null : (BucketObjectLockConfigurationV2Rule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

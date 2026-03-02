@@ -25,17 +25,12 @@ class PolicyRestrictionArgs {
   /// [scope] Path to the policy document.
   /// [serviceName] The name of the API Management service.
   PolicyRestrictionArgs({
-    pulumi.Output<String>? policyRestrictionId,
-    pulumi.Output<String>? requireBase,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<String> serviceName,
-  }) :
-      policyRestrictionId = pulumi.Input.asOptionalInput<String>(policyRestrictionId),
-      requireBase = pulumi.Input.asOptionalInput<String>(requireBase),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.policyRestrictionId,
+    this.requireBase,
+    required this.resourceGroupName,
+    this.scope,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PolicyRestrictionArgs {
 
   factory PolicyRestrictionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyRestrictionArgs(
-      policyRestrictionId: map['policyRestrictionId'] == null ? null : pulumi.Output.create<String>(map['policyRestrictionId'] as String),
-      requireBase: map['requireBase'] == null ? null : pulumi.Output.create<String>(map['requireBase'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      policyRestrictionId: map['policyRestrictionId'] == null ? null : (map['policyRestrictionId'] as String).input(),
+      requireBase: map['requireBase'] == null ? null : (map['requireBase'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

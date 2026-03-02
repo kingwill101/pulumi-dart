@@ -16,11 +16,9 @@ class DelegatedAdministratorArgs {
   /// [accountId] The Alibaba Cloud account ID of the member in the resource directory.
   /// [servicePrincipal] The identifier of the trusted service.
   DelegatedAdministratorArgs({
-    required pulumi.Output<String> accountId,
-    required pulumi.Output<String> servicePrincipal,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      servicePrincipal = pulumi.Input.asInput<String>(servicePrincipal);
+    required this.accountId,
+    required this.servicePrincipal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DelegatedAdministratorArgs {
 
   factory DelegatedAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      servicePrincipal: pulumi.Output.create<String>(map['servicePrincipal'] as String),
+      accountId: (map['accountId'] as String).input(),
+      servicePrincipal: (map['servicePrincipal'] as String).input(),
     );
   }
 }

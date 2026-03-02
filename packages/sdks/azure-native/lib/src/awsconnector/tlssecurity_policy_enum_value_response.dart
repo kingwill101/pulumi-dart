@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TLSSecurityPolicyEnumValue
 class TLSSecurityPolicyEnumValueResponse {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [TLSSecurityPolicyEnumValueResponse].
   /// [value] Property value
@@ -20,7 +21,7 @@ class TLSSecurityPolicyEnumValueResponse {
 
   factory TLSSecurityPolicyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return TLSSecurityPolicyEnumValueResponse(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyPolicyQuery {
   /// The group that the policy applies to.
-  final String group;
+  final pulumi.Input<String> group;
   /// The org unit that the policy applies to.
-  final String orgUnit;
+  final pulumi.Input<String> orgUnit;
   /// The query that defines which entities the policy applies to.
-  final String query;
+  final pulumi.Input<String> query;
   /// The sort order of the policy.
-  final double sortOrder;
+  final pulumi.Input<double> sortOrder;
 
   /// Creates a new [GetPolicyPolicyQuery].
   /// [group] The group that the policy applies to.
@@ -34,10 +35,10 @@ class GetPolicyPolicyQuery {
 
   factory GetPolicyPolicyQuery.fromMap(Map<String, dynamic> map) {
     return GetPolicyPolicyQuery(
-      group: map['group'] as String,
-      orgUnit: map['orgUnit'] as String,
-      query: map['query'] as String,
-      sortOrder: map['sortOrder'] as double,
+      group: (map['group'] as String).input(),
+      orgUnit: (map['orgUnit'] as String).input(),
+      query: (map['query'] as String).input(),
+      sortOrder: (map['sortOrder'] as double).input(),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'agent_disk_details_response.dart';
 /// Agent details.
 class AgentDetailsResponse {
   /// The Id of the agent running on the server.
-  final String agentId;
+  final pulumi.Input<String> agentId;
   /// The machine BIOS Id.
-  final String biosId;
+  final pulumi.Input<String> biosId;
   /// The disks.
-  final List<AgentDiskDetailsResponse> disks;
+  final pulumi.Input<List<AgentDiskDetailsResponse>> disks;
   /// The machine FQDN.
-  final String fqdn;
+  final pulumi.Input<String> fqdn;
   /// The Id of the machine to which the agent is registered.
-  final String machineId;
+  final pulumi.Input<String> machineId;
 
   /// Creates a new [AgentDetailsResponse].
   /// [agentId] The Id of the agent running on the server.
@@ -34,7 +34,7 @@ class AgentDetailsResponse {
     return <String, dynamic>{
       'agentId': agentId,
       'biosId': biosId,
-      'disks': pulumi.Input.encodeList<AgentDiskDetailsResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks': pulumi.Input.mapInputValue<List<AgentDiskDetailsResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<AgentDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fqdn': fqdn,
       'machineId': machineId,
     };
@@ -42,11 +42,11 @@ class AgentDetailsResponse {
 
   factory AgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AgentDetailsResponse(
-      agentId: map['agentId'] as String,
-      biosId: map['biosId'] as String,
-      disks: pulumi.Input.decodeList<AgentDiskDetailsResponse>(map['disks'], (value) => AgentDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fqdn: map['fqdn'] as String,
-      machineId: map['machineId'] as String,
+      agentId: (map['agentId'] as String).input(),
+      biosId: (map['biosId'] as String).input(),
+      disks: (pulumi.Input.decodeList<AgentDiskDetailsResponse>(map['disks'], (value) => AgentDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fqdn: (map['fqdn'] as String).input(),
+      machineId: (map['machineId'] as String).input(),
     );
   }
 }

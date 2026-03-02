@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm policy creation input.
 class InMageRcmPolicyCreationInput {
   /// The app consistent snapshot frequency (in minutes).
-  final int? appConsistentFrequencyInMinutes;
+  final pulumi.Input<int>? appConsistentFrequencyInMinutes;
   /// The crash consistent snapshot frequency (in minutes).
-  final int? crashConsistentFrequencyInMinutes;
+  final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
   /// A value indicating whether multi-VM sync has to be enabled.
-  final String? enableMultiVmSync;
+  final pulumi.Input<String>? enableMultiVmSync;
   /// The class type.
   /// Expected value is 'InMageRcm'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The duration in minutes until which the recovery points need to be stored.
-  final int? recoveryPointHistoryInMinutes;
+  final pulumi.Input<int>? recoveryPointHistoryInMinutes;
 
   /// Creates a new [InMageRcmPolicyCreationInput].
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency (in minutes).
@@ -41,11 +42,11 @@ class InMageRcmPolicyCreationInput {
 
   factory InMageRcmPolicyCreationInput.fromMap(Map<String, dynamic> map) {
     return InMageRcmPolicyCreationInput(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : map['appConsistentFrequencyInMinutes'] as int,
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : map['crashConsistentFrequencyInMinutes'] as int,
-      enableMultiVmSync: map['enableMultiVmSync'] == null ? null : map['enableMultiVmSync'] as String,
-      instanceType: map['instanceType'] as String,
-      recoveryPointHistoryInMinutes: map['recoveryPointHistoryInMinutes'] == null ? null : map['recoveryPointHistoryInMinutes'] as int,
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
+      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes'] as int).input(),
+      enableMultiVmSync: map['enableMultiVmSync'] == null ? null : (map['enableMultiVmSync'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      recoveryPointHistoryInMinutes: map['recoveryPointHistoryInMinutes'] == null ? null : (map['recoveryPointHistoryInMinutes'] as int).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ResourceGuardArgs {
   /// [resourceGuardsName] The name of ResourceGuard
   /// [tags] Resource tags.
   ResourceGuardArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? location,
-    pulumi.Output<ResourceGuardDataprotection>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceGuardsName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ResourceGuardDataprotection>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceGuardsName = pulumi.Input.asOptionalInput<String>(resourceGuardsName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.eTag,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.resourceGuardsName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ResourceGuardArgs {
 
   factory ResourceGuardArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGuardArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ResourceGuardDataprotection>(map['properties'] as ResourceGuardDataprotection),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceGuardsName: map['resourceGuardsName'] == null ? null : pulumi.Output.create<String>(map['resourceGuardsName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties'] as ResourceGuardDataprotection).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceGuardsName: map['resourceGuardsName'] == null ? null : (map['resourceGuardsName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

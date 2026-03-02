@@ -6,25 +6,25 @@ import 'flavor_data.dart';
 /// Model asset version details.
 class ModelVersion {
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Mapping of model flavors to their properties.
-  final Map<String, FlavorData>? flavors;
+  final pulumi.Input<Map<String, FlavorData>>? flavors;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Name of the training job which produced this model
-  final String? jobName;
+  final pulumi.Input<String>? jobName;
   /// The storage format for this entity. Used for NCD.
-  final String? modelType;
+  final pulumi.Input<String>? modelType;
   /// The URI path to the model contents.
-  final String? modelUri;
+  final pulumi.Input<String>? modelUri;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Stage in the model lifecycle assigned to this model
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ModelVersion].
   /// [description] The asset description text.
@@ -53,7 +53,7 @@ class ModelVersion {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'flavors': ?flavors == null ? null : pulumi.Input.encodeMapValues<FlavorData, Map<String, dynamic>>(flavors!, (value) => value.toMap()),
+      'flavors': ?pulumi.Input.mapOptionalInputValue<Map<String, FlavorData>, Map<String, Map<String, dynamic>>>(flavors, (value) => pulumi.Input.encodeMapValues<FlavorData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isAnonymous': ?isAnonymous,
       'isArchived': ?isArchived,
       'jobName': ?jobName,
@@ -67,16 +67,16 @@ class ModelVersion {
 
   factory ModelVersion.fromMap(Map<String, dynamic> map) {
     return ModelVersion(
-      description: map['description'] == null ? null : map['description'] as String,
-      flavors: map['flavors'] == null ? null : pulumi.Input.decodeMapValues<FlavorData>(map['flavors'], (value) => FlavorData.fromMap((value as Map).cast<String, dynamic>())),
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      jobName: map['jobName'] == null ? null : map['jobName'] as String,
-      modelType: map['modelType'] == null ? null : map['modelType'] as String,
-      modelUri: map['modelUri'] == null ? null : map['modelUri'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flavors: map['flavors'] == null ? null : (pulumi.Input.decodeMapValues<FlavorData>(map['flavors'], (value) => FlavorData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
+      modelUri: map['modelUri'] == null ? null : (map['modelUri'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetNodeGroupArgs {
   /// [project] Optional.
   /// [zone] Required.
   GetNodeGroupArgs({
-    required pulumi.Output<String> nodeGroup,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      nodeGroup = pulumi.Input.asInput<String>(nodeGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.nodeGroup,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      nodeGroup: pulumi.Output.create<String>(map['nodeGroup'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      nodeGroup: (map['nodeGroup'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

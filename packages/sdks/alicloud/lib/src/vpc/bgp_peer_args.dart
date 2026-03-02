@@ -25,17 +25,12 @@ class BgpPeerArgs {
   /// [ipVersion] The IP version.
   /// [peerIpAddress] The IP address of the BGP peer.
   BgpPeerArgs({
-    pulumi.Output<int>? bfdMultiHop,
-    required pulumi.Output<String> bgpGroupId,
-    pulumi.Output<bool>? enableBfd,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? peerIpAddress,
-  }) :
-      bfdMultiHop = pulumi.Input.asOptionalInput<int>(bfdMultiHop),
-      bgpGroupId = pulumi.Input.asInput<String>(bgpGroupId),
-      enableBfd = pulumi.Input.asOptionalInput<bool>(enableBfd),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      peerIpAddress = pulumi.Input.asOptionalInput<String>(peerIpAddress);
+    this.bfdMultiHop,
+    required this.bgpGroupId,
+    this.enableBfd,
+    this.ipVersion,
+    this.peerIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BgpPeerArgs {
 
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
-      bfdMultiHop: map['bfdMultiHop'] == null ? null : pulumi.Output.create<int>(map['bfdMultiHop'] as int),
-      bgpGroupId: pulumi.Output.create<String>(map['bgpGroupId'] as String),
-      enableBfd: map['enableBfd'] == null ? null : pulumi.Output.create<bool>(map['enableBfd'] as bool),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      peerIpAddress: map['peerIpAddress'] == null ? null : pulumi.Output.create<String>(map['peerIpAddress'] as String),
+      bfdMultiHop: map['bfdMultiHop'] == null ? null : (map['bfdMultiHop'] as int).input(),
+      bgpGroupId: (map['bgpGroupId'] as String).input(),
+      enableBfd: map['enableBfd'] == null ? null : (map['enableBfd'] as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      peerIpAddress: map['peerIpAddress'] == null ? null : (map['peerIpAddress'] as String).input(),
     );
   }
 }

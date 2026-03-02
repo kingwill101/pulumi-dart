@@ -26,19 +26,13 @@ class DatasetArgs {
   /// [sourceLanguageCode] The BCP-47 language code of the source language.
   /// [targetLanguageCode] The BCP-47 language code of the target language.
   DatasetArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceLanguageCode,
-    pulumi.Output<String>? targetLanguageCode,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceLanguageCode = pulumi.Input.asOptionalInput<String>(sourceLanguageCode),
-      targetLanguageCode = pulumi.Input.asOptionalInput<String>(targetLanguageCode);
+    this.displayName,
+    this.location,
+    this.name,
+    this.project,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceLanguageCode: map['sourceLanguageCode'] == null ? null : pulumi.Output.create<String>(map['sourceLanguageCode'] as String),
-      targetLanguageCode: map['targetLanguageCode'] == null ? null : pulumi.Output.create<String>(map['targetLanguageCode'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceLanguageCode: map['sourceLanguageCode'] == null ? null : (map['sourceLanguageCode'] as String).input(),
+      targetLanguageCode: map['targetLanguageCode'] == null ? null : (map['targetLanguageCode'] as String).input(),
     );
   }
 }

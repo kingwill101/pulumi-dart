@@ -31,19 +31,13 @@ class GlobalReachConnectionArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GlobalReachConnectionArgs({
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<String>? expressRouteId,
-    pulumi.Output<String>? globalReachConnectionName,
-    pulumi.Output<String>? peerExpressRouteCircuit,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      expressRouteId = pulumi.Input.asOptionalInput<String>(expressRouteId),
-      globalReachConnectionName = pulumi.Input.asOptionalInput<String>(globalReachConnectionName),
-      peerExpressRouteCircuit = pulumi.Input.asOptionalInput<String>(peerExpressRouteCircuit),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authorizationKey,
+    this.expressRouteId,
+    this.globalReachConnectionName,
+    this.peerExpressRouteCircuit,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class GlobalReachConnectionArgs {
 
   factory GlobalReachConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GlobalReachConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      expressRouteId: map['expressRouteId'] == null ? null : pulumi.Output.create<String>(map['expressRouteId'] as String),
-      globalReachConnectionName: map['globalReachConnectionName'] == null ? null : pulumi.Output.create<String>(map['globalReachConnectionName'] as String),
-      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : pulumi.Output.create<String>(map['peerExpressRouteCircuit'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId'] as String).input(),
+      globalReachConnectionName: map['globalReachConnectionName'] == null ? null : (map['globalReachConnectionName'] as String).input(),
+      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : (map['peerExpressRouteCircuit'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

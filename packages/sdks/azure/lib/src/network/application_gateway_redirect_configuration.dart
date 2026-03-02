@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRedirectConfiguration {
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Whether to include the path in the redirected URL. Defaults to `false`
-  final bool? includePath;
+  final pulumi.Input<bool>? includePath;
   /// Whether to include the query string in the redirected URL. Default to `false`
-  final bool? includeQueryString;
+  final pulumi.Input<bool>? includeQueryString;
   /// Unique name of the redirect configuration block
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of redirect. Possible values are `Permanent`, `Temporary`, `Found` and `SeeOther`
-  final String redirectType;
-  final String? targetListenerId;
+  final pulumi.Input<String> redirectType;
+  final pulumi.Input<String>? targetListenerId;
   /// The name of the listener to redirect to. Cannot be set if `target_url` is set.
-  final String? targetListenerName;
+  final pulumi.Input<String>? targetListenerName;
   /// The URL to redirect the request to. Cannot be set if `target_listener_name` is set.
-  final String? targetUrl;
+  final pulumi.Input<String>? targetUrl;
 
   /// Creates a new [ApplicationGatewayRedirectConfiguration].
   /// [id] The ID of the Rewrite Rule Set
@@ -53,14 +54,14 @@ class ApplicationGatewayRedirectConfiguration {
 
   factory ApplicationGatewayRedirectConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRedirectConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      includePath: map['includePath'] == null ? null : map['includePath'] as bool,
-      includeQueryString: map['includeQueryString'] == null ? null : map['includeQueryString'] as bool,
-      name: map['name'] as String,
-      redirectType: map['redirectType'] as String,
-      targetListenerId: map['targetListenerId'] == null ? null : map['targetListenerId'] as String,
-      targetListenerName: map['targetListenerName'] == null ? null : map['targetListenerName'] as String,
-      targetUrl: map['targetUrl'] == null ? null : map['targetUrl'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      includePath: map['includePath'] == null ? null : (map['includePath'] as bool).input(),
+      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString'] as bool).input(),
+      name: (map['name'] as String).input(),
+      redirectType: (map['redirectType'] as String).input(),
+      targetListenerId: map['targetListenerId'] == null ? null : (map['targetListenerId'] as String).input(),
+      targetListenerName: map['targetListenerName'] == null ? null : (map['targetListenerName'] as String).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
     );
   }
 }

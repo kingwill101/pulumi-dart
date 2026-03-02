@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'git_hub_owner_properties_response.dart';
 import 'system_data_response.dart';
 
 /// GitHub Owner resource.
 class GitHubOwnerResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the resource
-  final String name;
+  final pulumi.Input<String> name;
   /// GitHub Owner properties.
-  final GitHubOwnerPropertiesResponse? properties;
+  final pulumi.Input<GitHubOwnerPropertiesResponse>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GitHubOwnerResponse].
   /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -34,19 +35,19 @@ class GitHubOwnerResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'systemData': systemData.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<GitHubOwnerPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory GitHubOwnerResponse.fromMap(Map<String, dynamic> map) {
     return GitHubOwnerResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : GitHubOwnerPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (GitHubOwnerPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class PeeringConnectionOptionsState {
   /// [requester] A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
   /// [vpcPeeringConnectionId] The ID of the requester VPC peering connection.
   PeeringConnectionOptionsState({
-    pulumi.Output<PeeringConnectionOptionsAccepter>? accepter,
-    pulumi.Output<String>? region,
-    pulumi.Output<PeeringConnectionOptionsRequester>? requester,
-    pulumi.Output<String>? vpcPeeringConnectionId,
-  }) :
-      accepter = pulumi.Input.asOptionalInput<PeeringConnectionOptionsAccepter>(accepter),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requester = pulumi.Input.asOptionalInput<PeeringConnectionOptionsRequester>(requester),
-      vpcPeeringConnectionId = pulumi.Input.asOptionalInput<String>(vpcPeeringConnectionId);
+    this.accepter,
+    this.region,
+    this.requester,
+    this.vpcPeeringConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class PeeringConnectionOptionsState {
 
   factory PeeringConnectionOptionsState.fromMap(Map<String, dynamic> map) {
     return PeeringConnectionOptionsState(
-      accepter: map['accepter'] == null ? null : pulumi.Output.create<PeeringConnectionOptionsAccepter>(PeeringConnectionOptionsAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requester: map['requester'] == null ? null : pulumi.Output.create<PeeringConnectionOptionsRequester>(PeeringConnectionOptionsRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpcPeeringConnectionId'] as String),
+      accepter: map['accepter'] == null ? null : (PeeringConnectionOptionsAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requester: map['requester'] == null ? null : (PeeringConnectionOptionsRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
     );
   }
 }

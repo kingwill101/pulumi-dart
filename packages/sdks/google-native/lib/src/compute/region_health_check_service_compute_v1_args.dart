@@ -36,25 +36,16 @@ class RegionHealthCheckServiceComputeV1Args {
   /// [region] Required.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   RegionHealthCheckServiceComputeV1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? healthChecks,
-    pulumi.Output<RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1>? healthStatusAggregationPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? networkEndpointGroups,
-    pulumi.Output<List<String>>? notificationEndpoints,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthChecks = pulumi.Input.asOptionalInput<List<String>>(healthChecks),
-      healthStatusAggregationPolicy = pulumi.Input.asOptionalInput<RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1>(healthStatusAggregationPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkEndpointGroups = pulumi.Input.asOptionalInput<List<String>>(networkEndpointGroups),
-      notificationEndpoints = pulumi.Input.asOptionalInput<List<String>>(notificationEndpoints),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.description,
+    this.healthChecks,
+    this.healthStatusAggregationPolicy,
+    this.name,
+    this.networkEndpointGroups,
+    this.notificationEndpoints,
+    this.project,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class RegionHealthCheckServiceComputeV1Args {
 
   factory RegionHealthCheckServiceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckServiceComputeV1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthChecks: map['healthChecks'] == null ? null : pulumi.Output.create<List<String>>((map['healthChecks'] as List).cast<String>()),
-      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : pulumi.Output.create<RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1>(RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1.fromValue(map['healthStatusAggregationPolicy'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : pulumi.Output.create<List<String>>((map['networkEndpointGroups'] as List).cast<String>()),
-      notificationEndpoints: map['notificationEndpoints'] == null ? null : pulumi.Output.create<List<String>>((map['notificationEndpoints'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks'] as List).cast<String>()).input(),
+      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1.fromValue(map['healthStatusAggregationPolicy'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : ((map['networkEndpointGroups'] as List).cast<String>()).input(),
+      notificationEndpoints: map['notificationEndpoints'] == null ? null : ((map['notificationEndpoints'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

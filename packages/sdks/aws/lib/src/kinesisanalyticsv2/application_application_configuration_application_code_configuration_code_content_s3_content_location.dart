@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation {
   /// The ARN for the S3 bucket containing the application code.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// The file key for the object containing the application code.
-  final String fileKey;
+  final pulumi.Input<String> fileKey;
   /// The version of the object containing the application code.
-  final String? objectVersion;
+  final pulumi.Input<String>? objectVersion;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation].
   /// [bucketArn] The ARN for the S3 bucket containing the application code.
@@ -29,9 +30,9 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
 
   factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation(
-      bucketArn: map['bucketArn'] as String,
-      fileKey: map['fileKey'] as String,
-      objectVersion: map['objectVersion'] == null ? null : map['objectVersion'] as String,
+      bucketArn: (map['bucketArn'] as String).input(),
+      fileKey: (map['fileKey'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
     );
   }
 }

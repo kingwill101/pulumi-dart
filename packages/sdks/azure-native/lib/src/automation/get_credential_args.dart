@@ -19,13 +19,10 @@ class GetCredentialArgs {
   /// [credentialName] The name of credential.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetCredentialArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> credentialName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      credentialName = pulumi.Input.asInput<String>(credentialName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.credentialName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCredentialArgs {
 
   factory GetCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      credentialName: pulumi.Output.create<String>(map['credentialName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      credentialName: (map['credentialName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

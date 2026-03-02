@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryNotificationConfigurationSnsConfiguration {
   /// SNS topic ARN that the scheduled query status notifications will be sent to.
-  final String topicArn;
+  final pulumi.Input<String> topicArn;
 
   /// Creates a new [ScheduledQueryNotificationConfigurationSnsConfiguration].
   /// [topicArn] SNS topic ARN that the scheduled query status notifications will be sent to.
@@ -19,7 +20,7 @@ class ScheduledQueryNotificationConfigurationSnsConfiguration {
 
   factory ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryNotificationConfigurationSnsConfiguration(
-      topicArn: map['topicArn'] as String,
+      topicArn: (map['topicArn'] as String).input(),
     );
   }
 }

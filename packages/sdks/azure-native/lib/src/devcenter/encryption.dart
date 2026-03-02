@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_managed_key_encryption.dart';
 
 class Encryption {
   /// All Customer-managed key encryption properties for the resource.
-  final CustomerManagedKeyEncryption? customerManagedKeyEncryption;
+  final pulumi.Input<CustomerManagedKeyEncryption>? customerManagedKeyEncryption;
 
   /// Creates a new [Encryption].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.
@@ -14,13 +15,13 @@ class Encryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedKeyEncryption': ?customerManagedKeyEncryption == null ? null : customerManagedKeyEncryption!.toMap(),
+      'customerManagedKeyEncryption': ?pulumi.Input.mapOptionalInputValue<CustomerManagedKeyEncryption, Map<String, dynamic>>(customerManagedKeyEncryption, (value) => value.toMap()),
     };
   }
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : CustomerManagedKeyEncryption.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>()),
+      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryption.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

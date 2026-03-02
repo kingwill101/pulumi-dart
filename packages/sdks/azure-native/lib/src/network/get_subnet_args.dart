@@ -22,15 +22,11 @@ class GetSubnetArgs {
   /// [subnetName] The name of the subnet.
   /// [virtualNetworkName] The name of the virtual network.
   GetSubnetArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subnetName,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subnetName = pulumi.Input.asInput<String>(subnetName),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.subnetName,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSubnetArgs {
 
   factory GetSubnetArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subnetName: pulumi.Output.create<String>(map['subnetName'] as String),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subnetName: (map['subnetName'] as String).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

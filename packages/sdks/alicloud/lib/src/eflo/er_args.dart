@@ -25,17 +25,12 @@ class ErArgs {
   /// [resourceGroupId] The ID of the resource group instance.
   /// [tags] Label List
   ErArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> erName,
-    required pulumi.Output<String> masterZoneId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      erName = pulumi.Input.asInput<String>(erName),
-      masterZoneId = pulumi.Input.asInput<String>(masterZoneId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.erName,
+    required this.masterZoneId,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ErArgs {
 
   factory ErArgs.fromMap(Map<String, dynamic> map) {
     return ErArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      erName: pulumi.Output.create<String>(map['erName'] as String),
-      masterZoneId: pulumi.Output.create<String>(map['masterZoneId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      erName: (map['erName'] as String).input(),
+      masterZoneId: (map['masterZoneId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

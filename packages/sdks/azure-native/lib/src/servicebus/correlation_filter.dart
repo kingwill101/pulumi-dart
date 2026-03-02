@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the correlation filter expression.
 class CorrelationFilter {
   /// Content type of the message.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// Identifier of the correlation.
-  final String? correlationId;
+  final pulumi.Input<String>? correlationId;
   /// Application specific label.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Identifier of the message.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// dictionary object for custom filters
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Address of the queue to reply to.
-  final String? replyTo;
+  final pulumi.Input<String>? replyTo;
   /// Session identifier to reply to.
-  final String? replyToSessionId;
+  final pulumi.Input<String>? replyToSessionId;
   /// Value that indicates whether the rule action requires preprocessing.
-  final bool? requiresPreprocessing;
+  final pulumi.Input<bool>? requiresPreprocessing;
   /// Session identifier.
-  final String? sessionId;
+  final pulumi.Input<String>? sessionId;
   /// Address to send to.
-  final String? to;
+  final pulumi.Input<String>? to;
 
   /// Creates a new [CorrelationFilter].
   /// [contentType] Content type of the message.
@@ -65,16 +66,16 @@ class CorrelationFilter {
 
   factory CorrelationFilter.fromMap(Map<String, dynamic> map) {
     return CorrelationFilter(
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      correlationId: map['correlationId'] == null ? null : map['correlationId'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      replyTo: map['replyTo'] == null ? null : map['replyTo'] as String,
-      replyToSessionId: map['replyToSessionId'] == null ? null : map['replyToSessionId'] as String,
-      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : map['requiresPreprocessing'] as bool,
-      sessionId: map['sessionId'] == null ? null : map['sessionId'] as String,
-      to: map['to'] == null ? null : map['to'] as String,
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      replyTo: map['replyTo'] == null ? null : (map['replyTo'] as String).input(),
+      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId'] as String).input(),
+      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing'] as bool).input(),
+      sessionId: map['sessionId'] == null ? null : (map['sessionId'] as String).input(),
+      to: map['to'] == null ? null : (map['to'] as String).input(),
     );
   }
 }

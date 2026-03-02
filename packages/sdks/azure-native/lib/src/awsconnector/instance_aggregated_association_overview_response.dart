@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceAggregatedAssociationOverview
 class InstanceAggregatedAssociationOverviewResponse {
   /// <p>Detailed status information about the aggregated associations.</p>
-  final String? detailedStatus;
+  final pulumi.Input<String>? detailedStatus;
   /// <p>The number of associations for the managed nodes.</p>
-  final Map<String, int>? instanceAssociationStatusAggregatedCount;
+  final pulumi.Input<Map<String, int>>? instanceAssociationStatusAggregatedCount;
 
   /// Creates a new [InstanceAggregatedAssociationOverviewResponse].
   /// [detailedStatus] <p>Detailed status information about the aggregated associations.</p>
@@ -25,8 +26,8 @@ class InstanceAggregatedAssociationOverviewResponse {
 
   factory InstanceAggregatedAssociationOverviewResponse.fromMap(Map<String, dynamic> map) {
     return InstanceAggregatedAssociationOverviewResponse(
-      detailedStatus: map['detailedStatus'] == null ? null : map['detailedStatus'] as String,
-      instanceAssociationStatusAggregatedCount: map['instanceAssociationStatusAggregatedCount'] == null ? null : (map['instanceAssociationStatusAggregatedCount'] as Map).cast<String, int>(),
+      detailedStatus: map['detailedStatus'] == null ? null : (map['detailedStatus'] as String).input(),
+      instanceAssociationStatusAggregatedCount: map['instanceAssociationStatusAggregatedCount'] == null ? null : ((map['instanceAssociationStatusAggregatedCount'] as Map).cast<String, int>()).input(),
     );
   }
 }

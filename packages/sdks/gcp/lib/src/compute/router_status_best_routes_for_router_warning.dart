@@ -6,12 +6,12 @@ import 'router_status_best_routes_for_router_warning_data.dart';
 class RouterStatusBestRoutesForRouterWarning {
   /// A warning code, if applicable. For example, Compute Engine returns
   /// NO_RESULTS_ON_PAGE if there are no results in the response.
-  final String code;
+  final pulumi.Input<String> code;
   /// Metadata about this warning in key: value format. For example:
   /// "data": [  {  "key": "scope",  "value": "zones/us-east1-d"  }
-  final List<RouterStatusBestRoutesForRouterWarningData> datas;
+  final pulumi.Input<List<RouterStatusBestRoutesForRouterWarningData>> datas;
   /// A human-readable description of the warning code.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [RouterStatusBestRoutesForRouterWarning].
   /// [code] A warning code, if applicable. For example, Compute Engine returns
@@ -26,16 +26,16 @@ class RouterStatusBestRoutesForRouterWarning {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'datas': pulumi.Input.encodeList<RouterStatusBestRoutesForRouterWarningData, Map<String, dynamic>>(datas, (value) => value.toMap()),
+      'datas': pulumi.Input.mapInputValue<List<RouterStatusBestRoutesForRouterWarningData>, List<Map<String, dynamic>>>(datas, (value) => pulumi.Input.encodeList<RouterStatusBestRoutesForRouterWarningData, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
   factory RouterStatusBestRoutesForRouterWarning.fromMap(Map<String, dynamic> map) {
     return RouterStatusBestRoutesForRouterWarning(
-      code: map['code'] as String,
-      datas: pulumi.Input.decodeList<RouterStatusBestRoutesForRouterWarningData>(map['datas'], (value) => RouterStatusBestRoutesForRouterWarningData.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      datas: (pulumi.Input.decodeList<RouterStatusBestRoutesForRouterWarningData>(map['datas'], (value) => RouterStatusBestRoutesForRouterWarningData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Web Application Firewall policy for the endpoint (if applicable)
 class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
@@ -20,7 +21,7 @@ class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink {
 
   factory EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

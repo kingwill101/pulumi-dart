@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Value specification for a parameter in `DOUBLE` type.
 class GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec {
   /// A default value for a `DOUBLE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
-  final double? defaultValue;
+  final pulumi.Input<double>? defaultValue;
   /// Inclusive maximum value of the parameter.
-  final double maxValue;
+  final pulumi.Input<double> maxValue;
   /// Inclusive minimum value of the parameter.
-  final double minValue;
+  final pulumi.Input<double> minValue;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec].
   /// [defaultValue] A default value for a `DOUBLE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
@@ -30,9 +31,9 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec {
 
   factory GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as double,
-      maxValue: map['maxValue'] as double,
-      minValue: map['minValue'] as double,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as double).input(),
+      maxValue: (map['maxValue'] as double).input(),
+      minValue: (map['minValue'] as double).input(),
     );
   }
 }

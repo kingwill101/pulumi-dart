@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionBackendServiceConnectionTrackingPolicy {
   /// Specifies connection persistence when backends are unhealthy.
@@ -18,23 +19,23 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
   /// If set to 'ALWAYS_PERSIST', existing connections always persist on
   /// unhealthy backends regardless of protocol and session affinity. It is
   /// generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
-  final String connectionPersistenceOnUnhealthyBackends;
+  final pulumi.Input<String> connectionPersistenceOnUnhealthyBackends;
   /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
-  final bool enableStrongAffinity;
+  final pulumi.Input<bool> enableStrongAffinity;
   /// Specifies how long to keep a Connection Tracking entry while there is
   /// no matching traffic (in seconds).
   ///
   /// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
   ///
   /// For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
-  final int idleTimeoutSec;
+  final pulumi.Input<int> idleTimeoutSec;
   /// Specifies the key used for connection tracking. There are two options:
   /// 'PER_CONNECTION': The Connection Tracking is performed as per the
   /// Connection Key (default Hash Method) for the specific protocol.
   ///
   /// 'PER_SESSION': The Connection Tracking is performed as per the
   /// configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
-  final String trackingMode;
+  final pulumi.Input<String> trackingMode;
 
   /// Creates a new [GetRegionBackendServiceConnectionTrackingPolicy].
   /// [connectionPersistenceOnUnhealthyBackends] Specifies connection persistence when backends are unhealthy.
@@ -59,10 +60,10 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
 
   factory GetRegionBackendServiceConnectionTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceConnectionTrackingPolicy(
-      connectionPersistenceOnUnhealthyBackends: map['connectionPersistenceOnUnhealthyBackends'] as String,
-      enableStrongAffinity: map['enableStrongAffinity'] as bool,
-      idleTimeoutSec: map['idleTimeoutSec'] as int,
-      trackingMode: map['trackingMode'] as String,
+      connectionPersistenceOnUnhealthyBackends: (map['connectionPersistenceOnUnhealthyBackends'] as String).input(),
+      enableStrongAffinity: (map['enableStrongAffinity'] as bool).input(),
+      idleTimeoutSec: (map['idleTimeoutSec'] as int).input(),
+      trackingMode: (map['trackingMode'] as String).input(),
     );
   }
 }

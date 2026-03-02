@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFileSystemDiskIopsConfiguration {
-  final int iops;
-  final String mode;
+  final pulumi.Input<int> iops;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [GetWindowsFileSystemDiskIopsConfiguration].
   /// [iops] Required.
@@ -22,8 +23,8 @@ class GetWindowsFileSystemDiskIopsConfiguration {
 
   factory GetWindowsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemDiskIopsConfiguration(
-      iops: map['iops'] as int,
-      mode: map['mode'] as String,
+      iops: (map['iops'] as int).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

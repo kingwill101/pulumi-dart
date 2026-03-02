@@ -29,19 +29,13 @@ class DatabaseAccountSqlContainerArgs {
   /// [resource] The standard JSON format of a container
   /// [resourceGroupName] Name of an Azure resource group.
   DatabaseAccountSqlContainerArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<SqlContainerResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<SqlContainerResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.containerName,
+    required this.databaseName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DatabaseAccountSqlContainerArgs {
 
   factory DatabaseAccountSqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountSqlContainerArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<SqlContainerResource>(SqlContainerResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (SqlContainerResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationCertificate {
   /// ARN of the certificate.
-  final String certificateArn;
+  final pulumi.Input<String> certificateArn;
   /// Serial number of the certificate.
-  final String certificateSerial;
+  final pulumi.Input<String> certificateSerial;
   /// Status of the certificate.
-  final String status;
+  final pulumi.Input<String> status;
   /// Details about the certificate status, including information about certificate errors.
-  final String statusMessage;
+  final pulumi.Input<String> statusMessage;
 
   /// Creates a new [TlsInspectionConfigurationCertificate].
   /// [certificateArn] ARN of the certificate.
@@ -34,10 +35,10 @@ class TlsInspectionConfigurationCertificate {
 
   factory TlsInspectionConfigurationCertificate.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationCertificate(
-      certificateArn: map['certificateArn'] as String,
-      certificateSerial: map['certificateSerial'] as String,
-      status: map['status'] as String,
-      statusMessage: map['statusMessage'] as String,
+      certificateArn: (map['certificateArn'] as String).input(),
+      certificateSerial: (map['certificateSerial'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusMessage: (map['statusMessage'] as String).input(),
     );
   }
 }

@@ -36,23 +36,15 @@ class PremiumMicrosoftDefenderForThreatIntelligenceArgs {
   /// [tenantId] The tenant id to connect to, and get the data from.
   /// [workspaceName] The name of the workspace.
   PremiumMicrosoftDefenderForThreatIntelligenceArgs({
-    pulumi.Output<String>? dataConnectorId,
-    required pulumi.Output<PremiumMdtiDataConnectorDataTypes> dataTypes,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> lookbackPeriod,
-    pulumi.Output<bool>? requiredSKUsPresent,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> tenantId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataConnectorId = pulumi.Input.asOptionalInput<String>(dataConnectorId),
-      dataTypes = pulumi.Input.asInput<PremiumMdtiDataConnectorDataTypes>(dataTypes),
-      kind = pulumi.Input.asInput<String>(kind),
-      lookbackPeriod = pulumi.Input.asInput<String>(lookbackPeriod),
-      requiredSKUsPresent = pulumi.Input.asOptionalInput<bool>(requiredSKUsPresent),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tenantId = pulumi.Input.asInput<String>(tenantId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.dataConnectorId,
+    required this.dataTypes,
+    required this.kind,
+    required this.lookbackPeriod,
+    this.requiredSKUsPresent,
+    required this.resourceGroupName,
+    required this.tenantId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class PremiumMicrosoftDefenderForThreatIntelligenceArgs {
 
   factory PremiumMicrosoftDefenderForThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return PremiumMicrosoftDefenderForThreatIntelligenceArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : pulumi.Output.create<String>(map['dataConnectorId'] as String),
-      dataTypes: pulumi.Output.create<PremiumMdtiDataConnectorDataTypes>(PremiumMdtiDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      lookbackPeriod: pulumi.Output.create<String>(map['lookbackPeriod'] as String),
-      requiredSKUsPresent: map['requiredSKUsPresent'] == null ? null : pulumi.Output.create<bool>(map['requiredSKUsPresent'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataTypes: (PremiumMdtiDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      lookbackPeriod: (map['lookbackPeriod'] as String).input(),
+      requiredSKUsPresent: map['requiredSKUsPresent'] == null ? null : (map['requiredSKUsPresent'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

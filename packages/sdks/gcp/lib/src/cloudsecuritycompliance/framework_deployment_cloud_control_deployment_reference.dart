@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrameworkDeploymentCloudControlDeploymentReference {
   /// (Output)
   /// The name of the CloudControlDeployment. The format is:
   /// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
-  final String? cloudControlDeployment;
+  final pulumi.Input<String>? cloudControlDeployment;
 
   /// Creates a new [FrameworkDeploymentCloudControlDeploymentReference].
   /// [cloudControlDeployment] (Output)
@@ -21,7 +22,7 @@ class FrameworkDeploymentCloudControlDeploymentReference {
 
   factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlDeploymentReference(
-      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : map['cloudControlDeployment'] as String,
+      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : (map['cloudControlDeployment'] as String).input(),
     );
   }
 }

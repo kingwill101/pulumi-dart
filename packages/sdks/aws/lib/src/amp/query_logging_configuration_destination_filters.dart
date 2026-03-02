@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryLoggingConfigurationDestinationFilters {
   /// The Query Samples Processed (QSP) threshold above which queries will be logged. Queries processing more samples than this threshold will be captured in logs.
-  final int qspThreshold;
+  final pulumi.Input<int> qspThreshold;
 
   /// Creates a new [QueryLoggingConfigurationDestinationFilters].
   /// [qspThreshold] The Query Samples Processed (QSP) threshold above which queries will be logged. Queries processing more samples than this threshold will be captured in logs.
@@ -19,7 +20,7 @@ class QueryLoggingConfigurationDestinationFilters {
 
   factory QueryLoggingConfigurationDestinationFilters.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationDestinationFilters(
-      qspThreshold: map['qspThreshold'] as int,
+      qspThreshold: (map['qspThreshold'] as int).input(),
     );
   }
 }

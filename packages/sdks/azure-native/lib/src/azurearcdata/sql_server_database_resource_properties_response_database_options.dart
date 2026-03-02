@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of features that are enabled for the database
 class SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
-  final bool? isAutoCloseOn;
-  final bool? isAutoCreateStatsOn;
-  final bool? isAutoShrinkOn;
-  final bool? isAutoUpdateStatsOn;
-  final bool? isEncrypted;
-  final bool? isMemoryOptimizationEnabled;
-  final bool? isRemoteDataArchiveEnabled;
-  final bool? isTrustworthyOn;
+  final pulumi.Input<bool>? isAutoCloseOn;
+  final pulumi.Input<bool>? isAutoCreateStatsOn;
+  final pulumi.Input<bool>? isAutoShrinkOn;
+  final pulumi.Input<bool>? isAutoUpdateStatsOn;
+  final pulumi.Input<bool>? isEncrypted;
+  final pulumi.Input<bool>? isMemoryOptimizationEnabled;
+  final pulumi.Input<bool>? isRemoteDataArchiveEnabled;
+  final pulumi.Input<bool>? isTrustworthyOn;
 
   /// Creates a new [SqlServerDatabaseResourcePropertiesResponseDatabaseOptions].
   /// [isAutoCloseOn] Optional.
@@ -47,14 +48,14 @@ class SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
 
   factory SqlServerDatabaseResourcePropertiesResponseDatabaseOptions.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourcePropertiesResponseDatabaseOptions(
-      isAutoCloseOn: map['isAutoCloseOn'] == null ? null : map['isAutoCloseOn'] as bool,
-      isAutoCreateStatsOn: map['isAutoCreateStatsOn'] == null ? null : map['isAutoCreateStatsOn'] as bool,
-      isAutoShrinkOn: map['isAutoShrinkOn'] == null ? null : map['isAutoShrinkOn'] as bool,
-      isAutoUpdateStatsOn: map['isAutoUpdateStatsOn'] == null ? null : map['isAutoUpdateStatsOn'] as bool,
-      isEncrypted: map['isEncrypted'] == null ? null : map['isEncrypted'] as bool,
-      isMemoryOptimizationEnabled: map['isMemoryOptimizationEnabled'] == null ? null : map['isMemoryOptimizationEnabled'] as bool,
-      isRemoteDataArchiveEnabled: map['isRemoteDataArchiveEnabled'] == null ? null : map['isRemoteDataArchiveEnabled'] as bool,
-      isTrustworthyOn: map['isTrustworthyOn'] == null ? null : map['isTrustworthyOn'] as bool,
+      isAutoCloseOn: map['isAutoCloseOn'] == null ? null : (map['isAutoCloseOn'] as bool).input(),
+      isAutoCreateStatsOn: map['isAutoCreateStatsOn'] == null ? null : (map['isAutoCreateStatsOn'] as bool).input(),
+      isAutoShrinkOn: map['isAutoShrinkOn'] == null ? null : (map['isAutoShrinkOn'] as bool).input(),
+      isAutoUpdateStatsOn: map['isAutoUpdateStatsOn'] == null ? null : (map['isAutoUpdateStatsOn'] as bool).input(),
+      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted'] as bool).input(),
+      isMemoryOptimizationEnabled: map['isMemoryOptimizationEnabled'] == null ? null : (map['isMemoryOptimizationEnabled'] as bool).input(),
+      isRemoteDataArchiveEnabled: map['isRemoteDataArchiveEnabled'] == null ? null : (map['isRemoteDataArchiveEnabled'] as bool).input(),
+      isTrustworthyOn: map['isTrustworthyOn'] == null ? null : (map['isTrustworthyOn'] as bool).input(),
     );
   }
 }

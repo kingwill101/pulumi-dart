@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference {
   /// The bucket to scan.
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// If within a project-level config, then this must match the config's project id.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference].
   /// [bucketName] The bucket to scan.
@@ -24,8 +25,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

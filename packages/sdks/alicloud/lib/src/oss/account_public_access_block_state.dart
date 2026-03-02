@@ -10,9 +10,8 @@ class AccountPublicAccessBlockState {
   /// Creates a new [AccountPublicAccessBlockState].
   /// [blockPublicAccess] Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
   AccountPublicAccessBlockState({
-    pulumi.Output<bool>? blockPublicAccess,
-  }) :
-      blockPublicAccess = pulumi.Input.asOptionalInput<bool>(blockPublicAccess);
+    this.blockPublicAccess,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class AccountPublicAccessBlockState {
 
   factory AccountPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
     return AccountPublicAccessBlockState(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : pulumi.Output.create<bool>(map['blockPublicAccess'] as bool),
+      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess'] as bool).input(),
     );
   }
 }

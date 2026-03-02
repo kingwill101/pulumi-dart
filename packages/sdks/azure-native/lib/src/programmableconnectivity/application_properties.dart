@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details about the Application that would use the Operator's Network APIs.
 class ApplicationProperties {
   /// Description of the application.
-  final String? applicationDescription;
+  final pulumi.Input<String>? applicationDescription;
   /// The category that describes the application.
-  final String? applicationType;
+  final pulumi.Input<String>? applicationType;
   /// Legal name of the organization owning the application.
-  final String? legalName;
+  final pulumi.Input<String>? legalName;
   /// Name of the application.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// A description of the organization owning the application.
-  final String? organizationDescription;
+  final pulumi.Input<String>? organizationDescription;
   /// Email address of the Privacy contact or Data Protection officer of the organization.
-  final String? privacyContactEmailAddress;
+  final pulumi.Input<String>? privacyContactEmailAddress;
   /// Unique Tax Number for the user's organization in the country/region the APC Gateway is being purchased.
-  final String? taxNumber;
+  final pulumi.Input<String>? taxNumber;
 
   /// Creates a new [ApplicationProperties].
   /// [applicationDescription] Description of the application.
@@ -50,13 +51,13 @@ class ApplicationProperties {
 
   factory ApplicationProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationProperties(
-      applicationDescription: map['applicationDescription'] == null ? null : map['applicationDescription'] as String,
-      applicationType: map['applicationType'] == null ? null : map['applicationType'] as String,
-      legalName: map['legalName'] == null ? null : map['legalName'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      organizationDescription: map['organizationDescription'] == null ? null : map['organizationDescription'] as String,
-      privacyContactEmailAddress: map['privacyContactEmailAddress'] == null ? null : map['privacyContactEmailAddress'] as String,
-      taxNumber: map['taxNumber'] == null ? null : map['taxNumber'] as String,
+      applicationDescription: map['applicationDescription'] == null ? null : (map['applicationDescription'] as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
+      legalName: map['legalName'] == null ? null : (map['legalName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationDescription: map['organizationDescription'] == null ? null : (map['organizationDescription'] as String).input(),
+      privacyContactEmailAddress: map['privacyContactEmailAddress'] == null ? null : (map['privacyContactEmailAddress'] as String).input(),
+      taxNumber: map['taxNumber'] == null ? null : (map['taxNumber'] as String).input(),
     );
   }
 }

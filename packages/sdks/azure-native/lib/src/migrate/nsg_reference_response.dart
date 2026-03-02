@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines reference to NSG.
 class NsgReferenceResponse {
   /// Gets the ARM resource ID of the tracked resource being referenced.
-  final String sourceArmResourceId;
+  final pulumi.Input<String> sourceArmResourceId;
 
   /// Creates a new [NsgReferenceResponse].
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
@@ -20,7 +21,7 @@ class NsgReferenceResponse {
 
   factory NsgReferenceResponse.fromMap(Map<String, dynamic> map) {
     return NsgReferenceResponse(
-      sourceArmResourceId: map['sourceArmResourceId'] as String,
+      sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
     );
   }
 }

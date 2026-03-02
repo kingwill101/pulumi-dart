@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceAdapterParentAddrAddress {
   /// Specifies the bus identifier for the parent address.
-  final double? bus;
+  final pulumi.Input<double>? bus;
   /// Defines the domain associated with the parent address of the adapter.
-  final double? domain;
+  final pulumi.Input<double>? domain;
   /// Configures the function field for the address of the adapter's parent device.
-  final double? function;
+  final pulumi.Input<double>? function;
   /// Indicates the slot number for the adapter's parent address.
-  final double? slot;
+  final pulumi.Input<double>? slot;
 
   /// Creates a new [PoolSourceAdapterParentAddrAddress].
   /// [bus] Specifies the bus identifier for the parent address.
@@ -34,10 +35,10 @@ class PoolSourceAdapterParentAddrAddress {
 
   factory PoolSourceAdapterParentAddrAddress.fromMap(Map<String, dynamic> map) {
     return PoolSourceAdapterParentAddrAddress(
-      bus: map['bus'] == null ? null : map['bus'] as double,
-      domain: map['domain'] == null ? null : map['domain'] as double,
-      function: map['function'] == null ? null : map['function'] as double,
-      slot: map['slot'] == null ? null : map['slot'] as double,
+      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as double).input(),
+      function: map['function'] == null ? null : (map['function'] as double).input(),
+      slot: map['slot'] == null ? null : (map['slot'] as double).input(),
     );
   }
 }

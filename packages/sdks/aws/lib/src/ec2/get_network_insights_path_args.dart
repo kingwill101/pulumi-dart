@@ -27,15 +27,11 @@ class GetNetworkInsightsPathArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource.
   GetNetworkInsightsPathArgs({
-    pulumi.Output<List<GetNetworkInsightsPathFilter>>? filters,
-    pulumi.Output<String>? networkInsightsPathId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNetworkInsightsPathFilter>>(filters),
-      networkInsightsPathId = pulumi.Input.asOptionalInput<String>(networkInsightsPathId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.networkInsightsPathId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GetNetworkInsightsPathArgs {
 
   factory GetNetworkInsightsPathArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNetworkInsightsPathFilter>>(pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters'], (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : pulumi.Output.create<String>(map['networkInsightsPathId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters'], (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : (map['networkInsightsPathId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

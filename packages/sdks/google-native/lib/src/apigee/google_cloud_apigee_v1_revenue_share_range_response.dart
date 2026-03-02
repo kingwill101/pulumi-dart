@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
 class GoogleCloudApigeeV1RevenueShareRangeResponse {
   /// Ending value of the range. Set to 0 or `null` for the last range of values.
-  final String end;
+  final pulumi.Input<String> end;
   /// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
-  final double sharePercentage;
+  final pulumi.Input<double> sharePercentage;
   /// Starting value of the range. Set to 0 or `null` for the initial range of values.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [GoogleCloudApigeeV1RevenueShareRangeResponse].
   /// [end] Ending value of the range. Set to 0 or `null` for the last range of values.
@@ -30,9 +31,9 @@ class GoogleCloudApigeeV1RevenueShareRangeResponse {
 
   factory GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1RevenueShareRangeResponse(
-      end: map['end'] as String,
-      sharePercentage: map['sharePercentage'] as double,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      sharePercentage: (map['sharePercentage'] as double).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

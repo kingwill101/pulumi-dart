@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'wsdl_service.dart';
 
 /// The WSDL definition
 class WsdlDefinition {
   /// The WSDL content
-  final String? content;
+  final pulumi.Input<String>? content;
   /// The WSDL import method
-  final String? importMethod;
+  final pulumi.Input<String>? importMethod;
   /// The service with name and endpoint names
-  final WsdlService? service;
+  final pulumi.Input<WsdlService>? service;
   /// The WSDL URL
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [WsdlDefinition].
   /// [content] The WSDL content
@@ -29,17 +30,17 @@ class WsdlDefinition {
     return <String, dynamic>{
       'content': ?content,
       'importMethod': ?importMethod,
-      'service': ?service == null ? null : service!.toMap(),
+      'service': ?pulumi.Input.mapOptionalInputValue<WsdlService, Map<String, dynamic>>(service, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory WsdlDefinition.fromMap(Map<String, dynamic> map) {
     return WsdlDefinition(
-      content: map['content'] == null ? null : map['content'] as String,
-      importMethod: map['importMethod'] == null ? null : map['importMethod'] as String,
-      service: map['service'] == null ? null : WsdlService.fromMap((map['service'] as Map).cast<String, dynamic>()),
-      url: map['url'] == null ? null : map['url'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      importMethod: map['importMethod'] == null ? null : (map['importMethod'] as String).input(),
+      service: map['service'] == null ? null : (WsdlService.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

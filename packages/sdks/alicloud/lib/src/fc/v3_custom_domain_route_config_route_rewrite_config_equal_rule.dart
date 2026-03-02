@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
   /// Matching Rules
-  final String? match;
+  final pulumi.Input<String>? match;
   /// Replace Rules
-  final String? replacement;
+  final pulumi.Input<String>? replacement;
 
   /// Creates a new [V3CustomDomainRouteConfigRouteRewriteConfigEqualRule].
   /// [match] Matching Rules
@@ -24,8 +25,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
 
   factory V3CustomDomainRouteConfigRouteRewriteConfigEqualRule.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(
-      match: map['match'] == null ? null : map['match'] as String,
-      replacement: map['replacement'] == null ? null : map['replacement'] as String,
+      match: map['match'] == null ? null : (map['match'] as String).input(),
+      replacement: map['replacement'] == null ? null : (map['replacement'] as String).input(),
     );
   }
 }

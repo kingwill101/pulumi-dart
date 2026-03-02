@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aggregation.dart';
 import 'pick_time_series_filter.dart';
 import 'statistical_time_series_filter.dart';
@@ -7,15 +8,15 @@ import 'statistical_time_series_filter.dart';
 /// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
 class TimeSeriesFilter {
   /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-  final Aggregation? aggregation;
+  final pulumi.Input<Aggregation>? aggregation;
   /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-  final String filter;
+  final pulumi.Input<String> filter;
   /// Ranking based time series filter.
-  final PickTimeSeriesFilter? pickTimeSeriesFilter;
+  final pulumi.Input<PickTimeSeriesFilter>? pickTimeSeriesFilter;
   /// Apply a second aggregation after aggregation is applied.
-  final Aggregation? secondaryAggregation;
+  final pulumi.Input<Aggregation>? secondaryAggregation;
   /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-  final StatisticalTimeSeriesFilter? statisticalTimeSeriesFilter;
+  final pulumi.Input<StatisticalTimeSeriesFilter>? statisticalTimeSeriesFilter;
 
   /// Creates a new [TimeSeriesFilter].
   /// [aggregation] By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -33,21 +34,21 @@ class TimeSeriesFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregation': ?aggregation == null ? null : aggregation!.toMap(),
+      'aggregation': ?pulumi.Input.mapOptionalInputValue<Aggregation, Map<String, dynamic>>(aggregation, (value) => value.toMap()),
       'filter': filter,
-      'pickTimeSeriesFilter': ?pickTimeSeriesFilter == null ? null : pickTimeSeriesFilter!.toMap(),
-      'secondaryAggregation': ?secondaryAggregation == null ? null : secondaryAggregation!.toMap(),
-      'statisticalTimeSeriesFilter': ?statisticalTimeSeriesFilter == null ? null : statisticalTimeSeriesFilter!.toMap(),
+      'pickTimeSeriesFilter': ?pulumi.Input.mapOptionalInputValue<PickTimeSeriesFilter, Map<String, dynamic>>(pickTimeSeriesFilter, (value) => value.toMap()),
+      'secondaryAggregation': ?pulumi.Input.mapOptionalInputValue<Aggregation, Map<String, dynamic>>(secondaryAggregation, (value) => value.toMap()),
+      'statisticalTimeSeriesFilter': ?pulumi.Input.mapOptionalInputValue<StatisticalTimeSeriesFilter, Map<String, dynamic>>(statisticalTimeSeriesFilter, (value) => value.toMap()),
     };
   }
 
   factory TimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return TimeSeriesFilter(
-      aggregation: map['aggregation'] == null ? null : Aggregation.fromMap((map['aggregation'] as Map).cast<String, dynamic>()),
-      filter: map['filter'] as String,
-      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>()),
-      secondaryAggregation: map['secondaryAggregation'] == null ? null : Aggregation.fromMap((map['secondaryAggregation'] as Map).cast<String, dynamic>()),
-      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter'] as Map).cast<String, dynamic>()),
+      aggregation: map['aggregation'] == null ? null : (Aggregation.fromMap((map['aggregation'] as Map).cast<String, dynamic>())).input(),
+      filter: (map['filter'] as String).input(),
+      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : (PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
+      secondaryAggregation: map['secondaryAggregation'] == null ? null : (Aggregation.fromMap((map['secondaryAggregation'] as Map).cast<String, dynamic>())).input(),
+      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : (StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

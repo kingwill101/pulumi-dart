@@ -44,31 +44,19 @@ class ExecutionAiplatformV1beta1Args {
   /// [schemaVersion] The version of the schema in `schema_title` to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [state] The state of this Execution. This is a property of the Execution, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines) and the system does not prescribe or check the validity of state transitions.
   ExecutionAiplatformV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? executionId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    required pulumi.Output<String> metadataStoreId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? schemaTitle,
-    pulumi.Output<String>? schemaVersion,
-    pulumi.Output<ExecutionStateAiplatformV1beta1>? state,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      executionId = pulumi.Input.asOptionalInput<String>(executionId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaTitle = pulumi.Input.asOptionalInput<String>(schemaTitle),
-      schemaVersion = pulumi.Input.asOptionalInput<String>(schemaVersion),
-      state = pulumi.Input.asOptionalInput<ExecutionStateAiplatformV1beta1>(state);
+    this.description,
+    this.displayName,
+    this.etag,
+    this.executionId,
+    this.labels,
+    this.location,
+    this.metadata,
+    required this.metadataStoreId,
+    this.project,
+    this.schemaTitle,
+    this.schemaVersion,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ExecutionAiplatformV1beta1Args {
 
   factory ExecutionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ExecutionAiplatformV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      executionId: map['executionId'] == null ? null : pulumi.Output.create<String>(map['executionId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      metadataStoreId: pulumi.Output.create<String>(map['metadataStoreId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schemaTitle: map['schemaTitle'] == null ? null : pulumi.Output.create<String>(map['schemaTitle'] as String),
-      schemaVersion: map['schemaVersion'] == null ? null : pulumi.Output.create<String>(map['schemaVersion'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<ExecutionStateAiplatformV1beta1>(ExecutionStateAiplatformV1beta1.fromValue(map['state'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      executionId: map['executionId'] == null ? null : (map['executionId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadataStoreId: (map['metadataStoreId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schemaTitle: map['schemaTitle'] == null ? null : (map['schemaTitle'] as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      state: map['state'] == null ? null : (ExecutionStateAiplatformV1beta1.fromValue(map['state'] as String)).input(),
     );
   }
 }

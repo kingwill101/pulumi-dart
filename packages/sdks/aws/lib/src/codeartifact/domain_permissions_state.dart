@@ -25,19 +25,13 @@ class DomainPermissionsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The ARN of the resource associated with the resource policy.
   DomainPermissionsState({
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? domainOwner,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<String>? policyRevision,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-  }) :
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      domainOwner = pulumi.Input.asOptionalInput<String>(domainOwner),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      policyRevision = pulumi.Input.asOptionalInput<String>(policyRevision),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
+    this.domain,
+    this.domainOwner,
+    this.policyDocument,
+    this.policyRevision,
+    this.region,
+    this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DomainPermissionsState {
 
   factory DomainPermissionsState.fromMap(Map<String, dynamic> map) {
     return DomainPermissionsState(
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      domainOwner: map['domainOwner'] == null ? null : pulumi.Output.create<String>(map['domainOwner'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyRevision: map['policyRevision'] == null ? null : pulumi.Output.create<String>(map['policyRevision'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      policyRevision: map['policyRevision'] == null ? null : (map['policyRevision'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

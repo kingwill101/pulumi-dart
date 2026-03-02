@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreMemoryStrategyConfigurationConsolidation {
   /// Additional text to append to the model prompt for consolidation processing.
-  final String appendToPrompt;
+  final pulumi.Input<String> appendToPrompt;
   /// ID of the foundation model to use for consolidation processing.
-  final String modelId;
+  final pulumi.Input<String> modelId;
 
   /// Creates a new [AgentcoreMemoryStrategyConfigurationConsolidation].
   /// [appendToPrompt] Additional text to append to the model prompt for consolidation processing.
@@ -24,8 +25,8 @@ class AgentcoreMemoryStrategyConfigurationConsolidation {
 
   factory AgentcoreMemoryStrategyConfigurationConsolidation.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfigurationConsolidation(
-      appendToPrompt: map['appendToPrompt'] as String,
-      modelId: map['modelId'] as String,
+      appendToPrompt: (map['appendToPrompt'] as String).input(),
+      modelId: (map['modelId'] as String).input(),
     );
   }
 }

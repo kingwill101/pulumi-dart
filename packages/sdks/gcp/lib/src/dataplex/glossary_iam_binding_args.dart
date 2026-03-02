@@ -45,19 +45,13 @@ class GlossaryIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   GlossaryIamBindingArgs({
-    pulumi.Output<GlossaryIamBindingCondition>? condition,
-    required pulumi.Output<String> glossaryId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<GlossaryIamBindingCondition>(condition),
-      glossaryId = pulumi.Input.asInput<String>(glossaryId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.glossaryId,
+    this.location,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +66,12 @@ class GlossaryIamBindingArgs {
 
   factory GlossaryIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<GlossaryIamBindingCondition>(GlossaryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      glossaryId: pulumi.Output.create<String>(map['glossaryId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (GlossaryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      glossaryId: (map['glossaryId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

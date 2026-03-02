@@ -40,27 +40,17 @@ class IndexAiplatformV1beta1Args {
   /// [metadataSchemaUri] Immutable. Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
   /// [project] Optional.
   IndexAiplatformV1beta1Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? etag,
-    pulumi.Output<IndexIndexUpdateMethodAiplatformV1beta1>? indexUpdateMethod,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    pulumi.Output<String>? metadataSchemaUri,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      indexUpdateMethod = pulumi.Input.asOptionalInput<IndexIndexUpdateMethodAiplatformV1beta1>(indexUpdateMethod),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      metadataSchemaUri = pulumi.Input.asOptionalInput<String>(metadataSchemaUri),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.displayName,
+    this.encryptionSpec,
+    this.etag,
+    this.indexUpdateMethod,
+    this.labels,
+    this.location,
+    this.metadata,
+    this.metadataSchemaUri,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class IndexAiplatformV1beta1Args {
 
   factory IndexAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return IndexAiplatformV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : pulumi.Output.create<IndexIndexUpdateMethodAiplatformV1beta1>(IndexIndexUpdateMethodAiplatformV1beta1.fromValue(map['indexUpdateMethod'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : pulumi.Output.create<String>(map['metadataSchemaUri'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : (IndexIndexUpdateMethodAiplatformV1beta1.fromValue(map['indexUpdateMethod'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      metadataSchemaUri: map['metadataSchemaUri'] == null ? null : (map['metadataSchemaUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

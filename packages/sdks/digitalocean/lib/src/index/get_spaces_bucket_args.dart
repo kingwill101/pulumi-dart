@@ -16,11 +16,9 @@ class GetSpacesBucketArgs {
   /// [name] The name of the Spaces bucket.
   /// [region] The slug of the region where the bucket is stored.
   GetSpacesBucketArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asInput<String>(region);
+    required this.name,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSpacesBucketArgs {
 
   factory GetSpacesBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

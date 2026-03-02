@@ -8,25 +8,25 @@ import 'sso_properties_response.dart';
 /// API portal properties payload
 class ApiPortalPropertiesResponse {
   /// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
-  final String? apiTryOutEnabledState;
+  final pulumi.Input<String>? apiTryOutEnabledState;
   /// The array of resource Ids of gateway to integrate with API portal.
-  final List<String>? gatewayIds;
+  final pulumi.Input<List<String>>? gatewayIds;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// Collection of instances belong to API portal.
-  final List<ApiPortalInstanceResponse> instances;
+  final pulumi.Input<List<ApiPortalInstanceResponse>> instances;
   /// State of the API portal.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether the API portal exposes endpoint.
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// The requested resource quantity for required CPU and Memory.
-  final ApiPortalResourceRequestsResponse resourceRequests;
+  final pulumi.Input<ApiPortalResourceRequestsResponse> resourceRequests;
   /// Collection of OpenAPI source URL locations.
-  final List<String>? sourceUrls;
+  final pulumi.Input<List<String>>? sourceUrls;
   /// Single sign-on related configuration
-  final SsoPropertiesResponse? ssoProperties;
+  final pulumi.Input<SsoPropertiesResponse>? ssoProperties;
   /// URL of the API portal, exposed when 'public' is true.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [ApiPortalPropertiesResponse].
   /// [apiTryOutEnabledState] Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
@@ -57,28 +57,28 @@ class ApiPortalPropertiesResponse {
       'apiTryOutEnabledState': ?apiTryOutEnabledState,
       'gatewayIds': ?gatewayIds,
       'httpsOnly': ?httpsOnly,
-      'instances': pulumi.Input.encodeList<ApiPortalInstanceResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<ApiPortalInstanceResponse>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<ApiPortalInstanceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'public': ?public,
-      'resourceRequests': resourceRequests.toMap(),
+      'resourceRequests': pulumi.Input.mapInputValue<ApiPortalResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
       'sourceUrls': ?sourceUrls,
-      'ssoProperties': ?ssoProperties == null ? null : ssoProperties!.toMap(),
+      'ssoProperties': ?pulumi.Input.mapOptionalInputValue<SsoPropertiesResponse, Map<String, dynamic>>(ssoProperties, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory ApiPortalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPortalPropertiesResponse(
-      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : map['apiTryOutEnabledState'] as String,
-      gatewayIds: map['gatewayIds'] == null ? null : (map['gatewayIds'] as List).cast<String>(),
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      instances: pulumi.Input.decodeList<ApiPortalInstanceResponse>(map['instances'], (value) => ApiPortalInstanceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      public: map['public'] == null ? null : map['public'] as bool,
-      resourceRequests: ApiPortalResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>()),
-      sourceUrls: map['sourceUrls'] == null ? null : (map['sourceUrls'] as List).cast<String>(),
-      ssoProperties: map['ssoProperties'] == null ? null : SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>()),
-      url: map['url'] as String,
+      apiTryOutEnabledState: map['apiTryOutEnabledState'] == null ? null : (map['apiTryOutEnabledState'] as String).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      instances: (pulumi.Input.decodeList<ApiPortalInstanceResponse>(map['instances'], (value) => ApiPortalInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      resourceRequests: (ApiPortalResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      sourceUrls: map['sourceUrls'] == null ? null : ((map['sourceUrls'] as List).cast<String>()).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A rule governing the accessibility of a vault from a specific virtual network.
 class VirtualNetworkRule {
   /// Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
-  final String id;
+  final pulumi.Input<String> id;
   /// Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured.
-  final bool? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
 
   /// Creates a new [VirtualNetworkRule].
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
@@ -25,8 +26,8 @@ class VirtualNetworkRule {
 
   factory VirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRule(
-      id: map['id'] as String,
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : map['ignoreMissingVnetServiceEndpoint'] as bool,
+      id: (map['id'] as String).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
     );
   }
 }

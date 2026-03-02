@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Role definition permissions.
 class Permission {
   /// Allowed actions.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
   /// Allowed Data actions.
-  final List<String>? dataActions;
+  final pulumi.Input<List<String>>? dataActions;
   /// Denied actions.
-  final List<String>? notActions;
+  final pulumi.Input<List<String>>? notActions;
   /// Denied Data actions.
-  final List<String>? notDataActions;
+  final pulumi.Input<List<String>>? notDataActions;
 
   /// Creates a new [Permission].
   /// [actions] Allowed actions.
@@ -35,10 +36,10 @@ class Permission {
 
   factory Permission.fromMap(Map<String, dynamic> map) {
     return Permission(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
-      dataActions: map['dataActions'] == null ? null : (map['dataActions'] as List).cast<String>(),
-      notActions: map['notActions'] == null ? null : (map['notActions'] as List).cast<String>(),
-      notDataActions: map['notDataActions'] == null ? null : (map['notDataActions'] as List).cast<String>(),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
+      notActions: map['notActions'] == null ? null : ((map['notActions'] as List).cast<String>()).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
     );
   }
 }

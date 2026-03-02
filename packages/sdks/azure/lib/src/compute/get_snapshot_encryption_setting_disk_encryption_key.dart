@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotEncryptionSettingDiskEncryptionKey {
-  final String secretUrl;
-  final String sourceVaultId;
+  final pulumi.Input<String> secretUrl;
+  final pulumi.Input<String> sourceVaultId;
 
   /// Creates a new [GetSnapshotEncryptionSettingDiskEncryptionKey].
   /// [secretUrl] Required.
@@ -22,8 +23,8 @@ class GetSnapshotEncryptionSettingDiskEncryptionKey {
 
   factory GetSnapshotEncryptionSettingDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
     return GetSnapshotEncryptionSettingDiskEncryptionKey(
-      secretUrl: map['secretUrl'] as String,
-      sourceVaultId: map['sourceVaultId'] as String,
+      secretUrl: (map['secretUrl'] as String).input(),
+      sourceVaultId: (map['sourceVaultId'] as String).input(),
     );
   }
 }

@@ -7,7 +7,7 @@ class GetSecretReplicationAuto {
   /// The customer-managed encryption configuration of the Secret.
   /// If no configuration is provided, Google-managed default
   /// encryption is used.
-  final List<GetSecretReplicationAutoCustomerManagedEncryption> customerManagedEncryptions;
+  final pulumi.Input<List<GetSecretReplicationAutoCustomerManagedEncryption>> customerManagedEncryptions;
 
   /// Creates a new [GetSecretReplicationAuto].
   /// [customerManagedEncryptions] The customer-managed encryption configuration of the Secret.
@@ -17,13 +17,13 @@ class GetSecretReplicationAuto {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedEncryptions': pulumi.Input.encodeList<GetSecretReplicationAutoCustomerManagedEncryption, Map<String, dynamic>>(customerManagedEncryptions, (value) => value.toMap()),
+      'customerManagedEncryptions': pulumi.Input.mapInputValue<List<GetSecretReplicationAutoCustomerManagedEncryption>, List<Map<String, dynamic>>>(customerManagedEncryptions, (value) => pulumi.Input.encodeList<GetSecretReplicationAutoCustomerManagedEncryption, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetSecretReplicationAuto.fromMap(Map<String, dynamic> map) {
     return GetSecretReplicationAuto(
-      customerManagedEncryptions: pulumi.Input.decodeList<GetSecretReplicationAutoCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => GetSecretReplicationAutoCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())),
+      customerManagedEncryptions: (pulumi.Input.decodeList<GetSecretReplicationAutoCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => GetSecretReplicationAutoCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

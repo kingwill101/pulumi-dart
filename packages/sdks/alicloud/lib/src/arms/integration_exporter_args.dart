@@ -19,13 +19,10 @@ class IntegrationExporterArgs {
   /// [integrationType] The type of prometheus integration.
   /// [param] Exporter configuration parameter json string.
   IntegrationExporterArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> integrationType,
-    required pulumi.Output<String> param,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      integrationType = pulumi.Input.asInput<String>(integrationType),
-      param = pulumi.Input.asInput<String>(param);
+    required this.clusterId,
+    required this.integrationType,
+    required this.param,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class IntegrationExporterArgs {
 
   factory IntegrationExporterArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationExporterArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      integrationType: pulumi.Output.create<String>(map['integrationType'] as String),
-      param: pulumi.Output.create<String>(map['param'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      integrationType: (map['integrationType'] as String).input(),
+      param: (map['param'] as String).input(),
     );
   }
 }

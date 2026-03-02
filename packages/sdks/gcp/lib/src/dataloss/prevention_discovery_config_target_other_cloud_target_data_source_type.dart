@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
   /// (Optional)
-  final String? dataSource;
+  final pulumi.Input<String>? dataSource;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType].
   /// [dataSource] (Optional)
@@ -19,7 +20,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType(
-      dataSource: map['dataSource'] == null ? null : map['dataSource'] as String,
+      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
     );
   }
 }

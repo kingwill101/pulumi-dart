@@ -37,25 +37,16 @@ class PolicyState {
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Web Application Firewall Policy.
   PolicyState({
-    pulumi.Output<List<PolicyCustomRule>>? customRules,
-    pulumi.Output<List<String>>? httpListenerIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<PolicyManagedRules>? managedRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? pathBasedRuleIds,
-    pulumi.Output<PolicyPolicySettings>? policySettings,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customRules = pulumi.Input.asOptionalInput<List<PolicyCustomRule>>(customRules),
-      httpListenerIds = pulumi.Input.asOptionalInput<List<String>>(httpListenerIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedRules = pulumi.Input.asOptionalInput<PolicyManagedRules>(managedRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathBasedRuleIds = pulumi.Input.asOptionalInput<List<String>>(pathBasedRuleIds),
-      policySettings = pulumi.Input.asOptionalInput<PolicyPolicySettings>(policySettings),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customRules,
+    this.httpListenerIds,
+    this.location,
+    this.managedRules,
+    this.name,
+    this.pathBasedRuleIds,
+    this.policySettings,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      customRules: map['customRules'] == null ? null : pulumi.Output.create<List<PolicyCustomRule>>(pulumi.Input.decodeList<PolicyCustomRule>(map['customRules'], (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))),
-      httpListenerIds: map['httpListenerIds'] == null ? null : pulumi.Output.create<List<String>>((map['httpListenerIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedRules: map['managedRules'] == null ? null : pulumi.Output.create<PolicyManagedRules>(PolicyManagedRules.fromMap((map['managedRules'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathBasedRuleIds: map['pathBasedRuleIds'] == null ? null : pulumi.Output.create<List<String>>((map['pathBasedRuleIds'] as List).cast<String>()),
-      policySettings: map['policySettings'] == null ? null : pulumi.Output.create<PolicyPolicySettings>(PolicyPolicySettings.fromMap((map['policySettings'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<PolicyCustomRule>(map['customRules'], (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpListenerIds: map['httpListenerIds'] == null ? null : ((map['httpListenerIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedRules: map['managedRules'] == null ? null : (PolicyManagedRules.fromMap((map['managedRules'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathBasedRuleIds: map['pathBasedRuleIds'] == null ? null : ((map['pathBasedRuleIds'] as List).cast<String>()).input(),
+      policySettings: map['policySettings'] == null ? null : (PolicyPolicySettings.fromMap((map['policySettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

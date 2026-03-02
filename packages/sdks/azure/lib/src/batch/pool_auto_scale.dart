@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolAutoScale {
   /// The interval to wait before evaluating if the pool needs to be scaled. Defaults to `PT15M`.
-  final String? evaluationInterval;
+  final pulumi.Input<String>? evaluationInterval;
   /// The autoscale formula that needs to be used for scaling the Batch pool.
-  final String formula;
+  final pulumi.Input<String> formula;
 
   /// Creates a new [PoolAutoScale].
   /// [evaluationInterval] The interval to wait before evaluating if the pool needs to be scaled. Defaults to `PT15M`.
@@ -24,8 +25,8 @@ class PoolAutoScale {
 
   factory PoolAutoScale.fromMap(Map<String, dynamic> map) {
     return PoolAutoScale(
-      evaluationInterval: map['evaluationInterval'] == null ? null : map['evaluationInterval'] as String,
-      formula: map['formula'] as String,
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as String).input(),
+      formula: (map['formula'] as String).input(),
     );
   }
 }

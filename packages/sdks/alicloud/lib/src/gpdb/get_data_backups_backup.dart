@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataBackupsBackup {
   /// The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
-  final String backupEndTime;
+  final pulumi.Input<String> backupEndTime;
   /// The end time of the backup (local time).
-  final String backupEndTimeLocal;
+  final pulumi.Input<String> backupEndTimeLocal;
   /// Backup method. Value Description:-**Physical**: Physical backup.-**Snapshot**: the Snapshot backup.
-  final String backupMethod;
+  final pulumi.Input<String> backupMethod;
   /// Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
-  final String backupMode;
+  final pulumi.Input<String> backupMode;
   /// The ID of the backup set.
-  final String backupSetId;
+  final pulumi.Input<String> backupSetId;
   /// The size of the backup file. Unit: Byte.
-  final int backupSize;
+  final pulumi.Input<int> backupSize;
   /// The backup start time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
-  final String backupStartTime;
+  final pulumi.Input<String> backupStartTime;
   /// The start time of the backup (local time).
-  final String backupStartTimeLocal;
+  final pulumi.Input<String> backupStartTimeLocal;
   /// The name of the recovery point or full backup set.
-  final String baksetName;
+  final pulumi.Input<String> baksetName;
   /// -Full backup: Returns the timestamp of the consistent point in time.-Recoverable point: Returns the timestamp of the recoverable point in time.
-  final int consistentTime;
+  final pulumi.Input<int> consistentTime;
   /// The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// The instance ID.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetDataBackupsBackup].
   /// [backupEndTime] The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
@@ -79,19 +80,19 @@ class GetDataBackupsBackup {
 
   factory GetDataBackupsBackup.fromMap(Map<String, dynamic> map) {
     return GetDataBackupsBackup(
-      backupEndTime: map['backupEndTime'] as String,
-      backupEndTimeLocal: map['backupEndTimeLocal'] as String,
-      backupMethod: map['backupMethod'] as String,
-      backupMode: map['backupMode'] as String,
-      backupSetId: map['backupSetId'] as String,
-      backupSize: map['backupSize'] as int,
-      backupStartTime: map['backupStartTime'] as String,
-      backupStartTimeLocal: map['backupStartTimeLocal'] as String,
-      baksetName: map['baksetName'] as String,
-      consistentTime: map['consistentTime'] as int,
-      dataType: map['dataType'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      status: map['status'] as String,
+      backupEndTime: (map['backupEndTime'] as String).input(),
+      backupEndTimeLocal: (map['backupEndTimeLocal'] as String).input(),
+      backupMethod: (map['backupMethod'] as String).input(),
+      backupMode: (map['backupMode'] as String).input(),
+      backupSetId: (map['backupSetId'] as String).input(),
+      backupSize: (map['backupSize'] as int).input(),
+      backupStartTime: (map['backupStartTime'] as String).input(),
+      backupStartTimeLocal: (map['backupStartTimeLocal'] as String).input(),
+      baksetName: (map['baksetName'] as String).input(),
+      consistentTime: (map['consistentTime'] as int).input(),
+      dataType: (map['dataType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

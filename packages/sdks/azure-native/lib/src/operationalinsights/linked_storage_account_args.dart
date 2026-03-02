@@ -22,15 +22,11 @@ class LinkedStorageAccountArgs {
   /// [storageAccountIds] Linked storage accounts resources ids.
   /// [workspaceName] The name of the workspace.
   LinkedStorageAccountArgs({
-    pulumi.Output<String>? dataSourceType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? storageAccountIds,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountIds = pulumi.Input.asOptionalInput<List<String>>(storageAccountIds),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.dataSourceType,
+    required this.resourceGroupName,
+    this.storageAccountIds,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LinkedStorageAccountArgs {
 
   factory LinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return LinkedStorageAccountArgs(
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountIds: map['storageAccountIds'] == null ? null : pulumi.Output.create<List<String>>((map['storageAccountIds'] as List).cast<String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountIds: map['storageAccountIds'] == null ? null : ((map['storageAccountIds'] as List).cast<String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

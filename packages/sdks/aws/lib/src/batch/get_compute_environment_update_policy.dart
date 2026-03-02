@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetComputeEnvironmentUpdatePolicy {
-  final int jobExecutionTimeoutMinutes;
-  final bool terminateJobsOnUpdate;
+  final pulumi.Input<int> jobExecutionTimeoutMinutes;
+  final pulumi.Input<bool> terminateJobsOnUpdate;
 
   /// Creates a new [GetComputeEnvironmentUpdatePolicy].
   /// [jobExecutionTimeoutMinutes] Required.
@@ -22,8 +23,8 @@ class GetComputeEnvironmentUpdatePolicy {
 
   factory GetComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: map['jobExecutionTimeoutMinutes'] as int,
-      terminateJobsOnUpdate: map['terminateJobsOnUpdate'] as bool,
+      jobExecutionTimeoutMinutes: (map['jobExecutionTimeoutMinutes'] as int).input(),
+      terminateJobsOnUpdate: (map['terminateJobsOnUpdate'] as bool).input(),
     );
   }
 }

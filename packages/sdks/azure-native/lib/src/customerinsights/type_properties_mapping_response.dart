@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a Link's property mapping.
 class TypePropertiesMappingResponse {
   /// Link type.
-  final String? linkType;
+  final pulumi.Input<String>? linkType;
   /// Property name on the source Entity Type.
-  final String sourcePropertyName;
+  final pulumi.Input<String> sourcePropertyName;
   /// Property name on the target Entity Type.
-  final String targetPropertyName;
+  final pulumi.Input<String> targetPropertyName;
 
   /// Creates a new [TypePropertiesMappingResponse].
   /// [linkType] Link type.
@@ -30,9 +31,9 @@ class TypePropertiesMappingResponse {
 
   factory TypePropertiesMappingResponse.fromMap(Map<String, dynamic> map) {
     return TypePropertiesMappingResponse(
-      linkType: map['linkType'] == null ? null : map['linkType'] as String,
-      sourcePropertyName: map['sourcePropertyName'] as String,
-      targetPropertyName: map['targetPropertyName'] as String,
+      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      sourcePropertyName: (map['sourcePropertyName'] as String).input(),
+      targetPropertyName: (map['targetPropertyName'] as String).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information of backup file
 class SqlBackupFileInfoResponse {
   /// Copy Duration in seconds
-  final int copyDuration;
+  final pulumi.Input<int> copyDuration;
   /// Copy throughput in KBps
-  final double copyThroughput;
+  final pulumi.Input<double> copyThroughput;
   /// Bytes read
-  final double dataRead;
+  final pulumi.Input<double> dataRead;
   /// Bytes written
-  final double dataWritten;
+  final pulumi.Input<double> dataWritten;
   /// Media family sequence number
-  final int familySequenceNumber;
+  final pulumi.Input<int> familySequenceNumber;
   /// File name.
-  final String fileName;
+  final pulumi.Input<String> fileName;
   /// Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
-  final String status;
+  final pulumi.Input<String> status;
   /// File size in bytes
-  final double totalSize;
+  final pulumi.Input<double> totalSize;
 
   /// Creates a new [SqlBackupFileInfoResponse].
   /// [copyDuration] Copy Duration in seconds
@@ -55,14 +56,14 @@ class SqlBackupFileInfoResponse {
 
   factory SqlBackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return SqlBackupFileInfoResponse(
-      copyDuration: map['copyDuration'] as int,
-      copyThroughput: map['copyThroughput'] as double,
-      dataRead: map['dataRead'] as double,
-      dataWritten: map['dataWritten'] as double,
-      familySequenceNumber: map['familySequenceNumber'] as int,
-      fileName: map['fileName'] as String,
-      status: map['status'] as String,
-      totalSize: map['totalSize'] as double,
+      copyDuration: (map['copyDuration'] as int).input(),
+      copyThroughput: (map['copyThroughput'] as double).input(),
+      dataRead: (map['dataRead'] as double).input(),
+      dataWritten: (map['dataWritten'] as double).input(),
+      familySequenceNumber: (map['familySequenceNumber'] as int).input(),
+      fileName: (map['fileName'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalSize: (map['totalSize'] as double).input(),
     );
   }
 }

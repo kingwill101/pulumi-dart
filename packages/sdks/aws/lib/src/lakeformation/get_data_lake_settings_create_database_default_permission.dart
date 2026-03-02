@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataLakeSettingsCreateDatabaseDefaultPermission {
   /// List of permissions granted to the principal.
-  final List<String> permissions;
+  final pulumi.Input<List<String>> permissions;
   /// Principal who is granted permissions.
-  final String principal;
+  final pulumi.Input<String> principal;
 
   /// Creates a new [GetDataLakeSettingsCreateDatabaseDefaultPermission].
   /// [permissions] List of permissions granted to the principal.
@@ -24,8 +25,8 @@ class GetDataLakeSettingsCreateDatabaseDefaultPermission {
 
   factory GetDataLakeSettingsCreateDatabaseDefaultPermission.fromMap(Map<String, dynamic> map) {
     return GetDataLakeSettingsCreateDatabaseDefaultPermission(
-      permissions: (map['permissions'] as List).cast<String>(),
-      principal: map['principal'] as String,
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      principal: (map['principal'] as String).input(),
     );
   }
 }

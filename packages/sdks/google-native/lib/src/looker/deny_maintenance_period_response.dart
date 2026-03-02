@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'date_response.dart';
 import 'time_of_day_response.dart';
 
 /// Specifies the maintenance denial period.
 class DenyMaintenancePeriodResponse {
   /// End date of the deny maintenance period.
-  final DateResponse endDate;
+  final pulumi.Input<DateResponse> endDate;
   /// Start date of the deny maintenance period.
-  final DateResponse startDate;
+  final pulumi.Input<DateResponse> startDate;
   /// Time in UTC when the period starts and ends.
-  final TimeOfDayResponse time;
+  final pulumi.Input<TimeOfDayResponse> time;
 
   /// Creates a new [DenyMaintenancePeriodResponse].
   /// [endDate] End date of the deny maintenance period.
@@ -24,17 +25,17 @@ class DenyMaintenancePeriodResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': endDate.toMap(),
-      'startDate': startDate.toMap(),
-      'time': time.toMap(),
+      'endDate': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(endDate, (value) => value.toMap()),
+      'startDate': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(startDate, (value) => value.toMap()),
+      'time': pulumi.Input.mapInputValue<TimeOfDayResponse, Map<String, dynamic>>(time, (value) => value.toMap()),
     };
   }
 
   factory DenyMaintenancePeriodResponse.fromMap(Map<String, dynamic> map) {
     return DenyMaintenancePeriodResponse(
-      endDate: DateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: DateResponse.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
-      time: TimeOfDayResponse.fromMap((map['time'] as Map).cast<String, dynamic>()),
+      endDate: (DateResponse.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      startDate: (DateResponse.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
+      time: (TimeOfDayResponse.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

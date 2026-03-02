@@ -19,15 +19,11 @@ class GroupUserState {
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [userId] The ID of the API Management User which should be assigned to this API Management Group. Changing this forces a new resource to be created.
   GroupUserState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? userId,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.apiManagementName,
+    this.groupName,
+    this.resourceGroupName,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GroupUserState {
 
   factory GroupUserState.fromMap(Map<String, dynamic> map) {
     return GroupUserState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

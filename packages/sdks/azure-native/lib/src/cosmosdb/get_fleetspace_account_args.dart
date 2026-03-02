@@ -22,15 +22,11 @@ class GetFleetspaceAccountArgs {
   /// [fleetspaceName] Cosmos DB fleetspace name. Needs to be unique under a fleet.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFleetspaceAccountArgs({
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> fleetspaceAccountName,
-    required pulumi.Output<String> fleetspaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      fleetspaceAccountName = pulumi.Input.asInput<String>(fleetspaceAccountName),
-      fleetspaceName = pulumi.Input.asInput<String>(fleetspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.fleetName,
+    required this.fleetspaceAccountName,
+    required this.fleetspaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetFleetspaceAccountArgs {
 
   factory GetFleetspaceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetspaceAccountArgs(
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      fleetspaceAccountName: pulumi.Output.create<String>(map['fleetspaceAccountName'] as String),
-      fleetspaceName: pulumi.Output.create<String>(map['fleetspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fleetName: (map['fleetName'] as String).input(),
+      fleetspaceAccountName: (map['fleetspaceAccountName'] as String).input(),
+      fleetspaceName: (map['fleetspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

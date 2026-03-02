@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// (Output)
@@ -8,7 +9,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// Note: If the Cloud Storage bucket is in a different project from the app,
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final String? gcsBucket;
+  final pulumi.Input<String>? gcsBucket;
   /// (Output)
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
@@ -20,7 +21,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// - $session:   session ID
   /// If the path prefix is not specified, the default prefix
   /// `$project/$location/$app/$date/$session/` will be used.
-  final String? gcsPathPrefix;
+  final pulumi.Input<String>? gcsPathPrefix;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingAudioRecordingConfig].
   /// [gcsBucket] (Output)
@@ -39,8 +40,8 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
 
   factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingAudioRecordingConfig(
-      gcsBucket: map['gcsBucket'] == null ? null : map['gcsBucket'] as String,
-      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : map['gcsPathPrefix'] as String,
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
+      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : (map['gcsPathPrefix'] as String).input(),
     );
   }
 }

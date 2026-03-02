@@ -16,11 +16,9 @@ class GetOrganizationalUnitArgs {
   /// [name] Name of the organizational unit
   /// [parentId] Parent ID of the organizational unit.
   GetOrganizationalUnitArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> parentId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      parentId = pulumi.Input.asInput<String>(parentId);
+    required this.name,
+    required this.parentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetOrganizationalUnitArgs {
 
   factory GetOrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      parentId: pulumi.Output.create<String>(map['parentId'] as String),
+      name: (map['name'] as String).input(),
+      parentId: (map['parentId'] as String).input(),
     );
   }
 }

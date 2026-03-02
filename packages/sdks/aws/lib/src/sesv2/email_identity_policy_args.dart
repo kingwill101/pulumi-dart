@@ -22,15 +22,11 @@ class EmailIdentityPolicyArgs {
   /// [policyName] The name of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   EmailIdentityPolicyArgs({
-    required pulumi.Output<String> emailIdentity,
-    required pulumi.Output<String> policy,
-    required pulumi.Output<String> policyName,
-    pulumi.Output<String>? region,
-  }) :
-      emailIdentity = pulumi.Input.asInput<String>(emailIdentity),
-      policy = pulumi.Input.asInput<String>(policy),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.emailIdentity,
+    required this.policy,
+    required this.policyName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EmailIdentityPolicyArgs {
 
   factory EmailIdentityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityPolicyArgs(
-      emailIdentity: pulumi.Output.create<String>(map['emailIdentity'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      emailIdentity: (map['emailIdentity'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

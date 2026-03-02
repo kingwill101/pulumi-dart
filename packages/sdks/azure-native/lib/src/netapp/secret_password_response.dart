@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_password_identity_response.dart';
 import 'secret_password_key_vault_properties_response.dart';
 
 /// Access password from Azure KeyVault Secrets to connect Active Directory
 class SecretPasswordResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final SecretPasswordIdentityResponse? identity;
+  final pulumi.Input<SecretPasswordIdentityResponse>? identity;
   /// Properties provided by KeyVault.
-  final SecretPasswordKeyVaultPropertiesResponse? keyVaultProperties;
+  final pulumi.Input<SecretPasswordKeyVaultPropertiesResponse>? keyVaultProperties;
 
   /// Creates a new [SecretPasswordResponse].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
@@ -20,15 +21,15 @@ class SecretPasswordResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?identity == null ? null : identity!.toMap(),
-      'keyVaultProperties': ?keyVaultProperties == null ? null : keyVaultProperties!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<SecretPasswordIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<SecretPasswordKeyVaultPropertiesResponse, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory SecretPasswordResponse.fromMap(Map<String, dynamic> map) {
     return SecretPasswordResponse(
-      identity: map['identity'] == null ? null : SecretPasswordIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : SecretPasswordKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : (SecretPasswordIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (SecretPasswordKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

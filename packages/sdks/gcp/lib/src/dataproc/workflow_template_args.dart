@@ -47,27 +47,17 @@ class WorkflowTemplateArgs {
   /// [project] The project for the resource
   /// [version] Output only. The current version of this workflow template.
   WorkflowTemplateArgs({
-    pulumi.Output<String>? dagTimeout,
-    pulumi.Output<WorkflowTemplateEncryptionConfig>? encryptionConfig,
-    required pulumi.Output<List<WorkflowTemplateJob>> jobs,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<WorkflowTemplateParameter>>? parameters,
-    required pulumi.Output<WorkflowTemplatePlacement> placement,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? version,
-  }) :
-      dagTimeout = pulumi.Input.asOptionalInput<String>(dagTimeout),
-      encryptionConfig = pulumi.Input.asOptionalInput<WorkflowTemplateEncryptionConfig>(encryptionConfig),
-      jobs = pulumi.Input.asInput<List<WorkflowTemplateJob>>(jobs),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<List<WorkflowTemplateParameter>>(parameters),
-      placement = pulumi.Input.asInput<WorkflowTemplatePlacement>(placement),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.dagTimeout,
+    this.encryptionConfig,
+    required this.jobs,
+    this.labels,
+    required this.location,
+    this.name,
+    this.parameters,
+    required this.placement,
+    this.project,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,16 +76,16 @@ class WorkflowTemplateArgs {
 
   factory WorkflowTemplateArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateArgs(
-      dagTimeout: map['dagTimeout'] == null ? null : pulumi.Output.create<String>(map['dagTimeout'] as String),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<WorkflowTemplateEncryptionConfig>(WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      jobs: pulumi.Output.create<List<WorkflowTemplateJob>>(pulumi.Input.decodeList<WorkflowTemplateJob>(map['jobs'], (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<WorkflowTemplateParameter>>(pulumi.Input.decodeList<WorkflowTemplateParameter>(map['parameters'], (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      placement: pulumi.Output.create<WorkflowTemplatePlacement>(WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      dagTimeout: map['dagTimeout'] == null ? null : (map['dagTimeout'] as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (WorkflowTemplateEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      jobs: (pulumi.Input.decodeList<WorkflowTemplateJob>(map['jobs'], (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplateParameter>(map['parameters'], (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placement: (WorkflowTemplatePlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetNotificationArgs {
   /// [notification] Required.
   /// [userProject] Optional.
   GetNotificationArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> notification,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      notification = pulumi.Input.asInput<String>(notification),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    required this.notification,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetNotificationArgs {
 
   factory GetNotificationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      notification: pulumi.Output.create<String>(map['notification'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      notification: (map['notification'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

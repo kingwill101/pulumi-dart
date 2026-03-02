@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogAnalyticsConfigurationResponse {
-  final String? customerId;
+  final pulumi.Input<String>? customerId;
 
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [customerId] Optional.
@@ -18,7 +19,7 @@ class LogAnalyticsConfigurationResponse {
 
   factory LogAnalyticsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfigurationResponse(
-      customerId: map['customerId'] == null ? null : map['customerId'] as String,
+      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
     );
   }
 }

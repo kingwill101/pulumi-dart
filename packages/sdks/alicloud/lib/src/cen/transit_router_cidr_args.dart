@@ -27,17 +27,12 @@ class TransitRouterCidrArgs {
   /// [transitRouterCidrName] The new name of the transit router CIDR block.
   /// [transitRouterId] The ID of the transit router.
   TransitRouterCidrArgs({
-    required pulumi.Output<String> cidr,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? publishCidrRoute,
-    pulumi.Output<String>? transitRouterCidrName,
-    required pulumi.Output<String> transitRouterId,
-  }) :
-      cidr = pulumi.Input.asInput<String>(cidr),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      publishCidrRoute = pulumi.Input.asOptionalInput<bool>(publishCidrRoute),
-      transitRouterCidrName = pulumi.Input.asOptionalInput<String>(transitRouterCidrName),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId);
+    required this.cidr,
+    this.description,
+    this.publishCidrRoute,
+    this.transitRouterCidrName,
+    required this.transitRouterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class TransitRouterCidrArgs {
 
   factory TransitRouterCidrArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterCidrArgs(
-      cidr: pulumi.Output.create<String>(map['cidr'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      publishCidrRoute: map['publishCidrRoute'] == null ? null : pulumi.Output.create<bool>(map['publishCidrRoute'] as bool),
-      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : pulumi.Output.create<String>(map['transitRouterCidrName'] as String),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
+      cidr: (map['cidr'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      publishCidrRoute: map['publishCidrRoute'] == null ? null : (map['publishCidrRoute'] as bool).input(),
+      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : (map['transitRouterCidrName'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

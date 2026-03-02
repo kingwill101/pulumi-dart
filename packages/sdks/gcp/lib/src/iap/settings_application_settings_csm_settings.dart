@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsApplicationSettingsCsmSettings {
   /// Audience claim set in the generated RCToken. This value is not validated by IAP.
-  final String? rctokenAud;
+  final pulumi.Input<String>? rctokenAud;
 
   /// Creates a new [SettingsApplicationSettingsCsmSettings].
   /// [rctokenAud] Audience claim set in the generated RCToken. This value is not validated by IAP.
@@ -19,7 +20,7 @@ class SettingsApplicationSettingsCsmSettings {
 
   factory SettingsApplicationSettingsCsmSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettingsCsmSettings(
-      rctokenAud: map['rctokenAud'] == null ? null : map['rctokenAud'] as String,
+      rctokenAud: map['rctokenAud'] == null ? null : (map['rctokenAud'] as String).input(),
     );
   }
 }

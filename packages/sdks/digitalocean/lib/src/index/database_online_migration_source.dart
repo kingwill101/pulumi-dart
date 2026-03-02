@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseOnlineMigrationSource {
   /// The name of the default database
-  final String dbName;
+  final pulumi.Input<String> dbName;
   /// The FQDN pointing to the database cluster's current primary node.
-  final String host;
+  final pulumi.Input<String> host;
   /// A randomly generated password for the default user.
-  final String password;
+  final pulumi.Input<String> password;
   /// The port on which the database cluster is listening.
-  final int port;
+  final pulumi.Input<int> port;
   /// The default user for the database.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [DatabaseOnlineMigrationSource].
   /// [dbName] The name of the default database
@@ -39,11 +40,11 @@ class DatabaseOnlineMigrationSource {
 
   factory DatabaseOnlineMigrationSource.fromMap(Map<String, dynamic> map) {
     return DatabaseOnlineMigrationSource(
-      dbName: map['dbName'] as String,
-      host: map['host'] as String,
-      password: map['password'] as String,
-      port: map['port'] as int,
-      username: map['username'] as String,
+      dbName: (map['dbName'] as String).input(),
+      host: (map['host'] as String).input(),
+      password: (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

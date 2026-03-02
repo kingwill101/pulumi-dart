@@ -6,25 +6,25 @@ import 'stateful_set_condition_patch.dart';
 /// StatefulSetStatus represents the current state of a StatefulSet.
 class StatefulSetStatusPatch {
   /// Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.
-  final int? availableReplicas;
+  final pulumi.Input<int>? availableReplicas;
   /// collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
-  final int? collisionCount;
+  final pulumi.Input<int>? collisionCount;
   /// Represents the latest available observations of a statefulset's current state.
-  final List<StatefulSetConditionPatch>? conditions;
+  final pulumi.Input<List<StatefulSetConditionPatch>>? conditions;
   /// currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.
-  final int? currentReplicas;
+  final pulumi.Input<int>? currentReplicas;
   /// currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).
-  final String? currentRevision;
+  final pulumi.Input<String>? currentRevision;
   /// observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
   /// readyReplicas is the number of pods created for this StatefulSet with a Ready Condition.
-  final int? readyReplicas;
+  final pulumi.Input<int>? readyReplicas;
   /// replicas is the number of Pods created by the StatefulSet controller.
-  final int? replicas;
+  final pulumi.Input<int>? replicas;
   /// updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
-  final String? updateRevision;
+  final pulumi.Input<String>? updateRevision;
   /// updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
-  final int? updatedReplicas;
+  final pulumi.Input<int>? updatedReplicas;
 
   /// Creates a new [StatefulSetStatusPatch].
   /// [availableReplicas] Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.
@@ -54,7 +54,7 @@ class StatefulSetStatusPatch {
     return <String, dynamic>{
       'availableReplicas': ?availableReplicas,
       'collisionCount': ?collisionCount,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<StatefulSetConditionPatch, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<StatefulSetConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<StatefulSetConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'currentReplicas': ?currentReplicas,
       'currentRevision': ?currentRevision,
       'observedGeneration': ?observedGeneration,
@@ -67,16 +67,16 @@ class StatefulSetStatusPatch {
 
   factory StatefulSetStatusPatch.fromMap(Map<String, dynamic> map) {
     return StatefulSetStatusPatch(
-      availableReplicas: map['availableReplicas'] == null ? null : map['availableReplicas'] as int,
-      collisionCount: map['collisionCount'] == null ? null : map['collisionCount'] as int,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<StatefulSetConditionPatch>(map['conditions'], (value) => StatefulSetConditionPatch.fromMap((value as Map).cast<String, dynamic>())),
-      currentReplicas: map['currentReplicas'] == null ? null : map['currentReplicas'] as int,
-      currentRevision: map['currentRevision'] == null ? null : map['currentRevision'] as String,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
-      readyReplicas: map['readyReplicas'] == null ? null : map['readyReplicas'] as int,
-      replicas: map['replicas'] == null ? null : map['replicas'] as int,
-      updateRevision: map['updateRevision'] == null ? null : map['updateRevision'] as String,
-      updatedReplicas: map['updatedReplicas'] == null ? null : map['updatedReplicas'] as int,
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
+      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount'] as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatefulSetConditionPatch>(map['conditions'], (value) => StatefulSetConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas'] as int).input(),
+      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision'] as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      updateRevision: map['updateRevision'] == null ? null : (map['updateRevision'] as String).input(),
+      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas'] as int).input(),
     );
   }
 }

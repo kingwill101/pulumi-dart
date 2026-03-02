@@ -1,58 +1,59 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewayBlockVolumesVolume {
   /// The IP ADDRESS.
-  final String address;
+  final pulumi.Input<String> address;
   /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
-  final String cacheMode;
+  final pulumi.Input<String> cacheMode;
   /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
-  final bool chapEnabled;
+  final pulumi.Input<bool> chapEnabled;
   /// The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
-  final String chapInUser;
+  final pulumi.Input<String> chapInUser;
   /// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
-  final int chunkSize;
+  final pulumi.Input<int> chunkSize;
   /// The cache disk ID.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The cache disk type.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// Whether to enable Volume.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
-  final String gatewayBlockVolumeName;
+  final pulumi.Input<String> gatewayBlockVolumeName;
   /// The Gateway ID.
-  final String gatewayId;
+  final pulumi.Input<String> gatewayId;
   /// The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the index.
-  final String indexId;
+  final pulumi.Input<String> indexId;
   /// CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
-  final String localPath;
+  final pulumi.Input<String> localPath;
   /// The Lun identifier.
-  final int lunId;
+  final pulumi.Input<int> lunId;
   /// The name of the OSS Bucket.
-  final String ossBucketName;
+  final pulumi.Input<String> ossBucketName;
   /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
-  final bool ossBucketSsl;
+  final pulumi.Input<bool> ossBucketSsl;
   /// The endpoint of the OSS Bucket.
-  final String ossEndpoint;
+  final pulumi.Input<String> ossEndpoint;
   /// The Port.
-  final int port;
+  final pulumi.Input<int> port;
   /// The Protocol.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The Volume size.
-  final int size;
+  final pulumi.Input<int> size;
   /// The Buffer status.
-  final String state;
+  final pulumi.Input<String> state;
   /// The status of volume.
-  final int status;
+  final pulumi.Input<int> status;
   /// The target.
-  final String target;
+  final pulumi.Input<String> target;
   /// The total amount of downloaded data. Unit: `B`.
-  final int totalDownload;
+  final pulumi.Input<int> totalDownload;
   /// The total amount of uploaded data. Unit: `B`.
-  final int totalUpload;
-  final int volumeState;
+  final pulumi.Input<int> totalUpload;
+  final pulumi.Input<int> volumeState;
 
   /// Creates a new [GetGatewayBlockVolumesVolume].
   /// [address] The IP ADDRESS.
@@ -143,32 +144,32 @@ class GetGatewayBlockVolumesVolume {
 
   factory GetGatewayBlockVolumesVolume.fromMap(Map<String, dynamic> map) {
     return GetGatewayBlockVolumesVolume(
-      address: map['address'] as String,
-      cacheMode: map['cacheMode'] as String,
-      chapEnabled: map['chapEnabled'] as bool,
-      chapInUser: map['chapInUser'] as String,
-      chunkSize: map['chunkSize'] as int,
-      diskId: map['diskId'] as String,
-      diskType: map['diskType'] as String,
-      enabled: map['enabled'] as bool,
-      gatewayBlockVolumeName: map['gatewayBlockVolumeName'] as String,
-      gatewayId: map['gatewayId'] as String,
-      id: map['id'] as String,
-      indexId: map['indexId'] as String,
-      localPath: map['localPath'] as String,
-      lunId: map['lunId'] as int,
-      ossBucketName: map['ossBucketName'] as String,
-      ossBucketSsl: map['ossBucketSsl'] as bool,
-      ossEndpoint: map['ossEndpoint'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      size: map['size'] as int,
-      state: map['state'] as String,
-      status: map['status'] as int,
-      target: map['target'] as String,
-      totalDownload: map['totalDownload'] as int,
-      totalUpload: map['totalUpload'] as int,
-      volumeState: map['volumeState'] as int,
+      address: (map['address'] as String).input(),
+      cacheMode: (map['cacheMode'] as String).input(),
+      chapEnabled: (map['chapEnabled'] as bool).input(),
+      chapInUser: (map['chapInUser'] as String).input(),
+      chunkSize: (map['chunkSize'] as int).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      gatewayBlockVolumeName: (map['gatewayBlockVolumeName'] as String).input(),
+      gatewayId: (map['gatewayId'] as String).input(),
+      id: (map['id'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      localPath: (map['localPath'] as String).input(),
+      lunId: (map['lunId'] as int).input(),
+      ossBucketName: (map['ossBucketName'] as String).input(),
+      ossBucketSsl: (map['ossBucketSsl'] as bool).input(),
+      ossEndpoint: (map['ossEndpoint'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      size: (map['size'] as int).input(),
+      state: (map['state'] as String).input(),
+      status: (map['status'] as int).input(),
+      target: (map['target'] as String).input(),
+      totalDownload: (map['totalDownload'] as int).input(),
+      totalUpload: (map['totalUpload'] as int).input(),
+      volumeState: (map['volumeState'] as int).input(),
     );
   }
 }

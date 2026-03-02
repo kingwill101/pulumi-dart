@@ -23,15 +23,11 @@ class StaticWebAppCustomDomainState {
   /// [validationToken] Token to be used with `dns-txt-token` validation.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   StaticWebAppCustomDomainState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? staticWebAppId,
-    pulumi.Output<String>? validationToken,
-    pulumi.Output<String>? validationType,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      staticWebAppId = pulumi.Input.asOptionalInput<String>(staticWebAppId),
-      validationToken = pulumi.Input.asOptionalInput<String>(validationToken),
-      validationType = pulumi.Input.asOptionalInput<String>(validationType);
+    this.domainName,
+    this.staticWebAppId,
+    this.validationToken,
+    this.validationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class StaticWebAppCustomDomainState {
 
   factory StaticWebAppCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppCustomDomainState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      staticWebAppId: map['staticWebAppId'] == null ? null : pulumi.Output.create<String>(map['staticWebAppId'] as String),
-      validationToken: map['validationToken'] == null ? null : pulumi.Output.create<String>(map['validationToken'] as String),
-      validationType: map['validationType'] == null ? null : pulumi.Output.create<String>(map['validationType'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId'] as String).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
     );
   }
 }

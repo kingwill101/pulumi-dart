@@ -23,15 +23,11 @@ class GetConnectArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect
   /// [transitGatewayConnectId] Identifier of the EC2 Transit Gateway Connect.
   GetConnectArgs({
-    pulumi.Output<List<GetConnectFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayConnectId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetConnectFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayConnectId = pulumi.Input.asOptionalInput<String>(transitGatewayConnectId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayConnectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetConnectArgs {
 
   factory GetConnectArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetConnectFilter>>(pulumi.Input.decodeList<GetConnectFilter>(map['filters'], (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayConnectId: map['transitGatewayConnectId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayConnectId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetConnectFilter>(map['filters'], (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayConnectId: map['transitGatewayConnectId'] == null ? null : (map['transitGatewayConnectId'] as String).input(),
     );
   }
 }

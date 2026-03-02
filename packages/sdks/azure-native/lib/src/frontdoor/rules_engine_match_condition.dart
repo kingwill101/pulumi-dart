@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Define a match condition
 class RulesEngineMatchCondition {
   /// Describes if this is negate condition or not
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-  final List<String> rulesEngineMatchValue;
+  final pulumi.Input<List<String>> rulesEngineMatchValue;
   /// Match Variable
-  final String rulesEngineMatchVariable;
+  final pulumi.Input<String> rulesEngineMatchVariable;
   /// Describes operator to apply to the match condition.
-  final String rulesEngineOperator;
+  final pulumi.Input<String> rulesEngineOperator;
   /// Name of selector in RequestHeader or RequestBody to be matched
-  final String? selector;
+  final pulumi.Input<String>? selector;
   /// List of transforms
-  final List<String>? transforms;
+  final pulumi.Input<List<String>>? transforms;
 
   /// Creates a new [RulesEngineMatchCondition].
   /// [negateCondition] Describes if this is negate condition or not
@@ -45,12 +46,12 @@ class RulesEngineMatchCondition {
 
   factory RulesEngineMatchCondition.fromMap(Map<String, dynamic> map) {
     return RulesEngineMatchCondition(
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      rulesEngineMatchValue: (map['rulesEngineMatchValue'] as List).cast<String>(),
-      rulesEngineMatchVariable: map['rulesEngineMatchVariable'] as String,
-      rulesEngineOperator: map['rulesEngineOperator'] as String,
-      selector: map['selector'] == null ? null : map['selector'] as String,
-      transforms: map['transforms'] == null ? null : (map['transforms'] as List).cast<String>(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      rulesEngineMatchValue: ((map['rulesEngineMatchValue'] as List).cast<String>()).input(),
+      rulesEngineMatchVariable: (map['rulesEngineMatchVariable'] as String).input(),
+      rulesEngineOperator: (map['rulesEngineOperator'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
     );
   }
 }

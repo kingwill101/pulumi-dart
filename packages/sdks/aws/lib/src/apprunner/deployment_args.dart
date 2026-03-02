@@ -19,13 +19,10 @@ class DeploymentArgs {
   /// [serviceArn] The Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
   /// [timeouts] Optional.
   DeploymentArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceArn,
-    pulumi.Output<DeploymentTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asInput<String>(serviceArn),
-      timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
+    this.region,
+    required this.serviceArn,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: pulumi.Output.create<String>(map['serviceArn'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DeploymentTimeouts>(DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: (map['serviceArn'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

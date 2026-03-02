@@ -26,19 +26,13 @@ class DBAuditInstanceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] vSwtich ID configured to audit
   DBAuditInstanceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? period,
-    pulumi.Output<String>? planCode,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      planCode = pulumi.Input.asOptionalInput<String>(planCode),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.description,
+    this.period,
+    this.planCode,
+    this.resourceGroupId,
+    this.tags,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DBAuditInstanceState {
 
   factory DBAuditInstanceState.fromMap(Map<String, dynamic> map) {
     return DBAuditInstanceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      planCode: map['planCode'] == null ? null : pulumi.Output.create<String>(map['planCode'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      planCode: map['planCode'] == null ? null : (map['planCode'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

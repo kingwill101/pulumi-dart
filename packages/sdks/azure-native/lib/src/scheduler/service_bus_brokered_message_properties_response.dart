@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceBusBrokeredMessagePropertiesResponse {
   /// Gets or sets the content type.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// Gets or sets the correlation ID.
-  final String? correlationId;
+  final pulumi.Input<String>? correlationId;
   /// Gets or sets the force persistence.
-  final bool? forcePersistence;
+  final pulumi.Input<bool>? forcePersistence;
   /// Gets or sets the label.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Gets or sets the message ID.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// Gets or sets the partition key.
-  final String? partitionKey;
+  final pulumi.Input<String>? partitionKey;
   /// Gets or sets the reply to.
-  final String? replyTo;
+  final pulumi.Input<String>? replyTo;
   /// Gets or sets the reply to session ID.
-  final String? replyToSessionId;
+  final pulumi.Input<String>? replyToSessionId;
   /// Gets or sets the scheduled enqueue time UTC.
-  final String? scheduledEnqueueTimeUtc;
+  final pulumi.Input<String>? scheduledEnqueueTimeUtc;
   /// Gets or sets the session ID.
-  final String? sessionId;
+  final pulumi.Input<String>? sessionId;
   /// Gets or sets the time to live.
-  final String? timeToLive;
+  final pulumi.Input<String>? timeToLive;
   /// Gets or sets the to.
-  final String? to;
+  final pulumi.Input<String>? to;
   /// Gets or sets the via partition key.
-  final String? viaPartitionKey;
+  final pulumi.Input<String>? viaPartitionKey;
 
   /// Creates a new [ServiceBusBrokeredMessagePropertiesResponse].
   /// [contentType] Gets or sets the content type.
@@ -79,19 +80,19 @@ class ServiceBusBrokeredMessagePropertiesResponse {
 
   factory ServiceBusBrokeredMessagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusBrokeredMessagePropertiesResponse(
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      correlationId: map['correlationId'] == null ? null : map['correlationId'] as String,
-      forcePersistence: map['forcePersistence'] == null ? null : map['forcePersistence'] as bool,
-      label: map['label'] == null ? null : map['label'] as String,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      partitionKey: map['partitionKey'] == null ? null : map['partitionKey'] as String,
-      replyTo: map['replyTo'] == null ? null : map['replyTo'] as String,
-      replyToSessionId: map['replyToSessionId'] == null ? null : map['replyToSessionId'] as String,
-      scheduledEnqueueTimeUtc: map['scheduledEnqueueTimeUtc'] == null ? null : map['scheduledEnqueueTimeUtc'] as String,
-      sessionId: map['sessionId'] == null ? null : map['sessionId'] as String,
-      timeToLive: map['timeToLive'] == null ? null : map['timeToLive'] as String,
-      to: map['to'] == null ? null : map['to'] as String,
-      viaPartitionKey: map['viaPartitionKey'] == null ? null : map['viaPartitionKey'] as String,
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
+      forcePersistence: map['forcePersistence'] == null ? null : (map['forcePersistence'] as bool).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      replyTo: map['replyTo'] == null ? null : (map['replyTo'] as String).input(),
+      replyToSessionId: map['replyToSessionId'] == null ? null : (map['replyToSessionId'] as String).input(),
+      scheduledEnqueueTimeUtc: map['scheduledEnqueueTimeUtc'] == null ? null : (map['scheduledEnqueueTimeUtc'] as String).input(),
+      sessionId: map['sessionId'] == null ? null : (map['sessionId'] as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
+      to: map['to'] == null ? null : (map['to'] as String).input(),
+      viaPartitionKey: map['viaPartitionKey'] == null ? null : (map['viaPartitionKey'] as String).input(),
     );
   }
 }

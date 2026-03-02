@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_sku_response.dart';
 
 /// Database server metadata.
 class DbServerMetadataResponse {
   /// Location of database server.
-  final String location;
+  final pulumi.Input<String> location;
   /// Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
-  final ServerSkuResponse? sku;
+  final pulumi.Input<ServerSkuResponse>? sku;
   /// Storage size (in MB) for database server.
-  final int? storageMb;
+  final pulumi.Input<int>? storageMb;
   /// Major version of PostgreSQL database engine.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [DbServerMetadataResponse].
   /// [location] Location of database server.
@@ -28,7 +29,7 @@ class DbServerMetadataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?pulumi.Input.mapOptionalInputValue<ServerSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'storageMb': ?storageMb,
       'version': ?version,
     };
@@ -36,10 +37,10 @@ class DbServerMetadataResponse {
 
   factory DbServerMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DbServerMetadataResponse(
-      location: map['location'] as String,
-      sku: map['sku'] == null ? null : ServerSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      storageMb: map['storageMb'] == null ? null : map['storageMb'] as int,
-      version: map['version'] == null ? null : map['version'] as String,
+      location: (map['location'] as String).input(),
+      sku: map['sku'] == null ? null : (ServerSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      storageMb: map['storageMb'] == null ? null : (map['storageMb'] as int).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

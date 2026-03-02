@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnycastEipAddressAttachmentPopLocation {
   /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
-  final String? popLocation;
+  final pulumi.Input<String>? popLocation;
 
   /// Creates a new [AnycastEipAddressAttachmentPopLocation].
   /// [popLocation] The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
@@ -19,7 +20,7 @@ class AnycastEipAddressAttachmentPopLocation {
 
   factory AnycastEipAddressAttachmentPopLocation.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressAttachmentPopLocation(
-      popLocation: map['popLocation'] == null ? null : map['popLocation'] as String,
+      popLocation: map['popLocation'] == null ? null : (map['popLocation'] as String).input(),
     );
   }
 }

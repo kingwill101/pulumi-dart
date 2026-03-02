@@ -26,17 +26,12 @@ class GatewayCustomDomainArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   GatewayCustomDomainArgs({
-    pulumi.Output<String>? domainName,
-    required pulumi.Output<String> gatewayName,
-    pulumi.Output<GatewayCustomDomainProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      properties = pulumi.Input.asOptionalInput<GatewayCustomDomainProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.domainName,
+    required this.gatewayName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GatewayCustomDomainArgs {
 
   factory GatewayCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GatewayCustomDomainProperties>(GatewayCustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      properties: map['properties'] == null ? null : (GatewayCustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

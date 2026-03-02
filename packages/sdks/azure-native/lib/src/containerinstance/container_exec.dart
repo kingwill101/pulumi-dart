@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The container execution command, for liveness or readiness probe
 class ContainerExec {
   /// The commands to execute within the container.
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
 
   /// Creates a new [ContainerExec].
   /// [command] The commands to execute within the container.
@@ -20,7 +21,7 @@ class ContainerExec {
 
   factory ContainerExec.fromMap(Map<String, dynamic> map) {
     return ContainerExec(
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
     );
   }
 }

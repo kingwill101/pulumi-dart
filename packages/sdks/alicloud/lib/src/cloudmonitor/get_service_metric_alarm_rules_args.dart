@@ -31,21 +31,14 @@ class GetServiceMetricAlarmRulesArgs {
   /// [ruleName] The name of the alert rule.
   /// [status] Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
   GetServiceMetricAlarmRulesArgs({
-    pulumi.Output<String>? dimensions,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? metricName,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<bool>? status,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<String>(dimensions),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      metricName = pulumi.Input.asOptionalInput<String>(metricName),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      status = pulumi.Input.asOptionalInput<bool>(status);
+    this.dimensions,
+    this.ids,
+    this.metricName,
+    this.namespace,
+    this.outputFile,
+    this.ruleName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetServiceMetricAlarmRulesArgs {
 
   factory GetServiceMetricAlarmRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesArgs(
-      dimensions: map['dimensions'] == null ? null : pulumi.Output.create<String>(map['dimensions'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      metricName: map['metricName'] == null ? null : pulumi.Output.create<String>(map['metricName'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<bool>(map['status'] as bool),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as bool).input(),
     );
   }
 }

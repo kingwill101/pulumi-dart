@@ -30,21 +30,14 @@ class CanaryEvaluationArgs {
   /// [startTime] Start time for the canary evaluation's analysis.
   /// [treatment] The newer version that is serving requests.
   CanaryEvaluationArgs({
-    required pulumi.Output<String> control,
-    required pulumi.Output<String> endTime,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> metricLabels,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> startTime,
-    required pulumi.Output<String> treatment,
-  }) :
-      control = pulumi.Input.asInput<String>(control),
-      endTime = pulumi.Input.asInput<String>(endTime),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      metricLabels = pulumi.Input.asInput<GoogleCloudApigeeV1CanaryEvaluationMetricLabels>(metricLabels),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      startTime = pulumi.Input.asInput<String>(startTime),
-      treatment = pulumi.Input.asInput<String>(treatment);
+    required this.control,
+    required this.endTime,
+    required this.instanceId,
+    required this.metricLabels,
+    required this.organizationId,
+    required this.startTime,
+    required this.treatment,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class CanaryEvaluationArgs {
 
   factory CanaryEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return CanaryEvaluationArgs(
-      control: pulumi.Output.create<String>(map['control'] as String),
-      endTime: pulumi.Output.create<String>(map['endTime'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      metricLabels: pulumi.Output.create<GoogleCloudApigeeV1CanaryEvaluationMetricLabels>(GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap((map['metricLabels'] as Map).cast<String, dynamic>())),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      startTime: pulumi.Output.create<String>(map['startTime'] as String),
-      treatment: pulumi.Output.create<String>(map['treatment'] as String),
+      control: (map['control'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      metricLabels: (GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromMap((map['metricLabels'] as Map).cast<String, dynamic>())).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      treatment: (map['treatment'] as String).input(),
     );
   }
 }

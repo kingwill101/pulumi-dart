@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mcc cache node resource auto update properties.
 class MccCacheNodeAutoUpdateInfoResponse {
   /// Auto update last applied status.
-  final int autoUpdateLastAppliedStatus;
+  final pulumi.Input<int> autoUpdateLastAppliedStatus;
   /// Auto update last applied detailed status text.
-  final String autoUpdateLastAppliedStatusDetailedText;
+  final pulumi.Input<String> autoUpdateLastAppliedStatusDetailedText;
   /// Auto update last applied status text.
-  final String autoUpdateLastAppliedStatusText;
+  final pulumi.Input<String> autoUpdateLastAppliedStatusText;
   /// Auto update Ring Type.
-  final int autoUpdateRingType;
+  final pulumi.Input<int> autoUpdateRingType;
   /// Auto update entity created datetime.
-  final String createdDateTimeUtc;
+  final pulumi.Input<String> createdDateTimeUtc;
   /// Auto update image uri before update.
-  final String imageUriBeforeUpdate;
+  final pulumi.Input<String> imageUriBeforeUpdate;
   /// Auto update image uri targetted to update.
-  final String imageUriTargeted;
+  final pulumi.Input<String> imageUriTargeted;
   /// Auto update image uri at Terminal.
-  final String imageUriTerminal;
+  final pulumi.Input<String> imageUriTerminal;
   /// Auto update image uri after update.
-  final String movedToTerminalStateDateTime;
+  final pulumi.Input<String> movedToTerminalStateDateTime;
   /// This text describing the purpose of the plan of auto update.
-  final String planChangeLogText;
+  final pulumi.Input<String> planChangeLogText;
   /// Auto update planId.
-  final double planId;
+  final pulumi.Input<double> planId;
   /// Auto update image uri after update.
-  final int ruleRequestedDay;
+  final pulumi.Input<int> ruleRequestedDay;
   /// Auto update rule requested hour.
-  final String ruleRequestedHour;
+  final pulumi.Input<String> ruleRequestedHour;
   /// Auto update rule requested minute.
-  final String ruleRequestedMinute;
+  final pulumi.Input<String> ruleRequestedMinute;
   /// Auto update image uri before update.
-  final int ruleRequestedWeek;
+  final pulumi.Input<int> ruleRequestedWeek;
   /// Auto update time to go live date time.
-  final String timeToGoLiveDateTime;
+  final pulumi.Input<String> timeToGoLiveDateTime;
   /// Auto update entity last updated datetime.
-  final String updatedRegistryDateTimeUtc;
+  final pulumi.Input<String> updatedRegistryDateTimeUtc;
 
   /// Creates a new [MccCacheNodeAutoUpdateInfoResponse].
   /// [autoUpdateLastAppliedStatus] Auto update last applied status.
@@ -100,23 +101,23 @@ class MccCacheNodeAutoUpdateInfoResponse {
 
   factory MccCacheNodeAutoUpdateInfoResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeAutoUpdateInfoResponse(
-      autoUpdateLastAppliedStatus: map['autoUpdateLastAppliedStatus'] as int,
-      autoUpdateLastAppliedStatusDetailedText: map['autoUpdateLastAppliedStatusDetailedText'] as String,
-      autoUpdateLastAppliedStatusText: map['autoUpdateLastAppliedStatusText'] as String,
-      autoUpdateRingType: map['autoUpdateRingType'] as int,
-      createdDateTimeUtc: map['createdDateTimeUtc'] as String,
-      imageUriBeforeUpdate: map['imageUriBeforeUpdate'] as String,
-      imageUriTargeted: map['imageUriTargeted'] as String,
-      imageUriTerminal: map['imageUriTerminal'] as String,
-      movedToTerminalStateDateTime: map['movedToTerminalStateDateTime'] as String,
-      planChangeLogText: map['planChangeLogText'] as String,
-      planId: map['planId'] as double,
-      ruleRequestedDay: map['ruleRequestedDay'] as int,
-      ruleRequestedHour: map['ruleRequestedHour'] as String,
-      ruleRequestedMinute: map['ruleRequestedMinute'] as String,
-      ruleRequestedWeek: map['ruleRequestedWeek'] as int,
-      timeToGoLiveDateTime: map['timeToGoLiveDateTime'] as String,
-      updatedRegistryDateTimeUtc: map['updatedRegistryDateTimeUtc'] as String,
+      autoUpdateLastAppliedStatus: (map['autoUpdateLastAppliedStatus'] as int).input(),
+      autoUpdateLastAppliedStatusDetailedText: (map['autoUpdateLastAppliedStatusDetailedText'] as String).input(),
+      autoUpdateLastAppliedStatusText: (map['autoUpdateLastAppliedStatusText'] as String).input(),
+      autoUpdateRingType: (map['autoUpdateRingType'] as int).input(),
+      createdDateTimeUtc: (map['createdDateTimeUtc'] as String).input(),
+      imageUriBeforeUpdate: (map['imageUriBeforeUpdate'] as String).input(),
+      imageUriTargeted: (map['imageUriTargeted'] as String).input(),
+      imageUriTerminal: (map['imageUriTerminal'] as String).input(),
+      movedToTerminalStateDateTime: (map['movedToTerminalStateDateTime'] as String).input(),
+      planChangeLogText: (map['planChangeLogText'] as String).input(),
+      planId: (map['planId'] as double).input(),
+      ruleRequestedDay: (map['ruleRequestedDay'] as int).input(),
+      ruleRequestedHour: (map['ruleRequestedHour'] as String).input(),
+      ruleRequestedMinute: (map['ruleRequestedMinute'] as String).input(),
+      ruleRequestedWeek: (map['ruleRequestedWeek'] as int).input(),
+      timeToGoLiveDateTime: (map['timeToGoLiveDateTime'] as String).input(),
+      updatedRegistryDateTimeUtc: (map['updatedRegistryDateTimeUtc'] as String).input(),
     );
   }
 }

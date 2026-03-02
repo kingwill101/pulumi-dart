@@ -27,15 +27,11 @@ class IndexArgs {
   /// [sources] Existing images to include in the index.
   /// [tag] The tag to apply to the index.
   IndexArgs({
-    pulumi.Output<bool>? push,
-    pulumi.Output<Registry>? registry,
-    required pulumi.Output<List<String>> sources,
-    required pulumi.Output<String> tag,
-  }) :
-      push = pulumi.Input.asOptionalInput<bool>(push),
-      registry = pulumi.Input.asOptionalInput<Registry>(registry),
-      sources = pulumi.Input.asInput<List<String>>(sources),
-      tag = pulumi.Input.asInput<String>(tag);
+    this.push,
+    this.registry,
+    required this.sources,
+    required this.tag,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      push: map['push'] == null ? null : pulumi.Output.create<bool>(map['push'] as bool),
-      registry: map['registry'] == null ? null : pulumi.Output.create<Registry>(Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())),
-      sources: pulumi.Output.create<List<String>>((map['sources'] as List).cast<String>()),
-      tag: pulumi.Output.create<String>(map['tag'] as String),
+      push: map['push'] == null ? null : (map['push'] as bool).input(),
+      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
+      sources: ((map['sources'] as List).cast<String>()).input(),
+      tag: (map['tag'] as String).input(),
     );
   }
 }

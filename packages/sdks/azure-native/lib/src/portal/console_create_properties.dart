@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cloud shell properties for creating a console.
 class ConsoleCreateProperties {
   /// The operating system type of the cloud shell.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// Provisioning state of the console.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Uri of the console.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ConsoleCreateProperties].
   /// [osType] The operating system type of the cloud shell.
@@ -30,9 +31,9 @@ class ConsoleCreateProperties {
 
   factory ConsoleCreateProperties.fromMap(Map<String, dynamic> map) {
     return ConsoleCreateProperties(
-      osType: map['osType'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      osType: (map['osType'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class FlexibleServerActiveDirectoryAdministratorState {
   /// [serverName] The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID. Changing this forces a new resource to be created.
   FlexibleServerActiveDirectoryAdministratorState({
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? principalName,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverName,
-    pulumi.Output<String>? tenantId,
-  }) :
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      principalName = pulumi.Input.asOptionalInput<String>(principalName),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.objectId,
+    this.principalName,
+    this.principalType,
+    this.resourceGroupName,
+    this.serverName,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class FlexibleServerActiveDirectoryAdministratorState {
 
   factory FlexibleServerActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerActiveDirectoryAdministratorState(
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      principalName: map['principalName'] == null ? null : pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

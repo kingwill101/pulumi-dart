@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_deidentify_template_response.dart';
 
 /// De-identification options.
 class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse {
   /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
-  final GooglePrivacyDlpV2DeidentifyTemplateResponse snapshotDeidentifyTemplate;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyTemplateResponse> snapshotDeidentifyTemplate;
   /// Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
-  final GooglePrivacyDlpV2DeidentifyTemplateResponse snapshotImageRedactTemplate;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyTemplateResponse> snapshotImageRedactTemplate;
   /// Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
-  final GooglePrivacyDlpV2DeidentifyTemplateResponse snapshotStructuredDeidentifyTemplate;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyTemplateResponse> snapshotStructuredDeidentifyTemplate;
 
   /// Creates a new [GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse].
   /// [snapshotDeidentifyTemplate] Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
@@ -23,17 +24,17 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'snapshotDeidentifyTemplate': snapshotDeidentifyTemplate.toMap(),
-      'snapshotImageRedactTemplate': snapshotImageRedactTemplate.toMap(),
-      'snapshotStructuredDeidentifyTemplate': snapshotStructuredDeidentifyTemplate.toMap(),
+      'snapshotDeidentifyTemplate': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyTemplateResponse, Map<String, dynamic>>(snapshotDeidentifyTemplate, (value) => value.toMap()),
+      'snapshotImageRedactTemplate': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyTemplateResponse, Map<String, dynamic>>(snapshotImageRedactTemplate, (value) => value.toMap()),
+      'snapshotStructuredDeidentifyTemplate': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyTemplateResponse, Map<String, dynamic>>(snapshotStructuredDeidentifyTemplate, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(
-      snapshotDeidentifyTemplate: GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotDeidentifyTemplate'] as Map).cast<String, dynamic>()),
-      snapshotImageRedactTemplate: GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotImageRedactTemplate'] as Map).cast<String, dynamic>()),
-      snapshotStructuredDeidentifyTemplate: GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotStructuredDeidentifyTemplate'] as Map).cast<String, dynamic>()),
+      snapshotDeidentifyTemplate: (GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotDeidentifyTemplate'] as Map).cast<String, dynamic>())).input(),
+      snapshotImageRedactTemplate: (GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotImageRedactTemplate'] as Map).cast<String, dynamic>())).input(),
+      snapshotStructuredDeidentifyTemplate: (GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap((map['snapshotStructuredDeidentifyTemplate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

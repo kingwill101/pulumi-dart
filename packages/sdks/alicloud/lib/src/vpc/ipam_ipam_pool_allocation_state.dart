@@ -36,23 +36,15 @@ class IpamIpamPoolAllocationState {
   /// [regionId] When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
   /// [status] The status of the instance. Value:
   IpamIpamPoolAllocationState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<int>? cidrMask,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ipamPoolAllocationDescription,
-    pulumi.Output<String>? ipamPoolAllocationName,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? status,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      cidrMask = pulumi.Input.asOptionalInput<int>(cidrMask),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ipamPoolAllocationDescription = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationDescription),
-      ipamPoolAllocationName = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationName),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.cidr,
+    this.cidrMask,
+    this.createTime,
+    this.ipamPoolAllocationDescription,
+    this.ipamPoolAllocationName,
+    this.ipamPoolId,
+    this.regionId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class IpamIpamPoolAllocationState {
 
   factory IpamIpamPoolAllocationState.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolAllocationState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      cidrMask: map['cidrMask'] == null ? null : pulumi.Output.create<int>(map['cidrMask'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationDescription'] as String),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationName'] as String),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription'] as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

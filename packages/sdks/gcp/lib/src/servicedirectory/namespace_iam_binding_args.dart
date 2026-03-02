@@ -35,15 +35,11 @@ class NamespaceIamBindingArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
   NamespaceIamBindingArgs({
-    pulumi.Output<NamespaceIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<NamespaceIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.members,
+    this.name,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,10 +52,10 @@ class NamespaceIamBindingArgs {
 
   factory NamespaceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<NamespaceIamBindingCondition>(NamespaceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (NamespaceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

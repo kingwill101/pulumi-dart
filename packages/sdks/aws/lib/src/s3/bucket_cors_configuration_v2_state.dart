@@ -20,15 +20,11 @@ class BucketCorsConfigurationV2State {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketCorsConfigurationV2State({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<List<BucketCorsConfigurationV2CorsRule>>? corsRules,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? region,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      corsRules = pulumi.Input.asOptionalInput<List<BucketCorsConfigurationV2CorsRule>>(corsRules),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bucket,
+    this.corsRules,
+    this.expectedBucketOwner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class BucketCorsConfigurationV2State {
 
   factory BucketCorsConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketCorsConfigurationV2State(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      corsRules: map['corsRules'] == null ? null : pulumi.Output.create<List<BucketCorsConfigurationV2CorsRule>>(pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules'], (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules'], (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

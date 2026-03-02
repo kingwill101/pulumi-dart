@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The container group encryption properties.
 class EncryptionProperties {
   /// The keyvault managed identity.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The encryption key name.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// The encryption key version.
-  final String keyVersion;
+  final pulumi.Input<String> keyVersion;
   /// The keyvault base url.
-  final String vaultBaseUrl;
+  final pulumi.Input<String> vaultBaseUrl;
 
   /// Creates a new [EncryptionProperties].
   /// [identity] The keyvault managed identity.
@@ -35,10 +36,10 @@ class EncryptionProperties {
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      keyName: map['keyName'] as String,
-      keyVersion: map['keyVersion'] as String,
-      vaultBaseUrl: map['vaultBaseUrl'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      keyVersion: (map['keyVersion'] as String).input(),
+      vaultBaseUrl: (map['vaultBaseUrl'] as String).input(),
     );
   }
 }

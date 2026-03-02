@@ -22,15 +22,11 @@ class ExtensionAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The ARN of the application, configuration profile, or environment to associate with the extension.
   ExtensionAssociationArgs({
-    required pulumi.Output<String> extensionArn,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-  }) :
-      extensionArn = pulumi.Input.asInput<String>(extensionArn),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn);
+    required this.extensionArn,
+    this.parameters,
+    this.region,
+    required this.resourceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ExtensionAssociationArgs {
 
   factory ExtensionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionAssociationArgs(
-      extensionArn: pulumi.Output.create<String>(map['extensionArn'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
+      extensionArn: (map['extensionArn'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

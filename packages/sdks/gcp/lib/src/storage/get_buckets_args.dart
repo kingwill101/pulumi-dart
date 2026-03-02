@@ -16,11 +16,9 @@ class GetBucketsArgs {
   /// [prefix] Filter results to buckets whose names begin with this prefix.
   /// [project] The ID of the project. If it is not provided, the provider project is used.
   GetBucketsArgs({
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? project,
-  }) :
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.prefix,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBucketsArgs {
 
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketsArgs(
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

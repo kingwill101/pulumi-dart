@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogDatabaseTargetDatabase {
   /// ID of the Data Catalog in which the database resides.
-  final String catalogId;
+  final pulumi.Input<String> catalogId;
   /// Name of the catalog database.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Region of the target database.
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [CatalogDatabaseTargetDatabase].
   /// [catalogId] ID of the Data Catalog in which the database resides.
@@ -29,9 +30,9 @@ class CatalogDatabaseTargetDatabase {
 
   factory CatalogDatabaseTargetDatabase.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseTargetDatabase(
-      catalogId: map['catalogId'] as String,
-      databaseName: map['databaseName'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      catalogId: (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

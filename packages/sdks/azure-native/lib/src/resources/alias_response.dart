@@ -8,17 +8,17 @@ import 'alias_pattern_response.dart';
 /// The alias type.
 class AliasResponse {
   /// The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
-  final AliasPathMetadataResponse defaultMetadata;
+  final pulumi.Input<AliasPathMetadataResponse> defaultMetadata;
   /// The default path for an alias.
-  final String? defaultPath;
+  final pulumi.Input<String>? defaultPath;
   /// The default pattern for an alias.
-  final AliasPatternResponse? defaultPattern;
+  final pulumi.Input<AliasPatternResponse>? defaultPattern;
   /// The alias name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The paths for an alias.
-  final List<AliasPathResponse>? paths;
+  final pulumi.Input<List<AliasPathResponse>>? paths;
   /// The type of the alias.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AliasResponse].
   /// [defaultMetadata] The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
@@ -38,23 +38,23 @@ class AliasResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultMetadata': defaultMetadata.toMap(),
+      'defaultMetadata': pulumi.Input.mapInputValue<AliasPathMetadataResponse, Map<String, dynamic>>(defaultMetadata, (value) => value.toMap()),
       'defaultPath': ?defaultPath,
-      'defaultPattern': ?defaultPattern == null ? null : defaultPattern!.toMap(),
+      'defaultPattern': ?pulumi.Input.mapOptionalInputValue<AliasPatternResponse, Map<String, dynamic>>(defaultPattern, (value) => value.toMap()),
       'name': ?name,
-      'paths': ?paths == null ? null : pulumi.Input.encodeList<AliasPathResponse, Map<String, dynamic>>(paths!, (value) => value.toMap()),
+      'paths': ?pulumi.Input.mapOptionalInputValue<List<AliasPathResponse>, List<Map<String, dynamic>>>(paths, (value) => pulumi.Input.encodeList<AliasPathResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory AliasResponse.fromMap(Map<String, dynamic> map) {
     return AliasResponse(
-      defaultMetadata: AliasPathMetadataResponse.fromMap((map['defaultMetadata'] as Map).cast<String, dynamic>()),
-      defaultPath: map['defaultPath'] == null ? null : map['defaultPath'] as String,
-      defaultPattern: map['defaultPattern'] == null ? null : AliasPatternResponse.fromMap((map['defaultPattern'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      paths: map['paths'] == null ? null : pulumi.Input.decodeList<AliasPathResponse>(map['paths'], (value) => AliasPathResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      defaultMetadata: (AliasPathMetadataResponse.fromMap((map['defaultMetadata'] as Map).cast<String, dynamic>())).input(),
+      defaultPath: map['defaultPath'] == null ? null : (map['defaultPath'] as String).input(),
+      defaultPattern: map['defaultPattern'] == null ? null : (AliasPatternResponse.fromMap((map['defaultPattern'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AliasPathResponse>(map['paths'], (value) => AliasPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

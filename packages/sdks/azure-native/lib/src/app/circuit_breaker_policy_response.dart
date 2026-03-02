@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy that defines circuit breaker conditions
 class CircuitBreakerPolicyResponse {
   /// Number of consecutive errors before the circuit breaker opens
-  final int? consecutiveErrors;
+  final pulumi.Input<int>? consecutiveErrors;
   /// The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
   /// Maximum percentage of hosts that will be ejected after failure threshold has been met
-  final int? maxEjectionPercent;
+  final pulumi.Input<int>? maxEjectionPercent;
 
   /// Creates a new [CircuitBreakerPolicyResponse].
   /// [consecutiveErrors] Number of consecutive errors before the circuit breaker opens
@@ -30,9 +31,9 @@ class CircuitBreakerPolicyResponse {
 
   factory CircuitBreakerPolicyResponse.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerPolicyResponse(
-      consecutiveErrors: map['consecutiveErrors'] == null ? null : map['consecutiveErrors'] as int,
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
-      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : map['maxEjectionPercent'] as int,
+      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors'] as int).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : (map['maxEjectionPercent'] as int).input(),
     );
   }
 }

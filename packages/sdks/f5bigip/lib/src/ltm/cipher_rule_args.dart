@@ -25,17 +25,12 @@ class CipherRuleArgs {
   /// [name] Name of the Cipher Rule. Name should be in pattern `partition` + `cipher_rule_name`
   /// [signatureAlgorithms] Specifies the Signature Algorithms, separated by colons (:).
   CipherRuleArgs({
-    required pulumi.Output<String> cipher,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dhGroups,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? signatureAlgorithms,
-  }) :
-      cipher = pulumi.Input.asInput<String>(cipher),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dhGroups = pulumi.Input.asOptionalInput<String>(dhGroups),
-      name = pulumi.Input.asInput<String>(name),
-      signatureAlgorithms = pulumi.Input.asOptionalInput<String>(signatureAlgorithms);
+    required this.cipher,
+    this.description,
+    this.dhGroups,
+    required this.name,
+    this.signatureAlgorithms,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CipherRuleArgs {
 
   factory CipherRuleArgs.fromMap(Map<String, dynamic> map) {
     return CipherRuleArgs(
-      cipher: pulumi.Output.create<String>(map['cipher'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dhGroups: map['dhGroups'] == null ? null : pulumi.Output.create<String>(map['dhGroups'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : pulumi.Output.create<String>(map['signatureAlgorithms'] as String),
+      cipher: (map['cipher'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups'] as String).input(),
+      name: (map['name'] as String).input(),
+      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms'] as String).input(),
     );
   }
 }

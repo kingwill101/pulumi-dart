@@ -6,9 +6,9 @@ import 'google_privacy_dlp_v2_value_response.dart';
 /// A tuple of values for the quasi-identifier columns.
 class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse {
   /// The estimated anonymity for these quasi-identifier values.
-  final String estimatedAnonymity;
+  final pulumi.Input<String> estimatedAnonymity;
   /// The quasi-identifier values.
-  final List<GooglePrivacyDlpV2ValueResponse> quasiIdsValues;
+  final pulumi.Input<List<GooglePrivacyDlpV2ValueResponse>> quasiIdsValues;
 
   /// Creates a new [GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse].
   /// [estimatedAnonymity] The estimated anonymity for these quasi-identifier values.
@@ -21,14 +21,14 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'estimatedAnonymity': estimatedAnonymity,
-      'quasiIdsValues': pulumi.Input.encodeList<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(quasiIdsValues, (value) => value.toMap()),
+      'quasiIdsValues': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2ValueResponse>, List<Map<String, dynamic>>>(quasiIdsValues, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse(
-      estimatedAnonymity: map['estimatedAnonymity'] as String,
-      quasiIdsValues: pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(map['quasiIdsValues'], (value) => GooglePrivacyDlpV2ValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      estimatedAnonymity: (map['estimatedAnonymity'] as String).input(),
+      quasiIdsValues: (pulumi.Input.decodeList<GooglePrivacyDlpV2ValueResponse>(map['quasiIdsValues'], (value) => GooglePrivacyDlpV2ValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

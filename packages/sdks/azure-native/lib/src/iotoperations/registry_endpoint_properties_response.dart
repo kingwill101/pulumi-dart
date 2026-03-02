@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_endpoint_anonymous_authentication_response.dart';
 import 'registry_endpoint_trusted_settings_response.dart';
 
 /// RegistryEndpoint properties
 class RegistryEndpointPropertiesResponse {
   /// The authentication settings for the Azure Container Registry.
-  final RegistryEndpointAnonymousAuthenticationResponse authentication;
+  final pulumi.Input<RegistryEndpointAnonymousAuthenticationResponse> authentication;
   /// The Container Registry endpoint hostname.
-  final String host;
+  final pulumi.Input<String> host;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Trust settings for the registry endpoint
-  final RegistryEndpointTrustedSettingsResponse? trustSettings;
+  final pulumi.Input<RegistryEndpointTrustedSettingsResponse>? trustSettings;
 
   /// Creates a new [RegistryEndpointPropertiesResponse].
   /// [authentication] The authentication settings for the Azure Container Registry.
@@ -28,19 +29,19 @@ class RegistryEndpointPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': authentication.toMap(),
+      'authentication': pulumi.Input.mapInputValue<RegistryEndpointAnonymousAuthenticationResponse, Map<String, dynamic>>(authentication, (value) => value.toMap()),
       'host': host,
       'provisioningState': provisioningState,
-      'trustSettings': ?trustSettings == null ? null : trustSettings!.toMap(),
+      'trustSettings': ?pulumi.Input.mapOptionalInputValue<RegistryEndpointTrustedSettingsResponse, Map<String, dynamic>>(trustSettings, (value) => value.toMap()),
     };
   }
 
   factory RegistryEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointPropertiesResponse(
-      authentication: RegistryEndpointAnonymousAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
-      host: map['host'] as String,
-      provisioningState: map['provisioningState'] as String,
-      trustSettings: map['trustSettings'] == null ? null : RegistryEndpointTrustedSettingsResponse.fromMap((map['trustSettings'] as Map).cast<String, dynamic>()),
+      authentication: (RegistryEndpointAnonymousAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      host: (map['host'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      trustSettings: map['trustSettings'] == null ? null : (RegistryEndpointTrustedSettingsResponse.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

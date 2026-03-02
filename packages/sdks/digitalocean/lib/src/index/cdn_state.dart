@@ -28,21 +28,14 @@ class CdnState {
   /// [origin] The fully qualified domain name, (FQDN) for a Space.
   /// [ttl] The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
   CdnState({
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? customDomain,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? origin,
-    pulumi.Output<int>? ttl,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      customDomain = pulumi.Input.asOptionalInput<String>(customDomain),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      origin = pulumi.Input.asOptionalInput<String>(origin),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.certificateId,
+    this.certificateName,
+    this.createdAt,
+    this.customDomain,
+    this.endpoint,
+    this.origin,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class CdnState {
 
   factory CdnState.fromMap(Map<String, dynamic> map) {
     return CdnState(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      customDomain: map['customDomain'] == null ? null : pulumi.Output.create<String>(map['customDomain'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      origin: map['origin'] == null ? null : pulumi.Output.create<String>(map['origin'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      customDomain: map['customDomain'] == null ? null : (map['customDomain'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

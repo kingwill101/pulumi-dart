@@ -14,11 +14,9 @@ class GetDeviceArgs {
   /// [customer] Optional.
   /// [deviceId] Required.
   GetDeviceArgs({
-    pulumi.Output<String>? customer,
-    required pulumi.Output<String> deviceId,
-  }) :
-      customer = pulumi.Input.asOptionalInput<String>(customer),
-      deviceId = pulumi.Input.asInput<String>(deviceId);
+    this.customer,
+    required this.deviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      customer: map['customer'] == null ? null : pulumi.Output.create<String>(map['customer'] as String),
-      deviceId: pulumi.Output.create<String>(map['deviceId'] as String),
+      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
+      deviceId: (map['deviceId'] as String).input(),
     );
   }
 }

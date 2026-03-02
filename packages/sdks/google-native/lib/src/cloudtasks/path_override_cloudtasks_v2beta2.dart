@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PathOverride. Path message defines path override for HTTP targets.
 class PathOverrideCloudtasksV2beta2 {
   /// The URI path (e.g., /users/1234). Default is an empty string.
-  final String? path;
+  final pulumi.Input<String>? path;
 
   /// Creates a new [PathOverrideCloudtasksV2beta2].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
@@ -20,7 +21,7 @@ class PathOverrideCloudtasksV2beta2 {
 
   factory PathOverrideCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return PathOverrideCloudtasksV2beta2(
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
     );
   }
 }

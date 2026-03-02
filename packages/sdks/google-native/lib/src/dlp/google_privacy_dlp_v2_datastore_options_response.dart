@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_kind_expression_response.dart';
 import 'google_privacy_dlp_v2_partition_id_response.dart';
 
 /// Options defining a data set within Google Cloud Datastore.
 class GooglePrivacyDlpV2DatastoreOptionsResponse {
   /// The kind to process.
-  final GooglePrivacyDlpV2KindExpressionResponse kind;
+  final pulumi.Input<GooglePrivacyDlpV2KindExpressionResponse> kind;
   /// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-  final GooglePrivacyDlpV2PartitionIdResponse partitionId;
+  final pulumi.Input<GooglePrivacyDlpV2PartitionIdResponse> partitionId;
 
   /// Creates a new [GooglePrivacyDlpV2DatastoreOptionsResponse].
   /// [kind] The kind to process.
@@ -20,15 +21,15 @@ class GooglePrivacyDlpV2DatastoreOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kind': kind.toMap(),
-      'partitionId': partitionId.toMap(),
+      'kind': pulumi.Input.mapInputValue<GooglePrivacyDlpV2KindExpressionResponse, Map<String, dynamic>>(kind, (value) => value.toMap()),
+      'partitionId': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PartitionIdResponse, Map<String, dynamic>>(partitionId, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DatastoreOptionsResponse(
-      kind: GooglePrivacyDlpV2KindExpressionResponse.fromMap((map['kind'] as Map).cast<String, dynamic>()),
-      partitionId: GooglePrivacyDlpV2PartitionIdResponse.fromMap((map['partitionId'] as Map).cast<String, dynamic>()),
+      kind: (GooglePrivacyDlpV2KindExpressionResponse.fromMap((map['kind'] as Map).cast<String, dynamic>())).input(),
+      partitionId: (GooglePrivacyDlpV2PartitionIdResponse.fromMap((map['partitionId'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

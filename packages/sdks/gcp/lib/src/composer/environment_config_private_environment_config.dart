@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigPrivateEnvironmentConfig {
   /// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final String? cloudComposerConnectionSubnetwork;
+  final pulumi.Input<String>? cloudComposerConnectionSubnetwork;
   /// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final String? cloudComposerNetworkIpv4CidrBlock;
+  final pulumi.Input<String>? cloudComposerNetworkIpv4CidrBlock;
   /// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
-  final String? cloudSqlIpv4CidrBlock;
+  final pulumi.Input<String>? cloudSqlIpv4CidrBlock;
   /// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
-  final String? connectionType;
+  final pulumi.Input<String>? connectionType;
   /// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final bool? enablePrivateEndpoint;
+  final pulumi.Input<bool>? enablePrivateEndpoint;
   /// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
-  final bool? enablePrivatelyUsedPublicIps;
+  final pulumi.Input<bool>? enablePrivatelyUsedPublicIps;
   /// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
-  final String? masterIpv4CidrBlock;
+  final pulumi.Input<String>? masterIpv4CidrBlock;
   /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final String? webServerIpv4CidrBlock;
+  final pulumi.Input<String>? webServerIpv4CidrBlock;
 
   /// Creates a new [EnvironmentConfigPrivateEnvironmentConfig].
   /// [cloudComposerConnectionSubnetwork] When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
@@ -54,14 +55,14 @@ class EnvironmentConfigPrivateEnvironmentConfig {
 
   factory EnvironmentConfigPrivateEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigPrivateEnvironmentConfig(
-      cloudComposerConnectionSubnetwork: map['cloudComposerConnectionSubnetwork'] == null ? null : map['cloudComposerConnectionSubnetwork'] as String,
-      cloudComposerNetworkIpv4CidrBlock: map['cloudComposerNetworkIpv4CidrBlock'] == null ? null : map['cloudComposerNetworkIpv4CidrBlock'] as String,
-      cloudSqlIpv4CidrBlock: map['cloudSqlIpv4CidrBlock'] == null ? null : map['cloudSqlIpv4CidrBlock'] as String,
-      connectionType: map['connectionType'] == null ? null : map['connectionType'] as String,
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : map['enablePrivateEndpoint'] as bool,
-      enablePrivatelyUsedPublicIps: map['enablePrivatelyUsedPublicIps'] == null ? null : map['enablePrivatelyUsedPublicIps'] as bool,
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : map['masterIpv4CidrBlock'] as String,
-      webServerIpv4CidrBlock: map['webServerIpv4CidrBlock'] == null ? null : map['webServerIpv4CidrBlock'] as String,
+      cloudComposerConnectionSubnetwork: map['cloudComposerConnectionSubnetwork'] == null ? null : (map['cloudComposerConnectionSubnetwork'] as String).input(),
+      cloudComposerNetworkIpv4CidrBlock: map['cloudComposerNetworkIpv4CidrBlock'] == null ? null : (map['cloudComposerNetworkIpv4CidrBlock'] as String).input(),
+      cloudSqlIpv4CidrBlock: map['cloudSqlIpv4CidrBlock'] == null ? null : (map['cloudSqlIpv4CidrBlock'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
+      enablePrivatelyUsedPublicIps: map['enablePrivatelyUsedPublicIps'] == null ? null : (map['enablePrivatelyUsedPublicIps'] as bool).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
+      webServerIpv4CidrBlock: map['webServerIpv4CidrBlock'] == null ? null : (map['webServerIpv4CidrBlock'] as String).input(),
     );
   }
 }

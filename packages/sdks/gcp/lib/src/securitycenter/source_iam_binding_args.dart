@@ -23,17 +23,12 @@ class SourceIamBindingArgs {
   /// [role] Required.
   /// [source] Required.
   SourceIamBindingArgs({
-    pulumi.Output<SourceIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> source,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SourceIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      organization = pulumi.Input.asInput<String>(organization),
-      role = pulumi.Input.asInput<String>(role),
-      source = pulumi.Input.asInput<String>(source);
+    this.condition,
+    required this.members,
+    required this.organization,
+    required this.role,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class SourceIamBindingArgs {
 
   factory SourceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SourceIamBindingCondition>(SourceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      condition: map['condition'] == null ? null : (SourceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      organization: (map['organization'] as String).input(),
+      role: (map['role'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

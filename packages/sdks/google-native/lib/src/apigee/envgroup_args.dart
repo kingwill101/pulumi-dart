@@ -18,13 +18,10 @@ class EnvgroupArgs {
   /// [name] ID of the environment group.
   /// [organizationId] Required.
   EnvgroupArgs({
-    required pulumi.Output<List<String>> hostnames,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-  }) :
-      hostnames = pulumi.Input.asInput<List<String>>(hostnames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.hostnames,
+    this.name,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class EnvgroupArgs {
 
   factory EnvgroupArgs.fromMap(Map<String, dynamic> map) {
     return EnvgroupArgs(
-      hostnames: pulumi.Output.create<List<String>>((map['hostnames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      hostnames: ((map['hostnames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

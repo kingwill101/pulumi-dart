@@ -38,27 +38,17 @@ class ServerCertificateArgs {
   /// [serverCertificate] the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
   /// [tags] A mapping of tags to assign to the resource.
   ServerCertificateArgs({
-    pulumi.Output<String>? alicloudCertifacteId,
-    pulumi.Output<String>? alicloudCertifacteName,
-    pulumi.Output<String>? alicloudCertificateId,
-    pulumi.Output<String>? alicloudCertificateName,
-    pulumi.Output<String>? alicloudCertificateRegionId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? serverCertificate,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      alicloudCertifacteId = pulumi.Input.asOptionalInput<String>(alicloudCertifacteId),
-      alicloudCertifacteName = pulumi.Input.asOptionalInput<String>(alicloudCertifacteName),
-      alicloudCertificateId = pulumi.Input.asOptionalInput<String>(alicloudCertificateId),
-      alicloudCertificateName = pulumi.Input.asOptionalInput<String>(alicloudCertificateName),
-      alicloudCertificateRegionId = pulumi.Input.asOptionalInput<String>(alicloudCertificateRegionId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      serverCertificate = pulumi.Input.asOptionalInput<String>(serverCertificate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.alicloudCertifacteId,
+    this.alicloudCertifacteName,
+    this.alicloudCertificateId,
+    this.alicloudCertificateName,
+    this.alicloudCertificateRegionId,
+    this.name,
+    this.privateKey,
+    this.resourceGroupId,
+    this.serverCertificate,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ServerCertificateArgs {
 
   factory ServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ServerCertificateArgs(
-      alicloudCertifacteId: map['alicloudCertifacteId'] == null ? null : pulumi.Output.create<String>(map['alicloudCertifacteId'] as String),
-      alicloudCertifacteName: map['alicloudCertifacteName'] == null ? null : pulumi.Output.create<String>(map['alicloudCertifacteName'] as String),
-      alicloudCertificateId: map['alicloudCertificateId'] == null ? null : pulumi.Output.create<String>(map['alicloudCertificateId'] as String),
-      alicloudCertificateName: map['alicloudCertificateName'] == null ? null : pulumi.Output.create<String>(map['alicloudCertificateName'] as String),
-      alicloudCertificateRegionId: map['alicloudCertificateRegionId'] == null ? null : pulumi.Output.create<String>(map['alicloudCertificateRegionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      serverCertificate: map['serverCertificate'] == null ? null : pulumi.Output.create<String>(map['serverCertificate'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      alicloudCertifacteId: map['alicloudCertifacteId'] == null ? null : (map['alicloudCertifacteId'] as String).input(),
+      alicloudCertifacteName: map['alicloudCertifacteName'] == null ? null : (map['alicloudCertifacteName'] as String).input(),
+      alicloudCertificateId: map['alicloudCertificateId'] == null ? null : (map['alicloudCertificateId'] as String).input(),
+      alicloudCertificateName: map['alicloudCertificateName'] == null ? null : (map['alicloudCertificateName'] as String).input(),
+      alicloudCertificateRegionId: map['alicloudCertificateRegionId'] == null ? null : (map['alicloudCertificateRegionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class PrometheusState {
   /// [vpcId] The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   /// [vswitchId] The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   PrometheusState({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? clusterType,
-    pulumi.Output<String>? grafanaInstanceId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? subClustersJson,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterType = pulumi.Input.asOptionalInput<String>(clusterType),
-      grafanaInstanceId = pulumi.Input.asOptionalInput<String>(grafanaInstanceId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      subClustersJson = pulumi.Input.asOptionalInput<String>(subClustersJson),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.clusterId,
+    this.clusterName,
+    this.clusterType,
+    this.grafanaInstanceId,
+    this.resourceGroupId,
+    this.securityGroupId,
+    this.subClustersJson,
+    this.tags,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PrometheusState {
 
   factory PrometheusState.fromMap(Map<String, dynamic> map) {
     return PrometheusState(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterType: map['clusterType'] == null ? null : pulumi.Output.create<String>(map['clusterType'] as String),
-      grafanaInstanceId: map['grafanaInstanceId'] == null ? null : pulumi.Output.create<String>(map['grafanaInstanceId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      subClustersJson: map['subClustersJson'] == null ? null : pulumi.Output.create<String>(map['subClustersJson'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
+      grafanaInstanceId: map['grafanaInstanceId'] == null ? null : (map['grafanaInstanceId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      subClustersJson: map['subClustersJson'] == null ? null : (map['subClustersJson'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

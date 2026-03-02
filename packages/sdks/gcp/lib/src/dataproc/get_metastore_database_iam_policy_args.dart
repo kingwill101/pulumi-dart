@@ -25,15 +25,11 @@ class GetMetastoreDatabaseIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   GetMetastoreDatabaseIamPolicyArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceId,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    required this.database,
+    this.location,
+    this.project,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetMetastoreDatabaseIamPolicyArgs {
 
   factory GetMetastoreDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreDatabaseIamPolicyArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      database: (map['database'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

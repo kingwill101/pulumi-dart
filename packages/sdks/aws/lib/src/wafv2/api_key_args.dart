@@ -19,13 +19,10 @@ class ApiKeyArgs {
   /// [scope] Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. Changing this forces a new resource to be created. **NOTE:** WAFv2 API Keys deployed for `CLOUDFRONT` must be created within the `us-east-1` region.
   /// [tokenDomains] The domains that you want to be able to use the API key with, for example `example.com`. You can specify up to 5 domains. Changing this forces a new resource to be created.
   ApiKeyArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scope,
-    required pulumi.Output<List<String>> tokenDomains,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<String>(scope),
-      tokenDomains = pulumi.Input.asInput<List<String>>(tokenDomains);
+    this.region,
+    required this.scope,
+    required this.tokenDomains,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      tokenDomains: pulumi.Output.create<List<String>>((map['tokenDomains'] as List).cast<String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tokenDomains: ((map['tokenDomains'] as List).cast<String>()).input(),
     );
   }
 }

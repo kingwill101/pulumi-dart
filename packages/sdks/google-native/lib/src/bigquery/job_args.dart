@@ -22,15 +22,11 @@ class JobArgs {
   /// [project] Optional.
   /// [source] Optional.
   JobArgs({
-    pulumi.Output<JobConfiguration>? configuration,
-    pulumi.Output<JobReference>? jobReference,
-    pulumi.Output<String>? project,
-    pulumi.Output<dynamic>? source,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<JobConfiguration>(configuration),
-      jobReference = pulumi.Input.asOptionalInput<JobReference>(jobReference),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asOptionalInput<dynamic>(source);
+    this.configuration,
+    this.jobReference,
+    this.project,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<JobConfiguration>(JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      jobReference: map['jobReference'] == null ? null : pulumi.Output.create<JobReference>(JobReference.fromMap((map['jobReference'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<dynamic>(map['source']),
+      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      jobReference: map['jobReference'] == null ? null : (JobReference.fromMap((map['jobReference'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      source: map['source'] == null ? null : (map['source']).input(),
     );
   }
 }

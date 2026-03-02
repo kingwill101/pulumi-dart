@@ -21,13 +21,10 @@ class GetVersionsArgs {
   /// [ids] A list of ASM versions. Its element formats as `<edition>:<version>`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetVersionsArgs({
-    pulumi.Output<String>? edition,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-  }) :
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.edition,
+    this.ids,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetVersionsArgs {
 
   factory GetVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionsArgs(
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

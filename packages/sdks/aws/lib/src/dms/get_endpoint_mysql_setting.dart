@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointMysqlSetting {
-  final String afterConnectScript;
-  final String authenticationMethod;
-  final bool cleanSourceMetadataOnMismatch;
-  final int eventsPollInterval;
-  final int executeTimeout;
-  final int maxFileSize;
-  final int parallelLoadThreads;
-  final String serverTimezone;
-  final String serviceAccessRoleArn;
-  final String targetDbType;
+  final pulumi.Input<String> afterConnectScript;
+  final pulumi.Input<String> authenticationMethod;
+  final pulumi.Input<bool> cleanSourceMetadataOnMismatch;
+  final pulumi.Input<int> eventsPollInterval;
+  final pulumi.Input<int> executeTimeout;
+  final pulumi.Input<int> maxFileSize;
+  final pulumi.Input<int> parallelLoadThreads;
+  final pulumi.Input<String> serverTimezone;
+  final pulumi.Input<String> serviceAccessRoleArn;
+  final pulumi.Input<String> targetDbType;
 
   /// Creates a new [GetEndpointMysqlSetting].
   /// [afterConnectScript] Required.
@@ -54,16 +55,16 @@ class GetEndpointMysqlSetting {
 
   factory GetEndpointMysqlSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointMysqlSetting(
-      afterConnectScript: map['afterConnectScript'] as String,
-      authenticationMethod: map['authenticationMethod'] as String,
-      cleanSourceMetadataOnMismatch: map['cleanSourceMetadataOnMismatch'] as bool,
-      eventsPollInterval: map['eventsPollInterval'] as int,
-      executeTimeout: map['executeTimeout'] as int,
-      maxFileSize: map['maxFileSize'] as int,
-      parallelLoadThreads: map['parallelLoadThreads'] as int,
-      serverTimezone: map['serverTimezone'] as String,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] as String,
-      targetDbType: map['targetDbType'] as String,
+      afterConnectScript: (map['afterConnectScript'] as String).input(),
+      authenticationMethod: (map['authenticationMethod'] as String).input(),
+      cleanSourceMetadataOnMismatch: (map['cleanSourceMetadataOnMismatch'] as bool).input(),
+      eventsPollInterval: (map['eventsPollInterval'] as int).input(),
+      executeTimeout: (map['executeTimeout'] as int).input(),
+      maxFileSize: (map['maxFileSize'] as int).input(),
+      parallelLoadThreads: (map['parallelLoadThreads'] as int).input(),
+      serverTimezone: (map['serverTimezone'] as String).input(),
+      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
+      targetDbType: (map['targetDbType'] as String).input(),
     );
   }
 }

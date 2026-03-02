@@ -35,19 +35,13 @@ class AccountArgs {
   /// [databaseName] Database name, with the following restrictions:
   /// [dbInstanceId] The Adb pg instance ID.
   AccountArgs({
-    pulumi.Output<String>? accountDescription,
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> accountPassword,
-    pulumi.Output<String>? accountType,
-    pulumi.Output<String>? databaseName,
-    required pulumi.Output<String> dbInstanceId,
-  }) :
-      accountDescription = pulumi.Input.asOptionalInput<String>(accountDescription),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      accountPassword = pulumi.Input.asInput<String>(accountPassword),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId);
+    this.accountDescription,
+    required this.accountName,
+    required this.accountPassword,
+    this.accountType,
+    this.databaseName,
+    required this.dbInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : pulumi.Output.create<String>(map['accountDescription'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: pulumi.Output.create<String>(map['accountPassword'] as String),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: (map['accountPassword'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU of Firewall policy.
 class FirewallPolicySkuResponse {
   /// Tier of Firewall Policy.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [FirewallPolicySkuResponse].
   /// [tier] Tier of Firewall Policy.
@@ -20,7 +21,7 @@ class FirewallPolicySkuResponse {
 
   factory FirewallPolicySkuResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySkuResponse(
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

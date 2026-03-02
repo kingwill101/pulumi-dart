@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_webhook_service_directory_generic_web_service.dart';
 
 class CxWebhookServiceDirectory {
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
-  final CxWebhookServiceDirectoryGenericWebService? genericWebService;
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebService>? genericWebService;
   /// The name of Service Directory service.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [CxWebhookServiceDirectory].
   /// [genericWebService] Represents configuration for a generic web service.
@@ -19,15 +20,15 @@ class CxWebhookServiceDirectory {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'genericWebService': ?genericWebService == null ? null : genericWebService!.toMap(),
+      'genericWebService': ?pulumi.Input.mapOptionalInputValue<CxWebhookServiceDirectoryGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
       'service': service,
     };
   }
 
   factory CxWebhookServiceDirectory.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectory(
-      genericWebService: map['genericWebService'] == null ? null : CxWebhookServiceDirectoryGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
-      service: map['service'] as String,
+      genericWebService: map['genericWebService'] == null ? null : (CxWebhookServiceDirectoryGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleUrlRewriteAction {
   /// This value must start with a `/` and can't be longer than 260 characters.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// Whether preserve an unmatched path. Defaults to `true`.
-  final bool? preserveUnmatchedPath;
+  final pulumi.Input<bool>? preserveUnmatchedPath;
   /// This value must start with a `/` and can't be longer than 260 characters.
-  final String sourcePattern;
+  final pulumi.Input<String> sourcePattern;
 
   /// Creates a new [EndpointDeliveryRuleUrlRewriteAction].
   /// [destination] This value must start with a `/` and can't be longer than 260 characters.
@@ -29,9 +30,9 @@ class EndpointDeliveryRuleUrlRewriteAction {
 
   factory EndpointDeliveryRuleUrlRewriteAction.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleUrlRewriteAction(
-      destination: map['destination'] as String,
-      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : map['preserveUnmatchedPath'] as bool,
-      sourcePattern: map['sourcePattern'] as String,
+      destination: (map['destination'] as String).input(),
+      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath'] as bool).input(),
+      sourcePattern: (map['sourcePattern'] as String).input(),
     );
   }
 }

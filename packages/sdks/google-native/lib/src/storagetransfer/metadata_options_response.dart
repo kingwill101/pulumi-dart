@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the metadata options for running a transfer.
 class MetadataOptionsResponse {
   /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
-  final String acl;
+  final pulumi.Input<String> acl;
   /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final String gid;
+  final pulumi.Input<String> gid;
   /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
-  final String kmsKey;
+  final pulumi.Input<String> kmsKey;
   /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
   /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final String symlink;
+  final pulumi.Input<String> symlink;
   /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
-  final String temporaryHold;
+  final pulumi.Input<String> temporaryHold;
   /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
-  final String uid;
+  final pulumi.Input<String> uid;
 
   /// Creates a new [MetadataOptionsResponse].
   /// [acl] Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
@@ -60,15 +61,15 @@ class MetadataOptionsResponse {
 
   factory MetadataOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MetadataOptionsResponse(
-      acl: map['acl'] as String,
-      gid: map['gid'] as String,
-      kmsKey: map['kmsKey'] as String,
-      mode: map['mode'] as String,
-      storageClass: map['storageClass'] as String,
-      symlink: map['symlink'] as String,
-      temporaryHold: map['temporaryHold'] as String,
-      timeCreated: map['timeCreated'] as String,
-      uid: map['uid'] as String,
+      acl: (map['acl'] as String).input(),
+      gid: (map['gid'] as String).input(),
+      kmsKey: (map['kmsKey'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
+      symlink: (map['symlink'] as String).input(),
+      temporaryHold: (map['temporaryHold'] as String).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
+      uid: (map['uid'] as String).input(),
     );
   }
 }

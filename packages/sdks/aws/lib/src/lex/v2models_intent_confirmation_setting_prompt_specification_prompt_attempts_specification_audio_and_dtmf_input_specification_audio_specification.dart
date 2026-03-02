@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification {
   /// Time for which a bot waits after the customer stops speaking to assume the utterance is finished.
-  final int endTimeoutMs;
+  final pulumi.Input<int> endTimeoutMs;
   /// Time for how long Amazon Lex waits before speech input is truncated and the speech is returned to application.
-  final int maxLengthMs;
+  final pulumi.Input<int> maxLengthMs;
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification].
   /// [endTimeoutMs] Time for which a bot waits after the customer stops speaking to assume the utterance is finished.
@@ -24,8 +25,8 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification(
-      endTimeoutMs: map['endTimeoutMs'] as int,
-      maxLengthMs: map['maxLengthMs'] as int,
+      endTimeoutMs: (map['endTimeoutMs'] as int).input(),
+      maxLengthMs: (map['maxLengthMs'] as int).input(),
     );
   }
 }

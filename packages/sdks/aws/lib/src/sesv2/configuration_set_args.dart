@@ -43,25 +43,16 @@ class ConfigurationSetArgs {
   /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
   /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
   ConfigurationSetArgs({
-    required pulumi.Output<String> configurationSetName,
-    pulumi.Output<ConfigurationSetDeliveryOptions>? deliveryOptions,
-    pulumi.Output<String>? region,
-    pulumi.Output<ConfigurationSetReputationOptions>? reputationOptions,
-    pulumi.Output<ConfigurationSetSendingOptions>? sendingOptions,
-    pulumi.Output<ConfigurationSetSuppressionOptions>? suppressionOptions,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ConfigurationSetTrackingOptions>? trackingOptions,
-    pulumi.Output<ConfigurationSetVdmOptions>? vdmOptions,
-  }) :
-      configurationSetName = pulumi.Input.asInput<String>(configurationSetName),
-      deliveryOptions = pulumi.Input.asOptionalInput<ConfigurationSetDeliveryOptions>(deliveryOptions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reputationOptions = pulumi.Input.asOptionalInput<ConfigurationSetReputationOptions>(reputationOptions),
-      sendingOptions = pulumi.Input.asOptionalInput<ConfigurationSetSendingOptions>(sendingOptions),
-      suppressionOptions = pulumi.Input.asOptionalInput<ConfigurationSetSuppressionOptions>(suppressionOptions),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackingOptions = pulumi.Input.asOptionalInput<ConfigurationSetTrackingOptions>(trackingOptions),
-      vdmOptions = pulumi.Input.asOptionalInput<ConfigurationSetVdmOptions>(vdmOptions);
+    required this.configurationSetName,
+    this.deliveryOptions,
+    this.region,
+    this.reputationOptions,
+    this.sendingOptions,
+    this.suppressionOptions,
+    this.tags,
+    this.trackingOptions,
+    this.vdmOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class ConfigurationSetArgs {
 
   factory ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetArgs(
-      configurationSetName: pulumi.Output.create<String>(map['configurationSetName'] as String),
-      deliveryOptions: map['deliveryOptions'] == null ? null : pulumi.Output.create<ConfigurationSetDeliveryOptions>(ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reputationOptions: map['reputationOptions'] == null ? null : pulumi.Output.create<ConfigurationSetReputationOptions>(ConfigurationSetReputationOptions.fromMap((map['reputationOptions'] as Map).cast<String, dynamic>())),
-      sendingOptions: map['sendingOptions'] == null ? null : pulumi.Output.create<ConfigurationSetSendingOptions>(ConfigurationSetSendingOptions.fromMap((map['sendingOptions'] as Map).cast<String, dynamic>())),
-      suppressionOptions: map['suppressionOptions'] == null ? null : pulumi.Output.create<ConfigurationSetSuppressionOptions>(ConfigurationSetSuppressionOptions.fromMap((map['suppressionOptions'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackingOptions: map['trackingOptions'] == null ? null : pulumi.Output.create<ConfigurationSetTrackingOptions>(ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())),
-      vdmOptions: map['vdmOptions'] == null ? null : pulumi.Output.create<ConfigurationSetVdmOptions>(ConfigurationSetVdmOptions.fromMap((map['vdmOptions'] as Map).cast<String, dynamic>())),
+      configurationSetName: (map['configurationSetName'] as String).input(),
+      deliveryOptions: map['deliveryOptions'] == null ? null : (ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reputationOptions: map['reputationOptions'] == null ? null : (ConfigurationSetReputationOptions.fromMap((map['reputationOptions'] as Map).cast<String, dynamic>())).input(),
+      sendingOptions: map['sendingOptions'] == null ? null : (ConfigurationSetSendingOptions.fromMap((map['sendingOptions'] as Map).cast<String, dynamic>())).input(),
+      suppressionOptions: map['suppressionOptions'] == null ? null : (ConfigurationSetSuppressionOptions.fromMap((map['suppressionOptions'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackingOptions: map['trackingOptions'] == null ? null : (ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())).input(),
+      vdmOptions: map['vdmOptions'] == null ? null : (ConfigurationSetVdmOptions.fromMap((map['vdmOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

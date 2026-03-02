@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// List of CEN Bandwidth Package IDs in the specified CEN instance.
-  final List<String> cenBandwidthPackageIds;
+  final pulumi.Input<List<String>> cenBandwidthPackageIds;
   /// ID of the CEN instance.
-  final String cenId;
+  final pulumi.Input<String> cenId;
   /// Name of the CEN instance.
-  final String cenInstanceName;
+  final pulumi.Input<String> cenInstanceName;
   /// The creation time of the CEN Instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of the CEN instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the CEN instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the CEN instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates the allowed level of CIDR block overlapping.
-  final String protectionLevel;
+  final pulumi.Input<String> protectionLevel;
   /// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetInstancesInstance].
   /// [cenBandwidthPackageIds] List of CEN Bandwidth Package IDs in the specified CEN instance.
@@ -64,16 +65,16 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      cenBandwidthPackageIds: (map['cenBandwidthPackageIds'] as List).cast<String>(),
-      cenId: map['cenId'] as String,
-      cenInstanceName: map['cenInstanceName'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      protectionLevel: map['protectionLevel'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      cenBandwidthPackageIds: ((map['cenBandwidthPackageIds'] as List).cast<String>()).input(),
+      cenId: (map['cenId'] as String).input(),
+      cenInstanceName: (map['cenInstanceName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectionLevel: (map['protectionLevel'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

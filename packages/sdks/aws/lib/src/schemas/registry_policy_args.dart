@@ -19,13 +19,10 @@ class RegistryPolicyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryName] Name of EventBridge Schema Registry
   RegistryPolicyArgs({
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> registryName,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryName = pulumi.Input.asInput<String>(registryName);
+    required this.policy,
+    this.region,
+    required this.registryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RegistryPolicyArgs {
 
   factory RegistryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyArgs(
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
     );
   }
 }

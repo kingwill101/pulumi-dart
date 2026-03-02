@@ -34,23 +34,15 @@ class AzureADAdministratorArgs {
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
   AzureADAdministratorArgs({
-    pulumi.Output<String>? administratorName,
-    pulumi.Output<String>? administratorType,
-    pulumi.Output<String>? identityResourceId,
-    pulumi.Output<String>? login,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? sid,
-    pulumi.Output<String>? tenantId,
-  }) :
-      administratorName = pulumi.Input.asOptionalInput<String>(administratorName),
-      administratorType = pulumi.Input.asOptionalInput<String>(administratorType),
-      identityResourceId = pulumi.Input.asOptionalInput<String>(identityResourceId),
-      login = pulumi.Input.asOptionalInput<String>(login),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sid = pulumi.Input.asOptionalInput<String>(sid),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.administratorName,
+    this.administratorType,
+    this.identityResourceId,
+    this.login,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.sid,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AzureADAdministratorArgs {
 
   factory AzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return AzureADAdministratorArgs(
-      administratorName: map['administratorName'] == null ? null : pulumi.Output.create<String>(map['administratorName'] as String),
-      administratorType: map['administratorType'] == null ? null : pulumi.Output.create<String>(map['administratorType'] as String),
-      identityResourceId: map['identityResourceId'] == null ? null : pulumi.Output.create<String>(map['identityResourceId'] as String),
-      login: map['login'] == null ? null : pulumi.Output.create<String>(map['login'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sid: map['sid'] == null ? null : pulumi.Output.create<String>(map['sid'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      administratorName: map['administratorName'] == null ? null : (map['administratorName'] as String).input(),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
+      identityResourceId: map['identityResourceId'] == null ? null : (map['identityResourceId'] as String).input(),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

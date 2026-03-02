@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Agent disk details.
 class AgentDiskDetailsResponse {
   /// The disk capacity in bytes.
-  final double capacityInBytes;
+  final pulumi.Input<double> capacityInBytes;
   /// The disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The disk name.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// A value indicating whether the disk is the OS disk.
-  final String isOSDisk;
+  final pulumi.Input<String> isOSDisk;
   /// The lun of disk.
-  final int lunId;
+  final pulumi.Input<int> lunId;
 
   /// Creates a new [AgentDiskDetailsResponse].
   /// [capacityInBytes] The disk capacity in bytes.
@@ -40,11 +41,11 @@ class AgentDiskDetailsResponse {
 
   factory AgentDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AgentDiskDetailsResponse(
-      capacityInBytes: map['capacityInBytes'] as double,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      isOSDisk: map['isOSDisk'] as String,
-      lunId: map['lunId'] as int,
+      capacityInBytes: (map['capacityInBytes'] as double).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      isOSDisk: (map['isOSDisk'] as String).input(),
+      lunId: (map['lunId'] as int).input(),
     );
   }
 }

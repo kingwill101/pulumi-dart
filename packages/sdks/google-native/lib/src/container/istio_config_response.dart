@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for Istio addon.
 class IstioConfigResponse {
   /// The specified Istio auth mode, either none, or mutual TLS.
-  final String auth;
+  final pulumi.Input<String> auth;
   /// Whether Istio is enabled for this cluster.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
 
   /// Creates a new [IstioConfigResponse].
   /// [auth] The specified Istio auth mode, either none, or mutual TLS.
@@ -25,8 +26,8 @@ class IstioConfigResponse {
 
   factory IstioConfigResponse.fromMap(Map<String, dynamic> map) {
     return IstioConfigResponse(
-      auth: map['auth'] as String,
-      disabled: map['disabled'] as bool,
+      auth: (map['auth'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
     );
   }
 }

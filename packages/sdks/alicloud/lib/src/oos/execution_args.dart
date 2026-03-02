@@ -37,25 +37,16 @@ class ExecutionArgs {
   /// [templateName] The name of execution template.
   /// [templateVersion] The version of execution template.
   ExecutionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? loopMode,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? parameters,
-    pulumi.Output<String>? parentExecutionId,
-    pulumi.Output<String>? safetyCheck,
-    pulumi.Output<String>? templateContent,
-    required pulumi.Output<String> templateName,
-    pulumi.Output<String>? templateVersion,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      loopMode = pulumi.Input.asOptionalInput<String>(loopMode),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      parameters = pulumi.Input.asOptionalInput<String>(parameters),
-      parentExecutionId = pulumi.Input.asOptionalInput<String>(parentExecutionId),
-      safetyCheck = pulumi.Input.asOptionalInput<String>(safetyCheck),
-      templateContent = pulumi.Input.asOptionalInput<String>(templateContent),
-      templateName = pulumi.Input.asInput<String>(templateName),
-      templateVersion = pulumi.Input.asOptionalInput<String>(templateVersion);
+    this.description,
+    this.loopMode,
+    this.mode,
+    this.parameters,
+    this.parentExecutionId,
+    this.safetyCheck,
+    this.templateContent,
+    required this.templateName,
+    this.templateVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      loopMode: map['loopMode'] == null ? null : pulumi.Output.create<String>(map['loopMode'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<String>(map['parameters'] as String),
-      parentExecutionId: map['parentExecutionId'] == null ? null : pulumi.Output.create<String>(map['parentExecutionId'] as String),
-      safetyCheck: map['safetyCheck'] == null ? null : pulumi.Output.create<String>(map['safetyCheck'] as String),
-      templateContent: map['templateContent'] == null ? null : pulumi.Output.create<String>(map['templateContent'] as String),
-      templateName: pulumi.Output.create<String>(map['templateName'] as String),
-      templateVersion: map['templateVersion'] == null ? null : pulumi.Output.create<String>(map['templateVersion'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      loopMode: map['loopMode'] == null ? null : (map['loopMode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parentExecutionId: map['parentExecutionId'] == null ? null : (map['parentExecutionId'] as String).input(),
+      safetyCheck: map['safetyCheck'] == null ? null : (map['safetyCheck'] as String).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
+      templateName: (map['templateName'] as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
     );
   }
 }

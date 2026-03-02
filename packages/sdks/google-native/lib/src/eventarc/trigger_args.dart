@@ -44,29 +44,18 @@ class TriggerArgs {
   /// [transport] Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   /// [triggerId] Required. The user-provided ID to be assigned to the trigger.
   TriggerArgs({
-    pulumi.Output<String>? channel,
-    required pulumi.Output<Destination> destination,
-    pulumi.Output<String>? eventDataContentType,
-    required pulumi.Output<List<EventFilter>> eventFilters,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<Transport>? transport,
-    required pulumi.Output<String> triggerId,
-  }) :
-      channel = pulumi.Input.asOptionalInput<String>(channel),
-      destination = pulumi.Input.asInput<Destination>(destination),
-      eventDataContentType = pulumi.Input.asOptionalInput<String>(eventDataContentType),
-      eventFilters = pulumi.Input.asInput<List<EventFilter>>(eventFilters),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      transport = pulumi.Input.asOptionalInput<Transport>(transport),
-      triggerId = pulumi.Input.asInput<String>(triggerId);
+    this.channel,
+    required this.destination,
+    this.eventDataContentType,
+    required this.eventFilters,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceAccount,
+    this.transport,
+    required this.triggerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      channel: map['channel'] == null ? null : pulumi.Output.create<String>(map['channel'] as String),
-      destination: pulumi.Output.create<Destination>(Destination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      eventDataContentType: map['eventDataContentType'] == null ? null : pulumi.Output.create<String>(map['eventDataContentType'] as String),
-      eventFilters: pulumi.Output.create<List<EventFilter>>(pulumi.Input.decodeList<EventFilter>(map['eventFilters'], (value) => EventFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      transport: map['transport'] == null ? null : pulumi.Output.create<Transport>(Transport.fromMap((map['transport'] as Map).cast<String, dynamic>())),
-      triggerId: pulumi.Output.create<String>(map['triggerId'] as String),
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      destination: (Destination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType'] as String).input(),
+      eventFilters: (pulumi.Input.decodeList<EventFilter>(map['eventFilters'], (value) => EventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      transport: map['transport'] == null ? null : (Transport.fromMap((map['transport'] as Map).cast<String, dynamic>())).input(),
+      triggerId: (map['triggerId'] as String).input(),
     );
   }
 }

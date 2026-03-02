@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolDiskEncryption {
   /// On Linux pool, only \"TemporaryDisk\" is supported; on Windows pool, \"OsDisk\" and \"TemporaryDisk\" must be specified.
-  final String diskEncryptionTarget;
+  final pulumi.Input<String> diskEncryptionTarget;
 
   /// Creates a new [PoolDiskEncryption].
   /// [diskEncryptionTarget] On Linux pool, only \"TemporaryDisk\" is supported; on Windows pool, \"OsDisk\" and \"TemporaryDisk\" must be specified.
@@ -19,7 +20,7 @@ class PoolDiskEncryption {
 
   factory PoolDiskEncryption.fromMap(Map<String, dynamic> map) {
     return PoolDiskEncryption(
-      diskEncryptionTarget: map['diskEncryptionTarget'] as String,
+      diskEncryptionTarget: (map['diskEncryptionTarget'] as String).input(),
     );
   }
 }

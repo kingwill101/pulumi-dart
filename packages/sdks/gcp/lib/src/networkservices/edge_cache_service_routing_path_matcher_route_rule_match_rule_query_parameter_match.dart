@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch {
   /// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
-  final String? exactMatch;
+  final pulumi.Input<String>? exactMatch;
   /// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
-  final bool? presentMatch;
+  final pulumi.Input<bool>? presentMatch;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch].
   /// [exactMatch] The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
@@ -29,9 +30,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(
-      exactMatch: map['exactMatch'] == null ? null : map['exactMatch'] as String,
-      name: map['name'] as String,
-      presentMatch: map['presentMatch'] == null ? null : map['presentMatch'] as bool,
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
+      name: (map['name'] as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
     );
   }
 }

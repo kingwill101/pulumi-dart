@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationInstallPatchWindow {
   /// List of Classification category of patches to be patched.
-  final List<String> classificationsToIncludes;
+  final pulumi.Input<List<String>> classificationsToIncludes;
   /// List of KB numbers to be excluded from patching.
-  final List<String> kbNumbersToExcludes;
+  final pulumi.Input<List<String>> kbNumbersToExcludes;
   /// List of KB numbers to be included for patching.
-  final List<String> kbNumbersToIncludes;
+  final pulumi.Input<List<String>> kbNumbersToIncludes;
 
   /// Creates a new [GetConfigurationInstallPatchWindow].
   /// [classificationsToIncludes] List of Classification category of patches to be patched.
@@ -29,9 +30,9 @@ class GetConfigurationInstallPatchWindow {
 
   factory GetConfigurationInstallPatchWindow.fromMap(Map<String, dynamic> map) {
     return GetConfigurationInstallPatchWindow(
-      classificationsToIncludes: (map['classificationsToIncludes'] as List).cast<String>(),
-      kbNumbersToExcludes: (map['kbNumbersToExcludes'] as List).cast<String>(),
-      kbNumbersToIncludes: (map['kbNumbersToIncludes'] as List).cast<String>(),
+      classificationsToIncludes: ((map['classificationsToIncludes'] as List).cast<String>()).input(),
+      kbNumbersToExcludes: ((map['kbNumbersToExcludes'] as List).cast<String>()).input(),
+      kbNumbersToIncludes: ((map['kbNumbersToIncludes'] as List).cast<String>()).input(),
     );
   }
 }

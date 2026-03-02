@@ -37,25 +37,16 @@ class ManagedInstanceLongTermRetentionPolicyArgs {
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format.
   ManagedInstanceLongTermRetentionPolicyArgs({
-    pulumi.Output<String>? backupStorageAccessTier,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<String>? monthlyRetention,
-    pulumi.Output<String>? policyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? weekOfYear,
-    pulumi.Output<String>? weeklyRetention,
-    pulumi.Output<String>? yearlyRetention,
-  }) :
-      backupStorageAccessTier = pulumi.Input.asOptionalInput<String>(backupStorageAccessTier),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      monthlyRetention = pulumi.Input.asOptionalInput<String>(monthlyRetention),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      weekOfYear = pulumi.Input.asOptionalInput<int>(weekOfYear),
-      weeklyRetention = pulumi.Input.asOptionalInput<String>(weeklyRetention),
-      yearlyRetention = pulumi.Input.asOptionalInput<String>(yearlyRetention);
+    this.backupStorageAccessTier,
+    required this.databaseName,
+    required this.managedInstanceName,
+    this.monthlyRetention,
+    this.policyName,
+    required this.resourceGroupName,
+    this.weekOfYear,
+    this.weeklyRetention,
+    this.yearlyRetention,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ManagedInstanceLongTermRetentionPolicyArgs {
 
   factory ManagedInstanceLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceLongTermRetentionPolicyArgs(
-      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : pulumi.Output.create<String>(map['backupStorageAccessTier'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      monthlyRetention: map['monthlyRetention'] == null ? null : pulumi.Output.create<String>(map['monthlyRetention'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      weekOfYear: map['weekOfYear'] == null ? null : pulumi.Output.create<int>(map['weekOfYear'] as int),
-      weeklyRetention: map['weeklyRetention'] == null ? null : pulumi.Output.create<String>(map['weeklyRetention'] as String),
-      yearlyRetention: map['yearlyRetention'] == null ? null : pulumi.Output.create<String>(map['yearlyRetention'] as String),
+      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : (map['backupStorageAccessTier'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear'] as int).input(),
+      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention'] as String).input(),
+      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention'] as String).input(),
     );
   }
 }

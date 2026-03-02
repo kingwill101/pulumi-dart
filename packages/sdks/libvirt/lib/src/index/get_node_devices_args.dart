@@ -12,9 +12,8 @@ class GetNodeDevicesArgs {
   /// Creates a new [GetNodeDevicesArgs].
   /// [capability] Optional.
   GetNodeDevicesArgs({
-    pulumi.Output<String>? capability,
-  }) :
-      capability = pulumi.Input.asOptionalInput<String>(capability);
+    this.capability,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetNodeDevicesArgs {
 
   factory GetNodeDevicesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeDevicesArgs(
-      capability: map['capability'] == null ? null : pulumi.Output.create<String>(map['capability'] as String),
+      capability: map['capability'] == null ? null : (map['capability'] as String).input(),
     );
   }
 }

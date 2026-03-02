@@ -26,19 +26,13 @@ class DynamicTagGroupState {
   /// [tagKey] The tag keys of the cloud resources.
   /// [templateIdLists] The IDs of the alert templates.
   DynamicTagGroupState({
-    pulumi.Output<List<String>>? contactGroupLists,
-    pulumi.Output<String>? matchExpressFilterRelation,
-    pulumi.Output<List<DynamicTagGroupMatchExpress>>? matchExpresses,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tagKey,
-    pulumi.Output<List<String>>? templateIdLists,
-  }) :
-      contactGroupLists = pulumi.Input.asOptionalInput<List<String>>(contactGroupLists),
-      matchExpressFilterRelation = pulumi.Input.asOptionalInput<String>(matchExpressFilterRelation),
-      matchExpresses = pulumi.Input.asOptionalInput<List<DynamicTagGroupMatchExpress>>(matchExpresses),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tagKey = pulumi.Input.asOptionalInput<String>(tagKey),
-      templateIdLists = pulumi.Input.asOptionalInput<List<String>>(templateIdLists);
+    this.contactGroupLists,
+    this.matchExpressFilterRelation,
+    this.matchExpresses,
+    this.status,
+    this.tagKey,
+    this.templateIdLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class DynamicTagGroupState {
 
   factory DynamicTagGroupState.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupState(
-      contactGroupLists: map['contactGroupLists'] == null ? null : pulumi.Output.create<List<String>>((map['contactGroupLists'] as List).cast<String>()),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : pulumi.Output.create<String>(map['matchExpressFilterRelation'] as String),
-      matchExpresses: map['matchExpresses'] == null ? null : pulumi.Output.create<List<DynamicTagGroupMatchExpress>>(pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tagKey: map['tagKey'] == null ? null : pulumi.Output.create<String>(map['tagKey'] as String),
-      templateIdLists: map['templateIdLists'] == null ? null : pulumi.Output.create<List<String>>((map['templateIdLists'] as List).cast<String>()),
+      contactGroupLists: map['contactGroupLists'] == null ? null : ((map['contactGroupLists'] as List).cast<String>()).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
+      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists'] as List).cast<String>()).input(),
     );
   }
 }

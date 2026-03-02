@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOriginOriginShield {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// AWS Region for Origin Shield. To specify a region, use the region code, not the region name. For example, specify the US East (Ohio) region as `us-east-2`.
-  final String? originShieldRegion;
+  final pulumi.Input<String>? originShieldRegion;
 
   /// Creates a new [DistributionOriginOriginShield].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
@@ -24,8 +25,8 @@ class DistributionOriginOriginShield {
 
   factory DistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
     return DistributionOriginOriginShield(
-      enabled: map['enabled'] as bool,
-      originShieldRegion: map['originShieldRegion'] == null ? null : map['originShieldRegion'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion'] as String).input(),
     );
   }
 }

@@ -1,49 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworksVpc {
   /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// Time of creation.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Description of the VPC
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of dhcp options set.
-  final String dhcpOptionsSetId;
+  final pulumi.Input<String> dhcpOptionsSetId;
   /// The status of the DHCP options set. Valid values: `Available`, `InUse`, `Deleted`, `Pending`.
-  final String dhcpOptionsSetStatus;
+  final pulumi.Input<String> dhcpOptionsSetStatus;
   /// Indicates whether the Domain Name System (DNS) feature is enabled.
-  final String dnsHostnameStatus;
+  final pulumi.Input<String> dnsHostnameStatus;
   /// ID of the VPC.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IPv6 CIDR block of the VPC.
-  final String ipv6CidrBlock;
+  final pulumi.Input<String> ipv6CidrBlock;
   /// Indicate whether the VPC is the default one in the specified region.
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// ID of the region where the VPC is located.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The Id of resource group which VPC belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Route table ID of the VRouter.
-  final String routeTableId;
+  final pulumi.Input<String> routeTableId;
   /// The ID of the VRouter.
-  final String routerId;
+  final pulumi.Input<String> routerId;
   /// A list of secondary IPv4 CIDR blocks of the VPC.
-  final List<String> secondaryCidrBlocks;
+  final pulumi.Input<List<String>> secondaryCidrBlocks;
   /// Filter results by a specific status. Valid value are `Pending` and `Available`.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// A list of user CIDRs.
-  final List<String> userCidrs;
+  final pulumi.Input<List<String>> userCidrs;
   /// ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The name of the VPC.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
   /// ID of the VRouter.
-  final String vrouterId;
+  final pulumi.Input<String> vrouterId;
   /// List of vSwitch IDs in the specified VPC
-  final List<String> vswitchIds;
+  final pulumi.Input<List<String>> vswitchIds;
 
   /// Creates a new [GetNetworksVpc].
   /// [cidrBlock] Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -119,27 +120,27 @@ class GetNetworksVpc {
 
   factory GetNetworksVpc.fromMap(Map<String, dynamic> map) {
     return GetNetworksVpc(
-      cidrBlock: map['cidrBlock'] as String,
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      dhcpOptionsSetId: map['dhcpOptionsSetId'] as String,
-      dhcpOptionsSetStatus: map['dhcpOptionsSetStatus'] as String,
-      dnsHostnameStatus: map['dnsHostnameStatus'] as String,
-      id: map['id'] as String,
-      ipv6CidrBlock: map['ipv6CidrBlock'] as String,
-      isDefault: map['isDefault'] as bool,
-      regionId: map['regionId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      routeTableId: map['routeTableId'] as String,
-      routerId: map['routerId'] as String,
-      secondaryCidrBlocks: (map['secondaryCidrBlocks'] as List).cast<String>(),
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userCidrs: (map['userCidrs'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
-      vrouterId: map['vrouterId'] as String,
-      vswitchIds: (map['vswitchIds'] as List).cast<String>(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      dhcpOptionsSetId: (map['dhcpOptionsSetId'] as String).input(),
+      dhcpOptionsSetStatus: (map['dhcpOptionsSetStatus'] as String).input(),
+      dnsHostnameStatus: (map['dnsHostnameStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipv6CidrBlock: (map['ipv6CidrBlock'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      regionId: (map['regionId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      routerId: (map['routerId'] as String).input(),
+      secondaryCidrBlocks: ((map['secondaryCidrBlocks'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      userCidrs: ((map['userCidrs'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
+      vrouterId: (map['vrouterId'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

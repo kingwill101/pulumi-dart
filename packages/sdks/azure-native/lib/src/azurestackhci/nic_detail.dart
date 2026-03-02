@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The NIC Detail of a device.
 class NicDetail {
   /// Adapter Name of NIC
-  final String? adapterName;
+  final pulumi.Input<String>? adapterName;
   /// Component Id of NIC
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// Default Gateway of NIC
-  final String? defaultGateway;
+  final pulumi.Input<String>? defaultGateway;
   /// Default Isolation of Management NIC
-  final String? defaultIsolationId;
+  final pulumi.Input<String>? defaultIsolationId;
   /// DNS Servers for NIC
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Driver Version of NIC
-  final String? driverVersion;
+  final pulumi.Input<String>? driverVersion;
   /// Interface Description of NIC
-  final String? interfaceDescription;
+  final pulumi.Input<String>? interfaceDescription;
   /// Subnet Mask of NIC
-  final String? ip4Address;
+  final pulumi.Input<String>? ip4Address;
   /// Subnet Mask of NIC
-  final String? subnetMask;
+  final pulumi.Input<String>? subnetMask;
 
   /// Creates a new [NicDetail].
   /// [adapterName] Adapter Name of NIC
@@ -60,15 +61,15 @@ class NicDetail {
 
   factory NicDetail.fromMap(Map<String, dynamic> map) {
     return NicDetail(
-      adapterName: map['adapterName'] == null ? null : map['adapterName'] as String,
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      defaultGateway: map['defaultGateway'] == null ? null : map['defaultGateway'] as String,
-      defaultIsolationId: map['defaultIsolationId'] == null ? null : map['defaultIsolationId'] as String,
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      driverVersion: map['driverVersion'] == null ? null : map['driverVersion'] as String,
-      interfaceDescription: map['interfaceDescription'] == null ? null : map['interfaceDescription'] as String,
-      ip4Address: map['ip4Address'] == null ? null : map['ip4Address'] as String,
-      subnetMask: map['subnetMask'] == null ? null : map['subnetMask'] as String,
+      adapterName: map['adapterName'] == null ? null : (map['adapterName'] as String).input(),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as String).input(),
+      defaultIsolationId: map['defaultIsolationId'] == null ? null : (map['defaultIsolationId'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion'] as String).input(),
+      interfaceDescription: map['interfaceDescription'] == null ? null : (map['interfaceDescription'] as String).input(),
+      ip4Address: map['ip4Address'] == null ? null : (map['ip4Address'] as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
     );
   }
 }

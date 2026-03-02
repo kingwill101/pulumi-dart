@@ -19,13 +19,10 @@ class ListKustoPoolFollowerDatabasesArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   ListKustoPoolFollowerDatabasesArgs({
-    required pulumi.Output<String> kustoPoolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.kustoPoolName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListKustoPoolFollowerDatabasesArgs {
 
   factory ListKustoPoolFollowerDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return ListKustoPoolFollowerDatabasesArgs(
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

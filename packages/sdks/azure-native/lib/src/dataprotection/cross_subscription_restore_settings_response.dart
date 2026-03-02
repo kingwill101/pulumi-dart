@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CrossSubscriptionRestore Settings
 class CrossSubscriptionRestoreSettingsResponse {
   /// CrossSubscriptionRestore state
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [CrossSubscriptionRestoreSettingsResponse].
   /// [state] CrossSubscriptionRestore state
@@ -20,7 +21,7 @@ class CrossSubscriptionRestoreSettingsResponse {
 
   factory CrossSubscriptionRestoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CrossSubscriptionRestoreSettingsResponse(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

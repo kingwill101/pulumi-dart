@@ -19,13 +19,10 @@ class GetLoadBalancerArgs {
   /// [name] Name of the Load Balancer.
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   GetLoadBalancerArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? withSelector,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.id,
+    this.name,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLoadBalancerArgs {
 
   factory GetLoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

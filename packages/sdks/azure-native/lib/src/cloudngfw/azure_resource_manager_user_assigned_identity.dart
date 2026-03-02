@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A managed identity assigned by the user.
 class AzureResourceManagerUserAssignedIdentity {
   /// The active directory client identifier for this principal.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The active directory identifier for this principal.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
 
   /// Creates a new [AzureResourceManagerUserAssignedIdentity].
   /// [clientId] The active directory client identifier for this principal.
@@ -25,8 +26,8 @@ class AzureResourceManagerUserAssignedIdentity {
 
   factory AzureResourceManagerUserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerUserAssignedIdentity(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
     );
   }
 }

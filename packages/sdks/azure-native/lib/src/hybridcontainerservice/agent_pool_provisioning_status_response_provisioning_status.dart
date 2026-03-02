@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_pool_provisioning_status_response_error.dart';
 
 /// Contains Provisioning errors
 class AgentPoolProvisioningStatusResponseProvisioningStatus {
-  final AgentPoolProvisioningStatusResponseError? error;
-  final String? operationId;
+  final pulumi.Input<AgentPoolProvisioningStatusResponseError>? error;
+  final pulumi.Input<String>? operationId;
   /// Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
-  final String? phase;
-  final String? status;
+  final pulumi.Input<String>? phase;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AgentPoolProvisioningStatusResponseProvisioningStatus].
   /// [error] Optional.
@@ -24,7 +25,7 @@ class AgentPoolProvisioningStatusResponseProvisioningStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<AgentPoolProvisioningStatusResponseError, Map<String, dynamic>>(error, (value) => value.toMap()),
       'operationId': ?operationId,
       'phase': ?phase,
       'status': ?status,
@@ -33,10 +34,10 @@ class AgentPoolProvisioningStatusResponseProvisioningStatus {
 
   factory AgentPoolProvisioningStatusResponseProvisioningStatus.fromMap(Map<String, dynamic> map) {
     return AgentPoolProvisioningStatusResponseProvisioningStatus(
-      error: map['error'] == null ? null : AgentPoolProvisioningStatusResponseError.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
-      phase: map['phase'] == null ? null : map['phase'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      error: map['error'] == null ? null : (AgentPoolProvisioningStatusResponseError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -49,31 +49,19 @@ class SubscriptionArgs {
   /// [sid] Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
   /// [state] Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
   SubscriptionArgs({
-    pulumi.Output<bool>? allowTracing,
-    pulumi.Output<String>? appType,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? notify,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? primaryKey,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? secondaryKey,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? sid,
-    pulumi.Output<SubscriptionState>? state,
-  }) :
-      allowTracing = pulumi.Input.asOptionalInput<bool>(allowTracing),
-      appType = pulumi.Input.asOptionalInput<String>(appType),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      notify = pulumi.Input.asOptionalInput<bool>(notify),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      primaryKey = pulumi.Input.asOptionalInput<String>(primaryKey),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scope = pulumi.Input.asInput<String>(scope),
-      secondaryKey = pulumi.Input.asOptionalInput<String>(secondaryKey),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sid = pulumi.Input.asOptionalInput<String>(sid),
-      state = pulumi.Input.asOptionalInput<SubscriptionState>(state);
+    this.allowTracing,
+    this.appType,
+    required this.displayName,
+    this.notify,
+    this.ownerId,
+    this.primaryKey,
+    required this.resourceGroupName,
+    required this.scope,
+    this.secondaryKey,
+    required this.serviceName,
+    this.sid,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      allowTracing: map['allowTracing'] == null ? null : pulumi.Output.create<bool>(map['allowTracing'] as bool),
-      appType: map['appType'] == null ? null : pulumi.Output.create<String>(map['appType'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      notify: map['notify'] == null ? null : pulumi.Output.create<bool>(map['notify'] as bool),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      primaryKey: map['primaryKey'] == null ? null : pulumi.Output.create<String>(map['primaryKey'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      secondaryKey: map['secondaryKey'] == null ? null : pulumi.Output.create<String>(map['secondaryKey'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sid: map['sid'] == null ? null : pulumi.Output.create<String>(map['sid'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<SubscriptionState>(SubscriptionState.fromValue(map['state'] as String)),
+      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing'] as bool).input(),
+      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      notify: map['notify'] == null ? null : (map['notify'] as bool).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      state: map['state'] == null ? null : (SubscriptionState.fromValue(map['state'] as String)).input(),
     );
   }
 }

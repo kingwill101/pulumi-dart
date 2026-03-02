@@ -28,19 +28,13 @@ class GetBasicAccelerateIpEndpointRelationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
   GetBasicAccelerateIpEndpointRelationsArgs({
-    pulumi.Output<String>? accelerateIpId,
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateIpId = pulumi.Input.asOptionalInput<String>(accelerateIpId),
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateIpId,
+    required this.acceleratorId,
+    this.endpointId,
+    this.ids,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetBasicAccelerateIpEndpointRelationsArgs {
 
   factory GetBasicAccelerateIpEndpointRelationsArgs.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpEndpointRelationsArgs(
-      accelerateIpId: map['accelerateIpId'] == null ? null : pulumi.Output.create<String>(map['accelerateIpId'] as String),
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

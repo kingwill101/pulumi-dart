@@ -41,23 +41,15 @@ class ProjectArgs {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [tags] Tags for the project. Changing this updates the existing
   ProjectArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? isDomain,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isDomain = pulumi.Input.asOptionalInput<bool>(isDomain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.description,
+    this.domainId,
+    this.enabled,
+    this.isDomain,
+    this.name,
+    this.parentId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      isDomain: map['isDomain'] == null ? null : pulumi.Output.create<bool>(map['isDomain'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      isDomain: map['isDomain'] == null ? null : (map['isDomain'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

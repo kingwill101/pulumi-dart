@@ -16,11 +16,9 @@ class GetScalingPlanArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalingPlanName] The name of the scaling plan.
   GetScalingPlanArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scalingPlanName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scalingPlanName = pulumi.Input.asInput<String>(scalingPlanName);
+    required this.resourceGroupName,
+    required this.scalingPlanName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScalingPlanArgs {
 
   factory GetScalingPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetScalingPlanArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scalingPlanName: pulumi.Output.create<String>(map['scalingPlanName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scalingPlanName: (map['scalingPlanName'] as String).input(),
     );
   }
 }

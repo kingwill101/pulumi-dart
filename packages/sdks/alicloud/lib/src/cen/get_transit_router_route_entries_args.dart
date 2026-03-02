@@ -32,23 +32,15 @@ class GetTransitRouterRouteEntriesArgs {
   /// [transitRouterRouteEntryStatus] The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
   /// [transitRouterRouteTableId] ID of the CEN Transit Router Route Table.
   GetTransitRouterRouteEntriesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? transitRouterRouteEntryIds,
-    pulumi.Output<List<String>>? transitRouterRouteEntryNames,
-    pulumi.Output<String>? transitRouterRouteEntryStatus,
-    required pulumi.Output<String> transitRouterRouteTableId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterRouteEntryIds = pulumi.Input.asOptionalInput<List<String>>(transitRouterRouteEntryIds),
-      transitRouterRouteEntryNames = pulumi.Input.asOptionalInput<List<String>>(transitRouterRouteEntryNames),
-      transitRouterRouteEntryStatus = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryStatus),
-      transitRouterRouteTableId = pulumi.Input.asInput<String>(transitRouterRouteTableId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.transitRouterRouteEntryIds,
+    this.transitRouterRouteEntryNames,
+    this.transitRouterRouteEntryStatus,
+    required this.transitRouterRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class GetTransitRouterRouteEntriesArgs {
 
   factory GetTransitRouterRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteEntriesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterRouteEntryIds: map['transitRouterRouteEntryIds'] == null ? null : pulumi.Output.create<List<String>>((map['transitRouterRouteEntryIds'] as List).cast<String>()),
-      transitRouterRouteEntryNames: map['transitRouterRouteEntryNames'] == null ? null : pulumi.Output.create<List<String>>((map['transitRouterRouteEntryNames'] as List).cast<String>()),
-      transitRouterRouteEntryStatus: map['transitRouterRouteEntryStatus'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryStatus'] as String),
-      transitRouterRouteTableId: pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterRouteEntryIds: map['transitRouterRouteEntryIds'] == null ? null : ((map['transitRouterRouteEntryIds'] as List).cast<String>()).input(),
+      transitRouterRouteEntryNames: map['transitRouterRouteEntryNames'] == null ? null : ((map['transitRouterRouteEntryNames'] as List).cast<String>()).input(),
+      transitRouterRouteEntryStatus: map['transitRouterRouteEntryStatus'] == null ? null : (map['transitRouterRouteEntryStatus'] as String).input(),
+      transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

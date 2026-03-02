@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerIpv4FirewallRule {
   /// Specifies the name of the firewall rule.
-  final String name;
+  final pulumi.Input<String> name;
   /// End of the firewall rule range as IPv4 address.
-  final String rangeEnd;
+  final pulumi.Input<String> rangeEnd;
   /// Start of the firewall rule range as IPv4 address.
-  final String rangeStart;
+  final pulumi.Input<String> rangeStart;
 
   /// Creates a new [ServerIpv4FirewallRule].
   /// [name] Specifies the name of the firewall rule.
@@ -29,9 +30,9 @@ class ServerIpv4FirewallRule {
 
   factory ServerIpv4FirewallRule.fromMap(Map<String, dynamic> map) {
     return ServerIpv4FirewallRule(
-      name: map['name'] as String,
-      rangeEnd: map['rangeEnd'] as String,
-      rangeStart: map['rangeStart'] as String,
+      name: (map['name'] as String).input(),
+      rangeEnd: (map['rangeEnd'] as String).input(),
+      rangeStart: (map['rangeStart'] as String).input(),
     );
   }
 }

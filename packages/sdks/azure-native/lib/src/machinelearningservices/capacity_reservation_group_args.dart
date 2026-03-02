@@ -37,23 +37,15 @@ class CapacityReservationGroupArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   CapacityReservationGroupArgs({
-    required pulumi.Output<CapacityReservationGroupMachinelearningservices> capacityReservationGroupProperties,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      capacityReservationGroupProperties = pulumi.Input.asInput<CapacityReservationGroupMachinelearningservices>(capacityReservationGroupProperties),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.capacityReservationGroupProperties,
+    this.groupId,
+    this.identity,
+    this.kind,
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class CapacityReservationGroupArgs {
 
   factory CapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupArgs(
-      capacityReservationGroupProperties: pulumi.Output.create<CapacityReservationGroupMachinelearningservices>(map['capacityReservationGroupProperties'] as CapacityReservationGroupMachinelearningservices),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      capacityReservationGroupProperties: (map['capacityReservationGroupProperties'] as CapacityReservationGroupMachinelearningservices).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instances_instance_config_interface_ipv4.dart';
 import 'get_instances_instance_config_interface_ipv6.dart';
 
 class GetInstancesInstanceConfigInterface {
   /// Whether this interface is currently booted and active.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// The ID of the Placement Group in the Linode API.
-  final int id;
+  final pulumi.Input<int> id;
   /// IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
-  final List<String>? ipRanges;
+  final pulumi.Input<List<String>>? ipRanges;
   /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-  final String? ipamAddress;
+  final pulumi.Input<String>? ipamAddress;
   /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-  final GetInstancesInstanceConfigInterfaceIpv4 ipv4;
+  final pulumi.Input<GetInstancesInstanceConfigInterfaceIpv4> ipv4;
   /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
-  final GetInstancesInstanceConfigInterfaceIpv6 ipv6;
+  final pulumi.Input<GetInstancesInstanceConfigInterfaceIpv6> ipv6;
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The type of interface. (`public`, `vlan`, `vpc`)
-  final String purpose;
+  final pulumi.Input<String> purpose;
   /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
-  final int? subnetId;
+  final pulumi.Input<int>? subnetId;
   /// The ID of VPC which this interface is attached to.
-  final int vpcId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetInstancesInstanceConfigInterface].
   /// [active] Whether this interface is currently booted and active.
@@ -59,8 +60,8 @@ class GetInstancesInstanceConfigInterface {
       'id': id,
       'ipRanges': ?ipRanges,
       'ipamAddress': ?ipamAddress,
-      'ipv4': ipv4.toMap(),
-      'ipv6': ipv6.toMap(),
+      'ipv4': pulumi.Input.mapInputValue<GetInstancesInstanceConfigInterfaceIpv4, Map<String, dynamic>>(ipv4, (value) => value.toMap()),
+      'ipv6': pulumi.Input.mapInputValue<GetInstancesInstanceConfigInterfaceIpv6, Map<String, dynamic>>(ipv6, (value) => value.toMap()),
       'label': ?label,
       'primary': ?primary,
       'purpose': purpose,
@@ -71,17 +72,17 @@ class GetInstancesInstanceConfigInterface {
 
   factory GetInstancesInstanceConfigInterface.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceConfigInterface(
-      active: map['active'] as bool,
-      id: map['id'] as int,
-      ipRanges: map['ipRanges'] == null ? null : (map['ipRanges'] as List).cast<String>(),
-      ipamAddress: map['ipamAddress'] == null ? null : map['ipamAddress'] as String,
-      ipv4: GetInstancesInstanceConfigInterfaceIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>()),
-      ipv6: GetInstancesInstanceConfigInterfaceIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>()),
-      label: map['label'] == null ? null : map['label'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      purpose: map['purpose'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as int,
-      vpcId: map['vpcId'] as int,
+      active: (map['active'] as bool).input(),
+      id: (map['id'] as int).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
+      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress'] as String).input(),
+      ipv4: (GetInstancesInstanceConfigInterfaceIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>())).input(),
+      ipv6: (GetInstancesInstanceConfigInterfaceIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      purpose: (map['purpose'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

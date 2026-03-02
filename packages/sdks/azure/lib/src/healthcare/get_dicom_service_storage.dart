@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDicomServiceStorage {
   /// The filesystem name of connected storage account.
-  final String fileSystemName;
+  final pulumi.Input<String> fileSystemName;
   /// The resource ID of connected storage account.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [GetDicomServiceStorage].
   /// [fileSystemName] The filesystem name of connected storage account.
@@ -24,8 +25,8 @@ class GetDicomServiceStorage {
 
   factory GetDicomServiceStorage.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceStorage(
-      fileSystemName: map['fileSystemName'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      fileSystemName: (map['fileSystemName'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

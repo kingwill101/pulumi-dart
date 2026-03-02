@@ -28,19 +28,13 @@ class GetSkusNestedResourceTypeThirdArgs {
   /// [resourceType] The resource type.
   /// [sku] The SKU.
   GetSkusNestedResourceTypeThirdArgs({
-    required pulumi.Output<String> nestedResourceTypeFirst,
-    required pulumi.Output<String> nestedResourceTypeSecond,
-    required pulumi.Output<String> nestedResourceTypeThird,
-    required pulumi.Output<String> providerNamespace,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> sku,
-  }) :
-      nestedResourceTypeFirst = pulumi.Input.asInput<String>(nestedResourceTypeFirst),
-      nestedResourceTypeSecond = pulumi.Input.asInput<String>(nestedResourceTypeSecond),
-      nestedResourceTypeThird = pulumi.Input.asInput<String>(nestedResourceTypeThird),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      sku = pulumi.Input.asInput<String>(sku);
+    required this.nestedResourceTypeFirst,
+    required this.nestedResourceTypeSecond,
+    required this.nestedResourceTypeThird,
+    required this.providerNamespace,
+    required this.resourceType,
+    required this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetSkusNestedResourceTypeThirdArgs {
 
   factory GetSkusNestedResourceTypeThirdArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusNestedResourceTypeThirdArgs(
-      nestedResourceTypeFirst: pulumi.Output.create<String>(map['nestedResourceTypeFirst'] as String),
-      nestedResourceTypeSecond: pulumi.Output.create<String>(map['nestedResourceTypeSecond'] as String),
-      nestedResourceTypeThird: pulumi.Output.create<String>(map['nestedResourceTypeThird'] as String),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
+      nestedResourceTypeFirst: (map['nestedResourceTypeFirst'] as String).input(),
+      nestedResourceTypeSecond: (map['nestedResourceTypeSecond'] as String).input(),
+      nestedResourceTypeThird: (map['nestedResourceTypeThird'] as String).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

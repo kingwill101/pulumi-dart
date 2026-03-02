@@ -19,15 +19,11 @@ class FolderState {
   /// [parentFolderId] The ID of the parent folder.
   /// [tags] The tag of the resource.
   FolderState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? folderName,
-    pulumi.Output<String>? parentFolderId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      folderName = pulumi.Input.asOptionalInput<String>(folderName),
-      parentFolderId = pulumi.Input.asOptionalInput<String>(parentFolderId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.createTime,
+    this.folderName,
+    this.parentFolderId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      folderName: map['folderName'] == null ? null : pulumi.Output.create<String>(map['folderName'] as String),
-      parentFolderId: map['parentFolderId'] == null ? null : pulumi.Output.create<String>(map['parentFolderId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      folderName: map['folderName'] == null ? null : (map['folderName'] as String).input(),
+      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class MulticastDomainAssociationArgs {
   /// [transitGatewayAttachmentId] The ID of the transit gateway attachment.
   /// [transitGatewayMulticastDomainId] The ID of the transit gateway multicast domain.
   MulticastDomainAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subnetId,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-    required pulumi.Output<String> transitGatewayMulticastDomainId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId),
-      transitGatewayMulticastDomainId = pulumi.Input.asInput<String>(transitGatewayMulticastDomainId);
+    this.region,
+    required this.subnetId,
+    required this.transitGatewayAttachmentId,
+    required this.transitGatewayMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class MulticastDomainAssociationArgs {
 
   factory MulticastDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayMulticastDomainId: pulumi.Output.create<String>(map['transitGatewayMulticastDomainId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayMulticastDomainId: (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }
 }

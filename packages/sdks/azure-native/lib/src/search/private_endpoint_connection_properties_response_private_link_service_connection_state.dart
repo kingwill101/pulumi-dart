@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
 class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
   /// A description of any extra actions that may be required.
-  final String? actionsRequired;
+  final pulumi.Input<String>? actionsRequired;
   /// The description for the private link service connection state.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState].
   /// [actionsRequired] A description of any extra actions that may be required.
@@ -30,9 +31,9 @@ class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionSta
 
   factory PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : map['actionsRequired'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

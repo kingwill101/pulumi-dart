@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a single followup intent in the chain.
 class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse {
   /// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
-  final String followupIntentName;
+  final pulumi.Input<String> followupIntentName;
   /// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
-  final String parentFollowupIntentName;
+  final pulumi.Input<String> parentFollowupIntentName;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse].
   /// [followupIntentName] The unique identifier of the followup intent. Format: `projects//agent/intents/`.
@@ -25,8 +26,8 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse {
 
   factory GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse(
-      followupIntentName: map['followupIntentName'] as String,
-      parentFollowupIntentName: map['parentFollowupIntentName'] as String,
+      followupIntentName: (map['followupIntentName'] as String).input(),
+      parentFollowupIntentName: (map['parentFollowupIntentName'] as String).input(),
     );
   }
 }

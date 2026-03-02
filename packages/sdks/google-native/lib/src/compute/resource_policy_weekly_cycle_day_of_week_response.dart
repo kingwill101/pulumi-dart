@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourcePolicyWeeklyCycleDayOfWeekResponse {
   /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-  final String day;
+  final pulumi.Input<String> day;
   /// [Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [ResourcePolicyWeeklyCycleDayOfWeekResponse].
   /// [day] Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -29,9 +30,9 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponse {
 
   factory ResourcePolicyWeeklyCycleDayOfWeekResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWeeklyCycleDayOfWeekResponse(
-      day: map['day'] as String,
-      duration: map['duration'] as String,
-      startTime: map['startTime'] as String,
+      day: (map['day'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

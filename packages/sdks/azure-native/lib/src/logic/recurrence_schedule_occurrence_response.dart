@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The recurrence schedule occurrence.
 class RecurrenceScheduleOccurrenceResponse {
   /// The day of the week.
-  final String? day;
+  final pulumi.Input<String>? day;
   /// The occurrence.
-  final int? occurrence;
+  final pulumi.Input<int>? occurrence;
 
   /// Creates a new [RecurrenceScheduleOccurrenceResponse].
   /// [day] The day of the week.
@@ -25,8 +26,8 @@ class RecurrenceScheduleOccurrenceResponse {
 
   factory RecurrenceScheduleOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return RecurrenceScheduleOccurrenceResponse(
-      day: map['day'] == null ? null : map['day'] as String,
-      occurrence: map['occurrence'] == null ? null : map['occurrence'] as int,
+      day: map['day'] == null ? null : (map['day'] as String).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigIstioConfig {
   /// The authentication type between services in Istio. Available options include AUTH_MUTUAL_TLS.
-  final String auth;
+  final pulumi.Input<String> auth;
   /// The status of the Istio addon, which makes it easy to set up Istio for services in a cluster. It is disabled by default. Set disabled = false to enable.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetClusterAddonsConfigIstioConfig].
   /// [auth] The authentication type between services in Istio. Available options include AUTH_MUTUAL_TLS.
@@ -24,8 +25,8 @@ class GetClusterAddonsConfigIstioConfig {
 
   factory GetClusterAddonsConfigIstioConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigIstioConfig(
-      auth: map['auth'] as String,
-      disabled: map['disabled'] as bool,
+      auth: (map['auth'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arg_response.dart';
 
 /// Migration Wave Properties class.
 class WavePropertiesResponse {
   /// Actual start date of the wave.
-  final String actualStartDate;
+  final pulumi.Input<String> actualStartDate;
   /// ARG query and other details to create workloads within a wave
-  final ArgResponse arg;
+  final pulumi.Input<ArgResponse> arg;
   /// Description of the wave.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display Name of the wave.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Planned completion date of the wave.
-  final String? plannedCompletionDate;
+  final pulumi.Input<String>? plannedCompletionDate;
   /// Planned start date of the wave.
-  final String plannedStartDate;
+  final pulumi.Input<String> plannedStartDate;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The current stage of the wave.
-  final String stage;
+  final pulumi.Input<String> stage;
   /// The status of the wave.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [WavePropertiesResponse].
   /// [actualStartDate] Actual start date of the wave.
@@ -48,7 +49,7 @@ class WavePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actualStartDate': actualStartDate,
-      'arg': arg.toMap(),
+      'arg': pulumi.Input.mapInputValue<ArgResponse, Map<String, dynamic>>(arg, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
       'plannedCompletionDate': ?plannedCompletionDate,
@@ -61,15 +62,15 @@ class WavePropertiesResponse {
 
   factory WavePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WavePropertiesResponse(
-      actualStartDate: map['actualStartDate'] as String,
-      arg: ArgResponse.fromMap((map['arg'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : map['plannedCompletionDate'] as String,
-      plannedStartDate: map['plannedStartDate'] as String,
-      provisioningState: map['provisioningState'] as String,
-      stage: map['stage'] as String,
-      status: map['status'] as String,
+      actualStartDate: (map['actualStartDate'] as String).input(),
+      arg: (ArgResponse.fromMap((map['arg'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate'] as String).input(),
+      plannedStartDate: (map['plannedStartDate'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      stage: (map['stage'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

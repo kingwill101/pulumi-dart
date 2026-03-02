@@ -4,42 +4,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_disks_disk_encryption_setting.dart';
 
 class GetManagedDisksDisk {
-  final String createOption;
+  final pulumi.Input<String> createOption;
   /// The ID of the disk access resource for using private endpoints on disks.
-  final String diskAccessId;
+  final pulumi.Input<String> diskAccessId;
   /// The ID of the Disk Encryption Set used to encrypt this Managed Disk.
-  final String diskEncryptionSetId;
+  final pulumi.Input<String> diskEncryptionSetId;
   /// The number of IOPS allowed for this disk, where one operation can transfer between 4k and 256k bytes.
-  final int diskIopsReadWrite;
+  final pulumi.Input<int> diskIopsReadWrite;
   /// The bandwidth allowed for this disk.
-  final int diskMbpsReadWrite;
+  final pulumi.Input<int> diskMbpsReadWrite;
   /// The size of the Managed Disk in gigabytes.
-  final int diskSizeInGb;
+  final pulumi.Input<int> diskSizeInGb;
   /// An `encryption_settings` block as defined below.
-  final List<GetManagedDisksDiskEncryptionSetting> encryptionSettings;
-  final String id;
+  final pulumi.Input<List<GetManagedDisksDiskEncryptionSetting>> encryptionSettings;
+  final pulumi.Input<String> id;
   /// The ID of the source image used for creating this Managed Disk.
-  final String imageReferenceId;
+  final pulumi.Input<String> imageReferenceId;
   /// The Azure location of the Managed Disk.
-  final String location;
+  final pulumi.Input<String> location;
   /// The name of the Managed Disk.
-  final String name;
+  final pulumi.Input<String> name;
   /// Policy for accessing the disk via network.
-  final String networkAccessPolicy;
+  final pulumi.Input<String> networkAccessPolicy;
   /// The operating system used for this Managed Disk.
-  final String osType;
+  final pulumi.Input<String> osType;
   /// The ID of an existing Managed Disk which this Disk was created from.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
   /// The Source URI for this Managed Disk.
-  final String sourceUri;
+  final pulumi.Input<String> sourceUri;
   /// The ID of the Storage Account where the `source_uri` is located.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// The storage account type for the Managed Disk.
-  final String storageAccountType;
+  final pulumi.Input<String> storageAccountType;
   /// A mapping of tags assigned to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// A list of Availability Zones where the Managed Disk exists.
-  final List<String> zones;
+  final pulumi.Input<List<String>> zones;
 
   /// Creates a new [GetManagedDisksDisk].
   /// [createOption] Required.
@@ -91,7 +91,7 @@ class GetManagedDisksDisk {
       'diskIopsReadWrite': diskIopsReadWrite,
       'diskMbpsReadWrite': diskMbpsReadWrite,
       'diskSizeInGb': diskSizeInGb,
-      'encryptionSettings': pulumi.Input.encodeList<GetManagedDisksDiskEncryptionSetting, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
+      'encryptionSettings': pulumi.Input.mapInputValue<List<GetManagedDisksDiskEncryptionSetting>, List<Map<String, dynamic>>>(encryptionSettings, (value) => pulumi.Input.encodeList<GetManagedDisksDiskEncryptionSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'imageReferenceId': imageReferenceId,
       'location': location,
@@ -109,25 +109,25 @@ class GetManagedDisksDisk {
 
   factory GetManagedDisksDisk.fromMap(Map<String, dynamic> map) {
     return GetManagedDisksDisk(
-      createOption: map['createOption'] as String,
-      diskAccessId: map['diskAccessId'] as String,
-      diskEncryptionSetId: map['diskEncryptionSetId'] as String,
-      diskIopsReadWrite: map['diskIopsReadWrite'] as int,
-      diskMbpsReadWrite: map['diskMbpsReadWrite'] as int,
-      diskSizeInGb: map['diskSizeInGb'] as int,
-      encryptionSettings: pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSetting>(map['encryptionSettings'], (value) => GetManagedDisksDiskEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      imageReferenceId: map['imageReferenceId'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networkAccessPolicy: map['networkAccessPolicy'] as String,
-      osType: map['osType'] as String,
-      sourceResourceId: map['sourceResourceId'] as String,
-      sourceUri: map['sourceUri'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      storageAccountType: map['storageAccountType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      zones: (map['zones'] as List).cast<String>(),
+      createOption: (map['createOption'] as String).input(),
+      diskAccessId: (map['diskAccessId'] as String).input(),
+      diskEncryptionSetId: (map['diskEncryptionSetId'] as String).input(),
+      diskIopsReadWrite: (map['diskIopsReadWrite'] as int).input(),
+      diskMbpsReadWrite: (map['diskMbpsReadWrite'] as int).input(),
+      diskSizeInGb: (map['diskSizeInGb'] as int).input(),
+      encryptionSettings: (pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSetting>(map['encryptionSettings'], (value) => GetManagedDisksDiskEncryptionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      imageReferenceId: (map['imageReferenceId'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkAccessPolicy: (map['networkAccessPolicy'] as String).input(),
+      osType: (map['osType'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      sourceUri: (map['sourceUri'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageAccountType: (map['storageAccountType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Uploads files required for validation to VMs (Linux, Windows). Corresponds to Packer file provisioner
 class ImageTemplateFileValidator {
   /// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// Friendly Name to provide context on what this validation step does
-  final String? name;
+  final pulumi.Input<String>? name;
   /// SHA256 checksum of the file provided in the sourceUri field above
-  final String? sha256Checksum;
+  final pulumi.Input<String>? sha256Checksum;
   /// The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
-  final String? sourceUri;
+  final pulumi.Input<String>? sourceUri;
   /// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   /// Expected value is 'File'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ImageTemplateFileValidator].
   /// [destination] The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
@@ -41,11 +42,11 @@ class ImageTemplateFileValidator {
 
   factory ImageTemplateFileValidator.fromMap(Map<String, dynamic> map) {
     return ImageTemplateFileValidator(
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      sha256Checksum: map['sha256Checksum'] == null ? null : map['sha256Checksum'] as String,
-      sourceUri: map['sourceUri'] == null ? null : map['sourceUri'] as String,
-      type: map['type'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum'] as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -43,23 +43,15 @@ class FolderCustomModuleState {
   /// [name] The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
   /// [updateTime] The time at which the custom module was last updated.
   FolderCustomModuleState({
-    pulumi.Output<String>? ancestorModule,
-    pulumi.Output<FolderCustomModuleCustomConfig>? customConfig,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? enablementState,
-    pulumi.Output<String>? folder,
-    pulumi.Output<String>? lastEditor,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? updateTime,
-  }) :
-      ancestorModule = pulumi.Input.asOptionalInput<String>(ancestorModule),
-      customConfig = pulumi.Input.asOptionalInput<FolderCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<String>(enablementState),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      lastEditor = pulumi.Input.asOptionalInput<String>(lastEditor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.ancestorModule,
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.folder,
+    this.lastEditor,
+    this.name,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,14 +68,14 @@ class FolderCustomModuleState {
 
   factory FolderCustomModuleState.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleState(
-      ancestorModule: map['ancestorModule'] == null ? null : pulumi.Output.create<String>(map['ancestorModule'] as String),
-      customConfig: map['customConfig'] == null ? null : pulumi.Output.create<FolderCustomModuleCustomConfig>(FolderCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<String>(map['enablementState'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      lastEditor: map['lastEditor'] == null ? null : pulumi.Output.create<String>(map['lastEditor'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      ancestorModule: map['ancestorModule'] == null ? null : (map['ancestorModule'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (FolderCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

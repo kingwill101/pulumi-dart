@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Application Gateway autoscale configuration.
 class ApplicationGatewayAutoscaleConfigurationResponse {
   /// Upper bound on number of Application Gateway capacity.
-  final int? maxCapacity;
+  final pulumi.Input<int>? maxCapacity;
   /// Lower bound on number of Application Gateway capacity.
-  final int minCapacity;
+  final pulumi.Input<int> minCapacity;
 
   /// Creates a new [ApplicationGatewayAutoscaleConfigurationResponse].
   /// [maxCapacity] Upper bound on number of Application Gateway capacity.
@@ -25,8 +26,8 @@ class ApplicationGatewayAutoscaleConfigurationResponse {
 
   factory ApplicationGatewayAutoscaleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAutoscaleConfigurationResponse(
-      maxCapacity: map['maxCapacity'] == null ? null : map['maxCapacity'] as int,
-      minCapacity: map['minCapacity'] as int,
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      minCapacity: (map['minCapacity'] as int).input(),
     );
   }
 }

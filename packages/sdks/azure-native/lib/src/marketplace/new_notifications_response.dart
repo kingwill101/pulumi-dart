@@ -6,17 +6,17 @@ import 'plan_notification_details_response.dart';
 /// New plans notification details
 class NewNotificationsResponse {
   /// Gets offer display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Gets or sets the icon url
-  final String? icon;
+  final pulumi.Input<String>? icon;
   /// Gets a value indicating whether future plans is enabled.
-  final bool? isFuturePlansEnabled;
+  final pulumi.Input<bool>? isFuturePlansEnabled;
   /// Gets or sets the notification message id
-  final double? messageCode;
+  final pulumi.Input<double>? messageCode;
   /// Gets offer id
-  final String? offerId;
+  final pulumi.Input<String>? offerId;
   /// Gets or sets removed plans notifications
-  final List<PlanNotificationDetailsResponse>? plans;
+  final pulumi.Input<List<PlanNotificationDetailsResponse>>? plans;
 
   /// Creates a new [NewNotificationsResponse].
   /// [displayName] Gets offer display name
@@ -41,18 +41,18 @@ class NewNotificationsResponse {
       'isFuturePlansEnabled': ?isFuturePlansEnabled,
       'messageCode': ?messageCode,
       'offerId': ?offerId,
-      'plans': ?plans == null ? null : pulumi.Input.encodeList<PlanNotificationDetailsResponse, Map<String, dynamic>>(plans!, (value) => value.toMap()),
+      'plans': ?pulumi.Input.mapOptionalInputValue<List<PlanNotificationDetailsResponse>, List<Map<String, dynamic>>>(plans, (value) => pulumi.Input.encodeList<PlanNotificationDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NewNotificationsResponse.fromMap(Map<String, dynamic> map) {
     return NewNotificationsResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      icon: map['icon'] == null ? null : map['icon'] as String,
-      isFuturePlansEnabled: map['isFuturePlansEnabled'] == null ? null : map['isFuturePlansEnabled'] as bool,
-      messageCode: map['messageCode'] == null ? null : map['messageCode'] as double,
-      offerId: map['offerId'] == null ? null : map['offerId'] as String,
-      plans: map['plans'] == null ? null : pulumi.Input.decodeList<PlanNotificationDetailsResponse>(map['plans'], (value) => PlanNotificationDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
+      isFuturePlansEnabled: map['isFuturePlansEnabled'] == null ? null : (map['isFuturePlansEnabled'] as bool).input(),
+      messageCode: map['messageCode'] == null ? null : (map['messageCode'] as double).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      plans: map['plans'] == null ? null : (pulumi.Input.decodeList<PlanNotificationDetailsResponse>(map['plans'], (value) => PlanNotificationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

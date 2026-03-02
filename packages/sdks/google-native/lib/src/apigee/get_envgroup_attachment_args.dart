@@ -16,13 +16,10 @@ class GetEnvgroupAttachmentArgs {
   /// [envgroupId] Required.
   /// [organizationId] Required.
   GetEnvgroupAttachmentArgs({
-    required pulumi.Output<String> attachmentId,
-    required pulumi.Output<String> envgroupId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      envgroupId = pulumi.Input.asInput<String>(envgroupId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.attachmentId,
+    required this.envgroupId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetEnvgroupAttachmentArgs {
 
   factory GetEnvgroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupAttachmentArgs(
-      attachmentId: pulumi.Output.create<String>(map['attachmentId'] as String),
-      envgroupId: pulumi.Output.create<String>(map['envgroupId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      attachmentId: (map['attachmentId'] as String).input(),
+      envgroupId: (map['envgroupId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionNetworkConfigVpcConfig {
   /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the `subnets` field.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// The ID of the subnets in the VPC to which you want to connect your training job or model.
-  final List<String> subnets;
+  final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [DataQualityJobDefinitionNetworkConfigVpcConfig].
   /// [securityGroupIds] The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the `subnets` field.
@@ -24,8 +25,8 @@ class DataQualityJobDefinitionNetworkConfigVpcConfig {
 
   factory DataQualityJobDefinitionNetworkConfigVpcConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionNetworkConfigVpcConfig(
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      subnets: (map['subnets'] as List).cast<String>(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }
 }

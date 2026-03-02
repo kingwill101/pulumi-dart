@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
   /// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
-  final String gpuSharingStrategy;
+  final pulumi.Input<String> gpuSharingStrategy;
   /// The maximum number of containers that can share a GPU.
-  final int maxSharedClientsPerGpu;
+  final pulumi.Input<int> maxSharedClientsPerGpu;
 
   /// Creates a new [GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
@@ -24,8 +25,8 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
 
   factory GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(
-      gpuSharingStrategy: map['gpuSharingStrategy'] as String,
-      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] as int,
+      gpuSharingStrategy: (map['gpuSharingStrategy'] as String).input(),
+      maxSharedClientsPerGpu: (map['maxSharedClientsPerGpu'] as int).input(),
     );
   }
 }

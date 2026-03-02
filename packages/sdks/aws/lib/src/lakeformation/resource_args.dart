@@ -35,21 +35,14 @@ class ResourceArgs {
   /// [withFederation] Whether or not the resource is a federated resource. Set to true when registering AWS Glue connections for federated catalog functionality.
   /// [withPrivilegedAccess] Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
   ResourceArgs({
-    required pulumi.Output<String> arn,
-    pulumi.Output<bool>? hybridAccessEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<bool>? useServiceLinkedRole,
-    pulumi.Output<bool>? withFederation,
-    pulumi.Output<bool>? withPrivilegedAccess,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      hybridAccessEnabled = pulumi.Input.asOptionalInput<bool>(hybridAccessEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      useServiceLinkedRole = pulumi.Input.asOptionalInput<bool>(useServiceLinkedRole),
-      withFederation = pulumi.Input.asOptionalInput<bool>(withFederation),
-      withPrivilegedAccess = pulumi.Input.asOptionalInput<bool>(withPrivilegedAccess);
+    required this.arn,
+    this.hybridAccessEnabled,
+    this.region,
+    this.roleArn,
+    this.useServiceLinkedRole,
+    this.withFederation,
+    this.withPrivilegedAccess,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['hybridAccessEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : pulumi.Output.create<bool>(map['useServiceLinkedRole'] as bool),
-      withFederation: map['withFederation'] == null ? null : pulumi.Output.create<bool>(map['withFederation'] as bool),
-      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : pulumi.Output.create<bool>(map['withPrivilegedAccess'] as bool),
+      arn: (map['arn'] as String).input(),
+      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : (map['hybridAccessEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : (map['useServiceLinkedRole'] as bool).input(),
+      withFederation: map['withFederation'] == null ? null : (map['withFederation'] as bool).input(),
+      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : (map['withPrivilegedAccess'] as bool).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageQueueMessageResponse {
   /// Gets or sets the message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Gets or sets the queue name.
-  final String? queueName;
+  final pulumi.Input<String>? queueName;
   /// Gets or sets the SAS key.
-  final String? sasToken;
+  final pulumi.Input<String>? sasToken;
   /// Gets or sets the storage account name.
-  final String? storageAccount;
+  final pulumi.Input<String>? storageAccount;
 
   /// Creates a new [StorageQueueMessageResponse].
   /// [message] Gets or sets the message.
@@ -34,10 +35,10 @@ class StorageQueueMessageResponse {
 
   factory StorageQueueMessageResponse.fromMap(Map<String, dynamic> map) {
     return StorageQueueMessageResponse(
-      message: map['message'] == null ? null : map['message'] as String,
-      queueName: map['queueName'] == null ? null : map['queueName'] as String,
-      sasToken: map['sasToken'] == null ? null : map['sasToken'] as String,
-      storageAccount: map['storageAccount'] == null ? null : map['storageAccount'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
     );
   }
 }

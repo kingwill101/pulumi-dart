@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterSecretSyncConfigRotationConfig {
   /// Enable the Secret sync auto rotation.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The interval between two consecutive rotations. Default rotation interval is 2 minutes
-  final String rotationInterval;
+  final pulumi.Input<String> rotationInterval;
 
   /// Creates a new [GetClusterSecretSyncConfigRotationConfig].
   /// [enabled] Enable the Secret sync auto rotation.
@@ -24,8 +25,8 @@ class GetClusterSecretSyncConfigRotationConfig {
 
   factory GetClusterSecretSyncConfigRotationConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterSecretSyncConfigRotationConfig(
-      enabled: map['enabled'] as bool,
-      rotationInterval: map['rotationInterval'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      rotationInterval: (map['rotationInterval'] as String).input(),
     );
   }
 }

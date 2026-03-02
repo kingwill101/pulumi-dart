@@ -30,19 +30,13 @@ class DomainNameArgs {
   /// [routingMode] Mode to route traffic for the domain name. Valid values: `API_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_API_MAPPING`.
   /// [tags] Map of tags to assign to the domain name. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DomainNameArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<DomainNameDomainNameConfiguration> domainNameConfiguration,
-    pulumi.Output<DomainNameMutualTlsAuthentication>? mutualTlsAuthentication,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingMode,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainNameConfiguration = pulumi.Input.asInput<DomainNameDomainNameConfiguration>(domainNameConfiguration),
-      mutualTlsAuthentication = pulumi.Input.asOptionalInput<DomainNameMutualTlsAuthentication>(mutualTlsAuthentication),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingMode = pulumi.Input.asOptionalInput<String>(routingMode),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.domainName,
+    required this.domainNameConfiguration,
+    this.mutualTlsAuthentication,
+    this.region,
+    this.routingMode,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DomainNameArgs {
 
   factory DomainNameArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameConfiguration: pulumi.Output.create<DomainNameDomainNameConfiguration>(DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())),
-      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : pulumi.Output.create<DomainNameMutualTlsAuthentication>(DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingMode: map['routingMode'] == null ? null : pulumi.Output.create<String>(map['routingMode'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainName: (map['domainName'] as String).input(),
+      domainNameConfiguration: (DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())).input(),
+      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : (DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

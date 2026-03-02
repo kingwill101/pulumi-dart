@@ -52,31 +52,19 @@ class ExpressRouteCircuitPeeringArgs {
   /// [sharedKey] The shared key. Can be a maximum of 25 characters.
   /// [vlanId] A valid VLAN ID to establish this peering on.
   ExpressRouteCircuitPeeringArgs({
-    required pulumi.Output<String> expressRouteCircuitName,
-    pulumi.Output<bool>? ipv4Enabled,
-    pulumi.Output<ExpressRouteCircuitPeeringIpv6>? ipv6,
-    pulumi.Output<ExpressRouteCircuitPeeringMicrosoftPeeringConfig>? microsoftPeeringConfig,
-    pulumi.Output<int>? peerAsn,
-    required pulumi.Output<String> peeringType,
-    pulumi.Output<String>? primaryPeerAddressPrefix,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routeFilterId,
-    pulumi.Output<String>? secondaryPeerAddressPrefix,
-    pulumi.Output<String>? sharedKey,
-    required pulumi.Output<int> vlanId,
-  }) :
-      expressRouteCircuitName = pulumi.Input.asInput<String>(expressRouteCircuitName),
-      ipv4Enabled = pulumi.Input.asOptionalInput<bool>(ipv4Enabled),
-      ipv6 = pulumi.Input.asOptionalInput<ExpressRouteCircuitPeeringIpv6>(ipv6),
-      microsoftPeeringConfig = pulumi.Input.asOptionalInput<ExpressRouteCircuitPeeringMicrosoftPeeringConfig>(microsoftPeeringConfig),
-      peerAsn = pulumi.Input.asOptionalInput<int>(peerAsn),
-      peeringType = pulumi.Input.asInput<String>(peeringType),
-      primaryPeerAddressPrefix = pulumi.Input.asOptionalInput<String>(primaryPeerAddressPrefix),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routeFilterId = pulumi.Input.asOptionalInput<String>(routeFilterId),
-      secondaryPeerAddressPrefix = pulumi.Input.asOptionalInput<String>(secondaryPeerAddressPrefix),
-      sharedKey = pulumi.Input.asOptionalInput<String>(sharedKey),
-      vlanId = pulumi.Input.asInput<int>(vlanId);
+    required this.expressRouteCircuitName,
+    this.ipv4Enabled,
+    this.ipv6,
+    this.microsoftPeeringConfig,
+    this.peerAsn,
+    required this.peeringType,
+    this.primaryPeerAddressPrefix,
+    required this.resourceGroupName,
+    this.routeFilterId,
+    this.secondaryPeerAddressPrefix,
+    this.sharedKey,
+    required this.vlanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class ExpressRouteCircuitPeeringArgs {
 
   factory ExpressRouteCircuitPeeringArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringArgs(
-      expressRouteCircuitName: pulumi.Output.create<String>(map['expressRouteCircuitName'] as String),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : pulumi.Output.create<bool>(map['ipv4Enabled'] as bool),
-      ipv6: map['ipv6'] == null ? null : pulumi.Output.create<ExpressRouteCircuitPeeringIpv6>(ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())),
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : pulumi.Output.create<ExpressRouteCircuitPeeringMicrosoftPeeringConfig>(ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())),
-      peerAsn: map['peerAsn'] == null ? null : pulumi.Output.create<int>(map['peerAsn'] as int),
-      peeringType: pulumi.Output.create<String>(map['peeringType'] as String),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : pulumi.Output.create<String>(map['primaryPeerAddressPrefix'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routeFilterId: map['routeFilterId'] == null ? null : pulumi.Output.create<String>(map['routeFilterId'] as String),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : pulumi.Output.create<String>(map['secondaryPeerAddressPrefix'] as String),
-      sharedKey: map['sharedKey'] == null ? null : pulumi.Output.create<String>(map['sharedKey'] as String),
-      vlanId: pulumi.Output.create<int>(map['vlanId'] as int),
+      expressRouteCircuitName: (map['expressRouteCircuitName'] as String).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      peeringType: (map['peeringType'] as String).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId'] as String).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

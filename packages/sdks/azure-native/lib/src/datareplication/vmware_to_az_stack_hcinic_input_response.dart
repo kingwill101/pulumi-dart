@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareToAzStackHCI NIC properties.
 class VMwareToAzStackHCINicInputResponse {
   /// Gets or sets the NIC label.
-  final String label;
+  final pulumi.Input<String> label;
   /// Gets or sets the network name.
-  final String networkName;
+  final pulumi.Input<String> networkName;
   /// Gets or sets the NIC Id.
-  final String nicId;
+  final pulumi.Input<String> nicId;
   /// Gets or sets the selection type of the NIC.
-  final String selectionTypeForFailover;
+  final pulumi.Input<String> selectionTypeForFailover;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
-  final String targetNetworkId;
+  final pulumi.Input<String> targetNetworkId;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
-  final String testNetworkId;
+  final pulumi.Input<String> testNetworkId;
 
   /// Creates a new [VMwareToAzStackHCINicInputResponse].
   /// [label] Gets or sets the NIC label.
@@ -45,12 +46,12 @@ class VMwareToAzStackHCINicInputResponse {
 
   factory VMwareToAzStackHCINicInputResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCINicInputResponse(
-      label: map['label'] as String,
-      networkName: map['networkName'] as String,
-      nicId: map['nicId'] as String,
-      selectionTypeForFailover: map['selectionTypeForFailover'] as String,
-      targetNetworkId: map['targetNetworkId'] as String,
-      testNetworkId: map['testNetworkId'] as String,
+      label: (map['label'] as String).input(),
+      networkName: (map['networkName'] as String).input(),
+      nicId: (map['nicId'] as String).input(),
+      selectionTypeForFailover: (map['selectionTypeForFailover'] as String).input(),
+      targetNetworkId: (map['targetNetworkId'] as String).input(),
+      testNetworkId: (map['testNetworkId'] as String).input(),
     );
   }
 }

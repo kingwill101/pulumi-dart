@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiagnosticBackendResponseDataMaskingQueryParam {
   /// The data masking mode. Possible values are `Mask` and `Hide` for `query_params`. The only possible value is `Mask` for `headers`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The name of the header or the query parameter to mask.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DiagnosticBackendResponseDataMaskingQueryParam].
   /// [mode] The data masking mode. Possible values are `Mask` and `Hide` for `query_params`. The only possible value is `Mask` for `headers`.
@@ -24,8 +25,8 @@ class DiagnosticBackendResponseDataMaskingQueryParam {
 
   factory DiagnosticBackendResponseDataMaskingQueryParam.fromMap(Map<String, dynamic> map) {
     return DiagnosticBackendResponseDataMaskingQueryParam(
-      mode: map['mode'] as String,
-      value: map['value'] as String,
+      mode: (map['mode'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

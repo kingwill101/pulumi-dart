@@ -44,21 +44,14 @@ class BareMetalNodePoolArgs {
   /// [nodePoolConfig] Node pool configuration.
   /// [project] The ID of the project in which the resource belongs.
   BareMetalNodePoolArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> bareMetalCluster,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<BareMetalNodePoolNodePoolConfig> nodePoolConfig,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      bareMetalCluster = pulumi.Input.asInput<String>(bareMetalCluster),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodePoolConfig = pulumi.Input.asInput<BareMetalNodePoolNodePoolConfig>(nodePoolConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    required this.bareMetalCluster,
+    this.displayName,
+    required this.location,
+    this.name,
+    required this.nodePoolConfig,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class BareMetalNodePoolArgs {
 
   factory BareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      bareMetalCluster: pulumi.Output.create<String>(map['bareMetalCluster'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodePoolConfig: pulumi.Output.create<BareMetalNodePoolNodePoolConfig>(BareMetalNodePoolNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      bareMetalCluster: (map['bareMetalCluster'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodePoolConfig: (BareMetalNodePoolNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

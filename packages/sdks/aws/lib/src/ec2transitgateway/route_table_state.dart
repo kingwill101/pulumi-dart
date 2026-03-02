@@ -28,21 +28,14 @@ class RouteTableState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   RouteTableState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? defaultAssociationRouteTable,
-    pulumi.Output<bool>? defaultPropagationRouteTable,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? transitGatewayId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      defaultAssociationRouteTable = pulumi.Input.asOptionalInput<bool>(defaultAssociationRouteTable),
-      defaultPropagationRouteTable = pulumi.Input.asOptionalInput<bool>(defaultPropagationRouteTable),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId);
+    this.arn,
+    this.defaultAssociationRouteTable,
+    this.defaultPropagationRouteTable,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RouteTableState {
 
   factory RouteTableState.fromMap(Map<String, dynamic> map) {
     return RouteTableState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      defaultAssociationRouteTable: map['defaultAssociationRouteTable'] == null ? null : pulumi.Output.create<bool>(map['defaultAssociationRouteTable'] as bool),
-      defaultPropagationRouteTable: map['defaultPropagationRouteTable'] == null ? null : pulumi.Output.create<bool>(map['defaultPropagationRouteTable'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      defaultAssociationRouteTable: map['defaultAssociationRouteTable'] == null ? null : (map['defaultAssociationRouteTable'] as bool).input(),
+      defaultPropagationRouteTable: map['defaultPropagationRouteTable'] == null ? null : (map['defaultPropagationRouteTable'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
     );
   }
 }

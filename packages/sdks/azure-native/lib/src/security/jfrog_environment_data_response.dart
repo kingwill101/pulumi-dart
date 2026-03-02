@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The JFrog Artifactory connector environment data
 class JFrogEnvironmentDataResponse {
   /// The type of the environment data.
   /// Expected value is 'JFrogArtifactory'.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final int? scanInterval;
+  final pulumi.Input<int>? scanInterval;
 
   /// Creates a new [JFrogEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
@@ -26,8 +27,8 @@ class JFrogEnvironmentDataResponse {
 
   factory JFrogEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return JFrogEnvironmentDataResponse(
-      environmentType: map['environmentType'] as String,
-      scanInterval: map['scanInterval'] == null ? null : map['scanInterval'] as int,
+      environmentType: (map['environmentType'] as String).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as int).input(),
     );
   }
 }

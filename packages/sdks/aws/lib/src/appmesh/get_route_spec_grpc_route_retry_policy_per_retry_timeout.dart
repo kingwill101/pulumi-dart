@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
-  final String unit;
-  final int value;
+  final pulumi.Input<String> unit;
+  final pulumi.Input<int> value;
 
   /// Creates a new [GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout].
   /// [unit] Required.
@@ -22,8 +23,8 @@ class GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
 
   factory GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout(
-      unit: map['unit'] as String,
-      value: map['value'] as int,
+      unit: (map['unit'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

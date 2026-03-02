@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersProcessName {
-  final String comparison;
-  final String value;
+  final pulumi.Input<String> comparison;
+  final pulumi.Input<String> value;
 
   /// Creates a new [InsightFiltersProcessName].
   /// [comparison] Required.
@@ -22,8 +23,8 @@ class InsightFiltersProcessName {
 
   factory InsightFiltersProcessName.fromMap(Map<String, dynamic> map) {
     return InsightFiltersProcessName(
-      comparison: map['comparison'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

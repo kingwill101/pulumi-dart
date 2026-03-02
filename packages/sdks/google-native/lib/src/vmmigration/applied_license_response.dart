@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AppliedLicense holds the license data returned by adaptation module report.
 class AppliedLicenseResponse {
   /// The OS license returned from the adaptation module's report.
-  final String osLicense;
+  final pulumi.Input<String> osLicense;
   /// The license type that was used in OS adaptation.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AppliedLicenseResponse].
   /// [osLicense] The OS license returned from the adaptation module's report.
@@ -25,8 +26,8 @@ class AppliedLicenseResponse {
 
   factory AppliedLicenseResponse.fromMap(Map<String, dynamic> map) {
     return AppliedLicenseResponse(
-      osLicense: map['osLicense'] as String,
-      type: map['type'] as String,
+      osLicense: (map['osLicense'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

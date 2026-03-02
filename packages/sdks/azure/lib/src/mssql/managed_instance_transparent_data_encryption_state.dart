@@ -22,15 +22,11 @@ class ManagedInstanceTransparentDataEncryptionState {
   /// [managedHsmKeyId] Optional.
   /// [managedInstanceId] Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
   ManagedInstanceTransparentDataEncryptionState({
-    pulumi.Output<bool>? autoRotationEnabled,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? managedHsmKeyId,
-    pulumi.Output<String>? managedInstanceId,
-  }) :
-      autoRotationEnabled = pulumi.Input.asOptionalInput<bool>(autoRotationEnabled),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      managedInstanceId = pulumi.Input.asOptionalInput<String>(managedInstanceId);
+    this.autoRotationEnabled,
+    this.keyVaultKeyId,
+    this.managedHsmKeyId,
+    this.managedInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ManagedInstanceTransparentDataEncryptionState {
 
   factory ManagedInstanceTransparentDataEncryptionState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceTransparentDataEncryptionState(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoRotationEnabled'] as bool),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      managedInstanceId: map['managedInstanceId'] == null ? null : pulumi.Output.create<String>(map['managedInstanceId'] as String),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
     );
   }
 }

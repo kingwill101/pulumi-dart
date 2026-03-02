@@ -37,25 +37,16 @@ class DatabaseArgs {
   /// [selfLink] The URI of this resource.
   /// [sqlserverDatabaseDetails] Optional.
   DatabaseArgs({
-    pulumi.Output<String>? charset,
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<SqlServerDatabaseDetails>? sqlserverDatabaseDetails,
-  }) :
-      charset = pulumi.Input.asOptionalInput<String>(charset),
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instance = pulumi.Input.asInput<String>(instance),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sqlserverDatabaseDetails = pulumi.Input.asOptionalInput<SqlServerDatabaseDetails>(sqlserverDatabaseDetails);
+    this.charset,
+    this.collation,
+    this.etag,
+    required this.instance,
+    this.kind,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.sqlserverDatabaseDetails,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: map['charset'] == null ? null : pulumi.Output.create<String>(map['charset'] as String),
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sqlserverDatabaseDetails: map['sqlserverDatabaseDetails'] == null ? null : pulumi.Output.create<SqlServerDatabaseDetails>(SqlServerDatabaseDetails.fromMap((map['sqlserverDatabaseDetails'] as Map).cast<String, dynamic>())),
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sqlserverDatabaseDetails: map['sqlserverDatabaseDetails'] == null ? null : (SqlServerDatabaseDetails.fromMap((map['sqlserverDatabaseDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

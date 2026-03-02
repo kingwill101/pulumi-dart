@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkPolicyInternetAccess {
   /// True if the service is enabled; false otherwise.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// State of the service. New values may be added to this enum when appropriate.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetNetworkPolicyInternetAccess].
   /// [enabled] True if the service is enabled; false otherwise.
@@ -24,8 +25,8 @@ class GetNetworkPolicyInternetAccess {
 
   factory GetNetworkPolicyInternetAccess.fromMap(Map<String, dynamic> map) {
     return GetNetworkPolicyInternetAccess(
-      enabled: map['enabled'] as bool,
-      state: map['state'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

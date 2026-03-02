@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the schedule.
 class ScheduleProperties {
   /// UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
-  final int? dayOfMonth;
+  final pulumi.Input<int>? dayOfMonth;
   /// Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
-  final List<String>? daysOfWeek;
+  final pulumi.Input<List<String>>? daysOfWeek;
   /// The end date and time of the scheduled action (UTC).
-  final String endDate;
+  final pulumi.Input<String> endDate;
   /// Frequency of the schedule.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// UTC time at which cost analysis data will be emailed.
-  final int? hourOfDay;
+  final pulumi.Input<int>? hourOfDay;
   /// The start date and time of the scheduled action (UTC).
-  final String startDate;
+  final pulumi.Input<String> startDate;
   /// Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-  final List<String>? weeksOfMonth;
+  final pulumi.Input<List<String>>? weeksOfMonth;
 
   /// Creates a new [ScheduleProperties].
   /// [dayOfMonth] UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
@@ -50,13 +51,13 @@ class ScheduleProperties {
 
   factory ScheduleProperties.fromMap(Map<String, dynamic> map) {
     return ScheduleProperties(
-      dayOfMonth: map['dayOfMonth'] == null ? null : map['dayOfMonth'] as int,
-      daysOfWeek: map['daysOfWeek'] == null ? null : (map['daysOfWeek'] as List).cast<String>(),
-      endDate: map['endDate'] as String,
-      frequency: map['frequency'] as String,
-      hourOfDay: map['hourOfDay'] == null ? null : map['hourOfDay'] as int,
-      startDate: map['startDate'] as String,
-      weeksOfMonth: map['weeksOfMonth'] == null ? null : (map['weeksOfMonth'] as List).cast<String>(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : ((map['daysOfWeek'] as List).cast<String>()).input(),
+      endDate: (map['endDate'] as String).input(),
+      frequency: (map['frequency'] as String).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      startDate: (map['startDate'] as String).input(),
+      weeksOfMonth: map['weeksOfMonth'] == null ? null : ((map['weeksOfMonth'] as List).cast<String>()).input(),
     );
   }
 }

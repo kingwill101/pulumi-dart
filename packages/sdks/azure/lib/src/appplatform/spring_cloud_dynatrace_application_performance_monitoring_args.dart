@@ -37,25 +37,16 @@ class SpringCloudDynatraceApplicationPerformanceMonitoringArgs {
   /// [tenant] Specifies the Dynatrace tenant.
   /// [tenantToken] Specifies the internal token that is used for authentication when OneAgent connects to the Dynatrace cluster to send data.
   SpringCloudDynatraceApplicationPerformanceMonitoringArgs({
-    pulumi.Output<String>? apiToken,
-    pulumi.Output<String>? apiUrl,
-    required pulumi.Output<String> connectionPoint,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<bool>? globallyEnabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> springCloudServiceId,
-    required pulumi.Output<String> tenant,
-    required pulumi.Output<String> tenantToken,
-  }) :
-      apiToken = pulumi.Input.asOptionalInput<String>(apiToken),
-      apiUrl = pulumi.Input.asOptionalInput<String>(apiUrl),
-      connectionPoint = pulumi.Input.asInput<String>(connectionPoint),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      globallyEnabled = pulumi.Input.asOptionalInput<bool>(globallyEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudServiceId = pulumi.Input.asInput<String>(springCloudServiceId),
-      tenant = pulumi.Input.asInput<String>(tenant),
-      tenantToken = pulumi.Input.asInput<String>(tenantToken);
+    this.apiToken,
+    this.apiUrl,
+    required this.connectionPoint,
+    this.environmentId,
+    this.globallyEnabled,
+    this.name,
+    required this.springCloudServiceId,
+    required this.tenant,
+    required this.tenantToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class SpringCloudDynatraceApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudDynatraceApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudDynatraceApplicationPerformanceMonitoringArgs(
-      apiToken: map['apiToken'] == null ? null : pulumi.Output.create<String>(map['apiToken'] as String),
-      apiUrl: map['apiUrl'] == null ? null : pulumi.Output.create<String>(map['apiUrl'] as String),
-      connectionPoint: pulumi.Output.create<String>(map['connectionPoint'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      globallyEnabled: map['globallyEnabled'] == null ? null : pulumi.Output.create<bool>(map['globallyEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudServiceId: pulumi.Output.create<String>(map['springCloudServiceId'] as String),
-      tenant: pulumi.Output.create<String>(map['tenant'] as String),
-      tenantToken: pulumi.Output.create<String>(map['tenantToken'] as String),
+      apiToken: map['apiToken'] == null ? null : (map['apiToken'] as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
+      connectionPoint: (map['connectionPoint'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
+      tenant: (map['tenant'] as String).input(),
+      tenantToken: (map['tenantToken'] as String).input(),
     );
   }
 }

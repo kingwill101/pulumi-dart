@@ -28,17 +28,12 @@ class ProfilingGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProfilingGroupArgs({
-    required pulumi.Output<ProfilingGroupAgentOrchestrationConfig> agentOrchestrationConfig,
-    pulumi.Output<String>? computePlatform,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      agentOrchestrationConfig = pulumi.Input.asInput<ProfilingGroupAgentOrchestrationConfig>(agentOrchestrationConfig),
-      computePlatform = pulumi.Input.asOptionalInput<String>(computePlatform),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.agentOrchestrationConfig,
+    this.computePlatform,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ProfilingGroupArgs {
 
   factory ProfilingGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProfilingGroupArgs(
-      agentOrchestrationConfig: pulumi.Output.create<ProfilingGroupAgentOrchestrationConfig>(ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig'] as Map).cast<String, dynamic>())),
-      computePlatform: map['computePlatform'] == null ? null : pulumi.Output.create<String>(map['computePlatform'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      agentOrchestrationConfig: (ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig'] as Map).cast<String, dynamic>())).input(),
+      computePlatform: map['computePlatform'] == null ? null : (map['computePlatform'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

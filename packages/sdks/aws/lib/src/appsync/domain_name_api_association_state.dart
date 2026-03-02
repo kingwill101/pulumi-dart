@@ -16,13 +16,10 @@ class DomainNameApiAssociationState {
   /// [domainName] Appsync domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainNameApiAssociationState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? region,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.apiId,
+    this.domainName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DomainNameApiAssociationState {
 
   factory DomainNameApiAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainNameApiAssociationState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

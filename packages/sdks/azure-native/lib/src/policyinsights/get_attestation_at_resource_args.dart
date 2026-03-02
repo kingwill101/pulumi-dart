@@ -16,11 +16,9 @@ class GetAttestationAtResourceArgs {
   /// [attestationName] The name of the attestation.
   /// [resourceId] Resource ID.
   GetAttestationAtResourceArgs({
-    required pulumi.Output<String> attestationName,
-    required pulumi.Output<String> resourceId,
-  }) :
-      attestationName = pulumi.Input.asInput<String>(attestationName),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+    required this.attestationName,
+    required this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAttestationAtResourceArgs {
 
   factory GetAttestationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtResourceArgs(
-      attestationName: pulumi.Output.create<String>(map['attestationName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
+      attestationName: (map['attestationName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

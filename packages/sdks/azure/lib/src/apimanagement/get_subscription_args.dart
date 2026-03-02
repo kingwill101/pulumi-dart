@@ -16,11 +16,9 @@ class GetSubscriptionArgs {
   /// [apiManagementId] The ID of the API Management Service in which this Subscription exists.
   /// [subscriptionId] The Identifier for the API Management Subscription.
   GetSubscriptionArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> subscriptionId,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+    required this.apiManagementId,
+    required this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      subscriptionId: pulumi.Output.create<String>(map['subscriptionId'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error Action Properties
 class ErrorAction {
   /// Max tolerated failures
-  final int? maxToleratedFailures;
+  final pulumi.Input<int>? maxToleratedFailures;
   /// Error action mode
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [ErrorAction].
   /// [maxToleratedFailures] Max tolerated failures
@@ -25,8 +26,8 @@ class ErrorAction {
 
   factory ErrorAction.fromMap(Map<String, dynamic> map) {
     return ErrorAction(
-      maxToleratedFailures: map['maxToleratedFailures'] == null ? null : map['maxToleratedFailures'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      maxToleratedFailures: map['maxToleratedFailures'] == null ? null : (map['maxToleratedFailures'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

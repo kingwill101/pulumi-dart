@@ -42,25 +42,16 @@ class GetAssetsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   GetAssetsArgs({
-    pulumi.Output<String>? criteria,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<int>? importance,
-    pulumi.Output<String>? logicalExp,
-    pulumi.Output<String>? machineTypes,
-    pulumi.Output<bool>? noGroupTrace,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-  }) :
-      criteria = pulumi.Input.asOptionalInput<String>(criteria),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      importance = pulumi.Input.asOptionalInput<int>(importance),
-      logicalExp = pulumi.Input.asOptionalInput<String>(logicalExp),
-      machineTypes = pulumi.Input.asOptionalInput<String>(machineTypes),
-      noGroupTrace = pulumi.Input.asOptionalInput<bool>(noGroupTrace),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+    this.criteria,
+    this.ids,
+    this.importance,
+    this.logicalExp,
+    this.machineTypes,
+    this.noGroupTrace,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class GetAssetsArgs {
 
   factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetsArgs(
-      criteria: map['criteria'] == null ? null : pulumi.Output.create<String>(map['criteria'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      importance: map['importance'] == null ? null : pulumi.Output.create<int>(map['importance'] as int),
-      logicalExp: map['logicalExp'] == null ? null : pulumi.Output.create<String>(map['logicalExp'] as String),
-      machineTypes: map['machineTypes'] == null ? null : pulumi.Output.create<String>(map['machineTypes'] as String),
-      noGroupTrace: map['noGroupTrace'] == null ? null : pulumi.Output.create<bool>(map['noGroupTrace'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+      criteria: map['criteria'] == null ? null : (map['criteria'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      importance: map['importance'] == null ? null : (map['importance'] as int).input(),
+      logicalExp: map['logicalExp'] == null ? null : (map['logicalExp'] as String).input(),
+      machineTypes: map['machineTypes'] == null ? null : (map['machineTypes'] as String).input(),
+      noGroupTrace: map['noGroupTrace'] == null ? null : (map['noGroupTrace'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
     );
   }
 }

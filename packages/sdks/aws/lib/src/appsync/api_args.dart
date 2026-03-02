@@ -28,17 +28,12 @@ class ApiArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ApiArgs({
-    required pulumi.Output<ApiEventConfig> eventConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerContact,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      eventConfig = pulumi.Input.asInput<ApiEventConfig>(eventConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerContact = pulumi.Input.asOptionalInput<String>(ownerContact),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.eventConfig,
+    this.name,
+    this.ownerContact,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      eventConfig: pulumi.Output.create<ApiEventConfig>(ApiEventConfig.fromMap((map['eventConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerContact: map['ownerContact'] == null ? null : pulumi.Output.create<String>(map['ownerContact'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      eventConfig: (ApiEventConfig.fromMap((map['eventConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerContact: map['ownerContact'] == null ? null : (map['ownerContact'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class ServiceEmailDomainAssociationState {
   /// [communicationServiceId] The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   /// [emailServiceDomainId] The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
   ServiceEmailDomainAssociationState({
-    pulumi.Output<String>? communicationServiceId,
-    pulumi.Output<String>? emailServiceDomainId,
-  }) :
-      communicationServiceId = pulumi.Input.asOptionalInput<String>(communicationServiceId),
-      emailServiceDomainId = pulumi.Input.asOptionalInput<String>(emailServiceDomainId);
+    this.communicationServiceId,
+    this.emailServiceDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ServiceEmailDomainAssociationState {
 
   factory ServiceEmailDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceEmailDomainAssociationState(
-      communicationServiceId: map['communicationServiceId'] == null ? null : pulumi.Output.create<String>(map['communicationServiceId'] as String),
-      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : pulumi.Output.create<String>(map['emailServiceDomainId'] as String),
+      communicationServiceId: map['communicationServiceId'] == null ? null : (map['communicationServiceId'] as String).input(),
+      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : (map['emailServiceDomainId'] as String).input(),
     );
   }
 }

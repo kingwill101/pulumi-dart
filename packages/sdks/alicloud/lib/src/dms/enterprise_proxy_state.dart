@@ -19,15 +19,11 @@ class EnterpriseProxyState {
   /// [tid] The ID of the tenant.
   /// [username] The username of the database account.
   EnterpriseProxyState({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? tid,
-    pulumi.Output<String>? username,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      tid = pulumi.Input.asOptionalInput<String>(tid),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.instanceId,
+    this.password,
+    this.tid,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class EnterpriseProxyState {
 
   factory EnterpriseProxyState.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyState(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<String>(map['tid'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

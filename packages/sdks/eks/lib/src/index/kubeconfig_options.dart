@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the AWS credentials to scope a given kubeconfig when using a non-default credential chain.
 ///
@@ -21,11 +22,11 @@ class KubeconfigOptions {
   /// AWS credential profile name to always use instead of the default AWS credential provider chain.
   ///
   /// The profile is passed to kubeconfig as an authentication environment setting.
-  final String? profileName;
+  final pulumi.Input<String>? profileName;
   /// Role ARN to assume instead of the default AWS credential provider chain.
   ///
   /// The role is passed to kubeconfig as an authentication exec argument.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   /// Creates a new [KubeconfigOptions].
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.
@@ -44,8 +45,8 @@ class KubeconfigOptions {
 
   factory KubeconfigOptions.fromMap(Map<String, dynamic> map) {
     return KubeconfigOptions(
-      profileName: map['profileName'] == null ? null : map['profileName'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
+      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

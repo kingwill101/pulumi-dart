@@ -23,17 +23,12 @@ class AlbServerGroupAttachmentState {
   /// [scalingGroupId] ID of the scaling group.
   /// [weight] The weight of an ECS instance attached to the Alb Server Group.
   AlbServerGroupAttachmentState({
-    pulumi.Output<String>? albServerGroupId,
-    pulumi.Output<bool>? forceAttach,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? scalingGroupId,
-    pulumi.Output<int>? weight,
-  }) :
-      albServerGroupId = pulumi.Input.asOptionalInput<String>(albServerGroupId),
-      forceAttach = pulumi.Input.asOptionalInput<bool>(forceAttach),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      scalingGroupId = pulumi.Input.asOptionalInput<String>(scalingGroupId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.albServerGroupId,
+    this.forceAttach,
+    this.port,
+    this.scalingGroupId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AlbServerGroupAttachmentState {
 
   factory AlbServerGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return AlbServerGroupAttachmentState(
-      albServerGroupId: map['albServerGroupId'] == null ? null : pulumi.Output.create<String>(map['albServerGroupId'] as String),
-      forceAttach: map['forceAttach'] == null ? null : pulumi.Output.create<bool>(map['forceAttach'] as bool),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      scalingGroupId: map['scalingGroupId'] == null ? null : pulumi.Output.create<String>(map['scalingGroupId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId'] as String).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

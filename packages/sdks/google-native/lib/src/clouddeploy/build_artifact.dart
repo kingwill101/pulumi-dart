@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of an a image to use during Skaffold rendering.
 class BuildArtifact {
   /// Image name in Skaffold configuration.
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123".
-  final String? tag;
+  final pulumi.Input<String>? tag;
 
   /// Creates a new [BuildArtifact].
   /// [image] Image name in Skaffold configuration.
@@ -25,8 +26,8 @@ class BuildArtifact {
 
   factory BuildArtifact.fromMap(Map<String, dynamic> map) {
     return BuildArtifact(
-      image: map['image'] == null ? null : map['image'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
     );
   }
 }

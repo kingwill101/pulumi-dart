@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchOptionsOptionConstraintSummary {
   /// Constraint type.The value is Launch, which indicates that the constraint is started.
-  final String constraintType;
+  final pulumi.Input<String> constraintType;
   /// Constraint description.
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [GetLaunchOptionsOptionConstraintSummary].
   /// [constraintType] Constraint type.The value is Launch, which indicates that the constraint is started.
@@ -24,8 +25,8 @@ class GetLaunchOptionsOptionConstraintSummary {
 
   factory GetLaunchOptionsOptionConstraintSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchOptionsOptionConstraintSummary(
-      constraintType: map['constraintType'] as String,
-      description: map['description'] as String,
+      constraintType: (map['constraintType'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

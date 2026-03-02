@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_properties_export_policy.dart';
 import 'origin_cluster_information.dart';
 import 'smb_settings.dart';
@@ -7,39 +8,39 @@ import 'smb_settings.dart';
 /// Cache resource properties
 class CacheProperties {
   /// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
-  final String cacheSubnetResourceId;
+  final pulumi.Input<String> cacheSubnetResourceId;
   /// Flag indicating whether a CIFS change notification is enabled for the cache.
-  final String? cifsChangeNotifications;
+  final pulumi.Input<String>? cifsChangeNotifications;
   /// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
-  final String encryptionKeySource;
+  final pulumi.Input<String> encryptionKeySource;
   /// Set of export policy rules
-  final CachePropertiesExportPolicy? exportPolicy;
+  final pulumi.Input<CachePropertiesExportPolicy>? exportPolicy;
   /// The file path of the Cache.
-  final String filepath;
+  final pulumi.Input<String> filepath;
   /// Flag indicating whether the global file lock is enabled for the cache.
-  final String? globalFileLocking;
+  final pulumi.Input<String>? globalFileLocking;
   /// Describe if a cache is Kerberos enabled.
-  final String? kerberos;
+  final pulumi.Input<String>? kerberos;
   /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
-  final String? keyVaultPrivateEndpointResourceId;
+  final pulumi.Input<String>? keyVaultPrivateEndpointResourceId;
   /// Specifies whether LDAP is enabled or not for flexcache volume.
-  final String? ldap;
+  final pulumi.Input<String>? ldap;
   /// Specifies the type of LDAP server for flexcache volume.
-  final String? ldapServerType;
+  final pulumi.Input<String>? ldapServerType;
   /// Origin cluster information
-  final OriginClusterInformation originClusterInformation;
+  final pulumi.Input<OriginClusterInformation> originClusterInformation;
   /// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
-  final String peeringSubnetResourceId;
+  final pulumi.Input<String> peeringSubnetResourceId;
   /// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
-  final List<String>? protocolTypes;
+  final pulumi.Input<List<String>>? protocolTypes;
   /// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
-  final double size;
+  final pulumi.Input<double> size;
   /// SMB information for the cache
-  final SmbSettings? smbSettings;
+  final pulumi.Input<SmbSettings>? smbSettings;
   /// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
-  final double? throughputMibps;
+  final pulumi.Input<double>? throughputMibps;
   /// Flag indicating whether writeback is enabled for the cache.
-  final String? writeBack;
+  final pulumi.Input<String>? writeBack;
 
   /// Creates a new [CacheProperties].
   /// [cacheSubnetResourceId] The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
@@ -84,18 +85,18 @@ class CacheProperties {
       'cacheSubnetResourceId': cacheSubnetResourceId,
       'cifsChangeNotifications': ?cifsChangeNotifications,
       'encryptionKeySource': encryptionKeySource,
-      'exportPolicy': ?exportPolicy == null ? null : exportPolicy!.toMap(),
+      'exportPolicy': ?pulumi.Input.mapOptionalInputValue<CachePropertiesExportPolicy, Map<String, dynamic>>(exportPolicy, (value) => value.toMap()),
       'filepath': filepath,
       'globalFileLocking': ?globalFileLocking,
       'kerberos': ?kerberos,
       'keyVaultPrivateEndpointResourceId': ?keyVaultPrivateEndpointResourceId,
       'ldap': ?ldap,
       'ldapServerType': ?ldapServerType,
-      'originClusterInformation': originClusterInformation.toMap(),
+      'originClusterInformation': pulumi.Input.mapInputValue<OriginClusterInformation, Map<String, dynamic>>(originClusterInformation, (value) => value.toMap()),
       'peeringSubnetResourceId': peeringSubnetResourceId,
       'protocolTypes': ?protocolTypes,
       'size': size,
-      'smbSettings': ?smbSettings == null ? null : smbSettings!.toMap(),
+      'smbSettings': ?pulumi.Input.mapOptionalInputValue<SmbSettings, Map<String, dynamic>>(smbSettings, (value) => value.toMap()),
       'throughputMibps': ?throughputMibps,
       'writeBack': ?writeBack,
     };
@@ -103,23 +104,23 @@ class CacheProperties {
 
   factory CacheProperties.fromMap(Map<String, dynamic> map) {
     return CacheProperties(
-      cacheSubnetResourceId: map['cacheSubnetResourceId'] as String,
-      cifsChangeNotifications: map['cifsChangeNotifications'] == null ? null : map['cifsChangeNotifications'] as String,
-      encryptionKeySource: map['encryptionKeySource'] as String,
-      exportPolicy: map['exportPolicy'] == null ? null : CachePropertiesExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>()),
-      filepath: map['filepath'] as String,
-      globalFileLocking: map['globalFileLocking'] == null ? null : map['globalFileLocking'] as String,
-      kerberos: map['kerberos'] == null ? null : map['kerberos'] as String,
-      keyVaultPrivateEndpointResourceId: map['keyVaultPrivateEndpointResourceId'] == null ? null : map['keyVaultPrivateEndpointResourceId'] as String,
-      ldap: map['ldap'] == null ? null : map['ldap'] as String,
-      ldapServerType: map['ldapServerType'] == null ? null : map['ldapServerType'] as String,
-      originClusterInformation: OriginClusterInformation.fromMap((map['originClusterInformation'] as Map).cast<String, dynamic>()),
-      peeringSubnetResourceId: map['peeringSubnetResourceId'] as String,
-      protocolTypes: map['protocolTypes'] == null ? null : (map['protocolTypes'] as List).cast<String>(),
-      size: map['size'] as double,
-      smbSettings: map['smbSettings'] == null ? null : SmbSettings.fromMap((map['smbSettings'] as Map).cast<String, dynamic>()),
-      throughputMibps: map['throughputMibps'] == null ? null : map['throughputMibps'] as double,
-      writeBack: map['writeBack'] == null ? null : map['writeBack'] as String,
+      cacheSubnetResourceId: (map['cacheSubnetResourceId'] as String).input(),
+      cifsChangeNotifications: map['cifsChangeNotifications'] == null ? null : (map['cifsChangeNotifications'] as String).input(),
+      encryptionKeySource: (map['encryptionKeySource'] as String).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (CachePropertiesExportPolicy.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
+      filepath: (map['filepath'] as String).input(),
+      globalFileLocking: map['globalFileLocking'] == null ? null : (map['globalFileLocking'] as String).input(),
+      kerberos: map['kerberos'] == null ? null : (map['kerberos'] as String).input(),
+      keyVaultPrivateEndpointResourceId: map['keyVaultPrivateEndpointResourceId'] == null ? null : (map['keyVaultPrivateEndpointResourceId'] as String).input(),
+      ldap: map['ldap'] == null ? null : (map['ldap'] as String).input(),
+      ldapServerType: map['ldapServerType'] == null ? null : (map['ldapServerType'] as String).input(),
+      originClusterInformation: (OriginClusterInformation.fromMap((map['originClusterInformation'] as Map).cast<String, dynamic>())).input(),
+      peeringSubnetResourceId: (map['peeringSubnetResourceId'] as String).input(),
+      protocolTypes: map['protocolTypes'] == null ? null : ((map['protocolTypes'] as List).cast<String>()).input(),
+      size: (map['size'] as double).input(),
+      smbSettings: map['smbSettings'] == null ? null : (SmbSettings.fromMap((map['smbSettings'] as Map).cast<String, dynamic>())).input(),
+      throughputMibps: map['throughputMibps'] == null ? null : (map['throughputMibps'] as double).input(),
+      writeBack: map['writeBack'] == null ? null : (map['writeBack'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class SecurityGroupState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the VPC in which you want to create the security group.
   SecurityGroupState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? innerAccess,
-    pulumi.Output<String>? innerAccessPolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityGroupName,
-    pulumi.Output<String>? securityGroupType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      innerAccess = pulumi.Input.asOptionalInput<bool>(innerAccess),
-      innerAccessPolicy = pulumi.Input.asOptionalInput<String>(innerAccessPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityGroupName = pulumi.Input.asOptionalInput<String>(securityGroupName),
-      securityGroupType = pulumi.Input.asOptionalInput<String>(securityGroupType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.createTime,
+    this.description,
+    this.innerAccess,
+    this.innerAccessPolicy,
+    this.name,
+    this.resourceGroupId,
+    this.securityGroupName,
+    this.securityGroupType,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class SecurityGroupState {
 
   factory SecurityGroupState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      innerAccess: map['innerAccess'] == null ? null : pulumi.Output.create<bool>(map['innerAccess'] as bool),
-      innerAccessPolicy: map['innerAccessPolicy'] == null ? null : pulumi.Output.create<String>(map['innerAccessPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityGroupName: map['securityGroupName'] == null ? null : pulumi.Output.create<String>(map['securityGroupName'] as String),
-      securityGroupType: map['securityGroupType'] == null ? null : pulumi.Output.create<String>(map['securityGroupType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      innerAccess: map['innerAccess'] == null ? null : (map['innerAccess'] as bool).input(),
+      innerAccessPolicy: map['innerAccessPolicy'] == null ? null : (map['innerAccessPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityGroupName: map['securityGroupName'] == null ? null : (map['securityGroupName'] as String).input(),
+      securityGroupType: map['securityGroupType'] == null ? null : (map['securityGroupType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

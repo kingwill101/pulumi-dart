@@ -38,23 +38,15 @@ class PeerConnectionAccepterArgs {
   /// [peerConnectionAccepterName] The new name of the VPC peering connection.
   /// [resourceGroupId] The ID of the new resource group.
   PeerConnectionAccepterArgs({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<bool>? forceDelete,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? linkType,
-    pulumi.Output<String>? peerConnectionAccepterName,
-    pulumi.Output<String>? resourceGroupId,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      linkType = pulumi.Input.asOptionalInput<String>(linkType),
-      peerConnectionAccepterName = pulumi.Input.asOptionalInput<String>(peerConnectionAccepterName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId);
+    this.bandwidth,
+    this.description,
+    this.dryRun,
+    this.forceDelete,
+    required this.instanceId,
+    this.linkType,
+    this.peerConnectionAccepterName,
+    this.resourceGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class PeerConnectionAccepterArgs {
 
   factory PeerConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return PeerConnectionAccepterArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      linkType: map['linkType'] == null ? null : pulumi.Output.create<String>(map['linkType'] as String),
-      peerConnectionAccepterName: map['peerConnectionAccepterName'] == null ? null : pulumi.Output.create<String>(map['peerConnectionAccepterName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      peerConnectionAccepterName: map['peerConnectionAccepterName'] == null ? null : (map['peerConnectionAccepterName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
     );
   }
 }

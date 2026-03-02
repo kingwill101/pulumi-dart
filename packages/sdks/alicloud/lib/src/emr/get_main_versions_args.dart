@@ -20,13 +20,10 @@ class GetMainVersionsArgs {
   /// [emrVersion] The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetMainVersionsArgs({
-    pulumi.Output<List<String>>? clusterTypes,
-    pulumi.Output<String>? emrVersion,
-    pulumi.Output<String>? outputFile,
-  }) :
-      clusterTypes = pulumi.Input.asOptionalInput<List<String>>(clusterTypes),
-      emrVersion = pulumi.Input.asOptionalInput<String>(emrVersion),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.clusterTypes,
+    this.emrVersion,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetMainVersionsArgs {
 
   factory GetMainVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsArgs(
-      clusterTypes: map['clusterTypes'] == null ? null : pulumi.Output.create<List<String>>((map['clusterTypes'] as List).cast<String>()),
-      emrVersion: map['emrVersion'] == null ? null : pulumi.Output.create<String>(map['emrVersion'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes'] as List).cast<String>()).input(),
+      emrVersion: map['emrVersion'] == null ? null : (map['emrVersion'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

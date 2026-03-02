@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration {
   /// The type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
-  final String connectivity;
+  final pulumi.Input<String> connectivity;
   /// The ARN of the role used to access the Amazon MSK cluster.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration].
   /// [connectivity] The type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
@@ -24,8 +25,8 @@ class FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration {
 
   factory FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration(
-      connectivity: map['connectivity'] as String,
-      roleArn: map['roleArn'] as String,
+      connectivity: (map['connectivity'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dead_letter_with_resource_identity.dart';
 
 /// Properties of the Queue info for event subscription.
 class QueueInfo {
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
-  final DeadLetterWithResourceIdentity? deadLetterDestinationWithResourceIdentity;
+  final pulumi.Input<DeadLetterWithResourceIdentity>? deadLetterDestinationWithResourceIdentity;
   /// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
   /// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
   /// - (n) is replaced by the value of each time element that follows the (n).
@@ -23,13 +24,13 @@ class QueueInfo {
   /// by topic’s EventRetentionInDays value. The followings are examples of valid values:
   /// - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
   /// - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
-  final String? eventTimeToLive;
+  final pulumi.Input<String>? eventTimeToLive;
   /// The maximum delivery count of the events.
-  final int? maxDeliveryCount;
+  final pulumi.Input<int>? maxDeliveryCount;
   /// Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
   /// If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
   /// the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
-  final int? receiveLockDurationInSeconds;
+  final pulumi.Input<int>? receiveLockDurationInSeconds;
 
   /// Creates a new [QueueInfo].
   /// [deadLetterDestinationWithResourceIdentity] The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -45,7 +46,7 @@ class QueueInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deadLetterDestinationWithResourceIdentity': ?deadLetterDestinationWithResourceIdentity == null ? null : deadLetterDestinationWithResourceIdentity!.toMap(),
+      'deadLetterDestinationWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeadLetterWithResourceIdentity, Map<String, dynamic>>(deadLetterDestinationWithResourceIdentity, (value) => value.toMap()),
       'eventTimeToLive': ?eventTimeToLive,
       'maxDeliveryCount': ?maxDeliveryCount,
       'receiveLockDurationInSeconds': ?receiveLockDurationInSeconds,
@@ -54,10 +55,10 @@ class QueueInfo {
 
   factory QueueInfo.fromMap(Map<String, dynamic> map) {
     return QueueInfo(
-      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : DeadLetterWithResourceIdentity.fromMap((map['deadLetterDestinationWithResourceIdentity'] as Map).cast<String, dynamic>()),
-      eventTimeToLive: map['eventTimeToLive'] == null ? null : map['eventTimeToLive'] as String,
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : map['maxDeliveryCount'] as int,
-      receiveLockDurationInSeconds: map['receiveLockDurationInSeconds'] == null ? null : map['receiveLockDurationInSeconds'] as int,
+      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterDestinationWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
+      eventTimeToLive: map['eventTimeToLive'] == null ? null : (map['eventTimeToLive'] as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
+      receiveLockDurationInSeconds: map['receiveLockDurationInSeconds'] == null ? null : (map['receiveLockDurationInSeconds'] as int).input(),
     );
   }
 }

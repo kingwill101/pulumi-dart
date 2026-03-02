@@ -16,13 +16,10 @@ class GetWorkerPoolArgs {
   /// [project] Optional.
   /// [workerPoolId] Required.
   GetWorkerPoolArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workerPoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+    required this.location,
+    this.project,
+    required this.workerPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetWorkerPoolArgs {
 
   factory GetWorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workerPoolId: pulumi.Output.create<String>(map['workerPoolId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class NamedValueState {
   /// [value] The value of this API Management Named Value.
   /// [valueFromKeyVault] A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
   NamedValueState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<bool>? secret,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? value,
-    pulumi.Output<NamedValueValueFromKeyVault>? valueFromKeyVault,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      secret = pulumi.Input.asOptionalInput<bool>(secret),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      valueFromKeyVault = pulumi.Input.asOptionalInput<NamedValueValueFromKeyVault>(valueFromKeyVault);
+    this.apiManagementName,
+    this.displayName,
+    this.name,
+    this.resourceGroupName,
+    this.secret,
+    this.tags,
+    this.value,
+    this.valueFromKeyVault,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class NamedValueState {
 
   factory NamedValueState.fromMap(Map<String, dynamic> map) {
     return NamedValueState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<bool>(map['secret'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : pulumi.Output.create<NamedValueValueFromKeyVault>(NamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : (NamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

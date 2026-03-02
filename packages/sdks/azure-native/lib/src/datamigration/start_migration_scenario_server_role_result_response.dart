@@ -6,11 +6,11 @@ import 'reportable_exception_response.dart';
 /// Server role migration result
 class StartMigrationScenarioServerRoleResultResponse {
   /// Migration exceptions and warnings.
-  final List<ReportableExceptionResponse> exceptionsAndWarnings;
+  final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
   /// Name of server role.
-  final String name;
+  final pulumi.Input<String> name;
   /// Current state of migration
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [StartMigrationScenarioServerRoleResultResponse].
   /// [exceptionsAndWarnings] Migration exceptions and warnings.
@@ -24,7 +24,7 @@ class StartMigrationScenarioServerRoleResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exceptionsAndWarnings': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(exceptionsAndWarnings, (value) => value.toMap()),
+      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'state': state,
     };
@@ -32,9 +32,9 @@ class StartMigrationScenarioServerRoleResultResponse {
 
   factory StartMigrationScenarioServerRoleResultResponse.fromMap(Map<String, dynamic> map) {
     return StartMigrationScenarioServerRoleResultResponse(
-      exceptionsAndWarnings: pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      state: map['state'] as String,
+      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

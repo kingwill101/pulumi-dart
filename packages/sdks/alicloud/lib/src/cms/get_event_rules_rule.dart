@@ -5,21 +5,21 @@ import 'get_event_rules_rule_event_pattern.dart';
 
 class GetEventRulesRule {
   /// The description of the rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// Event mode, used to describe the trigger conditions for this event.
-  final List<GetEventRulesRuleEventPattern> eventPatterns;
+  final pulumi.Input<List<GetEventRulesRuleEventPattern>> eventPatterns;
   /// The name of the event rule.
-  final String eventRuleName;
+  final pulumi.Input<String> eventRuleName;
   /// The type of event.
-  final String eventType;
+  final pulumi.Input<String> eventType;
   /// The ID of the application Group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The ID of the Event Rule. Its value is same as Event Rule Name.
-  final String id;
+  final pulumi.Input<String> id;
   /// The mute period during which new alerts are not sent even if the trigger conditions are met.
-  final int silenceTime;
+  final pulumi.Input<int> silenceTime;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEventRulesRule].
   /// [description] The description of the rule.
@@ -44,7 +44,7 @@ class GetEventRulesRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'eventPatterns': pulumi.Input.encodeList<GetEventRulesRuleEventPattern, Map<String, dynamic>>(eventPatterns, (value) => value.toMap()),
+      'eventPatterns': pulumi.Input.mapInputValue<List<GetEventRulesRuleEventPattern>, List<Map<String, dynamic>>>(eventPatterns, (value) => pulumi.Input.encodeList<GetEventRulesRuleEventPattern, Map<String, dynamic>>(value, (value) => value.toMap())),
       'eventRuleName': eventRuleName,
       'eventType': eventType,
       'groupId': groupId,
@@ -56,14 +56,14 @@ class GetEventRulesRule {
 
   factory GetEventRulesRule.fromMap(Map<String, dynamic> map) {
     return GetEventRulesRule(
-      description: map['description'] as String,
-      eventPatterns: pulumi.Input.decodeList<GetEventRulesRuleEventPattern>(map['eventPatterns'], (value) => GetEventRulesRuleEventPattern.fromMap((value as Map).cast<String, dynamic>())),
-      eventRuleName: map['eventRuleName'] as String,
-      eventType: map['eventType'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      silenceTime: map['silenceTime'] as int,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      eventPatterns: (pulumi.Input.decodeList<GetEventRulesRuleEventPattern>(map['eventPatterns'], (value) => GetEventRulesRuleEventPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventRuleName: (map['eventRuleName'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      silenceTime: (map['silenceTime'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

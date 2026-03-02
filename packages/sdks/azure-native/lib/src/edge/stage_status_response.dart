@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Result of Stage execution
 class StageStatusResponse {
   /// Error message
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// The inputs of the StageHistory, Inputs holds a key-value map of user-defined parameters for the initial stage
-  final dynamic inputs;
+  final pulumi.Input<dynamic>? inputs;
   /// whether this stage is active or inactive
-  final String? isActive;
+  final pulumi.Input<String>? isActive;
   /// Next stage
-  final String? nextstage;
+  final pulumi.Input<String>? nextstage;
   /// The outputs of the StageHistory, it is different as the different input stages.
-  final dynamic outputs;
+  final pulumi.Input<dynamic>? outputs;
   /// Current stage
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Deployment status
-  final int? status;
+  final pulumi.Input<int>? status;
   /// Status message
-  final String? statusMessage;
+  final pulumi.Input<String>? statusMessage;
 
   /// Creates a new [StageStatusResponse].
   /// [errorMessage] Error message
@@ -55,14 +56,14 @@ class StageStatusResponse {
 
   factory StageStatusResponse.fromMap(Map<String, dynamic> map) {
     return StageStatusResponse(
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      inputs: map['inputs'] == null ? null : map['inputs'],
-      isActive: map['isActive'] == null ? null : map['isActive'] as String,
-      nextstage: map['nextstage'] == null ? null : map['nextstage'] as String,
-      outputs: map['outputs'] == null ? null : map['outputs'],
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
-      statusMessage: map['statusMessage'] == null ? null : map['statusMessage'] as String,
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      inputs: map['inputs'] == null ? null : (map['inputs']).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive'] as String).input(),
+      nextstage: map['nextstage'] == null ? null : (map['nextstage'] as String).input(),
+      outputs: map['outputs'] == null ? null : (map['outputs']).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
     );
   }
 }

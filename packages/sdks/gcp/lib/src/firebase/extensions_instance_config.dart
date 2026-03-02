@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionsInstanceConfig {
   /// List of extension events selected by consumer that extension is allowed to
   /// emit, identified by their types.
-  final List<String>? allowedEventTypes;
+  final pulumi.Input<List<String>>? allowedEventTypes;
   /// (Output)
   /// The time at which the Extension Instance Config was created.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// Fully qualified Eventarc resource name that consumers should use for event triggers.
-  final String? eventarcChannel;
+  final pulumi.Input<String>? eventarcChannel;
   /// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
-  final String extensionRef;
+  final pulumi.Input<String> extensionRef;
   /// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
-  final String? extensionVersion;
+  final pulumi.Input<String>? extensionVersion;
   /// (Output)
   /// The unique identifier for this configuration.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Environment variables that may be configured for the Extension
-  final Map<String, String> params;
+  final pulumi.Input<Map<String, String>> params;
   /// (Output)
   /// Postinstall instructions to be shown for this Extension, with
   /// template strings representing function and parameter values substituted
   /// with actual values. These strings include: ${param:FOO},
   /// ${function:myFunc.url},
   /// ${function:myFunc.name}, and ${function:myFunc.location}
-  final String? populatedPostinstallContent;
+  final pulumi.Input<String>? populatedPostinstallContent;
   /// Params whose values are only available at deployment time.
   /// Unlike other params, these will not be set as environment variables on
   /// functions. See a full list of system parameters at
   /// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
-  final Map<String, String>? systemParams;
+  final pulumi.Input<Map<String, String>>? systemParams;
 
   /// Creates a new [ExtensionsInstanceConfig].
   /// [allowedEventTypes] List of extension events selected by consumer that extension is allowed to
@@ -70,15 +71,15 @@ class ExtensionsInstanceConfig {
 
   factory ExtensionsInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceConfig(
-      allowedEventTypes: map['allowedEventTypes'] == null ? null : (map['allowedEventTypes'] as List).cast<String>(),
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      eventarcChannel: map['eventarcChannel'] == null ? null : map['eventarcChannel'] as String,
-      extensionRef: map['extensionRef'] as String,
-      extensionVersion: map['extensionVersion'] == null ? null : map['extensionVersion'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      params: (map['params'] as Map).cast<String, String>(),
-      populatedPostinstallContent: map['populatedPostinstallContent'] == null ? null : map['populatedPostinstallContent'] as String,
-      systemParams: map['systemParams'] == null ? null : (map['systemParams'] as Map).cast<String, String>(),
+      allowedEventTypes: map['allowedEventTypes'] == null ? null : ((map['allowedEventTypes'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      eventarcChannel: map['eventarcChannel'] == null ? null : (map['eventarcChannel'] as String).input(),
+      extensionRef: (map['extensionRef'] as String).input(),
+      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      params: ((map['params'] as Map).cast<String, String>()).input(),
+      populatedPostinstallContent: map['populatedPostinstallContent'] == null ? null : (map['populatedPostinstallContent'] as String).input(),
+      systemParams: map['systemParams'] == null ? null : ((map['systemParams'] as Map).cast<String, String>()).input(),
     );
   }
 }

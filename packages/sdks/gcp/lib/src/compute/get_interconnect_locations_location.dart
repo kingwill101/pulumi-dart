@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInterconnectLocationsLocation {
   /// The postal address of the Point of Presence.
-  final String address;
+  final pulumi.Input<String> address;
   /// The availability zone for this InterconnectLocation.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// A list of features available at this InterconnectLocation.
-  final List<String> availableFeatures;
+  final pulumi.Input<List<String>> availableFeatures;
   /// A list of link types available at this InterconnectLocation.
-  final List<String> availableLinkTypes;
+  final pulumi.Input<List<String>> availableLinkTypes;
   /// The city for this location.
-  final String city;
+  final pulumi.Input<String> city;
   /// The continent for this location.
-  final String continent;
+  final pulumi.Input<String> continent;
   /// A textual description of the resource.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the provider for this facility.
-  final String facilityProvider;
+  final pulumi.Input<String> facilityProvider;
   /// A provider-assigned Identifier for this facility.
-  final String facilityProviderFacilityId;
-  final String name;
+  final pulumi.Input<String> facilityProviderFacilityId;
+  final pulumi.Input<String> name;
   /// The PeeringDB facility ID for this facility.
-  final String peeringdbFacilityId;
+  final pulumi.Input<String> peeringdbFacilityId;
   /// The URI of the created resource.
-  final String selfLink;
+  final pulumi.Input<String> selfLink;
   /// The status of this InterconnectLocation.
-  final String status;
+  final pulumi.Input<String> status;
   /// Reserved for future use.
-  final bool supportsPzs;
+  final pulumi.Input<bool> supportsPzs;
 
   /// Creates a new [GetInterconnectLocationsLocation].
   /// [address] The postal address of the Point of Presence.
@@ -83,20 +84,20 @@ class GetInterconnectLocationsLocation {
 
   factory GetInterconnectLocationsLocation.fromMap(Map<String, dynamic> map) {
     return GetInterconnectLocationsLocation(
-      address: map['address'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      availableFeatures: (map['availableFeatures'] as List).cast<String>(),
-      availableLinkTypes: (map['availableLinkTypes'] as List).cast<String>(),
-      city: map['city'] as String,
-      continent: map['continent'] as String,
-      description: map['description'] as String,
-      facilityProvider: map['facilityProvider'] as String,
-      facilityProviderFacilityId: map['facilityProviderFacilityId'] as String,
-      name: map['name'] as String,
-      peeringdbFacilityId: map['peeringdbFacilityId'] as String,
-      selfLink: map['selfLink'] as String,
-      status: map['status'] as String,
-      supportsPzs: map['supportsPzs'] as bool,
+      address: (map['address'] as String).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      availableFeatures: ((map['availableFeatures'] as List).cast<String>()).input(),
+      availableLinkTypes: ((map['availableLinkTypes'] as List).cast<String>()).input(),
+      city: (map['city'] as String).input(),
+      continent: (map['continent'] as String).input(),
+      description: (map['description'] as String).input(),
+      facilityProvider: (map['facilityProvider'] as String).input(),
+      facilityProviderFacilityId: (map['facilityProviderFacilityId'] as String).input(),
+      name: (map['name'] as String).input(),
+      peeringdbFacilityId: (map['peeringdbFacilityId'] as String).input(),
+      selfLink: (map['selfLink'] as String).input(),
+      status: (map['status'] as String).input(),
+      supportsPzs: (map['supportsPzs'] as bool).input(),
     );
   }
 }

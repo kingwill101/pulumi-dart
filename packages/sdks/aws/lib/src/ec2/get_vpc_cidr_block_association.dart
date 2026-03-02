@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcCidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
-  final String associationId;
+  final pulumi.Input<String> associationId;
   /// Cidr block of the desired VPC.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// Current state of the desired VPC.
   /// Can be either `"pending"` or `"available"`.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetVpcCidrBlockAssociation].
   /// [associationId] Association ID for the IPv4 CIDR block.
@@ -30,9 +31,9 @@ class GetVpcCidrBlockAssociation {
 
   factory GetVpcCidrBlockAssociation.fromMap(Map<String, dynamic> map) {
     return GetVpcCidrBlockAssociation(
-      associationId: map['associationId'] as String,
-      cidrBlock: map['cidrBlock'] as String,
-      state: map['state'] as String,
+      associationId: (map['associationId'] as String).input(),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

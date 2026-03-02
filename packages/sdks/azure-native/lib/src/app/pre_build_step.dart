@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_get.dart';
 
 /// Model representing a pre-build step.
 class PreBuildStep {
   /// Description of the pre-build step.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Http get request to send before the build.
-  final HttpGet? httpGet;
+  final pulumi.Input<HttpGet>? httpGet;
   /// List of custom commands to run.
-  final List<String>? scripts;
+  final pulumi.Input<List<String>>? scripts;
 
   /// Creates a new [PreBuildStep].
   /// [description] Description of the pre-build step.
@@ -24,16 +25,16 @@ class PreBuildStep {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<HttpGet, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
       'scripts': ?scripts,
     };
   }
 
   factory PreBuildStep.fromMap(Map<String, dynamic> map) {
     return PreBuildStep(
-      description: map['description'] == null ? null : map['description'] as String,
-      httpGet: map['httpGet'] == null ? null : HttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      scripts: map['scripts'] == null ? null : (map['scripts'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpGet: map['httpGet'] == null ? null : (HttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      scripts: map['scripts'] == null ? null : ((map['scripts'] as List).cast<String>()).input(),
     );
   }
 }

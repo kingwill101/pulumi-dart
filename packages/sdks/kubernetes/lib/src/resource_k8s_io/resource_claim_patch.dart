@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'resource_claim_spec_patch.dart';
 import 'resource_claim_status_patch.dart';
@@ -9,15 +10,15 @@ import 'resource_claim_status_patch.dart';
 /// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
 class ResourceClaimPatch {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object metadata
-  final ObjectMetaPatch? metadata;
+  final pulumi.Input<ObjectMetaPatch>? metadata;
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
-  final ResourceClaimSpecPatch? spec;
+  final pulumi.Input<ResourceClaimSpecPatch>? spec;
   /// Status describes whether the claim is ready to use and what has been allocated.
-  final ResourceClaimStatusPatch? status;
+  final pulumi.Input<ResourceClaimStatusPatch>? status;
 
   /// Creates a new [ResourceClaimPatch].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -37,19 +38,19 @@ class ResourceClaimPatch {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<ResourceClaimSpecPatch, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ResourceClaimStatusPatch, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ResourceClaimPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatch(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : ResourceClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ResourceClaimStatusPatch.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ResourceClaimStatusPatch.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

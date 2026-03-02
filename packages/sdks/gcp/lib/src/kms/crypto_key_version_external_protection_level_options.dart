@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CryptoKeyVersionExternalProtectionLevelOptions {
   /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
-  final String? ekmConnectionKeyPath;
+  final pulumi.Input<String>? ekmConnectionKeyPath;
   /// The URI for an external resource that this CryptoKeyVersion represents.
-  final String? externalKeyUri;
+  final pulumi.Input<String>? externalKeyUri;
 
   /// Creates a new [CryptoKeyVersionExternalProtectionLevelOptions].
   /// [ekmConnectionKeyPath] The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
@@ -24,8 +25,8 @@ class CryptoKeyVersionExternalProtectionLevelOptions {
 
   factory CryptoKeyVersionExternalProtectionLevelOptions.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionExternalProtectionLevelOptions(
-      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : map['ekmConnectionKeyPath'] as String,
-      externalKeyUri: map['externalKeyUri'] == null ? null : map['externalKeyUri'] as String,
+      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : (map['ekmConnectionKeyPath'] as String).input(),
+      externalKeyUri: map['externalKeyUri'] == null ? null : (map['externalKeyUri'] as String).input(),
     );
   }
 }

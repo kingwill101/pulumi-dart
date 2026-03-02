@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'intent_content_response.dart';
 
 /// Represents the Reachability Analysis Run properties.
 class ReachabilityAnalysisRunPropertiesResponse {
-  final String analysisResult;
-  final String? description;
-  final String errorMessage;
+  final pulumi.Input<String> analysisResult;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> errorMessage;
   /// Intent information.
-  final IntentContentResponse intentContent;
+  final pulumi.Input<IntentContentResponse> intentContent;
   /// Id of the intent resource to run analysis on.
-  final String intentId;
+  final pulumi.Input<String> intentId;
   /// Provisioning states of a resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ReachabilityAnalysisRunPropertiesResponse].
   /// [analysisResult] Required.
@@ -35,7 +36,7 @@ class ReachabilityAnalysisRunPropertiesResponse {
       'analysisResult': analysisResult,
       'description': ?description,
       'errorMessage': errorMessage,
-      'intentContent': intentContent.toMap(),
+      'intentContent': pulumi.Input.mapInputValue<IntentContentResponse, Map<String, dynamic>>(intentContent, (value) => value.toMap()),
       'intentId': intentId,
       'provisioningState': provisioningState,
     };
@@ -43,12 +44,12 @@ class ReachabilityAnalysisRunPropertiesResponse {
 
   factory ReachabilityAnalysisRunPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunPropertiesResponse(
-      analysisResult: map['analysisResult'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      errorMessage: map['errorMessage'] as String,
-      intentContent: IntentContentResponse.fromMap((map['intentContent'] as Map).cast<String, dynamic>()),
-      intentId: map['intentId'] as String,
-      provisioningState: map['provisioningState'] as String,
+      analysisResult: (map['analysisResult'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      intentContent: (IntentContentResponse.fromMap((map['intentContent'] as Map).cast<String, dynamic>())).input(),
+      intentId: (map['intentId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

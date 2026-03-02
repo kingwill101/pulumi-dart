@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworksIpAllocationPolicyNodePolicyBond {
   /// The bond name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// IP source cluster subnet
-  final String? subnet;
+  final pulumi.Input<String>? subnet;
 
   /// Creates a new [ClusterNetworksIpAllocationPolicyNodePolicyBond].
   /// [name] The bond name
@@ -24,8 +25,8 @@ class ClusterNetworksIpAllocationPolicyNodePolicyBond {
 
   factory ClusterNetworksIpAllocationPolicyNodePolicyBond.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksIpAllocationPolicyNodePolicyBond(
-      name: map['name'] == null ? null : map['name'] as String,
-      subnet: map['subnet'] == null ? null : map['subnet'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_connection_configuration_conditional.dart';
 import 'agent_flow_definition_connection_configuration_data.dart';
 
 class AgentFlowDefinitionConnectionConfiguration {
   /// The configuration of a connection originating from a Condition node. See Conditional Connection Configuration for more information.
-  final AgentFlowDefinitionConnectionConfigurationConditional? conditional;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationConditional>? conditional;
   /// The configuration of a connection originating from a node that isn’t a Condition node. See Data Connection Configuration for more information.
-  final AgentFlowDefinitionConnectionConfigurationData? data;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfigurationData>? data;
 
   /// Creates a new [AgentFlowDefinitionConnectionConfiguration].
   /// [conditional] The configuration of a connection originating from a Condition node. See Conditional Connection Configuration for more information.
@@ -19,15 +20,15 @@ class AgentFlowDefinitionConnectionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditional': ?conditional == null ? null : conditional!.toMap(),
-      'data': ?data == null ? null : data!.toMap(),
+      'conditional': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionConnectionConfigurationConditional, Map<String, dynamic>>(conditional, (value) => value.toMap()),
+      'data': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionConnectionConfigurationData, Map<String, dynamic>>(data, (value) => value.toMap()),
     };
   }
 
   factory AgentFlowDefinitionConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnectionConfiguration(
-      conditional: map['conditional'] == null ? null : AgentFlowDefinitionConnectionConfigurationConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>()),
-      data: map['data'] == null ? null : AgentFlowDefinitionConnectionConfigurationData.fromMap((map['data'] as Map).cast<String, dynamic>()),
+      conditional: map['conditional'] == null ? null : (AgentFlowDefinitionConnectionConfigurationConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>())).input(),
+      data: map['data'] == null ? null : (AgentFlowDefinitionConnectionConfigurationData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

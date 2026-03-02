@@ -45,31 +45,19 @@ class FirewallPolicyState {
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Web Application Firewall Policy.
   FirewallPolicyState({
-    pulumi.Output<String>? customBlockResponseBody,
-    pulumi.Output<int>? customBlockResponseStatusCode,
-    pulumi.Output<List<FirewallPolicyCustomRule>>? customRules,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? frontendEndpointIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<FirewallPolicyManagedRule>>? managedRules,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? redirectUrl,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customBlockResponseBody = pulumi.Input.asOptionalInput<String>(customBlockResponseBody),
-      customBlockResponseStatusCode = pulumi.Input.asOptionalInput<int>(customBlockResponseStatusCode),
-      customRules = pulumi.Input.asOptionalInput<List<FirewallPolicyCustomRule>>(customRules),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      frontendEndpointIds = pulumi.Input.asOptionalInput<List<String>>(frontendEndpointIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedRules = pulumi.Input.asOptionalInput<List<FirewallPolicyManagedRule>>(managedRules),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      redirectUrl = pulumi.Input.asOptionalInput<String>(redirectUrl),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customBlockResponseBody,
+    this.customBlockResponseStatusCode,
+    this.customRules,
+    this.enabled,
+    this.frontendEndpointIds,
+    this.location,
+    this.managedRules,
+    this.mode,
+    this.name,
+    this.redirectUrl,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class FirewallPolicyState {
 
   factory FirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyState(
-      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : pulumi.Output.create<String>(map['customBlockResponseBody'] as String),
-      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : pulumi.Output.create<int>(map['customBlockResponseStatusCode'] as int),
-      customRules: map['customRules'] == null ? null : pulumi.Output.create<List<FirewallPolicyCustomRule>>(pulumi.Input.decodeList<FirewallPolicyCustomRule>(map['customRules'], (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : pulumi.Output.create<List<String>>((map['frontendEndpointIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedRules: map['managedRules'] == null ? null : pulumi.Output.create<List<FirewallPolicyManagedRule>>(pulumi.Input.decodeList<FirewallPolicyManagedRule>(map['managedRules'], (value) => FirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>()))),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      redirectUrl: map['redirectUrl'] == null ? null : pulumi.Output.create<String>(map['redirectUrl'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody'] as String).input(),
+      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode'] as int).input(),
+      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyCustomRule>(map['customRules'], (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : ((map['frontendEndpointIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedRules: map['managedRules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRule>(map['managedRules'], (value) => FirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

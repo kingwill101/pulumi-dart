@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataTableWithColumnsColumnWildcard {
-  final List<String>? excludedColumnNames;
+  final pulumi.Input<List<String>>? excludedColumnNames;
 
   /// Creates a new [OptInResourceDataTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Optional.
@@ -18,7 +19,7 @@ class OptInResourceDataTableWithColumnsColumnWildcard {
 
   factory OptInResourceDataTableWithColumnsColumnWildcard.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataTableWithColumnsColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : (map['excludedColumnNames'] as List).cast<String>(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
     );
   }
 }

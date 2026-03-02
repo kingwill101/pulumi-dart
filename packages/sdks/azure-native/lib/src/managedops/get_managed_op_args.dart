@@ -13,9 +13,8 @@ class GetManagedOpArgs {
   /// Creates a new [GetManagedOpArgs].
   /// [managedOpsName] Name of the resource.
   GetManagedOpArgs({
-    required pulumi.Output<String> managedOpsName,
-  }) :
-      managedOpsName = pulumi.Input.asInput<String>(managedOpsName);
+    required this.managedOpsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetManagedOpArgs {
 
   factory GetManagedOpArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedOpArgs(
-      managedOpsName: pulumi.Output.create<String>(map['managedOpsName'] as String),
+      managedOpsName: (map['managedOpsName'] as String).input(),
     );
   }
 }

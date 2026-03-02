@@ -16,11 +16,9 @@ class GetSecureCredentialArgs {
   /// [accountId] The account in New Relic associated with the secure credential. Defaults to the account associated with the API key used.
   /// [key] The secure credential's key name.  Regardless of the case used in the configuration, the provider will provide an upcased key to the underlying API.
   GetSecureCredentialArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> key,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      key = pulumi.Input.asInput<String>(key);
+    this.accountId,
+    required this.key,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecureCredentialArgs {
 
   factory GetSecureCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetSecureCredentialArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

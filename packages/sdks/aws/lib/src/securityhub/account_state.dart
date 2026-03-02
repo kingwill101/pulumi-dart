@@ -22,17 +22,12 @@ class AccountState {
   /// [enableDefaultStandards] Whether to enable the security standards that Security Hub has designated as automatically enabled including: ` AWS Foundational Security Best Practices v1.0.0` and `CIS AWS Foundations Benchmark v1.2.0`. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccountState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? autoEnableControls,
-    pulumi.Output<String>? controlFindingGenerator,
-    pulumi.Output<bool>? enableDefaultStandards,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      autoEnableControls = pulumi.Input.asOptionalInput<bool>(autoEnableControls),
-      controlFindingGenerator = pulumi.Input.asOptionalInput<String>(controlFindingGenerator),
-      enableDefaultStandards = pulumi.Input.asOptionalInput<bool>(enableDefaultStandards),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.autoEnableControls,
+    this.controlFindingGenerator,
+    this.enableDefaultStandards,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      autoEnableControls: map['autoEnableControls'] == null ? null : pulumi.Output.create<bool>(map['autoEnableControls'] as bool),
-      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : pulumi.Output.create<String>(map['controlFindingGenerator'] as String),
-      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : pulumi.Output.create<bool>(map['enableDefaultStandards'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      autoEnableControls: map['autoEnableControls'] == null ? null : (map['autoEnableControls'] as bool).input(),
+      controlFindingGenerator: map['controlFindingGenerator'] == null ? null : (map['controlFindingGenerator'] as String).input(),
+      enableDefaultStandards: map['enableDefaultStandards'] == null ? null : (map['enableDefaultStandards'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

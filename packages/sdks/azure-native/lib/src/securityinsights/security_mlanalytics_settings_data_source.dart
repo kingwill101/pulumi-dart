@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// security ml analytics settings data sources
 class SecurityMLAnalyticsSettingsDataSource {
   /// The connector id that provides the following data types
-  final String? connectorId;
+  final pulumi.Input<String>? connectorId;
   /// The data types used by the security ml analytics settings
-  final List<String>? dataTypes;
+  final pulumi.Input<List<String>>? dataTypes;
 
   /// Creates a new [SecurityMLAnalyticsSettingsDataSource].
   /// [connectorId] The connector id that provides the following data types
@@ -25,8 +26,8 @@ class SecurityMLAnalyticsSettingsDataSource {
 
   factory SecurityMLAnalyticsSettingsDataSource.fromMap(Map<String, dynamic> map) {
     return SecurityMLAnalyticsSettingsDataSource(
-      connectorId: map['connectorId'] == null ? null : map['connectorId'] as String,
-      dataTypes: map['dataTypes'] == null ? null : (map['dataTypes'] as List).cast<String>(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes'] as List).cast<String>()).input(),
     );
   }
 }

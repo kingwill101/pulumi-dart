@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_discovery_settings_response.dart';
 
 /// HealthModel properties
 class HealthModelPropertiesResponse {
   /// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
-  final ModelDiscoverySettingsResponse? discovery;
+  final pulumi.Input<ModelDiscoverySettingsResponse>? discovery;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The data plane endpoint for querying health data
-  final String queryEndpoint;
+  final pulumi.Input<String> queryEndpoint;
 
   /// Creates a new [HealthModelPropertiesResponse].
   /// [discovery] Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
@@ -23,7 +24,7 @@ class HealthModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'discovery': ?discovery == null ? null : discovery!.toMap(),
+      'discovery': ?pulumi.Input.mapOptionalInputValue<ModelDiscoverySettingsResponse, Map<String, dynamic>>(discovery, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'queryEndpoint': queryEndpoint,
     };
@@ -31,9 +32,9 @@ class HealthModelPropertiesResponse {
 
   factory HealthModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HealthModelPropertiesResponse(
-      discovery: map['discovery'] == null ? null : ModelDiscoverySettingsResponse.fromMap((map['discovery'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      queryEndpoint: map['queryEndpoint'] as String,
+      discovery: map['discovery'] == null ? null : (ModelDiscoverySettingsResponse.fromMap((map['discovery'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      queryEndpoint: (map['queryEndpoint'] as String).input(),
     );
   }
 }

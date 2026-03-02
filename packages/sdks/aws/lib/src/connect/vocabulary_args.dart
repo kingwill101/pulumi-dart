@@ -29,19 +29,13 @@ class VocabularyArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the vocabulary. If configured with a provider
   VocabularyArgs({
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      languageCode = pulumi.Input.asInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.content,
+    required this.instanceId,
+    required this.languageCode,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class VocabularyArgs {
 
   factory VocabularyArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      languageCode: pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      content: (map['content'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ServiceNetworkSettingsState {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The name of the service these settings apply to.
   ServiceNetworkSettingsState({
-    pulumi.Output<ServiceNetworkSettingsNetworkSettings>? networkSettings,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? service,
-  }) :
-      networkSettings = pulumi.Input.asOptionalInput<ServiceNetworkSettingsNetworkSettings>(networkSettings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asOptionalInput<String>(service);
+    this.networkSettings,
+    this.project,
+    this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ServiceNetworkSettingsState {
 
   factory ServiceNetworkSettingsState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsState(
-      networkSettings: map['networkSettings'] == null ? null : pulumi.Output.create<ServiceNetworkSettingsNetworkSettings>(ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      networkSettings: map['networkSettings'] == null ? null : (ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

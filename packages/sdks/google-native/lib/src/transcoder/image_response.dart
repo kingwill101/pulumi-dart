@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'normalized_coordinate_response.dart';
 
 /// Overlaid image.
 class ImageResponse {
   /// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
-  final double alpha;
+  final pulumi.Input<double> alpha;
   /// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-  final NormalizedCoordinateResponse resolution;
+  final pulumi.Input<NormalizedCoordinateResponse> resolution;
   /// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ImageResponse].
   /// [alpha] Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
@@ -24,16 +25,16 @@ class ImageResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alpha': alpha,
-      'resolution': resolution.toMap(),
+      'resolution': pulumi.Input.mapInputValue<NormalizedCoordinateResponse, Map<String, dynamic>>(resolution, (value) => value.toMap()),
       'uri': uri,
     };
   }
 
   factory ImageResponse.fromMap(Map<String, dynamic> map) {
     return ImageResponse(
-      alpha: map['alpha'] as double,
-      resolution: NormalizedCoordinateResponse.fromMap((map['resolution'] as Map).cast<String, dynamic>()),
-      uri: map['uri'] as String,
+      alpha: (map['alpha'] as double).input(),
+      resolution: (NormalizedCoordinateResponse.fromMap((map['resolution'] as Map).cast<String, dynamic>())).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

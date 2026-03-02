@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines contents of a web application firewall global configuration
 class PolicySettings {
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final String? defaultCustomBlockResponseBody;
+  final pulumi.Input<String>? defaultCustomBlockResponseBody;
   /// If the action type is block, this field defines the default customer overridable http response status code.
-  final double? defaultCustomBlockResponseStatusCode;
+  final pulumi.Input<double>? defaultCustomBlockResponseStatusCode;
   /// If action type is redirect, this field represents the default redirect URL for the client.
-  final String? defaultRedirectUrl;
+  final pulumi.Input<String>? defaultRedirectUrl;
   /// describes if the policy is in enabled state or disabled state
-  final String? enabledState;
+  final pulumi.Input<String>? enabledState;
   /// Describes if it is in detection mode or prevention mode at policy level.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [PolicySettings].
   /// [defaultCustomBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -40,11 +41,11 @@ class PolicySettings {
 
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
-      defaultCustomBlockResponseBody: map['defaultCustomBlockResponseBody'] == null ? null : map['defaultCustomBlockResponseBody'] as String,
-      defaultCustomBlockResponseStatusCode: map['defaultCustomBlockResponseStatusCode'] == null ? null : map['defaultCustomBlockResponseStatusCode'] as double,
-      defaultRedirectUrl: map['defaultRedirectUrl'] == null ? null : map['defaultRedirectUrl'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      defaultCustomBlockResponseBody: map['defaultCustomBlockResponseBody'] == null ? null : (map['defaultCustomBlockResponseBody'] as String).input(),
+      defaultCustomBlockResponseStatusCode: map['defaultCustomBlockResponseStatusCode'] == null ? null : (map['defaultCustomBlockResponseStatusCode'] as double).input(),
+      defaultRedirectUrl: map['defaultRedirectUrl'] == null ? null : (map['defaultRedirectUrl'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AWS organization data for the member account
 class AwsOrganizationalDataMember {
   /// The multi cloud account's membership type in the organization
   /// Expected value is 'Member'.
-  final String organizationMembershipType;
+  final pulumi.Input<String> organizationMembershipType;
   /// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-  final String? parentHierarchyId;
+  final pulumi.Input<String>? parentHierarchyId;
 
   /// Creates a new [AwsOrganizationalDataMember].
   /// [organizationMembershipType] The multi cloud account's membership type in the organization
@@ -26,8 +27,8 @@ class AwsOrganizationalDataMember {
 
   factory AwsOrganizationalDataMember.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationalDataMember(
-      organizationMembershipType: map['organizationMembershipType'] as String,
-      parentHierarchyId: map['parentHierarchyId'] == null ? null : map['parentHierarchyId'] as String,
+      organizationMembershipType: (map['organizationMembershipType'] as String).input(),
+      parentHierarchyId: map['parentHierarchyId'] == null ? null : (map['parentHierarchyId'] as String).input(),
     );
   }
 }

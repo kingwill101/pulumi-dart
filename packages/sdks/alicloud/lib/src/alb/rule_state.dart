@@ -35,23 +35,15 @@ class RuleState {
   /// [ruleName] The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
   /// [status] The status of the resource.
   RuleState({
-    pulumi.Output<String>? direction,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<int>? priority,
-    pulumi.Output<List<RuleRuleAction>>? ruleActions,
-    pulumi.Output<List<RuleRuleCondition>>? ruleConditions,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? status,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      ruleActions = pulumi.Input.asOptionalInput<List<RuleRuleAction>>(ruleActions),
-      ruleConditions = pulumi.Input.asOptionalInput<List<RuleRuleCondition>>(ruleConditions),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.direction,
+    this.dryRun,
+    this.listenerId,
+    this.priority,
+    this.ruleActions,
+    this.ruleConditions,
+    this.ruleName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      ruleActions: map['ruleActions'] == null ? null : pulumi.Output.create<List<RuleRuleAction>>(pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions'], (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleConditions: map['ruleConditions'] == null ? null : pulumi.Output.create<List<RuleRuleCondition>>(pulumi.Input.decodeList<RuleRuleCondition>(map['ruleConditions'], (value) => RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions'], (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<RuleRuleCondition>(map['ruleConditions'], (value) => RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class RulesEngineArgs {
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [rules] A `rule` block as defined below.
   RulesEngineArgs({
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> frontdoorName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<RulesEngineRule>>? rules,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      frontdoorName = pulumi.Input.asInput<String>(frontdoorName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rules = pulumi.Input.asOptionalInput<List<RulesEngineRule>>(rules);
+    this.enabled,
+    required this.frontdoorName,
+    this.name,
+    required this.resourceGroupName,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RulesEngineArgs {
 
   factory RulesEngineArgs.fromMap(Map<String, dynamic> map) {
     return RulesEngineArgs(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      frontdoorName: pulumi.Output.create<String>(map['frontdoorName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<RulesEngineRule>>(pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      frontdoorName: (map['frontdoorName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

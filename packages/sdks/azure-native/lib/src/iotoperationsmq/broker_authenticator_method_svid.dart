@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SVID for BrokerAuthentication
 class BrokerAuthenticatorMethodSvid {
   /// Mounted socket path for spiffe agent.
-  final String agentSocketPath;
+  final pulumi.Input<String> agentSocketPath;
   /// Maximum number of re-tries to fetch identity.
-  final double? identityMaxRetry;
+  final pulumi.Input<double>? identityMaxRetry;
   /// Maximum time to wait before fetching identity again.
-  final double? identityWaitRetryMs;
+  final pulumi.Input<double>? identityWaitRetryMs;
 
   /// Creates a new [BrokerAuthenticatorMethodSvid].
   /// [agentSocketPath] Mounted socket path for spiffe agent.
@@ -30,9 +31,9 @@ class BrokerAuthenticatorMethodSvid {
 
   factory BrokerAuthenticatorMethodSvid.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodSvid(
-      agentSocketPath: map['agentSocketPath'] as String,
-      identityMaxRetry: map['identityMaxRetry'] == null ? null : map['identityMaxRetry'] as double,
-      identityWaitRetryMs: map['identityWaitRetryMs'] == null ? null : map['identityWaitRetryMs'] as double,
+      agentSocketPath: (map['agentSocketPath'] as String).input(),
+      identityMaxRetry: map['identityMaxRetry'] == null ? null : (map['identityMaxRetry'] as double).input(),
+      identityWaitRetryMs: map['identityWaitRetryMs'] == null ? null : (map['identityWaitRetryMs'] as double).input(),
     );
   }
 }

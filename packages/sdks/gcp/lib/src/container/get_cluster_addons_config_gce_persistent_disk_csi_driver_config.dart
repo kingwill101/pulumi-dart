@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 
   factory GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

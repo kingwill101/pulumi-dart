@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_shared_public_ip_address_configuration_response.dart';
 
 /// Property overrides on a subnet of a virtual network.
 class SubnetOverrideResponse {
   /// The name given to the subnet within the lab.
-  final String? labSubnetName;
+  final pulumi.Input<String>? labSubnetName;
   /// The resource ID of the subnet.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Properties that virtual machines on this subnet will share.
-  final SubnetSharedPublicIpAddressConfigurationResponse? sharedPublicIpAddressConfiguration;
+  final pulumi.Input<SubnetSharedPublicIpAddressConfigurationResponse>? sharedPublicIpAddressConfiguration;
   /// Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny).
-  final String? useInVmCreationPermission;
+  final pulumi.Input<String>? useInVmCreationPermission;
   /// Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
-  final String? usePublicIpAddressPermission;
+  final pulumi.Input<String>? usePublicIpAddressPermission;
   /// The virtual network pool associated with this subnet.
-  final String? virtualNetworkPoolName;
+  final pulumi.Input<String>? virtualNetworkPoolName;
 
   /// Creates a new [SubnetOverrideResponse].
   /// [labSubnetName] The name given to the subnet within the lab.
@@ -37,7 +38,7 @@ class SubnetOverrideResponse {
     return <String, dynamic>{
       'labSubnetName': ?labSubnetName,
       'resourceId': ?resourceId,
-      'sharedPublicIpAddressConfiguration': ?sharedPublicIpAddressConfiguration == null ? null : sharedPublicIpAddressConfiguration!.toMap(),
+      'sharedPublicIpAddressConfiguration': ?pulumi.Input.mapOptionalInputValue<SubnetSharedPublicIpAddressConfigurationResponse, Map<String, dynamic>>(sharedPublicIpAddressConfiguration, (value) => value.toMap()),
       'useInVmCreationPermission': ?useInVmCreationPermission,
       'usePublicIpAddressPermission': ?usePublicIpAddressPermission,
       'virtualNetworkPoolName': ?virtualNetworkPoolName,
@@ -46,12 +47,12 @@ class SubnetOverrideResponse {
 
   factory SubnetOverrideResponse.fromMap(Map<String, dynamic> map) {
     return SubnetOverrideResponse(
-      labSubnetName: map['labSubnetName'] == null ? null : map['labSubnetName'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : SubnetSharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration'] as Map).cast<String, dynamic>()),
-      useInVmCreationPermission: map['useInVmCreationPermission'] == null ? null : map['useInVmCreationPermission'] as String,
-      usePublicIpAddressPermission: map['usePublicIpAddressPermission'] == null ? null : map['usePublicIpAddressPermission'] as String,
-      virtualNetworkPoolName: map['virtualNetworkPoolName'] == null ? null : map['virtualNetworkPoolName'] as String,
+      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : (SubnetSharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
+      useInVmCreationPermission: map['useInVmCreationPermission'] == null ? null : (map['useInVmCreationPermission'] as String).input(),
+      usePublicIpAddressPermission: map['usePublicIpAddressPermission'] == null ? null : (map['usePublicIpAddressPermission'] as String).input(),
+      virtualNetworkPoolName: map['virtualNetworkPoolName'] == null ? null : (map['virtualNetworkPoolName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetCertificateIssuerArgs {
   /// [keyVaultId] The ID of the Key Vault in which to locate the Certificate Issuer.
   /// [name] The name of the Key Vault Certificate Issuer.
   GetCertificateIssuerArgs({
-    required pulumi.Output<String> keyVaultId,
-    required pulumi.Output<String> name,
-  }) :
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.keyVaultId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCertificateIssuerArgs {
 
   factory GetCertificateIssuerArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateIssuerArgs(
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

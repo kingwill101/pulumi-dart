@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Exchange data type connection.
 class OfficeDataConnectorDataTypesExchange {
   /// Describe whether this data type connection is enabled or not.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [OfficeDataConnectorDataTypesExchange].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -20,7 +21,7 @@ class OfficeDataConnectorDataTypesExchange {
 
   factory OfficeDataConnectorDataTypesExchange.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesExchange(
-      state: map['state'] as String,
+      state: (map['state'] as String).input(),
     );
   }
 }

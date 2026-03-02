@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSequencesSequence {
   /// The sequence's data type as defined in ``information_schema.sequences``.
-  final String dataType;
+  final pulumi.Input<String> dataType;
   /// The sequence name.
-  final String objectName;
+  final pulumi.Input<String> objectName;
   /// The parent schema.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
 
   /// Creates a new [GetSequencesSequence].
   /// [dataType] The sequence's data type as defined in ``information_schema.sequences``.
@@ -29,9 +30,9 @@ class GetSequencesSequence {
 
   factory GetSequencesSequence.fromMap(Map<String, dynamic> map) {
     return GetSequencesSequence(
-      dataType: map['dataType'] as String,
-      objectName: map['objectName'] as String,
-      schemaName: map['schemaName'] as String,
+      dataType: (map['dataType'] as String).input(),
+      objectName: (map['objectName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information about the retry policy for an event subscription.
 class RetryPolicyResponse {
   /// Time To Live (in minutes) for events.
-  final int? eventTimeToLiveInMinutes;
+  final pulumi.Input<int>? eventTimeToLiveInMinutes;
   /// Maximum number of delivery retry attempts for events.
-  final int? maxDeliveryAttempts;
+  final pulumi.Input<int>? maxDeliveryAttempts;
 
   /// Creates a new [RetryPolicyResponse].
   /// [eventTimeToLiveInMinutes] Time To Live (in minutes) for events.
@@ -25,8 +26,8 @@ class RetryPolicyResponse {
 
   factory RetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetryPolicyResponse(
-      eventTimeToLiveInMinutes: map['eventTimeToLiveInMinutes'] == null ? null : map['eventTimeToLiveInMinutes'] as int,
-      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : map['maxDeliveryAttempts'] as int,
+      eventTimeToLiveInMinutes: map['eventTimeToLiveInMinutes'] == null ? null : (map['eventTimeToLiveInMinutes'] as int).input(),
+      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts'] as int).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetApplicationPackageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The version of the application.
   GetApplicationPackageArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> versionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      versionName = pulumi.Input.asInput<String>(versionName);
+    required this.accountName,
+    required this.applicationName,
+    required this.resourceGroupName,
+    required this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApplicationPackageArgs {
 
   factory GetApplicationPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationPackageArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      applicationName: (map['applicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
     );
   }
 }

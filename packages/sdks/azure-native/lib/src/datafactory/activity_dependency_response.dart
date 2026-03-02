@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Activity dependency information.
 class ActivityDependencyResponse {
   /// Activity name.
-  final String activity;
+  final pulumi.Input<String> activity;
   /// Match-Condition for the dependency.
-  final List<String> dependencyConditions;
+  final pulumi.Input<List<String>> dependencyConditions;
 
   /// Creates a new [ActivityDependencyResponse].
   /// [activity] Activity name.
@@ -25,8 +26,8 @@ class ActivityDependencyResponse {
 
   factory ActivityDependencyResponse.fromMap(Map<String, dynamic> map) {
     return ActivityDependencyResponse(
-      activity: map['activity'] as String,
-      dependencyConditions: (map['dependencyConditions'] as List).cast<String>(),
+      activity: (map['activity'] as String).input(),
+      dependencyConditions: ((map['dependencyConditions'] as List).cast<String>()).input(),
     );
   }
 }

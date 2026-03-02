@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalAdminApiServerArgument represents an arg name->value pair. Only a subset of customized flags are supported. Please refer to the API server documentation below to know the exact format: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
 class BareMetalAdminApiServerArgument {
   /// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
-  final String argument;
+  final pulumi.Input<String> argument;
   /// The value of the arg as it will be passed to the API Server command line.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [BareMetalAdminApiServerArgument].
   /// [argument] The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
@@ -25,8 +26,8 @@ class BareMetalAdminApiServerArgument {
 
   factory BareMetalAdminApiServerArgument.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminApiServerArgument(
-      argument: map['argument'] as String,
-      value: map['value'] as String,
+      argument: (map['argument'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

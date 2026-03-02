@@ -22,17 +22,12 @@ class MoverAgentState {
   /// [name] Specifies the name which should be used for this Storage Mover Agent. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the Storage Mover that this Agent should be connected to. Changing this forces a new resource to be created.
   MoverAgentState({
-    pulumi.Output<String>? arcVirtualMachineId,
-    pulumi.Output<String>? arcVirtualMachineUuid,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? storageMoverId,
-  }) :
-      arcVirtualMachineId = pulumi.Input.asOptionalInput<String>(arcVirtualMachineId),
-      arcVirtualMachineUuid = pulumi.Input.asOptionalInput<String>(arcVirtualMachineUuid),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageMoverId = pulumi.Input.asOptionalInput<String>(storageMoverId);
+    this.arcVirtualMachineId,
+    this.arcVirtualMachineUuid,
+    this.description,
+    this.name,
+    this.storageMoverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class MoverAgentState {
 
   factory MoverAgentState.fromMap(Map<String, dynamic> map) {
     return MoverAgentState(
-      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : pulumi.Output.create<String>(map['arcVirtualMachineId'] as String),
-      arcVirtualMachineUuid: map['arcVirtualMachineUuid'] == null ? null : pulumi.Output.create<String>(map['arcVirtualMachineUuid'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageMoverId: map['storageMoverId'] == null ? null : pulumi.Output.create<String>(map['storageMoverId'] as String),
+      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId'] as String).input(),
+      arcVirtualMachineUuid: map['arcVirtualMachineUuid'] == null ? null : (map['arcVirtualMachineUuid'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId'] as String).input(),
     );
   }
 }

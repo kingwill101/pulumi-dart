@@ -29,19 +29,13 @@ class DatabaseAccountGremlinGraphArgs {
   /// [resource] The standard JSON format of a Gremlin graph
   /// [resourceGroupName] Name of an Azure resource group.
   DatabaseAccountGremlinGraphArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? graphName,
-    required pulumi.Output<Map<String, String>> options,
-    required pulumi.Output<GremlinGraphResource> resource,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      graphName = pulumi.Input.asOptionalInput<String>(graphName),
-      options = pulumi.Input.asInput<Map<String, String>>(options),
-      resource = pulumi.Input.asInput<GremlinGraphResource>(resource),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.databaseName,
+    this.graphName,
+    required this.options,
+    required this.resource,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DatabaseAccountGremlinGraphArgs {
 
   factory DatabaseAccountGremlinGraphArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountGremlinGraphArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      graphName: map['graphName'] == null ? null : pulumi.Output.create<String>(map['graphName'] as String),
-      options: pulumi.Output.create<Map<String, String>>((map['options'] as Map).cast<String, String>()),
-      resource: pulumi.Output.create<GremlinGraphResource>(GremlinGraphResource.fromMap((map['resource'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      graphName: map['graphName'] == null ? null : (map['graphName'] as String).input(),
+      options: ((map['options'] as Map).cast<String, String>()).input(),
+      resource: (GremlinGraphResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

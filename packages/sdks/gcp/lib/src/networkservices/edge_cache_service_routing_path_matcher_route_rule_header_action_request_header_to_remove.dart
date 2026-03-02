@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove {
   /// The name of the header to remove.
-  final String headerName;
+  final pulumi.Input<String> headerName;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove].
   /// [headerName] The name of the header to remove.
@@ -19,7 +20,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove(
-      headerName: map['headerName'] as String,
+      headerName: (map['headerName'] as String).input(),
     );
   }
 }

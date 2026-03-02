@@ -29,17 +29,12 @@ class IpamIpamPoolAllocationArgs {
   /// [ipamPoolAllocationName] The name of the ipam pool allocation.
   /// [ipamPoolId] The ID of the IPAM Pool.
   IpamIpamPoolAllocationArgs({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<int>? cidrMask,
-    pulumi.Output<String>? ipamPoolAllocationDescription,
-    pulumi.Output<String>? ipamPoolAllocationName,
-    required pulumi.Output<String> ipamPoolId,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      cidrMask = pulumi.Input.asOptionalInput<int>(cidrMask),
-      ipamPoolAllocationDescription = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationDescription),
-      ipamPoolAllocationName = pulumi.Input.asOptionalInput<String>(ipamPoolAllocationName),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId);
+    this.cidr,
+    this.cidrMask,
+    this.ipamPoolAllocationDescription,
+    this.ipamPoolAllocationName,
+    required this.ipamPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class IpamIpamPoolAllocationArgs {
 
   factory IpamIpamPoolAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolAllocationArgs(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      cidrMask: map['cidrMask'] == null ? null : pulumi.Output.create<int>(map['cidrMask'] as int),
-      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationDescription'] as String),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : pulumi.Output.create<String>(map['ipamPoolAllocationName'] as String),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
+      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription'] as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
     );
   }
 }

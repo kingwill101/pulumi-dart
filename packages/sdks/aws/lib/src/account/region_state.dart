@@ -19,15 +19,11 @@ class RegionState {
   /// [optStatus] The region opt status.
   /// [regionName] The region name to manage.
   RegionState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? optStatus,
-    pulumi.Output<String>? regionName,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      optStatus = pulumi.Input.asOptionalInput<String>(optStatus),
-      regionName = pulumi.Input.asOptionalInput<String>(regionName);
+    this.accountId,
+    this.enabled,
+    this.optStatus,
+    this.regionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class RegionState {
 
   factory RegionState.fromMap(Map<String, dynamic> map) {
     return RegionState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      optStatus: map['optStatus'] == null ? null : pulumi.Output.create<String>(map['optStatus'] as String),
-      regionName: map['regionName'] == null ? null : pulumi.Output.create<String>(map['regionName'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      optStatus: map['optStatus'] == null ? null : (map['optStatus'] as String).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
     );
   }
 }

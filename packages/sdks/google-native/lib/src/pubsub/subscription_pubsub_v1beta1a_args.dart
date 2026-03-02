@@ -23,15 +23,11 @@ class SubscriptionPubsubV1beta1aArgs {
   /// [pushConfig] If push delivery is used with this subscription, this field is used to configure it.
   /// [topic] The name of the topic from which this subscription is receiving messages.
   SubscriptionPubsubV1beta1aArgs({
-    pulumi.Output<int>? ackDeadlineSeconds,
-    pulumi.Output<String>? name,
-    pulumi.Output<PushConfigPubsubV1beta1a>? pushConfig,
-    pulumi.Output<String>? topic,
-  }) :
-      ackDeadlineSeconds = pulumi.Input.asOptionalInput<int>(ackDeadlineSeconds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pushConfig = pulumi.Input.asOptionalInput<PushConfigPubsubV1beta1a>(pushConfig),
-      topic = pulumi.Input.asOptionalInput<String>(topic);
+    this.ackDeadlineSeconds,
+    this.name,
+    this.pushConfig,
+    this.topic,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SubscriptionPubsubV1beta1aArgs {
 
   factory SubscriptionPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionPubsubV1beta1aArgs(
-      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : pulumi.Output.create<int>(map['ackDeadlineSeconds'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pushConfig: map['pushConfig'] == null ? null : pulumi.Output.create<PushConfigPubsubV1beta1a>(PushConfigPubsubV1beta1a.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
+      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta1a.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
     );
   }
 }

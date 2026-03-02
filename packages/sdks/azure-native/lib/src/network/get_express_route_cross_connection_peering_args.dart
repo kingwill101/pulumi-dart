@@ -19,13 +19,10 @@ class GetExpressRouteCrossConnectionPeeringArgs {
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
   GetExpressRouteCrossConnectionPeeringArgs({
-    required pulumi.Output<String> crossConnectionName,
-    required pulumi.Output<String> peeringName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      crossConnectionName = pulumi.Input.asInput<String>(crossConnectionName),
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.crossConnectionName,
+    required this.peeringName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExpressRouteCrossConnectionPeeringArgs {
 
   factory GetExpressRouteCrossConnectionPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCrossConnectionPeeringArgs(
-      crossConnectionName: pulumi.Output.create<String>(map['crossConnectionName'] as String),
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      crossConnectionName: (map['crossConnectionName'] as String).input(),
+      peeringName: (map['peeringName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

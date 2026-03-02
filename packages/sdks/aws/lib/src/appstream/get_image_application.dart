@@ -5,37 +5,37 @@ import 'get_image_application_icon_s3_location.dart';
 
 class GetImageApplication {
   /// The app block ARN of the application.
-  final String appBlockArn;
+  final pulumi.Input<String> appBlockArn;
   /// ARN of the image being searched for. Cannot be used with `name_regex` or `name`.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Time at which this image was created.
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Description of image.
-  final String description;
+  final pulumi.Input<String> description;
   /// Image name to display.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Bool based on if the application is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A list named icon_s3_location that contains the following:
-  final List<GetImageApplicationIconS3Location> iconS3Locations;
+  final pulumi.Input<List<GetImageApplicationIconS3Location>> iconS3Locations;
   /// URL of the application icon. This URL may be time-limited.
-  final String iconUrl;
+  final pulumi.Input<String> iconUrl;
   /// List of the instance families of the application.
-  final List<String> instanceFamilies;
+  final pulumi.Input<List<String>> instanceFamilies;
   /// Arguments that are passed to the application at it's launch.
-  final String launchParameters;
+  final pulumi.Input<String> launchParameters;
   /// Path to the application's excecutable in the instance.
-  final String launchPath;
+  final pulumi.Input<String> launchPath;
   /// String to string map that contains additional attributes used to describe the application.
   /// * `Name` - Name of the application.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// Name of the image being searched for. Cannot be used with `name_regex` or `arn`.
-  final String name;
+  final pulumi.Input<String> name;
   /// Array of strings describing the platforms on which the application can run.
   /// Values will be from: WINDOWS | WINDOWS_SERVER_2016 | WINDOWS_SERVER_2019 | WINDOWS_SERVER_2022 | AMAZON_LINUX2
-  final List<String> platforms;
+  final pulumi.Input<List<String>> platforms;
   /// Working directory for the application.
-  final String workingDirectory;
+  final pulumi.Input<String> workingDirectory;
 
   /// Creates a new [GetImageApplication].
   /// [appBlockArn] The app block ARN of the application.
@@ -79,7 +79,7 @@ class GetImageApplication {
       'description': description,
       'displayName': displayName,
       'enabled': enabled,
-      'iconS3Locations': pulumi.Input.encodeList<GetImageApplicationIconS3Location, Map<String, dynamic>>(iconS3Locations, (value) => value.toMap()),
+      'iconS3Locations': pulumi.Input.mapInputValue<List<GetImageApplicationIconS3Location>, List<Map<String, dynamic>>>(iconS3Locations, (value) => pulumi.Input.encodeList<GetImageApplicationIconS3Location, Map<String, dynamic>>(value, (value) => value.toMap())),
       'iconUrl': iconUrl,
       'instanceFamilies': instanceFamilies,
       'launchParameters': launchParameters,
@@ -93,21 +93,21 @@ class GetImageApplication {
 
   factory GetImageApplication.fromMap(Map<String, dynamic> map) {
     return GetImageApplication(
-      appBlockArn: map['appBlockArn'] as String,
-      arn: map['arn'] as String,
-      createdTime: map['createdTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
-      iconS3Locations: pulumi.Input.decodeList<GetImageApplicationIconS3Location>(map['iconS3Locations'], (value) => GetImageApplicationIconS3Location.fromMap((value as Map).cast<String, dynamic>())),
-      iconUrl: map['iconUrl'] as String,
-      instanceFamilies: (map['instanceFamilies'] as List).cast<String>(),
-      launchParameters: map['launchParameters'] as String,
-      launchPath: map['launchPath'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      platforms: (map['platforms'] as List).cast<String>(),
-      workingDirectory: map['workingDirectory'] as String,
+      appBlockArn: (map['appBlockArn'] as String).input(),
+      arn: (map['arn'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      iconS3Locations: (pulumi.Input.decodeList<GetImageApplicationIconS3Location>(map['iconS3Locations'], (value) => GetImageApplicationIconS3Location.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iconUrl: (map['iconUrl'] as String).input(),
+      instanceFamilies: ((map['instanceFamilies'] as List).cast<String>()).input(),
+      launchParameters: (map['launchParameters'] as String).input(),
+      launchPath: (map['launchPath'] as String).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      platforms: ((map['platforms'] as List).cast<String>()).input(),
+      workingDirectory: (map['workingDirectory'] as String).input(),
     );
   }
 }

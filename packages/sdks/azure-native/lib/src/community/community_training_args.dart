@@ -48,31 +48,19 @@ class CommunityTrainingArgs {
   /// [tags] Resource tags.
   /// [zoneRedundancyEnabled] To indicate whether the Community Training instance has Zone Redundancy enabled
   CommunityTrainingArgs({
-    pulumi.Output<String>? communityTrainingName,
-    required pulumi.Output<bool> disasterRecoveryEnabled,
-    required pulumi.Output<IdentityConfigurationProperties> identityConfiguration,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> portalAdminEmailAddress,
-    required pulumi.Output<String> portalName,
-    required pulumi.Output<String> portalOwnerEmailAddress,
-    required pulumi.Output<String> portalOwnerOrganizationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<bool> zoneRedundancyEnabled,
-  }) :
-      communityTrainingName = pulumi.Input.asOptionalInput<String>(communityTrainingName),
-      disasterRecoveryEnabled = pulumi.Input.asInput<bool>(disasterRecoveryEnabled),
-      identityConfiguration = pulumi.Input.asInput<IdentityConfigurationProperties>(identityConfiguration),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      portalAdminEmailAddress = pulumi.Input.asInput<String>(portalAdminEmailAddress),
-      portalName = pulumi.Input.asInput<String>(portalName),
-      portalOwnerEmailAddress = pulumi.Input.asInput<String>(portalOwnerEmailAddress),
-      portalOwnerOrganizationName = pulumi.Input.asInput<String>(portalOwnerOrganizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundancyEnabled = pulumi.Input.asInput<bool>(zoneRedundancyEnabled);
+    this.communityTrainingName,
+    required this.disasterRecoveryEnabled,
+    required this.identityConfiguration,
+    this.location,
+    required this.portalAdminEmailAddress,
+    required this.portalName,
+    required this.portalOwnerEmailAddress,
+    required this.portalOwnerOrganizationName,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    required this.zoneRedundancyEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class CommunityTrainingArgs {
 
   factory CommunityTrainingArgs.fromMap(Map<String, dynamic> map) {
     return CommunityTrainingArgs(
-      communityTrainingName: map['communityTrainingName'] == null ? null : pulumi.Output.create<String>(map['communityTrainingName'] as String),
-      disasterRecoveryEnabled: pulumi.Output.create<bool>(map['disasterRecoveryEnabled'] as bool),
-      identityConfiguration: pulumi.Output.create<IdentityConfigurationProperties>(IdentityConfigurationProperties.fromMap((map['identityConfiguration'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      portalAdminEmailAddress: pulumi.Output.create<String>(map['portalAdminEmailAddress'] as String),
-      portalName: pulumi.Output.create<String>(map['portalName'] as String),
-      portalOwnerEmailAddress: pulumi.Output.create<String>(map['portalOwnerEmailAddress'] as String),
-      portalOwnerOrganizationName: pulumi.Output.create<String>(map['portalOwnerOrganizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundancyEnabled: pulumi.Output.create<bool>(map['zoneRedundancyEnabled'] as bool),
+      communityTrainingName: map['communityTrainingName'] == null ? null : (map['communityTrainingName'] as String).input(),
+      disasterRecoveryEnabled: (map['disasterRecoveryEnabled'] as bool).input(),
+      identityConfiguration: (IdentityConfigurationProperties.fromMap((map['identityConfiguration'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      portalAdminEmailAddress: (map['portalAdminEmailAddress'] as String).input(),
+      portalName: (map['portalName'] as String).input(),
+      portalOwnerEmailAddress: (map['portalOwnerEmailAddress'] as String).input(),
+      portalOwnerOrganizationName: (map['portalOwnerOrganizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundancyEnabled: (map['zoneRedundancyEnabled'] as bool).input(),
     );
   }
 }

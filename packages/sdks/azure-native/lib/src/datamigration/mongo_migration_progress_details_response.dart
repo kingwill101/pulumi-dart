@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Detailed status of collection migration.
 class MongoMigrationProgressDetailsResponse {
   /// Migration duration
-  final int durationInSeconds;
+  final pulumi.Input<int> durationInSeconds;
   /// Migration Error
-  final String migrationError;
+  final pulumi.Input<String> migrationError;
   /// Migration Status
-  final String migrationStatus;
+  final pulumi.Input<String> migrationStatus;
   /// Processed Document Count
-  final double processedDocumentCount;
+  final pulumi.Input<double> processedDocumentCount;
   /// Source Document Count
-  final double sourceDocumentCount;
+  final pulumi.Input<double> sourceDocumentCount;
 
   /// Creates a new [MongoMigrationProgressDetailsResponse].
   /// [durationInSeconds] Migration duration
@@ -40,11 +41,11 @@ class MongoMigrationProgressDetailsResponse {
 
   factory MongoMigrationProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MongoMigrationProgressDetailsResponse(
-      durationInSeconds: map['durationInSeconds'] as int,
-      migrationError: map['migrationError'] as String,
-      migrationStatus: map['migrationStatus'] as String,
-      processedDocumentCount: map['processedDocumentCount'] as double,
-      sourceDocumentCount: map['sourceDocumentCount'] as double,
+      durationInSeconds: (map['durationInSeconds'] as int).input(),
+      migrationError: (map['migrationError'] as String).input(),
+      migrationStatus: (map['migrationStatus'] as String).input(),
+      processedDocumentCount: (map['processedDocumentCount'] as double).input(),
+      sourceDocumentCount: (map['sourceDocumentCount'] as double).input(),
     );
   }
 }

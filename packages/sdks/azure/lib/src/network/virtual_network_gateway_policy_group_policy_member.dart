@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayPolicyGroupPolicyMember {
   /// The name of the Virtual Network Gateway Policy Group Member.
-  final String name;
+  final pulumi.Input<String> name;
   /// The VPN Policy Member attribute type. Possible values are `AADGroupId`, `CertificateGroupId` and `RadiusAzureGroupId`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of attribute that is used for this Virtual Network Gateway Policy Group Member.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [VirtualNetworkGatewayPolicyGroupPolicyMember].
   /// [name] The name of the Virtual Network Gateway Policy Group Member.
@@ -29,9 +30,9 @@ class VirtualNetworkGatewayPolicyGroupPolicyMember {
 
   factory VirtualNetworkGatewayPolicyGroupPolicyMember.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayPolicyGroupPolicyMember(
-      name: map['name'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

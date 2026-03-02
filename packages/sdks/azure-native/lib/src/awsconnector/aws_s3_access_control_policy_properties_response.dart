@@ -7,9 +7,9 @@ import 'owner_response.dart';
 /// Definition of awsS3AccessControlPolicy
 class AwsS3AccessControlPolicyPropertiesResponse {
   /// <p>A list of grants.</p>
-  final List<GrantResponse>? grants;
+  final pulumi.Input<List<GrantResponse>>? grants;
   /// <p>Container for the bucket owner's display name and ID.</p>
-  final OwnerResponse? owner;
+  final pulumi.Input<OwnerResponse>? owner;
 
   /// Creates a new [AwsS3AccessControlPolicyPropertiesResponse].
   /// [grants] <p>A list of grants.</p>
@@ -21,15 +21,15 @@ class AwsS3AccessControlPolicyPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'grants': ?grants == null ? null : pulumi.Input.encodeList<GrantResponse, Map<String, dynamic>>(grants!, (value) => value.toMap()),
-      'owner': ?owner == null ? null : owner!.toMap(),
+      'grants': ?pulumi.Input.mapOptionalInputValue<List<GrantResponse>, List<Map<String, dynamic>>>(grants, (value) => pulumi.Input.encodeList<GrantResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'owner': ?pulumi.Input.mapOptionalInputValue<OwnerResponse, Map<String, dynamic>>(owner, (value) => value.toMap()),
     };
   }
 
   factory AwsS3AccessControlPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3AccessControlPolicyPropertiesResponse(
-      grants: map['grants'] == null ? null : pulumi.Input.decodeList<GrantResponse>(map['grants'], (value) => GrantResponse.fromMap((value as Map).cast<String, dynamic>())),
-      owner: map['owner'] == null ? null : OwnerResponse.fromMap((map['owner'] as Map).cast<String, dynamic>()),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<GrantResponse>(map['grants'], (value) => GrantResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owner: map['owner'] == null ? null : (OwnerResponse.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

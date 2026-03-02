@@ -21,15 +21,11 @@ class DatasetArgs {
   /// [lastMigrateTime] Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
   /// [project] Optional.
   DatasetArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? lastMigrateTime,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      lastMigrateTime = pulumi.Input.asOptionalInput<String>(lastMigrateTime),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.displayName,
+    this.lastMigrateTime,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      lastMigrateTime: map['lastMigrateTime'] == null ? null : pulumi.Output.create<String>(map['lastMigrateTime'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      lastMigrateTime: map['lastMigrateTime'] == null ? null : (map['lastMigrateTime'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

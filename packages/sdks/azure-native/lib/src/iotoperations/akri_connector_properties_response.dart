@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnector properties.
 class AkriConnectorPropertiesResponse {
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [AkriConnectorPropertiesResponse].
   /// [provisioningState] The status of the last operation.
@@ -20,7 +21,7 @@ class AkriConnectorPropertiesResponse {
 
   factory AkriConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

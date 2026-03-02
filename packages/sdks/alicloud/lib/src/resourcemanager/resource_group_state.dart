@@ -29,21 +29,14 @@ class ResourceGroupState {
   /// [status] The status of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
   ResourceGroupState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ResourceGroupRegionStatus>>? regionStatuses,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regionStatuses = pulumi.Input.asOptionalInput<List<ResourceGroupRegionStatus>>(regionStatuses),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    this.displayName,
+    this.name,
+    this.regionStatuses,
+    this.resourceGroupName,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ResourceGroupState {
 
   factory ResourceGroupState.fromMap(Map<String, dynamic> map) {
     return ResourceGroupState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regionStatuses: map['regionStatuses'] == null ? null : pulumi.Output.create<List<ResourceGroupRegionStatus>>(pulumi.Input.decodeList<ResourceGroupRegionStatus>(map['regionStatuses'], (value) => ResourceGroupRegionStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regionStatuses: map['regionStatuses'] == null ? null : (pulumi.Input.decodeList<ResourceGroupRegionStatus>(map['regionStatuses'], (value) => ResourceGroupRegionStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

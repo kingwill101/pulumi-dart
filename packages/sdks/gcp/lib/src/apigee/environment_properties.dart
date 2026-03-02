@@ -6,7 +6,7 @@ import 'environment_properties_property.dart';
 class EnvironmentProperties {
   /// List of all properties in the object.
   /// Structure is documented below.
-  final List<EnvironmentPropertiesProperty>? properties;
+  final pulumi.Input<List<EnvironmentPropertiesProperty>>? properties;
 
   /// Creates a new [EnvironmentProperties].
   /// [properties] List of all properties in the object.
@@ -16,13 +16,13 @@ class EnvironmentProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<EnvironmentPropertiesProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentPropertiesProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<EnvironmentPropertiesProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return EnvironmentProperties(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<EnvironmentPropertiesProperty>(map['properties'], (value) => EnvironmentPropertiesProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<EnvironmentPropertiesProperty>(map['properties'], (value) => EnvironmentPropertiesProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'platform_image_purchase_plan_response.dart';
 
 /// Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 class ImageTemplatePlatformImageSourceResponse {
   /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
-  final String exactVersion;
+  final pulumi.Input<String> exactVersion;
   /// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// Optional configuration of purchase plan for platform image.
-  final PlatformImagePurchasePlanResponse? planInfo;
+  final pulumi.Input<PlatformImagePurchasePlanResponse>? planInfo;
   /// Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'PlatformImage'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ImageTemplatePlatformImageSourceResponse].
   /// [exactVersion] Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
@@ -42,7 +43,7 @@ class ImageTemplatePlatformImageSourceResponse {
     return <String, dynamic>{
       'exactVersion': exactVersion,
       'offer': ?offer,
-      'planInfo': ?planInfo == null ? null : planInfo!.toMap(),
+      'planInfo': ?pulumi.Input.mapOptionalInputValue<PlatformImagePurchasePlanResponse, Map<String, dynamic>>(planInfo, (value) => value.toMap()),
       'publisher': ?publisher,
       'sku': ?sku,
       'type': type,
@@ -52,13 +53,13 @@ class ImageTemplatePlatformImageSourceResponse {
 
   factory ImageTemplatePlatformImageSourceResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePlatformImageSourceResponse(
-      exactVersion: map['exactVersion'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      planInfo: map['planInfo'] == null ? null : PlatformImagePurchasePlanResponse.fromMap((map['planInfo'] as Map).cast<String, dynamic>()),
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      exactVersion: (map['exactVersion'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      planInfo: map['planInfo'] == null ? null : (PlatformImagePurchasePlanResponse.fromMap((map['planInfo'] as Map).cast<String, dynamic>())).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

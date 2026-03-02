@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params.dart';
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentials {
   /// The client's ID.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The client's secret.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
   /// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
-  final String? requestType;
+  final pulumi.Input<String>? requestType;
   /// A space-delimited list of requested scope permissions.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
-  final String? tokenEndpoint;
+  final pulumi.Input<String>? tokenEndpoint;
   /// Token parameters for the auth request.
-  final AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams? tokenParams;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams>? tokenParams;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentials].
   /// [clientId] The client's ID.
@@ -39,18 +40,18 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentials {
       'requestType': ?requestType,
       'scope': ?scope,
       'tokenEndpoint': ?tokenEndpoint,
-      'tokenParams': ?tokenParams == null ? null : tokenParams!.toMap(),
+      'tokenParams': ?pulumi.Input.mapOptionalInputValue<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams, Map<String, dynamic>>(tokenParams, (value) => value.toMap()),
     };
   }
 
   factory AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      requestType: map['requestType'] == null ? null : map['requestType'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      tokenParams: map['tokenParams'] == null ? null : AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap((map['tokenParams'] as Map).cast<String, dynamic>()),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      requestType: map['requestType'] == null ? null : (map['requestType'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      tokenParams: map['tokenParams'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap((map['tokenParams'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

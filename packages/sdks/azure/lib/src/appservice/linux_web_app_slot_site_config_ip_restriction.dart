@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_web_app_slot_site_config_ip_restriction_headers.dart';
 
 class LinuxWebAppSlotSiteConfigIpRestriction {
   /// The action to take. Possible values are `Allow` or `Deny`. Defaults to `Allow`.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The Description of this IP Restriction.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A `headers` block as defined above.
-  final LinuxWebAppSlotSiteConfigIpRestrictionHeaders? headers;
+  final pulumi.Input<LinuxWebAppSlotSiteConfigIpRestrictionHeaders>? headers;
   /// The CIDR notation of the IP or IP Range to match. For example: `10.0.0.0/24` or `192.168.10.1/32`
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The name which should be used for this `ip_restriction`.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The priority value of this `ip_restriction`. Defaults to `65000`.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// The Service Tag used for this IP Restriction.
-  final String? serviceTag;
+  final pulumi.Input<String>? serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
   ///
   /// > **Note:** One and only one of `ip_address`, `service_tag` or `virtual_network_subnet_id` must be specified.
-  final String? virtualNetworkSubnetId;
+  final pulumi.Input<String>? virtualNetworkSubnetId;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigIpRestriction].
   /// [action] The action to take. Possible values are `Allow` or `Deny`. Defaults to `Allow`.
@@ -46,7 +47,7 @@ class LinuxWebAppSlotSiteConfigIpRestriction {
     return <String, dynamic>{
       'action': ?action,
       'description': ?description,
-      'headers': ?headers == null ? null : headers!.toMap(),
+      'headers': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotSiteConfigIpRestrictionHeaders, Map<String, dynamic>>(headers, (value) => value.toMap()),
       'ipAddress': ?ipAddress,
       'name': ?name,
       'priority': ?priority,
@@ -57,14 +58,14 @@ class LinuxWebAppSlotSiteConfigIpRestriction {
 
   factory LinuxWebAppSlotSiteConfigIpRestriction.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotSiteConfigIpRestriction(
-      action: map['action'] == null ? null : map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      headers: map['headers'] == null ? null : LinuxWebAppSlotSiteConfigIpRestrictionHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>()),
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      serviceTag: map['serviceTag'] == null ? null : map['serviceTag'] as String,
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : map['virtualNetworkSubnetId'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headers: map['headers'] == null ? null : (LinuxWebAppSlotSiteConfigIpRestrictionHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag'] as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
     );
   }
 }

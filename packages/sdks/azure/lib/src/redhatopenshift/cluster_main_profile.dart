@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMainProfile {
   /// The resource ID of an associated disk encryption set. Changing this forces a new resource to be created.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// Whether main virtual machines are encrypted at host. Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// > **Note:** `encryption_at_host_enabled` is only available for certain VM sizes and the `EncryptionAtHost` feature must be enabled for your subscription. Please see the [Azure documentation](https://learn.microsoft.com/azure/virtual-machines/disks-enable-host-based-encryption-portal?tabs=azure-powershell) for more information.
-  final bool? encryptionAtHostEnabled;
+  final pulumi.Input<bool>? encryptionAtHostEnabled;
   /// The ID of the subnet where main nodes will be hosted. Changing this forces a new resource to be created.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// The size of the Virtual Machines for the main nodes. Changing this forces a new resource to be created.
-  final String vmSize;
+  final pulumi.Input<String> vmSize;
 
   /// Creates a new [ClusterMainProfile].
   /// [diskEncryptionSetId] The resource ID of an associated disk encryption set. Changing this forces a new resource to be created.
@@ -36,10 +37,10 @@ class ClusterMainProfile {
 
   factory ClusterMainProfile.fromMap(Map<String, dynamic> map) {
     return ClusterMainProfile(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : map['encryptionAtHostEnabled'] as bool,
-      subnetId: map['subnetId'] as String,
-      vmSize: map['vmSize'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled'] as bool).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      vmSize: (map['vmSize'] as String).input(),
     );
   }
 }

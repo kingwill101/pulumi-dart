@@ -43,25 +43,16 @@ class HookArgs {
   /// [sensitiveQueryString] The sensitive query string to be appended to the target URI.
   /// [targetUri] The target URI to which the payloads will be delivered.
   HookArgs({
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<String>>? events,
-    required pulumi.Output<String> hookId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<HookPushOption>? pushOption,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? sensitiveQueryString,
-    required pulumi.Output<String> targetUri,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      events = pulumi.Input.asOptionalInput<List<String>>(events),
-      hookId = pulumi.Input.asInput<String>(hookId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pushOption = pulumi.Input.asOptionalInput<HookPushOption>(pushOption),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      sensitiveQueryString = pulumi.Input.asOptionalInput<String>(sensitiveQueryString),
-      targetUri = pulumi.Input.asInput<String>(targetUri);
+    this.disabled,
+    this.events,
+    required this.hookId,
+    required this.location,
+    this.project,
+    this.pushOption,
+    required this.repositoryId,
+    this.sensitiveQueryString,
+    required this.targetUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class HookArgs {
 
   factory HookArgs.fromMap(Map<String, dynamic> map) {
     return HookArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      hookId: pulumi.Output.create<String>(map['hookId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pushOption: map['pushOption'] == null ? null : pulumi.Output.create<HookPushOption>(HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : pulumi.Output.create<String>(map['sensitiveQueryString'] as String),
-      targetUri: pulumi.Output.create<String>(map['targetUri'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      hookId: (map['hookId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pushOption: map['pushOption'] == null ? null : (HookPushOption.fromMap((map['pushOption'] as Map).cast<String, dynamic>())).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      sensitiveQueryString: map['sensitiveQueryString'] == null ? null : (map['sensitiveQueryString'] as String).input(),
+      targetUri: (map['targetUri'] as String).input(),
     );
   }
 }

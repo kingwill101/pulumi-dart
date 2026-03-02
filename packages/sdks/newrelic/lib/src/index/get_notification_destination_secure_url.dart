@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNotificationDestinationSecureUrl {
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [GetNotificationDestinationSecureUrl].
   /// [prefix] Required.
@@ -18,7 +19,7 @@ class GetNotificationDestinationSecureUrl {
 
   factory GetNotificationDestinationSecureUrl.fromMap(Map<String, dynamic> map) {
     return GetNotificationDestinationSecureUrl(
-      prefix: map['prefix'] as String,
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

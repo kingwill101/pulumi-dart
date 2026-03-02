@@ -5,9 +5,9 @@ import 'domain_devices_disk_backing_store_source_vhost_user_pipe_sec_label.dart'
 
 class DomainDevicesDiskBackingStoreSourceVhostUserPipe {
   /// Sets the path for the pipe source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskBackingStoreSourceVhostUserPipe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskBackingStoreSourceVhostUserPipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceVhostUserPipe(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

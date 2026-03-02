@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting {
   /// (Output)
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
-  final String? model;
+  final pulumi.Input<String>? model;
   /// (Output)
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
   /// produce responses that are more predictable. Higher temperatures produce
   /// responses that are more creative.
-  final double? temperature;
+  final pulumi.Input<double>? temperature;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting].
   /// [model] (Output)
@@ -30,8 +31,8 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettin
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting(
-      model: map['model'] == null ? null : map['model'] as String,
-      temperature: map['temperature'] == null ? null : map['temperature'] as double,
+      model: map['model'] == null ? null : (map['model'] as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
     );
   }
 }

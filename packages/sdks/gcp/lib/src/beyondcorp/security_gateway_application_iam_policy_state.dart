@@ -24,17 +24,12 @@ class SecurityGatewayApplicationIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
   SecurityGatewayApplicationIamPolicyState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? securityGatewayId,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securityGatewayId = pulumi.Input.asOptionalInput<String>(securityGatewayId);
+    this.applicationId,
+    this.etag,
+    this.policyData,
+    this.project,
+    this.securityGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class SecurityGatewayApplicationIamPolicyState {
 
   factory SecurityGatewayApplicationIamPolicyState.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationIamPolicyState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      securityGatewayId: map['securityGatewayId'] == null ? null : pulumi.Output.create<String>(map['securityGatewayId'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      securityGatewayId: map['securityGatewayId'] == null ? null : (map['securityGatewayId'] as String).input(),
     );
   }
 }

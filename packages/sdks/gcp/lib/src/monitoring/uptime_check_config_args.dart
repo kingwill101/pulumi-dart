@@ -68,35 +68,21 @@ class UptimeCheckConfigArgs {
   /// [timeout] The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
   /// [userLabels] User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
   UptimeCheckConfigArgs({
-    pulumi.Output<String>? checkerType,
-    pulumi.Output<List<UptimeCheckConfigContentMatcher>>? contentMatchers,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<UptimeCheckConfigHttpCheck>? httpCheck,
-    pulumi.Output<bool>? logCheckFailures,
-    pulumi.Output<UptimeCheckConfigMonitoredResource>? monitoredResource,
-    pulumi.Output<String>? period,
-    pulumi.Output<String>? project,
-    pulumi.Output<UptimeCheckConfigResourceGroup>? resourceGroup,
-    pulumi.Output<List<String>>? selectedRegions,
-    pulumi.Output<UptimeCheckConfigSyntheticMonitor>? syntheticMonitor,
-    pulumi.Output<UptimeCheckConfigTcpCheck>? tcpCheck,
-    required pulumi.Output<String> timeout,
-    pulumi.Output<Map<String, String>>? userLabels,
-  }) :
-      checkerType = pulumi.Input.asOptionalInput<String>(checkerType),
-      contentMatchers = pulumi.Input.asOptionalInput<List<UptimeCheckConfigContentMatcher>>(contentMatchers),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      httpCheck = pulumi.Input.asOptionalInput<UptimeCheckConfigHttpCheck>(httpCheck),
-      logCheckFailures = pulumi.Input.asOptionalInput<bool>(logCheckFailures),
-      monitoredResource = pulumi.Input.asOptionalInput<UptimeCheckConfigMonitoredResource>(monitoredResource),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceGroup = pulumi.Input.asOptionalInput<UptimeCheckConfigResourceGroup>(resourceGroup),
-      selectedRegions = pulumi.Input.asOptionalInput<List<String>>(selectedRegions),
-      syntheticMonitor = pulumi.Input.asOptionalInput<UptimeCheckConfigSyntheticMonitor>(syntheticMonitor),
-      tcpCheck = pulumi.Input.asOptionalInput<UptimeCheckConfigTcpCheck>(tcpCheck),
-      timeout = pulumi.Input.asInput<String>(timeout),
-      userLabels = pulumi.Input.asOptionalInput<Map<String, String>>(userLabels);
+    this.checkerType,
+    this.contentMatchers,
+    required this.displayName,
+    this.httpCheck,
+    this.logCheckFailures,
+    this.monitoredResource,
+    this.period,
+    this.project,
+    this.resourceGroup,
+    this.selectedRegions,
+    this.syntheticMonitor,
+    this.tcpCheck,
+    required this.timeout,
+    this.userLabels,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -119,20 +105,20 @@ class UptimeCheckConfigArgs {
 
   factory UptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigArgs(
-      checkerType: map['checkerType'] == null ? null : pulumi.Output.create<String>(map['checkerType'] as String),
-      contentMatchers: map['contentMatchers'] == null ? null : pulumi.Output.create<List<UptimeCheckConfigContentMatcher>>(pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(map['contentMatchers'], (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>()))),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      httpCheck: map['httpCheck'] == null ? null : pulumi.Output.create<UptimeCheckConfigHttpCheck>(UptimeCheckConfigHttpCheck.fromMap((map['httpCheck'] as Map).cast<String, dynamic>())),
-      logCheckFailures: map['logCheckFailures'] == null ? null : pulumi.Output.create<bool>(map['logCheckFailures'] as bool),
-      monitoredResource: map['monitoredResource'] == null ? null : pulumi.Output.create<UptimeCheckConfigMonitoredResource>(UptimeCheckConfigMonitoredResource.fromMap((map['monitoredResource'] as Map).cast<String, dynamic>())),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceGroup: map['resourceGroup'] == null ? null : pulumi.Output.create<UptimeCheckConfigResourceGroup>(UptimeCheckConfigResourceGroup.fromMap((map['resourceGroup'] as Map).cast<String, dynamic>())),
-      selectedRegions: map['selectedRegions'] == null ? null : pulumi.Output.create<List<String>>((map['selectedRegions'] as List).cast<String>()),
-      syntheticMonitor: map['syntheticMonitor'] == null ? null : pulumi.Output.create<UptimeCheckConfigSyntheticMonitor>(UptimeCheckConfigSyntheticMonitor.fromMap((map['syntheticMonitor'] as Map).cast<String, dynamic>())),
-      tcpCheck: map['tcpCheck'] == null ? null : pulumi.Output.create<UptimeCheckConfigTcpCheck>(UptimeCheckConfigTcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>())),
-      timeout: pulumi.Output.create<String>(map['timeout'] as String),
-      userLabels: map['userLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userLabels'] as Map).cast<String, String>()),
+      checkerType: map['checkerType'] == null ? null : (map['checkerType'] as String).input(),
+      contentMatchers: map['contentMatchers'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(map['contentMatchers'], (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (map['displayName'] as String).input(),
+      httpCheck: map['httpCheck'] == null ? null : (UptimeCheckConfigHttpCheck.fromMap((map['httpCheck'] as Map).cast<String, dynamic>())).input(),
+      logCheckFailures: map['logCheckFailures'] == null ? null : (map['logCheckFailures'] as bool).input(),
+      monitoredResource: map['monitoredResource'] == null ? null : (UptimeCheckConfigMonitoredResource.fromMap((map['monitoredResource'] as Map).cast<String, dynamic>())).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (UptimeCheckConfigResourceGroup.fromMap((map['resourceGroup'] as Map).cast<String, dynamic>())).input(),
+      selectedRegions: map['selectedRegions'] == null ? null : ((map['selectedRegions'] as List).cast<String>()).input(),
+      syntheticMonitor: map['syntheticMonitor'] == null ? null : (UptimeCheckConfigSyntheticMonitor.fromMap((map['syntheticMonitor'] as Map).cast<String, dynamic>())).input(),
+      tcpCheck: map['tcpCheck'] == null ? null : (UptimeCheckConfigTcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>())).input(),
+      timeout: (map['timeout'] as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
     );
   }
 }

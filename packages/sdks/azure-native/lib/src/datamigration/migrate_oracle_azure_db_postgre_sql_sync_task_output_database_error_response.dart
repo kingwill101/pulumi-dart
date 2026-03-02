@@ -5,14 +5,14 @@ import 'sync_migration_database_error_event_response.dart';
 
 class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse {
   /// Error message
-  final String? errorMessage;
+  final pulumi.Input<String>? errorMessage;
   /// List of error events.
-  final List<SyncMigrationDatabaseErrorEventResponse>? events;
+  final pulumi.Input<List<SyncMigrationDatabaseErrorEventResponse>>? events;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Result type
   /// Expected value is 'DatabaseLevelErrorOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse].
   /// [errorMessage] Error message
@@ -29,7 +29,7 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'errorMessage': ?errorMessage,
-      'events': ?events == null ? null : pulumi.Input.encodeList<SyncMigrationDatabaseErrorEventResponse, Map<String, dynamic>>(events!, (value) => value.toMap()),
+      'events': ?pulumi.Input.mapOptionalInputValue<List<SyncMigrationDatabaseErrorEventResponse>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<SyncMigrationDatabaseErrorEventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'resultType': resultType,
     };
@@ -37,10 +37,10 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse {
 
   factory MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse(
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      events: map['events'] == null ? null : pulumi.Input.decodeList<SyncMigrationDatabaseErrorEventResponse>(map['events'], (value) => SyncMigrationDatabaseErrorEventResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      resultType: map['resultType'] as String,
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<SyncMigrationDatabaseErrorEventResponse>(map['events'], (value) => SyncMigrationDatabaseErrorEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
     );
   }
 }

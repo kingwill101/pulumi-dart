@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Autoscale defines the autoscaling policy of a worker pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
   /// The maximal number of workers. Must be equal to or greater than min_size.
-  final String maxSize;
+  final pulumi.Input<String> maxSize;
   /// The minimal number of workers. Must be greater than 0.
-  final String minSize;
+  final pulumi.Input<String> minSize;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse].
   /// [maxSize] The maximal number of workers. Must be equal to or greater than min_size.
@@ -25,8 +26,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse(
-      maxSize: map['maxSize'] as String,
-      minSize: map['minSize'] as String,
+      maxSize: (map['maxSize'] as String).input(),
+      minSize: (map['minSize'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class UserGroupArgs {
   /// [userGroupId] The ID of the user group.
   /// [userIds] The list of user IDs that belong to the user group.
   UserGroupArgs({
-    required pulumi.Output<String> engine,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> userGroupId,
-    pulumi.Output<List<String>>? userIds,
-  }) :
-      engine = pulumi.Input.asInput<String>(engine),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userGroupId = pulumi.Input.asInput<String>(userGroupId),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
+    required this.engine,
+    this.region,
+    this.tags,
+    required this.userGroupId,
+    this.userIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userGroupId: pulumi.Output.create<String>(map['userGroupId'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
+      engine: (map['engine'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userGroupId: (map['userGroupId'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class ServingConfigState {
   /// [servingConfigId] 'The unique ID of the serving config. Currently only accepts "default_search".'
   /// [synonymsControlIds] The resource IDs of the synonyms controls to be applied.
   ServingConfigState({
-    pulumi.Output<List<String>>? boostControlIds,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<String>? engineId,
-    pulumi.Output<List<String>>? filterControlIds,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? promoteControlIds,
-    pulumi.Output<List<String>>? redirectControlIds,
-    pulumi.Output<String>? servingConfigId,
-    pulumi.Output<List<String>>? synonymsControlIds,
-  }) :
-      boostControlIds = pulumi.Input.asOptionalInput<List<String>>(boostControlIds),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      engineId = pulumi.Input.asOptionalInput<String>(engineId),
-      filterControlIds = pulumi.Input.asOptionalInput<List<String>>(filterControlIds),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      promoteControlIds = pulumi.Input.asOptionalInput<List<String>>(promoteControlIds),
-      redirectControlIds = pulumi.Input.asOptionalInput<List<String>>(redirectControlIds),
-      servingConfigId = pulumi.Input.asOptionalInput<String>(servingConfigId),
-      synonymsControlIds = pulumi.Input.asOptionalInput<List<String>>(synonymsControlIds);
+    this.boostControlIds,
+    this.collectionId,
+    this.engineId,
+    this.filterControlIds,
+    this.location,
+    this.name,
+    this.project,
+    this.promoteControlIds,
+    this.redirectControlIds,
+    this.servingConfigId,
+    this.synonymsControlIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ServingConfigState {
 
   factory ServingConfigState.fromMap(Map<String, dynamic> map) {
     return ServingConfigState(
-      boostControlIds: map['boostControlIds'] == null ? null : pulumi.Output.create<List<String>>((map['boostControlIds'] as List).cast<String>()),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      engineId: map['engineId'] == null ? null : pulumi.Output.create<String>(map['engineId'] as String),
-      filterControlIds: map['filterControlIds'] == null ? null : pulumi.Output.create<List<String>>((map['filterControlIds'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      promoteControlIds: map['promoteControlIds'] == null ? null : pulumi.Output.create<List<String>>((map['promoteControlIds'] as List).cast<String>()),
-      redirectControlIds: map['redirectControlIds'] == null ? null : pulumi.Output.create<List<String>>((map['redirectControlIds'] as List).cast<String>()),
-      servingConfigId: map['servingConfigId'] == null ? null : pulumi.Output.create<String>(map['servingConfigId'] as String),
-      synonymsControlIds: map['synonymsControlIds'] == null ? null : pulumi.Output.create<List<String>>((map['synonymsControlIds'] as List).cast<String>()),
+      boostControlIds: map['boostControlIds'] == null ? null : ((map['boostControlIds'] as List).cast<String>()).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
+      filterControlIds: map['filterControlIds'] == null ? null : ((map['filterControlIds'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      promoteControlIds: map['promoteControlIds'] == null ? null : ((map['promoteControlIds'] as List).cast<String>()).input(),
+      redirectControlIds: map['redirectControlIds'] == null ? null : ((map['redirectControlIds'] as List).cast<String>()).input(),
+      servingConfigId: map['servingConfigId'] == null ? null : (map['servingConfigId'] as String).input(),
+      synonymsControlIds: map['synonymsControlIds'] == null ? null : ((map['synonymsControlIds'] as List).cast<String>()).input(),
     );
   }
 }

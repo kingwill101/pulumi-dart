@@ -32,21 +32,14 @@ class WebAgentArgs {
   /// [tags] Resource tags.
   /// [webAgentName] The name of the web agent.
   WebAgentArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<AgentPath>>? paths,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? systemPrompt,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? webAgentName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      paths = pulumi.Input.asOptionalInput<List<AgentPath>>(paths),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      systemPrompt = pulumi.Input.asOptionalInput<String>(systemPrompt),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      webAgentName = pulumi.Input.asOptionalInput<String>(webAgentName);
+    this.description,
+    this.location,
+    this.paths,
+    required this.resourceGroupName,
+    this.systemPrompt,
+    this.tags,
+    this.webAgentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class WebAgentArgs {
 
   factory WebAgentArgs.fromMap(Map<String, dynamic> map) {
     return WebAgentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      paths: map['paths'] == null ? null : pulumi.Output.create<List<AgentPath>>(pulumi.Input.decodeList<AgentPath>(map['paths'], (value) => AgentPath.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      systemPrompt: map['systemPrompt'] == null ? null : pulumi.Output.create<String>(map['systemPrompt'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      webAgentName: map['webAgentName'] == null ? null : pulumi.Output.create<String>(map['webAgentName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AgentPath>(map['paths'], (value) => AgentPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      systemPrompt: map['systemPrompt'] == null ? null : (map['systemPrompt'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      webAgentName: map['webAgentName'] == null ? null : (map['webAgentName'] as String).input(),
     );
   }
 }

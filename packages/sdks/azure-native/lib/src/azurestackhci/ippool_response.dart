@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ippool_info_response.dart';
 
 /// Describes IPPool
 class IPPoolResponse {
   /// End of the IP address pool
-  final String? end;
+  final pulumi.Input<String>? end;
   /// IPPool info
-  final IPPoolInfoResponse? info;
+  final pulumi.Input<IPPoolInfoResponse>? info;
   /// Type of the IP Pool [vm, vippool]
-  final String? ipPoolType;
+  final pulumi.Input<String>? ipPoolType;
   /// Name of the IP-Pool
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Start of the IP address pool
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [IPPoolResponse].
   /// [end] End of the IP address pool
@@ -32,7 +33,7 @@ class IPPoolResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'end': ?end,
-      'info': ?info == null ? null : info!.toMap(),
+      'info': ?pulumi.Input.mapOptionalInputValue<IPPoolInfoResponse, Map<String, dynamic>>(info, (value) => value.toMap()),
       'ipPoolType': ?ipPoolType,
       'name': ?name,
       'start': ?start,
@@ -41,11 +42,11 @@ class IPPoolResponse {
 
   factory IPPoolResponse.fromMap(Map<String, dynamic> map) {
     return IPPoolResponse(
-      end: map['end'] == null ? null : map['end'] as String,
-      info: map['info'] == null ? null : IPPoolInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>()),
-      ipPoolType: map['ipPoolType'] == null ? null : map['ipPoolType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      start: map['start'] == null ? null : map['start'] as String,
+      end: map['end'] == null ? null : (map['end'] as String).input(),
+      info: map['info'] == null ? null : (IPPoolInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
+      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

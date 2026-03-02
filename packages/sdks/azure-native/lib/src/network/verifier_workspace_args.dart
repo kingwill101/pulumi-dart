@@ -29,19 +29,13 @@ class VerifierWorkspaceArgs {
   /// [tags] Resource tags.
   /// [workspaceName] Workspace name.
   VerifierWorkspaceArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkManagerName,
-    pulumi.Output<VerifierWorkspaceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      properties = pulumi.Input.asOptionalInput<VerifierWorkspaceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.location,
+    required this.networkManagerName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class VerifierWorkspaceArgs {
 
   factory VerifierWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return VerifierWorkspaceArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<VerifierWorkspaceProperties>(VerifierWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      properties: map['properties'] == null ? null : (VerifierWorkspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

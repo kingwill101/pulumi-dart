@@ -28,19 +28,13 @@ class OuContainerArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [spn] The account spn
   OuContainerArgs({
-    pulumi.Output<String>? accountName,
-    required pulumi.Output<String> domainServiceName,
-    pulumi.Output<String>? ouContainerName,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? spn,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      domainServiceName = pulumi.Input.asInput<String>(domainServiceName),
-      ouContainerName = pulumi.Input.asOptionalInput<String>(ouContainerName),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spn = pulumi.Input.asOptionalInput<String>(spn);
+    this.accountName,
+    required this.domainServiceName,
+    this.ouContainerName,
+    this.password,
+    required this.resourceGroupName,
+    this.spn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class OuContainerArgs {
 
   factory OuContainerArgs.fromMap(Map<String, dynamic> map) {
     return OuContainerArgs(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      domainServiceName: pulumi.Output.create<String>(map['domainServiceName'] as String),
-      ouContainerName: map['ouContainerName'] == null ? null : pulumi.Output.create<String>(map['ouContainerName'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spn: map['spn'] == null ? null : pulumi.Output.create<String>(map['spn'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      domainServiceName: (map['domainServiceName'] as String).input(),
+      ouContainerName: map['ouContainerName'] == null ? null : (map['ouContainerName'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spn: map['spn'] == null ? null : (map['spn'] as String).input(),
     );
   }
 }

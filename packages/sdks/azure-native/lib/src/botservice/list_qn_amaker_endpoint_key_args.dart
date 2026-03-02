@@ -16,11 +16,9 @@ class ListQnAMakerEndpointKeyArgs {
   /// [authkey] Subscription key which provides access to this API.
   /// [hostname] the host name of the QnA Maker endpoint
   ListQnAMakerEndpointKeyArgs({
-    pulumi.Output<String>? authkey,
-    pulumi.Output<String>? hostname,
-  }) :
-      authkey = pulumi.Input.asOptionalInput<String>(authkey),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname);
+    this.authkey,
+    this.hostname,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListQnAMakerEndpointKeyArgs {
 
   factory ListQnAMakerEndpointKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListQnAMakerEndpointKeyArgs(
-      authkey: map['authkey'] == null ? null : pulumi.Output.create<String>(map['authkey'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
+      authkey: map['authkey'] == null ? null : (map['authkey'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
     );
   }
 }

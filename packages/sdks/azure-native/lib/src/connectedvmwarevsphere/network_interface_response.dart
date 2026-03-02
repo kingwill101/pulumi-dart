@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nic_ipsettings_response.dart';
 
 /// Network Interface model
 class NetworkInterfaceResponse {
   /// Gets or sets the device key value.
-  final int? deviceKey;
+  final pulumi.Input<int>? deviceKey;
   /// Gets or sets the nic ip addresses.
-  final List<String> ipAddresses;
+  final pulumi.Input<List<String>> ipAddresses;
   /// Gets or sets the ipsettings.
-  final NicIPSettingsResponse? ipSettings;
+  final pulumi.Input<NicIPSettingsResponse>? ipSettings;
   /// Gets or sets the label of the virtual network in vCenter that the nic is connected to.
-  final String label;
+  final pulumi.Input<String> label;
   /// Gets or sets the NIC MAC address.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// Gets or sets the name of the network interface.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the ARM Id of the network resource to connect the virtual machine.
-  final String? networkId;
+  final pulumi.Input<String>? networkId;
   /// Gets or sets the name of the virtual network in vCenter that the nic is connected to.
-  final String networkMoName;
+  final pulumi.Input<String> networkMoName;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID of the virtual network
   /// that the nic is connected to.
-  final String networkMoRefId;
+  final pulumi.Input<String> networkMoRefId;
   /// NIC type
-  final String? nicType;
+  final pulumi.Input<String>? nicType;
   /// Gets or sets the power on boot.
-  final String? powerOnBoot;
+  final pulumi.Input<String>? powerOnBoot;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [deviceKey] Gets or sets the device key value.
@@ -58,7 +59,7 @@ class NetworkInterfaceResponse {
     return <String, dynamic>{
       'deviceKey': ?deviceKey,
       'ipAddresses': ipAddresses,
-      'ipSettings': ?ipSettings == null ? null : ipSettings!.toMap(),
+      'ipSettings': ?pulumi.Input.mapOptionalInputValue<NicIPSettingsResponse, Map<String, dynamic>>(ipSettings, (value) => value.toMap()),
       'label': label,
       'macAddress': macAddress,
       'name': ?name,
@@ -72,17 +73,17 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      deviceKey: map['deviceKey'] == null ? null : map['deviceKey'] as int,
-      ipAddresses: (map['ipAddresses'] as List).cast<String>(),
-      ipSettings: map['ipSettings'] == null ? null : NicIPSettingsResponse.fromMap((map['ipSettings'] as Map).cast<String, dynamic>()),
-      label: map['label'] as String,
-      macAddress: map['macAddress'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkId: map['networkId'] == null ? null : map['networkId'] as String,
-      networkMoName: map['networkMoName'] as String,
-      networkMoRefId: map['networkMoRefId'] as String,
-      nicType: map['nicType'] == null ? null : map['nicType'] as String,
-      powerOnBoot: map['powerOnBoot'] == null ? null : map['powerOnBoot'] as String,
+      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey'] as int).input(),
+      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      ipSettings: map['ipSettings'] == null ? null : (NicIPSettingsResponse.fromMap((map['ipSettings'] as Map).cast<String, dynamic>())).input(),
+      label: (map['label'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      networkMoName: (map['networkMoName'] as String).input(),
+      networkMoRefId: (map['networkMoRefId'] as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
+      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot'] as String).input(),
     );
   }
 }

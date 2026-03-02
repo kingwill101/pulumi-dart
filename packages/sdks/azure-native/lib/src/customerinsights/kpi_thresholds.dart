@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the KPI Threshold limits.
 class KpiThresholds {
   /// Whether or not the KPI is an increasing KPI.
-  final bool increasingKpi;
+  final pulumi.Input<bool> increasingKpi;
   /// The lower threshold limit.
-  final double lowerLimit;
+  final pulumi.Input<double> lowerLimit;
   /// The upper threshold limit.
-  final double upperLimit;
+  final pulumi.Input<double> upperLimit;
 
   /// Creates a new [KpiThresholds].
   /// [increasingKpi] Whether or not the KPI is an increasing KPI.
@@ -30,9 +31,9 @@ class KpiThresholds {
 
   factory KpiThresholds.fromMap(Map<String, dynamic> map) {
     return KpiThresholds(
-      increasingKpi: map['increasingKpi'] as bool,
-      lowerLimit: map['lowerLimit'] as double,
-      upperLimit: map['upperLimit'] as double,
+      increasingKpi: (map['increasingKpi'] as bool).input(),
+      lowerLimit: (map['lowerLimit'] as double).input(),
+      upperLimit: (map['upperLimit'] as double).input(),
     );
   }
 }

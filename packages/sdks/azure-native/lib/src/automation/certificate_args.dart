@@ -34,23 +34,15 @@ class CertificateArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [thumbprint] Gets or sets the thumbprint of the certificate.
   CertificateArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> base64Value,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? isExportable,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      base64Value = pulumi.Input.asInput<String>(base64Value),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      isExportable = pulumi.Input.asOptionalInput<bool>(isExportable),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    required this.automationAccountName,
+    required this.base64Value,
+    this.certificateName,
+    this.description,
+    this.isExportable,
+    required this.name,
+    required this.resourceGroupName,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      base64Value: pulumi.Output.create<String>(map['base64Value'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      isExportable: map['isExportable'] == null ? null : pulumi.Output.create<bool>(map['isExportable'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      base64Value: (map['base64Value'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isExportable: map['isExportable'] == null ? null : (map['isExportable'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentGroupAttachment {
   /// (Optional)
-  final String? attachment;
+  final pulumi.Input<String>? attachment;
   /// The identifier for this object. Format specified above.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [InterconnectAttachmentGroupAttachment].
   /// [attachment] (Optional)
@@ -24,8 +25,8 @@ class InterconnectAttachmentGroupAttachment {
 
   factory InterconnectAttachmentGroupAttachment.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupAttachment(
-      attachment: map['attachment'] == null ? null : map['attachment'] as String,
-      name: map['name'] as String,
+      attachment: map['attachment'] == null ? null : (map['attachment'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

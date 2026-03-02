@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional App settings in vnet injection instance
 class AppVNetAddons {
   /// Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
-  final bool? publicEndpoint;
+  final pulumi.Input<bool>? publicEndpoint;
 
   /// Creates a new [AppVNetAddons].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
@@ -20,7 +21,7 @@ class AppVNetAddons {
 
   factory AppVNetAddons.fromMap(Map<String, dynamic> map) {
     return AppVNetAddons(
-      publicEndpoint: map['publicEndpoint'] == null ? null : map['publicEndpoint'] as bool,
+      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint'] as bool).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class VpcIpv6CidrBlockAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC to make the association with.
   VpcIpv6CidrBlockAssociationArgs({
-    pulumi.Output<bool>? assignGeneratedIpv6CidrBlock,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<String>? ipv6IpamPoolId,
-    pulumi.Output<int>? ipv6NetmaskLength,
-    pulumi.Output<String>? ipv6Pool,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> vpcId,
-  }) :
-      assignGeneratedIpv6CidrBlock = pulumi.Input.asOptionalInput<bool>(assignGeneratedIpv6CidrBlock),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      ipv6IpamPoolId = pulumi.Input.asOptionalInput<String>(ipv6IpamPoolId),
-      ipv6NetmaskLength = pulumi.Input.asOptionalInput<int>(ipv6NetmaskLength),
-      ipv6Pool = pulumi.Input.asOptionalInput<String>(ipv6Pool),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.assignGeneratedIpv6CidrBlock,
+    this.ipv6CidrBlock,
+    this.ipv6IpamPoolId,
+    this.ipv6NetmaskLength,
+    this.ipv6Pool,
+    this.region,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VpcIpv6CidrBlockAssociationArgs {
 
   factory VpcIpv6CidrBlockAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpv6CidrBlockAssociationArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : pulumi.Output.create<bool>(map['assignGeneratedIpv6CidrBlock'] as bool),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipv6IpamPoolId'] as String),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : pulumi.Output.create<int>(map['ipv6NetmaskLength'] as int),
-      ipv6Pool: map['ipv6Pool'] == null ? null : pulumi.Output.create<String>(map['ipv6Pool'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : (map['assignGeneratedIpv6CidrBlock'] as bool).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId'] as String).input(),
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength'] as int).input(),
+      ipv6Pool: map['ipv6Pool'] == null ? null : (map['ipv6Pool'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

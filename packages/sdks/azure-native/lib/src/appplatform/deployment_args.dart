@@ -30,19 +30,13 @@ class DeploymentArgs {
   /// [serviceName] The name of the Service resource.
   /// [sku] Sku of the Deployment resource
   DeploymentArgs({
-    required pulumi.Output<String> appName,
-    pulumi.Output<String>? deploymentName,
-    pulumi.Output<DeploymentResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<Sku>? sku,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      deploymentName = pulumi.Input.asOptionalInput<String>(deploymentName),
-      properties = pulumi.Input.asOptionalInput<DeploymentResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku);
+    required this.appName,
+    this.deploymentName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      deploymentName: map['deploymentName'] == null ? null : pulumi.Output.create<String>(map['deploymentName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DeploymentResourceProperties>(DeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      appName: (map['appName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      properties: map['properties'] == null ? null : (DeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

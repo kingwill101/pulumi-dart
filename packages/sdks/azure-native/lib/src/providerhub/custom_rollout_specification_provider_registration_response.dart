@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provider_registration_properties_response.dart';
 import 'system_data_response.dart';
 
 /// The provider registration.
 class CustomRolloutSpecificationProviderRegistrationResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final pulumi.Input<String> id;
   /// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// The name of the resource
-  final String name;
-  final ProviderRegistrationPropertiesResponse? properties;
+  final pulumi.Input<String> name;
+  final pulumi.Input<ProviderRegistrationPropertiesResponse>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [CustomRolloutSpecificationProviderRegistrationResponse].
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -38,20 +39,20 @@ class CustomRolloutSpecificationProviderRegistrationResponse {
       'id': id,
       'kind': ?kind,
       'name': name,
-      'properties': ?properties == null ? null : properties!.toMap(),
-      'systemData': systemData.toMap(),
+      'properties': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory CustomRolloutSpecificationProviderRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationProviderRegistrationResponse(
-      id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] as String,
-      properties: map['properties'] == null ? null : ProviderRegistrationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      properties: map['properties'] == null ? null : (ProviderRegistrationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

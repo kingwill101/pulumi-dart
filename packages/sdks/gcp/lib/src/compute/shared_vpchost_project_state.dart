@@ -10,9 +10,8 @@ class SharedVPCHostProjectState {
   /// Creates a new [SharedVPCHostProjectState].
   /// [project] The ID of the project that will serve as a Shared VPC host project
   SharedVPCHostProjectState({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class SharedVPCHostProjectState {
 
   factory SharedVPCHostProjectState.fromMap(Map<String, dynamic> map) {
     return SharedVPCHostProjectState(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

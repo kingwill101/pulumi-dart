@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsDeploymentSetsSet {
   /// The time when the deployment set was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Deployment Set.
-  final String deploymentSetId;
+  final pulumi.Input<String> deploymentSetId;
   /// The name of the deployment set.
-  final String deploymentSetName;
+  final pulumi.Input<String> deploymentSetName;
   /// The description of the deployment set.
-  final String description;
+  final pulumi.Input<String> description;
   /// The deployment domain.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// The deployment granularity.
-  final String granularity;
+  final pulumi.Input<String> granularity;
   /// The ID of the Deployment Set.
-  final String id;
+  final pulumi.Input<String> id;
   /// The number of instances in the deployment set.
-  final int instanceAmount;
+  final pulumi.Input<int> instanceAmount;
   /// The IDs of the instances in the deployment set.
-  final List<String> instanceIds;
+  final pulumi.Input<List<String>> instanceIds;
   /// The deployment strategy.
-  final String strategy;
+  final pulumi.Input<String> strategy;
 
   /// Creates a new [GetEcsDeploymentSetsSet].
   /// [createTime] The time when the deployment set was created.
@@ -64,16 +65,16 @@ class GetEcsDeploymentSetsSet {
 
   factory GetEcsDeploymentSetsSet.fromMap(Map<String, dynamic> map) {
     return GetEcsDeploymentSetsSet(
-      createTime: map['createTime'] as String,
-      deploymentSetId: map['deploymentSetId'] as String,
-      deploymentSetName: map['deploymentSetName'] as String,
-      description: map['description'] as String,
-      domain: map['domain'] as String,
-      granularity: map['granularity'] as String,
-      id: map['id'] as String,
-      instanceAmount: map['instanceAmount'] as int,
-      instanceIds: (map['instanceIds'] as List).cast<String>(),
-      strategy: map['strategy'] as String,
+      createTime: (map['createTime'] as String).input(),
+      deploymentSetId: (map['deploymentSetId'] as String).input(),
+      deploymentSetName: (map['deploymentSetName'] as String).input(),
+      description: (map['description'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      granularity: (map['granularity'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceAmount: (map['instanceAmount'] as int).input(),
+      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
+      strategy: (map['strategy'] as String).input(),
     );
   }
 }

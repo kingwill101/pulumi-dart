@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventIntegrationEventFilter {
   /// Source of the events.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [EventIntegrationEventFilter].
   /// [source] Source of the events.
@@ -19,7 +20,7 @@ class EventIntegrationEventFilter {
 
   factory EventIntegrationEventFilter.fromMap(Map<String, dynamic> map) {
     return EventIntegrationEventFilter(
-      source: map['source'] as String,
+      source: (map['source'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apache_tomcat_web_application_response.dart';
 
 /// ApacheTomcat workload instance model custom properties.
 class ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse {
   /// ApacheTomcat web application.
-  final ApacheTomcatWebApplicationResponse? apacheTomcatWebApplication;
+  final pulumi.Input<ApacheTomcatWebApplicationResponse>? apacheTomcatWebApplication;
   /// Gets or sets the instance type.
   /// Expected value is 'ApacheTomcatWorkloadInstanceModelCustomProperties'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the Web application ARM id.
-  final String? webAppArmId;
+  final pulumi.Input<String>? webAppArmId;
   /// Gets or sets the Web application site name.
-  final String? webAppSiteName;
+  final pulumi.Input<String>? webAppSiteName;
 
   /// Creates a new [ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse].
   /// [apacheTomcatWebApplication] ApacheTomcat web application.
@@ -28,7 +29,7 @@ class ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apacheTomcatWebApplication': ?apacheTomcatWebApplication == null ? null : apacheTomcatWebApplication!.toMap(),
+      'apacheTomcatWebApplication': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatWebApplicationResponse, Map<String, dynamic>>(apacheTomcatWebApplication, (value) => value.toMap()),
       'instanceType': instanceType,
       'webAppArmId': ?webAppArmId,
       'webAppSiteName': ?webAppSiteName,
@@ -37,10 +38,10 @@ class ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse {
 
   factory ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse(
-      apacheTomcatWebApplication: map['apacheTomcatWebApplication'] == null ? null : ApacheTomcatWebApplicationResponse.fromMap((map['apacheTomcatWebApplication'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
-      webAppArmId: map['webAppArmId'] == null ? null : map['webAppArmId'] as String,
-      webAppSiteName: map['webAppSiteName'] == null ? null : map['webAppSiteName'] as String,
+      apacheTomcatWebApplication: map['apacheTomcatWebApplication'] == null ? null : (ApacheTomcatWebApplicationResponse.fromMap((map['apacheTomcatWebApplication'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId'] as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
     );
   }
 }

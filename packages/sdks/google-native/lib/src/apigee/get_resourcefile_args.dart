@@ -18,15 +18,11 @@ class GetResourcefileArgs {
   /// [organizationId] Required.
   /// [type] Required.
   GetResourcefileArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> type,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      type = pulumi.Input.asInput<String>(type);
+    required this.environmentId,
+    required this.name,
+    required this.organizationId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetResourcefileArgs {
 
   factory GetResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcefileArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      name: (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_reference.dart';
 
 /// Referenced tumbling window trigger dependency.
 class TumblingWindowTriggerDependencyReference {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
-  final String? offset;
+  final pulumi.Input<String>? offset;
   /// Referenced trigger.
-  final TriggerReference referenceTrigger;
+  final pulumi.Input<TriggerReference> referenceTrigger;
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// The type of dependency reference.
   /// Expected value is 'TumblingWindowTriggerDependencyReference'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TumblingWindowTriggerDependencyReference].
   /// [offset] Timespan applied to the start time of a tumbling window when evaluating dependency.
@@ -29,7 +30,7 @@ class TumblingWindowTriggerDependencyReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'offset': ?offset,
-      'referenceTrigger': referenceTrigger.toMap(),
+      'referenceTrigger': pulumi.Input.mapInputValue<TriggerReference, Map<String, dynamic>>(referenceTrigger, (value) => value.toMap()),
       'size': ?size,
       'type': type,
     };
@@ -37,10 +38,10 @@ class TumblingWindowTriggerDependencyReference {
 
   factory TumblingWindowTriggerDependencyReference.fromMap(Map<String, dynamic> map) {
     return TumblingWindowTriggerDependencyReference(
-      offset: map['offset'] == null ? null : map['offset'] as String,
-      referenceTrigger: TriggerReference.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>()),
-      size: map['size'] == null ? null : map['size'] as String,
-      type: map['type'] as String,
+      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
+      referenceTrigger: (TriggerReference.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>())).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

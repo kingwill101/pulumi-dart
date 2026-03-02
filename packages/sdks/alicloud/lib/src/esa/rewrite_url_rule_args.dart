@@ -42,27 +42,17 @@ class RewriteUrlRuleArgs {
   /// [siteVersion] Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
   /// [uri] The desired URI to which you want to rewrite the path in the original request.
   RewriteUrlRuleArgs({
-    pulumi.Output<String>? queryString,
-    pulumi.Output<String>? rewriteQueryStringType,
-    pulumi.Output<String>? rewriteUriType,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleEnable,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<int>? sequence,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-    pulumi.Output<String>? uri,
-  }) :
-      queryString = pulumi.Input.asOptionalInput<String>(queryString),
-      rewriteQueryStringType = pulumi.Input.asOptionalInput<String>(rewriteQueryStringType),
-      rewriteUriType = pulumi.Input.asOptionalInput<String>(rewriteUriType),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      sequence = pulumi.Input.asOptionalInput<int>(sequence),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+    this.queryString,
+    this.rewriteQueryStringType,
+    this.rewriteUriType,
+    this.rule,
+    this.ruleEnable,
+    this.ruleName,
+    this.sequence,
+    required this.siteId,
+    this.siteVersion,
+    this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class RewriteUrlRuleArgs {
 
   factory RewriteUrlRuleArgs.fromMap(Map<String, dynamic> map) {
     return RewriteUrlRuleArgs(
-      queryString: map['queryString'] == null ? null : pulumi.Output.create<String>(map['queryString'] as String),
-      rewriteQueryStringType: map['rewriteQueryStringType'] == null ? null : pulumi.Output.create<String>(map['rewriteQueryStringType'] as String),
-      rewriteUriType: map['rewriteUriType'] == null ? null : pulumi.Output.create<String>(map['rewriteUriType'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
+      rewriteQueryStringType: map['rewriteQueryStringType'] == null ? null : (map['rewriteQueryStringType'] as String).input(),
+      rewriteUriType: map['rewriteUriType'] == null ? null : (map['rewriteUriType'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

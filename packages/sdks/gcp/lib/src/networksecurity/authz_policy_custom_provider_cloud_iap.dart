@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyCustomProviderCloudIap {
   /// Enable Cloud IAP at the AuthzPolicy level.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [AuthzPolicyCustomProviderCloudIap].
   /// [enabled] Enable Cloud IAP at the AuthzPolicy level.
@@ -19,7 +20,7 @@ class AuthzPolicyCustomProviderCloudIap {
 
   factory AuthzPolicyCustomProviderCloudIap.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyCustomProviderCloudIap(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

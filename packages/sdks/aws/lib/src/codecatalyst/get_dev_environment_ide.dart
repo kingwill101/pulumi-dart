@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDevEnvironmentIde {
-  final String name;
-  final String runtime;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> runtime;
 
   /// Creates a new [GetDevEnvironmentIde].
   /// [name] Required.
@@ -22,8 +23,8 @@ class GetDevEnvironmentIde {
 
   factory GetDevEnvironmentIde.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentIde(
-      name: map['name'] as String,
-      runtime: map['runtime'] as String,
+      name: (map['name'] as String).input(),
+      runtime: (map['runtime'] as String).input(),
     );
   }
 }

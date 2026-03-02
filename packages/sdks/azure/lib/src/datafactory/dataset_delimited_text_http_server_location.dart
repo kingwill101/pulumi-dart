@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetDelimitedTextHttpServerLocation {
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicFilenameEnabled;
+  final pulumi.Input<bool>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final bool? dynamicPathEnabled;
+  final pulumi.Input<bool>? dynamicPathEnabled;
   /// The filename of the file on the web server.
-  final String filename;
+  final pulumi.Input<String> filename;
   /// The folder path to the file on the web server.
-  final String path;
+  final pulumi.Input<String> path;
   /// The base URL to the web server hosting the file.
-  final String relativeUrl;
+  final pulumi.Input<String> relativeUrl;
 
   /// Creates a new [DatasetDelimitedTextHttpServerLocation].
   /// [dynamicFilenameEnabled] Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
@@ -39,11 +40,11 @@ class DatasetDelimitedTextHttpServerLocation {
 
   factory DatasetDelimitedTextHttpServerLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextHttpServerLocation(
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : map['dynamicFilenameEnabled'] as bool,
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : map['dynamicPathEnabled'] as bool,
-      filename: map['filename'] as String,
-      path: map['path'] as String,
-      relativeUrl: map['relativeUrl'] as String,
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
+      filename: (map['filename'] as String).input(),
+      path: (map['path'] as String).input(),
+      relativeUrl: (map['relativeUrl'] as String).input(),
     );
   }
 }

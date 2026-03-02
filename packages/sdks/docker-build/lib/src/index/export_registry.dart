@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compression_type.dart';
 
 class ExportRegistry {
   /// Attach an arbitrary key/value annotation to the image.
-  final Map<String, String>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
   /// The compression type to use.
-  final CompressionType? compression;
+  final pulumi.Input<CompressionType>? compression;
   /// Compression level from 0 to 22.
-  final int? compressionLevel;
+  final pulumi.Input<int>? compressionLevel;
   /// Name image with `prefix@<digest>`, used for anonymous images.
-  final String? danglingNamePrefix;
+  final pulumi.Input<String>? danglingNamePrefix;
   /// Forcefully apply compression.
-  final bool? forceCompression;
+  final pulumi.Input<bool>? forceCompression;
   /// Allow pushing to an insecure registry.
-  final bool? insecure;
+  final pulumi.Input<bool>? insecure;
   /// Add additional canonical name (`name@<digest>`).
-  final bool? nameCanonical;
+  final pulumi.Input<bool>? nameCanonical;
   /// Specify images names to export. This is overridden if tags are already specified.
-  final List<String>? names;
+  final pulumi.Input<List<String>>? names;
   /// Use OCI media types in exporter manifests.
-  final bool? ociMediaTypes;
+  final pulumi.Input<bool>? ociMediaTypes;
   /// Push after creating the image. Defaults to `true`.
-  final bool? push;
+  final pulumi.Input<bool>? push;
   /// Push image without name.
-  final bool? pushByDigest;
+  final pulumi.Input<bool>? pushByDigest;
   /// Store resulting images to the worker's image store and ensure all of
   /// its blobs are in the content store.
   ///
@@ -32,10 +33,10 @@ class ExportRegistry {
   ///
   /// Ignored if the worker doesn't have image store (when using OCI workers,
   /// for example).
-  final bool? store;
+  final pulumi.Input<bool>? store;
   /// Unpack image after creation (for use with containerd). Defaults to
   /// `false`.
-  final bool? unpack;
+  final pulumi.Input<bool>? unpack;
 
   /// Creates a new [ExportRegistry].
   /// [annotations] Attach an arbitrary key/value annotation to the image.
@@ -70,7 +71,7 @@ class ExportRegistry {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'compression': ?compression == null ? null : compression!.value,
+      'compression': ?pulumi.Input.mapOptionalInputValue<CompressionType, String>(compression, (value) => value.value),
       'compressionLevel': ?compressionLevel,
       'danglingNamePrefix': ?danglingNamePrefix,
       'forceCompression': ?forceCompression,
@@ -87,19 +88,19 @@ class ExportRegistry {
 
   factory ExportRegistry.fromMap(Map<String, dynamic> map) {
     return ExportRegistry(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      compression: map['compression'] == null ? null : CompressionType.fromValue(map['compression'] as String),
-      compressionLevel: map['compressionLevel'] == null ? null : map['compressionLevel'] as int,
-      danglingNamePrefix: map['danglingNamePrefix'] == null ? null : map['danglingNamePrefix'] as String,
-      forceCompression: map['forceCompression'] == null ? null : map['forceCompression'] as bool,
-      insecure: map['insecure'] == null ? null : map['insecure'] as bool,
-      nameCanonical: map['nameCanonical'] == null ? null : map['nameCanonical'] as bool,
-      names: map['names'] == null ? null : (map['names'] as List).cast<String>(),
-      ociMediaTypes: map['ociMediaTypes'] == null ? null : map['ociMediaTypes'] as bool,
-      push: map['push'] == null ? null : map['push'] as bool,
-      pushByDigest: map['pushByDigest'] == null ? null : map['pushByDigest'] as bool,
-      store: map['store'] == null ? null : map['store'] as bool,
-      unpack: map['unpack'] == null ? null : map['unpack'] as bool,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
+      danglingNamePrefix: map['danglingNamePrefix'] == null ? null : (map['danglingNamePrefix'] as String).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
+      insecure: map['insecure'] == null ? null : (map['insecure'] as bool).input(),
+      nameCanonical: map['nameCanonical'] == null ? null : (map['nameCanonical'] as bool).input(),
+      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes'] as bool).input(),
+      push: map['push'] == null ? null : (map['push'] as bool).input(),
+      pushByDigest: map['pushByDigest'] == null ? null : (map['pushByDigest'] as bool).input(),
+      store: map['store'] == null ? null : (map['store'] as bool).input(),
+      unpack: map['unpack'] == null ? null : (map['unpack'] as bool).input(),
     );
   }
 }

@@ -18,13 +18,10 @@ class GetRegionRouteEntriesArgs {
   /// [outputFile] Optional.
   /// [regionId] ID of the region.
   GetRegionRouteEntriesArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> regionId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      regionId = pulumi.Input.asInput<String>(regionId);
+    required this.instanceId,
+    this.outputFile,
+    required this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetRegionRouteEntriesArgs {
 
   factory GetRegionRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomDomainCertConfig {
   /// The name of the certificate, used to distinguish different certificates.
-  final String certName;
+  final pulumi.Input<String> certName;
   /// Certificate data of the HTTPS certificates, follow the 'pem' format.
-  final String certificate;
+  final pulumi.Input<String> certificate;
   /// Private key of the HTTPS certificates, follow the 'pem' format.
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
 
   /// Creates a new [CustomDomainCertConfig].
   /// [certName] The name of the certificate, used to distinguish different certificates.
@@ -29,9 +30,9 @@ class CustomDomainCertConfig {
 
   factory CustomDomainCertConfig.fromMap(Map<String, dynamic> map) {
     return CustomDomainCertConfig(
-      certName: map['certName'] as String,
-      certificate: map['certificate'] as String,
-      privateKey: map['privateKey'] as String,
+      certName: (map['certName'] as String).input(),
+      certificate: (map['certificate'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
     );
   }
 }

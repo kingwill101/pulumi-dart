@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_v1_database_table_spec_database_view_spec.dart';
 import 'google_cloud_datacatalog_v1_database_table_spec_type.dart';
 
 /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
   /// Spec what aplies to tables that are actually views. Not set for "real" tables.
-  final GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec? databaseViewSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec>? databaseViewSpec;
   /// Type of this table.
-  final GoogleCloudDatacatalogV1DatabaseTableSpecType? type;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecType>? type;
 
   /// Creates a new [GoogleCloudDatacatalogV1DatabaseTableSpec].
   /// [databaseViewSpec] Spec what aplies to tables that are actually views. Not set for "real" tables.
@@ -20,15 +21,15 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseViewSpec': ?databaseViewSpec == null ? null : databaseViewSpec!.toMap(),
-      'type': ?type == null ? null : type!.value,
+      'databaseViewSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec, Map<String, dynamic>>(databaseViewSpec, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatacatalogV1DatabaseTableSpecType, String>(type, (value) => value.value),
     };
   }
 
   factory GoogleCloudDatacatalogV1DatabaseTableSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpec(
-      databaseViewSpec: map['databaseViewSpec'] == null ? null : GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromMap((map['databaseViewSpec'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : GoogleCloudDatacatalogV1DatabaseTableSpecType.fromValue(map['type'] as String),
+      databaseViewSpec: map['databaseViewSpec'] == null ? null : (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec.fromMap((map['databaseViewSpec'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (GoogleCloudDatacatalogV1DatabaseTableSpecType.fromValue(map['type'] as String)).input(),
     );
   }
 }

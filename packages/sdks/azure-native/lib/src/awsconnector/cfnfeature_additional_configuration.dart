@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CFNFeatureAdditionalConfiguration
 class CFNFeatureAdditionalConfiguration {
   /// Property name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Property status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [CFNFeatureAdditionalConfiguration].
   /// [name] Property name
@@ -25,8 +26,8 @@ class CFNFeatureAdditionalConfiguration {
 
   factory CFNFeatureAdditionalConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNFeatureAdditionalConfiguration(
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

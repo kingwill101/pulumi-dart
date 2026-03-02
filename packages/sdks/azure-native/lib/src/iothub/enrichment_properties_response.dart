@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an enrichment that your IoT hub applies to messages delivered to endpoints.
 class EnrichmentPropertiesResponse {
   /// The list of endpoints for which the enrichment is applied to the message.
-  final List<String> endpointNames;
+  final pulumi.Input<List<String>> endpointNames;
   /// The key or name for the enrichment property.
-  final String key;
+  final pulumi.Input<String> key;
   /// The value for the enrichment property.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [EnrichmentPropertiesResponse].
   /// [endpointNames] The list of endpoints for which the enrichment is applied to the message.
@@ -30,9 +31,9 @@ class EnrichmentPropertiesResponse {
 
   factory EnrichmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentPropertiesResponse(
-      endpointNames: (map['endpointNames'] as List).cast<String>(),
-      key: map['key'] as String,
-      value: map['value'] as String,
+      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

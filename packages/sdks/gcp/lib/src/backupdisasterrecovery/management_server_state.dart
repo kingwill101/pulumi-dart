@@ -35,21 +35,14 @@ class ManagementServerState {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of management server (management console).
   ManagementServerState({
-    pulumi.Output<String>? location,
-    pulumi.Output<List<ManagementServerManagementUri>>? managementUris,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ManagementServerNetwork>>? networks,
-    pulumi.Output<String>? oauth2ClientId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementUris = pulumi.Input.asOptionalInput<List<ManagementServerManagementUri>>(managementUris),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<ManagementServerNetwork>>(networks),
-      oauth2ClientId = pulumi.Input.asOptionalInput<String>(oauth2ClientId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.location,
+    this.managementUris,
+    this.name,
+    this.networks,
+    this.oauth2ClientId,
+    this.project,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ManagementServerState {
 
   factory ManagementServerState.fromMap(Map<String, dynamic> map) {
     return ManagementServerState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementUris: map['managementUris'] == null ? null : pulumi.Output.create<List<ManagementServerManagementUri>>(pulumi.Input.decodeList<ManagementServerManagementUri>(map['managementUris'], (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<ManagementServerNetwork>>(pulumi.Input.decodeList<ManagementServerNetwork>(map['networks'], (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : pulumi.Output.create<String>(map['oauth2ClientId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementUris: map['managementUris'] == null ? null : (pulumi.Input.decodeList<ManagementServerManagementUri>(map['managementUris'], (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks'], (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

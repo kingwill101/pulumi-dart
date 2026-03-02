@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobMapTaskXattrs {
   /// The number of threads to execute a single trigger. The default value is 5.
-  final int? consumerSize;
+  final pulumi.Input<int>? consumerSize;
   /// The number of subtask distribution threads. The default value is 5.
-  final int? dispatcherSize;
+  final pulumi.Input<int>? dispatcherSize;
   /// The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
-  final int? pageSize;
+  final pulumi.Input<int>? pageSize;
   /// The upper limit of the sub-task queue cache. The default value is 10000.
-  final int? queueSize;
+  final pulumi.Input<int>? queueSize;
   /// Subtask failure retry interval.
-  final int? taskAttemptInterval;
+  final pulumi.Input<int>? taskAttemptInterval;
   /// The number of failed sub-task retries.
-  final int? taskMaxAttempt;
+  final pulumi.Input<int>? taskMaxAttempt;
 
   /// Creates a new [JobMapTaskXattrs].
   /// [consumerSize] The number of threads to execute a single trigger. The default value is 5.
@@ -44,12 +45,12 @@ class JobMapTaskXattrs {
 
   factory JobMapTaskXattrs.fromMap(Map<String, dynamic> map) {
     return JobMapTaskXattrs(
-      consumerSize: map['consumerSize'] == null ? null : map['consumerSize'] as int,
-      dispatcherSize: map['dispatcherSize'] == null ? null : map['dispatcherSize'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      queueSize: map['queueSize'] == null ? null : map['queueSize'] as int,
-      taskAttemptInterval: map['taskAttemptInterval'] == null ? null : map['taskAttemptInterval'] as int,
-      taskMaxAttempt: map['taskMaxAttempt'] == null ? null : map['taskMaxAttempt'] as int,
+      consumerSize: map['consumerSize'] == null ? null : (map['consumerSize'] as int).input(),
+      dispatcherSize: map['dispatcherSize'] == null ? null : (map['dispatcherSize'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      queueSize: map['queueSize'] == null ? null : (map['queueSize'] as int).input(),
+      taskAttemptInterval: map['taskAttemptInterval'] == null ? null : (map['taskAttemptInterval'] as int).input(),
+      taskMaxAttempt: map['taskMaxAttempt'] == null ? null : (map['taskMaxAttempt'] as int).input(),
     );
   }
 }

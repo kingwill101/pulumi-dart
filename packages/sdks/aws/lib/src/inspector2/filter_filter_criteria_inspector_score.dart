@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFilterCriteriaInspectorScore {
   /// (Optional) Lower bound of the range, inclusive.
-  final double lowerInclusive;
+  final pulumi.Input<double> lowerInclusive;
   /// (Optional) Upper bound of the range, inclusive.
-  final double upperInclusive;
+  final pulumi.Input<double> upperInclusive;
 
   /// Creates a new [FilterFilterCriteriaInspectorScore].
   /// [lowerInclusive] (Optional) Lower bound of the range, inclusive.
@@ -24,8 +25,8 @@ class FilterFilterCriteriaInspectorScore {
 
   factory FilterFilterCriteriaInspectorScore.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaInspectorScore(
-      lowerInclusive: map['lowerInclusive'] as double,
-      upperInclusive: map['upperInclusive'] as double,
+      lowerInclusive: (map['lowerInclusive'] as double).input(),
+      upperInclusive: (map['upperInclusive'] as double).input(),
     );
   }
 }

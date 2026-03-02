@@ -13,9 +13,8 @@ class GetOrganizationSettingsArgs {
   /// Creates a new [GetOrganizationSettingsArgs].
   /// [organization] The ID of the organization for which to retrieve settings.
   GetOrganizationSettingsArgs({
-    required pulumi.Output<String> organization,
-  }) :
-      organization = pulumi.Input.asInput<String>(organization);
+    required this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetOrganizationSettingsArgs {
 
   factory GetOrganizationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSettingsArgs(
-      organization: pulumi.Output.create<String>(map['organization'] as String),
+      organization: (map['organization'] as String).input(),
     );
   }
 }

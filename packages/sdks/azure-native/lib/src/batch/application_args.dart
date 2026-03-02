@@ -31,21 +31,14 @@ class ApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   ApplicationArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? allowUpdates,
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<String>? defaultVersion,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      allowUpdates = pulumi.Input.asOptionalInput<bool>(allowUpdates),
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      defaultVersion = pulumi.Input.asOptionalInput<String>(defaultVersion),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.allowUpdates,
+    this.applicationName,
+    this.defaultVersion,
+    this.displayName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      allowUpdates: map['allowUpdates'] == null ? null : pulumi.Output.create<bool>(map['allowUpdates'] as bool),
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      defaultVersion: map['defaultVersion'] == null ? null : pulumi.Output.create<String>(map['defaultVersion'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates'] as bool).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

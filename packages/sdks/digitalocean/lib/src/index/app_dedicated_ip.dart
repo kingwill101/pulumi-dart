@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppDedicatedIp {
   /// The ID of the app.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The IP address of the dedicated egress IP.
-  final String? ip;
+  final pulumi.Input<String>? ip;
   /// The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [AppDedicatedIp].
   /// [id] The ID of the app.
@@ -29,9 +30,9 @@ class AppDedicatedIp {
 
   factory AppDedicatedIp.fromMap(Map<String, dynamic> map) {
     return AppDedicatedIp(
-      id: map['id'] == null ? null : map['id'] as String,
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

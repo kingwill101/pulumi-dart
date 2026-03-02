@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Max and Min Threshold values for the metric
 class ExpectedValueRangeResponse {
   /// Max threshold value for the metric
-  final double max;
+  final pulumi.Input<double> max;
   /// Min threshold value for the metric
-  final double min;
+  final pulumi.Input<double> min;
 
   /// Creates a new [ExpectedValueRangeResponse].
   /// [max] Max threshold value for the metric
@@ -25,8 +26,8 @@ class ExpectedValueRangeResponse {
 
   factory ExpectedValueRangeResponse.fromMap(Map<String, dynamic> map) {
     return ExpectedValueRangeResponse(
-      max: map['max'] as double,
-      min: map['min'] as double,
+      max: (map['max'] as double).input(),
+      min: (map['min'] as double).input(),
     );
   }
 }

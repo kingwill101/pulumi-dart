@@ -29,19 +29,13 @@ class CloudFormationTypeArgs {
   /// [type] CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
   /// [typeName] CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
   CloudFormationTypeArgs({
-    pulumi.Output<String>? executionRoleArn,
-    pulumi.Output<CloudFormationTypeLoggingConfig>? loggingConfig,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> schemaHandlerPackage,
-    pulumi.Output<String>? type,
-    required pulumi.Output<String> typeName,
-  }) :
-      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
-      loggingConfig = pulumi.Input.asOptionalInput<CloudFormationTypeLoggingConfig>(loggingConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schemaHandlerPackage = pulumi.Input.asInput<String>(schemaHandlerPackage),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typeName = pulumi.Input.asInput<String>(typeName);
+    this.executionRoleArn,
+    this.loggingConfig,
+    this.region,
+    required this.schemaHandlerPackage,
+    this.type,
+    required this.typeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class CloudFormationTypeArgs {
 
   factory CloudFormationTypeArgs.fromMap(Map<String, dynamic> map) {
     return CloudFormationTypeArgs(
-      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<CloudFormationTypeLoggingConfig>(CloudFormationTypeLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      schemaHandlerPackage: pulumi.Output.create<String>(map['schemaHandlerPackage'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typeName: pulumi.Output.create<String>(map['typeName'] as String),
+      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (CloudFormationTypeLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      schemaHandlerPackage: (map['schemaHandlerPackage'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

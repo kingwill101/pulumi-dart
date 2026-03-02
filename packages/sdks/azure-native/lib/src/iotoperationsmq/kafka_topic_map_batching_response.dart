@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kafka TopicMap Batching properties
 class KafkaTopicMapBatchingResponse {
   /// The setting to enable or disable batching.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The latency of message batching.
-  final int? latencyMs;
+  final pulumi.Input<int>? latencyMs;
   /// The maximum bytes to send in a batch.
-  final double? maxBytes;
+  final pulumi.Input<double>? maxBytes;
   /// The maximum messages to send in a batch.
-  final double? maxMessages;
+  final pulumi.Input<double>? maxMessages;
 
   /// Creates a new [KafkaTopicMapBatchingResponse].
   /// [enabled] The setting to enable or disable batching.
@@ -35,10 +36,10 @@ class KafkaTopicMapBatchingResponse {
 
   factory KafkaTopicMapBatchingResponse.fromMap(Map<String, dynamic> map) {
     return KafkaTopicMapBatchingResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      latencyMs: map['latencyMs'] == null ? null : map['latencyMs'] as int,
-      maxBytes: map['maxBytes'] == null ? null : map['maxBytes'] as double,
-      maxMessages: map['maxMessages'] == null ? null : map['maxMessages'] as double,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs'] as int).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as double).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as double).input(),
     );
   }
 }

@@ -38,25 +38,16 @@ class OsPolicyAssignmentArgs {
   /// [project] Optional.
   /// [rollout] Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
   OsPolicyAssignmentArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<OSPolicyAssignmentInstanceFilter> instanceFilter,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<OSPolicy>> osPolicies,
-    required pulumi.Output<String> osPolicyAssignmentId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<OSPolicyAssignmentRollout> rollout,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instanceFilter = pulumi.Input.asInput<OSPolicyAssignmentInstanceFilter>(instanceFilter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osPolicies = pulumi.Input.asInput<List<OSPolicy>>(osPolicies),
-      osPolicyAssignmentId = pulumi.Input.asInput<String>(osPolicyAssignmentId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rollout = pulumi.Input.asInput<OSPolicyAssignmentRollout>(rollout);
+    this.description,
+    this.etag,
+    required this.instanceFilter,
+    this.location,
+    this.name,
+    required this.osPolicies,
+    required this.osPolicyAssignmentId,
+    this.project,
+    required this.rollout,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class OsPolicyAssignmentArgs {
 
   factory OsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instanceFilter: pulumi.Output.create<OSPolicyAssignmentInstanceFilter>(OSPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osPolicies: pulumi.Output.create<List<OSPolicy>>(pulumi.Input.decodeList<OSPolicy>(map['osPolicies'], (value) => OSPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      osPolicyAssignmentId: pulumi.Output.create<String>(map['osPolicyAssignmentId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rollout: pulumi.Output.create<OSPolicyAssignmentRollout>(OSPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instanceFilter: (OSPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osPolicies: (pulumi.Input.decodeList<OSPolicy>(map['osPolicies'], (value) => OSPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osPolicyAssignmentId: (map['osPolicyAssignmentId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rollout: (OSPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

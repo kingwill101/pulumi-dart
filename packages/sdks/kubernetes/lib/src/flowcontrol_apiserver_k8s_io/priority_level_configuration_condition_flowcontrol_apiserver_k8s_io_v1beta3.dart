@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PriorityLevelConfigurationCondition defines the condition of priority level.
 class PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3 {
   /// `lastTransitionTime` is the last time the condition transitioned from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// `message` is a human-readable message indicating details about last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// `reason` is a unique, one-word, CamelCase reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// `status` is the status of the condition. Can be True, False, Unknown. Required.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// `type` is the type of the condition. Required.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3].
   /// [lastTransitionTime] `lastTransitionTime` is the last time the condition transitioned from one status to another.
@@ -40,11 +41,11 @@ class PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3 {
 
   factory PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

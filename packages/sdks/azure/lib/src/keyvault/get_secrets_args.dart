@@ -15,9 +15,8 @@ class GetSecretsArgs {
   /// Creates a new [GetSecretsArgs].
   /// [keyVaultId] Specifies the ID of the Key Vault instance to fetch secret names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   GetSecretsArgs({
-    required pulumi.Output<String> keyVaultId,
-  }) :
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId);
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class GetSecretsArgs {
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

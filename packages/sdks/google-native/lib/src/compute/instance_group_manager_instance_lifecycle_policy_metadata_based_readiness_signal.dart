@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
   /// The number of seconds to wait for a readiness signal during initialization before timing out.
-  final int? timeoutSec;
+  final pulumi.Input<int>? timeoutSec;
 
   /// Creates a new [InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal].
   /// [timeoutSec] The number of seconds to wait for a readiness signal during initialization before timing out.
@@ -19,7 +20,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal(
-      timeoutSec: map['timeoutSec'] == null ? null : map['timeoutSec'] as int,
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
     );
   }
 }

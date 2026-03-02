@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ies for the solution content item
 class MetadataCategoriesResponse {
   /// domain for the solution content item
-  final List<String>? domains;
+  final pulumi.Input<List<String>>? domains;
   /// Industry verticals for the solution content item
-  final List<String>? verticals;
+  final pulumi.Input<List<String>>? verticals;
 
   /// Creates a new [MetadataCategoriesResponse].
   /// [domains] domain for the solution content item
@@ -25,8 +26,8 @@ class MetadataCategoriesResponse {
 
   factory MetadataCategoriesResponse.fromMap(Map<String, dynamic> map) {
     return MetadataCategoriesResponse(
-      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
-      verticals: map['verticals'] == null ? null : (map['verticals'] as List).cast<String>(),
+      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
+      verticals: map['verticals'] == null ? null : ((map['verticals'] as List).cast<String>()).input(),
     );
   }
 }

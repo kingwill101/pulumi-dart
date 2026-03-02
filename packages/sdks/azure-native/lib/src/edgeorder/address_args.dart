@@ -33,21 +33,14 @@ class AddressArgs {
   /// [shippingAddress] Shipping details for the address.
   /// [tags] Resource tags.
   AddressArgs({
-    pulumi.Output<String>? addressClassification,
-    pulumi.Output<String>? addressName,
-    pulumi.Output<ContactDetails>? contactDetails,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ShippingAddress>? shippingAddress,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addressClassification = pulumi.Input.asOptionalInput<String>(addressClassification),
-      addressName = pulumi.Input.asOptionalInput<String>(addressName),
-      contactDetails = pulumi.Input.asOptionalInput<ContactDetails>(contactDetails),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shippingAddress = pulumi.Input.asOptionalInput<ShippingAddress>(shippingAddress),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addressClassification,
+    this.addressName,
+    this.contactDetails,
+    this.location,
+    required this.resourceGroupName,
+    this.shippingAddress,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AddressArgs {
 
   factory AddressArgs.fromMap(Map<String, dynamic> map) {
     return AddressArgs(
-      addressClassification: map['addressClassification'] == null ? null : pulumi.Output.create<String>(map['addressClassification'] as String),
-      addressName: map['addressName'] == null ? null : pulumi.Output.create<String>(map['addressName'] as String),
-      contactDetails: map['contactDetails'] == null ? null : pulumi.Output.create<ContactDetails>(ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shippingAddress: map['shippingAddress'] == null ? null : pulumi.Output.create<ShippingAddress>(ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification'] as String).input(),
+      addressName: map['addressName'] == null ? null : (map['addressName'] as String).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

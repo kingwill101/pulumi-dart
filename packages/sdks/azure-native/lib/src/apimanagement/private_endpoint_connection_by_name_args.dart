@@ -26,17 +26,12 @@ class PrivateEndpointConnectionByNameArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   PrivateEndpointConnectionByNameArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    pulumi.Output<PrivateEndpointConnectionRequestProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      properties = pulumi.Input.asOptionalInput<PrivateEndpointConnectionRequestProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.id,
+    this.privateEndpointConnectionName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateEndpointConnectionByNameArgs {
 
   factory PrivateEndpointConnectionByNameArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionByNameArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<PrivateEndpointConnectionRequestProperties>(PrivateEndpointConnectionRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

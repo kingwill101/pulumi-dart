@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP address information for a virtual network adapter reported by the fabric.
 class NicIPAddressSettingsResponse {
   /// Gets the ip address allocation method.
-  final String allocationMethod;
+  final pulumi.Input<String> allocationMethod;
   /// Gets the ip address for the nic.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// Gets the mask.
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
 
   /// Creates a new [NicIPAddressSettingsResponse].
   /// [allocationMethod] Gets the ip address allocation method.
@@ -30,9 +31,9 @@ class NicIPAddressSettingsResponse {
 
   factory NicIPAddressSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NicIPAddressSettingsResponse(
-      allocationMethod: map['allocationMethod'] as String,
-      ipAddress: map['ipAddress'] as String,
-      subnetMask: map['subnetMask'] as String,
+      allocationMethod: (map['allocationMethod'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
     );
   }
 }

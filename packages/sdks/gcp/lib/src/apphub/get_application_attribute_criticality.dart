@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationAttributeCriticality {
   /// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetApplicationAttributeCriticality].
   /// [type] Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
@@ -19,7 +20,7 @@ class GetApplicationAttributeCriticality {
 
   factory GetApplicationAttributeCriticality.fromMap(Map<String, dynamic> map) {
     return GetApplicationAttributeCriticality(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

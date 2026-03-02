@@ -45,23 +45,15 @@ class AiIndexArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the index. eg us-central1
   AiIndexArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<AiIndexEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? indexUpdateMethod,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<AiIndexMetadata> metadata,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<AiIndexEncryptionSpec>(encryptionSpec),
-      indexUpdateMethod = pulumi.Input.asOptionalInput<String>(indexUpdateMethod),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      metadata = pulumi.Input.asInput<AiIndexMetadata>(metadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.description,
+    required this.displayName,
+    this.encryptionSpec,
+    this.indexUpdateMethod,
+    this.labels,
+    required this.metadata,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class AiIndexArgs {
 
   factory AiIndexArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiIndexEncryptionSpec>(AiIndexEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : pulumi.Output.create<String>(map['indexUpdateMethod'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      metadata: pulumi.Output.create<AiIndexMetadata>(AiIndexMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : (map['indexUpdateMethod'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      metadata: (AiIndexMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

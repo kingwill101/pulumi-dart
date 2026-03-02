@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// N-Cross validations are specified by user.
 class CustomNCrossValidationsResponse {
   /// Determines how N-Cross validations value is determined.
   /// Expected value is 'Custom'.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// [Required] N-Cross validations value.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [CustomNCrossValidationsResponse].
   /// [mode] Determines how N-Cross validations value is determined.
@@ -26,8 +27,8 @@ class CustomNCrossValidationsResponse {
 
   factory CustomNCrossValidationsResponse.fromMap(Map<String, dynamic> map) {
     return CustomNCrossValidationsResponse(
-      mode: map['mode'] as String,
-      value: map['value'] as int,
+      mode: (map['mode'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

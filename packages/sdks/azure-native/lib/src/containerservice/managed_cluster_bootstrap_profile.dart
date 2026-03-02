@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The bootstrap profile.
 class ManagedClusterBootstrapProfile {
   /// The artifact source. The source where the artifacts are downloaded from.
-  final String? artifactSource;
+  final pulumi.Input<String>? artifactSource;
   /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
-  final String? containerRegistryId;
+  final pulumi.Input<String>? containerRegistryId;
 
   /// Creates a new [ManagedClusterBootstrapProfile].
   /// [artifactSource] The artifact source. The source where the artifacts are downloaded from.
@@ -25,8 +26,8 @@ class ManagedClusterBootstrapProfile {
 
   factory ManagedClusterBootstrapProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterBootstrapProfile(
-      artifactSource: map['artifactSource'] == null ? null : map['artifactSource'] as String,
-      containerRegistryId: map['containerRegistryId'] == null ? null : map['containerRegistryId'] as String,
+      artifactSource: map['artifactSource'] == null ? null : (map['artifactSource'] as String).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
     );
   }
 }

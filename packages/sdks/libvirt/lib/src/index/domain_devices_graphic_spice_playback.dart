@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpicePlayback {
   /// Sets compression options for audio and video playback over the Spice connection.
-  final String compression;
+  final pulumi.Input<String> compression;
 
   /// Creates a new [DomainDevicesGraphicSpicePlayback].
   /// [compression] Sets compression options for audio and video playback over the Spice connection.
@@ -19,7 +20,7 @@ class DomainDevicesGraphicSpicePlayback {
 
   factory DomainDevicesGraphicSpicePlayback.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpicePlayback(
-      compression: map['compression'] as String,
+      compression: (map['compression'] as String).input(),
     );
   }
 }

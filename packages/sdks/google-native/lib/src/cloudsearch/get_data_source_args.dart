@@ -14,11 +14,9 @@ class GetDataSourceArgs {
   /// [datasourceId] Required.
   /// [debugOptionsEnableDebugging] Optional.
   GetDataSourceArgs({
-    required pulumi.Output<String> datasourceId,
-    pulumi.Output<bool>? debugOptionsEnableDebugging,
-  }) :
-      datasourceId = pulumi.Input.asInput<String>(datasourceId),
-      debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(debugOptionsEnableDebugging);
+    required this.datasourceId,
+    this.debugOptionsEnableDebugging,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      datasourceId: pulumi.Output.create<String>(map['datasourceId'] as String),
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : pulumi.Output.create<bool>(map['debugOptionsEnableDebugging'] as bool),
+      datasourceId: (map['datasourceId'] as String).input(),
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : (map['debugOptionsEnableDebugging'] as bool).input(),
     );
   }
 }

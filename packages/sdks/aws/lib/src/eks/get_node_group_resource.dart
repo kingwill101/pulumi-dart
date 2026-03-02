@@ -5,9 +5,9 @@ import 'get_node_group_resource_autoscaling_group.dart';
 
 class GetNodeGroupResource {
   /// List of objects containing information about AutoScaling Groups.
-  final List<GetNodeGroupResourceAutoscalingGroup> autoscalingGroups;
+  final pulumi.Input<List<GetNodeGroupResourceAutoscalingGroup>> autoscalingGroups;
   /// Identifier of the remote access EC2 Security Group.
-  final String remoteAccessSecurityGroupId;
+  final pulumi.Input<String> remoteAccessSecurityGroupId;
 
   /// Creates a new [GetNodeGroupResource].
   /// [autoscalingGroups] List of objects containing information about AutoScaling Groups.
@@ -19,15 +19,15 @@ class GetNodeGroupResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingGroups': pulumi.Input.encodeList<GetNodeGroupResourceAutoscalingGroup, Map<String, dynamic>>(autoscalingGroups, (value) => value.toMap()),
+      'autoscalingGroups': pulumi.Input.mapInputValue<List<GetNodeGroupResourceAutoscalingGroup>, List<Map<String, dynamic>>>(autoscalingGroups, (value) => pulumi.Input.encodeList<GetNodeGroupResourceAutoscalingGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'remoteAccessSecurityGroupId': remoteAccessSecurityGroupId,
     };
   }
 
   factory GetNodeGroupResource.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupResource(
-      autoscalingGroups: pulumi.Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(map['autoscalingGroups'], (value) => GetNodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>())),
-      remoteAccessSecurityGroupId: map['remoteAccessSecurityGroupId'] as String,
+      autoscalingGroups: (pulumi.Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(map['autoscalingGroups'], (value) => GetNodeGroupResourceAutoscalingGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remoteAccessSecurityGroupId: (map['remoteAccessSecurityGroupId'] as String).input(),
     );
   }
 }

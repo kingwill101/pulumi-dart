@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiRequestParameter {
   /// The default value of the parameter.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// The description of parameter.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
-  final String in_;
+  final pulumi.Input<String> in_;
   /// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-  final String inService;
+  final pulumi.Input<String> inService;
   /// Request's parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Backend service's parameter name.
-  final String nameService;
+  final pulumi.Input<String> nameService;
   /// Parameter required or not; values: REQUIRED and OPTIONAL.
-  final String required;
+  final pulumi.Input<String> required;
   /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApiRequestParameter].
   /// [defaultValue] The default value of the parameter.
@@ -54,14 +55,14 @@ class ApiRequestParameter {
 
   factory ApiRequestParameter.fromMap(Map<String, dynamic> map) {
     return ApiRequestParameter(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      in_: map['in'] as String,
-      inService: map['inService'] as String,
-      name: map['name'] as String,
-      nameService: map['nameService'] as String,
-      required: map['required'] as String,
-      type: map['type'] as String,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      in_: (map['in'] as String).input(),
+      inService: (map['inService'] as String).input(),
+      name: (map['name'] as String).input(),
+      nameService: (map['nameService'] as String).input(),
+      required: (map['required'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

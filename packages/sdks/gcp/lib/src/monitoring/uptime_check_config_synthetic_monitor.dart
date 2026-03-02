@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'uptime_check_config_synthetic_monitor_cloud_function_v2.dart';
 
 class UptimeCheckConfigSyntheticMonitor {
@@ -8,7 +9,7 @@ class UptimeCheckConfigSyntheticMonitor {
   ///
   ///
   /// <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
-  final UptimeCheckConfigSyntheticMonitorCloudFunctionV2 cloudFunctionV2;
+  final pulumi.Input<UptimeCheckConfigSyntheticMonitorCloudFunctionV2> cloudFunctionV2;
 
   /// Creates a new [UptimeCheckConfigSyntheticMonitor].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 Instance
@@ -18,13 +19,13 @@ class UptimeCheckConfigSyntheticMonitor {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudFunctionV2': cloudFunctionV2.toMap(),
+      'cloudFunctionV2': pulumi.Input.mapInputValue<UptimeCheckConfigSyntheticMonitorCloudFunctionV2, Map<String, dynamic>>(cloudFunctionV2, (value) => value.toMap()),
     };
   }
 
   factory UptimeCheckConfigSyntheticMonitor.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigSyntheticMonitor(
-      cloudFunctionV2: UptimeCheckConfigSyntheticMonitorCloudFunctionV2.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
+      cloudFunctionV2: (UptimeCheckConfigSyntheticMonitorCloudFunctionV2.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

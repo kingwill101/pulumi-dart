@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates the location at which a package was found.
 class FileLocationResponse {
   /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  final String filePath;
+  final pulumi.Input<String> filePath;
 
   /// Creates a new [FileLocationResponse].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
@@ -20,7 +21,7 @@ class FileLocationResponse {
 
   factory FileLocationResponse.fromMap(Map<String, dynamic> map) {
     return FileLocationResponse(
-      filePath: map['filePath'] as String,
+      filePath: (map['filePath'] as String).input(),
     );
   }
 }

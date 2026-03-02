@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
   /// ARN of the `aws.acmpca.CertificateAuthority` used to create the TLS Certificates.
-  final String awsPcaAuthorityArn;
+  final pulumi.Input<String> awsPcaAuthorityArn;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority].
   /// [awsPcaAuthorityArn] ARN of the `aws.acmpca.CertificateAuthority` used to create the TLS Certificates.
@@ -19,7 +20,7 @@ class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
 
   factory ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority(
-      awsPcaAuthorityArn: map['awsPcaAuthorityArn'] as String,
+      awsPcaAuthorityArn: (map['awsPcaAuthorityArn'] as String).input(),
     );
   }
 }

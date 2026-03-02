@@ -6,7 +6,7 @@ import 'node_taint.dart';
 /// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
 class NodeTaints {
   /// List of node taints.
-  final List<NodeTaint>? taints;
+  final pulumi.Input<List<NodeTaint>>? taints;
 
   /// Creates a new [NodeTaints].
   /// [taints] List of node taints.
@@ -16,13 +16,13 @@ class NodeTaints {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'taints': ?taints == null ? null : pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<NodeTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NodeTaints.fromMap(Map<String, dynamic> map) {
     return NodeTaints(
-      taints: map['taints'] == null ? null : pulumi.Input.decodeList<NodeTaint>(map['taints'], (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>())),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints'], (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,17 +41,12 @@ class WebBackendServiceIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [webBackendService] Used to find the parent resource to bind the IAM policy to
   WebBackendServiceIamMemberArgs({
-    pulumi.Output<WebBackendServiceIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> webBackendService,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WebBackendServiceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      webBackendService = pulumi.Input.asInput<String>(webBackendService);
+    this.condition,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.webBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class WebBackendServiceIamMemberArgs {
 
   factory WebBackendServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WebBackendServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WebBackendServiceIamMemberCondition>(WebBackendServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      webBackendService: pulumi.Output.create<String>(map['webBackendService'] as String),
+      condition: map['condition'] == null ? null : (WebBackendServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      webBackendService: (map['webBackendService'] as String).input(),
     );
   }
 }

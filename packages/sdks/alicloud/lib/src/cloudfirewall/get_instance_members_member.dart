@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMembersMember {
   /// When the cloud firewall member account was added.> use second-level timestamp format.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The instance id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Remarks of cloud firewall member accounts.
-  final String memberDesc;
+  final pulumi.Input<String> memberDesc;
   /// The name of the cloud firewall member account.
-  final String memberDisplayName;
+  final pulumi.Input<String> memberDisplayName;
   /// The UID of the cloud firewall member account.
-  final String memberUid;
+  final pulumi.Input<String> memberUid;
   /// The last modification time of the cloud firewall member account.> use second-level timestamp format.
-  final int modifyTime;
+  final pulumi.Input<int> modifyTime;
   /// The resource attribute field that represents the resource status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstanceMembersMember].
   /// [createTime] When the cloud firewall member account was added.> use second-level timestamp format.
@@ -49,13 +50,13 @@ class GetInstanceMembersMember {
 
   factory GetInstanceMembersMember.fromMap(Map<String, dynamic> map) {
     return GetInstanceMembersMember(
-      createTime: map['createTime'] as int,
-      id: map['id'] as String,
-      memberDesc: map['memberDesc'] as String,
-      memberDisplayName: map['memberDisplayName'] as String,
-      memberUid: map['memberUid'] as String,
-      modifyTime: map['modifyTime'] as int,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as int).input(),
+      id: (map['id'] as String).input(),
+      memberDesc: (map['memberDesc'] as String).input(),
+      memberDisplayName: (map['memberDisplayName'] as String).input(),
+      memberUid: (map['memberUid'] as String).input(),
+      modifyTime: (map['modifyTime'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

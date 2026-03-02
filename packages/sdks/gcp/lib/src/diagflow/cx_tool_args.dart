@@ -44,21 +44,14 @@ class CxToolArgs {
   /// [openApiSpec] OpenAPI specification of the Tool.
   /// [parent] The agent to create a Tool for.
   CxToolArgs({
-    pulumi.Output<CxToolConnectorSpec>? connectorSpec,
-    pulumi.Output<CxToolDataStoreSpec>? dataStoreSpec,
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<CxToolFunctionSpec>? functionSpec,
-    pulumi.Output<CxToolOpenApiSpec>? openApiSpec,
-    pulumi.Output<String>? parent,
-  }) :
-      connectorSpec = pulumi.Input.asOptionalInput<CxToolConnectorSpec>(connectorSpec),
-      dataStoreSpec = pulumi.Input.asOptionalInput<CxToolDataStoreSpec>(dataStoreSpec),
-      description = pulumi.Input.asInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      functionSpec = pulumi.Input.asOptionalInput<CxToolFunctionSpec>(functionSpec),
-      openApiSpec = pulumi.Input.asOptionalInput<CxToolOpenApiSpec>(openApiSpec),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.connectorSpec,
+    this.dataStoreSpec,
+    required this.description,
+    required this.displayName,
+    this.functionSpec,
+    this.openApiSpec,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class CxToolArgs {
 
   factory CxToolArgs.fromMap(Map<String, dynamic> map) {
     return CxToolArgs(
-      connectorSpec: map['connectorSpec'] == null ? null : pulumi.Output.create<CxToolConnectorSpec>(CxToolConnectorSpec.fromMap((map['connectorSpec'] as Map).cast<String, dynamic>())),
-      dataStoreSpec: map['dataStoreSpec'] == null ? null : pulumi.Output.create<CxToolDataStoreSpec>(CxToolDataStoreSpec.fromMap((map['dataStoreSpec'] as Map).cast<String, dynamic>())),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      functionSpec: map['functionSpec'] == null ? null : pulumi.Output.create<CxToolFunctionSpec>(CxToolFunctionSpec.fromMap((map['functionSpec'] as Map).cast<String, dynamic>())),
-      openApiSpec: map['openApiSpec'] == null ? null : pulumi.Output.create<CxToolOpenApiSpec>(CxToolOpenApiSpec.fromMap((map['openApiSpec'] as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      connectorSpec: map['connectorSpec'] == null ? null : (CxToolConnectorSpec.fromMap((map['connectorSpec'] as Map).cast<String, dynamic>())).input(),
+      dataStoreSpec: map['dataStoreSpec'] == null ? null : (CxToolDataStoreSpec.fromMap((map['dataStoreSpec'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      functionSpec: map['functionSpec'] == null ? null : (CxToolFunctionSpec.fromMap((map['functionSpec'] as Map).cast<String, dynamic>())).input(),
+      openApiSpec: map['openApiSpec'] == null ? null : (CxToolOpenApiSpec.fromMap((map['openApiSpec'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties for confidential container group
 class ConfidentialComputeProperties {
   /// The base64 encoded confidential compute enforcement policy
-  final String? ccePolicy;
+  final pulumi.Input<String>? ccePolicy;
 
   /// Creates a new [ConfidentialComputeProperties].
   /// [ccePolicy] The base64 encoded confidential compute enforcement policy
@@ -20,7 +21,7 @@ class ConfidentialComputeProperties {
 
   factory ConfidentialComputeProperties.fromMap(Map<String, dynamic> map) {
     return ConfidentialComputeProperties(
-      ccePolicy: map['ccePolicy'] == null ? null : map['ccePolicy'] as String,
+      ccePolicy: map['ccePolicy'] == null ? null : (map['ccePolicy'] as String).input(),
     );
   }
 }

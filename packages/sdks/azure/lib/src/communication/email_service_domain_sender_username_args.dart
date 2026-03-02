@@ -19,13 +19,10 @@ class EmailServiceDomainSenderUsernameArgs {
   /// [emailServiceDomainId] The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
   /// [name] The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
   EmailServiceDomainSenderUsernameArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> emailServiceDomainId,
-    pulumi.Output<String>? name,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      emailServiceDomainId = pulumi.Input.asInput<String>(emailServiceDomainId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.displayName,
+    required this.emailServiceDomainId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EmailServiceDomainSenderUsernameArgs {
 
   factory EmailServiceDomainSenderUsernameArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainSenderUsernameArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      emailServiceDomainId: pulumi.Output.create<String>(map['emailServiceDomainId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      emailServiceDomainId: (map['emailServiceDomainId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

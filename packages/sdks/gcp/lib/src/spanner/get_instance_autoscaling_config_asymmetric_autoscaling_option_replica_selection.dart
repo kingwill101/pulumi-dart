@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
   /// The location of the replica to apply asymmetric autoscaling options.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection].
   /// [location] The location of the replica to apply asymmetric autoscaling options.
@@ -19,7 +20,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
 
   factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

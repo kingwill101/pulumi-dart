@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MxRecordRecord {
   /// The FQDN of the exchange to MX record points to.
-  final String exchange;
+  final pulumi.Input<String> exchange;
   /// The preference of the MX record.
-  final int preference;
+  final pulumi.Input<int> preference;
 
   /// Creates a new [MxRecordRecord].
   /// [exchange] The FQDN of the exchange to MX record points to.
@@ -24,8 +25,8 @@ class MxRecordRecord {
 
   factory MxRecordRecord.fromMap(Map<String, dynamic> map) {
     return MxRecordRecord(
-      exchange: map['exchange'] as String,
-      preference: map['preference'] as int,
+      exchange: (map['exchange'] as String).input(),
+      preference: (map['preference'] as int).input(),
     );
   }
 }

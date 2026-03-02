@@ -22,15 +22,11 @@ class FolderSettingsArgs {
   /// [kmsKeyName] The resource name for the configured Cloud KMS key.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
   FolderSettingsArgs({
-    pulumi.Output<bool>? disableDefaultSink,
-    required pulumi.Output<String> folder,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<String>? storageLocation,
-  }) :
-      disableDefaultSink = pulumi.Input.asOptionalInput<bool>(disableDefaultSink),
-      folder = pulumi.Input.asInput<String>(folder),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      storageLocation = pulumi.Input.asOptionalInput<String>(storageLocation);
+    this.disableDefaultSink,
+    required this.folder,
+    this.kmsKeyName,
+    this.storageLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FolderSettingsArgs {
 
   factory FolderSettingsArgs.fromMap(Map<String, dynamic> map) {
     return FolderSettingsArgs(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : pulumi.Output.create<bool>(map['disableDefaultSink'] as bool),
-      folder: pulumi.Output.create<String>(map['folder'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      storageLocation: map['storageLocation'] == null ? null : pulumi.Output.create<String>(map['storageLocation'] as String),
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink'] as bool).input(),
+      folder: (map['folder'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation'] as String).input(),
     );
   }
 }

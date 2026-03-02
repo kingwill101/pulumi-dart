@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_selector_response.dart';
 
 class SecretArchiveSettingsResponse {
   /// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
-  final IdentitySelectorResponse? associatedIdentity;
+  final pulumi.Input<IdentitySelectorResponse>? associatedIdentity;
   /// The URI for the key vault used as the secret archive.
-  final String? vaultUri;
+  final pulumi.Input<String>? vaultUri;
 
   /// Creates a new [SecretArchiveSettingsResponse].
   /// [associatedIdentity] The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
@@ -18,15 +19,15 @@ class SecretArchiveSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associatedIdentity': ?associatedIdentity == null ? null : associatedIdentity!.toMap(),
+      'associatedIdentity': ?pulumi.Input.mapOptionalInputValue<IdentitySelectorResponse, Map<String, dynamic>>(associatedIdentity, (value) => value.toMap()),
       'vaultUri': ?vaultUri,
     };
   }
 
   factory SecretArchiveSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SecretArchiveSettingsResponse(
-      associatedIdentity: map['associatedIdentity'] == null ? null : IdentitySelectorResponse.fromMap((map['associatedIdentity'] as Map).cast<String, dynamic>()),
-      vaultUri: map['vaultUri'] == null ? null : map['vaultUri'] as String,
+      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelectorResponse.fromMap((map['associatedIdentity'] as Map).cast<String, dynamic>())).input(),
+      vaultUri: map['vaultUri'] == null ? null : (map['vaultUri'] as String).input(),
     );
   }
 }

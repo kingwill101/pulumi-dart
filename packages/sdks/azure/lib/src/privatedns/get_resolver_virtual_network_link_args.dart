@@ -16,11 +16,9 @@ class GetResolverVirtualNetworkLinkArgs {
   /// [dnsForwardingRulesetId] ID of the Private DNS Resolver DNS Forwarding Ruleset.
   /// [name] Name of the Private DNS Resolver Virtual Network Link.
   GetResolverVirtualNetworkLinkArgs({
-    required pulumi.Output<String> dnsForwardingRulesetId,
-    required pulumi.Output<String> name,
-  }) :
-      dnsForwardingRulesetId = pulumi.Input.asInput<String>(dnsForwardingRulesetId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.dnsForwardingRulesetId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverVirtualNetworkLinkArgs {
 
   factory GetResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetId: pulumi.Output.create<String>(map['dnsForwardingRulesetId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      dnsForwardingRulesetId: (map['dnsForwardingRulesetId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

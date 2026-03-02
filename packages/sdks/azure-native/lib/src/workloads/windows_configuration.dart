@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies Windows operating system settings on the virtual machine.
 class WindowsConfiguration {
   /// The OS Type
   /// Expected value is 'Windows'.
-  final String osType;
+  final pulumi.Input<String> osType;
 
   /// Creates a new [WindowsConfiguration].
   /// [osType] The OS Type
@@ -21,7 +22,7 @@ class WindowsConfiguration {
 
   factory WindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return WindowsConfiguration(
-      osType: map['osType'] as String,
+      osType: (map['osType'] as String).input(),
     );
   }
 }

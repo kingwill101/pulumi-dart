@@ -25,19 +25,13 @@ class WebhookState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [url] URL of the webhook.
   WebhookState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? branchName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? url,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      branchName = pulumi.Input.asOptionalInput<String>(branchName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.appId,
+    this.arn,
+    this.branchName,
+    this.description,
+    this.region,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      branchName: map['branchName'] == null ? null : pulumi.Output.create<String>(map['branchName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

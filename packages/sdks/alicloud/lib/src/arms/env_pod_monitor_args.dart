@@ -19,13 +19,10 @@ class EnvPodMonitorArgs {
   /// [configYaml] Yaml configuration string.
   /// [environmentId] Environment id.
   EnvPodMonitorArgs({
-    pulumi.Output<String>? aliyunLang,
-    required pulumi.Output<String> configYaml,
-    required pulumi.Output<String> environmentId,
-  }) :
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      configYaml = pulumi.Input.asInput<String>(configYaml),
-      environmentId = pulumi.Input.asInput<String>(environmentId);
+    this.aliyunLang,
+    required this.configYaml,
+    required this.environmentId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnvPodMonitorArgs {
 
   factory EnvPodMonitorArgs.fromMap(Map<String, dynamic> map) {
     return EnvPodMonitorArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      configYaml: pulumi.Output.create<String>(map['configYaml'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      configYaml: (map['configYaml'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
     );
   }
 }

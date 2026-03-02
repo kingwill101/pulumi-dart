@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details for an outcome with an INCONCLUSIVE outcome summary.
 class InconclusiveDetail {
   /// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
-  final bool? abortedByUser;
+  final pulumi.Input<bool>? abortedByUser;
   /// If results are being provided to the user in certain cases of infrastructure failures
-  final bool? hasErrorLogs;
+  final pulumi.Input<bool>? hasErrorLogs;
   /// If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail.
-  final bool? infrastructureFailure;
+  final pulumi.Input<bool>? infrastructureFailure;
 
   /// Creates a new [InconclusiveDetail].
   /// [abortedByUser] If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
@@ -30,9 +31,9 @@ class InconclusiveDetail {
 
   factory InconclusiveDetail.fromMap(Map<String, dynamic> map) {
     return InconclusiveDetail(
-      abortedByUser: map['abortedByUser'] == null ? null : map['abortedByUser'] as bool,
-      hasErrorLogs: map['hasErrorLogs'] == null ? null : map['hasErrorLogs'] as bool,
-      infrastructureFailure: map['infrastructureFailure'] == null ? null : map['infrastructureFailure'] as bool,
+      abortedByUser: map['abortedByUser'] == null ? null : (map['abortedByUser'] as bool).input(),
+      hasErrorLogs: map['hasErrorLogs'] == null ? null : (map['hasErrorLogs'] as bool).input(),
+      infrastructureFailure: map['infrastructureFailure'] == null ? null : (map['infrastructureFailure'] as bool).input(),
     );
   }
 }

@@ -45,31 +45,19 @@ class GetConsulServiceDiscoveryArgs {
   /// [updateInterval] Update interval for service discovery.
   /// [uri] The location of the node data.
   GetConsulServiceDiscoveryArgs({
-    pulumi.Output<String>? addressRealm,
-    pulumi.Output<bool>? credentialUpdate,
-    pulumi.Output<String>? encodedToken,
-    pulumi.Output<String>? jmesPathQuery,
-    pulumi.Output<String>? minimumMonitors,
-    required pulumi.Output<int> port,
-    pulumi.Output<bool>? rejectUnauthorized,
-    pulumi.Output<String>? trustCa,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? undetectableAction,
-    pulumi.Output<String>? updateInterval,
-    required pulumi.Output<String> uri,
-  }) :
-      addressRealm = pulumi.Input.asOptionalInput<String>(addressRealm),
-      credentialUpdate = pulumi.Input.asOptionalInput<bool>(credentialUpdate),
-      encodedToken = pulumi.Input.asOptionalInput<String>(encodedToken),
-      jmesPathQuery = pulumi.Input.asOptionalInput<String>(jmesPathQuery),
-      minimumMonitors = pulumi.Input.asOptionalInput<String>(minimumMonitors),
-      port = pulumi.Input.asInput<int>(port),
-      rejectUnauthorized = pulumi.Input.asOptionalInput<bool>(rejectUnauthorized),
-      trustCa = pulumi.Input.asOptionalInput<String>(trustCa),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      undetectableAction = pulumi.Input.asOptionalInput<String>(undetectableAction),
-      updateInterval = pulumi.Input.asOptionalInput<String>(updateInterval),
-      uri = pulumi.Input.asInput<String>(uri);
+    this.addressRealm,
+    this.credentialUpdate,
+    this.encodedToken,
+    this.jmesPathQuery,
+    this.minimumMonitors,
+    required this.port,
+    this.rejectUnauthorized,
+    this.trustCa,
+    this.type,
+    this.undetectableAction,
+    this.updateInterval,
+    required this.uri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class GetConsulServiceDiscoveryArgs {
 
   factory GetConsulServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetConsulServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : pulumi.Output.create<String>(map['addressRealm'] as String),
-      credentialUpdate: map['credentialUpdate'] == null ? null : pulumi.Output.create<bool>(map['credentialUpdate'] as bool),
-      encodedToken: map['encodedToken'] == null ? null : pulumi.Output.create<String>(map['encodedToken'] as String),
-      jmesPathQuery: map['jmesPathQuery'] == null ? null : pulumi.Output.create<String>(map['jmesPathQuery'] as String),
-      minimumMonitors: map['minimumMonitors'] == null ? null : pulumi.Output.create<String>(map['minimumMonitors'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : pulumi.Output.create<bool>(map['rejectUnauthorized'] as bool),
-      trustCa: map['trustCa'] == null ? null : pulumi.Output.create<String>(map['trustCa'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      undetectableAction: map['undetectableAction'] == null ? null : pulumi.Output.create<String>(map['undetectableAction'] as String),
-      updateInterval: map['updateInterval'] == null ? null : pulumi.Output.create<String>(map['updateInterval'] as String),
-      uri: pulumi.Output.create<String>(map['uri'] as String),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
+      encodedToken: map['encodedToken'] == null ? null : (map['encodedToken'] as String).input(),
+      jmesPathQuery: map['jmesPathQuery'] == null ? null : (map['jmesPathQuery'] as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
+      port: (map['port'] as int).input(),
+      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : (map['rejectUnauthorized'] as bool).input(),
+      trustCa: map['trustCa'] == null ? null : (map['trustCa'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

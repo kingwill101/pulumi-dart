@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedDatasetBigqueryDataset {
   /// (Output)
@@ -7,7 +8,7 @@ class LinkedDatasetBigqueryDataset {
   /// of the link, so the link must match the naming restrictions of BigQuery datasets
   /// (alphanumeric characters and underscores only). The dataset will have a resource path of
   /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
-  final String? datasetId;
+  final pulumi.Input<String>? datasetId;
 
   /// Creates a new [LinkedDatasetBigqueryDataset].
   /// [datasetId] (Output)
@@ -23,7 +24,7 @@ class LinkedDatasetBigqueryDataset {
 
   factory LinkedDatasetBigqueryDataset.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetBigqueryDataset(
-      datasetId: map['datasetId'] == null ? null : map['datasetId'] as String,
+      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
     );
   }
 }

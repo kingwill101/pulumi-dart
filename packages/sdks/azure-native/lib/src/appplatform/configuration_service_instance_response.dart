@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of instances belong to the Application Configuration Service
 class ConfigurationServiceInstanceResponse {
   /// Name of the Application Configuration Service instance
-  final String name;
+  final pulumi.Input<String> name;
   /// Status of the Application Configuration Service instance
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ConfigurationServiceInstanceResponse].
   /// [name] Name of the Application Configuration Service instance
@@ -25,8 +26,8 @@ class ConfigurationServiceInstanceResponse {
 
   factory ConfigurationServiceInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceInstanceResponse(
-      name: map['name'] as String,
-      status: map['status'] as String,
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

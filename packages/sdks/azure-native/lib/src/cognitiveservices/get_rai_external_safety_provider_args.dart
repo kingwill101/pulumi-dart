@@ -13,9 +13,8 @@ class GetRaiExternalSafetyProviderArgs {
   /// Creates a new [GetRaiExternalSafetyProviderArgs].
   /// [safetyProviderName] The name of the Rai External Safety Provider associated with the Cognitive Services Account
   GetRaiExternalSafetyProviderArgs({
-    required pulumi.Output<String> safetyProviderName,
-  }) :
-      safetyProviderName = pulumi.Input.asInput<String>(safetyProviderName);
+    required this.safetyProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRaiExternalSafetyProviderArgs {
 
   factory GetRaiExternalSafetyProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiExternalSafetyProviderArgs(
-      safetyProviderName: pulumi.Output.create<String>(map['safetyProviderName'] as String),
+      safetyProviderName: (map['safetyProviderName'] as String).input(),
     );
   }
 }

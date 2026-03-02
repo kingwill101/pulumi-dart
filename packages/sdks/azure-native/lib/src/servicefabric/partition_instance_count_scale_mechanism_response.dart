@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a scaling mechanism for adding or removing instances of stateless service partition.
 class PartitionInstanceCountScaleMechanismResponse {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'ScalePartitionInstanceCount'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Maximum number of instances of the partition.
-  final int maxInstanceCount;
+  final pulumi.Input<int> maxInstanceCount;
   /// Minimum number of instances of the partition.
-  final int minInstanceCount;
+  final pulumi.Input<int> minInstanceCount;
   /// The number of instances to add or remove during a scaling operation.
-  final int scaleIncrement;
+  final pulumi.Input<int> scaleIncrement;
 
   /// Creates a new [PartitionInstanceCountScaleMechanismResponse].
   /// [kind] Enumerates the ways that a service can be partitioned.
@@ -36,10 +37,10 @@ class PartitionInstanceCountScaleMechanismResponse {
 
   factory PartitionInstanceCountScaleMechanismResponse.fromMap(Map<String, dynamic> map) {
     return PartitionInstanceCountScaleMechanismResponse(
-      kind: map['kind'] as String,
-      maxInstanceCount: map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] as int,
-      scaleIncrement: map['scaleIncrement'] as int,
+      kind: (map['kind'] as String).input(),
+      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
+      minInstanceCount: (map['minInstanceCount'] as int).input(),
+      scaleIncrement: (map['scaleIncrement'] as int).input(),
     );
   }
 }

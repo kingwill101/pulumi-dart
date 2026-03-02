@@ -57,33 +57,20 @@ class UserState {
   /// [password] The password for the user.
   /// [region] The region in which to obtain the V3 Keystone client.
   UserState({
-    pulumi.Output<String>? defaultProjectId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<Map<String, String>>? extra,
-    pulumi.Output<bool>? ignoreChangePasswordUponFirstUse,
-    pulumi.Output<bool>? ignoreLockoutFailureAttempts,
-    pulumi.Output<bool>? ignorePasswordExpiry,
-    pulumi.Output<bool>? multiFactorAuthEnabled,
-    pulumi.Output<List<UserMultiFactorAuthRule>>? multiFactorAuthRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-  }) :
-      defaultProjectId = pulumi.Input.asOptionalInput<String>(defaultProjectId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      extra = pulumi.Input.asOptionalInput<Map<String, String>>(extra),
-      ignoreChangePasswordUponFirstUse = pulumi.Input.asOptionalInput<bool>(ignoreChangePasswordUponFirstUse),
-      ignoreLockoutFailureAttempts = pulumi.Input.asOptionalInput<bool>(ignoreLockoutFailureAttempts),
-      ignorePasswordExpiry = pulumi.Input.asOptionalInput<bool>(ignorePasswordExpiry),
-      multiFactorAuthEnabled = pulumi.Input.asOptionalInput<bool>(multiFactorAuthEnabled),
-      multiFactorAuthRules = pulumi.Input.asOptionalInput<List<UserMultiFactorAuthRule>>(multiFactorAuthRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.defaultProjectId,
+    this.description,
+    this.domainId,
+    this.enabled,
+    this.extra,
+    this.ignoreChangePasswordUponFirstUse,
+    this.ignoreLockoutFailureAttempts,
+    this.ignorePasswordExpiry,
+    this.multiFactorAuthEnabled,
+    this.multiFactorAuthRules,
+    this.name,
+    this.password,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      defaultProjectId: map['defaultProjectId'] == null ? null : pulumi.Output.create<String>(map['defaultProjectId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      extra: map['extra'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extra'] as Map).cast<String, String>()),
-      ignoreChangePasswordUponFirstUse: map['ignoreChangePasswordUponFirstUse'] == null ? null : pulumi.Output.create<bool>(map['ignoreChangePasswordUponFirstUse'] as bool),
-      ignoreLockoutFailureAttempts: map['ignoreLockoutFailureAttempts'] == null ? null : pulumi.Output.create<bool>(map['ignoreLockoutFailureAttempts'] as bool),
-      ignorePasswordExpiry: map['ignorePasswordExpiry'] == null ? null : pulumi.Output.create<bool>(map['ignorePasswordExpiry'] as bool),
-      multiFactorAuthEnabled: map['multiFactorAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['multiFactorAuthEnabled'] as bool),
-      multiFactorAuthRules: map['multiFactorAuthRules'] == null ? null : pulumi.Output.create<List<UserMultiFactorAuthRule>>(pulumi.Input.decodeList<UserMultiFactorAuthRule>(map['multiFactorAuthRules'], (value) => UserMultiFactorAuthRule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      defaultProjectId: map['defaultProjectId'] == null ? null : (map['defaultProjectId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, String>()).input(),
+      ignoreChangePasswordUponFirstUse: map['ignoreChangePasswordUponFirstUse'] == null ? null : (map['ignoreChangePasswordUponFirstUse'] as bool).input(),
+      ignoreLockoutFailureAttempts: map['ignoreLockoutFailureAttempts'] == null ? null : (map['ignoreLockoutFailureAttempts'] as bool).input(),
+      ignorePasswordExpiry: map['ignorePasswordExpiry'] == null ? null : (map['ignorePasswordExpiry'] as bool).input(),
+      multiFactorAuthEnabled: map['multiFactorAuthEnabled'] == null ? null : (map['multiFactorAuthEnabled'] as bool).input(),
+      multiFactorAuthRules: map['multiFactorAuthRules'] == null ? null : (pulumi.Input.decodeList<UserMultiFactorAuthRule>(map['multiFactorAuthRules'], (value) => UserMultiFactorAuthRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

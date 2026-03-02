@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFhirServiceAuthentication {
   /// The intended audience to receive authentication tokens for the service. The default value is `https://<name>.fhir.azurehealthcareapis.com`.
-  final String audience;
+  final pulumi.Input<String> audience;
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
   /// Authority must be registered to Azure AD and in the following format: <https://{Azure-AD-endpoint}/{tenant-id>}.
-  final String authority;
-  final bool smartProxyEnabled;
+  final pulumi.Input<String> authority;
+  final pulumi.Input<bool> smartProxyEnabled;
 
   /// Creates a new [GetFhirServiceAuthentication].
   /// [audience] The intended audience to receive authentication tokens for the service. The default value is `https://<name>.fhir.azurehealthcareapis.com`.
@@ -29,9 +30,9 @@ class GetFhirServiceAuthentication {
 
   factory GetFhirServiceAuthentication.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceAuthentication(
-      audience: map['audience'] as String,
-      authority: map['authority'] as String,
-      smartProxyEnabled: map['smartProxyEnabled'] as bool,
+      audience: (map['audience'] as String).input(),
+      authority: (map['authority'] as String).input(),
+      smartProxyEnabled: (map['smartProxyEnabled'] as bool).input(),
     );
   }
 }

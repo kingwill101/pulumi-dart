@@ -42,29 +42,18 @@ class GrantState {
   /// [retireOnDelete] If set to false (the default) the grants will be revoked upon deletion, and if set to true the grants will try to be retired upon deletion. Note that retiring grants requires special permissions, hence why we default to revoking grants.
   /// [retiringPrincipal] The principal that is given permission to retire the grant by using RetireGrant operation in ARN format. Note that due to eventual consistency issues around IAM principals, the providers's state may not always be refreshed to reflect what is true in AWS.
   GrantState({
-    pulumi.Output<List<GrantConstraint>>? constraints,
-    pulumi.Output<List<String>>? grantCreationTokens,
-    pulumi.Output<String>? grantId,
-    pulumi.Output<String>? grantToken,
-    pulumi.Output<String>? granteePrincipal,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? operations,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? retireOnDelete,
-    pulumi.Output<String>? retiringPrincipal,
-  }) :
-      constraints = pulumi.Input.asOptionalInput<List<GrantConstraint>>(constraints),
-      grantCreationTokens = pulumi.Input.asOptionalInput<List<String>>(grantCreationTokens),
-      grantId = pulumi.Input.asOptionalInput<String>(grantId),
-      grantToken = pulumi.Input.asOptionalInput<String>(grantToken),
-      granteePrincipal = pulumi.Input.asOptionalInput<String>(granteePrincipal),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operations = pulumi.Input.asOptionalInput<List<String>>(operations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retireOnDelete = pulumi.Input.asOptionalInput<bool>(retireOnDelete),
-      retiringPrincipal = pulumi.Input.asOptionalInput<String>(retiringPrincipal);
+    this.constraints,
+    this.grantCreationTokens,
+    this.grantId,
+    this.grantToken,
+    this.granteePrincipal,
+    this.keyId,
+    this.name,
+    this.operations,
+    this.region,
+    this.retireOnDelete,
+    this.retiringPrincipal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class GrantState {
 
   factory GrantState.fromMap(Map<String, dynamic> map) {
     return GrantState(
-      constraints: map['constraints'] == null ? null : pulumi.Output.create<List<GrantConstraint>>(pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))),
-      grantCreationTokens: map['grantCreationTokens'] == null ? null : pulumi.Output.create<List<String>>((map['grantCreationTokens'] as List).cast<String>()),
-      grantId: map['grantId'] == null ? null : pulumi.Output.create<String>(map['grantId'] as String),
-      grantToken: map['grantToken'] == null ? null : pulumi.Output.create<String>(map['grantToken'] as String),
-      granteePrincipal: map['granteePrincipal'] == null ? null : pulumi.Output.create<String>(map['granteePrincipal'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operations: map['operations'] == null ? null : pulumi.Output.create<List<String>>((map['operations'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retireOnDelete: map['retireOnDelete'] == null ? null : pulumi.Output.create<bool>(map['retireOnDelete'] as bool),
-      retiringPrincipal: map['retiringPrincipal'] == null ? null : pulumi.Output.create<String>(map['retiringPrincipal'] as String),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grantCreationTokens: map['grantCreationTokens'] == null ? null : ((map['grantCreationTokens'] as List).cast<String>()).input(),
+      grantId: map['grantId'] == null ? null : (map['grantId'] as String).input(),
+      grantToken: map['grantToken'] == null ? null : (map['grantToken'] as String).input(),
+      granteePrincipal: map['granteePrincipal'] == null ? null : (map['granteePrincipal'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operations: map['operations'] == null ? null : ((map['operations'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retireOnDelete: map['retireOnDelete'] == null ? null : (map['retireOnDelete'] as bool).input(),
+      retiringPrincipal: map['retiringPrincipal'] == null ? null : (map['retiringPrincipal'] as String).input(),
     );
   }
 }

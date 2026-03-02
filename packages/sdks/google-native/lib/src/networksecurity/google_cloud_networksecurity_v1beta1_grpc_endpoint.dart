@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification of the GRPC Endpoint.
 class GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
   /// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-  final String targetUri;
+  final pulumi.Input<String> targetUri;
 
   /// Creates a new [GoogleCloudNetworksecurityV1beta1GrpcEndpoint].
   /// [targetUri] The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
@@ -20,7 +21,7 @@ class GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
 
   factory GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudNetworksecurityV1beta1GrpcEndpoint(
-      targetUri: map['targetUri'] as String,
+      targetUri: (map['targetUri'] as String).input(),
     );
   }
 }

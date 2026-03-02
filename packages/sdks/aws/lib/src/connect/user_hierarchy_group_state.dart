@@ -39,27 +39,17 @@ class UserHierarchyGroupState {
   /// [tags] Tags to apply to the hierarchy group. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   UserHierarchyGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? hierarchyGroupId,
-    pulumi.Output<List<UserHierarchyGroupHierarchyPath>>? hierarchyPaths,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? levelId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentGroupId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      hierarchyGroupId = pulumi.Input.asOptionalInput<String>(hierarchyGroupId),
-      hierarchyPaths = pulumi.Input.asOptionalInput<List<UserHierarchyGroupHierarchyPath>>(hierarchyPaths),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      levelId = pulumi.Input.asOptionalInput<String>(levelId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentGroupId = pulumi.Input.asOptionalInput<String>(parentGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.hierarchyGroupId,
+    this.hierarchyPaths,
+    this.instanceId,
+    this.levelId,
+    this.name,
+    this.parentGroupId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class UserHierarchyGroupState {
 
   factory UserHierarchyGroupState.fromMap(Map<String, dynamic> map) {
     return UserHierarchyGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : pulumi.Output.create<String>(map['hierarchyGroupId'] as String),
-      hierarchyPaths: map['hierarchyPaths'] == null ? null : pulumi.Output.create<List<UserHierarchyGroupHierarchyPath>>(pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(map['hierarchyPaths'], (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      levelId: map['levelId'] == null ? null : pulumi.Output.create<String>(map['levelId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentGroupId: map['parentGroupId'] == null ? null : pulumi.Output.create<String>(map['parentGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
+      hierarchyPaths: map['hierarchyPaths'] == null ? null : (pulumi.Input.decodeList<UserHierarchyGroupHierarchyPath>(map['hierarchyPaths'], (value) => UserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      levelId: map['levelId'] == null ? null : (map['levelId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentGroupId: map['parentGroupId'] == null ? null : (map['parentGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

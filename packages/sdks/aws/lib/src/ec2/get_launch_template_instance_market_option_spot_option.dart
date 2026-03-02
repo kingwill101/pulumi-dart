@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateInstanceMarketOptionSpotOption {
-  final int blockDurationMinutes;
-  final String instanceInterruptionBehavior;
-  final String maxPrice;
-  final String spotInstanceType;
-  final String validUntil;
+  final pulumi.Input<int> blockDurationMinutes;
+  final pulumi.Input<String> instanceInterruptionBehavior;
+  final pulumi.Input<String> maxPrice;
+  final pulumi.Input<String> spotInstanceType;
+  final pulumi.Input<String> validUntil;
 
   /// Creates a new [GetLaunchTemplateInstanceMarketOptionSpotOption].
   /// [blockDurationMinutes] Required.
@@ -34,11 +35,11 @@ class GetLaunchTemplateInstanceMarketOptionSpotOption {
 
   factory GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOptionSpotOption(
-      blockDurationMinutes: map['blockDurationMinutes'] as int,
-      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] as String,
-      maxPrice: map['maxPrice'] as String,
-      spotInstanceType: map['spotInstanceType'] as String,
-      validUntil: map['validUntil'] as String,
+      blockDurationMinutes: (map['blockDurationMinutes'] as int).input(),
+      instanceInterruptionBehavior: (map['instanceInterruptionBehavior'] as String).input(),
+      maxPrice: (map['maxPrice'] as String).input(),
+      spotInstanceType: (map['spotInstanceType'] as String).input(),
+      validUntil: (map['validUntil'] as String).input(),
     );
   }
 }

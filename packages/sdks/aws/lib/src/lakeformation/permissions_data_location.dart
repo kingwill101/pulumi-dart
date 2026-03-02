@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PermissionsDataLocation {
   /// Amazon Resource Name (ARN) that uniquely identifies the data location resource.
   ///
   /// The following argument is optional:
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Identifier for the Data Catalog where the location is registered with Lake Formation. By default, it is the account ID of the caller.
-  final String? catalogId;
+  final pulumi.Input<String>? catalogId;
 
   /// Creates a new [PermissionsDataLocation].
   /// [arn] Amazon Resource Name (ARN) that uniquely identifies the data location resource.
@@ -26,8 +27,8 @@ class PermissionsDataLocation {
 
   factory PermissionsDataLocation.fromMap(Map<String, dynamic> map) {
     return PermissionsDataLocation(
-      arn: map['arn'] as String,
-      catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
+      arn: (map['arn'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
     );
   }
 }

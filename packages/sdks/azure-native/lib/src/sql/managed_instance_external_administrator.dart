@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a active directory administrator.
 class ManagedInstanceExternalAdministrator {
   /// Type of the sever administrator.
-  final String? administratorType;
+  final pulumi.Input<String>? administratorType;
   /// Azure Active Directory only Authentication enabled.
-  final bool? azureADOnlyAuthentication;
+  final pulumi.Input<bool>? azureADOnlyAuthentication;
   /// Login name of the server administrator.
-  final String? login;
+  final pulumi.Input<String>? login;
   /// Principal Type of the sever administrator.
-  final String? principalType;
+  final pulumi.Input<String>? principalType;
   /// SID (object ID) of the server administrator.
-  final String? sid;
+  final pulumi.Input<String>? sid;
   /// Tenant ID of the administrator.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [ManagedInstanceExternalAdministrator].
   /// [administratorType] Type of the sever administrator.
@@ -45,12 +46,12 @@ class ManagedInstanceExternalAdministrator {
 
   factory ManagedInstanceExternalAdministrator.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceExternalAdministrator(
-      administratorType: map['administratorType'] == null ? null : map['administratorType'] as String,
-      azureADOnlyAuthentication: map['azureADOnlyAuthentication'] == null ? null : map['azureADOnlyAuthentication'] as bool,
-      login: map['login'] == null ? null : map['login'] as String,
-      principalType: map['principalType'] == null ? null : map['principalType'] as String,
-      sid: map['sid'] == null ? null : map['sid'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
+      azureADOnlyAuthentication: map['azureADOnlyAuthentication'] == null ? null : (map['azureADOnlyAuthentication'] as bool).input(),
+      login: map['login'] == null ? null : (map['login'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

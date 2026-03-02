@@ -1,46 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Volume Export Policy Rule
 class ExportPolicyRule {
   /// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
-  final String? allowedClients;
+  final pulumi.Input<String>? allowedClients;
   /// This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
-  final String? chownMode;
+  final pulumi.Input<String>? chownMode;
   /// Allows CIFS protocol
-  final bool? cifs;
+  final pulumi.Input<bool>? cifs;
   /// Has root access to volume
-  final bool? hasRootAccess;
+  final pulumi.Input<bool>? hasRootAccess;
   /// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5IReadOnly;
+  final pulumi.Input<bool>? kerberos5IReadOnly;
   /// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5IReadWrite;
+  final pulumi.Input<bool>? kerberos5IReadWrite;
   /// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5PReadOnly;
+  final pulumi.Input<bool>? kerberos5PReadOnly;
   /// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5PReadWrite;
+  final pulumi.Input<bool>? kerberos5PReadWrite;
   /// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5ReadOnly;
+  final pulumi.Input<bool>? kerberos5ReadOnly;
   /// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5ReadWrite;
+  final pulumi.Input<bool>? kerberos5ReadWrite;
   /// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5iReadOnly;
+  final pulumi.Input<bool>? kerberos5iReadOnly;
   /// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5iReadWrite;
+  final pulumi.Input<bool>? kerberos5iReadWrite;
   /// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5pReadOnly;
+  final pulumi.Input<bool>? kerberos5pReadOnly;
   /// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-  final bool? kerberos5pReadWrite;
+  final pulumi.Input<bool>? kerberos5pReadWrite;
   /// Allows NFSv3 protocol. Enable only for NFSv3 type volumes
-  final bool? nfsv3;
+  final pulumi.Input<bool>? nfsv3;
   /// Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
-  final bool? nfsv41;
+  final pulumi.Input<bool>? nfsv41;
   /// Order index
-  final int? ruleIndex;
+  final pulumi.Input<int>? ruleIndex;
   /// Read only access
-  final bool? unixReadOnly;
+  final pulumi.Input<bool>? unixReadOnly;
   /// Read and write access
-  final bool? unixReadWrite;
+  final pulumi.Input<bool>? unixReadWrite;
 
   /// Creates a new [ExportPolicyRule].
   /// [allowedClients] Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -110,25 +111,25 @@ class ExportPolicyRule {
 
   factory ExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return ExportPolicyRule(
-      allowedClients: map['allowedClients'] == null ? null : map['allowedClients'] as String,
-      chownMode: map['chownMode'] == null ? null : map['chownMode'] as String,
-      cifs: map['cifs'] == null ? null : map['cifs'] as bool,
-      hasRootAccess: map['hasRootAccess'] == null ? null : map['hasRootAccess'] as bool,
-      kerberos5IReadOnly: map['kerberos5IReadOnly'] == null ? null : map['kerberos5IReadOnly'] as bool,
-      kerberos5IReadWrite: map['kerberos5IReadWrite'] == null ? null : map['kerberos5IReadWrite'] as bool,
-      kerberos5PReadOnly: map['kerberos5PReadOnly'] == null ? null : map['kerberos5PReadOnly'] as bool,
-      kerberos5PReadWrite: map['kerberos5PReadWrite'] == null ? null : map['kerberos5PReadWrite'] as bool,
-      kerberos5ReadOnly: map['kerberos5ReadOnly'] == null ? null : map['kerberos5ReadOnly'] as bool,
-      kerberos5ReadWrite: map['kerberos5ReadWrite'] == null ? null : map['kerberos5ReadWrite'] as bool,
-      kerberos5iReadOnly: map['kerberos5iReadOnly'] == null ? null : map['kerberos5iReadOnly'] as bool,
-      kerberos5iReadWrite: map['kerberos5iReadWrite'] == null ? null : map['kerberos5iReadWrite'] as bool,
-      kerberos5pReadOnly: map['kerberos5pReadOnly'] == null ? null : map['kerberos5pReadOnly'] as bool,
-      kerberos5pReadWrite: map['kerberos5pReadWrite'] == null ? null : map['kerberos5pReadWrite'] as bool,
-      nfsv3: map['nfsv3'] == null ? null : map['nfsv3'] as bool,
-      nfsv41: map['nfsv41'] == null ? null : map['nfsv41'] as bool,
-      ruleIndex: map['ruleIndex'] == null ? null : map['ruleIndex'] as int,
-      unixReadOnly: map['unixReadOnly'] == null ? null : map['unixReadOnly'] as bool,
-      unixReadWrite: map['unixReadWrite'] == null ? null : map['unixReadWrite'] as bool,
+      allowedClients: map['allowedClients'] == null ? null : (map['allowedClients'] as String).input(),
+      chownMode: map['chownMode'] == null ? null : (map['chownMode'] as String).input(),
+      cifs: map['cifs'] == null ? null : (map['cifs'] as bool).input(),
+      hasRootAccess: map['hasRootAccess'] == null ? null : (map['hasRootAccess'] as bool).input(),
+      kerberos5IReadOnly: map['kerberos5IReadOnly'] == null ? null : (map['kerberos5IReadOnly'] as bool).input(),
+      kerberos5IReadWrite: map['kerberos5IReadWrite'] == null ? null : (map['kerberos5IReadWrite'] as bool).input(),
+      kerberos5PReadOnly: map['kerberos5PReadOnly'] == null ? null : (map['kerberos5PReadOnly'] as bool).input(),
+      kerberos5PReadWrite: map['kerberos5PReadWrite'] == null ? null : (map['kerberos5PReadWrite'] as bool).input(),
+      kerberos5ReadOnly: map['kerberos5ReadOnly'] == null ? null : (map['kerberos5ReadOnly'] as bool).input(),
+      kerberos5ReadWrite: map['kerberos5ReadWrite'] == null ? null : (map['kerberos5ReadWrite'] as bool).input(),
+      kerberos5iReadOnly: map['kerberos5iReadOnly'] == null ? null : (map['kerberos5iReadOnly'] as bool).input(),
+      kerberos5iReadWrite: map['kerberos5iReadWrite'] == null ? null : (map['kerberos5iReadWrite'] as bool).input(),
+      kerberos5pReadOnly: map['kerberos5pReadOnly'] == null ? null : (map['kerberos5pReadOnly'] as bool).input(),
+      kerberos5pReadWrite: map['kerberos5pReadWrite'] == null ? null : (map['kerberos5pReadWrite'] as bool).input(),
+      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3'] as bool).input(),
+      nfsv41: map['nfsv41'] == null ? null : (map['nfsv41'] as bool).input(),
+      ruleIndex: map['ruleIndex'] == null ? null : (map['ruleIndex'] as int).input(),
+      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly'] as bool).input(),
+      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite'] as bool).input(),
     );
   }
 }

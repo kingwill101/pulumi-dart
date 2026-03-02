@@ -13,148 +13,148 @@ import 'vmnic_details_response.dart';
 /// InMageAzureV2 provider specific settings.
 class InMageAzureV2ReplicationDetailsResponse {
   /// Agent expiry date.
-  final String? agentExpiryDate;
+  final pulumi.Input<String>? agentExpiryDate;
   /// The agent version.
-  final String? agentVersion;
+  final pulumi.Input<String>? agentVersion;
   /// A value indicating all available inplace OS Upgrade configurations.
-  final List<OSUpgradeSupportedVersionsResponse>? allAvailableOSUpgradeConfigurations;
+  final pulumi.Input<List<OSUpgradeSupportedVersionsResponse>>? allAvailableOSUpgradeConfigurations;
   /// Azure VM Disk details.
-  final List<AzureVmDiskDetailsResponse>? azureVMDiskDetails;
+  final pulumi.Input<List<AzureVmDiskDetailsResponse>>? azureVMDiskDetails;
   /// The target generation for this protected item.
-  final String? azureVmGeneration;
+  final pulumi.Input<String>? azureVmGeneration;
   /// The compressed data change rate in MB.
-  final double? compressedDataRateInMB;
+  final pulumi.Input<double>? compressedDataRateInMB;
   /// The datastores of the on-premise machine. Value can be list of strings that contain datastore names.
-  final List<String>? datastores;
+  final pulumi.Input<List<String>>? datastores;
   /// A value indicating the discovery type of the machine. Value can be vCenter or physical.
-  final String? discoveryType;
+  final pulumi.Input<String>? discoveryType;
   /// A value indicating whether any disk is resized for this VM.
-  final String? diskResized;
+  final pulumi.Input<String>? diskResized;
   /// The selected option to enable RDP\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
-  final String? enableRdpOnTargetOption;
+  final pulumi.Input<String>? enableRdpOnTargetOption;
   /// The firmware type of this protected item.
-  final String? firmwareType;
+  final pulumi.Input<String>? firmwareType;
   /// The infrastructure VM Id.
-  final String? infrastructureVmId;
+  final pulumi.Input<String>? infrastructureVmId;
   /// Gets the Instance type.
   /// Expected value is 'InMageAzureV2'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The source IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// A value indicating whether additional IR stats are available or not.
-  final bool? isAdditionalStatsAvailable;
+  final pulumi.Input<bool>? isAdditionalStatsAvailable;
   /// A value indicating whether installed agent needs to be updated.
-  final String? isAgentUpdateRequired;
+  final pulumi.Input<String>? isAgentUpdateRequired;
   /// A value indicating whether the source server requires a restart after update.
-  final String? isRebootAfterUpdateRequired;
+  final pulumi.Input<String>? isRebootAfterUpdateRequired;
   /// The last heartbeat received from the source server.
-  final String? lastHeartbeat;
+  final pulumi.Input<String>? lastHeartbeat;
   /// The last recovery point received time.
-  final String lastRecoveryPointReceived;
+  final pulumi.Input<String> lastRecoveryPointReceived;
   /// The last RPO calculated time.
-  final String? lastRpoCalculatedTime;
+  final pulumi.Input<String>? lastRpoCalculatedTime;
   /// The last update time received from on-prem components.
-  final String? lastUpdateReceivedTime;
+  final pulumi.Input<String>? lastUpdateReceivedTime;
   /// License Type of the VM to be used.
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// The master target Id.
-  final String? masterTargetId;
+  final pulumi.Input<String>? masterTargetId;
   /// The multi vm group Id.
-  final String? multiVmGroupId;
+  final pulumi.Input<String>? multiVmGroupId;
   /// The multi vm group name.
-  final String? multiVmGroupName;
+  final pulumi.Input<String>? multiVmGroupName;
   /// A value indicating whether multi vm sync is enabled or disabled.
-  final String? multiVmSyncStatus;
+  final pulumi.Input<String>? multiVmSyncStatus;
   /// The id of the disk containing the OS.
-  final String? osDiskId;
+  final pulumi.Input<String>? osDiskId;
   /// The name of the OS on the VM.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// The type of the OS on the VM.
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// The OS Version of the protected item.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
   /// The process server Id.
-  final String? processServerId;
+  final pulumi.Input<String>? processServerId;
   /// The process server name.
-  final String? processServerName;
+  final pulumi.Input<String>? processServerName;
   /// The list of protected disks.
-  final List<InMageAzureV2ProtectedDiskDetailsResponse>? protectedDisks;
+  final pulumi.Input<List<InMageAzureV2ProtectedDiskDetailsResponse>>? protectedDisks;
   /// The list of protected managed disks.
-  final List<InMageAzureV2ManagedDiskDetailsResponse>? protectedManagedDisks;
+  final pulumi.Input<List<InMageAzureV2ManagedDiskDetailsResponse>>? protectedManagedDisks;
   /// The protection stage.
-  final String? protectionStage;
+  final pulumi.Input<String>? protectionStage;
   /// The recovery availability set Id.
-  final String? recoveryAvailabilitySetId;
+  final pulumi.Input<String>? recoveryAvailabilitySetId;
   /// The ARM id of the log storage account used for replication. This will be set to null if no log storage account was provided during enable protection.
-  final String? recoveryAzureLogStorageAccountId;
+  final pulumi.Input<String>? recoveryAzureLogStorageAccountId;
   /// The target resource group Id.
-  final String? recoveryAzureResourceGroupId;
+  final pulumi.Input<String>? recoveryAzureResourceGroupId;
   /// The recovery Azure storage account.
-  final String? recoveryAzureStorageAccount;
+  final pulumi.Input<String>? recoveryAzureStorageAccount;
   /// Recovery Azure given name.
-  final String? recoveryAzureVMName;
+  final pulumi.Input<String>? recoveryAzureVMName;
   /// The Recovery Azure VM size.
-  final String? recoveryAzureVMSize;
+  final pulumi.Input<String>? recoveryAzureVMSize;
   /// The replica id of the protected item.
-  final String? replicaId;
+  final pulumi.Input<String>? replicaId;
   /// The resync progress percentage.
-  final int? resyncProgressPercentage;
+  final pulumi.Input<int>? resyncProgressPercentage;
   /// The RPO in seconds.
-  final double? rpoInSeconds;
+  final pulumi.Input<double>? rpoInSeconds;
   /// The tags for the seed managed disks.
-  final Map<String, String>? seedManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? seedManagedDiskTags;
   /// The selected recovery azure network Id.
-  final String? selectedRecoveryAzureNetworkId;
+  final pulumi.Input<String>? selectedRecoveryAzureNetworkId;
   /// The selected source nic Id which will be used as the primary nic during failover.
-  final String? selectedSourceNicId;
+  final pulumi.Input<String>? selectedSourceNicId;
   /// The test failover virtual network.
-  final String? selectedTfoAzureNetworkId;
+  final pulumi.Input<String>? selectedTfoAzureNetworkId;
   /// The CPU count of the VM on the primary side.
-  final int? sourceVmCpuCount;
+  final pulumi.Input<int>? sourceVmCpuCount;
   /// The RAM size of the VM on the primary side.
-  final int? sourceVmRamSizeInMB;
+  final pulumi.Input<int>? sourceVmRamSizeInMB;
   /// The SQL Server license type.
-  final String? sqlServerLicenseType;
+  final pulumi.Input<String>? sqlServerLicenseType;
   /// A value indicating the inplace OS Upgrade version.
-  final List<String>? supportedOSVersions;
+  final pulumi.Input<List<String>>? supportedOSVersions;
   /// The switch provider blocking error information.
-  final List<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse>? switchProviderBlockingErrorDetails;
+  final pulumi.Input<List<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse>>? switchProviderBlockingErrorDetails;
   /// The switch provider blocking error information.
-  final InMageAzureV2SwitchProviderDetailsResponse? switchProviderDetails;
+  final pulumi.Input<InMageAzureV2SwitchProviderDetailsResponse>? switchProviderDetails;
   /// The target availability zone.
-  final String? targetAvailabilityZone;
+  final pulumi.Input<String>? targetAvailabilityZone;
   /// The tags for the target managed disks.
-  final Map<String, String>? targetManagedDiskTags;
+  final pulumi.Input<Map<String, String>>? targetManagedDiskTags;
   /// The tags for the target NICs.
-  final Map<String, String>? targetNicTags;
+  final pulumi.Input<Map<String, String>>? targetNicTags;
   /// The target proximity placement group Id.
-  final String? targetProximityPlacementGroupId;
+  final pulumi.Input<String>? targetProximityPlacementGroupId;
   /// The ARM Id of the target Azure VM. This value will be null until the VM is failed over. Only after failure it will be populated with the ARM Id of the Azure VM.
-  final String? targetVmId;
+  final pulumi.Input<String>? targetVmId;
   /// The target VM tags.
-  final Map<String, String>? targetVmTags;
+  final pulumi.Input<Map<String, String>>? targetVmTags;
   /// The total transferred data in bytes.
-  final double? totalDataTransferred;
+  final pulumi.Input<double>? totalDataTransferred;
   /// The progress health.
-  final String? totalProgressHealth;
+  final pulumi.Input<String>? totalProgressHealth;
   /// The uncompressed data change rate in MB.
-  final double? uncompressedDataRateInMB;
+  final pulumi.Input<double>? uncompressedDataRateInMB;
   /// A value indicating whether managed disks should be used during failover.
-  final String? useManagedDisks;
+  final pulumi.Input<String>? useManagedDisks;
   /// The vCenter infrastructure Id.
-  final String? vCenterInfrastructureId;
+  final pulumi.Input<String>? vCenterInfrastructureId;
   /// The validation errors of the on-premise machine Value can be list of validation errors.
-  final List<HealthErrorResponse>? validationErrors;
+  final pulumi.Input<List<HealthErrorResponse>>? validationErrors;
   /// The OS disk VHD name.
-  final String? vhdName;
+  final pulumi.Input<String>? vhdName;
   /// The virtual machine Id.
-  final String? vmId;
+  final pulumi.Input<String>? vmId;
   /// The PE Network details.
-  final List<VMNicDetailsResponse>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
   /// The protection state for the vm.
-  final String? vmProtectionState;
+  final pulumi.Input<String>? vmProtectionState;
   /// The protection state description for the vm.
-  final String? vmProtectionStateDescription;
+  final pulumi.Input<String>? vmProtectionStateDescription;
 
   /// Creates a new [InMageAzureV2ReplicationDetailsResponse].
   /// [agentExpiryDate] Agent expiry date.
@@ -306,8 +306,8 @@ class InMageAzureV2ReplicationDetailsResponse {
     return <String, dynamic>{
       'agentExpiryDate': ?agentExpiryDate,
       'agentVersion': ?agentVersion,
-      'allAvailableOSUpgradeConfigurations': ?allAvailableOSUpgradeConfigurations == null ? null : pulumi.Input.encodeList<OSUpgradeSupportedVersionsResponse, Map<String, dynamic>>(allAvailableOSUpgradeConfigurations!, (value) => value.toMap()),
-      'azureVMDiskDetails': ?azureVMDiskDetails == null ? null : pulumi.Input.encodeList<AzureVmDiskDetailsResponse, Map<String, dynamic>>(azureVMDiskDetails!, (value) => value.toMap()),
+      'allAvailableOSUpgradeConfigurations': ?pulumi.Input.mapOptionalInputValue<List<OSUpgradeSupportedVersionsResponse>, List<Map<String, dynamic>>>(allAvailableOSUpgradeConfigurations, (value) => pulumi.Input.encodeList<OSUpgradeSupportedVersionsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureVMDiskDetails': ?pulumi.Input.mapOptionalInputValue<List<AzureVmDiskDetailsResponse>, List<Map<String, dynamic>>>(azureVMDiskDetails, (value) => pulumi.Input.encodeList<AzureVmDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'azureVmGeneration': ?azureVmGeneration,
       'compressedDataRateInMB': ?compressedDataRateInMB,
       'datastores': ?datastores,
@@ -336,8 +336,8 @@ class InMageAzureV2ReplicationDetailsResponse {
       'osVersion': ?osVersion,
       'processServerId': ?processServerId,
       'processServerName': ?processServerName,
-      'protectedDisks': ?protectedDisks == null ? null : pulumi.Input.encodeList<InMageAzureV2ProtectedDiskDetailsResponse, Map<String, dynamic>>(protectedDisks!, (value) => value.toMap()),
-      'protectedManagedDisks': ?protectedManagedDisks == null ? null : pulumi.Input.encodeList<InMageAzureV2ManagedDiskDetailsResponse, Map<String, dynamic>>(protectedManagedDisks!, (value) => value.toMap()),
+      'protectedDisks': ?pulumi.Input.mapOptionalInputValue<List<InMageAzureV2ProtectedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedDisks, (value) => pulumi.Input.encodeList<InMageAzureV2ProtectedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protectedManagedDisks': ?pulumi.Input.mapOptionalInputValue<List<InMageAzureV2ManagedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedManagedDisks, (value) => pulumi.Input.encodeList<InMageAzureV2ManagedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protectionStage': ?protectionStage,
       'recoveryAvailabilitySetId': ?recoveryAvailabilitySetId,
       'recoveryAzureLogStorageAccountId': ?recoveryAzureLogStorageAccountId,
@@ -356,8 +356,8 @@ class InMageAzureV2ReplicationDetailsResponse {
       'sourceVmRamSizeInMB': ?sourceVmRamSizeInMB,
       'sqlServerLicenseType': ?sqlServerLicenseType,
       'supportedOSVersions': ?supportedOSVersions,
-      'switchProviderBlockingErrorDetails': ?switchProviderBlockingErrorDetails == null ? null : pulumi.Input.encodeList<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse, Map<String, dynamic>>(switchProviderBlockingErrorDetails!, (value) => value.toMap()),
-      'switchProviderDetails': ?switchProviderDetails == null ? null : switchProviderDetails!.toMap(),
+      'switchProviderBlockingErrorDetails': ?pulumi.Input.mapOptionalInputValue<List<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse>, List<Map<String, dynamic>>>(switchProviderBlockingErrorDetails, (value) => pulumi.Input.encodeList<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'switchProviderDetails': ?pulumi.Input.mapOptionalInputValue<InMageAzureV2SwitchProviderDetailsResponse, Map<String, dynamic>>(switchProviderDetails, (value) => value.toMap()),
       'targetAvailabilityZone': ?targetAvailabilityZone,
       'targetManagedDiskTags': ?targetManagedDiskTags,
       'targetNicTags': ?targetNicTags,
@@ -369,10 +369,10 @@ class InMageAzureV2ReplicationDetailsResponse {
       'uncompressedDataRateInMB': ?uncompressedDataRateInMB,
       'useManagedDisks': ?useManagedDisks,
       'vCenterInfrastructureId': ?vCenterInfrastructureId,
-      'validationErrors': ?validationErrors == null ? null : pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(validationErrors!, (value) => value.toMap()),
+      'validationErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vhdName': ?vhdName,
       'vmId': ?vmId,
-      'vmNics': ?vmNics == null ? null : pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(vmNics!, (value) => value.toMap()),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmProtectionState': ?vmProtectionState,
       'vmProtectionStateDescription': ?vmProtectionStateDescription,
     };
@@ -380,77 +380,77 @@ class InMageAzureV2ReplicationDetailsResponse {
 
   factory InMageAzureV2ReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2ReplicationDetailsResponse(
-      agentExpiryDate: map['agentExpiryDate'] == null ? null : map['agentExpiryDate'] as String,
-      agentVersion: map['agentVersion'] == null ? null : map['agentVersion'] as String,
-      allAvailableOSUpgradeConfigurations: map['allAvailableOSUpgradeConfigurations'] == null ? null : pulumi.Input.decodeList<OSUpgradeSupportedVersionsResponse>(map['allAvailableOSUpgradeConfigurations'], (value) => OSUpgradeSupportedVersionsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureVMDiskDetails: map['azureVMDiskDetails'] == null ? null : pulumi.Input.decodeList<AzureVmDiskDetailsResponse>(map['azureVMDiskDetails'], (value) => AzureVmDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureVmGeneration: map['azureVmGeneration'] == null ? null : map['azureVmGeneration'] as String,
-      compressedDataRateInMB: map['compressedDataRateInMB'] == null ? null : map['compressedDataRateInMB'] as double,
-      datastores: map['datastores'] == null ? null : (map['datastores'] as List).cast<String>(),
-      discoveryType: map['discoveryType'] == null ? null : map['discoveryType'] as String,
-      diskResized: map['diskResized'] == null ? null : map['diskResized'] as String,
-      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : map['enableRdpOnTargetOption'] as String,
-      firmwareType: map['firmwareType'] == null ? null : map['firmwareType'] as String,
-      infrastructureVmId: map['infrastructureVmId'] == null ? null : map['infrastructureVmId'] as String,
-      instanceType: map['instanceType'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      isAdditionalStatsAvailable: map['isAdditionalStatsAvailable'] == null ? null : map['isAdditionalStatsAvailable'] as bool,
-      isAgentUpdateRequired: map['isAgentUpdateRequired'] == null ? null : map['isAgentUpdateRequired'] as String,
-      isRebootAfterUpdateRequired: map['isRebootAfterUpdateRequired'] == null ? null : map['isRebootAfterUpdateRequired'] as String,
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : map['lastHeartbeat'] as String,
-      lastRecoveryPointReceived: map['lastRecoveryPointReceived'] as String,
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : map['lastRpoCalculatedTime'] as String,
-      lastUpdateReceivedTime: map['lastUpdateReceivedTime'] == null ? null : map['lastUpdateReceivedTime'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      masterTargetId: map['masterTargetId'] == null ? null : map['masterTargetId'] as String,
-      multiVmGroupId: map['multiVmGroupId'] == null ? null : map['multiVmGroupId'] as String,
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : map['multiVmGroupName'] as String,
-      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : map['multiVmSyncStatus'] as String,
-      osDiskId: map['osDiskId'] == null ? null : map['osDiskId'] as String,
-      osName: map['osName'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
-      processServerId: map['processServerId'] == null ? null : map['processServerId'] as String,
-      processServerName: map['processServerName'] == null ? null : map['processServerName'] as String,
-      protectedDisks: map['protectedDisks'] == null ? null : pulumi.Input.decodeList<InMageAzureV2ProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => InMageAzureV2ProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : pulumi.Input.decodeList<InMageAzureV2ManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => InMageAzureV2ManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectionStage: map['protectionStage'] == null ? null : map['protectionStage'] as String,
-      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : map['recoveryAvailabilitySetId'] as String,
-      recoveryAzureLogStorageAccountId: map['recoveryAzureLogStorageAccountId'] == null ? null : map['recoveryAzureLogStorageAccountId'] as String,
-      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : map['recoveryAzureResourceGroupId'] as String,
-      recoveryAzureStorageAccount: map['recoveryAzureStorageAccount'] == null ? null : map['recoveryAzureStorageAccount'] as String,
-      recoveryAzureVMName: map['recoveryAzureVMName'] == null ? null : map['recoveryAzureVMName'] as String,
-      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : map['recoveryAzureVMSize'] as String,
-      replicaId: map['replicaId'] == null ? null : map['replicaId'] as String,
-      resyncProgressPercentage: map['resyncProgressPercentage'] == null ? null : map['resyncProgressPercentage'] as int,
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : map['rpoInSeconds'] as double,
-      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : (map['seedManagedDiskTags'] as Map).cast<String, String>(),
-      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : map['selectedRecoveryAzureNetworkId'] as String,
-      selectedSourceNicId: map['selectedSourceNicId'] == null ? null : map['selectedSourceNicId'] as String,
-      selectedTfoAzureNetworkId: map['selectedTfoAzureNetworkId'] == null ? null : map['selectedTfoAzureNetworkId'] as String,
-      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : map['sourceVmCpuCount'] as int,
-      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : map['sourceVmRamSizeInMB'] as int,
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : map['sqlServerLicenseType'] as String,
-      supportedOSVersions: map['supportedOSVersions'] == null ? null : (map['supportedOSVersions'] as List).cast<String>(),
-      switchProviderBlockingErrorDetails: map['switchProviderBlockingErrorDetails'] == null ? null : pulumi.Input.decodeList<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse>(map['switchProviderBlockingErrorDetails'], (value) => InMageAzureV2SwitchProviderBlockingErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      switchProviderDetails: map['switchProviderDetails'] == null ? null : InMageAzureV2SwitchProviderDetailsResponse.fromMap((map['switchProviderDetails'] as Map).cast<String, dynamic>()),
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : map['targetAvailabilityZone'] as String,
-      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : (map['targetManagedDiskTags'] as Map).cast<String, String>(),
-      targetNicTags: map['targetNicTags'] == null ? null : (map['targetNicTags'] as Map).cast<String, String>(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : map['targetProximityPlacementGroupId'] as String,
-      targetVmId: map['targetVmId'] == null ? null : map['targetVmId'] as String,
-      targetVmTags: map['targetVmTags'] == null ? null : (map['targetVmTags'] as Map).cast<String, String>(),
-      totalDataTransferred: map['totalDataTransferred'] == null ? null : map['totalDataTransferred'] as double,
-      totalProgressHealth: map['totalProgressHealth'] == null ? null : map['totalProgressHealth'] as String,
-      uncompressedDataRateInMB: map['uncompressedDataRateInMB'] == null ? null : map['uncompressedDataRateInMB'] as double,
-      useManagedDisks: map['useManagedDisks'] == null ? null : map['useManagedDisks'] as String,
-      vCenterInfrastructureId: map['vCenterInfrastructureId'] == null ? null : map['vCenterInfrastructureId'] as String,
-      validationErrors: map['validationErrors'] == null ? null : pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vhdName: map['vhdName'] == null ? null : map['vhdName'] as String,
-      vmId: map['vmId'] == null ? null : map['vmId'] as String,
-      vmNics: map['vmNics'] == null ? null : pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmProtectionState: map['vmProtectionState'] == null ? null : map['vmProtectionState'] as String,
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : map['vmProtectionStateDescription'] as String,
+      agentExpiryDate: map['agentExpiryDate'] == null ? null : (map['agentExpiryDate'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      allAvailableOSUpgradeConfigurations: map['allAvailableOSUpgradeConfigurations'] == null ? null : (pulumi.Input.decodeList<OSUpgradeSupportedVersionsResponse>(map['allAvailableOSUpgradeConfigurations'], (value) => OSUpgradeSupportedVersionsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureVMDiskDetails: map['azureVMDiskDetails'] == null ? null : (pulumi.Input.decodeList<AzureVmDiskDetailsResponse>(map['azureVMDiskDetails'], (value) => AzureVmDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureVmGeneration: map['azureVmGeneration'] == null ? null : (map['azureVmGeneration'] as String).input(),
+      compressedDataRateInMB: map['compressedDataRateInMB'] == null ? null : (map['compressedDataRateInMB'] as double).input(),
+      datastores: map['datastores'] == null ? null : ((map['datastores'] as List).cast<String>()).input(),
+      discoveryType: map['discoveryType'] == null ? null : (map['discoveryType'] as String).input(),
+      diskResized: map['diskResized'] == null ? null : (map['diskResized'] as String).input(),
+      enableRdpOnTargetOption: map['enableRdpOnTargetOption'] == null ? null : (map['enableRdpOnTargetOption'] as String).input(),
+      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType'] as String).input(),
+      infrastructureVmId: map['infrastructureVmId'] == null ? null : (map['infrastructureVmId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      isAdditionalStatsAvailable: map['isAdditionalStatsAvailable'] == null ? null : (map['isAdditionalStatsAvailable'] as bool).input(),
+      isAgentUpdateRequired: map['isAgentUpdateRequired'] == null ? null : (map['isAgentUpdateRequired'] as String).input(),
+      isRebootAfterUpdateRequired: map['isRebootAfterUpdateRequired'] == null ? null : (map['isRebootAfterUpdateRequired'] as String).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
+      lastRecoveryPointReceived: (map['lastRecoveryPointReceived'] as String).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
+      lastUpdateReceivedTime: map['lastUpdateReceivedTime'] == null ? null : (map['lastUpdateReceivedTime'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      masterTargetId: map['masterTargetId'] == null ? null : (map['masterTargetId'] as String).input(),
+      multiVmGroupId: map['multiVmGroupId'] == null ? null : (map['multiVmGroupId'] as String).input(),
+      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName'] as String).input(),
+      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : (map['multiVmSyncStatus'] as String).input(),
+      osDiskId: map['osDiskId'] == null ? null : (map['osDiskId'] as String).input(),
+      osName: (map['osName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      processServerId: map['processServerId'] == null ? null : (map['processServerId'] as String).input(),
+      processServerName: map['processServerName'] == null ? null : (map['processServerName'] as String).input(),
+      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<InMageAzureV2ProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => InMageAzureV2ProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedManagedDisks: map['protectedManagedDisks'] == null ? null : (pulumi.Input.decodeList<InMageAzureV2ManagedDiskDetailsResponse>(map['protectedManagedDisks'], (value) => InMageAzureV2ManagedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectionStage: map['protectionStage'] == null ? null : (map['protectionStage'] as String).input(),
+      recoveryAvailabilitySetId: map['recoveryAvailabilitySetId'] == null ? null : (map['recoveryAvailabilitySetId'] as String).input(),
+      recoveryAzureLogStorageAccountId: map['recoveryAzureLogStorageAccountId'] == null ? null : (map['recoveryAzureLogStorageAccountId'] as String).input(),
+      recoveryAzureResourceGroupId: map['recoveryAzureResourceGroupId'] == null ? null : (map['recoveryAzureResourceGroupId'] as String).input(),
+      recoveryAzureStorageAccount: map['recoveryAzureStorageAccount'] == null ? null : (map['recoveryAzureStorageAccount'] as String).input(),
+      recoveryAzureVMName: map['recoveryAzureVMName'] == null ? null : (map['recoveryAzureVMName'] as String).input(),
+      recoveryAzureVMSize: map['recoveryAzureVMSize'] == null ? null : (map['recoveryAzureVMSize'] as String).input(),
+      replicaId: map['replicaId'] == null ? null : (map['replicaId'] as String).input(),
+      resyncProgressPercentage: map['resyncProgressPercentage'] == null ? null : (map['resyncProgressPercentage'] as int).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
+      seedManagedDiskTags: map['seedManagedDiskTags'] == null ? null : ((map['seedManagedDiskTags'] as Map).cast<String, String>()).input(),
+      selectedRecoveryAzureNetworkId: map['selectedRecoveryAzureNetworkId'] == null ? null : (map['selectedRecoveryAzureNetworkId'] as String).input(),
+      selectedSourceNicId: map['selectedSourceNicId'] == null ? null : (map['selectedSourceNicId'] as String).input(),
+      selectedTfoAzureNetworkId: map['selectedTfoAzureNetworkId'] == null ? null : (map['selectedTfoAzureNetworkId'] as String).input(),
+      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : (map['sourceVmCpuCount'] as int).input(),
+      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : (map['sourceVmRamSizeInMB'] as int).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
+      supportedOSVersions: map['supportedOSVersions'] == null ? null : ((map['supportedOSVersions'] as List).cast<String>()).input(),
+      switchProviderBlockingErrorDetails: map['switchProviderBlockingErrorDetails'] == null ? null : (pulumi.Input.decodeList<InMageAzureV2SwitchProviderBlockingErrorDetailsResponse>(map['switchProviderBlockingErrorDetails'], (value) => InMageAzureV2SwitchProviderBlockingErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      switchProviderDetails: map['switchProviderDetails'] == null ? null : (InMageAzureV2SwitchProviderDetailsResponse.fromMap((map['switchProviderDetails'] as Map).cast<String, dynamic>())).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
+      targetManagedDiskTags: map['targetManagedDiskTags'] == null ? null : ((map['targetManagedDiskTags'] as Map).cast<String, String>()).input(),
+      targetNicTags: map['targetNicTags'] == null ? null : ((map['targetNicTags'] as Map).cast<String, String>()).input(),
+      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId'] as String).input(),
+      targetVmId: map['targetVmId'] == null ? null : (map['targetVmId'] as String).input(),
+      targetVmTags: map['targetVmTags'] == null ? null : ((map['targetVmTags'] as Map).cast<String, String>()).input(),
+      totalDataTransferred: map['totalDataTransferred'] == null ? null : (map['totalDataTransferred'] as double).input(),
+      totalProgressHealth: map['totalProgressHealth'] == null ? null : (map['totalProgressHealth'] as String).input(),
+      uncompressedDataRateInMB: map['uncompressedDataRateInMB'] == null ? null : (map['uncompressedDataRateInMB'] as double).input(),
+      useManagedDisks: map['useManagedDisks'] == null ? null : (map['useManagedDisks'] as String).input(),
+      vCenterInfrastructureId: map['vCenterInfrastructureId'] == null ? null : (map['vCenterInfrastructureId'] as String).input(),
+      validationErrors: map['validationErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
     );
   }
 }

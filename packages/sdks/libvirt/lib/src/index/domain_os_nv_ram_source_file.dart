@@ -5,11 +5,11 @@ import 'domain_os_nv_ram_source_file_sec_label.dart';
 
 class DomainOsNvRamSourceFile {
   /// Sets the file descriptor group for the file specified in the backing store source.
-  final String? fdGroup;
+  final pulumi.Input<String>? fdGroup;
   /// Specifies the actual file referenced in the backing store source configuration.
-  final String? file;
+  final pulumi.Input<String>? file;
   /// Configures the security label associated with the file in the backing store source.
-  final List<DomainOsNvRamSourceFileSecLabel>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceFileSecLabel>>? secLabels;
 
   /// Creates a new [DomainOsNvRamSourceFile].
   /// [fdGroup] Sets the file descriptor group for the file specified in the backing store source.
@@ -25,15 +25,15 @@ class DomainOsNvRamSourceFile {
     return <String, dynamic>{
       'fdGroup': ?fdGroup,
       'file': ?file,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainOsNvRamSourceFileSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceFileSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceFileSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsNvRamSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceFile(
-      fdGroup: map['fdGroup'] == null ? null : map['fdGroup'] as String,
-      file: map['file'] == null ? null : map['file'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainOsNvRamSourceFileSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      fdGroup: map['fdGroup'] == null ? null : (map['fdGroup'] as String).input(),
+      file: map['file'] == null ? null : (map['file'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceFileSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

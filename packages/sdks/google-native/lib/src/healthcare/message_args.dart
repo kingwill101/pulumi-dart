@@ -44,31 +44,19 @@ class MessageArgs {
   /// [sendFacility] The hospital that this message came from. MSH-4.
   /// [sendTime] The datetime the sending application sent this message. MSH-7.
   MessageArgs({
-    pulumi.Output<String>? data,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> hl7V2StoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? messageType,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PatientId>>? patientIds,
-    pulumi.Output<String>? project,
-    pulumi.Output<SchematizedData>? schematizedData,
-    pulumi.Output<String>? sendFacility,
-    pulumi.Output<String>? sendTime,
-  }) :
-      data = pulumi.Input.asOptionalInput<String>(data),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      messageType = pulumi.Input.asOptionalInput<String>(messageType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      patientIds = pulumi.Input.asOptionalInput<List<PatientId>>(patientIds),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schematizedData = pulumi.Input.asOptionalInput<SchematizedData>(schematizedData),
-      sendFacility = pulumi.Input.asOptionalInput<String>(sendFacility),
-      sendTime = pulumi.Input.asOptionalInput<String>(sendTime);
+    this.data,
+    required this.datasetId,
+    required this.hl7V2StoreId,
+    this.labels,
+    this.location,
+    this.messageType,
+    this.name,
+    this.patientIds,
+    this.project,
+    this.schematizedData,
+    this.sendFacility,
+    this.sendTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class MessageArgs {
 
   factory MessageArgs.fromMap(Map<String, dynamic> map) {
     return MessageArgs(
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      hl7V2StoreId: pulumi.Output.create<String>(map['hl7V2StoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      messageType: map['messageType'] == null ? null : pulumi.Output.create<String>(map['messageType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      patientIds: map['patientIds'] == null ? null : pulumi.Output.create<List<PatientId>>(pulumi.Input.decodeList<PatientId>(map['patientIds'], (value) => PatientId.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schematizedData: map['schematizedData'] == null ? null : pulumi.Output.create<SchematizedData>(SchematizedData.fromMap((map['schematizedData'] as Map).cast<String, dynamic>())),
-      sendFacility: map['sendFacility'] == null ? null : pulumi.Output.create<String>(map['sendFacility'] as String),
-      sendTime: map['sendTime'] == null ? null : pulumi.Output.create<String>(map['sendTime'] as String),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      patientIds: map['patientIds'] == null ? null : (pulumi.Input.decodeList<PatientId>(map['patientIds'], (value) => PatientId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schematizedData: map['schematizedData'] == null ? null : (SchematizedData.fromMap((map['schematizedData'] as Map).cast<String, dynamic>())).input(),
+      sendFacility: map['sendFacility'] == null ? null : (map['sendFacility'] as String).input(),
+      sendTime: map['sendTime'] == null ? null : (map['sendTime'] as String).input(),
     );
   }
 }

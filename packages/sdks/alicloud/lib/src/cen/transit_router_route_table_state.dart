@@ -31,23 +31,15 @@ class TransitRouterRouteTableState {
   /// [transitRouterRouteTableName] The name of the transit router route table.
   /// [transitRouterRouteTableType] The type of the transit router route table. Valid values: `Custom`, `System`.
   TransitRouterRouteTableState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitRouterId,
-    pulumi.Output<String>? transitRouterRouteTableDescription,
-    pulumi.Output<String>? transitRouterRouteTableId,
-    pulumi.Output<String>? transitRouterRouteTableName,
-    pulumi.Output<String>? transitRouterRouteTableType,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitRouterId = pulumi.Input.asOptionalInput<String>(transitRouterId),
-      transitRouterRouteTableDescription = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableDescription),
-      transitRouterRouteTableId = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableId),
-      transitRouterRouteTableName = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableName),
-      transitRouterRouteTableType = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableType);
+    this.dryRun,
+    this.status,
+    this.tags,
+    this.transitRouterId,
+    this.transitRouterRouteTableDescription,
+    this.transitRouterRouteTableId,
+    this.transitRouterRouteTableName,
+    this.transitRouterRouteTableType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class TransitRouterRouteTableState {
 
   factory TransitRouterRouteTableState.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitRouterId: map['transitRouterId'] == null ? null : pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableDescription'] as String),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
-      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableName'] as String),
-      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableType'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription'] as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
+      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName'] as String).input(),
+      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : (map['transitRouterRouteTableType'] as String).input(),
     );
   }
 }

@@ -13,11 +13,9 @@ class OrganizationalUnitAssociationState {
   /// [notificationConfigurationArn] ARN of the notification configuration to associate the organizational unit with.
   /// [organizationalUnitId] ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
   OrganizationalUnitAssociationState({
-    pulumi.Output<String>? notificationConfigurationArn,
-    pulumi.Output<String>? organizationalUnitId,
-  }) :
-      notificationConfigurationArn = pulumi.Input.asOptionalInput<String>(notificationConfigurationArn),
-      organizationalUnitId = pulumi.Input.asOptionalInput<String>(organizationalUnitId);
+    this.notificationConfigurationArn,
+    this.organizationalUnitId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class OrganizationalUnitAssociationState {
 
   factory OrganizationalUnitAssociationState.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitAssociationState(
-      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['notificationConfigurationArn'] as String),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : pulumi.Output.create<String>(map['organizationalUnitId'] as String),
+      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : (map['notificationConfigurationArn'] as String).input(),
+      organizationalUnitId: map['organizationalUnitId'] == null ? null : (map['organizationalUnitId'] as String).input(),
     );
   }
 }

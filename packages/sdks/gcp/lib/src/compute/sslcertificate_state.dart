@@ -56,27 +56,17 @@ class SSLCertificateState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
   SSLCertificateState({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<int>? certificateId,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      certificateId = pulumi.Input.asOptionalInput<int>(certificateId),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+    this.certificate,
+    this.certificateId,
+    this.creationTimestamp,
+    this.description,
+    this.expireTime,
+    this.name,
+    this.namePrefix,
+    this.privateKey,
+    this.project,
+    this.selfLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,16 +85,16 @@ class SSLCertificateState {
 
   factory SSLCertificateState.fromMap(Map<String, dynamic> map) {
     return SSLCertificateState(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<int>(map['certificateId'] as int),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as int).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Container group log analytics information.
 class LogAnalytics {
   /// The log type to be used.
-  final String? logType;
+  final pulumi.Input<String>? logType;
   /// Metadata for log analytics.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// The workspace id for log analytics
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
   /// The workspace key for log analytics
-  final String workspaceKey;
+  final pulumi.Input<String> workspaceKey;
   /// The workspace resource id for log analytics
-  final String? workspaceResourceId;
+  final pulumi.Input<String>? workspaceResourceId;
 
   /// Creates a new [LogAnalytics].
   /// [logType] The log type to be used.
@@ -40,11 +41,11 @@ class LogAnalytics {
 
   factory LogAnalytics.fromMap(Map<String, dynamic> map) {
     return LogAnalytics(
-      logType: map['logType'] == null ? null : map['logType'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      workspaceId: map['workspaceId'] as String,
-      workspaceKey: map['workspaceKey'] as String,
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : map['workspaceResourceId'] as String,
+      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
+      workspaceKey: (map['workspaceKey'] as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
     );
   }
 }

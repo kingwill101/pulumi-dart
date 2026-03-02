@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassifierCsvClassifier {
   /// Enables the processing of files that contain only one column.
-  final bool? allowSingleColumn;
+  final pulumi.Input<bool>? allowSingleColumn;
   /// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
-  final String? containsHeader;
+  final pulumi.Input<String>? containsHeader;
   /// Enables the custom datatype to be configured.
-  final bool? customDatatypeConfigured;
+  final pulumi.Input<bool>? customDatatypeConfigured;
   /// A list of supported custom datatypes. Valid values are `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INT`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`.
-  final List<String>? customDatatypes;
+  final pulumi.Input<List<String>>? customDatatypes;
   /// The delimiter used in the CSV to separate columns.
-  final String? delimiter;
+  final pulumi.Input<String>? delimiter;
   /// Specifies whether to trim column values.
-  final bool? disableValueTrimming;
+  final pulumi.Input<bool>? disableValueTrimming;
   /// A list of strings representing column names.
-  final List<String>? headers;
+  final pulumi.Input<List<String>>? headers;
   /// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
-  final String? quoteSymbol;
+  final pulumi.Input<String>? quoteSymbol;
   /// The SerDe for processing CSV. Valid values are `OpenCSVSerDe`, `LazySimpleSerDe`, `None`.
-  final String? serde;
+  final pulumi.Input<String>? serde;
 
   /// Creates a new [ClassifierCsvClassifier].
   /// [allowSingleColumn] Enables the processing of files that contain only one column.
@@ -59,15 +60,15 @@ class ClassifierCsvClassifier {
 
   factory ClassifierCsvClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierCsvClassifier(
-      allowSingleColumn: map['allowSingleColumn'] == null ? null : map['allowSingleColumn'] as bool,
-      containsHeader: map['containsHeader'] == null ? null : map['containsHeader'] as String,
-      customDatatypeConfigured: map['customDatatypeConfigured'] == null ? null : map['customDatatypeConfigured'] as bool,
-      customDatatypes: map['customDatatypes'] == null ? null : (map['customDatatypes'] as List).cast<String>(),
-      delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      disableValueTrimming: map['disableValueTrimming'] == null ? null : map['disableValueTrimming'] as bool,
-      headers: map['headers'] == null ? null : (map['headers'] as List).cast<String>(),
-      quoteSymbol: map['quoteSymbol'] == null ? null : map['quoteSymbol'] as String,
-      serde: map['serde'] == null ? null : map['serde'] as String,
+      allowSingleColumn: map['allowSingleColumn'] == null ? null : (map['allowSingleColumn'] as bool).input(),
+      containsHeader: map['containsHeader'] == null ? null : (map['containsHeader'] as String).input(),
+      customDatatypeConfigured: map['customDatatypeConfigured'] == null ? null : (map['customDatatypeConfigured'] as bool).input(),
+      customDatatypes: map['customDatatypes'] == null ? null : ((map['customDatatypes'] as List).cast<String>()).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
+      disableValueTrimming: map['disableValueTrimming'] == null ? null : (map['disableValueTrimming'] as bool).input(),
+      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
+      quoteSymbol: map['quoteSymbol'] == null ? null : (map['quoteSymbol'] as String).input(),
+      serde: map['serde'] == null ? null : (map['serde'] as String).input(),
     );
   }
 }

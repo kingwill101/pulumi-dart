@@ -14,11 +14,9 @@ class PublicNetworkAddressState {
   /// [dbInstanceId] The instance ID.
   /// [replicaSets] Replica set instance information.
   PublicNetworkAddressState({
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<List<PublicNetworkAddressReplicaSet>>? replicaSets,
-  }) :
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      replicaSets = pulumi.Input.asOptionalInput<List<PublicNetworkAddressReplicaSet>>(replicaSets);
+    this.dbInstanceId,
+    this.replicaSets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class PublicNetworkAddressState {
 
   factory PublicNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PublicNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      replicaSets: map['replicaSets'] == null ? null : pulumi.Output.create<List<PublicNetworkAddressReplicaSet>>(pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(map['replicaSets'], (value) => PublicNetworkAddressReplicaSet.fromMap((value as Map).cast<String, dynamic>()))),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(map['replicaSets'], (value) => PublicNetworkAddressReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

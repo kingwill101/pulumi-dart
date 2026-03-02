@@ -16,11 +16,9 @@ class GetConfigurationProfileArgs {
   /// [configurationProfileName] The configuration profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConfigurationProfileArgs({
-    required pulumi.Output<String> configurationProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationProfileName = pulumi.Input.asInput<String>(configurationProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetConfigurationProfileArgs {
 
   factory GetConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileArgs(
-      configurationProfileName: pulumi.Output.create<String>(map['configurationProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationProfileName: (map['configurationProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AS2 agreement error settings.
 class AS2ErrorSettings {
   /// The value indicating whether to resend message If MDN is not received.
-  final bool resendIfMDNNotReceived;
+  final pulumi.Input<bool> resendIfMDNNotReceived;
   /// The value indicating whether to suspend duplicate message.
-  final bool suspendDuplicateMessage;
+  final pulumi.Input<bool> suspendDuplicateMessage;
 
   /// Creates a new [AS2ErrorSettings].
   /// [resendIfMDNNotReceived] The value indicating whether to resend message If MDN is not received.
@@ -25,8 +26,8 @@ class AS2ErrorSettings {
 
   factory AS2ErrorSettings.fromMap(Map<String, dynamic> map) {
     return AS2ErrorSettings(
-      resendIfMDNNotReceived: map['resendIfMDNNotReceived'] as bool,
-      suspendDuplicateMessage: map['suspendDuplicateMessage'] as bool,
+      resendIfMDNNotReceived: (map['resendIfMDNNotReceived'] as bool).input(),
+      suspendDuplicateMessage: (map['suspendDuplicateMessage'] as bool).input(),
     );
   }
 }

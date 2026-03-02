@@ -19,13 +19,10 @@ class EncryptionSpecState {
   /// [location] The location in which the encryptionSpec is to be initialized.
   /// [project] The ID of the project in which the resource belongs.
   EncryptionSpecState({
-    pulumi.Output<EncryptionSpecEncryptionSpec>? encryptionSpec,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<EncryptionSpecEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.encryptionSpec,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EncryptionSpecState {
 
   factory EncryptionSpecState.fromMap(Map<String, dynamic> map) {
     return EncryptionSpecState(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<EncryptionSpecEncryptionSpec>(EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

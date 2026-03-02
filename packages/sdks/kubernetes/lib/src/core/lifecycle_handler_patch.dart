@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exec_action_patch.dart';
 import 'httpget_action_patch.dart';
 import 'sleep_action_patch.dart';
@@ -8,13 +9,13 @@ import 'tcpsocket_action_patch.dart';
 /// LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.
 class LifecycleHandlerPatch {
   /// Exec specifies a command to execute in the container.
-  final ExecActionPatch? exec;
+  final pulumi.Input<ExecActionPatch>? exec;
   /// HTTPGet specifies an HTTP GET request to perform.
-  final HTTPGetActionPatch? httpGet;
+  final pulumi.Input<HTTPGetActionPatch>? httpGet;
   /// Sleep represents a duration that the container should sleep.
-  final SleepActionPatch? sleep;
+  final pulumi.Input<SleepActionPatch>? sleep;
   /// Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for backward compatibility. There is no validation of this field and lifecycle hooks will fail at runtime when it is specified.
-  final TCPSocketActionPatch? tcpSocket;
+  final pulumi.Input<TCPSocketActionPatch>? tcpSocket;
 
   /// Creates a new [LifecycleHandlerPatch].
   /// [exec] Exec specifies a command to execute in the container.
@@ -30,19 +31,19 @@ class LifecycleHandlerPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec': ?exec == null ? null : exec!.toMap(),
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
-      'sleep': ?sleep == null ? null : sleep!.toMap(),
-      'tcpSocket': ?tcpSocket == null ? null : tcpSocket!.toMap(),
+      'exec': ?pulumi.Input.mapOptionalInputValue<ExecActionPatch, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<HTTPGetActionPatch, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
+      'sleep': ?pulumi.Input.mapOptionalInputValue<SleepActionPatch, Map<String, dynamic>>(sleep, (value) => value.toMap()),
+      'tcpSocket': ?pulumi.Input.mapOptionalInputValue<TCPSocketActionPatch, Map<String, dynamic>>(tcpSocket, (value) => value.toMap()),
     };
   }
 
   factory LifecycleHandlerPatch.fromMap(Map<String, dynamic> map) {
     return LifecycleHandlerPatch(
-      exec: map['exec'] == null ? null : ExecActionPatch.fromMap((map['exec'] as Map).cast<String, dynamic>()),
-      httpGet: map['httpGet'] == null ? null : HTTPGetActionPatch.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      sleep: map['sleep'] == null ? null : SleepActionPatch.fromMap((map['sleep'] as Map).cast<String, dynamic>()),
-      tcpSocket: map['tcpSocket'] == null ? null : TCPSocketActionPatch.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>()),
+      exec: map['exec'] == null ? null : (ExecActionPatch.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (HTTPGetActionPatch.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      sleep: map['sleep'] == null ? null : (SleepActionPatch.fromMap((map['sleep'] as Map).cast<String, dynamic>())).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketActionPatch.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

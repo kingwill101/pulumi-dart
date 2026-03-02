@@ -31,21 +31,14 @@ class GetSensitivityLabelArgs {
   /// [serverName] The name of the server.
   /// [tableName] The name of the table.
   GetSensitivityLabelArgs({
-    required pulumi.Output<String> columnName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-    required pulumi.Output<String> sensitivityLabelSource,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> tableName,
-  }) :
-      columnName = pulumi.Input.asInput<String>(columnName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      sensitivityLabelSource = pulumi.Input.asInput<String>(sensitivityLabelSource),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      tableName = pulumi.Input.asInput<String>(tableName);
+    required this.columnName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.schemaName,
+    required this.sensitivityLabelSource,
+    required this.serverName,
+    required this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetSensitivityLabelArgs {
 
   factory GetSensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return GetSensitivityLabelArgs(
-      columnName: pulumi.Output.create<String>(map['columnName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
-      sensitivityLabelSource: pulumi.Output.create<String>(map['sensitivityLabelSource'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
+      columnName: (map['columnName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
+      sensitivityLabelSource: (map['sensitivityLabelSource'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

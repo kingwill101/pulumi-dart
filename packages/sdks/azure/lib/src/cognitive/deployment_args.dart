@@ -33,21 +33,14 @@ class DeploymentArgs {
   /// [sku] A `sku` block as defined below.
   /// [versionUpgradeOption] Deployment model version upgrade option. Possible values are `OnceNewDefaultVersionAvailable`, `OnceCurrentVersionExpired`, and `NoAutoUpgrade`. Defaults to `OnceNewDefaultVersionAvailable`.
   DeploymentArgs({
-    required pulumi.Output<String> cognitiveAccountId,
-    pulumi.Output<bool>? dynamicThrottlingEnabled,
-    required pulumi.Output<DeploymentModel> model,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? raiPolicyName,
-    required pulumi.Output<DeploymentSku> sku,
-    pulumi.Output<String>? versionUpgradeOption,
-  }) :
-      cognitiveAccountId = pulumi.Input.asInput<String>(cognitiveAccountId),
-      dynamicThrottlingEnabled = pulumi.Input.asOptionalInput<bool>(dynamicThrottlingEnabled),
-      model = pulumi.Input.asInput<DeploymentModel>(model),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      raiPolicyName = pulumi.Input.asOptionalInput<String>(raiPolicyName),
-      sku = pulumi.Input.asInput<DeploymentSku>(sku),
-      versionUpgradeOption = pulumi.Input.asOptionalInput<String>(versionUpgradeOption);
+    required this.cognitiveAccountId,
+    this.dynamicThrottlingEnabled,
+    required this.model,
+    this.name,
+    this.raiPolicyName,
+    required this.sku,
+    this.versionUpgradeOption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      cognitiveAccountId: pulumi.Output.create<String>(map['cognitiveAccountId'] as String),
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : pulumi.Output.create<bool>(map['dynamicThrottlingEnabled'] as bool),
-      model: pulumi.Output.create<DeploymentModel>(DeploymentModel.fromMap((map['model'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      raiPolicyName: map['raiPolicyName'] == null ? null : pulumi.Output.create<String>(map['raiPolicyName'] as String),
-      sku: pulumi.Output.create<DeploymentSku>(DeploymentSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : pulumi.Output.create<String>(map['versionUpgradeOption'] as String),
+      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
+      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled'] as bool).input(),
+      model: (DeploymentModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      sku: (DeploymentSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
     );
   }
 }

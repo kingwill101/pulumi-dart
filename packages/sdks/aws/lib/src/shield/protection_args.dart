@@ -19,13 +19,10 @@ class ProtectionArgs {
   /// [resourceArn] The ARN (Amazon Resource Name) of the resource to be protected.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ProtectionArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    required this.resourceArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ProtectionArgs {
 
   factory ProtectionArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

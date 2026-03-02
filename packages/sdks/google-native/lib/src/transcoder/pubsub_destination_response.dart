@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Pub/Sub destination.
 class PubsubDestinationResponse {
   /// The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [PubsubDestinationResponse].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
@@ -20,7 +21,7 @@ class PubsubDestinationResponse {
 
   factory PubsubDestinationResponse.fromMap(Map<String, dynamic> map) {
     return PubsubDestinationResponse(
-      topic: map['topic'] as String,
+      topic: (map['topic'] as String).input(),
     );
   }
 }

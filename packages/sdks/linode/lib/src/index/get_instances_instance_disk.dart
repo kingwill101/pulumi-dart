@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceDisk {
   /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
-  final String filesystem;
+  final pulumi.Input<String> filesystem;
   /// The ID of the Placement Group in the Linode API.
-  final int id;
+  final pulumi.Input<int> id;
   /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-  final String label;
+  final pulumi.Input<String> label;
   /// The size of the Disk in MB.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetInstancesInstanceDisk].
   /// [filesystem] The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
@@ -34,10 +35,10 @@ class GetInstancesInstanceDisk {
 
   factory GetInstancesInstanceDisk.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceDisk(
-      filesystem: map['filesystem'] as String,
-      id: map['id'] as int,
-      label: map['label'] as String,
-      size: map['size'] as int,
+      filesystem: (map['filesystem'] as String).input(),
+      id: (map['id'] as int).input(),
+      label: (map['label'] as String).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

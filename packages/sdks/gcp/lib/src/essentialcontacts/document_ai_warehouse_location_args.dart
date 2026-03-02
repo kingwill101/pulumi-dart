@@ -35,19 +35,13 @@ class DocumentAiWarehouseLocationArgs {
   /// [location] The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
   /// [projectNumber] The unique identifier of the project.
   DocumentAiWarehouseLocationArgs({
-    required pulumi.Output<String> accessControlMode,
-    required pulumi.Output<String> databaseType,
-    pulumi.Output<String>? documentCreatorDefaultRole,
-    pulumi.Output<String>? kmsKey,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> projectNumber,
-  }) :
-      accessControlMode = pulumi.Input.asInput<String>(accessControlMode),
-      databaseType = pulumi.Input.asInput<String>(databaseType),
-      documentCreatorDefaultRole = pulumi.Input.asOptionalInput<String>(documentCreatorDefaultRole),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      location = pulumi.Input.asInput<String>(location),
-      projectNumber = pulumi.Input.asInput<String>(projectNumber);
+    required this.accessControlMode,
+    required this.databaseType,
+    this.documentCreatorDefaultRole,
+    this.kmsKey,
+    required this.location,
+    required this.projectNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class DocumentAiWarehouseLocationArgs {
 
   factory DocumentAiWarehouseLocationArgs.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseLocationArgs(
-      accessControlMode: pulumi.Output.create<String>(map['accessControlMode'] as String),
-      databaseType: pulumi.Output.create<String>(map['databaseType'] as String),
-      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : pulumi.Output.create<String>(map['documentCreatorDefaultRole'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      projectNumber: pulumi.Output.create<String>(map['projectNumber'] as String),
+      accessControlMode: (map['accessControlMode'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      location: (map['location'] as String).input(),
+      projectNumber: (map['projectNumber'] as String).input(),
     );
   }
 }

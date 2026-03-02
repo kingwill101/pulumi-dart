@@ -23,15 +23,11 @@ class FluidRelayPrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroup] The resource group containing the resource.
   FluidRelayPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> fluidRelayServerName,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    required pulumi.Output<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      fluidRelayServerName = pulumi.Input.asInput<String>(fluidRelayServerName),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      privateLinkServiceConnectionState = pulumi.Input.asInput<PrivateLinkServiceConnectionState>(privateLinkServiceConnectionState),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.fluidRelayServerName,
+    this.privateEndpointConnectionName,
+    required this.privateLinkServiceConnectionState,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FluidRelayPrivateEndpointConnectionArgs {
 
   factory FluidRelayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return FluidRelayPrivateEndpointConnectionArgs(
-      fluidRelayServerName: pulumi.Output.create<String>(map['fluidRelayServerName'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      privateLinkServiceConnectionState: pulumi.Output.create<PrivateLinkServiceConnectionState>(PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      fluidRelayServerName: (map['fluidRelayServerName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

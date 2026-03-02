@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User who created.
 class UserInfoResponse {
   /// A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
-  final String? userAltSecId;
+  final pulumi.Input<String>? userAltSecId;
   /// A user identity provider. Eg live.com
-  final String? userIdp;
+  final pulumi.Input<String>? userIdp;
   /// The issuer which issued the token for this user.
-  final String? userIss;
+  final pulumi.Input<String>? userIss;
   /// A user's full name or a service principal's app ID.
-  final String? userName;
+  final pulumi.Input<String>? userName;
   /// A user or service principal's object ID..
-  final String? userObjectId;
+  final pulumi.Input<String>? userObjectId;
   /// A user or service principal's PuID.
-  final String? userPuId;
+  final pulumi.Input<String>? userPuId;
   /// A user or service principal's tenant ID.
-  final String? userTenantId;
+  final pulumi.Input<String>? userTenantId;
 
   /// Creates a new [UserInfoResponse].
   /// [userAltSecId] A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
@@ -50,13 +51,13 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      userAltSecId: map['userAltSecId'] == null ? null : map['userAltSecId'] as String,
-      userIdp: map['userIdp'] == null ? null : map['userIdp'] as String,
-      userIss: map['userIss'] == null ? null : map['userIss'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
-      userObjectId: map['userObjectId'] == null ? null : map['userObjectId'] as String,
-      userPuId: map['userPuId'] == null ? null : map['userPuId'] as String,
-      userTenantId: map['userTenantId'] == null ? null : map['userTenantId'] as String,
+      userAltSecId: map['userAltSecId'] == null ? null : (map['userAltSecId'] as String).input(),
+      userIdp: map['userIdp'] == null ? null : (map['userIdp'] as String).input(),
+      userIss: map['userIss'] == null ? null : (map['userIss'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId'] as String).input(),
+      userPuId: map['userPuId'] == null ? null : (map['userPuId'] as String).input(),
+      userTenantId: map['userTenantId'] == null ? null : (map['userTenantId'] as String).input(),
     );
   }
 }

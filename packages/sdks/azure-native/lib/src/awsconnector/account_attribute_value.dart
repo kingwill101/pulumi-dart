@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of AccountAttributeValue
 class AccountAttributeValue {
   /// <p>The value of the attribute.</p>
-  final String? attributeValue;
+  final pulumi.Input<String>? attributeValue;
 
   /// Creates a new [AccountAttributeValue].
   /// [attributeValue] <p>The value of the attribute.</p>
@@ -20,7 +21,7 @@ class AccountAttributeValue {
 
   factory AccountAttributeValue.fromMap(Map<String, dynamic> map) {
     return AccountAttributeValue(
-      attributeValue: map['attributeValue'] == null ? null : map['attributeValue'] as String,
+      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue'] as String).input(),
     );
   }
 }

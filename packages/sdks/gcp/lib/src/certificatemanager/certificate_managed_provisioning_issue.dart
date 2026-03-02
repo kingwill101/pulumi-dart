@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateManagedProvisioningIssue {
   /// Human readable explanation about the issue. Provided to help address
   /// the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'reason' field.
-  final String? details;
+  final pulumi.Input<String>? details;
   /// Reason for provisioning failures.
-  final String? reason;
+  final pulumi.Input<String>? reason;
 
   /// Creates a new [CertificateManagedProvisioningIssue].
   /// [details] Human readable explanation about the issue. Provided to help address
@@ -26,8 +27,8 @@ class CertificateManagedProvisioningIssue {
 
   factory CertificateManagedProvisioningIssue.fromMap(Map<String, dynamic> map) {
     return CertificateManagedProvisioningIssue(
-      details: map['details'] == null ? null : map['details'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
+      details: map['details'] == null ? null : (map['details'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

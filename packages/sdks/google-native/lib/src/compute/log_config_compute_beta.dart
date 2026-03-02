@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_config_cloud_audit_options_compute_beta.dart';
 import 'log_config_counter_options_compute_beta.dart';
 import 'log_config_data_access_options_compute_beta.dart';
@@ -7,11 +8,11 @@ import 'log_config_data_access_options_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final LogConfigCloudAuditOptionsComputeBeta? cloudAudit;
+  final pulumi.Input<LogConfigCloudAuditOptionsComputeBeta>? cloudAudit;
   /// This is deprecated and has no effect. Do not use.
-  final LogConfigCounterOptionsComputeBeta? counter;
+  final pulumi.Input<LogConfigCounterOptionsComputeBeta>? counter;
   /// This is deprecated and has no effect. Do not use.
-  final LogConfigDataAccessOptionsComputeBeta? dataAccess;
+  final pulumi.Input<LogConfigDataAccessOptionsComputeBeta>? dataAccess;
 
   /// Creates a new [LogConfigComputeBeta].
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
@@ -25,17 +26,17 @@ class LogConfigComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudAudit': ?cloudAudit == null ? null : cloudAudit!.toMap(),
-      'counter': ?counter == null ? null : counter!.toMap(),
-      'dataAccess': ?dataAccess == null ? null : dataAccess!.toMap(),
+      'cloudAudit': ?pulumi.Input.mapOptionalInputValue<LogConfigCloudAuditOptionsComputeBeta, Map<String, dynamic>>(cloudAudit, (value) => value.toMap()),
+      'counter': ?pulumi.Input.mapOptionalInputValue<LogConfigCounterOptionsComputeBeta, Map<String, dynamic>>(counter, (value) => value.toMap()),
+      'dataAccess': ?pulumi.Input.mapOptionalInputValue<LogConfigDataAccessOptionsComputeBeta, Map<String, dynamic>>(dataAccess, (value) => value.toMap()),
     };
   }
 
   factory LogConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigComputeBeta(
-      cloudAudit: map['cloudAudit'] == null ? null : LogConfigCloudAuditOptionsComputeBeta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: map['counter'] == null ? null : LogConfigCounterOptionsComputeBeta.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: map['dataAccess'] == null ? null : LogConfigDataAccessOptionsComputeBeta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: map['cloudAudit'] == null ? null : (LogConfigCloudAuditOptionsComputeBeta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
+      counter: map['counter'] == null ? null : (LogConfigCounterOptionsComputeBeta.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
+      dataAccess: map['dataAccess'] == null ? null : (LogConfigDataAccessOptionsComputeBeta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -29,21 +29,14 @@ class ChannelState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ChannelState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? channelId,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ChannelHlsIngest>>? hlsIngests,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hlsIngests = pulumi.Input.asOptionalInput<List<ChannelHlsIngest>>(hlsIngests),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.channelId,
+    this.description,
+    this.hlsIngests,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class ChannelState {
 
   factory ChannelState.fromMap(Map<String, dynamic> map) {
     return ChannelState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hlsIngests: map['hlsIngests'] == null ? null : pulumi.Output.create<List<ChannelHlsIngest>>(pulumi.Input.decodeList<ChannelHlsIngest>(map['hlsIngests'], (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hlsIngests: map['hlsIngests'] == null ? null : (pulumi.Input.decodeList<ChannelHlsIngest>(map['hlsIngests'], (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

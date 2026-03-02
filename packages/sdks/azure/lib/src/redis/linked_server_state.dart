@@ -28,21 +28,14 @@ class LinkedServerState {
   /// [serverRole] The role of the linked Redis cache (eg "Secondary"). Changing this forces a new Redis to be created. Possible values are `Primary` and `Secondary`.
   /// [targetRedisCacheName] The name of Redis cache to link with. Changing this forces a new Redis to be created. (eg The primary role)
   LinkedServerState({
-    pulumi.Output<String>? geoReplicatedPrimaryHostName,
-    pulumi.Output<String>? linkedRedisCacheId,
-    pulumi.Output<String>? linkedRedisCacheLocation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? serverRole,
-    pulumi.Output<String>? targetRedisCacheName,
-  }) :
-      geoReplicatedPrimaryHostName = pulumi.Input.asOptionalInput<String>(geoReplicatedPrimaryHostName),
-      linkedRedisCacheId = pulumi.Input.asOptionalInput<String>(linkedRedisCacheId),
-      linkedRedisCacheLocation = pulumi.Input.asOptionalInput<String>(linkedRedisCacheLocation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serverRole = pulumi.Input.asOptionalInput<String>(serverRole),
-      targetRedisCacheName = pulumi.Input.asOptionalInput<String>(targetRedisCacheName);
+    this.geoReplicatedPrimaryHostName,
+    this.linkedRedisCacheId,
+    this.linkedRedisCacheLocation,
+    this.name,
+    this.resourceGroupName,
+    this.serverRole,
+    this.targetRedisCacheName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class LinkedServerState {
 
   factory LinkedServerState.fromMap(Map<String, dynamic> map) {
     return LinkedServerState(
-      geoReplicatedPrimaryHostName: map['geoReplicatedPrimaryHostName'] == null ? null : pulumi.Output.create<String>(map['geoReplicatedPrimaryHostName'] as String),
-      linkedRedisCacheId: map['linkedRedisCacheId'] == null ? null : pulumi.Output.create<String>(map['linkedRedisCacheId'] as String),
-      linkedRedisCacheLocation: map['linkedRedisCacheLocation'] == null ? null : pulumi.Output.create<String>(map['linkedRedisCacheLocation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverRole: map['serverRole'] == null ? null : pulumi.Output.create<String>(map['serverRole'] as String),
-      targetRedisCacheName: map['targetRedisCacheName'] == null ? null : pulumi.Output.create<String>(map['targetRedisCacheName'] as String),
+      geoReplicatedPrimaryHostName: map['geoReplicatedPrimaryHostName'] == null ? null : (map['geoReplicatedPrimaryHostName'] as String).input(),
+      linkedRedisCacheId: map['linkedRedisCacheId'] == null ? null : (map['linkedRedisCacheId'] as String).input(),
+      linkedRedisCacheLocation: map['linkedRedisCacheLocation'] == null ? null : (map['linkedRedisCacheLocation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serverRole: map['serverRole'] == null ? null : (map['serverRole'] as String).input(),
+      targetRedisCacheName: map['targetRedisCacheName'] == null ? null : (map['targetRedisCacheName'] as String).input(),
     );
   }
 }

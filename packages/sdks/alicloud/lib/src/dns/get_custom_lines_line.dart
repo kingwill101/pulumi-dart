@@ -5,17 +5,17 @@ import 'get_custom_lines_line_ip_segment_list.dart';
 
 class GetCustomLinesLine {
   /// The Custom line Code.
-  final String code;
+  final pulumi.Input<String> code;
   /// The first ID of the resource.
-  final String customLineId;
+  final pulumi.Input<String> customLineId;
   /// Line name.
-  final String customLineName;
+  final pulumi.Input<String> customLineName;
   /// The Domain name.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The ID of the Custom Line.
-  final String id;
+  final pulumi.Input<String> id;
   /// The IP segment list.
-  final List<GetCustomLinesLineIpSegmentList> ipSegmentLists;
+  final pulumi.Input<List<GetCustomLinesLineIpSegmentList>> ipSegmentLists;
 
   /// Creates a new [GetCustomLinesLine].
   /// [code] The Custom line Code.
@@ -40,18 +40,18 @@ class GetCustomLinesLine {
       'customLineName': customLineName,
       'domainName': domainName,
       'id': id,
-      'ipSegmentLists': pulumi.Input.encodeList<GetCustomLinesLineIpSegmentList, Map<String, dynamic>>(ipSegmentLists, (value) => value.toMap()),
+      'ipSegmentLists': pulumi.Input.mapInputValue<List<GetCustomLinesLineIpSegmentList>, List<Map<String, dynamic>>>(ipSegmentLists, (value) => pulumi.Input.encodeList<GetCustomLinesLineIpSegmentList, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetCustomLinesLine.fromMap(Map<String, dynamic> map) {
     return GetCustomLinesLine(
-      code: map['code'] as String,
-      customLineId: map['customLineId'] as String,
-      customLineName: map['customLineName'] as String,
-      domainName: map['domainName'] as String,
-      id: map['id'] as String,
-      ipSegmentLists: pulumi.Input.decodeList<GetCustomLinesLineIpSegmentList>(map['ipSegmentLists'], (value) => GetCustomLinesLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>())),
+      code: (map['code'] as String).input(),
+      customLineId: (map['customLineId'] as String).input(),
+      customLineName: (map['customLineName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipSegmentLists: (pulumi.Input.decodeList<GetCustomLinesLineIpSegmentList>(map['ipSegmentLists'], (value) => GetCustomLinesLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

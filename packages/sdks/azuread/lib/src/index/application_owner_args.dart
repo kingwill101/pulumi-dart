@@ -16,11 +16,9 @@ class ApplicationOwnerArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [ownerObjectId] The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   ApplicationOwnerArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> ownerObjectId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      ownerObjectId = pulumi.Input.asInput<String>(ownerObjectId);
+    required this.applicationId,
+    required this.ownerObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationOwnerArgs {
 
   factory ApplicationOwnerArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationOwnerArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      ownerObjectId: pulumi.Output.create<String>(map['ownerObjectId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      ownerObjectId: (map['ownerObjectId'] as String).input(),
     );
   }
 }

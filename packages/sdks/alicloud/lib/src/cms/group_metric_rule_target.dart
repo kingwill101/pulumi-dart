@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupMetricRuleTarget {
   /// The Alibaba Cloud Resource Name (ARN) of the resource.
   /// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The ID of the resource for which alerts are triggered.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The parameters of the alert callback. The parameters are in the JSON format.
-  final String? jsonParams;
+  final pulumi.Input<String>? jsonParams;
   /// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-  final String? level;
+  final pulumi.Input<String>? level;
 
   /// Creates a new [GroupMetricRuleTarget].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the resource.
@@ -35,10 +36,10 @@ class GroupMetricRuleTarget {
 
   factory GroupMetricRuleTarget.fromMap(Map<String, dynamic> map) {
     return GroupMetricRuleTarget(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      jsonParams: map['jsonParams'] == null ? null : map['jsonParams'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
     );
   }
 }

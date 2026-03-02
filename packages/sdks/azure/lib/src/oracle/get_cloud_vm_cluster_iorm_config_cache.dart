@@ -5,13 +5,13 @@ import 'get_cloud_vm_cluster_iorm_config_cache_db_plan.dart';
 
 class GetCloudVmClusterIormConfigCache {
   /// A `db_plans` block as defined above.
-  final List<GetCloudVmClusterIormConfigCacheDbPlan> dbPlans;
+  final pulumi.Input<List<GetCloudVmClusterIormConfigCacheDbPlan>> dbPlans;
   /// Additional information about the current `lifecycleState`.
-  final String lifecycleDetails;
+  final pulumi.Input<String> lifecycleDetails;
   /// The current state of IORM configuration for the Exadata DB system.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// The current value for the IORM objective. The default is `AUTO`.
-  final String objective;
+  final pulumi.Input<String> objective;
 
   /// Creates a new [GetCloudVmClusterIormConfigCache].
   /// [dbPlans] A `db_plans` block as defined above.
@@ -27,7 +27,7 @@ class GetCloudVmClusterIormConfigCache {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbPlans': pulumi.Input.encodeList<GetCloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(dbPlans, (value) => value.toMap()),
+      'dbPlans': pulumi.Input.mapInputValue<List<GetCloudVmClusterIormConfigCacheDbPlan>, List<Map<String, dynamic>>>(dbPlans, (value) => pulumi.Input.encodeList<GetCloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lifecycleDetails': lifecycleDetails,
       'lifecycleState': lifecycleState,
       'objective': objective,
@@ -36,10 +36,10 @@ class GetCloudVmClusterIormConfigCache {
 
   factory GetCloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCache(
-      dbPlans: pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>())),
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      objective: map['objective'] as String,
+      dbPlans: (pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleDetails: (map['lifecycleDetails'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      objective: (map['objective'] as String).input(),
     );
   }
 }

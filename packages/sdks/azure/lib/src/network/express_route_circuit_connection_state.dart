@@ -27,19 +27,13 @@ class ExpressRouteCircuitConnectionState {
   /// [peerPeeringId] The ID of the peered Express Route Circuit Private Peering. Changing this forces a new Express Route Circuit Connection to be created.
   /// [peeringId] The ID of the Express Route Circuit Private Peering that this Express Route Circuit Connection connects with. Changing this forces a new Express Route Circuit Connection to be created.
   ExpressRouteCircuitConnectionState({
-    pulumi.Output<String>? addressPrefixIpv4,
-    pulumi.Output<String>? addressPrefixIpv6,
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? peerPeeringId,
-    pulumi.Output<String>? peeringId,
-  }) :
-      addressPrefixIpv4 = pulumi.Input.asOptionalInput<String>(addressPrefixIpv4),
-      addressPrefixIpv6 = pulumi.Input.asOptionalInput<String>(addressPrefixIpv6),
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerPeeringId = pulumi.Input.asOptionalInput<String>(peerPeeringId),
-      peeringId = pulumi.Input.asOptionalInput<String>(peeringId);
+    this.addressPrefixIpv4,
+    this.addressPrefixIpv6,
+    this.authorizationKey,
+    this.name,
+    this.peerPeeringId,
+    this.peeringId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ExpressRouteCircuitConnectionState {
 
   factory ExpressRouteCircuitConnectionState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionState(
-      addressPrefixIpv4: map['addressPrefixIpv4'] == null ? null : pulumi.Output.create<String>(map['addressPrefixIpv4'] as String),
-      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : pulumi.Output.create<String>(map['addressPrefixIpv6'] as String),
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerPeeringId: map['peerPeeringId'] == null ? null : pulumi.Output.create<String>(map['peerPeeringId'] as String),
-      peeringId: map['peeringId'] == null ? null : pulumi.Output.create<String>(map['peeringId'] as String),
+      addressPrefixIpv4: map['addressPrefixIpv4'] == null ? null : (map['addressPrefixIpv4'] as String).input(),
+      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerPeeringId: map['peerPeeringId'] == null ? null : (map['peerPeeringId'] as String).input(),
+      peeringId: map['peeringId'] == null ? null : (map['peeringId'] as String).input(),
     );
   }
 }

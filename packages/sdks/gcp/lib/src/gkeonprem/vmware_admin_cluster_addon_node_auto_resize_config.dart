@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterAddonNodeAutoResizeConfig {
   /// Whether to enable controle plane node auto resizing.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [VmwareAdminClusterAddonNodeAutoResizeConfig].
   /// [enabled] Whether to enable controle plane node auto resizing.
@@ -19,7 +20,7 @@ class VmwareAdminClusterAddonNodeAutoResizeConfig {
 
   factory VmwareAdminClusterAddonNodeAutoResizeConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAddonNodeAutoResizeConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

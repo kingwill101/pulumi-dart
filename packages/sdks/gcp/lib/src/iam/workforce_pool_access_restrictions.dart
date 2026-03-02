@@ -7,10 +7,10 @@ class WorkforcePoolAccessRestrictions {
   /// Services allowed for web sign-in with the workforce pool.
   /// If not set by default there are no restrictions.
   /// Structure is documented below.
-  final List<WorkforcePoolAccessRestrictionsAllowedService>? allowedServices;
+  final pulumi.Input<List<WorkforcePoolAccessRestrictionsAllowedService>>? allowedServices;
   /// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
   /// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
-  final bool? disableProgrammaticSignin;
+  final pulumi.Input<bool>? disableProgrammaticSignin;
 
   /// Creates a new [WorkforcePoolAccessRestrictions].
   /// [allowedServices] Services allowed for web sign-in with the workforce pool.
@@ -22,15 +22,15 @@ class WorkforcePoolAccessRestrictions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedServices': ?allowedServices == null ? null : pulumi.Input.encodeList<WorkforcePoolAccessRestrictionsAllowedService, Map<String, dynamic>>(allowedServices!, (value) => value.toMap()),
+      'allowedServices': ?pulumi.Input.mapOptionalInputValue<List<WorkforcePoolAccessRestrictionsAllowedService>, List<Map<String, dynamic>>>(allowedServices, (value) => pulumi.Input.encodeList<WorkforcePoolAccessRestrictionsAllowedService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'disableProgrammaticSignin': ?disableProgrammaticSignin,
     };
   }
 
   factory WorkforcePoolAccessRestrictions.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolAccessRestrictions(
-      allowedServices: map['allowedServices'] == null ? null : pulumi.Input.decodeList<WorkforcePoolAccessRestrictionsAllowedService>(map['allowedServices'], (value) => WorkforcePoolAccessRestrictionsAllowedService.fromMap((value as Map).cast<String, dynamic>())),
-      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null ? null : map['disableProgrammaticSignin'] as bool,
+      allowedServices: map['allowedServices'] == null ? null : (pulumi.Input.decodeList<WorkforcePoolAccessRestrictionsAllowedService>(map['allowedServices'], (value) => WorkforcePoolAccessRestrictionsAllowedService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null ? null : (map['disableProgrammaticSignin'] as bool).input(),
     );
   }
 }

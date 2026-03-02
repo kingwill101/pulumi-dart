@@ -18,59 +18,59 @@ import 'vpc_config_response.dart';
 /// Definition of awsLambdaFunction
 class AwsLambdaFunctionPropertiesResponse {
   /// The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``.
-  final List<String>? architectures;
+  final pulumi.Input<List<String>>? architectures;
   /// Property arn
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The code for the function. The [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) for a Lambda function. To deploy a function defined as a container image, you specify the location of a container image in the Amazon ECR registry. For a .zip file deployment package, you can specify the location of an object in Amazon S3. For Node.js and Python functions, you can specify the function code inline in the template. Changes to a deployment package in Amazon S3 or a container image in ECR are not detected automatically during stack updates. To update the function code, change the object key or version in the template.
-  final CodeResponse? code;
+  final pulumi.Input<CodeResponse>? code;
   /// To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.
-  final String? codeSigningConfigArn;
+  final pulumi.Input<String>? codeSigningConfigArn;
   /// A dead-letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see [Dead-letter queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq). The [dead-letter queue](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq) for failed asynchronous invocations.
-  final DeadLetterConfigResponse? deadLetterConfig;
+  final pulumi.Input<DeadLetterConfigResponse>? deadLetterConfig;
   /// A description of the function.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Environment variables that are accessible from function code during execution. A function's environment variable settings. You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that are stored in a function's version-specific configuration.
-  final EnvironmentResponse? environment;
+  final pulumi.Input<EnvironmentResponse>? environment;
   /// The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
-  final EphemeralStorageResponse? ephemeralStorage;
+  final pulumi.Input<EphemeralStorageResponse>? ephemeralStorage;
   /// Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a ``DependsOn`` attribute to ensure that the mount target is created or updated before the function. For more information about using the ``DependsOn`` attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
-  final List<FileSystemConfigResponse>? fileSystemConfigs;
+  final pulumi.Input<List<FileSystemConfigResponse>>? fileSystemConfigs;
   /// The name of the Lambda function, up to 64 characters in length. If you don't specify a name, CFN generates one. If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.
-  final String? functionName;
+  final pulumi.Input<String>? functionName;
   /// The name of the method within your code that Lambda calls to run your function. Handler is required if the deployment package is a .zip file archive. The format includes the file name. It can also include namespaces and other qualifiers, depending on the runtime. For more information, see [Lambda programming model](https://docs.aws.amazon.com/lambda/latest/dg/foundation-progmodel.html).
-  final String? handler;
+  final pulumi.Input<String>? handler;
   /// Configuration values that override the container image Dockerfile settings. For more information, see [Container image settings](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms). Configuration values that override the container image Dockerfile settings. For more information, see [Container image settings](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms).
-  final ImageConfigResponse? imageConfig;
+  final pulumi.Input<ImageConfigResponse>? imageConfig;
   /// The ARN of the KMSlong (KMS) customer managed key that's used to encrypt your function's [environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption). When [Lambda SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html) is activated, Lambda also uses this key is to encrypt your function's snapshot. If you deploy your function using a container image, Lambda also uses this key to encrypt your function when it's deployed. Note that this is not the same key that's used to protect your container image in the Amazon Elastic Container Registry (Amazon ECR). If you don't provide a customer managed key, Lambda uses a default service key.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
   /// A list of [function layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) to add to the function's execution environment. Specify each layer by its ARN, including the version.
-  final List<String>? layers;
+  final pulumi.Input<List<String>>? layers;
   /// The function's Amazon CloudWatch Logs configuration settings. The function's Amazon CloudWatch Logs configuration settings.
-  final LoggingConfigResponse? loggingConfig;
+  final pulumi.Input<LoggingConfigResponse>? loggingConfig;
   /// The amount of [memory available to the function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console) at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB. Note that new AWS accounts have reduced concurrency and memory quotas. AWS raises these quotas automatically based on your usage. You can also request a quota increase.
-  final int? memorySize;
+  final pulumi.Input<int>? memorySize;
   /// The type of deployment package. Set to ``Image`` for container image and set ``Zip`` for .zip file archive.
-  final String? packageType;
+  final pulumi.Input<String>? packageType;
   /// The number of simultaneous executions to reserve for the function.
-  final int? reservedConcurrentExecutions;
+  final pulumi.Input<int>? reservedConcurrentExecutions;
   /// The Amazon Resource Name (ARN) of the function's execution role.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// The identifier of the function's [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html). Runtime is required if the deployment package is a .zip file archive. The following list includes deprecated runtimes. For more information, see [Runtime deprecation policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
-  final String? runtime;
+  final pulumi.Input<String>? runtime;
   /// Sets the runtime management configuration for a function's version. For more information, see [Runtime updates](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html). Sets the runtime management configuration for a function's version. For more information, see [Runtime updates](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html).
-  final RuntimeManagementConfigResponse? runtimeManagementConfig;
+  final pulumi.Input<RuntimeManagementConfigResponse>? runtimeManagementConfig;
   /// The function's [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) setting. The function's [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) setting.
-  final SnapStartResponse? snapStart;
+  final pulumi.Input<SnapStartResponse>? snapStart;
   /// The function's [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html) setting.
-  final SnapStartResponseResponse? snapStartResponse;
+  final pulumi.Input<SnapStartResponseResponse>? snapStartResponse;
   /// A list of [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to the function.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// The amount of time (in seconds) that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds. For more information, see [Lambda execution environment](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html).
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
   /// Set ``Mode`` to ``Active`` to sample and trace a subset of incoming requests with [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html). The function's [](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html) tracing configuration. To sample and record incoming requests, set ``Mode`` to ``Active``.
-  final TracingConfigResponse? tracingConfig;
+  final pulumi.Input<TracingConfigResponse>? tracingConfig;
   /// For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the ``ec2:DescribeNetworkInterfaces`` permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
-  final VpcConfigResponse? vpcConfig;
+  final pulumi.Input<VpcConfigResponse>? vpcConfig;
 
   /// Creates a new [AwsLambdaFunctionPropertiesResponse].
   /// [architectures] The instruction set architecture that the function supports. Enter a string array with one of the valid values (arm64 or x86_64). The default value is ``x86_64``.
@@ -134,63 +134,63 @@ class AwsLambdaFunctionPropertiesResponse {
     return <String, dynamic>{
       'architectures': ?architectures,
       'arn': ?arn,
-      'code': ?code == null ? null : code!.toMap(),
+      'code': ?pulumi.Input.mapOptionalInputValue<CodeResponse, Map<String, dynamic>>(code, (value) => value.toMap()),
       'codeSigningConfigArn': ?codeSigningConfigArn,
-      'deadLetterConfig': ?deadLetterConfig == null ? null : deadLetterConfig!.toMap(),
+      'deadLetterConfig': ?pulumi.Input.mapOptionalInputValue<DeadLetterConfigResponse, Map<String, dynamic>>(deadLetterConfig, (value) => value.toMap()),
       'description': ?description,
-      'environment': ?environment == null ? null : environment!.toMap(),
-      'ephemeralStorage': ?ephemeralStorage == null ? null : ephemeralStorage!.toMap(),
-      'fileSystemConfigs': ?fileSystemConfigs == null ? null : pulumi.Input.encodeList<FileSystemConfigResponse, Map<String, dynamic>>(fileSystemConfigs!, (value) => value.toMap()),
+      'environment': ?pulumi.Input.mapOptionalInputValue<EnvironmentResponse, Map<String, dynamic>>(environment, (value) => value.toMap()),
+      'ephemeralStorage': ?pulumi.Input.mapOptionalInputValue<EphemeralStorageResponse, Map<String, dynamic>>(ephemeralStorage, (value) => value.toMap()),
+      'fileSystemConfigs': ?pulumi.Input.mapOptionalInputValue<List<FileSystemConfigResponse>, List<Map<String, dynamic>>>(fileSystemConfigs, (value) => pulumi.Input.encodeList<FileSystemConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'functionName': ?functionName,
       'handler': ?handler,
-      'imageConfig': ?imageConfig == null ? null : imageConfig!.toMap(),
+      'imageConfig': ?pulumi.Input.mapOptionalInputValue<ImageConfigResponse, Map<String, dynamic>>(imageConfig, (value) => value.toMap()),
       'kmsKeyArn': ?kmsKeyArn,
       'layers': ?layers,
-      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<LoggingConfigResponse, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
       'memorySize': ?memorySize,
       'packageType': ?packageType,
       'reservedConcurrentExecutions': ?reservedConcurrentExecutions,
       'role': ?role,
       'runtime': ?runtime,
-      'runtimeManagementConfig': ?runtimeManagementConfig == null ? null : runtimeManagementConfig!.toMap(),
-      'snapStart': ?snapStart == null ? null : snapStart!.toMap(),
-      'snapStartResponse': ?snapStartResponse == null ? null : snapStartResponse!.toMap(),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'runtimeManagementConfig': ?pulumi.Input.mapOptionalInputValue<RuntimeManagementConfigResponse, Map<String, dynamic>>(runtimeManagementConfig, (value) => value.toMap()),
+      'snapStart': ?pulumi.Input.mapOptionalInputValue<SnapStartResponse, Map<String, dynamic>>(snapStart, (value) => value.toMap()),
+      'snapStartResponse': ?pulumi.Input.mapOptionalInputValue<SnapStartResponseResponse, Map<String, dynamic>>(snapStartResponse, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeout': ?timeout,
-      'tracingConfig': ?tracingConfig == null ? null : tracingConfig!.toMap(),
-      'vpcConfig': ?vpcConfig == null ? null : vpcConfig!.toMap(),
+      'tracingConfig': ?pulumi.Input.mapOptionalInputValue<TracingConfigResponse, Map<String, dynamic>>(tracingConfig, (value) => value.toMap()),
+      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<VpcConfigResponse, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
     };
   }
 
   factory AwsLambdaFunctionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsLambdaFunctionPropertiesResponse(
-      architectures: map['architectures'] == null ? null : (map['architectures'] as List).cast<String>(),
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      code: map['code'] == null ? null : CodeResponse.fromMap((map['code'] as Map).cast<String, dynamic>()),
-      codeSigningConfigArn: map['codeSigningConfigArn'] == null ? null : map['codeSigningConfigArn'] as String,
-      deadLetterConfig: map['deadLetterConfig'] == null ? null : DeadLetterConfigResponse.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      environment: map['environment'] == null ? null : EnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : EphemeralStorageResponse.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>()),
-      fileSystemConfigs: map['fileSystemConfigs'] == null ? null : pulumi.Input.decodeList<FileSystemConfigResponse>(map['fileSystemConfigs'], (value) => FileSystemConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      functionName: map['functionName'] == null ? null : map['functionName'] as String,
-      handler: map['handler'] == null ? null : map['handler'] as String,
-      imageConfig: map['imageConfig'] == null ? null : ImageConfigResponse.fromMap((map['imageConfig'] as Map).cast<String, dynamic>()),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      layers: map['layers'] == null ? null : (map['layers'] as List).cast<String>(),
-      loggingConfig: map['loggingConfig'] == null ? null : LoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
-      memorySize: map['memorySize'] == null ? null : map['memorySize'] as int,
-      packageType: map['packageType'] == null ? null : map['packageType'] as String,
-      reservedConcurrentExecutions: map['reservedConcurrentExecutions'] == null ? null : map['reservedConcurrentExecutions'] as int,
-      role: map['role'] == null ? null : map['role'] as String,
-      runtime: map['runtime'] == null ? null : map['runtime'] as String,
-      runtimeManagementConfig: map['runtimeManagementConfig'] == null ? null : RuntimeManagementConfigResponse.fromMap((map['runtimeManagementConfig'] as Map).cast<String, dynamic>()),
-      snapStart: map['snapStart'] == null ? null : SnapStartResponse.fromMap((map['snapStart'] as Map).cast<String, dynamic>()),
-      snapStartResponse: map['snapStartResponse'] == null ? null : SnapStartResponseResponse.fromMap((map['snapStartResponse'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
-      tracingConfig: map['tracingConfig'] == null ? null : TracingConfigResponse.fromMap((map['tracingConfig'] as Map).cast<String, dynamic>()),
-      vpcConfig: map['vpcConfig'] == null ? null : VpcConfigResponse.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>()),
+      architectures: map['architectures'] == null ? null : ((map['architectures'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      code: map['code'] == null ? null : (CodeResponse.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
+      codeSigningConfigArn: map['codeSigningConfigArn'] == null ? null : (map['codeSigningConfigArn'] as String).input(),
+      deadLetterConfig: map['deadLetterConfig'] == null ? null : (DeadLetterConfigResponse.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : (EnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (EphemeralStorageResponse.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>())).input(),
+      fileSystemConfigs: map['fileSystemConfigs'] == null ? null : (pulumi.Input.decodeList<FileSystemConfigResponse>(map['fileSystemConfigs'], (value) => FileSystemConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
+      imageConfig: map['imageConfig'] == null ? null : (ImageConfigResponse.fromMap((map['imageConfig'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      layers: map['layers'] == null ? null : ((map['layers'] as List).cast<String>()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      memorySize: map['memorySize'] == null ? null : (map['memorySize'] as int).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
+      reservedConcurrentExecutions: map['reservedConcurrentExecutions'] == null ? null : (map['reservedConcurrentExecutions'] as int).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      runtimeManagementConfig: map['runtimeManagementConfig'] == null ? null : (RuntimeManagementConfigResponse.fromMap((map['runtimeManagementConfig'] as Map).cast<String, dynamic>())).input(),
+      snapStart: map['snapStart'] == null ? null : (SnapStartResponse.fromMap((map['snapStart'] as Map).cast<String, dynamic>())).input(),
+      snapStartResponse: map['snapStartResponse'] == null ? null : (SnapStartResponseResponse.fromMap((map['snapStartResponse'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      tracingConfig: map['tracingConfig'] == null ? null : (TracingConfigResponse.fromMap((map['tracingConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (VpcConfigResponse.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

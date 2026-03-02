@@ -22,15 +22,11 @@ class EipDomainNameArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   EipDomainNameArgs({
-    required pulumi.Output<String> allocationId,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? region,
-    pulumi.Output<EipDomainNameTimeouts>? timeouts,
-  }) :
-      allocationId = pulumi.Input.asInput<String>(allocationId),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<EipDomainNameTimeouts>(timeouts);
+    required this.allocationId,
+    required this.domainName,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class EipDomainNameArgs {
 
   factory EipDomainNameArgs.fromMap(Map<String, dynamic> map) {
     return EipDomainNameArgs(
-      allocationId: pulumi.Output.create<String>(map['allocationId'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<EipDomainNameTimeouts>(EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      allocationId: (map['allocationId'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

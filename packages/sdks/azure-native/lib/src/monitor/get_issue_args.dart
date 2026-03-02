@@ -19,13 +19,10 @@ class GetIssueArgs {
   /// [issueName] The name of the IssueResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetIssueArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    required pulumi.Output<String> issueName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      issueName = pulumi.Input.asInput<String>(issueName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureMonitorWorkspaceName,
+    required this.issueName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIssueArgs {
 
   factory GetIssueArgs.fromMap(Map<String, dynamic> map) {
     return GetIssueArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      issueName: pulumi.Output.create<String>(map['issueName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      issueName: (map['issueName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

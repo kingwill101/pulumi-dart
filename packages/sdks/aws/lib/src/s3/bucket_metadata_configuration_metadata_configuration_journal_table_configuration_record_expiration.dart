@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration {
   /// Number of days to retain journal table records.
-  final int? days;
+  final pulumi.Input<int>? days;
   /// Whether journal table record expiration is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
-  final String expiration;
+  final pulumi.Input<String> expiration;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration].
   /// [days] Number of days to retain journal table records.
@@ -24,8 +25,8 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationR
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration(
-      days: map['days'] == null ? null : map['days'] as int,
-      expiration: map['expiration'] as String,
+      days: map['days'] == null ? null : (map['days'] as int).input(),
+      expiration: (map['expiration'] as String).input(),
     );
   }
 }

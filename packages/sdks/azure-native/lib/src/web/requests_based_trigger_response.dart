@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trigger based on total requests.
 class RequestsBasedTriggerResponse {
   /// Request Count.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Time interval.
-  final String? timeInterval;
+  final pulumi.Input<String>? timeInterval;
 
   /// Creates a new [RequestsBasedTriggerResponse].
   /// [count] Request Count.
@@ -25,8 +26,8 @@ class RequestsBasedTriggerResponse {
 
   factory RequestsBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return RequestsBasedTriggerResponse(
-      count: map['count'] == null ? null : map['count'] as int,
-      timeInterval: map['timeInterval'] == null ? null : map['timeInterval'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
     );
   }
 }

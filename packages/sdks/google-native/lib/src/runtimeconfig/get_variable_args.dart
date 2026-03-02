@@ -16,13 +16,10 @@ class GetVariableArgs {
   /// [project] Optional.
   /// [variableId] Required.
   GetVariableArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> variableId,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      variableId = pulumi.Input.asInput<String>(variableId);
+    required this.configId,
+    this.project,
+    required this.variableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetVariableArgs {
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      variableId: pulumi.Output.create<String>(map['variableId'] as String),
+      configId: (map['configId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      variableId: (map['variableId'] as String).input(),
     );
   }
 }

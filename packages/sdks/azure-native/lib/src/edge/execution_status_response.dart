@@ -6,13 +6,13 @@ import 'stage_status_response.dart';
 /// Execution Status
 class ExecutionStatusResponse {
   /// target resource statuses
-  final List<StageStatusResponse>? stageHistory;
+  final pulumi.Input<List<StageStatusResponse>>? stageHistory;
   /// Deployment status
-  final int? status;
+  final pulumi.Input<int>? status;
   /// status details
-  final String? statusMessage;
+  final pulumi.Input<String>? statusMessage;
   /// The lastModified timestamp of the Status
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
 
   /// Creates a new [ExecutionStatusResponse].
   /// [stageHistory] target resource statuses
@@ -28,7 +28,7 @@ class ExecutionStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stageHistory': ?stageHistory == null ? null : pulumi.Input.encodeList<StageStatusResponse, Map<String, dynamic>>(stageHistory!, (value) => value.toMap()),
+      'stageHistory': ?pulumi.Input.mapOptionalInputValue<List<StageStatusResponse>, List<Map<String, dynamic>>>(stageHistory, (value) => pulumi.Input.encodeList<StageStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': ?status,
       'statusMessage': ?statusMessage,
       'updateTime': ?updateTime,
@@ -37,10 +37,10 @@ class ExecutionStatusResponse {
 
   factory ExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatusResponse(
-      stageHistory: map['stageHistory'] == null ? null : pulumi.Input.decodeList<StageStatusResponse>(map['stageHistory'], (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as int,
-      statusMessage: map['statusMessage'] == null ? null : map['statusMessage'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      stageHistory: map['stageHistory'] == null ? null : (pulumi.Input.decodeList<StageStatusResponse>(map['stageHistory'], (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

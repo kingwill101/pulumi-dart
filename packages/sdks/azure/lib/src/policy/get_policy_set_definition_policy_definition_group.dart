@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicySetDefinitionPolicyDefinitionGroup {
   /// The ID of a resource that contains additional metadata about this policy definition group.
-  final String additionalMetadataResourceId;
+  final pulumi.Input<String> additionalMetadataResourceId;
   /// The category of this policy definition group.
-  final String category;
+  final pulumi.Input<String> category;
   /// The description of this policy definition group.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies the display name of the Policy Set Definition. Conflicts with `name`.
   ///
   /// **NOTE** As `display_name` is not unique errors may occur when there are multiple policy set definitions with same display name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetPolicySetDefinitionPolicyDefinitionGroup].
   /// [additionalMetadataResourceId] The ID of a resource that contains additional metadata about this policy definition group.
@@ -41,11 +42,11 @@ class GetPolicySetDefinitionPolicyDefinitionGroup {
 
   factory GetPolicySetDefinitionPolicyDefinitionGroup.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionPolicyDefinitionGroup(
-      additionalMetadataResourceId: map['additionalMetadataResourceId'] as String,
-      category: map['category'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
+      additionalMetadataResourceId: (map['additionalMetadataResourceId'] as String).input(),
+      category: (map['category'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

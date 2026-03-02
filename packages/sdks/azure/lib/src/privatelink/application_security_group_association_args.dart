@@ -16,11 +16,9 @@ class ApplicationSecurityGroupAssociationArgs {
   /// [applicationSecurityGroupId] The id of application security group to associate. Changing this forces a new resource to be created.
   /// [privateEndpointId] The id of private endpoint to associate. Changing this forces a new resource to be created.
   ApplicationSecurityGroupAssociationArgs({
-    required pulumi.Output<String> applicationSecurityGroupId,
-    required pulumi.Output<String> privateEndpointId,
-  }) :
-      applicationSecurityGroupId = pulumi.Input.asInput<String>(applicationSecurityGroupId),
-      privateEndpointId = pulumi.Input.asInput<String>(privateEndpointId);
+    required this.applicationSecurityGroupId,
+    required this.privateEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationSecurityGroupAssociationArgs {
 
   factory ApplicationSecurityGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationSecurityGroupAssociationArgs(
-      applicationSecurityGroupId: pulumi.Output.create<String>(map['applicationSecurityGroupId'] as String),
-      privateEndpointId: pulumi.Output.create<String>(map['privateEndpointId'] as String),
+      applicationSecurityGroupId: (map['applicationSecurityGroupId'] as String).input(),
+      privateEndpointId: (map['privateEndpointId'] as String).input(),
     );
   }
 }

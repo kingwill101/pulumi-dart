@@ -23,15 +23,11 @@ class KeyspaceArgs {
   /// [replicationSpecification] The replication specification of the keyspace.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   KeyspaceArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<KeyspaceReplicationSpecification>? replicationSpecification,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationSpecification = pulumi.Input.asOptionalInput<KeyspaceReplicationSpecification>(replicationSpecification),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.region,
+    this.replicationSpecification,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class KeyspaceArgs {
 
   factory KeyspaceArgs.fromMap(Map<String, dynamic> map) {
     return KeyspaceArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationSpecification: map['replicationSpecification'] == null ? null : pulumi.Output.create<KeyspaceReplicationSpecification>(KeyspaceReplicationSpecification.fromMap((map['replicationSpecification'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationSpecification: map['replicationSpecification'] == null ? null : (KeyspaceReplicationSpecification.fromMap((map['replicationSpecification'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -7,13 +7,13 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
   /// (Output)
   /// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
   /// Structure is documented below.
-  final List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>? errorStatuses;
+  final pulumi.Input<List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>>? errorStatuses;
   /// (Output)
   /// The timestamp of this workflow attempt.
-  final String? executionTime;
+  final pulumi.Input<String>? executionTime;
   /// (Output)
   /// The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
-  final String? workflowInvocation;
+  final pulumi.Input<String>? workflowInvocation;
 
   /// Creates a new [RepositoryWorkflowConfigRecentScheduledExecutionRecord].
   /// [errorStatuses] (Output)
@@ -27,7 +27,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorStatuses': ?errorStatuses == null ? null : pulumi.Input.encodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus, Map<String, dynamic>>(errorStatuses!, (value) => value.toMap()),
+      'errorStatuses': ?pulumi.Input.mapOptionalInputValue<List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>, List<Map<String, dynamic>>>(errorStatuses, (value) => pulumi.Input.encodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'executionTime': ?executionTime,
       'workflowInvocation': ?workflowInvocation,
     };
@@ -35,9 +35,9 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
 
   factory RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigRecentScheduledExecutionRecord(
-      errorStatuses: map['errorStatuses'] == null ? null : pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>(map['errorStatuses'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>())),
-      executionTime: map['executionTime'] == null ? null : map['executionTime'] as String,
-      workflowInvocation: map['workflowInvocation'] == null ? null : map['workflowInvocation'] as String,
+      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>(map['errorStatuses'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      executionTime: map['executionTime'] == null ? null : (map['executionTime'] as String).input(),
+      workflowInvocation: map['workflowInvocation'] == null ? null : (map['workflowInvocation'] as String).input(),
     );
   }
 }

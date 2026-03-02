@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// The name of the Glue table catalog.
-  final String? catalog;
+  final pulumi.Input<String>? catalog;
   /// The name of the Glue table database.
-  final String? database;
+  final pulumi.Input<String>? database;
   /// The name of the Glue table.
-  final String? tableName;
+  final pulumi.Input<String>? tableName;
 
   /// Creates a new [FeatureGroupOfflineStoreConfigDataCatalogConfig].
   /// [catalog] The name of the Glue table catalog.
@@ -29,9 +30,9 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
 
   factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfigDataCatalogConfig(
-      catalog: map['catalog'] == null ? null : map['catalog'] as String,
-      database: map['database'] == null ? null : map['database'] as String,
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      catalog: map['catalog'] == null ? null : (map['catalog'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

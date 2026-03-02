@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCommonBandwidthPackagesPackagePublicIpAddress {
-  final String allocationId;
-  final String bandwidthPackageIpRelationStatus;
-  final String ipAddress;
+  final pulumi.Input<String> allocationId;
+  final pulumi.Input<String> bandwidthPackageIpRelationStatus;
+  final pulumi.Input<String> ipAddress;
 
   /// Creates a new [GetCommonBandwidthPackagesPackagePublicIpAddress].
   /// [allocationId] Required.
@@ -26,9 +27,9 @@ class GetCommonBandwidthPackagesPackagePublicIpAddress {
 
   factory GetCommonBandwidthPackagesPackagePublicIpAddress.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesPackagePublicIpAddress(
-      allocationId: map['allocationId'] as String,
-      bandwidthPackageIpRelationStatus: map['bandwidthPackageIpRelationStatus'] as String,
-      ipAddress: map['ipAddress'] as String,
+      allocationId: (map['allocationId'] as String).input(),
+      bandwidthPackageIpRelationStatus: (map['bandwidthPackageIpRelationStatus'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
     );
   }
 }

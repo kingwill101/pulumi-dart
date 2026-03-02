@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The leaf certificate configuration.
 class LeafCertificateConfigurationResponse {
   /// The validity period in days.
-  final int validityPeriodInDays;
+  final pulumi.Input<int> validityPeriodInDays;
 
   /// Creates a new [LeafCertificateConfigurationResponse].
   /// [validityPeriodInDays] The validity period in days.
@@ -20,7 +21,7 @@ class LeafCertificateConfigurationResponse {
 
   factory LeafCertificateConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LeafCertificateConfigurationResponse(
-      validityPeriodInDays: map['validityPeriodInDays'] as int,
+      validityPeriodInDays: (map['validityPeriodInDays'] as int).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class AgentPoolArgs {
   /// [name] Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   /// [project] Optional.
   AgentPoolArgs({
-    required pulumi.Output<String> agentPoolId,
-    pulumi.Output<BandwidthLimit>? bandwidthLimit,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      agentPoolId = pulumi.Input.asInput<String>(agentPoolId),
-      bandwidthLimit = pulumi.Input.asOptionalInput<BandwidthLimit>(bandwidthLimit),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.agentPoolId,
+    this.bandwidthLimit,
+    this.displayName,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      agentPoolId: pulumi.Output.create<String>(map['agentPoolId'] as String),
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : pulumi.Output.create<BandwidthLimit>(BandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      agentPoolId: (map['agentPoolId'] as String).input(),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (BandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

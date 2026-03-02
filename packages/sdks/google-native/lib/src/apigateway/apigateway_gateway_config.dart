@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apigateway_backend_config.dart';
 
 /// Configuration settings for Gateways.
 class ApigatewayGatewayConfig {
   /// Backend settings that are applied to all backends of the Gateway.
-  final ApigatewayBackendConfig backendConfig;
+  final pulumi.Input<ApigatewayBackendConfig> backendConfig;
 
   /// Creates a new [ApigatewayGatewayConfig].
   /// [backendConfig] Backend settings that are applied to all backends of the Gateway.
@@ -15,13 +16,13 @@ class ApigatewayGatewayConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendConfig': backendConfig.toMap(),
+      'backendConfig': pulumi.Input.mapInputValue<ApigatewayBackendConfig, Map<String, dynamic>>(backendConfig, (value) => value.toMap()),
     };
   }
 
   factory ApigatewayGatewayConfig.fromMap(Map<String, dynamic> map) {
     return ApigatewayGatewayConfig(
-      backendConfig: ApigatewayBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>()),
+      backendConfig: (ApigatewayBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

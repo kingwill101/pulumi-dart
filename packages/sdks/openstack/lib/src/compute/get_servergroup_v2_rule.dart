@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServergroupV2Rule {
-  final int maxServerPerHost;
+  final pulumi.Input<int> maxServerPerHost;
 
   /// Creates a new [GetServergroupV2Rule].
   /// [maxServerPerHost] Required.
@@ -18,7 +19,7 @@ class GetServergroupV2Rule {
 
   factory GetServergroupV2Rule.fromMap(Map<String, dynamic> map) {
     return GetServergroupV2Rule(
-      maxServerPerHost: map['maxServerPerHost'] as int,
+      maxServerPerHost: (map['maxServerPerHost'] as int).input(),
     );
   }
 }

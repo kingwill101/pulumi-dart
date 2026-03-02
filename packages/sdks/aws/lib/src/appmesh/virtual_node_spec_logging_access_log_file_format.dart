@@ -5,9 +5,9 @@ import 'virtual_node_spec_logging_access_log_file_format_json.dart';
 
 class VirtualNodeSpecLoggingAccessLogFileFormat {
   /// The logging format for JSON.
-  final List<VirtualNodeSpecLoggingAccessLogFileFormatJson>? jsons;
+  final pulumi.Input<List<VirtualNodeSpecLoggingAccessLogFileFormatJson>>? jsons;
   /// The logging format for text. Must be between 1 and 1000 characters in length.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLogFileFormat].
   /// [jsons] The logging format for JSON.
@@ -19,15 +19,15 @@ class VirtualNodeSpecLoggingAccessLogFileFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsons': ?jsons == null ? null : pulumi.Input.encodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson, Map<String, dynamic>>(jsons!, (value) => value.toMap()),
+      'jsons': ?pulumi.Input.mapOptionalInputValue<List<VirtualNodeSpecLoggingAccessLogFileFormatJson>, List<Map<String, dynamic>>>(jsons, (value) => pulumi.Input.encodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson, Map<String, dynamic>>(value, (value) => value.toMap())),
       'text': ?text,
     };
   }
 
   factory VirtualNodeSpecLoggingAccessLogFileFormat.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLoggingAccessLogFileFormat(
-      jsons: map['jsons'] == null ? null : pulumi.Input.decodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson>(map['jsons'], (value) => VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>())),
-      text: map['text'] == null ? null : map['text'] as String,
+      jsons: map['jsons'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson>(map['jsons'], (value) => VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

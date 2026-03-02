@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleModifyResponseHeaderAction {
   /// Action to be executed on a header value. Valid values are `Append`, `Delete` and `Overwrite`.
-  final String action;
+  final pulumi.Input<String> action;
   /// The header name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the header. Only needed when `action` is set to `Append` or `overwrite`.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [EndpointDeliveryRuleModifyResponseHeaderAction].
   /// [action] Action to be executed on a header value. Valid values are `Append`, `Delete` and `Overwrite`.
@@ -29,9 +30,9 @@ class EndpointDeliveryRuleModifyResponseHeaderAction {
 
   factory EndpointDeliveryRuleModifyResponseHeaderAction.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleModifyResponseHeaderAction(
-      action: map['action'] as String,
-      name: map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      action: (map['action'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

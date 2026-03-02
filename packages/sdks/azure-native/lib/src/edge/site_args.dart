@@ -20,13 +20,10 @@ class SiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of the Site
   SiteArgs({
-    pulumi.Output<SiteProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? siteName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SiteProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asOptionalInput<String>(siteName);
+    this.properties,
+    required this.resourceGroupName,
+    this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SiteProperties>(SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: map['siteName'] == null ? null : pulumi.Output.create<String>(map['siteName'] as String),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
     );
   }
 }

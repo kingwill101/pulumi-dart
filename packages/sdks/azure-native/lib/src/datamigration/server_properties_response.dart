@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Server properties for MySQL type source
 class ServerPropertiesResponse {
   /// Number of databases in the server
-  final int serverDatabaseCount;
+  final pulumi.Input<int> serverDatabaseCount;
   /// Edition of the database server
-  final String serverEdition;
+  final pulumi.Input<String> serverEdition;
   /// Name of the server
-  final String serverName;
+  final pulumi.Input<String> serverName;
   /// Version of the operating system
-  final String serverOperatingSystemVersion;
+  final pulumi.Input<String> serverOperatingSystemVersion;
   /// Name of the server platform
-  final String serverPlatform;
+  final pulumi.Input<String> serverPlatform;
   /// Version of the database server
-  final String serverVersion;
+  final pulumi.Input<String> serverVersion;
 
   /// Creates a new [ServerPropertiesResponse].
   /// [serverDatabaseCount] Number of databases in the server
@@ -45,12 +46,12 @@ class ServerPropertiesResponse {
 
   factory ServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServerPropertiesResponse(
-      serverDatabaseCount: map['serverDatabaseCount'] as int,
-      serverEdition: map['serverEdition'] as String,
-      serverName: map['serverName'] as String,
-      serverOperatingSystemVersion: map['serverOperatingSystemVersion'] as String,
-      serverPlatform: map['serverPlatform'] as String,
-      serverVersion: map['serverVersion'] as String,
+      serverDatabaseCount: (map['serverDatabaseCount'] as int).input(),
+      serverEdition: (map['serverEdition'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      serverOperatingSystemVersion: (map['serverOperatingSystemVersion'] as String).input(),
+      serverPlatform: (map['serverPlatform'] as String).input(),
+      serverVersion: (map['serverVersion'] as String).input(),
     );
   }
 }

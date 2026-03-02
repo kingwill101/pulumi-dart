@@ -16,11 +16,9 @@ class ListenerAdditionalCertificateAttachmentArgs {
   /// [certificateId] The Certificate ID.
   /// [listenerId] The ID of the ALB listener.
   ListenerAdditionalCertificateAttachmentArgs({
-    required pulumi.Output<String> certificateId,
-    required pulumi.Output<String> listenerId,
-  }) :
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.certificateId,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListenerAdditionalCertificateAttachmentArgs {
 
   factory ListenerAdditionalCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentArgs(
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      certificateId: (map['certificateId'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

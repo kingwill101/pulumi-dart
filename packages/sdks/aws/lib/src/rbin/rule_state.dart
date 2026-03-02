@@ -49,33 +49,20 @@ class RuleState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   RuleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<RuleExcludeResourceTag>>? excludeResourceTags,
-    pulumi.Output<RuleLockConfiguration>? lockConfiguration,
-    pulumi.Output<String>? lockEndTime,
-    pulumi.Output<String>? lockState,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<RuleResourceTag>>? resourceTags,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<RuleRetentionPeriod>? retentionPeriod,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludeResourceTags = pulumi.Input.asOptionalInput<List<RuleExcludeResourceTag>>(excludeResourceTags),
-      lockConfiguration = pulumi.Input.asOptionalInput<RuleLockConfiguration>(lockConfiguration),
-      lockEndTime = pulumi.Input.asOptionalInput<String>(lockEndTime),
-      lockState = pulumi.Input.asOptionalInput<String>(lockState),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTags = pulumi.Input.asOptionalInput<List<RuleResourceTag>>(resourceTags),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      retentionPeriod = pulumi.Input.asOptionalInput<RuleRetentionPeriod>(retentionPeriod),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.excludeResourceTags,
+    this.lockConfiguration,
+    this.lockEndTime,
+    this.lockState,
+    this.region,
+    this.resourceTags,
+    this.resourceType,
+    this.retentionPeriod,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludeResourceTags: map['excludeResourceTags'] == null ? null : pulumi.Output.create<List<RuleExcludeResourceTag>>(pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))),
-      lockConfiguration: map['lockConfiguration'] == null ? null : pulumi.Output.create<RuleLockConfiguration>(RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())),
-      lockEndTime: map['lockEndTime'] == null ? null : pulumi.Output.create<String>(map['lockEndTime'] as String),
-      lockState: map['lockState'] == null ? null : pulumi.Output.create<String>(map['lockState'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTags: map['resourceTags'] == null ? null : pulumi.Output.create<List<RuleResourceTag>>(pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<RuleRetentionPeriod>(RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludeResourceTags: map['excludeResourceTags'] == null ? null : (pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lockConfiguration: map['lockConfiguration'] == null ? null : (RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())).input(),
+      lockEndTime: map['lockEndTime'] == null ? null : (map['lockEndTime'] as String).input(),
+      lockState: map['lockState'] == null ? null : (map['lockState'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTags: map['resourceTags'] == null ? null : (pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

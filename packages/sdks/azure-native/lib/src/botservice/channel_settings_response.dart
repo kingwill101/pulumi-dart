@@ -6,25 +6,25 @@ import 'site_response.dart';
 /// Channel settings definition
 class ChannelSettingsResponse {
   /// The bot icon url
-  final String? botIconUrl;
+  final pulumi.Input<String>? botIconUrl;
   /// The bot id
-  final String? botId;
+  final pulumi.Input<String>? botId;
   /// The channel display name
-  final String? channelDisplayName;
+  final pulumi.Input<String>? channelDisplayName;
   /// The channel id
-  final String? channelId;
+  final pulumi.Input<String>? channelId;
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-  final bool? disableLocalAuth;
+  final pulumi.Input<bool>? disableLocalAuth;
   /// The extensionKey1
-  final String? extensionKey1;
+  final pulumi.Input<String>? extensionKey1;
   /// The extensionKey2
-  final String? extensionKey2;
+  final pulumi.Input<String>? extensionKey2;
   /// Whether this channel is enabled for the bot
-  final bool? isEnabled;
+  final pulumi.Input<bool>? isEnabled;
   /// Whether customer needs to agree to new terms.
-  final bool? requireTermsAgreement;
+  final pulumi.Input<bool>? requireTermsAgreement;
   /// The list of sites
-  final List<SiteResponse>? sites;
+  final pulumi.Input<List<SiteResponse>>? sites;
 
   /// Creates a new [ChannelSettingsResponse].
   /// [botIconUrl] The bot icon url
@@ -61,22 +61,22 @@ class ChannelSettingsResponse {
       'extensionKey2': ?extensionKey2,
       'isEnabled': ?isEnabled,
       'requireTermsAgreement': ?requireTermsAgreement,
-      'sites': ?sites == null ? null : pulumi.Input.encodeList<SiteResponse, Map<String, dynamic>>(sites!, (value) => value.toMap()),
+      'sites': ?pulumi.Input.mapOptionalInputValue<List<SiteResponse>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<SiteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ChannelSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ChannelSettingsResponse(
-      botIconUrl: map['botIconUrl'] == null ? null : map['botIconUrl'] as String,
-      botId: map['botId'] == null ? null : map['botId'] as String,
-      channelDisplayName: map['channelDisplayName'] == null ? null : map['channelDisplayName'] as String,
-      channelId: map['channelId'] == null ? null : map['channelId'] as String,
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : map['disableLocalAuth'] as bool,
-      extensionKey1: map['extensionKey1'] == null ? null : map['extensionKey1'] as String,
-      extensionKey2: map['extensionKey2'] == null ? null : map['extensionKey2'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      requireTermsAgreement: map['requireTermsAgreement'] == null ? null : map['requireTermsAgreement'] as bool,
-      sites: map['sites'] == null ? null : pulumi.Input.decodeList<SiteResponse>(map['sites'], (value) => SiteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      botIconUrl: map['botIconUrl'] == null ? null : (map['botIconUrl'] as String).input(),
+      botId: map['botId'] == null ? null : (map['botId'] as String).input(),
+      channelDisplayName: map['channelDisplayName'] == null ? null : (map['channelDisplayName'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1'] as String).input(),
+      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      requireTermsAgreement: map['requireTermsAgreement'] == null ? null : (map['requireTermsAgreement'] as bool).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<SiteResponse>(map['sites'], (value) => SiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

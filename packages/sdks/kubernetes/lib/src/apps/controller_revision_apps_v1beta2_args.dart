@@ -26,17 +26,12 @@ class ControllerRevisionAppsV1beta2Args {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [revision] Revision indicates the revision of the state represented by Data.
   ControllerRevisionAppsV1beta2Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<dynamic>? data,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    required pulumi.Output<int> revision,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      data = pulumi.Input.asOptionalInput<dynamic>(data),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      revision = pulumi.Input.asInput<int>(revision);
+    this.apiVersion,
+    this.data,
+    this.kind,
+    this.metadata,
+    required this.revision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ControllerRevisionAppsV1beta2Args {
 
   factory ControllerRevisionAppsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return ControllerRevisionAppsV1beta2Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      data: map['data'] == null ? null : pulumi.Output.create<dynamic>(map['data']),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      revision: pulumi.Output.create<int>(map['revision'] as int),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      data: map['data'] == null ? null : (map['data']).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      revision: (map['revision'] as int).input(),
     );
   }
 }

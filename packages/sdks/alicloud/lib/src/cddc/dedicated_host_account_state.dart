@@ -19,15 +19,11 @@ class DedicatedHostAccountState {
   /// [accountType] The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
   /// [dedicatedHostId] The ID of Dedicated the host.
   DedicatedHostAccountState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? accountPassword,
-    pulumi.Output<String>? accountType,
-    pulumi.Output<String>? dedicatedHostId,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      accountPassword = pulumi.Input.asOptionalInput<String>(accountPassword),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      dedicatedHostId = pulumi.Input.asOptionalInput<String>(dedicatedHostId);
+    this.accountName,
+    this.accountPassword,
+    this.accountType,
+    this.dedicatedHostId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DedicatedHostAccountState {
 
   factory DedicatedHostAccountState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAccountState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: map['accountPassword'] == null ? null : pulumi.Output.create<String>(map['accountPassword'] as String),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : pulumi.Output.create<String>(map['dedicatedHostId'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class MemberArgs {
   /// [message] A custom message to include in the invitation. Amazon Detective adds this message to the standard content that it sends for an invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MemberArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<bool>? disableEmailNotification,
-    required pulumi.Output<String> emailAddress,
-    required pulumi.Output<String> graphArn,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      disableEmailNotification = pulumi.Input.asOptionalInput<bool>(disableEmailNotification),
-      emailAddress = pulumi.Input.asInput<String>(emailAddress),
-      graphArn = pulumi.Input.asInput<String>(graphArn),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accountId,
+    this.disableEmailNotification,
+    required this.emailAddress,
+    required this.graphArn,
+    this.message,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class MemberArgs {
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      disableEmailNotification: map['disableEmailNotification'] == null ? null : pulumi.Output.create<bool>(map['disableEmailNotification'] as bool),
-      emailAddress: pulumi.Output.create<String>(map['emailAddress'] as String),
-      graphArn: pulumi.Output.create<String>(map['graphArn'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: (map['accountId'] as String).input(),
+      disableEmailNotification: map['disableEmailNotification'] == null ? null : (map['disableEmailNotification'] as bool).input(),
+      emailAddress: (map['emailAddress'] as String).input(),
+      graphArn: (map['graphArn'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

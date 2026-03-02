@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderNativeApplicationOidcOptions {
-  final String? authorizationEndpoint;
-  final String? clientId;
-  final String clientSecret;
-  final String? issuer;
-  final String? publicSigningKeyEndpoint;
-  final String? scope;
-  final String? tokenEndpoint;
-  final String? userInfoEndpoint;
+  final pulumi.Input<String>? authorizationEndpoint;
+  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String> clientSecret;
+  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String>? publicSigningKeyEndpoint;
+  final pulumi.Input<String>? scope;
+  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String>? userInfoEndpoint;
 
   /// Creates a new [TrustProviderNativeApplicationOidcOptions].
   /// [authorizationEndpoint] Optional.
@@ -46,14 +47,14 @@ class TrustProviderNativeApplicationOidcOptions {
 
   factory TrustProviderNativeApplicationOidcOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderNativeApplicationOidcOptions(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : map['authorizationEndpoint'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : map['publicSigningKeyEndpoint'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : map['userInfoEndpoint'] as String,
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : (map['publicSigningKeyEndpoint'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : (map['userInfoEndpoint'] as String).input(),
     );
   }
 }

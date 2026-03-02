@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
   /// The description of the Compute Engine instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// The machine type of the instance.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Name of the compute instance backed up by the datasource.
-  final String name;
+  final pulumi.Input<String> name;
   /// The total number of disks attached to the Instance.
-  final String totalDiskCount;
+  final pulumi.Input<String> totalDiskCount;
   /// The sum of all the disk sizes.
-  final String totalDiskSizeGb;
+  final pulumi.Input<String> totalDiskSizeGb;
 
   /// Creates a new [GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty].
   /// [description] The description of the Compute Engine instance.
@@ -39,11 +40,11 @@ class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
 
   factory GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty.fromMap(Map<String, dynamic> map) {
     return GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty(
-      description: map['description'] as String,
-      machineType: map['machineType'] as String,
-      name: map['name'] as String,
-      totalDiskCount: map['totalDiskCount'] as String,
-      totalDiskSizeGb: map['totalDiskSizeGb'] as String,
+      description: (map['description'] as String).input(),
+      machineType: (map['machineType'] as String).input(),
+      name: (map['name'] as String).input(),
+      totalDiskCount: (map['totalDiskCount'] as String).input(),
+      totalDiskSizeGb: (map['totalDiskSizeGb'] as String).input(),
     );
   }
 }

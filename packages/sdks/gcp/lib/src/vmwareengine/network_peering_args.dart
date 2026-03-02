@@ -45,27 +45,17 @@ class NetworkPeeringArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   NetworkPeeringArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? exportCustomRoutes,
-    pulumi.Output<bool>? exportCustomRoutesWithPublicIp,
-    pulumi.Output<bool>? importCustomRoutes,
-    pulumi.Output<bool>? importCustomRoutesWithPublicIp,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> peerNetwork,
-    required pulumi.Output<String> peerNetworkType,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exportCustomRoutes = pulumi.Input.asOptionalInput<bool>(exportCustomRoutes),
-      exportCustomRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(exportCustomRoutesWithPublicIp),
-      importCustomRoutes = pulumi.Input.asOptionalInput<bool>(importCustomRoutes),
-      importCustomRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(importCustomRoutesWithPublicIp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerNetwork = pulumi.Input.asInput<String>(peerNetwork),
-      peerNetworkType = pulumi.Input.asInput<String>(peerNetworkType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
+    this.description,
+    this.exportCustomRoutes,
+    this.exportCustomRoutesWithPublicIp,
+    this.importCustomRoutes,
+    this.importCustomRoutesWithPublicIp,
+    this.name,
+    required this.peerNetwork,
+    required this.peerNetworkType,
+    this.project,
+    required this.vmwareEngineNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['exportCustomRoutes'] as bool),
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['exportCustomRoutesWithPublicIp'] as bool),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['importCustomRoutes'] as bool),
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['importCustomRoutesWithPublicIp'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerNetwork: pulumi.Output.create<String>(map['peerNetwork'] as String),
-      peerNetworkType: pulumi.Output.create<String>(map['peerNetworkType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vmwareEngineNetwork: pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp'] as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerNetwork: (map['peerNetwork'] as String).input(),
+      peerNetworkType: (map['peerNetworkType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }
 }

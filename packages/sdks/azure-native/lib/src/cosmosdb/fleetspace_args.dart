@@ -32,21 +32,14 @@ class FleetspaceArgs {
   /// [serviceTier] Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
   /// [throughputPoolConfiguration] Configuration for throughput pool in the fleetspace.
   FleetspaceArgs({
-    pulumi.Output<List<String>>? dataRegions,
-    required pulumi.Output<String> fleetName,
-    pulumi.Output<String>? fleetspaceApiKind,
-    pulumi.Output<String>? fleetspaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceTier,
-    pulumi.Output<FleetspacePropertiesThroughputPoolConfiguration>? throughputPoolConfiguration,
-  }) :
-      dataRegions = pulumi.Input.asOptionalInput<List<String>>(dataRegions),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      fleetspaceApiKind = pulumi.Input.asOptionalInput<String>(fleetspaceApiKind),
-      fleetspaceName = pulumi.Input.asOptionalInput<String>(fleetspaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceTier = pulumi.Input.asOptionalInput<String>(serviceTier),
-      throughputPoolConfiguration = pulumi.Input.asOptionalInput<FleetspacePropertiesThroughputPoolConfiguration>(throughputPoolConfiguration);
+    this.dataRegions,
+    required this.fleetName,
+    this.fleetspaceApiKind,
+    this.fleetspaceName,
+    required this.resourceGroupName,
+    this.serviceTier,
+    this.throughputPoolConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class FleetspaceArgs {
 
   factory FleetspaceArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceArgs(
-      dataRegions: map['dataRegions'] == null ? null : pulumi.Output.create<List<String>>((map['dataRegions'] as List).cast<String>()),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : pulumi.Output.create<String>(map['fleetspaceApiKind'] as String),
-      fleetspaceName: map['fleetspaceName'] == null ? null : pulumi.Output.create<String>(map['fleetspaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceTier: map['serviceTier'] == null ? null : pulumi.Output.create<String>(map['serviceTier'] as String),
-      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : pulumi.Output.create<FleetspacePropertiesThroughputPoolConfiguration>(FleetspacePropertiesThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration'] as Map).cast<String, dynamic>())),
+      dataRegions: map['dataRegions'] == null ? null : ((map['dataRegions'] as List).cast<String>()).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : (map['fleetspaceApiKind'] as String).input(),
+      fleetspaceName: map['fleetspaceName'] == null ? null : (map['fleetspaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceTier: map['serviceTier'] == null ? null : (map['serviceTier'] as String).input(),
+      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : (FleetspacePropertiesThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

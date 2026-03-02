@@ -46,29 +46,18 @@ class WorkbookArgs {
   /// [storageContainerId] Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   /// [tags] A mapping of tags which should be assigned to the Workbook.
   WorkbookArgs({
-    pulumi.Output<String>? category,
-    required pulumi.Output<String> dataJson,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<WorkbookIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? storageContainerId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      dataJson = pulumi.Input.asInput<String>(dataJson),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<WorkbookIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      storageContainerId = pulumi.Input.asOptionalInput<String>(storageContainerId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.category,
+    required this.dataJson,
+    this.description,
+    required this.displayName,
+    this.identity,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.sourceId,
+    this.storageContainerId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class WorkbookArgs {
 
   factory WorkbookArgs.fromMap(Map<String, dynamic> map) {
     return WorkbookArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      dataJson: pulumi.Output.create<String>(map['dataJson'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<WorkbookIdentity>(WorkbookIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      storageContainerId: map['storageContainerId'] == null ? null : pulumi.Output.create<String>(map['storageContainerId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      dataJson: (map['dataJson'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (WorkbookIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

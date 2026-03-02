@@ -42,27 +42,17 @@ class StorageClassArgs {
   /// [reclaimPolicy] reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.
   /// [volumeBindingMode] volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
   StorageClassArgs({
-    pulumi.Output<bool>? allowVolumeExpansion,
-    pulumi.Output<List<TopologySelectorTerm>>? allowedTopologies,
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<List<String>>? mountOptions,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> provisioner,
-    pulumi.Output<String>? reclaimPolicy,
-    pulumi.Output<String>? volumeBindingMode,
-  }) :
-      allowVolumeExpansion = pulumi.Input.asOptionalInput<bool>(allowVolumeExpansion),
-      allowedTopologies = pulumi.Input.asOptionalInput<List<TopologySelectorTerm>>(allowedTopologies),
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      mountOptions = pulumi.Input.asOptionalInput<List<String>>(mountOptions),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      provisioner = pulumi.Input.asInput<String>(provisioner),
-      reclaimPolicy = pulumi.Input.asOptionalInput<String>(reclaimPolicy),
-      volumeBindingMode = pulumi.Input.asOptionalInput<String>(volumeBindingMode);
+    this.allowVolumeExpansion,
+    this.allowedTopologies,
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.mountOptions,
+    this.parameters,
+    required this.provisioner,
+    this.reclaimPolicy,
+    this.volumeBindingMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class StorageClassArgs {
 
   factory StorageClassArgs.fromMap(Map<String, dynamic> map) {
     return StorageClassArgs(
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : pulumi.Output.create<bool>(map['allowVolumeExpansion'] as bool),
-      allowedTopologies: map['allowedTopologies'] == null ? null : pulumi.Output.create<List<TopologySelectorTerm>>(pulumi.Input.decodeList<TopologySelectorTerm>(map['allowedTopologies'], (value) => TopologySelectorTerm.fromMap((value as Map).cast<String, dynamic>()))),
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      mountOptions: map['mountOptions'] == null ? null : pulumi.Output.create<List<String>>((map['mountOptions'] as List).cast<String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      provisioner: pulumi.Output.create<String>(map['provisioner'] as String),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : pulumi.Output.create<String>(map['reclaimPolicy'] as String),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : pulumi.Output.create<String>(map['volumeBindingMode'] as String),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion'] as bool).input(),
+      allowedTopologies: map['allowedTopologies'] == null ? null : (pulumi.Input.decodeList<TopologySelectorTerm>(map['allowedTopologies'], (value) => TopologySelectorTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      provisioner: (map['provisioner'] as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode'] as String).input(),
     );
   }
 }

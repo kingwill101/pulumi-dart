@@ -27,17 +27,12 @@ class AppEngineVersionIamPolicyArgs {
   /// [service] Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   /// [versionId] Used to find the parent resource to bind the IAM policy to
   AppEngineVersionIamPolicyArgs({
-    required pulumi.Output<String> appId,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-    required pulumi.Output<String> versionId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    required this.appId,
+    required this.policyData,
+    this.project,
+    required this.service,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AppEngineVersionIamPolicyArgs {
 
   factory AppEngineVersionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamPolicyArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      appId: (map['appId'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

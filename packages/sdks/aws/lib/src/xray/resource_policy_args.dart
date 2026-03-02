@@ -27,17 +27,12 @@ class ResourcePolicyArgs {
   /// [policyRevisionId] Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account. If the policy revision id does not match the latest revision id, the operation will fail with an InvalidPolicyRevisionIdException exception. You can also provide a PolicyRevisionId of 0. In this case, the operation will fail with an InvalidPolicyRevisionIdException exception if a resource policy with the same name already exists.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ResourcePolicyArgs({
-    pulumi.Output<bool>? bypassPolicyLockoutCheck,
-    required pulumi.Output<String> policyDocument,
-    required pulumi.Output<String> policyName,
-    pulumi.Output<String>? policyRevisionId,
-    pulumi.Output<String>? region,
-  }) :
-      bypassPolicyLockoutCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutCheck),
-      policyDocument = pulumi.Input.asInput<String>(policyDocument),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyRevisionId = pulumi.Input.asOptionalInput<String>(policyRevisionId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.bypassPolicyLockoutCheck,
+    required this.policyDocument,
+    required this.policyName,
+    this.policyRevisionId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutCheck'] as bool),
-      policyDocument: pulumi.Output.create<String>(map['policyDocument'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyRevisionId: map['policyRevisionId'] == null ? null : pulumi.Output.create<String>(map['policyRevisionId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : (map['bypassPolicyLockoutCheck'] as bool).input(),
+      policyDocument: (map['policyDocument'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      policyRevisionId: map['policyRevisionId'] == null ? null : (map['policyRevisionId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

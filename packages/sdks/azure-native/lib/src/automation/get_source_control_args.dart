@@ -19,13 +19,10 @@ class GetSourceControlArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [sourceControlName] The name of source control.
   GetSourceControlArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sourceControlName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceControlName = pulumi.Input.asInput<String>(sourceControlName);
+    required this.automationAccountName,
+    required this.resourceGroupName,
+    required this.sourceControlName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSourceControlArgs {
 
   factory GetSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceControlArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceControlName: pulumi.Output.create<String>(map['sourceControlName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceControlName: (map['sourceControlName'] as String).input(),
     );
   }
 }

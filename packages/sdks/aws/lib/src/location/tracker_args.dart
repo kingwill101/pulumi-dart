@@ -30,19 +30,13 @@ class TrackerArgs {
   /// [tags] Key-value tags for the tracker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trackerName] The name of the tracker resource.
   TrackerArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? positionFiltering,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> trackerName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      positionFiltering = pulumi.Input.asOptionalInput<String>(positionFiltering),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trackerName = pulumi.Input.asInput<String>(trackerName);
+    this.description,
+    this.kmsKeyId,
+    this.positionFiltering,
+    this.region,
+    this.tags,
+    required this.trackerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class TrackerArgs {
 
   factory TrackerArgs.fromMap(Map<String, dynamic> map) {
     return TrackerArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      positionFiltering: map['positionFiltering'] == null ? null : pulumi.Output.create<String>(map['positionFiltering'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      trackerName: pulumi.Output.create<String>(map['trackerName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      positionFiltering: map['positionFiltering'] == null ? null : (map['positionFiltering'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      trackerName: (map['trackerName'] as String).input(),
     );
   }
 }

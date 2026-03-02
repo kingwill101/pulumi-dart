@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
   /// The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
-  final String? encryptionKeyArn;
+  final pulumi.Input<String>? encryptionKeyArn;
   /// The Amazon S3 destination URI for log publishing.
-  final String? logUri;
+  final pulumi.Input<String>? logUri;
 
   /// Creates a new [ApplicationMonitoringConfigurationS3MonitoringConfiguration].
   /// [encryptionKeyArn] The KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
@@ -24,8 +25,8 @@ class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
 
   factory ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationS3MonitoringConfiguration(
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : map['encryptionKeyArn'] as String,
-      logUri: map['logUri'] == null ? null : map['logUri'] as String,
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
+      logUri: map['logUri'] == null ? null : (map['logUri'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetChannelArgs {
   /// [partnerNamespaceName] Name of the partner namespace.
   /// [resourceGroupName] The name of the resource group within the partners subscription.
   GetChannelArgs({
-    required pulumi.Output<String> channelName,
-    required pulumi.Output<String> partnerNamespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      channelName = pulumi.Input.asInput<String>(channelName),
-      partnerNamespaceName = pulumi.Input.asInput<String>(partnerNamespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.channelName,
+    required this.partnerNamespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetChannelArgs {
 
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
-      channelName: pulumi.Output.create<String>(map['channelName'] as String),
-      partnerNamespaceName: pulumi.Output.create<String>(map['partnerNamespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      channelName: (map['channelName'] as String).input(),
+      partnerNamespaceName: (map['partnerNamespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

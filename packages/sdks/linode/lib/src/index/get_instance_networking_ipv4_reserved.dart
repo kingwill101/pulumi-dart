@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_networking_ipv4_reserved_vpc_nat11.dart';
 
 class GetInstanceNetworkingIpv4Reserved {
   /// The address.
-  final String address;
+  final pulumi.Input<String> address;
   /// The default gateway for this address.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The globally general API entity identifier for the Linode interface.
-  final int interfaceId;
+  final pulumi.Input<int> interfaceId;
   /// The Linode instance's ID.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
   /// The network prefix.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// Whether this is a public or private IP address.
-  final bool public;
+  final pulumi.Input<bool> public;
   /// The reverse DNS assigned to this address.
-  final String rdns;
+  final pulumi.Input<String> rdns;
   /// (Filterable) The Region this address resides in.
-  final String region;
+  final pulumi.Input<String> region;
   /// The subnet mask.
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
   /// The type of address this is.
-  final String type;
+  final pulumi.Input<String> type;
   /// IPv4 address configured as a 1:1 NAT for this Interface.
-  final GetInstanceNetworkingIpv4ReservedVpcNat11 vpcNat11;
+  final pulumi.Input<GetInstanceNetworkingIpv4ReservedVpcNat11> vpcNat11;
 
   /// Creates a new [GetInstanceNetworkingIpv4Reserved].
   /// [address] The address.
@@ -64,23 +65,23 @@ class GetInstanceNetworkingIpv4Reserved {
       'region': region,
       'subnetMask': subnetMask,
       'type': type,
-      'vpcNat11': vpcNat11.toMap(),
+      'vpcNat11': pulumi.Input.mapInputValue<GetInstanceNetworkingIpv4ReservedVpcNat11, Map<String, dynamic>>(vpcNat11, (value) => value.toMap()),
     };
   }
 
   factory GetInstanceNetworkingIpv4Reserved.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv4Reserved(
-      address: map['address'] as String,
-      gateway: map['gateway'] as String,
-      interfaceId: map['interfaceId'] as int,
-      linodeId: map['linodeId'] as int,
-      prefix: map['prefix'] as int,
-      public: map['public'] as bool,
-      rdns: map['rdns'] as String,
-      region: map['region'] as String,
-      subnetMask: map['subnetMask'] as String,
-      type: map['type'] as String,
-      vpcNat11: GetInstanceNetworkingIpv4ReservedVpcNat11.fromMap((map['vpcNat11'] as Map).cast<String, dynamic>()),
+      address: (map['address'] as String).input(),
+      gateway: (map['gateway'] as String).input(),
+      interfaceId: (map['interfaceId'] as int).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      prefix: (map['prefix'] as int).input(),
+      public: (map['public'] as bool).input(),
+      rdns: (map['rdns'] as String).input(),
+      region: (map['region'] as String).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpcNat11: (GetInstanceNetworkingIpv4ReservedVpcNat11.fromMap((map['vpcNat11'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

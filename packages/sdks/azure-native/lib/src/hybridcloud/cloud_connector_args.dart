@@ -28,19 +28,13 @@ class CloudConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   CloudConnectorArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? cloudConnectorName,
-    pulumi.Output<String>? cloudType,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      cloudConnectorName = pulumi.Input.asOptionalInput<String>(cloudConnectorName),
-      cloudType = pulumi.Input.asOptionalInput<String>(cloudType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accountId,
+    this.cloudConnectorName,
+    this.cloudType,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      cloudConnectorName: map['cloudConnectorName'] == null ? null : pulumi.Output.create<String>(map['cloudConnectorName'] as String),
-      cloudType: map['cloudType'] == null ? null : pulumi.Output.create<String>(map['cloudType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      cloudConnectorName: map['cloudConnectorName'] == null ? null : (map['cloudConnectorName'] as String).input(),
+      cloudType: map['cloudType'] == null ? null : (map['cloudType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

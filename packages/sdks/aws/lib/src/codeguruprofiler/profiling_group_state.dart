@@ -31,21 +31,14 @@ class ProfilingGroupState {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ProfilingGroupState({
-    pulumi.Output<ProfilingGroupAgentOrchestrationConfig>? agentOrchestrationConfig,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? computePlatform,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      agentOrchestrationConfig = pulumi.Input.asOptionalInput<ProfilingGroupAgentOrchestrationConfig>(agentOrchestrationConfig),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      computePlatform = pulumi.Input.asOptionalInput<String>(computePlatform),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.agentOrchestrationConfig,
+    this.arn,
+    this.computePlatform,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ProfilingGroupState {
 
   factory ProfilingGroupState.fromMap(Map<String, dynamic> map) {
     return ProfilingGroupState(
-      agentOrchestrationConfig: map['agentOrchestrationConfig'] == null ? null : pulumi.Output.create<ProfilingGroupAgentOrchestrationConfig>(ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      computePlatform: map['computePlatform'] == null ? null : pulumi.Output.create<String>(map['computePlatform'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      agentOrchestrationConfig: map['agentOrchestrationConfig'] == null ? null : (ProfilingGroupAgentOrchestrationConfig.fromMap((map['agentOrchestrationConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      computePlatform: map['computePlatform'] == null ? null : (map['computePlatform'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

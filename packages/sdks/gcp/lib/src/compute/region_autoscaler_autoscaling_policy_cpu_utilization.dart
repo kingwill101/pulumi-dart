@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionAutoscalerAutoscalingPolicyCpuUtilization {
   /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
   /// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
   /// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
-  final String? predictiveMethod;
+  final pulumi.Input<String>? predictiveMethod;
   /// The target CPU utilization that the autoscaler should maintain.
   /// Must be a float value in the range (0, 1]. If not specified, the
   /// default is 0.6.
@@ -17,7 +18,7 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization {
   /// scales up until it reaches the maximum number of instances you
   /// specified or until the average utilization reaches the target
   /// utilization.
-  final double target;
+  final pulumi.Input<double> target;
 
   /// Creates a new [RegionAutoscalerAutoscalingPolicyCpuUtilization].
   /// [predictiveMethod] Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
@@ -36,8 +37,8 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization {
 
   factory RegionAutoscalerAutoscalingPolicyCpuUtilization.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyCpuUtilization(
-      predictiveMethod: map['predictiveMethod'] == null ? null : map['predictiveMethod'] as String,
-      target: map['target'] as double,
+      predictiveMethod: map['predictiveMethod'] == null ? null : (map['predictiveMethod'] as String).input(),
+      target: (map['target'] as double).input(),
     );
   }
 }

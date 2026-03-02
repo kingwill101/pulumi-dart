@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreJobOtsDetail {
   /// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-  final bool? overwriteExisting;
+  final pulumi.Input<bool>? overwriteExisting;
 
   /// Creates a new [RestoreJobOtsDetail].
   /// [overwriteExisting] Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
@@ -19,7 +20,7 @@ class RestoreJobOtsDetail {
 
   factory RestoreJobOtsDetail.fromMap(Map<String, dynamic> map) {
     return RestoreJobOtsDetail(
-      overwriteExisting: map['overwriteExisting'] == null ? null : map['overwriteExisting'] as bool,
+      overwriteExisting: map['overwriteExisting'] == null ? null : (map['overwriteExisting'] as bool).input(),
     );
   }
 }

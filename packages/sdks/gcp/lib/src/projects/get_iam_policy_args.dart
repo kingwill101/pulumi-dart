@@ -14,9 +14,8 @@ class GetIamPolicyArgs {
   /// Creates a new [GetIamPolicyArgs].
   /// [project] The project id of the target project. This is not
   GetIamPolicyArgs({
-    required pulumi.Output<String> project,
-  }) :
-      project = pulumi.Input.asInput<String>(project);
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +25,7 @@ class GetIamPolicyArgs {
 
   factory GetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetIamPolicyArgs(
-      project: pulumi.Output.create<String>(map['project'] as String),
+      project: (map['project'] as String).input(),
     );
   }
 }

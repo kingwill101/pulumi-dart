@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSrvRecordRecord {
   /// Port the service is listening on.
-  final int port;
+  final pulumi.Input<int> port;
   /// Priority of the SRV record.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// FQDN of the service.
-  final String target;
+  final pulumi.Input<String> target;
   /// Weight of the SRV record.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetSrvRecordRecord].
   /// [port] Port the service is listening on.
@@ -34,10 +35,10 @@ class GetSrvRecordRecord {
 
   factory GetSrvRecordRecord.fromMap(Map<String, dynamic> map) {
     return GetSrvRecordRecord(
-      port: map['port'] as int,
-      priority: map['priority'] as int,
-      target: map['target'] as String,
-      weight: map['weight'] as int,
+      port: (map['port'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      target: (map['target'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

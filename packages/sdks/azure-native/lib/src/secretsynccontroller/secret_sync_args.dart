@@ -42,27 +42,17 @@ class SecretSyncArgs {
   /// [serviceAccountName] ServiceAccountName specifies the name of the service account used to access the cloud provider secret store. The audience field in the service account token must be passed as parameter in the controller configuration. The audience is used when requesting a token from the API server for the service account; the supported audiences are defined by each provider.
   /// [tags] Resource tags.
   SecretSyncArgs({
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    pulumi.Output<String>? forceSynchronization,
-    required pulumi.Output<String> kubernetesSecretType,
-    pulumi.Output<String>? location,
-    required pulumi.Output<List<KubernetesSecretObjectMapping>> objectSecretMapping,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretProviderClassName,
-    pulumi.Output<String>? secretSyncName,
-    required pulumi.Output<String> serviceAccountName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      forceSynchronization = pulumi.Input.asOptionalInput<String>(forceSynchronization),
-      kubernetesSecretType = pulumi.Input.asInput<String>(kubernetesSecretType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      objectSecretMapping = pulumi.Input.asInput<List<KubernetesSecretObjectMapping>>(objectSecretMapping),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretProviderClassName = pulumi.Input.asInput<String>(secretProviderClassName),
-      secretSyncName = pulumi.Input.asOptionalInput<String>(secretSyncName),
-      serviceAccountName = pulumi.Input.asInput<String>(serviceAccountName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.extendedLocation,
+    this.forceSynchronization,
+    required this.kubernetesSecretType,
+    this.location,
+    required this.objectSecretMapping,
+    required this.resourceGroupName,
+    required this.secretProviderClassName,
+    this.secretSyncName,
+    required this.serviceAccountName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class SecretSyncArgs {
 
   factory SecretSyncArgs.fromMap(Map<String, dynamic> map) {
     return SecretSyncArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      forceSynchronization: map['forceSynchronization'] == null ? null : pulumi.Output.create<String>(map['forceSynchronization'] as String),
-      kubernetesSecretType: pulumi.Output.create<String>(map['kubernetesSecretType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      objectSecretMapping: pulumi.Output.create<List<KubernetesSecretObjectMapping>>(pulumi.Input.decodeList<KubernetesSecretObjectMapping>(map['objectSecretMapping'], (value) => KubernetesSecretObjectMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretProviderClassName: pulumi.Output.create<String>(map['secretProviderClassName'] as String),
-      secretSyncName: map['secretSyncName'] == null ? null : pulumi.Output.create<String>(map['secretSyncName'] as String),
-      serviceAccountName: pulumi.Output.create<String>(map['serviceAccountName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      forceSynchronization: map['forceSynchronization'] == null ? null : (map['forceSynchronization'] as String).input(),
+      kubernetesSecretType: (map['kubernetesSecretType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      objectSecretMapping: (pulumi.Input.decodeList<KubernetesSecretObjectMapping>(map['objectSecretMapping'], (value) => KubernetesSecretObjectMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretProviderClassName: (map['secretProviderClassName'] as String).input(),
+      secretSyncName: map['secretSyncName'] == null ? null : (map['secretSyncName'] as String).input(),
+      serviceAccountName: (map['serviceAccountName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

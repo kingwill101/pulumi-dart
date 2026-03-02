@@ -23,15 +23,11 @@ class TableServicePropertiesArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [tableServiceName] The name of the Table Service within the specified storage account. Table Service Name must be 'default'
   TableServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<CorsRules>? cors,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? tableServiceName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      cors = pulumi.Input.asOptionalInput<CorsRules>(cors),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableServiceName = pulumi.Input.asOptionalInput<String>(tableServiceName);
+    required this.accountName,
+    this.cors,
+    required this.resourceGroupName,
+    this.tableServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TableServicePropertiesArgs {
 
   factory TableServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return TableServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      cors: map['cors'] == null ? null : pulumi.Output.create<CorsRules>(CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableServiceName: map['tableServiceName'] == null ? null : pulumi.Output.create<String>(map['tableServiceName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableServiceName: map['tableServiceName'] == null ? null : (map['tableServiceName'] as String).input(),
     );
   }
 }

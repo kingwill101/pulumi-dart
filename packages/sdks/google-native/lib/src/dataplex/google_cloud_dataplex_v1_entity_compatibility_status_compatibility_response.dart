@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides compatibility information for a specific metadata store.
 class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
   /// Whether the entity is compatible and can be represented in the metadata store.
-  final bool compatible;
+  final pulumi.Input<bool> compatible;
   /// Provides additional detail if the entity is incompatible with the metadata store.
-  final String reason;
+  final pulumi.Input<String> reason;
 
   /// Creates a new [GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse].
   /// [compatible] Whether the entity is compatible and can be represented in the metadata store.
@@ -25,8 +26,8 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
 
   factory GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse(
-      compatible: map['compatible'] as bool,
-      reason: map['reason'] as String,
+      compatible: (map['compatible'] as bool).input(),
+      reason: (map['reason'] as String).input(),
     );
   }
 }

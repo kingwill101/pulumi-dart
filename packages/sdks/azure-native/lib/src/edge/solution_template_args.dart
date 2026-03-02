@@ -26,17 +26,12 @@ class SolutionTemplateArgs {
   /// [solutionTemplateName] The name of the SolutionTemplate
   /// [tags] Resource tags.
   SolutionTemplateArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<SolutionTemplateProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? solutionTemplateName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<SolutionTemplateProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionTemplateName = pulumi.Input.asOptionalInput<String>(solutionTemplateName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.solutionTemplateName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SolutionTemplateArgs {
 
   factory SolutionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return SolutionTemplateArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SolutionTemplateProperties>(SolutionTemplateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionTemplateName: map['solutionTemplateName'] == null ? null : pulumi.Output.create<String>(map['solutionTemplateName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (SolutionTemplateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionTemplateName: map['solutionTemplateName'] == null ? null : (map['solutionTemplateName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

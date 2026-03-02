@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate {
   /// Mirroring back-to-source multi-station Region
-  final String? mirrorMultiAlternateDstRegion;
+  final pulumi.Input<String>? mirrorMultiAlternateDstRegion;
   /// Image back-to-source multi-source station serial number
-  final int? mirrorMultiAlternateNumber;
+  final pulumi.Input<int>? mirrorMultiAlternateNumber;
   /// Mirroring back-to-source multi-source site URL
-  final String? mirrorMultiAlternateUrl;
+  final pulumi.Input<String>? mirrorMultiAlternateUrl;
   /// Mirroring back-to-source multi-source VpcId
-  final String? mirrorMultiAlternateVpcId;
+  final pulumi.Input<String>? mirrorMultiAlternateVpcId;
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate].
   /// [mirrorMultiAlternateDstRegion] Mirroring back-to-source multi-station Region
@@ -34,10 +35,10 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMul
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate(
-      mirrorMultiAlternateDstRegion: map['mirrorMultiAlternateDstRegion'] == null ? null : map['mirrorMultiAlternateDstRegion'] as String,
-      mirrorMultiAlternateNumber: map['mirrorMultiAlternateNumber'] == null ? null : map['mirrorMultiAlternateNumber'] as int,
-      mirrorMultiAlternateUrl: map['mirrorMultiAlternateUrl'] == null ? null : map['mirrorMultiAlternateUrl'] as String,
-      mirrorMultiAlternateVpcId: map['mirrorMultiAlternateVpcId'] == null ? null : map['mirrorMultiAlternateVpcId'] as String,
+      mirrorMultiAlternateDstRegion: map['mirrorMultiAlternateDstRegion'] == null ? null : (map['mirrorMultiAlternateDstRegion'] as String).input(),
+      mirrorMultiAlternateNumber: map['mirrorMultiAlternateNumber'] == null ? null : (map['mirrorMultiAlternateNumber'] as int).input(),
+      mirrorMultiAlternateUrl: map['mirrorMultiAlternateUrl'] == null ? null : (map['mirrorMultiAlternateUrl'] as String).input(),
+      mirrorMultiAlternateVpcId: map['mirrorMultiAlternateVpcId'] == null ? null : (map['mirrorMultiAlternateVpcId'] as String).input(),
     );
   }
 }

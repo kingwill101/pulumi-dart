@@ -10,36 +10,36 @@ import 'parameter_specification.dart';
 /// Excel dataset.
 class ExcelDataset {
   /// List of tags that can be used for describing the Dataset.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The data compression method used for the json dataset.
-  final DatasetCompression? compression;
+  final pulumi.Input<DatasetCompression>? compression;
   /// Dataset description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic firstRowAsHeader;
+  final pulumi.Input<dynamic>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final DatasetFolder? folder;
+  final pulumi.Input<DatasetFolder>? folder;
   /// Linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The location of the excel storage.
-  final AmazonS3CompatibleLocation location;
+  final pulumi.Input<AmazonS3CompatibleLocation> location;
   /// The null value string. Type: string (or Expression with resultType string).
-  final dynamic nullValue;
+  final pulumi.Input<dynamic>? nullValue;
   /// Parameters for dataset.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The partial data of one sheet. Type: string (or Expression with resultType string).
-  final dynamic range;
+  final pulumi.Input<dynamic>? range;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-  final dynamic schema;
+  final pulumi.Input<dynamic>? schema;
   /// The sheet index of excel file and default value is 0. Type: integer (or Expression with resultType integer)
-  final dynamic sheetIndex;
+  final pulumi.Input<dynamic>? sheetIndex;
   /// The sheet name of excel file. Type: string (or Expression with resultType string).
-  final dynamic sheetName;
+  final pulumi.Input<dynamic>? sheetName;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-  final dynamic structure;
+  final pulumi.Input<dynamic>? structure;
   /// Type of dataset.
   /// Expected value is 'Excel'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExcelDataset].
   /// [annotations] List of tags that can be used for describing the Dataset.
@@ -78,14 +78,14 @@ class ExcelDataset {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'compression': ?compression == null ? null : compression!.toMap(),
+      'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompression, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'firstRowAsHeader': ?firstRowAsHeader,
-      'folder': ?folder == null ? null : folder!.toMap(),
-      'linkedServiceName': linkedServiceName.toMap(),
-      'location': location.toMap(),
+      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'location': pulumi.Input.mapInputValue<AmazonS3CompatibleLocation, Map<String, dynamic>>(location, (value) => value.toMap()),
       'nullValue': ?nullValue,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'range': ?range,
       'schema': ?schema,
       'sheetIndex': ?sheetIndex,
@@ -97,21 +97,21 @@ class ExcelDataset {
 
   factory ExcelDataset.fromMap(Map<String, dynamic> map) {
     return ExcelDataset(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      compression: map['compression'] == null ? null : DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : map['firstRowAsHeader'],
-      folder: map['folder'] == null ? null : DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      location: AmazonS3CompatibleLocation.fromMap((map['location'] as Map).cast<String, dynamic>()),
-      nullValue: map['nullValue'] == null ? null : map['nullValue'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      range: map['range'] == null ? null : map['range'],
-      schema: map['schema'] == null ? null : map['schema'],
-      sheetIndex: map['sheetIndex'] == null ? null : map['sheetIndex'],
-      sheetName: map['sheetName'] == null ? null : map['sheetName'],
-      structure: map['structure'] == null ? null : map['structure'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      compression: map['compression'] == null ? null : (DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      location: (AmazonS3CompatibleLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      range: map['range'] == null ? null : (map['range']).input(),
+      schema: map['schema'] == null ? null : (map['schema']).input(),
+      sheetIndex: map['sheetIndex'] == null ? null : (map['sheetIndex']).input(),
+      sheetName: map['sheetName'] == null ? null : (map['sheetName']).input(),
+      structure: map['structure'] == null ? null : (map['structure']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

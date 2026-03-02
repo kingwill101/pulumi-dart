@@ -25,19 +25,13 @@ class TrustStoreRevocationState {
   /// [revocationsS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [trustStoreArn] Trust Store ARN.
   TrustStoreRevocationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? revocationId,
-    pulumi.Output<String>? revocationsS3Bucket,
-    pulumi.Output<String>? revocationsS3Key,
-    pulumi.Output<String>? revocationsS3ObjectVersion,
-    pulumi.Output<String>? trustStoreArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revocationId = pulumi.Input.asOptionalInput<int>(revocationId),
-      revocationsS3Bucket = pulumi.Input.asOptionalInput<String>(revocationsS3Bucket),
-      revocationsS3Key = pulumi.Input.asOptionalInput<String>(revocationsS3Key),
-      revocationsS3ObjectVersion = pulumi.Input.asOptionalInput<String>(revocationsS3ObjectVersion),
-      trustStoreArn = pulumi.Input.asOptionalInput<String>(trustStoreArn);
+    this.region,
+    this.revocationId,
+    this.revocationsS3Bucket,
+    this.revocationsS3Key,
+    this.revocationsS3ObjectVersion,
+    this.trustStoreArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class TrustStoreRevocationState {
 
   factory TrustStoreRevocationState.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revocationId: map['revocationId'] == null ? null : pulumi.Output.create<int>(map['revocationId'] as int),
-      revocationsS3Bucket: map['revocationsS3Bucket'] == null ? null : pulumi.Output.create<String>(map['revocationsS3Bucket'] as String),
-      revocationsS3Key: map['revocationsS3Key'] == null ? null : pulumi.Output.create<String>(map['revocationsS3Key'] as String),
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : pulumi.Output.create<String>(map['revocationsS3ObjectVersion'] as String),
-      trustStoreArn: map['trustStoreArn'] == null ? null : pulumi.Output.create<String>(map['trustStoreArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revocationId: map['revocationId'] == null ? null : (map['revocationId'] as int).input(),
+      revocationsS3Bucket: map['revocationsS3Bucket'] == null ? null : (map['revocationsS3Bucket'] as String).input(),
+      revocationsS3Key: map['revocationsS3Key'] == null ? null : (map['revocationsS3Key'] as String).input(),
+      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : (map['revocationsS3ObjectVersion'] as String).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
     );
   }
 }

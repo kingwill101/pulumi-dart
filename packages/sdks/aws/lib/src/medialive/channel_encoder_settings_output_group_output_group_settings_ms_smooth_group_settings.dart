@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_group_settings_ms_smooth_group_settings_destination.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings {
-  final String? acquisitionPointId;
-  final String? audioOnlyTimecodeControl;
+  final pulumi.Input<String>? acquisitionPointId;
+  final pulumi.Input<String>? audioOnlyTimecodeControl;
   /// Setting to allow self signed or verified RTMP certificates.
-  final String? certificateMode;
+  final pulumi.Input<String>? certificateMode;
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final int? connectionRetryInterval;
-  final ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination destination;
-  final String? eventId;
-  final String? eventIdMode;
-  final String? eventStopBehavior;
-  final int? filecacheDuration;
-  final int? fragmentLength;
-  final String? inputLossAction;
+  final pulumi.Input<int>? connectionRetryInterval;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination> destination;
+  final pulumi.Input<String>? eventId;
+  final pulumi.Input<String>? eventIdMode;
+  final pulumi.Input<String>? eventStopBehavior;
+  final pulumi.Input<int>? filecacheDuration;
+  final pulumi.Input<int>? fragmentLength;
+  final pulumi.Input<String>? inputLossAction;
   /// Number of retry attempts.
-  final int? numRetries;
+  final pulumi.Input<int>? numRetries;
   /// Number of seconds to wait until a restart is initiated.
-  final int? restartDelay;
-  final String? segmentationMode;
-  final int? sendDelayMs;
-  final String? sparseTrackType;
-  final String? streamManifestBehavior;
-  final String? timestampOffset;
-  final String? timestampOffsetMode;
+  final pulumi.Input<int>? restartDelay;
+  final pulumi.Input<String>? segmentationMode;
+  final pulumi.Input<int>? sendDelayMs;
+  final pulumi.Input<String>? sparseTrackType;
+  final pulumi.Input<String>? streamManifestBehavior;
+  final pulumi.Input<String>? timestampOffset;
+  final pulumi.Input<String>? timestampOffsetMode;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings].
   /// [acquisitionPointId] Optional.
@@ -75,7 +76,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
       'audioOnlyTimecodeControl': ?audioOnlyTimecodeControl,
       'certificateMode': ?certificateMode,
       'connectionRetryInterval': ?connectionRetryInterval,
-      'destination': destination.toMap(),
+      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'eventId': ?eventId,
       'eventIdMode': ?eventIdMode,
       'eventStopBehavior': ?eventStopBehavior,
@@ -95,25 +96,25 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings(
-      acquisitionPointId: map['acquisitionPointId'] == null ? null : map['acquisitionPointId'] as String,
-      audioOnlyTimecodeControl: map['audioOnlyTimecodeControl'] == null ? null : map['audioOnlyTimecodeControl'] as String,
-      certificateMode: map['certificateMode'] == null ? null : map['certificateMode'] as String,
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
-      destination: ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      eventId: map['eventId'] == null ? null : map['eventId'] as String,
-      eventIdMode: map['eventIdMode'] == null ? null : map['eventIdMode'] as String,
-      eventStopBehavior: map['eventStopBehavior'] == null ? null : map['eventStopBehavior'] as String,
-      filecacheDuration: map['filecacheDuration'] == null ? null : map['filecacheDuration'] as int,
-      fragmentLength: map['fragmentLength'] == null ? null : map['fragmentLength'] as int,
-      inputLossAction: map['inputLossAction'] == null ? null : map['inputLossAction'] as String,
-      numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
-      restartDelay: map['restartDelay'] == null ? null : map['restartDelay'] as int,
-      segmentationMode: map['segmentationMode'] == null ? null : map['segmentationMode'] as String,
-      sendDelayMs: map['sendDelayMs'] == null ? null : map['sendDelayMs'] as int,
-      sparseTrackType: map['sparseTrackType'] == null ? null : map['sparseTrackType'] as String,
-      streamManifestBehavior: map['streamManifestBehavior'] == null ? null : map['streamManifestBehavior'] as String,
-      timestampOffset: map['timestampOffset'] == null ? null : map['timestampOffset'] as String,
-      timestampOffsetMode: map['timestampOffsetMode'] == null ? null : map['timestampOffsetMode'] as String,
+      acquisitionPointId: map['acquisitionPointId'] == null ? null : (map['acquisitionPointId'] as String).input(),
+      audioOnlyTimecodeControl: map['audioOnlyTimecodeControl'] == null ? null : (map['audioOnlyTimecodeControl'] as String).input(),
+      certificateMode: map['certificateMode'] == null ? null : (map['certificateMode'] as String).input(),
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      eventId: map['eventId'] == null ? null : (map['eventId'] as String).input(),
+      eventIdMode: map['eventIdMode'] == null ? null : (map['eventIdMode'] as String).input(),
+      eventStopBehavior: map['eventStopBehavior'] == null ? null : (map['eventStopBehavior'] as String).input(),
+      filecacheDuration: map['filecacheDuration'] == null ? null : (map['filecacheDuration'] as int).input(),
+      fragmentLength: map['fragmentLength'] == null ? null : (map['fragmentLength'] as int).input(),
+      inputLossAction: map['inputLossAction'] == null ? null : (map['inputLossAction'] as String).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
+      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
+      segmentationMode: map['segmentationMode'] == null ? null : (map['segmentationMode'] as String).input(),
+      sendDelayMs: map['sendDelayMs'] == null ? null : (map['sendDelayMs'] as int).input(),
+      sparseTrackType: map['sparseTrackType'] == null ? null : (map['sparseTrackType'] as String).input(),
+      streamManifestBehavior: map['streamManifestBehavior'] == null ? null : (map['streamManifestBehavior'] as String).input(),
+      timestampOffset: map['timestampOffset'] == null ? null : (map['timestampOffset'] as String).input(),
+      timestampOffsetMode: map['timestampOffsetMode'] == null ? null : (map['timestampOffsetMode'] as String).input(),
     );
   }
 }

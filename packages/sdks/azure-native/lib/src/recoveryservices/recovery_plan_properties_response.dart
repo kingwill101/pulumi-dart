@@ -8,37 +8,37 @@ import 'recovery_plan_group_response.dart';
 /// Recovery plan properties.
 class RecoveryPlanPropertiesResponse {
   /// The list of allowed operations.
-  final List<String>? allowedOperations;
+  final pulumi.Input<List<String>>? allowedOperations;
   /// The current scenario details.
-  final CurrentScenarioDetailsResponse? currentScenario;
+  final pulumi.Input<CurrentScenarioDetailsResponse>? currentScenario;
   /// The recovery plan status.
-  final String? currentScenarioStatus;
+  final pulumi.Input<String>? currentScenarioStatus;
   /// The recovery plan status description.
-  final String? currentScenarioStatusDescription;
+  final pulumi.Input<String>? currentScenarioStatusDescription;
   /// The failover deployment model.
-  final String? failoverDeploymentModel;
+  final pulumi.Input<String>? failoverDeploymentModel;
   /// The friendly name.
-  final String? friendlyName;
+  final pulumi.Input<String>? friendlyName;
   /// The recovery plan groups.
-  final List<RecoveryPlanGroupResponse>? groups;
+  final pulumi.Input<List<RecoveryPlanGroupResponse>>? groups;
   /// The start time of the last planned failover.
-  final String? lastPlannedFailoverTime;
+  final pulumi.Input<String>? lastPlannedFailoverTime;
   /// The start time of the last test failover.
-  final String? lastTestFailoverTime;
+  final pulumi.Input<String>? lastTestFailoverTime;
   /// The start time of the last unplanned failover.
-  final String? lastUnplannedFailoverTime;
+  final pulumi.Input<String>? lastUnplannedFailoverTime;
   /// The primary fabric friendly name.
-  final String? primaryFabricFriendlyName;
+  final pulumi.Input<String>? primaryFabricFriendlyName;
   /// The primary fabric Id.
-  final String? primaryFabricId;
+  final pulumi.Input<String>? primaryFabricId;
   /// The provider id and provider specific details.
-  final List<RecoveryPlanA2ADetailsResponse>? providerSpecificDetails;
+  final pulumi.Input<List<RecoveryPlanA2ADetailsResponse>>? providerSpecificDetails;
   /// The recovery fabric friendly name.
-  final String? recoveryFabricFriendlyName;
+  final pulumi.Input<String>? recoveryFabricFriendlyName;
   /// The recovery fabric Id.
-  final String? recoveryFabricId;
+  final pulumi.Input<String>? recoveryFabricId;
   /// The list of replication providers.
-  final List<String>? replicationProviders;
+  final pulumi.Input<List<String>>? replicationProviders;
 
   /// Creates a new [RecoveryPlanPropertiesResponse].
   /// [allowedOperations] The list of allowed operations.
@@ -79,18 +79,18 @@ class RecoveryPlanPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedOperations': ?allowedOperations,
-      'currentScenario': ?currentScenario == null ? null : currentScenario!.toMap(),
+      'currentScenario': ?pulumi.Input.mapOptionalInputValue<CurrentScenarioDetailsResponse, Map<String, dynamic>>(currentScenario, (value) => value.toMap()),
       'currentScenarioStatus': ?currentScenarioStatus,
       'currentScenarioStatusDescription': ?currentScenarioStatusDescription,
       'failoverDeploymentModel': ?failoverDeploymentModel,
       'friendlyName': ?friendlyName,
-      'groups': ?groups == null ? null : pulumi.Input.encodeList<RecoveryPlanGroupResponse, Map<String, dynamic>>(groups!, (value) => value.toMap()),
+      'groups': ?pulumi.Input.mapOptionalInputValue<List<RecoveryPlanGroupResponse>, List<Map<String, dynamic>>>(groups, (value) => pulumi.Input.encodeList<RecoveryPlanGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastPlannedFailoverTime': ?lastPlannedFailoverTime,
       'lastTestFailoverTime': ?lastTestFailoverTime,
       'lastUnplannedFailoverTime': ?lastUnplannedFailoverTime,
       'primaryFabricFriendlyName': ?primaryFabricFriendlyName,
       'primaryFabricId': ?primaryFabricId,
-      'providerSpecificDetails': ?providerSpecificDetails == null ? null : pulumi.Input.encodeList<RecoveryPlanA2ADetailsResponse, Map<String, dynamic>>(providerSpecificDetails!, (value) => value.toMap()),
+      'providerSpecificDetails': ?pulumi.Input.mapOptionalInputValue<List<RecoveryPlanA2ADetailsResponse>, List<Map<String, dynamic>>>(providerSpecificDetails, (value) => pulumi.Input.encodeList<RecoveryPlanA2ADetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'recoveryFabricFriendlyName': ?recoveryFabricFriendlyName,
       'recoveryFabricId': ?recoveryFabricId,
       'replicationProviders': ?replicationProviders,
@@ -99,22 +99,22 @@ class RecoveryPlanPropertiesResponse {
 
   factory RecoveryPlanPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanPropertiesResponse(
-      allowedOperations: map['allowedOperations'] == null ? null : (map['allowedOperations'] as List).cast<String>(),
-      currentScenario: map['currentScenario'] == null ? null : CurrentScenarioDetailsResponse.fromMap((map['currentScenario'] as Map).cast<String, dynamic>()),
-      currentScenarioStatus: map['currentScenarioStatus'] == null ? null : map['currentScenarioStatus'] as String,
-      currentScenarioStatusDescription: map['currentScenarioStatusDescription'] == null ? null : map['currentScenarioStatusDescription'] as String,
-      failoverDeploymentModel: map['failoverDeploymentModel'] == null ? null : map['failoverDeploymentModel'] as String,
-      friendlyName: map['friendlyName'] == null ? null : map['friendlyName'] as String,
-      groups: map['groups'] == null ? null : pulumi.Input.decodeList<RecoveryPlanGroupResponse>(map['groups'], (value) => RecoveryPlanGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastPlannedFailoverTime: map['lastPlannedFailoverTime'] == null ? null : map['lastPlannedFailoverTime'] as String,
-      lastTestFailoverTime: map['lastTestFailoverTime'] == null ? null : map['lastTestFailoverTime'] as String,
-      lastUnplannedFailoverTime: map['lastUnplannedFailoverTime'] == null ? null : map['lastUnplannedFailoverTime'] as String,
-      primaryFabricFriendlyName: map['primaryFabricFriendlyName'] == null ? null : map['primaryFabricFriendlyName'] as String,
-      primaryFabricId: map['primaryFabricId'] == null ? null : map['primaryFabricId'] as String,
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : pulumi.Input.decodeList<RecoveryPlanA2ADetailsResponse>(map['providerSpecificDetails'], (value) => RecoveryPlanA2ADetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      recoveryFabricFriendlyName: map['recoveryFabricFriendlyName'] == null ? null : map['recoveryFabricFriendlyName'] as String,
-      recoveryFabricId: map['recoveryFabricId'] == null ? null : map['recoveryFabricId'] as String,
-      replicationProviders: map['replicationProviders'] == null ? null : (map['replicationProviders'] as List).cast<String>(),
+      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations'] as List).cast<String>()).input(),
+      currentScenario: map['currentScenario'] == null ? null : (CurrentScenarioDetailsResponse.fromMap((map['currentScenario'] as Map).cast<String, dynamic>())).input(),
+      currentScenarioStatus: map['currentScenarioStatus'] == null ? null : (map['currentScenarioStatus'] as String).input(),
+      currentScenarioStatusDescription: map['currentScenarioStatusDescription'] == null ? null : (map['currentScenarioStatusDescription'] as String).input(),
+      failoverDeploymentModel: map['failoverDeploymentModel'] == null ? null : (map['failoverDeploymentModel'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanGroupResponse>(map['groups'], (value) => RecoveryPlanGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastPlannedFailoverTime: map['lastPlannedFailoverTime'] == null ? null : (map['lastPlannedFailoverTime'] as String).input(),
+      lastTestFailoverTime: map['lastTestFailoverTime'] == null ? null : (map['lastTestFailoverTime'] as String).input(),
+      lastUnplannedFailoverTime: map['lastUnplannedFailoverTime'] == null ? null : (map['lastUnplannedFailoverTime'] as String).input(),
+      primaryFabricFriendlyName: map['primaryFabricFriendlyName'] == null ? null : (map['primaryFabricFriendlyName'] as String).input(),
+      primaryFabricId: map['primaryFabricId'] == null ? null : (map['primaryFabricId'] as String).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanA2ADetailsResponse>(map['providerSpecificDetails'], (value) => RecoveryPlanA2ADetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryFabricFriendlyName: map['recoveryFabricFriendlyName'] == null ? null : (map['recoveryFabricFriendlyName'] as String).input(),
+      recoveryFabricId: map['recoveryFabricId'] == null ? null : (map['recoveryFabricId'] as String).input(),
+      replicationProviders: map['replicationProviders'] == null ? null : ((map['replicationProviders'] as List).cast<String>()).input(),
     );
   }
 }

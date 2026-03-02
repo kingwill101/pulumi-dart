@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
   /// The name of the domain (e.g., mydomain.com).
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// This is always sql#activeDirectoryConfig.
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [SqlActiveDirectoryConfig].
   /// [domain] The name of the domain (e.g., mydomain.com).
@@ -25,8 +26,8 @@ class SqlActiveDirectoryConfig {
 
   factory SqlActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return SqlActiveDirectoryConfig(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
   /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
   ///
   ///
   /// - - -
-  final int acceleratorCount;
+  final pulumi.Input<int> acceleratorCount;
   /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
-  final String acceleratorType;
+  final pulumi.Input<String> acceleratorType;
 
   /// Creates a new [ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator].
   /// [acceleratorCount] The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
@@ -27,8 +28,8 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator 
 
   factory ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
-      acceleratorCount: map['acceleratorCount'] as int,
-      acceleratorType: map['acceleratorType'] as String,
+      acceleratorCount: (map['acceleratorCount'] as int).input(),
+      acceleratorType: (map['acceleratorType'] as String).input(),
     );
   }
 }

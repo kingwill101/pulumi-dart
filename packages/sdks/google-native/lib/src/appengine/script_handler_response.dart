@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Executes a script to handle the request that matches the URL pattern.
 class ScriptHandlerResponse {
   /// Path to the script from the application root directory.
-  final String scriptPath;
+  final pulumi.Input<String> scriptPath;
 
   /// Creates a new [ScriptHandlerResponse].
   /// [scriptPath] Path to the script from the application root directory.
@@ -20,7 +21,7 @@ class ScriptHandlerResponse {
 
   factory ScriptHandlerResponse.fromMap(Map<String, dynamic> map) {
     return ScriptHandlerResponse(
-      scriptPath: map['scriptPath'] as String,
+      scriptPath: (map['scriptPath'] as String).input(),
     );
   }
 }

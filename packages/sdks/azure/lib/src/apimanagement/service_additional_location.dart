@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_additional_location_virtual_network_configuration.dart';
 
 class ServiceAdditionalLocation {
   /// The number of compute units in this region. Defaults to the capacity of the main region.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
-  final bool? gatewayDisabled;
+  final pulumi.Input<bool>? gatewayDisabled;
   /// The URL of the Regional Gateway for the API Management Service in the specified region.
-  final String? gatewayRegionalUrl;
+  final pulumi.Input<String>? gatewayRegionalUrl;
   /// The name of the Azure Region in which the API Management Service should be expanded to.
-  final String location;
+  final pulumi.Input<String> location;
   /// The Private IP addresses of the API Management Service. Available only when the API Manager instance is using Virtual Network mode.
-  final List<String>? privateIpAddresses;
+  final pulumi.Input<List<String>>? privateIpAddresses;
   /// ID of a standard SKU IPv4 Public IP.
   ///
   /// > **Note:** Availability zones and custom public IPs are only supported in the Premium tier.
-  final String? publicIpAddressId;
+  final pulumi.Input<String>? publicIpAddressId;
   /// Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard and Premium SKU.
-  final List<String>? publicIpAddresses;
+  final pulumi.Input<List<String>>? publicIpAddresses;
   /// A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
-  final ServiceAdditionalLocationVirtualNetworkConfiguration? virtualNetworkConfiguration;
+  final pulumi.Input<ServiceAdditionalLocationVirtualNetworkConfiguration>? virtualNetworkConfiguration;
   /// A list of availability zones.
-  final List<String>? zones;
+  final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ServiceAdditionalLocation].
   /// [capacity] The number of compute units in this region. Defaults to the capacity of the main region.
@@ -55,22 +56,22 @@ class ServiceAdditionalLocation {
       'privateIpAddresses': ?privateIpAddresses,
       'publicIpAddressId': ?publicIpAddressId,
       'publicIpAddresses': ?publicIpAddresses,
-      'virtualNetworkConfiguration': ?virtualNetworkConfiguration == null ? null : virtualNetworkConfiguration!.toMap(),
+      'virtualNetworkConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceAdditionalLocationVirtualNetworkConfiguration, Map<String, dynamic>>(virtualNetworkConfiguration, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory ServiceAdditionalLocation.fromMap(Map<String, dynamic> map) {
     return ServiceAdditionalLocation(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      gatewayDisabled: map['gatewayDisabled'] == null ? null : map['gatewayDisabled'] as bool,
-      gatewayRegionalUrl: map['gatewayRegionalUrl'] == null ? null : map['gatewayRegionalUrl'] as String,
-      location: map['location'] as String,
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : (map['privateIpAddresses'] as List).cast<String>(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : map['publicIpAddressId'] as String,
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : (map['publicIpAddresses'] as List).cast<String>(),
-      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      gatewayDisabled: map['gatewayDisabled'] == null ? null : (map['gatewayDisabled'] as bool).input(),
+      gatewayRegionalUrl: map['gatewayRegionalUrl'] == null ? null : (map['gatewayRegionalUrl'] as String).input(),
+      location: (map['location'] as String).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
+      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

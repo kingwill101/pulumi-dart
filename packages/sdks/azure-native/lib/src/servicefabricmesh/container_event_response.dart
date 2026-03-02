@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A container event.
 class ContainerEventResponse {
   /// The count of the event.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Date/time of the first event.
-  final String? firstTimestamp;
+  final pulumi.Input<String>? firstTimestamp;
   /// Date/time of the last event.
-  final String? lastTimestamp;
+  final pulumi.Input<String>? lastTimestamp;
   /// The event message
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The name of the container event.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The event type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ContainerEventResponse].
   /// [count] The count of the event.
@@ -45,12 +46,12 @@ class ContainerEventResponse {
 
   factory ContainerEventResponse.fromMap(Map<String, dynamic> map) {
     return ContainerEventResponse(
-      count: map['count'] == null ? null : map['count'] as int,
-      firstTimestamp: map['firstTimestamp'] == null ? null : map['firstTimestamp'] as String,
-      lastTimestamp: map['lastTimestamp'] == null ? null : map['lastTimestamp'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp'] as String).input(),
+      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

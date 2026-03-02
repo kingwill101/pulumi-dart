@@ -36,25 +36,16 @@ class ManagedInstanceFailoverGroupState {
   /// [role] The partner replication role of the Managed Instance Failover Group.
   /// [secondaryType] The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
   ManagedInstanceFailoverGroupState({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedInstanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partnerManagedInstanceId,
-    pulumi.Output<List<ManagedInstanceFailoverGroupPartnerRegion>>? partnerRegions,
-    pulumi.Output<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>? readWriteEndpointFailoverPolicy,
-    pulumi.Output<bool>? readonlyEndpointFailoverPolicyEnabled,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? secondaryType,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedInstanceId = pulumi.Input.asOptionalInput<String>(managedInstanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerManagedInstanceId = pulumi.Input.asOptionalInput<String>(partnerManagedInstanceId),
-      partnerRegions = pulumi.Input.asOptionalInput<List<ManagedInstanceFailoverGroupPartnerRegion>>(partnerRegions),
-      readWriteEndpointFailoverPolicy = pulumi.Input.asOptionalInput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>(readWriteEndpointFailoverPolicy),
-      readonlyEndpointFailoverPolicyEnabled = pulumi.Input.asOptionalInput<bool>(readonlyEndpointFailoverPolicyEnabled),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      secondaryType = pulumi.Input.asOptionalInput<String>(secondaryType);
+    this.location,
+    this.managedInstanceId,
+    this.name,
+    this.partnerManagedInstanceId,
+    this.partnerRegions,
+    this.readWriteEndpointFailoverPolicy,
+    this.readonlyEndpointFailoverPolicyEnabled,
+    this.role,
+    this.secondaryType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ManagedInstanceFailoverGroupState {
 
   factory ManagedInstanceFailoverGroupState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceFailoverGroupState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedInstanceId: map['managedInstanceId'] == null ? null : pulumi.Output.create<String>(map['managedInstanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : pulumi.Output.create<String>(map['partnerManagedInstanceId'] as String),
-      partnerRegions: map['partnerRegions'] == null ? null : pulumi.Output.create<List<ManagedInstanceFailoverGroupPartnerRegion>>(pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(map['partnerRegions'], (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : pulumi.Output.create<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>(ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())),
-      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : pulumi.Output.create<bool>(map['readonlyEndpointFailoverPolicyEnabled'] as bool),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      secondaryType: map['secondaryType'] == null ? null : pulumi.Output.create<String>(map['secondaryType'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId'] as String).input(),
+      partnerRegions: map['partnerRegions'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(map['partnerRegions'], (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readWriteEndpointFailoverPolicy: map['readWriteEndpointFailoverPolicy'] == null ? null : (ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())).input(),
+      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled'] as bool).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class ListGroundStationL2ConnectionsArgs {
   /// [groundStationName] Ground Station name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListGroundStationL2ConnectionsArgs({
-    required pulumi.Output<String> groundStationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      groundStationName = pulumi.Input.asInput<String>(groundStationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.groundStationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListGroundStationL2ConnectionsArgs {
 
   factory ListGroundStationL2ConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ListGroundStationL2ConnectionsArgs(
-      groundStationName: pulumi.Output.create<String>(map['groundStationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      groundStationName: (map['groundStationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

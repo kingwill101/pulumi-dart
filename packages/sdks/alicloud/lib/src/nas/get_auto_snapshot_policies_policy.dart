@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutoSnapshotPoliciesPolicy {
   /// The ID of the automatic snapshot policy.
-  final String autoSnapshotPolicyId;
+  final pulumi.Input<String> autoSnapshotPolicyId;
   /// The name of the automatic snapshot policy.
-  final String autoSnapshotPolicyName;
+  final pulumi.Input<String> autoSnapshotPolicyName;
   /// The time when the automatic snapshot policy was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The number of file systems to which the automatic snapshot policy applies.
-  final int fileSystemNums;
+  final pulumi.Input<int> fileSystemNums;
   /// ID of the Auto Snapshot Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The day on which an auto snapshot was created.
-  final List<String> repeatWeekdays;
+  final pulumi.Input<List<String>> repeatWeekdays;
   /// The number of days for which you want to retain auto snapshots.
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The point in time at which an auto snapshot was created. Unit: hours.
-  final List<String> timePoints;
+  final pulumi.Input<List<String>> timePoints;
 
   /// Creates a new [GetAutoSnapshotPoliciesPolicy].
   /// [autoSnapshotPolicyId] The ID of the automatic snapshot policy.
@@ -59,15 +60,15 @@ class GetAutoSnapshotPoliciesPolicy {
 
   factory GetAutoSnapshotPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetAutoSnapshotPoliciesPolicy(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] as String,
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] as String,
-      createTime: map['createTime'] as String,
-      fileSystemNums: map['fileSystemNums'] as int,
-      id: map['id'] as String,
-      repeatWeekdays: (map['repeatWeekdays'] as List).cast<String>(),
-      retentionDays: map['retentionDays'] as int,
-      status: map['status'] as String,
-      timePoints: (map['timePoints'] as List).cast<String>(),
+      autoSnapshotPolicyId: (map['autoSnapshotPolicyId'] as String).input(),
+      autoSnapshotPolicyName: (map['autoSnapshotPolicyName'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      fileSystemNums: (map['fileSystemNums'] as int).input(),
+      id: (map['id'] as String).input(),
+      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      status: (map['status'] as String).input(),
+      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

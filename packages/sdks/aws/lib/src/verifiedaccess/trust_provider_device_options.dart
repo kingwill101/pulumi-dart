@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderDeviceOptions {
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [TrustProviderDeviceOptions].
   /// [tenantId] Optional.
@@ -18,7 +19,7 @@ class TrustProviderDeviceOptions {
 
   factory TrustProviderDeviceOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderDeviceOptions(
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

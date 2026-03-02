@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_compilation_diagnostic_position.dart';
 
 class RuleCompilationDiagnostic {
   /// (Output)
   /// Output only. The diagnostic message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// CompilationPosition represents the location of a compilation diagnostic in
   /// rule text.
   /// Structure is documented below.
-  final RuleCompilationDiagnosticPosition? position;
+  final pulumi.Input<RuleCompilationDiagnosticPosition>? position;
   /// (Output)
   /// Output only. The severity of a rule's compilation diagnostic.
   /// Possible values:
   /// SEVERITY_UNSPECIFIED
   /// WARNING
   /// ERROR
-  final String? severity;
+  final pulumi.Input<String>? severity;
   /// (Output)
   /// Output only. Link to documentation that describes a diagnostic in more detail.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [RuleCompilationDiagnostic].
   /// [message] (Output)
@@ -36,7 +37,7 @@ class RuleCompilationDiagnostic {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'message': ?message,
-      'position': ?position == null ? null : position!.toMap(),
+      'position': ?pulumi.Input.mapOptionalInputValue<RuleCompilationDiagnosticPosition, Map<String, dynamic>>(position, (value) => value.toMap()),
       'severity': ?severity,
       'uri': ?uri,
     };
@@ -44,10 +45,10 @@ class RuleCompilationDiagnostic {
 
   factory RuleCompilationDiagnostic.fromMap(Map<String, dynamic> map) {
     return RuleCompilationDiagnostic(
-      message: map['message'] == null ? null : map['message'] as String,
-      position: map['position'] == null ? null : RuleCompilationDiagnosticPosition.fromMap((map['position'] as Map).cast<String, dynamic>()),
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      position: map['position'] == null ? null : (RuleCompilationDiagnosticPosition.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

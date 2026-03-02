@@ -45,27 +45,17 @@ class GetVpcPeeringConnectionArgs {
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] ID of the requester VPC of the specific VPC Peering Connection to retrieve.
   GetVpcPeeringConnectionArgs({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<List<GetVpcPeeringConnectionFilter>>? filters,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? peerCidrBlock,
-    pulumi.Output<String>? peerOwnerId,
-    pulumi.Output<String>? peerVpcId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      filters = pulumi.Input.asOptionalInput<List<GetVpcPeeringConnectionFilter>>(filters),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      peerCidrBlock = pulumi.Input.asOptionalInput<String>(peerCidrBlock),
-      peerOwnerId = pulumi.Input.asOptionalInput<String>(peerOwnerId),
-      peerVpcId = pulumi.Input.asOptionalInput<String>(peerVpcId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.cidrBlock,
+    this.filters,
+    this.id,
+    this.ownerId,
+    this.peerCidrBlock,
+    this.peerOwnerId,
+    this.peerVpcId,
+    this.status,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class GetVpcPeeringConnectionArgs {
 
   factory GetVpcPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringConnectionArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetVpcPeeringConnectionFilter>>(pulumi.Input.decodeList<GetVpcPeeringConnectionFilter>(map['filters'], (value) => GetVpcPeeringConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      peerCidrBlock: map['peerCidrBlock'] == null ? null : pulumi.Output.create<String>(map['peerCidrBlock'] as String),
-      peerOwnerId: map['peerOwnerId'] == null ? null : pulumi.Output.create<String>(map['peerOwnerId'] as String),
-      peerVpcId: map['peerVpcId'] == null ? null : pulumi.Output.create<String>(map['peerVpcId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcPeeringConnectionFilter>(map['filters'], (value) => GetVpcPeeringConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      peerCidrBlock: map['peerCidrBlock'] == null ? null : (map['peerCidrBlock'] as String).input(),
+      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId'] as String).input(),
+      peerVpcId: map['peerVpcId'] == null ? null : (map['peerVpcId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

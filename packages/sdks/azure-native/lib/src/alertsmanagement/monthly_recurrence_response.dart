@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Monthly recurrence object.
 class MonthlyRecurrenceResponse {
   /// Specifies the values for monthly recurrence pattern.
-  final List<int> daysOfMonth;
+  final pulumi.Input<List<int>> daysOfMonth;
   /// End time for recurrence.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Monthly'.
-  final String recurrenceType;
+  final pulumi.Input<String> recurrenceType;
   /// Start time for recurrence.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [MonthlyRecurrenceResponse].
   /// [daysOfMonth] Specifies the values for monthly recurrence pattern.
@@ -36,10 +37,10 @@ class MonthlyRecurrenceResponse {
 
   factory MonthlyRecurrenceResponse.fromMap(Map<String, dynamic> map) {
     return MonthlyRecurrenceResponse(
-      daysOfMonth: (map['daysOfMonth'] as List).cast<int>(),
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      recurrenceType: map['recurrenceType'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      daysOfMonth: ((map['daysOfMonth'] as List).cast<int>()).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      recurrenceType: (map['recurrenceType'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

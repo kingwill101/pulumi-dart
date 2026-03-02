@@ -19,15 +19,11 @@ class ShortUrlState {
   /// [sourceUrl] The original link address.
   /// [status] Short chain status.
   ShortUrlState({
-    pulumi.Output<int>? effectiveDays,
-    pulumi.Output<String>? shortUrlName,
-    pulumi.Output<String>? sourceUrl,
-    pulumi.Output<String>? status,
-  }) :
-      effectiveDays = pulumi.Input.asOptionalInput<int>(effectiveDays),
-      shortUrlName = pulumi.Input.asOptionalInput<String>(shortUrlName),
-      sourceUrl = pulumi.Input.asOptionalInput<String>(sourceUrl),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.effectiveDays,
+    this.shortUrlName,
+    this.sourceUrl,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ShortUrlState {
 
   factory ShortUrlState.fromMap(Map<String, dynamic> map) {
     return ShortUrlState(
-      effectiveDays: map['effectiveDays'] == null ? null : pulumi.Output.create<int>(map['effectiveDays'] as int),
-      shortUrlName: map['shortUrlName'] == null ? null : pulumi.Output.create<String>(map['shortUrlName'] as String),
-      sourceUrl: map['sourceUrl'] == null ? null : pulumi.Output.create<String>(map['sourceUrl'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      effectiveDays: map['effectiveDays'] == null ? null : (map['effectiveDays'] as int).input(),
+      shortUrlName: map['shortUrlName'] == null ? null : (map['shortUrlName'] as String).input(),
+      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

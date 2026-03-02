@@ -19,15 +19,11 @@ class BasicAccelerateIpState {
   /// [ipSetId] The ID of the Basic Ip Set.
   /// [status] The status of the Basic Accelerate IP instance.
   BasicAccelerateIpState({
-    pulumi.Output<String>? accelerateIpAddress,
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? ipSetId,
-    pulumi.Output<String>? status,
-  }) :
-      accelerateIpAddress = pulumi.Input.asOptionalInput<String>(accelerateIpAddress),
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      ipSetId = pulumi.Input.asOptionalInput<String>(ipSetId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accelerateIpAddress,
+    this.acceleratorId,
+    this.ipSetId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class BasicAccelerateIpState {
 
   factory BasicAccelerateIpState.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpState(
-      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : pulumi.Output.create<String>(map['accelerateIpAddress'] as String),
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      ipSetId: map['ipSetId'] == null ? null : pulumi.Output.create<String>(map['ipSetId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accelerateIpAddress: map['accelerateIpAddress'] == null ? null : (map['accelerateIpAddress'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      ipSetId: map['ipSetId'] == null ? null : (map['ipSetId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

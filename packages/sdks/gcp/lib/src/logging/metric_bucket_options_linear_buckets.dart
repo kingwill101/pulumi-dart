@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricBucketOptionsLinearBuckets {
   /// Must be greater than 0.
-  final int numFiniteBuckets;
+  final pulumi.Input<int> numFiniteBuckets;
   /// Lower bound of the first bucket.
-  final double offset;
+  final pulumi.Input<double> offset;
   /// Must be greater than 0.
-  final double width;
+  final pulumi.Input<double> width;
 
   /// Creates a new [MetricBucketOptionsLinearBuckets].
   /// [numFiniteBuckets] Must be greater than 0.
@@ -29,9 +30,9 @@ class MetricBucketOptionsLinearBuckets {
 
   factory MetricBucketOptionsLinearBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsLinearBuckets(
-      numFiniteBuckets: map['numFiniteBuckets'] as int,
-      offset: map['offset'] as double,
-      width: map['width'] as double,
+      numFiniteBuckets: (map['numFiniteBuckets'] as int).input(),
+      offset: (map['offset'] as double).input(),
+      width: (map['width'] as double).input(),
     );
   }
 }

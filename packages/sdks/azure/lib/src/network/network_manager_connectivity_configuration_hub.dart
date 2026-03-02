@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagerConnectivityConfigurationHub {
   /// Specifies the resource ID used as hub in Hub And Spoke topology.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// Specifies the resource Type used as hub in Hub And Spoke topology.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [NetworkManagerConnectivityConfigurationHub].
   /// [resourceId] Specifies the resource ID used as hub in Hub And Spoke topology.
@@ -24,8 +25,8 @@ class NetworkManagerConnectivityConfigurationHub {
 
   factory NetworkManagerConnectivityConfigurationHub.fromMap(Map<String, dynamic> map) {
     return NetworkManagerConnectivityConfigurationHub(
-      resourceId: map['resourceId'] as String,
-      resourceType: map['resourceType'] as String,
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

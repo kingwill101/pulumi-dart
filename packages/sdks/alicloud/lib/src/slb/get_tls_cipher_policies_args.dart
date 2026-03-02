@@ -28,19 +28,13 @@ class GetTlsCipherPoliciesArgs {
   /// [status] TLS policy instance state. Valid values: `configuring`, `normal`.
   /// [tlsCipherPolicyName] TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   GetTlsCipherPoliciesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<bool>? includeListener,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tlsCipherPolicyName,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeListener = pulumi.Input.asOptionalInput<bool>(includeListener),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tlsCipherPolicyName = pulumi.Input.asOptionalInput<String>(tlsCipherPolicyName);
+    this.ids,
+    this.includeListener,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.tlsCipherPolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetTlsCipherPoliciesArgs {
 
   factory GetTlsCipherPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetTlsCipherPoliciesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeListener: map['includeListener'] == null ? null : pulumi.Output.create<bool>(map['includeListener'] as bool),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : pulumi.Output.create<String>(map['tlsCipherPolicyName'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeListener: map['includeListener'] == null ? null : (map['includeListener'] as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Allocation configuration used by Batch Service to provision the nodes.
 class NodePlacementConfigurationResponse {
   /// Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [NodePlacementConfigurationResponse].
   /// [policy] Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
@@ -20,7 +21,7 @@ class NodePlacementConfigurationResponse {
 
   factory NodePlacementConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NodePlacementConfigurationResponse(
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

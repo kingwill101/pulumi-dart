@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Automanage configuration profile properties.
 class ConfigurationProfilePropertiesResponse {
   /// configuration dictionary of the configuration profile.
-  final dynamic configuration;
+  final pulumi.Input<dynamic>? configuration;
 
   /// Creates a new [ConfigurationProfilePropertiesResponse].
   /// [configuration] configuration dictionary of the configuration profile.
@@ -20,7 +21,7 @@ class ConfigurationProfilePropertiesResponse {
 
   factory ConfigurationProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfilePropertiesResponse(
-      configuration: map['configuration'] == null ? null : map['configuration'],
+      configuration: map['configuration'] == null ? null : (map['configuration']).input(),
     );
   }
 }

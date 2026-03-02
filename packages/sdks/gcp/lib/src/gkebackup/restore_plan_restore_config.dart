@@ -12,7 +12,7 @@ import 'restore_plan_restore_config_volume_data_restore_policy_binding.dart';
 class RestorePlanRestoreConfig {
   /// If True, restore all namespaced resources in the Backup.
   /// Setting this field to False will result in an error.
-  final bool? allNamespaces;
+  final pulumi.Input<bool>? allNamespaces;
   /// Defines the behavior for handling the situation where cluster-scoped resources
   /// being restored already exist in the target cluster.
   /// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
@@ -20,14 +20,14 @@ class RestorePlanRestoreConfig {
   /// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
   /// for more information on each policy option.
   /// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
-  final String? clusterResourceConflictPolicy;
+  final pulumi.Input<String>? clusterResourceConflictPolicy;
   /// Identifies the cluster-scoped resources to restore from the Backup.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigClusterResourceRestoreScope? clusterResourceRestoreScope;
+  final pulumi.Input<RestorePlanRestoreConfigClusterResourceRestoreScope>? clusterResourceRestoreScope;
   /// A list of selected namespaces excluded from restoration.
   /// All namespaces except those in this list will be restored.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigExcludedNamespaces? excludedNamespaces;
+  final pulumi.Input<RestorePlanRestoreConfigExcludedNamespaces>? excludedNamespaces;
   /// Defines the behavior for handling the situation where sets of namespaced resources
   /// being restored already exist in the target cluster.
   /// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
@@ -35,29 +35,29 @@ class RestorePlanRestoreConfig {
   /// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
   /// for more information on each mode.
   /// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
-  final String? namespacedResourceRestoreMode;
+  final pulumi.Input<String>? namespacedResourceRestoreMode;
   /// Do not restore any namespaced resources if set to "True".
   /// Specifying this field to "False" is not allowed.
-  final bool? noNamespaces;
+  final pulumi.Input<bool>? noNamespaces;
   /// It contains custom ordering to use on a Restore.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigRestoreOrder? restoreOrder;
+  final pulumi.Input<RestorePlanRestoreConfigRestoreOrder>? restoreOrder;
   /// A list of selected ProtectedApplications to restore.
   /// The listed ProtectedApplications and all the resources
   /// to which they refer will be restored.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigSelectedApplications? selectedApplications;
+  final pulumi.Input<RestorePlanRestoreConfigSelectedApplications>? selectedApplications;
   /// A list of selected namespaces to restore from the Backup.
   /// The listed Namespaces and all resources contained in them will be restored.
   /// Structure is documented below.
-  final RestorePlanRestoreConfigSelectedNamespaces? selectedNamespaces;
+  final pulumi.Input<RestorePlanRestoreConfigSelectedNamespaces>? selectedNamespaces;
   /// A list of transformation rules to be applied against Kubernetes
   /// resources as they are selected for restoration from a Backup.
   /// Rules are executed in order defined - this order matters,
   /// as changes made by a rule may impact the filtering logic of subsequent
   /// rules. An empty list means no transformation will occur.
   /// Structure is documented below.
-  final List<RestorePlanRestoreConfigTransformationRule>? transformationRules;
+  final pulumi.Input<List<RestorePlanRestoreConfigTransformationRule>>? transformationRules;
   /// Specifies the mechanism to be used to restore volume data.
   /// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
   /// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
@@ -65,12 +65,12 @@ class RestorePlanRestoreConfig {
   /// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
   /// for more information on each policy option.
   /// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
-  final String? volumeDataRestorePolicy;
+  final pulumi.Input<String>? volumeDataRestorePolicy;
   /// A table that binds volumes by their scope to a restore policy. Bindings
   /// must have a unique scope. Any volumes not scoped in the bindings are
   /// subject to the policy defined in volume_data_restore_policy.
   /// Structure is documented below.
-  final List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>? volumeDataRestorePolicyBindings;
+  final pulumi.Input<List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>>? volumeDataRestorePolicyBindings;
 
   /// Creates a new [RestorePlanRestoreConfig].
   /// [allNamespaces] If True, restore all namespaced resources in the Backup.
@@ -104,33 +104,33 @@ class RestorePlanRestoreConfig {
     return <String, dynamic>{
       'allNamespaces': ?allNamespaces,
       'clusterResourceConflictPolicy': ?clusterResourceConflictPolicy,
-      'clusterResourceRestoreScope': ?clusterResourceRestoreScope == null ? null : clusterResourceRestoreScope!.toMap(),
-      'excludedNamespaces': ?excludedNamespaces == null ? null : excludedNamespaces!.toMap(),
+      'clusterResourceRestoreScope': ?pulumi.Input.mapOptionalInputValue<RestorePlanRestoreConfigClusterResourceRestoreScope, Map<String, dynamic>>(clusterResourceRestoreScope, (value) => value.toMap()),
+      'excludedNamespaces': ?pulumi.Input.mapOptionalInputValue<RestorePlanRestoreConfigExcludedNamespaces, Map<String, dynamic>>(excludedNamespaces, (value) => value.toMap()),
       'namespacedResourceRestoreMode': ?namespacedResourceRestoreMode,
       'noNamespaces': ?noNamespaces,
-      'restoreOrder': ?restoreOrder == null ? null : restoreOrder!.toMap(),
-      'selectedApplications': ?selectedApplications == null ? null : selectedApplications!.toMap(),
-      'selectedNamespaces': ?selectedNamespaces == null ? null : selectedNamespaces!.toMap(),
-      'transformationRules': ?transformationRules == null ? null : pulumi.Input.encodeList<RestorePlanRestoreConfigTransformationRule, Map<String, dynamic>>(transformationRules!, (value) => value.toMap()),
+      'restoreOrder': ?pulumi.Input.mapOptionalInputValue<RestorePlanRestoreConfigRestoreOrder, Map<String, dynamic>>(restoreOrder, (value) => value.toMap()),
+      'selectedApplications': ?pulumi.Input.mapOptionalInputValue<RestorePlanRestoreConfigSelectedApplications, Map<String, dynamic>>(selectedApplications, (value) => value.toMap()),
+      'selectedNamespaces': ?pulumi.Input.mapOptionalInputValue<RestorePlanRestoreConfigSelectedNamespaces, Map<String, dynamic>>(selectedNamespaces, (value) => value.toMap()),
+      'transformationRules': ?pulumi.Input.mapOptionalInputValue<List<RestorePlanRestoreConfigTransformationRule>, List<Map<String, dynamic>>>(transformationRules, (value) => pulumi.Input.encodeList<RestorePlanRestoreConfigTransformationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'volumeDataRestorePolicy': ?volumeDataRestorePolicy,
-      'volumeDataRestorePolicyBindings': ?volumeDataRestorePolicyBindings == null ? null : pulumi.Input.encodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding, Map<String, dynamic>>(volumeDataRestorePolicyBindings!, (value) => value.toMap()),
+      'volumeDataRestorePolicyBindings': ?pulumi.Input.mapOptionalInputValue<List<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>, List<Map<String, dynamic>>>(volumeDataRestorePolicyBindings, (value) => pulumi.Input.encodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RestorePlanRestoreConfig.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfig(
-      allNamespaces: map['allNamespaces'] == null ? null : map['allNamespaces'] as bool,
-      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : map['clusterResourceConflictPolicy'] as String,
-      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope'] as Map).cast<String, dynamic>()),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : RestorePlanRestoreConfigExcludedNamespaces.fromMap((map['excludedNamespaces'] as Map).cast<String, dynamic>()),
-      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : map['namespacedResourceRestoreMode'] as String,
-      noNamespaces: map['noNamespaces'] == null ? null : map['noNamespaces'] as bool,
-      restoreOrder: map['restoreOrder'] == null ? null : RestorePlanRestoreConfigRestoreOrder.fromMap((map['restoreOrder'] as Map).cast<String, dynamic>()),
-      selectedApplications: map['selectedApplications'] == null ? null : RestorePlanRestoreConfigSelectedApplications.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>()),
-      selectedNamespaces: map['selectedNamespaces'] == null ? null : RestorePlanRestoreConfigSelectedNamespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>()),
-      transformationRules: map['transformationRules'] == null ? null : pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRule>(map['transformationRules'], (value) => RestorePlanRestoreConfigTransformationRule.fromMap((value as Map).cast<String, dynamic>())),
-      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : map['volumeDataRestorePolicy'] as String,
-      volumeDataRestorePolicyBindings: map['volumeDataRestorePolicyBindings'] == null ? null : pulumi.Input.decodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>(map['volumeDataRestorePolicyBindings'], (value) => RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
+      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces'] as bool).input(),
+      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : (map['clusterResourceConflictPolicy'] as String).input(),
+      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : (RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope'] as Map).cast<String, dynamic>())).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : (RestorePlanRestoreConfigExcludedNamespaces.fromMap((map['excludedNamespaces'] as Map).cast<String, dynamic>())).input(),
+      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : (map['namespacedResourceRestoreMode'] as String).input(),
+      noNamespaces: map['noNamespaces'] == null ? null : (map['noNamespaces'] as bool).input(),
+      restoreOrder: map['restoreOrder'] == null ? null : (RestorePlanRestoreConfigRestoreOrder.fromMap((map['restoreOrder'] as Map).cast<String, dynamic>())).input(),
+      selectedApplications: map['selectedApplications'] == null ? null : (RestorePlanRestoreConfigSelectedApplications.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>())).input(),
+      selectedNamespaces: map['selectedNamespaces'] == null ? null : (RestorePlanRestoreConfigSelectedNamespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>())).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRule>(map['transformationRules'], (value) => RestorePlanRestoreConfigTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : (map['volumeDataRestorePolicy'] as String).input(),
+      volumeDataRestorePolicyBindings: map['volumeDataRestorePolicyBindings'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>(map['volumeDataRestorePolicyBindings'], (value) => RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

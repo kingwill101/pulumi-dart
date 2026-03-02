@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The KPI alias.
 class KpiAlias {
   /// KPI alias name.
-  final String aliasName;
+  final pulumi.Input<String> aliasName;
   /// The expression.
-  final String expression;
+  final pulumi.Input<String> expression;
 
   /// Creates a new [KpiAlias].
   /// [aliasName] KPI alias name.
@@ -25,8 +26,8 @@ class KpiAlias {
 
   factory KpiAlias.fromMap(Map<String, dynamic> map) {
     return KpiAlias(
-      aliasName: map['aliasName'] as String,
-      expression: map['expression'] as String,
+      aliasName: (map['aliasName'] as String).input(),
+      expression: (map['expression'] as String).input(),
     );
   }
 }

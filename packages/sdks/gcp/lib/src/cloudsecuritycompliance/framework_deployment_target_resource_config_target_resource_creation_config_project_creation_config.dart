@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig {
   /// Billing account id to be used for the project.
-  final String billingAccountId;
+  final pulumi.Input<String> billingAccountId;
   /// organizations/{org} or folders/{folder}
-  final String parent;
+  final pulumi.Input<String> parent;
   /// Display name of the project to be created.
-  final String projectDisplayName;
+  final pulumi.Input<String> projectDisplayName;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig].
   /// [billingAccountId] Billing account id to be used for the project.
@@ -29,9 +30,9 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProject
 
   factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig(
-      billingAccountId: map['billingAccountId'] as String,
-      parent: map['parent'] as String,
-      projectDisplayName: map['projectDisplayName'] as String,
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      projectDisplayName: (map['projectDisplayName'] as String).input(),
     );
   }
 }

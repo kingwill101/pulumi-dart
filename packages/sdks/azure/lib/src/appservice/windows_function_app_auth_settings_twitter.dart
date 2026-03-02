@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsFunctionAppAuthSettingsTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
-  final String consumerKey;
+  final pulumi.Input<String> consumerKey;
   /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret_setting_name`.
-  final String? consumerSecret;
+  final pulumi.Input<String>? consumerSecret;
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in. Cannot be specified with `consumer_secret`.
-  final String? consumerSecretSettingName;
+  final pulumi.Input<String>? consumerSecretSettingName;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsTwitter].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
@@ -29,9 +30,9 @@ class WindowsFunctionAppAuthSettingsTwitter {
 
   factory WindowsFunctionAppAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsTwitter(
-      consumerKey: map['consumerKey'] as String,
-      consumerSecret: map['consumerSecret'] == null ? null : map['consumerSecret'] as String,
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : map['consumerSecretSettingName'] as String,
+      consumerKey: (map['consumerKey'] as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
     );
   }
 }

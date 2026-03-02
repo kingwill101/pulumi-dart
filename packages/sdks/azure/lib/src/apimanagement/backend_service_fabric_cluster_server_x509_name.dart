@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceFabricClusterServerX509Name {
   /// The thumbprint for the issuer of the certificate.
-  final String issuerCertificateThumbprint;
+  final pulumi.Input<String> issuerCertificateThumbprint;
   /// The common name of the certificate.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [BackendServiceFabricClusterServerX509Name].
   /// [issuerCertificateThumbprint] The thumbprint for the issuer of the certificate.
@@ -24,8 +25,8 @@ class BackendServiceFabricClusterServerX509Name {
 
   factory BackendServiceFabricClusterServerX509Name.fromMap(Map<String, dynamic> map) {
     return BackendServiceFabricClusterServerX509Name(
-      issuerCertificateThumbprint: map['issuerCertificateThumbprint'] as String,
-      name: map['name'] as String,
+      issuerCertificateThumbprint: (map['issuerCertificateThumbprint'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

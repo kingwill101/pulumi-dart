@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTopicMessageTransformJavascriptUdf {
   /// JavaScript code that contains a function 'function_name' with the
@@ -30,9 +31,9 @@ class GetTopicMessageTransformJavascriptUdf {
   /// function <function_name>(message, metadata) {
   /// }
   /// '''
-  final String code;
+  final pulumi.Input<String> code;
   /// Name of the JavaScript function that should be applied to Pub/Sub messages.
-  final String functionName;
+  final pulumi.Input<String> functionName;
 
   /// Creates a new [GetTopicMessageTransformJavascriptUdf].
   /// [code] JavaScript code that contains a function 'function_name' with the
@@ -51,8 +52,8 @@ class GetTopicMessageTransformJavascriptUdf {
 
   factory GetTopicMessageTransformJavascriptUdf.fromMap(Map<String, dynamic> map) {
     return GetTopicMessageTransformJavascriptUdf(
-      code: map['code'] as String,
-      functionName: map['functionName'] as String,
+      code: (map['code'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
     );
   }
 }

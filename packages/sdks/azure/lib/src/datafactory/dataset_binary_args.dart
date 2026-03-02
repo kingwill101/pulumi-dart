@@ -52,31 +52,19 @@ class DatasetBinaryArgs {
   /// [parameters] Specifies a list of parameters to associate with the Data Factory Binary Dataset.
   /// [sftpServerLocation] A `sftp_server_location` block as defined below.
   DatasetBinaryArgs({
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<DatasetBinaryAzureBlobStorageLocation>? azureBlobStorageLocation,
-    pulumi.Output<DatasetBinaryCompression>? compression,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? folder,
-    pulumi.Output<DatasetBinaryHttpServerLocation>? httpServerLocation,
-    required pulumi.Output<String> linkedServiceName,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<DatasetBinarySftpServerLocation>? sftpServerLocation,
-  }) :
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      azureBlobStorageLocation = pulumi.Input.asOptionalInput<DatasetBinaryAzureBlobStorageLocation>(azureBlobStorageLocation),
-      compression = pulumi.Input.asOptionalInput<DatasetBinaryCompression>(compression),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folder = pulumi.Input.asOptionalInput<String>(folder),
-      httpServerLocation = pulumi.Input.asOptionalInput<DatasetBinaryHttpServerLocation>(httpServerLocation),
-      linkedServiceName = pulumi.Input.asInput<String>(linkedServiceName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      sftpServerLocation = pulumi.Input.asOptionalInput<DatasetBinarySftpServerLocation>(sftpServerLocation);
+    this.additionalProperties,
+    this.annotations,
+    this.azureBlobStorageLocation,
+    this.compression,
+    required this.dataFactoryId,
+    this.description,
+    this.folder,
+    this.httpServerLocation,
+    required this.linkedServiceName,
+    this.name,
+    this.parameters,
+    this.sftpServerLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class DatasetBinaryArgs {
 
   factory DatasetBinaryArgs.fromMap(Map<String, dynamic> map) {
     return DatasetBinaryArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : pulumi.Output.create<DatasetBinaryAzureBlobStorageLocation>(DatasetBinaryAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())),
-      compression: map['compression'] == null ? null : pulumi.Output.create<DatasetBinaryCompression>(DatasetBinaryCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
-      httpServerLocation: map['httpServerLocation'] == null ? null : pulumi.Output.create<DatasetBinaryHttpServerLocation>(DatasetBinaryHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())),
-      linkedServiceName: pulumi.Output.create<String>(map['linkedServiceName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      sftpServerLocation: map['sftpServerLocation'] == null ? null : pulumi.Output.create<DatasetBinarySftpServerLocation>(DatasetBinarySftpServerLocation.fromMap((map['sftpServerLocation'] as Map).cast<String, dynamic>())),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      azureBlobStorageLocation: map['azureBlobStorageLocation'] == null ? null : (DatasetBinaryAzureBlobStorageLocation.fromMap((map['azureBlobStorageLocation'] as Map).cast<String, dynamic>())).input(),
+      compression: map['compression'] == null ? null : (DatasetBinaryCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      httpServerLocation: map['httpServerLocation'] == null ? null : (DatasetBinaryHttpServerLocation.fromMap((map['httpServerLocation'] as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      sftpServerLocation: map['sftpServerLocation'] == null ? null : (DatasetBinarySftpServerLocation.fromMap((map['sftpServerLocation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

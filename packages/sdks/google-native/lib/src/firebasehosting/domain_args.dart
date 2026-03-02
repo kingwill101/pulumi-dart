@@ -24,17 +24,12 @@ class DomainArgs {
   /// [site] The site name of the association.
   /// [siteId] Required.
   DomainArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<DomainRedirect>? domainRedirect,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> site,
-    required pulumi.Output<String> siteId,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainRedirect = pulumi.Input.asOptionalInput<DomainRedirect>(domainRedirect),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      site = pulumi.Input.asInput<String>(site),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    required this.domainName,
+    this.domainRedirect,
+    this.project,
+    required this.site,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainRedirect: map['domainRedirect'] == null ? null : pulumi.Output.create<DomainRedirect>(DomainRedirect.fromMap((map['domainRedirect'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      site: pulumi.Output.create<String>(map['site'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      domainName: (map['domainName'] as String).input(),
+      domainRedirect: map['domainRedirect'] == null ? null : (DomainRedirect.fromMap((map['domainRedirect'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      site: (map['site'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

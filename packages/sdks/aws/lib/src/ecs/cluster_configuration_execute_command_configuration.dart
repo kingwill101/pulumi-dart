@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_configuration_execute_command_configuration_log_configuration.dart';
 
 class ClusterConfigurationExecuteCommandConfiguration {
   /// AWS Key Management Service key ID to encrypt the data between the local client and the container.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `log_configuration` Block for details.
-  final ClusterConfigurationExecuteCommandConfigurationLogConfiguration? logConfiguration;
+  final pulumi.Input<ClusterConfigurationExecuteCommandConfigurationLogConfiguration>? logConfiguration;
   /// Log setting to use for redirecting logs for your execute command results. Valid values: `NONE`, `DEFAULT`, `OVERRIDE`.
-  final String? logging;
+  final pulumi.Input<String>? logging;
 
   /// Creates a new [ClusterConfigurationExecuteCommandConfiguration].
   /// [kmsKeyId] AWS Key Management Service key ID to encrypt the data between the local client and the container.
@@ -23,16 +24,16 @@ class ClusterConfigurationExecuteCommandConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kmsKeyId': ?kmsKeyId,
-      'logConfiguration': ?logConfiguration == null ? null : logConfiguration!.toMap(),
+      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<ClusterConfigurationExecuteCommandConfigurationLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
       'logging': ?logging,
     };
   }
 
   factory ClusterConfigurationExecuteCommandConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfigurationExecuteCommandConfiguration(
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      logConfiguration: map['logConfiguration'] == null ? null : ClusterConfigurationExecuteCommandConfigurationLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>()),
-      logging: map['logging'] == null ? null : map['logging'] as String,
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (ClusterConfigurationExecuteCommandConfigurationLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (map['logging'] as String).input(),
     );
   }
 }

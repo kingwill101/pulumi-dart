@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Workload profile to scope container app execution.
 class WorkloadProfile {
   /// Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
-  final bool? enableFips;
+  final pulumi.Input<bool>? enableFips;
   /// The maximum capacity.
-  final int? maximumCount;
+  final pulumi.Input<int>? maximumCount;
   /// The minimum capacity.
-  final int? minimumCount;
+  final pulumi.Input<int>? minimumCount;
   /// Workload profile type for the workloads to run on.
-  final String name;
+  final pulumi.Input<String> name;
   /// Workload profile type for the workloads to run on.
-  final String workloadProfileType;
+  final pulumi.Input<String> workloadProfileType;
 
   /// Creates a new [WorkloadProfile].
   /// [enableFips] Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
@@ -40,11 +41,11 @@ class WorkloadProfile {
 
   factory WorkloadProfile.fromMap(Map<String, dynamic> map) {
     return WorkloadProfile(
-      enableFips: map['enableFips'] == null ? null : map['enableFips'] as bool,
-      maximumCount: map['maximumCount'] == null ? null : map['maximumCount'] as int,
-      minimumCount: map['minimumCount'] == null ? null : map['minimumCount'] as int,
-      name: map['name'] as String,
-      workloadProfileType: map['workloadProfileType'] as String,
+      enableFips: map['enableFips'] == null ? null : (map['enableFips'] as bool).input(),
+      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount'] as int).input(),
+      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount'] as int).input(),
+      name: (map['name'] as String).input(),
+      workloadProfileType: (map['workloadProfileType'] as String).input(),
     );
   }
 }

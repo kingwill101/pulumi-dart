@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An URI message.
 class URIResponse {
   /// A label for the URI.
-  final String label;
+  final pulumi.Input<String> label;
   /// The unique resource identifier.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [URIResponse].
   /// [label] A label for the URI.
@@ -25,8 +26,8 @@ class URIResponse {
 
   factory URIResponse.fromMap(Map<String, dynamic> map) {
     return URIResponse(
-      label: map['label'] as String,
-      uri: map['uri'] as String,
+      label: (map['label'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

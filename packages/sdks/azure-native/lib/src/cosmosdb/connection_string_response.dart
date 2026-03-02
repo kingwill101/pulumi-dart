@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection string for the mongo cluster
 class ConnectionStringResponse {
   /// Value of the connection string
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// Description of the connection string
-  final String description;
+  final pulumi.Input<String> description;
 
   /// Creates a new [ConnectionStringResponse].
   /// [connectionString] Value of the connection string
@@ -25,8 +26,8 @@ class ConnectionStringResponse {
 
   factory ConnectionStringResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionStringResponse(
-      connectionString: map['connectionString'] as String,
-      description: map['description'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      description: (map['description'] as String).input(),
     );
   }
 }

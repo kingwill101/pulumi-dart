@@ -34,23 +34,15 @@ class CustomRoutingEndpointState {
   /// [trafficToEndpointPolicy] The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// [type] The backend service type of the endpoint. Valid values: `PrivateSubNet`.
   CustomRoutingEndpointState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? customRoutingEndpointId,
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? endpointGroupId,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? trafficToEndpointPolicy,
-    pulumi.Output<String>? type,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      customRoutingEndpointId = pulumi.Input.asOptionalInput<String>(customRoutingEndpointId),
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      endpointGroupId = pulumi.Input.asOptionalInput<String>(endpointGroupId),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      trafficToEndpointPolicy = pulumi.Input.asOptionalInput<String>(trafficToEndpointPolicy),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.acceleratorId,
+    this.customRoutingEndpointId,
+    this.endpoint,
+    this.endpointGroupId,
+    this.listenerId,
+    this.status,
+    this.trafficToEndpointPolicy,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CustomRoutingEndpointState {
 
   factory CustomRoutingEndpointState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      customRoutingEndpointId: map['customRoutingEndpointId'] == null ? null : pulumi.Output.create<String>(map['customRoutingEndpointId'] as String),
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      endpointGroupId: map['endpointGroupId'] == null ? null : pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : pulumi.Output.create<String>(map['trafficToEndpointPolicy'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      customRoutingEndpointId: map['customRoutingEndpointId'] == null ? null : (map['customRoutingEndpointId'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      trafficToEndpointPolicy: map['trafficToEndpointPolicy'] == null ? null : (map['trafficToEndpointPolicy'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Standard_Verizon = The SKU name for a Standard Verizon CDN profile.
 /// Premium_Verizon = The SKU name for a Premium Verizon CDN profile.
@@ -16,7 +17,7 @@
 /// StandardPlus_AvgBandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using monthly average peak bandwidth billing model.
 class Sku {
   /// Name of the pricing tier.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [Sku].
   /// [name] Name of the pricing tier.
@@ -32,7 +33,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

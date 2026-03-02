@@ -6,11 +6,11 @@ import 'apigroup.dart';
 /// APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.
 class APIGroupList {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// groups is a list of APIGroup.
-  final List<APIGroup> groups;
+  final pulumi.Input<List<APIGroup>> groups;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [APIGroupList].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -25,16 +25,16 @@ class APIGroupList {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'groups': pulumi.Input.encodeList<APIGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.mapInputValue<List<APIGroup>, List<Map<String, dynamic>>>(groups, (value) => pulumi.Input.encodeList<APIGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
     };
   }
 
   factory APIGroupList.fromMap(Map<String, dynamic> map) {
     return APIGroupList(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      groups: pulumi.Input.decodeList<APIGroup>(map['groups'], (value) => APIGroup.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      groups: (pulumi.Input.decodeList<APIGroup>(map['groups'], (value) => APIGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

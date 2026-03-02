@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseIssuer {
   /// Issuer key fingerprint.
-  final String keyFingerprint;
+  final pulumi.Input<String> keyFingerprint;
   /// The key name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Asymmetric KMS key from AWS Key Management Service. The KMS key must have a key usage of sign and verify, and support the RSASSA-PSS SHA-256 signing algorithm.
-  final String signKey;
+  final pulumi.Input<String> signKey;
 
   /// Creates a new [GetReceivedLicenseIssuer].
   /// [keyFingerprint] Issuer key fingerprint.
@@ -29,9 +30,9 @@ class GetReceivedLicenseIssuer {
 
   factory GetReceivedLicenseIssuer.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseIssuer(
-      keyFingerprint: map['keyFingerprint'] as String,
-      name: map['name'] as String,
-      signKey: map['signKey'] as String,
+      keyFingerprint: (map['keyFingerprint'] as String).input(),
+      name: (map['name'] as String).input(),
+      signKey: (map['signKey'] as String).input(),
     );
   }
 }

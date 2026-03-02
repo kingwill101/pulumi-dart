@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMaintenanceSchedule {
   /// (Output)
   /// Output only. The end time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// (Output)
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String? scheduleDeadlineTime;
+  final pulumi.Input<String>? scheduleDeadlineTime;
   /// (Output)
   /// Output only. The start time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ClusterMaintenanceSchedule].
   /// [endTime] (Output)
@@ -39,9 +40,9 @@ class ClusterMaintenanceSchedule {
 
   factory ClusterMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceSchedule(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : map['scheduleDeadlineTime'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

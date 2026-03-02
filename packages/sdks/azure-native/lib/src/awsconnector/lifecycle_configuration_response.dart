@@ -6,7 +6,7 @@ import 'rule_response.dart';
 /// Definition of LifecycleConfiguration
 class LifecycleConfigurationResponse {
   /// A lifecycle rule for individual objects in an Amazon S3 bucket.
-  final List<RuleResponse>? rules;
+  final pulumi.Input<List<RuleResponse>>? rules;
 
   /// Creates a new [LifecycleConfigurationResponse].
   /// [rules] A lifecycle rule for individual objects in an Amazon S3 bucket.
@@ -16,13 +16,13 @@ class LifecycleConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<RuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory LifecycleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigurationResponse(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RuleResponse>(map['rules'], (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleResponse>(map['rules'], (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

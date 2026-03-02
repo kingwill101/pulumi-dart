@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Partner server information for the failover group.
 class PartnerInfoResponse {
   /// Resource identifier of the partner server.
-  final String id;
+  final pulumi.Input<String> id;
   /// Geo location of the partner server.
-  final String location;
+  final pulumi.Input<String> location;
   /// Replication role of the partner server.
-  final String replicationRole;
+  final pulumi.Input<String> replicationRole;
 
   /// Creates a new [PartnerInfoResponse].
   /// [id] Resource identifier of the partner server.
@@ -30,9 +31,9 @@ class PartnerInfoResponse {
 
   factory PartnerInfoResponse.fromMap(Map<String, dynamic> map) {
     return PartnerInfoResponse(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      replicationRole: map['replicationRole'] as String,
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      replicationRole: (map['replicationRole'] as String).input(),
     );
   }
 }

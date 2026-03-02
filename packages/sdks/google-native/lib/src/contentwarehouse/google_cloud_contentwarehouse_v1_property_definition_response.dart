@@ -8,39 +8,39 @@ import 'google_cloud_contentwarehouse_v1_property_type_options_response.dart';
 /// Defines the metadata for a schema property.
 class GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
   /// Date time property. It is not supported by CMEK compliant deployment.
-  final Map<String, dynamic> dateTimeTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> dateTimeTypeOptions;
   /// The display-name for the property, used for front-end.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Enum/categorical property.
-  final GoogleCloudContentwarehouseV1EnumTypeOptionsResponse enumTypeOptions;
+  final pulumi.Input<GoogleCloudContentwarehouseV1EnumTypeOptionsResponse> enumTypeOptions;
   /// Float property.
-  final Map<String, dynamic> floatTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> floatTypeOptions;
   /// Integer property.
-  final Map<String, dynamic> integerTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> integerTypeOptions;
   /// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
-  final bool isFilterable;
+  final pulumi.Input<bool> isFilterable;
   /// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
-  final bool isMetadata;
+  final pulumi.Input<bool> isMetadata;
   /// Whether the property can have multiple values.
-  final bool isRepeatable;
+  final pulumi.Input<bool> isRepeatable;
   /// Whether the property is mandatory. Default is 'false', i.e. populating property value can be skipped. If 'true' then user must populate the value for this property.
-  final bool isRequired;
+  final pulumi.Input<bool> isRequired;
   /// Indicates that the property should be included in a global search.
-  final bool isSearchable;
+  final pulumi.Input<bool> isSearchable;
   /// Map property.
-  final Map<String, dynamic> mapTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> mapTypeOptions;
   /// The name of the metadata property. Must be unique within a document schema and is case insensitive. Names must be non-blank, start with a letter, and can contain alphanumeric characters and: /, :, -, _, and .
-  final String name;
+  final pulumi.Input<String> name;
   /// Nested structured data property.
-  final GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse propertyTypeOptions;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse> propertyTypeOptions;
   /// The retrieval importance of the property during search.
-  final String retrievalImportance;
+  final pulumi.Input<String> retrievalImportance;
   /// The mapping information between this property to another schema source.
-  final List<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse> schemaSources;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse>> schemaSources;
   /// Text/string property.
-  final Map<String, dynamic> textTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> textTypeOptions;
   /// Timestamp property. It is not supported by CMEK compliant deployment.
-  final Map<String, dynamic> timestampTypeOptions;
+  final pulumi.Input<Map<String, dynamic>> timestampTypeOptions;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyDefinitionResponse].
   /// [dateTimeTypeOptions] Date time property. It is not supported by CMEK compliant deployment.
@@ -84,7 +84,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
     return <String, dynamic>{
       'dateTimeTypeOptions': dateTimeTypeOptions,
       'displayName': displayName,
-      'enumTypeOptions': enumTypeOptions.toMap(),
+      'enumTypeOptions': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1EnumTypeOptionsResponse, Map<String, dynamic>>(enumTypeOptions, (value) => value.toMap()),
       'floatTypeOptions': floatTypeOptions,
       'integerTypeOptions': integerTypeOptions,
       'isFilterable': isFilterable,
@@ -94,9 +94,9 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
       'isSearchable': isSearchable,
       'mapTypeOptions': mapTypeOptions,
       'name': name,
-      'propertyTypeOptions': propertyTypeOptions.toMap(),
+      'propertyTypeOptions': pulumi.Input.mapInputValue<GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse, Map<String, dynamic>>(propertyTypeOptions, (value) => value.toMap()),
       'retrievalImportance': retrievalImportance,
-      'schemaSources': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse, Map<String, dynamic>>(schemaSources, (value) => value.toMap()),
+      'schemaSources': pulumi.Input.mapInputValue<List<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse>, List<Map<String, dynamic>>>(schemaSources, (value) => pulumi.Input.encodeList<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'textTypeOptions': textTypeOptions,
       'timestampTypeOptions': timestampTypeOptions,
     };
@@ -104,23 +104,23 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
 
   factory GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyDefinitionResponse(
-      dateTimeTypeOptions: (map['dateTimeTypeOptions'] as Map).cast<String, dynamic>(),
-      displayName: map['displayName'] as String,
-      enumTypeOptions: GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap((map['enumTypeOptions'] as Map).cast<String, dynamic>()),
-      floatTypeOptions: (map['floatTypeOptions'] as Map).cast<String, dynamic>(),
-      integerTypeOptions: (map['integerTypeOptions'] as Map).cast<String, dynamic>(),
-      isFilterable: map['isFilterable'] as bool,
-      isMetadata: map['isMetadata'] as bool,
-      isRepeatable: map['isRepeatable'] as bool,
-      isRequired: map['isRequired'] as bool,
-      isSearchable: map['isSearchable'] as bool,
-      mapTypeOptions: (map['mapTypeOptions'] as Map).cast<String, dynamic>(),
-      name: map['name'] as String,
-      propertyTypeOptions: GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse.fromMap((map['propertyTypeOptions'] as Map).cast<String, dynamic>()),
-      retrievalImportance: map['retrievalImportance'] as String,
-      schemaSources: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse>(map['schemaSources'], (value) => GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      textTypeOptions: (map['textTypeOptions'] as Map).cast<String, dynamic>(),
-      timestampTypeOptions: (map['timestampTypeOptions'] as Map).cast<String, dynamic>(),
+      dateTimeTypeOptions: ((map['dateTimeTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      enumTypeOptions: (GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap((map['enumTypeOptions'] as Map).cast<String, dynamic>())).input(),
+      floatTypeOptions: ((map['floatTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      integerTypeOptions: ((map['integerTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      isFilterable: (map['isFilterable'] as bool).input(),
+      isMetadata: (map['isMetadata'] as bool).input(),
+      isRepeatable: (map['isRepeatable'] as bool).input(),
+      isRequired: (map['isRequired'] as bool).input(),
+      isSearchable: (map['isSearchable'] as bool).input(),
+      mapTypeOptions: ((map['mapTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      name: (map['name'] as String).input(),
+      propertyTypeOptions: (GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse.fromMap((map['propertyTypeOptions'] as Map).cast<String, dynamic>())).input(),
+      retrievalImportance: (map['retrievalImportance'] as String).input(),
+      schemaSources: (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse>(map['schemaSources'], (value) => GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTypeOptions: ((map['textTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      timestampTypeOptions: ((map['timestampTypeOptions'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ManagedInstanceAzureADOnlyAuthenticationArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   ManagedInstanceAzureADOnlyAuthenticationArgs({
-    pulumi.Output<String>? authenticationName,
-    required pulumi.Output<bool> azureADOnlyAuthentication,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationName = pulumi.Input.asOptionalInput<String>(authenticationName),
-      azureADOnlyAuthentication = pulumi.Input.asInput<bool>(azureADOnlyAuthentication),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authenticationName,
+    required this.azureADOnlyAuthentication,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ManagedInstanceAzureADOnlyAuthenticationArgs {
 
   factory ManagedInstanceAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAzureADOnlyAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : pulumi.Output.create<String>(map['authenticationName'] as String),
-      azureADOnlyAuthentication: pulumi.Output.create<bool>(map['azureADOnlyAuthentication'] as bool),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      azureADOnlyAuthentication: (map['azureADOnlyAuthentication'] as bool).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

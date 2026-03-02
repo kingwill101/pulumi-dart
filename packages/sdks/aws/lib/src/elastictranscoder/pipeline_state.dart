@@ -57,31 +57,19 @@ class PipelineState {
   /// [thumbnailConfig] The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   /// [thumbnailConfigPermissions] The permissions for the `thumbnail_config` object. (documented below)
   PipelineState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? awsKmsKeyArn,
-    pulumi.Output<PipelineContentConfig>? contentConfig,
-    pulumi.Output<List<PipelineContentConfigPermission>>? contentConfigPermissions,
-    pulumi.Output<String>? inputBucket,
-    pulumi.Output<String>? name,
-    pulumi.Output<PipelineNotifications>? notifications,
-    pulumi.Output<String>? outputBucket,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<PipelineThumbnailConfig>? thumbnailConfig,
-    pulumi.Output<List<PipelineThumbnailConfigPermission>>? thumbnailConfigPermissions,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      awsKmsKeyArn = pulumi.Input.asOptionalInput<String>(awsKmsKeyArn),
-      contentConfig = pulumi.Input.asOptionalInput<PipelineContentConfig>(contentConfig),
-      contentConfigPermissions = pulumi.Input.asOptionalInput<List<PipelineContentConfigPermission>>(contentConfigPermissions),
-      inputBucket = pulumi.Input.asOptionalInput<String>(inputBucket),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<PipelineNotifications>(notifications),
-      outputBucket = pulumi.Input.asOptionalInput<String>(outputBucket),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      thumbnailConfig = pulumi.Input.asOptionalInput<PipelineThumbnailConfig>(thumbnailConfig),
-      thumbnailConfigPermissions = pulumi.Input.asOptionalInput<List<PipelineThumbnailConfigPermission>>(thumbnailConfigPermissions);
+    this.arn,
+    this.awsKmsKeyArn,
+    this.contentConfig,
+    this.contentConfigPermissions,
+    this.inputBucket,
+    this.name,
+    this.notifications,
+    this.outputBucket,
+    this.region,
+    this.role,
+    this.thumbnailConfig,
+    this.thumbnailConfigPermissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,18 +90,18 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      awsKmsKeyArn: map['awsKmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['awsKmsKeyArn'] as String),
-      contentConfig: map['contentConfig'] == null ? null : pulumi.Output.create<PipelineContentConfig>(PipelineContentConfig.fromMap((map['contentConfig'] as Map).cast<String, dynamic>())),
-      contentConfigPermissions: map['contentConfigPermissions'] == null ? null : pulumi.Output.create<List<PipelineContentConfigPermission>>(pulumi.Input.decodeList<PipelineContentConfigPermission>(map['contentConfigPermissions'], (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      inputBucket: map['inputBucket'] == null ? null : pulumi.Output.create<String>(map['inputBucket'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<PipelineNotifications>(PipelineNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())),
-      outputBucket: map['outputBucket'] == null ? null : pulumi.Output.create<String>(map['outputBucket'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      thumbnailConfig: map['thumbnailConfig'] == null ? null : pulumi.Output.create<PipelineThumbnailConfig>(PipelineThumbnailConfig.fromMap((map['thumbnailConfig'] as Map).cast<String, dynamic>())),
-      thumbnailConfigPermissions: map['thumbnailConfigPermissions'] == null ? null : pulumi.Output.create<List<PipelineThumbnailConfigPermission>>(pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(map['thumbnailConfigPermissions'], (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>()))),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      awsKmsKeyArn: map['awsKmsKeyArn'] == null ? null : (map['awsKmsKeyArn'] as String).input(),
+      contentConfig: map['contentConfig'] == null ? null : (PipelineContentConfig.fromMap((map['contentConfig'] as Map).cast<String, dynamic>())).input(),
+      contentConfigPermissions: map['contentConfigPermissions'] == null ? null : (pulumi.Input.decodeList<PipelineContentConfigPermission>(map['contentConfigPermissions'], (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputBucket: map['inputBucket'] == null ? null : (map['inputBucket'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (PipelineNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
+      outputBucket: map['outputBucket'] == null ? null : (map['outputBucket'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      thumbnailConfig: map['thumbnailConfig'] == null ? null : (PipelineThumbnailConfig.fromMap((map['thumbnailConfig'] as Map).cast<String, dynamic>())).input(),
+      thumbnailConfigPermissions: map['thumbnailConfigPermissions'] == null ? null : (pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(map['thumbnailConfigPermissions'], (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

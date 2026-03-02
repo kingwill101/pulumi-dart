@@ -31,21 +31,14 @@ class ProvisionedModelThroughputArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   ProvisionedModelThroughputArgs({
-    pulumi.Output<String>? commitmentDuration,
-    required pulumi.Output<String> modelArn,
-    required pulumi.Output<int> modelUnits,
-    required pulumi.Output<String> provisionedModelName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ProvisionedModelThroughputTimeouts>? timeouts,
-  }) :
-      commitmentDuration = pulumi.Input.asOptionalInput<String>(commitmentDuration),
-      modelArn = pulumi.Input.asInput<String>(modelArn),
-      modelUnits = pulumi.Input.asInput<int>(modelUnits),
-      provisionedModelName = pulumi.Input.asInput<String>(provisionedModelName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ProvisionedModelThroughputTimeouts>(timeouts);
+    this.commitmentDuration,
+    required this.modelArn,
+    required this.modelUnits,
+    required this.provisionedModelName,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ProvisionedModelThroughputArgs {
 
   factory ProvisionedModelThroughputArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedModelThroughputArgs(
-      commitmentDuration: map['commitmentDuration'] == null ? null : pulumi.Output.create<String>(map['commitmentDuration'] as String),
-      modelArn: pulumi.Output.create<String>(map['modelArn'] as String),
-      modelUnits: pulumi.Output.create<int>(map['modelUnits'] as int),
-      provisionedModelName: pulumi.Output.create<String>(map['provisionedModelName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ProvisionedModelThroughputTimeouts>(ProvisionedModelThroughputTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      commitmentDuration: map['commitmentDuration'] == null ? null : (map['commitmentDuration'] as String).input(),
+      modelArn: (map['modelArn'] as String).input(),
+      modelUnits: (map['modelUnits'] as int).input(),
+      provisionedModelName: (map['provisionedModelName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ProvisionedModelThroughputTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

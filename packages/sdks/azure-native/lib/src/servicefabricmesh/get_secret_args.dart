@@ -16,11 +16,9 @@ class GetSecretArgs {
   /// [resourceGroupName] Azure resource group name
   /// [secretResourceName] The name of the secret resource.
   GetSecretArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> secretResourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretResourceName = pulumi.Input.asInput<String>(secretResourceName);
+    required this.resourceGroupName,
+    required this.secretResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretResourceName: pulumi.Output.create<String>(map['secretResourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretResourceName: (map['secretResourceName'] as String).input(),
     );
   }
 }

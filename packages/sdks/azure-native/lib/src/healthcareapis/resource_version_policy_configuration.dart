@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings for history tracking for FHIR resources.
 class ResourceVersionPolicyConfiguration {
   /// The default value for tracking history across all resources.
-  final String? default_;
+  final pulumi.Input<String>? default_;
   /// A list of FHIR Resources and their version policy overrides.
-  final Map<String, String>? resourceTypeOverrides;
+  final pulumi.Input<Map<String, String>>? resourceTypeOverrides;
 
   /// Creates a new [ResourceVersionPolicyConfiguration].
   /// [default_] The default value for tracking history across all resources.
@@ -25,8 +26,8 @@ class ResourceVersionPolicyConfiguration {
 
   factory ResourceVersionPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return ResourceVersionPolicyConfiguration(
-      default_: map['default'] == null ? null : map['default'] as String,
-      resourceTypeOverrides: map['resourceTypeOverrides'] == null ? null : (map['resourceTypeOverrides'] as Map).cast<String, String>(),
+      default_: map['default'] == null ? null : (map['default'] as String).input(),
+      resourceTypeOverrides: map['resourceTypeOverrides'] == null ? null : ((map['resourceTypeOverrides'] as Map).cast<String, String>()).input(),
     );
   }
 }

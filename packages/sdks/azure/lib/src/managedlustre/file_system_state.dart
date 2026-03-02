@@ -56,35 +56,21 @@ class FileSystemState {
   /// [tags] A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   /// [zones] A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
   FileSystemState({
-    pulumi.Output<FileSystemEncryptionKey>? encryptionKey,
-    pulumi.Output<FileSystemHsmSetting>? hsmSetting,
-    pulumi.Output<FileSystemIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<FileSystemMaintenanceWindow>? maintenanceWindow,
-    pulumi.Output<String>? mgsAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<FileSystemRootSquash>? rootSquash,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<int>? storageCapacityInTb,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      encryptionKey = pulumi.Input.asOptionalInput<FileSystemEncryptionKey>(encryptionKey),
-      hsmSetting = pulumi.Input.asOptionalInput<FileSystemHsmSetting>(hsmSetting),
-      identity = pulumi.Input.asOptionalInput<FileSystemIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maintenanceWindow = pulumi.Input.asOptionalInput<FileSystemMaintenanceWindow>(maintenanceWindow),
-      mgsAddress = pulumi.Input.asOptionalInput<String>(mgsAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      rootSquash = pulumi.Input.asOptionalInput<FileSystemRootSquash>(rootSquash),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      storageCapacityInTb = pulumi.Input.asOptionalInput<int>(storageCapacityInTb),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.encryptionKey,
+    this.hsmSetting,
+    this.identity,
+    this.location,
+    this.maintenanceWindow,
+    this.mgsAddress,
+    this.name,
+    this.resourceGroupName,
+    this.rootSquash,
+    this.skuName,
+    this.storageCapacityInTb,
+    this.subnetId,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class FileSystemState {
 
   factory FileSystemState.fromMap(Map<String, dynamic> map) {
     return FileSystemState(
-      encryptionKey: map['encryptionKey'] == null ? null : pulumi.Output.create<FileSystemEncryptionKey>(FileSystemEncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())),
-      hsmSetting: map['hsmSetting'] == null ? null : pulumi.Output.create<FileSystemHsmSetting>(FileSystemHsmSetting.fromMap((map['hsmSetting'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<FileSystemIdentity>(FileSystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : pulumi.Output.create<FileSystemMaintenanceWindow>(FileSystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())),
-      mgsAddress: map['mgsAddress'] == null ? null : pulumi.Output.create<String>(map['mgsAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rootSquash: map['rootSquash'] == null ? null : pulumi.Output.create<FileSystemRootSquash>(FileSystemRootSquash.fromMap((map['rootSquash'] as Map).cast<String, dynamic>())),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      storageCapacityInTb: map['storageCapacityInTb'] == null ? null : pulumi.Output.create<int>(map['storageCapacityInTb'] as int),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      encryptionKey: map['encryptionKey'] == null ? null : (FileSystemEncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
+      hsmSetting: map['hsmSetting'] == null ? null : (FileSystemHsmSetting.fromMap((map['hsmSetting'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (FileSystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (FileSystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      mgsAddress: map['mgsAddress'] == null ? null : (map['mgsAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      rootSquash: map['rootSquash'] == null ? null : (FileSystemRootSquash.fromMap((map['rootSquash'] as Map).cast<String, dynamic>())).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      storageCapacityInTb: map['storageCapacityInTb'] == null ? null : (map['storageCapacityInTb'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

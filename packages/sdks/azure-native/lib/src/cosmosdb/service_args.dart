@@ -23,15 +23,11 @@ class ServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] Cosmos DB service name.
   ServiceArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<DataTransferServiceResourceCreateUpdateProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      properties = pulumi.Input.asOptionalInput<DataTransferServiceResourceCreateUpdateProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    required this.accountName,
+    this.properties,
+    required this.resourceGroupName,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<DataTransferServiceResourceCreateUpdateProperties>(DataTransferServiceResourceCreateUpdateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      properties: map['properties'] == null ? null : (DataTransferServiceResourceCreateUpdateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

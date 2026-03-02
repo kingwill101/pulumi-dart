@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of an assessment.
 class HeterogeneousAssessmentPropertiesResponse {
   /// Arm id of partner assessments.
-  final List<String>? assessmentArmIds;
+  final pulumi.Input<List<String>>? assessmentArmIds;
   /// Azure location for assessment.
-  final String azureLocation;
+  final pulumi.Input<String> azureLocation;
   /// Confidence rating in percentage.
-  final double confidenceRatingInPercentage;
+  final pulumi.Input<double> confidenceRatingInPercentage;
   /// Timestamp for the last successfully calculated summary for the assessment.
-  final String lastCalculatedOn;
+  final pulumi.Input<String> lastCalculatedOn;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Schema version.
-  final String schemaVersion;
+  final pulumi.Input<String> schemaVersion;
   /// Sizing criterion for assessment.
-  final String sizingCriterion;
+  final pulumi.Input<String> sizingCriterion;
   /// Whether assessment is in valid state and all machines have been assessed.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [HeterogeneousAssessmentPropertiesResponse].
   /// [assessmentArmIds] Arm id of partner assessments.
@@ -55,14 +56,14 @@ class HeterogeneousAssessmentPropertiesResponse {
 
   factory HeterogeneousAssessmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentPropertiesResponse(
-      assessmentArmIds: map['assessmentArmIds'] == null ? null : (map['assessmentArmIds'] as List).cast<String>(),
-      azureLocation: map['azureLocation'] as String,
-      confidenceRatingInPercentage: map['confidenceRatingInPercentage'] as double,
-      lastCalculatedOn: map['lastCalculatedOn'] as String,
-      provisioningState: map['provisioningState'] as String,
-      schemaVersion: map['schemaVersion'] as String,
-      sizingCriterion: map['sizingCriterion'] as String,
-      status: map['status'] as String,
+      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds'] as List).cast<String>()).input(),
+      azureLocation: (map['azureLocation'] as String).input(),
+      confidenceRatingInPercentage: (map['confidenceRatingInPercentage'] as double).input(),
+      lastCalculatedOn: (map['lastCalculatedOn'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      schemaVersion: (map['schemaVersion'] as String).input(),
+      sizingCriterion: (map['sizingCriterion'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

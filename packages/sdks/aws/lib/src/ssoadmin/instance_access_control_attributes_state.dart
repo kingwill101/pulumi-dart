@@ -21,17 +21,12 @@ class InstanceAccessControlAttributesState {
   /// [status] Optional.
   /// [statusReason] Optional.
   InstanceAccessControlAttributesState({
-    pulumi.Output<List<InstanceAccessControlAttributesAttribute>>? attributes,
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? statusReason,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<InstanceAccessControlAttributesAttribute>>(attributes),
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      statusReason = pulumi.Input.asOptionalInput<String>(statusReason);
+    this.attributes,
+    this.instanceArn,
+    this.region,
+    this.status,
+    this.statusReason,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class InstanceAccessControlAttributesState {
 
   factory InstanceAccessControlAttributesState.fromMap(Map<String, dynamic> map) {
     return InstanceAccessControlAttributesState(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<InstanceAccessControlAttributesAttribute>>(pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      statusReason: map['statusReason'] == null ? null : pulumi.Output.create<String>(map['statusReason'] as String),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
     );
   }
 }

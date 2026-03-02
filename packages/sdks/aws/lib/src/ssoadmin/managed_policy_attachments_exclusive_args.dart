@@ -27,17 +27,12 @@ class ManagedPolicyAttachmentsExclusiveArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   ManagedPolicyAttachmentsExclusiveArgs({
-    required pulumi.Output<String> instanceArn,
-    required pulumi.Output<List<String>> managedPolicyArns,
-    required pulumi.Output<String> permissionSetArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<ManagedPolicyAttachmentsExclusiveTimeouts>? timeouts,
-  }) :
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      managedPolicyArns = pulumi.Input.asInput<List<String>>(managedPolicyArns),
-      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<ManagedPolicyAttachmentsExclusiveTimeouts>(timeouts);
+    required this.instanceArn,
+    required this.managedPolicyArns,
+    required this.permissionSetArn,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ManagedPolicyAttachmentsExclusiveArgs {
 
   factory ManagedPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPolicyAttachmentsExclusiveArgs(
-      instanceArn: pulumi.Output.create<String>(map['instanceArn'] as String),
-      managedPolicyArns: pulumi.Output.create<List<String>>((map['managedPolicyArns'] as List).cast<String>()),
-      permissionSetArn: pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ManagedPolicyAttachmentsExclusiveTimeouts>(ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      instanceArn: (map['instanceArn'] as String).input(),
+      managedPolicyArns: ((map['managedPolicyArns'] as List).cast<String>()).input(),
+      permissionSetArn: (map['permissionSetArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

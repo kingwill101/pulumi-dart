@@ -23,15 +23,11 @@ class ComponentCurrentBillingFeatureArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   ComponentCurrentBillingFeatureArgs({
-    pulumi.Output<List<String>>? currentBillingFeatures,
-    pulumi.Output<ApplicationInsightsComponentDataVolumeCap>? dataVolumeCap,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      currentBillingFeatures = pulumi.Input.asOptionalInput<List<String>>(currentBillingFeatures),
-      dataVolumeCap = pulumi.Input.asOptionalInput<ApplicationInsightsComponentDataVolumeCap>(dataVolumeCap),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.currentBillingFeatures,
+    this.dataVolumeCap,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ComponentCurrentBillingFeatureArgs {
 
   factory ComponentCurrentBillingFeatureArgs.fromMap(Map<String, dynamic> map) {
     return ComponentCurrentBillingFeatureArgs(
-      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['currentBillingFeatures'] as List).cast<String>()),
-      dataVolumeCap: map['dataVolumeCap'] == null ? null : pulumi.Output.create<ApplicationInsightsComponentDataVolumeCap>(ApplicationInsightsComponentDataVolumeCap.fromMap((map['dataVolumeCap'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : ((map['currentBillingFeatures'] as List).cast<String>()).input(),
+      dataVolumeCap: map['dataVolumeCap'] == null ? null : (ApplicationInsightsComponentDataVolumeCap.fromMap((map['dataVolumeCap'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

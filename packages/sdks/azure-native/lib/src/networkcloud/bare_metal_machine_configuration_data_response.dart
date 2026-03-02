@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'administrative_credentials_response.dart';
 
 class BareMetalMachineConfigurationDataResponse {
   /// The connection string for the baseboard management controller including IP address and protocol.
-  final String bmcConnectionString;
+  final pulumi.Input<String> bmcConnectionString;
   /// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
-  final AdministrativeCredentialsResponse bmcCredentials;
+  final pulumi.Input<AdministrativeCredentialsResponse> bmcCredentials;
   /// The MAC address of the BMC for this machine.
-  final String bmcMacAddress;
+  final pulumi.Input<String> bmcMacAddress;
   /// The MAC address associated with the PXE NIC card.
-  final String bootMacAddress;
+  final pulumi.Input<String> bootMacAddress;
   /// The free-form additional information about the machine, e.g. an asset tag.
-  final String? machineDetails;
+  final pulumi.Input<String>? machineDetails;
   /// The user-provided name for the bare metal machine created from this specification.
   /// If not provided, the machine name will be generated programmatically.
-  final String? machineName;
+  final pulumi.Input<String>? machineName;
   /// The slot the physical machine is in the rack based on the BOM configuration.
-  final double rackSlot;
+  final pulumi.Input<double> rackSlot;
   /// The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
 
   /// Creates a new [BareMetalMachineConfigurationDataResponse].
   /// [bmcConnectionString] The connection string for the baseboard management controller including IP address and protocol.
@@ -44,7 +45,7 @@ class BareMetalMachineConfigurationDataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bmcConnectionString': bmcConnectionString,
-      'bmcCredentials': bmcCredentials.toMap(),
+      'bmcCredentials': pulumi.Input.mapInputValue<AdministrativeCredentialsResponse, Map<String, dynamic>>(bmcCredentials, (value) => value.toMap()),
       'bmcMacAddress': bmcMacAddress,
       'bootMacAddress': bootMacAddress,
       'machineDetails': ?machineDetails,
@@ -56,14 +57,14 @@ class BareMetalMachineConfigurationDataResponse {
 
   factory BareMetalMachineConfigurationDataResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMachineConfigurationDataResponse(
-      bmcConnectionString: map['bmcConnectionString'] as String,
-      bmcCredentials: AdministrativeCredentialsResponse.fromMap((map['bmcCredentials'] as Map).cast<String, dynamic>()),
-      bmcMacAddress: map['bmcMacAddress'] as String,
-      bootMacAddress: map['bootMacAddress'] as String,
-      machineDetails: map['machineDetails'] == null ? null : map['machineDetails'] as String,
-      machineName: map['machineName'] == null ? null : map['machineName'] as String,
-      rackSlot: map['rackSlot'] as double,
-      serialNumber: map['serialNumber'] as String,
+      bmcConnectionString: (map['bmcConnectionString'] as String).input(),
+      bmcCredentials: (AdministrativeCredentialsResponse.fromMap((map['bmcCredentials'] as Map).cast<String, dynamic>())).input(),
+      bmcMacAddress: (map['bmcMacAddress'] as String).input(),
+      bootMacAddress: (map['bootMacAddress'] as String).input(),
+      machineDetails: map['machineDetails'] == null ? null : (map['machineDetails'] as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
+      rackSlot: (map['rackSlot'] as double).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
     );
   }
 }

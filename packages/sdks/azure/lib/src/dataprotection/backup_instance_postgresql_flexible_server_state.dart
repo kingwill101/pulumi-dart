@@ -25,19 +25,13 @@ class BackupInstancePostgresqlFlexibleServerState {
   /// [serverId] The ID of the source server. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
   BackupInstancePostgresqlFlexibleServerState({
-    pulumi.Output<String>? backupPolicyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectionState,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? vaultId,
-  }) :
-      backupPolicyId = pulumi.Input.asOptionalInput<String>(backupPolicyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionState = pulumi.Input.asOptionalInput<String>(protectionState),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      vaultId = pulumi.Input.asOptionalInput<String>(vaultId);
+    this.backupPolicyId,
+    this.location,
+    this.name,
+    this.protectionState,
+    this.serverId,
+    this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class BackupInstancePostgresqlFlexibleServerState {
 
   factory BackupInstancePostgresqlFlexibleServerState.fromMap(Map<String, dynamic> map) {
     return BackupInstancePostgresqlFlexibleServerState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionState: map['protectionState'] == null ? null : pulumi.Output.create<String>(map['protectionState'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      vaultId: map['vaultId'] == null ? null : pulumi.Output.create<String>(map['vaultId'] as String),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
     );
   }
 }

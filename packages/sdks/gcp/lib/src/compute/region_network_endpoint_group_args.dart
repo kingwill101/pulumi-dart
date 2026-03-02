@@ -78,33 +78,20 @@ class RegionNetworkEndpointGroupArgs {
   /// [serverlessDeployment] This field is only used for SERVERLESS NEGs.
   /// [subnetwork] This field is only used for PSC NEGs.
   RegionNetworkEndpointGroupArgs({
-    pulumi.Output<RegionNetworkEndpointGroupAppEngine>? appEngine,
-    pulumi.Output<RegionNetworkEndpointGroupCloudFunction>? cloudFunction,
-    pulumi.Output<RegionNetworkEndpointGroupCloudRun>? cloudRun,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? networkEndpointType,
-    pulumi.Output<String>? project,
-    pulumi.Output<RegionNetworkEndpointGroupPscData>? pscData,
-    pulumi.Output<String>? pscTargetService,
-    required pulumi.Output<String> region,
-    pulumi.Output<RegionNetworkEndpointGroupServerlessDeployment>? serverlessDeployment,
-    pulumi.Output<String>? subnetwork,
-  }) :
-      appEngine = pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupAppEngine>(appEngine),
-      cloudFunction = pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupCloudFunction>(cloudFunction),
-      cloudRun = pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupCloudRun>(cloudRun),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      networkEndpointType = pulumi.Input.asOptionalInput<String>(networkEndpointType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pscData = pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupPscData>(pscData),
-      pscTargetService = pulumi.Input.asOptionalInput<String>(pscTargetService),
-      region = pulumi.Input.asInput<String>(region),
-      serverlessDeployment = pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupServerlessDeployment>(serverlessDeployment),
-      subnetwork = pulumi.Input.asOptionalInput<String>(subnetwork);
+    this.appEngine,
+    this.cloudFunction,
+    this.cloudRun,
+    this.description,
+    this.name,
+    this.network,
+    this.networkEndpointType,
+    this.project,
+    this.pscData,
+    this.pscTargetService,
+    required this.region,
+    this.serverlessDeployment,
+    this.subnetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -126,19 +113,19 @@ class RegionNetworkEndpointGroupArgs {
 
   factory RegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupArgs(
-      appEngine: map['appEngine'] == null ? null : pulumi.Output.create<RegionNetworkEndpointGroupAppEngine>(RegionNetworkEndpointGroupAppEngine.fromMap((map['appEngine'] as Map).cast<String, dynamic>())),
-      cloudFunction: map['cloudFunction'] == null ? null : pulumi.Output.create<RegionNetworkEndpointGroupCloudFunction>(RegionNetworkEndpointGroupCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())),
-      cloudRun: map['cloudRun'] == null ? null : pulumi.Output.create<RegionNetworkEndpointGroupCloudRun>(RegionNetworkEndpointGroupCloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      networkEndpointType: map['networkEndpointType'] == null ? null : pulumi.Output.create<String>(map['networkEndpointType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pscData: map['pscData'] == null ? null : pulumi.Output.create<RegionNetworkEndpointGroupPscData>(RegionNetworkEndpointGroupPscData.fromMap((map['pscData'] as Map).cast<String, dynamic>())),
-      pscTargetService: map['pscTargetService'] == null ? null : pulumi.Output.create<String>(map['pscTargetService'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      serverlessDeployment: map['serverlessDeployment'] == null ? null : pulumi.Output.create<RegionNetworkEndpointGroupServerlessDeployment>(RegionNetworkEndpointGroupServerlessDeployment.fromMap((map['serverlessDeployment'] as Map).cast<String, dynamic>())),
-      subnetwork: map['subnetwork'] == null ? null : pulumi.Output.create<String>(map['subnetwork'] as String),
+      appEngine: map['appEngine'] == null ? null : (RegionNetworkEndpointGroupAppEngine.fromMap((map['appEngine'] as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (RegionNetworkEndpointGroupCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (RegionNetworkEndpointGroupCloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pscData: map['pscData'] == null ? null : (RegionNetworkEndpointGroupPscData.fromMap((map['pscData'] as Map).cast<String, dynamic>())).input(),
+      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService'] as String).input(),
+      region: (map['region'] as String).input(),
+      serverlessDeployment: map['serverlessDeployment'] == null ? null : (RegionNetworkEndpointGroupServerlessDeployment.fromMap((map['serverlessDeployment'] as Map).cast<String, dynamic>())).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
     );
   }
 }

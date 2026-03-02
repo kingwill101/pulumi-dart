@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The fields mapping for Relationships.
 class RelationshipLinkFieldMappingResponse {
   /// The field name on the Interaction Type.
-  final String interactionFieldName;
+  final pulumi.Input<String> interactionFieldName;
   /// Link type.
-  final String? linkType;
+  final pulumi.Input<String>? linkType;
   /// The field name on the Relationship metadata.
-  final String relationshipFieldName;
+  final pulumi.Input<String> relationshipFieldName;
 
   /// Creates a new [RelationshipLinkFieldMappingResponse].
   /// [interactionFieldName] The field name on the Interaction Type.
@@ -30,9 +31,9 @@ class RelationshipLinkFieldMappingResponse {
 
   factory RelationshipLinkFieldMappingResponse.fromMap(Map<String, dynamic> map) {
     return RelationshipLinkFieldMappingResponse(
-      interactionFieldName: map['interactionFieldName'] as String,
-      linkType: map['linkType'] == null ? null : map['linkType'] as String,
-      relationshipFieldName: map['relationshipFieldName'] as String,
+      interactionFieldName: (map['interactionFieldName'] as String).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      relationshipFieldName: (map['relationshipFieldName'] as String).input(),
     );
   }
 }

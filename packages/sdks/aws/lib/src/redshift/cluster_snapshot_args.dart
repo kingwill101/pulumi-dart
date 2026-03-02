@@ -25,17 +25,12 @@ class ClusterSnapshotArgs {
   /// [snapshotIdentifier] A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the Amazon Web Services account.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ClusterSnapshotArgs({
-    required pulumi.Output<String> clusterIdentifier,
-    pulumi.Output<int>? manualSnapshotRetentionPeriod,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snapshotIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      clusterIdentifier = pulumi.Input.asInput<String>(clusterIdentifier),
-      manualSnapshotRetentionPeriod = pulumi.Input.asOptionalInput<int>(manualSnapshotRetentionPeriod),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotIdentifier = pulumi.Input.asInput<String>(snapshotIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.clusterIdentifier,
+    this.manualSnapshotRetentionPeriod,
+    this.region,
+    required this.snapshotIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ClusterSnapshotArgs {
 
   factory ClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotArgs(
-      clusterIdentifier: pulumi.Output.create<String>(map['clusterIdentifier'] as String),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : pulumi.Output.create<int>(map['manualSnapshotRetentionPeriod'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotIdentifier: pulumi.Output.create<String>(map['snapshotIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotIdentifier: (map['snapshotIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -64,35 +64,21 @@ class DefaultObjectAccessControlArgs {
   /// [selfLink] The link to this access-control entry.
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
   DefaultObjectAccessControlArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? entity,
-    pulumi.Output<String>? entityId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? generation,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? object,
-    pulumi.Output<DefaultObjectAccessControlProjectTeam>? projectTeam,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      entityId = pulumi.Input.asOptionalInput<String>(entityId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      object = pulumi.Input.asOptionalInput<String>(object),
-      projectTeam = pulumi.Input.asOptionalInput<DefaultObjectAccessControlProjectTeam>(projectTeam),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.domain,
+    this.email,
+    this.entity,
+    this.entityId,
+    this.etag,
+    this.generation,
+    this.id,
+    this.kind,
+    this.object,
+    this.projectTeam,
+    this.role,
+    this.selfLink,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,20 +101,20 @@ class DefaultObjectAccessControlArgs {
 
   factory DefaultObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      entity: map['entity'] == null ? null : pulumi.Output.create<String>(map['entity'] as String),
-      entityId: map['entityId'] == null ? null : pulumi.Output.create<String>(map['entityId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      generation: map['generation'] == null ? null : pulumi.Output.create<String>(map['generation'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      object: map['object'] == null ? null : pulumi.Output.create<String>(map['object'] as String),
-      projectTeam: map['projectTeam'] == null ? null : pulumi.Output.create<DefaultObjectAccessControlProjectTeam>(DefaultObjectAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>())),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
+      projectTeam: map['projectTeam'] == null ? null : (DefaultObjectAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>())).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

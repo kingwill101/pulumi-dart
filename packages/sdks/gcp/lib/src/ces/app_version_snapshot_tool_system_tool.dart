@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolSystemTool {
   /// The description of the app version.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AppVersionSnapshotToolSystemTool].
   /// [description] The description of the app version.
@@ -27,8 +28,8 @@ class AppVersionSnapshotToolSystemTool {
 
   factory AppVersionSnapshotToolSystemTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolSystemTool(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

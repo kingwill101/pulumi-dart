@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Context {
   /// Resources to use for build context.
@@ -10,7 +11,7 @@ class Context {
   /// * A remote URL of a Git repository, tarball, or plain text file
   /// (`https://github.com/user/myrepo.git`, `http://server/context.tar.gz`,
   /// etc.).
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [Context].
   /// [location] Resources to use for build context.
@@ -26,7 +27,7 @@ class Context {
 
   factory Context.fromMap(Map<String, dynamic> map) {
     return Context(
-      location: map['location'] as String,
+      location: (map['location'] as String).input(),
     );
   }
 }

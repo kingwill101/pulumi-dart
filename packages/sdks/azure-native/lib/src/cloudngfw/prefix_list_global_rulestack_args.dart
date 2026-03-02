@@ -25,17 +25,12 @@ class PrefixListGlobalRulestackArgs {
   /// [name] Local Rule priority
   /// [prefixList] prefix list
   PrefixListGlobalRulestackArgs({
-    pulumi.Output<String>? auditComment,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> globalRulestackName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> prefixList,
-  }) :
-      auditComment = pulumi.Input.asOptionalInput<String>(auditComment),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      prefixList = pulumi.Input.asInput<List<String>>(prefixList);
+    this.auditComment,
+    this.description,
+    required this.globalRulestackName,
+    this.name,
+    required this.prefixList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PrefixListGlobalRulestackArgs {
 
   factory PrefixListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListGlobalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : pulumi.Output.create<String>(map['auditComment'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      prefixList: pulumi.Output.create<List<String>>((map['prefixList'] as List).cast<String>()),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      prefixList: ((map['prefixList'] as List).cast<String>()).input(),
     );
   }
 }

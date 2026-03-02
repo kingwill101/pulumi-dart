@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'insights_report_config_frequency_options_end_date.dart';
 import 'insights_report_config_frequency_options_start_date.dart';
 
 class InsightsReportConfigFrequencyOptions {
   /// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
   /// Structure is documented below.
-  final InsightsReportConfigFrequencyOptionsEndDate endDate;
+  final pulumi.Input<InsightsReportConfigFrequencyOptionsEndDate> endDate;
   /// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
   /// Possible values are: `DAILY`, `WEEKLY`.
-  final String frequency;
+  final pulumi.Input<String> frequency;
   /// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
   /// Structure is documented below.
-  final InsightsReportConfigFrequencyOptionsStartDate startDate;
+  final pulumi.Input<InsightsReportConfigFrequencyOptionsStartDate> startDate;
 
   /// Creates a new [InsightsReportConfigFrequencyOptions].
   /// [endDate] The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
@@ -26,17 +27,17 @@ class InsightsReportConfigFrequencyOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endDate': endDate.toMap(),
+      'endDate': pulumi.Input.mapInputValue<InsightsReportConfigFrequencyOptionsEndDate, Map<String, dynamic>>(endDate, (value) => value.toMap()),
       'frequency': frequency,
-      'startDate': startDate.toMap(),
+      'startDate': pulumi.Input.mapInputValue<InsightsReportConfigFrequencyOptionsStartDate, Map<String, dynamic>>(startDate, (value) => value.toMap()),
     };
   }
 
   factory InsightsReportConfigFrequencyOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigFrequencyOptions(
-      endDate: InsightsReportConfigFrequencyOptionsEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      frequency: map['frequency'] as String,
-      startDate: InsightsReportConfigFrequencyOptionsStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
+      endDate: (InsightsReportConfigFrequencyOptionsEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      frequency: (map['frequency'] as String).input(),
+      startDate: (InsightsReportConfigFrequencyOptionsStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetLogGroupsArgs {
   /// [logGroupNamePrefix] Group prefix of the Cloudwatch log groups to list
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetLogGroupsArgs({
-    pulumi.Output<String>? logGroupNamePrefix,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupNamePrefix = pulumi.Input.asOptionalInput<String>(logGroupNamePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.logGroupNamePrefix,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLogGroupsArgs {
 
   factory GetLogGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogGroupsArgs(
-      logGroupNamePrefix: map['logGroupNamePrefix'] == null ? null : pulumi.Output.create<String>(map['logGroupNamePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupNamePrefix: map['logGroupNamePrefix'] == null ? null : (map['logGroupNamePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

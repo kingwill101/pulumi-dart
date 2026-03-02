@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDryRunSpecRuleValues {
   /// List of values allowed at this resource.
-  final List<String>? allowedValues;
+  final pulumi.Input<List<String>>? allowedValues;
   /// List of values denied at this resource.
-  final List<String>? deniedValues;
+  final pulumi.Input<List<String>>? deniedValues;
 
   /// Creates a new [PolicyDryRunSpecRuleValues].
   /// [allowedValues] List of values allowed at this resource.
@@ -24,8 +25,8 @@ class PolicyDryRunSpecRuleValues {
 
   factory PolicyDryRunSpecRuleValues.fromMap(Map<String, dynamic> map) {
     return PolicyDryRunSpecRuleValues(
-      allowedValues: map['allowedValues'] == null ? null : (map['allowedValues'] as List).cast<String>(),
-      deniedValues: map['deniedValues'] == null ? null : (map['deniedValues'] as List).cast<String>(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<String>()).input(),
+      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues'] as List).cast<String>()).input(),
     );
   }
 }

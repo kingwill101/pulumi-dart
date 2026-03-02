@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioNone {
   /// Configures the output settings for the None audio device.
-  final Map<String, dynamic>? input;
+  final pulumi.Input<Map<String, dynamic>>? input;
   /// Configures the output settings for the None audio device.
-  final Map<String, dynamic>? output;
+  final pulumi.Input<Map<String, dynamic>>? output;
 
   /// Creates a new [DomainDevicesAudioNone].
   /// [input] Configures the output settings for the None audio device.
@@ -24,8 +25,8 @@ class DomainDevicesAudioNone {
 
   factory DomainDevicesAudioNone.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioNone(
-      input: map['input'] == null ? null : (map['input'] as Map).cast<String, dynamic>(),
-      output: map['output'] == null ? null : (map['output'] as Map).cast<String, dynamic>(),
+      input: map['input'] == null ? null : ((map['input'] as Map).cast<String, dynamic>()).input(),
+      output: map['output'] == null ? null : ((map['output'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

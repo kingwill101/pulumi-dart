@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
   /// The default size of the EBS storage volume for a private space.
-  final int defaultEbsVolumeSizeInGb;
+  final pulumi.Input<int> defaultEbsVolumeSizeInGb;
   /// The maximum size of the EBS storage volume for a private space.
-  final int maximumEbsVolumeSizeInGb;
+  final pulumi.Input<int> maximumEbsVolumeSizeInGb;
 
   /// Creates a new [DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings].
   /// [defaultEbsVolumeSizeInGb] The default size of the EBS storage volume for a private space.
@@ -24,8 +25,8 @@ class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
 
   factory DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings(
-      defaultEbsVolumeSizeInGb: map['defaultEbsVolumeSizeInGb'] as int,
-      maximumEbsVolumeSizeInGb: map['maximumEbsVolumeSizeInGb'] as int,
+      defaultEbsVolumeSizeInGb: (map['defaultEbsVolumeSizeInGb'] as int).input(),
+      maximumEbsVolumeSizeInGb: (map['maximumEbsVolumeSizeInGb'] as int).input(),
     );
   }
 }

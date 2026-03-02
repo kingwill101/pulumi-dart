@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageImagePermission {
   /// Boolean indicating if the image can be used for a fleet.
-  final bool allowFleet;
+  final pulumi.Input<bool> allowFleet;
   /// indicated whether the image can be used for an image builder.
-  final bool allowImageBuilder;
+  final pulumi.Input<bool> allowImageBuilder;
 
   /// Creates a new [GetImageImagePermission].
   /// [allowFleet] Boolean indicating if the image can be used for a fleet.
@@ -24,8 +25,8 @@ class GetImageImagePermission {
 
   factory GetImageImagePermission.fromMap(Map<String, dynamic> map) {
     return GetImageImagePermission(
-      allowFleet: map['allowFleet'] as bool,
-      allowImageBuilder: map['allowImageBuilder'] as bool,
+      allowFleet: (map['allowFleet'] as bool).input(),
+      allowImageBuilder: (map['allowImageBuilder'] as bool).input(),
     );
   }
 }

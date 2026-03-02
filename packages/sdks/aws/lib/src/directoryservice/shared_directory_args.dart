@@ -28,17 +28,12 @@ class SharedDirectoryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] Identifier for the directory consumer account with whom the directory is to be shared. See below.
   SharedDirectoryArgs({
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<String>? method,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? region,
-    required pulumi.Output<SharedDirectoryTarget> target,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      method = pulumi.Input.asOptionalInput<String>(method),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asInput<SharedDirectoryTarget>(target);
+    required this.directoryId,
+    this.method,
+    this.notes,
+    this.region,
+    required this.target,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class SharedDirectoryArgs {
 
   factory SharedDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryArgs(
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: pulumi.Output.create<SharedDirectoryTarget>(SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+      directoryId: (map['directoryId'] as String).input(),
+      method: map['method'] == null ? null : (map['method'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: (SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

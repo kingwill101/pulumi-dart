@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro {
-  final String apiSecretKey;
+  final pulumi.Input<String> apiSecretKey;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro].
   /// [apiSecretKey] Required.
@@ -18,7 +19,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicr
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro(
-      apiSecretKey: map['apiSecretKey'] as String,
+      apiSecretKey: (map['apiSecretKey'] as String).input(),
     );
   }
 }

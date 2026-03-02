@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerServiceHealthCheckHttp {
   /// string) Domain we try to access when performing the Health Check.
-  final String domain;
+  final pulumi.Input<String> domain;
   /// (string) Path we try to access when performing the Health Check.
-  final String path;
+  final pulumi.Input<String> path;
   /// (string) Response we expect to be included in the Target response when a Health Check was performed.
-  final String response;
+  final pulumi.Input<String> response;
   /// (list[int]) We expect that the target answers with these status codes. If not the target is marked as `unhealthy`.
-  final List<int> statusCodes;
+  final pulumi.Input<List<int>> statusCodes;
   /// (bool) Enable TLS certificate checking.
-  final bool tls;
+  final pulumi.Input<bool> tls;
 
   /// Creates a new [GetLoadBalancerServiceHealthCheckHttp].
   /// [domain] string) Domain we try to access when performing the Health Check.
@@ -39,11 +40,11 @@ class GetLoadBalancerServiceHealthCheckHttp {
 
   factory GetLoadBalancerServiceHealthCheckHttp.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerServiceHealthCheckHttp(
-      domain: map['domain'] as String,
-      path: map['path'] as String,
-      response: map['response'] as String,
-      statusCodes: (map['statusCodes'] as List).cast<int>(),
-      tls: map['tls'] as bool,
+      domain: (map['domain'] as String).input(),
+      path: (map['path'] as String).input(),
+      response: (map['response'] as String).input(),
+      statusCodes: ((map['statusCodes'] as List).cast<int>()).input(),
+      tls: (map['tls'] as bool).input(),
     );
   }
 }

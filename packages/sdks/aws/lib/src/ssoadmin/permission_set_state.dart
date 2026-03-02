@@ -37,27 +37,17 @@ class PermissionSetState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   PermissionSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? relayState,
-    pulumi.Output<String>? sessionDuration,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relayState = pulumi.Input.asOptionalInput<String>(relayState),
-      sessionDuration = pulumi.Input.asOptionalInput<String>(sessionDuration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.createdDate,
+    this.description,
+    this.instanceArn,
+    this.name,
+    this.region,
+    this.relayState,
+    this.sessionDuration,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PermissionSetState {
 
   factory PermissionSetState.fromMap(Map<String, dynamic> map) {
     return PermissionSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relayState: map['relayState'] == null ? null : pulumi.Output.create<String>(map['relayState'] as String),
-      sessionDuration: map['sessionDuration'] == null ? null : pulumi.Output.create<String>(map['sessionDuration'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

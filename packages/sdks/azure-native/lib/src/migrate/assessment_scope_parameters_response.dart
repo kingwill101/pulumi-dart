@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data model of Assessment Scope Parameters.
 class AssessmentScopeParametersResponse {
   /// Gets or sets the server group id.
-  final String? serverGroupId;
+  final pulumi.Input<String>? serverGroupId;
 
   /// Creates a new [AssessmentScopeParametersResponse].
   /// [serverGroupId] Gets or sets the server group id.
@@ -20,7 +21,7 @@ class AssessmentScopeParametersResponse {
 
   factory AssessmentScopeParametersResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentScopeParametersResponse(
-      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId'] as String,
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
     );
   }
 }

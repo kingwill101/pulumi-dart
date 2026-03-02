@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space_response.dart';
 import 'bgp_settings_response.dart';
 
 /// A common class for general resource information.
 class LocalNetworkGatewayResponse {
   /// Local network gateway's BGP speaker settings.
-  final BgpSettingsResponse? bgpSettings;
+  final pulumi.Input<BgpSettingsResponse>? bgpSettings;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// FQDN of local network gateway.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// IP address of local network gateway.
-  final String? gatewayIpAddress;
+  final pulumi.Input<String>? gatewayIpAddress;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Local network site address space.
-  final AddressSpaceResponse? localNetworkAddressSpace;
+  final pulumi.Input<AddressSpaceResponse>? localNetworkAddressSpace;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The provisioning state of the local network gateway resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resource GUID property of the local network gateway resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [LocalNetworkGatewayResponse].
   /// [bgpSettings] Local network gateway's BGP speaker settings.
@@ -60,12 +61,12 @@ class LocalNetworkGatewayResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpSettings': ?bgpSettings == null ? null : bgpSettings!.toMap(),
+      'bgpSettings': ?pulumi.Input.mapOptionalInputValue<BgpSettingsResponse, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
       'etag': etag,
       'fqdn': ?fqdn,
       'gatewayIpAddress': ?gatewayIpAddress,
       'id': ?id,
-      'localNetworkAddressSpace': ?localNetworkAddressSpace == null ? null : localNetworkAddressSpace!.toMap(),
+      'localNetworkAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(localNetworkAddressSpace, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
@@ -77,18 +78,18 @@ class LocalNetworkGatewayResponse {
 
   factory LocalNetworkGatewayResponse.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayResponse(
-      bgpSettings: map['bgpSettings'] == null ? null : BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : map['gatewayIpAddress'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['localNetworkAddressSpace'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettingsResponse.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      gatewayIpAddress: map['gatewayIpAddress'] == null ? null : (map['gatewayIpAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      localNetworkAddressSpace: map['localNetworkAddressSpace'] == null ? null : (AddressSpaceResponse.fromMap((map['localNetworkAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

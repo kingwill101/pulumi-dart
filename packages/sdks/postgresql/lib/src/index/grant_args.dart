@@ -34,23 +34,15 @@ class GrantArgs {
   /// [schema] The database schema to grant privileges on for this role (Required except if object_type is "database")
   /// [withGrantOption] Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
   GrantArgs({
-    pulumi.Output<List<String>>? columns,
-    required pulumi.Output<String> database,
-    required pulumi.Output<String> objectType,
-    pulumi.Output<List<String>>? objects,
-    required pulumi.Output<List<String>> privileges,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? schema,
-    pulumi.Output<bool>? withGrantOption,
-  }) :
-      columns = pulumi.Input.asOptionalInput<List<String>>(columns),
-      database = pulumi.Input.asInput<String>(database),
-      objectType = pulumi.Input.asInput<String>(objectType),
-      objects = pulumi.Input.asOptionalInput<List<String>>(objects),
-      privileges = pulumi.Input.asInput<List<String>>(privileges),
-      role = pulumi.Input.asInput<String>(role),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      withGrantOption = pulumi.Input.asOptionalInput<bool>(withGrantOption);
+    this.columns,
+    required this.database,
+    required this.objectType,
+    this.objects,
+    required this.privileges,
+    required this.role,
+    this.schema,
+    this.withGrantOption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GrantArgs {
 
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
-      columns: map['columns'] == null ? null : pulumi.Output.create<List<String>>((map['columns'] as List).cast<String>()),
-      database: pulumi.Output.create<String>(map['database'] as String),
-      objectType: pulumi.Output.create<String>(map['objectType'] as String),
-      objects: map['objects'] == null ? null : pulumi.Output.create<List<String>>((map['objects'] as List).cast<String>()),
-      privileges: pulumi.Output.create<List<String>>((map['privileges'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      withGrantOption: map['withGrantOption'] == null ? null : pulumi.Output.create<bool>(map['withGrantOption'] as bool),
+      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
+      database: (map['database'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      objects: map['objects'] == null ? null : ((map['objects'] as List).cast<String>()).input(),
+      privileges: ((map['privileges'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
     );
   }
 }

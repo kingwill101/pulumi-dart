@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// App service container settings.
 class AppSvcContainerSettings {
   /// Gets or sets the isolation required.
-  final bool isolationRequired;
+  final pulumi.Input<bool> isolationRequired;
 
   /// Creates a new [AppSvcContainerSettings].
   /// [isolationRequired] Gets or sets the isolation required.
@@ -20,7 +21,7 @@ class AppSvcContainerSettings {
 
   factory AppSvcContainerSettings.fromMap(Map<String, dynamic> map) {
     return AppSvcContainerSettings(
-      isolationRequired: map['isolationRequired'] as bool,
+      isolationRequired: (map['isolationRequired'] as bool).input(),
     );
   }
 }

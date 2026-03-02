@@ -16,11 +16,9 @@ class GetVolumeQuotaRuleArgs {
   /// [name] The name of this Volume Quota Rule.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to.
   GetVolumeQuotaRuleArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> volumeId,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    required this.name,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetVolumeQuotaRuleArgs {
 
   factory GetVolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeQuotaRuleArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      name: (map['name'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

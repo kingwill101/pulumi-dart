@@ -20,13 +20,10 @@ class InsightArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [workloadImpactName] workloadImpact resource
   InsightArgs({
-    pulumi.Output<String>? insightName,
-    pulumi.Output<InsightProperties>? properties,
-    required pulumi.Output<String> workloadImpactName,
-  }) :
-      insightName = pulumi.Input.asOptionalInput<String>(insightName),
-      properties = pulumi.Input.asOptionalInput<InsightProperties>(properties),
-      workloadImpactName = pulumi.Input.asInput<String>(workloadImpactName);
+    this.insightName,
+    this.properties,
+    required this.workloadImpactName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class InsightArgs {
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      insightName: map['insightName'] == null ? null : pulumi.Output.create<String>(map['insightName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<InsightProperties>(InsightProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      workloadImpactName: pulumi.Output.create<String>(map['workloadImpactName'] as String),
+      insightName: map['insightName'] == null ? null : (map['insightName'] as String).input(),
+      properties: map['properties'] == null ? null : (InsightProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      workloadImpactName: (map['workloadImpactName'] as String).input(),
     );
   }
 }

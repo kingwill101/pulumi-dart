@@ -16,11 +16,9 @@ class GetWorkgroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroupName] The name of the workgroup associated with the database.
   GetWorkgroupArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> workgroupName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroupName = pulumi.Input.asInput<String>(workgroupName);
+    this.region,
+    required this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetWorkgroupArgs {
 
   factory GetWorkgroupArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroupName: pulumi.Output.create<String>(map['workgroupName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroupName: (map['workgroupName'] as String).input(),
     );
   }
 }

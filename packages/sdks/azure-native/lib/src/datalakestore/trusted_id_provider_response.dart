@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data Lake Store trusted identity provider information.
 class TrustedIdProviderResponse {
   /// The resource identifier.
-  final String id;
+  final pulumi.Input<String> id;
   /// The URL of this trusted identity provider.
-  final String idProvider;
+  final pulumi.Input<String> idProvider;
   /// The resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TrustedIdProviderResponse].
   /// [id] The resource identifier.
@@ -35,10 +36,10 @@ class TrustedIdProviderResponse {
 
   factory TrustedIdProviderResponse.fromMap(Map<String, dynamic> map) {
     return TrustedIdProviderResponse(
-      id: map['id'] as String,
-      idProvider: map['idProvider'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      idProvider: (map['idProvider'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

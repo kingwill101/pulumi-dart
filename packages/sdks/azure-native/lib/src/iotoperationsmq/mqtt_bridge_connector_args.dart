@@ -57,35 +57,21 @@ class MqttBridgeConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   MqttBridgeConnectorArgs({
-    pulumi.Output<int>? bridgeInstances,
-    pulumi.Output<String>? clientIdPrefix,
-    required pulumi.Output<ExtendedLocationProperty> extendedLocation,
-    required pulumi.Output<ContainerImage> image,
-    pulumi.Output<LocalBrokerConnectionSpec>? localBrokerConnection,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logLevel,
-    required pulumi.Output<String> mqName,
-    pulumi.Output<String>? mqttBridgeConnectorName,
-    pulumi.Output<NodeTolerations>? nodeTolerations,
-    required pulumi.Output<String> protocol,
-    required pulumi.Output<MqttBridgeRemoteBrokerConnectionSpec> remoteBrokerConnection,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bridgeInstances = pulumi.Input.asOptionalInput<int>(bridgeInstances),
-      clientIdPrefix = pulumi.Input.asOptionalInput<String>(clientIdPrefix),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocationProperty>(extendedLocation),
-      image = pulumi.Input.asInput<ContainerImage>(image),
-      localBrokerConnection = pulumi.Input.asOptionalInput<LocalBrokerConnectionSpec>(localBrokerConnection),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logLevel = pulumi.Input.asOptionalInput<String>(logLevel),
-      mqName = pulumi.Input.asInput<String>(mqName),
-      mqttBridgeConnectorName = pulumi.Input.asOptionalInput<String>(mqttBridgeConnectorName),
-      nodeTolerations = pulumi.Input.asOptionalInput<NodeTolerations>(nodeTolerations),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      remoteBrokerConnection = pulumi.Input.asInput<MqttBridgeRemoteBrokerConnectionSpec>(remoteBrokerConnection),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.bridgeInstances,
+    this.clientIdPrefix,
+    required this.extendedLocation,
+    required this.image,
+    this.localBrokerConnection,
+    this.location,
+    this.logLevel,
+    required this.mqName,
+    this.mqttBridgeConnectorName,
+    this.nodeTolerations,
+    required this.protocol,
+    required this.remoteBrokerConnection,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class MqttBridgeConnectorArgs {
 
   factory MqttBridgeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return MqttBridgeConnectorArgs(
-      bridgeInstances: map['bridgeInstances'] == null ? null : pulumi.Output.create<int>(map['bridgeInstances'] as int),
-      clientIdPrefix: map['clientIdPrefix'] == null ? null : pulumi.Output.create<String>(map['clientIdPrefix'] as String),
-      extendedLocation: pulumi.Output.create<ExtendedLocationProperty>(ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      image: pulumi.Output.create<ContainerImage>(ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())),
-      localBrokerConnection: map['localBrokerConnection'] == null ? null : pulumi.Output.create<LocalBrokerConnectionSpec>(LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<String>(map['logLevel'] as String),
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      mqttBridgeConnectorName: map['mqttBridgeConnectorName'] == null ? null : pulumi.Output.create<String>(map['mqttBridgeConnectorName'] as String),
-      nodeTolerations: map['nodeTolerations'] == null ? null : pulumi.Output.create<NodeTolerations>(NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      remoteBrokerConnection: pulumi.Output.create<MqttBridgeRemoteBrokerConnectionSpec>(MqttBridgeRemoteBrokerConnectionSpec.fromMap((map['remoteBrokerConnection'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bridgeInstances: map['bridgeInstances'] == null ? null : (map['bridgeInstances'] as int).input(),
+      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix'] as String).input(),
+      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      image: (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      mqName: (map['mqName'] as String).input(),
+      mqttBridgeConnectorName: map['mqttBridgeConnectorName'] == null ? null : (map['mqttBridgeConnectorName'] as String).input(),
+      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())).input(),
+      protocol: (map['protocol'] as String).input(),
+      remoteBrokerConnection: (MqttBridgeRemoteBrokerConnectionSpec.fromMap((map['remoteBrokerConnection'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

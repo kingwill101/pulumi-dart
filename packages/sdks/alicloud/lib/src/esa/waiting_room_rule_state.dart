@@ -27,19 +27,13 @@ class WaitingRoomRuleState {
   /// [waitingRoomId] Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   /// [waitingRoomRuleId] The rule ID, which can be used to query a specific rule.
   WaitingRoomRuleState({
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? waitingRoomId,
-    pulumi.Output<int>? waitingRoomRuleId,
-  }) :
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      waitingRoomId = pulumi.Input.asOptionalInput<String>(waitingRoomId),
-      waitingRoomRuleId = pulumi.Input.asOptionalInput<int>(waitingRoomRuleId);
+    this.rule,
+    this.ruleName,
+    this.siteId,
+    this.status,
+    this.waitingRoomId,
+    this.waitingRoomRuleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class WaitingRoomRuleState {
 
   factory WaitingRoomRuleState.fromMap(Map<String, dynamic> map) {
     return WaitingRoomRuleState(
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      waitingRoomId: map['waitingRoomId'] == null ? null : pulumi.Output.create<String>(map['waitingRoomId'] as String),
-      waitingRoomRuleId: map['waitingRoomRuleId'] == null ? null : pulumi.Output.create<int>(map['waitingRoomRuleId'] as int),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      waitingRoomId: map['waitingRoomId'] == null ? null : (map['waitingRoomId'] as String).input(),
+      waitingRoomRuleId: map['waitingRoomRuleId'] == null ? null : (map['waitingRoomRuleId'] as int).input(),
     );
   }
 }

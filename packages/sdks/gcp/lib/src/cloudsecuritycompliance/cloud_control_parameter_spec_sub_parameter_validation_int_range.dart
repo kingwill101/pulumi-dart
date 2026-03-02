@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudControlParameterSpecSubParameterValidationIntRange {
   /// Maximum allowed value for the numeric parameter (inclusive).
-  final String max;
+  final pulumi.Input<String> max;
   /// Minimum allowed value for the numeric parameter (inclusive).
-  final String min;
+  final pulumi.Input<String> min;
 
   /// Creates a new [CloudControlParameterSpecSubParameterValidationIntRange].
   /// [max] Maximum allowed value for the numeric parameter (inclusive).
@@ -24,8 +25,8 @@ class CloudControlParameterSpecSubParameterValidationIntRange {
 
   factory CloudControlParameterSpecSubParameterValidationIntRange.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationIntRange(
-      max: map['max'] as String,
-      min: map['min'] as String,
+      max: (map['max'] as String).input(),
+      min: (map['min'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Role definition permissions.
 class PermissionResponse {
   /// Allowed actions.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
   /// The conditions on the role definition. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
-  final String condition;
+  final pulumi.Input<String> condition;
   /// Version of the condition. Currently the only accepted value is '2.0'
-  final String conditionVersion;
+  final pulumi.Input<String> conditionVersion;
   /// Allowed Data actions.
-  final List<String>? dataActions;
+  final pulumi.Input<List<String>>? dataActions;
   /// Denied actions.
-  final List<String>? notActions;
+  final pulumi.Input<List<String>>? notActions;
   /// Denied Data actions.
-  final List<String>? notDataActions;
+  final pulumi.Input<List<String>>? notDataActions;
 
   /// Creates a new [PermissionResponse].
   /// [actions] Allowed actions.
@@ -45,12 +46,12 @@ class PermissionResponse {
 
   factory PermissionResponse.fromMap(Map<String, dynamic> map) {
     return PermissionResponse(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
-      condition: map['condition'] as String,
-      conditionVersion: map['conditionVersion'] as String,
-      dataActions: map['dataActions'] == null ? null : (map['dataActions'] as List).cast<String>(),
-      notActions: map['notActions'] == null ? null : (map['notActions'] as List).cast<String>(),
-      notDataActions: map['notDataActions'] == null ? null : (map['notDataActions'] as List).cast<String>(),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      condition: (map['condition'] as String).input(),
+      conditionVersion: (map['conditionVersion'] as String).input(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
+      notActions: map['notActions'] == null ? null : ((map['notActions'] as List).cast<String>()).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
     );
   }
 }

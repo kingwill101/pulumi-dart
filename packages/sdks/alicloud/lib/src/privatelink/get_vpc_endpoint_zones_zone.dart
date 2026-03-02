@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointZonesZone {
   /// Terminal node network card.
-  final String eniId;
+  final pulumi.Input<String> eniId;
   /// IP address of the terminal node network card.
-  final String eniIp;
+  final pulumi.Input<String> eniIp;
   /// The ID of the Vpc Endpoint Zone.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The vSwitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The Zone Domain.
-  final String zoneDomain;
+  final pulumi.Input<String> zoneDomain;
   /// The Zone Id.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetVpcEndpointZonesZone].
   /// [eniId] Terminal node network card.
@@ -49,13 +50,13 @@ class GetVpcEndpointZonesZone {
 
   factory GetVpcEndpointZonesZone.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointZonesZone(
-      eniId: map['eniId'] as String,
-      eniIp: map['eniIp'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneDomain: map['zoneDomain'] as String,
-      zoneId: map['zoneId'] as String,
+      eniId: (map['eniId'] as String).input(),
+      eniIp: (map['eniIp'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneDomain: (map['zoneDomain'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

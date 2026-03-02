@@ -37,25 +37,16 @@ class OutboundRuleArgs {
   /// [protocol] The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
   /// [tcpResetEnabled] Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   OutboundRuleArgs({
-    pulumi.Output<int>? allocatedOutboundPorts,
-    required pulumi.Output<String> backendAddressPoolId,
-    pulumi.Output<bool>? enableTcpReset,
-    pulumi.Output<List<OutboundRuleFrontendIpConfiguration>>? frontendIpConfigurations,
-    pulumi.Output<int>? idleTimeoutInMinutes,
-    required pulumi.Output<String> loadbalancerId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> protocol,
-    pulumi.Output<bool>? tcpResetEnabled,
-  }) :
-      allocatedOutboundPorts = pulumi.Input.asOptionalInput<int>(allocatedOutboundPorts),
-      backendAddressPoolId = pulumi.Input.asInput<String>(backendAddressPoolId),
-      enableTcpReset = pulumi.Input.asOptionalInput<bool>(enableTcpReset),
-      frontendIpConfigurations = pulumi.Input.asOptionalInput<List<OutboundRuleFrontendIpConfiguration>>(frontendIpConfigurations),
-      idleTimeoutInMinutes = pulumi.Input.asOptionalInput<int>(idleTimeoutInMinutes),
-      loadbalancerId = pulumi.Input.asInput<String>(loadbalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      tcpResetEnabled = pulumi.Input.asOptionalInput<bool>(tcpResetEnabled);
+    this.allocatedOutboundPorts,
+    required this.backendAddressPoolId,
+    this.enableTcpReset,
+    this.frontendIpConfigurations,
+    this.idleTimeoutInMinutes,
+    required this.loadbalancerId,
+    this.name,
+    required this.protocol,
+    this.tcpResetEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class OutboundRuleArgs {
 
   factory OutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundRuleArgs(
-      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : pulumi.Output.create<int>(map['allocatedOutboundPorts'] as int),
-      backendAddressPoolId: pulumi.Output.create<String>(map['backendAddressPoolId'] as String),
-      enableTcpReset: map['enableTcpReset'] == null ? null : pulumi.Output.create<bool>(map['enableTcpReset'] as bool),
-      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : pulumi.Output.create<List<OutboundRuleFrontendIpConfiguration>>(pulumi.Input.decodeList<OutboundRuleFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => OutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : pulumi.Output.create<int>(map['idleTimeoutInMinutes'] as int),
-      loadbalancerId: pulumi.Output.create<String>(map['loadbalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : pulumi.Output.create<bool>(map['tcpResetEnabled'] as bool),
+      allocatedOutboundPorts: map['allocatedOutboundPorts'] == null ? null : (map['allocatedOutboundPorts'] as int).input(),
+      backendAddressPoolId: (map['backendAddressPoolId'] as String).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
+      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<OutboundRuleFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => OutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      loadbalancerId: (map['loadbalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
     );
   }
 }

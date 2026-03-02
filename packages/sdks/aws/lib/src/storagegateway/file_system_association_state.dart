@@ -38,27 +38,17 @@ class FileSystemAssociationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [username] The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
   FileSystemAssociationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? auditDestinationArn,
-    pulumi.Output<FileSystemAssociationCacheAttributes>? cacheAttributes,
-    pulumi.Output<String>? gatewayArn,
-    pulumi.Output<String>? locationArn,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? username,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      auditDestinationArn = pulumi.Input.asOptionalInput<String>(auditDestinationArn),
-      cacheAttributes = pulumi.Input.asOptionalInput<FileSystemAssociationCacheAttributes>(cacheAttributes),
-      gatewayArn = pulumi.Input.asOptionalInput<String>(gatewayArn),
-      locationArn = pulumi.Input.asOptionalInput<String>(locationArn),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.arn,
+    this.auditDestinationArn,
+    this.cacheAttributes,
+    this.gatewayArn,
+    this.locationArn,
+    this.password,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class FileSystemAssociationState {
 
   factory FileSystemAssociationState.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      auditDestinationArn: map['auditDestinationArn'] == null ? null : pulumi.Output.create<String>(map['auditDestinationArn'] as String),
-      cacheAttributes: map['cacheAttributes'] == null ? null : pulumi.Output.create<FileSystemAssociationCacheAttributes>(FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())),
-      gatewayArn: map['gatewayArn'] == null ? null : pulumi.Output.create<String>(map['gatewayArn'] as String),
-      locationArn: map['locationArn'] == null ? null : pulumi.Output.create<String>(map['locationArn'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      auditDestinationArn: map['auditDestinationArn'] == null ? null : (map['auditDestinationArn'] as String).input(),
+      cacheAttributes: map['cacheAttributes'] == null ? null : (FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())).input(),
+      gatewayArn: map['gatewayArn'] == null ? null : (map['gatewayArn'] as String).input(),
+      locationArn: map['locationArn'] == null ? null : (map['locationArn'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

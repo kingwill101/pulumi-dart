@@ -9,23 +9,23 @@ import 'job_definition_eks_properties_pod_properties_volume.dart';
 
 class JobDefinitionEksPropertiesPodProperties {
   /// Properties of the container that's used on the Amazon EKS pod. See containers below.
-  final List<JobDefinitionEksPropertiesPodPropertiesContainer> containers;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesContainer>> containers;
   /// DNS policy for the pod. The default value is `ClusterFirst`. If the `host_network` argument is not specified, the default is `ClusterFirstWithHostNet`. `ClusterFirst` indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node. For more information, see Pod's DNS policy in the Kubernetes documentation.
-  final String? dnsPolicy;
+  final pulumi.Input<String>? dnsPolicy;
   /// Whether the pod uses the hosts' network IP address. The default value is `true`. Setting this to `false` enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
-  final bool? hostNetwork;
+  final pulumi.Input<bool>? hostNetwork;
   /// List of Kubernetes secret resources. See `image_pull_secret` below.
-  final List<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>? imagePullSecrets;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>>? imagePullSecrets;
   /// Containers which run before application containers, always runs to completion, and must complete successfully before the next container starts. These containers are registered with the Amazon EKS Connector agent and persists the registration information in the Kubernetes backend data store. See containers below.
-  final List<JobDefinitionEksPropertiesPodPropertiesInitContainer>? initContainers;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesInitContainer>>? initContainers;
   /// Metadata about the Kubernetes pod.
-  final JobDefinitionEksPropertiesPodPropertiesMetadata? metadata;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesMetadata>? metadata;
   /// Name of the service account that's used to run the pod.
-  final String? serviceAccountName;
+  final pulumi.Input<String>? serviceAccountName;
   /// Indicates if the processes in a container are shared, or visible, to other containers in the same pod.
-  final bool? shareProcessNamespace;
+  final pulumi.Input<bool>? shareProcessNamespace;
   /// Volumes for a job definition that uses Amazon EKS resources. AWS Batch supports emptyDir, hostPath, and secret volume types.
-  final List<JobDefinitionEksPropertiesPodPropertiesVolume>? volumes;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesVolume>>? volumes;
 
   /// Creates a new [JobDefinitionEksPropertiesPodProperties].
   /// [containers] Properties of the container that's used on the Amazon EKS pod. See containers below.
@@ -51,29 +51,29 @@ class JobDefinitionEksPropertiesPodProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers': pulumi.Input.mapInputValue<List<JobDefinitionEksPropertiesPodPropertiesContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dnsPolicy': ?dnsPolicy,
       'hostNetwork': ?hostNetwork,
-      'imagePullSecrets': ?imagePullSecrets == null ? null : pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret, Map<String, dynamic>>(imagePullSecrets!, (value) => value.toMap()),
-      'initContainers': ?initContainers == null ? null : pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer, Map<String, dynamic>>(initContainers!, (value) => value.toMap()),
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'imagePullSecrets': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>, List<Map<String, dynamic>>>(imagePullSecrets, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'initContainers': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionEksPropertiesPodPropertiesInitContainer>, List<Map<String, dynamic>>>(initContainers, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<JobDefinitionEksPropertiesPodPropertiesMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'serviceAccountName': ?serviceAccountName,
       'shareProcessNamespace': ?shareProcessNamespace,
-      'volumes': ?volumes == null ? null : pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesVolume, Map<String, dynamic>>(volumes!, (value) => value.toMap()),
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<JobDefinitionEksPropertiesPodPropertiesVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<JobDefinitionEksPropertiesPodPropertiesVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobDefinitionEksPropertiesPodProperties.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodProperties(
-      containers: pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainer>(map['containers'], (value) => JobDefinitionEksPropertiesPodPropertiesContainer.fromMap((value as Map).cast<String, dynamic>())),
-      dnsPolicy: map['dnsPolicy'] == null ? null : map['dnsPolicy'] as String,
-      hostNetwork: map['hostNetwork'] == null ? null : map['hostNetwork'] as bool,
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>(map['imagePullSecrets'], (value) => JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap((value as Map).cast<String, dynamic>())),
-      initContainers: map['initContainers'] == null ? null : pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer>(map['initContainers'], (value) => JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      serviceAccountName: map['serviceAccountName'] == null ? null : map['serviceAccountName'] as String,
-      shareProcessNamespace: map['shareProcessNamespace'] == null ? null : map['shareProcessNamespace'] as bool,
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesVolume>(map['volumes'], (value) => JobDefinitionEksPropertiesPodPropertiesVolume.fromMap((value as Map).cast<String, dynamic>())),
+      containers: (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainer>(map['containers'], (value) => JobDefinitionEksPropertiesPodPropertiesContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsPolicy: map['dnsPolicy'] == null ? null : (map['dnsPolicy'] as String).input(),
+      hostNetwork: map['hostNetwork'] == null ? null : (map['hostNetwork'] as bool).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>(map['imagePullSecrets'], (value) => JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainer>(map['initContainers'], (value) => JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
+      shareProcessNamespace: map['shareProcessNamespace'] == null ? null : (map['shareProcessNamespace'] as bool).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesVolume>(map['volumes'], (value) => JobDefinitionEksPropertiesPodPropertiesVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

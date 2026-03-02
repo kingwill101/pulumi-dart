@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceNetworkConfigAuthorizedExternalNetwork {
   /// CIDR range for one authorized network of the instance.
-  final String cidrRange;
+  final pulumi.Input<String> cidrRange;
 
   /// Creates a new [GetInstanceNetworkConfigAuthorizedExternalNetwork].
   /// [cidrRange] CIDR range for one authorized network of the instance.
@@ -19,7 +20,7 @@ class GetInstanceNetworkConfigAuthorizedExternalNetwork {
 
   factory GetInstanceNetworkConfigAuthorizedExternalNetwork.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkConfigAuthorizedExternalNetwork(
-      cidrRange: map['cidrRange'] as String,
+      cidrRange: (map['cidrRange'] as String).input(),
     );
   }
 }

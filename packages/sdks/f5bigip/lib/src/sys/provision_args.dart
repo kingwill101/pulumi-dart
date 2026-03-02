@@ -50,19 +50,13 @@ class ProvisionArgs {
   /// [memoryRatio] Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   /// [name] Name of module to provision in BIG-IP.
   ProvisionArgs({
-    pulumi.Output<int>? cpuRatio,
-    pulumi.Output<int>? diskRatio,
-    pulumi.Output<String>? fullPath,
-    pulumi.Output<String>? level,
-    pulumi.Output<int>? memoryRatio,
-    required pulumi.Output<String> name,
-  }) :
-      cpuRatio = pulumi.Input.asOptionalInput<int>(cpuRatio),
-      diskRatio = pulumi.Input.asOptionalInput<int>(diskRatio),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      level = pulumi.Input.asOptionalInput<String>(level),
-      memoryRatio = pulumi.Input.asOptionalInput<int>(memoryRatio),
-      name = pulumi.Input.asInput<String>(name);
+    this.cpuRatio,
+    this.diskRatio,
+    this.fullPath,
+    this.level,
+    this.memoryRatio,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,12 +71,12 @@ class ProvisionArgs {
 
   factory ProvisionArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionArgs(
-      cpuRatio: map['cpuRatio'] == null ? null : pulumi.Output.create<int>(map['cpuRatio'] as int),
-      diskRatio: map['diskRatio'] == null ? null : pulumi.Output.create<int>(map['diskRatio'] as int),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      level: map['level'] == null ? null : pulumi.Output.create<String>(map['level'] as String),
-      memoryRatio: map['memoryRatio'] == null ? null : pulumi.Output.create<int>(map['memoryRatio'] as int),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      cpuRatio: map['cpuRatio'] == null ? null : (map['cpuRatio'] as int).input(),
+      diskRatio: map['diskRatio'] == null ? null : (map['diskRatio'] as int).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      memoryRatio: map['memoryRatio'] == null ? null : (map['memoryRatio'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

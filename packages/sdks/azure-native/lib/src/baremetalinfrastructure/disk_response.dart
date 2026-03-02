@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the disk information fo the Azure Bare Metal Instance
 class DiskResponse {
   /// Specifies the size of an empty data disk in gigabytes.
-  final int? diskSizeGB;
+  final pulumi.Input<int>? diskSizeGB;
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
-  final int lun;
+  final pulumi.Input<int> lun;
   /// The disk name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DiskResponse].
   /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes.
@@ -30,9 +31,9 @@ class DiskResponse {
 
   factory DiskResponse.fromMap(Map<String, dynamic> map) {
     return DiskResponse(
-      diskSizeGB: map['diskSizeGB'] == null ? null : map['diskSizeGB'] as int,
-      lun: map['lun'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      lun: (map['lun'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

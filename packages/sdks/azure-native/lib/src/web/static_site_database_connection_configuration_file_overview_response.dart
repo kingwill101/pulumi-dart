@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A database connection configuration file
 class StaticSiteDatabaseConnectionConfigurationFileOverviewResponse {
   /// The Base64 encoding of the file contents.
-  final String contents;
+  final pulumi.Input<String> contents;
   /// The name of the configuration file.
-  final String fileName;
+  final pulumi.Input<String> fileName;
   /// The type of configuration file.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [StaticSiteDatabaseConnectionConfigurationFileOverviewResponse].
   /// [contents] The Base64 encoding of the file contents.
@@ -30,9 +31,9 @@ class StaticSiteDatabaseConnectionConfigurationFileOverviewResponse {
 
   factory StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteDatabaseConnectionConfigurationFileOverviewResponse(
-      contents: map['contents'] as String,
-      fileName: map['fileName'] as String,
-      type: map['type'] as String,
+      contents: (map['contents'] as String).input(),
+      fileName: (map['fileName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

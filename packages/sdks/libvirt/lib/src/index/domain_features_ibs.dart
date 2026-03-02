@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesIbs {
   /// Sets the value for the Instruction Based Sampling feature's configuration.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainFeaturesIbs].
   /// [value] Sets the value for the Instruction Based Sampling feature's configuration.
@@ -19,7 +20,7 @@ class DomainFeaturesIbs {
 
   factory DomainFeaturesIbs.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesIbs(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

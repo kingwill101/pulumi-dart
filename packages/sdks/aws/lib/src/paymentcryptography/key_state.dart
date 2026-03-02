@@ -48,33 +48,20 @@ class KeyState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   KeyState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<int>? deletionWindowInDays,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<bool>? exportable,
-    pulumi.Output<List<KeyKeyAttribute>>? keyAttributes,
-    pulumi.Output<String>? keyCheckValue,
-    pulumi.Output<String>? keyCheckValueAlgorithm,
-    pulumi.Output<String>? keyOrigin,
-    pulumi.Output<String>? keyState,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<KeyTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      deletionWindowInDays = pulumi.Input.asOptionalInput<int>(deletionWindowInDays),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      exportable = pulumi.Input.asOptionalInput<bool>(exportable),
-      keyAttributes = pulumi.Input.asOptionalInput<List<KeyKeyAttribute>>(keyAttributes),
-      keyCheckValue = pulumi.Input.asOptionalInput<String>(keyCheckValue),
-      keyCheckValueAlgorithm = pulumi.Input.asOptionalInput<String>(keyCheckValueAlgorithm),
-      keyOrigin = pulumi.Input.asOptionalInput<String>(keyOrigin),
-      keyState = pulumi.Input.asOptionalInput<String>(keyState),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<KeyTimeouts>(timeouts);
+    this.arn,
+    this.deletionWindowInDays,
+    this.enabled,
+    this.exportable,
+    this.keyAttributes,
+    this.keyCheckValue,
+    this.keyCheckValueAlgorithm,
+    this.keyOrigin,
+    this.keyState,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : pulumi.Output.create<int>(map['deletionWindowInDays'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      exportable: map['exportable'] == null ? null : pulumi.Output.create<bool>(map['exportable'] as bool),
-      keyAttributes: map['keyAttributes'] == null ? null : pulumi.Output.create<List<KeyKeyAttribute>>(pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes'], (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      keyCheckValue: map['keyCheckValue'] == null ? null : pulumi.Output.create<String>(map['keyCheckValue'] as String),
-      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : pulumi.Output.create<String>(map['keyCheckValueAlgorithm'] as String),
-      keyOrigin: map['keyOrigin'] == null ? null : pulumi.Output.create<String>(map['keyOrigin'] as String),
-      keyState: map['keyState'] == null ? null : pulumi.Output.create<String>(map['keyState'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<KeyTimeouts>(KeyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
+      keyAttributes: map['keyAttributes'] == null ? null : (pulumi.Input.decodeList<KeyKeyAttribute>(map['keyAttributes'], (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyCheckValue: map['keyCheckValue'] == null ? null : (map['keyCheckValue'] as String).input(),
+      keyCheckValueAlgorithm: map['keyCheckValueAlgorithm'] == null ? null : (map['keyCheckValueAlgorithm'] as String).input(),
+      keyOrigin: map['keyOrigin'] == null ? null : (map['keyOrigin'] as String).input(),
+      keyState: map['keyState'] == null ? null : (map['keyState'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (KeyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

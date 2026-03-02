@@ -13,9 +13,8 @@ class GetRealtimeLogConfigArgs {
   /// Creates a new [GetRealtimeLogConfigArgs].
   /// [name] Unique name to identify this real-time log configuration.
   GetRealtimeLogConfigArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRealtimeLogConfigArgs {
 
   factory GetRealtimeLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class ResourceArgs {
   /// [machineTypes] Generally refers to the type or instance type of a computing resource. See `machine_types` below.
   /// [userAccessParam] Used to define the access parameters for the user. See `user_access_param` below.
   ResourceArgs({
-    pulumi.Output<String>? clusterDesc,
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<ResourceMachineTypes> machineTypes,
-    required pulumi.Output<ResourceUserAccessParam> userAccessParam,
-  }) :
-      clusterDesc = pulumi.Input.asOptionalInput<String>(clusterDesc),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      machineTypes = pulumi.Input.asInput<ResourceMachineTypes>(machineTypes),
-      userAccessParam = pulumi.Input.asInput<ResourceUserAccessParam>(userAccessParam);
+    this.clusterDesc,
+    required this.clusterId,
+    required this.clusterName,
+    required this.machineTypes,
+    required this.userAccessParam,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      clusterDesc: map['clusterDesc'] == null ? null : pulumi.Output.create<String>(map['clusterDesc'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      machineTypes: pulumi.Output.create<ResourceMachineTypes>(ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())),
-      userAccessParam: pulumi.Output.create<ResourceUserAccessParam>(ResourceUserAccessParam.fromMap((map['userAccessParam'] as Map).cast<String, dynamic>())),
+      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      machineTypes: (ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())).input(),
+      userAccessParam: (ResourceUserAccessParam.fromMap((map['userAccessParam'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetExtensionArgs {
   /// [extensionName] Name of the Extension.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetExtensionArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> clusterResourceName,
-    required pulumi.Output<String> clusterRp,
-    required pulumi.Output<String> extensionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      clusterResourceName = pulumi.Input.asInput<String>(clusterResourceName),
-      clusterRp = pulumi.Input.asInput<String>(clusterRp),
-      extensionName = pulumi.Input.asInput<String>(extensionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.clusterName,
+    required this.clusterResourceName,
+    required this.clusterRp,
+    required this.extensionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetExtensionArgs {
 
   factory GetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterResourceName: pulumi.Output.create<String>(map['clusterResourceName'] as String),
-      clusterRp: pulumi.Output.create<String>(map['clusterRp'] as String),
-      extensionName: pulumi.Output.create<String>(map['extensionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterResourceName: (map['clusterResourceName'] as String).input(),
+      clusterRp: (map['clusterRp'] as String).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_profile_response.dart';
 import 'billing_profile_response.dart';
 import 'capacity_reservation_profile_response.dart';
@@ -17,41 +18,41 @@ import 'virtual_machine_scale_set_storage_profile_response.dart';
 /// Describes a virtual machine scale set virtual machine profile.
 class VirtualMachineScaleSetVMProfileResponse {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final ApplicationProfileResponse? applicationProfile;
+  final pulumi.Input<ApplicationProfileResponse>? applicationProfile;
   /// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-  final BillingProfileResponse? billingProfile;
+  final pulumi.Input<BillingProfileResponse>? billingProfile;
   /// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-  final CapacityReservationProfileResponse? capacityReservation;
+  final pulumi.Input<CapacityReservationProfileResponse>? capacityReservation;
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-  final DiagnosticsProfileResponse? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfileResponse>? diagnosticsProfile;
   /// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-  final String? evictionPolicy;
+  final pulumi.Input<String>? evictionPolicy;
   /// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-  final VirtualMachineScaleSetExtensionProfileResponse? extensionProfile;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProfileResponse>? extensionProfile;
   /// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-  final VirtualMachineScaleSetHardwareProfileResponse? hardwareProfile;
+  final pulumi.Input<VirtualMachineScaleSetHardwareProfileResponse>? hardwareProfile;
   /// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-  final String? licenseType;
+  final pulumi.Input<String>? licenseType;
   /// Specifies properties of the network interfaces of the virtual machines in the scale set.
-  final VirtualMachineScaleSetNetworkProfileResponse? networkProfile;
+  final pulumi.Input<VirtualMachineScaleSetNetworkProfileResponse>? networkProfile;
   /// Specifies the operating system settings for the virtual machines in the scale set.
-  final VirtualMachineScaleSetOSProfileResponse? osProfile;
+  final pulumi.Input<VirtualMachineScaleSetOSProfileResponse>? osProfile;
   /// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-  final String? priority;
+  final pulumi.Input<String>? priority;
   /// Specifies Scheduled Event related configurations.
-  final ScheduledEventsProfileResponse? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfileResponse>? scheduledEventsProfile;
   /// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
-  final SecurityPostureReferenceResponse? securityPostureReference;
+  final pulumi.Input<SecurityPostureReferenceResponse>? securityPostureReference;
   /// Specifies the Security related profile settings for the virtual machines in the scale set.
-  final SecurityProfileResponse? securityProfile;
+  final pulumi.Input<SecurityProfileResponse>? securityProfile;
   /// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-  final ServiceArtifactReferenceResponse? serviceArtifactReference;
+  final pulumi.Input<ServiceArtifactReferenceResponse>? serviceArtifactReference;
   /// Specifies the storage settings for the virtual machine disks.
-  final VirtualMachineScaleSetStorageProfileResponse? storageProfile;
+  final pulumi.Input<VirtualMachineScaleSetStorageProfileResponse>? storageProfile;
   /// Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile. Minimum API version for this property is 2023-09-01.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
   /// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-  final String? userData;
+  final pulumi.Input<String>? userData;
 
   /// Creates a new [VirtualMachineScaleSetVMProfileResponse].
   /// [applicationProfile] Specifies the gallery applications that should be made available to the VM/VMSS
@@ -95,22 +96,22 @@ class VirtualMachineScaleSetVMProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationProfile': ?applicationProfile == null ? null : applicationProfile!.toMap(),
-      'billingProfile': ?billingProfile == null ? null : billingProfile!.toMap(),
-      'capacityReservation': ?capacityReservation == null ? null : capacityReservation!.toMap(),
-      'diagnosticsProfile': ?diagnosticsProfile == null ? null : diagnosticsProfile!.toMap(),
+      'applicationProfile': ?pulumi.Input.mapOptionalInputValue<ApplicationProfileResponse, Map<String, dynamic>>(applicationProfile, (value) => value.toMap()),
+      'billingProfile': ?pulumi.Input.mapOptionalInputValue<BillingProfileResponse, Map<String, dynamic>>(billingProfile, (value) => value.toMap()),
+      'capacityReservation': ?pulumi.Input.mapOptionalInputValue<CapacityReservationProfileResponse, Map<String, dynamic>>(capacityReservation, (value) => value.toMap()),
+      'diagnosticsProfile': ?pulumi.Input.mapOptionalInputValue<DiagnosticsProfileResponse, Map<String, dynamic>>(diagnosticsProfile, (value) => value.toMap()),
       'evictionPolicy': ?evictionPolicy,
-      'extensionProfile': ?extensionProfile == null ? null : extensionProfile!.toMap(),
-      'hardwareProfile': ?hardwareProfile == null ? null : hardwareProfile!.toMap(),
+      'extensionProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetExtensionProfileResponse, Map<String, dynamic>>(extensionProfile, (value) => value.toMap()),
+      'hardwareProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetHardwareProfileResponse, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
       'licenseType': ?licenseType,
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetNetworkProfileResponse, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetOSProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
       'priority': ?priority,
-      'scheduledEventsProfile': ?scheduledEventsProfile == null ? null : scheduledEventsProfile!.toMap(),
-      'securityPostureReference': ?securityPostureReference == null ? null : securityPostureReference!.toMap(),
-      'securityProfile': ?securityProfile == null ? null : securityProfile!.toMap(),
-      'serviceArtifactReference': ?serviceArtifactReference == null ? null : serviceArtifactReference!.toMap(),
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'scheduledEventsProfile': ?pulumi.Input.mapOptionalInputValue<ScheduledEventsProfileResponse, Map<String, dynamic>>(scheduledEventsProfile, (value) => value.toMap()),
+      'securityPostureReference': ?pulumi.Input.mapOptionalInputValue<SecurityPostureReferenceResponse, Map<String, dynamic>>(securityPostureReference, (value) => value.toMap()),
+      'securityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileResponse, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
+      'serviceArtifactReference': ?pulumi.Input.mapOptionalInputValue<ServiceArtifactReferenceResponse, Map<String, dynamic>>(serviceArtifactReference, (value) => value.toMap()),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetStorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
       'timeCreated': timeCreated,
       'userData': ?userData,
     };
@@ -118,24 +119,24 @@ class VirtualMachineScaleSetVMProfileResponse {
 
   factory VirtualMachineScaleSetVMProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetVMProfileResponse(
-      applicationProfile: map['applicationProfile'] == null ? null : ApplicationProfileResponse.fromMap((map['applicationProfile'] as Map).cast<String, dynamic>()),
-      billingProfile: map['billingProfile'] == null ? null : BillingProfileResponse.fromMap((map['billingProfile'] as Map).cast<String, dynamic>()),
-      capacityReservation: map['capacityReservation'] == null ? null : CapacityReservationProfileResponse.fromMap((map['capacityReservation'] as Map).cast<String, dynamic>()),
-      diagnosticsProfile: map['diagnosticsProfile'] == null ? null : DiagnosticsProfileResponse.fromMap((map['diagnosticsProfile'] as Map).cast<String, dynamic>()),
-      evictionPolicy: map['evictionPolicy'] == null ? null : map['evictionPolicy'] as String,
-      extensionProfile: map['extensionProfile'] == null ? null : VirtualMachineScaleSetExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>()),
-      hardwareProfile: map['hardwareProfile'] == null ? null : VirtualMachineScaleSetHardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>()),
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
-      networkProfile: map['networkProfile'] == null ? null : VirtualMachineScaleSetNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: map['osProfile'] == null ? null : VirtualMachineScaleSetOSProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] == null ? null : map['priority'] as String,
-      scheduledEventsProfile: map['scheduledEventsProfile'] == null ? null : ScheduledEventsProfileResponse.fromMap((map['scheduledEventsProfile'] as Map).cast<String, dynamic>()),
-      securityPostureReference: map['securityPostureReference'] == null ? null : SecurityPostureReferenceResponse.fromMap((map['securityPostureReference'] as Map).cast<String, dynamic>()),
-      securityProfile: map['securityProfile'] == null ? null : SecurityProfileResponse.fromMap((map['securityProfile'] as Map).cast<String, dynamic>()),
-      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : ServiceArtifactReferenceResponse.fromMap((map['serviceArtifactReference'] as Map).cast<String, dynamic>()),
-      storageProfile: map['storageProfile'] == null ? null : VirtualMachineScaleSetStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
-      timeCreated: map['timeCreated'] as String,
-      userData: map['userData'] == null ? null : map['userData'] as String,
+      applicationProfile: map['applicationProfile'] == null ? null : (ApplicationProfileResponse.fromMap((map['applicationProfile'] as Map).cast<String, dynamic>())).input(),
+      billingProfile: map['billingProfile'] == null ? null : (BillingProfileResponse.fromMap((map['billingProfile'] as Map).cast<String, dynamic>())).input(),
+      capacityReservation: map['capacityReservation'] == null ? null : (CapacityReservationProfileResponse.fromMap((map['capacityReservation'] as Map).cast<String, dynamic>())).input(),
+      diagnosticsProfile: map['diagnosticsProfile'] == null ? null : (DiagnosticsProfileResponse.fromMap((map['diagnosticsProfile'] as Map).cast<String, dynamic>())).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
+      extensionProfile: map['extensionProfile'] == null ? null : (VirtualMachineScaleSetExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineScaleSetHardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineScaleSetNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (VirtualMachineScaleSetOSProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      scheduledEventsProfile: map['scheduledEventsProfile'] == null ? null : (ScheduledEventsProfileResponse.fromMap((map['scheduledEventsProfile'] as Map).cast<String, dynamic>())).input(),
+      securityPostureReference: map['securityPostureReference'] == null ? null : (SecurityPostureReferenceResponse.fromMap((map['securityPostureReference'] as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (SecurityProfileResponse.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
+      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : (ServiceArtifactReferenceResponse.fromMap((map['serviceArtifactReference'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineScaleSetStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
     );
   }
 }

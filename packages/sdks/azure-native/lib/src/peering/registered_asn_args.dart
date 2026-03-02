@@ -22,15 +22,11 @@ class RegisteredAsnArgs {
   /// [registeredAsnName] The name of the ASN.
   /// [resourceGroupName] The name of the resource group.
   RegisteredAsnArgs({
-    pulumi.Output<int>? asn,
-    required pulumi.Output<String> peeringName,
-    pulumi.Output<String>? registeredAsnName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      asn = pulumi.Input.asOptionalInput<int>(asn),
-      peeringName = pulumi.Input.asInput<String>(peeringName),
-      registeredAsnName = pulumi.Input.asOptionalInput<String>(registeredAsnName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.asn,
+    required this.peeringName,
+    this.registeredAsnName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class RegisteredAsnArgs {
 
   factory RegisteredAsnArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredAsnArgs(
-      asn: map['asn'] == null ? null : pulumi.Output.create<int>(map['asn'] as int),
-      peeringName: pulumi.Output.create<String>(map['peeringName'] as String),
-      registeredAsnName: map['registeredAsnName'] == null ? null : pulumi.Output.create<String>(map['registeredAsnName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
+      peeringName: (map['peeringName'] as String).input(),
+      registeredAsnName: map['registeredAsnName'] == null ? null : (map['registeredAsnName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

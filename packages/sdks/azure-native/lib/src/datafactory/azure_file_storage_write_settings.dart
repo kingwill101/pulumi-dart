@@ -6,16 +6,16 @@ import 'metadata_item.dart';
 /// Azure File Storage write settings.
 class AzureFileStorageWriteSettings {
   /// The type of copy behavior for copy sink.
-  final dynamic copyBehavior;
+  final pulumi.Input<dynamic>? copyBehavior;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final List<MetadataItem>? metadata;
+  final pulumi.Input<List<MetadataItem>>? metadata;
   /// The write setting type.
   /// Expected value is 'AzureFileStorageWriteSettings'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AzureFileStorageWriteSettings].
   /// [copyBehavior] The type of copy behavior for copy sink.
@@ -36,18 +36,18 @@ class AzureFileStorageWriteSettings {
       'copyBehavior': ?copyBehavior,
       'disableMetricsCollection': ?disableMetricsCollection,
       'maxConcurrentConnections': ?maxConcurrentConnections,
-      'metadata': ?metadata == null ? null : pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(metadata!, (value) => value.toMap()),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItem>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory AzureFileStorageWriteSettings.fromMap(Map<String, dynamic> map) {
     return AzureFileStorageWriteSettings(
-      copyBehavior: map['copyBehavior'] == null ? null : map['copyBehavior'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetResolverFirewallRuleGroupArgs {
   /// [firewallRuleGroupId] The ID of the rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetResolverFirewallRuleGroupArgs({
-    required pulumi.Output<String> firewallRuleGroupId,
-    pulumi.Output<String>? region,
-  }) :
-      firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.firewallRuleGroupId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResolverFirewallRuleGroupArgs {
 
   factory GetResolverFirewallRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRuleGroupArgs(
-      firewallRuleGroupId: pulumi.Output.create<String>(map['firewallRuleGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      firewallRuleGroupId: (map['firewallRuleGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

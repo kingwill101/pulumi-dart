@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure SKU of the machines in the pool.
 class DevOpsAzureSkuResponse {
   /// The Azure SKU name of the machines in the pool.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [DevOpsAzureSkuResponse].
   /// [name] The Azure SKU name of the machines in the pool.
@@ -20,7 +21,7 @@ class DevOpsAzureSkuResponse {
 
   factory DevOpsAzureSkuResponse.fromMap(Map<String, dynamic> map) {
     return DevOpsAzureSkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

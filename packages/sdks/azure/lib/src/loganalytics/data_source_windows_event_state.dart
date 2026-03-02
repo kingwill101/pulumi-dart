@@ -22,17 +22,12 @@ class DataSourceWindowsEventState {
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   /// [workspaceName] The name of the Log Analytics Workspace where the Log Analytics Windows Event DataSource should exist. Changing this forces a new Log Analytics Windows Event DataSource to be created.
   DataSourceWindowsEventState({
-    pulumi.Output<String>? eventLogName,
-    pulumi.Output<List<String>>? eventTypes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? workspaceName,
-  }) :
-      eventLogName = pulumi.Input.asOptionalInput<String>(eventLogName),
-      eventTypes = pulumi.Input.asOptionalInput<List<String>>(eventTypes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asOptionalInput<String>(workspaceName);
+    this.eventLogName,
+    this.eventTypes,
+    this.name,
+    this.resourceGroupName,
+    this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DataSourceWindowsEventState {
 
   factory DataSourceWindowsEventState.fromMap(Map<String, dynamic> map) {
     return DataSourceWindowsEventState(
-      eventLogName: map['eventLogName'] == null ? null : pulumi.Output.create<String>(map['eventLogName'] as String),
-      eventTypes: map['eventTypes'] == null ? null : pulumi.Output.create<List<String>>((map['eventTypes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: map['workspaceName'] == null ? null : pulumi.Output.create<String>(map['workspaceName'] as String),
+      eventLogName: map['eventLogName'] == null ? null : (map['eventLogName'] as String).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
     );
   }
 }

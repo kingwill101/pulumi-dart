@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceUser {
   /// Sets the device identifier for the user-managed network connection.
-  final String? dev;
+  final pulumi.Input<String>? dev;
 
   /// Creates a new [DomainDevicesInterfaceSourceUser].
   /// [dev] Sets the device identifier for the user-managed network connection.
@@ -19,7 +20,7 @@ class DomainDevicesInterfaceSourceUser {
 
   factory DomainDevicesInterfaceSourceUser.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceUser(
-      dev: map['dev'] == null ? null : map['dev'] as String,
+      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
     );
   }
 }

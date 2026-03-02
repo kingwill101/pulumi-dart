@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuthorityConfigX509ConfigCaOption {
   /// When true, the "CA" in Basic Constraints extension will be set to true.
-  final bool isCa;
+  final pulumi.Input<bool> isCa;
   /// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
   /// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
   /// requires setting 'zero_max_issuer_path_length = true'.
-  final int maxIssuerPathLength;
+  final pulumi.Input<int> maxIssuerPathLength;
   /// When true, the "CA" in Basic Constraints extension will be set to false.
   /// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
-  final bool nonCa;
+  final pulumi.Input<bool> nonCa;
   /// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
   /// If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
   /// the max path length will be omitted from the CA certificate.
-  final bool zeroMaxIssuerPathLength;
+  final pulumi.Input<bool> zeroMaxIssuerPathLength;
 
   /// Creates a new [GetAuthorityConfigX509ConfigCaOption].
   /// [isCa] When true, the "CA" in Basic Constraints extension will be set to true.
@@ -39,10 +40,10 @@ class GetAuthorityConfigX509ConfigCaOption {
 
   factory GetAuthorityConfigX509ConfigCaOption.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigX509ConfigCaOption(
-      isCa: map['isCa'] as bool,
-      maxIssuerPathLength: map['maxIssuerPathLength'] as int,
-      nonCa: map['nonCa'] as bool,
-      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] as bool,
+      isCa: (map['isCa'] as bool).input(),
+      maxIssuerPathLength: (map['maxIssuerPathLength'] as int).input(),
+      nonCa: (map['nonCa'] as bool).input(),
+      zeroMaxIssuerPathLength: (map['zeroMaxIssuerPathLength'] as bool).input(),
     );
   }
 }

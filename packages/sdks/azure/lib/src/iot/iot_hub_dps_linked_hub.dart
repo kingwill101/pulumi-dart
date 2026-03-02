@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IotHubDpsLinkedHub {
   /// The weight applied to the IoT Hub. Defaults to `1`.
-  final int? allocationWeight;
+  final pulumi.Input<int>? allocationWeight;
   /// Determines whether to apply allocation policies to the IoT Hub. Defaults to `true`.
-  final bool? applyAllocationPolicy;
+  final pulumi.Input<bool>? applyAllocationPolicy;
   /// The connection string to connect to the IoT Hub.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The IoT Hub hostname.
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// The location of the IoT hub.
-  final String location;
+  final pulumi.Input<String> location;
 
   /// Creates a new [IotHubDpsLinkedHub].
   /// [allocationWeight] The weight applied to the IoT Hub. Defaults to `1`.
@@ -39,11 +40,11 @@ class IotHubDpsLinkedHub {
 
   factory IotHubDpsLinkedHub.fromMap(Map<String, dynamic> map) {
     return IotHubDpsLinkedHub(
-      allocationWeight: map['allocationWeight'] == null ? null : map['allocationWeight'] as int,
-      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : map['applyAllocationPolicy'] as bool,
-      connectionString: map['connectionString'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      location: map['location'] as String,
+      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight'] as int).input(),
+      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy'] as bool).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

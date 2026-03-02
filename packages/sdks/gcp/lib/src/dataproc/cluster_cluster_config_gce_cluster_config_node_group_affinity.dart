@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
   /// The URI of a sole-tenant node group resource that the cluster will be created on.
-  final String nodeGroupUri;
+  final pulumi.Input<String> nodeGroupUri;
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigNodeGroupAffinity].
   /// [nodeGroupUri] The URI of a sole-tenant node group resource that the cluster will be created on.
@@ -19,7 +20,7 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
 
   factory ClusterClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigNodeGroupAffinity(
-      nodeGroupUri: map['nodeGroupUri'] as String,
+      nodeGroupUri: (map['nodeGroupUri'] as String).input(),
     );
   }
 }

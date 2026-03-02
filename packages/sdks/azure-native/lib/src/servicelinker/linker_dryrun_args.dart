@@ -20,13 +20,10 @@ class LinkerDryrunArgs {
   /// [parameters] The parameters of the dryrun
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
   LinkerDryrunArgs({
-    pulumi.Output<String>? dryrunName,
-    pulumi.Output<CreateOrUpdateDryrunParameters>? parameters,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      dryrunName = pulumi.Input.asOptionalInput<String>(dryrunName),
-      parameters = pulumi.Input.asOptionalInput<CreateOrUpdateDryrunParameters>(parameters),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.dryrunName,
+    this.parameters,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class LinkerDryrunArgs {
 
   factory LinkerDryrunArgs.fromMap(Map<String, dynamic> map) {
     return LinkerDryrunArgs(
-      dryrunName: map['dryrunName'] == null ? null : pulumi.Output.create<String>(map['dryrunName'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<CreateOrUpdateDryrunParameters>(CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName'] as String).input(),
+      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

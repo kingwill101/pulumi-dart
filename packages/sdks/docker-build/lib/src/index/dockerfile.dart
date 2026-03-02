@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Dockerfile {
   /// Raw Dockerfile contents.
@@ -7,7 +8,7 @@ class Dockerfile {
   /// Conflicts with `location`.
   ///
   /// Equivalent to invoking Docker with `-f -`.
-  final String? inline;
+  final pulumi.Input<String>? inline;
   /// Location of the Dockerfile to use.
   ///
   /// Can be a relative or absolute path to a local file, or a remote URL.
@@ -15,7 +16,7 @@ class Dockerfile {
   /// Defaults to `${context.location}/Dockerfile` if context is on-disk.
   ///
   /// Conflicts with `inline`.
-  final String? location;
+  final pulumi.Input<String>? location;
 
   /// Creates a new [Dockerfile].
   /// [inline] Raw Dockerfile contents.
@@ -34,8 +35,8 @@ class Dockerfile {
 
   factory Dockerfile.fromMap(Map<String, dynamic> map) {
     return Dockerfile(
-      inline: map['inline'] == null ? null : map['inline'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      inline: map['inline'] == null ? null : (map['inline'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

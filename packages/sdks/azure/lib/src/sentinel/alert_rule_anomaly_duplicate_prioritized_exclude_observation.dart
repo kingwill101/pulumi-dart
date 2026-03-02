@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicatePrioritizedExcludeObservation {
   /// The description of the prioritized exclude observation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The excluded value per `description`.
-  final String? exclude;
+  final pulumi.Input<String>? exclude;
   /// The name of the prioritized exclude observation.
-  final String name;
+  final pulumi.Input<String> name;
   /// The prioritized value per `description`.
-  final String? prioritize;
+  final pulumi.Input<String>? prioritize;
 
   /// Creates a new [AlertRuleAnomalyDuplicatePrioritizedExcludeObservation].
   /// [description] The description of the prioritized exclude observation.
@@ -34,10 +35,10 @@ class AlertRuleAnomalyDuplicatePrioritizedExcludeObservation {
 
   factory AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicatePrioritizedExcludeObservation(
-      description: map['description'] == null ? null : map['description'] as String,
-      exclude: map['exclude'] == null ? null : map['exclude'] as String,
-      name: map['name'] as String,
-      prioritize: map['prioritize'] == null ? null : map['prioritize'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
+      name: (map['name'] as String).input(),
+      prioritize: map['prioritize'] == null ? null : (map['prioritize'] as String).input(),
     );
   }
 }

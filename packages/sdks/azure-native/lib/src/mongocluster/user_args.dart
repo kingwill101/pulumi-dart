@@ -23,15 +23,11 @@ class UserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the mongo cluster user.
   UserArgs({
-    required pulumi.Output<String> mongoClusterName,
-    pulumi.Output<UserProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userName,
-  }) :
-      mongoClusterName = pulumi.Input.asInput<String>(mongoClusterName),
-      properties = pulumi.Input.asOptionalInput<UserProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    required this.mongoClusterName,
+    this.properties,
+    required this.resourceGroupName,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      mongoClusterName: pulumi.Output.create<String>(map['mongoClusterName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<UserProperties>(UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      mongoClusterName: (map['mongoClusterName'] as String).input(),
+      properties: map['properties'] == null ? null : (UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

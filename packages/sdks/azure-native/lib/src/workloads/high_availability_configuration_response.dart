@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the high availability configuration.
 class HighAvailabilityConfigurationResponse {
   /// The high availability type.
-  final String highAvailabilityType;
+  final pulumi.Input<String> highAvailabilityType;
 
   /// Creates a new [HighAvailabilityConfigurationResponse].
   /// [highAvailabilityType] The high availability type.
@@ -20,7 +21,7 @@ class HighAvailabilityConfigurationResponse {
 
   factory HighAvailabilityConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityConfigurationResponse(
-      highAvailabilityType: map['highAvailabilityType'] as String,
+      highAvailabilityType: (map['highAvailabilityType'] as String).input(),
     );
   }
 }

@@ -1,47 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPrometheusPromethei {
   /// (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
-  final String authToken;
+  final pulumi.Input<String> authToken;
   /// The ID of the cluster.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of the cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The type of the cluster.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// The ID of the Grafana workspace.
-  final String grafanaInstanceId;
+  final pulumi.Input<String> grafanaInstanceId;
   /// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
-  final String httpApiInterUrl;
+  final pulumi.Input<String> httpApiInterUrl;
   /// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
-  final String httpApiIntraUrl;
+  final pulumi.Input<String> httpApiIntraUrl;
   /// The ID of the Prometheus.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
-  final String pushGateWayInterUrl;
+  final pulumi.Input<String> pushGateWayInterUrl;
   /// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
-  final String pushGateWayIntraUrl;
+  final pulumi.Input<String> pushGateWayIntraUrl;
   /// (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
-  final String remoteReadInterUrl;
+  final pulumi.Input<String> remoteReadInterUrl;
   /// (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
-  final String remoteReadIntraUrl;
+  final pulumi.Input<String> remoteReadIntraUrl;
   /// (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
-  final String remoteWriteInterUrl;
+  final pulumi.Input<String> remoteWriteInterUrl;
   /// (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
-  final String remoteWriteIntraUrl;
+  final pulumi.Input<String> remoteWriteIntraUrl;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The ID of the security group.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The child instance json string of the globalView instance.
-  final String subClustersJson;
+  final pulumi.Input<String> subClustersJson;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The ID of the VSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetPrometheusPromethei].
   /// [authToken] (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
@@ -114,26 +115,26 @@ class GetPrometheusPromethei {
 
   factory GetPrometheusPromethei.fromMap(Map<String, dynamic> map) {
     return GetPrometheusPromethei(
-      authToken: map['authToken'] as String,
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      clusterType: map['clusterType'] as String,
-      grafanaInstanceId: map['grafanaInstanceId'] as String,
-      httpApiInterUrl: map['httpApiInterUrl'] as String,
-      httpApiIntraUrl: map['httpApiIntraUrl'] as String,
-      id: map['id'] as String,
-      pushGateWayInterUrl: map['pushGateWayInterUrl'] as String,
-      pushGateWayIntraUrl: map['pushGateWayIntraUrl'] as String,
-      remoteReadInterUrl: map['remoteReadInterUrl'] as String,
-      remoteReadIntraUrl: map['remoteReadIntraUrl'] as String,
-      remoteWriteInterUrl: map['remoteWriteInterUrl'] as String,
-      remoteWriteIntraUrl: map['remoteWriteIntraUrl'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      subClustersJson: map['subClustersJson'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      authToken: (map['authToken'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterType: (map['clusterType'] as String).input(),
+      grafanaInstanceId: (map['grafanaInstanceId'] as String).input(),
+      httpApiInterUrl: (map['httpApiInterUrl'] as String).input(),
+      httpApiIntraUrl: (map['httpApiIntraUrl'] as String).input(),
+      id: (map['id'] as String).input(),
+      pushGateWayInterUrl: (map['pushGateWayInterUrl'] as String).input(),
+      pushGateWayIntraUrl: (map['pushGateWayIntraUrl'] as String).input(),
+      remoteReadInterUrl: (map['remoteReadInterUrl'] as String).input(),
+      remoteReadIntraUrl: (map['remoteReadIntraUrl'] as String).input(),
+      remoteWriteInterUrl: (map['remoteWriteInterUrl'] as String).input(),
+      remoteWriteIntraUrl: (map['remoteWriteIntraUrl'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      subClustersJson: (map['subClustersJson'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPluginsPlugin {
   /// The CreateTime of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the plug-in, which cannot exceed 200 characters.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Plugin.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ModifiedTime of the resource.
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
-  final String pluginData;
+  final pulumi.Input<String> pluginData;
   /// The first ID of the resource.
-  final String pluginId;
+  final pulumi.Input<String> pluginId;
   /// The name of the plug-in that you want to create.
-  final String pluginName;
+  final pulumi.Input<String> pluginName;
   /// The type of the plug-in.
-  final String pluginType;
+  final pulumi.Input<String> pluginType;
   /// The tag of the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetPluginsPlugin].
   /// [createTime] The CreateTime of the resource.
@@ -59,15 +60,15 @@ class GetPluginsPlugin {
 
   factory GetPluginsPlugin.fromMap(Map<String, dynamic> map) {
     return GetPluginsPlugin(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      modifiedTime: map['modifiedTime'] as String,
-      pluginData: map['pluginData'] as String,
-      pluginId: map['pluginId'] as String,
-      pluginName: map['pluginName'] as String,
-      pluginType: map['pluginType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      pluginData: (map['pluginData'] as String).input(),
+      pluginId: (map['pluginId'] as String).input(),
+      pluginName: (map['pluginName'] as String).input(),
+      pluginType: (map['pluginType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

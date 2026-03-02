@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TCPFlagField
 class TCPFlagField {
   /// Property flags
-  final List<String>? flags;
+  final pulumi.Input<List<String>>? flags;
   /// Property masks
-  final List<String>? masks;
+  final pulumi.Input<List<String>>? masks;
 
   /// Creates a new [TCPFlagField].
   /// [flags] Property flags
@@ -25,8 +26,8 @@ class TCPFlagField {
 
   factory TCPFlagField.fromMap(Map<String, dynamic> map) {
     return TCPFlagField(
-      flags: map['flags'] == null ? null : (map['flags'] as List).cast<String>(),
-      masks: map['masks'] == null ? null : (map['masks'] as List).cast<String>(),
+      flags: map['flags'] == null ? null : ((map['flags'] as List).cast<String>()).input(),
+      masks: map['masks'] == null ? null : ((map['masks'] as List).cast<String>()).input(),
     );
   }
 }

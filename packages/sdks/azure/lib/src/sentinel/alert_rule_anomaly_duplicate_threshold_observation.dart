@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicateThresholdObservation {
   /// The description of the threshold observation.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The max value of the threshold observation.
-  final String? max;
+  final pulumi.Input<String>? max;
   /// The min value of the threshold observation.
-  final String? min;
+  final pulumi.Input<String>? min;
   /// The name of the threshold observation.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value of the threshold observation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AlertRuleAnomalyDuplicateThresholdObservation].
   /// [description] The description of the threshold observation.
@@ -39,11 +40,11 @@ class AlertRuleAnomalyDuplicateThresholdObservation {
 
   factory AlertRuleAnomalyDuplicateThresholdObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateThresholdObservation(
-      description: map['description'] == null ? null : map['description'] as String,
-      max: map['max'] == null ? null : map['max'] as String,
-      min: map['min'] == null ? null : map['min'] as String,
-      name: map['name'] as String,
-      value: map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      max: map['max'] == null ? null : (map['max'] as String).input(),
+      min: map['min'] == null ? null : (map['min'] as String).input(),
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_properties_response.dart';
 
 /// The encryption settings for a configuration store.
 class PropertiesResponseEncryption {
   /// Key vault properties.
-  final KeyVaultPropertiesResponse? keyVault;
+  final pulumi.Input<KeyVaultPropertiesResponse>? keyVault;
   /// The state of onboarding, which only appears in the response.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [PropertiesResponseEncryption].
   /// [keyVault] Key vault properties.
@@ -19,15 +20,15 @@ class PropertiesResponseEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVault': ?keyVault == null ? null : keyVault!.toMap(),
+      'keyVault': ?pulumi.Input.mapOptionalInputValue<KeyVaultPropertiesResponse, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
       'state': ?state,
     };
   }
 
   factory PropertiesResponseEncryption.fromMap(Map<String, dynamic> map) {
     return PropertiesResponseEncryption(
-      keyVault: map['keyVault'] == null ? null : KeyVaultPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
+      keyVault: map['keyVault'] == null ? null : (KeyVaultPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

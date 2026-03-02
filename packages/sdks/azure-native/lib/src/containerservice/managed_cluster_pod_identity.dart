@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_identity.dart';
 
 /// Details about the pod identity assigned to the Managed Cluster.
 class ManagedClusterPodIdentity {
   /// The binding selector to use for the AzureIdentityBinding resource.
-  final String? bindingSelector;
+  final pulumi.Input<String>? bindingSelector;
   /// The user assigned identity details.
-  final UserAssignedIdentity identity;
+  final pulumi.Input<UserAssignedIdentity> identity;
   /// The name of the pod identity.
-  final String name;
+  final pulumi.Input<String> name;
   /// The namespace of the pod identity.
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [ManagedClusterPodIdentity].
   /// [bindingSelector] The binding selector to use for the AzureIdentityBinding resource.
@@ -28,7 +29,7 @@ class ManagedClusterPodIdentity {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bindingSelector': ?bindingSelector,
-      'identity': identity.toMap(),
+      'identity': pulumi.Input.mapInputValue<UserAssignedIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'name': name,
       'namespace': namespace,
     };
@@ -36,10 +37,10 @@ class ManagedClusterPodIdentity {
 
   factory ManagedClusterPodIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentity(
-      bindingSelector: map['bindingSelector'] == null ? null : map['bindingSelector'] as String,
-      identity: UserAssignedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
+      bindingSelector: map['bindingSelector'] == null ? null : (map['bindingSelector'] as String).input(),
+      identity: (UserAssignedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

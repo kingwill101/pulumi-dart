@@ -23,17 +23,12 @@ class MethodSettingsState {
   /// [settings] Settings block, see below.
   /// [stageName] Name of the stage
   MethodSettingsState({
-    pulumi.Output<String>? methodPath,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApi,
-    pulumi.Output<MethodSettingsSettings>? settings,
-    pulumi.Output<String>? stageName,
-  }) :
-      methodPath = pulumi.Input.asOptionalInput<String>(methodPath),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asOptionalInput<String>(restApi),
-      settings = pulumi.Input.asOptionalInput<MethodSettingsSettings>(settings),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName);
+    this.methodPath,
+    this.region,
+    this.restApi,
+    this.settings,
+    this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class MethodSettingsState {
 
   factory MethodSettingsState.fromMap(Map<String, dynamic> map) {
     return MethodSettingsState(
-      methodPath: map['methodPath'] == null ? null : pulumi.Output.create<String>(map['methodPath'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApi: map['restApi'] == null ? null : pulumi.Output.create<String>(map['restApi'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<MethodSettingsSettings>(MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
-      stageName: map['stageName'] == null ? null : pulumi.Output.create<String>(map['stageName'] as String),
+      methodPath: map['methodPath'] == null ? null : (map['methodPath'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
+      settings: map['settings'] == null ? null : (MethodSettingsSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
     );
   }
 }

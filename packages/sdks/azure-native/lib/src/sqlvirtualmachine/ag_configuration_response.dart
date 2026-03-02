@@ -6,7 +6,7 @@ import 'ag_replica_response.dart';
 /// Availability group configuration.
 class AgConfigurationResponse {
   /// Replica configurations.
-  final List<AgReplicaResponse>? replicas;
+  final pulumi.Input<List<AgReplicaResponse>>? replicas;
 
   /// Creates a new [AgConfigurationResponse].
   /// [replicas] Replica configurations.
@@ -16,13 +16,13 @@ class AgConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas': ?replicas == null ? null : pulumi.Input.encodeList<AgReplicaResponse, Map<String, dynamic>>(replicas!, (value) => value.toMap()),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<List<AgReplicaResponse>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<AgReplicaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AgConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AgConfigurationResponse(
-      replicas: map['replicas'] == null ? null : pulumi.Input.decodeList<AgReplicaResponse>(map['replicas'], (value) => AgReplicaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<AgReplicaResponse>(map['replicas'], (value) => AgReplicaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

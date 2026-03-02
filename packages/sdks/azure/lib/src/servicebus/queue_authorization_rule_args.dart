@@ -27,17 +27,12 @@ class QueueAuthorizationRuleArgs {
   /// [queueId] Specifies the ID of the ServiceBus Queue. Changing this forces a new resource to be created.
   /// [send] Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
   QueueAuthorizationRuleArgs({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> queueId,
-    pulumi.Output<bool>? send,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.listen,
+    this.manage,
+    this.name,
+    required this.queueId,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class QueueAuthorizationRuleArgs {
 
   factory QueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return QueueAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      queueId: (map['queueId'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

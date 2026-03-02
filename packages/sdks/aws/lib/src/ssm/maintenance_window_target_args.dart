@@ -33,21 +33,14 @@ class MaintenanceWindowTargetArgs {
   /// [targets] The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// [windowId] The Id of the maintenance window to register the target with.
   MaintenanceWindowTargetArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? ownerInformation,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<List<MaintenanceWindowTargetTarget>> targets,
-    required pulumi.Output<String> windowId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerInformation = pulumi.Input.asOptionalInput<String>(ownerInformation),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      targets = pulumi.Input.asInput<List<MaintenanceWindowTargetTarget>>(targets),
-      windowId = pulumi.Input.asInput<String>(windowId);
+    this.description,
+    this.name,
+    this.ownerInformation,
+    this.region,
+    required this.resourceType,
+    required this.targets,
+    required this.windowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class MaintenanceWindowTargetArgs {
 
   factory MaintenanceWindowTargetArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTargetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ownerInformation: map['ownerInformation'] == null ? null : pulumi.Output.create<String>(map['ownerInformation'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      targets: pulumi.Output.create<List<MaintenanceWindowTargetTarget>>(pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(map['targets'], (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      windowId: pulumi.Output.create<String>(map['windowId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ownerInformation: map['ownerInformation'] == null ? null : (map['ownerInformation'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      targets: (pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(map['targets'], (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowId: (map['windowId'] as String).input(),
     );
   }
 }

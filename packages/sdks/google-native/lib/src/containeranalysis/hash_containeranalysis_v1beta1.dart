@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hash_type_containeranalysis_v1beta1.dart';
 
 /// Container message for hash values.
 class HashContaineranalysisV1beta1 {
   /// The type of hash that was performed.
-  final HashTypeContaineranalysisV1beta1 type;
+  final pulumi.Input<HashTypeContaineranalysisV1beta1> type;
   /// The hash value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [HashContaineranalysisV1beta1].
   /// [type] The type of hash that was performed.
@@ -19,15 +20,15 @@ class HashContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': type.value,
+      'type': pulumi.Input.mapInputValue<HashTypeContaineranalysisV1beta1, String>(type, (value) => value.value),
       'value': value,
     };
   }
 
   factory HashContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return HashContaineranalysisV1beta1(
-      type: HashTypeContaineranalysisV1beta1.fromValue(map['type'] as String),
-      value: map['value'] as String,
+      type: (HashTypeContaineranalysisV1beta1.fromValue(map['type'] as String)).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

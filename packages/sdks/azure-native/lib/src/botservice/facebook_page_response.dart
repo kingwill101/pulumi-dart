@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Facebook page for Facebook channel registration
 class FacebookPageResponse {
   /// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String? accessToken;
+  final pulumi.Input<String>? accessToken;
   /// Page id
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [FacebookPageResponse].
   /// [accessToken] Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -25,8 +26,8 @@ class FacebookPageResponse {
 
   factory FacebookPageResponse.fromMap(Map<String, dynamic> map) {
     return FacebookPageResponse(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      id: map['id'] as String,
+      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

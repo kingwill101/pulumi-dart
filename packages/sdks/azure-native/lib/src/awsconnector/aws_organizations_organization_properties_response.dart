@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsOrganizationsOrganization
 class AwsOrganizationsOrganizationPropertiesResponse {
   /// The Amazon Resource Name (ARN) of an organization.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
-  final String? featureSet;
+  final pulumi.Input<String>? featureSet;
   /// The unique identifier (ID) of an organization.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
-  final String? managementAccountArn;
+  final pulumi.Input<String>? managementAccountArn;
   /// The email address that is associated with the AWS account that is designated as the management account for the organization.
-  final String? managementAccountEmail;
+  final pulumi.Input<String>? managementAccountEmail;
   /// The unique identifier (ID) of the management account of an organization.
-  final String? managementAccountId;
+  final pulumi.Input<String>? managementAccountId;
   /// The unique identifier (ID) for the root.
-  final String? rootId;
+  final pulumi.Input<String>? rootId;
 
   /// Creates a new [AwsOrganizationsOrganizationPropertiesResponse].
   /// [arn] The Amazon Resource Name (ARN) of an organization.
@@ -50,13 +51,13 @@ class AwsOrganizationsOrganizationPropertiesResponse {
 
   factory AwsOrganizationsOrganizationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationsOrganizationPropertiesResponse(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      featureSet: map['featureSet'] == null ? null : map['featureSet'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      managementAccountArn: map['managementAccountArn'] == null ? null : map['managementAccountArn'] as String,
-      managementAccountEmail: map['managementAccountEmail'] == null ? null : map['managementAccountEmail'] as String,
-      managementAccountId: map['managementAccountId'] == null ? null : map['managementAccountId'] as String,
-      rootId: map['rootId'] == null ? null : map['rootId'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      managementAccountArn: map['managementAccountArn'] == null ? null : (map['managementAccountArn'] as String).input(),
+      managementAccountEmail: map['managementAccountEmail'] == null ? null : (map['managementAccountEmail'] as String).input(),
+      managementAccountId: map['managementAccountId'] == null ? null : (map['managementAccountId'] as String).input(),
+      rootId: map['rootId'] == null ? null : (map['rootId'] as String).input(),
     );
   }
 }

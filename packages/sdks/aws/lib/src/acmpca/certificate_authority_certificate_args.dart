@@ -22,15 +22,11 @@ class CertificateAuthorityCertificateArgs {
   /// [certificateChain] PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA. Required for subordinate Certificate Authorities. Not allowed for root Certificate Authorities.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CertificateAuthorityCertificateArgs({
-    required pulumi.Output<String> certificate,
-    required pulumi.Output<String> certificateAuthorityArn,
-    pulumi.Output<String>? certificateChain,
-    pulumi.Output<String>? region,
-  }) :
-      certificate = pulumi.Input.asInput<String>(certificate),
-      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
-      certificateChain = pulumi.Input.asOptionalInput<String>(certificateChain),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.certificate,
+    required this.certificateAuthorityArn,
+    this.certificateChain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CertificateAuthorityCertificateArgs {
 
   factory CertificateAuthorityCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityCertificateArgs(
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      certificateAuthorityArn: pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      certificateChain: map['certificateChain'] == null ? null : pulumi.Output.create<String>(map['certificateChain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      certificate: (map['certificate'] as String).input(),
+      certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

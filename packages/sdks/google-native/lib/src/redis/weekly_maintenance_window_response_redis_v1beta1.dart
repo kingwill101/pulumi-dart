@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'time_of_day_response_redis_v1beta1.dart';
 
 /// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 class WeeklyMaintenanceWindowResponseRedisV1beta1 {
   /// The day of week that maintenance updates occur.
-  final String day;
+  final pulumi.Input<String> day;
   /// Duration of the maintenance window. The current window is fixed at 1 hour.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// Start time of the window in UTC time.
-  final TimeOfDayResponseRedisV1beta1 startTime;
+  final pulumi.Input<TimeOfDayResponseRedisV1beta1> startTime;
 
   /// Creates a new [WeeklyMaintenanceWindowResponseRedisV1beta1].
   /// [day] The day of week that maintenance updates occur.
@@ -25,15 +26,15 @@ class WeeklyMaintenanceWindowResponseRedisV1beta1 {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime': startTime.toMap(),
+      'startTime': pulumi.Input.mapInputValue<TimeOfDayResponseRedisV1beta1, Map<String, dynamic>>(startTime, (value) => value.toMap()),
     };
   }
 
   factory WeeklyMaintenanceWindowResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return WeeklyMaintenanceWindowResponseRedisV1beta1(
-      day: map['day'] as String,
-      duration: map['duration'] as String,
-      startTime: TimeOfDayResponseRedisV1beta1.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: (map['day'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      startTime: (TimeOfDayResponseRedisV1beta1.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

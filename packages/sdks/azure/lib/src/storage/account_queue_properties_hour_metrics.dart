@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountQueuePropertiesHourMetrics {
   /// Indicates whether metrics should generate summary statistics for called API operations.
-  final bool? includeApis;
+  final pulumi.Input<bool>? includeApis;
   /// Specifies the number of days that logs will be retained.
-  final int? retentionPolicyDays;
+  final pulumi.Input<int>? retentionPolicyDays;
   /// The version of storage analytics to configure.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [AccountQueuePropertiesHourMetrics].
   /// [includeApis] Indicates whether metrics should generate summary statistics for called API operations.
@@ -29,9 +30,9 @@ class AccountQueuePropertiesHourMetrics {
 
   factory AccountQueuePropertiesHourMetrics.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesHourMetrics(
-      includeApis: map['includeApis'] == null ? null : map['includeApis'] as bool,
-      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : map['retentionPolicyDays'] as int,
-      version: map['version'] as String,
+      includeApis: map['includeApis'] == null ? null : (map['includeApis'] as bool).input(),
+      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays'] as int).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

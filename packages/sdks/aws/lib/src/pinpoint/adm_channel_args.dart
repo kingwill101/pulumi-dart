@@ -25,17 +25,12 @@ class AdmChannelArgs {
   /// [enabled] Specifies whether to enable the channel. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AdmChannelArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> clientId,
-    required pulumi.Output<String> clientSecret,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? region,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      clientId = pulumi.Input.asInput<String>(clientId),
-      clientSecret = pulumi.Input.asInput<String>(clientSecret),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationId,
+    required this.clientId,
+    required this.clientSecret,
+    this.enabled,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AdmChannelArgs {
 
   factory AdmChannelArgs.fromMap(Map<String, dynamic> map) {
     return AdmChannelArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      clientId: pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: pulumi.Output.create<String>(map['clientSecret'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetTransitHubArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [transitHubName] The name of the TransitHub Resource
   GetTransitHubArgs({
-    required pulumi.Output<String> communityName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> transitHubName,
-  }) :
-      communityName = pulumi.Input.asInput<String>(communityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      transitHubName = pulumi.Input.asInput<String>(transitHubName);
+    required this.communityName,
+    required this.resourceGroupName,
+    required this.transitHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTransitHubArgs {
 
   factory GetTransitHubArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitHubArgs(
-      communityName: pulumi.Output.create<String>(map['communityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      transitHubName: pulumi.Output.create<String>(map['transitHubName'] as String),
+      communityName: (map['communityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      transitHubName: (map['transitHubName'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OAuthAuthentication {
   /// Gets or sets the audience.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// Gets or sets the client identifier.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Gets or sets the secret, return value will always be empty.
-  final String? secret;
+  final pulumi.Input<String>? secret;
   /// Gets or sets the tenant.
-  final String? tenant;
+  final pulumi.Input<String>? tenant;
   /// Gets or sets the HTTP authentication type.
   /// Expected value is 'ActiveDirectoryOAuth'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OAuthAuthentication].
   /// [audience] Gets or sets the audience.
@@ -40,11 +41,11 @@ class OAuthAuthentication {
 
   factory OAuthAuthentication.fromMap(Map<String, dynamic> map) {
     return OAuthAuthentication(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      secret: map['secret'] == null ? null : map['secret'] as String,
-      tenant: map['tenant'] == null ? null : map['tenant'] as String,
-      type: map['type'] as String,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

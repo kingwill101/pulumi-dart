@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateRenewalSummary {
   /// The status of ACM's managed renewal of the certificate
-  final String? renewalStatus;
+  final pulumi.Input<String>? renewalStatus;
   /// The reason that a renewal request was unsuccessful or is pending
-  final String? renewalStatusReason;
-  final String? updatedAt;
+  final pulumi.Input<String>? renewalStatusReason;
+  final pulumi.Input<String>? updatedAt;
 
   /// Creates a new [CertificateRenewalSummary].
   /// [renewalStatus] The status of ACM's managed renewal of the certificate
@@ -28,9 +29,9 @@ class CertificateRenewalSummary {
 
   factory CertificateRenewalSummary.fromMap(Map<String, dynamic> map) {
     return CertificateRenewalSummary(
-      renewalStatus: map['renewalStatus'] == null ? null : map['renewalStatus'] as String,
-      renewalStatusReason: map['renewalStatusReason'] == null ? null : map['renewalStatusReason'] as String,
-      updatedAt: map['updatedAt'] == null ? null : map['updatedAt'] as String,
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
+      renewalStatusReason: map['renewalStatusReason'] == null ? null : (map['renewalStatusReason'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

@@ -42,25 +42,16 @@ class EnterpriseDatabaseArgs {
   /// [name] The name which should be used for this Redis Enterprise Database. Currently the acceptable value for this argument is `default`. Defaults to `default`. Changing this forces a new Redis Enterprise Database to be created.
   /// [port] TCP port of the database endpoint. Specified at create time. Defaults to an available port. Changing this forces a new Redis Enterprise Database to be created. Defaults to `10000`.
   EnterpriseDatabaseArgs({
-    pulumi.Output<String>? clientProtocol,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? clusteringPolicy,
-    pulumi.Output<String>? evictionPolicy,
-    pulumi.Output<String>? linkedDatabaseGroupNickname,
-    pulumi.Output<List<String>>? linkedDatabaseIds,
-    pulumi.Output<List<EnterpriseDatabaseModule>>? modules,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-  }) :
-      clientProtocol = pulumi.Input.asOptionalInput<String>(clientProtocol),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      clusteringPolicy = pulumi.Input.asOptionalInput<String>(clusteringPolicy),
-      evictionPolicy = pulumi.Input.asOptionalInput<String>(evictionPolicy),
-      linkedDatabaseGroupNickname = pulumi.Input.asOptionalInput<String>(linkedDatabaseGroupNickname),
-      linkedDatabaseIds = pulumi.Input.asOptionalInput<List<String>>(linkedDatabaseIds),
-      modules = pulumi.Input.asOptionalInput<List<EnterpriseDatabaseModule>>(modules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port);
+    this.clientProtocol,
+    required this.clusterId,
+    this.clusteringPolicy,
+    this.evictionPolicy,
+    this.linkedDatabaseGroupNickname,
+    this.linkedDatabaseIds,
+    this.modules,
+    this.name,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class EnterpriseDatabaseArgs {
 
   factory EnterpriseDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseDatabaseArgs(
-      clientProtocol: map['clientProtocol'] == null ? null : pulumi.Output.create<String>(map['clientProtocol'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : pulumi.Output.create<String>(map['clusteringPolicy'] as String),
-      evictionPolicy: map['evictionPolicy'] == null ? null : pulumi.Output.create<String>(map['evictionPolicy'] as String),
-      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : pulumi.Output.create<String>(map['linkedDatabaseGroupNickname'] as String),
-      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : pulumi.Output.create<List<String>>((map['linkedDatabaseIds'] as List).cast<String>()),
-      modules: map['modules'] == null ? null : pulumi.Output.create<List<EnterpriseDatabaseModule>>(pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules'], (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
+      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : (map['linkedDatabaseGroupNickname'] as String).input(),
+      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : ((map['linkedDatabaseIds'] as List).cast<String>()).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules'], (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

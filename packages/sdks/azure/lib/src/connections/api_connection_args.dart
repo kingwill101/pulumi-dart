@@ -30,19 +30,13 @@ class ApiConnectionArgs {
   /// [resourceGroupName] The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   /// [tags] A mapping of tags which should be assigned to the API Connection.
   ApiConnectionArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> managedApiId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameterValues,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      managedApiId = pulumi.Input.asInput<String>(managedApiId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameterValues = pulumi.Input.asOptionalInput<Map<String, String>>(parameterValues),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.displayName,
+    required this.managedApiId,
+    this.name,
+    this.parameterValues,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ApiConnectionArgs {
 
   factory ApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ApiConnectionArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      managedApiId: pulumi.Output.create<String>(map['managedApiId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameterValues'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managedApiId: (map['managedApiId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

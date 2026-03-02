@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Constants used for calculating recommended values of file share provisioning properties.
 class FileShareProvisioningConstantsResponse {
   /// Base IO per second.
-  final int baseIOPerSec;
+  final pulumi.Input<int> baseIOPerSec;
   /// Base throughput in MiB per second.
-  final int baseThroughputMiBPerSec;
+  final pulumi.Input<int> baseThroughputMiBPerSec;
   /// Scalar IO per second.
-  final double scalarIOPerSec;
+  final pulumi.Input<double> scalarIOPerSec;
   /// Scalar throughput in MiB per second.
-  final double scalarThroughputMiBPerSec;
+  final pulumi.Input<double> scalarThroughputMiBPerSec;
 
   /// Creates a new [FileShareProvisioningConstantsResponse].
   /// [baseIOPerSec] Base IO per second.
@@ -35,10 +36,10 @@ class FileShareProvisioningConstantsResponse {
 
   factory FileShareProvisioningConstantsResponse.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningConstantsResponse(
-      baseIOPerSec: map['baseIOPerSec'] as int,
-      baseThroughputMiBPerSec: map['baseThroughputMiBPerSec'] as int,
-      scalarIOPerSec: map['scalarIOPerSec'] as double,
-      scalarThroughputMiBPerSec: map['scalarThroughputMiBPerSec'] as double,
+      baseIOPerSec: (map['baseIOPerSec'] as int).input(),
+      baseThroughputMiBPerSec: (map['baseThroughputMiBPerSec'] as int).input(),
+      scalarIOPerSec: (map['scalarIOPerSec'] as double).input(),
+      scalarThroughputMiBPerSec: (map['scalarThroughputMiBPerSec'] as double).input(),
     );
   }
 }

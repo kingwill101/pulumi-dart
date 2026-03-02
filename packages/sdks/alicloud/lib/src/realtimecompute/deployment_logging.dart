@@ -6,13 +6,13 @@ import 'deployment_logging_log_reserve_policy.dart';
 
 class DeploymentLogging {
   /// Custom log template
-  final String? log4j2ConfigurationTemplate;
+  final pulumi.Input<String>? log4j2ConfigurationTemplate;
   /// log4j configuration   See `log4j_loggers` below.
-  final List<DeploymentLoggingLog4jLogger>? log4jLoggers;
+  final pulumi.Input<List<DeploymentLoggingLog4jLogger>>? log4jLoggers;
   /// Log retention policy   See `log_reserve_policy` below.
-  final DeploymentLoggingLogReservePolicy? logReservePolicy;
+  final pulumi.Input<DeploymentLoggingLogReservePolicy>? logReservePolicy;
   /// Default system log template
-  final String? loggingProfile;
+  final pulumi.Input<String>? loggingProfile;
 
   /// Creates a new [DeploymentLogging].
   /// [log4j2ConfigurationTemplate] Custom log template
@@ -29,18 +29,18 @@ class DeploymentLogging {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'log4j2ConfigurationTemplate': ?log4j2ConfigurationTemplate,
-      'log4jLoggers': ?log4jLoggers == null ? null : pulumi.Input.encodeList<DeploymentLoggingLog4jLogger, Map<String, dynamic>>(log4jLoggers!, (value) => value.toMap()),
-      'logReservePolicy': ?logReservePolicy == null ? null : logReservePolicy!.toMap(),
+      'log4jLoggers': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLoggingLog4jLogger>, List<Map<String, dynamic>>>(log4jLoggers, (value) => pulumi.Input.encodeList<DeploymentLoggingLog4jLogger, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'logReservePolicy': ?pulumi.Input.mapOptionalInputValue<DeploymentLoggingLogReservePolicy, Map<String, dynamic>>(logReservePolicy, (value) => value.toMap()),
       'loggingProfile': ?loggingProfile,
     };
   }
 
   factory DeploymentLogging.fromMap(Map<String, dynamic> map) {
     return DeploymentLogging(
-      log4j2ConfigurationTemplate: map['log4j2ConfigurationTemplate'] == null ? null : map['log4j2ConfigurationTemplate'] as String,
-      log4jLoggers: map['log4jLoggers'] == null ? null : pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(map['log4jLoggers'], (value) => DeploymentLoggingLog4jLogger.fromMap((value as Map).cast<String, dynamic>())),
-      logReservePolicy: map['logReservePolicy'] == null ? null : DeploymentLoggingLogReservePolicy.fromMap((map['logReservePolicy'] as Map).cast<String, dynamic>()),
-      loggingProfile: map['loggingProfile'] == null ? null : map['loggingProfile'] as String,
+      log4j2ConfigurationTemplate: map['log4j2ConfigurationTemplate'] == null ? null : (map['log4j2ConfigurationTemplate'] as String).input(),
+      log4jLoggers: map['log4jLoggers'] == null ? null : (pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(map['log4jLoggers'], (value) => DeploymentLoggingLog4jLogger.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logReservePolicy: map['logReservePolicy'] == null ? null : (DeploymentLoggingLogReservePolicy.fromMap((map['logReservePolicy'] as Map).cast<String, dynamic>())).input(),
+      loggingProfile: map['loggingProfile'] == null ? null : (map['loggingProfile'] as String).input(),
     );
   }
 }

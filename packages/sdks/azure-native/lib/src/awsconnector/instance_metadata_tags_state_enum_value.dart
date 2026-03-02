@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of InstanceMetadataTagsStateEnumValue
 class InstanceMetadataTagsStateEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [InstanceMetadataTagsStateEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class InstanceMetadataTagsStateEnumValue {
 
   factory InstanceMetadataTagsStateEnumValue.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataTagsStateEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

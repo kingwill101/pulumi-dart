@@ -10,18 +10,18 @@ import 'storage_profile.dart';
 /// The agents will run on Virtual Machine Scale Sets.
 class VmssFabricProfile {
   /// The VM images of the machines in the pool.
-  final List<PoolImage> images;
+  final pulumi.Input<List<PoolImage>> images;
   /// Discriminator property for FabricProfile.
   /// Expected value is 'Vmss'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The network profile of the machines in the pool.
-  final NetworkProfile? networkProfile;
+  final pulumi.Input<NetworkProfile>? networkProfile;
   /// The OS profile of the machines in the pool.
-  final OsProfile? osProfile;
+  final pulumi.Input<OsProfile>? osProfile;
   /// The Azure SKU of the machines in the pool.
-  final DevOpsAzureSku sku;
+  final pulumi.Input<DevOpsAzureSku> sku;
   /// The storage profile of the machines in the pool.
-  final StorageProfile? storageProfile;
+  final pulumi.Input<StorageProfile>? storageProfile;
 
   /// Creates a new [VmssFabricProfile].
   /// [images] The VM images of the machines in the pool.
@@ -41,23 +41,23 @@ class VmssFabricProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'images': pulumi.Input.encodeList<PoolImage, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'images': pulumi.Input.mapInputValue<List<PoolImage>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<PoolImage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': kind,
-      'networkProfile': ?networkProfile == null ? null : networkProfile!.toMap(),
-      'osProfile': ?osProfile == null ? null : osProfile!.toMap(),
-      'sku': sku.toMap(),
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'osProfile': ?pulumi.Input.mapOptionalInputValue<OsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<DevOpsAzureSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory VmssFabricProfile.fromMap(Map<String, dynamic> map) {
     return VmssFabricProfile(
-      images: pulumi.Input.decodeList<PoolImage>(map['images'], (value) => PoolImage.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] as String,
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: map['osProfile'] == null ? null : OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
-      sku: DevOpsAzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      storageProfile: map['storageProfile'] == null ? null : StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
+      images: (pulumi.Input.decodeList<PoolImage>(map['images'], (value) => PoolImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      sku: (DevOpsAzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

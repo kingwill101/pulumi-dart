@@ -25,17 +25,12 @@ class GetScheduledTasksArgs {
   /// [scheduledAction] The operation to be performed when a scheduled task is triggered.
   /// [scheduledTaskId] The id of the scheduled task.
   GetScheduledTasksArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? scheduledAction,
-    pulumi.Output<String>? scheduledTaskId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      scheduledAction = pulumi.Input.asOptionalInput<String>(scheduledAction),
-      scheduledTaskId = pulumi.Input.asOptionalInput<String>(scheduledTaskId);
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.scheduledAction,
+    this.scheduledTaskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetScheduledTasksArgs {
 
   factory GetScheduledTasksArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledTasksArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      scheduledAction: map['scheduledAction'] == null ? null : pulumi.Output.create<String>(map['scheduledAction'] as String),
-      scheduledTaskId: map['scheduledTaskId'] == null ? null : pulumi.Output.create<String>(map['scheduledTaskId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      scheduledAction: map['scheduledAction'] == null ? null : (map['scheduledAction'] as String).input(),
+      scheduledTaskId: map['scheduledTaskId'] == null ? null : (map['scheduledTaskId'] as String).input(),
     );
   }
 }

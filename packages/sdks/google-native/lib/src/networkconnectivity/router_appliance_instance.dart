@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
 class RouterApplianceInstance {
   /// The IP address on the VM to use for peering.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The URI of the VM.
-  final String? virtualMachine;
+  final pulumi.Input<String>? virtualMachine;
 
   /// Creates a new [RouterApplianceInstance].
   /// [ipAddress] The IP address on the VM to use for peering.
@@ -25,8 +26,8 @@ class RouterApplianceInstance {
 
   factory RouterApplianceInstance.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstance(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      virtualMachine: map['virtualMachine'] == null ? null : map['virtualMachine'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (map['virtualMachine'] as String).input(),
     );
   }
 }

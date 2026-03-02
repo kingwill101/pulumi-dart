@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_key_response.dart';
 import 'secret_response.dart';
 
 /// ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
 class ConfigVariableResponse {
   /// Value is a bool.
-  final bool boolValue;
+  final pulumi.Input<bool> boolValue;
   /// Value is a Encryption Key.
-  final EncryptionKeyResponse encryptionKeyValue;
+  final pulumi.Input<EncryptionKeyResponse> encryptionKeyValue;
   /// Value is an integer
-  final String intValue;
+  final pulumi.Input<String> intValue;
   /// Key of the config variable.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value is a secret.
-  final SecretResponse secretValue;
+  final pulumi.Input<SecretResponse> secretValue;
   /// Value is a string.
-  final String stringValue;
+  final pulumi.Input<String> stringValue;
 
   /// Creates a new [ConfigVariableResponse].
   /// [boolValue] Value is a bool.
@@ -37,22 +38,22 @@ class ConfigVariableResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boolValue': boolValue,
-      'encryptionKeyValue': encryptionKeyValue.toMap(),
+      'encryptionKeyValue': pulumi.Input.mapInputValue<EncryptionKeyResponse, Map<String, dynamic>>(encryptionKeyValue, (value) => value.toMap()),
       'intValue': intValue,
       'key': key,
-      'secretValue': secretValue.toMap(),
+      'secretValue': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(secretValue, (value) => value.toMap()),
       'stringValue': stringValue,
     };
   }
 
   factory ConfigVariableResponse.fromMap(Map<String, dynamic> map) {
     return ConfigVariableResponse(
-      boolValue: map['boolValue'] as bool,
-      encryptionKeyValue: EncryptionKeyResponse.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
-      intValue: map['intValue'] as String,
-      key: map['key'] as String,
-      secretValue: SecretResponse.fromMap((map['secretValue'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] as String,
+      boolValue: (map['boolValue'] as bool).input(),
+      encryptionKeyValue: (EncryptionKeyResponse.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>())).input(),
+      intValue: (map['intValue'] as String).input(),
+      key: (map['key'] as String).input(),
+      secretValue: (SecretResponse.fromMap((map['secretValue'] as Map).cast<String, dynamic>())).input(),
+      stringValue: (map['stringValue'] as String).input(),
     );
   }
 }

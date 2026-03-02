@@ -46,27 +46,17 @@ class WorkstationArgs {
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] ID to use for the workstation.
   WorkstationArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? env,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceWorkstation,
-    required pulumi.Output<String> workstationClusterId,
-    required pulumi.Output<String> workstationConfigId,
-    required pulumi.Output<String> workstationId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      env = pulumi.Input.asOptionalInput<Map<String, String>>(env),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceWorkstation = pulumi.Input.asOptionalInput<String>(sourceWorkstation),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+    this.annotations,
+    this.displayName,
+    this.env,
+    this.labels,
+    required this.location,
+    this.project,
+    this.sourceWorkstation,
+    required this.workstationClusterId,
+    required this.workstationConfigId,
+    required this.workstationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class WorkstationArgs {
 
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      env: map['env'] == null ? null : pulumi.Output.create<Map<String, String>>((map['env'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceWorkstation: map['sourceWorkstation'] == null ? null : pulumi.Output.create<String>(map['sourceWorkstation'] as String),
-      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
-      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
-      workstationId: pulumi.Output.create<String>(map['workstationId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceWorkstation: map['sourceWorkstation'] == null ? null : (map['sourceWorkstation'] as String).input(),
+      workstationClusterId: (map['workstationClusterId'] as String).input(),
+      workstationConfigId: (map['workstationConfigId'] as String).input(),
+      workstationId: (map['workstationId'] as String).input(),
     );
   }
 }

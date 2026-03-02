@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerStatusAllInstancesConfigResponse {
   /// Current all-instances configuration revision. This value is in RFC3339 text format.
-  final String currentRevision;
+  final pulumi.Input<String> currentRevision;
   /// A bit indicating whether this configuration has been applied to all managed instances in the group.
-  final bool effective;
+  final pulumi.Input<bool> effective;
 
   /// Creates a new [InstanceGroupManagerStatusAllInstancesConfigResponse].
   /// [currentRevision] Current all-instances configuration revision. This value is in RFC3339 text format.
@@ -24,8 +25,8 @@ class InstanceGroupManagerStatusAllInstancesConfigResponse {
 
   factory InstanceGroupManagerStatusAllInstancesConfigResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusAllInstancesConfigResponse(
-      currentRevision: map['currentRevision'] as String,
-      effective: map['effective'] as bool,
+      currentRevision: (map['currentRevision'] as String).input(),
+      effective: (map['effective'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration {
   /// The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
-  final String platformVersion;
+  final pulumi.Input<String> platformVersion;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration].
   /// [platformVersion] The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
@@ -19,7 +20,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfi
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration(
-      platformVersion: map['platformVersion'] as String,
+      platformVersion: (map['platformVersion'] as String).input(),
     );
   }
 }

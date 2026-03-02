@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaPoolIssuancePolicyAllowedIssuanceModes {
   /// When true, allows callers to create Certificates by specifying a CertificateConfig.
-  final bool allowConfigBasedIssuance;
+  final pulumi.Input<bool> allowConfigBasedIssuance;
   /// When true, allows callers to create Certificates by specifying a CSR.
-  final bool allowCsrBasedIssuance;
+  final pulumi.Input<bool> allowCsrBasedIssuance;
 
   /// Creates a new [CaPoolIssuancePolicyAllowedIssuanceModes].
   /// [allowConfigBasedIssuance] When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -24,8 +25,8 @@ class CaPoolIssuancePolicyAllowedIssuanceModes {
 
   factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedIssuanceModes(
-      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] as bool,
-      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] as bool,
+      allowConfigBasedIssuance: (map['allowConfigBasedIssuance'] as bool).input(),
+      allowCsrBasedIssuance: (map['allowCsrBasedIssuance'] as bool).input(),
     );
   }
 }

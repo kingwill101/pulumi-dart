@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetScheduledQueryRulesAlertAction {
   /// List of action group reference resource IDs.
-  final List<String> actionGroups;
+  final pulumi.Input<List<String>> actionGroups;
   /// Custom payload to be sent for all webhook URI in Azure action group.
-  final String customWebhookPayload;
+  final pulumi.Input<String> customWebhookPayload;
   /// Custom subject override for all email IDs in Azure action group.
-  final String emailSubject;
+  final pulumi.Input<String> emailSubject;
 
   /// Creates a new [GetScheduledQueryRulesAlertAction].
   /// [actionGroups] List of action group reference resource IDs.
@@ -29,9 +30,9 @@ class GetScheduledQueryRulesAlertAction {
 
   factory GetScheduledQueryRulesAlertAction.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertAction(
-      actionGroups: (map['actionGroups'] as List).cast<String>(),
-      customWebhookPayload: map['customWebhookPayload'] as String,
-      emailSubject: map['emailSubject'] as String,
+      actionGroups: ((map['actionGroups'] as List).cast<String>()).input(),
+      customWebhookPayload: (map['customWebhookPayload'] as String).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
     );
   }
 }

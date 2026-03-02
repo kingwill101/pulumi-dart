@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config {
   /// S3 bucket name.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// S3 prefix.
-  final String? keyPrefix;
+  final pulumi.Input<String>? keyPrefix;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config].
   /// [bucketName] S3 bucket name.
@@ -24,8 +25,8 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
 
   factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config(
-      bucketName: map['bucketName'] as String,
-      keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
     );
   }
 }

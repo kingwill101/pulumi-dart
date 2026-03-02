@@ -50,31 +50,19 @@ class LinkedServiceSqlManagedInstanceArgs {
   /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Managed Instance.
   /// [tenant] The tenant id or name in which to authenticate against the Azure SQL Managed Instance.
   LinkedServiceSqlManagedInstanceArgs({
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? connectionString,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? integrationRuntimeName,
-    pulumi.Output<LinkedServiceSqlManagedInstanceKeyVaultConnectionString>? keyVaultConnectionString,
-    pulumi.Output<LinkedServiceSqlManagedInstanceKeyVaultPassword>? keyVaultPassword,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? servicePrincipalId,
-    pulumi.Output<String>? servicePrincipalKey,
-    pulumi.Output<String>? tenant,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      integrationRuntimeName = pulumi.Input.asOptionalInput<String>(integrationRuntimeName),
-      keyVaultConnectionString = pulumi.Input.asOptionalInput<LinkedServiceSqlManagedInstanceKeyVaultConnectionString>(keyVaultConnectionString),
-      keyVaultPassword = pulumi.Input.asOptionalInput<LinkedServiceSqlManagedInstanceKeyVaultPassword>(keyVaultPassword),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      servicePrincipalId = pulumi.Input.asOptionalInput<String>(servicePrincipalId),
-      servicePrincipalKey = pulumi.Input.asOptionalInput<String>(servicePrincipalKey),
-      tenant = pulumi.Input.asOptionalInput<String>(tenant);
+    this.annotations,
+    this.connectionString,
+    required this.dataFactoryId,
+    this.description,
+    this.integrationRuntimeName,
+    this.keyVaultConnectionString,
+    this.keyVaultPassword,
+    this.name,
+    this.parameters,
+    this.servicePrincipalId,
+    this.servicePrincipalKey,
+    this.tenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class LinkedServiceSqlManagedInstanceArgs {
 
   factory LinkedServiceSqlManagedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceSqlManagedInstanceArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : pulumi.Output.create<LinkedServiceSqlManagedInstanceKeyVaultConnectionString>(LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : pulumi.Output.create<LinkedServiceSqlManagedInstanceKeyVaultPassword>(LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalKey'] as String),
-      tenant: map['tenant'] == null ? null : pulumi.Output.create<String>(map['tenant'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
     );
   }
 }

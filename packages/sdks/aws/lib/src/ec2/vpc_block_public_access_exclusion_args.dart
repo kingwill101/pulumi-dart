@@ -30,19 +30,13 @@ class VpcBlockPublicAccessExclusionArgs {
   /// [timeouts] Optional.
   /// [vpcId] Id of the VPC to which this exclusion applies. Either this or the subnet_id needs to be provided.
   VpcBlockPublicAccessExclusionArgs({
-    required pulumi.Output<String> internetGatewayExclusionMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<VpcBlockPublicAccessExclusionTimeouts>? timeouts,
-    pulumi.Output<String>? vpcId,
-  }) :
-      internetGatewayExclusionMode = pulumi.Input.asInput<String>(internetGatewayExclusionMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<VpcBlockPublicAccessExclusionTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    required this.internetGatewayExclusionMode,
+    this.region,
+    this.subnetId,
+    this.tags,
+    this.timeouts,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class VpcBlockPublicAccessExclusionArgs {
 
   factory VpcBlockPublicAccessExclusionArgs.fromMap(Map<String, dynamic> map) {
     return VpcBlockPublicAccessExclusionArgs(
-      internetGatewayExclusionMode: pulumi.Output.create<String>(map['internetGatewayExclusionMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcBlockPublicAccessExclusionTimeouts>(VpcBlockPublicAccessExclusionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      internetGatewayExclusionMode: (map['internetGatewayExclusionMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcBlockPublicAccessExclusionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

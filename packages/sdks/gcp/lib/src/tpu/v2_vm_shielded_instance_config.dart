@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmShieldedInstanceConfig {
   /// Defines whether the instance has Secure Boot enabled.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
 
   /// Creates a new [V2VmShieldedInstanceConfig].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
@@ -19,7 +20,7 @@ class V2VmShieldedInstanceConfig {
 
   factory V2VmShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return V2VmShieldedInstanceConfig(
-      enableSecureBoot: map['enableSecureBoot'] as bool,
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
     );
   }
 }

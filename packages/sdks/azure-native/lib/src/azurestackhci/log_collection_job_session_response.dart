@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a session for collecting logs from an edge device.
 class LogCollectionJobSessionResponse {
   /// A unique identifier for correlating this log collection session with other operations or sessions.
-  final String correlationId;
+  final pulumi.Input<String> correlationId;
   /// The timestamp when log collection ended, in ISO 8601 format.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The size of the collected logs in bytes.
-  final int logSize;
+  final pulumi.Input<int> logSize;
   /// The timestamp when log collection started, in ISO 8601 format.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of the log collection session.
-  final String status;
+  final pulumi.Input<String> status;
   /// The total time logs were collected for, in ISO 8601 duration format.
-  final String timeCollected;
+  final pulumi.Input<String> timeCollected;
 
   /// Creates a new [LogCollectionJobSessionResponse].
   /// [correlationId] A unique identifier for correlating this log collection session with other operations or sessions.
@@ -45,12 +46,12 @@ class LogCollectionJobSessionResponse {
 
   factory LogCollectionJobSessionResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionJobSessionResponse(
-      correlationId: map['correlationId'] as String,
-      endTime: map['endTime'] as String,
-      logSize: map['logSize'] as int,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      timeCollected: map['timeCollected'] as String,
+      correlationId: (map['correlationId'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      logSize: (map['logSize'] as int).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      timeCollected: (map['timeCollected'] as String).input(),
     );
   }
 }

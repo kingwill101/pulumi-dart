@@ -33,19 +33,13 @@ class GroupState {
   /// [parentName] The name of the group's parent, if it has one. The format is
   /// [project] The ID of the project in which the resource belongs.
   GroupState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? filter,
-    pulumi.Output<bool>? isCluster,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentName,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      isCluster = pulumi.Input.asOptionalInput<bool>(isCluster),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentName = pulumi.Input.asOptionalInput<String>(parentName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.displayName,
+    this.filter,
+    this.isCluster,
+    this.name,
+    this.parentName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      isCluster: map['isCluster'] == null ? null : pulumi.Output.create<bool>(map['isCluster'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentName: map['parentName'] == null ? null : pulumi.Output.create<String>(map['parentName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

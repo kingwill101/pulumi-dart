@@ -44,19 +44,13 @@ class Datapolicyv2DataPolicyIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   Datapolicyv2DataPolicyIamMemberArgs({
-    pulumi.Output<Datapolicyv2DataPolicyIamMemberCondition>? condition,
-    required pulumi.Output<String> dataPolicyId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<Datapolicyv2DataPolicyIamMemberCondition>(condition),
-      dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.dataPolicyId,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,12 +65,12 @@ class Datapolicyv2DataPolicyIamMemberArgs {
 
   factory Datapolicyv2DataPolicyIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<Datapolicyv2DataPolicyIamMemberCondition>(Datapolicyv2DataPolicyIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dataPolicyId: pulumi.Output.create<String>(map['dataPolicyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (Datapolicyv2DataPolicyIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dataPolicyId: (map['dataPolicyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

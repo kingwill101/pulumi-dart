@@ -6,9 +6,9 @@ import 'stream_source_config_oracle_source_config_include_objects_oracle_schema_
 class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>? oracleTables;
+  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>>? oracleTables;
   /// Schema name.
-  final String schema;
+  final pulumi.Input<String> schema;
 
   /// Creates a new [StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema].
   /// [oracleTables] Tables in the database.
@@ -20,15 +20,15 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleTables': ?oracleTables == null ? null : pulumi.Input.encodeList<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable, Map<String, dynamic>>(oracleTables!, (value) => value.toMap()),
+      'oracleTables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>, List<Map<String, dynamic>>>(oracleTables, (value) => pulumi.Input.encodeList<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': schema,
     };
   }
 
   factory StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema(
-      oracleTables: map['oracleTables'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>(map['oracleTables'], (value) => StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>())),
-      schema: map['schema'] as String,
+      oracleTables: map['oracleTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable>(map['oracleTables'], (value) => StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

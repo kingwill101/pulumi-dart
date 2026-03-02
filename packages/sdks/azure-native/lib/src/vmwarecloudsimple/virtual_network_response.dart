@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Virtual network model
 class VirtualNetworkResponse {
   /// can be used in vm creation/deletion
-  final bool assignable;
+  final pulumi.Input<bool> assignable;
   /// virtual network id (privateCloudId:vsphereId)
-  final String id;
+  final pulumi.Input<String> id;
   /// Azure region
-  final String location;
+  final pulumi.Input<String> location;
   /// {VirtualNetworkName}
-  final String name;
+  final pulumi.Input<String> name;
   /// The Private Cloud id
-  final String privateCloudId;
+  final pulumi.Input<String> privateCloudId;
   /// {resourceProviderNamespace}/{resourceType}
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VirtualNetworkResponse].
   /// [assignable] can be used in vm creation/deletion
@@ -45,12 +46,12 @@ class VirtualNetworkResponse {
 
   factory VirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkResponse(
-      assignable: map['assignable'] as bool,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      privateCloudId: map['privateCloudId'] as String,
-      type: map['type'] as String,
+      assignable: (map['assignable'] as bool).input(),
+      id: (map['id'] as String).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateCloudId: (map['privateCloudId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

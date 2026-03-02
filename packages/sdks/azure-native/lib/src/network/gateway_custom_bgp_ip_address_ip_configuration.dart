@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GatewayCustomBgpIpAddressIpConfiguration for a virtual network gateway connection.
 class GatewayCustomBgpIpAddressIpConfiguration {
   /// The custom BgpPeeringAddress which belongs to IpconfigurationId.
-  final String customBgpIpAddress;
+  final pulumi.Input<String> customBgpIpAddress;
   /// The IpconfigurationId of ipconfiguration which belongs to gateway.
-  final String ipConfigurationId;
+  final pulumi.Input<String> ipConfigurationId;
 
   /// Creates a new [GatewayCustomBgpIpAddressIpConfiguration].
   /// [customBgpIpAddress] The custom BgpPeeringAddress which belongs to IpconfigurationId.
@@ -25,8 +26,8 @@ class GatewayCustomBgpIpAddressIpConfiguration {
 
   factory GatewayCustomBgpIpAddressIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GatewayCustomBgpIpAddressIpConfiguration(
-      customBgpIpAddress: map['customBgpIpAddress'] as String,
-      ipConfigurationId: map['ipConfigurationId'] as String,
+      customBgpIpAddress: (map['customBgpIpAddress'] as String).input(),
+      ipConfigurationId: (map['ipConfigurationId'] as String).input(),
     );
   }
 }

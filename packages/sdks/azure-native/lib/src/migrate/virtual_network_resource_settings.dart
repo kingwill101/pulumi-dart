@@ -6,24 +6,24 @@ import 'subnet_resource_settings.dart';
 /// Defines the virtual network resource settings.
 class VirtualNetworkResourceSettings {
   /// Gets or sets the address prefixes for the virtual network.
-  final List<String>? addressSpace;
+  final pulumi.Input<List<String>>? addressSpace;
   /// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
   /// deployed in the virtual network.
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Gets or sets a value indicating whether gets or sets whether the
   /// DDOS protection should be switched on.
-  final bool? enableDdosProtection;
+  final pulumi.Input<bool>? enableDdosProtection;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/virtualNetworks'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets List of subnets in a VirtualNetwork.
-  final List<SubnetResourceSettings>? subnets;
+  final pulumi.Input<List<SubnetResourceSettings>>? subnets;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
 
   /// Creates a new [VirtualNetworkResourceSettings].
   /// [addressSpace] Gets or sets the address prefixes for the virtual network.
@@ -51,7 +51,7 @@ class VirtualNetworkResourceSettings {
       'dnsServers': ?dnsServers,
       'enableDdosProtection': ?enableDdosProtection,
       'resourceType': resourceType,
-      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<SubnetResourceSettings, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
+      'subnets': ?pulumi.Input.mapOptionalInputValue<List<SubnetResourceSettings>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<SubnetResourceSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'targetResourceGroupName': ?targetResourceGroupName,
       'targetResourceName': ?targetResourceName,
@@ -60,14 +60,14 @@ class VirtualNetworkResourceSettings {
 
   factory VirtualNetworkResourceSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkResourceSettings(
-      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace'] as List).cast<String>(),
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      enableDdosProtection: map['enableDdosProtection'] == null ? null : map['enableDdosProtection'] as bool,
-      resourceType: map['resourceType'] as String,
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<SubnetResourceSettings>(map['subnets'], (value) => SubnetResourceSettings.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
+      addressSpace: map['addressSpace'] == null ? null : ((map['addressSpace'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection'] as bool).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResourceSettings>(map['subnets'], (value) => SubnetResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
     );
   }
 }

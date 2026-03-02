@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionFixedResponse {
   /// Content type of the response.
-  final String contentType;
+  final pulumi.Input<String> contentType;
   /// Message body of the response.
-  final String messageBody;
+  final pulumi.Input<String> messageBody;
   /// The HTTP redirect code.
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [GetListenerRuleActionFixedResponse].
   /// [contentType] Content type of the response.
@@ -29,9 +30,9 @@ class GetListenerRuleActionFixedResponse {
 
   factory GetListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionFixedResponse(
-      contentType: map['contentType'] as String,
-      messageBody: map['messageBody'] as String,
-      statusCode: map['statusCode'] as String,
+      contentType: (map['contentType'] as String).input(),
+      messageBody: (map['messageBody'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

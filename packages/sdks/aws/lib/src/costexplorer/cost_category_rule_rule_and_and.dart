@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cost_category_rule_rule_and_and_cost_category.dart';
 import 'cost_category_rule_rule_and_and_dimension.dart';
 import 'cost_category_rule_rule_and_and_tags.dart';
 
 class CostCategoryRuleRuleAndAnd {
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
-  final CostCategoryRuleRuleAndAndCostCategory? costCategory;
+  final pulumi.Input<CostCategoryRuleRuleAndAndCostCategory>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
-  final CostCategoryRuleRuleAndAndDimension? dimension;
+  final pulumi.Input<CostCategoryRuleRuleAndAndDimension>? dimension;
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final CostCategoryRuleRuleAndAndTags? tags;
+  final pulumi.Input<CostCategoryRuleRuleAndAndTags>? tags;
 
   /// Creates a new [CostCategoryRuleRuleAndAnd].
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See below.
@@ -24,17 +25,17 @@ class CostCategoryRuleRuleAndAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategory': ?costCategory == null ? null : costCategory!.toMap(),
-      'dimension': ?dimension == null ? null : dimension!.toMap(),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'costCategory': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleAndAndCostCategory, Map<String, dynamic>>(costCategory, (value) => value.toMap()),
+      'dimension': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleAndAndDimension, Map<String, dynamic>>(dimension, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRuleAndAndTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory CostCategoryRuleRuleAndAnd.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleAndAnd(
-      costCategory: map['costCategory'] == null ? null : CostCategoryRuleRuleAndAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null ? null : CostCategoryRuleRuleAndAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : CostCategoryRuleRuleAndAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategory: map['costCategory'] == null ? null : (CostCategoryRuleRuleAndAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
+      dimension: map['dimension'] == null ? null : (CostCategoryRuleRuleAndAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (CostCategoryRuleRuleAndAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

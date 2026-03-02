@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPolicyConditionConditionThresholdAggregation {
   /// The alignment period for per-time
@@ -16,7 +17,7 @@ class AlertPolicyConditionConditionThresholdAggregation {
   /// does not equal ALIGN_NONE, then
   /// this field must be defined;
   /// otherwise an error is returned.
-  final String? alignmentPeriod;
+  final pulumi.Input<String>? alignmentPeriod;
   /// The approach to be used to combine
   /// time series. Not all reducer
   /// functions may be applied to all
@@ -35,7 +36,7 @@ class AlertPolicyConditionConditionThresholdAggregation {
   /// specified; otherwise, an error is
   /// returned.
   /// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
-  final String? crossSeriesReducer;
+  final pulumi.Input<String>? crossSeriesReducer;
   /// The set of fields to preserve when
   /// crossSeriesReducer is specified.
   /// The groupByFields determine how
@@ -61,7 +62,7 @@ class AlertPolicyConditionConditionThresholdAggregation {
   /// time series. If crossSeriesReducer
   /// is not defined, this field is
   /// ignored.
-  final List<String>? groupByFields;
+  final pulumi.Input<List<String>>? groupByFields;
   /// The approach to be used to align
   /// individual time series. Not all
   /// alignment functions may be applied
@@ -80,7 +81,7 @@ class AlertPolicyConditionConditionThresholdAggregation {
   /// specified; otherwise, an error is
   /// returned.
   /// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
-  final String? perSeriesAligner;
+  final pulumi.Input<String>? perSeriesAligner;
 
   /// Creates a new [AlertPolicyConditionConditionThresholdAggregation].
   /// [alignmentPeriod] The alignment period for per-time
@@ -105,10 +106,10 @@ class AlertPolicyConditionConditionThresholdAggregation {
 
   factory AlertPolicyConditionConditionThresholdAggregation.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdAggregation(
-      alignmentPeriod: map['alignmentPeriod'] == null ? null : map['alignmentPeriod'] as String,
-      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : map['crossSeriesReducer'] as String,
-      groupByFields: map['groupByFields'] == null ? null : (map['groupByFields'] as List).cast<String>(),
-      perSeriesAligner: map['perSeriesAligner'] == null ? null : map['perSeriesAligner'] as String,
+      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod'] as String).input(),
+      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (map['crossSeriesReducer'] as String).input(),
+      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields'] as List).cast<String>()).input(),
+      perSeriesAligner: map['perSeriesAligner'] == null ? null : (map['perSeriesAligner'] as String).input(),
     );
   }
 }

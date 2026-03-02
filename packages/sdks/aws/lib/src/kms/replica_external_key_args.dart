@@ -44,27 +44,17 @@ class ReplicaExternalKeyArgs {
   /// [tags] A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [validTo] Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the key becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   ReplicaExternalKeyArgs({
-    pulumi.Output<bool>? bypassPolicyLockoutSafetyCheck,
-    pulumi.Output<int>? deletionWindowInDays,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? keyMaterialBase64,
-    pulumi.Output<String>? policy,
-    required pulumi.Output<String> primaryKeyArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? validTo,
-  }) :
-      bypassPolicyLockoutSafetyCheck = pulumi.Input.asOptionalInput<bool>(bypassPolicyLockoutSafetyCheck),
-      deletionWindowInDays = pulumi.Input.asOptionalInput<int>(deletionWindowInDays),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      keyMaterialBase64 = pulumi.Input.asOptionalInput<String>(keyMaterialBase64),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      primaryKeyArn = pulumi.Input.asInput<String>(primaryKeyArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validTo = pulumi.Input.asOptionalInput<String>(validTo);
+    this.bypassPolicyLockoutSafetyCheck,
+    this.deletionWindowInDays,
+    this.description,
+    this.enabled,
+    this.keyMaterialBase64,
+    this.policy,
+    required this.primaryKeyArn,
+    this.region,
+    this.tags,
+    this.validTo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ReplicaExternalKeyArgs {
 
   factory ReplicaExternalKeyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaExternalKeyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : pulumi.Output.create<bool>(map['bypassPolicyLockoutSafetyCheck'] as bool),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : pulumi.Output.create<int>(map['deletionWindowInDays'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : pulumi.Output.create<String>(map['keyMaterialBase64'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      primaryKeyArn: pulumi.Output.create<String>(map['primaryKeyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validTo: map['validTo'] == null ? null : pulumi.Output.create<String>(map['validTo'] as String),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : (map['keyMaterialBase64'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      primaryKeyArn: (map['primaryKeyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validTo: map['validTo'] == null ? null : (map['validTo'] as String).input(),
     );
   }
 }

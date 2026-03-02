@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Import Route Policy either IPv4 or IPv6.
 class ImportRoutePolicy {
   /// ARM resource ID of RoutePolicy.
-  final String? importIpv4RoutePolicyId;
+  final pulumi.Input<String>? importIpv4RoutePolicyId;
   /// ARM resource ID of RoutePolicy.
-  final String? importIpv6RoutePolicyId;
+  final pulumi.Input<String>? importIpv6RoutePolicyId;
 
   /// Creates a new [ImportRoutePolicy].
   /// [importIpv4RoutePolicyId] ARM resource ID of RoutePolicy.
@@ -25,8 +26,8 @@ class ImportRoutePolicy {
 
   factory ImportRoutePolicy.fromMap(Map<String, dynamic> map) {
     return ImportRoutePolicy(
-      importIpv4RoutePolicyId: map['importIpv4RoutePolicyId'] == null ? null : map['importIpv4RoutePolicyId'] as String,
-      importIpv6RoutePolicyId: map['importIpv6RoutePolicyId'] == null ? null : map['importIpv6RoutePolicyId'] as String,
+      importIpv4RoutePolicyId: map['importIpv4RoutePolicyId'] == null ? null : (map['importIpv4RoutePolicyId'] as String).input(),
+      importIpv6RoutePolicyId: map['importIpv6RoutePolicyId'] == null ? null : (map['importIpv6RoutePolicyId'] as String).input(),
     );
   }
 }

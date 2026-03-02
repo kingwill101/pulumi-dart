@@ -24,15 +24,11 @@ class GroupPolicyArgs {
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [policy] The policy document. This is a JSON formatted string.
   GroupPolicyArgs({
-    required pulumi.Output<String> group,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    required pulumi.Output<String> policy,
-  }) :
-      group = pulumi.Input.asInput<String>(group),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      policy = pulumi.Input.asInput<String>(policy);
+    required this.group,
+    this.name,
+    this.namePrefix,
+    required this.policy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GroupPolicyArgs {
 
   factory GroupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyArgs(
-      group: pulumi.Output.create<String>(map['group'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
+      group: (map['group'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      policy: (map['policy'] as String).input(),
     );
   }
 }

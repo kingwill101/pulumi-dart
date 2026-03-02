@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The category to which the update belongs.
 class CategoryResponse {
   /// The identifier of the category.
-  final String categoryId;
+  final pulumi.Input<String> categoryId;
   /// The localized name of the category.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [CategoryResponse].
   /// [categoryId] The identifier of the category.
@@ -25,8 +26,8 @@ class CategoryResponse {
 
   factory CategoryResponse.fromMap(Map<String, dynamic> map) {
     return CategoryResponse(
-      categoryId: map['categoryId'] as String,
-      name: map['name'] as String,
+      categoryId: (map['categoryId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

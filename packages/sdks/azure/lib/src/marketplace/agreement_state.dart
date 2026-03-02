@@ -20,17 +20,12 @@ class AgreementState {
   /// [privacyPolicyLink] Optional.
   /// [publisher] The Publisher of the Marketplace Image. Changing this forces a new resource to be created.
   AgreementState({
-    pulumi.Output<String>? licenseTextLink,
-    pulumi.Output<String>? offer,
-    pulumi.Output<String>? plan,
-    pulumi.Output<String>? privacyPolicyLink,
-    pulumi.Output<String>? publisher,
-  }) :
-      licenseTextLink = pulumi.Input.asOptionalInput<String>(licenseTextLink),
-      offer = pulumi.Input.asOptionalInput<String>(offer),
-      plan = pulumi.Input.asOptionalInput<String>(plan),
-      privacyPolicyLink = pulumi.Input.asOptionalInput<String>(privacyPolicyLink),
-      publisher = pulumi.Input.asOptionalInput<String>(publisher);
+    this.licenseTextLink,
+    this.offer,
+    this.plan,
+    this.privacyPolicyLink,
+    this.publisher,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class AgreementState {
 
   factory AgreementState.fromMap(Map<String, dynamic> map) {
     return AgreementState(
-      licenseTextLink: map['licenseTextLink'] == null ? null : pulumi.Output.create<String>(map['licenseTextLink'] as String),
-      offer: map['offer'] == null ? null : pulumi.Output.create<String>(map['offer'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<String>(map['plan'] as String),
-      privacyPolicyLink: map['privacyPolicyLink'] == null ? null : pulumi.Output.create<String>(map['privacyPolicyLink'] as String),
-      publisher: map['publisher'] == null ? null : pulumi.Output.create<String>(map['publisher'] as String),
+      licenseTextLink: map['licenseTextLink'] == null ? null : (map['licenseTextLink'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      privacyPolicyLink: map['privacyPolicyLink'] == null ? null : (map['privacyPolicyLink'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
     );
   }
 }

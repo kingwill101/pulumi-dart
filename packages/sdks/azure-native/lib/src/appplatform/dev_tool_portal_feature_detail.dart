@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Detail settings for Dev Tool Portal feature
 class DevToolPortalFeatureDetail {
   /// State of the plugin
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DevToolPortalFeatureDetail].
   /// [state] State of the plugin
@@ -20,7 +21,7 @@ class DevToolPortalFeatureDetail {
 
   factory DevToolPortalFeatureDetail.fromMap(Map<String, dynamic> map) {
     return DevToolPortalFeatureDetail(
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ReadEndpoint
 class ReadEndpointResponse {
   /// The reader endpoint for the DB cluster.
-  final String? address;
+  final pulumi.Input<String>? address;
 
   /// Creates a new [ReadEndpointResponse].
   /// [address] The reader endpoint for the DB cluster.
@@ -20,7 +21,7 @@ class ReadEndpointResponse {
 
   factory ReadEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ReadEndpointResponse(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
     );
   }
 }

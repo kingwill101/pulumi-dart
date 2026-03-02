@@ -22,15 +22,11 @@ class GetClientApplicationProductLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetClientApplicationProductLinkArgs({
-    required pulumi.Output<String> clientApplicationId,
-    required pulumi.Output<String> clientApplicationProductLinkId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      clientApplicationId = pulumi.Input.asInput<String>(clientApplicationId),
-      clientApplicationProductLinkId = pulumi.Input.asInput<String>(clientApplicationProductLinkId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.clientApplicationId,
+    required this.clientApplicationProductLinkId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetClientApplicationProductLinkArgs {
 
   factory GetClientApplicationProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetClientApplicationProductLinkArgs(
-      clientApplicationId: pulumi.Output.create<String>(map['clientApplicationId'] as String),
-      clientApplicationProductLinkId: pulumi.Output.create<String>(map['clientApplicationProductLinkId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      clientApplicationId: (map['clientApplicationId'] as String).input(),
+      clientApplicationProductLinkId: (map['clientApplicationProductLinkId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

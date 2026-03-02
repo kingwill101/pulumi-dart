@@ -51,27 +51,17 @@ class ManagedSslCertificateState {
   /// [subjectAlternativeNames] Domains associated with the certificate via Subject Alternative Name.
   /// [type] Enum field whose value is always `MANAGED` - used to signal to the API
   ManagedSslCertificateState({
-    pulumi.Output<int>? certificateId,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<ManagedSslCertificateManaged>? managed,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<List<String>>? subjectAlternativeNames,
-    pulumi.Output<String>? type,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<int>(certificateId),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      managed = pulumi.Input.asOptionalInput<ManagedSslCertificateManaged>(managed),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      subjectAlternativeNames = pulumi.Input.asOptionalInput<List<String>>(subjectAlternativeNames),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.certificateId,
+    this.creationTimestamp,
+    this.description,
+    this.expireTime,
+    this.managed,
+    this.name,
+    this.project,
+    this.selfLink,
+    this.subjectAlternativeNames,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,16 +80,16 @@ class ManagedSslCertificateState {
 
   factory ManagedSslCertificateState.fromMap(Map<String, dynamic> map) {
     return ManagedSslCertificateState(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<int>(map['certificateId'] as int),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      managed: map['managed'] == null ? null : pulumi.Output.create<ManagedSslCertificateManaged>(ManagedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : pulumi.Output.create<List<String>>((map['subjectAlternativeNames'] as List).cast<String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as int).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      managed: map['managed'] == null ? null : (ManagedSslCertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

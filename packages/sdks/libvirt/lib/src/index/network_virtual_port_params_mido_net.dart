@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkVirtualPortParamsMidoNet {
   /// Specifies the interface ID for MidoNet virtual port parameters.
-  final String? interfaceId;
+  final pulumi.Input<String>? interfaceId;
 
   /// Creates a new [NetworkVirtualPortParamsMidoNet].
   /// [interfaceId] Specifies the interface ID for MidoNet virtual port parameters.
@@ -19,7 +20,7 @@ class NetworkVirtualPortParamsMidoNet {
 
   factory NetworkVirtualPortParamsMidoNet.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualPortParamsMidoNet(
-      interfaceId: map['interfaceId'] == null ? null : map['interfaceId'] as String,
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
     );
   }
 }

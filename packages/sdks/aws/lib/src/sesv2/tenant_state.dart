@@ -30,21 +30,14 @@ class TenantState {
   /// [tenantId] ID of the Tenant.
   /// [tenantName] Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
   TenantState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sendingStatus,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? tenantArn,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? tenantName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sendingStatus = pulumi.Input.asOptionalInput<String>(sendingStatus),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      tenantArn = pulumi.Input.asOptionalInput<String>(tenantArn),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      tenantName = pulumi.Input.asOptionalInput<String>(tenantName);
+    this.region,
+    this.sendingStatus,
+    this.tags,
+    this.tagsAll,
+    this.tenantArn,
+    this.tenantId,
+    this.tenantName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class TenantState {
 
   factory TenantState.fromMap(Map<String, dynamic> map) {
     return TenantState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sendingStatus: map['sendingStatus'] == null ? null : pulumi.Output.create<String>(map['sendingStatus'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      tenantArn: map['tenantArn'] == null ? null : pulumi.Output.create<String>(map['tenantArn'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      tenantName: map['tenantName'] == null ? null : pulumi.Output.create<String>(map['tenantName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sendingStatus: map['sendingStatus'] == null ? null : (map['sendingStatus'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      tenantArn: map['tenantArn'] == null ? null : (map['tenantArn'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
     );
   }
 }

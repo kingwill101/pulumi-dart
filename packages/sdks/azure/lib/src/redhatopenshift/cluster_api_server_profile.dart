@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterApiServerProfile {
   /// The IP Address the Ingress Profile is associated with.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// The URL the API Server Profile is associated with.
-  final String? url;
+  final pulumi.Input<String>? url;
   /// Cluster API server visibility. Supported values are `Public` and `Private`. Changing this forces a new resource to be created.
-  final String visibility;
+  final pulumi.Input<String> visibility;
 
   /// Creates a new [ClusterApiServerProfile].
   /// [ipAddress] The IP Address the Ingress Profile is associated with.
@@ -29,9 +30,9 @@ class ClusterApiServerProfile {
 
   factory ClusterApiServerProfile.fromMap(Map<String, dynamic> map) {
     return ClusterApiServerProfile(
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      visibility: map['visibility'] as String,
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      visibility: (map['visibility'] as String).input(),
     );
   }
 }

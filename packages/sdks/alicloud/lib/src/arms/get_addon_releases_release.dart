@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAddonReleasesRelease {
   /// The name of the add-on.
-  final String addonName;
+  final pulumi.Input<String> addonName;
   /// The name of the Addon Release.
-  final String addonReleaseName;
+  final pulumi.Input<String> addonReleaseName;
   /// The version of the add-on.
-  final String addonVersion;
+  final pulumi.Input<String> addonVersion;
   /// The number of alert rules.
-  final int alertRuleCount;
+  final pulumi.Input<int> alertRuleCount;
   /// The language.
-  final String aliyunLang;
+  final pulumi.Input<String> aliyunLang;
   /// The time when the add-on was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The number of dashboards.
-  final int dashboardCount;
+  final pulumi.Input<int> dashboardCount;
   /// The environment ID.
-  final String environmentId;
+  final pulumi.Input<String> environmentId;
   /// The number of exporters.
-  final int exporterCount;
+  final pulumi.Input<int> exporterCount;
   /// The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The region ID.
-  final String regionId;
+  final pulumi.Input<String> regionId;
 
   /// Creates a new [GetAddonReleasesRelease].
   /// [addonName] The name of the add-on.
@@ -69,17 +70,17 @@ class GetAddonReleasesRelease {
 
   factory GetAddonReleasesRelease.fromMap(Map<String, dynamic> map) {
     return GetAddonReleasesRelease(
-      addonName: map['addonName'] as String,
-      addonReleaseName: map['addonReleaseName'] as String,
-      addonVersion: map['addonVersion'] as String,
-      alertRuleCount: map['alertRuleCount'] as int,
-      aliyunLang: map['aliyunLang'] as String,
-      createTime: map['createTime'] as String,
-      dashboardCount: map['dashboardCount'] as int,
-      environmentId: map['environmentId'] as String,
-      exporterCount: map['exporterCount'] as int,
-      id: map['id'] as String,
-      regionId: map['regionId'] as String,
+      addonName: (map['addonName'] as String).input(),
+      addonReleaseName: (map['addonReleaseName'] as String).input(),
+      addonVersion: (map['addonVersion'] as String).input(),
+      alertRuleCount: (map['alertRuleCount'] as int).input(),
+      aliyunLang: (map['aliyunLang'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dashboardCount: (map['dashboardCount'] as int).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      exporterCount: (map['exporterCount'] as int).input(),
+      id: (map['id'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

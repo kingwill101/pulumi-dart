@@ -30,23 +30,15 @@ class PeeringAttachmentAccepterState {
   /// [transitGatewayAttachmentId] The ID of the EC2 Transit Gateway Peering Attachment to manage.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   PeeringAttachmentAccepterState({
-    pulumi.Output<String>? peerAccountId,
-    pulumi.Output<String>? peerRegion,
-    pulumi.Output<String>? peerTransitGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayId,
-  }) :
-      peerAccountId = pulumi.Input.asOptionalInput<String>(peerAccountId),
-      peerRegion = pulumi.Input.asOptionalInput<String>(peerRegion),
-      peerTransitGatewayId = pulumi.Input.asOptionalInput<String>(peerTransitGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId);
+    this.peerAccountId,
+    this.peerRegion,
+    this.peerTransitGatewayId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,14 +55,14 @@ class PeeringAttachmentAccepterState {
 
   factory PeeringAttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentAccepterState(
-      peerAccountId: map['peerAccountId'] == null ? null : pulumi.Output.create<String>(map['peerAccountId'] as String),
-      peerRegion: map['peerRegion'] == null ? null : pulumi.Output.create<String>(map['peerRegion'] as String),
-      peerTransitGatewayId: map['peerTransitGatewayId'] == null ? null : pulumi.Output.create<String>(map['peerTransitGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
+      peerAccountId: map['peerAccountId'] == null ? null : (map['peerAccountId'] as String).input(),
+      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion'] as String).input(),
+      peerTransitGatewayId: map['peerTransitGatewayId'] == null ? null : (map['peerTransitGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
     );
   }
 }

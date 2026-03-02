@@ -16,11 +16,9 @@ class GetDeploymentStackAtManagementGroupArgs {
   /// [deploymentStackName] Name of the deployment stack.
   /// [managementGroupId] The name of the management group. The name is case insensitive.
   GetDeploymentStackAtManagementGroupArgs({
-    required pulumi.Output<String> deploymentStackName,
-    required pulumi.Output<String> managementGroupId,
-  }) :
-      deploymentStackName = pulumi.Input.asInput<String>(deploymentStackName),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId);
+    required this.deploymentStackName,
+    required this.managementGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeploymentStackAtManagementGroupArgs {
 
   factory GetDeploymentStackAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStackAtManagementGroupArgs(
-      deploymentStackName: pulumi.Output.create<String>(map['deploymentStackName'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
+      deploymentStackName: (map['deploymentStackName'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
     );
   }
 }

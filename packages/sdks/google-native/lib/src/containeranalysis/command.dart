@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Command describes a step performed as part of the build pipeline.
 class Command {
   /// Command-line arguments used when executing this command.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Working directory (relative to project source root) used when running this command.
-  final String? dir;
+  final pulumi.Input<String>? dir;
   /// Environment variables set before running this command.
-  final List<String>? env;
+  final pulumi.Input<List<String>>? env;
   /// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
-  final String name;
+  final pulumi.Input<String> name;
   /// The ID(s) of the command(s) that this command depends on.
-  final List<String>? waitFor;
+  final pulumi.Input<List<String>>? waitFor;
 
   /// Creates a new [Command].
   /// [args] Command-line arguments used when executing this command.
@@ -45,12 +46,12 @@ class Command {
 
   factory Command.fromMap(Map<String, dynamic> map) {
     return Command(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      dir: map['dir'] == null ? null : map['dir'] as String,
-      env: map['env'] == null ? null : (map['env'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      waitFor: map['waitFor'] == null ? null : (map['waitFor'] as List).cast<String>(),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      env: map['env'] == null ? null : ((map['env'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      waitFor: map['waitFor'] == null ? null : ((map['waitFor'] as List).cast<String>()).input(),
     );
   }
 }

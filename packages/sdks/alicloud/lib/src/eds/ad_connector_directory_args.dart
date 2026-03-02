@@ -46,31 +46,19 @@ class AdConnectorDirectoryArgs {
   /// [subDomainName] The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
   /// [vswitchIds] List of VSwitch IDs in the directory.
   AdConnectorDirectoryArgs({
-    pulumi.Output<String>? desktopAccessType,
-    required pulumi.Output<String> directoryName,
-    required pulumi.Output<List<String>> dnsAddresses,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> domainPassword,
-    required pulumi.Output<String> domainUserName,
-    pulumi.Output<bool>? enableAdminAccess,
-    pulumi.Output<bool>? mfaEnabled,
-    pulumi.Output<int>? specification,
-    pulumi.Output<List<String>>? subDomainDnsAddresses,
-    pulumi.Output<String>? subDomainName,
-    required pulumi.Output<List<String>> vswitchIds,
-  }) :
-      desktopAccessType = pulumi.Input.asOptionalInput<String>(desktopAccessType),
-      directoryName = pulumi.Input.asInput<String>(directoryName),
-      dnsAddresses = pulumi.Input.asInput<List<String>>(dnsAddresses),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      domainPassword = pulumi.Input.asInput<String>(domainPassword),
-      domainUserName = pulumi.Input.asInput<String>(domainUserName),
-      enableAdminAccess = pulumi.Input.asOptionalInput<bool>(enableAdminAccess),
-      mfaEnabled = pulumi.Input.asOptionalInput<bool>(mfaEnabled),
-      specification = pulumi.Input.asOptionalInput<int>(specification),
-      subDomainDnsAddresses = pulumi.Input.asOptionalInput<List<String>>(subDomainDnsAddresses),
-      subDomainName = pulumi.Input.asOptionalInput<String>(subDomainName),
-      vswitchIds = pulumi.Input.asInput<List<String>>(vswitchIds);
+    this.desktopAccessType,
+    required this.directoryName,
+    required this.dnsAddresses,
+    required this.domainName,
+    required this.domainPassword,
+    required this.domainUserName,
+    this.enableAdminAccess,
+    this.mfaEnabled,
+    this.specification,
+    this.subDomainDnsAddresses,
+    this.subDomainName,
+    required this.vswitchIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class AdConnectorDirectoryArgs {
 
   factory AdConnectorDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return AdConnectorDirectoryArgs(
-      desktopAccessType: map['desktopAccessType'] == null ? null : pulumi.Output.create<String>(map['desktopAccessType'] as String),
-      directoryName: pulumi.Output.create<String>(map['directoryName'] as String),
-      dnsAddresses: pulumi.Output.create<List<String>>((map['dnsAddresses'] as List).cast<String>()),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      domainPassword: pulumi.Output.create<String>(map['domainPassword'] as String),
-      domainUserName: pulumi.Output.create<String>(map['domainUserName'] as String),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : pulumi.Output.create<bool>(map['enableAdminAccess'] as bool),
-      mfaEnabled: map['mfaEnabled'] == null ? null : pulumi.Output.create<bool>(map['mfaEnabled'] as bool),
-      specification: map['specification'] == null ? null : pulumi.Output.create<int>(map['specification'] as int),
-      subDomainDnsAddresses: map['subDomainDnsAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['subDomainDnsAddresses'] as List).cast<String>()),
-      subDomainName: map['subDomainName'] == null ? null : pulumi.Output.create<String>(map['subDomainName'] as String),
-      vswitchIds: pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
+      directoryName: (map['directoryName'] as String).input(),
+      dnsAddresses: ((map['dnsAddresses'] as List).cast<String>()).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainPassword: (map['domainPassword'] as String).input(),
+      domainUserName: (map['domainUserName'] as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
+      mfaEnabled: map['mfaEnabled'] == null ? null : (map['mfaEnabled'] as bool).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as int).input(),
+      subDomainDnsAddresses: map['subDomainDnsAddresses'] == null ? null : ((map['subDomainDnsAddresses'] as List).cast<String>()).input(),
+      subDomainName: map['subDomainName'] == null ? null : (map['subDomainName'] as String).input(),
+      vswitchIds: ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

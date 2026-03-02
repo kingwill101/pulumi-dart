@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_reference_response.dart';
 
 /// The sku type.
 class SkuResponse {
   /// The name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The reference to plan.
-  final ResourceReferenceResponse? plan;
+  final pulumi.Input<ResourceReferenceResponse>? plan;
 
   /// Creates a new [SkuResponse].
   /// [name] The name.
@@ -20,14 +21,14 @@ class SkuResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'plan': ?plan == null ? null : plan!.toMap(),
+      'plan': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(plan, (value) => value.toMap()),
     };
   }
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
-      name: map['name'] as String,
-      plan: map['plan'] == null ? null : ResourceReferenceResponse.fromMap((map['plan'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (ResourceReferenceResponse.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

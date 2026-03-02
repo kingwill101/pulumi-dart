@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolV2Member {
-  final String address;
+  final pulumi.Input<String> address;
   /// The administrative state of the Pool, which is up (true)
   /// or down (false).
-  final bool adminStateUp;
-  final bool backup;
-  final String id;
-  final String monitorAddress;
-  final int monitorPort;
+  final pulumi.Input<bool> adminStateUp;
+  final pulumi.Input<bool> backup;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> monitorAddress;
+  final pulumi.Input<int> monitorPort;
   /// The name of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operating status of the pool.
-  final String operatingStatus;
+  final pulumi.Input<String> operatingStatus;
   /// The ID of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
-  final String poolId;
+  final pulumi.Input<String> poolId;
   /// The owner (project/tenant) ID of the pool.
-  final String projectId;
-  final int protocolPort;
+  final pulumi.Input<String> projectId;
+  final pulumi.Input<int> protocolPort;
   /// The provisioning status of the pool.
-  final String provisioningStatus;
-  final String subnetId;
+  final pulumi.Input<String> provisioningStatus;
+  final pulumi.Input<String> subnetId;
   /// A set of tags applied to the loadbalancer's pool. The
   /// loadbalancer' pool will be returned if it has all of the specified tags.
-  final List<String> tags;
-  final int weight;
+  final pulumi.Input<List<String>> tags;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [GetPoolV2Member].
   /// [address] Required.
@@ -85,21 +86,21 @@ class GetPoolV2Member {
 
   factory GetPoolV2Member.fromMap(Map<String, dynamic> map) {
     return GetPoolV2Member(
-      address: map['address'] as String,
-      adminStateUp: map['adminStateUp'] as bool,
-      backup: map['backup'] as bool,
-      id: map['id'] as String,
-      monitorAddress: map['monitorAddress'] as String,
-      monitorPort: map['monitorPort'] as int,
-      name: map['name'] as String,
-      operatingStatus: map['operatingStatus'] as String,
-      poolId: map['poolId'] as String,
-      projectId: map['projectId'] as String,
-      protocolPort: map['protocolPort'] as int,
-      provisioningStatus: map['provisioningStatus'] as String,
-      subnetId: map['subnetId'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      weight: map['weight'] as int,
+      address: (map['address'] as String).input(),
+      adminStateUp: (map['adminStateUp'] as bool).input(),
+      backup: (map['backup'] as bool).input(),
+      id: (map['id'] as String).input(),
+      monitorAddress: (map['monitorAddress'] as String).input(),
+      monitorPort: (map['monitorPort'] as int).input(),
+      name: (map['name'] as String).input(),
+      operatingStatus: (map['operatingStatus'] as String).input(),
+      poolId: (map['poolId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      protocolPort: (map['protocolPort'] as int).input(),
+      provisioningStatus: (map['provisioningStatus'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

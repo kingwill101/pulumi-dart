@@ -14,11 +14,9 @@ class GetEnvironmentArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   GetEnvironmentArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.environmentId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetEnvironmentArgs {
 
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

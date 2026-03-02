@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterConfig {
   /// Custom configuration service config key, e.g. ’dfs.replication’.
-  final String configKey;
+  final pulumi.Input<String> configKey;
   /// Custom configuration service config value, e.g. ’3’.
-  final String configValue;
+  final pulumi.Input<String> configValue;
   /// Custom configuration service file name, e.g. ’hdfs-site’.
-  final String fileName;
-  final String serviceName;
+  final pulumi.Input<String> fileName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ClusterConfig].
   /// [configKey] Custom configuration service config key, e.g. ’dfs.replication’.
@@ -33,10 +34,10 @@ class ClusterConfig {
 
   factory ClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterConfig(
-      configKey: map['configKey'] as String,
-      configValue: map['configValue'] as String,
-      fileName: map['fileName'] as String,
-      serviceName: map['serviceName'] as String,
+      configKey: (map['configKey'] as String).input(),
+      configValue: (map['configValue'] as String).input(),
+      fileName: (map['fileName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

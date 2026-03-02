@@ -10,17 +10,17 @@ import 'get_tags_filter_tags.dart';
 
 class GetTagsFilter {
   /// Return results that match both `Dimension` objects.
-  final List<GetTagsFilterAnd>? ands;
+  final pulumi.Input<List<GetTagsFilterAnd>>? ands;
   /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
-  final GetTagsFilterCostCategory? costCategory;
+  final pulumi.Input<GetTagsFilterCostCategory>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
-  final GetTagsFilterDimension? dimension;
+  final pulumi.Input<GetTagsFilterDimension>? dimension;
   /// Return results that match both `Dimension` object.
-  final GetTagsFilterNot? not;
+  final pulumi.Input<GetTagsFilterNot>? not;
   /// Return results that match both `Dimension` object.
-  final List<GetTagsFilterOr>? ors;
+  final pulumi.Input<List<GetTagsFilterOr>>? ors;
   /// Tags that match your request.
-  final GetTagsFilterTags? tags;
+  final pulumi.Input<GetTagsFilterTags>? tags;
 
   /// Creates a new [GetTagsFilter].
   /// [ands] Return results that match both `Dimension` objects.
@@ -40,23 +40,23 @@ class GetTagsFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ands': ?ands == null ? null : pulumi.Input.encodeList<GetTagsFilterAnd, Map<String, dynamic>>(ands!, (value) => value.toMap()),
-      'costCategory': ?costCategory == null ? null : costCategory!.toMap(),
-      'dimension': ?dimension == null ? null : dimension!.toMap(),
-      'not': ?not == null ? null : not!.toMap(),
-      'ors': ?ors == null ? null : pulumi.Input.encodeList<GetTagsFilterOr, Map<String, dynamic>>(ors!, (value) => value.toMap()),
-      'tags': ?tags == null ? null : tags!.toMap(),
+      'ands': ?pulumi.Input.mapOptionalInputValue<List<GetTagsFilterAnd>, List<Map<String, dynamic>>>(ands, (value) => pulumi.Input.encodeList<GetTagsFilterAnd, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'costCategory': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterCostCategory, Map<String, dynamic>>(costCategory, (value) => value.toMap()),
+      'dimension': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterDimension, Map<String, dynamic>>(dimension, (value) => value.toMap()),
+      'not': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterNot, Map<String, dynamic>>(not, (value) => value.toMap()),
+      'ors': ?pulumi.Input.mapOptionalInputValue<List<GetTagsFilterOr>, List<Map<String, dynamic>>>(ors, (value) => pulumi.Input.encodeList<GetTagsFilterOr, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<GetTagsFilterTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
     };
   }
 
   factory GetTagsFilter.fromMap(Map<String, dynamic> map) {
     return GetTagsFilter(
-      ands: map['ands'] == null ? null : pulumi.Input.decodeList<GetTagsFilterAnd>(map['ands'], (value) => GetTagsFilterAnd.fromMap((value as Map).cast<String, dynamic>())),
-      costCategory: map['costCategory'] == null ? null : GetTagsFilterCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null ? null : GetTagsFilterDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      not: map['not'] == null ? null : GetTagsFilterNot.fromMap((map['not'] as Map).cast<String, dynamic>()),
-      ors: map['ors'] == null ? null : pulumi.Input.decodeList<GetTagsFilterOr>(map['ors'], (value) => GetTagsFilterOr.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : GetTagsFilterTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<GetTagsFilterAnd>(map['ands'], (value) => GetTagsFilterAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      costCategory: map['costCategory'] == null ? null : (GetTagsFilterCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
+      dimension: map['dimension'] == null ? null : (GetTagsFilterDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
+      not: map['not'] == null ? null : (GetTagsFilterNot.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
+      ors: map['ors'] == null ? null : (pulumi.Input.decodeList<GetTagsFilterOr>(map['ors'], (value) => GetTagsFilterOr.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (GetTagsFilterTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,19 +34,13 @@ class AiFeatureStoreEntityTypeArgs {
   /// [name] The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   /// [offlineStorageTtlDays] Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
   AiFeatureStoreEntityTypeArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> featurestore,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<AiFeatureStoreEntityTypeMonitoringConfig>? monitoringConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? offlineStorageTtlDays,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      featurestore = pulumi.Input.asInput<String>(featurestore),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      monitoringConfig = pulumi.Input.asOptionalInput<AiFeatureStoreEntityTypeMonitoringConfig>(monitoringConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offlineStorageTtlDays = pulumi.Input.asOptionalInput<int>(offlineStorageTtlDays);
+    this.description,
+    required this.featurestore,
+    this.labels,
+    this.monitoringConfig,
+    this.name,
+    this.offlineStorageTtlDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class AiFeatureStoreEntityTypeArgs {
 
   factory AiFeatureStoreEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      featurestore: pulumi.Output.create<String>(map['featurestore'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      monitoringConfig: map['monitoringConfig'] == null ? null : pulumi.Output.create<AiFeatureStoreEntityTypeMonitoringConfig>(AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : pulumi.Output.create<int>(map['offlineStorageTtlDays'] as int),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      featurestore: (map['featurestore'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays'] as int).input(),
     );
   }
 }

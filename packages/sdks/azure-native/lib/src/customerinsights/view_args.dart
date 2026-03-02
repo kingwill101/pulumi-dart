@@ -28,19 +28,13 @@ class ViewArgs {
   /// [userId] the user ID.
   /// [viewName] The name of the view.
   ViewArgs({
-    required pulumi.Output<String> definition,
-    pulumi.Output<Map<String, String>>? displayName,
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? viewName,
-  }) :
-      definition = pulumi.Input.asInput<String>(definition),
-      displayName = pulumi.Input.asOptionalInput<Map<String, String>>(displayName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      viewName = pulumi.Input.asOptionalInput<String>(viewName);
+    required this.definition,
+    this.displayName,
+    required this.hubName,
+    required this.resourceGroupName,
+    this.userId,
+    this.viewName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      definition: pulumi.Output.create<String>(map['definition'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<Map<String, String>>((map['displayName'] as Map).cast<String, String>()),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      viewName: map['viewName'] == null ? null : pulumi.Output.create<String>(map['viewName'] as String),
+      definition: (map['definition'] as String).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      hubName: (map['hubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      viewName: map['viewName'] == null ? null : (map['viewName'] as String).input(),
     );
   }
 }

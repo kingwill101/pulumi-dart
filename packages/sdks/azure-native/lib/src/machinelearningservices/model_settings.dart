@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelSettings {
   /// The unique model identifier that this ServerlessEndpoint should provision.
-  final String? modelId;
+  final pulumi.Input<String>? modelId;
 
   /// Creates a new [ModelSettings].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.
@@ -19,7 +20,7 @@ class ModelSettings {
 
   factory ModelSettings.fromMap(Map<String, dynamic> map) {
     return ModelSettings(
-      modelId: map['modelId'] == null ? null : map['modelId'] as String,
+      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
     );
   }
 }

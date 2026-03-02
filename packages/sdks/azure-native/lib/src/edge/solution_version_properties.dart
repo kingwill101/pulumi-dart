@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Solution Version Properties
 class SolutionVersionProperties {
   /// App components spec
-  final dynamic specification;
+  final pulumi.Input<dynamic> specification;
 
   /// Creates a new [SolutionVersionProperties].
   /// [specification] App components spec
@@ -20,7 +21,7 @@ class SolutionVersionProperties {
 
   factory SolutionVersionProperties.fromMap(Map<String, dynamic> map) {
     return SolutionVersionProperties(
-      specification: map['specification'],
+      specification: (map['specification']).input(),
     );
   }
 }

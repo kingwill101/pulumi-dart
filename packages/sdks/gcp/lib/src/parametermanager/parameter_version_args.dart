@@ -23,15 +23,11 @@ class ParameterVersionArgs {
   /// [parameterData] The Parameter data.
   /// [parameterVersionId] Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   ParameterVersionArgs({
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> parameter,
-    required pulumi.Output<String> parameterData,
-    required pulumi.Output<String> parameterVersionId,
-  }) :
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      parameter = pulumi.Input.asInput<String>(parameter),
-      parameterData = pulumi.Input.asInput<String>(parameterData),
-      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId);
+    this.disabled,
+    required this.parameter,
+    required this.parameterData,
+    required this.parameterVersionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ParameterVersionArgs {
 
   factory ParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return ParameterVersionArgs(
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      parameter: pulumi.Output.create<String>(map['parameter'] as String),
-      parameterData: pulumi.Output.create<String>(map['parameterData'] as String),
-      parameterVersionId: pulumi.Output.create<String>(map['parameterVersionId'] as String),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      parameter: (map['parameter'] as String).input(),
+      parameterData: (map['parameterData'] as String).input(),
+      parameterVersionId: (map['parameterVersionId'] as String).input(),
     );
   }
 }

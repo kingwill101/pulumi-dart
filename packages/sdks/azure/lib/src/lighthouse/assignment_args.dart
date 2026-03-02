@@ -19,13 +19,10 @@ class AssignmentArgs {
   /// [name] A unique UUID/GUID which identifies this lighthouse assignment- one will be generated if not specified. Changing this forces a new resource to be created.
   /// [scope] The scope at which the Lighthouse Assignment applies too, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`. Changing this forces a new resource to be created.
   AssignmentArgs({
-    required pulumi.Output<String> lighthouseDefinitionId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> scope,
-  }) :
-      lighthouseDefinitionId = pulumi.Input.asInput<String>(lighthouseDefinitionId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.lighthouseDefinitionId,
+    this.name,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      lighthouseDefinitionId: pulumi.Output.create<String>(map['lighthouseDefinitionId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      lighthouseDefinitionId: (map['lighthouseDefinitionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

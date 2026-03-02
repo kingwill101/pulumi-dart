@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExadataInfrastructureDefinedFileSystemConfiguration {
   /// Whether the backup partition is enabled.
-  final bool backupPartitionEnabled;
+  final pulumi.Input<bool> backupPartitionEnabled;
   /// The minimum size of the file system in GB.
-  final int minimumSizeInGb;
+  final pulumi.Input<int> minimumSizeInGb;
   /// Mount path for the file system.
-  final String mountPoint;
+  final pulumi.Input<String> mountPoint;
   /// Whether the resizable is enabled.
-  final bool resizableEnabled;
+  final pulumi.Input<bool> resizableEnabled;
 
   /// Creates a new [GetExadataInfrastructureDefinedFileSystemConfiguration].
   /// [backupPartitionEnabled] Whether the backup partition is enabled.
@@ -34,10 +35,10 @@ class GetExadataInfrastructureDefinedFileSystemConfiguration {
 
   factory GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureDefinedFileSystemConfiguration(
-      backupPartitionEnabled: map['backupPartitionEnabled'] as bool,
-      minimumSizeInGb: map['minimumSizeInGb'] as int,
-      mountPoint: map['mountPoint'] as String,
-      resizableEnabled: map['resizableEnabled'] as bool,
+      backupPartitionEnabled: (map['backupPartitionEnabled'] as bool).input(),
+      minimumSizeInGb: (map['minimumSizeInGb'] as int).input(),
+      mountPoint: (map['mountPoint'] as String).input(),
+      resizableEnabled: (map['resizableEnabled'] as bool).input(),
     );
   }
 }

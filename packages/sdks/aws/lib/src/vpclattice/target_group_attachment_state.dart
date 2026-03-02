@@ -17,13 +17,10 @@ class TargetGroupAttachmentState {
   /// [target] The target.
   /// [targetGroupIdentifier] The ID or Amazon Resource Name (ARN) of the target group.
   TargetGroupAttachmentState({
-    pulumi.Output<String>? region,
-    pulumi.Output<TargetGroupAttachmentTarget>? target,
-    pulumi.Output<String>? targetGroupIdentifier,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asOptionalInput<TargetGroupAttachmentTarget>(target),
-      targetGroupIdentifier = pulumi.Input.asOptionalInput<String>(targetGroupIdentifier);
+    this.region,
+    this.target,
+    this.targetGroupIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class TargetGroupAttachmentState {
 
   factory TargetGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<TargetGroupAttachmentTarget>(TargetGroupAttachmentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
-      targetGroupIdentifier: map['targetGroupIdentifier'] == null ? null : pulumi.Output.create<String>(map['targetGroupIdentifier'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: map['target'] == null ? null : (TargetGroupAttachmentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      targetGroupIdentifier: map['targetGroupIdentifier'] == null ? null : (map['targetGroupIdentifier'] as String).input(),
     );
   }
 }

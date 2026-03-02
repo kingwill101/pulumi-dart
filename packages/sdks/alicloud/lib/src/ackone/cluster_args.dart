@@ -25,15 +25,11 @@ class ClusterArgs {
   /// [network] Cluster network information. See `network` below.
   /// [profile] Cluster attributes. Valid values: 'Default', 'XFlow'.
   ClusterArgs({
-    pulumi.Output<bool>? argocdEnabled,
-    pulumi.Output<String>? clusterName,
-    required pulumi.Output<ClusterNetwork> network,
-    pulumi.Output<String>? profile,
-  }) :
-      argocdEnabled = pulumi.Input.asOptionalInput<bool>(argocdEnabled),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      network = pulumi.Input.asInput<ClusterNetwork>(network),
-      profile = pulumi.Input.asOptionalInput<String>(profile);
+    this.argocdEnabled,
+    this.clusterName,
+    required this.network,
+    this.profile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      argocdEnabled: map['argocdEnabled'] == null ? null : pulumi.Output.create<bool>(map['argocdEnabled'] as bool),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      network: pulumi.Output.create<ClusterNetwork>(ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())),
-      profile: map['profile'] == null ? null : pulumi.Output.create<String>(map['profile'] as String),
+      argocdEnabled: map['argocdEnabled'] == null ? null : (map['argocdEnabled'] as bool).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      network: (ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
     );
   }
 }

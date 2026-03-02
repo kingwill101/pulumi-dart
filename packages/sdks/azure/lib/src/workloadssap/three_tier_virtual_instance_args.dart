@@ -48,31 +48,19 @@ class ThreeTierVirtualInstanceArgs {
   /// [tags] A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   /// [threeTierConfiguration] A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
   ThreeTierVirtualInstanceArgs({
-    required pulumi.Output<String> appLocation,
-    required pulumi.Output<String> environment,
-    pulumi.Output<ThreeTierVirtualInstanceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? managedResourcesNetworkAccessType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sapFqdn,
-    required pulumi.Output<String> sapProduct,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<ThreeTierVirtualInstanceThreeTierConfiguration> threeTierConfiguration,
-  }) :
-      appLocation = pulumi.Input.asInput<String>(appLocation),
-      environment = pulumi.Input.asInput<String>(environment),
-      identity = pulumi.Input.asOptionalInput<ThreeTierVirtualInstanceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      managedResourcesNetworkAccessType = pulumi.Input.asOptionalInput<String>(managedResourcesNetworkAccessType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sapFqdn = pulumi.Input.asInput<String>(sapFqdn),
-      sapProduct = pulumi.Input.asInput<String>(sapProduct),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      threeTierConfiguration = pulumi.Input.asInput<ThreeTierVirtualInstanceThreeTierConfiguration>(threeTierConfiguration);
+    required this.appLocation,
+    required this.environment,
+    this.identity,
+    this.location,
+    this.managedResourceGroupName,
+    this.managedResourcesNetworkAccessType,
+    this.name,
+    required this.resourceGroupName,
+    required this.sapFqdn,
+    required this.sapProduct,
+    this.tags,
+    required this.threeTierConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class ThreeTierVirtualInstanceArgs {
 
   factory ThreeTierVirtualInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceArgs(
-      appLocation: pulumi.Output.create<String>(map['appLocation'] as String),
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ThreeTierVirtualInstanceIdentity>(ThreeTierVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : pulumi.Output.create<String>(map['managedResourcesNetworkAccessType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapFqdn: pulumi.Output.create<String>(map['sapFqdn'] as String),
-      sapProduct: pulumi.Output.create<String>(map['sapProduct'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      threeTierConfiguration: pulumi.Output.create<ThreeTierVirtualInstanceThreeTierConfiguration>(ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((map['threeTierConfiguration'] as Map).cast<String, dynamic>())),
+      appLocation: (map['appLocation'] as String).input(),
+      environment: (map['environment'] as String).input(),
+      identity: map['identity'] == null ? null : (ThreeTierVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sapFqdn: (map['sapFqdn'] as String).input(),
+      sapProduct: (map['sapProduct'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      threeTierConfiguration: (ThreeTierVirtualInstanceThreeTierConfiguration.fromMap((map['threeTierConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

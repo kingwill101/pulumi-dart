@@ -20,13 +20,10 @@ class MultiRegionAccessPointArgs {
   /// [details] A configuration block containing details about the Multi-Region Access Point. See Details Configuration Block below for more details
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MultiRegionAccessPointArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<MultiRegionAccessPointDetails> details,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      details = pulumi.Input.asInput<MultiRegionAccessPointDetails>(details),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.accountId,
+    required this.details,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class MultiRegionAccessPointArgs {
 
   factory MultiRegionAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      details: pulumi.Output.create<MultiRegionAccessPointDetails>(MultiRegionAccessPointDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      details: (MultiRegionAccessPointDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

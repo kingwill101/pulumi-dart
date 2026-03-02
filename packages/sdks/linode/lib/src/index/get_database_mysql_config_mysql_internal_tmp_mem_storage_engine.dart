@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
-  final String description;
-  final List<String> enums;
-  final String example;
-  final bool requiresRestart;
-  final String type;
+  final pulumi.Input<String> description;
+  final pulumi.Input<List<String>> enums;
+  final pulumi.Input<String> example;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine].
   /// [description] Required.
@@ -34,11 +35,11 @@ class GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
 
   factory GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine(
-      description: map['description'] as String,
-      enums: (map['enums'] as List).cast<String>(),
-      example: map['example'] as String,
-      requiresRestart: map['requiresRestart'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      enums: ((map['enums'] as List).cast<String>()).input(),
+      example: (map['example'] as String).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

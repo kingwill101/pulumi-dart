@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EcsInstanceSetNetworkInterface {
   /// The description of ENI.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The name of ENI.
-  final String? networkInterfaceName;
+  final pulumi.Input<String>? networkInterfaceName;
   /// The primary private IP address of ENI.
-  final String? primaryIpAddress;
+  final pulumi.Input<String>? primaryIpAddress;
   /// The ID of the security group to which to assign secondary ENI.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The ID of the vSwitch to which to connect ENI.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [EcsInstanceSetNetworkInterface].
   /// [description] The description of ENI.
@@ -39,11 +40,11 @@ class EcsInstanceSetNetworkInterface {
 
   factory EcsInstanceSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EcsInstanceSetNetworkInterface(
-      description: map['description'] == null ? null : map['description'] as String,
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : map['networkInterfaceName'] as String,
-      primaryIpAddress: map['primaryIpAddress'] == null ? null : map['primaryIpAddress'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// App service native settings.
 class AppSvcNativeSettings {
   /// Gets or sets the isolation required.
-  final bool isolationRequired;
+  final pulumi.Input<bool> isolationRequired;
 
   /// Creates a new [AppSvcNativeSettings].
   /// [isolationRequired] Gets or sets the isolation required.
@@ -20,7 +21,7 @@ class AppSvcNativeSettings {
 
   factory AppSvcNativeSettings.fromMap(Map<String, dynamic> map) {
     return AppSvcNativeSettings(
-      isolationRequired: map['isolationRequired'] as bool,
+      isolationRequired: (map['isolationRequired'] as bool).input(),
     );
   }
 }

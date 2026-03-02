@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshKeysFilter {
-  final bool? all;
+  final pulumi.Input<bool>? all;
   /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
-  final String key;
-  final String? matchBy;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String>? matchBy;
   /// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetSshKeysFilter].
   /// [all] Optional.
@@ -32,10 +33,10 @@ class GetSshKeysFilter {
 
   factory GetSshKeysFilter.fromMap(Map<String, dynamic> map) {
     return GetSshKeysFilter(
-      all: map['all'] == null ? null : map['all'] as bool,
-      key: map['key'] as String,
-      matchBy: map['matchBy'] == null ? null : map['matchBy'] as String,
-      values: (map['values'] as List).cast<String>(),
+      all: map['all'] == null ? null : (map['all'] as bool).input(),
+      key: (map['key'] as String).input(),
+      matchBy: map['matchBy'] == null ? null : (map['matchBy'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

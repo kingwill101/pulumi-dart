@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
   /// NLB resource ARN.
-  final String? arn;
+  final pulumi.Input<String>? arn;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceNlbResource].
   /// [arn] NLB resource ARN.
@@ -19,7 +20,7 @@ class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
 
   factory ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResourceTargetResourceNlbResource(
-      arn: map['arn'] == null ? null : map['arn'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
     );
   }
 }

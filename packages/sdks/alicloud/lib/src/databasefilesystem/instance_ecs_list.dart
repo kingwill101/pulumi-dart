@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceEcsList {
   /// The ID of the ECS instance.
-  final String? ecsId;
+  final pulumi.Input<String>? ecsId;
 
   /// Creates a new [InstanceEcsList].
   /// [ecsId] The ID of the ECS instance.
@@ -19,7 +20,7 @@ class InstanceEcsList {
 
   factory InstanceEcsList.fromMap(Map<String, dynamic> map) {
     return InstanceEcsList(
-      ecsId: map['ecsId'] == null ? null : map['ecsId'] as String,
+      ecsId: map['ecsId'] == null ? null : (map['ecsId'] as String).input(),
     );
   }
 }

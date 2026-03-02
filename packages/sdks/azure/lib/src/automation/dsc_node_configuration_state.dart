@@ -21,17 +21,12 @@ class DscNodeConfigurationState {
   /// [name] Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
   DscNodeConfigurationState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<String>? configurationName,
-    pulumi.Output<String>? contentEmbedded,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      contentEmbedded = pulumi.Input.asOptionalInput<String>(contentEmbedded),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.automationAccountName,
+    this.configurationName,
+    this.contentEmbedded,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class DscNodeConfigurationState {
 
   factory DscNodeConfigurationState.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      contentEmbedded: map['contentEmbedded'] == null ? null : pulumi.Output.create<String>(map['contentEmbedded'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

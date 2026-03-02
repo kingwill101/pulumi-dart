@@ -18,15 +18,11 @@ class GetUserArgs {
   /// [name] Required.
   /// [project] Optional.
   GetUserArgs({
-    pulumi.Output<String>? host,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-  }) :
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.host,
+    required this.instance,
+    required this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

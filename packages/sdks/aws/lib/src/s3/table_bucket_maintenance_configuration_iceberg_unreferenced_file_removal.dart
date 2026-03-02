@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal_settings.dart';
 
 class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
   /// Settings object for unreferenced file removal.
   /// See `iceberg_unreferenced_file_removal.settings` below.
-  final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings settings;
+  final pulumi.Input<TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings> settings;
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval].
   /// [settings] Settings object for unreferenced file removal.
@@ -20,15 +21,15 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': settings.toMap(),
+      'settings': pulumi.Input.mapInputValue<TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval(
-      settings: TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      settings: (TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

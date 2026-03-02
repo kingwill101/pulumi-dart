@@ -116,29 +116,18 @@ class ReservationArgs {
   /// [secondaryLocation] The current location of the reservation's secondary replica. This field is only set for
   /// [slotCapacity] Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   ReservationArgs({
-    pulumi.Output<ReservationAutoscale>? autoscale,
-    pulumi.Output<int>? concurrency,
-    pulumi.Output<String>? edition,
-    pulumi.Output<bool>? ignoreIdleSlots,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maxSlots,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? scalingMode,
-    pulumi.Output<String>? secondaryLocation,
-    required pulumi.Output<int> slotCapacity,
-  }) :
-      autoscale = pulumi.Input.asOptionalInput<ReservationAutoscale>(autoscale),
-      concurrency = pulumi.Input.asOptionalInput<int>(concurrency),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      ignoreIdleSlots = pulumi.Input.asOptionalInput<bool>(ignoreIdleSlots),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxSlots = pulumi.Input.asOptionalInput<int>(maxSlots),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scalingMode = pulumi.Input.asOptionalInput<String>(scalingMode),
-      secondaryLocation = pulumi.Input.asOptionalInput<String>(secondaryLocation),
-      slotCapacity = pulumi.Input.asInput<int>(slotCapacity);
+    this.autoscale,
+    this.concurrency,
+    this.edition,
+    this.ignoreIdleSlots,
+    this.location,
+    this.maxSlots,
+    this.name,
+    this.project,
+    this.scalingMode,
+    this.secondaryLocation,
+    required this.slotCapacity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -158,17 +147,17 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      autoscale: map['autoscale'] == null ? null : pulumi.Output.create<ReservationAutoscale>(ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())),
-      concurrency: map['concurrency'] == null ? null : pulumi.Output.create<int>(map['concurrency'] as int),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : pulumi.Output.create<bool>(map['ignoreIdleSlots'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maxSlots: map['maxSlots'] == null ? null : pulumi.Output.create<int>(map['maxSlots'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scalingMode: map['scalingMode'] == null ? null : pulumi.Output.create<String>(map['scalingMode'] as String),
-      secondaryLocation: map['secondaryLocation'] == null ? null : pulumi.Output.create<String>(map['secondaryLocation'] as String),
-      slotCapacity: pulumi.Output.create<int>(map['slotCapacity'] as int),
+      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
+      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation'] as String).input(),
+      slotCapacity: (map['slotCapacity'] as int).input(),
     );
   }
 }

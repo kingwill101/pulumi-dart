@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'outbound_connection_connection_properties_cross_cluster_search.dart';
 
 class OutboundConnectionConnectionProperties {
   /// Configuration block for cross cluster search.
-  final OutboundConnectionConnectionPropertiesCrossClusterSearch? crossClusterSearch;
+  final pulumi.Input<OutboundConnectionConnectionPropertiesCrossClusterSearch>? crossClusterSearch;
   /// The endpoint of the remote domain, is only set when `connection_mode` is `VPC_ENDPOINT` and `accept_connection` is `TRUE`.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
 
   /// Creates a new [OutboundConnectionConnectionProperties].
   /// [crossClusterSearch] Configuration block for cross cluster search.
@@ -18,15 +19,15 @@ class OutboundConnectionConnectionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossClusterSearch': ?crossClusterSearch == null ? null : crossClusterSearch!.toMap(),
+      'crossClusterSearch': ?pulumi.Input.mapOptionalInputValue<OutboundConnectionConnectionPropertiesCrossClusterSearch, Map<String, dynamic>>(crossClusterSearch, (value) => value.toMap()),
       'endpoint': ?endpoint,
     };
   }
 
   factory OutboundConnectionConnectionProperties.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionConnectionProperties(
-      crossClusterSearch: map['crossClusterSearch'] == null ? null : OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap((map['crossClusterSearch'] as Map).cast<String, dynamic>()),
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
+      crossClusterSearch: map['crossClusterSearch'] == null ? null : (OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap((map['crossClusterSearch'] as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
     );
   }
 }

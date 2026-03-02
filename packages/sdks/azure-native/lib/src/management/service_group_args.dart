@@ -23,15 +23,11 @@ class ServiceGroupArgs {
   /// [serviceGroupName] ServiceGroup Name.
   /// [tags] The serviceGroup tags.
   ServiceGroupArgs({
-    pulumi.Output<String>? kind,
-    pulumi.Output<ServiceGroupProperties>? properties,
-    pulumi.Output<String>? serviceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      properties = pulumi.Input.asOptionalInput<ServiceGroupProperties>(properties),
-      serviceGroupName = pulumi.Input.asOptionalInput<String>(serviceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.kind,
+    this.properties,
+    this.serviceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ServiceGroupArgs {
 
   factory ServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupArgs(
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ServiceGroupProperties>(ServiceGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      serviceGroupName: map['serviceGroupName'] == null ? null : pulumi.Output.create<String>(map['serviceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      properties: map['properties'] == null ? null : (ServiceGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      serviceGroupName: map['serviceGroupName'] == null ? null : (map['serviceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

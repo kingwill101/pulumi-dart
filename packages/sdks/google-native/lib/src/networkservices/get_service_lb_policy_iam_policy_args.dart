@@ -18,15 +18,11 @@ class GetServiceLbPolicyIamPolicyArgs {
   /// [project] Optional.
   /// [serviceLbPolicyId] Required.
   GetServiceLbPolicyIamPolicyArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceLbPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceLbPolicyId = pulumi.Input.asInput<String>(serviceLbPolicyId);
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.serviceLbPolicyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetServiceLbPolicyIamPolicyArgs {
 
   factory GetServiceLbPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLbPolicyIamPolicyArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceLbPolicyId: pulumi.Output.create<String>(map['serviceLbPolicyId'] as String),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceLbPolicyId: (map['serviceLbPolicyId'] as String).input(),
     );
   }
 }

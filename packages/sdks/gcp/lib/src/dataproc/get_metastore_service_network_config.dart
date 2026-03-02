@@ -5,9 +5,9 @@ import 'get_metastore_service_network_config_consumer.dart';
 
 class GetMetastoreServiceNetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore instance.
-  final List<GetMetastoreServiceNetworkConfigConsumer> consumers;
+  final pulumi.Input<List<GetMetastoreServiceNetworkConfigConsumer>> consumers;
   /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  final bool customRoutesEnabled;
+  final pulumi.Input<bool> customRoutesEnabled;
 
   /// Creates a new [GetMetastoreServiceNetworkConfig].
   /// [consumers] The consumer-side network configuration for the Dataproc Metastore instance.
@@ -19,15 +19,15 @@ class GetMetastoreServiceNetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers': pulumi.Input.encodeList<GetMetastoreServiceNetworkConfigConsumer, Map<String, dynamic>>(consumers, (value) => value.toMap()),
+      'consumers': pulumi.Input.mapInputValue<List<GetMetastoreServiceNetworkConfigConsumer>, List<Map<String, dynamic>>>(consumers, (value) => pulumi.Input.encodeList<GetMetastoreServiceNetworkConfigConsumer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customRoutesEnabled': customRoutesEnabled,
     };
   }
 
   factory GetMetastoreServiceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceNetworkConfig(
-      consumers: pulumi.Input.decodeList<GetMetastoreServiceNetworkConfigConsumer>(map['consumers'], (value) => GetMetastoreServiceNetworkConfigConsumer.fromMap((value as Map).cast<String, dynamic>())),
-      customRoutesEnabled: map['customRoutesEnabled'] as bool,
+      consumers: (pulumi.Input.decodeList<GetMetastoreServiceNetworkConfigConsumer>(map['consumers'], (value) => GetMetastoreServiceNetworkConfigConsumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRoutesEnabled: (map['customRoutesEnabled'] as bool).input(),
     );
   }
 }

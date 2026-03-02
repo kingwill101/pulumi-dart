@@ -25,17 +25,12 @@ class DeviceSessionArgs {
   /// [project] Optional.
   /// [ttl] Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
   DeviceSessionArgs({
-    required pulumi.Output<AndroidDevice> androidDevice,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? ttl,
-  }) :
-      androidDevice = pulumi.Input.asInput<AndroidDevice>(androidDevice),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    required this.androidDevice,
+    this.expireTime,
+    this.name,
+    this.project,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class DeviceSessionArgs {
 
   factory DeviceSessionArgs.fromMap(Map<String, dynamic> map) {
     return DeviceSessionArgs(
-      androidDevice: pulumi.Output.create<AndroidDevice>(AndroidDevice.fromMap((map['androidDevice'] as Map).cast<String, dynamic>())),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      androidDevice: (AndroidDevice.fromMap((map['androidDevice'] as Map).cast<String, dynamic>())).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

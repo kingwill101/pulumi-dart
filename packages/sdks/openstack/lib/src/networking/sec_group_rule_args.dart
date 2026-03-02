@@ -91,31 +91,19 @@ class SecGroupRuleArgs {
   /// [securityGroupId] The security group id the rule should belong
   /// [tenantId] The owner of the security group. Required if admin
   SecGroupRuleArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> direction,
-    required pulumi.Output<String> ethertype,
-    pulumi.Output<int>? portRangeMax,
-    pulumi.Output<int>? portRangeMin,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? remoteAddressGroupId,
-    pulumi.Output<String>? remoteGroupId,
-    pulumi.Output<String>? remoteIpPrefix,
-    required pulumi.Output<String> securityGroupId,
-    pulumi.Output<String>? tenantId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      direction = pulumi.Input.asInput<String>(direction),
-      ethertype = pulumi.Input.asInput<String>(ethertype),
-      portRangeMax = pulumi.Input.asOptionalInput<int>(portRangeMax),
-      portRangeMin = pulumi.Input.asOptionalInput<int>(portRangeMin),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      remoteAddressGroupId = pulumi.Input.asOptionalInput<String>(remoteAddressGroupId),
-      remoteGroupId = pulumi.Input.asOptionalInput<String>(remoteGroupId),
-      remoteIpPrefix = pulumi.Input.asOptionalInput<String>(remoteIpPrefix),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.description,
+    required this.direction,
+    required this.ethertype,
+    this.portRangeMax,
+    this.portRangeMin,
+    this.protocol,
+    this.region,
+    this.remoteAddressGroupId,
+    this.remoteGroupId,
+    this.remoteIpPrefix,
+    required this.securityGroupId,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -136,18 +124,18 @@ class SecGroupRuleArgs {
 
   factory SecGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecGroupRuleArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      ethertype: pulumi.Output.create<String>(map['ethertype'] as String),
-      portRangeMax: map['portRangeMax'] == null ? null : pulumi.Output.create<int>(map['portRangeMax'] as int),
-      portRangeMin: map['portRangeMin'] == null ? null : pulumi.Output.create<int>(map['portRangeMin'] as int),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      remoteAddressGroupId: map['remoteAddressGroupId'] == null ? null : pulumi.Output.create<String>(map['remoteAddressGroupId'] as String),
-      remoteGroupId: map['remoteGroupId'] == null ? null : pulumi.Output.create<String>(map['remoteGroupId'] as String),
-      remoteIpPrefix: map['remoteIpPrefix'] == null ? null : pulumi.Output.create<String>(map['remoteIpPrefix'] as String),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      ethertype: (map['ethertype'] as String).input(),
+      portRangeMax: map['portRangeMax'] == null ? null : (map['portRangeMax'] as int).input(),
+      portRangeMin: map['portRangeMin'] == null ? null : (map['portRangeMin'] as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      remoteAddressGroupId: map['remoteAddressGroupId'] == null ? null : (map['remoteAddressGroupId'] as String).input(),
+      remoteGroupId: map['remoteGroupId'] == null ? null : (map['remoteGroupId'] as String).input(),
+      remoteIpPrefix: map['remoteIpPrefix'] == null ? null : (map['remoteIpPrefix'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

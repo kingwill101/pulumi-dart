@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The ETA (estimated time of arrival) for remediation
 class RemediationEta {
   /// ETA for remediation.
-  final String eta;
+  final pulumi.Input<String> eta;
   /// Justification for change of Eta.
-  final String justification;
+  final pulumi.Input<String> justification;
 
   /// Creates a new [RemediationEta].
   /// [eta] ETA for remediation.
@@ -25,8 +26,8 @@ class RemediationEta {
 
   factory RemediationEta.fromMap(Map<String, dynamic> map) {
     return RemediationEta(
-      eta: map['eta'] as String,
-      justification: map['justification'] as String,
+      eta: (map['eta'] as String).input(),
+      justification: (map['justification'] as String).input(),
     );
   }
 }

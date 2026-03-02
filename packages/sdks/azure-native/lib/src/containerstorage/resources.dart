@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'requests.dart';
 
 /// Resource Requests for the pool.
 class Resources {
   /// Requests for capacity for the pool.
-  final Requests? requests;
+  final pulumi.Input<Requests>? requests;
 
   /// Creates a new [Resources].
   /// [requests] Requests for capacity for the pool.
@@ -15,13 +16,13 @@ class Resources {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requests': ?requests == null ? null : requests!.toMap(),
+      'requests': ?pulumi.Input.mapOptionalInputValue<Requests, Map<String, dynamic>>(requests, (value) => value.toMap()),
     };
   }
 
   factory Resources.fromMap(Map<String, dynamic> map) {
     return Resources(
-      requests: map['requests'] == null ? null : Requests.fromMap((map['requests'] as Map).cast<String, dynamic>()),
+      requests: map['requests'] == null ? null : (Requests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

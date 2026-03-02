@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 class IssuanceModesResponse {
   /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
-  final bool allowConfigBasedIssuance;
+  final pulumi.Input<bool> allowConfigBasedIssuance;
   /// Optional. When true, allows callers to create Certificates by specifying a CSR.
-  final bool allowCsrBasedIssuance;
+  final pulumi.Input<bool> allowCsrBasedIssuance;
 
   /// Creates a new [IssuanceModesResponse].
   /// [allowConfigBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -25,8 +26,8 @@ class IssuanceModesResponse {
 
   factory IssuanceModesResponse.fromMap(Map<String, dynamic> map) {
     return IssuanceModesResponse(
-      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] as bool,
-      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] as bool,
+      allowConfigBasedIssuance: (map['allowConfigBasedIssuance'] as bool).input(),
+      allowCsrBasedIssuance: (map['allowCsrBasedIssuance'] as bool).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAppWebAppUnit {
-  final int provisioned;
+  final pulumi.Input<int> provisioned;
 
   /// Creates a new [WebAppWebAppUnit].
   /// [provisioned] Required.
@@ -18,7 +19,7 @@ class WebAppWebAppUnit {
 
   factory WebAppWebAppUnit.fromMap(Map<String, dynamic> map) {
     return WebAppWebAppUnit(
-      provisioned: map['provisioned'] as int,
+      provisioned: (map['provisioned'] as int).input(),
     );
   }
 }

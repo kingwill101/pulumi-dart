@@ -26,19 +26,13 @@ class KeyValueStoreState {
   /// [name] Unique name for your CloudFront KeyValueStore.
   /// [timeouts] Optional.
   KeyValueStoreState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<KeyValueStoreTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      timeouts = pulumi.Input.asOptionalInput<KeyValueStoreTimeouts>(timeouts);
+    this.arn,
+    this.comment,
+    this.etag,
+    this.lastModifiedTime,
+    this.name,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class KeyValueStoreState {
 
   factory KeyValueStoreState.fromMap(Map<String, dynamic> map) {
     return KeyValueStoreState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<KeyValueStoreTimeouts>(KeyValueStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (KeyValueStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

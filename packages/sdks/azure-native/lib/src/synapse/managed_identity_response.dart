@@ -6,13 +6,13 @@ import 'user_assigned_managed_identity_response.dart';
 /// The workspace managed identity
 class ManagedIdentityResponse {
   /// The principal ID of the workspace managed identity
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant ID of the workspace managed identity
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of managed identity for the workspace
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The user assigned managed identities.
-  final Map<String, UserAssignedManagedIdentityResponse>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedManagedIdentityResponse>>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [principalId] The principal ID of the workspace managed identity
@@ -31,16 +31,16 @@ class ManagedIdentityResponse {
       'principalId': principalId,
       'tenantId': tenantId,
       'type': ?type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserAssignedManagedIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedManagedIdentityResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedManagedIdentityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserAssignedManagedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedManagedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedManagedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedManagedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub BaiduCredential.
 class BaiduCredential {
   /// Gets or sets baidu Api Key.
-  final String baiduApiKey;
+  final pulumi.Input<String> baiduApiKey;
   /// Gets or sets baidu Endpoint.
-  final String baiduEndPoint;
+  final pulumi.Input<String> baiduEndPoint;
   /// Gets or sets baidu Secret Key
-  final String baiduSecretKey;
+  final pulumi.Input<String> baiduSecretKey;
 
   /// Creates a new [BaiduCredential].
   /// [baiduApiKey] Gets or sets baidu Api Key.
@@ -30,9 +31,9 @@ class BaiduCredential {
 
   factory BaiduCredential.fromMap(Map<String, dynamic> map) {
     return BaiduCredential(
-      baiduApiKey: map['baiduApiKey'] as String,
-      baiduEndPoint: map['baiduEndPoint'] as String,
-      baiduSecretKey: map['baiduSecretKey'] as String,
+      baiduApiKey: (map['baiduApiKey'] as String).input(),
+      baiduEndPoint: (map['baiduEndPoint'] as String).input(),
+      baiduSecretKey: (map['baiduSecretKey'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Api properties.
 class ApiPropertiesResponse {
   /// Interval in minutes for which the weather data for the api needs to be refreshed.
-  final int? apiFreshnessTimeInMinutes;
+  final pulumi.Input<int>? apiFreshnessTimeInMinutes;
 
   /// Creates a new [ApiPropertiesResponse].
   /// [apiFreshnessTimeInMinutes] Interval in minutes for which the weather data for the api needs to be refreshed.
@@ -20,7 +21,7 @@ class ApiPropertiesResponse {
 
   factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPropertiesResponse(
-      apiFreshnessTimeInMinutes: map['apiFreshnessTimeInMinutes'] == null ? null : map['apiFreshnessTimeInMinutes'] as int,
+      apiFreshnessTimeInMinutes: map['apiFreshnessTimeInMinutes'] == null ? null : (map['apiFreshnessTimeInMinutes'] as int).input(),
     );
   }
 }

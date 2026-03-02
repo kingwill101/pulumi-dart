@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration to set up an ICA.
 class CertificateAuthorityConfiguration {
   /// Crypto type: ECC.
-  final String keyType;
+  final pulumi.Input<String> keyType;
 
   /// Creates a new [CertificateAuthorityConfiguration].
   /// [keyType] Crypto type: ECC.
@@ -20,7 +21,7 @@ class CertificateAuthorityConfiguration {
 
   factory CertificateAuthorityConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityConfiguration(
-      keyType: map['keyType'] as String,
+      keyType: (map['keyType'] as String).input(),
     );
   }
 }

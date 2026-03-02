@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainClusterConfigColdStorageOption {
   /// Enabled disabled toggle for off-peak update window
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetDomainClusterConfigColdStorageOption].
   /// [enabled] Enabled disabled toggle for off-peak update window
@@ -19,7 +20,7 @@ class GetDomainClusterConfigColdStorageOption {
 
   factory GetDomainClusterConfigColdStorageOption.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigColdStorageOption(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

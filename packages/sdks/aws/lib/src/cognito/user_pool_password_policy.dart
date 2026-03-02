@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolPasswordPolicy {
   /// Minimum length of the password policy that you have set.
-  final int? minimumLength;
+  final pulumi.Input<int>? minimumLength;
   /// Number of previous passwords that you want Amazon Cognito to restrict each user from reusing. Users can't set a password that matches any of number of previous passwords specified by this argument. A value of 0 means that password history is not enforced. Valid values are between 0 and 24.
   ///
   /// **Note:** This argument requires advanced security features to be active in the user pool.
-  final int? passwordHistorySize;
+  final pulumi.Input<int>? passwordHistorySize;
   /// Whether you have required users to use at least one lowercase letter in their password.
-  final bool? requireLowercase;
+  final pulumi.Input<bool>? requireLowercase;
   /// Whether you have required users to use at least one number in their password.
-  final bool? requireNumbers;
+  final pulumi.Input<bool>? requireNumbers;
   /// Whether you have required users to use at least one symbol in their password.
-  final bool? requireSymbols;
+  final pulumi.Input<bool>? requireSymbols;
   /// Whether you have required users to use at least one uppercase letter in their password.
-  final bool? requireUppercase;
+  final pulumi.Input<bool>? requireUppercase;
   /// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
-  final int? temporaryPasswordValidityDays;
+  final pulumi.Input<int>? temporaryPasswordValidityDays;
 
   /// Creates a new [UserPoolPasswordPolicy].
   /// [minimumLength] Minimum length of the password policy that you have set.
@@ -51,13 +52,13 @@ class UserPoolPasswordPolicy {
 
   factory UserPoolPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolPasswordPolicy(
-      minimumLength: map['minimumLength'] == null ? null : map['minimumLength'] as int,
-      passwordHistorySize: map['passwordHistorySize'] == null ? null : map['passwordHistorySize'] as int,
-      requireLowercase: map['requireLowercase'] == null ? null : map['requireLowercase'] as bool,
-      requireNumbers: map['requireNumbers'] == null ? null : map['requireNumbers'] as bool,
-      requireSymbols: map['requireSymbols'] == null ? null : map['requireSymbols'] as bool,
-      requireUppercase: map['requireUppercase'] == null ? null : map['requireUppercase'] as bool,
-      temporaryPasswordValidityDays: map['temporaryPasswordValidityDays'] == null ? null : map['temporaryPasswordValidityDays'] as int,
+      minimumLength: map['minimumLength'] == null ? null : (map['minimumLength'] as int).input(),
+      passwordHistorySize: map['passwordHistorySize'] == null ? null : (map['passwordHistorySize'] as int).input(),
+      requireLowercase: map['requireLowercase'] == null ? null : (map['requireLowercase'] as bool).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
+      requireUppercase: map['requireUppercase'] == null ? null : (map['requireUppercase'] as bool).input(),
+      temporaryPasswordValidityDays: map['temporaryPasswordValidityDays'] == null ? null : (map['temporaryPasswordValidityDays'] as int).input(),
     );
   }
 }

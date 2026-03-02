@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'az_stack_hcicluster_properties_response.dart';
 
 /// AzStackHCI fabric model custom properties.
 class AzStackHCIFabricModelCustomPropertiesResponse {
   /// Gets or sets the Appliance name.
-  final List<String> applianceName;
+  final pulumi.Input<List<String>> applianceName;
   /// Gets or sets the ARM Id of the AzStackHCI site.
-  final String azStackHciSiteId;
+  final pulumi.Input<String> azStackHciSiteId;
   /// AzStackHCI cluster properties.
-  final AzStackHCIClusterPropertiesResponse cluster;
+  final pulumi.Input<AzStackHCIClusterPropertiesResponse> cluster;
   /// Gets or sets the fabric container Id.
-  final String fabricContainerId;
+  final pulumi.Input<String> fabricContainerId;
   /// Gets or sets the fabric resource Id.
-  final String fabricResourceId;
+  final pulumi.Input<String> fabricResourceId;
   /// Gets or sets the instance type.
   /// Expected value is 'AzStackHCI'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Gets or sets the migration hub Uri.
-  final String migrationHubUri;
+  final pulumi.Input<String> migrationHubUri;
   /// Gets or sets the Migration solution ARM Id.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
 
   /// Creates a new [AzStackHCIFabricModelCustomPropertiesResponse].
   /// [applianceName] Gets or sets the Appliance name.
@@ -46,7 +47,7 @@ class AzStackHCIFabricModelCustomPropertiesResponse {
     return <String, dynamic>{
       'applianceName': applianceName,
       'azStackHciSiteId': azStackHciSiteId,
-      'cluster': cluster.toMap(),
+      'cluster': pulumi.Input.mapInputValue<AzStackHCIClusterPropertiesResponse, Map<String, dynamic>>(cluster, (value) => value.toMap()),
       'fabricContainerId': fabricContainerId,
       'fabricResourceId': fabricResourceId,
       'instanceType': instanceType,
@@ -57,14 +58,14 @@ class AzStackHCIFabricModelCustomPropertiesResponse {
 
   factory AzStackHCIFabricModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzStackHCIFabricModelCustomPropertiesResponse(
-      applianceName: (map['applianceName'] as List).cast<String>(),
-      azStackHciSiteId: map['azStackHciSiteId'] as String,
-      cluster: AzStackHCIClusterPropertiesResponse.fromMap((map['cluster'] as Map).cast<String, dynamic>()),
-      fabricContainerId: map['fabricContainerId'] as String,
-      fabricResourceId: map['fabricResourceId'] as String,
-      instanceType: map['instanceType'] as String,
-      migrationHubUri: map['migrationHubUri'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
+      applianceName: ((map['applianceName'] as List).cast<String>()).input(),
+      azStackHciSiteId: (map['azStackHciSiteId'] as String).input(),
+      cluster: (AzStackHCIClusterPropertiesResponse.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
+      fabricContainerId: (map['fabricContainerId'] as String).input(),
+      fabricResourceId: (map['fabricResourceId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      migrationHubUri: (map['migrationHubUri'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
     );
   }
 }

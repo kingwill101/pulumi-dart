@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to an AgriService data connector.
 class DataConnectorCredentialsResponse {
   /// Client Id associated with the provider, if type of credentials is OAuthClientCredentials.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Name of the key vault key.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// Uri of the key vault
-  final String? keyVaultUri;
+  final pulumi.Input<String>? keyVaultUri;
   /// Version of the key vault key.
-  final String? keyVersion;
+  final pulumi.Input<String>? keyVersion;
   /// Type of credential.
-  final String? kind;
+  final pulumi.Input<String>? kind;
 
   /// Creates a new [DataConnectorCredentialsResponse].
   /// [clientId] Client Id associated with the provider, if type of credentials is OAuthClientCredentials.
@@ -40,11 +41,11 @@ class DataConnectorCredentialsResponse {
 
   factory DataConnectorCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return DataConnectorCredentialsResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
-      keyVersion: map['keyVersion'] == null ? null : map['keyVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
     );
   }
 }

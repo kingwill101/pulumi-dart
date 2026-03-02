@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for a custom domain.
 class DomainConfig {
   /// Immutable. Domain used by Workstations for HTTP ingress.
-  final String? domain;
+  final pulumi.Input<String>? domain;
 
   /// Creates a new [DomainConfig].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.
@@ -20,7 +21,7 @@ class DomainConfig {
 
   factory DomainConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfig(
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
     );
   }
 }

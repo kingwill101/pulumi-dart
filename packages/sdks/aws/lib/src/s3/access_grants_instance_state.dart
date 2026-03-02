@@ -31,23 +31,15 @@ class AccessGrantsInstanceState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AccessGrantsInstanceState({
-    pulumi.Output<String>? accessGrantsInstanceArn,
-    pulumi.Output<String>? accessGrantsInstanceId,
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? identityCenterApplicationArn,
-    pulumi.Output<String>? identityCenterArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accessGrantsInstanceArn = pulumi.Input.asOptionalInput<String>(accessGrantsInstanceArn),
-      accessGrantsInstanceId = pulumi.Input.asOptionalInput<String>(accessGrantsInstanceId),
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      identityCenterApplicationArn = pulumi.Input.asOptionalInput<String>(identityCenterApplicationArn),
-      identityCenterArn = pulumi.Input.asOptionalInput<String>(identityCenterArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accessGrantsInstanceArn,
+    this.accessGrantsInstanceId,
+    this.accountId,
+    this.identityCenterApplicationArn,
+    this.identityCenterArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class AccessGrantsInstanceState {
 
   factory AccessGrantsInstanceState.fromMap(Map<String, dynamic> map) {
     return AccessGrantsInstanceState(
-      accessGrantsInstanceArn: map['accessGrantsInstanceArn'] == null ? null : pulumi.Output.create<String>(map['accessGrantsInstanceArn'] as String),
-      accessGrantsInstanceId: map['accessGrantsInstanceId'] == null ? null : pulumi.Output.create<String>(map['accessGrantsInstanceId'] as String),
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : pulumi.Output.create<String>(map['identityCenterApplicationArn'] as String),
-      identityCenterArn: map['identityCenterArn'] == null ? null : pulumi.Output.create<String>(map['identityCenterArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accessGrantsInstanceArn: map['accessGrantsInstanceArn'] == null ? null : (map['accessGrantsInstanceArn'] as String).input(),
+      accessGrantsInstanceId: map['accessGrantsInstanceId'] == null ? null : (map['accessGrantsInstanceId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : (map['identityCenterApplicationArn'] as String).input(),
+      identityCenterArn: map['identityCenterArn'] == null ? null : (map['identityCenterArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

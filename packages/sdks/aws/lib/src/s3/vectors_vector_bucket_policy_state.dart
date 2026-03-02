@@ -18,13 +18,10 @@ class VectorsVectorBucketPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vectorBucketArn] ARN of the vector bucket.
   VectorsVectorBucketPolicyState({
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vectorBucketArn,
-  }) :
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vectorBucketArn = pulumi.Input.asOptionalInput<String>(vectorBucketArn);
+    this.policy,
+    this.region,
+    this.vectorBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class VectorsVectorBucketPolicyState {
 
   factory VectorsVectorBucketPolicyState.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketPolicyState(
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : pulumi.Output.create<String>(map['vectorBucketArn'] as String),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vectorBucketArn: map['vectorBucketArn'] == null ? null : (map['vectorBucketArn'] as String).input(),
     );
   }
 }

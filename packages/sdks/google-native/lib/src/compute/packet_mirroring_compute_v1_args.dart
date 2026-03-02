@@ -46,29 +46,18 @@ class PacketMirroringComputeV1Args {
   /// [region] Required.
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   PacketMirroringComputeV1Args({
-    pulumi.Output<PacketMirroringForwardingRuleInfoComputeV1>? collectorIlb,
-    pulumi.Output<String>? description,
-    pulumi.Output<PacketMirroringEnableComputeV1>? enable,
-    pulumi.Output<PacketMirroringFilterComputeV1>? filter,
-    pulumi.Output<PacketMirroringMirroredResourceInfoComputeV1>? mirroredResources,
-    pulumi.Output<String>? name,
-    pulumi.Output<PacketMirroringNetworkInfoComputeV1>? network,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-  }) :
-      collectorIlb = pulumi.Input.asOptionalInput<PacketMirroringForwardingRuleInfoComputeV1>(collectorIlb),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enable = pulumi.Input.asOptionalInput<PacketMirroringEnableComputeV1>(enable),
-      filter = pulumi.Input.asOptionalInput<PacketMirroringFilterComputeV1>(filter),
-      mirroredResources = pulumi.Input.asOptionalInput<PacketMirroringMirroredResourceInfoComputeV1>(mirroredResources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<PacketMirroringNetworkInfoComputeV1>(network),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.collectorIlb,
+    this.description,
+    this.enable,
+    this.filter,
+    this.mirroredResources,
+    this.name,
+    this.network,
+    this.priority,
+    this.project,
+    required this.region,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class PacketMirroringComputeV1Args {
 
   factory PacketMirroringComputeV1Args.fromMap(Map<String, dynamic> map) {
     return PacketMirroringComputeV1Args(
-      collectorIlb: map['collectorIlb'] == null ? null : pulumi.Output.create<PacketMirroringForwardingRuleInfoComputeV1>(PacketMirroringForwardingRuleInfoComputeV1.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enable: map['enable'] == null ? null : pulumi.Output.create<PacketMirroringEnableComputeV1>(PacketMirroringEnableComputeV1.fromValue(map['enable'] as String)),
-      filter: map['filter'] == null ? null : pulumi.Output.create<PacketMirroringFilterComputeV1>(PacketMirroringFilterComputeV1.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      mirroredResources: map['mirroredResources'] == null ? null : pulumi.Output.create<PacketMirroringMirroredResourceInfoComputeV1>(PacketMirroringMirroredResourceInfoComputeV1.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<PacketMirroringNetworkInfoComputeV1>(PacketMirroringNetworkInfoComputeV1.fromMap((map['network'] as Map).cast<String, dynamic>())),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      collectorIlb: map['collectorIlb'] == null ? null : (PacketMirroringForwardingRuleInfoComputeV1.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enable: map['enable'] == null ? null : (PacketMirroringEnableComputeV1.fromValue(map['enable'] as String)).input(),
+      filter: map['filter'] == null ? null : (PacketMirroringFilterComputeV1.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      mirroredResources: map['mirroredResources'] == null ? null : (PacketMirroringMirroredResourceInfoComputeV1.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (PacketMirroringNetworkInfoComputeV1.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

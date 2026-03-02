@@ -5,11 +5,11 @@ import 'listener_rule_action_jwt_validation_additional_claim.dart';
 
 class ListenerRuleActionJwtValidation {
   /// Repeatable configuration block for additional claims to validate.
-  final List<ListenerRuleActionJwtValidationAdditionalClaim>? additionalClaims;
+  final pulumi.Input<List<ListenerRuleActionJwtValidationAdditionalClaim>>? additionalClaims;
   /// Issuer of the JWT.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// JSON Web Key Set (JWKS) endpoint. This endpoint contains JSON Web Keys (JWK) that are used to validate signatures from the provider. This must be a full URL, including the HTTPS protocol, the domain, and the path.
-  final String jwksEndpoint;
+  final pulumi.Input<String> jwksEndpoint;
 
   /// Creates a new [ListenerRuleActionJwtValidation].
   /// [additionalClaims] Repeatable configuration block for additional claims to validate.
@@ -23,7 +23,7 @@ class ListenerRuleActionJwtValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalClaims': ?additionalClaims == null ? null : pulumi.Input.encodeList<ListenerRuleActionJwtValidationAdditionalClaim, Map<String, dynamic>>(additionalClaims!, (value) => value.toMap()),
+      'additionalClaims': ?pulumi.Input.mapOptionalInputValue<List<ListenerRuleActionJwtValidationAdditionalClaim>, List<Map<String, dynamic>>>(additionalClaims, (value) => pulumi.Input.encodeList<ListenerRuleActionJwtValidationAdditionalClaim, Map<String, dynamic>>(value, (value) => value.toMap())),
       'issuer': issuer,
       'jwksEndpoint': jwksEndpoint,
     };
@@ -31,9 +31,9 @@ class ListenerRuleActionJwtValidation {
 
   factory ListenerRuleActionJwtValidation.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionJwtValidation(
-      additionalClaims: map['additionalClaims'] == null ? null : pulumi.Input.decodeList<ListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => ListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>())),
-      issuer: map['issuer'] as String,
-      jwksEndpoint: map['jwksEndpoint'] as String,
+      additionalClaims: map['additionalClaims'] == null ? null : (pulumi.Input.decodeList<ListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => ListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      issuer: (map['issuer'] as String).input(),
+      jwksEndpoint: (map['jwksEndpoint'] as String).input(),
     );
   }
 }

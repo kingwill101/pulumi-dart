@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBootstrapScriptNodeSelector {
-  final String? nodeGroupId;
+  final pulumi.Input<String>? nodeGroupId;
   /// The bootstrap scripts execution target node group ids.
-  final List<String>? nodeGroupIds;
-  final String? nodeGroupName;
+  final pulumi.Input<List<String>>? nodeGroupIds;
+  final pulumi.Input<String>? nodeGroupName;
   /// The bootstrap scripts execution target node group names.
-  final List<String>? nodeGroupNames;
+  final pulumi.Input<List<String>>? nodeGroupNames;
   /// The bootstrap scripts execution target node group types.
-  final List<String>? nodeGroupTypes;
+  final pulumi.Input<List<String>>? nodeGroupTypes;
   /// The bootstrap scripts execution target node names.
-  final List<String>? nodeNames;
+  final pulumi.Input<List<String>>? nodeNames;
   /// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-  final String nodeSelectType;
+  final pulumi.Input<String> nodeSelectType;
 
   /// Creates a new [ClusterBootstrapScriptNodeSelector].
   /// [nodeGroupId] Optional.
@@ -47,13 +48,13 @@ class ClusterBootstrapScriptNodeSelector {
 
   factory ClusterBootstrapScriptNodeSelector.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapScriptNodeSelector(
-      nodeGroupId: map['nodeGroupId'] == null ? null : map['nodeGroupId'] as String,
-      nodeGroupIds: map['nodeGroupIds'] == null ? null : (map['nodeGroupIds'] as List).cast<String>(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : map['nodeGroupName'] as String,
-      nodeGroupNames: map['nodeGroupNames'] == null ? null : (map['nodeGroupNames'] as List).cast<String>(),
-      nodeGroupTypes: map['nodeGroupTypes'] == null ? null : (map['nodeGroupTypes'] as List).cast<String>(),
-      nodeNames: map['nodeNames'] == null ? null : (map['nodeNames'] as List).cast<String>(),
-      nodeSelectType: map['nodeSelectType'] as String,
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds'] as List).cast<String>()).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
+      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames'] as List).cast<String>()).input(),
+      nodeGroupTypes: map['nodeGroupTypes'] == null ? null : ((map['nodeGroupTypes'] as List).cast<String>()).input(),
+      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames'] as List).cast<String>()).input(),
+      nodeSelectType: (map['nodeSelectType'] as String).input(),
     );
   }
 }

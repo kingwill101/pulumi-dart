@@ -22,15 +22,11 @@ class AnnotationSpecSetArgs {
   /// [displayName] The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   /// [project] Optional.
   AnnotationSpecSetArgs({
-    required pulumi.Output<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>> annotationSpecs,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? project,
-  }) :
-      annotationSpecs = pulumi.Input.asInput<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>>(annotationSpecs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.annotationSpecs,
+    this.description,
+    required this.displayName,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AnnotationSpecSetArgs {
 
   factory AnnotationSpecSetArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationSpecSetArgs(
-      annotationSpecs: pulumi.Output.create<List<GoogleCloudDatalabelingV1beta1AnnotationSpec>>(pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec>(map['annotationSpecs'], (value) => GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotationSpecs: (pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec>(map['annotationSpecs'], (value) => GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

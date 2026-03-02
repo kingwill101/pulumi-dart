@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_slices_slice.dart';
 
 class DomainOsNvRamSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final List<DomainOsNvRamSourceSlicesSlice>? slices;
+  final pulumi.Input<List<DomainOsNvRamSourceSlicesSlice>>? slices;
 
   /// Creates a new [DomainOsNvRamSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
@@ -15,13 +15,13 @@ class DomainOsNvRamSourceSlices {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'slices': ?slices == null ? null : pulumi.Input.encodeList<DomainOsNvRamSourceSlicesSlice, Map<String, dynamic>>(slices!, (value) => value.toMap()),
+      'slices': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceSlicesSlice>, List<Map<String, dynamic>>>(slices, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceSlicesSlice, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsNvRamSourceSlices.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceSlices(
-      slices: map['slices'] == null ? null : pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(map['slices'], (value) => DomainOsNvRamSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>())),
+      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(map['slices'], (value) => DomainOsNvRamSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

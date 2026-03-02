@@ -16,11 +16,9 @@ class GetCustomResourceProviderArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceProviderName] The name of the resource provider.
   GetCustomResourceProviderArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceProviderName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceProviderName = pulumi.Input.asInput<String>(resourceProviderName);
+    required this.resourceGroupName,
+    required this.resourceProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCustomResourceProviderArgs {
 
   factory GetCustomResourceProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomResourceProviderArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceProviderName: pulumi.Output.create<String>(map['resourceProviderName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceProviderName: (map['resourceProviderName'] as String).input(),
     );
   }
 }

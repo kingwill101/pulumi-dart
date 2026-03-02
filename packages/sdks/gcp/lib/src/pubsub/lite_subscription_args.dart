@@ -31,19 +31,13 @@ class LiteSubscriptionArgs {
   /// [topic] A reference to a Topic resource.
   /// [zone] The zone of the pubsub lite topic.
   LiteSubscriptionArgs({
-    pulumi.Output<LiteSubscriptionDeliveryConfig>? deliveryConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> topic,
-    pulumi.Output<String>? zone,
-  }) :
-      deliveryConfig = pulumi.Input.asOptionalInput<LiteSubscriptionDeliveryConfig>(deliveryConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      topic = pulumi.Input.asInput<String>(topic),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.deliveryConfig,
+    this.name,
+    this.project,
+    this.region,
+    required this.topic,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class LiteSubscriptionArgs {
 
   factory LiteSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionArgs(
-      deliveryConfig: map['deliveryConfig'] == null ? null : pulumi.Output.create<LiteSubscriptionDeliveryConfig>(LiteSubscriptionDeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      topic: pulumi.Output.create<String>(map['topic'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      deliveryConfig: map['deliveryConfig'] == null ? null : (LiteSubscriptionDeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      topic: (map['topic'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

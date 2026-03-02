@@ -46,27 +46,17 @@ class CycleTaskArgs {
   /// [taskName] The task name.
   /// [taskType] The task type.
   CycleTaskArgs({
-    required pulumi.Output<int> enable,
-    required pulumi.Output<int> firstDateStr,
-    required pulumi.Output<int> intervalPeriod,
-    pulumi.Output<String>? param,
-    required pulumi.Output<String> periodUnit,
-    pulumi.Output<String>? source,
-    required pulumi.Output<int> targetEndTime,
-    required pulumi.Output<int> targetStartTime,
-    required pulumi.Output<String> taskName,
-    required pulumi.Output<String> taskType,
-  }) :
-      enable = pulumi.Input.asInput<int>(enable),
-      firstDateStr = pulumi.Input.asInput<int>(firstDateStr),
-      intervalPeriod = pulumi.Input.asInput<int>(intervalPeriod),
-      param = pulumi.Input.asOptionalInput<String>(param),
-      periodUnit = pulumi.Input.asInput<String>(periodUnit),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      targetEndTime = pulumi.Input.asInput<int>(targetEndTime),
-      targetStartTime = pulumi.Input.asInput<int>(targetStartTime),
-      taskName = pulumi.Input.asInput<String>(taskName),
-      taskType = pulumi.Input.asInput<String>(taskType);
+    required this.enable,
+    required this.firstDateStr,
+    required this.intervalPeriod,
+    this.param,
+    required this.periodUnit,
+    this.source,
+    required this.targetEndTime,
+    required this.targetStartTime,
+    required this.taskName,
+    required this.taskType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class CycleTaskArgs {
 
   factory CycleTaskArgs.fromMap(Map<String, dynamic> map) {
     return CycleTaskArgs(
-      enable: pulumi.Output.create<int>(map['enable'] as int),
-      firstDateStr: pulumi.Output.create<int>(map['firstDateStr'] as int),
-      intervalPeriod: pulumi.Output.create<int>(map['intervalPeriod'] as int),
-      param: map['param'] == null ? null : pulumi.Output.create<String>(map['param'] as String),
-      periodUnit: pulumi.Output.create<String>(map['periodUnit'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      targetEndTime: pulumi.Output.create<int>(map['targetEndTime'] as int),
-      targetStartTime: pulumi.Output.create<int>(map['targetStartTime'] as int),
-      taskName: pulumi.Output.create<String>(map['taskName'] as String),
-      taskType: pulumi.Output.create<String>(map['taskType'] as String),
+      enable: (map['enable'] as int).input(),
+      firstDateStr: (map['firstDateStr'] as int).input(),
+      intervalPeriod: (map['intervalPeriod'] as int).input(),
+      param: map['param'] == null ? null : (map['param'] as String).input(),
+      periodUnit: (map['periodUnit'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      targetEndTime: (map['targetEndTime'] as int).input(),
+      targetStartTime: (map['targetStartTime'] as int).input(),
+      taskName: (map['taskName'] as String).input(),
+      taskType: (map['taskType'] as String).input(),
     );
   }
 }

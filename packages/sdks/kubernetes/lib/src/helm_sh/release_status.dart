@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReleaseStatus {
   /// The version number of the application being deployed.
-  final String? appVersion;
+  final pulumi.Input<String>? appVersion;
   /// The name of the chart.
-  final String? chart;
+  final pulumi.Input<String>? chart;
   /// Name is the name of the release.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Namespace is the kubernetes namespace of the release.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Version is an int32 which represents the version of the release.
-  final int? revision;
+  final pulumi.Input<int>? revision;
   /// Status of the release.
-  final String status;
+  final pulumi.Input<String> status;
   /// A SemVer 2 conformant version string of the chart.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ReleaseStatus].
   /// [appVersion] The version number of the application being deployed.
@@ -49,13 +50,13 @@ class ReleaseStatus {
 
   factory ReleaseStatus.fromMap(Map<String, dynamic> map) {
     return ReleaseStatus(
-      appVersion: map['appVersion'] == null ? null : map['appVersion'] as String,
-      chart: map['chart'] == null ? null : map['chart'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as int,
-      status: map['status'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      appVersion: map['appVersion'] == null ? null : (map['appVersion'] as String).input(),
+      chart: map['chart'] == null ? null : (map['chart'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      status: (map['status'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

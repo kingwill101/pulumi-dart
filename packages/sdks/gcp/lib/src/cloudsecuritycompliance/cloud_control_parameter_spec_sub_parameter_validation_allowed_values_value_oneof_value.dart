@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_control_parameter_spec_sub_parameter_validation_allowed_values_value_oneof_value_parameter_value.dart';
 
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue {
   /// The name of the parameter.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of the parameter.
   /// Structure is documented below.
-  final CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue? parameterValue;
+  final pulumi.Input<CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue>? parameterValue;
 
   /// Creates a new [CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue].
   /// [name] The name of the parameter.
@@ -20,14 +21,14 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'parameterValue': ?parameterValue == null ? null : parameterValue!.toMap(),
+      'parameterValue': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue, Map<String, dynamic>>(parameterValue, (value) => value.toMap()),
     };
   }
 
   factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue(
-      name: map['name'] == null ? null : map['name'] as String,
-      parameterValue: map['parameterValue'] == null ? null : CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

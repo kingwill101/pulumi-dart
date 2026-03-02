@@ -16,11 +16,9 @@ class OutboundFirewallRuleArgs {
   /// [name] The name of the outbound firewall rule. This should be a FQDN. Changing this forces a new resource to be created.
   /// [serverId] The resource ID of the SQL Server on which to create the Outbound Firewall Rule. Changing this forces a new resource to be created.
   OutboundFirewallRuleArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serverId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    this.name,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class OutboundFirewallRuleArgs {
 
   factory OutboundFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundFirewallRuleArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

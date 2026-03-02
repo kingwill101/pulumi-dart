@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for fine-grained cost management feature.
 class CostManagementConfig {
   /// Whether the feature is enabled or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [CostManagementConfig].
   /// [enabled] Whether the feature is enabled or not.
@@ -20,7 +21,7 @@ class CostManagementConfig {
 
   factory CostManagementConfig.fromMap(Map<String, dynamic> map) {
     return CostManagementConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

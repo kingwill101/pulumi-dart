@@ -22,15 +22,11 @@ class CustomDomainAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] ARN of the App Runner service.
   CustomDomainAssociationArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<bool>? enableWwwSubdomain,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceArn,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      enableWwwSubdomain = pulumi.Input.asOptionalInput<bool>(enableWwwSubdomain),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asInput<String>(serviceArn);
+    required this.domainName,
+    this.enableWwwSubdomain,
+    this.region,
+    required this.serviceArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class CustomDomainAssociationArgs {
 
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : pulumi.Output.create<bool>(map['enableWwwSubdomain'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: pulumi.Output.create<String>(map['serviceArn'] as String),
+      domainName: (map['domainName'] as String).input(),
+      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : (map['enableWwwSubdomain'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: (map['serviceArn'] as String).input(),
     );
   }
 }

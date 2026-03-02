@@ -28,15 +28,11 @@ class HostProjectRegistrationArgs {
   /// [location] Part of `parent`. See documentation of `projectsId`.
   /// [project] The ID of the project in which the resource belongs.
   HostProjectRegistrationArgs({
-    required pulumi.Output<String> gcpProject,
-    required pulumi.Output<String> hostProjectRegistrationId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      gcpProject = pulumi.Input.asInput<String>(gcpProject),
-      hostProjectRegistrationId = pulumi.Input.asInput<String>(hostProjectRegistrationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.gcpProject,
+    required this.hostProjectRegistrationId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class HostProjectRegistrationArgs {
 
   factory HostProjectRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return HostProjectRegistrationArgs(
-      gcpProject: pulumi.Output.create<String>(map['gcpProject'] as String),
-      hostProjectRegistrationId: pulumi.Output.create<String>(map['hostProjectRegistrationId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      gcpProject: (map['gcpProject'] as String).input(),
+      hostProjectRegistrationId: (map['hostProjectRegistrationId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

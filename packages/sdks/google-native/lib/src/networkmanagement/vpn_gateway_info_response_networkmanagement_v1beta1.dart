@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Compute Engine VPN gateway.
 class VpnGatewayInfoResponseNetworkmanagementV1beta1 {
   /// Name of a VPN gateway.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// IP address of the VPN gateway.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// URI of a Compute Engine network where the VPN gateway is configured.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// Name of a Google Cloud region where this VPN gateway is configured.
-  final String region;
+  final pulumi.Input<String> region;
   /// URI of a VPN gateway.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
-  final String vpnTunnelUri;
+  final pulumi.Input<String> vpnTunnelUri;
 
   /// Creates a new [VpnGatewayInfoResponseNetworkmanagementV1beta1].
   /// [displayName] Name of a VPN gateway.
@@ -45,12 +46,12 @@ class VpnGatewayInfoResponseNetworkmanagementV1beta1 {
 
   factory VpnGatewayInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return VpnGatewayInfoResponseNetworkmanagementV1beta1(
-      displayName: map['displayName'] as String,
-      ipAddress: map['ipAddress'] as String,
-      networkUri: map['networkUri'] as String,
-      region: map['region'] as String,
-      uri: map['uri'] as String,
-      vpnTunnelUri: map['vpnTunnelUri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      region: (map['region'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      vpnTunnelUri: (map['vpnTunnelUri'] as String).input(),
     );
   }
 }

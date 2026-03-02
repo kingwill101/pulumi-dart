@@ -19,15 +19,11 @@ class PartnerRegistrationState {
   /// [resourceGroupName] The name of the Resource Group where the EventGrid Partner Registration should exist. Changing this forces a new EventGrid Partner Registration to be created.
   /// [tags] A mapping of tags which should be assigned to the EventGrid Partner Registration.
   PartnerRegistrationState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partnerRegistrationId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerRegistrationId = pulumi.Input.asOptionalInput<String>(partnerRegistrationId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.partnerRegistrationId,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class PartnerRegistrationState {
 
   factory PartnerRegistrationState.fromMap(Map<String, dynamic> map) {
     return PartnerRegistrationState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : (map['partnerRegistrationId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

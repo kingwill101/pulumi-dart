@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
-  final Map<String, dynamic>? all;
-  final List<String>? excludedCookies;
-  final List<String>? includedCookies;
+  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<List<String>>? excludedCookies;
+  final pulumi.Input<List<String>>? includedCookies;
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
@@ -27,9 +28,9 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern(
-      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
-      excludedCookies: map['excludedCookies'] == null ? null : (map['excludedCookies'] as List).cast<String>(),
-      includedCookies: map['includedCookies'] == null ? null : (map['includedCookies'] as List).cast<String>(),
+      all: map['all'] == null ? null : ((map['all'] as Map).cast<String, dynamic>()).input(),
+      excludedCookies: map['excludedCookies'] == null ? null : ((map['excludedCookies'] as List).cast<String>()).input(),
+      includedCookies: map['includedCookies'] == null ? null : ((map['includedCookies'] as List).cast<String>()).input(),
     );
   }
 }

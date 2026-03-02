@@ -22,15 +22,11 @@ class FlexibleServerDatabaseArgs {
   /// [name] Specifies the name of the PostgreSQL Database, which needs [to be a valid PostgreSQL identifier](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   /// [serverId] The ID of the Azure PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Database. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   FlexibleServerDatabaseArgs({
-    pulumi.Output<String>? charset,
-    pulumi.Output<String>? collation,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> serverId,
-  }) :
-      charset = pulumi.Input.asOptionalInput<String>(charset),
-      collation = pulumi.Input.asOptionalInput<String>(collation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asInput<String>(serverId);
+    this.charset,
+    this.collation,
+    this.name,
+    required this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class FlexibleServerDatabaseArgs {
 
   factory FlexibleServerDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerDatabaseArgs(
-      charset: map['charset'] == null ? null : pulumi.Output.create<String>(map['charset'] as String),
-      collation: map['collation'] == null ? null : pulumi.Output.create<String>(map['collation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
+      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
     );
   }
 }

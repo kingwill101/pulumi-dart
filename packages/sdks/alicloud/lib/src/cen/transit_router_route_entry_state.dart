@@ -37,25 +37,16 @@ class TransitRouterRouteEntryState {
   /// [transitRouterRouteEntryNextHopType] The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
   /// [transitRouterRouteTableId] The ID of the transit router route table.
   TransitRouterRouteEntryState({
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? transitRouterRouteEntryDescription,
-    pulumi.Output<String>? transitRouterRouteEntryDestinationCidrBlock,
-    pulumi.Output<String>? transitRouterRouteEntryId,
-    pulumi.Output<String>? transitRouterRouteEntryName,
-    pulumi.Output<String>? transitRouterRouteEntryNextHopId,
-    pulumi.Output<String>? transitRouterRouteEntryNextHopType,
-    pulumi.Output<String>? transitRouterRouteTableId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      transitRouterRouteEntryDescription = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryDescription),
-      transitRouterRouteEntryDestinationCidrBlock = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryDestinationCidrBlock),
-      transitRouterRouteEntryId = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryId),
-      transitRouterRouteEntryName = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryName),
-      transitRouterRouteEntryNextHopId = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryNextHopId),
-      transitRouterRouteEntryNextHopType = pulumi.Input.asOptionalInput<String>(transitRouterRouteEntryNextHopType),
-      transitRouterRouteTableId = pulumi.Input.asOptionalInput<String>(transitRouterRouteTableId);
+    this.dryRun,
+    this.status,
+    this.transitRouterRouteEntryDescription,
+    this.transitRouterRouteEntryDestinationCidrBlock,
+    this.transitRouterRouteEntryId,
+    this.transitRouterRouteEntryName,
+    this.transitRouterRouteEntryNextHopId,
+    this.transitRouterRouteEntryNextHopType,
+    this.transitRouterRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class TransitRouterRouteEntryState {
 
   factory TransitRouterRouteEntryState.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteEntryState(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryDescription'] as String),
-      transitRouterRouteEntryDestinationCidrBlock: map['transitRouterRouteEntryDestinationCidrBlock'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryDestinationCidrBlock'] as String),
-      transitRouterRouteEntryId: map['transitRouterRouteEntryId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryId'] as String),
-      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryName'] as String),
-      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryNextHopId'] as String),
-      transitRouterRouteEntryNextHopType: map['transitRouterRouteEntryNextHopType'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteEntryNextHopType'] as String),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : pulumi.Output.create<String>(map['transitRouterRouteTableId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : (map['transitRouterRouteEntryDescription'] as String).input(),
+      transitRouterRouteEntryDestinationCidrBlock: map['transitRouterRouteEntryDestinationCidrBlock'] == null ? null : (map['transitRouterRouteEntryDestinationCidrBlock'] as String).input(),
+      transitRouterRouteEntryId: map['transitRouterRouteEntryId'] == null ? null : (map['transitRouterRouteEntryId'] as String).input(),
+      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : (map['transitRouterRouteEntryName'] as String).input(),
+      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : (map['transitRouterRouteEntryNextHopId'] as String).input(),
+      transitRouterRouteEntryNextHopType: map['transitRouterRouteEntryNextHopType'] == null ? null : (map['transitRouterRouteEntryNextHopType'] as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of RunAs credential to use for hybrid worker.
 class RunAsCredentialAssociationPropertyResponse {
   /// Gets or sets the name of the credential.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [RunAsCredentialAssociationPropertyResponse].
   /// [name] Gets or sets the name of the credential.
@@ -20,7 +21,7 @@ class RunAsCredentialAssociationPropertyResponse {
 
   factory RunAsCredentialAssociationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return RunAsCredentialAssociationPropertyResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

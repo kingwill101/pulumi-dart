@@ -25,17 +25,12 @@ class StaticSiteCustomDomainArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [validationMethod] Validation method for adding a custom domain
   StaticSiteCustomDomainArgs({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? validationMethod,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      validationMethod = pulumi.Input.asOptionalInput<String>(validationMethod);
+    this.domainName,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.validationMethod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class StaticSiteCustomDomainArgs {
 
   factory StaticSiteCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainArgs(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      validationMethod: map['validationMethod'] == null ? null : pulumi.Output.create<String>(map['validationMethod'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      validationMethod: map['validationMethod'] == null ? null : (map['validationMethod'] as String).input(),
     );
   }
 }

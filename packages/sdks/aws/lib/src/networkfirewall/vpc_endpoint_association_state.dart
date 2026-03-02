@@ -42,29 +42,18 @@ class VpcEndpointAssociationState {
   /// [vpcEndpointAssociationStatuses] Nested list of information about the current status of the VPC Endpoint Association.
   /// [vpcId] The unique identifier of the VPC for the endpoint association.
   VpcEndpointAssociationState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? firewallArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<VpcEndpointAssociationSubnetMapping>? subnetMapping,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<VpcEndpointAssociationTimeouts>? timeouts,
-    pulumi.Output<String>? vpcEndpointAssociationArn,
-    pulumi.Output<String>? vpcEndpointAssociationId,
-    pulumi.Output<List<VpcEndpointAssociationVpcEndpointAssociationStatus>>? vpcEndpointAssociationStatuses,
-    pulumi.Output<String>? vpcId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      firewallArn = pulumi.Input.asOptionalInput<String>(firewallArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetMapping = pulumi.Input.asOptionalInput<VpcEndpointAssociationSubnetMapping>(subnetMapping),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<VpcEndpointAssociationTimeouts>(timeouts),
-      vpcEndpointAssociationArn = pulumi.Input.asOptionalInput<String>(vpcEndpointAssociationArn),
-      vpcEndpointAssociationId = pulumi.Input.asOptionalInput<String>(vpcEndpointAssociationId),
-      vpcEndpointAssociationStatuses = pulumi.Input.asOptionalInput<List<VpcEndpointAssociationVpcEndpointAssociationStatus>>(vpcEndpointAssociationStatuses),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.description,
+    this.firewallArn,
+    this.region,
+    this.subnetMapping,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.vpcEndpointAssociationArn,
+    this.vpcEndpointAssociationId,
+    this.vpcEndpointAssociationStatuses,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class VpcEndpointAssociationState {
 
   factory VpcEndpointAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      firewallArn: map['firewallArn'] == null ? null : pulumi.Output.create<String>(map['firewallArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetMapping: map['subnetMapping'] == null ? null : pulumi.Output.create<VpcEndpointAssociationSubnetMapping>(VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcEndpointAssociationTimeouts>(VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcEndpointAssociationArn: map['vpcEndpointAssociationArn'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointAssociationArn'] as String),
-      vpcEndpointAssociationId: map['vpcEndpointAssociationId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointAssociationId'] as String),
-      vpcEndpointAssociationStatuses: map['vpcEndpointAssociationStatuses'] == null ? null : pulumi.Output.create<List<VpcEndpointAssociationVpcEndpointAssociationStatus>>(pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatus>(map['vpcEndpointAssociationStatuses'], (value) => VpcEndpointAssociationVpcEndpointAssociationStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firewallArn: map['firewallArn'] == null ? null : (map['firewallArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetMapping: map['subnetMapping'] == null ? null : (VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcEndpointAssociationArn: map['vpcEndpointAssociationArn'] == null ? null : (map['vpcEndpointAssociationArn'] as String).input(),
+      vpcEndpointAssociationId: map['vpcEndpointAssociationId'] == null ? null : (map['vpcEndpointAssociationId'] as String).input(),
+      vpcEndpointAssociationStatuses: map['vpcEndpointAssociationStatuses'] == null ? null : (pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatus>(map['vpcEndpointAssociationStatuses'], (value) => VpcEndpointAssociationVpcEndpointAssociationStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

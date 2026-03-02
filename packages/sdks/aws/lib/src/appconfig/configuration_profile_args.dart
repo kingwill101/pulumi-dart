@@ -41,27 +41,17 @@ class ConfigurationProfileArgs {
   /// [type] Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   /// [validators] Set of methods for validating the configuration. Maximum of 2. See Validator below for more details.
   ConfigurationProfileArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    required pulumi.Output<String> locationUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? retrievalRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<List<ConfigurationProfileValidator>>? validators,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      locationUri = pulumi.Input.asInput<String>(locationUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retrievalRoleArn = pulumi.Input.asOptionalInput<String>(retrievalRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      validators = pulumi.Input.asOptionalInput<List<ConfigurationProfileValidator>>(validators);
+    required this.applicationId,
+    this.description,
+    this.kmsKeyIdentifier,
+    required this.locationUri,
+    this.name,
+    this.region,
+    this.retrievalRoleArn,
+    this.tags,
+    this.type,
+    this.validators,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ConfigurationProfileArgs {
 
   factory ConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      locationUri: pulumi.Output.create<String>(map['locationUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : pulumi.Output.create<String>(map['retrievalRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      validators: map['validators'] == null ? null : pulumi.Output.create<List<ConfigurationProfileValidator>>(pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators'], (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))),
+      applicationId: (map['applicationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      locationUri: (map['locationUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : (map['retrievalRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      validators: map['validators'] == null ? null : (pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators'], (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

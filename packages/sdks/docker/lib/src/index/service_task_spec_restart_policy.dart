@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecRestartPolicy {
   /// Condition for restart
-  final String? condition;
+  final pulumi.Input<String>? condition;
   /// Delay between restart attempts (ms|s|m|h)
-  final String? delay;
+  final pulumi.Input<String>? delay;
   /// Maximum attempts to restart a given container before giving up (default value is `0`, which is ignored)
-  final int? maxAttempts;
+  final pulumi.Input<int>? maxAttempts;
   /// The time window used to evaluate the restart policy (default value is `0`, which is unbounded) (ms|s|m|h)
-  final String? window;
+  final pulumi.Input<String>? window;
 
   /// Creates a new [ServiceTaskSpecRestartPolicy].
   /// [condition] Condition for restart
@@ -34,10 +35,10 @@ class ServiceTaskSpecRestartPolicy {
 
   factory ServiceTaskSpecRestartPolicy.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecRestartPolicy(
-      condition: map['condition'] == null ? null : map['condition'] as String,
-      delay: map['delay'] == null ? null : map['delay'] as String,
-      maxAttempts: map['maxAttempts'] == null ? null : map['maxAttempts'] as int,
-      window: map['window'] == null ? null : map['window'] as String,
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
+      window: map['window'] == null ? null : (map['window'] as String).input(),
     );
   }
 }

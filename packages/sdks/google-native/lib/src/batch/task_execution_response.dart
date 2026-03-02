@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This Task Execution field includes detail information for task execution procedures, based on StatusEvent types.
 class TaskExecutionResponse {
   /// When task is completed as the status of FAILED or SUCCEEDED, exit code is for one task execution result, default is 0 as success.
-  final int exitCode;
+  final pulumi.Input<int> exitCode;
 
   /// Creates a new [TaskExecutionResponse].
   /// [exitCode] When task is completed as the status of FAILED or SUCCEEDED, exit code is for one task execution result, default is 0 as success.
@@ -20,7 +21,7 @@ class TaskExecutionResponse {
 
   factory TaskExecutionResponse.fromMap(Map<String, dynamic> map) {
     return TaskExecutionResponse(
-      exitCode: map['exitCode'] as int,
+      exitCode: (map['exitCode'] as int).input(),
     );
   }
 }

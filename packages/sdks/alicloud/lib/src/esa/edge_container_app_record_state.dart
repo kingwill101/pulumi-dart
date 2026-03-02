@@ -19,15 +19,11 @@ class EdgeContainerAppRecordState {
   /// [recordName] The associated domain name.
   /// [siteId] The website ID.
   EdgeContainerAppRecordState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? recordName,
-    pulumi.Output<String>? siteId,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      recordName = pulumi.Input.asOptionalInput<String>(recordName),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.appId,
+    this.createTime,
+    this.recordName,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class EdgeContainerAppRecordState {
 
   factory EdgeContainerAppRecordState.fromMap(Map<String, dynamic> map) {
     return EdgeContainerAppRecordState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      recordName: map['recordName'] == null ? null : pulumi.Output.create<String>(map['recordName'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

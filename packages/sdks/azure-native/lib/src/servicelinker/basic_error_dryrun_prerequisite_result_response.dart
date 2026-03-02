@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The represent of basic error
 class BasicErrorDryrunPrerequisiteResultResponse {
   /// The error code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The error message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The type of dryrun result.
   /// Expected value is 'basicError'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BasicErrorDryrunPrerequisiteResultResponse].
   /// [code] The error code.
@@ -31,9 +32,9 @@ class BasicErrorDryrunPrerequisiteResultResponse {
 
   factory BasicErrorDryrunPrerequisiteResultResponse.fromMap(Map<String, dynamic> map) {
     return BasicErrorDryrunPrerequisiteResultResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      type: map['type'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

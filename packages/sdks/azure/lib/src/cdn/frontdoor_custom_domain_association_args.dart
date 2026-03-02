@@ -18,11 +18,9 @@ class FrontdoorCustomDomainAssociationArgs {
   /// [cdnFrontdoorCustomDomainId] The ID of the Front Door Custom Domain that should be managed by the association resource. Changing this forces a new association resource to be created.
   /// [cdnFrontdoorRouteIds] One or more IDs of the Front Door Route to which the Front Door Custom Domain is associated with.
   FrontdoorCustomDomainAssociationArgs({
-    required pulumi.Output<String> cdnFrontdoorCustomDomainId,
-    required pulumi.Output<List<String>> cdnFrontdoorRouteIds,
-  }) :
-      cdnFrontdoorCustomDomainId = pulumi.Input.asInput<String>(cdnFrontdoorCustomDomainId),
-      cdnFrontdoorRouteIds = pulumi.Input.asInput<List<String>>(cdnFrontdoorRouteIds);
+    required this.cdnFrontdoorCustomDomainId,
+    required this.cdnFrontdoorRouteIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class FrontdoorCustomDomainAssociationArgs {
 
   factory FrontdoorCustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainAssociationArgs(
-      cdnFrontdoorCustomDomainId: pulumi.Output.create<String>(map['cdnFrontdoorCustomDomainId'] as String),
-      cdnFrontdoorRouteIds: pulumi.Output.create<List<String>>((map['cdnFrontdoorRouteIds'] as List).cast<String>()),
+      cdnFrontdoorCustomDomainId: (map['cdnFrontdoorCustomDomainId'] as String).input(),
+      cdnFrontdoorRouteIds: ((map['cdnFrontdoorRouteIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class UserArgs {
   /// [nickName] The nickname of the user.
   /// [userType] The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   UserArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<bool> adminUser,
-    required pulumi.Output<bool> authAdminUser,
-    required pulumi.Output<String> nickName,
-    required pulumi.Output<String> userType,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      adminUser = pulumi.Input.asInput<bool>(adminUser),
-      authAdminUser = pulumi.Input.asInput<bool>(authAdminUser),
-      nickName = pulumi.Input.asInput<String>(nickName),
-      userType = pulumi.Input.asInput<String>(userType);
+    this.accountId,
+    required this.accountName,
+    required this.adminUser,
+    required this.authAdminUser,
+    required this.nickName,
+    required this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      adminUser: pulumi.Output.create<bool>(map['adminUser'] as bool),
-      authAdminUser: pulumi.Output.create<bool>(map['authAdminUser'] as bool),
-      nickName: pulumi.Output.create<String>(map['nickName'] as String),
-      userType: pulumi.Output.create<String>(map['userType'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      adminUser: (map['adminUser'] as bool).input(),
+      authAdminUser: (map['authAdminUser'] as bool).input(),
+      nickName: (map['nickName'] as String).input(),
+      userType: (map['userType'] as String).input(),
     );
   }
 }

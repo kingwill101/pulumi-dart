@@ -39,25 +39,16 @@ class NextGenerationFirewallVirtualHubLocalRulestackState {
   /// [rulestackId] The ID of the Local Rulestack to be used for this Next Generation Firewall.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Local Rulestack.
   NextGenerationFirewallVirtualHubLocalRulestackState({
-    pulumi.Output<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>>? destinationNats,
-    pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings>? dnsSettings,
-    pulumi.Output<String>? marketplaceOfferId,
-    pulumi.Output<String>? name,
-    pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>? networkProfile,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? rulestackId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destinationNats = pulumi.Input.asOptionalInput<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>>(destinationNats),
-      dnsSettings = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings>(dnsSettings),
-      marketplaceOfferId = pulumi.Input.asOptionalInput<String>(marketplaceOfferId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>(networkProfile),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      rulestackId = pulumi.Input.asOptionalInput<String>(rulestackId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.destinationNats,
+    this.dnsSettings,
+    this.marketplaceOfferId,
+    this.name,
+    this.networkProfile,
+    this.planId,
+    this.resourceGroupName,
+    this.rulestackId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class NextGenerationFirewallVirtualHubLocalRulestackState {
 
   factory NextGenerationFirewallVirtualHubLocalRulestackState.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubLocalRulestackState(
-      destinationNats: map['destinationNats'] == null ? null : pulumi.Output.create<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>>(pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings>(NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : pulumi.Output.create<String>(map['marketplaceOfferId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>(NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rulestackId: map['rulestackId'] == null ? null : pulumi.Output.create<String>(map['rulestackId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

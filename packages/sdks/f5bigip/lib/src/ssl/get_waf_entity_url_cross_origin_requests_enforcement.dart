@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafEntityUrlCrossOriginRequestsEnforcement {
   /// Determines whether the subdomains are allowed to receive data from the web application.
-  final bool? includeSubdomains;
+  final pulumi.Input<bool>? includeSubdomains;
   /// Specifies the name of the origin with which you want to share your data.
-  final String originName;
+  final pulumi.Input<String> originName;
   /// Specifies the port that other web applications are allowed to use to request data from your web application.
-  final String originPort;
+  final pulumi.Input<String> originPort;
   /// Specifies the protocol that other web applications are allowed to use to request data from your web application.
-  final String originProtocol;
+  final pulumi.Input<String> originProtocol;
 
   /// Creates a new [GetWafEntityUrlCrossOriginRequestsEnforcement].
   /// [includeSubdomains] Determines whether the subdomains are allowed to receive data from the web application.
@@ -34,10 +35,10 @@ class GetWafEntityUrlCrossOriginRequestsEnforcement {
 
   factory GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlCrossOriginRequestsEnforcement(
-      includeSubdomains: map['includeSubdomains'] == null ? null : map['includeSubdomains'] as bool,
-      originName: map['originName'] as String,
-      originPort: map['originPort'] as String,
-      originProtocol: map['originProtocol'] as String,
+      includeSubdomains: map['includeSubdomains'] == null ? null : (map['includeSubdomains'] as bool).input(),
+      originName: (map['originName'] as String).input(),
+      originPort: (map['originPort'] as String).input(),
+      originProtocol: (map['originProtocol'] as String).input(),
     );
   }
 }

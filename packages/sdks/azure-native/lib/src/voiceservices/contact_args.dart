@@ -34,23 +34,15 @@ class ContactArgs {
   /// [role] Job title of contact
   /// [tags] Resource tags.
   ContactArgs({
-    required pulumi.Output<String> communicationsGatewayName,
-    pulumi.Output<String>? contactName,
-    required pulumi.Output<String> email,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> phoneNumber,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> role,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      communicationsGatewayName = pulumi.Input.asInput<String>(communicationsGatewayName),
-      contactName = pulumi.Input.asOptionalInput<String>(contactName),
-      email = pulumi.Input.asInput<String>(email),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      phoneNumber = pulumi.Input.asInput<String>(phoneNumber),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      role = pulumi.Input.asInput<String>(role),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.communicationsGatewayName,
+    this.contactName,
+    required this.email,
+    this.location,
+    required this.phoneNumber,
+    required this.resourceGroupName,
+    required this.role,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      communicationsGatewayName: pulumi.Output.create<String>(map['communicationsGatewayName'] as String),
-      contactName: map['contactName'] == null ? null : pulumi.Output.create<String>(map['contactName'] as String),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      phoneNumber: pulumi.Output.create<String>(map['phoneNumber'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      communicationsGatewayName: (map['communicationsGatewayName'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      email: (map['email'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      phoneNumber: (map['phoneNumber'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      role: (map['role'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

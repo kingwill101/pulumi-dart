@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
-  final String? namespaceId;
+  final pulumi.Input<String>? namespaceId;
   /// The ID of the project to which the entities belong.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId].
   /// [namespaceId] If not empty, the ID of the namespace to which the entities belong.
@@ -24,8 +25,8 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
 
   factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-      namespaceId: map['namespaceId'] == null ? null : map['namespaceId'] as String,
-      projectId: map['projectId'] as String,
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

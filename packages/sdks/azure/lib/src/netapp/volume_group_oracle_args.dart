@@ -32,21 +32,14 @@ class VolumeGroupOracleArgs {
   /// [resourceGroupName] The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [volumes] One or more `volume` blocks as defined below.
   VolumeGroupOracleArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> applicationIdentifier,
-    required pulumi.Output<String> groupDescription,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<VolumeGroupOracleVolume>> volumes,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      applicationIdentifier = pulumi.Input.asInput<String>(applicationIdentifier),
-      groupDescription = pulumi.Input.asInput<String>(groupDescription),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      volumes = pulumi.Input.asInput<List<VolumeGroupOracleVolume>>(volumes);
+    required this.accountName,
+    required this.applicationIdentifier,
+    required this.groupDescription,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.volumes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VolumeGroupOracleArgs {
 
   factory VolumeGroupOracleArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupOracleArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      applicationIdentifier: pulumi.Output.create<String>(map['applicationIdentifier'] as String),
-      groupDescription: pulumi.Output.create<String>(map['groupDescription'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumes: pulumi.Output.create<List<VolumeGroupOracleVolume>>(pulumi.Input.decodeList<VolumeGroupOracleVolume>(map['volumes'], (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>()))),
+      accountName: (map['accountName'] as String).input(),
+      applicationIdentifier: (map['applicationIdentifier'] as String).input(),
+      groupDescription: (map['groupDescription'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      volumes: (pulumi.Input.decodeList<VolumeGroupOracleVolume>(map['volumes'], (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

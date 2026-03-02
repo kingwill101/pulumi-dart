@@ -23,15 +23,11 @@ class ReplicationExtensionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
   ReplicationExtensionArgs({
-    required pulumi.Output<ReplicationExtensionModelProperties> properties,
-    pulumi.Output<String>? replicationExtensionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      properties = pulumi.Input.asInput<ReplicationExtensionModelProperties>(properties),
-      replicationExtensionName = pulumi.Input.asOptionalInput<String>(replicationExtensionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.properties,
+    this.replicationExtensionName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ReplicationExtensionArgs {
 
   factory ReplicationExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationExtensionArgs(
-      properties: pulumi.Output.create<ReplicationExtensionModelProperties>(ReplicationExtensionModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      replicationExtensionName: map['replicationExtensionName'] == null ? null : pulumi.Output.create<String>(map['replicationExtensionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      properties: (ReplicationExtensionModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      replicationExtensionName: map['replicationExtensionName'] == null ? null : (map['replicationExtensionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class VideoStreamArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   VideoStreamArgs({
-    pulumi.Output<int>? dataRetentionInHours,
-    pulumi.Output<String>? deviceName,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? mediaType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dataRetentionInHours = pulumi.Input.asOptionalInput<int>(dataRetentionInHours),
-      deviceName = pulumi.Input.asOptionalInput<String>(deviceName),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      mediaType = pulumi.Input.asOptionalInput<String>(mediaType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dataRetentionInHours,
+    this.deviceName,
+    this.kmsKeyId,
+    this.mediaType,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class VideoStreamArgs {
 
   factory VideoStreamArgs.fromMap(Map<String, dynamic> map) {
     return VideoStreamArgs(
-      dataRetentionInHours: map['dataRetentionInHours'] == null ? null : pulumi.Output.create<int>(map['dataRetentionInHours'] as int),
-      deviceName: map['deviceName'] == null ? null : pulumi.Output.create<String>(map['deviceName'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      mediaType: map['mediaType'] == null ? null : pulumi.Output.create<String>(map['mediaType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dataRetentionInHours: map['dataRetentionInHours'] == null ? null : (map['dataRetentionInHours'] as int).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

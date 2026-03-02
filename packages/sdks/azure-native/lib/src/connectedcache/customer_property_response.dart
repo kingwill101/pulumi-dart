@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'additional_customer_properties_response.dart';
 import 'customer_entity_response.dart';
 import 'error_detail_response.dart';
@@ -7,21 +8,21 @@ import 'error_detail_response.dart';
 /// Model representing customer for connectedCache resource
 class CustomerPropertyResponse {
   /// Mcc customer resource additional properties.
-  final AdditionalCustomerPropertiesResponse? additionalCustomerProperties;
+  final pulumi.Input<AdditionalCustomerPropertiesResponse>? additionalCustomerProperties;
   /// Mcc customer resource (customer entity).
-  final CustomerEntityResponse? customer;
+  final pulumi.Input<CustomerEntityResponse>? customer;
   /// Mcc response error details.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// The provisioned state of the resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// HTTP error status code.
-  final String status;
+  final pulumi.Input<String> status;
   /// Mcc response status code.
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
   /// Mcc response status details for retrieving response inner details.
-  final String statusDetails;
+  final pulumi.Input<String> statusDetails;
   /// Mcc response status text as string for retrieving status details.
-  final String statusText;
+  final pulumi.Input<String> statusText;
 
   /// Creates a new [CustomerPropertyResponse].
   /// [additionalCustomerProperties] Mcc customer resource additional properties.
@@ -45,9 +46,9 @@ class CustomerPropertyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCustomerProperties': ?additionalCustomerProperties == null ? null : additionalCustomerProperties!.toMap(),
-      'customer': ?customer == null ? null : customer!.toMap(),
-      'error': error.toMap(),
+      'additionalCustomerProperties': ?pulumi.Input.mapOptionalInputValue<AdditionalCustomerPropertiesResponse, Map<String, dynamic>>(additionalCustomerProperties, (value) => value.toMap()),
+      'customer': ?pulumi.Input.mapOptionalInputValue<CustomerEntityResponse, Map<String, dynamic>>(customer, (value) => value.toMap()),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'status': status,
       'statusCode': statusCode,
@@ -58,14 +59,14 @@ class CustomerPropertyResponse {
 
   factory CustomerPropertyResponse.fromMap(Map<String, dynamic> map) {
     return CustomerPropertyResponse(
-      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : AdditionalCustomerPropertiesResponse.fromMap((map['additionalCustomerProperties'] as Map).cast<String, dynamic>()),
-      customer: map['customer'] == null ? null : CustomerEntityResponse.fromMap((map['customer'] as Map).cast<String, dynamic>()),
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      statusCode: map['statusCode'] as String,
-      statusDetails: map['statusDetails'] as String,
-      statusText: map['statusText'] as String,
+      additionalCustomerProperties: map['additionalCustomerProperties'] == null ? null : (AdditionalCustomerPropertiesResponse.fromMap((map['additionalCustomerProperties'] as Map).cast<String, dynamic>())).input(),
+      customer: map['customer'] == null ? null : (CustomerEntityResponse.fromMap((map['customer'] as Map).cast<String, dynamic>())).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
+      statusDetails: (map['statusDetails'] as String).input(),
+      statusText: (map['statusText'] as String).input(),
     );
   }
 }

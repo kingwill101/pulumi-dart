@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_op.dart';
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
   /// The match operator for the field.
-  final SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp? op;
+  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp>? op;
   /// The value of the field.
-  final String? val;
+  final pulumi.Input<String>? val;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams].
   /// [op] The match operator for the field.
@@ -18,15 +19,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'op': ?op == null ? null : op!.value,
+      'op': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp, String>(op, (value) => value.value),
       'val': ?val,
     };
   }
 
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams(
-      op: map['op'] == null ? null : SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp.fromValue(map['op'] as String),
-      val: map['val'] == null ? null : map['val'] as String,
+      op: map['op'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp.fromValue(map['op'] as String)).input(),
+      val: map['val'] == null ? null : (map['val'] as String).input(),
     );
   }
 }

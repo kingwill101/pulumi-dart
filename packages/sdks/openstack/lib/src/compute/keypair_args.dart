@@ -35,17 +35,12 @@ class KeypairArgs {
   /// [userId] This allows administrative users to operate key-pairs
   /// [valueSpecs] Map of additional options.
   KeypairArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userId,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.name,
+    this.publicKey,
+    this.region,
+    this.userId,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class KeypairArgs {
 
   factory KeypairArgs.fromMap(Map<String, dynamic> map) {
     return KeypairArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

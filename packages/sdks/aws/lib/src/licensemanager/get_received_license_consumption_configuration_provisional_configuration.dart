@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
   /// Maximum time for the provisional configuration, in minutes.
-  final int maxTimeToLiveInMinutes;
+  final pulumi.Input<int> maxTimeToLiveInMinutes;
 
   /// Creates a new [GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration].
   /// [maxTimeToLiveInMinutes] Maximum time for the provisional configuration, in minutes.
@@ -19,7 +20,7 @@ class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
 
   factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration(
-      maxTimeToLiveInMinutes: map['maxTimeToLiveInMinutes'] as int,
+      maxTimeToLiveInMinutes: (map['maxTimeToLiveInMinutes'] as int).input(),
     );
   }
 }

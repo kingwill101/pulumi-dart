@@ -30,17 +30,12 @@ class FrontdoorCustomDomainArgs {
   /// [name] The name which should be used for this Front Door Custom Domain. Possible values must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number and contain only letters, numbers and hyphens. Changing this forces a new Front Door Custom Domain to be created.
   /// [tls] A `tls` block as defined below.
   FrontdoorCustomDomainArgs({
-    required pulumi.Output<String> cdnFrontdoorProfileId,
-    pulumi.Output<String>? dnsZoneId,
-    required pulumi.Output<String> hostName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<FrontdoorCustomDomainTls> tls,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asInput<String>(cdnFrontdoorProfileId),
-      dnsZoneId = pulumi.Input.asOptionalInput<String>(dnsZoneId),
-      hostName = pulumi.Input.asInput<String>(hostName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tls = pulumi.Input.asInput<FrontdoorCustomDomainTls>(tls);
+    required this.cdnFrontdoorProfileId,
+    this.dnsZoneId,
+    required this.hostName,
+    this.name,
+    required this.tls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class FrontdoorCustomDomainArgs {
 
   factory FrontdoorCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainArgs(
-      cdnFrontdoorProfileId: pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      dnsZoneId: map['dnsZoneId'] == null ? null : pulumi.Output.create<String>(map['dnsZoneId'] as String),
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tls: pulumi.Output.create<FrontdoorCustomDomainTls>(FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())),
+      cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tls: (FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

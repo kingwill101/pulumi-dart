@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the resource properties.
 class OsProfileResponse {
   /// Gets or sets computer name.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
   /// Gets or sets os name.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// Gets or sets the type of the os.
-  final String osType;
+  final pulumi.Input<String> osType;
 
   /// Creates a new [OsProfileResponse].
   /// [computerName] Gets or sets computer name.
@@ -30,9 +31,9 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
-      osName: map['osName'] as String,
-      osType: map['osType'] as String,
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      osName: (map['osName'] as String).input(),
+      osType: (map['osType'] as String).input(),
     );
   }
 }

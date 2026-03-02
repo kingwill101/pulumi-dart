@@ -20,13 +20,10 @@ class KeyRegistrationArgs {
   /// [keyRegistrations] Registered keys. See key_registration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   KeyRegistrationArgs({
-    pulumi.Output<String>? awsAccountId,
-    required pulumi.Output<List<KeyRegistrationKeyRegistration>> keyRegistrations,
-    pulumi.Output<String>? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      keyRegistrations = pulumi.Input.asInput<List<KeyRegistrationKeyRegistration>>(keyRegistrations),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.awsAccountId,
+    required this.keyRegistrations,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class KeyRegistrationArgs {
 
   factory KeyRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return KeyRegistrationArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      keyRegistrations: pulumi.Output.create<List<KeyRegistrationKeyRegistration>>(pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(map['keyRegistrations'], (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      keyRegistrations: (pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(map['keyRegistrations'], (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

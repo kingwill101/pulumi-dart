@@ -30,21 +30,14 @@ class VersionArgs {
   /// [sizeBytes] The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads.
   /// [versionId] A unique id for the new version. This is was only specified for legacy version creations, and should be blank.
   VersionArgs({
-    pulumi.Output<ServingConfig>? config,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<String>? sizeBytes,
-    pulumi.Output<String>? versionId,
-  }) :
-      config = pulumi.Input.asOptionalInput<ServingConfig>(config),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      sizeBytes = pulumi.Input.asOptionalInput<String>(sizeBytes),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+    this.config,
+    this.labels,
+    this.name,
+    this.project,
+    required this.siteId,
+    this.sizeBytes,
+    this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<ServingConfig>(ServingConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      sizeBytes: map['sizeBytes'] == null ? null : pulumi.Output.create<String>(map['sizeBytes'] as String),
-      versionId: map['versionId'] == null ? null : pulumi.Output.create<String>(map['versionId'] as String),
+      config: map['config'] == null ? null : (ServingConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
     );
   }
 }

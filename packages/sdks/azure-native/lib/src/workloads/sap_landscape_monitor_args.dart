@@ -24,15 +24,11 @@ class SapLandscapeMonitorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topMetricsThresholds] Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   SapLandscapeMonitorArgs({
-    pulumi.Output<SapLandscapeMonitorPropertiesGrouping>? grouping,
-    required pulumi.Output<String> monitorName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<SapLandscapeMonitorMetricThresholds>>? topMetricsThresholds,
-  }) :
-      grouping = pulumi.Input.asOptionalInput<SapLandscapeMonitorPropertiesGrouping>(grouping),
-      monitorName = pulumi.Input.asInput<String>(monitorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topMetricsThresholds = pulumi.Input.asOptionalInput<List<SapLandscapeMonitorMetricThresholds>>(topMetricsThresholds);
+    this.grouping,
+    required this.monitorName,
+    required this.resourceGroupName,
+    this.topMetricsThresholds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class SapLandscapeMonitorArgs {
 
   factory SapLandscapeMonitorArgs.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorArgs(
-      grouping: map['grouping'] == null ? null : pulumi.Output.create<SapLandscapeMonitorPropertiesGrouping>(SapLandscapeMonitorPropertiesGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>())),
-      monitorName: pulumi.Output.create<String>(map['monitorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : pulumi.Output.create<List<SapLandscapeMonitorMetricThresholds>>(pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholds>(map['topMetricsThresholds'], (value) => SapLandscapeMonitorMetricThresholds.fromMap((value as Map).cast<String, dynamic>()))),
+      grouping: map['grouping'] == null ? null : (SapLandscapeMonitorPropertiesGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>())).input(),
+      monitorName: (map['monitorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholds>(map['topMetricsThresholds'], (value) => SapLandscapeMonitorMetricThresholds.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

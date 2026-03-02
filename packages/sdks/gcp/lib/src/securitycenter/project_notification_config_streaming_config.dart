@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectNotificationConfigStreamingConfig {
   /// Expression that defines the filter to apply across create/update
@@ -21,7 +22,7 @@ class ProjectNotificationConfigStreamingConfig {
   /// See
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
-  final String filter;
+  final pulumi.Input<String> filter;
 
   /// Creates a new [ProjectNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
@@ -37,7 +38,7 @@ class ProjectNotificationConfigStreamingConfig {
 
   factory ProjectNotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
     return ProjectNotificationConfigStreamingConfig(
-      filter: map['filter'] as String,
+      filter: (map['filter'] as String).input(),
     );
   }
 }

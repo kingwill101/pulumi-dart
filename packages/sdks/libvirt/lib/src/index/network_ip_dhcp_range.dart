@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_ip_dhcp_range_lease.dart';
 
 class NetworkIpDhcpRange {
   /// Sets the end IP address of the DHCP allocation range.
-  final String? end;
+  final pulumi.Input<String>? end;
   /// Configures lease settings for DHCP host entries.
-  final NetworkIpDhcpRangeLease? lease;
+  final pulumi.Input<NetworkIpDhcpRangeLease>? lease;
   /// Sets the start IP address of the DHCP allocation range.
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [NetworkIpDhcpRange].
   /// [end] Sets the end IP address of the DHCP allocation range.
@@ -23,16 +24,16 @@ class NetworkIpDhcpRange {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'end': ?end,
-      'lease': ?lease == null ? null : lease!.toMap(),
+      'lease': ?pulumi.Input.mapOptionalInputValue<NetworkIpDhcpRangeLease, Map<String, dynamic>>(lease, (value) => value.toMap()),
       'start': ?start,
     };
   }
 
   factory NetworkIpDhcpRange.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpRange(
-      end: map['end'] == null ? null : map['end'] as String,
-      lease: map['lease'] == null ? null : NetworkIpDhcpRangeLease.fromMap((map['lease'] as Map).cast<String, dynamic>()),
-      start: map['start'] == null ? null : map['start'] as String,
+      end: map['end'] == null ? null : (map['end'] as String).input(),
+      lease: map['lease'] == null ? null : (NetworkIpDhcpRangeLease.fromMap((map['lease'] as Map).cast<String, dynamic>())).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

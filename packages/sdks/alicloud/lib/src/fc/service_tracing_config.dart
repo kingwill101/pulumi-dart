@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTracingConfig {
   /// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
-  final Map<String, String> params;
+  final pulumi.Input<Map<String, String>> params;
   /// Tracing protocol type. Currently, only Jaeger is supported.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceTracingConfig].
   /// [params] Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
@@ -24,8 +25,8 @@ class ServiceTracingConfig {
 
   factory ServiceTracingConfig.fromMap(Map<String, dynamic> map) {
     return ServiceTracingConfig(
-      params: (map['params'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      params: ((map['params'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

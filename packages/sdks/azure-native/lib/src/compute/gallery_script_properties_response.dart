@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the properties of a gallery script definition.
 class GalleryScriptPropertiesResponse {
   /// The description of this gallery script definition resource. This property is updatable.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The end of life date of the gallery Script Definition. This property can be used for decommissioning purposes. This property is updatable.
-  final String? endOfLifeDate;
+  final pulumi.Input<String>? endOfLifeDate;
   /// The Eula agreement (End User License Agreement) for the gallery Script Definition.
-  final String? eula;
+  final pulumi.Input<String>? eula;
   /// The privacy statement uri.
-  final String? privacyStatementUri;
+  final pulumi.Input<String>? privacyStatementUri;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The release note uri.
-  final String? releaseNoteUri;
+  final pulumi.Input<String>? releaseNoteUri;
   /// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
-  final String supportedOSType;
+  final pulumi.Input<String> supportedOSType;
 
   /// Creates a new [GalleryScriptPropertiesResponse].
   /// [description] The description of this gallery script definition resource. This property is updatable.
@@ -50,13 +51,13 @@ class GalleryScriptPropertiesResponse {
 
   factory GalleryScriptPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GalleryScriptPropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : map['endOfLifeDate'] as String,
-      eula: map['eula'] == null ? null : map['eula'] as String,
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : map['privacyStatementUri'] as String,
-      provisioningState: map['provisioningState'] as String,
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : map['releaseNoteUri'] as String,
-      supportedOSType: map['supportedOSType'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
+      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      supportedOSType: (map['supportedOSType'] as String).input(),
     );
   }
 }

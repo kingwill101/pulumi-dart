@@ -25,17 +25,12 @@ class HypervNetworkMappingArgs {
   /// [sourceSystemCenterVirtualMachineManagerName] Specifies the name of source System Center Virtual Machine Manager where the source network exists. Changing this forces a new resource to be created.
   /// [targetNetworkId] The id of the recovery network. Changing this forces a new resource to be created.
   HypervNetworkMappingArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recoveryVaultId,
-    required pulumi.Output<String> sourceNetworkName,
-    required pulumi.Output<String> sourceSystemCenterVirtualMachineManagerName,
-    required pulumi.Output<String> targetNetworkId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryVaultId = pulumi.Input.asInput<String>(recoveryVaultId),
-      sourceNetworkName = pulumi.Input.asInput<String>(sourceNetworkName),
-      sourceSystemCenterVirtualMachineManagerName = pulumi.Input.asInput<String>(sourceSystemCenterVirtualMachineManagerName),
-      targetNetworkId = pulumi.Input.asInput<String>(targetNetworkId);
+    this.name,
+    required this.recoveryVaultId,
+    required this.sourceNetworkName,
+    required this.sourceSystemCenterVirtualMachineManagerName,
+    required this.targetNetworkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HypervNetworkMappingArgs {
 
   factory HypervNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return HypervNetworkMappingArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultId: pulumi.Output.create<String>(map['recoveryVaultId'] as String),
-      sourceNetworkName: pulumi.Output.create<String>(map['sourceNetworkName'] as String),
-      sourceSystemCenterVirtualMachineManagerName: pulumi.Output.create<String>(map['sourceSystemCenterVirtualMachineManagerName'] as String),
-      targetNetworkId: pulumi.Output.create<String>(map['targetNetworkId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryVaultId: (map['recoveryVaultId'] as String).input(),
+      sourceNetworkName: (map['sourceNetworkName'] as String).input(),
+      sourceSystemCenterVirtualMachineManagerName: (map['sourceSystemCenterVirtualMachineManagerName'] as String).input(),
+      targetNetworkId: (map['targetNetworkId'] as String).input(),
     );
   }
 }

@@ -1,44 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsBackupPlansPlan {
   /// Backup type. Valid values: `COMPLETE`.
-  final String backupType;
-  final String createTime;
+  final pulumi.Input<String> backupType;
+  final pulumi.Input<String> createTime;
   /// The creation time of the backup plan. UNIX time in seconds.
-  final String createdTime;
-  final String detail;
+  final pulumi.Input<String> createdTime;
+  final pulumi.Input<String> detail;
   /// Whether to be suspended. Valid values: `true`, `false`.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// The ID of ecs backup plan.
-  final String ecsBackupPlanId;
+  final pulumi.Input<String> ecsBackupPlanId;
   /// The name of the backup plan.
-  final String ecsBackupPlanName;
+  final pulumi.Input<String> ecsBackupPlanName;
   /// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
-  final String exclude;
+  final pulumi.Input<String> exclude;
   /// The ID of ecs backup plan.
-  final String id;
+  final pulumi.Input<String> id;
   /// Include path. String of Json list. Up to 255 characters. e.g. `"[\"/var\"]"`
-  final String include;
+  final pulumi.Input<String> include;
   /// The ID of ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Windows operating system with application consistency using VSS. eg: {`UseVSS`:false}.
-  final String options;
+  final pulumi.Input<String> options;
   /// Backup path. e.g. `["/home", "/var"]`
-  final List<String> paths;
+  final pulumi.Input<List<String>> paths;
   /// Backup retention days, the minimum is 1.
-  final String retention;
+  final pulumi.Input<String> retention;
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
-  final String schedule;
+  final pulumi.Input<String> schedule;
   /// The type of backup source.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
-  final String speedLimit;
+  final pulumi.Input<String> speedLimit;
   /// The update time of the backup plan. UNIX time in seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
   /// The ID of Backup vault.
-  final String vaultId;
+  final pulumi.Input<String> vaultId;
 
   /// Creates a new [GetEcsBackupPlansPlan].
   /// [backupType] Backup type. Valid values: `COMPLETE`.
@@ -108,25 +109,25 @@ class GetEcsBackupPlansPlan {
 
   factory GetEcsBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetEcsBackupPlansPlan(
-      backupType: map['backupType'] as String,
-      createTime: map['createTime'] as String,
-      createdTime: map['createdTime'] as String,
-      detail: map['detail'] as String,
-      disabled: map['disabled'] as bool,
-      ecsBackupPlanId: map['ecsBackupPlanId'] as String,
-      ecsBackupPlanName: map['ecsBackupPlanName'] as String,
-      exclude: map['exclude'] as String,
-      id: map['id'] as String,
-      include: map['include'] as String,
-      instanceId: map['instanceId'] as String,
-      options: map['options'] as String,
-      paths: (map['paths'] as List).cast<String>(),
-      retention: map['retention'] as String,
-      schedule: map['schedule'] as String,
-      sourceType: map['sourceType'] as String,
-      speedLimit: map['speedLimit'] as String,
-      updatedTime: map['updatedTime'] as String,
-      vaultId: map['vaultId'] as String,
+      backupType: (map['backupType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      detail: (map['detail'] as String).input(),
+      disabled: (map['disabled'] as bool).input(),
+      ecsBackupPlanId: (map['ecsBackupPlanId'] as String).input(),
+      ecsBackupPlanName: (map['ecsBackupPlanName'] as String).input(),
+      exclude: (map['exclude'] as String).input(),
+      id: (map['id'] as String).input(),
+      include: (map['include'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      options: (map['options'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      retention: (map['retention'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      speedLimit: (map['speedLimit'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class SubscriptionIAMPolicyState {
   /// [project] The project in which the resource belongs. If it
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
   SubscriptionIAMPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? subscription,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subscription = pulumi.Input.asOptionalInput<String>(subscription);
+    this.etag,
+    this.policyData,
+    this.project,
+    this.subscription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SubscriptionIAMPolicyState {
 
   factory SubscriptionIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      subscription: map['subscription'] == null ? null : pulumi.Output.create<String>(map['subscription'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
     );
   }
 }

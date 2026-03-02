@@ -41,25 +41,16 @@ class GetZoneRecordsArgs {
   /// [userClientIp] The IP address of the client.
   /// [zoneId] The ID of the private zone.
   GetZoneRecordsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? searchMode,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tag,
-    pulumi.Output<String>? userClientIp,
-    required pulumi.Output<String> zoneId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      searchMode = pulumi.Input.asOptionalInput<String>(searchMode),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tag = pulumi.Input.asOptionalInput<String>(tag),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.ids,
+    this.keyword,
+    this.lang,
+    this.outputFile,
+    this.searchMode,
+    this.status,
+    this.tag,
+    this.userClientIp,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class GetZoneRecordsArgs {
 
   factory GetZoneRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRecordsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      searchMode: map['searchMode'] == null ? null : pulumi.Output.create<String>(map['searchMode'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tag: map['tag'] == null ? null : pulumi.Output.create<String>(map['tag'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      searchMode: map['searchMode'] == null ? null : (map['searchMode'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

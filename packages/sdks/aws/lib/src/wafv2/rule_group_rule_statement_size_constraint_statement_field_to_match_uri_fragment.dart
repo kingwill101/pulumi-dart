@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment {
   /// What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
-  final String? fallbackBehavior;
+  final pulumi.Input<String>? fallbackBehavior;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment].
   /// [fallbackBehavior] What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
@@ -19,7 +20,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment {
 
   factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : map['fallbackBehavior'] as String,
+      fallbackBehavior: map['fallbackBehavior'] == null ? null : (map['fallbackBehavior'] as String).input(),
     );
   }
 }

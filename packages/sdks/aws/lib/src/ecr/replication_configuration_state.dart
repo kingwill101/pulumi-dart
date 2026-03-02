@@ -17,13 +17,10 @@ class ReplicationConfigurationState {
   /// [registryId] The registry ID where the replication configuration was created.
   /// [replicationConfiguration] Replication configuration for a registry. See Replication Configuration.
   ReplicationConfigurationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    pulumi.Output<ReplicationConfigurationReplicationConfiguration>? replicationConfiguration,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      replicationConfiguration = pulumi.Input.asOptionalInput<ReplicationConfigurationReplicationConfiguration>(replicationConfiguration);
+    this.region,
+    this.registryId,
+    this.replicationConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class ReplicationConfigurationState {
 
   factory ReplicationConfigurationState.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : pulumi.Output.create<ReplicationConfigurationReplicationConfiguration>(ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

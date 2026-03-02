@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Cloud Storage source of conversation data.
 class GoogleCloudContactcenterinsightsV1GcsSourceResponse {
   /// Cloud Storage URI that points to a file that contains the conversation audio.
-  final String audioUri;
+  final pulumi.Input<String> audioUri;
   /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
-  final String transcriptUri;
+  final pulumi.Input<String> transcriptUri;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1GcsSourceResponse].
   /// [audioUri] Cloud Storage URI that points to a file that contains the conversation audio.
@@ -25,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1GcsSourceResponse {
 
   factory GoogleCloudContactcenterinsightsV1GcsSourceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1GcsSourceResponse(
-      audioUri: map['audioUri'] as String,
-      transcriptUri: map['transcriptUri'] as String,
+      audioUri: (map['audioUri'] as String).input(),
+      transcriptUri: (map['transcriptUri'] as String).input(),
     );
   }
 }

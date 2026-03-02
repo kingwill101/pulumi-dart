@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_configuration_response.dart';
 
 /// ModernizeProject properties.
 class ModernizeProjectModelPropertiesResponse {
   /// MigrationConfiguration properties.
-  final MigrationConfigurationResponse? migrationConfiguration;
+  final pulumi.Input<MigrationConfigurationResponse>? migrationConfiguration;
   /// Gets or sets the provisioning state of the ModernizeProject.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Gets or sets the service endpoint.
-  final String serviceEndpoint;
+  final pulumi.Input<String> serviceEndpoint;
   /// Gets or sets the service resource Id.
-  final String serviceResourceId;
+  final pulumi.Input<String> serviceResourceId;
 
   /// Creates a new [ModernizeProjectModelPropertiesResponse].
   /// [migrationConfiguration] MigrationConfiguration properties.
@@ -27,7 +28,7 @@ class ModernizeProjectModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationConfiguration': ?migrationConfiguration == null ? null : migrationConfiguration!.toMap(),
+      'migrationConfiguration': ?pulumi.Input.mapOptionalInputValue<MigrationConfigurationResponse, Map<String, dynamic>>(migrationConfiguration, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'serviceEndpoint': serviceEndpoint,
       'serviceResourceId': serviceResourceId,
@@ -36,10 +37,10 @@ class ModernizeProjectModelPropertiesResponse {
 
   factory ModernizeProjectModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelPropertiesResponse(
-      migrationConfiguration: map['migrationConfiguration'] == null ? null : MigrationConfigurationResponse.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      serviceEndpoint: map['serviceEndpoint'] as String,
-      serviceResourceId: map['serviceResourceId'] as String,
+      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfigurationResponse.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      serviceEndpoint: (map['serviceEndpoint'] as String).input(),
+      serviceResourceId: (map['serviceResourceId'] as String).input(),
     );
   }
 }

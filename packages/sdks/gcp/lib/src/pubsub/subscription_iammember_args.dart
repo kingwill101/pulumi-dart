@@ -35,17 +35,12 @@ class SubscriptionIAMMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
   SubscriptionIAMMemberArgs({
-    pulumi.Output<SubscriptionIAMMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> subscription,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SubscriptionIAMMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      subscription = pulumi.Input.asInput<String>(subscription);
+    this.condition,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.subscription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,11 +54,11 @@ class SubscriptionIAMMemberArgs {
 
   factory SubscriptionIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SubscriptionIAMMemberCondition>(SubscriptionIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      subscription: pulumi.Output.create<String>(map['subscription'] as String),
+      condition: map['condition'] == null ? null : (SubscriptionIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      subscription: (map['subscription'] as String).input(),
     );
   }
 }

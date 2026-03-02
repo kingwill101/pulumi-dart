@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFlexibleServerStorage {
   /// Is Storage Auto Grow enabled?
-  final bool autoGrowEnabled;
+  final pulumi.Input<bool> autoGrowEnabled;
   /// Should IOPS be scaled automatically?
-  final bool ioScalingEnabled;
+  final pulumi.Input<bool> ioScalingEnabled;
   /// The storage IOPS of the MySQL Flexible Server.
-  final int iops;
+  final pulumi.Input<int> iops;
   /// The max storage allowed for the MySQL Flexible Server.
-  final int sizeGb;
+  final pulumi.Input<int> sizeGb;
 
   /// Creates a new [GetFlexibleServerStorage].
   /// [autoGrowEnabled] Is Storage Auto Grow enabled?
@@ -34,10 +35,10 @@ class GetFlexibleServerStorage {
 
   factory GetFlexibleServerStorage.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerStorage(
-      autoGrowEnabled: map['autoGrowEnabled'] as bool,
-      ioScalingEnabled: map['ioScalingEnabled'] as bool,
-      iops: map['iops'] as int,
-      sizeGb: map['sizeGb'] as int,
+      autoGrowEnabled: (map['autoGrowEnabled'] as bool).input(),
+      ioScalingEnabled: (map['ioScalingEnabled'] as bool).input(),
+      iops: (map['iops'] as int).input(),
+      sizeGb: (map['sizeGb'] as int).input(),
     );
   }
 }

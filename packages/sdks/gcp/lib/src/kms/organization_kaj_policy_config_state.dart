@@ -17,11 +17,9 @@ class OrganizationKajPolicyConfigState {
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [organization] The organization number for which to retrieve config.
   OrganizationKajPolicyConfigState({
-    pulumi.Output<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy,
-    pulumi.Output<String>? organization,
-  }) :
-      defaultKeyAccessJustificationPolicy = pulumi.Input.asOptionalInput<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>(defaultKeyAccessJustificationPolicy),
-      organization = pulumi.Input.asOptionalInput<String>(organization);
+    this.defaultKeyAccessJustificationPolicy,
+    this.organization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class OrganizationKajPolicyConfigState {
 
   factory OrganizationKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return OrganizationKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : pulumi.Output.create<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>(OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
     );
   }
 }

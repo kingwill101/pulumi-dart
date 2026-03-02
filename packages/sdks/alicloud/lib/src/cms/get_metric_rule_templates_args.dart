@@ -31,21 +31,14 @@ class GetMetricRuleTemplatesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [templateId] The ID of the alert template.
   GetMetricRuleTemplatesArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? keyword,
-    pulumi.Output<String>? metricRuleTemplateName,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? templateId,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      keyword = pulumi.Input.asOptionalInput<String>(keyword),
-      metricRuleTemplateName = pulumi.Input.asOptionalInput<String>(metricRuleTemplateName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    this.enableDetails,
+    this.ids,
+    this.keyword,
+    this.metricRuleTemplateName,
+    this.nameRegex,
+    this.outputFile,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetMetricRuleTemplatesArgs {
 
   factory GetMetricRuleTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      keyword: map['keyword'] == null ? null : pulumi.Output.create<String>(map['keyword'] as String),
-      metricRuleTemplateName: map['metricRuleTemplateName'] == null ? null : pulumi.Output.create<String>(map['metricRuleTemplateName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
+      metricRuleTemplateName: map['metricRuleTemplateName'] == null ? null : (map['metricRuleTemplateName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

@@ -46,31 +46,19 @@ class StoragePoolArgs {
   /// [storagePoolType] Type of the storage pool.
   /// [zone] Optional.
   StoragePoolArgs({
-    pulumi.Output<StoragePoolCapacityProvisioningType>? capacityProvisioningType,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<StoragePoolPerformanceProvisioningType>? performanceProvisioningType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? provisionedIops,
-    pulumi.Output<String>? provisionedThroughput,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? sizeGb,
-    pulumi.Output<String>? storagePoolType,
-    pulumi.Output<String>? zone,
-  }) :
-      capacityProvisioningType = pulumi.Input.asOptionalInput<StoragePoolCapacityProvisioningType>(capacityProvisioningType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      performanceProvisioningType = pulumi.Input.asOptionalInput<StoragePoolPerformanceProvisioningType>(performanceProvisioningType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      provisionedIops = pulumi.Input.asOptionalInput<String>(provisionedIops),
-      provisionedThroughput = pulumi.Input.asOptionalInput<String>(provisionedThroughput),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sizeGb = pulumi.Input.asOptionalInput<String>(sizeGb),
-      storagePoolType = pulumi.Input.asOptionalInput<String>(storagePoolType),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.capacityProvisioningType,
+    this.description,
+    this.labels,
+    this.name,
+    this.performanceProvisioningType,
+    this.project,
+    this.provisionedIops,
+    this.provisionedThroughput,
+    this.requestId,
+    this.sizeGb,
+    this.storagePoolType,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class StoragePoolArgs {
 
   factory StoragePoolArgs.fromMap(Map<String, dynamic> map) {
     return StoragePoolArgs(
-      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : pulumi.Output.create<StoragePoolCapacityProvisioningType>(StoragePoolCapacityProvisioningType.fromValue(map['capacityProvisioningType'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : pulumi.Output.create<StoragePoolPerformanceProvisioningType>(StoragePoolPerformanceProvisioningType.fromValue(map['performanceProvisioningType'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      provisionedIops: map['provisionedIops'] == null ? null : pulumi.Output.create<String>(map['provisionedIops'] as String),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : pulumi.Output.create<String>(map['provisionedThroughput'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sizeGb: map['sizeGb'] == null ? null : pulumi.Output.create<String>(map['sizeGb'] as String),
-      storagePoolType: map['storagePoolType'] == null ? null : pulumi.Output.create<String>(map['storagePoolType'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      capacityProvisioningType: map['capacityProvisioningType'] == null ? null : (StoragePoolCapacityProvisioningType.fromValue(map['capacityProvisioningType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      performanceProvisioningType: map['performanceProvisioningType'] == null ? null : (StoragePoolPerformanceProvisioningType.fromValue(map['performanceProvisioningType'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as String).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as String).input(),
+      storagePoolType: map['storagePoolType'] == null ? null : (map['storagePoolType'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

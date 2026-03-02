@@ -16,11 +16,9 @@ class GetGatewayArgs {
   /// [apiManagementId] The ID of the API Management Service in which the Gateway exists.
   /// [name] The name of the API Management Gateway.
   GetGatewayArgs({
-    required pulumi.Output<String> apiManagementId,
-    required pulumi.Output<String> name,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.apiManagementId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

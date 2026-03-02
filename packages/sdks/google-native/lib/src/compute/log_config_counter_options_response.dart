@@ -6,11 +6,11 @@ import 'log_config_counter_options_custom_field_response.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsResponse {
   /// This is deprecated and has no effect. Do not use.
-  final List<LogConfigCounterOptionsCustomFieldResponse> customFields;
+  final pulumi.Input<List<LogConfigCounterOptionsCustomFieldResponse>> customFields;
   /// This is deprecated and has no effect. Do not use.
-  final String field;
+  final pulumi.Input<String> field;
   /// This is deprecated and has no effect. Do not use.
-  final String metric;
+  final pulumi.Input<String> metric;
 
   /// Creates a new [LogConfigCounterOptionsResponse].
   /// [customFields] This is deprecated and has no effect. Do not use.
@@ -24,7 +24,7 @@ class LogConfigCounterOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields': pulumi.Input.encodeList<LogConfigCounterOptionsCustomFieldResponse, Map<String, dynamic>>(customFields, (value) => value.toMap()),
+      'customFields': pulumi.Input.mapInputValue<List<LogConfigCounterOptionsCustomFieldResponse>, List<Map<String, dynamic>>>(customFields, (value) => pulumi.Input.encodeList<LogConfigCounterOptionsCustomFieldResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'field': field,
       'metric': metric,
     };
@@ -32,9 +32,9 @@ class LogConfigCounterOptionsResponse {
 
   factory LogConfigCounterOptionsResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsResponse(
-      customFields: pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldResponse>(map['customFields'], (value) => LogConfigCounterOptionsCustomFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
-      field: map['field'] as String,
-      metric: map['metric'] as String,
+      customFields: (pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldResponse>(map['customFields'], (value) => LogConfigCounterOptionsCustomFieldResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      field: (map['field'] as String).input(),
+      metric: (map['metric'] as String).input(),
     );
   }
 }

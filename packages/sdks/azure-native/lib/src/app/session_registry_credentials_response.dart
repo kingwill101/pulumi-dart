@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Session pool private registry credentials.
 class SessionRegistryCredentialsResponse {
   /// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The name of the secret that contains the registry login password
-  final String? passwordSecretRef;
+  final pulumi.Input<String>? passwordSecretRef;
   /// Container registry server.
-  final String? server;
+  final pulumi.Input<String>? server;
   /// Container registry username.
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [SessionRegistryCredentialsResponse].
   /// [identity] A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
@@ -35,10 +36,10 @@ class SessionRegistryCredentialsResponse {
 
   factory SessionRegistryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return SessionRegistryCredentialsResponse(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      passwordSecretRef: map['passwordSecretRef'] == null ? null : map['passwordSecretRef'] as String,
-      server: map['server'] == null ? null : map['server'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      passwordSecretRef: map['passwordSecretRef'] == null ? null : (map['passwordSecretRef'] as String).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

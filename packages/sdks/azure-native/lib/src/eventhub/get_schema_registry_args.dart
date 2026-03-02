@@ -19,13 +19,10 @@ class GetSchemaRegistryArgs {
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [schemaGroupName] The Schema Group name
   GetSchemaRegistryArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaGroupName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaGroupName = pulumi.Input.asInput<String>(schemaGroupName);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.schemaGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSchemaRegistryArgs {
 
   factory GetSchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaRegistryArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaGroupName: pulumi.Output.create<String>(map['schemaGroupName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaGroupName: (map['schemaGroupName'] as String).input(),
     );
   }
 }

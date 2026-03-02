@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustAnchorSourceSourceData {
   /// The ARN of an ACM Private Certificate Authority.
-  final String? acmPcaArn;
-  final String? x509CertificateData;
+  final pulumi.Input<String>? acmPcaArn;
+  final pulumi.Input<String>? x509CertificateData;
 
   /// Creates a new [TrustAnchorSourceSourceData].
   /// [acmPcaArn] The ARN of an ACM Private Certificate Authority.
@@ -23,8 +24,8 @@ class TrustAnchorSourceSourceData {
 
   factory TrustAnchorSourceSourceData.fromMap(Map<String, dynamic> map) {
     return TrustAnchorSourceSourceData(
-      acmPcaArn: map['acmPcaArn'] == null ? null : map['acmPcaArn'] as String,
-      x509CertificateData: map['x509CertificateData'] == null ? null : map['x509CertificateData'] as String,
+      acmPcaArn: map['acmPcaArn'] == null ? null : (map['acmPcaArn'] as String).input(),
+      x509CertificateData: map['x509CertificateData'] == null ? null : (map['x509CertificateData'] as String).input(),
     );
   }
 }

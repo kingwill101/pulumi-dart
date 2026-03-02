@@ -17,11 +17,9 @@ class BlobInventoryPolicyArgs {
   /// [rules] One or more `rules` blocks as defined below.
   /// [storageAccountId] The ID of the storage account to apply this Blob Inventory Policy to. Changing this forces a new Storage Blob Inventory Policy to be created.
   BlobInventoryPolicyArgs({
-    required pulumi.Output<List<BlobInventoryPolicyRule>> rules,
-    required pulumi.Output<String> storageAccountId,
-  }) :
-      rules = pulumi.Input.asInput<List<BlobInventoryPolicyRule>>(rules),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId);
+    required this.rules,
+    required this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class BlobInventoryPolicyArgs {
 
   factory BlobInventoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyArgs(
-      rules: pulumi.Output.create<List<BlobInventoryPolicyRule>>(pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules'], (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
+      rules: (pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules'], (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

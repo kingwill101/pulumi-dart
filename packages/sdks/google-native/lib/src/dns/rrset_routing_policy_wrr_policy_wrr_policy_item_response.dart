@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rrset_routing_policy_health_check_targets_response.dart';
 
 /// A routing block which contains the routing information for one WRR item.
 class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse {
   /// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
-  final RRSetRoutingPolicyHealthCheckTargetsResponse healthCheckedTargets;
-  final String kind;
-  final List<String> rrdatas;
+  final pulumi.Input<RRSetRoutingPolicyHealthCheckTargetsResponse> healthCheckedTargets;
+  final pulumi.Input<String> kind;
+  final pulumi.Input<List<String>> rrdatas;
   /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
-  final List<String> signatureRrdatas;
+  final pulumi.Input<List<String>> signatureRrdatas;
   /// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
-  final double weight;
+  final pulumi.Input<double> weight;
 
   /// Creates a new [RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse].
   /// [healthCheckedTargets] Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
@@ -29,7 +30,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckedTargets': healthCheckedTargets.toMap(),
+      'healthCheckedTargets': pulumi.Input.mapInputValue<RRSetRoutingPolicyHealthCheckTargetsResponse, Map<String, dynamic>>(healthCheckedTargets, (value) => value.toMap()),
       'kind': kind,
       'rrdatas': rrdatas,
       'signatureRrdatas': signatureRrdatas,
@@ -39,11 +40,11 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse {
 
   factory RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse(
-      healthCheckedTargets: RRSetRoutingPolicyHealthCheckTargetsResponse.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      rrdatas: (map['rrdatas'] as List).cast<String>(),
-      signatureRrdatas: (map['signatureRrdatas'] as List).cast<String>(),
-      weight: map['weight'] as double,
+      healthCheckedTargets: (RRSetRoutingPolicyHealthCheckTargetsResponse.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      rrdatas: ((map['rrdatas'] as List).cast<String>()).input(),
+      signatureRrdatas: ((map['signatureRrdatas'] as List).cast<String>()).input(),
+      weight: (map['weight'] as double).input(),
     );
   }
 }

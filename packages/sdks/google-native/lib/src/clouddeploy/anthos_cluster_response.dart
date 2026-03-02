@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information specifying an Anthos Cluster.
 class AnthosClusterResponse {
   /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-  final String membership;
+  final pulumi.Input<String> membership;
 
   /// Creates a new [AnthosClusterResponse].
   /// [membership] Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -20,7 +21,7 @@ class AnthosClusterResponse {
 
   factory AnthosClusterResponse.fromMap(Map<String, dynamic> map) {
     return AnthosClusterResponse(
-      membership: map['membership'] as String,
+      membership: (map['membership'] as String).input(),
     );
   }
 }

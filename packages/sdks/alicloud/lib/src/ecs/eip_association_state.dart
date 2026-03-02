@@ -49,21 +49,14 @@ class EipAssociationState {
   /// [privateIpAddress] The IP address in the CIDR block of the vSwitch.
   /// [vpcId] The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
   EipAssociationState({
-    pulumi.Output<String>? allocationId,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<String>? vpcId,
-  }) :
-      allocationId = pulumi.Input.asOptionalInput<String>(allocationId),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.allocationId,
+    this.force,
+    this.instanceId,
+    this.instanceType,
+    this.mode,
+    this.privateIpAddress,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,13 +72,13 @@ class EipAssociationState {
 
   factory EipAssociationState.fromMap(Map<String, dynamic> map) {
     return EipAssociationState(
-      allocationId: map['allocationId'] == null ? null : pulumi.Output.create<String>(map['allocationId'] as String),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

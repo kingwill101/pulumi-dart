@@ -35,25 +35,16 @@ class MembershipRbacRoleBindingArgs {
   /// [role] Role to bind to the principal
   /// [user] user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
   MembershipRbacRoleBindingArgs({
-    pulumi.Output<String>? group,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rbacrolebindingId,
-    required pulumi.Output<RoleGkehubV1alpha> role,
-    pulumi.Output<String>? user,
-  }) :
-      group = pulumi.Input.asOptionalInput<String>(group),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId),
-      role = pulumi.Input.asInput<RoleGkehubV1alpha>(role),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.group,
+    this.labels,
+    this.location,
+    required this.membershipId,
+    this.name,
+    this.project,
+    required this.rbacrolebindingId,
+    required this.role,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class MembershipRbacRoleBindingArgs {
 
   factory MembershipRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingArgs(
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rbacrolebindingId: pulumi.Output.create<String>(map['rbacrolebindingId'] as String),
-      role: pulumi.Output.create<RoleGkehubV1alpha>(RoleGkehubV1alpha.fromMap((map['role'] as Map).cast<String, dynamic>())),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
+      role: (RoleGkehubV1alpha.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

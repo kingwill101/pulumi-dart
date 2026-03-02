@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupPolicyBackupPolicy {
   /// A status of the backup policy. Valid values: `ENABLED`, `DISABLED`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [BackupPolicyBackupPolicy].
   /// [status] A status of the backup policy. Valid values: `ENABLED`, `DISABLED`.
@@ -19,7 +20,7 @@ class BackupPolicyBackupPolicy {
 
   factory BackupPolicyBackupPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBackupPolicy(
-      status: map['status'] as String,
+      status: (map['status'] as String).input(),
     );
   }
 }

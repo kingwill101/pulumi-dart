@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsDatasetConfigLink {
   /// (Output)
   /// Dataset name for the linked DatasetConfig.
-  final String? dataset;
+  final pulumi.Input<String>? dataset;
   /// (Output)
   /// State of the linked DatasetConfig.
-  final bool? linked;
+  final pulumi.Input<bool>? linked;
 
   /// Creates a new [InsightsDatasetConfigLink].
   /// [dataset] (Output)
@@ -26,8 +27,8 @@ class InsightsDatasetConfigLink {
 
   factory InsightsDatasetConfigLink.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigLink(
-      dataset: map['dataset'] == null ? null : map['dataset'] as String,
-      linked: map['linked'] == null ? null : map['linked'] as bool,
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      linked: map['linked'] == null ? null : (map['linked'] as bool).input(),
     );
   }
 }

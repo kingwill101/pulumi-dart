@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RegistryEndpoint Artifact Pull Secret authentication properties
 class RegistryEndpointArtifactPullSecretSettings {
   /// The name of the kubernetes secret that contains the artifact pull secret.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
 
   /// Creates a new [RegistryEndpointArtifactPullSecretSettings].
   /// [secretRef] The name of the kubernetes secret that contains the artifact pull secret.
@@ -20,7 +21,7 @@ class RegistryEndpointArtifactPullSecretSettings {
 
   factory RegistryEndpointArtifactPullSecretSettings.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointArtifactPullSecretSettings(
-      secretRef: map['secretRef'] as String,
+      secretRef: (map['secretRef'] as String).input(),
     );
   }
 }

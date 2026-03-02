@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the storage of the tokens if blob storage is used.
 class BlobStorageTokenStore {
   /// The name of the app setting containing the SAS URL of the blob storage containing the tokens.
-  final String? sasUrlSettingName;
+  final pulumi.Input<String>? sasUrlSettingName;
 
   /// Creates a new [BlobStorageTokenStore].
   /// [sasUrlSettingName] The name of the app setting containing the SAS URL of the blob storage containing the tokens.
@@ -20,7 +21,7 @@ class BlobStorageTokenStore {
 
   factory BlobStorageTokenStore.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStore(
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : map['sasUrlSettingName'] as String,
+      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName'] as String).input(),
     );
   }
 }

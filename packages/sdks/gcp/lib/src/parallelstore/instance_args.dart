@@ -91,29 +91,18 @@ class InstanceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [reservedIpRange] Immutable. Contains the id of the allocated IP address range
   InstanceArgs({
-    required pulumi.Output<String> capacityGib,
-    pulumi.Output<String>? deploymentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? directoryStripeLevel,
-    pulumi.Output<String>? fileStripeLevel,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? reservedIpRange,
-  }) :
-      capacityGib = pulumi.Input.asInput<String>(capacityGib),
-      deploymentType = pulumi.Input.asOptionalInput<String>(deploymentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryStripeLevel = pulumi.Input.asOptionalInput<String>(directoryStripeLevel),
-      fileStripeLevel = pulumi.Input.asOptionalInput<String>(fileStripeLevel),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservedIpRange = pulumi.Input.asOptionalInput<String>(reservedIpRange);
+    required this.capacityGib,
+    this.deploymentType,
+    this.description,
+    this.directoryStripeLevel,
+    this.fileStripeLevel,
+    required this.instanceId,
+    this.labels,
+    required this.location,
+    this.network,
+    this.project,
+    this.reservedIpRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -133,17 +122,17 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      capacityGib: pulumi.Output.create<String>(map['capacityGib'] as String),
-      deploymentType: map['deploymentType'] == null ? null : pulumi.Output.create<String>(map['deploymentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryStripeLevel: map['directoryStripeLevel'] == null ? null : pulumi.Output.create<String>(map['directoryStripeLevel'] as String),
-      fileStripeLevel: map['fileStripeLevel'] == null ? null : pulumi.Output.create<String>(map['fileStripeLevel'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservedIpRange: map['reservedIpRange'] == null ? null : pulumi.Output.create<String>(map['reservedIpRange'] as String),
+      capacityGib: (map['capacityGib'] as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryStripeLevel: map['directoryStripeLevel'] == null ? null : (map['directoryStripeLevel'] as String).input(),
+      fileStripeLevel: map['fileStripeLevel'] == null ? null : (map['fileStripeLevel'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
     );
   }
 }

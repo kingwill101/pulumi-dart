@@ -52,35 +52,21 @@ class SnmpTrapsArgs {
   /// [securityName] Security name used in conjunction with SNMPv3.
   /// [version] SNMP version used for sending the trap.
   SnmpTrapsArgs({
-    pulumi.Output<String>? authPasswordencrypted,
-    pulumi.Output<String>? authProtocol,
-    pulumi.Output<String>? community,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? engineId,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? privacyPassword,
-    pulumi.Output<String>? privacyPasswordEncrypted,
-    pulumi.Output<String>? privacyProtocol,
-    pulumi.Output<String>? securityLevel,
-    pulumi.Output<String>? securityName,
-    pulumi.Output<String>? version,
-  }) :
-      authPasswordencrypted = pulumi.Input.asOptionalInput<String>(authPasswordencrypted),
-      authProtocol = pulumi.Input.asOptionalInput<String>(authProtocol),
-      community = pulumi.Input.asOptionalInput<String>(community),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engineId = pulumi.Input.asOptionalInput<String>(engineId),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      privacyPassword = pulumi.Input.asOptionalInput<String>(privacyPassword),
-      privacyPasswordEncrypted = pulumi.Input.asOptionalInput<String>(privacyPasswordEncrypted),
-      privacyProtocol = pulumi.Input.asOptionalInput<String>(privacyProtocol),
-      securityLevel = pulumi.Input.asOptionalInput<String>(securityLevel),
-      securityName = pulumi.Input.asOptionalInput<String>(securityName),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.authPasswordencrypted,
+    this.authProtocol,
+    this.community,
+    this.description,
+    this.engineId,
+    this.host,
+    this.name,
+    this.port,
+    this.privacyPassword,
+    this.privacyPasswordEncrypted,
+    this.privacyProtocol,
+    this.securityLevel,
+    this.securityName,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class SnmpTrapsArgs {
 
   factory SnmpTrapsArgs.fromMap(Map<String, dynamic> map) {
     return SnmpTrapsArgs(
-      authPasswordencrypted: map['authPasswordencrypted'] == null ? null : pulumi.Output.create<String>(map['authPasswordencrypted'] as String),
-      authProtocol: map['authProtocol'] == null ? null : pulumi.Output.create<String>(map['authProtocol'] as String),
-      community: map['community'] == null ? null : pulumi.Output.create<String>(map['community'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      engineId: map['engineId'] == null ? null : pulumi.Output.create<String>(map['engineId'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      privacyPassword: map['privacyPassword'] == null ? null : pulumi.Output.create<String>(map['privacyPassword'] as String),
-      privacyPasswordEncrypted: map['privacyPasswordEncrypted'] == null ? null : pulumi.Output.create<String>(map['privacyPasswordEncrypted'] as String),
-      privacyProtocol: map['privacyProtocol'] == null ? null : pulumi.Output.create<String>(map['privacyProtocol'] as String),
-      securityLevel: map['securityLevel'] == null ? null : pulumi.Output.create<String>(map['securityLevel'] as String),
-      securityName: map['securityName'] == null ? null : pulumi.Output.create<String>(map['securityName'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      authPasswordencrypted: map['authPasswordencrypted'] == null ? null : (map['authPasswordencrypted'] as String).input(),
+      authProtocol: map['authProtocol'] == null ? null : (map['authProtocol'] as String).input(),
+      community: map['community'] == null ? null : (map['community'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      privacyPassword: map['privacyPassword'] == null ? null : (map['privacyPassword'] as String).input(),
+      privacyPasswordEncrypted: map['privacyPasswordEncrypted'] == null ? null : (map['privacyPasswordEncrypted'] as String).input(),
+      privacyProtocol: map['privacyProtocol'] == null ? null : (map['privacyProtocol'] as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
+      securityName: map['securityName'] == null ? null : (map['securityName'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

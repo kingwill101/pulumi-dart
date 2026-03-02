@@ -7,13 +7,13 @@ import 'lease_coordination_k8s_io_v1beta1.dart';
 /// LeaseList is a list of Lease objects.
 class LeaseListCoordinationK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Items is a list of schema objects.
-  final List<LeaseCoordinationK8sIoV1beta1> items;
+  final pulumi.Input<List<LeaseCoordinationK8sIoV1beta1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ListMeta? metadata;
+  final pulumi.Input<ListMeta>? metadata;
 
   /// Creates a new [LeaseListCoordinationK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -30,18 +30,18 @@ class LeaseListCoordinationK8sIoV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': pulumi.Input.encodeList<LeaseCoordinationK8sIoV1beta1, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<LeaseCoordinationK8sIoV1beta1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<LeaseCoordinationK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory LeaseListCoordinationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return LeaseListCoordinationK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      items: pulumi.Input.decodeList<LeaseCoordinationK8sIoV1beta1>(map['items'], (value) => LeaseCoordinationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: (pulumi.Input.decodeList<LeaseCoordinationK8sIoV1beta1>(map['items'], (value) => LeaseCoordinationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

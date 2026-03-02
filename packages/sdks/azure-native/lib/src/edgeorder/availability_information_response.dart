@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Availability information of a product system.
 class AvailabilityInformationResponse {
   /// Current availability stage of the product.
-  final String availabilityStage;
+  final pulumi.Input<String> availabilityStage;
   /// Reason why the product is disabled.
-  final String disabledReason;
+  final pulumi.Input<String> disabledReason;
   /// Message for why the product is disabled.
-  final String disabledReasonMessage;
+  final pulumi.Input<String> disabledReasonMessage;
 
   /// Creates a new [AvailabilityInformationResponse].
   /// [availabilityStage] Current availability stage of the product.
@@ -30,9 +31,9 @@ class AvailabilityInformationResponse {
 
   factory AvailabilityInformationResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityInformationResponse(
-      availabilityStage: map['availabilityStage'] as String,
-      disabledReason: map['disabledReason'] as String,
-      disabledReasonMessage: map['disabledReasonMessage'] as String,
+      availabilityStage: (map['availabilityStage'] as String).input(),
+      disabledReason: (map['disabledReason'] as String).input(),
+      disabledReasonMessage: (map['disabledReasonMessage'] as String).input(),
     );
   }
 }

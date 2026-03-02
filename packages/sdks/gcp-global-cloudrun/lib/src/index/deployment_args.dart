@@ -19,13 +19,10 @@ class DeploymentArgs {
   /// [projectId] The project in which to create the cloudrun resources
   /// [serviceName] The name of the cloudrun service
   DeploymentArgs({
-    required pulumi.Output<String> imageName,
-    required pulumi.Output<String> projectId,
-    required pulumi.Output<String> serviceName,
-  }) :
-      imageName = pulumi.Input.asInput<String>(imageName),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.imageName,
+    required this.projectId,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      imageName: pulumi.Output.create<String>(map['imageName'] as String),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      imageName: (map['imageName'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

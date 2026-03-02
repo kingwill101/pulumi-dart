@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data disks groups for the role.
 class DataDisksGroups {
   /// The number of disks per node.
-  final int? disksPerNode;
+  final pulumi.Input<int>? disksPerNode;
 
   /// Creates a new [DataDisksGroups].
   /// [disksPerNode] The number of disks per node.
@@ -20,7 +21,7 @@ class DataDisksGroups {
 
   factory DataDisksGroups.fromMap(Map<String, dynamic> map) {
     return DataDisksGroups(
-      disksPerNode: map['disksPerNode'] == null ? null : map['disksPerNode'] as int,
+      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode'] as int).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Port condition that needs to be matched.
 class PortConditionResponse {
   /// Layer4 protocol type that needs to be matched.
-  final String layer4Protocol;
+  final pulumi.Input<String> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final List<String>? portGroupNames;
+  final pulumi.Input<List<String>>? portGroupNames;
   /// Port type that needs to be matched.
-  final String? portType;
+  final pulumi.Input<String>? portType;
   /// List of the Ports that need to be matched.
-  final List<String>? ports;
+  final pulumi.Input<List<String>>? ports;
 
   /// Creates a new [PortConditionResponse].
   /// [layer4Protocol] Layer4 protocol type that needs to be matched.
@@ -35,10 +36,10 @@ class PortConditionResponse {
 
   factory PortConditionResponse.fromMap(Map<String, dynamic> map) {
     return PortConditionResponse(
-      layer4Protocol: map['layer4Protocol'] as String,
-      portGroupNames: map['portGroupNames'] == null ? null : (map['portGroupNames'] as List).cast<String>(),
-      portType: map['portType'] == null ? null : map['portType'] as String,
-      ports: map['ports'] == null ? null : (map['ports'] as List).cast<String>(),
+      layer4Protocol: (map['layer4Protocol'] as String).input(),
+      portGroupNames: map['portGroupNames'] == null ? null : ((map['portGroupNames'] as List).cast<String>()).input(),
+      portType: map['portType'] == null ? null : (map['portType'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
     );
   }
 }

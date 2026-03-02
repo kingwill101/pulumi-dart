@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ipaddress.dart';
 
 /// Endpoint Configuration for frontend and backend
 class EndpointConfiguration {
   /// Address Space
-  final IPAddress address;
+  final pulumi.Input<IPAddress> address;
   /// port ID
-  final String port;
+  final pulumi.Input<String> port;
 
   /// Creates a new [EndpointConfiguration].
   /// [address] Address Space
@@ -19,15 +20,15 @@ class EndpointConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address': address.toMap(),
+      'address': pulumi.Input.mapInputValue<IPAddress, Map<String, dynamic>>(address, (value) => value.toMap()),
       'port': port,
     };
   }
 
   factory EndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointConfiguration(
-      address: IPAddress.fromMap((map['address'] as Map).cast<String, dynamic>()),
-      port: map['port'] as String,
+      address: (IPAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
+      port: (map['port'] as String).input(),
     );
   }
 }

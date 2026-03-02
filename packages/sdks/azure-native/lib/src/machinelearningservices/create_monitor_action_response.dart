@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_definition_response.dart';
 
 class CreateMonitorActionResponse {
   /// Expected value is 'CreateMonitor'.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// [Required] Defines the monitor.
-  final MonitorDefinitionResponse monitorDefinition;
+  final pulumi.Input<MonitorDefinitionResponse> monitorDefinition;
 
   /// Creates a new [CreateMonitorActionResponse].
   /// [actionType] Expected value is 'CreateMonitor'.
@@ -19,14 +20,14 @@ class CreateMonitorActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionType': actionType,
-      'monitorDefinition': monitorDefinition.toMap(),
+      'monitorDefinition': pulumi.Input.mapInputValue<MonitorDefinitionResponse, Map<String, dynamic>>(monitorDefinition, (value) => value.toMap()),
     };
   }
 
   factory CreateMonitorActionResponse.fromMap(Map<String, dynamic> map) {
     return CreateMonitorActionResponse(
-      actionType: map['actionType'] as String,
-      monitorDefinition: MonitorDefinitionResponse.fromMap((map['monitorDefinition'] as Map).cast<String, dynamic>()),
+      actionType: (map['actionType'] as String).input(),
+      monitorDefinition: (MonitorDefinitionResponse.fromMap((map['monitorDefinition'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

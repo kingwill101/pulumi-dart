@@ -7,9 +7,9 @@ import 'ospolicy_resource.dart';
 /// Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
 class OSPolicyResourceGroup {
   /// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
-  final List<OSPolicyInventoryFilter>? inventoryFilters;
+  final pulumi.Input<List<OSPolicyInventoryFilter>>? inventoryFilters;
   /// List of resources configured for this resource group. The resources are executed in the exact order specified here.
-  final List<OSPolicyResource> resources;
+  final pulumi.Input<List<OSPolicyResource>> resources;
 
   /// Creates a new [OSPolicyResourceGroup].
   /// [inventoryFilters] List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
@@ -21,15 +21,15 @@ class OSPolicyResourceGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inventoryFilters': ?inventoryFilters == null ? null : pulumi.Input.encodeList<OSPolicyInventoryFilter, Map<String, dynamic>>(inventoryFilters!, (value) => value.toMap()),
-      'resources': pulumi.Input.encodeList<OSPolicyResource, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'inventoryFilters': ?pulumi.Input.mapOptionalInputValue<List<OSPolicyInventoryFilter>, List<Map<String, dynamic>>>(inventoryFilters, (value) => pulumi.Input.encodeList<OSPolicyInventoryFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': pulumi.Input.mapInputValue<List<OSPolicyResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<OSPolicyResource, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OSPolicyResourceGroup.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceGroup(
-      inventoryFilters: map['inventoryFilters'] == null ? null : pulumi.Input.decodeList<OSPolicyInventoryFilter>(map['inventoryFilters'], (value) => OSPolicyInventoryFilter.fromMap((value as Map).cast<String, dynamic>())),
-      resources: pulumi.Input.decodeList<OSPolicyResource>(map['resources'], (value) => OSPolicyResource.fromMap((value as Map).cast<String, dynamic>())),
+      inventoryFilters: map['inventoryFilters'] == null ? null : (pulumi.Input.decodeList<OSPolicyInventoryFilter>(map['inventoryFilters'], (value) => OSPolicyInventoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: (pulumi.Input.decodeList<OSPolicyResource>(map['resources'], (value) => OSPolicyResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

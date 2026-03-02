@@ -56,35 +56,21 @@ class ScanConfigArgs {
   /// [staticIpScan] Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
   /// [userAgent] The user agent used during scanning.
   ScanConfigArgs({
-    pulumi.Output<Authentication>? authentication,
-    pulumi.Output<List<String>>? blacklistPatterns,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<ScanConfigExportToSecurityCommandCenter>? exportToSecurityCommandCenter,
-    pulumi.Output<bool>? ignoreHttpStatusErrors,
-    pulumi.Output<bool>? managedScan,
-    pulumi.Output<int>? maxQps,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ScanConfigRiskLevel>? riskLevel,
-    pulumi.Output<Schedule>? schedule,
-    required pulumi.Output<List<String>> startingUrls,
-    pulumi.Output<bool>? staticIpScan,
-    pulumi.Output<ScanConfigUserAgent>? userAgent,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<Authentication>(authentication),
-      blacklistPatterns = pulumi.Input.asOptionalInput<List<String>>(blacklistPatterns),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      exportToSecurityCommandCenter = pulumi.Input.asOptionalInput<ScanConfigExportToSecurityCommandCenter>(exportToSecurityCommandCenter),
-      ignoreHttpStatusErrors = pulumi.Input.asOptionalInput<bool>(ignoreHttpStatusErrors),
-      managedScan = pulumi.Input.asOptionalInput<bool>(managedScan),
-      maxQps = pulumi.Input.asOptionalInput<int>(maxQps),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      riskLevel = pulumi.Input.asOptionalInput<ScanConfigRiskLevel>(riskLevel),
-      schedule = pulumi.Input.asOptionalInput<Schedule>(schedule),
-      startingUrls = pulumi.Input.asInput<List<String>>(startingUrls),
-      staticIpScan = pulumi.Input.asOptionalInput<bool>(staticIpScan),
-      userAgent = pulumi.Input.asOptionalInput<ScanConfigUserAgent>(userAgent);
+    this.authentication,
+    this.blacklistPatterns,
+    required this.displayName,
+    this.exportToSecurityCommandCenter,
+    this.ignoreHttpStatusErrors,
+    this.managedScan,
+    this.maxQps,
+    this.name,
+    this.project,
+    this.riskLevel,
+    this.schedule,
+    required this.startingUrls,
+    this.staticIpScan,
+    this.userAgent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,20 +93,20 @@ class ScanConfigArgs {
 
   factory ScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return ScanConfigArgs(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<Authentication>(Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : pulumi.Output.create<List<String>>((map['blacklistPatterns'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : pulumi.Output.create<ScanConfigExportToSecurityCommandCenter>(ScanConfigExportToSecurityCommandCenter.fromValue(map['exportToSecurityCommandCenter'] as String)),
-      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : pulumi.Output.create<bool>(map['ignoreHttpStatusErrors'] as bool),
-      managedScan: map['managedScan'] == null ? null : pulumi.Output.create<bool>(map['managedScan'] as bool),
-      maxQps: map['maxQps'] == null ? null : pulumi.Output.create<int>(map['maxQps'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      riskLevel: map['riskLevel'] == null ? null : pulumi.Output.create<ScanConfigRiskLevel>(ScanConfigRiskLevel.fromValue(map['riskLevel'] as String)),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<Schedule>(Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      startingUrls: pulumi.Output.create<List<String>>((map['startingUrls'] as List).cast<String>()),
-      staticIpScan: map['staticIpScan'] == null ? null : pulumi.Output.create<bool>(map['staticIpScan'] as bool),
-      userAgent: map['userAgent'] == null ? null : pulumi.Output.create<ScanConfigUserAgent>(ScanConfigUserAgent.fromValue(map['userAgent'] as String)),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (ScanConfigExportToSecurityCommandCenter.fromValue(map['exportToSecurityCommandCenter'] as String)).input(),
+      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : (map['ignoreHttpStatusErrors'] as bool).input(),
+      managedScan: map['managedScan'] == null ? null : (map['managedScan'] as bool).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (ScanConfigRiskLevel.fromValue(map['riskLevel'] as String)).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
+      staticIpScan: map['staticIpScan'] == null ? null : (map['staticIpScan'] as bool).input(),
+      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgent.fromValue(map['userAgent'] as String)).input(),
     );
   }
 }

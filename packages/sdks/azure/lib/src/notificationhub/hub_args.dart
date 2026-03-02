@@ -41,23 +41,15 @@ class HubArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   HubArgs({
-    pulumi.Output<HubApnsCredential>? apnsCredential,
-    pulumi.Output<HubBrowserCredential>? browserCredential,
-    pulumi.Output<HubGcmCredential>? gcmCredential,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apnsCredential = pulumi.Input.asOptionalInput<HubApnsCredential>(apnsCredential),
-      browserCredential = pulumi.Input.asOptionalInput<HubBrowserCredential>(browserCredential),
-      gcmCredential = pulumi.Input.asOptionalInput<HubGcmCredential>(gcmCredential),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apnsCredential,
+    this.browserCredential,
+    this.gcmCredential,
+    this.location,
+    this.name,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      apnsCredential: map['apnsCredential'] == null ? null : pulumi.Output.create<HubApnsCredential>(HubApnsCredential.fromMap((map['apnsCredential'] as Map).cast<String, dynamic>())),
-      browserCredential: map['browserCredential'] == null ? null : pulumi.Output.create<HubBrowserCredential>(HubBrowserCredential.fromMap((map['browserCredential'] as Map).cast<String, dynamic>())),
-      gcmCredential: map['gcmCredential'] == null ? null : pulumi.Output.create<HubGcmCredential>(HubGcmCredential.fromMap((map['gcmCredential'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apnsCredential: map['apnsCredential'] == null ? null : (HubApnsCredential.fromMap((map['apnsCredential'] as Map).cast<String, dynamic>())).input(),
+      browserCredential: map['browserCredential'] == null ? null : (HubBrowserCredential.fromMap((map['browserCredential'] as Map).cast<String, dynamic>())).input(),
+      gcmCredential: map['gcmCredential'] == null ? null : (HubGcmCredential.fromMap((map['gcmCredential'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

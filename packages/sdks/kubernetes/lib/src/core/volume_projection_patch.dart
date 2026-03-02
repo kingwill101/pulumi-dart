@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_trust_bundle_projection_patch.dart';
 import 'config_map_projection_patch.dart';
 import 'downward_apiprojection_patch.dart';
@@ -16,11 +17,11 @@ class VolumeProjectionPatch {
   /// ClusterTrustBundle objects can either be selected by name, or by the combination of signer name and a label selector.
   ///
   /// Kubelet performs aggressive normalization of the PEM contents written into the pod filesystem.  Esoteric PEM features such as inter-block comments and block headers are stripped.  Certificates are deduplicated. The ordering of certificates within the file is arbitrary, and Kubelet may change the order over time.
-  final ClusterTrustBundleProjectionPatch? clusterTrustBundle;
+  final pulumi.Input<ClusterTrustBundleProjectionPatch>? clusterTrustBundle;
   /// configMap information about the configMap data to project
-  final ConfigMapProjectionPatch? configMap;
+  final pulumi.Input<ConfigMapProjectionPatch>? configMap;
   /// downwardAPI information about the downwardAPI data to project
-  final DownwardAPIProjectionPatch? downwardAPI;
+  final pulumi.Input<DownwardAPIProjectionPatch>? downwardAPI;
   /// Projects an auto-rotating credential bundle (private key and certificate chain) that the pod can use either as a TLS client or server.
   ///
   /// Kubelet generates a private key and uses it to send a PodCertificateRequest to the named signer.  Once the signer approves the request and issues a certificate chain, Kubelet writes the key and certificate chain to the pod filesystem.  The pod does not start until certificates have been issued for each podCertificate projected volume source in its spec.
@@ -34,11 +35,11 @@ class VolumeProjectionPatch {
   /// Prefer using the credential bundle format, since your application code can read it atomically.  If you use keyPath and certificateChainPath, your application must make two separate file reads. If these coincide with a certificate rotation, it is possible that the private key and leaf certificate you read may not correspond to each other.  Your application will need to check for this condition, and re-read until they are consistent.
   ///
   /// The named signer controls chooses the format of the certificate it issues; consult the signer implementation's documentation to learn how to use the certificates it issues.
-  final PodCertificateProjectionPatch? podCertificate;
+  final pulumi.Input<PodCertificateProjectionPatch>? podCertificate;
   /// secret information about the secret data to project
-  final SecretProjectionPatch? secret;
+  final pulumi.Input<SecretProjectionPatch>? secret;
   /// serviceAccountToken is information about the serviceAccountToken data to project
-  final ServiceAccountTokenProjectionPatch? serviceAccountToken;
+  final pulumi.Input<ServiceAccountTokenProjectionPatch>? serviceAccountToken;
 
   /// Creates a new [VolumeProjectionPatch].
   /// [clusterTrustBundle] ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field of ClusterTrustBundle objects in an auto-updating file.
@@ -58,23 +59,23 @@ class VolumeProjectionPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterTrustBundle': ?clusterTrustBundle == null ? null : clusterTrustBundle!.toMap(),
-      'configMap': ?configMap == null ? null : configMap!.toMap(),
-      'downwardAPI': ?downwardAPI == null ? null : downwardAPI!.toMap(),
-      'podCertificate': ?podCertificate == null ? null : podCertificate!.toMap(),
-      'secret': ?secret == null ? null : secret!.toMap(),
-      'serviceAccountToken': ?serviceAccountToken == null ? null : serviceAccountToken!.toMap(),
+      'clusterTrustBundle': ?pulumi.Input.mapOptionalInputValue<ClusterTrustBundleProjectionPatch, Map<String, dynamic>>(clusterTrustBundle, (value) => value.toMap()),
+      'configMap': ?pulumi.Input.mapOptionalInputValue<ConfigMapProjectionPatch, Map<String, dynamic>>(configMap, (value) => value.toMap()),
+      'downwardAPI': ?pulumi.Input.mapOptionalInputValue<DownwardAPIProjectionPatch, Map<String, dynamic>>(downwardAPI, (value) => value.toMap()),
+      'podCertificate': ?pulumi.Input.mapOptionalInputValue<PodCertificateProjectionPatch, Map<String, dynamic>>(podCertificate, (value) => value.toMap()),
+      'secret': ?pulumi.Input.mapOptionalInputValue<SecretProjectionPatch, Map<String, dynamic>>(secret, (value) => value.toMap()),
+      'serviceAccountToken': ?pulumi.Input.mapOptionalInputValue<ServiceAccountTokenProjectionPatch, Map<String, dynamic>>(serviceAccountToken, (value) => value.toMap()),
     };
   }
 
   factory VolumeProjectionPatch.fromMap(Map<String, dynamic> map) {
     return VolumeProjectionPatch(
-      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : ClusterTrustBundleProjectionPatch.fromMap((map['clusterTrustBundle'] as Map).cast<String, dynamic>()),
-      configMap: map['configMap'] == null ? null : ConfigMapProjectionPatch.fromMap((map['configMap'] as Map).cast<String, dynamic>()),
-      downwardAPI: map['downwardAPI'] == null ? null : DownwardAPIProjectionPatch.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>()),
-      podCertificate: map['podCertificate'] == null ? null : PodCertificateProjectionPatch.fromMap((map['podCertificate'] as Map).cast<String, dynamic>()),
-      secret: map['secret'] == null ? null : SecretProjectionPatch.fromMap((map['secret'] as Map).cast<String, dynamic>()),
-      serviceAccountToken: map['serviceAccountToken'] == null ? null : ServiceAccountTokenProjectionPatch.fromMap((map['serviceAccountToken'] as Map).cast<String, dynamic>()),
+      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : (ClusterTrustBundleProjectionPatch.fromMap((map['clusterTrustBundle'] as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapProjectionPatch.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
+      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIProjectionPatch.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>())).input(),
+      podCertificate: map['podCertificate'] == null ? null : (PodCertificateProjectionPatch.fromMap((map['podCertificate'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (SecretProjectionPatch.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountToken: map['serviceAccountToken'] == null ? null : (ServiceAccountTokenProjectionPatch.fromMap((map['serviceAccountToken'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

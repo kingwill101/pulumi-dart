@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigSignInHashConfig {
   /// Different password hash algorithms used in Identity Toolkit.
-  final String? algorithm;
+  final pulumi.Input<String>? algorithm;
   /// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-  final int? memoryCost;
+  final pulumi.Input<int>? memoryCost;
   /// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-  final int? rounds;
+  final pulumi.Input<int>? rounds;
   /// Non-printable character to be inserted between the salt and plain text password in base64.
-  final String? saltSeparator;
+  final pulumi.Input<String>? saltSeparator;
   /// Signer key in base64.
-  final String? signerKey;
+  final pulumi.Input<String>? signerKey;
 
   /// Creates a new [ConfigSignInHashConfig].
   /// [algorithm] Different password hash algorithms used in Identity Toolkit.
@@ -39,11 +40,11 @@ class ConfigSignInHashConfig {
 
   factory ConfigSignInHashConfig.fromMap(Map<String, dynamic> map) {
     return ConfigSignInHashConfig(
-      algorithm: map['algorithm'] == null ? null : map['algorithm'] as String,
-      memoryCost: map['memoryCost'] == null ? null : map['memoryCost'] as int,
-      rounds: map['rounds'] == null ? null : map['rounds'] as int,
-      saltSeparator: map['saltSeparator'] == null ? null : map['saltSeparator'] as String,
-      signerKey: map['signerKey'] == null ? null : map['signerKey'] as String,
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      memoryCost: map['memoryCost'] == null ? null : (map['memoryCost'] as int).input(),
+      rounds: map['rounds'] == null ? null : (map['rounds'] as int).input(),
+      saltSeparator: map['saltSeparator'] == null ? null : (map['saltSeparator'] as String).input(),
+      signerKey: map['signerKey'] == null ? null : (map['signerKey'] as String).input(),
     );
   }
 }

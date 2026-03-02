@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An accelerator card attached to the instance.
 class AcceleratorResponse {
   /// Optional. Number of accelerator cards exposed to the instance.
-  final int count;
+  final pulumi.Input<int> count;
   /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AcceleratorResponse].
   /// [count] Optional. Number of accelerator cards exposed to the instance.
@@ -25,8 +26,8 @@ class AcceleratorResponse {
 
   factory AcceleratorResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorResponse(
-      count: map['count'] as int,
-      type: map['type'] as String,
+      count: (map['count'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

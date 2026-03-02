@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the Node Tolerations details
 class NodeTolerationsResponse {
   /// Toleration effect.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// Toleration key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Toleration operator like 'Exists', 'Equal' etc.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Toleration Value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [NodeTolerationsResponse].
   /// [effect] Toleration effect.
@@ -35,10 +36,10 @@ class NodeTolerationsResponse {
 
   factory NodeTolerationsResponse.fromMap(Map<String, dynamic> map) {
     return NodeTolerationsResponse(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

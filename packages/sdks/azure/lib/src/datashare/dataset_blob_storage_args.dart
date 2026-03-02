@@ -29,19 +29,13 @@ class DatasetBlobStorageArgs {
   /// [name] The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [storageAccount] A `storage_account` block as defined below. Changing this forces a new resource to be created.
   DatasetBlobStorageArgs({
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> dataShareId,
-    pulumi.Output<String>? filePath,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<String>? name,
-    required pulumi.Output<DatasetBlobStorageStorageAccount> storageAccount,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      dataShareId = pulumi.Input.asInput<String>(dataShareId),
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccount = pulumi.Input.asInput<DatasetBlobStorageStorageAccount>(storageAccount);
+    required this.containerName,
+    required this.dataShareId,
+    this.filePath,
+    this.folderPath,
+    this.name,
+    required this.storageAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DatasetBlobStorageArgs {
 
   factory DatasetBlobStorageArgs.fromMap(Map<String, dynamic> map) {
     return DatasetBlobStorageArgs(
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      dataShareId: pulumi.Output.create<String>(map['dataShareId'] as String),
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccount: pulumi.Output.create<DatasetBlobStorageStorageAccount>(DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())),
+      containerName: (map['containerName'] as String).input(),
+      dataShareId: (map['dataShareId'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccount: (DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

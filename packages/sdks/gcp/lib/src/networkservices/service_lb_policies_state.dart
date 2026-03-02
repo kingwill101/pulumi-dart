@@ -57,33 +57,20 @@ class ServiceLbPoliciesState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Time the ServiceLbPolicy was updated in UTC.
   ServiceLbPoliciesState({
-    pulumi.Output<ServiceLbPoliciesAutoCapacityDrain>? autoCapacityDrain,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<ServiceLbPoliciesFailoverConfig>? failoverConfig,
-    pulumi.Output<ServiceLbPoliciesIsolationConfig>? isolationConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? loadBalancingAlgorithm,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      autoCapacityDrain = pulumi.Input.asOptionalInput<ServiceLbPoliciesAutoCapacityDrain>(autoCapacityDrain),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      failoverConfig = pulumi.Input.asOptionalInput<ServiceLbPoliciesFailoverConfig>(failoverConfig),
-      isolationConfig = pulumi.Input.asOptionalInput<ServiceLbPoliciesIsolationConfig>(isolationConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      loadBalancingAlgorithm = pulumi.Input.asOptionalInput<String>(loadBalancingAlgorithm),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.autoCapacityDrain,
+    this.createTime,
+    this.description,
+    this.effectiveLabels,
+    this.failoverConfig,
+    this.isolationConfig,
+    this.labels,
+    this.loadBalancingAlgorithm,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class ServiceLbPoliciesState {
 
   factory ServiceLbPoliciesState.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesState(
-      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : pulumi.Output.create<ServiceLbPoliciesAutoCapacityDrain>(ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      failoverConfig: map['failoverConfig'] == null ? null : pulumi.Output.create<ServiceLbPoliciesFailoverConfig>(ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())),
-      isolationConfig: map['isolationConfig'] == null ? null : pulumi.Output.create<ServiceLbPoliciesIsolationConfig>(ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : pulumi.Output.create<String>(map['loadBalancingAlgorithm'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())).input(),
+      isolationConfig: map['isolationConfig'] == null ? null : (ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

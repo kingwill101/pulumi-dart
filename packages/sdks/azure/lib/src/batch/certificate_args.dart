@@ -31,21 +31,14 @@ class CertificateArgs {
   /// [thumbprint] The thumbprint of the certificate. Changing this forces a new resource to be created.
   /// [thumbprintAlgorithm] The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   CertificateArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> certificate,
-    required pulumi.Output<String> format,
-    pulumi.Output<String>? password,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> thumbprint,
-    required pulumi.Output<String> thumbprintAlgorithm,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      certificate = pulumi.Input.asInput<String>(certificate),
-      format = pulumi.Input.asInput<String>(format),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      thumbprint = pulumi.Input.asInput<String>(thumbprint),
-      thumbprintAlgorithm = pulumi.Input.asInput<String>(thumbprintAlgorithm);
+    required this.accountName,
+    required this.certificate,
+    required this.format,
+    this.password,
+    required this.resourceGroupName,
+    required this.thumbprint,
+    required this.thumbprintAlgorithm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      certificate: pulumi.Output.create<String>(map['certificate'] as String),
-      format: pulumi.Output.create<String>(map['format'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      thumbprint: pulumi.Output.create<String>(map['thumbprint'] as String),
-      thumbprintAlgorithm: pulumi.Output.create<String>(map['thumbprintAlgorithm'] as String),
+      accountName: (map['accountName'] as String).input(),
+      certificate: (map['certificate'] as String).input(),
+      format: (map['format'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      thumbprintAlgorithm: (map['thumbprintAlgorithm'] as String).input(),
     );
   }
 }

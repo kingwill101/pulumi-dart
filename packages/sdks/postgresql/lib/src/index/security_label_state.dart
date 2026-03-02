@@ -19,15 +19,11 @@ class SecurityLabelState {
   /// [objectName] The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   /// [objectType] The PostgreSQL object type to apply this security label to.
   SecurityLabelState({
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? labelProvider,
-    pulumi.Output<String>? objectName,
-    pulumi.Output<String>? objectType,
-  }) :
-      label = pulumi.Input.asOptionalInput<String>(label),
-      labelProvider = pulumi.Input.asOptionalInput<String>(labelProvider),
-      objectName = pulumi.Input.asOptionalInput<String>(objectName),
-      objectType = pulumi.Input.asOptionalInput<String>(objectType);
+    this.label,
+    this.labelProvider,
+    this.objectName,
+    this.objectType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SecurityLabelState {
 
   factory SecurityLabelState.fromMap(Map<String, dynamic> map) {
     return SecurityLabelState(
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      labelProvider: map['labelProvider'] == null ? null : pulumi.Output.create<String>(map['labelProvider'] as String),
-      objectName: map['objectName'] == null ? null : pulumi.Output.create<String>(map['objectName'] as String),
-      objectType: map['objectType'] == null ? null : pulumi.Output.create<String>(map['objectType'] as String),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      labelProvider: map['labelProvider'] == null ? null : (map['labelProvider'] as String).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kafka Shared Subscription properties
 class KafkaSharedSubscriptionPropertiesResponse {
   /// The minimum number to use in a group for subscription.
-  final int groupMinimumShareNumber;
+  final pulumi.Input<int> groupMinimumShareNumber;
   /// The name of the shared subscription.
-  final String groupName;
+  final pulumi.Input<String> groupName;
 
   /// Creates a new [KafkaSharedSubscriptionPropertiesResponse].
   /// [groupMinimumShareNumber] The minimum number to use in a group for subscription.
@@ -25,8 +26,8 @@ class KafkaSharedSubscriptionPropertiesResponse {
 
   factory KafkaSharedSubscriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaSharedSubscriptionPropertiesResponse(
-      groupMinimumShareNumber: map['groupMinimumShareNumber'] as int,
-      groupName: map['groupName'] as String,
+      groupMinimumShareNumber: (map['groupMinimumShareNumber'] as int).input(),
+      groupName: (map['groupName'] as String).input(),
     );
   }
 }

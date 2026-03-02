@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents period in days/months/years.
 class GoogleCloudChannelV1PeriodResponse {
   /// Total duration of Period Type defined.
-  final int duration;
+  final pulumi.Input<int> duration;
   /// Period Type.
-  final String periodType;
+  final pulumi.Input<String> periodType;
 
   /// Creates a new [GoogleCloudChannelV1PeriodResponse].
   /// [duration] Total duration of Period Type defined.
@@ -25,8 +26,8 @@ class GoogleCloudChannelV1PeriodResponse {
 
   factory GoogleCloudChannelV1PeriodResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PeriodResponse(
-      duration: map['duration'] as int,
-      periodType: map['periodType'] as String,
+      duration: (map['duration'] as int).input(),
+      periodType: (map['periodType'] as String).input(),
     );
   }
 }

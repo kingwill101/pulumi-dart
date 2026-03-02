@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NfsFileShareNfsFileShareDefaults {
   /// The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.
-  final String? directoryMode;
+  final pulumi.Input<String>? directoryMode;
   /// The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
-  final String? fileMode;
+  final pulumi.Input<String>? fileMode;
   /// The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-  final String? groupId;
+  final pulumi.Input<String>? groupId;
   /// The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
-  final String? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Creates a new [NfsFileShareNfsFileShareDefaults].
   /// [directoryMode] The Unix directory mode in the string form "nnnn". Defaults to `"0777"`.
@@ -34,10 +35,10 @@ class NfsFileShareNfsFileShareDefaults {
 
   factory NfsFileShareNfsFileShareDefaults.fromMap(Map<String, dynamic> map) {
     return NfsFileShareNfsFileShareDefaults(
-      directoryMode: map['directoryMode'] == null ? null : map['directoryMode'] as String,
-      fileMode: map['fileMode'] == null ? null : map['fileMode'] as String,
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
+      directoryMode: map['directoryMode'] == null ? null : (map['directoryMode'] as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
     );
   }
 }

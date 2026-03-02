@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_parameter_type.dart';
 
 class QueryParameterTypeStructTypesItem {
   /// [Optional] Human-oriented description of the field.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// [Optional] The name of this field.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// [Required] The type of this field.
-  final QueryParameterType? type;
+  final pulumi.Input<QueryParameterType>? type;
 
   /// Creates a new [QueryParameterTypeStructTypesItem].
   /// [description] [Optional] Human-oriented description of the field.
@@ -24,15 +25,15 @@ class QueryParameterTypeStructTypesItem {
     return <String, dynamic>{
       'description': ?description,
       'name': ?name,
-      'type': ?type == null ? null : type!.toMap(),
+      'type': ?pulumi.Input.mapOptionalInputValue<QueryParameterType, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
   factory QueryParameterTypeStructTypesItem.fromMap(Map<String, dynamic> map) {
     return QueryParameterTypeStructTypesItem(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : QueryParameterType.fromMap((map['type'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (QueryParameterType.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -41,29 +41,18 @@ class PhoneNumberState {
   /// [targetArn] The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   /// [type] The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
   PhoneNumberState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? countryCode,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? phoneNumber,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<PhoneNumberStatus>>? statuses,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetArn,
-    pulumi.Output<String>? type,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      countryCode = pulumi.Input.asOptionalInput<String>(countryCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      phoneNumber = pulumi.Input.asOptionalInput<String>(phoneNumber),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statuses = pulumi.Input.asOptionalInput<List<PhoneNumberStatus>>(statuses),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetArn = pulumi.Input.asOptionalInput<String>(targetArn),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.arn,
+    this.countryCode,
+    this.description,
+    this.phoneNumber,
+    this.prefix,
+    this.region,
+    this.statuses,
+    this.tags,
+    this.tagsAll,
+    this.targetArn,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class PhoneNumberState {
 
   factory PhoneNumberState.fromMap(Map<String, dynamic> map) {
     return PhoneNumberState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      countryCode: map['countryCode'] == null ? null : pulumi.Output.create<String>(map['countryCode'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      phoneNumber: map['phoneNumber'] == null ? null : pulumi.Output.create<String>(map['phoneNumber'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statuses: map['statuses'] == null ? null : pulumi.Output.create<List<PhoneNumberStatus>>(pulumi.Input.decodeList<PhoneNumberStatus>(map['statuses'], (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetArn: map['targetArn'] == null ? null : pulumi.Output.create<String>(map['targetArn'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<PhoneNumberStatus>(map['statuses'], (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

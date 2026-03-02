@@ -42,29 +42,18 @@ class WebhookState {
   /// [targetPipeline] The name of the pipeline.
   /// [url] The CodePipeline webhook's URL. POST events to this endpoint to trigger the target.
   WebhookState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authentication,
-    pulumi.Output<WebhookAuthenticationConfiguration>? authenticationConfiguration,
-    pulumi.Output<List<WebhookFilter>>? filters,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetAction,
-    pulumi.Output<String>? targetPipeline,
-    pulumi.Output<String>? url,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authentication = pulumi.Input.asOptionalInput<String>(authentication),
-      authenticationConfiguration = pulumi.Input.asOptionalInput<WebhookAuthenticationConfiguration>(authenticationConfiguration),
-      filters = pulumi.Input.asOptionalInput<List<WebhookFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetAction = pulumi.Input.asOptionalInput<String>(targetAction),
-      targetPipeline = pulumi.Input.asOptionalInput<String>(targetPipeline),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.arn,
+    this.authentication,
+    this.authenticationConfiguration,
+    this.filters,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.targetAction,
+    this.targetPipeline,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<String>(map['authentication'] as String),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : pulumi.Output.create<WebhookAuthenticationConfiguration>(WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<WebhookFilter>>(pulumi.Input.decodeList<WebhookFilter>(map['filters'], (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetAction: map['targetAction'] == null ? null : pulumi.Output.create<String>(map['targetAction'] as String),
-      targetPipeline: map['targetPipeline'] == null ? null : pulumi.Output.create<String>(map['targetPipeline'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilter>(map['filters'], (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetAction: map['targetAction'] == null ? null : (map['targetAction'] as String).input(),
+      targetPipeline: map['targetPipeline'] == null ? null : (map['targetPipeline'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

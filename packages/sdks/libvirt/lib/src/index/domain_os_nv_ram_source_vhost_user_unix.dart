@@ -6,13 +6,13 @@ import 'domain_os_nv_ram_source_vhost_user_unix_sec_label.dart';
 
 class DomainOsNvRamSourceVhostUserUnix {
   /// Sets the mode attribute for the UNIX domain socket in the random number generator backend.
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Specifies the path to the UNIX domain socket for connection.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final DomainOsNvRamSourceVhostUserUnixReconnect? reconnect;
+  final pulumi.Input<DomainOsNvRamSourceVhostUserUnixReconnect>? reconnect;
   /// Configures the security label for the UNIX domain socket.
-  final List<DomainOsNvRamSourceVhostUserUnixSecLabel>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceVhostUserUnixSecLabel>>? secLabels;
 
   /// Creates a new [DomainOsNvRamSourceVhostUserUnix].
   /// [mode] Sets the mode attribute for the UNIX domain socket in the random number generator backend.
@@ -30,17 +30,17 @@ class DomainOsNvRamSourceVhostUserUnix {
     return <String, dynamic>{
       'mode': ?mode,
       'path': ?path,
-      'reconnect': ?reconnect == null ? null : reconnect!.toMap(),
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainOsNvRamSourceVhostUserUnixSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserUnixReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceVhostUserUnixSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceVhostUserUnixSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsNvRamSourceVhostUserUnix.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserUnix(
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      reconnect: map['reconnect'] == null ? null : DomainOsNvRamSourceVhostUserUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>()),
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserUnixSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVhostUserUnixSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainOsNvRamSourceVhostUserUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserUnixSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVhostUserUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

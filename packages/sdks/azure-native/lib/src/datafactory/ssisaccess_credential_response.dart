@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference_response.dart';
 
 /// SSIS access credential.
 class SSISAccessCredentialResponse {
   /// Domain for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic domain;
+  final pulumi.Input<dynamic> domain;
   /// Password for windows authentication.
-  final AzureKeyVaultSecretReferenceResponse password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> password;
   /// UseName for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic> userName;
 
   /// Creates a new [SSISAccessCredentialResponse].
   /// [domain] Domain for windows authentication. Type: string (or Expression with resultType string).
@@ -24,16 +25,16 @@ class SSISAccessCredentialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'password': password.toMap(),
+      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory SSISAccessCredentialResponse.fromMap(Map<String, dynamic> map) {
     return SSISAccessCredentialResponse(
-      domain: map['domain'],
-      password: AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      userName: map['userName'],
+      domain: (map['domain']).input(),
+      password: (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      userName: (map['userName']).input(),
     );
   }
 }

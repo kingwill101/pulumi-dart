@@ -23,17 +23,12 @@ class AddressPoolState {
   /// [lbaStrategy] The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   /// [type] The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   AddressPoolState({
-    pulumi.Output<String>? addressPoolName,
-    pulumi.Output<List<AddressPoolAddress>>? addresses,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? lbaStrategy,
-    pulumi.Output<String>? type,
-  }) :
-      addressPoolName = pulumi.Input.asOptionalInput<String>(addressPoolName),
-      addresses = pulumi.Input.asOptionalInput<List<AddressPoolAddress>>(addresses),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      lbaStrategy = pulumi.Input.asOptionalInput<String>(lbaStrategy),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.addressPoolName,
+    this.addresses,
+    this.instanceId,
+    this.lbaStrategy,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class AddressPoolState {
 
   factory AddressPoolState.fromMap(Map<String, dynamic> map) {
     return AddressPoolState(
-      addressPoolName: map['addressPoolName'] == null ? null : pulumi.Output.create<String>(map['addressPoolName'] as String),
-      addresses: map['addresses'] == null ? null : pulumi.Output.create<List<AddressPoolAddress>>(pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      lbaStrategy: map['lbaStrategy'] == null ? null : pulumi.Output.create<String>(map['lbaStrategy'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      addressPoolName: map['addressPoolName'] == null ? null : (map['addressPoolName'] as String).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      lbaStrategy: map['lbaStrategy'] == null ? null : (map['lbaStrategy'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

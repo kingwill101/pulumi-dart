@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a Sampling Algorithm that generates values randomly
 class RandomSamplingAlgorithmResponse {
   /// The specific type of random algorithm
-  final String? rule;
+  final pulumi.Input<String>? rule;
   /// Expected value is 'Random'.
-  final String samplingAlgorithmType;
+  final pulumi.Input<String> samplingAlgorithmType;
   /// An optional integer to use as the seed for random number generation
-  final int? seed;
+  final pulumi.Input<int>? seed;
 
   /// Creates a new [RandomSamplingAlgorithmResponse].
   /// [rule] The specific type of random algorithm
@@ -30,9 +31,9 @@ class RandomSamplingAlgorithmResponse {
 
   factory RandomSamplingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return RandomSamplingAlgorithmResponse(
-      rule: map['rule'] == null ? null : map['rule'] as String,
-      samplingAlgorithmType: map['samplingAlgorithmType'] as String,
-      seed: map['seed'] == null ? null : map['seed'] as int,
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      samplingAlgorithmType: (map['samplingAlgorithmType'] as String).input(),
+      seed: map['seed'] == null ? null : (map['seed'] as int).input(),
     );
   }
 }

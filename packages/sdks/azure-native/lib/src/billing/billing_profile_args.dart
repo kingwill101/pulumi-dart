@@ -23,15 +23,11 @@ class BillingProfileArgs {
   /// [properties] A billing profile.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
   BillingProfileArgs({
-    required pulumi.Output<String> billingAccountName,
-    pulumi.Output<String>? billingProfileName,
-    pulumi.Output<BillingProfileProperties>? properties,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      billingAccountName = pulumi.Input.asInput<String>(billingAccountName),
-      billingProfileName = pulumi.Input.asOptionalInput<String>(billingProfileName),
-      properties = pulumi.Input.asOptionalInput<BillingProfileProperties>(properties),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.billingAccountName,
+    this.billingProfileName,
+    this.properties,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BillingProfileArgs {
 
   factory BillingProfileArgs.fromMap(Map<String, dynamic> map) {
     return BillingProfileArgs(
-      billingAccountName: pulumi.Output.create<String>(map['billingAccountName'] as String),
-      billingProfileName: map['billingProfileName'] == null ? null : pulumi.Output.create<String>(map['billingProfileName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BillingProfileProperties>(BillingProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      billingAccountName: (map['billingAccountName'] as String).input(),
+      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName'] as String).input(),
+      properties: map['properties'] == null ? null : (BillingProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

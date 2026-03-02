@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableGlobalSecondaryIndexKeySchema {
-  final String attributeName;
-  final String keyType;
+  final pulumi.Input<String> attributeName;
+  final pulumi.Input<String> keyType;
 
   /// Creates a new [GetTableGlobalSecondaryIndexKeySchema].
   /// [attributeName] Required.
@@ -22,8 +23,8 @@ class GetTableGlobalSecondaryIndexKeySchema {
 
   factory GetTableGlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndexKeySchema(
-      attributeName: map['attributeName'] as String,
-      keyType: map['keyType'] as String,
+      attributeName: (map['attributeName'] as String).input(),
+      keyType: (map['keyType'] as String).input(),
     );
   }
 }

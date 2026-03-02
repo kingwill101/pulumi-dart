@@ -48,31 +48,19 @@ class CustomLocationArgs {
   /// [resourceName] Custom Locations name.
   /// [tags] Resource tags.
   CustomLocationArgs({
-    pulumi.Output<CustomLocationPropertiesAuthentication>? authentication,
-    pulumi.Output<List<String>>? clusterExtensionIds,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? hostResourceId,
-    pulumi.Output<String>? hostType,
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      authentication = pulumi.Input.asOptionalInput<CustomLocationPropertiesAuthentication>(authentication),
-      clusterExtensionIds = pulumi.Input.asOptionalInput<List<String>>(clusterExtensionIds),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hostResourceId = pulumi.Input.asOptionalInput<String>(hostResourceId),
-      hostType = pulumi.Input.asOptionalInput<String>(hostType),
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.authentication,
+    this.clusterExtensionIds,
+    this.displayName,
+    this.hostResourceId,
+    this.hostType,
+    this.identity,
+    this.location,
+    this.namespace,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class CustomLocationArgs {
 
   factory CustomLocationArgs.fromMap(Map<String, dynamic> map) {
     return CustomLocationArgs(
-      authentication: map['authentication'] == null ? null : pulumi.Output.create<CustomLocationPropertiesAuthentication>(CustomLocationPropertiesAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : pulumi.Output.create<List<String>>((map['clusterExtensionIds'] as List).cast<String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hostResourceId: map['hostResourceId'] == null ? null : pulumi.Output.create<String>(map['hostResourceId'] as String),
-      hostType: map['hostType'] == null ? null : pulumi.Output.create<String>(map['hostType'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      authentication: map['authentication'] == null ? null : (CustomLocationPropertiesAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId'] as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

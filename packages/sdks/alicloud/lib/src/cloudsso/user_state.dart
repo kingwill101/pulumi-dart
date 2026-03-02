@@ -46,33 +46,20 @@ class UserState {
   /// [userId] The ID of the user.
   /// [userName] The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
   UserState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? firstName,
-    pulumi.Output<String>? lastName,
-    pulumi.Output<String>? mfaAuthenticationSettings,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? userName,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      firstName = pulumi.Input.asOptionalInput<String>(firstName),
-      lastName = pulumi.Input.asOptionalInput<String>(lastName),
-      mfaAuthenticationSettings = pulumi.Input.asOptionalInput<String>(mfaAuthenticationSettings),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.createTime,
+    this.description,
+    this.directoryId,
+    this.displayName,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.mfaAuthenticationSettings,
+    this.password,
+    this.status,
+    this.tags,
+    this.userId,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,19 +81,19 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      firstName: map['firstName'] == null ? null : pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: map['lastName'] == null ? null : pulumi.Output.create<String>(map['lastName'] as String),
-      mfaAuthenticationSettings: map['mfaAuthenticationSettings'] == null ? null : pulumi.Output.create<String>(map['mfaAuthenticationSettings'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      mfaAuthenticationSettings: map['mfaAuthenticationSettings'] == null ? null : (map['mfaAuthenticationSettings'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

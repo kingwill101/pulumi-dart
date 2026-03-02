@@ -22,15 +22,11 @@ class OpenZfsSnapshotArgs {
   /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   /// [volumeId] The ID of the volume to snapshot. This can be the root volume or a child volume.
   OpenZfsSnapshotArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> volumeId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    this.name,
+    this.region,
+    this.tags,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OpenZfsSnapshotArgs {
 
   factory OpenZfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return OpenZfsSnapshotArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class LakeAccountArgs {
   /// [accountType] The type of the account.
   /// [dbClusterId] The DBCluster ID.
   LakeAccountArgs({
-    pulumi.Output<String>? accountDescription,
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> accountPassword,
-    pulumi.Output<List<LakeAccountAccountPrivilege>>? accountPrivileges,
-    pulumi.Output<String>? accountType,
-    required pulumi.Output<String> dbClusterId,
-  }) :
-      accountDescription = pulumi.Input.asOptionalInput<String>(accountDescription),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      accountPassword = pulumi.Input.asInput<String>(accountPassword),
-      accountPrivileges = pulumi.Input.asOptionalInput<List<LakeAccountAccountPrivilege>>(accountPrivileges),
-      accountType = pulumi.Input.asOptionalInput<String>(accountType),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId);
+    this.accountDescription,
+    required this.accountName,
+    required this.accountPassword,
+    this.accountPrivileges,
+    this.accountType,
+    required this.dbClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class LakeAccountArgs {
 
   factory LakeAccountArgs.fromMap(Map<String, dynamic> map) {
     return LakeAccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : pulumi.Output.create<String>(map['accountDescription'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      accountPassword: pulumi.Output.create<String>(map['accountPassword'] as String),
-      accountPrivileges: map['accountPrivileges'] == null ? null : pulumi.Output.create<List<LakeAccountAccountPrivilege>>(pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges'], (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))),
-      accountType: map['accountType'] == null ? null : pulumi.Output.create<String>(map['accountType'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      accountPassword: (map['accountPassword'] as String).input(),
+      accountPrivileges: map['accountPrivileges'] == null ? null : (pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges'], (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }
 }

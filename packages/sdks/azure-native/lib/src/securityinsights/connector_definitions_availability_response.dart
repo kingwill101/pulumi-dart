@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The exposure status of the connector to the customers.
 class ConnectorDefinitionsAvailabilityResponse {
   /// Gets or sets a value indicating whether the connector is preview.
-  final bool? isPreview;
+  final pulumi.Input<bool>? isPreview;
   /// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
-  final int? status;
+  final pulumi.Input<int>? status;
 
   /// Creates a new [ConnectorDefinitionsAvailabilityResponse].
   /// [isPreview] Gets or sets a value indicating whether the connector is preview.
@@ -25,8 +26,8 @@ class ConnectorDefinitionsAvailabilityResponse {
 
   factory ConnectorDefinitionsAvailabilityResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorDefinitionsAvailabilityResponse(
-      isPreview: map['isPreview'] == null ? null : map['isPreview'] as bool,
-      status: map['status'] == null ? null : map['status'] as int,
+      isPreview: map['isPreview'] == null ? null : (map['isPreview'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

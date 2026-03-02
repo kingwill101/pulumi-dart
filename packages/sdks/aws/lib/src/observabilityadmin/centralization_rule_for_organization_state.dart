@@ -31,21 +31,14 @@ class CentralizationRuleForOrganizationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   CentralizationRuleForOrganizationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<CentralizationRuleForOrganizationRule>? rule,
-    pulumi.Output<String>? ruleArn,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<CentralizationRuleForOrganizationTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rule = pulumi.Input.asOptionalInput<CentralizationRuleForOrganizationRule>(rule),
-      ruleArn = pulumi.Input.asOptionalInput<String>(ruleArn),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<CentralizationRuleForOrganizationTimeouts>(timeouts);
+    this.region,
+    this.rule,
+    this.ruleArn,
+    this.ruleName,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CentralizationRuleForOrganizationState {
 
   factory CentralizationRuleForOrganizationState.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<CentralizationRuleForOrganizationRule>(CentralizationRuleForOrganizationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())),
-      ruleArn: map['ruleArn'] == null ? null : pulumi.Output.create<String>(map['ruleArn'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<CentralizationRuleForOrganizationTimeouts>(CentralizationRuleForOrganizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rule: map['rule'] == null ? null : (CentralizationRuleForOrganizationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      ruleArn: map['ruleArn'] == null ? null : (map['ruleArn'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (CentralizationRuleForOrganizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

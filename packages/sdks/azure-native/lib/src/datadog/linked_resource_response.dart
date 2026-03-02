@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The definition of a linked resource.
 class LinkedResourceResponse {
   /// The ARM id of the linked resource.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The location of the linked resource.
-  final String? location;
+  final pulumi.Input<String>? location;
 
   /// Creates a new [LinkedResourceResponse].
   /// [id] The ARM id of the linked resource.
@@ -25,8 +26,8 @@ class LinkedResourceResponse {
 
   factory LinkedResourceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedResourceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
     );
   }
 }

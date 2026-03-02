@@ -31,17 +31,12 @@ class RolloutSequenceArgs {
   /// [rolloutSequenceId] The user-provided identifier of the RolloutSequence.
   /// [stages] Ordered list of stages that constitute this Rollout Sequence.
   RolloutSequenceArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rolloutSequenceId,
-    required pulumi.Output<List<RolloutSequenceStage>> stages,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rolloutSequenceId = pulumi.Input.asInput<String>(rolloutSequenceId),
-      stages = pulumi.Input.asInput<List<RolloutSequenceStage>>(stages);
+    this.displayName,
+    this.labels,
+    this.project,
+    required this.rolloutSequenceId,
+    required this.stages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class RolloutSequenceArgs {
 
   factory RolloutSequenceArgs.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rolloutSequenceId: pulumi.Output.create<String>(map['rolloutSequenceId'] as String),
-      stages: pulumi.Output.create<List<RolloutSequenceStage>>(pulumi.Input.decodeList<RolloutSequenceStage>(map['stages'], (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rolloutSequenceId: (map['rolloutSequenceId'] as String).input(),
+      stages: (pulumi.Input.decodeList<RolloutSequenceStage>(map['stages'], (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

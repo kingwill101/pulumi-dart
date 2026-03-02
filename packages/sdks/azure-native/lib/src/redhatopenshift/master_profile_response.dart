@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MasterProfile represents a master profile.
 class MasterProfileResponse {
   /// The resource ID of an associated DiskEncryptionSet, if applicable.
-  final String? diskEncryptionSetId;
+  final pulumi.Input<String>? diskEncryptionSetId;
   /// Whether master virtual machines are encrypted at host.
-  final String? encryptionAtHost;
+  final pulumi.Input<String>? encryptionAtHost;
   /// The Azure resource ID of the master subnet.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// The size of the master VMs.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [MasterProfileResponse].
   /// [diskEncryptionSetId] The resource ID of an associated DiskEncryptionSet, if applicable.
@@ -35,10 +36,10 @@ class MasterProfileResponse {
 
   factory MasterProfileResponse.fromMap(Map<String, dynamic> map) {
     return MasterProfileResponse(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : map['diskEncryptionSetId'] as String,
-      encryptionAtHost: map['encryptionAtHost'] == null ? null : map['encryptionAtHost'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

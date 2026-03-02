@@ -32,21 +32,14 @@ class SystemTopicArgs {
   /// [tags] Tags of the resource.
   /// [topicType] TopicType for the system topic.
   SystemTopicArgs({
-    pulumi.Output<IdentityInfo>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? systemTopicName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? topicType,
-  }) :
-      identity = pulumi.Input.asOptionalInput<IdentityInfo>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      systemTopicName = pulumi.Input.asOptionalInput<String>(systemTopicName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topicType = pulumi.Input.asOptionalInput<String>(topicType);
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.source,
+    this.systemTopicName,
+    this.tags,
+    this.topicType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SystemTopicArgs {
 
   factory SystemTopicArgs.fromMap(Map<String, dynamic> map) {
     return SystemTopicArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityInfo>(IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      systemTopicName: map['systemTopicName'] == null ? null : pulumi.Output.create<String>(map['systemTopicName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topicType: map['topicType'] == null ? null : pulumi.Output.create<String>(map['topicType'] as String),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      systemTopicName: map['systemTopicName'] == null ? null : (map['systemTopicName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topicType: map['topicType'] == null ? null : (map['topicType'] as String).input(),
     );
   }
 }

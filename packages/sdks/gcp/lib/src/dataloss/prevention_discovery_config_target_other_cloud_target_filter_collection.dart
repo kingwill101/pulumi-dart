@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prevention_discovery_config_target_other_cloud_target_filter_collection_include_regexes.dart';
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection {
   /// A collection of regular expressions to match a resource against.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes? includeRegexes;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes>? includeRegexes;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection].
   /// [includeRegexes] A collection of regular expressions to match a resource against.
@@ -15,13 +16,13 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': ?includeRegexes == null ? null : includeRegexes!.toMap(),
+      'includeRegexes': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes, Map<String, dynamic>>(includeRegexes, (value) => value.toMap()),
     };
   }
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
+      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

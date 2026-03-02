@@ -40,27 +40,17 @@ class RepositoryArgs {
   /// [setAuthenticatedUserAdmin] Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
   /// [workspaceCompilationOverrides] Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
   RepositoryArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GitRemoteSettings>? gitRemoteSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? npmrcEnvironmentVariablesSecretVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<bool>? setAuthenticatedUserAdmin,
-    pulumi.Output<WorkspaceCompilationOverrides>? workspaceCompilationOverrides,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gitRemoteSettings = pulumi.Input.asOptionalInput<GitRemoteSettings>(gitRemoteSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      npmrcEnvironmentVariablesSecretVersion = pulumi.Input.asOptionalInput<String>(npmrcEnvironmentVariablesSecretVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      setAuthenticatedUserAdmin = pulumi.Input.asOptionalInput<bool>(setAuthenticatedUserAdmin),
-      workspaceCompilationOverrides = pulumi.Input.asOptionalInput<WorkspaceCompilationOverrides>(workspaceCompilationOverrides);
+    this.displayName,
+    this.gitRemoteSettings,
+    this.labels,
+    this.location,
+    this.npmrcEnvironmentVariablesSecretVersion,
+    this.project,
+    required this.repositoryId,
+    this.serviceAccount,
+    this.setAuthenticatedUserAdmin,
+    this.workspaceCompilationOverrides,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : pulumi.Output.create<GitRemoteSettings>(GitRemoteSettings.fromMap((map['gitRemoteSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : pulumi.Output.create<String>(map['npmrcEnvironmentVariablesSecretVersion'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      setAuthenticatedUserAdmin: map['setAuthenticatedUserAdmin'] == null ? null : pulumi.Output.create<bool>(map['setAuthenticatedUserAdmin'] as bool),
-      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : pulumi.Output.create<WorkspaceCompilationOverrides>(WorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : (GitRemoteSettings.fromMap((map['gitRemoteSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : (map['npmrcEnvironmentVariablesSecretVersion'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      setAuthenticatedUserAdmin: map['setAuthenticatedUserAdmin'] == null ? null : (map['setAuthenticatedUserAdmin'] as bool).input(),
+      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : (WorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

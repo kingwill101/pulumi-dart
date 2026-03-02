@@ -19,13 +19,10 @@ class GetSqlSitesControllerArgs {
   /// [siteName] Site name
   /// [sqlSiteName] SQL site name.
   GetSqlSitesControllerArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> sqlSiteName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      sqlSiteName = pulumi.Input.asInput<String>(sqlSiteName);
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.sqlSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSqlSitesControllerArgs {
 
   factory GetSqlSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlSitesControllerArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      sqlSiteName: pulumi.Output.create<String>(map['sqlSiteName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      sqlSiteName: (map['sqlSiteName'] as String).input(),
     );
   }
 }

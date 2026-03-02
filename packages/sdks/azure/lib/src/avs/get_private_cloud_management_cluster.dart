@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPrivateCloudManagementCluster {
   /// The list of the hosts in the management cluster.
-  final List<String> hosts;
+  final pulumi.Input<List<String>> hosts;
   /// The ID of the management cluster.
-  final int id;
+  final pulumi.Input<int> id;
   /// The size of the management cluster.
-  final int size;
+  final pulumi.Input<int> size;
 
   /// Creates a new [GetPrivateCloudManagementCluster].
   /// [hosts] The list of the hosts in the management cluster.
@@ -29,9 +30,9 @@ class GetPrivateCloudManagementCluster {
 
   factory GetPrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementCluster(
-      hosts: (map['hosts'] as List).cast<String>(),
-      id: map['id'] as int,
-      size: map['size'] as int,
+      hosts: ((map['hosts'] as List).cast<String>()).input(),
+      id: (map['id'] as int).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

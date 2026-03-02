@@ -22,17 +22,12 @@ class VpcBlockPublicAccessOptionsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   VpcBlockPublicAccessOptionsState({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? awsRegion,
-    pulumi.Output<String>? internetGatewayBlockMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<VpcBlockPublicAccessOptionsTimeouts>? timeouts,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      awsRegion = pulumi.Input.asOptionalInput<String>(awsRegion),
-      internetGatewayBlockMode = pulumi.Input.asOptionalInput<String>(internetGatewayBlockMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<VpcBlockPublicAccessOptionsTimeouts>(timeouts);
+    this.awsAccountId,
+    this.awsRegion,
+    this.internetGatewayBlockMode,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class VpcBlockPublicAccessOptionsState {
 
   factory VpcBlockPublicAccessOptionsState.fromMap(Map<String, dynamic> map) {
     return VpcBlockPublicAccessOptionsState(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      awsRegion: map['awsRegion'] == null ? null : pulumi.Output.create<String>(map['awsRegion'] as String),
-      internetGatewayBlockMode: map['internetGatewayBlockMode'] == null ? null : pulumi.Output.create<String>(map['internetGatewayBlockMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<VpcBlockPublicAccessOptionsTimeouts>(VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      internetGatewayBlockMode: map['internetGatewayBlockMode'] == null ? null : (map['internetGatewayBlockMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

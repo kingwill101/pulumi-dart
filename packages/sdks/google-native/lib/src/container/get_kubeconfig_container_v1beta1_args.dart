@@ -13,9 +13,8 @@ class GetKubeconfigContainerV1beta1Args {
   /// Creates a new [GetKubeconfigContainerV1beta1Args].
   /// [self] Required.
   GetKubeconfigContainerV1beta1Args({
-    required pulumi.Output<ClusterContainerV1beta1> self,
-  }) :
-      self = pulumi.Input.asInput<ClusterContainerV1beta1>(self);
+    required this.self,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetKubeconfigContainerV1beta1Args {
 
   factory GetKubeconfigContainerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetKubeconfigContainerV1beta1Args(
-      self: pulumi.Output.create<ClusterContainerV1beta1>(map['__self__'] as ClusterContainerV1beta1),
+      self: (map['__self__'] as ClusterContainerV1beta1).input(),
     );
   }
 }

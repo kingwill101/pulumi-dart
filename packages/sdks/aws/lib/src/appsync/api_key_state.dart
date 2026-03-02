@@ -24,19 +24,13 @@ class ApiKeyState {
   /// [key] API key
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApiKeyState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expires,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? region,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expires = pulumi.Input.asOptionalInput<String>(expires),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.apiId,
+    this.apiKeyId,
+    this.description,
+    this.expires,
+    this.key,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expires: map['expires'] == null ? null : pulumi.Output.create<String>(map['expires'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

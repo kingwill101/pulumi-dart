@@ -14,11 +14,9 @@ class GetWorkforcePoolArgs {
   /// [location] Required.
   /// [workforcePoolId] Required.
   GetWorkforcePoolArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> workforcePoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+    required this.location,
+    required this.workforcePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetWorkforcePoolArgs {
 
   factory GetWorkforcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkforcePoolArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
+      location: (map['location'] as String).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterControlPlaneProxyConfig {
   /// The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
-  final String secretArn;
+  final pulumi.Input<String> secretArn;
   /// The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [AwsClusterControlPlaneProxyConfig].
   /// [secretArn] The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
@@ -24,8 +25,8 @@ class AwsClusterControlPlaneProxyConfig {
 
   factory AwsClusterControlPlaneProxyConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneProxyConfig(
-      secretArn: map['secretArn'] as String,
-      secretVersion: map['secretVersion'] as String,
+      secretArn: (map['secretArn'] as String).input(),
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

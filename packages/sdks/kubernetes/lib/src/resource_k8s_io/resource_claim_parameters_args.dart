@@ -33,19 +33,13 @@ class ResourceClaimParametersArgs {
   /// [metadata] Standard object metadata
   /// [shareable] Shareable indicates whether the allocated claim is meant to be shareable by multiple consumers at the same time.
   ResourceClaimParametersArgs({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<List<DriverRequests>>? driverRequests,
-    pulumi.Output<ResourceClaimParametersReferenceResourceK8sIoV1alpha2>? generatedFrom,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMeta>? metadata,
-    pulumi.Output<bool>? shareable,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      driverRequests = pulumi.Input.asOptionalInput<List<DriverRequests>>(driverRequests),
-      generatedFrom = pulumi.Input.asOptionalInput<ResourceClaimParametersReferenceResourceK8sIoV1alpha2>(generatedFrom),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMeta>(metadata),
-      shareable = pulumi.Input.asOptionalInput<bool>(shareable);
+    this.apiVersion,
+    this.driverRequests,
+    this.generatedFrom,
+    this.kind,
+    this.metadata,
+    this.shareable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class ResourceClaimParametersArgs {
 
   factory ResourceClaimParametersArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClaimParametersArgs(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      driverRequests: map['driverRequests'] == null ? null : pulumi.Output.create<List<DriverRequests>>(pulumi.Input.decodeList<DriverRequests>(map['driverRequests'], (value) => DriverRequests.fromMap((value as Map).cast<String, dynamic>()))),
-      generatedFrom: map['generatedFrom'] == null ? null : pulumi.Output.create<ResourceClaimParametersReferenceResourceK8sIoV1alpha2>(ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMeta>(ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      shareable: map['shareable'] == null ? null : pulumi.Output.create<bool>(map['shareable'] as bool),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      driverRequests: map['driverRequests'] == null ? null : (pulumi.Input.decodeList<DriverRequests>(map['driverRequests'], (value) => DriverRequests.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
     );
   }
 }

@@ -36,25 +36,16 @@ class NodeBalancerNodeState {
   /// [vpcConfigId] The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
   /// [weight] Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
   NodeBalancerNodeState({
-    pulumi.Output<String>? address,
-    pulumi.Output<int>? configId,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? mode,
-    pulumi.Output<int>? nodebalancerId,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? subnetId,
-    pulumi.Output<int>? vpcConfigId,
-    pulumi.Output<int>? weight,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      configId = pulumi.Input.asOptionalInput<int>(configId),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      nodebalancerId = pulumi.Input.asOptionalInput<int>(nodebalancerId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetId = pulumi.Input.asOptionalInput<int>(subnetId),
-      vpcConfigId = pulumi.Input.asOptionalInput<int>(vpcConfigId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.address,
+    this.configId,
+    this.label,
+    this.mode,
+    this.nodebalancerId,
+    this.status,
+    this.subnetId,
+    this.vpcConfigId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class NodeBalancerNodeState {
 
   factory NodeBalancerNodeState.fromMap(Map<String, dynamic> map) {
     return NodeBalancerNodeState(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      configId: map['configId'] == null ? null : pulumi.Output.create<int>(map['configId'] as int),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      nodebalancerId: map['nodebalancerId'] == null ? null : pulumi.Output.create<int>(map['nodebalancerId'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<int>(map['subnetId'] as int),
-      vpcConfigId: map['vpcConfigId'] == null ? null : pulumi.Output.create<int>(map['vpcConfigId'] as int),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      nodebalancerId: map['nodebalancerId'] == null ? null : (map['nodebalancerId'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
+      vpcConfigId: map['vpcConfigId'] == null ? null : (map['vpcConfigId'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

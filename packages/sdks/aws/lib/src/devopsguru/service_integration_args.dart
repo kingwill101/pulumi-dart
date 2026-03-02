@@ -25,15 +25,11 @@ class ServiceIntegrationArgs {
   /// [opsCenter] Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ServiceIntegrationArgs({
-    required pulumi.Output<ServiceIntegrationKmsServerSideEncryption> kmsServerSideEncryption,
-    required pulumi.Output<ServiceIntegrationLogsAnomalyDetection> logsAnomalyDetection,
-    required pulumi.Output<ServiceIntegrationOpsCenter> opsCenter,
-    pulumi.Output<String>? region,
-  }) :
-      kmsServerSideEncryption = pulumi.Input.asInput<ServiceIntegrationKmsServerSideEncryption>(kmsServerSideEncryption),
-      logsAnomalyDetection = pulumi.Input.asInput<ServiceIntegrationLogsAnomalyDetection>(logsAnomalyDetection),
-      opsCenter = pulumi.Input.asInput<ServiceIntegrationOpsCenter>(opsCenter),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.kmsServerSideEncryption,
+    required this.logsAnomalyDetection,
+    required this.opsCenter,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ServiceIntegrationArgs {
 
   factory ServiceIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationArgs(
-      kmsServerSideEncryption: pulumi.Output.create<ServiceIntegrationKmsServerSideEncryption>(ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption'] as Map).cast<String, dynamic>())),
-      logsAnomalyDetection: pulumi.Output.create<ServiceIntegrationLogsAnomalyDetection>(ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection'] as Map).cast<String, dynamic>())),
-      opsCenter: pulumi.Output.create<ServiceIntegrationOpsCenter>(ServiceIntegrationOpsCenter.fromMap((map['opsCenter'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      kmsServerSideEncryption: (ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption'] as Map).cast<String, dynamic>())).input(),
+      logsAnomalyDetection: (ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection'] as Map).cast<String, dynamic>())).input(),
+      opsCenter: (ServiceIntegrationOpsCenter.fromMap((map['opsCenter'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

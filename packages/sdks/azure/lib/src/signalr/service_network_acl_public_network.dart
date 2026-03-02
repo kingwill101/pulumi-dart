@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNetworkAclPublicNetwork {
   /// The allowed request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
   /// > **Note:** When `default_action` is `Allow`, `allowed_request_types`cannot be set.
-  final List<String>? allowedRequestTypes;
+  final pulumi.Input<List<String>>? allowedRequestTypes;
   /// The denied request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
   /// > **Note:** When `default_action` is `Deny`, `denied_request_types`cannot be set.
   ///
   /// > **Note:** `allowed_request_types` - (Optional) and `denied_request_types` cannot be set together.
-  final List<String>? deniedRequestTypes;
+  final pulumi.Input<List<String>>? deniedRequestTypes;
 
   /// Creates a new [ServiceNetworkAclPublicNetwork].
   /// [allowedRequestTypes] The allowed request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
@@ -30,8 +31,8 @@ class ServiceNetworkAclPublicNetwork {
 
   factory ServiceNetworkAclPublicNetwork.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclPublicNetwork(
-      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : (map['allowedRequestTypes'] as List).cast<String>(),
-      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : (map['deniedRequestTypes'] as List).cast<String>(),
+      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes'] as List).cast<String>()).input(),
+      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes'] as List).cast<String>()).input(),
     );
   }
 }

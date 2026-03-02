@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerBuildAvailableSecretsSecretManager {
   /// Environment variable name to associate with the secret. Secret environment
   /// variables must be unique across all of a build's secrets, and must be used
   /// by at least one build step.
-  final String env;
+  final pulumi.Input<String> env;
   /// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
-  final String versionName;
+  final pulumi.Input<String> versionName;
 
   /// Creates a new [TriggerBuildAvailableSecretsSecretManager].
   /// [env] Environment variable name to associate with the secret. Secret environment
@@ -26,8 +27,8 @@ class TriggerBuildAvailableSecretsSecretManager {
 
   factory TriggerBuildAvailableSecretsSecretManager.fromMap(Map<String, dynamic> map) {
     return TriggerBuildAvailableSecretsSecretManager(
-      env: map['env'] as String,
-      versionName: map['versionName'] as String,
+      env: (map['env'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
     );
   }
 }

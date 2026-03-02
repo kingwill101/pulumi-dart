@@ -9,15 +9,15 @@ import 'email_service_domain_verification_record_spf.dart';
 
 class EmailServiceDomainVerificationRecord {
   /// (Optional) An `dkim2` block as defined below.
-  final List<EmailServiceDomainVerificationRecordDkim2>? dkim2s;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim2>>? dkim2s;
   /// (Optional) An `dkim` block as defined below.
-  final List<EmailServiceDomainVerificationRecordDkim>? dkims;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim>>? dkims;
   /// (Optional) An `dmarc` block as defined below.
-  final List<EmailServiceDomainVerificationRecordDmarc>? dmarcs;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDmarc>>? dmarcs;
   /// (Optional) An `domain` block as defined below.
-  final List<EmailServiceDomainVerificationRecordDomain>? domains;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDomain>>? domains;
   /// (Optional) An `spf` block as defined below.
-  final List<EmailServiceDomainVerificationRecordSpf>? spfs;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordSpf>>? spfs;
 
   /// Creates a new [EmailServiceDomainVerificationRecord].
   /// [dkim2s] (Optional) An `dkim2` block as defined below.
@@ -35,21 +35,21 @@ class EmailServiceDomainVerificationRecord {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dkim2s': ?dkim2s == null ? null : pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDkim2, Map<String, dynamic>>(dkim2s!, (value) => value.toMap()),
-      'dkims': ?dkims == null ? null : pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDkim, Map<String, dynamic>>(dkims!, (value) => value.toMap()),
-      'dmarcs': ?dmarcs == null ? null : pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDmarc, Map<String, dynamic>>(dmarcs!, (value) => value.toMap()),
-      'domains': ?domains == null ? null : pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDomain, Map<String, dynamic>>(domains!, (value) => value.toMap()),
-      'spfs': ?spfs == null ? null : pulumi.Input.encodeList<EmailServiceDomainVerificationRecordSpf, Map<String, dynamic>>(spfs!, (value) => value.toMap()),
+      'dkim2s': ?pulumi.Input.mapOptionalInputValue<List<EmailServiceDomainVerificationRecordDkim2>, List<Map<String, dynamic>>>(dkim2s, (value) => pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDkim2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dkims': ?pulumi.Input.mapOptionalInputValue<List<EmailServiceDomainVerificationRecordDkim>, List<Map<String, dynamic>>>(dkims, (value) => pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDkim, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dmarcs': ?pulumi.Input.mapOptionalInputValue<List<EmailServiceDomainVerificationRecordDmarc>, List<Map<String, dynamic>>>(dmarcs, (value) => pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDmarc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'domains': ?pulumi.Input.mapOptionalInputValue<List<EmailServiceDomainVerificationRecordDomain>, List<Map<String, dynamic>>>(domains, (value) => pulumi.Input.encodeList<EmailServiceDomainVerificationRecordDomain, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'spfs': ?pulumi.Input.mapOptionalInputValue<List<EmailServiceDomainVerificationRecordSpf>, List<Map<String, dynamic>>>(spfs, (value) => pulumi.Input.encodeList<EmailServiceDomainVerificationRecordSpf, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EmailServiceDomainVerificationRecord.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainVerificationRecord(
-      dkim2s: map['dkim2s'] == null ? null : pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim2>(map['dkim2s'], (value) => EmailServiceDomainVerificationRecordDkim2.fromMap((value as Map).cast<String, dynamic>())),
-      dkims: map['dkims'] == null ? null : pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim>(map['dkims'], (value) => EmailServiceDomainVerificationRecordDkim.fromMap((value as Map).cast<String, dynamic>())),
-      dmarcs: map['dmarcs'] == null ? null : pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDmarc>(map['dmarcs'], (value) => EmailServiceDomainVerificationRecordDmarc.fromMap((value as Map).cast<String, dynamic>())),
-      domains: map['domains'] == null ? null : pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDomain>(map['domains'], (value) => EmailServiceDomainVerificationRecordDomain.fromMap((value as Map).cast<String, dynamic>())),
-      spfs: map['spfs'] == null ? null : pulumi.Input.decodeList<EmailServiceDomainVerificationRecordSpf>(map['spfs'], (value) => EmailServiceDomainVerificationRecordSpf.fromMap((value as Map).cast<String, dynamic>())),
+      dkim2s: map['dkim2s'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim2>(map['dkim2s'], (value) => EmailServiceDomainVerificationRecordDkim2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dkims: map['dkims'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDkim>(map['dkims'], (value) => EmailServiceDomainVerificationRecordDkim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dmarcs: map['dmarcs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDmarc>(map['dmarcs'], (value) => EmailServiceDomainVerificationRecordDmarc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordDomain>(map['domains'], (value) => EmailServiceDomainVerificationRecordDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spfs: map['spfs'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecordSpf>(map['spfs'], (value) => EmailServiceDomainVerificationRecordSpf.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

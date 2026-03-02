@@ -35,25 +35,16 @@ class V3AsyncInvokeConfigState {
   /// [maxAsyncRetryAttempts] Number of Asynchronous call retries
   /// [qualifier] Function version or alias
   V3AsyncInvokeConfigState({
-    pulumi.Output<bool>? asyncTask,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<V3AsyncInvokeConfigDestinationConfig>? destinationConfig,
-    pulumi.Output<String>? functionArn,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<int>? maxAsyncEventAgeInSeconds,
-    pulumi.Output<int>? maxAsyncRetryAttempts,
-    pulumi.Output<String>? qualifier,
-  }) :
-      asyncTask = pulumi.Input.asOptionalInput<bool>(asyncTask),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      destinationConfig = pulumi.Input.asOptionalInput<V3AsyncInvokeConfigDestinationConfig>(destinationConfig),
-      functionArn = pulumi.Input.asOptionalInput<String>(functionArn),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      maxAsyncEventAgeInSeconds = pulumi.Input.asOptionalInput<int>(maxAsyncEventAgeInSeconds),
-      maxAsyncRetryAttempts = pulumi.Input.asOptionalInput<int>(maxAsyncRetryAttempts),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier);
+    this.asyncTask,
+    this.createTime,
+    this.destinationConfig,
+    this.functionArn,
+    this.functionName,
+    this.lastModifiedTime,
+    this.maxAsyncEventAgeInSeconds,
+    this.maxAsyncRetryAttempts,
+    this.qualifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class V3AsyncInvokeConfigState {
 
   factory V3AsyncInvokeConfigState.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigState(
-      asyncTask: map['asyncTask'] == null ? null : pulumi.Output.create<bool>(map['asyncTask'] as bool),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      destinationConfig: map['destinationConfig'] == null ? null : pulumi.Output.create<V3AsyncInvokeConfigDestinationConfig>(V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())),
-      functionArn: map['functionArn'] == null ? null : pulumi.Output.create<String>(map['functionArn'] as String),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : pulumi.Output.create<int>(map['maxAsyncEventAgeInSeconds'] as int),
-      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : pulumi.Output.create<int>(map['maxAsyncRetryAttempts'] as int),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
+      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds'] as int).input(),
+      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts'] as int).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
     );
   }
 }

@@ -13,20 +13,20 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// suggestions that are relevant might still be shown.
   /// Setting to 0.0 means no boost applied. The boosting condition is
   /// ignored.
-  final double? boost;
+  final pulumi.Input<double>? boost;
   /// (Output)
   /// Specification for custom ranking based on customer specified attribute
   /// value. It provides more controls for customized ranking than the simple
   /// (condition, boost) combination above.
   /// Structure is documented below.
-  final List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>? boostControlSpecs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>>? boostControlSpecs;
   /// (Output)
   /// An expression which specifies a boost condition. The syntax is the same
   /// as filter expression syntax. Currently, the only supported condition is
   /// a list of BCP-47 lang codes.
   /// Example: To boost suggestions in languages en or fr:
   /// (lang_code: ANY("en", "fr"))
-  final String? condition;
+  final pulumi.Input<String>? condition;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec].
   /// [boost] (Output)
@@ -41,16 +41,16 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boost': ?boost,
-      'boostControlSpecs': ?boostControlSpecs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec, Map<String, dynamic>>(boostControlSpecs!, (value) => value.toMap()),
+      'boostControlSpecs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>, List<Map<String, dynamic>>>(boostControlSpecs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
       'condition': ?condition,
     };
   }
 
   factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: map['boost'] == null ? null : map['boost'] as double,
-      boostControlSpecs: map['boostControlSpecs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(map['boostControlSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>())),
-      condition: map['condition'] == null ? null : map['condition'] as String,
+      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
+      boostControlSpecs: map['boostControlSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(map['boostControlSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
     );
   }
 }

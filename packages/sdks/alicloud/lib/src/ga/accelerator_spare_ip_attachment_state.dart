@@ -19,15 +19,11 @@ class AcceleratorSpareIpAttachmentState {
   /// [spareIp] The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   /// [status] The status of the standby CNAME IP address.
   AcceleratorSpareIpAttachmentState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? spareIp,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      spareIp = pulumi.Input.asOptionalInput<String>(spareIp),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.dryRun,
+    this.spareIp,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AcceleratorSpareIpAttachmentState {
 
   factory AcceleratorSpareIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return AcceleratorSpareIpAttachmentState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      spareIp: map['spareIp'] == null ? null : pulumi.Output.create<String>(map['spareIp'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      spareIp: map['spareIp'] == null ? null : (map['spareIp'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

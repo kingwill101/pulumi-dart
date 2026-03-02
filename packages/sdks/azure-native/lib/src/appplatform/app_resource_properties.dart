@@ -12,31 +12,31 @@ import 'temporary_disk.dart';
 /// App resource properties payload
 class AppResourceProperties {
   /// Collection of addons
-  final Map<String, dynamic>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
   /// List of custom persistent disks
-  final List<CustomPersistentDiskResource>? customPersistentDisks;
+  final pulumi.Input<List<CustomPersistentDiskResource>>? customPersistentDisks;
   /// Indicate if end to end TLS is enabled.
-  final bool? enableEndToEndTLS;
+  final pulumi.Input<bool>? enableEndToEndTLS;
   /// Indicate if only https is allowed.
-  final bool? httpsOnly;
+  final pulumi.Input<bool>? httpsOnly;
   /// App ingress settings payload.
-  final IngressSettings? ingressSettings;
+  final pulumi.Input<IngressSettings>? ingressSettings;
   /// Collection of loaded certificates
-  final List<LoadedCertificate>? loadedCertificates;
+  final pulumi.Input<List<LoadedCertificate>>? loadedCertificates;
   /// Persistent disk settings
-  final PersistentDisk? persistentDisk;
+  final pulumi.Input<PersistentDisk>? persistentDisk;
   /// Indicates whether the App exposes public endpoint
-  final bool? public;
+  final pulumi.Input<bool>? public;
   /// Collection of auth secrets
-  final List<Secret>? secrets;
+  final pulumi.Input<List<Secret>>? secrets;
   /// Temporary disk settings
-  final TemporaryDisk? temporaryDisk;
+  final pulumi.Input<TemporaryDisk>? temporaryDisk;
   /// State of test endpoint auth.
-  final String? testEndpointAuthState;
+  final pulumi.Input<String>? testEndpointAuthState;
   /// Additional App settings in vnet injection instance
-  final AppVNetAddons? vnetAddons;
+  final pulumi.Input<AppVNetAddons>? vnetAddons;
   /// The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  final String? workloadProfileName;
+  final pulumi.Input<String>? workloadProfileName;
 
   /// Creates a new [AppResourceProperties].
   /// [addonConfigs] Collection of addons
@@ -71,36 +71,36 @@ class AppResourceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonConfigs': ?addonConfigs,
-      'customPersistentDisks': ?customPersistentDisks == null ? null : pulumi.Input.encodeList<CustomPersistentDiskResource, Map<String, dynamic>>(customPersistentDisks!, (value) => value.toMap()),
+      'customPersistentDisks': ?pulumi.Input.mapOptionalInputValue<List<CustomPersistentDiskResource>, List<Map<String, dynamic>>>(customPersistentDisks, (value) => pulumi.Input.encodeList<CustomPersistentDiskResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableEndToEndTLS': ?enableEndToEndTLS,
       'httpsOnly': ?httpsOnly,
-      'ingressSettings': ?ingressSettings == null ? null : ingressSettings!.toMap(),
-      'loadedCertificates': ?loadedCertificates == null ? null : pulumi.Input.encodeList<LoadedCertificate, Map<String, dynamic>>(loadedCertificates!, (value) => value.toMap()),
-      'persistentDisk': ?persistentDisk == null ? null : persistentDisk!.toMap(),
+      'ingressSettings': ?pulumi.Input.mapOptionalInputValue<IngressSettings, Map<String, dynamic>>(ingressSettings, (value) => value.toMap()),
+      'loadedCertificates': ?pulumi.Input.mapOptionalInputValue<List<LoadedCertificate>, List<Map<String, dynamic>>>(loadedCertificates, (value) => pulumi.Input.encodeList<LoadedCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'persistentDisk': ?pulumi.Input.mapOptionalInputValue<PersistentDisk, Map<String, dynamic>>(persistentDisk, (value) => value.toMap()),
       'public': ?public,
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<Secret, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
-      'temporaryDisk': ?temporaryDisk == null ? null : temporaryDisk!.toMap(),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<Secret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<Secret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'temporaryDisk': ?pulumi.Input.mapOptionalInputValue<TemporaryDisk, Map<String, dynamic>>(temporaryDisk, (value) => value.toMap()),
       'testEndpointAuthState': ?testEndpointAuthState,
-      'vnetAddons': ?vnetAddons == null ? null : vnetAddons!.toMap(),
+      'vnetAddons': ?pulumi.Input.mapOptionalInputValue<AppVNetAddons, Map<String, dynamic>>(vnetAddons, (value) => value.toMap()),
       'workloadProfileName': ?workloadProfileName,
     };
   }
 
   factory AppResourceProperties.fromMap(Map<String, dynamic> map) {
     return AppResourceProperties(
-      addonConfigs: map['addonConfigs'] == null ? null : (map['addonConfigs'] as Map).cast<String, dynamic>(),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : pulumi.Input.decodeList<CustomPersistentDiskResource>(map['customPersistentDisks'], (value) => CustomPersistentDiskResource.fromMap((value as Map).cast<String, dynamic>())),
-      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : map['enableEndToEndTLS'] as bool,
-      httpsOnly: map['httpsOnly'] == null ? null : map['httpsOnly'] as bool,
-      ingressSettings: map['ingressSettings'] == null ? null : IngressSettings.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>()),
-      loadedCertificates: map['loadedCertificates'] == null ? null : pulumi.Input.decodeList<LoadedCertificate>(map['loadedCertificates'], (value) => LoadedCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      persistentDisk: map['persistentDisk'] == null ? null : PersistentDisk.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>()),
-      public: map['public'] == null ? null : map['public'] as bool,
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>())),
-      temporaryDisk: map['temporaryDisk'] == null ? null : TemporaryDisk.fromMap((map['temporaryDisk'] as Map).cast<String, dynamic>()),
-      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : map['testEndpointAuthState'] as String,
-      vnetAddons: map['vnetAddons'] == null ? null : AppVNetAddons.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>()),
-      workloadProfileName: map['workloadProfileName'] == null ? null : map['workloadProfileName'] as String,
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
+      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<CustomPersistentDiskResource>(map['customPersistentDisks'], (value) => CustomPersistentDiskResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : (map['enableEndToEndTLS'] as bool).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (IngressSettings.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())).input(),
+      loadedCertificates: map['loadedCertificates'] == null ? null : (pulumi.Input.decodeList<LoadedCertificate>(map['loadedCertificates'], (value) => LoadedCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistentDisk: map['persistentDisk'] == null ? null : (PersistentDisk.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      temporaryDisk: map['temporaryDisk'] == null ? null : (TemporaryDisk.fromMap((map['temporaryDisk'] as Map).cast<String, dynamic>())).input(),
+      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : (map['testEndpointAuthState'] as String).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (AppVNetAddons.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
     );
   }
 }

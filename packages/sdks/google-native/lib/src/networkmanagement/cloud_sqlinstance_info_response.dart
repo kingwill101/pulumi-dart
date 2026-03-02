@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Cloud SQL instance.
 class CloudSQLInstanceInfoResponse {
   /// Name of a Cloud SQL instance.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// External IP address of a Cloud SQL instance.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
   /// Internal IP address of a Cloud SQL instance.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
   /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// Region in which the Cloud SQL instance is running.
-  final String region;
+  final pulumi.Input<String> region;
   /// URI of a Cloud SQL instance.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [CloudSQLInstanceInfoResponse].
   /// [displayName] Name of a Cloud SQL instance.
@@ -45,12 +46,12 @@ class CloudSQLInstanceInfoResponse {
 
   factory CloudSQLInstanceInfoResponse.fromMap(Map<String, dynamic> map) {
     return CloudSQLInstanceInfoResponse(
-      displayName: map['displayName'] as String,
-      externalIp: map['externalIp'] as String,
-      internalIp: map['internalIp'] as String,
-      networkUri: map['networkUri'] as String,
-      region: map['region'] as String,
-      uri: map['uri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      externalIp: (map['externalIp'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      region: (map['region'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

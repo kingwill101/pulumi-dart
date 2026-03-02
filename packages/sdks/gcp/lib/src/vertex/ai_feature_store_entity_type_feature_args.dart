@@ -28,17 +28,12 @@ class AiFeatureStoreEntityTypeFeatureArgs {
   /// [name] The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
   /// [valueType] Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
   AiFeatureStoreEntityTypeFeatureArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> entitytype,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> valueType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entitytype = pulumi.Input.asInput<String>(entitytype),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      valueType = pulumi.Input.asInput<String>(valueType);
+    this.description,
+    required this.entitytype,
+    this.labels,
+    this.name,
+    required this.valueType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class AiFeatureStoreEntityTypeFeatureArgs {
 
   factory AiFeatureStoreEntityTypeFeatureArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeFeatureArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entitytype: pulumi.Output.create<String>(map['entitytype'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      valueType: pulumi.Output.create<String>(map['valueType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entitytype: (map['entitytype'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      valueType: (map['valueType'] as String).input(),
     );
   }
 }

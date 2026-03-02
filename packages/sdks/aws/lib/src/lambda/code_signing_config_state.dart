@@ -38,25 +38,16 @@ class CodeSigningConfigState {
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   CodeSigningConfigState({
-    pulumi.Output<CodeSigningConfigAllowedPublishers>? allowedPublishers,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lastModified,
-    pulumi.Output<CodeSigningConfigPolicies>? policies,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      allowedPublishers = pulumi.Input.asOptionalInput<CodeSigningConfigAllowedPublishers>(allowedPublishers),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lastModified = pulumi.Input.asOptionalInput<String>(lastModified),
-      policies = pulumi.Input.asOptionalInput<CodeSigningConfigPolicies>(policies),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.allowedPublishers,
+    this.arn,
+    this.configId,
+    this.description,
+    this.lastModified,
+    this.policies,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class CodeSigningConfigState {
 
   factory CodeSigningConfigState.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigState(
-      allowedPublishers: map['allowedPublishers'] == null ? null : pulumi.Output.create<CodeSigningConfigAllowedPublishers>(CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lastModified: map['lastModified'] == null ? null : pulumi.Output.create<String>(map['lastModified'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<CodeSigningConfigPolicies>(CodeSigningConfigPolicies.fromMap((map['policies'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      allowedPublishers: map['allowedPublishers'] == null ? null : (CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      policies: map['policies'] == null ? null : (CodeSigningConfigPolicies.fromMap((map['policies'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

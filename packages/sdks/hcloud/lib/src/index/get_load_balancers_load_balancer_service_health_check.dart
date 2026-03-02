@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_load_balancers_load_balancer_service_health_check_http.dart';
 
 class GetLoadBalancersLoadBalancerServiceHealthCheck {
-  final List<GetLoadBalancersLoadBalancerServiceHealthCheckHttp> https;
-  final int interval;
-  final int port;
-  final String protocol;
-  final int retries;
-  final int timeout;
+  final pulumi.Input<List<GetLoadBalancersLoadBalancerServiceHealthCheckHttp>> https;
+  final pulumi.Input<int> interval;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<int> retries;
+  final pulumi.Input<int> timeout;
 
   /// Creates a new [GetLoadBalancersLoadBalancerServiceHealthCheck].
   /// [https] Required.
@@ -29,7 +29,7 @@ class GetLoadBalancersLoadBalancerServiceHealthCheck {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'https': pulumi.Input.encodeList<GetLoadBalancersLoadBalancerServiceHealthCheckHttp, Map<String, dynamic>>(https, (value) => value.toMap()),
+      'https': pulumi.Input.mapInputValue<List<GetLoadBalancersLoadBalancerServiceHealthCheckHttp>, List<Map<String, dynamic>>>(https, (value) => pulumi.Input.encodeList<GetLoadBalancersLoadBalancerServiceHealthCheckHttp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interval': interval,
       'port': port,
       'protocol': protocol,
@@ -40,12 +40,12 @@ class GetLoadBalancersLoadBalancerServiceHealthCheck {
 
   factory GetLoadBalancersLoadBalancerServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerServiceHealthCheck(
-      https: pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheckHttp>(map['https'], (value) => GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap((value as Map).cast<String, dynamic>())),
-      interval: map['interval'] as int,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      retries: map['retries'] as int,
-      timeout: map['timeout'] as int,
+      https: (pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheckHttp>(map['https'], (value) => GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interval: (map['interval'] as int).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      retries: (map['retries'] as int).input(),
+      timeout: (map['timeout'] as int).input(),
     );
   }
 }

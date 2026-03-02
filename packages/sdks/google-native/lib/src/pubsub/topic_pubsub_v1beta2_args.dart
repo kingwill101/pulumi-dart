@@ -17,13 +17,10 @@ class TopicPubsubV1beta2Args {
   /// [project] Optional.
   /// [topicId] Required.
   TopicPubsubV1beta2Args({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> topicId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      topicId = pulumi.Input.asInput<String>(topicId);
+    this.name,
+    this.project,
+    required this.topicId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class TopicPubsubV1beta2Args {
 
   factory TopicPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return TopicPubsubV1beta2Args(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      topicId: pulumi.Output.create<String>(map['topicId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      topicId: (map['topicId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFleetAnalyticArgs {
   /// [fleetName] Cosmos DB fleet name. Needs to be unique under a subscription.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFleetAnalyticArgs({
-    required pulumi.Output<String> fleetAnalyticsName,
-    required pulumi.Output<String> fleetName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      fleetAnalyticsName = pulumi.Input.asInput<String>(fleetAnalyticsName),
-      fleetName = pulumi.Input.asInput<String>(fleetName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.fleetAnalyticsName,
+    required this.fleetName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFleetAnalyticArgs {
 
   factory GetFleetAnalyticArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetAnalyticArgs(
-      fleetAnalyticsName: pulumi.Output.create<String>(map['fleetAnalyticsName'] as String),
-      fleetName: pulumi.Output.create<String>(map['fleetName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      fleetAnalyticsName: (map['fleetAnalyticsName'] as String).input(),
+      fleetName: (map['fleetName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionHostEntry {
-  final String? hostname;
-  final String? ipAddress;
+  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String>? ipAddress;
 
   /// Creates a new [TaskDefinitionHostEntry].
   /// [hostname] Optional.
@@ -22,8 +23,8 @@ class TaskDefinitionHostEntry {
 
   factory TaskDefinitionHostEntry.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionHostEntry(
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

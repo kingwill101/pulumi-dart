@@ -18,13 +18,10 @@ class WorkspacePolicyState {
   /// [xmlContent] Specifies the API Management Workspace Policy as an XML string.
   /// [xmlLink] Specifies a publicly accessible URL to a policy XML document.
   WorkspacePolicyState({
-    pulumi.Output<String>? apiManagementWorkspaceId,
-    pulumi.Output<String>? xmlContent,
-    pulumi.Output<String>? xmlLink,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asOptionalInput<String>(apiManagementWorkspaceId),
-      xmlContent = pulumi.Input.asOptionalInput<String>(xmlContent),
-      xmlLink = pulumi.Input.asOptionalInput<String>(xmlLink);
+    this.apiManagementWorkspaceId,
+    this.xmlContent,
+    this.xmlLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class WorkspacePolicyState {
 
   factory WorkspacePolicyState.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      xmlContent: map['xmlContent'] == null ? null : pulumi.Output.create<String>(map['xmlContent'] as String),
-      xmlLink: map['xmlLink'] == null ? null : pulumi.Output.create<String>(map['xmlLink'] as String),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
     );
   }
 }

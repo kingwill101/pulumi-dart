@@ -39,25 +39,16 @@ class DevBoxDefinitionArgs {
   /// [sku] The SKU for Dev Boxes created using this definition.
   /// [tags] Resource tags.
   DevBoxDefinitionArgs({
-    pulumi.Output<String>? devBoxDefinitionName,
-    required pulumi.Output<String> devCenterName,
-    pulumi.Output<String>? hibernateSupport,
-    required pulumi.Output<ImageReference> imageReference,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? osStorageType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      devBoxDefinitionName = pulumi.Input.asOptionalInput<String>(devBoxDefinitionName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      hibernateSupport = pulumi.Input.asOptionalInput<String>(hibernateSupport),
-      imageReference = pulumi.Input.asInput<ImageReference>(imageReference),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      osStorageType = pulumi.Input.asOptionalInput<String>(osStorageType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.devBoxDefinitionName,
+    required this.devCenterName,
+    this.hibernateSupport,
+    required this.imageReference,
+    this.location,
+    this.osStorageType,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DevBoxDefinitionArgs {
 
   factory DevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionArgs(
-      devBoxDefinitionName: map['devBoxDefinitionName'] == null ? null : pulumi.Output.create<String>(map['devBoxDefinitionName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      hibernateSupport: map['hibernateSupport'] == null ? null : pulumi.Output.create<String>(map['hibernateSupport'] as String),
-      imageReference: pulumi.Output.create<ImageReference>(ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      osStorageType: map['osStorageType'] == null ? null : pulumi.Output.create<String>(map['osStorageType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      devBoxDefinitionName: map['devBoxDefinitionName'] == null ? null : (map['devBoxDefinitionName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      hibernateSupport: map['hibernateSupport'] == null ? null : (map['hibernateSupport'] as String).input(),
+      imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      osStorageType: map['osStorageType'] == null ? null : (map['osStorageType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

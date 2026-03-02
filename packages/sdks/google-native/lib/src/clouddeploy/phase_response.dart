@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'child_rollout_jobs_response.dart';
 import 'deployment_jobs_response.dart';
 
 /// Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
 class PhaseResponse {
   /// ChildRollout job composition.
-  final ChildRolloutJobsResponse childRolloutJobs;
+  final pulumi.Input<ChildRolloutJobsResponse> childRolloutJobs;
   /// Deployment job composition.
-  final DeploymentJobsResponse deploymentJobs;
+  final pulumi.Input<DeploymentJobsResponse> deploymentJobs;
   /// Additional information on why the Phase was skipped, if available.
-  final String skipMessage;
+  final pulumi.Input<String> skipMessage;
   /// Current state of the Phase.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [PhaseResponse].
   /// [childRolloutJobs] ChildRollout job composition.
@@ -28,8 +29,8 @@ class PhaseResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'childRolloutJobs': childRolloutJobs.toMap(),
-      'deploymentJobs': deploymentJobs.toMap(),
+      'childRolloutJobs': pulumi.Input.mapInputValue<ChildRolloutJobsResponse, Map<String, dynamic>>(childRolloutJobs, (value) => value.toMap()),
+      'deploymentJobs': pulumi.Input.mapInputValue<DeploymentJobsResponse, Map<String, dynamic>>(deploymentJobs, (value) => value.toMap()),
       'skipMessage': skipMessage,
       'state': state,
     };
@@ -37,10 +38,10 @@ class PhaseResponse {
 
   factory PhaseResponse.fromMap(Map<String, dynamic> map) {
     return PhaseResponse(
-      childRolloutJobs: ChildRolloutJobsResponse.fromMap((map['childRolloutJobs'] as Map).cast<String, dynamic>()),
-      deploymentJobs: DeploymentJobsResponse.fromMap((map['deploymentJobs'] as Map).cast<String, dynamic>()),
-      skipMessage: map['skipMessage'] as String,
-      state: map['state'] as String,
+      childRolloutJobs: (ChildRolloutJobsResponse.fromMap((map['childRolloutJobs'] as Map).cast<String, dynamic>())).input(),
+      deploymentJobs: (DeploymentJobsResponse.fromMap((map['deploymentJobs'] as Map).cast<String, dynamic>())).input(),
+      skipMessage: (map['skipMessage'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

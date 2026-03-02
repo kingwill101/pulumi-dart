@@ -6,11 +6,11 @@ import 'option.dart';
 /// Enum value definition.
 class EnumValue {
   /// Enum value name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Enum value number.
-  final int? number;
+  final pulumi.Input<int>? number;
   /// Protocol buffer options.
-  final List<Option>? options;
+  final pulumi.Input<List<Option>>? options;
 
   /// Creates a new [EnumValue].
   /// [name] Enum value name.
@@ -26,15 +26,15 @@ class EnumValue {
     return <String, dynamic>{
       'name': ?name,
       'number': ?number,
-      'options': ?options == null ? null : pulumi.Input.encodeList<Option, Map<String, dynamic>>(options!, (value) => value.toMap()),
+      'options': ?pulumi.Input.mapOptionalInputValue<List<Option>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<Option, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnumValue.fromMap(Map<String, dynamic> map) {
     return EnumValue(
-      name: map['name'] == null ? null : map['name'] as String,
-      number: map['number'] == null ? null : map['number'] as int,
-      options: map['options'] == null ? null : pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      number: map['number'] == null ? null : (map['number'] as int).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

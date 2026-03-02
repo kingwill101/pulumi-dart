@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainInterfaceAddressesInterfaceAddr {
   /// IP address.
-  final String addr;
+  final pulumi.Input<String> addr;
   /// Network prefix length (e.g., 24 for 255.255.255.0).
-  final double prefix;
+  final pulumi.Input<double> prefix;
   /// Address type: `ipv4` or `ipv6`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDomainInterfaceAddressesInterfaceAddr].
   /// [addr] IP address.
@@ -29,9 +30,9 @@ class GetDomainInterfaceAddressesInterfaceAddr {
 
   factory GetDomainInterfaceAddressesInterfaceAddr.fromMap(Map<String, dynamic> map) {
     return GetDomainInterfaceAddressesInterfaceAddr(
-      addr: map['addr'] as String,
-      prefix: map['prefix'] as double,
-      type: map['type'] as String,
+      addr: (map['addr'] as String).input(),
+      prefix: (map['prefix'] as double).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

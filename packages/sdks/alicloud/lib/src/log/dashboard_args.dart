@@ -26,17 +26,12 @@ class DashboardArgs {
   /// [displayName] Dashboard alias.
   /// [projectName] The name of the log project. It is the only in one Alicloud account.
   DashboardArgs({
-    pulumi.Output<String>? attribute,
-    required pulumi.Output<String> charList,
-    required pulumi.Output<String> dashboardName,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> projectName,
-  }) :
-      attribute = pulumi.Input.asOptionalInput<String>(attribute),
-      charList = pulumi.Input.asInput<String>(charList),
-      dashboardName = pulumi.Input.asInput<String>(dashboardName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      projectName = pulumi.Input.asInput<String>(projectName);
+    this.attribute,
+    required this.charList,
+    required this.dashboardName,
+    this.displayName,
+    required this.projectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      attribute: map['attribute'] == null ? null : pulumi.Output.create<String>(map['attribute'] as String),
-      charList: pulumi.Output.create<String>(map['charList'] as String),
-      dashboardName: pulumi.Output.create<String>(map['dashboardName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      charList: (map['charList'] as String).input(),
+      dashboardName: (map['dashboardName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
     );
   }
 }

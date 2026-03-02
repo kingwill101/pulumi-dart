@@ -10,33 +10,33 @@ import 'connection_ssl_config_private_server_certificate.dart';
 class ConnectionSslConfig {
   /// Additional SSL related field values.
   /// Structure is documented below.
-  final List<ConnectionSslConfigAdditionalVariable>? additionalVariables;
+  final pulumi.Input<List<ConnectionSslConfigAdditionalVariable>>? additionalVariables;
   /// Type of Client Cert (PEM/JKS/.. etc.)
   /// Possible values are: `PEM`.
-  final String? clientCertType;
+  final pulumi.Input<String>? clientCertType;
   /// Client Certificate
   /// Structure is documented below.
-  final ConnectionSslConfigClientCertificate? clientCertificate;
+  final pulumi.Input<ConnectionSslConfigClientCertificate>? clientCertificate;
   /// Client Private Key
   /// Structure is documented below.
-  final ConnectionSslConfigClientPrivateKey? clientPrivateKey;
+  final pulumi.Input<ConnectionSslConfigClientPrivateKey>? clientPrivateKey;
   /// Secret containing the passphrase protecting the Client Private Key
   /// Structure is documented below.
-  final ConnectionSslConfigClientPrivateKeyPass? clientPrivateKeyPass;
+  final pulumi.Input<ConnectionSslConfigClientPrivateKeyPass>? clientPrivateKeyPass;
   /// Private Server Certificate. Needs to be specified if trust model is PRIVATE.
   /// Structure is documented below.
-  final ConnectionSslConfigPrivateServerCertificate? privateServerCertificate;
+  final pulumi.Input<ConnectionSslConfigPrivateServerCertificate>? privateServerCertificate;
   /// Type of Server Cert (PEM/JKS/.. etc.)
   /// Possible values are: `PEM`.
-  final String? serverCertType;
+  final pulumi.Input<String>? serverCertType;
   /// Enum for Trust Model
   /// Possible values are: `PUBLIC`, `PRIVATE`, `INSECURE`.
-  final String? trustModel;
+  final pulumi.Input<String>? trustModel;
   /// Enum for controlling the SSL Type (TLS/MTLS)
   /// Possible values are: `TLS`, `MTLS`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Bool for enabling SSL
-  final bool? useSsl;
+  final pulumi.Input<bool>? useSsl;
 
   /// Creates a new [ConnectionSslConfig].
   /// [additionalVariables] Additional SSL related field values.
@@ -64,12 +64,12 @@ class ConnectionSslConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVariables': ?additionalVariables == null ? null : pulumi.Input.encodeList<ConnectionSslConfigAdditionalVariable, Map<String, dynamic>>(additionalVariables!, (value) => value.toMap()),
+      'additionalVariables': ?pulumi.Input.mapOptionalInputValue<List<ConnectionSslConfigAdditionalVariable>, List<Map<String, dynamic>>>(additionalVariables, (value) => pulumi.Input.encodeList<ConnectionSslConfigAdditionalVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clientCertType': ?clientCertType,
-      'clientCertificate': ?clientCertificate == null ? null : clientCertificate!.toMap(),
-      'clientPrivateKey': ?clientPrivateKey == null ? null : clientPrivateKey!.toMap(),
-      'clientPrivateKeyPass': ?clientPrivateKeyPass == null ? null : clientPrivateKeyPass!.toMap(),
-      'privateServerCertificate': ?privateServerCertificate == null ? null : privateServerCertificate!.toMap(),
+      'clientCertificate': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfigClientCertificate, Map<String, dynamic>>(clientCertificate, (value) => value.toMap()),
+      'clientPrivateKey': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfigClientPrivateKey, Map<String, dynamic>>(clientPrivateKey, (value) => value.toMap()),
+      'clientPrivateKeyPass': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfigClientPrivateKeyPass, Map<String, dynamic>>(clientPrivateKeyPass, (value) => value.toMap()),
+      'privateServerCertificate': ?pulumi.Input.mapOptionalInputValue<ConnectionSslConfigPrivateServerCertificate, Map<String, dynamic>>(privateServerCertificate, (value) => value.toMap()),
       'serverCertType': ?serverCertType,
       'trustModel': ?trustModel,
       'type': type,
@@ -79,16 +79,16 @@ class ConnectionSslConfig {
 
   factory ConnectionSslConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionSslConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : pulumi.Input.decodeList<ConnectionSslConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionSslConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>())),
-      clientCertType: map['clientCertType'] == null ? null : map['clientCertType'] as String,
-      clientCertificate: map['clientCertificate'] == null ? null : ConnectionSslConfigClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>()),
-      clientPrivateKey: map['clientPrivateKey'] == null ? null : ConnectionSslConfigClientPrivateKey.fromMap((map['clientPrivateKey'] as Map).cast<String, dynamic>()),
-      clientPrivateKeyPass: map['clientPrivateKeyPass'] == null ? null : ConnectionSslConfigClientPrivateKeyPass.fromMap((map['clientPrivateKeyPass'] as Map).cast<String, dynamic>()),
-      privateServerCertificate: map['privateServerCertificate'] == null ? null : ConnectionSslConfigPrivateServerCertificate.fromMap((map['privateServerCertificate'] as Map).cast<String, dynamic>()),
-      serverCertType: map['serverCertType'] == null ? null : map['serverCertType'] as String,
-      trustModel: map['trustModel'] == null ? null : map['trustModel'] as String,
-      type: map['type'] as String,
-      useSsl: map['useSsl'] == null ? null : map['useSsl'] as bool,
+      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConnectionSslConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionSslConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientCertType: map['clientCertType'] == null ? null : (map['clientCertType'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (ConnectionSslConfigClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      clientPrivateKey: map['clientPrivateKey'] == null ? null : (ConnectionSslConfigClientPrivateKey.fromMap((map['clientPrivateKey'] as Map).cast<String, dynamic>())).input(),
+      clientPrivateKeyPass: map['clientPrivateKeyPass'] == null ? null : (ConnectionSslConfigClientPrivateKeyPass.fromMap((map['clientPrivateKeyPass'] as Map).cast<String, dynamic>())).input(),
+      privateServerCertificate: map['privateServerCertificate'] == null ? null : (ConnectionSslConfigPrivateServerCertificate.fromMap((map['privateServerCertificate'] as Map).cast<String, dynamic>())).input(),
+      serverCertType: map['serverCertType'] == null ? null : (map['serverCertType'] as String).input(),
+      trustModel: map['trustModel'] == null ? null : (map['trustModel'] as String).input(),
+      type: (map['type'] as String).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
     );
   }
 }

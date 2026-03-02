@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetRowLevelPermissionTagConfigurationTagRule {
-  final String columnName;
-  final String matchAllValue;
-  final String tagKey;
-  final String tagMultiValueDelimiter;
+  final pulumi.Input<String> columnName;
+  final pulumi.Input<String> matchAllValue;
+  final pulumi.Input<String> tagKey;
+  final pulumi.Input<String> tagMultiValueDelimiter;
 
   /// Creates a new [GetDataSetRowLevelPermissionTagConfigurationTagRule].
   /// [columnName] Required.
@@ -30,10 +31,10 @@ class GetDataSetRowLevelPermissionTagConfigurationTagRule {
 
   factory GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(Map<String, dynamic> map) {
     return GetDataSetRowLevelPermissionTagConfigurationTagRule(
-      columnName: map['columnName'] as String,
-      matchAllValue: map['matchAllValue'] as String,
-      tagKey: map['tagKey'] as String,
-      tagMultiValueDelimiter: map['tagMultiValueDelimiter'] as String,
+      columnName: (map['columnName'] as String).input(),
+      matchAllValue: (map['matchAllValue'] as String).input(),
+      tagKey: (map['tagKey'] as String).input(),
+      tagMultiValueDelimiter: (map['tagMultiValueDelimiter'] as String).input(),
     );
   }
 }

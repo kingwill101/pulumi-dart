@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The plan object in Azure Resource Manager, represents a marketplace plan.
 class ArmPlanResponse {
   /// The name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The product.
-  final String? product;
+  final pulumi.Input<String>? product;
   /// The promotion code.
-  final String? promotionCode;
+  final pulumi.Input<String>? promotionCode;
   /// The publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Version of product.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ArmPlanResponse].
   /// [name] The name.
@@ -40,11 +41,11 @@ class ArmPlanResponse {
 
   factory ArmPlanResponse.fromMap(Map<String, dynamic> map) {
     return ArmPlanResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      promotionCode: map['promotionCode'] == null ? null : map['promotionCode'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      product: map['product'] == null ? null : (map['product'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

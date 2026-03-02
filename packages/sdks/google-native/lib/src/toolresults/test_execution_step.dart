@@ -9,13 +9,13 @@ import 'tool_execution.dart';
 /// A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
 class TestExecutionStep {
   /// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
-  final List<TestIssue>? testIssues;
+  final pulumi.Input<List<TestIssue>>? testIssues;
   /// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
-  final List<TestSuiteOverview>? testSuiteOverviews;
+  final pulumi.Input<List<TestSuiteOverview>>? testSuiteOverviews;
   /// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
-  final TestTiming? testTiming;
+  final pulumi.Input<TestTiming>? testTiming;
   /// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
-  final ToolExecution? toolExecution;
+  final pulumi.Input<ToolExecution>? toolExecution;
 
   /// Creates a new [TestExecutionStep].
   /// [testIssues] Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
@@ -31,19 +31,19 @@ class TestExecutionStep {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testIssues': ?testIssues == null ? null : pulumi.Input.encodeList<TestIssue, Map<String, dynamic>>(testIssues!, (value) => value.toMap()),
-      'testSuiteOverviews': ?testSuiteOverviews == null ? null : pulumi.Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(testSuiteOverviews!, (value) => value.toMap()),
-      'testTiming': ?testTiming == null ? null : testTiming!.toMap(),
-      'toolExecution': ?toolExecution == null ? null : toolExecution!.toMap(),
+      'testIssues': ?pulumi.Input.mapOptionalInputValue<List<TestIssue>, List<Map<String, dynamic>>>(testIssues, (value) => pulumi.Input.encodeList<TestIssue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'testSuiteOverviews': ?pulumi.Input.mapOptionalInputValue<List<TestSuiteOverview>, List<Map<String, dynamic>>>(testSuiteOverviews, (value) => pulumi.Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'testTiming': ?pulumi.Input.mapOptionalInputValue<TestTiming, Map<String, dynamic>>(testTiming, (value) => value.toMap()),
+      'toolExecution': ?pulumi.Input.mapOptionalInputValue<ToolExecution, Map<String, dynamic>>(toolExecution, (value) => value.toMap()),
     };
   }
 
   factory TestExecutionStep.fromMap(Map<String, dynamic> map) {
     return TestExecutionStep(
-      testIssues: map['testIssues'] == null ? null : pulumi.Input.decodeList<TestIssue>(map['testIssues'], (value) => TestIssue.fromMap((value as Map).cast<String, dynamic>())),
-      testSuiteOverviews: map['testSuiteOverviews'] == null ? null : pulumi.Input.decodeList<TestSuiteOverview>(map['testSuiteOverviews'], (value) => TestSuiteOverview.fromMap((value as Map).cast<String, dynamic>())),
-      testTiming: map['testTiming'] == null ? null : TestTiming.fromMap((map['testTiming'] as Map).cast<String, dynamic>()),
-      toolExecution: map['toolExecution'] == null ? null : ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>()),
+      testIssues: map['testIssues'] == null ? null : (pulumi.Input.decodeList<TestIssue>(map['testIssues'], (value) => TestIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testSuiteOverviews: map['testSuiteOverviews'] == null ? null : (pulumi.Input.decodeList<TestSuiteOverview>(map['testSuiteOverviews'], (value) => TestSuiteOverview.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testTiming: map['testTiming'] == null ? null : (TestTiming.fromMap((map['testTiming'] as Map).cast<String, dynamic>())).input(),
+      toolExecution: map['toolExecution'] == null ? null : (ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

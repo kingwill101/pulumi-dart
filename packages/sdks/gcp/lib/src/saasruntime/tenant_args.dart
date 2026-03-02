@@ -45,21 +45,14 @@ class TenantArgs {
   /// [saas] A reference to the Saas that defines the product (managed service) that
   /// [tenantId] The ID value for the new tenant.
   TenantArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? consumerResource,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> saas,
-    required pulumi.Output<String> tenantId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      consumerResource = pulumi.Input.asOptionalInput<String>(consumerResource),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      saas = pulumi.Input.asInput<String>(saas),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.annotations,
+    this.consumerResource,
+    this.labels,
+    required this.location,
+    this.project,
+    required this.saas,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,13 +68,13 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      consumerResource: map['consumerResource'] == null ? null : pulumi.Output.create<String>(map['consumerResource'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      saas: pulumi.Output.create<String>(map['saas'] as String),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      consumerResource: map['consumerResource'] == null ? null : (map['consumerResource'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      saas: (map['saas'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

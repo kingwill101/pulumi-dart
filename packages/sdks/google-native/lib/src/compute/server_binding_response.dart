@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerBindingResponse {
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServerBindingResponse].
   /// [type] Required.
@@ -18,7 +19,7 @@ class ServerBindingResponse {
 
   factory ServerBindingResponse.fromMap(Map<String, dynamic> map) {
     return ServerBindingResponse(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

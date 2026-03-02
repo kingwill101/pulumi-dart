@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_ip_address_dns_settings_domain_name_label_scope.dart';
 
 /// Contains FQDN of the DNS record associated with the public IP address.
 class PublicIPAddressDnsSettings {
   /// The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
-  final String? domainNameLabel;
+  final pulumi.Input<String>? domainNameLabel;
   /// The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN.
-  final PublicIpAddressDnsSettingsDomainNameLabelScope? domainNameLabelScope;
+  final pulumi.Input<PublicIpAddressDnsSettingsDomainNameLabelScope>? domainNameLabelScope;
   /// The Fully Qualified Domain Name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// The reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
-  final String? reverseFqdn;
+  final pulumi.Input<String>? reverseFqdn;
 
   /// Creates a new [PublicIPAddressDnsSettings].
   /// [domainNameLabel] The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
@@ -28,7 +29,7 @@ class PublicIPAddressDnsSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainNameLabel': ?domainNameLabel,
-      'domainNameLabelScope': ?domainNameLabelScope == null ? null : domainNameLabelScope!.value,
+      'domainNameLabelScope': ?pulumi.Input.mapOptionalInputValue<PublicIpAddressDnsSettingsDomainNameLabelScope, String>(domainNameLabelScope, (value) => value.value),
       'fqdn': ?fqdn,
       'reverseFqdn': ?reverseFqdn,
     };
@@ -36,10 +37,10 @@ class PublicIPAddressDnsSettings {
 
   factory PublicIPAddressDnsSettings.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressDnsSettings(
-      domainNameLabel: map['domainNameLabel'] == null ? null : map['domainNameLabel'] as String,
-      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : PublicIpAddressDnsSettingsDomainNameLabelScope.fromValue(map['domainNameLabelScope'] as String),
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      reverseFqdn: map['reverseFqdn'] == null ? null : map['reverseFqdn'] as String,
+      domainNameLabel: map['domainNameLabel'] == null ? null : (map['domainNameLabel'] as String).input(),
+      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (PublicIpAddressDnsSettingsDomainNameLabelScope.fromValue(map['domainNameLabelScope'] as String)).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      reverseFqdn: map['reverseFqdn'] == null ? null : (map['reverseFqdn'] as String).input(),
     );
   }
 }

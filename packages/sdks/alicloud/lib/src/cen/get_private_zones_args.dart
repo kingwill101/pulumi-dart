@@ -27,17 +27,12 @@ class GetPrivateZonesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
   GetPrivateZonesArgs({
-    required pulumi.Output<String> cenId,
-    pulumi.Output<String>? hostRegionId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      cenId = pulumi.Input.asInput<String>(cenId),
-      hostRegionId = pulumi.Input.asOptionalInput<String>(hostRegionId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.cenId,
+    this.hostRegionId,
+    this.ids,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetPrivateZonesArgs {
 
   factory GetPrivateZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateZonesArgs(
-      cenId: pulumi.Output.create<String>(map['cenId'] as String),
-      hostRegionId: map['hostRegionId'] == null ? null : pulumi.Output.create<String>(map['hostRegionId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      cenId: (map['cenId'] as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

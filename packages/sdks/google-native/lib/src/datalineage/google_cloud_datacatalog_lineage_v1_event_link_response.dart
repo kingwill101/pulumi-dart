@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_datacatalog_lineage_v1_entity_reference_response.dart';
 
 /// A lineage between source and target entities.
 class GoogleCloudDatacatalogLineageV1EventLinkResponse {
   /// Reference to the source entity
-  final GoogleCloudDatacatalogLineageV1EntityReferenceResponse source;
+  final pulumi.Input<GoogleCloudDatacatalogLineageV1EntityReferenceResponse> source;
   /// Reference to the target entity
-  final GoogleCloudDatacatalogLineageV1EntityReferenceResponse target;
+  final pulumi.Input<GoogleCloudDatacatalogLineageV1EntityReferenceResponse> target;
 
   /// Creates a new [GoogleCloudDatacatalogLineageV1EventLinkResponse].
   /// [source] Reference to the source entity
@@ -19,15 +20,15 @@ class GoogleCloudDatacatalogLineageV1EventLinkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': source.toMap(),
-      'target': target.toMap(),
+      'source': pulumi.Input.mapInputValue<GoogleCloudDatacatalogLineageV1EntityReferenceResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'target': pulumi.Input.mapInputValue<GoogleCloudDatacatalogLineageV1EntityReferenceResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDatacatalogLineageV1EventLinkResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogLineageV1EventLinkResponse(
-      source: GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      target: GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      source: (GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      target: (GoogleCloudDatacatalogLineageV1EntityReferenceResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

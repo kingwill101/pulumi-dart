@@ -19,13 +19,10 @@ class GetMachineArgs {
   /// [machineName] The name of the hybrid machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMachineArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.machineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMachineArgs {
 
   factory GetMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

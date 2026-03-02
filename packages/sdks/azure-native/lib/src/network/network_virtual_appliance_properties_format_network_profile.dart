@@ -5,7 +5,7 @@ import 'virtual_appliance_network_interface_configuration.dart';
 
 /// Network Profile containing configurations for Public and Private NIC.
 class NetworkVirtualAppliancePropertiesFormatNetworkProfile {
-  final List<VirtualApplianceNetworkInterfaceConfiguration>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualApplianceNetworkInterfaceConfiguration>>? networkInterfaceConfigurations;
 
   /// Creates a new [NetworkVirtualAppliancePropertiesFormatNetworkProfile].
   /// [networkInterfaceConfigurations] Optional.
@@ -15,13 +15,13 @@ class NetworkVirtualAppliancePropertiesFormatNetworkProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaceConfigurations': ?networkInterfaceConfigurations == null ? null : pulumi.Input.encodeList<VirtualApplianceNetworkInterfaceConfiguration, Map<String, dynamic>>(networkInterfaceConfigurations!, (value) => value.toMap()),
+      'networkInterfaceConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualApplianceNetworkInterfaceConfiguration>, List<Map<String, dynamic>>>(networkInterfaceConfigurations, (value) => pulumi.Input.encodeList<VirtualApplianceNetworkInterfaceConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkVirtualAppliancePropertiesFormatNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualAppliancePropertiesFormatNetworkProfile(
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : pulumi.Input.decodeList<VirtualApplianceNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualApplianceNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceNetworkInterfaceConfiguration>(map['networkInterfaceConfigurations'], (value) => VirtualApplianceNetworkInterfaceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

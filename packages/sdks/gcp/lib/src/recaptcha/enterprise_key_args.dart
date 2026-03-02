@@ -46,23 +46,15 @@ class EnterpriseKeyArgs {
   /// [wafSettings] Settings specific to keys that can be used for WAF (Web Application Firewall).
   /// [webSettings] Settings for keys that can be used by websites.
   EnterpriseKeyArgs({
-    pulumi.Output<EnterpriseKeyAndroidSettings>? androidSettings,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<EnterpriseKeyIosSettings>? iosSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    pulumi.Output<EnterpriseKeyTestingOptions>? testingOptions,
-    pulumi.Output<EnterpriseKeyWafSettings>? wafSettings,
-    pulumi.Output<EnterpriseKeyWebSettings>? webSettings,
-  }) :
-      androidSettings = pulumi.Input.asOptionalInput<EnterpriseKeyAndroidSettings>(androidSettings),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      iosSettings = pulumi.Input.asOptionalInput<EnterpriseKeyIosSettings>(iosSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testingOptions = pulumi.Input.asOptionalInput<EnterpriseKeyTestingOptions>(testingOptions),
-      wafSettings = pulumi.Input.asOptionalInput<EnterpriseKeyWafSettings>(wafSettings),
-      webSettings = pulumi.Input.asOptionalInput<EnterpriseKeyWebSettings>(webSettings);
+    this.androidSettings,
+    required this.displayName,
+    this.iosSettings,
+    this.labels,
+    this.project,
+    this.testingOptions,
+    this.wafSettings,
+    this.webSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class EnterpriseKeyArgs {
 
   factory EnterpriseKeyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyArgs(
-      androidSettings: map['androidSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyAndroidSettings>(EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      iosSettings: map['iosSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyIosSettings>(EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      testingOptions: map['testingOptions'] == null ? null : pulumi.Output.create<EnterpriseKeyTestingOptions>(EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())),
-      wafSettings: map['wafSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyWafSettings>(EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())),
-      webSettings: map['webSettings'] == null ? null : pulumi.Output.create<EnterpriseKeyWebSettings>(EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())),
+      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

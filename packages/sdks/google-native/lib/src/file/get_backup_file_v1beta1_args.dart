@@ -16,13 +16,10 @@ class GetBackupFileV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetBackupFileV1beta1Args({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBackupFileV1beta1Args {
 
   factory GetBackupFileV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetBackupFileV1beta1Args(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: (map['backupId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

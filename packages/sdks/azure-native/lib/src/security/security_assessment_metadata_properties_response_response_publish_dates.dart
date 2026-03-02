@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityAssessmentMetadataPropertiesResponseResponsePublishDates {
-  final String? gA;
-  final String public;
+  final pulumi.Input<String>? gA;
+  final pulumi.Input<String> public;
 
   /// Creates a new [SecurityAssessmentMetadataPropertiesResponseResponsePublishDates].
   /// [gA] Optional.
@@ -22,8 +23,8 @@ class SecurityAssessmentMetadataPropertiesResponseResponsePublishDates {
 
   factory SecurityAssessmentMetadataPropertiesResponseResponsePublishDates.fromMap(Map<String, dynamic> map) {
     return SecurityAssessmentMetadataPropertiesResponseResponsePublishDates(
-      gA: map['gA'] == null ? null : map['gA'] as String,
-      public: map['public'] as String,
+      gA: map['gA'] == null ? null : (map['gA'] as String).input(),
+      public: (map['public'] as String).input(),
     );
   }
 }

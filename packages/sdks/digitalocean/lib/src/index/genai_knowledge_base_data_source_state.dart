@@ -16,13 +16,10 @@ class GenaiKnowledgeBaseDataSourceState {
   /// [spacesDataSource] Optional.
   /// [webCrawlerDataSource] Optional.
   GenaiKnowledgeBaseDataSourceState({
-    pulumi.Output<String>? knowledgeBaseUuid,
-    pulumi.Output<GenaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource,
-    pulumi.Output<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource,
-  }) :
-      knowledgeBaseUuid = pulumi.Input.asOptionalInput<String>(knowledgeBaseUuid),
-      spacesDataSource = pulumi.Input.asOptionalInput<GenaiKnowledgeBaseDataSourceSpacesDataSource>(spacesDataSource),
-      webCrawlerDataSource = pulumi.Input.asOptionalInput<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>(webCrawlerDataSource);
+    this.knowledgeBaseUuid,
+    this.spacesDataSource,
+    this.webCrawlerDataSource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GenaiKnowledgeBaseDataSourceState {
 
   factory GenaiKnowledgeBaseDataSourceState.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseDataSourceState(
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : pulumi.Output.create<String>(map['knowledgeBaseUuid'] as String),
-      spacesDataSource: map['spacesDataSource'] == null ? null : pulumi.Output.create<GenaiKnowledgeBaseDataSourceSpacesDataSource>(GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : pulumi.Output.create<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>(GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())),
+      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid'] as String).input(),
+      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())).input(),
+      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

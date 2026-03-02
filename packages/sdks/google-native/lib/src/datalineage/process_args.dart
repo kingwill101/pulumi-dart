@@ -30,21 +30,14 @@ class ProcessArgs {
   /// [project] Optional.
   /// [requestId] A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
   ProcessArgs({
-    pulumi.Output<Map<String, String>>? attributes,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<GoogleCloudDatacatalogLineageV1Origin>? origin,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<Map<String, String>>(attributes),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      origin = pulumi.Input.asOptionalInput<GoogleCloudDatacatalogLineageV1Origin>(origin),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    this.attributes,
+    this.displayName,
+    this.location,
+    this.name,
+    this.origin,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ProcessArgs {
 
   factory ProcessArgs.fromMap(Map<String, dynamic> map) {
     return ProcessArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['attributes'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      origin: map['origin'] == null ? null : pulumi.Output.create<GoogleCloudDatacatalogLineageV1Origin>(GoogleCloudDatacatalogLineageV1Origin.fromMap((map['origin'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      origin: map['origin'] == null ? null : (GoogleCloudDatacatalogLineageV1Origin.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

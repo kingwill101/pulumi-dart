@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsCustomField {
   /// This is deprecated and has no effect. Do not use.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This is deprecated and has no effect. Do not use.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [LogConfigCounterOptionsCustomField].
   /// [name] This is deprecated and has no effect. Do not use.
@@ -25,8 +26,8 @@ class LogConfigCounterOptionsCustomField {
 
   factory LogConfigCounterOptionsCustomField.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsCustomField(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

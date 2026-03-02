@@ -32,23 +32,15 @@ class TransportLayerApplicationState {
   /// [siteId] Site ID.
   /// [status] Status of the transport layer application, modification and deletion are not allowed.
   TransportLayerApplicationState({
-    pulumi.Output<int>? applicationId,
-    pulumi.Output<String>? crossBorderOptimization,
-    pulumi.Output<String>? ipAccessRule,
-    pulumi.Output<String>? ipv6,
-    pulumi.Output<String>? recordName,
-    pulumi.Output<List<TransportLayerApplicationRule>>? rules,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? status,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<int>(applicationId),
-      crossBorderOptimization = pulumi.Input.asOptionalInput<String>(crossBorderOptimization),
-      ipAccessRule = pulumi.Input.asOptionalInput<String>(ipAccessRule),
-      ipv6 = pulumi.Input.asOptionalInput<String>(ipv6),
-      recordName = pulumi.Input.asOptionalInput<String>(recordName),
-      rules = pulumi.Input.asOptionalInput<List<TransportLayerApplicationRule>>(rules),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.applicationId,
+    this.crossBorderOptimization,
+    this.ipAccessRule,
+    this.ipv6,
+    this.recordName,
+    this.rules,
+    this.siteId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class TransportLayerApplicationState {
 
   factory TransportLayerApplicationState.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<int>(map['applicationId'] as int),
-      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : pulumi.Output.create<String>(map['crossBorderOptimization'] as String),
-      ipAccessRule: map['ipAccessRule'] == null ? null : pulumi.Output.create<String>(map['ipAccessRule'] as String),
-      ipv6: map['ipv6'] == null ? null : pulumi.Output.create<String>(map['ipv6'] as String),
-      recordName: map['recordName'] == null ? null : pulumi.Output.create<String>(map['recordName'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<TransportLayerApplicationRule>>(pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules'], (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as int).input(),
+      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization'] as String).input(),
+      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule'] as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules'], (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

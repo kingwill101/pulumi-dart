@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_affinity_consume_reservation_type_compute_beta.dart';
 
 /// Specifies the reservations that this instance can consume from.
 class ReservationAffinityComputeBeta {
   /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
-  final ReservationAffinityConsumeReservationTypeComputeBeta? consumeReservationType;
+  final pulumi.Input<ReservationAffinityConsumeReservationTypeComputeBeta>? consumeReservationType;
   /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ReservationAffinityComputeBeta].
   /// [consumeReservationType] Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
@@ -23,7 +24,7 @@ class ReservationAffinityComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumeReservationType': ?consumeReservationType == null ? null : consumeReservationType!.value,
+      'consumeReservationType': ?pulumi.Input.mapOptionalInputValue<ReservationAffinityConsumeReservationTypeComputeBeta, String>(consumeReservationType, (value) => value.value),
       'key': ?key,
       'values': ?values,
     };
@@ -31,9 +32,9 @@ class ReservationAffinityComputeBeta {
 
   factory ReservationAffinityComputeBeta.fromMap(Map<String, dynamic> map) {
     return ReservationAffinityComputeBeta(
-      consumeReservationType: map['consumeReservationType'] == null ? null : ReservationAffinityConsumeReservationTypeComputeBeta.fromValue(map['consumeReservationType'] as String),
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      consumeReservationType: map['consumeReservationType'] == null ? null : (ReservationAffinityConsumeReservationTypeComputeBeta.fromValue(map['consumeReservationType'] as String)).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

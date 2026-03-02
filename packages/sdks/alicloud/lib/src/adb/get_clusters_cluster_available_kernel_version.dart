@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterAvailableKernelVersion {
-  final String expireDate;
-  final String kernelVersion;
-  final String releaseDate;
+  final pulumi.Input<String> expireDate;
+  final pulumi.Input<String> kernelVersion;
+  final pulumi.Input<String> releaseDate;
 
   /// Creates a new [GetClustersClusterAvailableKernelVersion].
   /// [expireDate] Required.
@@ -26,9 +27,9 @@ class GetClustersClusterAvailableKernelVersion {
 
   factory GetClustersClusterAvailableKernelVersion.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterAvailableKernelVersion(
-      expireDate: map['expireDate'] as String,
-      kernelVersion: map['kernelVersion'] as String,
-      releaseDate: map['releaseDate'] as String,
+      expireDate: (map['expireDate'] as String).input(),
+      kernelVersion: (map['kernelVersion'] as String).input(),
+      releaseDate: (map['releaseDate'] as String).input(),
     );
   }
 }

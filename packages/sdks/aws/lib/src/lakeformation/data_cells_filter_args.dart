@@ -20,13 +20,10 @@ class DataCellsFilterArgs {
   /// [tableData] Information about the data cells filter. See Table Data below for details.
   /// [timeouts] Optional.
   DataCellsFilterArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<DataCellsFilterTableData> tableData,
-    pulumi.Output<DataCellsFilterTimeouts>? timeouts,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableData = pulumi.Input.asInput<DataCellsFilterTableData>(tableData),
-      timeouts = pulumi.Input.asOptionalInput<DataCellsFilterTimeouts>(timeouts);
+    this.region,
+    required this.tableData,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DataCellsFilterArgs {
 
   factory DataCellsFilterArgs.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableData: pulumi.Output.create<DataCellsFilterTableData>(DataCellsFilterTableData.fromMap((map['tableData'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DataCellsFilterTimeouts>(DataCellsFilterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableData: (DataCellsFilterTableData.fromMap((map['tableData'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (DataCellsFilterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

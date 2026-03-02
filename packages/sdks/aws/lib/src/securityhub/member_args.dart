@@ -22,15 +22,11 @@ class MemberArgs {
   /// [invite] Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   MemberArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? email,
-    pulumi.Output<bool>? invite,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      invite = pulumi.Input.asOptionalInput<bool>(invite),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accountId,
+    this.email,
+    this.invite,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class MemberArgs {
 
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      invite: map['invite'] == null ? null : pulumi.Output.create<bool>(map['invite'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: (map['accountId'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

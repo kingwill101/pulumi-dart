@@ -21,13 +21,10 @@ class GetCertificateArgs {
   /// [name] Specifies the name of the Key Vault Certificate.
   /// [version] Specifies the version of the certificate to look up.  (Defaults to latest)
   GetCertificateArgs({
-    required pulumi.Output<String> keyVaultId,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? version,
-  }) :
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asInput<String>(name),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.keyVaultId,
+    required this.name,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

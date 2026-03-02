@@ -19,13 +19,10 @@ class GetWebPubSubSharedPrivateLinkResourceArgs {
   /// [resourceName] The name of the resource.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource.
   GetWebPubSubSharedPrivateLinkResourceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> sharedPrivateLinkResourceName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      sharedPrivateLinkResourceName = pulumi.Input.asInput<String>(sharedPrivateLinkResourceName);
+    required this.resourceGroupName,
+    required this.resourceName,
+    required this.sharedPrivateLinkResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebPubSubSharedPrivateLinkResourceArgs {
 
   factory GetWebPubSubSharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetWebPubSubSharedPrivateLinkResourceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      sharedPrivateLinkResourceName: pulumi.Output.create<String>(map['sharedPrivateLinkResourceName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      sharedPrivateLinkResourceName: (map['sharedPrivateLinkResourceName'] as String).input(),
     );
   }
 }

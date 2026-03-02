@@ -25,17 +25,12 @@ class SmsChannelArgs {
   /// [senderId] Identifier of the sender for your messages.
   /// [shortCode] Short Code registered with the phone provider.
   SmsChannelArgs({
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? senderId,
-    pulumi.Output<String>? shortCode,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      senderId = pulumi.Input.asOptionalInput<String>(senderId),
-      shortCode = pulumi.Input.asOptionalInput<String>(shortCode);
+    required this.applicationId,
+    this.enabled,
+    this.region,
+    this.senderId,
+    this.shortCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SmsChannelArgs {
 
   factory SmsChannelArgs.fromMap(Map<String, dynamic> map) {
     return SmsChannelArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      senderId: map['senderId'] == null ? null : pulumi.Output.create<String>(map['senderId'] as String),
-      shortCode: map['shortCode'] == null ? null : pulumi.Output.create<String>(map['shortCode'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      senderId: map['senderId'] == null ? null : (map['senderId'] as String).input(),
+      shortCode: map['shortCode'] == null ? null : (map['shortCode'] as String).input(),
     );
   }
 }

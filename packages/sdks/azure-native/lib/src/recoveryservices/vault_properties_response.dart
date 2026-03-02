@@ -13,39 +13,39 @@ import 'vault_properties_response_redundancy_settings.dart';
 /// Properties of the vault.
 class VaultPropertiesResponse {
   /// Backup storage version
-  final String backupStorageVersion;
+  final pulumi.Input<String> backupStorageVersion;
   /// Security levels of Recovery Services Vault for business continuity and disaster recovery
-  final String bcdrSecurityLevel;
+  final pulumi.Input<String> bcdrSecurityLevel;
   /// Customer Managed Key details of the resource.
-  final VaultPropertiesResponseEncryption? encryption;
+  final pulumi.Input<VaultPropertiesResponseEncryption>? encryption;
   /// Monitoring Settings of the vault
-  final MonitoringSettingsResponse? monitoringSettings;
+  final pulumi.Input<MonitoringSettingsResponse>? monitoringSettings;
   /// The details of the latest move operation performed on the Azure Resource
-  final VaultPropertiesResponseMoveDetails? moveDetails;
+  final pulumi.Input<VaultPropertiesResponseMoveDetails>? moveDetails;
   /// The State of the Resource after the move operation
-  final String moveState;
+  final pulumi.Input<String> moveState;
   /// List of private endpoint connection.
-  final List<PrivateEndpointConnectionVaultPropertiesResponse> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionVaultPropertiesResponse>> privateEndpointConnections;
   /// Private endpoint state for backup.
-  final String privateEndpointStateForBackup;
+  final pulumi.Input<String> privateEndpointStateForBackup;
   /// Private endpoint state for site recovery.
-  final String privateEndpointStateForSiteRecovery;
+  final pulumi.Input<String> privateEndpointStateForSiteRecovery;
   /// Provisioning State.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// property to enable or disable resource provider inbound network traffic from public clients
-  final String? publicNetworkAccess;
+  final pulumi.Input<String>? publicNetworkAccess;
   /// The redundancy Settings of a Vault
-  final VaultPropertiesResponseRedundancySettings? redundancySettings;
+  final pulumi.Input<VaultPropertiesResponseRedundancySettings>? redundancySettings;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Restore Settings of the vault
-  final RestoreSettingsResponse? restoreSettings;
+  final pulumi.Input<RestoreSettingsResponse>? restoreSettings;
   /// Secure Score of Recovery Services Vault
-  final String secureScore;
+  final pulumi.Input<String> secureScore;
   /// Security Settings of the vault
-  final SecuritySettingsResponse? securitySettings;
+  final pulumi.Input<SecuritySettingsResponse>? securitySettings;
   /// Details for upgrading vault.
-  final UpgradeDetailsResponse? upgradeDetails;
+  final pulumi.Input<UpgradeDetailsResponse>? upgradeDetails;
 
   /// Creates a new [VaultPropertiesResponse].
   /// [backupStorageVersion] Backup storage version
@@ -89,43 +89,43 @@ class VaultPropertiesResponse {
     return <String, dynamic>{
       'backupStorageVersion': backupStorageVersion,
       'bcdrSecurityLevel': bcdrSecurityLevel,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
-      'monitoringSettings': ?monitoringSettings == null ? null : monitoringSettings!.toMap(),
-      'moveDetails': ?moveDetails == null ? null : moveDetails!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<VaultPropertiesResponseEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'monitoringSettings': ?pulumi.Input.mapOptionalInputValue<MonitoringSettingsResponse, Map<String, dynamic>>(monitoringSettings, (value) => value.toMap()),
+      'moveDetails': ?pulumi.Input.mapOptionalInputValue<VaultPropertiesResponseMoveDetails, Map<String, dynamic>>(moveDetails, (value) => value.toMap()),
       'moveState': moveState,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionVaultPropertiesResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionVaultPropertiesResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionVaultPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'privateEndpointStateForBackup': privateEndpointStateForBackup,
       'privateEndpointStateForSiteRecovery': privateEndpointStateForSiteRecovery,
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'redundancySettings': ?redundancySettings == null ? null : redundancySettings!.toMap(),
+      'redundancySettings': ?pulumi.Input.mapOptionalInputValue<VaultPropertiesResponseRedundancySettings, Map<String, dynamic>>(redundancySettings, (value) => value.toMap()),
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'restoreSettings': ?restoreSettings == null ? null : restoreSettings!.toMap(),
+      'restoreSettings': ?pulumi.Input.mapOptionalInputValue<RestoreSettingsResponse, Map<String, dynamic>>(restoreSettings, (value) => value.toMap()),
       'secureScore': secureScore,
-      'securitySettings': ?securitySettings == null ? null : securitySettings!.toMap(),
-      'upgradeDetails': ?upgradeDetails == null ? null : upgradeDetails!.toMap(),
+      'securitySettings': ?pulumi.Input.mapOptionalInputValue<SecuritySettingsResponse, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
+      'upgradeDetails': ?pulumi.Input.mapOptionalInputValue<UpgradeDetailsResponse, Map<String, dynamic>>(upgradeDetails, (value) => value.toMap()),
     };
   }
 
   factory VaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesResponse(
-      backupStorageVersion: map['backupStorageVersion'] as String,
-      bcdrSecurityLevel: map['bcdrSecurityLevel'] as String,
-      encryption: map['encryption'] == null ? null : VaultPropertiesResponseEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      monitoringSettings: map['monitoringSettings'] == null ? null : MonitoringSettingsResponse.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>()),
-      moveDetails: map['moveDetails'] == null ? null : VaultPropertiesResponseMoveDetails.fromMap((map['moveDetails'] as Map).cast<String, dynamic>()),
-      moveState: map['moveState'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionVaultPropertiesResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionVaultPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateEndpointStateForBackup: map['privateEndpointStateForBackup'] as String,
-      privateEndpointStateForSiteRecovery: map['privateEndpointStateForSiteRecovery'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
-      redundancySettings: map['redundancySettings'] == null ? null : VaultPropertiesResponseRedundancySettings.fromMap((map['redundancySettings'] as Map).cast<String, dynamic>()),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      restoreSettings: map['restoreSettings'] == null ? null : RestoreSettingsResponse.fromMap((map['restoreSettings'] as Map).cast<String, dynamic>()),
-      secureScore: map['secureScore'] as String,
-      securitySettings: map['securitySettings'] == null ? null : SecuritySettingsResponse.fromMap((map['securitySettings'] as Map).cast<String, dynamic>()),
-      upgradeDetails: map['upgradeDetails'] == null ? null : UpgradeDetailsResponse.fromMap((map['upgradeDetails'] as Map).cast<String, dynamic>()),
+      backupStorageVersion: (map['backupStorageVersion'] as String).input(),
+      bcdrSecurityLevel: (map['bcdrSecurityLevel'] as String).input(),
+      encryption: map['encryption'] == null ? null : (VaultPropertiesResponseEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettingsResponse.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
+      moveDetails: map['moveDetails'] == null ? null : (VaultPropertiesResponseMoveDetails.fromMap((map['moveDetails'] as Map).cast<String, dynamic>())).input(),
+      moveState: (map['moveState'] as String).input(),
+      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionVaultPropertiesResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionVaultPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpointStateForBackup: (map['privateEndpointStateForBackup'] as String).input(),
+      privateEndpointStateForSiteRecovery: (map['privateEndpointStateForSiteRecovery'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      redundancySettings: map['redundancySettings'] == null ? null : (VaultPropertiesResponseRedundancySettings.fromMap((map['redundancySettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      restoreSettings: map['restoreSettings'] == null ? null : (RestoreSettingsResponse.fromMap((map['restoreSettings'] as Map).cast<String, dynamic>())).input(),
+      secureScore: (map['secureScore'] as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (SecuritySettingsResponse.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      upgradeDetails: map['upgradeDetails'] == null ? null : (UpgradeDetailsResponse.fromMap((map['upgradeDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration {
   /// The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
-  final String groupEntityType;
+  final pulumi.Input<String> groupEntityType;
 
   /// Creates a new [IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration].
   /// [groupEntityType] The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
@@ -19,7 +20,7 @@ class IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration 
 
   factory IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration(
-      groupEntityType: map['groupEntityType'] as String,
+      groupEntityType: (map['groupEntityType'] as String).input(),
     );
   }
 }

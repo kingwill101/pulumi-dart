@@ -42,27 +42,17 @@ class EnvironmentArgs {
   /// [title] Environment title.
   /// [workspaceName] The name of the workspace.
   EnvironmentArgs({
-    pulumi.Output<dynamic>? customProperties,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environmentName,
-    required pulumi.Output<String> kind,
-    pulumi.Output<Onboarding>? onboarding,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<EnvironmentServer>? server,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      customProperties = pulumi.Input.asOptionalInput<dynamic>(customProperties),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentName = pulumi.Input.asOptionalInput<String>(environmentName),
-      kind = pulumi.Input.asInput<String>(kind),
-      onboarding = pulumi.Input.asOptionalInput<Onboarding>(onboarding),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      server = pulumi.Input.asOptionalInput<EnvironmentServer>(server),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.customProperties,
+    this.description,
+    this.environmentName,
+    required this.kind,
+    this.onboarding,
+    required this.resourceGroupName,
+    this.server,
+    required this.serviceName,
+    required this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      customProperties: map['customProperties'] == null ? null : pulumi.Output.create<dynamic>(map['customProperties']),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentName: map['environmentName'] == null ? null : pulumi.Output.create<String>(map['environmentName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      onboarding: map['onboarding'] == null ? null : pulumi.Output.create<Onboarding>(Onboarding.fromMap((map['onboarding'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      server: map['server'] == null ? null : pulumi.Output.create<EnvironmentServer>(EnvironmentServer.fromMap((map['server'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      onboarding: map['onboarding'] == null ? null : (Onboarding.fromMap((map['onboarding'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      server: map['server'] == null ? null : (EnvironmentServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

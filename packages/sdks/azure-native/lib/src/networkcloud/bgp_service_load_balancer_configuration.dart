@@ -7,13 +7,13 @@ import 'service_load_balancer_bgp_peer.dart';
 
 class BgpServiceLoadBalancerConfiguration {
   /// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-  final List<BgpAdvertisement>? bgpAdvertisements;
+  final pulumi.Input<List<BgpAdvertisement>>? bgpAdvertisements;
   /// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
-  final List<ServiceLoadBalancerBgpPeer>? bgpPeers;
+  final pulumi.Input<List<ServiceLoadBalancerBgpPeer>>? bgpPeers;
   /// The indicator to specify if the load balancer peers with the network fabric.
-  final String? fabricPeeringEnabled;
+  final pulumi.Input<String>? fabricPeeringEnabled;
   /// The list of pools of IP addresses that can be allocated to load balancer services.
-  final List<IpAddressPool>? ipAddressPools;
+  final pulumi.Input<List<IpAddressPool>>? ipAddressPools;
 
   /// Creates a new [BgpServiceLoadBalancerConfiguration].
   /// [bgpAdvertisements] The association of IP address pools to the communities and peers, allowing for announcement of IPs.
@@ -29,19 +29,19 @@ class BgpServiceLoadBalancerConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpAdvertisements': ?bgpAdvertisements == null ? null : pulumi.Input.encodeList<BgpAdvertisement, Map<String, dynamic>>(bgpAdvertisements!, (value) => value.toMap()),
-      'bgpPeers': ?bgpPeers == null ? null : pulumi.Input.encodeList<ServiceLoadBalancerBgpPeer, Map<String, dynamic>>(bgpPeers!, (value) => value.toMap()),
+      'bgpAdvertisements': ?pulumi.Input.mapOptionalInputValue<List<BgpAdvertisement>, List<Map<String, dynamic>>>(bgpAdvertisements, (value) => pulumi.Input.encodeList<BgpAdvertisement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bgpPeers': ?pulumi.Input.mapOptionalInputValue<List<ServiceLoadBalancerBgpPeer>, List<Map<String, dynamic>>>(bgpPeers, (value) => pulumi.Input.encodeList<ServiceLoadBalancerBgpPeer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fabricPeeringEnabled': ?fabricPeeringEnabled,
-      'ipAddressPools': ?ipAddressPools == null ? null : pulumi.Input.encodeList<IpAddressPool, Map<String, dynamic>>(ipAddressPools!, (value) => value.toMap()),
+      'ipAddressPools': ?pulumi.Input.mapOptionalInputValue<List<IpAddressPool>, List<Map<String, dynamic>>>(ipAddressPools, (value) => pulumi.Input.encodeList<IpAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BgpServiceLoadBalancerConfiguration.fromMap(Map<String, dynamic> map) {
     return BgpServiceLoadBalancerConfiguration(
-      bgpAdvertisements: map['bgpAdvertisements'] == null ? null : pulumi.Input.decodeList<BgpAdvertisement>(map['bgpAdvertisements'], (value) => BgpAdvertisement.fromMap((value as Map).cast<String, dynamic>())),
-      bgpPeers: map['bgpPeers'] == null ? null : pulumi.Input.decodeList<ServiceLoadBalancerBgpPeer>(map['bgpPeers'], (value) => ServiceLoadBalancerBgpPeer.fromMap((value as Map).cast<String, dynamic>())),
-      fabricPeeringEnabled: map['fabricPeeringEnabled'] == null ? null : map['fabricPeeringEnabled'] as String,
-      ipAddressPools: map['ipAddressPools'] == null ? null : pulumi.Input.decodeList<IpAddressPool>(map['ipAddressPools'], (value) => IpAddressPool.fromMap((value as Map).cast<String, dynamic>())),
+      bgpAdvertisements: map['bgpAdvertisements'] == null ? null : (pulumi.Input.decodeList<BgpAdvertisement>(map['bgpAdvertisements'], (value) => BgpAdvertisement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<ServiceLoadBalancerBgpPeer>(map['bgpPeers'], (value) => ServiceLoadBalancerBgpPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fabricPeeringEnabled: map['fabricPeeringEnabled'] == null ? null : (map['fabricPeeringEnabled'] as String).input(),
+      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPool>(map['ipAddressPools'], (value) => IpAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetRecordsArgs {
   /// [nameRegex] Regex string to apply to the resource record names returned by AWS.
   /// [zoneId] The ID of the hosted zone that contains the resource record sets that you want to list.
   GetRecordsArgs({
-    pulumi.Output<String>? nameRegex,
-    required pulumi.Output<String> zoneId,
-  }) :
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.nameRegex,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRecordsArgs {
 
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

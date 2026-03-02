@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adhoc_based_trigger_context_response.dart';
 import 'azure_backup_params_response.dart';
 import 'data_store_info_base_response.dart';
@@ -7,14 +8,14 @@ import 'data_store_info_base_response.dart';
 /// Azure backup rule
 class AzureBackupRuleResponse {
   /// BackupParameters base
-  final AzureBackupParamsResponse? backupParameters;
+  final pulumi.Input<AzureBackupParamsResponse>? backupParameters;
   /// DataStoreInfo base
-  final DataStoreInfoBaseResponse dataStore;
-  final String name;
+  final pulumi.Input<DataStoreInfoBaseResponse> dataStore;
+  final pulumi.Input<String> name;
   /// Expected value is 'AzureBackupRule'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
   /// Trigger context
-  final AdhocBasedTriggerContextResponse trigger;
+  final pulumi.Input<AdhocBasedTriggerContextResponse> trigger;
 
   /// Creates a new [AzureBackupRuleResponse].
   /// [backupParameters] BackupParameters base
@@ -32,21 +33,21 @@ class AzureBackupRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupParameters': ?backupParameters == null ? null : backupParameters!.toMap(),
-      'dataStore': dataStore.toMap(),
+      'backupParameters': ?pulumi.Input.mapOptionalInputValue<AzureBackupParamsResponse, Map<String, dynamic>>(backupParameters, (value) => value.toMap()),
+      'dataStore': pulumi.Input.mapInputValue<DataStoreInfoBaseResponse, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
       'name': name,
       'objectType': objectType,
-      'trigger': trigger.toMap(),
+      'trigger': pulumi.Input.mapInputValue<AdhocBasedTriggerContextResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory AzureBackupRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureBackupRuleResponse(
-      backupParameters: map['backupParameters'] == null ? null : AzureBackupParamsResponse.fromMap((map['backupParameters'] as Map).cast<String, dynamic>()),
-      dataStore: DataStoreInfoBaseResponse.fromMap((map['dataStore'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      objectType: map['objectType'] as String,
-      trigger: AdhocBasedTriggerContextResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      backupParameters: map['backupParameters'] == null ? null : (AzureBackupParamsResponse.fromMap((map['backupParameters'] as Map).cast<String, dynamic>())).input(),
+      dataStore: (DataStoreInfoBaseResponse.fromMap((map['dataStore'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      trigger: (AdhocBasedTriggerContextResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

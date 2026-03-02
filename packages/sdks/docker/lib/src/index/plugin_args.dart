@@ -38,25 +38,16 @@ class PluginArgs {
   /// [grantPermissions] Grant specific permissions only
   /// [name] Docker Plugin name
   PluginArgs({
-    pulumi.Output<String>? alias,
-    pulumi.Output<int>? enableTimeout,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<String>>? envs,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<bool>? forceDisable,
-    pulumi.Output<bool>? grantAllPermissions,
-    pulumi.Output<List<PluginGrantPermission>>? grantPermissions,
-    pulumi.Output<String>? name,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      enableTimeout = pulumi.Input.asOptionalInput<int>(enableTimeout),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      envs = pulumi.Input.asOptionalInput<List<String>>(envs),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      forceDisable = pulumi.Input.asOptionalInput<bool>(forceDisable),
-      grantAllPermissions = pulumi.Input.asOptionalInput<bool>(grantAllPermissions),
-      grantPermissions = pulumi.Input.asOptionalInput<List<PluginGrantPermission>>(grantPermissions),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.alias,
+    this.enableTimeout,
+    this.enabled,
+    this.envs,
+    this.forceDestroy,
+    this.forceDisable,
+    this.grantAllPermissions,
+    this.grantPermissions,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      enableTimeout: map['enableTimeout'] == null ? null : pulumi.Output.create<int>(map['enableTimeout'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      envs: map['envs'] == null ? null : pulumi.Output.create<List<String>>((map['envs'] as List).cast<String>()),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      forceDisable: map['forceDisable'] == null ? null : pulumi.Output.create<bool>(map['forceDisable'] as bool),
-      grantAllPermissions: map['grantAllPermissions'] == null ? null : pulumi.Output.create<bool>(map['grantAllPermissions'] as bool),
-      grantPermissions: map['grantPermissions'] == null ? null : pulumi.Output.create<List<PluginGrantPermission>>(pulumi.Input.decodeList<PluginGrantPermission>(map['grantPermissions'], (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      enableTimeout: map['enableTimeout'] == null ? null : (map['enableTimeout'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      envs: map['envs'] == null ? null : ((map['envs'] as List).cast<String>()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      forceDisable: map['forceDisable'] == null ? null : (map['forceDisable'] as bool).input(),
+      grantAllPermissions: map['grantAllPermissions'] == null ? null : (map['grantAllPermissions'] as bool).input(),
+      grantPermissions: map['grantPermissions'] == null ? null : (pulumi.Input.decodeList<PluginGrantPermission>(map['grantPermissions'], (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

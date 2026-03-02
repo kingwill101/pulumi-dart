@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the target splits for Spot and Regular priority VMs within a scale set with flexible orchestration mode. With this property the customer is able to specify the base number of regular priority VMs created as the VMSS flex instance scales out and the split between Spot and Regular priority VMs after this base target has been reached.
 class PriorityMixPolicyResponse {
   /// The base number of regular priority VMs that will be created in this scale set as it scales out.
-  final int? baseRegularPriorityCount;
+  final pulumi.Input<int>? baseRegularPriorityCount;
   /// The percentage of VM instances, after the base regular priority count has been reached, that are expected to use regular priority.
-  final int? regularPriorityPercentageAboveBase;
+  final pulumi.Input<int>? regularPriorityPercentageAboveBase;
 
   /// Creates a new [PriorityMixPolicyResponse].
   /// [baseRegularPriorityCount] The base number of regular priority VMs that will be created in this scale set as it scales out.
@@ -25,8 +26,8 @@ class PriorityMixPolicyResponse {
 
   factory PriorityMixPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PriorityMixPolicyResponse(
-      baseRegularPriorityCount: map['baseRegularPriorityCount'] == null ? null : map['baseRegularPriorityCount'] as int,
-      regularPriorityPercentageAboveBase: map['regularPriorityPercentageAboveBase'] == null ? null : map['regularPriorityPercentageAboveBase'] as int,
+      baseRegularPriorityCount: map['baseRegularPriorityCount'] == null ? null : (map['baseRegularPriorityCount'] as int).input(),
+      regularPriorityPercentageAboveBase: map['regularPriorityPercentageAboveBase'] == null ? null : (map['regularPriorityPercentageAboveBase'] as int).input(),
     );
   }
 }

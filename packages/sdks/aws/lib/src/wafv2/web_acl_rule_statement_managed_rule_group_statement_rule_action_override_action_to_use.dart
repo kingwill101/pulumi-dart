@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use_allow.dart';
 import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use_block.dart';
 import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use_captcha.dart';
@@ -7,12 +8,12 @@ import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override
 import 'web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use_count.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse {
-  final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow? allow;
-  final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock? block;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow>? allow;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock>? block;
   /// Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
-  final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha? captcha;
-  final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge? challenge;
-  final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount? count;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha>? captcha;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge>? challenge;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount>? count;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse].
   /// [allow] Optional.
@@ -30,21 +31,21 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allow': ?allow == null ? null : allow!.toMap(),
-      'block': ?block == null ? null : block!.toMap(),
-      'captcha': ?captcha == null ? null : captcha!.toMap(),
-      'challenge': ?challenge == null ? null : challenge!.toMap(),
-      'count': ?count == null ? null : count!.toMap(),
+      'allow': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow, Map<String, dynamic>>(allow, (value) => value.toMap()),
+      'block': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock, Map<String, dynamic>>(block, (value) => value.toMap()),
+      'captcha': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha, Map<String, dynamic>>(captcha, (value) => value.toMap()),
+      'challenge': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge, Map<String, dynamic>>(challenge, (value) => value.toMap()),
+      'count': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount, Map<String, dynamic>>(count, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse(
-      allow: map['allow'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
-      block: map['block'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock.fromMap((map['block'] as Map).cast<String, dynamic>()),
-      captcha: map['captcha'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>()),
-      challenge: map['challenge'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>()),
-      count: map['count'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount.fromMap((map['count'] as Map).cast<String, dynamic>()),
+      allow: map['allow'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
+      block: map['block'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
+      captcha: map['captcha'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>())).input(),
+      challenge: map['challenge'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCount.fromMap((map['count'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class SummaryLogArgs {
   /// [summaryLogsName] The name of the summary logs. Must not contain '/'.
   /// [workspaceName] The name of the workspace.
   SummaryLogArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RuleDefinition>? ruleDefinition,
-    pulumi.Output<String>? ruleType,
-    pulumi.Output<String>? summaryLogsName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleDefinition = pulumi.Input.asOptionalInput<RuleDefinition>(ruleDefinition),
-      ruleType = pulumi.Input.asOptionalInput<String>(ruleType),
-      summaryLogsName = pulumi.Input.asOptionalInput<String>(summaryLogsName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.description,
+    this.displayName,
+    required this.resourceGroupName,
+    this.ruleDefinition,
+    this.ruleType,
+    this.summaryLogsName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SummaryLogArgs {
 
   factory SummaryLogArgs.fromMap(Map<String, dynamic> map) {
     return SummaryLogArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleDefinition: map['ruleDefinition'] == null ? null : pulumi.Output.create<RuleDefinition>(RuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())),
-      ruleType: map['ruleType'] == null ? null : pulumi.Output.create<String>(map['ruleType'] as String),
-      summaryLogsName: map['summaryLogsName'] == null ? null : pulumi.Output.create<String>(map['summaryLogsName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      summaryLogsName: map['summaryLogsName'] == null ? null : (map['summaryLogsName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

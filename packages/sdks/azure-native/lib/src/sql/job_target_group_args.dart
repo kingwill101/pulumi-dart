@@ -26,17 +26,12 @@ class JobTargetGroupArgs {
   /// [serverName] The name of the server.
   /// [targetGroupName] The name of the target group.
   JobTargetGroupArgs({
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<List<JobTarget>> members,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? targetGroupName,
-  }) :
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      members = pulumi.Input.asInput<List<JobTarget>>(members),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      targetGroupName = pulumi.Input.asOptionalInput<String>(targetGroupName);
+    required this.jobAgentName,
+    required this.members,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.targetGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class JobTargetGroupArgs {
 
   factory JobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupArgs(
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      members: pulumi.Output.create<List<JobTarget>>(pulumi.Input.decodeList<JobTarget>(map['members'], (value) => JobTarget.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      targetGroupName: map['targetGroupName'] == null ? null : pulumi.Output.create<String>(map['targetGroupName'] as String),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      members: (pulumi.Input.decodeList<JobTarget>(map['members'], (value) => JobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
     );
   }
 }

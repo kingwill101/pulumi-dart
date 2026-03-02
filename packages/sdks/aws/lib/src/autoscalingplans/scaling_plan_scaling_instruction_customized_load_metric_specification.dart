@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
   /// Dimensions of the metric.
-  final Map<String, String>? dimensions;
+  final pulumi.Input<Map<String, String>>? dimensions;
   /// Name of the metric.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// Namespace of the metric.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// Statistic of the metric. Currently, the value must always be `Sum`.
-  final String statistic;
+  final pulumi.Input<String> statistic;
   /// Unit of the metric.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [ScalingPlanScalingInstructionCustomizedLoadMetricSpecification].
   /// [dimensions] Dimensions of the metric.
@@ -39,11 +40,11 @@ class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
 
   factory ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionCustomizedLoadMetricSpecification(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as Map).cast<String, String>(),
-      metricName: map['metricName'] as String,
-      namespace: map['namespace'] as String,
-      statistic: map['statistic'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      metricName: (map['metricName'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      statistic: (map['statistic'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

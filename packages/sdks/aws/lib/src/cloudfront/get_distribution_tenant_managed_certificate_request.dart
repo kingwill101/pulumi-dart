@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionTenantManagedCertificateRequest {
-  final String certificateTransparencyLoggingPreference;
-  final String primaryDomainName;
-  final String validationTokenHost;
+  final pulumi.Input<String> certificateTransparencyLoggingPreference;
+  final pulumi.Input<String> primaryDomainName;
+  final pulumi.Input<String> validationTokenHost;
 
   /// Creates a new [GetDistributionTenantManagedCertificateRequest].
   /// [certificateTransparencyLoggingPreference] Required.
@@ -26,9 +27,9 @@ class GetDistributionTenantManagedCertificateRequest {
 
   factory GetDistributionTenantManagedCertificateRequest.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantManagedCertificateRequest(
-      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] as String,
-      primaryDomainName: map['primaryDomainName'] as String,
-      validationTokenHost: map['validationTokenHost'] as String,
+      certificateTransparencyLoggingPreference: (map['certificateTransparencyLoggingPreference'] as String).input(),
+      primaryDomainName: (map['primaryDomainName'] as String).input(),
+      validationTokenHost: (map['validationTokenHost'] as String).input(),
     );
   }
 }

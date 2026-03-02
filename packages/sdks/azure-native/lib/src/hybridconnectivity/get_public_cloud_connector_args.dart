@@ -16,11 +16,9 @@ class GetPublicCloudConnectorArgs {
   /// [publicCloudConnector] Represent public cloud connectors resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPublicCloudConnectorArgs({
-    required pulumi.Output<String> publicCloudConnector,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      publicCloudConnector = pulumi.Input.asInput<String>(publicCloudConnector),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.publicCloudConnector,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPublicCloudConnectorArgs {
 
   factory GetPublicCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicCloudConnectorArgs(
-      publicCloudConnector: pulumi.Output.create<String>(map['publicCloudConnector'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      publicCloudConnector: (map['publicCloudConnector'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

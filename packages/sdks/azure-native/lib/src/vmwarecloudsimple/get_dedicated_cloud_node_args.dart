@@ -16,11 +16,9 @@ class GetDedicatedCloudNodeArgs {
   /// [dedicatedCloudNodeName] dedicated cloud node name
   /// [resourceGroupName] The name of the resource group
   GetDedicatedCloudNodeArgs({
-    required pulumi.Output<String> dedicatedCloudNodeName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dedicatedCloudNodeName = pulumi.Input.asInput<String>(dedicatedCloudNodeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dedicatedCloudNodeName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDedicatedCloudNodeArgs {
 
   factory GetDedicatedCloudNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedCloudNodeArgs(
-      dedicatedCloudNodeName: pulumi.Output.create<String>(map['dedicatedCloudNodeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dedicatedCloudNodeName: (map['dedicatedCloudNodeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

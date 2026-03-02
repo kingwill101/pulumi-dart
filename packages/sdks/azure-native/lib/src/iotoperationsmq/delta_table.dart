@@ -6,11 +6,11 @@ import 'delta_table_schema.dart';
 /// Delta table properties
 class DeltaTable {
   /// Schema list supported.
-  final List<DeltaTableSchema> schema;
+  final pulumi.Input<List<DeltaTableSchema>> schema;
   /// Delta table name.
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// Delta table path.
-  final String? tablePath;
+  final pulumi.Input<String>? tablePath;
 
   /// Creates a new [DeltaTable].
   /// [schema] Schema list supported.
@@ -24,7 +24,7 @@ class DeltaTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schema': pulumi.Input.encodeList<DeltaTableSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'schema': pulumi.Input.mapInputValue<List<DeltaTableSchema>, List<Map<String, dynamic>>>(schema, (value) => pulumi.Input.encodeList<DeltaTableSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tableName': tableName,
       'tablePath': ?tablePath,
     };
@@ -32,9 +32,9 @@ class DeltaTable {
 
   factory DeltaTable.fromMap(Map<String, dynamic> map) {
     return DeltaTable(
-      schema: pulumi.Input.decodeList<DeltaTableSchema>(map['schema'], (value) => DeltaTableSchema.fromMap((value as Map).cast<String, dynamic>())),
-      tableName: map['tableName'] as String,
-      tablePath: map['tablePath'] == null ? null : map['tablePath'] as String,
+      schema: (pulumi.Input.decodeList<DeltaTableSchema>(map['schema'], (value) => DeltaTableSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: (map['tableName'] as String).input(),
+      tablePath: map['tablePath'] == null ? null : (map['tablePath'] as String).input(),
     );
   }
 }

@@ -5,25 +5,25 @@ import 'get_image_caches_cache_event.dart';
 
 class GetImageCachesCache {
   /// The id of container group.
-  final String containerGroupId;
+  final pulumi.Input<String> containerGroupId;
   /// Image cache pulls image event information.
-  final List<GetImageCachesCacheEvent> events;
+  final pulumi.Input<List<GetImageCachesCacheEvent>> events;
   /// The time of expired.
-  final String expireDateTime;
+  final pulumi.Input<String> expireDateTime;
   /// The ID of the ECI Image Cache.
-  final String id;
+  final pulumi.Input<String> id;
   /// The id of the ECI Image Cache.
-  final String imageCacheId;
+  final pulumi.Input<String> imageCacheId;
   /// The name of ECI Image Cache.
-  final String imageCacheName;
+  final pulumi.Input<String> imageCacheName;
   /// The list of cached images.
-  final List<String> images;
+  final pulumi.Input<List<String>> images;
   /// The progress of ECI Image Cache.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The id of snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The status of ECI Image Cache.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetImageCachesCache].
   /// [containerGroupId] The id of container group.
@@ -52,7 +52,7 @@ class GetImageCachesCache {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerGroupId': containerGroupId,
-      'events': pulumi.Input.encodeList<GetImageCachesCacheEvent, Map<String, dynamic>>(events, (value) => value.toMap()),
+      'events': pulumi.Input.mapInputValue<List<GetImageCachesCacheEvent>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<GetImageCachesCacheEvent, Map<String, dynamic>>(value, (value) => value.toMap())),
       'expireDateTime': expireDateTime,
       'id': id,
       'imageCacheId': imageCacheId,
@@ -66,16 +66,16 @@ class GetImageCachesCache {
 
   factory GetImageCachesCache.fromMap(Map<String, dynamic> map) {
     return GetImageCachesCache(
-      containerGroupId: map['containerGroupId'] as String,
-      events: pulumi.Input.decodeList<GetImageCachesCacheEvent>(map['events'], (value) => GetImageCachesCacheEvent.fromMap((value as Map).cast<String, dynamic>())),
-      expireDateTime: map['expireDateTime'] as String,
-      id: map['id'] as String,
-      imageCacheId: map['imageCacheId'] as String,
-      imageCacheName: map['imageCacheName'] as String,
-      images: (map['images'] as List).cast<String>(),
-      progress: map['progress'] as String,
-      snapshotId: map['snapshotId'] as String,
-      status: map['status'] as String,
+      containerGroupId: (map['containerGroupId'] as String).input(),
+      events: (pulumi.Input.decodeList<GetImageCachesCacheEvent>(map['events'], (value) => GetImageCachesCacheEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expireDateTime: (map['expireDateTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageCacheId: (map['imageCacheId'] as String).input(),
+      imageCacheName: (map['imageCacheName'] as String).input(),
+      images: ((map['images'] as List).cast<String>()).input(),
+      progress: (map['progress'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

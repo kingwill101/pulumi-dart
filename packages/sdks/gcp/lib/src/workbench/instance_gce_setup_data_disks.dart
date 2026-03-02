@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGceSetupDataDisks {
   /// Optional. Input only. Disk encryption method used on the boot
   /// and data disks, defaults to GMEK.
   /// Possible values are: `GMEK`, `CMEK`.
-  final String? diskEncryption;
+  final pulumi.Input<String>? diskEncryption;
   /// Optional. The size of the disk in GB attached to this VM instance,
   /// up to a maximum of 64000 GB (64 TB). If not specified, this defaults to
   /// 100.
-  final String? diskSizeGb;
+  final pulumi.Input<String>? diskSizeGb;
   /// Optional. Input only. Indicates the type of the disk.
   /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// 'Optional. The KMS key used to encrypt the disks,
   /// only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.'
-  final String? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [InstanceGceSetupDataDisks].
   /// [diskEncryption] Optional. Input only. Disk encryption method used on the boot
@@ -41,10 +42,10 @@ class InstanceGceSetupDataDisks {
 
   factory InstanceGceSetupDataDisks.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupDataDisks(
-      diskEncryption: map['diskEncryption'] == null ? null : map['diskEncryption'] as String,
-      diskSizeGb: map['diskSizeGb'] == null ? null : map['diskSizeGb'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class SavingsPlanArgs {
   /// [timeouts] Optional.
   /// [upfrontPaymentAmount] The up-front payment amount.
   SavingsPlanArgs({
-    required pulumi.Output<String> commitment,
-    pulumi.Output<String>? purchaseTime,
-    required pulumi.Output<String> savingsPlanOfferingId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SavingsPlanTimeouts>? timeouts,
-    pulumi.Output<String>? upfrontPaymentAmount,
-  }) :
-      commitment = pulumi.Input.asInput<String>(commitment),
-      purchaseTime = pulumi.Input.asOptionalInput<String>(purchaseTime),
-      savingsPlanOfferingId = pulumi.Input.asInput<String>(savingsPlanOfferingId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<SavingsPlanTimeouts>(timeouts),
-      upfrontPaymentAmount = pulumi.Input.asOptionalInput<String>(upfrontPaymentAmount);
+    required this.commitment,
+    this.purchaseTime,
+    required this.savingsPlanOfferingId,
+    this.tags,
+    this.timeouts,
+    this.upfrontPaymentAmount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class SavingsPlanArgs {
 
   factory SavingsPlanArgs.fromMap(Map<String, dynamic> map) {
     return SavingsPlanArgs(
-      commitment: pulumi.Output.create<String>(map['commitment'] as String),
-      purchaseTime: map['purchaseTime'] == null ? null : pulumi.Output.create<String>(map['purchaseTime'] as String),
-      savingsPlanOfferingId: pulumi.Output.create<String>(map['savingsPlanOfferingId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SavingsPlanTimeouts>(SavingsPlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      upfrontPaymentAmount: map['upfrontPaymentAmount'] == null ? null : pulumi.Output.create<String>(map['upfrontPaymentAmount'] as String),
+      commitment: (map['commitment'] as String).input(),
+      purchaseTime: map['purchaseTime'] == null ? null : (map['purchaseTime'] as String).input(),
+      savingsPlanOfferingId: (map['savingsPlanOfferingId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (SavingsPlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      upfrontPaymentAmount: map['upfrontPaymentAmount'] == null ? null : (map['upfrontPaymentAmount'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFileSystemProtection {
-  final String replicationOverwrite;
+  final pulumi.Input<String> replicationOverwrite;
 
   /// Creates a new [GetFileSystemProtection].
   /// [replicationOverwrite] Required.
@@ -18,7 +19,7 @@ class GetFileSystemProtection {
 
   factory GetFileSystemProtection.fromMap(Map<String, dynamic> map) {
     return GetFileSystemProtection(
-      replicationOverwrite: map['replicationOverwrite'] as String,
+      replicationOverwrite: (map['replicationOverwrite'] as String).input(),
     );
   }
 }

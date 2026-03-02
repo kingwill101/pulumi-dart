@@ -59,27 +59,17 @@ class RetrohuntState {
   /// [rule] The Rule ID of the rule.
   /// [state] Output only. The state of the retrohunt.
   RetrohuntState({
-    pulumi.Output<String>? retrohuntId,
-    pulumi.Output<List<RetrohuntExecutionInterval>>? executionIntervals,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<RetrohuntProcessInterval>? processInterval,
-    pulumi.Output<double>? progressPercentage,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? state,
-  }) :
-      retrohuntId = pulumi.Input.asOptionalInput<String>(retrohuntId),
-      executionIntervals = pulumi.Input.asOptionalInput<List<RetrohuntExecutionInterval>>(executionIntervals),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      processInterval = pulumi.Input.asOptionalInput<RetrohuntProcessInterval>(processInterval),
-      progressPercentage = pulumi.Input.asOptionalInput<double>(progressPercentage),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.retrohuntId,
+    this.executionIntervals,
+    this.instance,
+    this.location,
+    this.name,
+    this.processInterval,
+    this.progressPercentage,
+    this.project,
+    this.rule,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,16 +88,16 @@ class RetrohuntState {
 
   factory RetrohuntState.fromMap(Map<String, dynamic> map) {
     return RetrohuntState(
-      retrohuntId: map['RetrohuntId'] == null ? null : pulumi.Output.create<String>(map['RetrohuntId'] as String),
-      executionIntervals: map['executionIntervals'] == null ? null : pulumi.Output.create<List<RetrohuntExecutionInterval>>(pulumi.Input.decodeList<RetrohuntExecutionInterval>(map['executionIntervals'], (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>()))),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      processInterval: map['processInterval'] == null ? null : pulumi.Output.create<RetrohuntProcessInterval>(RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())),
-      progressPercentage: map['progressPercentage'] == null ? null : pulumi.Output.create<double>(map['progressPercentage'] as double),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId'] as String).input(),
+      executionIntervals: map['executionIntervals'] == null ? null : (pulumi.Input.decodeList<RetrohuntExecutionInterval>(map['executionIntervals'], (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      processInterval: map['processInterval'] == null ? null : (RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

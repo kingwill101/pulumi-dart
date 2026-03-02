@@ -1,54 +1,55 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A2A protected disk details.
 class A2AProtectedDiskDetailsResponse {
   /// The disk level operations list.
-  final List<String>? allowedDiskLevelOperation;
+  final pulumi.Input<List<String>>? allowedDiskLevelOperation;
   /// The data pending at source virtual machine in MB.
-  final double? dataPendingAtSourceAgentInMB;
+  final pulumi.Input<double>? dataPendingAtSourceAgentInMB;
   /// The data pending for replication in MB at staging account.
-  final double? dataPendingInStagingStorageAccountInMB;
+  final pulumi.Input<double>? dataPendingInStagingStorageAccountInMB;
   /// The KeyVault resource id for secret (BEK).
-  final String? dekKeyVaultArmId;
+  final pulumi.Input<String>? dekKeyVaultArmId;
   /// The disk capacity in bytes.
-  final double? diskCapacityInBytes;
+  final pulumi.Input<double>? diskCapacityInBytes;
   /// The disk name.
-  final String? diskName;
+  final pulumi.Input<String>? diskName;
   /// The disk state.
-  final String? diskState;
+  final pulumi.Input<String>? diskState;
   /// The type of disk.
-  final String? diskType;
+  final pulumi.Input<String>? diskType;
   /// The disk uri.
-  final String? diskUri;
+  final pulumi.Input<String>? diskUri;
   /// The failover name for the managed disk.
-  final String? failoverDiskName;
+  final pulumi.Input<String>? failoverDiskName;
   /// A value indicating whether vm has encrypted os disk or not.
-  final bool? isDiskEncrypted;
+  final pulumi.Input<bool>? isDiskEncrypted;
   /// A value indicating whether disk key got encrypted or not.
-  final bool? isDiskKeyEncrypted;
+  final pulumi.Input<bool>? isDiskKeyEncrypted;
   /// The KeyVault resource id for key (KEK).
-  final String? kekKeyVaultArmId;
+  final pulumi.Input<String>? kekKeyVaultArmId;
   /// The key URL / identifier (KEK).
-  final String? keyIdentifier;
+  final pulumi.Input<String>? keyIdentifier;
   /// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
-  final String? monitoringJobType;
+  final pulumi.Input<String>? monitoringJobType;
   /// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
-  final int? monitoringPercentageCompletion;
+  final pulumi.Input<int>? monitoringPercentageCompletion;
   /// The primary disk storage account.
-  final String? primaryDiskAzureStorageAccountId;
+  final pulumi.Input<String>? primaryDiskAzureStorageAccountId;
   /// The primary staging storage account.
-  final String? primaryStagingAzureStorageAccountId;
+  final pulumi.Input<String>? primaryStagingAzureStorageAccountId;
   /// The recovery disk storage account.
-  final String? recoveryAzureStorageAccountId;
+  final pulumi.Input<String>? recoveryAzureStorageAccountId;
   /// Recovery disk uri.
-  final String? recoveryDiskUri;
+  final pulumi.Input<String>? recoveryDiskUri;
   /// A value indicating whether resync is required for this disk.
-  final bool? resyncRequired;
+  final pulumi.Input<bool>? resyncRequired;
   /// The secret URL / identifier (BEK).
-  final String? secretIdentifier;
+  final pulumi.Input<String>? secretIdentifier;
   /// The test failover name for the managed disk.
-  final String? tfoDiskName;
+  final pulumi.Input<String>? tfoDiskName;
 
   /// Creates a new [A2AProtectedDiskDetailsResponse].
   /// [allowedDiskLevelOperation] The disk level operations list.
@@ -130,29 +131,29 @@ class A2AProtectedDiskDetailsResponse {
 
   factory A2AProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AProtectedDiskDetailsResponse(
-      allowedDiskLevelOperation: map['allowedDiskLevelOperation'] == null ? null : (map['allowedDiskLevelOperation'] as List).cast<String>(),
-      dataPendingAtSourceAgentInMB: map['dataPendingAtSourceAgentInMB'] == null ? null : map['dataPendingAtSourceAgentInMB'] as double,
-      dataPendingInStagingStorageAccountInMB: map['dataPendingInStagingStorageAccountInMB'] == null ? null : map['dataPendingInStagingStorageAccountInMB'] as double,
-      dekKeyVaultArmId: map['dekKeyVaultArmId'] == null ? null : map['dekKeyVaultArmId'] as String,
-      diskCapacityInBytes: map['diskCapacityInBytes'] == null ? null : map['diskCapacityInBytes'] as double,
-      diskName: map['diskName'] == null ? null : map['diskName'] as String,
-      diskState: map['diskState'] == null ? null : map['diskState'] as String,
-      diskType: map['diskType'] == null ? null : map['diskType'] as String,
-      diskUri: map['diskUri'] == null ? null : map['diskUri'] as String,
-      failoverDiskName: map['failoverDiskName'] == null ? null : map['failoverDiskName'] as String,
-      isDiskEncrypted: map['isDiskEncrypted'] == null ? null : map['isDiskEncrypted'] as bool,
-      isDiskKeyEncrypted: map['isDiskKeyEncrypted'] == null ? null : map['isDiskKeyEncrypted'] as bool,
-      kekKeyVaultArmId: map['kekKeyVaultArmId'] == null ? null : map['kekKeyVaultArmId'] as String,
-      keyIdentifier: map['keyIdentifier'] == null ? null : map['keyIdentifier'] as String,
-      monitoringJobType: map['monitoringJobType'] == null ? null : map['monitoringJobType'] as String,
-      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : map['monitoringPercentageCompletion'] as int,
-      primaryDiskAzureStorageAccountId: map['primaryDiskAzureStorageAccountId'] == null ? null : map['primaryDiskAzureStorageAccountId'] as String,
-      primaryStagingAzureStorageAccountId: map['primaryStagingAzureStorageAccountId'] == null ? null : map['primaryStagingAzureStorageAccountId'] as String,
-      recoveryAzureStorageAccountId: map['recoveryAzureStorageAccountId'] == null ? null : map['recoveryAzureStorageAccountId'] as String,
-      recoveryDiskUri: map['recoveryDiskUri'] == null ? null : map['recoveryDiskUri'] as String,
-      resyncRequired: map['resyncRequired'] == null ? null : map['resyncRequired'] as bool,
-      secretIdentifier: map['secretIdentifier'] == null ? null : map['secretIdentifier'] as String,
-      tfoDiskName: map['tfoDiskName'] == null ? null : map['tfoDiskName'] as String,
+      allowedDiskLevelOperation: map['allowedDiskLevelOperation'] == null ? null : ((map['allowedDiskLevelOperation'] as List).cast<String>()).input(),
+      dataPendingAtSourceAgentInMB: map['dataPendingAtSourceAgentInMB'] == null ? null : (map['dataPendingAtSourceAgentInMB'] as double).input(),
+      dataPendingInStagingStorageAccountInMB: map['dataPendingInStagingStorageAccountInMB'] == null ? null : (map['dataPendingInStagingStorageAccountInMB'] as double).input(),
+      dekKeyVaultArmId: map['dekKeyVaultArmId'] == null ? null : (map['dekKeyVaultArmId'] as String).input(),
+      diskCapacityInBytes: map['diskCapacityInBytes'] == null ? null : (map['diskCapacityInBytes'] as double).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      diskState: map['diskState'] == null ? null : (map['diskState'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskUri: map['diskUri'] == null ? null : (map['diskUri'] as String).input(),
+      failoverDiskName: map['failoverDiskName'] == null ? null : (map['failoverDiskName'] as String).input(),
+      isDiskEncrypted: map['isDiskEncrypted'] == null ? null : (map['isDiskEncrypted'] as bool).input(),
+      isDiskKeyEncrypted: map['isDiskKeyEncrypted'] == null ? null : (map['isDiskKeyEncrypted'] as bool).input(),
+      kekKeyVaultArmId: map['kekKeyVaultArmId'] == null ? null : (map['kekKeyVaultArmId'] as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
+      monitoringJobType: map['monitoringJobType'] == null ? null : (map['monitoringJobType'] as String).input(),
+      monitoringPercentageCompletion: map['monitoringPercentageCompletion'] == null ? null : (map['monitoringPercentageCompletion'] as int).input(),
+      primaryDiskAzureStorageAccountId: map['primaryDiskAzureStorageAccountId'] == null ? null : (map['primaryDiskAzureStorageAccountId'] as String).input(),
+      primaryStagingAzureStorageAccountId: map['primaryStagingAzureStorageAccountId'] == null ? null : (map['primaryStagingAzureStorageAccountId'] as String).input(),
+      recoveryAzureStorageAccountId: map['recoveryAzureStorageAccountId'] == null ? null : (map['recoveryAzureStorageAccountId'] as String).input(),
+      recoveryDiskUri: map['recoveryDiskUri'] == null ? null : (map['recoveryDiskUri'] as String).input(),
+      resyncRequired: map['resyncRequired'] == null ? null : (map['resyncRequired'] as bool).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
+      tfoDiskName: map['tfoDiskName'] == null ? null : (map['tfoDiskName'] as String).input(),
     );
   }
 }

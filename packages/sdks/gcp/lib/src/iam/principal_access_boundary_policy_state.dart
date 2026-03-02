@@ -50,31 +50,19 @@ class PrincipalAccessBoundaryPolicyState {
   /// [uid] Output only. The globally unique ID of the principal access boundary policy.
   /// [updateTime] Output only. The time when the principal access boundary policy was most recently updated.
   PrincipalAccessBoundaryPolicyState({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<PrincipalAccessBoundaryPolicyDetails>? details,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? effectiveAnnotations,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organization,
-    pulumi.Output<String>? principalAccessBoundaryPolicyId,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      details = pulumi.Input.asOptionalInput<PrincipalAccessBoundaryPolicyDetails>(details),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      effectiveAnnotations = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveAnnotations),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organization = pulumi.Input.asOptionalInput<String>(organization),
-      principalAccessBoundaryPolicyId = pulumi.Input.asOptionalInput<String>(principalAccessBoundaryPolicyId),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.annotations,
+    this.createTime,
+    this.details,
+    this.displayName,
+    this.effectiveAnnotations,
+    this.etag,
+    this.location,
+    this.name,
+    this.organization,
+    this.principalAccessBoundaryPolicyId,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class PrincipalAccessBoundaryPolicyState {
 
   factory PrincipalAccessBoundaryPolicyState.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyState(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      details: map['details'] == null ? null : pulumi.Output.create<PrincipalAccessBoundaryPolicyDetails>(PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveAnnotations'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organization: map['organization'] == null ? null : pulumi.Output.create<String>(map['organization'] as String),
-      principalAccessBoundaryPolicyId: map['principalAccessBoundaryPolicyId'] == null ? null : pulumi.Output.create<String>(map['principalAccessBoundaryPolicyId'] as String),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      principalAccessBoundaryPolicyId: map['principalAccessBoundaryPolicyId'] == null ? null : (map['principalAccessBoundaryPolicyId'] as String).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

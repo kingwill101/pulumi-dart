@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TokenRequestStatus is the result of a token request.
 class TokenRequestStatusPatch {
   /// ExpirationTimestamp is the time of expiration of the returned token.
-  final String? expirationTimestamp;
+  final pulumi.Input<String>? expirationTimestamp;
   /// Token is the opaque bearer token.
-  final String? token;
+  final pulumi.Input<String>? token;
 
   /// Creates a new [TokenRequestStatusPatch].
   /// [expirationTimestamp] ExpirationTimestamp is the time of expiration of the returned token.
@@ -25,8 +26,8 @@ class TokenRequestStatusPatch {
 
   factory TokenRequestStatusPatch.fromMap(Map<String, dynamic> map) {
     return TokenRequestStatusPatch(
-      expirationTimestamp: map['expirationTimestamp'] == null ? null : map['expirationTimestamp'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
+      expirationTimestamp: map['expirationTimestamp'] == null ? null : (map['expirationTimestamp'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

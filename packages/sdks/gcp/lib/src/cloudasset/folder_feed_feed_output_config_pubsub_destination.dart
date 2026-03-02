@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FolderFeedFeedOutputConfigPubsubDestination {
   /// Destination on Cloud Pubsub topic.
-  final String topic;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [FolderFeedFeedOutputConfigPubsubDestination].
   /// [topic] Destination on Cloud Pubsub topic.
@@ -19,7 +20,7 @@ class FolderFeedFeedOutputConfigPubsubDestination {
 
   factory FolderFeedFeedOutputConfigPubsubDestination.fromMap(Map<String, dynamic> map) {
     return FolderFeedFeedOutputConfigPubsubDestination(
-      topic: map['topic'] as String,
+      topic: (map['topic'] as String).input(),
     );
   }
 }

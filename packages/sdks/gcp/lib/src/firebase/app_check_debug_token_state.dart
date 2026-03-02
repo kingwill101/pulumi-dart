@@ -32,17 +32,12 @@ class AppCheckDebugTokenState {
   /// [project] The ID of the project in which the resource belongs.
   /// [token] The secret token itself. Must be provided during creation, and must be a UUID4,
   AppCheckDebugTokenState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? debugTokenId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? token,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      debugTokenId = pulumi.Input.asOptionalInput<String>(debugTokenId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.appId,
+    this.debugTokenId,
+    this.displayName,
+    this.project,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class AppCheckDebugTokenState {
 
   factory AppCheckDebugTokenState.fromMap(Map<String, dynamic> map) {
     return AppCheckDebugTokenState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      debugTokenId: map['debugTokenId'] == null ? null : pulumi.Output.create<String>(map['debugTokenId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      debugTokenId: map['debugTokenId'] == null ? null : (map['debugTokenId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMachineGroupsGroup {
   /// Machine Group name
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetMachineGroupsGroup].
   /// [groupName] Machine Group name
@@ -24,8 +25,8 @@ class GetMachineGroupsGroup {
 
   factory GetMachineGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsGroup(
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

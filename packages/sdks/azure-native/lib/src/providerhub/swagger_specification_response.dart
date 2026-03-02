@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SwaggerSpecificationResponse {
   /// The api versions.
-  final List<String>? apiVersions;
+  final pulumi.Input<List<String>>? apiVersions;
   /// The swagger spec folder uri.
-  final String? swaggerSpecFolderUri;
+  final pulumi.Input<String>? swaggerSpecFolderUri;
 
   /// Creates a new [SwaggerSpecificationResponse].
   /// [apiVersions] The api versions.
@@ -24,8 +25,8 @@ class SwaggerSpecificationResponse {
 
   factory SwaggerSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return SwaggerSpecificationResponse(
-      apiVersions: map['apiVersions'] == null ? null : (map['apiVersions'] as List).cast<String>(),
-      swaggerSpecFolderUri: map['swaggerSpecFolderUri'] == null ? null : map['swaggerSpecFolderUri'] as String,
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
+      swaggerSpecFolderUri: map['swaggerSpecFolderUri'] == null ? null : (map['swaggerSpecFolderUri'] as String).input(),
     );
   }
 }

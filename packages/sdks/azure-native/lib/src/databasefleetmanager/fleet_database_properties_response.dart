@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_response.dart';
 import 'transparent_data_encryption_response.dart';
 
 /// Fleet database properties.
 class FleetDatabasePropertiesResponse {
   /// Backup retention in days.
-  final int backupRetentionDays;
+  final pulumi.Input<int> backupRetentionDays;
   /// Database collation.
-  final String? collation;
+  final pulumi.Input<String>? collation;
   /// Connection string to connect to the database with.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// Create mode. Available options: Default - Create a database. Copy - Copy the source database (source database name must be specified) PointInTimeRestore - Create a database by restoring source database from a point in time (source database name and restore from time must be specified)
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// Maximum database size in Gb.
-  final int databaseSizeGbMax;
+  final pulumi.Input<int> databaseSizeGbMax;
   /// Earliest restore time.
-  final String earliestRestoreTime;
+  final pulumi.Input<String> earliestRestoreTime;
   /// Identity property.
-  final IdentityResponse? identity;
+  final pulumi.Input<IdentityResponse>? identity;
   /// Latest restore time.
-  final String latestRestoreTime;
+  final pulumi.Input<String> latestRestoreTime;
   /// Resource identifier for the underlying database resource.
-  final String originalDatabaseId;
+  final pulumi.Input<String> originalDatabaseId;
   /// Database state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// If true, database is recoverable.
-  final bool recoverable;
+  final pulumi.Input<bool> recoverable;
   /// Additional database properties to be applied as the underlying database resource tags.
-  final Map<String, String>? resourceTags;
+  final pulumi.Input<Map<String, String>>? resourceTags;
   /// Restore from time when CreateMode is PointInTimeRestore.
-  final String? restoreFromTime;
+  final pulumi.Input<String>? restoreFromTime;
   /// Source database name used when CreateMode is Copy or PointInTimeRestore.
-  final String? sourceDatabaseName;
+  final pulumi.Input<String>? sourceDatabaseName;
   /// Name of the tier this database belongs to.
-  final String? tierName;
+  final pulumi.Input<String>? tierName;
   /// Transparent Data Encryption properties
-  final TransparentDataEncryptionResponse? transparentDataEncryption;
+  final pulumi.Input<TransparentDataEncryptionResponse>? transparentDataEncryption;
 
   /// Creates a new [FleetDatabasePropertiesResponse].
   /// [backupRetentionDays] Backup retention in days.
@@ -82,7 +83,7 @@ class FleetDatabasePropertiesResponse {
       'createMode': ?createMode,
       'databaseSizeGbMax': databaseSizeGbMax,
       'earliestRestoreTime': earliestRestoreTime,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'latestRestoreTime': latestRestoreTime,
       'originalDatabaseId': originalDatabaseId,
       'provisioningState': provisioningState,
@@ -91,28 +92,28 @@ class FleetDatabasePropertiesResponse {
       'restoreFromTime': ?restoreFromTime,
       'sourceDatabaseName': ?sourceDatabaseName,
       'tierName': ?tierName,
-      'transparentDataEncryption': ?transparentDataEncryption == null ? null : transparentDataEncryption!.toMap(),
+      'transparentDataEncryption': ?pulumi.Input.mapOptionalInputValue<TransparentDataEncryptionResponse, Map<String, dynamic>>(transparentDataEncryption, (value) => value.toMap()),
     };
   }
 
   factory FleetDatabasePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetDatabasePropertiesResponse(
-      backupRetentionDays: map['backupRetentionDays'] as int,
-      collation: map['collation'] == null ? null : map['collation'] as String,
-      connectionString: map['connectionString'] as String,
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      databaseSizeGbMax: map['databaseSizeGbMax'] as int,
-      earliestRestoreTime: map['earliestRestoreTime'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      latestRestoreTime: map['latestRestoreTime'] as String,
-      originalDatabaseId: map['originalDatabaseId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      recoverable: map['recoverable'] as bool,
-      resourceTags: map['resourceTags'] == null ? null : (map['resourceTags'] as Map).cast<String, String>(),
-      restoreFromTime: map['restoreFromTime'] == null ? null : map['restoreFromTime'] as String,
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : map['sourceDatabaseName'] as String,
-      tierName: map['tierName'] == null ? null : map['tierName'] as String,
-      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : TransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption'] as Map).cast<String, dynamic>()),
+      backupRetentionDays: (map['backupRetentionDays'] as int).input(),
+      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      databaseSizeGbMax: (map['databaseSizeGbMax'] as int).input(),
+      earliestRestoreTime: (map['earliestRestoreTime'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      latestRestoreTime: (map['latestRestoreTime'] as String).input(),
+      originalDatabaseId: (map['originalDatabaseId'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      recoverable: (map['recoverable'] as bool).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime'] as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
+      tierName: map['tierName'] == null ? null : (map['tierName'] as String).input(),
+      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

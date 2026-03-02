@@ -34,21 +34,14 @@ class ResizeRequestArgs {
   /// [resizeBy] The number of instances to be created by this resize request. The group's target size will be increased by this number.
   /// [zone] The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
   ResizeRequestArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceGroupManager,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ResizeRequestRequestedRunDuration>? requestedRunDuration,
-    required pulumi.Output<int> resizeBy,
-    pulumi.Output<String>? zone,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestedRunDuration = pulumi.Input.asOptionalInput<ResizeRequestRequestedRunDuration>(requestedRunDuration),
-      resizeBy = pulumi.Input.asInput<int>(resizeBy),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.description,
+    required this.instanceGroupManager,
+    this.name,
+    this.project,
+    this.requestedRunDuration,
+    required this.resizeBy,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ResizeRequestArgs {
 
   factory ResizeRequestArgs.fromMap(Map<String, dynamic> map) {
     return ResizeRequestArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceGroupManager: pulumi.Output.create<String>(map['instanceGroupManager'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestedRunDuration: map['requestedRunDuration'] == null ? null : pulumi.Output.create<ResizeRequestRequestedRunDuration>(ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())),
-      resizeBy: pulumi.Output.create<int>(map['resizeBy'] as int),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceGroupManager: (map['instanceGroupManager'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestedRunDuration: map['requestedRunDuration'] == null ? null : (ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())).input(),
+      resizeBy: (map['resizeBy'] as int).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

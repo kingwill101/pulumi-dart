@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_bootstrap_script_node_selector.dart';
 
 class ClusterBootstrapScript {
   /// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
-  final String executionFailStrategy;
+  final pulumi.Input<String> executionFailStrategy;
   /// The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
-  final String executionMoment;
+  final pulumi.Input<String> executionMoment;
   /// The bootstrap scripts execution target. See `node_selector` below.
-  final ClusterBootstrapScriptNodeSelector nodeSelector;
+  final pulumi.Input<ClusterBootstrapScriptNodeSelector> nodeSelector;
   /// The bootstrap scripts priority.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// The bootstrap script args, e.g. "--a=b".
-  final String scriptArgs;
+  final pulumi.Input<String> scriptArgs;
   /// The bootstrap script name.
-  final String scriptName;
+  final pulumi.Input<String> scriptName;
   /// The bootstrap script path, e.g. "oss://bucket/path".
-  final String scriptPath;
+  final pulumi.Input<String> scriptPath;
 
   /// Creates a new [ClusterBootstrapScript].
   /// [executionFailStrategy] The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
@@ -40,7 +41,7 @@ class ClusterBootstrapScript {
     return <String, dynamic>{
       'executionFailStrategy': executionFailStrategy,
       'executionMoment': executionMoment,
-      'nodeSelector': nodeSelector.toMap(),
+      'nodeSelector': pulumi.Input.mapInputValue<ClusterBootstrapScriptNodeSelector, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
       'priority': ?priority,
       'scriptArgs': scriptArgs,
       'scriptName': scriptName,
@@ -50,13 +51,13 @@ class ClusterBootstrapScript {
 
   factory ClusterBootstrapScript.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapScript(
-      executionFailStrategy: map['executionFailStrategy'] as String,
-      executionMoment: map['executionMoment'] as String,
-      nodeSelector: ClusterBootstrapScriptNodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>()),
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      scriptArgs: map['scriptArgs'] as String,
-      scriptName: map['scriptName'] as String,
-      scriptPath: map['scriptPath'] as String,
+      executionFailStrategy: (map['executionFailStrategy'] as String).input(),
+      executionMoment: (map['executionMoment'] as String).input(),
+      nodeSelector: (ClusterBootstrapScriptNodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      scriptArgs: (map['scriptArgs'] as String).input(),
+      scriptName: (map['scriptName'] as String).input(),
+      scriptPath: (map['scriptPath'] as String).input(),
     );
   }
 }

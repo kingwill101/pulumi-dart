@@ -55,29 +55,18 @@ class TriggerArgs {
   /// [serviceAccount] Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
   /// [transport] Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   TriggerArgs({
-    pulumi.Output<String>? channel,
-    required pulumi.Output<TriggerDestination> destination,
-    pulumi.Output<String>? eventDataContentType,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<List<TriggerMatchingCriteria>> matchingCriterias,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<TriggerRetryPolicy>? retryPolicy,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<TriggerTransport>? transport,
-  }) :
-      channel = pulumi.Input.asOptionalInput<String>(channel),
-      destination = pulumi.Input.asInput<TriggerDestination>(destination),
-      eventDataContentType = pulumi.Input.asOptionalInput<String>(eventDataContentType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      matchingCriterias = pulumi.Input.asInput<List<TriggerMatchingCriteria>>(matchingCriterias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retryPolicy = pulumi.Input.asOptionalInput<TriggerRetryPolicy>(retryPolicy),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      transport = pulumi.Input.asOptionalInput<TriggerTransport>(transport);
+    this.channel,
+    required this.destination,
+    this.eventDataContentType,
+    this.labels,
+    required this.location,
+    required this.matchingCriterias,
+    this.name,
+    this.project,
+    this.retryPolicy,
+    this.serviceAccount,
+    this.transport,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,17 +86,17 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      channel: map['channel'] == null ? null : pulumi.Output.create<String>(map['channel'] as String),
-      destination: pulumi.Output.create<TriggerDestination>(TriggerDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      eventDataContentType: map['eventDataContentType'] == null ? null : pulumi.Output.create<String>(map['eventDataContentType'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      matchingCriterias: pulumi.Output.create<List<TriggerMatchingCriteria>>(pulumi.Input.decodeList<TriggerMatchingCriteria>(map['matchingCriterias'], (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retryPolicy: map['retryPolicy'] == null ? null : pulumi.Output.create<TriggerRetryPolicy>(TriggerRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      transport: map['transport'] == null ? null : pulumi.Output.create<TriggerTransport>(TriggerTransport.fromMap((map['transport'] as Map).cast<String, dynamic>())),
+      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      destination: (TriggerDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      matchingCriterias: (pulumi.Input.decodeList<TriggerMatchingCriteria>(map['matchingCriterias'], (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (TriggerRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      transport: map['transport'] == null ? null : (TriggerTransport.fromMap((map['transport'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

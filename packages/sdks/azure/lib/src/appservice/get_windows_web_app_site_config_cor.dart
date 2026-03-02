@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppSiteConfigCor {
   /// A `allowed_origins` block as defined above.
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
   /// Whether CORS requests with credentials are allowed.
-  final bool supportCredentials;
+  final pulumi.Input<bool> supportCredentials;
 
   /// Creates a new [GetWindowsWebAppSiteConfigCor].
   /// [allowedOrigins] A `allowed_origins` block as defined above.
@@ -24,8 +25,8 @@ class GetWindowsWebAppSiteConfigCor {
 
   factory GetWindowsWebAppSiteConfigCor.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigCor(
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
-      supportCredentials: map['supportCredentials'] as bool,
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
+      supportCredentials: (map['supportCredentials'] as bool).input(),
     );
   }
 }

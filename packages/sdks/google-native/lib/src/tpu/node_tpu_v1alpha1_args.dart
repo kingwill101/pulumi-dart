@@ -49,33 +49,20 @@ class NodeTpuV1alpha1Args {
   /// [tensorflowVersion] The version of Tensorflow running in the Node.
   /// [useServiceNetworking] Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
   NodeTpuV1alpha1Args({
-    required pulumi.Output<String> acceleratorType,
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? description,
-    pulumi.Output<NodeHealthTpuV1alpha1>? health,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? network,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<SchedulingConfigTpuV1alpha1>? schedulingConfig,
-    required pulumi.Output<String> tensorflowVersion,
-    pulumi.Output<bool>? useServiceNetworking,
-  }) :
-      acceleratorType = pulumi.Input.asInput<String>(acceleratorType),
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      health = pulumi.Input.asOptionalInput<NodeHealthTpuV1alpha1>(health),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      schedulingConfig = pulumi.Input.asOptionalInput<SchedulingConfigTpuV1alpha1>(schedulingConfig),
-      tensorflowVersion = pulumi.Input.asInput<String>(tensorflowVersion),
-      useServiceNetworking = pulumi.Input.asOptionalInput<bool>(useServiceNetworking);
+    required this.acceleratorType,
+    this.cidrBlock,
+    this.description,
+    this.health,
+    this.labels,
+    this.location,
+    this.network,
+    this.nodeId,
+    this.project,
+    this.requestId,
+    this.schedulingConfig,
+    required this.tensorflowVersion,
+    this.useServiceNetworking,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class NodeTpuV1alpha1Args {
 
   factory NodeTpuV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return NodeTpuV1alpha1Args(
-      acceleratorType: pulumi.Output.create<String>(map['acceleratorType'] as String),
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      health: map['health'] == null ? null : pulumi.Output.create<NodeHealthTpuV1alpha1>(NodeHealthTpuV1alpha1.fromValue(map['health'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      schedulingConfig: map['schedulingConfig'] == null ? null : pulumi.Output.create<SchedulingConfigTpuV1alpha1>(SchedulingConfigTpuV1alpha1.fromMap((map['schedulingConfig'] as Map).cast<String, dynamic>())),
-      tensorflowVersion: pulumi.Output.create<String>(map['tensorflowVersion'] as String),
-      useServiceNetworking: map['useServiceNetworking'] == null ? null : pulumi.Output.create<bool>(map['useServiceNetworking'] as bool),
+      acceleratorType: (map['acceleratorType'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      health: map['health'] == null ? null : (NodeHealthTpuV1alpha1.fromValue(map['health'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      schedulingConfig: map['schedulingConfig'] == null ? null : (SchedulingConfigTpuV1alpha1.fromMap((map['schedulingConfig'] as Map).cast<String, dynamic>())).input(),
+      tensorflowVersion: (map['tensorflowVersion'] as String).input(),
+      useServiceNetworking: map['useServiceNetworking'] == null ? null : (map['useServiceNetworking'] as bool).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAssignedIdentity {
-  final String? clientId;
-  final String? principalId;
+  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String>? principalId;
 
   /// Creates a new [UserAssignedIdentity].
   /// [clientId] Optional.
@@ -22,8 +23,8 @@ class UserAssignedIdentity {
 
   factory UserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentity(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
     );
   }
 }

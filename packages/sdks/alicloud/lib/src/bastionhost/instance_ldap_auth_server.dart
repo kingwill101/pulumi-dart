@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceLdapAuthServer {
   /// The username of the account that is used for the LDAP server.
-  final String account;
+  final pulumi.Input<String> account;
   /// The Base distinguished name (DN).
-  final String baseDn;
+  final pulumi.Input<String> baseDn;
   /// The field that is used to indicate the email address of a user on the LDAP server.
-  final String? emailMapping;
+  final pulumi.Input<String>? emailMapping;
   /// The condition that is used to filter users.
-  final String? filter;
+  final pulumi.Input<String>? filter;
   /// Specifies whether to support SSL.
-  final bool? isSsl;
+  final pulumi.Input<bool>? isSsl;
   /// The field that is used to indicate the logon name of a user on the LDAP server.
-  final String? loginNameMapping;
+  final pulumi.Input<String>? loginNameMapping;
   /// The field that is used to indicate the mobile phone number of a user on the LDAP server.
-  final String? mobileMapping;
+  final pulumi.Input<String>? mobileMapping;
   /// The field that is used to indicate the name of a user on the LDAP server.
-  final String? nameMapping;
+  final pulumi.Input<String>? nameMapping;
   /// The password of the account that is used for the LDAP server.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The port that is used to access the LDAP server.
-  final int port;
+  final pulumi.Input<int> port;
   /// The address of the LDAP server.
-  final String server;
+  final pulumi.Input<String> server;
   /// The address of the secondary LDAP server.
-  final String? standbyServer;
+  final pulumi.Input<String>? standbyServer;
 
   /// Creates a new [InstanceLdapAuthServer].
   /// [account] The username of the account that is used for the LDAP server.
@@ -74,18 +75,18 @@ class InstanceLdapAuthServer {
 
   factory InstanceLdapAuthServer.fromMap(Map<String, dynamic> map) {
     return InstanceLdapAuthServer(
-      account: map['account'] as String,
-      baseDn: map['baseDn'] as String,
-      emailMapping: map['emailMapping'] == null ? null : map['emailMapping'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
-      isSsl: map['isSsl'] == null ? null : map['isSsl'] as bool,
-      loginNameMapping: map['loginNameMapping'] == null ? null : map['loginNameMapping'] as String,
-      mobileMapping: map['mobileMapping'] == null ? null : map['mobileMapping'] as String,
-      nameMapping: map['nameMapping'] == null ? null : map['nameMapping'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] as int,
-      server: map['server'] as String,
-      standbyServer: map['standbyServer'] == null ? null : map['standbyServer'] as String,
+      account: (map['account'] as String).input(),
+      baseDn: (map['baseDn'] as String).input(),
+      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      isSsl: map['isSsl'] == null ? null : (map['isSsl'] as bool).input(),
+      loginNameMapping: map['loginNameMapping'] == null ? null : (map['loginNameMapping'] as String).input(),
+      mobileMapping: map['mobileMapping'] == null ? null : (map['mobileMapping'] as String).input(),
+      nameMapping: map['nameMapping'] == null ? null : (map['nameMapping'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: (map['port'] as int).input(),
+      server: (map['server'] as String).input(),
+      standbyServer: map['standbyServer'] == null ? null : (map['standbyServer'] as String).input(),
     );
   }
 }

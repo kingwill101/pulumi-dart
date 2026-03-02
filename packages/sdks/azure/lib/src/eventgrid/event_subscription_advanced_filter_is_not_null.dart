@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSubscriptionAdvancedFilterIsNotNull {
   /// Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [EventSubscriptionAdvancedFilterIsNotNull].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
@@ -19,7 +20,7 @@ class EventSubscriptionAdvancedFilterIsNotNull {
 
   factory EventSubscriptionAdvancedFilterIsNotNull.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAdvancedFilterIsNotNull(
-      key: map['key'] as String,
+      key: (map['key'] as String).input(),
     );
   }
 }

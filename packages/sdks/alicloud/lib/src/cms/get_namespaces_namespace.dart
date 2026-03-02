@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNamespacesNamespace {
   /// Create the timestamp of the indicator warehouse.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of indicator warehouse.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Namespace.
-  final String id;
+  final pulumi.Input<String> id;
   /// The timestamp of the last modification indicator warehouse.
-  final String modifyTime;
+  final pulumi.Input<String> modifyTime;
   /// Indicator warehouse name.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The ID of the Namespace.
-  final String namespaceId;
+  final pulumi.Input<String> namespaceId;
   /// Data storage duration.
-  final String specification;
+  final pulumi.Input<String> specification;
 
   /// Creates a new [GetNamespacesNamespace].
   /// [createTime] Create the timestamp of the indicator warehouse.
@@ -49,13 +50,13 @@ class GetNamespacesNamespace {
 
   factory GetNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetNamespacesNamespace(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      modifyTime: map['modifyTime'] as String,
-      namespace: map['namespace'] as String,
-      namespaceId: map['namespaceId'] as String,
-      specification: map['specification'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      modifyTime: (map['modifyTime'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      namespaceId: (map['namespaceId'] as String).input(),
+      specification: (map['specification'] as String).input(),
     );
   }
 }

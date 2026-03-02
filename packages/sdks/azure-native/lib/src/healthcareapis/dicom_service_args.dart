@@ -44,27 +44,17 @@ class DicomServiceArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
   DicomServiceArgs({
-    pulumi.Output<CorsConfiguration>? corsConfiguration,
-    pulumi.Output<String>? dicomServiceName,
-    pulumi.Output<bool>? enableDataPartitions,
-    pulumi.Output<Encryption>? encryption,
-    pulumi.Output<ServiceManagedIdentityIdentity>? identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<StorageConfiguration>? storageConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      corsConfiguration = pulumi.Input.asOptionalInput<CorsConfiguration>(corsConfiguration),
-      dicomServiceName = pulumi.Input.asOptionalInput<String>(dicomServiceName),
-      enableDataPartitions = pulumi.Input.asOptionalInput<bool>(enableDataPartitions),
-      encryption = pulumi.Input.asOptionalInput<Encryption>(encryption),
-      identity = pulumi.Input.asOptionalInput<ServiceManagedIdentityIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageConfiguration = pulumi.Input.asOptionalInput<StorageConfiguration>(storageConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.corsConfiguration,
+    this.dicomServiceName,
+    this.enableDataPartitions,
+    this.encryption,
+    this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.storageConfiguration,
+    this.tags,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class DicomServiceArgs {
 
   factory DicomServiceArgs.fromMap(Map<String, dynamic> map) {
     return DicomServiceArgs(
-      corsConfiguration: map['corsConfiguration'] == null ? null : pulumi.Output.create<CorsConfiguration>(CorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())),
-      dicomServiceName: map['dicomServiceName'] == null ? null : pulumi.Output.create<String>(map['dicomServiceName'] as String),
-      enableDataPartitions: map['enableDataPartitions'] == null ? null : pulumi.Output.create<bool>(map['enableDataPartitions'] as bool),
-      encryption: map['encryption'] == null ? null : pulumi.Output.create<Encryption>(Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ServiceManagedIdentityIdentity>(ServiceManagedIdentityIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageConfiguration: map['storageConfiguration'] == null ? null : pulumi.Output.create<StorageConfiguration>(StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (CorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      dicomServiceName: map['dicomServiceName'] == null ? null : (map['dicomServiceName'] as String).input(),
+      enableDataPartitions: map['enableDataPartitions'] == null ? null : (map['enableDataPartitions'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

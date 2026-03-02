@@ -19,13 +19,10 @@ class GetStaticSiteCustomDomainArgs {
   /// [name] Name of the static site resource to search in.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetStaticSiteCustomDomainArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStaticSiteCustomDomainArgs {
 
   factory GetStaticSiteCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteCustomDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

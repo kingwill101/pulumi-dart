@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionNetworkEndpointGroupAppEngine {
   /// Optional serving service.
   /// The service name must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "default", "my-service".
-  final String service;
+  final pulumi.Input<String> service;
   /// A template to parse service and version fields from a request URL.
   /// URL mask allows for routing to multiple App Engine services without
   /// having to create multiple Network Endpoint Groups and backend services.
@@ -14,11 +15,11 @@ class GetRegionNetworkEndpointGroupAppEngine {
   /// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
   /// URL mask "-dot-appname.appspot.com/". The URL mask will parse
   /// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
-  final String urlMask;
+  final pulumi.Input<String> urlMask;
   /// Optional serving version.
   /// The version must be 1-63 characters long, and comply with RFC1035.
   /// Example value: "v1", "v2".
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetRegionNetworkEndpointGroupAppEngine].
   /// [service] Optional serving service.
@@ -40,9 +41,9 @@ class GetRegionNetworkEndpointGroupAppEngine {
 
   factory GetRegionNetworkEndpointGroupAppEngine.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupAppEngine(
-      service: map['service'] as String,
-      urlMask: map['urlMask'] as String,
-      version: map['version'] as String,
+      service: (map['service'] as String).input(),
+      urlMask: (map['urlMask'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

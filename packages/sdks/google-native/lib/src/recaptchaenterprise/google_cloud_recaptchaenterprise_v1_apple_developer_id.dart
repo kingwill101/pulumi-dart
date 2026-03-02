@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains fields that are required to perform Apple-specific integrity checks.
 class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
   /// The Apple developer key ID (10-character string).
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
-  final String privateKey;
+  final pulumi.Input<String> privateKey;
   /// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
-  final String teamId;
+  final pulumi.Input<String> teamId;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1AppleDeveloperId].
   /// [keyId] The Apple developer key ID (10-character string).
@@ -30,9 +31,9 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 
   factory GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1AppleDeveloperId(
-      keyId: map['keyId'] as String,
-      privateKey: map['privateKey'] as String,
-      teamId: map['teamId'] as String,
+      keyId: (map['keyId'] as String).input(),
+      privateKey: (map['privateKey'] as String).input(),
+      teamId: (map['teamId'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssumeRole {
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
-  final String? policy;
+  final pulumi.Input<String>? policy;
   /// The ARN of a RAM role to assume prior to making API calls.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
-  final int? sessionExpiration;
-  final String? sessionName;
+  final pulumi.Input<int>? sessionExpiration;
+  final pulumi.Input<String>? sessionName;
 
   /// Creates a new [AssumeRole].
   /// [externalId] Optional.
@@ -37,11 +38,11 @@ class AssumeRole {
 
   factory AssumeRole.fromMap(Map<String, dynamic> map) {
     return AssumeRole(
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
-      roleArn: map['roleArn'] as String,
-      sessionExpiration: map['sessionExpiration'] == null ? null : map['sessionExpiration'] as int,
-      sessionName: map['sessionName'] == null ? null : map['sessionName'] as String,
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      sessionExpiration: map['sessionExpiration'] == null ? null : (map['sessionExpiration'] as int).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
     );
   }
 }

@@ -59,35 +59,21 @@ class ServicePlanState {
   /// [workerCount] The number of Workers (instances) to be allocated.
   /// [zoneBalancingEnabled] Should the Service Plan balance across Availability Zones in the region.
   ServicePlanState({
-    pulumi.Output<String>? appServiceEnvironmentId,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maximumElasticWorkerCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? osType,
-    pulumi.Output<bool>? perSiteScalingEnabled,
-    pulumi.Output<bool>? premiumPlanAutoScaleEnabled,
-    pulumi.Output<bool>? reserved,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? workerCount,
-    pulumi.Output<bool>? zoneBalancingEnabled,
-  }) :
-      appServiceEnvironmentId = pulumi.Input.asOptionalInput<String>(appServiceEnvironmentId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumElasticWorkerCount = pulumi.Input.asOptionalInput<int>(maximumElasticWorkerCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      perSiteScalingEnabled = pulumi.Input.asOptionalInput<bool>(perSiteScalingEnabled),
-      premiumPlanAutoScaleEnabled = pulumi.Input.asOptionalInput<bool>(premiumPlanAutoScaleEnabled),
-      reserved = pulumi.Input.asOptionalInput<bool>(reserved),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workerCount = pulumi.Input.asOptionalInput<int>(workerCount),
-      zoneBalancingEnabled = pulumi.Input.asOptionalInput<bool>(zoneBalancingEnabled);
+    this.appServiceEnvironmentId,
+    this.kind,
+    this.location,
+    this.maximumElasticWorkerCount,
+    this.name,
+    this.osType,
+    this.perSiteScalingEnabled,
+    this.premiumPlanAutoScaleEnabled,
+    this.reserved,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+    this.workerCount,
+    this.zoneBalancingEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class ServicePlanState {
 
   factory ServicePlanState.fromMap(Map<String, dynamic> map) {
     return ServicePlanState(
-      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['appServiceEnvironmentId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : pulumi.Output.create<int>(map['maximumElasticWorkerCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      perSiteScalingEnabled: map['perSiteScalingEnabled'] == null ? null : pulumi.Output.create<bool>(map['perSiteScalingEnabled'] as bool),
-      premiumPlanAutoScaleEnabled: map['premiumPlanAutoScaleEnabled'] == null ? null : pulumi.Output.create<bool>(map['premiumPlanAutoScaleEnabled'] as bool),
-      reserved: map['reserved'] == null ? null : pulumi.Output.create<bool>(map['reserved'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workerCount: map['workerCount'] == null ? null : pulumi.Output.create<int>(map['workerCount'] as int),
-      zoneBalancingEnabled: map['zoneBalancingEnabled'] == null ? null : pulumi.Output.create<bool>(map['zoneBalancingEnabled'] as bool),
+      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      perSiteScalingEnabled: map['perSiteScalingEnabled'] == null ? null : (map['perSiteScalingEnabled'] as bool).input(),
+      premiumPlanAutoScaleEnabled: map['premiumPlanAutoScaleEnabled'] == null ? null : (map['premiumPlanAutoScaleEnabled'] as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as int).input(),
+      zoneBalancingEnabled: map['zoneBalancingEnabled'] == null ? null : (map['zoneBalancingEnabled'] as bool).input(),
     );
   }
 }

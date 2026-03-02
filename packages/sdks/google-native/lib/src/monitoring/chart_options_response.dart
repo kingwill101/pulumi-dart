@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Options to control visual rendering of a chart.
 class ChartOptionsResponse {
   /// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
-  final bool displayHorizontal;
+  final pulumi.Input<bool> displayHorizontal;
   /// The chart mode.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [ChartOptionsResponse].
   /// [displayHorizontal] Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
@@ -25,8 +26,8 @@ class ChartOptionsResponse {
 
   factory ChartOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ChartOptionsResponse(
-      displayHorizontal: map['displayHorizontal'] as bool,
-      mode: map['mode'] as String,
+      displayHorizontal: (map['displayHorizontal'] as bool).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

@@ -1,54 +1,55 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageAzureV2 protected disk details.
 class InMageAzureV2ProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
-  final double? diskCapacityInBytes;
+  final pulumi.Input<double>? diskCapacityInBytes;
   /// The disk id.
-  final String? diskId;
+  final pulumi.Input<String>? diskId;
   /// The disk name.
-  final String? diskName;
+  final pulumi.Input<String>? diskName;
   /// A value indicating whether disk is resized.
-  final String? diskResized;
+  final pulumi.Input<String>? diskResized;
   /// The disk file system capacity in bytes.
-  final double? fileSystemCapacityInBytes;
+  final pulumi.Input<double>? fileSystemCapacityInBytes;
   /// The health error code for the disk.
-  final String? healthErrorCode;
+  final pulumi.Input<String>? healthErrorCode;
   /// The last RPO calculated time.
-  final String? lastRpoCalculatedTime;
+  final pulumi.Input<String>? lastRpoCalculatedTime;
   /// The Progress Health.
-  final String? progressHealth;
+  final pulumi.Input<String>? progressHealth;
   /// The Progress Status.
-  final String? progressStatus;
+  final pulumi.Input<String>? progressStatus;
   /// The protection stage.
-  final String? protectionStage;
+  final pulumi.Input<String>? protectionStage;
   /// The PS data transit in MB.
-  final double? psDataInMegaBytes;
+  final pulumi.Input<double>? psDataInMegaBytes;
   /// The resync duration in seconds.
-  final double? resyncDurationInSeconds;
+  final pulumi.Input<double>? resyncDurationInSeconds;
   /// The resync last 15 minutes transferred bytes.
-  final double? resyncLast15MinutesTransferredBytes;
+  final pulumi.Input<double>? resyncLast15MinutesTransferredBytes;
   /// The last data transfer time in UTC.
-  final String? resyncLastDataTransferTimeUTC;
+  final pulumi.Input<String>? resyncLastDataTransferTimeUTC;
   /// The resync processed bytes.
-  final double? resyncProcessedBytes;
+  final pulumi.Input<double>? resyncProcessedBytes;
   /// The resync progress percentage.
-  final int? resyncProgressPercentage;
+  final pulumi.Input<int>? resyncProgressPercentage;
   /// A value indicating whether resync is required for this disk.
-  final String? resyncRequired;
+  final pulumi.Input<String>? resyncRequired;
   /// The resync start time.
-  final String? resyncStartTime;
+  final pulumi.Input<String>? resyncStartTime;
   /// The resync total transferred bytes.
-  final double? resyncTotalTransferredBytes;
+  final pulumi.Input<double>? resyncTotalTransferredBytes;
   /// The RPO in seconds.
-  final double? rpoInSeconds;
+  final pulumi.Input<double>? rpoInSeconds;
   /// The seconds to take for switch provider.
-  final double? secondsToTakeSwitchProvider;
+  final pulumi.Input<double>? secondsToTakeSwitchProvider;
   /// The source data transit in MB.
-  final double? sourceDataInMegaBytes;
+  final pulumi.Input<double>? sourceDataInMegaBytes;
   /// The target data transit in MB.
-  final double? targetDataInMegaBytes;
+  final pulumi.Input<double>? targetDataInMegaBytes;
 
   /// Creates a new [InMageAzureV2ProtectedDiskDetailsResponse].
   /// [diskCapacityInBytes] The disk capacity in bytes.
@@ -130,29 +131,29 @@ class InMageAzureV2ProtectedDiskDetailsResponse {
 
   factory InMageAzureV2ProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2ProtectedDiskDetailsResponse(
-      diskCapacityInBytes: map['diskCapacityInBytes'] == null ? null : map['diskCapacityInBytes'] as double,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      diskName: map['diskName'] == null ? null : map['diskName'] as String,
-      diskResized: map['diskResized'] == null ? null : map['diskResized'] as String,
-      fileSystemCapacityInBytes: map['fileSystemCapacityInBytes'] == null ? null : map['fileSystemCapacityInBytes'] as double,
-      healthErrorCode: map['healthErrorCode'] == null ? null : map['healthErrorCode'] as String,
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : map['lastRpoCalculatedTime'] as String,
-      progressHealth: map['progressHealth'] == null ? null : map['progressHealth'] as String,
-      progressStatus: map['progressStatus'] == null ? null : map['progressStatus'] as String,
-      protectionStage: map['protectionStage'] == null ? null : map['protectionStage'] as String,
-      psDataInMegaBytes: map['psDataInMegaBytes'] == null ? null : map['psDataInMegaBytes'] as double,
-      resyncDurationInSeconds: map['resyncDurationInSeconds'] == null ? null : map['resyncDurationInSeconds'] as double,
-      resyncLast15MinutesTransferredBytes: map['resyncLast15MinutesTransferredBytes'] == null ? null : map['resyncLast15MinutesTransferredBytes'] as double,
-      resyncLastDataTransferTimeUTC: map['resyncLastDataTransferTimeUTC'] == null ? null : map['resyncLastDataTransferTimeUTC'] as String,
-      resyncProcessedBytes: map['resyncProcessedBytes'] == null ? null : map['resyncProcessedBytes'] as double,
-      resyncProgressPercentage: map['resyncProgressPercentage'] == null ? null : map['resyncProgressPercentage'] as int,
-      resyncRequired: map['resyncRequired'] == null ? null : map['resyncRequired'] as String,
-      resyncStartTime: map['resyncStartTime'] == null ? null : map['resyncStartTime'] as String,
-      resyncTotalTransferredBytes: map['resyncTotalTransferredBytes'] == null ? null : map['resyncTotalTransferredBytes'] as double,
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : map['rpoInSeconds'] as double,
-      secondsToTakeSwitchProvider: map['secondsToTakeSwitchProvider'] == null ? null : map['secondsToTakeSwitchProvider'] as double,
-      sourceDataInMegaBytes: map['sourceDataInMegaBytes'] == null ? null : map['sourceDataInMegaBytes'] as double,
-      targetDataInMegaBytes: map['targetDataInMegaBytes'] == null ? null : map['targetDataInMegaBytes'] as double,
+      diskCapacityInBytes: map['diskCapacityInBytes'] == null ? null : (map['diskCapacityInBytes'] as double).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      diskResized: map['diskResized'] == null ? null : (map['diskResized'] as String).input(),
+      fileSystemCapacityInBytes: map['fileSystemCapacityInBytes'] == null ? null : (map['fileSystemCapacityInBytes'] as double).input(),
+      healthErrorCode: map['healthErrorCode'] == null ? null : (map['healthErrorCode'] as String).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
+      progressHealth: map['progressHealth'] == null ? null : (map['progressHealth'] as String).input(),
+      progressStatus: map['progressStatus'] == null ? null : (map['progressStatus'] as String).input(),
+      protectionStage: map['protectionStage'] == null ? null : (map['protectionStage'] as String).input(),
+      psDataInMegaBytes: map['psDataInMegaBytes'] == null ? null : (map['psDataInMegaBytes'] as double).input(),
+      resyncDurationInSeconds: map['resyncDurationInSeconds'] == null ? null : (map['resyncDurationInSeconds'] as double).input(),
+      resyncLast15MinutesTransferredBytes: map['resyncLast15MinutesTransferredBytes'] == null ? null : (map['resyncLast15MinutesTransferredBytes'] as double).input(),
+      resyncLastDataTransferTimeUTC: map['resyncLastDataTransferTimeUTC'] == null ? null : (map['resyncLastDataTransferTimeUTC'] as String).input(),
+      resyncProcessedBytes: map['resyncProcessedBytes'] == null ? null : (map['resyncProcessedBytes'] as double).input(),
+      resyncProgressPercentage: map['resyncProgressPercentage'] == null ? null : (map['resyncProgressPercentage'] as int).input(),
+      resyncRequired: map['resyncRequired'] == null ? null : (map['resyncRequired'] as String).input(),
+      resyncStartTime: map['resyncStartTime'] == null ? null : (map['resyncStartTime'] as String).input(),
+      resyncTotalTransferredBytes: map['resyncTotalTransferredBytes'] == null ? null : (map['resyncTotalTransferredBytes'] as double).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
+      secondsToTakeSwitchProvider: map['secondsToTakeSwitchProvider'] == null ? null : (map['secondsToTakeSwitchProvider'] as double).input(),
+      sourceDataInMegaBytes: map['sourceDataInMegaBytes'] == null ? null : (map['sourceDataInMegaBytes'] as double).input(),
+      targetDataInMegaBytes: map['targetDataInMegaBytes'] == null ? null : (map['targetDataInMegaBytes'] as double).input(),
     );
   }
 }

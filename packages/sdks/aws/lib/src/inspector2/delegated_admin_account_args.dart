@@ -16,11 +16,9 @@ class DelegatedAdminAccountArgs {
   /// [accountId] Account to enable as delegated admin account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DelegatedAdminAccountArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DelegatedAdminAccountArgs {
 
   factory DelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accountId: (map['accountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

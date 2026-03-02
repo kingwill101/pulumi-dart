@@ -16,13 +16,10 @@ class TemplateAssociationState {
   /// [skipDestroy] Skip disassociating the quota increase template upon destruction. This will remove the resource from Terraform state, but leave the remote association in place.
   /// [status] Association status. Creating this resource will result in an `ASSOCIATED` status, and quota increase requests in the template are automatically applied to new AWS accounts in the organization.
   TemplateAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<String>? status,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.region,
+    this.skipDestroy,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class TemplateAssociationState {
 
   factory TemplateAssociationState.fromMap(Map<String, dynamic> map) {
     return TemplateAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -41,17 +41,12 @@ class WorkloadIdentityPoolIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [workloadIdentityPoolId] Used to find the parent resource to bind the IAM policy to
   WorkloadIdentityPoolIamMemberArgs({
-    pulumi.Output<WorkloadIdentityPoolIamMemberCondition>? condition,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> workloadIdentityPoolId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<WorkloadIdentityPoolIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
+    this.condition,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.workloadIdentityPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class WorkloadIdentityPoolIamMemberArgs {
 
   factory WorkloadIdentityPoolIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<WorkloadIdentityPoolIamMemberCondition>(WorkloadIdentityPoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
+      condition: map['condition'] == null ? null : (WorkloadIdentityPoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

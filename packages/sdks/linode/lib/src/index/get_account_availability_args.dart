@@ -13,9 +13,8 @@ class GetAccountAvailabilityArgs {
   /// Creates a new [GetAccountAvailabilityArgs].
   /// [region] The region ID.
   GetAccountAvailabilityArgs({
-    required pulumi.Output<String> region,
-  }) :
-      region = pulumi.Input.asInput<String>(region);
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccountAvailabilityArgs {
 
   factory GetAccountAvailabilityArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAvailabilityArgs(
-      region: pulumi.Output.create<String>(map['region'] as String),
+      region: (map['region'] as String).input(),
     );
   }
 }

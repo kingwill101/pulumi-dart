@@ -27,17 +27,12 @@ class VpcEndpointConnectionNotificationArgs {
   /// [vpcEndpointId] The ID of the VPC Endpoint to receive notifications for.
   /// [vpcEndpointServiceId] The ID of the VPC Endpoint Service to receive notifications for.
   VpcEndpointConnectionNotificationArgs({
-    required pulumi.Output<List<String>> connectionEvents,
-    required pulumi.Output<String> connectionNotificationArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? vpcEndpointId,
-    pulumi.Output<String>? vpcEndpointServiceId,
-  }) :
-      connectionEvents = pulumi.Input.asInput<List<String>>(connectionEvents),
-      connectionNotificationArn = pulumi.Input.asInput<String>(connectionNotificationArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId),
-      vpcEndpointServiceId = pulumi.Input.asOptionalInput<String>(vpcEndpointServiceId);
+    required this.connectionEvents,
+    required this.connectionNotificationArn,
+    this.region,
+    this.vpcEndpointId,
+    this.vpcEndpointServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class VpcEndpointConnectionNotificationArgs {
 
   factory VpcEndpointConnectionNotificationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionNotificationArgs(
-      connectionEvents: pulumi.Output.create<List<String>>((map['connectionEvents'] as List).cast<String>()),
-      connectionNotificationArn: pulumi.Output.create<String>(map['connectionNotificationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointServiceId'] as String),
+      connectionEvents: ((map['connectionEvents'] as List).cast<String>()).input(),
+      connectionNotificationArn: (map['connectionNotificationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetNetworkAttachmentArgs {
   /// [project] Optional.
   /// [region] Required.
   GetNetworkAttachmentArgs({
-    required pulumi.Output<String> networkAttachment,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    required this.networkAttachment,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetNetworkAttachmentArgs {
 
   factory GetNetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentArgs(
-      networkAttachment: pulumi.Output.create<String>(map['networkAttachment'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      networkAttachment: (map['networkAttachment'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

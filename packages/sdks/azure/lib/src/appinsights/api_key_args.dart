@@ -24,15 +24,11 @@ class ApiKeyArgs {
   /// [readPermissions] Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   /// [writePermissions] Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   ApiKeyArgs({
-    required pulumi.Output<String> applicationInsightsId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? readPermissions,
-    pulumi.Output<List<String>>? writePermissions,
-  }) :
-      applicationInsightsId = pulumi.Input.asInput<String>(applicationInsightsId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      readPermissions = pulumi.Input.asOptionalInput<List<String>>(readPermissions),
-      writePermissions = pulumi.Input.asOptionalInput<List<String>>(writePermissions);
+    required this.applicationInsightsId,
+    this.name,
+    this.readPermissions,
+    this.writePermissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      applicationInsightsId: pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      readPermissions: map['readPermissions'] == null ? null : pulumi.Output.create<List<String>>((map['readPermissions'] as List).cast<String>()),
-      writePermissions: map['writePermissions'] == null ? null : pulumi.Output.create<List<String>>((map['writePermissions'] as List).cast<String>()),
+      applicationInsightsId: (map['applicationInsightsId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions'] as List).cast<String>()).input(),
+      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions'] as List).cast<String>()).input(),
     );
   }
 }

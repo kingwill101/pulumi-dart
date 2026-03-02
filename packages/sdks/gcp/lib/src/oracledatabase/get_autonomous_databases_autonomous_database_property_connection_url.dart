@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
   /// Oracle Application Express (APEX) URL.
-  final String apexUri;
+  final pulumi.Input<String> apexUri;
   /// The URL of the Database Transforms for the Autonomous Database.
-  final String databaseTransformsUri;
+  final pulumi.Input<String> databaseTransformsUri;
   /// The URL of the Graph Studio for the Autonomous Database.
-  final String graphStudioUri;
+  final pulumi.Input<String> graphStudioUri;
   /// The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous
   /// Database.
-  final String machineLearningNotebookUri;
+  final pulumi.Input<String> machineLearningNotebookUri;
   /// The URL of Machine Learning user management the Autonomous Database.
-  final String machineLearningUserManagementUri;
+  final pulumi.Input<String> machineLearningUserManagementUri;
   /// The URL of the MongoDB API for the Autonomous Database.
-  final String mongoDbUri;
+  final pulumi.Input<String> mongoDbUri;
   /// The Oracle REST Data Services (ORDS) URL of the Web Access for the
   /// Autonomous Database.
-  final String ordsUri;
+  final pulumi.Input<String> ordsUri;
   /// The URL of the Oracle SQL Developer Web for the Autonomous Database.
-  final String sqlDevWebUri;
+  final pulumi.Input<String> sqlDevWebUri;
 
   /// Creates a new [GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl].
   /// [apexUri] Oracle Application Express (APEX) URL.
@@ -56,14 +57,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
 
   factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl(
-      apexUri: map['apexUri'] as String,
-      databaseTransformsUri: map['databaseTransformsUri'] as String,
-      graphStudioUri: map['graphStudioUri'] as String,
-      machineLearningNotebookUri: map['machineLearningNotebookUri'] as String,
-      machineLearningUserManagementUri: map['machineLearningUserManagementUri'] as String,
-      mongoDbUri: map['mongoDbUri'] as String,
-      ordsUri: map['ordsUri'] as String,
-      sqlDevWebUri: map['sqlDevWebUri'] as String,
+      apexUri: (map['apexUri'] as String).input(),
+      databaseTransformsUri: (map['databaseTransformsUri'] as String).input(),
+      graphStudioUri: (map['graphStudioUri'] as String).input(),
+      machineLearningNotebookUri: (map['machineLearningNotebookUri'] as String).input(),
+      machineLearningUserManagementUri: (map['machineLearningUserManagementUri'] as String).input(),
+      mongoDbUri: (map['mongoDbUri'] as String).input(),
+      ordsUri: (map['ordsUri'] as String).input(),
+      sqlDevWebUri: (map['sqlDevWebUri'] as String).input(),
     );
   }
 }

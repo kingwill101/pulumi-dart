@@ -36,25 +36,16 @@ class DocumentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Last update timestamp in RFC3339 format.
   DocumentState({
-    pulumi.Output<String>? collection,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? documentId,
-    pulumi.Output<String>? fields,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      collection = pulumi.Input.asOptionalInput<String>(collection),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      documentId = pulumi.Input.asOptionalInput<String>(documentId),
-      fields = pulumi.Input.asOptionalInput<String>(fields),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.collection,
+    this.createTime,
+    this.database,
+    this.documentId,
+    this.fields,
+    this.name,
+    this.path,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class DocumentState {
 
   factory DocumentState.fromMap(Map<String, dynamic> map) {
     return DocumentState(
-      collection: map['collection'] == null ? null : pulumi.Output.create<String>(map['collection'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      documentId: map['documentId'] == null ? null : pulumi.Output.create<String>(map['documentId'] as String),
-      fields: map['fields'] == null ? null : pulumi.Output.create<String>(map['fields'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
+      fields: map['fields'] == null ? null : (map['fields'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

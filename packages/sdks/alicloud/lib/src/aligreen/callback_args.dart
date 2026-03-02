@@ -25,17 +25,12 @@ class CallbackArgs {
   /// [callbackUrl] The detection result will be called back to the url.
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
   CallbackArgs({
-    required pulumi.Output<String> callbackName,
-    required pulumi.Output<List<String>> callbackSuggestions,
-    required pulumi.Output<List<String>> callbackTypes,
-    required pulumi.Output<String> callbackUrl,
-    pulumi.Output<int>? cryptType,
-  }) :
-      callbackName = pulumi.Input.asInput<String>(callbackName),
-      callbackSuggestions = pulumi.Input.asInput<List<String>>(callbackSuggestions),
-      callbackTypes = pulumi.Input.asInput<List<String>>(callbackTypes),
-      callbackUrl = pulumi.Input.asInput<String>(callbackUrl),
-      cryptType = pulumi.Input.asOptionalInput<int>(cryptType);
+    required this.callbackName,
+    required this.callbackSuggestions,
+    required this.callbackTypes,
+    required this.callbackUrl,
+    this.cryptType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CallbackArgs {
 
   factory CallbackArgs.fromMap(Map<String, dynamic> map) {
     return CallbackArgs(
-      callbackName: pulumi.Output.create<String>(map['callbackName'] as String),
-      callbackSuggestions: pulumi.Output.create<List<String>>((map['callbackSuggestions'] as List).cast<String>()),
-      callbackTypes: pulumi.Output.create<List<String>>((map['callbackTypes'] as List).cast<String>()),
-      callbackUrl: pulumi.Output.create<String>(map['callbackUrl'] as String),
-      cryptType: map['cryptType'] == null ? null : pulumi.Output.create<int>(map['cryptType'] as int),
+      callbackName: (map['callbackName'] as String).input(),
+      callbackSuggestions: ((map['callbackSuggestions'] as List).cast<String>()).input(),
+      callbackTypes: ((map['callbackTypes'] as List).cast<String>()).input(),
+      callbackUrl: (map['callbackUrl'] as String).input(),
+      cryptType: map['cryptType'] == null ? null : (map['cryptType'] as int).input(),
     );
   }
 }

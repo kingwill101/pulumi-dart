@@ -35,23 +35,15 @@ class ElasticVolumeArgs {
   /// [volumeName] The name of the ElasticVolume
   /// [zones] The availability zones.
   ElasticVolumeArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> poolName,
-    pulumi.Output<ElasticVolumeProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? volumeName,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      properties = pulumi.Input.asOptionalInput<ElasticVolumeProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    required this.accountName,
+    this.location,
+    required this.poolName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.volumeName,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ElasticVolumeArgs {
 
   factory ElasticVolumeArgs.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ElasticVolumeProperties>(ElasticVolumeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      properties: map['properties'] == null ? null : (ElasticVolumeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

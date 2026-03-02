@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// name and value of HTTP/S header to insert
 class FirewallPolicyHttpHeaderToInsert {
   /// Contains the name of the header
-  final String? headerName;
+  final pulumi.Input<String>? headerName;
   /// Contains the value of the header
-  final String? headerValue;
+  final pulumi.Input<String>? headerValue;
 
   /// Creates a new [FirewallPolicyHttpHeaderToInsert].
   /// [headerName] Contains the name of the header
@@ -25,8 +26,8 @@ class FirewallPolicyHttpHeaderToInsert {
 
   factory FirewallPolicyHttpHeaderToInsert.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyHttpHeaderToInsert(
-      headerName: map['headerName'] == null ? null : map['headerName'] as String,
-      headerValue: map['headerValue'] == null ? null : map['headerValue'] as String,
+      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
     );
   }
 }

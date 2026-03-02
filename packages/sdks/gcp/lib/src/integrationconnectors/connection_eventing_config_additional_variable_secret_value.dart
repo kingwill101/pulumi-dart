@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionEventingConfigAdditionalVariableSecretValue {
   /// Secret version of Secret Value for Config variable.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionEventingConfigAdditionalVariableSecretValue].
   /// [secretVersion] Secret version of Secret Value for Config variable.
@@ -19,7 +20,7 @@ class ConnectionEventingConfigAdditionalVariableSecretValue {
 
   factory ConnectionEventingConfigAdditionalVariableSecretValue.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigAdditionalVariableSecretValue(
-      secretVersion: map['secretVersion'] as String,
+      secretVersion: (map['secretVersion'] as String).input(),
     );
   }
 }

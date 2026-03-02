@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Client certificate definition.
 class ClientCertificateResponse {
   /// Certificate common name.
-  final String? commonName;
+  final pulumi.Input<String>? commonName;
   /// Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster.
-  final bool isAdmin;
+  final pulumi.Input<bool> isAdmin;
   /// Issuer thumbprint for the certificate. Only used together with CommonName.
-  final String? issuerThumbprint;
+  final pulumi.Input<String>? issuerThumbprint;
   /// Certificate thumbprint.
-  final String? thumbprint;
+  final pulumi.Input<String>? thumbprint;
 
   /// Creates a new [ClientCertificateResponse].
   /// [commonName] Certificate common name.
@@ -35,10 +36,10 @@ class ClientCertificateResponse {
 
   factory ClientCertificateResponse.fromMap(Map<String, dynamic> map) {
     return ClientCertificateResponse(
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
-      isAdmin: map['isAdmin'] as bool,
-      issuerThumbprint: map['issuerThumbprint'] == null ? null : map['issuerThumbprint'] as String,
-      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      isAdmin: (map['isAdmin'] as bool).input(),
+      issuerThumbprint: map['issuerThumbprint'] == null ? null : (map['issuerThumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class AppMonitorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AppMonitorArgs({
-    pulumi.Output<AppMonitorAppMonitorConfiguration>? appMonitorConfiguration,
-    pulumi.Output<AppMonitorCustomEvents>? customEvents,
-    pulumi.Output<bool>? cwLogEnabled,
-    pulumi.Output<String>? domain,
-    pulumi.Output<List<String>>? domainLists,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appMonitorConfiguration = pulumi.Input.asOptionalInput<AppMonitorAppMonitorConfiguration>(appMonitorConfiguration),
-      customEvents = pulumi.Input.asOptionalInput<AppMonitorCustomEvents>(customEvents),
-      cwLogEnabled = pulumi.Input.asOptionalInput<bool>(cwLogEnabled),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      domainLists = pulumi.Input.asOptionalInput<List<String>>(domainLists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.appMonitorConfiguration,
+    this.customEvents,
+    this.cwLogEnabled,
+    this.domain,
+    this.domainLists,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AppMonitorArgs {
 
   factory AppMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AppMonitorArgs(
-      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : pulumi.Output.create<AppMonitorAppMonitorConfiguration>(AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())),
-      customEvents: map['customEvents'] == null ? null : pulumi.Output.create<AppMonitorCustomEvents>(AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())),
-      cwLogEnabled: map['cwLogEnabled'] == null ? null : pulumi.Output.create<bool>(map['cwLogEnabled'] as bool),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      domainLists: map['domainLists'] == null ? null : pulumi.Output.create<List<String>>((map['domainLists'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : (AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customEvents: map['customEvents'] == null ? null : (AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())).input(),
+      cwLogEnabled: map['cwLogEnabled'] == null ? null : (map['cwLogEnabled'] as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainLists: map['domainLists'] == null ? null : ((map['domainLists'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

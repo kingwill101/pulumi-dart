@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact message filter for odata query.
 class EdifactMessageFilterResponse {
   /// The message filter type.
-  final String messageFilterType;
+  final pulumi.Input<String> messageFilterType;
 
   /// Creates a new [EdifactMessageFilterResponse].
   /// [messageFilterType] The message filter type.
@@ -20,7 +21,7 @@ class EdifactMessageFilterResponse {
 
   factory EdifactMessageFilterResponse.fromMap(Map<String, dynamic> map) {
     return EdifactMessageFilterResponse(
-      messageFilterType: map['messageFilterType'] as String,
+      messageFilterType: (map['messageFilterType'] as String).input(),
     );
   }
 }

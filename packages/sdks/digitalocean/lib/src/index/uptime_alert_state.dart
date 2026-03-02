@@ -29,21 +29,14 @@ class UptimeAlertState {
   /// [threshold] The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   /// [type] The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
   UptimeAlertState({
-    pulumi.Output<String>? checkId,
-    pulumi.Output<String>? comparison,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<UptimeAlertNotification>>? notifications,
-    pulumi.Output<String>? period,
-    pulumi.Output<int>? threshold,
-    pulumi.Output<String>? type,
-  }) :
-      checkId = pulumi.Input.asOptionalInput<String>(checkId),
-      comparison = pulumi.Input.asOptionalInput<String>(comparison),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<List<UptimeAlertNotification>>(notifications),
-      period = pulumi.Input.asOptionalInput<String>(period),
-      threshold = pulumi.Input.asOptionalInput<int>(threshold),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.checkId,
+    this.comparison,
+    this.name,
+    this.notifications,
+    this.period,
+    this.threshold,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class UptimeAlertState {
 
   factory UptimeAlertState.fromMap(Map<String, dynamic> map) {
     return UptimeAlertState(
-      checkId: map['checkId'] == null ? null : pulumi.Output.create<String>(map['checkId'] as String),
-      comparison: map['comparison'] == null ? null : pulumi.Output.create<String>(map['comparison'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<UptimeAlertNotification>>(pulumi.Input.decodeList<UptimeAlertNotification>(map['notifications'], (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>()))),
-      period: map['period'] == null ? null : pulumi.Output.create<String>(map['period'] as String),
-      threshold: map['threshold'] == null ? null : pulumi.Output.create<int>(map['threshold'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      checkId: map['checkId'] == null ? null : (map['checkId'] as String).input(),
+      comparison: map['comparison'] == null ? null : (map['comparison'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<UptimeAlertNotification>(map['notifications'], (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      period: map['period'] == null ? null : (map['period'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

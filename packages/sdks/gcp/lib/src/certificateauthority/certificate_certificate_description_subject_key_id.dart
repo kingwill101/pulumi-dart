@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificateDescriptionSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
-  final String? keyId;
+  final pulumi.Input<String>? keyId;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
@@ -19,7 +20,7 @@ class CertificateCertificateDescriptionSubjectKeyId {
 
   factory CertificateCertificateDescriptionSubjectKeyId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectKeyId(
-      keyId: map['keyId'] == null ? null : map['keyId'] as String,
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
     );
   }
 }

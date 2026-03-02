@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryChannelDeliveryChannelFilter {
   /// An array of effective resource types for the delivery channel.
   /// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
   /// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
-  final List<String>? resourceTypes;
+  final pulumi.Input<List<String>>? resourceTypes;
 
   /// Creates a new [DeliveryChannelDeliveryChannelFilter].
   /// [resourceTypes] An array of effective resource types for the delivery channel.
@@ -21,7 +22,7 @@ class DeliveryChannelDeliveryChannelFilter {
 
   factory DeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelDeliveryChannelFilter(
-      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

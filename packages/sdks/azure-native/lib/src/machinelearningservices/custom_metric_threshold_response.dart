@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitoring_threshold_response.dart';
 
 class CustomMetricThresholdResponse {
   /// [Required] The user-defined metric to calculate.
-  final String metric;
+  final pulumi.Input<String> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final MonitoringThresholdResponse? threshold;
+  final pulumi.Input<MonitoringThresholdResponse>? threshold;
 
   /// Creates a new [CustomMetricThresholdResponse].
   /// [metric] [Required] The user-defined metric to calculate.
@@ -19,14 +20,14 @@ class CustomMetricThresholdResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'metric': metric,
-      'threshold': ?threshold == null ? null : threshold!.toMap(),
+      'threshold': ?pulumi.Input.mapOptionalInputValue<MonitoringThresholdResponse, Map<String, dynamic>>(threshold, (value) => value.toMap()),
     };
   }
 
   factory CustomMetricThresholdResponse.fromMap(Map<String, dynamic> map) {
     return CustomMetricThresholdResponse(
-      metric: map['metric'] as String,
-      threshold: map['threshold'] == null ? null : MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>()),
+      metric: (map['metric'] as String).input(),
+      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

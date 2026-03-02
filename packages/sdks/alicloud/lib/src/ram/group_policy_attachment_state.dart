@@ -18,13 +18,10 @@ class GroupPolicyAttachmentState {
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.
   GroupPolicyAttachmentState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<String>? policyType,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType);
+    this.groupName,
+    this.policyName,
+    this.policyType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GroupPolicyAttachmentState {
 
   factory GroupPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
     );
   }
 }

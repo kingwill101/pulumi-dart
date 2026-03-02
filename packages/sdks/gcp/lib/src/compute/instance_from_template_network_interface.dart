@@ -7,42 +7,42 @@ import 'instance_from_template_network_interface_ipv6_access_config.dart';
 
 class InstanceFromTemplateNetworkInterface {
   /// Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
-  final List<InstanceFromTemplateNetworkInterfaceAccessConfig>? accessConfigs;
+  final pulumi.Input<List<InstanceFromTemplateNetworkInterfaceAccessConfig>>? accessConfigs;
   /// An array of alias IP ranges for this network interface.
-  final List<InstanceFromTemplateNetworkInterfaceAliasIpRange>? aliasIpRanges;
+  final pulumi.Input<List<InstanceFromTemplateNetworkInterfaceAliasIpRange>>? aliasIpRanges;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-  final String? igmpQuery;
+  final pulumi.Input<String>? igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
-  final int? internalIpv6PrefixLength;
+  final pulumi.Input<int>? internalIpv6PrefixLength;
   /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
-  final List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>? ipv6AccessConfigs;
+  final pulumi.Input<List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>>? ipv6AccessConfigs;
   /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-  final String? ipv6AccessType;
+  final pulumi.Input<String>? ipv6AccessType;
   /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-  final String? ipv6Address;
+  final pulumi.Input<String>? ipv6Address;
   /// MAC address assigned to this network interface.
-  final String? macAddress;
+  final pulumi.Input<String>? macAddress;
   /// A unique name for the resource, required by GCE.
   /// Changing this forces a new resource to be created.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The name or self_link of the network attached to this interface.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-  final String? networkAttachment;
+  final pulumi.Input<String>? networkAttachment;
   /// The private IP address assigned to the instance.
-  final String? networkIp;
+  final pulumi.Input<String>? networkIp;
   /// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
-  final String? nicType;
+  final pulumi.Input<String>? nicType;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-  final int? queueCount;
+  final pulumi.Input<int>? queueCount;
   /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
-  final String? securityPolicy;
+  final pulumi.Input<String>? securityPolicy;
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
-  final String? stackType;
+  final pulumi.Input<String>? stackType;
   /// The name or self_link of the subnetwork attached to this interface.
-  final String? subnetwork;
+  final pulumi.Input<String>? subnetwork;
   /// The project in which the subnetwork belongs.
-  final String? subnetworkProject;
+  final pulumi.Input<String>? subnetworkProject;
 
   /// Creates a new [InstanceFromTemplateNetworkInterface].
   /// [accessConfigs] Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
@@ -86,11 +86,11 @@ class InstanceFromTemplateNetworkInterface {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessConfigs': ?accessConfigs == null ? null : pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(accessConfigs!, (value) => value.toMap()),
-      'aliasIpRanges': ?aliasIpRanges == null ? null : pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(aliasIpRanges!, (value) => value.toMap()),
+      'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromTemplateNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aliasIpRanges': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromTemplateNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'igmpQuery': ?igmpQuery,
       'internalIpv6PrefixLength': ?internalIpv6PrefixLength,
-      'ipv6AccessConfigs': ?ipv6AccessConfigs == null ? null : pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(ipv6AccessConfigs!, (value) => value.toMap()),
+      'ipv6AccessConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipv6AccessType': ?ipv6AccessType,
       'ipv6Address': ?ipv6Address,
       'macAddress': ?macAddress,
@@ -109,24 +109,24 @@ class InstanceFromTemplateNetworkInterface {
 
   factory InstanceFromTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null ? null : pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => InstanceFromTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      aliasIpRanges: map['aliasIpRanges'] == null ? null : pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => InstanceFromTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>())),
-      igmpQuery: map['igmpQuery'] == null ? null : map['igmpQuery'] as String,
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : map['internalIpv6PrefixLength'] as int,
-      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => InstanceFromTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : map['ipv6AccessType'] as String,
-      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
-      macAddress: map['macAddress'] == null ? null : map['macAddress'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      networkAttachment: map['networkAttachment'] == null ? null : map['networkAttachment'] as String,
-      networkIp: map['networkIp'] == null ? null : map['networkIp'] as String,
-      nicType: map['nicType'] == null ? null : map['nicType'] as String,
-      queueCount: map['queueCount'] == null ? null : map['queueCount'] as int,
-      securityPolicy: map['securityPolicy'] == null ? null : map['securityPolicy'] as String,
-      stackType: map['stackType'] == null ? null : map['stackType'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
-      subnetworkProject: map['subnetworkProject'] == null ? null : map['subnetworkProject'] as String,
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => InstanceFromTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => InstanceFromTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      igmpQuery: map['igmpQuery'] == null ? null : (map['igmpQuery'] as String).input(),
+      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength'] as int).input(),
+      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => InstanceFromTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
+      networkIp: map['networkIp'] == null ? null : (map['networkIp'] as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
+      queueCount: map['queueCount'] == null ? null : (map['queueCount'] as int).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      subnetworkProject: map['subnetworkProject'] == null ? null : (map['subnetworkProject'] as String).input(),
     );
   }
 }

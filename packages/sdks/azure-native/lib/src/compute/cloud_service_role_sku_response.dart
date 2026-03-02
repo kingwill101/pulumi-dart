@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the cloud service role sku.
 class CloudServiceRoleSkuResponse {
   /// Specifies the number of role instances in the cloud service.
-  final double? capacity;
+  final pulumi.Input<double>? capacity;
   /// The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [CloudServiceRoleSkuResponse].
   /// [capacity] Specifies the number of role instances in the cloud service.
@@ -30,9 +31,9 @@ class CloudServiceRoleSkuResponse {
 
   factory CloudServiceRoleSkuResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceRoleSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class K8sSlbAttachmentSlbConfigPortMappingServicePort {
   /// The port of k8s service, values should be within range [1, 65535].
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol of k8s service, values can be 'TCP' or 'UDP'.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The port of k8s pod, values should be within range [1, 65535].
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
 
   /// Creates a new [K8sSlbAttachmentSlbConfigPortMappingServicePort].
   /// [port] The port of k8s service, values should be within range [1, 65535].
@@ -29,9 +30,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort {
 
   factory K8sSlbAttachmentSlbConfigPortMappingServicePort.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentSlbConfigPortMappingServicePort(
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      targetPort: map['targetPort'] as int,
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      targetPort: (map['targetPort'] as int).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class InstanceConnectEndpointArgs {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   InstanceConnectEndpointArgs({
-    pulumi.Output<String>? ipAddressType,
-    pulumi.Output<bool>? preserveClientIp,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    required pulumi.Output<String> subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<InstanceConnectEndpointTimeouts>? timeouts,
-  }) :
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      preserveClientIp = pulumi.Input.asOptionalInput<bool>(preserveClientIp),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<InstanceConnectEndpointTimeouts>(timeouts);
+    this.ipAddressType,
+    this.preserveClientIp,
+    this.region,
+    this.securityGroupIds,
+    required this.subnetId,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class InstanceConnectEndpointArgs {
 
   factory InstanceConnectEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConnectEndpointArgs(
-      ipAddressType: map['ipAddressType'] == null ? null : pulumi.Output.create<String>(map['ipAddressType'] as String),
-      preserveClientIp: map['preserveClientIp'] == null ? null : pulumi.Output.create<bool>(map['preserveClientIp'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InstanceConnectEndpointTimeouts>(InstanceConnectEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      preserveClientIp: map['preserveClientIp'] == null ? null : (map['preserveClientIp'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (InstanceConnectEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

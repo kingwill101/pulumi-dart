@@ -25,19 +25,13 @@ class SnapshotState {
   /// [resourceGroupName] The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   /// [volumeName] The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   SnapshotState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? poolName,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? volumeName,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      volumeName = pulumi.Input.asOptionalInput<String>(volumeName);
+    this.accountName,
+    this.location,
+    this.name,
+    this.poolName,
+    this.resourceGroupName,
+    this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      volumeName: map['volumeName'] == null ? null : pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

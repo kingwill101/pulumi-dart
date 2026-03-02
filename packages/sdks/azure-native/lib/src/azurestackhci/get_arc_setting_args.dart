@@ -19,13 +19,10 @@ class GetArcSettingArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetArcSettingArgs({
-    required pulumi.Output<String> arcSettingName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      arcSettingName = pulumi.Input.asInput<String>(arcSettingName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.arcSettingName,
+    required this.clusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetArcSettingArgs {
 
   factory GetArcSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetArcSettingArgs(
-      arcSettingName: pulumi.Output.create<String>(map['arcSettingName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      arcSettingName: (map['arcSettingName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

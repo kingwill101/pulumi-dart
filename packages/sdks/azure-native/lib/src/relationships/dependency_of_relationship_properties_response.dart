@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'relationship_metadata_response.dart';
 import 'relationship_origin_information_response.dart';
 
 /// dependencyOf relationship properties.
 class DependencyOfRelationshipPropertiesResponse {
   /// Metadata about the relationship.
-  final RelationshipMetadataResponse metadata;
+  final pulumi.Input<RelationshipMetadataResponse> metadata;
   /// Information about the origin of the relationship.
-  final RelationshipOriginInformationResponse originInformation;
+  final pulumi.Input<RelationshipOriginInformationResponse> originInformation;
   /// The provisioning state of the relationship.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The relationship source resource id.
-  final String sourceId;
+  final pulumi.Input<String> sourceId;
   /// The relationship target resource id.
-  final String targetId;
+  final pulumi.Input<String> targetId;
   /// The relationship target tenant id.
-  final String? targetTenant;
+  final pulumi.Input<String>? targetTenant;
 
   /// Creates a new [DependencyOfRelationshipPropertiesResponse].
   /// [metadata] Metadata about the relationship.
@@ -36,8 +37,8 @@ class DependencyOfRelationshipPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': metadata.toMap(),
-      'originInformation': originInformation.toMap(),
+      'metadata': pulumi.Input.mapInputValue<RelationshipMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'originInformation': pulumi.Input.mapInputValue<RelationshipOriginInformationResponse, Map<String, dynamic>>(originInformation, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'sourceId': sourceId,
       'targetId': targetId,
@@ -47,12 +48,12 @@ class DependencyOfRelationshipPropertiesResponse {
 
   factory DependencyOfRelationshipPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipPropertiesResponse(
-      metadata: RelationshipMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      originInformation: RelationshipOriginInformationResponse.fromMap((map['originInformation'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      sourceId: map['sourceId'] as String,
-      targetId: map['targetId'] as String,
-      targetTenant: map['targetTenant'] == null ? null : map['targetTenant'] as String,
+      metadata: (RelationshipMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      originInformation: (RelationshipOriginInformationResponse.fromMap((map['originInformation'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
-  final int sizeInGib;
+  final pulumi.Input<int> sizeInGib;
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage].
   /// [sizeInGib] Required.
@@ -18,7 +19,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage(
-      sizeInGib: map['sizeInGib'] as int,
+      sizeInGib: (map['sizeInGib'] as int).input(),
     );
   }
 }

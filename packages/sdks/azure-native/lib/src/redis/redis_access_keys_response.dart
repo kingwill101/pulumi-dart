@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Redis cache access keys.
 class RedisAccessKeysResponse {
   /// The current primary key that clients can use to authenticate with Redis cache.
-  final String primaryKey;
+  final pulumi.Input<String> primaryKey;
   /// The current secondary key that clients can use to authenticate with Redis cache.
-  final String secondaryKey;
+  final pulumi.Input<String> secondaryKey;
 
   /// Creates a new [RedisAccessKeysResponse].
   /// [primaryKey] The current primary key that clients can use to authenticate with Redis cache.
@@ -25,8 +26,8 @@ class RedisAccessKeysResponse {
 
   factory RedisAccessKeysResponse.fromMap(Map<String, dynamic> map) {
     return RedisAccessKeysResponse(
-      primaryKey: map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] as String,
+      primaryKey: (map['primaryKey'] as String).input(),
+      secondaryKey: (map['secondaryKey'] as String).input(),
     );
   }
 }

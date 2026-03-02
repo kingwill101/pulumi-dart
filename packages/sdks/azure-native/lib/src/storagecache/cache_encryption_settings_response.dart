@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_vault_key_reference_response.dart';
 
 /// Cache encryption settings.
 class CacheEncryptionSettingsResponse {
   /// Specifies the location of the key encryption key in key vault.
-  final KeyVaultKeyReferenceResponse? keyEncryptionKey;
+  final pulumi.Input<KeyVaultKeyReferenceResponse>? keyEncryptionKey;
   /// Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
-  final bool? rotationToLatestKeyVersionEnabled;
+  final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [CacheEncryptionSettingsResponse].
   /// [keyEncryptionKey] Specifies the location of the key encryption key in key vault.
@@ -19,15 +20,15 @@ class CacheEncryptionSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyEncryptionKey': ?keyEncryptionKey == null ? null : keyEncryptionKey!.toMap(),
+      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultKeyReferenceResponse, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
       'rotationToLatestKeyVersionEnabled': ?rotationToLatestKeyVersionEnabled,
     };
   }
 
   factory CacheEncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheEncryptionSettingsResponse(
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>()),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : map['rotationToLatestKeyVersionEnabled'] as bool,
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
     );
   }
 }

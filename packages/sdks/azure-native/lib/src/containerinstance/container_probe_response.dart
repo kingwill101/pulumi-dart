@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_exec_response.dart';
 import 'container_http_get_response.dart';
 
 /// The container probe, for liveness or readiness
 class ContainerProbeResponse {
   /// The execution command to probe
-  final ContainerExecResponse? exec;
+  final pulumi.Input<ContainerExecResponse>? exec;
   /// The failure threshold.
-  final int? failureThreshold;
+  final pulumi.Input<int>? failureThreshold;
   /// The Http Get settings to probe
-  final ContainerHttpGetResponse? httpGet;
+  final pulumi.Input<ContainerHttpGetResponse>? httpGet;
   /// The initial delay seconds.
-  final int? initialDelaySeconds;
+  final pulumi.Input<int>? initialDelaySeconds;
   /// The period seconds.
-  final int? periodSeconds;
+  final pulumi.Input<int>? periodSeconds;
   /// The success threshold.
-  final int? successThreshold;
+  final pulumi.Input<int>? successThreshold;
   /// The timeout seconds.
-  final int? timeoutSeconds;
+  final pulumi.Input<int>? timeoutSeconds;
 
   /// Creates a new [ContainerProbeResponse].
   /// [exec] The execution command to probe
@@ -40,9 +41,9 @@ class ContainerProbeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec': ?exec == null ? null : exec!.toMap(),
+      'exec': ?pulumi.Input.mapOptionalInputValue<ContainerExecResponse, Map<String, dynamic>>(exec, (value) => value.toMap()),
       'failureThreshold': ?failureThreshold,
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<ContainerHttpGetResponse, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
       'initialDelaySeconds': ?initialDelaySeconds,
       'periodSeconds': ?periodSeconds,
       'successThreshold': ?successThreshold,
@@ -52,13 +53,13 @@ class ContainerProbeResponse {
 
   factory ContainerProbeResponse.fromMap(Map<String, dynamic> map) {
     return ContainerProbeResponse(
-      exec: map['exec'] == null ? null : ContainerExecResponse.fromMap((map['exec'] as Map).cast<String, dynamic>()),
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
-      httpGet: map['httpGet'] == null ? null : ContainerHttpGetResponse.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : map['initialDelaySeconds'] as int,
-      periodSeconds: map['periodSeconds'] == null ? null : map['periodSeconds'] as int,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
+      exec: map['exec'] == null ? null : (ContainerExecResponse.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      httpGet: map['httpGet'] == null ? null : (ContainerHttpGetResponse.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
     );
   }
 }

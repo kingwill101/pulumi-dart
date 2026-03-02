@@ -23,13 +23,10 @@ class GetKeyHandlesArgs {
   /// [project] The project in which the resource belongs. If it
   /// [resourceTypeSelector] The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   GetKeyHandlesArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resourceTypeSelector,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceTypeSelector = pulumi.Input.asInput<String>(resourceTypeSelector);
+    required this.location,
+    this.project,
+    required this.resourceTypeSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetKeyHandlesArgs {
 
   factory GetKeyHandlesArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyHandlesArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceTypeSelector: pulumi.Output.create<String>(map['resourceTypeSelector'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceTypeSelector: (map['resourceTypeSelector'] as String).input(),
     );
   }
 }

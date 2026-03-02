@@ -7,17 +7,17 @@ import 'metric_status.dart';
 /// HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
 class HorizontalPodAutoscalerStatusAutoscalingV2 {
   /// conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
-  final List<HorizontalPodAutoscalerCondition>? conditions;
+  final pulumi.Input<List<HorizontalPodAutoscalerCondition>>? conditions;
   /// currentMetrics is the last read state of the metrics used by this autoscaler.
-  final List<MetricStatus>? currentMetrics;
+  final pulumi.Input<List<MetricStatus>>? currentMetrics;
   /// currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
-  final int? currentReplicas;
+  final pulumi.Input<int>? currentReplicas;
   /// desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
-  final int desiredReplicas;
+  final pulumi.Input<int> desiredReplicas;
   /// lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
-  final String? lastScaleTime;
+  final pulumi.Input<String>? lastScaleTime;
   /// observedGeneration is the most recent generation observed by this autoscaler.
-  final int? observedGeneration;
+  final pulumi.Input<int>? observedGeneration;
 
   /// Creates a new [HorizontalPodAutoscalerStatusAutoscalingV2].
   /// [conditions] conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
@@ -37,8 +37,8 @@ class HorizontalPodAutoscalerStatusAutoscalingV2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<HorizontalPodAutoscalerCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
-      'currentMetrics': ?currentMetrics == null ? null : pulumi.Input.encodeList<MetricStatus, Map<String, dynamic>>(currentMetrics!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<HorizontalPodAutoscalerCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<HorizontalPodAutoscalerCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'currentMetrics': ?pulumi.Input.mapOptionalInputValue<List<MetricStatus>, List<Map<String, dynamic>>>(currentMetrics, (value) => pulumi.Input.encodeList<MetricStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'currentReplicas': ?currentReplicas,
       'desiredReplicas': desiredReplicas,
       'lastScaleTime': ?lastScaleTime,
@@ -48,12 +48,12 @@ class HorizontalPodAutoscalerStatusAutoscalingV2 {
 
   factory HorizontalPodAutoscalerStatusAutoscalingV2.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerStatusAutoscalingV2(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<HorizontalPodAutoscalerCondition>(map['conditions'], (value) => HorizontalPodAutoscalerCondition.fromMap((value as Map).cast<String, dynamic>())),
-      currentMetrics: map['currentMetrics'] == null ? null : pulumi.Input.decodeList<MetricStatus>(map['currentMetrics'], (value) => MetricStatus.fromMap((value as Map).cast<String, dynamic>())),
-      currentReplicas: map['currentReplicas'] == null ? null : map['currentReplicas'] as int,
-      desiredReplicas: map['desiredReplicas'] as int,
-      lastScaleTime: map['lastScaleTime'] == null ? null : map['lastScaleTime'] as String,
-      observedGeneration: map['observedGeneration'] == null ? null : map['observedGeneration'] as int,
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<HorizontalPodAutoscalerCondition>(map['conditions'], (value) => HorizontalPodAutoscalerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentMetrics: map['currentMetrics'] == null ? null : (pulumi.Input.decodeList<MetricStatus>(map['currentMetrics'], (value) => MetricStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas'] as int).input(),
+      desiredReplicas: (map['desiredReplicas'] as int).input(),
+      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime'] as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
     );
   }
 }

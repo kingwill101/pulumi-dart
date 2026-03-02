@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServiceAccountSubject holds detailed information for service-account-kind subject.
 class ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1 {
   /// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
-  final String name;
+  final pulumi.Input<String> name;
   /// `namespace` is the namespace of matching ServiceAccount objects. Required.
-  final String namespace;
+  final pulumi.Input<String> namespace;
 
   /// Creates a new [ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
@@ -25,8 +26,8 @@ class ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1 {
 
   factory ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1(
-      name: map['name'] as String,
-      namespace: map['namespace'] as String,
+      name: (map['name'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
     );
   }
 }

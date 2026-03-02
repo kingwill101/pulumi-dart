@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PrivateDnsZoneConfig resource.
 class PrivateDnsZoneConfig {
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource id of the private dns zone.
-  final String? privateDnsZoneId;
+  final pulumi.Input<String>? privateDnsZoneId;
 
   /// Creates a new [PrivateDnsZoneConfig].
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -25,8 +26,8 @@ class PrivateDnsZoneConfig {
 
   factory PrivateDnsZoneConfig.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneConfig(
-      name: map['name'] == null ? null : map['name'] as String,
-      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : map['privateDnsZoneId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId'] as String).input(),
     );
   }
 }

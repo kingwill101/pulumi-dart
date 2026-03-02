@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoRoleDefinitionPrivilegeResource {
   /// The name of the Mongo DB Collection that the Role Definition is applied.
-  final String? collectionName;
+  final pulumi.Input<String>? collectionName;
   /// The name of the Mongo DB that the Role Definition is applied.
-  final String? dbName;
+  final pulumi.Input<String>? dbName;
 
   /// Creates a new [MongoRoleDefinitionPrivilegeResource].
   /// [collectionName] The name of the Mongo DB Collection that the Role Definition is applied.
@@ -24,8 +25,8 @@ class MongoRoleDefinitionPrivilegeResource {
 
   factory MongoRoleDefinitionPrivilegeResource.fromMap(Map<String, dynamic> map) {
     return MongoRoleDefinitionPrivilegeResource(
-      collectionName: map['collectionName'] == null ? null : map['collectionName'] as String,
-      dbName: map['dbName'] == null ? null : map['dbName'] as String,
+      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
     );
   }
 }

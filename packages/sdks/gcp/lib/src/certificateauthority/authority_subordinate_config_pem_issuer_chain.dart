@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthoritySubordinateConfigPemIssuerChain {
   /// Expected to be in leaf-to-root order according to RFC 5246.
-  final List<String>? pemCertificates;
+  final pulumi.Input<List<String>>? pemCertificates;
 
   /// Creates a new [AuthoritySubordinateConfigPemIssuerChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
@@ -19,7 +20,7 @@ class AuthoritySubordinateConfigPemIssuerChain {
 
   factory AuthoritySubordinateConfigPemIssuerChain.fromMap(Map<String, dynamic> map) {
     return AuthoritySubordinateConfigPemIssuerChain(
-      pemCertificates: map['pemCertificates'] == null ? null : (map['pemCertificates'] as List).cast<String>(),
+      pemCertificates: map['pemCertificates'] == null ? null : ((map['pemCertificates'] as List).cast<String>()).input(),
     );
   }
 }

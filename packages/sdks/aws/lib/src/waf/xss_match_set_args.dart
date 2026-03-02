@@ -17,11 +17,9 @@ class XssMatchSetArgs {
   /// [name] The name or description of the SizeConstraintSet.
   /// [xssMatchTuples] The parts of web requests that you want to inspect for cross-site scripting attacks.
   XssMatchSetArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<XssMatchSetXssMatchTuple>>? xssMatchTuples,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      xssMatchTuples = pulumi.Input.asOptionalInput<List<XssMatchSetXssMatchTuple>>(xssMatchTuples);
+    this.name,
+    this.xssMatchTuples,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class XssMatchSetArgs {
 
   factory XssMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return XssMatchSetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      xssMatchTuples: map['xssMatchTuples'] == null ? null : pulumi.Output.create<List<XssMatchSetXssMatchTuple>>(pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples'], (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      xssMatchTuples: map['xssMatchTuples'] == null ? null : (pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples'], (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

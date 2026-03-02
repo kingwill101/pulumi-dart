@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceEventRuleEndpoint {
   /// Message receiving terminal endpoint type
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// Message Receiving Terminal Endpoint
-  final String? endpointValue;
+  final pulumi.Input<String>? endpointValue;
 
   /// Creates a new [ServiceEventRuleEndpoint].
   /// [endpointType] Message receiving terminal endpoint type
@@ -24,8 +25,8 @@ class ServiceEventRuleEndpoint {
 
   factory ServiceEventRuleEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceEventRuleEndpoint(
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      endpointValue: map['endpointValue'] == null ? null : map['endpointValue'] as String,
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointValue: map['endpointValue'] == null ? null : (map['endpointValue'] as String).input(),
     );
   }
 }

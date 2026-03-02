@@ -58,35 +58,21 @@ class VpcEndpointArgs {
   /// [vpcId] The ID of the VPC to which the endpoint belongs.
   /// [zonePrivateIpAddressCount] The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
   VpcEndpointArgs({
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? endpointDescription,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? policyDocument,
-    pulumi.Output<bool>? protectedEnabled,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcEndpointName,
-    required pulumi.Output<String> vpcId,
-    pulumi.Output<int>? zonePrivateIpAddressCount,
-  }) :
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endpointDescription = pulumi.Input.asOptionalInput<String>(endpointDescription),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      policyDocument = pulumi.Input.asOptionalInput<String>(policyDocument),
-      protectedEnabled = pulumi.Input.asOptionalInput<bool>(protectedEnabled),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcEndpointName = pulumi.Input.asOptionalInput<String>(vpcEndpointName),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      zonePrivateIpAddressCount = pulumi.Input.asOptionalInput<int>(zonePrivateIpAddressCount);
+    this.addressIpVersion,
+    this.dryRun,
+    this.endpointDescription,
+    this.endpointType,
+    this.policyDocument,
+    this.protectedEnabled,
+    this.resourceGroupId,
+    this.securityGroupIds,
+    this.serviceId,
+    this.serviceName,
+    this.tags,
+    this.vpcEndpointName,
+    required this.vpcId,
+    this.zonePrivateIpAddressCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,20 +95,20 @@ class VpcEndpointArgs {
 
   factory VpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endpointDescription: map['endpointDescription'] == null ? null : pulumi.Output.create<String>(map['endpointDescription'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      policyDocument: map['policyDocument'] == null ? null : pulumi.Output.create<String>(map['policyDocument'] as String),
-      protectedEnabled: map['protectedEnabled'] == null ? null : pulumi.Output.create<bool>(map['protectedEnabled'] as bool),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcEndpointName: map['vpcEndpointName'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointName'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      zonePrivateIpAddressCount: map['zonePrivateIpAddressCount'] == null ? null : pulumi.Output.create<int>(map['zonePrivateIpAddressCount'] as int),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endpointDescription: map['endpointDescription'] == null ? null : (map['endpointDescription'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
+      protectedEnabled: map['protectedEnabled'] == null ? null : (map['protectedEnabled'] as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcEndpointName: map['vpcEndpointName'] == null ? null : (map['vpcEndpointName'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      zonePrivateIpAddressCount: map['zonePrivateIpAddressCount'] == null ? null : (map['zonePrivateIpAddressCount'] as int).input(),
     );
   }
 }

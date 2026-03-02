@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings {
   /// The height of the FEC protection matrix.
-  final int? columnDepth;
+  final pulumi.Input<int>? columnDepth;
   /// Enables column only or column and row based FEC.
-  final String? includeFec;
+  final pulumi.Input<String>? includeFec;
   /// The width of the FEC protection matrix.
-  final int? rowLength;
+  final pulumi.Input<int>? rowLength;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings].
   /// [columnDepth] The height of the FEC protection matrix.
@@ -29,9 +30,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecO
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings(
-      columnDepth: map['columnDepth'] == null ? null : map['columnDepth'] as int,
-      includeFec: map['includeFec'] == null ? null : map['includeFec'] as String,
-      rowLength: map['rowLength'] == null ? null : map['rowLength'] as int,
+      columnDepth: map['columnDepth'] == null ? null : (map['columnDepth'] as int).input(),
+      includeFec: map['includeFec'] == null ? null : (map['includeFec'] as String).input(),
+      rowLength: map['rowLength'] == null ? null : (map['rowLength'] as int).input(),
     );
   }
 }

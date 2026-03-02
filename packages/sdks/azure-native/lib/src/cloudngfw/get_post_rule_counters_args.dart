@@ -18,13 +18,10 @@ class GetPostRuleCountersArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Post Rule priority
   GetPostRuleCountersArgs({
-    pulumi.Output<String>? firewallName,
-    required pulumi.Output<String> globalRulestackName,
-    required pulumi.Output<String> priority,
-  }) :
-      firewallName = pulumi.Input.asOptionalInput<String>(firewallName),
-      globalRulestackName = pulumi.Input.asInput<String>(globalRulestackName),
-      priority = pulumi.Input.asInput<String>(priority);
+    this.firewallName,
+    required this.globalRulestackName,
+    required this.priority,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetPostRuleCountersArgs {
 
   factory GetPostRuleCountersArgs.fromMap(Map<String, dynamic> map) {
     return GetPostRuleCountersArgs(
-      firewallName: map['firewallName'] == null ? null : pulumi.Output.create<String>(map['firewallName'] as String),
-      globalRulestackName: pulumi.Output.create<String>(map['globalRulestackName'] as String),
-      priority: pulumi.Output.create<String>(map['priority'] as String),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
+      globalRulestackName: (map['globalRulestackName'] as String).input(),
+      priority: (map['priority'] as String).input(),
     );
   }
 }

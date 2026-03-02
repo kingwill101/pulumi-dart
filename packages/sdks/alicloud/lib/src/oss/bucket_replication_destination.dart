@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketReplicationDestination {
   /// The destination bucket to which the data is replicated.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The region in which the destination bucket is located.
-  final String location;
+  final pulumi.Input<String> location;
   /// The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
   ///
   /// `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
-  final String? transferType;
+  final pulumi.Input<String>? transferType;
 
   /// Creates a new [BucketReplicationDestination].
   /// [bucket] The destination bucket to which the data is replicated.
@@ -31,9 +32,9 @@ class BucketReplicationDestination {
 
   factory BucketReplicationDestination.fromMap(Map<String, dynamic> map) {
     return BucketReplicationDestination(
-      bucket: map['bucket'] as String,
-      location: map['location'] as String,
-      transferType: map['transferType'] == null ? null : map['transferType'] as String,
+      bucket: (map['bucket'] as String).input(),
+      location: (map['location'] as String).input(),
+      transferType: map['transferType'] == null ? null : (map['transferType'] as String).input(),
     );
   }
 }

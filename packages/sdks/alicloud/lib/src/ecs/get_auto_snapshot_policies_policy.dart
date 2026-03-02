@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutoSnapshotPoliciesPolicy {
   /// The ID of the Auto Snapshot Policy.
-  final String autoSnapshotPolicyId;
+  final pulumi.Input<String> autoSnapshotPolicyId;
   /// The retention period of the snapshot copied across regions.
-  final int copiedSnapshotsRetentionDays;
+  final pulumi.Input<int> copiedSnapshotsRetentionDays;
   /// The number of disks to which the automatic snapshot policy is applied.
-  final int diskNums;
+  final pulumi.Input<int> diskNums;
   /// Specifies whether to enable the system to automatically copy snapshots across regions.
-  final bool enableCrossRegionCopy;
+  final pulumi.Input<bool> enableCrossRegionCopy;
   /// The ID of the Auto Snapshot Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The snapshot policy name..
-  final String name;
+  final pulumi.Input<String> name;
   /// The automatic snapshot repetition dates.
-  final List<String> repeatWeekdays;
+  final pulumi.Input<List<String>> repeatWeekdays;
   /// The snapshot retention time, and the unit of measurement is day.
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// The status of Auto Snapshot Policy.
-  final String status;
+  final pulumi.Input<String> status;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The destination region to which the snapshot is copied.
-  final List<String> targetCopyRegions;
+  final pulumi.Input<List<String>> targetCopyRegions;
   /// The automatic snapshot creation schedule, and the unit of measurement is hour.
-  final List<String> timePoints;
+  final pulumi.Input<List<String>> timePoints;
   /// The number of extended volumes on which this policy is enabled.
-  final int volumeNums;
+  final pulumi.Input<int> volumeNums;
 
   /// Creates a new [GetAutoSnapshotPoliciesPolicy].
   /// [autoSnapshotPolicyId] The ID of the Auto Snapshot Policy.
@@ -79,19 +80,19 @@ class GetAutoSnapshotPoliciesPolicy {
 
   factory GetAutoSnapshotPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetAutoSnapshotPoliciesPolicy(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] as String,
-      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] as int,
-      diskNums: map['diskNums'] as int,
-      enableCrossRegionCopy: map['enableCrossRegionCopy'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      repeatWeekdays: (map['repeatWeekdays'] as List).cast<String>(),
-      retentionDays: map['retentionDays'] as int,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      targetCopyRegions: (map['targetCopyRegions'] as List).cast<String>(),
-      timePoints: (map['timePoints'] as List).cast<String>(),
-      volumeNums: map['volumeNums'] as int,
+      autoSnapshotPolicyId: (map['autoSnapshotPolicyId'] as String).input(),
+      copiedSnapshotsRetentionDays: (map['copiedSnapshotsRetentionDays'] as int).input(),
+      diskNums: (map['diskNums'] as int).input(),
+      enableCrossRegionCopy: (map['enableCrossRegionCopy'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      targetCopyRegions: ((map['targetCopyRegions'] as List).cast<String>()).input(),
+      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
+      volumeNums: (map['volumeNums'] as int).input(),
     );
   }
 }

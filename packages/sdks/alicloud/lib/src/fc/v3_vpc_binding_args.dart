@@ -16,11 +16,9 @@ class V3VpcBindingArgs {
   /// [functionName] Function Name
   /// [vpcId] VPC instance ID
   V3VpcBindingArgs({
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? vpcId,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    required this.functionName,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class V3VpcBindingArgs {
 
   factory V3VpcBindingArgs.fromMap(Map<String, dynamic> map) {
     return V3VpcBindingArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      functionName: (map['functionName'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

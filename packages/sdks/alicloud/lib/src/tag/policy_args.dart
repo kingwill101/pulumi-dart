@@ -22,15 +22,11 @@ class PolicyArgs {
   /// [policyName] The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
   /// [userType] The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
   PolicyArgs({
-    required pulumi.Output<String> policyContent,
-    pulumi.Output<String>? policyDesc,
-    required pulumi.Output<String> policyName,
-    pulumi.Output<String>? userType,
-  }) :
-      policyContent = pulumi.Input.asInput<String>(policyContent),
-      policyDesc = pulumi.Input.asOptionalInput<String>(policyDesc),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      userType = pulumi.Input.asOptionalInput<String>(userType);
+    required this.policyContent,
+    this.policyDesc,
+    required this.policyName,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      policyContent: pulumi.Output.create<String>(map['policyContent'] as String),
-      policyDesc: map['policyDesc'] == null ? null : pulumi.Output.create<String>(map['policyDesc'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+      policyContent: (map['policyContent'] as String).input(),
+      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
     );
   }
 }

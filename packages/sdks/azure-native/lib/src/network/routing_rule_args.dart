@@ -36,23 +36,15 @@ class RoutingRuleArgs {
   /// [ruleCollectionName] The name of the network manager routing Configuration rule collection.
   /// [ruleName] The name of the rule.
   RoutingRuleArgs({
-    required pulumi.Output<String> configurationName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<RoutingRuleRouteDestination> destination,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<RoutingRuleNextHop> nextHop,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionName,
-    pulumi.Output<String>? ruleName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<RoutingRuleRouteDestination>(destination),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      nextHop = pulumi.Input.asInput<RoutingRuleNextHop>(nextHop),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asInput<String>(ruleCollectionName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName);
+    required this.configurationName,
+    this.description,
+    required this.destination,
+    required this.networkManagerName,
+    required this.nextHop,
+    required this.resourceGroupName,
+    required this.ruleCollectionName,
+    this.ruleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class RoutingRuleArgs {
 
   factory RoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return RoutingRuleArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<RoutingRuleRouteDestination>(RoutingRuleRouteDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      nextHop: pulumi.Output.create<RoutingRuleNextHop>(RoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: pulumi.Output.create<String>(map['ruleCollectionName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (RoutingRuleRouteDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      nextHop: (RoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
     );
   }
 }

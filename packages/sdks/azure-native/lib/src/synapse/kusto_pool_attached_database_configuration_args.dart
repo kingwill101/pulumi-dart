@@ -38,25 +38,16 @@ class KustoPoolAttachedDatabaseConfigurationArgs {
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [workspaceName] The name of the workspace.
   KustoPoolAttachedDatabaseConfigurationArgs({
-    pulumi.Output<String>? attachedDatabaseConfigurationName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> defaultPrincipalsModificationKind,
-    required pulumi.Output<String> kustoPoolName,
-    required pulumi.Output<String> kustoPoolResourceId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<TableLevelSharingProperties>? tableLevelSharingProperties,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      attachedDatabaseConfigurationName = pulumi.Input.asOptionalInput<String>(attachedDatabaseConfigurationName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      defaultPrincipalsModificationKind = pulumi.Input.asInput<String>(defaultPrincipalsModificationKind),
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      kustoPoolResourceId = pulumi.Input.asInput<String>(kustoPoolResourceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tableLevelSharingProperties = pulumi.Input.asOptionalInput<TableLevelSharingProperties>(tableLevelSharingProperties),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.attachedDatabaseConfigurationName,
+    required this.databaseName,
+    required this.defaultPrincipalsModificationKind,
+    required this.kustoPoolName,
+    required this.kustoPoolResourceId,
+    this.location,
+    required this.resourceGroupName,
+    this.tableLevelSharingProperties,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class KustoPoolAttachedDatabaseConfigurationArgs {
 
   factory KustoPoolAttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return KustoPoolAttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : pulumi.Output.create<String>(map['attachedDatabaseConfigurationName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      defaultPrincipalsModificationKind: pulumi.Output.create<String>(map['defaultPrincipalsModificationKind'] as String),
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      kustoPoolResourceId: pulumi.Output.create<String>(map['kustoPoolResourceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : pulumi.Output.create<TableLevelSharingProperties>(TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      defaultPrincipalsModificationKind: (map['defaultPrincipalsModificationKind'] as String).input(),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      kustoPoolResourceId: (map['kustoPoolResourceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

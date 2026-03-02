@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VolumeError captures an error encountered during a volume operation.
 class VolumeErrorPatchStorageK8sIoV1beta1 {
   /// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Time the error was encountered.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [VolumeErrorPatchStorageK8sIoV1beta1].
   /// [message] String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
@@ -25,8 +26,8 @@ class VolumeErrorPatchStorageK8sIoV1beta1 {
 
   factory VolumeErrorPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return VolumeErrorPatchStorageK8sIoV1beta1(
-      message: map['message'] == null ? null : map['message'] as String,
-      time: map['time'] == null ? null : map['time'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

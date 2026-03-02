@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters to be used during configuration of backup of blobs
 class BlobBackupDatasourceParameters {
   /// List of containers to be backed up during configuration of backup of blobs
-  final List<String> containersList;
+  final pulumi.Input<List<String>> containersList;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'BlobBackupDatasourceParameters'.
-  final String objectType;
+  final pulumi.Input<String> objectType;
 
   /// Creates a new [BlobBackupDatasourceParameters].
   /// [containersList] List of containers to be backed up during configuration of backup of blobs
@@ -26,8 +27,8 @@ class BlobBackupDatasourceParameters {
 
   factory BlobBackupDatasourceParameters.fromMap(Map<String, dynamic> map) {
     return BlobBackupDatasourceParameters(
-      containersList: (map['containersList'] as List).cast<String>(),
-      objectType: map['objectType'] as String,
+      containersList: ((map['containersList'] as List).cast<String>()).input(),
+      objectType: (map['objectType'] as String).input(),
     );
   }
 }

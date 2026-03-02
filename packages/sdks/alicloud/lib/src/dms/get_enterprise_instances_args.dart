@@ -40,27 +40,17 @@ class GetEnterpriseInstancesArgs {
   /// [status] Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   /// [tid] The ID of the tenant in Data Management (DMS) Enterprise.
   GetEnterpriseInstancesArgs({
-    pulumi.Output<String>? envType,
-    pulumi.Output<String>? instanceAliasRegex,
-    pulumi.Output<String>? instanceSource,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? netType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? searchKey,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? tid,
-  }) :
-      envType = pulumi.Input.asOptionalInput<String>(envType),
-      instanceAliasRegex = pulumi.Input.asOptionalInput<String>(instanceAliasRegex),
-      instanceSource = pulumi.Input.asOptionalInput<String>(instanceSource),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      searchKey = pulumi.Input.asOptionalInput<String>(searchKey),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tid = pulumi.Input.asOptionalInput<int>(tid);
+    this.envType,
+    this.instanceAliasRegex,
+    this.instanceSource,
+    this.instanceType,
+    this.nameRegex,
+    this.netType,
+    this.outputFile,
+    this.searchKey,
+    this.status,
+    this.tid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetEnterpriseInstancesArgs {
 
   factory GetEnterpriseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesArgs(
-      envType: map['envType'] == null ? null : pulumi.Output.create<String>(map['envType'] as String),
-      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : pulumi.Output.create<String>(map['instanceAliasRegex'] as String),
-      instanceSource: map['instanceSource'] == null ? null : pulumi.Output.create<String>(map['instanceSource'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      searchKey: map['searchKey'] == null ? null : pulumi.Output.create<String>(map['searchKey'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tid: map['tid'] == null ? null : pulumi.Output.create<int>(map['tid'] as int),
+      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
+      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : (map['instanceAliasRegex'] as String).input(),
+      instanceSource: map['instanceSource'] == null ? null : (map['instanceSource'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      searchKey: map['searchKey'] == null ? null : (map['searchKey'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The policy definition group.
 class PolicyDefinitionGroup {
   /// A resource ID of a resource that contains additional metadata about the group.
-  final String? additionalMetadataId;
+  final pulumi.Input<String>? additionalMetadataId;
   /// The group's category.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// The group's description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The group's display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The name of the group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PolicyDefinitionGroup].
   /// [additionalMetadataId] A resource ID of a resource that contains additional metadata about the group.
@@ -40,11 +41,11 @@ class PolicyDefinitionGroup {
 
   factory PolicyDefinitionGroup.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionGroup(
-      additionalMetadataId: map['additionalMetadataId'] == null ? null : map['additionalMetadataId'] as String,
-      category: map['category'] == null ? null : map['category'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      name: map['name'] as String,
+      additionalMetadataId: map['additionalMetadataId'] == null ? null : (map['additionalMetadataId'] as String).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

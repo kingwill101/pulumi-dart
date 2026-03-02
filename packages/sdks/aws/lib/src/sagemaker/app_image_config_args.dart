@@ -33,19 +33,13 @@ class AppImageConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AppImageConfigArgs({
-    required pulumi.Output<String> appImageConfigName,
-    pulumi.Output<AppImageConfigCodeEditorAppImageConfig>? codeEditorAppImageConfig,
-    pulumi.Output<AppImageConfigJupyterLabImageConfig>? jupyterLabImageConfig,
-    pulumi.Output<AppImageConfigKernelGatewayImageConfig>? kernelGatewayImageConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appImageConfigName = pulumi.Input.asInput<String>(appImageConfigName),
-      codeEditorAppImageConfig = pulumi.Input.asOptionalInput<AppImageConfigCodeEditorAppImageConfig>(codeEditorAppImageConfig),
-      jupyterLabImageConfig = pulumi.Input.asOptionalInput<AppImageConfigJupyterLabImageConfig>(jupyterLabImageConfig),
-      kernelGatewayImageConfig = pulumi.Input.asOptionalInput<AppImageConfigKernelGatewayImageConfig>(kernelGatewayImageConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.appImageConfigName,
+    this.codeEditorAppImageConfig,
+    this.jupyterLabImageConfig,
+    this.kernelGatewayImageConfig,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class AppImageConfigArgs {
 
   factory AppImageConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppImageConfigArgs(
-      appImageConfigName: pulumi.Output.create<String>(map['appImageConfigName'] as String),
-      codeEditorAppImageConfig: map['codeEditorAppImageConfig'] == null ? null : pulumi.Output.create<AppImageConfigCodeEditorAppImageConfig>(AppImageConfigCodeEditorAppImageConfig.fromMap((map['codeEditorAppImageConfig'] as Map).cast<String, dynamic>())),
-      jupyterLabImageConfig: map['jupyterLabImageConfig'] == null ? null : pulumi.Output.create<AppImageConfigJupyterLabImageConfig>(AppImageConfigJupyterLabImageConfig.fromMap((map['jupyterLabImageConfig'] as Map).cast<String, dynamic>())),
-      kernelGatewayImageConfig: map['kernelGatewayImageConfig'] == null ? null : pulumi.Output.create<AppImageConfigKernelGatewayImageConfig>(AppImageConfigKernelGatewayImageConfig.fromMap((map['kernelGatewayImageConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appImageConfigName: (map['appImageConfigName'] as String).input(),
+      codeEditorAppImageConfig: map['codeEditorAppImageConfig'] == null ? null : (AppImageConfigCodeEditorAppImageConfig.fromMap((map['codeEditorAppImageConfig'] as Map).cast<String, dynamic>())).input(),
+      jupyterLabImageConfig: map['jupyterLabImageConfig'] == null ? null : (AppImageConfigJupyterLabImageConfig.fromMap((map['jupyterLabImageConfig'] as Map).cast<String, dynamic>())).input(),
+      kernelGatewayImageConfig: map['kernelGatewayImageConfig'] == null ? null : (AppImageConfigKernelGatewayImageConfig.fromMap((map['kernelGatewayImageConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

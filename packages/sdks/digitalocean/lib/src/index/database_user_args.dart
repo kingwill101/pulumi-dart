@@ -24,15 +24,11 @@ class DatabaseUserArgs {
   /// [name] The name for the database user.
   /// [settings] Contains optional settings for the user.
   DatabaseUserArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? mysqlAuthPlugin,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<DatabaseUserSetting>>? settings,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      mysqlAuthPlugin = pulumi.Input.asOptionalInput<String>(mysqlAuthPlugin),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      settings = pulumi.Input.asOptionalInput<List<DatabaseUserSetting>>(settings);
+    required this.clusterId,
+    this.mysqlAuthPlugin,
+    this.name,
+    this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DatabaseUserArgs {
 
   factory DatabaseUserArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseUserArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : pulumi.Output.create<String>(map['mysqlAuthPlugin'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<List<DatabaseUserSetting>>(pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))),
+      clusterId: (map['clusterId'] as String).input(),
+      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

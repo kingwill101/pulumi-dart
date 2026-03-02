@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_default_action_forward_group_config.dart';
 
 class ListenerDefaultAction {
   /// Forwarding Action Configurations See `forward_group_config` below.
-  final ListenerDefaultActionForwardGroupConfig? forwardGroupConfig;
+  final pulumi.Input<ListenerDefaultActionForwardGroupConfig>? forwardGroupConfig;
   /// The action type. Value: ForwardGroup, indicating forwarding to the server group.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ListenerDefaultAction].
   /// [forwardGroupConfig] Forwarding Action Configurations See `forward_group_config` below.
@@ -18,15 +19,15 @@ class ListenerDefaultAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardGroupConfig': ?forwardGroupConfig == null ? null : forwardGroupConfig!.toMap(),
+      'forwardGroupConfig': ?pulumi.Input.mapOptionalInputValue<ListenerDefaultActionForwardGroupConfig, Map<String, dynamic>>(forwardGroupConfig, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ListenerDefaultAction.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultAction(
-      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : ListenerDefaultActionForwardGroupConfig.fromMap((map['forwardGroupConfig'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (ListenerDefaultActionForwardGroupConfig.fromMap((map['forwardGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

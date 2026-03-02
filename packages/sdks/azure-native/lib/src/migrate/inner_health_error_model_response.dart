@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Inner health error model.
 class InnerHealthErrorModelResponse {
   /// Gets or sets the error category.
-  final String category;
+  final pulumi.Input<String> category;
   /// Gets or sets possible causes of the error.
-  final String causes;
+  final pulumi.Input<String> causes;
   /// Gets or sets the error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// Gets or sets the error creation time.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// Gets or sets the health category.
-  final String healthCategory;
+  final pulumi.Input<String> healthCategory;
   /// Gets the ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets a value indicating whether the error is customer resolvable.
-  final bool isCustomerResolvable;
+  final pulumi.Input<bool> isCustomerResolvable;
   /// Gets or sets the error message.
-  final String message;
+  final pulumi.Input<String> message;
   /// Gets or sets recommended action to resolve the error.
-  final String recommendation;
+  final pulumi.Input<String> recommendation;
   /// Gets or sets the error severity.
-  final String severity;
+  final pulumi.Input<String> severity;
   /// Gets or sets the error source.
-  final String source;
+  final pulumi.Input<String> source;
   /// Gets or sets the error summary.
-  final String summary;
+  final pulumi.Input<String> summary;
 
   /// Creates a new [InnerHealthErrorModelResponse].
   /// [category] Gets or sets the error category.
@@ -75,18 +76,18 @@ class InnerHealthErrorModelResponse {
 
   factory InnerHealthErrorModelResponse.fromMap(Map<String, dynamic> map) {
     return InnerHealthErrorModelResponse(
-      category: map['category'] as String,
-      causes: map['causes'] as String,
-      code: map['code'] as String,
-      creationTime: map['creationTime'] as String,
-      healthCategory: map['healthCategory'] as String,
-      id: map['id'] as String,
-      isCustomerResolvable: map['isCustomerResolvable'] as bool,
-      message: map['message'] as String,
-      recommendation: map['recommendation'] as String,
-      severity: map['severity'] as String,
-      source: map['source'] as String,
-      summary: map['summary'] as String,
+      category: (map['category'] as String).input(),
+      causes: (map['causes'] as String).input(),
+      code: (map['code'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      healthCategory: (map['healthCategory'] as String).input(),
+      id: (map['id'] as String).input(),
+      isCustomerResolvable: (map['isCustomerResolvable'] as bool).input(),
+      message: (map['message'] as String).input(),
+      recommendation: (map['recommendation'] as String).input(),
+      severity: (map['severity'] as String).input(),
+      source: (map['source'] as String).input(),
+      summary: (map['summary'] as String).input(),
     );
   }
 }

@@ -44,31 +44,19 @@ class EnterpriseProxyAccessState {
   /// [userName] User nickname.
   /// [userUid] User UID.
   EnterpriseProxyAccessState({
-    pulumi.Output<String>? accessId,
-    pulumi.Output<String>? accessSecret,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? indepAccount,
-    pulumi.Output<String>? indepPassword,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? originInfo,
-    pulumi.Output<String>? proxyAccessId,
-    pulumi.Output<String>? proxyId,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? userName,
-    pulumi.Output<String>? userUid,
-  }) :
-      accessId = pulumi.Input.asOptionalInput<String>(accessId),
-      accessSecret = pulumi.Input.asOptionalInput<String>(accessSecret),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      indepAccount = pulumi.Input.asOptionalInput<String>(indepAccount),
-      indepPassword = pulumi.Input.asOptionalInput<String>(indepPassword),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      originInfo = pulumi.Input.asOptionalInput<String>(originInfo),
-      proxyAccessId = pulumi.Input.asOptionalInput<String>(proxyAccessId),
-      proxyId = pulumi.Input.asOptionalInput<String>(proxyId),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      userName = pulumi.Input.asOptionalInput<String>(userName),
-      userUid = pulumi.Input.asOptionalInput<String>(userUid);
+    this.accessId,
+    this.accessSecret,
+    this.createTime,
+    this.indepAccount,
+    this.indepPassword,
+    this.instanceId,
+    this.originInfo,
+    this.proxyAccessId,
+    this.proxyId,
+    this.userId,
+    this.userName,
+    this.userUid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class EnterpriseProxyAccessState {
 
   factory EnterpriseProxyAccessState.fromMap(Map<String, dynamic> map) {
     return EnterpriseProxyAccessState(
-      accessId: map['accessId'] == null ? null : pulumi.Output.create<String>(map['accessId'] as String),
-      accessSecret: map['accessSecret'] == null ? null : pulumi.Output.create<String>(map['accessSecret'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      indepAccount: map['indepAccount'] == null ? null : pulumi.Output.create<String>(map['indepAccount'] as String),
-      indepPassword: map['indepPassword'] == null ? null : pulumi.Output.create<String>(map['indepPassword'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      originInfo: map['originInfo'] == null ? null : pulumi.Output.create<String>(map['originInfo'] as String),
-      proxyAccessId: map['proxyAccessId'] == null ? null : pulumi.Output.create<String>(map['proxyAccessId'] as String),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<String>(map['proxyId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
-      userUid: map['userUid'] == null ? null : pulumi.Output.create<String>(map['userUid'] as String),
+      accessId: map['accessId'] == null ? null : (map['accessId'] as String).input(),
+      accessSecret: map['accessSecret'] == null ? null : (map['accessSecret'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      indepAccount: map['indepAccount'] == null ? null : (map['indepAccount'] as String).input(),
+      indepPassword: map['indepPassword'] == null ? null : (map['indepPassword'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      originInfo: map['originInfo'] == null ? null : (map['originInfo'] as String).input(),
+      proxyAccessId: map['proxyAccessId'] == null ? null : (map['proxyAccessId'] as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userUid: map['userUid'] == null ? null : (map['userUid'] as String).input(),
     );
   }
 }

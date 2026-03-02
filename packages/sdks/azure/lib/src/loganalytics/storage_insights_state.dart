@@ -28,21 +28,14 @@ class StorageInsightsState {
   /// [tableNames] The names of the Azure tables that the workspace should read.
   /// [workspaceId] The ID of the Log Analytics Workspace within which the Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   StorageInsightsState({
-    pulumi.Output<List<String>>? blobContainerNames,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountKey,
-    pulumi.Output<List<String>>? tableNames,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      blobContainerNames = pulumi.Input.asOptionalInput<List<String>>(blobContainerNames),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountKey = pulumi.Input.asOptionalInput<String>(storageAccountKey),
-      tableNames = pulumi.Input.asOptionalInput<List<String>>(tableNames),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.blobContainerNames,
+    this.name,
+    this.resourceGroupName,
+    this.storageAccountId,
+    this.storageAccountKey,
+    this.tableNames,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class StorageInsightsState {
 
   factory StorageInsightsState.fromMap(Map<String, dynamic> map) {
     return StorageInsightsState(
-      blobContainerNames: map['blobContainerNames'] == null ? null : pulumi.Output.create<List<String>>((map['blobContainerNames'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountKey: map['storageAccountKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountKey'] as String),
-      tableNames: map['tableNames'] == null ? null : pulumi.Output.create<List<String>>((map['tableNames'] as List).cast<String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      blobContainerNames: map['blobContainerNames'] == null ? null : ((map['blobContainerNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

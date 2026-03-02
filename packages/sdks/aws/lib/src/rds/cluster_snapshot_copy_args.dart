@@ -42,27 +42,17 @@ class ClusterSnapshotCopyArgs {
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
   ClusterSnapshotCopyArgs({
-    pulumi.Output<bool>? copyTags,
-    pulumi.Output<String>? destinationRegion,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<String>? presignedUrl,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? sharedAccounts,
-    required pulumi.Output<String> sourceDbClusterSnapshotIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> targetDbClusterSnapshotIdentifier,
-    pulumi.Output<ClusterSnapshotCopyTimeouts>? timeouts,
-  }) :
-      copyTags = pulumi.Input.asOptionalInput<bool>(copyTags),
-      destinationRegion = pulumi.Input.asOptionalInput<String>(destinationRegion),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      presignedUrl = pulumi.Input.asOptionalInput<String>(presignedUrl),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(sharedAccounts),
-      sourceDbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(sourceDbClusterSnapshotIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetDbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(targetDbClusterSnapshotIdentifier),
-      timeouts = pulumi.Input.asOptionalInput<ClusterSnapshotCopyTimeouts>(timeouts);
+    this.copyTags,
+    this.destinationRegion,
+    this.kmsKeyId,
+    this.presignedUrl,
+    this.region,
+    this.sharedAccounts,
+    required this.sourceDbClusterSnapshotIdentifier,
+    this.tags,
+    required this.targetDbClusterSnapshotIdentifier,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class ClusterSnapshotCopyArgs {
 
   factory ClusterSnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotCopyArgs(
-      copyTags: map['copyTags'] == null ? null : pulumi.Output.create<bool>(map['copyTags'] as bool),
-      destinationRegion: map['destinationRegion'] == null ? null : pulumi.Output.create<String>(map['destinationRegion'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      presignedUrl: map['presignedUrl'] == null ? null : pulumi.Output.create<String>(map['presignedUrl'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sharedAccounts: map['sharedAccounts'] == null ? null : pulumi.Output.create<List<String>>((map['sharedAccounts'] as List).cast<String>()),
-      sourceDbClusterSnapshotIdentifier: pulumi.Output.create<String>(map['sourceDbClusterSnapshotIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetDbClusterSnapshotIdentifier: pulumi.Output.create<String>(map['targetDbClusterSnapshotIdentifier'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ClusterSnapshotCopyTimeouts>(ClusterSnapshotCopyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      presignedUrl: map['presignedUrl'] == null ? null : (map['presignedUrl'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
+      sourceDbClusterSnapshotIdentifier: (map['sourceDbClusterSnapshotIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetDbClusterSnapshotIdentifier: (map['targetDbClusterSnapshotIdentifier'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (ClusterSnapshotCopyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for authentication with the API Key. Will result in additional header on the request (default behavior) to the remote server: 'ApiKeyName: ApiKeyIdentifier ApiKey'. If 'IsApiKeyInPostPayload' is true it will send it in the body of the request and not the header.
 class ApiKeyAuthModel {
   /// API Key for the user secret key credential
-  final String apiKey;
+  final pulumi.Input<String> apiKey;
   /// API Key Identifier
-  final String? apiKeyIdentifier;
+  final pulumi.Input<String>? apiKeyIdentifier;
   /// API Key name
-  final String apiKeyName;
+  final pulumi.Input<String> apiKeyName;
   /// Flag to indicate if API key is set in HTTP POST payload
-  final bool? isApiKeyInPostPayload;
+  final pulumi.Input<bool>? isApiKeyInPostPayload;
   /// Type of paging
   /// Expected value is 'APIKey'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApiKeyAuthModel].
   /// [apiKey] API Key for the user secret key credential
@@ -41,11 +42,11 @@ class ApiKeyAuthModel {
 
   factory ApiKeyAuthModel.fromMap(Map<String, dynamic> map) {
     return ApiKeyAuthModel(
-      apiKey: map['apiKey'] as String,
-      apiKeyIdentifier: map['apiKeyIdentifier'] == null ? null : map['apiKeyIdentifier'] as String,
-      apiKeyName: map['apiKeyName'] as String,
-      isApiKeyInPostPayload: map['isApiKeyInPostPayload'] == null ? null : map['isApiKeyInPostPayload'] as bool,
-      type: map['type'] as String,
+      apiKey: (map['apiKey'] as String).input(),
+      apiKeyIdentifier: map['apiKeyIdentifier'] == null ? null : (map['apiKeyIdentifier'] as String).input(),
+      apiKeyName: (map['apiKeyName'] as String).input(),
+      isApiKeyInPostPayload: map['isApiKeyInPostPayload'] == null ? null : (map['isApiKeyInPostPayload'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

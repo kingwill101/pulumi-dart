@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2alpha_condition_response.dart';
 import 'google_cloud_retail_v2alpha_rule_boost_action_response.dart';
 import 'google_cloud_retail_v2alpha_rule_do_not_associate_action_response.dart';
@@ -15,27 +16,27 @@ import 'google_cloud_retail_v2alpha_rule_twoway_synonyms_action_response.dart';
 /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 class GoogleCloudRetailV2alphaRuleResponse {
   /// A boost action.
-  final GoogleCloudRetailV2alphaRuleBoostActionResponse boostAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleBoostActionResponse> boostAction;
   /// The condition that triggers the rule. If the condition is empty, the rule will always apply.
-  final GoogleCloudRetailV2alphaConditionResponse condition;
+  final pulumi.Input<GoogleCloudRetailV2alphaConditionResponse> condition;
   /// Prevents term from being associated with other terms.
-  final GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse doNotAssociateAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse> doNotAssociateAction;
   /// Filters results.
-  final GoogleCloudRetailV2alphaRuleFilterActionResponse filterAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleFilterActionResponse> filterAction;
   /// Force returns an attribute as a facet in the request.
-  final GoogleCloudRetailV2alphaRuleForceReturnFacetActionResponse forceReturnFacetAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleForceReturnFacetActionResponse> forceReturnFacetAction;
   /// Ignores specific terms from query during search.
-  final GoogleCloudRetailV2alphaRuleIgnoreActionResponse ignoreAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleIgnoreActionResponse> ignoreAction;
   /// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
-  final GoogleCloudRetailV2alphaRuleOnewaySynonymsActionResponse onewaySynonymsAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleOnewaySynonymsActionResponse> onewaySynonymsAction;
   /// Redirects a shopper to a specific page.
-  final GoogleCloudRetailV2alphaRuleRedirectActionResponse redirectAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleRedirectActionResponse> redirectAction;
   /// Remove an attribute as a facet in the request (if present).
-  final GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse removeFacetAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse> removeFacetAction;
   /// Replaces specific terms in the query.
-  final GoogleCloudRetailV2alphaRuleReplacementActionResponse replacementAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleReplacementActionResponse> replacementAction;
   /// Treats a set of terms as synonyms of one another.
-  final GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse twowaySynonymsAction;
+  final pulumi.Input<GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse> twowaySynonymsAction;
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleResponse].
   /// [boostAction] A boost action.
@@ -65,33 +66,33 @@ class GoogleCloudRetailV2alphaRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'boostAction': boostAction.toMap(),
-      'condition': condition.toMap(),
-      'doNotAssociateAction': doNotAssociateAction.toMap(),
-      'filterAction': filterAction.toMap(),
-      'forceReturnFacetAction': forceReturnFacetAction.toMap(),
-      'ignoreAction': ignoreAction.toMap(),
-      'onewaySynonymsAction': onewaySynonymsAction.toMap(),
-      'redirectAction': redirectAction.toMap(),
-      'removeFacetAction': removeFacetAction.toMap(),
-      'replacementAction': replacementAction.toMap(),
-      'twowaySynonymsAction': twowaySynonymsAction.toMap(),
+      'boostAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleBoostActionResponse, Map<String, dynamic>>(boostAction, (value) => value.toMap()),
+      'condition': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaConditionResponse, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'doNotAssociateAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse, Map<String, dynamic>>(doNotAssociateAction, (value) => value.toMap()),
+      'filterAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleFilterActionResponse, Map<String, dynamic>>(filterAction, (value) => value.toMap()),
+      'forceReturnFacetAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleForceReturnFacetActionResponse, Map<String, dynamic>>(forceReturnFacetAction, (value) => value.toMap()),
+      'ignoreAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleIgnoreActionResponse, Map<String, dynamic>>(ignoreAction, (value) => value.toMap()),
+      'onewaySynonymsAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleOnewaySynonymsActionResponse, Map<String, dynamic>>(onewaySynonymsAction, (value) => value.toMap()),
+      'redirectAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleRedirectActionResponse, Map<String, dynamic>>(redirectAction, (value) => value.toMap()),
+      'removeFacetAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse, Map<String, dynamic>>(removeFacetAction, (value) => value.toMap()),
+      'replacementAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleReplacementActionResponse, Map<String, dynamic>>(replacementAction, (value) => value.toMap()),
+      'twowaySynonymsAction': pulumi.Input.mapInputValue<GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse, Map<String, dynamic>>(twowaySynonymsAction, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudRetailV2alphaRuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleResponse(
-      boostAction: GoogleCloudRetailV2alphaRuleBoostActionResponse.fromMap((map['boostAction'] as Map).cast<String, dynamic>()),
-      condition: GoogleCloudRetailV2alphaConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      doNotAssociateAction: GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse.fromMap((map['doNotAssociateAction'] as Map).cast<String, dynamic>()),
-      filterAction: GoogleCloudRetailV2alphaRuleFilterActionResponse.fromMap((map['filterAction'] as Map).cast<String, dynamic>()),
-      forceReturnFacetAction: GoogleCloudRetailV2alphaRuleForceReturnFacetActionResponse.fromMap((map['forceReturnFacetAction'] as Map).cast<String, dynamic>()),
-      ignoreAction: GoogleCloudRetailV2alphaRuleIgnoreActionResponse.fromMap((map['ignoreAction'] as Map).cast<String, dynamic>()),
-      onewaySynonymsAction: GoogleCloudRetailV2alphaRuleOnewaySynonymsActionResponse.fromMap((map['onewaySynonymsAction'] as Map).cast<String, dynamic>()),
-      redirectAction: GoogleCloudRetailV2alphaRuleRedirectActionResponse.fromMap((map['redirectAction'] as Map).cast<String, dynamic>()),
-      removeFacetAction: GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse.fromMap((map['removeFacetAction'] as Map).cast<String, dynamic>()),
-      replacementAction: GoogleCloudRetailV2alphaRuleReplacementActionResponse.fromMap((map['replacementAction'] as Map).cast<String, dynamic>()),
-      twowaySynonymsAction: GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse.fromMap((map['twowaySynonymsAction'] as Map).cast<String, dynamic>()),
+      boostAction: (GoogleCloudRetailV2alphaRuleBoostActionResponse.fromMap((map['boostAction'] as Map).cast<String, dynamic>())).input(),
+      condition: (GoogleCloudRetailV2alphaConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      doNotAssociateAction: (GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse.fromMap((map['doNotAssociateAction'] as Map).cast<String, dynamic>())).input(),
+      filterAction: (GoogleCloudRetailV2alphaRuleFilterActionResponse.fromMap((map['filterAction'] as Map).cast<String, dynamic>())).input(),
+      forceReturnFacetAction: (GoogleCloudRetailV2alphaRuleForceReturnFacetActionResponse.fromMap((map['forceReturnFacetAction'] as Map).cast<String, dynamic>())).input(),
+      ignoreAction: (GoogleCloudRetailV2alphaRuleIgnoreActionResponse.fromMap((map['ignoreAction'] as Map).cast<String, dynamic>())).input(),
+      onewaySynonymsAction: (GoogleCloudRetailV2alphaRuleOnewaySynonymsActionResponse.fromMap((map['onewaySynonymsAction'] as Map).cast<String, dynamic>())).input(),
+      redirectAction: (GoogleCloudRetailV2alphaRuleRedirectActionResponse.fromMap((map['redirectAction'] as Map).cast<String, dynamic>())).input(),
+      removeFacetAction: (GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse.fromMap((map['removeFacetAction'] as Map).cast<String, dynamic>())).input(),
+      replacementAction: (GoogleCloudRetailV2alphaRuleReplacementActionResponse.fromMap((map['replacementAction'] as Map).cast<String, dynamic>())).input(),
+      twowaySynonymsAction: (GoogleCloudRetailV2alphaRuleTwowaySynonymsActionResponse.fromMap((map['twowaySynonymsAction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

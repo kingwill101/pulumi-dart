@@ -23,17 +23,12 @@ class OriginPoolState {
   /// [origins] The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
   /// [siteId] The site ID.
   OriginPoolState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<int>? originPoolId,
-    pulumi.Output<String>? originPoolName,
-    pulumi.Output<List<OriginPoolOrigin>>? origins,
-    pulumi.Output<String>? siteId,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      originPoolId = pulumi.Input.asOptionalInput<int>(originPoolId),
-      originPoolName = pulumi.Input.asOptionalInput<String>(originPoolName),
-      origins = pulumi.Input.asOptionalInput<List<OriginPoolOrigin>>(origins),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId);
+    this.enabled,
+    this.originPoolId,
+    this.originPoolName,
+    this.origins,
+    this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class OriginPoolState {
 
   factory OriginPoolState.fromMap(Map<String, dynamic> map) {
     return OriginPoolState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      originPoolId: map['originPoolId'] == null ? null : pulumi.Output.create<int>(map['originPoolId'] as int),
-      originPoolName: map['originPoolName'] == null ? null : pulumi.Output.create<String>(map['originPoolName'] as String),
-      origins: map['origins'] == null ? null : pulumi.Output.create<List<OriginPoolOrigin>>(pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      originPoolId: map['originPoolId'] == null ? null : (map['originPoolId'] as int).input(),
+      originPoolName: map['originPoolName'] == null ? null : (map['originPoolName'] as String).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginPoolOrigin>(map['origins'], (value) => OriginPoolOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
     );
   }
 }

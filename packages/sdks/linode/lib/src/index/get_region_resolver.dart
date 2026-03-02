@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionResolver {
   /// The IPv4 addresses for this region’s DNS resolvers, separated by commas.
-  final String ipv4;
+  final pulumi.Input<String> ipv4;
   /// The IPv6 addresses for this region’s DNS resolvers, separated by commas.
-  final String ipv6;
+  final pulumi.Input<String> ipv6;
 
   /// Creates a new [GetRegionResolver].
   /// [ipv4] The IPv4 addresses for this region’s DNS resolvers, separated by commas.
@@ -24,8 +25,8 @@ class GetRegionResolver {
 
   factory GetRegionResolver.fromMap(Map<String, dynamic> map) {
     return GetRegionResolver(
-      ipv4: map['ipv4'] as String,
-      ipv6: map['ipv6'] as String,
+      ipv4: (map['ipv4'] as String).input(),
+      ipv6: (map['ipv6'] as String).input(),
     );
   }
 }

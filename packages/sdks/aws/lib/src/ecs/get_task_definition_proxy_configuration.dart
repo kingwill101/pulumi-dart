@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskDefinitionProxyConfiguration {
   /// Name of the container that will serve as the App Mesh proxy.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// Set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-  final Map<String, String> properties;
+  final pulumi.Input<Map<String, String>> properties;
   /// Proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetTaskDefinitionProxyConfiguration].
   /// [containerName] Name of the container that will serve as the App Mesh proxy.
@@ -29,9 +30,9 @@ class GetTaskDefinitionProxyConfiguration {
 
   factory GetTaskDefinitionProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionProxyConfiguration(
-      containerName: map['containerName'] as String,
-      properties: (map['properties'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      containerName: (map['containerName'] as String).input(),
+      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

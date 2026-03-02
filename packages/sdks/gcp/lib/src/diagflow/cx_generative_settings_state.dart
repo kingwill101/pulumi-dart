@@ -38,21 +38,14 @@ class CxGenerativeSettingsState {
   /// [name] The unique identifier of the generativeSettings.
   /// [parent] The agent to create a flow for.
   CxGenerativeSettingsState({
-    pulumi.Output<CxGenerativeSettingsFallbackSettings>? fallbackSettings,
-    pulumi.Output<CxGenerativeSettingsGenerativeSafetySettings>? generativeSafetySettings,
-    pulumi.Output<CxGenerativeSettingsKnowledgeConnectorSettings>? knowledgeConnectorSettings,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<CxGenerativeSettingsLlmModelSettings>? llmModelSettings,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-  }) :
-      fallbackSettings = pulumi.Input.asOptionalInput<CxGenerativeSettingsFallbackSettings>(fallbackSettings),
-      generativeSafetySettings = pulumi.Input.asOptionalInput<CxGenerativeSettingsGenerativeSafetySettings>(generativeSafetySettings),
-      knowledgeConnectorSettings = pulumi.Input.asOptionalInput<CxGenerativeSettingsKnowledgeConnectorSettings>(knowledgeConnectorSettings),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      llmModelSettings = pulumi.Input.asOptionalInput<CxGenerativeSettingsLlmModelSettings>(llmModelSettings),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.fallbackSettings,
+    this.generativeSafetySettings,
+    this.knowledgeConnectorSettings,
+    this.languageCode,
+    this.llmModelSettings,
+    this.name,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class CxGenerativeSettingsState {
 
   factory CxGenerativeSettingsState.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsState(
-      fallbackSettings: map['fallbackSettings'] == null ? null : pulumi.Output.create<CxGenerativeSettingsFallbackSettings>(CxGenerativeSettingsFallbackSettings.fromMap((map['fallbackSettings'] as Map).cast<String, dynamic>())),
-      generativeSafetySettings: map['generativeSafetySettings'] == null ? null : pulumi.Output.create<CxGenerativeSettingsGenerativeSafetySettings>(CxGenerativeSettingsGenerativeSafetySettings.fromMap((map['generativeSafetySettings'] as Map).cast<String, dynamic>())),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : pulumi.Output.create<CxGenerativeSettingsKnowledgeConnectorSettings>(CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      llmModelSettings: map['llmModelSettings'] == null ? null : pulumi.Output.create<CxGenerativeSettingsLlmModelSettings>(CxGenerativeSettingsLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      fallbackSettings: map['fallbackSettings'] == null ? null : (CxGenerativeSettingsFallbackSettings.fromMap((map['fallbackSettings'] as Map).cast<String, dynamic>())).input(),
+      generativeSafetySettings: map['generativeSafetySettings'] == null ? null : (CxGenerativeSettingsGenerativeSafetySettings.fromMap((map['generativeSafetySettings'] as Map).cast<String, dynamic>())).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGenerativeSettingsLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

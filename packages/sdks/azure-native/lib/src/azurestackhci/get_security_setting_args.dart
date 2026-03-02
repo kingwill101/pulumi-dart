@@ -19,13 +19,10 @@ class GetSecuritySettingArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securitySettingsName] Name of security setting
   GetSecuritySettingArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securitySettingsName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securitySettingsName = pulumi.Input.asInput<String>(securitySettingsName);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.securitySettingsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSecuritySettingArgs {
 
   factory GetSecuritySettingArgs.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securitySettingsName: pulumi.Output.create<String>(map['securitySettingsName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securitySettingsName: (map['securitySettingsName'] as String).input(),
     );
   }
 }

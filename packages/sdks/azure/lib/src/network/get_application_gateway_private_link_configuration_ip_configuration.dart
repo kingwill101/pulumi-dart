@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayPrivateLinkConfigurationIpConfiguration {
   /// The name of this Application Gateway.
-  final String name;
+  final pulumi.Input<String> name;
   /// Is this the Primary IP Configuration?
-  final bool primary;
+  final pulumi.Input<bool> primary;
   /// The Static IP Address which is used.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
   /// The allocation method used for the Private IP Address.
-  final String privateIpAddressAllocation;
+  final pulumi.Input<String> privateIpAddressAllocation;
   /// The ID of the subnet the private link configuration is connected to.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetApplicationGatewayPrivateLinkConfigurationIpConfiguration].
   /// [name] The name of this Application Gateway.
@@ -39,11 +40,11 @@ class GetApplicationGatewayPrivateLinkConfigurationIpConfiguration {
 
   factory GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayPrivateLinkConfigurationIpConfiguration(
-      name: map['name'] as String,
-      primary: map['primary'] as bool,
-      privateIpAddress: map['privateIpAddress'] as String,
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] as String,
-      subnetId: map['subnetId'] as String,
+      name: (map['name'] as String).input(),
+      primary: (map['primary'] as bool).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

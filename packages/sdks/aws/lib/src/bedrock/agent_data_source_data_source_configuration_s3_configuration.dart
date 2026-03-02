@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceDataSourceConfigurationS3Configuration {
   /// ARN of the bucket that contains the data source.
-  final String bucketArn;
+  final pulumi.Input<String> bucketArn;
   /// Bucket account owner ID for the S3 bucket.
-  final String? bucketOwnerAccountId;
+  final pulumi.Input<String>? bucketOwnerAccountId;
   /// List of S3 prefixes that define the object containing the data sources. For more information, see [Organizing objects using prefixes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html).
-  final List<String>? inclusionPrefixes;
+  final pulumi.Input<List<String>>? inclusionPrefixes;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationS3Configuration].
   /// [bucketArn] ARN of the bucket that contains the data source.
@@ -29,9 +30,9 @@ class AgentDataSourceDataSourceConfigurationS3Configuration {
 
   factory AgentDataSourceDataSourceConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationS3Configuration(
-      bucketArn: map['bucketArn'] as String,
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : map['bucketOwnerAccountId'] as String,
-      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : (map['inclusionPrefixes'] as List).cast<String>(),
+      bucketArn: (map['bucketArn'] as String).input(),
+      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : (map['bucketOwnerAccountId'] as String).input(),
+      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : ((map['inclusionPrefixes'] as List).cast<String>()).input(),
     );
   }
 }

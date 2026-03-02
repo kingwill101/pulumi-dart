@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption details for the fabric.
 class EncryptionDetailsResponse {
   /// The key encryption key certificate expiry date.
-  final String? kekCertExpiryDate;
+  final pulumi.Input<String>? kekCertExpiryDate;
   /// The key encryption key certificate thumbprint.
-  final String? kekCertThumbprint;
+  final pulumi.Input<String>? kekCertThumbprint;
   /// The key encryption key state for the Vmm.
-  final String? kekState;
+  final pulumi.Input<String>? kekState;
 
   /// Creates a new [EncryptionDetailsResponse].
   /// [kekCertExpiryDate] The key encryption key certificate expiry date.
@@ -30,9 +31,9 @@ class EncryptionDetailsResponse {
 
   factory EncryptionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionDetailsResponse(
-      kekCertExpiryDate: map['kekCertExpiryDate'] == null ? null : map['kekCertExpiryDate'] as String,
-      kekCertThumbprint: map['kekCertThumbprint'] == null ? null : map['kekCertThumbprint'] as String,
-      kekState: map['kekState'] == null ? null : map['kekState'] as String,
+      kekCertExpiryDate: map['kekCertExpiryDate'] == null ? null : (map['kekCertExpiryDate'] as String).input(),
+      kekCertThumbprint: map['kekCertThumbprint'] == null ? null : (map['kekCertThumbprint'] as String).input(),
+      kekState: map['kekState'] == null ? null : (map['kekState'] as String).input(),
     );
   }
 }

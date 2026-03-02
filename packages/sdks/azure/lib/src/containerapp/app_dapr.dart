@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppDapr {
   /// The Dapr Application Identifier.
-  final String appId;
+  final pulumi.Input<String> appId;
   /// The port which the application is listening on. This is the same as the `ingress` port.
-  final int? appPort;
+  final pulumi.Input<int>? appPort;
   /// The protocol for the app. Possible values include `http` and `grpc`. Defaults to `http`.
-  final String? appProtocol;
+  final pulumi.Input<String>? appProtocol;
 
   /// Creates a new [AppDapr].
   /// [appId] The Dapr Application Identifier.
@@ -29,9 +30,9 @@ class AppDapr {
 
   factory AppDapr.fromMap(Map<String, dynamic> map) {
     return AppDapr(
-      appId: map['appId'] as String,
-      appPort: map['appPort'] == null ? null : map['appPort'] as int,
-      appProtocol: map['appProtocol'] == null ? null : map['appProtocol'] as String,
+      appId: (map['appId'] as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
     );
   }
 }

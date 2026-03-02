@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The request paging configuration.
 class RestApiPollerRequestPagingConfigResponse {
   /// Page size
-  final int? pageSize;
+  final pulumi.Input<int>? pageSize;
   /// Page size parameter name
-  final String? pageSizeParameterName;
+  final pulumi.Input<String>? pageSizeParameterName;
   /// Type of paging
-  final String pagingType;
+  final pulumi.Input<String> pagingType;
 
   /// Creates a new [RestApiPollerRequestPagingConfigResponse].
   /// [pageSize] Page size
@@ -30,9 +31,9 @@ class RestApiPollerRequestPagingConfigResponse {
 
   factory RestApiPollerRequestPagingConfigResponse.fromMap(Map<String, dynamic> map) {
     return RestApiPollerRequestPagingConfigResponse(
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      pageSizeParameterName: map['pageSizeParameterName'] == null ? null : map['pageSizeParameterName'] as String,
-      pagingType: map['pagingType'] as String,
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      pageSizeParameterName: map['pageSizeParameterName'] == null ? null : (map['pageSizeParameterName'] as String).input(),
+      pagingType: (map['pagingType'] as String).input(),
     );
   }
 }

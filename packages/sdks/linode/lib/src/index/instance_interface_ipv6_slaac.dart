@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceInterfaceIpv6Slaac {
   /// The SLAAC address chosen for this interface.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-  final String? assignedRange;
+  final pulumi.Input<String>? assignedRange;
   /// A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-  final String? range;
+  final pulumi.Input<String>? range;
 
   /// Creates a new [InstanceInterfaceIpv6Slaac].
   /// [address] The SLAAC address chosen for this interface.
@@ -29,9 +30,9 @@ class InstanceInterfaceIpv6Slaac {
 
   factory InstanceInterfaceIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return InstanceInterfaceIpv6Slaac(
-      address: map['address'] == null ? null : map['address'] as String,
-      assignedRange: map['assignedRange'] == null ? null : map['assignedRange'] as String,
-      range: map['range'] == null ? null : map['range'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      assignedRange: map['assignedRange'] == null ? null : (map['assignedRange'] as String).input(),
+      range: map['range'] == null ? null : (map['range'] as String).input(),
     );
   }
 }

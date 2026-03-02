@@ -16,11 +16,9 @@ class ApplicationFromTemplateArgs {
   /// [displayName] The display name for the application.
   /// [templateId] Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   ApplicationFromTemplateArgs({
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> templateId,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      templateId = pulumi.Input.asInput<String>(templateId);
+    required this.displayName,
+    required this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ApplicationFromTemplateArgs {
 
   factory ApplicationFromTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFromTemplateArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
+      displayName: (map['displayName'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
     );
   }
 }

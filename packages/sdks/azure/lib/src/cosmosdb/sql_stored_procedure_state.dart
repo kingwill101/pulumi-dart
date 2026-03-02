@@ -25,19 +25,13 @@ class SqlStoredProcedureState {
   /// [name] Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
   SqlStoredProcedureState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? containerName,
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      body = pulumi.Input.asOptionalInput<String>(body),
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName);
+    this.accountName,
+    this.body,
+    this.containerName,
+    this.databaseName,
+    this.name,
+    this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class SqlStoredProcedureState {
 
   factory SqlStoredProcedureState.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
     );
   }
 }

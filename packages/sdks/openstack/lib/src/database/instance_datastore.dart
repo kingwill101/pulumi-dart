@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDatastore {
   /// Database engine type to be used in new instance. Changing this
   /// creates a new instance.
-  final String type;
+  final pulumi.Input<String> type;
   /// Version of database engine type to be used in new instance.
   /// Changing this creates a new instance.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [InstanceDatastore].
   /// [type] Database engine type to be used in new instance. Changing this
@@ -26,8 +27,8 @@ class InstanceDatastore {
 
   factory InstanceDatastore.fromMap(Map<String, dynamic> map) {
     return InstanceDatastore(
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetVirtualMachineExtensionArgs {
   /// [vmExtensionName] The name of the virtual machine extension.
   /// [vmName] The name of the virtual machine.
   GetVirtualMachineExtensionArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vmExtensionName,
-    required pulumi.Output<String> vmName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmExtensionName = pulumi.Input.asInput<String>(vmExtensionName),
-      vmName = pulumi.Input.asInput<String>(vmName);
+    this.expand,
+    required this.resourceGroupName,
+    required this.vmExtensionName,
+    required this.vmName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetVirtualMachineExtensionArgs {
 
   factory GetVirtualMachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineExtensionArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmExtensionName: pulumi.Output.create<String>(map['vmExtensionName'] as String),
-      vmName: pulumi.Output.create<String>(map['vmName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmExtensionName: (map['vmExtensionName'] as String).input(),
+      vmName: (map['vmName'] as String).input(),
     );
   }
 }

@@ -36,23 +36,15 @@ class VirtualNetworkTapArgs {
   /// [tags] Resource tags.
   /// [tapName] The name of the virtual network tap.
   VirtualNetworkTapArgs({
-    pulumi.Output<FrontendIPConfiguration>? destinationLoadBalancerFrontEndIPConfiguration,
-    pulumi.Output<NetworkInterfaceIPConfiguration>? destinationNetworkInterfaceIPConfiguration,
-    pulumi.Output<int>? destinationPort,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tapName,
-  }) :
-      destinationLoadBalancerFrontEndIPConfiguration = pulumi.Input.asOptionalInput<FrontendIPConfiguration>(destinationLoadBalancerFrontEndIPConfiguration),
-      destinationNetworkInterfaceIPConfiguration = pulumi.Input.asOptionalInput<NetworkInterfaceIPConfiguration>(destinationNetworkInterfaceIPConfiguration),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tapName = pulumi.Input.asOptionalInput<String>(tapName);
+    this.destinationLoadBalancerFrontEndIPConfiguration,
+    this.destinationNetworkInterfaceIPConfiguration,
+    this.destinationPort,
+    this.id,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.tapName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class VirtualNetworkTapArgs {
 
   factory VirtualNetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkTapArgs(
-      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : pulumi.Output.create<FrontendIPConfiguration>(FrontendIPConfiguration.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>())),
-      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : pulumi.Output.create<NetworkInterfaceIPConfiguration>(NetworkInterfaceIPConfiguration.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tapName: map['tapName'] == null ? null : pulumi.Output.create<String>(map['tapName'] as String),
+      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfiguration.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfiguration.fromMap((map['destinationNetworkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tapName: map['tapName'] == null ? null : (map['tapName'] as String).input(),
     );
   }
 }

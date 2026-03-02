@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of UserPausedDetails
 class UserPausedDetailsResponse {
   /// <p>The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.</p>
-  final String? jobExpiresAt;
+  final pulumi.Input<String>? jobExpiresAt;
   /// <p>The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.</p>
-  final String? jobImminentExpirationHealthEventArn;
+  final pulumi.Input<String>? jobImminentExpirationHealthEventArn;
   /// <p>The date and time, in UTC and extended ISO 8601 format, when you paused the job.</p>
-  final String? jobPausedAt;
+  final pulumi.Input<String>? jobPausedAt;
 
   /// Creates a new [UserPausedDetailsResponse].
   /// [jobExpiresAt] <p>The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.</p>
@@ -30,9 +31,9 @@ class UserPausedDetailsResponse {
 
   factory UserPausedDetailsResponse.fromMap(Map<String, dynamic> map) {
     return UserPausedDetailsResponse(
-      jobExpiresAt: map['jobExpiresAt'] == null ? null : map['jobExpiresAt'] as String,
-      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : map['jobImminentExpirationHealthEventArn'] as String,
-      jobPausedAt: map['jobPausedAt'] == null ? null : map['jobPausedAt'] as String,
+      jobExpiresAt: map['jobExpiresAt'] == null ? null : (map['jobExpiresAt'] as String).input(),
+      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : (map['jobImminentExpirationHealthEventArn'] as String).input(),
+      jobPausedAt: map['jobPausedAt'] == null ? null : (map['jobPausedAt'] as String).input(),
     );
   }
 }

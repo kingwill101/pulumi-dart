@@ -23,15 +23,11 @@ class GetMulticastDomainArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain.
   /// [transitGatewayMulticastDomainId] Identifier of the EC2 Transit Gateway Multicast Domain.
   GetMulticastDomainArgs({
-    pulumi.Output<List<GetMulticastDomainFilter>>? filters,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitGatewayMulticastDomainId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetMulticastDomainFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitGatewayMulticastDomainId = pulumi.Input.asOptionalInput<String>(transitGatewayMulticastDomainId);
+    this.filters,
+    this.region,
+    this.tags,
+    this.transitGatewayMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetMulticastDomainArgs {
 
   factory GetMulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetMulticastDomainFilter>>(pulumi.Input.decodeList<GetMulticastDomainFilter>(map['filters'], (value) => GetMulticastDomainFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayMulticastDomainId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetMulticastDomainFilter>(map['filters'], (value) => GetMulticastDomainFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
     );
   }
 }

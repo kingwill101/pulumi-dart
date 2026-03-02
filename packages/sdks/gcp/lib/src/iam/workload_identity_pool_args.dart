@@ -66,23 +66,15 @@ class WorkloadIdentityPoolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
   WorkloadIdentityPoolArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<WorkloadIdentityPoolInlineCertificateIssuanceConfig>? inlineCertificateIssuanceConfig,
-    pulumi.Output<WorkloadIdentityPoolInlineTrustConfig>? inlineTrustConfig,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workloadIdentityPoolId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inlineCertificateIssuanceConfig = pulumi.Input.asOptionalInput<WorkloadIdentityPoolInlineCertificateIssuanceConfig>(inlineCertificateIssuanceConfig),
-      inlineTrustConfig = pulumi.Input.asOptionalInput<WorkloadIdentityPoolInlineTrustConfig>(inlineTrustConfig),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
+    this.description,
+    this.disabled,
+    this.displayName,
+    this.inlineCertificateIssuanceConfig,
+    this.inlineTrustConfig,
+    this.mode,
+    this.project,
+    required this.workloadIdentityPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,14 +91,14 @@ class WorkloadIdentityPoolArgs {
 
   factory WorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inlineCertificateIssuanceConfig: map['inlineCertificateIssuanceConfig'] == null ? null : pulumi.Output.create<WorkloadIdentityPoolInlineCertificateIssuanceConfig>(WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((map['inlineCertificateIssuanceConfig'] as Map).cast<String, dynamic>())),
-      inlineTrustConfig: map['inlineTrustConfig'] == null ? null : pulumi.Output.create<WorkloadIdentityPoolInlineTrustConfig>(WorkloadIdentityPoolInlineTrustConfig.fromMap((map['inlineTrustConfig'] as Map).cast<String, dynamic>())),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inlineCertificateIssuanceConfig: map['inlineCertificateIssuanceConfig'] == null ? null : (WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((map['inlineCertificateIssuanceConfig'] as Map).cast<String, dynamic>())).input(),
+      inlineTrustConfig: map['inlineTrustConfig'] == null ? null : (WorkloadIdentityPoolInlineTrustConfig.fromMap((map['inlineTrustConfig'] as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

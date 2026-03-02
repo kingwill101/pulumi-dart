@@ -19,13 +19,10 @@ class AuthorizedCertificateAppengineV1alphaArgs {
   /// [certificateRawData] The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
   /// [displayName] The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
   AuthorizedCertificateAppengineV1alphaArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<CertificateRawDataAppengineV1alpha>? certificateRawData,
-    pulumi.Output<String>? displayName,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      certificateRawData = pulumi.Input.asOptionalInput<CertificateRawDataAppengineV1alpha>(certificateRawData),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName);
+    required this.appId,
+    this.certificateRawData,
+    this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AuthorizedCertificateAppengineV1alphaArgs {
 
   factory AuthorizedCertificateAppengineV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedCertificateAppengineV1alphaArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      certificateRawData: map['certificateRawData'] == null ? null : pulumi.Output.create<CertificateRawDataAppengineV1alpha>(CertificateRawDataAppengineV1alpha.fromMap((map['certificateRawData'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      appId: (map['appId'] as String).input(),
+      certificateRawData: map['certificateRawData'] == null ? null : (CertificateRawDataAppengineV1alpha.fromMap((map['certificateRawData'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
     );
   }
 }

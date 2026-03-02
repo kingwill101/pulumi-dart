@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
 class MavenArtifactResponse {
   /// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
   /// Maven `groupId` value used when uploading the artifact to Artifact Registry.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
-  final String path;
+  final pulumi.Input<String> path;
   /// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
-  final String repository;
+  final pulumi.Input<String> repository;
   /// Maven `version` value used when uploading the artifact to Artifact Registry.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [MavenArtifactResponse].
   /// [artifactId] Maven `artifactId` value used when uploading the artifact to Artifact Registry.
@@ -40,11 +41,11 @@ class MavenArtifactResponse {
 
   factory MavenArtifactResponse.fromMap(Map<String, dynamic> map) {
     return MavenArtifactResponse(
-      artifactId: map['artifactId'] as String,
-      groupId: map['groupId'] as String,
-      path: map['path'] as String,
-      repository: map['repository'] as String,
-      version: map['version'] as String,
+      artifactId: (map['artifactId'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      path: (map['path'] as String).input(),
+      repository: (map['repository'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

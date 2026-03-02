@@ -25,15 +25,11 @@ class NotificationArgs {
   /// [scalingGroupId] The ID of the Auto Scaling group.
   /// [timeZone] The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
   NotificationArgs({
-    required pulumi.Output<String> notificationArn,
-    required pulumi.Output<List<String>> notificationTypes,
-    required pulumi.Output<String> scalingGroupId,
-    pulumi.Output<String>? timeZone,
-  }) :
-      notificationArn = pulumi.Input.asInput<String>(notificationArn),
-      notificationTypes = pulumi.Input.asInput<List<String>>(notificationTypes),
-      scalingGroupId = pulumi.Input.asInput<String>(scalingGroupId),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    required this.notificationArn,
+    required this.notificationTypes,
+    required this.scalingGroupId,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      notificationArn: pulumi.Output.create<String>(map['notificationArn'] as String),
-      notificationTypes: pulumi.Output.create<List<String>>((map['notificationTypes'] as List).cast<String>()),
-      scalingGroupId: pulumi.Output.create<String>(map['scalingGroupId'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      notificationArn: (map['notificationArn'] as String).input(),
+      notificationTypes: ((map['notificationTypes'] as List).cast<String>()).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

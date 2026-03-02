@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Diagnostics settings for Geneva.
 class AzureInternalMonitoringPipelineSinkDescription {
   /// Azure Internal monitoring pipeline account.
-  final String? accountName;
+  final pulumi.Input<String>? accountName;
   /// Azure Internal monitoring pipeline autokey associated with the certificate.
-  final String? autoKeyConfigUrl;
+  final pulumi.Input<String>? autoKeyConfigUrl;
   /// A description of the sink.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Azure Internal monitoring agent fluentd configuration.
-  final dynamic fluentdConfigUrl;
+  final pulumi.Input<dynamic>? fluentdConfigUrl;
   /// The kind of DiagnosticsSink.
   /// Expected value is 'AzureInternalMonitoringPipeline'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Azure Internal monitoring agent configuration.
-  final String? maConfigUrl;
+  final pulumi.Input<String>? maConfigUrl;
   /// Name of the sink. This value is referenced by DiagnosticsReferenceDescription
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Azure Internal monitoring pipeline account namespace.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [AzureInternalMonitoringPipelineSinkDescription].
   /// [accountName] Azure Internal monitoring pipeline account.
@@ -56,14 +57,14 @@ class AzureInternalMonitoringPipelineSinkDescription {
 
   factory AzureInternalMonitoringPipelineSinkDescription.fromMap(Map<String, dynamic> map) {
     return AzureInternalMonitoringPipelineSinkDescription(
-      accountName: map['accountName'] == null ? null : map['accountName'] as String,
-      autoKeyConfigUrl: map['autoKeyConfigUrl'] == null ? null : map['autoKeyConfigUrl'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      fluentdConfigUrl: map['fluentdConfigUrl'] == null ? null : map['fluentdConfigUrl'],
-      kind: map['kind'] as String,
-      maConfigUrl: map['maConfigUrl'] == null ? null : map['maConfigUrl'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      autoKeyConfigUrl: map['autoKeyConfigUrl'] == null ? null : (map['autoKeyConfigUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fluentdConfigUrl: map['fluentdConfigUrl'] == null ? null : (map['fluentdConfigUrl']).input(),
+      kind: (map['kind'] as String).input(),
+      maConfigUrl: map['maConfigUrl'] == null ? null : (map['maConfigUrl'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

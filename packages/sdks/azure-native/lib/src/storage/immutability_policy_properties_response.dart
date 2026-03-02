@@ -6,17 +6,17 @@ import 'update_history_property_response.dart';
 /// The properties of an ImmutabilityPolicy of a blob container.
 class ImmutabilityPolicyPropertiesResponse {
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
-  final bool? allowProtectedAppendWrites;
+  final pulumi.Input<bool>? allowProtectedAppendWrites;
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
-  final bool? allowProtectedAppendWritesAll;
+  final pulumi.Input<bool>? allowProtectedAppendWritesAll;
   /// ImmutabilityPolicy Etag.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The immutability period for the blobs in the container since the policy creation, in days.
-  final int? immutabilityPeriodSinceCreationInDays;
+  final pulumi.Input<int>? immutabilityPeriodSinceCreationInDays;
   /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
-  final String state;
+  final pulumi.Input<String> state;
   /// The ImmutabilityPolicy update history of the blob container.
-  final List<UpdateHistoryPropertyResponse> updateHistory;
+  final pulumi.Input<List<UpdateHistoryPropertyResponse>> updateHistory;
 
   /// Creates a new [ImmutabilityPolicyPropertiesResponse].
   /// [allowProtectedAppendWrites] This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
@@ -41,18 +41,18 @@ class ImmutabilityPolicyPropertiesResponse {
       'etag': etag,
       'immutabilityPeriodSinceCreationInDays': ?immutabilityPeriodSinceCreationInDays,
       'state': state,
-      'updateHistory': pulumi.Input.encodeList<UpdateHistoryPropertyResponse, Map<String, dynamic>>(updateHistory, (value) => value.toMap()),
+      'updateHistory': pulumi.Input.mapInputValue<List<UpdateHistoryPropertyResponse>, List<Map<String, dynamic>>>(updateHistory, (value) => pulumi.Input.encodeList<UpdateHistoryPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ImmutabilityPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImmutabilityPolicyPropertiesResponse(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : map['allowProtectedAppendWrites'] as bool,
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : map['allowProtectedAppendWritesAll'] as bool,
-      etag: map['etag'] as String,
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : map['immutabilityPeriodSinceCreationInDays'] as int,
-      state: map['state'] as String,
-      updateHistory: pulumi.Input.decodeList<UpdateHistoryPropertyResponse>(map['updateHistory'], (value) => UpdateHistoryPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
+      state: (map['state'] as String).input(),
+      updateHistory: (pulumi.Input.decodeList<UpdateHistoryPropertyResponse>(map['updateHistory'], (value) => UpdateHistoryPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dax_cluster_endpoint_response.dart';
 
 /// Definition of Node
 class NodeResponse {
   /// <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
-  final DaxClusterEndpointResponse? endpoint;
+  final pulumi.Input<DaxClusterEndpointResponse>? endpoint;
   /// <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-  final String? nodeCreateTime;
+  final pulumi.Input<String>? nodeCreateTime;
   /// <p>A system-generated identifier for the node.</p>
-  final String? nodeId;
+  final pulumi.Input<String>? nodeId;
   /// <p>The current status of the node. For example: <code>available</code>.</p>
-  final String? nodeStatus;
+  final pulumi.Input<String>? nodeStatus;
   /// <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
-  final String? parameterGroupStatus;
+  final pulumi.Input<String>? parameterGroupStatus;
 
   /// Creates a new [NodeResponse].
   /// [availabilityZone] <p>The Availability Zone (AZ) in which the node has been deployed.</p>
@@ -36,7 +37,7 @@ class NodeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': ?availabilityZone,
-      'endpoint': ?endpoint == null ? null : endpoint!.toMap(),
+      'endpoint': ?pulumi.Input.mapOptionalInputValue<DaxClusterEndpointResponse, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
       'nodeCreateTime': ?nodeCreateTime,
       'nodeId': ?nodeId,
       'nodeStatus': ?nodeStatus,
@@ -46,12 +47,12 @@ class NodeResponse {
 
   factory NodeResponse.fromMap(Map<String, dynamic> map) {
     return NodeResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      endpoint: map['endpoint'] == null ? null : DaxClusterEndpointResponse.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
-      nodeCreateTime: map['nodeCreateTime'] == null ? null : map['nodeCreateTime'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      nodeStatus: map['nodeStatus'] == null ? null : map['nodeStatus'] as String,
-      parameterGroupStatus: map['parameterGroupStatus'] == null ? null : map['parameterGroupStatus'] as String,
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (DaxClusterEndpointResponse.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
+      nodeCreateTime: map['nodeCreateTime'] == null ? null : (map['nodeCreateTime'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeStatus: map['nodeStatus'] == null ? null : (map['nodeStatus'] as String).input(),
+      parameterGroupStatus: map['parameterGroupStatus'] == null ? null : (map['parameterGroupStatus'] as String).input(),
     );
   }
 }

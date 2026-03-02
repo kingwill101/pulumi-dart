@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Cloud Function.
 class CloudFunctionInfoResponse {
   /// Name of a Cloud Function.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Location in which the Cloud Function is deployed.
-  final String location;
+  final pulumi.Input<String> location;
   /// URI of a Cloud Function.
-  final String uri;
+  final pulumi.Input<String> uri;
   /// Latest successfully deployed version id of the Cloud Function.
-  final String versionId;
+  final pulumi.Input<String> versionId;
 
   /// Creates a new [CloudFunctionInfoResponse].
   /// [displayName] Name of a Cloud Function.
@@ -35,10 +36,10 @@ class CloudFunctionInfoResponse {
 
   factory CloudFunctionInfoResponse.fromMap(Map<String, dynamic> map) {
     return CloudFunctionInfoResponse(
-      displayName: map['displayName'] as String,
-      location: map['location'] as String,
-      uri: map['uri'] as String,
-      versionId: map['versionId'] as String,
+      displayName: (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      uri: (map['uri'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

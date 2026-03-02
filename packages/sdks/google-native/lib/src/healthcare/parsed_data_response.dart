@@ -5,7 +5,7 @@ import 'segment_response.dart';
 
 /// The content of a HL7v2 message in a structured format.
 class ParsedDataResponse {
-  final List<SegmentResponse> segments;
+  final pulumi.Input<List<SegmentResponse>> segments;
 
   /// Creates a new [ParsedDataResponse].
   /// [segments] Required.
@@ -15,13 +15,13 @@ class ParsedDataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segments': pulumi.Input.encodeList<SegmentResponse, Map<String, dynamic>>(segments, (value) => value.toMap()),
+      'segments': pulumi.Input.mapInputValue<List<SegmentResponse>, List<Map<String, dynamic>>>(segments, (value) => pulumi.Input.encodeList<SegmentResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ParsedDataResponse.fromMap(Map<String, dynamic> map) {
     return ParsedDataResponse(
-      segments: pulumi.Input.decodeList<SegmentResponse>(map['segments'], (value) => SegmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      segments: (pulumi.Input.decodeList<SegmentResponse>(map['segments'], (value) => SegmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

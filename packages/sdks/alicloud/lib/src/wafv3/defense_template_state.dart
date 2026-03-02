@@ -41,29 +41,18 @@ class DefenseTemplateState {
   /// [templateOrigin] The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
   /// [templateType] The type of the protection rule template. Valid values:
   DefenseTemplateState({
-    pulumi.Output<String>? defenseScene,
-    pulumi.Output<int>? defenseTemplateId,
-    pulumi.Output<String>? defenseTemplateName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<String>>? resourceGroups,
-    pulumi.Output<String>? resourceManagerResourceGroupId,
-    pulumi.Output<List<String>>? resources,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? templateOrigin,
-    pulumi.Output<String>? templateType,
-  }) :
-      defenseScene = pulumi.Input.asOptionalInput<String>(defenseScene),
-      defenseTemplateId = pulumi.Input.asOptionalInput<int>(defenseTemplateId),
-      defenseTemplateName = pulumi.Input.asOptionalInput<String>(defenseTemplateName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      resourceGroups = pulumi.Input.asOptionalInput<List<String>>(resourceGroups),
-      resourceManagerResourceGroupId = pulumi.Input.asOptionalInput<String>(resourceManagerResourceGroupId),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      templateOrigin = pulumi.Input.asOptionalInput<String>(templateOrigin),
-      templateType = pulumi.Input.asOptionalInput<String>(templateType);
+    this.defenseScene,
+    this.defenseTemplateId,
+    this.defenseTemplateName,
+    this.description,
+    this.instanceId,
+    this.resourceGroups,
+    this.resourceManagerResourceGroupId,
+    this.resources,
+    this.status,
+    this.templateOrigin,
+    this.templateType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class DefenseTemplateState {
 
   factory DefenseTemplateState.fromMap(Map<String, dynamic> map) {
     return DefenseTemplateState(
-      defenseScene: map['defenseScene'] == null ? null : pulumi.Output.create<String>(map['defenseScene'] as String),
-      defenseTemplateId: map['defenseTemplateId'] == null ? null : pulumi.Output.create<int>(map['defenseTemplateId'] as int),
-      defenseTemplateName: map['defenseTemplateName'] == null ? null : pulumi.Output.create<String>(map['defenseTemplateName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      resourceGroups: map['resourceGroups'] == null ? null : pulumi.Output.create<List<String>>((map['resourceGroups'] as List).cast<String>()),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerResourceGroupId'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      templateOrigin: map['templateOrigin'] == null ? null : pulumi.Output.create<String>(map['templateOrigin'] as String),
-      templateType: map['templateType'] == null ? null : pulumi.Output.create<String>(map['templateType'] as String),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
+      defenseTemplateId: map['defenseTemplateId'] == null ? null : (map['defenseTemplateId'] as int).input(),
+      defenseTemplateName: map['defenseTemplateName'] == null ? null : (map['defenseTemplateName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      templateOrigin: map['templateOrigin'] == null ? null : (map['templateOrigin'] as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
     );
   }
 }

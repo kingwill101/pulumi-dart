@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTaskExecutionPlacementStrategy {
   /// The field to apply the placement strategy against.
-  final String? field;
+  final pulumi.Input<String>? field;
   /// The type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
   ///
   /// For more information, see the [Placement Strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html) documentation.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetTaskExecutionPlacementStrategy].
   /// [field] The field to apply the placement strategy against.
@@ -26,8 +27,8 @@ class GetTaskExecutionPlacementStrategy {
 
   factory GetTaskExecutionPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionPlacementStrategy(
-      field: map['field'] == null ? null : map['field'] as String,
-      type: map['type'] as String,
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

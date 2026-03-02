@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Files not syncing error object
 class ServerEndpointFilesNotSyncingErrorResponse {
   /// Error code (HResult)
-  final int errorCode;
+  final pulumi.Input<int> errorCode;
   /// Count of persistent files not syncing with the specified error code
-  final double persistentCount;
+  final pulumi.Input<double> persistentCount;
   /// Count of transient files not syncing with the specified error code
-  final double transientCount;
+  final pulumi.Input<double> transientCount;
 
   /// Creates a new [ServerEndpointFilesNotSyncingErrorResponse].
   /// [errorCode] Error code (HResult)
@@ -30,9 +31,9 @@ class ServerEndpointFilesNotSyncingErrorResponse {
 
   factory ServerEndpointFilesNotSyncingErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointFilesNotSyncingErrorResponse(
-      errorCode: map['errorCode'] as int,
-      persistentCount: map['persistentCount'] as double,
-      transientCount: map['transientCount'] as double,
+      errorCode: (map['errorCode'] as int).input(),
+      persistentCount: (map['persistentCount'] as double).input(),
+      transientCount: (map['transientCount'] as double).input(),
     );
   }
 }

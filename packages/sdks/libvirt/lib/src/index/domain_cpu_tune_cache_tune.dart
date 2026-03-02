@@ -6,13 +6,13 @@ import 'domain_cpu_tune_cache_tune_monitor.dart';
 
 class DomainCpuTuneCacheTune {
   /// Configures the cache-related tuning parameters for the domain's CPU.
-  final List<DomainCpuTuneCacheTuneCach>? caches;
+  final pulumi.Input<List<DomainCpuTuneCacheTuneCach>>? caches;
   /// Sets the identifier for the overall cache tuning configuration related to the CPUs.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies monitoring options for observing the effectiveness of cache tuning.
-  final List<DomainCpuTuneCacheTuneMonitor>? monitors;
+  final pulumi.Input<List<DomainCpuTuneCacheTuneMonitor>>? monitors;
   /// Configures the virtual CPUs associated with cache tuning, determining which CPUs are affected by the cache settings.
-  final String? vcpus;
+  final pulumi.Input<String>? vcpus;
 
   /// Creates a new [DomainCpuTuneCacheTune].
   /// [caches] Configures the cache-related tuning parameters for the domain's CPU.
@@ -28,19 +28,19 @@ class DomainCpuTuneCacheTune {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caches': ?caches == null ? null : pulumi.Input.encodeList<DomainCpuTuneCacheTuneCach, Map<String, dynamic>>(caches!, (value) => value.toMap()),
+      'caches': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuTuneCacheTuneCach>, List<Map<String, dynamic>>>(caches, (value) => pulumi.Input.encodeList<DomainCpuTuneCacheTuneCach, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
-      'monitors': ?monitors == null ? null : pulumi.Input.encodeList<DomainCpuTuneCacheTuneMonitor, Map<String, dynamic>>(monitors!, (value) => value.toMap()),
+      'monitors': ?pulumi.Input.mapOptionalInputValue<List<DomainCpuTuneCacheTuneMonitor>, List<Map<String, dynamic>>>(monitors, (value) => pulumi.Input.encodeList<DomainCpuTuneCacheTuneMonitor, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vcpus': ?vcpus,
     };
   }
 
   factory DomainCpuTuneCacheTune.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTune(
-      caches: map['caches'] == null ? null : pulumi.Input.decodeList<DomainCpuTuneCacheTuneCach>(map['caches'], (value) => DomainCpuTuneCacheTuneCach.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      monitors: map['monitors'] == null ? null : pulumi.Input.decodeList<DomainCpuTuneCacheTuneMonitor>(map['monitors'], (value) => DomainCpuTuneCacheTuneMonitor.fromMap((value as Map).cast<String, dynamic>())),
-      vcpus: map['vcpus'] == null ? null : map['vcpus'] as String,
+      caches: map['caches'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneCach>(map['caches'], (value) => DomainCpuTuneCacheTuneCach.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneMonitor>(map['monitors'], (value) => DomainCpuTuneCacheTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as String).input(),
     );
   }
 }

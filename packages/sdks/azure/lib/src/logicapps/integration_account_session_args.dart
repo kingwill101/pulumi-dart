@@ -22,15 +22,11 @@ class IntegrationAccountSessionArgs {
   /// [name] The name which should be used for this Logic App Integration Account Session. Changing this forces a new Logic App Integration Account Session to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Session should exist. Changing this forces a new Logic App Integration Account Session to be created.
   IntegrationAccountSessionArgs({
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.content,
+    required this.integrationAccountName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class IntegrationAccountSessionArgs {
 
   factory IntegrationAccountSessionArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSessionArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      content: (map['content'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

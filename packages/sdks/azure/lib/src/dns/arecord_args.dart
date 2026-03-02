@@ -35,21 +35,14 @@ class ARecordArgs {
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   ARecordArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? records,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetResourceId,
-    required pulumi.Output<int> ttl,
-    required pulumi.Output<String> zoneName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      records = pulumi.Input.asOptionalInput<List<String>>(records),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      ttl = pulumi.Input.asInput<int>(ttl),
-      zoneName = pulumi.Input.asInput<String>(zoneName);
+    this.name,
+    this.records,
+    required this.resourceGroupName,
+    this.tags,
+    this.targetResourceId,
+    required this.ttl,
+    required this.zoneName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ARecordArgs {
 
   factory ARecordArgs.fromMap(Map<String, dynamic> map) {
     return ARecordArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      records: map['records'] == null ? null : pulumi.Output.create<List<String>>((map['records'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      ttl: pulumi.Output.create<int>(map['ttl'] as int),
-      zoneName: pulumi.Output.create<String>(map['zoneName'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      records: map['records'] == null ? null : ((map['records'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      ttl: (map['ttl'] as int).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class MoveResourceArgs {
   /// [properties] Defines the move resource properties.
   /// [resourceGroupName] The Resource Group Name.
   MoveResourceArgs({
-    required pulumi.Output<String> moveCollectionName,
-    pulumi.Output<String>? moveResourceName,
-    pulumi.Output<MoveResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      moveCollectionName = pulumi.Input.asInput<String>(moveCollectionName),
-      moveResourceName = pulumi.Input.asOptionalInput<String>(moveResourceName),
-      properties = pulumi.Input.asOptionalInput<MoveResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.moveCollectionName,
+    this.moveResourceName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MoveResourceArgs {
 
   factory MoveResourceArgs.fromMap(Map<String, dynamic> map) {
     return MoveResourceArgs(
-      moveCollectionName: pulumi.Output.create<String>(map['moveCollectionName'] as String),
-      moveResourceName: map['moveResourceName'] == null ? null : pulumi.Output.create<String>(map['moveResourceName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MoveResourceProperties>(MoveResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      moveCollectionName: (map['moveCollectionName'] as String).input(),
+      moveResourceName: map['moveResourceName'] == null ? null : (map['moveResourceName'] as String).input(),
+      properties: map['properties'] == null ? null : (MoveResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetWorkloadGroupArgs {
   /// [serverName] The name of the server.
   /// [workloadGroupName] The name of the workload group.
   GetWorkloadGroupArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> workloadGroupName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      workloadGroupName = pulumi.Input.asInput<String>(workloadGroupName);
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.workloadGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetWorkloadGroupArgs {
 
   factory GetWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadGroupArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      workloadGroupName: pulumi.Output.create<String>(map['workloadGroupName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      workloadGroupName: (map['workloadGroupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionBackendServiceDynamicForwardingIpPortSelection {
   /// A boolean flag enabling IP:PORT based dynamic forwarding.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetRegionBackendServiceDynamicForwardingIpPortSelection].
   /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
@@ -19,7 +20,7 @@ class GetRegionBackendServiceDynamicForwardingIpPortSelection {
 
   factory GetRegionBackendServiceDynamicForwardingIpPortSelection.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceDynamicForwardingIpPortSelection(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

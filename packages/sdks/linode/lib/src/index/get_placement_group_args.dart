@@ -13,9 +13,8 @@ class GetPlacementGroupArgs {
   /// Creates a new [GetPlacementGroupArgs].
   /// [id] The ID of the Placement Group.
   GetPlacementGroupArgs({
-    required pulumi.Output<int> id,
-  }) :
-      id = pulumi.Input.asInput<int>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetPlacementGroupArgs {
 
   factory GetPlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupArgs(
-      id: pulumi.Output.create<int>(map['id'] as int),
+      id: (map['id'] as int).input(),
     );
   }
 }

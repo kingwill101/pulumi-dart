@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterWorkloadIdentityConfig {
   /// The workload pool to attach all Kubernetes service accounts to.
-  final String workloadPool;
+  final pulumi.Input<String> workloadPool;
 
   /// Creates a new [GetClusterWorkloadIdentityConfig].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
@@ -19,7 +20,7 @@ class GetClusterWorkloadIdentityConfig {
 
   factory GetClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterWorkloadIdentityConfig(
-      workloadPool: map['workloadPool'] as String,
+      workloadPool: (map['workloadPool'] as String).input(),
     );
   }
 }

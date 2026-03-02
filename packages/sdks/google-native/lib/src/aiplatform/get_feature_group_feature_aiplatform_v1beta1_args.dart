@@ -18,15 +18,11 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetFeatureGroupFeatureAiplatformV1beta1Args({
-    required pulumi.Output<String> featureGroupId,
-    required pulumi.Output<String> featureId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      featureGroupId = pulumi.Input.asInput<String>(featureGroupId),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.featureGroupId,
+    required this.featureId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
 
   factory GetFeatureGroupFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetFeatureGroupFeatureAiplatformV1beta1Args(
-      featureGroupId: pulumi.Output.create<String>(map['featureGroupId'] as String),
-      featureId: pulumi.Output.create<String>(map['featureId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      featureGroupId: (map['featureGroupId'] as String).input(),
+      featureId: (map['featureId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

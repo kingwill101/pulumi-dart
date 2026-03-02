@@ -19,13 +19,10 @@ class GetFileServicePropertiesArgs {
   /// [fileServicesName] The name of the file Service within the specified storage account. File Service Name must be "default"
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetFileServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> fileServicesName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      fileServicesName = pulumi.Input.asInput<String>(fileServicesName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.fileServicesName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFileServicePropertiesArgs {
 
   factory GetFileServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return GetFileServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      fileServicesName: pulumi.Output.create<String>(map['fileServicesName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      fileServicesName: (map['fileServicesName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HyperVToAzStack disk input.
 class HyperVToAzStackHCIDiskInput {
   /// Gets or sets the type of the virtual hard disk, vhd or vhdx.
-  final String diskFileFormat;
+  final pulumi.Input<String> diskFileFormat;
   /// Gets or sets the disk Id.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// Gets or sets the disk size in GB.
-  final double diskSizeGB;
+  final pulumi.Input<double> diskSizeGB;
   /// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
   /// disk.
-  final bool? isDynamic;
+  final pulumi.Input<bool>? isDynamic;
   /// Gets or sets a value indicating whether disk is os disk.
-  final bool isOsDisk;
+  final pulumi.Input<bool> isOsDisk;
   /// Gets or sets the target storage account ARM Id.
-  final String? storageContainerId;
+  final pulumi.Input<String>? storageContainerId;
 
   /// Creates a new [HyperVToAzStackHCIDiskInput].
   /// [diskFileFormat] Gets or sets the type of the virtual hard disk, vhd or vhdx.
@@ -46,12 +47,12 @@ class HyperVToAzStackHCIDiskInput {
 
   factory HyperVToAzStackHCIDiskInput.fromMap(Map<String, dynamic> map) {
     return HyperVToAzStackHCIDiskInput(
-      diskFileFormat: map['diskFileFormat'] as String,
-      diskId: map['diskId'] as String,
-      diskSizeGB: map['diskSizeGB'] as double,
-      isDynamic: map['isDynamic'] == null ? null : map['isDynamic'] as bool,
-      isOsDisk: map['isOsDisk'] as bool,
-      storageContainerId: map['storageContainerId'] == null ? null : map['storageContainerId'] as String,
+      diskFileFormat: (map['diskFileFormat'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskSizeGB: (map['diskSizeGB'] as double).input(),
+      isDynamic: map['isDynamic'] == null ? null : (map['isDynamic'] as bool).input(),
+      isOsDisk: (map['isOsDisk'] as bool).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
     );
   }
 }

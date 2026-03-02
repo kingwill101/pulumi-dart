@@ -36,25 +36,16 @@ class ConnectionState {
   /// [tags] Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ConnectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? connectedDeviceId,
-    pulumi.Output<String>? connectedLinkId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? deviceId,
-    pulumi.Output<String>? globalNetworkId,
-    pulumi.Output<String>? linkId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      connectedDeviceId = pulumi.Input.asOptionalInput<String>(connectedDeviceId),
-      connectedLinkId = pulumi.Input.asOptionalInput<String>(connectedLinkId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceId = pulumi.Input.asOptionalInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asOptionalInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asOptionalInput<String>(linkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.connectedDeviceId,
+    this.connectedLinkId,
+    this.description,
+    this.deviceId,
+    this.globalNetworkId,
+    this.linkId,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      connectedDeviceId: map['connectedDeviceId'] == null ? null : pulumi.Output.create<String>(map['connectedDeviceId'] as String),
-      connectedLinkId: map['connectedLinkId'] == null ? null : pulumi.Output.create<String>(map['connectedLinkId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      deviceId: map['deviceId'] == null ? null : pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: map['globalNetworkId'] == null ? null : pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      linkId: map['linkId'] == null ? null : pulumi.Output.create<String>(map['linkId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      connectedDeviceId: map['connectedDeviceId'] == null ? null : (map['connectedDeviceId'] as String).input(),
+      connectedLinkId: map['connectedLinkId'] == null ? null : (map['connectedLinkId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

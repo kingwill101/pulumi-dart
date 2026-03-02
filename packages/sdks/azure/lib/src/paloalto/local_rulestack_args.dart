@@ -40,27 +40,17 @@ class LocalRulestackArgs {
   /// [urlFilteringProfile] The setting to use for the URL Filtering Profile. Possible values include `BestPractice`, and `Custom`.
   /// [vulnerabilityProfile] The setting to use for the Vulnerability Profile. Possible values include `BestPractice`, and `Custom`.
   LocalRulestackArgs({
-    pulumi.Output<String>? antiSpywareProfile,
-    pulumi.Output<String>? antiVirusProfile,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? dnsSubscription,
-    pulumi.Output<String>? fileBlockingProfile,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? urlFilteringProfile,
-    pulumi.Output<String>? vulnerabilityProfile,
-  }) :
-      antiSpywareProfile = pulumi.Input.asOptionalInput<String>(antiSpywareProfile),
-      antiVirusProfile = pulumi.Input.asOptionalInput<String>(antiVirusProfile),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsSubscription = pulumi.Input.asOptionalInput<String>(dnsSubscription),
-      fileBlockingProfile = pulumi.Input.asOptionalInput<String>(fileBlockingProfile),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      urlFilteringProfile = pulumi.Input.asOptionalInput<String>(urlFilteringProfile),
-      vulnerabilityProfile = pulumi.Input.asOptionalInput<String>(vulnerabilityProfile);
+    this.antiSpywareProfile,
+    this.antiVirusProfile,
+    this.description,
+    this.dnsSubscription,
+    this.fileBlockingProfile,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.urlFilteringProfile,
+    this.vulnerabilityProfile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class LocalRulestackArgs {
 
   factory LocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackArgs(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : pulumi.Output.create<String>(map['antiSpywareProfile'] as String),
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : pulumi.Output.create<String>(map['antiVirusProfile'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      dnsSubscription: map['dnsSubscription'] == null ? null : pulumi.Output.create<String>(map['dnsSubscription'] as String),
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : pulumi.Output.create<String>(map['fileBlockingProfile'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : pulumi.Output.create<String>(map['urlFilteringProfile'] as String),
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : pulumi.Output.create<String>(map['vulnerabilityProfile'] as String),
+      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile'] as String).input(),
+      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription'] as String).input(),
+      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
+      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile'] as String).input(),
     );
   }
 }

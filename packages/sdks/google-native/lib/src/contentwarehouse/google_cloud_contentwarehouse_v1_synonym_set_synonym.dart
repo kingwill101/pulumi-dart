@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a list of words given by the customer All these words are synonyms of each other.
 class GoogleCloudContentwarehouseV1SynonymSetSynonym {
   /// For example: sale, invoice, bill, order
-  final List<String>? words;
+  final pulumi.Input<List<String>>? words;
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonym].
   /// [words] For example: sale, invoice, bill, order
@@ -20,7 +21,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1SynonymSetSynonym(
-      words: map['words'] == null ? null : (map['words'] as List).cast<String>(),
+      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
     );
   }
 }

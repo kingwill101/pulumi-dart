@@ -53,33 +53,20 @@ class PlanState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Specifies if the App Service Plan should be Zone Redundant. Changing this forces a new resource to be created.
   PlanState({
-    pulumi.Output<String>? appServiceEnvironmentId,
-    pulumi.Output<bool>? isXenon,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? maximumElasticWorkerCount,
-    pulumi.Output<int>? maximumNumberOfWorkers,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? perSiteScaling,
-    pulumi.Output<bool>? reserved,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<PlanSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? zoneRedundant,
-  }) :
-      appServiceEnvironmentId = pulumi.Input.asOptionalInput<String>(appServiceEnvironmentId),
-      isXenon = pulumi.Input.asOptionalInput<bool>(isXenon),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maximumElasticWorkerCount = pulumi.Input.asOptionalInput<int>(maximumElasticWorkerCount),
-      maximumNumberOfWorkers = pulumi.Input.asOptionalInput<int>(maximumNumberOfWorkers),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      perSiteScaling = pulumi.Input.asOptionalInput<bool>(perSiteScaling),
-      reserved = pulumi.Input.asOptionalInput<bool>(reserved),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<PlanSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zoneRedundant = pulumi.Input.asOptionalInput<bool>(zoneRedundant);
+    this.appServiceEnvironmentId,
+    this.isXenon,
+    this.kind,
+    this.location,
+    this.maximumElasticWorkerCount,
+    this.maximumNumberOfWorkers,
+    this.name,
+    this.perSiteScaling,
+    this.reserved,
+    this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.zoneRedundant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class PlanState {
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['appServiceEnvironmentId'] as String),
-      isXenon: map['isXenon'] == null ? null : pulumi.Output.create<bool>(map['isXenon'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : pulumi.Output.create<int>(map['maximumElasticWorkerCount'] as int),
-      maximumNumberOfWorkers: map['maximumNumberOfWorkers'] == null ? null : pulumi.Output.create<int>(map['maximumNumberOfWorkers'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      perSiteScaling: map['perSiteScaling'] == null ? null : pulumi.Output.create<bool>(map['perSiteScaling'] as bool),
-      reserved: map['reserved'] == null ? null : pulumi.Output.create<bool>(map['reserved'] as bool),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<PlanSku>(PlanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zoneRedundant: map['zoneRedundant'] == null ? null : pulumi.Output.create<bool>(map['zoneRedundant'] as bool),
+      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId'] as String).input(),
+      isXenon: map['isXenon'] == null ? null : (map['isXenon'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount'] as int).input(),
+      maximumNumberOfWorkers: map['maximumNumberOfWorkers'] == null ? null : (map['maximumNumberOfWorkers'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      perSiteScaling: map['perSiteScaling'] == null ? null : (map['perSiteScaling'] as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (PlanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
     );
   }
 }

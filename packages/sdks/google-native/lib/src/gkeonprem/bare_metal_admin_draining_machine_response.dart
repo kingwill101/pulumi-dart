@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// BareMetalAdminDrainingMachine represents the machines that are currently draining.
 class BareMetalAdminDrainingMachineResponse {
   /// Draining machine IP address.
-  final String nodeIp;
+  final pulumi.Input<String> nodeIp;
   /// The count of pods yet to drain.
-  final int podCount;
+  final pulumi.Input<int> podCount;
 
   /// Creates a new [BareMetalAdminDrainingMachineResponse].
   /// [nodeIp] Draining machine IP address.
@@ -25,8 +26,8 @@ class BareMetalAdminDrainingMachineResponse {
 
   factory BareMetalAdminDrainingMachineResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminDrainingMachineResponse(
-      nodeIp: map['nodeIp'] as String,
-      podCount: map['podCount'] as int,
+      nodeIp: (map['nodeIp'] as String).input(),
+      podCount: (map['podCount'] as int).input(),
     );
   }
 }

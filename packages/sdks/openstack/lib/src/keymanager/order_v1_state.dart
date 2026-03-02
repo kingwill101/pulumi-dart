@@ -47,31 +47,19 @@ class OrderV1State {
   /// [type] The type of key to be generated. Must be one of `asymmetric`, `key`.
   /// [updated] The date the order was last updated.
   OrderV1State({
-    pulumi.Output<String>? containerRef,
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? creatorId,
-    pulumi.Output<OrderV1Meta>? meta,
-    pulumi.Output<String>? orderRef,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretRef,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subStatus,
-    pulumi.Output<String>? subStatusMessage,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? updated,
-  }) :
-      containerRef = pulumi.Input.asOptionalInput<String>(containerRef),
-      created = pulumi.Input.asOptionalInput<String>(created),
-      creatorId = pulumi.Input.asOptionalInput<String>(creatorId),
-      meta = pulumi.Input.asOptionalInput<OrderV1Meta>(meta),
-      orderRef = pulumi.Input.asOptionalInput<String>(orderRef),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretRef = pulumi.Input.asOptionalInput<String>(secretRef),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subStatus = pulumi.Input.asOptionalInput<String>(subStatus),
-      subStatusMessage = pulumi.Input.asOptionalInput<String>(subStatusMessage),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      updated = pulumi.Input.asOptionalInput<String>(updated);
+    this.containerRef,
+    this.created,
+    this.creatorId,
+    this.meta,
+    this.orderRef,
+    this.region,
+    this.secretRef,
+    this.status,
+    this.subStatus,
+    this.subStatusMessage,
+    this.type,
+    this.updated,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class OrderV1State {
 
   factory OrderV1State.fromMap(Map<String, dynamic> map) {
     return OrderV1State(
-      containerRef: map['containerRef'] == null ? null : pulumi.Output.create<String>(map['containerRef'] as String),
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      creatorId: map['creatorId'] == null ? null : pulumi.Output.create<String>(map['creatorId'] as String),
-      meta: map['meta'] == null ? null : pulumi.Output.create<OrderV1Meta>(OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())),
-      orderRef: map['orderRef'] == null ? null : pulumi.Output.create<String>(map['orderRef'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretRef: map['secretRef'] == null ? null : pulumi.Output.create<String>(map['secretRef'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subStatus: map['subStatus'] == null ? null : pulumi.Output.create<String>(map['subStatus'] as String),
-      subStatusMessage: map['subStatusMessage'] == null ? null : pulumi.Output.create<String>(map['subStatusMessage'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
+      containerRef: map['containerRef'] == null ? null : (map['containerRef'] as String).input(),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      creatorId: map['creatorId'] == null ? null : (map['creatorId'] as String).input(),
+      meta: map['meta'] == null ? null : (OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
+      orderRef: map['orderRef'] == null ? null : (map['orderRef'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subStatus: map['subStatus'] == null ? null : (map['subStatus'] as String).input(),
+      subStatusMessage: map['subStatusMessage'] == null ? null : (map['subStatusMessage'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of the import pipeline source.
 class ImportPipelineSourcePropertiesResponse {
   /// They key vault secret uri to obtain the source storage SAS token.
-  final String keyVaultUri;
+  final pulumi.Input<String> keyVaultUri;
   /// The type of source for the import pipeline.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The source uri of the import pipeline.
   /// When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
   /// When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ImportPipelineSourcePropertiesResponse].
   /// [keyVaultUri] They key vault secret uri to obtain the source storage SAS token.
@@ -32,9 +33,9 @@ class ImportPipelineSourcePropertiesResponse {
 
   factory ImportPipelineSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportPipelineSourcePropertiesResponse(
-      keyVaultUri: map['keyVaultUri'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

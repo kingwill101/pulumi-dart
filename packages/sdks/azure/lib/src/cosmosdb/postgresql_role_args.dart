@@ -19,13 +19,10 @@ class PostgresqlRoleArgs {
   /// [name] The name which should be used for this Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   /// [password] The password of the Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   PostgresqlRoleArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password);
+    required this.clusterId,
+    this.name,
+    required this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PostgresqlRoleArgs {
 
   factory PostgresqlRoleArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlRoleArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
     );
   }
 }

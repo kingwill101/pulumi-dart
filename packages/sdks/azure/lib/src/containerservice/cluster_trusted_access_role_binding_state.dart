@@ -19,15 +19,11 @@ class ClusterTrustedAccessRoleBindingState {
   /// [roles] A list of roles to bind, each item is a resource type qualified role name.
   /// [sourceResourceId] The ARM resource ID of source resource that trusted access is configured for. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
   ClusterTrustedAccessRoleBindingState({
-    pulumi.Output<String>? kubernetesClusterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? roles,
-    pulumi.Output<String>? sourceResourceId,
-  }) :
-      kubernetesClusterId = pulumi.Input.asOptionalInput<String>(kubernetesClusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles),
-      sourceResourceId = pulumi.Input.asOptionalInput<String>(sourceResourceId);
+    this.kubernetesClusterId,
+    this.name,
+    this.roles,
+    this.sourceResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ClusterTrustedAccessRoleBindingState {
 
   factory ClusterTrustedAccessRoleBindingState.fromMap(Map<String, dynamic> map) {
     return ClusterTrustedAccessRoleBindingState(
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : pulumi.Output.create<String>(map['kubernetesClusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      sourceResourceId: map['sourceResourceId'] == null ? null : pulumi.Output.create<String>(map['sourceResourceId'] as String),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
     );
   }
 }

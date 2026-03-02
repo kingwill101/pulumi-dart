@@ -30,21 +30,14 @@ class DevBoxDefinitionState {
   /// [skuName] The name of the SKU for the Dev Center Dev Box Definition.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Dev Box Definition.
   DevBoxDefinitionState({
-    pulumi.Output<String>? devCenterId,
-    pulumi.Output<bool>? hibernateSupportEnabled,
-    pulumi.Output<String>? imageReferenceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      devCenterId = pulumi.Input.asOptionalInput<String>(devCenterId),
-      hibernateSupportEnabled = pulumi.Input.asOptionalInput<bool>(hibernateSupportEnabled),
-      imageReferenceId = pulumi.Input.asOptionalInput<String>(imageReferenceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.devCenterId,
+    this.hibernateSupportEnabled,
+    this.imageReferenceId,
+    this.location,
+    this.name,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class DevBoxDefinitionState {
 
   factory DevBoxDefinitionState.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionState(
-      devCenterId: map['devCenterId'] == null ? null : pulumi.Output.create<String>(map['devCenterId'] as String),
-      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : pulumi.Output.create<bool>(map['hibernateSupportEnabled'] as bool),
-      imageReferenceId: map['imageReferenceId'] == null ? null : pulumi.Output.create<String>(map['imageReferenceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
+      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : (map['hibernateSupportEnabled'] as bool).input(),
+      imageReferenceId: map['imageReferenceId'] == null ? null : (map['imageReferenceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

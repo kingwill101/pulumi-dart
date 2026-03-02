@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBasicAccelerateIpEndpointRelationsRelation {
   /// The ID of the Basic Accelerate IP.
-  final String accelerateIpId;
+  final pulumi.Input<String> accelerateIpId;
   /// The ID of the Global Accelerator Basic Accelerator instance.
-  final String acceleratorId;
+  final pulumi.Input<String> acceleratorId;
   /// The name of the Basic Endpoint.
-  final String basicEndpointName;
+  final pulumi.Input<String> basicEndpointName;
   /// The address of the Basic Endpoint.
-  final String endpointAddress;
+  final pulumi.Input<String> endpointAddress;
   /// The ID of the Basic Endpoint.
-  final String endpointId;
+  final pulumi.Input<String> endpointId;
   /// The sub address of the Basic Endpoint.
-  final String endpointSubAddress;
+  final pulumi.Input<String> endpointSubAddress;
   /// The sub address type of the Basic Endpoint.
-  final String endpointSubAddressType;
+  final pulumi.Input<String> endpointSubAddressType;
   /// The type of the Basic Endpoint.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The zone id of the Basic Endpoint.
-  final String endpointZoneId;
+  final pulumi.Input<String> endpointZoneId;
   /// The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The address of the Basic Accelerate IP.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBasicAccelerateIpEndpointRelationsRelation].
   /// [accelerateIpId] The ID of the Basic Accelerate IP.
@@ -74,18 +75,18 @@ class GetBasicAccelerateIpEndpointRelationsRelation {
 
   factory GetBasicAccelerateIpEndpointRelationsRelation.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpEndpointRelationsRelation(
-      accelerateIpId: map['accelerateIpId'] as String,
-      acceleratorId: map['acceleratorId'] as String,
-      basicEndpointName: map['basicEndpointName'] as String,
-      endpointAddress: map['endpointAddress'] as String,
-      endpointId: map['endpointId'] as String,
-      endpointSubAddress: map['endpointSubAddress'] as String,
-      endpointSubAddressType: map['endpointSubAddressType'] as String,
-      endpointType: map['endpointType'] as String,
-      endpointZoneId: map['endpointZoneId'] as String,
-      id: map['id'] as String,
-      ipAddress: map['ipAddress'] as String,
-      status: map['status'] as String,
+      accelerateIpId: (map['accelerateIpId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      basicEndpointName: (map['basicEndpointName'] as String).input(),
+      endpointAddress: (map['endpointAddress'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      endpointSubAddress: (map['endpointSubAddress'] as String).input(),
+      endpointSubAddressType: (map['endpointSubAddressType'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      endpointZoneId: (map['endpointZoneId'] as String).input(),
+      id: (map['id'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

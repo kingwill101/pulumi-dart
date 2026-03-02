@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OtsBackupPlanOtsDetail {
   /// The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-  final List<String>? tableNames;
+  final pulumi.Input<List<String>>? tableNames;
 
   /// Creates a new [OtsBackupPlanOtsDetail].
   /// [tableNames] The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
@@ -19,7 +20,7 @@ class OtsBackupPlanOtsDetail {
 
   factory OtsBackupPlanOtsDetail.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanOtsDetail(
-      tableNames: map['tableNames'] == null ? null : (map['tableNames'] as List).cast<String>(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
     );
   }
 }

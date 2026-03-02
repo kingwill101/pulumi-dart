@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The gateway installation reference
 class ConnectionGatewayReference {
   /// Resource reference id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource reference location
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource reference name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Resource reference type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ConnectionGatewayReference].
   /// [id] Resource reference id
@@ -35,10 +36,10 @@ class ConnectionGatewayReference {
 
   factory ConnectionGatewayReference.fromMap(Map<String, dynamic> map) {
     return ConnectionGatewayReference(
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

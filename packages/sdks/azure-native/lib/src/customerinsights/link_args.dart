@@ -53,33 +53,20 @@ class LinkArgs {
   /// [targetEntityType] Type of target entity.
   /// [targetEntityTypeName] Name of the target Entity Type.
   LinkArgs({
-    pulumi.Output<Map<String, String>>? description,
-    pulumi.Output<Map<String, String>>? displayName,
-    required pulumi.Output<String> hubName,
-    pulumi.Output<String>? linkName,
-    pulumi.Output<List<TypePropertiesMapping>>? mappings,
-    pulumi.Output<InstanceOperationType>? operationType,
-    required pulumi.Output<List<ParticipantPropertyReference>> participantPropertyReferences,
-    pulumi.Output<bool>? referenceOnly,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<EntityType> sourceEntityType,
-    required pulumi.Output<String> sourceEntityTypeName,
-    required pulumi.Output<EntityType> targetEntityType,
-    required pulumi.Output<String> targetEntityTypeName,
-  }) :
-      description = pulumi.Input.asOptionalInput<Map<String, String>>(description),
-      displayName = pulumi.Input.asOptionalInput<Map<String, String>>(displayName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      linkName = pulumi.Input.asOptionalInput<String>(linkName),
-      mappings = pulumi.Input.asOptionalInput<List<TypePropertiesMapping>>(mappings),
-      operationType = pulumi.Input.asOptionalInput<InstanceOperationType>(operationType),
-      participantPropertyReferences = pulumi.Input.asInput<List<ParticipantPropertyReference>>(participantPropertyReferences),
-      referenceOnly = pulumi.Input.asOptionalInput<bool>(referenceOnly),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceEntityType = pulumi.Input.asInput<EntityType>(sourceEntityType),
-      sourceEntityTypeName = pulumi.Input.asInput<String>(sourceEntityTypeName),
-      targetEntityType = pulumi.Input.asInput<EntityType>(targetEntityType),
-      targetEntityTypeName = pulumi.Input.asInput<String>(targetEntityTypeName);
+    this.description,
+    this.displayName,
+    required this.hubName,
+    this.linkName,
+    this.mappings,
+    this.operationType,
+    required this.participantPropertyReferences,
+    this.referenceOnly,
+    required this.resourceGroupName,
+    required this.sourceEntityType,
+    required this.sourceEntityTypeName,
+    required this.targetEntityType,
+    required this.targetEntityTypeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<Map<String, String>>((map['description'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<Map<String, String>>((map['displayName'] as Map).cast<String, String>()),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      linkName: map['linkName'] == null ? null : pulumi.Output.create<String>(map['linkName'] as String),
-      mappings: map['mappings'] == null ? null : pulumi.Output.create<List<TypePropertiesMapping>>(pulumi.Input.decodeList<TypePropertiesMapping>(map['mappings'], (value) => TypePropertiesMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      operationType: map['operationType'] == null ? null : pulumi.Output.create<InstanceOperationType>(InstanceOperationType.fromValue(map['operationType'] as String)),
-      participantPropertyReferences: pulumi.Output.create<List<ParticipantPropertyReference>>(pulumi.Input.decodeList<ParticipantPropertyReference>(map['participantPropertyReferences'], (value) => ParticipantPropertyReference.fromMap((value as Map).cast<String, dynamic>()))),
-      referenceOnly: map['referenceOnly'] == null ? null : pulumi.Output.create<bool>(map['referenceOnly'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceEntityType: pulumi.Output.create<EntityType>(EntityType.fromValue(map['sourceEntityType'] as String)),
-      sourceEntityTypeName: pulumi.Output.create<String>(map['sourceEntityTypeName'] as String),
-      targetEntityType: pulumi.Output.create<EntityType>(EntityType.fromValue(map['targetEntityType'] as String)),
-      targetEntityTypeName: pulumi.Output.create<String>(map['targetEntityTypeName'] as String),
+      description: map['description'] == null ? null : ((map['description'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      hubName: (map['hubName'] as String).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
+      mappings: map['mappings'] == null ? null : (pulumi.Input.decodeList<TypePropertiesMapping>(map['mappings'], (value) => TypePropertiesMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationType: map['operationType'] == null ? null : (InstanceOperationType.fromValue(map['operationType'] as String)).input(),
+      participantPropertyReferences: (pulumi.Input.decodeList<ParticipantPropertyReference>(map['participantPropertyReferences'], (value) => ParticipantPropertyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      referenceOnly: map['referenceOnly'] == null ? null : (map['referenceOnly'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceEntityType: (EntityType.fromValue(map['sourceEntityType'] as String)).input(),
+      sourceEntityTypeName: (map['sourceEntityTypeName'] as String).input(),
+      targetEntityType: (EntityType.fromValue(map['targetEntityType'] as String)).input(),
+      targetEntityTypeName: (map['targetEntityTypeName'] as String).input(),
     );
   }
 }

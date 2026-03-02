@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_response.dart';
 import 'data_base_migration_response.dart';
 import 'sql_server_database_resource_properties_response_backup_information.dart';
@@ -7,47 +8,47 @@ import 'sql_server_database_resource_properties_response_database_options.dart';
 
 /// The properties of Arc Sql Server database resource
 class SqlServerDatabaseResourcePropertiesResponse {
-  final SqlServerDatabaseResourcePropertiesResponseBackupInformation? backupInformation;
+  final pulumi.Input<SqlServerDatabaseResourcePropertiesResponseBackupInformation>? backupInformation;
   /// The backup profile for the SQL server.
-  final BackupPolicyResponse? backupPolicy;
+  final pulumi.Input<BackupPolicyResponse>? backupPolicy;
   /// Collation of the database.
-  final String? collationName;
+  final pulumi.Input<String>? collationName;
   /// Compatibility level of the database
-  final int? compatibilityLevel;
+  final pulumi.Input<int>? compatibilityLevel;
   /// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
-  final String? createMode;
+  final pulumi.Input<String>? createMode;
   /// Total size in MB for the data (mdf and ndf) files for this database.
-  final double? dataFileSizeMB;
+  final pulumi.Input<double>? dataFileSizeMB;
   /// Creation date of the database.
-  final String? databaseCreationDate;
+  final pulumi.Input<String>? databaseCreationDate;
   /// List of features that are enabled for the database
-  final SqlServerDatabaseResourcePropertiesResponseDatabaseOptions? databaseOptions;
+  final pulumi.Input<SqlServerDatabaseResourcePropertiesResponseDatabaseOptions>? databaseOptions;
   /// This records the earliest start date and time that restore is available for this database (ISO8601 format).
-  final String earliestRestoreDate;
+  final pulumi.Input<String> earliestRestoreDate;
   /// Whether the database is read only or not.
-  final bool? isReadOnly;
+  final pulumi.Input<bool>? isReadOnly;
   /// The time when last successful database upload was performed.
-  final String lastDatabaseUploadTime;
+  final pulumi.Input<String> lastDatabaseUploadTime;
   /// Total size in MB for the log (ldf) files for this database.
-  final double? logFileSizeMB;
+  final pulumi.Input<double>? logFileSizeMB;
   /// Migration related configuration.
-  final DataBaseMigrationResponse? migration;
+  final pulumi.Input<DataBaseMigrationResponse>? migration;
   /// The provisioning state of the Arc-enabled SQL Server database resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Status of the database.
-  final String? recoveryMode;
+  final pulumi.Input<String>? recoveryMode;
   /// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
-  final String? restorePointInTime;
+  final pulumi.Input<String>? restorePointInTime;
   /// Size of the database.
-  final double? sizeMB;
+  final pulumi.Input<double>? sizeMB;
   /// The name of the source database associated with create operation of this database.
-  final String? sourceDatabaseId;
+  final pulumi.Input<String>? sourceDatabaseId;
   /// Space left of the database.
-  final double? spaceAvailableMB;
+  final pulumi.Input<double>? spaceAvailableMB;
   /// State of the database.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The unique ID of the hybrid machine that this resource belongs to.
-  final String vmId;
+  final pulumi.Input<String> vmId;
 
   /// Creates a new [SqlServerDatabaseResourcePropertiesResponse].
   /// [backupInformation] Optional.
@@ -97,19 +98,19 @@ class SqlServerDatabaseResourcePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupInformation': ?backupInformation == null ? null : backupInformation!.toMap(),
-      'backupPolicy': ?backupPolicy == null ? null : backupPolicy!.toMap(),
+      'backupInformation': ?pulumi.Input.mapOptionalInputValue<SqlServerDatabaseResourcePropertiesResponseBackupInformation, Map<String, dynamic>>(backupInformation, (value) => value.toMap()),
+      'backupPolicy': ?pulumi.Input.mapOptionalInputValue<BackupPolicyResponse, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
       'collationName': ?collationName,
       'compatibilityLevel': ?compatibilityLevel,
       'createMode': ?createMode,
       'dataFileSizeMB': ?dataFileSizeMB,
       'databaseCreationDate': ?databaseCreationDate,
-      'databaseOptions': ?databaseOptions == null ? null : databaseOptions!.toMap(),
+      'databaseOptions': ?pulumi.Input.mapOptionalInputValue<SqlServerDatabaseResourcePropertiesResponseDatabaseOptions, Map<String, dynamic>>(databaseOptions, (value) => value.toMap()),
       'earliestRestoreDate': earliestRestoreDate,
       'isReadOnly': ?isReadOnly,
       'lastDatabaseUploadTime': lastDatabaseUploadTime,
       'logFileSizeMB': ?logFileSizeMB,
-      'migration': ?migration == null ? null : migration!.toMap(),
+      'migration': ?pulumi.Input.mapOptionalInputValue<DataBaseMigrationResponse, Map<String, dynamic>>(migration, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'recoveryMode': ?recoveryMode,
       'restorePointInTime': ?restorePointInTime,
@@ -123,27 +124,27 @@ class SqlServerDatabaseResourcePropertiesResponse {
 
   factory SqlServerDatabaseResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseResourcePropertiesResponse(
-      backupInformation: map['backupInformation'] == null ? null : SqlServerDatabaseResourcePropertiesResponseBackupInformation.fromMap((map['backupInformation'] as Map).cast<String, dynamic>()),
-      backupPolicy: map['backupPolicy'] == null ? null : BackupPolicyResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>()),
-      collationName: map['collationName'] == null ? null : map['collationName'] as String,
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : map['compatibilityLevel'] as int,
-      createMode: map['createMode'] == null ? null : map['createMode'] as String,
-      dataFileSizeMB: map['dataFileSizeMB'] == null ? null : map['dataFileSizeMB'] as double,
-      databaseCreationDate: map['databaseCreationDate'] == null ? null : map['databaseCreationDate'] as String,
-      databaseOptions: map['databaseOptions'] == null ? null : SqlServerDatabaseResourcePropertiesResponseDatabaseOptions.fromMap((map['databaseOptions'] as Map).cast<String, dynamic>()),
-      earliestRestoreDate: map['earliestRestoreDate'] as String,
-      isReadOnly: map['isReadOnly'] == null ? null : map['isReadOnly'] as bool,
-      lastDatabaseUploadTime: map['lastDatabaseUploadTime'] as String,
-      logFileSizeMB: map['logFileSizeMB'] == null ? null : map['logFileSizeMB'] as double,
-      migration: map['migration'] == null ? null : DataBaseMigrationResponse.fromMap((map['migration'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      recoveryMode: map['recoveryMode'] == null ? null : map['recoveryMode'] as String,
-      restorePointInTime: map['restorePointInTime'] == null ? null : map['restorePointInTime'] as String,
-      sizeMB: map['sizeMB'] == null ? null : map['sizeMB'] as double,
-      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : map['sourceDatabaseId'] as String,
-      spaceAvailableMB: map['spaceAvailableMB'] == null ? null : map['spaceAvailableMB'] as double,
-      state: map['state'] == null ? null : map['state'] as String,
-      vmId: map['vmId'] as String,
+      backupInformation: map['backupInformation'] == null ? null : (SqlServerDatabaseResourcePropertiesResponseBackupInformation.fromMap((map['backupInformation'] as Map).cast<String, dynamic>())).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicyResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      collationName: map['collationName'] == null ? null : (map['collationName'] as String).input(),
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      dataFileSizeMB: map['dataFileSizeMB'] == null ? null : (map['dataFileSizeMB'] as double).input(),
+      databaseCreationDate: map['databaseCreationDate'] == null ? null : (map['databaseCreationDate'] as String).input(),
+      databaseOptions: map['databaseOptions'] == null ? null : (SqlServerDatabaseResourcePropertiesResponseDatabaseOptions.fromMap((map['databaseOptions'] as Map).cast<String, dynamic>())).input(),
+      earliestRestoreDate: (map['earliestRestoreDate'] as String).input(),
+      isReadOnly: map['isReadOnly'] == null ? null : (map['isReadOnly'] as bool).input(),
+      lastDatabaseUploadTime: (map['lastDatabaseUploadTime'] as String).input(),
+      logFileSizeMB: map['logFileSizeMB'] == null ? null : (map['logFileSizeMB'] as double).input(),
+      migration: map['migration'] == null ? null : (DataBaseMigrationResponse.fromMap((map['migration'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      recoveryMode: map['recoveryMode'] == null ? null : (map['recoveryMode'] as String).input(),
+      restorePointInTime: map['restorePointInTime'] == null ? null : (map['restorePointInTime'] as String).input(),
+      sizeMB: map['sizeMB'] == null ? null : (map['sizeMB'] as double).input(),
+      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : (map['sourceDatabaseId'] as String).input(),
+      spaceAvailableMB: map['spaceAvailableMB'] == null ? null : (map['spaceAvailableMB'] as double).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      vmId: (map['vmId'] as String).input(),
     );
   }
 }

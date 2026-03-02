@@ -16,11 +16,9 @@ class GetGroupQuotaSubscriptionArgs {
   /// [groupQuotaName] The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   /// [managementGroupId] Management Group Id.
   GetGroupQuotaSubscriptionArgs({
-    required pulumi.Output<String> groupQuotaName,
-    required pulumi.Output<String> managementGroupId,
-  }) :
-      groupQuotaName = pulumi.Input.asInput<String>(groupQuotaName),
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId);
+    required this.groupQuotaName,
+    required this.managementGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGroupQuotaSubscriptionArgs {
 
   factory GetGroupQuotaSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupQuotaSubscriptionArgs(
-      groupQuotaName: pulumi.Output.create<String>(map['groupQuotaName'] as String),
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
+      groupQuotaName: (map['groupQuotaName'] as String).input(),
+      managementGroupId: (map['managementGroupId'] as String).input(),
     );
   }
 }

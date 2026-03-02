@@ -14,11 +14,9 @@ class GetNotificationChannelArgs {
   /// [notificationChannelId] Required.
   /// [project] Optional.
   GetNotificationChannelArgs({
-    required pulumi.Output<String> notificationChannelId,
-    pulumi.Output<String>? project,
-  }) :
-      notificationChannelId = pulumi.Input.asInput<String>(notificationChannelId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.notificationChannelId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      notificationChannelId: pulumi.Output.create<String>(map['notificationChannelId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      notificationChannelId: (map['notificationChannelId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the Compliance Status of this workload
 class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
   /// Number of current resource violations which are not acknowledged.
-  final int acknowledgedResourceViolationCount;
+  final pulumi.Input<int> acknowledgedResourceViolationCount;
   /// Number of current orgPolicy violations which are acknowledged.
-  final int acknowledgedViolationCount;
+  final pulumi.Input<int> acknowledgedViolationCount;
   /// Number of current resource violations which are acknowledged.
-  final int activeResourceViolationCount;
+  final pulumi.Input<int> activeResourceViolationCount;
   /// Number of current orgPolicy violations which are not acknowledged.
-  final int activeViolationCount;
+  final pulumi.Input<int> activeViolationCount;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse].
   /// [acknowledgedResourceViolationCount] Number of current resource violations which are not acknowledged.
@@ -35,10 +36,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
 
   factory GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(
-      acknowledgedResourceViolationCount: map['acknowledgedResourceViolationCount'] as int,
-      acknowledgedViolationCount: map['acknowledgedViolationCount'] as int,
-      activeResourceViolationCount: map['activeResourceViolationCount'] as int,
-      activeViolationCount: map['activeViolationCount'] as int,
+      acknowledgedResourceViolationCount: (map['acknowledgedResourceViolationCount'] as int).input(),
+      acknowledgedViolationCount: (map['acknowledgedViolationCount'] as int).input(),
+      activeResourceViolationCount: (map['activeResourceViolationCount'] as int).input(),
+      activeViolationCount: (map['activeViolationCount'] as int).input(),
     );
   }
 }

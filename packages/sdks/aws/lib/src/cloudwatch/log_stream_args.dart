@@ -19,13 +19,10 @@ class LogStreamArgs {
   /// [name] The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   LogStreamArgs({
-    required pulumi.Output<String> logGroupName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      logGroupName = pulumi.Input.asInput<String>(logGroupName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.logGroupName,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LogStreamArgs {
 
   factory LogStreamArgs.fromMap(Map<String, dynamic> map) {
     return LogStreamArgs(
-      logGroupName: pulumi.Output.create<String>(map['logGroupName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      logGroupName: (map['logGroupName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

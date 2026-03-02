@@ -32,21 +32,14 @@ class ConfigurationAggregatorState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ConfigurationAggregatorState({
-    pulumi.Output<ConfigurationAggregatorAccountAggregationSource>? accountAggregationSource,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<ConfigurationAggregatorOrganizationAggregationSource>? organizationAggregationSource,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      accountAggregationSource = pulumi.Input.asOptionalInput<ConfigurationAggregatorAccountAggregationSource>(accountAggregationSource),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationAggregationSource = pulumi.Input.asOptionalInput<ConfigurationAggregatorOrganizationAggregationSource>(organizationAggregationSource),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.accountAggregationSource,
+    this.arn,
+    this.name,
+    this.organizationAggregationSource,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ConfigurationAggregatorState {
 
   factory ConfigurationAggregatorState.fromMap(Map<String, dynamic> map) {
     return ConfigurationAggregatorState(
-      accountAggregationSource: map['accountAggregationSource'] == null ? null : pulumi.Output.create<ConfigurationAggregatorAccountAggregationSource>(ConfigurationAggregatorAccountAggregationSource.fromMap((map['accountAggregationSource'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationAggregationSource: map['organizationAggregationSource'] == null ? null : pulumi.Output.create<ConfigurationAggregatorOrganizationAggregationSource>(ConfigurationAggregatorOrganizationAggregationSource.fromMap((map['organizationAggregationSource'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      accountAggregationSource: map['accountAggregationSource'] == null ? null : (ConfigurationAggregatorAccountAggregationSource.fromMap((map['accountAggregationSource'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationAggregationSource: map['organizationAggregationSource'] == null ? null : (ConfigurationAggregatorOrganizationAggregationSource.fromMap((map['organizationAggregationSource'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

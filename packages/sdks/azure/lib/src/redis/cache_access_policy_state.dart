@@ -16,13 +16,10 @@ class CacheAccessPolicyState {
   /// [permissions] Permissions that are going to be assigned to this Redis Cache Access Policy.
   /// [redisCacheId] The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy to be created.
   CacheAccessPolicyState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? permissions,
-    pulumi.Output<String>? redisCacheId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissions = pulumi.Input.asOptionalInput<String>(permissions),
-      redisCacheId = pulumi.Input.asOptionalInput<String>(redisCacheId);
+    this.name,
+    this.permissions,
+    this.redisCacheId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class CacheAccessPolicyState {
 
   factory CacheAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<String>(map['permissions'] as String),
-      redisCacheId: map['redisCacheId'] == null ? null : pulumi.Output.create<String>(map['redisCacheId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId'] as String).input(),
     );
   }
 }

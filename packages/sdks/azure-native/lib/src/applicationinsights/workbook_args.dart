@@ -50,33 +50,20 @@ class WorkbookArgs {
   /// [tags] Resource tags.
   /// [version] Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
   WorkbookArgs({
-    required pulumi.Output<String> category,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<WorkbookResourceIdentity>? identity,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    required pulumi.Output<String> serializedData,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? storageUri,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      category = pulumi.Input.asInput<String>(category),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      identity = pulumi.Input.asOptionalInput<WorkbookResourceIdentity>(identity),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      serializedData = pulumi.Input.asInput<String>(serializedData),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      storageUri = pulumi.Input.asOptionalInput<String>(storageUri),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.category,
+    this.description,
+    required this.displayName,
+    this.identity,
+    this.kind,
+    this.location,
+    required this.resourceGroupName,
+    this.resourceName,
+    required this.serializedData,
+    this.sourceId,
+    this.storageUri,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class WorkbookArgs {
 
   factory WorkbookArgs.fromMap(Map<String, dynamic> map) {
     return WorkbookArgs(
-      category: pulumi.Output.create<String>(map['category'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<WorkbookResourceIdentity>(WorkbookResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      serializedData: pulumi.Output.create<String>(map['serializedData'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      storageUri: map['storageUri'] == null ? null : pulumi.Output.create<String>(map['storageUri'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      category: (map['category'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      identity: map['identity'] == null ? null : (WorkbookResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      serializedData: (map['serializedData'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      storageUri: map['storageUri'] == null ? null : (map['storageUri'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

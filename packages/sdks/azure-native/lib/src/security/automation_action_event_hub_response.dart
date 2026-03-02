@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 class AutomationActionEventHubResponse {
   /// The type of the action that will be triggered by the Automation
   /// Expected value is 'EventHub'.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// The target Event Hub connection string (it will not be included in any response).
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// The target Event Hub Azure Resource ID.
-  final String? eventHubResourceId;
+  final pulumi.Input<String>? eventHubResourceId;
   /// Indicates whether the trusted service is enabled or not.
-  final bool? isTrustedServiceEnabled;
+  final pulumi.Input<bool>? isTrustedServiceEnabled;
   /// The target Event Hub SAS policy name.
-  final String sasPolicyName;
+  final pulumi.Input<String> sasPolicyName;
 
   /// Creates a new [AutomationActionEventHubResponse].
   /// [actionType] The type of the action that will be triggered by the Automation
@@ -41,11 +42,11 @@ class AutomationActionEventHubResponse {
 
   factory AutomationActionEventHubResponse.fromMap(Map<String, dynamic> map) {
     return AutomationActionEventHubResponse(
-      actionType: map['actionType'] as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : map['eventHubResourceId'] as String,
-      isTrustedServiceEnabled: map['isTrustedServiceEnabled'] == null ? null : map['isTrustedServiceEnabled'] as bool,
-      sasPolicyName: map['sasPolicyName'] as String,
+      actionType: (map['actionType'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId'] as String).input(),
+      isTrustedServiceEnabled: map['isTrustedServiceEnabled'] == null ? null : (map['isTrustedServiceEnabled'] as bool).input(),
+      sasPolicyName: (map['sasPolicyName'] as String).input(),
     );
   }
 }

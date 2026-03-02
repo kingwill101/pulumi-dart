@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange {
-  final int? from;
-  final int? to;
+  final pulumi.Input<int>? from;
+  final pulumi.Input<int>? to;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange].
   /// [from] Optional.
@@ -22,8 +23,8 @@ class NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange {
 
   factory NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange(
-      from: map['from'] == null ? null : map['from'] as int,
-      to: map['to'] == null ? null : map['to'] as int,
+      from: map['from'] == null ? null : (map['from'] as int).input(),
+      to: map['to'] == null ? null : (map['to'] as int).input(),
     );
   }
 }

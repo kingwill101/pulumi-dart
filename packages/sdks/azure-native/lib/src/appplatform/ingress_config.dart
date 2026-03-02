@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ingress configuration payload for Azure Spring Apps resource.
 class IngressConfig {
   /// Ingress read time out in seconds.
-  final int? readTimeoutInSeconds;
+  final pulumi.Input<int>? readTimeoutInSeconds;
 
   /// Creates a new [IngressConfig].
   /// [readTimeoutInSeconds] Ingress read time out in seconds.
@@ -20,7 +21,7 @@ class IngressConfig {
 
   factory IngressConfig.fromMap(Map<String, dynamic> map) {
     return IngressConfig(
-      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : map['readTimeoutInSeconds'] as int,
+      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds'] as int).input(),
     );
   }
 }

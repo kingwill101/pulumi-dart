@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
   /// The Alibaba Cloud Resource Name (ARN) of the resource.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The parameters of the alert callback. Specify the parameters in the JSON format.
-  final String? jsonParams;
+  final pulumi.Input<String>? jsonParams;
   /// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The ID of the resource for which alerts are triggered.
-  final String? targetListId;
+  final pulumi.Input<String>? targetListId;
 
   /// Creates a new [ServiceGroupMonitoringAgentProcessAlertConfigTargetList].
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the resource.
@@ -34,10 +35,10 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
 
   factory ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessAlertConfigTargetList(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      jsonParams: map['jsonParams'] == null ? null : map['jsonParams'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      targetListId: map['targetListId'] == null ? null : map['targetListId'] as String,
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      targetListId: map['targetListId'] == null ? null : (map['targetListId'] as String).input(),
     );
   }
 }

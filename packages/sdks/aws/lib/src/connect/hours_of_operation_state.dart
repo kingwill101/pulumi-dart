@@ -38,27 +38,17 @@ class HoursOfOperationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeZone] Specifies the time zone of the Hours of Operation.
   HoursOfOperationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<HoursOfOperationConfig>>? configs,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? hoursOfOperationId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? timeZone,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configs = pulumi.Input.asOptionalInput<List<HoursOfOperationConfig>>(configs),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hoursOfOperationId = pulumi.Input.asOptionalInput<String>(hoursOfOperationId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.arn,
+    this.configs,
+    this.description,
+    this.hoursOfOperationId,
+    this.instanceId,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class HoursOfOperationState {
 
   factory HoursOfOperationState.fromMap(Map<String, dynamic> map) {
     return HoursOfOperationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configs: map['configs'] == null ? null : pulumi.Output.create<List<HoursOfOperationConfig>>(pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : pulumi.Output.create<String>(map['hoursOfOperationId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : (map['hoursOfOperationId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

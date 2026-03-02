@@ -64,29 +64,18 @@ class RestAPIArgs {
   /// [swaggerString] A Swagger specification already in string form to use to initialize the APIGateway.  Note
   /// [tags] 'Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present,
   RestAPIArgs({
-    pulumi.Output<APIKeySource>? apiKeySource,
-    pulumi.Output<List<String>>? binaryMediaTypes,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disableExecuteApiEndpoint,
-    pulumi.Output<Map<String, SwaggerGatewayResponse>>? gatewayResponses,
-    pulumi.Output<RequestValidator>? requestValidator,
-    pulumi.Output<List<Route>>? routes,
-    pulumi.Output<String>? stageName,
-    pulumi.Output<pulumi_aws_s3.Bucket>? staticRoutesBucket,
-    pulumi.Output<String>? swaggerString,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apiKeySource = pulumi.Input.asOptionalInput<APIKeySource>(apiKeySource),
-      binaryMediaTypes = pulumi.Input.asOptionalInput<List<String>>(binaryMediaTypes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disableExecuteApiEndpoint = pulumi.Input.asOptionalInput<bool>(disableExecuteApiEndpoint),
-      gatewayResponses = pulumi.Input.asOptionalInput<Map<String, SwaggerGatewayResponse>>(gatewayResponses),
-      requestValidator = pulumi.Input.asOptionalInput<RequestValidator>(requestValidator),
-      routes = pulumi.Input.asOptionalInput<List<Route>>(routes),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName),
-      staticRoutesBucket = pulumi.Input.asOptionalInput<pulumi_aws_s3.Bucket>(staticRoutesBucket),
-      swaggerString = pulumi.Input.asOptionalInput<String>(swaggerString),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apiKeySource,
+    this.binaryMediaTypes,
+    this.description,
+    this.disableExecuteApiEndpoint,
+    this.gatewayResponses,
+    this.requestValidator,
+    this.routes,
+    this.stageName,
+    this.staticRoutesBucket,
+    this.swaggerString,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,17 +95,17 @@ class RestAPIArgs {
 
   factory RestAPIArgs.fromMap(Map<String, dynamic> map) {
     return RestAPIArgs(
-      apiKeySource: map['apiKeySource'] == null ? null : pulumi.Output.create<APIKeySource>(APIKeySource.fromValue(map['apiKeySource'] as String)),
-      binaryMediaTypes: map['binaryMediaTypes'] == null ? null : pulumi.Output.create<List<String>>((map['binaryMediaTypes'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : pulumi.Output.create<bool>(map['disableExecuteApiEndpoint'] as bool),
-      gatewayResponses: map['gatewayResponses'] == null ? null : pulumi.Output.create<Map<String, SwaggerGatewayResponse>>(pulumi.Input.decodeMapValues<SwaggerGatewayResponse>(map['gatewayResponses'], (value) => SwaggerGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      requestValidator: map['requestValidator'] == null ? null : pulumi.Output.create<RequestValidator>(RequestValidator.fromValue(map['requestValidator'] as String)),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<Route>>(pulumi.Input.decodeList<Route>(map['routes'], (value) => Route.fromMap((value as Map).cast<String, dynamic>()))),
-      stageName: map['stageName'] == null ? null : pulumi.Output.create<String>(map['stageName'] as String),
-      staticRoutesBucket: map['staticRoutesBucket'] == null ? null : pulumi.Output.create<pulumi_aws_s3.Bucket>(map['staticRoutesBucket'] as pulumi_aws_s3.Bucket),
-      swaggerString: map['swaggerString'] == null ? null : pulumi.Output.create<String>(map['swaggerString'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apiKeySource: map['apiKeySource'] == null ? null : (APIKeySource.fromValue(map['apiKeySource'] as String)).input(),
+      binaryMediaTypes: map['binaryMediaTypes'] == null ? null : ((map['binaryMediaTypes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : (map['disableExecuteApiEndpoint'] as bool).input(),
+      gatewayResponses: map['gatewayResponses'] == null ? null : (pulumi.Input.decodeMapValues<SwaggerGatewayResponse>(map['gatewayResponses'], (value) => SwaggerGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestValidator: map['requestValidator'] == null ? null : (RequestValidator.fromValue(map['requestValidator'] as String)).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<Route>(map['routes'], (value) => Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      staticRoutesBucket: map['staticRoutesBucket'] == null ? null : (map['staticRoutesBucket'] as pulumi_aws_s3.Bucket).input(),
+      swaggerString: map['swaggerString'] == null ? null : (map['swaggerString'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

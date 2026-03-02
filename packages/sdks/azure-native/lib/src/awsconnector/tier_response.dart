@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Tier
 class TierResponse {
   /// The name of this environment tier.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The type of this environment tier.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [TierResponse].
   /// [name] The name of this environment tier.
@@ -30,9 +31,9 @@ class TierResponse {
 
   factory TierResponse.fromMap(Map<String, dynamic> map) {
     return TierResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

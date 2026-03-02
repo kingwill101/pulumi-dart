@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateConfigSubjectConfigSubjectAltName {
   /// Contains only valid, fully-qualified host names.
-  final List<String>? dnsNames;
+  final pulumi.Input<List<String>>? dnsNames;
   /// Contains only valid RFC 2822 E-mail addresses.
-  final List<String>? emailAddresses;
+  final pulumi.Input<List<String>>? emailAddresses;
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// Contains only valid RFC 3986 URIs.
-  final List<String>? uris;
+  final pulumi.Input<List<String>>? uris;
 
   /// Creates a new [CertificateConfigSubjectConfigSubjectAltName].
   /// [dnsNames] Contains only valid, fully-qualified host names.
@@ -34,10 +35,10 @@ class CertificateConfigSubjectConfigSubjectAltName {
 
   factory CertificateConfigSubjectConfigSubjectAltName.fromMap(Map<String, dynamic> map) {
     return CertificateConfigSubjectConfigSubjectAltName(
-      dnsNames: map['dnsNames'] == null ? null : (map['dnsNames'] as List).cast<String>(),
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      uris: map['uris'] == null ? null : (map['uris'] as List).cast<String>(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableStorageDescriptorColumn {
   /// Free-form text comment.
-  final String? comment;
+  final pulumi.Input<String>? comment;
   /// Name of the Column.
-  final String name;
+  final pulumi.Input<String> name;
   /// Key-value pairs defining properties associated with the column.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Datatype of data in the Column.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [CatalogTableStorageDescriptorColumn].
   /// [comment] Free-form text comment.
@@ -34,10 +35,10 @@ class CatalogTableStorageDescriptorColumn {
 
   factory CatalogTableStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorColumn(
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

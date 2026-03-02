@@ -43,29 +43,18 @@ class EndpointGroupState {
   /// [thresholdCount] The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
   /// [trafficDialPercentage] The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
   EndpointGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<EndpointGroupEndpointConfiguration>>? endpointConfigurations,
-    pulumi.Output<String>? endpointGroupRegion,
-    pulumi.Output<int>? healthCheckIntervalSeconds,
-    pulumi.Output<String>? healthCheckPath,
-    pulumi.Output<int>? healthCheckPort,
-    pulumi.Output<String>? healthCheckProtocol,
-    pulumi.Output<String>? listenerArn,
-    pulumi.Output<List<EndpointGroupPortOverride>>? portOverrides,
-    pulumi.Output<int>? thresholdCount,
-    pulumi.Output<double>? trafficDialPercentage,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      endpointConfigurations = pulumi.Input.asOptionalInput<List<EndpointGroupEndpointConfiguration>>(endpointConfigurations),
-      endpointGroupRegion = pulumi.Input.asOptionalInput<String>(endpointGroupRegion),
-      healthCheckIntervalSeconds = pulumi.Input.asOptionalInput<int>(healthCheckIntervalSeconds),
-      healthCheckPath = pulumi.Input.asOptionalInput<String>(healthCheckPath),
-      healthCheckPort = pulumi.Input.asOptionalInput<int>(healthCheckPort),
-      healthCheckProtocol = pulumi.Input.asOptionalInput<String>(healthCheckProtocol),
-      listenerArn = pulumi.Input.asOptionalInput<String>(listenerArn),
-      portOverrides = pulumi.Input.asOptionalInput<List<EndpointGroupPortOverride>>(portOverrides),
-      thresholdCount = pulumi.Input.asOptionalInput<int>(thresholdCount),
-      trafficDialPercentage = pulumi.Input.asOptionalInput<double>(trafficDialPercentage);
+    this.arn,
+    this.endpointConfigurations,
+    this.endpointGroupRegion,
+    this.healthCheckIntervalSeconds,
+    this.healthCheckPath,
+    this.healthCheckPort,
+    this.healthCheckProtocol,
+    this.listenerArn,
+    this.portOverrides,
+    this.thresholdCount,
+    this.trafficDialPercentage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class EndpointGroupState {
 
   factory EndpointGroupState.fromMap(Map<String, dynamic> map) {
     return EndpointGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : pulumi.Output.create<List<EndpointGroupEndpointConfiguration>>(pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : pulumi.Output.create<int>(map['healthCheckIntervalSeconds'] as int),
-      healthCheckPath: map['healthCheckPath'] == null ? null : pulumi.Output.create<String>(map['healthCheckPath'] as String),
-      healthCheckPort: map['healthCheckPort'] == null ? null : pulumi.Output.create<int>(map['healthCheckPort'] as int),
-      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : pulumi.Output.create<String>(map['healthCheckProtocol'] as String),
-      listenerArn: map['listenerArn'] == null ? null : pulumi.Output.create<String>(map['listenerArn'] as String),
-      portOverrides: map['portOverrides'] == null ? null : pulumi.Output.create<List<EndpointGroupPortOverride>>(pulumi.Input.decodeList<EndpointGroupPortOverride>(map['portOverrides'], (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      thresholdCount: map['thresholdCount'] == null ? null : pulumi.Output.create<int>(map['thresholdCount'] as int),
-      trafficDialPercentage: map['trafficDialPercentage'] == null ? null : pulumi.Output.create<double>(map['trafficDialPercentage'] as double),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
+      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : (map['healthCheckIntervalSeconds'] as int).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort'] as int).input(),
+      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : (map['healthCheckProtocol'] as String).input(),
+      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
+      portOverrides: map['portOverrides'] == null ? null : (pulumi.Input.decodeList<EndpointGroupPortOverride>(map['portOverrides'], (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      thresholdCount: map['thresholdCount'] == null ? null : (map['thresholdCount'] as int).input(),
+      trafficDialPercentage: map['trafficDialPercentage'] == null ? null : (map['trafficDialPercentage'] as double).input(),
     );
   }
 }

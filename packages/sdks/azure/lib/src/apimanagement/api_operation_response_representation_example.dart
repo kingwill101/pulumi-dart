@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiOperationResponseRepresentationExample {
   /// A long description for this example.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A URL that points to the literal example.
-  final String? externalValue;
+  final pulumi.Input<String>? externalValue;
   /// The name of this example.
-  final String name;
+  final pulumi.Input<String> name;
   /// A short description for this example.
-  final String? summary;
+  final pulumi.Input<String>? summary;
   /// The example of the representation.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ApiOperationResponseRepresentationExample].
   /// [description] A long description for this example.
@@ -39,11 +40,11 @@ class ApiOperationResponseRepresentationExample {
 
   factory ApiOperationResponseRepresentationExample.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponseRepresentationExample(
-      description: map['description'] == null ? null : map['description'] as String,
-      externalValue: map['externalValue'] == null ? null : map['externalValue'] as String,
-      name: map['name'] as String,
-      summary: map['summary'] == null ? null : map['summary'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalValue: map['externalValue'] == null ? null : (map['externalValue'] as String).input(),
+      name: (map['name'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

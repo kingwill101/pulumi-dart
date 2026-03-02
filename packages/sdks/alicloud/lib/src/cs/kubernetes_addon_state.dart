@@ -31,23 +31,15 @@ class KubernetesAddonState {
   /// [required] Is it a mandatory addon to be installed.
   /// [version] The current version of addon.
   KubernetesAddonState({
-    pulumi.Output<bool>? canUpgrade,
-    pulumi.Output<bool>? cleanupCloudResources,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? config,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nextVersion,
-    pulumi.Output<bool>? required,
-    pulumi.Output<String>? version,
-  }) :
-      canUpgrade = pulumi.Input.asOptionalInput<bool>(canUpgrade),
-      cleanupCloudResources = pulumi.Input.asOptionalInput<bool>(cleanupCloudResources),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      config = pulumi.Input.asOptionalInput<String>(config),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nextVersion = pulumi.Input.asOptionalInput<String>(nextVersion),
-      required = pulumi.Input.asOptionalInput<bool>(required),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.canUpgrade,
+    this.cleanupCloudResources,
+    this.clusterId,
+    this.config,
+    this.name,
+    this.nextVersion,
+    this.required,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class KubernetesAddonState {
 
   factory KubernetesAddonState.fromMap(Map<String, dynamic> map) {
     return KubernetesAddonState(
-      canUpgrade: map['canUpgrade'] == null ? null : pulumi.Output.create<bool>(map['canUpgrade'] as bool),
-      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : pulumi.Output.create<bool>(map['cleanupCloudResources'] as bool),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<String>(map['config'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nextVersion: map['nextVersion'] == null ? null : pulumi.Output.create<String>(map['nextVersion'] as String),
-      required: map['required'] == null ? null : pulumi.Output.create<bool>(map['required'] as bool),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      canUpgrade: map['canUpgrade'] == null ? null : (map['canUpgrade'] as bool).input(),
+      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources'] as bool).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      config: map['config'] == null ? null : (map['config'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nextVersion: map['nextVersion'] == null ? null : (map['nextVersion'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -34,19 +34,13 @@ class MembershipRbacRoleBindingArgs {
   /// [role] Role to bind to the principal.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
   MembershipRbacRoleBindingArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipId,
-    required pulumi.Output<String> membershipRbacRoleBindingId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<MembershipRbacRoleBindingRole> role,
-    required pulumi.Output<String> user,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      membershipRbacRoleBindingId = pulumi.Input.asInput<String>(membershipRbacRoleBindingId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<MembershipRbacRoleBindingRole>(role),
-      user = pulumi.Input.asInput<String>(user);
+    required this.location,
+    required this.membershipId,
+    required this.membershipRbacRoleBindingId,
+    this.project,
+    required this.role,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class MembershipRbacRoleBindingArgs {
 
   factory MembershipRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      membershipRbacRoleBindingId: pulumi.Output.create<String>(map['membershipRbacRoleBindingId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<MembershipRbacRoleBindingRole>(MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      location: (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      membershipRbacRoleBindingId: (map['membershipRbacRoleBindingId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

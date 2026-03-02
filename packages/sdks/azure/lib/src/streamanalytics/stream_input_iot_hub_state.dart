@@ -35,25 +35,16 @@ class StreamInputIotHubState {
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   StreamInputIotHubState({
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<String>? eventhubConsumerGroupName,
-    pulumi.Output<String>? iothubNamespace,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<StreamInputIotHubSerialization>? serialization,
-    pulumi.Output<String>? sharedAccessPolicyKey,
-    pulumi.Output<String>? sharedAccessPolicyName,
-    pulumi.Output<String>? streamAnalyticsJobName,
-  }) :
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      eventhubConsumerGroupName = pulumi.Input.asOptionalInput<String>(eventhubConsumerGroupName),
-      iothubNamespace = pulumi.Input.asOptionalInput<String>(iothubNamespace),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      serialization = pulumi.Input.asOptionalInput<StreamInputIotHubSerialization>(serialization),
-      sharedAccessPolicyKey = pulumi.Input.asOptionalInput<String>(sharedAccessPolicyKey),
-      sharedAccessPolicyName = pulumi.Input.asOptionalInput<String>(sharedAccessPolicyName),
-      streamAnalyticsJobName = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobName);
+    this.endpoint,
+    this.eventhubConsumerGroupName,
+    this.iothubNamespace,
+    this.name,
+    this.resourceGroupName,
+    this.serialization,
+    this.sharedAccessPolicyKey,
+    this.sharedAccessPolicyName,
+    this.streamAnalyticsJobName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class StreamInputIotHubState {
 
   factory StreamInputIotHubState.fromMap(Map<String, dynamic> map) {
     return StreamInputIotHubState(
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : pulumi.Output.create<String>(map['eventhubConsumerGroupName'] as String),
-      iothubNamespace: map['iothubNamespace'] == null ? null : pulumi.Output.create<String>(map['iothubNamespace'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialization: map['serialization'] == null ? null : pulumi.Output.create<StreamInputIotHubSerialization>(StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : pulumi.Output.create<String>(map['sharedAccessPolicyKey'] as String),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : pulumi.Output.create<String>(map['sharedAccessPolicyName'] as String),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobName'] as String),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
+      iothubNamespace: map['iothubNamespace'] == null ? null : (map['iothubNamespace'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      serialization: map['serialization'] == null ? null : (StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
     );
   }
 }

@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 class ResourcePolicyGroupPlacementPolicyResponse {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
-  final int availabilityDomainCount;
+  final pulumi.Input<int> availabilityDomainCount;
   /// Specifies network collocation
-  final String collocation;
+  final pulumi.Input<String> collocation;
   /// Specifies network locality
-  final String locality;
+  final pulumi.Input<String> locality;
   /// Specifies the number of max logical switches.
-  final int maxDistance;
+  final pulumi.Input<int> maxDistance;
   /// Scope specifies the availability domain to which the VMs should be spread.
-  final String scope;
+  final pulumi.Input<String> scope;
   /// Specifies the number of slices in a multislice workload.
-  final int sliceCount;
+  final pulumi.Input<int> sliceCount;
   /// Specifies instances to hosts placement relationship
-  final String style;
+  final pulumi.Input<String> style;
   /// Specifies the shape of the TPU slice
-  final String tpuTopology;
+  final pulumi.Input<String> tpuTopology;
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
-  final int vmCount;
+  final pulumi.Input<int> vmCount;
 
   /// Creates a new [ResourcePolicyGroupPlacementPolicyResponse].
   /// [availabilityDomainCount] The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -60,15 +61,15 @@ class ResourcePolicyGroupPlacementPolicyResponse {
 
   factory ResourcePolicyGroupPlacementPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponse(
-      availabilityDomainCount: map['availabilityDomainCount'] as int,
-      collocation: map['collocation'] as String,
-      locality: map['locality'] as String,
-      maxDistance: map['maxDistance'] as int,
-      scope: map['scope'] as String,
-      sliceCount: map['sliceCount'] as int,
-      style: map['style'] as String,
-      tpuTopology: map['tpuTopology'] as String,
-      vmCount: map['vmCount'] as int,
+      availabilityDomainCount: (map['availabilityDomainCount'] as int).input(),
+      collocation: (map['collocation'] as String).input(),
+      locality: (map['locality'] as String).input(),
+      maxDistance: (map['maxDistance'] as int).input(),
+      scope: (map['scope'] as String).input(),
+      sliceCount: (map['sliceCount'] as int).input(),
+      style: (map['style'] as String).input(),
+      tpuTopology: (map['tpuTopology'] as String).input(),
+      vmCount: (map['vmCount'] as int).input(),
     );
   }
 }

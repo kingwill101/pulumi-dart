@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentOptionsResponse {
   /// The number of hugepages to allocate.
-  final double hugepagesCount;
+  final pulumi.Input<double> hugepagesCount;
   /// The size of the hugepages to allocate.
-  final String? hugepagesSize;
+  final pulumi.Input<String>? hugepagesSize;
 
   /// Creates a new [AgentOptionsResponse].
   /// [hugepagesCount] The number of hugepages to allocate.
@@ -24,8 +25,8 @@ class AgentOptionsResponse {
 
   factory AgentOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AgentOptionsResponse(
-      hugepagesCount: map['hugepagesCount'] as double,
-      hugepagesSize: map['hugepagesSize'] == null ? null : map['hugepagesSize'] as String,
+      hugepagesCount: (map['hugepagesCount'] as double).input(),
+      hugepagesSize: map['hugepagesSize'] == null ? null : (map['hugepagesSize'] as String).input(),
     );
   }
 }

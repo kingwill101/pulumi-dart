@@ -13,37 +13,37 @@ import 'virtual_network_peering.dart';
 /// Virtual Network resource.
 class VirtualNetwork {
   /// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
-  final AddressSpace? addressSpace;
+  final pulumi.Input<AddressSpace>? addressSpace;
   /// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
-  final VirtualNetworkBgpCommunities? bgpCommunities;
+  final pulumi.Input<VirtualNetworkBgpCommunities>? bgpCommunities;
   /// The DDoS protection plan associated with the virtual network.
-  final SubResource? ddosProtectionPlan;
+  final pulumi.Input<SubResource>? ddosProtectionPlan;
   /// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
-  final DhcpOptions? dhcpOptions;
+  final pulumi.Input<DhcpOptions>? dhcpOptions;
   /// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
-  final bool? enableDdosProtection;
+  final pulumi.Input<bool>? enableDdosProtection;
   /// Indicates if VM protection is enabled for all the subnets in the virtual network.
-  final bool? enableVmProtection;
+  final pulumi.Input<bool>? enableVmProtection;
   /// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
-  final VirtualNetworkEncryption? encryption;
+  final pulumi.Input<VirtualNetworkEncryption>? encryption;
   /// The extended location of the virtual network.
-  final ExtendedLocation? extendedLocation;
+  final pulumi.Input<ExtendedLocation>? extendedLocation;
   /// The FlowTimeout value (in minutes) for the Virtual Network
-  final int? flowTimeoutInMinutes;
+  final pulumi.Input<int>? flowTimeoutInMinutes;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Array of IpAllocation which reference this VNET.
-  final List<SubResource>? ipAllocations;
+  final pulumi.Input<List<SubResource>>? ipAllocations;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Private Endpoint VNet Policies.
-  final String? privateEndpointVNetPolicies;
+  final pulumi.Input<String>? privateEndpointVNetPolicies;
   /// A list of subnets in a Virtual Network.
-  final List<Subnet>? subnets;
+  final pulumi.Input<List<Subnet>>? subnets;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// A list of peerings in a Virtual Network.
-  final List<VirtualNetworkPeering>? virtualNetworkPeerings;
+  final pulumi.Input<List<VirtualNetworkPeering>>? virtualNetworkPeerings;
 
   /// Creates a new [VirtualNetwork].
   /// [addressSpace] The AddressSpace that contains an array of IP address ranges that can be used by subnets.
@@ -83,43 +83,43 @@ class VirtualNetwork {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressSpace': ?addressSpace == null ? null : addressSpace!.toMap(),
-      'bgpCommunities': ?bgpCommunities == null ? null : bgpCommunities!.toMap(),
-      'ddosProtectionPlan': ?ddosProtectionPlan == null ? null : ddosProtectionPlan!.toMap(),
-      'dhcpOptions': ?dhcpOptions == null ? null : dhcpOptions!.toMap(),
+      'addressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(addressSpace, (value) => value.toMap()),
+      'bgpCommunities': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkBgpCommunities, Map<String, dynamic>>(bgpCommunities, (value) => value.toMap()),
+      'ddosProtectionPlan': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(ddosProtectionPlan, (value) => value.toMap()),
+      'dhcpOptions': ?pulumi.Input.mapOptionalInputValue<DhcpOptions, Map<String, dynamic>>(dhcpOptions, (value) => value.toMap()),
       'enableDdosProtection': ?enableDdosProtection,
       'enableVmProtection': ?enableVmProtection,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'flowTimeoutInMinutes': ?flowTimeoutInMinutes,
       'id': ?id,
-      'ipAllocations': ?ipAllocations == null ? null : pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(ipAllocations!, (value) => value.toMap()),
+      'ipAllocations': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(ipAllocations, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'privateEndpointVNetPolicies': ?privateEndpointVNetPolicies,
-      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
+      'subnets': ?pulumi.Input.mapOptionalInputValue<List<Subnet>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
-      'virtualNetworkPeerings': ?virtualNetworkPeerings == null ? null : pulumi.Input.encodeList<VirtualNetworkPeering, Map<String, dynamic>>(virtualNetworkPeerings!, (value) => value.toMap()),
+      'virtualNetworkPeerings': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkPeering>, List<Map<String, dynamic>>>(virtualNetworkPeerings, (value) => pulumi.Input.encodeList<VirtualNetworkPeering, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualNetwork.fromMap(Map<String, dynamic> map) {
     return VirtualNetwork(
-      addressSpace: map['addressSpace'] == null ? null : AddressSpace.fromMap((map['addressSpace'] as Map).cast<String, dynamic>()),
-      bgpCommunities: map['bgpCommunities'] == null ? null : VirtualNetworkBgpCommunities.fromMap((map['bgpCommunities'] as Map).cast<String, dynamic>()),
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : SubResource.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>()),
-      dhcpOptions: map['dhcpOptions'] == null ? null : DhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>()),
-      enableDdosProtection: map['enableDdosProtection'] == null ? null : map['enableDdosProtection'] as bool,
-      enableVmProtection: map['enableVmProtection'] == null ? null : map['enableVmProtection'] as bool,
-      encryption: map['encryption'] == null ? null : VirtualNetworkEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : map['flowTimeoutInMinutes'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAllocations: map['ipAllocations'] == null ? null : pulumi.Input.decodeList<SubResource>(map['ipAllocations'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      privateEndpointVNetPolicies: map['privateEndpointVNetPolicies'] == null ? null : map['privateEndpointVNetPolicies'] as String,
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      virtualNetworkPeerings: map['virtualNetworkPeerings'] == null ? null : pulumi.Input.decodeList<VirtualNetworkPeering>(map['virtualNetworkPeerings'], (value) => VirtualNetworkPeering.fromMap((value as Map).cast<String, dynamic>())),
+      addressSpace: map['addressSpace'] == null ? null : (AddressSpace.fromMap((map['addressSpace'] as Map).cast<String, dynamic>())).input(),
+      bgpCommunities: map['bgpCommunities'] == null ? null : (VirtualNetworkBgpCommunities.fromMap((map['bgpCommunities'] as Map).cast<String, dynamic>())).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResource.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
+      dhcpOptions: map['dhcpOptions'] == null ? null : (DhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())).input(),
+      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection'] as bool).input(),
+      enableVmProtection: map['enableVmProtection'] == null ? null : (map['enableVmProtection'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (VirtualNetworkEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : (map['flowTimeoutInMinutes'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAllocations: map['ipAllocations'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['ipAllocations'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateEndpointVNetPolicies: map['privateEndpointVNetPolicies'] == null ? null : (map['privateEndpointVNetPolicies'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualNetworkPeerings: map['virtualNetworkPeerings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPeering>(map['virtualNetworkPeerings'], (value) => VirtualNetworkPeering.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class TrustStoreState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   TrustStoreState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<TrustStoreCaCertificatesBundleSource>? caCertificatesBundleSource,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? numberOfCaCertificates,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<TrustStoreTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      caCertificatesBundleSource = pulumi.Input.asOptionalInput<TrustStoreCaCertificatesBundleSource>(caCertificatesBundleSource),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      numberOfCaCertificates = pulumi.Input.asOptionalInput<int>(numberOfCaCertificates),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<TrustStoreTimeouts>(timeouts);
+    this.arn,
+    this.caCertificatesBundleSource,
+    this.etag,
+    this.name,
+    this.numberOfCaCertificates,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      caCertificatesBundleSource: map['caCertificatesBundleSource'] == null ? null : pulumi.Output.create<TrustStoreCaCertificatesBundleSource>(TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      numberOfCaCertificates: map['numberOfCaCertificates'] == null ? null : pulumi.Output.create<int>(map['numberOfCaCertificates'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<TrustStoreTimeouts>(TrustStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      caCertificatesBundleSource: map['caCertificatesBundleSource'] == null ? null : (TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      numberOfCaCertificates: map['numberOfCaCertificates'] == null ? null : (map['numberOfCaCertificates'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (TrustStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

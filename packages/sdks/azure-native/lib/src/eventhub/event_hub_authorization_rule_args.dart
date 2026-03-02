@@ -25,17 +25,12 @@ class EventHubAuthorizationRuleArgs {
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [rights] The rights associated with the rule.
   EventHubAuthorizationRuleArgs({
-    pulumi.Output<String>? authorizationRuleName,
-    required pulumi.Output<String> eventHubName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<String>> rights,
-  }) :
-      authorizationRuleName = pulumi.Input.asOptionalInput<String>(authorizationRuleName),
-      eventHubName = pulumi.Input.asInput<String>(eventHubName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rights = pulumi.Input.asInput<List<String>>(rights);
+    this.authorizationRuleName,
+    required this.eventHubName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.rights,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EventHubAuthorizationRuleArgs {
 
   factory EventHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventHubAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : pulumi.Output.create<String>(map['authorizationRuleName'] as String),
-      eventHubName: pulumi.Output.create<String>(map['eventHubName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rights: pulumi.Output.create<List<String>>((map['rights'] as List).cast<String>()),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      eventHubName: (map['eventHubName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rights: ((map['rights'] as List).cast<String>()).input(),
     );
   }
 }

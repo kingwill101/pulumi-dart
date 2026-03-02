@@ -6,9 +6,9 @@ import 'exclusion_managed_rule.dart';
 /// Defines a managed rule group to use for exclusion.
 class ExclusionManagedRuleGroup {
   /// The managed rule group for exclusion.
-  final String ruleGroupName;
+  final pulumi.Input<String> ruleGroupName;
   /// List of rules that will be excluded. If none specified, all rules in the group will be excluded.
-  final List<ExclusionManagedRule>? rules;
+  final pulumi.Input<List<ExclusionManagedRule>>? rules;
 
   /// Creates a new [ExclusionManagedRuleGroup].
   /// [ruleGroupName] The managed rule group for exclusion.
@@ -21,14 +21,14 @@ class ExclusionManagedRuleGroup {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ruleGroupName': ruleGroupName,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ExclusionManagedRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<ExclusionManagedRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ExclusionManagedRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExclusionManagedRuleGroup.fromMap(Map<String, dynamic> map) {
     return ExclusionManagedRuleGroup(
-      ruleGroupName: map['ruleGroupName'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ExclusionManagedRule>(map['rules'], (value) => ExclusionManagedRule.fromMap((value as Map).cast<String, dynamic>())),
+      ruleGroupName: (map['ruleGroupName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRule>(map['rules'], (value) => ExclusionManagedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

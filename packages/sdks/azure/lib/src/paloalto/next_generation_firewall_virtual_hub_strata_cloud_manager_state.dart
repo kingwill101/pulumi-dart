@@ -44,29 +44,18 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerState {
   /// [strataCloudManagerTenantName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager.
   NextGenerationFirewallVirtualHubStrataCloudManagerState({
-    pulumi.Output<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>>? destinationNats,
-    pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings>? dnsSettings,
-    pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? marketplaceOfferId,
-    pulumi.Output<String>? name,
-    pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>? networkProfile,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? strataCloudManagerTenantName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      destinationNats = pulumi.Input.asOptionalInput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>>(destinationNats),
-      dnsSettings = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings>(dnsSettings),
-      identity = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      marketplaceOfferId = pulumi.Input.asOptionalInput<String>(marketplaceOfferId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>(networkProfile),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      strataCloudManagerTenantName = pulumi.Input.asOptionalInput<String>(strataCloudManagerTenantName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.destinationNats,
+    this.dnsSettings,
+    this.identity,
+    this.location,
+    this.marketplaceOfferId,
+    this.name,
+    this.networkProfile,
+    this.planId,
+    this.resourceGroupName,
+    this.strataCloudManagerTenantName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerState {
 
   factory NextGenerationFirewallVirtualHubStrataCloudManagerState.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubStrataCloudManagerState(
-      destinationNats: map['destinationNats'] == null ? null : pulumi.Output.create<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>>(pulumi.Input.decodeList<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>()))),
-      dnsSettings: map['dnsSettings'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings>(NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity>(NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : pulumi.Output.create<String>(map['marketplaceOfferId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>(NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      strataCloudManagerTenantName: map['strataCloudManagerTenantName'] == null ? null : pulumi.Output.create<String>(map['strataCloudManagerTenantName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      strataCloudManagerTenantName: map['strataCloudManagerTenantName'] == null ? null : (map['strataCloudManagerTenantName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

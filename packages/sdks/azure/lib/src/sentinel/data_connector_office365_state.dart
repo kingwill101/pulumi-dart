@@ -29,19 +29,13 @@ class DataConnectorOffice365State {
   /// [teamsEnabled] Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   /// [tenantId] The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   DataConnectorOffice365State({
-    pulumi.Output<bool>? exchangeEnabled,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? sharepointEnabled,
-    pulumi.Output<bool>? teamsEnabled,
-    pulumi.Output<String>? tenantId,
-  }) :
-      exchangeEnabled = pulumi.Input.asOptionalInput<bool>(exchangeEnabled),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sharepointEnabled = pulumi.Input.asOptionalInput<bool>(sharepointEnabled),
-      teamsEnabled = pulumi.Input.asOptionalInput<bool>(teamsEnabled),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.exchangeEnabled,
+    this.logAnalyticsWorkspaceId,
+    this.name,
+    this.sharepointEnabled,
+    this.teamsEnabled,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DataConnectorOffice365State {
 
   factory DataConnectorOffice365State.fromMap(Map<String, dynamic> map) {
     return DataConnectorOffice365State(
-      exchangeEnabled: map['exchangeEnabled'] == null ? null : pulumi.Output.create<bool>(map['exchangeEnabled'] as bool),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sharepointEnabled: map['sharepointEnabled'] == null ? null : pulumi.Output.create<bool>(map['sharepointEnabled'] as bool),
-      teamsEnabled: map['teamsEnabled'] == null ? null : pulumi.Output.create<bool>(map['teamsEnabled'] as bool),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      exchangeEnabled: map['exchangeEnabled'] == null ? null : (map['exchangeEnabled'] as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sharepointEnabled: map['sharepointEnabled'] == null ? null : (map['sharepointEnabled'] as bool).input(),
+      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled'] as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

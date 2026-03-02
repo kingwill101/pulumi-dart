@@ -18,15 +18,11 @@ class GetEventSubscriptionArgs {
   /// [location] Required.
   /// [project] Optional.
   GetEventSubscriptionArgs({
-    required pulumi.Output<String> connectionId,
-    required pulumi.Output<String> eventSubscriptionId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      eventSubscriptionId = pulumi.Input.asInput<String>(eventSubscriptionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.connectionId,
+    required this.eventSubscriptionId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEventSubscriptionArgs {
 
   factory GetEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      eventSubscriptionId: pulumi.Output.create<String>(map['eventSubscriptionId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      eventSubscriptionId: (map['eventSubscriptionId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

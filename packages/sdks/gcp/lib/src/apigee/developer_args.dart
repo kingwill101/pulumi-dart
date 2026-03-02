@@ -31,19 +31,13 @@ class DeveloperArgs {
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [userName] User name of the developer. Not used by Apigee hybrid.
   DeveloperArgs({
-    pulumi.Output<List<DeveloperAttribute>>? attributes,
-    required pulumi.Output<String> email,
-    required pulumi.Output<String> firstName,
-    required pulumi.Output<String> lastName,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> userName,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<DeveloperAttribute>>(attributes),
-      email = pulumi.Input.asInput<String>(email),
-      firstName = pulumi.Input.asInput<String>(firstName),
-      lastName = pulumi.Input.asInput<String>(lastName),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.attributes,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.orgId,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class DeveloperArgs {
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<DeveloperAttribute>>(pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      firstName: pulumi.Output.create<String>(map['firstName'] as String),
-      lastName: pulumi.Output.create<String>(map['lastName'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

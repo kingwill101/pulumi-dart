@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration Properties
 class ConfigurationPropertiesResponse {
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ConfigurationPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
@@ -20,7 +21,7 @@ class ConfigurationPropertiesResponse {
 
   factory ConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

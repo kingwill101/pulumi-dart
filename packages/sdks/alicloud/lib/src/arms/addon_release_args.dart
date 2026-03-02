@@ -28,19 +28,13 @@ class AddonReleaseArgs {
   /// [environmentId] Environment id.
   /// [values] Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
   AddonReleaseArgs({
-    required pulumi.Output<String> addonName,
-    pulumi.Output<String>? addonReleaseName,
-    required pulumi.Output<String> addonVersion,
-    pulumi.Output<String>? aliyunLang,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? values,
-  }) :
-      addonName = pulumi.Input.asInput<String>(addonName),
-      addonReleaseName = pulumi.Input.asOptionalInput<String>(addonReleaseName),
-      addonVersion = pulumi.Input.asInput<String>(addonVersion),
-      aliyunLang = pulumi.Input.asOptionalInput<String>(aliyunLang),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      values = pulumi.Input.asOptionalInput<String>(values);
+    required this.addonName,
+    this.addonReleaseName,
+    required this.addonVersion,
+    this.aliyunLang,
+    required this.environmentId,
+    this.values,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AddonReleaseArgs {
 
   factory AddonReleaseArgs.fromMap(Map<String, dynamic> map) {
     return AddonReleaseArgs(
-      addonName: pulumi.Output.create<String>(map['addonName'] as String),
-      addonReleaseName: map['addonReleaseName'] == null ? null : pulumi.Output.create<String>(map['addonReleaseName'] as String),
-      addonVersion: pulumi.Output.create<String>(map['addonVersion'] as String),
-      aliyunLang: map['aliyunLang'] == null ? null : pulumi.Output.create<String>(map['aliyunLang'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      values: map['values'] == null ? null : pulumi.Output.create<String>(map['values'] as String),
+      addonName: (map['addonName'] as String).input(),
+      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName'] as String).input(),
+      addonVersion: (map['addonVersion'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      values: map['values'] == null ? null : (map['values'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ObfuscationRuleArgs {
   /// [filter] NRQL for determining whether a given log record should have obfuscation actions applied.
   /// [name] Name of rule.
   ObfuscationRuleArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<List<ObfuscationRuleAction>> actions,
-    pulumi.Output<String>? description,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> filter,
-    pulumi.Output<String>? name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      actions = pulumi.Input.asInput<List<ObfuscationRuleAction>>(actions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      filter = pulumi.Input.asInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.accountId,
+    required this.actions,
+    this.description,
+    required this.enabled,
+    required this.filter,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ObfuscationRuleArgs {
 
   factory ObfuscationRuleArgs.fromMap(Map<String, dynamic> map) {
     return ObfuscationRuleArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      actions: pulumi.Output.create<List<ObfuscationRuleAction>>(pulumi.Input.decodeList<ObfuscationRuleAction>(map['actions'], (value) => ObfuscationRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      actions: (pulumi.Input.decodeList<ObfuscationRuleAction>(map['actions'], (value) => ObfuscationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      filter: (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetCommunityEndpointArgs {
   /// [communityName] The name of the communityResource Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCommunityEndpointArgs({
-    required pulumi.Output<String> communityEndpointName,
-    required pulumi.Output<String> communityName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      communityEndpointName = pulumi.Input.asInput<String>(communityEndpointName),
-      communityName = pulumi.Input.asInput<String>(communityName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.communityEndpointName,
+    required this.communityName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCommunityEndpointArgs {
 
   factory GetCommunityEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetCommunityEndpointArgs(
-      communityEndpointName: pulumi.Output.create<String>(map['communityEndpointName'] as String),
-      communityName: pulumi.Output.create<String>(map['communityName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      communityEndpointName: (map['communityEndpointName'] as String).input(),
+      communityName: (map['communityName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApisApi {
   /// The ID of the API.
-  final String apiId;
+  final pulumi.Input<String> apiId;
   /// The description of the API.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the API group.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// The name of the API group.
-  final String groupName;
-  final String id;
+  final pulumi.Input<String> groupName;
+  final pulumi.Input<String> id;
   /// The name of the API.
-  final String name;
+  final pulumi.Input<String> name;
   /// The region ID of the API.
-  final String regionId;
+  final pulumi.Input<String> regionId;
 
   /// Creates a new [GetApisApi].
   /// [apiId] The ID of the API.
@@ -48,13 +49,13 @@ class GetApisApi {
 
   factory GetApisApi.fromMap(Map<String, dynamic> map) {
     return GetApisApi(
-      apiId: map['apiId'] as String,
-      description: map['description'] as String,
-      groupId: map['groupId'] as String,
-      groupName: map['groupName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      regionId: map['regionId'] as String,
+      apiId: (map['apiId'] as String).input(),
+      description: (map['description'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class ListBuildAuthTokenArgs {
   /// [builderName] The name of the builder.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListBuildAuthTokenArgs({
-    required pulumi.Output<String> buildName,
-    required pulumi.Output<String> builderName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      buildName = pulumi.Input.asInput<String>(buildName),
-      builderName = pulumi.Input.asInput<String>(builderName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.buildName,
+    required this.builderName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListBuildAuthTokenArgs {
 
   factory ListBuildAuthTokenArgs.fromMap(Map<String, dynamic> map) {
     return ListBuildAuthTokenArgs(
-      buildName: pulumi.Output.create<String>(map['buildName'] as String),
-      builderName: pulumi.Output.create<String>(map['builderName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      buildName: (map['buildName'] as String).input(),
+      builderName: (map['builderName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomModelOutputDataConfig {
   /// The S3 URI where the output data is stored.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [CustomModelOutputDataConfig].
   /// [s3Uri] The S3 URI where the output data is stored.
@@ -19,7 +20,7 @@ class CustomModelOutputDataConfig {
 
   factory CustomModelOutputDataConfig.fromMap(Map<String, dynamic> map) {
     return CustomModelOutputDataConfig(
-      s3Uri: map['s3Uri'] as String,
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

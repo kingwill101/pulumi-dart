@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The call participant speaking for a given utterance.
 class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
   /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
-  final String dialogflowParticipant;
+  final pulumi.Input<String> dialogflowParticipant;
   /// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
-  final String dialogflowParticipantName;
+  final pulumi.Input<String> dialogflowParticipantName;
   /// Obfuscated user ID from Dialogflow.
-  final String obfuscatedExternalUserId;
+  final pulumi.Input<String> obfuscatedExternalUserId;
   /// The role of the participant.
-  final String role;
+  final pulumi.Input<String> role;
   /// A user-specified ID representing the participant.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationParticipantResponse].
   /// [dialogflowParticipant] Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
@@ -40,11 +41,11 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
 
   factory GoogleCloudContactcenterinsightsV1ConversationParticipantResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(
-      dialogflowParticipant: map['dialogflowParticipant'] as String,
-      dialogflowParticipantName: map['dialogflowParticipantName'] as String,
-      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] as String,
-      role: map['role'] as String,
-      userId: map['userId'] as String,
+      dialogflowParticipant: (map['dialogflowParticipant'] as String).input(),
+      dialogflowParticipantName: (map['dialogflowParticipantName'] as String).input(),
+      obfuscatedExternalUserId: (map['obfuscatedExternalUserId'] as String).input(),
+      role: (map['role'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

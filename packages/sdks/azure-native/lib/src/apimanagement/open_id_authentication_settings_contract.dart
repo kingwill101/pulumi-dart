@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API OAuth2 Authentication settings details.
 class OpenIdAuthenticationSettingsContract {
   /// How to send token to the server.
-  final List<String>? bearerTokenSendingMethods;
+  final pulumi.Input<List<String>>? bearerTokenSendingMethods;
   /// OAuth authorization server identifier.
-  final String? openidProviderId;
+  final pulumi.Input<String>? openidProviderId;
 
   /// Creates a new [OpenIdAuthenticationSettingsContract].
   /// [bearerTokenSendingMethods] How to send token to the server.
@@ -25,8 +26,8 @@ class OpenIdAuthenticationSettingsContract {
 
   factory OpenIdAuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return OpenIdAuthenticationSettingsContract(
-      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : (map['bearerTokenSendingMethods'] as List).cast<String>(),
-      openidProviderId: map['openidProviderId'] == null ? null : map['openidProviderId'] as String,
+      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods'] as List).cast<String>()).input(),
+      openidProviderId: map['openidProviderId'] == null ? null : (map['openidProviderId'] as String).input(),
     );
   }
 }

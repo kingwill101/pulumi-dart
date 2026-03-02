@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'move_collection_properties_response_errors.dart';
 
 /// Defines the move collection properties.
 class MoveCollectionPropertiesResponse {
   /// Defines the move collection errors.
-  final MoveCollectionPropertiesResponseErrors errors;
+  final pulumi.Input<MoveCollectionPropertiesResponseErrors> errors;
   /// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
-  final String? moveRegion;
+  final pulumi.Input<String>? moveRegion;
   /// Defines the MoveType.
-  final String? moveType;
+  final pulumi.Input<String>? moveType;
   /// Defines the provisioning states.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Gets or sets the source region.
-  final String? sourceRegion;
+  final pulumi.Input<String>? sourceRegion;
   /// Gets or sets the target region.
-  final String? targetRegion;
+  final pulumi.Input<String>? targetRegion;
   /// Gets or sets the version of move collection.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MoveCollectionPropertiesResponse].
   /// [errors] Defines the move collection errors.
@@ -39,7 +40,7 @@ class MoveCollectionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': errors.toMap(),
+      'errors': pulumi.Input.mapInputValue<MoveCollectionPropertiesResponseErrors, Map<String, dynamic>>(errors, (value) => value.toMap()),
       'moveRegion': ?moveRegion,
       'moveType': ?moveType,
       'provisioningState': provisioningState,
@@ -51,13 +52,13 @@ class MoveCollectionPropertiesResponse {
 
   factory MoveCollectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MoveCollectionPropertiesResponse(
-      errors: MoveCollectionPropertiesResponseErrors.fromMap((map['errors'] as Map).cast<String, dynamic>()),
-      moveRegion: map['moveRegion'] == null ? null : map['moveRegion'] as String,
-      moveType: map['moveType'] == null ? null : map['moveType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceRegion: map['sourceRegion'] == null ? null : map['sourceRegion'] as String,
-      targetRegion: map['targetRegion'] == null ? null : map['targetRegion'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      errors: (MoveCollectionPropertiesResponseErrors.fromMap((map['errors'] as Map).cast<String, dynamic>())).input(),
+      moveRegion: map['moveRegion'] == null ? null : (map['moveRegion'] as String).input(),
+      moveType: map['moveType'] == null ? null : (map['moveType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion'] as String).input(),
+      targetRegion: map['targetRegion'] == null ? null : (map['targetRegion'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

@@ -33,23 +33,15 @@ class AssessmentDelegationState {
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   /// [status] Status of the delegation.
   AssessmentDelegationState({
-    pulumi.Output<String>? assessmentId,
-    pulumi.Output<String>? comment,
-    pulumi.Output<String>? controlSetId,
-    pulumi.Output<String>? delegationId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? roleType,
-    pulumi.Output<String>? status,
-  }) :
-      assessmentId = pulumi.Input.asOptionalInput<String>(assessmentId),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      controlSetId = pulumi.Input.asOptionalInput<String>(controlSetId),
-      delegationId = pulumi.Input.asOptionalInput<String>(delegationId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      roleType = pulumi.Input.asOptionalInput<String>(roleType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.assessmentId,
+    this.comment,
+    this.controlSetId,
+    this.delegationId,
+    this.region,
+    this.roleArn,
+    this.roleType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class AssessmentDelegationState {
 
   factory AssessmentDelegationState.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationState(
-      assessmentId: map['assessmentId'] == null ? null : pulumi.Output.create<String>(map['assessmentId'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      controlSetId: map['controlSetId'] == null ? null : pulumi.Output.create<String>(map['controlSetId'] as String),
-      delegationId: map['delegationId'] == null ? null : pulumi.Output.create<String>(map['delegationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      roleType: map['roleType'] == null ? null : pulumi.Output.create<String>(map['roleType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      assessmentId: map['assessmentId'] == null ? null : (map['assessmentId'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      controlSetId: map['controlSetId'] == null ? null : (map['controlSetId'] as String).input(),
+      delegationId: map['delegationId'] == null ? null : (map['delegationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

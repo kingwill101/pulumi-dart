@@ -11,45 +11,45 @@ import 'tag_response.dart';
 /// Definition of awsLightsailInstance
 class AwsLightsailInstancePropertiesResponse {
   /// An array of objects representing the add-ons to enable for the new instance.
-  final List<AddOnResponse>? addOns;
+  final pulumi.Input<List<AddOnResponse>>? addOns;
   /// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The ID for a virtual private server image (e.g., app_wordpress_4_4 or app_lamp_7_0 ). Use the get blueprints operation to return a list of available images (or blueprints ).
-  final String? blueprintId;
+  final pulumi.Input<String>? blueprintId;
   /// The bundle of specification information for your virtual private server (or instance ), including the pricing plan (e.g., micro_1_0 ).
-  final String? bundleId;
+  final pulumi.Input<String>? bundleId;
   /// Hardware of the Instance.
-  final HardwareResponse? hardware;
+  final pulumi.Input<HardwareResponse>? hardware;
   /// Property instanceArn
-  final String? instanceArn;
+  final pulumi.Input<String>? instanceArn;
   /// The names to use for your new Lightsail instance.
-  final String? instanceName;
+  final pulumi.Input<String>? instanceName;
   /// Is the IP Address of the Instance is the static IP
-  final bool? isStaticIp;
+  final pulumi.Input<bool>? isStaticIp;
   /// The name of your key pair.
-  final String? keyPairName;
+  final pulumi.Input<String>? keyPairName;
   /// Location of a resource.
-  final LocationResponse? location;
+  final pulumi.Input<LocationResponse>? location;
   /// Networking of the Instance.
-  final NetworkingResponse? networking;
+  final pulumi.Input<NetworkingResponse>? networking;
   /// Private IP Address of the Instance
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// Public IP Address of the Instance
-  final String? publicIpAddress;
+  final pulumi.Input<String>? publicIpAddress;
   /// Resource type of Lightsail instance.
-  final String? resourceType;
+  final pulumi.Input<String>? resourceType;
   /// SSH Key Name of the  Lightsail instance.
-  final String? sshKeyName;
+  final pulumi.Input<String>? sshKeyName;
   /// Current State of the Instance.
-  final StateResponse? state;
+  final pulumi.Input<StateResponse>? state;
   /// Support code to help identify any issues
-  final String? supportCode;
+  final pulumi.Input<String>? supportCode;
   /// An array of key-value pairs to apply to this resource.
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
   /// A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update.
-  final String? userData;
+  final pulumi.Input<String>? userData;
   /// Username of the  Lightsail instance.
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [AwsLightsailInstancePropertiesResponse].
   /// [addOns] An array of objects representing the add-ons to enable for the new instance.
@@ -97,24 +97,24 @@ class AwsLightsailInstancePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addOns': ?addOns == null ? null : pulumi.Input.encodeList<AddOnResponse, Map<String, dynamic>>(addOns!, (value) => value.toMap()),
+      'addOns': ?pulumi.Input.mapOptionalInputValue<List<AddOnResponse>, List<Map<String, dynamic>>>(addOns, (value) => pulumi.Input.encodeList<AddOnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'availabilityZone': ?availabilityZone,
       'blueprintId': ?blueprintId,
       'bundleId': ?bundleId,
-      'hardware': ?hardware == null ? null : hardware!.toMap(),
+      'hardware': ?pulumi.Input.mapOptionalInputValue<HardwareResponse, Map<String, dynamic>>(hardware, (value) => value.toMap()),
       'instanceArn': ?instanceArn,
       'instanceName': ?instanceName,
       'isStaticIp': ?isStaticIp,
       'keyPairName': ?keyPairName,
-      'location': ?location == null ? null : location!.toMap(),
-      'networking': ?networking == null ? null : networking!.toMap(),
+      'location': ?pulumi.Input.mapOptionalInputValue<LocationResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'networking': ?pulumi.Input.mapOptionalInputValue<NetworkingResponse, Map<String, dynamic>>(networking, (value) => value.toMap()),
       'privateIpAddress': ?privateIpAddress,
       'publicIpAddress': ?publicIpAddress,
       'resourceType': ?resourceType,
       'sshKeyName': ?sshKeyName,
-      'state': ?state == null ? null : state!.toMap(),
+      'state': ?pulumi.Input.mapOptionalInputValue<StateResponse, Map<String, dynamic>>(state, (value) => value.toMap()),
       'supportCode': ?supportCode,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'userData': ?userData,
       'userName': ?userName,
     };
@@ -122,26 +122,26 @@ class AwsLightsailInstancePropertiesResponse {
 
   factory AwsLightsailInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsLightsailInstancePropertiesResponse(
-      addOns: map['addOns'] == null ? null : pulumi.Input.decodeList<AddOnResponse>(map['addOns'], (value) => AddOnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      blueprintId: map['blueprintId'] == null ? null : map['blueprintId'] as String,
-      bundleId: map['bundleId'] == null ? null : map['bundleId'] as String,
-      hardware: map['hardware'] == null ? null : HardwareResponse.fromMap((map['hardware'] as Map).cast<String, dynamic>()),
-      instanceArn: map['instanceArn'] == null ? null : map['instanceArn'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      isStaticIp: map['isStaticIp'] == null ? null : map['isStaticIp'] as bool,
-      keyPairName: map['keyPairName'] == null ? null : map['keyPairName'] as String,
-      location: map['location'] == null ? null : LocationResponse.fromMap((map['location'] as Map).cast<String, dynamic>()),
-      networking: map['networking'] == null ? null : NetworkingResponse.fromMap((map['networking'] as Map).cast<String, dynamic>()),
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      publicIpAddress: map['publicIpAddress'] == null ? null : map['publicIpAddress'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      sshKeyName: map['sshKeyName'] == null ? null : map['sshKeyName'] as String,
-      state: map['state'] == null ? null : StateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
-      supportCode: map['supportCode'] == null ? null : map['supportCode'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
-      userData: map['userData'] == null ? null : map['userData'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      addOns: map['addOns'] == null ? null : (pulumi.Input.decodeList<AddOnResponse>(map['addOns'], (value) => AddOnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      blueprintId: map['blueprintId'] == null ? null : (map['blueprintId'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      hardware: map['hardware'] == null ? null : (HardwareResponse.fromMap((map['hardware'] as Map).cast<String, dynamic>())).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      isStaticIp: map['isStaticIp'] == null ? null : (map['isStaticIp'] as bool).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      location: map['location'] == null ? null : (LocationResponse.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      networking: map['networking'] == null ? null : (NetworkingResponse.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      sshKeyName: map['sshKeyName'] == null ? null : (map['sshKeyName'] as String).input(),
+      state: map['state'] == null ? null : (StateResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      supportCode: map['supportCode'] == null ? null : (map['supportCode'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetLoadBalancerTypeArgs {
   /// [id] ID of the Load Balancer Type.
   /// [name] Name of the Load Balancer Type.
   GetLoadBalancerTypeArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.id,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLoadBalancerTypeArgs {
 
   factory GetLoadBalancerTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTypeArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

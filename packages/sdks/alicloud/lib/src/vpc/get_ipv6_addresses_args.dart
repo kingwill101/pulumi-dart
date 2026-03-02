@@ -29,19 +29,13 @@ class GetIpv6AddressesArgs {
   /// [vpcId] The ID of the VPC to which the IPv6 address belongs.
   /// [vswitchId] The ID of the vSwitch to which the IPv6 address belongs.
   GetIpv6AddressesArgs({
-    pulumi.Output<String>? associatedInstanceId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      associatedInstanceId = pulumi.Input.asOptionalInput<String>(associatedInstanceId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.associatedInstanceId,
+    this.ids,
+    this.outputFile,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetIpv6AddressesArgs {
 
   factory GetIpv6AddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesArgs(
-      associatedInstanceId: map['associatedInstanceId'] == null ? null : pulumi.Output.create<String>(map['associatedInstanceId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      associatedInstanceId: map['associatedInstanceId'] == null ? null : (map['associatedInstanceId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 class LogsPolicyResponse {
   /// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
-  final Map<String, dynamic> cloudLoggingOption;
+  final pulumi.Input<Map<String, dynamic>> cloudLoggingOption;
   /// Where logs should be saved.
-  final String destination;
+  final pulumi.Input<String> destination;
   /// The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
-  final String logsPath;
+  final pulumi.Input<String> logsPath;
 
   /// Creates a new [LogsPolicyResponse].
   /// [cloudLoggingOption] Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
@@ -30,9 +31,9 @@ class LogsPolicyResponse {
 
   factory LogsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return LogsPolicyResponse(
-      cloudLoggingOption: (map['cloudLoggingOption'] as Map).cast<String, dynamic>(),
-      destination: map['destination'] as String,
-      logsPath: map['logsPath'] as String,
+      cloudLoggingOption: ((map['cloudLoggingOption'] as Map).cast<String, dynamic>()).input(),
+      destination: (map['destination'] as String).input(),
+      logsPath: (map['logsPath'] as String).input(),
     );
   }
 }

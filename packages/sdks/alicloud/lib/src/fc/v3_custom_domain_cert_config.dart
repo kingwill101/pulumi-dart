@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3CustomDomainCertConfig {
   /// Certificate Name
-  final String? certName;
+  final pulumi.Input<String>? certName;
   /// PEM format certificate
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// Private Key in PEM format
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
 
   /// Creates a new [V3CustomDomainCertConfig].
   /// [certName] Certificate Name
@@ -29,9 +30,9 @@ class V3CustomDomainCertConfig {
 
   factory V3CustomDomainCertConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainCertConfig(
-      certName: map['certName'] == null ? null : map['certName'] as String,
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
+      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
     );
   }
 }

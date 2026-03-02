@@ -23,15 +23,11 @@ class ImportSqlCollectorOperationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ImportSqlCollectorOperationArgs({
-    pulumi.Output<String>? importSqlCollectorsName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<ImportSqlCollectorProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      importSqlCollectorsName = pulumi.Input.asOptionalInput<String>(importSqlCollectorsName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<ImportSqlCollectorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.importSqlCollectorsName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ImportSqlCollectorOperationArgs {
 
   factory ImportSqlCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorOperationArgs(
-      importSqlCollectorsName: map['importSqlCollectorsName'] == null ? null : pulumi.Output.create<String>(map['importSqlCollectorsName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ImportSqlCollectorProperties>(ImportSqlCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      importSqlCollectorsName: map['importSqlCollectorsName'] == null ? null : (map['importSqlCollectorsName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (ImportSqlCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

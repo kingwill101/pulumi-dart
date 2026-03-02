@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact agreement validation settings.
 class EdifactValidationSettings {
   /// The value indicating whether to allow leading and trailing spaces and zeroes.
-  final bool allowLeadingAndTrailingSpacesAndZeroes;
+  final pulumi.Input<bool> allowLeadingAndTrailingSpacesAndZeroes;
   /// The value indicating whether to check for duplicate group control number.
-  final bool checkDuplicateGroupControlNumber;
+  final pulumi.Input<bool> checkDuplicateGroupControlNumber;
   /// The value indicating whether to check for duplicate interchange control number.
-  final bool checkDuplicateInterchangeControlNumber;
+  final pulumi.Input<bool> checkDuplicateInterchangeControlNumber;
   /// The value indicating whether to check for duplicate transaction set control number.
-  final bool checkDuplicateTransactionSetControlNumber;
+  final pulumi.Input<bool> checkDuplicateTransactionSetControlNumber;
   /// The validity period of interchange control number.
-  final int interchangeControlNumberValidityDays;
+  final pulumi.Input<int> interchangeControlNumberValidityDays;
   /// The trailing separator policy.
-  final String trailingSeparatorPolicy;
+  final pulumi.Input<String> trailingSeparatorPolicy;
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
-  final bool trimLeadingAndTrailingSpacesAndZeroes;
+  final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
   /// The value indicating whether to validate character set in the message.
-  final bool validateCharacterSet;
+  final pulumi.Input<bool> validateCharacterSet;
   /// The value indicating whether to Whether to validate EDI types.
-  final bool validateEDITypes;
+  final pulumi.Input<bool> validateEDITypes;
   /// The value indicating whether to Whether to validate XSD types.
-  final bool validateXSDTypes;
+  final pulumi.Input<bool> validateXSDTypes;
 
   /// Creates a new [EdifactValidationSettings].
   /// [allowLeadingAndTrailingSpacesAndZeroes] The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -65,16 +66,16 @@ class EdifactValidationSettings {
 
   factory EdifactValidationSettings.fromMap(Map<String, dynamic> map) {
     return EdifactValidationSettings(
-      allowLeadingAndTrailingSpacesAndZeroes: map['allowLeadingAndTrailingSpacesAndZeroes'] as bool,
-      checkDuplicateGroupControlNumber: map['checkDuplicateGroupControlNumber'] as bool,
-      checkDuplicateInterchangeControlNumber: map['checkDuplicateInterchangeControlNumber'] as bool,
-      checkDuplicateTransactionSetControlNumber: map['checkDuplicateTransactionSetControlNumber'] as bool,
-      interchangeControlNumberValidityDays: map['interchangeControlNumberValidityDays'] as int,
-      trailingSeparatorPolicy: map['trailingSeparatorPolicy'] as String,
-      trimLeadingAndTrailingSpacesAndZeroes: map['trimLeadingAndTrailingSpacesAndZeroes'] as bool,
-      validateCharacterSet: map['validateCharacterSet'] as bool,
-      validateEDITypes: map['validateEDITypes'] as bool,
-      validateXSDTypes: map['validateXSDTypes'] as bool,
+      allowLeadingAndTrailingSpacesAndZeroes: (map['allowLeadingAndTrailingSpacesAndZeroes'] as bool).input(),
+      checkDuplicateGroupControlNumber: (map['checkDuplicateGroupControlNumber'] as bool).input(),
+      checkDuplicateInterchangeControlNumber: (map['checkDuplicateInterchangeControlNumber'] as bool).input(),
+      checkDuplicateTransactionSetControlNumber: (map['checkDuplicateTransactionSetControlNumber'] as bool).input(),
+      interchangeControlNumberValidityDays: (map['interchangeControlNumberValidityDays'] as int).input(),
+      trailingSeparatorPolicy: (map['trailingSeparatorPolicy'] as String).input(),
+      trimLeadingAndTrailingSpacesAndZeroes: (map['trimLeadingAndTrailingSpacesAndZeroes'] as bool).input(),
+      validateCharacterSet: (map['validateCharacterSet'] as bool).input(),
+      validateEDITypes: (map['validateEDITypes'] as bool).input(),
+      validateXSDTypes: (map['validateXSDTypes'] as bool).input(),
     );
   }
 }

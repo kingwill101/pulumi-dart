@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IP Pool info
 class IPPoolInfoResponse {
   /// Number of IP addresses available in the IP Pool
-  final String available;
+  final pulumi.Input<String> available;
   /// Number of IP addresses allocated from the IP Pool
-  final String used;
+  final pulumi.Input<String> used;
 
   /// Creates a new [IPPoolInfoResponse].
   /// [available] Number of IP addresses available in the IP Pool
@@ -25,8 +26,8 @@ class IPPoolInfoResponse {
 
   factory IPPoolInfoResponse.fromMap(Map<String, dynamic> map) {
     return IPPoolInfoResponse(
-      available: map['available'] as String,
-      used: map['used'] as String,
+      available: (map['available'] as String).input(),
+      used: (map['used'] as String).input(),
     );
   }
 }

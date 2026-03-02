@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SubnetMapping
 class SubnetMappingResponse {
   /// [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
-  final String? allocationId;
+  final pulumi.Input<String>? allocationId;
   /// [Network Load Balancers] The IPv6 address.
-  final String? iPv6Address;
+  final pulumi.Input<String>? iPv6Address;
   /// A IPAddressType
-  final String? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
   /// [Network Load Balancers] The private IPv4 address for an internal load balancer.
-  final String? privateIPv4Address;
+  final pulumi.Input<String>? privateIPv4Address;
   /// A SubnetId.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [SubnetMappingResponse].
   /// [allocationId] [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
@@ -40,11 +41,11 @@ class SubnetMappingResponse {
 
   factory SubnetMappingResponse.fromMap(Map<String, dynamic> map) {
     return SubnetMappingResponse(
-      allocationId: map['allocationId'] == null ? null : map['allocationId'] as String,
-      iPv6Address: map['iPv6Address'] == null ? null : map['iPv6Address'] as String,
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      privateIPv4Address: map['privateIPv4Address'] == null ? null : map['privateIPv4Address'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      iPv6Address: map['iPv6Address'] == null ? null : (map['iPv6Address'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      privateIPv4Address: map['privateIPv4Address'] == null ? null : (map['privateIPv4Address'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

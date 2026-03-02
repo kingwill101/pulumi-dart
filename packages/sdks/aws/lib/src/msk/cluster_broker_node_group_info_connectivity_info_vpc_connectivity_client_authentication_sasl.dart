@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl {
-  final bool? iam;
-  final bool? scram;
+  final pulumi.Input<bool>? iam;
+  final pulumi.Input<bool>? scram;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl].
   /// [iam] Optional.
@@ -22,8 +23,8 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl(
-      iam: map['iam'] == null ? null : map['iam'] as bool,
-      scram: map['scram'] == null ? null : map['scram'] as bool,
+      iam: map['iam'] == null ? null : (map['iam'] as bool).input(),
+      scram: map['scram'] == null ? null : (map['scram'] as bool).input(),
     );
   }
 }

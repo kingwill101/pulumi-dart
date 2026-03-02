@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_identity_pool_provider_x509_trust_store.dart';
 
 class WorkloadIdentityPoolProviderX509 {
@@ -8,7 +9,7 @@ class WorkloadIdentityPoolProviderX509 {
   /// the incoming end entity certificate. Follow the x509 guidelines to
   /// define those PEM encoded certs. Only 1 trust store is currently
   /// supported.
-  final WorkloadIdentityPoolProviderX509TrustStore trustStore;
+  final pulumi.Input<WorkloadIdentityPoolProviderX509TrustStore> trustStore;
 
   /// Creates a new [WorkloadIdentityPoolProviderX509].
   /// [trustStore] A Trust store, use this trust store as a wrapper to config the trust
@@ -18,13 +19,13 @@ class WorkloadIdentityPoolProviderX509 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trustStore': trustStore.toMap(),
+      'trustStore': pulumi.Input.mapInputValue<WorkloadIdentityPoolProviderX509TrustStore, Map<String, dynamic>>(trustStore, (value) => value.toMap()),
     };
   }
 
   factory WorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509(
-      trustStore: WorkloadIdentityPoolProviderX509TrustStore.fromMap((map['trustStore'] as Map).cast<String, dynamic>()),
+      trustStore: (WorkloadIdentityPoolProviderX509TrustStore.fromMap((map['trustStore'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

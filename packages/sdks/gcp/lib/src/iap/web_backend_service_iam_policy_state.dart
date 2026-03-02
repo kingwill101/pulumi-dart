@@ -21,15 +21,11 @@ class WebBackendServiceIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [webBackendService] Used to find the parent resource to bind the IAM policy to
   WebBackendServiceIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? webBackendService,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webBackendService = pulumi.Input.asOptionalInput<String>(webBackendService);
+    this.etag,
+    this.policyData,
+    this.project,
+    this.webBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class WebBackendServiceIamPolicyState {
 
   factory WebBackendServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WebBackendServiceIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      webBackendService: map['webBackendService'] == null ? null : pulumi.Output.create<String>(map['webBackendService'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      webBackendService: map['webBackendService'] == null ? null : (map['webBackendService'] as String).input(),
     );
   }
 }

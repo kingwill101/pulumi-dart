@@ -56,29 +56,18 @@ class TargetSSLProxyState {
   /// [sslCertificates] A list of SslCertificate resources that are used to authenticate
   /// [sslPolicy] A reference to the SslPolicy resource that will be associated with
   TargetSSLProxyState({
-    pulumi.Output<String>? backendService,
-    pulumi.Output<String>? certificateMap,
-    pulumi.Output<String>? creationTimestamp,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? proxyHeader,
-    pulumi.Output<int>? proxyId,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<List<String>>? sslCertificates,
-    pulumi.Output<String>? sslPolicy,
-  }) :
-      backendService = pulumi.Input.asOptionalInput<String>(backendService),
-      certificateMap = pulumi.Input.asOptionalInput<String>(certificateMap),
-      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      proxyHeader = pulumi.Input.asOptionalInput<String>(proxyHeader),
-      proxyId = pulumi.Input.asOptionalInput<int>(proxyId),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      sslCertificates = pulumi.Input.asOptionalInput<List<String>>(sslCertificates),
-      sslPolicy = pulumi.Input.asOptionalInput<String>(sslPolicy);
+    this.backendService,
+    this.certificateMap,
+    this.creationTimestamp,
+    this.description,
+    this.name,
+    this.project,
+    this.proxyHeader,
+    this.proxyId,
+    this.selfLink,
+    this.sslCertificates,
+    this.sslPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,17 +87,17 @@ class TargetSSLProxyState {
 
   factory TargetSSLProxyState.fromMap(Map<String, dynamic> map) {
     return TargetSSLProxyState(
-      backendService: map['backendService'] == null ? null : pulumi.Output.create<String>(map['backendService'] as String),
-      certificateMap: map['certificateMap'] == null ? null : pulumi.Output.create<String>(map['certificateMap'] as String),
-      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      proxyHeader: map['proxyHeader'] == null ? null : pulumi.Output.create<String>(map['proxyHeader'] as String),
-      proxyId: map['proxyId'] == null ? null : pulumi.Output.create<int>(map['proxyId'] as int),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      sslCertificates: map['sslCertificates'] == null ? null : pulumi.Output.create<List<String>>((map['sslCertificates'] as List).cast<String>()),
-      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<String>(map['sslPolicy'] as String),
+      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader'] as String).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
     );
   }
 }

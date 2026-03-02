@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectSecondarySourceGitSubmodulesConfig {
   /// Whether to fetch Git submodules for the AWS CodeBuild build project.
-  final bool fetchSubmodules;
+  final pulumi.Input<bool> fetchSubmodules;
 
   /// Creates a new [ProjectSecondarySourceGitSubmodulesConfig].
   /// [fetchSubmodules] Whether to fetch Git submodules for the AWS CodeBuild build project.
@@ -19,7 +20,7 @@ class ProjectSecondarySourceGitSubmodulesConfig {
 
   factory ProjectSecondarySourceGitSubmodulesConfig.fromMap(Map<String, dynamic> map) {
     return ProjectSecondarySourceGitSubmodulesConfig(
-      fetchSubmodules: map['fetchSubmodules'] as bool,
+      fetchSubmodules: (map['fetchSubmodules'] as bool).input(),
     );
   }
 }

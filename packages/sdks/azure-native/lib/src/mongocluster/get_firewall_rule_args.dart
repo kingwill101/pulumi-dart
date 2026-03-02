@@ -19,13 +19,10 @@ class GetFirewallRuleArgs {
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFirewallRuleArgs({
-    required pulumi.Output<String> firewallRuleName,
-    required pulumi.Output<String> mongoClusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      firewallRuleName = pulumi.Input.asInput<String>(firewallRuleName),
-      mongoClusterName = pulumi.Input.asInput<String>(mongoClusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.firewallRuleName,
+    required this.mongoClusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallRuleArgs {
 
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
-      firewallRuleName: pulumi.Output.create<String>(map['firewallRuleName'] as String),
-      mongoClusterName: pulumi.Output.create<String>(map['mongoClusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      firewallRuleName: (map['firewallRuleName'] as String).input(),
+      mongoClusterName: (map['mongoClusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class AccountSettingsArgs {
   /// [terminationProtectionEnabled] A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
   /// [timeouts] Optional.
   AccountSettingsArgs({
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<String>? defaultNamespace,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? terminationProtectionEnabled,
-    pulumi.Output<AccountSettingsTimeouts>? timeouts,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      defaultNamespace = pulumi.Input.asOptionalInput<String>(defaultNamespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      terminationProtectionEnabled = pulumi.Input.asOptionalInput<bool>(terminationProtectionEnabled),
-      timeouts = pulumi.Input.asOptionalInput<AccountSettingsTimeouts>(timeouts);
+    this.awsAccountId,
+    this.defaultNamespace,
+    this.region,
+    this.terminationProtectionEnabled,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AccountSettingsArgs {
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      defaultNamespace: map['defaultNamespace'] == null ? null : pulumi.Output.create<String>(map['defaultNamespace'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['terminationProtectionEnabled'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AccountSettingsTimeouts>(AccountSettingsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : (map['terminationProtectionEnabled'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (AccountSettingsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

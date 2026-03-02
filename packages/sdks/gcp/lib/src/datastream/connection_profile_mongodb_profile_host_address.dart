@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileMongodbProfileHostAddress {
   /// Hostname for the connection.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Port for the connection.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ConnectionProfileMongodbProfileHostAddress].
   /// [hostname] Hostname for the connection.
@@ -24,8 +25,8 @@ class ConnectionProfileMongodbProfileHostAddress {
 
   factory ConnectionProfileMongodbProfileHostAddress.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfileHostAddress(
-      hostname: map['hostname'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      hostname: (map['hostname'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

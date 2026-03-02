@@ -22,15 +22,11 @@ class GetBackupShortTermRetentionPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetBackupShortTermRetentionPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.databaseName,
+    required this.policyName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetBackupShortTermRetentionPolicyArgs {
 
   factory GetBackupShortTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupShortTermRetentionPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

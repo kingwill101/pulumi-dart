@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta.dart';
 import 'ingress_spec_networking_k8s_io_v1beta1.dart';
 import 'ingress_status_networking_k8s_io_v1beta1.dart';
@@ -21,15 +22,15 @@ import 'ingress_status_networking_k8s_io_v1beta1.dart';
 /// by setting the 'customTimeouts' option on the resource.
 class IngressNetworkingK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ObjectMeta? metadata;
+  final pulumi.Input<ObjectMeta>? metadata;
   /// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final IngressSpecNetworkingK8sIoV1beta1? spec;
+  final pulumi.Input<IngressSpecNetworkingK8sIoV1beta1>? spec;
   /// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  final IngressStatusNetworkingK8sIoV1beta1? status;
+  final pulumi.Input<IngressStatusNetworkingK8sIoV1beta1>? status;
 
   /// Creates a new [IngressNetworkingK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -49,19 +50,19 @@ class IngressNetworkingK8sIoV1beta1 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'spec': ?spec == null ? null : spec!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'spec': ?pulumi.Input.mapOptionalInputValue<IngressSpecNetworkingK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<IngressStatusNetworkingK8sIoV1beta1, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory IngressNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressNetworkingK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: map['spec'] == null ? null : IngressSpecNetworkingK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : IngressStatusNetworkingK8sIoV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (IngressSpecNetworkingK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (IngressStatusNetworkingK8sIoV1beta1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,23 +32,15 @@ class UserArgs {
   /// [userId] Required. ID of the requesting object.
   /// [userType] Optional. Type of this user.
   UserArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? databaseRoles,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> userId,
-    pulumi.Output<UserUserType>? userType,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      databaseRoles = pulumi.Input.asOptionalInput<List<String>>(databaseRoles),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      userId = pulumi.Input.asInput<String>(userId),
-      userType = pulumi.Input.asOptionalInput<UserUserType>(userType);
+    required this.clusterId,
+    this.databaseRoles,
+    this.location,
+    this.password,
+    this.project,
+    this.requestId,
+    required this.userId,
+    this.userType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      databaseRoles: map['databaseRoles'] == null ? null : pulumi.Output.create<List<String>>((map['databaseRoles'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      userType: map['userType'] == null ? null : pulumi.Output.create<UserUserType>(UserUserType.fromValue(map['userType'] as String)),
+      clusterId: (map['clusterId'] as String).input(),
+      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userType: map['userType'] == null ? null : (UserUserType.fromValue(map['userType'] as String)).input(),
     );
   }
 }

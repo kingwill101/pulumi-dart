@@ -16,13 +16,10 @@ class RegexPatternSetState {
   /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   RegexPatternSetState({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? regexPatternStrings,
-    pulumi.Output<String>? region,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      regexPatternStrings = pulumi.Input.asOptionalInput<List<String>>(regexPatternStrings),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.name,
+    this.regexPatternStrings,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RegexPatternSetState {
 
   factory RegexPatternSetState.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      regexPatternStrings: map['regexPatternStrings'] == null ? null : pulumi.Output.create<List<String>>((map['regexPatternStrings'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      regexPatternStrings: map['regexPatternStrings'] == null ? null : ((map['regexPatternStrings'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 class GooRepository {
   /// The name of the repository.
-  final String name;
+  final pulumi.Input<String> name;
   /// The url of the repository.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [GooRepository].
   /// [name] The name of the repository.
@@ -25,8 +26,8 @@ class GooRepository {
 
   factory GooRepository.fromMap(Map<String, dynamic> map) {
     return GooRepository(
-      name: map['name'] as String,
-      url: map['url'] as String,
+      name: (map['name'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

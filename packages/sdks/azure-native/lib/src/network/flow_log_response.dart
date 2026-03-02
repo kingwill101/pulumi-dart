@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_log_format_parameters_response.dart';
 import 'managed_service_identity_response.dart';
 import 'retention_policy_parameters_response.dart';
@@ -8,39 +9,39 @@ import 'traffic_analytics_properties_response.dart';
 /// A flow log resource.
 class FlowLogResponse {
   /// Flag to enable/disable flow logging.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
-  final String? enabledFilteringCriteria;
+  final pulumi.Input<String>? enabledFilteringCriteria;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Parameters that define the configuration of traffic analytics.
-  final TrafficAnalyticsPropertiesResponse? flowAnalyticsConfiguration;
+  final pulumi.Input<TrafficAnalyticsPropertiesResponse>? flowAnalyticsConfiguration;
   /// Parameters that define the flow log format.
-  final FlowLogFormatParametersResponse? format;
+  final pulumi.Input<FlowLogFormatParametersResponse>? format;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// FlowLog resource Managed Identity
-  final ManagedServiceIdentityResponse? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The provisioning state of the flow log.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Optional field to filter network traffic logs based on flow states. Value of this field could be any comma separated combination string of letters B,C,E or D. B represents Begin, when a flow is created. C represents Continue for an ongoing flow generated at every five-minute interval. E represents End, when a flow is terminated. D represents Deny, when a flow is denied. If not specified, all network traffic will be logged.
-  final String? recordTypes;
+  final pulumi.Input<String>? recordTypes;
   /// Parameters that define the retention policy for flow log.
-  final RetentionPolicyParametersResponse? retentionPolicy;
+  final pulumi.Input<RetentionPolicyParametersResponse>? retentionPolicy;
   /// ID of the storage account which is used to store the flow log.
-  final String storageId;
+  final pulumi.Input<String> storageId;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Guid of network security group to which flow log will be applied.
-  final String targetResourceGuid;
+  final pulumi.Input<String> targetResourceGuid;
   /// ID of network security group to which flow log will be applied.
-  final String targetResourceId;
+  final pulumi.Input<String> targetResourceId;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FlowLogResponse].
   /// [enabled] Flag to enable/disable flow logging.
@@ -85,15 +86,15 @@ class FlowLogResponse {
       'enabled': ?enabled,
       'enabledFilteringCriteria': ?enabledFilteringCriteria,
       'etag': etag,
-      'flowAnalyticsConfiguration': ?flowAnalyticsConfiguration == null ? null : flowAnalyticsConfiguration!.toMap(),
-      'format': ?format == null ? null : format!.toMap(),
+      'flowAnalyticsConfiguration': ?pulumi.Input.mapOptionalInputValue<TrafficAnalyticsPropertiesResponse, Map<String, dynamic>>(flowAnalyticsConfiguration, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<FlowLogFormatParametersResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
       'id': ?id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
       'recordTypes': ?recordTypes,
-      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<RetentionPolicyParametersResponse, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
       'storageId': storageId,
       'tags': ?tags,
       'targetResourceGuid': targetResourceGuid,
@@ -104,23 +105,23 @@ class FlowLogResponse {
 
   factory FlowLogResponse.fromMap(Map<String, dynamic> map) {
     return FlowLogResponse(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : map['enabledFilteringCriteria'] as String,
-      etag: map['etag'] as String,
-      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : TrafficAnalyticsPropertiesResponse.fromMap((map['flowAnalyticsConfiguration'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : FlowLogFormatParametersResponse.fromMap((map['format'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      recordTypes: map['recordTypes'] == null ? null : map['recordTypes'] as String,
-      retentionPolicy: map['retentionPolicy'] == null ? null : RetentionPolicyParametersResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
-      storageId: map['storageId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGuid: map['targetResourceGuid'] as String,
-      targetResourceId: map['targetResourceId'] as String,
-      type: map['type'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : (map['enabledFilteringCriteria'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsPropertiesResponse.fromMap((map['flowAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (FlowLogFormatParametersResponse.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      recordTypes: map['recordTypes'] == null ? null : (map['recordTypes'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyParametersResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      storageId: (map['storageId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGuid: (map['targetResourceGuid'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

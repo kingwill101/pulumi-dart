@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemBoot {
   /// Sets the load parameter for the booting process of the redirected device, influencing how it is activated.
-  final String? loadParm;
+  final pulumi.Input<String>? loadParm;
   /// Specifies the boot order for the redirected device, controlling the sequence of device initialization.
-  final double order;
+  final pulumi.Input<double> order;
 
   /// Creates a new [DomainDevicesFilesystemBoot].
   /// [loadParm] Sets the load parameter for the booting process of the redirected device, influencing how it is activated.
@@ -24,8 +25,8 @@ class DomainDevicesFilesystemBoot {
 
   factory DomainDevicesFilesystemBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBoot(
-      loadParm: map['loadParm'] == null ? null : map['loadParm'] as String,
-      order: map['order'] as double,
+      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      order: (map['order'] as double).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The trigger based on base image dependency.
 class BaseImageTrigger {
   /// The type of the auto trigger for base image dependency updates.
-  final String baseImageTriggerType;
+  final pulumi.Input<String> baseImageTriggerType;
   /// The name of the trigger.
-  final String name;
+  final pulumi.Input<String> name;
   /// The current status of trigger.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The endpoint URL for receiving update triggers.
-  final String? updateTriggerEndpoint;
+  final pulumi.Input<String>? updateTriggerEndpoint;
   /// Type of Payload body for Base image update triggers.
-  final String? updateTriggerPayloadType;
+  final pulumi.Input<String>? updateTriggerPayloadType;
 
   /// Creates a new [BaseImageTrigger].
   /// [baseImageTriggerType] The type of the auto trigger for base image dependency updates.
@@ -40,11 +41,11 @@ class BaseImageTrigger {
 
   factory BaseImageTrigger.fromMap(Map<String, dynamic> map) {
     return BaseImageTrigger(
-      baseImageTriggerType: map['baseImageTriggerType'] as String,
-      name: map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : map['updateTriggerEndpoint'] as String,
-      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : map['updateTriggerPayloadType'] as String,
+      baseImageTriggerType: (map['baseImageTriggerType'] as String).input(),
+      name: (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      updateTriggerEndpoint: map['updateTriggerEndpoint'] == null ? null : (map['updateTriggerEndpoint'] as String).input(),
+      updateTriggerPayloadType: map['updateTriggerPayloadType'] == null ? null : (map['updateTriggerPayloadType'] as String).input(),
     );
   }
 }

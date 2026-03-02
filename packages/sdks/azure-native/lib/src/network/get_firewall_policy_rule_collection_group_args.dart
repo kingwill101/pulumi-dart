@@ -19,13 +19,10 @@ class GetFirewallPolicyRuleCollectionGroupArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [ruleCollectionGroupName] The name of the FirewallPolicyRuleCollectionGroup.
   GetFirewallPolicyRuleCollectionGroupArgs({
-    required pulumi.Output<String> firewallPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionGroupName,
-  }) :
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionGroupName = pulumi.Input.asInput<String>(ruleCollectionGroupName);
+    required this.firewallPolicyName,
+    required this.resourceGroupName,
+    required this.ruleCollectionGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFirewallPolicyRuleCollectionGroupArgs {
 
   factory GetFirewallPolicyRuleCollectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyRuleCollectionGroupArgs(
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionGroupName: pulumi.Output.create<String>(map['ruleCollectionGroupName'] as String),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionGroupName: (map['ruleCollectionGroupName'] as String).input(),
     );
   }
 }

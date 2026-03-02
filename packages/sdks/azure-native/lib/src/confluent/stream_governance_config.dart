@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Stream governance configuration
 class StreamGovernanceConfig {
   /// Stream governance configuration
-  final String? package;
+  final pulumi.Input<String>? package;
 
   /// Creates a new [StreamGovernanceConfig].
   /// [package] Stream governance configuration
@@ -20,7 +21,7 @@ class StreamGovernanceConfig {
 
   factory StreamGovernanceConfig.fromMap(Map<String, dynamic> map) {
     return StreamGovernanceConfig(
-      package: map['package'] == null ? null : map['package'] as String,
+      package: map['package'] == null ? null : (map['package'] as String).input(),
     );
   }
 }

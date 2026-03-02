@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Node type fault simulation object with status.
 class NodeTypeFaultSimulationResponse {
   /// Node type name.
-  final String? nodeTypeName;
+  final pulumi.Input<String>? nodeTypeName;
   /// Current or latest asynchronous operation identifier on the node type.
-  final String? operationId;
+  final pulumi.Input<String>? operationId;
   /// Current or latest asynchronous operation status on the node type
-  final String operationStatus;
+  final pulumi.Input<String> operationStatus;
   /// Fault simulation status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [NodeTypeFaultSimulationResponse].
   /// [nodeTypeName] Node type name.
@@ -35,10 +36,10 @@ class NodeTypeFaultSimulationResponse {
 
   factory NodeTypeFaultSimulationResponse.fromMap(Map<String, dynamic> map) {
     return NodeTypeFaultSimulationResponse(
-      nodeTypeName: map['nodeTypeName'] == null ? null : map['nodeTypeName'] as String,
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
-      operationStatus: map['operationStatus'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      nodeTypeName: map['nodeTypeName'] == null ? null : (map['nodeTypeName'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationStatus: (map['operationStatus'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

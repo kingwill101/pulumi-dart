@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetContainerGroupsGroupInitContainerPort {
   /// The port number. Valid values: 1 to 65535.
-  final int port;
+  final pulumi.Input<int> port;
   /// Valid values: `TCP` and `UDP`.
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [GetContainerGroupsGroupInitContainerPort].
   /// [port] The port number. Valid values: 1 to 65535.
@@ -24,8 +25,8 @@ class GetContainerGroupsGroupInitContainerPort {
 
   factory GetContainerGroupsGroupInitContainerPort.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsGroupInitContainerPort(
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class JobScheduleState {
   /// [startTime] The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   JobScheduleState({
-    pulumi.Output<String>? lastOutputTime,
-    pulumi.Output<String>? startMode,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? streamAnalyticsJobId,
-  }) :
-      lastOutputTime = pulumi.Input.asOptionalInput<String>(lastOutputTime),
-      startMode = pulumi.Input.asOptionalInput<String>(startMode),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      streamAnalyticsJobId = pulumi.Input.asOptionalInput<String>(streamAnalyticsJobId);
+    this.lastOutputTime,
+    this.startMode,
+    this.startTime,
+    this.streamAnalyticsJobId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class JobScheduleState {
 
   factory JobScheduleState.fromMap(Map<String, dynamic> map) {
     return JobScheduleState(
-      lastOutputTime: map['lastOutputTime'] == null ? null : pulumi.Output.create<String>(map['lastOutputTime'] as String),
-      startMode: map['startMode'] == null ? null : pulumi.Output.create<String>(map['startMode'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : pulumi.Output.create<String>(map['streamAnalyticsJobId'] as String),
+      lastOutputTime: map['lastOutputTime'] == null ? null : (map['lastOutputTime'] as String).input(),
+      startMode: map['startMode'] == null ? null : (map['startMode'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
     );
   }
 }

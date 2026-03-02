@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ARG query and other details to create workloads within a wave.
 class Arg {
   /// The query to create workloads within the wave.
-  final String query;
+  final pulumi.Input<String> query;
 
   /// Creates a new [Arg].
   /// [query] The query to create workloads within the wave.
@@ -20,7 +21,7 @@ class Arg {
 
   factory Arg.fromMap(Map<String, dynamic> map) {
     return Arg(
-      query: map['query'] as String,
+      query: (map['query'] as String).input(),
     );
   }
 }

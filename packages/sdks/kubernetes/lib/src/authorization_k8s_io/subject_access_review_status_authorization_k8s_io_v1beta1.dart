@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SubjectAccessReviewStatus
 class SubjectAccessReviewStatusAuthorizationK8sIoV1beta1 {
   /// Allowed is required. True if the action would be allowed, false otherwise.
-  final bool allowed;
+  final pulumi.Input<bool> allowed;
   /// Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.
-  final bool? denied;
+  final pulumi.Input<bool>? denied;
   /// EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.
-  final String? evaluationError;
+  final pulumi.Input<String>? evaluationError;
   /// Reason is optional.  It indicates why a request was allowed or denied.
-  final String? reason;
+  final pulumi.Input<String>? reason;
 
   /// Creates a new [SubjectAccessReviewStatusAuthorizationK8sIoV1beta1].
   /// [allowed] Allowed is required. True if the action would be allowed, false otherwise.
@@ -35,10 +36,10 @@ class SubjectAccessReviewStatusAuthorizationK8sIoV1beta1 {
 
   factory SubjectAccessReviewStatusAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewStatusAuthorizationK8sIoV1beta1(
-      allowed: map['allowed'] as bool,
-      denied: map['denied'] == null ? null : map['denied'] as bool,
-      evaluationError: map['evaluationError'] == null ? null : map['evaluationError'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
+      allowed: (map['allowed'] as bool).input(),
+      denied: map['denied'] == null ? null : (map['denied'] as bool).input(),
+      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
     );
   }
 }

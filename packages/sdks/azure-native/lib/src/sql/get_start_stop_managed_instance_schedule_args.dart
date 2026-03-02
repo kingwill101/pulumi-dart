@@ -19,13 +19,10 @@ class GetStartStopManagedInstanceScheduleArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [startStopScheduleName] Name of the managed instance Start/Stop schedule.
   GetStartStopManagedInstanceScheduleArgs({
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> startStopScheduleName,
-  }) :
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      startStopScheduleName = pulumi.Input.asInput<String>(startStopScheduleName);
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+    required this.startStopScheduleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStartStopManagedInstanceScheduleArgs {
 
   factory GetStartStopManagedInstanceScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetStartStopManagedInstanceScheduleArgs(
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      startStopScheduleName: pulumi.Output.create<String>(map['startStopScheduleName'] as String),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      startStopScheduleName: (map['startStopScheduleName'] as String).input(),
     );
   }
 }

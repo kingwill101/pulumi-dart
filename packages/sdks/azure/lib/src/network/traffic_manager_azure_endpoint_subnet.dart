@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrafficManagerAzureEndpointSubnet {
   /// The first IP Address in this subnet.
-  final String first;
+  final pulumi.Input<String> first;
   /// The last IP Address in this subnet.
-  final String? last;
+  final pulumi.Input<String>? last;
   /// The block size (number of leading bits in the subnet mask).
-  final int? scope;
+  final pulumi.Input<int>? scope;
 
   /// Creates a new [TrafficManagerAzureEndpointSubnet].
   /// [first] The first IP Address in this subnet.
@@ -29,9 +30,9 @@ class TrafficManagerAzureEndpointSubnet {
 
   factory TrafficManagerAzureEndpointSubnet.fromMap(Map<String, dynamic> map) {
     return TrafficManagerAzureEndpointSubnet(
-      first: map['first'] as String,
-      last: map['last'] == null ? null : map['last'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as int,
+      first: (map['first'] as String).input(),
+      last: map['last'] == null ? null : (map['last'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as int).input(),
     );
   }
 }

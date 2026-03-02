@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultiplexMultiplexSettings {
   /// Maximum video buffer delay.
-  final int? maximumVideoBufferDelayMilliseconds;
+  final pulumi.Input<int>? maximumVideoBufferDelayMilliseconds;
   /// Transport stream bit rate.
-  final int transportStreamBitrate;
+  final pulumi.Input<int> transportStreamBitrate;
   /// Unique ID for each multiplex.
-  final int transportStreamId;
+  final pulumi.Input<int> transportStreamId;
   /// Transport stream reserved bit rate.
-  final int? transportStreamReservedBitrate;
+  final pulumi.Input<int>? transportStreamReservedBitrate;
 
   /// Creates a new [MultiplexMultiplexSettings].
   /// [maximumVideoBufferDelayMilliseconds] Maximum video buffer delay.
@@ -34,10 +35,10 @@ class MultiplexMultiplexSettings {
 
   factory MultiplexMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexMultiplexSettings(
-      maximumVideoBufferDelayMilliseconds: map['maximumVideoBufferDelayMilliseconds'] == null ? null : map['maximumVideoBufferDelayMilliseconds'] as int,
-      transportStreamBitrate: map['transportStreamBitrate'] as int,
-      transportStreamId: map['transportStreamId'] as int,
-      transportStreamReservedBitrate: map['transportStreamReservedBitrate'] == null ? null : map['transportStreamReservedBitrate'] as int,
+      maximumVideoBufferDelayMilliseconds: map['maximumVideoBufferDelayMilliseconds'] == null ? null : (map['maximumVideoBufferDelayMilliseconds'] as int).input(),
+      transportStreamBitrate: (map['transportStreamBitrate'] as int).input(),
+      transportStreamId: (map['transportStreamId'] as int).input(),
+      transportStreamReservedBitrate: map['transportStreamReservedBitrate'] == null ? null : (map['transportStreamReservedBitrate'] as int).input(),
     );
   }
 }

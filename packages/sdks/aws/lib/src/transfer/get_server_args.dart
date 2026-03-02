@@ -19,13 +19,10 @@ class GetServerArgs {
   /// [serverId] ID for an SFTP server.
   /// [tags] Map of tags assigned to the resource.
   GetServerArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.region,
+    required this.serverId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerArgs {
 
   factory GetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

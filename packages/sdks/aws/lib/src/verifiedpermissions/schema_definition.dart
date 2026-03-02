@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SchemaDefinition {
   /// A JSON string representation of the schema.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SchemaDefinition].
   /// [value] A JSON string representation of the schema.
@@ -19,7 +20,7 @@ class SchemaDefinition {
 
   factory SchemaDefinition.fromMap(Map<String, dynamic> map) {
     return SchemaDefinition(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

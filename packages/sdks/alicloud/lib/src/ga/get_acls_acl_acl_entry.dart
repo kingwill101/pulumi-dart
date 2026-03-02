@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAclsAclAclEntry {
   /// The IP entry that you want to add to the ACL.
-  final String entry;
+  final pulumi.Input<String> entry;
   /// The description of the IP entry.
-  final String entryDescription;
+  final pulumi.Input<String> entryDescription;
 
   /// Creates a new [GetAclsAclAclEntry].
   /// [entry] The IP entry that you want to add to the ACL.
@@ -24,8 +25,8 @@ class GetAclsAclAclEntry {
 
   factory GetAclsAclAclEntry.fromMap(Map<String, dynamic> map) {
     return GetAclsAclAclEntry(
-      entry: map['entry'] as String,
-      entryDescription: map['entryDescription'] as String,
+      entry: (map['entry'] as String).input(),
+      entryDescription: (map['entryDescription'] as String).input(),
     );
   }
 }

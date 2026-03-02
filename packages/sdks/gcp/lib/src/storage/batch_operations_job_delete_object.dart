@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobDeleteObject {
   /// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
-  final bool permanentObjectDeletionEnabled;
+  final pulumi.Input<bool> permanentObjectDeletionEnabled;
 
   /// Creates a new [BatchOperationsJobDeleteObject].
   /// [permanentObjectDeletionEnabled] enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
@@ -19,7 +20,7 @@ class BatchOperationsJobDeleteObject {
 
   factory BatchOperationsJobDeleteObject.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobDeleteObject(
-      permanentObjectDeletionEnabled: map['permanentObjectDeletionEnabled'] as bool,
+      permanentObjectDeletionEnabled: (map['permanentObjectDeletionEnabled'] as bool).input(),
     );
   }
 }

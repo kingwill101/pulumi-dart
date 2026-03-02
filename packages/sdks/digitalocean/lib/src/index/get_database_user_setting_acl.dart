@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseUserSettingAcl {
-  final String id;
-  final String permission;
-  final String topic;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> permission;
+  final pulumi.Input<String> topic;
 
   /// Creates a new [GetDatabaseUserSettingAcl].
   /// [id] Required.
@@ -26,9 +27,9 @@ class GetDatabaseUserSettingAcl {
 
   factory GetDatabaseUserSettingAcl.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserSettingAcl(
-      id: map['id'] as String,
-      permission: map['permission'] as String,
-      topic: map['topic'] as String,
+      id: (map['id'] as String).input(),
+      permission: (map['permission'] as String).input(),
+      topic: (map['topic'] as String).input(),
     );
   }
 }

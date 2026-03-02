@@ -42,29 +42,18 @@ class GetDomainsArgs {
   /// [securityToken] Optional.
   /// [status] The status of DCDN Domain.
   GetDomainsArgs({
-    pulumi.Output<String>? changeEndTime,
-    pulumi.Output<String>? changeStartTime,
-    pulumi.Output<bool>? checkDomainShow,
-    pulumi.Output<String>? domainSearchType,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityToken,
-    pulumi.Output<String>? status,
-  }) :
-      changeEndTime = pulumi.Input.asOptionalInput<String>(changeEndTime),
-      changeStartTime = pulumi.Input.asOptionalInput<String>(changeStartTime),
-      checkDomainShow = pulumi.Input.asOptionalInput<bool>(checkDomainShow),
-      domainSearchType = pulumi.Input.asOptionalInput<String>(domainSearchType),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityToken = pulumi.Input.asOptionalInput<String>(securityToken),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.changeEndTime,
+    this.changeStartTime,
+    this.checkDomainShow,
+    this.domainSearchType,
+    this.enableDetails,
+    this.ids,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.securityToken,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class GetDomainsArgs {
 
   factory GetDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainsArgs(
-      changeEndTime: map['changeEndTime'] == null ? null : pulumi.Output.create<String>(map['changeEndTime'] as String),
-      changeStartTime: map['changeStartTime'] == null ? null : pulumi.Output.create<String>(map['changeStartTime'] as String),
-      checkDomainShow: map['checkDomainShow'] == null ? null : pulumi.Output.create<bool>(map['checkDomainShow'] as bool),
-      domainSearchType: map['domainSearchType'] == null ? null : pulumi.Output.create<String>(map['domainSearchType'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityToken: map['securityToken'] == null ? null : pulumi.Output.create<String>(map['securityToken'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      changeEndTime: map['changeEndTime'] == null ? null : (map['changeEndTime'] as String).input(),
+      changeStartTime: map['changeStartTime'] == null ? null : (map['changeStartTime'] as String).input(),
+      checkDomainShow: map['checkDomainShow'] == null ? null : (map['checkDomainShow'] as bool).input(),
+      domainSearchType: map['domainSearchType'] == null ? null : (map['domainSearchType'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

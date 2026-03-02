@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_key_vault_secret_reference_response.dart';
 
 /// Service principal credential.
 class ServicePrincipalCredentialResponse {
   /// List of tags that can be used for describing the Credential.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// Credential description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The app ID of the service principal used to authenticate
-  final dynamic servicePrincipalId;
+  final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate.
-  final AzureKeyVaultSecretReferenceResponse? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
   /// The ID of the tenant to which the service principal belongs
-  final dynamic tenant;
+  final pulumi.Input<dynamic>? tenant;
   /// Type of credential.
   /// Expected value is 'ServicePrincipal'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServicePrincipalCredentialResponse].
   /// [annotations] List of tags that can be used for describing the Credential.
@@ -39,7 +40,7 @@ class ServicePrincipalCredentialResponse {
       'annotations': ?annotations,
       'description': ?description,
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?servicePrincipalKey == null ? null : servicePrincipalKey!.toMap(),
+      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
       'tenant': ?tenant,
       'type': type,
     };
@@ -47,12 +48,12 @@ class ServicePrincipalCredentialResponse {
 
   factory ServicePrincipalCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalCredentialResponse(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : map['servicePrincipalId'],
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'],
-      type: map['type'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

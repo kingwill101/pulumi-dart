@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The info w.r.t Agent Upgrade.
 class AgentUpgradeResponse {
   /// The correlation ID passed in from RSM per upgrade.
-  final String? correlationId;
+  final pulumi.Input<String>? correlationId;
   /// Specifies the version info w.r.t AgentUpgrade for the machine.
-  final String? desiredVersion;
+  final pulumi.Input<String>? desiredVersion;
   /// Specifies if RSM should try to upgrade this machine
-  final bool? enableAutomaticUpgrade;
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
   /// Specifies the version of the last attempt
-  final String lastAttemptDesiredVersion;
+  final pulumi.Input<String> lastAttemptDesiredVersion;
   /// Failure message of last upgrade attempt if any.
-  final String lastAttemptMessage;
+  final pulumi.Input<String> lastAttemptMessage;
   /// Specifies the status of Agent Upgrade.
-  final String lastAttemptStatus;
+  final pulumi.Input<String> lastAttemptStatus;
   /// Timestamp of last upgrade attempt
-  final String lastAttemptTimestamp;
+  final pulumi.Input<String> lastAttemptTimestamp;
 
   /// Creates a new [AgentUpgradeResponse].
   /// [correlationId] The correlation ID passed in from RSM per upgrade.
@@ -50,13 +51,13 @@ class AgentUpgradeResponse {
 
   factory AgentUpgradeResponse.fromMap(Map<String, dynamic> map) {
     return AgentUpgradeResponse(
-      correlationId: map['correlationId'] == null ? null : map['correlationId'] as String,
-      desiredVersion: map['desiredVersion'] == null ? null : map['desiredVersion'] as String,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      lastAttemptDesiredVersion: map['lastAttemptDesiredVersion'] as String,
-      lastAttemptMessage: map['lastAttemptMessage'] as String,
-      lastAttemptStatus: map['lastAttemptStatus'] as String,
-      lastAttemptTimestamp: map['lastAttemptTimestamp'] as String,
+      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
+      desiredVersion: map['desiredVersion'] == null ? null : (map['desiredVersion'] as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      lastAttemptDesiredVersion: (map['lastAttemptDesiredVersion'] as String).input(),
+      lastAttemptMessage: (map['lastAttemptMessage'] as String).input(),
+      lastAttemptStatus: (map['lastAttemptStatus'] as String).input(),
+      lastAttemptTimestamp: (map['lastAttemptTimestamp'] as String).input(),
     );
   }
 }

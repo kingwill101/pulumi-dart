@@ -22,13 +22,10 @@ class GetInstanceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   GetInstanceIamPolicyArgs({
-    required pulumi.Output<String> instanceName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instanceName,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetInstanceIamPolicyArgs {
 
   factory GetInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

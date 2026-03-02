@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_tiering_cache_performance_response.dart';
 import 'cloud_tiering_date_policy_status_response.dart';
 import 'cloud_tiering_files_not_tiering_response.dart';
@@ -10,27 +11,27 @@ import 'cloud_tiering_volume_free_space_policy_status_response.dart';
 /// Server endpoint cloud tiering status object.
 class ServerEndpointCloudTieringStatusResponse {
   /// Information regarding how well the local cache on the server is performing.
-  final CloudTieringCachePerformanceResponse cachePerformance;
+  final pulumi.Input<CloudTieringCachePerformanceResponse> cachePerformance;
   /// Status of the date policy
-  final CloudTieringDatePolicyStatusResponse datePolicyStatus;
+  final pulumi.Input<CloudTieringDatePolicyStatusResponse> datePolicyStatus;
   /// Information regarding files that failed to be tiered
-  final CloudTieringFilesNotTieringResponse filesNotTiering;
+  final pulumi.Input<CloudTieringFilesNotTieringResponse> filesNotTiering;
   /// Cloud tiering health state.
-  final String health;
+  final pulumi.Input<String> health;
   /// The last updated timestamp of health state
-  final String healthLastUpdatedTimestamp;
+  final pulumi.Input<String> healthLastUpdatedTimestamp;
   /// Last cloud tiering result (HResult)
-  final int lastCloudTieringResult;
+  final pulumi.Input<int> lastCloudTieringResult;
   /// Last cloud tiering success timestamp
-  final String lastSuccessTimestamp;
+  final pulumi.Input<String> lastSuccessTimestamp;
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Information regarding the low disk mode state
-  final CloudTieringLowDiskModeResponse lowDiskMode;
+  final pulumi.Input<CloudTieringLowDiskModeResponse> lowDiskMode;
   /// Information regarding how much local space cloud tiering is saving.
-  final CloudTieringSpaceSavingsResponse spaceSavings;
+  final pulumi.Input<CloudTieringSpaceSavingsResponse> spaceSavings;
   /// Status of the volume free space policy
-  final CloudTieringVolumeFreeSpacePolicyStatusResponse volumeFreeSpacePolicyStatus;
+  final pulumi.Input<CloudTieringVolumeFreeSpacePolicyStatusResponse> volumeFreeSpacePolicyStatus;
 
   /// Creates a new [ServerEndpointCloudTieringStatusResponse].
   /// [cachePerformance] Information regarding how well the local cache on the server is performing.
@@ -60,33 +61,33 @@ class ServerEndpointCloudTieringStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cachePerformance': cachePerformance.toMap(),
-      'datePolicyStatus': datePolicyStatus.toMap(),
-      'filesNotTiering': filesNotTiering.toMap(),
+      'cachePerformance': pulumi.Input.mapInputValue<CloudTieringCachePerformanceResponse, Map<String, dynamic>>(cachePerformance, (value) => value.toMap()),
+      'datePolicyStatus': pulumi.Input.mapInputValue<CloudTieringDatePolicyStatusResponse, Map<String, dynamic>>(datePolicyStatus, (value) => value.toMap()),
+      'filesNotTiering': pulumi.Input.mapInputValue<CloudTieringFilesNotTieringResponse, Map<String, dynamic>>(filesNotTiering, (value) => value.toMap()),
       'health': health,
       'healthLastUpdatedTimestamp': healthLastUpdatedTimestamp,
       'lastCloudTieringResult': lastCloudTieringResult,
       'lastSuccessTimestamp': lastSuccessTimestamp,
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
-      'lowDiskMode': lowDiskMode.toMap(),
-      'spaceSavings': spaceSavings.toMap(),
-      'volumeFreeSpacePolicyStatus': volumeFreeSpacePolicyStatus.toMap(),
+      'lowDiskMode': pulumi.Input.mapInputValue<CloudTieringLowDiskModeResponse, Map<String, dynamic>>(lowDiskMode, (value) => value.toMap()),
+      'spaceSavings': pulumi.Input.mapInputValue<CloudTieringSpaceSavingsResponse, Map<String, dynamic>>(spaceSavings, (value) => value.toMap()),
+      'volumeFreeSpacePolicyStatus': pulumi.Input.mapInputValue<CloudTieringVolumeFreeSpacePolicyStatusResponse, Map<String, dynamic>>(volumeFreeSpacePolicyStatus, (value) => value.toMap()),
     };
   }
 
   factory ServerEndpointCloudTieringStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointCloudTieringStatusResponse(
-      cachePerformance: CloudTieringCachePerformanceResponse.fromMap((map['cachePerformance'] as Map).cast<String, dynamic>()),
-      datePolicyStatus: CloudTieringDatePolicyStatusResponse.fromMap((map['datePolicyStatus'] as Map).cast<String, dynamic>()),
-      filesNotTiering: CloudTieringFilesNotTieringResponse.fromMap((map['filesNotTiering'] as Map).cast<String, dynamic>()),
-      health: map['health'] as String,
-      healthLastUpdatedTimestamp: map['healthLastUpdatedTimestamp'] as String,
-      lastCloudTieringResult: map['lastCloudTieringResult'] as int,
-      lastSuccessTimestamp: map['lastSuccessTimestamp'] as String,
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      lowDiskMode: CloudTieringLowDiskModeResponse.fromMap((map['lowDiskMode'] as Map).cast<String, dynamic>()),
-      spaceSavings: CloudTieringSpaceSavingsResponse.fromMap((map['spaceSavings'] as Map).cast<String, dynamic>()),
-      volumeFreeSpacePolicyStatus: CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap((map['volumeFreeSpacePolicyStatus'] as Map).cast<String, dynamic>()),
+      cachePerformance: (CloudTieringCachePerformanceResponse.fromMap((map['cachePerformance'] as Map).cast<String, dynamic>())).input(),
+      datePolicyStatus: (CloudTieringDatePolicyStatusResponse.fromMap((map['datePolicyStatus'] as Map).cast<String, dynamic>())).input(),
+      filesNotTiering: (CloudTieringFilesNotTieringResponse.fromMap((map['filesNotTiering'] as Map).cast<String, dynamic>())).input(),
+      health: (map['health'] as String).input(),
+      healthLastUpdatedTimestamp: (map['healthLastUpdatedTimestamp'] as String).input(),
+      lastCloudTieringResult: (map['lastCloudTieringResult'] as int).input(),
+      lastSuccessTimestamp: (map['lastSuccessTimestamp'] as String).input(),
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      lowDiskMode: (CloudTieringLowDiskModeResponse.fromMap((map['lowDiskMode'] as Map).cast<String, dynamic>())).input(),
+      spaceSavings: (CloudTieringSpaceSavingsResponse.fromMap((map['spaceSavings'] as Map).cast<String, dynamic>())).input(),
+      volumeFreeSpacePolicyStatus: (CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap((map['volumeFreeSpacePolicyStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class DefaultSecurityGroupArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
   DefaultSecurityGroupArgs({
-    pulumi.Output<List<DefaultSecurityGroupEgress>>? egress,
-    pulumi.Output<List<DefaultSecurityGroupIngress>>? ingress,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? revokeRulesOnDelete,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      egress = pulumi.Input.asOptionalInput<List<DefaultSecurityGroupEgress>>(egress),
-      ingress = pulumi.Input.asOptionalInput<List<DefaultSecurityGroupIngress>>(ingress),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revokeRulesOnDelete = pulumi.Input.asOptionalInput<bool>(revokeRulesOnDelete),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.egress,
+    this.ingress,
+    this.region,
+    this.revokeRulesOnDelete,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class DefaultSecurityGroupArgs {
 
   factory DefaultSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSecurityGroupArgs(
-      egress: map['egress'] == null ? null : pulumi.Output.create<List<DefaultSecurityGroupEgress>>(pulumi.Input.decodeList<DefaultSecurityGroupEgress>(map['egress'], (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))),
-      ingress: map['ingress'] == null ? null : pulumi.Output.create<List<DefaultSecurityGroupIngress>>(pulumi.Input.decodeList<DefaultSecurityGroupIngress>(map['ingress'], (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : pulumi.Output.create<bool>(map['revokeRulesOnDelete'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<DefaultSecurityGroupEgress>(map['egress'], (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<DefaultSecurityGroupIngress>(map['ingress'], (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : (map['revokeRulesOnDelete'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

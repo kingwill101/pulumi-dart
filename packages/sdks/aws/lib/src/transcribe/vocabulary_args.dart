@@ -30,19 +30,13 @@ class VocabularyArgs {
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom vocabulary. Conflicts wth `phrases`.
   /// [vocabularyName] The name of the Vocabulary.
   VocabularyArgs({
-    required pulumi.Output<String> languageCode,
-    pulumi.Output<List<String>>? phrases,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vocabularyFileUri,
-    required pulumi.Output<String> vocabularyName,
-  }) :
-      languageCode = pulumi.Input.asInput<String>(languageCode),
-      phrases = pulumi.Input.asOptionalInput<List<String>>(phrases),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vocabularyFileUri = pulumi.Input.asOptionalInput<String>(vocabularyFileUri),
-      vocabularyName = pulumi.Input.asInput<String>(vocabularyName);
+    required this.languageCode,
+    this.phrases,
+    this.region,
+    this.tags,
+    this.vocabularyFileUri,
+    required this.vocabularyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class VocabularyArgs {
 
   factory VocabularyArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyArgs(
-      languageCode: pulumi.Output.create<String>(map['languageCode'] as String),
-      phrases: map['phrases'] == null ? null : pulumi.Output.create<List<String>>((map['phrases'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : pulumi.Output.create<String>(map['vocabularyFileUri'] as String),
-      vocabularyName: pulumi.Output.create<String>(map['vocabularyName'] as String),
+      languageCode: (map['languageCode'] as String).input(),
+      phrases: map['phrases'] == null ? null : ((map['phrases'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : (map['vocabularyFileUri'] as String).input(),
+      vocabularyName: (map['vocabularyName'] as String).input(),
     );
   }
 }

@@ -41,17 +41,12 @@ class MachineImageIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   MachineImageIamBindingArgs({
-    pulumi.Output<MachineImageIamBindingCondition>? condition,
-    required pulumi.Output<String> machineImage,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<MachineImageIamBindingCondition>(condition),
-      machineImage = pulumi.Input.asInput<String>(machineImage),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.machineImage,
+    required this.members,
+    this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,11 +60,11 @@ class MachineImageIamBindingArgs {
 
   factory MachineImageIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<MachineImageIamBindingCondition>(MachineImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      machineImage: pulumi.Output.create<String>(map['machineImage'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (MachineImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      machineImage: (map['machineImage'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

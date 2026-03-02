@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Route Properties.
 class StaticRoutePropertiesResponse {
   /// List of next hop addresses.
-  final List<String> nextHop;
+  final pulumi.Input<List<String>> nextHop;
   /// Prefix of the route.
-  final String prefix;
+  final pulumi.Input<String> prefix;
 
   /// Creates a new [StaticRoutePropertiesResponse].
   /// [nextHop] List of next hop addresses.
@@ -25,8 +26,8 @@ class StaticRoutePropertiesResponse {
 
   factory StaticRoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StaticRoutePropertiesResponse(
-      nextHop: (map['nextHop'] as List).cast<String>(),
-      prefix: map['prefix'] as String,
+      nextHop: ((map['nextHop'] as List).cast<String>()).input(),
+      prefix: (map['prefix'] as String).input(),
     );
   }
 }

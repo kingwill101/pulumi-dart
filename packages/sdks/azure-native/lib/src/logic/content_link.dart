@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The content link.
 class ContentLink {
   /// The content link URI.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ContentLink].
   /// [uri] The content link URI.
@@ -20,7 +21,7 @@ class ContentLink {
 
   factory ContentLink.fromMap(Map<String, dynamic> map) {
     return ContentLink(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

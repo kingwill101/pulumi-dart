@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification that applies to database view.
 class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
   /// Name of a singular table this view reflects one to one.
-  final String baseTable;
+  final pulumi.Input<String> baseTable;
   /// SQL query used to generate this view.
-  final String sqlQuery;
+  final pulumi.Input<String> sqlQuery;
   /// Type of this view.
-  final String viewType;
+  final pulumi.Input<String> viewType;
 
   /// Creates a new [GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse].
   /// [baseTable] Name of a singular table this view reflects one to one.
@@ -30,9 +31,9 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
 
   factory GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse(
-      baseTable: map['baseTable'] as String,
-      sqlQuery: map['sqlQuery'] as String,
-      viewType: map['viewType'] as String,
+      baseTable: (map['baseTable'] as String).input(),
+      sqlQuery: (map['sqlQuery'] as String).input(),
+      viewType: (map['viewType'] as String).input(),
     );
   }
 }

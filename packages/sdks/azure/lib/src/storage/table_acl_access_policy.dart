@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableAclAccessPolicy {
   /// The ISO8061 UTC time at which this Access Policy should be valid until.
-  final String expiry;
+  final pulumi.Input<String> expiry;
   /// The permissions which should associated with this Shared Identifier.
-  final String permissions;
+  final pulumi.Input<String> permissions;
   /// The ISO8061 UTC time at which this Access Policy should be valid from.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [TableAclAccessPolicy].
   /// [expiry] The ISO8061 UTC time at which this Access Policy should be valid until.
@@ -29,9 +30,9 @@ class TableAclAccessPolicy {
 
   factory TableAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return TableAclAccessPolicy(
-      expiry: map['expiry'] as String,
-      permissions: map['permissions'] as String,
-      start: map['start'] as String,
+      expiry: (map['expiry'] as String).input(),
+      permissions: (map['permissions'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

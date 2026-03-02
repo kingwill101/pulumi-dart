@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InferenceProfileModelSource {
   /// The Amazon Resource Name (ARN) of the model.
-  final String copyFrom;
+  final pulumi.Input<String> copyFrom;
 
   /// Creates a new [InferenceProfileModelSource].
   /// [copyFrom] The Amazon Resource Name (ARN) of the model.
@@ -19,7 +20,7 @@ class InferenceProfileModelSource {
 
   factory InferenceProfileModelSource.fromMap(Map<String, dynamic> map) {
     return InferenceProfileModelSource(
-      copyFrom: map['copyFrom'] as String,
+      copyFrom: (map['copyFrom'] as String).input(),
     );
   }
 }

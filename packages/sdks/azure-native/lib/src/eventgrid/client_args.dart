@@ -37,23 +37,15 @@ class ClientArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [state] Indicates if the client is enabled or not. Default value is Enabled.
   ClientArgs({
-    pulumi.Output<dynamic>? attributes,
-    pulumi.Output<String>? authenticationName,
-    pulumi.Output<ClientCertificateAuthentication>? clientCertificateAuthentication,
-    pulumi.Output<String>? clientName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<dynamic>(attributes),
-      authenticationName = pulumi.Input.asOptionalInput<String>(authenticationName),
-      clientCertificateAuthentication = pulumi.Input.asOptionalInput<ClientCertificateAuthentication>(clientCertificateAuthentication),
-      clientName = pulumi.Input.asOptionalInput<String>(clientName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.attributes,
+    this.authenticationName,
+    this.clientCertificateAuthentication,
+    this.clientName,
+    this.description,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class ClientArgs {
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<dynamic>(map['attributes']),
-      authenticationName: map['authenticationName'] == null ? null : pulumi.Output.create<String>(map['authenticationName'] as String),
-      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : pulumi.Output.create<ClientCertificateAuthentication>(ClientCertificateAuthentication.fromMap((map['clientCertificateAuthentication'] as Map).cast<String, dynamic>())),
-      clientName: map['clientName'] == null ? null : pulumi.Output.create<String>(map['clientName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      attributes: map['attributes'] == null ? null : (map['attributes']).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : (ClientCertificateAuthentication.fromMap((map['clientCertificateAuthentication'] as Map).cast<String, dynamic>())).input(),
+      clientName: map['clientName'] == null ? null : (map['clientName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

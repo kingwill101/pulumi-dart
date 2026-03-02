@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2 {
   /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
-  final String deletionTime;
-  final String kind;
+  final pulumi.Input<String> deletionTime;
+  final pulumi.Input<String> kind;
   /// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
-  final String namespaceUrl;
+  final pulumi.Input<String> namespaceUrl;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2].
   /// [deletionTime] The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
@@ -28,9 +29,9 @@ class ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2 {
 
   factory ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigNamespaceResponseDnsV1beta2(
-      deletionTime: map['deletionTime'] as String,
-      kind: map['kind'] as String,
-      namespaceUrl: map['namespaceUrl'] as String,
+      deletionTime: (map['deletionTime'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      namespaceUrl: (map['namespaceUrl'] as String).input(),
     );
   }
 }

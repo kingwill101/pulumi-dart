@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatedVMUnmanagedDisk {
   /// Id of disk that should be replicated. Changing this forces a new resource to be created.
-  final String diskUri;
+  final pulumi.Input<String> diskUri;
   /// Storage account that should be used for caching. Changing this forces a new resource to be created.
-  final String stagingStorageAccountId;
+  final pulumi.Input<String> stagingStorageAccountId;
   /// Storage account disk should belong to when a failover is done. Changing this forces a new resource to be created.
-  final String targetStorageAccountId;
+  final pulumi.Input<String> targetStorageAccountId;
 
   /// Creates a new [ReplicatedVMUnmanagedDisk].
   /// [diskUri] Id of disk that should be replicated. Changing this forces a new resource to be created.
@@ -29,9 +30,9 @@ class ReplicatedVMUnmanagedDisk {
 
   factory ReplicatedVMUnmanagedDisk.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMUnmanagedDisk(
-      diskUri: map['diskUri'] as String,
-      stagingStorageAccountId: map['stagingStorageAccountId'] as String,
-      targetStorageAccountId: map['targetStorageAccountId'] as String,
+      diskUri: (map['diskUri'] as String).input(),
+      stagingStorageAccountId: (map['stagingStorageAccountId'] as String).input(),
+      targetStorageAccountId: (map['targetStorageAccountId'] as String).input(),
     );
   }
 }

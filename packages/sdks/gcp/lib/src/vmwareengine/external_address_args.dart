@@ -24,15 +24,11 @@ class ExternalAddressArgs {
   /// [name] The ID of the external IP Address.
   /// [parent] The resource name of the private cloud to create a new external address in.
   ExternalAddressArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> internalIp,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      internalIp = pulumi.Input.asInput<String>(internalIp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent);
+    this.description,
+    required this.internalIp,
+    this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ExternalAddressArgs {
 
   factory ExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAddressArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      internalIp: pulumi.Output.create<String>(map['internalIp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceAttachmentTunnelingConfig {
   /// The encapsulation profile for tunneling traffic.
-  final String? encapsulationProfile;
+  final pulumi.Input<String>? encapsulationProfile;
   /// The routing mode for tunneling traffic.
-  final String? routingMode;
+  final pulumi.Input<String>? routingMode;
 
   /// Creates a new [ServiceAttachmentTunnelingConfig].
   /// [encapsulationProfile] The encapsulation profile for tunneling traffic.
@@ -24,8 +25,8 @@ class ServiceAttachmentTunnelingConfig {
 
   factory ServiceAttachmentTunnelingConfig.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentTunnelingConfig(
-      encapsulationProfile: map['encapsulationProfile'] == null ? null : map['encapsulationProfile'] as String,
-      routingMode: map['routingMode'] == null ? null : map['routingMode'] as String,
+      encapsulationProfile: map['encapsulationProfile'] == null ? null : (map['encapsulationProfile'] as String).input(),
+      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
     );
   }
 }

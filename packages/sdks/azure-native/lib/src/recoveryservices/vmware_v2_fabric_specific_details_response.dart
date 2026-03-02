@@ -7,21 +7,21 @@ import 'process_server_details_response.dart';
 class VMwareV2FabricSpecificDetailsResponse {
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'VMwareV2'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The Migration solution ARM Id.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
   /// The ARM Id of the physical site.
-  final String physicalSiteId;
+  final pulumi.Input<String> physicalSiteId;
   /// The list of process servers.
-  final List<ProcessServerDetailsResponse> processServers;
+  final pulumi.Input<List<ProcessServerDetailsResponse>> processServers;
   /// The service container Id.
-  final String serviceContainerId;
+  final pulumi.Input<String> serviceContainerId;
   /// The service endpoint.
-  final String serviceEndpoint;
+  final pulumi.Input<String> serviceEndpoint;
   /// The service resource Id.
-  final String serviceResourceId;
+  final pulumi.Input<String> serviceResourceId;
   /// The ARM Id of the VMware site.
-  final String vmwareSiteId;
+  final pulumi.Input<String> vmwareSiteId;
 
   /// Creates a new [VMwareV2FabricSpecificDetailsResponse].
   /// [instanceType] Gets the class type. Overridden in derived classes.
@@ -48,7 +48,7 @@ class VMwareV2FabricSpecificDetailsResponse {
       'instanceType': instanceType,
       'migrationSolutionId': migrationSolutionId,
       'physicalSiteId': physicalSiteId,
-      'processServers': pulumi.Input.encodeList<ProcessServerDetailsResponse, Map<String, dynamic>>(processServers, (value) => value.toMap()),
+      'processServers': pulumi.Input.mapInputValue<List<ProcessServerDetailsResponse>, List<Map<String, dynamic>>>(processServers, (value) => pulumi.Input.encodeList<ProcessServerDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'serviceContainerId': serviceContainerId,
       'serviceEndpoint': serviceEndpoint,
       'serviceResourceId': serviceResourceId,
@@ -58,14 +58,14 @@ class VMwareV2FabricSpecificDetailsResponse {
 
   factory VMwareV2FabricSpecificDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareV2FabricSpecificDetailsResponse(
-      instanceType: map['instanceType'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
-      physicalSiteId: map['physicalSiteId'] as String,
-      processServers: pulumi.Input.decodeList<ProcessServerDetailsResponse>(map['processServers'], (value) => ProcessServerDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceContainerId: map['serviceContainerId'] as String,
-      serviceEndpoint: map['serviceEndpoint'] as String,
-      serviceResourceId: map['serviceResourceId'] as String,
-      vmwareSiteId: map['vmwareSiteId'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
+      physicalSiteId: (map['physicalSiteId'] as String).input(),
+      processServers: (pulumi.Input.decodeList<ProcessServerDetailsResponse>(map['processServers'], (value) => ProcessServerDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceContainerId: (map['serviceContainerId'] as String).input(),
+      serviceEndpoint: (map['serviceEndpoint'] as String).input(),
+      serviceResourceId: (map['serviceResourceId'] as String).input(),
+      vmwareSiteId: (map['vmwareSiteId'] as String).input(),
     );
   }
 }

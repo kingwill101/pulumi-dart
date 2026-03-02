@@ -34,21 +34,14 @@ class ContactsRotationArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeZoneId] The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
   ContactsRotationArgs({
-    required pulumi.Output<List<String>> contactIds,
-    pulumi.Output<String>? name,
-    required pulumi.Output<ContactsRotationRecurrence> recurrence,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> timeZoneId,
-  }) :
-      contactIds = pulumi.Input.asInput<List<String>>(contactIds),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recurrence = pulumi.Input.asInput<ContactsRotationRecurrence>(recurrence),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeZoneId = pulumi.Input.asInput<String>(timeZoneId);
+    required this.contactIds,
+    this.name,
+    required this.recurrence,
+    this.region,
+    this.startTime,
+    this.tags,
+    required this.timeZoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ContactsRotationArgs {
 
   factory ContactsRotationArgs.fromMap(Map<String, dynamic> map) {
     return ContactsRotationArgs(
-      contactIds: pulumi.Output.create<List<String>>((map['contactIds'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recurrence: pulumi.Output.create<ContactsRotationRecurrence>(ContactsRotationRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeZoneId: pulumi.Output.create<String>(map['timeZoneId'] as String),
+      contactIds: ((map['contactIds'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recurrence: (ContactsRotationRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeZoneId: (map['timeZoneId'] as String).input(),
     );
   }
 }

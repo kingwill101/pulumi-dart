@@ -35,25 +35,16 @@ class DataIntegrationState {
   /// [tags] Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DataIntegrationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<DataIntegrationScheduleConfig>? scheduleConfig,
-    pulumi.Output<String>? sourceUri,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleConfig = pulumi.Input.asOptionalInput<DataIntegrationScheduleConfig>(scheduleConfig),
-      sourceUri = pulumi.Input.asOptionalInput<String>(sourceUri),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.kmsKey,
+    this.name,
+    this.region,
+    this.scheduleConfig,
+    this.sourceUri,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class DataIntegrationState {
 
   factory DataIntegrationState.fromMap(Map<String, dynamic> map) {
     return DataIntegrationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleConfig: map['scheduleConfig'] == null ? null : pulumi.Output.create<DataIntegrationScheduleConfig>(DataIntegrationScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())),
-      sourceUri: map['sourceUri'] == null ? null : pulumi.Output.create<String>(map['sourceUri'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleConfig: map['scheduleConfig'] == null ? null : (DataIntegrationScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

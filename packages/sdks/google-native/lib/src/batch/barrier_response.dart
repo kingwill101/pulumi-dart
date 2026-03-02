@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Barrier runnable blocks until all tasks in a taskgroup reach it.
 class BarrierResponse {
   /// Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [BarrierResponse].
   /// [name] Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
@@ -20,7 +21,7 @@ class BarrierResponse {
 
   factory BarrierResponse.fromMap(Map<String, dynamic> map) {
     return BarrierResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

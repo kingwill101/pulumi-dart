@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_network_interface_association.dart';
 
 /// Definition of InstancePrivateIpAddress
 class InstancePrivateIpAddress {
   /// <p>The association information for an Elastic IP address for the network interface.</p>
-  final InstanceNetworkInterfaceAssociation? association;
+  final pulumi.Input<InstanceNetworkInterfaceAssociation>? association;
   /// <p>Indicates whether this IPv4 address is the primary private IP address of the network interface.</p>
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// <p>The private IPv4 DNS name.</p>
-  final String? privateDnsName;
+  final pulumi.Input<String>? privateDnsName;
   /// <p>The private IPv4 address of the network interface.</p>
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
 
   /// Creates a new [InstancePrivateIpAddress].
   /// [association] <p>The association information for an Elastic IP address for the network interface.</p>
@@ -27,7 +28,7 @@ class InstancePrivateIpAddress {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'association': ?association == null ? null : association!.toMap(),
+      'association': ?pulumi.Input.mapOptionalInputValue<InstanceNetworkInterfaceAssociation, Map<String, dynamic>>(association, (value) => value.toMap()),
       'primary': ?primary,
       'privateDnsName': ?privateDnsName,
       'privateIpAddress': ?privateIpAddress,
@@ -36,10 +37,10 @@ class InstancePrivateIpAddress {
 
   factory InstancePrivateIpAddress.fromMap(Map<String, dynamic> map) {
     return InstancePrivateIpAddress(
-      association: map['association'] == null ? null : InstanceNetworkInterfaceAssociation.fromMap((map['association'] as Map).cast<String, dynamic>()),
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateDnsName: map['privateDnsName'] == null ? null : map['privateDnsName'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
+      association: map['association'] == null ? null : (InstanceNetworkInterfaceAssociation.fromMap((map['association'] as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
     );
   }
 }

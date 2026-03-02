@@ -21,13 +21,10 @@ class TrustStoreAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trustStoreArn] ARN of the trust store to associate with the portal. Forces replacement if changed.
   TrustStoreAssociationArgs({
-    required pulumi.Output<String> portalArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> trustStoreArn,
-  }) :
-      portalArn = pulumi.Input.asInput<String>(portalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      trustStoreArn = pulumi.Input.asInput<String>(trustStoreArn);
+    required this.portalArn,
+    this.region,
+    required this.trustStoreArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class TrustStoreAssociationArgs {
 
   factory TrustStoreAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreAssociationArgs(
-      portalArn: pulumi.Output.create<String>(map['portalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      trustStoreArn: pulumi.Output.create<String>(map['trustStoreArn'] as String),
+      portalArn: (map['portalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      trustStoreArn: (map['trustStoreArn'] as String).input(),
     );
   }
 }

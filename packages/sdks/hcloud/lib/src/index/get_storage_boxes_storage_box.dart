@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_storage_boxes_storage_box_access_settings.dart';
 import 'get_storage_boxes_storage_box_snapshot_plan.dart';
 
 class GetStorageBoxesStorageBox {
   /// Access settings of the Storage Box.
-  final GetStorageBoxesStorageBoxAccessSettings accessSettings;
+  final pulumi.Input<GetStorageBoxesStorageBoxAccessSettings> accessSettings;
   /// Whether delete protection is enabled.
-  final bool deleteProtection;
+  final pulumi.Input<bool> deleteProtection;
   /// ID of the Storage Box.
-  final int id;
+  final pulumi.Input<int> id;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Name of the Location.
-  final String location;
+  final pulumi.Input<String> location;
   /// Name of the Storage Box.
-  final String name;
+  final pulumi.Input<String> name;
   /// FQDN of the Storage Box.
-  final String server;
+  final pulumi.Input<String> server;
   /// Details of the active snapshot plan.
-  final GetStorageBoxesStorageBoxSnapshotPlan snapshotPlan;
+  final pulumi.Input<GetStorageBoxesStorageBoxSnapshotPlan> snapshotPlan;
   /// Name of the Storage Box Type.
-  final String storageBoxType;
+  final pulumi.Input<String> storageBoxType;
   /// Host system of the Storage Box.
-  final String system;
+  final pulumi.Input<String> system;
   /// Primary username of the Storage Box.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [GetStorageBoxesStorageBox].
   /// [accessSettings] Access settings of the Storage Box.
@@ -55,14 +56,14 @@ class GetStorageBoxesStorageBox {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessSettings': accessSettings.toMap(),
+      'accessSettings': pulumi.Input.mapInputValue<GetStorageBoxesStorageBoxAccessSettings, Map<String, dynamic>>(accessSettings, (value) => value.toMap()),
       'deleteProtection': deleteProtection,
       'id': id,
       'labels': labels,
       'location': location,
       'name': name,
       'server': server,
-      'snapshotPlan': snapshotPlan.toMap(),
+      'snapshotPlan': pulumi.Input.mapInputValue<GetStorageBoxesStorageBoxSnapshotPlan, Map<String, dynamic>>(snapshotPlan, (value) => value.toMap()),
       'storageBoxType': storageBoxType,
       'system': system,
       'username': username,
@@ -71,17 +72,17 @@ class GetStorageBoxesStorageBox {
 
   factory GetStorageBoxesStorageBox.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesStorageBox(
-      accessSettings: GetStorageBoxesStorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>()),
-      deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] as int,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      server: map['server'] as String,
-      snapshotPlan: GetStorageBoxesStorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>()),
-      storageBoxType: map['storageBoxType'] as String,
-      system: map['system'] as String,
-      username: map['username'] as String,
+      accessSettings: (GetStorageBoxesStorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      deleteProtection: (map['deleteProtection'] as bool).input(),
+      id: (map['id'] as int).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      server: (map['server'] as String).input(),
+      snapshotPlan: (GetStorageBoxesStorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>())).input(),
+      storageBoxType: (map['storageBoxType'] as String).input(),
+      system: (map['system'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

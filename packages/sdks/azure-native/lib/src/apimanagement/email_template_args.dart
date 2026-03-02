@@ -35,23 +35,15 @@ class EmailTemplateArgs {
   /// [templateName] Email Template Name Identifier.
   /// [title] Title of the Template.
   EmailTemplateArgs({
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<EmailTemplateParametersContractProperties>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? subject,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? title,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameters = pulumi.Input.asOptionalInput<List<EmailTemplateParametersContractProperties>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      subject = pulumi.Input.asOptionalInput<String>(subject),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.body,
+    this.description,
+    this.parameters,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.subject,
+    this.templateName,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class EmailTemplateArgs {
 
   factory EmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EmailTemplateArgs(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<EmailTemplateParametersContractProperties>>(pulumi.Input.decodeList<EmailTemplateParametersContractProperties>(map['parameters'], (value) => EmailTemplateParametersContractProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      subject: map['subject'] == null ? null : pulumi.Output.create<String>(map['subject'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<EmailTemplateParametersContractProperties>(map['parameters'], (value) => EmailTemplateParametersContractProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

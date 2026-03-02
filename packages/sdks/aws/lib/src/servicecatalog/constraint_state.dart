@@ -35,25 +35,16 @@ class ConstraintState {
   /// [status] Optional.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ConstraintState({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? parameters,
-    pulumi.Output<String>? portfolioId,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      parameters = pulumi.Input.asOptionalInput<String>(parameters),
-      portfolioId = pulumi.Input.asOptionalInput<String>(portfolioId),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.acceptLanguage,
+    this.description,
+    this.owner,
+    this.parameters,
+    this.portfolioId,
+    this.productId,
+    this.region,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class ConstraintState {
 
   factory ConstraintState.fromMap(Map<String, dynamic> map) {
     return ConstraintState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<String>(map['parameters'] as String),
-      portfolioId: map['portfolioId'] == null ? null : pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

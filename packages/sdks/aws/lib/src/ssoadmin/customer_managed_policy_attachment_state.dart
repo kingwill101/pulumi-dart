@@ -20,15 +20,11 @@ class CustomerManagedPolicyAttachmentState {
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   CustomerManagedPolicyAttachmentState({
-    pulumi.Output<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>? customerManagedPolicyReference,
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? permissionSetArn,
-    pulumi.Output<String>? region,
-  }) :
-      customerManagedPolicyReference = pulumi.Input.asOptionalInput<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>(customerManagedPolicyReference),
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asOptionalInput<String>(permissionSetArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.customerManagedPolicyReference,
+    this.instanceArn,
+    this.permissionSetArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class CustomerManagedPolicyAttachmentState {
 
   factory CustomerManagedPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentState(
-      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : pulumi.Output.create<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>(CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference'] as Map).cast<String, dynamic>())),
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      permissionSetArn: map['permissionSetArn'] == null ? null : pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : (CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference'] as Map).cast<String, dynamic>())).input(),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

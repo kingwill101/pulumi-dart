@@ -33,25 +33,16 @@ class DscConfigurationState {
   /// [state] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   DscConfigurationState({
-    pulumi.Output<String>? automationAccountName,
-    pulumi.Output<String>? contentEmbedded,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? logVerbose,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
-      contentEmbedded = pulumi.Input.asOptionalInput<String>(contentEmbedded),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logVerbose = pulumi.Input.asOptionalInput<bool>(logVerbose),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.automationAccountName,
+    this.contentEmbedded,
+    this.description,
+    this.location,
+    this.logVerbose,
+    this.name,
+    this.resourceGroupName,
+    this.state,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,15 +60,15 @@ class DscConfigurationState {
 
   factory DscConfigurationState.fromMap(Map<String, dynamic> map) {
     return DscConfigurationState(
-      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentEmbedded: map['contentEmbedded'] == null ? null : pulumi.Output.create<String>(map['contentEmbedded'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logVerbose: map['logVerbose'] == null ? null : pulumi.Output.create<bool>(map['logVerbose'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
+      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

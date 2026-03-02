@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
 class ReadinessCheckResponseAppengineV1beta {
   /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
-  final String appStartTimeout;
+  final pulumi.Input<String> appStartTimeout;
   /// Interval between health checks.
-  final String checkInterval;
+  final pulumi.Input<String> checkInterval;
   /// Number of consecutive failed checks required before removing traffic.
-  final int failureThreshold;
+  final pulumi.Input<int> failureThreshold;
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-  final String host;
+  final pulumi.Input<String> host;
   /// The request path.
-  final String path;
+  final pulumi.Input<String> path;
   /// Number of consecutive successful checks required before receiving traffic.
-  final int successThreshold;
+  final pulumi.Input<int> successThreshold;
   /// Time before the check is considered failed.
-  final String timeout;
+  final pulumi.Input<String> timeout;
 
   /// Creates a new [ReadinessCheckResponseAppengineV1beta].
   /// [appStartTimeout] A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
@@ -50,13 +51,13 @@ class ReadinessCheckResponseAppengineV1beta {
 
   factory ReadinessCheckResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckResponseAppengineV1beta(
-      appStartTimeout: map['appStartTimeout'] as String,
-      checkInterval: map['checkInterval'] as String,
-      failureThreshold: map['failureThreshold'] as int,
-      host: map['host'] as String,
-      path: map['path'] as String,
-      successThreshold: map['successThreshold'] as int,
-      timeout: map['timeout'] as String,
+      appStartTimeout: (map['appStartTimeout'] as String).input(),
+      checkInterval: (map['checkInterval'] as String).input(),
+      failureThreshold: (map['failureThreshold'] as int).input(),
+      host: (map['host'] as String).input(),
+      path: (map['path'] as String).input(),
+      successThreshold: (map['successThreshold'] as int).input(),
+      timeout: (map['timeout'] as String).input(),
     );
   }
 }

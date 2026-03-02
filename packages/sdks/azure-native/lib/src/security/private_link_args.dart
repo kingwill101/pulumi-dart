@@ -22,15 +22,11 @@ class PrivateLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   PrivateLinkArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? privateLinkName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateLinkName = pulumi.Input.asOptionalInput<String>(privateLinkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.privateLinkName,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PrivateLinkArgs {
 
   factory PrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateLinkName: map['privateLinkName'] == null ? null : pulumi.Output.create<String>(map['privateLinkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateLinkName: map['privateLinkName'] == null ? null : (map['privateLinkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

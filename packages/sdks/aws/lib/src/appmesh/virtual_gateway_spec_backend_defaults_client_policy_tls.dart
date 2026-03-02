@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_certificate.dart';
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTls {
   /// Listener's TLS certificate.
-  final VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate? certificate;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate>? certificate;
   /// Whether the policy is enforced. Default is `true`.
-  final bool? enforce;
+  final pulumi.Input<bool>? enforce;
   /// One or more ports that the policy is enforced for.
-  final List<int>? ports;
+  final pulumi.Input<List<int>>? ports;
   /// Listener's Transport Layer Security (TLS) validation context.
-  final VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation validation;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation> validation;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTls].
   /// [certificate] Listener's TLS certificate.
@@ -27,19 +28,19 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': ?certificate == null ? null : certificate!.toMap(),
+      'certificate': ?pulumi.Input.mapOptionalInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate, Map<String, dynamic>>(certificate, (value) => value.toMap()),
       'enforce': ?enforce,
       'ports': ?ports,
-      'validation': validation.toMap(),
+      'validation': pulumi.Input.mapInputValue<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation, Map<String, dynamic>>(validation, (value) => value.toMap()),
     };
   }
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTls(
-      certificate: map['certificate'] == null ? null : VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>()),
-      enforce: map['enforce'] == null ? null : map['enforce'] as bool,
-      ports: map['ports'] == null ? null : (map['ports'] as List).cast<int>(),
-      validation: VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
+      certificate: map['certificate'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
+      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
+      validation: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'theme_configuration_sheet_tile_layout_gutter.dart';
 import 'theme_configuration_sheet_tile_layout_margin.dart';
 
 class ThemeConfigurationSheetTileLayout {
   /// The gutter settings that apply between tiles. See gutter.
-  final ThemeConfigurationSheetTileLayoutGutter? gutter;
+  final pulumi.Input<ThemeConfigurationSheetTileLayoutGutter>? gutter;
   /// The margin settings that apply around the outside edge of sheets. See margin.
-  final ThemeConfigurationSheetTileLayoutMargin? margin;
+  final pulumi.Input<ThemeConfigurationSheetTileLayoutMargin>? margin;
 
   /// Creates a new [ThemeConfigurationSheetTileLayout].
   /// [gutter] The gutter settings that apply between tiles. See gutter.
@@ -19,15 +20,15 @@ class ThemeConfigurationSheetTileLayout {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gutter': ?gutter == null ? null : gutter!.toMap(),
-      'margin': ?margin == null ? null : margin!.toMap(),
+      'gutter': ?pulumi.Input.mapOptionalInputValue<ThemeConfigurationSheetTileLayoutGutter, Map<String, dynamic>>(gutter, (value) => value.toMap()),
+      'margin': ?pulumi.Input.mapOptionalInputValue<ThemeConfigurationSheetTileLayoutMargin, Map<String, dynamic>>(margin, (value) => value.toMap()),
     };
   }
 
   factory ThemeConfigurationSheetTileLayout.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileLayout(
-      gutter: map['gutter'] == null ? null : ThemeConfigurationSheetTileLayoutGutter.fromMap((map['gutter'] as Map).cast<String, dynamic>()),
-      margin: map['margin'] == null ? null : ThemeConfigurationSheetTileLayoutMargin.fromMap((map['margin'] as Map).cast<String, dynamic>()),
+      gutter: map['gutter'] == null ? null : (ThemeConfigurationSheetTileLayoutGutter.fromMap((map['gutter'] as Map).cast<String, dynamic>())).input(),
+      margin: map['margin'] == null ? null : (ThemeConfigurationSheetTileLayoutMargin.fromMap((map['margin'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

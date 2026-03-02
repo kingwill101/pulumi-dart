@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains details of the data provider.
 class DataProviderResponseAnalyticshubV1beta1 {
   /// Optional. Name of the data provider.
-  final String name;
+  final pulumi.Input<String> name;
   /// Optional. Email or URL of the data provider. Max Length: 1000 bytes.
-  final String primaryContact;
+  final pulumi.Input<String> primaryContact;
 
   /// Creates a new [DataProviderResponseAnalyticshubV1beta1].
   /// [name] Optional. Name of the data provider.
@@ -25,8 +26,8 @@ class DataProviderResponseAnalyticshubV1beta1 {
 
   factory DataProviderResponseAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return DataProviderResponseAnalyticshubV1beta1(
-      name: map['name'] as String,
-      primaryContact: map['primaryContact'] as String,
+      name: (map['name'] as String).input(),
+      primaryContact: (map['primaryContact'] as String).input(),
     );
   }
 }

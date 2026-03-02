@@ -27,15 +27,11 @@ class RepositoryArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [pubsubConfigs] How this repository publishes a change in the repository through Cloud Pub/Sub.
   RepositoryArgs({
-    pulumi.Output<bool>? createIgnoreAlreadyExists,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<RepositoryPubsubConfig>>? pubsubConfigs,
-  }) :
-      createIgnoreAlreadyExists = pulumi.Input.asOptionalInput<bool>(createIgnoreAlreadyExists),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubConfigs = pulumi.Input.asOptionalInput<List<RepositoryPubsubConfig>>(pubsubConfigs);
+    this.createIgnoreAlreadyExists,
+    this.name,
+    this.project,
+    this.pubsubConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : pulumi.Output.create<bool>(map['createIgnoreAlreadyExists'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : pulumi.Output.create<List<RepositoryPubsubConfig>>(pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

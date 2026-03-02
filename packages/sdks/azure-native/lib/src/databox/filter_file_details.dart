@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the filter files to be used for data transfer.
 class FilterFileDetails {
   /// Path of the file that contains the details of all items to transfer.
-  final String filterFilePath;
+  final pulumi.Input<String> filterFilePath;
   /// Type of the filter file.
-  final String filterFileType;
+  final pulumi.Input<String> filterFileType;
 
   /// Creates a new [FilterFileDetails].
   /// [filterFilePath] Path of the file that contains the details of all items to transfer.
@@ -25,8 +26,8 @@ class FilterFileDetails {
 
   factory FilterFileDetails.fromMap(Map<String, dynamic> map) {
     return FilterFileDetails(
-      filterFilePath: map['filterFilePath'] as String,
-      filterFileType: map['filterFileType'] as String,
+      filterFilePath: (map['filterFilePath'] as String).input(),
+      filterFileType: (map['filterFileType'] as String).input(),
     );
   }
 }

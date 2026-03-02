@@ -27,17 +27,12 @@ class FirewallRuleArgs {
   /// [serverName] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [startIpAddress] Specifies the Start IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   FirewallRuleArgs({
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.endIpAddress,
+    this.name,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

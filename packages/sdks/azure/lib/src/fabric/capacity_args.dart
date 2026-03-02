@@ -31,19 +31,13 @@ class CapacityArgs {
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the Fabric Capacity.
   CapacityArgs({
-    pulumi.Output<List<String>>? administrationMembers,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<CapacitySku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      administrationMembers = pulumi.Input.asOptionalInput<List<String>>(administrationMembers),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<CapacitySku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.administrationMembers,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class CapacityArgs {
 
   factory CapacityArgs.fromMap(Map<String, dynamic> map) {
     return CapacityArgs(
-      administrationMembers: map['administrationMembers'] == null ? null : pulumi.Output.create<List<String>>((map['administrationMembers'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<CapacitySku>(CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      administrationMembers: map['administrationMembers'] == null ? null : ((map['administrationMembers'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

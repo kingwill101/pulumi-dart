@@ -31,21 +31,14 @@ class PrivateStoreCollectionArgs {
   /// [privateStoreId] The store ID - must use the tenant ID
   /// [subscriptionsList] Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
   PrivateStoreCollectionArgs({
-    pulumi.Output<bool>? allSubscriptions,
-    pulumi.Output<String>? claim,
-    pulumi.Output<String>? collectionId,
-    pulumi.Output<String>? collectionName,
-    pulumi.Output<bool>? enabled,
-    required pulumi.Output<String> privateStoreId,
-    pulumi.Output<List<String>>? subscriptionsList,
-  }) :
-      allSubscriptions = pulumi.Input.asOptionalInput<bool>(allSubscriptions),
-      claim = pulumi.Input.asOptionalInput<String>(claim),
-      collectionId = pulumi.Input.asOptionalInput<String>(collectionId),
-      collectionName = pulumi.Input.asOptionalInput<String>(collectionName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId),
-      subscriptionsList = pulumi.Input.asOptionalInput<List<String>>(subscriptionsList);
+    this.allSubscriptions,
+    this.claim,
+    this.collectionId,
+    this.collectionName,
+    this.enabled,
+    required this.privateStoreId,
+    this.subscriptionsList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class PrivateStoreCollectionArgs {
 
   factory PrivateStoreCollectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionArgs(
-      allSubscriptions: map['allSubscriptions'] == null ? null : pulumi.Output.create<bool>(map['allSubscriptions'] as bool),
-      claim: map['claim'] == null ? null : pulumi.Output.create<String>(map['claim'] as String),
-      collectionId: map['collectionId'] == null ? null : pulumi.Output.create<String>(map['collectionId'] as String),
-      collectionName: map['collectionName'] == null ? null : pulumi.Output.create<String>(map['collectionName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
-      subscriptionsList: map['subscriptionsList'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptionsList'] as List).cast<String>()),
+      allSubscriptions: map['allSubscriptions'] == null ? null : (map['allSubscriptions'] as bool).input(),
+      claim: map['claim'] == null ? null : (map['claim'] as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      privateStoreId: (map['privateStoreId'] as String).input(),
+      subscriptionsList: map['subscriptionsList'] == null ? null : ((map['subscriptionsList'] as List).cast<String>()).input(),
     );
   }
 }

@@ -18,11 +18,9 @@ class ClientArgs {
   /// [brand] Identifier of the brand to which this client
   /// [displayName] Human-friendly name given to the OAuth client.
   ClientArgs({
-    required pulumi.Output<String> brand,
-    required pulumi.Output<String> displayName,
-  }) :
-      brand = pulumi.Input.asInput<String>(brand),
-      displayName = pulumi.Input.asInput<String>(displayName);
+    required this.brand,
+    required this.displayName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class ClientArgs {
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      brand: pulumi.Output.create<String>(map['brand'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      brand: (map['brand'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
     );
   }
 }

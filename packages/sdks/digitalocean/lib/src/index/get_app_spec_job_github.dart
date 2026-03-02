@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecJobGithub {
   /// The name of the branch to use.
-  final String? branch;
+  final pulumi.Input<String>? branch;
   /// Whether to automatically deploy new commits made to the repo.
-  final bool? deployOnPush;
+  final pulumi.Input<bool>? deployOnPush;
   /// The name of the repo in the format `owner/repo`.
-  final String? repo;
+  final pulumi.Input<String>? repo;
 
   /// Creates a new [GetAppSpecJobGithub].
   /// [branch] The name of the branch to use.
@@ -29,9 +30,9 @@ class GetAppSpecJobGithub {
 
   factory GetAppSpecJobGithub.fromMap(Map<String, dynamic> map) {
     return GetAppSpecJobGithub(
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      deployOnPush: map['deployOnPush'] == null ? null : map['deployOnPush'] as bool,
-      repo: map['repo'] == null ? null : map['repo'] as String,
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      deployOnPush: map['deployOnPush'] == null ? null : (map['deployOnPush'] as bool).input(),
+      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
     );
   }
 }

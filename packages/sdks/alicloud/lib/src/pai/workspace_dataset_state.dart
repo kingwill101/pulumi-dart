@@ -84,35 +84,21 @@ class WorkspaceDatasetState {
   /// [userId] The ID of the dataset owner.
   /// [workspaceId] The ID of the workspace where the dataset is located. For details about how to obtain the workspace ID, see ListWorkspaces.
   WorkspaceDatasetState({
-    pulumi.Output<String>? accessibility,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? dataSourceType,
-    pulumi.Output<String>? dataType,
-    pulumi.Output<String>? datasetName,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<WorkspaceDatasetLabel>>? labels,
-    pulumi.Output<String>? options,
-    pulumi.Output<String>? property,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? sourceType,
-    pulumi.Output<String>? uri,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      accessibility = pulumi.Input.asOptionalInput<String>(accessibility),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dataSourceType = pulumi.Input.asOptionalInput<String>(dataSourceType),
-      dataType = pulumi.Input.asOptionalInput<String>(dataType),
-      datasetName = pulumi.Input.asOptionalInput<String>(datasetName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<List<WorkspaceDatasetLabel>>(labels),
-      options = pulumi.Input.asOptionalInput<String>(options),
-      property = pulumi.Input.asOptionalInput<String>(property),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType),
-      uri = pulumi.Input.asOptionalInput<String>(uri),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.accessibility,
+    this.createTime,
+    this.dataSourceType,
+    this.dataType,
+    this.datasetName,
+    this.description,
+    this.labels,
+    this.options,
+    this.property,
+    this.sourceId,
+    this.sourceType,
+    this.uri,
+    this.userId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -135,20 +121,20 @@ class WorkspaceDatasetState {
 
   factory WorkspaceDatasetState.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetState(
-      accessibility: map['accessibility'] == null ? null : pulumi.Output.create<String>(map['accessibility'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dataSourceType: map['dataSourceType'] == null ? null : pulumi.Output.create<String>(map['dataSourceType'] as String),
-      dataType: map['dataType'] == null ? null : pulumi.Output.create<String>(map['dataType'] as String),
-      datasetName: map['datasetName'] == null ? null : pulumi.Output.create<String>(map['datasetName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<WorkspaceDatasetLabel>>(pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels'], (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      options: map['options'] == null ? null : pulumi.Output.create<String>(map['options'] as String),
-      property: map['property'] == null ? null : pulumi.Output.create<String>(map['property'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
-      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels'], (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options'] as String).input(),
+      property: map['property'] == null ? null : (map['property'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

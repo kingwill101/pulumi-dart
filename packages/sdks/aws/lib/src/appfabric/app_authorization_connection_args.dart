@@ -26,17 +26,12 @@ class AppAuthorizationConnectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   AppAuthorizationConnectionArgs({
-    required pulumi.Output<String> appAuthorizationArn,
-    required pulumi.Output<String> appBundleArn,
-    pulumi.Output<AppAuthorizationConnectionAuthRequest>? authRequest,
-    pulumi.Output<String>? region,
-    pulumi.Output<AppAuthorizationConnectionTimeouts>? timeouts,
-  }) :
-      appAuthorizationArn = pulumi.Input.asInput<String>(appAuthorizationArn),
-      appBundleArn = pulumi.Input.asInput<String>(appBundleArn),
-      authRequest = pulumi.Input.asOptionalInput<AppAuthorizationConnectionAuthRequest>(authRequest),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<AppAuthorizationConnectionTimeouts>(timeouts);
+    required this.appAuthorizationArn,
+    required this.appBundleArn,
+    this.authRequest,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AppAuthorizationConnectionArgs {
 
   factory AppAuthorizationConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionArgs(
-      appAuthorizationArn: pulumi.Output.create<String>(map['appAuthorizationArn'] as String),
-      appBundleArn: pulumi.Output.create<String>(map['appBundleArn'] as String),
-      authRequest: map['authRequest'] == null ? null : pulumi.Output.create<AppAuthorizationConnectionAuthRequest>(AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AppAuthorizationConnectionTimeouts>(AppAuthorizationConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      appAuthorizationArn: (map['appAuthorizationArn'] as String).input(),
+      appBundleArn: (map['appBundleArn'] as String).input(),
+      authRequest: map['authRequest'] == null ? null : (AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AppAuthorizationConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

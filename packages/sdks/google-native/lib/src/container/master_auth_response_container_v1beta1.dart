@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_certificate_config_response_container_v1beta1.dart';
 
 /// The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
 class MasterAuthResponseContainerV1beta1 {
   /// [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
-  final String clientCertificate;
+  final pulumi.Input<String> clientCertificate;
   /// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
-  final ClientCertificateConfigResponseContainerV1beta1 clientCertificateConfig;
+  final pulumi.Input<ClientCertificateConfigResponseContainerV1beta1> clientCertificateConfig;
   /// [Output only] Base64-encoded private key used by clients to authenticate to the cluster endpoint.
-  final String clientKey;
-  final String clusterCaCertificate;
+  final pulumi.Input<String> clientKey;
+  final pulumi.Input<String> clusterCaCertificate;
   /// The password to use for HTTP basic authentication to the master endpoint. Because the master endpoint is open to the Internet, you should create a strong password. If a password is provided for cluster creation, username must be non-empty. Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
-  final String password;
+  final pulumi.Input<String> password;
   /// The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and later, basic authentication can be disabled by leaving username unspecified (or setting it to the empty string). Warning: basic authentication is deprecated, and will be removed in GKE control plane versions 1.19 and newer. For a list of recommended authentication methods, see: https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [MasterAuthResponseContainerV1beta1].
   /// [clientCertificate] [Output only] Base64-encoded public certificate used by clients to authenticate to the cluster endpoint.
@@ -35,7 +36,7 @@ class MasterAuthResponseContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientCertificate': clientCertificate,
-      'clientCertificateConfig': clientCertificateConfig.toMap(),
+      'clientCertificateConfig': pulumi.Input.mapInputValue<ClientCertificateConfigResponseContainerV1beta1, Map<String, dynamic>>(clientCertificateConfig, (value) => value.toMap()),
       'clientKey': clientKey,
       'clusterCaCertificate': clusterCaCertificate,
       'password': password,
@@ -45,12 +46,12 @@ class MasterAuthResponseContainerV1beta1 {
 
   factory MasterAuthResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MasterAuthResponseContainerV1beta1(
-      clientCertificate: map['clientCertificate'] as String,
-      clientCertificateConfig: ClientCertificateConfigResponseContainerV1beta1.fromMap((map['clientCertificateConfig'] as Map).cast<String, dynamic>()),
-      clientKey: map['clientKey'] as String,
-      clusterCaCertificate: map['clusterCaCertificate'] as String,
-      password: map['password'] as String,
-      username: map['username'] as String,
+      clientCertificate: (map['clientCertificate'] as String).input(),
+      clientCertificateConfig: (ClientCertificateConfigResponseContainerV1beta1.fromMap((map['clientCertificateConfig'] as Map).cast<String, dynamic>())).input(),
+      clientKey: (map['clientKey'] as String).input(),
+      clusterCaCertificate: (map['clusterCaCertificate'] as String).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

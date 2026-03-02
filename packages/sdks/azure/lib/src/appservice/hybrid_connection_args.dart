@@ -28,19 +28,13 @@ class HybridConnectionArgs {
   /// [resourceGroupName] The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   /// [sendKeyName] The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
   HybridConnectionArgs({
-    required pulumi.Output<String> appServiceName,
-    required pulumi.Output<String> hostname,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> relayId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sendKeyName,
-  }) :
-      appServiceName = pulumi.Input.asInput<String>(appServiceName),
-      hostname = pulumi.Input.asInput<String>(hostname),
-      port = pulumi.Input.asInput<int>(port),
-      relayId = pulumi.Input.asInput<String>(relayId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sendKeyName = pulumi.Input.asOptionalInput<String>(sendKeyName);
+    required this.appServiceName,
+    required this.hostname,
+    required this.port,
+    required this.relayId,
+    required this.resourceGroupName,
+    this.sendKeyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class HybridConnectionArgs {
 
   factory HybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionArgs(
-      appServiceName: pulumi.Output.create<String>(map['appServiceName'] as String),
-      hostname: pulumi.Output.create<String>(map['hostname'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      relayId: pulumi.Output.create<String>(map['relayId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sendKeyName: map['sendKeyName'] == null ? null : pulumi.Output.create<String>(map['sendKeyName'] as String),
+      appServiceName: (map['appServiceName'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      port: (map['port'] as int).input(),
+      relayId: (map['relayId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
     );
   }
 }

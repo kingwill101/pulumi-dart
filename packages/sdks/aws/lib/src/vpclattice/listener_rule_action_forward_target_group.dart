@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionForwardTargetGroup {
-  final String targetGroupIdentifier;
-  final int? weight;
+  final pulumi.Input<String> targetGroupIdentifier;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [ListenerRuleActionForwardTargetGroup].
   /// [targetGroupIdentifier] Required.
@@ -22,8 +23,8 @@ class ListenerRuleActionForwardTargetGroup {
 
   factory ListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardTargetGroup(
-      targetGroupIdentifier: map['targetGroupIdentifier'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      targetGroupIdentifier: (map['targetGroupIdentifier'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

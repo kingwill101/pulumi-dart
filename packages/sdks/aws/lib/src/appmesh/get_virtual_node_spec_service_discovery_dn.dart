@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecServiceDiscoveryDn {
-  final String hostname;
-  final String ipPreference;
-  final String responseType;
+  final pulumi.Input<String> hostname;
+  final pulumi.Input<String> ipPreference;
+  final pulumi.Input<String> responseType;
 
   /// Creates a new [GetVirtualNodeSpecServiceDiscoveryDn].
   /// [hostname] Required.
@@ -26,9 +27,9 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
 
   factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscoveryDn(
-      hostname: map['hostname'] as String,
-      ipPreference: map['ipPreference'] as String,
-      responseType: map['responseType'] as String,
+      hostname: (map['hostname'] as String).input(),
+      ipPreference: (map['ipPreference'] as String).input(),
+      responseType: (map['responseType'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the elasticity profile of the standby container group pools.
 class StandbyContainerGroupPoolElasticityProfile {
   /// Specifies maximum number of standby container groups in the standby pool.
-  final double maxReadyCapacity;
+  final pulumi.Input<double> maxReadyCapacity;
   /// Specifies refill policy of the pool.
-  final String? refillPolicy;
+  final pulumi.Input<String>? refillPolicy;
 
   /// Creates a new [StandbyContainerGroupPoolElasticityProfile].
   /// [maxReadyCapacity] Specifies maximum number of standby container groups in the standby pool.
@@ -25,8 +26,8 @@ class StandbyContainerGroupPoolElasticityProfile {
 
   factory StandbyContainerGroupPoolElasticityProfile.fromMap(Map<String, dynamic> map) {
     return StandbyContainerGroupPoolElasticityProfile(
-      maxReadyCapacity: map['maxReadyCapacity'] as double,
-      refillPolicy: map['refillPolicy'] == null ? null : map['refillPolicy'] as String,
+      maxReadyCapacity: (map['maxReadyCapacity'] as double).input(),
+      refillPolicy: map['refillPolicy'] == null ? null : (map['refillPolicy'] as String).input(),
     );
   }
 }

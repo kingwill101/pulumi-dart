@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_metadata_configuration_metadata_configuration_journal_table_configuration_encryption_configuration.dart';
 import 'bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration.dart';
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
   /// Encryption configuration for the journal table. See `encryption_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration? encryptionConfiguration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
   /// Journal table record expiration settings. See `record_expiration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration recordExpiration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration> recordExpiration;
   /// Journal table ARN.
-  final String? tableArn;
+  final pulumi.Input<String>? tableArn;
   /// Journal table name.
-  final String? tableName;
+  final pulumi.Input<String>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration].
   /// [encryptionConfiguration] Encryption configuration for the journal table. See `encryption_configuration` Block for details.
@@ -27,8 +28,8 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionConfiguration': ?encryptionConfiguration == null ? null : encryptionConfiguration!.toMap(),
-      'recordExpiration': recordExpiration.toMap(),
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'recordExpiration': pulumi.Input.mapInputValue<BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration, Map<String, dynamic>>(recordExpiration, (value) => value.toMap()),
       'tableArn': ?tableArn,
       'tableName': ?tableName,
     };
@@ -36,10 +37,10 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
-      recordExpiration: BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration'] as Map).cast<String, dynamic>()),
-      tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      recordExpiration: (BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap((map['recordExpiration'] as Map).cast<String, dynamic>())).input(),
+      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

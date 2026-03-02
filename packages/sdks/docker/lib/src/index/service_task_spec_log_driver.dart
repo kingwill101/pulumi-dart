@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecLogDriver {
   /// The logging driver to use
-  final String name;
+  final pulumi.Input<String> name;
   /// The options for the logging driver
-  final Map<String, String>? options;
+  final pulumi.Input<Map<String, String>>? options;
 
   /// Creates a new [ServiceTaskSpecLogDriver].
   /// [name] The logging driver to use
@@ -24,8 +25,8 @@ class ServiceTaskSpecLogDriver {
 
   factory ServiceTaskSpecLogDriver.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecLogDriver(
-      name: map['name'] as String,
-      options: map['options'] == null ? null : (map['options'] as Map).cast<String, String>(),
+      name: (map['name'] as String).input(),
+      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
     );
   }
 }

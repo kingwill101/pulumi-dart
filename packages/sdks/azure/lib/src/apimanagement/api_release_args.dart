@@ -19,13 +19,10 @@ class ApiReleaseArgs {
   /// [name] The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   /// [notes] The Release Notes.
   ApiReleaseArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes);
+    required this.apiId,
+    this.name,
+    this.notes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ApiReleaseArgs {
 
   factory ApiReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ApiReleaseArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
+      apiId: (map['apiId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
     );
   }
 }

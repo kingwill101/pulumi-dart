@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesRngDriver {
   /// Enables or disables Address Translation Services (ATS) for the random number generator driver.
-  final String? ats;
+  final pulumi.Input<String>? ats;
   /// Enables or disables I/O Memory Management Unit (IOMMU) for the random number generator driver.
-  final String? iommu;
+  final pulumi.Input<String>? iommu;
   /// Indicates whether packed ring buffers are used for the random number generator driver.
-  final String? packed;
+  final pulumi.Input<String>? packed;
   /// Configures the page per virtual queue setting for the random number generator driver.
-  final String? pagePerVq;
+  final pulumi.Input<String>? pagePerVq;
 
   /// Creates a new [DomainDevicesRngDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the random number generator driver.
@@ -34,10 +35,10 @@ class DomainDevicesRngDriver {
 
   factory DomainDevicesRngDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngDriver(
-      ats: map['ats'] == null ? null : map['ats'] as String,
-      iommu: map['iommu'] == null ? null : map['iommu'] as String,
-      packed: map['packed'] == null ? null : map['packed'] as String,
-      pagePerVq: map['pagePerVq'] == null ? null : map['pagePerVq'] as String,
+      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
+      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
     );
   }
 }

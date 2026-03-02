@@ -19,13 +19,10 @@ class WorkspaceSettingArgs {
   /// [workspaceId] The full Azure ID of the workspace to save the data in
   /// [workspaceSettingName] Name of the security setting
   WorkspaceSettingArgs({
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> workspaceId,
-    pulumi.Output<String>? workspaceSettingName,
-  }) :
-      scope = pulumi.Input.asInput<String>(scope),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId),
-      workspaceSettingName = pulumi.Input.asOptionalInput<String>(workspaceSettingName);
+    required this.scope,
+    required this.workspaceId,
+    this.workspaceSettingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class WorkspaceSettingArgs {
 
   factory WorkspaceSettingArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceSettingArgs(
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
-      workspaceSettingName: map['workspaceSettingName'] == null ? null : pulumi.Output.create<String>(map['workspaceSettingName'] as String),
+      scope: (map['scope'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
+      workspaceSettingName: map['workspaceSettingName'] == null ? null : (map['workspaceSettingName'] as String).input(),
     );
   }
 }

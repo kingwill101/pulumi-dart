@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connector Info Base properties
 class ConnectorInfoBaseResponse {
   /// Connector Class
-  final String? connectorClass;
+  final pulumi.Input<String>? connectorClass;
   /// Connector Id
-  final String? connectorId;
+  final pulumi.Input<String>? connectorId;
   /// Connector Name
-  final String? connectorName;
+  final pulumi.Input<String>? connectorName;
   /// Connector Status
-  final String? connectorState;
+  final pulumi.Input<String>? connectorState;
   /// Connector Type
-  final String? connectorType;
+  final pulumi.Input<String>? connectorType;
 
   /// Creates a new [ConnectorInfoBaseResponse].
   /// [connectorClass] Connector Class
@@ -40,11 +41,11 @@ class ConnectorInfoBaseResponse {
 
   factory ConnectorInfoBaseResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorInfoBaseResponse(
-      connectorClass: map['connectorClass'] == null ? null : map['connectorClass'] as String,
-      connectorId: map['connectorId'] == null ? null : map['connectorId'] as String,
-      connectorName: map['connectorName'] == null ? null : map['connectorName'] as String,
-      connectorState: map['connectorState'] == null ? null : map['connectorState'] as String,
-      connectorType: map['connectorType'] == null ? null : map['connectorType'] as String,
+      connectorClass: map['connectorClass'] == null ? null : (map['connectorClass'] as String).input(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      connectorState: map['connectorState'] == null ? null : (map['connectorState'] as String).input(),
+      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
     );
   }
 }

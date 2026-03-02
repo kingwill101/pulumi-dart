@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'future_reservation_status_last_known_good_state_future_reservation_specs_response.dart';
 
 /// The state that the future reservation will be reverted to should the amendment be declined.
 class FutureReservationStatusLastKnownGoodStateResponse {
   /// The description of the FutureReservation before an amendment was requested.
-  final String description;
-  final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse futureReservationSpecs;
+  final pulumi.Input<String> description;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse> futureReservationSpecs;
   /// The lock time of the FutureReservation before an amendment was requested.
-  final String lockTime;
+  final pulumi.Input<String> lockTime;
   /// The name prefix of the Future Reservation before an amendment was requested.
-  final String namePrefix;
+  final pulumi.Input<String> namePrefix;
   /// The status of the last known good state for the Future Reservation.
-  final String procurementStatus;
+  final pulumi.Input<String> procurementStatus;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateResponse].
   /// [description] The description of the FutureReservation before an amendment was requested.
@@ -31,7 +32,7 @@ class FutureReservationStatusLastKnownGoodStateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'futureReservationSpecs': futureReservationSpecs.toMap(),
+      'futureReservationSpecs': pulumi.Input.mapInputValue<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse, Map<String, dynamic>>(futureReservationSpecs, (value) => value.toMap()),
       'lockTime': lockTime,
       'namePrefix': namePrefix,
       'procurementStatus': procurementStatus,
@@ -40,11 +41,11 @@ class FutureReservationStatusLastKnownGoodStateResponse {
 
   factory FutureReservationStatusLastKnownGoodStateResponse.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateResponse(
-      description: map['description'] as String,
-      futureReservationSpecs: FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap((map['futureReservationSpecs'] as Map).cast<String, dynamic>()),
-      lockTime: map['lockTime'] as String,
-      namePrefix: map['namePrefix'] as String,
-      procurementStatus: map['procurementStatus'] as String,
+      description: (map['description'] as String).input(),
+      futureReservationSpecs: (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap((map['futureReservationSpecs'] as Map).cast<String, dynamic>())).input(),
+      lockTime: (map['lockTime'] as String).input(),
+      namePrefix: (map['namePrefix'] as String).input(),
+      procurementStatus: (map['procurementStatus'] as String).input(),
     );
   }
 }

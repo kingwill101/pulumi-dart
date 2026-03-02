@@ -23,15 +23,11 @@ class DpsCertificateArgs {
   /// [provisioningServiceName] The name of the provisioning service.
   /// [resourceGroupName] Resource group identifier.
   DpsCertificateArgs({
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<CertificateProperties>? properties,
-    required pulumi.Output<String> provisioningServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      properties = pulumi.Input.asOptionalInput<CertificateProperties>(properties),
-      provisioningServiceName = pulumi.Input.asInput<String>(provisioningServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.certificateName,
+    this.properties,
+    required this.provisioningServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class DpsCertificateArgs {
 
   factory DpsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return DpsCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<CertificateProperties>(CertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      provisioningServiceName: pulumi.Output.create<String>(map['provisioningServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      properties: map['properties'] == null ? null : (CertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      provisioningServiceName: (map['provisioningServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

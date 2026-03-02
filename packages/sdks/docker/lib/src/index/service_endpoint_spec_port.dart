@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceEndpointSpecPort {
   /// A random name for the port
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Rrepresents the protocol of a port: `tcp`, `udp` or `sctp`. Defaults to `tcp`.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Represents the mode in which the port is to be published: 'ingress' or 'host'. Defaults to `ingress`.
-  final String? publishMode;
+  final pulumi.Input<String>? publishMode;
   /// The port on the swarm hosts
-  final int? publishedPort;
+  final pulumi.Input<int>? publishedPort;
   /// The port inside the container
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
 
   /// Creates a new [ServiceEndpointSpecPort].
   /// [name] A random name for the port
@@ -39,11 +40,11 @@ class ServiceEndpointSpecPort {
 
   factory ServiceEndpointSpecPort.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointSpecPort(
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      publishMode: map['publishMode'] == null ? null : map['publishMode'] as String,
-      publishedPort: map['publishedPort'] == null ? null : map['publishedPort'] as int,
-      targetPort: map['targetPort'] as int,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      publishMode: map['publishMode'] == null ? null : (map['publishMode'] as String).input(),
+      publishedPort: map['publishedPort'] == null ? null : (map['publishedPort'] as int).input(),
+      targetPort: (map['targetPort'] as int).input(),
     );
   }
 }

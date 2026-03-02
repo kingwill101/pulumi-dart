@@ -40,29 +40,18 @@ class VpcDhcpOptionsState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   VpcDhcpOptionsState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<String>>? domainNameServers,
-    pulumi.Output<String>? ipv6AddressPreferredLeaseTime,
-    pulumi.Output<List<String>>? netbiosNameServers,
-    pulumi.Output<String>? netbiosNodeType,
-    pulumi.Output<List<String>>? ntpServers,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      domainNameServers = pulumi.Input.asOptionalInput<List<String>>(domainNameServers),
-      ipv6AddressPreferredLeaseTime = pulumi.Input.asOptionalInput<String>(ipv6AddressPreferredLeaseTime),
-      netbiosNameServers = pulumi.Input.asOptionalInput<List<String>>(netbiosNameServers),
-      netbiosNodeType = pulumi.Input.asOptionalInput<String>(netbiosNodeType),
-      ntpServers = pulumi.Input.asOptionalInput<List<String>>(ntpServers),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.domainName,
+    this.domainNameServers,
+    this.ipv6AddressPreferredLeaseTime,
+    this.netbiosNameServers,
+    this.netbiosNodeType,
+    this.ntpServers,
+    this.ownerId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class VpcDhcpOptionsState {
 
   factory VpcDhcpOptionsState.fromMap(Map<String, dynamic> map) {
     return VpcDhcpOptionsState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      domainNameServers: map['domainNameServers'] == null ? null : pulumi.Output.create<List<String>>((map['domainNameServers'] as List).cast<String>()),
-      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressPreferredLeaseTime'] as String),
-      netbiosNameServers: map['netbiosNameServers'] == null ? null : pulumi.Output.create<List<String>>((map['netbiosNameServers'] as List).cast<String>()),
-      netbiosNodeType: map['netbiosNodeType'] == null ? null : pulumi.Output.create<String>(map['netbiosNodeType'] as String),
-      ntpServers: map['ntpServers'] == null ? null : pulumi.Output.create<List<String>>((map['ntpServers'] as List).cast<String>()),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : ((map['domainNameServers'] as List).cast<String>()).input(),
+      ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] == null ? null : (map['ipv6AddressPreferredLeaseTime'] as String).input(),
+      netbiosNameServers: map['netbiosNameServers'] == null ? null : ((map['netbiosNameServers'] as List).cast<String>()).input(),
+      netbiosNodeType: map['netbiosNodeType'] == null ? null : (map['netbiosNodeType'] as String).input(),
+      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers'] as List).cast<String>()).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

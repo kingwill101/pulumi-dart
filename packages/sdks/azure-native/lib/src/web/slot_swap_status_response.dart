@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The status of the last successful slot swap operation.
 class SlotSwapStatusResponse {
   /// The destination slot of the last swap operation.
-  final String destinationSlotName;
+  final pulumi.Input<String> destinationSlotName;
   /// The source slot of the last swap operation.
-  final String sourceSlotName;
+  final pulumi.Input<String> sourceSlotName;
   /// The time the last successful slot swap completed.
-  final String timestampUtc;
+  final pulumi.Input<String> timestampUtc;
 
   /// Creates a new [SlotSwapStatusResponse].
   /// [destinationSlotName] The destination slot of the last swap operation.
@@ -30,9 +31,9 @@ class SlotSwapStatusResponse {
 
   factory SlotSwapStatusResponse.fromMap(Map<String, dynamic> map) {
     return SlotSwapStatusResponse(
-      destinationSlotName: map['destinationSlotName'] as String,
-      sourceSlotName: map['sourceSlotName'] as String,
-      timestampUtc: map['timestampUtc'] as String,
+      destinationSlotName: (map['destinationSlotName'] as String).input(),
+      sourceSlotName: (map['sourceSlotName'] as String).input(),
+      timestampUtc: (map['timestampUtc'] as String).input(),
     );
   }
 }

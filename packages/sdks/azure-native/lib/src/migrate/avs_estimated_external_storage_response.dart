@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details on the Estimated External Storage for AVS Assessment.
 class AvsEstimatedExternalStorageResponse {
   /// Total monthly cost for type of storage.
-  final double? monthlyPrice;
+  final pulumi.Input<double>? monthlyPrice;
   /// Recommended External Storage.
-  final String? storageType;
+  final pulumi.Input<String>? storageType;
   /// Predicted storage utilization.
-  final double? storageUtilization;
+  final pulumi.Input<double>? storageUtilization;
   /// Predicted total Storage used in GB.
-  final double? totalStorageInGB;
+  final pulumi.Input<double>? totalStorageInGB;
 
   /// Creates a new [AvsEstimatedExternalStorageResponse].
   /// [monthlyPrice] Total monthly cost for type of storage.
@@ -35,10 +36,10 @@ class AvsEstimatedExternalStorageResponse {
 
   factory AvsEstimatedExternalStorageResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedExternalStorageResponse(
-      monthlyPrice: map['monthlyPrice'] == null ? null : map['monthlyPrice'] as double,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      storageUtilization: map['storageUtilization'] == null ? null : map['storageUtilization'] as double,
-      totalStorageInGB: map['totalStorageInGB'] == null ? null : map['totalStorageInGB'] as double,
+      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice'] as double).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      storageUtilization: map['storageUtilization'] == null ? null : (map['storageUtilization'] as double).input(),
+      totalStorageInGB: map['totalStorageInGB'] == null ? null : (map['totalStorageInGB'] as double).input(),
     );
   }
 }

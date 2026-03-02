@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeProtectionConfiguration {
   /// The mode of operation for runtime protection.
-  final String? enforcementLevel;
+  final pulumi.Input<String>? enforcementLevel;
 
   /// Creates a new [RuntimeProtectionConfiguration].
   /// [enforcementLevel] The mode of operation for runtime protection.
@@ -19,7 +20,7 @@ class RuntimeProtectionConfiguration {
 
   factory RuntimeProtectionConfiguration.fromMap(Map<String, dynamic> map) {
     return RuntimeProtectionConfiguration(
-      enforcementLevel: map['enforcementLevel'] == null ? null : map['enforcementLevel'] as String,
+      enforcementLevel: map['enforcementLevel'] == null ? null : (map['enforcementLevel'] as String).input(),
     );
   }
 }

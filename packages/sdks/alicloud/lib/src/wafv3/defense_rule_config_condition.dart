@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefenseRuleConfigCondition {
   /// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
   ///
   /// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Logical character. Value:
   /// - not-contain: does not contain.
   /// - contain: Indicates to contain.
@@ -33,13 +34,13 @@ class DefenseRuleConfigCondition {
   /// - inl: indicates in the list.
   ///
   /// > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
-  final String? opValue;
+  final pulumi.Input<String>? opValue;
   /// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
-  final String? subKey;
+  final pulumi.Input<String>? subKey;
   /// Match the content and fill in the corresponding content as needed.
   ///
   /// > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
-  final String? values;
+  final pulumi.Input<String>? values;
 
   /// Creates a new [DefenseRuleConfigCondition].
   /// [key] Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
@@ -64,10 +65,10 @@ class DefenseRuleConfigCondition {
 
   factory DefenseRuleConfigCondition.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigCondition(
-      key: map['key'] == null ? null : map['key'] as String,
-      opValue: map['opValue'] == null ? null : map['opValue'] as String,
-      subKey: map['subKey'] == null ? null : map['subKey'] as String,
-      values: map['values'] == null ? null : map['values'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      opValue: map['opValue'] == null ? null : (map['opValue'] as String).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
+      values: map['values'] == null ? null : (map['values'] as String).input(),
     );
   }
 }

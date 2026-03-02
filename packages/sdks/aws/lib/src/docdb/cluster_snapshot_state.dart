@@ -47,35 +47,21 @@ class ClusterSnapshotState {
   /// [storageEncrypted] Specifies whether the DocumentDB cluster snapshot is encrypted.
   /// [vpcId] The VPC ID associated with the DocumentDB cluster snapshot.
   ClusterSnapshotState({
-    pulumi.Output<List<String>>? availabilityZones,
-    pulumi.Output<String>? dbClusterIdentifier,
-    pulumi.Output<String>? dbClusterSnapshotArn,
-    pulumi.Output<String>? dbClusterSnapshotIdentifier,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? kmsKeyId,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotType,
-    pulumi.Output<String>? sourceDbClusterSnapshotArn,
-    pulumi.Output<String>? status,
-    pulumi.Output<bool>? storageEncrypted,
-    pulumi.Output<String>? vpcId,
-  }) :
-      availabilityZones = pulumi.Input.asOptionalInput<List<String>>(availabilityZones),
-      dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterIdentifier),
-      dbClusterSnapshotArn = pulumi.Input.asOptionalInput<String>(dbClusterSnapshotArn),
-      dbClusterSnapshotIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterSnapshotIdentifier),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotType = pulumi.Input.asOptionalInput<String>(snapshotType),
-      sourceDbClusterSnapshotArn = pulumi.Input.asOptionalInput<String>(sourceDbClusterSnapshotArn),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.availabilityZones,
+    this.dbClusterIdentifier,
+    this.dbClusterSnapshotArn,
+    this.dbClusterSnapshotIdentifier,
+    this.engine,
+    this.engineVersion,
+    this.kmsKeyId,
+    this.port,
+    this.region,
+    this.snapshotType,
+    this.sourceDbClusterSnapshotArn,
+    this.status,
+    this.storageEncrypted,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,20 +84,20 @@ class ClusterSnapshotState {
 
   factory ClusterSnapshotState.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotState(
-      availabilityZones: map['availabilityZones'] == null ? null : pulumi.Output.create<List<String>>((map['availabilityZones'] as List).cast<String>()),
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbClusterSnapshotArn: map['dbClusterSnapshotArn'] == null ? null : pulumi.Output.create<String>(map['dbClusterSnapshotArn'] as String),
-      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterSnapshotIdentifier'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotType: map['snapshotType'] == null ? null : pulumi.Output.create<String>(map['snapshotType'] as String),
-      sourceDbClusterSnapshotArn: map['sourceDbClusterSnapshotArn'] == null ? null : pulumi.Output.create<String>(map['sourceDbClusterSnapshotArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      storageEncrypted: map['storageEncrypted'] == null ? null : pulumi.Output.create<bool>(map['storageEncrypted'] as bool),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
+      dbClusterSnapshotArn: map['dbClusterSnapshotArn'] == null ? null : (map['dbClusterSnapshotArn'] as String).input(),
+      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : (map['dbClusterSnapshotIdentifier'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
+      sourceDbClusterSnapshotArn: map['sourceDbClusterSnapshotArn'] == null ? null : (map['sourceDbClusterSnapshotArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

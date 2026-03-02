@@ -19,13 +19,10 @@ class GetHybridIdentityMetadataArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [virtualMachineName] Name of the vm.
   GetHybridIdentityMetadataArgs({
-    required pulumi.Output<String> metadataName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualMachineName,
-  }) :
-      metadataName = pulumi.Input.asInput<String>(metadataName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualMachineName = pulumi.Input.asInput<String>(virtualMachineName);
+    required this.metadataName,
+    required this.resourceGroupName,
+    required this.virtualMachineName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHybridIdentityMetadataArgs {
 
   factory GetHybridIdentityMetadataArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridIdentityMetadataArgs(
-      metadataName: pulumi.Output.create<String>(map['metadataName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualMachineName: pulumi.Output.create<String>(map['virtualMachineName'] as String),
+      metadataName: (map['metadataName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }
 }

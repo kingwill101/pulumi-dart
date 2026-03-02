@@ -32,17 +32,12 @@ class GetReservedCacheNodeOfferingArgs {
   /// [productDescription] Engine type for the reserved cache node.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetReservedCacheNodeOfferingArgs({
-    required pulumi.Output<String> cacheNodeType,
-    required pulumi.Output<String> duration,
-    required pulumi.Output<String> offeringType,
-    required pulumi.Output<String> productDescription,
-    pulumi.Output<String>? region,
-  }) :
-      cacheNodeType = pulumi.Input.asInput<String>(cacheNodeType),
-      duration = pulumi.Input.asInput<String>(duration),
-      offeringType = pulumi.Input.asInput<String>(offeringType),
-      productDescription = pulumi.Input.asInput<String>(productDescription),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.cacheNodeType,
+    required this.duration,
+    required this.offeringType,
+    required this.productDescription,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class GetReservedCacheNodeOfferingArgs {
 
   factory GetReservedCacheNodeOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedCacheNodeOfferingArgs(
-      cacheNodeType: pulumi.Output.create<String>(map['cacheNodeType'] as String),
-      duration: pulumi.Output.create<String>(map['duration'] as String),
-      offeringType: pulumi.Output.create<String>(map['offeringType'] as String),
-      productDescription: pulumi.Output.create<String>(map['productDescription'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      cacheNodeType: (map['cacheNodeType'] as String).input(),
+      duration: (map['duration'] as String).input(),
+      offeringType: (map['offeringType'] as String).input(),
+      productDescription: (map['productDescription'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_error.dart';
 
 /// Connection status
 class ConnectionStatusDefinition {
   /// Connection error
-  final ConnectionError? error;
+  final pulumi.Input<ConnectionError>? error;
   /// The gateway status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Target of the error
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [ConnectionStatusDefinition].
   /// [error] Connection error
@@ -23,7 +24,7 @@ class ConnectionStatusDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ConnectionError, Map<String, dynamic>>(error, (value) => value.toMap()),
       'status': ?status,
       'target': ?target,
     };
@@ -31,9 +32,9 @@ class ConnectionStatusDefinition {
 
   factory ConnectionStatusDefinition.fromMap(Map<String, dynamic> map) {
     return ConnectionStatusDefinition(
-      error: map['error'] == null ? null : ConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      error: map['error'] == null ? null : (ConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCommandsCommand {
   /// The Base64-encoded content of the command.
-  final String commandContent;
+  final pulumi.Input<String> commandContent;
   /// The ID of the Command.
-  final String commandId;
+  final pulumi.Input<String> commandId;
   /// The description of command.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies whether to use custom parameters in the command to be created.
-  final bool enableParameter;
+  final pulumi.Input<bool> enableParameter;
   /// The ID of the Command.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of the command
-  final String name;
+  final pulumi.Input<String> name;
   /// A list of custom parameter names which are parsed from the command content specified when the command was being created.
-  final List<String> parameterNames;
+  final pulumi.Input<List<String>> parameterNames;
   /// The timeout period that is specified for the command to be run on ECS instances.
-  final int timeout;
+  final pulumi.Input<int> timeout;
   /// The command type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The execution path of the command in the ECS instance.
-  final String workingDir;
+  final pulumi.Input<String> workingDir;
 
   /// Creates a new [GetCommandsCommand].
   /// [commandContent] The Base64-encoded content of the command.
@@ -64,16 +65,16 @@ class GetCommandsCommand {
 
   factory GetCommandsCommand.fromMap(Map<String, dynamic> map) {
     return GetCommandsCommand(
-      commandContent: map['commandContent'] as String,
-      commandId: map['commandId'] as String,
-      description: map['description'] as String,
-      enableParameter: map['enableParameter'] as bool,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      parameterNames: (map['parameterNames'] as List).cast<String>(),
-      timeout: map['timeout'] as int,
-      type: map['type'] as String,
-      workingDir: map['workingDir'] as String,
+      commandContent: (map['commandContent'] as String).input(),
+      commandId: (map['commandId'] as String).input(),
+      description: (map['description'] as String).input(),
+      enableParameter: (map['enableParameter'] as bool).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameterNames: ((map['parameterNames'] as List).cast<String>()).input(),
+      timeout: (map['timeout'] as int).input(),
+      type: (map['type'] as String).input(),
+      workingDir: (map['workingDir'] as String).input(),
     );
   }
 }

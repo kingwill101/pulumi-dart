@@ -19,13 +19,10 @@ class WorkspaceMemberArgs {
   /// [userId] The ID of the User.
   /// [workspaceId] The ID of the Workspace.
   WorkspaceMemberArgs({
-    required pulumi.Output<List<String>> roles,
-    required pulumi.Output<String> userId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      roles = pulumi.Input.asInput<List<String>>(roles),
-      userId = pulumi.Input.asInput<String>(userId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.roles,
+    required this.userId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class WorkspaceMemberArgs {
 
   factory WorkspaceMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceMemberArgs(
-      roles: pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      roles: ((map['roles'] as List).cast<String>()).input(),
+      userId: (map['userId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

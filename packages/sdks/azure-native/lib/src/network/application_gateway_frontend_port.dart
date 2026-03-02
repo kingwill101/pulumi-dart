@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Frontend port of an application gateway.
 class ApplicationGatewayFrontendPort {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the frontend port that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Frontend port.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ApplicationGatewayFrontendPort].
   /// [id] Resource ID.
@@ -30,9 +31,9 @@ class ApplicationGatewayFrontendPort {
 
   factory ApplicationGatewayFrontendPort.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendPort(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

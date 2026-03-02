@@ -37,25 +37,16 @@ class PlanState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   PlanState({
-    pulumi.Output<List<PlanAdvancedBackupSetting>>? advancedBackupSettings,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<PlanRule>>? rules,
-    pulumi.Output<List<PlanScanSetting>>? scanSettings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? version,
-  }) :
-      advancedBackupSettings = pulumi.Input.asOptionalInput<List<PlanAdvancedBackupSetting>>(advancedBackupSettings),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<PlanRule>>(rules),
-      scanSettings = pulumi.Input.asOptionalInput<List<PlanScanSetting>>(scanSettings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.advancedBackupSettings,
+    this.arn,
+    this.name,
+    this.region,
+    this.rules,
+    this.scanSettings,
+    this.tags,
+    this.tagsAll,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class PlanState {
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : pulumi.Output.create<List<PlanAdvancedBackupSetting>>(pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings'], (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<PlanRule>>(pulumi.Input.decodeList<PlanRule>(map['rules'], (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))),
-      scanSettings: map['scanSettings'] == null ? null : pulumi.Output.create<List<PlanScanSetting>>(pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings'], (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      advancedBackupSettings: map['advancedBackupSettings'] == null ? null : (pulumi.Input.decodeList<PlanAdvancedBackupSetting>(map['advancedBackupSettings'], (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PlanRule>(map['rules'], (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scanSettings: map['scanSettings'] == null ? null : (pulumi.Input.decodeList<PlanScanSetting>(map['scanSettings'], (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

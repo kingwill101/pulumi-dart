@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlertRuleTemplateSecurityIncidentTemplate {
   /// The description of this Sentinel Scheduled Alert Rule Template.
-  final String description;
+  final pulumi.Input<String> description;
   /// The Microsoft Security Service from where the alert will be generated.
-  final String productFilter;
+  final pulumi.Input<String> productFilter;
 
   /// Creates a new [GetAlertRuleTemplateSecurityIncidentTemplate].
   /// [description] The description of this Sentinel Scheduled Alert Rule Template.
@@ -24,8 +25,8 @@ class GetAlertRuleTemplateSecurityIncidentTemplate {
 
   factory GetAlertRuleTemplateSecurityIncidentTemplate.fromMap(Map<String, dynamic> map) {
     return GetAlertRuleTemplateSecurityIncidentTemplate(
-      description: map['description'] as String,
-      productFilter: map['productFilter'] as String,
+      description: (map['description'] as String).input(),
+      productFilter: (map['productFilter'] as String).input(),
     );
   }
 }

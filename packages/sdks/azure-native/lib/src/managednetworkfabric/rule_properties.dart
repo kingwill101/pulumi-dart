@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Rules for the InternetGateways
 class RuleProperties {
   /// Specify action.
-  final String action;
+  final pulumi.Input<String> action;
   /// List of Addresses to be allowed or denied.
-  final List<String> addressList;
+  final pulumi.Input<List<String>> addressList;
 
   /// Creates a new [RuleProperties].
   /// [action] Specify action.
@@ -25,8 +26,8 @@ class RuleProperties {
 
   factory RuleProperties.fromMap(Map<String, dynamic> map) {
     return RuleProperties(
-      action: map['action'] as String,
-      addressList: (map['addressList'] as List).cast<String>(),
+      action: (map['action'] as String).input(),
+      addressList: ((map['addressList'] as List).cast<String>()).input(),
     );
   }
 }

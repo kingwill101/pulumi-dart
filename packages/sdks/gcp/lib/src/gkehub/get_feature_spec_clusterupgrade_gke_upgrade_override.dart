@@ -6,9 +6,9 @@ import 'get_feature_spec_clusterupgrade_gke_upgrade_override_upgrade.dart';
 
 class GetFeatureSpecClusterupgradeGkeUpgradeOverride {
   /// Post conditions to override for the specified upgrade.
-  final List<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition> postConditions;
+  final pulumi.Input<List<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition>> postConditions;
   /// Which upgrade to override.
-  final List<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade> upgrades;
+  final pulumi.Input<List<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade>> upgrades;
 
   /// Creates a new [GetFeatureSpecClusterupgradeGkeUpgradeOverride].
   /// [postConditions] Post conditions to override for the specified upgrade.
@@ -20,15 +20,15 @@ class GetFeatureSpecClusterupgradeGkeUpgradeOverride {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postConditions': pulumi.Input.encodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition, Map<String, dynamic>>(postConditions, (value) => value.toMap()),
-      'upgrades': pulumi.Input.encodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade, Map<String, dynamic>>(upgrades, (value) => value.toMap()),
+      'postConditions': pulumi.Input.mapInputValue<List<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition>, List<Map<String, dynamic>>>(postConditions, (value) => pulumi.Input.encodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'upgrades': pulumi.Input.mapInputValue<List<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade>, List<Map<String, dynamic>>>(upgrades, (value) => pulumi.Input.encodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetFeatureSpecClusterupgradeGkeUpgradeOverride.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecClusterupgradeGkeUpgradeOverride(
-      postConditions: pulumi.Input.decodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition>(map['postConditions'], (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition.fromMap((value as Map).cast<String, dynamic>())),
-      upgrades: pulumi.Input.decodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade>(map['upgrades'], (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade.fromMap((value as Map).cast<String, dynamic>())),
+      postConditions: (pulumi.Input.decodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition>(map['postConditions'], (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upgrades: (pulumi.Input.decodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade>(map['upgrades'], (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

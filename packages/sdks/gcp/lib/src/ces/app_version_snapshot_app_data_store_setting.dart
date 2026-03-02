@@ -7,7 +7,7 @@ class AppVersionSnapshotAppDataStoreSetting {
   /// (Output)
   /// The engines for the app.
   /// Structure is documented below.
-  final List<AppVersionSnapshotAppDataStoreSettingEngine>? engines;
+  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSettingEngine>>? engines;
 
   /// Creates a new [AppVersionSnapshotAppDataStoreSetting].
   /// [engines] (Output)
@@ -17,13 +17,13 @@ class AppVersionSnapshotAppDataStoreSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engines': ?engines == null ? null : pulumi.Input.encodeList<AppVersionSnapshotAppDataStoreSettingEngine, Map<String, dynamic>>(engines!, (value) => value.toMap()),
+      'engines': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDataStoreSettingEngine>, List<Map<String, dynamic>>>(engines, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDataStoreSettingEngine, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AppVersionSnapshotAppDataStoreSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDataStoreSetting(
-      engines: map['engines'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines'], (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>())),
+      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines'], (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

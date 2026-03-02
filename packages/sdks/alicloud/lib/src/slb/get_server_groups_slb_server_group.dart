@@ -5,11 +5,11 @@ import 'get_server_groups_slb_server_group_server.dart';
 
 class GetServerGroupsSlbServerGroup {
   /// VServer group ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// VServer group name.
-  final String name;
+  final pulumi.Input<String> name;
   /// ECS instances associated to the group. Each element contains the following attributes:
-  final List<GetServerGroupsSlbServerGroupServer> servers;
+  final pulumi.Input<List<GetServerGroupsSlbServerGroupServer>> servers;
 
   /// Creates a new [GetServerGroupsSlbServerGroup].
   /// [id] VServer group ID.
@@ -25,15 +25,15 @@ class GetServerGroupsSlbServerGroup {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'servers': pulumi.Input.encodeList<GetServerGroupsSlbServerGroupServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+      'servers': pulumi.Input.mapInputValue<List<GetServerGroupsSlbServerGroupServer>, List<Map<String, dynamic>>>(servers, (value) => pulumi.Input.encodeList<GetServerGroupsSlbServerGroupServer, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetServerGroupsSlbServerGroup.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsSlbServerGroup(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      servers: pulumi.Input.decodeList<GetServerGroupsSlbServerGroupServer>(map['servers'], (value) => GetServerGroupsSlbServerGroupServer.fromMap((value as Map).cast<String, dynamic>())),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      servers: (pulumi.Input.decodeList<GetServerGroupsSlbServerGroupServer>(map['servers'], (value) => GetServerGroupsSlbServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

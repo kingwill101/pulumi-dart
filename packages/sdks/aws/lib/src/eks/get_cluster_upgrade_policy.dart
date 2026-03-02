@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterUpgradePolicy {
   /// Support type to use for the cluster.
-  final String supportType;
+  final pulumi.Input<String> supportType;
 
   /// Creates a new [GetClusterUpgradePolicy].
   /// [supportType] Support type to use for the cluster.
@@ -19,7 +20,7 @@ class GetClusterUpgradePolicy {
 
   factory GetClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterUpgradePolicy(
-      supportType: map['supportType'] as String,
+      supportType: (map['supportType'] as String).input(),
     );
   }
 }

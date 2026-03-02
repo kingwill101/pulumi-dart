@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineJobBackfillPipelineJob {
   /// Specifies the mapping pipeline job to backfill, the name format
   /// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
-  final String? mappingPipelineJob;
+  final pulumi.Input<String>? mappingPipelineJob;
 
   /// Creates a new [PipelineJobBackfillPipelineJob].
   /// [mappingPipelineJob] Specifies the mapping pipeline job to backfill, the name format
@@ -20,7 +21,7 @@ class PipelineJobBackfillPipelineJob {
 
   factory PipelineJobBackfillPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobBackfillPipelineJob(
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : map['mappingPipelineJob'] as String,
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (map['mappingPipelineJob'] as String).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class PrivateLinkAssociationArgs {
   /// [plaId] The ID of the PLA
   /// [properties] The properties of the PrivateLinkAssociation.
   PrivateLinkAssociationArgs({
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? plaId,
-    pulumi.Output<PrivateLinkAssociationProperties>? properties,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      plaId = pulumi.Input.asOptionalInput<String>(plaId),
-      properties = pulumi.Input.asOptionalInput<PrivateLinkAssociationProperties>(properties);
+    required this.groupId,
+    this.plaId,
+    this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class PrivateLinkAssociationArgs {
 
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      plaId: map['plaId'] == null ? null : pulumi.Output.create<String>(map['plaId'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<PrivateLinkAssociationProperties>(PrivateLinkAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      groupId: (map['groupId'] as String).input(),
+      plaId: map['plaId'] == null ? null : (map['plaId'] as String).input(),
+      properties: map['properties'] == null ? null : (PrivateLinkAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigSandboxConfig {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
-  final String sandboxType;
+  final pulumi.Input<String> sandboxType;
 
   /// Creates a new [NodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
@@ -19,7 +20,7 @@ class NodePoolNodeConfigSandboxConfig {
 
   factory NodePoolNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSandboxConfig(
-      sandboxType: map['sandboxType'] as String,
+      sandboxType: (map['sandboxType'] as String).input(),
     );
   }
 }

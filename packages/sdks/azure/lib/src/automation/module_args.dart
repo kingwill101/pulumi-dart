@@ -23,15 +23,11 @@ class ModuleArgs {
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
   ModuleArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<ModuleModuleLink> moduleLink,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      moduleLink = pulumi.Input.asInput<ModuleModuleLink>(moduleLink),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.automationAccountName,
+    required this.moduleLink,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ModuleArgs {
 
   factory ModuleArgs.fromMap(Map<String, dynamic> map) {
     return ModuleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      moduleLink: pulumi.Output.create<ModuleModuleLink>(ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      moduleLink: (ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

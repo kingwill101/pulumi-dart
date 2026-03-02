@@ -34,25 +34,16 @@ class CertificateState {
   /// [thumbprint] The thumbprint of the certificate. Changing this forces a new resource to be created.
   /// [thumbprintAlgorithm] The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   CertificateState({
-    pulumi.Output<String>? accountName,
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? publicData,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? thumbprint,
-    pulumi.Output<String>? thumbprintAlgorithm,
-  }) :
-      accountName = pulumi.Input.asOptionalInput<String>(accountName),
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      publicData = pulumi.Input.asOptionalInput<String>(publicData),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint),
-      thumbprintAlgorithm = pulumi.Input.asOptionalInput<String>(thumbprintAlgorithm);
+    this.accountName,
+    this.certificate,
+    this.format,
+    this.name,
+    this.password,
+    this.publicData,
+    this.resourceGroupName,
+    this.thumbprint,
+    this.thumbprintAlgorithm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      publicData: map['publicData'] == null ? null : pulumi.Output.create<String>(map['publicData'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
-      thumbprintAlgorithm: map['thumbprintAlgorithm'] == null ? null : pulumi.Output.create<String>(map['thumbprintAlgorithm'] as String),
+      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      publicData: map['publicData'] == null ? null : (map['publicData'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprintAlgorithm: map['thumbprintAlgorithm'] == null ? null : (map['thumbprintAlgorithm'] as String).input(),
     );
   }
 }

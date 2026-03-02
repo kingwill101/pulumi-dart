@@ -19,13 +19,10 @@ class GetPrivateStoreCollectionOfferArgs {
   /// [offerId] The offer ID to update or delete
   /// [privateStoreId] The store ID - must use the tenant ID
   GetPrivateStoreCollectionOfferArgs({
-    required pulumi.Output<String> collectionId,
-    required pulumi.Output<String> offerId,
-    required pulumi.Output<String> privateStoreId,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      offerId = pulumi.Input.asInput<String>(offerId),
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId);
+    required this.collectionId,
+    required this.offerId,
+    required this.privateStoreId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateStoreCollectionOfferArgs {
 
   factory GetPrivateStoreCollectionOfferArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateStoreCollectionOfferArgs(
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      offerId: pulumi.Output.create<String>(map['offerId'] as String),
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
+      collectionId: (map['collectionId'] as String).input(),
+      offerId: (map['offerId'] as String).input(),
+      privateStoreId: (map['privateStoreId'] as String).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class StudyAiplatformV1beta1Args {
   /// [project] Optional.
   /// [studySpec] Configuration of the Study.
   StudyAiplatformV1beta1Args({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<GoogleCloudAiplatformV1beta1StudySpec> studySpec,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1StudySpec>(studySpec);
+    required this.displayName,
+    this.location,
+    this.project,
+    required this.studySpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class StudyAiplatformV1beta1Args {
 
   factory StudyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return StudyAiplatformV1beta1Args(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      studySpec: pulumi.Output.create<GoogleCloudAiplatformV1beta1StudySpec>(GoogleCloudAiplatformV1beta1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>())),
+      displayName: (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      studySpec: (GoogleCloudAiplatformV1beta1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

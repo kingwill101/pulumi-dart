@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Constraints for Fault Simulation action.
 class FaultSimulationConstraintsResponse {
   /// The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
-  final String? expirationTime;
+  final pulumi.Input<String>? expirationTime;
 
   /// Creates a new [FaultSimulationConstraintsResponse].
   /// [expirationTime] The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
@@ -20,7 +21,7 @@ class FaultSimulationConstraintsResponse {
 
   factory FaultSimulationConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationConstraintsResponse(
-      expirationTime: map['expirationTime'] == null ? null : map['expirationTime'] as String,
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
     );
   }
 }

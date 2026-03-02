@@ -27,17 +27,12 @@ class GuardrailVersionArgs {
   /// [skipDestroy] Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   /// [timeouts] Optional.
   GuardrailVersionArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> guardrailArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<GuardrailVersionTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      guardrailArn = pulumi.Input.asInput<String>(guardrailArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      timeouts = pulumi.Input.asOptionalInput<GuardrailVersionTimeouts>(timeouts);
+    this.description,
+    required this.guardrailArn,
+    this.region,
+    this.skipDestroy,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GuardrailVersionArgs {
 
   factory GuardrailVersionArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      guardrailArn: pulumi.Output.create<String>(map['guardrailArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<GuardrailVersionTimeouts>(GuardrailVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      guardrailArn: (map['guardrailArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (GuardrailVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

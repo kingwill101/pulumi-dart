@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource location data properties.
 class ResourceLocationDataContract {
   /// The city or locality where the resource is located.
-  final String? city;
+  final pulumi.Input<String>? city;
   /// The country or region where the resource is located.
-  final String? countryOrRegion;
+  final pulumi.Input<String>? countryOrRegion;
   /// The district, state, or province where the resource is located.
-  final String? district;
+  final pulumi.Input<String>? district;
   /// A canonical name for the geographic or physical location.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceLocationDataContract].
   /// [city] The city or locality where the resource is located.
@@ -35,10 +36,10 @@ class ResourceLocationDataContract {
 
   factory ResourceLocationDataContract.fromMap(Map<String, dynamic> map) {
     return ResourceLocationDataContract(
-      city: map['city'] == null ? null : map['city'] as String,
-      countryOrRegion: map['countryOrRegion'] == null ? null : map['countryOrRegion'] as String,
-      district: map['district'] == null ? null : map['district'] as String,
-      name: map['name'] as String,
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion'] as String).input(),
+      district: map['district'] == null ? null : (map['district'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

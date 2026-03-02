@@ -18,15 +18,11 @@ class GetManagedFolderArgs {
   /// [ifMetagenerationNotMatch] Optional.
   /// [managedFolder] Required.
   GetManagedFolderArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? ifMetagenerationMatch,
-    pulumi.Output<String>? ifMetagenerationNotMatch,
-    required pulumi.Output<String> managedFolder,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      ifMetagenerationMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationMatch),
-      ifMetagenerationNotMatch = pulumi.Input.asOptionalInput<String>(ifMetagenerationNotMatch),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder);
+    required this.bucket,
+    this.ifMetagenerationMatch,
+    this.ifMetagenerationNotMatch,
+    required this.managedFolder,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetManagedFolderArgs {
 
   factory GetManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationMatch'] as String),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : pulumi.Output.create<String>(map['ifMetagenerationNotMatch'] as String),
-      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
+      bucket: (map['bucket'] as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
+      managedFolder: (map['managedFolder'] as String).input(),
     );
   }
 }

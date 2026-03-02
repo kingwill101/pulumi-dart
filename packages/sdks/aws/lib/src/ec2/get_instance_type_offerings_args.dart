@@ -20,13 +20,10 @@ class GetInstanceTypeOfferingsArgs {
   /// [locationType] Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetInstanceTypeOfferingsArgs({
-    pulumi.Output<List<GetInstanceTypeOfferingsFilter>>? filters,
-    pulumi.Output<String>? locationType,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetInstanceTypeOfferingsFilter>>(filters),
-      locationType = pulumi.Input.asOptionalInput<String>(locationType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.locationType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetInstanceTypeOfferingsArgs {
 
   factory GetInstanceTypeOfferingsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetInstanceTypeOfferingsFilter>>(pulumi.Input.decodeList<GetInstanceTypeOfferingsFilter>(map['filters'], (value) => GetInstanceTypeOfferingsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      locationType: map['locationType'] == null ? null : pulumi.Output.create<String>(map['locationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInstanceTypeOfferingsFilter>(map['filters'], (value) => GetInstanceTypeOfferingsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationType: map['locationType'] == null ? null : (map['locationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

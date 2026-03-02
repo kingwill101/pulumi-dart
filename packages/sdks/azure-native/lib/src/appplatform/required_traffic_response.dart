@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Required inbound or outbound traffic for Azure Spring Apps resource.
 class RequiredTrafficResponse {
   /// The direction of required traffic
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The FQDN list of required traffic
-  final List<String> fqdns;
+  final pulumi.Input<List<String>> fqdns;
   /// The ip list of required traffic
-  final List<String> ips;
+  final pulumi.Input<List<String>> ips;
   /// The port of required traffic
-  final int port;
+  final pulumi.Input<int> port;
   /// The protocol of required traffic
-  final String protocol;
+  final pulumi.Input<String> protocol;
 
   /// Creates a new [RequiredTrafficResponse].
   /// [direction] The direction of required traffic
@@ -40,11 +41,11 @@ class RequiredTrafficResponse {
 
   factory RequiredTrafficResponse.fromMap(Map<String, dynamic> map) {
     return RequiredTrafficResponse(
-      direction: map['direction'] as String,
-      fqdns: (map['fqdns'] as List).cast<String>(),
-      ips: (map['ips'] as List).cast<String>(),
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
+      direction: (map['direction'] as String).input(),
+      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
+      ips: ((map['ips'] as List).cast<String>()).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
     );
   }
 }

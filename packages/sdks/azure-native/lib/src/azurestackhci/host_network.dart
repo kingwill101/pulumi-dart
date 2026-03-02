@@ -7,13 +7,13 @@ import 'storage_networks.dart';
 /// The HostNetwork of a cluster.
 class HostNetwork {
   /// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-  final bool? enableStorageAutoIp;
+  final pulumi.Input<bool>? enableStorageAutoIp;
   /// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-  final List<Intents>? intents;
+  final pulumi.Input<List<Intents>>? intents;
   /// Defines how the storage adapters between nodes are connected either switch or switch less..
-  final bool? storageConnectivitySwitchless;
+  final pulumi.Input<bool>? storageConnectivitySwitchless;
   /// List of StorageNetworks config to deploy AzureStackHCI Cluster.
-  final List<StorageNetworks>? storageNetworks;
+  final pulumi.Input<List<StorageNetworks>>? storageNetworks;
 
   /// Creates a new [HostNetwork].
   /// [enableStorageAutoIp] Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
@@ -30,18 +30,18 @@ class HostNetwork {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableStorageAutoIp': ?enableStorageAutoIp,
-      'intents': ?intents == null ? null : pulumi.Input.encodeList<Intents, Map<String, dynamic>>(intents!, (value) => value.toMap()),
+      'intents': ?pulumi.Input.mapOptionalInputValue<List<Intents>, List<Map<String, dynamic>>>(intents, (value) => pulumi.Input.encodeList<Intents, Map<String, dynamic>>(value, (value) => value.toMap())),
       'storageConnectivitySwitchless': ?storageConnectivitySwitchless,
-      'storageNetworks': ?storageNetworks == null ? null : pulumi.Input.encodeList<StorageNetworks, Map<String, dynamic>>(storageNetworks!, (value) => value.toMap()),
+      'storageNetworks': ?pulumi.Input.mapOptionalInputValue<List<StorageNetworks>, List<Map<String, dynamic>>>(storageNetworks, (value) => pulumi.Input.encodeList<StorageNetworks, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory HostNetwork.fromMap(Map<String, dynamic> map) {
     return HostNetwork(
-      enableStorageAutoIp: map['enableStorageAutoIp'] == null ? null : map['enableStorageAutoIp'] as bool,
-      intents: map['intents'] == null ? null : pulumi.Input.decodeList<Intents>(map['intents'], (value) => Intents.fromMap((value as Map).cast<String, dynamic>())),
-      storageConnectivitySwitchless: map['storageConnectivitySwitchless'] == null ? null : map['storageConnectivitySwitchless'] as bool,
-      storageNetworks: map['storageNetworks'] == null ? null : pulumi.Input.decodeList<StorageNetworks>(map['storageNetworks'], (value) => StorageNetworks.fromMap((value as Map).cast<String, dynamic>())),
+      enableStorageAutoIp: map['enableStorageAutoIp'] == null ? null : (map['enableStorageAutoIp'] as bool).input(),
+      intents: map['intents'] == null ? null : (pulumi.Input.decodeList<Intents>(map['intents'], (value) => Intents.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageConnectivitySwitchless: map['storageConnectivitySwitchless'] == null ? null : (map['storageConnectivitySwitchless'] as bool).input(),
+      storageNetworks: map['storageNetworks'] == null ? null : (pulumi.Input.decodeList<StorageNetworks>(map['storageNetworks'], (value) => StorageNetworks.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

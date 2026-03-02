@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IterationResultResponse {
   /// Time taken to run the iteration in milliseconds.
-  final String durationMs;
+  final pulumi.Input<String> durationMs;
   /// Loss computed on the eval data at the end of iteration.
-  final double evalLoss;
+  final pulumi.Input<double> evalLoss;
   /// Index of the iteration, 0 based.
-  final int index;
+  final pulumi.Input<int> index;
   /// Learn rate used for this iteration.
-  final double learnRate;
+  final pulumi.Input<double> learnRate;
   /// Loss computed on the training data at the end of iteration.
-  final double trainingLoss;
+  final pulumi.Input<double> trainingLoss;
 
   /// Creates a new [IterationResultResponse].
   /// [durationMs] Time taken to run the iteration in milliseconds.
@@ -39,11 +40,11 @@ class IterationResultResponse {
 
   factory IterationResultResponse.fromMap(Map<String, dynamic> map) {
     return IterationResultResponse(
-      durationMs: map['durationMs'] as String,
-      evalLoss: map['evalLoss'] as double,
-      index: map['index'] as int,
-      learnRate: map['learnRate'] as double,
-      trainingLoss: map['trainingLoss'] as double,
+      durationMs: (map['durationMs'] as String).input(),
+      evalLoss: (map['evalLoss'] as double).input(),
+      index: (map['index'] as int).input(),
+      learnRate: (map['learnRate'] as double).input(),
+      trainingLoss: (map['trainingLoss'] as double).input(),
     );
   }
 }

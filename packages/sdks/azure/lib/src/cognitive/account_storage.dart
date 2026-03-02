@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountStorage {
   /// The client ID of the managed identity associated with the storage resource.
   ///
   /// > **Note:** Not all `kind` support a `storage` block. For example the `kind` `OpenAI` does not support it.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// Full resource id of a Microsoft.Storage resource.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
 
   /// Creates a new [AccountStorage].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
@@ -26,8 +27,8 @@ class AccountStorage {
 
   factory AccountStorage.fromMap(Map<String, dynamic> map) {
     return AccountStorage(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      storageAccountId: map['storageAccountId'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sysctl defines a kernel parameter to be set
 class SysctlPatch {
   /// Name of a property to set
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Value of a property to set
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [SysctlPatch].
   /// [name] Name of a property to set
@@ -25,8 +26,8 @@ class SysctlPatch {
 
   factory SysctlPatch.fromMap(Map<String, dynamic> map) {
     return SysctlPatch(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

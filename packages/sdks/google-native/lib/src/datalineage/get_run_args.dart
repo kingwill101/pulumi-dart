@@ -18,15 +18,11 @@ class GetRunArgs {
   /// [project] Optional.
   /// [runId] Required.
   GetRunArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> processId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      processId = pulumi.Input.asInput<String>(processId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId);
+    required this.location,
+    required this.processId,
+    this.project,
+    required this.runId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetRunArgs {
 
   factory GetRunArgs.fromMap(Map<String, dynamic> map) {
     return GetRunArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      processId: pulumi.Output.create<String>(map['processId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runId: pulumi.Output.create<String>(map['runId'] as String),
+      location: (map['location'] as String).input(),
+      processId: (map['processId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runId: (map['runId'] as String).input(),
     );
   }
 }

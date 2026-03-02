@@ -44,29 +44,18 @@ class DatabaseSecurityAlertPolicyArgs {
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   DatabaseSecurityAlertPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<List<String>>? disabledAlerts,
-    pulumi.Output<bool>? emailAccountAdmins,
-    pulumi.Output<List<String>>? emailAddresses,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? securityAlertPolicyName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<SecurityAlertsPolicyState> state,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<String>? storageEndpoint,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      disabledAlerts = pulumi.Input.asOptionalInput<List<String>>(disabledAlerts),
-      emailAccountAdmins = pulumi.Input.asOptionalInput<bool>(emailAccountAdmins),
-      emailAddresses = pulumi.Input.asOptionalInput<List<String>>(emailAddresses),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      securityAlertPolicyName = pulumi.Input.asOptionalInput<String>(securityAlertPolicyName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      state = pulumi.Input.asInput<SecurityAlertsPolicyState>(state),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint);
+    required this.databaseName,
+    this.disabledAlerts,
+    this.emailAccountAdmins,
+    this.emailAddresses,
+    required this.resourceGroupName,
+    this.retentionDays,
+    this.securityAlertPolicyName,
+    required this.serverName,
+    required this.state,
+    this.storageAccountAccessKey,
+    this.storageEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DatabaseSecurityAlertPolicyArgs {
 
   factory DatabaseSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseSecurityAlertPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      disabledAlerts: map['disabledAlerts'] == null ? null : pulumi.Output.create<List<String>>((map['disabledAlerts'] as List).cast<String>()),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : pulumi.Output.create<bool>(map['emailAccountAdmins'] as bool),
-      emailAddresses: map['emailAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['emailAddresses'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : pulumi.Output.create<String>(map['securityAlertPolicyName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      state: pulumi.Output.create<SecurityAlertsPolicyState>(SecurityAlertsPolicyState.fromValue(map['state'] as String)),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins'] as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : (map['securityAlertPolicyName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      state: (SecurityAlertsPolicyState.fromValue(map['state'] as String)).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

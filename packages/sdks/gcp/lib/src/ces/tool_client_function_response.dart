@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolClientFunctionResponse {
   /// Defines the schema for additional properties allowed in an object.
   /// The value must be a valid JSON string representing the Schema object.
   /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
-  final String? additionalProperties;
+  final pulumi.Input<String>? additionalProperties;
   /// The instance value should be valid against at least one of the schemas in this list.
-  final String? anyOf;
+  final pulumi.Input<String>? anyOf;
   /// Default value of the data. Represents a dynamically typed value
   /// which can be either null, a number, a string, a boolean, a struct,
   /// or a list of values. The provided default value must be compatible
   /// with the defined 'type' and other schema constraints.
-  final String? default_;
+  final pulumi.Input<String>? default_;
   /// A map of definitions for use by ref. Only allowed at the root of the schema.
-  final String? defs;
+  final pulumi.Input<String>? defs;
   /// The description of the data.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Possible values of the element of primitive type with enum format.
   /// Examples:
   /// 1. We can define direction as :
   /// {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
   /// 2. We can define apartment number as :
   /// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
-  final List<String>? enums;
+  final pulumi.Input<List<String>>? enums;
   /// Schema of the elements of Type.ARRAY.
-  final String? items;
+  final pulumi.Input<String>? items;
   /// Maximum number of the elements for Type.ARRAY. (int64 format)
-  final int? maxItems;
+  final pulumi.Input<int>? maxItems;
   /// Maximum value for Type.INTEGER and Type.NUMBER.
-  final double? maximum;
+  final pulumi.Input<double>? maximum;
   /// Minimum number of the elements for Type.ARRAY. (int64 format)
-  final int? minItems;
+  final pulumi.Input<int>? minItems;
   /// Minimum value for Type.INTEGER and Type.NUMBER.
-  final double? minimum;
+  final pulumi.Input<double>? minimum;
   /// Indicates if the value may be null.
-  final bool? nullable;
+  final pulumi.Input<bool>? nullable;
   /// Schemas of initial elements of Type.ARRAY.
-  final String? prefixItems;
+  final pulumi.Input<String>? prefixItems;
   /// Properties of Type.OBJECT.
-  final String? properties;
+  final pulumi.Input<String>? properties;
   /// Allows indirect references between schema nodes. The value should be a
   /// valid reference to a child of the root `defs`.
   /// For example, the following schema defines a reference to a schema node
@@ -58,11 +59,11 @@ class ToolClientFunctionResponse {
   /// named "Pet".
   /// See details in
   /// https://json-schema.org/understanding-json-schema/structuring.
-  final String? ref;
+  final pulumi.Input<String>? ref;
   /// Required properties of Type.OBJECT.
-  final List<String>? requireds;
+  final pulumi.Input<List<String>>? requireds;
   /// The title of the schema.
-  final String? title;
+  final pulumi.Input<String>? title;
   /// The type of the data.
   /// Possible values:
   /// STRING
@@ -71,9 +72,9 @@ class ToolClientFunctionResponse {
   /// BOOLEAN
   /// OBJECT
   /// ARRAY
-  final String type;
+  final pulumi.Input<String> type;
   /// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
-  final bool? uniqueItems;
+  final pulumi.Input<bool>? uniqueItems;
 
   /// Creates a new [ToolClientFunctionResponse].
   /// [additionalProperties] Defines the schema for additional properties allowed in an object.
@@ -143,25 +144,25 @@ class ToolClientFunctionResponse {
 
   factory ToolClientFunctionResponse.fromMap(Map<String, dynamic> map) {
     return ToolClientFunctionResponse(
-      additionalProperties: map['additionalProperties'] == null ? null : map['additionalProperties'] as String,
-      anyOf: map['anyOf'] == null ? null : map['anyOf'] as String,
-      default_: map['default'] == null ? null : map['default'] as String,
-      defs: map['defs'] == null ? null : map['defs'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enums: map['enums'] == null ? null : (map['enums'] as List).cast<String>(),
-      items: map['items'] == null ? null : map['items'] as String,
-      maxItems: map['maxItems'] == null ? null : map['maxItems'] as int,
-      maximum: map['maximum'] == null ? null : map['maximum'] as double,
-      minItems: map['minItems'] == null ? null : map['minItems'] as int,
-      minimum: map['minimum'] == null ? null : map['minimum'] as double,
-      nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      prefixItems: map['prefixItems'] == null ? null : map['prefixItems'] as String,
-      properties: map['properties'] == null ? null : map['properties'] as String,
-      ref: map['ref'] == null ? null : map['ref'] as String,
-      requireds: map['requireds'] == null ? null : (map['requireds'] as List).cast<String>(),
-      title: map['title'] == null ? null : map['title'] as String,
-      type: map['type'] as String,
-      uniqueItems: map['uniqueItems'] == null ? null : map['uniqueItems'] as bool,
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties'] as String).input(),
+      anyOf: map['anyOf'] == null ? null : (map['anyOf'] as String).input(),
+      default_: map['default'] == null ? null : (map['default'] as String).input(),
+      defs: map['defs'] == null ? null : (map['defs'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enums: map['enums'] == null ? null : ((map['enums'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : (map['items'] as String).input(),
+      maxItems: map['maxItems'] == null ? null : (map['maxItems'] as int).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum'] as double).input(),
+      minItems: map['minItems'] == null ? null : (map['minItems'] as int).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum'] as double).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
+      prefixItems: map['prefixItems'] == null ? null : (map['prefixItems'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
+      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
+      requireds: map['requireds'] == null ? null : ((map['requireds'] as List).cast<String>()).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      type: (map['type'] as String).input(),
+      uniqueItems: map['uniqueItems'] == null ? null : (map['uniqueItems'] as bool).input(),
     );
   }
 }

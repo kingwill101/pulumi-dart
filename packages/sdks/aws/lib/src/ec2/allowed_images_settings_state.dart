@@ -17,13 +17,10 @@ class AllowedImagesSettingsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   AllowedImagesSettingsState({
-    pulumi.Output<List<AllowedImagesSettingsImageCriterion>>? imageCriterions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-  }) :
-      imageCriterions = pulumi.Input.asOptionalInput<List<AllowedImagesSettingsImageCriterion>>(imageCriterions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.imageCriterions,
+    this.region,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class AllowedImagesSettingsState {
 
   factory AllowedImagesSettingsState.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsState(
-      imageCriterions: map['imageCriterions'] == null ? null : pulumi.Output.create<List<AllowedImagesSettingsImageCriterion>>(pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(map['imageCriterions'], (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      imageCriterions: map['imageCriterions'] == null ? null : (pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(map['imageCriterions'], (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class AccessPointPolicyArgs {
   /// [policy] The policy that you want to apply to the specified access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AccessPointPolicyArgs({
-    required pulumi.Output<String> accessPointArn,
-    required pulumi.Output<String> policy,
-    pulumi.Output<String>? region,
-  }) :
-      accessPointArn = pulumi.Input.asInput<String>(accessPointArn),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.accessPointArn,
+    required this.policy,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class AccessPointPolicyArgs {
 
   factory AccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointPolicyArgs(
-      accessPointArn: pulumi.Output.create<String>(map['accessPointArn'] as String),
-      policy: pulumi.Output.create<String>(map['policy'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      accessPointArn: (map['accessPointArn'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

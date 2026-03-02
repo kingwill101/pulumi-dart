@@ -28,17 +28,12 @@ class SharedflowDeploymentArgs {
   /// [serviceAccount] The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   /// [sharedflowId] Id of the Sharedflow to be deployed.
   SharedflowDeploymentArgs({
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> revision,
-    pulumi.Output<String>? serviceAccount,
-    required pulumi.Output<String> sharedflowId,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      revision = pulumi.Input.asInput<String>(revision),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sharedflowId = pulumi.Input.asInput<String>(sharedflowId);
+    required this.environment,
+    required this.orgId,
+    required this.revision,
+    this.serviceAccount,
+    required this.sharedflowId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class SharedflowDeploymentArgs {
 
   factory SharedflowDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowDeploymentArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      revision: pulumi.Output.create<String>(map['revision'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sharedflowId: pulumi.Output.create<String>(map['sharedflowId'] as String),
+      environment: (map['environment'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      revision: (map['revision'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sharedflowId: (map['sharedflowId'] as String).input(),
     );
   }
 }

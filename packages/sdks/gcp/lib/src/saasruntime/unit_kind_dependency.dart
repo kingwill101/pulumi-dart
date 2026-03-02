@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UnitKindDependency {
   /// An alias for the dependency. Used for input variable mapping.
-  final String alias;
+  final pulumi.Input<String> alias;
   /// The unit kind of the dependency.
-  final String unitKind;
+  final pulumi.Input<String> unitKind;
 
   /// Creates a new [UnitKindDependency].
   /// [alias] An alias for the dependency. Used for input variable mapping.
@@ -24,8 +25,8 @@ class UnitKindDependency {
 
   factory UnitKindDependency.fromMap(Map<String, dynamic> map) {
     return UnitKindDependency(
-      alias: map['alias'] as String,
-      unitKind: map['unitKind'] as String,
+      alias: (map['alias'] as String).input(),
+      unitKind: (map['unitKind'] as String).input(),
     );
   }
 }

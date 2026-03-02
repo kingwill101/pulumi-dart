@@ -19,13 +19,10 @@ class GetJobArgs {
   /// [jobName] The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   /// [resourceGroupName] The Resource Group Name
   GetJobArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.jobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetJobArgs {
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
     return GetJobArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

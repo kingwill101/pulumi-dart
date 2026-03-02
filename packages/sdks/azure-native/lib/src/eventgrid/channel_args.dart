@@ -39,25 +39,16 @@ class ChannelArgs {
   /// [readinessState] The readiness state of the corresponding partner topic.
   /// [resourceGroupName] The name of the resource group within the partners subscription.
   ChannelArgs({
-    pulumi.Output<String>? channelName,
-    pulumi.Output<String>? channelType,
-    pulumi.Output<String>? expirationTimeIfNotActivatedUtc,
-    pulumi.Output<String>? messageForActivation,
-    required pulumi.Output<String> partnerNamespaceName,
-    pulumi.Output<PartnerTopicInfo>? partnerTopicInfo,
-    pulumi.Output<String>? provisioningState,
-    pulumi.Output<String>? readinessState,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      channelName = pulumi.Input.asOptionalInput<String>(channelName),
-      channelType = pulumi.Input.asOptionalInput<String>(channelType),
-      expirationTimeIfNotActivatedUtc = pulumi.Input.asOptionalInput<String>(expirationTimeIfNotActivatedUtc),
-      messageForActivation = pulumi.Input.asOptionalInput<String>(messageForActivation),
-      partnerNamespaceName = pulumi.Input.asInput<String>(partnerNamespaceName),
-      partnerTopicInfo = pulumi.Input.asOptionalInput<PartnerTopicInfo>(partnerTopicInfo),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      readinessState = pulumi.Input.asOptionalInput<String>(readinessState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.channelName,
+    this.channelType,
+    this.expirationTimeIfNotActivatedUtc,
+    this.messageForActivation,
+    required this.partnerNamespaceName,
+    this.partnerTopicInfo,
+    this.provisioningState,
+    this.readinessState,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      channelName: map['channelName'] == null ? null : pulumi.Output.create<String>(map['channelName'] as String),
-      channelType: map['channelType'] == null ? null : pulumi.Output.create<String>(map['channelType'] as String),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : pulumi.Output.create<String>(map['expirationTimeIfNotActivatedUtc'] as String),
-      messageForActivation: map['messageForActivation'] == null ? null : pulumi.Output.create<String>(map['messageForActivation'] as String),
-      partnerNamespaceName: pulumi.Output.create<String>(map['partnerNamespaceName'] as String),
-      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : pulumi.Output.create<PartnerTopicInfo>(PartnerTopicInfo.fromMap((map['partnerTopicInfo'] as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      readinessState: map['readinessState'] == null ? null : pulumi.Output.create<String>(map['readinessState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
+      partnerNamespaceName: (map['partnerNamespaceName'] as String).input(),
+      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : (PartnerTopicInfo.fromMap((map['partnerTopicInfo'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      readinessState: map['readinessState'] == null ? null : (map['readinessState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

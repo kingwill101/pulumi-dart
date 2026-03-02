@@ -29,19 +29,13 @@ class TokenArgs {
   /// [status] The status of the token example enabled or disabled.
   /// [tokenName] The name of the token.
   TokenArgs({
-    pulumi.Output<TokenCredentialsProperties>? credentials,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scopeMapId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tokenName,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<TokenCredentialsProperties>(credentials),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeMapId = pulumi.Input.asOptionalInput<String>(scopeMapId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tokenName = pulumi.Input.asOptionalInput<String>(tokenName);
+    this.credentials,
+    required this.registryName,
+    required this.resourceGroupName,
+    this.scopeMapId,
+    this.status,
+    this.tokenName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<TokenCredentialsProperties>(TokenCredentialsProperties.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeMapId: map['scopeMapId'] == null ? null : pulumi.Output.create<String>(map['scopeMapId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tokenName: map['tokenName'] == null ? null : pulumi.Output.create<String>(map['tokenName'] as String),
+      credentials: map['credentials'] == null ? null : (TokenCredentialsProperties.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeMapId: map['scopeMapId'] == null ? null : (map['scopeMapId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tokenName: map['tokenName'] == null ? null : (map['tokenName'] as String).input(),
     );
   }
 }

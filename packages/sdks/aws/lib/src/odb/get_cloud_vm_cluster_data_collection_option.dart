@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudVmClusterDataCollectionOption {
-  final bool isDiagnosticsEventsEnabled;
-  final bool isHealthMonitoringEnabled;
-  final bool isIncidentLogsEnabled;
+  final pulumi.Input<bool> isDiagnosticsEventsEnabled;
+  final pulumi.Input<bool> isHealthMonitoringEnabled;
+  final pulumi.Input<bool> isIncidentLogsEnabled;
 
   /// Creates a new [GetCloudVmClusterDataCollectionOption].
   /// [isDiagnosticsEventsEnabled] Required.
@@ -26,9 +27,9 @@ class GetCloudVmClusterDataCollectionOption {
 
   factory GetCloudVmClusterDataCollectionOption.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterDataCollectionOption(
-      isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] as bool,
-      isHealthMonitoringEnabled: map['isHealthMonitoringEnabled'] as bool,
-      isIncidentLogsEnabled: map['isIncidentLogsEnabled'] as bool,
+      isDiagnosticsEventsEnabled: (map['isDiagnosticsEventsEnabled'] as bool).input(),
+      isHealthMonitoringEnabled: (map['isHealthMonitoringEnabled'] as bool).input(),
+      isIncidentLogsEnabled: (map['isIncidentLogsEnabled'] as bool).input(),
     );
   }
 }

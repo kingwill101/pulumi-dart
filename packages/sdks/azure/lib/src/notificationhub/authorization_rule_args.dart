@@ -33,21 +33,14 @@ class AuthorizationRuleArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   /// [send] Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
   AuthorizationRuleArgs({
-    pulumi.Output<bool>? listen,
-    pulumi.Output<bool>? manage,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> notificationHubName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? send,
-  }) :
-      listen = pulumi.Input.asOptionalInput<bool>(listen),
-      manage = pulumi.Input.asOptionalInput<bool>(manage),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      notificationHubName = pulumi.Input.asInput<String>(notificationHubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      send = pulumi.Input.asOptionalInput<bool>(send);
+    this.listen,
+    this.manage,
+    this.name,
+    required this.namespaceName,
+    required this.notificationHubName,
+    required this.resourceGroupName,
+    this.send,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AuthorizationRuleArgs {
 
   factory AuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : pulumi.Output.create<bool>(map['listen'] as bool),
-      manage: map['manage'] == null ? null : pulumi.Output.create<bool>(map['manage'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      notificationHubName: pulumi.Output.create<String>(map['notificationHubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      send: map['send'] == null ? null : pulumi.Output.create<bool>(map['send'] as bool),
+      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      notificationHubName: (map['notificationHubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      send: map['send'] == null ? null : (map['send'] as bool).input(),
     );
   }
 }

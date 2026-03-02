@@ -25,19 +25,13 @@ class AuthorizationRuleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetNetworkCidr] The IPv4 or IPv6 address range, in CIDR notation, of the network to which the authorization rule applies.
   AuthorizationRuleState({
-    pulumi.Output<String>? accessGroupId,
-    pulumi.Output<bool>? authorizeAllGroups,
-    pulumi.Output<String>? clientVpnEndpointId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetNetworkCidr,
-  }) :
-      accessGroupId = pulumi.Input.asOptionalInput<String>(accessGroupId),
-      authorizeAllGroups = pulumi.Input.asOptionalInput<bool>(authorizeAllGroups),
-      clientVpnEndpointId = pulumi.Input.asOptionalInput<String>(clientVpnEndpointId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetNetworkCidr = pulumi.Input.asOptionalInput<String>(targetNetworkCidr);
+    this.accessGroupId,
+    this.authorizeAllGroups,
+    this.clientVpnEndpointId,
+    this.description,
+    this.region,
+    this.targetNetworkCidr,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AuthorizationRuleState {
 
   factory AuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleState(
-      accessGroupId: map['accessGroupId'] == null ? null : pulumi.Output.create<String>(map['accessGroupId'] as String),
-      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : pulumi.Output.create<bool>(map['authorizeAllGroups'] as bool),
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : pulumi.Output.create<String>(map['clientVpnEndpointId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetNetworkCidr: map['targetNetworkCidr'] == null ? null : pulumi.Output.create<String>(map['targetNetworkCidr'] as String),
+      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
+      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : (map['authorizeAllGroups'] as bool).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetNetworkCidr: map['targetNetworkCidr'] == null ? null : (map['targetNetworkCidr'] as String).input(),
     );
   }
 }

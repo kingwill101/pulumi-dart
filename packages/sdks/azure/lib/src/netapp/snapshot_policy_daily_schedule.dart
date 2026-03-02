@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SnapshotPolicyDailySchedule {
   /// Hour of the day that the snapshots will be created, valid range is from 0 to 23.
-  final int hour;
+  final pulumi.Input<int> hour;
   /// Minute of the hour that the snapshots will be created, valid range is from 0 to 59.
-  final int minute;
+  final pulumi.Input<int> minute;
   /// How many hourly snapshots to keep, valid range is from 0 to 255.
-  final int snapshotsToKeep;
+  final pulumi.Input<int> snapshotsToKeep;
 
   /// Creates a new [SnapshotPolicyDailySchedule].
   /// [hour] Hour of the day that the snapshots will be created, valid range is from 0 to 23.
@@ -29,9 +30,9 @@ class SnapshotPolicyDailySchedule {
 
   factory SnapshotPolicyDailySchedule.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyDailySchedule(
-      hour: map['hour'] as int,
-      minute: map['minute'] as int,
-      snapshotsToKeep: map['snapshotsToKeep'] as int,
+      hour: (map['hour'] as int).input(),
+      minute: (map['minute'] as int).input(),
+      snapshotsToKeep: (map['snapshotsToKeep'] as int).input(),
     );
   }
 }

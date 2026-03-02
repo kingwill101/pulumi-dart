@@ -82,35 +82,21 @@ class SecurityPreferenceArgs {
   /// [operationForRiskLogin] Whether MFA is verified twice during abnormal logon. Value:
   /// [verificationTypes] Means of multi-factor authentication. Value:
   SecurityPreferenceArgs({
-    pulumi.Output<bool>? allowUserToChangePassword,
-    pulumi.Output<bool>? allowUserToLoginWithPasskey,
-    pulumi.Output<bool>? allowUserToManageAccessKeys,
-    pulumi.Output<bool>? allowUserToManageMfaDevices,
-    pulumi.Output<bool>? allowUserToManagePersonalDingTalk,
-    pulumi.Output<bool>? enableSaveMfaTicket,
-    pulumi.Output<bool>? enforceMfaForLogin,
-    pulumi.Output<String>? loginNetworkMasks,
-    pulumi.Output<int>? loginSessionDuration,
-    pulumi.Output<int>? maxIdleDaysForAccessKeys,
-    pulumi.Output<int>? maxIdleDaysForUsers,
-    pulumi.Output<String>? mfaOperationForLogin,
-    pulumi.Output<String>? operationForRiskLogin,
-    pulumi.Output<List<String>>? verificationTypes,
-  }) :
-      allowUserToChangePassword = pulumi.Input.asOptionalInput<bool>(allowUserToChangePassword),
-      allowUserToLoginWithPasskey = pulumi.Input.asOptionalInput<bool>(allowUserToLoginWithPasskey),
-      allowUserToManageAccessKeys = pulumi.Input.asOptionalInput<bool>(allowUserToManageAccessKeys),
-      allowUserToManageMfaDevices = pulumi.Input.asOptionalInput<bool>(allowUserToManageMfaDevices),
-      allowUserToManagePersonalDingTalk = pulumi.Input.asOptionalInput<bool>(allowUserToManagePersonalDingTalk),
-      enableSaveMfaTicket = pulumi.Input.asOptionalInput<bool>(enableSaveMfaTicket),
-      enforceMfaForLogin = pulumi.Input.asOptionalInput<bool>(enforceMfaForLogin),
-      loginNetworkMasks = pulumi.Input.asOptionalInput<String>(loginNetworkMasks),
-      loginSessionDuration = pulumi.Input.asOptionalInput<int>(loginSessionDuration),
-      maxIdleDaysForAccessKeys = pulumi.Input.asOptionalInput<int>(maxIdleDaysForAccessKeys),
-      maxIdleDaysForUsers = pulumi.Input.asOptionalInput<int>(maxIdleDaysForUsers),
-      mfaOperationForLogin = pulumi.Input.asOptionalInput<String>(mfaOperationForLogin),
-      operationForRiskLogin = pulumi.Input.asOptionalInput<String>(operationForRiskLogin),
-      verificationTypes = pulumi.Input.asOptionalInput<List<String>>(verificationTypes);
+    this.allowUserToChangePassword,
+    this.allowUserToLoginWithPasskey,
+    this.allowUserToManageAccessKeys,
+    this.allowUserToManageMfaDevices,
+    this.allowUserToManagePersonalDingTalk,
+    this.enableSaveMfaTicket,
+    this.enforceMfaForLogin,
+    this.loginNetworkMasks,
+    this.loginSessionDuration,
+    this.maxIdleDaysForAccessKeys,
+    this.maxIdleDaysForUsers,
+    this.mfaOperationForLogin,
+    this.operationForRiskLogin,
+    this.verificationTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -133,20 +119,20 @@ class SecurityPreferenceArgs {
 
   factory SecurityPreferenceArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPreferenceArgs(
-      allowUserToChangePassword: map['allowUserToChangePassword'] == null ? null : pulumi.Output.create<bool>(map['allowUserToChangePassword'] as bool),
-      allowUserToLoginWithPasskey: map['allowUserToLoginWithPasskey'] == null ? null : pulumi.Output.create<bool>(map['allowUserToLoginWithPasskey'] as bool),
-      allowUserToManageAccessKeys: map['allowUserToManageAccessKeys'] == null ? null : pulumi.Output.create<bool>(map['allowUserToManageAccessKeys'] as bool),
-      allowUserToManageMfaDevices: map['allowUserToManageMfaDevices'] == null ? null : pulumi.Output.create<bool>(map['allowUserToManageMfaDevices'] as bool),
-      allowUserToManagePersonalDingTalk: map['allowUserToManagePersonalDingTalk'] == null ? null : pulumi.Output.create<bool>(map['allowUserToManagePersonalDingTalk'] as bool),
-      enableSaveMfaTicket: map['enableSaveMfaTicket'] == null ? null : pulumi.Output.create<bool>(map['enableSaveMfaTicket'] as bool),
-      enforceMfaForLogin: map['enforceMfaForLogin'] == null ? null : pulumi.Output.create<bool>(map['enforceMfaForLogin'] as bool),
-      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : pulumi.Output.create<String>(map['loginNetworkMasks'] as String),
-      loginSessionDuration: map['loginSessionDuration'] == null ? null : pulumi.Output.create<int>(map['loginSessionDuration'] as int),
-      maxIdleDaysForAccessKeys: map['maxIdleDaysForAccessKeys'] == null ? null : pulumi.Output.create<int>(map['maxIdleDaysForAccessKeys'] as int),
-      maxIdleDaysForUsers: map['maxIdleDaysForUsers'] == null ? null : pulumi.Output.create<int>(map['maxIdleDaysForUsers'] as int),
-      mfaOperationForLogin: map['mfaOperationForLogin'] == null ? null : pulumi.Output.create<String>(map['mfaOperationForLogin'] as String),
-      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : pulumi.Output.create<String>(map['operationForRiskLogin'] as String),
-      verificationTypes: map['verificationTypes'] == null ? null : pulumi.Output.create<List<String>>((map['verificationTypes'] as List).cast<String>()),
+      allowUserToChangePassword: map['allowUserToChangePassword'] == null ? null : (map['allowUserToChangePassword'] as bool).input(),
+      allowUserToLoginWithPasskey: map['allowUserToLoginWithPasskey'] == null ? null : (map['allowUserToLoginWithPasskey'] as bool).input(),
+      allowUserToManageAccessKeys: map['allowUserToManageAccessKeys'] == null ? null : (map['allowUserToManageAccessKeys'] as bool).input(),
+      allowUserToManageMfaDevices: map['allowUserToManageMfaDevices'] == null ? null : (map['allowUserToManageMfaDevices'] as bool).input(),
+      allowUserToManagePersonalDingTalk: map['allowUserToManagePersonalDingTalk'] == null ? null : (map['allowUserToManagePersonalDingTalk'] as bool).input(),
+      enableSaveMfaTicket: map['enableSaveMfaTicket'] == null ? null : (map['enableSaveMfaTicket'] as bool).input(),
+      enforceMfaForLogin: map['enforceMfaForLogin'] == null ? null : (map['enforceMfaForLogin'] as bool).input(),
+      loginNetworkMasks: map['loginNetworkMasks'] == null ? null : (map['loginNetworkMasks'] as String).input(),
+      loginSessionDuration: map['loginSessionDuration'] == null ? null : (map['loginSessionDuration'] as int).input(),
+      maxIdleDaysForAccessKeys: map['maxIdleDaysForAccessKeys'] == null ? null : (map['maxIdleDaysForAccessKeys'] as int).input(),
+      maxIdleDaysForUsers: map['maxIdleDaysForUsers'] == null ? null : (map['maxIdleDaysForUsers'] as int).input(),
+      mfaOperationForLogin: map['mfaOperationForLogin'] == null ? null : (map['mfaOperationForLogin'] as String).input(),
+      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin'] as String).input(),
+      verificationTypes: map['verificationTypes'] == null ? null : ((map['verificationTypes'] as List).cast<String>()).input(),
     );
   }
 }

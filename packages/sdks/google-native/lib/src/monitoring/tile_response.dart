@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_response.dart';
 
 /// A single tile in the mosaic. The placement and size of the tile are configurable.
 class TileResponse {
   /// The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
-  final int height;
+  final pulumi.Input<int> height;
   /// The informational widget contained in the tile. For example an XyChart.
-  final WidgetResponse widget;
+  final pulumi.Input<WidgetResponse> widget;
   /// The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
-  final int width;
+  final pulumi.Input<int> width;
   /// The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative.
-  final int xPos;
+  final pulumi.Input<int> xPos;
   /// The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative.
-  final int yPos;
+  final pulumi.Input<int> yPos;
 
   /// Creates a new [TileResponse].
   /// [height] The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
@@ -32,7 +33,7 @@ class TileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'height': height,
-      'widget': widget.toMap(),
+      'widget': pulumi.Input.mapInputValue<WidgetResponse, Map<String, dynamic>>(widget, (value) => value.toMap()),
       'width': width,
       'xPos': xPos,
       'yPos': yPos,
@@ -41,11 +42,11 @@ class TileResponse {
 
   factory TileResponse.fromMap(Map<String, dynamic> map) {
     return TileResponse(
-      height: map['height'] as int,
-      widget: WidgetResponse.fromMap((map['widget'] as Map).cast<String, dynamic>()),
-      width: map['width'] as int,
-      xPos: map['xPos'] as int,
-      yPos: map['yPos'] as int,
+      height: (map['height'] as int).input(),
+      widget: (WidgetResponse.fromMap((map['widget'] as Map).cast<String, dynamic>())).input(),
+      width: (map['width'] as int).input(),
+      xPos: (map['xPos'] as int).input(),
+      yPos: (map['yPos'] as int).input(),
     );
   }
 }

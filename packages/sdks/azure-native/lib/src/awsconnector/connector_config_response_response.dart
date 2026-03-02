@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ConnectorConfigResponse
 class ConnectorConfigResponseResponse {
   /// <p>A unique code associated with the cluster for registration purposes.</p>
-  final String? activationCode;
+  final pulumi.Input<String>? activationCode;
   /// <p>The expiration time of the connected cluster. The cluster's YAML file must be applied through the native provider.</p>
-  final String? activationExpiry;
+  final pulumi.Input<String>? activationExpiry;
   /// <p>A unique ID associated with the cluster for registration purposes.</p>
-  final String? activationId;
+  final pulumi.Input<String>? activationId;
   /// <p>The cluster's cloud service provider.</p>
-  final String? provider;
+  final pulumi.Input<String>? provider;
   /// <p>The Amazon Resource Name (ARN) of the role to communicate with services from the connected Kubernetes cluster.</p>
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   /// Creates a new [ConnectorConfigResponseResponse].
   /// [activationCode] <p>A unique code associated with the cluster for registration purposes.</p>
@@ -40,11 +41,11 @@ class ConnectorConfigResponseResponse {
 
   factory ConnectorConfigResponseResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorConfigResponseResponse(
-      activationCode: map['activationCode'] == null ? null : map['activationCode'] as String,
-      activationExpiry: map['activationExpiry'] == null ? null : map['activationExpiry'] as String,
-      activationId: map['activationId'] == null ? null : map['activationId'] as String,
-      provider: map['provider'] == null ? null : map['provider'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
+      activationCode: map['activationCode'] == null ? null : (map['activationCode'] as String).input(),
+      activationExpiry: map['activationExpiry'] == null ? null : (map['activationExpiry'] as String).input(),
+      activationId: map['activationId'] == null ? null : (map['activationId'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

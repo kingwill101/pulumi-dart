@@ -29,19 +29,13 @@ class PublicCloudConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   PublicCloudConnectorArgs({
-    required pulumi.Output<AwsCloudProfile> awsCloudProfile,
-    required pulumi.Output<String> hostType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? publicCloudConnector,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      awsCloudProfile = pulumi.Input.asInput<AwsCloudProfile>(awsCloudProfile),
-      hostType = pulumi.Input.asInput<String>(hostType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      publicCloudConnector = pulumi.Input.asOptionalInput<String>(publicCloudConnector),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.awsCloudProfile,
+    required this.hostType,
+    this.location,
+    this.publicCloudConnector,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class PublicCloudConnectorArgs {
 
   factory PublicCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return PublicCloudConnectorArgs(
-      awsCloudProfile: pulumi.Output.create<AwsCloudProfile>(AwsCloudProfile.fromMap((map['awsCloudProfile'] as Map).cast<String, dynamic>())),
-      hostType: pulumi.Output.create<String>(map['hostType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      publicCloudConnector: map['publicCloudConnector'] == null ? null : pulumi.Output.create<String>(map['publicCloudConnector'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      awsCloudProfile: (AwsCloudProfile.fromMap((map['awsCloudProfile'] as Map).cast<String, dynamic>())).input(),
+      hostType: (map['hostType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      publicCloudConnector: map['publicCloudConnector'] == null ? null : (map['publicCloudConnector'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

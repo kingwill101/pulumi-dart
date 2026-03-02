@@ -24,17 +24,12 @@ class GetFloatingIpArgs {
   /// [selector] Optional.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   GetFloatingIpArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selector,
-    pulumi.Output<String>? withSelector,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selector = pulumi.Input.asOptionalInput<String>(selector),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.id,
+    this.ipAddress,
+    this.name,
+    this.selector,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selector: map['selector'] == null ? null : pulumi.Output.create<String>(map['selector'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

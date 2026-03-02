@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsTag {
   /// A count of the database clusters that the tag is applied to.
-  final int databasesCount;
+  final pulumi.Input<int> databasesCount;
   /// A count of the Droplets the tag is applied to.
-  final int dropletsCount;
+  final pulumi.Input<int> dropletsCount;
   /// A count of the images that the tag is applied to.
-  final int imagesCount;
+  final pulumi.Input<int> imagesCount;
   /// The name of the tag.
-  final String name;
+  final pulumi.Input<String> name;
   /// A count of the total number of resources that the tag is applied to.
-  final int totalResourceCount;
+  final pulumi.Input<int> totalResourceCount;
   /// A count of the volume snapshots that the tag is applied to.
-  final int volumeSnapshotsCount;
+  final pulumi.Input<int> volumeSnapshotsCount;
   /// A count of the volumes that the tag is applied to.
-  final int volumesCount;
+  final pulumi.Input<int> volumesCount;
 
   /// Creates a new [GetTagsTag].
   /// [databasesCount] A count of the database clusters that the tag is applied to.
@@ -49,13 +50,13 @@ class GetTagsTag {
 
   factory GetTagsTag.fromMap(Map<String, dynamic> map) {
     return GetTagsTag(
-      databasesCount: map['databasesCount'] as int,
-      dropletsCount: map['dropletsCount'] as int,
-      imagesCount: map['imagesCount'] as int,
-      name: map['name'] as String,
-      totalResourceCount: map['totalResourceCount'] as int,
-      volumeSnapshotsCount: map['volumeSnapshotsCount'] as int,
-      volumesCount: map['volumesCount'] as int,
+      databasesCount: (map['databasesCount'] as int).input(),
+      dropletsCount: (map['dropletsCount'] as int).input(),
+      imagesCount: (map['imagesCount'] as int).input(),
+      name: (map['name'] as String).input(),
+      totalResourceCount: (map['totalResourceCount'] as int).input(),
+      volumeSnapshotsCount: (map['volumeSnapshotsCount'] as int).input(),
+      volumesCount: (map['volumesCount'] as int).input(),
     );
   }
 }

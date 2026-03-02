@@ -41,27 +41,17 @@ class QueueArgs {
   /// [status] Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
   /// [tags] Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   QueueArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> hoursOfOperationId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? maxContacts,
-    pulumi.Output<String>? name,
-    pulumi.Output<QueueOutboundCallerConfig>? outboundCallerConfig,
-    pulumi.Output<List<String>>? quickConnectIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hoursOfOperationId = pulumi.Input.asInput<String>(hoursOfOperationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      maxContacts = pulumi.Input.asOptionalInput<int>(maxContacts),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outboundCallerConfig = pulumi.Input.asOptionalInput<QueueOutboundCallerConfig>(outboundCallerConfig),
-      quickConnectIds = pulumi.Input.asOptionalInput<List<String>>(quickConnectIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.hoursOfOperationId,
+    required this.instanceId,
+    this.maxContacts,
+    this.name,
+    this.outboundCallerConfig,
+    this.quickConnectIds,
+    this.region,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hoursOfOperationId: pulumi.Output.create<String>(map['hoursOfOperationId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      maxContacts: map['maxContacts'] == null ? null : pulumi.Output.create<int>(map['maxContacts'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : pulumi.Output.create<QueueOutboundCallerConfig>(QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig'] as Map).cast<String, dynamic>())),
-      quickConnectIds: map['quickConnectIds'] == null ? null : pulumi.Output.create<List<String>>((map['quickConnectIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hoursOfOperationId: (map['hoursOfOperationId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      maxContacts: map['maxContacts'] == null ? null : (map['maxContacts'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : (QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig'] as Map).cast<String, dynamic>())).input(),
+      quickConnectIds: map['quickConnectIds'] == null ? null : ((map['quickConnectIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

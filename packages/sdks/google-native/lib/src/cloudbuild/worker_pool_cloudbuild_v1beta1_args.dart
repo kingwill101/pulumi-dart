@@ -31,21 +31,14 @@ class WorkerPoolCloudbuildV1beta1Args {
   /// [workerConfig] Worker configuration for the `WorkerPool`.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
   WorkerPoolCloudbuildV1beta1Args({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<NetworkConfigCloudbuildV1beta1>? networkConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<WorkerConfigCloudbuildV1beta1>? workerConfig,
-    required pulumi.Output<String> workerPoolId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkConfig = pulumi.Input.asOptionalInput<NetworkConfigCloudbuildV1beta1>(networkConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerConfig = pulumi.Input.asOptionalInput<WorkerConfigCloudbuildV1beta1>(workerConfig),
-      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+    this.annotations,
+    this.displayName,
+    this.location,
+    this.networkConfig,
+    this.project,
+    this.workerConfig,
+    required this.workerPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class WorkerPoolCloudbuildV1beta1Args {
 
   factory WorkerPoolCloudbuildV1beta1Args.fromMap(Map<String, dynamic> map) {
     return WorkerPoolCloudbuildV1beta1Args(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkConfig: map['networkConfig'] == null ? null : pulumi.Output.create<NetworkConfigCloudbuildV1beta1>(NetworkConfigCloudbuildV1beta1.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workerConfig: map['workerConfig'] == null ? null : pulumi.Output.create<WorkerConfigCloudbuildV1beta1>(WorkerConfigCloudbuildV1beta1.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())),
-      workerPoolId: pulumi.Output.create<String>(map['workerPoolId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfigCloudbuildV1beta1.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerConfigCloudbuildV1beta1.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GroupMemberArgs {
   /// [groupObjectId] The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   GroupMemberArgs({
-    required pulumi.Output<String> groupObjectId,
-    required pulumi.Output<String> memberObjectId,
-  }) :
-      groupObjectId = pulumi.Input.asInput<String>(groupObjectId),
-      memberObjectId = pulumi.Input.asInput<String>(memberObjectId);
+    required this.groupObjectId,
+    required this.memberObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GroupMemberArgs {
 
   factory GroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return GroupMemberArgs(
-      groupObjectId: pulumi.Output.create<String>(map['groupObjectId'] as String),
-      memberObjectId: pulumi.Output.create<String>(map['memberObjectId'] as String),
+      groupObjectId: (map['groupObjectId'] as String).input(),
+      memberObjectId: (map['memberObjectId'] as String).input(),
     );
   }
 }

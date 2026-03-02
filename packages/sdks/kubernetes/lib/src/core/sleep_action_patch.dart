@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SleepAction describes a "sleep" action.
 class SleepActionPatch {
   /// Seconds is the number of seconds to sleep.
-  final int? seconds;
+  final pulumi.Input<int>? seconds;
 
   /// Creates a new [SleepActionPatch].
   /// [seconds] Seconds is the number of seconds to sleep.
@@ -20,7 +21,7 @@ class SleepActionPatch {
 
   factory SleepActionPatch.fromMap(Map<String, dynamic> map) {
     return SleepActionPatch(
-      seconds: map['seconds'] == null ? null : map['seconds'] as int,
+      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
     );
   }
 }

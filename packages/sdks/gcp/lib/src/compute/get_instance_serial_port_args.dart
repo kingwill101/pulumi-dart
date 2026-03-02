@@ -26,15 +26,11 @@ class GetInstanceSerialPortArgs {
   /// [project] The project in which the Compute Instance exists. If it
   /// [zone] The zone in which the Compute Instance exists.
   GetInstanceSerialPortArgs({
-    required pulumi.Output<String> instance,
-    required pulumi.Output<int> port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      port = pulumi.Input.asInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instance,
+    required this.port,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetInstanceSerialPortArgs {
 
   factory GetInstanceSerialPortArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceSerialPortArgs(
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instance: (map['instance'] as String).input(),
+      port: (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

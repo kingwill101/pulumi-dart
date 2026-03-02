@@ -63,31 +63,19 @@ class IntentArgs {
   /// [resetContexts] Indicates whether to delete all contexts in the current session when this intent is matched.
   /// [webhookState] Indicates whether webhooks are enabled for the intent.
   IntentArgs({
-    pulumi.Output<String>? action,
-    pulumi.Output<List<String>>? defaultResponsePlatforms,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? events,
-    pulumi.Output<List<String>>? inputContextNames,
-    pulumi.Output<bool>? isFallback,
-    pulumi.Output<bool>? mlDisabled,
-    pulumi.Output<String>? parentFollowupIntentName,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? resetContexts,
-    pulumi.Output<String>? webhookState,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      defaultResponsePlatforms = pulumi.Input.asOptionalInput<List<String>>(defaultResponsePlatforms),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      events = pulumi.Input.asOptionalInput<List<String>>(events),
-      inputContextNames = pulumi.Input.asOptionalInput<List<String>>(inputContextNames),
-      isFallback = pulumi.Input.asOptionalInput<bool>(isFallback),
-      mlDisabled = pulumi.Input.asOptionalInput<bool>(mlDisabled),
-      parentFollowupIntentName = pulumi.Input.asOptionalInput<String>(parentFollowupIntentName),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resetContexts = pulumi.Input.asOptionalInput<bool>(resetContexts),
-      webhookState = pulumi.Input.asOptionalInput<String>(webhookState);
+    this.action,
+    this.defaultResponsePlatforms,
+    required this.displayName,
+    this.events,
+    this.inputContextNames,
+    this.isFallback,
+    this.mlDisabled,
+    this.parentFollowupIntentName,
+    this.priority,
+    this.project,
+    this.resetContexts,
+    this.webhookState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,18 +96,18 @@ class IntentArgs {
 
   factory IntentArgs.fromMap(Map<String, dynamic> map) {
     return IntentArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      defaultResponsePlatforms: map['defaultResponsePlatforms'] == null ? null : pulumi.Output.create<List<String>>((map['defaultResponsePlatforms'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      inputContextNames: map['inputContextNames'] == null ? null : pulumi.Output.create<List<String>>((map['inputContextNames'] as List).cast<String>()),
-      isFallback: map['isFallback'] == null ? null : pulumi.Output.create<bool>(map['isFallback'] as bool),
-      mlDisabled: map['mlDisabled'] == null ? null : pulumi.Output.create<bool>(map['mlDisabled'] as bool),
-      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : pulumi.Output.create<String>(map['parentFollowupIntentName'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resetContexts: map['resetContexts'] == null ? null : pulumi.Output.create<bool>(map['resetContexts'] as bool),
-      webhookState: map['webhookState'] == null ? null : pulumi.Output.create<String>(map['webhookState'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      defaultResponsePlatforms: map['defaultResponsePlatforms'] == null ? null : ((map['defaultResponsePlatforms'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      inputContextNames: map['inputContextNames'] == null ? null : ((map['inputContextNames'] as List).cast<String>()).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
+      mlDisabled: map['mlDisabled'] == null ? null : (map['mlDisabled'] as bool).input(),
+      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : (map['parentFollowupIntentName'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resetContexts: map['resetContexts'] == null ? null : (map['resetContexts'] as bool).input(),
+      webhookState: map['webhookState'] == null ? null : (map['webhookState'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class DirectoryRoleAssignmentState {
   /// [principalObjectId] The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   DirectoryRoleAssignmentState({
-    pulumi.Output<String>? appScopeId,
-    pulumi.Output<String>? directoryScopeId,
-    pulumi.Output<String>? principalObjectId,
-    pulumi.Output<String>? roleId,
-  }) :
-      appScopeId = pulumi.Input.asOptionalInput<String>(appScopeId),
-      directoryScopeId = pulumi.Input.asOptionalInput<String>(directoryScopeId),
-      principalObjectId = pulumi.Input.asOptionalInput<String>(principalObjectId),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId);
+    this.appScopeId,
+    this.directoryScopeId,
+    this.principalObjectId,
+    this.roleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class DirectoryRoleAssignmentState {
 
   factory DirectoryRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleAssignmentState(
-      appScopeId: map['appScopeId'] == null ? null : pulumi.Output.create<String>(map['appScopeId'] as String),
-      directoryScopeId: map['directoryScopeId'] == null ? null : pulumi.Output.create<String>(map['directoryScopeId'] as String),
-      principalObjectId: map['principalObjectId'] == null ? null : pulumi.Output.create<String>(map['principalObjectId'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
+      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId'] as String).input(),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineManagerVirtualMachineInstanceHardware {
   /// The number of vCPUs for the Virtual Machine. Possible values are between `1` and `64`.
-  final int? cpuCount;
+  final pulumi.Input<int>? cpuCount;
   /// The max dynamic memory for the Virtual Machine. Possible values are between `32` and `1048576`.
-  final int? dynamicMemoryMaxInMb;
+  final pulumi.Input<int>? dynamicMemoryMaxInMb;
   /// The min dynamic memory for the Virtual Machine. Possible values are between `32` and `1048576`.
-  final int? dynamicMemoryMinInMb;
+  final pulumi.Input<int>? dynamicMemoryMinInMb;
   /// Whether processor compatibility mode for live migration of Virtual Machines is enabled.
-  final bool? limitCpuForMigrationEnabled;
+  final pulumi.Input<bool>? limitCpuForMigrationEnabled;
   /// The size of a Virtual Machine's memory. Possible values are between `32` and `1048576`.
-  final int? memoryInMb;
+  final pulumi.Input<int>? memoryInMb;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceHardware].
   /// [cpuCount] The number of vCPUs for the Virtual Machine. Possible values are between `1` and `64`.
@@ -39,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceHardware {
 
   factory VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceHardware(
-      cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
-      dynamicMemoryMaxInMb: map['dynamicMemoryMaxInMb'] == null ? null : map['dynamicMemoryMaxInMb'] as int,
-      dynamicMemoryMinInMb: map['dynamicMemoryMinInMb'] == null ? null : map['dynamicMemoryMinInMb'] as int,
-      limitCpuForMigrationEnabled: map['limitCpuForMigrationEnabled'] == null ? null : map['limitCpuForMigrationEnabled'] as bool,
-      memoryInMb: map['memoryInMb'] == null ? null : map['memoryInMb'] as int,
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      dynamicMemoryMaxInMb: map['dynamicMemoryMaxInMb'] == null ? null : (map['dynamicMemoryMaxInMb'] as int).input(),
+      dynamicMemoryMinInMb: map['dynamicMemoryMinInMb'] == null ? null : (map['dynamicMemoryMinInMb'] as int).input(),
+      limitCpuForMigrationEnabled: map['limitCpuForMigrationEnabled'] == null ? null : (map['limitCpuForMigrationEnabled'] as bool).input(),
+      memoryInMb: map['memoryInMb'] == null ? null : (map['memoryInMb'] as int).input(),
     );
   }
 }

@@ -26,15 +26,11 @@ class ImageAccessArgs {
   /// [region] The region in which to obtain the V2 Glance client.
   /// [status] The member proposal status. Optional if admin wants to
   ImageAccessArgs({
-    required pulumi.Output<String> imageId,
-    required pulumi.Output<String> memberId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-  }) :
-      imageId = pulumi.Input.asInput<String>(imageId),
-      memberId = pulumi.Input.asInput<String>(memberId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.imageId,
+    required this.memberId,
+    this.region,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class ImageAccessArgs {
 
   factory ImageAccessArgs.fromMap(Map<String, dynamic> map) {
     return ImageAccessArgs(
-      imageId: pulumi.Output.create<String>(map['imageId'] as String),
-      memberId: pulumi.Output.create<String>(map['memberId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      imageId: (map['imageId'] as String).input(),
+      memberId: (map['memberId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

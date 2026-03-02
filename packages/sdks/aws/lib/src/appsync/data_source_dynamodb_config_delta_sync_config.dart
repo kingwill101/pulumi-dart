@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceDynamodbConfigDeltaSyncConfig {
   /// The number of minutes that an Item is stored in the data source.
-  final int? baseTableTtl;
+  final pulumi.Input<int>? baseTableTtl;
   /// The table name.
-  final String deltaSyncTableName;
+  final pulumi.Input<String> deltaSyncTableName;
   /// The number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
-  final int? deltaSyncTableTtl;
+  final pulumi.Input<int>? deltaSyncTableTtl;
 
   /// Creates a new [DataSourceDynamodbConfigDeltaSyncConfig].
   /// [baseTableTtl] The number of minutes that an Item is stored in the data source.
@@ -29,9 +30,9 @@ class DataSourceDynamodbConfigDeltaSyncConfig {
 
   factory DataSourceDynamodbConfigDeltaSyncConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceDynamodbConfigDeltaSyncConfig(
-      baseTableTtl: map['baseTableTtl'] == null ? null : map['baseTableTtl'] as int,
-      deltaSyncTableName: map['deltaSyncTableName'] as String,
-      deltaSyncTableTtl: map['deltaSyncTableTtl'] == null ? null : map['deltaSyncTableTtl'] as int,
+      baseTableTtl: map['baseTableTtl'] == null ? null : (map['baseTableTtl'] as int).input(),
+      deltaSyncTableName: (map['deltaSyncTableName'] as String).input(),
+      deltaSyncTableTtl: map['deltaSyncTableTtl'] == null ? null : (map['deltaSyncTableTtl'] as int).input(),
     );
   }
 }

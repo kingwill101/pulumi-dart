@@ -16,11 +16,9 @@ class GetAssignmentArgs {
   /// [assignmentId] The security assignment key - unique key for the standard assignment
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   GetAssignmentArgs({
-    required pulumi.Output<String> assignmentId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assignmentId = pulumi.Input.asInput<String>(assignmentId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assignmentId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAssignmentArgs {
 
   factory GetAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssignmentArgs(
-      assignmentId: pulumi.Output.create<String>(map['assignmentId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assignmentId: (map['assignmentId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

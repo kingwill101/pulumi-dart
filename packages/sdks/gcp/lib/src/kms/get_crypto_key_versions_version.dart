@@ -5,16 +5,16 @@ import 'get_crypto_key_versions_version_public_key.dart';
 
 class GetCryptoKeyVersionsVersion {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-  final String algorithm;
+  final pulumi.Input<String> algorithm;
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
-  final String cryptoKey;
-  final String id;
-  final String name;
-  final String protectionLevel;
-  final List<GetCryptoKeyVersionsVersionPublicKey> publicKeys;
-  final String state;
-  final int version;
+  final pulumi.Input<String> cryptoKey;
+  final pulumi.Input<String> id;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> protectionLevel;
+  final pulumi.Input<List<GetCryptoKeyVersionsVersionPublicKey>> publicKeys;
+  final pulumi.Input<String> state;
+  final pulumi.Input<int> version;
 
   /// Creates a new [GetCryptoKeyVersionsVersion].
   /// [algorithm] The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -43,7 +43,7 @@ class GetCryptoKeyVersionsVersion {
       'id': id,
       'name': name,
       'protectionLevel': protectionLevel,
-      'publicKeys': pulumi.Input.encodeList<GetCryptoKeyVersionsVersionPublicKey, Map<String, dynamic>>(publicKeys, (value) => value.toMap()),
+      'publicKeys': pulumi.Input.mapInputValue<List<GetCryptoKeyVersionsVersionPublicKey>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<GetCryptoKeyVersionsVersionPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': state,
       'version': version,
     };
@@ -51,14 +51,14 @@ class GetCryptoKeyVersionsVersion {
 
   factory GetCryptoKeyVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionsVersion(
-      algorithm: map['algorithm'] as String,
-      cryptoKey: map['cryptoKey'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      protectionLevel: map['protectionLevel'] as String,
-      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(map['publicKeys'], (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] as String,
-      version: map['version'] as int,
+      algorithm: (map['algorithm'] as String).input(),
+      cryptoKey: (map['cryptoKey'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectionLevel: (map['protectionLevel'] as String).input(),
+      publicKeys: (pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(map['publicKeys'], (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: (map['state'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

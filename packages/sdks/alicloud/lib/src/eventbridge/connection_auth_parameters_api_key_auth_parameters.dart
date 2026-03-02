@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthParametersApiKeyAuthParameters {
   /// The name of the API key.
-  final String? apiKeyName;
+  final pulumi.Input<String>? apiKeyName;
   /// The value of the API key.
-  final String? apiKeyValue;
+  final pulumi.Input<String>? apiKeyValue;
 
   /// Creates a new [ConnectionAuthParametersApiKeyAuthParameters].
   /// [apiKeyName] The name of the API key.
@@ -24,8 +25,8 @@ class ConnectionAuthParametersApiKeyAuthParameters {
 
   factory ConnectionAuthParametersApiKeyAuthParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersApiKeyAuthParameters(
-      apiKeyName: map['apiKeyName'] == null ? null : map['apiKeyName'] as String,
-      apiKeyValue: map['apiKeyValue'] == null ? null : map['apiKeyValue'] as String,
+      apiKeyName: map['apiKeyName'] == null ? null : (map['apiKeyName'] as String).input(),
+      apiKeyValue: map['apiKeyValue'] == null ? null : (map['apiKeyValue'] as String).input(),
     );
   }
 }

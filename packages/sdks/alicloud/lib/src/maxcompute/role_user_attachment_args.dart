@@ -23,13 +23,10 @@ class RoleUserAttachmentArgs {
   /// [roleName] Role Name, Valid Values: super_administrator, admin, Custom Role
   /// [user] Supported input: Alibaba Cloud account, RAM user, and RAM role
   RoleUserAttachmentArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> roleName,
-    pulumi.Output<String>? user,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      roleName = pulumi.Input.asInput<String>(roleName),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    required this.projectName,
+    required this.roleName,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class RoleUserAttachmentArgs {
 
   factory RoleUserAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleUserAttachmentArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      projectName: (map['projectName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the frontend configurations for the node type.
 class FrontendConfigurationResponse {
   /// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
-  final String? applicationGatewayBackendAddressPoolId;
+  final pulumi.Input<String>? applicationGatewayBackendAddressPoolId;
   /// The IP address type of this frontend configuration. If omitted the default value is IPv4.
-  final String? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
   /// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
-  final String? loadBalancerBackendAddressPoolId;
+  final pulumi.Input<String>? loadBalancerBackendAddressPoolId;
   /// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
-  final String? loadBalancerInboundNatPoolId;
+  final pulumi.Input<String>? loadBalancerInboundNatPoolId;
 
   /// Creates a new [FrontendConfigurationResponse].
   /// [applicationGatewayBackendAddressPoolId] The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
@@ -35,10 +36,10 @@ class FrontendConfigurationResponse {
 
   factory FrontendConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FrontendConfigurationResponse(
-      applicationGatewayBackendAddressPoolId: map['applicationGatewayBackendAddressPoolId'] == null ? null : map['applicationGatewayBackendAddressPoolId'] as String,
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      loadBalancerBackendAddressPoolId: map['loadBalancerBackendAddressPoolId'] == null ? null : map['loadBalancerBackendAddressPoolId'] as String,
-      loadBalancerInboundNatPoolId: map['loadBalancerInboundNatPoolId'] == null ? null : map['loadBalancerInboundNatPoolId'] as String,
+      applicationGatewayBackendAddressPoolId: map['applicationGatewayBackendAddressPoolId'] == null ? null : (map['applicationGatewayBackendAddressPoolId'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      loadBalancerBackendAddressPoolId: map['loadBalancerBackendAddressPoolId'] == null ? null : (map['loadBalancerBackendAddressPoolId'] as String).input(),
+      loadBalancerInboundNatPoolId: map['loadBalancerInboundNatPoolId'] == null ? null : (map['loadBalancerInboundNatPoolId'] as String).input(),
     );
   }
 }

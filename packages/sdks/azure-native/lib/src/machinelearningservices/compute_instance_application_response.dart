@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an Aml Instance application and its connectivity endpoint URI.
 class ComputeInstanceApplicationResponse {
   /// Name of the ComputeInstance application.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Application' endpoint URI.
-  final String? endpointUri;
+  final pulumi.Input<String>? endpointUri;
 
   /// Creates a new [ComputeInstanceApplicationResponse].
   /// [displayName] Name of the ComputeInstance application.
@@ -25,8 +26,8 @@ class ComputeInstanceApplicationResponse {
 
   factory ComputeInstanceApplicationResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceApplicationResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      endpointUri: map['endpointUri'] == null ? null : map['endpointUri'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class RepositoryState {
   /// [remoteUri] Required. Git Clone HTTPS URI.
   /// [updateTime] Output only. Server assigned timestamp for when the connection was updated.
   RepositoryState({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveAnnotations,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentConnection,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? remoteUri,
-    pulumi.Output<String>? updateTime,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveAnnotations = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveAnnotations),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentConnection = pulumi.Input.asOptionalInput<String>(parentConnection),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remoteUri = pulumi.Input.asOptionalInput<String>(remoteUri),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.annotations,
+    this.createTime,
+    this.effectiveAnnotations,
+    this.etag,
+    this.location,
+    this.name,
+    this.parentConnection,
+    this.project,
+    this.remoteUri,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveAnnotations'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentConnection: map['parentConnection'] == null ? null : pulumi.Output.create<String>(map['parentConnection'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      remoteUri: map['remoteUri'] == null ? null : pulumi.Output.create<String>(map['remoteUri'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentConnection: map['parentConnection'] == null ? null : (map['parentConnection'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      remoteUri: map['remoteUri'] == null ? null : (map['remoteUri'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

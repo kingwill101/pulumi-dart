@@ -22,15 +22,11 @@ class GetAvailabilityGroupListenerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
   GetAvailabilityGroupListenerArgs({
-    required pulumi.Output<String> availabilityGroupListenerName,
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlVirtualMachineGroupName,
-  }) :
-      availabilityGroupListenerName = pulumi.Input.asInput<String>(availabilityGroupListenerName),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlVirtualMachineGroupName = pulumi.Input.asInput<String>(sqlVirtualMachineGroupName);
+    required this.availabilityGroupListenerName,
+    this.expand,
+    required this.resourceGroupName,
+    required this.sqlVirtualMachineGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAvailabilityGroupListenerArgs {
 
   factory GetAvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityGroupListenerArgs(
-      availabilityGroupListenerName: pulumi.Output.create<String>(map['availabilityGroupListenerName'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlVirtualMachineGroupName: pulumi.Output.create<String>(map['sqlVirtualMachineGroupName'] as String),
+      availabilityGroupListenerName: (map['availabilityGroupListenerName'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
     );
   }
 }

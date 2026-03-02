@@ -28,19 +28,13 @@ class ExperimentPlanArgs {
   /// [tags] The tag of the resource.
   /// [templateId] The ID of the template.
   ExperimentPlanArgs({
-    pulumi.Output<Map<String, String>>? externalParams,
-    pulumi.Output<String>? planName,
-    pulumi.Output<String>? resourceGroupId,
-    required pulumi.Output<int> resourceId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> templateId,
-  }) :
-      externalParams = pulumi.Input.asOptionalInput<Map<String, String>>(externalParams),
-      planName = pulumi.Input.asOptionalInput<String>(planName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      resourceId = pulumi.Input.asInput<int>(resourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateId = pulumi.Input.asInput<int>(templateId);
+    this.externalParams,
+    this.planName,
+    this.resourceGroupId,
+    required this.resourceId,
+    this.tags,
+    required this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ExperimentPlanArgs {
 
   factory ExperimentPlanArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanArgs(
-      externalParams: map['externalParams'] == null ? null : pulumi.Output.create<Map<String, String>>((map['externalParams'] as Map).cast<String, String>()),
-      planName: map['planName'] == null ? null : pulumi.Output.create<String>(map['planName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      resourceId: pulumi.Output.create<int>(map['resourceId'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateId: pulumi.Output.create<int>(map['templateId'] as int),
+      externalParams: map['externalParams'] == null ? null : ((map['externalParams'] as Map).cast<String, String>()).input(),
+      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceId: (map['resourceId'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateId: (map['templateId'] as int).input(),
     );
   }
 }

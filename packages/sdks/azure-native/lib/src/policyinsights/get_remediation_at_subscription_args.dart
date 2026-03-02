@@ -13,9 +13,8 @@ class GetRemediationAtSubscriptionArgs {
   /// Creates a new [GetRemediationAtSubscriptionArgs].
   /// [remediationName] The name of the remediation.
   GetRemediationAtSubscriptionArgs({
-    required pulumi.Output<String> remediationName,
-  }) :
-      remediationName = pulumi.Input.asInput<String>(remediationName);
+    required this.remediationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRemediationAtSubscriptionArgs {
 
   factory GetRemediationAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtSubscriptionArgs(
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
+      remediationName: (map['remediationName'] as String).input(),
     );
   }
 }

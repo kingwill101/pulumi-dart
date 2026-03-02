@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_arc_management_settings_response.dart';
 
 /// Azure arc settings for a business case.
 class AzureArcSettingsResponse {
   /// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
-  final String azureArcState;
+  final pulumi.Input<String> azureArcState;
   /// Gets Azure arc labour cost percentage.
-  final double? laborCostPercentage;
+  final pulumi.Input<double>? laborCostPercentage;
   /// Management settings.
-  final AzureArcManagementSettingsResponse? managementSettings;
+  final pulumi.Input<AzureArcManagementSettingsResponse>? managementSettings;
 
   /// Creates a new [AzureArcSettingsResponse].
   /// [azureArcState] AzureArc state indicates whether to include azure arc related costs in on-premises or not.
@@ -25,15 +26,15 @@ class AzureArcSettingsResponse {
     return <String, dynamic>{
       'azureArcState': azureArcState,
       'laborCostPercentage': ?laborCostPercentage,
-      'managementSettings': ?managementSettings == null ? null : managementSettings!.toMap(),
+      'managementSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcManagementSettingsResponse, Map<String, dynamic>>(managementSettings, (value) => value.toMap()),
     };
   }
 
   factory AzureArcSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcSettingsResponse(
-      azureArcState: map['azureArcState'] as String,
-      laborCostPercentage: map['laborCostPercentage'] == null ? null : map['laborCostPercentage'] as double,
-      managementSettings: map['managementSettings'] == null ? null : AzureArcManagementSettingsResponse.fromMap((map['managementSettings'] as Map).cast<String, dynamic>()),
+      azureArcState: (map['azureArcState'] as String).input(),
+      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage'] as double).input(),
+      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettingsResponse.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

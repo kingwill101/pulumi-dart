@@ -23,13 +23,10 @@ class FirewallPolicyAssociationArgs {
   /// [firewallPolicy] The firewall policy of the resource.
   /// [name] The name for an association.
   FirewallPolicyAssociationArgs({
-    required pulumi.Output<String> attachmentTarget,
-    required pulumi.Output<String> firewallPolicy,
-    pulumi.Output<String>? name,
-  }) :
-      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.attachmentTarget,
+    required this.firewallPolicy,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class FirewallPolicyAssociationArgs {
 
   factory FirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationArgs(
-      attachmentTarget: pulumi.Output.create<String>(map['attachmentTarget'] as String),
-      firewallPolicy: pulumi.Output.create<String>(map['firewallPolicy'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      attachmentTarget: (map['attachmentTarget'] as String).input(),
+      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

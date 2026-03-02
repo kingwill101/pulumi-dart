@@ -33,21 +33,14 @@ class AclArgs {
   /// [resourceType] The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   /// [username] The username of the account.
   AclArgs({
-    required pulumi.Output<List<String>> actions,
-    required pulumi.Output<String> decision,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<List<String>>? ipWhitelists,
-    required pulumi.Output<String> resourceName,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> username,
-  }) :
-      actions = pulumi.Input.asInput<List<String>>(actions),
-      decision = pulumi.Input.asInput<String>(decision),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      ipWhitelists = pulumi.Input.asOptionalInput<List<String>>(ipWhitelists),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      username = pulumi.Input.asInput<String>(username);
+    required this.actions,
+    required this.decision,
+    required this.instanceId,
+    this.ipWhitelists,
+    required this.resourceName,
+    required this.resourceType,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      actions: pulumi.Output.create<List<String>>((map['actions'] as List).cast<String>()),
-      decision: pulumi.Output.create<String>(map['decision'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      ipWhitelists: map['ipWhitelists'] == null ? null : pulumi.Output.create<List<String>>((map['ipWhitelists'] as List).cast<String>()),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      actions: ((map['actions'] as List).cast<String>()).input(),
+      decision: (map['decision'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists'] as List).cast<String>()).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

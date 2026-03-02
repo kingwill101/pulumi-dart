@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_mode.dart';
 import 'compression_type.dart';
 
 class CacheToRegistry {
   /// The compression type to use.
-  final CompressionType? compression;
+  final pulumi.Input<CompressionType>? compression;
   /// Compression level from 0 to 22.
-  final int? compressionLevel;
+  final pulumi.Input<int>? compressionLevel;
   /// Forcefully apply compression.
-  final bool? forceCompression;
+  final pulumi.Input<bool>? forceCompression;
   /// Ignore errors caused by failed cache exports.
-  final bool? ignoreError;
+  final pulumi.Input<bool>? ignoreError;
   /// Export cache manifest as an OCI-compatible image manifest instead of a
   /// manifest list. Requires `ociMediaTypes` to also be `true`.
   ///
@@ -19,14 +20,14 @@ class CacheToRegistry {
   /// `false`.
   ///
   /// Defaults to `false` to match Docker's default behavior.
-  final bool? imageManifest;
+  final pulumi.Input<bool>? imageManifest;
   /// The cache mode to use. Defaults to `min`.
-  final CacheMode? mode;
+  final pulumi.Input<CacheMode>? mode;
   /// Whether to use OCI media types in exported manifests. Defaults to
   /// `true`.
-  final bool? ociMediaTypes;
+  final pulumi.Input<bool>? ociMediaTypes;
   /// Fully qualified name of the cache image to import.
-  final String ref;
+  final pulumi.Input<String> ref;
 
   /// Creates a new [CacheToRegistry].
   /// [compression] The compression type to use.
@@ -50,12 +51,12 @@ class CacheToRegistry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compression': ?compression == null ? null : compression!.value,
+      'compression': ?pulumi.Input.mapOptionalInputValue<CompressionType, String>(compression, (value) => value.value),
       'compressionLevel': ?compressionLevel,
       'forceCompression': ?forceCompression,
       'ignoreError': ?ignoreError,
       'imageManifest': ?imageManifest,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(mode, (value) => value.value),
       'ociMediaTypes': ?ociMediaTypes,
       'ref': ref,
     };
@@ -63,14 +64,14 @@ class CacheToRegistry {
 
   factory CacheToRegistry.fromMap(Map<String, dynamic> map) {
     return CacheToRegistry(
-      compression: map['compression'] == null ? null : CompressionType.fromValue(map['compression'] as String),
-      compressionLevel: map['compressionLevel'] == null ? null : map['compressionLevel'] as int,
-      forceCompression: map['forceCompression'] == null ? null : map['forceCompression'] as bool,
-      ignoreError: map['ignoreError'] == null ? null : map['ignoreError'] as bool,
-      imageManifest: map['imageManifest'] == null ? null : map['imageManifest'] as bool,
-      mode: map['mode'] == null ? null : CacheMode.fromValue(map['mode'] as String),
-      ociMediaTypes: map['ociMediaTypes'] == null ? null : map['ociMediaTypes'] as bool,
-      ref: map['ref'] as String,
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
+      imageManifest: map['imageManifest'] == null ? null : (map['imageManifest'] as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
+      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes'] as bool).input(),
+      ref: (map['ref'] as String).input(),
     );
   }
 }

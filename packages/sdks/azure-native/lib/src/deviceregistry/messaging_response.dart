@@ -6,7 +6,7 @@ import 'messaging_endpoint_response.dart';
 /// The namespace messaging endpoints model.
 class MessagingResponse {
   /// Dictionary of messaging endpoints.
-  final Map<String, MessagingEndpointResponse>? endpoints;
+  final pulumi.Input<Map<String, MessagingEndpointResponse>>? endpoints;
 
   /// Creates a new [MessagingResponse].
   /// [endpoints] Dictionary of messaging endpoints.
@@ -16,13 +16,13 @@ class MessagingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints': ?endpoints == null ? null : pulumi.Input.encodeMapValues<MessagingEndpointResponse, Map<String, dynamic>>(endpoints!, (value) => value.toMap()),
+      'endpoints': ?pulumi.Input.mapOptionalInputValue<Map<String, MessagingEndpointResponse>, Map<String, Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeMapValues<MessagingEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory MessagingResponse.fromMap(Map<String, dynamic> map) {
     return MessagingResponse(
-      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeMapValues<MessagingEndpointResponse>(map['endpoints'], (value) => MessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeMapValues<MessagingEndpointResponse>(map['endpoints'], (value) => MessagingEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeveloperAppCredentialApiProduct {
   /// (Output)
   /// Name of the API product.
-  final String? apiproduct;
+  final pulumi.Input<String>? apiproduct;
   /// Status of the credential. Valid values include approved or revoked.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DeveloperAppCredentialApiProduct].
   /// [apiproduct] (Output)
@@ -25,8 +26,8 @@ class DeveloperAppCredentialApiProduct {
 
   factory DeveloperAppCredentialApiProduct.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredentialApiProduct(
-      apiproduct: map['apiproduct'] == null ? null : map['apiproduct'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

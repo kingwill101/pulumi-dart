@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceNetworkConfiguration {
   /// Whether tasks receive public IP addresses
-  final bool assignPublicIp;
+  final pulumi.Input<bool> assignPublicIp;
   /// Security groups associated with tasks
-  final List<String> securityGroups;
+  final pulumi.Input<List<String>> securityGroups;
   /// Subnets associated with tasks
-  final List<String> subnets;
+  final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [GetServiceNetworkConfiguration].
   /// [assignPublicIp] Whether tasks receive public IP addresses
@@ -29,9 +30,9 @@ class GetServiceNetworkConfiguration {
 
   factory GetServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceNetworkConfiguration(
-      assignPublicIp: map['assignPublicIp'] as bool,
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      subnets: (map['subnets'] as List).cast<String>(),
+      assignPublicIp: (map['assignPublicIp'] as bool).input(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }
 }

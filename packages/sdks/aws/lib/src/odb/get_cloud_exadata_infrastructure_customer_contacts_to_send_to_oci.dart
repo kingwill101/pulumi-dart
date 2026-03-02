@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
-  final String email;
+  final pulumi.Input<String> email;
 
   /// Creates a new [GetCloudExadataInfrastructureCustomerContactsToSendToOci].
   /// [email] Required.
@@ -18,7 +19,7 @@ class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
 
   factory GetCloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureCustomerContactsToSendToOci(
-      email: map['email'] as String,
+      email: (map['email'] as String).input(),
     );
   }
 }

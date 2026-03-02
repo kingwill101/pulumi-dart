@@ -43,29 +43,18 @@ class TlsInspectionPolicyNetworksecurityV1beta1Args {
   /// [tlsInspectionPolicyId] Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1".
   /// [trustConfig] Optional. A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Note that Secure Web Proxy does not yet honor this field.
   TlsInspectionPolicyNetworksecurityV1beta1Args({
-    required pulumi.Output<String> caPool,
-    pulumi.Output<List<String>>? customTlsFeatures,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? excludePublicCaSet,
-    pulumi.Output<String>? location,
-    pulumi.Output<TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1>? minTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1>? tlsFeatureProfile,
-    required pulumi.Output<String> tlsInspectionPolicyId,
-    pulumi.Output<String>? trustConfig,
-  }) :
-      caPool = pulumi.Input.asInput<String>(caPool),
-      customTlsFeatures = pulumi.Input.asOptionalInput<List<String>>(customTlsFeatures),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludePublicCaSet = pulumi.Input.asOptionalInput<bool>(excludePublicCaSet),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minTlsVersion = pulumi.Input.asOptionalInput<TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1>(minTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsFeatureProfile = pulumi.Input.asOptionalInput<TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1>(tlsFeatureProfile),
-      tlsInspectionPolicyId = pulumi.Input.asInput<String>(tlsInspectionPolicyId),
-      trustConfig = pulumi.Input.asOptionalInput<String>(trustConfig);
+    required this.caPool,
+    this.customTlsFeatures,
+    this.description,
+    this.excludePublicCaSet,
+    this.location,
+    this.minTlsVersion,
+    this.name,
+    this.project,
+    this.tlsFeatureProfile,
+    required this.tlsInspectionPolicyId,
+    this.trustConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class TlsInspectionPolicyNetworksecurityV1beta1Args {
 
   factory TlsInspectionPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyNetworksecurityV1beta1Args(
-      caPool: pulumi.Output.create<String>(map['caPool'] as String),
-      customTlsFeatures: map['customTlsFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['customTlsFeatures'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : pulumi.Output.create<bool>(map['excludePublicCaSet'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1>(TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1.fromValue(map['minTlsVersion'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : pulumi.Output.create<TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1>(TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1.fromValue(map['tlsFeatureProfile'] as String)),
-      tlsInspectionPolicyId: pulumi.Output.create<String>(map['tlsInspectionPolicyId'] as String),
-      trustConfig: map['trustConfig'] == null ? null : pulumi.Output.create<String>(map['trustConfig'] as String),
+      caPool: (map['caPool'] as String).input(),
+      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (TlsInspectionPolicyMinTlsVersionNetworksecurityV1beta1.fromValue(map['minTlsVersion'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (TlsInspectionPolicyTlsFeatureProfileNetworksecurityV1beta1.fromValue(map['tlsFeatureProfile'] as String)).input(),
+      tlsInspectionPolicyId: (map['tlsInspectionPolicyId'] as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig'] as String).input(),
     );
   }
 }

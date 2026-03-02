@@ -17,21 +17,21 @@ import 'network_insights_analysis_return_path_component_transit_gateway_route_ta
 import 'network_insights_analysis_return_path_component_vpc.dart';
 
 class NetworkInsightsAnalysisReturnPathComponent {
-  final List<NetworkInsightsAnalysisReturnPathComponentAclRule>? aclRules;
-  final List<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail>? additionalDetails;
-  final List<NetworkInsightsAnalysisReturnPathComponentAttachedTo>? attachedTos;
-  final List<NetworkInsightsAnalysisReturnPathComponentComponent>? components;
-  final List<NetworkInsightsAnalysisReturnPathComponentDestinationVpc>? destinationVpcs;
-  final List<NetworkInsightsAnalysisReturnPathComponentInboundHeader>? inboundHeaders;
-  final List<NetworkInsightsAnalysisReturnPathComponentOutboundHeader>? outboundHeaders;
-  final List<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute>? routeTableRoutes;
-  final List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule>? securityGroupRules;
-  final int? sequenceNumber;
-  final List<NetworkInsightsAnalysisReturnPathComponentSourceVpc>? sourceVpcs;
-  final List<NetworkInsightsAnalysisReturnPathComponentSubnet>? subnets;
-  final List<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute>? transitGatewayRouteTableRoutes;
-  final List<NetworkInsightsAnalysisReturnPathComponentTransitGateway>? transitGateways;
-  final List<NetworkInsightsAnalysisReturnPathComponentVpc>? vpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentAclRule>>? aclRules;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail>>? additionalDetails;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentAttachedTo>>? attachedTos;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentComponent>>? components;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentDestinationVpc>>? destinationVpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentInboundHeader>>? inboundHeaders;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentOutboundHeader>>? outboundHeaders;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute>>? routeTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule>>? securityGroupRules;
+  final pulumi.Input<int>? sequenceNumber;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentSourceVpc>>? sourceVpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentSubnet>>? subnets;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute>>? transitGatewayRouteTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentTransitGateway>>? transitGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentVpc>>? vpcs;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponent].
   /// [aclRules] Optional.
@@ -69,41 +69,41 @@ class NetworkInsightsAnalysisReturnPathComponent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aclRules': ?aclRules == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAclRule, Map<String, dynamic>>(aclRules!, (value) => value.toMap()),
-      'additionalDetails': ?additionalDetails == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail, Map<String, dynamic>>(additionalDetails!, (value) => value.toMap()),
-      'attachedTos': ?attachedTos == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAttachedTo, Map<String, dynamic>>(attachedTos!, (value) => value.toMap()),
-      'components': ?components == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentComponent, Map<String, dynamic>>(components!, (value) => value.toMap()),
-      'destinationVpcs': ?destinationVpcs == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentDestinationVpc, Map<String, dynamic>>(destinationVpcs!, (value) => value.toMap()),
-      'inboundHeaders': ?inboundHeaders == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentInboundHeader, Map<String, dynamic>>(inboundHeaders!, (value) => value.toMap()),
-      'outboundHeaders': ?outboundHeaders == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentOutboundHeader, Map<String, dynamic>>(outboundHeaders!, (value) => value.toMap()),
-      'routeTableRoutes': ?routeTableRoutes == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute, Map<String, dynamic>>(routeTableRoutes!, (value) => value.toMap()),
-      'securityGroupRules': ?securityGroupRules == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule, Map<String, dynamic>>(securityGroupRules!, (value) => value.toMap()),
+      'aclRules': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentAclRule>, List<Map<String, dynamic>>>(aclRules, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAclRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalDetails': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail>, List<Map<String, dynamic>>>(additionalDetails, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachedTos': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentAttachedTo>, List<Map<String, dynamic>>>(attachedTos, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentAttachedTo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'components': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentComponent>, List<Map<String, dynamic>>>(components, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentComponent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinationVpcs': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentDestinationVpc>, List<Map<String, dynamic>>>(destinationVpcs, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentDestinationVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inboundHeaders': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentInboundHeader>, List<Map<String, dynamic>>>(inboundHeaders, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentInboundHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outboundHeaders': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentOutboundHeader>, List<Map<String, dynamic>>>(outboundHeaders, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentOutboundHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeTableRoutes': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute>, List<Map<String, dynamic>>>(routeTableRoutes, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'securityGroupRules': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule>, List<Map<String, dynamic>>>(securityGroupRules, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sequenceNumber': ?sequenceNumber,
-      'sourceVpcs': ?sourceVpcs == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSourceVpc, Map<String, dynamic>>(sourceVpcs!, (value) => value.toMap()),
-      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSubnet, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
-      'transitGatewayRouteTableRoutes': ?transitGatewayRouteTableRoutes == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute, Map<String, dynamic>>(transitGatewayRouteTableRoutes!, (value) => value.toMap()),
-      'transitGateways': ?transitGateways == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentTransitGateway, Map<String, dynamic>>(transitGateways!, (value) => value.toMap()),
-      'vpcs': ?vpcs == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentVpc, Map<String, dynamic>>(vpcs!, (value) => value.toMap()),
+      'sourceVpcs': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentSourceVpc>, List<Map<String, dynamic>>>(sourceVpcs, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSourceVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnets': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentSubnet>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSubnet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transitGatewayRouteTableRoutes': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute>, List<Map<String, dynamic>>>(transitGatewayRouteTableRoutes, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transitGateways': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentTransitGateway>, List<Map<String, dynamic>>>(transitGateways, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentTransitGateway, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcs': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NetworkInsightsAnalysisReturnPathComponent.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponent(
-      aclRules: map['aclRules'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAclRule>(map['aclRules'], (value) => NetworkInsightsAnalysisReturnPathComponentAclRule.fromMap((value as Map).cast<String, dynamic>())),
-      additionalDetails: map['additionalDetails'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail>(map['additionalDetails'], (value) => NetworkInsightsAnalysisReturnPathComponentAdditionalDetail.fromMap((value as Map).cast<String, dynamic>())),
-      attachedTos: map['attachedTos'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAttachedTo>(map['attachedTos'], (value) => NetworkInsightsAnalysisReturnPathComponentAttachedTo.fromMap((value as Map).cast<String, dynamic>())),
-      components: map['components'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentComponent>(map['components'], (value) => NetworkInsightsAnalysisReturnPathComponentComponent.fromMap((value as Map).cast<String, dynamic>())),
-      destinationVpcs: map['destinationVpcs'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentDestinationVpc>(map['destinationVpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentDestinationVpc.fromMap((value as Map).cast<String, dynamic>())),
-      inboundHeaders: map['inboundHeaders'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentInboundHeader>(map['inboundHeaders'], (value) => NetworkInsightsAnalysisReturnPathComponentInboundHeader.fromMap((value as Map).cast<String, dynamic>())),
-      outboundHeaders: map['outboundHeaders'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentOutboundHeader>(map['outboundHeaders'], (value) => NetworkInsightsAnalysisReturnPathComponentOutboundHeader.fromMap((value as Map).cast<String, dynamic>())),
-      routeTableRoutes: map['routeTableRoutes'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute>(map['routeTableRoutes'], (value) => NetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
-      securityGroupRules: map['securityGroupRules'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule>(map['securityGroupRules'], (value) => NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>())),
-      sequenceNumber: map['sequenceNumber'] == null ? null : map['sequenceNumber'] as int,
-      sourceVpcs: map['sourceVpcs'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSourceVpc>(map['sourceVpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentSourceVpc.fromMap((value as Map).cast<String, dynamic>())),
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSubnet>(map['subnets'], (value) => NetworkInsightsAnalysisReturnPathComponentSubnet.fromMap((value as Map).cast<String, dynamic>())),
-      transitGatewayRouteTableRoutes: map['transitGatewayRouteTableRoutes'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute>(map['transitGatewayRouteTableRoutes'], (value) => NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
-      transitGateways: map['transitGateways'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentTransitGateway>(map['transitGateways'], (value) => NetworkInsightsAnalysisReturnPathComponentTransitGateway.fromMap((value as Map).cast<String, dynamic>())),
-      vpcs: map['vpcs'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentVpc>(map['vpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentVpc.fromMap((value as Map).cast<String, dynamic>())),
+      aclRules: map['aclRules'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAclRule>(map['aclRules'], (value) => NetworkInsightsAnalysisReturnPathComponentAclRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalDetails: map['additionalDetails'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAdditionalDetail>(map['additionalDetails'], (value) => NetworkInsightsAnalysisReturnPathComponentAdditionalDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachedTos: map['attachedTos'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentAttachedTo>(map['attachedTos'], (value) => NetworkInsightsAnalysisReturnPathComponentAttachedTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentComponent>(map['components'], (value) => NetworkInsightsAnalysisReturnPathComponentComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationVpcs: map['destinationVpcs'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentDestinationVpc>(map['destinationVpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentDestinationVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundHeaders: map['inboundHeaders'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentInboundHeader>(map['inboundHeaders'], (value) => NetworkInsightsAnalysisReturnPathComponentInboundHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outboundHeaders: map['outboundHeaders'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentOutboundHeader>(map['outboundHeaders'], (value) => NetworkInsightsAnalysisReturnPathComponentOutboundHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeTableRoutes: map['routeTableRoutes'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentRouteTableRoute>(map['routeTableRoutes'], (value) => NetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityGroupRules: map['securityGroupRules'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule>(map['securityGroupRules'], (value) => NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber'] as int).input(),
+      sourceVpcs: map['sourceVpcs'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSourceVpc>(map['sourceVpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentSourceVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSubnet>(map['subnets'], (value) => NetworkInsightsAnalysisReturnPathComponentSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transitGatewayRouteTableRoutes: map['transitGatewayRouteTableRoutes'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute>(map['transitGatewayRouteTableRoutes'], (value) => NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transitGateways: map['transitGateways'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentTransitGateway>(map['transitGateways'], (value) => NetworkInsightsAnalysisReturnPathComponentTransitGateway.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentVpc>(map['vpcs'], (value) => NetworkInsightsAnalysisReturnPathComponentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

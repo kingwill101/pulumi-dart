@@ -26,17 +26,12 @@ class ProfileAgentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webAgent] Reference to the web agent resource.
   ProfileAgentArgs({
-    pulumi.Output<String>? agentName,
-    required pulumi.Output<List<ResourceReference>> customDomains,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ResourceReference> webAgent,
-  }) :
-      agentName = pulumi.Input.asOptionalInput<String>(agentName),
-      customDomains = pulumi.Input.asInput<List<ResourceReference>>(customDomains),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      webAgent = pulumi.Input.asInput<ResourceReference>(webAgent);
+    this.agentName,
+    required this.customDomains,
+    required this.profileName,
+    required this.resourceGroupName,
+    required this.webAgent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ProfileAgentArgs {
 
   factory ProfileAgentArgs.fromMap(Map<String, dynamic> map) {
     return ProfileAgentArgs(
-      agentName: map['agentName'] == null ? null : pulumi.Output.create<String>(map['agentName'] as String),
-      customDomains: pulumi.Output.create<List<ResourceReference>>(pulumi.Input.decodeList<ResourceReference>(map['customDomains'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      webAgent: pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['webAgent'] as Map).cast<String, dynamic>())),
+      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      customDomains: (pulumi.Input.decodeList<ResourceReference>(map['customDomains'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      webAgent: (ResourceReference.fromMap((map['webAgent'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

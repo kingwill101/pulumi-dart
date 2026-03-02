@@ -40,29 +40,18 @@ class AttachmentAccepterState {
   /// [segmentName] Name of the segment attachment.
   /// [state] State of the attachment.
   AttachmentAccepterState({
-    pulumi.Output<String>? attachmentId,
-    pulumi.Output<int>? attachmentPolicyRuleNumber,
-    pulumi.Output<String>? attachmentType,
-    pulumi.Output<String>? coreNetworkArn,
-    pulumi.Output<String>? coreNetworkId,
-    pulumi.Output<String>? edgeLocation,
-    pulumi.Output<List<String>>? edgeLocations,
-    pulumi.Output<String>? ownerAccountId,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? segmentName,
-    pulumi.Output<String>? state,
-  }) :
-      attachmentId = pulumi.Input.asOptionalInput<String>(attachmentId),
-      attachmentPolicyRuleNumber = pulumi.Input.asOptionalInput<int>(attachmentPolicyRuleNumber),
-      attachmentType = pulumi.Input.asOptionalInput<String>(attachmentType),
-      coreNetworkArn = pulumi.Input.asOptionalInput<String>(coreNetworkArn),
-      coreNetworkId = pulumi.Input.asOptionalInput<String>(coreNetworkId),
-      edgeLocation = pulumi.Input.asOptionalInput<String>(edgeLocation),
-      edgeLocations = pulumi.Input.asOptionalInput<List<String>>(edgeLocations),
-      ownerAccountId = pulumi.Input.asOptionalInput<String>(ownerAccountId),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      segmentName = pulumi.Input.asOptionalInput<String>(segmentName),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.attachmentId,
+    this.attachmentPolicyRuleNumber,
+    this.attachmentType,
+    this.coreNetworkArn,
+    this.coreNetworkId,
+    this.edgeLocation,
+    this.edgeLocations,
+    this.ownerAccountId,
+    this.resourceArn,
+    this.segmentName,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class AttachmentAccepterState {
 
   factory AttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return AttachmentAccepterState(
-      attachmentId: map['attachmentId'] == null ? null : pulumi.Output.create<String>(map['attachmentId'] as String),
-      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : pulumi.Output.create<int>(map['attachmentPolicyRuleNumber'] as int),
-      attachmentType: map['attachmentType'] == null ? null : pulumi.Output.create<String>(map['attachmentType'] as String),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : pulumi.Output.create<String>(map['coreNetworkArn'] as String),
-      coreNetworkId: map['coreNetworkId'] == null ? null : pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      edgeLocation: map['edgeLocation'] == null ? null : pulumi.Output.create<String>(map['edgeLocation'] as String),
-      edgeLocations: map['edgeLocations'] == null ? null : pulumi.Output.create<List<String>>((map['edgeLocations'] as List).cast<String>()),
-      ownerAccountId: map['ownerAccountId'] == null ? null : pulumi.Output.create<String>(map['ownerAccountId'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      segmentName: map['segmentName'] == null ? null : pulumi.Output.create<String>(map['segmentName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : (map['attachmentPolicyRuleNumber'] as int).input(),
+      attachmentType: map['attachmentType'] == null ? null : (map['attachmentType'] as String).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
+      edgeLocations: map['edgeLocations'] == null ? null : ((map['edgeLocations'] as List).cast<String>()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      segmentName: map['segmentName'] == null ? null : (map['segmentName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

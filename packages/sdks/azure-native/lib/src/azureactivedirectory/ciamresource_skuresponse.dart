@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
 class CIAMResourceSKUResponse {
   /// The name of the SKU for the tenant.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tier of the tenant.
-  final String tier;
+  final pulumi.Input<String> tier;
 
   /// Creates a new [CIAMResourceSKUResponse].
   /// [name] The name of the SKU for the tenant.
@@ -25,8 +26,8 @@ class CIAMResourceSKUResponse {
 
   factory CIAMResourceSKUResponse.fromMap(Map<String, dynamic> map) {
     return CIAMResourceSKUResponse(
-      name: map['name'] as String,
-      tier: map['tier'] as String,
+      name: (map['name'] as String).input(),
+      tier: (map['tier'] as String).input(),
     );
   }
 }

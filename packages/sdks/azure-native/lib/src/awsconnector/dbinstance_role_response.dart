@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of DBInstanceRole
 class DBInstanceRoleResponse {
   /// The name of the feature associated with the AWS Identity and Access Management (IAM) role. IAM roles that are associated with a DB instance grant permission for the DB instance to access other AWS services on your behalf. For the list of supported feature names, see the ``SupportedFeatureNames`` description in [DBEngineVersion](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBEngineVersion.html) in the *Amazon RDS API Reference*.
-  final String? featureName;
+  final pulumi.Input<String>? featureName;
   /// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB instance.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   /// Creates a new [DBInstanceRoleResponse].
   /// [featureName] The name of the feature associated with the AWS Identity and Access Management (IAM) role. IAM roles that are associated with a DB instance grant permission for the DB instance to access other AWS services on your behalf. For the list of supported feature names, see the ``SupportedFeatureNames`` description in [DBEngineVersion](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBEngineVersion.html) in the *Amazon RDS API Reference*.
@@ -25,8 +26,8 @@ class DBInstanceRoleResponse {
 
   factory DBInstanceRoleResponse.fromMap(Map<String, dynamic> map) {
     return DBInstanceRoleResponse(
-      featureName: map['featureName'] == null ? null : map['featureName'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

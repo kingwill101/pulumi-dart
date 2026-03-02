@@ -19,13 +19,10 @@ class GetVpcEndpointServiceUsersArgs {
   /// [serviceId] The Id of Vpc Endpoint Service.
   /// [userId] The Id of Ram User.
   GetVpcEndpointServiceUsersArgs({
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<String>? userId,
-  }) :
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.outputFile,
+    required this.serviceId,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVpcEndpointServiceUsersArgs {
 
   factory GetVpcEndpointServiceUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceUsersArgs(
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

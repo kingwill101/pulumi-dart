@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'active_directory_connector_spec_response.dart';
 import 'active_directory_connector_status_response.dart';
 import 'basic_login_information_response.dart';
@@ -7,13 +8,13 @@ import 'basic_login_information_response.dart';
 /// The properties of an Active Directory connector resource
 class ActiveDirectoryConnectorPropertiesResponse {
   /// Username and password for domain service account authentication.
-  final BasicLoginInformationResponse? domainServiceAccountLoginInformation;
+  final pulumi.Input<BasicLoginInformationResponse>? domainServiceAccountLoginInformation;
   /// The provisioning state of the Active Directory connector resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// null
-  final ActiveDirectoryConnectorSpecResponse spec;
+  final pulumi.Input<ActiveDirectoryConnectorSpecResponse> spec;
   /// null
-  final ActiveDirectoryConnectorStatusResponse? status;
+  final pulumi.Input<ActiveDirectoryConnectorStatusResponse>? status;
 
   /// Creates a new [ActiveDirectoryConnectorPropertiesResponse].
   /// [domainServiceAccountLoginInformation] Username and password for domain service account authentication.
@@ -29,19 +30,19 @@ class ActiveDirectoryConnectorPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainServiceAccountLoginInformation': ?domainServiceAccountLoginInformation == null ? null : domainServiceAccountLoginInformation!.toMap(),
+      'domainServiceAccountLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformationResponse, Map<String, dynamic>>(domainServiceAccountLoginInformation, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'spec': spec.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'spec': pulumi.Input.mapInputValue<ActiveDirectoryConnectorSpecResponse, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ActiveDirectoryConnectorStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorPropertiesResponse(
-      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : BasicLoginInformationResponse.fromMap((map['domainServiceAccountLoginInformation'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      spec: ActiveDirectoryConnectorSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ActiveDirectoryConnectorStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['domainServiceAccountLoginInformation'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      spec: (ActiveDirectoryConnectorSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ActiveDirectoryConnectorStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

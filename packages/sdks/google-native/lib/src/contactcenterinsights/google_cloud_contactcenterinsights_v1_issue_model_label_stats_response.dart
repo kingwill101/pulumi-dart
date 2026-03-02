@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Aggregated statistics about an issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
   /// Number of conversations the issue model has analyzed at this point in time.
-  final String analyzedConversationsCount;
+  final pulumi.Input<String> analyzedConversationsCount;
   /// Statistics on each issue. Key is the issue's resource name.
-  final Map<String, String> issueStats;
+  final pulumi.Input<Map<String, String>> issueStats;
   /// Number of analyzed conversations for which no issue was applicable at this point in time.
-  final String unclassifiedConversationsCount;
+  final pulumi.Input<String> unclassifiedConversationsCount;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse].
   /// [analyzedConversationsCount] Number of conversations the issue model has analyzed at this point in time.
@@ -30,9 +31,9 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
 
   factory GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(
-      analyzedConversationsCount: map['analyzedConversationsCount'] as String,
-      issueStats: (map['issueStats'] as Map).cast<String, String>(),
-      unclassifiedConversationsCount: map['unclassifiedConversationsCount'] as String,
+      analyzedConversationsCount: (map['analyzedConversationsCount'] as String).input(),
+      issueStats: ((map['issueStats'] as Map).cast<String, String>()).input(),
+      unclassifiedConversationsCount: (map['unclassifiedConversationsCount'] as String).input(),
     );
   }
 }

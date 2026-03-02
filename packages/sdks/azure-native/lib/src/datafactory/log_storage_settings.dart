@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_service_reference.dart';
 
 /// (Deprecated. Please use LogSettings) Log storage settings.
 class LogStorageSettings {
   /// Specifies whether to enable reliable logging. Type: boolean (or Expression with resultType boolean).
-  final dynamic enableReliableLogging;
+  final pulumi.Input<dynamic>? enableReliableLogging;
   /// Log storage linked service reference.
-  final LinkedServiceReference linkedServiceName;
+  final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// Gets or sets the log level, support: Info, Warning. Type: string (or Expression with resultType string).
-  final dynamic logLevel;
+  final pulumi.Input<dynamic>? logLevel;
   /// The path to storage for storing detailed logs of activity execution. Type: string (or Expression with resultType string).
-  final dynamic path;
+  final pulumi.Input<dynamic>? path;
 
   /// Creates a new [LogStorageSettings].
   /// [enableReliableLogging] Specifies whether to enable reliable logging. Type: boolean (or Expression with resultType boolean).
@@ -28,7 +29,7 @@ class LogStorageSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableReliableLogging': ?enableReliableLogging,
-      'linkedServiceName': linkedServiceName.toMap(),
+      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'logLevel': ?logLevel,
       'path': ?path,
     };
@@ -36,10 +37,10 @@ class LogStorageSettings {
 
   factory LogStorageSettings.fromMap(Map<String, dynamic> map) {
     return LogStorageSettings(
-      enableReliableLogging: map['enableReliableLogging'] == null ? null : map['enableReliableLogging'],
-      linkedServiceName: LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>()),
-      logLevel: map['logLevel'] == null ? null : map['logLevel'],
-      path: map['path'] == null ? null : map['path'],
+      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']).input(),
+      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']).input(),
+      path: map['path'] == null ? null : (map['path']).input(),
     );
   }
 }

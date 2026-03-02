@@ -5,13 +5,13 @@ import 'get_cluster_continuous_backup_info_encryption_info.dart';
 
 class GetClusterContinuousBackupInfo {
   /// The earliest restorable time that can be restored to. Output only field.
-  final String earliestRestorableTime;
+  final pulumi.Input<String> earliestRestorableTime;
   /// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-  final String enabledTime;
+  final pulumi.Input<String> enabledTime;
   /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
-  final List<GetClusterContinuousBackupInfoEncryptionInfo> encryptionInfos;
+  final pulumi.Input<List<GetClusterContinuousBackupInfoEncryptionInfo>> encryptionInfos;
   /// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-  final List<String> schedules;
+  final pulumi.Input<List<String>> schedules;
 
   /// Creates a new [GetClusterContinuousBackupInfo].
   /// [earliestRestorableTime] The earliest restorable time that can be restored to. Output only field.
@@ -29,17 +29,17 @@ class GetClusterContinuousBackupInfo {
     return <String, dynamic>{
       'earliestRestorableTime': earliestRestorableTime,
       'enabledTime': enabledTime,
-      'encryptionInfos': pulumi.Input.encodeList<GetClusterContinuousBackupInfoEncryptionInfo, Map<String, dynamic>>(encryptionInfos, (value) => value.toMap()),
+      'encryptionInfos': pulumi.Input.mapInputValue<List<GetClusterContinuousBackupInfoEncryptionInfo>, List<Map<String, dynamic>>>(encryptionInfos, (value) => pulumi.Input.encodeList<GetClusterContinuousBackupInfoEncryptionInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schedules': schedules,
     };
   }
 
   factory GetClusterContinuousBackupInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterContinuousBackupInfo(
-      earliestRestorableTime: map['earliestRestorableTime'] as String,
-      enabledTime: map['enabledTime'] as String,
-      encryptionInfos: pulumi.Input.decodeList<GetClusterContinuousBackupInfoEncryptionInfo>(map['encryptionInfos'], (value) => GetClusterContinuousBackupInfoEncryptionInfo.fromMap((value as Map).cast<String, dynamic>())),
-      schedules: (map['schedules'] as List).cast<String>(),
+      earliestRestorableTime: (map['earliestRestorableTime'] as String).input(),
+      enabledTime: (map['enabledTime'] as String).input(),
+      encryptionInfos: (pulumi.Input.decodeList<GetClusterContinuousBackupInfoEncryptionInfo>(map['encryptionInfos'], (value) => GetClusterContinuousBackupInfoEncryptionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedules: ((map['schedules'] as List).cast<String>()).input(),
     );
   }
 }

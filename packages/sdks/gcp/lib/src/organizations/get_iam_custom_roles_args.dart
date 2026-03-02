@@ -19,13 +19,10 @@ class GetIamCustomRolesArgs {
   /// [showDeleted] Include Roles that have been deleted. Defaults to `false`.
   /// [view] When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
   GetIamCustomRolesArgs({
-    pulumi.Output<String>? orgId,
-    pulumi.Output<bool>? showDeleted,
-    pulumi.Output<String>? view,
-  }) :
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      showDeleted = pulumi.Input.asOptionalInput<bool>(showDeleted),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    this.orgId,
+    this.showDeleted,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIamCustomRolesArgs {
 
   factory GetIamCustomRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesArgs(
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      showDeleted: map['showDeleted'] == null ? null : pulumi.Output.create<bool>(map['showDeleted'] as bool),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      showDeleted: map['showDeleted'] == null ? null : (map['showDeleted'] as bool).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

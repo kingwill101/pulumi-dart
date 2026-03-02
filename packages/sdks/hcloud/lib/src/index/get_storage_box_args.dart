@@ -19,13 +19,10 @@ class GetStorageBoxArgs {
   /// [name] Name of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   GetStorageBoxArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? withSelector,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      withSelector = pulumi.Input.asOptionalInput<String>(withSelector);
+    this.id,
+    this.name,
+    this.withSelector,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetStorageBoxArgs {
 
   factory GetStorageBoxArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      withSelector: map['withSelector'] == null ? null : pulumi.Output.create<String>(map['withSelector'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
     );
   }
 }

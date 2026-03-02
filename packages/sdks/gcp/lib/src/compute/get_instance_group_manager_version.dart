@@ -5,11 +5,11 @@ import 'get_instance_group_manager_version_target_size.dart';
 
 class GetInstanceGroupManagerVersion {
   /// The full URL to an instance template from which all new instances of this version will be created.
-  final String instanceTemplate;
+  final pulumi.Input<String> instanceTemplate;
   /// The name of the instance group. Either `name` or `self_link` must be provided.
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of instances calculated as a fixed number or a percentage depending on the settings.
-  final List<GetInstanceGroupManagerVersionTargetSize> targetSizes;
+  final pulumi.Input<List<GetInstanceGroupManagerVersionTargetSize>> targetSizes;
 
   /// Creates a new [GetInstanceGroupManagerVersion].
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created.
@@ -25,15 +25,15 @@ class GetInstanceGroupManagerVersion {
     return <String, dynamic>{
       'instanceTemplate': instanceTemplate,
       'name': name,
-      'targetSizes': pulumi.Input.encodeList<GetInstanceGroupManagerVersionTargetSize, Map<String, dynamic>>(targetSizes, (value) => value.toMap()),
+      'targetSizes': pulumi.Input.mapInputValue<List<GetInstanceGroupManagerVersionTargetSize>, List<Map<String, dynamic>>>(targetSizes, (value) => pulumi.Input.encodeList<GetInstanceGroupManagerVersionTargetSize, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceGroupManagerVersion.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerVersion(
-      instanceTemplate: map['instanceTemplate'] as String,
-      name: map['name'] as String,
-      targetSizes: pulumi.Input.decodeList<GetInstanceGroupManagerVersionTargetSize>(map['targetSizes'], (value) => GetInstanceGroupManagerVersionTargetSize.fromMap((value as Map).cast<String, dynamic>())),
+      instanceTemplate: (map['instanceTemplate'] as String).input(),
+      name: (map['name'] as String).input(),
+      targetSizes: (pulumi.Input.decodeList<GetInstanceGroupManagerVersionTargetSize>(map['targetSizes'], (value) => GetInstanceGroupManagerVersionTargetSize.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

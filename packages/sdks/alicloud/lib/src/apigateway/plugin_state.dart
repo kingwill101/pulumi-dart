@@ -39,19 +39,13 @@ class PluginState {
   /// [pluginType] The type of the plug-in. Valid values:
   /// [tags] The tag of the resource.
   PluginState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? pluginData,
-    pulumi.Output<String>? pluginName,
-    pulumi.Output<String>? pluginType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      pluginData = pulumi.Input.asOptionalInput<String>(pluginData),
-      pluginName = pulumi.Input.asOptionalInput<String>(pluginName),
-      pluginType = pulumi.Input.asOptionalInput<String>(pluginType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.createTime,
+    this.description,
+    this.pluginData,
+    this.pluginName,
+    this.pluginType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class PluginState {
 
   factory PluginState.fromMap(Map<String, dynamic> map) {
     return PluginState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      pluginData: map['pluginData'] == null ? null : pulumi.Output.create<String>(map['pluginData'] as String),
-      pluginName: map['pluginName'] == null ? null : pulumi.Output.create<String>(map['pluginName'] as String),
-      pluginType: map['pluginType'] == null ? null : pulumi.Output.create<String>(map['pluginType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      pluginData: map['pluginData'] == null ? null : (map['pluginData'] as String).input(),
+      pluginName: map['pluginName'] == null ? null : (map['pluginName'] as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

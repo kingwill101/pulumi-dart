@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticloudDataTransferConfigServiceState {
   /// The time when the state becomes effective
-  final String? effectiveTime;
+  final pulumi.Input<String>? effectiveTime;
   /// The state of the resource.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [MulticloudDataTransferConfigServiceState].
   /// [effectiveTime] The time when the state becomes effective
@@ -24,8 +25,8 @@ class MulticloudDataTransferConfigServiceState {
 
   factory MulticloudDataTransferConfigServiceState.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigServiceState(
-      effectiveTime: map['effectiveTime'] == null ? null : map['effectiveTime'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

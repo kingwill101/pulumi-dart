@@ -22,15 +22,11 @@ class GetSqlServerInstanceJobsStatusArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   GetSqlServerInstanceJobsStatusArgs({
-    pulumi.Output<String>? featureName,
-    pulumi.Output<String>? jobType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sqlServerInstanceName,
-  }) :
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      jobType = pulumi.Input.asOptionalInput<String>(jobType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerInstanceName = pulumi.Input.asInput<String>(sqlServerInstanceName);
+    this.featureName,
+    this.jobType,
+    required this.resourceGroupName,
+    required this.sqlServerInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSqlServerInstanceJobsStatusArgs {
 
   factory GetSqlServerInstanceJobsStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceJobsStatusArgs(
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      jobType: map['jobType'] == null ? null : pulumi.Output.create<String>(map['jobType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerInstanceName: pulumi.Output.create<String>(map['sqlServerInstanceName'] as String),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
     );
   }
 }

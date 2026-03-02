@@ -32,19 +32,13 @@ class InterfaceArgs {
   /// [vlan] Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   /// [vpc] Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   InterfaceArgs({
-    pulumi.Output<InterfaceDefaultRoute>? defaultRoute,
-    pulumi.Output<int>? firewallId,
-    required pulumi.Output<int> linodeId,
-    pulumi.Output<InterfacePublic>? public,
-    pulumi.Output<InterfaceVlan>? vlan,
-    pulumi.Output<InterfaceVpc>? vpc,
-  }) :
-      defaultRoute = pulumi.Input.asOptionalInput<InterfaceDefaultRoute>(defaultRoute),
-      firewallId = pulumi.Input.asOptionalInput<int>(firewallId),
-      linodeId = pulumi.Input.asInput<int>(linodeId),
-      public = pulumi.Input.asOptionalInput<InterfacePublic>(public),
-      vlan = pulumi.Input.asOptionalInput<InterfaceVlan>(vlan),
-      vpc = pulumi.Input.asOptionalInput<InterfaceVpc>(vpc);
+    this.defaultRoute,
+    this.firewallId,
+    required this.linodeId,
+    this.public,
+    this.vlan,
+    this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class InterfaceArgs {
 
   factory InterfaceArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceArgs(
-      defaultRoute: map['defaultRoute'] == null ? null : pulumi.Output.create<InterfaceDefaultRoute>(InterfaceDefaultRoute.fromMap((map['defaultRoute'] as Map).cast<String, dynamic>())),
-      firewallId: map['firewallId'] == null ? null : pulumi.Output.create<int>(map['firewallId'] as int),
-      linodeId: pulumi.Output.create<int>(map['linodeId'] as int),
-      public: map['public'] == null ? null : pulumi.Output.create<InterfacePublic>(InterfacePublic.fromMap((map['public'] as Map).cast<String, dynamic>())),
-      vlan: map['vlan'] == null ? null : pulumi.Output.create<InterfaceVlan>(InterfaceVlan.fromMap((map['vlan'] as Map).cast<String, dynamic>())),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<InterfaceVpc>(InterfaceVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())),
+      defaultRoute: map['defaultRoute'] == null ? null : (InterfaceDefaultRoute.fromMap((map['defaultRoute'] as Map).cast<String, dynamic>())).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      public: map['public'] == null ? null : (InterfacePublic.fromMap((map['public'] as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (InterfaceVlan.fromMap((map['vlan'] as Map).cast<String, dynamic>())).input(),
+      vpc: map['vpc'] == null ? null : (InterfaceVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

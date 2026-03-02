@@ -10,29 +10,29 @@ import 'google_cloud_run_v2_volume_mount.dart';
 /// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
 class GoogleCloudRunV2Container {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
-  final List<String>? command;
+  final pulumi.Input<List<String>>? command;
   /// Names of the containers that must start before this container.
-  final List<String>? dependsOn;
+  final pulumi.Input<List<String>>? dependsOn;
   /// List of environment variables to set in the container.
-  final List<GoogleCloudRunV2EnvVar>? env;
+  final pulumi.Input<List<GoogleCloudRunV2EnvVar>>? env;
   /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
-  final String image;
+  final pulumi.Input<String> image;
   /// Periodic probe of container liveness. Container will be restarted if the probe fails.
-  final GoogleCloudRunV2Probe? livenessProbe;
+  final pulumi.Input<GoogleCloudRunV2Probe>? livenessProbe;
   /// Name of the container specified as a DNS_LABEL (RFC 1123).
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-  final List<GoogleCloudRunV2ContainerPort>? ports;
+  final pulumi.Input<List<GoogleCloudRunV2ContainerPort>>? ports;
   /// Compute Resource requirements by this container.
-  final GoogleCloudRunV2ResourceRequirements? resources;
+  final pulumi.Input<GoogleCloudRunV2ResourceRequirements>? resources;
   /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
-  final GoogleCloudRunV2Probe? startupProbe;
+  final pulumi.Input<GoogleCloudRunV2Probe>? startupProbe;
   /// Volume to mount into the container's filesystem.
-  final List<GoogleCloudRunV2VolumeMount>? volumeMounts;
+  final pulumi.Input<List<GoogleCloudRunV2VolumeMount>>? volumeMounts;
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  final String? workingDir;
+  final pulumi.Input<String>? workingDir;
 
   /// Creates a new [GoogleCloudRunV2Container].
   /// [args] Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
@@ -67,32 +67,32 @@ class GoogleCloudRunV2Container {
       'args': ?args,
       'command': ?command,
       'dependsOn': ?dependsOn,
-      'env': ?env == null ? null : pulumi.Input.encodeList<GoogleCloudRunV2EnvVar, Map<String, dynamic>>(env!, (value) => value.toMap()),
+      'env': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudRunV2EnvVar>, List<Map<String, dynamic>>>(env, (value) => pulumi.Input.encodeList<GoogleCloudRunV2EnvVar, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
-      'livenessProbe': ?livenessProbe == null ? null : livenessProbe!.toMap(),
+      'livenessProbe': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRunV2Probe, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': ?name,
-      'ports': ?ports == null ? null : pulumi.Input.encodeList<GoogleCloudRunV2ContainerPort, Map<String, dynamic>>(ports!, (value) => value.toMap()),
-      'resources': ?resources == null ? null : resources!.toMap(),
-      'startupProbe': ?startupProbe == null ? null : startupProbe!.toMap(),
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<GoogleCloudRunV2VolumeMount, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'ports': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudRunV2ContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<GoogleCloudRunV2ContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRunV2ResourceRequirements, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'startupProbe': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRunV2Probe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudRunV2VolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<GoogleCloudRunV2VolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': ?workingDir,
     };
   }
 
   factory GoogleCloudRunV2Container.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2Container(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      command: map['command'] == null ? null : (map['command'] as List).cast<String>(),
-      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn'] as List).cast<String>(),
-      env: map['env'] == null ? null : pulumi.Input.decodeList<GoogleCloudRunV2EnvVar>(map['env'], (value) => GoogleCloudRunV2EnvVar.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] as String,
-      livenessProbe: map['livenessProbe'] == null ? null : GoogleCloudRunV2Probe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      ports: map['ports'] == null ? null : pulumi.Input.decodeList<GoogleCloudRunV2ContainerPort>(map['ports'], (value) => GoogleCloudRunV2ContainerPort.fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null ? null : GoogleCloudRunV2ResourceRequirements.fromMap((map['resources'] as Map).cast<String, dynamic>()),
-      startupProbe: map['startupProbe'] == null ? null : GoogleCloudRunV2Probe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>()),
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<GoogleCloudRunV2VolumeMount>(map['volumeMounts'], (value) => GoogleCloudRunV2VolumeMount.fromMap((value as Map).cast<String, dynamic>())),
-      workingDir: map['workingDir'] == null ? null : map['workingDir'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2EnvVar>(map['env'], (value) => GoogleCloudRunV2EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (map['image'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2ContainerPort>(map['ports'], (value) => GoogleCloudRunV2ContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (GoogleCloudRunV2ResourceRequirements.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (GoogleCloudRunV2Probe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2VolumeMount>(map['volumeMounts'], (value) => GoogleCloudRunV2VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
     );
   }
 }

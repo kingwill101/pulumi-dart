@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLocationsLocation {
   /// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The canonical id for this location. For example: "us-east1"..
-  final String locationId;
+  final pulumi.Input<String> locationId;
   /// Service-specific metadata. For example the available capacity at the given location.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetLocationsLocation].
   /// [displayName] The friendly name for this location, typically a nearby city name. For example, "Tokyo".
@@ -39,11 +40,11 @@ class GetLocationsLocation {
 
   factory GetLocationsLocation.fromMap(Map<String, dynamic> map) {
     return GetLocationsLocation(
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      locationId: map['locationId'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] as String,
+      displayName: (map['displayName'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      locationId: (map['locationId'] as String).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

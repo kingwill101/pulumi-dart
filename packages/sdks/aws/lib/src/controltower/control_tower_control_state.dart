@@ -25,17 +25,12 @@ class ControlTowerControlState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetIdentifier] The ARN of the organizational unit.
   ControlTowerControlState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? controlIdentifier,
-    pulumi.Output<List<ControlTowerControlParameter>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetIdentifier,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      controlIdentifier = pulumi.Input.asOptionalInput<String>(controlIdentifier),
-      parameters = pulumi.Input.asOptionalInput<List<ControlTowerControlParameter>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetIdentifier = pulumi.Input.asOptionalInput<String>(targetIdentifier);
+    this.arn,
+    this.controlIdentifier,
+    this.parameters,
+    this.region,
+    this.targetIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ControlTowerControlState {
 
   factory ControlTowerControlState.fromMap(Map<String, dynamic> map) {
     return ControlTowerControlState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      controlIdentifier: map['controlIdentifier'] == null ? null : pulumi.Output.create<String>(map['controlIdentifier'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<ControlTowerControlParameter>>(pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters'], (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetIdentifier: map['targetIdentifier'] == null ? null : pulumi.Output.create<String>(map['targetIdentifier'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      controlIdentifier: map['controlIdentifier'] == null ? null : (map['controlIdentifier'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters'], (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetIdentifier: map['targetIdentifier'] == null ? null : (map['targetIdentifier'] as String).input(),
     );
   }
 }

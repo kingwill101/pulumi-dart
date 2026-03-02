@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol {
   /// Port number of the protocol. Range is 0-64000.
-  final int port;
+  final pulumi.Input<int> port;
   /// Protocol type. Possible values are `Http` and `Https`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol].
   /// [port] Port number of the protocol. Range is 0-64000.
@@ -24,8 +25,8 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol {
 
   factory FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocol(
-      port: map['port'] as int,
-      type: map['type'] as String,
+      port: (map['port'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

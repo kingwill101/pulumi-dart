@@ -6,13 +6,13 @@ import 'validation_summary_item_response.dart';
 /// Validation status summary for a database.
 class DbLevelValidationStatusResponse {
   /// Name of database.
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
   /// End time of a database level validation.
-  final String? endedOn;
+  final pulumi.Input<String>? endedOn;
   /// Start time of a database level validation.
-  final String? startedOn;
+  final pulumi.Input<String>? startedOn;
   /// Summary of database level validations.
-  final List<ValidationSummaryItemResponse>? summary;
+  final pulumi.Input<List<ValidationSummaryItemResponse>>? summary;
 
   /// Creates a new [DbLevelValidationStatusResponse].
   /// [databaseName] Name of database.
@@ -31,16 +31,16 @@ class DbLevelValidationStatusResponse {
       'databaseName': ?databaseName,
       'endedOn': ?endedOn,
       'startedOn': ?startedOn,
-      'summary': ?summary == null ? null : pulumi.Input.encodeList<ValidationSummaryItemResponse, Map<String, dynamic>>(summary!, (value) => value.toMap()),
+      'summary': ?pulumi.Input.mapOptionalInputValue<List<ValidationSummaryItemResponse>, List<Map<String, dynamic>>>(summary, (value) => pulumi.Input.encodeList<ValidationSummaryItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DbLevelValidationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DbLevelValidationStatusResponse(
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      endedOn: map['endedOn'] == null ? null : map['endedOn'] as String,
-      startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
-      summary: map['summary'] == null ? null : pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['summary'], (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      endedOn: map['endedOn'] == null ? null : (map['endedOn'] as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      summary: map['summary'] == null ? null : (pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['summary'], (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

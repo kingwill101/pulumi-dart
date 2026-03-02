@@ -24,19 +24,13 @@ class GenaiAgentRouteState {
   /// [routeName] A name for the route.
   /// [uuid] The UUID of the linkage
   GenaiAgentRouteState({
-    pulumi.Output<String>? childAgentUuid,
-    pulumi.Output<String>? ifCase,
-    pulumi.Output<String>? parentAgentUuid,
-    pulumi.Output<bool>? rollback,
-    pulumi.Output<String>? routeName,
-    pulumi.Output<String>? uuid,
-  }) :
-      childAgentUuid = pulumi.Input.asOptionalInput<String>(childAgentUuid),
-      ifCase = pulumi.Input.asOptionalInput<String>(ifCase),
-      parentAgentUuid = pulumi.Input.asOptionalInput<String>(parentAgentUuid),
-      rollback = pulumi.Input.asOptionalInput<bool>(rollback),
-      routeName = pulumi.Input.asOptionalInput<String>(routeName),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.childAgentUuid,
+    this.ifCase,
+    this.parentAgentUuid,
+    this.rollback,
+    this.routeName,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class GenaiAgentRouteState {
 
   factory GenaiAgentRouteState.fromMap(Map<String, dynamic> map) {
     return GenaiAgentRouteState(
-      childAgentUuid: map['childAgentUuid'] == null ? null : pulumi.Output.create<String>(map['childAgentUuid'] as String),
-      ifCase: map['ifCase'] == null ? null : pulumi.Output.create<String>(map['ifCase'] as String),
-      parentAgentUuid: map['parentAgentUuid'] == null ? null : pulumi.Output.create<String>(map['parentAgentUuid'] as String),
-      rollback: map['rollback'] == null ? null : pulumi.Output.create<bool>(map['rollback'] as bool),
-      routeName: map['routeName'] == null ? null : pulumi.Output.create<String>(map['routeName'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      childAgentUuid: map['childAgentUuid'] == null ? null : (map['childAgentUuid'] as String).input(),
+      ifCase: map['ifCase'] == null ? null : (map['ifCase'] as String).input(),
+      parentAgentUuid: map['parentAgentUuid'] == null ? null : (map['parentAgentUuid'] as String).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

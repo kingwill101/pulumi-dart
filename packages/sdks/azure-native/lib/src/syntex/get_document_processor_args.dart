@@ -16,11 +16,9 @@ class GetDocumentProcessorArgs {
   /// [processorName] The name of document processor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDocumentProcessorArgs({
-    required pulumi.Output<String> processorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      processorName = pulumi.Input.asInput<String>(processorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.processorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDocumentProcessorArgs {
 
   factory GetDocumentProcessorArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentProcessorArgs(
-      processorName: pulumi.Output.create<String>(map['processorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      processorName: (map['processorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

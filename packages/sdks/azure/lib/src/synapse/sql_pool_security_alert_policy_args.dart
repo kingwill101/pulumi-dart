@@ -34,23 +34,15 @@ class SqlPoolSecurityAlertPolicyArgs {
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all Threat Detection audit logs.
   SqlPoolSecurityAlertPolicyArgs({
-    pulumi.Output<List<String>>? disabledAlerts,
-    pulumi.Output<bool>? emailAccountAdminsEnabled,
-    pulumi.Output<List<String>>? emailAddresses,
-    required pulumi.Output<String> policyState,
-    pulumi.Output<int>? retentionDays,
-    required pulumi.Output<String> sqlPoolId,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<String>? storageEndpoint,
-  }) :
-      disabledAlerts = pulumi.Input.asOptionalInput<List<String>>(disabledAlerts),
-      emailAccountAdminsEnabled = pulumi.Input.asOptionalInput<bool>(emailAccountAdminsEnabled),
-      emailAddresses = pulumi.Input.asOptionalInput<List<String>>(emailAddresses),
-      policyState = pulumi.Input.asInput<String>(policyState),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      sqlPoolId = pulumi.Input.asInput<String>(sqlPoolId),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint);
+    this.disabledAlerts,
+    this.emailAccountAdminsEnabled,
+    this.emailAddresses,
+    required this.policyState,
+    this.retentionDays,
+    required this.sqlPoolId,
+    this.storageAccountAccessKey,
+    this.storageEndpoint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SqlPoolSecurityAlertPolicyArgs {
 
   factory SqlPoolSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolSecurityAlertPolicyArgs(
-      disabledAlerts: map['disabledAlerts'] == null ? null : pulumi.Output.create<List<String>>((map['disabledAlerts'] as List).cast<String>()),
-      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : pulumi.Output.create<bool>(map['emailAccountAdminsEnabled'] as bool),
-      emailAddresses: map['emailAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['emailAddresses'] as List).cast<String>()),
-      policyState: pulumi.Output.create<String>(map['policyState'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      sqlPoolId: pulumi.Output.create<String>(map['sqlPoolId'] as String),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
+      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled'] as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      policyState: (map['policyState'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      sqlPoolId: (map['sqlPoolId'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

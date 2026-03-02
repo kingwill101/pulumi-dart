@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Forward SSH Tunnel connectivity.
 class ForwardSshTunnelConnectivity {
   /// Hostname for the SSH tunnel.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Input only. SSH password.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Port for the SSH tunnel, default value is 22.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Input only. SSH private key.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Username for the SSH tunnel.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [ForwardSshTunnelConnectivity].
   /// [hostname] Hostname for the SSH tunnel.
@@ -40,11 +41,11 @@ class ForwardSshTunnelConnectivity {
 
   factory ForwardSshTunnelConnectivity.fromMap(Map<String, dynamic> map) {
     return ForwardSshTunnelConnectivity(
-      hostname: map['hostname'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      username: map['username'] as String,
+      hostname: (map['hostname'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class OrganizationConfigurationState {
   /// [detectorId] The detector ID of the GuardDuty account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationState({
-    pulumi.Output<String>? autoEnableOrganizationMembers,
-    pulumi.Output<OrganizationConfigurationDatasources>? datasources,
-    pulumi.Output<String>? detectorId,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnableOrganizationMembers = pulumi.Input.asOptionalInput<String>(autoEnableOrganizationMembers),
-      datasources = pulumi.Input.asOptionalInput<OrganizationConfigurationDatasources>(datasources),
-      detectorId = pulumi.Input.asOptionalInput<String>(detectorId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoEnableOrganizationMembers,
+    this.datasources,
+    this.detectorId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnableOrganizationMembers: map['autoEnableOrganizationMembers'] == null ? null : pulumi.Output.create<String>(map['autoEnableOrganizationMembers'] as String),
-      datasources: map['datasources'] == null ? null : pulumi.Output.create<OrganizationConfigurationDatasources>(OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())),
-      detectorId: map['detectorId'] == null ? null : pulumi.Output.create<String>(map['detectorId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnableOrganizationMembers: map['autoEnableOrganizationMembers'] == null ? null : (map['autoEnableOrganizationMembers'] as String).input(),
+      datasources: map['datasources'] == null ? null : (OrganizationConfigurationDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
+      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

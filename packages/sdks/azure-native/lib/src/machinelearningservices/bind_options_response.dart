@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the bind options for the container
 class BindOptionsResponse {
   /// Indicate whether to create host path.
-  final bool? createHostPath;
+  final pulumi.Input<bool>? createHostPath;
   /// Type of Bind Option
-  final String? propagation;
+  final pulumi.Input<String>? propagation;
   /// Mention the selinux options.
-  final String? selinux;
+  final pulumi.Input<String>? selinux;
 
   /// Creates a new [BindOptionsResponse].
   /// [createHostPath] Indicate whether to create host path.
@@ -30,9 +31,9 @@ class BindOptionsResponse {
 
   factory BindOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BindOptionsResponse(
-      createHostPath: map['createHostPath'] == null ? null : map['createHostPath'] as bool,
-      propagation: map['propagation'] == null ? null : map['propagation'] as String,
-      selinux: map['selinux'] == null ? null : map['selinux'] as String,
+      createHostPath: map['createHostPath'] == null ? null : (map['createHostPath'] as bool).input(),
+      propagation: map['propagation'] == null ? null : (map['propagation'] as String).input(),
+      selinux: map['selinux'] == null ? null : (map['selinux'] as String).input(),
     );
   }
 }

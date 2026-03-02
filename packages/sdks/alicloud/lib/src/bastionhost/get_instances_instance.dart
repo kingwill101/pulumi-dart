@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The bandwidth of Cloud Bastionhost instance.
-  final String bandwidth;
+  final pulumi.Input<String> bandwidth;
   /// The instance's remark.
-  final String description;
+  final pulumi.Input<String> description;
   /// The instance's id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The instance's status.
-  final String instanceStatus;
+  final pulumi.Input<String> instanceStatus;
   /// The instance's license code.
-  final String licenseCode;
+  final pulumi.Input<String> licenseCode;
   /// The instance's private domain name.
-  final String privateDomain;
+  final pulumi.Input<String> privateDomain;
   /// The instance's public domain name.
-  final String publicDomain;
+  final pulumi.Input<String> publicDomain;
   /// The instance's public network access configuration.
-  final bool publicNetworkAccess;
+  final pulumi.Input<bool> publicNetworkAccess;
   /// The instance's security group configuration.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// The storage of Cloud Bastionhost instance in TB.
-  final String storage;
+  final pulumi.Input<String> storage;
   /// A map of tags assigned to the bastionhost instance.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The instance's vSwitch ID.
-  final String userVswitchId;
+  final pulumi.Input<String> userVswitchId;
 
   /// Creates a new [GetInstancesInstance].
   /// [bandwidth] The bandwidth of Cloud Bastionhost instance.
@@ -74,18 +75,18 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      bandwidth: map['bandwidth'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceStatus: map['instanceStatus'] as String,
-      licenseCode: map['licenseCode'] as String,
-      privateDomain: map['privateDomain'] as String,
-      publicDomain: map['publicDomain'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as bool,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      storage: map['storage'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userVswitchId: map['userVswitchId'] as String,
+      bandwidth: (map['bandwidth'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceStatus: (map['instanceStatus'] as String).input(),
+      licenseCode: (map['licenseCode'] as String).input(),
+      privateDomain: (map['privateDomain'] as String).input(),
+      publicDomain: (map['publicDomain'] as String).input(),
+      publicNetworkAccess: (map['publicNetworkAccess'] as bool).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      storage: (map['storage'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      userVswitchId: (map['userVswitchId'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class GetDatapolicyv2DataPolicyIamPolicyArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetDatapolicyv2DataPolicyIamPolicyArgs({
-    required pulumi.Output<String> dataPolicyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataPolicyId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetDatapolicyv2DataPolicyIamPolicyArgs {
 
   factory GetDatapolicyv2DataPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatapolicyv2DataPolicyIamPolicyArgs(
-      dataPolicyId: pulumi.Output.create<String>(map['dataPolicyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataPolicyId: (map['dataPolicyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

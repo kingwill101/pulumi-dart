@@ -16,11 +16,9 @@ class BucketPublicAccessBlockArgs {
   /// [blockPublicAccess] Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   /// [bucket] The name of the bucket.
   BucketPublicAccessBlockArgs({
-    required pulumi.Output<bool> blockPublicAccess,
-    required pulumi.Output<String> bucket,
-  }) :
-      blockPublicAccess = pulumi.Input.asInput<bool>(blockPublicAccess),
-      bucket = pulumi.Input.asInput<String>(bucket);
+    required this.blockPublicAccess,
+    required this.bucket,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketPublicAccessBlockArgs {
 
   factory BucketPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return BucketPublicAccessBlockArgs(
-      blockPublicAccess: pulumi.Output.create<bool>(map['blockPublicAccess'] as bool),
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
+      blockPublicAccess: (map['blockPublicAccess'] as bool).input(),
+      bucket: (map['bucket'] as String).input(),
     );
   }
 }

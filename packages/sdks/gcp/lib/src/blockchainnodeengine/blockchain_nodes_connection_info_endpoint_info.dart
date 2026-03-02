@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BlockchainNodesConnectionInfoEndpointInfo {
   /// (Output)
   /// The assigned URL for the node JSON-RPC API endpoint.
-  final String? jsonRpcApiEndpoint;
+  final pulumi.Input<String>? jsonRpcApiEndpoint;
   /// (Output)
   /// The assigned URL for the node WebSockets API endpoint.
-  final String? websocketsApiEndpoint;
+  final pulumi.Input<String>? websocketsApiEndpoint;
 
   /// Creates a new [BlockchainNodesConnectionInfoEndpointInfo].
   /// [jsonRpcApiEndpoint] (Output)
@@ -26,8 +27,8 @@ class BlockchainNodesConnectionInfoEndpointInfo {
 
   factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesConnectionInfoEndpointInfo(
-      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null ? null : map['jsonRpcApiEndpoint'] as String,
-      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null ? null : map['websocketsApiEndpoint'] as String,
+      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null ? null : (map['jsonRpcApiEndpoint'] as String).input(),
+      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null ? null : (map['websocketsApiEndpoint'] as String).input(),
     );
   }
 }

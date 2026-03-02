@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information relevant to blue-green upgrade.
 class BlueGreenInfoResponse {
   /// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
-  final List<String> blueInstanceGroupUrls;
+  final pulumi.Input<List<String>> blueInstanceGroupUrls;
   /// Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  final String bluePoolDeletionStartTime;
+  final pulumi.Input<String> bluePoolDeletionStartTime;
   /// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
-  final List<String> greenInstanceGroupUrls;
+  final pulumi.Input<List<String>> greenInstanceGroupUrls;
   /// Version of green pool.
-  final String greenPoolVersion;
+  final pulumi.Input<String> greenPoolVersion;
   /// Current blue-green upgrade phase.
-  final String phase;
+  final pulumi.Input<String> phase;
 
   /// Creates a new [BlueGreenInfoResponse].
   /// [blueInstanceGroupUrls] The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
@@ -40,11 +41,11 @@ class BlueGreenInfoResponse {
 
   factory BlueGreenInfoResponse.fromMap(Map<String, dynamic> map) {
     return BlueGreenInfoResponse(
-      blueInstanceGroupUrls: (map['blueInstanceGroupUrls'] as List).cast<String>(),
-      bluePoolDeletionStartTime: map['bluePoolDeletionStartTime'] as String,
-      greenInstanceGroupUrls: (map['greenInstanceGroupUrls'] as List).cast<String>(),
-      greenPoolVersion: map['greenPoolVersion'] as String,
-      phase: map['phase'] as String,
+      blueInstanceGroupUrls: ((map['blueInstanceGroupUrls'] as List).cast<String>()).input(),
+      bluePoolDeletionStartTime: (map['bluePoolDeletionStartTime'] as String).input(),
+      greenInstanceGroupUrls: ((map['greenInstanceGroupUrls'] as List).cast<String>()).input(),
+      greenPoolVersion: (map['greenPoolVersion'] as String).input(),
+      phase: (map['phase'] as String).input(),
     );
   }
 }

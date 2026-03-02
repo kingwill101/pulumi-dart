@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Log analytics workspace id and primary key
 class LogAnalyticsWorkspaceConfigResponse {
   /// Azure Log Analytics workspace ID
-  final String? workspaceId;
+  final pulumi.Input<String>? workspaceId;
 
   /// Creates a new [LogAnalyticsWorkspaceConfigResponse].
   /// [workspaceId] Azure Log Analytics workspace ID
@@ -20,7 +21,7 @@ class LogAnalyticsWorkspaceConfigResponse {
 
   factory LogAnalyticsWorkspaceConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceConfigResponse(
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

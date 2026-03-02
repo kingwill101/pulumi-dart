@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Customer Managed Identity
 class MyWorkbookUserAssignedIdentitiesResponse {
   /// The principal ID of resource identity.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant ID of resource.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [MyWorkbookUserAssignedIdentitiesResponse].
   /// [principalId] The principal ID of resource identity.
@@ -25,8 +26,8 @@ class MyWorkbookUserAssignedIdentitiesResponse {
 
   factory MyWorkbookUserAssignedIdentitiesResponse.fromMap(Map<String, dynamic> map) {
     return MyWorkbookUserAssignedIdentitiesResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_application_infos_application_dimension.dart';
 
 class GetApplicationInfosApplication {
-  final String applicationId;
-  final String approveValue;
-  final String auditReason;
-  final double desireValue;
-  final List<GetApplicationInfosApplicationDimension> dimensions;
-  final String effectiveTime;
-  final String expireTime;
-  final String id;
-  final int noticeType;
-  final String productCode;
-  final String quotaActionCode;
-  final String quotaDescription;
-  final String quotaName;
-  final String quotaUnit;
-  final String reason;
-  final String status;
+  final pulumi.Input<String> applicationId;
+  final pulumi.Input<String> approveValue;
+  final pulumi.Input<String> auditReason;
+  final pulumi.Input<double> desireValue;
+  final pulumi.Input<List<GetApplicationInfosApplicationDimension>> dimensions;
+  final pulumi.Input<String> effectiveTime;
+  final pulumi.Input<String> expireTime;
+  final pulumi.Input<String> id;
+  final pulumi.Input<int> noticeType;
+  final pulumi.Input<String> productCode;
+  final pulumi.Input<String> quotaActionCode;
+  final pulumi.Input<String> quotaDescription;
+  final pulumi.Input<String> quotaName;
+  final pulumi.Input<String> quotaUnit;
+  final pulumi.Input<String> reason;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetApplicationInfosApplication].
   /// [applicationId] Required.
@@ -63,7 +63,7 @@ class GetApplicationInfosApplication {
       'approveValue': approveValue,
       'auditReason': auditReason,
       'desireValue': desireValue,
-      'dimensions': pulumi.Input.encodeList<GetApplicationInfosApplicationDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<List<GetApplicationInfosApplicationDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetApplicationInfosApplicationDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveTime': effectiveTime,
       'expireTime': expireTime,
       'id': id,
@@ -80,22 +80,22 @@ class GetApplicationInfosApplication {
 
   factory GetApplicationInfosApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationInfosApplication(
-      applicationId: map['applicationId'] as String,
-      approveValue: map['approveValue'] as String,
-      auditReason: map['auditReason'] as String,
-      desireValue: map['desireValue'] as double,
-      dimensions: pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(map['dimensions'], (value) => GetApplicationInfosApplicationDimension.fromMap((value as Map).cast<String, dynamic>())),
-      effectiveTime: map['effectiveTime'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      noticeType: map['noticeType'] as int,
-      productCode: map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] as String,
-      quotaDescription: map['quotaDescription'] as String,
-      quotaName: map['quotaName'] as String,
-      quotaUnit: map['quotaUnit'] as String,
-      reason: map['reason'] as String,
-      status: map['status'] as String,
+      applicationId: (map['applicationId'] as String).input(),
+      approveValue: (map['approveValue'] as String).input(),
+      auditReason: (map['auditReason'] as String).input(),
+      desireValue: (map['desireValue'] as double).input(),
+      dimensions: (pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(map['dimensions'], (value) => GetApplicationInfosApplicationDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveTime: (map['effectiveTime'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      noticeType: (map['noticeType'] as int).input(),
+      productCode: (map['productCode'] as String).input(),
+      quotaActionCode: (map['quotaActionCode'] as String).input(),
+      quotaDescription: (map['quotaDescription'] as String).input(),
+      quotaName: (map['quotaName'] as String).input(),
+      quotaUnit: (map['quotaUnit'] as String).input(),
+      reason: (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

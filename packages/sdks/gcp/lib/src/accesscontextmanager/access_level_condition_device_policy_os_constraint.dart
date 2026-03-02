@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessLevelConditionDevicePolicyOsConstraint {
   /// The minimum allowed OS version. If not set, any version
   /// of this OS satisfies the constraint.
   /// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
-  final String? minimumVersion;
+  final pulumi.Input<String>? minimumVersion;
   /// The operating system type of the device.
   /// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
-  final String osType;
+  final pulumi.Input<String> osType;
 
   /// Creates a new [AccessLevelConditionDevicePolicyOsConstraint].
   /// [minimumVersion] The minimum allowed OS version. If not set, any version
@@ -27,8 +28,8 @@ class AccessLevelConditionDevicePolicyOsConstraint {
 
   factory AccessLevelConditionDevicePolicyOsConstraint.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionDevicePolicyOsConstraint(
-      minimumVersion: map['minimumVersion'] == null ? null : map['minimumVersion'] as String,
-      osType: map['osType'] as String,
+      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion'] as String).input(),
+      osType: (map['osType'] as String).input(),
     );
   }
 }

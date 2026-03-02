@@ -22,15 +22,11 @@ class ApplicationAssignmentArgs {
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ApplicationAssignmentArgs({
-    required pulumi.Output<String> applicationArn,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    pulumi.Output<String>? region,
-  }) :
-      applicationArn = pulumi.Input.asInput<String>(applicationArn),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.applicationArn,
+    required this.principalId,
+    required this.principalType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApplicationAssignmentArgs {
 
   factory ApplicationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentArgs(
-      applicationArn: pulumi.Output.create<String>(map['applicationArn'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      applicationArn: (map['applicationArn'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

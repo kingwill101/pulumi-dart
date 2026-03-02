@@ -21,17 +21,12 @@ class EntityArgs {
   /// [location] Optional.
   /// [project] Optional.
   EntityArgs({
-    required pulumi.Output<String> connectionId,
-    required pulumi.Output<String> entityTypeId,
-    pulumi.Output<Map<String, String>>? fields,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      fields = pulumi.Input.asOptionalInput<Map<String, String>>(fields),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.connectionId,
+    required this.entityTypeId,
+    this.fields,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +40,11 @@ class EntityArgs {
 
   factory EntityArgs.fromMap(Map<String, dynamic> map) {
     return EntityArgs(
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      entityTypeId: pulumi.Output.create<String>(map['entityTypeId'] as String),
-      fields: map['fields'] == null ? null : pulumi.Output.create<Map<String, String>>((map['fields'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      connectionId: (map['connectionId'] as String).input(),
+      entityTypeId: (map['entityTypeId'] as String).input(),
+      fields: map['fields'] == null ? null : ((map['fields'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

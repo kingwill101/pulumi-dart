@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_response.dart';
 
 /// Properties of route target address
 class RouteTargetAddressPropertiesFormatResponse {
   /// The private IPv4 or IPv6 address of the service gateway route target address.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The Private IP allocation method.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// The reference to the subnet resource.
-  final SubnetResponse? subnet;
+  final pulumi.Input<SubnetResponse>? subnet;
 
   /// Creates a new [RouteTargetAddressPropertiesFormatResponse].
   /// [privateIPAddress] The private IPv4 or IPv6 address of the service gateway route target address.
@@ -25,15 +26,15 @@ class RouteTargetAddressPropertiesFormatResponse {
     return <String, dynamic>{
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory RouteTargetAddressPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return RouteTargetAddressPropertiesFormatResponse(
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

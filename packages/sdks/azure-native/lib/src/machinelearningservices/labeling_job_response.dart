@@ -16,56 +16,56 @@ import 'status_message_response.dart';
 /// Labeling job definition
 class LabelingJobResponse {
   /// ARM resource ID of the component resource.
-  final String? componentId;
+  final pulumi.Input<String>? componentId;
   /// ARM resource ID of the compute resource.
-  final String? computeId;
+  final pulumi.Input<String>? computeId;
   /// Created time of the job in UTC timezone.
-  final String createdDateTime;
+  final pulumi.Input<String> createdDateTime;
   /// Configuration of data used in the job.
-  final LabelingDataConfigurationResponse? dataConfiguration;
+  final pulumi.Input<LabelingDataConfigurationResponse>? dataConfiguration;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Display name of job.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  final String? experimentName;
+  final pulumi.Input<String>? experimentName;
   /// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
   /// Defaults to AmlToken if null.
-  final AmlTokenResponse? identity;
+  final pulumi.Input<AmlTokenResponse>? identity;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// Labeling instructions of the job.
-  final LabelingJobInstructionsResponse? jobInstructions;
+  final pulumi.Input<LabelingJobInstructionsResponse>? jobInstructions;
   /// Enum to determine the type of job.
   /// Expected value is 'Labeling'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Label categories of the job.
-  final Map<String, LabelCategoryResponse>? labelCategories;
+  final pulumi.Input<Map<String, LabelCategoryResponse>>? labelCategories;
   /// Media type specific properties in the job.
-  final LabelingJobImagePropertiesResponse? labelingJobMediaProperties;
+  final pulumi.Input<LabelingJobImagePropertiesResponse>? labelingJobMediaProperties;
   /// Configuration of MLAssist feature in the job.
-  final MLAssistConfigurationDisabledResponse? mlAssistConfiguration;
+  final pulumi.Input<MLAssistConfigurationDisabledResponse>? mlAssistConfiguration;
   /// Notification setting for the job
-  final NotificationSettingResponse? notificationSetting;
+  final pulumi.Input<NotificationSettingResponse>? notificationSetting;
   /// Progress metrics of the job.
-  final ProgressMetricsResponse progressMetrics;
+  final pulumi.Input<ProgressMetricsResponse> progressMetrics;
   /// Internal id of the job(Previously called project).
-  final String projectId;
+  final pulumi.Input<String> projectId;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Specifies the labeling job provisioning state.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Configuration for secrets to be made available during runtime.
-  final Map<String, SecretConfigurationResponse>? secretsConfiguration;
+  final pulumi.Input<Map<String, SecretConfigurationResponse>>? secretsConfiguration;
   /// List of JobEndpoints.
   /// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-  final Map<String, JobServiceResponse>? services;
+  final pulumi.Input<Map<String, JobServiceResponse>>? services;
   /// Status of the job.
-  final String status;
+  final pulumi.Input<String> status;
   /// Status messages of the job.
-  final List<StatusMessageResponse> statusMessages;
+  final pulumi.Input<List<StatusMessageResponse>> statusMessages;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [LabelingJobResponse].
   /// [componentId] ARM resource ID of the component resource.
@@ -124,56 +124,56 @@ class LabelingJobResponse {
       'componentId': ?componentId,
       'computeId': ?computeId,
       'createdDateTime': createdDateTime,
-      'dataConfiguration': ?dataConfiguration == null ? null : dataConfiguration!.toMap(),
+      'dataConfiguration': ?pulumi.Input.mapOptionalInputValue<LabelingDataConfigurationResponse, Map<String, dynamic>>(dataConfiguration, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'experimentName': ?experimentName,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?pulumi.Input.mapOptionalInputValue<AmlTokenResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'isArchived': ?isArchived,
-      'jobInstructions': ?jobInstructions == null ? null : jobInstructions!.toMap(),
+      'jobInstructions': ?pulumi.Input.mapOptionalInputValue<LabelingJobInstructionsResponse, Map<String, dynamic>>(jobInstructions, (value) => value.toMap()),
       'jobType': jobType,
-      'labelCategories': ?labelCategories == null ? null : pulumi.Input.encodeMapValues<LabelCategoryResponse, Map<String, dynamic>>(labelCategories!, (value) => value.toMap()),
-      'labelingJobMediaProperties': ?labelingJobMediaProperties == null ? null : labelingJobMediaProperties!.toMap(),
-      'mlAssistConfiguration': ?mlAssistConfiguration == null ? null : mlAssistConfiguration!.toMap(),
-      'notificationSetting': ?notificationSetting == null ? null : notificationSetting!.toMap(),
-      'progressMetrics': progressMetrics.toMap(),
+      'labelCategories': ?pulumi.Input.mapOptionalInputValue<Map<String, LabelCategoryResponse>, Map<String, Map<String, dynamic>>>(labelCategories, (value) => pulumi.Input.encodeMapValues<LabelCategoryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labelingJobMediaProperties': ?pulumi.Input.mapOptionalInputValue<LabelingJobImagePropertiesResponse, Map<String, dynamic>>(labelingJobMediaProperties, (value) => value.toMap()),
+      'mlAssistConfiguration': ?pulumi.Input.mapOptionalInputValue<MLAssistConfigurationDisabledResponse, Map<String, dynamic>>(mlAssistConfiguration, (value) => value.toMap()),
+      'notificationSetting': ?pulumi.Input.mapOptionalInputValue<NotificationSettingResponse, Map<String, dynamic>>(notificationSetting, (value) => value.toMap()),
+      'progressMetrics': pulumi.Input.mapInputValue<ProgressMetricsResponse, Map<String, dynamic>>(progressMetrics, (value) => value.toMap()),
       'projectId': projectId,
       'properties': ?properties,
       'provisioningState': provisioningState,
-      'secretsConfiguration': ?secretsConfiguration == null ? null : pulumi.Input.encodeMapValues<SecretConfigurationResponse, Map<String, dynamic>>(secretsConfiguration!, (value) => value.toMap()),
-      'services': ?services == null ? null : pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'secretsConfiguration': ?pulumi.Input.mapOptionalInputValue<Map<String, SecretConfigurationResponse>, Map<String, Map<String, dynamic>>>(secretsConfiguration, (value) => pulumi.Input.encodeMapValues<SecretConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'services': ?pulumi.Input.mapOptionalInputValue<Map<String, JobServiceResponse>, Map<String, Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeMapValues<JobServiceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'status': status,
-      'statusMessages': pulumi.Input.encodeList<StatusMessageResponse, Map<String, dynamic>>(statusMessages, (value) => value.toMap()),
+      'statusMessages': pulumi.Input.mapInputValue<List<StatusMessageResponse>, List<Map<String, dynamic>>>(statusMessages, (value) => pulumi.Input.encodeList<StatusMessageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
 
   factory LabelingJobResponse.fromMap(Map<String, dynamic> map) {
     return LabelingJobResponse(
-      componentId: map['componentId'] == null ? null : map['componentId'] as String,
-      computeId: map['computeId'] == null ? null : map['computeId'] as String,
-      createdDateTime: map['createdDateTime'] as String,
-      dataConfiguration: map['dataConfiguration'] == null ? null : LabelingDataConfigurationResponse.fromMap((map['dataConfiguration'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      experimentName: map['experimentName'] == null ? null : map['experimentName'] as String,
-      identity: map['identity'] == null ? null : AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      jobInstructions: map['jobInstructions'] == null ? null : LabelingJobInstructionsResponse.fromMap((map['jobInstructions'] as Map).cast<String, dynamic>()),
-      jobType: map['jobType'] as String,
-      labelCategories: map['labelCategories'] == null ? null : pulumi.Input.decodeMapValues<LabelCategoryResponse>(map['labelCategories'], (value) => LabelCategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
-      labelingJobMediaProperties: map['labelingJobMediaProperties'] == null ? null : LabelingJobImagePropertiesResponse.fromMap((map['labelingJobMediaProperties'] as Map).cast<String, dynamic>()),
-      mlAssistConfiguration: map['mlAssistConfiguration'] == null ? null : MLAssistConfigurationDisabledResponse.fromMap((map['mlAssistConfiguration'] as Map).cast<String, dynamic>()),
-      notificationSetting: map['notificationSetting'] == null ? null : NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>()),
-      progressMetrics: ProgressMetricsResponse.fromMap((map['progressMetrics'] as Map).cast<String, dynamic>()),
-      projectId: map['projectId'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      secretsConfiguration: map['secretsConfiguration'] == null ? null : pulumi.Input.decodeMapValues<SecretConfigurationResponse>(map['secretsConfiguration'], (value) => SecretConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      services: map['services'] == null ? null : pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      statusMessages: pulumi.Input.decodeList<StatusMessageResponse>(map['statusMessages'], (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      computeId: map['computeId'] == null ? null : (map['computeId'] as String).input(),
+      createdDateTime: (map['createdDateTime'] as String).input(),
+      dataConfiguration: map['dataConfiguration'] == null ? null : (LabelingDataConfigurationResponse.fromMap((map['dataConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
+      identity: map['identity'] == null ? null : (AmlTokenResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      jobInstructions: map['jobInstructions'] == null ? null : (LabelingJobInstructionsResponse.fromMap((map['jobInstructions'] as Map).cast<String, dynamic>())).input(),
+      jobType: (map['jobType'] as String).input(),
+      labelCategories: map['labelCategories'] == null ? null : (pulumi.Input.decodeMapValues<LabelCategoryResponse>(map['labelCategories'], (value) => LabelCategoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labelingJobMediaProperties: map['labelingJobMediaProperties'] == null ? null : (LabelingJobImagePropertiesResponse.fromMap((map['labelingJobMediaProperties'] as Map).cast<String, dynamic>())).input(),
+      mlAssistConfiguration: map['mlAssistConfiguration'] == null ? null : (MLAssistConfigurationDisabledResponse.fromMap((map['mlAssistConfiguration'] as Map).cast<String, dynamic>())).input(),
+      notificationSetting: map['notificationSetting'] == null ? null : (NotificationSettingResponse.fromMap((map['notificationSetting'] as Map).cast<String, dynamic>())).input(),
+      progressMetrics: (ProgressMetricsResponse.fromMap((map['progressMetrics'] as Map).cast<String, dynamic>())).input(),
+      projectId: (map['projectId'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      secretsConfiguration: map['secretsConfiguration'] == null ? null : (pulumi.Input.decodeMapValues<SecretConfigurationResponse>(map['secretsConfiguration'], (value) => SecretConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeMapValues<JobServiceResponse>(map['services'], (value) => JobServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: (map['status'] as String).input(),
+      statusMessages: (pulumi.Input.decodeList<StatusMessageResponse>(map['statusMessages'], (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

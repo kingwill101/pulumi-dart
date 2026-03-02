@@ -29,19 +29,13 @@ class EventActionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [updatedAt] Data and time when the resource was last updated.
   EventActionState({
-    pulumi.Output<EventActionAction>? action,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<EventActionEvent>? event,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      action = pulumi.Input.asOptionalInput<EventActionAction>(action),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      event = pulumi.Input.asOptionalInput<EventActionEvent>(event),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.action,
+    this.arn,
+    this.createdAt,
+    this.event,
+    this.region,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class EventActionState {
 
   factory EventActionState.fromMap(Map<String, dynamic> map) {
     return EventActionState(
-      action: map['action'] == null ? null : pulumi.Output.create<EventActionAction>(EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      event: map['event'] == null ? null : pulumi.Output.create<EventActionEvent>(EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      action: map['action'] == null ? null : (EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      event: map['event'] == null ? null : (EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

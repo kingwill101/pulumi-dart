@@ -6,11 +6,11 @@ import 'reportable_exception_response.dart';
 /// Output for the task that validates connection to Azure SQL Database Managed Instance.
 class ConnectToTargetSqlMISyncTaskOutputResponse {
   /// Target server brand version
-  final String targetServerBrandVersion;
+  final pulumi.Input<String> targetServerBrandVersion;
   /// Target server version
-  final String targetServerVersion;
+  final pulumi.Input<String> targetServerVersion;
   /// Validation errors
-  final List<ReportableExceptionResponse> validationErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
   /// Creates a new [ConnectToTargetSqlMISyncTaskOutputResponse].
   /// [targetServerBrandVersion] Target server brand version
@@ -26,15 +26,15 @@ class ConnectToTargetSqlMISyncTaskOutputResponse {
     return <String, dynamic>{
       'targetServerBrandVersion': targetServerBrandVersion,
       'targetServerVersion': targetServerVersion,
-      'validationErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(validationErrors, (value) => value.toMap()),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ConnectToTargetSqlMISyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlMISyncTaskOutputResponse(
-      targetServerBrandVersion: map['targetServerBrandVersion'] as String,
-      targetServerVersion: map['targetServerVersion'] as String,
-      validationErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
+      targetServerVersion: (map['targetServerVersion'] as String).input(),
+      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

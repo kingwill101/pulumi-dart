@@ -49,33 +49,20 @@ class RuntimeState {
   /// [runtimeUser] The user email of the NotebookRuntime.
   /// [state] Output only. The state of the runtime.
   RuntimeState({
-    pulumi.Output<bool>? autoUpgrade,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? desiredState,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? expirationTime,
-    pulumi.Output<bool>? isUpgradable,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef,
-    pulumi.Output<String>? notebookRuntimeType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? runtimeUser,
-    pulumi.Output<String>? state,
-  }) :
-      autoUpgrade = pulumi.Input.asOptionalInput<bool>(autoUpgrade),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      expirationTime = pulumi.Input.asOptionalInput<String>(expirationTime),
-      isUpgradable = pulumi.Input.asOptionalInput<bool>(isUpgradable),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notebookRuntimeTemplateRef = pulumi.Input.asOptionalInput<RuntimeNotebookRuntimeTemplateRef>(notebookRuntimeTemplateRef),
-      notebookRuntimeType = pulumi.Input.asOptionalInput<String>(notebookRuntimeType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeUser = pulumi.Input.asOptionalInput<String>(runtimeUser),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.autoUpgrade,
+    this.description,
+    this.desiredState,
+    this.displayName,
+    this.expirationTime,
+    this.isUpgradable,
+    this.location,
+    this.name,
+    this.notebookRuntimeTemplateRef,
+    this.notebookRuntimeType,
+    this.project,
+    this.runtimeUser,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class RuntimeState {
 
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
-      autoUpgrade: map['autoUpgrade'] == null ? null : pulumi.Output.create<bool>(map['autoUpgrade'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      expirationTime: map['expirationTime'] == null ? null : pulumi.Output.create<String>(map['expirationTime'] as String),
-      isUpgradable: map['isUpgradable'] == null ? null : pulumi.Output.create<bool>(map['isUpgradable'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : pulumi.Output.create<RuntimeNotebookRuntimeTemplateRef>(RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())),
-      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : pulumi.Output.create<String>(map['notebookRuntimeType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeUser: map['runtimeUser'] == null ? null : pulumi.Output.create<String>(map['runtimeUser'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
+      isUpgradable: map['isUpgradable'] == null ? null : (map['isUpgradable'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())).input(),
+      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (map['notebookRuntimeType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeUser: map['runtimeUser'] == null ? null : (map['runtimeUser'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

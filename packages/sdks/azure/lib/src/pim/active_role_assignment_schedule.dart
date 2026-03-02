@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'active_role_assignment_schedule_expiration.dart';
 
 class ActiveRoleAssignmentSchedule {
   /// An `expiration` block as defined above.
-  final ActiveRoleAssignmentScheduleExpiration? expiration;
+  final pulumi.Input<ActiveRoleAssignmentScheduleExpiration>? expiration;
   /// The start date/time of the role assignment. Changing this forces a new resource to be created.
-  final String? startDateTime;
+  final pulumi.Input<String>? startDateTime;
 
   /// Creates a new [ActiveRoleAssignmentSchedule].
   /// [expiration] An `expiration` block as defined above.
@@ -18,15 +19,15 @@ class ActiveRoleAssignmentSchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<ActiveRoleAssignmentScheduleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'startDateTime': ?startDateTime,
     };
   }
 
   factory ActiveRoleAssignmentSchedule.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentSchedule(
-      expiration: map['expiration'] == null ? null : ActiveRoleAssignmentScheduleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      startDateTime: map['startDateTime'] == null ? null : map['startDateTime'] as String,
+      expiration: map['expiration'] == null ? null : (ActiveRoleAssignmentScheduleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
     );
   }
 }

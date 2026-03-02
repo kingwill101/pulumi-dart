@@ -8,18 +8,18 @@ import 'disk_secret_response.dart';
 /// The secrets related to disk job.
 class DataBoxDiskJobSecretsResponse {
   /// Dc Access Security Code for Customer Managed Shipping
-  final DcAccessSecurityCodeResponse dcAccessSecurityCode;
+  final pulumi.Input<DcAccessSecurityCodeResponse> dcAccessSecurityCode;
   /// Contains the list of secrets object for that device.
-  final List<DiskSecretResponse> diskSecrets;
+  final pulumi.Input<List<DiskSecretResponse>> diskSecrets;
   /// Error while fetching the secrets.
-  final CloudErrorResponse error;
+  final pulumi.Input<CloudErrorResponse> error;
   /// Whether passkey was provided by user.
-  final bool isPasskeyUserDefined;
+  final pulumi.Input<bool> isPasskeyUserDefined;
   /// Used to indicate what type of job secrets object.
   /// Expected value is 'DataBoxDisk'.
-  final String jobSecretsType;
+  final pulumi.Input<String> jobSecretsType;
   /// PassKey for the disk Job.
-  final String passKey;
+  final pulumi.Input<String> passKey;
 
   /// Creates a new [DataBoxDiskJobSecretsResponse].
   /// [dcAccessSecurityCode] Dc Access Security Code for Customer Managed Shipping
@@ -39,9 +39,9 @@ class DataBoxDiskJobSecretsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dcAccessSecurityCode': dcAccessSecurityCode.toMap(),
-      'diskSecrets': pulumi.Input.encodeList<DiskSecretResponse, Map<String, dynamic>>(diskSecrets, (value) => value.toMap()),
-      'error': error.toMap(),
+      'dcAccessSecurityCode': pulumi.Input.mapInputValue<DcAccessSecurityCodeResponse, Map<String, dynamic>>(dcAccessSecurityCode, (value) => value.toMap()),
+      'diskSecrets': pulumi.Input.mapInputValue<List<DiskSecretResponse>, List<Map<String, dynamic>>>(diskSecrets, (value) => pulumi.Input.encodeList<DiskSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'error': pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'isPasskeyUserDefined': isPasskeyUserDefined,
       'jobSecretsType': jobSecretsType,
       'passKey': passKey,
@@ -50,12 +50,12 @@ class DataBoxDiskJobSecretsResponse {
 
   factory DataBoxDiskJobSecretsResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskJobSecretsResponse(
-      dcAccessSecurityCode: DcAccessSecurityCodeResponse.fromMap((map['dcAccessSecurityCode'] as Map).cast<String, dynamic>()),
-      diskSecrets: pulumi.Input.decodeList<DiskSecretResponse>(map['diskSecrets'], (value) => DiskSecretResponse.fromMap((value as Map).cast<String, dynamic>())),
-      error: CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      isPasskeyUserDefined: map['isPasskeyUserDefined'] as bool,
-      jobSecretsType: map['jobSecretsType'] as String,
-      passKey: map['passKey'] as String,
+      dcAccessSecurityCode: (DcAccessSecurityCodeResponse.fromMap((map['dcAccessSecurityCode'] as Map).cast<String, dynamic>())).input(),
+      diskSecrets: (pulumi.Input.decodeList<DiskSecretResponse>(map['diskSecrets'], (value) => DiskSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      error: (CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      isPasskeyUserDefined: (map['isPasskeyUserDefined'] as bool).input(),
+      jobSecretsType: (map['jobSecretsType'] as String).input(),
+      passKey: (map['passKey'] as String).input(),
     );
   }
 }

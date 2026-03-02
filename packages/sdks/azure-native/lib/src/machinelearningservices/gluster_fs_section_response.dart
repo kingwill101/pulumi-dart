@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data specific to GlusterFS.
 class GlusterFsSectionResponse {
   /// The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
-  final String serverAddress;
+  final pulumi.Input<String> serverAddress;
   /// The name of the created GlusterFS volume.
-  final String volumeName;
+  final pulumi.Input<String> volumeName;
 
   /// Creates a new [GlusterFsSectionResponse].
   /// [serverAddress] The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
@@ -25,8 +26,8 @@ class GlusterFsSectionResponse {
 
   factory GlusterFsSectionResponse.fromMap(Map<String, dynamic> map) {
     return GlusterFsSectionResponse(
-      serverAddress: map['serverAddress'] as String,
-      volumeName: map['volumeName'] as String,
+      serverAddress: (map['serverAddress'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

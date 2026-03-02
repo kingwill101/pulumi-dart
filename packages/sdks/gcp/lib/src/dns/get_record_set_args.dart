@@ -22,15 +22,11 @@ class GetRecordSetArgs {
   /// [project] The ID of the project for the Google Cloud.
   /// [type] The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
   GetRecordSetArgs({
-    required pulumi.Output<String> managedZone,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> type,
-  }) :
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asInput<String>(type);
+    required this.managedZone,
+    required this.name,
+    this.project,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRecordSetArgs {
 
   factory GetRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordSetArgs(
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      managedZone: (map['managedZone'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

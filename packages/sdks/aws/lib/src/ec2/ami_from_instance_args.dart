@@ -44,25 +44,16 @@ class AmiFromInstanceArgs {
   /// [sourceInstanceId] ID of the instance to use as the basis of the AMI.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AmiFromInstanceArgs({
-    pulumi.Output<String>? deprecationTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<AmiFromInstanceEbsBlockDevice>>? ebsBlockDevices,
-    pulumi.Output<List<AmiFromInstanceEphemeralBlockDevice>>? ephemeralBlockDevices,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? snapshotWithoutReboot,
-    required pulumi.Output<String> sourceInstanceId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deprecationTime = pulumi.Input.asOptionalInput<String>(deprecationTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ebsBlockDevices = pulumi.Input.asOptionalInput<List<AmiFromInstanceEbsBlockDevice>>(ebsBlockDevices),
-      ephemeralBlockDevices = pulumi.Input.asOptionalInput<List<AmiFromInstanceEphemeralBlockDevice>>(ephemeralBlockDevices),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotWithoutReboot = pulumi.Input.asOptionalInput<bool>(snapshotWithoutReboot),
-      sourceInstanceId = pulumi.Input.asInput<String>(sourceInstanceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deprecationTime,
+    this.description,
+    this.ebsBlockDevices,
+    this.ephemeralBlockDevices,
+    this.name,
+    this.region,
+    this.snapshotWithoutReboot,
+    required this.sourceInstanceId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class AmiFromInstanceArgs {
 
   factory AmiFromInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AmiFromInstanceArgs(
-      deprecationTime: map['deprecationTime'] == null ? null : pulumi.Output.create<String>(map['deprecationTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ebsBlockDevices: map['ebsBlockDevices'] == null ? null : pulumi.Output.create<List<AmiFromInstanceEbsBlockDevice>>(pulumi.Input.decodeList<AmiFromInstanceEbsBlockDevice>(map['ebsBlockDevices'], (value) => AmiFromInstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>()))),
-      ephemeralBlockDevices: map['ephemeralBlockDevices'] == null ? null : pulumi.Output.create<List<AmiFromInstanceEphemeralBlockDevice>>(pulumi.Input.decodeList<AmiFromInstanceEphemeralBlockDevice>(map['ephemeralBlockDevices'], (value) => AmiFromInstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotWithoutReboot: map['snapshotWithoutReboot'] == null ? null : pulumi.Output.create<bool>(map['snapshotWithoutReboot'] as bool),
-      sourceInstanceId: pulumi.Output.create<String>(map['sourceInstanceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deprecationTime: map['deprecationTime'] == null ? null : (map['deprecationTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ebsBlockDevices: map['ebsBlockDevices'] == null ? null : (pulumi.Input.decodeList<AmiFromInstanceEbsBlockDevice>(map['ebsBlockDevices'], (value) => AmiFromInstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ephemeralBlockDevices: map['ephemeralBlockDevices'] == null ? null : (pulumi.Input.decodeList<AmiFromInstanceEphemeralBlockDevice>(map['ephemeralBlockDevices'], (value) => AmiFromInstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotWithoutReboot: map['snapshotWithoutReboot'] == null ? null : (map['snapshotWithoutReboot'] as bool).input(),
+      sourceInstanceId: (map['sourceInstanceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

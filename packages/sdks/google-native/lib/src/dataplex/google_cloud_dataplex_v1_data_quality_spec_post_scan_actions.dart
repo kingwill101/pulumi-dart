@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_data_quality_spec_post_scan_actions_big_query_export.dart';
 
 /// The configuration of post scan actions of DataQualityScan.
 class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   /// Optional. If set, results will be exported to the provided BigQuery table.
-  final GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport? bigqueryExport;
+  final pulumi.Input<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>? bigqueryExport;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualitySpecPostScanActions].
   /// [bigqueryExport] Optional. If set, results will be exported to the provided BigQuery table.
@@ -15,13 +16,13 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryExport': ?bigqueryExport == null ? null : bigqueryExport!.toMap(),
+      'bigqueryExport': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport, Map<String, dynamic>>(bigqueryExport, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualitySpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null ? null : GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>()),
+      bigqueryExport: map['bigqueryExport'] == null ? null : (GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class FunctionAppFunctionArgs {
   /// [name] The name of the function. Changing this forces a new resource to be created.
   /// [testData] The test data for the function.
   FunctionAppFunctionArgs({
-    required pulumi.Output<String> configJson,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<List<FunctionAppFunctionFile>>? files,
-    required pulumi.Output<String> functionAppId,
-    pulumi.Output<String>? language,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? testData,
-  }) :
-      configJson = pulumi.Input.asInput<String>(configJson),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      files = pulumi.Input.asOptionalInput<List<FunctionAppFunctionFile>>(files),
-      functionAppId = pulumi.Input.asInput<String>(functionAppId),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      testData = pulumi.Input.asOptionalInput<String>(testData);
+    required this.configJson,
+    this.enabled,
+    this.files,
+    required this.functionAppId,
+    this.language,
+    this.name,
+    this.testData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class FunctionAppFunctionArgs {
 
   factory FunctionAppFunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppFunctionArgs(
-      configJson: pulumi.Output.create<String>(map['configJson'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      files: map['files'] == null ? null : pulumi.Output.create<List<FunctionAppFunctionFile>>(pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))),
-      functionAppId: pulumi.Output.create<String>(map['functionAppId'] as String),
-      language: map['language'] == null ? null : pulumi.Output.create<String>(map['language'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      testData: map['testData'] == null ? null : pulumi.Output.create<String>(map['testData'] as String),
+      configJson: (map['configJson'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionAppId: (map['functionAppId'] as String).input(),
+      language: map['language'] == null ? null : (map['language'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      testData: map['testData'] == null ? null : (map['testData'] as String).input(),
     );
   }
 }

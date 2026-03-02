@@ -20,15 +20,11 @@ class StorageDomainRoutingRuleState {
   /// [routes] Domain name routing entry See `routes` below.
   /// [ruleId] The ID of the Rule.
   StorageDomainRoutingRuleState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<List<StorageDomainRoutingRuleRoute>>? routes,
-    pulumi.Output<String>? ruleId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      routes = pulumi.Input.asOptionalInput<List<StorageDomainRoutingRuleRoute>>(routes),
-      ruleId = pulumi.Input.asOptionalInput<String>(ruleId);
+    this.createTime,
+    this.instanceId,
+    this.routes,
+    this.ruleId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class StorageDomainRoutingRuleState {
 
   factory StorageDomainRoutingRuleState.fromMap(Map<String, dynamic> map) {
     return StorageDomainRoutingRuleState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<StorageDomainRoutingRuleRoute>>(pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes'], (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleId: map['ruleId'] == null ? null : pulumi.Output.create<String>(map['ruleId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes'], (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
     );
   }
 }

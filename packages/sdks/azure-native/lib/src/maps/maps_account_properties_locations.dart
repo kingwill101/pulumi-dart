@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data processing location.
 class MapsAccountPropertiesLocations {
   /// The location name.
-  final String locationName;
+  final pulumi.Input<String> locationName;
 
   /// Creates a new [MapsAccountPropertiesLocations].
   /// [locationName] The location name.
@@ -20,7 +21,7 @@ class MapsAccountPropertiesLocations {
 
   factory MapsAccountPropertiesLocations.fromMap(Map<String, dynamic> map) {
     return MapsAccountPropertiesLocations(
-      locationName: map['locationName'] as String,
+      locationName: (map['locationName'] as String).input(),
     );
   }
 }

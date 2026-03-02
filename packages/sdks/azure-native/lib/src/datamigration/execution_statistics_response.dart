@@ -6,17 +6,17 @@ import 'wait_statistics_response.dart';
 /// Description about the errors happen while performing migration validation
 class ExecutionStatisticsResponse {
   /// CPU Time in millisecond(s) for the query execution
-  final double? cpuTimeMs;
+  final pulumi.Input<double>? cpuTimeMs;
   /// Time taken in millisecond(s) for executing the query
-  final double? elapsedTimeMs;
+  final pulumi.Input<double>? elapsedTimeMs;
   /// No. of query executions
-  final double? executionCount;
+  final pulumi.Input<double>? executionCount;
   /// Indicates whether the query resulted in an error
-  final bool? hasErrors;
+  final pulumi.Input<bool>? hasErrors;
   /// List of sql Errors
-  final List<String>? sqlErrors;
+  final pulumi.Input<List<String>>? sqlErrors;
   /// Dictionary of sql query execution wait types and the respective statistics
-  final Map<String, WaitStatisticsResponse>? waitStats;
+  final pulumi.Input<Map<String, WaitStatisticsResponse>>? waitStats;
 
   /// Creates a new [ExecutionStatisticsResponse].
   /// [cpuTimeMs] CPU Time in millisecond(s) for the query execution
@@ -41,18 +41,18 @@ class ExecutionStatisticsResponse {
       'executionCount': ?executionCount,
       'hasErrors': ?hasErrors,
       'sqlErrors': ?sqlErrors,
-      'waitStats': ?waitStats == null ? null : pulumi.Input.encodeMapValues<WaitStatisticsResponse, Map<String, dynamic>>(waitStats!, (value) => value.toMap()),
+      'waitStats': ?pulumi.Input.mapOptionalInputValue<Map<String, WaitStatisticsResponse>, Map<String, Map<String, dynamic>>>(waitStats, (value) => pulumi.Input.encodeMapValues<WaitStatisticsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ExecutionStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatisticsResponse(
-      cpuTimeMs: map['cpuTimeMs'] == null ? null : map['cpuTimeMs'] as double,
-      elapsedTimeMs: map['elapsedTimeMs'] == null ? null : map['elapsedTimeMs'] as double,
-      executionCount: map['executionCount'] == null ? null : map['executionCount'] as double,
-      hasErrors: map['hasErrors'] == null ? null : map['hasErrors'] as bool,
-      sqlErrors: map['sqlErrors'] == null ? null : (map['sqlErrors'] as List).cast<String>(),
-      waitStats: map['waitStats'] == null ? null : pulumi.Input.decodeMapValues<WaitStatisticsResponse>(map['waitStats'], (value) => WaitStatisticsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      cpuTimeMs: map['cpuTimeMs'] == null ? null : (map['cpuTimeMs'] as double).input(),
+      elapsedTimeMs: map['elapsedTimeMs'] == null ? null : (map['elapsedTimeMs'] as double).input(),
+      executionCount: map['executionCount'] == null ? null : (map['executionCount'] as double).input(),
+      hasErrors: map['hasErrors'] == null ? null : (map['hasErrors'] as bool).input(),
+      sqlErrors: map['sqlErrors'] == null ? null : ((map['sqlErrors'] as List).cast<String>()).input(),
+      waitStats: map['waitStats'] == null ? null : (pulumi.Input.decodeMapValues<WaitStatisticsResponse>(map['waitStats'], (value) => WaitStatisticsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_scale_rule.dart';
 import 'http_scale_rule.dart';
 import 'queue_scale_rule.dart';
@@ -8,15 +9,15 @@ import 'tcp_scale_rule.dart';
 /// Azure Spring Apps App Instance scaling rule.
 class ScaleRule {
   /// Azure Queue based scaling.
-  final QueueScaleRule? azureQueue;
+  final pulumi.Input<QueueScaleRule>? azureQueue;
   /// Custom scale rule.
-  final CustomScaleRule? custom;
+  final pulumi.Input<CustomScaleRule>? custom;
   /// HTTP requests based scaling.
-  final HttpScaleRule? http;
+  final pulumi.Input<HttpScaleRule>? http;
   /// Scale Rule Name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Tcp requests based scaling.
-  final TcpScaleRule? tcp;
+  final pulumi.Input<TcpScaleRule>? tcp;
 
   /// Creates a new [ScaleRule].
   /// [azureQueue] Azure Queue based scaling.
@@ -34,21 +35,21 @@ class ScaleRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureQueue': ?azureQueue == null ? null : azureQueue!.toMap(),
-      'custom': ?custom == null ? null : custom!.toMap(),
-      'http': ?http == null ? null : http!.toMap(),
+      'azureQueue': ?pulumi.Input.mapOptionalInputValue<QueueScaleRule, Map<String, dynamic>>(azureQueue, (value) => value.toMap()),
+      'custom': ?pulumi.Input.mapOptionalInputValue<CustomScaleRule, Map<String, dynamic>>(custom, (value) => value.toMap()),
+      'http': ?pulumi.Input.mapOptionalInputValue<HttpScaleRule, Map<String, dynamic>>(http, (value) => value.toMap()),
       'name': ?name,
-      'tcp': ?tcp == null ? null : tcp!.toMap(),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<TcpScaleRule, Map<String, dynamic>>(tcp, (value) => value.toMap()),
     };
   }
 
   factory ScaleRule.fromMap(Map<String, dynamic> map) {
     return ScaleRule(
-      azureQueue: map['azureQueue'] == null ? null : QueueScaleRule.fromMap((map['azureQueue'] as Map).cast<String, dynamic>()),
-      custom: map['custom'] == null ? null : CustomScaleRule.fromMap((map['custom'] as Map).cast<String, dynamic>()),
-      http: map['http'] == null ? null : HttpScaleRule.fromMap((map['http'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      tcp: map['tcp'] == null ? null : TcpScaleRule.fromMap((map['tcp'] as Map).cast<String, dynamic>()),
+      azureQueue: map['azureQueue'] == null ? null : (QueueScaleRule.fromMap((map['azureQueue'] as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (CustomScaleRule.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (HttpScaleRule.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tcp: map['tcp'] == null ? null : (TcpScaleRule.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

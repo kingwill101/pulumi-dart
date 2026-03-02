@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResolverZonesZone {
   /// The status of the Zone.
-  final String status;
+  final pulumi.Input<String> status;
   /// The zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetResolverZonesZone].
   /// [status] The status of the Zone.
@@ -24,8 +25,8 @@ class GetResolverZonesZone {
 
   factory GetResolverZonesZone.fromMap(Map<String, dynamic> map) {
     return GetResolverZonesZone(
-      status: map['status'] as String,
-      zoneId: map['zoneId'] as String,
+      status: (map['status'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

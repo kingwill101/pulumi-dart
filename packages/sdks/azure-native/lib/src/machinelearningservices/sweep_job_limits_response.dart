@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sweep Job limit class.
 class SweepJobLimitsResponse {
   /// Expected value is 'Sweep'.
-  final String jobLimitsType;
+  final pulumi.Input<String> jobLimitsType;
   /// Sweep Job max concurrent trials.
-  final int? maxConcurrentTrials;
+  final pulumi.Input<int>? maxConcurrentTrials;
   /// Sweep Job max total trials.
-  final int? maxTotalTrials;
+  final pulumi.Input<int>? maxTotalTrials;
   /// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-  final String? timeout;
+  final pulumi.Input<String>? timeout;
   /// Sweep Job Trial timeout value.
-  final String? trialTimeout;
+  final pulumi.Input<String>? trialTimeout;
 
   /// Creates a new [SweepJobLimitsResponse].
   /// [jobLimitsType] Expected value is 'Sweep'.
@@ -40,11 +41,11 @@ class SweepJobLimitsResponse {
 
   factory SweepJobLimitsResponse.fromMap(Map<String, dynamic> map) {
     return SweepJobLimitsResponse(
-      jobLimitsType: map['jobLimitsType'] as String,
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : map['maxConcurrentTrials'] as int,
-      maxTotalTrials: map['maxTotalTrials'] == null ? null : map['maxTotalTrials'] as int,
-      timeout: map['timeout'] == null ? null : map['timeout'] as String,
-      trialTimeout: map['trialTimeout'] == null ? null : map['trialTimeout'] as String,
+      jobLimitsType: (map['jobLimitsType'] as String).input(),
+      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials'] as int).input(),
+      maxTotalTrials: map['maxTotalTrials'] == null ? null : (map['maxTotalTrials'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      trialTimeout: map['trialTimeout'] == null ? null : (map['trialTimeout'] as String).input(),
     );
   }
 }

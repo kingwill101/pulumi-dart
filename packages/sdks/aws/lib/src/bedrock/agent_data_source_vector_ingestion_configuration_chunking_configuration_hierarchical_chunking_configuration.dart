@@ -5,9 +5,9 @@ import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration {
   /// Maximum number of tokens to include in a chunk. Must contain two `level_configurations`. See `level_configurations` for details.
-  final List<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>? levelConfigurations;
+  final pulumi.Input<List<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>>? levelConfigurations;
   /// The number of tokens to repeat across chunks in the same layer.
-  final int overlapTokens;
+  final pulumi.Input<int> overlapTokens;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration].
   /// [levelConfigurations] Maximum number of tokens to include in a chunk. Must contain two `level_configurations`. See `level_configurations` for details.
@@ -19,15 +19,15 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'levelConfigurations': ?levelConfigurations == null ? null : pulumi.Input.encodeList<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration, Map<String, dynamic>>(levelConfigurations!, (value) => value.toMap()),
+      'levelConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>, List<Map<String, dynamic>>>(levelConfigurations, (value) => pulumi.Input.encodeList<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'overlapTokens': overlapTokens,
     };
   }
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration(
-      levelConfigurations: map['levelConfigurations'] == null ? null : pulumi.Input.decodeList<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>(map['levelConfigurations'], (value) => AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      overlapTokens: map['overlapTokens'] as int,
+      levelConfigurations: map['levelConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>(map['levelConfigurations'], (value) => AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      overlapTokens: (map['overlapTokens'] as int).input(),
     );
   }
 }

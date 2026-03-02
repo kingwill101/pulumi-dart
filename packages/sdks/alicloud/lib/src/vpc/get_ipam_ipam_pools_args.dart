@@ -40,27 +40,17 @@ class GetIpamIpamPoolsArgs {
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
   /// [tags] The tag of the resource.
   GetIpamIpamPoolsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipamPoolId,
-    pulumi.Output<String>? ipamPoolName,
-    pulumi.Output<String>? ipamScopeId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? poolRegionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? sourceIpamPoolId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipamPoolId = pulumi.Input.asOptionalInput<String>(ipamPoolId),
-      ipamPoolName = pulumi.Input.asOptionalInput<String>(ipamPoolName),
-      ipamScopeId = pulumi.Input.asOptionalInput<String>(ipamScopeId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      poolRegionId = pulumi.Input.asOptionalInput<String>(poolRegionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      sourceIpamPoolId = pulumi.Input.asOptionalInput<String>(sourceIpamPoolId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.ids,
+    this.ipamPoolId,
+    this.ipamPoolName,
+    this.ipamScopeId,
+    this.nameRegex,
+    this.outputFile,
+    this.poolRegionId,
+    this.resourceGroupId,
+    this.sourceIpamPoolId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class GetIpamIpamPoolsArgs {
 
   factory GetIpamIpamPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipamPoolId: map['ipamPoolId'] == null ? null : pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      ipamPoolName: map['ipamPoolName'] == null ? null : pulumi.Output.create<String>(map['ipamPoolName'] as String),
-      ipamScopeId: map['ipamScopeId'] == null ? null : pulumi.Output.create<String>(map['ipamScopeId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      poolRegionId: map['poolRegionId'] == null ? null : pulumi.Output.create<String>(map['poolRegionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : pulumi.Output.create<String>(map['sourceIpamPoolId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
+      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName'] as String).input(),
+      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

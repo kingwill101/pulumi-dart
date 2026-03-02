@@ -25,17 +25,12 @@ class GetExecutionArgs {
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
   GetExecutionArgs({
-    required pulumi.Output<String> contextName,
-    required pulumi.Output<String> executionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> versionName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      contextName = pulumi.Input.asInput<String>(contextName),
-      executionName = pulumi.Input.asInput<String>(executionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.contextName,
+    required this.executionName,
+    required this.resourceGroupName,
+    required this.versionName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetExecutionArgs {
 
   factory GetExecutionArgs.fromMap(Map<String, dynamic> map) {
     return GetExecutionArgs(
-      contextName: pulumi.Output.create<String>(map['contextName'] as String),
-      executionName: pulumi.Output.create<String>(map['executionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      contextName: (map['contextName'] as String).input(),
+      executionName: (map['executionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

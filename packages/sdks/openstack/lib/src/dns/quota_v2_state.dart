@@ -33,21 +33,14 @@ class QuotaV2State {
   /// [zoneRecordsets] The maximum number of recordsets in a zone.
   /// [zones] The maximum number of zones that can be created.
   QuotaV2State({
-    pulumi.Output<int>? apiExportSize,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<int>? recordsetRecords,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? zoneRecords,
-    pulumi.Output<int>? zoneRecordsets,
-    pulumi.Output<int>? zones,
-  }) :
-      apiExportSize = pulumi.Input.asOptionalInput<int>(apiExportSize),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      recordsetRecords = pulumi.Input.asOptionalInput<int>(recordsetRecords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      zoneRecords = pulumi.Input.asOptionalInput<int>(zoneRecords),
-      zoneRecordsets = pulumi.Input.asOptionalInput<int>(zoneRecordsets),
-      zones = pulumi.Input.asOptionalInput<int>(zones);
+    this.apiExportSize,
+    this.projectId,
+    this.recordsetRecords,
+    this.region,
+    this.zoneRecords,
+    this.zoneRecordsets,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class QuotaV2State {
 
   factory QuotaV2State.fromMap(Map<String, dynamic> map) {
     return QuotaV2State(
-      apiExportSize: map['apiExportSize'] == null ? null : pulumi.Output.create<int>(map['apiExportSize'] as int),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      recordsetRecords: map['recordsetRecords'] == null ? null : pulumi.Output.create<int>(map['recordsetRecords'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      zoneRecords: map['zoneRecords'] == null ? null : pulumi.Output.create<int>(map['zoneRecords'] as int),
-      zoneRecordsets: map['zoneRecordsets'] == null ? null : pulumi.Output.create<int>(map['zoneRecordsets'] as int),
-      zones: map['zones'] == null ? null : pulumi.Output.create<int>(map['zones'] as int),
+      apiExportSize: map['apiExportSize'] == null ? null : (map['apiExportSize'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      recordsetRecords: map['recordsetRecords'] == null ? null : (map['recordsetRecords'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      zoneRecords: map['zoneRecords'] == null ? null : (map['zoneRecords'] as int).input(),
+      zoneRecordsets: map['zoneRecordsets'] == null ? null : (map['zoneRecordsets'] as int).input(),
+      zones: map['zones'] == null ? null : (map['zones'] as int).input(),
     );
   }
 }

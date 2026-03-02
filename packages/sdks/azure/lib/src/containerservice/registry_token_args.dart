@@ -25,17 +25,12 @@ class RegistryTokenArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   /// [scopeMapId] The ID of the Container Registry Scope Map associated with the token.
   RegistryTokenArgs({
-    required pulumi.Output<String> containerRegistryName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> scopeMapId,
-  }) :
-      containerRegistryName = pulumi.Input.asInput<String>(containerRegistryName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scopeMapId = pulumi.Input.asInput<String>(scopeMapId);
+    required this.containerRegistryName,
+    this.enabled,
+    this.name,
+    required this.resourceGroupName,
+    required this.scopeMapId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RegistryTokenArgs {
 
   factory RegistryTokenArgs.fromMap(Map<String, dynamic> map) {
     return RegistryTokenArgs(
-      containerRegistryName: pulumi.Output.create<String>(map['containerRegistryName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scopeMapId: pulumi.Output.create<String>(map['scopeMapId'] as String),
+      containerRegistryName: (map['containerRegistryName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scopeMapId: (map['scopeMapId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of BackupPolicy
 class BackupPolicy {
   /// Set the backup policy status for the file system.  +   *ENABLED* - Turns automatic backups on for the file system.   +   *DISABLED* - Turns automatic backups off for the file system.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BackupPolicy].
   /// [status] Set the backup policy status for the file system.  +   *ENABLED* - Turns automatic backups on for the file system.   +   *DISABLED* - Turns automatic backups off for the file system.
@@ -20,7 +21,7 @@ class BackupPolicy {
 
   factory BackupPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPolicy(
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

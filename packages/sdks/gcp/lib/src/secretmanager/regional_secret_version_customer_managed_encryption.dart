@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionalSecretVersionCustomerManagedEncryption {
   /// (Output)
   /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-  final String? kmsKeyVersionName;
+  final pulumi.Input<String>? kmsKeyVersionName;
 
   /// Creates a new [RegionalSecretVersionCustomerManagedEncryption].
   /// [kmsKeyVersionName] (Output)
@@ -20,7 +21,7 @@ class RegionalSecretVersionCustomerManagedEncryption {
 
   factory RegionalSecretVersionCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionCustomerManagedEncryption(
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : map['kmsKeyVersionName'] as String,
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
     );
   }
 }

@@ -25,19 +25,13 @@ class BackupPolicyState {
   /// [status] The status of the Backup Policy instance.
   /// [uuidLists] Specify the Protection of Server UUID List.
   BackupPolicyState({
-    pulumi.Output<String>? backupPolicyName,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? policyRegionId,
-    pulumi.Output<String>? policyVersion,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? uuidLists,
-  }) :
-      backupPolicyName = pulumi.Input.asOptionalInput<String>(backupPolicyName),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      policyRegionId = pulumi.Input.asOptionalInput<String>(policyRegionId),
-      policyVersion = pulumi.Input.asOptionalInput<String>(policyVersion),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      uuidLists = pulumi.Input.asOptionalInput<List<String>>(uuidLists);
+    this.backupPolicyName,
+    this.policy,
+    this.policyRegionId,
+    this.policyVersion,
+    this.status,
+    this.uuidLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPolicyName: map['backupPolicyName'] == null ? null : pulumi.Output.create<String>(map['backupPolicyName'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      policyRegionId: map['policyRegionId'] == null ? null : pulumi.Output.create<String>(map['policyRegionId'] as String),
-      policyVersion: map['policyVersion'] == null ? null : pulumi.Output.create<String>(map['policyVersion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      uuidLists: map['uuidLists'] == null ? null : pulumi.Output.create<List<String>>((map['uuidLists'] as List).cast<String>()),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId'] as String).input(),
+      policyVersion: map['policyVersion'] == null ? null : (map['policyVersion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists'] as List).cast<String>()).input(),
     );
   }
 }

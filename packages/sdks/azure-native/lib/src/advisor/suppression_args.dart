@@ -25,17 +25,12 @@ class SuppressionArgs {
   /// [suppressionId] The GUID of the suppression.
   /// [ttl] The duration for which the suppression is valid.
   SuppressionArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> recommendationId,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? suppressionId,
-    pulumi.Output<String>? ttl,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recommendationId = pulumi.Input.asInput<String>(recommendationId),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      suppressionId = pulumi.Input.asOptionalInput<String>(suppressionId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.name,
+    required this.recommendationId,
+    required this.resourceUri,
+    this.suppressionId,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class SuppressionArgs {
 
   factory SuppressionArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recommendationId: pulumi.Output.create<String>(map['recommendationId'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      suppressionId: map['suppressionId'] == null ? null : pulumi.Output.create<String>(map['suppressionId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recommendationId: (map['recommendationId'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      suppressionId: map['suppressionId'] == null ? null : (map['suppressionId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

@@ -6,29 +6,29 @@ import 'kubernetes_cluster_node_pool_taint.dart';
 
 class KubernetesClusterNodePool {
   /// A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-  final int? actualNodeCount;
+  final pulumi.Input<int>? actualNodeCount;
   /// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-  final bool? autoScale;
+  final pulumi.Input<bool>? autoScale;
   /// A unique ID that can be used to identify and reference the node.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-  final int? maxNodes;
+  final pulumi.Input<int>? maxNodes;
   /// If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-  final int? minNodes;
+  final pulumi.Input<int>? minNodes;
   /// A name for the node pool.
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-  final int? nodeCount;
+  final pulumi.Input<int>? nodeCount;
   /// A list of nodes in the pool. Each node exports the following attributes:
-  final List<KubernetesClusterNodePoolNode>? nodes;
+  final pulumi.Input<List<KubernetesClusterNodePoolNode>>? nodes;
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
-  final String size;
+  final pulumi.Input<String> size;
   /// A list of tag names applied to the node pool.
-  final List<String>? tags;
+  final pulumi.Input<List<String>>? tags;
   /// A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
-  final List<KubernetesClusterNodePoolTaint>? taints;
+  final pulumi.Input<List<KubernetesClusterNodePoolTaint>>? taints;
 
   /// Creates a new [KubernetesClusterNodePool].
   /// [actualNodeCount] A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
@@ -68,27 +68,27 @@ class KubernetesClusterNodePool {
       'minNodes': ?minNodes,
       'name': name,
       'nodeCount': ?nodeCount,
-      'nodes': ?nodes == null ? null : pulumi.Input.encodeList<KubernetesClusterNodePoolNode, Map<String, dynamic>>(nodes!, (value) => value.toMap()),
+      'nodes': ?pulumi.Input.mapOptionalInputValue<List<KubernetesClusterNodePoolNode>, List<Map<String, dynamic>>>(nodes, (value) => pulumi.Input.encodeList<KubernetesClusterNodePoolNode, Map<String, dynamic>>(value, (value) => value.toMap())),
       'size': size,
       'tags': ?tags,
-      'taints': ?taints == null ? null : pulumi.Input.encodeList<KubernetesClusterNodePoolTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
+      'taints': ?pulumi.Input.mapOptionalInputValue<List<KubernetesClusterNodePoolTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<KubernetesClusterNodePoolTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory KubernetesClusterNodePool.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePool(
-      actualNodeCount: map['actualNodeCount'] == null ? null : map['actualNodeCount'] as int,
-      autoScale: map['autoScale'] == null ? null : map['autoScale'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      maxNodes: map['maxNodes'] == null ? null : map['maxNodes'] as int,
-      minNodes: map['minNodes'] == null ? null : map['minNodes'] as int,
-      name: map['name'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
-      nodes: map['nodes'] == null ? null : pulumi.Input.decodeList<KubernetesClusterNodePoolNode>(map['nodes'], (value) => KubernetesClusterNodePoolNode.fromMap((value as Map).cast<String, dynamic>())),
-      size: map['size'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      taints: map['taints'] == null ? null : pulumi.Input.decodeList<KubernetesClusterNodePoolTaint>(map['taints'], (value) => KubernetesClusterNodePoolTaint.fromMap((value as Map).cast<String, dynamic>())),
+      actualNodeCount: map['actualNodeCount'] == null ? null : (map['actualNodeCount'] as int).input(),
+      autoScale: map['autoScale'] == null ? null : (map['autoScale'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      name: (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterNodePoolNode>(map['nodes'], (value) => KubernetesClusterNodePoolNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      size: (map['size'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterNodePoolTaint>(map['taints'], (value) => KubernetesClusterNodePoolTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

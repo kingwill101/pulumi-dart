@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The data disks groups for the role.
 class DataDisksGroupsResponse {
   /// ReadOnly. The DiskSize in GB. Do not set this value.
-  final int diskSizeGB;
+  final pulumi.Input<int> diskSizeGB;
   /// The number of disks per node.
-  final int? disksPerNode;
+  final pulumi.Input<int>? disksPerNode;
   /// ReadOnly. The storage account type. Do not set this value.
-  final String storageAccountType;
+  final pulumi.Input<String> storageAccountType;
 
   /// Creates a new [DataDisksGroupsResponse].
   /// [diskSizeGB] ReadOnly. The DiskSize in GB. Do not set this value.
@@ -30,9 +31,9 @@ class DataDisksGroupsResponse {
 
   factory DataDisksGroupsResponse.fromMap(Map<String, dynamic> map) {
     return DataDisksGroupsResponse(
-      diskSizeGB: map['diskSizeGB'] as int,
-      disksPerNode: map['disksPerNode'] == null ? null : map['disksPerNode'] as int,
-      storageAccountType: map['storageAccountType'] as String,
+      diskSizeGB: (map['diskSizeGB'] as int).input(),
+      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode'] as int).input(),
+      storageAccountType: (map['storageAccountType'] as String).input(),
     );
   }
 }

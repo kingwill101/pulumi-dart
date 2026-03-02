@@ -41,27 +41,17 @@ class InstanceArgs {
   /// [project] Optional.
   /// [tier] The service tier of the instance.
   InstanceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<FileShareConfig>>? fileShares,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<NetworkConfig>>? networks,
-    pulumi.Output<String>? project,
-    pulumi.Output<InstanceTier>? tier,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      fileShares = pulumi.Input.asOptionalInput<List<FileShareConfig>>(fileShares),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networks = pulumi.Input.asOptionalInput<List<NetworkConfig>>(networks),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tier = pulumi.Input.asOptionalInput<InstanceTier>(tier);
+    this.description,
+    this.etag,
+    this.fileShares,
+    required this.instanceId,
+    this.kmsKeyName,
+    this.labels,
+    this.location,
+    this.networks,
+    this.project,
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      fileShares: map['fileShares'] == null ? null : pulumi.Output.create<List<FileShareConfig>>(pulumi.Input.decodeList<FileShareConfig>(map['fileShares'], (value) => FileShareConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<NetworkConfig>>(pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tier: map['tier'] == null ? null : pulumi.Output.create<InstanceTier>(InstanceTier.fromValue(map['tier'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareConfig>(map['fileShares'], (value) => FileShareConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tier: map['tier'] == null ? null : (InstanceTier.fromValue(map['tier'] as String)).input(),
     );
   }
 }

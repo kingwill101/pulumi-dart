@@ -7,54 +7,54 @@ import 'function_app_slot_site_config_scm_ip_restriction.dart';
 
 class FunctionAppSlotSiteConfig {
   /// Should the Function App be loaded at all times? Defaults to `false`.
-  final bool? alwaysOn;
+  final pulumi.Input<bool>? alwaysOn;
   /// The number of workers this function app can scale out to. Only applicable to apps on the Consumption and Premium plan.
-  final int? appScaleLimit;
+  final pulumi.Input<int>? appScaleLimit;
   /// The name of the slot to automatically swap to during deployment
-  final String? autoSwapSlotName;
+  final pulumi.Input<String>? autoSwapSlotName;
   /// A `cors` block as defined below.
-  final FunctionAppSlotSiteConfigCors? cors;
+  final pulumi.Input<FunctionAppSlotSiteConfigCors>? cors;
   /// The version of the .NET framework's CLR used in this function app. Possible values are `v4.0` (including .NET Core 2.1 and 3.1), `v5.0` and `v6.0`. [For more information on which .NET Framework version to use based on the runtime version you're targeting - please see this table](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library#supported-versions). Defaults to `v4.0`.
-  final String? dotnetFrameworkVersion;
+  final pulumi.Input<String>? dotnetFrameworkVersion;
   /// The number of minimum instances for this function app. Only applicable to apps on the Premium plan.
-  final int? elasticInstanceMinimum;
+  final pulumi.Input<int>? elasticInstanceMinimum;
   /// State of FTP / FTPS service for this function app. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
-  final String? ftpsState;
+  final pulumi.Input<String>? ftpsState;
   /// Path which will be checked for this function app health.
-  final String? healthCheckPath;
+  final pulumi.Input<String>? healthCheckPath;
   /// Specifies whether or not the HTTP2 protocol should be enabled. Defaults to `false`.
-  final bool? http2Enabled;
+  final pulumi.Input<bool>? http2Enabled;
   /// A list of `ip_restriction` objects representing IP restrictions as defined below.
-  final List<FunctionAppSlotSiteConfigIpRestriction>? ipRestrictions;
+  final pulumi.Input<List<FunctionAppSlotSiteConfigIpRestriction>>? ipRestrictions;
   /// Java version hosted by the function app in Azure. Possible values are `1.8`, `11` & `17` (In-Preview).
-  final String? javaVersion;
+  final pulumi.Input<String>? javaVersion;
   /// Linux App Framework and version for the AppService, e.g. `DOCKER|(golang:latest)`.
-  final String? linuxFxVersion;
+  final pulumi.Input<String>? linuxFxVersion;
   /// The minimum supported TLS version for the function app. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new function apps.
-  final String? minTlsVersion;
+  final pulumi.Input<String>? minTlsVersion;
   /// The number of pre-warmed instances for this function app. Only affects apps on the Premium plan.
-  final int? preWarmedInstanceCount;
+  final pulumi.Input<int>? preWarmedInstanceCount;
   /// Should Runtime Scale Monitoring be enabled?. Only applicable to apps on the Premium plan. Defaults to `false`.
-  final bool? runtimeScaleMonitoringEnabled;
+  final pulumi.Input<bool>? runtimeScaleMonitoringEnabled;
   /// A list of `scm_ip_restriction` objects representing IP restrictions as defined below.
   ///
   /// > **NOTE** User has to explicitly set `scm_ip_restriction` to empty slice (`[]`) to remove it.
-  final List<FunctionAppSlotSiteConfigScmIpRestriction>? scmIpRestrictions;
+  final pulumi.Input<List<FunctionAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
   /// The type of Source Control used by this function App. Valid values include: `BitBucketGit`, `BitBucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None` (default), `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`.
   ///
   /// > **NOTE:** This setting is incompatible with the `source_control` block which updates this value based on the setting provided.
-  final String? scmType;
+  final pulumi.Input<String>? scmType;
   /// IP security restrictions for scm to use main. Defaults to `false`.
   ///
   /// > **NOTE** Any `scm_ip_restriction` blocks configured are ignored by the service when `scm_use_main_ip_restriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
-  final bool? scmUseMainIpRestriction;
+  final pulumi.Input<bool>? scmUseMainIpRestriction;
   /// Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
   ///
   /// > **Note:** when using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
-  final bool? use32BitWorkerProcess;
-  final bool? vnetRouteAllEnabled;
+  final pulumi.Input<bool>? use32BitWorkerProcess;
+  final pulumi.Input<bool>? vnetRouteAllEnabled;
   /// Should WebSockets be enabled?
-  final bool? websocketsEnabled;
+  final pulumi.Input<bool>? websocketsEnabled;
 
   /// Creates a new [FunctionAppSlotSiteConfig].
   /// [alwaysOn] Should the Function App be loaded at all times? Defaults to `false`.
@@ -107,19 +107,19 @@ class FunctionAppSlotSiteConfig {
       'alwaysOn': ?alwaysOn,
       'appScaleLimit': ?appScaleLimit,
       'autoSwapSlotName': ?autoSwapSlotName,
-      'cors': ?cors == null ? null : cors!.toMap(),
+      'cors': ?pulumi.Input.mapOptionalInputValue<FunctionAppSlotSiteConfigCors, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'dotnetFrameworkVersion': ?dotnetFrameworkVersion,
       'elasticInstanceMinimum': ?elasticInstanceMinimum,
       'ftpsState': ?ftpsState,
       'healthCheckPath': ?healthCheckPath,
       'http2Enabled': ?http2Enabled,
-      'ipRestrictions': ?ipRestrictions == null ? null : pulumi.Input.encodeList<FunctionAppSlotSiteConfigIpRestriction, Map<String, dynamic>>(ipRestrictions!, (value) => value.toMap()),
+      'ipRestrictions': ?pulumi.Input.mapOptionalInputValue<List<FunctionAppSlotSiteConfigIpRestriction>, List<Map<String, dynamic>>>(ipRestrictions, (value) => pulumi.Input.encodeList<FunctionAppSlotSiteConfigIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'javaVersion': ?javaVersion,
       'linuxFxVersion': ?linuxFxVersion,
       'minTlsVersion': ?minTlsVersion,
       'preWarmedInstanceCount': ?preWarmedInstanceCount,
       'runtimeScaleMonitoringEnabled': ?runtimeScaleMonitoringEnabled,
-      'scmIpRestrictions': ?scmIpRestrictions == null ? null : pulumi.Input.encodeList<FunctionAppSlotSiteConfigScmIpRestriction, Map<String, dynamic>>(scmIpRestrictions!, (value) => value.toMap()),
+      'scmIpRestrictions': ?pulumi.Input.mapOptionalInputValue<List<FunctionAppSlotSiteConfigScmIpRestriction>, List<Map<String, dynamic>>>(scmIpRestrictions, (value) => pulumi.Input.encodeList<FunctionAppSlotSiteConfigScmIpRestriction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scmType': ?scmType,
       'scmUseMainIpRestriction': ?scmUseMainIpRestriction,
       'use32BitWorkerProcess': ?use32BitWorkerProcess,
@@ -130,27 +130,27 @@ class FunctionAppSlotSiteConfig {
 
   factory FunctionAppSlotSiteConfig.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotSiteConfig(
-      alwaysOn: map['alwaysOn'] == null ? null : map['alwaysOn'] as bool,
-      appScaleLimit: map['appScaleLimit'] == null ? null : map['appScaleLimit'] as int,
-      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : map['autoSwapSlotName'] as String,
-      cors: map['cors'] == null ? null : FunctionAppSlotSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>()),
-      dotnetFrameworkVersion: map['dotnetFrameworkVersion'] == null ? null : map['dotnetFrameworkVersion'] as String,
-      elasticInstanceMinimum: map['elasticInstanceMinimum'] == null ? null : map['elasticInstanceMinimum'] as int,
-      ftpsState: map['ftpsState'] == null ? null : map['ftpsState'] as String,
-      healthCheckPath: map['healthCheckPath'] == null ? null : map['healthCheckPath'] as String,
-      http2Enabled: map['http2Enabled'] == null ? null : map['http2Enabled'] as bool,
-      ipRestrictions: map['ipRestrictions'] == null ? null : pulumi.Input.decodeList<FunctionAppSlotSiteConfigIpRestriction>(map['ipRestrictions'], (value) => FunctionAppSlotSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      javaVersion: map['javaVersion'] == null ? null : map['javaVersion'] as String,
-      linuxFxVersion: map['linuxFxVersion'] == null ? null : map['linuxFxVersion'] as String,
-      minTlsVersion: map['minTlsVersion'] == null ? null : map['minTlsVersion'] as String,
-      preWarmedInstanceCount: map['preWarmedInstanceCount'] == null ? null : map['preWarmedInstanceCount'] as int,
-      runtimeScaleMonitoringEnabled: map['runtimeScaleMonitoringEnabled'] == null ? null : map['runtimeScaleMonitoringEnabled'] as bool,
-      scmIpRestrictions: map['scmIpRestrictions'] == null ? null : pulumi.Input.decodeList<FunctionAppSlotSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => FunctionAppSlotSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>())),
-      scmType: map['scmType'] == null ? null : map['scmType'] as String,
-      scmUseMainIpRestriction: map['scmUseMainIpRestriction'] == null ? null : map['scmUseMainIpRestriction'] as bool,
-      use32BitWorkerProcess: map['use32BitWorkerProcess'] == null ? null : map['use32BitWorkerProcess'] as bool,
-      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : map['vnetRouteAllEnabled'] as bool,
-      websocketsEnabled: map['websocketsEnabled'] == null ? null : map['websocketsEnabled'] as bool,
+      alwaysOn: map['alwaysOn'] == null ? null : (map['alwaysOn'] as bool).input(),
+      appScaleLimit: map['appScaleLimit'] == null ? null : (map['appScaleLimit'] as int).input(),
+      autoSwapSlotName: map['autoSwapSlotName'] == null ? null : (map['autoSwapSlotName'] as String).input(),
+      cors: map['cors'] == null ? null : (FunctionAppSlotSiteConfigCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      dotnetFrameworkVersion: map['dotnetFrameworkVersion'] == null ? null : (map['dotnetFrameworkVersion'] as String).input(),
+      elasticInstanceMinimum: map['elasticInstanceMinimum'] == null ? null : (map['elasticInstanceMinimum'] as int).input(),
+      ftpsState: map['ftpsState'] == null ? null : (map['ftpsState'] as String).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
+      ipRestrictions: map['ipRestrictions'] == null ? null : (pulumi.Input.decodeList<FunctionAppSlotSiteConfigIpRestriction>(map['ipRestrictions'], (value) => FunctionAppSlotSiteConfigIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
+      linuxFxVersion: map['linuxFxVersion'] == null ? null : (map['linuxFxVersion'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      preWarmedInstanceCount: map['preWarmedInstanceCount'] == null ? null : (map['preWarmedInstanceCount'] as int).input(),
+      runtimeScaleMonitoringEnabled: map['runtimeScaleMonitoringEnabled'] == null ? null : (map['runtimeScaleMonitoringEnabled'] as bool).input(),
+      scmIpRestrictions: map['scmIpRestrictions'] == null ? null : (pulumi.Input.decodeList<FunctionAppSlotSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => FunctionAppSlotSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scmType: map['scmType'] == null ? null : (map['scmType'] as String).input(),
+      scmUseMainIpRestriction: map['scmUseMainIpRestriction'] == null ? null : (map['scmUseMainIpRestriction'] as bool).input(),
+      use32BitWorkerProcess: map['use32BitWorkerProcess'] == null ? null : (map['use32BitWorkerProcess'] as bool).input(),
+      vnetRouteAllEnabled: map['vnetRouteAllEnabled'] == null ? null : (map['vnetRouteAllEnabled'] as bool).input(),
+      websocketsEnabled: map['websocketsEnabled'] == null ? null : (map['websocketsEnabled'] as bool).input(),
     );
   }
 }

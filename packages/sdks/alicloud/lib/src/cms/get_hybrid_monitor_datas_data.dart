@@ -6,11 +6,11 @@ import 'get_hybrid_monitor_datas_data_value.dart';
 
 class GetHybridMonitorDatasData {
   /// The label of the time dimension.
-  final List<GetHybridMonitorDatasDataLabel> labels;
+  final pulumi.Input<List<GetHybridMonitorDatasDataLabel>> labels;
   /// The name of the monitoring indicator.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The metric values that are collected at different timestamps.
-  final List<GetHybridMonitorDatasDataValue> values;
+  final pulumi.Input<List<GetHybridMonitorDatasDataValue>> values;
 
   /// Creates a new [GetHybridMonitorDatasData].
   /// [labels] The label of the time dimension.
@@ -24,17 +24,17 @@ class GetHybridMonitorDatasData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'labels': pulumi.Input.encodeList<GetHybridMonitorDatasDataLabel, Map<String, dynamic>>(labels, (value) => value.toMap()),
+      'labels': pulumi.Input.mapInputValue<List<GetHybridMonitorDatasDataLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<GetHybridMonitorDatasDataLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': metricName,
-      'values': pulumi.Input.encodeList<GetHybridMonitorDatasDataValue, Map<String, dynamic>>(values, (value) => value.toMap()),
+      'values': pulumi.Input.mapInputValue<List<GetHybridMonitorDatasDataValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GetHybridMonitorDatasDataValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetHybridMonitorDatasData.fromMap(Map<String, dynamic> map) {
     return GetHybridMonitorDatasData(
-      labels: pulumi.Input.decodeList<GetHybridMonitorDatasDataLabel>(map['labels'], (value) => GetHybridMonitorDatasDataLabel.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] as String,
-      values: pulumi.Input.decodeList<GetHybridMonitorDatasDataValue>(map['values'], (value) => GetHybridMonitorDatasDataValue.fromMap((value as Map).cast<String, dynamic>())),
+      labels: (pulumi.Input.decodeList<GetHybridMonitorDatasDataLabel>(map['labels'], (value) => GetHybridMonitorDatasDataLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: (map['metricName'] as String).input(),
+      values: (pulumi.Input.decodeList<GetHybridMonitorDatasDataValue>(map['values'], (value) => GetHybridMonitorDatasDataValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

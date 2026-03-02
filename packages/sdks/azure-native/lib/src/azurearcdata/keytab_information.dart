@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Keytab used for authenticate with Active Directory.
 class KeytabInformation {
   /// A base64-encoded keytab.
-  final String? keytab;
+  final pulumi.Input<String>? keytab;
 
   /// Creates a new [KeytabInformation].
   /// [keytab] A base64-encoded keytab.
@@ -20,7 +21,7 @@ class KeytabInformation {
 
   factory KeytabInformation.fromMap(Map<String, dynamic> map) {
     return KeytabInformation(
-      keytab: map['keytab'] == null ? null : map['keytab'] as String,
+      keytab: map['keytab'] == null ? null : (map['keytab'] as String).input(),
     );
   }
 }

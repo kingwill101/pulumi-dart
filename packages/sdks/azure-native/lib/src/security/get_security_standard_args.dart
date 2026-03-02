@@ -16,11 +16,9 @@ class GetSecurityStandardArgs {
   /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [standardId] The Security Standard key - unique key for the standard type
   GetSecurityStandardArgs({
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> standardId,
-  }) :
-      scope = pulumi.Input.asInput<String>(scope),
-      standardId = pulumi.Input.asInput<String>(standardId);
+    required this.scope,
+    required this.standardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecurityStandardArgs {
 
   factory GetSecurityStandardArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityStandardArgs(
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      standardId: pulumi.Output.create<String>(map['standardId'] as String),
+      scope: (map['scope'] as String).input(),
+      standardId: (map['standardId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRecordsResourceRecordSetAliasTarget {
   /// Target DNS name.
-  final String dnsName;
+  final pulumi.Input<String> dnsName;
   /// Whether an alias resource record set inherits the health of the referenced AWS resource.
-  final bool evaluateTargetHealth;
+  final pulumi.Input<bool> evaluateTargetHealth;
   /// Target hosted zone ID.
-  final String hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
 
   /// Creates a new [GetRecordsResourceRecordSetAliasTarget].
   /// [dnsName] Target DNS name.
@@ -29,9 +30,9 @@ class GetRecordsResourceRecordSetAliasTarget {
 
   factory GetRecordsResourceRecordSetAliasTarget.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetAliasTarget(
-      dnsName: map['dnsName'] as String,
-      evaluateTargetHealth: map['evaluateTargetHealth'] as bool,
-      hostedZoneId: map['hostedZoneId'] as String,
+      dnsName: (map['dnsName'] as String).input(),
+      evaluateTargetHealth: (map['evaluateTargetHealth'] as bool).input(),
+      hostedZoneId: (map['hostedZoneId'] as String).input(),
     );
   }
 }

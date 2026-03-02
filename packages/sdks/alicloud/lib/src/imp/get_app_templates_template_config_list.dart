@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppTemplatesTemplateConfigList {
   /// Config key.
-  final String key;
+  final pulumi.Input<String> key;
   /// Config Value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetAppTemplatesTemplateConfigList].
   /// [key] Config key.
@@ -24,8 +25,8 @@ class GetAppTemplatesTemplateConfigList {
 
   factory GetAppTemplatesTemplateConfigList.fromMap(Map<String, dynamic> map) {
     return GetAppTemplatesTemplateConfigList(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

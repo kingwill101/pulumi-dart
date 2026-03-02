@@ -28,19 +28,13 @@ class VirtualHubRouteTableRouteArgs {
   /// [nextHopType] The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   /// [routeTableId] The ID of the Virtual Hub Route Table to link this route to. Changing this forces a new resource to be created.
   VirtualHubRouteTableRouteArgs({
-    required pulumi.Output<List<String>> destinations,
-    required pulumi.Output<String> destinationsType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> nextHop,
-    pulumi.Output<String>? nextHopType,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      destinations = pulumi.Input.asInput<List<String>>(destinations),
-      destinationsType = pulumi.Input.asInput<String>(destinationsType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nextHop = pulumi.Input.asInput<String>(nextHop),
-      nextHopType = pulumi.Input.asOptionalInput<String>(nextHopType),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    required this.destinations,
+    required this.destinationsType,
+    this.name,
+    required this.nextHop,
+    this.nextHopType,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class VirtualHubRouteTableRouteArgs {
 
   factory VirtualHubRouteTableRouteArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableRouteArgs(
-      destinations: pulumi.Output.create<List<String>>((map['destinations'] as List).cast<String>()),
-      destinationsType: pulumi.Output.create<String>(map['destinationsType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nextHop: pulumi.Output.create<String>(map['nextHop'] as String),
-      nextHopType: map['nextHopType'] == null ? null : pulumi.Output.create<String>(map['nextHopType'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      destinations: ((map['destinations'] as List).cast<String>()).input(),
+      destinationsType: (map['destinationsType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

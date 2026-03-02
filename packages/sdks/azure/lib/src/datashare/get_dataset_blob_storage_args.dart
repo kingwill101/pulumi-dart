@@ -16,11 +16,9 @@ class GetDatasetBlobStorageArgs {
   /// [dataShareId] The ID of the Data Share in which this Data Share Blob Storage Dataset should be created.
   /// [name] The name of this Data Share Blob Storage Dataset.
   GetDatasetBlobStorageArgs({
-    required pulumi.Output<String> dataShareId,
-    required pulumi.Output<String> name,
-  }) :
-      dataShareId = pulumi.Input.asInput<String>(dataShareId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.dataShareId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDatasetBlobStorageArgs {
 
   factory GetDatasetBlobStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetBlobStorageArgs(
-      dataShareId: pulumi.Output.create<String>(map['dataShareId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      dataShareId: (map['dataShareId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

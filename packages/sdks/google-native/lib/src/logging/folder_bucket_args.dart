@@ -40,27 +40,17 @@ class FolderBucketArgs {
   /// [restrictedFields] Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
   FolderBucketArgs({
-    pulumi.Output<bool>? analyticsEnabled,
-    required pulumi.Output<String> bucketId,
-    pulumi.Output<CmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> folderId,
-    pulumi.Output<List<IndexConfig>>? indexConfigs,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<List<String>>? restrictedFields,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      analyticsEnabled = pulumi.Input.asOptionalInput<bool>(analyticsEnabled),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<CmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      indexConfigs = pulumi.Input.asOptionalInput<List<IndexConfig>>(indexConfigs),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      restrictedFields = pulumi.Input.asOptionalInput<List<String>>(restrictedFields),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    this.analyticsEnabled,
+    required this.bucketId,
+    this.cmekSettings,
+    this.description,
+    required this.folderId,
+    this.indexConfigs,
+    this.location,
+    this.locked,
+    this.restrictedFields,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class FolderBucketArgs {
 
   factory FolderBucketArgs.fromMap(Map<String, dynamic> map) {
     return FolderBucketArgs(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : pulumi.Output.create<bool>(map['analyticsEnabled'] as bool),
-      bucketId: pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<CmekSettings>(CmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<IndexConfig>>(pulumi.Input.decodeList<IndexConfig>(map['indexConfigs'], (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      restrictedFields: map['restrictedFields'] == null ? null : pulumi.Output.create<List<String>>((map['restrictedFields'] as List).cast<String>()),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
+      bucketId: (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (CmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<IndexConfig>(map['indexConfigs'], (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      restrictedFields: map['restrictedFields'] == null ? null : ((map['restrictedFields'] as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

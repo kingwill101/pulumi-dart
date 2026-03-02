@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Software Assurance properties of the cluster.
 class SoftwareAssurancePropertiesResponse {
   /// TimeStamp denoting the latest SA benefit applicability is validated.
-  final String lastUpdated;
+  final pulumi.Input<String> lastUpdated;
   /// Customer Intent for Software Assurance Benefit.
-  final String? softwareAssuranceIntent;
+  final pulumi.Input<String>? softwareAssuranceIntent;
   /// Status of the Software Assurance for the cluster.
-  final String softwareAssuranceStatus;
+  final pulumi.Input<String> softwareAssuranceStatus;
 
   /// Creates a new [SoftwareAssurancePropertiesResponse].
   /// [lastUpdated] TimeStamp denoting the latest SA benefit applicability is validated.
@@ -30,9 +31,9 @@ class SoftwareAssurancePropertiesResponse {
 
   factory SoftwareAssurancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareAssurancePropertiesResponse(
-      lastUpdated: map['lastUpdated'] as String,
-      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : map['softwareAssuranceIntent'] as String,
-      softwareAssuranceStatus: map['softwareAssuranceStatus'] as String,
+      lastUpdated: (map['lastUpdated'] as String).input(),
+      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent'] as String).input(),
+      softwareAssuranceStatus: (map['softwareAssuranceStatus'] as String).input(),
     );
   }
 }

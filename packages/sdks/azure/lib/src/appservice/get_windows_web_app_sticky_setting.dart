@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppStickySetting {
   /// A list of `app_setting` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
-  final List<String> appSettingNames;
+  final pulumi.Input<List<String>> appSettingNames;
   /// A list of `connection_string` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
-  final List<String> connectionStringNames;
+  final pulumi.Input<List<String>> connectionStringNames;
 
   /// Creates a new [GetWindowsWebAppStickySetting].
   /// [appSettingNames] A list of `app_setting` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
@@ -24,8 +25,8 @@ class GetWindowsWebAppStickySetting {
 
   factory GetWindowsWebAppStickySetting.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppStickySetting(
-      appSettingNames: (map['appSettingNames'] as List).cast<String>(),
-      connectionStringNames: (map['connectionStringNames'] as List).cast<String>(),
+      appSettingNames: ((map['appSettingNames'] as List).cast<String>()).input(),
+      connectionStringNames: ((map['connectionStringNames'] as List).cast<String>()).input(),
     );
   }
 }

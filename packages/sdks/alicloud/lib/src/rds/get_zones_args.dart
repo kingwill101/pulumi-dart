@@ -34,23 +34,15 @@ class GetZonesArgs {
   /// [multiZone] Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetZonesArgs({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? dbInstanceStorageType,
-    pulumi.Output<String>? engine,
-    pulumi.Output<String>? engineVersion,
-    pulumi.Output<String>? instanceChargeType,
-    pulumi.Output<bool>? multi,
-    pulumi.Output<bool>? multiZone,
-    pulumi.Output<String>? outputFile,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      dbInstanceStorageType = pulumi.Input.asOptionalInput<String>(dbInstanceStorageType),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      instanceChargeType = pulumi.Input.asOptionalInput<String>(instanceChargeType),
-      multi = pulumi.Input.asOptionalInput<bool>(multi),
-      multiZone = pulumi.Input.asOptionalInput<bool>(multiZone),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.category,
+    this.dbInstanceStorageType,
+    this.engine,
+    this.engineVersion,
+    this.instanceChargeType,
+    this.multi,
+    this.multiZone,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : pulumi.Output.create<String>(map['dbInstanceStorageType'] as String),
-      engine: map['engine'] == null ? null : pulumi.Output.create<String>(map['engine'] as String),
-      engineVersion: map['engineVersion'] == null ? null : pulumi.Output.create<String>(map['engineVersion'] as String),
-      instanceChargeType: map['instanceChargeType'] == null ? null : pulumi.Output.create<String>(map['instanceChargeType'] as String),
-      multi: map['multi'] == null ? null : pulumi.Output.create<bool>(map['multi'] as bool),
-      multiZone: map['multiZone'] == null ? null : pulumi.Output.create<bool>(map['multiZone'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
+      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
+      multiZone: map['multiZone'] == null ? null : (map['multiZone'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

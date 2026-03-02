@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_storage_box_snapshots_snapshot_stats.dart';
 
 class GetStorageBoxSnapshotsSnapshot {
   /// Description of the Storage Box Snapshot.
-  final String description;
+  final pulumi.Input<String> description;
   /// ID of the Storage Box Snapshot.
-  final int id;
+  final pulumi.Input<int> id;
   /// Whether the Storage Box Snapshot was created automatically.
-  final bool isAutomatic;
+  final pulumi.Input<bool> isAutomatic;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// Name of the Storage Box Snapshot.
-  final String name;
+  final pulumi.Input<String> name;
   /// Statistics of the Storage Box Snapshot.
-  final GetStorageBoxSnapshotsSnapshotStats stats;
+  final pulumi.Input<GetStorageBoxSnapshotsSnapshotStats> stats;
   /// ID of the Storage Box.
-  final int storageBoxId;
+  final pulumi.Input<int> storageBoxId;
 
   /// Creates a new [GetStorageBoxSnapshotsSnapshot].
   /// [description] Description of the Storage Box Snapshot.
@@ -43,20 +44,20 @@ class GetStorageBoxSnapshotsSnapshot {
       'isAutomatic': isAutomatic,
       'labels': labels,
       'name': name,
-      'stats': stats.toMap(),
+      'stats': pulumi.Input.mapInputValue<GetStorageBoxSnapshotsSnapshotStats, Map<String, dynamic>>(stats, (value) => value.toMap()),
       'storageBoxId': storageBoxId,
     };
   }
 
   factory GetStorageBoxSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotsSnapshot(
-      description: map['description'] as String,
-      id: map['id'] as int,
-      isAutomatic: map['isAutomatic'] as bool,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      stats: GetStorageBoxSnapshotsSnapshotStats.fromMap((map['stats'] as Map).cast<String, dynamic>()),
-      storageBoxId: map['storageBoxId'] as int,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as int).input(),
+      isAutomatic: (map['isAutomatic'] as bool).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      stats: (GetStorageBoxSnapshotsSnapshotStats.fromMap((map['stats'] as Map).cast<String, dynamic>())).input(),
+      storageBoxId: (map['storageBoxId'] as int).input(),
     );
   }
 }

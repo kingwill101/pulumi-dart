@@ -55,35 +55,21 @@ class BackupPolicyState {
   /// [state] The state of the backup policy.
   /// [weeklyBackupLimit] Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
   BackupPolicyState({
-    pulumi.Output<int>? assignedVolumeCount,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<int>? dailyBackupLimit,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? monthlyBackupLimit,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? state,
-    pulumi.Output<int>? weeklyBackupLimit,
-  }) :
-      assignedVolumeCount = pulumi.Input.asOptionalInput<int>(assignedVolumeCount),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      dailyBackupLimit = pulumi.Input.asOptionalInput<int>(dailyBackupLimit),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      monthlyBackupLimit = pulumi.Input.asOptionalInput<int>(monthlyBackupLimit),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      weeklyBackupLimit = pulumi.Input.asOptionalInput<int>(weeklyBackupLimit);
+    this.assignedVolumeCount,
+    this.createTime,
+    this.dailyBackupLimit,
+    this.description,
+    this.effectiveLabels,
+    this.enabled,
+    this.labels,
+    this.location,
+    this.monthlyBackupLimit,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.state,
+    this.weeklyBackupLimit,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      assignedVolumeCount: map['assignedVolumeCount'] == null ? null : pulumi.Output.create<int>(map['assignedVolumeCount'] as int),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      dailyBackupLimit: map['dailyBackupLimit'] == null ? null : pulumi.Output.create<int>(map['dailyBackupLimit'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      monthlyBackupLimit: map['monthlyBackupLimit'] == null ? null : pulumi.Output.create<int>(map['monthlyBackupLimit'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      weeklyBackupLimit: map['weeklyBackupLimit'] == null ? null : pulumi.Output.create<int>(map['weeklyBackupLimit'] as int),
+      assignedVolumeCount: map['assignedVolumeCount'] == null ? null : (map['assignedVolumeCount'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      dailyBackupLimit: map['dailyBackupLimit'] == null ? null : (map['dailyBackupLimit'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      monthlyBackupLimit: map['monthlyBackupLimit'] == null ? null : (map['monthlyBackupLimit'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      weeklyBackupLimit: map['weeklyBackupLimit'] == null ? null : (map['weeklyBackupLimit'] as int).input(),
     );
   }
 }

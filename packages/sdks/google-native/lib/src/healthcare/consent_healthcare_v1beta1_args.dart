@@ -44,31 +44,19 @@ class ConsentHealthcareV1beta1Args {
   /// [ttl] Input only. The time to live for this Consent from when it is created.
   /// [userId] User's UUID provided by the client.
   ConsentHealthcareV1beta1Args({
-    required pulumi.Output<String> consentArtifact,
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<GoogleCloudHealthcareV1beta1ConsentPolicy>>? policies,
-    pulumi.Output<String>? project,
-    required pulumi.Output<ConsentStateHealthcareV1beta1> state,
-    pulumi.Output<String>? ttl,
-    required pulumi.Output<String> userId,
-  }) :
-      consentArtifact = pulumi.Input.asInput<String>(consentArtifact),
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policies = pulumi.Input.asOptionalInput<List<GoogleCloudHealthcareV1beta1ConsentPolicy>>(policies),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asInput<ConsentStateHealthcareV1beta1>(state),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      userId = pulumi.Input.asInput<String>(userId);
+    required this.consentArtifact,
+    required this.consentStoreId,
+    required this.datasetId,
+    this.expireTime,
+    this.location,
+    this.metadata,
+    this.name,
+    this.policies,
+    this.project,
+    required this.state,
+    this.ttl,
+    required this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ConsentHealthcareV1beta1Args {
 
   factory ConsentHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConsentHealthcareV1beta1Args(
-      consentArtifact: pulumi.Output.create<String>(map['consentArtifact'] as String),
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<List<GoogleCloudHealthcareV1beta1ConsentPolicy>>(pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1ConsentPolicy>(map['policies'], (value) => GoogleCloudHealthcareV1beta1ConsentPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: pulumi.Output.create<ConsentStateHealthcareV1beta1>(ConsentStateHealthcareV1beta1.fromValue(map['state'] as String)),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      userId: pulumi.Output.create<String>(map['userId'] as String),
+      consentArtifact: (map['consentArtifact'] as String).input(),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1ConsentPolicy>(map['policies'], (value) => GoogleCloudHealthcareV1beta1ConsentPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: (ConsentStateHealthcareV1beta1.fromValue(map['state'] as String)).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

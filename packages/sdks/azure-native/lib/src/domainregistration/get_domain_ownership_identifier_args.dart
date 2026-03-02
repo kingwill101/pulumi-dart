@@ -19,13 +19,10 @@ class GetDomainOwnershipIdentifierArgs {
   /// [name] Name of identifier.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   GetDomainOwnershipIdentifierArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.domainName,
+    required this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDomainOwnershipIdentifierArgs {
 
   factory GetDomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainOwnershipIdentifierArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      domainName: (map['domainName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

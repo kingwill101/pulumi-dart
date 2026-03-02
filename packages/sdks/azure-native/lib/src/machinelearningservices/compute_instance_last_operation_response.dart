@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The last operation on ComputeInstance.
 class ComputeInstanceLastOperationResponse {
   /// Name of the last operation.
-  final String? operationName;
+  final pulumi.Input<String>? operationName;
   /// Operation status.
-  final String? operationStatus;
+  final pulumi.Input<String>? operationStatus;
   /// Time of the last operation.
-  final String? operationTime;
+  final pulumi.Input<String>? operationTime;
   /// Trigger of operation.
-  final String? operationTrigger;
+  final pulumi.Input<String>? operationTrigger;
 
   /// Creates a new [ComputeInstanceLastOperationResponse].
   /// [operationName] Name of the last operation.
@@ -35,10 +36,10 @@ class ComputeInstanceLastOperationResponse {
 
   factory ComputeInstanceLastOperationResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceLastOperationResponse(
-      operationName: map['operationName'] == null ? null : map['operationName'] as String,
-      operationStatus: map['operationStatus'] == null ? null : map['operationStatus'] as String,
-      operationTime: map['operationTime'] == null ? null : map['operationTime'] as String,
-      operationTrigger: map['operationTrigger'] == null ? null : map['operationTrigger'] as String,
+      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
+      operationStatus: map['operationStatus'] == null ? null : (map['operationStatus'] as String).input(),
+      operationTime: map['operationTime'] == null ? null : (map['operationTime'] as String).input(),
+      operationTrigger: map['operationTrigger'] == null ? null : (map['operationTrigger'] as String).input(),
     );
   }
 }

@@ -25,15 +25,11 @@ class GetReservationBlockArgs {
   /// [reservation] The name of the parent reservation.
   /// [zone] The zone where the reservation block resides.
   GetReservationBlockArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> reservation,
-    pulumi.Output<String>? zone,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asInput<String>(reservation),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.name,
+    this.project,
+    required this.reservation,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class GetReservationBlockArgs {
 
   factory GetReservationBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationBlockArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservation: pulumi.Output.create<String>(map['reservation'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservation: (map['reservation'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

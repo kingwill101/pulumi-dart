@@ -30,23 +30,15 @@ class ProfileState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   ProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? as2Id,
-    pulumi.Output<List<String>>? certificateIds,
-    pulumi.Output<String>? profileId,
-    pulumi.Output<String>? profileType,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      as2Id = pulumi.Input.asOptionalInput<String>(as2Id),
-      certificateIds = pulumi.Input.asOptionalInput<List<String>>(certificateIds),
-      profileId = pulumi.Input.asOptionalInput<String>(profileId),
-      profileType = pulumi.Input.asOptionalInput<String>(profileType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.as2Id,
+    this.certificateIds,
+    this.profileId,
+    this.profileType,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,14 +55,14 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      as2Id: map['as2Id'] == null ? null : pulumi.Output.create<String>(map['as2Id'] as String),
-      certificateIds: map['certificateIds'] == null ? null : pulumi.Output.create<List<String>>((map['certificateIds'] as List).cast<String>()),
-      profileId: map['profileId'] == null ? null : pulumi.Output.create<String>(map['profileId'] as String),
-      profileType: map['profileType'] == null ? null : pulumi.Output.create<String>(map['profileType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      as2Id: map['as2Id'] == null ? null : (map['as2Id'] as String).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      profileType: map['profileType'] == null ? null : (map['profileType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

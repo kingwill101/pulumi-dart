@@ -6,13 +6,13 @@ import 'smart_identity_provider_configuration_response.dart';
 /// Authentication configuration information
 class FhirServiceAuthenticationConfigurationResponse {
   /// The audience url for the service
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// The authority url for the service
-  final String? authority;
+  final pulumi.Input<String>? authority;
   /// The array of identity provider configurations for SMART on FHIR authentication.
-  final List<SmartIdentityProviderConfigurationResponse>? smartIdentityProviders;
+  final pulumi.Input<List<SmartIdentityProviderConfigurationResponse>>? smartIdentityProviders;
   /// If the SMART on FHIR proxy is enabled
-  final bool? smartProxyEnabled;
+  final pulumi.Input<bool>? smartProxyEnabled;
 
   /// Creates a new [FhirServiceAuthenticationConfigurationResponse].
   /// [audience] The audience url for the service
@@ -30,17 +30,17 @@ class FhirServiceAuthenticationConfigurationResponse {
     return <String, dynamic>{
       'audience': ?audience,
       'authority': ?authority,
-      'smartIdentityProviders': ?smartIdentityProviders == null ? null : pulumi.Input.encodeList<SmartIdentityProviderConfigurationResponse, Map<String, dynamic>>(smartIdentityProviders!, (value) => value.toMap()),
+      'smartIdentityProviders': ?pulumi.Input.mapOptionalInputValue<List<SmartIdentityProviderConfigurationResponse>, List<Map<String, dynamic>>>(smartIdentityProviders, (value) => pulumi.Input.encodeList<SmartIdentityProviderConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'smartProxyEnabled': ?smartProxyEnabled,
     };
   }
 
   factory FhirServiceAuthenticationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FhirServiceAuthenticationConfigurationResponse(
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      authority: map['authority'] == null ? null : map['authority'] as String,
-      smartIdentityProviders: map['smartIdentityProviders'] == null ? null : pulumi.Input.decodeList<SmartIdentityProviderConfigurationResponse>(map['smartIdentityProviders'], (value) => SmartIdentityProviderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : map['smartProxyEnabled'] as bool,
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      smartIdentityProviders: map['smartIdentityProviders'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderConfigurationResponse>(map['smartIdentityProviders'], (value) => SmartIdentityProviderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled'] as bool).input(),
     );
   }
 }

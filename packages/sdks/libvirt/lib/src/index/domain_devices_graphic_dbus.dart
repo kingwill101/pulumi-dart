@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_graphic_dbus_gl.dart';
 
 class DomainDevicesGraphicDbus {
   /// Configures the address for the D-Bus connection in the graphics configuration.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Sets the OpenGL settings for the D-Bus graphics configuration.
-  final DomainDevicesGraphicDbusGl? gl;
+  final pulumi.Input<DomainDevicesGraphicDbusGl>? gl;
   /// Enables or disables peer-to-peer memory access in D-Bus for graphics.
-  final String? p2p;
+  final pulumi.Input<String>? p2p;
 
   /// Creates a new [DomainDevicesGraphicDbus].
   /// [address] Configures the address for the D-Bus connection in the graphics configuration.
@@ -23,16 +24,16 @@ class DomainDevicesGraphicDbus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'gl': ?gl == null ? null : gl!.toMap(),
+      'gl': ?pulumi.Input.mapOptionalInputValue<DomainDevicesGraphicDbusGl, Map<String, dynamic>>(gl, (value) => value.toMap()),
       'p2p': ?p2p,
     };
   }
 
   factory DomainDevicesGraphicDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicDbus(
-      address: map['address'] == null ? null : map['address'] as String,
-      gl: map['gl'] == null ? null : DomainDevicesGraphicDbusGl.fromMap((map['gl'] as Map).cast<String, dynamic>()),
-      p2p: map['p2p'] == null ? null : map['p2p'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      gl: map['gl'] == null ? null : (DomainDevicesGraphicDbusGl.fromMap((map['gl'] as Map).cast<String, dynamic>())).input(),
+      p2p: map['p2p'] == null ? null : (map['p2p'] as String).input(),
     );
   }
 }

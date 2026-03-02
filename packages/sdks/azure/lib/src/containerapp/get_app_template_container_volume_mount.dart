@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppTemplateContainerVolumeMount {
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The path in the container at which to mount this volume.
-  final String path;
+  final pulumi.Input<String> path;
   /// The sub path of the volume to be mounted in the container.
-  final String subPath;
+  final pulumi.Input<String> subPath;
 
   /// Creates a new [GetAppTemplateContainerVolumeMount].
   /// [name] The name of the Container App.
@@ -29,9 +30,9 @@ class GetAppTemplateContainerVolumeMount {
 
   factory GetAppTemplateContainerVolumeMount.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateContainerVolumeMount(
-      name: map['name'] as String,
-      path: map['path'] as String,
-      subPath: map['subPath'] as String,
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
+      subPath: (map['subPath'] as String).input(),
     );
   }
 }

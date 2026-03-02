@@ -38,21 +38,14 @@ class CustomTargetTypeArgs {
   /// [name] Name of the `CustomTargetType`.
   /// [project] The ID of the project in which the resource belongs.
   CustomTargetTypeArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<CustomTargetTypeCustomActions>? customActions,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      customActions = pulumi.Input.asOptionalInput<CustomTargetTypeCustomActions>(customActions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    this.customActions,
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class CustomTargetTypeArgs {
 
   factory CustomTargetTypeArgs.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      customActions: map['customActions'] == null ? null : pulumi.Output.create<CustomTargetTypeCustomActions>(CustomTargetTypeCustomActions.fromMap((map['customActions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      customActions: map['customActions'] == null ? null : (CustomTargetTypeCustomActions.fromMap((map['customActions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

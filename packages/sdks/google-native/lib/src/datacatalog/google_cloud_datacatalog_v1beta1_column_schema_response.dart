@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Representation of a column within a schema. Columns could be nested inside other columns.
 class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
   /// Name of the column.
-  final String column;
+  final pulumi.Input<String> column;
   /// Optional. Description of the column. Default value is an empty string.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-  final List<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse> subcolumns;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>> subcolumns;
   /// Type of the column.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1ColumnSchemaResponse].
   /// [column] Name of the column.
@@ -34,18 +34,18 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
       'column': column,
       'description': description,
       'mode': mode,
-      'subcolumns': pulumi.Input.encodeList<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse, Map<String, dynamic>>(subcolumns, (value) => value.toMap()),
+      'subcolumns': pulumi.Input.mapInputValue<List<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>, List<Map<String, dynamic>>>(subcolumns, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory GoogleCloudDatacatalogV1beta1ColumnSchemaResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1ColumnSchemaResponse(
-      column: map['column'] as String,
-      description: map['description'] as String,
-      mode: map['mode'] as String,
-      subcolumns: pulumi.Input.decodeList<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>(map['subcolumns'], (value) => GoogleCloudDatacatalogV1beta1ColumnSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      column: (map['column'] as String).input(),
+      description: (map['description'] as String).input(),
+      mode: (map['mode'] as String).input(),
+      subcolumns: (pulumi.Input.decodeList<GoogleCloudDatacatalogV1beta1ColumnSchemaResponse>(map['subcolumns'], (value) => GoogleCloudDatacatalogV1beta1ColumnSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

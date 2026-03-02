@@ -52,35 +52,21 @@ class RuleArgs {
   /// [target] The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
   /// [warnLevel] The risk level of the alert that is triggered. Valid values:
   RuleArgs({
-    required pulumi.Output<int> category,
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? contentCategory,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? productCode,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? riskLevelId,
-    required pulumi.Output<String> ruleName,
-    pulumi.Output<int>? ruleType,
-    pulumi.Output<String>? statExpress,
-    pulumi.Output<int>? status,
-    pulumi.Output<String>? target,
-    pulumi.Output<int>? warnLevel,
-  }) :
-      category = pulumi.Input.asInput<int>(category),
-      content = pulumi.Input.asInput<String>(content),
-      contentCategory = pulumi.Input.asOptionalInput<String>(contentCategory),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      riskLevelId = pulumi.Input.asOptionalInput<String>(riskLevelId),
-      ruleName = pulumi.Input.asInput<String>(ruleName),
-      ruleType = pulumi.Input.asOptionalInput<int>(ruleType),
-      statExpress = pulumi.Input.asOptionalInput<String>(statExpress),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      warnLevel = pulumi.Input.asOptionalInput<int>(warnLevel);
+    required this.category,
+    required this.content,
+    this.contentCategory,
+    this.description,
+    this.lang,
+    this.productCode,
+    this.productId,
+    this.riskLevelId,
+    required this.ruleName,
+    this.ruleType,
+    this.statExpress,
+    this.status,
+    this.target,
+    this.warnLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      category: pulumi.Output.create<int>(map['category'] as int),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      contentCategory: map['contentCategory'] == null ? null : pulumi.Output.create<String>(map['contentCategory'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      riskLevelId: map['riskLevelId'] == null ? null : pulumi.Output.create<String>(map['riskLevelId'] as String),
-      ruleName: pulumi.Output.create<String>(map['ruleName'] as String),
-      ruleType: map['ruleType'] == null ? null : pulumi.Output.create<int>(map['ruleType'] as int),
-      statExpress: map['statExpress'] == null ? null : pulumi.Output.create<String>(map['statExpress'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      warnLevel: map['warnLevel'] == null ? null : pulumi.Output.create<int>(map['warnLevel'] as int),
+      category: (map['category'] as int).input(),
+      content: (map['content'] as String).input(),
+      contentCategory: map['contentCategory'] == null ? null : (map['contentCategory'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      riskLevelId: map['riskLevelId'] == null ? null : (map['riskLevelId'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as int).input(),
+      statExpress: map['statExpress'] == null ? null : (map['statExpress'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      warnLevel: map['warnLevel'] == null ? null : (map['warnLevel'] as int).input(),
     );
   }
 }

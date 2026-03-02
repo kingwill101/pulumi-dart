@@ -5,35 +5,35 @@ import 'get_vpc_firewall_cens_cen_local_vpc_eni_list.dart';
 import 'get_vpc_firewall_cens_cen_local_vpc_vpc_cidr_table_list.dart';
 
 class GetVpcFirewallCensCenLocalVpc {
-  final String attachmentId;
-  final String attachmentName;
+  final pulumi.Input<String> attachmentId;
+  final pulumi.Input<String> attachmentName;
   /// The list of network segments protected by the VPC firewall.
-  final List<String> defendCidrLists;
-  final List<GetVpcFirewallCensCenLocalVpcEniList> eniLists;
-  final String manualVswitchId;
+  final pulumi.Input<List<String>> defendCidrLists;
+  final pulumi.Input<List<GetVpcFirewallCensCenLocalVpcEniList>> eniLists;
+  final pulumi.Input<String> manualVswitchId;
   /// The ID of the VPC instance that created the VPC firewall.
-  final String networkInstanceId;
+  final pulumi.Input<String> networkInstanceId;
   /// The name of the network instance.
-  final String networkInstanceName;
+  final pulumi.Input<String> networkInstanceName;
   /// The type of the network instance. Value: **VPC * *.
-  final String networkInstanceType;
+  final pulumi.Input<String> networkInstanceType;
   /// The UID of the Alibaba Cloud account to which the VPC belongs.
-  final String ownerId;
+  final pulumi.Input<String> ownerId;
   /// The region ID of the VPC.
-  final String regionNo;
+  final pulumi.Input<String> regionNo;
   /// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
-  final String routeMode;
+  final pulumi.Input<String> routeMode;
   /// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
-  final String supportManualMode;
-  final String transitRouterId;
+  final pulumi.Input<String> supportManualMode;
+  final pulumi.Input<String> transitRouterId;
   /// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
-  final String transitRouterType;
+  final pulumi.Input<String> transitRouterType;
   /// The VPC network segment list.
-  final List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists;
+  final pulumi.Input<List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList>> vpcCidrTableLists;
   /// The ID of the VPC instance.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The instance name of the VPC.
-  final String vpcName;
+  final pulumi.Input<String> vpcName;
 
   /// Creates a new [GetVpcFirewallCensCenLocalVpc].
   /// [attachmentId] Required.
@@ -78,7 +78,7 @@ class GetVpcFirewallCensCenLocalVpc {
       'attachmentId': attachmentId,
       'attachmentName': attachmentName,
       'defendCidrLists': defendCidrLists,
-      'eniLists': pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpcEniList, Map<String, dynamic>>(eniLists, (value) => value.toMap()),
+      'eniLists': pulumi.Input.mapInputValue<List<GetVpcFirewallCensCenLocalVpcEniList>, List<Map<String, dynamic>>>(eniLists, (value) => pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpcEniList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'manualVswitchId': manualVswitchId,
       'networkInstanceId': networkInstanceId,
       'networkInstanceName': networkInstanceName,
@@ -89,7 +89,7 @@ class GetVpcFirewallCensCenLocalVpc {
       'supportManualMode': supportManualMode,
       'transitRouterId': transitRouterId,
       'transitRouterType': transitRouterType,
-      'vpcCidrTableLists': pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableList, Map<String, dynamic>>(vpcCidrTableLists, (value) => value.toMap()),
+      'vpcCidrTableLists': pulumi.Input.mapInputValue<List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList>, List<Map<String, dynamic>>>(vpcCidrTableLists, (value) => pulumi.Input.encodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vpcId': vpcId,
       'vpcName': vpcName,
     };
@@ -97,23 +97,23 @@ class GetVpcFirewallCensCenLocalVpc {
 
   factory GetVpcFirewallCensCenLocalVpc.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensCenLocalVpc(
-      attachmentId: map['attachmentId'] as String,
-      attachmentName: map['attachmentName'] as String,
-      defendCidrLists: (map['defendCidrLists'] as List).cast<String>(),
-      eniLists: pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpcEniList>(map['eniLists'], (value) => GetVpcFirewallCensCenLocalVpcEniList.fromMap((value as Map).cast<String, dynamic>())),
-      manualVswitchId: map['manualVswitchId'] as String,
-      networkInstanceId: map['networkInstanceId'] as String,
-      networkInstanceName: map['networkInstanceName'] as String,
-      networkInstanceType: map['networkInstanceType'] as String,
-      ownerId: map['ownerId'] as String,
-      regionNo: map['regionNo'] as String,
-      routeMode: map['routeMode'] as String,
-      supportManualMode: map['supportManualMode'] as String,
-      transitRouterId: map['transitRouterId'] as String,
-      transitRouterType: map['transitRouterType'] as String,
-      vpcCidrTableLists: pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableList>(map['vpcCidrTableLists'], (value) => GetVpcFirewallCensCenLocalVpcVpcCidrTableList.fromMap((value as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] as String,
-      vpcName: map['vpcName'] as String,
+      attachmentId: (map['attachmentId'] as String).input(),
+      attachmentName: (map['attachmentName'] as String).input(),
+      defendCidrLists: ((map['defendCidrLists'] as List).cast<String>()).input(),
+      eniLists: (pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpcEniList>(map['eniLists'], (value) => GetVpcFirewallCensCenLocalVpcEniList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manualVswitchId: (map['manualVswitchId'] as String).input(),
+      networkInstanceId: (map['networkInstanceId'] as String).input(),
+      networkInstanceName: (map['networkInstanceName'] as String).input(),
+      networkInstanceType: (map['networkInstanceType'] as String).input(),
+      ownerId: (map['ownerId'] as String).input(),
+      regionNo: (map['regionNo'] as String).input(),
+      routeMode: (map['routeMode'] as String).input(),
+      supportManualMode: (map['supportManualMode'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      transitRouterType: (map['transitRouterType'] as String).input(),
+      vpcCidrTableLists: (pulumi.Input.decodeList<GetVpcFirewallCensCenLocalVpcVpcCidrTableList>(map['vpcCidrTableLists'], (value) => GetVpcFirewallCensCenLocalVpcVpcCidrTableList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcName: (map['vpcName'] as String).input(),
     );
   }
 }

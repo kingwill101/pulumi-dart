@@ -48,33 +48,20 @@ class GetRulesArgs {
   /// [status] Sensitive Data Identification Rules Detection State of.
   /// [warnLevel] The Level of Risk. Valid values:
   GetRulesArgs({
-    pulumi.Output<int>? category,
-    pulumi.Output<String>? contentCategory,
-    pulumi.Output<int>? customType,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? riskLevelId,
-    pulumi.Output<int>? ruleType,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? warnLevel,
-  }) :
-      category = pulumi.Input.asOptionalInput<int>(category),
-      contentCategory = pulumi.Input.asOptionalInput<String>(contentCategory),
-      customType = pulumi.Input.asOptionalInput<int>(customType),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      riskLevelId = pulumi.Input.asOptionalInput<String>(riskLevelId),
-      ruleType = pulumi.Input.asOptionalInput<int>(ruleType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      warnLevel = pulumi.Input.asOptionalInput<int>(warnLevel);
+    this.category,
+    this.contentCategory,
+    this.customType,
+    this.enableDetails,
+    this.ids,
+    this.name,
+    this.nameRegex,
+    this.outputFile,
+    this.productId,
+    this.riskLevelId,
+    this.ruleType,
+    this.status,
+    this.warnLevel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      category: map['category'] == null ? null : pulumi.Output.create<int>(map['category'] as int),
-      contentCategory: map['contentCategory'] == null ? null : pulumi.Output.create<String>(map['contentCategory'] as String),
-      customType: map['customType'] == null ? null : pulumi.Output.create<int>(map['customType'] as int),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      riskLevelId: map['riskLevelId'] == null ? null : pulumi.Output.create<String>(map['riskLevelId'] as String),
-      ruleType: map['ruleType'] == null ? null : pulumi.Output.create<int>(map['ruleType'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      warnLevel: map['warnLevel'] == null ? null : pulumi.Output.create<int>(map['warnLevel'] as int),
+      category: map['category'] == null ? null : (map['category'] as int).input(),
+      contentCategory: map['contentCategory'] == null ? null : (map['contentCategory'] as String).input(),
+      customType: map['customType'] == null ? null : (map['customType'] as int).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      riskLevelId: map['riskLevelId'] == null ? null : (map['riskLevelId'] as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      warnLevel: map['warnLevel'] == null ? null : (map['warnLevel'] as int).input(),
     );
   }
 }

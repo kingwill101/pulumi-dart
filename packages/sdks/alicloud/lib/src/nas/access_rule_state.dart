@@ -34,25 +34,16 @@ class AccessRuleState {
   /// [sourceCidrIp] SourceCidrIp.
   /// [userAccessType] UserAccess.
   AccessRuleState({
-    pulumi.Output<String>? accessGroupName,
-    pulumi.Output<String>? accessRuleId,
-    pulumi.Output<String>? fileSystemType,
-    pulumi.Output<String>? ipv6SourceCidrIp,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? rwAccessType,
-    pulumi.Output<String>? sourceCidrIp,
-    pulumi.Output<String>? userAccessType,
-  }) :
-      accessGroupName = pulumi.Input.asOptionalInput<String>(accessGroupName),
-      accessRuleId = pulumi.Input.asOptionalInput<String>(accessRuleId),
-      fileSystemType = pulumi.Input.asOptionalInput<String>(fileSystemType),
-      ipv6SourceCidrIp = pulumi.Input.asOptionalInput<String>(ipv6SourceCidrIp),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      rwAccessType = pulumi.Input.asOptionalInput<String>(rwAccessType),
-      sourceCidrIp = pulumi.Input.asOptionalInput<String>(sourceCidrIp),
-      userAccessType = pulumi.Input.asOptionalInput<String>(userAccessType);
+    this.accessGroupName,
+    this.accessRuleId,
+    this.fileSystemType,
+    this.ipv6SourceCidrIp,
+    this.priority,
+    this.regionId,
+    this.rwAccessType,
+    this.sourceCidrIp,
+    this.userAccessType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class AccessRuleState {
 
   factory AccessRuleState.fromMap(Map<String, dynamic> map) {
     return AccessRuleState(
-      accessGroupName: map['accessGroupName'] == null ? null : pulumi.Output.create<String>(map['accessGroupName'] as String),
-      accessRuleId: map['accessRuleId'] == null ? null : pulumi.Output.create<String>(map['accessRuleId'] as String),
-      fileSystemType: map['fileSystemType'] == null ? null : pulumi.Output.create<String>(map['fileSystemType'] as String),
-      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : pulumi.Output.create<String>(map['ipv6SourceCidrIp'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      rwAccessType: map['rwAccessType'] == null ? null : pulumi.Output.create<String>(map['rwAccessType'] as String),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : pulumi.Output.create<String>(map['sourceCidrIp'] as String),
-      userAccessType: map['userAccessType'] == null ? null : pulumi.Output.create<String>(map['userAccessType'] as String),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
+      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      ipv6SourceCidrIp: map['ipv6SourceCidrIp'] == null ? null : (map['ipv6SourceCidrIp'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType'] as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
+      userAccessType: map['userAccessType'] == null ? null : (map['userAccessType'] as String).input(),
     );
   }
 }

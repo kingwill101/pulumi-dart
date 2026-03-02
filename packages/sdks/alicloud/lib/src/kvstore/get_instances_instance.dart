@@ -1,113 +1,114 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
-  final String architectureType;
+  final pulumi.Input<String> architectureType;
   /// Indicates whether auto-renewal is enabled for the instance.
-  final bool autoRenew;
+  final pulumi.Input<bool> autoRenew;
   /// The duration for which the instance is automatically renewed. Unit: months.
-  final int autoRenewPeriod;
+  final pulumi.Input<int> autoRenewPeriod;
   /// It has been deprecated from provider version 1.101.0 and `zone_id` instead.
-  final String availabilityZone;
+  final pulumi.Input<String> availabilityZone;
   /// Instance bandwidth limit. Unit: Mbit/s.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// Capacity of the applied Tair (Redis OSS-Compatible) And Memcached (KVStore) Classic Instance. Unit: MB.
-  final int capacity;
+  final pulumi.Input<int> capacity;
   /// It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-  final String chargeType;
+  final pulumi.Input<String> chargeType;
   /// The parameter configuration of the instance.
-  final Map<String, String> config;
+  final pulumi.Input<Map<String, String>> config;
   /// Instance connection domain (only Intranet access supported).
-  final String connectionDomain;
+  final pulumi.Input<String> connectionDomain;
   /// The connection mode of the instance.
-  final String connectionMode;
+  final pulumi.Input<String> connectionMode;
   /// IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
-  final int connections;
+  final pulumi.Input<int> connections;
   /// Creation time of the instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the instance.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The name of the instance.
-  final String dbInstanceName;
+  final pulumi.Input<String> dbInstanceName;
   /// The time when the instance was destroyed.
-  final String destroyTime;
+  final pulumi.Input<String> destroyTime;
   /// Expiration time. Pay-As-You-Go instances are never expire.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// It has been deprecated from provider version 1.101.0 and `end_time` instead.
-  final String expireTime;
+  final pulumi.Input<String> expireTime;
   /// Indicates whether there was an order of renewal with configuration change that had not taken effect.
-  final bool hasRenewChangeOrder;
+  final pulumi.Input<bool> hasRenewChangeOrder;
   /// The ID of the instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
-  final String instanceClass;
+  final pulumi.Input<String> instanceClass;
   /// Indicates whether the release protection feature is enabled for the instance.
-  final bool instanceReleaseProtection;
+  final pulumi.Input<bool> instanceReleaseProtection;
   /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Indicates whether the instance is managed by Relational Database Service (RDS).
-  final bool isRds;
+  final pulumi.Input<bool> isRds;
   /// The end time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
-  final String maintainEndTime;
+  final pulumi.Input<String> maintainEndTime;
   /// The start time of the maintenance window. The time is in the HH:mmZ format. The time is displayed in UTC.
-  final String maintainStartTime;
+  final pulumi.Input<String> maintainStartTime;
   /// Instance connection quantity limit. Unit: count.
-  final int maxConnections;
+  final pulumi.Input<int> maxConnections;
   /// It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the network. Valid values: `CLASSIC`, `VPC`.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// The node type of the instance.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// The type of the package.
-  final String packageType;
+  final pulumi.Input<String> packageType;
   /// The payment type. Valid values: `PostPaid`, `PrePaid`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The service port of the instance.
-  final int port;
+  final pulumi.Input<int> port;
   /// Private IP address of the instance.
-  final String privateIp;
+  final pulumi.Input<String> privateIp;
   /// The queries per second (QPS) supported by the instance.
-  final int qps;
+  final pulumi.Input<int> qps;
   /// Region ID the instance belongs to.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The logical ID of the replica instance.
-  final String replacateId;
+  final pulumi.Input<String> replacateId;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The name of the instance.
-  final String searchKey;
+  final pulumi.Input<String> searchKey;
   /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
-  final String secondaryZoneId;
+  final pulumi.Input<String> secondaryZoneId;
   /// The ID of the security group associated with the instance.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is hidden
-  final String securityIpGroupAttribute;
+  final pulumi.Input<String> securityIpGroupAttribute;
   /// The name of the IP address whitelist.
-  final String securityIpGroupName;
+  final pulumi.Input<String> securityIpGroupName;
   /// The IP addresses in the whitelist.
-  final List<String> securityIps;
+  final pulumi.Input<List<String>> securityIps;
   /// Indicates whether SSL encryption is enabled.
-  final String sslEnable;
+  final pulumi.Input<String> sslEnable;
   /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The username of the instance.
-  final String userName;
+  final pulumi.Input<String> userName;
   /// Indicates whether password authentication is enabled. Valid values: Open, Close.
-  final String vpcAuthMode;
+  final pulumi.Input<String> vpcAuthMode;
   /// Connection port of the instance.
-  final String vpcCloudInstanceId;
+  final pulumi.Input<String> vpcCloudInstanceId;
   /// Used to retrieve instances belong to specified VPC.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Used to retrieve instances belong to specified `vswitch` resources.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The ID of the zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [architectureType] The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
@@ -279,59 +280,59 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      architectureType: map['architectureType'] as String,
-      autoRenew: map['autoRenew'] as bool,
-      autoRenewPeriod: map['autoRenewPeriod'] as int,
-      availabilityZone: map['availabilityZone'] as String,
-      bandwidth: map['bandwidth'] as int,
-      capacity: map['capacity'] as int,
-      chargeType: map['chargeType'] as String,
-      config: (map['config'] as Map).cast<String, String>(),
-      connectionDomain: map['connectionDomain'] as String,
-      connectionMode: map['connectionMode'] as String,
-      connections: map['connections'] as int,
-      createTime: map['createTime'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      dbInstanceName: map['dbInstanceName'] as String,
-      destroyTime: map['destroyTime'] as String,
-      endTime: map['endTime'] as String,
-      engineVersion: map['engineVersion'] as String,
-      expireTime: map['expireTime'] as String,
-      hasRenewChangeOrder: map['hasRenewChangeOrder'] as bool,
-      id: map['id'] as String,
-      instanceClass: map['instanceClass'] as String,
-      instanceReleaseProtection: map['instanceReleaseProtection'] as bool,
-      instanceType: map['instanceType'] as String,
-      isRds: map['isRds'] as bool,
-      maintainEndTime: map['maintainEndTime'] as String,
-      maintainStartTime: map['maintainStartTime'] as String,
-      maxConnections: map['maxConnections'] as int,
-      name: map['name'] as String,
-      networkType: map['networkType'] as String,
-      nodeType: map['nodeType'] as String,
-      packageType: map['packageType'] as String,
-      paymentType: map['paymentType'] as String,
-      port: map['port'] as int,
-      privateIp: map['privateIp'] as String,
-      qps: map['qps'] as int,
-      regionId: map['regionId'] as String,
-      replacateId: map['replacateId'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      searchKey: map['searchKey'] as String,
-      secondaryZoneId: map['secondaryZoneId'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      securityIpGroupAttribute: map['securityIpGroupAttribute'] as String,
-      securityIpGroupName: map['securityIpGroupName'] as String,
-      securityIps: (map['securityIps'] as List).cast<String>(),
-      sslEnable: map['sslEnable'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userName: map['userName'] as String,
-      vpcAuthMode: map['vpcAuthMode'] as String,
-      vpcCloudInstanceId: map['vpcCloudInstanceId'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      architectureType: (map['architectureType'] as String).input(),
+      autoRenew: (map['autoRenew'] as bool).input(),
+      autoRenewPeriod: (map['autoRenewPeriod'] as int).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      bandwidth: (map['bandwidth'] as int).input(),
+      capacity: (map['capacity'] as int).input(),
+      chargeType: (map['chargeType'] as String).input(),
+      config: ((map['config'] as Map).cast<String, String>()).input(),
+      connectionDomain: (map['connectionDomain'] as String).input(),
+      connectionMode: (map['connectionMode'] as String).input(),
+      connections: (map['connections'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbInstanceName: (map['dbInstanceName'] as String).input(),
+      destroyTime: (map['destroyTime'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      hasRenewChangeOrder: (map['hasRenewChangeOrder'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceClass: (map['instanceClass'] as String).input(),
+      instanceReleaseProtection: (map['instanceReleaseProtection'] as bool).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      isRds: (map['isRds'] as bool).input(),
+      maintainEndTime: (map['maintainEndTime'] as String).input(),
+      maintainStartTime: (map['maintainStartTime'] as String).input(),
+      maxConnections: (map['maxConnections'] as int).input(),
+      name: (map['name'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      packageType: (map['packageType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      port: (map['port'] as int).input(),
+      privateIp: (map['privateIp'] as String).input(),
+      qps: (map['qps'] as int).input(),
+      regionId: (map['regionId'] as String).input(),
+      replacateId: (map['replacateId'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      searchKey: (map['searchKey'] as String).input(),
+      secondaryZoneId: (map['secondaryZoneId'] as String).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      securityIpGroupAttribute: (map['securityIpGroupAttribute'] as String).input(),
+      securityIpGroupName: (map['securityIpGroupName'] as String).input(),
+      securityIps: ((map['securityIps'] as List).cast<String>()).input(),
+      sslEnable: (map['sslEnable'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      userName: (map['userName'] as String).input(),
+      vpcAuthMode: (map['vpcAuthMode'] as String).input(),
+      vpcCloudInstanceId: (map['vpcCloudInstanceId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

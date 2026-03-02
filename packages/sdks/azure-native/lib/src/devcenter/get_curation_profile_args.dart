@@ -19,13 +19,10 @@ class GetCurationProfileArgs {
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCurationProfileArgs({
-    required pulumi.Output<String> curationProfileName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      curationProfileName = pulumi.Input.asInput<String>(curationProfileName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.curationProfileName,
+    required this.devCenterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCurationProfileArgs {
 
   factory GetCurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetCurationProfileArgs(
-      curationProfileName: pulumi.Output.create<String>(map['curationProfileName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      curationProfileName: (map['curationProfileName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

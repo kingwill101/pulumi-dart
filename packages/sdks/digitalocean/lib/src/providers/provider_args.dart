@@ -37,25 +37,16 @@ class ProviderArgs {
   /// [spacesSecretKey] The secret access key for Spaces API operations.
   /// [token] The token key for API operations.
   ProviderArgs({
-    pulumi.Output<String>? apiEndpoint,
-    pulumi.Output<int>? httpRetryMax,
-    pulumi.Output<double>? httpRetryWaitMax,
-    pulumi.Output<double>? httpRetryWaitMin,
-    pulumi.Output<double>? requestsPerSecond,
-    pulumi.Output<String>? spacesAccessId,
-    pulumi.Output<String>? spacesEndpoint,
-    pulumi.Output<String>? spacesSecretKey,
-    pulumi.Output<String>? token,
-  }) :
-      apiEndpoint = pulumi.Input.asOptionalInput<String>(apiEndpoint),
-      httpRetryMax = pulumi.Input.asOptionalInput<int>(httpRetryMax),
-      httpRetryWaitMax = pulumi.Input.asOptionalInput<double>(httpRetryWaitMax),
-      httpRetryWaitMin = pulumi.Input.asOptionalInput<double>(httpRetryWaitMin),
-      requestsPerSecond = pulumi.Input.asOptionalInput<double>(requestsPerSecond),
-      spacesAccessId = pulumi.Input.asOptionalInput<String>(spacesAccessId),
-      spacesEndpoint = pulumi.Input.asOptionalInput<String>(spacesEndpoint),
-      spacesSecretKey = pulumi.Input.asOptionalInput<String>(spacesSecretKey),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.apiEndpoint,
+    this.httpRetryMax,
+    this.httpRetryWaitMax,
+    this.httpRetryWaitMin,
+    this.requestsPerSecond,
+    this.spacesAccessId,
+    this.spacesEndpoint,
+    this.spacesSecretKey,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      apiEndpoint: map['apiEndpoint'] == null ? null : pulumi.Output.create<String>(map['apiEndpoint'] as String),
-      httpRetryMax: map['httpRetryMax'] == null ? null : pulumi.Output.create<int>(map['httpRetryMax'] as int),
-      httpRetryWaitMax: map['httpRetryWaitMax'] == null ? null : pulumi.Output.create<double>(map['httpRetryWaitMax'] as double),
-      httpRetryWaitMin: map['httpRetryWaitMin'] == null ? null : pulumi.Output.create<double>(map['httpRetryWaitMin'] as double),
-      requestsPerSecond: map['requestsPerSecond'] == null ? null : pulumi.Output.create<double>(map['requestsPerSecond'] as double),
-      spacesAccessId: map['spacesAccessId'] == null ? null : pulumi.Output.create<String>(map['spacesAccessId'] as String),
-      spacesEndpoint: map['spacesEndpoint'] == null ? null : pulumi.Output.create<String>(map['spacesEndpoint'] as String),
-      spacesSecretKey: map['spacesSecretKey'] == null ? null : pulumi.Output.create<String>(map['spacesSecretKey'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint'] as String).input(),
+      httpRetryMax: map['httpRetryMax'] == null ? null : (map['httpRetryMax'] as int).input(),
+      httpRetryWaitMax: map['httpRetryWaitMax'] == null ? null : (map['httpRetryWaitMax'] as double).input(),
+      httpRetryWaitMin: map['httpRetryWaitMin'] == null ? null : (map['httpRetryWaitMin'] as double).input(),
+      requestsPerSecond: map['requestsPerSecond'] == null ? null : (map['requestsPerSecond'] as double).input(),
+      spacesAccessId: map['spacesAccessId'] == null ? null : (map['spacesAccessId'] as String).input(),
+      spacesEndpoint: map['spacesEndpoint'] == null ? null : (map['spacesEndpoint'] as String).input(),
+      spacesSecretKey: map['spacesSecretKey'] == null ? null : (map['spacesSecretKey'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

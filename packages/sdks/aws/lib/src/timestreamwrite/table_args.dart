@@ -34,21 +34,14 @@ class TableArgs {
   /// [tableName] The name of the Timestream table.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   TableArgs({
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<TableMagneticStoreWriteProperties>? magneticStoreWriteProperties,
-    pulumi.Output<String>? region,
-    pulumi.Output<TableRetentionProperties>? retentionProperties,
-    pulumi.Output<TableSchema>? schema,
-    required pulumi.Output<String> tableName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      magneticStoreWriteProperties = pulumi.Input.asOptionalInput<TableMagneticStoreWriteProperties>(magneticStoreWriteProperties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionProperties = pulumi.Input.asOptionalInput<TableRetentionProperties>(retentionProperties),
-      schema = pulumi.Input.asOptionalInput<TableSchema>(schema),
-      tableName = pulumi.Input.asInput<String>(tableName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.databaseName,
+    this.magneticStoreWriteProperties,
+    this.region,
+    this.retentionProperties,
+    this.schema,
+    required this.tableName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : pulumi.Output.create<TableMagneticStoreWriteProperties>(TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retentionProperties: map['retentionProperties'] == null ? null : pulumi.Output.create<TableRetentionProperties>(TableRetentionProperties.fromMap((map['retentionProperties'] as Map).cast<String, dynamic>())),
-      schema: map['schema'] == null ? null : pulumi.Output.create<TableSchema>(TableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())),
-      tableName: pulumi.Output.create<String>(map['tableName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseName: (map['databaseName'] as String).input(),
+      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : (TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retentionProperties: map['retentionProperties'] == null ? null : (TableRetentionProperties.fromMap((map['retentionProperties'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (TableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      tableName: (map['tableName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class TargetArgs {
   /// [targetName] The target resource name.
   /// [watcherName] The database watcher name.
   TargetArgs({
-    pulumi.Output<SqlDbElasticPoolTargetProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? targetName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SqlDbElasticPoolTargetProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asOptionalInput<String>(targetName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    this.properties,
+    required this.resourceGroupName,
+    this.targetName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SqlDbElasticPoolTargetProperties>(SqlDbElasticPoolTargetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: map['targetName'] == null ? null : pulumi.Output.create<String>(map['targetName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      properties: map['properties'] == null ? null : (SqlDbElasticPoolTargetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

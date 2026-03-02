@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbServersDbServerDbServerPatchingDetail {
-  final int estimatedPatchDuration;
-  final String patchingStatus;
-  final String timePatchingEnded;
-  final String timePatchingStarted;
+  final pulumi.Input<int> estimatedPatchDuration;
+  final pulumi.Input<String> patchingStatus;
+  final pulumi.Input<String> timePatchingEnded;
+  final pulumi.Input<String> timePatchingStarted;
 
   /// Creates a new [GetDbServersDbServerDbServerPatchingDetail].
   /// [estimatedPatchDuration] Required.
@@ -30,10 +31,10 @@ class GetDbServersDbServerDbServerPatchingDetail {
 
   factory GetDbServersDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerDbServerPatchingDetail(
-      estimatedPatchDuration: map['estimatedPatchDuration'] as int,
-      patchingStatus: map['patchingStatus'] as String,
-      timePatchingEnded: map['timePatchingEnded'] as String,
-      timePatchingStarted: map['timePatchingStarted'] as String,
+      estimatedPatchDuration: (map['estimatedPatchDuration'] as int).input(),
+      patchingStatus: (map['patchingStatus'] as String).input(),
+      timePatchingEnded: (map['timePatchingEnded'] as String).input(),
+      timePatchingStarted: (map['timePatchingStarted'] as String).input(),
     );
   }
 }

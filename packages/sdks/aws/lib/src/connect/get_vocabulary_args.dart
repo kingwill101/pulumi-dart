@@ -27,17 +27,12 @@ class GetVocabularyArgs {
   /// [tags] A map of tags to assign to the Vocabulary.
   /// [vocabularyId] Returns information on a specific Vocabulary by Vocabulary id
   GetVocabularyArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vocabularyId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vocabularyId = pulumi.Input.asOptionalInput<String>(vocabularyId);
+    required this.instanceId,
+    this.name,
+    this.region,
+    this.tags,
+    this.vocabularyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetVocabularyArgs {
 
   factory GetVocabularyArgs.fromMap(Map<String, dynamic> map) {
     return GetVocabularyArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vocabularyId: map['vocabularyId'] == null ? null : pulumi.Output.create<String>(map['vocabularyId'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vocabularyId: map['vocabularyId'] == null ? null : (map['vocabularyId'] as String).input(),
     );
   }
 }

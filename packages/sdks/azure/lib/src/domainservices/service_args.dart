@@ -50,31 +50,19 @@ class ServiceArgs {
   /// [sku] The SKU to use when provisioning the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   /// [tags] A mapping of tags assigned to the resource.
   ServiceArgs({
-    pulumi.Output<String>? domainConfigurationType,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<bool>? filteredSyncEnabled,
-    required pulumi.Output<ServiceInitialReplicaSet> initialReplicaSet,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<ServiceNotifications>? notifications,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<ServiceSecureLdap>? secureLdap,
-    pulumi.Output<ServiceSecurity>? security,
-    required pulumi.Output<String> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainConfigurationType = pulumi.Input.asOptionalInput<String>(domainConfigurationType),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      filteredSyncEnabled = pulumi.Input.asOptionalInput<bool>(filteredSyncEnabled),
-      initialReplicaSet = pulumi.Input.asInput<ServiceInitialReplicaSet>(initialReplicaSet),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<ServiceNotifications>(notifications),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secureLdap = pulumi.Input.asOptionalInput<ServiceSecureLdap>(secureLdap),
-      security = pulumi.Input.asOptionalInput<ServiceSecurity>(security),
-      sku = pulumi.Input.asInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.domainConfigurationType,
+    required this.domainName,
+    this.filteredSyncEnabled,
+    required this.initialReplicaSet,
+    this.location,
+    this.name,
+    this.notifications,
+    required this.resourceGroupName,
+    this.secureLdap,
+    this.security,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      domainConfigurationType: map['domainConfigurationType'] == null ? null : pulumi.Output.create<String>(map['domainConfigurationType'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      filteredSyncEnabled: map['filteredSyncEnabled'] == null ? null : pulumi.Output.create<bool>(map['filteredSyncEnabled'] as bool),
-      initialReplicaSet: pulumi.Output.create<ServiceInitialReplicaSet>(ServiceInitialReplicaSet.fromMap((map['initialReplicaSet'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<ServiceNotifications>(ServiceNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secureLdap: map['secureLdap'] == null ? null : pulumi.Output.create<ServiceSecureLdap>(ServiceSecureLdap.fromMap((map['secureLdap'] as Map).cast<String, dynamic>())),
-      security: map['security'] == null ? null : pulumi.Output.create<ServiceSecurity>(ServiceSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainConfigurationType: map['domainConfigurationType'] == null ? null : (map['domainConfigurationType'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      filteredSyncEnabled: map['filteredSyncEnabled'] == null ? null : (map['filteredSyncEnabled'] as bool).input(),
+      initialReplicaSet: (ServiceInitialReplicaSet.fromMap((map['initialReplicaSet'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (ServiceNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secureLdap: map['secureLdap'] == null ? null : (ServiceSecureLdap.fromMap((map['secureLdap'] as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (ServiceSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
+      sku: (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -36,23 +36,15 @@ class ProjectCloudresourcemanagerV1beta1Args {
   /// [projectNumber] The number uniquely identifying the project. Example: `415104041262` Read-only.
   /// [useLegacyStack] A now unused experiment opt-out option.
   ProjectCloudresourcemanagerV1beta1Args({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<ProjectLifecycleStateCloudresourcemanagerV1beta1>? lifecycleState,
-    pulumi.Output<String>? name,
-    pulumi.Output<ResourceIdCloudresourcemanagerV1beta1>? parent,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? projectNumber,
-    pulumi.Output<bool>? useLegacyStack,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lifecycleState = pulumi.Input.asOptionalInput<ProjectLifecycleStateCloudresourcemanagerV1beta1>(lifecycleState),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<ResourceIdCloudresourcemanagerV1beta1>(parent),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      projectNumber = pulumi.Input.asOptionalInput<String>(projectNumber),
-      useLegacyStack = pulumi.Input.asOptionalInput<bool>(useLegacyStack);
+    this.createTime,
+    this.labels,
+    this.lifecycleState,
+    this.name,
+    this.parent,
+    this.projectId,
+    this.projectNumber,
+    this.useLegacyStack,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class ProjectCloudresourcemanagerV1beta1Args {
 
   factory ProjectCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ProjectCloudresourcemanagerV1beta1Args(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lifecycleState: map['lifecycleState'] == null ? null : pulumi.Output.create<ProjectLifecycleStateCloudresourcemanagerV1beta1>(ProjectLifecycleStateCloudresourcemanagerV1beta1.fromValue(map['lifecycleState'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<ResourceIdCloudresourcemanagerV1beta1>(ResourceIdCloudresourcemanagerV1beta1.fromMap((map['parent'] as Map).cast<String, dynamic>())),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      projectNumber: map['projectNumber'] == null ? null : pulumi.Output.create<String>(map['projectNumber'] as String),
-      useLegacyStack: map['useLegacyStack'] == null ? null : pulumi.Output.create<bool>(map['useLegacyStack'] as bool),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleStateCloudresourcemanagerV1beta1.fromValue(map['lifecycleState'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (ResourceIdCloudresourcemanagerV1beta1.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      useLegacyStack: map['useLegacyStack'] == null ? null : (map['useLegacyStack'] as bool).input(),
     );
   }
 }

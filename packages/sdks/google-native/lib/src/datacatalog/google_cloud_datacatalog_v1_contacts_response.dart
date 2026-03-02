@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_contacts_person_response.dart';
 /// Contact people for the entry.
 class GoogleCloudDatacatalogV1ContactsResponse {
   /// The list of contact people for the entry.
-  final List<GoogleCloudDatacatalogV1ContactsPersonResponse> people;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1ContactsPersonResponse>> people;
 
   /// Creates a new [GoogleCloudDatacatalogV1ContactsResponse].
   /// [people] The list of contact people for the entry.
@@ -16,13 +16,13 @@ class GoogleCloudDatacatalogV1ContactsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'people': pulumi.Input.encodeList<GoogleCloudDatacatalogV1ContactsPersonResponse, Map<String, dynamic>>(people, (value) => value.toMap()),
+      'people': pulumi.Input.mapInputValue<List<GoogleCloudDatacatalogV1ContactsPersonResponse>, List<Map<String, dynamic>>>(people, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogV1ContactsPersonResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GoogleCloudDatacatalogV1ContactsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ContactsResponse(
-      people: pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPersonResponse>(map['people'], (value) => GoogleCloudDatacatalogV1ContactsPersonResponse.fromMap((value as Map).cast<String, dynamic>())),
+      people: (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPersonResponse>(map['people'], (value) => GoogleCloudDatacatalogV1ContactsPersonResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

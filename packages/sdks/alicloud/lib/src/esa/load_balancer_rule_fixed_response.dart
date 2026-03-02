@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerRuleFixedResponse {
   /// The Content-Type field in the HTTP Header.
-  final String? contentType;
+  final pulumi.Input<String>? contentType;
   /// The location field in the http return.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The body value of the response.
-  final String? messageBody;
+  final pulumi.Input<String>? messageBody;
   /// Status Code.
-  final int? statusCode;
+  final pulumi.Input<int>? statusCode;
 
   /// Creates a new [LoadBalancerRuleFixedResponse].
   /// [contentType] The Content-Type field in the HTTP Header.
@@ -34,10 +35,10 @@ class LoadBalancerRuleFixedResponse {
 
   factory LoadBalancerRuleFixedResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRuleFixedResponse(
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      messageBody: map['messageBody'] == null ? null : map['messageBody'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as int,
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messageBody: map['messageBody'] == null ? null : (map['messageBody'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as int).input(),
     );
   }
 }

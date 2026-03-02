@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Source information used to create a Service Config
 class SourceInfoResponse {
   /// All files used during config generation.
-  final List<Map<String, String>> sourceFiles;
+  final pulumi.Input<List<Map<String, String>>> sourceFiles;
 
   /// Creates a new [SourceInfoResponse].
   /// [sourceFiles] All files used during config generation.
@@ -20,7 +21,7 @@ class SourceInfoResponse {
 
   factory SourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return SourceInfoResponse(
-      sourceFiles: (map['sourceFiles'] as List).cast<Map<String, String>>(),
+      sourceFiles: ((map['sourceFiles'] as List).cast<Map<String, String>>()).input(),
     );
   }
 }

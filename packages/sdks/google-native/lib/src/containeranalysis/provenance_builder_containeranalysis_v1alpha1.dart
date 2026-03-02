@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor_containeranalysis_v1alpha1.dart';
 
 class ProvenanceBuilderContaineranalysisV1alpha1 {
-  final List<ResourceDescriptorContaineranalysisV1alpha1>? builderDependencies;
-  final String? id;
-  final Map<String, String>? version;
+  final pulumi.Input<List<ResourceDescriptorContaineranalysisV1alpha1>>? builderDependencies;
+  final pulumi.Input<String>? id;
+  final pulumi.Input<Map<String, String>>? version;
 
   /// Creates a new [ProvenanceBuilderContaineranalysisV1alpha1].
   /// [builderDependencies] Optional.
@@ -20,7 +20,7 @@ class ProvenanceBuilderContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builderDependencies': ?builderDependencies == null ? null : pulumi.Input.encodeList<ResourceDescriptorContaineranalysisV1alpha1, Map<String, dynamic>>(builderDependencies!, (value) => value.toMap()),
+      'builderDependencies': ?pulumi.Input.mapOptionalInputValue<List<ResourceDescriptorContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(builderDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptorContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'version': ?version,
     };
@@ -28,9 +28,9 @@ class ProvenanceBuilderContaineranalysisV1alpha1 {
 
   factory ProvenanceBuilderContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilderContaineranalysisV1alpha1(
-      builderDependencies: map['builderDependencies'] == null ? null : pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(map['builderDependencies'], (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      version: map['version'] == null ? null : (map['version'] as Map).cast<String, String>(),
+      builderDependencies: map['builderDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(map['builderDependencies'], (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as Map).cast<String, String>()).input(),
     );
   }
 }

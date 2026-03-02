@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Connection state details of the private endpoint
 class PrivateLinkServiceConnectionState {
   /// The private link service connection description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The private link service connection status.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionState].
   /// [description] The private link service connection description.
@@ -25,8 +26,8 @@ class PrivateLinkServiceConnectionState {
 
   factory PrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionState(
-      description: map['description'] == null ? null : map['description'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
   /// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
-  final String secret;
+  final pulumi.Input<String> secret;
   /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetServiceTemplateContainerEnvValueSourceSecretKeyRef].
   /// [secret] The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
@@ -24,8 +25,8 @@ class GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
 
   factory GetServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerEnvValueSourceSecretKeyRef(
-      secret: map['secret'] as String,
-      version: map['version'] as String,
+      secret: (map['secret'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

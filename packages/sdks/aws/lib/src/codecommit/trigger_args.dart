@@ -20,13 +20,10 @@ class TriggerArgs {
   /// [repositoryName] The name for the repository. This needs to be less than 100 characters.
   /// [triggers] The name of the trigger.
   TriggerArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repositoryName,
-    required pulumi.Output<List<TriggerTrigger>> triggers,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName),
-      triggers = pulumi.Input.asInput<List<TriggerTrigger>>(triggers);
+    this.region,
+    required this.repositoryName,
+    required this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
-      triggers: pulumi.Output.create<List<TriggerTrigger>>(pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      triggers: (pulumi.Input.decodeList<TriggerTrigger>(map['triggers'], (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

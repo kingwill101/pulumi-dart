@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CollectorBodyAgentSpnProperties {
   /// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// Intended audience for the service principal.
-  final String? audience;
+  final pulumi.Input<String>? audience;
   /// AAD Authority URL which was used to request the token for the service principal.
-  final String? authority;
+  final pulumi.Input<String>? authority;
   /// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String? objectId;
+  final pulumi.Input<String>? objectId;
   /// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [CollectorBodyAgentSpnProperties].
   /// [applicationId] Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
@@ -39,11 +40,11 @@ class CollectorBodyAgentSpnProperties {
 
   factory CollectorBodyAgentSpnProperties.fromMap(Map<String, dynamic> map) {
     return CollectorBodyAgentSpnProperties(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      audience: map['audience'] == null ? null : map['audience'] as String,
-      authority: map['authority'] == null ? null : map['authority'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class SecurityGatewayApplicationIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
   SecurityGatewayApplicationIamPolicyArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> securityGatewayId,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securityGatewayId = pulumi.Input.asInput<String>(securityGatewayId);
+    required this.applicationId,
+    required this.policyData,
+    this.project,
+    required this.securityGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class SecurityGatewayApplicationIamPolicyArgs {
 
   factory SecurityGatewayApplicationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationIamPolicyArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      securityGatewayId: pulumi.Output.create<String>(map['securityGatewayId'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      securityGatewayId: (map['securityGatewayId'] as String).input(),
     );
   }
 }

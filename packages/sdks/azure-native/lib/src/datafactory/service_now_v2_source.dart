@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'expression_v2.dart';
 
 /// A copy activity ServiceNowV2 server source.
 class ServiceNowV2Source {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Expression to filter data from source.
-  final ExpressionV2? expression;
+  final pulumi.Input<ExpressionV2>? expression;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Page size of the result. Type: integer (or Expression with resultType integer).
-  final dynamic pageSize;
+  final pulumi.Input<dynamic>? pageSize;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'ServiceNowV2Source'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceNowV2Source].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -50,7 +51,7 @@ class ServiceNowV2Source {
     return <String, dynamic>{
       'additionalColumns': ?additionalColumns,
       'disableMetricsCollection': ?disableMetricsCollection,
-      'expression': ?expression == null ? null : expression!.toMap(),
+      'expression': ?pulumi.Input.mapOptionalInputValue<ExpressionV2, Map<String, dynamic>>(expression, (value) => value.toMap()),
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'pageSize': ?pageSize,
       'queryTimeout': ?queryTimeout,
@@ -62,15 +63,15 @@ class ServiceNowV2Source {
 
   factory ServiceNowV2Source.fromMap(Map<String, dynamic> map) {
     return ServiceNowV2Source(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      expression: map['expression'] == null ? null : ExpressionV2.fromMap((map['expression'] as Map).cast<String, dynamic>()),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      pageSize: map['pageSize'] == null ? null : map['pageSize'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      expression: map['expression'] == null ? null : (ExpressionV2.fromMap((map['expression'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

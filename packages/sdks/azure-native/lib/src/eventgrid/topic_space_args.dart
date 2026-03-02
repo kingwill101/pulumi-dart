@@ -29,17 +29,12 @@ class TopicSpaceArgs {
   /// [topicSpaceName] The topic space name.
   /// [topicTemplates] The topic filters in the topic space.
   TopicSpaceArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? topicSpaceName,
-    pulumi.Output<List<String>>? topicTemplates,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicSpaceName = pulumi.Input.asOptionalInput<String>(topicSpaceName),
-      topicTemplates = pulumi.Input.asOptionalInput<List<String>>(topicTemplates);
+    this.description,
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.topicSpaceName,
+    this.topicTemplates,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class TopicSpaceArgs {
 
   factory TopicSpaceArgs.fromMap(Map<String, dynamic> map) {
     return TopicSpaceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicSpaceName: map['topicSpaceName'] == null ? null : pulumi.Output.create<String>(map['topicSpaceName'] as String),
-      topicTemplates: map['topicTemplates'] == null ? null : pulumi.Output.create<List<String>>((map['topicTemplates'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName'] as String).input(),
+      topicTemplates: map['topicTemplates'] == null ? null : ((map['topicTemplates'] as List).cast<String>()).input(),
     );
   }
 }

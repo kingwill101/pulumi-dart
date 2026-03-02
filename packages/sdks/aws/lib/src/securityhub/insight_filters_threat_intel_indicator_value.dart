@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersThreatIntelIndicatorValue {
-  final String comparison;
-  final String value;
+  final pulumi.Input<String> comparison;
+  final pulumi.Input<String> value;
 
   /// Creates a new [InsightFiltersThreatIntelIndicatorValue].
   /// [comparison] Required.
@@ -22,8 +23,8 @@ class InsightFiltersThreatIntelIndicatorValue {
 
   factory InsightFiltersThreatIntelIndicatorValue.fromMap(Map<String, dynamic> map) {
     return InsightFiltersThreatIntelIndicatorValue(
-      comparison: map['comparison'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

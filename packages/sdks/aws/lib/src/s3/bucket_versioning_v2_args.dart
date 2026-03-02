@@ -26,17 +26,12 @@ class BucketVersioningV2Args {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [versioningConfiguration] Configuration block for the versioning parameters. See below.
   BucketVersioningV2Args({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<String>? mfa,
-    pulumi.Output<String>? region,
-    required pulumi.Output<BucketVersioningV2VersioningConfiguration> versioningConfiguration,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      mfa = pulumi.Input.asOptionalInput<String>(mfa),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      versioningConfiguration = pulumi.Input.asInput<BucketVersioningV2VersioningConfiguration>(versioningConfiguration);
+    required this.bucket,
+    this.expectedBucketOwner,
+    this.mfa,
+    this.region,
+    required this.versioningConfiguration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class BucketVersioningV2Args {
 
   factory BucketVersioningV2Args.fromMap(Map<String, dynamic> map) {
     return BucketVersioningV2Args(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      mfa: map['mfa'] == null ? null : pulumi.Output.create<String>(map['mfa'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      versioningConfiguration: pulumi.Output.create<BucketVersioningV2VersioningConfiguration>(BucketVersioningV2VersioningConfiguration.fromMap((map['versioningConfiguration'] as Map).cast<String, dynamic>())),
+      bucket: (map['bucket'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      mfa: map['mfa'] == null ? null : (map['mfa'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      versioningConfiguration: (BucketVersioningV2VersioningConfiguration.fromMap((map['versioningConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

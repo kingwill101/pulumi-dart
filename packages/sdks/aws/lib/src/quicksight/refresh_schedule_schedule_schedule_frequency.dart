@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'refresh_schedule_schedule_schedule_frequency_refresh_on_day.dart';
 
 class RefreshScheduleScheduleScheduleFrequency {
   /// The interval between scheduled refreshes. Valid values are `MINUTE15`, `MINUTE30`, `HOURLY`, `DAILY`, `WEEKLY` and `MONTHLY`.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// The [refresh on entity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScheduleRefreshOnEntity.html) configuration for weekly or monthly schedules. See refresh_on_day.
-  final RefreshScheduleScheduleScheduleFrequencyRefreshOnDay? refreshOnDay;
+  final pulumi.Input<RefreshScheduleScheduleScheduleFrequencyRefreshOnDay>? refreshOnDay;
   /// The time of day that you want the dataset to refresh. This value is expressed in `HH:MM` format. This field is not required for schedules that refresh hourly.
-  final String? timeOfTheDay;
+  final pulumi.Input<String>? timeOfTheDay;
   /// The timezone that you want the refresh schedule to use.
-  final String? timezone;
+  final pulumi.Input<String>? timezone;
 
   /// Creates a new [RefreshScheduleScheduleScheduleFrequency].
   /// [interval] The interval between scheduled refreshes. Valid values are `MINUTE15`, `MINUTE30`, `HOURLY`, `DAILY`, `WEEKLY` and `MONTHLY`.
@@ -27,7 +28,7 @@ class RefreshScheduleScheduleScheduleFrequency {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'interval': interval,
-      'refreshOnDay': ?refreshOnDay == null ? null : refreshOnDay!.toMap(),
+      'refreshOnDay': ?pulumi.Input.mapOptionalInputValue<RefreshScheduleScheduleScheduleFrequencyRefreshOnDay, Map<String, dynamic>>(refreshOnDay, (value) => value.toMap()),
       'timeOfTheDay': ?timeOfTheDay,
       'timezone': ?timezone,
     };
@@ -35,10 +36,10 @@ class RefreshScheduleScheduleScheduleFrequency {
 
   factory RefreshScheduleScheduleScheduleFrequency.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleScheduleScheduleFrequency(
-      interval: map['interval'] as String,
-      refreshOnDay: map['refreshOnDay'] == null ? null : RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap((map['refreshOnDay'] as Map).cast<String, dynamic>()),
-      timeOfTheDay: map['timeOfTheDay'] == null ? null : map['timeOfTheDay'] as String,
-      timezone: map['timezone'] == null ? null : map['timezone'] as String,
+      interval: (map['interval'] as String).input(),
+      refreshOnDay: map['refreshOnDay'] == null ? null : (RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap((map['refreshOnDay'] as Map).cast<String, dynamic>())).input(),
+      timeOfTheDay: map['timeOfTheDay'] == null ? null : (map['timeOfTheDay'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs {
   /// Name of the CloudWatch Log Group to send findings to.
-  final String logGroup;
+  final pulumi.Input<String> logGroup;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs].
   /// [logGroup] Name of the CloudWatch Log Group to send findings to.
@@ -19,7 +20,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
 
   factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs(
-      logGroup: map['logGroup'] as String,
+      logGroup: (map['logGroup'] as String).input(),
     );
   }
 }

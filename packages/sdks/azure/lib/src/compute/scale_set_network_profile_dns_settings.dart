@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetNetworkProfileDnsSettings {
   /// Specifies an array of DNS servers.
-  final List<String> dnsServers;
+  final pulumi.Input<List<String>> dnsServers;
 
   /// Creates a new [ScaleSetNetworkProfileDnsSettings].
   /// [dnsServers] Specifies an array of DNS servers.
@@ -19,7 +20,7 @@ class ScaleSetNetworkProfileDnsSettings {
 
   factory ScaleSetNetworkProfileDnsSettings.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfileDnsSettings(
-      dnsServers: (map['dnsServers'] as List).cast<String>(),
+      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
     );
   }
 }

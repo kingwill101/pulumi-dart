@@ -10,15 +10,15 @@ class LbRouteExtensionExtensionChain {
   /// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
   /// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
   /// Structure is documented below.
-  final List<LbRouteExtensionExtensionChainExtension> extensions;
+  final pulumi.Input<List<LbRouteExtensionExtensionChainExtension>> extensions;
   /// Conditions under which this chain is invoked for a request.
   /// Structure is documented below.
-  final LbRouteExtensionExtensionChainMatchCondition matchCondition;
+  final pulumi.Input<LbRouteExtensionExtensionChainMatchCondition> matchCondition;
   /// The name for this extension chain. The name is logged as part of the HTTP request logs.
   /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
   /// and the last character must be a letter or a number.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [LbRouteExtensionExtensionChain].
   /// [extensions] A set of extensions to execute for the matching request.
@@ -32,17 +32,17 @@ class LbRouteExtensionExtensionChain {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': pulumi.Input.encodeList<LbRouteExtensionExtensionChainExtension, Map<String, dynamic>>(extensions, (value) => value.toMap()),
-      'matchCondition': matchCondition.toMap(),
+      'extensions': pulumi.Input.mapInputValue<List<LbRouteExtensionExtensionChainExtension>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<LbRouteExtensionExtensionChainExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matchCondition': pulumi.Input.mapInputValue<LbRouteExtensionExtensionChainMatchCondition, Map<String, dynamic>>(matchCondition, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory LbRouteExtensionExtensionChain.fromMap(Map<String, dynamic> map) {
     return LbRouteExtensionExtensionChain(
-      extensions: pulumi.Input.decodeList<LbRouteExtensionExtensionChainExtension>(map['extensions'], (value) => LbRouteExtensionExtensionChainExtension.fromMap((value as Map).cast<String, dynamic>())),
-      matchCondition: LbRouteExtensionExtensionChainMatchCondition.fromMap((map['matchCondition'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      extensions: (pulumi.Input.decodeList<LbRouteExtensionExtensionChainExtension>(map['extensions'], (value) => LbRouteExtensionExtensionChainExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchCondition: (LbRouteExtensionExtensionChainMatchCondition.fromMap((map['matchCondition'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

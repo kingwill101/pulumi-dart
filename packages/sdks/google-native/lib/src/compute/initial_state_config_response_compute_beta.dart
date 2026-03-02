@@ -6,13 +6,13 @@ import 'file_content_buffer_response_compute_beta.dart';
 /// Initial State for shielded instance, these are public keys which are safe to store in public
 class InitialStateConfigResponseComputeBeta {
   /// The Key Database (db).
-  final List<FileContentBufferResponseComputeBeta> dbs;
+  final pulumi.Input<List<FileContentBufferResponseComputeBeta>> dbs;
   /// The forbidden key database (dbx).
-  final List<FileContentBufferResponseComputeBeta> dbxs;
+  final pulumi.Input<List<FileContentBufferResponseComputeBeta>> dbxs;
   /// The Key Exchange Key (KEK).
-  final List<FileContentBufferResponseComputeBeta> keks;
+  final pulumi.Input<List<FileContentBufferResponseComputeBeta>> keks;
   /// The Platform Key (PK).
-  final FileContentBufferResponseComputeBeta pk;
+  final pulumi.Input<FileContentBufferResponseComputeBeta> pk;
 
   /// Creates a new [InitialStateConfigResponseComputeBeta].
   /// [dbs] The Key Database (db).
@@ -28,19 +28,19 @@ class InitialStateConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbs': pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(dbs, (value) => value.toMap()),
-      'dbxs': pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(dbxs, (value) => value.toMap()),
-      'keks': pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(keks, (value) => value.toMap()),
-      'pk': pk.toMap(),
+      'dbs': pulumi.Input.mapInputValue<List<FileContentBufferResponseComputeBeta>, List<Map<String, dynamic>>>(dbs, (value) => pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbxs': pulumi.Input.mapInputValue<List<FileContentBufferResponseComputeBeta>, List<Map<String, dynamic>>>(dbxs, (value) => pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'keks': pulumi.Input.mapInputValue<List<FileContentBufferResponseComputeBeta>, List<Map<String, dynamic>>>(keks, (value) => pulumi.Input.encodeList<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pk': pulumi.Input.mapInputValue<FileContentBufferResponseComputeBeta, Map<String, dynamic>>(pk, (value) => value.toMap()),
     };
   }
 
   factory InitialStateConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InitialStateConfigResponseComputeBeta(
-      dbs: pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['dbs'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      dbxs: pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['dbxs'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      keks: pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['keks'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      pk: FileContentBufferResponseComputeBeta.fromMap((map['pk'] as Map).cast<String, dynamic>()),
+      dbs: (pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['dbs'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbxs: (pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['dbxs'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keks: (pulumi.Input.decodeList<FileContentBufferResponseComputeBeta>(map['keks'], (value) => FileContentBufferResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pk: (FileContentBufferResponseComputeBeta.fromMap((map['pk'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

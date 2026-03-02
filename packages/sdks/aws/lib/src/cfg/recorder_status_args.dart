@@ -19,13 +19,10 @@ class RecorderStatusArgs {
   /// [name] The name of the recorder
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   RecorderStatusArgs({
-    required pulumi.Output<bool> isEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      isEnabled = pulumi.Input.asInput<bool>(isEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.isEnabled,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class RecorderStatusArgs {
 
   factory RecorderStatusArgs.fromMap(Map<String, dynamic> map) {
     return RecorderStatusArgs(
-      isEnabled: pulumi.Output.create<bool>(map['isEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

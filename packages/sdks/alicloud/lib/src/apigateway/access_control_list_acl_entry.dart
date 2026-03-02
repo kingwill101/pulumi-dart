@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessControlListAclEntry {
   /// The description of the ACL.
-  final String? aclEntryComment;
+  final pulumi.Input<String>? aclEntryComment;
   /// The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
-  final String? aclEntryIp;
+  final pulumi.Input<String>? aclEntryIp;
 
   /// Creates a new [AccessControlListAclEntry].
   /// [aclEntryComment] The description of the ACL.
@@ -24,8 +25,8 @@ class AccessControlListAclEntry {
 
   factory AccessControlListAclEntry.fromMap(Map<String, dynamic> map) {
     return AccessControlListAclEntry(
-      aclEntryComment: map['aclEntryComment'] == null ? null : map['aclEntryComment'] as String,
-      aclEntryIp: map['aclEntryIp'] == null ? null : map['aclEntryIp'] as String,
+      aclEntryComment: map['aclEntryComment'] == null ? null : (map['aclEntryComment'] as String).input(),
+      aclEntryIp: map['aclEntryIp'] == null ? null : (map['aclEntryIp'] as String).input(),
     );
   }
 }

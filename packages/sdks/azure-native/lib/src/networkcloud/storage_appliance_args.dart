@@ -42,27 +42,17 @@ class StorageApplianceArgs {
   /// [storageApplianceSkuId] The SKU for the storage appliance.
   /// [tags] Resource tags.
   StorageApplianceArgs({
-    required pulumi.Output<AdministrativeCredentials> administratorCredentials,
-    required pulumi.Output<ExtendedLocation> extendedLocation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> rackId,
-    required pulumi.Output<double> rackSlot,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serialNumber,
-    pulumi.Output<String>? storageApplianceName,
-    required pulumi.Output<String> storageApplianceSkuId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      administratorCredentials = pulumi.Input.asInput<AdministrativeCredentials>(administratorCredentials),
-      extendedLocation = pulumi.Input.asInput<ExtendedLocation>(extendedLocation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      rackId = pulumi.Input.asInput<String>(rackId),
-      rackSlot = pulumi.Input.asInput<double>(rackSlot),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serialNumber = pulumi.Input.asInput<String>(serialNumber),
-      storageApplianceName = pulumi.Input.asOptionalInput<String>(storageApplianceName),
-      storageApplianceSkuId = pulumi.Input.asInput<String>(storageApplianceSkuId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.administratorCredentials,
+    required this.extendedLocation,
+    this.location,
+    required this.rackId,
+    required this.rackSlot,
+    required this.resourceGroupName,
+    required this.serialNumber,
+    this.storageApplianceName,
+    required this.storageApplianceSkuId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,16 +71,16 @@ class StorageApplianceArgs {
 
   factory StorageApplianceArgs.fromMap(Map<String, dynamic> map) {
     return StorageApplianceArgs(
-      administratorCredentials: pulumi.Output.create<AdministrativeCredentials>(AdministrativeCredentials.fromMap((map['administratorCredentials'] as Map).cast<String, dynamic>())),
-      extendedLocation: pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      rackId: pulumi.Output.create<String>(map['rackId'] as String),
-      rackSlot: pulumi.Output.create<double>(map['rackSlot'] as double),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serialNumber: pulumi.Output.create<String>(map['serialNumber'] as String),
-      storageApplianceName: map['storageApplianceName'] == null ? null : pulumi.Output.create<String>(map['storageApplianceName'] as String),
-      storageApplianceSkuId: pulumi.Output.create<String>(map['storageApplianceSkuId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      administratorCredentials: (AdministrativeCredentials.fromMap((map['administratorCredentials'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      rackId: (map['rackId'] as String).input(),
+      rackSlot: (map['rackSlot'] as double).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName'] as String).input(),
+      storageApplianceSkuId: (map['storageApplianceSkuId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

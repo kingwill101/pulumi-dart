@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyFirewallPolicyStatelessRuleGroupReference {
   /// An integer setting that indicates the order in which to run the stateless rule groups in a single policy. AWS Network Firewall applies each stateless rule group to a packet starting with the group that has the lowest priority setting.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The Amazon Resource Name (ARN) of the stateless rule group.
-  final String resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatelessRuleGroupReference].
   /// [priority] An integer setting that indicates the order in which to run the stateless rule groups in a single policy. AWS Network Firewall applies each stateless rule group to a packet starting with the group that has the lowest priority setting.
@@ -24,8 +25,8 @@ class FirewallPolicyFirewallPolicyStatelessRuleGroupReference {
 
   factory FirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatelessRuleGroupReference(
-      priority: map['priority'] as int,
-      resourceArn: map['resourceArn'] as String,
+      priority: (map['priority'] as int).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

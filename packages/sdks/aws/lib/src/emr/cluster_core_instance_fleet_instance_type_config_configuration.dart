@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterCoreInstanceFleetInstanceTypeConfigConfiguration {
   /// Classification within a configuration.
-  final String? classification;
+  final pulumi.Input<String>? classification;
   /// Map of properties specified within a configuration classification.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
 
   /// Creates a new [ClusterCoreInstanceFleetInstanceTypeConfigConfiguration].
   /// [classification] Classification within a configuration.
@@ -24,8 +25,8 @@ class ClusterCoreInstanceFleetInstanceTypeConfigConfiguration {
 
   factory ClusterCoreInstanceFleetInstanceTypeConfigConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceFleetInstanceTypeConfigConfiguration(
-      classification: map['classification'] == null ? null : map['classification'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
     );
   }
 }

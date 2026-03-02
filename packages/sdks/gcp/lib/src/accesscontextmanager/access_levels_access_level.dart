@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_levels_access_level_basic.dart';
 import 'access_levels_access_level_custom.dart';
 
 class AccessLevelsAccessLevel {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
-  final AccessLevelsAccessLevelBasic? basic;
+  final pulumi.Input<AccessLevelsAccessLevelBasic>? basic;
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
-  final AccessLevelsAccessLevelCustom? custom;
+  final pulumi.Input<AccessLevelsAccessLevelCustom>? custom;
   /// Description of the AccessLevel and its use. Does not affect behavior.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Resource name for the Access Level. The short_name component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  final String name;
+  final pulumi.Input<String> name;
   /// Human readable title. Must be unique within the Policy.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [AccessLevelsAccessLevel].
   /// [basic] A set of predefined conditions for the access level and a combining function.
@@ -36,8 +37,8 @@ class AccessLevelsAccessLevel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basic': ?basic == null ? null : basic!.toMap(),
-      'custom': ?custom == null ? null : custom!.toMap(),
+      'basic': ?pulumi.Input.mapOptionalInputValue<AccessLevelsAccessLevelBasic, Map<String, dynamic>>(basic, (value) => value.toMap()),
+      'custom': ?pulumi.Input.mapOptionalInputValue<AccessLevelsAccessLevelCustom, Map<String, dynamic>>(custom, (value) => value.toMap()),
       'description': ?description,
       'name': name,
       'title': title,
@@ -46,11 +47,11 @@ class AccessLevelsAccessLevel {
 
   factory AccessLevelsAccessLevel.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevel(
-      basic: map['basic'] == null ? null : AccessLevelsAccessLevelBasic.fromMap((map['basic'] as Map).cast<String, dynamic>()),
-      custom: map['custom'] == null ? null : AccessLevelsAccessLevelCustom.fromMap((map['custom'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] as String,
-      title: map['title'] as String,
+      basic: map['basic'] == null ? null : (AccessLevelsAccessLevelBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (AccessLevelsAccessLevelCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMainVersionsMainVersion {
   /// A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
-  final List<String> clusterTypes;
+  final pulumi.Input<List<String>> clusterTypes;
   /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
-  final String emrVersion;
+  final pulumi.Input<String> emrVersion;
   /// The image id of the emr cluster instance.
-  final String imageId;
+  final pulumi.Input<String> imageId;
 
   /// Creates a new [GetMainVersionsMainVersion].
   /// [clusterTypes] A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
@@ -29,9 +30,9 @@ class GetMainVersionsMainVersion {
 
   factory GetMainVersionsMainVersion.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsMainVersion(
-      clusterTypes: (map['clusterTypes'] as List).cast<String>(),
-      emrVersion: map['emrVersion'] as String,
-      imageId: map['imageId'] as String,
+      clusterTypes: ((map['clusterTypes'] as List).cast<String>()).input(),
+      emrVersion: (map['emrVersion'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
     );
   }
 }

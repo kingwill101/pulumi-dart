@@ -13,9 +13,8 @@ class GetNamespaceIamPolicyArgs {
   /// Creates a new [GetNamespaceIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
   GetNamespaceIamPolicyArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetNamespaceIamPolicyArgs {
 
   factory GetNamespaceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIamPolicyArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

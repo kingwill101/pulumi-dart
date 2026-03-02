@@ -15,9 +15,8 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
   GetServiceArgs({
-    required pulumi.Output<String> enable,
-  }) :
-      enable = pulumi.Input.asInput<String>(enable);
+    required this.enable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +26,7 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      enable: pulumi.Output.create<String>(map['enable'] as String),
+      enable: (map['enable'] as String).input(),
     );
   }
 }

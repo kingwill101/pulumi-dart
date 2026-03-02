@@ -48,33 +48,20 @@ class DomainState {
   /// [ttlSec] 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   /// [type] If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
   DomainState({
-    pulumi.Output<List<String>>? axfrIps,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? domain,
-    pulumi.Output<int>? expireSec,
-    pulumi.Output<String>? group,
-    pulumi.Output<List<String>>? masterIps,
-    pulumi.Output<int>? refreshSec,
-    pulumi.Output<int>? retrySec,
-    pulumi.Output<String>? soaEmail,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<int>? ttlSec,
-    pulumi.Output<String>? type,
-  }) :
-      axfrIps = pulumi.Input.asOptionalInput<List<String>>(axfrIps),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      expireSec = pulumi.Input.asOptionalInput<int>(expireSec),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      masterIps = pulumi.Input.asOptionalInput<List<String>>(masterIps),
-      refreshSec = pulumi.Input.asOptionalInput<int>(refreshSec),
-      retrySec = pulumi.Input.asOptionalInput<int>(retrySec),
-      soaEmail = pulumi.Input.asOptionalInput<String>(soaEmail),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      ttlSec = pulumi.Input.asOptionalInput<int>(ttlSec),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.axfrIps,
+    this.description,
+    this.domain,
+    this.expireSec,
+    this.group,
+    this.masterIps,
+    this.refreshSec,
+    this.retrySec,
+    this.soaEmail,
+    this.status,
+    this.tags,
+    this.ttlSec,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      axfrIps: map['axfrIps'] == null ? null : pulumi.Output.create<List<String>>((map['axfrIps'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      expireSec: map['expireSec'] == null ? null : pulumi.Output.create<int>(map['expireSec'] as int),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      masterIps: map['masterIps'] == null ? null : pulumi.Output.create<List<String>>((map['masterIps'] as List).cast<String>()),
-      refreshSec: map['refreshSec'] == null ? null : pulumi.Output.create<int>(map['refreshSec'] as int),
-      retrySec: map['retrySec'] == null ? null : pulumi.Output.create<int>(map['retrySec'] as int),
-      soaEmail: map['soaEmail'] == null ? null : pulumi.Output.create<String>(map['soaEmail'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      ttlSec: map['ttlSec'] == null ? null : pulumi.Output.create<int>(map['ttlSec'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      axfrIps: map['axfrIps'] == null ? null : ((map['axfrIps'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      expireSec: map['expireSec'] == null ? null : (map['expireSec'] as int).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      masterIps: map['masterIps'] == null ? null : ((map['masterIps'] as List).cast<String>()).input(),
+      refreshSec: map['refreshSec'] == null ? null : (map['refreshSec'] as int).input(),
+      retrySec: map['retrySec'] == null ? null : (map['retrySec'] as int).input(),
+      soaEmail: map['soaEmail'] == null ? null : (map['soaEmail'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -51,31 +51,19 @@ class MembershipRbacRoleBindingGkehubState {
   /// [updateTime] Time the RBAC Role Binding was updated in UTC.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
   MembershipRbacRoleBindingGkehubState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? deleteTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? membershipId,
-    pulumi.Output<String>? membershipRbacRoleBindingId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<MembershipRbacRoleBindingRole>? role,
-    pulumi.Output<List<MembershipRbacRoleBindingState>>? states,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? user,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      deleteTime = pulumi.Input.asOptionalInput<String>(deleteTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipId = pulumi.Input.asOptionalInput<String>(membershipId),
-      membershipRbacRoleBindingId = pulumi.Input.asOptionalInput<String>(membershipRbacRoleBindingId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<MembershipRbacRoleBindingRole>(role),
-      states = pulumi.Input.asOptionalInput<List<MembershipRbacRoleBindingState>>(states),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.createTime,
+    this.deleteTime,
+    this.location,
+    this.membershipId,
+    this.membershipRbacRoleBindingId,
+    this.name,
+    this.project,
+    this.role,
+    this.states,
+    this.uid,
+    this.updateTime,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class MembershipRbacRoleBindingGkehubState {
 
   factory MembershipRbacRoleBindingGkehubState.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingGkehubState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      deleteTime: map['deleteTime'] == null ? null : pulumi.Output.create<String>(map['deleteTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membershipId: map['membershipId'] == null ? null : pulumi.Output.create<String>(map['membershipId'] as String),
-      membershipRbacRoleBindingId: map['membershipRbacRoleBindingId'] == null ? null : pulumi.Output.create<String>(map['membershipRbacRoleBindingId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<MembershipRbacRoleBindingRole>(MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())),
-      states: map['states'] == null ? null : pulumi.Output.create<List<MembershipRbacRoleBindingState>>(pulumi.Input.decodeList<MembershipRbacRoleBindingState>(map['states'], (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>()))),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
+      membershipRbacRoleBindingId: map['membershipRbacRoleBindingId'] == null ? null : (map['membershipRbacRoleBindingId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (MembershipRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MembershipRbacRoleBindingState>(map['states'], (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// MigrationConfiguration properties.
 class MigrationConfigurationResponse {
   /// Gets or sets the key vault resource Id.
-  final String? keyVaultResourceId;
+  final pulumi.Input<String>? keyVaultResourceId;
   /// Gets or sets the migration solution resource Id.
-  final String? migrationSolutionResourceId;
+  final pulumi.Input<String>? migrationSolutionResourceId;
   /// Gets or sets the storage account resource Id.
-  final String? storageAccountResourceId;
+  final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [MigrationConfigurationResponse].
   /// [keyVaultResourceId] Gets or sets the key vault resource Id.
@@ -30,9 +31,9 @@ class MigrationConfigurationResponse {
 
   factory MigrationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MigrationConfigurationResponse(
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId'] as String,
-      migrationSolutionResourceId: map['migrationSolutionResourceId'] == null ? null : map['migrationSolutionResourceId'] as String,
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : map['storageAccountResourceId'] as String,
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      migrationSolutionResourceId: map['migrationSolutionResourceId'] == null ? null : (map['migrationSolutionResourceId'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
     );
   }
 }

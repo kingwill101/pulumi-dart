@@ -93,35 +93,21 @@ class RouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tags] A list of instance tags to which this route applies.
   RouteArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destRange,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? nextHopGateway,
-    pulumi.Output<String>? nextHopIlb,
-    pulumi.Output<String>? nextHopInstance,
-    pulumi.Output<String>? nextHopInstanceZone,
-    pulumi.Output<String>? nextHopIp,
-    pulumi.Output<String>? nextHopVpnTunnel,
-    pulumi.Output<RouteParams>? params,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destRange = pulumi.Input.asInput<String>(destRange),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      nextHopGateway = pulumi.Input.asOptionalInput<String>(nextHopGateway),
-      nextHopIlb = pulumi.Input.asOptionalInput<String>(nextHopIlb),
-      nextHopInstance = pulumi.Input.asOptionalInput<String>(nextHopInstance),
-      nextHopInstanceZone = pulumi.Input.asOptionalInput<String>(nextHopInstanceZone),
-      nextHopIp = pulumi.Input.asOptionalInput<String>(nextHopIp),
-      nextHopVpnTunnel = pulumi.Input.asOptionalInput<String>(nextHopVpnTunnel),
-      params = pulumi.Input.asOptionalInput<RouteParams>(params),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags);
+    this.description,
+    required this.destRange,
+    this.name,
+    required this.network,
+    this.nextHopGateway,
+    this.nextHopIlb,
+    this.nextHopInstance,
+    this.nextHopInstanceZone,
+    this.nextHopIp,
+    this.nextHopVpnTunnel,
+    this.params,
+    this.priority,
+    this.project,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -144,20 +130,20 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destRange: pulumi.Output.create<String>(map['destRange'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      nextHopGateway: map['nextHopGateway'] == null ? null : pulumi.Output.create<String>(map['nextHopGateway'] as String),
-      nextHopIlb: map['nextHopIlb'] == null ? null : pulumi.Output.create<String>(map['nextHopIlb'] as String),
-      nextHopInstance: map['nextHopInstance'] == null ? null : pulumi.Output.create<String>(map['nextHopInstance'] as String),
-      nextHopInstanceZone: map['nextHopInstanceZone'] == null ? null : pulumi.Output.create<String>(map['nextHopInstanceZone'] as String),
-      nextHopIp: map['nextHopIp'] == null ? null : pulumi.Output.create<String>(map['nextHopIp'] as String),
-      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : pulumi.Output.create<String>(map['nextHopVpnTunnel'] as String),
-      params: map['params'] == null ? null : pulumi.Output.create<RouteParams>(RouteParams.fromMap((map['params'] as Map).cast<String, dynamic>())),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destRange: (map['destRange'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      nextHopGateway: map['nextHopGateway'] == null ? null : (map['nextHopGateway'] as String).input(),
+      nextHopIlb: map['nextHopIlb'] == null ? null : (map['nextHopIlb'] as String).input(),
+      nextHopInstance: map['nextHopInstance'] == null ? null : (map['nextHopInstance'] as String).input(),
+      nextHopInstanceZone: map['nextHopInstanceZone'] == null ? null : (map['nextHopInstanceZone'] as String).input(),
+      nextHopIp: map['nextHopIp'] == null ? null : (map['nextHopIp'] as String).input(),
+      nextHopVpnTunnel: map['nextHopVpnTunnel'] == null ? null : (map['nextHopVpnTunnel'] as String).input(),
+      params: map['params'] == null ? null : (RouteParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

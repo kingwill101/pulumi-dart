@@ -25,19 +25,13 @@ class ChannelSmsState {
   /// [smsChannelAccountSecurityId] The account security identifier (SID) for the SMS Channel.
   /// [smsChannelAuthToken] The authorization token for the SMS Channel.
   ChannelSmsState({
-    pulumi.Output<String>? botName,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? phoneNumber,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? smsChannelAccountSecurityId,
-    pulumi.Output<String>? smsChannelAuthToken,
-  }) :
-      botName = pulumi.Input.asOptionalInput<String>(botName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      phoneNumber = pulumi.Input.asOptionalInput<String>(phoneNumber),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      smsChannelAccountSecurityId = pulumi.Input.asOptionalInput<String>(smsChannelAccountSecurityId),
-      smsChannelAuthToken = pulumi.Input.asOptionalInput<String>(smsChannelAuthToken);
+    this.botName,
+    this.location,
+    this.phoneNumber,
+    this.resourceGroupName,
+    this.smsChannelAccountSecurityId,
+    this.smsChannelAuthToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ChannelSmsState {
 
   factory ChannelSmsState.fromMap(Map<String, dynamic> map) {
     return ChannelSmsState(
-      botName: map['botName'] == null ? null : pulumi.Output.create<String>(map['botName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      phoneNumber: map['phoneNumber'] == null ? null : pulumi.Output.create<String>(map['phoneNumber'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      smsChannelAccountSecurityId: map['smsChannelAccountSecurityId'] == null ? null : pulumi.Output.create<String>(map['smsChannelAccountSecurityId'] as String),
-      smsChannelAuthToken: map['smsChannelAuthToken'] == null ? null : pulumi.Output.create<String>(map['smsChannelAuthToken'] as String),
+      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      smsChannelAccountSecurityId: map['smsChannelAccountSecurityId'] == null ? null : (map['smsChannelAccountSecurityId'] as String).input(),
+      smsChannelAuthToken: map['smsChannelAuthToken'] == null ? null : (map['smsChannelAuthToken'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration to bind a Java Component to another Java Component
 class JavaComponentServiceBind {
   /// Name of the service bind
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Resource id of the target service
-  final String? serviceId;
+  final pulumi.Input<String>? serviceId;
 
   /// Creates a new [JavaComponentServiceBind].
   /// [name] Name of the service bind
@@ -25,8 +26,8 @@ class JavaComponentServiceBind {
 
   factory JavaComponentServiceBind.fromMap(Map<String, dynamic> map) {
     return JavaComponentServiceBind(
-      name: map['name'] == null ? null : map['name'] as String,
-      serviceId: map['serviceId'] == null ? null : map['serviceId'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

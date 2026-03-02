@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the parameters for using a user's KeyVault for URL Signing Key.
 class KeyVaultSigningKeyParametersResponse {
   /// Resource group of the user's Key Vault containing the secret
-  final String resourceGroupName;
+  final pulumi.Input<String> resourceGroupName;
   /// The name of secret in Key Vault.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// The version(GUID) of secret in Key Vault.
-  final String secretVersion;
+  final pulumi.Input<String> secretVersion;
   /// Subscription Id of the user's Key Vault containing the secret
-  final String subscriptionId;
-  final String typeName;
+  final pulumi.Input<String> subscriptionId;
+  final pulumi.Input<String> typeName;
   /// The name of the user's Key Vault containing the secret
-  final String vaultName;
+  final pulumi.Input<String> vaultName;
 
   /// Creates a new [KeyVaultSigningKeyParametersResponse].
   /// [resourceGroupName] Resource group of the user's Key Vault containing the secret
@@ -44,12 +45,12 @@ class KeyVaultSigningKeyParametersResponse {
 
   factory KeyVaultSigningKeyParametersResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSigningKeyParametersResponse(
-      resourceGroupName: map['resourceGroupName'] as String,
-      secretName: map['secretName'] as String,
-      secretVersion: map['secretVersion'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      typeName: map['typeName'] as String,
-      vaultName: map['vaultName'] as String,
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      secretVersion: (map['secretVersion'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

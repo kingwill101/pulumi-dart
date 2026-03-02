@@ -37,21 +37,14 @@ class ContainerArgs {
   /// [storageAccountId] The name of the Storage Account where the Container should be created.
   /// [storageAccountName] The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
   ContainerArgs({
-    pulumi.Output<String>? containerAccessType,
-    pulumi.Output<String>? defaultEncryptionScope,
-    pulumi.Output<bool>? encryptionScopeOverrideEnabled,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      containerAccessType = pulumi.Input.asOptionalInput<String>(containerAccessType),
-      defaultEncryptionScope = pulumi.Input.asOptionalInput<String>(defaultEncryptionScope),
-      encryptionScopeOverrideEnabled = pulumi.Input.asOptionalInput<bool>(encryptionScopeOverrideEnabled),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.containerAccessType,
+    this.defaultEncryptionScope,
+    this.encryptionScopeOverrideEnabled,
+    this.metadata,
+    this.name,
+    this.storageAccountId,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,13 +60,13 @@ class ContainerArgs {
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerAccessType: map['containerAccessType'] == null ? null : pulumi.Output.create<String>(map['containerAccessType'] as String),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionScope'] as String),
-      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : pulumi.Output.create<bool>(map['encryptionScopeOverrideEnabled'] as bool),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      containerAccessType: map['containerAccessType'] == null ? null : (map['containerAccessType'] as String).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
+      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : (map['encryptionScopeOverrideEnabled'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

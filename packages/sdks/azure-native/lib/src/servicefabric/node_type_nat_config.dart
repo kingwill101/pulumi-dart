@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Provides information about NAT configuration on the default public Load Balancer for the node type.
 class NodeTypeNatConfig {
   /// The internal port for the NAT configuration.
-  final int? backendPort;
+  final pulumi.Input<int>? backendPort;
   /// The port range end for the external endpoint.
-  final int? frontendPortRangeEnd;
+  final pulumi.Input<int>? frontendPortRangeEnd;
   /// The port range start for the external endpoint.
-  final int? frontendPortRangeStart;
+  final pulumi.Input<int>? frontendPortRangeStart;
 
   /// Creates a new [NodeTypeNatConfig].
   /// [backendPort] The internal port for the NAT configuration.
@@ -30,9 +31,9 @@ class NodeTypeNatConfig {
 
   factory NodeTypeNatConfig.fromMap(Map<String, dynamic> map) {
     return NodeTypeNatConfig(
-      backendPort: map['backendPort'] == null ? null : map['backendPort'] as int,
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : map['frontendPortRangeEnd'] as int,
-      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : map['frontendPortRangeStart'] as int,
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
+      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd'] as int).input(),
+      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart'] as int).input(),
     );
   }
 }

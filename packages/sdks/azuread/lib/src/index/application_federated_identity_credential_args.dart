@@ -28,19 +28,13 @@ class ApplicationFederatedIdentityCredentialArgs {
   /// [issuer] The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
   /// [subject] The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
   ApplicationFederatedIdentityCredentialArgs({
-    required pulumi.Output<String> applicationId,
-    required pulumi.Output<List<String>> audiences,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> issuer,
-    required pulumi.Output<String> subject,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      audiences = pulumi.Input.asInput<List<String>>(audiences),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      issuer = pulumi.Input.asInput<String>(issuer),
-      subject = pulumi.Input.asInput<String>(subject);
+    required this.applicationId,
+    required this.audiences,
+    this.description,
+    required this.displayName,
+    required this.issuer,
+    required this.subject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ApplicationFederatedIdentityCredentialArgs {
 
   factory ApplicationFederatedIdentityCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFederatedIdentityCredentialArgs(
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      audiences: pulumi.Output.create<List<String>>((map['audiences'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      issuer: pulumi.Output.create<String>(map['issuer'] as String),
-      subject: pulumi.Output.create<String>(map['subject'] as String),
+      applicationId: (map['applicationId'] as String).input(),
+      audiences: ((map['audiences'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      subject: (map['subject'] as String).input(),
     );
   }
 }

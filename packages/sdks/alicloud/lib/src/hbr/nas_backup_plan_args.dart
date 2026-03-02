@@ -52,33 +52,20 @@ class NasBackupPlanArgs {
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [vaultId] The ID of Backup vault.
   NasBackupPlanArgs({
-    required pulumi.Output<String> backupType,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? crossAccountRoleName,
-    pulumi.Output<String>? crossAccountType,
-    pulumi.Output<int>? crossAccountUserId,
-    pulumi.Output<bool>? disabled,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> nasBackupPlanName,
-    pulumi.Output<String>? options,
-    required pulumi.Output<List<String>> paths,
-    required pulumi.Output<String> retention,
-    required pulumi.Output<String> schedule,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupType = pulumi.Input.asInput<String>(backupType),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      crossAccountRoleName = pulumi.Input.asOptionalInput<String>(crossAccountRoleName),
-      crossAccountType = pulumi.Input.asOptionalInput<String>(crossAccountType),
-      crossAccountUserId = pulumi.Input.asOptionalInput<int>(crossAccountUserId),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      nasBackupPlanName = pulumi.Input.asInput<String>(nasBackupPlanName),
-      options = pulumi.Input.asOptionalInput<String>(options),
-      paths = pulumi.Input.asInput<List<String>>(paths),
-      retention = pulumi.Input.asInput<String>(retention),
-      schedule = pulumi.Input.asInput<String>(schedule),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    required this.backupType,
+    this.createTime,
+    this.crossAccountRoleName,
+    this.crossAccountType,
+    this.crossAccountUserId,
+    this.disabled,
+    required this.fileSystemId,
+    required this.nasBackupPlanName,
+    this.options,
+    required this.paths,
+    required this.retention,
+    required this.schedule,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class NasBackupPlanArgs {
 
   factory NasBackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return NasBackupPlanArgs(
-      backupType: pulumi.Output.create<String>(map['backupType'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : pulumi.Output.create<String>(map['crossAccountRoleName'] as String),
-      crossAccountType: map['crossAccountType'] == null ? null : pulumi.Output.create<String>(map['crossAccountType'] as String),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : pulumi.Output.create<int>(map['crossAccountUserId'] as int),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      nasBackupPlanName: pulumi.Output.create<String>(map['nasBackupPlanName'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<String>(map['options'] as String),
-      paths: pulumi.Output.create<List<String>>((map['paths'] as List).cast<String>()),
-      retention: pulumi.Output.create<String>(map['retention'] as String),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupType: (map['backupType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      nasBackupPlanName: (map['nasBackupPlanName'] as String).input(),
+      options: map['options'] == null ? null : (map['options'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      retention: (map['retention'] as String).input(),
+      schedule: (map['schedule'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

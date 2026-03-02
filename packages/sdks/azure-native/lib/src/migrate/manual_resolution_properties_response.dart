@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the properties for manual resolution.
 class ManualResolutionPropertiesResponse {
   /// Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual.
-  final String? targetId;
+  final pulumi.Input<String>? targetId;
 
   /// Creates a new [ManualResolutionPropertiesResponse].
   /// [targetId] Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual.
@@ -20,7 +21,7 @@ class ManualResolutionPropertiesResponse {
 
   factory ManualResolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManualResolutionPropertiesResponse(
-      targetId: map['targetId'] == null ? null : map['targetId'] as String,
+      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
     );
   }
 }

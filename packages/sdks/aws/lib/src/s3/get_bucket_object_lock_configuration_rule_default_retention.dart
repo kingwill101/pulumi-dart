@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketObjectLockConfigurationRuleDefaultRetention {
   /// Default retention period in days.
-  final int days;
+  final pulumi.Input<int> days;
   /// Default object lock retention mode. Valid values are `GOVERNANCE` and `COMPLIANCE`.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Default retention period in years.
-  final int years;
+  final pulumi.Input<int> years;
 
   /// Creates a new [GetBucketObjectLockConfigurationRuleDefaultRetention].
   /// [days] Default retention period in days.
@@ -29,9 +30,9 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
 
   factory GetBucketObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationRuleDefaultRetention(
-      days: map['days'] as int,
-      mode: map['mode'] as String,
-      years: map['years'] as int,
+      days: (map['days'] as int).input(),
+      mode: (map['mode'] as String).input(),
+      years: (map['years'] as int).input(),
     );
   }
 }

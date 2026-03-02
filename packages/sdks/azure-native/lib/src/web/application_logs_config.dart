@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_blob_storage_application_logs_config.dart';
 import 'azure_table_storage_application_logs_config.dart';
 import 'file_system_application_logs_config.dart';
@@ -7,11 +8,11 @@ import 'file_system_application_logs_config.dart';
 /// Application logs configuration.
 class ApplicationLogsConfig {
   /// Application logs to blob storage configuration.
-  final AzureBlobStorageApplicationLogsConfig? azureBlobStorage;
+  final pulumi.Input<AzureBlobStorageApplicationLogsConfig>? azureBlobStorage;
   /// Application logs to azure table storage configuration.
-  final AzureTableStorageApplicationLogsConfig? azureTableStorage;
+  final pulumi.Input<AzureTableStorageApplicationLogsConfig>? azureTableStorage;
   /// Application logs to file system configuration.
-  final FileSystemApplicationLogsConfig? fileSystem;
+  final pulumi.Input<FileSystemApplicationLogsConfig>? fileSystem;
 
   /// Creates a new [ApplicationLogsConfig].
   /// [azureBlobStorage] Application logs to blob storage configuration.
@@ -25,17 +26,17 @@ class ApplicationLogsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage': ?azureBlobStorage == null ? null : azureBlobStorage!.toMap(),
-      'azureTableStorage': ?azureTableStorage == null ? null : azureTableStorage!.toMap(),
-      'fileSystem': ?fileSystem == null ? null : fileSystem!.toMap(),
+      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<AzureBlobStorageApplicationLogsConfig, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
+      'azureTableStorage': ?pulumi.Input.mapOptionalInputValue<AzureTableStorageApplicationLogsConfig, Map<String, dynamic>>(azureTableStorage, (value) => value.toMap()),
+      'fileSystem': ?pulumi.Input.mapOptionalInputValue<FileSystemApplicationLogsConfig, Map<String, dynamic>>(fileSystem, (value) => value.toMap()),
     };
   }
 
   factory ApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationLogsConfig(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : AzureBlobStorageApplicationLogsConfig.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>()),
-      azureTableStorage: map['azureTableStorage'] == null ? null : AzureTableStorageApplicationLogsConfig.fromMap((map['azureTableStorage'] as Map).cast<String, dynamic>()),
-      fileSystem: map['fileSystem'] == null ? null : FileSystemApplicationLogsConfig.fromMap((map['fileSystem'] as Map).cast<String, dynamic>()),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageApplicationLogsConfig.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
+      azureTableStorage: map['azureTableStorage'] == null ? null : (AzureTableStorageApplicationLogsConfig.fromMap((map['azureTableStorage'] as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (FileSystemApplicationLogsConfig.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the final state "forward" and associated resource.
 class ForwardInfoResponseNetworkmanagementV1beta1 {
   /// URI of the resource that the packet is forwarded to.
-  final String resourceUri;
+  final pulumi.Input<String> resourceUri;
   /// Target type where this packet is forwarded to.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [ForwardInfoResponseNetworkmanagementV1beta1].
   /// [resourceUri] URI of the resource that the packet is forwarded to.
@@ -25,8 +26,8 @@ class ForwardInfoResponseNetworkmanagementV1beta1 {
 
   factory ForwardInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return ForwardInfoResponseNetworkmanagementV1beta1(
-      resourceUri: map['resourceUri'] as String,
-      target: map['target'] as String,
+      resourceUri: (map['resourceUri'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

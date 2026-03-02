@@ -6,9 +6,9 @@ import 'stream_backfill_all_mysql_excluded_objects_mysql_database_mysql_table_my
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
   /// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>? mysqlColumns;
+  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>>? mysqlColumns;
   /// Table name.
-  final String table;
+  final pulumi.Input<String> table;
 
   /// Creates a new [StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable].
   /// [mysqlColumns] MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -20,15 +20,15 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlColumns': ?mysqlColumns == null ? null : pulumi.Input.encodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn, Map<String, dynamic>>(mysqlColumns!, (value) => value.toMap()),
+      'mysqlColumns': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>, List<Map<String, dynamic>>>(mysqlColumns, (value) => pulumi.Input.encodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'table': table,
     };
   }
 
   factory StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(
-      mysqlColumns: map['mysqlColumns'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>(map['mysqlColumns'], (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap((value as Map).cast<String, dynamic>())),
-      table: map['table'] as String,
+      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>(map['mysqlColumns'], (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

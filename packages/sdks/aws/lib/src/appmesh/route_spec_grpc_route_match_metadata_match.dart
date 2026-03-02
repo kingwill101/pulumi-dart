@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_spec_grpc_route_match_metadata_match_range.dart';
 
 class RouteSpecGrpcRouteMatchMetadataMatch {
   /// Value sent by the client must match the specified value exactly. Must be between 1 and 255 characters in length.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// Value sent by the client must begin with the specified characters. Must be between 1 and 255 characters in length.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// Object that specifies the range of numbers that the value sent by the client must be included in.
-  final RouteSpecGrpcRouteMatchMetadataMatchRange? range;
+  final pulumi.Input<RouteSpecGrpcRouteMatchMetadataMatchRange>? range;
   /// Value sent by the client must include the specified characters. Must be between 1 and 255 characters in length.
-  final String? regex;
+  final pulumi.Input<String>? regex;
   /// Value sent by the client must end with the specified characters. Must be between 1 and 255 characters in length.
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [RouteSpecGrpcRouteMatchMetadataMatch].
   /// [exact] Value sent by the client must match the specified value exactly. Must be between 1 and 255 characters in length.
@@ -32,7 +33,7 @@ class RouteSpecGrpcRouteMatchMetadataMatch {
     return <String, dynamic>{
       'exact': ?exact,
       'prefix': ?prefix,
-      'range': ?range == null ? null : range!.toMap(),
+      'range': ?pulumi.Input.mapOptionalInputValue<RouteSpecGrpcRouteMatchMetadataMatchRange, Map<String, dynamic>>(range, (value) => value.toMap()),
       'regex': ?regex,
       'suffix': ?suffix,
     };
@@ -40,11 +41,11 @@ class RouteSpecGrpcRouteMatchMetadataMatch {
 
   factory RouteSpecGrpcRouteMatchMetadataMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteMatchMetadataMatch(
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      range: map['range'] == null ? null : RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      regex: map['regex'] == null ? null : map['regex'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      range: map['range'] == null ? null : (RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

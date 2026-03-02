@@ -35,23 +35,15 @@ class AppArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userProfileName] The user profile name. At least one of `user_profile_name` or `space_name` required.
   AppArgs({
-    required pulumi.Output<String> appName,
-    required pulumi.Output<String> appType,
-    required pulumi.Output<String> domainId,
-    pulumi.Output<String>? region,
-    pulumi.Output<AppResourceSpec>? resourceSpec,
-    pulumi.Output<String>? spaceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userProfileName,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      appType = pulumi.Input.asInput<String>(appType),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceSpec = pulumi.Input.asOptionalInput<AppResourceSpec>(resourceSpec),
-      spaceName = pulumi.Input.asOptionalInput<String>(spaceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userProfileName = pulumi.Input.asOptionalInput<String>(userProfileName);
+    required this.appName,
+    required this.appType,
+    required this.domainId,
+    this.region,
+    this.resourceSpec,
+    this.spaceName,
+    this.tags,
+    this.userProfileName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      appType: pulumi.Output.create<String>(map['appType'] as String),
-      domainId: pulumi.Output.create<String>(map['domainId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceSpec: map['resourceSpec'] == null ? null : pulumi.Output.create<AppResourceSpec>(AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())),
-      spaceName: map['spaceName'] == null ? null : pulumi.Output.create<String>(map['spaceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userProfileName: map['userProfileName'] == null ? null : pulumi.Output.create<String>(map['userProfileName'] as String),
+      appName: (map['appName'] as String).input(),
+      appType: (map['appType'] as String).input(),
+      domainId: (map['domainId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
     );
   }
 }

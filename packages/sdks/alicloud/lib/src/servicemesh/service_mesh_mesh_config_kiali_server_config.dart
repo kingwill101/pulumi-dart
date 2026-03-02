@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMeshMeshConfigKialiServerConfig {
   /// The domain name or address used when accessing the mesh topology in a custom way
-  final String? webFqdn;
+  final pulumi.Input<String>? webFqdn;
   /// The port used when accessing the mesh topology in a custom way
-  final int? webPort;
+  final pulumi.Input<int>? webPort;
   /// The root path of the service when accessing the mesh topology in a custom way
-  final String? webRoot;
+  final pulumi.Input<String>? webRoot;
   /// The protocol used when accessing the mesh topology in a custom way. Can only be http or https
-  final String? webSchema;
+  final pulumi.Input<String>? webSchema;
 
   /// Creates a new [ServiceMeshMeshConfigKialiServerConfig].
   /// [webFqdn] The domain name or address used when accessing the mesh topology in a custom way
@@ -34,10 +35,10 @@ class ServiceMeshMeshConfigKialiServerConfig {
 
   factory ServiceMeshMeshConfigKialiServerConfig.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigKialiServerConfig(
-      webFqdn: map['webFqdn'] == null ? null : map['webFqdn'] as String,
-      webPort: map['webPort'] == null ? null : map['webPort'] as int,
-      webRoot: map['webRoot'] == null ? null : map['webRoot'] as String,
-      webSchema: map['webSchema'] == null ? null : map['webSchema'] as String,
+      webFqdn: map['webFqdn'] == null ? null : (map['webFqdn'] as String).input(),
+      webPort: map['webPort'] == null ? null : (map['webPort'] as int).input(),
+      webRoot: map['webRoot'] == null ? null : (map['webRoot'] as String).input(),
+      webSchema: map['webSchema'] == null ? null : (map['webSchema'] as String).input(),
     );
   }
 }

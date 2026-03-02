@@ -7,7 +7,7 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp {
   /// (Output)
   /// A nested object resource.
   /// Structure is documented below.
-  final List<ResizeRequestStatusErrorErrorErrorDetailHelpLink>? links;
+  final pulumi.Input<List<ResizeRequestStatusErrorErrorErrorDetailHelpLink>>? links;
 
   /// Creates a new [ResizeRequestStatusErrorErrorErrorDetailHelp].
   /// [links] (Output)
@@ -17,13 +17,13 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'links': ?links == null ? null : pulumi.Input.encodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(links!, (value) => value.toMap()),
+      'links': ?pulumi.Input.mapOptionalInputValue<List<ResizeRequestStatusErrorErrorErrorDetailHelpLink>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResizeRequestStatusErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusErrorErrorErrorDetailHelp(
-      links: map['links'] == null ? null : pulumi.Input.decodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink>(map['links'], (value) => ResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>())),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusErrorErrorErrorDetailHelpLink>(map['links'], (value) => ResizeRequestStatusErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

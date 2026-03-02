@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
-  final Map<String, String> attributes;
-  final String namespaceName;
-  final String serviceName;
+  final pulumi.Input<Map<String, String>> attributes;
+  final pulumi.Input<String> namespaceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [GetVirtualNodeSpecServiceDiscoveryAwsCloudMap].
   /// [attributes] Required.
@@ -26,9 +27,9 @@ class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
 
   factory GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscoveryAwsCloudMap(
-      attributes: (map['attributes'] as Map).cast<String, String>(),
-      namespaceName: map['namespaceName'] as String,
-      serviceName: map['serviceName'] as String,
+      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

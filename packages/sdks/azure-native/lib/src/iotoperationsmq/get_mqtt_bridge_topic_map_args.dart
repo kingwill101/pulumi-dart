@@ -22,15 +22,11 @@ class GetMqttBridgeTopicMapArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicMapName] Name of MQ mqttBridgeTopicMap resource
   GetMqttBridgeTopicMapArgs({
-    required pulumi.Output<String> mqName,
-    required pulumi.Output<String> mqttBridgeConnectorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> topicMapName,
-  }) :
-      mqName = pulumi.Input.asInput<String>(mqName),
-      mqttBridgeConnectorName = pulumi.Input.asInput<String>(mqttBridgeConnectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      topicMapName = pulumi.Input.asInput<String>(topicMapName);
+    required this.mqName,
+    required this.mqttBridgeConnectorName,
+    required this.resourceGroupName,
+    required this.topicMapName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetMqttBridgeTopicMapArgs {
 
   factory GetMqttBridgeTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return GetMqttBridgeTopicMapArgs(
-      mqName: pulumi.Output.create<String>(map['mqName'] as String),
-      mqttBridgeConnectorName: pulumi.Output.create<String>(map['mqttBridgeConnectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      topicMapName: pulumi.Output.create<String>(map['topicMapName'] as String),
+      mqName: (map['mqName'] as String).input(),
+      mqttBridgeConnectorName: (map['mqttBridgeConnectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      topicMapName: (map['topicMapName'] as String).input(),
     );
   }
 }

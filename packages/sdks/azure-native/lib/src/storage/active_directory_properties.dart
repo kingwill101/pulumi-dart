@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings properties for Active Directory (AD).
 class ActiveDirectoryProperties {
   /// Specifies the Active Directory account type for Azure Storage.
-  final String? accountType;
+  final pulumi.Input<String>? accountType;
   /// Specifies the security identifier (SID) for Azure Storage.
-  final String? azureStorageSid;
+  final pulumi.Input<String>? azureStorageSid;
   /// Specifies the domain GUID.
-  final String domainGuid;
+  final pulumi.Input<String> domainGuid;
   /// Specifies the primary domain that the AD DNS server is authoritative for.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// Specifies the security identifier (SID).
-  final String? domainSid;
+  final pulumi.Input<String>? domainSid;
   /// Specifies the Active Directory forest to get.
-  final String? forestName;
+  final pulumi.Input<String>? forestName;
   /// Specifies the NetBIOS domain name.
-  final String? netBiosDomainName;
+  final pulumi.Input<String>? netBiosDomainName;
   /// Specifies the Active Directory SAMAccountName for Azure Storage.
-  final String? samAccountName;
+  final pulumi.Input<String>? samAccountName;
 
   /// Creates a new [ActiveDirectoryProperties].
   /// [accountType] Specifies the Active Directory account type for Azure Storage.
@@ -55,14 +56,14 @@ class ActiveDirectoryProperties {
 
   factory ActiveDirectoryProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryProperties(
-      accountType: map['accountType'] == null ? null : map['accountType'] as String,
-      azureStorageSid: map['azureStorageSid'] == null ? null : map['azureStorageSid'] as String,
-      domainGuid: map['domainGuid'] as String,
-      domainName: map['domainName'] as String,
-      domainSid: map['domainSid'] == null ? null : map['domainSid'] as String,
-      forestName: map['forestName'] == null ? null : map['forestName'] as String,
-      netBiosDomainName: map['netBiosDomainName'] == null ? null : map['netBiosDomainName'] as String,
-      samAccountName: map['samAccountName'] == null ? null : map['samAccountName'] as String,
+      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      azureStorageSid: map['azureStorageSid'] == null ? null : (map['azureStorageSid'] as String).input(),
+      domainGuid: (map['domainGuid'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      domainSid: map['domainSid'] == null ? null : (map['domainSid'] as String).input(),
+      forestName: map['forestName'] == null ? null : (map['forestName'] as String).input(),
+      netBiosDomainName: map['netBiosDomainName'] == null ? null : (map['netBiosDomainName'] as String).input(),
+      samAccountName: map['samAccountName'] == null ? null : (map['samAccountName'] as String).input(),
     );
   }
 }

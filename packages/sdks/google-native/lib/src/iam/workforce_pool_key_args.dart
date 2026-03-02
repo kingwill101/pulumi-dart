@@ -27,19 +27,13 @@ class WorkforcePoolKeyArgs {
   /// [workforcePoolId] Required.
   /// [workforcePoolProviderKeyId] Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   WorkforcePoolKeyArgs({
-    pulumi.Output<KeyData>? keyData,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> providerId,
-    required pulumi.Output<WorkforcePoolKeyUse> use,
-    required pulumi.Output<String> workforcePoolId,
-    required pulumi.Output<String> workforcePoolProviderKeyId,
-  }) :
-      keyData = pulumi.Input.asOptionalInput<KeyData>(keyData),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      use = pulumi.Input.asInput<WorkforcePoolKeyUse>(use),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId),
-      workforcePoolProviderKeyId = pulumi.Input.asInput<String>(workforcePoolProviderKeyId);
+    this.keyData,
+    this.location,
+    required this.providerId,
+    required this.use,
+    required this.workforcePoolId,
+    required this.workforcePoolProviderKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class WorkforcePoolKeyArgs {
 
   factory WorkforcePoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolKeyArgs(
-      keyData: map['keyData'] == null ? null : pulumi.Output.create<KeyData>(KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      providerId: pulumi.Output.create<String>(map['providerId'] as String),
-      use: pulumi.Output.create<WorkforcePoolKeyUse>(WorkforcePoolKeyUse.fromValue(map['use'] as String)),
-      workforcePoolId: pulumi.Output.create<String>(map['workforcePoolId'] as String),
-      workforcePoolProviderKeyId: pulumi.Output.create<String>(map['workforcePoolProviderKeyId'] as String),
+      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      providerId: (map['providerId'] as String).input(),
+      use: (WorkforcePoolKeyUse.fromValue(map['use'] as String)).input(),
+      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      workforcePoolProviderKeyId: (map['workforcePoolProviderKeyId'] as String).input(),
     );
   }
 }

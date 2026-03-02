@@ -25,13 +25,10 @@ class GetRouteTableAssociationsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
   GetRouteTableAssociationsArgs({
-    pulumi.Output<List<GetRouteTableAssociationsFilter>>? filters,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> transitGatewayRouteTableId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetRouteTableAssociationsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayRouteTableId = pulumi.Input.asInput<String>(transitGatewayRouteTableId);
+    this.filters,
+    this.region,
+    required this.transitGatewayRouteTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,9 +40,9 @@ class GetRouteTableAssociationsArgs {
 
   factory GetRouteTableAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableAssociationsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetRouteTableAssociationsFilter>>(pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(map['filters'], (value) => GetRouteTableAssociationsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayRouteTableId: pulumi.Output.create<String>(map['transitGatewayRouteTableId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(map['filters'], (value) => GetRouteTableAssociationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );
   }
 }

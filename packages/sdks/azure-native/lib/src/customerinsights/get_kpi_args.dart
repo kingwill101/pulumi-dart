@@ -19,13 +19,10 @@ class GetKpiArgs {
   /// [kpiName] The name of the KPI.
   /// [resourceGroupName] The name of the resource group.
   GetKpiArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> kpiName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      kpiName = pulumi.Input.asInput<String>(kpiName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.hubName,
+    required this.kpiName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetKpiArgs {
 
   factory GetKpiArgs.fromMap(Map<String, dynamic> map) {
     return GetKpiArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      kpiName: pulumi.Output.create<String>(map['kpiName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      kpiName: (map['kpiName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

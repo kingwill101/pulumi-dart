@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanRuleScanAction {
-  final String malwareScanner;
-  final String scanMode;
+  final pulumi.Input<String> malwareScanner;
+  final pulumi.Input<String> scanMode;
 
   /// Creates a new [GetPlanRuleScanAction].
   /// [malwareScanner] Required.
@@ -22,8 +23,8 @@ class GetPlanRuleScanAction {
 
   factory GetPlanRuleScanAction.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleScanAction(
-      malwareScanner: map['malwareScanner'] as String,
-      scanMode: map['scanMode'] as String,
+      malwareScanner: (map['malwareScanner'] as String).input(),
+      scanMode: (map['scanMode'] as String).input(),
     );
   }
 }

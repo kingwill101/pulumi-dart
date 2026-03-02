@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterOpenMonitoringPrometheusJmxExporter {
   /// Indicates whether you want to enable or disable the Node Exporter.
-  final bool enabledInBroker;
+  final pulumi.Input<bool> enabledInBroker;
 
   /// Creates a new [ClusterOpenMonitoringPrometheusJmxExporter].
   /// [enabledInBroker] Indicates whether you want to enable or disable the Node Exporter.
@@ -19,7 +20,7 @@ class ClusterOpenMonitoringPrometheusJmxExporter {
 
   factory ClusterOpenMonitoringPrometheusJmxExporter.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoringPrometheusJmxExporter(
-      enabledInBroker: map['enabledInBroker'] as bool,
+      enabledInBroker: (map['enabledInBroker'] as bool).input(),
     );
   }
 }

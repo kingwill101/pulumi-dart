@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolAccountRecoverySettingRecoveryMechanism {
   /// - Name of the attribute.
-  final String name;
+  final pulumi.Input<String> name;
   /// - Priority of this mechanism in the recovery process (lower numbers are higher priority).
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [GetUserPoolAccountRecoverySettingRecoveryMechanism].
   /// [name] - Name of the attribute.
@@ -24,8 +25,8 @@ class GetUserPoolAccountRecoverySettingRecoveryMechanism {
 
   factory GetUserPoolAccountRecoverySettingRecoveryMechanism.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAccountRecoverySettingRecoveryMechanism(
-      name: map['name'] as String,
-      priority: map['priority'] as int,
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

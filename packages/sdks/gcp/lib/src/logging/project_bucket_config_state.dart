@@ -42,29 +42,18 @@ class ProjectBucketConfigState {
   /// [project] The parent resource that contains the logging bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
   ProjectBucketConfigState({
-    pulumi.Output<String>? bucketId,
-    pulumi.Output<ProjectBucketConfigCmekSettings>? cmekSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enableAnalytics,
-    pulumi.Output<List<ProjectBucketConfigIndexConfig>>? indexConfigs,
-    pulumi.Output<String>? lifecycleState,
-    pulumi.Output<String>? location,
-    pulumi.Output<bool>? locked,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? retentionDays,
-  }) :
-      bucketId = pulumi.Input.asOptionalInput<String>(bucketId),
-      cmekSettings = pulumi.Input.asOptionalInput<ProjectBucketConfigCmekSettings>(cmekSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableAnalytics = pulumi.Input.asOptionalInput<bool>(enableAnalytics),
-      indexConfigs = pulumi.Input.asOptionalInput<List<ProjectBucketConfigIndexConfig>>(indexConfigs),
-      lifecycleState = pulumi.Input.asOptionalInput<String>(lifecycleState),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+    this.bucketId,
+    this.cmekSettings,
+    this.description,
+    this.enableAnalytics,
+    this.indexConfigs,
+    this.lifecycleState,
+    this.location,
+    this.locked,
+    this.name,
+    this.project,
+    this.retentionDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class ProjectBucketConfigState {
 
   factory ProjectBucketConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectBucketConfigState(
-      bucketId: map['bucketId'] == null ? null : pulumi.Output.create<String>(map['bucketId'] as String),
-      cmekSettings: map['cmekSettings'] == null ? null : pulumi.Output.create<ProjectBucketConfigCmekSettings>(ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enableAnalytics: map['enableAnalytics'] == null ? null : pulumi.Output.create<bool>(map['enableAnalytics'] as bool),
-      indexConfigs: map['indexConfigs'] == null ? null : pulumi.Output.create<List<ProjectBucketConfigIndexConfig>>(pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs'], (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      lifecycleState: map['lifecycleState'] == null ? null : pulumi.Output.create<String>(map['lifecycleState'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      locked: map['locked'] == null ? null : pulumi.Output.create<bool>(map['locked'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics'] as bool).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs'], (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

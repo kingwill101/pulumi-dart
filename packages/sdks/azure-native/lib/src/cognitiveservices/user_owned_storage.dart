@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The user owned storage for Cognitive Services account.
 class UserOwnedStorage {
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// Full resource id of a Microsoft.Storage resource.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [UserOwnedStorage].
   /// [identityClientId] Optional.
@@ -24,8 +25,8 @@ class UserOwnedStorage {
 
   factory UserOwnedStorage.fromMap(Map<String, dynamic> map) {
     return UserOwnedStorage(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

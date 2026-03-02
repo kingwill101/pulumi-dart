@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Automation Runbook notification receiver.
 class AutomationRunbookReceiver {
   /// The Azure automation account Id which holds this runbook and authenticate to Azure resource.
-  final String automationAccountId;
+  final pulumi.Input<String> automationAccountId;
   /// Indicates whether this instance is global runbook.
-  final bool isGlobalRunbook;
+  final pulumi.Input<bool> isGlobalRunbook;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final String? managedIdentity;
+  final pulumi.Input<String>? managedIdentity;
   /// Indicates name of the webhook.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The name for this runbook.
-  final String runbookName;
+  final pulumi.Input<String> runbookName;
   /// The URI where webhooks should be sent.
-  final String? serviceUri;
+  final pulumi.Input<String>? serviceUri;
   /// Indicates whether to use common alert schema.
-  final bool? useCommonAlertSchema;
+  final pulumi.Input<bool>? useCommonAlertSchema;
   /// The resource id for webhook linked to this runbook.
-  final String webhookResourceId;
+  final pulumi.Input<String> webhookResourceId;
 
   /// Creates a new [AutomationRunbookReceiver].
   /// [automationAccountId] The Azure automation account Id which holds this runbook and authenticate to Azure resource.
@@ -55,14 +56,14 @@ class AutomationRunbookReceiver {
 
   factory AutomationRunbookReceiver.fromMap(Map<String, dynamic> map) {
     return AutomationRunbookReceiver(
-      automationAccountId: map['automationAccountId'] as String,
-      isGlobalRunbook: map['isGlobalRunbook'] as bool,
-      managedIdentity: map['managedIdentity'] == null ? null : map['managedIdentity'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      runbookName: map['runbookName'] as String,
-      serviceUri: map['serviceUri'] == null ? null : map['serviceUri'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : map['useCommonAlertSchema'] as bool,
-      webhookResourceId: map['webhookResourceId'] as String,
+      automationAccountId: (map['automationAccountId'] as String).input(),
+      isGlobalRunbook: (map['isGlobalRunbook'] as bool).input(),
+      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      runbookName: (map['runbookName'] as String).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      webhookResourceId: (map['webhookResourceId'] as String).input(),
     );
   }
 }

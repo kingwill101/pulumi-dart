@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleLambdaAction {
   /// The ARN of the Lambda function to invoke
-  final String functionArn;
+  final pulumi.Input<String> functionArn;
   /// `Event` or `RequestResponse`
-  final String? invocationType;
+  final pulumi.Input<String>? invocationType;
   /// The position of the action in the receipt rule
-  final int position;
+  final pulumi.Input<int> position;
   /// The ARN of an SNS topic to notify
-  final String? topicArn;
+  final pulumi.Input<String>? topicArn;
 
   /// Creates a new [ReceiptRuleLambdaAction].
   /// [functionArn] The ARN of the Lambda function to invoke
@@ -34,10 +35,10 @@ class ReceiptRuleLambdaAction {
 
   factory ReceiptRuleLambdaAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleLambdaAction(
-      functionArn: map['functionArn'] as String,
-      invocationType: map['invocationType'] == null ? null : map['invocationType'] as String,
-      position: map['position'] as int,
-      topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
+      functionArn: (map['functionArn'] as String).input(),
+      invocationType: map['invocationType'] == null ? null : (map['invocationType'] as String).input(),
+      position: (map['position'] as int).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
     );
   }
 }

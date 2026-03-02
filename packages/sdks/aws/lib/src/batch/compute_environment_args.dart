@@ -43,27 +43,17 @@ class ComputeEnvironmentArgs {
   /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
   ComputeEnvironmentArgs({
-    pulumi.Output<ComputeEnvironmentComputeResources>? computeResources,
-    pulumi.Output<ComputeEnvironmentEksConfiguration>? eksConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceRole,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    pulumi.Output<ComputeEnvironmentUpdatePolicy>? updatePolicy,
-  }) :
-      computeResources = pulumi.Input.asOptionalInput<ComputeEnvironmentComputeResources>(computeResources),
-      eksConfiguration = pulumi.Input.asOptionalInput<ComputeEnvironmentEksConfiguration>(eksConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceRole = pulumi.Input.asOptionalInput<String>(serviceRole),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      updatePolicy = pulumi.Input.asOptionalInput<ComputeEnvironmentUpdatePolicy>(updatePolicy);
+    this.computeResources,
+    this.eksConfiguration,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.serviceRole,
+    this.state,
+    this.tags,
+    required this.type,
+    this.updatePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class ComputeEnvironmentArgs {
 
   factory ComputeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentArgs(
-      computeResources: map['computeResources'] == null ? null : pulumi.Output.create<ComputeEnvironmentComputeResources>(ComputeEnvironmentComputeResources.fromMap((map['computeResources'] as Map).cast<String, dynamic>())),
-      eksConfiguration: map['eksConfiguration'] == null ? null : pulumi.Output.create<ComputeEnvironmentEksConfiguration>(ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceRole: map['serviceRole'] == null ? null : pulumi.Output.create<String>(map['serviceRole'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      updatePolicy: map['updatePolicy'] == null ? null : pulumi.Output.create<ComputeEnvironmentUpdatePolicy>(ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy'] as Map).cast<String, dynamic>())),
+      computeResources: map['computeResources'] == null ? null : (ComputeEnvironmentComputeResources.fromMap((map['computeResources'] as Map).cast<String, dynamic>())).input(),
+      eksConfiguration: map['eksConfiguration'] == null ? null : (ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : (ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

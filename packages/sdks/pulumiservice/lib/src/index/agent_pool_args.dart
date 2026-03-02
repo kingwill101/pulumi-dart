@@ -22,15 +22,11 @@ class AgentPoolArgs {
   /// [name] Name of the agent pool.
   /// [organizationName] The organization's name.
   AgentPoolArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDestroy,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      name = pulumi.Input.asInput<String>(name),
-      organizationName = pulumi.Input.asInput<String>(organizationName);
+    this.description,
+    this.forceDestroy,
+    required this.name,
+    required this.organizationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      name: (map['name'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy {
   /// The policy directives and their values that CloudFront includes as values for the Content-Security-Policy HTTP response header.
-  final String contentSecurityPolicy;
+  final pulumi.Input<String> contentSecurityPolicy;
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  final bool override;
+  final pulumi.Input<bool> override;
 
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy].
   /// [contentSecurityPolicy] The policy directives and their values that CloudFront includes as values for the Content-Security-Policy HTTP response header.
@@ -24,8 +25,8 @@ class GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy {
 
   factory GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy(
-      contentSecurityPolicy: map['contentSecurityPolicy'] as String,
-      override: map['override'] as bool,
+      contentSecurityPolicy: (map['contentSecurityPolicy'] as String).input(),
+      override: (map['override'] as bool).input(),
     );
   }
 }

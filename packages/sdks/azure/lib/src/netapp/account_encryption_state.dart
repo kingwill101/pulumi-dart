@@ -25,19 +25,13 @@ class AccountEncryptionState {
   /// [systemAssignedIdentityPrincipalId] The ID of the System Assigned Manged Identity. Conflicts with `user_assigned_identity_id`.
   /// [userAssignedIdentityId] The ID of the User Assigned Managed Identity. Conflicts with `system_assigned_identity_principal_id`.
   AccountEncryptionState({
-    pulumi.Output<String>? crossTenantKeyVaultResourceId,
-    pulumi.Output<String>? encryptionKey,
-    pulumi.Output<String>? federatedClientId,
-    pulumi.Output<String>? netappAccountId,
-    pulumi.Output<String>? systemAssignedIdentityPrincipalId,
-    pulumi.Output<String>? userAssignedIdentityId,
-  }) :
-      crossTenantKeyVaultResourceId = pulumi.Input.asOptionalInput<String>(crossTenantKeyVaultResourceId),
-      encryptionKey = pulumi.Input.asOptionalInput<String>(encryptionKey),
-      federatedClientId = pulumi.Input.asOptionalInput<String>(federatedClientId),
-      netappAccountId = pulumi.Input.asOptionalInput<String>(netappAccountId),
-      systemAssignedIdentityPrincipalId = pulumi.Input.asOptionalInput<String>(systemAssignedIdentityPrincipalId),
-      userAssignedIdentityId = pulumi.Input.asOptionalInput<String>(userAssignedIdentityId);
+    this.crossTenantKeyVaultResourceId,
+    this.encryptionKey,
+    this.federatedClientId,
+    this.netappAccountId,
+    this.systemAssignedIdentityPrincipalId,
+    this.userAssignedIdentityId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class AccountEncryptionState {
 
   factory AccountEncryptionState.fromMap(Map<String, dynamic> map) {
     return AccountEncryptionState(
-      crossTenantKeyVaultResourceId: map['crossTenantKeyVaultResourceId'] == null ? null : pulumi.Output.create<String>(map['crossTenantKeyVaultResourceId'] as String),
-      encryptionKey: map['encryptionKey'] == null ? null : pulumi.Output.create<String>(map['encryptionKey'] as String),
-      federatedClientId: map['federatedClientId'] == null ? null : pulumi.Output.create<String>(map['federatedClientId'] as String),
-      netappAccountId: map['netappAccountId'] == null ? null : pulumi.Output.create<String>(map['netappAccountId'] as String),
-      systemAssignedIdentityPrincipalId: map['systemAssignedIdentityPrincipalId'] == null ? null : pulumi.Output.create<String>(map['systemAssignedIdentityPrincipalId'] as String),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : pulumi.Output.create<String>(map['userAssignedIdentityId'] as String),
+      crossTenantKeyVaultResourceId: map['crossTenantKeyVaultResourceId'] == null ? null : (map['crossTenantKeyVaultResourceId'] as String).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
+      netappAccountId: map['netappAccountId'] == null ? null : (map['netappAccountId'] as String).input(),
+      systemAssignedIdentityPrincipalId: map['systemAssignedIdentityPrincipalId'] == null ? null : (map['systemAssignedIdentityPrincipalId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
     );
   }
 }

@@ -26,19 +26,13 @@ class ChannelConnectionArgs {
   /// [name] The name of the connection.
   /// [project] Optional.
   ChannelConnectionArgs({
-    pulumi.Output<String>? activationToken,
-    required pulumi.Output<String> channel,
-    required pulumi.Output<String> channelConnectionId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      activationToken = pulumi.Input.asOptionalInput<String>(activationToken),
-      channel = pulumi.Input.asInput<String>(channel),
-      channelConnectionId = pulumi.Input.asInput<String>(channelConnectionId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.activationToken,
+    required this.channel,
+    required this.channelConnectionId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ChannelConnectionArgs {
 
   factory ChannelConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ChannelConnectionArgs(
-      activationToken: map['activationToken'] == null ? null : pulumi.Output.create<String>(map['activationToken'] as String),
-      channel: pulumi.Output.create<String>(map['channel'] as String),
-      channelConnectionId: pulumi.Output.create<String>(map['channelConnectionId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      activationToken: map['activationToken'] == null ? null : (map['activationToken'] as String).input(),
+      channel: (map['channel'] as String).input(),
+      channelConnectionId: (map['channelConnectionId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

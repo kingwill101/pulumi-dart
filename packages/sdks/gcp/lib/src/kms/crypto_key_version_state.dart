@@ -39,23 +39,15 @@ class CryptoKeyVersionState {
   /// [protectionLevel] The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
   /// [state] The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
   CryptoKeyVersionState({
-    pulumi.Output<String>? algorithm,
-    pulumi.Output<List<CryptoKeyVersionAttestation>>? attestations,
-    pulumi.Output<String>? cryptoKey,
-    pulumi.Output<CryptoKeyVersionExternalProtectionLevelOptions>? externalProtectionLevelOptions,
-    pulumi.Output<String>? generateTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectionLevel,
-    pulumi.Output<String>? state,
-  }) :
-      algorithm = pulumi.Input.asOptionalInput<String>(algorithm),
-      attestations = pulumi.Input.asOptionalInput<List<CryptoKeyVersionAttestation>>(attestations),
-      cryptoKey = pulumi.Input.asOptionalInput<String>(cryptoKey),
-      externalProtectionLevelOptions = pulumi.Input.asOptionalInput<CryptoKeyVersionExternalProtectionLevelOptions>(externalProtectionLevelOptions),
-      generateTime = pulumi.Input.asOptionalInput<String>(generateTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectionLevel = pulumi.Input.asOptionalInput<String>(protectionLevel),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.algorithm,
+    this.attestations,
+    this.cryptoKey,
+    this.externalProtectionLevelOptions,
+    this.generateTime,
+    this.name,
+    this.protectionLevel,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class CryptoKeyVersionState {
 
   factory CryptoKeyVersionState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionState(
-      algorithm: map['algorithm'] == null ? null : pulumi.Output.create<String>(map['algorithm'] as String),
-      attestations: map['attestations'] == null ? null : pulumi.Output.create<List<CryptoKeyVersionAttestation>>(pulumi.Input.decodeList<CryptoKeyVersionAttestation>(map['attestations'], (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>()))),
-      cryptoKey: map['cryptoKey'] == null ? null : pulumi.Output.create<String>(map['cryptoKey'] as String),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : pulumi.Output.create<CryptoKeyVersionExternalProtectionLevelOptions>(CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())),
-      generateTime: map['generateTime'] == null ? null : pulumi.Output.create<String>(map['generateTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectionLevel: map['protectionLevel'] == null ? null : pulumi.Output.create<String>(map['protectionLevel'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<CryptoKeyVersionAttestation>(map['attestations'], (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
+      generateTime: map['generateTime'] == null ? null : (map['generateTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

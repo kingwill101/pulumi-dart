@@ -23,15 +23,11 @@ class ManagementGroupArgs {
   /// [groupId] Management Group ID.
   /// [name] The name of the management group. For example, 00000000-0000-0000-0000-000000000000
   ManagementGroupArgs({
-    pulumi.Output<CreateManagementGroupDetails>? details,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? name,
-  }) :
-      details = pulumi.Input.asOptionalInput<CreateManagementGroupDetails>(details),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.details,
+    this.displayName,
+    this.groupId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagementGroupArgs {
 
   factory ManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupArgs(
-      details: map['details'] == null ? null : pulumi.Output.create<CreateManagementGroupDetails>(CreateManagementGroupDetails.fromMap((map['details'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      details: map['details'] == null ? null : (CreateManagementGroupDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

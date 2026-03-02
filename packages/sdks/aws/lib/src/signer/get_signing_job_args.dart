@@ -16,11 +16,9 @@ class GetSigningJobArgs {
   /// [jobId] ID of the signing job on output.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetSigningJobArgs({
-    required pulumi.Output<String> jobId,
-    pulumi.Output<String>? region,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.jobId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSigningJobArgs {
 
   factory GetSigningJobArgs.fromMap(Map<String, dynamic> map) {
     return GetSigningJobArgs(
-      jobId: pulumi.Output.create<String>(map['jobId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      jobId: (map['jobId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

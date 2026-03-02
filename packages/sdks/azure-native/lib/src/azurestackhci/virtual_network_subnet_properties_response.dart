@@ -10,19 +10,19 @@ import 'virtual_network_subnet_status_response.dart';
 /// VirtualNetwork subnet resource
 class VirtualNetworkSubnetPropertiesResponse {
   /// Subnet CIDR
-  final String addressPrefix;
+  final pulumi.Input<String> addressPrefix;
   /// List of ip configurations for the subnet
-  final List<VirtualNetworkSubnetIpConfigurationReferenceResponse> ipConfigurations;
+  final pulumi.Input<List<VirtualNetworkSubnetIpConfigurationReferenceResponse>> ipConfigurations;
   /// Nat Gateway attached to the subnet for non-vnet traffic.
-  final NatGatewayArmReferenceResponse? natGateway;
+  final pulumi.Input<NatGatewayArmReferenceResponse>? natGateway;
   /// Network Security Group attached to the subnet.
-  final NetworkSecurityGroupArmReferenceResponse? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReferenceResponse>? networkSecurityGroup;
   /// The provisioning state of the virtual network subnet resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// RouteTable defining custom routes for the subnet.
-  final RouteTableResponse? routeTable;
+  final pulumi.Input<RouteTableResponse>? routeTable;
   /// The observed status of the virtual network subnet resource.
-  final VirtualNetworkSubnetStatusResponse status;
+  final pulumi.Input<VirtualNetworkSubnetStatusResponse> status;
 
   /// Creates a new [VirtualNetworkSubnetPropertiesResponse].
   /// [addressPrefix] Subnet CIDR
@@ -45,24 +45,24 @@ class VirtualNetworkSubnetPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPrefix': addressPrefix,
-      'ipConfigurations': pulumi.Input.encodeList<VirtualNetworkSubnetIpConfigurationReferenceResponse, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
-      'natGateway': ?natGateway == null ? null : natGateway!.toMap(),
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'ipConfigurations': pulumi.Input.mapInputValue<List<VirtualNetworkSubnetIpConfigurationReferenceResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualNetworkSubnetIpConfigurationReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'natGateway': ?pulumi.Input.mapOptionalInputValue<NatGatewayArmReferenceResponse, Map<String, dynamic>>(natGateway, (value) => value.toMap()),
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NetworkSecurityGroupArmReferenceResponse, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'routeTable': ?routeTable == null ? null : routeTable!.toMap(),
-      'status': status.toMap(),
+      'routeTable': ?pulumi.Input.mapOptionalInputValue<RouteTableResponse, Map<String, dynamic>>(routeTable, (value) => value.toMap()),
+      'status': pulumi.Input.mapInputValue<VirtualNetworkSubnetStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory VirtualNetworkSubnetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetPropertiesResponse(
-      addressPrefix: map['addressPrefix'] as String,
-      ipConfigurations: pulumi.Input.decodeList<VirtualNetworkSubnetIpConfigurationReferenceResponse>(map['ipConfigurations'], (value) => VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      natGateway: map['natGateway'] == null ? null : NatGatewayArmReferenceResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>()),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      routeTable: map['routeTable'] == null ? null : RouteTableResponse.fromMap((map['routeTable'] as Map).cast<String, dynamic>()),
-      status: VirtualNetworkSubnetStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      addressPrefix: (map['addressPrefix'] as String).input(),
+      ipConfigurations: (pulumi.Input.decodeList<VirtualNetworkSubnetIpConfigurationReferenceResponse>(map['ipConfigurations'], (value) => VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      natGateway: map['natGateway'] == null ? null : (NatGatewayArmReferenceResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      routeTable: map['routeTable'] == null ? null : (RouteTableResponse.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
+      status: (VirtualNetworkSubnetStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -52,31 +52,19 @@ class PipelineArgs {
   /// [timeouts] Optional.
   /// [vpcOptions] Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
   PipelineArgs({
-    pulumi.Output<PipelineBufferOptions>? bufferOptions,
-    pulumi.Output<PipelineEncryptionAtRestOptions>? encryptionAtRestOptions,
-    pulumi.Output<PipelineLogPublishingOptions>? logPublishingOptions,
-    required pulumi.Output<int> maxUnits,
-    required pulumi.Output<int> minUnits,
-    required pulumi.Output<String> pipelineConfigurationBody,
-    required pulumi.Output<String> pipelineName,
-    pulumi.Output<String>? pipelineRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<PipelineTimeouts>? timeouts,
-    pulumi.Output<PipelineVpcOptions>? vpcOptions,
-  }) :
-      bufferOptions = pulumi.Input.asOptionalInput<PipelineBufferOptions>(bufferOptions),
-      encryptionAtRestOptions = pulumi.Input.asOptionalInput<PipelineEncryptionAtRestOptions>(encryptionAtRestOptions),
-      logPublishingOptions = pulumi.Input.asOptionalInput<PipelineLogPublishingOptions>(logPublishingOptions),
-      maxUnits = pulumi.Input.asInput<int>(maxUnits),
-      minUnits = pulumi.Input.asInput<int>(minUnits),
-      pipelineConfigurationBody = pulumi.Input.asInput<String>(pipelineConfigurationBody),
-      pipelineName = pulumi.Input.asInput<String>(pipelineName),
-      pipelineRoleArn = pulumi.Input.asOptionalInput<String>(pipelineRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<PipelineTimeouts>(timeouts),
-      vpcOptions = pulumi.Input.asOptionalInput<PipelineVpcOptions>(vpcOptions);
+    this.bufferOptions,
+    this.encryptionAtRestOptions,
+    this.logPublishingOptions,
+    required this.maxUnits,
+    required this.minUnits,
+    required this.pipelineConfigurationBody,
+    required this.pipelineName,
+    this.pipelineRoleArn,
+    this.region,
+    this.tags,
+    this.timeouts,
+    this.vpcOptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,18 +85,18 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      bufferOptions: map['bufferOptions'] == null ? null : pulumi.Output.create<PipelineBufferOptions>(PipelineBufferOptions.fromMap((map['bufferOptions'] as Map).cast<String, dynamic>())),
-      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : pulumi.Output.create<PipelineEncryptionAtRestOptions>(PipelineEncryptionAtRestOptions.fromMap((map['encryptionAtRestOptions'] as Map).cast<String, dynamic>())),
-      logPublishingOptions: map['logPublishingOptions'] == null ? null : pulumi.Output.create<PipelineLogPublishingOptions>(PipelineLogPublishingOptions.fromMap((map['logPublishingOptions'] as Map).cast<String, dynamic>())),
-      maxUnits: pulumi.Output.create<int>(map['maxUnits'] as int),
-      minUnits: pulumi.Output.create<int>(map['minUnits'] as int),
-      pipelineConfigurationBody: pulumi.Output.create<String>(map['pipelineConfigurationBody'] as String),
-      pipelineName: pulumi.Output.create<String>(map['pipelineName'] as String),
-      pipelineRoleArn: map['pipelineRoleArn'] == null ? null : pulumi.Output.create<String>(map['pipelineRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<PipelineTimeouts>(PipelineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcOptions: map['vpcOptions'] == null ? null : pulumi.Output.create<PipelineVpcOptions>(PipelineVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())),
+      bufferOptions: map['bufferOptions'] == null ? null : (PipelineBufferOptions.fromMap((map['bufferOptions'] as Map).cast<String, dynamic>())).input(),
+      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : (PipelineEncryptionAtRestOptions.fromMap((map['encryptionAtRestOptions'] as Map).cast<String, dynamic>())).input(),
+      logPublishingOptions: map['logPublishingOptions'] == null ? null : (PipelineLogPublishingOptions.fromMap((map['logPublishingOptions'] as Map).cast<String, dynamic>())).input(),
+      maxUnits: (map['maxUnits'] as int).input(),
+      minUnits: (map['minUnits'] as int).input(),
+      pipelineConfigurationBody: (map['pipelineConfigurationBody'] as String).input(),
+      pipelineName: (map['pipelineName'] as String).input(),
+      pipelineRoleArn: map['pipelineRoleArn'] == null ? null : (map['pipelineRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (PipelineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcOptions: map['vpcOptions'] == null ? null : (PipelineVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,23 +33,15 @@ class CustomDomainState {
   /// [protocol] The protocol, `HTTP` or `HTTP,HTTPS`.
   /// [routeConfigs] The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
   CustomDomainState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<CustomDomainCertConfig>? certConfig,
-    pulumi.Output<String>? createdTime,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<CustomDomainRouteConfig>>? routeConfigs,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      certConfig = pulumi.Input.asOptionalInput<CustomDomainCertConfig>(certConfig),
-      createdTime = pulumi.Input.asOptionalInput<String>(createdTime),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      routeConfigs = pulumi.Input.asOptionalInput<List<CustomDomainRouteConfig>>(routeConfigs);
+    this.accountId,
+    this.apiVersion,
+    this.certConfig,
+    this.createdTime,
+    this.domainName,
+    this.lastModifiedTime,
+    this.protocol,
+    this.routeConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class CustomDomainState {
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      certConfig: map['certConfig'] == null ? null : pulumi.Output.create<CustomDomainCertConfig>(CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())),
-      createdTime: map['createdTime'] == null ? null : pulumi.Output.create<String>(map['createdTime'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      routeConfigs: map['routeConfigs'] == null ? null : pulumi.Output.create<List<CustomDomainRouteConfig>>(pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs'], (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

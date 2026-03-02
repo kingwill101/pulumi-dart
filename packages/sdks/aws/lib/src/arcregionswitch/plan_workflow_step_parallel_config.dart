@@ -5,7 +5,7 @@ import 'plan_workflow_step_parallel_config_step.dart';
 
 class PlanWorkflowStepParallelConfig {
   /// List of steps to execute in parallel. Uses the same schema as Step but without `parallel_config` to prevent infinite nesting.
-  final List<PlanWorkflowStepParallelConfigStep>? steps;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStep>>? steps;
 
   /// Creates a new [PlanWorkflowStepParallelConfig].
   /// [steps] List of steps to execute in parallel. Uses the same schema as Step but without `parallel_config` to prevent infinite nesting.
@@ -15,13 +15,13 @@ class PlanWorkflowStepParallelConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps': ?steps == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep, Map<String, dynamic>>(steps!, (value) => value.toMap()),
+      'steps': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStep>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PlanWorkflowStepParallelConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfig(
-      steps: map['steps'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps'], (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>())),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps'], (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

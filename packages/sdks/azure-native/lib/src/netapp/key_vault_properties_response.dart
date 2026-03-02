@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of key vault.
 class KeyVaultPropertiesResponse {
   /// The name of KeyVault key.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// UUID v4 used to identify the Azure Key Vault configuration
-  final String keyVaultId;
+  final pulumi.Input<String> keyVaultId;
   /// The resource ID of KeyVault.
-  final String? keyVaultResourceId;
+  final pulumi.Input<String>? keyVaultResourceId;
   /// The Uri of KeyVault.
-  final String keyVaultUri;
+  final pulumi.Input<String> keyVaultUri;
   /// Status of the KeyVault connection.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyName] The name of KeyVault key.
@@ -40,11 +41,11 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyName: map['keyName'] as String,
-      keyVaultId: map['keyVaultId'] as String,
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId'] as String,
-      keyVaultUri: map['keyVaultUri'] as String,
-      status: map['status'] as String,
+      keyName: (map['keyName'] as String).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

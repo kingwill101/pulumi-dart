@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesInstanceTypeBurstableInstance {
   /// The compute performance benchmark CPU credit of a burstable instance.
-  final String baselineCredit;
+  final pulumi.Input<String> baselineCredit;
   /// The initial CPU credit of a burstable instance.
-  final String initialCredit;
+  final pulumi.Input<String> initialCredit;
 
   /// Creates a new [GetInstanceTypesInstanceTypeBurstableInstance].
   /// [baselineCredit] The compute performance benchmark CPU credit of a burstable instance.
@@ -24,8 +25,8 @@ class GetInstanceTypesInstanceTypeBurstableInstance {
 
   factory GetInstanceTypesInstanceTypeBurstableInstance.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceTypeBurstableInstance(
-      baselineCredit: map['baselineCredit'] as String,
-      initialCredit: map['initialCredit'] as String,
+      baselineCredit: (map['baselineCredit'] as String).input(),
+      initialCredit: (map['initialCredit'] as String).input(),
     );
   }
 }

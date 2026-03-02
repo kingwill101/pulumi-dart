@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A telephone number for the Telephony channel
 class TelephonyPhoneNumbersResponse {
   /// The endpoint of ACS.
-  final String? acsEndpoint;
+  final pulumi.Input<String>? acsEndpoint;
   /// The resource id of ACS.
-  final String? acsResourceId;
+  final pulumi.Input<String>? acsResourceId;
   /// The secret of ACS.
-  final String? acsSecret;
+  final pulumi.Input<String>? acsSecret;
   /// The service region of cognitive service.
-  final String? cognitiveServiceRegion;
+  final pulumi.Input<String>? cognitiveServiceRegion;
   /// The resource id of cognitive service.
-  final String? cognitiveServiceResourceId;
+  final pulumi.Input<String>? cognitiveServiceResourceId;
   /// The subscription key of cognitive service.
-  final String? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
   /// The default locale of the phone number.
-  final String? defaultLocale;
+  final pulumi.Input<String>? defaultLocale;
   /// The element id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Optional Property that will determine the offering type of the phone.
-  final String? offerType;
+  final pulumi.Input<String>? offerType;
   /// The phone number.
-  final String? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
 
   /// Creates a new [TelephonyPhoneNumbersResponse].
   /// [acsEndpoint] The endpoint of ACS.
@@ -65,16 +66,16 @@ class TelephonyPhoneNumbersResponse {
 
   factory TelephonyPhoneNumbersResponse.fromMap(Map<String, dynamic> map) {
     return TelephonyPhoneNumbersResponse(
-      acsEndpoint: map['acsEndpoint'] == null ? null : map['acsEndpoint'] as String,
-      acsResourceId: map['acsResourceId'] == null ? null : map['acsResourceId'] as String,
-      acsSecret: map['acsSecret'] == null ? null : map['acsSecret'] as String,
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : map['cognitiveServiceRegion'] as String,
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : map['cognitiveServiceResourceId'] as String,
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : map['cognitiveServiceSubscriptionKey'] as String,
-      defaultLocale: map['defaultLocale'] == null ? null : map['defaultLocale'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      offerType: map['offerType'] == null ? null : map['offerType'] as String,
-      phoneNumber: map['phoneNumber'] == null ? null : map['phoneNumber'] as String,
+      acsEndpoint: map['acsEndpoint'] == null ? null : (map['acsEndpoint'] as String).input(),
+      acsResourceId: map['acsResourceId'] == null ? null : (map['acsResourceId'] as String).input(),
+      acsSecret: map['acsSecret'] == null ? null : (map['acsSecret'] as String).input(),
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId'] as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
+      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      offerType: map['offerType'] == null ? null : (map['offerType'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
     );
   }
 }

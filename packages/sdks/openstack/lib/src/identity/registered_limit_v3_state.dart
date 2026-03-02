@@ -28,17 +28,12 @@ class RegisteredLimitV3State {
   /// [resourceName] The resource that the limit applies to. On
   /// [serviceId] The service the limit applies to. On updates,
   RegisteredLimitV3State({
-    pulumi.Output<int>? defaultLimit,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<String>? serviceId,
-  }) :
-      defaultLimit = pulumi.Input.asOptionalInput<int>(defaultLimit),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId);
+    this.defaultLimit,
+    this.description,
+    this.region,
+    this.resourceName,
+    this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class RegisteredLimitV3State {
 
   factory RegisteredLimitV3State.fromMap(Map<String, dynamic> map) {
     return RegisteredLimitV3State(
-      defaultLimit: map['defaultLimit'] == null ? null : pulumi.Output.create<int>(map['defaultLimit'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
+      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_settings_response.dart';
 import 'entity_uptime_response.dart';
 import 'performance_data_response.dart';
@@ -11,52 +12,52 @@ import 'sql_vm_settings_response.dart';
 /// SQL assessment settings class.
 class SqlAssessmentSettingsResponse {
   /// Gets or sets user preference indicating intent of async commit mode.
-  final String? asyncCommitModeIntent;
+  final pulumi.Input<String>? asyncCommitModeIntent;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final String? azureLocation;
+  final pulumi.Input<String>? azureLocation;
   /// Gets or sets a value indicating azure security offering type.
-  final String? azureSecurityOfferingType;
+  final pulumi.Input<String>? azureSecurityOfferingType;
   /// Gets or sets user configurable SQL database settings.
-  final SqlDbSettingsV3Response? azureSqlDatabaseSettings;
+  final pulumi.Input<SqlDbSettingsV3Response>? azureSqlDatabaseSettings;
   /// Gets or sets user configurable SQL managed instance settings.
-  final SqlMiSettingsV3Response? azureSqlManagedInstanceSettings;
+  final pulumi.Input<SqlMiSettingsV3Response>? azureSqlManagedInstanceSettings;
   /// Gets or sets user configurable SQL VM settings.
-  final SqlVmSettingsResponse? azureSqlVmSettings;
+  final pulumi.Input<SqlVmSettingsResponse>? azureSqlVmSettings;
   /// Gets or sets the billing settings.
-  final BillingSettingsResponse? billingSettings;
+  final pulumi.Input<BillingSettingsResponse>? billingSettings;
   /// Currency in which prices should be reported.
-  final String? currency;
+  final pulumi.Input<String>? currency;
   /// Gets or sets the Azure Location or Azure region where to which the machines
   /// will be migrated.
-  final String? disasterRecoveryLocation;
+  final pulumi.Input<String>? disasterRecoveryLocation;
   /// Custom discount percentage.
-  final double? discountPercentage;
+  final pulumi.Input<double>? discountPercentage;
   /// Gets or sets a value indicating whether HADR assessments needs to be created.
-  final bool? enableHadrAssessment;
+  final pulumi.Input<bool>? enableHadrAssessment;
   /// Gets or sets the duration for which the entity (SQL, VMs) are up in the
   /// on-premises environment.
-  final EntityUptimeResponse? entityUptime;
+  final pulumi.Input<EntityUptimeResponse>? entityUptime;
   /// Gets or sets user configurable setting to display the environment type.
-  final String? environmentType;
+  final pulumi.Input<String>? environmentType;
   /// Gets or sets a value indicating whether internet access is available.
-  final bool? isInternetAccessAvailable;
+  final pulumi.Input<bool>? isInternetAccessAvailable;
   /// Gets or sets user preference indicating intent of multi-subnet configuration.
-  final String? multiSubnetIntent;
+  final pulumi.Input<String>? multiSubnetIntent;
   /// Gets or sets user configurable setting to display the azure hybrid use benefit.
-  final String? osLicense;
+  final pulumi.Input<String>? osLicense;
   /// Gets or sets the performance data.
-  final PerformanceDataResponse? performanceData;
+  final pulumi.Input<PerformanceDataResponse>? performanceData;
   /// Gets or sets SQL the preferred azure targets.
-  final List<String>? preferredTargets;
+  final pulumi.Input<List<String>>? preferredTargets;
   /// Gets or sets the savings settings.
-  final SavingsSettingsResponse? savingsSettings;
+  final pulumi.Input<SavingsSettingsResponse>? savingsSettings;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final double? scalingFactor;
+  final pulumi.Input<double>? scalingFactor;
   /// Assessment sizing criterion.
-  final String? sizingCriterion;
+  final pulumi.Input<String>? sizingCriterion;
   /// SQL server license.
-  final String? sqlServerLicense;
+  final pulumi.Input<String>? sqlServerLicense;
 
   /// Creates a new [SqlAssessmentSettingsResponse].
   /// [asyncCommitModeIntent] Gets or sets user preference indicating intent of async commit mode.
@@ -111,22 +112,22 @@ class SqlAssessmentSettingsResponse {
       'asyncCommitModeIntent': ?asyncCommitModeIntent,
       'azureLocation': ?azureLocation,
       'azureSecurityOfferingType': ?azureSecurityOfferingType,
-      'azureSqlDatabaseSettings': ?azureSqlDatabaseSettings == null ? null : azureSqlDatabaseSettings!.toMap(),
-      'azureSqlManagedInstanceSettings': ?azureSqlManagedInstanceSettings == null ? null : azureSqlManagedInstanceSettings!.toMap(),
-      'azureSqlVmSettings': ?azureSqlVmSettings == null ? null : azureSqlVmSettings!.toMap(),
-      'billingSettings': ?billingSettings == null ? null : billingSettings!.toMap(),
+      'azureSqlDatabaseSettings': ?pulumi.Input.mapOptionalInputValue<SqlDbSettingsV3Response, Map<String, dynamic>>(azureSqlDatabaseSettings, (value) => value.toMap()),
+      'azureSqlManagedInstanceSettings': ?pulumi.Input.mapOptionalInputValue<SqlMiSettingsV3Response, Map<String, dynamic>>(azureSqlManagedInstanceSettings, (value) => value.toMap()),
+      'azureSqlVmSettings': ?pulumi.Input.mapOptionalInputValue<SqlVmSettingsResponse, Map<String, dynamic>>(azureSqlVmSettings, (value) => value.toMap()),
+      'billingSettings': ?pulumi.Input.mapOptionalInputValue<BillingSettingsResponse, Map<String, dynamic>>(billingSettings, (value) => value.toMap()),
       'currency': ?currency,
       'disasterRecoveryLocation': ?disasterRecoveryLocation,
       'discountPercentage': ?discountPercentage,
       'enableHadrAssessment': ?enableHadrAssessment,
-      'entityUptime': ?entityUptime == null ? null : entityUptime!.toMap(),
+      'entityUptime': ?pulumi.Input.mapOptionalInputValue<EntityUptimeResponse, Map<String, dynamic>>(entityUptime, (value) => value.toMap()),
       'environmentType': ?environmentType,
       'isInternetAccessAvailable': ?isInternetAccessAvailable,
       'multiSubnetIntent': ?multiSubnetIntent,
       'osLicense': ?osLicense,
-      'performanceData': ?performanceData == null ? null : performanceData!.toMap(),
+      'performanceData': ?pulumi.Input.mapOptionalInputValue<PerformanceDataResponse, Map<String, dynamic>>(performanceData, (value) => value.toMap()),
       'preferredTargets': ?preferredTargets,
-      'savingsSettings': ?savingsSettings == null ? null : savingsSettings!.toMap(),
+      'savingsSettings': ?pulumi.Input.mapOptionalInputValue<SavingsSettingsResponse, Map<String, dynamic>>(savingsSettings, (value) => value.toMap()),
       'scalingFactor': ?scalingFactor,
       'sizingCriterion': ?sizingCriterion,
       'sqlServerLicense': ?sqlServerLicense,
@@ -135,28 +136,28 @@ class SqlAssessmentSettingsResponse {
 
   factory SqlAssessmentSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentSettingsResponse(
-      asyncCommitModeIntent: map['asyncCommitModeIntent'] == null ? null : map['asyncCommitModeIntent'] as String,
-      azureLocation: map['azureLocation'] == null ? null : map['azureLocation'] as String,
-      azureSecurityOfferingType: map['azureSecurityOfferingType'] == null ? null : map['azureSecurityOfferingType'] as String,
-      azureSqlDatabaseSettings: map['azureSqlDatabaseSettings'] == null ? null : SqlDbSettingsV3Response.fromMap((map['azureSqlDatabaseSettings'] as Map).cast<String, dynamic>()),
-      azureSqlManagedInstanceSettings: map['azureSqlManagedInstanceSettings'] == null ? null : SqlMiSettingsV3Response.fromMap((map['azureSqlManagedInstanceSettings'] as Map).cast<String, dynamic>()),
-      azureSqlVmSettings: map['azureSqlVmSettings'] == null ? null : SqlVmSettingsResponse.fromMap((map['azureSqlVmSettings'] as Map).cast<String, dynamic>()),
-      billingSettings: map['billingSettings'] == null ? null : BillingSettingsResponse.fromMap((map['billingSettings'] as Map).cast<String, dynamic>()),
-      currency: map['currency'] == null ? null : map['currency'] as String,
-      disasterRecoveryLocation: map['disasterRecoveryLocation'] == null ? null : map['disasterRecoveryLocation'] as String,
-      discountPercentage: map['discountPercentage'] == null ? null : map['discountPercentage'] as double,
-      enableHadrAssessment: map['enableHadrAssessment'] == null ? null : map['enableHadrAssessment'] as bool,
-      entityUptime: map['entityUptime'] == null ? null : EntityUptimeResponse.fromMap((map['entityUptime'] as Map).cast<String, dynamic>()),
-      environmentType: map['environmentType'] == null ? null : map['environmentType'] as String,
-      isInternetAccessAvailable: map['isInternetAccessAvailable'] == null ? null : map['isInternetAccessAvailable'] as bool,
-      multiSubnetIntent: map['multiSubnetIntent'] == null ? null : map['multiSubnetIntent'] as String,
-      osLicense: map['osLicense'] == null ? null : map['osLicense'] as String,
-      performanceData: map['performanceData'] == null ? null : PerformanceDataResponse.fromMap((map['performanceData'] as Map).cast<String, dynamic>()),
-      preferredTargets: map['preferredTargets'] == null ? null : (map['preferredTargets'] as List).cast<String>(),
-      savingsSettings: map['savingsSettings'] == null ? null : SavingsSettingsResponse.fromMap((map['savingsSettings'] as Map).cast<String, dynamic>()),
-      scalingFactor: map['scalingFactor'] == null ? null : map['scalingFactor'] as double,
-      sizingCriterion: map['sizingCriterion'] == null ? null : map['sizingCriterion'] as String,
-      sqlServerLicense: map['sqlServerLicense'] == null ? null : map['sqlServerLicense'] as String,
+      asyncCommitModeIntent: map['asyncCommitModeIntent'] == null ? null : (map['asyncCommitModeIntent'] as String).input(),
+      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation'] as String).input(),
+      azureSecurityOfferingType: map['azureSecurityOfferingType'] == null ? null : (map['azureSecurityOfferingType'] as String).input(),
+      azureSqlDatabaseSettings: map['azureSqlDatabaseSettings'] == null ? null : (SqlDbSettingsV3Response.fromMap((map['azureSqlDatabaseSettings'] as Map).cast<String, dynamic>())).input(),
+      azureSqlManagedInstanceSettings: map['azureSqlManagedInstanceSettings'] == null ? null : (SqlMiSettingsV3Response.fromMap((map['azureSqlManagedInstanceSettings'] as Map).cast<String, dynamic>())).input(),
+      azureSqlVmSettings: map['azureSqlVmSettings'] == null ? null : (SqlVmSettingsResponse.fromMap((map['azureSqlVmSettings'] as Map).cast<String, dynamic>())).input(),
+      billingSettings: map['billingSettings'] == null ? null : (BillingSettingsResponse.fromMap((map['billingSettings'] as Map).cast<String, dynamic>())).input(),
+      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
+      disasterRecoveryLocation: map['disasterRecoveryLocation'] == null ? null : (map['disasterRecoveryLocation'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      enableHadrAssessment: map['enableHadrAssessment'] == null ? null : (map['enableHadrAssessment'] as bool).input(),
+      entityUptime: map['entityUptime'] == null ? null : (EntityUptimeResponse.fromMap((map['entityUptime'] as Map).cast<String, dynamic>())).input(),
+      environmentType: map['environmentType'] == null ? null : (map['environmentType'] as String).input(),
+      isInternetAccessAvailable: map['isInternetAccessAvailable'] == null ? null : (map['isInternetAccessAvailable'] as bool).input(),
+      multiSubnetIntent: map['multiSubnetIntent'] == null ? null : (map['multiSubnetIntent'] as String).input(),
+      osLicense: map['osLicense'] == null ? null : (map['osLicense'] as String).input(),
+      performanceData: map['performanceData'] == null ? null : (PerformanceDataResponse.fromMap((map['performanceData'] as Map).cast<String, dynamic>())).input(),
+      preferredTargets: map['preferredTargets'] == null ? null : ((map['preferredTargets'] as List).cast<String>()).input(),
+      savingsSettings: map['savingsSettings'] == null ? null : (SavingsSettingsResponse.fromMap((map['savingsSettings'] as Map).cast<String, dynamic>())).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      sizingCriterion: map['sizingCriterion'] == null ? null : (map['sizingCriterion'] as String).input(),
+      sqlServerLicense: map['sqlServerLicense'] == null ? null : (map['sqlServerLicense'] as String).input(),
     );
   }
 }

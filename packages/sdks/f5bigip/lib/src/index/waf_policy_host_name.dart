@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafPolicyHostName {
   /// The unique user-given name of the policy. Policy names cannot contain spaces or special characters. Allowed characters are a-z, A-Z, 0-9, dot, dash (-), colon (:) and underscore (_).
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [WafPolicyHostName].
   /// [name] The unique user-given name of the policy. Policy names cannot contain spaces or special characters. Allowed characters are a-z, A-Z, 0-9, dot, dash (-), colon (:) and underscore (_).
@@ -19,7 +20,7 @@ class WafPolicyHostName {
 
   factory WafPolicyHostName.fromMap(Map<String, dynamic> map) {
     return WafPolicyHostName(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

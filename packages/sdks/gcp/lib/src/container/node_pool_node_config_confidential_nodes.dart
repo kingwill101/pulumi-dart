@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigConfidentialNodes {
   /// Defines the type of technology used by the confidential node.
-  final String? confidentialInstanceType;
+  final pulumi.Input<String>? confidentialInstanceType;
   /// Whether Confidential Nodes feature is enabled for all nodes in this pool.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [NodePoolNodeConfigConfidentialNodes].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential node.
@@ -24,8 +25,8 @@ class NodePoolNodeConfigConfidentialNodes {
 
   factory NodePoolNodeConfigConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigConfidentialNodes(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : map['confidentialInstanceType'] as String,
-      enabled: map['enabled'] as bool,
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

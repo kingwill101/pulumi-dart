@@ -20,13 +20,10 @@ class FrontdoorSecretArgs {
   /// [name] The name which should be used for this Front Door Secret. Possible values must start with a letter or a number, only contain letters, numbers and hyphens and have a length of between 2 and 260 characters. Changing this forces a new Front Door Secret to be created.
   /// [secret] A `secret` block as defined below. Changing this forces a new Front Door Secret to be created.
   FrontdoorSecretArgs({
-    required pulumi.Output<String> cdnFrontdoorProfileId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<FrontdoorSecretSecret> secret,
-  }) :
-      cdnFrontdoorProfileId = pulumi.Input.asInput<String>(cdnFrontdoorProfileId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secret = pulumi.Input.asInput<FrontdoorSecretSecret>(secret);
+    required this.cdnFrontdoorProfileId,
+    this.name,
+    required this.secret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class FrontdoorSecretArgs {
 
   factory FrontdoorSecretArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecretArgs(
-      cdnFrontdoorProfileId: pulumi.Output.create<String>(map['cdnFrontdoorProfileId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secret: pulumi.Output.create<FrontdoorSecretSecret>(FrontdoorSecretSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())),
+      cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secret: (FrontdoorSecretSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

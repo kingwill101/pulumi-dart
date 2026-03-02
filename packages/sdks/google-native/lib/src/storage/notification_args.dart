@@ -42,29 +42,18 @@ class NotificationArgs {
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
   NotificationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<Map<String, String>>? customAttributes,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? eventTypes,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? objectNamePrefix,
-    pulumi.Output<String>? payloadFormat,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? topic,
-    pulumi.Output<String>? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      customAttributes = pulumi.Input.asOptionalInput<Map<String, String>>(customAttributes),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      eventTypes = pulumi.Input.asOptionalInput<List<String>>(eventTypes),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      objectNamePrefix = pulumi.Input.asOptionalInput<String>(objectNamePrefix),
-      payloadFormat = pulumi.Input.asOptionalInput<String>(payloadFormat),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      topic = pulumi.Input.asOptionalInput<String>(topic),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+    required this.bucket,
+    this.customAttributes,
+    this.etag,
+    this.eventTypes,
+    this.id,
+    this.kind,
+    this.objectNamePrefix,
+    this.payloadFormat,
+    this.selfLink,
+    this.topic,
+    this.userProject,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      customAttributes: map['customAttributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['customAttributes'] as Map).cast<String, String>()),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      eventTypes: map['eventTypes'] == null ? null : pulumi.Output.create<List<String>>((map['eventTypes'] as List).cast<String>()),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : pulumi.Output.create<String>(map['objectNamePrefix'] as String),
-      payloadFormat: map['payloadFormat'] == null ? null : pulumi.Output.create<String>(map['payloadFormat'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      topic: map['topic'] == null ? null : pulumi.Output.create<String>(map['topic'] as String),
-      userProject: map['userProject'] == null ? null : pulumi.Output.create<String>(map['userProject'] as String),
+      bucket: (map['bucket'] as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
+      payloadFormat: map['payloadFormat'] == null ? null : (map['payloadFormat'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
     );
   }
 }

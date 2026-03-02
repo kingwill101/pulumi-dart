@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_service_connect_configuration_service_client_alias_test_traffic_rule_header_value.dart';
 
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader {
   /// Name of the HTTP header to match.
-  final String name;
+  final pulumi.Input<String> name;
   /// Configuration block for header value matching criteria. See below.
-  final ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue value;
+  final pulumi.Input<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue> value;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader].
   /// [name] Name of the HTTP header to match.
@@ -19,14 +20,14 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'value': value.toMap(),
+      'value': pulumi.Input.mapInputValue<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader(
-      name: map['name'] as String,
-      value: ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      value: (ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class CredentialSetArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   CredentialSetArgs({
-    pulumi.Output<List<AuthCredential>>? authCredentials,
-    pulumi.Output<String>? credentialSetName,
-    pulumi.Output<IdentityProperties>? identity,
-    pulumi.Output<String>? loginServer,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authCredentials = pulumi.Input.asOptionalInput<List<AuthCredential>>(authCredentials),
-      credentialSetName = pulumi.Input.asOptionalInput<String>(credentialSetName),
-      identity = pulumi.Input.asOptionalInput<IdentityProperties>(identity),
-      loginServer = pulumi.Input.asOptionalInput<String>(loginServer),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.authCredentials,
+    this.credentialSetName,
+    this.identity,
+    this.loginServer,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class CredentialSetArgs {
 
   factory CredentialSetArgs.fromMap(Map<String, dynamic> map) {
     return CredentialSetArgs(
-      authCredentials: map['authCredentials'] == null ? null : pulumi.Output.create<List<AuthCredential>>(pulumi.Input.decodeList<AuthCredential>(map['authCredentials'], (value) => AuthCredential.fromMap((value as Map).cast<String, dynamic>()))),
-      credentialSetName: map['credentialSetName'] == null ? null : pulumi.Output.create<String>(map['credentialSetName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<IdentityProperties>(IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      loginServer: map['loginServer'] == null ? null : pulumi.Output.create<String>(map['loginServer'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authCredentials: map['authCredentials'] == null ? null : (pulumi.Input.decodeList<AuthCredential>(map['authCredentials'], (value) => AuthCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credentialSetName: map['credentialSetName'] == null ? null : (map['credentialSetName'] as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

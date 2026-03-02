@@ -17,11 +17,9 @@ class Ec2InstanceArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   Ec2InstanceArgs({
-    pulumi.Output<Ec2InstanceProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      properties = pulumi.Input.asOptionalInput<Ec2InstanceProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.properties,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class Ec2InstanceArgs {
 
   factory Ec2InstanceArgs.fromMap(Map<String, dynamic> map) {
     return Ec2InstanceArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<Ec2InstanceProperties>(Ec2InstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      properties: map['properties'] == null ? null : (Ec2InstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

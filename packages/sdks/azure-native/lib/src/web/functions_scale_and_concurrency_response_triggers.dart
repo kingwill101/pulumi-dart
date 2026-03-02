@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'functions_scale_and_concurrency_response_http.dart';
 
 /// Scale and concurrency settings for the function app triggers.
 class FunctionsScaleAndConcurrencyResponseTriggers {
   /// Scale and concurrency settings for the HTTP trigger.
-  final FunctionsScaleAndConcurrencyResponseHttp? http;
+  final pulumi.Input<FunctionsScaleAndConcurrencyResponseHttp>? http;
 
   /// Creates a new [FunctionsScaleAndConcurrencyResponseTriggers].
   /// [http] Scale and concurrency settings for the HTTP trigger.
@@ -15,13 +16,13 @@ class FunctionsScaleAndConcurrencyResponseTriggers {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'http': ?http == null ? null : http!.toMap(),
+      'http': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyResponseHttp, Map<String, dynamic>>(http, (value) => value.toMap()),
     };
   }
 
   factory FunctionsScaleAndConcurrencyResponseTriggers.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrencyResponseTriggers(
-      http: map['http'] == null ? null : FunctionsScaleAndConcurrencyResponseHttp.fromMap((map['http'] as Map).cast<String, dynamic>()),
+      http: map['http'] == null ? null : (FunctionsScaleAndConcurrencyResponseHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

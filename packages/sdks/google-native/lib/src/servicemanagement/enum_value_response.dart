@@ -6,11 +6,11 @@ import 'option_response.dart';
 /// Enum value definition.
 class EnumValueResponse {
   /// Enum value name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Enum value number.
-  final int number;
+  final pulumi.Input<int> number;
   /// Protocol buffer options.
-  final List<OptionResponse> options;
+  final pulumi.Input<List<OptionResponse>> options;
 
   /// Creates a new [EnumValueResponse].
   /// [name] Enum value name.
@@ -26,15 +26,15 @@ class EnumValueResponse {
     return <String, dynamic>{
       'name': name,
       'number': number,
-      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options': pulumi.Input.mapInputValue<List<OptionResponse>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EnumValueResponse.fromMap(Map<String, dynamic> map) {
     return EnumValueResponse(
-      name: map['name'] as String,
-      number: map['number'] as int,
-      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (map['name'] as String).input(),
+      number: (map['number'] as int).input(),
+      options: (pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

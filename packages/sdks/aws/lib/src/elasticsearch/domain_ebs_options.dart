@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainEbsOptions {
   /// Whether EBS volumes are attached to data nodes in the domain.
-  final bool ebsEnabled;
+  final pulumi.Input<bool> ebsEnabled;
   /// Baseline input/output (I/O) performance of EBS volumes attached to data nodes. Applicable only for the GP3 and Provisioned IOPS EBS volume types.
-  final int? iops;
+  final pulumi.Input<int>? iops;
   /// Specifies the throughput (in MiB/s) of the EBS volumes attached to data nodes. Applicable only for the gp3 volume type.
-  final int? throughput;
+  final pulumi.Input<int>? throughput;
   /// Size of EBS volumes attached to data nodes (in GiB).
-  final int? volumeSize;
+  final pulumi.Input<int>? volumeSize;
   /// Type of EBS volumes attached to data nodes.
-  final String? volumeType;
+  final pulumi.Input<String>? volumeType;
 
   /// Creates a new [DomainEbsOptions].
   /// [ebsEnabled] Whether EBS volumes are attached to data nodes in the domain.
@@ -39,11 +40,11 @@ class DomainEbsOptions {
 
   factory DomainEbsOptions.fromMap(Map<String, dynamic> map) {
     return DomainEbsOptions(
-      ebsEnabled: map['ebsEnabled'] as bool,
-      iops: map['iops'] == null ? null : map['iops'] as int,
-      throughput: map['throughput'] == null ? null : map['throughput'] as int,
-      volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      ebsEnabled: (map['ebsEnabled'] as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
     );
   }
 }

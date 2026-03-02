@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMTieringPolicyArchivedRestorePoint {
   /// The number of days/weeks/months/years to retain backups in current tier before tiering.
-  final int? duration;
+  final pulumi.Input<int>? duration;
   /// The retention duration type. Possible values are `Days`, `Weeks`, `Months` and `Years`.
-  final String? durationType;
+  final pulumi.Input<String>? durationType;
   /// The tiering mode to control automatic tiering of recovery points. Possible values are `TierAfter` and `TierRecommended`.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [PolicyVMTieringPolicyArchivedRestorePoint].
   /// [duration] The number of days/weeks/months/years to retain backups in current tier before tiering.
@@ -29,9 +30,9 @@ class PolicyVMTieringPolicyArchivedRestorePoint {
 
   factory PolicyVMTieringPolicyArchivedRestorePoint.fromMap(Map<String, dynamic> map) {
     return PolicyVMTieringPolicyArchivedRestorePoint(
-      duration: map['duration'] == null ? null : map['duration'] as int,
-      durationType: map['durationType'] == null ? null : map['durationType'] as String,
-      mode: map['mode'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

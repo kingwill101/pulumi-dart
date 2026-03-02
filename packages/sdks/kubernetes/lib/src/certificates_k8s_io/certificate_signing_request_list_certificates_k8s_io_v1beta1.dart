@@ -6,11 +6,11 @@ import 'certificate_signing_request_certificates_k8s_io_v1beta1.dart';
 
 class CertificateSigningRequestListCertificatesK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
-  final List<CertificateSigningRequestCertificatesK8sIoV1beta1> items;
+  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<List<CertificateSigningRequestCertificatesK8sIoV1beta1>> items;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
-  final ListMeta? metadata;
+  final pulumi.Input<String>? kind;
+  final pulumi.Input<ListMeta>? metadata;
 
   /// Creates a new [CertificateSigningRequestListCertificatesK8sIoV1beta1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -27,18 +27,18 @@ class CertificateSigningRequestListCertificatesK8sIoV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
-      'items': pulumi.Input.encodeList<CertificateSigningRequestCertificatesK8sIoV1beta1, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items': pulumi.Input.mapInputValue<List<CertificateSigningRequestCertificatesK8sIoV1beta1>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<CertificateSigningRequestCertificatesK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
     };
   }
 
   factory CertificateSigningRequestListCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestListCertificatesK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      items: pulumi.Input.decodeList<CertificateSigningRequestCertificatesK8sIoV1beta1>(map['items'], (value) => CertificateSigningRequestCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      items: (pulumi.Input.decodeList<CertificateSigningRequestCertificatesK8sIoV1beta1>(map['items'], (value) => CertificateSigningRequestCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

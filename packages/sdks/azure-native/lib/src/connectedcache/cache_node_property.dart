@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'additional_cache_node_properties.dart';
 import 'cache_node_entity.dart';
 
 /// Model representing an Mcc cache node connectedCache resource
 class CacheNodeProperty {
   /// Mcc cache node resource additional properties.
-  final AdditionalCacheNodeProperties? additionalCacheNodeProperties;
+  final pulumi.Input<AdditionalCacheNodeProperties>? additionalCacheNodeProperties;
   /// Mcc cache node resource (cache node entity).
-  final CacheNodeEntity? cacheNode;
+  final pulumi.Input<CacheNodeEntity>? cacheNode;
   /// Mcc response status code.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// Mcc response status details for retrieving response inner details.
-  final String? statusDetails;
+  final pulumi.Input<String>? statusDetails;
   /// Mcc response status text as string for retrieving status details.
-  final String? statusText;
+  final pulumi.Input<String>? statusText;
 
   /// Creates a new [CacheNodeProperty].
   /// [additionalCacheNodeProperties] Mcc cache node resource additional properties.
@@ -32,8 +33,8 @@ class CacheNodeProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCacheNodeProperties': ?additionalCacheNodeProperties == null ? null : additionalCacheNodeProperties!.toMap(),
-      'cacheNode': ?cacheNode == null ? null : cacheNode!.toMap(),
+      'additionalCacheNodeProperties': ?pulumi.Input.mapOptionalInputValue<AdditionalCacheNodeProperties, Map<String, dynamic>>(additionalCacheNodeProperties, (value) => value.toMap()),
+      'cacheNode': ?pulumi.Input.mapOptionalInputValue<CacheNodeEntity, Map<String, dynamic>>(cacheNode, (value) => value.toMap()),
       'statusCode': ?statusCode,
       'statusDetails': ?statusDetails,
       'statusText': ?statusText,
@@ -42,11 +43,11 @@ class CacheNodeProperty {
 
   factory CacheNodeProperty.fromMap(Map<String, dynamic> map) {
     return CacheNodeProperty(
-      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : AdditionalCacheNodeProperties.fromMap((map['additionalCacheNodeProperties'] as Map).cast<String, dynamic>()),
-      cacheNode: map['cacheNode'] == null ? null : CacheNodeEntity.fromMap((map['cacheNode'] as Map).cast<String, dynamic>()),
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      statusDetails: map['statusDetails'] == null ? null : map['statusDetails'] as String,
-      statusText: map['statusText'] == null ? null : map['statusText'] as String,
+      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : (AdditionalCacheNodeProperties.fromMap((map['additionalCacheNodeProperties'] as Map).cast<String, dynamic>())).input(),
+      cacheNode: map['cacheNode'] == null ? null : (CacheNodeEntity.fromMap((map['cacheNode'] as Map).cast<String, dynamic>())).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
     );
   }
 }

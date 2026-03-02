@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DropletBackupPolicy {
   /// The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
-  final int? hour;
+  final pulumi.Input<int>? hour;
   /// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
-  final String? plan;
+  final pulumi.Input<String>? plan;
   /// The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
-  final String? weekday;
+  final pulumi.Input<String>? weekday;
 
   /// Creates a new [DropletBackupPolicy].
   /// [hour] The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
@@ -29,9 +30,9 @@ class DropletBackupPolicy {
 
   factory DropletBackupPolicy.fromMap(Map<String, dynamic> map) {
     return DropletBackupPolicy(
-      hour: map['hour'] == null ? null : map['hour'] as int,
-      plan: map['plan'] == null ? null : map['plan'] as String,
-      weekday: map['weekday'] == null ? null : map['weekday'] as String,
+      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      weekday: map['weekday'] == null ? null : (map['weekday'] as String).input(),
     );
   }
 }

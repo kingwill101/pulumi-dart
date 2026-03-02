@@ -38,27 +38,17 @@ class ResourceRecordSetArgs {
   /// [ttl] Number of seconds that this ResourceRecordSet can be cached by resolvers.
   /// [type] The identifier of a supported record type. See the list of Supported DNS record types.
   ResourceRecordSetArgs({
-    pulumi.Output<String>? clientOperationId,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> managedZone,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<RRSetRoutingPolicy>? routingPolicy,
-    pulumi.Output<List<String>>? rrdatas,
-    pulumi.Output<List<String>>? signatureRrdatas,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      routingPolicy = pulumi.Input.asOptionalInput<RRSetRoutingPolicy>(routingPolicy),
-      rrdatas = pulumi.Input.asOptionalInput<List<String>>(rrdatas),
-      signatureRrdatas = pulumi.Input.asOptionalInput<List<String>>(signatureRrdatas),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.clientOperationId,
+    this.kind,
+    required this.managedZone,
+    this.name,
+    this.project,
+    this.routingPolicy,
+    this.rrdatas,
+    this.signatureRrdatas,
+    this.ttl,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class ResourceRecordSetArgs {
 
   factory ResourceRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      routingPolicy: map['routingPolicy'] == null ? null : pulumi.Output.create<RRSetRoutingPolicy>(RRSetRoutingPolicy.fromMap((map['routingPolicy'] as Map).cast<String, dynamic>())),
-      rrdatas: map['rrdatas'] == null ? null : pulumi.Output.create<List<String>>((map['rrdatas'] as List).cast<String>()),
-      signatureRrdatas: map['signatureRrdatas'] == null ? null : pulumi.Output.create<List<String>>((map['signatureRrdatas'] as List).cast<String>()),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      managedZone: (map['managedZone'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      routingPolicy: map['routingPolicy'] == null ? null : (RRSetRoutingPolicy.fromMap((map['routingPolicy'] as Map).cast<String, dynamic>())).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
+      signatureRrdatas: map['signatureRrdatas'] == null ? null : ((map['signatureRrdatas'] as List).cast<String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

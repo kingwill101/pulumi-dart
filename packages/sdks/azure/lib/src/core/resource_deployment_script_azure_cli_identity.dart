@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceDeploymentScriptAzureCliIdentity {
   /// Specifies the list of user-assigned managed identity IDs associated with the resource. Changing this forces a new resource to be created.
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// Type of the managed identity. The only possible value is `UserAssigned`. Changing this forces a new resource to be created.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ResourceDeploymentScriptAzureCliIdentity].
   /// [identityIds] Specifies the list of user-assigned managed identity IDs associated with the resource. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class ResourceDeploymentScriptAzureCliIdentity {
 
   factory ResourceDeploymentScriptAzureCliIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceDeploymentScriptAzureCliIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

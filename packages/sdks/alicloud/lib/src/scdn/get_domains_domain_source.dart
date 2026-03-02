@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainsDomainSource {
   /// The Back-to-Source Address.
-  final String content;
+  final pulumi.Input<String> content;
   /// State.
-  final String enabled;
+  final pulumi.Input<String> enabled;
   /// Port.
-  final int port;
+  final pulumi.Input<int> port;
   /// Priority.
-  final String priority;
+  final pulumi.Input<String> priority;
   /// the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDomainsDomainSource].
   /// [content] The Back-to-Source Address.
@@ -39,11 +40,11 @@ class GetDomainsDomainSource {
 
   factory GetDomainsDomainSource.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainSource(
-      content: map['content'] as String,
-      enabled: map['enabled'] as String,
-      port: map['port'] as int,
-      priority: map['priority'] as String,
-      type: map['type'] as String,
+      content: (map['content'] as String).input(),
+      enabled: (map['enabled'] as String).input(),
+      port: (map['port'] as int).input(),
+      priority: (map['priority'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

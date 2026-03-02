@@ -7,11 +7,11 @@ import 'get_vpn_server_configuration_radius_server_root_certificate.dart';
 
 class GetVpnServerConfigurationRadius {
   /// One or more `client_root_certificate` blocks as defined below.
-  final List<GetVpnServerConfigurationRadiusClientRootCertificate> clientRootCertificates;
+  final pulumi.Input<List<GetVpnServerConfigurationRadiusClientRootCertificate>> clientRootCertificates;
   /// One or more `server_root_certificate` blocks as defined below.
-  final List<GetVpnServerConfigurationRadiusServerRootCertificate> serverRootCertificates;
+  final pulumi.Input<List<GetVpnServerConfigurationRadiusServerRootCertificate>> serverRootCertificates;
   /// One or more `server` blocks as defined below.
-  final List<GetVpnServerConfigurationRadiusServer> servers;
+  final pulumi.Input<List<GetVpnServerConfigurationRadiusServer>> servers;
 
   /// Creates a new [GetVpnServerConfigurationRadius].
   /// [clientRootCertificates] One or more `client_root_certificate` blocks as defined below.
@@ -25,17 +25,17 @@ class GetVpnServerConfigurationRadius {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientRootCertificates': pulumi.Input.encodeList<GetVpnServerConfigurationRadiusClientRootCertificate, Map<String, dynamic>>(clientRootCertificates, (value) => value.toMap()),
-      'serverRootCertificates': pulumi.Input.encodeList<GetVpnServerConfigurationRadiusServerRootCertificate, Map<String, dynamic>>(serverRootCertificates, (value) => value.toMap()),
-      'servers': pulumi.Input.encodeList<GetVpnServerConfigurationRadiusServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+      'clientRootCertificates': pulumi.Input.mapInputValue<List<GetVpnServerConfigurationRadiusClientRootCertificate>, List<Map<String, dynamic>>>(clientRootCertificates, (value) => pulumi.Input.encodeList<GetVpnServerConfigurationRadiusClientRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serverRootCertificates': pulumi.Input.mapInputValue<List<GetVpnServerConfigurationRadiusServerRootCertificate>, List<Map<String, dynamic>>>(serverRootCertificates, (value) => pulumi.Input.encodeList<GetVpnServerConfigurationRadiusServerRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'servers': pulumi.Input.mapInputValue<List<GetVpnServerConfigurationRadiusServer>, List<Map<String, dynamic>>>(servers, (value) => pulumi.Input.encodeList<GetVpnServerConfigurationRadiusServer, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVpnServerConfigurationRadius.fromMap(Map<String, dynamic> map) {
     return GetVpnServerConfigurationRadius(
-      clientRootCertificates: pulumi.Input.decodeList<GetVpnServerConfigurationRadiusClientRootCertificate>(map['clientRootCertificates'], (value) => GetVpnServerConfigurationRadiusClientRootCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      serverRootCertificates: pulumi.Input.decodeList<GetVpnServerConfigurationRadiusServerRootCertificate>(map['serverRootCertificates'], (value) => GetVpnServerConfigurationRadiusServerRootCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      servers: pulumi.Input.decodeList<GetVpnServerConfigurationRadiusServer>(map['servers'], (value) => GetVpnServerConfigurationRadiusServer.fromMap((value as Map).cast<String, dynamic>())),
+      clientRootCertificates: (pulumi.Input.decodeList<GetVpnServerConfigurationRadiusClientRootCertificate>(map['clientRootCertificates'], (value) => GetVpnServerConfigurationRadiusClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverRootCertificates: (pulumi.Input.decodeList<GetVpnServerConfigurationRadiusServerRootCertificate>(map['serverRootCertificates'], (value) => GetVpnServerConfigurationRadiusServerRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servers: (pulumi.Input.decodeList<GetVpnServerConfigurationRadiusServer>(map['servers'], (value) => GetVpnServerConfigurationRadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

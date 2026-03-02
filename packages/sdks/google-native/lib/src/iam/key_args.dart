@@ -22,15 +22,11 @@ class KeyArgs {
   /// [project] Optional.
   /// [serviceAccountId] Required.
   KeyArgs({
-    pulumi.Output<KeyKeyAlgorithm>? keyAlgorithm,
-    pulumi.Output<KeyPrivateKeyType>? privateKeyType,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceAccountId,
-  }) :
-      keyAlgorithm = pulumi.Input.asOptionalInput<KeyKeyAlgorithm>(keyAlgorithm),
-      privateKeyType = pulumi.Input.asOptionalInput<KeyPrivateKeyType>(privateKeyType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+    this.keyAlgorithm,
+    this.privateKeyType,
+    this.project,
+    required this.serviceAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : pulumi.Output.create<KeyKeyAlgorithm>(KeyKeyAlgorithm.fromValue(map['keyAlgorithm'] as String)),
-      privateKeyType: map['privateKeyType'] == null ? null : pulumi.Output.create<KeyPrivateKeyType>(KeyPrivateKeyType.fromValue(map['privateKeyType'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceAccountId: pulumi.Output.create<String>(map['serviceAccountId'] as String),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (KeyKeyAlgorithm.fromValue(map['keyAlgorithm'] as String)).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (KeyPrivateKeyType.fromValue(map['privateKeyType'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageRecipeSystemsManagerAgent {
   /// Whether to remove the Systems Manager Agent after the image has been built.
-  final bool uninstallAfterBuild;
+  final pulumi.Input<bool> uninstallAfterBuild;
 
   /// Creates a new [ImageRecipeSystemsManagerAgent].
   /// [uninstallAfterBuild] Whether to remove the Systems Manager Agent after the image has been built.
@@ -19,7 +20,7 @@ class ImageRecipeSystemsManagerAgent {
 
   factory ImageRecipeSystemsManagerAgent.fromMap(Map<String, dynamic> map) {
     return ImageRecipeSystemsManagerAgent(
-      uninstallAfterBuild: map['uninstallAfterBuild'] as bool,
+      uninstallAfterBuild: (map['uninstallAfterBuild'] as bool).input(),
     );
   }
 }

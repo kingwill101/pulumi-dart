@@ -22,13 +22,10 @@ class InstancePublicPortsArgs {
   /// [portInfos] Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InstancePublicPortsArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<List<InstancePublicPortsPortInfo>> portInfos,
-    pulumi.Output<String>? region,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      portInfos = pulumi.Input.asInput<List<InstancePublicPortsPortInfo>>(portInfos),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.instanceName,
+    required this.portInfos,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class InstancePublicPortsArgs {
 
   factory InstancePublicPortsArgs.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      portInfos: pulumi.Output.create<List<InstancePublicPortsPortInfo>>(pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos'], (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      portInfos: (pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos'], (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson {
   /// Indicates if the file should be read as a json object per line.
-  final bool? line;
+  final pulumi.Input<bool>? line;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson].
   /// [line] Indicates if the file should be read as a json object per line.
@@ -19,7 +20,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson(
-      line: map['line'] == null ? null : map['line'] as bool,
+      line: map['line'] == null ? null : (map['line'] as bool).input(),
     );
   }
 }

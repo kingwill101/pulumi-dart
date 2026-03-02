@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Endpoint
 class RdsDbClusterEndpoint {
   /// The connection endpoint for the DB cluster.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The port number that will accept connections on this DB cluster.
-  final String? port;
+  final pulumi.Input<String>? port;
 
   /// Creates a new [RdsDbClusterEndpoint].
   /// [address] The connection endpoint for the DB cluster.
@@ -25,8 +26,8 @@ class RdsDbClusterEndpoint {
 
   factory RdsDbClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return RdsDbClusterEndpoint(
-      address: map['address'] == null ? null : map['address'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

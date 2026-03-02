@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the parameters for the cache expiration action.
 class CacheExpirationActionParameters {
   /// Caching behavior for the requests
-  final String cacheBehavior;
+  final pulumi.Input<String> cacheBehavior;
   /// The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
-  final String? cacheDuration;
+  final pulumi.Input<String>? cacheDuration;
   /// The level at which the content needs to be cached.
-  final String cacheType;
+  final pulumi.Input<String> cacheType;
   /// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [CacheExpirationActionParameters].
   /// [cacheBehavior] Caching behavior for the requests
@@ -35,10 +36,10 @@ class CacheExpirationActionParameters {
 
   factory CacheExpirationActionParameters.fromMap(Map<String, dynamic> map) {
     return CacheExpirationActionParameters(
-      cacheBehavior: map['cacheBehavior'] as String,
-      cacheDuration: map['cacheDuration'] == null ? null : map['cacheDuration'] as String,
-      cacheType: map['cacheType'] as String,
-      typeName: map['typeName'] as String,
+      cacheBehavior: (map['cacheBehavior'] as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
+      cacheType: (map['cacheType'] as String).input(),
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

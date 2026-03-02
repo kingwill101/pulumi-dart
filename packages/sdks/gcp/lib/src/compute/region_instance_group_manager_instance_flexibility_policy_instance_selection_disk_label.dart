@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel {
   /// , The unique key of the label to assign to disks.
-  final String key;
+  final pulumi.Input<String> key;
   /// , The value of the label to assign to disks.
   /// - - -
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel].
   /// [key] , The unique key of the label to assign to disks.
@@ -25,8 +26,8 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLa
 
   factory RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -41,27 +41,17 @@ class AccessPackageAssignmentPolicyState {
   /// [questions] One or more `question` blocks for the requestor, as documented below.
   /// [requestorSettings] A `requestor_settings` block to configure the users who can request access, as documented below.
   AccessPackageAssignmentPolicyState({
-    pulumi.Output<String>? accessPackageId,
-    pulumi.Output<AccessPackageAssignmentPolicyApprovalSettings>? approvalSettings,
-    pulumi.Output<AccessPackageAssignmentPolicyAssignmentReviewSettings>? assignmentReviewSettings,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<int>? durationInDays,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<bool>? extensionEnabled,
-    pulumi.Output<List<AccessPackageAssignmentPolicyQuestion>>? questions,
-    pulumi.Output<AccessPackageAssignmentPolicyRequestorSettings>? requestorSettings,
-  }) :
-      accessPackageId = pulumi.Input.asOptionalInput<String>(accessPackageId),
-      approvalSettings = pulumi.Input.asOptionalInput<AccessPackageAssignmentPolicyApprovalSettings>(approvalSettings),
-      assignmentReviewSettings = pulumi.Input.asOptionalInput<AccessPackageAssignmentPolicyAssignmentReviewSettings>(assignmentReviewSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      durationInDays = pulumi.Input.asOptionalInput<int>(durationInDays),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      extensionEnabled = pulumi.Input.asOptionalInput<bool>(extensionEnabled),
-      questions = pulumi.Input.asOptionalInput<List<AccessPackageAssignmentPolicyQuestion>>(questions),
-      requestorSettings = pulumi.Input.asOptionalInput<AccessPackageAssignmentPolicyRequestorSettings>(requestorSettings);
+    this.accessPackageId,
+    this.approvalSettings,
+    this.assignmentReviewSettings,
+    this.description,
+    this.displayName,
+    this.durationInDays,
+    this.expirationDate,
+    this.extensionEnabled,
+    this.questions,
+    this.requestorSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class AccessPackageAssignmentPolicyState {
 
   factory AccessPackageAssignmentPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyState(
-      accessPackageId: map['accessPackageId'] == null ? null : pulumi.Output.create<String>(map['accessPackageId'] as String),
-      approvalSettings: map['approvalSettings'] == null ? null : pulumi.Output.create<AccessPackageAssignmentPolicyApprovalSettings>(AccessPackageAssignmentPolicyApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())),
-      assignmentReviewSettings: map['assignmentReviewSettings'] == null ? null : pulumi.Output.create<AccessPackageAssignmentPolicyAssignmentReviewSettings>(AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((map['assignmentReviewSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      durationInDays: map['durationInDays'] == null ? null : pulumi.Output.create<int>(map['durationInDays'] as int),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      extensionEnabled: map['extensionEnabled'] == null ? null : pulumi.Output.create<bool>(map['extensionEnabled'] as bool),
-      questions: map['questions'] == null ? null : pulumi.Output.create<List<AccessPackageAssignmentPolicyQuestion>>(pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(map['questions'], (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>()))),
-      requestorSettings: map['requestorSettings'] == null ? null : pulumi.Output.create<AccessPackageAssignmentPolicyRequestorSettings>(AccessPackageAssignmentPolicyRequestorSettings.fromMap((map['requestorSettings'] as Map).cast<String, dynamic>())),
+      accessPackageId: map['accessPackageId'] == null ? null : (map['accessPackageId'] as String).input(),
+      approvalSettings: map['approvalSettings'] == null ? null : (AccessPackageAssignmentPolicyApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())).input(),
+      assignmentReviewSettings: map['assignmentReviewSettings'] == null ? null : (AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((map['assignmentReviewSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      durationInDays: map['durationInDays'] == null ? null : (map['durationInDays'] as int).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      extensionEnabled: map['extensionEnabled'] == null ? null : (map['extensionEnabled'] as bool).input(),
+      questions: map['questions'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(map['questions'], (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestorSettings: map['requestorSettings'] == null ? null : (AccessPackageAssignmentPolicyRequestorSettings.fromMap((map['requestorSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

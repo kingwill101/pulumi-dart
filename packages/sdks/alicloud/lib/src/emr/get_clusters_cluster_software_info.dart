@@ -5,11 +5,11 @@ import 'get_clusters_cluster_software_info_software.dart';
 
 class GetClustersClusterSoftwareInfo {
   /// Cluster type:
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// E-MapReduce version number.
-  final String emrVer;
+  final pulumi.Input<String> emrVer;
   /// Service list.
-  final List<GetClustersClusterSoftwareInfoSoftware> softwares;
+  final pulumi.Input<List<GetClustersClusterSoftwareInfoSoftware>> softwares;
 
   /// Creates a new [GetClustersClusterSoftwareInfo].
   /// [clusterType] Cluster type:
@@ -25,15 +25,15 @@ class GetClustersClusterSoftwareInfo {
     return <String, dynamic>{
       'clusterType': clusterType,
       'emrVer': emrVer,
-      'softwares': pulumi.Input.encodeList<GetClustersClusterSoftwareInfoSoftware, Map<String, dynamic>>(softwares, (value) => value.toMap()),
+      'softwares': pulumi.Input.mapInputValue<List<GetClustersClusterSoftwareInfoSoftware>, List<Map<String, dynamic>>>(softwares, (value) => pulumi.Input.encodeList<GetClustersClusterSoftwareInfoSoftware, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClustersClusterSoftwareInfo.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterSoftwareInfo(
-      clusterType: map['clusterType'] as String,
-      emrVer: map['emrVer'] as String,
-      softwares: pulumi.Input.decodeList<GetClustersClusterSoftwareInfoSoftware>(map['softwares'], (value) => GetClustersClusterSoftwareInfoSoftware.fromMap((value as Map).cast<String, dynamic>())),
+      clusterType: (map['clusterType'] as String).input(),
+      emrVer: (map['emrVer'] as String).input(),
+      softwares: (pulumi.Input.decodeList<GetClustersClusterSoftwareInfoSoftware>(map['softwares'], (value) => GetClustersClusterSoftwareInfoSoftware.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

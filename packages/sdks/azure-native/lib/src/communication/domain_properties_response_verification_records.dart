@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_record_response.dart';
 
 /// List of DnsRecord
 class DomainPropertiesResponseVerificationRecords {
   /// A class that represents a VerificationStatus record.
-  final DnsRecordResponse? dKIM;
+  final pulumi.Input<DnsRecordResponse>? dKIM;
   /// A class that represents a VerificationStatus record.
-  final DnsRecordResponse? dKIM2;
+  final pulumi.Input<DnsRecordResponse>? dKIM2;
   /// A class that represents a VerificationStatus record.
-  final DnsRecordResponse? dMARC;
+  final pulumi.Input<DnsRecordResponse>? dMARC;
   /// A class that represents a VerificationStatus record.
-  final DnsRecordResponse? domain;
+  final pulumi.Input<DnsRecordResponse>? domain;
   /// A class that represents a VerificationStatus record.
-  final DnsRecordResponse? sPF;
+  final pulumi.Input<DnsRecordResponse>? sPF;
 
   /// Creates a new [DomainPropertiesResponseVerificationRecords].
   /// [dKIM] A class that represents a VerificationStatus record.
@@ -31,21 +32,21 @@ class DomainPropertiesResponseVerificationRecords {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dKIM': ?dKIM == null ? null : dKIM!.toMap(),
-      'dKIM2': ?dKIM2 == null ? null : dKIM2!.toMap(),
-      'dMARC': ?dMARC == null ? null : dMARC!.toMap(),
-      'domain': ?domain == null ? null : domain!.toMap(),
-      'sPF': ?sPF == null ? null : sPF!.toMap(),
+      'dKIM': ?pulumi.Input.mapOptionalInputValue<DnsRecordResponse, Map<String, dynamic>>(dKIM, (value) => value.toMap()),
+      'dKIM2': ?pulumi.Input.mapOptionalInputValue<DnsRecordResponse, Map<String, dynamic>>(dKIM2, (value) => value.toMap()),
+      'dMARC': ?pulumi.Input.mapOptionalInputValue<DnsRecordResponse, Map<String, dynamic>>(dMARC, (value) => value.toMap()),
+      'domain': ?pulumi.Input.mapOptionalInputValue<DnsRecordResponse, Map<String, dynamic>>(domain, (value) => value.toMap()),
+      'sPF': ?pulumi.Input.mapOptionalInputValue<DnsRecordResponse, Map<String, dynamic>>(sPF, (value) => value.toMap()),
     };
   }
 
   factory DomainPropertiesResponseVerificationRecords.fromMap(Map<String, dynamic> map) {
     return DomainPropertiesResponseVerificationRecords(
-      dKIM: map['dKIM'] == null ? null : DnsRecordResponse.fromMap((map['dKIM'] as Map).cast<String, dynamic>()),
-      dKIM2: map['dKIM2'] == null ? null : DnsRecordResponse.fromMap((map['dKIM2'] as Map).cast<String, dynamic>()),
-      dMARC: map['dMARC'] == null ? null : DnsRecordResponse.fromMap((map['dMARC'] as Map).cast<String, dynamic>()),
-      domain: map['domain'] == null ? null : DnsRecordResponse.fromMap((map['domain'] as Map).cast<String, dynamic>()),
-      sPF: map['sPF'] == null ? null : DnsRecordResponse.fromMap((map['sPF'] as Map).cast<String, dynamic>()),
+      dKIM: map['dKIM'] == null ? null : (DnsRecordResponse.fromMap((map['dKIM'] as Map).cast<String, dynamic>())).input(),
+      dKIM2: map['dKIM2'] == null ? null : (DnsRecordResponse.fromMap((map['dKIM2'] as Map).cast<String, dynamic>())).input(),
+      dMARC: map['dMARC'] == null ? null : (DnsRecordResponse.fromMap((map['dMARC'] as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : (DnsRecordResponse.fromMap((map['domain'] as Map).cast<String, dynamic>())).input(),
+      sPF: map['sPF'] == null ? null : (DnsRecordResponse.fromMap((map['sPF'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

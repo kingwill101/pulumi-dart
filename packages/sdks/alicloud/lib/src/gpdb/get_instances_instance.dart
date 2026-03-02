@@ -5,63 +5,63 @@ import 'get_instances_instance_ip_whitelist.dart';
 
 class GetInstancesInstance {
   /// Instance availability zone.
-  final String availabilityZone;
-  final String chargeType;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String> chargeType;
   /// The connection string of the instance.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The number of CPU cores of the computing node. Unit: Core.
-  final String cpuCores;
+  final pulumi.Input<String> cpuCores;
   /// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-  final String createTime;
-  final String creationTime;
+  final pulumi.Input<String> createTime;
+  final pulumi.Input<String> creationTime;
   /// The db instance category. Valid values: `HighAvailability`, `Basic`.
-  final String dbInstanceCategory;
+  final pulumi.Input<String> dbInstanceCategory;
   /// The db instance class.
-  final String dbInstanceClass;
+  final pulumi.Input<String> dbInstanceClass;
   /// The db instance id.
-  final String dbInstanceId;
+  final pulumi.Input<String> dbInstanceId;
   /// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
-  final String dbInstanceMode;
+  final pulumi.Input<String> dbInstanceMode;
   /// The description of the instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// The database engine used by the instance.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The version of the database engine used by the instance.
-  final String engineVersion;
+  final pulumi.Input<String> engineVersion;
   /// The ID of the db Instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The network type of the instance.
-  final String instanceNetworkType;
+  final pulumi.Input<String> instanceNetworkType;
   /// The ip whitelist.
-  final List<GetInstancesInstanceIpWhitelist> ipWhitelists;
+  final pulumi.Input<List<GetInstancesInstanceIpWhitelist>> ipWhitelists;
   /// The end time of the maintenance window for the instance.
-  final String maintainEndTime;
+  final pulumi.Input<String> maintainEndTime;
   /// The start time of the maintenance window for the instance.
-  final String maintainStartTime;
+  final pulumi.Input<String> maintainStartTime;
   /// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
-  final String masterNodeNum;
+  final pulumi.Input<String> masterNodeNum;
   /// The memory size of the compute node.
-  final String memorySize;
+  final pulumi.Input<String> memorySize;
   /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Region ID the instance belongs to.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
-  final String segNodeNum;
+  final pulumi.Input<String> segNodeNum;
   /// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The storage capacity. Unit: GB. Value: `50` to `4000`.
-  final int storageSize;
+  final pulumi.Input<int> storageSize;
   /// The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
-  final String storageType;
+  final pulumi.Input<String> storageType;
   /// The tags of the instance.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The ID of the VPC。.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID of the instance.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetInstancesInstance].
   /// [availabilityZone] Instance availability zone.
@@ -144,7 +144,7 @@ class GetInstancesInstance {
       'engineVersion': engineVersion,
       'id': id,
       'instanceNetworkType': instanceNetworkType,
-      'ipWhitelists': pulumi.Input.encodeList<GetInstancesInstanceIpWhitelist, Map<String, dynamic>>(ipWhitelists, (value) => value.toMap()),
+      'ipWhitelists': pulumi.Input.mapInputValue<List<GetInstancesInstanceIpWhitelist>, List<Map<String, dynamic>>>(ipWhitelists, (value) => pulumi.Input.encodeList<GetInstancesInstanceIpWhitelist, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maintainEndTime': maintainEndTime,
       'maintainStartTime': maintainStartTime,
       'masterNodeNum': masterNodeNum,
@@ -164,36 +164,36 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      availabilityZone: map['availabilityZone'] as String,
-      chargeType: map['chargeType'] as String,
-      connectionString: map['connectionString'] as String,
-      cpuCores: map['cpuCores'] as String,
-      createTime: map['createTime'] as String,
-      creationTime: map['creationTime'] as String,
-      dbInstanceCategory: map['dbInstanceCategory'] as String,
-      dbInstanceClass: map['dbInstanceClass'] as String,
-      dbInstanceId: map['dbInstanceId'] as String,
-      dbInstanceMode: map['dbInstanceMode'] as String,
-      description: map['description'] as String,
-      engine: map['engine'] as String,
-      engineVersion: map['engineVersion'] as String,
-      id: map['id'] as String,
-      instanceNetworkType: map['instanceNetworkType'] as String,
-      ipWhitelists: pulumi.Input.decodeList<GetInstancesInstanceIpWhitelist>(map['ipWhitelists'], (value) => GetInstancesInstanceIpWhitelist.fromMap((value as Map).cast<String, dynamic>())),
-      maintainEndTime: map['maintainEndTime'] as String,
-      maintainStartTime: map['maintainStartTime'] as String,
-      masterNodeNum: map['masterNodeNum'] as String,
-      memorySize: map['memorySize'] as String,
-      paymentType: map['paymentType'] as String,
-      regionId: map['regionId'] as String,
-      segNodeNum: map['segNodeNum'] as String,
-      status: map['status'] as String,
-      storageSize: map['storageSize'] as int,
-      storageType: map['storageType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      chargeType: (map['chargeType'] as String).input(),
+      connectionString: (map['connectionString'] as String).input(),
+      cpuCores: (map['cpuCores'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      dbInstanceCategory: (map['dbInstanceCategory'] as String).input(),
+      dbInstanceClass: (map['dbInstanceClass'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbInstanceMode: (map['dbInstanceMode'] as String).input(),
+      description: (map['description'] as String).input(),
+      engine: (map['engine'] as String).input(),
+      engineVersion: (map['engineVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceNetworkType: (map['instanceNetworkType'] as String).input(),
+      ipWhitelists: (pulumi.Input.decodeList<GetInstancesInstanceIpWhitelist>(map['ipWhitelists'], (value) => GetInstancesInstanceIpWhitelist.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maintainEndTime: (map['maintainEndTime'] as String).input(),
+      maintainStartTime: (map['maintainStartTime'] as String).input(),
+      masterNodeNum: (map['masterNodeNum'] as String).input(),
+      memorySize: (map['memorySize'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      segNodeNum: (map['segNodeNum'] as String).input(),
+      status: (map['status'] as String).input(),
+      storageSize: (map['storageSize'] as int).input(),
+      storageType: (map['storageType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

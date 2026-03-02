@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detail of a subject.
 class UsersOrServicePrincipalSetResponse {
   /// The display Name of the entity.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The object id of the entity.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The type of user.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [UsersOrServicePrincipalSetResponse].
   /// [displayName] The display Name of the entity.
@@ -30,9 +31,9 @@ class UsersOrServicePrincipalSetResponse {
 
   factory UsersOrServicePrincipalSetResponse.fromMap(Map<String, dynamic> map) {
     return UsersOrServicePrincipalSetResponse(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

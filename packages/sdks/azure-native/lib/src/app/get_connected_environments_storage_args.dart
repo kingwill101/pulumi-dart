@@ -19,13 +19,10 @@ class GetConnectedEnvironmentsStorageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
   GetConnectedEnvironmentsStorageArgs({
-    required pulumi.Output<String> connectedEnvironmentName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageName,
-  }) :
-      connectedEnvironmentName = pulumi.Input.asInput<String>(connectedEnvironmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageName = pulumi.Input.asInput<String>(storageName);
+    required this.connectedEnvironmentName,
+    required this.resourceGroupName,
+    required this.storageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConnectedEnvironmentsStorageArgs {
 
   factory GetConnectedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentsStorageArgs(
-      connectedEnvironmentName: pulumi.Output.create<String>(map['connectedEnvironmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageName: pulumi.Output.create<String>(map['storageName'] as String),
+      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageName: (map['storageName'] as String).input(),
     );
   }
 }

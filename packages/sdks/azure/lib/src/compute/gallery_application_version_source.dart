@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GalleryApplicationVersionSource {
   /// The Storage Blob URI of the default configuration. Changing this forces a new resource to be created.
-  final String? defaultConfigurationLink;
+  final pulumi.Input<String>? defaultConfigurationLink;
   /// The Storage Blob URI of the source application package. Changing this forces a new resource to be created.
-  final String mediaLink;
+  final pulumi.Input<String> mediaLink;
 
   /// Creates a new [GalleryApplicationVersionSource].
   /// [defaultConfigurationLink] The Storage Blob URI of the default configuration. Changing this forces a new resource to be created.
@@ -24,8 +25,8 @@ class GalleryApplicationVersionSource {
 
   factory GalleryApplicationVersionSource.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionSource(
-      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : map['defaultConfigurationLink'] as String,
-      mediaLink: map['mediaLink'] as String,
+      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : (map['defaultConfigurationLink'] as String).input(),
+      mediaLink: (map['mediaLink'] as String).input(),
     );
   }
 }

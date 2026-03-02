@@ -38,23 +38,15 @@ class GlossaryTermArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [termId] The term id for creation.
   GlossaryTermArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? glossaryId,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? termId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      glossaryId = pulumi.Input.asOptionalInput<String>(glossaryId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      parent = pulumi.Input.asInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      termId = pulumi.Input.asOptionalInput<String>(termId);
+    this.description,
+    this.displayName,
+    this.glossaryId,
+    this.labels,
+    required this.location,
+    required this.parent,
+    this.project,
+    this.termId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class GlossaryTermArgs {
 
   factory GlossaryTermArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryTermArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      glossaryId: map['glossaryId'] == null ? null : pulumi.Output.create<String>(map['glossaryId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      termId: map['termId'] == null ? null : pulumi.Output.create<String>(map['termId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      glossaryId: map['glossaryId'] == null ? null : (map['glossaryId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
     );
   }
 }

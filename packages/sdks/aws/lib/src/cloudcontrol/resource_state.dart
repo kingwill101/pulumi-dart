@@ -30,21 +30,14 @@ class ResourceState {
   /// [typeName] CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   /// [typeVersionId] Identifier of the CloudFormation resource type version.
   ResourceState({
-    pulumi.Output<String>? desiredState,
-    pulumi.Output<String>? properties,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? schema,
-    pulumi.Output<String>? typeName,
-    pulumi.Output<String>? typeVersionId,
-  }) :
-      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
-      properties = pulumi.Input.asOptionalInput<String>(properties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      typeName = pulumi.Input.asOptionalInput<String>(typeName),
-      typeVersionId = pulumi.Input.asOptionalInput<String>(typeVersionId);
+    this.desiredState,
+    this.properties,
+    this.region,
+    this.roleArn,
+    this.schema,
+    this.typeName,
+    this.typeVersionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<String>(map['properties'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      typeName: map['typeName'] == null ? null : pulumi.Output.create<String>(map['typeName'] as String),
-      typeVersionId: map['typeVersionId'] == null ? null : pulumi.Output.create<String>(map['typeVersionId'] as String),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      properties: map['properties'] == null ? null : (map['properties'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
+      typeVersionId: map['typeVersionId'] == null ? null : (map['typeVersionId'] as String).input(),
     );
   }
 }

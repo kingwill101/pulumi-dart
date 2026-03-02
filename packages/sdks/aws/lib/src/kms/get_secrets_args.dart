@@ -16,11 +16,9 @@ class GetSecretsArgs {
   /// [region] Optional.
   /// [secrets] One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
   GetSecretsArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<GetSecretsSecret>> secrets,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secrets = pulumi.Input.asInput<List<GetSecretsSecret>>(secrets);
+    this.region,
+    required this.secrets,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSecretsArgs {
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secrets: pulumi.Output.create<List<GetSecretsSecret>>(pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secrets: (pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

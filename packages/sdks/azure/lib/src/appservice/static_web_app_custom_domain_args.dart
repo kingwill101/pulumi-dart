@@ -23,13 +23,10 @@ class StaticWebAppCustomDomainArgs {
   /// [staticWebAppId] The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   StaticWebAppCustomDomainArgs({
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> staticWebAppId,
-    required pulumi.Output<String> validationType,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      staticWebAppId = pulumi.Input.asInput<String>(staticWebAppId),
-      validationType = pulumi.Input.asInput<String>(validationType);
+    required this.domainName,
+    required this.staticWebAppId,
+    required this.validationType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class StaticWebAppCustomDomainArgs {
 
   factory StaticWebAppCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return StaticWebAppCustomDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      staticWebAppId: pulumi.Output.create<String>(map['staticWebAppId'] as String),
-      validationType: pulumi.Output.create<String>(map['validationType'] as String),
+      domainName: (map['domainName'] as String).input(),
+      staticWebAppId: (map['staticWebAppId'] as String).input(),
+      validationType: (map['validationType'] as String).input(),
     );
   }
 }

@@ -27,19 +27,13 @@ class PolicyTemplateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statement] Defines the content of the statement, written in Cedar policy language.
   PolicyTemplateState({
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? policyStoreId,
-    pulumi.Output<String>? policyTemplateId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? statement,
-  }) :
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      policyStoreId = pulumi.Input.asOptionalInput<String>(policyStoreId),
-      policyTemplateId = pulumi.Input.asOptionalInput<String>(policyTemplateId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      statement = pulumi.Input.asOptionalInput<String>(statement);
+    this.createdDate,
+    this.description,
+    this.policyStoreId,
+    this.policyTemplateId,
+    this.region,
+    this.statement,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class PolicyTemplateState {
 
   factory PolicyTemplateState.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateState(
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      policyStoreId: map['policyStoreId'] == null ? null : pulumi.Output.create<String>(map['policyStoreId'] as String),
-      policyTemplateId: map['policyTemplateId'] == null ? null : pulumi.Output.create<String>(map['policyTemplateId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      statement: map['statement'] == null ? null : pulumi.Output.create<String>(map['statement'] as String),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
+      policyTemplateId: map['policyTemplateId'] == null ? null : (map['policyTemplateId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      statement: map['statement'] == null ? null : (map['statement'] as String).input(),
     );
   }
 }

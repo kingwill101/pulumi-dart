@@ -38,25 +38,16 @@ class DbInstancePlanArgs {
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] The Status of the Plan. Valid values: `active`, `cancel`.
   DbInstancePlanArgs({
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> dbInstancePlanName,
-    required pulumi.Output<List<DbInstancePlanPlanConfig>> planConfigs,
-    pulumi.Output<String>? planDesc,
-    pulumi.Output<String>? planEndDate,
-    required pulumi.Output<String> planScheduleType,
-    pulumi.Output<String>? planStartDate,
-    required pulumi.Output<String> planType,
-    pulumi.Output<String>? status,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      dbInstancePlanName = pulumi.Input.asInput<String>(dbInstancePlanName),
-      planConfigs = pulumi.Input.asInput<List<DbInstancePlanPlanConfig>>(planConfigs),
-      planDesc = pulumi.Input.asOptionalInput<String>(planDesc),
-      planEndDate = pulumi.Input.asOptionalInput<String>(planEndDate),
-      planScheduleType = pulumi.Input.asInput<String>(planScheduleType),
-      planStartDate = pulumi.Input.asOptionalInput<String>(planStartDate),
-      planType = pulumi.Input.asInput<String>(planType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.dbInstanceId,
+    required this.dbInstancePlanName,
+    required this.planConfigs,
+    this.planDesc,
+    this.planEndDate,
+    required this.planScheduleType,
+    this.planStartDate,
+    required this.planType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class DbInstancePlanArgs {
 
   factory DbInstancePlanArgs.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbInstancePlanName: pulumi.Output.create<String>(map['dbInstancePlanName'] as String),
-      planConfigs: pulumi.Output.create<List<DbInstancePlanPlanConfig>>(pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      planDesc: map['planDesc'] == null ? null : pulumi.Output.create<String>(map['planDesc'] as String),
-      planEndDate: map['planEndDate'] == null ? null : pulumi.Output.create<String>(map['planEndDate'] as String),
-      planScheduleType: pulumi.Output.create<String>(map['planScheduleType'] as String),
-      planStartDate: map['planStartDate'] == null ? null : pulumi.Output.create<String>(map['planStartDate'] as String),
-      planType: pulumi.Output.create<String>(map['planType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbInstancePlanName: (map['dbInstancePlanName'] as String).input(),
+      planConfigs: (pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      planDesc: map['planDesc'] == null ? null : (map['planDesc'] as String).input(),
+      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate'] as String).input(),
+      planScheduleType: (map['planScheduleType'] as String).input(),
+      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate'] as String).input(),
+      planType: (map['planType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

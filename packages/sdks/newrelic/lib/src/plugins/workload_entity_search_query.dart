@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadEntitySearchQuery {
   /// A valid entity search query; empty, and null values are considered invalid.
-  final String query;
+  final pulumi.Input<String> query;
 
   /// Creates a new [WorkloadEntitySearchQuery].
   /// [query] A valid entity search query; empty, and null values are considered invalid.
@@ -19,7 +20,7 @@ class WorkloadEntitySearchQuery {
 
   factory WorkloadEntitySearchQuery.fromMap(Map<String, dynamic> map) {
     return WorkloadEntitySearchQuery(
-      query: map['query'] as String,
+      query: (map['query'] as String).input(),
     );
   }
 }

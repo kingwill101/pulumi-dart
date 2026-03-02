@@ -10,91 +10,91 @@ import 'get_clusters_cluster_software_info.dart';
 
 class GetClustersCluster {
   /// Cluster connection information.
-  final List<GetClustersClusterAccessInfo> accessInfos;
+  final pulumi.Input<List<GetClustersClusterAccessInfo>> accessInfos;
   /// Whether flexible expansion is allowed.
-  final bool autoScalingAllowed;
+  final pulumi.Input<bool> autoScalingAllowed;
   /// Whether to allow expansion by load.
-  final bool autoScalingByLoadAllowed;
+  final pulumi.Input<bool> autoScalingByLoadAllowed;
   /// Whether to enable elastic expansion.
-  final bool autoScalingEnable;
+  final pulumi.Input<bool> autoScalingEnable;
   /// Whether to allow the use of elastic scaling bidding instances.
-  final bool autoScalingSpotWithLimitAllowed;
+  final pulumi.Input<bool> autoScalingSpotWithLimitAllowed;
   /// List of boot actions.
-  final List<GetClustersClusterBootstrapActionList> bootstrapActionLists;
+  final pulumi.Input<List<GetClustersClusterBootstrapActionList>> bootstrapActionLists;
   /// The result of the boot operation.
-  final bool bootstrapFailed;
+  final pulumi.Input<bool> bootstrapFailed;
   /// The first ID of the resource.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The ClusterName.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// Cluster tag, no need to pay attention.
-  final String createResource;
+  final pulumi.Input<String> createResource;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// How to create a cluster.
-  final String createType;
+  final pulumi.Input<String> createType;
   /// The hosting type of the cluster.
-  final String depositType;
+  final pulumi.Input<String> depositType;
   /// High security cluster.
-  final bool easEnable;
+  final pulumi.Input<bool> easEnable;
   /// The expiration time of the cluster.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// Additional information for Stack.
-  final String extraInfo;
-  final bool hasUncompletedOrder;
+  final pulumi.Input<String> extraInfo;
+  final pulumi.Input<bool> hasUncompletedOrder;
   /// High availability cluster.
-  final bool highAvailabilityEnable;
+  final pulumi.Input<bool> highAvailabilityEnable;
   /// List of cluster machine groups.
-  final List<GetClustersClusterHostGroupList> hostGroupLists;
+  final pulumi.Input<List<GetClustersClusterHostGroupList>> hostGroupLists;
   /// Machine pool information.
-  final List<GetClustersClusterHostPoolInfo> hostPoolInfos;
-  final String id;
+  final pulumi.Input<List<GetClustersClusterHostPoolInfo>> hostPoolInfos;
+  final pulumi.Input<String> id;
   /// The ID of the image used to create the cluster.
-  final String imageId;
+  final pulumi.Input<String> imageId;
   /// Whether to use Hive local Metabase.
-  final bool localMetaDb;
+  final pulumi.Input<bool> localMetaDb;
   /// The host type of the cluster. The default is ECS.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Metadata type:
-  final String metaStoreType;
+  final pulumi.Input<String> metaStoreType;
   /// Cluster network type.
-  final String netType;
+  final pulumi.Input<String> netType;
   /// The payment type of the resource.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
-  final int period;
+  final pulumi.Input<int> period;
   /// The information of the primary cluster associated with the Gateway.
-  final List<GetClustersClusterRelateClusterInfo> relateClusterInfos;
+  final pulumi.Input<List<GetClustersClusterRelateClusterInfo>> relateClusterInfos;
   /// Whether to allow disk expansion:
-  final bool resizeDiskEnable;
+  final pulumi.Input<bool> resizeDiskEnable;
   /// The time (in seconds) that has been running.
-  final int runningTime;
+  final pulumi.Input<int> runningTime;
   /// The ID of the security group.
-  final String securityGroupId;
+  final pulumi.Input<String> securityGroupId;
   /// The name of the security group.
-  final String securityGroupName;
+  final pulumi.Input<String> securityGroupName;
   /// Service list.
-  final List<GetClustersClusterSoftwareInfo> softwareInfos;
+  final pulumi.Input<List<GetClustersClusterSoftwareInfo>> softwareInfos;
   /// Cluster startup time.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The cluster status.
-  final String status;
+  final pulumi.Input<String> status;
   /// Cluster stop time.
-  final String stopTime;
+  final pulumi.Input<String> stopTime;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Disk type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The EMR permission name used.
-  final String userDefinedEmrEcsRole;
+  final pulumi.Input<String> userDefinedEmrEcsRole;
   /// The user ID.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// The VPC ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// The vswitch id.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetClustersCluster].
   /// [accessInfos] Cluster connection information.
@@ -190,12 +190,12 @@ class GetClustersCluster {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessInfos': pulumi.Input.encodeList<GetClustersClusterAccessInfo, Map<String, dynamic>>(accessInfos, (value) => value.toMap()),
+      'accessInfos': pulumi.Input.mapInputValue<List<GetClustersClusterAccessInfo>, List<Map<String, dynamic>>>(accessInfos, (value) => pulumi.Input.encodeList<GetClustersClusterAccessInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoScalingAllowed': autoScalingAllowed,
       'autoScalingByLoadAllowed': autoScalingByLoadAllowed,
       'autoScalingEnable': autoScalingEnable,
       'autoScalingSpotWithLimitAllowed': autoScalingSpotWithLimitAllowed,
-      'bootstrapActionLists': pulumi.Input.encodeList<GetClustersClusterBootstrapActionList, Map<String, dynamic>>(bootstrapActionLists, (value) => value.toMap()),
+      'bootstrapActionLists': pulumi.Input.mapInputValue<List<GetClustersClusterBootstrapActionList>, List<Map<String, dynamic>>>(bootstrapActionLists, (value) => pulumi.Input.encodeList<GetClustersClusterBootstrapActionList, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bootstrapFailed': bootstrapFailed,
       'clusterId': clusterId,
       'clusterName': clusterName,
@@ -208,8 +208,8 @@ class GetClustersCluster {
       'extraInfo': extraInfo,
       'hasUncompletedOrder': hasUncompletedOrder,
       'highAvailabilityEnable': highAvailabilityEnable,
-      'hostGroupLists': pulumi.Input.encodeList<GetClustersClusterHostGroupList, Map<String, dynamic>>(hostGroupLists, (value) => value.toMap()),
-      'hostPoolInfos': pulumi.Input.encodeList<GetClustersClusterHostPoolInfo, Map<String, dynamic>>(hostPoolInfos, (value) => value.toMap()),
+      'hostGroupLists': pulumi.Input.mapInputValue<List<GetClustersClusterHostGroupList>, List<Map<String, dynamic>>>(hostGroupLists, (value) => pulumi.Input.encodeList<GetClustersClusterHostGroupList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hostPoolInfos': pulumi.Input.mapInputValue<List<GetClustersClusterHostPoolInfo>, List<Map<String, dynamic>>>(hostPoolInfos, (value) => pulumi.Input.encodeList<GetClustersClusterHostPoolInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'imageId': imageId,
       'localMetaDb': localMetaDb,
@@ -218,12 +218,12 @@ class GetClustersCluster {
       'netType': netType,
       'paymentType': paymentType,
       'period': period,
-      'relateClusterInfos': pulumi.Input.encodeList<GetClustersClusterRelateClusterInfo, Map<String, dynamic>>(relateClusterInfos, (value) => value.toMap()),
+      'relateClusterInfos': pulumi.Input.mapInputValue<List<GetClustersClusterRelateClusterInfo>, List<Map<String, dynamic>>>(relateClusterInfos, (value) => pulumi.Input.encodeList<GetClustersClusterRelateClusterInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resizeDiskEnable': resizeDiskEnable,
       'runningTime': runningTime,
       'securityGroupId': securityGroupId,
       'securityGroupName': securityGroupName,
-      'softwareInfos': pulumi.Input.encodeList<GetClustersClusterSoftwareInfo, Map<String, dynamic>>(softwareInfos, (value) => value.toMap()),
+      'softwareInfos': pulumi.Input.mapInputValue<List<GetClustersClusterSoftwareInfo>, List<Map<String, dynamic>>>(softwareInfos, (value) => pulumi.Input.encodeList<GetClustersClusterSoftwareInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'startTime': startTime,
       'status': status,
       'stopTime': stopTime,
@@ -239,50 +239,50 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      accessInfos: pulumi.Input.decodeList<GetClustersClusterAccessInfo>(map['accessInfos'], (value) => GetClustersClusterAccessInfo.fromMap((value as Map).cast<String, dynamic>())),
-      autoScalingAllowed: map['autoScalingAllowed'] as bool,
-      autoScalingByLoadAllowed: map['autoScalingByLoadAllowed'] as bool,
-      autoScalingEnable: map['autoScalingEnable'] as bool,
-      autoScalingSpotWithLimitAllowed: map['autoScalingSpotWithLimitAllowed'] as bool,
-      bootstrapActionLists: pulumi.Input.decodeList<GetClustersClusterBootstrapActionList>(map['bootstrapActionLists'], (value) => GetClustersClusterBootstrapActionList.fromMap((value as Map).cast<String, dynamic>())),
-      bootstrapFailed: map['bootstrapFailed'] as bool,
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      createResource: map['createResource'] as String,
-      createTime: map['createTime'] as String,
-      createType: map['createType'] as String,
-      depositType: map['depositType'] as String,
-      easEnable: map['easEnable'] as bool,
-      expiredTime: map['expiredTime'] as String,
-      extraInfo: map['extraInfo'] as String,
-      hasUncompletedOrder: map['hasUncompletedOrder'] as bool,
-      highAvailabilityEnable: map['highAvailabilityEnable'] as bool,
-      hostGroupLists: pulumi.Input.decodeList<GetClustersClusterHostGroupList>(map['hostGroupLists'], (value) => GetClustersClusterHostGroupList.fromMap((value as Map).cast<String, dynamic>())),
-      hostPoolInfos: pulumi.Input.decodeList<GetClustersClusterHostPoolInfo>(map['hostPoolInfos'], (value) => GetClustersClusterHostPoolInfo.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      imageId: map['imageId'] as String,
-      localMetaDb: map['localMetaDb'] as bool,
-      machineType: map['machineType'] as String,
-      metaStoreType: map['metaStoreType'] as String,
-      netType: map['netType'] as String,
-      paymentType: map['paymentType'] as String,
-      period: map['period'] as int,
-      relateClusterInfos: pulumi.Input.decodeList<GetClustersClusterRelateClusterInfo>(map['relateClusterInfos'], (value) => GetClustersClusterRelateClusterInfo.fromMap((value as Map).cast<String, dynamic>())),
-      resizeDiskEnable: map['resizeDiskEnable'] as bool,
-      runningTime: map['runningTime'] as int,
-      securityGroupId: map['securityGroupId'] as String,
-      securityGroupName: map['securityGroupName'] as String,
-      softwareInfos: pulumi.Input.decodeList<GetClustersClusterSoftwareInfo>(map['softwareInfos'], (value) => GetClustersClusterSoftwareInfo.fromMap((value as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      stopTime: map['stopTime'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      userDefinedEmrEcsRole: map['userDefinedEmrEcsRole'] as String,
-      userId: map['userId'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      accessInfos: (pulumi.Input.decodeList<GetClustersClusterAccessInfo>(map['accessInfos'], (value) => GetClustersClusterAccessInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoScalingAllowed: (map['autoScalingAllowed'] as bool).input(),
+      autoScalingByLoadAllowed: (map['autoScalingByLoadAllowed'] as bool).input(),
+      autoScalingEnable: (map['autoScalingEnable'] as bool).input(),
+      autoScalingSpotWithLimitAllowed: (map['autoScalingSpotWithLimitAllowed'] as bool).input(),
+      bootstrapActionLists: (pulumi.Input.decodeList<GetClustersClusterBootstrapActionList>(map['bootstrapActionLists'], (value) => GetClustersClusterBootstrapActionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootstrapFailed: (map['bootstrapFailed'] as bool).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      createResource: (map['createResource'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createType: (map['createType'] as String).input(),
+      depositType: (map['depositType'] as String).input(),
+      easEnable: (map['easEnable'] as bool).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      extraInfo: (map['extraInfo'] as String).input(),
+      hasUncompletedOrder: (map['hasUncompletedOrder'] as bool).input(),
+      highAvailabilityEnable: (map['highAvailabilityEnable'] as bool).input(),
+      hostGroupLists: (pulumi.Input.decodeList<GetClustersClusterHostGroupList>(map['hostGroupLists'], (value) => GetClustersClusterHostGroupList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostPoolInfos: (pulumi.Input.decodeList<GetClustersClusterHostPoolInfo>(map['hostPoolInfos'], (value) => GetClustersClusterHostPoolInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      localMetaDb: (map['localMetaDb'] as bool).input(),
+      machineType: (map['machineType'] as String).input(),
+      metaStoreType: (map['metaStoreType'] as String).input(),
+      netType: (map['netType'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      period: (map['period'] as int).input(),
+      relateClusterInfos: (pulumi.Input.decodeList<GetClustersClusterRelateClusterInfo>(map['relateClusterInfos'], (value) => GetClustersClusterRelateClusterInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resizeDiskEnable: (map['resizeDiskEnable'] as bool).input(),
+      runningTime: (map['runningTime'] as int).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      securityGroupName: (map['securityGroupName'] as String).input(),
+      softwareInfos: (pulumi.Input.decodeList<GetClustersClusterSoftwareInfo>(map['softwareInfos'], (value) => GetClustersClusterSoftwareInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      stopTime: (map['stopTime'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      userDefinedEmrEcsRole: (map['userDefinedEmrEcsRole'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

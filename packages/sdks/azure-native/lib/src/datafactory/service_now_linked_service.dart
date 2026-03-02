@@ -8,38 +8,38 @@ import 'parameter_specification.dart';
 /// ServiceNow server linked service.
 class ServiceNowLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The authentication type to use.
-  final String authenticationType;
+  final pulumi.Input<String> authenticationType;
   /// The client id for OAuth2 authentication.
-  final dynamic clientId;
+  final pulumi.Input<dynamic>? clientId;
   /// The client secret for OAuth2 authentication.
-  final AzureKeyVaultSecretReference? clientSecret;
+  final pulumi.Input<AzureKeyVaultSecretReference>? clientSecret;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The endpoint of the ServiceNow server. (i.e. <instance>.service-now.com)
-  final dynamic endpoint;
+  final pulumi.Input<dynamic> endpoint;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The password corresponding to the user name for Basic and OAuth2 authentication.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// Type of linked service.
   /// Expected value is 'ServiceNow'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
-  final dynamic useEncryptedEndpoints;
+  final pulumi.Input<dynamic>? useEncryptedEndpoints;
   /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
-  final dynamic useHostVerification;
+  final pulumi.Input<dynamic>? useHostVerification;
   /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
-  final dynamic usePeerVerification;
+  final pulumi.Input<dynamic>? usePeerVerification;
   /// The user name used to connect to the ServiceNow server for Basic and OAuth2 authentication.
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ServiceNowLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -82,13 +82,13 @@ class ServiceNowLinkedService {
       'annotations': ?annotations,
       'authenticationType': authenticationType,
       'clientId': ?clientId,
-      'clientSecret': ?clientSecret == null ? null : clientSecret!.toMap(),
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'endpoint': endpoint,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'useHostVerification': ?useHostVerification,
@@ -100,22 +100,22 @@ class ServiceNowLinkedService {
 
   factory ServiceNowLinkedService.fromMap(Map<String, dynamic> map) {
     return ServiceNowLinkedService(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      authenticationType: map['authenticationType'] as String,
-      clientId: map['clientId'] == null ? null : map['clientId'],
-      clientSecret: map['clientSecret'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      endpoint: map['endpoint'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : map['useEncryptedEndpoints'],
-      useHostVerification: map['useHostVerification'] == null ? null : map['useHostVerification'],
-      usePeerVerification: map['usePeerVerification'] == null ? null : map['usePeerVerification'],
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      authenticationType: (map['authenticationType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']).input(),
+      clientSecret: map['clientSecret'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      endpoint: (map['endpoint']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

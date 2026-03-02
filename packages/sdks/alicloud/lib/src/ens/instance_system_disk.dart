@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceSystemDisk {
   /// System disk type. Value
@@ -7,9 +8,9 @@ class InstanceSystemDisk {
   /// - cloud_ssd: Full Flash cloud disk
   /// - local_hdd: local hdd disk
   /// - local_ssd: local disk ssd.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// System disk size, unit: GB.
-  final int? size;
+  final pulumi.Input<int>? size;
 
   /// Creates a new [InstanceSystemDisk].
   /// [category] System disk type. Value
@@ -28,8 +29,8 @@ class InstanceSystemDisk {
 
   factory InstanceSystemDisk.fromMap(Map<String, dynamic> map) {
     return InstanceSystemDisk(
-      category: map['category'] == null ? null : map['category'] as String,
-      size: map['size'] == null ? null : map['size'] as int,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

@@ -8,15 +8,15 @@ import 'private_link_service_proxy_response.dart';
 /// Represent remote private endpoint information for the private endpoint connection proxy.
 class RemotePrivateEndpointResponse {
   /// Gets or sets the list of Connection Details. This is the connection details for private endpoint.
-  final List<ConnectionDetailsResponse>? connectionDetails;
+  final pulumi.Input<List<ConnectionDetailsResponse>>? connectionDetails;
   /// Gets or sets private link service proxy id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
-  final List<PrivateLinkServiceConnectionResponse>? manualPrivateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? manualPrivateLinkServiceConnections;
   /// Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
-  final List<PrivateLinkServiceConnectionResponse>? privateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? privateLinkServiceConnections;
   /// Gets or sets the list of private link service proxies.
-  final List<PrivateLinkServiceProxyResponse>? privateLinkServiceProxies;
+  final pulumi.Input<List<PrivateLinkServiceProxyResponse>>? privateLinkServiceProxies;
 
   /// Creates a new [RemotePrivateEndpointResponse].
   /// [connectionDetails] Gets or sets the list of Connection Details. This is the connection details for private endpoint.
@@ -34,21 +34,21 @@ class RemotePrivateEndpointResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionDetails': ?connectionDetails == null ? null : pulumi.Input.encodeList<ConnectionDetailsResponse, Map<String, dynamic>>(connectionDetails!, (value) => value.toMap()),
+      'connectionDetails': ?pulumi.Input.mapOptionalInputValue<List<ConnectionDetailsResponse>, List<Map<String, dynamic>>>(connectionDetails, (value) => pulumi.Input.encodeList<ConnectionDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
-      'manualPrivateLinkServiceConnections': ?manualPrivateLinkServiceConnections == null ? null : pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(manualPrivateLinkServiceConnections!, (value) => value.toMap()),
-      'privateLinkServiceConnections': ?privateLinkServiceConnections == null ? null : pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(privateLinkServiceConnections!, (value) => value.toMap()),
-      'privateLinkServiceProxies': ?privateLinkServiceProxies == null ? null : pulumi.Input.encodeList<PrivateLinkServiceProxyResponse, Map<String, dynamic>>(privateLinkServiceProxies!, (value) => value.toMap()),
+      'manualPrivateLinkServiceConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceConnectionResponse>, List<Map<String, dynamic>>>(manualPrivateLinkServiceConnections, (value) => pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateLinkServiceConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceConnectionResponse>, List<Map<String, dynamic>>>(privateLinkServiceConnections, (value) => pulumi.Input.encodeList<PrivateLinkServiceConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateLinkServiceProxies': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceProxyResponse>, List<Map<String, dynamic>>>(privateLinkServiceProxies, (value) => pulumi.Input.encodeList<PrivateLinkServiceProxyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RemotePrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointResponse(
-      connectionDetails: map['connectionDetails'] == null ? null : pulumi.Input.decodeList<ConnectionDetailsResponse>(map['connectionDetails'], (value) => ConnectionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkServiceProxies: map['privateLinkServiceProxies'] == null ? null : pulumi.Input.decodeList<PrivateLinkServiceProxyResponse>(map['privateLinkServiceProxies'], (value) => PrivateLinkServiceProxyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectionDetails: map['connectionDetails'] == null ? null : (pulumi.Input.decodeList<ConnectionDetailsResponse>(map['connectionDetails'], (value) => ConnectionDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkServiceProxies: map['privateLinkServiceProxies'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceProxyResponse>(map['privateLinkServiceProxies'], (value) => PrivateLinkServiceProxyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

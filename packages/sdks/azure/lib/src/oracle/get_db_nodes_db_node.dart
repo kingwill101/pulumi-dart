@@ -1,48 +1,49 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbNodesDbNode {
   /// Additional information about the planned maintenance.
-  final String additionalDetails;
+  final pulumi.Input<String> additionalDetails;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the backup IP address associated with the database node. Use this OCID with either the [GetPrivateIp](https://docs.cloud.oracle.com/iaas/api/#/en/iaas/20160918/PrivateIp/GetPrivateIp) or the [GetPublicIpByPrivateIpId](https://docs.cloud.oracle.com/iaas/api/#/en/iaas/20160918/PublicIp/GetPublicIpByPrivateIpId) API to get the IP address needed to make a database connection.
-  final String backupIpId;
-  final String backupVnic2Id;
+  final pulumi.Input<String> backupIpId;
+  final pulumi.Input<String> backupVnic2Id;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the backup VNIC.
-  final String backupVnicId;
+  final pulumi.Input<String> backupVnicId;
   /// The number of CPU cores enabled on the DB node.
-  final int cpuCoreCount;
+  final pulumi.Input<int> cpuCoreCount;
   /// The allocated local node storage in GBs on the DB node.
-  final int dbNodeStorageSizeInGbs;
+  final pulumi.Input<int> dbNodeStorageSizeInGbs;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the ExaCC DB server associated with the database node.
-  final String dbServerId;
+  final pulumi.Input<String> dbServerId;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the DB system.
-  final String dbSystemId;
+  final pulumi.Input<String> dbSystemId;
   /// The name of the Fault Domain the instance is contained in.
-  final String faultDomain;
+  final pulumi.Input<String> faultDomain;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the host IP address associated with the database node. Use this OCID with either the [GetPrivateIp](https://docs.cloud.oracle.com/iaas/api/#/en/iaas/20160918/PrivateIp/GetPrivateIp) or the [GetPublicIpByPrivateIpId](https://docs.cloud.oracle.com/iaas/api/#/en/iaas/20160918/PublicIp/GetPublicIpByPrivateIpId) API to get the IP address needed to make a database connection.
-  final String hostIpId;
-  final String hostname;
+  final pulumi.Input<String> hostIpId;
+  final pulumi.Input<String> hostname;
   /// Information about the current lifecycle details.
-  final String lifecycleDetails;
+  final pulumi.Input<String> lifecycleDetails;
   /// Information about the current lifecycle state.
-  final String lifecycleState;
+  final pulumi.Input<String> lifecycleState;
   /// The type of database node maintenance.
-  final String maintenanceType;
+  final pulumi.Input<String> maintenanceType;
   /// The allocated memory in GBs on the DB Node.
-  final int memorySizeInGbs;
+  final pulumi.Input<int> memorySizeInGbs;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the DB node.
-  final String ocid;
+  final pulumi.Input<String> ocid;
   /// The size (in GB) of the block storage volume allocation for the DB system. This attribute applies only for virtual machine DB systems.
-  final int softwareStorageSizeInGb;
+  final pulumi.Input<int> softwareStorageSizeInGb;
   /// The date and time that the DB node was created.
-  final String timeCreated;
+  final pulumi.Input<String> timeCreated;
   /// End date and time of maintenance window.
-  final String timeMaintenanceWindowEnd;
+  final pulumi.Input<String> timeMaintenanceWindowEnd;
   /// Start date and time of maintenance window.
-  final String timeMaintenanceWindowStart;
-  final String vnic2Id;
+  final pulumi.Input<String> timeMaintenanceWindowStart;
+  final pulumi.Input<String> vnic2Id;
   /// The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the VNIC.
-  final String vnicId;
+  final pulumi.Input<String> vnicId;
 
   /// Creates a new [GetDbNodesDbNode].
   /// [additionalDetails] Additional information about the planned maintenance.
@@ -121,28 +122,28 @@ class GetDbNodesDbNode {
 
   factory GetDbNodesDbNode.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNode(
-      additionalDetails: map['additionalDetails'] as String,
-      backupIpId: map['backupIpId'] as String,
-      backupVnic2Id: map['backupVnic2Id'] as String,
-      backupVnicId: map['backupVnicId'] as String,
-      cpuCoreCount: map['cpuCoreCount'] as int,
-      dbNodeStorageSizeInGbs: map['dbNodeStorageSizeInGbs'] as int,
-      dbServerId: map['dbServerId'] as String,
-      dbSystemId: map['dbSystemId'] as String,
-      faultDomain: map['faultDomain'] as String,
-      hostIpId: map['hostIpId'] as String,
-      hostname: map['hostname'] as String,
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      maintenanceType: map['maintenanceType'] as String,
-      memorySizeInGbs: map['memorySizeInGbs'] as int,
-      ocid: map['ocid'] as String,
-      softwareStorageSizeInGb: map['softwareStorageSizeInGb'] as int,
-      timeCreated: map['timeCreated'] as String,
-      timeMaintenanceWindowEnd: map['timeMaintenanceWindowEnd'] as String,
-      timeMaintenanceWindowStart: map['timeMaintenanceWindowStart'] as String,
-      vnic2Id: map['vnic2Id'] as String,
-      vnicId: map['vnicId'] as String,
+      additionalDetails: (map['additionalDetails'] as String).input(),
+      backupIpId: (map['backupIpId'] as String).input(),
+      backupVnic2Id: (map['backupVnic2Id'] as String).input(),
+      backupVnicId: (map['backupVnicId'] as String).input(),
+      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
+      dbNodeStorageSizeInGbs: (map['dbNodeStorageSizeInGbs'] as int).input(),
+      dbServerId: (map['dbServerId'] as String).input(),
+      dbSystemId: (map['dbSystemId'] as String).input(),
+      faultDomain: (map['faultDomain'] as String).input(),
+      hostIpId: (map['hostIpId'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      lifecycleDetails: (map['lifecycleDetails'] as String).input(),
+      lifecycleState: (map['lifecycleState'] as String).input(),
+      maintenanceType: (map['maintenanceType'] as String).input(),
+      memorySizeInGbs: (map['memorySizeInGbs'] as int).input(),
+      ocid: (map['ocid'] as String).input(),
+      softwareStorageSizeInGb: (map['softwareStorageSizeInGb'] as int).input(),
+      timeCreated: (map['timeCreated'] as String).input(),
+      timeMaintenanceWindowEnd: (map['timeMaintenanceWindowEnd'] as String).input(),
+      timeMaintenanceWindowStart: (map['timeMaintenanceWindowStart'] as String).input(),
+      vnic2Id: (map['vnic2Id'] as String).input(),
+      vnicId: (map['vnicId'] as String).input(),
     );
   }
 }

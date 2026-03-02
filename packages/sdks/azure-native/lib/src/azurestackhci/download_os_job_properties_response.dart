@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'download_request_response.dart';
 import 'error_detail_response.dart';
 import 'provision_os_reported_properties_response.dart';
@@ -7,26 +8,26 @@ import 'provision_os_reported_properties_response.dart';
 /// Represents the properties of Download Os job.
 class DownloadOsJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final String? deploymentMode;
+  final pulumi.Input<String>? deploymentMode;
   /// Download OS request.
-  final DownloadRequestResponse downloadRequest;
+  final pulumi.Input<DownloadRequestResponse> downloadRequest;
   /// The UTC date and time at which the job completed.
-  final String endTimeUtc;
+  final pulumi.Input<String> endTimeUtc;
   /// error details.
-  final ErrorDetailResponse error;
+  final pulumi.Input<ErrorDetailResponse> error;
   /// Unique, immutable job id.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// Job Type supported.
   /// Expected value is 'DownloadOs'.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// Job provisioning state
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Reported Properties for Download Os job
-  final ProvisionOsReportedPropertiesResponse? reportedProperties;
+  final pulumi.Input<ProvisionOsReportedPropertiesResponse>? reportedProperties;
   /// The UTC date and time at which the job started.
-  final String startTimeUtc;
+  final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [DownloadOsJobPropertiesResponse].
   /// [deploymentMode] Deployment mode to trigger job.
@@ -55,13 +56,13 @@ class DownloadOsJobPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deploymentMode': ?deploymentMode,
-      'downloadRequest': downloadRequest.toMap(),
+      'downloadRequest': pulumi.Input.mapInputValue<DownloadRequestResponse, Map<String, dynamic>>(downloadRequest, (value) => value.toMap()),
       'endTimeUtc': endTimeUtc,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'jobId': jobId,
       'jobType': jobType,
       'provisioningState': provisioningState,
-      'reportedProperties': ?reportedProperties == null ? null : reportedProperties!.toMap(),
+      'reportedProperties': ?pulumi.Input.mapOptionalInputValue<ProvisionOsReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
     };
@@ -69,16 +70,16 @@ class DownloadOsJobPropertiesResponse {
 
   factory DownloadOsJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DownloadOsJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
-      downloadRequest: DownloadRequestResponse.fromMap((map['downloadRequest'] as Map).cast<String, dynamic>()),
-      endTimeUtc: map['endTimeUtc'] as String,
-      error: ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      jobId: map['jobId'] as String,
-      jobType: map['jobType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      reportedProperties: map['reportedProperties'] == null ? null : ProvisionOsReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
-      startTimeUtc: map['startTimeUtc'] as String,
-      status: map['status'] as String,
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      downloadRequest: (DownloadRequestResponse.fromMap((map['downloadRequest'] as Map).cast<String, dynamic>())).input(),
+      endTimeUtc: (map['endTimeUtc'] as String).input(),
+      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      jobId: (map['jobId'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      reportedProperties: map['reportedProperties'] == null ? null : (ProvisionOsReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      startTimeUtc: (map['startTimeUtc'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

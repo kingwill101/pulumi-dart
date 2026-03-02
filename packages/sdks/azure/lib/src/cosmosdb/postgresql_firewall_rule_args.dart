@@ -22,15 +22,11 @@ class PostgresqlFirewallRuleArgs {
   /// [name] The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   PostgresqlFirewallRuleArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> endIpAddress,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> startIpAddress,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      endIpAddress = pulumi.Input.asInput<String>(endIpAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      startIpAddress = pulumi.Input.asInput<String>(startIpAddress);
+    required this.clusterId,
+    required this.endIpAddress,
+    this.name,
+    required this.startIpAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PostgresqlFirewallRuleArgs {
 
   factory PostgresqlFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlFirewallRuleArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      endIpAddress: pulumi.Output.create<String>(map['endIpAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      startIpAddress: pulumi.Output.create<String>(map['startIpAddress'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      endIpAddress: (map['endIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }
 }

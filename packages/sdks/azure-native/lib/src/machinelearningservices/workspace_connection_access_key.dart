@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionAccessKey {
-  final String? accessKeyId;
-  final String? secretAccessKey;
+  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String>? secretAccessKey;
 
   /// Creates a new [WorkspaceConnectionAccessKey].
   /// [accessKeyId] Optional.
@@ -22,8 +23,8 @@ class WorkspaceConnectionAccessKey {
 
   factory WorkspaceConnectionAccessKey.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionAccessKey(
-      accessKeyId: map['accessKeyId'] == null ? null : map['accessKeyId'] as String,
-      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
     );
   }
 }

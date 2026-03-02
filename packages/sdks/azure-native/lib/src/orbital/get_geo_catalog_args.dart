@@ -16,11 +16,9 @@ class GetGeoCatalogArgs {
   /// [catalogName] The name of the catalog
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGeoCatalogArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGeoCatalogArgs {
 
   factory GetGeoCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetGeoCatalogArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

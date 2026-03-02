@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_service_settings.dart';
 
 /// Application Configuration Service properties payload
 class ConfigurationServiceProperties {
   /// The generation of the Application Configuration Service.
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// The settings of Application Configuration Service.
-  final ConfigurationServiceSettings? settings;
+  final pulumi.Input<ConfigurationServiceSettings>? settings;
 
   /// Creates a new [ConfigurationServiceProperties].
   /// [generation] The generation of the Application Configuration Service.
@@ -20,14 +21,14 @@ class ConfigurationServiceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'generation': ?generation,
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'settings': ?pulumi.Input.mapOptionalInputValue<ConfigurationServiceSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory ConfigurationServiceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceProperties(
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      settings: map['settings'] == null ? null : ConfigurationServiceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      settings: map['settings'] == null ? null : (ConfigurationServiceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

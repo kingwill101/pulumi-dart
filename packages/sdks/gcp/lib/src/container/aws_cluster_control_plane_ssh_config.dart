@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterControlPlaneSshConfig {
   /// The name of the EC2 key pair used to login into cluster machines.
-  final String ec2KeyPair;
+  final pulumi.Input<String> ec2KeyPair;
 
   /// Creates a new [AwsClusterControlPlaneSshConfig].
   /// [ec2KeyPair] The name of the EC2 key pair used to login into cluster machines.
@@ -19,7 +20,7 @@ class AwsClusterControlPlaneSshConfig {
 
   factory AwsClusterControlPlaneSshConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneSshConfig(
-      ec2KeyPair: map['ec2KeyPair'] as String,
+      ec2KeyPair: (map['ec2KeyPair'] as String).input(),
     );
   }
 }

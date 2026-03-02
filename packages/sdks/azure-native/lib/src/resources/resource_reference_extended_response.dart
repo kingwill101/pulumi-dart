@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
 
 /// The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
 class ResourceReferenceExtendedResponse {
   /// The error detail.
-  final ErrorDetailResponse? error;
+  final pulumi.Input<ErrorDetailResponse>? error;
   /// The ARM Resource ID of a resource managed by the deployment stack.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ResourceReferenceExtendedResponse].
   /// [error] The error detail.
@@ -19,15 +20,15 @@ class ResourceReferenceExtendedResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'id': id,
     };
   }
 
   factory ResourceReferenceExtendedResponse.fromMap(Map<String, dynamic> map) {
     return ResourceReferenceExtendedResponse(
-      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An artifact that can be deployed in some runtime.
 class DeploymentNote {
   /// Resource URI for the artifact being deployed.
-  final List<String> resourceUri;
+  final pulumi.Input<List<String>> resourceUri;
 
   /// Creates a new [DeploymentNote].
   /// [resourceUri] Resource URI for the artifact being deployed.
@@ -20,7 +21,7 @@ class DeploymentNote {
 
   factory DeploymentNote.fromMap(Map<String, dynamic> map) {
     return DeploymentNote(
-      resourceUri: (map['resourceUri'] as List).cast<String>(),
+      resourceUri: ((map['resourceUri'] as List).cast<String>()).input(),
     );
   }
 }

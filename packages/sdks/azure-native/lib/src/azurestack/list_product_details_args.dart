@@ -19,13 +19,10 @@ class ListProductDetailsArgs {
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
   ListProductDetailsArgs({
-    required pulumi.Output<String> productName,
-    required pulumi.Output<String> registrationName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      productName = pulumi.Input.asInput<String>(productName),
-      registrationName = pulumi.Input.asInput<String>(registrationName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.productName,
+    required this.registrationName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListProductDetailsArgs {
 
   factory ListProductDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListProductDetailsArgs(
-      productName: pulumi.Output.create<String>(map['productName'] as String),
-      registrationName: pulumi.Output.create<String>(map['registrationName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      productName: (map['productName'] as String).input(),
+      registrationName: (map['registrationName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

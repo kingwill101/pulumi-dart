@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryNetworkRuleSetIpRule {
   /// The behaviour for requests matching this rule. At this time the only supported value is `Allow`
-  final String action;
+  final pulumi.Input<String> action;
   /// The CIDR block from which requests will match the rule.
-  final String ipRange;
+  final pulumi.Input<String> ipRange;
 
   /// Creates a new [RegistryNetworkRuleSetIpRule].
   /// [action] The behaviour for requests matching this rule. At this time the only supported value is `Allow`
@@ -24,8 +25,8 @@ class RegistryNetworkRuleSetIpRule {
 
   factory RegistryNetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return RegistryNetworkRuleSetIpRule(
-      action: map['action'] as String,
-      ipRange: map['ipRange'] as String,
+      action: (map['action'] as String).input(),
+      ipRange: (map['ipRange'] as String).input(),
     );
   }
 }

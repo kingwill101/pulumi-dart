@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetPhysicalTableMapS3SourceUploadSetting {
-  final bool containsHeader;
-  final String delimiter;
-  final String format;
-  final int startFromRow;
-  final String textQualifier;
+  final pulumi.Input<bool> containsHeader;
+  final pulumi.Input<String> delimiter;
+  final pulumi.Input<String> format;
+  final pulumi.Input<int> startFromRow;
+  final pulumi.Input<String> textQualifier;
 
   /// Creates a new [GetDataSetPhysicalTableMapS3SourceUploadSetting].
   /// [containsHeader] Required.
@@ -34,11 +35,11 @@ class GetDataSetPhysicalTableMapS3SourceUploadSetting {
 
   factory GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3SourceUploadSetting(
-      containsHeader: map['containsHeader'] as bool,
-      delimiter: map['delimiter'] as String,
-      format: map['format'] as String,
-      startFromRow: map['startFromRow'] as int,
-      textQualifier: map['textQualifier'] as String,
+      containsHeader: (map['containsHeader'] as bool).input(),
+      delimiter: (map['delimiter'] as String).input(),
+      format: (map['format'] as String).input(),
+      startFromRow: (map['startFromRow'] as int).input(),
+      textQualifier: (map['textQualifier'] as String).input(),
     );
   }
 }

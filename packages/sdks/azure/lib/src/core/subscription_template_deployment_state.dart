@@ -31,23 +31,15 @@ class SubscriptionTemplateDeploymentState {
   /// [templateContent] The contents of the ARM Template which should be deployed into this Subscription.
   /// [templateSpecVersionId] The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
   SubscriptionTemplateDeploymentState({
-    pulumi.Output<String>? debugLevel,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? outputContent,
-    pulumi.Output<String>? parametersContent,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateContent,
-    pulumi.Output<String>? templateSpecVersionId,
-  }) :
-      debugLevel = pulumi.Input.asOptionalInput<String>(debugLevel),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputContent = pulumi.Input.asOptionalInput<String>(outputContent),
-      parametersContent = pulumi.Input.asOptionalInput<String>(parametersContent),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateContent = pulumi.Input.asOptionalInput<String>(templateContent),
-      templateSpecVersionId = pulumi.Input.asOptionalInput<String>(templateSpecVersionId);
+    this.debugLevel,
+    this.location,
+    this.name,
+    this.outputContent,
+    this.parametersContent,
+    this.tags,
+    this.templateContent,
+    this.templateSpecVersionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class SubscriptionTemplateDeploymentState {
 
   factory SubscriptionTemplateDeploymentState.fromMap(Map<String, dynamic> map) {
     return SubscriptionTemplateDeploymentState(
-      debugLevel: map['debugLevel'] == null ? null : pulumi.Output.create<String>(map['debugLevel'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputContent: map['outputContent'] == null ? null : pulumi.Output.create<String>(map['outputContent'] as String),
-      parametersContent: map['parametersContent'] == null ? null : pulumi.Output.create<String>(map['parametersContent'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateContent: map['templateContent'] == null ? null : pulumi.Output.create<String>(map['templateContent'] as String),
-      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : pulumi.Output.create<String>(map['templateSpecVersionId'] as String),
+      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputContent: map['outputContent'] == null ? null : (map['outputContent'] as String).input(),
+      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
+      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId'] as String).input(),
     );
   }
 }

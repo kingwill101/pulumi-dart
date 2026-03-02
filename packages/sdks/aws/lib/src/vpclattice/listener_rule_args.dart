@@ -40,23 +40,15 @@ class ListenerRuleArgs {
   /// [serviceIdentifier] The ID or Amazon Resource Identifier (ARN) of the service.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ListenerRuleArgs({
-    required pulumi.Output<ListenerRuleAction> action,
-    required pulumi.Output<String> listenerIdentifier,
-    required pulumi.Output<ListenerRuleMatch> match,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> priority,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      action = pulumi.Input.asInput<ListenerRuleAction>(action),
-      listenerIdentifier = pulumi.Input.asInput<String>(listenerIdentifier),
-      match = pulumi.Input.asInput<ListenerRuleMatch>(match),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceIdentifier = pulumi.Input.asInput<String>(serviceIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.action,
+    required this.listenerIdentifier,
+    required this.match,
+    this.name,
+    required this.priority,
+    this.region,
+    required this.serviceIdentifier,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class ListenerRuleArgs {
 
   factory ListenerRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListenerRuleArgs(
-      action: pulumi.Output.create<ListenerRuleAction>(ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      listenerIdentifier: pulumi.Output.create<String>(map['listenerIdentifier'] as String),
-      match: pulumi.Output.create<ListenerRuleMatch>(ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceIdentifier: pulumi.Output.create<String>(map['serviceIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      action: (ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      listenerIdentifier: (map['listenerIdentifier'] as String).input(),
+      match: (ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceIdentifier: (map['serviceIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

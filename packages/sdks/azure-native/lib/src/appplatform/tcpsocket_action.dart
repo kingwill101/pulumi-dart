@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {
   /// The type of the action to take to perform the health check.
   /// Expected value is 'TCPSocketAction'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TCPSocketAction].
   /// [type] The type of the action to take to perform the health check.
@@ -21,7 +22,7 @@ class TCPSocketAction {
 
   factory TCPSocketAction.fromMap(Map<String, dynamic> map) {
     return TCPSocketAction(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

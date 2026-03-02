@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Artifact policy configuration for the repository contents.
 class UpstreamPolicyResponse {
   /// Entries with a greater priority value take precedence in the pull order.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
-  final String repository;
+  final pulumi.Input<String> repository;
 
   /// Creates a new [UpstreamPolicyResponse].
   /// [priority] Entries with a greater priority value take precedence in the pull order.
@@ -25,8 +26,8 @@ class UpstreamPolicyResponse {
 
   factory UpstreamPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamPolicyResponse(
-      priority: map['priority'] as int,
-      repository: map['repository'] as String,
+      priority: (map['priority'] as int).input(),
+      repository: (map['repository'] as String).input(),
     );
   }
 }

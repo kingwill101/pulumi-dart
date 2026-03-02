@@ -54,29 +54,18 @@ class IpSecPolicyState {
   /// [transformProtocol] The transform protocol. Valid values are esp, ah and ah-esp.
   /// [valueSpecs] Map of additional options.
   IpSecPolicyState({
-    pulumi.Output<String>? authAlgorithm,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? encapsulationMode,
-    pulumi.Output<String>? encryptionAlgorithm,
-    pulumi.Output<List<IpSecPolicyLifetime>>? lifetimes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? pfs,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? transformProtocol,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-  }) :
-      authAlgorithm = pulumi.Input.asOptionalInput<String>(authAlgorithm),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      encapsulationMode = pulumi.Input.asOptionalInput<String>(encapsulationMode),
-      encryptionAlgorithm = pulumi.Input.asOptionalInput<String>(encryptionAlgorithm),
-      lifetimes = pulumi.Input.asOptionalInput<List<IpSecPolicyLifetime>>(lifetimes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pfs = pulumi.Input.asOptionalInput<String>(pfs),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      transformProtocol = pulumi.Input.asOptionalInput<String>(transformProtocol),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs);
+    this.authAlgorithm,
+    this.description,
+    this.encapsulationMode,
+    this.encryptionAlgorithm,
+    this.lifetimes,
+    this.name,
+    this.pfs,
+    this.region,
+    this.tenantId,
+    this.transformProtocol,
+    this.valueSpecs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,17 +85,17 @@ class IpSecPolicyState {
 
   factory IpSecPolicyState.fromMap(Map<String, dynamic> map) {
     return IpSecPolicyState(
-      authAlgorithm: map['authAlgorithm'] == null ? null : pulumi.Output.create<String>(map['authAlgorithm'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      encapsulationMode: map['encapsulationMode'] == null ? null : pulumi.Output.create<String>(map['encapsulationMode'] as String),
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : pulumi.Output.create<String>(map['encryptionAlgorithm'] as String),
-      lifetimes: map['lifetimes'] == null ? null : pulumi.Output.create<List<IpSecPolicyLifetime>>(pulumi.Input.decodeList<IpSecPolicyLifetime>(map['lifetimes'], (value) => IpSecPolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pfs: map['pfs'] == null ? null : pulumi.Output.create<String>(map['pfs'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      transformProtocol: map['transformProtocol'] == null ? null : pulumi.Output.create<String>(map['transformProtocol'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
+      authAlgorithm: map['authAlgorithm'] == null ? null : (map['authAlgorithm'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encapsulationMode: map['encapsulationMode'] == null ? null : (map['encapsulationMode'] as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
+      lifetimes: map['lifetimes'] == null ? null : (pulumi.Input.decodeList<IpSecPolicyLifetime>(map['lifetimes'], (value) => IpSecPolicyLifetime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pfs: map['pfs'] == null ? null : (map['pfs'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      transformProtocol: map['transformProtocol'] == null ? null : (map['transformProtocol'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
     );
   }
 }

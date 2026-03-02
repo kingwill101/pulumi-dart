@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Active Directory identity configuration for a resource.
 class ResourceIdentityResponse {
   /// The Azure Active Directory principal id.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Azure Active Directory tenant id.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] The Azure Active Directory principal id.
@@ -30,9 +31,9 @@ class ResourceIdentityResponse {
 
   factory ResourceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

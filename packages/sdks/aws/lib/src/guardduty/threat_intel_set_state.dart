@@ -34,25 +34,16 @@ class ThreatIntelSetState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ThreatIntelSetState({
-    pulumi.Output<bool>? activate,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? detectorId,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      activate = pulumi.Input.asOptionalInput<bool>(activate),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      detectorId = pulumi.Input.asOptionalInput<String>(detectorId),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.activate,
+    this.arn,
+    this.detectorId,
+    this.format,
+    this.location,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ThreatIntelSetState {
 
   factory ThreatIntelSetState.fromMap(Map<String, dynamic> map) {
     return ThreatIntelSetState(
-      activate: map['activate'] == null ? null : pulumi.Output.create<bool>(map['activate'] as bool),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      detectorId: map['detectorId'] == null ? null : pulumi.Output.create<String>(map['detectorId'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

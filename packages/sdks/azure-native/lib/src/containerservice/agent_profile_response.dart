@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Agent profile for the Fleet hub.
 class AgentProfileResponse {
   /// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// The virtual machine size of the Fleet hub.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [AgentProfileResponse].
   /// [subnetId] The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
@@ -25,8 +26,8 @@ class AgentProfileResponse {
 
   factory AgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentProfileResponse(
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

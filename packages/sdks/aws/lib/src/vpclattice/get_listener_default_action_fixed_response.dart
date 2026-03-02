@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerDefaultActionFixedResponse {
-  final int statusCode;
+  final pulumi.Input<int> statusCode;
 
   /// Creates a new [GetListenerDefaultActionFixedResponse].
   /// [statusCode] Required.
@@ -18,7 +19,7 @@ class GetListenerDefaultActionFixedResponse {
 
   factory GetListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionFixedResponse(
-      statusCode: map['statusCode'] as int,
+      statusCode: (map['statusCode'] as int).input(),
     );
   }
 }

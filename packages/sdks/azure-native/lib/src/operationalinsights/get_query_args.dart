@@ -19,13 +19,10 @@ class GetQueryArgs {
   /// [queryPackName] The name of the Log Analytics QueryPack resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetQueryArgs({
-    required pulumi.Output<String> id,
-    required pulumi.Output<String> queryPackName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      queryPackName = pulumi.Input.asInput<String>(queryPackName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.id,
+    required this.queryPackName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetQueryArgs {
 
   factory GetQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      queryPackName: pulumi.Output.create<String>(map['queryPackName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      id: (map['id'] as String).input(),
+      queryPackName: (map['queryPackName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

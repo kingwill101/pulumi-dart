@@ -22,15 +22,11 @@ class GetDynamicTagGroupsArgs {
   /// [status] The status of the resource. Valid values: `RUNNING`, `FINISH`.
   /// [tagKey] The tag key of the tag.
   GetDynamicTagGroupsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? tagKey,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tagKey = pulumi.Input.asOptionalInput<String>(tagKey);
+    this.ids,
+    this.outputFile,
+    this.status,
+    this.tagKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetDynamicTagGroupsArgs {
 
   factory GetDynamicTagGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDynamicTagGroupsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tagKey: map['tagKey'] == null ? null : pulumi.Output.create<String>(map['tagKey'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
     );
   }
 }

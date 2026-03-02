@@ -29,19 +29,13 @@ class WorkloadInstanceArgs {
   /// [tags] Gets or sets the resource tags.
   /// [workloadInstanceName] Workload instance name.
   WorkloadInstanceArgs({
-    required pulumi.Output<String> modernizeProjectName,
-    pulumi.Output<WorkloadInstanceModelProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workloadInstanceName,
-  }) :
-      modernizeProjectName = pulumi.Input.asInput<String>(modernizeProjectName),
-      properties = pulumi.Input.asOptionalInput<WorkloadInstanceModelProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workloadInstanceName = pulumi.Input.asOptionalInput<String>(workloadInstanceName);
+    required this.modernizeProjectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    this.tags,
+    this.workloadInstanceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class WorkloadInstanceArgs {
 
   factory WorkloadInstanceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceArgs(
-      modernizeProjectName: pulumi.Output.create<String>(map['modernizeProjectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<WorkloadInstanceModelProperties>(WorkloadInstanceModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workloadInstanceName: map['workloadInstanceName'] == null ? null : pulumi.Output.create<String>(map['workloadInstanceName'] as String),
+      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
+      properties: map['properties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workloadInstanceName: map['workloadInstanceName'] == null ? null : (map['workloadInstanceName'] as String).input(),
     );
   }
 }

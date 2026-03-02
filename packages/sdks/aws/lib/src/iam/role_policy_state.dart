@@ -23,15 +23,11 @@ class RolePolicyState {
   /// [policy] The inline policy document.
   /// [role] The name of the IAM role to attach to the policy.
   RolePolicyState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? role,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.name,
+    this.namePrefix,
+    this.policy,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RolePolicyState {
 
   factory RolePolicyState.fromMap(Map<String, dynamic> map) {
     return RolePolicyState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

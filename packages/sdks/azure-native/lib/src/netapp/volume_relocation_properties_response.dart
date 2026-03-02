@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Volume relocation properties
 class VolumeRelocationPropertiesResponse {
   /// Has relocation finished and is ready to be cleaned up
-  final bool readyToBeFinalized;
+  final pulumi.Input<bool> readyToBeFinalized;
   /// Has relocation been requested for this volume
-  final bool? relocationRequested;
+  final pulumi.Input<bool>? relocationRequested;
 
   /// Creates a new [VolumeRelocationPropertiesResponse].
   /// [readyToBeFinalized] Has relocation finished and is ready to be cleaned up
@@ -25,8 +26,8 @@ class VolumeRelocationPropertiesResponse {
 
   factory VolumeRelocationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VolumeRelocationPropertiesResponse(
-      readyToBeFinalized: map['readyToBeFinalized'] as bool,
-      relocationRequested: map['relocationRequested'] == null ? null : map['relocationRequested'] as bool,
+      readyToBeFinalized: (map['readyToBeFinalized'] as bool).input(),
+      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested'] as bool).input(),
     );
   }
 }

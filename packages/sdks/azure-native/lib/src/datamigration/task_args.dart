@@ -26,17 +26,12 @@ class TaskArgs {
   /// [serviceName] Name of the service
   /// [taskName] Name of the Task
   TaskArgs({
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<ConnectToMongoDbTaskProperties>? properties,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? taskName,
-  }) :
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<ConnectToMongoDbTaskProperties>(properties),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      taskName = pulumi.Input.asOptionalInput<String>(taskName);
+    required this.groupName,
+    required this.projectName,
+    this.properties,
+    required this.serviceName,
+    this.taskName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConnectToMongoDbTaskProperties>(ConnectToMongoDbTaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      taskName: map['taskName'] == null ? null : pulumi.Output.create<String>(map['taskName'] as String),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConnectToMongoDbTaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
     );
   }
 }

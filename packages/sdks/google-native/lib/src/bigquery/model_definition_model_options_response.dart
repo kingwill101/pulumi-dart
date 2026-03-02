@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
 class ModelDefinitionModelOptionsResponse {
-  final List<String> labels;
-  final String lossType;
-  final String modelType;
+  final pulumi.Input<List<String>> labels;
+  final pulumi.Input<String> lossType;
+  final pulumi.Input<String> modelType;
 
   /// Creates a new [ModelDefinitionModelOptionsResponse].
   /// [labels] Required.
@@ -27,9 +28,9 @@ class ModelDefinitionModelOptionsResponse {
 
   factory ModelDefinitionModelOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ModelDefinitionModelOptionsResponse(
-      labels: (map['labels'] as List).cast<String>(),
-      lossType: map['lossType'] as String,
-      modelType: map['modelType'] as String,
+      labels: ((map['labels'] as List).cast<String>()).input(),
+      lossType: (map['lossType'] as String).input(),
+      modelType: (map['modelType'] as String).input(),
     );
   }
 }

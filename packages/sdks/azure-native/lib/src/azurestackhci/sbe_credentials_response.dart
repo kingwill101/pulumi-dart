@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// secrets used for solution builder extension (SBE) partner extensibility.
 class SbeCredentialsResponse {
   /// secret name expected for Enterprise Cloud Engine (ECE).
-  final String? eceSecretName;
+  final pulumi.Input<String>? eceSecretName;
   /// secret URI stored in keyvault.
-  final String? secretLocation;
+  final pulumi.Input<String>? secretLocation;
   /// secret name stored in keyvault.
-  final String? secretName;
+  final pulumi.Input<String>? secretName;
 
   /// Creates a new [SbeCredentialsResponse].
   /// [eceSecretName] secret name expected for Enterprise Cloud Engine (ECE).
@@ -30,9 +31,9 @@ class SbeCredentialsResponse {
 
   factory SbeCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return SbeCredentialsResponse(
-      eceSecretName: map['eceSecretName'] == null ? null : map['eceSecretName'] as String,
-      secretLocation: map['secretLocation'] == null ? null : map['secretLocation'] as String,
-      secretName: map['secretName'] == null ? null : map['secretName'] as String,
+      eceSecretName: map['eceSecretName'] == null ? null : (map['eceSecretName'] as String).input(),
+      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
     );
   }
 }

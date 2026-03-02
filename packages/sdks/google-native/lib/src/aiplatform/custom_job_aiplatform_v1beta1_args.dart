@@ -28,19 +28,13 @@ class CustomJobAiplatformV1beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   CustomJobAiplatformV1beta1Args({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    required pulumi.Output<GoogleCloudAiplatformV1beta1CustomJobSpec> jobSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      jobSpec = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1CustomJobSpec>(jobSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    this.encryptionSpec,
+    required this.jobSpec,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class CustomJobAiplatformV1beta1Args {
 
   factory CustomJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return CustomJobAiplatformV1beta1Args(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      jobSpec: pulumi.Output.create<GoogleCloudAiplatformV1beta1CustomJobSpec>(GoogleCloudAiplatformV1beta1CustomJobSpec.fromMap((map['jobSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      jobSpec: (GoogleCloudAiplatformV1beta1CustomJobSpec.fromMap((map['jobSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

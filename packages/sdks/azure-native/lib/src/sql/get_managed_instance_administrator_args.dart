@@ -18,13 +18,10 @@ class GetManagedInstanceAdministratorArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedInstanceAdministratorArgs({
-    required pulumi.Output<String> administratorName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      administratorName = pulumi.Input.asInput<String>(administratorName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.administratorName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetManagedInstanceAdministratorArgs {
 
   factory GetManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceAdministratorArgs(
-      administratorName: pulumi.Output.create<String>(map['administratorName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      administratorName: (map['administratorName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

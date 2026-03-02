@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleTimestreamDimension {
   /// The metadata dimension name. This is the name of the column in the Amazon Timestream database table record.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value to write in this column of the database record.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TopicRuleTimestreamDimension].
   /// [name] The metadata dimension name. This is the name of the column in the Amazon Timestream database table record.
@@ -24,8 +25,8 @@ class TopicRuleTimestreamDimension {
 
   factory TopicRuleTimestreamDimension.fromMap(Map<String, dynamic> map) {
     return TopicRuleTimestreamDimension(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

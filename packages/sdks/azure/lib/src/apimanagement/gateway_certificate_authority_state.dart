@@ -19,15 +19,11 @@ class GatewayCertificateAuthorityState {
   /// [gatewayName] The name of the API Management Gateway. Changing this forces a new resource to be created.
   /// [isTrusted] Whether the API Management Gateway Certificate Authority is trusted.
   GatewayCertificateAuthorityState({
-    pulumi.Output<String>? apiManagementId,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<bool>? isTrusted,
-  }) :
-      apiManagementId = pulumi.Input.asOptionalInput<String>(apiManagementId),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      isTrusted = pulumi.Input.asOptionalInput<bool>(isTrusted);
+    this.apiManagementId,
+    this.certificateName,
+    this.gatewayName,
+    this.isTrusted,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GatewayCertificateAuthorityState {
 
   factory GatewayCertificateAuthorityState.fromMap(Map<String, dynamic> map) {
     return GatewayCertificateAuthorityState(
-      apiManagementId: map['apiManagementId'] == null ? null : pulumi.Output.create<String>(map['apiManagementId'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      isTrusted: map['isTrusted'] == null ? null : pulumi.Output.create<bool>(map['isTrusted'] as bool),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted'] as bool).input(),
     );
   }
 }

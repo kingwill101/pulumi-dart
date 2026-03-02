@@ -22,15 +22,11 @@ class ClientState {
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [secret] Output only. Client secret of the OAuth client.
   ClientState({
-    pulumi.Output<String>? brand,
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? secret,
-  }) :
-      brand = pulumi.Input.asOptionalInput<String>(brand),
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      secret = pulumi.Input.asOptionalInput<String>(secret);
+    this.brand,
+    this.clientId,
+    this.displayName,
+    this.secret,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ClientState {
 
   factory ClientState.fromMap(Map<String, dynamic> map) {
     return ClientState(
-      brand: map['brand'] == null ? null : pulumi.Output.create<String>(map['brand'] as String),
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<String>(map['secret'] as String),
+      brand: map['brand'] == null ? null : (map['brand'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
     );
   }
 }

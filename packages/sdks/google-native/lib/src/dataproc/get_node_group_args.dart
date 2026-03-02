@@ -18,15 +18,11 @@ class GetNodeGroupArgs {
   /// [project] Optional.
   /// [regionId] Required.
   GetNodeGroupArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> nodeGroupId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> regionId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      nodeGroupId = pulumi.Input.asInput<String>(nodeGroupId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+    required this.clusterId,
+    required this.nodeGroupId,
+    this.project,
+    required this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      nodeGroupId: pulumi.Output.create<String>(map['nodeGroupId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      regionId: pulumi.Output.create<String>(map['regionId'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      nodeGroupId: (map['nodeGroupId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

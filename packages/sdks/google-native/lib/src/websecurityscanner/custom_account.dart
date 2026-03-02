@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes authentication configuration that uses a custom account.
 class CustomAccount {
   /// The login form URL of the website.
-  final String loginUrl;
+  final pulumi.Input<String> loginUrl;
   /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-  final String password;
+  final pulumi.Input<String> password;
   /// The user name of the custom account.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [CustomAccount].
   /// [loginUrl] The login form URL of the website.
@@ -30,9 +31,9 @@ class CustomAccount {
 
   factory CustomAccount.fromMap(Map<String, dynamic> map) {
     return CustomAccount(
-      loginUrl: map['loginUrl'] as String,
-      password: map['password'] as String,
-      username: map['username'] as String,
+      loginUrl: (map['loginUrl'] as String).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

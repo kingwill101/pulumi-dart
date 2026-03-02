@@ -19,13 +19,10 @@ class GetEndpointGroupIpAddressCidrBlocksArgs {
   /// [endpointGroupRegion] The region ID of the endpoint group.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetEndpointGroupIpAddressCidrBlocksArgs({
-    pulumi.Output<String>? acceleratorId,
-    required pulumi.Output<String> endpointGroupRegion,
-    pulumi.Output<String>? outputFile,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      endpointGroupRegion = pulumi.Input.asInput<String>(endpointGroupRegion),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.acceleratorId,
+    required this.endpointGroupRegion,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEndpointGroupIpAddressCidrBlocksArgs {
 
   factory GetEndpointGroupIpAddressCidrBlocksArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksArgs(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointGroupRegion: pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

@@ -23,13 +23,10 @@ class GetTagTemplateIamPolicyArgs {
   /// [region] Template location region.
   /// [tagTemplate] Used to find the parent resource to bind the IAM policy to
   GetTagTemplateIamPolicyArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> tagTemplate,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tagTemplate = pulumi.Input.asInput<String>(tagTemplate);
+    this.project,
+    this.region,
+    required this.tagTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetTagTemplateIamPolicyArgs {
 
   factory GetTagTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tagTemplate: pulumi.Output.create<String>(map['tagTemplate'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tagTemplate: (map['tagTemplate'] as String).input(),
     );
   }
 }

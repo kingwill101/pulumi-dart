@@ -17,11 +17,9 @@ class LogAnalyticsWorkspaceOnboardingState {
   /// [customerManagedKeyEnabled] Specifies if the Workspace is using Customer managed key. Defaults to `false`. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the Workspace Id. Changing this forces the Log Analytics Workspace off the board and onboard again. Changing this forces a new resource to be created.
   LogAnalyticsWorkspaceOnboardingState({
-    pulumi.Output<bool>? customerManagedKeyEnabled,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      customerManagedKeyEnabled = pulumi.Input.asOptionalInput<bool>(customerManagedKeyEnabled),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.customerManagedKeyEnabled,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class LogAnalyticsWorkspaceOnboardingState {
 
   factory LogAnalyticsWorkspaceOnboardingState.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceOnboardingState(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : pulumi.Output.create<bool>(map['customerManagedKeyEnabled'] as bool),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled'] as bool).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

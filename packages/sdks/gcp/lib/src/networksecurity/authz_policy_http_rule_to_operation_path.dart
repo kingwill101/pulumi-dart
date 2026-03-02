@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyHttpRuleToOperationPath {
   /// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc.def
-  final String? contains;
+  final pulumi.Input<String>? contains;
   /// The input string must match exactly the string specified here.
   /// Examples:
   /// * abc only matches the value abc.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-  final bool? ignoreCase;
+  final pulumi.Input<bool>? ignoreCase;
   /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value abc.xyz
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
   /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc
-  final String? suffix;
+  final pulumi.Input<String>? suffix;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperationPath].
   /// [contains] The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -47,11 +48,11 @@ class AuthzPolicyHttpRuleToOperationPath {
 
   factory AuthzPolicyHttpRuleToOperationPath.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperationPath(
-      contains: map['contains'] == null ? null : map['contains'] as String,
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      suffix: map['suffix'] == null ? null : map['suffix'] as String,
+      contains: map['contains'] == null ? null : (map['contains'] as String).input(),
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
     );
   }
 }

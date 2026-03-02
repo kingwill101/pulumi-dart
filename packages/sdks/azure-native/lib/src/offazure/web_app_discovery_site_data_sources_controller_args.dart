@@ -25,17 +25,12 @@ class WebAppDiscoverySiteDataSourcesControllerArgs {
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
   WebAppDiscoverySiteDataSourcesControllerArgs({
-    pulumi.Output<String>? discoverySiteDataSourceName,
-    pulumi.Output<String>? discoverySiteId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-    required pulumi.Output<String> webAppSiteName,
-  }) :
-      discoverySiteDataSourceName = pulumi.Input.asOptionalInput<String>(discoverySiteDataSourceName),
-      discoverySiteId = pulumi.Input.asOptionalInput<String>(discoverySiteId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName),
-      webAppSiteName = pulumi.Input.asInput<String>(webAppSiteName);
+    this.discoverySiteDataSourceName,
+    this.discoverySiteId,
+    required this.resourceGroupName,
+    required this.siteName,
+    required this.webAppSiteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WebAppDiscoverySiteDataSourcesControllerArgs {
 
   factory WebAppDiscoverySiteDataSourcesControllerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDiscoverySiteDataSourcesControllerArgs(
-      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : pulumi.Output.create<String>(map['discoverySiteDataSourceName'] as String),
-      discoverySiteId: map['discoverySiteId'] == null ? null : pulumi.Output.create<String>(map['discoverySiteId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
-      webAppSiteName: pulumi.Output.create<String>(map['webAppSiteName'] as String),
+      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
+      webAppSiteName: (map['webAppSiteName'] as String).input(),
     );
   }
 }

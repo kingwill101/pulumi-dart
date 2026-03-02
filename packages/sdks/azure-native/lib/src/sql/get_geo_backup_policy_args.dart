@@ -22,15 +22,11 @@ class GetGeoBackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   GetGeoBackupPolicyArgs({
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> geoBackupPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      geoBackupPolicyName = pulumi.Input.asInput<String>(geoBackupPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.databaseName,
+    required this.geoBackupPolicyName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGeoBackupPolicyArgs {
 
   factory GetGeoBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGeoBackupPolicyArgs(
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      geoBackupPolicyName: pulumi.Output.create<String>(map['geoBackupPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      databaseName: (map['databaseName'] as String).input(),
+      geoBackupPolicyName: (map['geoBackupPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

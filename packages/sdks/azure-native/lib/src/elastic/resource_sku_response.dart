@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Microsoft.Elastic SKU.
 class ResourceSkuResponse {
   /// Name of the SKU.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Name of the SKU.
@@ -20,7 +21,7 @@ class ResourceSkuResponse {
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

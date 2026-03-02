@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetMarkdownNullValueSeriesOverride {
   /// Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
-  final String? nullValue;
+  final pulumi.Input<String>? nullValue;
   /// Series name
-  final String? seriesName;
+  final pulumi.Input<String>? seriesName;
 
   /// Creates a new [OneDashboardPageWidgetMarkdownNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
@@ -24,8 +25,8 @@ class OneDashboardPageWidgetMarkdownNullValueSeriesOverride {
 
   factory OneDashboardPageWidgetMarkdownNullValueSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetMarkdownNullValueSeriesOverride(
-      nullValue: map['nullValue'] == null ? null : map['nullValue'] as String,
-      seriesName: map['seriesName'] == null ? null : map['seriesName'] as String,
+      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
+      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
     );
   }
 }

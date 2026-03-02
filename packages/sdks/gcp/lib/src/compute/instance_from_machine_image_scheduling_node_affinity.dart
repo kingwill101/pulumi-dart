@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageSchedulingNodeAffinity {
-  final String key;
-  final String operator;
-  final List<String> values;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String> operator;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [InstanceFromMachineImageSchedulingNodeAffinity].
   /// [key] Required.
@@ -26,9 +27,9 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
 
   factory InstanceFromMachineImageSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageSchedulingNodeAffinity(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      values: (map['values'] as List).cast<String>(),
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

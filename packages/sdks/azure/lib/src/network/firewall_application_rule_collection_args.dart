@@ -29,19 +29,13 @@ class FirewallApplicationRuleCollectionArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   /// [rules] One or more `rule` blocks as defined below.
   FirewallApplicationRuleCollectionArgs({
-    required pulumi.Output<String> action,
-    required pulumi.Output<String> azureFirewallName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<FirewallApplicationRuleCollectionRule>> rules,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      azureFirewallName = pulumi.Input.asInput<String>(azureFirewallName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rules = pulumi.Input.asInput<List<FirewallApplicationRuleCollectionRule>>(rules);
+    required this.action,
+    required this.azureFirewallName,
+    this.name,
+    required this.priority,
+    required this.resourceGroupName,
+    required this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class FirewallApplicationRuleCollectionArgs {
 
   factory FirewallApplicationRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return FirewallApplicationRuleCollectionArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      azureFirewallName: pulumi.Output.create<String>(map['azureFirewallName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rules: pulumi.Output.create<List<FirewallApplicationRuleCollectionRule>>(pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(map['rules'], (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
+      action: (map['action'] as String).input(),
+      azureFirewallName: (map['azureFirewallName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rules: (pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(map['rules'], (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

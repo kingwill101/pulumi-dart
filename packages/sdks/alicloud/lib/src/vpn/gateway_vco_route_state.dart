@@ -25,19 +25,13 @@ class GatewayVcoRouteState {
   /// [vpnConnectionId] The id of the vpn attachment.
   /// [weight] The weight value of the destination route. Valid values: `0`, `100`.
   GatewayVcoRouteState({
-    pulumi.Output<String>? nextHop,
-    pulumi.Output<String>? overlayMode,
-    pulumi.Output<String>? routeDest,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpnConnectionId,
-    pulumi.Output<int>? weight,
-  }) :
-      nextHop = pulumi.Input.asOptionalInput<String>(nextHop),
-      overlayMode = pulumi.Input.asOptionalInput<String>(overlayMode),
-      routeDest = pulumi.Input.asOptionalInput<String>(routeDest),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpnConnectionId = pulumi.Input.asOptionalInput<String>(vpnConnectionId),
-      weight = pulumi.Input.asOptionalInput<int>(weight);
+    this.nextHop,
+    this.overlayMode,
+    this.routeDest,
+    this.status,
+    this.vpnConnectionId,
+    this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class GatewayVcoRouteState {
 
   factory GatewayVcoRouteState.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteState(
-      nextHop: map['nextHop'] == null ? null : pulumi.Output.create<String>(map['nextHop'] as String),
-      overlayMode: map['overlayMode'] == null ? null : pulumi.Output.create<String>(map['overlayMode'] as String),
-      routeDest: map['routeDest'] == null ? null : pulumi.Output.create<String>(map['routeDest'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : pulumi.Output.create<String>(map['vpnConnectionId'] as String),
-      weight: map['weight'] == null ? null : pulumi.Output.create<int>(map['weight'] as int),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
+      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode'] as String).input(),
+      routeDest: map['routeDest'] == null ? null : (map['routeDest'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

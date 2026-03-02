@@ -37,25 +37,16 @@ class GrantArgs {
   /// [tlsOption] An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
   /// [user] The name of the user. Conflicts with `role`.
   GrantArgs({
-    required pulumi.Output<String> database,
-    pulumi.Output<bool>? grant,
-    pulumi.Output<String>? host,
-    pulumi.Output<List<String>>? privileges,
-    pulumi.Output<String>? role,
-    pulumi.Output<List<String>>? roles,
-    pulumi.Output<String>? table,
-    pulumi.Output<String>? tlsOption,
-    pulumi.Output<String>? user,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      grant = pulumi.Input.asOptionalInput<bool>(grant),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      privileges = pulumi.Input.asOptionalInput<List<String>>(privileges),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles),
-      table = pulumi.Input.asOptionalInput<String>(table),
-      tlsOption = pulumi.Input.asOptionalInput<String>(tlsOption),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    required this.database,
+    this.grant,
+    this.host,
+    this.privileges,
+    this.role,
+    this.roles,
+    this.table,
+    this.tlsOption,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class GrantArgs {
 
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      grant: map['grant'] == null ? null : pulumi.Output.create<bool>(map['grant'] as bool),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      privileges: map['privileges'] == null ? null : pulumi.Output.create<List<String>>((map['privileges'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      table: map['table'] == null ? null : pulumi.Output.create<String>(map['table'] as String),
-      tlsOption: map['tlsOption'] == null ? null : pulumi.Output.create<String>(map['tlsOption'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      database: (map['database'] as String).input(),
+      grant: map['grant'] == null ? null : (map['grant'] as bool).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      privileges: map['privileges'] == null ? null : ((map['privileges'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      table: map['table'] == null ? null : (map['table'] as String).input(),
+      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

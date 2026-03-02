@@ -6,19 +6,19 @@ import 'tag.dart';
 /// Definition of awsIamServerCertificate
 class AwsIamServerCertificateProperties {
   /// Amazon Resource Name (ARN) of the server certificate
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// Property certificateBody
-  final String? certificateBody;
+  final pulumi.Input<String>? certificateBody;
   /// Property certificateChain
-  final String? certificateChain;
+  final pulumi.Input<String>? certificateChain;
   /// Property path
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Property privateKey
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// Property serverCertificateName
-  final String? serverCertificateName;
+  final pulumi.Input<String>? serverCertificateName;
   /// Property tags
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
 
   /// Creates a new [AwsIamServerCertificateProperties].
   /// [arn] Amazon Resource Name (ARN) of the server certificate
@@ -46,19 +46,19 @@ class AwsIamServerCertificateProperties {
       'path': ?path,
       'privateKey': ?privateKey,
       'serverCertificateName': ?serverCertificateName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsIamServerCertificateProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamServerCertificateProperties(
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      certificateBody: map['certificateBody'] == null ? null : map['certificateBody'] as String,
-      certificateChain: map['certificateChain'] == null ? null : map['certificateChain'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      serverCertificateName: map['serverCertificateName'] == null ? null : map['serverCertificateName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      serverCertificateName: map['serverCertificateName'] == null ? null : (map['serverCertificateName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

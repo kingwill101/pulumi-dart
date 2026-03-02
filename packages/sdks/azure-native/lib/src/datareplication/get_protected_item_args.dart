@@ -19,13 +19,10 @@ class GetProtectedItemArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
   GetProtectedItemArgs({
-    required pulumi.Output<String> protectedItemName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> vaultName,
-  }) :
-      protectedItemName = pulumi.Input.asInput<String>(protectedItemName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vaultName = pulumi.Input.asInput<String>(vaultName);
+    required this.protectedItemName,
+    required this.resourceGroupName,
+    required this.vaultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProtectedItemArgs {
 
   factory GetProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectedItemArgs(
-      protectedItemName: pulumi.Output.create<String>(map['protectedItemName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+      protectedItemName: (map['protectedItemName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vaultName: (map['vaultName'] as String).input(),
     );
   }
 }

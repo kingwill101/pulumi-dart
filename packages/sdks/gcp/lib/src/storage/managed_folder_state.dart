@@ -32,21 +32,14 @@ class ManagedFolderState {
   /// [selfLink] The URI of the created resource.
   /// [updateTime] The timestamp at which this managed folder was most recently updated.
   ManagedFolderState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? metageneration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? updateTime,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      metageneration = pulumi.Input.asOptionalInput<String>(metageneration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.bucket,
+    this.createTime,
+    this.forceDestroy,
+    this.metageneration,
+    this.name,
+    this.selfLink,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ManagedFolderState {
 
   factory ManagedFolderState.fromMap(Map<String, dynamic> map) {
     return ManagedFolderState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      metageneration: map['metageneration'] == null ? null : pulumi.Output.create<String>(map['metageneration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      metageneration: map['metageneration'] == null ? null : (map['metageneration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

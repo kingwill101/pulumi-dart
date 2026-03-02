@@ -6,43 +6,43 @@ import 'get_waf_rules_waf_rule_rate_limit.dart';
 
 class GetWafRulesWafRule {
   /// Specifies the action of the rule.
-  final String action;
+  final pulumi.Input<String> action;
   /// Whether to turn on Frequency Control, on/off
-  final String ccStatus;
+  final pulumi.Input<String> ccStatus;
   /// The blocked regions in the Chinese mainland, separated by commas (,).
-  final String cnRegionList;
+  final pulumi.Input<String> cnRegionList;
   /// The trigger condition of the rule.
-  final List<GetWafRulesWafRuleCondition> conditions;
+  final pulumi.Input<List<GetWafRulesWafRuleCondition>> conditions;
   /// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
-  final String defenseScene;
+  final pulumi.Input<String> defenseScene;
   /// The effective range of the frequency control blacklist.
-  final String effect;
+  final pulumi.Input<String> effect;
   /// Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The ID of the Waf Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The effective range of the frequency control blacklist.
-  final String otherRegionList;
+  final pulumi.Input<String> otherRegionList;
   /// The protection policy ID.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The rules of rate limiting.
-  final List<GetWafRulesWafRuleRateLimit> rateLimits;
+  final pulumi.Input<List<GetWafRulesWafRuleRateLimit>> rateLimits;
   /// The regular expression.
-  final List<String> regularRules;
+  final pulumi.Input<List<String>> regularRules;
   /// The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
-  final List<String> regularTypes;
+  final pulumi.Input<List<String>> regularTypes;
   /// Filter by IP address.
-  final List<String> remoteAddrs;
+  final pulumi.Input<List<String>> remoteAddrs;
   /// The name of the protection rule.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// List of protection scenarios
-  final List<String> scenes;
+  final pulumi.Input<List<String>> scenes;
   /// The information about the HTTP status code.
-  final String status;
+  final pulumi.Input<String> status;
   /// The id of the waf rule group.
-  final String wafGroupIds;
+  final pulumi.Input<String> wafGroupIds;
   /// The first ID of the resource
-  final String wafRuleId;
+  final pulumi.Input<String> wafRuleId;
 
   /// Creates a new [GetWafRulesWafRule].
   /// [action] Specifies the action of the rule.
@@ -91,14 +91,14 @@ class GetWafRulesWafRule {
       'action': action,
       'ccStatus': ccStatus,
       'cnRegionList': cnRegionList,
-      'conditions': pulumi.Input.encodeList<GetWafRulesWafRuleCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions': pulumi.Input.mapInputValue<List<GetWafRulesWafRuleCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<GetWafRulesWafRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defenseScene': defenseScene,
       'effect': effect,
       'gmtModified': gmtModified,
       'id': id,
       'otherRegionList': otherRegionList,
       'policyId': policyId,
-      'rateLimits': pulumi.Input.encodeList<GetWafRulesWafRuleRateLimit, Map<String, dynamic>>(rateLimits, (value) => value.toMap()),
+      'rateLimits': pulumi.Input.mapInputValue<List<GetWafRulesWafRuleRateLimit>, List<Map<String, dynamic>>>(rateLimits, (value) => pulumi.Input.encodeList<GetWafRulesWafRuleRateLimit, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regularRules': regularRules,
       'regularTypes': regularTypes,
       'remoteAddrs': remoteAddrs,
@@ -112,25 +112,25 @@ class GetWafRulesWafRule {
 
   factory GetWafRulesWafRule.fromMap(Map<String, dynamic> map) {
     return GetWafRulesWafRule(
-      action: map['action'] as String,
-      ccStatus: map['ccStatus'] as String,
-      cnRegionList: map['cnRegionList'] as String,
-      conditions: pulumi.Input.decodeList<GetWafRulesWafRuleCondition>(map['conditions'], (value) => GetWafRulesWafRuleCondition.fromMap((value as Map).cast<String, dynamic>())),
-      defenseScene: map['defenseScene'] as String,
-      effect: map['effect'] as String,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      otherRegionList: map['otherRegionList'] as String,
-      policyId: map['policyId'] as String,
-      rateLimits: pulumi.Input.decodeList<GetWafRulesWafRuleRateLimit>(map['rateLimits'], (value) => GetWafRulesWafRuleRateLimit.fromMap((value as Map).cast<String, dynamic>())),
-      regularRules: (map['regularRules'] as List).cast<String>(),
-      regularTypes: (map['regularTypes'] as List).cast<String>(),
-      remoteAddrs: (map['remoteAddrs'] as List).cast<String>(),
-      ruleName: map['ruleName'] as String,
-      scenes: (map['scenes'] as List).cast<String>(),
-      status: map['status'] as String,
-      wafGroupIds: map['wafGroupIds'] as String,
-      wafRuleId: map['wafRuleId'] as String,
+      action: (map['action'] as String).input(),
+      ccStatus: (map['ccStatus'] as String).input(),
+      cnRegionList: (map['cnRegionList'] as String).input(),
+      conditions: (pulumi.Input.decodeList<GetWafRulesWafRuleCondition>(map['conditions'], (value) => GetWafRulesWafRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defenseScene: (map['defenseScene'] as String).input(),
+      effect: (map['effect'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      otherRegionList: (map['otherRegionList'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      rateLimits: (pulumi.Input.decodeList<GetWafRulesWafRuleRateLimit>(map['rateLimits'], (value) => GetWafRulesWafRuleRateLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regularRules: ((map['regularRules'] as List).cast<String>()).input(),
+      regularTypes: ((map['regularTypes'] as List).cast<String>()).input(),
+      remoteAddrs: ((map['remoteAddrs'] as List).cast<String>()).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      scenes: ((map['scenes'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      wafGroupIds: (map['wafGroupIds'] as String).input(),
+      wafRuleId: (map['wafRuleId'] as String).input(),
     );
   }
 }

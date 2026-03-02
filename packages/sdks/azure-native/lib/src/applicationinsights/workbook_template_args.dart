@@ -39,25 +39,16 @@ class WorkbookTemplateArgs {
   /// [tags] Resource tags
   /// [templateData] Valid JSON object containing workbook template payload.
   WorkbookTemplateArgs({
-    pulumi.Output<String>? author,
-    required pulumi.Output<List<WorkbookTemplateGallery>> galleries,
-    pulumi.Output<Map<String, List<WorkbookTemplateLocalizedGallery>>>? localized,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<dynamic> templateData,
-  }) :
-      author = pulumi.Input.asOptionalInput<String>(author),
-      galleries = pulumi.Input.asInput<List<WorkbookTemplateGallery>>(galleries),
-      localized = pulumi.Input.asOptionalInput<Map<String, List<WorkbookTemplateLocalizedGallery>>>(localized),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateData = pulumi.Input.asInput<dynamic>(templateData);
+    this.author,
+    required this.galleries,
+    this.localized,
+    this.location,
+    this.priority,
+    required this.resourceGroupName,
+    this.resourceName,
+    this.tags,
+    required this.templateData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class WorkbookTemplateArgs {
 
   factory WorkbookTemplateArgs.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateArgs(
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      galleries: pulumi.Output.create<List<WorkbookTemplateGallery>>(pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))),
-      localized: map['localized'] == null ? null : pulumi.Output.create<Map<String, List<WorkbookTemplateLocalizedGallery>>>(pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGallery>>(map['localized'], (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGallery>(value, (value) => WorkbookTemplateLocalizedGallery.fromMap((value as Map).cast<String, dynamic>())))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateData: pulumi.Output.create<dynamic>(map['templateData']),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      galleries: (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localized: map['localized'] == null ? null : (pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGallery>>(map['localized'], (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGallery>(value, (value) => WorkbookTemplateLocalizedGallery.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateData: (map['templateData']).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class AdvancedThreatProtectionArgs {
   /// [enabled] Should Advanced Threat Protection be enabled on this resource?
   /// [targetResourceId] The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
   AdvancedThreatProtectionArgs({
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    required this.enabled,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AdvancedThreatProtectionArgs {
 
   factory AdvancedThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return AdvancedThreatProtectionArgs(
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      enabled: (map['enabled'] as bool).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

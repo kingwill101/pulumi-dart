@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'execute_command_configuration.dart';
 
 /// Definition of ClusterConfiguration
 class ClusterConfiguration {
   /// The details of the execute command configuration. The details of the execute command configuration.
-  final ExecuteCommandConfiguration? executeCommandConfiguration;
+  final pulumi.Input<ExecuteCommandConfiguration>? executeCommandConfiguration;
 
   /// Creates a new [ClusterConfiguration].
   /// [executeCommandConfiguration] The details of the execute command configuration. The details of the execute command configuration.
@@ -15,13 +16,13 @@ class ClusterConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executeCommandConfiguration': ?executeCommandConfiguration == null ? null : executeCommandConfiguration!.toMap(),
+      'executeCommandConfiguration': ?pulumi.Input.mapOptionalInputValue<ExecuteCommandConfiguration, Map<String, dynamic>>(executeCommandConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfiguration(
-      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : ExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>()),
+      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

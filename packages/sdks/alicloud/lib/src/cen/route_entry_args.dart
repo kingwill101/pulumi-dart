@@ -23,13 +23,10 @@ class RouteEntryArgs {
   /// [instanceId] The ID of the CEN.
   /// [routeTableId] The route table of the attached VBR or VPC.
   RouteEntryArgs({
-    required pulumi.Output<String> cidrBlock,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    required this.cidrBlock,
+    required this.instanceId,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

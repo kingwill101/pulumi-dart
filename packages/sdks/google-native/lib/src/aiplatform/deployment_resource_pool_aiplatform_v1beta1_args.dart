@@ -24,17 +24,12 @@ class DeploymentResourcePoolAiplatformV1beta1Args {
   /// [name] Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
   /// [project] Optional.
   DeploymentResourcePoolAiplatformV1beta1Args({
-    required pulumi.Output<GoogleCloudAiplatformV1beta1DedicatedResources> dedicatedResources,
-    required pulumi.Output<String> deploymentResourcePoolId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      dedicatedResources = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1DedicatedResources>(dedicatedResources),
-      deploymentResourcePoolId = pulumi.Input.asInput<String>(deploymentResourcePoolId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dedicatedResources,
+    required this.deploymentResourcePoolId,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class DeploymentResourcePoolAiplatformV1beta1Args {
 
   factory DeploymentResourcePoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DeploymentResourcePoolAiplatformV1beta1Args(
-      dedicatedResources: pulumi.Output.create<GoogleCloudAiplatformV1beta1DedicatedResources>(GoogleCloudAiplatformV1beta1DedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())),
-      deploymentResourcePoolId: pulumi.Output.create<String>(map['deploymentResourcePoolId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dedicatedResources: (GoogleCloudAiplatformV1beta1DedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
+      deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

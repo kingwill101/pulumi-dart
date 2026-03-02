@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_state_response_deprecated_by.dart';
 
 /// Dataset state
 class DatasetStateResponse {
   /// Reference to better Dataset or a Definition
-  final DatasetStateResponseDeprecatedBy? deprecatedBy;
+  final pulumi.Input<DatasetStateResponseDeprecatedBy>? deprecatedBy;
   /// eTag description
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Dataset state
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [DatasetStateResponse].
   /// [deprecatedBy] Reference to better Dataset or a Definition
@@ -23,7 +24,7 @@ class DatasetStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deprecatedBy': ?deprecatedBy == null ? null : deprecatedBy!.toMap(),
+      'deprecatedBy': ?pulumi.Input.mapOptionalInputValue<DatasetStateResponseDeprecatedBy, Map<String, dynamic>>(deprecatedBy, (value) => value.toMap()),
       'etag': etag,
       'state': ?state,
     };
@@ -31,9 +32,9 @@ class DatasetStateResponse {
 
   factory DatasetStateResponse.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponse(
-      deprecatedBy: map['deprecatedBy'] == null ? null : DatasetStateResponseDeprecatedBy.fromMap((map['deprecatedBy'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      deprecatedBy: map['deprecatedBy'] == null ? null : (DatasetStateResponseDeprecatedBy.fromMap((map['deprecatedBy'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

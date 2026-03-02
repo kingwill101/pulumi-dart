@@ -42,29 +42,18 @@ class AccessEntryState {
   /// [type] Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   /// [userName] Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
   AccessEntryState({
-    pulumi.Output<String>? accessEntryArn,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<List<String>>? kubernetesGroups,
-    pulumi.Output<String>? modifiedAt,
-    pulumi.Output<String>? principalArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? userName,
-  }) :
-      accessEntryArn = pulumi.Input.asOptionalInput<String>(accessEntryArn),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      kubernetesGroups = pulumi.Input.asOptionalInput<List<String>>(kubernetesGroups),
-      modifiedAt = pulumi.Input.asOptionalInput<String>(modifiedAt),
-      principalArn = pulumi.Input.asOptionalInput<String>(principalArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.accessEntryArn,
+    this.clusterName,
+    this.createdAt,
+    this.kubernetesGroups,
+    this.modifiedAt,
+    this.principalArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.type,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class AccessEntryState {
 
   factory AccessEntryState.fromMap(Map<String, dynamic> map) {
     return AccessEntryState(
-      accessEntryArn: map['accessEntryArn'] == null ? null : pulumi.Output.create<String>(map['accessEntryArn'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      kubernetesGroups: map['kubernetesGroups'] == null ? null : pulumi.Output.create<List<String>>((map['kubernetesGroups'] as List).cast<String>()),
-      modifiedAt: map['modifiedAt'] == null ? null : pulumi.Output.create<String>(map['modifiedAt'] as String),
-      principalArn: map['principalArn'] == null ? null : pulumi.Output.create<String>(map['principalArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accessEntryArn: map['accessEntryArn'] == null ? null : (map['accessEntryArn'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups'] as List).cast<String>()).input(),
+      modifiedAt: map['modifiedAt'] == null ? null : (map['modifiedAt'] as String).input(),
+      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

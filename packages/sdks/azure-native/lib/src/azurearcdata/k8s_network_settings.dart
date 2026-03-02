@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The kubernetes network settings information.
 class K8sNetworkSettings {
   /// If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0
-  final int? forceencryption;
+  final pulumi.Input<int>? forceencryption;
   /// Specifies which ciphers are allowed by SQL Server for TLS
-  final String? tlsciphers;
+  final pulumi.Input<String>? tlsciphers;
   /// A comma-separated list of which TLS protocols are allowed by SQL Server
-  final String? tlsprotocols;
+  final pulumi.Input<String>? tlsprotocols;
 
   /// Creates a new [K8sNetworkSettings].
   /// [forceencryption] If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0
@@ -30,9 +31,9 @@ class K8sNetworkSettings {
 
   factory K8sNetworkSettings.fromMap(Map<String, dynamic> map) {
     return K8sNetworkSettings(
-      forceencryption: map['forceencryption'] == null ? null : map['forceencryption'] as int,
-      tlsciphers: map['tlsciphers'] == null ? null : map['tlsciphers'] as String,
-      tlsprotocols: map['tlsprotocols'] == null ? null : map['tlsprotocols'] as String,
+      forceencryption: map['forceencryption'] == null ? null : (map['forceencryption'] as int).input(),
+      tlsciphers: map['tlsciphers'] == null ? null : (map['tlsciphers'] as String).input(),
+      tlsprotocols: map['tlsprotocols'] == null ? null : (map['tlsprotocols'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetEndpointsArgs {
   /// [dbClusterId] PolarDB cluster ID.
   /// [dbEndpointId] endpoint of the cluster.
   GetEndpointsArgs({
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? dbEndpointId,
-  }) :
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbEndpointId = pulumi.Input.asOptionalInput<String>(dbEndpointId);
+    required this.dbClusterId,
+    this.dbEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetEndpointsArgs {
 
   factory GetEndpointsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointsArgs(
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointId: map['dbEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbEndpointId'] as String),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
     );
   }
 }

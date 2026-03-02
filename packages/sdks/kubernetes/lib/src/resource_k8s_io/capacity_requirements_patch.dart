@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// CapacityRequirements defines the capacity requirements for a specific device request.
 class CapacityRequirementsPatch {
@@ -14,7 +15,7 @@ class CapacityRequirementsPatch {
   /// - If a requestPolicy is set, the default consumed capacity is determined according to that policy.
   ///
   /// If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim’s status.devices[*].consumedCapacity field.
-  final Map<String, String>? requests;
+  final pulumi.Input<Map<String, String>>? requests;
 
   /// Creates a new [CapacityRequirementsPatch].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
@@ -30,7 +31,7 @@ class CapacityRequirementsPatch {
 
   factory CapacityRequirementsPatch.fromMap(Map<String, dynamic> map) {
     return CapacityRequirementsPatch(
-      requests: map['requests'] == null ? null : (map['requests'] as Map).cast<String, String>(),
+      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
     );
   }
 }

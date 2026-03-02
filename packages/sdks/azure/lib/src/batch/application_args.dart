@@ -28,19 +28,13 @@ class ApplicationArgs {
   /// [name] The name of the application. This must be unique within the account. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group that contains the Batch account. Changing this forces a new resource to be created.
   ApplicationArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? allowUpdates,
-    pulumi.Output<String>? defaultVersion,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      allowUpdates = pulumi.Input.asOptionalInput<bool>(allowUpdates),
-      defaultVersion = pulumi.Input.asOptionalInput<String>(defaultVersion),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    this.allowUpdates,
+    this.defaultVersion,
+    this.displayName,
+    this.name,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      allowUpdates: map['allowUpdates'] == null ? null : pulumi.Output.create<bool>(map['allowUpdates'] as bool),
-      defaultVersion: map['defaultVersion'] == null ? null : pulumi.Output.create<String>(map['defaultVersion'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      allowUpdates: map['allowUpdates'] == null ? null : (map['allowUpdates'] as bool).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

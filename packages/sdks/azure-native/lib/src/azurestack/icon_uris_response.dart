@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Links to product icons.
 class IconUrisResponse {
   /// URI to hero icon.
-  final String? hero;
+  final pulumi.Input<String>? hero;
   /// URI to large icon.
-  final String? large;
+  final pulumi.Input<String>? large;
   /// URI to medium icon.
-  final String? medium;
+  final pulumi.Input<String>? medium;
   /// URI to small icon.
-  final String? small;
+  final pulumi.Input<String>? small;
   /// URI to wide icon.
-  final String? wide;
+  final pulumi.Input<String>? wide;
 
   /// Creates a new [IconUrisResponse].
   /// [hero] URI to hero icon.
@@ -40,11 +41,11 @@ class IconUrisResponse {
 
   factory IconUrisResponse.fromMap(Map<String, dynamic> map) {
     return IconUrisResponse(
-      hero: map['hero'] == null ? null : map['hero'] as String,
-      large: map['large'] == null ? null : map['large'] as String,
-      medium: map['medium'] == null ? null : map['medium'] as String,
-      small: map['small'] == null ? null : map['small'] as String,
-      wide: map['wide'] == null ? null : map['wide'] as String,
+      hero: map['hero'] == null ? null : (map['hero'] as String).input(),
+      large: map['large'] == null ? null : (map['large'] as String).input(),
+      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
+      small: map['small'] == null ? null : (map['small'] as String).input(),
+      wide: map['wide'] == null ? null : (map['wide'] as String).input(),
     );
   }
 }

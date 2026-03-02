@@ -41,23 +41,15 @@ class ServiceConnectionPolicyArgs {
   /// [pscConfig] Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// [serviceClass] The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   ServiceConnectionPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-    pulumi.Output<ServiceConnectionPolicyPscConfig>? pscConfig,
-    required pulumi.Output<String> serviceClass,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pscConfig = pulumi.Input.asOptionalInput<ServiceConnectionPolicyPscConfig>(pscConfig),
-      serviceClass = pulumi.Input.asInput<String>(serviceClass);
+    this.description,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.network,
+    this.project,
+    this.pscConfig,
+    required this.serviceClass,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class ServiceConnectionPolicyArgs {
 
   factory ServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pscConfig: map['pscConfig'] == null ? null : pulumi.Output.create<ServiceConnectionPolicyPscConfig>(ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())),
-      serviceClass: pulumi.Output.create<String>(map['serviceClass'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
+      serviceClass: (map['serviceClass'] as String).input(),
     );
   }
 }

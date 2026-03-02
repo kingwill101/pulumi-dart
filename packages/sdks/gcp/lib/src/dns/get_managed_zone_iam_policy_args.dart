@@ -17,11 +17,9 @@ class GetManagedZoneIamPolicyArgs {
   /// [managedZone] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   GetManagedZoneIamPolicyArgs({
-    required pulumi.Output<String> managedZone,
-    pulumi.Output<String>? project,
-  }) :
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.managedZone,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetManagedZoneIamPolicyArgs {
 
   factory GetManagedZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneIamPolicyArgs(
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      managedZone: (map['managedZone'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

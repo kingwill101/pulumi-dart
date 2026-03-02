@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mcc cache node resource issue properties.
 class MccIssueResponse {
   /// Mcc cache node issue detail string.
-  final String detailString;
+  final pulumi.Input<String> detailString;
   /// Mcc cache node issue related help link.
-  final String helpLink;
+  final pulumi.Input<String> helpLink;
   /// Mcc cache node issue end date.
-  final String issueEndDate;
+  final pulumi.Input<String> issueEndDate;
   /// Mcc cache node issue start date.
-  final String issueStartDate;
+  final pulumi.Input<String> issueStartDate;
   /// Mcc cache node issue type.
-  final String mccIssueType;
+  final pulumi.Input<String> mccIssueType;
   /// Mcc cache node issues toastString.
-  final String toastString;
+  final pulumi.Input<String> toastString;
 
   /// Creates a new [MccIssueResponse].
   /// [detailString] Mcc cache node issue detail string.
@@ -45,12 +46,12 @@ class MccIssueResponse {
 
   factory MccIssueResponse.fromMap(Map<String, dynamic> map) {
     return MccIssueResponse(
-      detailString: map['detailString'] as String,
-      helpLink: map['helpLink'] as String,
-      issueEndDate: map['issueEndDate'] as String,
-      issueStartDate: map['issueStartDate'] as String,
-      mccIssueType: map['mccIssueType'] as String,
-      toastString: map['toastString'] as String,
+      detailString: (map['detailString'] as String).input(),
+      helpLink: (map['helpLink'] as String).input(),
+      issueEndDate: (map['issueEndDate'] as String).input(),
+      issueStartDate: (map['issueStartDate'] as String).input(),
+      mccIssueType: (map['mccIssueType'] as String).input(),
+      toastString: (map['toastString'] as String).input(),
     );
   }
 }

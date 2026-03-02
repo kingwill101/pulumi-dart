@@ -17,11 +17,9 @@ class VersionArgs {
   /// [description] The developer-provided description of this version.
   /// [parent] The Flow to create an Version for.
   VersionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? parent,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.description,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

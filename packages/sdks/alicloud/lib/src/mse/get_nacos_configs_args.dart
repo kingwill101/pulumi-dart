@@ -44,29 +44,18 @@ class GetNacosConfigsArgs {
   /// [requestPars] The extended request parameters. The JSON format is supported.
   /// [tags] The tags of the configuration.
   GetNacosConfigsArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? appName,
-    pulumi.Output<String>? dataId,
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? group,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? namespaceId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? requestPars,
-    pulumi.Output<String>? tags,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      dataId = pulumi.Input.asOptionalInput<String>(dataId),
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      group = pulumi.Input.asOptionalInput<String>(group),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      namespaceId = pulumi.Input.asOptionalInput<String>(namespaceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      requestPars = pulumi.Input.asOptionalInput<String>(requestPars),
-      tags = pulumi.Input.asOptionalInput<String>(tags);
+    this.acceptLanguage,
+    this.appName,
+    this.dataId,
+    this.enableDetails,
+    this.group,
+    this.ids,
+    required this.instanceId,
+    this.namespaceId,
+    this.outputFile,
+    this.requestPars,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class GetNacosConfigsArgs {
 
   factory GetNacosConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetNacosConfigsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      dataId: map['dataId'] == null ? null : pulumi.Output.create<String>(map['dataId'] as String),
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      group: map['group'] == null ? null : pulumi.Output.create<String>(map['group'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      namespaceId: map['namespaceId'] == null ? null : pulumi.Output.create<String>(map['namespaceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      requestPars: map['requestPars'] == null ? null : pulumi.Output.create<String>(map['requestPars'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<String>(map['tags'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      dataId: map['dataId'] == null ? null : (map['dataId'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      group: map['group'] == null ? null : (map['group'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      requestPars: map['requestPars'] == null ? null : (map['requestPars'] as String).input(),
+      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
     );
   }
 }

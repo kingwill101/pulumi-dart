@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_template_field_type.dart';
 
 class TagTemplateField {
   /// A description for this field.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The display name for this field.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The identifier for this object. Format specified above.
-  final String fieldId;
+  final pulumi.Input<String> fieldId;
   /// Whether this is a required field. Defaults to false.
-  final bool? isRequired;
+  final pulumi.Input<bool>? isRequired;
   /// (Output)
   /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The order of this field with respect to other fields in this tag template.
   /// A higher value indicates a more important field. The value can be negative.
   /// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
-  final int? order;
+  final pulumi.Input<int>? order;
   /// The type of value this tag field can contain.
   /// Structure is documented below.
-  final TagTemplateFieldType type;
+  final pulumi.Input<TagTemplateFieldType> type;
 
   /// Creates a new [TagTemplateField].
   /// [description] A description for this field.
@@ -48,19 +49,19 @@ class TagTemplateField {
       'isRequired': ?isRequired,
       'name': ?name,
       'order': ?order,
-      'type': type.toMap(),
+      'type': pulumi.Input.mapInputValue<TagTemplateFieldType, Map<String, dynamic>>(type, (value) => value.toMap()),
     };
   }
 
   factory TagTemplateField.fromMap(Map<String, dynamic> map) {
     return TagTemplateField(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      fieldId: map['fieldId'] as String,
-      isRequired: map['isRequired'] == null ? null : map['isRequired'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      order: map['order'] == null ? null : map['order'] as int,
-      type: TagTemplateFieldType.fromMap((map['type'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      fieldId: (map['fieldId'] as String).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      order: map['order'] == null ? null : (map['order'] as int).input(),
+      type: (TagTemplateFieldType.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

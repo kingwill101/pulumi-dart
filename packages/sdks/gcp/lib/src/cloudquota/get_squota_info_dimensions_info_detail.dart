@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSQuotaInfoDimensionsInfoDetail {
   /// The value currently in effect and being enforced.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetSQuotaInfoDimensionsInfoDetail].
   /// [value] The value currently in effect and being enforced.
@@ -19,7 +20,7 @@ class GetSQuotaInfoDimensionsInfoDetail {
 
   factory GetSQuotaInfoDimensionsInfoDetail.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoDimensionsInfoDetail(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

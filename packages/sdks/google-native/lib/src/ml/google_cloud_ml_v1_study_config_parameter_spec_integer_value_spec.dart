@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
-  final String? maxValue;
+  final pulumi.Input<String>? maxValue;
   /// Must be specified if type is `INTEGER`. Minimum value of the parameter.
-  final String? minValue;
+  final pulumi.Input<String>? minValue;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec].
   /// [maxValue] Must be specified if type is `INTEGER`. Maximum value of the parameter.
@@ -24,8 +25,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
-      maxValue: map['maxValue'] == null ? null : map['maxValue'] as String,
-      minValue: map['minValue'] == null ? null : map['minValue'] as String,
+      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
     );
   }
 }

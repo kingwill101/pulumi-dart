@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigParallelstoreCsiDriverConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterAddonsConfigParallelstoreCsiDriverConfig].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetClusterAddonsConfigParallelstoreCsiDriverConfig {
 
   factory GetClusterAddonsConfigParallelstoreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigParallelstoreCsiDriverConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

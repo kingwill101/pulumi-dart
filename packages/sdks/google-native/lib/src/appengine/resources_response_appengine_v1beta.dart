@@ -6,15 +6,15 @@ import 'volume_response_appengine_v1beta.dart';
 /// Machine resources for a version.
 class ResourcesResponseAppengineV1beta {
   /// Number of CPU cores needed.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Disk size (GB) needed.
-  final double diskGb;
+  final pulumi.Input<double> diskGb;
   /// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
-  final String kmsKeyReference;
+  final pulumi.Input<String> kmsKeyReference;
   /// Memory (GB) needed.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
   /// User specified volumes.
-  final List<VolumeResponseAppengineV1beta> volumes;
+  final pulumi.Input<List<VolumeResponseAppengineV1beta>> volumes;
 
   /// Creates a new [ResourcesResponseAppengineV1beta].
   /// [cpu] Number of CPU cores needed.
@@ -36,17 +36,17 @@ class ResourcesResponseAppengineV1beta {
       'diskGb': diskGb,
       'kmsKeyReference': kmsKeyReference,
       'memoryGb': memoryGb,
-      'volumes': pulumi.Input.encodeList<VolumeResponseAppengineV1beta, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes': pulumi.Input.mapInputValue<List<VolumeResponseAppengineV1beta>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeResponseAppengineV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ResourcesResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ResourcesResponseAppengineV1beta(
-      cpu: map['cpu'] as double,
-      diskGb: map['diskGb'] as double,
-      kmsKeyReference: map['kmsKeyReference'] as String,
-      memoryGb: map['memoryGb'] as double,
-      volumes: pulumi.Input.decodeList<VolumeResponseAppengineV1beta>(map['volumes'], (value) => VolumeResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      cpu: (map['cpu'] as double).input(),
+      diskGb: (map['diskGb'] as double).input(),
+      kmsKeyReference: (map['kmsKeyReference'] as String).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
+      volumes: (pulumi.Input.decodeList<VolumeResponseAppengineV1beta>(map['volumes'], (value) => VolumeResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

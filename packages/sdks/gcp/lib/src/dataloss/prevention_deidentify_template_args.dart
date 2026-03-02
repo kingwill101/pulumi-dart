@@ -33,17 +33,12 @@ class PreventionDeidentifyTemplateArgs {
   /// [parent] The parent of the template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   PreventionDeidentifyTemplateArgs({
-    required pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? templateId,
-  }) :
-      deidentifyConfig = pulumi.Input.asInput<PreventionDeidentifyTemplateDeidentifyConfig>(deidentifyConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      parent = pulumi.Input.asInput<String>(parent),
-      templateId = pulumi.Input.asOptionalInput<String>(templateId);
+    required this.deidentifyConfig,
+    this.description,
+    this.displayName,
+    required this.parent,
+    this.templateId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class PreventionDeidentifyTemplateArgs {
 
   factory PreventionDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateArgs(
-      deidentifyConfig: pulumi.Output.create<PreventionDeidentifyTemplateDeidentifyConfig>(PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      deidentifyConfig: (PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
     );
   }
 }

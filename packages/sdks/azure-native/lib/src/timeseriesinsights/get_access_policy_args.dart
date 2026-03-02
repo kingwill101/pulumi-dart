@@ -19,13 +19,10 @@ class GetAccessPolicyArgs {
   /// [environmentName] The name of the Time Series Insights environment associated with the specified resource group.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetAccessPolicyArgs({
-    required pulumi.Output<String> accessPolicyName,
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accessPolicyName = pulumi.Input.asInput<String>(accessPolicyName),
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accessPolicyName,
+    required this.environmentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAccessPolicyArgs {
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
-      accessPolicyName: pulumi.Output.create<String>(map['accessPolicyName'] as String),
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accessPolicyName: (map['accessPolicyName'] as String).input(),
+      environmentName: (map['environmentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

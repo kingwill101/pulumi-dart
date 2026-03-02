@@ -13,11 +13,9 @@ class EnrollmentStatusState {
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
   /// [status] Status of enrollment. When the resource is present in Terraform, its status will always be `Active`.
   EnrollmentStatusState({
-    pulumi.Output<bool>? includeMemberAccounts,
-    pulumi.Output<String>? status,
-  }) :
-      includeMemberAccounts = pulumi.Input.asOptionalInput<bool>(includeMemberAccounts),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.includeMemberAccounts,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class EnrollmentStatusState {
 
   factory EnrollmentStatusState.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusState(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : pulumi.Output.create<bool>(map['includeMemberAccounts'] as bool),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : (map['includeMemberAccounts'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

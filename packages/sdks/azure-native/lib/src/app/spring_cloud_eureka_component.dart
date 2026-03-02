@@ -9,13 +9,13 @@ import 'java_component_service_bind.dart';
 class SpringCloudEurekaComponent {
   /// Type of the Java Component.
   /// Expected value is 'SpringCloudEureka'.
-  final String componentType;
+  final pulumi.Input<String> componentType;
   /// List of Java Components configuration properties
-  final List<JavaComponentConfigurationProperty>? configurations;
+  final pulumi.Input<List<JavaComponentConfigurationProperty>>? configurations;
   /// Java component scaling configurations
-  final JavaComponentPropertiesScale? scale;
+  final pulumi.Input<JavaComponentPropertiesScale>? scale;
   /// List of Java Components that are bound to the Java component
-  final List<JavaComponentServiceBind>? serviceBinds;
+  final pulumi.Input<List<JavaComponentServiceBind>>? serviceBinds;
 
   /// Creates a new [SpringCloudEurekaComponent].
   /// [componentType] Type of the Java Component.
@@ -32,18 +32,18 @@ class SpringCloudEurekaComponent {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentType': componentType,
-      'configurations': ?configurations == null ? null : pulumi.Input.encodeList<JavaComponentConfigurationProperty, Map<String, dynamic>>(configurations!, (value) => value.toMap()),
-      'scale': ?scale == null ? null : scale!.toMap(),
-      'serviceBinds': ?serviceBinds == null ? null : pulumi.Input.encodeList<JavaComponentServiceBind, Map<String, dynamic>>(serviceBinds!, (value) => value.toMap()),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<JavaComponentConfigurationProperty>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<JavaComponentConfigurationProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scale': ?pulumi.Input.mapOptionalInputValue<JavaComponentPropertiesScale, Map<String, dynamic>>(scale, (value) => value.toMap()),
+      'serviceBinds': ?pulumi.Input.mapOptionalInputValue<List<JavaComponentServiceBind>, List<Map<String, dynamic>>>(serviceBinds, (value) => pulumi.Input.encodeList<JavaComponentServiceBind, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SpringCloudEurekaComponent.fromMap(Map<String, dynamic> map) {
     return SpringCloudEurekaComponent(
-      componentType: map['componentType'] as String,
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<JavaComponentConfigurationProperty>(map['configurations'], (value) => JavaComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>())),
-      scale: map['scale'] == null ? null : JavaComponentPropertiesScale.fromMap((map['scale'] as Map).cast<String, dynamic>()),
-      serviceBinds: map['serviceBinds'] == null ? null : pulumi.Input.decodeList<JavaComponentServiceBind>(map['serviceBinds'], (value) => JavaComponentServiceBind.fromMap((value as Map).cast<String, dynamic>())),
+      componentType: (map['componentType'] as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<JavaComponentConfigurationProperty>(map['configurations'], (value) => JavaComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scale: map['scale'] == null ? null : (JavaComponentPropertiesScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<JavaComponentServiceBind>(map['serviceBinds'], (value) => JavaComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

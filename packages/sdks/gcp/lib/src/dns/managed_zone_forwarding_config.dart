@@ -8,7 +8,7 @@ class ManagedZoneForwardingConfig {
   /// select the best available name server if more than
   /// one target is given.
   /// Structure is documented below.
-  final List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers;
+  final pulumi.Input<List<ManagedZoneForwardingConfigTargetNameServer>> targetNameServers;
 
   /// Creates a new [ManagedZoneForwardingConfig].
   /// [targetNameServers] List of target name servers to forward to. Cloud DNS will
@@ -18,13 +18,13 @@ class ManagedZoneForwardingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targetNameServers': pulumi.Input.encodeList<ManagedZoneForwardingConfigTargetNameServer, Map<String, dynamic>>(targetNameServers, (value) => value.toMap()),
+      'targetNameServers': pulumi.Input.mapInputValue<List<ManagedZoneForwardingConfigTargetNameServer>, List<Map<String, dynamic>>>(targetNameServers, (value) => pulumi.Input.encodeList<ManagedZoneForwardingConfigTargetNameServer, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
-      targetNameServers: pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>())),
+      targetNameServers: (pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

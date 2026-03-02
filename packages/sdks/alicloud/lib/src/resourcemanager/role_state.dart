@@ -28,21 +28,14 @@ class RoleState {
   /// [roleName] Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   /// [updateDate] Role update time.
   RoleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? assumeRolePolicyDocument,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? maxSessionDuration,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? updateDate,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      assumeRolePolicyDocument = pulumi.Input.asOptionalInput<String>(assumeRolePolicyDocument),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      maxSessionDuration = pulumi.Input.asOptionalInput<int>(maxSessionDuration),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      updateDate = pulumi.Input.asOptionalInput<String>(updateDate);
+    this.arn,
+    this.assumeRolePolicyDocument,
+    this.description,
+    this.maxSessionDuration,
+    this.roleId,
+    this.roleName,
+    this.updateDate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : pulumi.Output.create<String>(map['assumeRolePolicyDocument'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : pulumi.Output.create<int>(map['maxSessionDuration'] as int),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      updateDate: map['updateDate'] == null ? null : pulumi.Output.create<String>(map['updateDate'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      updateDate: map['updateDate'] == null ? null : (map['updateDate'] as String).input(),
     );
   }
 }

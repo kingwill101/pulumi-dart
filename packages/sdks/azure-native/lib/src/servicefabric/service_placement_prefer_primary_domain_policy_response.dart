@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the policy to be used for placement of a Service Fabric service where the service's
 /// Primary replicas should optimally be placed in a particular domain.
@@ -11,10 +12,10 @@
 /// may not end up located in this domain due to failures, capacity limits, or other constraints.
 class ServicePlacementPreferPrimaryDomainPolicyResponse {
   /// The name of the domain that should used for placement as per this policy.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'PreferredPrimaryDomain'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServicePlacementPreferPrimaryDomainPolicyResponse].
   /// [domainName] The name of the domain that should used for placement as per this policy.
@@ -33,8 +34,8 @@ class ServicePlacementPreferPrimaryDomainPolicyResponse {
 
   factory ServicePlacementPreferPrimaryDomainPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ServicePlacementPreferPrimaryDomainPolicyResponse(
-      domainName: map['domainName'] as String,
-      type: map['type'] as String,
+      domainName: (map['domainName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

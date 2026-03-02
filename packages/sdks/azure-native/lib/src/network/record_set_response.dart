@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A collective group of information about the record set information.
 class RecordSetResponse {
   /// Fqdn that resolves to private endpoint ip address.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// The private ip address of the private endpoint.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// The provisioning state of the recordset.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Recordset name.
-  final String? recordSetName;
+  final pulumi.Input<String>? recordSetName;
   /// Resource record type.
-  final String? recordType;
+  final pulumi.Input<String>? recordType;
   /// Recordset time to live.
-  final int? ttl;
+  final pulumi.Input<int>? ttl;
 
   /// Creates a new [RecordSetResponse].
   /// [fqdn] Fqdn that resolves to private endpoint ip address.
@@ -45,12 +46,12 @@ class RecordSetResponse {
 
   factory RecordSetResponse.fromMap(Map<String, dynamic> map) {
     return RecordSetResponse(
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      recordSetName: map['recordSetName'] == null ? null : map['recordSetName'] as String,
-      recordType: map['recordType'] == null ? null : map['recordType'] as String,
-      ttl: map['ttl'] == null ? null : map['ttl'] as int,
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      recordSetName: map['recordSetName'] == null ? null : (map['recordSetName'] as String).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

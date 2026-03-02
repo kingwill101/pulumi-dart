@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSizesSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// Sort the sizes by this key. This may be one of `slug`,
   /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [GetSizesSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
@@ -25,8 +26,8 @@ class GetSizesSort {
 
   factory GetSizesSort.fromMap(Map<String, dynamic> map) {
     return GetSizesSort(
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      key: map['key'] as String,
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The governance email weekly notification configuration.
 class GovernanceEmailNotification {
   /// Exclude manager from weekly email notification.
-  final bool? disableManagerEmailNotification;
+  final pulumi.Input<bool>? disableManagerEmailNotification;
   /// Exclude  owner from weekly email notification.
-  final bool? disableOwnerEmailNotification;
+  final pulumi.Input<bool>? disableOwnerEmailNotification;
 
   /// Creates a new [GovernanceEmailNotification].
   /// [disableManagerEmailNotification] Exclude manager from weekly email notification.
@@ -25,8 +26,8 @@ class GovernanceEmailNotification {
 
   factory GovernanceEmailNotification.fromMap(Map<String, dynamic> map) {
     return GovernanceEmailNotification(
-      disableManagerEmailNotification: map['disableManagerEmailNotification'] == null ? null : map['disableManagerEmailNotification'] as bool,
-      disableOwnerEmailNotification: map['disableOwnerEmailNotification'] == null ? null : map['disableOwnerEmailNotification'] as bool,
+      disableManagerEmailNotification: map['disableManagerEmailNotification'] == null ? null : (map['disableManagerEmailNotification'] as bool).input(),
+      disableOwnerEmailNotification: map['disableOwnerEmailNotification'] == null ? null : (map['disableOwnerEmailNotification'] as bool).input(),
     );
   }
 }

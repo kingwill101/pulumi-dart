@@ -33,21 +33,14 @@ class IoTAddonArgs {
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
   IoTAddonArgs({
-    pulumi.Output<String>? addonName,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<IoTDeviceInfo> ioTDeviceDetails,
-    required pulumi.Output<IoTDeviceInfo> ioTEdgeDeviceDetails,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> roleName,
-  }) :
-      addonName = pulumi.Input.asOptionalInput<String>(addonName),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      ioTDeviceDetails = pulumi.Input.asInput<IoTDeviceInfo>(ioTDeviceDetails),
-      ioTEdgeDeviceDetails = pulumi.Input.asInput<IoTDeviceInfo>(ioTEdgeDeviceDetails),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleName = pulumi.Input.asInput<String>(roleName);
+    this.addonName,
+    required this.deviceName,
+    required this.ioTDeviceDetails,
+    required this.ioTEdgeDeviceDetails,
+    required this.kind,
+    required this.resourceGroupName,
+    required this.roleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class IoTAddonArgs {
 
   factory IoTAddonArgs.fromMap(Map<String, dynamic> map) {
     return IoTAddonArgs(
-      addonName: map['addonName'] == null ? null : pulumi.Output.create<String>(map['addonName'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      ioTDeviceDetails: pulumi.Output.create<IoTDeviceInfo>(IoTDeviceInfo.fromMap((map['ioTDeviceDetails'] as Map).cast<String, dynamic>())),
-      ioTEdgeDeviceDetails: pulumi.Output.create<IoTDeviceInfo>(IoTDeviceInfo.fromMap((map['ioTEdgeDeviceDetails'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      ioTDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTDeviceDetails'] as Map).cast<String, dynamic>())).input(),
+      ioTEdgeDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTEdgeDeviceDetails'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
     );
   }
 }

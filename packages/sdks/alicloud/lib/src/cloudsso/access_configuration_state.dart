@@ -34,23 +34,15 @@ class AccessConfigurationState {
   /// [relayState] The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
   /// [sessionDuration] The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
   AccessConfigurationState({
-    pulumi.Output<String>? accessConfigurationId,
-    pulumi.Output<String>? accessConfigurationName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<bool>? forceRemovePermissionPolicies,
-    pulumi.Output<List<AccessConfigurationPermissionPolicy>>? permissionPolicies,
-    pulumi.Output<String>? relayState,
-    pulumi.Output<int>? sessionDuration,
-  }) :
-      accessConfigurationId = pulumi.Input.asOptionalInput<String>(accessConfigurationId),
-      accessConfigurationName = pulumi.Input.asOptionalInput<String>(accessConfigurationName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      forceRemovePermissionPolicies = pulumi.Input.asOptionalInput<bool>(forceRemovePermissionPolicies),
-      permissionPolicies = pulumi.Input.asOptionalInput<List<AccessConfigurationPermissionPolicy>>(permissionPolicies),
-      relayState = pulumi.Input.asOptionalInput<String>(relayState),
-      sessionDuration = pulumi.Input.asOptionalInput<int>(sessionDuration);
+    this.accessConfigurationId,
+    this.accessConfigurationName,
+    this.description,
+    this.directoryId,
+    this.forceRemovePermissionPolicies,
+    this.permissionPolicies,
+    this.relayState,
+    this.sessionDuration,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class AccessConfigurationState {
 
   factory AccessConfigurationState.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationState(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : pulumi.Output.create<String>(map['accessConfigurationId'] as String),
-      accessConfigurationName: map['accessConfigurationName'] == null ? null : pulumi.Output.create<String>(map['accessConfigurationName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : pulumi.Output.create<bool>(map['forceRemovePermissionPolicies'] as bool),
-      permissionPolicies: map['permissionPolicies'] == null ? null : pulumi.Output.create<List<AccessConfigurationPermissionPolicy>>(pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      relayState: map['relayState'] == null ? null : pulumi.Output.create<String>(map['relayState'] as String),
-      sessionDuration: map['sessionDuration'] == null ? null : pulumi.Output.create<int>(map['sessionDuration'] as int),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
+      accessConfigurationName: map['accessConfigurationName'] == null ? null : (map['accessConfigurationName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : (map['forceRemovePermissionPolicies'] as bool).input(),
+      permissionPolicies: map['permissionPolicies'] == null ? null : (pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as int).input(),
     );
   }
 }

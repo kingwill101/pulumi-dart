@@ -33,23 +33,15 @@ class CacheReserveInstanceState {
   /// [quotaGb] Cache retention specification (unit: GB).
   /// [status] The status of the cache reserve instance. , it is unavailable.
   CacheReserveInstanceState({
-    pulumi.Output<bool>? autoPay,
-    pulumi.Output<bool>? autoRenew,
-    pulumi.Output<String>? crRegion,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? period,
-    pulumi.Output<int>? quotaGb,
-    pulumi.Output<String>? status,
-  }) :
-      autoPay = pulumi.Input.asOptionalInput<bool>(autoPay),
-      autoRenew = pulumi.Input.asOptionalInput<bool>(autoRenew),
-      crRegion = pulumi.Input.asOptionalInput<String>(crRegion),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      period = pulumi.Input.asOptionalInput<int>(period),
-      quotaGb = pulumi.Input.asOptionalInput<int>(quotaGb),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.autoPay,
+    this.autoRenew,
+    this.crRegion,
+    this.createTime,
+    this.paymentType,
+    this.period,
+    this.quotaGb,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class CacheReserveInstanceState {
 
   factory CacheReserveInstanceState.fromMap(Map<String, dynamic> map) {
     return CacheReserveInstanceState(
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<bool>(map['autoPay'] as bool),
-      autoRenew: map['autoRenew'] == null ? null : pulumi.Output.create<bool>(map['autoRenew'] as bool),
-      crRegion: map['crRegion'] == null ? null : pulumi.Output.create<String>(map['crRegion'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      period: map['period'] == null ? null : pulumi.Output.create<int>(map['period'] as int),
-      quotaGb: map['quotaGb'] == null ? null : pulumi.Output.create<int>(map['quotaGb'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      crRegion: map['crRegion'] == null ? null : (map['crRegion'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

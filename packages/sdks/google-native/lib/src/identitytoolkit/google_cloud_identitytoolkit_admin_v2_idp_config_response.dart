@@ -6,13 +6,13 @@ import 'google_cloud_identitytoolkit_admin_v2_idp_certificate_response.dart';
 /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
 class GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse {
   /// IDP's public keys for verifying signature in the assertions.
-  final List<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse> idpCertificates;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse>> idpCertificates;
   /// Unique identifier for all SAML entities.
-  final String idpEntityId;
+  final pulumi.Input<String> idpEntityId;
   /// Indicates if outbounding SAMLRequest should be signed.
-  final bool signRequest;
+  final pulumi.Input<bool> signRequest;
   /// URL to send Authentication request to.
-  final String ssoUrl;
+  final pulumi.Input<String> ssoUrl;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse].
   /// [idpCertificates] IDP's public keys for verifying signature in the assertions.
@@ -28,7 +28,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idpCertificates': pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse, Map<String, dynamic>>(idpCertificates, (value) => value.toMap()),
+      'idpCertificates': pulumi.Input.mapInputValue<List<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse>, List<Map<String, dynamic>>>(idpCertificates, (value) => pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idpEntityId': idpEntityId,
       'signRequest': signRequest,
       'ssoUrl': ssoUrl,
@@ -37,10 +37,10 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse {
 
   factory GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse(
-      idpCertificates: pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse>(map['idpCertificates'], (value) => GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      idpEntityId: map['idpEntityId'] as String,
-      signRequest: map['signRequest'] as bool,
-      ssoUrl: map['ssoUrl'] as String,
+      idpCertificates: (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse>(map['idpCertificates'], (value) => GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idpEntityId: (map['idpEntityId'] as String).input(),
+      signRequest: (map['signRequest'] as bool).input(),
+      ssoUrl: (map['ssoUrl'] as String).input(),
     );
   }
 }

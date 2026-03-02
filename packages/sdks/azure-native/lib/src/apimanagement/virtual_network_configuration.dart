@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of a virtual network to which API Management service is deployed.
 class VirtualNetworkConfiguration {
   /// The full resource ID of a subnet in a virtual network to deploy the API Management service in.
-  final String? subnetResourceId;
+  final pulumi.Input<String>? subnetResourceId;
 
   /// Creates a new [VirtualNetworkConfiguration].
   /// [subnetResourceId] The full resource ID of a subnet in a virtual network to deploy the API Management service in.
@@ -20,7 +21,7 @@ class VirtualNetworkConfiguration {
 
   factory VirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfiguration(
-      subnetResourceId: map['subnetResourceId'] == null ? null : map['subnetResourceId'] as String,
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
     );
   }
 }

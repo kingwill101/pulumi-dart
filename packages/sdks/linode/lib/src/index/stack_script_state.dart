@@ -49,33 +49,20 @@ class StackScriptState {
   /// [userGravatarId] The Gravatar ID for the User who created the StackScript.
   /// [username] The User who created the StackScript.
   StackScriptState({
-    pulumi.Output<String>? created,
-    pulumi.Output<int>? deploymentsActive,
-    pulumi.Output<int>? deploymentsTotal,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? images,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? revNote,
-    pulumi.Output<String>? script,
-    pulumi.Output<String>? updated,
-    pulumi.Output<List<StackScriptUserDefinedField>>? userDefinedFields,
-    pulumi.Output<String>? userGravatarId,
-    pulumi.Output<String>? username,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      deploymentsActive = pulumi.Input.asOptionalInput<int>(deploymentsActive),
-      deploymentsTotal = pulumi.Input.asOptionalInput<int>(deploymentsTotal),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      images = pulumi.Input.asOptionalInput<List<String>>(images),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      revNote = pulumi.Input.asOptionalInput<String>(revNote),
-      script = pulumi.Input.asOptionalInput<String>(script),
-      updated = pulumi.Input.asOptionalInput<String>(updated),
-      userDefinedFields = pulumi.Input.asOptionalInput<List<StackScriptUserDefinedField>>(userDefinedFields),
-      userGravatarId = pulumi.Input.asOptionalInput<String>(userGravatarId),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.created,
+    this.deploymentsActive,
+    this.deploymentsTotal,
+    this.description,
+    this.images,
+    this.isPublic,
+    this.label,
+    this.revNote,
+    this.script,
+    this.updated,
+    this.userDefinedFields,
+    this.userGravatarId,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class StackScriptState {
 
   factory StackScriptState.fromMap(Map<String, dynamic> map) {
     return StackScriptState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      deploymentsActive: map['deploymentsActive'] == null ? null : pulumi.Output.create<int>(map['deploymentsActive'] as int),
-      deploymentsTotal: map['deploymentsTotal'] == null ? null : pulumi.Output.create<int>(map['deploymentsTotal'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      images: map['images'] == null ? null : pulumi.Output.create<List<String>>((map['images'] as List).cast<String>()),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      revNote: map['revNote'] == null ? null : pulumi.Output.create<String>(map['revNote'] as String),
-      script: map['script'] == null ? null : pulumi.Output.create<String>(map['script'] as String),
-      updated: map['updated'] == null ? null : pulumi.Output.create<String>(map['updated'] as String),
-      userDefinedFields: map['userDefinedFields'] == null ? null : pulumi.Output.create<List<StackScriptUserDefinedField>>(pulumi.Input.decodeList<StackScriptUserDefinedField>(map['userDefinedFields'], (value) => StackScriptUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))),
-      userGravatarId: map['userGravatarId'] == null ? null : pulumi.Output.create<String>(map['userGravatarId'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      deploymentsActive: map['deploymentsActive'] == null ? null : (map['deploymentsActive'] as int).input(),
+      deploymentsTotal: map['deploymentsTotal'] == null ? null : (map['deploymentsTotal'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      revNote: map['revNote'] == null ? null : (map['revNote'] as String).input(),
+      script: map['script'] == null ? null : (map['script'] as String).input(),
+      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<StackScriptUserDefinedField>(map['userDefinedFields'], (value) => StackScriptUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userGravatarId: map['userGravatarId'] == null ? null : (map['userGravatarId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU recommendation summary.
 class SkuRecommendationSummaryResponse {
   /// Number of blocker issues to fix before migrating this database to the target platform.
-  final int? numOfBlockerIssues;
+  final pulumi.Input<int>? numOfBlockerIssues;
   /// The target recommendation Status for this database.
-  final String? recommendationStatus;
+  final pulumi.Input<String>? recommendationStatus;
 
   /// Creates a new [SkuRecommendationSummaryResponse].
   /// [numOfBlockerIssues] Number of blocker issues to fix before migrating this database to the target platform.
@@ -25,8 +26,8 @@ class SkuRecommendationSummaryResponse {
 
   factory SkuRecommendationSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationSummaryResponse(
-      numOfBlockerIssues: map['numOfBlockerIssues'] == null ? null : map['numOfBlockerIssues'] as int,
-      recommendationStatus: map['recommendationStatus'] == null ? null : map['recommendationStatus'] as String,
+      numOfBlockerIssues: map['numOfBlockerIssues'] == null ? null : (map['numOfBlockerIssues'] as int).input(),
+      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus'] as String).input(),
     );
   }
 }

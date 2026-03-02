@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A policy for scheduling replications.
 class SchedulePolicyResponseVmmigrationV1alpha1 {
   /// The idle duration between replication stages.
-  final String idleDuration;
+  final pulumi.Input<String> idleDuration;
   /// A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
-  final bool skipOsAdaptation;
+  final pulumi.Input<bool> skipOsAdaptation;
 
   /// Creates a new [SchedulePolicyResponseVmmigrationV1alpha1].
   /// [idleDuration] The idle duration between replication stages.
@@ -25,8 +26,8 @@ class SchedulePolicyResponseVmmigrationV1alpha1 {
 
   factory SchedulePolicyResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return SchedulePolicyResponseVmmigrationV1alpha1(
-      idleDuration: map['idleDuration'] as String,
-      skipOsAdaptation: map['skipOsAdaptation'] as bool,
+      idleDuration: (map['idleDuration'] as String).input(),
+      skipOsAdaptation: (map['skipOsAdaptation'] as bool).input(),
     );
   }
 }

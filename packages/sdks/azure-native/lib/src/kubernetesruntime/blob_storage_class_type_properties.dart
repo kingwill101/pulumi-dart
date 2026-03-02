@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of Blob StorageClass
 class BlobStorageClassTypeProperties {
   /// Azure Storage Account Key
-  final String azureStorageAccountKey;
+  final pulumi.Input<String> azureStorageAccountKey;
   /// Azure Storage Account Name
-  final String azureStorageAccountName;
+  final pulumi.Input<String> azureStorageAccountName;
   /// Type of a storage class
   /// Expected value is 'Blob'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BlobStorageClassTypeProperties].
   /// [azureStorageAccountKey] Azure Storage Account Key
@@ -31,9 +32,9 @@ class BlobStorageClassTypeProperties {
 
   factory BlobStorageClassTypeProperties.fromMap(Map<String, dynamic> map) {
     return BlobStorageClassTypeProperties(
-      azureStorageAccountKey: map['azureStorageAccountKey'] as String,
-      azureStorageAccountName: map['azureStorageAccountName'] as String,
-      type: map['type'] as String,
+      azureStorageAccountKey: (map['azureStorageAccountKey'] as String).input(),
+      azureStorageAccountName: (map['azureStorageAccountName'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

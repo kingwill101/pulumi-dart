@@ -26,19 +26,13 @@ class CryptoKeyVersionArgs {
   /// [project] Optional.
   /// [state] The current state of the CryptoKeyVersion.
   CryptoKeyVersionArgs({
-    pulumi.Output<String>? cryptoKeyId,
-    pulumi.Output<ExternalProtectionLevelOptions>? externalProtectionLevelOptions,
-    required pulumi.Output<String> keyRingId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<CryptoKeyVersionState>? state,
-  }) :
-      cryptoKeyId = pulumi.Input.asOptionalInput<String>(cryptoKeyId),
-      externalProtectionLevelOptions = pulumi.Input.asOptionalInput<ExternalProtectionLevelOptions>(externalProtectionLevelOptions),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<CryptoKeyVersionState>(state);
+    this.cryptoKeyId,
+    this.externalProtectionLevelOptions,
+    required this.keyRingId,
+    this.location,
+    this.project,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class CryptoKeyVersionArgs {
 
   factory CryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionArgs(
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyId'] as String),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : pulumi.Output.create<ExternalProtectionLevelOptions>(ExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<CryptoKeyVersionState>(CryptoKeyVersionState.fromValue(map['state'] as String)),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (ExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (CryptoKeyVersionState.fromValue(map['state'] as String)).input(),
     );
   }
 }

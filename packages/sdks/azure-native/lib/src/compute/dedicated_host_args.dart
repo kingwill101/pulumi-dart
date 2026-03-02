@@ -39,25 +39,16 @@ class DedicatedHostArgs {
   /// [sku] SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
   /// [tags] Resource tags.
   DedicatedHostArgs({
-    pulumi.Output<bool>? autoReplaceOnFailure,
-    required pulumi.Output<String> hostGroupName,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<DedicatedHostLicenseTypes>? licenseType,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? platformFaultDomain,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoReplaceOnFailure = pulumi.Input.asOptionalInput<bool>(autoReplaceOnFailure),
-      hostGroupName = pulumi.Input.asInput<String>(hostGroupName),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      licenseType = pulumi.Input.asOptionalInput<DedicatedHostLicenseTypes>(licenseType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      platformFaultDomain = pulumi.Input.asOptionalInput<int>(platformFaultDomain),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoReplaceOnFailure,
+    required this.hostGroupName,
+    this.hostName,
+    this.licenseType,
+    this.location,
+    this.platformFaultDomain,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class DedicatedHostArgs {
 
   factory DedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostArgs(
-      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : pulumi.Output.create<bool>(map['autoReplaceOnFailure'] as bool),
-      hostGroupName: pulumi.Output.create<String>(map['hostGroupName'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      licenseType: map['licenseType'] == null ? null : pulumi.Output.create<DedicatedHostLicenseTypes>(DedicatedHostLicenseTypes.fromValue(map['licenseType'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      platformFaultDomain: map['platformFaultDomain'] == null ? null : pulumi.Output.create<int>(map['platformFaultDomain'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure'] as bool).input(),
+      hostGroupName: (map['hostGroupName'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (DedicatedHostLicenseTypes.fromValue(map['licenseType'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      platformFaultDomain: map['platformFaultDomain'] == null ? null : (map['platformFaultDomain'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

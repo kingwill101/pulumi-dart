@@ -22,15 +22,11 @@ class GetRouteEntriesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routeTableId] ID of the route table of the VPC or VBR.
   GetRouteEntriesArgs({
-    pulumi.Output<String>? cidrBlock,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> routeTableId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId);
+    this.cidrBlock,
+    required this.instanceId,
+    this.outputFile,
+    required this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetRouteEntriesArgs {
 
   factory GetRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
     );
   }
 }

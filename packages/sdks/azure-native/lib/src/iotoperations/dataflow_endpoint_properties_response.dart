@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataflow_endpoint_data_explorer_response.dart';
 import 'dataflow_endpoint_data_lake_storage_response.dart';
 import 'dataflow_endpoint_fabric_one_lake_response.dart';
@@ -10,21 +11,21 @@ import 'dataflow_endpoint_mqtt_response.dart';
 /// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
 class DataflowEndpointPropertiesResponse {
   /// Azure Data Explorer endpoint.
-  final DataflowEndpointDataExplorerResponse? dataExplorerSettings;
+  final pulumi.Input<DataflowEndpointDataExplorerResponse>? dataExplorerSettings;
   /// Azure Data Lake endpoint.
-  final DataflowEndpointDataLakeStorageResponse? dataLakeStorageSettings;
+  final pulumi.Input<DataflowEndpointDataLakeStorageResponse>? dataLakeStorageSettings;
   /// Endpoint Type.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// Microsoft Fabric endpoint.
-  final DataflowEndpointFabricOneLakeResponse? fabricOneLakeSettings;
+  final pulumi.Input<DataflowEndpointFabricOneLakeResponse>? fabricOneLakeSettings;
   /// Kafka endpoint.
-  final DataflowEndpointKafkaResponse? kafkaSettings;
+  final pulumi.Input<DataflowEndpointKafkaResponse>? kafkaSettings;
   /// Local persistent volume endpoint.
-  final DataflowEndpointLocalStorageResponse? localStorageSettings;
+  final pulumi.Input<DataflowEndpointLocalStorageResponse>? localStorageSettings;
   /// Broker endpoint.
-  final DataflowEndpointMqttResponse? mqttSettings;
+  final pulumi.Input<DataflowEndpointMqttResponse>? mqttSettings;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [DataflowEndpointPropertiesResponse].
   /// [dataExplorerSettings] Azure Data Explorer endpoint.
@@ -48,27 +49,27 @@ class DataflowEndpointPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataExplorerSettings': ?dataExplorerSettings == null ? null : dataExplorerSettings!.toMap(),
-      'dataLakeStorageSettings': ?dataLakeStorageSettings == null ? null : dataLakeStorageSettings!.toMap(),
+      'dataExplorerSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointDataExplorerResponse, Map<String, dynamic>>(dataExplorerSettings, (value) => value.toMap()),
+      'dataLakeStorageSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointDataLakeStorageResponse, Map<String, dynamic>>(dataLakeStorageSettings, (value) => value.toMap()),
       'endpointType': endpointType,
-      'fabricOneLakeSettings': ?fabricOneLakeSettings == null ? null : fabricOneLakeSettings!.toMap(),
-      'kafkaSettings': ?kafkaSettings == null ? null : kafkaSettings!.toMap(),
-      'localStorageSettings': ?localStorageSettings == null ? null : localStorageSettings!.toMap(),
-      'mqttSettings': ?mqttSettings == null ? null : mqttSettings!.toMap(),
+      'fabricOneLakeSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointFabricOneLakeResponse, Map<String, dynamic>>(fabricOneLakeSettings, (value) => value.toMap()),
+      'kafkaSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointKafkaResponse, Map<String, dynamic>>(kafkaSettings, (value) => value.toMap()),
+      'localStorageSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointLocalStorageResponse, Map<String, dynamic>>(localStorageSettings, (value) => value.toMap()),
+      'mqttSettings': ?pulumi.Input.mapOptionalInputValue<DataflowEndpointMqttResponse, Map<String, dynamic>>(mqttSettings, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory DataflowEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointPropertiesResponse(
-      dataExplorerSettings: map['dataExplorerSettings'] == null ? null : DataflowEndpointDataExplorerResponse.fromMap((map['dataExplorerSettings'] as Map).cast<String, dynamic>()),
-      dataLakeStorageSettings: map['dataLakeStorageSettings'] == null ? null : DataflowEndpointDataLakeStorageResponse.fromMap((map['dataLakeStorageSettings'] as Map).cast<String, dynamic>()),
-      endpointType: map['endpointType'] as String,
-      fabricOneLakeSettings: map['fabricOneLakeSettings'] == null ? null : DataflowEndpointFabricOneLakeResponse.fromMap((map['fabricOneLakeSettings'] as Map).cast<String, dynamic>()),
-      kafkaSettings: map['kafkaSettings'] == null ? null : DataflowEndpointKafkaResponse.fromMap((map['kafkaSettings'] as Map).cast<String, dynamic>()),
-      localStorageSettings: map['localStorageSettings'] == null ? null : DataflowEndpointLocalStorageResponse.fromMap((map['localStorageSettings'] as Map).cast<String, dynamic>()),
-      mqttSettings: map['mqttSettings'] == null ? null : DataflowEndpointMqttResponse.fromMap((map['mqttSettings'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
+      dataExplorerSettings: map['dataExplorerSettings'] == null ? null : (DataflowEndpointDataExplorerResponse.fromMap((map['dataExplorerSettings'] as Map).cast<String, dynamic>())).input(),
+      dataLakeStorageSettings: map['dataLakeStorageSettings'] == null ? null : (DataflowEndpointDataLakeStorageResponse.fromMap((map['dataLakeStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      fabricOneLakeSettings: map['fabricOneLakeSettings'] == null ? null : (DataflowEndpointFabricOneLakeResponse.fromMap((map['fabricOneLakeSettings'] as Map).cast<String, dynamic>())).input(),
+      kafkaSettings: map['kafkaSettings'] == null ? null : (DataflowEndpointKafkaResponse.fromMap((map['kafkaSettings'] as Map).cast<String, dynamic>())).input(),
+      localStorageSettings: map['localStorageSettings'] == null ? null : (DataflowEndpointLocalStorageResponse.fromMap((map['localStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      mqttSettings: map['mqttSettings'] == null ? null : (DataflowEndpointMqttResponse.fromMap((map['mqttSettings'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

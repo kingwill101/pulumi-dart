@@ -26,15 +26,11 @@ class GetListingIamPolicyArgs {
   /// [location] The name of the location this data exchange listing.
   /// [project] The ID of the project in which the resource belongs.
   GetListingIamPolicyArgs({
-    required pulumi.Output<String> dataExchangeId,
-    required pulumi.Output<String> listingId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      listingId = pulumi.Input.asInput<String>(listingId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.dataExchangeId,
+    required this.listingId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetListingIamPolicyArgs {
 
   factory GetListingIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetListingIamPolicyArgs(
-      dataExchangeId: pulumi.Output.create<String>(map['dataExchangeId'] as String),
-      listingId: pulumi.Output.create<String>(map['listingId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      dataExchangeId: (map['dataExchangeId'] as String).input(),
+      listingId: (map['listingId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetWebPubSubHubArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   GetWebPubSubHubArgs({
-    required pulumi.Output<String> hubName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      hubName = pulumi.Input.asInput<String>(hubName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.hubName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetWebPubSubHubArgs {
 
   factory GetWebPubSubHubArgs.fromMap(Map<String, dynamic> map) {
     return GetWebPubSubHubArgs(
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      hubName: (map['hubName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

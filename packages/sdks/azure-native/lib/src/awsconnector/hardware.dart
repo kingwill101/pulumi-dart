@@ -6,11 +6,11 @@ import 'disk.dart';
 /// Definition of Hardware
 class Hardware {
   /// CPU count of the Instance.
-  final int? cpuCount;
+  final pulumi.Input<int>? cpuCount;
   /// Disks attached to the Instance.
-  final List<Disk>? disks;
+  final pulumi.Input<List<Disk>>? disks;
   /// RAM Size of the Instance.
-  final int? ramSizeInGb;
+  final pulumi.Input<int>? ramSizeInGb;
 
   /// Creates a new [Hardware].
   /// [cpuCount] CPU count of the Instance.
@@ -25,16 +25,16 @@ class Hardware {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpuCount': ?cpuCount,
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<Disk, Map<String, dynamic>>(disks!, (value) => value.toMap()),
+      'disks': ?pulumi.Input.mapOptionalInputValue<List<Disk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<Disk, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ramSizeInGb': ?ramSizeInGb,
     };
   }
 
   factory Hardware.fromMap(Map<String, dynamic> map) {
     return Hardware(
-      cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>())),
-      ramSizeInGb: map['ramSizeInGb'] == null ? null : map['ramSizeInGb'] as int,
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ramSizeInGb: map['ramSizeInGb'] == null ? null : (map['ramSizeInGb'] as int).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class SolutionArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [solutionName] Unique name of a migration solution within a migrate project.
   SolutionArgs({
-    required pulumi.Output<String> migrateProjectName,
-    pulumi.Output<SolutionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? solutionName,
-  }) :
-      migrateProjectName = pulumi.Input.asInput<String>(migrateProjectName),
-      properties = pulumi.Input.asOptionalInput<SolutionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asOptionalInput<String>(solutionName);
+    required this.migrateProjectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.solutionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      migrateProjectName: pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SolutionProperties>(SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: map['solutionName'] == null ? null : pulumi.Output.create<String>(map['solutionName'] as String),
+      migrateProjectName: (map['migrateProjectName'] as String).input(),
+      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
     );
   }
 }

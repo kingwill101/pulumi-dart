@@ -34,23 +34,15 @@ class DiAlarmRuleState {
   /// [notificationSettings] Alarm notification settings See `notification_settings` below.
   /// [triggerConditions] Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
   DiAlarmRuleState({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? diAlarmRuleId,
-    pulumi.Output<String>? diAlarmRuleName,
-    pulumi.Output<int>? diJobId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? metricType,
-    pulumi.Output<DiAlarmRuleNotificationSettings>? notificationSettings,
-    pulumi.Output<List<DiAlarmRuleTriggerCondition>>? triggerConditions,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diAlarmRuleId = pulumi.Input.asOptionalInput<int>(diAlarmRuleId),
-      diAlarmRuleName = pulumi.Input.asOptionalInput<String>(diAlarmRuleName),
-      diJobId = pulumi.Input.asOptionalInput<int>(diJobId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      metricType = pulumi.Input.asOptionalInput<String>(metricType),
-      notificationSettings = pulumi.Input.asOptionalInput<DiAlarmRuleNotificationSettings>(notificationSettings),
-      triggerConditions = pulumi.Input.asOptionalInput<List<DiAlarmRuleTriggerCondition>>(triggerConditions);
+    this.description,
+    this.diAlarmRuleId,
+    this.diAlarmRuleName,
+    this.diJobId,
+    this.enabled,
+    this.metricType,
+    this.notificationSettings,
+    this.triggerConditions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class DiAlarmRuleState {
 
   factory DiAlarmRuleState.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diAlarmRuleId: map['diAlarmRuleId'] == null ? null : pulumi.Output.create<int>(map['diAlarmRuleId'] as int),
-      diAlarmRuleName: map['diAlarmRuleName'] == null ? null : pulumi.Output.create<String>(map['diAlarmRuleName'] as String),
-      diJobId: map['diJobId'] == null ? null : pulumi.Output.create<int>(map['diJobId'] as int),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      metricType: map['metricType'] == null ? null : pulumi.Output.create<String>(map['metricType'] as String),
-      notificationSettings: map['notificationSettings'] == null ? null : pulumi.Output.create<DiAlarmRuleNotificationSettings>(DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())),
-      triggerConditions: map['triggerConditions'] == null ? null : pulumi.Output.create<List<DiAlarmRuleTriggerCondition>>(pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions'], (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diAlarmRuleId: map['diAlarmRuleId'] == null ? null : (map['diAlarmRuleId'] as int).input(),
+      diAlarmRuleName: map['diAlarmRuleName'] == null ? null : (map['diAlarmRuleName'] as String).input(),
+      diJobId: map['diJobId'] == null ? null : (map['diJobId'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
+      triggerConditions: map['triggerConditions'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions'], (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

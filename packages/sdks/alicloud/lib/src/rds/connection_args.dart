@@ -24,15 +24,11 @@ class ConnectionArgs {
   /// [instanceId] The Id of instance that can run database.
   /// [port] Internet connection port. Valid value: [1000-5999]. Default to 3306.
   ConnectionArgs({
-    pulumi.Output<String>? babelfishPort,
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? port,
-  }) :
-      babelfishPort = pulumi.Input.asOptionalInput<String>(babelfishPort),
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.babelfishPort,
+    this.connectionPrefix,
+    required this.instanceId,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      babelfishPort: map['babelfishPort'] == null ? null : pulumi.Output.create<String>(map['babelfishPort'] as String),
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      babelfishPort: map['babelfishPort'] == null ? null : (map['babelfishPort'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

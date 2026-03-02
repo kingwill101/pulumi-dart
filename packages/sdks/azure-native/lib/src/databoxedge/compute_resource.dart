@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Compute infrastructure Resource
 class ComputeResource {
   /// Memory in GB
-  final double memoryInGB;
+  final pulumi.Input<double> memoryInGB;
   /// Processor count
-  final int processorCount;
+  final pulumi.Input<int> processorCount;
 
   /// Creates a new [ComputeResource].
   /// [memoryInGB] Memory in GB
@@ -25,8 +26,8 @@ class ComputeResource {
 
   factory ComputeResource.fromMap(Map<String, dynamic> map) {
     return ComputeResource(
-      memoryInGB: map['memoryInGB'] as double,
-      processorCount: map['processorCount'] as int,
+      memoryInGB: (map['memoryInGB'] as double).input(),
+      processorCount: (map['processorCount'] as int).input(),
     );
   }
 }

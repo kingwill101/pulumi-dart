@@ -27,15 +27,11 @@ class ServicePerimeterDryRunEgressPolicyArgs {
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
   ServicePerimeterDryRunEgressPolicyArgs({
-    pulumi.Output<ServicePerimeterDryRunEgressPolicyEgressFrom>? egressFrom,
-    pulumi.Output<ServicePerimeterDryRunEgressPolicyEgressTo>? egressTo,
-    required pulumi.Output<String> perimeter,
-    pulumi.Output<String>? title,
-  }) :
-      egressFrom = pulumi.Input.asOptionalInput<ServicePerimeterDryRunEgressPolicyEgressFrom>(egressFrom),
-      egressTo = pulumi.Input.asOptionalInput<ServicePerimeterDryRunEgressPolicyEgressTo>(egressTo),
-      perimeter = pulumi.Input.asInput<String>(perimeter),
-      title = pulumi.Input.asOptionalInput<String>(title);
+    this.egressFrom,
+    this.egressTo,
+    required this.perimeter,
+    this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class ServicePerimeterDryRunEgressPolicyArgs {
 
   factory ServicePerimeterDryRunEgressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunEgressPolicyArgs(
-      egressFrom: map['egressFrom'] == null ? null : pulumi.Output.create<ServicePerimeterDryRunEgressPolicyEgressFrom>(ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())),
-      egressTo: map['egressTo'] == null ? null : pulumi.Output.create<ServicePerimeterDryRunEgressPolicyEgressTo>(ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())),
-      perimeter: pulumi.Output.create<String>(map['perimeter'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
+      perimeter: (map['perimeter'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

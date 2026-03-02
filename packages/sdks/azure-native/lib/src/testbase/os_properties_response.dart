@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'release_properties_response.dart';
 
 /// The properties of an operating system.
 class OsPropertiesResponse {
   /// The name of the custom image resource.
-  final String customImageDisplayName;
+  final pulumi.Input<String> customImageDisplayName;
   /// Specify the referenced Test Base Custom Image Id if available.
-  final String? customImageId;
+  final pulumi.Input<String>? customImageId;
   /// The name of the OS.
-  final String? osName;
+  final pulumi.Input<String>? osName;
   /// The properties of the OS release.
-  final ReleasePropertiesResponse? releaseProperties;
+  final pulumi.Input<ReleasePropertiesResponse>? releaseProperties;
 
   /// Creates a new [OsPropertiesResponse].
   /// [customImageDisplayName] The name of the custom image resource.
@@ -30,16 +31,16 @@ class OsPropertiesResponse {
       'customImageDisplayName': customImageDisplayName,
       'customImageId': ?customImageId,
       'osName': ?osName,
-      'releaseProperties': ?releaseProperties == null ? null : releaseProperties!.toMap(),
+      'releaseProperties': ?pulumi.Input.mapOptionalInputValue<ReleasePropertiesResponse, Map<String, dynamic>>(releaseProperties, (value) => value.toMap()),
     };
   }
 
   factory OsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OsPropertiesResponse(
-      customImageDisplayName: map['customImageDisplayName'] as String,
-      customImageId: map['customImageId'] == null ? null : map['customImageId'] as String,
-      osName: map['osName'] == null ? null : map['osName'] as String,
-      releaseProperties: map['releaseProperties'] == null ? null : ReleasePropertiesResponse.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>()),
+      customImageDisplayName: (map['customImageDisplayName'] as String).input(),
+      customImageId: map['customImageId'] == null ? null : (map['customImageId'] as String).input(),
+      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
+      releaseProperties: map['releaseProperties'] == null ? null : (ReleasePropertiesResponse.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

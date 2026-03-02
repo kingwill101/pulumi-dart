@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Alert notification source
 class NotificationsSourceAlertResponse {
   /// Defines the minimal alert severity which will be sent as email notifications
-  final String? minimalSeverity;
+  final pulumi.Input<String>? minimalSeverity;
   /// The source type that will trigger the notification
   /// Expected value is 'Alert'.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [NotificationsSourceAlertResponse].
   /// [minimalSeverity] Defines the minimal alert severity which will be sent as email notifications
@@ -26,8 +27,8 @@ class NotificationsSourceAlertResponse {
 
   factory NotificationsSourceAlertResponse.fromMap(Map<String, dynamic> map) {
     return NotificationsSourceAlertResponse(
-      minimalSeverity: map['minimalSeverity'] == null ? null : map['minimalSeverity'] as String,
-      sourceType: map['sourceType'] as String,
+      minimalSeverity: map['minimalSeverity'] == null ? null : (map['minimalSeverity'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

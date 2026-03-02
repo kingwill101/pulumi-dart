@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
 class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
   /// The additional configuration schema reference.
-  final String? additionalConfigSchemaRef;
+  final pulumi.Input<String>? additionalConfigSchemaRef;
   /// The default configuration schema reference for datasets.
-  final String? defaultDatasetConfigSchemaRef;
+  final pulumi.Input<String>? defaultDatasetConfigSchemaRef;
   /// The default configuration schema reference for events.
-  final String? defaultEventsConfigSchemaRef;
+  final pulumi.Input<String>? defaultEventsConfigSchemaRef;
   /// The default configuration schema reference for process control.
-  final String? defaultProcessControlConfigSchemaRef;
+  final pulumi.Input<String>? defaultProcessControlConfigSchemaRef;
   /// The default configuration schema reference for streams.
-  final String? defaultStreamsConfigSchemaRef;
+  final pulumi.Input<String>? defaultStreamsConfigSchemaRef;
 
   /// Creates a new [AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs].
   /// [additionalConfigSchemaRef] The additional configuration schema reference.
@@ -40,11 +41,11 @@ class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
 
   factory AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs(
-      additionalConfigSchemaRef: map['additionalConfigSchemaRef'] == null ? null : map['additionalConfigSchemaRef'] as String,
-      defaultDatasetConfigSchemaRef: map['defaultDatasetConfigSchemaRef'] == null ? null : map['defaultDatasetConfigSchemaRef'] as String,
-      defaultEventsConfigSchemaRef: map['defaultEventsConfigSchemaRef'] == null ? null : map['defaultEventsConfigSchemaRef'] as String,
-      defaultProcessControlConfigSchemaRef: map['defaultProcessControlConfigSchemaRef'] == null ? null : map['defaultProcessControlConfigSchemaRef'] as String,
-      defaultStreamsConfigSchemaRef: map['defaultStreamsConfigSchemaRef'] == null ? null : map['defaultStreamsConfigSchemaRef'] as String,
+      additionalConfigSchemaRef: map['additionalConfigSchemaRef'] == null ? null : (map['additionalConfigSchemaRef'] as String).input(),
+      defaultDatasetConfigSchemaRef: map['defaultDatasetConfigSchemaRef'] == null ? null : (map['defaultDatasetConfigSchemaRef'] as String).input(),
+      defaultEventsConfigSchemaRef: map['defaultEventsConfigSchemaRef'] == null ? null : (map['defaultEventsConfigSchemaRef'] as String).input(),
+      defaultProcessControlConfigSchemaRef: map['defaultProcessControlConfigSchemaRef'] == null ? null : (map['defaultProcessControlConfigSchemaRef'] as String).input(),
+      defaultStreamsConfigSchemaRef: map['defaultStreamsConfigSchemaRef'] == null ? null : (map['defaultStreamsConfigSchemaRef'] as String).input(),
     );
   }
 }

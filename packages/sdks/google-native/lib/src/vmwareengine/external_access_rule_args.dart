@@ -48,33 +48,20 @@ class ExternalAccessRuleArgs {
   /// [sourceIpRanges] If source ranges are specified, the external access rule applies only to traffic that has a source IP address in these ranges. These ranges can either be expressed in the CIDR format or as an IP address. As only inbound rules are supported, `ExternalAddress` resources cannot be the source IP addresses of an external access rule. To match all source addresses, specify `0.0.0.0/0`.
   /// [sourcePorts] A list of source ports to which the external access rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. For example: `["22"]`, `["80","443"]`, or `["12345-12349"]`. To match all source ports, specify `["0-65535"]`.
   ExternalAccessRuleArgs({
-    pulumi.Output<ExternalAccessRuleAction>? action,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<IpRange>>? destinationIpRanges,
-    pulumi.Output<List<String>>? destinationPorts,
-    required pulumi.Output<String> externalAccessRuleId,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkPolicyId,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<IpRange>>? sourceIpRanges,
-    pulumi.Output<List<String>>? sourcePorts,
-  }) :
-      action = pulumi.Input.asOptionalInput<ExternalAccessRuleAction>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationIpRanges = pulumi.Input.asOptionalInput<List<IpRange>>(destinationIpRanges),
-      destinationPorts = pulumi.Input.asOptionalInput<List<String>>(destinationPorts),
-      externalAccessRuleId = pulumi.Input.asInput<String>(externalAccessRuleId),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceIpRanges = pulumi.Input.asOptionalInput<List<IpRange>>(sourceIpRanges),
-      sourcePorts = pulumi.Input.asOptionalInput<List<String>>(sourcePorts);
+    this.action,
+    this.description,
+    this.destinationIpRanges,
+    this.destinationPorts,
+    required this.externalAccessRuleId,
+    this.ipProtocol,
+    this.location,
+    required this.networkPolicyId,
+    this.priority,
+    this.project,
+    this.requestId,
+    this.sourceIpRanges,
+    this.sourcePorts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class ExternalAccessRuleArgs {
 
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<ExternalAccessRuleAction>(ExternalAccessRuleAction.fromValue(map['action'] as String)),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : pulumi.Output.create<List<IpRange>>(pulumi.Input.decodeList<IpRange>(map['destinationIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      destinationPorts: map['destinationPorts'] == null ? null : pulumi.Output.create<List<String>>((map['destinationPorts'] as List).cast<String>()),
-      externalAccessRuleId: pulumi.Output.create<String>(map['externalAccessRuleId'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkPolicyId: pulumi.Output.create<String>(map['networkPolicyId'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : pulumi.Output.create<List<IpRange>>(pulumi.Input.decodeList<IpRange>(map['sourceIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      sourcePorts: map['sourcePorts'] == null ? null : pulumi.Output.create<List<String>>((map['sourcePorts'] as List).cast<String>()),
+      action: map['action'] == null ? null : (ExternalAccessRuleAction.fromValue(map['action'] as String)).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['destinationIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
+      externalAccessRuleId: (map['externalAccessRuleId'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkPolicyId: (map['networkPolicyId'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['sourceIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts'] as List).cast<String>()).input(),
     );
   }
 }

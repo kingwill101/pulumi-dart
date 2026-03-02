@@ -53,25 +53,16 @@ class PerInstanceConfigArgs {
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// [zone] Zone where the containing instance group manager is located
   PerInstanceConfigArgs({
-    required pulumi.Output<String> instanceGroupManager,
-    pulumi.Output<String>? minimalAction,
-    pulumi.Output<String>? mostDisruptiveAllowedAction,
-    pulumi.Output<String>? name,
-    pulumi.Output<PerInstanceConfigPreservedState>? preservedState,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? removeInstanceOnDestroy,
-    pulumi.Output<bool>? removeInstanceStateOnDestroy,
-    pulumi.Output<String>? zone,
-  }) :
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      minimalAction = pulumi.Input.asOptionalInput<String>(minimalAction),
-      mostDisruptiveAllowedAction = pulumi.Input.asOptionalInput<String>(mostDisruptiveAllowedAction),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preservedState = pulumi.Input.asOptionalInput<PerInstanceConfigPreservedState>(preservedState),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      removeInstanceOnDestroy = pulumi.Input.asOptionalInput<bool>(removeInstanceOnDestroy),
-      removeInstanceStateOnDestroy = pulumi.Input.asOptionalInput<bool>(removeInstanceStateOnDestroy),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.instanceGroupManager,
+    this.minimalAction,
+    this.mostDisruptiveAllowedAction,
+    this.name,
+    this.preservedState,
+    this.project,
+    this.removeInstanceOnDestroy,
+    this.removeInstanceStateOnDestroy,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,15 +80,15 @@ class PerInstanceConfigArgs {
 
   factory PerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigArgs(
-      instanceGroupManager: pulumi.Output.create<String>(map['instanceGroupManager'] as String),
-      minimalAction: map['minimalAction'] == null ? null : pulumi.Output.create<String>(map['minimalAction'] as String),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : pulumi.Output.create<String>(map['mostDisruptiveAllowedAction'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preservedState: map['preservedState'] == null ? null : pulumi.Output.create<PerInstanceConfigPreservedState>(PerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['removeInstanceOnDestroy'] as bool),
-      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['removeInstanceStateOnDestroy'] as bool),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      instanceGroupManager: (map['instanceGroupManager'] as String).input(),
+      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction'] as String).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preservedState: map['preservedState'] == null ? null : (PerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy'] as bool).input(),
+      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy'] as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

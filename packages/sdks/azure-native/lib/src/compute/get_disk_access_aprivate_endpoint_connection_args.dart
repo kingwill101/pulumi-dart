@@ -19,13 +19,10 @@ class GetDiskAccessAPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiskAccessAPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> diskAccessName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      diskAccessName = pulumi.Input.asInput<String>(diskAccessName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.diskAccessName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDiskAccessAPrivateEndpointConnectionArgs {
 
   factory GetDiskAccessAPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskAccessAPrivateEndpointConnectionArgs(
-      diskAccessName: pulumi.Output.create<String>(map['diskAccessName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      diskAccessName: (map['diskAccessName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

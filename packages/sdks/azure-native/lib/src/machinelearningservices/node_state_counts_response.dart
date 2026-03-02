@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Counts of various compute node states on the amlCompute.
 class NodeStateCountsResponse {
   /// Number of compute nodes in idle state.
-  final int idleNodeCount;
+  final pulumi.Input<int> idleNodeCount;
   /// Number of compute nodes which are leaving the amlCompute.
-  final int leavingNodeCount;
+  final pulumi.Input<int> leavingNodeCount;
   /// Number of compute nodes which are in preempted state.
-  final int preemptedNodeCount;
+  final pulumi.Input<int> preemptedNodeCount;
   /// Number of compute nodes which are being prepared.
-  final int preparingNodeCount;
+  final pulumi.Input<int> preparingNodeCount;
   /// Number of compute nodes which are running jobs.
-  final int runningNodeCount;
+  final pulumi.Input<int> runningNodeCount;
   /// Number of compute nodes which are in unusable state.
-  final int unusableNodeCount;
+  final pulumi.Input<int> unusableNodeCount;
 
   /// Creates a new [NodeStateCountsResponse].
   /// [idleNodeCount] Number of compute nodes in idle state.
@@ -45,12 +46,12 @@ class NodeStateCountsResponse {
 
   factory NodeStateCountsResponse.fromMap(Map<String, dynamic> map) {
     return NodeStateCountsResponse(
-      idleNodeCount: map['idleNodeCount'] as int,
-      leavingNodeCount: map['leavingNodeCount'] as int,
-      preemptedNodeCount: map['preemptedNodeCount'] as int,
-      preparingNodeCount: map['preparingNodeCount'] as int,
-      runningNodeCount: map['runningNodeCount'] as int,
-      unusableNodeCount: map['unusableNodeCount'] as int,
+      idleNodeCount: (map['idleNodeCount'] as int).input(),
+      leavingNodeCount: (map['leavingNodeCount'] as int).input(),
+      preemptedNodeCount: (map['preemptedNodeCount'] as int).input(),
+      preparingNodeCount: (map['preparingNodeCount'] as int).input(),
+      runningNodeCount: (map['runningNodeCount'] as int).input(),
+      unusableNodeCount: (map['unusableNodeCount'] as int).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Extended location of the resource.
 class RegisteredClusterNodesResponse {
   /// The BIOS ID.
-  final String? biosId;
+  final pulumi.Input<String>? biosId;
   /// The cluster node name.
-  final String? clusterNodeFqdn;
+  final pulumi.Input<String>? clusterNodeFqdn;
   /// A value indicating whether this represents virtual entity hosting all the shared disks.
-  final bool? isSharedDiskVirtualNode;
+  final pulumi.Input<bool>? isSharedDiskVirtualNode;
   /// The machine ID.
-  final String? machineId;
+  final pulumi.Input<String>? machineId;
 
   /// Creates a new [RegisteredClusterNodesResponse].
   /// [biosId] The BIOS ID.
@@ -35,10 +36,10 @@ class RegisteredClusterNodesResponse {
 
   factory RegisteredClusterNodesResponse.fromMap(Map<String, dynamic> map) {
     return RegisteredClusterNodesResponse(
-      biosId: map['biosId'] == null ? null : map['biosId'] as String,
-      clusterNodeFqdn: map['clusterNodeFqdn'] == null ? null : map['clusterNodeFqdn'] as String,
-      isSharedDiskVirtualNode: map['isSharedDiskVirtualNode'] == null ? null : map['isSharedDiskVirtualNode'] as bool,
-      machineId: map['machineId'] == null ? null : map['machineId'] as String,
+      biosId: map['biosId'] == null ? null : (map['biosId'] as String).input(),
+      clusterNodeFqdn: map['clusterNodeFqdn'] == null ? null : (map['clusterNodeFqdn'] as String).input(),
+      isSharedDiskVirtualNode: map['isSharedDiskVirtualNode'] == null ? null : (map['isSharedDiskVirtualNode'] as bool).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
     );
   }
 }

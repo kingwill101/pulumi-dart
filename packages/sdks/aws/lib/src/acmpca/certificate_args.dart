@@ -33,21 +33,14 @@ class CertificateArgs {
   /// [templateArn] Template to use when issuing a certificate.
   /// [validity] Configures end of the validity period for the certificate. See validity block below.
   CertificateArgs({
-    pulumi.Output<String>? apiPassthrough,
-    required pulumi.Output<String> certificateAuthorityArn,
-    required pulumi.Output<String> certificateSigningRequest,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> signingAlgorithm,
-    pulumi.Output<String>? templateArn,
-    required pulumi.Output<CertificateValidity> validity,
-  }) :
-      apiPassthrough = pulumi.Input.asOptionalInput<String>(apiPassthrough),
-      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
-      certificateSigningRequest = pulumi.Input.asInput<String>(certificateSigningRequest),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      signingAlgorithm = pulumi.Input.asInput<String>(signingAlgorithm),
-      templateArn = pulumi.Input.asOptionalInput<String>(templateArn),
-      validity = pulumi.Input.asInput<CertificateValidity>(validity);
+    this.apiPassthrough,
+    required this.certificateAuthorityArn,
+    required this.certificateSigningRequest,
+    this.region,
+    required this.signingAlgorithm,
+    this.templateArn,
+    required this.validity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      apiPassthrough: map['apiPassthrough'] == null ? null : pulumi.Output.create<String>(map['apiPassthrough'] as String),
-      certificateAuthorityArn: pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
-      certificateSigningRequest: pulumi.Output.create<String>(map['certificateSigningRequest'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      signingAlgorithm: pulumi.Output.create<String>(map['signingAlgorithm'] as String),
-      templateArn: map['templateArn'] == null ? null : pulumi.Output.create<String>(map['templateArn'] as String),
-      validity: pulumi.Output.create<CertificateValidity>(CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())),
+      apiPassthrough: map['apiPassthrough'] == null ? null : (map['apiPassthrough'] as String).input(),
+      certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
+      certificateSigningRequest: (map['certificateSigningRequest'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      signingAlgorithm: (map['signingAlgorithm'] as String).input(),
+      templateArn: map['templateArn'] == null ? null : (map['templateArn'] as String).input(),
+      validity: (CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

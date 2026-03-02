@@ -51,31 +51,19 @@ class ServerDetailsArgs {
   /// [sku] The SKU of the Analysis Services resource.
   /// [tags] Key-value pairs of additional resource provisioning properties.
   ServerDetailsArgs({
-    pulumi.Output<ServerAdministrators>? asAdministrators,
-    pulumi.Output<String>? backupBlobContainerUri,
-    pulumi.Output<GatewayDetails>? gatewayDetails,
-    pulumi.Output<IPv4FirewallSettings>? ipV4FirewallSettings,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? managedMode,
-    pulumi.Output<ConnectionMode>? querypoolConnectionMode,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? serverMonitorMode,
-    pulumi.Output<String>? serverName,
-    required pulumi.Output<ResourceSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      asAdministrators = pulumi.Input.asOptionalInput<ServerAdministrators>(asAdministrators),
-      backupBlobContainerUri = pulumi.Input.asOptionalInput<String>(backupBlobContainerUri),
-      gatewayDetails = pulumi.Input.asOptionalInput<GatewayDetails>(gatewayDetails),
-      ipV4FirewallSettings = pulumi.Input.asOptionalInput<IPv4FirewallSettings>(ipV4FirewallSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedMode = pulumi.Input.asOptionalInput<int>(managedMode),
-      querypoolConnectionMode = pulumi.Input.asOptionalInput<ConnectionMode>(querypoolConnectionMode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverMonitorMode = pulumi.Input.asOptionalInput<int>(serverMonitorMode),
-      serverName = pulumi.Input.asOptionalInput<String>(serverName),
-      sku = pulumi.Input.asInput<ResourceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.asAdministrators,
+    this.backupBlobContainerUri,
+    this.gatewayDetails,
+    this.ipV4FirewallSettings,
+    this.location,
+    this.managedMode,
+    this.querypoolConnectionMode,
+    required this.resourceGroupName,
+    this.serverMonitorMode,
+    this.serverName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class ServerDetailsArgs {
 
   factory ServerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ServerDetailsArgs(
-      asAdministrators: map['asAdministrators'] == null ? null : pulumi.Output.create<ServerAdministrators>(ServerAdministrators.fromMap((map['asAdministrators'] as Map).cast<String, dynamic>())),
-      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : pulumi.Output.create<String>(map['backupBlobContainerUri'] as String),
-      gatewayDetails: map['gatewayDetails'] == null ? null : pulumi.Output.create<GatewayDetails>(GatewayDetails.fromMap((map['gatewayDetails'] as Map).cast<String, dynamic>())),
-      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : pulumi.Output.create<IPv4FirewallSettings>(IPv4FirewallSettings.fromMap((map['ipV4FirewallSettings'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedMode: map['managedMode'] == null ? null : pulumi.Output.create<int>(map['managedMode'] as int),
-      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : pulumi.Output.create<ConnectionMode>(ConnectionMode.fromValue(map['querypoolConnectionMode'] as String)),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverMonitorMode: map['serverMonitorMode'] == null ? null : pulumi.Output.create<int>(map['serverMonitorMode'] as int),
-      serverName: map['serverName'] == null ? null : pulumi.Output.create<String>(map['serverName'] as String),
-      sku: pulumi.Output.create<ResourceSku>(ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      asAdministrators: map['asAdministrators'] == null ? null : (ServerAdministrators.fromMap((map['asAdministrators'] as Map).cast<String, dynamic>())).input(),
+      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri'] as String).input(),
+      gatewayDetails: map['gatewayDetails'] == null ? null : (GatewayDetails.fromMap((map['gatewayDetails'] as Map).cast<String, dynamic>())).input(),
+      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : (IPv4FirewallSettings.fromMap((map['ipV4FirewallSettings'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedMode: map['managedMode'] == null ? null : (map['managedMode'] as int).input(),
+      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (ConnectionMode.fromValue(map['querypoolConnectionMode'] as String)).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverMonitorMode: map['serverMonitorMode'] == null ? null : (map['serverMonitorMode'] as int).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      sku: (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

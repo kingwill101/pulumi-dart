@@ -17,13 +17,10 @@ class SecretState {
   /// [labels] User-defined key/value metadata
   /// [name] User-defined name of the secret
   SecretState({
-    pulumi.Output<String>? data,
-    pulumi.Output<List<SecretLabel>>? labels,
-    pulumi.Output<String>? name,
-  }) :
-      data = pulumi.Input.asOptionalInput<String>(data),
-      labels = pulumi.Input.asOptionalInput<List<SecretLabel>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.data,
+    this.labels,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class SecretState {
 
   factory SecretState.fromMap(Map<String, dynamic> map) {
     return SecretState(
-      data: map['data'] == null ? null : pulumi.Output.create<String>(map['data'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<SecretLabel>>(pulumi.Input.decodeList<SecretLabel>(map['labels'], (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<SecretLabel>(map['labels'], (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

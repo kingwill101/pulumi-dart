@@ -6,21 +6,21 @@ import 'group_members_item_response.dart';
 /// The network configuration group resource
 class ConfigurationGroupResponse {
   /// Network group conditional filter.
-  final String? conditionalMembership;
+  final pulumi.Input<String>? conditionalMembership;
   /// A description of the network group.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A friendly name for the network group.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Group members of network group.
-  final List<GroupMembersItemResponse>? groupMembers;
+  final pulumi.Input<List<GroupMembersItemResponse>>? groupMembers;
   /// Network group ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The type of the group member.
-  final String? memberType;
+  final pulumi.Input<String>? memberType;
   /// The provisioning state of the scope assignment resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Unique identifier for this resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
 
   /// Creates a new [ConfigurationGroupResponse].
   /// [conditionalMembership] Network group conditional filter.
@@ -47,7 +47,7 @@ class ConfigurationGroupResponse {
       'conditionalMembership': ?conditionalMembership,
       'description': ?description,
       'displayName': ?displayName,
-      'groupMembers': ?groupMembers == null ? null : pulumi.Input.encodeList<GroupMembersItemResponse, Map<String, dynamic>>(groupMembers!, (value) => value.toMap()),
+      'groupMembers': ?pulumi.Input.mapOptionalInputValue<List<GroupMembersItemResponse>, List<Map<String, dynamic>>>(groupMembers, (value) => pulumi.Input.encodeList<GroupMembersItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'memberType': ?memberType,
       'provisioningState': provisioningState,
@@ -57,14 +57,14 @@ class ConfigurationGroupResponse {
 
   factory ConfigurationGroupResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupResponse(
-      conditionalMembership: map['conditionalMembership'] == null ? null : map['conditionalMembership'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      groupMembers: map['groupMembers'] == null ? null : pulumi.Input.decodeList<GroupMembersItemResponse>(map['groupMembers'], (value) => GroupMembersItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      memberType: map['memberType'] == null ? null : map['memberType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      conditionalMembership: map['conditionalMembership'] == null ? null : (map['conditionalMembership'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      groupMembers: map['groupMembers'] == null ? null : (pulumi.Input.decodeList<GroupMembersItemResponse>(map['groupMembers'], (value) => GroupMembersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineDestinationHttpEndpoint {
   /// The CEL expression used to modify how the destination-bound HTTP
@@ -160,12 +161,12 @@ class PipelineDestinationHttpEndpoint {
   /// The Pipeline expects that the message it receives adheres to the
   /// standard CloudEvent format. If it doesn't then the outgoing message
   /// request may fail with a persistent error.
-  final String? messageBindingTemplate;
+  final pulumi.Input<String>? messageBindingTemplate;
   /// The URI of the HTTP enpdoint.
   /// The value must be a RFC2396 URI string.
   /// Examples: `https://svc.us-central1.p.local:8080/route`.
   /// Only the HTTPS protocol is supported.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [PipelineDestinationHttpEndpoint].
   /// [messageBindingTemplate] The CEL expression used to modify how the destination-bound HTTP
@@ -184,8 +185,8 @@ class PipelineDestinationHttpEndpoint {
 
   factory PipelineDestinationHttpEndpoint.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationHttpEndpoint(
-      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : map['messageBindingTemplate'] as String,
-      uri: map['uri'] as String,
+      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : (map['messageBindingTemplate'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

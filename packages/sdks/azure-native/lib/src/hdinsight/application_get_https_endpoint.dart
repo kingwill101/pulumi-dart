@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets the application HTTP endpoints.
 class ApplicationGetHttpsEndpoint {
   /// The list of access modes for the application.
-  final List<String>? accessModes;
+  final pulumi.Input<List<String>>? accessModes;
   /// The destination port to connect to.
-  final int? destinationPort;
+  final pulumi.Input<int>? destinationPort;
   /// The value indicates whether to disable GatewayAuth.
-  final bool? disableGatewayAuth;
+  final pulumi.Input<bool>? disableGatewayAuth;
   /// The private ip address of the endpoint.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The subdomain suffix of the application.
-  final String? subDomainSuffix;
+  final pulumi.Input<String>? subDomainSuffix;
 
   /// Creates a new [ApplicationGetHttpsEndpoint].
   /// [accessModes] The list of access modes for the application.
@@ -40,11 +41,11 @@ class ApplicationGetHttpsEndpoint {
 
   factory ApplicationGetHttpsEndpoint.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpoint(
-      accessModes: map['accessModes'] == null ? null : (map['accessModes'] as List).cast<String>(),
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as int,
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : map['disableGatewayAuth'] as bool,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      subDomainSuffix: map['subDomainSuffix'] == null ? null : map['subDomainSuffix'] as String,
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth'] as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix'] as String).input(),
     );
   }
 }

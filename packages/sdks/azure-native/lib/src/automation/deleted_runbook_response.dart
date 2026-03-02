@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of deleted runbook.
 class DeletedRunbookResponse {
   /// Gets or sets the creation time.
-  final String? creationTime;
+  final pulumi.Input<String>? creationTime;
   /// Gets or sets the last modified time.
-  final String? deletionTime;
+  final pulumi.Input<String>? deletionTime;
   /// The resource id.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Gets or sets the location of the resource.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Gets or sets name of the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the Runbook Id.
-  final String? runbookId;
+  final pulumi.Input<String>? runbookId;
   /// Type of the runbook.
-  final String? runbookType;
+  final pulumi.Input<String>? runbookType;
   /// Gets or sets runtime of the runbook.
-  final String? runtime;
+  final pulumi.Input<String>? runtime;
   /// Environment of the runbook.
-  final String? runtimeEnvironment;
+  final pulumi.Input<String>? runtimeEnvironment;
 
   /// Creates a new [DeletedRunbookResponse].
   /// [creationTime] Gets or sets the creation time.
@@ -60,15 +61,15 @@ class DeletedRunbookResponse {
 
   factory DeletedRunbookResponse.fromMap(Map<String, dynamic> map) {
     return DeletedRunbookResponse(
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      deletionTime: map['deletionTime'] == null ? null : map['deletionTime'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      runbookId: map['runbookId'] == null ? null : map['runbookId'] as String,
-      runbookType: map['runbookType'] == null ? null : map['runbookType'] as String,
-      runtime: map['runtime'] == null ? null : map['runtime'] as String,
-      runtimeEnvironment: map['runtimeEnvironment'] == null ? null : map['runtimeEnvironment'] as String,
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      runbookId: map['runbookId'] == null ? null : (map['runbookId'] as String).input(),
+      runbookType: map['runbookType'] == null ? null : (map['runbookType'] as String).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      runtimeEnvironment: map['runtimeEnvironment'] == null ? null : (map['runtimeEnvironment'] as String).input(),
     );
   }
 }

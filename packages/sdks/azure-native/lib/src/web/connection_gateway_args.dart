@@ -28,19 +28,13 @@ class ConnectionGatewayArgs {
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
   ConnectionGatewayArgs({
-    pulumi.Output<String>? connectionGatewayName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ConnectionGatewayDefinitionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectionGatewayName = pulumi.Input.asOptionalInput<String>(connectionGatewayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ConnectionGatewayDefinitionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.connectionGatewayName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ConnectionGatewayArgs {
 
   factory ConnectionGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionGatewayArgs(
-      connectionGatewayName: map['connectionGatewayName'] == null ? null : pulumi.Output.create<String>(map['connectionGatewayName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConnectionGatewayDefinitionProperties>(ConnectionGatewayDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectionGatewayName: map['connectionGatewayName'] == null ? null : (map['connectionGatewayName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ConnectionGatewayDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

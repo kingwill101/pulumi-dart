@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings for the Cosmos DB database backing the service.
 class ServiceCosmosDbConfigurationInfo {
   /// The multi-tenant application id used to enable CMK access for services in a data sovereign region.
-  final String? crossTenantCmkApplicationId;
+  final pulumi.Input<String>? crossTenantCmkApplicationId;
   /// The URI of the customer-managed key for the backing database.
-  final String? keyVaultKeyUri;
+  final pulumi.Input<String>? keyVaultKeyUri;
   /// The provisioned throughput for the backing database.
-  final int? offerThroughput;
+  final pulumi.Input<int>? offerThroughput;
 
   /// Creates a new [ServiceCosmosDbConfigurationInfo].
   /// [crossTenantCmkApplicationId] The multi-tenant application id used to enable CMK access for services in a data sovereign region.
@@ -30,9 +31,9 @@ class ServiceCosmosDbConfigurationInfo {
 
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
-      crossTenantCmkApplicationId: map['crossTenantCmkApplicationId'] == null ? null : map['crossTenantCmkApplicationId'] as String,
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : map['keyVaultKeyUri'] as String,
-      offerThroughput: map['offerThroughput'] == null ? null : map['offerThroughput'] as int,
+      crossTenantCmkApplicationId: map['crossTenantCmkApplicationId'] == null ? null : (map['crossTenantCmkApplicationId'] as String).input(),
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
+      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput'] as int).input(),
     );
   }
 }

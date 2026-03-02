@@ -13,11 +13,9 @@ class BucketAccessMonitorState {
   /// [bucket] The name of the bucket.
   /// [status] Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
   BucketAccessMonitorState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? status,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bucket,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class BucketAccessMonitorState {
 
   factory BucketAccessMonitorState.fromMap(Map<String, dynamic> map) {
     return BucketAccessMonitorState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

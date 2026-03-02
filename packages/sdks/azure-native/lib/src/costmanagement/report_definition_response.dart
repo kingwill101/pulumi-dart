@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_dataset_response.dart';
 import 'report_time_period_response.dart';
 
 /// The definition of a report.
 class ReportDefinitionResponse {
   /// Has definition for data in this report.
-  final ReportDatasetResponse? dataset;
+  final pulumi.Input<ReportDatasetResponse>? dataset;
   /// Has time period for pulling data for the report.
-  final ReportTimePeriodResponse? timePeriod;
+  final pulumi.Input<ReportTimePeriodResponse>? timePeriod;
   /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-  final String timeframe;
+  final pulumi.Input<String> timeframe;
   /// The type of the report.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ReportDefinitionResponse].
   /// [dataset] Has definition for data in this report.
@@ -28,8 +29,8 @@ class ReportDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataset': ?dataset == null ? null : dataset!.toMap(),
-      'timePeriod': ?timePeriod == null ? null : timePeriod!.toMap(),
+      'dataset': ?pulumi.Input.mapOptionalInputValue<ReportDatasetResponse, Map<String, dynamic>>(dataset, (value) => value.toMap()),
+      'timePeriod': ?pulumi.Input.mapOptionalInputValue<ReportTimePeriodResponse, Map<String, dynamic>>(timePeriod, (value) => value.toMap()),
       'timeframe': timeframe,
       'type': type,
     };
@@ -37,10 +38,10 @@ class ReportDefinitionResponse {
 
   factory ReportDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ReportDefinitionResponse(
-      dataset: map['dataset'] == null ? null : ReportDatasetResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
-      timePeriod: map['timePeriod'] == null ? null : ReportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>()),
-      timeframe: map['timeframe'] as String,
-      type: map['type'] as String,
+      dataset: map['dataset'] == null ? null : (ReportDatasetResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
+      timePeriod: map['timePeriod'] == null ? null : (ReportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      timeframe: (map['timeframe'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

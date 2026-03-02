@@ -32,17 +32,12 @@ class AclArgs {
   /// [location] ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
   AclArgs({
-    required pulumi.Output<List<AclAclEntry>> aclEntries,
-    required pulumi.Output<String> aclId,
-    required pulumi.Output<String> cluster,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      aclEntries = pulumi.Input.asInput<List<AclAclEntry>>(aclEntries),
-      aclId = pulumi.Input.asInput<String>(aclId),
-      cluster = pulumi.Input.asInput<String>(cluster),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.aclEntries,
+    required this.aclId,
+    required this.cluster,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      aclEntries: pulumi.Output.create<List<AclAclEntry>>(pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      aclId: pulumi.Output.create<String>(map['aclId'] as String),
-      cluster: pulumi.Output.create<String>(map['cluster'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      aclEntries: (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclId: (map['aclId'] as String).input(),
+      cluster: (map['cluster'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

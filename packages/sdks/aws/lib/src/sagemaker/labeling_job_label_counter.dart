@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobLabelCounter {
   /// Total number of objects that could not be labeled due to an error.
-  final int failedNonRetryableError;
+  final pulumi.Input<int> failedNonRetryableError;
   /// Total number of objects labeled by a human worker.
-  final int humanLabeled;
+  final pulumi.Input<int> humanLabeled;
   /// Total number of objects labeled by automated data labeling.
-  final int machineLabeled;
+  final pulumi.Input<int> machineLabeled;
   /// Total number of objects labeled.
-  final int totalLabeled;
+  final pulumi.Input<int> totalLabeled;
   /// Total number of objects not yet labeled.
-  final int unlabeled;
+  final pulumi.Input<int> unlabeled;
 
   /// Creates a new [LabelingJobLabelCounter].
   /// [failedNonRetryableError] Total number of objects that could not be labeled due to an error.
@@ -39,11 +40,11 @@ class LabelingJobLabelCounter {
 
   factory LabelingJobLabelCounter.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelCounter(
-      failedNonRetryableError: map['failedNonRetryableError'] as int,
-      humanLabeled: map['humanLabeled'] as int,
-      machineLabeled: map['machineLabeled'] as int,
-      totalLabeled: map['totalLabeled'] as int,
-      unlabeled: map['unlabeled'] as int,
+      failedNonRetryableError: (map['failedNonRetryableError'] as int).input(),
+      humanLabeled: (map['humanLabeled'] as int).input(),
+      machineLabeled: (map['machineLabeled'] as int).input(),
+      totalLabeled: (map['totalLabeled'] as int).input(),
+      unlabeled: (map['unlabeled'] as int).input(),
     );
   }
 }

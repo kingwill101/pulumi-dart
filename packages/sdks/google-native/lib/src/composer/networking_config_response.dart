@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for networking connections in the Composer 2 environment.
 class NetworkingConfigResponse {
   /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  final String connectionType;
+  final pulumi.Input<String> connectionType;
 
   /// Creates a new [NetworkingConfigResponse].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
@@ -20,7 +21,7 @@ class NetworkingConfigResponse {
 
   factory NetworkingConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigResponse(
-      connectionType: map['connectionType'] as String,
+      connectionType: (map['connectionType'] as String).input(),
     );
   }
 }

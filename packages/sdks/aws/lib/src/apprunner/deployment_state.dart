@@ -22,17 +22,12 @@ class DeploymentState {
   /// [status] The current status of the App Runner service deployment.
   /// [timeouts] Optional.
   DeploymentState({
-    pulumi.Output<String>? operationId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceArn,
-    pulumi.Output<String>? status,
-    pulumi.Output<DeploymentTimeouts>? timeouts,
-  }) :
-      operationId = pulumi.Input.asOptionalInput<String>(operationId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asOptionalInput<String>(serviceArn),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      timeouts = pulumi.Input.asOptionalInput<DeploymentTimeouts>(timeouts);
+    this.operationId,
+    this.region,
+    this.serviceArn,
+    this.status,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      operationId: map['operationId'] == null ? null : pulumi.Output.create<String>(map['operationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: map['serviceArn'] == null ? null : pulumi.Output.create<String>(map['serviceArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DeploymentTimeouts>(DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

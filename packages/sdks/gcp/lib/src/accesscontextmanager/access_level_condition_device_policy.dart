@@ -7,22 +7,22 @@ class AccessLevelConditionDevicePolicy {
   /// A list of allowed device management levels.
   /// An empty list allows all management levels.
   /// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
-  final List<String>? allowedDeviceManagementLevels;
+  final pulumi.Input<List<String>>? allowedDeviceManagementLevels;
   /// A list of allowed encryptions statuses.
   /// An empty list allows all statuses.
   /// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
-  final List<String>? allowedEncryptionStatuses;
+  final pulumi.Input<List<String>>? allowedEncryptionStatuses;
   /// A list of allowed OS versions.
   /// An empty list allows all types and all versions.
   /// Structure is documented below.
-  final List<AccessLevelConditionDevicePolicyOsConstraint>? osConstraints;
+  final pulumi.Input<List<AccessLevelConditionDevicePolicyOsConstraint>>? osConstraints;
   /// Whether the device needs to be approved by the customer admin.
-  final bool? requireAdminApproval;
+  final pulumi.Input<bool>? requireAdminApproval;
   /// Whether the device needs to be corp owned.
-  final bool? requireCorpOwned;
+  final pulumi.Input<bool>? requireCorpOwned;
   /// Whether or not screenlock is required for the DevicePolicy
   /// to be true. Defaults to false.
-  final bool? requireScreenLock;
+  final pulumi.Input<bool>? requireScreenLock;
 
   /// Creates a new [AccessLevelConditionDevicePolicy].
   /// [allowedDeviceManagementLevels] A list of allowed device management levels.
@@ -44,7 +44,7 @@ class AccessLevelConditionDevicePolicy {
     return <String, dynamic>{
       'allowedDeviceManagementLevels': ?allowedDeviceManagementLevels,
       'allowedEncryptionStatuses': ?allowedEncryptionStatuses,
-      'osConstraints': ?osConstraints == null ? null : pulumi.Input.encodeList<AccessLevelConditionDevicePolicyOsConstraint, Map<String, dynamic>>(osConstraints!, (value) => value.toMap()),
+      'osConstraints': ?pulumi.Input.mapOptionalInputValue<List<AccessLevelConditionDevicePolicyOsConstraint>, List<Map<String, dynamic>>>(osConstraints, (value) => pulumi.Input.encodeList<AccessLevelConditionDevicePolicyOsConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requireAdminApproval': ?requireAdminApproval,
       'requireCorpOwned': ?requireCorpOwned,
       'requireScreenLock': ?requireScreenLock,
@@ -53,12 +53,12 @@ class AccessLevelConditionDevicePolicy {
 
   factory AccessLevelConditionDevicePolicy.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionDevicePolicy(
-      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (map['allowedDeviceManagementLevels'] as List).cast<String>(),
-      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (map['allowedEncryptionStatuses'] as List).cast<String>(),
-      osConstraints: map['osConstraints'] == null ? null : pulumi.Input.decodeList<AccessLevelConditionDevicePolicyOsConstraint>(map['osConstraints'], (value) => AccessLevelConditionDevicePolicyOsConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      requireAdminApproval: map['requireAdminApproval'] == null ? null : map['requireAdminApproval'] as bool,
-      requireCorpOwned: map['requireCorpOwned'] == null ? null : map['requireCorpOwned'] as bool,
-      requireScreenLock: map['requireScreenLock'] == null ? null : map['requireScreenLock'] as bool,
+      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : ((map['allowedDeviceManagementLevels'] as List).cast<String>()).input(),
+      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : ((map['allowedEncryptionStatuses'] as List).cast<String>()).input(),
+      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<AccessLevelConditionDevicePolicyOsConstraint>(map['osConstraints'], (value) => AccessLevelConditionDevicePolicyOsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval'] as bool).input(),
+      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned'] as bool).input(),
+      requireScreenLock: map['requireScreenLock'] == null ? null : (map['requireScreenLock'] as bool).input(),
     );
   }
 }

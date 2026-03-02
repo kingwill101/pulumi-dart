@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancersBalancerZoneMapping {
   /// The ID of the elastic IP address (EIP).
-  final String allocationId;
+  final pulumi.Input<String> allocationId;
   /// The ID of the elastic network interface (ENI) attached to the NLB instance.
-  final String eniId;
+  final pulumi.Input<String> eniId;
   /// The IPv6 address of the NLB instance.
-  final String ipv6Address;
+  final pulumi.Input<String> ipv6Address;
   /// The private IPv4 address used by the NLB instance.
-  final String privateIpv4Address;
+  final pulumi.Input<String> privateIpv4Address;
   /// The public IPv4 address used by the NLB instance.
-  final String publicIpv4Address;
+  final pulumi.Input<String> publicIpv4Address;
   /// The ID of the vSwitch. By default, you can specify one vSwitch (subnet) in each zone of the NLB instance.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// The name of the zone.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetLoadBalancersBalancerZoneMapping].
   /// [allocationId] The ID of the elastic IP address (EIP).
@@ -49,13 +50,13 @@ class GetLoadBalancersBalancerZoneMapping {
 
   factory GetLoadBalancersBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancerZoneMapping(
-      allocationId: map['allocationId'] as String,
-      eniId: map['eniId'] as String,
-      ipv6Address: map['ipv6Address'] as String,
-      privateIpv4Address: map['privateIpv4Address'] as String,
-      publicIpv4Address: map['publicIpv4Address'] as String,
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] as String,
+      allocationId: (map['allocationId'] as String).input(),
+      eniId: (map['eniId'] as String).input(),
+      ipv6Address: (map['ipv6Address'] as String).input(),
+      privateIpv4Address: (map['privateIpv4Address'] as String).input(),
+      publicIpv4Address: (map['publicIpv4Address'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

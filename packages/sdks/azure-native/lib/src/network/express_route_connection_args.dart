@@ -48,31 +48,19 @@ class ExpressRouteConnectionArgs {
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [routingWeight] The routing weight associated to the connection.
   ExpressRouteConnectionArgs({
-    pulumi.Output<String>? authorizationKey,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<bool>? enableInternetSecurity,
-    pulumi.Output<bool>? enablePrivateLinkFastPath,
-    required pulumi.Output<ExpressRouteCircuitPeeringId> expressRouteCircuitPeering,
-    pulumi.Output<bool>? expressRouteGatewayBypass,
-    required pulumi.Output<String> expressRouteGatewayName,
-    pulumi.Output<String>? id,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<RoutingConfiguration>? routingConfiguration,
-    pulumi.Output<int>? routingWeight,
-  }) :
-      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      enableInternetSecurity = pulumi.Input.asOptionalInput<bool>(enableInternetSecurity),
-      enablePrivateLinkFastPath = pulumi.Input.asOptionalInput<bool>(enablePrivateLinkFastPath),
-      expressRouteCircuitPeering = pulumi.Input.asInput<ExpressRouteCircuitPeeringId>(expressRouteCircuitPeering),
-      expressRouteGatewayBypass = pulumi.Input.asOptionalInput<bool>(expressRouteGatewayBypass),
-      expressRouteGatewayName = pulumi.Input.asInput<String>(expressRouteGatewayName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingConfiguration = pulumi.Input.asOptionalInput<RoutingConfiguration>(routingConfiguration),
-      routingWeight = pulumi.Input.asOptionalInput<int>(routingWeight);
+    this.authorizationKey,
+    this.connectionName,
+    this.enableInternetSecurity,
+    this.enablePrivateLinkFastPath,
+    required this.expressRouteCircuitPeering,
+    this.expressRouteGatewayBypass,
+    required this.expressRouteGatewayName,
+    this.id,
+    required this.name,
+    required this.resourceGroupName,
+    this.routingConfiguration,
+    this.routingWeight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class ExpressRouteConnectionArgs {
 
   factory ExpressRouteConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : pulumi.Output.create<bool>(map['enableInternetSecurity'] as bool),
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : pulumi.Output.create<bool>(map['enablePrivateLinkFastPath'] as bool),
-      expressRouteCircuitPeering: pulumi.Output.create<ExpressRouteCircuitPeeringId>(ExpressRouteCircuitPeeringId.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : pulumi.Output.create<bool>(map['expressRouteGatewayBypass'] as bool),
-      expressRouteGatewayName: pulumi.Output.create<String>(map['expressRouteGatewayName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingConfiguration: map['routingConfiguration'] == null ? null : pulumi.Output.create<RoutingConfiguration>(RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())),
-      routingWeight: map['routingWeight'] == null ? null : pulumi.Output.create<int>(map['routingWeight'] as int),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath'] as bool).input(),
+      expressRouteCircuitPeering: (ExpressRouteCircuitPeeringId.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass'] as bool).input(),
+      expressRouteGatewayName: (map['expressRouteGatewayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryRoleTemplatesRoleTemplate {
   /// The description of the directory role template.
-  final String description;
+  final pulumi.Input<String> description;
   /// The display name of the directory role template.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The object ID of the directory role template.
-  final String objectId;
+  final pulumi.Input<String> objectId;
 
   /// Creates a new [GetDirectoryRoleTemplatesRoleTemplate].
   /// [description] The description of the directory role template.
@@ -29,9 +30,9 @@ class GetDirectoryRoleTemplatesRoleTemplate {
 
   factory GetDirectoryRoleTemplatesRoleTemplate.fromMap(Map<String, dynamic> map) {
     return GetDirectoryRoleTemplatesRoleTemplate(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      objectId: map['objectId'] as String,
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
     );
   }
 }

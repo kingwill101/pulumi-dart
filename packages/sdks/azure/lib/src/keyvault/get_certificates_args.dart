@@ -18,11 +18,9 @@ class GetCertificatesArgs {
   /// [includePending] Specifies whether to include certificates which are not completely provisioned. Defaults to true.
   /// [keyVaultId] Specifies the ID of the Key Vault instance to fetch certificate names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   GetCertificatesArgs({
-    pulumi.Output<bool>? includePending,
-    required pulumi.Output<String> keyVaultId,
-  }) :
-      includePending = pulumi.Input.asOptionalInput<bool>(includePending),
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId);
+    this.includePending,
+    required this.keyVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      includePending: map['includePending'] == null ? null : pulumi.Output.create<bool>(map['includePending'] as bool),
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
+      includePending: map['includePending'] == null ? null : (map['includePending'] as bool).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
     );
   }
 }

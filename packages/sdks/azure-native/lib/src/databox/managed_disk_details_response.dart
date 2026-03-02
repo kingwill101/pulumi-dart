@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the managed disks.
 class ManagedDiskDetailsResponse {
   /// Account Type of the data to be transferred.
   /// Expected value is 'ManagedDisk'.
-  final String dataAccountType;
+  final pulumi.Input<String> dataAccountType;
   /// Resource Group Id of the compute disks.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Resource Id of the storage account that can be used to copy the vhd for staging.
-  final String stagingStorageAccountId;
+  final pulumi.Input<String> stagingStorageAccountId;
 
   /// Creates a new [ManagedDiskDetailsResponse].
   /// [dataAccountType] Account Type of the data to be transferred.
@@ -31,9 +32,9 @@ class ManagedDiskDetailsResponse {
 
   factory ManagedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedDiskDetailsResponse(
-      dataAccountType: map['dataAccountType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      stagingStorageAccountId: map['stagingStorageAccountId'] as String,
+      dataAccountType: (map['dataAccountType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      stagingStorageAccountId: (map['stagingStorageAccountId'] as String).input(),
     );
   }
 }

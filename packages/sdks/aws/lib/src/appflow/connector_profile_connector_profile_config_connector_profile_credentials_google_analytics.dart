@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_profile_connector_profile_config_connector_profile_credentials_google_analytics_oauth_request.dart';
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics {
-  final String? accessToken;
-  final String clientId;
-  final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest? oauthRequest;
-  final String? refreshToken;
+  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String> clientId;
+  final pulumi.Input<String> clientSecret;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest>? oauthRequest;
+  final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics].
   /// [accessToken] Optional.
@@ -28,18 +29,18 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAna
       'accessToken': ?accessToken,
       'clientId': clientId,
       'clientSecret': clientSecret,
-      'oauthRequest': ?oauthRequest == null ? null : oauthRequest!.toMap(),
+      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
       'refreshToken': ?refreshToken,
     };
   }
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      oauthRequest: map['oauthRequest'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>())).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
     );
   }
 }

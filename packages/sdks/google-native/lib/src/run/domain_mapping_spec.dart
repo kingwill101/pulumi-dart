@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_mapping_spec_certificate_mode.dart';
 
 /// The desired state of the Domain Mapping.
 class DomainMappingSpec {
   /// The mode of the certificate.
-  final DomainMappingSpecCertificateMode? certificateMode;
+  final pulumi.Input<DomainMappingSpecCertificateMode>? certificateMode;
   /// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
-  final bool? forceOverride;
+  final pulumi.Input<bool>? forceOverride;
   /// The name of the Knative Route that this DomainMapping applies to. The route must exist.
-  final String? routeName;
+  final pulumi.Input<String>? routeName;
 
   /// Creates a new [DomainMappingSpec].
   /// [certificateMode] The mode of the certificate.
@@ -23,7 +24,7 @@ class DomainMappingSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateMode': ?certificateMode == null ? null : certificateMode!.value,
+      'certificateMode': ?pulumi.Input.mapOptionalInputValue<DomainMappingSpecCertificateMode, String>(certificateMode, (value) => value.value),
       'forceOverride': ?forceOverride,
       'routeName': ?routeName,
     };
@@ -31,9 +32,9 @@ class DomainMappingSpec {
 
   factory DomainMappingSpec.fromMap(Map<String, dynamic> map) {
     return DomainMappingSpec(
-      certificateMode: map['certificateMode'] == null ? null : DomainMappingSpecCertificateMode.fromValue(map['certificateMode'] as String),
-      forceOverride: map['forceOverride'] == null ? null : map['forceOverride'] as bool,
-      routeName: map['routeName'] == null ? null : map['routeName'] as String,
+      certificateMode: map['certificateMode'] == null ? null : (DomainMappingSpecCertificateMode.fromValue(map['certificateMode'] as String)).input(),
+      forceOverride: map['forceOverride'] == null ? null : (map['forceOverride'] as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
     );
   }
 }

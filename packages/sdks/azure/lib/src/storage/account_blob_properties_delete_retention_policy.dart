@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountBlobPropertiesDeleteRetentionPolicy {
   /// Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
-  final int? days;
+  final pulumi.Input<int>? days;
   /// Indicates whether permanent deletion of the soft deleted blob versions and snapshots is allowed. Defaults to `false`.
   ///
   /// > **Note:** `permanent_delete_enabled` cannot be set to true if a `restore_policy` block is defined.
-  final bool? permanentDeleteEnabled;
+  final pulumi.Input<bool>? permanentDeleteEnabled;
 
   /// Creates a new [AccountBlobPropertiesDeleteRetentionPolicy].
   /// [days] Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
@@ -26,8 +27,8 @@ class AccountBlobPropertiesDeleteRetentionPolicy {
 
   factory AccountBlobPropertiesDeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountBlobPropertiesDeleteRetentionPolicy(
-      days: map['days'] == null ? null : map['days'] as int,
-      permanentDeleteEnabled: map['permanentDeleteEnabled'] == null ? null : map['permanentDeleteEnabled'] as bool,
+      days: map['days'] == null ? null : (map['days'] as int).input(),
+      permanentDeleteEnabled: map['permanentDeleteEnabled'] == null ? null : (map['permanentDeleteEnabled'] as bool).input(),
     );
   }
 }

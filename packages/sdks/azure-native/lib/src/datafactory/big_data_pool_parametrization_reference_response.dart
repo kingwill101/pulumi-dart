@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Big data pool reference type.
 class BigDataPoolParametrizationReferenceResponse {
   /// Reference big data pool name. Type: string (or Expression with resultType string).
-  final dynamic referenceName;
+  final pulumi.Input<dynamic> referenceName;
   /// Big data pool reference type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BigDataPoolParametrizationReferenceResponse].
   /// [referenceName] Reference big data pool name. Type: string (or Expression with resultType string).
@@ -25,8 +26,8 @@ class BigDataPoolParametrizationReferenceResponse {
 
   factory BigDataPoolParametrizationReferenceResponse.fromMap(Map<String, dynamic> map) {
     return BigDataPoolParametrizationReferenceResponse(
-      referenceName: map['referenceName'],
-      type: map['type'] as String,
+      referenceName: (map['referenceName']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

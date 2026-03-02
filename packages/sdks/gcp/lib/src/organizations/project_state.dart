@@ -57,31 +57,19 @@ class ProjectState {
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   ProjectState({
-    pulumi.Output<bool>? autoCreateNetwork,
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<String>? folderId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? number,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoCreateNetwork = pulumi.Input.asOptionalInput<bool>(autoCreateNetwork),
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      folderId = pulumi.Input.asOptionalInput<String>(folderId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      number = pulumi.Input.asOptionalInput<String>(number),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.autoCreateNetwork,
+    this.billingAccount,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.folderId,
+    this.labels,
+    this.name,
+    this.number,
+    this.orgId,
+    this.projectId,
+    this.pulumiLabels,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,18 +90,18 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      autoCreateNetwork: map['autoCreateNetwork'] == null ? null : pulumi.Output.create<bool>(map['autoCreateNetwork'] as bool),
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      folderId: map['folderId'] == null ? null : pulumi.Output.create<String>(map['folderId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      number: map['number'] == null ? null : pulumi.Output.create<String>(map['number'] as String),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoCreateNetwork: map['autoCreateNetwork'] == null ? null : (map['autoCreateNetwork'] as bool).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      number: map['number'] == null ? null : (map['number'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

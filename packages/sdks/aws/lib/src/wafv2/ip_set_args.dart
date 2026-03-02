@@ -34,23 +34,15 @@ class IpSetArgs {
   /// [scope] Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the Region US East (N. Virginia).
   /// [tags] An array of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   IpSetArgs({
-    pulumi.Output<List<String>>? addresses,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> ipAddressVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scope,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      addresses = pulumi.Input.asOptionalInput<List<String>>(addresses),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ipAddressVersion = pulumi.Input.asInput<String>(ipAddressVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.addresses,
+    this.description,
+    required this.ipAddressVersion,
+    this.name,
+    this.namePrefix,
+    this.region,
+    required this.scope,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class IpSetArgs {
 
   factory IpSetArgs.fromMap(Map<String, dynamic> map) {
     return IpSetArgs(
-      addresses: map['addresses'] == null ? null : pulumi.Output.create<List<String>>((map['addresses'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ipAddressVersion: pulumi.Output.create<String>(map['ipAddressVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ipAddressVersion: (map['ipAddressVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationUpdateStrategyV2BatchUpdate {
   /// The number of batches in which you want to release the instances.
-  final int? batch;
+  final pulumi.Input<int>? batch;
   /// The batch wait time.
-  final int? batchWaitTime;
+  final pulumi.Input<int>? batchWaitTime;
   /// The processing method for the batches. Valid values: `auto` and `manual`.
-  final String? releaseType;
+  final pulumi.Input<String>? releaseType;
 
   /// Creates a new [ApplicationUpdateStrategyV2BatchUpdate].
   /// [batch] The number of batches in which you want to release the instances.
@@ -29,9 +30,9 @@ class ApplicationUpdateStrategyV2BatchUpdate {
 
   factory ApplicationUpdateStrategyV2BatchUpdate.fromMap(Map<String, dynamic> map) {
     return ApplicationUpdateStrategyV2BatchUpdate(
-      batch: map['batch'] == null ? null : map['batch'] as int,
-      batchWaitTime: map['batchWaitTime'] == null ? null : map['batchWaitTime'] as int,
-      releaseType: map['releaseType'] == null ? null : map['releaseType'] as String,
+      batch: map['batch'] == null ? null : (map['batch'] as int).input(),
+      batchWaitTime: map['batchWaitTime'] == null ? null : (map['batchWaitTime'] as int).input(),
+      releaseType: map['releaseType'] == null ? null : (map['releaseType'] as String).input(),
     );
   }
 }

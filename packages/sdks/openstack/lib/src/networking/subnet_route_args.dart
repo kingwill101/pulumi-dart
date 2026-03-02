@@ -28,15 +28,11 @@ class SubnetRouteArgs {
   /// [region] The region in which to obtain the V2 networking client.
   /// [subnetId] ID of the subnet this routing entry belongs to. Changing
   SubnetRouteArgs({
-    required pulumi.Output<String> destinationCidr,
-    required pulumi.Output<String> nextHop,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subnetId,
-  }) :
-      destinationCidr = pulumi.Input.asInput<String>(destinationCidr),
-      nextHop = pulumi.Input.asInput<String>(nextHop),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+    required this.destinationCidr,
+    required this.nextHop,
+    this.region,
+    required this.subnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,10 +45,10 @@ class SubnetRouteArgs {
 
   factory SubnetRouteArgs.fromMap(Map<String, dynamic> map) {
     return SubnetRouteArgs(
-      destinationCidr: pulumi.Output.create<String>(map['destinationCidr'] as String),
-      nextHop: pulumi.Output.create<String>(map['nextHop'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subnetId: pulumi.Output.create<String>(map['subnetId'] as String),
+      destinationCidr: (map['destinationCidr'] as String).input(),
+      nextHop: (map['nextHop'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
   /// Enable or disable BGP logging feature. The default is `false`.
-  final bool? bgpLogEnabled;
+  final pulumi.Input<bool>? bgpLogEnabled;
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
-  final String? bgpLogGroupArn;
+  final pulumi.Input<String>? bgpLogGroupArn;
   /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  final String? bgpLogOutputFormat;
+  final pulumi.Input<String>? bgpLogOutputFormat;
   /// Enable or disable VPN tunnel logging feature. The default is `false`.
-  final bool? logEnabled;
+  final pulumi.Input<bool>? logEnabled;
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
-  final String? logGroupArn;
+  final pulumi.Input<String>? logGroupArn;
   /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  final String? logOutputFormat;
+  final pulumi.Input<String>? logOutputFormat;
 
   /// Creates a new [VpnConnectionTunnel1LogOptionsCloudwatchLogOptions].
   /// [bgpLogEnabled] Enable or disable BGP logging feature. The default is `false`.
@@ -44,12 +45,12 @@ class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
 
   factory VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap(Map<String, dynamic> map) {
     return VpnConnectionTunnel1LogOptionsCloudwatchLogOptions(
-      bgpLogEnabled: map['bgpLogEnabled'] == null ? null : map['bgpLogEnabled'] as bool,
-      bgpLogGroupArn: map['bgpLogGroupArn'] == null ? null : map['bgpLogGroupArn'] as String,
-      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null ? null : map['bgpLogOutputFormat'] as String,
-      logEnabled: map['logEnabled'] == null ? null : map['logEnabled'] as bool,
-      logGroupArn: map['logGroupArn'] == null ? null : map['logGroupArn'] as String,
-      logOutputFormat: map['logOutputFormat'] == null ? null : map['logOutputFormat'] as String,
+      bgpLogEnabled: map['bgpLogEnabled'] == null ? null : (map['bgpLogEnabled'] as bool).input(),
+      bgpLogGroupArn: map['bgpLogGroupArn'] == null ? null : (map['bgpLogGroupArn'] as String).input(),
+      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null ? null : (map['bgpLogOutputFormat'] as String).input(),
+      logEnabled: map['logEnabled'] == null ? null : (map['logEnabled'] as bool).input(),
+      logGroupArn: map['logGroupArn'] == null ? null : (map['logGroupArn'] as String).input(),
+      logOutputFormat: map['logOutputFormat'] == null ? null : (map['logOutputFormat'] as String).input(),
     );
   }
 }

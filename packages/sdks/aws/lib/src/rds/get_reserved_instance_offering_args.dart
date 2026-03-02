@@ -28,19 +28,13 @@ class GetReservedInstanceOfferingArgs {
   /// [productDescription] Description of the reserved DB instance. Example values are `postgresql`, `aurora-postgresql`, `mysql`, `aurora-mysql`, `mariadb`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetReservedInstanceOfferingArgs({
-    required pulumi.Output<String> dbInstanceClass,
-    required pulumi.Output<int> duration,
-    required pulumi.Output<bool> multiAz,
-    required pulumi.Output<String> offeringType,
-    required pulumi.Output<String> productDescription,
-    pulumi.Output<String>? region,
-  }) :
-      dbInstanceClass = pulumi.Input.asInput<String>(dbInstanceClass),
-      duration = pulumi.Input.asInput<int>(duration),
-      multiAz = pulumi.Input.asInput<bool>(multiAz),
-      offeringType = pulumi.Input.asInput<String>(offeringType),
-      productDescription = pulumi.Input.asInput<String>(productDescription),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.dbInstanceClass,
+    required this.duration,
+    required this.multiAz,
+    required this.offeringType,
+    required this.productDescription,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetReservedInstanceOfferingArgs {
 
   factory GetReservedInstanceOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedInstanceOfferingArgs(
-      dbInstanceClass: pulumi.Output.create<String>(map['dbInstanceClass'] as String),
-      duration: pulumi.Output.create<int>(map['duration'] as int),
-      multiAz: pulumi.Output.create<bool>(map['multiAz'] as bool),
-      offeringType: pulumi.Output.create<String>(map['offeringType'] as String),
-      productDescription: pulumi.Output.create<String>(map['productDescription'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dbInstanceClass: (map['dbInstanceClass'] as String).input(),
+      duration: (map['duration'] as int).input(),
+      multiAz: (map['multiAz'] as bool).input(),
+      offeringType: (map['offeringType'] as String).input(),
+      productDescription: (map['productDescription'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvFeaturesFeature {
   /// The language.
-  final String aliyunLang;
+  final pulumi.Input<String> aliyunLang;
   /// The name of the feature.
-  final String envFeatureName;
+  final pulumi.Input<String> envFeatureName;
   /// The ID of the environment instance.
-  final String environmentId;
+  final pulumi.Input<String> environmentId;
   /// The version of the feature.
-  final String featureVersion;
+  final pulumi.Input<String> featureVersion;
   /// The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The status of the feature.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEnvFeaturesFeature].
   /// [aliyunLang] The language.
@@ -44,12 +45,12 @@ class GetEnvFeaturesFeature {
 
   factory GetEnvFeaturesFeature.fromMap(Map<String, dynamic> map) {
     return GetEnvFeaturesFeature(
-      aliyunLang: map['aliyunLang'] as String,
-      envFeatureName: map['envFeatureName'] as String,
-      environmentId: map['environmentId'] as String,
-      featureVersion: map['featureVersion'] as String,
-      id: map['id'] as String,
-      status: map['status'] as String,
+      aliyunLang: (map['aliyunLang'] as String).input(),
+      envFeatureName: (map['envFeatureName'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      featureVersion: (map['featureVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

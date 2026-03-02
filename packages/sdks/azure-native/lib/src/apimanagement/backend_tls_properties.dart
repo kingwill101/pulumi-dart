@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties controlling TLS Certificate Validation.
 class BackendTlsProperties {
   /// Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
-  final bool? validateCertificateChain;
+  final pulumi.Input<bool>? validateCertificateChain;
   /// Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
-  final bool? validateCertificateName;
+  final pulumi.Input<bool>? validateCertificateName;
 
   /// Creates a new [BackendTlsProperties].
   /// [validateCertificateChain] Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
@@ -25,8 +26,8 @@ class BackendTlsProperties {
 
   factory BackendTlsProperties.fromMap(Map<String, dynamic> map) {
     return BackendTlsProperties(
-      validateCertificateChain: map['validateCertificateChain'] == null ? null : map['validateCertificateChain'] as bool,
-      validateCertificateName: map['validateCertificateName'] == null ? null : map['validateCertificateName'] as bool,
+      validateCertificateChain: map['validateCertificateChain'] == null ? null : (map['validateCertificateChain'] as bool).input(),
+      validateCertificateName: map['validateCertificateName'] == null ? null : (map['validateCertificateName'] as bool).input(),
     );
   }
 }

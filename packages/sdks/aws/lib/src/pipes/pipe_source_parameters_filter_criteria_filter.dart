@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersFilterCriteriaFilter {
   /// The event pattern. At most 4096 characters.
-  final String pattern;
+  final pulumi.Input<String> pattern;
 
   /// Creates a new [PipeSourceParametersFilterCriteriaFilter].
   /// [pattern] The event pattern. At most 4096 characters.
@@ -19,7 +20,7 @@ class PipeSourceParametersFilterCriteriaFilter {
 
   factory PipeSourceParametersFilterCriteriaFilter.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersFilterCriteriaFilter(
-      pattern: map['pattern'] as String,
+      pattern: (map['pattern'] as String).input(),
     );
   }
 }

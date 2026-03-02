@@ -36,23 +36,15 @@ class StorageTaskArgs {
   /// [storageTaskName] The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
   /// [tags] Resource tags.
   StorageTaskArgs({
-    required pulumi.Output<StorageTaskAction> action,
-    required pulumi.Output<String> description,
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<ManagedServiceIdentity> identity,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageTaskName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      action = pulumi.Input.asInput<StorageTaskAction>(action),
-      description = pulumi.Input.asInput<String>(description),
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      identity = pulumi.Input.asInput<ManagedServiceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageTaskName = pulumi.Input.asOptionalInput<String>(storageTaskName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.action,
+    required this.description,
+    required this.enabled,
+    required this.identity,
+    this.location,
+    required this.resourceGroupName,
+    this.storageTaskName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class StorageTaskArgs {
 
   factory StorageTaskArgs.fromMap(Map<String, dynamic> map) {
     return StorageTaskArgs(
-      action: pulumi.Output.create<StorageTaskAction>(StorageTaskAction.fromMap((map['action'] as Map).cast<String, dynamic>())),
-      description: pulumi.Output.create<String>(map['description'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      identity: pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageTaskName: map['storageTaskName'] == null ? null : pulumi.Output.create<String>(map['storageTaskName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      action: (StorageTaskAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      identity: (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageTaskName: map['storageTaskName'] == null ? null : (map['storageTaskName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

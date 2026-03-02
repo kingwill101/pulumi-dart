@@ -49,29 +49,18 @@ class PoolArgs {
   /// [sizeInTb] Provisioned size of the pool in TB. Value must be between `1` and `2048`.
   /// [tags] A mapping of tags to assign to the resource.
   PoolArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? coolAccessEnabled,
-    pulumi.Output<int>? customThroughputMibps,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? qosType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceLevel,
-    required pulumi.Output<int> sizeInTb,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      coolAccessEnabled = pulumi.Input.asOptionalInput<bool>(coolAccessEnabled),
-      customThroughputMibps = pulumi.Input.asOptionalInput<int>(customThroughputMibps),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      qosType = pulumi.Input.asOptionalInput<String>(qosType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceLevel = pulumi.Input.asInput<String>(serviceLevel),
-      sizeInTb = pulumi.Input.asInput<int>(sizeInTb),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.coolAccessEnabled,
+    this.customThroughputMibps,
+    this.encryptionType,
+    this.location,
+    this.name,
+    this.qosType,
+    required this.resourceGroupName,
+    required this.serviceLevel,
+    required this.sizeInTb,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,17 +80,17 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['coolAccessEnabled'] as bool),
-      customThroughputMibps: map['customThroughputMibps'] == null ? null : pulumi.Output.create<int>(map['customThroughputMibps'] as int),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      qosType: map['qosType'] == null ? null : pulumi.Output.create<String>(map['qosType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceLevel: pulumi.Output.create<String>(map['serviceLevel'] as String),
-      sizeInTb: pulumi.Output.create<int>(map['sizeInTb'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled'] as bool).input(),
+      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps'] as int).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceLevel: (map['serviceLevel'] as String).input(),
+      sizeInTb: (map['sizeInTb'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Session pool ingress configuration.
 class SessionIngressResponse {
   /// Target port in containers for traffic from ingress
-  final int? targetPort;
+  final pulumi.Input<int>? targetPort;
 
   /// Creates a new [SessionIngressResponse].
   /// [targetPort] Target port in containers for traffic from ingress
@@ -20,7 +21,7 @@ class SessionIngressResponse {
 
   factory SessionIngressResponse.fromMap(Map<String, dynamic> map) {
     return SessionIngressResponse(
-      targetPort: map['targetPort'] == null ? null : map['targetPort'] as int,
+      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
     );
   }
 }

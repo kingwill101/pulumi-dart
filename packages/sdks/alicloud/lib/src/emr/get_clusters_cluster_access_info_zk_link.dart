@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterAccessInfoZkLink {
   /// The access link address of ZooKeeper.
-  final String link;
+  final pulumi.Input<String> link;
   /// The port of ZooKeeper.
-  final String port;
+  final pulumi.Input<String> port;
 
   /// Creates a new [GetClustersClusterAccessInfoZkLink].
   /// [link] The access link address of ZooKeeper.
@@ -24,8 +25,8 @@ class GetClustersClusterAccessInfoZkLink {
 
   factory GetClustersClusterAccessInfoZkLink.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterAccessInfoZkLink(
-      link: map['link'] as String,
-      port: map['port'] as String,
+      link: (map['link'] as String).input(),
+      port: (map['port'] as String).input(),
     );
   }
 }

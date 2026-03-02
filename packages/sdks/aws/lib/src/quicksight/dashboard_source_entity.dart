@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dashboard_source_entity_source_template.dart';
 
 class DashboardSourceEntity {
   /// The source template. See source_template.
-  final DashboardSourceEntitySourceTemplate? sourceTemplate;
+  final pulumi.Input<DashboardSourceEntitySourceTemplate>? sourceTemplate;
 
   /// Creates a new [DashboardSourceEntity].
   /// [sourceTemplate] The source template. See source_template.
@@ -14,13 +15,13 @@ class DashboardSourceEntity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTemplate': ?sourceTemplate == null ? null : sourceTemplate!.toMap(),
+      'sourceTemplate': ?pulumi.Input.mapOptionalInputValue<DashboardSourceEntitySourceTemplate, Map<String, dynamic>>(sourceTemplate, (value) => value.toMap()),
     };
   }
 
   factory DashboardSourceEntity.fromMap(Map<String, dynamic> map) {
     return DashboardSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null ? null : DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>()),
+      sourceTemplate: map['sourceTemplate'] == null ? null : (DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

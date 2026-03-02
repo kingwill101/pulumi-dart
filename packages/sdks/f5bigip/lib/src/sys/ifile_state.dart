@@ -25,19 +25,13 @@ class IfileState {
   /// [size] Size of the iFile content in bytes.
   /// [subPath] Subdirectory within the partition for organizing iFiles hierarchically.
   IfileState({
-    pulumi.Output<String>? checksum,
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partition,
-    pulumi.Output<int>? size,
-    pulumi.Output<String>? subPath,
-  }) :
-      checksum = pulumi.Input.asOptionalInput<String>(checksum),
-      content = pulumi.Input.asOptionalInput<String>(content),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      size = pulumi.Input.asOptionalInput<int>(size),
-      subPath = pulumi.Input.asOptionalInput<String>(subPath);
+    this.checksum,
+    this.content,
+    this.name,
+    this.partition,
+    this.size,
+    this.subPath,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class IfileState {
 
   factory IfileState.fromMap(Map<String, dynamic> map) {
     return IfileState(
-      checksum: map['checksum'] == null ? null : pulumi.Output.create<String>(map['checksum'] as String),
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
-      subPath: map['subPath'] == null ? null : pulumi.Output.create<String>(map['subPath'] as String),
+      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
     );
   }
 }

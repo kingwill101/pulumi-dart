@@ -31,21 +31,14 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// [organizationId] Required.
   /// [type] Type for the module. e.g. CONFIGURABLE_BAD_IP.
   OrganizationEventThreatDetectionSettingCustomModuleArgs({
-    pulumi.Output<Map<String, String>>? config,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>? enablementState,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? type,
-  }) :
-      config = pulumi.Input.asOptionalInput<Map<String, String>>(config),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>(enablementState),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.config,
+    this.description,
+    this.displayName,
+    this.enablementState,
+    this.name,
+    required this.organizationId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs {
 
   factory OrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEventThreatDetectionSettingCustomModuleArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<Map<String, String>>((map['config'] as Map).cast<String, String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: map['enablementState'] == null ? null : pulumi.Output.create<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>(OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enablementState: map['enablementState'] == null ? null : (OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

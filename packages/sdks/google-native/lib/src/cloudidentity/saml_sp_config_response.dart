@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SAML SP (service provider) configuration.
 class SamlSpConfigResponse {
   /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
-  final String assertionConsumerServiceUri;
+  final pulumi.Input<String> assertionConsumerServiceUri;
   /// The SAML **Entity ID** for this service provider.
-  final String entityId;
+  final pulumi.Input<String> entityId;
 
   /// Creates a new [SamlSpConfigResponse].
   /// [assertionConsumerServiceUri] The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
@@ -25,8 +26,8 @@ class SamlSpConfigResponse {
 
   factory SamlSpConfigResponse.fromMap(Map<String, dynamic> map) {
     return SamlSpConfigResponse(
-      assertionConsumerServiceUri: map['assertionConsumerServiceUri'] as String,
-      entityId: map['entityId'] as String,
+      assertionConsumerServiceUri: (map['assertionConsumerServiceUri'] as String).input(),
+      entityId: (map['entityId'] as String).input(),
     );
   }
 }

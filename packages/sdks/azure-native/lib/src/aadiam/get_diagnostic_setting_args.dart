@@ -13,9 +13,8 @@ class GetDiagnosticSettingArgs {
   /// Creates a new [GetDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
   GetDiagnosticSettingArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDiagnosticSettingArgs {
 
   factory GetDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticSettingArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

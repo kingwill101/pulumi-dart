@@ -37,25 +37,16 @@ class DistributionConfigurationState {
   /// [tags] Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DistributionConfigurationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? dateCreated,
-    pulumi.Output<String>? dateUpdated,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<DistributionConfigurationDistribution>>? distributions,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      dateCreated = pulumi.Input.asOptionalInput<String>(dateCreated),
-      dateUpdated = pulumi.Input.asOptionalInput<String>(dateUpdated),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributions = pulumi.Input.asOptionalInput<List<DistributionConfigurationDistribution>>(distributions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.dateCreated,
+    this.dateUpdated,
+    this.description,
+    this.distributions,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class DistributionConfigurationState {
 
   factory DistributionConfigurationState.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      dateCreated: map['dateCreated'] == null ? null : pulumi.Output.create<String>(map['dateCreated'] as String),
-      dateUpdated: map['dateUpdated'] == null ? null : pulumi.Output.create<String>(map['dateUpdated'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      distributions: map['distributions'] == null ? null : pulumi.Output.create<List<DistributionConfigurationDistribution>>(pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions'], (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      dateCreated: map['dateCreated'] == null ? null : (map['dateCreated'] as String).input(),
+      dateUpdated: map['dateUpdated'] == null ? null : (map['dateUpdated'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions'], (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

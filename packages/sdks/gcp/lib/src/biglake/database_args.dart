@@ -24,15 +24,11 @@ class DatabaseArgs {
   /// [name] The name of the database.
   /// [type] The database type.
   DatabaseArgs({
-    required pulumi.Output<String> catalog,
-    required pulumi.Output<DatabaseHiveOptions> hiveOptions,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> type,
-  }) :
-      catalog = pulumi.Input.asInput<String>(catalog),
-      hiveOptions = pulumi.Input.asInput<DatabaseHiveOptions>(hiveOptions),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      type = pulumi.Input.asInput<String>(type);
+    required this.catalog,
+    required this.hiveOptions,
+    this.name,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      catalog: pulumi.Output.create<String>(map['catalog'] as String),
-      hiveOptions: pulumi.Output.create<DatabaseHiveOptions>(DatabaseHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      catalog: (map['catalog'] as String).input(),
+      hiveOptions: (DatabaseHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

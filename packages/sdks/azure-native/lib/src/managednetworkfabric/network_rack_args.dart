@@ -31,21 +31,14 @@ class NetworkRackArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   NetworkRackArgs({
-    pulumi.Output<String>? annotation,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkFabricId,
-    pulumi.Output<String>? networkRackName,
-    pulumi.Output<String>? networkRackType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      annotation = pulumi.Input.asOptionalInput<String>(annotation),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkFabricId = pulumi.Input.asInput<String>(networkFabricId),
-      networkRackName = pulumi.Input.asOptionalInput<String>(networkRackName),
-      networkRackType = pulumi.Input.asOptionalInput<String>(networkRackType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.annotation,
+    this.location,
+    required this.networkFabricId,
+    this.networkRackName,
+    this.networkRackType,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class NetworkRackArgs {
 
   factory NetworkRackArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRackArgs(
-      annotation: map['annotation'] == null ? null : pulumi.Output.create<String>(map['annotation'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkFabricId: pulumi.Output.create<String>(map['networkFabricId'] as String),
-      networkRackName: map['networkRackName'] == null ? null : pulumi.Output.create<String>(map['networkRackName'] as String),
-      networkRackType: map['networkRackType'] == null ? null : pulumi.Output.create<String>(map['networkRackType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkFabricId: (map['networkFabricId'] as String).input(),
+      networkRackName: map['networkRackName'] == null ? null : (map['networkRackName'] as String).input(),
+      networkRackType: map['networkRackType'] == null ? null : (map['networkRackType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

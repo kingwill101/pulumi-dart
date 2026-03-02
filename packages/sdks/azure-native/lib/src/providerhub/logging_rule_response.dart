@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'logging_rule_hidden_property_paths_response.dart';
 
 class LoggingRuleResponse {
   /// The action.
-  final String action;
+  final pulumi.Input<String> action;
   /// The detail level.
-  final String detailLevel;
+  final pulumi.Input<String> detailLevel;
   /// The direction.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The hidden property paths.
-  final LoggingRuleHiddenPropertyPathsResponse? hiddenPropertyPaths;
+  final pulumi.Input<LoggingRuleHiddenPropertyPathsResponse>? hiddenPropertyPaths;
 
   /// Creates a new [LoggingRuleResponse].
   /// [action] The action.
@@ -29,16 +30,16 @@ class LoggingRuleResponse {
       'action': action,
       'detailLevel': detailLevel,
       'direction': direction,
-      'hiddenPropertyPaths': ?hiddenPropertyPaths == null ? null : hiddenPropertyPaths!.toMap(),
+      'hiddenPropertyPaths': ?pulumi.Input.mapOptionalInputValue<LoggingRuleHiddenPropertyPathsResponse, Map<String, dynamic>>(hiddenPropertyPaths, (value) => value.toMap()),
     };
   }
 
   factory LoggingRuleResponse.fromMap(Map<String, dynamic> map) {
     return LoggingRuleResponse(
-      action: map['action'] as String,
-      detailLevel: map['detailLevel'] as String,
-      direction: map['direction'] as String,
-      hiddenPropertyPaths: map['hiddenPropertyPaths'] == null ? null : LoggingRuleHiddenPropertyPathsResponse.fromMap((map['hiddenPropertyPaths'] as Map).cast<String, dynamic>()),
+      action: (map['action'] as String).input(),
+      detailLevel: (map['detailLevel'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      hiddenPropertyPaths: map['hiddenPropertyPaths'] == null ? null : (LoggingRuleHiddenPropertyPathsResponse.fromMap((map['hiddenPropertyPaths'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

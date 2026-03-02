@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMachineTypesMachineTypeDeprecated {
   /// The URL of the suggested replacement for a deprecated machine type.
-  final String replacement;
+  final pulumi.Input<String> replacement;
   /// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [GetMachineTypesMachineTypeDeprecated].
   /// [replacement] The URL of the suggested replacement for a deprecated machine type.
@@ -24,8 +25,8 @@ class GetMachineTypesMachineTypeDeprecated {
 
   factory GetMachineTypesMachineTypeDeprecated.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeDeprecated(
-      replacement: map['replacement'] as String,
-      state: map['state'] as String,
+      replacement: (map['replacement'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

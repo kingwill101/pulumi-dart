@@ -19,13 +19,10 @@ class GetUserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
   GetUserArgs({
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> userName,
-  }) :
-      labName = pulumi.Input.asInput<String>(labName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.labName,
+    required this.resourceGroupName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      labName: (map['labName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

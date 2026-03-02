@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAddresses {
   /// The country that this address is in.
-  final String? country;
+  final pulumi.Input<String>? country;
   /// The name that is typically displayed when the address is shown for display.
-  final String? formatted;
+  final pulumi.Input<String>? formatted;
   /// The address locality.
-  final String? locality;
+  final pulumi.Input<String>? locality;
   /// The postal code of the address.
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// When `true`, this is the primary address associated with the user.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The region of the address.
-  final String? region;
+  final pulumi.Input<String>? region;
   /// The street of the address.
-  final String? streetAddress;
+  final pulumi.Input<String>? streetAddress;
   /// The type of address.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [UserAddresses].
   /// [country] The country that this address is in.
@@ -54,14 +55,14 @@ class UserAddresses {
 
   factory UserAddresses.fromMap(Map<String, dynamic> map) {
     return UserAddresses(
-      country: map['country'] == null ? null : map['country'] as String,
-      formatted: map['formatted'] == null ? null : map['formatted'] as String,
-      locality: map['locality'] == null ? null : map['locality'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      region: map['region'] == null ? null : map['region'] as String,
-      streetAddress: map['streetAddress'] == null ? null : map['streetAddress'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      formatted: map['formatted'] == null ? null : (map['formatted'] as String).input(),
+      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

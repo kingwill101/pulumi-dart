@@ -28,21 +28,14 @@ class UserLoginProfileState {
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
   /// [user] The IAM user's name.
   UserLoginProfileState({
-    pulumi.Output<String>? encryptedPassword,
-    pulumi.Output<String>? keyFingerprint,
-    pulumi.Output<String>? password,
-    pulumi.Output<int>? passwordLength,
-    pulumi.Output<bool>? passwordResetRequired,
-    pulumi.Output<String>? pgpKey,
-    pulumi.Output<String>? user,
-  }) :
-      encryptedPassword = pulumi.Input.asOptionalInput<String>(encryptedPassword),
-      keyFingerprint = pulumi.Input.asOptionalInput<String>(keyFingerprint),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordLength = pulumi.Input.asOptionalInput<int>(passwordLength),
-      passwordResetRequired = pulumi.Input.asOptionalInput<bool>(passwordResetRequired),
-      pgpKey = pulumi.Input.asOptionalInput<String>(pgpKey),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.encryptedPassword,
+    this.keyFingerprint,
+    this.password,
+    this.passwordLength,
+    this.passwordResetRequired,
+    this.pgpKey,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class UserLoginProfileState {
 
   factory UserLoginProfileState.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : pulumi.Output.create<String>(map['encryptedPassword'] as String),
-      keyFingerprint: map['keyFingerprint'] == null ? null : pulumi.Output.create<String>(map['keyFingerprint'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      passwordLength: map['passwordLength'] == null ? null : pulumi.Output.create<int>(map['passwordLength'] as int),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : pulumi.Output.create<bool>(map['passwordResetRequired'] as bool),
-      pgpKey: map['pgpKey'] == null ? null : pulumi.Output.create<String>(map['pgpKey'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword'] as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

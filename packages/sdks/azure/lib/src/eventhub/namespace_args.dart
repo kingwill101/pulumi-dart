@@ -57,33 +57,20 @@ class NamespaceArgs {
   /// [sku] Defines which tier to use. Options are `Basic`, `Standard` or `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
   /// [tags] A mapping of tags to assign to the resource.
   NamespaceArgs({
-    pulumi.Output<int>? capacity,
-    pulumi.Output<NamespaceCustomerManagedKey>? customerManagedKey,
-    pulumi.Output<NamespaceIdentity>? identity,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minimumTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<NamespaceNetworkRuleSet>? networkRuleSet,
-    pulumi.Output<int>? premiumMessagingPartitions,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      capacity = pulumi.Input.asOptionalInput<int>(capacity),
-      customerManagedKey = pulumi.Input.asOptionalInput<NamespaceCustomerManagedKey>(customerManagedKey),
-      identity = pulumi.Input.asOptionalInput<NamespaceIdentity>(identity),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minimumTlsVersion = pulumi.Input.asOptionalInput<String>(minimumTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkRuleSet = pulumi.Input.asOptionalInput<NamespaceNetworkRuleSet>(networkRuleSet),
-      premiumMessagingPartitions = pulumi.Input.asOptionalInput<int>(premiumMessagingPartitions),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<String>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.capacity,
+    this.customerManagedKey,
+    this.identity,
+    this.localAuthEnabled,
+    this.location,
+    this.minimumTlsVersion,
+    this.name,
+    this.networkRuleSet,
+    this.premiumMessagingPartitions,
+    this.publicNetworkAccessEnabled,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      capacity: map['capacity'] == null ? null : pulumi.Output.create<int>(map['capacity'] as int),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<NamespaceCustomerManagedKey>(NamespaceCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<NamespaceIdentity>(NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minimumTlsVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkRuleSet: map['networkRuleSet'] == null ? null : pulumi.Output.create<NamespaceNetworkRuleSet>(NamespaceNetworkRuleSet.fromMap((map['networkRuleSet'] as Map).cast<String, dynamic>())),
-      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : pulumi.Output.create<int>(map['premiumMessagingPartitions'] as int),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<String>(map['sku'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (NamespaceCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkRuleSet: map['networkRuleSet'] == null ? null : (NamespaceNetworkRuleSet.fromMap((map['networkRuleSet'] as Map).cast<String, dynamic>())).input(),
+      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : (map['premiumMessagingPartitions'] as int).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (map['sku'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

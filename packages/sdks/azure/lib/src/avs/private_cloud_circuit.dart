@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateCloudCircuit {
   /// The ID of the ExpressRoute Circuit.
-  final String? expressRouteId;
+  final pulumi.Input<String>? expressRouteId;
   /// The ID of the ExpressRoute Circuit private peering.
-  final String? expressRoutePrivatePeeringId;
+  final pulumi.Input<String>? expressRoutePrivatePeeringId;
   /// The CIDR of the primary subnet.
-  final String? primarySubnetCidr;
+  final pulumi.Input<String>? primarySubnetCidr;
   /// The CIDR of the secondary subnet.
-  final String? secondarySubnetCidr;
+  final pulumi.Input<String>? secondarySubnetCidr;
 
   /// Creates a new [PrivateCloudCircuit].
   /// [expressRouteId] The ID of the ExpressRoute Circuit.
@@ -34,10 +35,10 @@ class PrivateCloudCircuit {
 
   factory PrivateCloudCircuit.fromMap(Map<String, dynamic> map) {
     return PrivateCloudCircuit(
-      expressRouteId: map['expressRouteId'] == null ? null : map['expressRouteId'] as String,
-      expressRoutePrivatePeeringId: map['expressRoutePrivatePeeringId'] == null ? null : map['expressRoutePrivatePeeringId'] as String,
-      primarySubnetCidr: map['primarySubnetCidr'] == null ? null : map['primarySubnetCidr'] as String,
-      secondarySubnetCidr: map['secondarySubnetCidr'] == null ? null : map['secondarySubnetCidr'] as String,
+      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId'] as String).input(),
+      expressRoutePrivatePeeringId: map['expressRoutePrivatePeeringId'] == null ? null : (map['expressRoutePrivatePeeringId'] as String).input(),
+      primarySubnetCidr: map['primarySubnetCidr'] == null ? null : (map['primarySubnetCidr'] as String).input(),
+      secondarySubnetCidr: map['secondarySubnetCidr'] == null ? null : (map['secondarySubnetCidr'] as String).input(),
     );
   }
 }

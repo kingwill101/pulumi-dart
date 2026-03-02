@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrontdoorOriginGroupLoadBalancing {
   /// Specifies the additional latency in milliseconds for probes to fall into the lowest latency bucket.
-  final int additionalLatencyInMilliseconds;
+  final pulumi.Input<int> additionalLatencyInMilliseconds;
   /// Specifies the number of samples to consider for load balancing decisions.
-  final int sampleSize;
+  final pulumi.Input<int> sampleSize;
   /// Specifies the number of samples within the sample period that must succeed.
-  final int successfulSamplesRequired;
+  final pulumi.Input<int> successfulSamplesRequired;
 
   /// Creates a new [GetFrontdoorOriginGroupLoadBalancing].
   /// [additionalLatencyInMilliseconds] Specifies the additional latency in milliseconds for probes to fall into the lowest latency bucket.
@@ -29,9 +30,9 @@ class GetFrontdoorOriginGroupLoadBalancing {
 
   factory GetFrontdoorOriginGroupLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupLoadBalancing(
-      additionalLatencyInMilliseconds: map['additionalLatencyInMilliseconds'] as int,
-      sampleSize: map['sampleSize'] as int,
-      successfulSamplesRequired: map['successfulSamplesRequired'] as int,
+      additionalLatencyInMilliseconds: (map['additionalLatencyInMilliseconds'] as int).input(),
+      sampleSize: (map['sampleSize'] as int).input(),
+      successfulSamplesRequired: (map['successfulSamplesRequired'] as int).input(),
     );
   }
 }

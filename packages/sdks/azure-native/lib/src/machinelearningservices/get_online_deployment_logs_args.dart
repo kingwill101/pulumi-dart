@@ -28,19 +28,13 @@ class GetOnlineDeploymentLogsArgs {
   /// [tail] The maximum number of lines to tail.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   GetOnlineDeploymentLogsArgs({
-    pulumi.Output<String>? containerType,
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? tail,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      containerType = pulumi.Input.asOptionalInput<String>(containerType),
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tail = pulumi.Input.asOptionalInput<int>(tail),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.containerType,
+    required this.deploymentName,
+    required this.endpointName,
+    required this.resourceGroupName,
+    this.tail,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetOnlineDeploymentLogsArgs {
 
   factory GetOnlineDeploymentLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetOnlineDeploymentLogsArgs(
-      containerType: map['containerType'] == null ? null : pulumi.Output.create<String>(map['containerType'] as String),
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tail: map['tail'] == null ? null : pulumi.Output.create<int>(map['tail'] as int),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
+      deploymentName: (map['deploymentName'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tail: map['tail'] == null ? null : (map['tail'] as int).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

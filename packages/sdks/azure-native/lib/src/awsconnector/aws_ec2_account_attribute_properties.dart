@@ -6,9 +6,9 @@ import 'account_attribute_value.dart';
 /// Definition of awsEc2AccountAttribute
 class AwsEc2AccountAttributeProperties {
   /// <p>The name of the account attribute.</p>
-  final String? attributeName;
+  final pulumi.Input<String>? attributeName;
   /// <p>The values for the account attribute.</p>
-  final List<AccountAttributeValue>? attributeValues;
+  final pulumi.Input<List<AccountAttributeValue>>? attributeValues;
 
   /// Creates a new [AwsEc2AccountAttributeProperties].
   /// [attributeName] <p>The name of the account attribute.</p>
@@ -21,14 +21,14 @@ class AwsEc2AccountAttributeProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeName': ?attributeName,
-      'attributeValues': ?attributeValues == null ? null : pulumi.Input.encodeList<AccountAttributeValue, Map<String, dynamic>>(attributeValues!, (value) => value.toMap()),
+      'attributeValues': ?pulumi.Input.mapOptionalInputValue<List<AccountAttributeValue>, List<Map<String, dynamic>>>(attributeValues, (value) => pulumi.Input.encodeList<AccountAttributeValue, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsEc2AccountAttributeProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2AccountAttributeProperties(
-      attributeName: map['attributeName'] == null ? null : map['attributeName'] as String,
-      attributeValues: map['attributeValues'] == null ? null : pulumi.Input.decodeList<AccountAttributeValue>(map['attributeValues'], (value) => AccountAttributeValue.fromMap((value as Map).cast<String, dynamic>())),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
+      attributeValues: map['attributeValues'] == null ? null : (pulumi.Input.decodeList<AccountAttributeValue>(map['attributeValues'], (value) => AccountAttributeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

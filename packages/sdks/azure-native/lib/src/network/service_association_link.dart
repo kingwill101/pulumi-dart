@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ServiceAssociationLink resource.
 class ServiceAssociationLink {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Link to the external resource.
-  final String? link;
+  final pulumi.Input<String>? link;
   /// Resource type of the linked resource.
-  final String? linkedResourceType;
+  final pulumi.Input<String>? linkedResourceType;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ServiceAssociationLink].
   /// [id] Resource ID.
@@ -35,10 +36,10 @@ class ServiceAssociationLink {
 
   factory ServiceAssociationLink.fromMap(Map<String, dynamic> map) {
     return ServiceAssociationLink(
-      id: map['id'] == null ? null : map['id'] as String,
-      link: map['link'] == null ? null : map['link'] as String,
-      linkedResourceType: map['linkedResourceType'] == null ? null : map['linkedResourceType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      link: map['link'] == null ? null : (map['link'] as String).input(),
+      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

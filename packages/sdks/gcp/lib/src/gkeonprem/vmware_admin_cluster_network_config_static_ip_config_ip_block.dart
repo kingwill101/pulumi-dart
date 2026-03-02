@@ -5,12 +5,12 @@ import 'vmware_admin_cluster_network_config_static_ip_config_ip_block_ip.dart';
 
 class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
   /// The network gateway used by the VMware Admin Cluster.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The node's network configurations used by the VMware Admin Cluster.
   /// Structure is documented below.
-  final List<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp> ips;
+  final pulumi.Input<List<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp>> ips;
   /// The netmask used by the VMware Admin Cluster.
-  final String netmask;
+  final pulumi.Input<String> netmask;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock].
   /// [gateway] The network gateway used by the VMware Admin Cluster.
@@ -25,16 +25,16 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gateway': gateway,
-      'ips': pulumi.Input.encodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp, Map<String, dynamic>>(ips, (value) => value.toMap()),
+      'ips': pulumi.Input.mapInputValue<List<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp>, List<Map<String, dynamic>>>(ips, (value) => pulumi.Input.encodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'netmask': netmask,
     };
   }
 
   factory VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock(
-      gateway: map['gateway'] as String,
-      ips: pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp>(map['ips'], (value) => VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp.fromMap((value as Map).cast<String, dynamic>())),
-      netmask: map['netmask'] as String,
+      gateway: (map['gateway'] as String).input(),
+      ips: (pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp>(map['ips'], (value) => VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      netmask: (map['netmask'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetHostedZoneIdArgs {
   /// [loadBalancerType] Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
   /// [region] Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
   GetHostedZoneIdArgs({
-    pulumi.Output<String>? loadBalancerType,
-    pulumi.Output<String>? region,
-  }) :
-      loadBalancerType = pulumi.Input.asOptionalInput<String>(loadBalancerType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.loadBalancerType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHostedZoneIdArgs {
 
   factory GetHostedZoneIdArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneIdArgs(
-      loadBalancerType: map['loadBalancerType'] == null ? null : pulumi.Output.create<String>(map['loadBalancerType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

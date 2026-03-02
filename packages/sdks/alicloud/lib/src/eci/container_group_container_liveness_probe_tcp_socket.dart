@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupContainerLivenessProbeTcpSocket {
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [ContainerGroupContainerLivenessProbeTcpSocket].
   /// [port] Optional.
@@ -18,7 +19,7 @@ class ContainerGroupContainerLivenessProbeTcpSocket {
 
   factory ContainerGroupContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerLivenessProbeTcpSocket(
-      port: map['port'] == null ? null : map['port'] as int,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

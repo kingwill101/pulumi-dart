@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IDRange provides a min/max of an allowed range of IDs.
 class IDRange {
   /// max is the end of the range, inclusive.
-  final int max;
+  final pulumi.Input<int> max;
   /// min is the start of the range, inclusive.
-  final int min;
+  final pulumi.Input<int> min;
 
   /// Creates a new [IDRange].
   /// [max] max is the end of the range, inclusive.
@@ -25,8 +26,8 @@ class IDRange {
 
   factory IDRange.fromMap(Map<String, dynamic> map) {
     return IDRange(
-      max: map['max'] as int,
-      min: map['min'] as int,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

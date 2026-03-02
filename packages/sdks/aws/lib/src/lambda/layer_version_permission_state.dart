@@ -39,27 +39,17 @@ class LayerVersionPermissionState {
   /// [statementId] Unique identifier for the permission statement.
   /// [versionNumber] Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
   LayerVersionPermissionState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? layerName,
-    pulumi.Output<String>? organizationId,
-    pulumi.Output<String>? policy,
-    pulumi.Output<String>? principal,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? revisionId,
-    pulumi.Output<bool>? skipDestroy,
-    pulumi.Output<String>? statementId,
-    pulumi.Output<int>? versionNumber,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      layerName = pulumi.Input.asOptionalInput<String>(layerName),
-      organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
-      policy = pulumi.Input.asOptionalInput<String>(policy),
-      principal = pulumi.Input.asOptionalInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      statementId = pulumi.Input.asOptionalInput<String>(statementId),
-      versionNumber = pulumi.Input.asOptionalInput<int>(versionNumber);
+    this.action,
+    this.layerName,
+    this.organizationId,
+    this.policy,
+    this.principal,
+    this.region,
+    this.revisionId,
+    this.skipDestroy,
+    this.statementId,
+    this.versionNumber,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class LayerVersionPermissionState {
 
   factory LayerVersionPermissionState.fromMap(Map<String, dynamic> map) {
     return LayerVersionPermissionState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      layerName: map['layerName'] == null ? null : pulumi.Output.create<String>(map['layerName'] as String),
-      organizationId: map['organizationId'] == null ? null : pulumi.Output.create<String>(map['organizationId'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
-      principal: map['principal'] == null ? null : pulumi.Output.create<String>(map['principal'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      revisionId: map['revisionId'] == null ? null : pulumi.Output.create<String>(map['revisionId'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
-      statementId: map['statementId'] == null ? null : pulumi.Output.create<String>(map['statementId'] as String),
-      versionNumber: map['versionNumber'] == null ? null : pulumi.Output.create<int>(map['versionNumber'] as int),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      layerName: map['layerName'] == null ? null : (map['layerName'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
+      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class PolicyTableAssociationArgs {
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayPolicyTableId] Identifier of EC2 Transit Gateway Policy Table.
   PolicyTableAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> transitGatewayAttachmentId,
-    required pulumi.Output<String> transitGatewayPolicyTableId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId),
-      transitGatewayPolicyTableId = pulumi.Input.asInput<String>(transitGatewayPolicyTableId);
+    this.region,
+    required this.transitGatewayAttachmentId,
+    required this.transitGatewayPolicyTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PolicyTableAssociationArgs {
 
   factory PolicyTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTableAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitGatewayAttachmentId: pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayPolicyTableId: pulumi.Output.create<String>(map['transitGatewayPolicyTableId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayPolicyTableId: (map['transitGatewayPolicyTableId'] as String).input(),
     );
   }
 }

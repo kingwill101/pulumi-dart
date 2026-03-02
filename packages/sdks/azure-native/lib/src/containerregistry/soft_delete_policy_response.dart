@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The soft delete policy for a container registry
 class SoftDeletePolicyResponse {
   /// The timestamp when the policy was last updated.
-  final String lastUpdatedTime;
+  final pulumi.Input<String> lastUpdatedTime;
   /// The number of days after which a soft-deleted item is permanently deleted.
-  final int? retentionDays;
+  final pulumi.Input<int>? retentionDays;
   /// The value that indicates whether the policy is enabled or not.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [SoftDeletePolicyResponse].
   /// [lastUpdatedTime] The timestamp when the policy was last updated.
@@ -30,9 +31,9 @@ class SoftDeletePolicyResponse {
 
   factory SoftDeletePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicyResponse(
-      lastUpdatedTime: map['lastUpdatedTime'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      lastUpdatedTime: (map['lastUpdatedTime'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

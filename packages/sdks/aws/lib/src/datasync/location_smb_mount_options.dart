@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationSmbMountOptions {
   /// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [LocationSmbMountOptions].
   /// [version] The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
@@ -19,7 +20,7 @@ class LocationSmbMountOptions {
 
   factory LocationSmbMountOptions.fromMap(Map<String, dynamic> map) {
     return LocationSmbMountOptions(
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

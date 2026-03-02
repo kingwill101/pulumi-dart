@@ -14,51 +14,51 @@ import 'virtual_network_peering_response.dart';
 /// Virtual Network resource.
 class VirtualNetworkResponse {
   /// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
-  final AddressSpaceResponse? addressSpace;
+  final pulumi.Input<AddressSpaceResponse>? addressSpace;
   /// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
-  final VirtualNetworkBgpCommunitiesResponse? bgpCommunities;
+  final pulumi.Input<VirtualNetworkBgpCommunitiesResponse>? bgpCommunities;
   /// The DDoS protection plan associated with the virtual network.
-  final SubResourceResponse? ddosProtectionPlan;
+  final pulumi.Input<SubResourceResponse>? ddosProtectionPlan;
   /// A reference to the default public nat gateway being used by this virtual network resource.
-  final SubResourceResponse defaultPublicNatGateway;
+  final pulumi.Input<SubResourceResponse> defaultPublicNatGateway;
   /// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
-  final DhcpOptionsResponse? dhcpOptions;
+  final pulumi.Input<DhcpOptionsResponse>? dhcpOptions;
   /// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
-  final bool? enableDdosProtection;
+  final pulumi.Input<bool>? enableDdosProtection;
   /// Indicates if VM protection is enabled for all the subnets in the virtual network.
-  final bool? enableVmProtection;
+  final pulumi.Input<bool>? enableVmProtection;
   /// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
-  final VirtualNetworkEncryptionResponse? encryption;
+  final pulumi.Input<VirtualNetworkEncryptionResponse>? encryption;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The extended location of the virtual network.
-  final ExtendedLocationResponse? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
   /// A collection of references to flow log resources.
-  final List<FlowLogResponse> flowLogs;
+  final pulumi.Input<List<FlowLogResponse>> flowLogs;
   /// The FlowTimeout value (in minutes) for the Virtual Network
-  final int? flowTimeoutInMinutes;
+  final pulumi.Input<int>? flowTimeoutInMinutes;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Array of IpAllocation which reference this VNET.
-  final List<SubResourceResponse>? ipAllocations;
+  final pulumi.Input<List<SubResourceResponse>>? ipAllocations;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Private Endpoint VNet Policies.
-  final String? privateEndpointVNetPolicies;
+  final pulumi.Input<String>? privateEndpointVNetPolicies;
   /// The provisioning state of the virtual network resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resourceGuid property of the Virtual Network resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// A list of subnets in a Virtual Network.
-  final List<SubnetResponse>? subnets;
+  final pulumi.Input<List<SubnetResponse>>? subnets;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// A list of peerings in a Virtual Network.
-  final List<VirtualNetworkPeeringResponse>? virtualNetworkPeerings;
+  final pulumi.Input<List<VirtualNetworkPeeringResponse>>? virtualNetworkPeerings;
 
   /// Creates a new [VirtualNetworkResponse].
   /// [addressSpace] The AddressSpace that contains an array of IP address ranges that can be used by subnets.
@@ -112,57 +112,57 @@ class VirtualNetworkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressSpace': ?addressSpace == null ? null : addressSpace!.toMap(),
-      'bgpCommunities': ?bgpCommunities == null ? null : bgpCommunities!.toMap(),
-      'ddosProtectionPlan': ?ddosProtectionPlan == null ? null : ddosProtectionPlan!.toMap(),
-      'defaultPublicNatGateway': defaultPublicNatGateway.toMap(),
-      'dhcpOptions': ?dhcpOptions == null ? null : dhcpOptions!.toMap(),
+      'addressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpaceResponse, Map<String, dynamic>>(addressSpace, (value) => value.toMap()),
+      'bgpCommunities': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkBgpCommunitiesResponse, Map<String, dynamic>>(bgpCommunities, (value) => value.toMap()),
+      'ddosProtectionPlan': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(ddosProtectionPlan, (value) => value.toMap()),
+      'defaultPublicNatGateway': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(defaultPublicNatGateway, (value) => value.toMap()),
+      'dhcpOptions': ?pulumi.Input.mapOptionalInputValue<DhcpOptionsResponse, Map<String, dynamic>>(dhcpOptions, (value) => value.toMap()),
       'enableDdosProtection': ?enableDdosProtection,
       'enableVmProtection': ?enableVmProtection,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkEncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
-      'flowLogs': pulumi.Input.encodeList<FlowLogResponse, Map<String, dynamic>>(flowLogs, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'flowLogs': pulumi.Input.mapInputValue<List<FlowLogResponse>, List<Map<String, dynamic>>>(flowLogs, (value) => pulumi.Input.encodeList<FlowLogResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'flowTimeoutInMinutes': ?flowTimeoutInMinutes,
       'id': ?id,
-      'ipAllocations': ?ipAllocations == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(ipAllocations!, (value) => value.toMap()),
+      'ipAllocations': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(ipAllocations, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': name,
       'privateEndpointVNetPolicies': ?privateEndpointVNetPolicies,
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
-      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
+      'subnets': ?pulumi.Input.mapOptionalInputValue<List<SubnetResponse>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'type': type,
-      'virtualNetworkPeerings': ?virtualNetworkPeerings == null ? null : pulumi.Input.encodeList<VirtualNetworkPeeringResponse, Map<String, dynamic>>(virtualNetworkPeerings!, (value) => value.toMap()),
+      'virtualNetworkPeerings': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkPeeringResponse>, List<Map<String, dynamic>>>(virtualNetworkPeerings, (value) => pulumi.Input.encodeList<VirtualNetworkPeeringResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VirtualNetworkResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkResponse(
-      addressSpace: map['addressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['addressSpace'] as Map).cast<String, dynamic>()),
-      bgpCommunities: map['bgpCommunities'] == null ? null : VirtualNetworkBgpCommunitiesResponse.fromMap((map['bgpCommunities'] as Map).cast<String, dynamic>()),
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : SubResourceResponse.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>()),
-      defaultPublicNatGateway: SubResourceResponse.fromMap((map['defaultPublicNatGateway'] as Map).cast<String, dynamic>()),
-      dhcpOptions: map['dhcpOptions'] == null ? null : DhcpOptionsResponse.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>()),
-      enableDdosProtection: map['enableDdosProtection'] == null ? null : map['enableDdosProtection'] as bool,
-      enableVmProtection: map['enableVmProtection'] == null ? null : map['enableVmProtection'] as bool,
-      encryption: map['encryption'] == null ? null : VirtualNetworkEncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      flowLogs: pulumi.Input.decodeList<FlowLogResponse>(map['flowLogs'], (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())),
-      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : map['flowTimeoutInMinutes'] as int,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAllocations: map['ipAllocations'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['ipAllocations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] as String,
-      privateEndpointVNetPolicies: map['privateEndpointVNetPolicies'] == null ? null : map['privateEndpointVNetPolicies'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      virtualNetworkPeerings: map['virtualNetworkPeerings'] == null ? null : pulumi.Input.decodeList<VirtualNetworkPeeringResponse>(map['virtualNetworkPeerings'], (value) => VirtualNetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
+      addressSpace: map['addressSpace'] == null ? null : (AddressSpaceResponse.fromMap((map['addressSpace'] as Map).cast<String, dynamic>())).input(),
+      bgpCommunities: map['bgpCommunities'] == null ? null : (VirtualNetworkBgpCommunitiesResponse.fromMap((map['bgpCommunities'] as Map).cast<String, dynamic>())).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResourceResponse.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
+      defaultPublicNatGateway: (SubResourceResponse.fromMap((map['defaultPublicNatGateway'] as Map).cast<String, dynamic>())).input(),
+      dhcpOptions: map['dhcpOptions'] == null ? null : (DhcpOptionsResponse.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())).input(),
+      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection'] as bool).input(),
+      enableVmProtection: map['enableVmProtection'] == null ? null : (map['enableVmProtection'] as bool).input(),
+      encryption: map['encryption'] == null ? null : (VirtualNetworkEncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      etag: (map['etag'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      flowLogs: (pulumi.Input.decodeList<FlowLogResponse>(map['flowLogs'], (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : (map['flowTimeoutInMinutes'] as int).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      ipAllocations: map['ipAllocations'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['ipAllocations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateEndpointVNetPolicies: map['privateEndpointVNetPolicies'] == null ? null : (map['privateEndpointVNetPolicies'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      virtualNetworkPeerings: map['virtualNetworkPeerings'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPeeringResponse>(map['virtualNetworkPeerings'], (value) => VirtualNetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

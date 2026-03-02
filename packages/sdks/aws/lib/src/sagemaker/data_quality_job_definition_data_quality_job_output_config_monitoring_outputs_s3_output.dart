@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output {
   /// The local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job. LocalPath is an absolute path for the output data. Defaults to `/opt/ml/processing/output`.
-  final String? localPath;
+  final pulumi.Input<String>? localPath;
   /// Whether to upload the results of the monitoring job continuously or after the job completes. Valid values are `Continuous` or `EndOfJob`
-  final String? s3UploadMode;
+  final pulumi.Input<String>? s3UploadMode;
   /// A URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
-  final String s3Uri;
+  final pulumi.Input<String> s3Uri;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output].
   /// [localPath] The local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job. LocalPath is an absolute path for the output data. Defaults to `/opt/ml/processing/output`.
@@ -29,9 +30,9 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Outpu
 
   factory DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output(
-      localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      s3UploadMode: map['s3UploadMode'] == null ? null : map['s3UploadMode'] as String,
-      s3Uri: map['s3Uri'] as String,
+      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      s3UploadMode: map['s3UploadMode'] == null ? null : (map['s3UploadMode'] as String).input(),
+      s3Uri: (map['s3Uri'] as String).input(),
     );
   }
 }

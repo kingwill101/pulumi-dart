@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceTemplateDiskSourceImageEncryptionKey {
   /// The self link of the encryption key that is
   /// stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
-  final String? kmsKeySelfLink;
+  final pulumi.Input<String>? kmsKeySelfLink;
   /// The service account being used for the
   /// encryption request for the given KMS key. If absent, the Compute Engine
   /// default service account is used.
-  final String? kmsKeyServiceAccount;
+  final pulumi.Input<String>? kmsKeyServiceAccount;
   /// A 256-bit [customer-supplied encryption key]
   /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
   /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
   /// to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
-  final String? rawKey;
+  final pulumi.Input<String>? rawKey;
   /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
   /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
   /// may be set.
-  final String? rsaEncryptedKey;
+  final pulumi.Input<String>? rsaEncryptedKey;
 
   /// Creates a new [RegionInstanceTemplateDiskSourceImageEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is
@@ -44,10 +45,10 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKey {
 
   factory RegionInstanceTemplateDiskSourceImageEncryptionKey.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateDiskSourceImageEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : map['kmsKeySelfLink'] as String,
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : map['kmsKeyServiceAccount'] as String,
-      rawKey: map['rawKey'] == null ? null : map['rawKey'] as String,
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : map['rsaEncryptedKey'] as String,
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
+      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey'] as String).input(),
     );
   }
 }

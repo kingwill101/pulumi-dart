@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CredentialServicePrincipalServicePrincipalKey {
   /// The name of the Linked Service to use for the Service Principal Key.
-  final String linkedServiceName;
+  final pulumi.Input<String> linkedServiceName;
   /// The name of the Secret in the Key Vault.
-  final String secretName;
+  final pulumi.Input<String> secretName;
   /// The version of the Secret in the Key Vault.
-  final String? secretVersion;
+  final pulumi.Input<String>? secretVersion;
 
   /// Creates a new [CredentialServicePrincipalServicePrincipalKey].
   /// [linkedServiceName] The name of the Linked Service to use for the Service Principal Key.
@@ -29,9 +30,9 @@ class CredentialServicePrincipalServicePrincipalKey {
 
   factory CredentialServicePrincipalServicePrincipalKey.fromMap(Map<String, dynamic> map) {
     return CredentialServicePrincipalServicePrincipalKey(
-      linkedServiceName: map['linkedServiceName'] as String,
-      secretName: map['secretName'] as String,
-      secretVersion: map['secretVersion'] == null ? null : map['secretVersion'] as String,
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
     );
   }
 }

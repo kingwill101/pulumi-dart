@@ -39,25 +39,16 @@ class AppGroupArgs {
   /// [quota] Quota information.  The details see Block quota.
   /// [type] Application type. Valid Values: `standard`, `enhanced`.
   AppGroupArgs({
-    required pulumi.Output<String> appGroupName,
-    pulumi.Output<String>? chargeWay,
-    pulumi.Output<String>? currentVersion,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? orderType,
-    pulumi.Output<List<AppGroupOrder>>? orders,
-    required pulumi.Output<String> paymentType,
-    required pulumi.Output<AppGroupQuota> quota,
-    required pulumi.Output<String> type,
-  }) :
-      appGroupName = pulumi.Input.asInput<String>(appGroupName),
-      chargeWay = pulumi.Input.asOptionalInput<String>(chargeWay),
-      currentVersion = pulumi.Input.asOptionalInput<String>(currentVersion),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      orderType = pulumi.Input.asOptionalInput<String>(orderType),
-      orders = pulumi.Input.asOptionalInput<List<AppGroupOrder>>(orders),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      quota = pulumi.Input.asInput<AppGroupQuota>(quota),
-      type = pulumi.Input.asInput<String>(type);
+    required this.appGroupName,
+    this.chargeWay,
+    this.currentVersion,
+    this.description,
+    this.orderType,
+    this.orders,
+    required this.paymentType,
+    required this.quota,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class AppGroupArgs {
 
   factory AppGroupArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupArgs(
-      appGroupName: pulumi.Output.create<String>(map['appGroupName'] as String),
-      chargeWay: map['chargeWay'] == null ? null : pulumi.Output.create<String>(map['chargeWay'] as String),
-      currentVersion: map['currentVersion'] == null ? null : pulumi.Output.create<String>(map['currentVersion'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      orderType: map['orderType'] == null ? null : pulumi.Output.create<String>(map['orderType'] as String),
-      orders: map['orders'] == null ? null : pulumi.Output.create<List<AppGroupOrder>>(pulumi.Input.decodeList<AppGroupOrder>(map['orders'], (value) => AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()))),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      quota: pulumi.Output.create<AppGroupQuota>(AppGroupQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      appGroupName: (map['appGroupName'] as String).input(),
+      chargeWay: map['chargeWay'] == null ? null : (map['chargeWay'] as String).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
+      orders: map['orders'] == null ? null : (pulumi.Input.decodeList<AppGroupOrder>(map['orders'], (value) => AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      quota: (AppGroupQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

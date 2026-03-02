@@ -40,19 +40,13 @@ class SaaSArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [saasId] The ID value for the new saas.
   SaaSArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<List<SaaSLocation>>? locations,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> saasId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      locations = pulumi.Input.asOptionalInput<List<SaaSLocation>>(locations),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      saasId = pulumi.Input.asInput<String>(saasId);
+    this.annotations,
+    this.labels,
+    required this.location,
+    this.locations,
+    this.project,
+    required this.saasId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,12 +61,12 @@ class SaaSArgs {
 
   factory SaaSArgs.fromMap(Map<String, dynamic> map) {
     return SaaSArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      locations: map['locations'] == null ? null : pulumi.Output.create<List<SaaSLocation>>(pulumi.Input.decodeList<SaaSLocation>(map['locations'], (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      saasId: pulumi.Output.create<String>(map['saasId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<SaaSLocation>(map['locations'], (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      saasId: (map['saasId'] as String).input(),
     );
   }
 }

@@ -7,16 +7,16 @@ import 'user_identity_properties.dart';
 /// Managed identity for the resource.
 class IdentityProperties {
   /// The principal ID of resource identity.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The tenant ID of resource.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The identity type.
-  final ResourceIdentityType? type;
+  final pulumi.Input<ResourceIdentityType>? type;
   /// The list of user identities associated with the resource. The user identity
   /// dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
   /// providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final Map<String, UserIdentityProperties>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityProperties>>? userAssignedIdentities;
 
   /// Creates a new [IdentityProperties].
   /// [principalId] The principal ID of resource identity.
@@ -34,17 +34,17 @@ class IdentityProperties {
     return <String, dynamic>{
       'principalId': ?principalId,
       'tenantId': ?tenantId,
-      'type': ?type == null ? null : type!.value,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserIdentityProperties, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserIdentityProperties>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserIdentityProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : ResourceIdentityType.fromValue(map['type'] as String),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities'], (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>())),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities'], (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

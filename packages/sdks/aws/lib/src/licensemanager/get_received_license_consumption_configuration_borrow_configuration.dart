@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
   /// Indicates whether early check-ins are allowed.
-  final bool allowEarlyCheckIn;
+  final pulumi.Input<bool> allowEarlyCheckIn;
   /// Maximum time for the provisional configuration, in minutes.
-  final int maxTimeToLiveInMinutes;
+  final pulumi.Input<int> maxTimeToLiveInMinutes;
 
   /// Creates a new [GetReceivedLicenseConsumptionConfigurationBorrowConfiguration].
   /// [allowEarlyCheckIn] Indicates whether early check-ins are allowed.
@@ -24,8 +25,8 @@ class GetReceivedLicenseConsumptionConfigurationBorrowConfiguration {
 
   factory GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationBorrowConfiguration(
-      allowEarlyCheckIn: map['allowEarlyCheckIn'] as bool,
-      maxTimeToLiveInMinutes: map['maxTimeToLiveInMinutes'] as int,
+      allowEarlyCheckIn: (map['allowEarlyCheckIn'] as bool).input(),
+      maxTimeToLiveInMinutes: (map['maxTimeToLiveInMinutes'] as int).input(),
     );
   }
 }

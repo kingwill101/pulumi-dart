@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the hardware settings for the Azure Large Instance.
 class HardwareProfile {
   /// Specifies the Azure Large Instance SKU.
-  final String? azureLargeInstanceSize;
+  final pulumi.Input<String>? azureLargeInstanceSize;
   /// Name of the hardware type (vendor and/or their product name)
-  final String? hardwareType;
+  final pulumi.Input<String>? hardwareType;
 
   /// Creates a new [HardwareProfile].
   /// [azureLargeInstanceSize] Specifies the Azure Large Instance SKU.
@@ -25,8 +26,8 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      azureLargeInstanceSize: map['azureLargeInstanceSize'] == null ? null : map['azureLargeInstanceSize'] as String,
-      hardwareType: map['hardwareType'] == null ? null : map['hardwareType'] as String,
+      azureLargeInstanceSize: map['azureLargeInstanceSize'] == null ? null : (map['azureLargeInstanceSize'] as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
     );
   }
 }

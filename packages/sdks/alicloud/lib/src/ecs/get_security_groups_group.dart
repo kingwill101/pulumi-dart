@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityGroupsGroup {
   /// Creation time of the security group.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The description of the security group.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the security group.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to allow inner network access.
-  final bool innerAccess;
+  final pulumi.Input<bool> innerAccess;
   /// The name of the security group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Id of resource group which the security_group belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The type of the security group.
-  final String securityGroupType;
+  final pulumi.Input<String> securityGroupType;
   /// A map of tags assigned to the ECS instances. It must be in the format:
   ///
   /// ```typescript
@@ -121,9 +122,9 @@ class GetSecurityGroupsGroup {
   ///           tagKey1: tagValue1
   ///           tagKey2: tagValue2
   /// ```
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Used to retrieve security groups that belong to the specified VPC ID.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetSecurityGroupsGroup].
   /// [creationTime] Creation time of the security group.
@@ -163,15 +164,15 @@ class GetSecurityGroupsGroup {
 
   factory GetSecurityGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupsGroup(
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      innerAccess: map['innerAccess'] as bool,
-      name: map['name'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityGroupType: map['securityGroupType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcId: map['vpcId'] as String,
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      innerAccess: (map['innerAccess'] as bool).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityGroupType: (map['securityGroupType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

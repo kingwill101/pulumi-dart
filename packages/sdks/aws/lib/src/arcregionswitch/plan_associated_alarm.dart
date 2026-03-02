@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanAssociatedAlarm {
   /// Type of alarm. Valid values: `applicationHealth`, `trigger`.
-  final String alarmType;
+  final pulumi.Input<String> alarmType;
   /// ARN of the cross-account role to assume.
-  final String? crossAccountRole;
+  final pulumi.Input<String>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// Name of the alarm.
-  final String mapBlockKey;
+  final pulumi.Input<String> mapBlockKey;
   /// Resource identifier (ARN) of the CloudWatch alarm.
-  final String resourceIdentifier;
+  final pulumi.Input<String> resourceIdentifier;
 
   /// Creates a new [PlanAssociatedAlarm].
   /// [alarmType] Type of alarm. Valid values: `applicationHealth`, `trigger`.
@@ -39,11 +40,11 @@ class PlanAssociatedAlarm {
 
   factory PlanAssociatedAlarm.fromMap(Map<String, dynamic> map) {
     return PlanAssociatedAlarm(
-      alarmType: map['alarmType'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      mapBlockKey: map['mapBlockKey'] as String,
-      resourceIdentifier: map['resourceIdentifier'] as String,
+      alarmType: (map['alarmType'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      mapBlockKey: (map['mapBlockKey'] as String).input(),
+      resourceIdentifier: (map['resourceIdentifier'] as String).input(),
     );
   }
 }

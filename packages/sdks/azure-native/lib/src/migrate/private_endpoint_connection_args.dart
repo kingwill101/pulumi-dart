@@ -26,17 +26,12 @@ class PrivateEndpointConnectionArgs {
   /// [properties] Properties of the private endpoint endpoint connection.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   PrivateEndpointConnectionArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? privateEndpointConnectionName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<PrivateEndpointConnectionProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      privateEndpointConnectionName = pulumi.Input.asOptionalInput<String>(privateEndpointConnectionName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asInput<PrivateEndpointConnectionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.eTag,
+    this.privateEndpointConnectionName,
+    required this.projectName,
+    required this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: pulumi.Output.create<PrivateEndpointConnectionProperties>(PrivateEndpointConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (PrivateEndpointConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

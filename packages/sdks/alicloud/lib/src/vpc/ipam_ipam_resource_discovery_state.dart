@@ -31,23 +31,15 @@ class IpamIpamResourceDiscoveryState {
   /// [status] The status of the resource discovery instance. Value:
   /// [tags] Label list information.
   IpamIpamResourceDiscoveryState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ipamResourceDiscoveryDescription,
-    pulumi.Output<String>? ipamResourceDiscoveryName,
-    pulumi.Output<List<String>>? operatingRegionLists,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ipamResourceDiscoveryDescription = pulumi.Input.asOptionalInput<String>(ipamResourceDiscoveryDescription),
-      ipamResourceDiscoveryName = pulumi.Input.asOptionalInput<String>(ipamResourceDiscoveryName),
-      operatingRegionLists = pulumi.Input.asOptionalInput<List<String>>(operatingRegionLists),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.createTime,
+    this.ipamResourceDiscoveryDescription,
+    this.ipamResourceDiscoveryName,
+    this.operatingRegionLists,
+    this.regionId,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class IpamIpamResourceDiscoveryState {
 
   factory IpamIpamResourceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return IpamIpamResourceDiscoveryState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : pulumi.Output.create<String>(map['ipamResourceDiscoveryDescription'] as String),
-      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : pulumi.Output.create<String>(map['ipamResourceDiscoveryName'] as String),
-      operatingRegionLists: map['operatingRegionLists'] == null ? null : pulumi.Output.create<List<String>>((map['operatingRegionLists'] as List).cast<String>()),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : (map['ipamResourceDiscoveryDescription'] as String).input(),
+      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : (map['ipamResourceDiscoveryName'] as String).input(),
+      operatingRegionLists: map['operatingRegionLists'] == null ? null : ((map['operatingRegionLists'] as List).cast<String>()).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

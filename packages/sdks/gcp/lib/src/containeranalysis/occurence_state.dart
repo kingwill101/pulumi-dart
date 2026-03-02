@@ -50,25 +50,16 @@ class OccurenceState {
   /// [resourceUri] Required. Immutable. A URI that represents the resource for which
   /// [updateTime] The time when the repository was last updated.
   OccurenceState({
-    pulumi.Output<OccurenceAttestation>? attestation,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? noteName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? remediation,
-    pulumi.Output<String>? resourceUri,
-    pulumi.Output<String>? updateTime,
-  }) :
-      attestation = pulumi.Input.asOptionalInput<OccurenceAttestation>(attestation),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      noteName = pulumi.Input.asOptionalInput<String>(noteName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remediation = pulumi.Input.asOptionalInput<String>(remediation),
-      resourceUri = pulumi.Input.asOptionalInput<String>(resourceUri),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.attestation,
+    this.createTime,
+    this.kind,
+    this.name,
+    this.noteName,
+    this.project,
+    this.remediation,
+    this.resourceUri,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,15 +77,15 @@ class OccurenceState {
 
   factory OccurenceState.fromMap(Map<String, dynamic> map) {
     return OccurenceState(
-      attestation: map['attestation'] == null ? null : pulumi.Output.create<OccurenceAttestation>(OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      noteName: map['noteName'] == null ? null : pulumi.Output.create<String>(map['noteName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      remediation: map['remediation'] == null ? null : pulumi.Output.create<String>(map['remediation'] as String),
-      resourceUri: map['resourceUri'] == null ? null : pulumi.Output.create<String>(map['resourceUri'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      attestation: map['attestation'] == null ? null : (OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      noteName: map['noteName'] == null ? null : (map['noteName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

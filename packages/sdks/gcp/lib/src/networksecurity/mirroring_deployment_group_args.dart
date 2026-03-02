@@ -35,19 +35,13 @@ class MirroringDeploymentGroupArgs {
   /// [network] The network that will be used for all child deployments, for example:
   /// [project] The ID of the project in which the resource belongs.
   MirroringDeploymentGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> mirroringDeploymentGroupId,
-    required pulumi.Output<String> network,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      mirroringDeploymentGroupId = pulumi.Input.asInput<String>(mirroringDeploymentGroupId),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.labels,
+    required this.location,
+    required this.mirroringDeploymentGroupId,
+    required this.network,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class MirroringDeploymentGroupArgs {
 
   factory MirroringDeploymentGroupArgs.fromMap(Map<String, dynamic> map) {
     return MirroringDeploymentGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      mirroringDeploymentGroupId: pulumi.Output.create<String>(map['mirroringDeploymentGroupId'] as String),
-      network: pulumi.Output.create<String>(map['network'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      mirroringDeploymentGroupId: (map['mirroringDeploymentGroupId'] as String).input(),
+      network: (map['network'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

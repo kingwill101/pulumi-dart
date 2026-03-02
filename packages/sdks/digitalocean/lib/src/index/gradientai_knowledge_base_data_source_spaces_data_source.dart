@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiKnowledgeBaseDataSourceSpacesDataSource {
   /// The name of the Spaces bucket
-  final String? bucketName;
+  final pulumi.Input<String>? bucketName;
   /// The path to the item in the bucket
-  final String? itemPath;
+  final pulumi.Input<String>? itemPath;
   /// The region of the Spaces bucket
-  final String? region;
+  final pulumi.Input<String>? region;
 
   /// Creates a new [GradientaiKnowledgeBaseDataSourceSpacesDataSource].
   /// [bucketName] The name of the Spaces bucket
@@ -29,9 +30,9 @@ class GradientaiKnowledgeBaseDataSourceSpacesDataSource {
 
   factory GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(Map<String, dynamic> map) {
     return GradientaiKnowledgeBaseDataSourceSpacesDataSource(
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
-      itemPath: map['itemPath'] == null ? null : map['itemPath'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      itemPath: map['itemPath'] == null ? null : (map['itemPath'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

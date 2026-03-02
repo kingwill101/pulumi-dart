@@ -37,23 +37,15 @@ class WorkteamArgs {
   /// [workforceName] The name of the workforce.
   /// [workteamName] The name of the Workteam (must be unique).
   WorkteamArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<List<WorkteamMemberDefinition>> memberDefinitions,
-    pulumi.Output<WorkteamNotificationConfiguration>? notificationConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<WorkteamWorkerAccessConfiguration>? workerAccessConfiguration,
-    pulumi.Output<String>? workforceName,
-    required pulumi.Output<String> workteamName,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      memberDefinitions = pulumi.Input.asInput<List<WorkteamMemberDefinition>>(memberDefinitions),
-      notificationConfiguration = pulumi.Input.asOptionalInput<WorkteamNotificationConfiguration>(notificationConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workerAccessConfiguration = pulumi.Input.asOptionalInput<WorkteamWorkerAccessConfiguration>(workerAccessConfiguration),
-      workforceName = pulumi.Input.asOptionalInput<String>(workforceName),
-      workteamName = pulumi.Input.asInput<String>(workteamName);
+    required this.description,
+    required this.memberDefinitions,
+    this.notificationConfiguration,
+    this.region,
+    this.tags,
+    this.workerAccessConfiguration,
+    this.workforceName,
+    required this.workteamName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,14 +62,14 @@ class WorkteamArgs {
 
   factory WorkteamArgs.fromMap(Map<String, dynamic> map) {
     return WorkteamArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      memberDefinitions: pulumi.Output.create<List<WorkteamMemberDefinition>>(pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions'], (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      notificationConfiguration: map['notificationConfiguration'] == null ? null : pulumi.Output.create<WorkteamNotificationConfiguration>(WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : pulumi.Output.create<WorkteamWorkerAccessConfiguration>(WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration'] as Map).cast<String, dynamic>())),
-      workforceName: map['workforceName'] == null ? null : pulumi.Output.create<String>(map['workforceName'] as String),
-      workteamName: pulumi.Output.create<String>(map['workteamName'] as String),
+      description: (map['description'] as String).input(),
+      memberDefinitions: (pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions'], (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationConfiguration: map['notificationConfiguration'] == null ? null : (WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : (WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration'] as Map).cast<String, dynamic>())).input(),
+      workforceName: map['workforceName'] == null ? null : (map['workforceName'] as String).input(),
+      workteamName: (map['workteamName'] as String).input(),
     );
   }
 }

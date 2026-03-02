@@ -22,17 +22,12 @@ class LockState {
   /// [entityUrl] The URL of the locked entity.
   /// [lockType] The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   LockState({
-    pulumi.Output<int>? entityId,
-    pulumi.Output<String>? entityLabel,
-    pulumi.Output<String>? entityType,
-    pulumi.Output<String>? entityUrl,
-    pulumi.Output<String>? lockType,
-  }) :
-      entityId = pulumi.Input.asOptionalInput<int>(entityId),
-      entityLabel = pulumi.Input.asOptionalInput<String>(entityLabel),
-      entityType = pulumi.Input.asOptionalInput<String>(entityType),
-      entityUrl = pulumi.Input.asOptionalInput<String>(entityUrl),
-      lockType = pulumi.Input.asOptionalInput<String>(lockType);
+    this.entityId,
+    this.entityLabel,
+    this.entityType,
+    this.entityUrl,
+    this.lockType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class LockState {
 
   factory LockState.fromMap(Map<String, dynamic> map) {
     return LockState(
-      entityId: map['entityId'] == null ? null : pulumi.Output.create<int>(map['entityId'] as int),
-      entityLabel: map['entityLabel'] == null ? null : pulumi.Output.create<String>(map['entityLabel'] as String),
-      entityType: map['entityType'] == null ? null : pulumi.Output.create<String>(map['entityType'] as String),
-      entityUrl: map['entityUrl'] == null ? null : pulumi.Output.create<String>(map['entityUrl'] as String),
-      lockType: map['lockType'] == null ? null : pulumi.Output.create<String>(map['lockType'] as String),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as int).input(),
+      entityLabel: map['entityLabel'] == null ? null : (map['entityLabel'] as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      entityUrl: map['entityUrl'] == null ? null : (map['entityUrl'] as String).input(),
+      lockType: map['lockType'] == null ? null : (map['lockType'] as String).input(),
     );
   }
 }

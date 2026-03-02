@@ -6,13 +6,13 @@ import 'api_operation_response_representation.dart';
 
 class ApiOperationResponse {
   /// A description of the HTTP Response, which may include HTML tags.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// One or more `header` blocks as defined above.
-  final List<ApiOperationResponseHeader>? headers;
+  final pulumi.Input<List<ApiOperationResponseHeader>>? headers;
   /// One or more `representation` blocks as defined above.
-  final List<ApiOperationResponseRepresentation>? representations;
+  final pulumi.Input<List<ApiOperationResponseRepresentation>>? representations;
   /// The HTTP Status Code.
-  final int statusCode;
+  final pulumi.Input<int> statusCode;
 
   /// Creates a new [ApiOperationResponse].
   /// [description] A description of the HTTP Response, which may include HTML tags.
@@ -29,18 +29,18 @@ class ApiOperationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<ApiOperationResponseHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
-      'representations': ?representations == null ? null : pulumi.Input.encodeList<ApiOperationResponseRepresentation, Map<String, dynamic>>(representations!, (value) => value.toMap()),
+      'headers': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationResponseHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<ApiOperationResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'representations': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationResponseRepresentation>, List<Map<String, dynamic>>>(representations, (value) => pulumi.Input.encodeList<ApiOperationResponseRepresentation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'statusCode': statusCode,
     };
   }
 
   factory ApiOperationResponse.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<ApiOperationResponseHeader>(map['headers'], (value) => ApiOperationResponseHeader.fromMap((value as Map).cast<String, dynamic>())),
-      representations: map['representations'] == null ? null : pulumi.Input.decodeList<ApiOperationResponseRepresentation>(map['representations'], (value) => ApiOperationResponseRepresentation.fromMap((value as Map).cast<String, dynamic>())),
-      statusCode: map['statusCode'] as int,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeader>(map['headers'], (value) => ApiOperationResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseRepresentation>(map['representations'], (value) => ApiOperationResponseRepresentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCode: (map['statusCode'] as int).input(),
     );
   }
 }

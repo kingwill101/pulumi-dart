@@ -16,11 +16,9 @@ class GetScopeAccessReviewScheduleDefinitionByIdArgs {
   /// [scheduleDefinitionId] The id of the access review schedule definition.
   /// [scope] The scope of the resource.
   GetScopeAccessReviewScheduleDefinitionByIdArgs({
-    required pulumi.Output<String> scheduleDefinitionId,
-    required pulumi.Output<String> scope,
-  }) :
-      scheduleDefinitionId = pulumi.Input.asInput<String>(scheduleDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.scheduleDefinitionId,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScopeAccessReviewScheduleDefinitionByIdArgs {
 
   factory GetScopeAccessReviewScheduleDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeAccessReviewScheduleDefinitionByIdArgs(
-      scheduleDefinitionId: pulumi.Output.create<String>(map['scheduleDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      scheduleDefinitionId: (map['scheduleDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

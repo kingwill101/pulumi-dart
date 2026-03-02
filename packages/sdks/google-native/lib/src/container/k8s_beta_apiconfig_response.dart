@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// K8sBetaAPIConfig , configuration for beta APIs
 class K8sBetaAPIConfigResponse {
   /// Enabled k8s beta APIs.
-  final List<String> enabledApis;
+  final pulumi.Input<List<String>> enabledApis;
 
   /// Creates a new [K8sBetaAPIConfigResponse].
   /// [enabledApis] Enabled k8s beta APIs.
@@ -20,7 +21,7 @@ class K8sBetaAPIConfigResponse {
 
   factory K8sBetaAPIConfigResponse.fromMap(Map<String, dynamic> map) {
     return K8sBetaAPIConfigResponse(
-      enabledApis: (map['enabledApis'] as List).cast<String>(),
+      enabledApis: ((map['enabledApis'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KafkaClusterRolesKafkaManagementNodeScriptAction {
   /// The name of the script action.
-  final String name;
+  final pulumi.Input<String> name;
   /// The parameters for the script provided.
-  final String? parameters;
+  final pulumi.Input<String>? parameters;
   /// The URI to the script.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [KafkaClusterRolesKafkaManagementNodeScriptAction].
   /// [name] The name of the script action.
@@ -29,9 +30,9 @@ class KafkaClusterRolesKafkaManagementNodeScriptAction {
 
   factory KafkaClusterRolesKafkaManagementNodeScriptAction.fromMap(Map<String, dynamic> map) {
     return KafkaClusterRolesKafkaManagementNodeScriptAction(
-      name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : map['parameters'] as String,
-      uri: map['uri'] as String,
+      name: (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

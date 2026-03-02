@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'settings_email_notification_settings_custom_notification_behavior_admin_notifications.dart';
 import 'settings_email_notification_settings_custom_notification_behavior_approver_notifications.dart';
 import 'settings_email_notification_settings_custom_notification_behavior_requester_notifications.dart';
@@ -7,13 +8,13 @@ import 'settings_email_notification_settings_custom_notification_behavior_reques
 class SettingsEmailNotificationSettingsCustomNotificationBehavior {
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications? adminNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications>? adminNotifications;
   /// Email notifications specific to Approvers.
   /// Structure is documented below.
-  final SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications? approverNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications>? approverNotifications;
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications? requesterNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications>? requesterNotifications;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehavior].
   /// [adminNotifications] Email notifications specific to Requesters.
@@ -27,17 +28,17 @@ class SettingsEmailNotificationSettingsCustomNotificationBehavior {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminNotifications': ?adminNotifications == null ? null : adminNotifications!.toMap(),
-      'approverNotifications': ?approverNotifications == null ? null : approverNotifications!.toMap(),
-      'requesterNotifications': ?requesterNotifications == null ? null : requesterNotifications!.toMap(),
+      'adminNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications, Map<String, dynamic>>(adminNotifications, (value) => value.toMap()),
+      'approverNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications, Map<String, dynamic>>(approverNotifications, (value) => value.toMap()),
+      'requesterNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications, Map<String, dynamic>>(requesterNotifications, (value) => value.toMap()),
     };
   }
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehavior(
-      adminNotifications: map['adminNotifications'] == null ? null : SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap((map['adminNotifications'] as Map).cast<String, dynamic>()),
-      approverNotifications: map['approverNotifications'] == null ? null : SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap((map['approverNotifications'] as Map).cast<String, dynamic>()),
-      requesterNotifications: map['requesterNotifications'] == null ? null : SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap((map['requesterNotifications'] as Map).cast<String, dynamic>()),
+      adminNotifications: map['adminNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap((map['adminNotifications'] as Map).cast<String, dynamic>())).input(),
+      approverNotifications: map['approverNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap((map['approverNotifications'] as Map).cast<String, dynamic>())).input(),
+      requesterNotifications: map['requesterNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap((map['requesterNotifications'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -9,33 +9,33 @@ import 'tag.dart';
 /// Definition of awsApiGatewayStage
 class AwsApiGatewayStageProperties {
   /// Access log settings, including the access log format and access log destination ARN. The ``AccessLogSetting`` property type specifies settings for logging access in this stage.  ``AccessLogSetting`` is a property of the [AWS::ApiGateway::Stage](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html) resource.
-  final AccessLogSetting? accessLogSetting;
+  final pulumi.Input<AccessLogSetting>? accessLogSetting;
   /// Specifies whether a cache cluster is enabled for the stage.
-  final bool? cacheClusterEnabled;
+  final pulumi.Input<bool>? cacheClusterEnabled;
   /// The stage's cache capacity in GB. For more information about choosing a cache size, see [Enabling API caching to enhance responsiveness](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html).
-  final String? cacheClusterSize;
+  final pulumi.Input<String>? cacheClusterSize;
   /// Settings for the canary deployment in this stage. Configuration settings of a canary deployment.
-  final CanarySetting? canarySetting;
+  final pulumi.Input<CanarySetting>? canarySetting;
   /// The identifier of a client certificate for an API stage.
-  final String? clientCertificateId;
+  final pulumi.Input<String>? clientCertificateId;
   /// The identifier of the Deployment that the stage points to.
-  final String? deploymentId;
+  final pulumi.Input<String>? deploymentId;
   /// The stage's description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The version of the associated API documentation.
-  final String? documentationVersion;
+  final pulumi.Input<String>? documentationVersion;
   /// A map that defines the method settings for a Stage resource. Keys (designated as ``/{method_setting_key`` below) are method paths defined as ``{resource_path}/{http_method}`` for an individual method override, or ``/\*/\*`` for overriding all methods in the stage.
-  final List<MethodSetting>? methodSettings;
+  final pulumi.Input<List<MethodSetting>>? methodSettings;
   /// The string identifier of the associated RestApi.
-  final String? restApiId;
+  final pulumi.Input<String>? restApiId;
   /// The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to API Gateway. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is 128 characters.
-  final String? stageName;
+  final pulumi.Input<String>? stageName;
   /// The collection of tags. Each tag element is associated with a given resource.
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// Specifies whether active tracing with X-ray is enabled for the Stage.
-  final bool? tracingEnabled;
+  final pulumi.Input<bool>? tracingEnabled;
   /// A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: ``[A-Za-z0-9-._~:/?#&=,]+``.
-  final Map<String, String>? variables;
+  final pulumi.Input<Map<String, String>>? variables;
 
   /// Creates a new [AwsApiGatewayStageProperties].
   /// [accessLogSetting] Access log settings, including the access log format and access log destination ARN. The ``AccessLogSetting`` property type specifies settings for logging access in this stage.  ``AccessLogSetting`` is a property of the [AWS::ApiGateway::Stage](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html) resource.
@@ -71,18 +71,18 @@ class AwsApiGatewayStageProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogSetting': ?accessLogSetting == null ? null : accessLogSetting!.toMap(),
+      'accessLogSetting': ?pulumi.Input.mapOptionalInputValue<AccessLogSetting, Map<String, dynamic>>(accessLogSetting, (value) => value.toMap()),
       'cacheClusterEnabled': ?cacheClusterEnabled,
       'cacheClusterSize': ?cacheClusterSize,
-      'canarySetting': ?canarySetting == null ? null : canarySetting!.toMap(),
+      'canarySetting': ?pulumi.Input.mapOptionalInputValue<CanarySetting, Map<String, dynamic>>(canarySetting, (value) => value.toMap()),
       'clientCertificateId': ?clientCertificateId,
       'deploymentId': ?deploymentId,
       'description': ?description,
       'documentationVersion': ?documentationVersion,
-      'methodSettings': ?methodSettings == null ? null : pulumi.Input.encodeList<MethodSetting, Map<String, dynamic>>(methodSettings!, (value) => value.toMap()),
+      'methodSettings': ?pulumi.Input.mapOptionalInputValue<List<MethodSetting>, List<Map<String, dynamic>>>(methodSettings, (value) => pulumi.Input.encodeList<MethodSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'restApiId': ?restApiId,
       'stageName': ?stageName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tracingEnabled': ?tracingEnabled,
       'variables': ?variables,
     };
@@ -90,20 +90,20 @@ class AwsApiGatewayStageProperties {
 
   factory AwsApiGatewayStageProperties.fromMap(Map<String, dynamic> map) {
     return AwsApiGatewayStageProperties(
-      accessLogSetting: map['accessLogSetting'] == null ? null : AccessLogSetting.fromMap((map['accessLogSetting'] as Map).cast<String, dynamic>()),
-      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : map['cacheClusterEnabled'] as bool,
-      cacheClusterSize: map['cacheClusterSize'] == null ? null : map['cacheClusterSize'] as String,
-      canarySetting: map['canarySetting'] == null ? null : CanarySetting.fromMap((map['canarySetting'] as Map).cast<String, dynamic>()),
-      clientCertificateId: map['clientCertificateId'] == null ? null : map['clientCertificateId'] as String,
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      documentationVersion: map['documentationVersion'] == null ? null : map['documentationVersion'] as String,
-      methodSettings: map['methodSettings'] == null ? null : pulumi.Input.decodeList<MethodSetting>(map['methodSettings'], (value) => MethodSetting.fromMap((value as Map).cast<String, dynamic>())),
-      restApiId: map['restApiId'] == null ? null : map['restApiId'] as String,
-      stageName: map['stageName'] == null ? null : map['stageName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      tracingEnabled: map['tracingEnabled'] == null ? null : map['tracingEnabled'] as bool,
-      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
+      accessLogSetting: map['accessLogSetting'] == null ? null : (AccessLogSetting.fromMap((map['accessLogSetting'] as Map).cast<String, dynamic>())).input(),
+      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : (map['cacheClusterEnabled'] as bool).input(),
+      cacheClusterSize: map['cacheClusterSize'] == null ? null : (map['cacheClusterSize'] as String).input(),
+      canarySetting: map['canarySetting'] == null ? null : (CanarySetting.fromMap((map['canarySetting'] as Map).cast<String, dynamic>())).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      documentationVersion: map['documentationVersion'] == null ? null : (map['documentationVersion'] as String).input(),
+      methodSettings: map['methodSettings'] == null ? null : (pulumi.Input.decodeList<MethodSetting>(map['methodSettings'], (value) => MethodSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tracingEnabled: map['tracingEnabled'] == null ? null : (map['tracingEnabled'] as bool).input(),
+      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
     );
   }
 }

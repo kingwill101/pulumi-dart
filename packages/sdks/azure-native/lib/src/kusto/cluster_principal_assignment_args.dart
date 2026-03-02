@@ -31,21 +31,14 @@ class ClusterPrincipalAssignmentArgs {
   /// [role] Cluster principal role.
   /// [tenantId] The tenant id of the principal
   ClusterPrincipalAssignmentArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? principalAssignmentName,
-    required pulumi.Output<String> principalId,
-    required pulumi.Output<String> principalType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? tenantId,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      principalAssignmentName = pulumi.Input.asOptionalInput<String>(principalAssignmentName),
-      principalId = pulumi.Input.asInput<String>(principalId),
-      principalType = pulumi.Input.asInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      role = pulumi.Input.asInput<String>(role),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    required this.clusterName,
+    this.principalAssignmentName,
+    required this.principalId,
+    required this.principalType,
+    required this.resourceGroupName,
+    required this.role,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ClusterPrincipalAssignmentArgs {
 
   factory ClusterPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ClusterPrincipalAssignmentArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      principalAssignmentName: map['principalAssignmentName'] == null ? null : pulumi.Output.create<String>(map['principalAssignmentName'] as String),
-      principalId: pulumi.Output.create<String>(map['principalId'] as String),
-      principalType: pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName'] as String).input(),
+      principalId: (map['principalId'] as String).input(),
+      principalType: (map['principalType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      role: (map['role'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

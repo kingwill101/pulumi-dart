@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionAppSiteConfigScmIpRestrictionHeaders {
-  final List<String> xAzureFdids;
-  final List<String> xFdHealthProbes;
-  final List<String> xForwardedFors;
-  final List<String> xForwardedHosts;
+  final pulumi.Input<List<String>> xAzureFdids;
+  final pulumi.Input<List<String>> xFdHealthProbes;
+  final pulumi.Input<List<String>> xForwardedFors;
+  final pulumi.Input<List<String>> xForwardedHosts;
 
   /// Creates a new [GetFunctionAppSiteConfigScmIpRestrictionHeaders].
   /// [xAzureFdids] Required.
@@ -30,10 +31,10 @@ class GetFunctionAppSiteConfigScmIpRestrictionHeaders {
 
   factory GetFunctionAppSiteConfigScmIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
     return GetFunctionAppSiteConfigScmIpRestrictionHeaders(
-      xAzureFdids: (map['xAzureFdids'] as List).cast<String>(),
-      xFdHealthProbes: (map['xFdHealthProbes'] as List).cast<String>(),
-      xForwardedFors: (map['xForwardedFors'] as List).cast<String>(),
-      xForwardedHosts: (map['xForwardedHosts'] as List).cast<String>(),
+      xAzureFdids: ((map['xAzureFdids'] as List).cast<String>()).input(),
+      xFdHealthProbes: ((map['xFdHealthProbes'] as List).cast<String>()).input(),
+      xForwardedFors: ((map['xForwardedFors'] as List).cast<String>()).input(),
+      xForwardedHosts: ((map['xForwardedHosts'] as List).cast<String>()).input(),
     );
   }
 }

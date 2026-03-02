@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration {
   /// The list of sitemap URLs of the websites you want to crawl. The list can include a maximum of `3` sitemap URLs.
-  final List<String> siteMaps;
+  final pulumi.Input<List<String>> siteMaps;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration].
   /// [siteMaps] The list of sitemap URLs of the websites you want to crawl. The list can include a maximum of `3` sitemap URLs.
@@ -19,7 +20,7 @@ class DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration {
 
   factory DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration(
-      siteMaps: (map['siteMaps'] as List).cast<String>(),
+      siteMaps: ((map['siteMaps'] as List).cast<String>()).input(),
     );
   }
 }

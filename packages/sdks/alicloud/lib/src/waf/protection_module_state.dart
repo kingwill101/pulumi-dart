@@ -27,17 +27,12 @@ class ProtectionModuleState {
   /// [mode] The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
   /// [status] The status of the resource. Valid values: `0`, `1`.
   ProtectionModuleState({
-    pulumi.Output<String>? defenseType,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<int>? mode,
-    pulumi.Output<int>? status,
-  }) :
-      defenseType = pulumi.Input.asOptionalInput<String>(defenseType),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      mode = pulumi.Input.asOptionalInput<int>(mode),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.defenseType,
+    this.domain,
+    this.instanceId,
+    this.mode,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ProtectionModuleState {
 
   factory ProtectionModuleState.fromMap(Map<String, dynamic> map) {
     return ProtectionModuleState(
-      defenseType: map['defenseType'] == null ? null : pulumi.Output.create<String>(map['defenseType'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<int>(map['mode'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      defenseType: map['defenseType'] == null ? null : (map['defenseType'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

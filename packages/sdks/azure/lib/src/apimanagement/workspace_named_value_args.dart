@@ -38,21 +38,14 @@ class WorkspaceNamedValueArgs {
   /// [value] The value of this API Management Workspace Named Value.
   /// [valueFromKeyVault] A `value_from_key_vault` block as defined below.
   WorkspaceNamedValueArgs({
-    required pulumi.Output<String> apiManagementWorkspaceId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? secret,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? value,
-    pulumi.Output<WorkspaceNamedValueValueFromKeyVault>? valueFromKeyVault,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asInput<String>(apiManagementWorkspaceId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secret = pulumi.Input.asOptionalInput<bool>(secret),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      valueFromKeyVault = pulumi.Input.asOptionalInput<WorkspaceNamedValueValueFromKeyVault>(valueFromKeyVault);
+    required this.apiManagementWorkspaceId,
+    required this.displayName,
+    this.name,
+    this.secret,
+    this.tags,
+    this.value,
+    this.valueFromKeyVault,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class WorkspaceNamedValueArgs {
 
   factory WorkspaceNamedValueArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNamedValueArgs(
-      apiManagementWorkspaceId: pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secret: map['secret'] == null ? null : pulumi.Output.create<bool>(map['secret'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : pulumi.Output.create<WorkspaceNamedValueValueFromKeyVault>(WorkspaceNamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())),
+      apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : (WorkspaceNamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

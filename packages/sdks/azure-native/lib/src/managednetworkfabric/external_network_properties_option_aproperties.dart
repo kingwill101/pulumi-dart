@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bfd_configuration.dart';
 
 /// option A properties object
 class ExternalNetworkPropertiesOptionAProperties {
   /// BFD configuration properties
-  final BfdConfiguration? bfdConfiguration;
+  final pulumi.Input<BfdConfiguration>? bfdConfiguration;
   /// Egress Acl. ARM resource ID of Access Control Lists.
-  final String? egressAclId;
+  final pulumi.Input<String>? egressAclId;
   /// Ingress Acl. ARM resource ID of Access Control Lists.
-  final String? ingressAclId;
+  final pulumi.Input<String>? ingressAclId;
   /// MTU to use for option A peering.
-  final int? mtu;
+  final pulumi.Input<int>? mtu;
   /// Peer ASN number.Example : 28
-  final double peerASN;
+  final pulumi.Input<double> peerASN;
   /// IPv4 Address Prefix.
-  final String? primaryIpv4Prefix;
+  final pulumi.Input<String>? primaryIpv4Prefix;
   /// IPv6 Address Prefix.
-  final String? primaryIpv6Prefix;
+  final pulumi.Input<String>? primaryIpv6Prefix;
   /// Secondary IPv4 Address Prefix.
-  final String? secondaryIpv4Prefix;
+  final pulumi.Input<String>? secondaryIpv4Prefix;
   /// Secondary IPv6 Address Prefix.
-  final String? secondaryIpv6Prefix;
+  final pulumi.Input<String>? secondaryIpv6Prefix;
   /// Vlan identifier. Example : 501
-  final int vlanId;
+  final pulumi.Input<int> vlanId;
 
   /// Creates a new [ExternalNetworkPropertiesOptionAProperties].
   /// [bfdConfiguration] BFD configuration properties
@@ -51,7 +52,7 @@ class ExternalNetworkPropertiesOptionAProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bfdConfiguration': ?bfdConfiguration == null ? null : bfdConfiguration!.toMap(),
+      'bfdConfiguration': ?pulumi.Input.mapOptionalInputValue<BfdConfiguration, Map<String, dynamic>>(bfdConfiguration, (value) => value.toMap()),
       'egressAclId': ?egressAclId,
       'ingressAclId': ?ingressAclId,
       'mtu': ?mtu,
@@ -66,16 +67,16 @@ class ExternalNetworkPropertiesOptionAProperties {
 
   factory ExternalNetworkPropertiesOptionAProperties.fromMap(Map<String, dynamic> map) {
     return ExternalNetworkPropertiesOptionAProperties(
-      bfdConfiguration: map['bfdConfiguration'] == null ? null : BfdConfiguration.fromMap((map['bfdConfiguration'] as Map).cast<String, dynamic>()),
-      egressAclId: map['egressAclId'] == null ? null : map['egressAclId'] as String,
-      ingressAclId: map['ingressAclId'] == null ? null : map['ingressAclId'] as String,
-      mtu: map['mtu'] == null ? null : map['mtu'] as int,
-      peerASN: map['peerASN'] as double,
-      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : map['primaryIpv4Prefix'] as String,
-      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : map['primaryIpv6Prefix'] as String,
-      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : map['secondaryIpv4Prefix'] as String,
-      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : map['secondaryIpv6Prefix'] as String,
-      vlanId: map['vlanId'] as int,
+      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfiguration.fromMap((map['bfdConfiguration'] as Map).cast<String, dynamic>())).input(),
+      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId'] as String).input(),
+      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId'] as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      peerASN: (map['peerASN'] as double).input(),
+      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : (map['primaryIpv4Prefix'] as String).input(),
+      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix'] as String).input(),
+      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : (map['secondaryIpv4Prefix'] as String).input(),
+      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix'] as String).input(),
+      vlanId: (map['vlanId'] as int).input(),
     );
   }
 }

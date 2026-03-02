@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1 {
   /// Name of the user-defined field, as given in the definition.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1].
   /// [name] Name of the user-defined field, as given in the definition.
@@ -24,8 +25,8 @@ class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1 {
 
   factory SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1(
-      name: map['name'] == null ? null : map['name'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

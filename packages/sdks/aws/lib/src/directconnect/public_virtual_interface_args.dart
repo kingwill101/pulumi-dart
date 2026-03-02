@@ -43,29 +43,18 @@ class PublicVirtualInterfaceArgs {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vlan] The VLAN ID.
   PublicVirtualInterfaceArgs({
-    required pulumi.Output<String> addressFamily,
-    pulumi.Output<String>? amazonAddress,
-    required pulumi.Output<int> bgpAsn,
-    pulumi.Output<String>? bgpAuthKey,
-    required pulumi.Output<String> connectionId,
-    pulumi.Output<String>? customerAddress,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> routeFilterPrefixes,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<int> vlan,
-  }) :
-      addressFamily = pulumi.Input.asInput<String>(addressFamily),
-      amazonAddress = pulumi.Input.asOptionalInput<String>(amazonAddress),
-      bgpAsn = pulumi.Input.asInput<int>(bgpAsn),
-      bgpAuthKey = pulumi.Input.asOptionalInput<String>(bgpAuthKey),
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      customerAddress = pulumi.Input.asOptionalInput<String>(customerAddress),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeFilterPrefixes = pulumi.Input.asInput<List<String>>(routeFilterPrefixes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vlan = pulumi.Input.asInput<int>(vlan);
+    required this.addressFamily,
+    this.amazonAddress,
+    required this.bgpAsn,
+    this.bgpAuthKey,
+    required this.connectionId,
+    this.customerAddress,
+    this.name,
+    this.region,
+    required this.routeFilterPrefixes,
+    this.tags,
+    required this.vlan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class PublicVirtualInterfaceArgs {
 
   factory PublicVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return PublicVirtualInterfaceArgs(
-      addressFamily: pulumi.Output.create<String>(map['addressFamily'] as String),
-      amazonAddress: map['amazonAddress'] == null ? null : pulumi.Output.create<String>(map['amazonAddress'] as String),
-      bgpAsn: pulumi.Output.create<int>(map['bgpAsn'] as int),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : pulumi.Output.create<String>(map['bgpAuthKey'] as String),
-      connectionId: pulumi.Output.create<String>(map['connectionId'] as String),
-      customerAddress: map['customerAddress'] == null ? null : pulumi.Output.create<String>(map['customerAddress'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeFilterPrefixes: pulumi.Output.create<List<String>>((map['routeFilterPrefixes'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vlan: pulumi.Output.create<int>(map['vlan'] as int),
+      addressFamily: (map['addressFamily'] as String).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
+      bgpAsn: (map['bgpAsn'] as int).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeFilterPrefixes: ((map['routeFilterPrefixes'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vlan: (map['vlan'] as int).input(),
     );
   }
 }

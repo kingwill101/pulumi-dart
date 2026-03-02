@@ -53,35 +53,21 @@ class DiagnosticState {
   /// [samplingPercentage] Sampling (%). For high traffic APIs, please read this [documentation](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) to understand performance implications and log sampling. Valid values are between `0.0` and `100.0`.
   /// [verbosity] Logging verbosity. Possible values are `verbose`, `information` or `error`.
   DiagnosticState({
-    pulumi.Output<bool>? alwaysLogErrors,
-    pulumi.Output<String>? apiManagementLoggerId,
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<DiagnosticBackendRequest>? backendRequest,
-    pulumi.Output<DiagnosticBackendResponse>? backendResponse,
-    pulumi.Output<DiagnosticFrontendRequest>? frontendRequest,
-    pulumi.Output<DiagnosticFrontendResponse>? frontendResponse,
-    pulumi.Output<String>? httpCorrelationProtocol,
-    pulumi.Output<String>? identifier,
-    pulumi.Output<bool>? logClientIp,
-    pulumi.Output<String>? operationNameFormat,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<double>? samplingPercentage,
-    pulumi.Output<String>? verbosity,
-  }) :
-      alwaysLogErrors = pulumi.Input.asOptionalInput<bool>(alwaysLogErrors),
-      apiManagementLoggerId = pulumi.Input.asOptionalInput<String>(apiManagementLoggerId),
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      backendRequest = pulumi.Input.asOptionalInput<DiagnosticBackendRequest>(backendRequest),
-      backendResponse = pulumi.Input.asOptionalInput<DiagnosticBackendResponse>(backendResponse),
-      frontendRequest = pulumi.Input.asOptionalInput<DiagnosticFrontendRequest>(frontendRequest),
-      frontendResponse = pulumi.Input.asOptionalInput<DiagnosticFrontendResponse>(frontendResponse),
-      httpCorrelationProtocol = pulumi.Input.asOptionalInput<String>(httpCorrelationProtocol),
-      identifier = pulumi.Input.asOptionalInput<String>(identifier),
-      logClientIp = pulumi.Input.asOptionalInput<bool>(logClientIp),
-      operationNameFormat = pulumi.Input.asOptionalInput<String>(operationNameFormat),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      samplingPercentage = pulumi.Input.asOptionalInput<double>(samplingPercentage),
-      verbosity = pulumi.Input.asOptionalInput<String>(verbosity);
+    this.alwaysLogErrors,
+    this.apiManagementLoggerId,
+    this.apiManagementName,
+    this.backendRequest,
+    this.backendResponse,
+    this.frontendRequest,
+    this.frontendResponse,
+    this.httpCorrelationProtocol,
+    this.identifier,
+    this.logClientIp,
+    this.operationNameFormat,
+    this.resourceGroupName,
+    this.samplingPercentage,
+    this.verbosity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class DiagnosticState {
 
   factory DiagnosticState.fromMap(Map<String, dynamic> map) {
     return DiagnosticState(
-      alwaysLogErrors: map['alwaysLogErrors'] == null ? null : pulumi.Output.create<bool>(map['alwaysLogErrors'] as bool),
-      apiManagementLoggerId: map['apiManagementLoggerId'] == null ? null : pulumi.Output.create<String>(map['apiManagementLoggerId'] as String),
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      backendRequest: map['backendRequest'] == null ? null : pulumi.Output.create<DiagnosticBackendRequest>(DiagnosticBackendRequest.fromMap((map['backendRequest'] as Map).cast<String, dynamic>())),
-      backendResponse: map['backendResponse'] == null ? null : pulumi.Output.create<DiagnosticBackendResponse>(DiagnosticBackendResponse.fromMap((map['backendResponse'] as Map).cast<String, dynamic>())),
-      frontendRequest: map['frontendRequest'] == null ? null : pulumi.Output.create<DiagnosticFrontendRequest>(DiagnosticFrontendRequest.fromMap((map['frontendRequest'] as Map).cast<String, dynamic>())),
-      frontendResponse: map['frontendResponse'] == null ? null : pulumi.Output.create<DiagnosticFrontendResponse>(DiagnosticFrontendResponse.fromMap((map['frontendResponse'] as Map).cast<String, dynamic>())),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : pulumi.Output.create<String>(map['httpCorrelationProtocol'] as String),
-      identifier: map['identifier'] == null ? null : pulumi.Output.create<String>(map['identifier'] as String),
-      logClientIp: map['logClientIp'] == null ? null : pulumi.Output.create<bool>(map['logClientIp'] as bool),
-      operationNameFormat: map['operationNameFormat'] == null ? null : pulumi.Output.create<String>(map['operationNameFormat'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      samplingPercentage: map['samplingPercentage'] == null ? null : pulumi.Output.create<double>(map['samplingPercentage'] as double),
-      verbosity: map['verbosity'] == null ? null : pulumi.Output.create<String>(map['verbosity'] as String),
+      alwaysLogErrors: map['alwaysLogErrors'] == null ? null : (map['alwaysLogErrors'] as bool).input(),
+      apiManagementLoggerId: map['apiManagementLoggerId'] == null ? null : (map['apiManagementLoggerId'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      backendRequest: map['backendRequest'] == null ? null : (DiagnosticBackendRequest.fromMap((map['backendRequest'] as Map).cast<String, dynamic>())).input(),
+      backendResponse: map['backendResponse'] == null ? null : (DiagnosticBackendResponse.fromMap((map['backendResponse'] as Map).cast<String, dynamic>())).input(),
+      frontendRequest: map['frontendRequest'] == null ? null : (DiagnosticFrontendRequest.fromMap((map['frontendRequest'] as Map).cast<String, dynamic>())).input(),
+      frontendResponse: map['frontendResponse'] == null ? null : (DiagnosticFrontendResponse.fromMap((map['frontendResponse'] as Map).cast<String, dynamic>())).input(),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp'] as bool).input(),
+      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as double).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as String).input(),
     );
   }
 }

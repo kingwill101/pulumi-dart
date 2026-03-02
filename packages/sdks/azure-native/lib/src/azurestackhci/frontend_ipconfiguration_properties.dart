@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_ipaddress_arm_reference.dart';
 import 'virtual_network_subnet_arm_reference.dart';
 
 /// FrontendIP Configuration object for a load balancer.
 class FrontendIPConfigurationProperties {
   /// Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// privateIPAllocationMethod - set to Static for requesting a specific IP
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// Public IP
-  final PublicIPAddressArmReference? publicIPAddress;
+  final pulumi.Input<PublicIPAddressArmReference>? publicIPAddress;
   /// subnet - the subnet from which to allocate the private IP
-  final VirtualNetworkSubnetArmReference? subnet;
+  final pulumi.Input<VirtualNetworkSubnetArmReference>? subnet;
 
   /// Creates a new [FrontendIPConfigurationProperties].
   /// [privateIPAddress] Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.
@@ -30,17 +31,17 @@ class FrontendIPConfigurationProperties {
     return <String, dynamic>{
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddress': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressArmReference, Map<String, dynamic>>(publicIPAddress, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkSubnetArmReference, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory FrontendIPConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfigurationProperties(
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddressArmReference.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : VirtualNetworkSubnetArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressArmReference.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnetArmReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

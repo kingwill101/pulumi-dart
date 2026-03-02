@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_target_information_response.dart';
 
 /// Option B configuration.
 class L3OptionBPropertiesResponse {
   /// RouteTargets to be applied. This is used for the backward compatibility.
-  final List<String>? exportRouteTargets;
+  final pulumi.Input<List<String>>? exportRouteTargets;
   /// RouteTargets to be applied. This is used for the backward compatibility.
-  final List<String>? importRouteTargets;
+  final pulumi.Input<List<String>>? importRouteTargets;
   /// RouteTargets to be applied.
-  final RouteTargetInformationResponse? routeTargets;
+  final pulumi.Input<RouteTargetInformationResponse>? routeTargets;
 
   /// Creates a new [L3OptionBPropertiesResponse].
   /// [exportRouteTargets] RouteTargets to be applied. This is used for the backward compatibility.
@@ -25,15 +26,15 @@ class L3OptionBPropertiesResponse {
     return <String, dynamic>{
       'exportRouteTargets': ?exportRouteTargets,
       'importRouteTargets': ?importRouteTargets,
-      'routeTargets': ?routeTargets == null ? null : routeTargets!.toMap(),
+      'routeTargets': ?pulumi.Input.mapOptionalInputValue<RouteTargetInformationResponse, Map<String, dynamic>>(routeTargets, (value) => value.toMap()),
     };
   }
 
   factory L3OptionBPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return L3OptionBPropertiesResponse(
-      exportRouteTargets: map['exportRouteTargets'] == null ? null : (map['exportRouteTargets'] as List).cast<String>(),
-      importRouteTargets: map['importRouteTargets'] == null ? null : (map['importRouteTargets'] as List).cast<String>(),
-      routeTargets: map['routeTargets'] == null ? null : RouteTargetInformationResponse.fromMap((map['routeTargets'] as Map).cast<String, dynamic>()),
+      exportRouteTargets: map['exportRouteTargets'] == null ? null : ((map['exportRouteTargets'] as List).cast<String>()).input(),
+      importRouteTargets: map['importRouteTargets'] == null ? null : ((map['importRouteTargets'] as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : (RouteTargetInformationResponse.fromMap((map['routeTargets'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

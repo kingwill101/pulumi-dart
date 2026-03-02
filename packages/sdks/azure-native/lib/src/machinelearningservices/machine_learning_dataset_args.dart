@@ -34,23 +34,15 @@ class MachineLearningDatasetArgs {
   /// [timeSeries] Optional.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   MachineLearningDatasetArgs({
-    pulumi.Output<String>? datasetName,
-    required pulumi.Output<String> datasetType,
-    required pulumi.Output<DatasetCreateRequestParameters> parameters,
-    required pulumi.Output<DatasetCreateRequestRegistration> registration,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<bool>? skipValidation,
-    pulumi.Output<DatasetCreateRequestTimeSeries>? timeSeries,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      datasetName = pulumi.Input.asOptionalInput<String>(datasetName),
-      datasetType = pulumi.Input.asInput<String>(datasetType),
-      parameters = pulumi.Input.asInput<DatasetCreateRequestParameters>(parameters),
-      registration = pulumi.Input.asInput<DatasetCreateRequestRegistration>(registration),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skipValidation = pulumi.Input.asOptionalInput<bool>(skipValidation),
-      timeSeries = pulumi.Input.asOptionalInput<DatasetCreateRequestTimeSeries>(timeSeries),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.datasetName,
+    required this.datasetType,
+    required this.parameters,
+    required this.registration,
+    required this.resourceGroupName,
+    this.skipValidation,
+    this.timeSeries,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class MachineLearningDatasetArgs {
 
   factory MachineLearningDatasetArgs.fromMap(Map<String, dynamic> map) {
     return MachineLearningDatasetArgs(
-      datasetName: map['datasetName'] == null ? null : pulumi.Output.create<String>(map['datasetName'] as String),
-      datasetType: pulumi.Output.create<String>(map['datasetType'] as String),
-      parameters: pulumi.Output.create<DatasetCreateRequestParameters>(DatasetCreateRequestParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())),
-      registration: pulumi.Output.create<DatasetCreateRequestRegistration>(DatasetCreateRequestRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skipValidation: map['skipValidation'] == null ? null : pulumi.Output.create<bool>(map['skipValidation'] as bool),
-      timeSeries: map['timeSeries'] == null ? null : pulumi.Output.create<DatasetCreateRequestTimeSeries>(DatasetCreateRequestTimeSeries.fromMap((map['timeSeries'] as Map).cast<String, dynamic>())),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
+      datasetType: (map['datasetType'] as String).input(),
+      parameters: (DatasetCreateRequestParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      registration: (DatasetCreateRequestRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
+      timeSeries: map['timeSeries'] == null ? null : (DatasetCreateRequestTimeSeries.fromMap((map['timeSeries'] as Map).cast<String, dynamic>())).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

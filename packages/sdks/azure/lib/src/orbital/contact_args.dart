@@ -28,19 +28,13 @@ class ContactArgs {
   /// [reservationStartTime] Reservation start time of the Contact. Changing this forces a new resource to be created.
   /// [spacecraftId] The ID of the spacecraft which the contact will be made to. Changing this forces a new resource to be created.
   ContactArgs({
-    required pulumi.Output<String> contactProfileId,
-    required pulumi.Output<String> groundStationName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> reservationEndTime,
-    required pulumi.Output<String> reservationStartTime,
-    required pulumi.Output<String> spacecraftId,
-  }) :
-      contactProfileId = pulumi.Input.asInput<String>(contactProfileId),
-      groundStationName = pulumi.Input.asInput<String>(groundStationName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      reservationEndTime = pulumi.Input.asInput<String>(reservationEndTime),
-      reservationStartTime = pulumi.Input.asInput<String>(reservationStartTime),
-      spacecraftId = pulumi.Input.asInput<String>(spacecraftId);
+    required this.contactProfileId,
+    required this.groundStationName,
+    this.name,
+    required this.reservationEndTime,
+    required this.reservationStartTime,
+    required this.spacecraftId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      contactProfileId: pulumi.Output.create<String>(map['contactProfileId'] as String),
-      groundStationName: pulumi.Output.create<String>(map['groundStationName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      reservationEndTime: pulumi.Output.create<String>(map['reservationEndTime'] as String),
-      reservationStartTime: pulumi.Output.create<String>(map['reservationStartTime'] as String),
-      spacecraftId: pulumi.Output.create<String>(map['spacecraftId'] as String),
+      contactProfileId: (map['contactProfileId'] as String).input(),
+      groundStationName: (map['groundStationName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      reservationEndTime: (map['reservationEndTime'] as String).input(),
+      reservationStartTime: (map['reservationStartTime'] as String).input(),
+      spacecraftId: (map['spacecraftId'] as String).input(),
     );
   }
 }

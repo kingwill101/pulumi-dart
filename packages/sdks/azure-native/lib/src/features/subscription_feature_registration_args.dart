@@ -19,13 +19,10 @@ class SubscriptionFeatureRegistrationArgs {
   /// [properties] Optional.
   /// [providerNamespace] The provider namespace.
   SubscriptionFeatureRegistrationArgs({
-    pulumi.Output<String>? featureName,
-    pulumi.Output<SubscriptionFeatureRegistrationProperties>? properties,
-    required pulumi.Output<String> providerNamespace,
-  }) :
-      featureName = pulumi.Input.asOptionalInput<String>(featureName),
-      properties = pulumi.Input.asOptionalInput<SubscriptionFeatureRegistrationProperties>(properties),
-      providerNamespace = pulumi.Input.asInput<String>(providerNamespace);
+    this.featureName,
+    this.properties,
+    required this.providerNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SubscriptionFeatureRegistrationArgs {
 
   factory SubscriptionFeatureRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationArgs(
-      featureName: map['featureName'] == null ? null : pulumi.Output.create<String>(map['featureName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SubscriptionFeatureRegistrationProperties>(SubscriptionFeatureRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      providerNamespace: pulumi.Output.create<String>(map['providerNamespace'] as String),
+      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      properties: map['properties'] == null ? null : (SubscriptionFeatureRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }
 }

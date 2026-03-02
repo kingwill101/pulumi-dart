@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskThrottleFiltersThrottleFilter {
   /// Sets the group name for the throttle filter applied to the disk device.
-  final String group;
+  final pulumi.Input<String> group;
 
   /// Creates a new [DomainDevicesDiskThrottleFiltersThrottleFilter].
   /// [group] Sets the group name for the throttle filter applied to the disk device.
@@ -19,7 +20,7 @@ class DomainDevicesDiskThrottleFiltersThrottleFilter {
 
   factory DomainDevicesDiskThrottleFiltersThrottleFilter.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskThrottleFiltersThrottleFilter(
-      group: map['group'] as String,
+      group: (map['group'] as String).input(),
     );
   }
 }

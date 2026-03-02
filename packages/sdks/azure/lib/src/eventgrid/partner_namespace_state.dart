@@ -38,27 +38,17 @@ class PartnerNamespaceState {
   /// [resourceGroupName] The name of the Resource Group where the Event Grid Partner Namespace should exist. Changing this forces a new Event Grid Partner Namespace to be created.
   /// [tags] A mapping of tags which should be assigned to the Event Grid Partner Namespace.
   PartnerNamespaceState({
-    pulumi.Output<String>? endpoint,
-    pulumi.Output<List<PartnerNamespaceInboundIpRule>>? inboundIpRules,
-    pulumi.Output<bool>? localAuthenticationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partnerRegistrationId,
-    pulumi.Output<String>? partnerTopicRoutingMode,
-    pulumi.Output<String>? publicNetworkAccess,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      endpoint = pulumi.Input.asOptionalInput<String>(endpoint),
-      inboundIpRules = pulumi.Input.asOptionalInput<List<PartnerNamespaceInboundIpRule>>(inboundIpRules),
-      localAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(localAuthenticationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerRegistrationId = pulumi.Input.asOptionalInput<String>(partnerRegistrationId),
-      partnerTopicRoutingMode = pulumi.Input.asOptionalInput<String>(partnerTopicRoutingMode),
-      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.endpoint,
+    this.inboundIpRules,
+    this.localAuthenticationEnabled,
+    this.location,
+    this.name,
+    this.partnerRegistrationId,
+    this.partnerTopicRoutingMode,
+    this.publicNetworkAccess,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class PartnerNamespaceState {
 
   factory PartnerNamespaceState.fromMap(Map<String, dynamic> map) {
     return PartnerNamespaceState(
-      endpoint: map['endpoint'] == null ? null : pulumi.Output.create<String>(map['endpoint'] as String),
-      inboundIpRules: map['inboundIpRules'] == null ? null : pulumi.Output.create<List<PartnerNamespaceInboundIpRule>>(pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(map['inboundIpRules'], (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthenticationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : pulumi.Output.create<String>(map['partnerRegistrationId'] as String),
-      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : pulumi.Output.create<String>(map['partnerTopicRoutingMode'] as String),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(map['inboundIpRules'], (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerRegistrationId: map['partnerRegistrationId'] == null ? null : (map['partnerRegistrationId'] as String).input(),
+      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : (map['partnerTopicRoutingMode'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

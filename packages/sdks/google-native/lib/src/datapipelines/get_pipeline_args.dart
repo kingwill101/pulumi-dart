@@ -16,13 +16,10 @@ class GetPipelineArgs {
   /// [pipelineId] Required.
   /// [project] Optional.
   GetPipelineArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> pipelineId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      pipelineId = pulumi.Input.asInput<String>(pipelineId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.pipelineId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetPipelineArgs {
 
   factory GetPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      pipelineId: pulumi.Output.create<String>(map['pipelineId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      pipelineId: (map['pipelineId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'azure_monitor_table_configuration.dart';
 /// The selected configurations for azure monitor.
 class AzureMonitorSelectedConfigurations {
   /// The configuration version.
-  final String? configurationVersion;
+  final pulumi.Input<String>? configurationVersion;
   /// The global configurations of selected configurations.
-  final Map<String, String>? globalConfigurations;
+  final pulumi.Input<Map<String, String>>? globalConfigurations;
   /// The table list.
-  final List<AzureMonitorTableConfiguration>? tableList;
+  final pulumi.Input<List<AzureMonitorTableConfiguration>>? tableList;
 
   /// Creates a new [AzureMonitorSelectedConfigurations].
   /// [configurationVersion] The configuration version.
@@ -26,15 +26,15 @@ class AzureMonitorSelectedConfigurations {
     return <String, dynamic>{
       'configurationVersion': ?configurationVersion,
       'globalConfigurations': ?globalConfigurations,
-      'tableList': ?tableList == null ? null : pulumi.Input.encodeList<AzureMonitorTableConfiguration, Map<String, dynamic>>(tableList!, (value) => value.toMap()),
+      'tableList': ?pulumi.Input.mapOptionalInputValue<List<AzureMonitorTableConfiguration>, List<Map<String, dynamic>>>(tableList, (value) => pulumi.Input.encodeList<AzureMonitorTableConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureMonitorSelectedConfigurations.fromMap(Map<String, dynamic> map) {
     return AzureMonitorSelectedConfigurations(
-      configurationVersion: map['configurationVersion'] == null ? null : map['configurationVersion'] as String,
-      globalConfigurations: map['globalConfigurations'] == null ? null : (map['globalConfigurations'] as Map).cast<String, String>(),
-      tableList: map['tableList'] == null ? null : pulumi.Input.decodeList<AzureMonitorTableConfiguration>(map['tableList'], (value) => AzureMonitorTableConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      configurationVersion: map['configurationVersion'] == null ? null : (map['configurationVersion'] as String).input(),
+      globalConfigurations: map['globalConfigurations'] == null ? null : ((map['globalConfigurations'] as Map).cast<String, String>()).input(),
+      tableList: map['tableList'] == null ? null : (pulumi.Input.decodeList<AzureMonitorTableConfiguration>(map['tableList'], (value) => AzureMonitorTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

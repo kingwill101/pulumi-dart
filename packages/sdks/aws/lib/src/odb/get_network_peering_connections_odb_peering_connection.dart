@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkPeeringConnectionsOdbPeeringConnection {
   /// The Amazon Resource Name (ARN) for the  ODB network peering connection.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Display name of the ODB network peering connection.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The unique identifier of the  ODB network peering connection.
-  final String id;
+  final pulumi.Input<String> id;
   /// ARN of the ODB network peering connection.
-  final String odbNetworkArn;
+  final pulumi.Input<String> odbNetworkArn;
   /// ARN of the peer network peering connection.
-  final String peerNetworkArn;
+  final pulumi.Input<String> peerNetworkArn;
 
   /// Creates a new [GetNetworkPeeringConnectionsOdbPeeringConnection].
   /// [arn] The Amazon Resource Name (ARN) for the  ODB network peering connection.
@@ -39,11 +40,11 @@ class GetNetworkPeeringConnectionsOdbPeeringConnection {
 
   factory GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionsOdbPeeringConnection(
-      arn: map['arn'] as String,
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      odbNetworkArn: map['odbNetworkArn'] as String,
-      peerNetworkArn: map['peerNetworkArn'] as String,
+      arn: (map['arn'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      id: (map['id'] as String).input(),
+      odbNetworkArn: (map['odbNetworkArn'] as String).input(),
+      peerNetworkArn: (map['peerNetworkArn'] as String).input(),
     );
   }
 }

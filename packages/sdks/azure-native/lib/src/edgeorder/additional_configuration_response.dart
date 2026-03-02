@@ -7,11 +7,11 @@ import 'provisioning_details_response.dart';
 /// Additional Configuration details.
 class AdditionalConfigurationResponse {
   /// Hierarchy of the product which uniquely identifies the configuration.
-  final HierarchyInformationResponse hierarchyInformation;
+  final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// List Provisioning Details for Devices in Additional Config.
-  final List<ProvisioningDetailsResponse>? provisioningDetails;
+  final pulumi.Input<List<ProvisioningDetailsResponse>>? provisioningDetails;
   /// Quantity of the product.
-  final int quantity;
+  final pulumi.Input<int> quantity;
 
   /// Creates a new [AdditionalConfigurationResponse].
   /// [hierarchyInformation] Hierarchy of the product which uniquely identifies the configuration.
@@ -25,17 +25,17 @@ class AdditionalConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hierarchyInformation': hierarchyInformation.toMap(),
-      'provisioningDetails': ?provisioningDetails == null ? null : pulumi.Input.encodeList<ProvisioningDetailsResponse, Map<String, dynamic>>(provisioningDetails!, (value) => value.toMap()),
+      'hierarchyInformation': pulumi.Input.mapInputValue<HierarchyInformationResponse, Map<String, dynamic>>(hierarchyInformation, (value) => value.toMap()),
+      'provisioningDetails': ?pulumi.Input.mapOptionalInputValue<List<ProvisioningDetailsResponse>, List<Map<String, dynamic>>>(provisioningDetails, (value) => pulumi.Input.encodeList<ProvisioningDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quantity': quantity,
     };
   }
 
   factory AdditionalConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalConfigurationResponse(
-      hierarchyInformation: HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>()),
-      provisioningDetails: map['provisioningDetails'] == null ? null : pulumi.Input.decodeList<ProvisioningDetailsResponse>(map['provisioningDetails'], (value) => ProvisioningDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      quantity: map['quantity'] as int,
+      hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
+      provisioningDetails: map['provisioningDetails'] == null ? null : (pulumi.Input.decodeList<ProvisioningDetailsResponse>(map['provisioningDetails'], (value) => ProvisioningDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quantity: (map['quantity'] as int).input(),
     );
   }
 }

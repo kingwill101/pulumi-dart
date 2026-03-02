@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AliasPathMetadataResponse {
   /// The attributes of the token that the alias path is referring to.
-  final String attributes;
+  final pulumi.Input<String> attributes;
   /// The type of the token that the alias path is referring to.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AliasPathMetadataResponse].
   /// [attributes] The attributes of the token that the alias path is referring to.
@@ -24,8 +25,8 @@ class AliasPathMetadataResponse {
 
   factory AliasPathMetadataResponse.fromMap(Map<String, dynamic> map) {
     return AliasPathMetadataResponse(
-      attributes: map['attributes'] as String,
-      type: map['type'] as String,
+      attributes: (map['attributes'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_recommendation_results_azure_sql_database_response_category.dart';
 
 class SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
-  final SkuRecommendationResultsAzureSqlDatabaseResponseCategory? category;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponseCategory>? category;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku].
   /// [category] Optional.
@@ -13,13 +14,13 @@ class SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'category': ?category == null ? null : category!.toMap(),
+      'category': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsAzureSqlDatabaseResponseCategory, Map<String, dynamic>>(category, (value) => value.toMap()),
     };
   }
 
   factory SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku(
-      category: map['category'] == null ? null : SkuRecommendationResultsAzureSqlDatabaseResponseCategory.fromMap((map['category'] as Map).cast<String, dynamic>()),
+      category: map['category'] == null ? null : (SkuRecommendationResultsAzureSqlDatabaseResponseCategory.fromMap((map['category'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

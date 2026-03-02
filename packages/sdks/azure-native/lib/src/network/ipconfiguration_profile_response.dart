@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_response.dart';
 
 /// IP configuration profile child resource.
 class IPConfigurationProfileResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the IP configuration profile resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The reference to the subnet resource to create a container network interface ip configuration.
-  final SubnetResponse? subnet;
+  final pulumi.Input<SubnetResponse>? subnet;
   /// Sub Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [IPConfigurationProfileResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -39,19 +40,19 @@ class IPConfigurationProfileResponse {
       'id': ?id,
       'name': ?name,
       'provisioningState': provisioningState,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory IPConfigurationProfileResponse.fromMap(Map<String, dynamic> map) {
     return IPConfigurationProfileResponse(
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

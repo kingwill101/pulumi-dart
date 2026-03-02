@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Address prefix item.
 class AddressPrefixItemResponse {
   /// Address prefix.
-  final String? addressPrefix;
+  final pulumi.Input<String>? addressPrefix;
   /// Address prefix type.
-  final String? addressPrefixType;
+  final pulumi.Input<String>? addressPrefixType;
 
   /// Creates a new [AddressPrefixItemResponse].
   /// [addressPrefix] Address prefix.
@@ -25,8 +26,8 @@ class AddressPrefixItemResponse {
 
   factory AddressPrefixItemResponse.fromMap(Map<String, dynamic> map) {
     return AddressPrefixItemResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
-      addressPrefixType: map['addressPrefixType'] == null ? null : map['addressPrefixType'] as String,
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefixType: map['addressPrefixType'] == null ? null : (map['addressPrefixType'] as String).input(),
     );
   }
 }

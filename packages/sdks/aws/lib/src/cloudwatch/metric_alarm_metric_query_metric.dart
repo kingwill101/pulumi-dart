@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricAlarmMetricQueryMetric {
   /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final Map<String, String>? dimensions;
+  final pulumi.Input<Map<String, String>>? dimensions;
   /// The name for this metric.
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
   /// Granularity in seconds of returned data points.
   /// For metrics with regular resolution, valid values are any multiple of `60`.
   /// For high-resolution metrics, valid values are `1`, `5`, `10`, `20`, `30`, or any multiple of `60`.
-  final int period;
+  final pulumi.Input<int> period;
   /// The statistic to apply to this metric.
   /// See docs for [supported statistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html).
-  final String stat;
+  final pulumi.Input<String> stat;
   /// The unit for this metric.
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [MetricAlarmMetricQueryMetric].
   /// [dimensions] The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -49,12 +50,12 @@ class MetricAlarmMetricQueryMetric {
 
   factory MetricAlarmMetricQueryMetric.fromMap(Map<String, dynamic> map) {
     return MetricAlarmMetricQueryMetric(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as Map).cast<String, String>(),
-      metricName: map['metricName'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      period: map['period'] as int,
-      stat: map['stat'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      metricName: (map['metricName'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      period: (map['period'] as int).input(),
+      stat: (map['stat'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

@@ -61,35 +61,21 @@ class SessionTemplateState {
   /// [updateTime] The time when the session template was updated.
   /// [uuid] A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
   SessionTemplateState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? creator,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<SessionTemplateEnvironmentConfig>? environmentConfig,
-    pulumi.Output<SessionTemplateJupyterSession>? jupyterSession,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<SessionTemplateRuntimeConfig>? runtimeConfig,
-    pulumi.Output<Map<String, dynamic>>? sparkConnectSession,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<String>? uuid,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      creator = pulumi.Input.asOptionalInput<String>(creator),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      environmentConfig = pulumi.Input.asOptionalInput<SessionTemplateEnvironmentConfig>(environmentConfig),
-      jupyterSession = pulumi.Input.asOptionalInput<SessionTemplateJupyterSession>(jupyterSession),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      runtimeConfig = pulumi.Input.asOptionalInput<SessionTemplateRuntimeConfig>(runtimeConfig),
-      sparkConnectSession = pulumi.Input.asOptionalInput<Map<String, dynamic>>(sparkConnectSession),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      uuid = pulumi.Input.asOptionalInput<String>(uuid);
+    this.createTime,
+    this.creator,
+    this.effectiveLabels,
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.pulumiLabels,
+    this.runtimeConfig,
+    this.sparkConnectSession,
+    this.updateTime,
+    this.uuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class SessionTemplateState {
 
   factory SessionTemplateState.fromMap(Map<String, dynamic> map) {
     return SessionTemplateState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      creator: map['creator'] == null ? null : pulumi.Output.create<String>(map['creator'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      environmentConfig: map['environmentConfig'] == null ? null : pulumi.Output.create<SessionTemplateEnvironmentConfig>(SessionTemplateEnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())),
-      jupyterSession: map['jupyterSession'] == null ? null : pulumi.Output.create<SessionTemplateJupyterSession>(SessionTemplateJupyterSession.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<SessionTemplateRuntimeConfig>(SessionTemplateRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
-      sparkConnectSession: map['sparkConnectSession'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['sparkConnectSession'] as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      uuid: map['uuid'] == null ? null : pulumi.Output.create<String>(map['uuid'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      creator: map['creator'] == null ? null : (map['creator'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      environmentConfig: map['environmentConfig'] == null ? null : (SessionTemplateEnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
+      jupyterSession: map['jupyterSession'] == null ? null : (SessionTemplateJupyterSession.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (SessionTemplateRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      sparkConnectSession: map['sparkConnectSession'] == null ? null : ((map['sparkConnectSession'] as Map).cast<String, dynamic>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
     );
   }
 }

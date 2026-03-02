@@ -48,33 +48,20 @@ class SpokeNetworkconnectivityV1alpha1Args {
   /// [spokeId] Optional. Unique id for the Spoke to create.
   /// [updateTime] The time when the Spoke was updated.
   SpokeNetworkconnectivityV1alpha1Args({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? hub,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<String>>? linkedInterconnectAttachments,
-    pulumi.Output<List<RouterApplianceInstanceNetworkconnectivityV1alpha1>>? linkedRouterApplianceInstances,
-    pulumi.Output<List<String>>? linkedVpnTunnels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? spokeId,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hub = pulumi.Input.asOptionalInput<String>(hub),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      linkedInterconnectAttachments = pulumi.Input.asOptionalInput<List<String>>(linkedInterconnectAttachments),
-      linkedRouterApplianceInstances = pulumi.Input.asOptionalInput<List<RouterApplianceInstanceNetworkconnectivityV1alpha1>>(linkedRouterApplianceInstances),
-      linkedVpnTunnels = pulumi.Input.asOptionalInput<List<String>>(linkedVpnTunnels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      spokeId = pulumi.Input.asOptionalInput<String>(spokeId),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.hub,
+    this.labels,
+    this.linkedInterconnectAttachments,
+    this.linkedRouterApplianceInstances,
+    this.linkedVpnTunnels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.spokeId,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class SpokeNetworkconnectivityV1alpha1Args {
 
   factory SpokeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return SpokeNetworkconnectivityV1alpha1Args(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hub: map['hub'] == null ? null : pulumi.Output.create<String>(map['hub'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : pulumi.Output.create<List<String>>((map['linkedInterconnectAttachments'] as List).cast<String>()),
-      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : pulumi.Output.create<List<RouterApplianceInstanceNetworkconnectivityV1alpha1>>(pulumi.Input.decodeList<RouterApplianceInstanceNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances'], (value) => RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
-      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : pulumi.Output.create<List<String>>((map['linkedVpnTunnels'] as List).cast<String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      spokeId: map['spokeId'] == null ? null : pulumi.Output.create<String>(map['spokeId'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hub: map['hub'] == null ? null : (map['hub'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : ((map['linkedInterconnectAttachments'] as List).cast<String>()).input(),
+      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (pulumi.Input.decodeList<RouterApplianceInstanceNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances'], (value) => RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : ((map['linkedVpnTunnels'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      spokeId: map['spokeId'] == null ? null : (map['spokeId'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

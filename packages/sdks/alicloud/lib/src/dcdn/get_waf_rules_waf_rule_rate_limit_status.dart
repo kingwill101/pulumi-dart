@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWafRulesWafRuleRateLimitStatus {
   /// The HTTP status code returned.
-  final String code;
+  final pulumi.Input<String> code;
   /// The number of times that the HTTP status code that was returned.
-  final int count;
+  final pulumi.Input<int> count;
   /// The percentage of HTTP status codes.
-  final int ratio;
+  final pulumi.Input<int> ratio;
 
   /// Creates a new [GetWafRulesWafRuleRateLimitStatus].
   /// [code] The HTTP status code returned.
@@ -29,9 +30,9 @@ class GetWafRulesWafRuleRateLimitStatus {
 
   factory GetWafRulesWafRuleRateLimitStatus.fromMap(Map<String, dynamic> map) {
     return GetWafRulesWafRuleRateLimitStatus(
-      code: map['code'] as String,
-      count: map['count'] as int,
-      ratio: map['ratio'] as int,
+      code: (map['code'] as String).input(),
+      count: (map['count'] as int).input(),
+      ratio: (map['ratio'] as int).input(),
     );
   }
 }

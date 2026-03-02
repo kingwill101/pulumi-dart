@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database specific information
 class DistributedAvailabilityGroupDatabase {
   /// The name of the database in link
-  final String? databaseName;
+  final pulumi.Input<String>? databaseName;
 
   /// Creates a new [DistributedAvailabilityGroupDatabase].
   /// [databaseName] The name of the database in link
@@ -20,7 +21,7 @@ class DistributedAvailabilityGroupDatabase {
 
   factory DistributedAvailabilityGroupDatabase.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupDatabase(
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
     );
   }
 }

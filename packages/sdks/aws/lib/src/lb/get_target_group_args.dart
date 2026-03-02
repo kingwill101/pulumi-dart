@@ -26,17 +26,12 @@ class GetTargetGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match a pair on the desired target group.
   GetTargetGroupArgs({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? loadBalancingAnomalyMitigation,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      loadBalancingAnomalyMitigation = pulumi.Input.asOptionalInput<String>(loadBalancingAnomalyMitigation),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.arn,
+    this.loadBalancingAnomalyMitigation,
+    this.name,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class GetTargetGroupArgs {
 
   factory GetTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupArgs(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] == null ? null : pulumi.Output.create<String>(map['loadBalancingAnomalyMitigation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] == null ? null : (map['loadBalancingAnomalyMitigation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

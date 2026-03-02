@@ -19,13 +19,10 @@ class NetworkRouteArgs {
   /// [gateway] Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   /// [networkId] ID of the Network the route should be added to.
   NetworkRouteArgs({
-    required pulumi.Output<String> destination,
-    required pulumi.Output<String> gateway,
-    required pulumi.Output<int> networkId,
-  }) :
-      destination = pulumi.Input.asInput<String>(destination),
-      gateway = pulumi.Input.asInput<String>(gateway),
-      networkId = pulumi.Input.asInput<int>(networkId);
+    required this.destination,
+    required this.gateway,
+    required this.networkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class NetworkRouteArgs {
 
   factory NetworkRouteArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRouteArgs(
-      destination: pulumi.Output.create<String>(map['destination'] as String),
-      gateway: pulumi.Output.create<String>(map['gateway'] as String),
-      networkId: pulumi.Output.create<int>(map['networkId'] as int),
+      destination: (map['destination'] as String).input(),
+      gateway: (map['gateway'] as String).input(),
+      networkId: (map['networkId'] as int).input(),
     );
   }
 }

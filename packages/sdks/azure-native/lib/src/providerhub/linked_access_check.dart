@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedAccessCheck {
   /// The action name.
-  final String? actionName;
+  final pulumi.Input<String>? actionName;
   /// The linked action.
-  final String? linkedAction;
+  final pulumi.Input<String>? linkedAction;
   /// The linked action verb.
-  final String? linkedActionVerb;
+  final pulumi.Input<String>? linkedActionVerb;
   /// The linked property.
-  final String? linkedProperty;
+  final pulumi.Input<String>? linkedProperty;
   /// The linked type.
-  final String? linkedType;
+  final pulumi.Input<String>? linkedType;
 
   /// Creates a new [LinkedAccessCheck].
   /// [actionName] The action name.
@@ -39,11 +40,11 @@ class LinkedAccessCheck {
 
   factory LinkedAccessCheck.fromMap(Map<String, dynamic> map) {
     return LinkedAccessCheck(
-      actionName: map['actionName'] == null ? null : map['actionName'] as String,
-      linkedAction: map['linkedAction'] == null ? null : map['linkedAction'] as String,
-      linkedActionVerb: map['linkedActionVerb'] == null ? null : map['linkedActionVerb'] as String,
-      linkedProperty: map['linkedProperty'] == null ? null : map['linkedProperty'] as String,
-      linkedType: map['linkedType'] == null ? null : map['linkedType'] as String,
+      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
+      linkedAction: map['linkedAction'] == null ? null : (map['linkedAction'] as String).input(),
+      linkedActionVerb: map['linkedActionVerb'] == null ? null : (map['linkedActionVerb'] as String).input(),
+      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty'] as String).input(),
+      linkedType: map['linkedType'] == null ? null : (map['linkedType'] as String).input(),
     );
   }
 }

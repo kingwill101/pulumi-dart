@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_field_id_response.dart';
 
 /// An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
 class GooglePrivacyDlpV2EntityIdResponse {
   /// Composite key indicating which field contains the entity identifier.
-  final GooglePrivacyDlpV2FieldIdResponse field;
+  final pulumi.Input<GooglePrivacyDlpV2FieldIdResponse> field;
 
   /// Creates a new [GooglePrivacyDlpV2EntityIdResponse].
   /// [field] Composite key indicating which field contains the entity identifier.
@@ -15,13 +16,13 @@ class GooglePrivacyDlpV2EntityIdResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field': field.toMap(),
+      'field': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldIdResponse, Map<String, dynamic>>(field, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2EntityIdResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2EntityIdResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      field: (GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

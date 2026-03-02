@@ -45,35 +45,21 @@ class DefaultSubnetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   /// [tags] Optional.
   DefaultSubnetArgs({
-    pulumi.Output<bool>? assignIpv6AddressOnCreation,
-    required pulumi.Output<String> availabilityZone,
-    pulumi.Output<String>? customerOwnedIpv4Pool,
-    pulumi.Output<bool>? enableDns64,
-    pulumi.Output<bool>? enableResourceNameDnsARecordOnLaunch,
-    pulumi.Output<bool>? enableResourceNameDnsAaaaRecordOnLaunch,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? ipv6CidrBlock,
-    pulumi.Output<bool>? ipv6Native,
-    pulumi.Output<bool>? mapCustomerOwnedIpOnLaunch,
-    pulumi.Output<bool>? mapPublicIpOnLaunch,
-    pulumi.Output<String>? privateDnsHostnameTypeOnLaunch,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assignIpv6AddressOnCreation = pulumi.Input.asOptionalInput<bool>(assignIpv6AddressOnCreation),
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      customerOwnedIpv4Pool = pulumi.Input.asOptionalInput<String>(customerOwnedIpv4Pool),
-      enableDns64 = pulumi.Input.asOptionalInput<bool>(enableDns64),
-      enableResourceNameDnsARecordOnLaunch = pulumi.Input.asOptionalInput<bool>(enableResourceNameDnsARecordOnLaunch),
-      enableResourceNameDnsAaaaRecordOnLaunch = pulumi.Input.asOptionalInput<bool>(enableResourceNameDnsAaaaRecordOnLaunch),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      ipv6CidrBlock = pulumi.Input.asOptionalInput<String>(ipv6CidrBlock),
-      ipv6Native = pulumi.Input.asOptionalInput<bool>(ipv6Native),
-      mapCustomerOwnedIpOnLaunch = pulumi.Input.asOptionalInput<bool>(mapCustomerOwnedIpOnLaunch),
-      mapPublicIpOnLaunch = pulumi.Input.asOptionalInput<bool>(mapPublicIpOnLaunch),
-      privateDnsHostnameTypeOnLaunch = pulumi.Input.asOptionalInput<String>(privateDnsHostnameTypeOnLaunch),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.assignIpv6AddressOnCreation,
+    required this.availabilityZone,
+    this.customerOwnedIpv4Pool,
+    this.enableDns64,
+    this.enableResourceNameDnsARecordOnLaunch,
+    this.enableResourceNameDnsAaaaRecordOnLaunch,
+    this.forceDestroy,
+    this.ipv6CidrBlock,
+    this.ipv6Native,
+    this.mapCustomerOwnedIpOnLaunch,
+    this.mapPublicIpOnLaunch,
+    this.privateDnsHostnameTypeOnLaunch,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,20 +82,20 @@ class DefaultSubnetArgs {
 
   factory DefaultSubnetArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSubnetArgs(
-      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : pulumi.Output.create<bool>(map['assignIpv6AddressOnCreation'] as bool),
-      availabilityZone: pulumi.Output.create<String>(map['availabilityZone'] as String),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : pulumi.Output.create<String>(map['customerOwnedIpv4Pool'] as String),
-      enableDns64: map['enableDns64'] == null ? null : pulumi.Output.create<bool>(map['enableDns64'] as bool),
-      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] == null ? null : pulumi.Output.create<bool>(map['enableResourceNameDnsARecordOnLaunch'] as bool),
-      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] == null ? null : pulumi.Output.create<bool>(map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : pulumi.Output.create<String>(map['ipv6CidrBlock'] as String),
-      ipv6Native: map['ipv6Native'] == null ? null : pulumi.Output.create<bool>(map['ipv6Native'] as bool),
-      mapCustomerOwnedIpOnLaunch: map['mapCustomerOwnedIpOnLaunch'] == null ? null : pulumi.Output.create<bool>(map['mapCustomerOwnedIpOnLaunch'] as bool),
-      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : pulumi.Output.create<bool>(map['mapPublicIpOnLaunch'] as bool),
-      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] == null ? null : pulumi.Output.create<String>(map['privateDnsHostnameTypeOnLaunch'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : (map['assignIpv6AddressOnCreation'] as bool).input(),
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      enableDns64: map['enableDns64'] == null ? null : (map['enableDns64'] as bool).input(),
+      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] == null ? null : (map['enableResourceNameDnsARecordOnLaunch'] as bool).input(),
+      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] == null ? null : (map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      ipv6Native: map['ipv6Native'] == null ? null : (map['ipv6Native'] as bool).input(),
+      mapCustomerOwnedIpOnLaunch: map['mapCustomerOwnedIpOnLaunch'] == null ? null : (map['mapCustomerOwnedIpOnLaunch'] as bool).input(),
+      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : (map['mapPublicIpOnLaunch'] as bool).input(),
+      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] == null ? null : (map['privateDnsHostnameTypeOnLaunch'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

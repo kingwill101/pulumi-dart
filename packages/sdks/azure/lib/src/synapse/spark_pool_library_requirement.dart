@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkPoolLibraryRequirement {
   /// The content of library requirements.
-  final String content;
+  final pulumi.Input<String> content;
   /// The name of the library requirements file.
-  final String filename;
+  final pulumi.Input<String> filename;
 
   /// Creates a new [SparkPoolLibraryRequirement].
   /// [content] The content of library requirements.
@@ -24,8 +25,8 @@ class SparkPoolLibraryRequirement {
 
   factory SparkPoolLibraryRequirement.fromMap(Map<String, dynamic> map) {
     return SparkPoolLibraryRequirement(
-      content: map['content'] as String,
-      filename: map['filename'] as String,
+      content: (map['content'] as String).input(),
+      filename: (map['filename'] as String).input(),
     );
   }
 }

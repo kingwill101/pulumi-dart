@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InMageRcm provider specific container mapping details.
 class InMageRcmProtectionContainerMappingDetailsResponse {
   /// A value indicating whether the flag for enable agent auto upgrade.
-  final String enableAgentAutoUpgrade;
+  final pulumi.Input<String> enableAgentAutoUpgrade;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcm'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Creates a new [InMageRcmProtectionContainerMappingDetailsResponse].
   /// [enableAgentAutoUpgrade] A value indicating whether the flag for enable agent auto upgrade.
@@ -26,8 +27,8 @@ class InMageRcmProtectionContainerMappingDetailsResponse {
 
   factory InMageRcmProtectionContainerMappingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmProtectionContainerMappingDetailsResponse(
-      enableAgentAutoUpgrade: map['enableAgentAutoUpgrade'] as String,
-      instanceType: map['instanceType'] as String,
+      enableAgentAutoUpgrade: (map['enableAgentAutoUpgrade'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
     );
   }
 }

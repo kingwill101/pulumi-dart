@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentStepBranchAction {
   /// The type of action that should be added to the experiment. Possible values are `continuous`, `delay` and `discrete`.
-  final String actionType;
+  final pulumi.Input<String> actionType;
   /// An ISO8601 formatted string specifying the duration for a `delay` or `continuous` action.
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// A key-value map of additional parameters to configure the action. The values that are accepted by this depend on the `urn` i.e. the capability/fault that is applied. Possible parameter values can be found in this [documentation](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library)
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// The name of the Selector to which this action should apply to. This must be specified if the `action_type` is `continuous` or `discrete`.
-  final String? selectorName;
+  final pulumi.Input<String>? selectorName;
   /// The Unique Resource Name of the action, this value is provided by the `azure.chaosstudio.Capability` resource e.g. `azurerm_chaos_studio_capability.example.urn`. This must be specified if the `action_type` is `continuous` or `discrete`.
-  final String? urn;
+  final pulumi.Input<String>? urn;
 
   /// Creates a new [ExperimentStepBranchAction].
   /// [actionType] The type of action that should be added to the experiment. Possible values are `continuous`, `delay` and `discrete`.
@@ -39,11 +40,11 @@ class ExperimentStepBranchAction {
 
   factory ExperimentStepBranchAction.fromMap(Map<String, dynamic> map) {
     return ExperimentStepBranchAction(
-      actionType: map['actionType'] as String,
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      selectorName: map['selectorName'] == null ? null : map['selectorName'] as String,
-      urn: map['urn'] == null ? null : map['urn'] as String,
+      actionType: (map['actionType'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      selectorName: map['selectorName'] == null ? null : (map['selectorName'] as String).input(),
+      urn: map['urn'] == null ? null : (map['urn'] as String).input(),
     );
   }
 }

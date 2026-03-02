@@ -37,25 +37,16 @@ class PlacementGroupState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   PlacementGroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? partitionCount,
-    pulumi.Output<String>? placementGroupId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? spreadLevel,
-    pulumi.Output<String>? strategy,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionCount = pulumi.Input.asOptionalInput<int>(partitionCount),
-      placementGroupId = pulumi.Input.asOptionalInput<String>(placementGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spreadLevel = pulumi.Input.asOptionalInput<String>(spreadLevel),
-      strategy = pulumi.Input.asOptionalInput<String>(strategy),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.name,
+    this.partitionCount,
+    this.placementGroupId,
+    this.region,
+    this.spreadLevel,
+    this.strategy,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionCount: map['partitionCount'] == null ? null : pulumi.Output.create<int>(map['partitionCount'] as int),
-      placementGroupId: map['placementGroupId'] == null ? null : pulumi.Output.create<String>(map['placementGroupId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      spreadLevel: map['spreadLevel'] == null ? null : pulumi.Output.create<String>(map['spreadLevel'] as String),
-      strategy: map['strategy'] == null ? null : pulumi.Output.create<String>(map['strategy'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      spreadLevel: map['spreadLevel'] == null ? null : (map['spreadLevel'] as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

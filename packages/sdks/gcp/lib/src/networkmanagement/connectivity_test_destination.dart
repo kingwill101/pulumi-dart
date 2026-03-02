@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestDestination {
   /// A Cloud SQL instance URI.
-  final String? cloudSqlInstance;
+  final pulumi.Input<String>? cloudSqlInstance;
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
-  final String? forwardingRule;
+  final pulumi.Input<String>? forwardingRule;
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
   /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
   /// ip_address or network. Applicable only to destination endpoint.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
-  final String? gkeMasterCluster;
+  final pulumi.Input<String>? gkeMasterCluster;
   /// A Compute Engine instance URI.
-  final String? instance;
+  final pulumi.Input<String>? instance;
   /// The IP address of the endpoint, which can be an external or internal IP.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// A VPC network URI.
-  final String? network;
+  final pulumi.Input<String>? network;
   /// The IP protocol port of the endpoint. Only applicable when protocol is
   /// TCP or UDP.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Project ID where the endpoint is located.
   /// The project ID can be derived from the URI if you provide a endpoint or
   /// network URI.
@@ -31,11 +32,11 @@ class ConnectivityTestDestination {
   /// 2. When you are using Shared VPC and the IP address that you provide is
   /// from the service project. In this case, the network that the IP address
   /// resides in is defined in the host project.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
   /// A Redis Cluster URI.
-  final String? redisCluster;
+  final pulumi.Input<String>? redisCluster;
   /// A Redis Instance URI.
-  final String? redisInstance;
+  final pulumi.Input<String>? redisInstance;
 
   /// Creates a new [ConnectivityTestDestination].
   /// [cloudSqlInstance] A Cloud SQL instance URI.
@@ -81,17 +82,17 @@ class ConnectivityTestDestination {
 
   factory ConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestDestination(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : map['cloudSqlInstance'] as String,
-      forwardingRule: map['forwardingRule'] == null ? null : map['forwardingRule'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : map['gkeMasterCluster'] as String,
-      instance: map['instance'] == null ? null : map['instance'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      network: map['network'] == null ? null : map['network'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      redisCluster: map['redisCluster'] == null ? null : map['redisCluster'] as String,
-      redisInstance: map['redisInstance'] == null ? null : map['redisInstance'] as String,
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance'] as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      redisCluster: map['redisCluster'] == null ? null : (map['redisCluster'] as String).input(),
+      redisInstance: map['redisInstance'] == null ? null : (map['redisInstance'] as String).input(),
     );
   }
 }

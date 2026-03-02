@@ -25,17 +25,12 @@ class HostedPrivateVirtualInterfaceAccepterArgs {
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface to accept.
   /// [vpnGatewayId] The ID of the virtual private gateway to which to connect the virtual interface.
   HostedPrivateVirtualInterfaceAccepterArgs({
-    pulumi.Output<String>? dxGatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualInterfaceId,
-    pulumi.Output<String>? vpnGatewayId,
-  }) :
-      dxGatewayId = pulumi.Input.asOptionalInput<String>(dxGatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualInterfaceId = pulumi.Input.asInput<String>(virtualInterfaceId),
-      vpnGatewayId = pulumi.Input.asOptionalInput<String>(vpnGatewayId);
+    this.dxGatewayId,
+    this.region,
+    this.tags,
+    required this.virtualInterfaceId,
+    this.vpnGatewayId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class HostedPrivateVirtualInterfaceAccepterArgs {
 
   factory HostedPrivateVirtualInterfaceAccepterArgs.fromMap(Map<String, dynamic> map) {
     return HostedPrivateVirtualInterfaceAccepterArgs(
-      dxGatewayId: map['dxGatewayId'] == null ? null : pulumi.Output.create<String>(map['dxGatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualInterfaceId: pulumi.Output.create<String>(map['virtualInterfaceId'] as String),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : pulumi.Output.create<String>(map['vpnGatewayId'] as String),
+      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
     );
   }
 }

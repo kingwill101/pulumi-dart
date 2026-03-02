@@ -25,17 +25,12 @@ class VswitchArgs {
   /// [networkId] The ID of the network to which the vSwitch that you want to create belongs.
   /// [vswitchName] The name of the vSwitch.
   VswitchArgs({
-    required pulumi.Output<String> cidrBlock,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> ensRegionId,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? vswitchName,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      vswitchName = pulumi.Input.asOptionalInput<String>(vswitchName);
+    required this.cidrBlock,
+    this.description,
+    required this.ensRegionId,
+    this.networkId,
+    this.vswitchName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VswitchArgs {
 
   factory VswitchArgs.fromMap(Map<String, dynamic> map) {
     return VswitchArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      vswitchName: map['vswitchName'] == null ? null : pulumi.Output.create<String>(map['vswitchName'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
     );
   }
 }

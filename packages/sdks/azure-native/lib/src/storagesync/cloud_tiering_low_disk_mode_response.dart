@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information regarding the low disk mode state
 class CloudTieringLowDiskModeResponse {
   /// Last updated timestamp
-  final String lastUpdatedTimestamp;
+  final pulumi.Input<String> lastUpdatedTimestamp;
   /// Low disk mode state
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [CloudTieringLowDiskModeResponse].
   /// [lastUpdatedTimestamp] Last updated timestamp
@@ -25,8 +26,8 @@ class CloudTieringLowDiskModeResponse {
 
   factory CloudTieringLowDiskModeResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringLowDiskModeResponse(
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] as String,
-      state: map['state'] as String,
+      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

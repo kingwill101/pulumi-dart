@@ -19,13 +19,10 @@ class GetIntegrationRuntimeStatusArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   GetIntegrationRuntimeStatusArgs({
-    required pulumi.Output<String> integrationRuntimeName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      integrationRuntimeName = pulumi.Input.asInput<String>(integrationRuntimeName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.integrationRuntimeName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIntegrationRuntimeStatusArgs {
 
   factory GetIntegrationRuntimeStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeStatusArgs(
-      integrationRuntimeName: pulumi.Output.create<String>(map['integrationRuntimeName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

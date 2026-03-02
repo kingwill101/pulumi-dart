@@ -42,23 +42,15 @@ class PolicyState {
   /// [updateTime] (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   /// [version] Version of the Policy. Default version is 0.
   PolicyState({
-    pulumi.Output<PolicyBooleanPolicy>? booleanPolicy,
-    pulumi.Output<String>? constraint,
-    pulumi.Output<String>? etag,
-    pulumi.Output<PolicyListPolicy>? listPolicy,
-    pulumi.Output<String>? orgId,
-    pulumi.Output<PolicyRestorePolicy>? restorePolicy,
-    pulumi.Output<String>? updateTime,
-    pulumi.Output<int>? version,
-  }) :
-      booleanPolicy = pulumi.Input.asOptionalInput<PolicyBooleanPolicy>(booleanPolicy),
-      constraint = pulumi.Input.asOptionalInput<String>(constraint),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      listPolicy = pulumi.Input.asOptionalInput<PolicyListPolicy>(listPolicy),
-      orgId = pulumi.Input.asOptionalInput<String>(orgId),
-      restorePolicy = pulumi.Input.asOptionalInput<PolicyRestorePolicy>(restorePolicy),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime),
-      version = pulumi.Input.asOptionalInput<int>(version);
+    this.booleanPolicy,
+    this.constraint,
+    this.etag,
+    this.listPolicy,
+    this.orgId,
+    this.restorePolicy,
+    this.updateTime,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      booleanPolicy: map['booleanPolicy'] == null ? null : pulumi.Output.create<PolicyBooleanPolicy>(PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())),
-      constraint: map['constraint'] == null ? null : pulumi.Output.create<String>(map['constraint'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      listPolicy: map['listPolicy'] == null ? null : pulumi.Output.create<PolicyListPolicy>(PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())),
-      orgId: map['orgId'] == null ? null : pulumi.Output.create<String>(map['orgId'] as String),
-      restorePolicy: map['restorePolicy'] == null ? null : pulumi.Output.create<PolicyRestorePolicy>(PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<int>(map['version'] as int),
+      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())).input(),
+      constraint: map['constraint'] == null ? null : (map['constraint'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'config_change_status_enum_value.dart';
 import 'initiated_by_enum_value.dart';
 
 /// Definition of ChangeProgressDetails
 class ChangeProgressDetails {
   /// <p>The ID of the configuration change.</p>
-  final String? changeId;
+  final pulumi.Input<String>? changeId;
   /// <p>The current status of the configuration change.</p>
-  final ConfigChangeStatusEnumValue? configChangeStatus;
+  final pulumi.Input<ConfigChangeStatusEnumValue>? configChangeStatus;
   /// <p>The IAM principal who initiated the configuration change.</p>
-  final InitiatedByEnumValue? initiatedBy;
+  final pulumi.Input<InitiatedByEnumValue>? initiatedBy;
   /// <p>The last time that the configuration change was updated.</p>
-  final String? lastUpdatedTime;
+  final pulumi.Input<String>? lastUpdatedTime;
   /// <p>A message corresponding to the status of the configuration change.</p>
-  final String? message;
+  final pulumi.Input<String>? message;
   /// <p>The time that the configuration change was initiated, in Universal Coordinated Time (UTC).</p>
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [ChangeProgressDetails].
   /// [changeId] <p>The ID of the configuration change.</p>
@@ -37,8 +38,8 @@ class ChangeProgressDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'changeId': ?changeId,
-      'configChangeStatus': ?configChangeStatus == null ? null : configChangeStatus!.toMap(),
-      'initiatedBy': ?initiatedBy == null ? null : initiatedBy!.toMap(),
+      'configChangeStatus': ?pulumi.Input.mapOptionalInputValue<ConfigChangeStatusEnumValue, Map<String, dynamic>>(configChangeStatus, (value) => value.toMap()),
+      'initiatedBy': ?pulumi.Input.mapOptionalInputValue<InitiatedByEnumValue, Map<String, dynamic>>(initiatedBy, (value) => value.toMap()),
       'lastUpdatedTime': ?lastUpdatedTime,
       'message': ?message,
       'startTime': ?startTime,
@@ -47,12 +48,12 @@ class ChangeProgressDetails {
 
   factory ChangeProgressDetails.fromMap(Map<String, dynamic> map) {
     return ChangeProgressDetails(
-      changeId: map['changeId'] == null ? null : map['changeId'] as String,
-      configChangeStatus: map['configChangeStatus'] == null ? null : ConfigChangeStatusEnumValue.fromMap((map['configChangeStatus'] as Map).cast<String, dynamic>()),
-      initiatedBy: map['initiatedBy'] == null ? null : InitiatedByEnumValue.fromMap((map['initiatedBy'] as Map).cast<String, dynamic>()),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : map['lastUpdatedTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      changeId: map['changeId'] == null ? null : (map['changeId'] as String).input(),
+      configChangeStatus: map['configChangeStatus'] == null ? null : (ConfigChangeStatusEnumValue.fromMap((map['configChangeStatus'] as Map).cast<String, dynamic>())).input(),
+      initiatedBy: map['initiatedBy'] == null ? null : (InitiatedByEnumValue.fromMap((map['initiatedBy'] as Map).cast<String, dynamic>())).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

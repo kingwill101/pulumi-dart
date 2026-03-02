@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An object for an IP range that will be allowed access.
 class NetworkRuleSetIpRule {
   /// The readable name of the IP rule.
-  final String? filterName;
+  final pulumi.Input<String>? filterName;
   /// The CIDR block defining the IP range.
-  final String? ipMask;
+  final pulumi.Input<String>? ipMask;
 
   /// Creates a new [NetworkRuleSetIpRule].
   /// [filterName] The readable name of the IP rule.
@@ -25,8 +26,8 @@ class NetworkRuleSetIpRule {
 
   factory NetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetIpRule(
-      filterName: map['filterName'] == null ? null : map['filterName'] as String,
-      ipMask: map['ipMask'] == null ? null : map['ipMask'] as String,
+      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
     );
   }
 }

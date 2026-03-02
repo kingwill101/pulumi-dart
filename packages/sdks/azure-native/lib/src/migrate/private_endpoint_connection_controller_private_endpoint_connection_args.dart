@@ -26,17 +26,12 @@ class PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
   /// [properties] Properties of Connection state request.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
-    pulumi.Output<String>? eTag,
-    required pulumi.Output<String> migrateProjectName,
-    pulumi.Output<String>? peConnectionName,
-    pulumi.Output<ConnectionStateRequestBodyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      migrateProjectName = pulumi.Input.asInput<String>(migrateProjectName),
-      peConnectionName = pulumi.Input.asOptionalInput<String>(peConnectionName),
-      properties = pulumi.Input.asOptionalInput<ConnectionStateRequestBodyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.eTag,
+    required this.migrateProjectName,
+    this.peConnectionName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      migrateProjectName: pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      peConnectionName: map['peConnectionName'] == null ? null : pulumi.Output.create<String>(map['peConnectionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ConnectionStateRequestBodyProperties>(ConnectionStateRequestBodyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      migrateProjectName: (map['migrateProjectName'] as String).input(),
+      peConnectionName: map['peConnectionName'] == null ? null : (map['peConnectionName'] as String).input(),
+      properties: map['properties'] == null ? null : (ConnectionStateRequestBodyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

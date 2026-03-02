@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_arc_settings_response.dart';
 import 'azure_settings_response.dart';
 import 'on_premise_settings_response.dart';
@@ -7,11 +8,11 @@ import 'on_premise_settings_response.dart';
 /// Business case settings.
 class SettingsResponse {
   /// Azure arc settings.
-  final AzureArcSettingsResponse? azureArcSettings;
+  final pulumi.Input<AzureArcSettingsResponse>? azureArcSettings;
   /// Azure settings for a business case.
-  final AzureSettingsResponse azureSettings;
+  final pulumi.Input<AzureSettingsResponse> azureSettings;
   /// On-premise settings.
-  final OnPremiseSettingsResponse? onPremiseSettings;
+  final pulumi.Input<OnPremiseSettingsResponse>? onPremiseSettings;
 
   /// Creates a new [SettingsResponse].
   /// [azureArcSettings] Azure arc settings.
@@ -25,17 +26,17 @@ class SettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureArcSettings': ?azureArcSettings == null ? null : azureArcSettings!.toMap(),
-      'azureSettings': azureSettings.toMap(),
-      'onPremiseSettings': ?onPremiseSettings == null ? null : onPremiseSettings!.toMap(),
+      'azureArcSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcSettingsResponse, Map<String, dynamic>>(azureArcSettings, (value) => value.toMap()),
+      'azureSettings': pulumi.Input.mapInputValue<AzureSettingsResponse, Map<String, dynamic>>(azureSettings, (value) => value.toMap()),
+      'onPremiseSettings': ?pulumi.Input.mapOptionalInputValue<OnPremiseSettingsResponse, Map<String, dynamic>>(onPremiseSettings, (value) => value.toMap()),
     };
   }
 
   factory SettingsResponse.fromMap(Map<String, dynamic> map) {
     return SettingsResponse(
-      azureArcSettings: map['azureArcSettings'] == null ? null : AzureArcSettingsResponse.fromMap((map['azureArcSettings'] as Map).cast<String, dynamic>()),
-      azureSettings: AzureSettingsResponse.fromMap((map['azureSettings'] as Map).cast<String, dynamic>()),
-      onPremiseSettings: map['onPremiseSettings'] == null ? null : OnPremiseSettingsResponse.fromMap((map['onPremiseSettings'] as Map).cast<String, dynamic>()),
+      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettingsResponse.fromMap((map['azureArcSettings'] as Map).cast<String, dynamic>())).input(),
+      azureSettings: (AzureSettingsResponse.fromMap((map['azureSettings'] as Map).cast<String, dynamic>())).input(),
+      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettingsResponse.fromMap((map['onPremiseSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

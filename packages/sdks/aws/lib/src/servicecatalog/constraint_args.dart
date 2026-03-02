@@ -33,21 +33,14 @@ class ConstraintArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ConstraintArgs({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parameters,
-    required pulumi.Output<String> portfolioId,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> type,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameters = pulumi.Input.asInput<String>(parameters),
-      portfolioId = pulumi.Input.asInput<String>(portfolioId),
-      productId = pulumi.Input.asInput<String>(productId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+    this.acceptLanguage,
+    this.description,
+    required this.parameters,
+    required this.portfolioId,
+    required this.productId,
+    this.region,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ConstraintArgs {
 
   factory ConstraintArgs.fromMap(Map<String, dynamic> map) {
     return ConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameters: pulumi.Output.create<String>(map['parameters'] as String),
-      portfolioId: pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameters: (map['parameters'] as String).input(),
+      portfolioId: (map['portfolioId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

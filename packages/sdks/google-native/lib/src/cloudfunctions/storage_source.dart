@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {
   /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
-  final String? object;
+  final pulumi.Input<String>? object;
 
   /// Creates a new [StorageSource].
   /// [bucket] Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -30,9 +31,9 @@ class StorageSource {
 
   factory StorageSource.fromMap(Map<String, dynamic> map) {
     return StorageSource(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      object: map['object'] == null ? null : map['object'] as String,
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      object: map['object'] == null ? null : (map['object'] as String).input(),
     );
   }
 }

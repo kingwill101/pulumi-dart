@@ -22,17 +22,12 @@ class DatasetKustoDatabaseState {
   /// [name] The name which should be used for this Data Share Kusto Database Dataset. Changing this forces a new Data Share Kusto Database Dataset to be created.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created. Changing this forces a new Data Share Kusto Database Dataset to be created.
   DatasetKustoDatabaseState({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? kustoClusterLocation,
-    pulumi.Output<String>? kustoDatabaseId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? shareId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      kustoClusterLocation = pulumi.Input.asOptionalInput<String>(kustoClusterLocation),
-      kustoDatabaseId = pulumi.Input.asOptionalInput<String>(kustoDatabaseId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId);
+    this.displayName,
+    this.kustoClusterLocation,
+    this.kustoDatabaseId,
+    this.name,
+    this.shareId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DatasetKustoDatabaseState {
 
   factory DatasetKustoDatabaseState.fromMap(Map<String, dynamic> map) {
     return DatasetKustoDatabaseState(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      kustoClusterLocation: map['kustoClusterLocation'] == null ? null : pulumi.Output.create<String>(map['kustoClusterLocation'] as String),
-      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : pulumi.Output.create<String>(map['kustoDatabaseId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      kustoClusterLocation: map['kustoClusterLocation'] == null ? null : (map['kustoClusterLocation'] as String).input(),
+      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
     );
   }
 }

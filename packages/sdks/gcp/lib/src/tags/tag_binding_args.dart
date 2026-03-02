@@ -16,11 +16,9 @@ class TagBindingArgs {
   /// [parent] The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   /// [tagValue] The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
   TagBindingArgs({
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> tagValue,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      tagValue = pulumi.Input.asInput<String>(tagValue);
+    required this.parent,
+    required this.tagValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class TagBindingArgs {
 
   factory TagBindingArgs.fromMap(Map<String, dynamic> map) {
     return TagBindingArgs(
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      tagValue: pulumi.Output.create<String>(map['tagValue'] as String),
+      parent: (map['parent'] as String).input(),
+      tagValue: (map['tagValue'] as String).input(),
     );
   }
 }

@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSubnetsSubnet {
   /// Network segment
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Modification time
-  final String gmtModified;
+  final pulumi.Input<String> gmtModified;
   /// The ID of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// Error message
-  final String message;
+  final pulumi.Input<String> message;
   /// Resource Group ID.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// Primary key ID.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// The Subnet name.
-  final String subnetName;
+  final pulumi.Input<String> subnetName;
   /// Eflo subnet usage type, optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
-  final String type;
+  final pulumi.Input<String> type;
   /// The Eflo VPD ID.
-  final String vpdId;
+  final pulumi.Input<String> vpdId;
   /// The zone ID of the resource.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetSubnetsSubnet].
   /// [cidr] Network segment
@@ -77,18 +78,18 @@ class GetSubnetsSubnet {
 
   factory GetSubnetsSubnet.fromMap(Map<String, dynamic> map) {
     return GetSubnetsSubnet(
-      cidr: map['cidr'] as String,
-      createTime: map['createTime'] as String,
-      gmtModified: map['gmtModified'] as String,
-      id: map['id'] as String,
-      message: map['message'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      subnetId: map['subnetId'] as String,
-      subnetName: map['subnetName'] as String,
-      type: map['type'] as String,
-      vpdId: map['vpdId'] as String,
-      zoneId: map['zoneId'] as String,
+      cidr: (map['cidr'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      gmtModified: (map['gmtModified'] as String).input(),
+      id: (map['id'] as String).input(),
+      message: (map['message'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      subnetName: (map['subnetName'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpdId: (map['vpdId'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

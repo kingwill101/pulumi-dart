@@ -35,23 +35,15 @@ class WebAppVnetConnectionArgs {
   /// [vnetName] Name of an existing Virtual Network.
   /// [vnetResourceId] The Virtual Network's resource ID.
   WebAppVnetConnectionArgs({
-    pulumi.Output<String>? certBlob,
-    pulumi.Output<String>? dnsServers,
-    pulumi.Output<bool>? isSwift,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? vnetName,
-    pulumi.Output<String>? vnetResourceId,
-  }) :
-      certBlob = pulumi.Input.asOptionalInput<String>(certBlob),
-      dnsServers = pulumi.Input.asOptionalInput<String>(dnsServers),
-      isSwift = pulumi.Input.asOptionalInput<bool>(isSwift),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vnetName = pulumi.Input.asOptionalInput<String>(vnetName),
-      vnetResourceId = pulumi.Input.asOptionalInput<String>(vnetResourceId);
+    this.certBlob,
+    this.dnsServers,
+    this.isSwift,
+    this.kind,
+    required this.name,
+    required this.resourceGroupName,
+    this.vnetName,
+    this.vnetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class WebAppVnetConnectionArgs {
 
   factory WebAppVnetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppVnetConnectionArgs(
-      certBlob: map['certBlob'] == null ? null : pulumi.Output.create<String>(map['certBlob'] as String),
-      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<String>(map['dnsServers'] as String),
-      isSwift: map['isSwift'] == null ? null : pulumi.Output.create<bool>(map['isSwift'] as bool),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vnetName: map['vnetName'] == null ? null : pulumi.Output.create<String>(map['vnetName'] as String),
-      vnetResourceId: map['vnetResourceId'] == null ? null : pulumi.Output.create<String>(map['vnetResourceId'] as String),
+      certBlob: map['certBlob'] == null ? null : (map['certBlob'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as String).input(),
+      isSwift: map['isSwift'] == null ? null : (map['isSwift'] as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vnetName: map['vnetName'] == null ? null : (map['vnetName'] as String).input(),
+      vnetResourceId: map['vnetResourceId'] == null ? null : (map['vnetResourceId'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class FeaturesetContainerEntityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   FeaturesetContainerEntityArgs({
-    required pulumi.Output<FeaturesetContainer> featuresetContainerProperties,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      featuresetContainerProperties = pulumi.Input.asInput<FeaturesetContainer>(featuresetContainerProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.featuresetContainerProperties,
+    this.name,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class FeaturesetContainerEntityArgs {
 
   factory FeaturesetContainerEntityArgs.fromMap(Map<String, dynamic> map) {
     return FeaturesetContainerEntityArgs(
-      featuresetContainerProperties: pulumi.Output.create<FeaturesetContainer>(FeaturesetContainer.fromMap((map['featuresetContainerProperties'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      featuresetContainerProperties: (FeaturesetContainer.fromMap((map['featuresetContainerProperties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

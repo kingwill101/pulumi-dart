@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_profile_response.dart';
 
 class SubscriptionFeatureRegistrationResponseProperties {
   /// The feature approval type.
-  final String approvalType;
+  final pulumi.Input<String> approvalType;
   /// Authorization Profile
-  final AuthorizationProfileResponse? authorizationProfile;
+  final pulumi.Input<AuthorizationProfileResponse>? authorizationProfile;
   /// The feature description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The featureDisplayName.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The feature documentation link.
-  final String documentationLink;
+  final pulumi.Input<String> documentationLink;
   /// The featureName.
-  final String featureName;
+  final pulumi.Input<String> featureName;
   /// Key-value pairs for meta data.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// The providerNamespace.
-  final String providerNamespace;
+  final pulumi.Input<String> providerNamespace;
   /// The feature registration date.
-  final String registrationDate;
+  final pulumi.Input<String> registrationDate;
   /// The feature release date.
-  final String releaseDate;
+  final pulumi.Input<String> releaseDate;
   /// Indicates whether feature should be displayed in Portal.
-  final bool? shouldFeatureDisplayInPortal;
+  final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
   /// The state.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The subscriptionId.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// The tenantId.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [SubscriptionFeatureRegistrationResponseProperties].
   /// [approvalType] The feature approval type.
@@ -67,7 +68,7 @@ class SubscriptionFeatureRegistrationResponseProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'approvalType': approvalType,
-      'authorizationProfile': ?authorizationProfile == null ? null : authorizationProfile!.toMap(),
+      'authorizationProfile': ?pulumi.Input.mapOptionalInputValue<AuthorizationProfileResponse, Map<String, dynamic>>(authorizationProfile, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
       'documentationLink': documentationLink,
@@ -85,20 +86,20 @@ class SubscriptionFeatureRegistrationResponseProperties {
 
   factory SubscriptionFeatureRegistrationResponseProperties.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationResponseProperties(
-      approvalType: map['approvalType'] as String,
-      authorizationProfile: map['authorizationProfile'] == null ? null : AuthorizationProfileResponse.fromMap((map['authorizationProfile'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] as String,
-      documentationLink: map['documentationLink'] as String,
-      featureName: map['featureName'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      providerNamespace: map['providerNamespace'] as String,
-      registrationDate: map['registrationDate'] as String,
-      releaseDate: map['releaseDate'] as String,
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : map['shouldFeatureDisplayInPortal'] as bool,
-      state: map['state'] == null ? null : map['state'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      tenantId: map['tenantId'] as String,
+      approvalType: (map['approvalType'] as String).input(),
+      authorizationProfile: map['authorizationProfile'] == null ? null : (AuthorizationProfileResponse.fromMap((map['authorizationProfile'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      documentationLink: (map['documentationLink'] as String).input(),
+      featureName: (map['featureName'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      providerNamespace: (map['providerNamespace'] as String).input(),
+      registrationDate: (map['registrationDate'] as String).input(),
+      releaseDate: (map['releaseDate'] as String).input(),
+      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetScopeAssignmentArgs {
   /// [scope] The base resource of the scope assignment.
   /// [scopeAssignmentName] The name of the scope assignment to get.
   GetScopeAssignmentArgs({
-    required pulumi.Output<String> scope,
-    required pulumi.Output<String> scopeAssignmentName,
-  }) :
-      scope = pulumi.Input.asInput<String>(scope),
-      scopeAssignmentName = pulumi.Input.asInput<String>(scopeAssignmentName);
+    required this.scope,
+    required this.scopeAssignmentName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetScopeAssignmentArgs {
 
   factory GetScopeAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeAssignmentArgs(
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      scopeAssignmentName: pulumi.Output.create<String>(map['scopeAssignmentName'] as String),
+      scope: (map['scope'] as String).input(),
+      scopeAssignmentName: (map['scopeAssignmentName'] as String).input(),
     );
   }
 }

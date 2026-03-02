@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Active
 class ActiveModelResponse {
   /// When true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order.
-  final bool? active;
+  final pulumi.Input<bool>? active;
 
   /// Creates a new [ActiveModelResponse].
   /// [active] When true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order.
@@ -20,7 +21,7 @@ class ActiveModelResponse {
 
   factory ActiveModelResponse.fromMap(Map<String, dynamic> map) {
     return ActiveModelResponse(
-      active: map['active'] == null ? null : map['active'] as bool,
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
     );
   }
 }

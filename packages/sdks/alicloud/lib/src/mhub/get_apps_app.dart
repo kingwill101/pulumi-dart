@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppsApp {
   /// Application AppKey, which uniquely identifies an application when requested by the interface
-  final String appKey;
+  final pulumi.Input<String> appKey;
   /// The Name of the App.
-  final String appName;
+  final pulumi.Input<String> appName;
   /// iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
-  final String bundleId;
+  final pulumi.Input<String> bundleId;
   /// The CreateTime of the App.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Base64 string of picture.
-  final String encodedIcon;
+  final pulumi.Input<String> encodedIcon;
   /// The ID of the App.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
-  final String industryId;
+  final pulumi.Input<String> industryId;
   /// Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
-  final String packageName;
+  final pulumi.Input<String> packageName;
   /// The ID of the Product.
-  final String productId;
+  final pulumi.Input<String> productId;
   /// The type of the App. Valid values: `Android` and `iOS`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetAppsApp].
   /// [appKey] Application AppKey, which uniquely identifies an application when requested by the interface
@@ -64,16 +65,16 @@ class GetAppsApp {
 
   factory GetAppsApp.fromMap(Map<String, dynamic> map) {
     return GetAppsApp(
-      appKey: map['appKey'] as String,
-      appName: map['appName'] as String,
-      bundleId: map['bundleId'] as String,
-      createTime: map['createTime'] as String,
-      encodedIcon: map['encodedIcon'] as String,
-      id: map['id'] as String,
-      industryId: map['industryId'] as String,
-      packageName: map['packageName'] as String,
-      productId: map['productId'] as String,
-      type: map['type'] as String,
+      appKey: (map['appKey'] as String).input(),
+      appName: (map['appName'] as String).input(),
+      bundleId: (map['bundleId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      encodedIcon: (map['encodedIcon'] as String).input(),
+      id: (map['id'] as String).input(),
+      industryId: (map['industryId'] as String).input(),
+      packageName: (map['packageName'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

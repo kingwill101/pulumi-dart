@@ -22,15 +22,11 @@ class SshKeyArgs {
   /// [serverId] The Server ID of the Transfer Server (e.g., `s-12345678`)
   /// [userName] The name of the user account that is assigned to one or more servers.
   SshKeyArgs({
-    required pulumi.Output<String> body,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serverId,
-    required pulumi.Output<String> userName,
-  }) :
-      body = pulumi.Input.asInput<String>(body),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverId = pulumi.Input.asInput<String>(serverId),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.body,
+    this.region,
+    required this.serverId,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      body: pulumi.Output.create<String>(map['body'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverId: pulumi.Output.create<String>(map['serverId'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      body: (map['body'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverId: (map['serverId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

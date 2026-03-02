@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configurations of the API Security add-on.
 class GoogleCloudApigeeV1ApiSecurityConfigResponse {
   /// Flag that specifies whether the API security add-on is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
-  final String expiresAt;
+  final pulumi.Input<String> expiresAt;
 
   /// Creates a new [GoogleCloudApigeeV1ApiSecurityConfigResponse].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.
@@ -25,8 +26,8 @@ class GoogleCloudApigeeV1ApiSecurityConfigResponse {
 
   factory GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ApiSecurityConfigResponse(
-      enabled: map['enabled'] as bool,
-      expiresAt: map['expiresAt'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      expiresAt: (map['expiresAt'] as String).input(),
     );
   }
 }

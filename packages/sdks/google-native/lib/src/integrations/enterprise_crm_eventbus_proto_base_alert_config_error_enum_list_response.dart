@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of error enums for alerts.
 class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse {
-  final List<String> enumStrings;
-  final String filterType;
+  final pulumi.Input<List<String>> enumStrings;
+  final pulumi.Input<String> filterType;
 
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse].
   /// [enumStrings] Required.
@@ -23,8 +24,8 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse {
 
   factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse(
-      enumStrings: (map['enumStrings'] as List).cast<String>(),
-      filterType: map['filterType'] as String,
+      enumStrings: ((map['enumStrings'] as List).cast<String>()).input(),
+      filterType: (map['filterType'] as String).input(),
     );
   }
 }

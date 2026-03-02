@@ -39,19 +39,13 @@ class MuteConfigArgs {
   /// [parent] Resource name of the new mute configs's parent. Its format is
   /// [type] The type of the mute config, which determines what type of mute state the config affects.
   MuteConfigArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? expiryTime,
-    required pulumi.Output<String> filter,
-    required pulumi.Output<String> muteConfigId,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expiryTime = pulumi.Input.asOptionalInput<String>(expiryTime),
-      filter = pulumi.Input.asInput<String>(filter),
-      muteConfigId = pulumi.Input.asInput<String>(muteConfigId),
-      parent = pulumi.Input.asInput<String>(parent),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.description,
+    this.expiryTime,
+    required this.filter,
+    required this.muteConfigId,
+    required this.parent,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,12 +60,12 @@ class MuteConfigArgs {
 
   factory MuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return MuteConfigArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expiryTime: map['expiryTime'] == null ? null : pulumi.Output.create<String>(map['expiryTime'] as String),
-      filter: pulumi.Output.create<String>(map['filter'] as String),
-      muteConfigId: pulumi.Output.create<String>(map['muteConfigId'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      filter: (map['filter'] as String).input(),
+      muteConfigId: (map['muteConfigId'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

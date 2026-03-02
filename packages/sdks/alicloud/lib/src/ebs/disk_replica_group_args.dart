@@ -76,35 +76,21 @@ class DiskReplicaGroupArgs {
   /// [status] The status of the consistent replication group. Possible values:
   /// [tags] The tag of the resource
   DiskReplicaGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> destinationRegionId,
-    required pulumi.Output<String> destinationZoneId,
-    pulumi.Output<String>? diskReplicaGroupName,
-    pulumi.Output<String>? groupName,
-    pulumi.Output<bool>? oneShot,
-    pulumi.Output<List<String>>? pairIds,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<bool>? reverseReplicate,
-    pulumi.Output<int>? rpo,
-    required pulumi.Output<String> sourceRegionId,
-    required pulumi.Output<String> sourceZoneId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationRegionId = pulumi.Input.asInput<String>(destinationRegionId),
-      destinationZoneId = pulumi.Input.asInput<String>(destinationZoneId),
-      diskReplicaGroupName = pulumi.Input.asOptionalInput<String>(diskReplicaGroupName),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      oneShot = pulumi.Input.asOptionalInput<bool>(oneShot),
-      pairIds = pulumi.Input.asOptionalInput<List<String>>(pairIds),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      reverseReplicate = pulumi.Input.asOptionalInput<bool>(reverseReplicate),
-      rpo = pulumi.Input.asOptionalInput<int>(rpo),
-      sourceRegionId = pulumi.Input.asInput<String>(sourceRegionId),
-      sourceZoneId = pulumi.Input.asInput<String>(sourceZoneId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.destinationRegionId,
+    required this.destinationZoneId,
+    this.diskReplicaGroupName,
+    this.groupName,
+    this.oneShot,
+    this.pairIds,
+    this.resourceGroupId,
+    this.reverseReplicate,
+    this.rpo,
+    required this.sourceRegionId,
+    required this.sourceZoneId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -127,20 +113,20 @@ class DiskReplicaGroupArgs {
 
   factory DiskReplicaGroupArgs.fromMap(Map<String, dynamic> map) {
     return DiskReplicaGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationRegionId: pulumi.Output.create<String>(map['destinationRegionId'] as String),
-      destinationZoneId: pulumi.Output.create<String>(map['destinationZoneId'] as String),
-      diskReplicaGroupName: map['diskReplicaGroupName'] == null ? null : pulumi.Output.create<String>(map['diskReplicaGroupName'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      oneShot: map['oneShot'] == null ? null : pulumi.Output.create<bool>(map['oneShot'] as bool),
-      pairIds: map['pairIds'] == null ? null : pulumi.Output.create<List<String>>((map['pairIds'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      reverseReplicate: map['reverseReplicate'] == null ? null : pulumi.Output.create<bool>(map['reverseReplicate'] as bool),
-      rpo: map['rpo'] == null ? null : pulumi.Output.create<int>(map['rpo'] as int),
-      sourceRegionId: pulumi.Output.create<String>(map['sourceRegionId'] as String),
-      sourceZoneId: pulumi.Output.create<String>(map['sourceZoneId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationRegionId: (map['destinationRegionId'] as String).input(),
+      destinationZoneId: (map['destinationZoneId'] as String).input(),
+      diskReplicaGroupName: map['diskReplicaGroupName'] == null ? null : (map['diskReplicaGroupName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      oneShot: map['oneShot'] == null ? null : (map['oneShot'] as bool).input(),
+      pairIds: map['pairIds'] == null ? null : ((map['pairIds'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      reverseReplicate: map['reverseReplicate'] == null ? null : (map['reverseReplicate'] as bool).input(),
+      rpo: map['rpo'] == null ? null : (map['rpo'] as int).input(),
+      sourceRegionId: (map['sourceRegionId'] as String).input(),
+      sourceZoneId: (map['sourceZoneId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

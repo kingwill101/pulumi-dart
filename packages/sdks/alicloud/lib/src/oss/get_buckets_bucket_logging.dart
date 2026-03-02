@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketsBucketLogging {
   /// Bucket for storing access logs.
-  final String targetBucket;
+  final pulumi.Input<String> targetBucket;
   /// Prefix of the saved access log file paths.
-  final String targetPrefix;
+  final pulumi.Input<String> targetPrefix;
 
   /// Creates a new [GetBucketsBucketLogging].
   /// [targetBucket] Bucket for storing access logs.
@@ -24,8 +25,8 @@ class GetBucketsBucketLogging {
 
   factory GetBucketsBucketLogging.fromMap(Map<String, dynamic> map) {
     return GetBucketsBucketLogging(
-      targetBucket: map['targetBucket'] as String,
-      targetPrefix: map['targetPrefix'] as String,
+      targetBucket: (map['targetBucket'] as String).input(),
+      targetPrefix: (map['targetPrefix'] as String).input(),
     );
   }
 }

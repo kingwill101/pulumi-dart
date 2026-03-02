@@ -31,21 +31,14 @@ class EcFailoverTestJobArgs {
   /// [resourceType] Resource type.
   /// [status] The status of the resource.
   EcFailoverTestJobArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? ecFailoverTestJobName,
-    required pulumi.Output<int> jobDuration,
-    required pulumi.Output<String> jobType,
-    required pulumi.Output<List<String>> resourceIds,
-    required pulumi.Output<String> resourceType,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ecFailoverTestJobName = pulumi.Input.asOptionalInput<String>(ecFailoverTestJobName),
-      jobDuration = pulumi.Input.asInput<int>(jobDuration),
-      jobType = pulumi.Input.asInput<String>(jobType),
-      resourceIds = pulumi.Input.asInput<List<String>>(resourceIds),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.ecFailoverTestJobName,
+    required this.jobDuration,
+    required this.jobType,
+    required this.resourceIds,
+    required this.resourceType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EcFailoverTestJobArgs {
 
   factory EcFailoverTestJobArgs.fromMap(Map<String, dynamic> map) {
     return EcFailoverTestJobArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : pulumi.Output.create<String>(map['ecFailoverTestJobName'] as String),
-      jobDuration: pulumi.Output.create<int>(map['jobDuration'] as int),
-      jobType: pulumi.Output.create<String>(map['jobType'] as String),
-      resourceIds: pulumi.Output.create<List<String>>((map['resourceIds'] as List).cast<String>()),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : (map['ecFailoverTestJobName'] as String).input(),
+      jobDuration: (map['jobDuration'] as int).input(),
+      jobType: (map['jobType'] as String).input(),
+      resourceIds: ((map['resourceIds'] as List).cast<String>()).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

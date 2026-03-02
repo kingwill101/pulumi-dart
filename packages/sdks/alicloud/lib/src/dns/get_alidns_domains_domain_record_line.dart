@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAlidnsDomainsDomainRecordLine {
   /// The code of the parent line, or empty if there is none.
-  final String fatherCode;
+  final pulumi.Input<String> fatherCode;
   /// Sub-line Code.
-  final String lineCode;
+  final pulumi.Input<String> lineCode;
   /// Parent line display name.
-  final String lineDisplayName;
+  final pulumi.Input<String> lineDisplayName;
   /// Sub-line display name.
-  final String lineName;
+  final pulumi.Input<String> lineName;
 
   /// Creates a new [GetAlidnsDomainsDomainRecordLine].
   /// [fatherCode] The code of the parent line, or empty if there is none.
@@ -34,10 +35,10 @@ class GetAlidnsDomainsDomainRecordLine {
 
   factory GetAlidnsDomainsDomainRecordLine.fromMap(Map<String, dynamic> map) {
     return GetAlidnsDomainsDomainRecordLine(
-      fatherCode: map['fatherCode'] as String,
-      lineCode: map['lineCode'] as String,
-      lineDisplayName: map['lineDisplayName'] as String,
-      lineName: map['lineName'] as String,
+      fatherCode: (map['fatherCode'] as String).input(),
+      lineCode: (map['lineCode'] as String).input(),
+      lineDisplayName: (map['lineDisplayName'] as String).input(),
+      lineName: (map['lineName'] as String).input(),
     );
   }
 }

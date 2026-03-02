@@ -30,21 +30,14 @@ class VpnConcentratorState {
   /// [type] Type of VPN concentrator. Valid value: `ipsec.1`.
   /// [vpnConcentratorId] ID of the VPN Concentrator.
   VpnConcentratorState({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? transitGatewayAttachmentId,
-    pulumi.Output<String>? transitGatewayId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? vpnConcentratorId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      transitGatewayAttachmentId = pulumi.Input.asOptionalInput<String>(transitGatewayAttachmentId),
-      transitGatewayId = pulumi.Input.asOptionalInput<String>(transitGatewayId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpnConcentratorId = pulumi.Input.asOptionalInput<String>(vpnConcentratorId);
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.transitGatewayAttachmentId,
+    this.transitGatewayId,
+    this.type,
+    this.vpnConcentratorId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class VpnConcentratorState {
 
   factory VpnConcentratorState.fromMap(Map<String, dynamic> map) {
     return VpnConcentratorState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayAttachmentId'] as String),
-      transitGatewayId: map['transitGatewayId'] == null ? null : pulumi.Output.create<String>(map['transitGatewayId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpnConcentratorId: map['vpnConcentratorId'] == null ? null : pulumi.Output.create<String>(map['vpnConcentratorId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpnConcentratorId: map['vpnConcentratorId'] == null ? null : (map['vpnConcentratorId'] as String).input(),
     );
   }
 }

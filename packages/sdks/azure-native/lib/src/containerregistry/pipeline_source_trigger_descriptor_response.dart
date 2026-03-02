@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineSourceTriggerDescriptorResponse {
   /// The timestamp when the source update happened.
-  final String? timestamp;
+  final pulumi.Input<String>? timestamp;
 
   /// Creates a new [PipelineSourceTriggerDescriptorResponse].
   /// [timestamp] The timestamp when the source update happened.
@@ -19,7 +20,7 @@ class PipelineSourceTriggerDescriptorResponse {
 
   factory PipelineSourceTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return PipelineSourceTriggerDescriptorResponse(
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as String,
+      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
     );
   }
 }

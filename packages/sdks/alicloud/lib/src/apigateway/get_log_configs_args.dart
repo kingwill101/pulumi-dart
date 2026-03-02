@@ -19,13 +19,10 @@ class GetLogConfigsArgs {
   /// [logType] The type the of log. Valid values: `PROVIDER`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetLogConfigsArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? logType,
-    pulumi.Output<String>? outputFile,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      logType = pulumi.Input.asOptionalInput<String>(logType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.ids,
+    this.logType,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetLogConfigsArgs {
 
   factory GetLogConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogConfigsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      logType: map['logType'] == null ? null : pulumi.Output.create<String>(map['logType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

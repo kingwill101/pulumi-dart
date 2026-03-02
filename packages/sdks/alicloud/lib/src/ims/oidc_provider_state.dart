@@ -32,23 +32,15 @@ class OidcProviderState {
   /// [issuerUrl] The issuer URL of the OIDC identity provider.
   /// [oidcProviderName] The name of the OIDC identity provider.
   OidcProviderState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<List<String>>? clientIds,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? fingerprints,
-    pulumi.Output<int>? issuanceLimitTime,
-    pulumi.Output<String>? issuerUrl,
-    pulumi.Output<String>? oidcProviderName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clientIds = pulumi.Input.asOptionalInput<List<String>>(clientIds),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fingerprints = pulumi.Input.asOptionalInput<List<String>>(fingerprints),
-      issuanceLimitTime = pulumi.Input.asOptionalInput<int>(issuanceLimitTime),
-      issuerUrl = pulumi.Input.asOptionalInput<String>(issuerUrl),
-      oidcProviderName = pulumi.Input.asOptionalInput<String>(oidcProviderName);
+    this.arn,
+    this.clientIds,
+    this.createTime,
+    this.description,
+    this.fingerprints,
+    this.issuanceLimitTime,
+    this.issuerUrl,
+    this.oidcProviderName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class OidcProviderState {
 
   factory OidcProviderState.fromMap(Map<String, dynamic> map) {
     return OidcProviderState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clientIds: map['clientIds'] == null ? null : pulumi.Output.create<List<String>>((map['clientIds'] as List).cast<String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fingerprints: map['fingerprints'] == null ? null : pulumi.Output.create<List<String>>((map['fingerprints'] as List).cast<String>()),
-      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : pulumi.Output.create<int>(map['issuanceLimitTime'] as int),
-      issuerUrl: map['issuerUrl'] == null ? null : pulumi.Output.create<String>(map['issuerUrl'] as String),
-      oidcProviderName: map['oidcProviderName'] == null ? null : pulumi.Output.create<String>(map['oidcProviderName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints'] as List).cast<String>()).input(),
+      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime'] as int).input(),
+      issuerUrl: map['issuerUrl'] == null ? null : (map['issuerUrl'] as String).input(),
+      oidcProviderName: map['oidcProviderName'] == null ? null : (map['oidcProviderName'] as String).input(),
     );
   }
 }

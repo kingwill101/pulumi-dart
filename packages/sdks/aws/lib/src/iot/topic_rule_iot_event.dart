@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleIotEvent {
   /// The payload that contains a JSON array of records will be sent to IoT Events via a batch call.
-  final bool? batchMode;
+  final pulumi.Input<bool>? batchMode;
   /// The name of the AWS IoT Events input.
-  final String inputName;
+  final pulumi.Input<String> inputName;
   /// Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
-  final String? messageId;
+  final pulumi.Input<String>? messageId;
   /// The ARN of the IAM role that grants access.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [TopicRuleIotEvent].
   /// [batchMode] The payload that contains a JSON array of records will be sent to IoT Events via a batch call.
@@ -34,10 +35,10 @@ class TopicRuleIotEvent {
 
   factory TopicRuleIotEvent.fromMap(Map<String, dynamic> map) {
     return TopicRuleIotEvent(
-      batchMode: map['batchMode'] == null ? null : map['batchMode'] as bool,
-      inputName: map['inputName'] as String,
-      messageId: map['messageId'] == null ? null : map['messageId'] as String,
-      roleArn: map['roleArn'] as String,
+      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      inputName: (map['inputName'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

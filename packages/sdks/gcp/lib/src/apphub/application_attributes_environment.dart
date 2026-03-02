@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAttributesEnvironment {
   /// Environment type.
   /// Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ApplicationAttributesEnvironment].
   /// [type] Environment type.
@@ -20,7 +21,7 @@ class ApplicationAttributesEnvironment {
 
   factory ApplicationAttributesEnvironment.fromMap(Map<String, dynamic> map) {
     return ApplicationAttributesEnvironment(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

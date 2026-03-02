@@ -28,19 +28,13 @@ class GetImageArgs {
   /// [registryId] ID of the Registry where the repository resides.
   /// [repositoryName] Name of the ECR Repository.
   GetImageArgs({
-    pulumi.Output<String>? imageDigest,
-    pulumi.Output<String>? imageTag,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? registryId,
-    required pulumi.Output<String> repositoryName,
-  }) :
-      imageDigest = pulumi.Input.asOptionalInput<String>(imageDigest),
-      imageTag = pulumi.Input.asOptionalInput<String>(imageTag),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryId = pulumi.Input.asOptionalInput<String>(registryId),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName);
+    this.imageDigest,
+    this.imageTag,
+    this.mostRecent,
+    this.region,
+    this.registryId,
+    required this.repositoryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      imageDigest: map['imageDigest'] == null ? null : pulumi.Output.create<String>(map['imageDigest'] as String),
-      imageTag: map['imageTag'] == null ? null : pulumi.Output.create<String>(map['imageTag'] as String),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      registryId: map['registryId'] == null ? null : pulumi.Output.create<String>(map['registryId'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
+      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest'] as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
     );
   }
 }

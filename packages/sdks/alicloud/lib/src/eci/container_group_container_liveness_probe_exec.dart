@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupContainerLivenessProbeExec {
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
 
   /// Creates a new [ContainerGroupContainerLivenessProbeExec].
   /// [commands] Optional.
@@ -18,7 +19,7 @@ class ContainerGroupContainerLivenessProbeExec {
 
   factory ContainerGroupContainerLivenessProbeExec.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerLivenessProbeExec(
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
     );
   }
 }

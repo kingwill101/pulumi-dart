@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataAccessScopeAllowedDataAccessLabelIngestionLabel {
   /// Required. The key of the ingestion label. Always required.
-  final String ingestionLabelKey;
+  final pulumi.Input<String> ingestionLabelKey;
   /// Optional. The value of the ingestion label. Optional. An object
   /// with no provided value and some key provided would match
   /// against the given key and ANY value.
-  final String? ingestionLabelValue;
+  final pulumi.Input<String>? ingestionLabelValue;
 
   /// Creates a new [DataAccessScopeAllowedDataAccessLabelIngestionLabel].
   /// [ingestionLabelKey] Required. The key of the ingestion label. Always required.
@@ -26,8 +27,8 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabel {
 
   factory DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeAllowedDataAccessLabelIngestionLabel(
-      ingestionLabelKey: map['ingestionLabelKey'] as String,
-      ingestionLabelValue: map['ingestionLabelValue'] == null ? null : map['ingestionLabelValue'] as String,
+      ingestionLabelKey: (map['ingestionLabelKey'] as String).input(),
+      ingestionLabelValue: map['ingestionLabelValue'] == null ? null : (map['ingestionLabelValue'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status condition of Kubernetes object
 class ObjectStatusConditionDefinitionResponse {
   /// Last time this status condition has changed
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// A more verbose description of the object status condition
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Reason for the specified status condition type status
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Status of the Kubernetes object condition type
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Object status condition type for this object
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ObjectStatusConditionDefinitionResponse].
   /// [lastTransitionTime] Last time this status condition has changed
@@ -40,11 +41,11 @@ class ObjectStatusConditionDefinitionResponse {
 
   factory ObjectStatusConditionDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ObjectStatusConditionDefinitionResponse(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

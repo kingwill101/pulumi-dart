@@ -46,31 +46,19 @@ class ScheduleArgs {
   /// [top] The maximum number of resources to return from the operation. Example: '$top=10'.
   /// [type] Supported type this scheduled task represents.
   ScheduleArgs({
-    required pulumi.Output<String> frequency,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scheduleName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> time,
-    required pulumi.Output<String> timeZone,
-    pulumi.Output<int>? top,
-    required pulumi.Output<String> type,
-  }) :
-      frequency = pulumi.Input.asInput<String>(frequency),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asOptionalInput<String>(scheduleName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      time = pulumi.Input.asInput<String>(time),
-      timeZone = pulumi.Input.asInput<String>(timeZone),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      type = pulumi.Input.asInput<String>(type);
+    required this.frequency,
+    this.location,
+    required this.poolName,
+    required this.projectName,
+    required this.resourceGroupName,
+    this.scheduleName,
+    this.state,
+    this.tags,
+    required this.time,
+    required this.timeZone,
+    this.top,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      frequency: pulumi.Output.create<String>(map['frequency'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: map['scheduleName'] == null ? null : pulumi.Output.create<String>(map['scheduleName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      time: pulumi.Output.create<String>(map['time'] as String),
-      timeZone: pulumi.Output.create<String>(map['timeZone'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      frequency: (map['frequency'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      time: (map['time'] as String).input(),
+      timeZone: (map['timeZone'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

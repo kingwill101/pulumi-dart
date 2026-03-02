@@ -16,11 +16,9 @@ class GetDomainInterfaceAddressesArgs {
   /// [domain] Domain UUID or name to query. Use `libvirt_domain.example.id` or `libvirt_domain.example.name` to reference a managed domain.
   /// [source] Source to query for IP addresses:
   GetDomainInterfaceAddressesArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? source,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    required this.domain,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDomainInterfaceAddressesArgs {
 
   factory GetDomainInterfaceAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainInterfaceAddressesArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      domain: (map['domain'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

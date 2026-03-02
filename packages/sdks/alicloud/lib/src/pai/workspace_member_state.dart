@@ -22,17 +22,12 @@ class WorkspaceMemberState {
   /// [userId] The ID of the User.
   /// [workspaceId] The ID of the Workspace.
   WorkspaceMemberState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? memberId,
-    pulumi.Output<List<String>>? roles,
-    pulumi.Output<String>? userId,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      memberId = pulumi.Input.asOptionalInput<String>(memberId),
-      roles = pulumi.Input.asOptionalInput<List<String>>(roles),
-      userId = pulumi.Input.asOptionalInput<String>(userId),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.createTime,
+    this.memberId,
+    this.roles,
+    this.userId,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class WorkspaceMemberState {
 
   factory WorkspaceMemberState.fromMap(Map<String, dynamic> map) {
     return WorkspaceMemberState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      memberId: map['memberId'] == null ? null : pulumi.Output.create<String>(map['memberId'] as String),
-      roles: map['roles'] == null ? null : pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

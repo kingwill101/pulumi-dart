@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_config.dart';
 
 /// ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster.
 class ContinuousBackupConfig {
   /// Whether ContinuousBackup is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
-  final EncryptionConfig? encryptionConfig;
+  final pulumi.Input<EncryptionConfig>? encryptionConfig;
   /// The number of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window. If not set, defaults to 14 days.
-  final int? recoveryWindowDays;
+  final pulumi.Input<int>? recoveryWindowDays;
 
   /// Creates a new [ContinuousBackupConfig].
   /// [enabled] Whether ContinuousBackup is enabled.
@@ -24,16 +25,16 @@ class ContinuousBackupConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'encryptionConfig': ?encryptionConfig == null ? null : encryptionConfig!.toMap(),
+      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<EncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
       'recoveryWindowDays': ?recoveryWindowDays,
     };
   }
 
   factory ContinuousBackupConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      encryptionConfig: map['encryptionConfig'] == null ? null : EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : map['recoveryWindowDays'] as int,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : (map['recoveryWindowDays'] as int).input(),
     );
   }
 }

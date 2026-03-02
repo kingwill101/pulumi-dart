@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spot_fleet_request_launch_template_config_override_instance_requirements.dart';
 
 class SpotFleetRequestLaunchTemplateConfigOverride {
   /// The availability zone in which to place the request.
-  final String? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
   /// The instance requirements. See below.
-  final SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements? instanceRequirements;
+  final pulumi.Input<SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements>? instanceRequirements;
   /// The type of instance to request.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The priority for the launch template override. The lower the number, the higher the priority. If no number is set, the launch template override has the lowest priority.
-  final double? priority;
+  final pulumi.Input<double>? priority;
   /// The maximum spot bid for this override request.
-  final String? spotPrice;
+  final pulumi.Input<String>? spotPrice;
   /// The subnet in which to launch the requested instance.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
   /// The capacity added to the fleet by a fulfilled request.
-  final double? weightedCapacity;
+  final pulumi.Input<double>? weightedCapacity;
 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverride].
   /// [availabilityZone] The availability zone in which to place the request.
@@ -39,7 +40,7 @@ class SpotFleetRequestLaunchTemplateConfigOverride {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': ?availabilityZone,
-      'instanceRequirements': ?instanceRequirements == null ? null : instanceRequirements!.toMap(),
+      'instanceRequirements': ?pulumi.Input.mapOptionalInputValue<SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements, Map<String, dynamic>>(instanceRequirements, (value) => value.toMap()),
       'instanceType': ?instanceType,
       'priority': ?priority,
       'spotPrice': ?spotPrice,
@@ -50,13 +51,13 @@ class SpotFleetRequestLaunchTemplateConfigOverride {
 
   factory SpotFleetRequestLaunchTemplateConfigOverride.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfigOverride(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      instanceRequirements: map['instanceRequirements'] == null ? null : SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as double,
-      spotPrice: map['spotPrice'] == null ? null : map['spotPrice'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      weightedCapacity: map['weightedCapacity'] == null ? null : map['weightedCapacity'] as double,
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : (SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
+      spotPrice: map['spotPrice'] == null ? null : (map['spotPrice'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as double).input(),
     );
   }
 }

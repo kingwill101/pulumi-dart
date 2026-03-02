@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
   /// The name of the container.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// The CPU limit of the container.
-  final String? cpuLimit;
+  final pulumi.Input<String>? cpuLimit;
   /// The CPU request of the container.
-  final String? cpuRequest;
+  final pulumi.Input<String>? cpuRequest;
   /// The memory limit of the container.
-  final String? memoryLimit;
+  final pulumi.Input<String>? memoryLimit;
   /// The memory request of the container.
-  final String? memoryRequest;
+  final pulumi.Input<String>? memoryRequest;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer].
   /// [containerName] The name of the container.
@@ -39,11 +40,11 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
 
   factory FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer(
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      cpuLimit: map['cpuLimit'] == null ? null : map['cpuLimit'] as String,
-      cpuRequest: map['cpuRequest'] == null ? null : map['cpuRequest'] as String,
-      memoryLimit: map['memoryLimit'] == null ? null : map['memoryLimit'] as String,
-      memoryRequest: map['memoryRequest'] == null ? null : map['memoryRequest'] as String,
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit'] as String).input(),
+      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest'] as String).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as String).input(),
+      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest'] as String).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Group connectivity details.
 class GroupConnectivityInformationResponse {
   /// List of customer visible FQDNs.
-  final List<String>? customerVisibleFqdns;
+  final pulumi.Input<List<String>>? customerVisibleFqdns;
   /// Group ID.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// Internal FQDN.
-  final String internalFqdn;
+  final pulumi.Input<String> internalFqdn;
   /// Member name.
-  final String memberName;
+  final pulumi.Input<String> memberName;
   /// PrivateLinkService ARM region.
-  final String? privateLinkServiceArmRegion;
+  final pulumi.Input<String>? privateLinkServiceArmRegion;
   /// Redirect map ID.
-  final String? redirectMapId;
+  final pulumi.Input<String>? redirectMapId;
 
   /// Creates a new [GroupConnectivityInformationResponse].
   /// [customerVisibleFqdns] List of customer visible FQDNs.
@@ -45,12 +46,12 @@ class GroupConnectivityInformationResponse {
 
   factory GroupConnectivityInformationResponse.fromMap(Map<String, dynamic> map) {
     return GroupConnectivityInformationResponse(
-      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : (map['customerVisibleFqdns'] as List).cast<String>(),
-      groupId: map['groupId'] as String,
-      internalFqdn: map['internalFqdn'] as String,
-      memberName: map['memberName'] as String,
-      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : map['privateLinkServiceArmRegion'] as String,
-      redirectMapId: map['redirectMapId'] == null ? null : map['redirectMapId'] as String,
+      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns'] as List).cast<String>()).input(),
+      groupId: (map['groupId'] as String).input(),
+      internalFqdn: (map['internalFqdn'] as String).input(),
+      memberName: (map['memberName'] as String).input(),
+      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion'] as String).input(),
+      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId'] as String).input(),
     );
   }
 }

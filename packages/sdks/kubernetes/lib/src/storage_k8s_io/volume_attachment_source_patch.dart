@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../core/persistent_volume_spec_patch.dart';
 
 /// VolumeAttachmentSource represents a volume that should be attached. Right now only PersistentVolumes can be attached via external attacher, in the future we may allow also inline volumes in pods. Exactly one member can be set.
 class VolumeAttachmentSourcePatch {
   /// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
-  final PersistentVolumeSpecPatch? inlineVolumeSpec;
+  final pulumi.Input<PersistentVolumeSpecPatch>? inlineVolumeSpec;
   /// persistentVolumeName represents the name of the persistent volume to attach.
-  final String? persistentVolumeName;
+  final pulumi.Input<String>? persistentVolumeName;
 
   /// Creates a new [VolumeAttachmentSourcePatch].
   /// [inlineVolumeSpec] inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
@@ -19,15 +20,15 @@ class VolumeAttachmentSourcePatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inlineVolumeSpec': ?inlineVolumeSpec == null ? null : inlineVolumeSpec!.toMap(),
+      'inlineVolumeSpec': ?pulumi.Input.mapOptionalInputValue<PersistentVolumeSpecPatch, Map<String, dynamic>>(inlineVolumeSpec, (value) => value.toMap()),
       'persistentVolumeName': ?persistentVolumeName,
     };
   }
 
   factory VolumeAttachmentSourcePatch.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentSourcePatch(
-      inlineVolumeSpec: map['inlineVolumeSpec'] == null ? null : PersistentVolumeSpecPatch.fromMap((map['inlineVolumeSpec'] as Map).cast<String, dynamic>()),
-      persistentVolumeName: map['persistentVolumeName'] == null ? null : map['persistentVolumeName'] as String,
+      inlineVolumeSpec: map['inlineVolumeSpec'] == null ? null : (PersistentVolumeSpecPatch.fromMap((map['inlineVolumeSpec'] as Map).cast<String, dynamic>())).input(),
+      persistentVolumeName: map['persistentVolumeName'] == null ? null : (map['persistentVolumeName'] as String).input(),
     );
   }
 }

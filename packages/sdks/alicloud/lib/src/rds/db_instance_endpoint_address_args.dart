@@ -22,15 +22,11 @@ class DbInstanceEndpointAddressArgs {
   /// [dbInstanceId] The ID of the instance.
   /// [port] The port number of the public endpoint.
   DbInstanceEndpointAddressArgs({
-    required pulumi.Output<String> connectionStringPrefix,
-    required pulumi.Output<String> dbInstanceEndpointId,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> port,
-  }) :
-      connectionStringPrefix = pulumi.Input.asInput<String>(connectionStringPrefix),
-      dbInstanceEndpointId = pulumi.Input.asInput<String>(dbInstanceEndpointId),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      port = pulumi.Input.asInput<String>(port);
+    required this.connectionStringPrefix,
+    required this.dbInstanceEndpointId,
+    required this.dbInstanceId,
+    required this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DbInstanceEndpointAddressArgs {
 
   factory DbInstanceEndpointAddressArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointAddressArgs(
-      connectionStringPrefix: pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceEndpointId: pulumi.Output.create<String>(map['dbInstanceEndpointId'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      port: pulumi.Output.create<String>(map['port'] as String),
+      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
+      dbInstanceEndpointId: (map['dbInstanceEndpointId'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      port: (map['port'] as String).input(),
     );
   }
 }

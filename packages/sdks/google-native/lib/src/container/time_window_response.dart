@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_exclusion_options_response.dart';
 
 /// Represents an arbitrary window of time.
 class TimeWindowResponse {
   /// The time that the window ends. The end time should take place after the start time.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final MaintenanceExclusionOptionsResponse maintenanceExclusionOptions;
+  final pulumi.Input<MaintenanceExclusionOptionsResponse> maintenanceExclusionOptions;
   /// The time that the window first starts.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [TimeWindowResponse].
   /// [endTime] The time that the window ends. The end time should take place after the start time.
@@ -24,16 +25,16 @@ class TimeWindowResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'maintenanceExclusionOptions': maintenanceExclusionOptions.toMap(),
+      'maintenanceExclusionOptions': pulumi.Input.mapInputValue<MaintenanceExclusionOptionsResponse, Map<String, dynamic>>(maintenanceExclusionOptions, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
 
   factory TimeWindowResponse.fromMap(Map<String, dynamic> map) {
     return TimeWindowResponse(
-      endTime: map['endTime'] as String,
-      maintenanceExclusionOptions: MaintenanceExclusionOptionsResponse.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      maintenanceExclusionOptions: (MaintenanceExclusionOptionsResponse.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>())).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

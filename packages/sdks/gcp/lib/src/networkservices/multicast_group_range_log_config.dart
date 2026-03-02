@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticastGroupRangeLogConfig {
   /// Whether to enable logging or not.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [MulticastGroupRangeLogConfig].
   /// [enabled] Whether to enable logging or not.
@@ -19,7 +20,7 @@ class MulticastGroupRangeLogConfig {
 
   factory MulticastGroupRangeLogConfig.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeLogConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

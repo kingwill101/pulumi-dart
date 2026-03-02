@@ -9,42 +9,42 @@ import 'parameter_specification_response.dart';
 /// Azure File Storage linked service.
 class AzureFileStorageLinkedServiceResponse {
   /// The Azure key vault secret reference of accountKey in connection string.
-  final AzureKeyVaultSecretReferenceResponse? accountKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? accountKey;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReferenceResponse? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
   /// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// The credential reference containing authentication information.
-  final CredentialReferenceResponse? credential;
+  final pulumi.Input<CredentialReferenceResponse>? credential;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// The azure file share name. It is required when auth with accountKey/sasToken. Type: string (or Expression with resultType string).
-  final dynamic fileShare;
+  final pulumi.Input<dynamic>? fileShare;
   /// Host name of the server. Type: string (or Expression with resultType string).
-  final dynamic host;
+  final pulumi.Input<dynamic>? host;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecificationResponse>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
   /// Password to logon the server.
-  final AzureKeyVaultSecretReferenceResponse? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
   /// The Azure key vault secret reference of sasToken in sas uri.
-  final AzureKeyVaultSecretReferenceResponse? sasToken;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? sasToken;
   /// SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic sasUri;
+  final pulumi.Input<dynamic>? sasUri;
   /// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
-  final dynamic serviceEndpoint;
+  final pulumi.Input<dynamic>? serviceEndpoint;
   /// The azure file share snapshot version. Type: string (or Expression with resultType string).
-  final dynamic snapshot;
+  final pulumi.Input<dynamic>? snapshot;
   /// Type of linked service.
   /// Expected value is 'AzureFileStorage'.
-  final String type;
+  final pulumi.Input<String> type;
   /// User ID to logon the server. Type: string (or Expression with resultType string).
-  final dynamic userId;
+  final pulumi.Input<dynamic>? userId;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [AzureFileStorageLinkedServiceResponse].
   /// [accountKey] The Azure key vault secret reference of accountKey in connection string.
@@ -88,18 +88,18 @@ class AzureFileStorageLinkedServiceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountKey': ?accountKey == null ? null : accountKey!.toMap(),
+      'accountKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(accountKey, (value) => value.toMap()),
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
-      'credential': ?credential == null ? null : credential!.toMap(),
+      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'fileShare': ?fileShare,
       'host': ?host,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
-      'sasToken': ?sasToken == null ? null : sasToken!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'sasToken': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(sasToken, (value) => value.toMap()),
       'sasUri': ?sasUri,
       'serviceEndpoint': ?serviceEndpoint,
       'snapshot': ?snapshot,
@@ -111,24 +111,24 @@ class AzureFileStorageLinkedServiceResponse {
 
   factory AzureFileStorageLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileStorageLinkedServiceResponse(
-      accountKey: map['accountKey'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>()),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      credential: map['credential'] == null ? null : CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      fileShare: map['fileShare'] == null ? null : map['fileShare'],
-      host: map['host'] == null ? null : map['host'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      sasToken: map['sasToken'] == null ? null : AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>()),
-      sasUri: map['sasUri'] == null ? null : map['sasUri'],
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : map['serviceEndpoint'],
-      snapshot: map['snapshot'] == null ? null : map['snapshot'],
-      type: map['type'] as String,
-      userId: map['userId'] == null ? null : map['userId'],
-      version: map['version'] == null ? null : map['version'] as String,
+      accountKey: map['accountKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      fileShare: map['fileShare'] == null ? null : (map['fileShare']).input(),
+      host: map['host'] == null ? null : (map['host']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      sasToken: map['sasToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>())).input(),
+      sasUri: map['sasUri'] == null ? null : (map['sasUri']).input(),
+      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint']).input(),
+      snapshot: map['snapshot'] == null ? null : (map['snapshot']).input(),
+      type: (map['type'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

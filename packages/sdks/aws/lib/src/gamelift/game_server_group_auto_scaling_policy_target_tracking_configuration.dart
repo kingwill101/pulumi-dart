@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
   /// Desired value to use with a game server group target-based scaling policy.
-  final double targetValue;
+  final pulumi.Input<double> targetValue;
 
   /// Creates a new [GameServerGroupAutoScalingPolicyTargetTrackingConfiguration].
   /// [targetValue] Desired value to use with a game server group target-based scaling policy.
@@ -19,7 +20,7 @@ class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
 
   factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicyTargetTrackingConfiguration(
-      targetValue: map['targetValue'] as double,
+      targetValue: (map['targetValue'] as double).input(),
     );
   }
 }

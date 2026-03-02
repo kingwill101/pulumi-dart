@@ -29,19 +29,13 @@ class RoutingIntentArgs {
   /// [routingPolicies] List of routing policies.
   /// [virtualHubName] The name of the VirtualHub.
   RoutingIntentArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? routingIntentName,
-    pulumi.Output<List<RoutingPolicy>>? routingPolicies,
-    required pulumi.Output<String> virtualHubName,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routingIntentName = pulumi.Input.asOptionalInput<String>(routingIntentName),
-      routingPolicies = pulumi.Input.asOptionalInput<List<RoutingPolicy>>(routingPolicies),
-      virtualHubName = pulumi.Input.asInput<String>(virtualHubName);
+    this.id,
+    this.name,
+    required this.resourceGroupName,
+    this.routingIntentName,
+    this.routingPolicies,
+    required this.virtualHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RoutingIntentArgs {
 
   factory RoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return RoutingIntentArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routingIntentName: map['routingIntentName'] == null ? null : pulumi.Output.create<String>(map['routingIntentName'] as String),
-      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Output.create<List<RoutingPolicy>>(pulumi.Input.decodeList<RoutingPolicy>(map['routingPolicies'], (value) => RoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      virtualHubName: pulumi.Output.create<String>(map['virtualHubName'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routingIntentName: map['routingIntentName'] == null ? null : (map['routingIntentName'] as String).input(),
+      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingPolicy>(map['routingPolicies'], (value) => RoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }
 }

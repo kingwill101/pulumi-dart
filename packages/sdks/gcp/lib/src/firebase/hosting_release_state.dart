@@ -39,21 +39,14 @@ class HostingReleaseState {
   /// [type] The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// [versionName] The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   HostingReleaseState({
-    pulumi.Output<String>? channelId,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? releaseId,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? versionName,
-  }) :
-      channelId = pulumi.Input.asOptionalInput<String>(channelId),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      releaseId = pulumi.Input.asOptionalInput<String>(releaseId),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    this.channelId,
+    this.message,
+    this.name,
+    this.releaseId,
+    this.siteId,
+    this.type,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class HostingReleaseState {
 
   factory HostingReleaseState.fromMap(Map<String, dynamic> map) {
     return HostingReleaseState(
-      channelId: map['channelId'] == null ? null : pulumi.Output.create<String>(map['channelId'] as String),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      releaseId: map['releaseId'] == null ? null : pulumi.Output.create<String>(map['releaseId'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      releaseId: map['releaseId'] == null ? null : (map['releaseId'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

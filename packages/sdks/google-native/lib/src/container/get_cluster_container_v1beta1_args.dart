@@ -20,17 +20,12 @@ class GetClusterContainerV1beta1Args {
   /// [projectId] Required.
   /// [zone] Required.
   GetClusterContainerV1beta1Args({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> projectId,
-    required pulumi.Output<String> zone,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      zone = pulumi.Input.asInput<String>(zone);
+    required this.clusterId,
+    required this.location,
+    this.project,
+    required this.projectId,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetClusterContainerV1beta1Args {
 
   factory GetClusterContainerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetClusterContainerV1beta1Args(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

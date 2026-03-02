@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_create_content.dart';
 
 class VolumeCreate {
   /// Upload content from a URL or local file
-  final VolumeCreateContent content;
+  final pulumi.Input<VolumeCreateContent> content;
 
   /// Creates a new [VolumeCreate].
   /// [content] Upload content from a URL or local file
@@ -14,13 +15,13 @@ class VolumeCreate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': content.toMap(),
+      'content': pulumi.Input.mapInputValue<VolumeCreateContent, Map<String, dynamic>>(content, (value) => value.toMap()),
     };
   }
 
   factory VolumeCreate.fromMap(Map<String, dynamic> map) {
     return VolumeCreate(
-      content: VolumeCreateContent.fromMap((map['content'] as Map).cast<String, dynamic>()),
+      content: (VolumeCreateContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

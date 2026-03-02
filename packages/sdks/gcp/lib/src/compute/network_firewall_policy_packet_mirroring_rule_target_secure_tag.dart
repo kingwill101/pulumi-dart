@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag {
   /// Name of the secure tag, created with TagManager's TagValue API.
   /// diff_suppress_func: 'tpgresource.CompareSelfLinkOrResourceName'
-  final String? name;
+  final pulumi.Input<String>? name;
   /// (Output)
   /// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
@@ -26,8 +27,8 @@ class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag {
 
   factory NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag(
-      name: map['name'] == null ? null : map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class NamespaceVirtualNetworkRuleArgs {
   /// [virtualNetworkRuleName] The Virtual Network Rule name.
   /// [virtualNetworkSubnetId] Resource ID of Virtual Network Subnet
   NamespaceVirtualNetworkRuleArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? virtualNetworkRuleName,
-    pulumi.Output<String>? virtualNetworkSubnetId,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkRuleName = pulumi.Input.asOptionalInput<String>(virtualNetworkRuleName),
-      virtualNetworkSubnetId = pulumi.Input.asOptionalInput<String>(virtualNetworkSubnetId);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    this.virtualNetworkRuleName,
+    this.virtualNetworkSubnetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NamespaceVirtualNetworkRuleArgs {
 
   factory NamespaceVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceVirtualNetworkRuleArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkSubnetId'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
     );
   }
 }

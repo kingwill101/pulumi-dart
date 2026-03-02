@@ -39,23 +39,15 @@ class WebAppAuthSettingsV2WithoutSecretsArgs {
   /// [platform] The configuration settings of the platform of App Service Authentication/Authorization.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   WebAppAuthSettingsV2WithoutSecretsArgs({
-    pulumi.Output<GlobalValidation>? globalValidation,
-    pulumi.Output<HttpSettings>? httpSettings,
-    pulumi.Output<IdentityProviders>? identityProviders,
-    pulumi.Output<String>? kind,
-    pulumi.Output<Login>? login,
-    required pulumi.Output<String> name,
-    pulumi.Output<AuthPlatform>? platform,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      globalValidation = pulumi.Input.asOptionalInput<GlobalValidation>(globalValidation),
-      httpSettings = pulumi.Input.asOptionalInput<HttpSettings>(httpSettings),
-      identityProviders = pulumi.Input.asOptionalInput<IdentityProviders>(identityProviders),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      login = pulumi.Input.asOptionalInput<Login>(login),
-      name = pulumi.Input.asInput<String>(name),
-      platform = pulumi.Input.asOptionalInput<AuthPlatform>(platform),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.globalValidation,
+    this.httpSettings,
+    this.identityProviders,
+    this.kind,
+    this.login,
+    required this.name,
+    this.platform,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class WebAppAuthSettingsV2WithoutSecretsArgs {
 
   factory WebAppAuthSettingsV2WithoutSecretsArgs.fromMap(Map<String, dynamic> map) {
     return WebAppAuthSettingsV2WithoutSecretsArgs(
-      globalValidation: map['globalValidation'] == null ? null : pulumi.Output.create<GlobalValidation>(GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())),
-      httpSettings: map['httpSettings'] == null ? null : pulumi.Output.create<HttpSettings>(HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())),
-      identityProviders: map['identityProviders'] == null ? null : pulumi.Output.create<IdentityProviders>(IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      login: map['login'] == null ? null : pulumi.Output.create<Login>(Login.fromMap((map['login'] as Map).cast<String, dynamic>())),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<AuthPlatform>(AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())).input(),
+      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())).input(),
+      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      login: map['login'] == null ? null : (Login.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

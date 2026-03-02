@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the Alexa channel.
 class AlexaChannelProperties {
   /// The Alexa skill Id
-  final String alexaSkillId;
+  final pulumi.Input<String> alexaSkillId;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
 
   /// Creates a new [AlexaChannelProperties].
   /// [alexaSkillId] The Alexa skill Id
@@ -25,8 +26,8 @@ class AlexaChannelProperties {
 
   factory AlexaChannelProperties.fromMap(Map<String, dynamic> map) {
     return AlexaChannelProperties(
-      alexaSkillId: map['alexaSkillId'] as String,
-      isEnabled: map['isEnabled'] as bool,
+      alexaSkillId: (map['alexaSkillId'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
     );
   }
 }

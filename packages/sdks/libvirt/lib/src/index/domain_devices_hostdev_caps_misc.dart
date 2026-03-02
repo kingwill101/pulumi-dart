@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_hostdev_caps_misc_source.dart';
 
 class DomainDevicesHostdevCapsMisc {
   /// Specifies the source attributes for the miscellaneous capabilities of the host device.
-  final DomainDevicesHostdevCapsMiscSource? source;
+  final pulumi.Input<DomainDevicesHostdevCapsMiscSource>? source;
 
   /// Creates a new [DomainDevicesHostdevCapsMisc].
   /// [source] Specifies the source attributes for the miscellaneous capabilities of the host device.
@@ -14,13 +15,13 @@ class DomainDevicesHostdevCapsMisc {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': ?source == null ? null : source!.toMap(),
+      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevCapsMiscSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesHostdevCapsMisc.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsMisc(
-      source: map['source'] == null ? null : DomainDevicesHostdevCapsMiscSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      source: map['source'] == null ? null : (DomainDevicesHostdevCapsMiscSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

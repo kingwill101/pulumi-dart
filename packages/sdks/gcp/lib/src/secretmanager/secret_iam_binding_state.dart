@@ -41,19 +41,13 @@ class SecretIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
   SecretIamBindingState({
-    pulumi.Output<SecretIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? secretId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SecretIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      secretId = pulumi.Input.asOptionalInput<String>(secretId);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,12 +62,12 @@ class SecretIamBindingState {
 
   factory SecretIamBindingState.fromMap(Map<String, dynamic> map) {
     return SecretIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SecretIamBindingCondition>(SecretIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      secretId: map['secretId'] == null ? null : pulumi.Output.create<String>(map['secretId'] as String),
+      condition: map['condition'] == null ? null : (SecretIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
     );
   }
 }

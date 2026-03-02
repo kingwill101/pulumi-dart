@@ -29,19 +29,13 @@ class BackupPolicyDiskArgs {
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Disk should exist. Changing this forces a new Backup Policy Disk to be created.
   BackupPolicyDiskArgs({
-    required pulumi.Output<List<String>> backupRepeatingTimeIntervals,
-    required pulumi.Output<String> defaultRetentionDuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<BackupPolicyDiskRetentionRule>>? retentionRules,
-    pulumi.Output<String>? timeZone,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupRepeatingTimeIntervals = pulumi.Input.asInput<List<String>>(backupRepeatingTimeIntervals),
-      defaultRetentionDuration = pulumi.Input.asInput<String>(defaultRetentionDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      retentionRules = pulumi.Input.asOptionalInput<List<BackupPolicyDiskRetentionRule>>(retentionRules),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    required this.backupRepeatingTimeIntervals,
+    required this.defaultRetentionDuration,
+    this.name,
+    this.retentionRules,
+    this.timeZone,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class BackupPolicyDiskArgs {
 
   factory BackupPolicyDiskArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyDiskArgs(
-      backupRepeatingTimeIntervals: pulumi.Output.create<List<String>>((map['backupRepeatingTimeIntervals'] as List).cast<String>()),
-      defaultRetentionDuration: pulumi.Output.create<String>(map['defaultRetentionDuration'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      retentionRules: map['retentionRules'] == null ? null : pulumi.Output.create<List<BackupPolicyDiskRetentionRule>>(pulumi.Input.decodeList<BackupPolicyDiskRetentionRule>(map['retentionRules'], (value) => BackupPolicyDiskRetentionRule.fromMap((value as Map).cast<String, dynamic>()))),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupRepeatingTimeIntervals: ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
+      defaultRetentionDuration: (map['defaultRetentionDuration'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyDiskRetentionRule>(map['retentionRules'], (value) => BackupPolicyDiskRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

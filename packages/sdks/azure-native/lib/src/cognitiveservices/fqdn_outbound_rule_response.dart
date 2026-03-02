@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FQDN Outbound Rule for the managed network of a cognitive services account.
 class FqdnOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a cognitive services account.
-  final String? category;
-  final String? destination;
+  final pulumi.Input<String>? category;
+  final pulumi.Input<String>? destination;
   /// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
-  final String errorInformation;
-  final List<String> parentRuleNames;
+  final pulumi.Input<String> errorInformation;
+  final pulumi.Input<List<String>> parentRuleNames;
   /// Type of a managed network Outbound Rule of a cognitive services account.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'FQDN'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FqdnOutboundRuleResponse].
   /// [category] Category of a managed network Outbound Rule of a cognitive services account.
@@ -44,12 +45,12 @@ class FqdnOutboundRuleResponse {
 
   factory FqdnOutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRuleResponse(
-      category: map['category'] == null ? null : map['category'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      errorInformation: map['errorInformation'] as String,
-      parentRuleNames: (map['parentRuleNames'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      errorInformation: (map['errorInformation'] as String).input(),
+      parentRuleNames: ((map['parentRuleNames'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionBackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
-  final bool dryRun;
+  final pulumi.Input<bool> dryRun;
   /// Name of a custom utilization signal. The name must be 1-64 characters
   /// long and match the regular expression a-z? which
   /// means the first character must be a lowercase letter, and all following
@@ -13,7 +14,7 @@ class RegionBackendServiceCustomMetric {
   /// field can only be used for a global or regional backend service with the
   /// loadBalancingScheme set to <code>EXTERNAL_MANAGED</code>,
   /// <code>INTERNAL_MANAGED</code> <code>INTERNAL_SELF_MANAGED</code>.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [RegionBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
@@ -32,8 +33,8 @@ class RegionBackendServiceCustomMetric {
 
   factory RegionBackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCustomMetric(
-      dryRun: map['dryRun'] as bool,
-      name: map['name'] as String,
+      dryRun: (map['dryRun'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

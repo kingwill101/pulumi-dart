@@ -13,9 +13,8 @@ class GetObjectStorageQuotasArgs {
   /// Creates a new [GetObjectStorageQuotasArgs].
   /// [filters] Optional.
   GetObjectStorageQuotasArgs({
-    pulumi.Output<List<GetObjectStorageQuotasFilter>>? filters,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetObjectStorageQuotasFilter>>(filters);
+    this.filters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetObjectStorageQuotasArgs {
 
   factory GetObjectStorageQuotasArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotasArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetObjectStorageQuotasFilter>>(pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(map['filters'], (value) => GetObjectStorageQuotasFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(map['filters'], (value) => GetObjectStorageQuotasFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

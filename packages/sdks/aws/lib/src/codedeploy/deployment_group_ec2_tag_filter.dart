@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupEc2TagFilter {
   /// The key of the tag filter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value of the tag filter.
   ///
   /// Multiple occurrences of `ec2_tag_filter` are allowed, where any instance that matches to at least one of the tag filters is selected.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DeploymentGroupEc2TagFilter].
   /// [key] The key of the tag filter.
@@ -31,9 +32,9 @@ class DeploymentGroupEc2TagFilter {
 
   factory DeploymentGroupEc2TagFilter.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEc2TagFilter(
-      key: map['key'] == null ? null : map['key'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

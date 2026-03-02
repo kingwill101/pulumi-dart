@@ -16,11 +16,9 @@ class GetDiscoveredAssetEndpointProfileArgs {
   /// [discoveredAssetEndpointProfileName] Discovered Asset Endpoint Profile name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDiscoveredAssetEndpointProfileArgs({
-    required pulumi.Output<String> discoveredAssetEndpointProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      discoveredAssetEndpointProfileName = pulumi.Input.asInput<String>(discoveredAssetEndpointProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.discoveredAssetEndpointProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDiscoveredAssetEndpointProfileArgs {
 
   factory GetDiscoveredAssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredAssetEndpointProfileArgs(
-      discoveredAssetEndpointProfileName: pulumi.Output.create<String>(map['discoveredAssetEndpointProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      discoveredAssetEndpointProfileName: (map['discoveredAssetEndpointProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

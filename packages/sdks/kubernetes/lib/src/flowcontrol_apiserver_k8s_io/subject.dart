@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_subject.dart';
 import 'service_account_subject.dart';
 import 'user_subject.dart';
@@ -7,13 +8,13 @@ import 'user_subject.dart';
 /// Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 class Subject {
   /// `group` matches based on user group name.
-  final GroupSubject? group;
+  final pulumi.Input<GroupSubject>? group;
   /// `kind` indicates which one of the other fields is non-empty. Required
-  final String kind;
+  final pulumi.Input<String> kind;
   /// `serviceAccount` matches ServiceAccounts.
-  final ServiceAccountSubject? serviceAccount;
+  final pulumi.Input<ServiceAccountSubject>? serviceAccount;
   /// `user` matches based on username.
-  final UserSubject? user;
+  final pulumi.Input<UserSubject>? user;
 
   /// Creates a new [Subject].
   /// [group] `group` matches based on user group name.
@@ -29,19 +30,19 @@ class Subject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'group': ?group == null ? null : group!.toMap(),
+      'group': ?pulumi.Input.mapOptionalInputValue<GroupSubject, Map<String, dynamic>>(group, (value) => value.toMap()),
       'kind': kind,
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
-      'user': ?user == null ? null : user!.toMap(),
+      'serviceAccount': ?pulumi.Input.mapOptionalInputValue<ServiceAccountSubject, Map<String, dynamic>>(serviceAccount, (value) => value.toMap()),
+      'user': ?pulumi.Input.mapOptionalInputValue<UserSubject, Map<String, dynamic>>(user, (value) => value.toMap()),
     };
   }
 
   factory Subject.fromMap(Map<String, dynamic> map) {
     return Subject(
-      group: map['group'] == null ? null : GroupSubject.fromMap((map['group'] as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccountSubject.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
-      user: map['user'] == null ? null : UserSubject.fromMap((map['user'] as Map).cast<String, dynamic>()),
+      group: map['group'] == null ? null : (GroupSubject.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubject.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (UserSubject.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the login configuration for Runtime
 class RuntimeAccessConfigResponse {
   /// The type of access mode this instance.
-  final String accessType;
+  final pulumi.Input<String> accessType;
   /// The proxy endpoint that is used to access the runtime.
-  final String proxyUri;
+  final pulumi.Input<String> proxyUri;
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  final String runtimeOwner;
+  final pulumi.Input<String> runtimeOwner;
 
   /// Creates a new [RuntimeAccessConfigResponse].
   /// [accessType] The type of access mode this instance.
@@ -30,9 +31,9 @@ class RuntimeAccessConfigResponse {
 
   factory RuntimeAccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeAccessConfigResponse(
-      accessType: map['accessType'] as String,
-      proxyUri: map['proxyUri'] as String,
-      runtimeOwner: map['runtimeOwner'] as String,
+      accessType: (map['accessType'] as String).input(),
+      proxyUri: (map['proxyUri'] as String).input(),
+      runtimeOwner: (map['runtimeOwner'] as String).input(),
     );
   }
 }

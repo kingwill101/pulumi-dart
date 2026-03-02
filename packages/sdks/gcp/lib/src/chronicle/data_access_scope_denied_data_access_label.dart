@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_access_scope_denied_data_access_label_ingestion_label.dart';
 
 class DataAccessScopeDeniedDataAccessLabel {
   /// The asset namespace configured in the forwarder
   /// of the customer's events.
-  final String? assetNamespace;
+  final pulumi.Input<String>? assetNamespace;
   /// The name of the data access label.
-  final String? dataAccessLabel;
+  final pulumi.Input<String>? dataAccessLabel;
   /// (Output)
   /// Output only. The display name of the label.
   /// Data access label and log types's name
   /// will match the display name of the resource.
   /// The asset namespace will match the namespace itself.
   /// The ingestion key value pair will match the key of the tuple.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Representation of an ingestion label type.
   /// Structure is documented below.
-  final DataAccessScopeDeniedDataAccessLabelIngestionLabel? ingestionLabel;
+  final pulumi.Input<DataAccessScopeDeniedDataAccessLabelIngestionLabel>? ingestionLabel;
   /// The name of the log type.
-  final String? logType;
+  final pulumi.Input<String>? logType;
 
   /// Creates a new [DataAccessScopeDeniedDataAccessLabel].
   /// [assetNamespace] The asset namespace configured in the forwarder
@@ -40,18 +41,18 @@ class DataAccessScopeDeniedDataAccessLabel {
       'assetNamespace': ?assetNamespace,
       'dataAccessLabel': ?dataAccessLabel,
       'displayName': ?displayName,
-      'ingestionLabel': ?ingestionLabel == null ? null : ingestionLabel!.toMap(),
+      'ingestionLabel': ?pulumi.Input.mapOptionalInputValue<DataAccessScopeDeniedDataAccessLabelIngestionLabel, Map<String, dynamic>>(ingestionLabel, (value) => value.toMap()),
       'logType': ?logType,
     };
   }
 
   factory DataAccessScopeDeniedDataAccessLabel.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeDeniedDataAccessLabel(
-      assetNamespace: map['assetNamespace'] == null ? null : map['assetNamespace'] as String,
-      dataAccessLabel: map['dataAccessLabel'] == null ? null : map['dataAccessLabel'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      ingestionLabel: map['ingestionLabel'] == null ? null : DataAccessScopeDeniedDataAccessLabelIngestionLabel.fromMap((map['ingestionLabel'] as Map).cast<String, dynamic>()),
-      logType: map['logType'] == null ? null : map['logType'] as String,
+      assetNamespace: map['assetNamespace'] == null ? null : (map['assetNamespace'] as String).input(),
+      dataAccessLabel: map['dataAccessLabel'] == null ? null : (map['dataAccessLabel'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      ingestionLabel: map['ingestionLabel'] == null ? null : (DataAccessScopeDeniedDataAccessLabelIngestionLabel.fromMap((map['ingestionLabel'] as Map).cast<String, dynamic>())).input(),
+      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
     );
   }
 }

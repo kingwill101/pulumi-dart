@@ -16,13 +16,10 @@ class AlertPolicyChannelState {
   /// [channelIds] Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state.
   /// [policyId] The ID of the policy.
   AlertPolicyChannelState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? channelIds,
-    pulumi.Output<String>? policyId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      channelIds = pulumi.Input.asOptionalInput<List<String>>(channelIds),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId);
+    this.accountId,
+    this.channelIds,
+    this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AlertPolicyChannelState {
 
   factory AlertPolicyChannelState.fromMap(Map<String, dynamic> map) {
     return AlertPolicyChannelState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      channelIds: map['channelIds'] == null ? null : pulumi.Output.create<List<String>>((map['channelIds'] as List).cast<String>()),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      channelIds: map['channelIds'] == null ? null : ((map['channelIds'] as List).cast<String>()).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
     );
   }
 }

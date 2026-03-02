@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The node upgrade image version.
 class NodeImageVersionResponse {
   /// The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [NodeImageVersionResponse].
   /// [version] The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
@@ -20,7 +21,7 @@ class NodeImageVersionResponse {
 
   factory NodeImageVersionResponse.fromMap(Map<String, dynamic> map) {
     return NodeImageVersionResponse(
-      version: map['version'] as String,
+      version: (map['version'] as String).input(),
     );
   }
 }

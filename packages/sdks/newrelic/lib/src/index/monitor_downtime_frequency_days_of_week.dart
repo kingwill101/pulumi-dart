@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorDowntimeFrequencyDaysOfWeek {
   /// An occurrence of the day selected within the month.
-  final String ordinalDayOfMonth;
+  final pulumi.Input<String> ordinalDayOfMonth;
   /// The day of the week on which the Monitor Downtime would run.
-  final String weekDay;
+  final pulumi.Input<String> weekDay;
 
   /// Creates a new [MonitorDowntimeFrequencyDaysOfWeek].
   /// [ordinalDayOfMonth] An occurrence of the day selected within the month.
@@ -24,8 +25,8 @@ class MonitorDowntimeFrequencyDaysOfWeek {
 
   factory MonitorDowntimeFrequencyDaysOfWeek.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeFrequencyDaysOfWeek(
-      ordinalDayOfMonth: map['ordinalDayOfMonth'] as String,
-      weekDay: map['weekDay'] as String,
+      ordinalDayOfMonth: (map['ordinalDayOfMonth'] as String).input(),
+      weekDay: (map['weekDay'] as String).input(),
     );
   }
 }

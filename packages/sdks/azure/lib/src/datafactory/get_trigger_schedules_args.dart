@@ -13,9 +13,8 @@ class GetTriggerSchedulesArgs {
   /// Creates a new [GetTriggerSchedulesArgs].
   /// [dataFactoryId] The ID of the Azure Data Factory to fetch trigger schedules from.
   GetTriggerSchedulesArgs({
-    required pulumi.Output<String> dataFactoryId,
-  }) :
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId);
+    required this.dataFactoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetTriggerSchedulesArgs {
 
   factory GetTriggerSchedulesArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerSchedulesArgs(
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
     );
   }
 }

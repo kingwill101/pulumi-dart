@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Weekly retention format.
 class WeeklyRetentionFormatResponse {
   /// List of days of the week.
-  final List<String>? daysOfTheWeek;
+  final pulumi.Input<List<String>>? daysOfTheWeek;
   /// List of weeks of month.
-  final List<String>? weeksOfTheMonth;
+  final pulumi.Input<List<String>>? weeksOfTheMonth;
 
   /// Creates a new [WeeklyRetentionFormatResponse].
   /// [daysOfTheWeek] List of days of the week.
@@ -25,8 +26,8 @@ class WeeklyRetentionFormatResponse {
 
   factory WeeklyRetentionFormatResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionFormatResponse(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (map['daysOfTheWeek'] as List).cast<String>(),
-      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : (map['weeksOfTheMonth'] as List).cast<String>(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : ((map['daysOfTheWeek'] as List).cast<String>()).input(),
+      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : ((map['weeksOfTheMonth'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsClusterAuthorizationAdminGroup {
   /// The name of the group, e.g. `my-group@domain.com`.
-  final String group;
+  final pulumi.Input<String> group;
 
   /// Creates a new [AwsClusterAuthorizationAdminGroup].
   /// [group] The name of the group, e.g. `my-group@domain.com`.
@@ -19,7 +20,7 @@ class AwsClusterAuthorizationAdminGroup {
 
   factory AwsClusterAuthorizationAdminGroup.fromMap(Map<String, dynamic> map) {
     return AwsClusterAuthorizationAdminGroup(
-      group: map['group'] as String,
+      group: (map['group'] as String).input(),
     );
   }
 }

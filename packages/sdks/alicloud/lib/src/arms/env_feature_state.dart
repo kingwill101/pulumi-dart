@@ -22,17 +22,12 @@ class EnvFeatureState {
   /// [namespace] Namespace.
   /// [status] Status.
   EnvFeatureState({
-    pulumi.Output<String>? envFeatureName,
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? featureVersion,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? status,
-  }) :
-      envFeatureName = pulumi.Input.asOptionalInput<String>(envFeatureName),
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      featureVersion = pulumi.Input.asOptionalInput<String>(featureVersion),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.envFeatureName,
+    this.environmentId,
+    this.featureVersion,
+    this.namespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnvFeatureState {
 
   factory EnvFeatureState.fromMap(Map<String, dynamic> map) {
     return EnvFeatureState(
-      envFeatureName: map['envFeatureName'] == null ? null : pulumi.Output.create<String>(map['envFeatureName'] as String),
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      featureVersion: map['featureVersion'] == null ? null : pulumi.Output.create<String>(map['featureVersion'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      envFeatureName: map['envFeatureName'] == null ? null : (map['envFeatureName'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      featureVersion: map['featureVersion'] == null ? null : (map['featureVersion'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

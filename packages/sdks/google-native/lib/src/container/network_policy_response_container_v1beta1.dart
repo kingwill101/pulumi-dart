@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
 class NetworkPolicyResponseContainerV1beta1 {
   /// Whether network policy is enabled on the cluster.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The selected network policy provider.
-  final String provider;
+  final pulumi.Input<String> provider;
 
   /// Creates a new [NetworkPolicyResponseContainerV1beta1].
   /// [enabled] Whether network policy is enabled on the cluster.
@@ -25,8 +26,8 @@ class NetworkPolicyResponseContainerV1beta1 {
 
   factory NetworkPolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyResponseContainerV1beta1(
-      enabled: map['enabled'] as bool,
-      provider: map['provider'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      provider: (map['provider'] as String).input(),
     );
   }
 }

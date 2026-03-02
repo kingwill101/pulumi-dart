@@ -22,17 +22,12 @@ class KeyState {
   /// [partition] Partition of ssl certificate key
   /// [passphrase] Passphrase on key.
   KeyState({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? fullPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? passphrase,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      fullPath = pulumi.Input.asOptionalInput<String>(fullPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      passphrase = pulumi.Input.asOptionalInput<String>(passphrase);
+    this.content,
+    this.fullPath,
+    this.name,
+    this.partition,
+    this.passphrase,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      fullPath: map['fullPath'] == null ? null : pulumi.Output.create<String>(map['fullPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      passphrase: map['passphrase'] == null ? null : pulumi.Output.create<String>(map['passphrase'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
     );
   }
 }

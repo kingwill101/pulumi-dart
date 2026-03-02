@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_lens_configuration_storage_lens_configuration_account_level_bucket_level_activity_metrics.dart';
 import 'storage_lens_configuration_storage_lens_configuration_account_level_bucket_level_advanced_cost_optimization_metrics.dart';
 import 'storage_lens_configuration_storage_lens_configuration_account_level_bucket_level_advanced_data_protection_metrics.dart';
@@ -8,15 +9,15 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
   /// S3 Storage Lens activity metrics. See Activity Metrics above for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics? activityMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics>? activityMetrics;
   /// Advanced cost-optimization metrics for S3 Storage Lens. See Advanced Cost-Optimization Metrics above for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics? advancedCostOptimizationMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics>? advancedCostOptimizationMetrics;
   /// Advanced data-protection metrics for S3 Storage Lens. See Advanced Data-Protection Metrics above for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics? advancedDataProtectionMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics>? advancedDataProtectionMetrics;
   /// Detailed status code metrics for S3 Storage Lens. See Detailed Status Code Metrics above for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics? detailedStatusCodeMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics>? detailedStatusCodeMetrics;
   /// Prefix-level metrics for S3 Storage Lens. See Prefix Level below for more details.
-  final StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel? prefixLevel;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel>? prefixLevel;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel].
   /// [activityMetrics] S3 Storage Lens activity metrics. See Activity Metrics above for more details.
@@ -34,21 +35,21 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activityMetrics': ?activityMetrics == null ? null : activityMetrics!.toMap(),
-      'advancedCostOptimizationMetrics': ?advancedCostOptimizationMetrics == null ? null : advancedCostOptimizationMetrics!.toMap(),
-      'advancedDataProtectionMetrics': ?advancedDataProtectionMetrics == null ? null : advancedDataProtectionMetrics!.toMap(),
-      'detailedStatusCodeMetrics': ?detailedStatusCodeMetrics == null ? null : detailedStatusCodeMetrics!.toMap(),
-      'prefixLevel': ?prefixLevel == null ? null : prefixLevel!.toMap(),
+      'activityMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics, Map<String, dynamic>>(activityMetrics, (value) => value.toMap()),
+      'advancedCostOptimizationMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics, Map<String, dynamic>>(advancedCostOptimizationMetrics, (value) => value.toMap()),
+      'advancedDataProtectionMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics, Map<String, dynamic>>(advancedDataProtectionMetrics, (value) => value.toMap()),
+      'detailedStatusCodeMetrics': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics, Map<String, dynamic>>(detailedStatusCodeMetrics, (value) => value.toMap()),
+      'prefixLevel': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel, Map<String, dynamic>>(prefixLevel, (value) => value.toMap()),
     };
   }
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel(
-      activityMetrics: map['activityMetrics'] == null ? null : StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap((map['activityMetrics'] as Map).cast<String, dynamic>()),
-      advancedCostOptimizationMetrics: map['advancedCostOptimizationMetrics'] == null ? null : StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap((map['advancedCostOptimizationMetrics'] as Map).cast<String, dynamic>()),
-      advancedDataProtectionMetrics: map['advancedDataProtectionMetrics'] == null ? null : StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap((map['advancedDataProtectionMetrics'] as Map).cast<String, dynamic>()),
-      detailedStatusCodeMetrics: map['detailedStatusCodeMetrics'] == null ? null : StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap((map['detailedStatusCodeMetrics'] as Map).cast<String, dynamic>()),
-      prefixLevel: map['prefixLevel'] == null ? null : StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap((map['prefixLevel'] as Map).cast<String, dynamic>()),
+      activityMetrics: map['activityMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap((map['activityMetrics'] as Map).cast<String, dynamic>())).input(),
+      advancedCostOptimizationMetrics: map['advancedCostOptimizationMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap((map['advancedCostOptimizationMetrics'] as Map).cast<String, dynamic>())).input(),
+      advancedDataProtectionMetrics: map['advancedDataProtectionMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap((map['advancedDataProtectionMetrics'] as Map).cast<String, dynamic>())).input(),
+      detailedStatusCodeMetrics: map['detailedStatusCodeMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap((map['detailedStatusCodeMetrics'] as Map).cast<String, dynamic>())).input(),
+      prefixLevel: map['prefixLevel'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap((map['prefixLevel'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

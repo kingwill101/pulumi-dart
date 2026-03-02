@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines server trust settings for an endpoint.
 class TrustSettingsResponse {
   /// Defines a secret reference for certificates to trust.
-  final String? trustList;
+  final pulumi.Input<String>? trustList;
 
   /// Creates a new [TrustSettingsResponse].
   /// [trustList] Defines a secret reference for certificates to trust.
@@ -20,7 +21,7 @@ class TrustSettingsResponse {
 
   factory TrustSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TrustSettingsResponse(
-      trustList: map['trustList'] == null ? null : map['trustList'] as String,
+      trustList: map['trustList'] == null ? null : (map['trustList'] as String).input(),
     );
   }
 }

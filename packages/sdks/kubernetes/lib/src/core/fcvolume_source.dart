@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.
 class FCVolumeSource {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
-  final String? fsType;
+  final pulumi.Input<String>? fsType;
   /// lun is Optional: FC target lun number
-  final int? lun;
+  final pulumi.Input<int>? lun;
   /// readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// targetWWNs is Optional: FC target worldwide names (WWNs)
-  final List<String>? targetWWNs;
+  final pulumi.Input<List<String>>? targetWWNs;
   /// wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
-  final List<String>? wwids;
+  final pulumi.Input<List<String>>? wwids;
 
   /// Creates a new [FCVolumeSource].
   /// [fsType] fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
@@ -40,11 +41,11 @@ class FCVolumeSource {
 
   factory FCVolumeSource.fromMap(Map<String, dynamic> map) {
     return FCVolumeSource(
-      fsType: map['fsType'] == null ? null : map['fsType'] as String,
-      lun: map['lun'] == null ? null : map['lun'] as int,
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      targetWWNs: map['targetWWNs'] == null ? null : (map['targetWWNs'] as List).cast<String>(),
-      wwids: map['wwids'] == null ? null : (map['wwids'] as List).cast<String>(),
+      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      targetWWNs: map['targetWWNs'] == null ? null : ((map['targetWWNs'] as List).cast<String>()).input(),
+      wwids: map['wwids'] == null ? null : ((map['wwids'] as List).cast<String>()).input(),
     );
   }
 }

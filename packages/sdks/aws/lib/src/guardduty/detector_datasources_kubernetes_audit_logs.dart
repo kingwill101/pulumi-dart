@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DetectorDatasourcesKubernetesAuditLogs {
   /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
   /// Defaults to `true`.
-  final bool enable;
+  final pulumi.Input<bool> enable;
 
   /// Creates a new [DetectorDatasourcesKubernetesAuditLogs].
   /// [enable] If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
@@ -20,7 +21,7 @@ class DetectorDatasourcesKubernetesAuditLogs {
 
   factory DetectorDatasourcesKubernetesAuditLogs.fromMap(Map<String, dynamic> map) {
     return DetectorDatasourcesKubernetesAuditLogs(
-      enable: map['enable'] as bool,
+      enable: (map['enable'] as bool).input(),
     );
   }
 }

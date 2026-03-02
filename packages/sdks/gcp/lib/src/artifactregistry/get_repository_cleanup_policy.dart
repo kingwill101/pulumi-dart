@@ -6,13 +6,13 @@ import 'get_repository_cleanup_policy_most_recent_version.dart';
 
 class GetRepositoryCleanupPolicy {
   /// Policy action. Possible values: ["DELETE", "KEEP"]
-  final String action;
+  final pulumi.Input<String> action;
   /// Policy condition for matching versions.
-  final List<GetRepositoryCleanupPolicyCondition> conditions;
-  final String id;
+  final pulumi.Input<List<GetRepositoryCleanupPolicyCondition>> conditions;
+  final pulumi.Input<String> id;
   /// Policy condition for retaining a minimum number of versions. May only be
   /// specified with a Keep action.
-  final List<GetRepositoryCleanupPolicyMostRecentVersion> mostRecentVersions;
+  final pulumi.Input<List<GetRepositoryCleanupPolicyMostRecentVersion>> mostRecentVersions;
 
   /// Creates a new [GetRepositoryCleanupPolicy].
   /// [action] Policy action. Possible values: ["DELETE", "KEEP"]
@@ -29,18 +29,18 @@ class GetRepositoryCleanupPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'conditions': pulumi.Input.encodeList<GetRepositoryCleanupPolicyCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions': pulumi.Input.mapInputValue<List<GetRepositoryCleanupPolicyCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<GetRepositoryCleanupPolicyCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
-      'mostRecentVersions': pulumi.Input.encodeList<GetRepositoryCleanupPolicyMostRecentVersion, Map<String, dynamic>>(mostRecentVersions, (value) => value.toMap()),
+      'mostRecentVersions': pulumi.Input.mapInputValue<List<GetRepositoryCleanupPolicyMostRecentVersion>, List<Map<String, dynamic>>>(mostRecentVersions, (value) => pulumi.Input.encodeList<GetRepositoryCleanupPolicyMostRecentVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRepositoryCleanupPolicy.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCleanupPolicy(
-      action: map['action'] as String,
-      conditions: pulumi.Input.decodeList<GetRepositoryCleanupPolicyCondition>(map['conditions'], (value) => GetRepositoryCleanupPolicyCondition.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      mostRecentVersions: pulumi.Input.decodeList<GetRepositoryCleanupPolicyMostRecentVersion>(map['mostRecentVersions'], (value) => GetRepositoryCleanupPolicyMostRecentVersion.fromMap((value as Map).cast<String, dynamic>())),
+      action: (map['action'] as String).input(),
+      conditions: (pulumi.Input.decodeList<GetRepositoryCleanupPolicyCondition>(map['conditions'], (value) => GetRepositoryCleanupPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      mostRecentVersions: (pulumi.Input.decodeList<GetRepositoryCleanupPolicyMostRecentVersion>(map['mostRecentVersions'], (value) => GetRepositoryCleanupPolicyMostRecentVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

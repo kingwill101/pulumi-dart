@@ -16,11 +16,9 @@ class GlobalDatabaseNetworkArgs {
   /// [dbClusterId] The ID of the primary cluster.
   /// [description] The description of the Global Database Network.
   GlobalDatabaseNetworkArgs({
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? description,
-  }) :
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      description = pulumi.Input.asOptionalInput<String>(description);
+    required this.dbClusterId,
+    this.description,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GlobalDatabaseNetworkArgs {
 
   factory GlobalDatabaseNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GlobalDatabaseNetworkArgs(
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
     );
   }
 }

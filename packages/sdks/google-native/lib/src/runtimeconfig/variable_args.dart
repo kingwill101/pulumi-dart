@@ -26,19 +26,13 @@ class VariableArgs {
   /// [text] The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.
   /// [value] The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
   VariableArgs({
-    required pulumi.Output<String> configId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? text,
-    pulumi.Output<String>? value,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      text = pulumi.Input.asOptionalInput<String>(text),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    required this.configId,
+    this.name,
+    this.project,
+    this.requestId,
+    this.text,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class VariableArgs {
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
-      configId: pulumi.Output.create<String>(map['configId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      text: map['text'] == null ? null : pulumi.Output.create<String>(map['text'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      configId: (map['configId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

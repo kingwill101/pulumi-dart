@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyIntrusionDetectionSignatureOverride {
   /// 12-digit number (id) which identifies your signature.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// state can be any of `Off`, `Alert` or `Deny`.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureOverride].
   /// [id] 12-digit number (id) which identifies your signature.
@@ -24,8 +25,8 @@ class FirewallPolicyIntrusionDetectionSignatureOverride {
 
   factory FirewallPolicyIntrusionDetectionSignatureOverride.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionSignatureOverride(
-      id: map['id'] == null ? null : map['id'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

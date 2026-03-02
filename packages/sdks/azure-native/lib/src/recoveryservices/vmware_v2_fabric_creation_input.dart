@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VMwareV2 fabric provider specific settings.
 class VMwareV2FabricCreationInput {
   /// Gets the class type.
   /// Expected value is 'VMwareV2'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The ARM Id of the migration solution.
-  final String migrationSolutionId;
+  final pulumi.Input<String> migrationSolutionId;
   /// The ARM Id of the physical site.
-  final String? physicalSiteId;
+  final pulumi.Input<String>? physicalSiteId;
   /// The ARM Id of the VMware site.
-  final String? vmwareSiteId;
+  final pulumi.Input<String>? vmwareSiteId;
 
   /// Creates a new [VMwareV2FabricCreationInput].
   /// [instanceType] Gets the class type.
@@ -36,10 +37,10 @@ class VMwareV2FabricCreationInput {
 
   factory VMwareV2FabricCreationInput.fromMap(Map<String, dynamic> map) {
     return VMwareV2FabricCreationInput(
-      instanceType: map['instanceType'] as String,
-      migrationSolutionId: map['migrationSolutionId'] as String,
-      physicalSiteId: map['physicalSiteId'] == null ? null : map['physicalSiteId'] as String,
-      vmwareSiteId: map['vmwareSiteId'] == null ? null : map['vmwareSiteId'] as String,
+      instanceType: (map['instanceType'] as String).input(),
+      migrationSolutionId: (map['migrationSolutionId'] as String).input(),
+      physicalSiteId: map['physicalSiteId'] == null ? null : (map['physicalSiteId'] as String).input(),
+      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId'] as String).input(),
     );
   }
 }

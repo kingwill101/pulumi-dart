@@ -40,23 +40,15 @@ class GetClusterSnapshotArgs {
   /// [snapshotType] Type of snapshots to be returned. If you don't specify a SnapshotType
   /// [tags] Mapping of tags, each pair of which must exactly match
   GetClusterSnapshotArgs({
-    pulumi.Output<String>? dbClusterIdentifier,
-    pulumi.Output<String>? dbClusterSnapshotIdentifier,
-    pulumi.Output<bool>? includePublic,
-    pulumi.Output<bool>? includeShared,
-    pulumi.Output<bool>? mostRecent,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterIdentifier),
-      dbClusterSnapshotIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterSnapshotIdentifier),
-      includePublic = pulumi.Input.asOptionalInput<bool>(includePublic),
-      includeShared = pulumi.Input.asOptionalInput<bool>(includeShared),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotType = pulumi.Input.asOptionalInput<String>(snapshotType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.dbClusterIdentifier,
+    this.dbClusterSnapshotIdentifier,
+    this.includePublic,
+    this.includeShared,
+    this.mostRecent,
+    this.region,
+    this.snapshotType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class GetClusterSnapshotArgs {
 
   factory GetClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterSnapshotArgs(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterIdentifier'] as String),
-      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : pulumi.Output.create<String>(map['dbClusterSnapshotIdentifier'] as String),
-      includePublic: map['includePublic'] == null ? null : pulumi.Output.create<bool>(map['includePublic'] as bool),
-      includeShared: map['includeShared'] == null ? null : pulumi.Output.create<bool>(map['includeShared'] as bool),
-      mostRecent: map['mostRecent'] == null ? null : pulumi.Output.create<bool>(map['mostRecent'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotType: map['snapshotType'] == null ? null : pulumi.Output.create<String>(map['snapshotType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
+      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : (map['dbClusterSnapshotIdentifier'] as String).input(),
+      includePublic: map['includePublic'] == null ? null : (map['includePublic'] as bool).input(),
+      includeShared: map['includeShared'] == null ? null : (map['includeShared'] as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

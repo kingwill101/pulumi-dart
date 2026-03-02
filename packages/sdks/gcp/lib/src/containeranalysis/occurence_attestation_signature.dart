@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OccurenceAttestationSignature {
   /// The identifier for the public key that verifies this
@@ -12,7 +13,7 @@ class OccurenceAttestationSignature {
   /// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
   /// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
   /// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-  final String publicKeyId;
+  final pulumi.Input<String> publicKeyId;
   /// The content of the signature, an opaque bytestring.
   /// The payload that this signature verifies MUST be
   /// unambiguously provided with the Signature during
@@ -20,7 +21,7 @@ class OccurenceAttestationSignature {
   /// payload explicitly. Alternatively, a message might
   /// have a canonical serialization that can always be
   /// unambiguously computed to derive the payload.
-  final String? signature;
+  final pulumi.Input<String>? signature;
 
   /// Creates a new [OccurenceAttestationSignature].
   /// [publicKeyId] The identifier for the public key that verifies this
@@ -39,8 +40,8 @@ class OccurenceAttestationSignature {
 
   factory OccurenceAttestationSignature.fromMap(Map<String, dynamic> map) {
     return OccurenceAttestationSignature(
-      publicKeyId: map['publicKeyId'] as String,
-      signature: map['signature'] == null ? null : map['signature'] as String,
+      publicKeyId: (map['publicKeyId'] as String).input(),
+      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
     );
   }
 }

@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synthetic_task_common_setting_custom_host.dart';
 
 class SyntheticTaskCommonSetting {
   /// Custom host. See `custom_host` below.
-  final SyntheticTaskCommonSettingCustomHost? customHost;
+  final pulumi.Input<SyntheticTaskCommonSettingCustomHost>? customHost;
   /// IpType.
-  final int? ipType;
+  final pulumi.Input<int>? ipType;
   /// Whether to enable link tracking.
-  final bool? isOpenTrace;
+  final pulumi.Input<bool>? isOpenTrace;
   /// Whether the monitoring samples are evenly distributed:
   /// - 0: No
   /// 1: Yes.
-  final int? monitorSamples;
+  final pulumi.Input<int>? monitorSamples;
   /// Link trace client type:
   /// - 0:ARMS Agent
   /// - 1:OpenTelemetry
   /// - 2:Jaeger.
-  final int? traceClientType;
+  final pulumi.Input<int>? traceClientType;
   /// The link data is reported to the region.
-  final String? xtraceRegion;
+  final pulumi.Input<String>? xtraceRegion;
 
   /// Creates a new [SyntheticTaskCommonSetting].
   /// [customHost] Custom host. See `custom_host` below.
@@ -39,7 +40,7 @@ class SyntheticTaskCommonSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customHost': ?customHost == null ? null : customHost!.toMap(),
+      'customHost': ?pulumi.Input.mapOptionalInputValue<SyntheticTaskCommonSettingCustomHost, Map<String, dynamic>>(customHost, (value) => value.toMap()),
       'ipType': ?ipType,
       'isOpenTrace': ?isOpenTrace,
       'monitorSamples': ?monitorSamples,
@@ -50,12 +51,12 @@ class SyntheticTaskCommonSetting {
 
   factory SyntheticTaskCommonSetting.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskCommonSetting(
-      customHost: map['customHost'] == null ? null : SyntheticTaskCommonSettingCustomHost.fromMap((map['customHost'] as Map).cast<String, dynamic>()),
-      ipType: map['ipType'] == null ? null : map['ipType'] as int,
-      isOpenTrace: map['isOpenTrace'] == null ? null : map['isOpenTrace'] as bool,
-      monitorSamples: map['monitorSamples'] == null ? null : map['monitorSamples'] as int,
-      traceClientType: map['traceClientType'] == null ? null : map['traceClientType'] as int,
-      xtraceRegion: map['xtraceRegion'] == null ? null : map['xtraceRegion'] as String,
+      customHost: map['customHost'] == null ? null : (SyntheticTaskCommonSettingCustomHost.fromMap((map['customHost'] as Map).cast<String, dynamic>())).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType'] as int).input(),
+      isOpenTrace: map['isOpenTrace'] == null ? null : (map['isOpenTrace'] as bool).input(),
+      monitorSamples: map['monitorSamples'] == null ? null : (map['monitorSamples'] as int).input(),
+      traceClientType: map['traceClientType'] == null ? null : (map['traceClientType'] as int).input(),
+      xtraceRegion: map['xtraceRegion'] == null ? null : (map['xtraceRegion'] as String).input(),
     );
   }
 }

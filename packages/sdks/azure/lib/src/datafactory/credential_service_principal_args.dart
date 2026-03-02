@@ -32,21 +32,14 @@ class CredentialServicePrincipalArgs {
   /// [servicePrincipalKey] A `service_principal_key` block as defined below.
   /// [tenantId] The Tenant ID of the Service Principal.
   CredentialServicePrincipalArgs({
-    pulumi.Output<List<String>>? annotations,
-    required pulumi.Output<String> dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> servicePrincipalId,
-    pulumi.Output<CredentialServicePrincipalServicePrincipalKey>? servicePrincipalKey,
-    required pulumi.Output<String> tenantId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servicePrincipalId = pulumi.Input.asInput<String>(servicePrincipalId),
-      servicePrincipalKey = pulumi.Input.asOptionalInput<CredentialServicePrincipalServicePrincipalKey>(servicePrincipalKey),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.annotations,
+    required this.dataFactoryId,
+    this.description,
+    this.name,
+    required this.servicePrincipalId,
+    this.servicePrincipalKey,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class CredentialServicePrincipalArgs {
 
   factory CredentialServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return CredentialServicePrincipalArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servicePrincipalId: pulumi.Output.create<String>(map['servicePrincipalId'] as String),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : pulumi.Output.create<CredentialServicePrincipalServicePrincipalKey>(CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (CredentialServicePrincipalServicePrincipalKey.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

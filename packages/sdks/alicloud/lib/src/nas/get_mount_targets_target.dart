@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMountTargetsTarget {
   /// Filter results by a specific AccessGroupName.
-  final String accessGroupName;
+  final pulumi.Input<String> accessGroupName;
   /// ID of the MountTargetDomain.
-  final String id;
+  final pulumi.Input<String> id;
   /// Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
-  final String mountTargetDomain;
+  final pulumi.Input<String> mountTargetDomain;
   /// Filter results by a specific NetworkType.
-  final String networkType;
+  final pulumi.Input<String> networkType;
   /// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
-  final String type;
+  final pulumi.Input<String> type;
   /// Filter results by a specific VpcId.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Filter results by a specific VSwitchId.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetMountTargetsTarget].
   /// [accessGroupName] Filter results by a specific AccessGroupName.
@@ -54,14 +55,14 @@ class GetMountTargetsTarget {
 
   factory GetMountTargetsTarget.fromMap(Map<String, dynamic> map) {
     return GetMountTargetsTarget(
-      accessGroupName: map['accessGroupName'] as String,
-      id: map['id'] as String,
-      mountTargetDomain: map['mountTargetDomain'] as String,
-      networkType: map['networkType'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      accessGroupName: (map['accessGroupName'] as String).input(),
+      id: (map['id'] as String).input(),
+      mountTargetDomain: (map['mountTargetDomain'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

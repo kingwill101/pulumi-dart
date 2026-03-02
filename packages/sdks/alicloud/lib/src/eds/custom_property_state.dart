@@ -14,11 +14,9 @@ class CustomPropertyState {
   /// [propertyKey] The Custom attribute key.
   /// [propertyValues] Custom attribute sets the value of. See `property_values` below.
   CustomPropertyState({
-    pulumi.Output<String>? propertyKey,
-    pulumi.Output<List<CustomPropertyPropertyValue>>? propertyValues,
-  }) :
-      propertyKey = pulumi.Input.asOptionalInput<String>(propertyKey),
-      propertyValues = pulumi.Input.asOptionalInput<List<CustomPropertyPropertyValue>>(propertyValues);
+    this.propertyKey,
+    this.propertyValues,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class CustomPropertyState {
 
   factory CustomPropertyState.fromMap(Map<String, dynamic> map) {
     return CustomPropertyState(
-      propertyKey: map['propertyKey'] == null ? null : pulumi.Output.create<String>(map['propertyKey'] as String),
-      propertyValues: map['propertyValues'] == null ? null : pulumi.Output.create<List<CustomPropertyPropertyValue>>(pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))),
+      propertyKey: map['propertyKey'] == null ? null : (map['propertyKey'] as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

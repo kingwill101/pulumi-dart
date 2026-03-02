@@ -28,19 +28,13 @@ class GetDatabaseSystemVersionsArgs {
   /// [storageManagement] The database system storage management option. Used to list database versions available for that storage manager. The only possible value is `LVM`.
   /// [upgradeSupported] Whether to filter the results to the set of database versions which are supported for upgrade.
   GetDatabaseSystemVersionsArgs({
-    pulumi.Output<bool>? databaseSoftwareImageSupported,
-    pulumi.Output<String>? databaseSystemShape,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? shapeFamily,
-    pulumi.Output<String>? storageManagement,
-    pulumi.Output<bool>? upgradeSupported,
-  }) :
-      databaseSoftwareImageSupported = pulumi.Input.asOptionalInput<bool>(databaseSoftwareImageSupported),
-      databaseSystemShape = pulumi.Input.asOptionalInput<String>(databaseSystemShape),
-      location = pulumi.Input.asInput<String>(location),
-      shapeFamily = pulumi.Input.asOptionalInput<String>(shapeFamily),
-      storageManagement = pulumi.Input.asOptionalInput<String>(storageManagement),
-      upgradeSupported = pulumi.Input.asOptionalInput<bool>(upgradeSupported);
+    this.databaseSoftwareImageSupported,
+    this.databaseSystemShape,
+    required this.location,
+    this.shapeFamily,
+    this.storageManagement,
+    this.upgradeSupported,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetDatabaseSystemVersionsArgs {
 
   factory GetDatabaseSystemVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsArgs(
-      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : pulumi.Output.create<bool>(map['databaseSoftwareImageSupported'] as bool),
-      databaseSystemShape: map['databaseSystemShape'] == null ? null : pulumi.Output.create<String>(map['databaseSystemShape'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      shapeFamily: map['shapeFamily'] == null ? null : pulumi.Output.create<String>(map['shapeFamily'] as String),
-      storageManagement: map['storageManagement'] == null ? null : pulumi.Output.create<String>(map['storageManagement'] as String),
-      upgradeSupported: map['upgradeSupported'] == null ? null : pulumi.Output.create<bool>(map['upgradeSupported'] as bool),
+      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : (map['databaseSoftwareImageSupported'] as bool).input(),
+      databaseSystemShape: map['databaseSystemShape'] == null ? null : (map['databaseSystemShape'] as String).input(),
+      location: (map['location'] as String).input(),
+      shapeFamily: map['shapeFamily'] == null ? null : (map['shapeFamily'] as String).input(),
+      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement'] as String).input(),
+      upgradeSupported: map['upgradeSupported'] == null ? null : (map['upgradeSupported'] as bool).input(),
     );
   }
 }

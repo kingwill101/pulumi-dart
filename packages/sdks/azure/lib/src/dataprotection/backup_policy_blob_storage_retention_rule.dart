@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_blob_storage_retention_rule_criteria.dart';
 import 'backup_policy_blob_storage_retention_rule_life_cycle.dart';
 
 class BackupPolicyBlobStorageRetentionRule {
   /// A `criteria` block as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
-  final BackupPolicyBlobStorageRetentionRuleCriteria criteria;
+  final pulumi.Input<BackupPolicyBlobStorageRetentionRuleCriteria> criteria;
   /// A `life_cycle` block as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
-  final BackupPolicyBlobStorageRetentionRuleLifeCycle lifeCycle;
+  final pulumi.Input<BackupPolicyBlobStorageRetentionRuleLifeCycle> lifeCycle;
   /// The name which should be used for this retention rule. Changing this forces a new Backup Policy Blob Storage to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new Backup Policy Blob Storage to be created.
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [BackupPolicyBlobStorageRetentionRule].
   /// [criteria] A `criteria` block as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
@@ -27,8 +28,8 @@ class BackupPolicyBlobStorageRetentionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criteria': criteria.toMap(),
-      'lifeCycle': lifeCycle.toMap(),
+      'criteria': pulumi.Input.mapInputValue<BackupPolicyBlobStorageRetentionRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
+      'lifeCycle': pulumi.Input.mapInputValue<BackupPolicyBlobStorageRetentionRuleLifeCycle, Map<String, dynamic>>(lifeCycle, (value) => value.toMap()),
       'name': name,
       'priority': priority,
     };
@@ -36,10 +37,10 @@ class BackupPolicyBlobStorageRetentionRule {
 
   factory BackupPolicyBlobStorageRetentionRule.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBlobStorageRetentionRule(
-      criteria: BackupPolicyBlobStorageRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>()),
-      lifeCycle: BackupPolicyBlobStorageRetentionRuleLifeCycle.fromMap((map['lifeCycle'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      priority: map['priority'] as int,
+      criteria: (BackupPolicyBlobStorageRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      lifeCycle: (BackupPolicyBlobStorageRetentionRuleLifeCycle.fromMap((map['lifeCycle'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

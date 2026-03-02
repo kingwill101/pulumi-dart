@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaItemsProperty {
   /// Description of the property.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
-  final String? itemsJson;
+  final pulumi.Input<String>? itemsJson;
   /// Name of the property.
-  final String name;
+  final pulumi.Input<String> name;
   /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
-  final String? propertiesJson;
+  final pulumi.Input<String>? propertiesJson;
   /// Whether this property is required. Defaults to `false`.
-  final bool? required;
+  final pulumi.Input<bool>? required;
   /// Data type of the property.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaItemsProperty].
   /// [description] Description of the property.
@@ -44,12 +45,12 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaItemsProperty.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaItemsProperty(
-      description: map['description'] == null ? null : map['description'] as String,
-      itemsJson: map['itemsJson'] == null ? null : map['itemsJson'] as String,
-      name: map['name'] as String,
-      propertiesJson: map['propertiesJson'] == null ? null : map['propertiesJson'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
-      type: map['type'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      itemsJson: map['itemsJson'] == null ? null : (map['itemsJson'] as String).input(),
+      name: (map['name'] as String).input(),
+      propertiesJson: map['propertiesJson'] == null ? null : (map['propertiesJson'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

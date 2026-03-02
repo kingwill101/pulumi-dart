@@ -18,15 +18,11 @@ class GetDicomStoreArgs {
   /// [location] Required.
   /// [project] Optional.
   GetDicomStoreArgs({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> dicomStoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.datasetId,
+    required this.dicomStoreId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetDicomStoreArgs {
 
   factory GetDicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDicomStoreArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      dicomStoreId: pulumi.Output.create<String>(map['dicomStoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      dicomStoreId: (map['dicomStoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

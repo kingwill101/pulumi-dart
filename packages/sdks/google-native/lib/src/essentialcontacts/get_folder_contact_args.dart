@@ -14,11 +14,9 @@ class GetFolderContactArgs {
   /// [contactId] Required.
   /// [folderId] Required.
   GetFolderContactArgs({
-    required pulumi.Output<String> contactId,
-    required pulumi.Output<String> folderId,
-  }) :
-      contactId = pulumi.Input.asInput<String>(contactId),
-      folderId = pulumi.Input.asInput<String>(folderId);
+    required this.contactId,
+    required this.folderId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetFolderContactArgs {
 
   factory GetFolderContactArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderContactArgs(
-      contactId: pulumi.Output.create<String>(map['contactId'] as String),
-      folderId: pulumi.Output.create<String>(map['folderId'] as String),
+      contactId: (map['contactId'] as String).input(),
+      folderId: (map['folderId'] as String).input(),
     );
   }
 }

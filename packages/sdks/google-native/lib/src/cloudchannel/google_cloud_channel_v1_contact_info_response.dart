@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contact information for a customer account.
 class GoogleCloudChannelV1ContactInfoResponse {
   /// The customer account contact's display name, formatted as a combination of the customer's first and last name.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
-  final String email;
+  final pulumi.Input<String> email;
   /// The customer account contact's first name. Optional for Team customers.
-  final String firstName;
+  final pulumi.Input<String> firstName;
   /// The customer account contact's last name. Optional for Team customers.
-  final String lastName;
+  final pulumi.Input<String> lastName;
   /// The customer account's contact phone number.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// Optional. The customer account contact's job title.
-  final String title;
+  final pulumi.Input<String> title;
 
   /// Creates a new [GoogleCloudChannelV1ContactInfoResponse].
   /// [displayName] The customer account contact's display name, formatted as a combination of the customer's first and last name.
@@ -45,12 +46,12 @@ class GoogleCloudChannelV1ContactInfoResponse {
 
   factory GoogleCloudChannelV1ContactInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ContactInfoResponse(
-      displayName: map['displayName'] as String,
-      email: map['email'] as String,
-      firstName: map['firstName'] as String,
-      lastName: map['lastName'] as String,
-      phone: map['phone'] as String,
-      title: map['title'] as String,
+      displayName: (map['displayName'] as String).input(),
+      email: (map['email'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      phone: (map['phone'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

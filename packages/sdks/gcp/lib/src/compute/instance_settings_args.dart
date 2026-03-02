@@ -22,13 +22,10 @@ class InstanceSettingsArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides.
   InstanceSettingsArgs({
-    pulumi.Output<InstanceSettingsMetadata>? metadata,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> zone,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<InstanceSettingsMetadata>(metadata),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.metadata,
+    this.project,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class InstanceSettingsArgs {
 
   factory InstanceSettingsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsArgs(
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<InstanceSettingsMetadata>(InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      metadata: map['metadata'] == null ? null : (InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

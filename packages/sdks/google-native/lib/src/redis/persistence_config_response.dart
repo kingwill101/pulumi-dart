@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of the persistence functionality.
 class PersistenceConfigResponse {
   /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
-  final String persistenceMode;
+  final pulumi.Input<String> persistenceMode;
   /// The next time that a snapshot attempt is scheduled to occur.
-  final String rdbNextSnapshotTime;
+  final pulumi.Input<String> rdbNextSnapshotTime;
   /// Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
-  final String rdbSnapshotPeriod;
+  final pulumi.Input<String> rdbSnapshotPeriod;
   /// Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
-  final String rdbSnapshotStartTime;
+  final pulumi.Input<String> rdbSnapshotStartTime;
 
   /// Creates a new [PersistenceConfigResponse].
   /// [persistenceMode] Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
@@ -35,10 +36,10 @@ class PersistenceConfigResponse {
 
   factory PersistenceConfigResponse.fromMap(Map<String, dynamic> map) {
     return PersistenceConfigResponse(
-      persistenceMode: map['persistenceMode'] as String,
-      rdbNextSnapshotTime: map['rdbNextSnapshotTime'] as String,
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] as String,
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] as String,
+      persistenceMode: (map['persistenceMode'] as String).input(),
+      rdbNextSnapshotTime: (map['rdbNextSnapshotTime'] as String).input(),
+      rdbSnapshotPeriod: (map['rdbSnapshotPeriod'] as String).input(),
+      rdbSnapshotStartTime: (map['rdbSnapshotStartTime'] as String).input(),
     );
   }
 }

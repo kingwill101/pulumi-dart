@@ -46,25 +46,16 @@ class GetShareArgs {
   /// [snapshotId] The UUID of the share's base snapshot.
   /// [status] A share status filter. A valid value is `creating`,
   GetShareArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? exportLocationPath,
-    pulumi.Output<bool>? isPublic,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shareNetworkId,
-    pulumi.Output<String>? snapshotId,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exportLocationPath = pulumi.Input.asOptionalInput<String>(exportLocationPath),
-      isPublic = pulumi.Input.asOptionalInput<bool>(isPublic),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shareNetworkId = pulumi.Input.asOptionalInput<String>(shareNetworkId),
-      snapshotId = pulumi.Input.asOptionalInput<String>(snapshotId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.exportLocationPath,
+    this.isPublic,
+    this.metadata,
+    this.name,
+    this.region,
+    this.shareNetworkId,
+    this.snapshotId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,15 +73,15 @@ class GetShareArgs {
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exportLocationPath: map['exportLocationPath'] == null ? null : pulumi.Output.create<String>(map['exportLocationPath'] as String),
-      isPublic: map['isPublic'] == null ? null : pulumi.Output.create<bool>(map['isPublic'] as bool),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shareNetworkId: map['shareNetworkId'] == null ? null : pulumi.Output.create<String>(map['shareNetworkId'] as String),
-      snapshotId: map['snapshotId'] == null ? null : pulumi.Output.create<String>(map['snapshotId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exportLocationPath: map['exportLocationPath'] == null ? null : (map['exportLocationPath'] as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shareNetworkId: map['shareNetworkId'] == null ? null : (map['shareNetworkId'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

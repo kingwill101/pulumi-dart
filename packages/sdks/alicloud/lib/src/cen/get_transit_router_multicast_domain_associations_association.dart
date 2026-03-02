@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTransitRouterMulticastDomainAssociationsAssociation {
   /// The ID of the Transit Router Multicast Domain Association. It formats as `<transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource associated with the multicast domain.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The ID of the Alibaba Cloud account to which the resource associated with the multicast domain belongs.
-  final int resourceOwnerId;
+  final pulumi.Input<int> resourceOwnerId;
   /// The type of resource associated with the multicast domain. Valid Value: `VPC`.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the network instance connection.
-  final String transitRouterAttachmentId;
+  final pulumi.Input<String> transitRouterAttachmentId;
   /// The ID of the multicast domain.
-  final String transitRouterMulticastDomainId;
+  final pulumi.Input<String> transitRouterMulticastDomainId;
   /// The ID of the vSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetTransitRouterMulticastDomainAssociationsAssociation].
   /// [id] The ID of the Transit Router Multicast Domain Association. It formats as `<transit_router_multicast_domain_id>:<transit_router_attachment_id>:<vswitch_id>`.
@@ -54,14 +55,14 @@ class GetTransitRouterMulticastDomainAssociationsAssociation {
 
   factory GetTransitRouterMulticastDomainAssociationsAssociation.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainAssociationsAssociation(
-      id: map['id'] as String,
-      resourceId: map['resourceId'] as String,
-      resourceOwnerId: map['resourceOwnerId'] as int,
-      resourceType: map['resourceType'] as String,
-      status: map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
-      vswitchId: map['vswitchId'] as String,
+      id: (map['id'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceOwnerId: (map['resourceOwnerId'] as int).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      status: (map['status'] as String).input(),
+      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

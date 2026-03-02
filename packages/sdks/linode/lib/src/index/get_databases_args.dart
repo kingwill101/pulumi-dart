@@ -19,13 +19,10 @@ class GetDatabasesArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`version`)
   GetDatabasesArgs({
-    pulumi.Output<List<GetDatabasesFilter>>? filters,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetDatabasesFilter>>(filters),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    this.filters,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDatabasesArgs {
 
   factory GetDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetDatabasesFilter>>(pulumi.Input.decodeList<GetDatabasesFilter>(map['filters'], (value) => GetDatabasesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabasesFilter>(map['filters'], (value) => GetDatabasesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

@@ -12,28 +12,28 @@ class VirtualMachineScaleSetIPConfigurationPropertiesResponse {
   /// gateways. A scale set can reference backend address pools of multiple
   /// application gateways. Multiple scale sets cannot use the same application
   /// gateway.
-  final List<SubResourceResponse>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<SubResourceResponse>>? applicationGatewayBackendAddressPools;
   /// Specifies an array of references to application security group.
-  final List<SubResourceResponse>? applicationSecurityGroups;
+  final pulumi.Input<List<SubResourceResponse>>? applicationSecurityGroups;
   /// Specifies an array of references to backend address pools of load balancers. A
   /// scale set can reference backend address pools of one public and one internal
   /// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-  final List<SubResourceResponse>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<SubResourceResponse>>? loadBalancerBackendAddressPools;
   /// Specifies an array of references to inbound Nat pools of the load balancers. A
   /// scale set can reference inbound nat pools of one public and one internal load
   /// balancer. Multiple scale sets cannot use the same basic sku load balancer.
-  final List<SubResourceResponse>? loadBalancerInboundNatPools;
+  final pulumi.Input<List<SubResourceResponse>>? loadBalancerInboundNatPools;
   /// Specifies the primary network interface in case the virtual machine has more
   /// than 1 network interface.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// Available from Api-Version 2017-03-30 onwards, it represents whether the
   /// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
   /// values are: 'IPv4' and 'IPv6'.
-  final String? privateIPAddressVersion;
+  final pulumi.Input<String>? privateIPAddressVersion;
   /// The publicIPAddressConfiguration.
-  final VirtualMachineScaleSetPublicIPAddressConfigurationResponse? publicIPAddressConfiguration;
+  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationResponse>? publicIPAddressConfiguration;
   /// Specifies the identifier of the subnet.
-  final ApiEntityReferenceResponse? subnet;
+  final pulumi.Input<ApiEntityReferenceResponse>? subnet;
 
   /// Creates a new [VirtualMachineScaleSetIPConfigurationPropertiesResponse].
   /// [applicationGatewayBackendAddressPools] Specifies an array of references to backend address pools of application
@@ -57,27 +57,27 @@ class VirtualMachineScaleSetIPConfigurationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationGatewayBackendAddressPools': ?applicationGatewayBackendAddressPools == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(applicationGatewayBackendAddressPools!, (value) => value.toMap()),
-      'applicationSecurityGroups': ?applicationSecurityGroups == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(applicationSecurityGroups!, (value) => value.toMap()),
-      'loadBalancerBackendAddressPools': ?loadBalancerBackendAddressPools == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(loadBalancerBackendAddressPools!, (value) => value.toMap()),
-      'loadBalancerInboundNatPools': ?loadBalancerInboundNatPools == null ? null : pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(loadBalancerInboundNatPools!, (value) => value.toMap()),
+      'applicationGatewayBackendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(applicationGatewayBackendAddressPools, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applicationSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(applicationSecurityGroups, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancerBackendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(loadBalancerBackendAddressPools, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadBalancerInboundNatPools': ?pulumi.Input.mapOptionalInputValue<List<SubResourceResponse>, List<Map<String, dynamic>>>(loadBalancerInboundNatPools, (value) => pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'primary': ?primary,
       'privateIPAddressVersion': ?privateIPAddressVersion,
-      'publicIPAddressConfiguration': ?publicIPAddressConfiguration == null ? null : publicIPAddressConfiguration!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddressConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetPublicIPAddressConfigurationResponse, Map<String, dynamic>>(publicIPAddressConfiguration, (value) => value.toMap()),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ApiEntityReferenceResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineScaleSetIPConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetIPConfigurationPropertiesResponse(
-      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['applicationGatewayBackendAddressPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['applicationSecurityGroups'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['loadBalancerBackendAddressPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancerInboundNatPools: map['loadBalancerInboundNatPools'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['loadBalancerInboundNatPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : map['privateIPAddressVersion'] as String,
-      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : ApiEntityReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['applicationGatewayBackendAddressPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['applicationSecurityGroups'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['loadBalancerBackendAddressPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerInboundNatPools: map['loadBalancerInboundNatPools'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['loadBalancerInboundNatPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
+      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

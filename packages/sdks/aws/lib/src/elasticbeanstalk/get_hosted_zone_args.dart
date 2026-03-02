@@ -13,9 +13,8 @@ class GetHostedZoneArgs {
   /// Creates a new [GetHostedZoneArgs].
   /// [region] Name of the Region whose hosted zone is desired. Defaults to the Region set in the provider configuration.
   GetHostedZoneArgs({
-    pulumi.Output<String>? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetHostedZoneArgs {
 
   factory GetHostedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

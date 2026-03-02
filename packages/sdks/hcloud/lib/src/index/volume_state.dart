@@ -36,25 +36,16 @@ class VolumeState {
   /// [serverId] Server to attach the Volume to, not allowed if location argument is passed.
   /// [size] Size of the volume (in GB).
   VolumeState({
-    pulumi.Output<bool>? automount,
-    pulumi.Output<bool>? deleteProtection,
-    pulumi.Output<String>? format,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? linuxDevice,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? serverId,
-    pulumi.Output<int>? size,
-  }) :
-      automount = pulumi.Input.asOptionalInput<bool>(automount),
-      deleteProtection = pulumi.Input.asOptionalInput<bool>(deleteProtection),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      linuxDevice = pulumi.Input.asOptionalInput<String>(linuxDevice),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      serverId = pulumi.Input.asOptionalInput<int>(serverId),
-      size = pulumi.Input.asOptionalInput<int>(size);
+    this.automount,
+    this.deleteProtection,
+    this.format,
+    this.labels,
+    this.linuxDevice,
+    this.location,
+    this.name,
+    this.serverId,
+    this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      automount: map['automount'] == null ? null : pulumi.Output.create<bool>(map['automount'] as bool),
-      deleteProtection: map['deleteProtection'] == null ? null : pulumi.Output.create<bool>(map['deleteProtection'] as bool),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      linuxDevice: map['linuxDevice'] == null ? null : pulumi.Output.create<String>(map['linuxDevice'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<int>(map['serverId'] as int),
-      size: map['size'] == null ? null : pulumi.Output.create<int>(map['size'] as int),
+      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      linuxDevice: map['linuxDevice'] == null ? null : (map['linuxDevice'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      size: map['size'] == null ? null : (map['size'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the resource properties.
 class OsProfile {
   /// Admin password of the virtual machine.
-  final String? adminPassword;
+  final pulumi.Input<String>? adminPassword;
   /// Gets or sets computer name.
-  final String? computerName;
+  final pulumi.Input<String>? computerName;
 
   /// Creates a new [OsProfile].
   /// [adminPassword] Admin password of the virtual machine.
@@ -25,8 +26,8 @@ class OsProfile {
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      adminPassword: map['adminPassword'] == null ? null : map['adminPassword'] as String,
-      computerName: map['computerName'] == null ? null : map['computerName'] as String,
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
     );
   }
 }

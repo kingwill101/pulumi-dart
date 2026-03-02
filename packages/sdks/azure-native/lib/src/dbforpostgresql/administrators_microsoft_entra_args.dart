@@ -28,19 +28,13 @@ class AdministratorsMicrosoftEntraArgs {
   /// [serverName] The name of the server.
   /// [tenantId] Identifier of the tenant in which the Microsoft Entra principal exists.
   AdministratorsMicrosoftEntraArgs({
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? principalName,
-    pulumi.Output<String>? principalType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<String>? tenantId,
-  }) :
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      principalName = pulumi.Input.asOptionalInput<String>(principalName),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.objectId,
+    this.principalName,
+    this.principalType,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AdministratorsMicrosoftEntraArgs {
 
   factory AdministratorsMicrosoftEntraArgs.fromMap(Map<String, dynamic> map) {
     return AdministratorsMicrosoftEntraArgs(
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      principalName: map['principalName'] == null ? null : pulumi.Output.create<String>(map['principalName'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

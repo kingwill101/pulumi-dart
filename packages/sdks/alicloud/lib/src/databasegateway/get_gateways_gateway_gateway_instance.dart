@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGatewaysGatewayGatewayInstance {
   /// The connection type of Gateway instance.
-  final String connectEndpointType;
+  final pulumi.Input<String> connectEndpointType;
   /// The process of version number of Gateway instance.
-  final String currentDaemonVersion;
+  final pulumi.Input<String> currentDaemonVersion;
   /// The version of Gateway instance.
-  final String currentVersion;
+  final pulumi.Input<String> currentVersion;
   /// The endpoint address of Gateway instance.
-  final String endPoint;
+  final pulumi.Input<String> endPoint;
   /// The id of Gateway instance.
-  final String gatewayInstanceId;
+  final pulumi.Input<String> gatewayInstanceId;
   /// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-  final String gatewayInstanceStatus;
+  final pulumi.Input<String> gatewayInstanceStatus;
   /// The last Updated time stamp of Gateway instance.
-  final String lastUpdateTime;
+  final pulumi.Input<String> lastUpdateTime;
   /// The Local IP ADDRESS of Gateway instance.
-  final String localIp;
+  final pulumi.Input<String> localIp;
   /// The prompt information of Gateway instance.
-  final String message;
+  final pulumi.Input<String> message;
   /// The host of Gateway instance.
-  final String outputIp;
+  final pulumi.Input<String> outputIp;
 
   /// Creates a new [GetGatewaysGatewayGatewayInstance].
   /// [connectEndpointType] The connection type of Gateway instance.
@@ -64,16 +65,16 @@ class GetGatewaysGatewayGatewayInstance {
 
   factory GetGatewaysGatewayGatewayInstance.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGatewayGatewayInstance(
-      connectEndpointType: map['connectEndpointType'] as String,
-      currentDaemonVersion: map['currentDaemonVersion'] as String,
-      currentVersion: map['currentVersion'] as String,
-      endPoint: map['endPoint'] as String,
-      gatewayInstanceId: map['gatewayInstanceId'] as String,
-      gatewayInstanceStatus: map['gatewayInstanceStatus'] as String,
-      lastUpdateTime: map['lastUpdateTime'] as String,
-      localIp: map['localIp'] as String,
-      message: map['message'] as String,
-      outputIp: map['outputIp'] as String,
+      connectEndpointType: (map['connectEndpointType'] as String).input(),
+      currentDaemonVersion: (map['currentDaemonVersion'] as String).input(),
+      currentVersion: (map['currentVersion'] as String).input(),
+      endPoint: (map['endPoint'] as String).input(),
+      gatewayInstanceId: (map['gatewayInstanceId'] as String).input(),
+      gatewayInstanceStatus: (map['gatewayInstanceStatus'] as String).input(),
+      lastUpdateTime: (map['lastUpdateTime'] as String).input(),
+      localIp: (map['localIp'] as String).input(),
+      message: (map['message'] as String).input(),
+      outputIp: (map['outputIp'] as String).input(),
     );
   }
 }

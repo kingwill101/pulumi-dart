@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Vlan group properties.
 class VlanGroupProperties {
   /// Vlan group name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of vlans.
-  final List<String>? vlans;
+  final pulumi.Input<List<String>>? vlans;
 
   /// Creates a new [VlanGroupProperties].
   /// [name] Vlan group name.
@@ -25,8 +26,8 @@ class VlanGroupProperties {
 
   factory VlanGroupProperties.fromMap(Map<String, dynamic> map) {
     return VlanGroupProperties(
-      name: map['name'] == null ? null : map['name'] as String,
-      vlans: map['vlans'] == null ? null : (map['vlans'] as List).cast<String>(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
     );
   }
 }

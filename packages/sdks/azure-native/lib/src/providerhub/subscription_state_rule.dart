@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionStateRule {
   /// The allowed actions.
-  final List<String>? allowedActions;
+  final pulumi.Input<List<String>>? allowedActions;
   /// The subscription state.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SubscriptionStateRule].
   /// [allowedActions] The allowed actions.
@@ -24,8 +25,8 @@ class SubscriptionStateRule {
 
   factory SubscriptionStateRule.fromMap(Map<String, dynamic> map) {
     return SubscriptionStateRule(
-      allowedActions: map['allowedActions'] == null ? null : (map['allowedActions'] as List).cast<String>(),
-      state: map['state'] == null ? null : map['state'] as String,
+      allowedActions: map['allowedActions'] == null ? null : ((map['allowedActions'] as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

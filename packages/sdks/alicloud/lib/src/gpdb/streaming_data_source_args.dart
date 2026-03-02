@@ -30,19 +30,13 @@ class StreamingDataSourceArgs {
   /// [dbInstanceId] The instance ID.
   /// [serviceId] The real-time data service ID.
   StreamingDataSourceArgs({
-    required pulumi.Output<String> dataSourceConfig,
-    pulumi.Output<String>? dataSourceDescription,
-    required pulumi.Output<String> dataSourceName,
-    required pulumi.Output<String> dataSourceType,
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<int> serviceId,
-  }) :
-      dataSourceConfig = pulumi.Input.asInput<String>(dataSourceConfig),
-      dataSourceDescription = pulumi.Input.asOptionalInput<String>(dataSourceDescription),
-      dataSourceName = pulumi.Input.asInput<String>(dataSourceName),
-      dataSourceType = pulumi.Input.asInput<String>(dataSourceType),
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      serviceId = pulumi.Input.asInput<int>(serviceId);
+    required this.dataSourceConfig,
+    this.dataSourceDescription,
+    required this.dataSourceName,
+    required this.dataSourceType,
+    required this.dbInstanceId,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class StreamingDataSourceArgs {
 
   factory StreamingDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return StreamingDataSourceArgs(
-      dataSourceConfig: pulumi.Output.create<String>(map['dataSourceConfig'] as String),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : pulumi.Output.create<String>(map['dataSourceDescription'] as String),
-      dataSourceName: pulumi.Output.create<String>(map['dataSourceName'] as String),
-      dataSourceType: pulumi.Output.create<String>(map['dataSourceType'] as String),
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      serviceId: pulumi.Output.create<int>(map['serviceId'] as int),
+      dataSourceConfig: (map['dataSourceConfig'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceName: (map['dataSourceName'] as String).input(),
+      dataSourceType: (map['dataSourceType'] as String).input(),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      serviceId: (map['serviceId'] as int).input(),
     );
   }
 }

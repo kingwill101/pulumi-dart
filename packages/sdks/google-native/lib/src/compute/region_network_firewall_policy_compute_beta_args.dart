@@ -37,25 +37,16 @@ class RegionNetworkFirewallPolicyComputeBetaArgs {
   /// [rules] A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   RegionNetworkFirewallPolicyComputeBetaArgs({
-    pulumi.Output<List<FirewallPolicyAssociationComputeBeta>>? associations,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<FirewallPolicyRuleComputeBeta>>? rules,
-    pulumi.Output<String>? shortName,
-  }) :
-      associations = pulumi.Input.asOptionalInput<List<FirewallPolicyAssociationComputeBeta>>(associations),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      rules = pulumi.Input.asOptionalInput<List<FirewallPolicyRuleComputeBeta>>(rules),
-      shortName = pulumi.Input.asOptionalInput<String>(shortName);
+    this.associations,
+    this.description,
+    this.displayName,
+    this.name,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.rules,
+    this.shortName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RegionNetworkFirewallPolicyComputeBetaArgs {
 
   factory RegionNetworkFirewallPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyComputeBetaArgs(
-      associations: map['associations'] == null ? null : pulumi.Output.create<List<FirewallPolicyAssociationComputeBeta>>(pulumi.Input.decodeList<FirewallPolicyAssociationComputeBeta>(map['associations'], (value) => FirewallPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<FirewallPolicyRuleComputeBeta>>(pulumi.Input.decodeList<FirewallPolicyRuleComputeBeta>(map['rules'], (value) => FirewallPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociationComputeBeta>(map['associations'], (value) => FirewallPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleComputeBeta>(map['rules'], (value) => FirewallPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
     );
   }
 }

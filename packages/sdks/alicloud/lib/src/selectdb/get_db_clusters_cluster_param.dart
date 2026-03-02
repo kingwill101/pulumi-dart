@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbClustersClusterParam {
   /// The comments on the parameter.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// The default value of the parameter.
-  final String defaultValue;
+  final pulumi.Input<String> defaultValue;
   /// Indicates whether the parameter immediately takes effect without requiring a restart.
-  final int isDynamic;
+  final pulumi.Input<int> isDynamic;
   /// Indicates whether the parameter is modifiable.
-  final int isUserModifiable;
+  final pulumi.Input<int> isUserModifiable;
   /// Changed parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The value range of the parameter.
-  final String optional;
+  final pulumi.Input<String> optional;
   /// The category of the parameter.
-  final String paramCategory;
+  final pulumi.Input<String> paramCategory;
   /// The new value of Parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetDbClustersClusterParam].
   /// [comment] The comments on the parameter.
@@ -54,14 +55,14 @@ class GetDbClustersClusterParam {
 
   factory GetDbClustersClusterParam.fromMap(Map<String, dynamic> map) {
     return GetDbClustersClusterParam(
-      comment: map['comment'] as String,
-      defaultValue: map['defaultValue'] as String,
-      isDynamic: map['isDynamic'] as int,
-      isUserModifiable: map['isUserModifiable'] as int,
-      name: map['name'] as String,
-      optional: map['optional'] as String,
-      paramCategory: map['paramCategory'] as String,
-      value: map['value'] as String,
+      comment: (map['comment'] as String).input(),
+      defaultValue: (map['defaultValue'] as String).input(),
+      isDynamic: (map['isDynamic'] as int).input(),
+      isUserModifiable: (map['isUserModifiable'] as int).input(),
+      name: (map['name'] as String).input(),
+      optional: (map['optional'] as String).input(),
+      paramCategory: (map['paramCategory'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryImageBuildUlimit {
   /// soft limit
-  final int hard;
+  final pulumi.Input<int> hard;
   /// type of ulimit, e.g. `nofile`
-  final String name;
+  final pulumi.Input<String> name;
   /// hard limit
-  final int soft;
+  final pulumi.Input<int> soft;
 
   /// Creates a new [RegistryImageBuildUlimit].
   /// [hard] soft limit
@@ -29,9 +30,9 @@ class RegistryImageBuildUlimit {
 
   factory RegistryImageBuildUlimit.fromMap(Map<String, dynamic> map) {
     return RegistryImageBuildUlimit(
-      hard: map['hard'] as int,
-      name: map['name'] as String,
-      soft: map['soft'] as int,
+      hard: (map['hard'] as int).input(),
+      name: (map['name'] as String).input(),
+      soft: (map['soft'] as int).input(),
     );
   }
 }

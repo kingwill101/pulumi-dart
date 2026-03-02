@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Admins are owners of a Task, and have all permissions on a particular task identified by the task name. By default, Eventbus periodically scans all task metadata and syncs (adds) any new admins defined here to Zanzibar.
 class EnterpriseCrmEventbusProtoTaskMetadataAdminResponse {
-  final String googleGroupEmail;
-  final String userEmail;
+  final pulumi.Input<String> googleGroupEmail;
+  final pulumi.Input<String> userEmail;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskMetadataAdminResponse].
   /// [googleGroupEmail] Required.
@@ -23,8 +24,8 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdminResponse {
 
   factory EnterpriseCrmEventbusProtoTaskMetadataAdminResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskMetadataAdminResponse(
-      googleGroupEmail: map['googleGroupEmail'] as String,
-      userEmail: map['userEmail'] as String,
+      googleGroupEmail: (map['googleGroupEmail'] as String).input(),
+      userEmail: (map['userEmail'] as String).input(),
     );
   }
 }

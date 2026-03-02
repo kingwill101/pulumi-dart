@@ -23,15 +23,11 @@ class MigrationEntityGroupArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   MigrationEntityGroupArgs({
-    pulumi.Output<String>? migrationEntityGroupName,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<MigrationEntityGroupProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrationEntityGroupName = pulumi.Input.asOptionalInput<String>(migrationEntityGroupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      properties = pulumi.Input.asOptionalInput<MigrationEntityGroupProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.migrationEntityGroupName,
+    required this.projectName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MigrationEntityGroupArgs {
 
   factory MigrationEntityGroupArgs.fromMap(Map<String, dynamic> map) {
     return MigrationEntityGroupArgs(
-      migrationEntityGroupName: map['migrationEntityGroupName'] == null ? null : pulumi.Output.create<String>(map['migrationEntityGroupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MigrationEntityGroupProperties>(MigrationEntityGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrationEntityGroupName: map['migrationEntityGroupName'] == null ? null : (map['migrationEntityGroupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: map['properties'] == null ? null : (MigrationEntityGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

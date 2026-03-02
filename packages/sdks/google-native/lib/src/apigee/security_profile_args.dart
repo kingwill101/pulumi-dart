@@ -35,23 +35,15 @@ class SecurityProfileArgs {
   /// [scoringConfigs] List of profile scoring configs in this revision.
   /// [securityProfileId] Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
   SecurityProfileArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<Map<String, dynamic>>>? environments,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<GoogleCloudApigeeV1ProfileConfig> profileConfig,
-    pulumi.Output<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>? scoringConfigs,
-    required pulumi.Output<String> securityProfileId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      environments = pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(environments),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      profileConfig = pulumi.Input.asInput<GoogleCloudApigeeV1ProfileConfig>(profileConfig),
-      scoringConfigs = pulumi.Input.asOptionalInput<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>(scoringConfigs),
-      securityProfileId = pulumi.Input.asInput<String>(securityProfileId);
+    this.description,
+    this.displayName,
+    this.environments,
+    this.name,
+    required this.organizationId,
+    required this.profileConfig,
+    this.scoringConfigs,
+    required this.securityProfileId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SecurityProfileArgs {
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      environments: map['environments'] == null ? null : pulumi.Output.create<List<Map<String, dynamic>>>((map['environments'] as List).cast<Map<String, dynamic>>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      profileConfig: pulumi.Output.create<GoogleCloudApigeeV1ProfileConfig>(GoogleCloudApigeeV1ProfileConfig.fromMap((map['profileConfig'] as Map).cast<String, dynamic>())),
-      scoringConfigs: map['scoringConfigs'] == null ? null : pulumi.Output.create<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>(pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig>(map['scoringConfigs'], (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      securityProfileId: pulumi.Output.create<String>(map['securityProfileId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      environments: map['environments'] == null ? null : ((map['environments'] as List).cast<Map<String, dynamic>>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      profileConfig: (GoogleCloudApigeeV1ProfileConfig.fromMap((map['profileConfig'] as Map).cast<String, dynamic>())).input(),
+      scoringConfigs: map['scoringConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig>(map['scoringConfigs'], (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityProfileId: (map['securityProfileId'] as String).input(),
     );
   }
 }

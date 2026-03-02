@@ -22,15 +22,11 @@ class GroupUserArgs {
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
   GroupUserArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? userId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    required this.groupId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GroupUserArgs {
 
   factory GroupUserArgs.fromMap(Map<String, dynamic> map) {
     return GroupUserArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

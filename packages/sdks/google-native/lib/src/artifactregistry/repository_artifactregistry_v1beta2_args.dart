@@ -37,25 +37,16 @@ class RepositoryArtifactregistryV1beta2Args {
   /// [project] Optional.
   /// [repositoryId] Required. The repository id to use for this repository.
   RepositoryArtifactregistryV1beta2Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<RepositoryFormatArtifactregistryV1beta2>? format,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<MavenRepositoryConfigArtifactregistryV1beta2>? mavenConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      format = pulumi.Input.asOptionalInput<RepositoryFormatArtifactregistryV1beta2>(format),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mavenConfig = pulumi.Input.asOptionalInput<MavenRepositoryConfigArtifactregistryV1beta2>(mavenConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    this.description,
+    this.format,
+    this.kmsKeyName,
+    this.labels,
+    this.location,
+    this.mavenConfig,
+    this.name,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class RepositoryArtifactregistryV1beta2Args {
 
   factory RepositoryArtifactregistryV1beta2Args.fromMap(Map<String, dynamic> map) {
     return RepositoryArtifactregistryV1beta2Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<RepositoryFormatArtifactregistryV1beta2>(RepositoryFormatArtifactregistryV1beta2.fromValue(map['format'] as String)),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mavenConfig: map['mavenConfig'] == null ? null : pulumi.Output.create<MavenRepositoryConfigArtifactregistryV1beta2>(MavenRepositoryConfigArtifactregistryV1beta2.fromMap((map['mavenConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      format: map['format'] == null ? null : (RepositoryFormatArtifactregistryV1beta2.fromValue(map['format'] as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mavenConfig: map['mavenConfig'] == null ? null : (MavenRepositoryConfigArtifactregistryV1beta2.fromMap((map['mavenConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class GetAccountIdTokenArgs {
   /// [targetAudience] The audience claim for the `id_token`.
   /// [targetServiceAccount] The email of the service account being impersonated.  Used only when using impersonation mode.
   GetAccountIdTokenArgs({
-    pulumi.Output<List<String>>? delegates,
-    pulumi.Output<bool>? includeEmail,
-    required pulumi.Output<String> targetAudience,
-    pulumi.Output<String>? targetServiceAccount,
-  }) :
-      delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
-      includeEmail = pulumi.Input.asOptionalInput<bool>(includeEmail),
-      targetAudience = pulumi.Input.asInput<String>(targetAudience),
-      targetServiceAccount = pulumi.Input.asOptionalInput<String>(targetServiceAccount);
+    this.delegates,
+    this.includeEmail,
+    required this.targetAudience,
+    this.targetServiceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetAccountIdTokenArgs {
 
   factory GetAccountIdTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenArgs(
-      delegates: map['delegates'] == null ? null : pulumi.Output.create<List<String>>((map['delegates'] as List).cast<String>()),
-      includeEmail: map['includeEmail'] == null ? null : pulumi.Output.create<bool>(map['includeEmail'] as bool),
-      targetAudience: pulumi.Output.create<String>(map['targetAudience'] as String),
-      targetServiceAccount: map['targetServiceAccount'] == null ? null : pulumi.Output.create<String>(map['targetServiceAccount'] as String),
+      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
+      includeEmail: map['includeEmail'] == null ? null : (map['includeEmail'] as bool).input(),
+      targetAudience: (map['targetAudience'] as String).input(),
+      targetServiceAccount: map['targetServiceAccount'] == null ? null : (map['targetServiceAccount'] as String).input(),
     );
   }
 }

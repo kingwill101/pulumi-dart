@@ -16,11 +16,9 @@ class VolumeAttachmentArgs {
   /// [dropletId] ID of the Droplet to attach the volume to.
   /// [volumeId] ID of the Volume to be attached to the Droplet.
   VolumeAttachmentArgs({
-    required pulumi.Output<int> dropletId,
-    required pulumi.Output<String> volumeId,
-  }) :
-      dropletId = pulumi.Input.asInput<int>(dropletId),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    required this.dropletId,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class VolumeAttachmentArgs {
 
   factory VolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentArgs(
-      dropletId: pulumi.Output.create<int>(map['dropletId'] as int),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      dropletId: (map['dropletId'] as int).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

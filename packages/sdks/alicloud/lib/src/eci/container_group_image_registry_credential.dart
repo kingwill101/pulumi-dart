@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupImageRegistryCredential {
   /// The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
-  final String password;
+  final pulumi.Input<String> password;
   /// The address of the image repository. It is required when `image_registry_credential` is configured.
-  final String server;
+  final pulumi.Input<String> server;
   /// The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [ContainerGroupImageRegistryCredential].
   /// [password] The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
@@ -29,9 +30,9 @@ class ContainerGroupImageRegistryCredential {
 
   factory ContainerGroupImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ContainerGroupImageRegistryCredential(
-      password: map['password'] as String,
-      server: map['server'] as String,
-      userName: map['userName'] as String,
+      password: (map['password'] as String).input(),
+      server: (map['server'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

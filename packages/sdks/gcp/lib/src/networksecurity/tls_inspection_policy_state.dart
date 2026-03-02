@@ -48,31 +48,19 @@ class TlsInspectionPolicyState {
   /// [trustConfig] A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
   /// [updateTime] The timestamp when the resource was updated.
   TlsInspectionPolicyState({
-    pulumi.Output<String>? caPool,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<String>>? customTlsFeatures,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? excludePublicCaSet,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? minTlsVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tlsFeatureProfile,
-    pulumi.Output<String>? trustConfig,
-    pulumi.Output<String>? updateTime,
-  }) :
-      caPool = pulumi.Input.asOptionalInput<String>(caPool),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customTlsFeatures = pulumi.Input.asOptionalInput<List<String>>(customTlsFeatures),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      excludePublicCaSet = pulumi.Input.asOptionalInput<bool>(excludePublicCaSet),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      minTlsVersion = pulumi.Input.asOptionalInput<String>(minTlsVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsFeatureProfile = pulumi.Input.asOptionalInput<String>(tlsFeatureProfile),
-      trustConfig = pulumi.Input.asOptionalInput<String>(trustConfig),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.caPool,
+    this.createTime,
+    this.customTlsFeatures,
+    this.description,
+    this.excludePublicCaSet,
+    this.location,
+    this.minTlsVersion,
+    this.name,
+    this.project,
+    this.tlsFeatureProfile,
+    this.trustConfig,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class TlsInspectionPolicyState {
 
   factory TlsInspectionPolicyState.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyState(
-      caPool: map['caPool'] == null ? null : pulumi.Output.create<String>(map['caPool'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customTlsFeatures: map['customTlsFeatures'] == null ? null : pulumi.Output.create<List<String>>((map['customTlsFeatures'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : pulumi.Output.create<bool>(map['excludePublicCaSet'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      minTlsVersion: map['minTlsVersion'] == null ? null : pulumi.Output.create<String>(map['minTlsVersion'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : pulumi.Output.create<String>(map['tlsFeatureProfile'] as String),
-      trustConfig: map['trustConfig'] == null ? null : pulumi.Output.create<String>(map['trustConfig'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      caPool: map['caPool'] == null ? null : (map['caPool'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (map['tlsFeatureProfile'] as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

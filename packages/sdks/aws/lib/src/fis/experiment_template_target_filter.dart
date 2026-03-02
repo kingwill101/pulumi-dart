@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateTargetFilter {
   /// Attribute path for the filter.
-  final String path;
+  final pulumi.Input<String> path;
   /// Set of attribute values for the filter.
   ///
   /// > **NOTE:** Values specified in a `filter` are joined with an `OR` clause, while values across multiple `filter` blocks are joined with an `AND` clause. For more information, see [Targets for AWS FIS](https://docs.aws.amazon.com/fis/latest/userguide/targets.html#target-filters).
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ExperimentTemplateTargetFilter].
   /// [path] Attribute path for the filter.
@@ -26,8 +27,8 @@ class ExperimentTemplateTargetFilter {
 
   factory ExperimentTemplateTargetFilter.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateTargetFilter(
-      path: map['path'] as String,
-      values: (map['values'] as List).cast<String>(),
+      path: (map['path'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

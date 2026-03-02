@@ -10,23 +10,23 @@ import 'akri_connectors_secret_response.dart';
 /// AkriConnectorTemplateRuntimeImageConfiguration properties.
 class AkriConnectorTemplateRuntimeImageConfigurationResponse {
   /// Additional configuration for the image of the managed configuration.
-  final Map<String, String>? additionalConfiguration;
+  final pulumi.Input<Map<String, String>>? additionalConfiguration;
   /// Allocation settings for the managed configuration.
-  final AkriConnectorTemplateBucketizedAllocationResponse? allocation;
+  final pulumi.Input<AkriConnectorTemplateBucketizedAllocationResponse>? allocation;
   /// The image configuration settings.
-  final AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse imageConfigurationSettings;
+  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse> imageConfigurationSettings;
   /// Managed configuration types.
   /// Expected value is 'ImageConfiguration'.
-  final String managedConfigurationType;
+  final pulumi.Input<String> managedConfigurationType;
   /// The persistent volume claim templates for the managed configuration.
   /// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
-  final List<dynamic>? persistentVolumeClaimTemplates;
+  final pulumi.Input<List<dynamic>>? persistentVolumeClaimTemplates;
   /// The persistent volume claims for the managed configuration.
-  final List<AkriConnectorTemplatePersistentVolumeClaimResponse>? persistentVolumeClaims;
+  final pulumi.Input<List<AkriConnectorTemplatePersistentVolumeClaimResponse>>? persistentVolumeClaims;
   /// Connector secrets that will be mounted onto all connector instances.
-  final List<AkriConnectorsSecretResponse>? secrets;
+  final pulumi.Input<List<AkriConnectorsSecretResponse>>? secrets;
   /// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
-  final AkriConnectorTemplateTrustListResponse? trustSettings;
+  final pulumi.Input<AkriConnectorTemplateTrustListResponse>? trustSettings;
 
   /// Creates a new [AkriConnectorTemplateRuntimeImageConfigurationResponse].
   /// [additionalConfiguration] Additional configuration for the image of the managed configuration.
@@ -51,26 +51,26 @@ class AkriConnectorTemplateRuntimeImageConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalConfiguration': ?additionalConfiguration,
-      'allocation': ?allocation == null ? null : allocation!.toMap(),
-      'imageConfigurationSettings': imageConfigurationSettings.toMap(),
+      'allocation': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateBucketizedAllocationResponse, Map<String, dynamic>>(allocation, (value) => value.toMap()),
+      'imageConfigurationSettings': pulumi.Input.mapInputValue<AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse, Map<String, dynamic>>(imageConfigurationSettings, (value) => value.toMap()),
       'managedConfigurationType': managedConfigurationType,
       'persistentVolumeClaimTemplates': ?persistentVolumeClaimTemplates,
-      'persistentVolumeClaims': ?persistentVolumeClaims == null ? null : pulumi.Input.encodeList<AkriConnectorTemplatePersistentVolumeClaimResponse, Map<String, dynamic>>(persistentVolumeClaims!, (value) => value.toMap()),
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<AkriConnectorsSecretResponse, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
-      'trustSettings': ?trustSettings == null ? null : trustSettings!.toMap(),
+      'persistentVolumeClaims': ?pulumi.Input.mapOptionalInputValue<List<AkriConnectorTemplatePersistentVolumeClaimResponse>, List<Map<String, dynamic>>>(persistentVolumeClaims, (value) => pulumi.Input.encodeList<AkriConnectorTemplatePersistentVolumeClaimResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<AkriConnectorsSecretResponse>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<AkriConnectorsSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trustSettings': ?pulumi.Input.mapOptionalInputValue<AkriConnectorTemplateTrustListResponse, Map<String, dynamic>>(trustSettings, (value) => value.toMap()),
     };
   }
 
   factory AkriConnectorTemplateRuntimeImageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateRuntimeImageConfigurationResponse(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as Map).cast<String, String>(),
-      allocation: map['allocation'] == null ? null : AkriConnectorTemplateBucketizedAllocationResponse.fromMap((map['allocation'] as Map).cast<String, dynamic>()),
-      imageConfigurationSettings: AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse.fromMap((map['imageConfigurationSettings'] as Map).cast<String, dynamic>()),
-      managedConfigurationType: map['managedConfigurationType'] as String,
-      persistentVolumeClaimTemplates: map['persistentVolumeClaimTemplates'] == null ? null : (map['persistentVolumeClaimTemplates'] as List).cast<dynamic>(),
-      persistentVolumeClaims: map['persistentVolumeClaims'] == null ? null : pulumi.Input.decodeList<AkriConnectorTemplatePersistentVolumeClaimResponse>(map['persistentVolumeClaims'], (value) => AkriConnectorTemplatePersistentVolumeClaimResponse.fromMap((value as Map).cast<String, dynamic>())),
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<AkriConnectorsSecretResponse>(map['secrets'], (value) => AkriConnectorsSecretResponse.fromMap((value as Map).cast<String, dynamic>())),
-      trustSettings: map['trustSettings'] == null ? null : AkriConnectorTemplateTrustListResponse.fromMap((map['trustSettings'] as Map).cast<String, dynamic>()),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : ((map['additionalConfiguration'] as Map).cast<String, String>()).input(),
+      allocation: map['allocation'] == null ? null : (AkriConnectorTemplateBucketizedAllocationResponse.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
+      imageConfigurationSettings: (AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse.fromMap((map['imageConfigurationSettings'] as Map).cast<String, dynamic>())).input(),
+      managedConfigurationType: (map['managedConfigurationType'] as String).input(),
+      persistentVolumeClaimTemplates: map['persistentVolumeClaimTemplates'] == null ? null : ((map['persistentVolumeClaimTemplates'] as List).cast<dynamic>()).input(),
+      persistentVolumeClaims: map['persistentVolumeClaims'] == null ? null : (pulumi.Input.decodeList<AkriConnectorTemplatePersistentVolumeClaimResponse>(map['persistentVolumeClaims'], (value) => AkriConnectorTemplatePersistentVolumeClaimResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsSecretResponse>(map['secrets'], (value) => AkriConnectorsSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trustSettings: map['trustSettings'] == null ? null : (AkriConnectorTemplateTrustListResponse.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

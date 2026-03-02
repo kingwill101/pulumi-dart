@@ -16,11 +16,9 @@ class GetBgpPeerArgs {
   /// [bgpPeerName] The name of the BgpPeer
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetBgpPeerArgs({
-    required pulumi.Output<String> bgpPeerName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      bgpPeerName = pulumi.Input.asInput<String>(bgpPeerName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.bgpPeerName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetBgpPeerArgs {
 
   factory GetBgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return GetBgpPeerArgs(
-      bgpPeerName: pulumi.Output.create<String>(map['bgpPeerName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      bgpPeerName: (map['bgpPeerName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

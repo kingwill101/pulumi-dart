@@ -40,23 +40,15 @@ class DestinationArgs {
   /// [name] The name of the destination.
   /// [project] The ID of the project in which the resource belongs.
   DestinationArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<DestinationEndpoint>> endpoints,
-    required pulumi.Output<String> ipPrefix,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> multicloudDataTransferConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpoints = pulumi.Input.asInput<List<DestinationEndpoint>>(endpoints),
-      ipPrefix = pulumi.Input.asInput<String>(ipPrefix),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      multicloudDataTransferConfig = pulumi.Input.asInput<String>(multicloudDataTransferConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    required this.endpoints,
+    required this.ipPrefix,
+    this.labels,
+    required this.location,
+    required this.multicloudDataTransferConfig,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,14 +65,14 @@ class DestinationArgs {
 
   factory DestinationArgs.fromMap(Map<String, dynamic> map) {
     return DestinationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpoints: pulumi.Output.create<List<DestinationEndpoint>>(pulumi.Input.decodeList<DestinationEndpoint>(map['endpoints'], (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
-      ipPrefix: pulumi.Output.create<String>(map['ipPrefix'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      multicloudDataTransferConfig: pulumi.Output.create<String>(map['multicloudDataTransferConfig'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoints: (pulumi.Input.decodeList<DestinationEndpoint>(map['endpoints'], (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipPrefix: (map['ipPrefix'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      multicloudDataTransferConfig: (map['multicloudDataTransferConfig'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

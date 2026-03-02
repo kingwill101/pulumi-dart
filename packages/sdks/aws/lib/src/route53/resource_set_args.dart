@@ -25,15 +25,11 @@ class ResourceSetArgs {
   /// [resources] List of resources to add to this resource set. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   ResourceSetArgs({
-    required pulumi.Output<String> resourceSetName,
-    required pulumi.Output<String> resourceSetType,
-    required pulumi.Output<List<ResourceSetResource>> resources,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      resourceSetName = pulumi.Input.asInput<String>(resourceSetName),
-      resourceSetType = pulumi.Input.asInput<String>(resourceSetType),
-      resources = pulumi.Input.asInput<List<ResourceSetResource>>(resources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.resourceSetName,
+    required this.resourceSetType,
+    required this.resources,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class ResourceSetArgs {
 
   factory ResourceSetArgs.fromMap(Map<String, dynamic> map) {
     return ResourceSetArgs(
-      resourceSetName: pulumi.Output.create<String>(map['resourceSetName'] as String),
-      resourceSetType: pulumi.Output.create<String>(map['resourceSetType'] as String),
-      resources: pulumi.Output.create<List<ResourceSetResource>>(pulumi.Input.decodeList<ResourceSetResource>(map['resources'], (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      resourceSetName: (map['resourceSetName'] as String).input(),
+      resourceSetType: (map['resourceSetType'] as String).input(),
+      resources: (pulumi.Input.decodeList<ResourceSetResource>(map['resources'], (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

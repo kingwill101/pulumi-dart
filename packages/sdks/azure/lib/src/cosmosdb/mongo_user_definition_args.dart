@@ -24,15 +24,11 @@ class MongoUserDefinitionArgs {
   /// [password] The password for the Mongo User Definition.
   /// [username] The username for the Mongo User Definition. Changing this forces a new resource to be created.
   MongoUserDefinitionArgs({
-    required pulumi.Output<String> cosmosMongoDatabaseId,
-    pulumi.Output<List<String>>? inheritedRoleNames,
-    required pulumi.Output<String> password,
-    required pulumi.Output<String> username,
-  }) :
-      cosmosMongoDatabaseId = pulumi.Input.asInput<String>(cosmosMongoDatabaseId),
-      inheritedRoleNames = pulumi.Input.asOptionalInput<List<String>>(inheritedRoleNames),
-      password = pulumi.Input.asInput<String>(password),
-      username = pulumi.Input.asInput<String>(username);
+    required this.cosmosMongoDatabaseId,
+    this.inheritedRoleNames,
+    required this.password,
+    required this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class MongoUserDefinitionArgs {
 
   factory MongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MongoUserDefinitionArgs(
-      cosmosMongoDatabaseId: pulumi.Output.create<String>(map['cosmosMongoDatabaseId'] as String),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : pulumi.Output.create<List<String>>((map['inheritedRoleNames'] as List).cast<String>()),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      username: pulumi.Output.create<String>(map['username'] as String),
+      cosmosMongoDatabaseId: (map['cosmosMongoDatabaseId'] as String).input(),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames'] as List).cast<String>()).input(),
+      password: (map['password'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

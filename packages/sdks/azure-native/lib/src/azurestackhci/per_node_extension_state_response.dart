@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_instance_view_response.dart';
 
 /// Status of Arc Extension for a particular node in HCI Cluster.
 class PerNodeExtensionStateResponse {
   /// Fully qualified resource ID for the particular Arc Extension on this node.
-  final String extension;
+  final pulumi.Input<String> extension;
   /// The extension instance view.
-  final ExtensionInstanceViewResponse instanceView;
+  final pulumi.Input<ExtensionInstanceViewResponse> instanceView;
   /// Name of the node in HCI Cluster.
-  final String name;
+  final pulumi.Input<String> name;
   /// State of Arc Extension in this node.
-  final String state;
+  final pulumi.Input<String> state;
   /// Specifies the version of the script handler.
-  final String typeHandlerVersion;
+  final pulumi.Input<String> typeHandlerVersion;
 
   /// Creates a new [PerNodeExtensionStateResponse].
   /// [extension] Fully qualified resource ID for the particular Arc Extension on this node.
@@ -32,7 +33,7 @@ class PerNodeExtensionStateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'extension': extension,
-      'instanceView': instanceView.toMap(),
+      'instanceView': pulumi.Input.mapInputValue<ExtensionInstanceViewResponse, Map<String, dynamic>>(instanceView, (value) => value.toMap()),
       'name': name,
       'state': state,
       'typeHandlerVersion': typeHandlerVersion,
@@ -41,11 +42,11 @@ class PerNodeExtensionStateResponse {
 
   factory PerNodeExtensionStateResponse.fromMap(Map<String, dynamic> map) {
     return PerNodeExtensionStateResponse(
-      extension: map['extension'] as String,
-      instanceView: ExtensionInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] as String,
+      extension: (map['extension'] as String).input(),
+      instanceView: (ExtensionInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      state: (map['state'] as String).input(),
+      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

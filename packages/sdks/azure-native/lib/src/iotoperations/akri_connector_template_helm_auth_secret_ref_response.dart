@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplateHelmAuthSecretRef properties.
 class AkriConnectorTemplateHelmAuthSecretRefResponse {
   /// The key of the password in the secret.
-  final String passwordKey;
+  final pulumi.Input<String> passwordKey;
   /// The name of the secret.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
   /// The key of the username in the secret.
-  final String usernameKey;
+  final pulumi.Input<String> usernameKey;
 
   /// Creates a new [AkriConnectorTemplateHelmAuthSecretRefResponse].
   /// [passwordKey] The key of the password in the secret.
@@ -30,9 +31,9 @@ class AkriConnectorTemplateHelmAuthSecretRefResponse {
 
   factory AkriConnectorTemplateHelmAuthSecretRefResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmAuthSecretRefResponse(
-      passwordKey: map['passwordKey'] as String,
-      secretRef: map['secretRef'] as String,
-      usernameKey: map['usernameKey'] as String,
+      passwordKey: (map['passwordKey'] as String).input(),
+      secretRef: (map['secretRef'] as String).input(),
+      usernameKey: (map['usernameKey'] as String).input(),
     );
   }
 }

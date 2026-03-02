@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Private endpoint connection proxy object properties.
 class ConnectionDetailsResponse {
   /// Group ID.
-  final String groupId;
+  final pulumi.Input<String> groupId;
   /// Connection details ID.
-  final String id;
+  final pulumi.Input<String> id;
   /// Link ID.
-  final String linkIdentifier;
+  final pulumi.Input<String> linkIdentifier;
   /// Member name.
-  final String memberName;
+  final pulumi.Input<String> memberName;
   /// Private IP address.
-  final String privateIpAddress;
+  final pulumi.Input<String> privateIpAddress;
 
   /// Creates a new [ConnectionDetailsResponse].
   /// [groupId] Group ID.
@@ -40,11 +41,11 @@ class ConnectionDetailsResponse {
 
   factory ConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionDetailsResponse(
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      linkIdentifier: map['linkIdentifier'] as String,
-      memberName: map['memberName'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
+      groupId: (map['groupId'] as String).input(),
+      id: (map['id'] as String).input(),
+      linkIdentifier: (map['linkIdentifier'] as String).input(),
+      memberName: (map['memberName'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
     );
   }
 }

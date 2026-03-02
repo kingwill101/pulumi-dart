@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_projects_project_ip_white_list.dart';
 import 'get_projects_project_properties.dart';
 import 'get_projects_project_security_properties.dart';
 
 class GetProjectsProject {
   /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
-  final String costStorage;
+  final pulumi.Input<String> costStorage;
   /// Represents the creation time of the project
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
-  final String defaultQuota;
+  final pulumi.Input<String> defaultQuota;
   /// IP whitelist
-  final GetProjectsProjectIpWhiteList ipWhiteList;
+  final pulumi.Input<GetProjectsProjectIpWhiteList> ipWhiteList;
   /// Project owner
-  final String owner;
+  final pulumi.Input<String> owner;
   /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// Project base attributes
-  final GetProjectsProjectProperties properties;
+  final pulumi.Input<GetProjectsProjectProperties> properties;
   /// Security-related attributes
-  final GetProjectsProjectSecurityProperties securityProperties;
+  final pulumi.Input<GetProjectsProjectSecurityProperties> securityProperties;
   /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-  final String status;
+  final pulumi.Input<String> status;
   /// Project type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetProjectsProject].
   /// [comment] Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
@@ -60,11 +61,11 @@ class GetProjectsProject {
       'costStorage': costStorage,
       'createTime': createTime,
       'defaultQuota': defaultQuota,
-      'ipWhiteList': ipWhiteList.toMap(),
+      'ipWhiteList': pulumi.Input.mapInputValue<GetProjectsProjectIpWhiteList, Map<String, dynamic>>(ipWhiteList, (value) => value.toMap()),
       'owner': owner,
       'projectName': projectName,
-      'properties': properties.toMap(),
-      'securityProperties': securityProperties.toMap(),
+      'properties': pulumi.Input.mapInputValue<GetProjectsProjectProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'securityProperties': pulumi.Input.mapInputValue<GetProjectsProjectSecurityProperties, Map<String, dynamic>>(securityProperties, (value) => value.toMap()),
       'status': status,
       'type': type,
     };
@@ -72,17 +73,17 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      comment: map['comment'] as String,
-      costStorage: map['costStorage'] as String,
-      createTime: map['createTime'] as String,
-      defaultQuota: map['defaultQuota'] as String,
-      ipWhiteList: GetProjectsProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>()),
-      owner: map['owner'] as String,
-      projectName: map['projectName'] as String,
-      properties: GetProjectsProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      securityProperties: GetProjectsProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
-      type: map['type'] as String,
+      comment: (map['comment'] as String).input(),
+      costStorage: (map['costStorage'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      defaultQuota: (map['defaultQuota'] as String).input(),
+      ipWhiteList: (GetProjectsProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>())).input(),
+      owner: (map['owner'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      properties: (GetProjectsProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      securityProperties: (GetProjectsProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>())).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

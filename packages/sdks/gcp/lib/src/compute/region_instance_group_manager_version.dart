@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_instance_group_manager_version_target_size.dart';
 
 class RegionInstanceGroupManagerVersion {
   /// The full URL to an instance template from which all new instances of this version will be created.
-  final String instanceTemplate;
+  final pulumi.Input<String> instanceTemplate;
   /// Version name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
   ///
   /// > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
   /// constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
-  final RegionInstanceGroupManagerVersionTargetSize? targetSize;
+  final pulumi.Input<RegionInstanceGroupManagerVersionTargetSize>? targetSize;
 
   /// Creates a new [RegionInstanceGroupManagerVersion].
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created.
@@ -27,15 +28,15 @@ class RegionInstanceGroupManagerVersion {
     return <String, dynamic>{
       'instanceTemplate': instanceTemplate,
       'name': ?name,
-      'targetSize': ?targetSize == null ? null : targetSize!.toMap(),
+      'targetSize': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerVersionTargetSize, Map<String, dynamic>>(targetSize, (value) => value.toMap()),
     };
   }
 
   factory RegionInstanceGroupManagerVersion.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerVersion(
-      instanceTemplate: map['instanceTemplate'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      targetSize: map['targetSize'] == null ? null : RegionInstanceGroupManagerVersionTargetSize.fromMap((map['targetSize'] as Map).cast<String, dynamic>()),
+      instanceTemplate: (map['instanceTemplate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      targetSize: map['targetSize'] == null ? null : (RegionInstanceGroupManagerVersionTargetSize.fromMap((map['targetSize'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

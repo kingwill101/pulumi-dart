@@ -37,27 +37,17 @@ class PrivateKeyState {
   /// [publicKeyPem] Public key data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
   /// [rsaBits] When `algorithm` is `RSA`, the size of the generated RSA key, in bits (default: `2048`).
   PrivateKeyState({
-    pulumi.Output<String>? algorithm,
-    pulumi.Output<String>? ecdsaCurve,
-    pulumi.Output<String>? privateKeyOpenssh,
-    pulumi.Output<String>? privateKeyPem,
-    pulumi.Output<String>? privateKeyPemPkcs8,
-    pulumi.Output<String>? publicKeyFingerprintMd5,
-    pulumi.Output<String>? publicKeyFingerprintSha256,
-    pulumi.Output<String>? publicKeyOpenssh,
-    pulumi.Output<String>? publicKeyPem,
-    pulumi.Output<int>? rsaBits,
-  }) :
-      algorithm = pulumi.Input.asOptionalInput<String>(algorithm),
-      ecdsaCurve = pulumi.Input.asOptionalInput<String>(ecdsaCurve),
-      privateKeyOpenssh = pulumi.Input.asOptionalInput<String>(privateKeyOpenssh),
-      privateKeyPem = pulumi.Input.asOptionalInput<String>(privateKeyPem),
-      privateKeyPemPkcs8 = pulumi.Input.asOptionalInput<String>(privateKeyPemPkcs8),
-      publicKeyFingerprintMd5 = pulumi.Input.asOptionalInput<String>(publicKeyFingerprintMd5),
-      publicKeyFingerprintSha256 = pulumi.Input.asOptionalInput<String>(publicKeyFingerprintSha256),
-      publicKeyOpenssh = pulumi.Input.asOptionalInput<String>(publicKeyOpenssh),
-      publicKeyPem = pulumi.Input.asOptionalInput<String>(publicKeyPem),
-      rsaBits = pulumi.Input.asOptionalInput<int>(rsaBits);
+    this.algorithm,
+    this.ecdsaCurve,
+    this.privateKeyOpenssh,
+    this.privateKeyPem,
+    this.privateKeyPemPkcs8,
+    this.publicKeyFingerprintMd5,
+    this.publicKeyFingerprintSha256,
+    this.publicKeyOpenssh,
+    this.publicKeyPem,
+    this.rsaBits,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class PrivateKeyState {
 
   factory PrivateKeyState.fromMap(Map<String, dynamic> map) {
     return PrivateKeyState(
-      algorithm: map['algorithm'] == null ? null : pulumi.Output.create<String>(map['algorithm'] as String),
-      ecdsaCurve: map['ecdsaCurve'] == null ? null : pulumi.Output.create<String>(map['ecdsaCurve'] as String),
-      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : pulumi.Output.create<String>(map['privateKeyOpenssh'] as String),
-      privateKeyPem: map['privateKeyPem'] == null ? null : pulumi.Output.create<String>(map['privateKeyPem'] as String),
-      privateKeyPemPkcs8: map['privateKeyPemPkcs8'] == null ? null : pulumi.Output.create<String>(map['privateKeyPemPkcs8'] as String),
-      publicKeyFingerprintMd5: map['publicKeyFingerprintMd5'] == null ? null : pulumi.Output.create<String>(map['publicKeyFingerprintMd5'] as String),
-      publicKeyFingerprintSha256: map['publicKeyFingerprintSha256'] == null ? null : pulumi.Output.create<String>(map['publicKeyFingerprintSha256'] as String),
-      publicKeyOpenssh: map['publicKeyOpenssh'] == null ? null : pulumi.Output.create<String>(map['publicKeyOpenssh'] as String),
-      publicKeyPem: map['publicKeyPem'] == null ? null : pulumi.Output.create<String>(map['publicKeyPem'] as String),
-      rsaBits: map['rsaBits'] == null ? null : pulumi.Output.create<int>(map['rsaBits'] as int),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
+      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve'] as String).input(),
+      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh'] as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
+      privateKeyPemPkcs8: map['privateKeyPemPkcs8'] == null ? null : (map['privateKeyPemPkcs8'] as String).input(),
+      publicKeyFingerprintMd5: map['publicKeyFingerprintMd5'] == null ? null : (map['publicKeyFingerprintMd5'] as String).input(),
+      publicKeyFingerprintSha256: map['publicKeyFingerprintSha256'] == null ? null : (map['publicKeyFingerprintSha256'] as String).input(),
+      publicKeyOpenssh: map['publicKeyOpenssh'] == null ? null : (map['publicKeyOpenssh'] as String).input(),
+      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem'] as String).input(),
+      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits'] as int).input(),
     );
   }
 }

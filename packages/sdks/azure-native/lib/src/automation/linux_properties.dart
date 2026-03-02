@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Linux specific update configuration.
 class LinuxProperties {
   /// packages excluded from the software update configuration.
-  final List<String>? excludedPackageNameMasks;
+  final pulumi.Input<List<String>>? excludedPackageNameMasks;
   /// Update classifications included in the software update configuration.
-  final String? includedPackageClassifications;
+  final pulumi.Input<String>? includedPackageClassifications;
   /// packages included from the software update configuration.
-  final List<String>? includedPackageNameMasks;
+  final pulumi.Input<List<String>>? includedPackageNameMasks;
   /// Reboot setting for the software update configuration.
-  final String? rebootSetting;
+  final pulumi.Input<String>? rebootSetting;
 
   /// Creates a new [LinuxProperties].
   /// [excludedPackageNameMasks] packages excluded from the software update configuration.
@@ -35,10 +36,10 @@ class LinuxProperties {
 
   factory LinuxProperties.fromMap(Map<String, dynamic> map) {
     return LinuxProperties(
-      excludedPackageNameMasks: map['excludedPackageNameMasks'] == null ? null : (map['excludedPackageNameMasks'] as List).cast<String>(),
-      includedPackageClassifications: map['includedPackageClassifications'] == null ? null : map['includedPackageClassifications'] as String,
-      includedPackageNameMasks: map['includedPackageNameMasks'] == null ? null : (map['includedPackageNameMasks'] as List).cast<String>(),
-      rebootSetting: map['rebootSetting'] == null ? null : map['rebootSetting'] as String,
+      excludedPackageNameMasks: map['excludedPackageNameMasks'] == null ? null : ((map['excludedPackageNameMasks'] as List).cast<String>()).input(),
+      includedPackageClassifications: map['includedPackageClassifications'] == null ? null : (map['includedPackageClassifications'] as String).input(),
+      includedPackageNameMasks: map['includedPackageNameMasks'] == null ? null : ((map['includedPackageNameMasks'] as List).cast<String>()).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
     );
   }
 }

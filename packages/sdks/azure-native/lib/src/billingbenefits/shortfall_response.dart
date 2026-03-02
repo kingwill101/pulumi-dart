@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment_response.dart';
 
 /// MACC shortfall
 class ShortfallResponse {
   /// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
-  final double? balanceVersion;
+  final pulumi.Input<double>? balanceVersion;
   /// Shortfall amount with grain.
-  final CommitmentResponse? charge;
+  final pulumi.Input<CommitmentResponse>? charge;
   /// End DateTime in UTC.
-  final String? endAt;
+  final pulumi.Input<String>? endAt;
   /// Represents catalog UPN.
-  final String? productCode;
+  final pulumi.Input<String>? productCode;
   /// Fully-qualified resource identifier of the credits associated with the shortfall.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// Start DateTime.
-  final String? startAt;
+  final pulumi.Input<String>? startAt;
   /// This is an identifier of the shortfall which will not change for its lifetime.
-  final String? systemId;
+  final pulumi.Input<String>? systemId;
 
   /// Creates a new [ShortfallResponse].
   /// [balanceVersion] Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
@@ -40,7 +41,7 @@ class ShortfallResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'balanceVersion': ?balanceVersion,
-      'charge': ?charge == null ? null : charge!.toMap(),
+      'charge': ?pulumi.Input.mapOptionalInputValue<CommitmentResponse, Map<String, dynamic>>(charge, (value) => value.toMap()),
       'endAt': ?endAt,
       'productCode': ?productCode,
       'resourceId': ?resourceId,
@@ -51,13 +52,13 @@ class ShortfallResponse {
 
   factory ShortfallResponse.fromMap(Map<String, dynamic> map) {
     return ShortfallResponse(
-      balanceVersion: map['balanceVersion'] == null ? null : map['balanceVersion'] as double,
-      charge: map['charge'] == null ? null : CommitmentResponse.fromMap((map['charge'] as Map).cast<String, dynamic>()),
-      endAt: map['endAt'] == null ? null : map['endAt'] as String,
-      productCode: map['productCode'] == null ? null : map['productCode'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      startAt: map['startAt'] == null ? null : map['startAt'] as String,
-      systemId: map['systemId'] == null ? null : map['systemId'] as String,
+      balanceVersion: map['balanceVersion'] == null ? null : (map['balanceVersion'] as double).input(),
+      charge: map['charge'] == null ? null : (CommitmentResponse.fromMap((map['charge'] as Map).cast<String, dynamic>())).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
     );
   }
 }

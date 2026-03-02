@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSubscriptionStorageBlobDeadLetterDestination {
   /// Specifies the id of the storage account id where the storage blob is located.
-  final String storageAccountId;
+  final pulumi.Input<String> storageAccountId;
   /// Specifies the name of the Storage blob container that is the destination of the deadletter events.
-  final String storageBlobContainerName;
+  final pulumi.Input<String> storageBlobContainerName;
 
   /// Creates a new [EventSubscriptionStorageBlobDeadLetterDestination].
   /// [storageAccountId] Specifies the id of the storage account id where the storage blob is located.
@@ -24,8 +25,8 @@ class EventSubscriptionStorageBlobDeadLetterDestination {
 
   factory EventSubscriptionStorageBlobDeadLetterDestination.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStorageBlobDeadLetterDestination(
-      storageAccountId: map['storageAccountId'] as String,
-      storageBlobContainerName: map['storageBlobContainerName'] as String,
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      storageBlobContainerName: (map['storageBlobContainerName'] as String).input(),
     );
   }
 }

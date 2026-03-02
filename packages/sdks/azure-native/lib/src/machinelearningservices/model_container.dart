@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelContainer {
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ModelContainer].
   /// [description] The asset description text.
@@ -34,10 +35,10 @@ class ModelContainer {
 
   factory ModelContainer.fromMap(Map<String, dynamic> map) {
     return ModelContainer(
-      description: map['description'] == null ? null : map['description'] as String,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

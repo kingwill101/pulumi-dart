@@ -19,13 +19,10 @@ class GetTemplateSpecVersionArgs {
   /// [templateSpecName] Name of the Template Spec.
   /// [templateSpecVersion] The version of the Template Spec.
   GetTemplateSpecVersionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> templateSpecName,
-    required pulumi.Output<String> templateSpecVersion,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      templateSpecName = pulumi.Input.asInput<String>(templateSpecName),
-      templateSpecVersion = pulumi.Input.asInput<String>(templateSpecVersion);
+    required this.resourceGroupName,
+    required this.templateSpecName,
+    required this.templateSpecVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTemplateSpecVersionArgs {
 
   factory GetTemplateSpecVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecVersionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      templateSpecName: pulumi.Output.create<String>(map['templateSpecName'] as String),
-      templateSpecVersion: pulumi.Output.create<String>(map['templateSpecVersion'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      templateSpecName: (map['templateSpecName'] as String).input(),
+      templateSpecVersion: (map['templateSpecVersion'] as String).input(),
     );
   }
 }

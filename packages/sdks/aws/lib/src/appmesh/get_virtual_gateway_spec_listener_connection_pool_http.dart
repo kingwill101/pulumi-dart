@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualGatewaySpecListenerConnectionPoolHttp {
-  final int maxConnections;
-  final int maxPendingRequests;
+  final pulumi.Input<int> maxConnections;
+  final pulumi.Input<int> maxPendingRequests;
 
   /// Creates a new [GetVirtualGatewaySpecListenerConnectionPoolHttp].
   /// [maxConnections] Required.
@@ -22,8 +23,8 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp {
 
   factory GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPoolHttp(
-      maxConnections: map['maxConnections'] as int,
-      maxPendingRequests: map['maxPendingRequests'] as int,
+      maxConnections: (map['maxConnections'] as int).input(),
+      maxPendingRequests: (map['maxPendingRequests'] as int).input(),
     );
   }
 }

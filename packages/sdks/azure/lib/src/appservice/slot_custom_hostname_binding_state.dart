@@ -26,17 +26,12 @@ class SlotCustomHostnameBindingState {
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
   /// [virtualIp] The virtual IP address assigned to the hostname if IP based SSL is enabled.
   SlotCustomHostnameBindingState({
-    pulumi.Output<String>? appServiceSlotId,
-    pulumi.Output<String>? hostname,
-    pulumi.Output<String>? sslState,
-    pulumi.Output<String>? thumbprint,
-    pulumi.Output<String>? virtualIp,
-  }) :
-      appServiceSlotId = pulumi.Input.asOptionalInput<String>(appServiceSlotId),
-      hostname = pulumi.Input.asOptionalInput<String>(hostname),
-      sslState = pulumi.Input.asOptionalInput<String>(sslState),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint),
-      virtualIp = pulumi.Input.asOptionalInput<String>(virtualIp);
+    this.appServiceSlotId,
+    this.hostname,
+    this.sslState,
+    this.thumbprint,
+    this.virtualIp,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SlotCustomHostnameBindingState {
 
   factory SlotCustomHostnameBindingState.fromMap(Map<String, dynamic> map) {
     return SlotCustomHostnameBindingState(
-      appServiceSlotId: map['appServiceSlotId'] == null ? null : pulumi.Output.create<String>(map['appServiceSlotId'] as String),
-      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
-      sslState: map['sslState'] == null ? null : pulumi.Output.create<String>(map['sslState'] as String),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
-      virtualIp: map['virtualIp'] == null ? null : pulumi.Output.create<String>(map['virtualIp'] as String),
+      appServiceSlotId: map['appServiceSlotId'] == null ? null : (map['appServiceSlotId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class TokenArgs {
   /// [label] A label for the Token.
   /// [scopes] The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
   TokenArgs({
-    pulumi.Output<String>? expiry,
-    pulumi.Output<String>? label,
-    required pulumi.Output<String> scopes,
-  }) :
-      expiry = pulumi.Input.asOptionalInput<String>(expiry),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      scopes = pulumi.Input.asInput<String>(scopes);
+    this.expiry,
+    this.label,
+    required this.scopes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TokenArgs {
 
   factory TokenArgs.fromMap(Map<String, dynamic> map) {
     return TokenArgs(
-      expiry: map['expiry'] == null ? null : pulumi.Output.create<String>(map['expiry'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      scopes: pulumi.Output.create<String>(map['scopes'] as String),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      scopes: (map['scopes'] as String).input(),
     );
   }
 }

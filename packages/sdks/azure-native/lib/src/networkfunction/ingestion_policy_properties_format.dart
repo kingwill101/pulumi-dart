@@ -6,9 +6,9 @@ import 'ingestion_sources_properties_format.dart';
 /// Ingestion Policy properties.
 class IngestionPolicyPropertiesFormat {
   /// Ingestion Sources.
-  final List<IngestionSourcesPropertiesFormat>? ingestionSources;
+  final pulumi.Input<List<IngestionSourcesPropertiesFormat>>? ingestionSources;
   /// The ingestion type.
-  final String? ingestionType;
+  final pulumi.Input<String>? ingestionType;
 
   /// Creates a new [IngestionPolicyPropertiesFormat].
   /// [ingestionSources] Ingestion Sources.
@@ -20,15 +20,15 @@ class IngestionPolicyPropertiesFormat {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingestionSources': ?ingestionSources == null ? null : pulumi.Input.encodeList<IngestionSourcesPropertiesFormat, Map<String, dynamic>>(ingestionSources!, (value) => value.toMap()),
+      'ingestionSources': ?pulumi.Input.mapOptionalInputValue<List<IngestionSourcesPropertiesFormat>, List<Map<String, dynamic>>>(ingestionSources, (value) => pulumi.Input.encodeList<IngestionSourcesPropertiesFormat, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ingestionType': ?ingestionType,
     };
   }
 
   factory IngestionPolicyPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return IngestionPolicyPropertiesFormat(
-      ingestionSources: map['ingestionSources'] == null ? null : pulumi.Input.decodeList<IngestionSourcesPropertiesFormat>(map['ingestionSources'], (value) => IngestionSourcesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>())),
-      ingestionType: map['ingestionType'] == null ? null : map['ingestionType'] as String,
+      ingestionSources: map['ingestionSources'] == null ? null : (pulumi.Input.decodeList<IngestionSourcesPropertiesFormat>(map['ingestionSources'], (value) => IngestionSourcesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
     );
   }
 }

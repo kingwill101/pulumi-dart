@@ -22,11 +22,9 @@ class GlobalSecurityIpGroupArgs {
   /// [globalIpGroupName] The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
   /// [globalIpList] The IP address in the whitelist template.
   GlobalSecurityIpGroupArgs({
-    required pulumi.Output<String> globalIpGroupName,
-    required pulumi.Output<String> globalIpList,
-  }) :
-      globalIpGroupName = pulumi.Input.asInput<String>(globalIpGroupName),
-      globalIpList = pulumi.Input.asInput<String>(globalIpList);
+    required this.globalIpGroupName,
+    required this.globalIpList,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,8 +35,8 @@ class GlobalSecurityIpGroupArgs {
 
   factory GlobalSecurityIpGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupArgs(
-      globalIpGroupName: pulumi.Output.create<String>(map['globalIpGroupName'] as String),
-      globalIpList: pulumi.Output.create<String>(map['globalIpList'] as String),
+      globalIpGroupName: (map['globalIpGroupName'] as String).input(),
+      globalIpList: (map['globalIpList'] as String).input(),
     );
   }
 }

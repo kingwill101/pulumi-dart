@@ -16,13 +16,10 @@ class ServerDnsAliasState {
   /// [mssqlServerId] The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   /// [name] The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
   ServerDnsAliasState({
-    pulumi.Output<String>? dnsRecord,
-    pulumi.Output<String>? mssqlServerId,
-    pulumi.Output<String>? name,
-  }) :
-      dnsRecord = pulumi.Input.asOptionalInput<String>(dnsRecord),
-      mssqlServerId = pulumi.Input.asOptionalInput<String>(mssqlServerId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.dnsRecord,
+    this.mssqlServerId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class ServerDnsAliasState {
 
   factory ServerDnsAliasState.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasState(
-      dnsRecord: map['dnsRecord'] == null ? null : pulumi.Output.create<String>(map['dnsRecord'] as String),
-      mssqlServerId: map['mssqlServerId'] == null ? null : pulumi.Output.create<String>(map['mssqlServerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord'] as String).input(),
+      mssqlServerId: map['mssqlServerId'] == null ? null : (map['mssqlServerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetSqlResourceSqlUserDefinedFunctionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userDefinedFunctionName] Cosmos DB userDefinedFunction name.
   GetSqlResourceSqlUserDefinedFunctionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> containerName,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> userDefinedFunctionName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      containerName = pulumi.Input.asInput<String>(containerName),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userDefinedFunctionName = pulumi.Input.asInput<String>(userDefinedFunctionName);
+    required this.accountName,
+    required this.containerName,
+    required this.databaseName,
+    required this.resourceGroupName,
+    required this.userDefinedFunctionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSqlResourceSqlUserDefinedFunctionArgs {
 
   factory GetSqlResourceSqlUserDefinedFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlResourceSqlUserDefinedFunctionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      containerName: pulumi.Output.create<String>(map['containerName'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userDefinedFunctionName: pulumi.Output.create<String>(map['userDefinedFunctionName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userDefinedFunctionName: (map['userDefinedFunctionName'] as String).input(),
     );
   }
 }

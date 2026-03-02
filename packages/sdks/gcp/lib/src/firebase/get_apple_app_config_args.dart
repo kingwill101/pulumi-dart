@@ -19,11 +19,9 @@ class GetAppleAppConfigArgs {
   /// [appId] The id of the Firebase iOS App.
   /// [project] The ID of the project in which the resource belongs. If it
   GetAppleAppConfigArgs({
-    required pulumi.Output<String> appId,
-    pulumi.Output<String>? project,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.appId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class GetAppleAppConfigArgs {
 
   factory GetAppleAppConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetAppleAppConfigArgs(
-      appId: pulumi.Output.create<String>(map['appId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      appId: (map['appId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

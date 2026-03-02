@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Used in safe optimization to specify threshold levels and risk tolerance.
 class GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse {
   /// Desired minimum fraction of safe trials (over total number of trials) that should be targeted by the algorithm at any time during the study (best effort). This should be between 0.0 and 1.0 and a value of 0.0 means that there is no minimum and an algorithm proceeds without targeting any specific fraction. A value of 1.0 means that the algorithm attempts to only Suggest safe Trials.
-  final double desiredMinSafeTrialsFraction;
+  final pulumi.Input<double> desiredMinSafeTrialsFraction;
   /// Safety threshold (boundary value between safe and unsafe). NOTE that if you leave SafetyMetricConfig unset, a default value of 0 will be used.
-  final double safetyThreshold;
+  final pulumi.Input<double> safetyThreshold;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse].
   /// [desiredMinSafeTrialsFraction] Desired minimum fraction of safe trials (over total number of trials) that should be targeted by the algorithm at any time during the study (best effort). This should be between 0.0 and 1.0 and a value of 0.0 means that there is no minimum and an algorithm proceeds without targeting any specific fraction. A value of 1.0 means that the algorithm attempts to only Suggest safe Trials.
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse {
 
   factory GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse(
-      desiredMinSafeTrialsFraction: map['desiredMinSafeTrialsFraction'] as double,
-      safetyThreshold: map['safetyThreshold'] as double,
+      desiredMinSafeTrialsFraction: (map['desiredMinSafeTrialsFraction'] as double).input(),
+      safetyThreshold: (map['safetyThreshold'] as double).input(),
     );
   }
 }

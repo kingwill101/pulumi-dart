@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterAuthenticatorGroupsConfig {
   /// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
-  final String securityGroup;
+  final pulumi.Input<String> securityGroup;
 
   /// Creates a new [ClusterAuthenticatorGroupsConfig].
   /// [securityGroup] The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
@@ -19,7 +20,7 @@ class ClusterAuthenticatorGroupsConfig {
 
   factory ClusterAuthenticatorGroupsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAuthenticatorGroupsConfig(
-      securityGroup: map['securityGroup'] as String,
+      securityGroup: (map['securityGroup'] as String).input(),
     );
   }
 }

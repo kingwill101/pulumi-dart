@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_zone_service_directory_config_namespace_response.dart';
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfigResponse {
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Contains information about the namespace associated with the zone.
-  final ManagedZoneServiceDirectoryConfigNamespaceResponse namespace;
+  final pulumi.Input<ManagedZoneServiceDirectoryConfigNamespaceResponse> namespace;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigResponse].
   /// [kind] Required.
@@ -19,14 +20,14 @@ class ManagedZoneServiceDirectoryConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': kind,
-      'namespace': namespace.toMap(),
+      'namespace': pulumi.Input.mapInputValue<ManagedZoneServiceDirectoryConfigNamespaceResponse, Map<String, dynamic>>(namespace, (value) => value.toMap()),
     };
   }
 
   factory ManagedZoneServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigResponse(
-      kind: map['kind'] as String,
-      namespace: ManagedZoneServiceDirectoryConfigNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
+      kind: (map['kind'] as String).input(),
+      namespace: (ManagedZoneServiceDirectoryConfigNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

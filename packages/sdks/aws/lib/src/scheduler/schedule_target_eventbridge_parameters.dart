@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetEventbridgeParameters {
   /// Free-form string used to decide what fields to expect in the event detail. Up to 128 characters.
-  final String detailType;
+  final pulumi.Input<String> detailType;
   /// Source of the event.
-  final String source;
+  final pulumi.Input<String> source;
 
   /// Creates a new [ScheduleTargetEventbridgeParameters].
   /// [detailType] Free-form string used to decide what fields to expect in the event detail. Up to 128 characters.
@@ -24,8 +25,8 @@ class ScheduleTargetEventbridgeParameters {
 
   factory ScheduleTargetEventbridgeParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetEventbridgeParameters(
-      detailType: map['detailType'] as String,
-      source: map['source'] as String,
+      detailType: (map['detailType'] as String).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

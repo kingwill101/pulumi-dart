@@ -32,21 +32,14 @@ class SecurityStandardArgs {
   /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [standardId] The Security Standard key - unique key for the standard type
   SecurityStandardArgs({
-    pulumi.Output<List<PartialAssessmentProperties>>? assessments,
-    pulumi.Output<List<String>>? cloudProviders,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? policySetDefinitionId,
-    required pulumi.Output<String> scope,
-    pulumi.Output<String>? standardId,
-  }) :
-      assessments = pulumi.Input.asOptionalInput<List<PartialAssessmentProperties>>(assessments),
-      cloudProviders = pulumi.Input.asOptionalInput<List<String>>(cloudProviders),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      policySetDefinitionId = pulumi.Input.asOptionalInput<String>(policySetDefinitionId),
-      scope = pulumi.Input.asInput<String>(scope),
-      standardId = pulumi.Input.asOptionalInput<String>(standardId);
+    this.assessments,
+    this.cloudProviders,
+    this.description,
+    this.displayName,
+    this.policySetDefinitionId,
+    required this.scope,
+    this.standardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SecurityStandardArgs {
 
   factory SecurityStandardArgs.fromMap(Map<String, dynamic> map) {
     return SecurityStandardArgs(
-      assessments: map['assessments'] == null ? null : pulumi.Output.create<List<PartialAssessmentProperties>>(pulumi.Input.decodeList<PartialAssessmentProperties>(map['assessments'], (value) => PartialAssessmentProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      cloudProviders: map['cloudProviders'] == null ? null : pulumi.Output.create<List<String>>((map['cloudProviders'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : pulumi.Output.create<String>(map['policySetDefinitionId'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
-      standardId: map['standardId'] == null ? null : pulumi.Output.create<String>(map['standardId'] as String),
+      assessments: map['assessments'] == null ? null : (pulumi.Input.decodeList<PartialAssessmentProperties>(map['assessments'], (value) => PartialAssessmentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : (map['policySetDefinitionId'] as String).input(),
+      scope: (map['scope'] as String).input(),
+      standardId: map['standardId'] == null ? null : (map['standardId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterBootstrapActionList {
   /// Parameters of the boot operation.
-  final String arg;
+  final pulumi.Input<String> arg;
   /// The name of the boot operation.
-  final String name;
+  final pulumi.Input<String> name;
   /// Boot operation script path.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [GetClustersClusterBootstrapActionList].
   /// [arg] Parameters of the boot operation.
@@ -29,9 +30,9 @@ class GetClustersClusterBootstrapActionList {
 
   factory GetClustersClusterBootstrapActionList.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterBootstrapActionList(
-      arg: map['arg'] as String,
-      name: map['name'] as String,
-      path: map['path'] as String,
+      arg: (map['arg'] as String).input(),
+      name: (map['name'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

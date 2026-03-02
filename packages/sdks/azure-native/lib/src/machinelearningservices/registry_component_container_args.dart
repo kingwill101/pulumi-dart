@@ -23,15 +23,11 @@ class RegistryComponentContainerArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   RegistryComponentContainerArgs({
-    required pulumi.Output<ComponentContainerMachinelearningservices> componentContainerProperties,
-    pulumi.Output<String>? componentName,
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      componentContainerProperties = pulumi.Input.asInput<ComponentContainerMachinelearningservices>(componentContainerProperties),
-      componentName = pulumi.Input.asOptionalInput<String>(componentName),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.componentContainerProperties,
+    this.componentName,
+    required this.registryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class RegistryComponentContainerArgs {
 
   factory RegistryComponentContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryComponentContainerArgs(
-      componentContainerProperties: pulumi.Output.create<ComponentContainerMachinelearningservices>(map['componentContainerProperties'] as ComponentContainerMachinelearningservices),
-      componentName: map['componentName'] == null ? null : pulumi.Output.create<String>(map['componentName'] as String),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      componentContainerProperties: (map['componentContainerProperties'] as ComponentContainerMachinelearningservices).input(),
+      componentName: map['componentName'] == null ? null : (map['componentName'] as String).input(),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

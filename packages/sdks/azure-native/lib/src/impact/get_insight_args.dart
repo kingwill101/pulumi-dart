@@ -16,11 +16,9 @@ class GetInsightArgs {
   /// [insightName] Name of the insight
   /// [workloadImpactName] workloadImpact resource
   GetInsightArgs({
-    required pulumi.Output<String> insightName,
-    required pulumi.Output<String> workloadImpactName,
-  }) :
-      insightName = pulumi.Input.asInput<String>(insightName),
-      workloadImpactName = pulumi.Input.asInput<String>(workloadImpactName);
+    required this.insightName,
+    required this.workloadImpactName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetInsightArgs {
 
   factory GetInsightArgs.fromMap(Map<String, dynamic> map) {
     return GetInsightArgs(
-      insightName: pulumi.Output.create<String>(map['insightName'] as String),
-      workloadImpactName: pulumi.Output.create<String>(map['workloadImpactName'] as String),
+      insightName: (map['insightName'] as String).input(),
+      workloadImpactName: (map['workloadImpactName'] as String).input(),
     );
   }
 }

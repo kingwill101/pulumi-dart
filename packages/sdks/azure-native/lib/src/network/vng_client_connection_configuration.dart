@@ -7,13 +7,13 @@ import 'sub_resource.dart';
 /// A vpn client connection configuration for client connection configuration.
 class VngClientConnectionConfiguration {
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// List of references to virtualNetworkGatewayPolicyGroups
-  final List<SubResource> virtualNetworkGatewayPolicyGroups;
+  final pulumi.Input<List<SubResource>> virtualNetworkGatewayPolicyGroups;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final AddressSpace vpnClientAddressPool;
+  final pulumi.Input<AddressSpace> vpnClientAddressPool;
 
   /// Creates a new [VngClientConnectionConfiguration].
   /// [id] Resource ID.
@@ -31,17 +31,17 @@ class VngClientConnectionConfiguration {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'virtualNetworkGatewayPolicyGroups': pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(virtualNetworkGatewayPolicyGroups, (value) => value.toMap()),
-      'vpnClientAddressPool': vpnClientAddressPool.toMap(),
+      'virtualNetworkGatewayPolicyGroups': pulumi.Input.mapInputValue<List<SubResource>, List<Map<String, dynamic>>>(virtualNetworkGatewayPolicyGroups, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpnClientAddressPool': pulumi.Input.mapInputValue<AddressSpace, Map<String, dynamic>>(vpnClientAddressPool, (value) => value.toMap()),
     };
   }
 
   factory VngClientConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return VngClientConnectionConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      virtualNetworkGatewayPolicyGroups: pulumi.Input.decodeList<SubResource>(map['virtualNetworkGatewayPolicyGroups'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>())),
-      vpnClientAddressPool: AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      virtualNetworkGatewayPolicyGroups: (pulumi.Input.decodeList<SubResource>(map['virtualNetworkGatewayPolicyGroups'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientAddressPool: (AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class IntegrationRuntimeSelfHostedState {
   /// [name] The name which should be used for this Synapse Self-hosted Integration Runtime. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Self-hosted Integration Runtime to be created.
   IntegrationRuntimeSelfHostedState({
-    pulumi.Output<String>? authorizationKeyPrimary,
-    pulumi.Output<String>? authorizationKeySecondary,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? synapseWorkspaceId,
-  }) :
-      authorizationKeyPrimary = pulumi.Input.asOptionalInput<String>(authorizationKeyPrimary),
-      authorizationKeySecondary = pulumi.Input.asOptionalInput<String>(authorizationKeySecondary),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      synapseWorkspaceId = pulumi.Input.asOptionalInput<String>(synapseWorkspaceId);
+    this.authorizationKeyPrimary,
+    this.authorizationKeySecondary,
+    this.description,
+    this.name,
+    this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class IntegrationRuntimeSelfHostedState {
 
   factory IntegrationRuntimeSelfHostedState.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedState(
-      authorizationKeyPrimary: map['authorizationKeyPrimary'] == null ? null : pulumi.Output.create<String>(map['authorizationKeyPrimary'] as String),
-      authorizationKeySecondary: map['authorizationKeySecondary'] == null ? null : pulumi.Output.create<String>(map['authorizationKeySecondary'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      authorizationKeyPrimary: map['authorizationKeyPrimary'] == null ? null : (map['authorizationKeyPrimary'] as String).input(),
+      authorizationKeySecondary: map['authorizationKeySecondary'] == null ? null : (map['authorizationKeySecondary'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

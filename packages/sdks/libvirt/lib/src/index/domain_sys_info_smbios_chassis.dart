@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_chassis_entry.dart';
 
 class DomainSysInfoSmbiosChassis {
   /// Defines individual entries for the chassis information in the SMBIOS configuration.
-  final List<DomainSysInfoSmbiosChassisEntry>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosChassisEntry>>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosChassis].
   /// [entries] Defines individual entries for the chassis information in the SMBIOS configuration.
@@ -15,13 +15,13 @@ class DomainSysInfoSmbiosChassis {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?entries == null ? null : pulumi.Input.encodeList<DomainSysInfoSmbiosChassisEntry, Map<String, dynamic>>(entries!, (value) => value.toMap()),
+      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoSmbiosChassisEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoSmbiosChassisEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainSysInfoSmbiosChassis.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosChassis(
-      entries: map['entries'] == null ? null : pulumi.Input.decodeList<DomainSysInfoSmbiosChassisEntry>(map['entries'], (value) => DomainSysInfoSmbiosChassisEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosChassisEntry>(map['entries'], (value) => DomainSysInfoSmbiosChassisEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

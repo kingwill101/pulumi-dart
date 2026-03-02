@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The integration service environment sku.
 class IntegrationServiceEnvironmentSkuResponse {
   /// The sku capacity.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// The sku name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [IntegrationServiceEnvironmentSkuResponse].
   /// [capacity] The sku capacity.
@@ -25,8 +26,8 @@ class IntegrationServiceEnvironmentSkuResponse {
 
   factory IntegrationServiceEnvironmentSkuResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentSkuResponse(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

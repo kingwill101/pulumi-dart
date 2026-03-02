@@ -47,19 +47,13 @@ class RegionalSecretIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
   RegionalSecretIamMemberArgs({
-    pulumi.Output<RegionalSecretIamMemberCondition>? condition,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> member,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> secretId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<RegionalSecretIamMemberCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role),
-      secretId = pulumi.Input.asInput<String>(secretId);
+    this.condition,
+    this.location,
+    required this.member,
+    this.project,
+    required this.role,
+    required this.secretId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,12 +68,12 @@ class RegionalSecretIamMemberArgs {
 
   factory RegionalSecretIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return RegionalSecretIamMemberArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<RegionalSecretIamMemberCondition>(RegionalSecretIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
+      condition: map['condition'] == null ? null : (RegionalSecretIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      member: (map['member'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
     );
   }
 }

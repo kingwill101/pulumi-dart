@@ -5,9 +5,9 @@ import 'get_cluster_node_config_sole_tenant_config_node_affinity.dart';
 
 class GetClusterNodeConfigSoleTenantConfig {
   /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
-  final int minNodeCpus;
+  final pulumi.Input<int> minNodeCpus;
   /// .
-  final List<GetClusterNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
+  final pulumi.Input<List<GetClusterNodeConfigSoleTenantConfigNodeAffinity>> nodeAffinities;
 
   /// Creates a new [GetClusterNodeConfigSoleTenantConfig].
   /// [minNodeCpus] Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
@@ -20,14 +20,14 @@ class GetClusterNodeConfigSoleTenantConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'minNodeCpus': minNodeCpus,
-      'nodeAffinities': pulumi.Input.encodeList<GetClusterNodeConfigSoleTenantConfigNodeAffinity, Map<String, dynamic>>(nodeAffinities, (value) => value.toMap()),
+      'nodeAffinities': pulumi.Input.mapInputValue<List<GetClusterNodeConfigSoleTenantConfigNodeAffinity>, List<Map<String, dynamic>>>(nodeAffinities, (value) => pulumi.Input.encodeList<GetClusterNodeConfigSoleTenantConfigNodeAffinity, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetClusterNodeConfigSoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigSoleTenantConfig(
-      minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities: pulumi.Input.decodeList<GetClusterNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities'], (value) => GetClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>())),
+      minNodeCpus: (map['minNodeCpus'] as int).input(),
+      nodeAffinities: (pulumi.Input.decodeList<GetClusterNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities'], (value) => GetClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

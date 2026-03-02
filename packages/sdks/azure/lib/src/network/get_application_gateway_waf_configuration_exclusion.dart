@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationGatewayWafConfigurationExclusion {
   /// Match variable of the exclusion rule.
-  final String matchVariable;
+  final pulumi.Input<String> matchVariable;
   /// String value which will be used for the filter operation.
-  final String selector;
+  final pulumi.Input<String> selector;
   /// Operator which will be used to search in the variable content.
-  final String selectorMatchOperator;
+  final pulumi.Input<String> selectorMatchOperator;
 
   /// Creates a new [GetApplicationGatewayWafConfigurationExclusion].
   /// [matchVariable] Match variable of the exclusion rule.
@@ -29,9 +30,9 @@ class GetApplicationGatewayWafConfigurationExclusion {
 
   factory GetApplicationGatewayWafConfigurationExclusion.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewayWafConfigurationExclusion(
-      matchVariable: map['matchVariable'] as String,
-      selector: map['selector'] as String,
-      selectorMatchOperator: map['selectorMatchOperator'] as String,
+      matchVariable: (map['matchVariable'] as String).input(),
+      selector: (map['selector'] as String).input(),
+      selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),
     );
   }
 }

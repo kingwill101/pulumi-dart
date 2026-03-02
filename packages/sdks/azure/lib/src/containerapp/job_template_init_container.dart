@@ -6,29 +6,29 @@ import 'job_template_init_container_volume_mount.dart';
 
 class JobTemplateInitContainer {
   /// A list of extra arguments to pass to the container.
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// A command to pass to the container to override the default. This is provided as a list of command line elements without spaces.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// The amount of vCPU to allocate to the container.
   ///
   /// > **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
-  final double? cpu;
+  final pulumi.Input<double>? cpu;
   /// One or more `env` blocks as detailed below.
-  final List<JobTemplateInitContainerEnv>? envs;
+  final pulumi.Input<List<JobTemplateInitContainerEnv>>? envs;
   /// The amount of ephemeral storage available to the Container App.
   ///
   /// > **Note:** `ephemeral_storage` is currently in preview and not configurable at this time.
-  final String? ephemeralStorage;
+  final pulumi.Input<String>? ephemeralStorage;
   /// The image to use to create the container.
-  final String image;
+  final pulumi.Input<String> image;
   /// The amount of memory to allocate to the container.
   ///
   /// > **Note:** When using a Consumption plan, the `cpu` and `memory` properties must add up to one of the combinations found in the Microsoft provided documentation, for more information see [vCPU and memory allocation requirements](https://learn.microsoft.com/azure/container-apps/containers#allocations)
-  final String? memory;
+  final pulumi.Input<String>? memory;
   /// The name of the container.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `volume_mounts` block as detailed below.
-  final List<JobTemplateInitContainerVolumeMount>? volumeMounts;
+  final pulumi.Input<List<JobTemplateInitContainerVolumeMount>>? volumeMounts;
 
   /// Creates a new [JobTemplateInitContainer].
   /// [args] A list of extra arguments to pass to the container.
@@ -57,26 +57,26 @@ class JobTemplateInitContainer {
       'args': ?args,
       'commands': ?commands,
       'cpu': ?cpu,
-      'envs': ?envs == null ? null : pulumi.Input.encodeList<JobTemplateInitContainerEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
+      'envs': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateInitContainerEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<JobTemplateInitContainerEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ephemeralStorage': ?ephemeralStorage,
       'image': image,
       'memory': ?memory,
       'name': name,
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<JobTemplateInitContainerVolumeMount, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<JobTemplateInitContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<JobTemplateInitContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory JobTemplateInitContainer.fromMap(Map<String, dynamic> map) {
     return JobTemplateInitContainer(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      cpu: map['cpu'] == null ? null : map['cpu'] as double,
-      envs: map['envs'] == null ? null : pulumi.Input.decodeList<JobTemplateInitContainerEnv>(map['envs'], (value) => JobTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>())),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : map['ephemeralStorage'] as String,
-      image: map['image'] as String,
-      memory: map['memory'] == null ? null : map['memory'] as String,
-      name: map['name'] as String,
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<JobTemplateInitContainerVolumeMount>(map['volumeMounts'], (value) => JobTemplateInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>())),
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobTemplateInitContainerEnv>(map['envs'], (value) => JobTemplateInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as String).input(),
+      image: (map['image'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      name: (map['name'] as String).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobTemplateInitContainerVolumeMount>(map['volumeMounts'], (value) => JobTemplateInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

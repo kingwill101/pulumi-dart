@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_series_response.dart';
 
 /// Represents a data point tracking the count of assets allocated for a specific Machine Series.
 class ReportSummaryMachineSeriesAllocationResponse {
   /// Count of assets allocated to this machine series.
-  final String allocatedAssetCount;
+  final pulumi.Input<String> allocatedAssetCount;
   /// The Machine Series (e.g. "E2", "N2")
-  final MachineSeriesResponse machineSeries;
+  final pulumi.Input<MachineSeriesResponse> machineSeries;
 
   /// Creates a new [ReportSummaryMachineSeriesAllocationResponse].
   /// [allocatedAssetCount] Count of assets allocated to this machine series.
@@ -20,14 +21,14 @@ class ReportSummaryMachineSeriesAllocationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
-      'machineSeries': machineSeries.toMap(),
+      'machineSeries': pulumi.Input.mapInputValue<MachineSeriesResponse, Map<String, dynamic>>(machineSeries, (value) => value.toMap()),
     };
   }
 
   factory ReportSummaryMachineSeriesAllocationResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryMachineSeriesAllocationResponse(
-      allocatedAssetCount: map['allocatedAssetCount'] as String,
-      machineSeries: MachineSeriesResponse.fromMap((map['machineSeries'] as Map).cast<String, dynamic>()),
+      allocatedAssetCount: (map['allocatedAssetCount'] as String).input(),
+      machineSeries: (MachineSeriesResponse.fromMap((map['machineSeries'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

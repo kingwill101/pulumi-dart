@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the message schema reference properties.
 class MessageSchemaReferenceResponse {
   /// The message schema name.
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// The message schema registry namespace.
-  final String schemaRegistryNamespace;
+  final pulumi.Input<String> schemaRegistryNamespace;
   /// The message schema version.
-  final String schemaVersion;
+  final pulumi.Input<String> schemaVersion;
 
   /// Creates a new [MessageSchemaReferenceResponse].
   /// [schemaName] The message schema name.
@@ -30,9 +31,9 @@ class MessageSchemaReferenceResponse {
 
   factory MessageSchemaReferenceResponse.fromMap(Map<String, dynamic> map) {
     return MessageSchemaReferenceResponse(
-      schemaName: map['schemaName'] as String,
-      schemaRegistryNamespace: map['schemaRegistryNamespace'] as String,
-      schemaVersion: map['schemaVersion'] as String,
+      schemaName: (map['schemaName'] as String).input(),
+      schemaRegistryNamespace: (map['schemaRegistryNamespace'] as String).input(),
+      schemaVersion: (map['schemaVersion'] as String).input(),
     );
   }
 }

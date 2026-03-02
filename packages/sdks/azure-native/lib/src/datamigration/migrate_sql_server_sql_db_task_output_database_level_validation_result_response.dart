@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_integrity_validation_result_response.dart';
 import 'query_analysis_validation_result_response.dart';
 import 'schema_comparison_validation_result_response.dart';
 
 class MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse {
   /// Provides data integrity validation result between the source and target tables that are migrated.
-  final DataIntegrityValidationResultResponse dataIntegrityValidationResult;
+  final pulumi.Input<DataIntegrityValidationResultResponse> dataIntegrityValidationResult;
   /// Validation end time
-  final String endedOn;
+  final pulumi.Input<String> endedOn;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Migration Identifier
-  final String migrationId;
+  final pulumi.Input<String> migrationId;
   /// Results of some of the query execution result between source and target database
-  final QueryAnalysisValidationResultResponse queryAnalysisValidationResult;
+  final pulumi.Input<QueryAnalysisValidationResultResponse> queryAnalysisValidationResult;
   /// Result type
   /// Expected value is 'MigrationDatabaseLevelValidationOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Provides schema comparison result between source and target database
-  final SchemaComparisonValidationResultResponse schemaValidationResult;
+  final pulumi.Input<SchemaComparisonValidationResultResponse> schemaValidationResult;
   /// Name of the source database
-  final String sourceDatabaseName;
+  final pulumi.Input<String> sourceDatabaseName;
   /// Validation start time
-  final String startedOn;
+  final pulumi.Input<String> startedOn;
   /// Current status of validation at the database level
-  final String status;
+  final pulumi.Input<String> status;
   /// Name of the target database
-  final String targetDatabaseName;
+  final pulumi.Input<String> targetDatabaseName;
 
   /// Creates a new [MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse].
   /// [dataIntegrityValidationResult] Provides data integrity validation result between the source and target tables that are migrated.
@@ -57,13 +58,13 @@ class MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataIntegrityValidationResult': dataIntegrityValidationResult.toMap(),
+      'dataIntegrityValidationResult': pulumi.Input.mapInputValue<DataIntegrityValidationResultResponse, Map<String, dynamic>>(dataIntegrityValidationResult, (value) => value.toMap()),
       'endedOn': endedOn,
       'id': id,
       'migrationId': migrationId,
-      'queryAnalysisValidationResult': queryAnalysisValidationResult.toMap(),
+      'queryAnalysisValidationResult': pulumi.Input.mapInputValue<QueryAnalysisValidationResultResponse, Map<String, dynamic>>(queryAnalysisValidationResult, (value) => value.toMap()),
       'resultType': resultType,
-      'schemaValidationResult': schemaValidationResult.toMap(),
+      'schemaValidationResult': pulumi.Input.mapInputValue<SchemaComparisonValidationResultResponse, Map<String, dynamic>>(schemaValidationResult, (value) => value.toMap()),
       'sourceDatabaseName': sourceDatabaseName,
       'startedOn': startedOn,
       'status': status,
@@ -73,17 +74,17 @@ class MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse {
 
   factory MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse(
-      dataIntegrityValidationResult: DataIntegrityValidationResultResponse.fromMap((map['dataIntegrityValidationResult'] as Map).cast<String, dynamic>()),
-      endedOn: map['endedOn'] as String,
-      id: map['id'] as String,
-      migrationId: map['migrationId'] as String,
-      queryAnalysisValidationResult: QueryAnalysisValidationResultResponse.fromMap((map['queryAnalysisValidationResult'] as Map).cast<String, dynamic>()),
-      resultType: map['resultType'] as String,
-      schemaValidationResult: SchemaComparisonValidationResultResponse.fromMap((map['schemaValidationResult'] as Map).cast<String, dynamic>()),
-      sourceDatabaseName: map['sourceDatabaseName'] as String,
-      startedOn: map['startedOn'] as String,
-      status: map['status'] as String,
-      targetDatabaseName: map['targetDatabaseName'] as String,
+      dataIntegrityValidationResult: (DataIntegrityValidationResultResponse.fromMap((map['dataIntegrityValidationResult'] as Map).cast<String, dynamic>())).input(),
+      endedOn: (map['endedOn'] as String).input(),
+      id: (map['id'] as String).input(),
+      migrationId: (map['migrationId'] as String).input(),
+      queryAnalysisValidationResult: (QueryAnalysisValidationResultResponse.fromMap((map['queryAnalysisValidationResult'] as Map).cast<String, dynamic>())).input(),
+      resultType: (map['resultType'] as String).input(),
+      schemaValidationResult: (SchemaComparisonValidationResultResponse.fromMap((map['schemaValidationResult'] as Map).cast<String, dynamic>())).input(),
+      sourceDatabaseName: (map['sourceDatabaseName'] as String).input(),
+      startedOn: (map['startedOn'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetDatabaseName: (map['targetDatabaseName'] as String).input(),
     );
   }
 }

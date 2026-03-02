@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectorySamlIdentityProviderConfiguration {
   /// The Binding method for initiating a SAML request.
-  final String? bindingType;
+  final pulumi.Input<String>? bindingType;
   /// Certificate ID list
-  final List<String>? certificateIds;
+  final pulumi.Input<List<String>>? certificateIds;
   /// CreateTime
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// EncodedMetadataDocument
-  final String? encodedMetadataDocument;
+  final pulumi.Input<String>? encodedMetadataDocument;
   /// EntityId
-  final String? entityId;
+  final pulumi.Input<String>? entityId;
   /// LoginUrl
-  final String? loginUrl;
+  final pulumi.Input<String>? loginUrl;
   /// SSOStatus
-  final String? ssoStatus;
+  final pulumi.Input<String>? ssoStatus;
   /// UpdateTime
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
   /// SP Request whether the signature is required
-  final bool? wantRequestSigned;
+  final pulumi.Input<bool>? wantRequestSigned;
 
   /// Creates a new [DirectorySamlIdentityProviderConfiguration].
   /// [bindingType] The Binding method for initiating a SAML request.
@@ -59,15 +60,15 @@ class DirectorySamlIdentityProviderConfiguration {
 
   factory DirectorySamlIdentityProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return DirectorySamlIdentityProviderConfiguration(
-      bindingType: map['bindingType'] == null ? null : map['bindingType'] as String,
-      certificateIds: map['certificateIds'] == null ? null : (map['certificateIds'] as List).cast<String>(),
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : map['encodedMetadataDocument'] as String,
-      entityId: map['entityId'] == null ? null : map['entityId'] as String,
-      loginUrl: map['loginUrl'] == null ? null : map['loginUrl'] as String,
-      ssoStatus: map['ssoStatus'] == null ? null : map['ssoStatus'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
-      wantRequestSigned: map['wantRequestSigned'] == null ? null : map['wantRequestSigned'] as bool,
+      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : (map['encodedMetadataDocument'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
+      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl'] as String).input(),
+      ssoStatus: map['ssoStatus'] == null ? null : (map['ssoStatus'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      wantRequestSigned: map['wantRequestSigned'] == null ? null : (map['wantRequestSigned'] as bool).input(),
     );
   }
 }

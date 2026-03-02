@@ -30,21 +30,14 @@ class RestApiPutState {
   /// [timeouts] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment. To force a redeployment without changing these keys/values, use the `-replace` option with `pulumi preview` or `pulumi up`.
   RestApiPutState({
-    pulumi.Output<String>? body,
-    pulumi.Output<bool>? failOnWarnings,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? restApiId,
-    pulumi.Output<RestApiPutTimeouts>? timeouts,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      failOnWarnings = pulumi.Input.asOptionalInput<bool>(failOnWarnings),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asOptionalInput<String>(restApiId),
-      timeouts = pulumi.Input.asOptionalInput<RestApiPutTimeouts>(timeouts),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.body,
+    this.failOnWarnings,
+    this.parameters,
+    this.region,
+    this.restApiId,
+    this.timeouts,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class RestApiPutState {
 
   factory RestApiPutState.fromMap(Map<String, dynamic> map) {
     return RestApiPutState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      failOnWarnings: map['failOnWarnings'] == null ? null : pulumi.Output.create<bool>(map['failOnWarnings'] as bool),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: map['restApiId'] == null ? null : pulumi.Output.create<String>(map['restApiId'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RestApiPutTimeouts>(RestApiPutTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      failOnWarnings: map['failOnWarnings'] == null ? null : (map['failOnWarnings'] as bool).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (RestApiPutTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

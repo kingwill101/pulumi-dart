@@ -32,19 +32,13 @@ class TransitRouterPrefixListAssociationArgs {
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
   TransitRouterPrefixListAssociationArgs({
-    required pulumi.Output<String> nextHop,
-    pulumi.Output<String>? nextHopType,
-    pulumi.Output<int>? ownerUid,
-    required pulumi.Output<String> prefixListId,
-    required pulumi.Output<String> transitRouterId,
-    required pulumi.Output<String> transitRouterTableId,
-  }) :
-      nextHop = pulumi.Input.asInput<String>(nextHop),
-      nextHopType = pulumi.Input.asOptionalInput<String>(nextHopType),
-      ownerUid = pulumi.Input.asOptionalInput<int>(ownerUid),
-      prefixListId = pulumi.Input.asInput<String>(prefixListId),
-      transitRouterId = pulumi.Input.asInput<String>(transitRouterId),
-      transitRouterTableId = pulumi.Input.asInput<String>(transitRouterTableId);
+    required this.nextHop,
+    this.nextHopType,
+    this.ownerUid,
+    required this.prefixListId,
+    required this.transitRouterId,
+    required this.transitRouterTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class TransitRouterPrefixListAssociationArgs {
 
   factory TransitRouterPrefixListAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterPrefixListAssociationArgs(
-      nextHop: pulumi.Output.create<String>(map['nextHop'] as String),
-      nextHopType: map['nextHopType'] == null ? null : pulumi.Output.create<String>(map['nextHopType'] as String),
-      ownerUid: map['ownerUid'] == null ? null : pulumi.Output.create<int>(map['ownerUid'] as int),
-      prefixListId: pulumi.Output.create<String>(map['prefixListId'] as String),
-      transitRouterId: pulumi.Output.create<String>(map['transitRouterId'] as String),
-      transitRouterTableId: pulumi.Output.create<String>(map['transitRouterTableId'] as String),
+      nextHop: (map['nextHop'] as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
+      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid'] as int).input(),
+      prefixListId: (map['prefixListId'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
+      transitRouterTableId: (map['transitRouterTableId'] as String).input(),
     );
   }
 }

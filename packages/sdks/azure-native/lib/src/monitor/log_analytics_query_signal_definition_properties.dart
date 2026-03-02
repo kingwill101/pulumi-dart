@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'evaluation_rule.dart';
 
 /// Log Analytics Query Signal Definition properties
 class LogAnalyticsQuerySignalDefinitionProperties {
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-  final String? dataUnit;
+  final pulumi.Input<String>? dataUnit;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Evaluation rules for the signal definition
-  final EvaluationRule evaluationRules;
+  final pulumi.Input<EvaluationRule> evaluationRules;
   /// Query text in KQL syntax
-  final String queryText;
+  final pulumi.Input<String> queryText;
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
-  final String? refreshInterval;
+  final pulumi.Input<String>? refreshInterval;
   /// Supported signal kinds as discriminator
   /// Expected value is 'LogAnalyticsQuery'.
-  final String signalKind;
+  final pulumi.Input<String> signalKind;
   /// Optional set of labels (key-value pairs)
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
-  final String? timeGrain;
+  final pulumi.Input<String>? timeGrain;
   /// Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
-  final String? valueColumnName;
+  final pulumi.Input<String>? valueColumnName;
 
   /// Creates a new [LogAnalyticsQuerySignalDefinitionProperties].
   /// [dataUnit] Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
@@ -50,7 +51,7 @@ class LogAnalyticsQuerySignalDefinitionProperties {
     return <String, dynamic>{
       'dataUnit': ?dataUnit,
       'displayName': ?displayName,
-      'evaluationRules': evaluationRules.toMap(),
+      'evaluationRules': pulumi.Input.mapInputValue<EvaluationRule, Map<String, dynamic>>(evaluationRules, (value) => value.toMap()),
       'queryText': queryText,
       'refreshInterval': ?refreshInterval,
       'signalKind': signalKind,
@@ -62,15 +63,15 @@ class LogAnalyticsQuerySignalDefinitionProperties {
 
   factory LogAnalyticsQuerySignalDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsQuerySignalDefinitionProperties(
-      dataUnit: map['dataUnit'] == null ? null : map['dataUnit'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      evaluationRules: EvaluationRule.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>()),
-      queryText: map['queryText'] as String,
-      refreshInterval: map['refreshInterval'] == null ? null : map['refreshInterval'] as String,
-      signalKind: map['signalKind'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeGrain: map['timeGrain'] == null ? null : map['timeGrain'] as String,
-      valueColumnName: map['valueColumnName'] == null ? null : map['valueColumnName'] as String,
+      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      evaluationRules: (EvaluationRule.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>())).input(),
+      queryText: (map['queryText'] as String).input(),
+      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval'] as String).input(),
+      signalKind: (map['signalKind'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
+      valueColumnName: map['valueColumnName'] == null ? null : (map['valueColumnName'] as String).input(),
     );
   }
 }

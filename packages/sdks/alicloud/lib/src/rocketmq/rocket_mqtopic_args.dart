@@ -25,17 +25,12 @@ class RocketMQTopicArgs {
   /// [remark] Custom remarks.
   /// [topicName] Topic name and identification.
   RocketMQTopicArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? maxSendTps,
-    pulumi.Output<String>? messageType,
-    pulumi.Output<String>? remark,
-    required pulumi.Output<String> topicName,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      maxSendTps = pulumi.Input.asOptionalInput<int>(maxSendTps),
-      messageType = pulumi.Input.asOptionalInput<String>(messageType),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      topicName = pulumi.Input.asInput<String>(topicName);
+    required this.instanceId,
+    this.maxSendTps,
+    this.messageType,
+    this.remark,
+    required this.topicName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RocketMQTopicArgs {
 
   factory RocketMQTopicArgs.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      maxSendTps: map['maxSendTps'] == null ? null : pulumi.Output.create<int>(map['maxSendTps'] as int),
-      messageType: map['messageType'] == null ? null : pulumi.Output.create<String>(map['messageType'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      topicName: pulumi.Output.create<String>(map['topicName'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps'] as int).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      topicName: (map['topicName'] as String).input(),
     );
   }
 }

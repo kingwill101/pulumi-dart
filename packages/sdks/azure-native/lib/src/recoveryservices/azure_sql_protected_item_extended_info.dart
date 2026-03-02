@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Additional information on Azure Sql specific protected item.
 class AzureSqlProtectedItemExtendedInfo {
   /// The oldest backup copy available for this item in the service.
-  final String? oldestRecoveryPoint;
+  final pulumi.Input<String>? oldestRecoveryPoint;
   /// State of the backup policy associated with this backup item.
-  final String? policyState;
+  final pulumi.Input<String>? policyState;
   /// Number of available backup copies associated with this backup item.
-  final int? recoveryPointCount;
+  final pulumi.Input<int>? recoveryPointCount;
 
   /// Creates a new [AzureSqlProtectedItemExtendedInfo].
   /// [oldestRecoveryPoint] The oldest backup copy available for this item in the service.
@@ -30,9 +31,9 @@ class AzureSqlProtectedItemExtendedInfo {
 
   factory AzureSqlProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return AzureSqlProtectedItemExtendedInfo(
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : map['oldestRecoveryPoint'] as String,
-      policyState: map['policyState'] == null ? null : map['policyState'] as String,
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : map['recoveryPointCount'] as int,
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
     );
   }
 }

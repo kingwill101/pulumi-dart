@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_of_week.dart';
 
 /// Patch schedule entry for a Premium Redis Cache.
 class ScheduleEntry {
   /// Day of the week when a cache can be patched.
-  final DayOfWeek dayOfWeek;
+  final pulumi.Input<DayOfWeek> dayOfWeek;
   /// ISO8601 timespan specifying how much time cache patching can take.
-  final String? maintenanceWindow;
+  final pulumi.Input<String>? maintenanceWindow;
   /// Start hour after which cache patching can start.
-  final int startHourUtc;
+  final pulumi.Input<int> startHourUtc;
 
   /// Creates a new [ScheduleEntry].
   /// [dayOfWeek] Day of the week when a cache can be patched.
@@ -23,7 +24,7 @@ class ScheduleEntry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': dayOfWeek.value,
+      'dayOfWeek': pulumi.Input.mapInputValue<DayOfWeek, String>(dayOfWeek, (value) => value.value),
       'maintenanceWindow': ?maintenanceWindow,
       'startHourUtc': startHourUtc,
     };
@@ -31,9 +32,9 @@ class ScheduleEntry {
 
   factory ScheduleEntry.fromMap(Map<String, dynamic> map) {
     return ScheduleEntry(
-      dayOfWeek: DayOfWeek.fromValue(map['dayOfWeek'] as String),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : map['maintenanceWindow'] as String,
-      startHourUtc: map['startHourUtc'] as int,
+      dayOfWeek: (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
+      startHourUtc: (map['startHourUtc'] as int).input(),
     );
   }
 }

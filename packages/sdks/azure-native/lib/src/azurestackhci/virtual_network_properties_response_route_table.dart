@@ -6,13 +6,13 @@ import 'virtual_network_properties_response_routes.dart';
 /// RouteTable for the subnet
 class VirtualNetworkPropertiesResponseRouteTable {
   /// Etag - Gets a unique read-only string that changes whenever the resource is updated.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name - READ-ONLY; Resource name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Routes - Collection of routes contained within a route table.
-  final List<VirtualNetworkPropertiesResponseRoutes>? routes;
+  final pulumi.Input<List<VirtualNetworkPropertiesResponseRoutes>>? routes;
   /// Type - READ-ONLY; Resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [VirtualNetworkPropertiesResponseRouteTable].
   /// [id] Etag - Gets a unique read-only string that changes whenever the resource is updated.
@@ -30,17 +30,17 @@ class VirtualNetworkPropertiesResponseRouteTable {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'routes': ?routes == null ? null : pulumi.Input.encodeList<VirtualNetworkPropertiesResponseRoutes, Map<String, dynamic>>(routes!, (value) => value.toMap()),
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkPropertiesResponseRoutes>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<VirtualNetworkPropertiesResponseRoutes, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory VirtualNetworkPropertiesResponseRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponseRouteTable(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualNetworkPropertiesResponseRoutes>(map['routes'], (value) => VirtualNetworkPropertiesResponseRoutes.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesResponseRoutes>(map['routes'], (value) => VirtualNetworkPropertiesResponseRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

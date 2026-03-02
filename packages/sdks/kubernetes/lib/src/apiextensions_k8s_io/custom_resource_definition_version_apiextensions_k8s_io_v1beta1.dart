@@ -8,21 +8,21 @@ import 'custom_resource_validation_apiextensions_k8s_io_v1beta1.dart';
 /// CustomResourceDefinitionVersion describes a version for CRD.
 class CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1 {
   /// additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.
-  final List<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>? additionalPrinterColumns;
+  final pulumi.Input<List<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>>? additionalPrinterColumns;
   /// deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.
-  final bool? deprecated;
+  final pulumi.Input<bool>? deprecated;
   /// deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists.
-  final String? deprecationWarning;
+  final pulumi.Input<String>? deprecationWarning;
   /// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.
-  final String name;
+  final pulumi.Input<String> name;
   /// schema describes the schema used for validation and pruning of this version of the custom resource. Top-level and per-version schemas are mutually exclusive. Per-version schemas must not all be set to identical values (top-level validation schema should be used instead).
-  final CustomResourceValidationApiextensionsK8sIoV1beta1? schema;
+  final pulumi.Input<CustomResourceValidationApiextensionsK8sIoV1beta1>? schema;
   /// served is a flag enabling/disabling this version from being served via REST APIs
-  final bool served;
+  final pulumi.Input<bool> served;
   /// storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
-  final bool storage;
+  final pulumi.Input<bool> storage;
   /// subresources specify what subresources this version of the defined custom resource have. Top-level and per-version subresources are mutually exclusive. Per-version subresources must not all be set to identical values (top-level subresources should be used instead).
-  final CustomResourceSubresourcesApiextensionsK8sIoV1beta1? subresources;
+  final pulumi.Input<CustomResourceSubresourcesApiextensionsK8sIoV1beta1>? subresources;
 
   /// Creates a new [CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1].
   /// [additionalPrinterColumns] additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.
@@ -46,27 +46,27 @@ class CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalPrinterColumns': ?additionalPrinterColumns == null ? null : pulumi.Input.encodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1, Map<String, dynamic>>(additionalPrinterColumns!, (value) => value.toMap()),
+      'additionalPrinterColumns': ?pulumi.Input.mapOptionalInputValue<List<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>, List<Map<String, dynamic>>>(additionalPrinterColumns, (value) => pulumi.Input.encodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deprecated': ?deprecated,
       'deprecationWarning': ?deprecationWarning,
       'name': name,
-      'schema': ?schema == null ? null : schema!.toMap(),
+      'schema': ?pulumi.Input.mapOptionalInputValue<CustomResourceValidationApiextensionsK8sIoV1beta1, Map<String, dynamic>>(schema, (value) => value.toMap()),
       'served': served,
       'storage': storage,
-      'subresources': ?subresources == null ? null : subresources!.toMap(),
+      'subresources': ?pulumi.Input.mapOptionalInputValue<CustomResourceSubresourcesApiextensionsK8sIoV1beta1, Map<String, dynamic>>(subresources, (value) => value.toMap()),
     };
   }
 
   factory CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      deprecated: map['deprecated'] == null ? null : map['deprecated'] as bool,
-      deprecationWarning: map['deprecationWarning'] == null ? null : map['deprecationWarning'] as String,
-      name: map['name'] as String,
-      schema: map['schema'] == null ? null : CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      served: map['served'] as bool,
-      storage: map['storage'] as bool,
-      subresources: map['subresources'] == null ? null : CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources'] as Map).cast<String, dynamic>()),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
+      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning'] as String).input(),
+      name: (map['name'] as String).input(),
+      schema: map['schema'] == null ? null : (CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      served: (map['served'] as bool).input(),
+      storage: (map['storage'] as bool).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_mode.dart';
 import 'compression_type.dart';
 
 class CacheToLocal {
   /// The compression type to use.
-  final CompressionType? compression;
+  final pulumi.Input<CompressionType>? compression;
   /// Compression level from 0 to 22.
-  final int? compressionLevel;
+  final pulumi.Input<int>? compressionLevel;
   /// Path of the local directory to export the cache.
-  final String dest;
+  final pulumi.Input<String> dest;
   /// Forcefully apply compression.
-  final bool? forceCompression;
+  final pulumi.Input<bool>? forceCompression;
   /// Ignore errors caused by failed cache exports.
-  final bool? ignoreError;
+  final pulumi.Input<bool>? ignoreError;
   /// The cache mode to use. Defaults to `min`.
-  final CacheMode? mode;
+  final pulumi.Input<CacheMode>? mode;
 
   /// Creates a new [CacheToLocal].
   /// [compression] The compression type to use.
@@ -35,23 +36,23 @@ class CacheToLocal {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compression': ?compression == null ? null : compression!.value,
+      'compression': ?pulumi.Input.mapOptionalInputValue<CompressionType, String>(compression, (value) => value.value),
       'compressionLevel': ?compressionLevel,
       'dest': dest,
       'forceCompression': ?forceCompression,
       'ignoreError': ?ignoreError,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(mode, (value) => value.value),
     };
   }
 
   factory CacheToLocal.fromMap(Map<String, dynamic> map) {
     return CacheToLocal(
-      compression: map['compression'] == null ? null : CompressionType.fromValue(map['compression'] as String),
-      compressionLevel: map['compressionLevel'] == null ? null : map['compressionLevel'] as int,
-      dest: map['dest'] as String,
-      forceCompression: map['forceCompression'] == null ? null : map['forceCompression'] as bool,
-      ignoreError: map['ignoreError'] == null ? null : map['ignoreError'] as bool,
-      mode: map['mode'] == null ? null : CacheMode.fromValue(map['mode'] as String),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
+      dest: (map['dest'] as String).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNodeSpecListenerTlsCertificateSds {
   /// Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificateSds].
   /// [secretName] Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
@@ -19,7 +20,7 @@ class VirtualNodeSpecListenerTlsCertificateSds {
 
   factory VirtualNodeSpecListenerTlsCertificateSds.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsCertificateSds(
-      secretName: map['secretName'] as String,
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

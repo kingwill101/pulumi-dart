@@ -10,26 +10,26 @@ import 'tiering_policy.dart';
 class AzureIaaSVMProtectionPolicy {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'AzureIaasVM'.
-  final String backupManagementType;
-  final InstantRPAdditionalDetails? instantRPDetails;
+  final pulumi.Input<String> backupManagementType;
+  final pulumi.Input<InstantRPAdditionalDetails>? instantRPDetails;
   /// Instant RP retention policy range in days
-  final int? instantRpRetentionRangeInDays;
-  final String? policyType;
+  final pulumi.Input<int>? instantRpRetentionRangeInDays;
+  final pulumi.Input<String>? policyType;
   /// Number of items associated with this policy.
-  final int? protectedItemsCount;
+  final pulumi.Input<int>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final List<String>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
   /// Retention policy with the details on backup copy retention ranges.
-  final LongTermRetentionPolicy? retentionPolicy;
+  final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
   /// Backup schedule specified as part of backup policy.
-  final LogSchedulePolicy? schedulePolicy;
-  final String? snapshotConsistencyType;
+  final pulumi.Input<LogSchedulePolicy>? schedulePolicy;
+  final pulumi.Input<String>? snapshotConsistencyType;
   /// Tiering policy to automatically move RPs to another tier
   /// Key is Target Tier, defined in RecoveryPointTierType enum.
   /// Tiering policy specifies the criteria to move RP to the target tier.
-  final Map<String, TieringPolicy>? tieringPolicy;
+  final pulumi.Input<Map<String, TieringPolicy>>? tieringPolicy;
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [AzureIaaSVMProtectionPolicy].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -60,32 +60,32 @@ class AzureIaaSVMProtectionPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupManagementType': backupManagementType,
-      'instantRPDetails': ?instantRPDetails == null ? null : instantRPDetails!.toMap(),
+      'instantRPDetails': ?pulumi.Input.mapOptionalInputValue<InstantRPAdditionalDetails, Map<String, dynamic>>(instantRPDetails, (value) => value.toMap()),
       'instantRpRetentionRangeInDays': ?instantRpRetentionRangeInDays,
       'policyType': ?policyType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy': ?retentionPolicy == null ? null : retentionPolicy!.toMap(),
-      'schedulePolicy': ?schedulePolicy == null ? null : schedulePolicy!.toMap(),
+      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'schedulePolicy': ?pulumi.Input.mapOptionalInputValue<LogSchedulePolicy, Map<String, dynamic>>(schedulePolicy, (value) => value.toMap()),
       'snapshotConsistencyType': ?snapshotConsistencyType,
-      'tieringPolicy': ?tieringPolicy == null ? null : pulumi.Input.encodeMapValues<TieringPolicy, Map<String, dynamic>>(tieringPolicy!, (value) => value.toMap()),
+      'tieringPolicy': ?pulumi.Input.mapOptionalInputValue<Map<String, TieringPolicy>, Map<String, Map<String, dynamic>>>(tieringPolicy, (value) => pulumi.Input.encodeMapValues<TieringPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeZone': ?timeZone,
     };
   }
 
   factory AzureIaaSVMProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return AzureIaaSVMProtectionPolicy(
-      backupManagementType: map['backupManagementType'] as String,
-      instantRPDetails: map['instantRPDetails'] == null ? null : InstantRPAdditionalDetails.fromMap((map['instantRPDetails'] as Map).cast<String, dynamic>()),
-      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : map['instantRpRetentionRangeInDays'] as int,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : map['protectedItemsCount'] as int,
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : (map['resourceGuardOperationRequests'] as List).cast<String>(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>()),
-      schedulePolicy: map['schedulePolicy'] == null ? null : LogSchedulePolicy.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>()),
-      snapshotConsistencyType: map['snapshotConsistencyType'] == null ? null : map['snapshotConsistencyType'] as String,
-      tieringPolicy: map['tieringPolicy'] == null ? null : pulumi.Input.decodeMapValues<TieringPolicy>(map['tieringPolicy'], (value) => TieringPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      backupManagementType: (map['backupManagementType'] as String).input(),
+      instantRPDetails: map['instantRPDetails'] == null ? null : (InstantRPAdditionalDetails.fromMap((map['instantRPDetails'] as Map).cast<String, dynamic>())).input(),
+      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays'] as int).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount'] as int).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicy.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      snapshotConsistencyType: map['snapshotConsistencyType'] == null ? null : (map['snapshotConsistencyType'] as String).input(),
+      tieringPolicy: map['tieringPolicy'] == null ? null : (pulumi.Input.decodeMapValues<TieringPolicy>(map['tieringPolicy'], (value) => TieringPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

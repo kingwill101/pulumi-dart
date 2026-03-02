@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Visual position of the entity
 class EntityCoordinatesResponse {
   /// X Coordinate
-  final double x;
+  final pulumi.Input<double> x;
   /// Y Coordinate
-  final double y;
+  final pulumi.Input<double> y;
 
   /// Creates a new [EntityCoordinatesResponse].
   /// [x] X Coordinate
@@ -25,8 +26,8 @@ class EntityCoordinatesResponse {
 
   factory EntityCoordinatesResponse.fromMap(Map<String, dynamic> map) {
     return EntityCoordinatesResponse(
-      x: map['x'] as double,
-      y: map['y'] as double,
+      x: (map['x'] as double).input(),
+      y: (map['y'] as double).input(),
     );
   }
 }

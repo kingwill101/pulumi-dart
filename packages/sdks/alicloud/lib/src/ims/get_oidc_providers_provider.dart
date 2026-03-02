@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOidcProvidersProvider {
   /// ARN of OIDC identity provider.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Client ID.
-  final List<String> clientIds;
+  final pulumi.Input<List<String>> clientIds;
   /// Creation Time (UTC time).
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of OIDC identity provider.
-  final String description;
+  final pulumi.Input<String> description;
   /// The authentication fingerprint of the HTTPS CA certificate.
-  final List<String> fingerprints;
+  final pulumi.Input<List<String>> fingerprints;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
-  final int issuanceLimitTime;
+  final pulumi.Input<int> issuanceLimitTime;
   /// The issuer URL of the OIDC identity provider.
-  final String issuerUrl;
+  final pulumi.Input<String> issuerUrl;
   /// The name of the OIDC identity provider.
-  final String oidcProviderName;
+  final pulumi.Input<String> oidcProviderName;
   /// Modification Time (UTC time).
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GetOidcProvidersProvider].
   /// [arn] ARN of OIDC identity provider.
@@ -64,16 +65,16 @@ class GetOidcProvidersProvider {
 
   factory GetOidcProvidersProvider.fromMap(Map<String, dynamic> map) {
     return GetOidcProvidersProvider(
-      arn: map['arn'] as String,
-      clientIds: (map['clientIds'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      fingerprints: (map['fingerprints'] as List).cast<String>(),
-      id: map['id'] as String,
-      issuanceLimitTime: map['issuanceLimitTime'] as int,
-      issuerUrl: map['issuerUrl'] as String,
-      oidcProviderName: map['oidcProviderName'] as String,
-      updateTime: map['updateTime'] as String,
+      arn: (map['arn'] as String).input(),
+      clientIds: ((map['clientIds'] as List).cast<String>()).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      fingerprints: ((map['fingerprints'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      issuanceLimitTime: (map['issuanceLimitTime'] as int).input(),
+      issuerUrl: (map['issuerUrl'] as String).input(),
+      oidcProviderName: (map['oidcProviderName'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketGrant {
   /// Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
-  final List<String> permissions;
+  final pulumi.Input<List<String>> permissions;
   /// Type of grantee to apply for. Valid values are `CanonicalUser` and `Group`. `AmazonCustomerByEmail` is not supported.
-  final String type;
+  final pulumi.Input<String> type;
   /// Uri address to grant for. Used only when `type` is `Group`.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [BucketGrant].
   /// [id] Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
@@ -34,10 +35,10 @@ class BucketGrant {
 
   factory BucketGrant.fromMap(Map<String, dynamic> map) {
     return BucketGrant(
-      id: map['id'] == null ? null : map['id'] as String,
-      permissions: (map['permissions'] as List).cast<String>(),
-      type: map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      type: (map['type'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

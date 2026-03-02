@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The period during which some deployable was active in a runtime.
 class DeploymentResponseContaineranalysisV1beta1 {
   /// Address of the runtime element hosting this deployment.
-  final String address;
+  final pulumi.Input<String> address;
   /// Configuration used to create this deployment.
-  final String config;
+  final pulumi.Input<String> config;
   /// Beginning of the lifetime of this deployment.
-  final String deployTime;
+  final pulumi.Input<String> deployTime;
   /// Platform hosting this deployment.
-  final String platform;
+  final pulumi.Input<String> platform;
   /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-  final List<String> resourceUri;
+  final pulumi.Input<List<String>> resourceUri;
   /// End of the lifetime of this deployment.
-  final String undeployTime;
+  final pulumi.Input<String> undeployTime;
   /// Identity of the user that triggered this deployment.
-  final String userEmail;
+  final pulumi.Input<String> userEmail;
 
   /// Creates a new [DeploymentResponseContaineranalysisV1beta1].
   /// [address] Address of the runtime element hosting this deployment.
@@ -50,13 +51,13 @@ class DeploymentResponseContaineranalysisV1beta1 {
 
   factory DeploymentResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DeploymentResponseContaineranalysisV1beta1(
-      address: map['address'] as String,
-      config: map['config'] as String,
-      deployTime: map['deployTime'] as String,
-      platform: map['platform'] as String,
-      resourceUri: (map['resourceUri'] as List).cast<String>(),
-      undeployTime: map['undeployTime'] as String,
-      userEmail: map['userEmail'] as String,
+      address: (map['address'] as String).input(),
+      config: (map['config'] as String).input(),
+      deployTime: (map['deployTime'] as String).input(),
+      platform: (map['platform'] as String).input(),
+      resourceUri: ((map['resourceUri'] as List).cast<String>()).input(),
+      undeployTime: (map['undeployTime'] as String).input(),
+      userEmail: (map['userEmail'] as String).input(),
     );
   }
 }

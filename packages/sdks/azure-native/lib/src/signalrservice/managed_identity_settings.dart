@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed identity settings for upstream.
 class ManagedIdentitySettings {
   /// The Resource indicating the App ID URI of the target resource.
   /// It also appears in the aud (audience) claim of the issued token.
-  final String? resource;
+  final pulumi.Input<String>? resource;
 
   /// Creates a new [ManagedIdentitySettings].
   /// [resource] The Resource indicating the App ID URI of the target resource.
@@ -21,7 +22,7 @@ class ManagedIdentitySettings {
 
   factory ManagedIdentitySettings.fromMap(Map<String, dynamic> map) {
     return ManagedIdentitySettings(
-      resource: map['resource'] == null ? null : map['resource'] as String,
+      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
     );
   }
 }

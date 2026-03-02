@@ -41,27 +41,17 @@ class GetRouterInterfacesArgs {
   /// [specification] Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
   /// [status] Expected status. Valid values are `Active`, `Inactive` and `Idle`.
   GetRouterInterfacesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? oppositeInterfaceId,
-    pulumi.Output<String>? oppositeInterfaceOwnerId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? routerId,
-    pulumi.Output<String>? routerType,
-    pulumi.Output<String>? specification,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      oppositeInterfaceId = pulumi.Input.asOptionalInput<String>(oppositeInterfaceId),
-      oppositeInterfaceOwnerId = pulumi.Input.asOptionalInput<String>(oppositeInterfaceOwnerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      routerId = pulumi.Input.asOptionalInput<String>(routerId),
-      routerType = pulumi.Input.asOptionalInput<String>(routerType),
-      specification = pulumi.Input.asOptionalInput<String>(specification),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.nameRegex,
+    this.oppositeInterfaceId,
+    this.oppositeInterfaceOwnerId,
+    this.outputFile,
+    this.role,
+    this.routerId,
+    this.routerType,
+    this.specification,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class GetRouterInterfacesArgs {
 
   factory GetRouterInterfacesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : pulumi.Output.create<String>(map['oppositeInterfaceId'] as String),
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : pulumi.Output.create<String>(map['oppositeInterfaceOwnerId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
-      routerType: map['routerType'] == null ? null : pulumi.Output.create<String>(map['routerType'] as String),
-      specification: map['specification'] == null ? null : pulumi.Output.create<String>(map['specification'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId'] as String).input(),
+      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
+      routerType: map['routerType'] == null ? null : (map['routerType'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

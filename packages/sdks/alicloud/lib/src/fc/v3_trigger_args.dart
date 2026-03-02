@@ -34,23 +34,15 @@ class V3TriggerArgs {
   /// [triggerName] Trigger Name
   /// [triggerType] The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
   V3TriggerArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? invocationRole,
-    required pulumi.Output<String> qualifier,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<String>? triggerConfig,
-    pulumi.Output<String>? triggerName,
-    required pulumi.Output<String> triggerType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      invocationRole = pulumi.Input.asOptionalInput<String>(invocationRole),
-      qualifier = pulumi.Input.asInput<String>(qualifier),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      triggerConfig = pulumi.Input.asOptionalInput<String>(triggerConfig),
-      triggerName = pulumi.Input.asOptionalInput<String>(triggerName),
-      triggerType = pulumi.Input.asInput<String>(triggerType);
+    this.description,
+    required this.functionName,
+    this.invocationRole,
+    required this.qualifier,
+    this.sourceArn,
+    this.triggerConfig,
+    this.triggerName,
+    required this.triggerType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class V3TriggerArgs {
 
   factory V3TriggerArgs.fromMap(Map<String, dynamic> map) {
     return V3TriggerArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      invocationRole: map['invocationRole'] == null ? null : pulumi.Output.create<String>(map['invocationRole'] as String),
-      qualifier: pulumi.Output.create<String>(map['qualifier'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      triggerConfig: map['triggerConfig'] == null ? null : pulumi.Output.create<String>(map['triggerConfig'] as String),
-      triggerName: map['triggerName'] == null ? null : pulumi.Output.create<String>(map['triggerName'] as String),
-      triggerType: pulumi.Output.create<String>(map['triggerType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      functionName: (map['functionName'] as String).input(),
+      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole'] as String).input(),
+      qualifier: (map['qualifier'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

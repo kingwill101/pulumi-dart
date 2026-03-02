@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_data_set_physical_table_map_relational_table_input_column.dart';
 
 class GetDataSetPhysicalTableMapRelationalTable {
-  final String catalog;
-  final String dataSourceArn;
-  final List<GetDataSetPhysicalTableMapRelationalTableInputColumn> inputColumns;
-  final String name;
-  final String schema;
+  final pulumi.Input<String> catalog;
+  final pulumi.Input<String> dataSourceArn;
+  final pulumi.Input<List<GetDataSetPhysicalTableMapRelationalTableInputColumn>> inputColumns;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> schema;
 
   /// Creates a new [GetDataSetPhysicalTableMapRelationalTable].
   /// [catalog] Required.
@@ -28,7 +28,7 @@ class GetDataSetPhysicalTableMapRelationalTable {
     return <String, dynamic>{
       'catalog': catalog,
       'dataSourceArn': dataSourceArn,
-      'inputColumns': pulumi.Input.encodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn, Map<String, dynamic>>(inputColumns, (value) => value.toMap()),
+      'inputColumns': pulumi.Input.mapInputValue<List<GetDataSetPhysicalTableMapRelationalTableInputColumn>, List<Map<String, dynamic>>>(inputColumns, (value) => pulumi.Input.encodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'schema': schema,
     };
@@ -36,11 +36,11 @@ class GetDataSetPhysicalTableMapRelationalTable {
 
   factory GetDataSetPhysicalTableMapRelationalTable.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapRelationalTable(
-      catalog: map['catalog'] as String,
-      dataSourceArn: map['dataSourceArn'] as String,
-      inputColumns: pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      schema: map['schema'] as String,
+      catalog: (map['catalog'] as String).input(),
+      dataSourceArn: (map['dataSourceArn'] as String).input(),
+      inputColumns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      schema: (map['schema'] as String).input(),
     );
   }
 }

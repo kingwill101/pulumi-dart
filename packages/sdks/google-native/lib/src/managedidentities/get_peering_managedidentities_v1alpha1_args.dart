@@ -14,11 +14,9 @@ class GetPeeringManagedidentitiesV1alpha1Args {
   /// [peeringId] Required.
   /// [project] Optional.
   GetPeeringManagedidentitiesV1alpha1Args({
-    required pulumi.Output<String> peeringId,
-    pulumi.Output<String>? project,
-  }) :
-      peeringId = pulumi.Input.asInput<String>(peeringId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.peeringId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetPeeringManagedidentitiesV1alpha1Args {
 
   factory GetPeeringManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetPeeringManagedidentitiesV1alpha1Args(
-      peeringId: pulumi.Output.create<String>(map['peeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      peeringId: (map['peeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

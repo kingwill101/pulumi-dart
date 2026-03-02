@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_billing_properties_response.dart';
 
 /// described the storage properties of the azure large storage instance
 class StoragePropertiesResponse {
   /// the kind of storage instance
-  final String? generation;
+  final pulumi.Input<String>? generation;
   /// the hardware type of the storage instance
-  final String? hardwareType;
+  final pulumi.Input<String>? hardwareType;
   /// the offering type for which the resource is getting provisioned
-  final String? offeringType;
+  final pulumi.Input<String>? offeringType;
   /// State of provisioning of the AzureLargeStorageInstance
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// the billing related information for the resource
-  final StorageBillingPropertiesResponse? storageBillingProperties;
+  final pulumi.Input<StorageBillingPropertiesResponse>? storageBillingProperties;
   /// the storage protocol for which the resource is getting provisioned
-  final String? storageType;
+  final pulumi.Input<String>? storageType;
   /// the workload for which the resource is getting provisioned
-  final String? workloadType;
+  final pulumi.Input<String>? workloadType;
 
   /// Creates a new [StoragePropertiesResponse].
   /// [generation] the kind of storage instance
@@ -43,7 +44,7 @@ class StoragePropertiesResponse {
       'hardwareType': ?hardwareType,
       'offeringType': ?offeringType,
       'provisioningState': provisioningState,
-      'storageBillingProperties': ?storageBillingProperties == null ? null : storageBillingProperties!.toMap(),
+      'storageBillingProperties': ?pulumi.Input.mapOptionalInputValue<StorageBillingPropertiesResponse, Map<String, dynamic>>(storageBillingProperties, (value) => value.toMap()),
       'storageType': ?storageType,
       'workloadType': ?workloadType,
     };
@@ -51,13 +52,13 @@ class StoragePropertiesResponse {
 
   factory StoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StoragePropertiesResponse(
-      generation: map['generation'] == null ? null : map['generation'] as String,
-      hardwareType: map['hardwareType'] == null ? null : map['hardwareType'] as String,
-      offeringType: map['offeringType'] == null ? null : map['offeringType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      storageBillingProperties: map['storageBillingProperties'] == null ? null : StorageBillingPropertiesResponse.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>()),
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      workloadType: map['workloadType'] == null ? null : map['workloadType'] as String,
+      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
+      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingPropertiesResponse.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>())).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
     );
   }
 }

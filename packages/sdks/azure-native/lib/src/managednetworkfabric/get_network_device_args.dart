@@ -16,11 +16,9 @@ class GetNetworkDeviceArgs {
   /// [networkDeviceName] Name of the Network Device.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkDeviceArgs({
-    required pulumi.Output<String> networkDeviceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkDeviceName = pulumi.Input.asInput<String>(networkDeviceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkDeviceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkDeviceArgs {
 
   factory GetNetworkDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkDeviceArgs(
-      networkDeviceName: pulumi.Output.create<String>(map['networkDeviceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkDeviceName: (map['networkDeviceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

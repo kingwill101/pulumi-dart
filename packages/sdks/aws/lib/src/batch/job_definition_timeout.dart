@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionTimeout {
   /// Time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
-  final int? attemptDurationSeconds;
+  final pulumi.Input<int>? attemptDurationSeconds;
 
   /// Creates a new [JobDefinitionTimeout].
   /// [attemptDurationSeconds] Time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
@@ -19,7 +20,7 @@ class JobDefinitionTimeout {
 
   factory JobDefinitionTimeout.fromMap(Map<String, dynamic> map) {
     return JobDefinitionTimeout(
-      attemptDurationSeconds: map['attemptDurationSeconds'] == null ? null : map['attemptDurationSeconds'] as int,
+      attemptDurationSeconds: map['attemptDurationSeconds'] == null ? null : (map['attemptDurationSeconds'] as int).input(),
     );
   }
 }

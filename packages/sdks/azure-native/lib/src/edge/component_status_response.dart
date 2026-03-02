@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Component Status
 class ComponentStatusResponse {
   /// Component name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Component status
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [ComponentStatusResponse].
   /// [name] Component name
@@ -25,8 +26,8 @@ class ComponentStatusResponse {
 
   factory ComponentStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComponentStatusResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

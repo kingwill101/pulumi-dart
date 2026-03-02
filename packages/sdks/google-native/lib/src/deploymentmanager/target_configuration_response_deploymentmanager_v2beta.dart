@@ -6,9 +6,9 @@ import 'import_file_response_deploymentmanager_v2beta.dart';
 
 class TargetConfigurationResponseDeploymentmanagerV2beta {
   /// The configuration to use for this deployment.
-  final ConfigFileResponseDeploymentmanagerV2beta config;
+  final pulumi.Input<ConfigFileResponseDeploymentmanagerV2beta> config;
   /// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-  final List<ImportFileResponseDeploymentmanagerV2beta> imports;
+  final pulumi.Input<List<ImportFileResponseDeploymentmanagerV2beta>> imports;
 
   /// Creates a new [TargetConfigurationResponseDeploymentmanagerV2beta].
   /// [config] The configuration to use for this deployment.
@@ -20,15 +20,15 @@ class TargetConfigurationResponseDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': config.toMap(),
-      'imports': pulumi.Input.encodeList<ImportFileResponseDeploymentmanagerV2beta, Map<String, dynamic>>(imports, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<ConfigFileResponseDeploymentmanagerV2beta, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'imports': pulumi.Input.mapInputValue<List<ImportFileResponseDeploymentmanagerV2beta>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileResponseDeploymentmanagerV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TargetConfigurationResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return TargetConfigurationResponseDeploymentmanagerV2beta(
-      config: ConfigFileResponseDeploymentmanagerV2beta.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      imports: pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(map['imports'], (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      config: (ConfigFileResponseDeploymentmanagerV2beta.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      imports: (pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(map['imports'], (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

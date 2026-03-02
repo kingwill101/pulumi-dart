@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolWindow {
   /// Whether automatic updates are enabled on the virtual machine.
-  final bool enableAutomaticUpdates;
+  final pulumi.Input<bool> enableAutomaticUpdates;
 
   /// Creates a new [GetPoolWindow].
   /// [enableAutomaticUpdates] Whether automatic updates are enabled on the virtual machine.
@@ -19,7 +20,7 @@ class GetPoolWindow {
 
   factory GetPoolWindow.fromMap(Map<String, dynamic> map) {
     return GetPoolWindow(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] as bool,
+      enableAutomaticUpdates: (map['enableAutomaticUpdates'] as bool).input(),
     );
   }
 }

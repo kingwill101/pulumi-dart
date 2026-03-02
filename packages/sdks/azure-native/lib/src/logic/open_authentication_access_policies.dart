@@ -6,7 +6,7 @@ import 'open_authentication_access_policy.dart';
 /// AuthenticationPolicy of type Open.
 class OpenAuthenticationAccessPolicies {
   /// Open authentication policies.
-  final Map<String, OpenAuthenticationAccessPolicy>? policies;
+  final pulumi.Input<Map<String, OpenAuthenticationAccessPolicy>>? policies;
 
   /// Creates a new [OpenAuthenticationAccessPolicies].
   /// [policies] Open authentication policies.
@@ -16,13 +16,13 @@ class OpenAuthenticationAccessPolicies {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies': ?policies == null ? null : pulumi.Input.encodeMapValues<OpenAuthenticationAccessPolicy, Map<String, dynamic>>(policies!, (value) => value.toMap()),
+      'policies': ?pulumi.Input.mapOptionalInputValue<Map<String, OpenAuthenticationAccessPolicy>, Map<String, Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeMapValues<OpenAuthenticationAccessPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory OpenAuthenticationAccessPolicies.fromMap(Map<String, dynamic> map) {
     return OpenAuthenticationAccessPolicies(
-      policies: map['policies'] == null ? null : pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(map['policies'], (value) => OpenAuthenticationAccessPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(map['policies'], (value) => OpenAuthenticationAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

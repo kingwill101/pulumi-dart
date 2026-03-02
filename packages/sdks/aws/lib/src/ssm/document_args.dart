@@ -41,27 +41,17 @@ class DocumentArgs {
   /// [targetType] The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   /// [versionName] The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
   DocumentArgs({
-    pulumi.Output<List<DocumentAttachmentsSource>>? attachmentsSources,
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? documentFormat,
-    required pulumi.Output<String> documentType,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? targetType,
-    pulumi.Output<String>? versionName,
-  }) :
-      attachmentsSources = pulumi.Input.asOptionalInput<List<DocumentAttachmentsSource>>(attachmentsSources),
-      content = pulumi.Input.asInput<String>(content),
-      documentFormat = pulumi.Input.asOptionalInput<String>(documentFormat),
-      documentType = pulumi.Input.asInput<String>(documentType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissions = pulumi.Input.asOptionalInput<Map<String, String>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+    this.attachmentsSources,
+    required this.content,
+    this.documentFormat,
+    required this.documentType,
+    this.name,
+    this.permissions,
+    this.region,
+    this.tags,
+    this.targetType,
+    this.versionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      attachmentsSources: map['attachmentsSources'] == null ? null : pulumi.Output.create<List<DocumentAttachmentsSource>>(pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources'], (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>()))),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      documentFormat: map['documentFormat'] == null ? null : pulumi.Output.create<String>(map['documentFormat'] as String),
-      documentType: pulumi.Output.create<String>(map['documentType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['permissions'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+      attachmentsSources: map['attachmentsSources'] == null ? null : (pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources'], (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      content: (map['content'] as String).input(),
+      documentFormat: map['documentFormat'] == null ? null : (map['documentFormat'] as String).input(),
+      documentType: (map['documentType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
     );
   }
 }

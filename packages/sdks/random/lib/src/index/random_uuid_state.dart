@@ -13,11 +13,9 @@ class RandomUuidState {
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [result] The generated uuid presented in string format.
   RandomUuidState({
-    pulumi.Output<Map<String, String>>? keepers,
-    pulumi.Output<String>? result,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      result = pulumi.Input.asOptionalInput<String>(result);
+    this.keepers,
+    this.result,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class RandomUuidState {
 
   factory RandomUuidState.fromMap(Map<String, dynamic> map) {
     return RandomUuidState(
-      keepers: map['keepers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['keepers'] as Map).cast<String, String>()),
-      result: map['result'] == null ? null : pulumi.Output.create<String>(map['result'] as String),
+      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      result: map['result'] == null ? null : (map['result'] as String).input(),
     );
   }
 }

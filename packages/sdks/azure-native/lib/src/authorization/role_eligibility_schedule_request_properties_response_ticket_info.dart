@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Ticket Info of the role eligibility
 class RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
   /// Ticket number for the role eligibility
-  final String? ticketNumber;
+  final pulumi.Input<String>? ticketNumber;
   /// Ticket system name for the role eligibility
-  final String? ticketSystem;
+  final pulumi.Input<String>? ticketSystem;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesResponseTicketInfo].
   /// [ticketNumber] Ticket number for the role eligibility
@@ -25,8 +26,8 @@ class RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
 
   factory RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo(
-      ticketNumber: map['ticketNumber'] == null ? null : map['ticketNumber'] as String,
-      ticketSystem: map['ticketSystem'] == null ? null : map['ticketSystem'] as String,
+      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber'] as String).input(),
+      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_schedule_type.dart';
 
 /// Scheduling properties of a job.
 class JobSchedule {
   /// Whether or not the schedule is enabled.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Schedule end time.
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
-  final String? interval;
+  final pulumi.Input<String>? interval;
   /// Schedule start time.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Schedule interval type
-  final JobScheduleType? type;
+  final pulumi.Input<JobScheduleType>? type;
 
   /// Creates a new [JobSchedule].
   /// [enabled] Whether or not the schedule is enabled.
@@ -35,17 +36,17 @@ class JobSchedule {
       'endTime': ?endTime,
       'interval': ?interval,
       'startTime': ?startTime,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<JobScheduleType, String>(type, (value) => value.value),
     };
   }
 
   factory JobSchedule.fromMap(Map<String, dynamic> map) {
     return JobSchedule(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      type: map['type'] == null ? null : JobScheduleType.fromValue(map['type'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      type: map['type'] == null ? null : (JobScheduleType.fromValue(map['type'] as String)).input(),
     );
   }
 }

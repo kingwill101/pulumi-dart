@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEnvironmentConfigWorkloadsConfigWebServer {
   /// CPU request and limit for Airflow web server.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// Memory (GB) request and limit for Airflow web server.
-  final double memoryGb;
+  final pulumi.Input<double> memoryGb;
   /// Storage (GB) request and limit for Airflow web server.
-  final double storageGb;
+  final pulumi.Input<double> storageGb;
 
   /// Creates a new [GetEnvironmentConfigWorkloadsConfigWebServer].
   /// [cpu] CPU request and limit for Airflow web server.
@@ -29,9 +30,9 @@ class GetEnvironmentConfigWorkloadsConfigWebServer {
 
   factory GetEnvironmentConfigWorkloadsConfigWebServer.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigWebServer(
-      cpu: map['cpu'] as double,
-      memoryGb: map['memoryGb'] as double,
-      storageGb: map['storageGb'] as double,
+      cpu: (map['cpu'] as double).input(),
+      memoryGb: (map['memoryGb'] as double).input(),
+      storageGb: (map['storageGb'] as double).input(),
     );
   }
 }

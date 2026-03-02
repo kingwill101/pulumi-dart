@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_v3_triggers_trigger_http_trigger.dart';
 
 class GetV3TriggersTrigger {
   /// Creation time
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Description of the trigger
-  final String description;
+  final pulumi.Input<String> description;
   /// HTTP trigger information
-  final GetV3TriggersTriggerHttpTrigger httpTrigger;
+  final pulumi.Input<GetV3TriggersTriggerHttpTrigger> httpTrigger;
   /// The ID of the resource supplied above.
-  final String id;
+  final pulumi.Input<String> id;
   /// The role required by the event source (such as OSS) to call the function.
-  final String invocationRole;
+  final pulumi.Input<String> invocationRole;
   /// The last modified time of the trigger
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// The version or alias of the function
-  final String qualifier;
+  final pulumi.Input<String> qualifier;
   /// Trigger Event source ARN
-  final String sourceArn;
+  final pulumi.Input<String> sourceArn;
   /// The state of the trigger
-  final String status;
+  final pulumi.Input<String> status;
   /// Resource identity of the function
-  final String targetArn;
+  final pulumi.Input<String> targetArn;
   /// Trigger configuration. The configuration varies for different types of triggers.
-  final String triggerConfig;
+  final pulumi.Input<String> triggerConfig;
   /// Trigger ID
-  final String triggerId;
+  final pulumi.Input<String> triggerId;
   /// Trigger Name
-  final String triggerName;
+  final pulumi.Input<String> triggerName;
   /// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
-  final String triggerType;
+  final pulumi.Input<String> triggerType;
 
   /// Creates a new [GetV3TriggersTrigger].
   /// [createTime] Creation time
@@ -68,7 +69,7 @@ class GetV3TriggersTrigger {
     return <String, dynamic>{
       'createTime': createTime,
       'description': description,
-      'httpTrigger': httpTrigger.toMap(),
+      'httpTrigger': pulumi.Input.mapInputValue<GetV3TriggersTriggerHttpTrigger, Map<String, dynamic>>(httpTrigger, (value) => value.toMap()),
       'id': id,
       'invocationRole': invocationRole,
       'lastModifiedTime': lastModifiedTime,
@@ -85,20 +86,20 @@ class GetV3TriggersTrigger {
 
   factory GetV3TriggersTrigger.fromMap(Map<String, dynamic> map) {
     return GetV3TriggersTrigger(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      httpTrigger: GetV3TriggersTriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      invocationRole: map['invocationRole'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      qualifier: map['qualifier'] as String,
-      sourceArn: map['sourceArn'] as String,
-      status: map['status'] as String,
-      targetArn: map['targetArn'] as String,
-      triggerConfig: map['triggerConfig'] as String,
-      triggerId: map['triggerId'] as String,
-      triggerName: map['triggerName'] as String,
-      triggerType: map['triggerType'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      httpTrigger: (GetV3TriggersTriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      invocationRole: (map['invocationRole'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      qualifier: (map['qualifier'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetArn: (map['targetArn'] as String).input(),
+      triggerConfig: (map['triggerConfig'] as String).input(),
+      triggerId: (map['triggerId'] as String).input(),
+      triggerName: (map['triggerName'] as String).input(),
+      triggerType: (map['triggerType'] as String).input(),
     );
   }
 }

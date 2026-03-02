@@ -10,9 +10,8 @@ class IpamServiceState {
   /// Creates a new [IpamServiceState].
   /// [enabled] Whether the IPAM service has been activated.
   IpamServiceState({
-    pulumi.Output<bool>? enabled,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled);
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class IpamServiceState {
 
   factory IpamServiceState.fromMap(Map<String, dynamic> map) {
     return IpamServiceState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

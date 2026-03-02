@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterAutoscalingResourceLimit {
   /// Maximum amount of the resource in the cluster.
-  final int maximum;
+  final pulumi.Input<int> maximum;
   /// Minimum amount of the resource in the cluster.
-  final int? minimum;
+  final pulumi.Input<int>? minimum;
   /// The type of the resource. For example, `cpu` and
   /// `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
   /// for a list of types.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Creates a new [ClusterClusterAutoscalingResourceLimit].
   /// [maximum] Maximum amount of the resource in the cluster.
@@ -31,9 +32,9 @@ class ClusterClusterAutoscalingResourceLimit {
 
   factory ClusterClusterAutoscalingResourceLimit.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingResourceLimit(
-      maximum: map['maximum'] as int,
-      minimum: map['minimum'] == null ? null : map['minimum'] as int,
-      resourceType: map['resourceType'] as String,
+      maximum: (map['maximum'] as int).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum'] as int).input(),
+      resourceType: (map['resourceType'] as String).input(),
     );
   }
 }

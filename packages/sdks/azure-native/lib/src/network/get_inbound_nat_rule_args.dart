@@ -22,15 +22,11 @@ class GetInboundNatRuleArgs {
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group.
   GetInboundNatRuleArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> inboundNatRuleName,
-    required pulumi.Output<String> loadBalancerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      inboundNatRuleName = pulumi.Input.asInput<String>(inboundNatRuleName),
-      loadBalancerName = pulumi.Input.asInput<String>(loadBalancerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.inboundNatRuleName,
+    required this.loadBalancerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetInboundNatRuleArgs {
 
   factory GetInboundNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundNatRuleArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      inboundNatRuleName: pulumi.Output.create<String>(map['inboundNatRuleName'] as String),
-      loadBalancerName: pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      inboundNatRuleName: (map['inboundNatRuleName'] as String).input(),
+      loadBalancerName: (map['loadBalancerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

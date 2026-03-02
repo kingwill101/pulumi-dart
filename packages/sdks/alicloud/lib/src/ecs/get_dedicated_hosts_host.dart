@@ -8,61 +8,61 @@ import 'get_dedicated_hosts_host_operation_lock.dart';
 
 class GetDedicatedHostsHost {
   /// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
-  final String actionOnMaintenance;
+  final pulumi.Input<String> actionOnMaintenance;
   /// Specifies whether to add the dedicated host to the resource pool for automatic deployment.
-  final String autoPlacement;
+  final pulumi.Input<String> autoPlacement;
   /// The automatic release time of the dedicated host.
-  final String autoReleaseTime;
+  final pulumi.Input<String> autoReleaseTime;
   /// (Available since v1.123.1) A collection of proprietary host performance indicators.
-  final List<GetDedicatedHostsHostCapacity> capacities;
+  final pulumi.Input<List<GetDedicatedHostsHostCapacity>> capacities;
   /// A mapping of tags to assign to the resource.
-  final int cores;
+  final pulumi.Input<int> cores;
   /// (Available since v1.123.1) CPU oversold ratio.
-  final double cpuOverCommitRatio;
+  final pulumi.Input<double> cpuOverCommitRatio;
   /// The ID of ECS Dedicated Host.
-  final String dedicatedHostId;
+  final pulumi.Input<String> dedicatedHostId;
   /// The name of ECS Dedicated Host.
-  final String dedicatedHostName;
+  final pulumi.Input<String> dedicatedHostName;
   /// The type of the dedicated host.
-  final String dedicatedHostType;
+  final pulumi.Input<String> dedicatedHostType;
   /// The description of the dedicated host.
-  final String description;
+  final pulumi.Input<String> description;
   /// The expiration time of the subscription dedicated host.
-  final String expiredTime;
+  final pulumi.Input<String> expiredTime;
   /// The GPU model.
-  final String gpuSpec;
+  final pulumi.Input<String> gpuSpec;
   /// ID of the ECS Dedicated Host.
-  final String id;
+  final pulumi.Input<String> id;
   /// (Available since v1.250.0) The ECS instances that were created on the dedicated host.
-  final List<GetDedicatedHostsHostInstance> instances;
+  final pulumi.Input<List<GetDedicatedHostsHostInstance>> instances;
   /// The machine code of the dedicated host.
-  final String machineId;
+  final pulumi.Input<String> machineId;
   /// dedicated host network parameters. contains the following attributes:
-  final List<GetDedicatedHostsHostNetworkAttribute> networkAttributes;
+  final pulumi.Input<List<GetDedicatedHostsHostNetworkAttribute>> networkAttributes;
   /// The reason why the dedicated host resource is locked. See `operation_locks` below.
-  final List<GetDedicatedHostsHostOperationLock> operationLocks;
+  final pulumi.Input<List<GetDedicatedHostsHostOperationLock>> operationLocks;
   /// The billing method of the dedicated host.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The number of physical GPUs.
-  final int physicalGpus;
+  final pulumi.Input<int> physicalGpus;
   /// The ID of the resource group to which the ECS Dedicated Host belongs.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The unit of the subscription billing method.
-  final String saleCycle;
+  final pulumi.Input<String> saleCycle;
   /// The number of physical CPUs.
-  final int sockets;
+  final pulumi.Input<int> sockets;
   /// The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-  final String status;
+  final pulumi.Input<String> status;
   /// (Available since v1.123.1) A custom instance type family supported by a dedicated host.
-  final List<String> supportedCustomInstanceTypeFamilies;
+  final pulumi.Input<List<String>> supportedCustomInstanceTypeFamilies;
   /// (Available since v1.123.1) ECS instance type family supported by the dedicated host.
-  final List<String> supportedInstanceTypeFamilies;
+  final pulumi.Input<List<String>> supportedInstanceTypeFamilies;
   /// The list of ECS instance.
-  final List<String> supportedInstanceTypesLists;
+  final pulumi.Input<List<String>> supportedInstanceTypesLists;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The zone ID of the ECS Dedicated Host.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetDedicatedHostsHost].
   /// [actionOnMaintenance] The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
@@ -129,7 +129,7 @@ class GetDedicatedHostsHost {
       'actionOnMaintenance': actionOnMaintenance,
       'autoPlacement': autoPlacement,
       'autoReleaseTime': autoReleaseTime,
-      'capacities': pulumi.Input.encodeList<GetDedicatedHostsHostCapacity, Map<String, dynamic>>(capacities, (value) => value.toMap()),
+      'capacities': pulumi.Input.mapInputValue<List<GetDedicatedHostsHostCapacity>, List<Map<String, dynamic>>>(capacities, (value) => pulumi.Input.encodeList<GetDedicatedHostsHostCapacity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cores': cores,
       'cpuOverCommitRatio': cpuOverCommitRatio,
       'dedicatedHostId': dedicatedHostId,
@@ -139,10 +139,10 @@ class GetDedicatedHostsHost {
       'expiredTime': expiredTime,
       'gpuSpec': gpuSpec,
       'id': id,
-      'instances': pulumi.Input.encodeList<GetDedicatedHostsHostInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances': pulumi.Input.mapInputValue<List<GetDedicatedHostsHostInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<GetDedicatedHostsHostInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'machineId': machineId,
-      'networkAttributes': pulumi.Input.encodeList<GetDedicatedHostsHostNetworkAttribute, Map<String, dynamic>>(networkAttributes, (value) => value.toMap()),
-      'operationLocks': pulumi.Input.encodeList<GetDedicatedHostsHostOperationLock, Map<String, dynamic>>(operationLocks, (value) => value.toMap()),
+      'networkAttributes': pulumi.Input.mapInputValue<List<GetDedicatedHostsHostNetworkAttribute>, List<Map<String, dynamic>>>(networkAttributes, (value) => pulumi.Input.encodeList<GetDedicatedHostsHostNetworkAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operationLocks': pulumi.Input.mapInputValue<List<GetDedicatedHostsHostOperationLock>, List<Map<String, dynamic>>>(operationLocks, (value) => pulumi.Input.encodeList<GetDedicatedHostsHostOperationLock, Map<String, dynamic>>(value, (value) => value.toMap())),
       'paymentType': paymentType,
       'physicalGpus': physicalGpus,
       'resourceGroupId': resourceGroupId,
@@ -159,34 +159,34 @@ class GetDedicatedHostsHost {
 
   factory GetDedicatedHostsHost.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHost(
-      actionOnMaintenance: map['actionOnMaintenance'] as String,
-      autoPlacement: map['autoPlacement'] as String,
-      autoReleaseTime: map['autoReleaseTime'] as String,
-      capacities: pulumi.Input.decodeList<GetDedicatedHostsHostCapacity>(map['capacities'], (value) => GetDedicatedHostsHostCapacity.fromMap((value as Map).cast<String, dynamic>())),
-      cores: map['cores'] as int,
-      cpuOverCommitRatio: map['cpuOverCommitRatio'] as double,
-      dedicatedHostId: map['dedicatedHostId'] as String,
-      dedicatedHostName: map['dedicatedHostName'] as String,
-      dedicatedHostType: map['dedicatedHostType'] as String,
-      description: map['description'] as String,
-      expiredTime: map['expiredTime'] as String,
-      gpuSpec: map['gpuSpec'] as String,
-      id: map['id'] as String,
-      instances: pulumi.Input.decodeList<GetDedicatedHostsHostInstance>(map['instances'], (value) => GetDedicatedHostsHostInstance.fromMap((value as Map).cast<String, dynamic>())),
-      machineId: map['machineId'] as String,
-      networkAttributes: pulumi.Input.decodeList<GetDedicatedHostsHostNetworkAttribute>(map['networkAttributes'], (value) => GetDedicatedHostsHostNetworkAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      operationLocks: pulumi.Input.decodeList<GetDedicatedHostsHostOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsHostOperationLock.fromMap((value as Map).cast<String, dynamic>())),
-      paymentType: map['paymentType'] as String,
-      physicalGpus: map['physicalGpus'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      saleCycle: map['saleCycle'] as String,
-      sockets: map['sockets'] as int,
-      status: map['status'] as String,
-      supportedCustomInstanceTypeFamilies: (map['supportedCustomInstanceTypeFamilies'] as List).cast<String>(),
-      supportedInstanceTypeFamilies: (map['supportedInstanceTypeFamilies'] as List).cast<String>(),
-      supportedInstanceTypesLists: (map['supportedInstanceTypesLists'] as List).cast<String>(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      zoneId: map['zoneId'] as String,
+      actionOnMaintenance: (map['actionOnMaintenance'] as String).input(),
+      autoPlacement: (map['autoPlacement'] as String).input(),
+      autoReleaseTime: (map['autoReleaseTime'] as String).input(),
+      capacities: (pulumi.Input.decodeList<GetDedicatedHostsHostCapacity>(map['capacities'], (value) => GetDedicatedHostsHostCapacity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cores: (map['cores'] as int).input(),
+      cpuOverCommitRatio: (map['cpuOverCommitRatio'] as double).input(),
+      dedicatedHostId: (map['dedicatedHostId'] as String).input(),
+      dedicatedHostName: (map['dedicatedHostName'] as String).input(),
+      dedicatedHostType: (map['dedicatedHostType'] as String).input(),
+      description: (map['description'] as String).input(),
+      expiredTime: (map['expiredTime'] as String).input(),
+      gpuSpec: (map['gpuSpec'] as String).input(),
+      id: (map['id'] as String).input(),
+      instances: (pulumi.Input.decodeList<GetDedicatedHostsHostInstance>(map['instances'], (value) => GetDedicatedHostsHostInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineId: (map['machineId'] as String).input(),
+      networkAttributes: (pulumi.Input.decodeList<GetDedicatedHostsHostNetworkAttribute>(map['networkAttributes'], (value) => GetDedicatedHostsHostNetworkAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationLocks: (pulumi.Input.decodeList<GetDedicatedHostsHostOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsHostOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      physicalGpus: (map['physicalGpus'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      saleCycle: (map['saleCycle'] as String).input(),
+      sockets: (map['sockets'] as int).input(),
+      status: (map['status'] as String).input(),
+      supportedCustomInstanceTypeFamilies: ((map['supportedCustomInstanceTypeFamilies'] as List).cast<String>()).input(),
+      supportedInstanceTypeFamilies: ((map['supportedInstanceTypeFamilies'] as List).cast<String>()).input(),
+      supportedInstanceTypesLists: ((map['supportedInstanceTypesLists'] as List).cast<String>()).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

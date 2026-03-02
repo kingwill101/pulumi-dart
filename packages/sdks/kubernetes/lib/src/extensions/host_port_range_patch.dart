@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.
 class HostPortRangePatch {
   /// max is the end of the range, inclusive.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// min is the start of the range, inclusive.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [HostPortRangePatch].
   /// [max] max is the end of the range, inclusive.
@@ -25,8 +26,8 @@ class HostPortRangePatch {
 
   factory HostPortRangePatch.fromMap(Map<String, dynamic> map) {
     return HostPortRangePatch(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

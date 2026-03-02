@@ -19,13 +19,10 @@ class ListDnsResolverByVirtualNetworkArgs {
   /// [top] The maximum number of results to return. If not specified, returns up to 100 results.
   /// [virtualNetworkName] The name of the virtual network.
   ListDnsResolverByVirtualNetworkArgs({
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<int>? top,
-    required pulumi.Output<String> virtualNetworkName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      top = pulumi.Input.asOptionalInput<int>(top),
-      virtualNetworkName = pulumi.Input.asInput<String>(virtualNetworkName);
+    required this.resourceGroupName,
+    this.top,
+    required this.virtualNetworkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListDnsResolverByVirtualNetworkArgs {
 
   factory ListDnsResolverByVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ListDnsResolverByVirtualNetworkArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
-      virtualNetworkName: pulumi.Output.create<String>(map['virtualNetworkName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
+      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }
 }

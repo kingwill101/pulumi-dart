@@ -32,21 +32,14 @@ class HubArgs {
   /// [s3StorageConfig] The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   HubArgs({
-    required pulumi.Output<String> hubDescription,
-    pulumi.Output<String>? hubDisplayName,
-    required pulumi.Output<String> hubName,
-    pulumi.Output<List<String>>? hubSearchKeywords,
-    pulumi.Output<String>? region,
-    pulumi.Output<HubS3StorageConfig>? s3StorageConfig,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      hubDescription = pulumi.Input.asInput<String>(hubDescription),
-      hubDisplayName = pulumi.Input.asOptionalInput<String>(hubDisplayName),
-      hubName = pulumi.Input.asInput<String>(hubName),
-      hubSearchKeywords = pulumi.Input.asOptionalInput<List<String>>(hubSearchKeywords),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3StorageConfig = pulumi.Input.asOptionalInput<HubS3StorageConfig>(s3StorageConfig),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.hubDescription,
+    this.hubDisplayName,
+    required this.hubName,
+    this.hubSearchKeywords,
+    this.region,
+    this.s3StorageConfig,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      hubDescription: pulumi.Output.create<String>(map['hubDescription'] as String),
-      hubDisplayName: map['hubDisplayName'] == null ? null : pulumi.Output.create<String>(map['hubDisplayName'] as String),
-      hubName: pulumi.Output.create<String>(map['hubName'] as String),
-      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : pulumi.Output.create<List<String>>((map['hubSearchKeywords'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      s3StorageConfig: map['s3StorageConfig'] == null ? null : pulumi.Output.create<HubS3StorageConfig>(HubS3StorageConfig.fromMap((map['s3StorageConfig'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      hubDescription: (map['hubDescription'] as String).input(),
+      hubDisplayName: map['hubDisplayName'] == null ? null : (map['hubDisplayName'] as String).input(),
+      hubName: (map['hubName'] as String).input(),
+      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : ((map['hubSearchKeywords'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      s3StorageConfig: map['s3StorageConfig'] == null ? null : (HubS3StorageConfig.fromMap((map['s3StorageConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

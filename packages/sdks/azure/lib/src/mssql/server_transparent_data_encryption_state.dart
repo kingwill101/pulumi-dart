@@ -22,15 +22,11 @@ class ServerTransparentDataEncryptionState {
   /// [managedHsmKeyId] Optional.
   /// [serverId] Specifies the name of the MS SQL Server. Changing this forces a new resource to be created.
   ServerTransparentDataEncryptionState({
-    pulumi.Output<bool>? autoRotationEnabled,
-    pulumi.Output<String>? keyVaultKeyId,
-    pulumi.Output<String>? managedHsmKeyId,
-    pulumi.Output<String>? serverId,
-  }) :
-      autoRotationEnabled = pulumi.Input.asOptionalInput<bool>(autoRotationEnabled),
-      keyVaultKeyId = pulumi.Input.asOptionalInput<String>(keyVaultKeyId),
-      managedHsmKeyId = pulumi.Input.asOptionalInput<String>(managedHsmKeyId),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId);
+    this.autoRotationEnabled,
+    this.keyVaultKeyId,
+    this.managedHsmKeyId,
+    this.serverId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ServerTransparentDataEncryptionState {
 
   factory ServerTransparentDataEncryptionState.fromMap(Map<String, dynamic> map) {
     return ServerTransparentDataEncryptionState(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : pulumi.Output.create<bool>(map['autoRotationEnabled'] as bool),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : pulumi.Output.create<String>(map['managedHsmKeyId'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
     );
   }
 }

@@ -29,19 +29,13 @@ class ConsumerGroupArgs {
   /// [maxReceiveTps] Maximum received message tps.
   /// [remark] Custom remarks.
   ConsumerGroupArgs({
-    required pulumi.Output<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy,
-    required pulumi.Output<String> consumerGroupId,
-    pulumi.Output<String>? deliveryOrderType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<int>? maxReceiveTps,
-    pulumi.Output<String>? remark,
-  }) :
-      consumeRetryPolicy = pulumi.Input.asInput<ConsumerGroupConsumeRetryPolicy>(consumeRetryPolicy),
-      consumerGroupId = pulumi.Input.asInput<String>(consumerGroupId),
-      deliveryOrderType = pulumi.Input.asOptionalInput<String>(deliveryOrderType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      maxReceiveTps = pulumi.Input.asOptionalInput<int>(maxReceiveTps),
-      remark = pulumi.Input.asOptionalInput<String>(remark);
+    required this.consumeRetryPolicy,
+    required this.consumerGroupId,
+    this.deliveryOrderType,
+    required this.instanceId,
+    this.maxReceiveTps,
+    this.remark,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumeRetryPolicy: pulumi.Output.create<ConsumerGroupConsumeRetryPolicy>(ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())),
-      consumerGroupId: pulumi.Output.create<String>(map['consumerGroupId'] as String),
-      deliveryOrderType: map['deliveryOrderType'] == null ? null : pulumi.Output.create<String>(map['deliveryOrderType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      maxReceiveTps: map['maxReceiveTps'] == null ? null : pulumi.Output.create<int>(map['maxReceiveTps'] as int),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
+      consumeRetryPolicy: (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())).input(),
+      consumerGroupId: (map['consumerGroupId'] as String).input(),
+      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps'] as int).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
     );
   }
 }

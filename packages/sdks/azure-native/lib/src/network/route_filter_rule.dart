@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Route Filter Rule Resource.
 class RouteFilterRule {
   /// The access type of the rule.
-  final String access;
+  final pulumi.Input<String> access;
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
-  final List<String> communities;
+  final pulumi.Input<List<String>> communities;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The rule type of the rule.
-  final String routeFilterRuleType;
+  final pulumi.Input<String> routeFilterRuleType;
 
   /// Creates a new [RouteFilterRule].
   /// [access] The access type of the rule.
@@ -45,12 +46,12 @@ class RouteFilterRule {
 
   factory RouteFilterRule.fromMap(Map<String, dynamic> map) {
     return RouteFilterRule(
-      access: map['access'] as String,
-      communities: (map['communities'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      routeFilterRuleType: map['routeFilterRuleType'] as String,
+      access: (map['access'] as String).input(),
+      communities: ((map['communities'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      routeFilterRuleType: (map['routeFilterRuleType'] as String).input(),
     );
   }
 }

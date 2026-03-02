@@ -8,11 +8,11 @@ import 'webhook_notification.dart';
 /// Autoscale notification.
 class AutoscaleNotification {
   /// the email notification.
-  final EmailNotification? email;
+  final pulumi.Input<EmailNotification>? email;
   /// the operation associated with the notification and its value must be "scale"
-  final OperationType operation;
+  final pulumi.Input<OperationType> operation;
   /// the collection of webhook notifications.
-  final List<WebhookNotification>? webhooks;
+  final pulumi.Input<List<WebhookNotification>>? webhooks;
 
   /// Creates a new [AutoscaleNotification].
   /// [email] the email notification.
@@ -26,17 +26,17 @@ class AutoscaleNotification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'email': ?email == null ? null : email!.toMap(),
-      'operation': operation.value,
-      'webhooks': ?webhooks == null ? null : pulumi.Input.encodeList<WebhookNotification, Map<String, dynamic>>(webhooks!, (value) => value.toMap()),
+      'email': ?pulumi.Input.mapOptionalInputValue<EmailNotification, Map<String, dynamic>>(email, (value) => value.toMap()),
+      'operation': pulumi.Input.mapInputValue<OperationType, String>(operation, (value) => value.value),
+      'webhooks': ?pulumi.Input.mapOptionalInputValue<List<WebhookNotification>, List<Map<String, dynamic>>>(webhooks, (value) => pulumi.Input.encodeList<WebhookNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutoscaleNotification.fromMap(Map<String, dynamic> map) {
     return AutoscaleNotification(
-      email: map['email'] == null ? null : EmailNotification.fromMap((map['email'] as Map).cast<String, dynamic>()),
-      operation: OperationType.fromValue(map['operation'] as String),
-      webhooks: map['webhooks'] == null ? null : pulumi.Input.decodeList<WebhookNotification>(map['webhooks'], (value) => WebhookNotification.fromMap((value as Map).cast<String, dynamic>())),
+      email: map['email'] == null ? null : (EmailNotification.fromMap((map['email'] as Map).cast<String, dynamic>())).input(),
+      operation: (OperationType.fromValue(map['operation'] as String)).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<WebhookNotification>(map['webhooks'], (value) => WebhookNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

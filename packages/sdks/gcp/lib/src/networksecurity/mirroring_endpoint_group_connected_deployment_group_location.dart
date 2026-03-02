@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   /// The cloud location of the endpoint group, currently restricted to `global`.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// OUT_OF_SYNC
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [MirroringEndpointGroupConnectedDeploymentGroupLocation].
   /// [location] The cloud location of the endpoint group, currently restricted to `global`.
@@ -29,8 +30,8 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocation {
 
   factory MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupConnectedDeploymentGroupLocation(
-      location: map['location'] == null ? null : map['location'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

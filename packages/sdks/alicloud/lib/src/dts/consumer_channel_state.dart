@@ -22,17 +22,12 @@ class ConsumerChannelState {
   /// [consumerGroupUserName] The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
   /// [dtsInstanceId] The ID of the subscription instance.
   ConsumerChannelState({
-    pulumi.Output<String>? consumerGroupId,
-    pulumi.Output<String>? consumerGroupName,
-    pulumi.Output<String>? consumerGroupPassword,
-    pulumi.Output<String>? consumerGroupUserName,
-    pulumi.Output<String>? dtsInstanceId,
-  }) :
-      consumerGroupId = pulumi.Input.asOptionalInput<String>(consumerGroupId),
-      consumerGroupName = pulumi.Input.asOptionalInput<String>(consumerGroupName),
-      consumerGroupPassword = pulumi.Input.asOptionalInput<String>(consumerGroupPassword),
-      consumerGroupUserName = pulumi.Input.asOptionalInput<String>(consumerGroupUserName),
-      dtsInstanceId = pulumi.Input.asOptionalInput<String>(dtsInstanceId);
+    this.consumerGroupId,
+    this.consumerGroupName,
+    this.consumerGroupPassword,
+    this.consumerGroupUserName,
+    this.dtsInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ConsumerChannelState {
 
   factory ConsumerChannelState.fromMap(Map<String, dynamic> map) {
     return ConsumerChannelState(
-      consumerGroupId: map['consumerGroupId'] == null ? null : pulumi.Output.create<String>(map['consumerGroupId'] as String),
-      consumerGroupName: map['consumerGroupName'] == null ? null : pulumi.Output.create<String>(map['consumerGroupName'] as String),
-      consumerGroupPassword: map['consumerGroupPassword'] == null ? null : pulumi.Output.create<String>(map['consumerGroupPassword'] as String),
-      consumerGroupUserName: map['consumerGroupUserName'] == null ? null : pulumi.Output.create<String>(map['consumerGroupUserName'] as String),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : pulumi.Output.create<String>(map['dtsInstanceId'] as String),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
+      consumerGroupPassword: map['consumerGroupPassword'] == null ? null : (map['consumerGroupPassword'] as String).input(),
+      consumerGroupUserName: map['consumerGroupUserName'] == null ? null : (map['consumerGroupUserName'] as String).input(),
+      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId'] as String).input(),
     );
   }
 }

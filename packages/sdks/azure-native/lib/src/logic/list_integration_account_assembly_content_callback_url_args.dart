@@ -19,13 +19,10 @@ class ListIntegrationAccountAssemblyContentCallbackUrlArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   ListIntegrationAccountAssemblyContentCallbackUrlArgs({
-    required pulumi.Output<String> assemblyArtifactName,
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assemblyArtifactName = pulumi.Input.asInput<String>(assemblyArtifactName),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assemblyArtifactName,
+    required this.integrationAccountName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListIntegrationAccountAssemblyContentCallbackUrlArgs {
 
   factory ListIntegrationAccountAssemblyContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountAssemblyContentCallbackUrlArgs(
-      assemblyArtifactName: pulumi.Output.create<String>(map['assemblyArtifactName'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assemblyArtifactName: (map['assemblyArtifactName'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration specific to LivePerson (https://www.liveperson.com).
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse {
   /// Account number of the LivePerson account to connect. This is the account number you input at the login page.
-  final String accountNumber;
+  final pulumi.Input<String> accountNumber;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse].
   /// [accountNumber] Account number of the LivePerson account to connect. This is the account number you input at the login page.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigRespons
 
   factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse(
-      accountNumber: map['accountNumber'] as String,
+      accountNumber: (map['accountNumber'] as String).input(),
     );
   }
 }

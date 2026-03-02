@@ -5,13 +5,13 @@ import 'rocket_mqinstance_network_info_vpc_info_vswitch.dart';
 
 class RocketMQInstanceNetworkInfoVpcInfo {
   /// Security group id.
-  final String? securityGroupIds;
+  final pulumi.Input<String>? securityGroupIds;
   /// Proprietary Network.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// VPC switch id.
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
   /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
-  final List<RocketMQInstanceNetworkInfoVpcInfoVswitch>? vswitches;
+  final pulumi.Input<List<RocketMQInstanceNetworkInfoVpcInfoVswitch>>? vswitches;
 
   /// Creates a new [RocketMQInstanceNetworkInfoVpcInfo].
   /// [securityGroupIds] Security group id.
@@ -30,16 +30,16 @@ class RocketMQInstanceNetworkInfoVpcInfo {
       'securityGroupIds': ?securityGroupIds,
       'vpcId': vpcId,
       'vswitchId': ?vswitchId,
-      'vswitches': ?vswitches == null ? null : pulumi.Input.encodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch, Map<String, dynamic>>(vswitches!, (value) => value.toMap()),
+      'vswitches': ?pulumi.Input.mapOptionalInputValue<List<RocketMQInstanceNetworkInfoVpcInfoVswitch>, List<Map<String, dynamic>>>(vswitches, (value) => pulumi.Input.encodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory RocketMQInstanceNetworkInfoVpcInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoVpcInfo(
-      securityGroupIds: map['securityGroupIds'] == null ? null : map['securityGroupIds'] as String,
-      vpcId: map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
-      vswitches: map['vswitches'] == null ? null : pulumi.Input.decodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch>(map['vswitches'], (value) => RocketMQInstanceNetworkInfoVpcInfoVswitch.fromMap((value as Map).cast<String, dynamic>())),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitches: map['vswitches'] == null ? null : (pulumi.Input.decodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch>(map['vswitches'], (value) => RocketMQInstanceNetworkInfoVpcInfoVswitch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

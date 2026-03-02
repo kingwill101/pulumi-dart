@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space.dart';
 import 'sub_resource.dart';
 import 'virtual_network_bgp_communities.dart';
@@ -7,45 +8,45 @@ import 'virtual_network_bgp_communities.dart';
 /// Peerings in a virtual network resource.
 class VirtualNetworkPeering {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
-  final bool? allowForwardedTraffic;
+  final pulumi.Input<bool>? allowForwardedTraffic;
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
-  final bool? allowGatewayTransit;
+  final pulumi.Input<bool>? allowGatewayTransit;
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
-  final bool? allowVirtualNetworkAccess;
+  final pulumi.Input<bool>? allowVirtualNetworkAccess;
   /// If we need to verify the provisioning state of the remote gateway.
-  final bool? doNotVerifyRemoteGateways;
+  final pulumi.Input<bool>? doNotVerifyRemoteGateways;
   /// Whether only Ipv6 address space is peered for subnet peering.
-  final bool? enableOnlyIPv6Peering;
+  final pulumi.Input<bool>? enableOnlyIPv6Peering;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The local address space of the local virtual network that is peered.
-  final AddressSpace? localAddressSpace;
+  final pulumi.Input<AddressSpace>? localAddressSpace;
   /// List of local subnet names that are subnet peered with remote virtual network.
-  final List<String>? localSubnetNames;
+  final pulumi.Input<List<String>>? localSubnetNames;
   /// The current local address space of the local virtual network that is peered.
-  final AddressSpace? localVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpace>? localVirtualNetworkAddressSpace;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Whether complete virtual network address space is peered.
-  final bool? peerCompleteVnets;
+  final pulumi.Input<bool>? peerCompleteVnets;
   /// The status of the virtual network peering.
-  final String? peeringState;
+  final pulumi.Input<String>? peeringState;
   /// The peering sync status of the virtual network peering.
-  final String? peeringSyncLevel;
+  final pulumi.Input<String>? peeringSyncLevel;
   /// The reference to the address space peered with the remote virtual network.
-  final AddressSpace? remoteAddressSpace;
+  final pulumi.Input<AddressSpace>? remoteAddressSpace;
   /// The reference to the remote virtual network's Bgp Communities.
-  final VirtualNetworkBgpCommunities? remoteBgpCommunities;
+  final pulumi.Input<VirtualNetworkBgpCommunities>? remoteBgpCommunities;
   /// List of remote subnet names from remote virtual network that are subnet peered.
-  final List<String>? remoteSubnetNames;
+  final pulumi.Input<List<String>>? remoteSubnetNames;
   /// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
-  final SubResource? remoteVirtualNetwork;
+  final pulumi.Input<SubResource>? remoteVirtualNetwork;
   /// The reference to the current address space of the remote virtual network.
-  final AddressSpace? remoteVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpace>? remoteVirtualNetworkAddressSpace;
   /// Resource type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
-  final bool? useRemoteGateways;
+  final pulumi.Input<bool>? useRemoteGateways;
 
   /// Creates a new [VirtualNetworkPeering].
   /// [allowForwardedTraffic] Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
@@ -99,18 +100,18 @@ class VirtualNetworkPeering {
       'doNotVerifyRemoteGateways': ?doNotVerifyRemoteGateways,
       'enableOnlyIPv6Peering': ?enableOnlyIPv6Peering,
       'id': ?id,
-      'localAddressSpace': ?localAddressSpace == null ? null : localAddressSpace!.toMap(),
+      'localAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(localAddressSpace, (value) => value.toMap()),
       'localSubnetNames': ?localSubnetNames,
-      'localVirtualNetworkAddressSpace': ?localVirtualNetworkAddressSpace == null ? null : localVirtualNetworkAddressSpace!.toMap(),
+      'localVirtualNetworkAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(localVirtualNetworkAddressSpace, (value) => value.toMap()),
       'name': ?name,
       'peerCompleteVnets': ?peerCompleteVnets,
       'peeringState': ?peeringState,
       'peeringSyncLevel': ?peeringSyncLevel,
-      'remoteAddressSpace': ?remoteAddressSpace == null ? null : remoteAddressSpace!.toMap(),
-      'remoteBgpCommunities': ?remoteBgpCommunities == null ? null : remoteBgpCommunities!.toMap(),
+      'remoteAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(remoteAddressSpace, (value) => value.toMap()),
+      'remoteBgpCommunities': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkBgpCommunities, Map<String, dynamic>>(remoteBgpCommunities, (value) => value.toMap()),
       'remoteSubnetNames': ?remoteSubnetNames,
-      'remoteVirtualNetwork': ?remoteVirtualNetwork == null ? null : remoteVirtualNetwork!.toMap(),
-      'remoteVirtualNetworkAddressSpace': ?remoteVirtualNetworkAddressSpace == null ? null : remoteVirtualNetworkAddressSpace!.toMap(),
+      'remoteVirtualNetwork': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(remoteVirtualNetwork, (value) => value.toMap()),
+      'remoteVirtualNetworkAddressSpace': ?pulumi.Input.mapOptionalInputValue<AddressSpace, Map<String, dynamic>>(remoteVirtualNetworkAddressSpace, (value) => value.toMap()),
       'type': ?type,
       'useRemoteGateways': ?useRemoteGateways,
     };
@@ -118,26 +119,26 @@ class VirtualNetworkPeering {
 
   factory VirtualNetworkPeering.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeering(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : map['allowForwardedTraffic'] as bool,
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : map['allowGatewayTransit'] as bool,
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : map['allowVirtualNetworkAccess'] as bool,
-      doNotVerifyRemoteGateways: map['doNotVerifyRemoteGateways'] == null ? null : map['doNotVerifyRemoteGateways'] as bool,
-      enableOnlyIPv6Peering: map['enableOnlyIPv6Peering'] == null ? null : map['enableOnlyIPv6Peering'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      localAddressSpace: map['localAddressSpace'] == null ? null : AddressSpace.fromMap((map['localAddressSpace'] as Map).cast<String, dynamic>()),
-      localSubnetNames: map['localSubnetNames'] == null ? null : (map['localSubnetNames'] as List).cast<String>(),
-      localVirtualNetworkAddressSpace: map['localVirtualNetworkAddressSpace'] == null ? null : AddressSpace.fromMap((map['localVirtualNetworkAddressSpace'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      peerCompleteVnets: map['peerCompleteVnets'] == null ? null : map['peerCompleteVnets'] as bool,
-      peeringState: map['peeringState'] == null ? null : map['peeringState'] as String,
-      peeringSyncLevel: map['peeringSyncLevel'] == null ? null : map['peeringSyncLevel'] as String,
-      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : AddressSpace.fromMap((map['remoteAddressSpace'] as Map).cast<String, dynamic>()),
-      remoteBgpCommunities: map['remoteBgpCommunities'] == null ? null : VirtualNetworkBgpCommunities.fromMap((map['remoteBgpCommunities'] as Map).cast<String, dynamic>()),
-      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : (map['remoteSubnetNames'] as List).cast<String>(),
-      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : SubResource.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>()),
-      remoteVirtualNetworkAddressSpace: map['remoteVirtualNetworkAddressSpace'] == null ? null : AddressSpace.fromMap((map['remoteVirtualNetworkAddressSpace'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : map['type'] as String,
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : map['useRemoteGateways'] as bool,
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
+      doNotVerifyRemoteGateways: map['doNotVerifyRemoteGateways'] == null ? null : (map['doNotVerifyRemoteGateways'] as bool).input(),
+      enableOnlyIPv6Peering: map['enableOnlyIPv6Peering'] == null ? null : (map['enableOnlyIPv6Peering'] as bool).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      localAddressSpace: map['localAddressSpace'] == null ? null : (AddressSpace.fromMap((map['localAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      localSubnetNames: map['localSubnetNames'] == null ? null : ((map['localSubnetNames'] as List).cast<String>()).input(),
+      localVirtualNetworkAddressSpace: map['localVirtualNetworkAddressSpace'] == null ? null : (AddressSpace.fromMap((map['localVirtualNetworkAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerCompleteVnets: map['peerCompleteVnets'] == null ? null : (map['peerCompleteVnets'] as bool).input(),
+      peeringState: map['peeringState'] == null ? null : (map['peeringState'] as String).input(),
+      peeringSyncLevel: map['peeringSyncLevel'] == null ? null : (map['peeringSyncLevel'] as String).input(),
+      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : (AddressSpace.fromMap((map['remoteAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      remoteBgpCommunities: map['remoteBgpCommunities'] == null ? null : (VirtualNetworkBgpCommunities.fromMap((map['remoteBgpCommunities'] as Map).cast<String, dynamic>())).input(),
+      remoteSubnetNames: map['remoteSubnetNames'] == null ? null : ((map['remoteSubnetNames'] as List).cast<String>()).input(),
+      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : (SubResource.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      remoteVirtualNetworkAddressSpace: map['remoteVirtualNetworkAddressSpace'] == null ? null : (AddressSpace.fromMap((map['remoteVirtualNetworkAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
     );
   }
 }

@@ -48,23 +48,15 @@ class MulticastGroupConsumerActivationArgs {
   /// [multicastGroupRangeActivation] The resource name of the multicast group range activation created by the
   /// [project] The ID of the project in which the resource belongs.
   MulticastGroupConsumerActivationArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<MulticastGroupConsumerActivationLogConfig>? logConfig,
-    required pulumi.Output<String> multicastConsumerAssociation,
-    required pulumi.Output<String> multicastGroupConsumerActivationId,
-    required pulumi.Output<String> multicastGroupRangeActivation,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      logConfig = pulumi.Input.asOptionalInput<MulticastGroupConsumerActivationLogConfig>(logConfig),
-      multicastConsumerAssociation = pulumi.Input.asInput<String>(multicastConsumerAssociation),
-      multicastGroupConsumerActivationId = pulumi.Input.asInput<String>(multicastGroupConsumerActivationId),
-      multicastGroupRangeActivation = pulumi.Input.asInput<String>(multicastGroupRangeActivation),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.labels,
+    required this.location,
+    this.logConfig,
+    required this.multicastConsumerAssociation,
+    required this.multicastGroupConsumerActivationId,
+    required this.multicastGroupRangeActivation,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,14 +73,14 @@ class MulticastGroupConsumerActivationArgs {
 
   factory MulticastGroupConsumerActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<MulticastGroupConsumerActivationLogConfig>(MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      multicastConsumerAssociation: pulumi.Output.create<String>(map['multicastConsumerAssociation'] as String),
-      multicastGroupConsumerActivationId: pulumi.Output.create<String>(map['multicastGroupConsumerActivationId'] as String),
-      multicastGroupRangeActivation: pulumi.Output.create<String>(map['multicastGroupRangeActivation'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      logConfig: map['logConfig'] == null ? null : (MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      multicastConsumerAssociation: (map['multicastConsumerAssociation'] as String).input(),
+      multicastGroupConsumerActivationId: (map['multicastGroupConsumerActivationId'] as String).input(),
+      multicastGroupRangeActivation: (map['multicastGroupRangeActivation'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Azure Resource ID for a Network Security Group.
 class NetworkSecurityGroupArmReference {
   /// The Azure Resource ID for a Network Security Group.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [NetworkSecurityGroupArmReference].
   /// [id] The Azure Resource ID for a Network Security Group.
@@ -20,7 +21,7 @@ class NetworkSecurityGroupArmReference {
 
   factory NetworkSecurityGroupArmReference.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArmReference(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

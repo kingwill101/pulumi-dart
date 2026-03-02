@@ -27,19 +27,13 @@ class FieldLevelEncryptionConfigState {
   /// [etag] The current version of the Field Level Encryption Config. For example: `E2QWRUHAPOMQZL`.
   /// [queryArgProfileConfig] Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.
   FieldLevelEncryptionConfigState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? callerReference,
-    pulumi.Output<String>? comment,
-    pulumi.Output<FieldLevelEncryptionConfigContentTypeProfileConfig>? contentTypeProfileConfig,
-    pulumi.Output<String>? etag,
-    pulumi.Output<FieldLevelEncryptionConfigQueryArgProfileConfig>? queryArgProfileConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      callerReference = pulumi.Input.asOptionalInput<String>(callerReference),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      contentTypeProfileConfig = pulumi.Input.asOptionalInput<FieldLevelEncryptionConfigContentTypeProfileConfig>(contentTypeProfileConfig),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      queryArgProfileConfig = pulumi.Input.asOptionalInput<FieldLevelEncryptionConfigQueryArgProfileConfig>(queryArgProfileConfig);
+    this.arn,
+    this.callerReference,
+    this.comment,
+    this.contentTypeProfileConfig,
+    this.etag,
+    this.queryArgProfileConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class FieldLevelEncryptionConfigState {
 
   factory FieldLevelEncryptionConfigState.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      callerReference: map['callerReference'] == null ? null : pulumi.Output.create<String>(map['callerReference'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      contentTypeProfileConfig: map['contentTypeProfileConfig'] == null ? null : pulumi.Output.create<FieldLevelEncryptionConfigContentTypeProfileConfig>(FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      queryArgProfileConfig: map['queryArgProfileConfig'] == null ? null : pulumi.Output.create<FieldLevelEncryptionConfigQueryArgProfileConfig>(FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      contentTypeProfileConfig: map['contentTypeProfileConfig'] == null ? null : (FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      queryArgProfileConfig: map['queryArgProfileConfig'] == null ? null : (FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'big_query_destination_response_container_v1beta1.dart';
 import 'consumption_metering_config_response_container_v1beta1.dart';
 
 /// Configuration for exporting cluster resource usages.
 class ResourceUsageExportConfigResponseContainerV1beta1 {
   /// Configuration to use BigQuery as usage export destination.
-  final BigQueryDestinationResponseContainerV1beta1 bigqueryDestination;
+  final pulumi.Input<BigQueryDestinationResponseContainerV1beta1> bigqueryDestination;
   /// Configuration to enable resource consumption metering.
-  final ConsumptionMeteringConfigResponseContainerV1beta1 consumptionMeteringConfig;
+  final pulumi.Input<ConsumptionMeteringConfigResponseContainerV1beta1> consumptionMeteringConfig;
   /// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
-  final bool enableNetworkEgressMetering;
+  final pulumi.Input<bool> enableNetworkEgressMetering;
 
   /// Creates a new [ResourceUsageExportConfigResponseContainerV1beta1].
   /// [bigqueryDestination] Configuration to use BigQuery as usage export destination.
@@ -24,17 +25,17 @@ class ResourceUsageExportConfigResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryDestination': bigqueryDestination.toMap(),
-      'consumptionMeteringConfig': consumptionMeteringConfig.toMap(),
+      'bigqueryDestination': pulumi.Input.mapInputValue<BigQueryDestinationResponseContainerV1beta1, Map<String, dynamic>>(bigqueryDestination, (value) => value.toMap()),
+      'consumptionMeteringConfig': pulumi.Input.mapInputValue<ConsumptionMeteringConfigResponseContainerV1beta1, Map<String, dynamic>>(consumptionMeteringConfig, (value) => value.toMap()),
       'enableNetworkEgressMetering': enableNetworkEgressMetering,
     };
   }
 
   factory ResourceUsageExportConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceUsageExportConfigResponseContainerV1beta1(
-      bigqueryDestination: BigQueryDestinationResponseContainerV1beta1.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
-      consumptionMeteringConfig: ConsumptionMeteringConfigResponseContainerV1beta1.fromMap((map['consumptionMeteringConfig'] as Map).cast<String, dynamic>()),
-      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] as bool,
+      bigqueryDestination: (BigQueryDestinationResponseContainerV1beta1.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
+      consumptionMeteringConfig: (ConsumptionMeteringConfigResponseContainerV1beta1.fromMap((map['consumptionMeteringConfig'] as Map).cast<String, dynamic>())).input(),
+      enableNetworkEgressMetering: (map['enableNetworkEgressMetering'] as bool).input(),
     );
   }
 }

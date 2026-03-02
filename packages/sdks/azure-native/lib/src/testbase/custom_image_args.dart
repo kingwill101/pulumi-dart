@@ -31,21 +31,14 @@ class CustomImageArgs {
   /// [versionName] Image version name.
   /// [vhdId] The Id of the associated VHD resource.
   CustomImageArgs({
-    pulumi.Output<String>? customImageName,
-    required pulumi.Output<String> definitionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> source,
-    required pulumi.Output<String> testBaseAccountName,
-    required pulumi.Output<String> versionName,
-    pulumi.Output<String>? vhdId,
-  }) :
-      customImageName = pulumi.Input.asOptionalInput<String>(customImageName),
-      definitionName = pulumi.Input.asInput<String>(definitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      source = pulumi.Input.asInput<String>(source),
-      testBaseAccountName = pulumi.Input.asInput<String>(testBaseAccountName),
-      versionName = pulumi.Input.asInput<String>(versionName),
-      vhdId = pulumi.Input.asOptionalInput<String>(vhdId);
+    this.customImageName,
+    required this.definitionName,
+    required this.resourceGroupName,
+    required this.source,
+    required this.testBaseAccountName,
+    required this.versionName,
+    this.vhdId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      customImageName: map['customImageName'] == null ? null : pulumi.Output.create<String>(map['customImageName'] as String),
-      definitionName: pulumi.Output.create<String>(map['definitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      source: pulumi.Output.create<String>(map['source'] as String),
-      testBaseAccountName: pulumi.Output.create<String>(map['testBaseAccountName'] as String),
-      versionName: pulumi.Output.create<String>(map['versionName'] as String),
-      vhdId: map['vhdId'] == null ? null : pulumi.Output.create<String>(map['vhdId'] as String),
+      customImageName: map['customImageName'] == null ? null : (map['customImageName'] as String).input(),
+      definitionName: (map['definitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      source: (map['source'] as String).input(),
+      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      versionName: (map['versionName'] as String).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
     );
   }
 }

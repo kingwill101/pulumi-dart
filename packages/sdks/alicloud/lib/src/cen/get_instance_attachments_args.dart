@@ -25,17 +25,12 @@ class GetInstanceAttachmentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
   GetInstanceAttachmentsArgs({
-    pulumi.Output<String>? childInstanceRegionId,
-    pulumi.Output<String>? childInstanceType,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? status,
-  }) :
-      childInstanceRegionId = pulumi.Input.asOptionalInput<String>(childInstanceRegionId),
-      childInstanceType = pulumi.Input.asOptionalInput<String>(childInstanceType),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.childInstanceRegionId,
+    this.childInstanceType,
+    required this.instanceId,
+    this.outputFile,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetInstanceAttachmentsArgs {
 
   factory GetInstanceAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsArgs(
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : pulumi.Output.create<String>(map['childInstanceRegionId'] as String),
-      childInstanceType: map['childInstanceType'] == null ? null : pulumi.Output.create<String>(map['childInstanceType'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

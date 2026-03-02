@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hash_containeranalysis_v1beta1.dart';
 
 /// An entity that can have metadata. For example, a Docker image.
 class ResourceContaineranalysisV1beta1 {
   /// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-  final HashContaineranalysisV1beta1? contentHash;
+  final pulumi.Input<HashContaineranalysisV1beta1>? contentHash;
   /// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ResourceContaineranalysisV1beta1].
   /// [contentHash] Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
@@ -23,7 +24,7 @@ class ResourceContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentHash': ?contentHash == null ? null : contentHash!.toMap(),
+      'contentHash': ?pulumi.Input.mapOptionalInputValue<HashContaineranalysisV1beta1, Map<String, dynamic>>(contentHash, (value) => value.toMap()),
       'name': ?name,
       'uri': uri,
     };
@@ -31,9 +32,9 @@ class ResourceContaineranalysisV1beta1 {
 
   factory ResourceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceContaineranalysisV1beta1(
-      contentHash: map['contentHash'] == null ? null : HashContaineranalysisV1beta1.fromMap((map['contentHash'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      uri: map['uri'] as String,
+      contentHash: map['contentHash'] == null ? null : (HashContaineranalysisV1beta1.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

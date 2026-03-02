@@ -16,13 +16,10 @@ class GetBackupScheduleArgs {
   /// [databaseId] Required.
   /// [project] Optional.
   GetBackupScheduleArgs({
-    required pulumi.Output<String> backupScheduleId,
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<String>? project,
-  }) :
-      backupScheduleId = pulumi.Input.asInput<String>(backupScheduleId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupScheduleId,
+    required this.databaseId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetBackupScheduleArgs {
 
   factory GetBackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupScheduleArgs(
-      backupScheduleId: pulumi.Output.create<String>(map['backupScheduleId'] as String),
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupScheduleId: (map['backupScheduleId'] as String).input(),
+      databaseId: (map['databaseId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

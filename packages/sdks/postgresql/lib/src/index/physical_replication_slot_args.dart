@@ -13,9 +13,8 @@ class PhysicalReplicationSlotArgs {
   /// Creates a new [PhysicalReplicationSlotArgs].
   /// [name] The name of the replication slot.
   PhysicalReplicationSlotArgs({
-    pulumi.Output<String>? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class PhysicalReplicationSlotArgs {
 
   factory PhysicalReplicationSlotArgs.fromMap(Map<String, dynamic> map) {
     return PhysicalReplicationSlotArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

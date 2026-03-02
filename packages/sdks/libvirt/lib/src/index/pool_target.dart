@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_target_encryption.dart';
 import 'pool_target_permissions.dart';
 import 'pool_target_timestamps.dart';
 
 class PoolTarget {
   /// Configures the encryption settings for the storage volume.
-  final PoolTargetEncryption? encryption;
+  final pulumi.Input<PoolTargetEncryption>? encryption;
   /// Defines the path in the host filesystem where the storage pool is mapped.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Configures the permissions for the storage pool target.
-  final PoolTargetPermissions? permissions;
+  final pulumi.Input<PoolTargetPermissions>? permissions;
   /// Sets the timestamp attributes for the storage pool target.
-  final PoolTargetTimestamps? timestamps;
+  final pulumi.Input<PoolTargetTimestamps>? timestamps;
 
   /// Creates a new [PoolTarget].
   /// [encryption] Configures the encryption settings for the storage volume.
@@ -28,19 +29,19 @@ class PoolTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<PoolTargetEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'path': ?path,
-      'permissions': ?permissions == null ? null : permissions!.toMap(),
-      'timestamps': ?timestamps == null ? null : timestamps!.toMap(),
+      'permissions': ?pulumi.Input.mapOptionalInputValue<PoolTargetPermissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'timestamps': ?pulumi.Input.mapOptionalInputValue<PoolTargetTimestamps, Map<String, dynamic>>(timestamps, (value) => value.toMap()),
     };
   }
 
   factory PoolTarget.fromMap(Map<String, dynamic> map) {
     return PoolTarget(
-      encryption: map['encryption'] == null ? null : PoolTargetEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : map['path'] as String,
-      permissions: map['permissions'] == null ? null : PoolTargetPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
-      timestamps: map['timestamps'] == null ? null : PoolTargetTimestamps.fromMap((map['timestamps'] as Map).cast<String, dynamic>()),
+      encryption: map['encryption'] == null ? null : (PoolTargetEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      permissions: map['permissions'] == null ? null : (PoolTargetPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      timestamps: map['timestamps'] == null ? null : (PoolTargetTimestamps.fromMap((map['timestamps'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

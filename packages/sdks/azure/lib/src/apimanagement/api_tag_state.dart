@@ -13,11 +13,9 @@ class ApiTagState {
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Tag to be created.
   /// [name] The name of the tag. It must be known in the API Management instance. Changing this forces a new API Management API Tag to be created.
   ApiTagState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? name,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.apiId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ApiTagState {
 
   factory ApiTagState.fromMap(Map<String, dynamic> map) {
     return ApiTagState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

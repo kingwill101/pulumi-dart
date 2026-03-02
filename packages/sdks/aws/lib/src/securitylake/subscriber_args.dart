@@ -36,23 +36,15 @@ class SubscriberArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   SubscriberArgs({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<SubscriberSource>> sources,
-    pulumi.Output<String>? subscriberDescription,
-    required pulumi.Output<SubscriberSubscriberIdentity> subscriberIdentity,
-    pulumi.Output<String>? subscriberName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<SubscriberTimeouts>? timeouts,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sources = pulumi.Input.asInput<List<SubscriberSource>>(sources),
-      subscriberDescription = pulumi.Input.asOptionalInput<String>(subscriberDescription),
-      subscriberIdentity = pulumi.Input.asInput<SubscriberSubscriberIdentity>(subscriberIdentity),
-      subscriberName = pulumi.Input.asOptionalInput<String>(subscriberName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<SubscriberTimeouts>(timeouts);
+    this.accessType,
+    this.region,
+    required this.sources,
+    this.subscriberDescription,
+    required this.subscriberIdentity,
+    this.subscriberName,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class SubscriberArgs {
 
   factory SubscriberArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberArgs(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sources: pulumi.Output.create<List<SubscriberSource>>(pulumi.Input.decodeList<SubscriberSource>(map['sources'], (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))),
-      subscriberDescription: map['subscriberDescription'] == null ? null : pulumi.Output.create<String>(map['subscriberDescription'] as String),
-      subscriberIdentity: pulumi.Output.create<SubscriberSubscriberIdentity>(SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity'] as Map).cast<String, dynamic>())),
-      subscriberName: map['subscriberName'] == null ? null : pulumi.Output.create<String>(map['subscriberName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<SubscriberTimeouts>(SubscriberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sources: (pulumi.Input.decodeList<SubscriberSource>(map['sources'], (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriberDescription: map['subscriberDescription'] == null ? null : (map['subscriberDescription'] as String).input(),
+      subscriberIdentity: (SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity'] as Map).cast<String, dynamic>())).input(),
+      subscriberName: map['subscriberName'] == null ? null : (map['subscriberName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (SubscriberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataCollectionRuleDestinationMonitorAccount {
   /// The resource ID of the Monitor Account.
-  final String monitorAccountId;
+  final pulumi.Input<String> monitorAccountId;
   /// Specifies the name of the Data Collection Rule.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetDataCollectionRuleDestinationMonitorAccount].
   /// [monitorAccountId] The resource ID of the Monitor Account.
@@ -24,8 +25,8 @@ class GetDataCollectionRuleDestinationMonitorAccount {
 
   factory GetDataCollectionRuleDestinationMonitorAccount.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDestinationMonitorAccount(
-      monitorAccountId: map['monitorAccountId'] as String,
-      name: map['name'] as String,
+      monitorAccountId: (map['monitorAccountId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

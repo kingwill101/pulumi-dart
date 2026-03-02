@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GrpcRouteRuleMatchHeader {
   /// Required. The key of the header.
-  final String key;
+  final pulumi.Input<String> key;
   /// The type of match.
   /// Default value is `EXACT`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Required. The value of the header.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GrpcRouteRuleMatchHeader].
   /// [key] Required. The key of the header.
@@ -31,9 +32,9 @@ class GrpcRouteRuleMatchHeader {
 
   factory GrpcRouteRuleMatchHeader.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleMatchHeader(
-      key: map['key'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

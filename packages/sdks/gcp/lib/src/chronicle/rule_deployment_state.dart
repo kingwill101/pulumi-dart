@@ -76,35 +76,21 @@ class RuleDeploymentState {
   /// [rule] The Rule ID of the rule.
   /// [runFrequency] The run frequency of the rule deployment.
   RuleDeploymentState({
-    pulumi.Output<bool>? alerting,
-    pulumi.Output<String>? archiveTime,
-    pulumi.Output<bool>? archived,
-    pulumi.Output<List<String>>? consumerRules,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? executionState,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? lastAlertStatusChangeTime,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? producerRules,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? rule,
-    pulumi.Output<String>? runFrequency,
-  }) :
-      alerting = pulumi.Input.asOptionalInput<bool>(alerting),
-      archiveTime = pulumi.Input.asOptionalInput<String>(archiveTime),
-      archived = pulumi.Input.asOptionalInput<bool>(archived),
-      consumerRules = pulumi.Input.asOptionalInput<List<String>>(consumerRules),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      executionState = pulumi.Input.asOptionalInput<String>(executionState),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      lastAlertStatusChangeTime = pulumi.Input.asOptionalInput<String>(lastAlertStatusChangeTime),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      producerRules = pulumi.Input.asOptionalInput<List<String>>(producerRules),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rule = pulumi.Input.asOptionalInput<String>(rule),
-      runFrequency = pulumi.Input.asOptionalInput<String>(runFrequency);
+    this.alerting,
+    this.archiveTime,
+    this.archived,
+    this.consumerRules,
+    this.enabled,
+    this.executionState,
+    this.instance,
+    this.lastAlertStatusChangeTime,
+    this.location,
+    this.name,
+    this.producerRules,
+    this.project,
+    this.rule,
+    this.runFrequency,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -127,20 +113,20 @@ class RuleDeploymentState {
 
   factory RuleDeploymentState.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentState(
-      alerting: map['alerting'] == null ? null : pulumi.Output.create<bool>(map['alerting'] as bool),
-      archiveTime: map['archiveTime'] == null ? null : pulumi.Output.create<String>(map['archiveTime'] as String),
-      archived: map['archived'] == null ? null : pulumi.Output.create<bool>(map['archived'] as bool),
-      consumerRules: map['consumerRules'] == null ? null : pulumi.Output.create<List<String>>((map['consumerRules'] as List).cast<String>()),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      executionState: map['executionState'] == null ? null : pulumi.Output.create<String>(map['executionState'] as String),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      lastAlertStatusChangeTime: map['lastAlertStatusChangeTime'] == null ? null : pulumi.Output.create<String>(map['lastAlertStatusChangeTime'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      producerRules: map['producerRules'] == null ? null : pulumi.Output.create<List<String>>((map['producerRules'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
-      runFrequency: map['runFrequency'] == null ? null : pulumi.Output.create<String>(map['runFrequency'] as String),
+      alerting: map['alerting'] == null ? null : (map['alerting'] as bool).input(),
+      archiveTime: map['archiveTime'] == null ? null : (map['archiveTime'] as String).input(),
+      archived: map['archived'] == null ? null : (map['archived'] as bool).input(),
+      consumerRules: map['consumerRules'] == null ? null : ((map['consumerRules'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      lastAlertStatusChangeTime: map['lastAlertStatusChangeTime'] == null ? null : (map['lastAlertStatusChangeTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      producerRules: map['producerRules'] == null ? null : ((map['producerRules'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetManagedKubernetesClustersClusterLogConfig {
   /// Log Service project name.
-  final String project;
+  final pulumi.Input<String> project;
   /// Type of collecting logs.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetManagedKubernetesClustersClusterLogConfig].
   /// [project] Log Service project name.
@@ -24,8 +25,8 @@ class GetManagedKubernetesClustersClusterLogConfig {
 
   factory GetManagedKubernetesClustersClusterLogConfig.fromMap(Map<String, dynamic> map) {
     return GetManagedKubernetesClustersClusterLogConfig(
-      project: map['project'] as String,
-      type: map['type'] as String,
+      project: (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

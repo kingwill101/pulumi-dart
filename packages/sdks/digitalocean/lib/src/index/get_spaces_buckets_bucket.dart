@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSpacesBucketsBucket {
   /// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-  final String bucketDomainName;
+  final pulumi.Input<String> bucketDomainName;
   /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The name of the Spaces bucket
-  final String name;
+  final pulumi.Input<String> name;
   /// The slug of the region where the bucket is stored.
-  final String region;
+  final pulumi.Input<String> region;
   /// The uniform resource name of the bucket
-  final String urn;
+  final pulumi.Input<String> urn;
 
   /// Creates a new [GetSpacesBucketsBucket].
   /// [bucketDomainName] The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
@@ -39,11 +40,11 @@ class GetSpacesBucketsBucket {
 
   factory GetSpacesBucketsBucket.fromMap(Map<String, dynamic> map) {
     return GetSpacesBucketsBucket(
-      bucketDomainName: map['bucketDomainName'] as String,
-      endpoint: map['endpoint'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      urn: map['urn'] as String,
+      bucketDomainName: (map['bucketDomainName'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
+      urn: (map['urn'] as String).input(),
     );
   }
 }

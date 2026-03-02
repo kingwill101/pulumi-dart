@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceGroupsGroupRegionStatus {
   /// The region ID.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetResourceGroupsGroupRegionStatus].
   /// [regionId] The region ID.
@@ -24,8 +25,8 @@ class GetResourceGroupsGroupRegionStatus {
 
   factory GetResourceGroupsGroupRegionStatus.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsGroupRegionStatus(
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

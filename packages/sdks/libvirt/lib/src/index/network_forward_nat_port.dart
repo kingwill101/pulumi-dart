@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardNatPort {
   /// Sets the ending port number for the NAT port range.
-  final double end;
+  final pulumi.Input<double> end;
   /// Specifies the starting port number for the NAT port range.
-  final double start;
+  final pulumi.Input<double> start;
 
   /// Creates a new [NetworkForwardNatPort].
   /// [end] Sets the ending port number for the NAT port range.
@@ -24,8 +25,8 @@ class NetworkForwardNatPort {
 
   factory NetworkForwardNatPort.fromMap(Map<String, dynamic> map) {
     return NetworkForwardNatPort(
-      end: map['end'] as double,
-      start: map['start'] as double,
+      end: (map['end'] as double).input(),
+      start: (map['start'] as double).input(),
     );
   }
 }

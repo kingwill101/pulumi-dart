@@ -23,15 +23,11 @@ class SharedPrivateLinkResourceArgs {
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
   SharedPrivateLinkResourceArgs({
-    pulumi.Output<SharedPrivateLinkResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> searchServiceName,
-    pulumi.Output<String>? sharedPrivateLinkResourceName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SharedPrivateLinkResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      searchServiceName = pulumi.Input.asInput<String>(searchServiceName),
-      sharedPrivateLinkResourceName = pulumi.Input.asOptionalInput<String>(sharedPrivateLinkResourceName);
+    this.properties,
+    required this.resourceGroupName,
+    required this.searchServiceName,
+    this.sharedPrivateLinkResourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SharedPrivateLinkResourceProperties>(SharedPrivateLinkResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      searchServiceName: pulumi.Output.create<String>(map['searchServiceName'] as String),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : pulumi.Output.create<String>(map['sharedPrivateLinkResourceName'] as String),
+      properties: map['properties'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      searchServiceName: (map['searchServiceName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
     );
   }
 }

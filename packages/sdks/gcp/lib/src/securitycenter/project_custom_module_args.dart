@@ -30,15 +30,11 @@ class ProjectCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [project] The ID of the project in which the resource belongs.
   ProjectCustomModuleArgs({
-    required pulumi.Output<ProjectCustomModuleCustomConfig> customConfig,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> enablementState,
-    pulumi.Output<String>? project,
-  }) :
-      customConfig = pulumi.Input.asInput<ProjectCustomModuleCustomConfig>(customConfig),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enablementState = pulumi.Input.asInput<String>(enablementState),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.customConfig,
+    required this.displayName,
+    required this.enablementState,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class ProjectCustomModuleArgs {
 
   factory ProjectCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCustomModuleArgs(
-      customConfig: pulumi.Output.create<ProjectCustomModuleCustomConfig>(ProjectCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enablementState: pulumi.Output.create<String>(map['enablementState'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      customConfig: (ProjectCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: (map['displayName'] as String).input(),
+      enablementState: (map['enablementState'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

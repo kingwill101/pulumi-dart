@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualBorderRoutersFilter {
   /// The key of the field to filter by, as defined by
   /// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-  final String? key;
+  final pulumi.Input<String>? key;
   /// Set of values that are accepted for the given field.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GetVirtualBorderRoutersFilter].
   /// [key] The key of the field to filter by, as defined by
@@ -25,8 +26,8 @@ class GetVirtualBorderRoutersFilter {
 
   factory GetVirtualBorderRoutersFilter.fromMap(Map<String, dynamic> map) {
     return GetVirtualBorderRoutersFilter(
-      key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadIdentityPoolManagedIdentityAttestationRule {
   /// A single workload operating on Google Cloud. For example:
   /// `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345678`.
-  final String googleCloudResource;
+  final pulumi.Input<String> googleCloudResource;
 
   /// Creates a new [WorkloadIdentityPoolManagedIdentityAttestationRule].
   /// [googleCloudResource] A single workload operating on Google Cloud. For example:
@@ -20,7 +21,7 @@ class WorkloadIdentityPoolManagedIdentityAttestationRule {
 
   factory WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolManagedIdentityAttestationRule(
-      googleCloudResource: map['googleCloudResource'] as String,
+      googleCloudResource: (map['googleCloudResource'] as String).input(),
     );
   }
 }

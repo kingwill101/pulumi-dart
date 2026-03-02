@@ -19,13 +19,10 @@ class GetEdgeActionVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] The name of the Edge Action version
   GetEdgeActionVersionArgs({
-    required pulumi.Output<String> edgeActionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> version,
-  }) :
-      edgeActionName = pulumi.Input.asInput<String>(edgeActionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      version = pulumi.Input.asInput<String>(version);
+    required this.edgeActionName,
+    required this.resourceGroupName,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEdgeActionVersionArgs {
 
   factory GetEdgeActionVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionVersionArgs(
-      edgeActionName: pulumi.Output.create<String>(map['edgeActionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      edgeActionName: (map['edgeActionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

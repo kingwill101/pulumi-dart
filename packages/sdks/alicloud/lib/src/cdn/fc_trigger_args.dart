@@ -31,21 +31,14 @@ class FcTriggerArgs {
   /// [sourceArn] Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
   /// [triggerArn] The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
   FcTriggerArgs({
-    required pulumi.Output<String> eventMetaName,
-    required pulumi.Output<String> eventMetaVersion,
-    pulumi.Output<String>? functionArn,
-    required pulumi.Output<String> notes,
-    required pulumi.Output<String> roleArn,
-    required pulumi.Output<String> sourceArn,
-    required pulumi.Output<String> triggerArn,
-  }) :
-      eventMetaName = pulumi.Input.asInput<String>(eventMetaName),
-      eventMetaVersion = pulumi.Input.asInput<String>(eventMetaVersion),
-      functionArn = pulumi.Input.asOptionalInput<String>(functionArn),
-      notes = pulumi.Input.asInput<String>(notes),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      sourceArn = pulumi.Input.asInput<String>(sourceArn),
-      triggerArn = pulumi.Input.asInput<String>(triggerArn);
+    required this.eventMetaName,
+    required this.eventMetaVersion,
+    this.functionArn,
+    required this.notes,
+    required this.roleArn,
+    required this.sourceArn,
+    required this.triggerArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class FcTriggerArgs {
 
   factory FcTriggerArgs.fromMap(Map<String, dynamic> map) {
     return FcTriggerArgs(
-      eventMetaName: pulumi.Output.create<String>(map['eventMetaName'] as String),
-      eventMetaVersion: pulumi.Output.create<String>(map['eventMetaVersion'] as String),
-      functionArn: map['functionArn'] == null ? null : pulumi.Output.create<String>(map['functionArn'] as String),
-      notes: pulumi.Output.create<String>(map['notes'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      sourceArn: pulumi.Output.create<String>(map['sourceArn'] as String),
-      triggerArn: pulumi.Output.create<String>(map['triggerArn'] as String),
+      eventMetaName: (map['eventMetaName'] as String).input(),
+      eventMetaVersion: (map['eventMetaVersion'] as String).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      notes: (map['notes'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      sourceArn: (map['sourceArn'] as String).input(),
+      triggerArn: (map['triggerArn'] as String).input(),
     );
   }
 }

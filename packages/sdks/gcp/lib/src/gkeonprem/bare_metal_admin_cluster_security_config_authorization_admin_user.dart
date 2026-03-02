@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
   /// The name of the user, e.g. `my-gcp-id@gmail.com`.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [BareMetalAdminClusterSecurityConfigAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
@@ -19,7 +20,7 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
 
   factory BareMetalAdminClusterSecurityConfigAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterSecurityConfigAuthorizationAdminUser(
-      username: map['username'] as String,
+      username: (map['username'] as String).input(),
     );
   }
 }

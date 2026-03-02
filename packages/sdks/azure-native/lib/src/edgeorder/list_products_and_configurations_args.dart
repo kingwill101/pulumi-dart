@@ -21,13 +21,10 @@ class ListProductsAndConfigurationsArgs {
   /// [customerSubscriptionDetails] Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
   /// [skipToken] $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
   ListProductsAndConfigurationsArgs({
-    pulumi.Output<ConfigurationFilter>? configurationFilter,
-    pulumi.Output<CustomerSubscriptionDetails>? customerSubscriptionDetails,
-    pulumi.Output<String>? skipToken,
-  }) :
-      configurationFilter = pulumi.Input.asOptionalInput<ConfigurationFilter>(configurationFilter),
-      customerSubscriptionDetails = pulumi.Input.asOptionalInput<CustomerSubscriptionDetails>(customerSubscriptionDetails),
-      skipToken = pulumi.Input.asOptionalInput<String>(skipToken);
+    this.configurationFilter,
+    this.customerSubscriptionDetails,
+    this.skipToken,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ListProductsAndConfigurationsArgs {
 
   factory ListProductsAndConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationsArgs(
-      configurationFilter: map['configurationFilter'] == null ? null : pulumi.Output.create<ConfigurationFilter>(ConfigurationFilter.fromMap((map['configurationFilter'] as Map).cast<String, dynamic>())),
-      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : pulumi.Output.create<CustomerSubscriptionDetails>(CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())),
-      skipToken: map['skipToken'] == null ? null : pulumi.Output.create<String>(map['skipToken'] as String),
+      configurationFilter: map['configurationFilter'] == null ? null : (ConfigurationFilter.fromMap((map['configurationFilter'] as Map).cast<String, dynamic>())).input(),
+      customerSubscriptionDetails: map['customerSubscriptionDetails'] == null ? null : (CustomerSubscriptionDetails.fromMap((map['customerSubscriptionDetails'] as Map).cast<String, dynamic>())).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
     );
   }
 }

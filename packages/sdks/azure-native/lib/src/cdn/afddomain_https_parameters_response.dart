@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'afddomain_https_customized_cipher_suite_set_response.dart';
 import 'resource_reference_response.dart';
 
 /// The JSON object that contains the properties to secure a domain.
 class AFDDomainHttpsParametersResponse {
   /// Defines the source of the SSL certificate.
-  final String certificateType;
+  final pulumi.Input<String> certificateType;
   /// cipher suite set type that will be used for Https
-  final String? cipherSuiteSetType;
+  final pulumi.Input<String>? cipherSuiteSetType;
   /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-  final AFDDomainHttpsCustomizedCipherSuiteSetResponse? customizedCipherSuiteSet;
+  final pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetResponse>? customizedCipherSuiteSet;
   /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
-  final String? minimumTlsVersion;
+  final pulumi.Input<String>? minimumTlsVersion;
   /// Resource reference to the secret. ie. subs/rg/profile/secret
-  final ResourceReferenceResponse? secret;
+  final pulumi.Input<ResourceReferenceResponse>? secret;
 
   /// Creates a new [AFDDomainHttpsParametersResponse].
   /// [certificateType] Defines the source of the SSL certificate.
@@ -34,19 +35,19 @@ class AFDDomainHttpsParametersResponse {
     return <String, dynamic>{
       'certificateType': certificateType,
       'cipherSuiteSetType': ?cipherSuiteSetType,
-      'customizedCipherSuiteSet': ?customizedCipherSuiteSet == null ? null : customizedCipherSuiteSet!.toMap(),
+      'customizedCipherSuiteSet': ?pulumi.Input.mapOptionalInputValue<AFDDomainHttpsCustomizedCipherSuiteSetResponse, Map<String, dynamic>>(customizedCipherSuiteSet, (value) => value.toMap()),
       'minimumTlsVersion': ?minimumTlsVersion,
-      'secret': ?secret == null ? null : secret!.toMap(),
+      'secret': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(secret, (value) => value.toMap()),
     };
   }
 
   factory AFDDomainHttpsParametersResponse.fromMap(Map<String, dynamic> map) {
     return AFDDomainHttpsParametersResponse(
-      certificateType: map['certificateType'] as String,
-      cipherSuiteSetType: map['cipherSuiteSetType'] == null ? null : map['cipherSuiteSetType'] as String,
-      customizedCipherSuiteSet: map['customizedCipherSuiteSet'] == null ? null : AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap((map['customizedCipherSuiteSet'] as Map).cast<String, dynamic>()),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : map['minimumTlsVersion'] as String,
-      secret: map['secret'] == null ? null : ResourceReferenceResponse.fromMap((map['secret'] as Map).cast<String, dynamic>()),
+      certificateType: (map['certificateType'] as String).input(),
+      cipherSuiteSetType: map['cipherSuiteSetType'] == null ? null : (map['cipherSuiteSetType'] as String).input(),
+      customizedCipherSuiteSet: map['customizedCipherSuiteSet'] == null ? null : (AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap((map['customizedCipherSuiteSet'] as Map).cast<String, dynamic>())).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      secret: map['secret'] == null ? null : (ResourceReferenceResponse.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,25 +35,16 @@ class AccessPointState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   AccessPointState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? fileSystemArn,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<AccessPointPosixUser>? posixUser,
-    pulumi.Output<String>? region,
-    pulumi.Output<AccessPointRootDirectory>? rootDirectory,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      fileSystemArn = pulumi.Input.asOptionalInput<String>(fileSystemArn),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      posixUser = pulumi.Input.asOptionalInput<AccessPointPosixUser>(posixUser),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rootDirectory = pulumi.Input.asOptionalInput<AccessPointRootDirectory>(rootDirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.fileSystemArn,
+    this.fileSystemId,
+    this.ownerId,
+    this.posixUser,
+    this.region,
+    this.rootDirectory,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      fileSystemArn: map['fileSystemArn'] == null ? null : pulumi.Output.create<String>(map['fileSystemArn'] as String),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      posixUser: map['posixUser'] == null ? null : pulumi.Output.create<AccessPointPosixUser>(AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      rootDirectory: map['rootDirectory'] == null ? null : pulumi.Output.create<AccessPointRootDirectory>(AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      fileSystemArn: map['fileSystemArn'] == null ? null : (map['fileSystemArn'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

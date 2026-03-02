@@ -16,11 +16,9 @@ class GetSupportPlanTypeArgs {
   /// [planTypeName] The Canonical support plan type.
   /// [providerName] The support plan type. For now the only valid type is "canonical".
   GetSupportPlanTypeArgs({
-    required pulumi.Output<String> planTypeName,
-    required pulumi.Output<String> providerName,
-  }) :
-      planTypeName = pulumi.Input.asInput<String>(planTypeName),
-      providerName = pulumi.Input.asInput<String>(providerName);
+    required this.planTypeName,
+    required this.providerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSupportPlanTypeArgs {
 
   factory GetSupportPlanTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetSupportPlanTypeArgs(
-      planTypeName: pulumi.Output.create<String>(map['planTypeName'] as String),
-      providerName: pulumi.Output.create<String>(map['providerName'] as String),
+      planTypeName: (map['planTypeName'] as String).input(),
+      providerName: (map['providerName'] as String).input(),
     );
   }
 }

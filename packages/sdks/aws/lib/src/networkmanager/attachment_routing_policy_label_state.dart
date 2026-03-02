@@ -16,13 +16,10 @@ class AttachmentRoutingPolicyLabelState {
   /// [coreNetworkId] The ID of the core network containing the attachment.
   /// [routingPolicyLabel] The routing policy label to apply to the attachment.
   AttachmentRoutingPolicyLabelState({
-    pulumi.Output<String>? attachmentId,
-    pulumi.Output<String>? coreNetworkId,
-    pulumi.Output<String>? routingPolicyLabel,
-  }) :
-      attachmentId = pulumi.Input.asOptionalInput<String>(attachmentId),
-      coreNetworkId = pulumi.Input.asOptionalInput<String>(coreNetworkId),
-      routingPolicyLabel = pulumi.Input.asOptionalInput<String>(routingPolicyLabel);
+    this.attachmentId,
+    this.coreNetworkId,
+    this.routingPolicyLabel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class AttachmentRoutingPolicyLabelState {
 
   factory AttachmentRoutingPolicyLabelState.fromMap(Map<String, dynamic> map) {
     return AttachmentRoutingPolicyLabelState(
-      attachmentId: map['attachmentId'] == null ? null : pulumi.Output.create<String>(map['attachmentId'] as String),
-      coreNetworkId: map['coreNetworkId'] == null ? null : pulumi.Output.create<String>(map['coreNetworkId'] as String),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : pulumi.Output.create<String>(map['routingPolicyLabel'] as String),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
     );
   }
 }

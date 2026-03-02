@@ -16,11 +16,9 @@ class GetCertificatesArgs {
   /// [filter] Filter expression to restrict the certificates returned.
   /// [region] The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
   GetCertificatesArgs({
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? region,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filter,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

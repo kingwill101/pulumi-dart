@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed application artifact.
 class ApplicationArtifactResponse {
   /// The managed application artifact name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The managed application artifact type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The managed application artifact blob uri.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [ApplicationArtifactResponse].
   /// [name] The managed application artifact name.
@@ -30,9 +31,9 @@ class ApplicationArtifactResponse {
 
   factory ApplicationArtifactResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationArtifactResponse(
-      name: map['name'] as String,
-      type: map['type'] as String,
-      uri: map['uri'] as String,
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

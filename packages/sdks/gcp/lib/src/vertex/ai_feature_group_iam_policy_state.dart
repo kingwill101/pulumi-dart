@@ -26,17 +26,12 @@ class AiFeatureGroupIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature group. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   AiFeatureGroupIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? featureGroup,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureGroup = pulumi.Input.asOptionalInput<String>(featureGroup),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.etag,
+    this.featureGroup,
+    this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AiFeatureGroupIamPolicyState {
 
   factory AiFeatureGroupIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureGroup: map['featureGroup'] == null ? null : pulumi.Output.create<String>(map['featureGroup'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureGroup: map['featureGroup'] == null ? null : (map['featureGroup'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

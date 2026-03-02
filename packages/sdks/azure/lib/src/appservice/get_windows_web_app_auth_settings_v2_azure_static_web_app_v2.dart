@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2 {
   /// The OAuth 2.0 client ID used by the app for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
 
   /// Creates a new [GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
@@ -19,7 +20,7 @@ class GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2 {
 
   factory GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppAuthSettingsV2AzureStaticWebAppV2(
-      clientId: map['clientId'] as String,
+      clientId: (map['clientId'] as String).input(),
     );
   }
 }

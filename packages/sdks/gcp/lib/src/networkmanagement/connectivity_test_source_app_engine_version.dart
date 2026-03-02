@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestSourceAppEngineVersion {
   /// An App Engine service version name.
-  final String? uri;
+  final pulumi.Input<String>? uri;
 
   /// Creates a new [ConnectivityTestSourceAppEngineVersion].
   /// [uri] An App Engine service version name.
@@ -19,7 +20,7 @@ class ConnectivityTestSourceAppEngineVersion {
 
   factory ConnectivityTestSourceAppEngineVersion.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestSourceAppEngineVersion(
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
     );
   }
 }

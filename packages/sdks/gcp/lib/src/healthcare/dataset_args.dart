@@ -30,17 +30,12 @@ class DatasetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   DatasetArgs({
-    pulumi.Output<DatasetEncryptionSpec>? encryptionSpec,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? timeZone,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<DatasetEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.encryptionSpec,
+    required this.location,
+    this.name,
+    this.project,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<DatasetEncryptionSpec>(DatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (DatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

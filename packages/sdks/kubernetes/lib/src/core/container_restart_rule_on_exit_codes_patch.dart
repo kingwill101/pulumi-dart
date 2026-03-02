@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ContainerRestartRuleOnExitCodes describes the condition for handling an exited container based on its exit codes.
 class ContainerRestartRuleOnExitCodesPatch {
@@ -7,9 +8,9 @@ class ContainerRestartRuleOnExitCodesPatch {
   /// set of specified values.
   /// - NotIn: the requirement is satisfied if the container exit code is
   /// not in the set of specified values.
-  final String? operator;
+  final pulumi.Input<String>? operator;
   /// Specifies the set of values to check for container exit codes. At most 255 elements are allowed.
-  final List<int>? values;
+  final pulumi.Input<List<int>>? values;
 
   /// Creates a new [ContainerRestartRuleOnExitCodesPatch].
   /// [operator] Represents the relationship between the container exit code(s) and the specified values. Possible values are: - In: the requirement is satisfied if the container exit code is in the
@@ -28,8 +29,8 @@ class ContainerRestartRuleOnExitCodesPatch {
 
   factory ContainerRestartRuleOnExitCodesPatch.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRuleOnExitCodesPatch(
-      operator: map['operator'] == null ? null : map['operator'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<int>(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<int>()).input(),
     );
   }
 }

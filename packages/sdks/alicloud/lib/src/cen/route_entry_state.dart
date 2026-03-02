@@ -20,13 +20,10 @@ class RouteEntryState {
   /// [instanceId] The ID of the CEN.
   /// [routeTableId] The route table of the attached VBR or VPC.
   RouteEntryState({
-    pulumi.Output<String>? cidrBlock,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? routeTableId,
-  }) :
-      cidrBlock = pulumi.Input.asOptionalInput<String>(cidrBlock),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId);
+    this.cidrBlock,
+    this.instanceId,
+    this.routeTableId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      cidrBlock: map['cidrBlock'] == null ? null : pulumi.Output.create<String>(map['cidrBlock'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
     );
   }
 }

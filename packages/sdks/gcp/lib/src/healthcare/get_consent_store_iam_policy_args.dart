@@ -18,11 +18,9 @@ class GetConsentStoreIamPolicyArgs {
   /// [consentStoreId] Used to find the parent resource to bind the IAM policy to
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format
   GetConsentStoreIamPolicyArgs({
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> dataset,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      dataset = pulumi.Input.asInput<String>(dataset);
+    required this.consentStoreId,
+    required this.dataset,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetConsentStoreIamPolicyArgs {
 
   factory GetConsentStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConsentStoreIamPolicyArgs(
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      dataset: (map['dataset'] as String).input(),
     );
   }
 }

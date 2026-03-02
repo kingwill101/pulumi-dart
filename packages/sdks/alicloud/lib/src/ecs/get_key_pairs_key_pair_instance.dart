@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyPairsKeyPairInstance {
   /// The ID of the availability zone where the ECS instance is located.
-  final String availabilityZone;
-  final String description;
-  final String imageId;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String> description;
+  final pulumi.Input<String> imageId;
   /// The ID of the ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The name of the ECS instance.
-  final String instanceName;
-  final String instanceType;
+  final pulumi.Input<String> instanceName;
+  final pulumi.Input<String> instanceType;
   /// Name of the key pair.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// The private IP address of the ECS instance.
-  final String privateIp;
+  final pulumi.Input<String> privateIp;
   /// The public IP address or EIP of the ECS instance.
-  final String publicIp;
-  final String regionId;
-  final String status;
+  final pulumi.Input<String> publicIp;
+  final pulumi.Input<String> regionId;
+  final pulumi.Input<String> status;
   /// The ID of the vSwitch attached to the ECS instance.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetKeyPairsKeyPairInstance].
   /// [availabilityZone] The ID of the availability zone where the ECS instance is located.
@@ -69,18 +70,18 @@ class GetKeyPairsKeyPairInstance {
 
   factory GetKeyPairsKeyPairInstance.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsKeyPairInstance(
-      availabilityZone: map['availabilityZone'] as String,
-      description: map['description'] as String,
-      imageId: map['imageId'] as String,
-      instanceId: map['instanceId'] as String,
-      instanceName: map['instanceName'] as String,
-      instanceType: map['instanceType'] as String,
-      keyName: map['keyName'] as String,
-      privateIp: map['privateIp'] as String,
-      publicIp: map['publicIp'] as String,
-      regionId: map['regionId'] as String,
-      status: map['status'] as String,
-      vswitchId: map['vswitchId'] as String,
+      availabilityZone: (map['availabilityZone'] as String).input(),
+      description: (map['description'] as String).input(),
+      imageId: (map['imageId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      privateIp: (map['privateIp'] as String).input(),
+      publicIp: (map['publicIp'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
+      status: (map['status'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

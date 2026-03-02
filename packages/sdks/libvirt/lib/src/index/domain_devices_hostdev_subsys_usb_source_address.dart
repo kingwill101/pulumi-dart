@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysUsbSourceAddress {
   /// Sets the bus identifier where the USB device resides.
-  final double? bus;
+  final pulumi.Input<double>? bus;
   /// Specifies the device identifier corresponding to the USB device.
-  final double? device;
+  final pulumi.Input<double>? device;
   /// Indicates the port number for the USB device connection.
-  final String? port;
+  final pulumi.Input<String>? port;
 
   /// Creates a new [DomainDevicesHostdevSubsysUsbSourceAddress].
   /// [bus] Sets the bus identifier where the USB device resides.
@@ -29,9 +30,9 @@ class DomainDevicesHostdevSubsysUsbSourceAddress {
 
   factory DomainDevicesHostdevSubsysUsbSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysUsbSourceAddress(
-      bus: map['bus'] == null ? null : map['bus'] as double,
-      device: map['device'] == null ? null : map['device'] as double,
-      port: map['port'] == null ? null : map['port'] as String,
+      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
+      device: map['device'] == null ? null : (map['device'] as double).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

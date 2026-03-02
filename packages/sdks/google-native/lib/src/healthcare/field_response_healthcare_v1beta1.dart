@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A (sub) field of a type.
 class FieldResponseHealthcareV1beta1 {
   /// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
-  final int maxOccurs;
+  final pulumi.Input<int> maxOccurs;
   /// The minimum number of times this field must be present/repeated.
-  final int minOccurs;
+  final pulumi.Input<int> minOccurs;
   /// The name of the field. For example, "PID-1" or just "1".
-  final String name;
+  final pulumi.Input<String> name;
   /// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
-  final String table;
+  final pulumi.Input<String> table;
   /// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FieldResponseHealthcareV1beta1].
   /// [maxOccurs] The maximum number of times this field can be repeated. 0 or -1 means unbounded.
@@ -40,11 +41,11 @@ class FieldResponseHealthcareV1beta1 {
 
   factory FieldResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return FieldResponseHealthcareV1beta1(
-      maxOccurs: map['maxOccurs'] as int,
-      minOccurs: map['minOccurs'] as int,
-      name: map['name'] as String,
-      table: map['table'] as String,
-      type: map['type'] as String,
+      maxOccurs: (map['maxOccurs'] as int).input(),
+      minOccurs: (map['minOccurs'] as int).input(),
+      name: (map['name'] as String).input(),
+      table: (map['table'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

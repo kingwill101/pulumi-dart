@@ -6,17 +6,17 @@ import 'provider_response.dart';
 /// Properties of a Workspace
 class WorkspaceResourcePropertiesResponse {
   /// Indicator of enablement of the Quantum workspace Api keys.
-  final bool? apiKeyEnabled;
+  final pulumi.Input<bool>? apiKeyEnabled;
   /// The URI of the workspace endpoint.
-  final String endpointUri;
+  final pulumi.Input<String> endpointUri;
   /// List of Providers selected for this Workspace
-  final List<ProviderResponse>? providers;
+  final pulumi.Input<List<ProviderResponse>>? providers;
   /// Provisioning status field
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// ARM Resource Id of the storage account associated with this workspace.
-  final String? storageAccount;
+  final pulumi.Input<String>? storageAccount;
   /// Whether the current workspace is ready to accept Jobs.
-  final String usable;
+  final pulumi.Input<String> usable;
 
   /// Creates a new [WorkspaceResourcePropertiesResponse].
   /// [apiKeyEnabled] Indicator of enablement of the Quantum workspace Api keys.
@@ -38,7 +38,7 @@ class WorkspaceResourcePropertiesResponse {
     return <String, dynamic>{
       'apiKeyEnabled': ?apiKeyEnabled,
       'endpointUri': endpointUri,
-      'providers': ?providers == null ? null : pulumi.Input.encodeList<ProviderResponse, Map<String, dynamic>>(providers!, (value) => value.toMap()),
+      'providers': ?pulumi.Input.mapOptionalInputValue<List<ProviderResponse>, List<Map<String, dynamic>>>(providers, (value) => pulumi.Input.encodeList<ProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'provisioningState': provisioningState,
       'storageAccount': ?storageAccount,
       'usable': usable,
@@ -47,12 +47,12 @@ class WorkspaceResourcePropertiesResponse {
 
   factory WorkspaceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceResourcePropertiesResponse(
-      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : map['apiKeyEnabled'] as bool,
-      endpointUri: map['endpointUri'] as String,
-      providers: map['providers'] == null ? null : pulumi.Input.decodeList<ProviderResponse>(map['providers'], (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      storageAccount: map['storageAccount'] == null ? null : map['storageAccount'] as String,
-      usable: map['usable'] as String,
+      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : (map['apiKeyEnabled'] as bool).input(),
+      endpointUri: (map['endpointUri'] as String).input(),
+      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<ProviderResponse>(map['providers'], (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
+      usable: (map['usable'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The encryption-in-transit properties.
 class EncryptionInTransitPropertiesResponse {
   /// Indicates whether or not inter cluster node communication is encrypted in transit.
-  final bool? isEncryptionInTransitEnabled;
+  final pulumi.Input<bool>? isEncryptionInTransitEnabled;
 
   /// Creates a new [EncryptionInTransitPropertiesResponse].
   /// [isEncryptionInTransitEnabled] Indicates whether or not inter cluster node communication is encrypted in transit.
@@ -20,7 +21,7 @@ class EncryptionInTransitPropertiesResponse {
 
   factory EncryptionInTransitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionInTransitPropertiesResponse(
-      isEncryptionInTransitEnabled: map['isEncryptionInTransitEnabled'] == null ? null : map['isEncryptionInTransitEnabled'] as bool,
+      isEncryptionInTransitEnabled: map['isEncryptionInTransitEnabled'] == null ? null : (map['isEncryptionInTransitEnabled'] as bool).input(),
     );
   }
 }

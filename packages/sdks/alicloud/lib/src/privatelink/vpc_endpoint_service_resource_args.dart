@@ -25,17 +25,12 @@ class VpcEndpointServiceResourceArgs {
   /// [serviceId] The endpoint service ID.
   /// [zoneId] The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
   VpcEndpointServiceResourceArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> serviceId,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dryRun,
+    required this.resourceId,
+    required this.resourceType,
+    required this.serviceId,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VpcEndpointServiceResourceArgs {
 
   factory VpcEndpointServiceResourceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The PE network resource that is linked to this PE connection.
 class PrivateEndpointResource {
   /// The subnetId that the private endpoint is connected to.
-  final String? subnetArmId;
+  final pulumi.Input<String>? subnetArmId;
 
   /// Creates a new [PrivateEndpointResource].
   /// [subnetArmId] The subnetId that the private endpoint is connected to.
@@ -20,7 +21,7 @@ class PrivateEndpointResource {
 
   factory PrivateEndpointResource.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointResource(
-      subnetArmId: map['subnetArmId'] == null ? null : map['subnetArmId'] as String,
+      subnetArmId: map['subnetArmId'] == null ? null : (map['subnetArmId'] as String).input(),
     );
   }
 }

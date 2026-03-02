@@ -22,15 +22,11 @@ class WorkspaceRunArgs {
   /// [sourceId] Attribute Resource field representing the source task ID
   /// [sourceType] Resource attribute fields representing the source type
   WorkspaceRunArgs({
-    required pulumi.Output<String> experimentId,
-    pulumi.Output<String>? runName,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? sourceType,
-  }) :
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      runName = pulumi.Input.asOptionalInput<String>(runName),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType);
+    required this.experimentId,
+    this.runName,
+    this.sourceId,
+    this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class WorkspaceRunArgs {
 
   factory WorkspaceRunArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceRunArgs(
-      experimentId: pulumi.Output.create<String>(map['experimentId'] as String),
-      runName: map['runName'] == null ? null : pulumi.Output.create<String>(map['runName'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
+      experimentId: (map['experimentId'] as String).input(),
+      runName: map['runName'] == null ? null : (map['runName'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
     );
   }
 }

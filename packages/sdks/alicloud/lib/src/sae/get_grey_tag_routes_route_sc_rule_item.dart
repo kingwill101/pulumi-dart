@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGreyTagRoutesRouteScRuleItem {
   /// The comparison operator.
-  final String cond;
+  final pulumi.Input<String> cond;
   /// The name of the parameter.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operator.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The Compare types.
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of the parameter.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetGreyTagRoutesRouteScRuleItem].
   /// [cond] The comparison operator.
@@ -39,11 +40,11 @@ class GetGreyTagRoutesRouteScRuleItem {
 
   factory GetGreyTagRoutesRouteScRuleItem.fromMap(Map<String, dynamic> map) {
     return GetGreyTagRoutesRouteScRuleItem(
-      cond: map['cond'] as String,
-      name: map['name'] as String,
-      operator: map['operator'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      cond: (map['cond'] as String).input(),
+      name: (map['name'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

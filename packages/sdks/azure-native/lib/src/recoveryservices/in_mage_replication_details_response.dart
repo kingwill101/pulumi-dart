@@ -11,88 +11,88 @@ import 'vmnic_details_response.dart';
 /// InMage provider specific settings.
 class InMageReplicationDetailsResponse {
   /// The active location of the VM. If the VM is being protected from Azure, this field will take values from { Azure, OnPrem }. If the VM is being protected between two data-centers, this field will be OnPrem always.
-  final String? activeSiteType;
+  final pulumi.Input<String>? activeSiteType;
   /// The agent details.
-  final InMageAgentDetailsResponse? agentDetails;
+  final pulumi.Input<InMageAgentDetailsResponse>? agentDetails;
   /// A value indicating the underlying Azure storage account. If the VM is not running in Azure, this value shall be set to null.
-  final String? azureStorageAccountId;
+  final pulumi.Input<String>? azureStorageAccountId;
   /// The compressed data change rate in MB.
-  final double? compressedDataRateInMB;
+  final pulumi.Input<double>? compressedDataRateInMB;
   /// The collection of Consistency points.
-  final Map<String, String>? consistencyPoints;
+  final pulumi.Input<Map<String, String>>? consistencyPoints;
   /// The datastores of the on-premise machine Value can be list of strings that contain datastore names.
-  final List<String>? datastores;
+  final pulumi.Input<List<String>>? datastores;
   /// A value indicating the discovery type of the machine.
-  final String? discoveryType;
+  final pulumi.Input<String>? discoveryType;
   /// A value indicating whether any disk is resized for this VM.
-  final String? diskResized;
+  final pulumi.Input<String>? diskResized;
   /// The infrastructure VM Id.
-  final String? infrastructureVmId;
+  final pulumi.Input<String>? infrastructureVmId;
   /// Gets the Instance type.
   /// Expected value is 'InMage'.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// The source IP address.
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// A value indicating whether additional IR stats are available or not.
-  final bool? isAdditionalStatsAvailable;
+  final pulumi.Input<bool>? isAdditionalStatsAvailable;
   /// The last heartbeat received from the source server.
-  final String? lastHeartbeat;
+  final pulumi.Input<String>? lastHeartbeat;
   /// The last RPO calculated time.
-  final String? lastRpoCalculatedTime;
+  final pulumi.Input<String>? lastRpoCalculatedTime;
   /// The last update time received from on-prem components.
-  final String? lastUpdateReceivedTime;
+  final pulumi.Input<String>? lastUpdateReceivedTime;
   /// The master target Id.
-  final String? masterTargetId;
+  final pulumi.Input<String>? masterTargetId;
   /// The multi vm group Id, if any.
-  final String? multiVmGroupId;
+  final pulumi.Input<String>? multiVmGroupId;
   /// The multi vm group name, if any.
-  final String? multiVmGroupName;
+  final pulumi.Input<String>? multiVmGroupName;
   /// A value indicating whether the multi vm sync is enabled or disabled.
-  final String? multiVmSyncStatus;
+  final pulumi.Input<String>? multiVmSyncStatus;
   /// The OS details.
-  final OSDiskDetailsResponse? osDetails;
+  final pulumi.Input<OSDiskDetailsResponse>? osDetails;
   /// The OS Version of the protected item.
-  final String? osVersion;
+  final pulumi.Input<String>? osVersion;
   /// The process server Id.
-  final String? processServerId;
+  final pulumi.Input<String>? processServerId;
   /// The list of protected disks.
-  final List<InMageProtectedDiskDetailsResponse>? protectedDisks;
+  final pulumi.Input<List<InMageProtectedDiskDetailsResponse>>? protectedDisks;
   /// The protection stage.
-  final String? protectionStage;
+  final pulumi.Input<String>? protectionStage;
   /// A value indicating whether the source server requires a restart after update.
-  final String? rebootAfterUpdateStatus;
+  final pulumi.Input<String>? rebootAfterUpdateStatus;
   /// The replica id of the protected item.
-  final String? replicaId;
+  final pulumi.Input<String>? replicaId;
   /// The resync details of the machine.
-  final InitialReplicationDetailsResponse? resyncDetails;
+  final pulumi.Input<InitialReplicationDetailsResponse>? resyncDetails;
   /// The retention window end time.
-  final String? retentionWindowEnd;
+  final pulumi.Input<String>? retentionWindowEnd;
   /// The retention window start time.
-  final String? retentionWindowStart;
+  final pulumi.Input<String>? retentionWindowStart;
   /// The RPO in seconds.
-  final double? rpoInSeconds;
+  final pulumi.Input<double>? rpoInSeconds;
   /// The CPU count of the VM on the primary side.
-  final int? sourceVmCpuCount;
+  final pulumi.Input<int>? sourceVmCpuCount;
   /// The RAM size of the VM on the primary side.
-  final int? sourceVmRamSizeInMB;
+  final pulumi.Input<int>? sourceVmRamSizeInMB;
   /// The total transferred data in bytes.
-  final double? totalDataTransferred;
+  final pulumi.Input<double>? totalDataTransferred;
   /// The progress health.
-  final String? totalProgressHealth;
+  final pulumi.Input<String>? totalProgressHealth;
   /// The uncompressed data change rate in MB.
-  final double? uncompressedDataRateInMB;
+  final pulumi.Input<double>? uncompressedDataRateInMB;
   /// The vCenter infrastructure Id.
-  final String? vCenterInfrastructureId;
+  final pulumi.Input<String>? vCenterInfrastructureId;
   /// The validation errors of the on-premise machine Value can be list of validation errors.
-  final List<HealthErrorResponse>? validationErrors;
+  final pulumi.Input<List<HealthErrorResponse>>? validationErrors;
   /// The virtual machine Id.
-  final String? vmId;
+  final pulumi.Input<String>? vmId;
   /// The PE Network details.
-  final List<VMNicDetailsResponse>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
   /// The protection state for the vm.
-  final String? vmProtectionState;
+  final pulumi.Input<String>? vmProtectionState;
   /// The protection state description for the vm.
-  final String? vmProtectionStateDescription;
+  final pulumi.Input<String>? vmProtectionStateDescription;
 
   /// Creates a new [InMageReplicationDetailsResponse].
   /// [activeSiteType] The active location of the VM. If the VM is being protected from Azure, this field will take values from { Azure, OnPrem }. If the VM is being protected between two data-centers, this field will be OnPrem always.
@@ -183,7 +183,7 @@ class InMageReplicationDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activeSiteType': ?activeSiteType,
-      'agentDetails': ?agentDetails == null ? null : agentDetails!.toMap(),
+      'agentDetails': ?pulumi.Input.mapOptionalInputValue<InMageAgentDetailsResponse, Map<String, dynamic>>(agentDetails, (value) => value.toMap()),
       'azureStorageAccountId': ?azureStorageAccountId,
       'compressedDataRateInMB': ?compressedDataRateInMB,
       'consistencyPoints': ?consistencyPoints,
@@ -201,14 +201,14 @@ class InMageReplicationDetailsResponse {
       'multiVmGroupId': ?multiVmGroupId,
       'multiVmGroupName': ?multiVmGroupName,
       'multiVmSyncStatus': ?multiVmSyncStatus,
-      'osDetails': ?osDetails == null ? null : osDetails!.toMap(),
+      'osDetails': ?pulumi.Input.mapOptionalInputValue<OSDiskDetailsResponse, Map<String, dynamic>>(osDetails, (value) => value.toMap()),
       'osVersion': ?osVersion,
       'processServerId': ?processServerId,
-      'protectedDisks': ?protectedDisks == null ? null : pulumi.Input.encodeList<InMageProtectedDiskDetailsResponse, Map<String, dynamic>>(protectedDisks!, (value) => value.toMap()),
+      'protectedDisks': ?pulumi.Input.mapOptionalInputValue<List<InMageProtectedDiskDetailsResponse>, List<Map<String, dynamic>>>(protectedDisks, (value) => pulumi.Input.encodeList<InMageProtectedDiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protectionStage': ?protectionStage,
       'rebootAfterUpdateStatus': ?rebootAfterUpdateStatus,
       'replicaId': ?replicaId,
-      'resyncDetails': ?resyncDetails == null ? null : resyncDetails!.toMap(),
+      'resyncDetails': ?pulumi.Input.mapOptionalInputValue<InitialReplicationDetailsResponse, Map<String, dynamic>>(resyncDetails, (value) => value.toMap()),
       'retentionWindowEnd': ?retentionWindowEnd,
       'retentionWindowStart': ?retentionWindowStart,
       'rpoInSeconds': ?rpoInSeconds,
@@ -218,9 +218,9 @@ class InMageReplicationDetailsResponse {
       'totalProgressHealth': ?totalProgressHealth,
       'uncompressedDataRateInMB': ?uncompressedDataRateInMB,
       'vCenterInfrastructureId': ?vCenterInfrastructureId,
-      'validationErrors': ?validationErrors == null ? null : pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(validationErrors!, (value) => value.toMap()),
+      'validationErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmId': ?vmId,
-      'vmNics': ?vmNics == null ? null : pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(vmNics!, (value) => value.toMap()),
+      'vmNics': ?pulumi.Input.mapOptionalInputValue<List<VMNicDetailsResponse>, List<Map<String, dynamic>>>(vmNics, (value) => pulumi.Input.encodeList<VMNicDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'vmProtectionState': ?vmProtectionState,
       'vmProtectionStateDescription': ?vmProtectionStateDescription,
     };
@@ -228,47 +228,47 @@ class InMageReplicationDetailsResponse {
 
   factory InMageReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageReplicationDetailsResponse(
-      activeSiteType: map['activeSiteType'] == null ? null : map['activeSiteType'] as String,
-      agentDetails: map['agentDetails'] == null ? null : InMageAgentDetailsResponse.fromMap((map['agentDetails'] as Map).cast<String, dynamic>()),
-      azureStorageAccountId: map['azureStorageAccountId'] == null ? null : map['azureStorageAccountId'] as String,
-      compressedDataRateInMB: map['compressedDataRateInMB'] == null ? null : map['compressedDataRateInMB'] as double,
-      consistencyPoints: map['consistencyPoints'] == null ? null : (map['consistencyPoints'] as Map).cast<String, String>(),
-      datastores: map['datastores'] == null ? null : (map['datastores'] as List).cast<String>(),
-      discoveryType: map['discoveryType'] == null ? null : map['discoveryType'] as String,
-      diskResized: map['diskResized'] == null ? null : map['diskResized'] as String,
-      infrastructureVmId: map['infrastructureVmId'] == null ? null : map['infrastructureVmId'] as String,
-      instanceType: map['instanceType'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      isAdditionalStatsAvailable: map['isAdditionalStatsAvailable'] == null ? null : map['isAdditionalStatsAvailable'] as bool,
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : map['lastHeartbeat'] as String,
-      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : map['lastRpoCalculatedTime'] as String,
-      lastUpdateReceivedTime: map['lastUpdateReceivedTime'] == null ? null : map['lastUpdateReceivedTime'] as String,
-      masterTargetId: map['masterTargetId'] == null ? null : map['masterTargetId'] as String,
-      multiVmGroupId: map['multiVmGroupId'] == null ? null : map['multiVmGroupId'] as String,
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : map['multiVmGroupName'] as String,
-      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : map['multiVmSyncStatus'] as String,
-      osDetails: map['osDetails'] == null ? null : OSDiskDetailsResponse.fromMap((map['osDetails'] as Map).cast<String, dynamic>()),
-      osVersion: map['osVersion'] == null ? null : map['osVersion'] as String,
-      processServerId: map['processServerId'] == null ? null : map['processServerId'] as String,
-      protectedDisks: map['protectedDisks'] == null ? null : pulumi.Input.decodeList<InMageProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => InMageProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectionStage: map['protectionStage'] == null ? null : map['protectionStage'] as String,
-      rebootAfterUpdateStatus: map['rebootAfterUpdateStatus'] == null ? null : map['rebootAfterUpdateStatus'] as String,
-      replicaId: map['replicaId'] == null ? null : map['replicaId'] as String,
-      resyncDetails: map['resyncDetails'] == null ? null : InitialReplicationDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>()),
-      retentionWindowEnd: map['retentionWindowEnd'] == null ? null : map['retentionWindowEnd'] as String,
-      retentionWindowStart: map['retentionWindowStart'] == null ? null : map['retentionWindowStart'] as String,
-      rpoInSeconds: map['rpoInSeconds'] == null ? null : map['rpoInSeconds'] as double,
-      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : map['sourceVmCpuCount'] as int,
-      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : map['sourceVmRamSizeInMB'] as int,
-      totalDataTransferred: map['totalDataTransferred'] == null ? null : map['totalDataTransferred'] as double,
-      totalProgressHealth: map['totalProgressHealth'] == null ? null : map['totalProgressHealth'] as String,
-      uncompressedDataRateInMB: map['uncompressedDataRateInMB'] == null ? null : map['uncompressedDataRateInMB'] as double,
-      vCenterInfrastructureId: map['vCenterInfrastructureId'] == null ? null : map['vCenterInfrastructureId'] as String,
-      validationErrors: map['validationErrors'] == null ? null : pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmId: map['vmId'] == null ? null : map['vmId'] as String,
-      vmNics: map['vmNics'] == null ? null : pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vmProtectionState: map['vmProtectionState'] == null ? null : map['vmProtectionState'] as String,
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : map['vmProtectionStateDescription'] as String,
+      activeSiteType: map['activeSiteType'] == null ? null : (map['activeSiteType'] as String).input(),
+      agentDetails: map['agentDetails'] == null ? null : (InMageAgentDetailsResponse.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())).input(),
+      azureStorageAccountId: map['azureStorageAccountId'] == null ? null : (map['azureStorageAccountId'] as String).input(),
+      compressedDataRateInMB: map['compressedDataRateInMB'] == null ? null : (map['compressedDataRateInMB'] as double).input(),
+      consistencyPoints: map['consistencyPoints'] == null ? null : ((map['consistencyPoints'] as Map).cast<String, String>()).input(),
+      datastores: map['datastores'] == null ? null : ((map['datastores'] as List).cast<String>()).input(),
+      discoveryType: map['discoveryType'] == null ? null : (map['discoveryType'] as String).input(),
+      diskResized: map['diskResized'] == null ? null : (map['diskResized'] as String).input(),
+      infrastructureVmId: map['infrastructureVmId'] == null ? null : (map['infrastructureVmId'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      isAdditionalStatsAvailable: map['isAdditionalStatsAvailable'] == null ? null : (map['isAdditionalStatsAvailable'] as bool).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
+      lastRpoCalculatedTime: map['lastRpoCalculatedTime'] == null ? null : (map['lastRpoCalculatedTime'] as String).input(),
+      lastUpdateReceivedTime: map['lastUpdateReceivedTime'] == null ? null : (map['lastUpdateReceivedTime'] as String).input(),
+      masterTargetId: map['masterTargetId'] == null ? null : (map['masterTargetId'] as String).input(),
+      multiVmGroupId: map['multiVmGroupId'] == null ? null : (map['multiVmGroupId'] as String).input(),
+      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName'] as String).input(),
+      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : (map['multiVmSyncStatus'] as String).input(),
+      osDetails: map['osDetails'] == null ? null : (OSDiskDetailsResponse.fromMap((map['osDetails'] as Map).cast<String, dynamic>())).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      processServerId: map['processServerId'] == null ? null : (map['processServerId'] as String).input(),
+      protectedDisks: map['protectedDisks'] == null ? null : (pulumi.Input.decodeList<InMageProtectedDiskDetailsResponse>(map['protectedDisks'], (value) => InMageProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectionStage: map['protectionStage'] == null ? null : (map['protectionStage'] as String).input(),
+      rebootAfterUpdateStatus: map['rebootAfterUpdateStatus'] == null ? null : (map['rebootAfterUpdateStatus'] as String).input(),
+      replicaId: map['replicaId'] == null ? null : (map['replicaId'] as String).input(),
+      resyncDetails: map['resyncDetails'] == null ? null : (InitialReplicationDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>())).input(),
+      retentionWindowEnd: map['retentionWindowEnd'] == null ? null : (map['retentionWindowEnd'] as String).input(),
+      retentionWindowStart: map['retentionWindowStart'] == null ? null : (map['retentionWindowStart'] as String).input(),
+      rpoInSeconds: map['rpoInSeconds'] == null ? null : (map['rpoInSeconds'] as double).input(),
+      sourceVmCpuCount: map['sourceVmCpuCount'] == null ? null : (map['sourceVmCpuCount'] as int).input(),
+      sourceVmRamSizeInMB: map['sourceVmRamSizeInMB'] == null ? null : (map['sourceVmRamSizeInMB'] as int).input(),
+      totalDataTransferred: map['totalDataTransferred'] == null ? null : (map['totalDataTransferred'] as double).input(),
+      totalProgressHealth: map['totalProgressHealth'] == null ? null : (map['totalProgressHealth'] as String).input(),
+      uncompressedDataRateInMB: map['uncompressedDataRateInMB'] == null ? null : (map['uncompressedDataRateInMB'] as double).input(),
+      vCenterInfrastructureId: map['vCenterInfrastructureId'] == null ? null : (map['vCenterInfrastructureId'] as String).input(),
+      validationErrors: map['validationErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['validationErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
+      vmNics: map['vmNics'] == null ? null : (pulumi.Input.decodeList<VMNicDetailsResponse>(map['vmNics'], (value) => VMNicDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
     );
   }
 }

@@ -31,17 +31,12 @@ class MulticastDomainGroupArgs {
   /// [multicastDomainGroupId] A unique name for the multicast domain group.
   /// [project] The ID of the project in which the resource belongs.
   MulticastDomainGroupArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> multicastDomainGroupId,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      multicastDomainGroupId = pulumi.Input.asInput<String>(multicastDomainGroupId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.labels,
+    required this.location,
+    required this.multicastDomainGroupId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class MulticastDomainGroupArgs {
 
   factory MulticastDomainGroupArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      multicastDomainGroupId: pulumi.Output.create<String>(map['multicastDomainGroupId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      multicastDomainGroupId: (map['multicastDomainGroupId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

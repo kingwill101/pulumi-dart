@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppAuthorizationCredentialOauth2Credential {
   /// The client ID of the client application.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The client secret of the client application.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// Creates a new [AppAuthorizationCredentialOauth2Credential].
   /// [clientId] The client ID of the client application.
@@ -24,8 +25,8 @@ class AppAuthorizationCredentialOauth2Credential {
 
   factory AppAuthorizationCredentialOauth2Credential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredentialOauth2Credential(
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
     );
   }
 }

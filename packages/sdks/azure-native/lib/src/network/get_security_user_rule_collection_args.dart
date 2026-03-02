@@ -22,15 +22,11 @@ class GetSecurityUserRuleCollectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
   GetSecurityUserRuleCollectionArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionName = pulumi.Input.asInput<String>(ruleCollectionName);
+    required this.configurationName,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+    required this.ruleCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSecurityUserRuleCollectionArgs {
 
   factory GetSecurityUserRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityUserRuleCollectionArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionName: pulumi.Output.create<String>(map['ruleCollectionName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
     );
   }
 }

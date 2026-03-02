@@ -50,29 +50,18 @@ class DatabaseState {
   /// [state] An explanation of the status of the database.
   /// [versionRetentionPeriod] The retention period for the database. The retention period must be between 1 hour
   DatabaseState({
-    pulumi.Output<String>? databaseDialect,
-    pulumi.Output<List<String>>? ddls,
-    pulumi.Output<String>? defaultTimeZone,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<bool>? enableDropProtection,
-    pulumi.Output<DatabaseEncryptionConfig>? encryptionConfig,
-    pulumi.Output<String>? instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? versionRetentionPeriod,
-  }) :
-      databaseDialect = pulumi.Input.asOptionalInput<String>(databaseDialect),
-      ddls = pulumi.Input.asOptionalInput<List<String>>(ddls),
-      defaultTimeZone = pulumi.Input.asOptionalInput<String>(defaultTimeZone),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      enableDropProtection = pulumi.Input.asOptionalInput<bool>(enableDropProtection),
-      encryptionConfig = pulumi.Input.asOptionalInput<DatabaseEncryptionConfig>(encryptionConfig),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      versionRetentionPeriod = pulumi.Input.asOptionalInput<String>(versionRetentionPeriod);
+    this.databaseDialect,
+    this.ddls,
+    this.defaultTimeZone,
+    this.deletionProtection,
+    this.enableDropProtection,
+    this.encryptionConfig,
+    this.instance,
+    this.name,
+    this.project,
+    this.state,
+    this.versionRetentionPeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      databaseDialect: map['databaseDialect'] == null ? null : pulumi.Output.create<String>(map['databaseDialect'] as String),
-      ddls: map['ddls'] == null ? null : pulumi.Output.create<List<String>>((map['ddls'] as List).cast<String>()),
-      defaultTimeZone: map['defaultTimeZone'] == null ? null : pulumi.Output.create<String>(map['defaultTimeZone'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      enableDropProtection: map['enableDropProtection'] == null ? null : pulumi.Output.create<bool>(map['enableDropProtection'] as bool),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<DatabaseEncryptionConfig>(DatabaseEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      instance: map['instance'] == null ? null : pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      versionRetentionPeriod: map['versionRetentionPeriod'] == null ? null : pulumi.Output.create<String>(map['versionRetentionPeriod'] as String),
+      databaseDialect: map['databaseDialect'] == null ? null : (map['databaseDialect'] as String).input(),
+      ddls: map['ddls'] == null ? null : ((map['ddls'] as List).cast<String>()).input(),
+      defaultTimeZone: map['defaultTimeZone'] == null ? null : (map['defaultTimeZone'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      enableDropProtection: map['enableDropProtection'] == null ? null : (map['enableDropProtection'] as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (DatabaseEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      versionRetentionPeriod: map['versionRetentionPeriod'] == null ? null : (map['versionRetentionPeriod'] as String).input(),
     );
   }
 }

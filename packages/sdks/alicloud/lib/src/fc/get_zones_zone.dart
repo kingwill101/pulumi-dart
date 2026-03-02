@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZone {
   /// ID of the zone.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone.
@@ -19,7 +20,7 @@ class GetZonesZone {
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

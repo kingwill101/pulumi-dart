@@ -17,11 +17,9 @@ class OrganizationConfigurationArgs {
   /// [autoEnable] Configuration block for auto enabling. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   OrganizationConfigurationArgs({
-    required pulumi.Output<OrganizationConfigurationAutoEnable> autoEnable,
-    pulumi.Output<String>? region,
-  }) :
-      autoEnable = pulumi.Input.asInput<OrganizationConfigurationAutoEnable>(autoEnable),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.autoEnable,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class OrganizationConfigurationArgs {
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: pulumi.Output.create<OrganizationConfigurationAutoEnable>(OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoEnable: (OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

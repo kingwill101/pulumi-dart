@@ -22,19 +22,13 @@ class GetArtifactArgs {
   /// [specId] Required.
   /// [versionId] Required.
   GetArtifactArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> artifactId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> specId,
-    required pulumi.Output<String> versionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      artifactId = pulumi.Input.asInput<String>(artifactId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specId = pulumi.Input.asInput<String>(specId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    required this.apiId,
+    required this.artifactId,
+    required this.location,
+    this.project,
+    required this.specId,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +43,12 @@ class GetArtifactArgs {
 
   factory GetArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetArtifactArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      artifactId: pulumi.Output.create<String>(map['artifactId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      specId: pulumi.Output.create<String>(map['specId'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      artifactId: (map['artifactId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      specId: (map['specId'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

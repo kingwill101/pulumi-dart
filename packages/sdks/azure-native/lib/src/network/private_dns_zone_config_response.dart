@@ -6,11 +6,11 @@ import 'record_set_response.dart';
 /// PrivateDnsZoneConfig resource.
 class PrivateDnsZoneConfigResponse {
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The resource id of the private dns zone.
-  final String? privateDnsZoneId;
+  final pulumi.Input<String>? privateDnsZoneId;
   /// A collection of information regarding a recordSet, holding information to identify private resources.
-  final List<RecordSetResponse> recordSets;
+  final pulumi.Input<List<RecordSetResponse>> recordSets;
 
   /// Creates a new [PrivateDnsZoneConfigResponse].
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -26,15 +26,15 @@ class PrivateDnsZoneConfigResponse {
     return <String, dynamic>{
       'name': ?name,
       'privateDnsZoneId': ?privateDnsZoneId,
-      'recordSets': pulumi.Input.encodeList<RecordSetResponse, Map<String, dynamic>>(recordSets, (value) => value.toMap()),
+      'recordSets': pulumi.Input.mapInputValue<List<RecordSetResponse>, List<Map<String, dynamic>>>(recordSets, (value) => pulumi.Input.encodeList<RecordSetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PrivateDnsZoneConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneConfigResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : map['privateDnsZoneId'] as String,
-      recordSets: pulumi.Input.decodeList<RecordSetResponse>(map['recordSets'], (value) => RecordSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId'] as String).input(),
+      recordSets: (pulumi.Input.decodeList<RecordSetResponse>(map['recordSets'], (value) => RecordSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

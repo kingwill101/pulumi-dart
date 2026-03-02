@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'money_response.dart';
 
 class CommitmentResourceStatusCancellationInformationResponse {
   /// An optional amount of CUDs canceled so far in the last 365 days.
-  final MoneyResponse canceledCommitment;
+  final pulumi.Input<MoneyResponse> canceledCommitment;
   /// An optional last update time of canceled_commitment. RFC3339 text format.
-  final String canceledCommitmentLastUpdatedTimestamp;
+  final pulumi.Input<String> canceledCommitmentLastUpdatedTimestamp;
   /// An optional,the cancellation cap for how much commitments can be canceled in a rolling 365 per billing account.
-  final MoneyResponse cancellationCap;
+  final pulumi.Input<MoneyResponse> cancellationCap;
   /// An optional, cancellation fee.
-  final MoneyResponse cancellationFee;
+  final pulumi.Input<MoneyResponse> cancellationFee;
   /// An optional, cancellation fee expiration time. RFC3339 text format.
-  final String cancellationFeeExpirationTimestamp;
+  final pulumi.Input<String> cancellationFeeExpirationTimestamp;
 
   /// Creates a new [CommitmentResourceStatusCancellationInformationResponse].
   /// [canceledCommitment] An optional amount of CUDs canceled so far in the last 365 days.
@@ -30,21 +31,21 @@ class CommitmentResourceStatusCancellationInformationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canceledCommitment': canceledCommitment.toMap(),
+      'canceledCommitment': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(canceledCommitment, (value) => value.toMap()),
       'canceledCommitmentLastUpdatedTimestamp': canceledCommitmentLastUpdatedTimestamp,
-      'cancellationCap': cancellationCap.toMap(),
-      'cancellationFee': cancellationFee.toMap(),
+      'cancellationCap': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(cancellationCap, (value) => value.toMap()),
+      'cancellationFee': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(cancellationFee, (value) => value.toMap()),
       'cancellationFeeExpirationTimestamp': cancellationFeeExpirationTimestamp,
     };
   }
 
   factory CommitmentResourceStatusCancellationInformationResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentResourceStatusCancellationInformationResponse(
-      canceledCommitment: MoneyResponse.fromMap((map['canceledCommitment'] as Map).cast<String, dynamic>()),
-      canceledCommitmentLastUpdatedTimestamp: map['canceledCommitmentLastUpdatedTimestamp'] as String,
-      cancellationCap: MoneyResponse.fromMap((map['cancellationCap'] as Map).cast<String, dynamic>()),
-      cancellationFee: MoneyResponse.fromMap((map['cancellationFee'] as Map).cast<String, dynamic>()),
-      cancellationFeeExpirationTimestamp: map['cancellationFeeExpirationTimestamp'] as String,
+      canceledCommitment: (MoneyResponse.fromMap((map['canceledCommitment'] as Map).cast<String, dynamic>())).input(),
+      canceledCommitmentLastUpdatedTimestamp: (map['canceledCommitmentLastUpdatedTimestamp'] as String).input(),
+      cancellationCap: (MoneyResponse.fromMap((map['cancellationCap'] as Map).cast<String, dynamic>())).input(),
+      cancellationFee: (MoneyResponse.fromMap((map['cancellationFee'] as Map).cast<String, dynamic>())).input(),
+      cancellationFeeExpirationTimestamp: (map['cancellationFeeExpirationTimestamp'] as String).input(),
     );
   }
 }

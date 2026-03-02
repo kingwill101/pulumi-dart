@@ -16,13 +16,10 @@ class InvitationAccepterState {
   /// [invitationId] The unique identifier for the invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InvitationAccepterState({
-    pulumi.Output<String>? administratorAccountId,
-    pulumi.Output<String>? invitationId,
-    pulumi.Output<String>? region,
-  }) :
-      administratorAccountId = pulumi.Input.asOptionalInput<String>(administratorAccountId),
-      invitationId = pulumi.Input.asOptionalInput<String>(invitationId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.administratorAccountId,
+    this.invitationId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InvitationAccepterState {
 
   factory InvitationAccepterState.fromMap(Map<String, dynamic> map) {
     return InvitationAccepterState(
-      administratorAccountId: map['administratorAccountId'] == null ? null : pulumi.Output.create<String>(map['administratorAccountId'] as String),
-      invitationId: map['invitationId'] == null ? null : pulumi.Output.create<String>(map['invitationId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      administratorAccountId: map['administratorAccountId'] == null ? null : (map['administratorAccountId'] as String).input(),
+      invitationId: map['invitationId'] == null ? null : (map['invitationId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

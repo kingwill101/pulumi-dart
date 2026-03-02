@@ -7,15 +7,15 @@ import 'azure_firewall_nat_rule.dart';
 /// NAT rule collection resource.
 class AzureFirewallNatRuleCollection {
   /// The action type of a NAT rule collection.
-  final AzureFirewallNatRCAction? action;
+  final pulumi.Input<AzureFirewallNatRCAction>? action;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Priority of the NAT rule collection resource.
-  final int? priority;
+  final pulumi.Input<int>? priority;
   /// Collection of rules used by a NAT rule collection.
-  final List<AzureFirewallNatRule>? rules;
+  final pulumi.Input<List<AzureFirewallNatRule>>? rules;
 
   /// Creates a new [AzureFirewallNatRuleCollection].
   /// [action] The action type of a NAT rule collection.
@@ -33,21 +33,21 @@ class AzureFirewallNatRuleCollection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?action == null ? null : action!.toMap(),
+      'action': ?pulumi.Input.mapOptionalInputValue<AzureFirewallNatRCAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'id': ?id,
       'name': ?name,
       'priority': ?priority,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<AzureFirewallNatRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AzureFirewallNatRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AzureFirewallNatRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AzureFirewallNatRuleCollection.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRuleCollection(
-      action: map['action'] == null ? null : AzureFirewallNatRCAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<AzureFirewallNatRule>(map['rules'], (value) => AzureFirewallNatRule.fromMap((value as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (AzureFirewallNatRCAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AzureFirewallNatRule>(map['rules'], (value) => AzureFirewallNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

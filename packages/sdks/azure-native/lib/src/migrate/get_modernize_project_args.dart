@@ -19,13 +19,10 @@ class GetModernizeProjectArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
   GetModernizeProjectArgs({
-    required pulumi.Output<String> modernizeProjectName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      modernizeProjectName = pulumi.Input.asInput<String>(modernizeProjectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    required this.modernizeProjectName,
+    required this.resourceGroupName,
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetModernizeProjectArgs {
 
   factory GetModernizeProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetModernizeProjectArgs(
-      modernizeProjectName: pulumi.Output.create<String>(map['modernizeProjectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

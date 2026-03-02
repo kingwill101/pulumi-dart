@@ -7,9 +7,9 @@ import 'traffic_target.dart';
 /// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
 class ServiceSpec {
   /// Holds the latest specification for the Revision to be stamped out.
-  final RevisionTemplate? template;
+  final pulumi.Input<RevisionTemplate>? template;
   /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
-  final List<TrafficTarget>? traffic;
+  final pulumi.Input<List<TrafficTarget>>? traffic;
 
   /// Creates a new [ServiceSpec].
   /// [template] Holds the latest specification for the Revision to be stamped out.
@@ -21,15 +21,15 @@ class ServiceSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'template': ?template == null ? null : template!.toMap(),
-      'traffic': ?traffic == null ? null : pulumi.Input.encodeList<TrafficTarget, Map<String, dynamic>>(traffic!, (value) => value.toMap()),
+      'template': ?pulumi.Input.mapOptionalInputValue<RevisionTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'traffic': ?pulumi.Input.mapOptionalInputValue<List<TrafficTarget>, List<Map<String, dynamic>>>(traffic, (value) => pulumi.Input.encodeList<TrafficTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ServiceSpec.fromMap(Map<String, dynamic> map) {
     return ServiceSpec(
-      template: map['template'] == null ? null : RevisionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>()),
-      traffic: map['traffic'] == null ? null : pulumi.Input.decodeList<TrafficTarget>(map['traffic'], (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>())),
+      template: map['template'] == null ? null : (RevisionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficTarget>(map['traffic'], (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

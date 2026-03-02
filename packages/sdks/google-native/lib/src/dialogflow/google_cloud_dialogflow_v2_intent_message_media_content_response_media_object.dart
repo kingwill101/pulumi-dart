@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dialogflow_v2_intent_message_image.dart';
 
 /// Response media object for media content card.
 class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   /// Url where the media is stored.
-  final String contentUrl;
+  final pulumi.Input<String> contentUrl;
   /// Optional. Description of media card.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Optional. Icon to display above media content.
-  final GoogleCloudDialogflowV2IntentMessageImage? icon;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? icon;
   /// Optional. Image to display above media content.
-  final GoogleCloudDialogflowV2IntentMessageImage? largeImage;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? largeImage;
   /// Name of media card.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject].
   /// [contentUrl] Url where the media is stored.
@@ -33,19 +34,19 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
     return <String, dynamic>{
       'contentUrl': contentUrl,
       'description': ?description,
-      'icon': ?icon == null ? null : icon!.toMap(),
-      'largeImage': ?largeImage == null ? null : largeImage!.toMap(),
+      'icon': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageImage, Map<String, dynamic>>(icon, (value) => value.toMap()),
+      'largeImage': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageImage, Map<String, dynamic>>(largeImage, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
-      contentUrl: map['contentUrl'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      icon: map['icon'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['icon'] as Map).cast<String, dynamic>()),
-      largeImage: map['largeImage'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['largeImage'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      contentUrl: (map['contentUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      icon: map['icon'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
+      largeImage: map['largeImage'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['largeImage'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

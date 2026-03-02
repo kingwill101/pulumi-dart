@@ -68,35 +68,21 @@ class JobArgs {
   /// [sparkConfig] The config of the Spark job.
   /// [sparksqlConfig] The config of SparkSql job
   JobArgs({
-    pulumi.Output<bool>? forceDelete,
-    pulumi.Output<JobHadoopConfig>? hadoopConfig,
-    pulumi.Output<JobHiveConfig>? hiveConfig,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<JobPigConfig>? pigConfig,
-    required pulumi.Output<JobPlacement> placement,
-    pulumi.Output<JobPrestoConfig>? prestoConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<JobPysparkConfig>? pysparkConfig,
-    pulumi.Output<JobReference>? reference,
-    pulumi.Output<String>? region,
-    pulumi.Output<JobScheduling>? scheduling,
-    pulumi.Output<JobSparkConfig>? sparkConfig,
-    pulumi.Output<JobSparksqlConfig>? sparksqlConfig,
-  }) :
-      forceDelete = pulumi.Input.asOptionalInput<bool>(forceDelete),
-      hadoopConfig = pulumi.Input.asOptionalInput<JobHadoopConfig>(hadoopConfig),
-      hiveConfig = pulumi.Input.asOptionalInput<JobHiveConfig>(hiveConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      pigConfig = pulumi.Input.asOptionalInput<JobPigConfig>(pigConfig),
-      placement = pulumi.Input.asInput<JobPlacement>(placement),
-      prestoConfig = pulumi.Input.asOptionalInput<JobPrestoConfig>(prestoConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pysparkConfig = pulumi.Input.asOptionalInput<JobPysparkConfig>(pysparkConfig),
-      reference = pulumi.Input.asOptionalInput<JobReference>(reference),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduling = pulumi.Input.asOptionalInput<JobScheduling>(scheduling),
-      sparkConfig = pulumi.Input.asOptionalInput<JobSparkConfig>(sparkConfig),
-      sparksqlConfig = pulumi.Input.asOptionalInput<JobSparksqlConfig>(sparksqlConfig);
+    this.forceDelete,
+    this.hadoopConfig,
+    this.hiveConfig,
+    this.labels,
+    this.pigConfig,
+    required this.placement,
+    this.prestoConfig,
+    this.project,
+    this.pysparkConfig,
+    this.reference,
+    this.region,
+    this.scheduling,
+    this.sparkConfig,
+    this.sparksqlConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -119,20 +105,20 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      forceDelete: map['forceDelete'] == null ? null : pulumi.Output.create<bool>(map['forceDelete'] as bool),
-      hadoopConfig: map['hadoopConfig'] == null ? null : pulumi.Output.create<JobHadoopConfig>(JobHadoopConfig.fromMap((map['hadoopConfig'] as Map).cast<String, dynamic>())),
-      hiveConfig: map['hiveConfig'] == null ? null : pulumi.Output.create<JobHiveConfig>(JobHiveConfig.fromMap((map['hiveConfig'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      pigConfig: map['pigConfig'] == null ? null : pulumi.Output.create<JobPigConfig>(JobPigConfig.fromMap((map['pigConfig'] as Map).cast<String, dynamic>())),
-      placement: pulumi.Output.create<JobPlacement>(JobPlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())),
-      prestoConfig: map['prestoConfig'] == null ? null : pulumi.Output.create<JobPrestoConfig>(JobPrestoConfig.fromMap((map['prestoConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pysparkConfig: map['pysparkConfig'] == null ? null : pulumi.Output.create<JobPysparkConfig>(JobPysparkConfig.fromMap((map['pysparkConfig'] as Map).cast<String, dynamic>())),
-      reference: map['reference'] == null ? null : pulumi.Output.create<JobReference>(JobReference.fromMap((map['reference'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduling: map['scheduling'] == null ? null : pulumi.Output.create<JobScheduling>(JobScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())),
-      sparkConfig: map['sparkConfig'] == null ? null : pulumi.Output.create<JobSparkConfig>(JobSparkConfig.fromMap((map['sparkConfig'] as Map).cast<String, dynamic>())),
-      sparksqlConfig: map['sparksqlConfig'] == null ? null : pulumi.Output.create<JobSparksqlConfig>(JobSparksqlConfig.fromMap((map['sparksqlConfig'] as Map).cast<String, dynamic>())),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      hadoopConfig: map['hadoopConfig'] == null ? null : (JobHadoopConfig.fromMap((map['hadoopConfig'] as Map).cast<String, dynamic>())).input(),
+      hiveConfig: map['hiveConfig'] == null ? null : (JobHiveConfig.fromMap((map['hiveConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      pigConfig: map['pigConfig'] == null ? null : (JobPigConfig.fromMap((map['pigConfig'] as Map).cast<String, dynamic>())).input(),
+      placement: (JobPlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
+      prestoConfig: map['prestoConfig'] == null ? null : (JobPrestoConfig.fromMap((map['prestoConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pysparkConfig: map['pysparkConfig'] == null ? null : (JobPysparkConfig.fromMap((map['pysparkConfig'] as Map).cast<String, dynamic>())).input(),
+      reference: map['reference'] == null ? null : (JobReference.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduling: map['scheduling'] == null ? null : (JobScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      sparkConfig: map['sparkConfig'] == null ? null : (JobSparkConfig.fromMap((map['sparkConfig'] as Map).cast<String, dynamic>())).input(),
+      sparksqlConfig: map['sparksqlConfig'] == null ? null : (JobSparksqlConfig.fromMap((map['sparksqlConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

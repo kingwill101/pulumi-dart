@@ -5,7 +5,7 @@ import 'domain_io_thread_ids_io_thread.dart';
 
 class DomainIoThreadIDs {
   /// Defines the individual I/O threads associated with the domain.
-  final List<DomainIoThreadIDsIoThread>? ioThreads;
+  final pulumi.Input<List<DomainIoThreadIDsIoThread>>? ioThreads;
 
   /// Creates a new [DomainIoThreadIDs].
   /// [ioThreads] Defines the individual I/O threads associated with the domain.
@@ -15,13 +15,13 @@ class DomainIoThreadIDs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ioThreads': ?ioThreads == null ? null : pulumi.Input.encodeList<DomainIoThreadIDsIoThread, Map<String, dynamic>>(ioThreads!, (value) => value.toMap()),
+      'ioThreads': ?pulumi.Input.mapOptionalInputValue<List<DomainIoThreadIDsIoThread>, List<Map<String, dynamic>>>(ioThreads, (value) => pulumi.Input.encodeList<DomainIoThreadIDsIoThread, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainIoThreadIDs.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDs(
-      ioThreads: map['ioThreads'] == null ? null : pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(map['ioThreads'], (value) => DomainIoThreadIDsIoThread.fromMap((value as Map).cast<String, dynamic>())),
+      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(map['ioThreads'], (value) => DomainIoThreadIDsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

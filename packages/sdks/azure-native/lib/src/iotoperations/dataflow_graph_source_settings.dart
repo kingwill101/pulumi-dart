@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowGraph source node settings.
 class DataflowGraphSourceSettings {
   /// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
-  final String? assetRef;
+  final pulumi.Input<String>? assetRef;
   /// List of data sources.
-  final List<String> dataSources;
+  final pulumi.Input<List<String>> dataSources;
   /// The endpoint reference for the source.
-  final String endpointRef;
+  final pulumi.Input<String> endpointRef;
 
   /// Creates a new [DataflowGraphSourceSettings].
   /// [assetRef] Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
@@ -30,9 +31,9 @@ class DataflowGraphSourceSettings {
 
   factory DataflowGraphSourceSettings.fromMap(Map<String, dynamic> map) {
     return DataflowGraphSourceSettings(
-      assetRef: map['assetRef'] == null ? null : map['assetRef'] as String,
-      dataSources: (map['dataSources'] as List).cast<String>(),
-      endpointRef: map['endpointRef'] as String,
+      assetRef: map['assetRef'] == null ? null : (map['assetRef'] as String).input(),
+      dataSources: ((map['dataSources'] as List).cast<String>()).input(),
+      endpointRef: (map['endpointRef'] as String).input(),
     );
   }
 }

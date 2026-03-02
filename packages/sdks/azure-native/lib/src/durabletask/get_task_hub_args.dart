@@ -19,13 +19,10 @@ class GetTaskHubArgs {
   /// [schedulerName] The name of the Scheduler
   /// [taskHubName] The name of the TaskHub
   GetTaskHubArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schedulerName,
-    required pulumi.Output<String> taskHubName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schedulerName = pulumi.Input.asInput<String>(schedulerName),
-      taskHubName = pulumi.Input.asInput<String>(taskHubName);
+    required this.resourceGroupName,
+    required this.schedulerName,
+    required this.taskHubName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetTaskHubArgs {
 
   factory GetTaskHubArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskHubArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schedulerName: pulumi.Output.create<String>(map['schedulerName'] as String),
-      taskHubName: pulumi.Output.create<String>(map['taskHubName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schedulerName: (map['schedulerName'] as String).input(),
+      taskHubName: (map['taskHubName'] as String).input(),
     );
   }
 }

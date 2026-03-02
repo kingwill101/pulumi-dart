@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes properties of an component as related to the standard
 class StandardComponentPropertiesResponse {
   /// Component Key matching componentMetadata
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [StandardComponentPropertiesResponse].
   /// [key] Component Key matching componentMetadata
@@ -20,7 +21,7 @@ class StandardComponentPropertiesResponse {
 
   factory StandardComponentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StandardComponentPropertiesResponse(
-      key: map['key'] == null ? null : map['key'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

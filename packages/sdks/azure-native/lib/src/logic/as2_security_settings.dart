@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The AS2 agreement security settings.
 class AS2SecuritySettings {
   /// The value indicating whether to enable NRR for inbound decoded messages.
-  final bool enableNRRForInboundDecodedMessages;
+  final pulumi.Input<bool> enableNRRForInboundDecodedMessages;
   /// The value indicating whether to enable NRR for inbound encoded messages.
-  final bool enableNRRForInboundEncodedMessages;
+  final pulumi.Input<bool> enableNRRForInboundEncodedMessages;
   /// The value indicating whether to enable NRR for inbound MDN.
-  final bool enableNRRForInboundMDN;
+  final pulumi.Input<bool> enableNRRForInboundMDN;
   /// The value indicating whether to enable NRR for outbound decoded messages.
-  final bool enableNRRForOutboundDecodedMessages;
+  final pulumi.Input<bool> enableNRRForOutboundDecodedMessages;
   /// The value indicating whether to enable NRR for outbound encoded messages.
-  final bool enableNRRForOutboundEncodedMessages;
+  final pulumi.Input<bool> enableNRRForOutboundEncodedMessages;
   /// The value indicating whether to enable NRR for outbound MDN.
-  final bool enableNRRForOutboundMDN;
+  final pulumi.Input<bool> enableNRRForOutboundMDN;
   /// The name of the encryption certificate.
-  final String? encryptionCertificateName;
+  final pulumi.Input<String>? encryptionCertificateName;
   /// The value indicating whether to send or request a MDN.
-  final bool overrideGroupSigningCertificate;
+  final pulumi.Input<bool> overrideGroupSigningCertificate;
   /// The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
-  final String? sha2AlgorithmFormat;
+  final pulumi.Input<String>? sha2AlgorithmFormat;
   /// The name of the signing certificate.
-  final String? signingCertificateName;
+  final pulumi.Input<String>? signingCertificateName;
 
   /// Creates a new [AS2SecuritySettings].
   /// [enableNRRForInboundDecodedMessages] The value indicating whether to enable NRR for inbound decoded messages.
@@ -65,16 +66,16 @@ class AS2SecuritySettings {
 
   factory AS2SecuritySettings.fromMap(Map<String, dynamic> map) {
     return AS2SecuritySettings(
-      enableNRRForInboundDecodedMessages: map['enableNRRForInboundDecodedMessages'] as bool,
-      enableNRRForInboundEncodedMessages: map['enableNRRForInboundEncodedMessages'] as bool,
-      enableNRRForInboundMDN: map['enableNRRForInboundMDN'] as bool,
-      enableNRRForOutboundDecodedMessages: map['enableNRRForOutboundDecodedMessages'] as bool,
-      enableNRRForOutboundEncodedMessages: map['enableNRRForOutboundEncodedMessages'] as bool,
-      enableNRRForOutboundMDN: map['enableNRRForOutboundMDN'] as bool,
-      encryptionCertificateName: map['encryptionCertificateName'] == null ? null : map['encryptionCertificateName'] as String,
-      overrideGroupSigningCertificate: map['overrideGroupSigningCertificate'] as bool,
-      sha2AlgorithmFormat: map['sha2AlgorithmFormat'] == null ? null : map['sha2AlgorithmFormat'] as String,
-      signingCertificateName: map['signingCertificateName'] == null ? null : map['signingCertificateName'] as String,
+      enableNRRForInboundDecodedMessages: (map['enableNRRForInboundDecodedMessages'] as bool).input(),
+      enableNRRForInboundEncodedMessages: (map['enableNRRForInboundEncodedMessages'] as bool).input(),
+      enableNRRForInboundMDN: (map['enableNRRForInboundMDN'] as bool).input(),
+      enableNRRForOutboundDecodedMessages: (map['enableNRRForOutboundDecodedMessages'] as bool).input(),
+      enableNRRForOutboundEncodedMessages: (map['enableNRRForOutboundEncodedMessages'] as bool).input(),
+      enableNRRForOutboundMDN: (map['enableNRRForOutboundMDN'] as bool).input(),
+      encryptionCertificateName: map['encryptionCertificateName'] == null ? null : (map['encryptionCertificateName'] as String).input(),
+      overrideGroupSigningCertificate: (map['overrideGroupSigningCertificate'] as bool).input(),
+      sha2AlgorithmFormat: map['sha2AlgorithmFormat'] == null ? null : (map['sha2AlgorithmFormat'] as String).input(),
+      signingCertificateName: map['signingCertificateName'] == null ? null : (map['signingCertificateName'] as String).input(),
     );
   }
 }

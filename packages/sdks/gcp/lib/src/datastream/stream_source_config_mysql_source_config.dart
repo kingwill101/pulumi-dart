@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_source_config_mysql_source_config_exclude_objects.dart';
 import 'stream_source_config_mysql_source_config_include_objects.dart';
 
 class StreamSourceConfigMysqlSourceConfig {
   /// CDC reader reads from binary logs replication cdc method.
-  final Map<String, dynamic>? binaryLogPosition;
+  final pulumi.Input<Map<String, dynamic>>? binaryLogPosition;
   /// MySQL objects to exclude from the stream.
   /// Structure is documented below.
-  final StreamSourceConfigMysqlSourceConfigExcludeObjects? excludeObjects;
+  final pulumi.Input<StreamSourceConfigMysqlSourceConfigExcludeObjects>? excludeObjects;
   /// CDC reader reads from gtid based replication.
-  final Map<String, dynamic>? gtid;
+  final pulumi.Input<Map<String, dynamic>>? gtid;
   /// MySQL objects to retrieve from the source.
   /// Structure is documented below.
-  final StreamSourceConfigMysqlSourceConfigIncludeObjects? includeObjects;
+  final pulumi.Input<StreamSourceConfigMysqlSourceConfigIncludeObjects>? includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final int? maxConcurrentBackfillTasks;
+  final pulumi.Input<int>? maxConcurrentBackfillTasks;
   /// Maximum number of concurrent CDC tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final int? maxConcurrentCdcTasks;
+  final pulumi.Input<int>? maxConcurrentCdcTasks;
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfig].
   /// [binaryLogPosition] CDC reader reads from binary logs replication cdc method.
@@ -40,9 +41,9 @@ class StreamSourceConfigMysqlSourceConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'binaryLogPosition': ?binaryLogPosition,
-      'excludeObjects': ?excludeObjects == null ? null : excludeObjects!.toMap(),
+      'excludeObjects': ?pulumi.Input.mapOptionalInputValue<StreamSourceConfigMysqlSourceConfigExcludeObjects, Map<String, dynamic>>(excludeObjects, (value) => value.toMap()),
       'gtid': ?gtid,
-      'includeObjects': ?includeObjects == null ? null : includeObjects!.toMap(),
+      'includeObjects': ?pulumi.Input.mapOptionalInputValue<StreamSourceConfigMysqlSourceConfigIncludeObjects, Map<String, dynamic>>(includeObjects, (value) => value.toMap()),
       'maxConcurrentBackfillTasks': ?maxConcurrentBackfillTasks,
       'maxConcurrentCdcTasks': ?maxConcurrentCdcTasks,
     };
@@ -50,12 +51,12 @@ class StreamSourceConfigMysqlSourceConfig {
 
   factory StreamSourceConfigMysqlSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMysqlSourceConfig(
-      binaryLogPosition: map['binaryLogPosition'] == null ? null : (map['binaryLogPosition'] as Map).cast<String, dynamic>(),
-      excludeObjects: map['excludeObjects'] == null ? null : StreamSourceConfigMysqlSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>()),
-      gtid: map['gtid'] == null ? null : (map['gtid'] as Map).cast<String, dynamic>(),
-      includeObjects: map['includeObjects'] == null ? null : StreamSourceConfigMysqlSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>()),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : map['maxConcurrentBackfillTasks'] as int,
-      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : map['maxConcurrentCdcTasks'] as int,
+      binaryLogPosition: map['binaryLogPosition'] == null ? null : ((map['binaryLogPosition'] as Map).cast<String, dynamic>()).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigMysqlSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
+      gtid: map['gtid'] == null ? null : ((map['gtid'] as Map).cast<String, dynamic>()).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigMysqlSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
+      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks'] as int).input(),
     );
   }
 }

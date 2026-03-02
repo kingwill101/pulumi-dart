@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsNetworkInterfacePermissionsPermission {
   /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The ID of the Network Interface Permission.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the network interface.
-  final String networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
   /// The ID of the Network Interface Permissions.
-  final String networkInterfacePermissionId;
+  final pulumi.Input<String> networkInterfacePermissionId;
   /// The permissions of the Network Interface.
-  final String permission;
+  final pulumi.Input<String> permission;
   /// Alibaba Cloud service name.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
   /// The Status of the Network Interface Permissions.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetEcsNetworkInterfacePermissionsPermission].
   /// [accountId] Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -49,13 +50,13 @@ class GetEcsNetworkInterfacePermissionsPermission {
 
   factory GetEcsNetworkInterfacePermissionsPermission.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacePermissionsPermission(
-      accountId: map['accountId'] as String,
-      id: map['id'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      networkInterfacePermissionId: map['networkInterfacePermissionId'] as String,
-      permission: map['permission'] as String,
-      serviceName: map['serviceName'] as String,
-      status: map['status'] as String,
+      accountId: (map['accountId'] as String).input(),
+      id: (map['id'] as String).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      networkInterfacePermissionId: (map['networkInterfacePermissionId'] as String).input(),
+      permission: (map['permission'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -50,35 +50,21 @@ class ReplicationConfigState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetEndpointArn] The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   ReplicationConfigState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<ReplicationConfigComputeConfig>? computeConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? replicationConfigIdentifier,
-    pulumi.Output<String>? replicationSettings,
-    pulumi.Output<String>? replicationType,
-    pulumi.Output<String>? resourceIdentifier,
-    pulumi.Output<String>? sourceEndpointArn,
-    pulumi.Output<bool>? startReplication,
-    pulumi.Output<String>? supplementalSettings,
-    pulumi.Output<String>? tableMappings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? targetEndpointArn,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      computeConfig = pulumi.Input.asOptionalInput<ReplicationConfigComputeConfig>(computeConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationConfigIdentifier = pulumi.Input.asOptionalInput<String>(replicationConfigIdentifier),
-      replicationSettings = pulumi.Input.asOptionalInput<String>(replicationSettings),
-      replicationType = pulumi.Input.asOptionalInput<String>(replicationType),
-      resourceIdentifier = pulumi.Input.asOptionalInput<String>(resourceIdentifier),
-      sourceEndpointArn = pulumi.Input.asOptionalInput<String>(sourceEndpointArn),
-      startReplication = pulumi.Input.asOptionalInput<bool>(startReplication),
-      supplementalSettings = pulumi.Input.asOptionalInput<String>(supplementalSettings),
-      tableMappings = pulumi.Input.asOptionalInput<String>(tableMappings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      targetEndpointArn = pulumi.Input.asOptionalInput<String>(targetEndpointArn);
+    this.arn,
+    this.computeConfig,
+    this.region,
+    this.replicationConfigIdentifier,
+    this.replicationSettings,
+    this.replicationType,
+    this.resourceIdentifier,
+    this.sourceEndpointArn,
+    this.startReplication,
+    this.supplementalSettings,
+    this.tableMappings,
+    this.tags,
+    this.tagsAll,
+    this.targetEndpointArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,20 +87,20 @@ class ReplicationConfigState {
 
   factory ReplicationConfigState.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      computeConfig: map['computeConfig'] == null ? null : pulumi.Output.create<ReplicationConfigComputeConfig>(ReplicationConfigComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replicationConfigIdentifier: map['replicationConfigIdentifier'] == null ? null : pulumi.Output.create<String>(map['replicationConfigIdentifier'] as String),
-      replicationSettings: map['replicationSettings'] == null ? null : pulumi.Output.create<String>(map['replicationSettings'] as String),
-      replicationType: map['replicationType'] == null ? null : pulumi.Output.create<String>(map['replicationType'] as String),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      sourceEndpointArn: map['sourceEndpointArn'] == null ? null : pulumi.Output.create<String>(map['sourceEndpointArn'] as String),
-      startReplication: map['startReplication'] == null ? null : pulumi.Output.create<bool>(map['startReplication'] as bool),
-      supplementalSettings: map['supplementalSettings'] == null ? null : pulumi.Output.create<String>(map['supplementalSettings'] as String),
-      tableMappings: map['tableMappings'] == null ? null : pulumi.Output.create<String>(map['tableMappings'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      targetEndpointArn: map['targetEndpointArn'] == null ? null : pulumi.Output.create<String>(map['targetEndpointArn'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      computeConfig: map['computeConfig'] == null ? null : (ReplicationConfigComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replicationConfigIdentifier: map['replicationConfigIdentifier'] == null ? null : (map['replicationConfigIdentifier'] as String).input(),
+      replicationSettings: map['replicationSettings'] == null ? null : (map['replicationSettings'] as String).input(),
+      replicationType: map['replicationType'] == null ? null : (map['replicationType'] as String).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      sourceEndpointArn: map['sourceEndpointArn'] == null ? null : (map['sourceEndpointArn'] as String).input(),
+      startReplication: map['startReplication'] == null ? null : (map['startReplication'] as bool).input(),
+      supplementalSettings: map['supplementalSettings'] == null ? null : (map['supplementalSettings'] as String).input(),
+      tableMappings: map['tableMappings'] == null ? null : (map['tableMappings'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      targetEndpointArn: map['targetEndpointArn'] == null ? null : (map['targetEndpointArn'] as String).input(),
     );
   }
 }

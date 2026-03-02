@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iptraffic_response.dart';
 
 /// Represents the Reachability Analysis Intent properties.
 class ReachabilityAnalysisIntentPropertiesResponse {
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Destination resource id to verify the reachability path of.
-  final String destinationResourceId;
+  final pulumi.Input<String> destinationResourceId;
   /// IP traffic information.
-  final IPTrafficResponse ipTraffic;
+  final pulumi.Input<IPTrafficResponse> ipTraffic;
   /// Provisioning states of a resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Source resource id to verify the reachability path of.
-  final String sourceResourceId;
+  final pulumi.Input<String> sourceResourceId;
 
   /// Creates a new [ReachabilityAnalysisIntentPropertiesResponse].
   /// [description] Optional.
@@ -32,7 +33,7 @@ class ReachabilityAnalysisIntentPropertiesResponse {
     return <String, dynamic>{
       'description': ?description,
       'destinationResourceId': destinationResourceId,
-      'ipTraffic': ipTraffic.toMap(),
+      'ipTraffic': pulumi.Input.mapInputValue<IPTrafficResponse, Map<String, dynamic>>(ipTraffic, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'sourceResourceId': sourceResourceId,
     };
@@ -40,11 +41,11 @@ class ReachabilityAnalysisIntentPropertiesResponse {
 
   factory ReachabilityAnalysisIntentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisIntentPropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationResourceId: map['destinationResourceId'] as String,
-      ipTraffic: IPTrafficResponse.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      sourceResourceId: map['sourceResourceId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationResourceId: (map['destinationResourceId'] as String).input(),
+      ipTraffic: (IPTrafficResponse.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      sourceResourceId: (map['sourceResourceId'] as String).input(),
     );
   }
 }

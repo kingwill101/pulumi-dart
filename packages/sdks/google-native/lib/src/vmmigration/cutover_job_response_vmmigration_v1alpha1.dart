@@ -10,33 +10,33 @@ import 'target_vmdetails_response.dart';
 /// CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 class CutoverJobResponseVmmigrationV1alpha1 {
   /// Details of the target Persistent Disks in Compute Engine.
-  final ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 computeEngineDisksTargetDetails;
+  final pulumi.Input<ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1> computeEngineDisksTargetDetails;
   /// Details of the target VM in Compute Engine.
-  final ComputeEngineTargetDetailsResponseVmmigrationV1alpha1 computeEngineTargetDetails;
+  final pulumi.Input<ComputeEngineTargetDetailsResponseVmmigrationV1alpha1> computeEngineTargetDetails;
   /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
-  final TargetVMDetailsResponse computeEngineVmDetails;
+  final pulumi.Input<TargetVMDetailsResponse> computeEngineVmDetails;
   /// The time the cutover job was created (as an API call, not when it was actually created in the target).
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The time the cutover job had finished.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Provides details for the errors that led to the Cutover Job's state.
-  final StatusResponseVmmigrationV1alpha1 error;
+  final pulumi.Input<StatusResponseVmmigrationV1alpha1> error;
   /// The name of the cutover job.
-  final String name;
+  final pulumi.Input<String> name;
   /// The current progress in percentage of the cutover job.
-  final int progress;
+  final pulumi.Input<int> progress;
   /// The current progress in percentage of the cutover job.
-  final int progressPercent;
+  final pulumi.Input<int> progressPercent;
   /// State of the cutover job.
-  final String state;
+  final pulumi.Input<String> state;
   /// A message providing possible extra details about the current state.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
   /// The time the state was last updated.
-  final String stateTime;
+  final pulumi.Input<String> stateTime;
   /// The cutover steps list representing its progress.
-  final List<CutoverStepResponseVmmigrationV1alpha1> steps;
+  final pulumi.Input<List<CutoverStepResponseVmmigrationV1alpha1>> steps;
   /// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
-  final TargetVMDetailsResponse targetDetails;
+  final pulumi.Input<TargetVMDetailsResponse> targetDetails;
 
   /// Creates a new [CutoverJobResponseVmmigrationV1alpha1].
   /// [computeEngineDisksTargetDetails] Details of the target Persistent Disks in Compute Engine.
@@ -72,39 +72,39 @@ class CutoverJobResponseVmmigrationV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails.toMap(),
-      'computeEngineTargetDetails': computeEngineTargetDetails.toMap(),
-      'computeEngineVmDetails': computeEngineVmDetails.toMap(),
+      'computeEngineDisksTargetDetails': pulumi.Input.mapInputValue<ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1, Map<String, dynamic>>(computeEngineDisksTargetDetails, (value) => value.toMap()),
+      'computeEngineTargetDetails': pulumi.Input.mapInputValue<ComputeEngineTargetDetailsResponseVmmigrationV1alpha1, Map<String, dynamic>>(computeEngineTargetDetails, (value) => value.toMap()),
+      'computeEngineVmDetails': pulumi.Input.mapInputValue<TargetVMDetailsResponse, Map<String, dynamic>>(computeEngineVmDetails, (value) => value.toMap()),
       'createTime': createTime,
       'endTime': endTime,
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<StatusResponseVmmigrationV1alpha1, Map<String, dynamic>>(error, (value) => value.toMap()),
       'name': name,
       'progress': progress,
       'progressPercent': progressPercent,
       'state': state,
       'stateMessage': stateMessage,
       'stateTime': stateTime,
-      'steps': pulumi.Input.encodeList<CutoverStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(steps, (value) => value.toMap()),
-      'targetDetails': targetDetails.toMap(),
+      'steps': pulumi.Input.mapInputValue<List<CutoverStepResponseVmmigrationV1alpha1>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<CutoverStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetDetails': pulumi.Input.mapInputValue<TargetVMDetailsResponse, Map<String, dynamic>>(targetDetails, (value) => value.toMap()),
     };
   }
 
   factory CutoverJobResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return CutoverJobResponseVmmigrationV1alpha1(
-      computeEngineDisksTargetDetails: ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>()),
-      computeEngineTargetDetails: ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
-      computeEngineVmDetails: TargetVMDetailsResponse.fromMap((map['computeEngineVmDetails'] as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      endTime: map['endTime'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      progress: map['progress'] as int,
-      progressPercent: map['progressPercent'] as int,
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
-      stateTime: map['stateTime'] as String,
-      steps: pulumi.Input.decodeList<CutoverStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CutoverStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      targetDetails: TargetVMDetailsResponse.fromMap((map['targetDetails'] as Map).cast<String, dynamic>()),
+      computeEngineDisksTargetDetails: (ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>())).input(),
+      computeEngineTargetDetails: (ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>())).input(),
+      computeEngineVmDetails: (TargetVMDetailsResponse.fromMap((map['computeEngineVmDetails'] as Map).cast<String, dynamic>())).input(),
+      createTime: (map['createTime'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      error: (StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      progress: (map['progress'] as int).input(),
+      progressPercent: (map['progressPercent'] as int).input(),
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
+      stateTime: (map['stateTime'] as String).input(),
+      steps: (pulumi.Input.decodeList<CutoverStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CutoverStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetDetails: (TargetVMDetailsResponse.fromMap((map['targetDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

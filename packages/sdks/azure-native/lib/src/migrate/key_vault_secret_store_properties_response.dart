@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_identity_properties_response.dart';
 
 class KeyVaultSecretStorePropertiesResponse {
-  final String inputType;
-  final String? keyvaultName;
-  final ManagedIdentityPropertiesResponse? managedIdentityProperties;
-  final String? resourceGroup;
-  final String? secretStoreId;
-  final String? subscriptionId;
-  final String? tenantId;
+  final pulumi.Input<String> inputType;
+  final pulumi.Input<String>? keyvaultName;
+  final pulumi.Input<ManagedIdentityPropertiesResponse>? managedIdentityProperties;
+  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String>? secretStoreId;
+  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [KeyVaultSecretStorePropertiesResponse].
   /// [inputType] Required.
@@ -33,7 +34,7 @@ class KeyVaultSecretStorePropertiesResponse {
     return <String, dynamic>{
       'inputType': inputType,
       'keyvaultName': ?keyvaultName,
-      'managedIdentityProperties': ?managedIdentityProperties == null ? null : managedIdentityProperties!.toMap(),
+      'managedIdentityProperties': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityPropertiesResponse, Map<String, dynamic>>(managedIdentityProperties, (value) => value.toMap()),
       'resourceGroup': ?resourceGroup,
       'secretStoreId': ?secretStoreId,
       'subscriptionId': ?subscriptionId,
@@ -43,13 +44,13 @@ class KeyVaultSecretStorePropertiesResponse {
 
   factory KeyVaultSecretStorePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretStorePropertiesResponse(
-      inputType: map['inputType'] as String,
-      keyvaultName: map['keyvaultName'] == null ? null : map['keyvaultName'] as String,
-      managedIdentityProperties: map['managedIdentityProperties'] == null ? null : ManagedIdentityPropertiesResponse.fromMap((map['managedIdentityProperties'] as Map).cast<String, dynamic>()),
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      secretStoreId: map['secretStoreId'] == null ? null : map['secretStoreId'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      inputType: (map['inputType'] as String).input(),
+      keyvaultName: map['keyvaultName'] == null ? null : (map['keyvaultName'] as String).input(),
+      managedIdentityProperties: map['managedIdentityProperties'] == null ? null : (ManagedIdentityPropertiesResponse.fromMap((map['managedIdentityProperties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -35,21 +35,14 @@ class ParameterArgs {
   /// [type] The data type of the common parameter. Valid values: `String` and `StringList`.
   /// [value] The value of the common parameter. The value must be `1` to `4096` characters in length.
   ParameterArgs({
-    pulumi.Output<String>? constraints,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> parameterName,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> value,
-  }) :
-      constraints = pulumi.Input.asOptionalInput<String>(constraints),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      parameterName = pulumi.Input.asInput<String>(parameterName),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type),
-      value = pulumi.Input.asInput<String>(value);
+    this.constraints,
+    this.description,
+    required this.parameterName,
+    this.resourceGroupId,
+    this.tags,
+    required this.type,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      constraints: map['constraints'] == null ? null : pulumi.Output.create<String>(map['constraints'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      parameterName: pulumi.Output.create<String>(map['parameterName'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      constraints: map['constraints'] == null ? null : (map['constraints'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      parameterName: (map['parameterName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

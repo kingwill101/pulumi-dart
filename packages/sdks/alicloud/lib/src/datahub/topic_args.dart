@@ -38,21 +38,14 @@ class TopicArgs {
   /// [recordType] The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
   /// [shardCount] The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
   TopicArgs({
-    pulumi.Output<String>? comment,
-    pulumi.Output<int>? lifeCycle,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<Map<String, String>>? recordSchema,
-    pulumi.Output<String>? recordType,
-    pulumi.Output<int>? shardCount,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      lifeCycle = pulumi.Input.asOptionalInput<int>(lifeCycle),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      recordSchema = pulumi.Input.asOptionalInput<Map<String, String>>(recordSchema),
-      recordType = pulumi.Input.asOptionalInput<String>(recordType),
-      shardCount = pulumi.Input.asOptionalInput<int>(shardCount);
+    this.comment,
+    this.lifeCycle,
+    this.name,
+    required this.projectName,
+    this.recordSchema,
+    this.recordType,
+    this.shardCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,13 +61,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      lifeCycle: map['lifeCycle'] == null ? null : pulumi.Output.create<int>(map['lifeCycle'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      recordSchema: map['recordSchema'] == null ? null : pulumi.Output.create<Map<String, String>>((map['recordSchema'] as Map).cast<String, String>()),
-      recordType: map['recordType'] == null ? null : pulumi.Output.create<String>(map['recordType'] as String),
-      shardCount: map['shardCount'] == null ? null : pulumi.Output.create<int>(map['shardCount'] as int),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      lifeCycle: map['lifeCycle'] == null ? null : (map['lifeCycle'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      recordSchema: map['recordSchema'] == null ? null : ((map['recordSchema'] as Map).cast<String, String>()).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
     );
   }
 }

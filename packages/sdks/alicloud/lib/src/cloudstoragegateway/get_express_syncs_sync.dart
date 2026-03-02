@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetExpressSyncsSync {
   /// The name of the OSS Bucket.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The prefix of the OSS Bucket.
-  final String bucketPrefix;
+  final pulumi.Input<String> bucketPrefix;
   /// The region of the OSS Bucket.
-  final String bucketRegion;
+  final pulumi.Input<String> bucketRegion;
   /// The description of the Express Sync.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Express Sync.
-  final String expressSyncId;
+  final pulumi.Input<String> expressSyncId;
   /// The name of the Express Sync.
-  final String expressSyncName;
-  final String id;
+  final pulumi.Input<String> expressSyncName;
+  final pulumi.Input<String> id;
   /// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
-  final String mnsTopic;
+  final pulumi.Input<String> mnsTopic;
 
   /// Creates a new [GetExpressSyncsSync].
   /// [bucketName] The name of the OSS Bucket.
@@ -53,14 +54,14 @@ class GetExpressSyncsSync {
 
   factory GetExpressSyncsSync.fromMap(Map<String, dynamic> map) {
     return GetExpressSyncsSync(
-      bucketName: map['bucketName'] as String,
-      bucketPrefix: map['bucketPrefix'] as String,
-      bucketRegion: map['bucketRegion'] as String,
-      description: map['description'] as String,
-      expressSyncId: map['expressSyncId'] as String,
-      expressSyncName: map['expressSyncName'] as String,
-      id: map['id'] as String,
-      mnsTopic: map['mnsTopic'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      bucketPrefix: (map['bucketPrefix'] as String).input(),
+      bucketRegion: (map['bucketRegion'] as String).input(),
+      description: (map['description'] as String).input(),
+      expressSyncId: (map['expressSyncId'] as String).input(),
+      expressSyncName: (map['expressSyncName'] as String).input(),
+      id: (map['id'] as String).input(),
+      mnsTopic: (map['mnsTopic'] as String).input(),
     );
   }
 }

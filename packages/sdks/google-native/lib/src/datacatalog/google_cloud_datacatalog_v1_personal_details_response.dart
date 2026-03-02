@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Entry metadata relevant only to the user and private to them.
 class GoogleCloudDatacatalogV1PersonalDetailsResponse {
   /// Set if the entry is starred; unset otherwise.
-  final String starTime;
+  final pulumi.Input<String> starTime;
   /// True if the entry is starred by the user; false otherwise.
-  final bool starred;
+  final pulumi.Input<bool> starred;
 
   /// Creates a new [GoogleCloudDatacatalogV1PersonalDetailsResponse].
   /// [starTime] Set if the entry is starred; unset otherwise.
@@ -25,8 +26,8 @@ class GoogleCloudDatacatalogV1PersonalDetailsResponse {
 
   factory GoogleCloudDatacatalogV1PersonalDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PersonalDetailsResponse(
-      starTime: map['starTime'] as String,
-      starred: map['starred'] as bool,
+      starTime: (map['starTime'] as String).input(),
+      starred: (map['starred'] as bool).input(),
     );
   }
 }

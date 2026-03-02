@@ -37,25 +37,16 @@ class PrivateConnectionArgs {
   /// [type] Private connection type.
   /// [vmwareEngineNetwork] The relative resource name of Legacy VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}`, `{location}` will be same as specified in private connection resource name and `{vmware_engine_network_id}` will be in the form of `{location}`-default e.g. projects/project/locations/us-central1/vmwareEngineNetworks/us-central1-default.
   PrivateConnectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> privateConnectionId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<PrivateConnectionRoutingMode>? routingMode,
-    required pulumi.Output<String> serviceNetwork,
-    required pulumi.Output<PrivateConnectionType> type,
-    required pulumi.Output<String> vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      routingMode = pulumi.Input.asOptionalInput<PrivateConnectionRoutingMode>(routingMode),
-      serviceNetwork = pulumi.Input.asInput<String>(serviceNetwork),
-      type = pulumi.Input.asInput<PrivateConnectionType>(type),
-      vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
+    this.description,
+    this.location,
+    required this.privateConnectionId,
+    this.project,
+    this.requestId,
+    this.routingMode,
+    required this.serviceNetwork,
+    required this.type,
+    required this.vmwareEngineNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class PrivateConnectionArgs {
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      privateConnectionId: pulumi.Output.create<String>(map['privateConnectionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      routingMode: map['routingMode'] == null ? null : pulumi.Output.create<PrivateConnectionRoutingMode>(PrivateConnectionRoutingMode.fromValue(map['routingMode'] as String)),
-      serviceNetwork: pulumi.Output.create<String>(map['serviceNetwork'] as String),
-      type: pulumi.Output.create<PrivateConnectionType>(PrivateConnectionType.fromValue(map['type'] as String)),
-      vmwareEngineNetwork: pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      privateConnectionId: (map['privateConnectionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      routingMode: map['routingMode'] == null ? null : (PrivateConnectionRoutingMode.fromValue(map['routingMode'] as String)).input(),
+      serviceNetwork: (map['serviceNetwork'] as String).input(),
+      type: (PrivateConnectionType.fromValue(map['type'] as String)).input(),
+      vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }
 }

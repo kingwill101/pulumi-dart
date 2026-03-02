@@ -32,21 +32,14 @@ class PowerShell72ModuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Sets the tags attached to the resource.
   PowerShell72ModuleArgs({
-    required pulumi.Output<String> automationAccountName,
-    required pulumi.Output<ContentLink> contentLink,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? moduleName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
-      contentLink = pulumi.Input.asInput<ContentLink>(contentLink),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      moduleName = pulumi.Input.asOptionalInput<String>(moduleName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.automationAccountName,
+    required this.contentLink,
+    this.location,
+    this.moduleName,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class PowerShell72ModuleArgs {
 
   factory PowerShell72ModuleArgs.fromMap(Map<String, dynamic> map) {
     return PowerShell72ModuleArgs(
-      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
-      contentLink: pulumi.Output.create<ContentLink>(ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      moduleName: map['moduleName'] == null ? null : pulumi.Output.create<String>(map['moduleName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      automationAccountName: (map['automationAccountName'] as String).input(),
+      contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

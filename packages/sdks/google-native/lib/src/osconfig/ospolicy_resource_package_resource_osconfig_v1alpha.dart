@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ospolicy_resource_package_resource_aptosconfig_v1alpha.dart';
 import 'ospolicy_resource_package_resource_deb_osconfig_v1alpha.dart';
 import 'ospolicy_resource_package_resource_desired_state_osconfig_v1alpha.dart';
@@ -12,21 +13,21 @@ import 'ospolicy_resource_package_resource_zypper_osconfig_v1alpha.dart';
 /// A resource that manages a system package.
 class OSPolicyResourcePackageResourceOsconfigV1alpha {
   /// A package managed by Apt.
-  final OSPolicyResourcePackageResourceAPTOsconfigV1alpha? apt;
+  final pulumi.Input<OSPolicyResourcePackageResourceAPTOsconfigV1alpha>? apt;
   /// A deb package file.
-  final OSPolicyResourcePackageResourceDebOsconfigV1alpha? deb;
+  final pulumi.Input<OSPolicyResourcePackageResourceDebOsconfigV1alpha>? deb;
   /// The desired state the agent should maintain for this package.
-  final OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha desiredState;
+  final pulumi.Input<OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha> desiredState;
   /// A package managed by GooGet.
-  final OSPolicyResourcePackageResourceGooGetOsconfigV1alpha? googet;
+  final pulumi.Input<OSPolicyResourcePackageResourceGooGetOsconfigV1alpha>? googet;
   /// An MSI package.
-  final OSPolicyResourcePackageResourceMSIOsconfigV1alpha? msi;
+  final pulumi.Input<OSPolicyResourcePackageResourceMSIOsconfigV1alpha>? msi;
   /// An rpm package file.
-  final OSPolicyResourcePackageResourceRPMOsconfigV1alpha? rpm;
+  final pulumi.Input<OSPolicyResourcePackageResourceRPMOsconfigV1alpha>? rpm;
   /// A package managed by YUM.
-  final OSPolicyResourcePackageResourceYUMOsconfigV1alpha? yum;
+  final pulumi.Input<OSPolicyResourcePackageResourceYUMOsconfigV1alpha>? yum;
   /// A package managed by Zypper.
-  final OSPolicyResourcePackageResourceZypperOsconfigV1alpha? zypper;
+  final pulumi.Input<OSPolicyResourcePackageResourceZypperOsconfigV1alpha>? zypper;
 
   /// Creates a new [OSPolicyResourcePackageResourceOsconfigV1alpha].
   /// [apt] A package managed by Apt.
@@ -50,27 +51,27 @@ class OSPolicyResourcePackageResourceOsconfigV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': ?apt == null ? null : apt!.toMap(),
-      'deb': ?deb == null ? null : deb!.toMap(),
-      'desiredState': desiredState.value,
-      'googet': ?googet == null ? null : googet!.toMap(),
-      'msi': ?msi == null ? null : msi!.toMap(),
-      'rpm': ?rpm == null ? null : rpm!.toMap(),
-      'yum': ?yum == null ? null : yum!.toMap(),
-      'zypper': ?zypper == null ? null : zypper!.toMap(),
+      'apt': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceAPTOsconfigV1alpha, Map<String, dynamic>>(apt, (value) => value.toMap()),
+      'deb': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceDebOsconfigV1alpha, Map<String, dynamic>>(deb, (value) => value.toMap()),
+      'desiredState': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha, String>(desiredState, (value) => value.value),
+      'googet': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceGooGetOsconfigV1alpha, Map<String, dynamic>>(googet, (value) => value.toMap()),
+      'msi': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceMSIOsconfigV1alpha, Map<String, dynamic>>(msi, (value) => value.toMap()),
+      'rpm': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceRPMOsconfigV1alpha, Map<String, dynamic>>(rpm, (value) => value.toMap()),
+      'yum': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceYUMOsconfigV1alpha, Map<String, dynamic>>(yum, (value) => value.toMap()),
+      'zypper': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourcePackageResourceZypperOsconfigV1alpha, Map<String, dynamic>>(zypper, (value) => value.toMap()),
     };
   }
 
   factory OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceOsconfigV1alpha(
-      apt: map['apt'] == null ? null : OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      deb: map['deb'] == null ? null : OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap((map['deb'] as Map).cast<String, dynamic>()),
-      desiredState: OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha.fromValue(map['desiredState'] as String),
-      googet: map['googet'] == null ? null : OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap((map['googet'] as Map).cast<String, dynamic>()),
-      msi: map['msi'] == null ? null : OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap((map['msi'] as Map).cast<String, dynamic>()),
-      rpm: map['rpm'] == null ? null : OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap((map['rpm'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null ? null : OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null ? null : OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null ? null : (OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
+      deb: map['deb'] == null ? null : (OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap((map['deb'] as Map).cast<String, dynamic>())).input(),
+      desiredState: (OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha.fromValue(map['desiredState'] as String)).input(),
+      googet: map['googet'] == null ? null : (OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap((map['googet'] as Map).cast<String, dynamic>())).input(),
+      msi: map['msi'] == null ? null : (OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap((map['msi'] as Map).cast<String, dynamic>())).input(),
+      rpm: map['rpm'] == null ? null : (OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap((map['rpm'] as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Defender for Containers for JFrog Artifactory offering
 class DefenderForContainersJFrogOffering {
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersJFrog'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [DefenderForContainersJFrogOffering].
   /// [offeringType] The type of the security offering.
@@ -21,7 +22,7 @@ class DefenderForContainersJFrogOffering {
 
   factory DefenderForContainersJFrogOffering.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersJFrogOffering(
-      offeringType: map['offeringType'] as String,
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

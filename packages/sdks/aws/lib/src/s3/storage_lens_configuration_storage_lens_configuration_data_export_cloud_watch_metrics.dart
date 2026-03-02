@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics {
   /// Whether CloudWatch publishing for S3 Storage Lens metrics is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics].
   /// [enabled] Whether CloudWatch publishing for S3 Storage Lens metrics is enabled.
@@ -19,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetric
 
   factory StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

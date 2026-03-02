@@ -16,11 +16,9 @@ class GetAzureTrafficCollectorArgs {
   /// [azureTrafficCollectorName] Azure Traffic Collector name
   /// [resourceGroupName] The name of the resource group.
   GetAzureTrafficCollectorArgs({
-    required pulumi.Output<String> azureTrafficCollectorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureTrafficCollectorName = pulumi.Input.asInput<String>(azureTrafficCollectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureTrafficCollectorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAzureTrafficCollectorArgs {
 
   factory GetAzureTrafficCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureTrafficCollectorArgs(
-      azureTrafficCollectorName: pulumi.Output.create<String>(map['azureTrafficCollectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureTrafficCollectorName: (map['azureTrafficCollectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

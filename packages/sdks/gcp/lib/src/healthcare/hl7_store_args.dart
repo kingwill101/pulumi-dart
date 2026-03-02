@@ -54,21 +54,14 @@ class Hl7StoreArgs {
   /// [parserConfig] A nested object resource.
   /// [rejectDuplicateMessage] Determines whether duplicate messages are allowed.
   Hl7StoreArgs({
-    required pulumi.Output<String> dataset,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Hl7StoreNotificationConfig>? notificationConfig,
-    pulumi.Output<List<Hl7StoreNotificationConfigs>>? notificationConfigs,
-    pulumi.Output<Hl7StoreParserConfig>? parserConfig,
-    pulumi.Output<bool>? rejectDuplicateMessage,
-  }) :
-      dataset = pulumi.Input.asInput<String>(dataset),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfig = pulumi.Input.asOptionalInput<Hl7StoreNotificationConfig>(notificationConfig),
-      notificationConfigs = pulumi.Input.asOptionalInput<List<Hl7StoreNotificationConfigs>>(notificationConfigs),
-      parserConfig = pulumi.Input.asOptionalInput<Hl7StoreParserConfig>(parserConfig),
-      rejectDuplicateMessage = pulumi.Input.asOptionalInput<bool>(rejectDuplicateMessage);
+    required this.dataset,
+    this.labels,
+    this.name,
+    this.notificationConfig,
+    this.notificationConfigs,
+    this.parserConfig,
+    this.rejectDuplicateMessage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,13 +77,13 @@ class Hl7StoreArgs {
 
   factory Hl7StoreArgs.fromMap(Map<String, dynamic> map) {
     return Hl7StoreArgs(
-      dataset: pulumi.Output.create<String>(map['dataset'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfig: map['notificationConfig'] == null ? null : pulumi.Output.create<Hl7StoreNotificationConfig>(Hl7StoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())),
-      notificationConfigs: map['notificationConfigs'] == null ? null : pulumi.Output.create<List<Hl7StoreNotificationConfigs>>(pulumi.Input.decodeList<Hl7StoreNotificationConfigs>(map['notificationConfigs'], (value) => Hl7StoreNotificationConfigs.fromMap((value as Map).cast<String, dynamic>()))),
-      parserConfig: map['parserConfig'] == null ? null : pulumi.Output.create<Hl7StoreParserConfig>(Hl7StoreParserConfig.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())),
-      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : pulumi.Output.create<bool>(map['rejectDuplicateMessage'] as bool),
+      dataset: (map['dataset'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (Hl7StoreNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7StoreNotificationConfigs>(map['notificationConfigs'], (value) => Hl7StoreNotificationConfigs.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parserConfig: map['parserConfig'] == null ? null : (Hl7StoreParserConfig.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())).input(),
+      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage'] as bool).input(),
     );
   }
 }

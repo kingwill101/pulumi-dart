@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scope map for schema in azure monitor.
 class ScopeMap {
   /// Scope Map Key.
-  final String from;
+  final pulumi.Input<String> from;
   /// Scope Map Value.
-  final String to;
+  final pulumi.Input<String> to;
 
   /// Creates a new [ScopeMap].
   /// [from] Scope Map Key.
@@ -25,8 +26,8 @@ class ScopeMap {
 
   factory ScopeMap.fromMap(Map<String, dynamic> map) {
     return ScopeMap(
-      from: map['from'] as String,
-      to: map['to'] as String,
+      from: (map['from'] as String).input(),
+      to: (map['to'] as String).input(),
     );
   }
 }

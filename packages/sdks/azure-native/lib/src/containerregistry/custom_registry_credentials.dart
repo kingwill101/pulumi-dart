@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_object.dart';
 
 /// Describes the credentials that will be used to access a custom registry during a run.
@@ -9,12 +10,12 @@ class CustomRegistryCredentials {
   /// the case of a system-assigned identity, the Client ID will be determined by the runner. This
   /// identity may be used to authenticate to key vault to retrieve credentials or it may be the only
   /// source of authentication used for accessing the registry.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The password for logging into the custom registry. The password is a secret
   /// object that allows multiple ways of providing the value for it.
-  final SecretObject? password;
+  final pulumi.Input<SecretObject>? password;
   /// The username for logging into the custom registry.
-  final SecretObject? userName;
+  final pulumi.Input<SecretObject>? userName;
 
   /// Creates a new [CustomRegistryCredentials].
   /// [identity] Indicates the managed identity assigned to the custom credential. If a user-assigned identity
@@ -29,16 +30,16 @@ class CustomRegistryCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'identity': ?identity,
-      'password': ?password == null ? null : password!.toMap(),
-      'userName': ?userName == null ? null : userName!.toMap(),
+      'password': ?pulumi.Input.mapOptionalInputValue<SecretObject, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'userName': ?pulumi.Input.mapOptionalInputValue<SecretObject, Map<String, dynamic>>(userName, (value) => value.toMap()),
     };
   }
 
   factory CustomRegistryCredentials.fromMap(Map<String, dynamic> map) {
     return CustomRegistryCredentials(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      password: map['password'] == null ? null : SecretObject.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      userName: map['userName'] == null ? null : SecretObject.fromMap((map['userName'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      password: map['password'] == null ? null : (SecretObject.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (SecretObject.fromMap((map['userName'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

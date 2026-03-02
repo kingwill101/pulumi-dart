@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
   /// The current value.
-  final int currentValue;
+  final pulumi.Input<int> currentValue;
   /// The name of the trigger condition.
-  final String name;
+  final pulumi.Input<String> name;
   /// The metric type. Associated with monitoring indicators.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric].
   /// [currentValue] The current value.
@@ -29,9 +30,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric 
 
   factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric(
-      currentValue: map['currentValue'] as int,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      currentValue: (map['currentValue'] as int).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

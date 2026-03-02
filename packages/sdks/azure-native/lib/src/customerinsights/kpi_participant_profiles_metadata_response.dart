@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The KPI participant profile metadata.
 class KpiParticipantProfilesMetadataResponse {
   /// Name of the type.
-  final String typeName;
+  final pulumi.Input<String> typeName;
 
   /// Creates a new [KpiParticipantProfilesMetadataResponse].
   /// [typeName] Name of the type.
@@ -20,7 +21,7 @@ class KpiParticipantProfilesMetadataResponse {
 
   factory KpiParticipantProfilesMetadataResponse.fromMap(Map<String, dynamic> map) {
     return KpiParticipantProfilesMetadataResponse(
-      typeName: map['typeName'] as String,
+      typeName: (map['typeName'] as String).input(),
     );
   }
 }

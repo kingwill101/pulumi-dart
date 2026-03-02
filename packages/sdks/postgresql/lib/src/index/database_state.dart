@@ -59,29 +59,18 @@ class DatabaseState {
   /// [tablespaceName] The name of the tablespace that will be
   /// [template] The name of the template from which to create the new database
   DatabaseState({
-    pulumi.Output<bool>? allowConnections,
-    pulumi.Output<bool>? alterObjectOwnership,
-    pulumi.Output<int>? connectionLimit,
-    pulumi.Output<String>? encoding,
-    pulumi.Output<bool>? isTemplate,
-    pulumi.Output<String>? lcCollate,
-    pulumi.Output<String>? lcCtype,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? tablespaceName,
-    pulumi.Output<String>? template,
-  }) :
-      allowConnections = pulumi.Input.asOptionalInput<bool>(allowConnections),
-      alterObjectOwnership = pulumi.Input.asOptionalInput<bool>(alterObjectOwnership),
-      connectionLimit = pulumi.Input.asOptionalInput<int>(connectionLimit),
-      encoding = pulumi.Input.asOptionalInput<String>(encoding),
-      isTemplate = pulumi.Input.asOptionalInput<bool>(isTemplate),
-      lcCollate = pulumi.Input.asOptionalInput<String>(lcCollate),
-      lcCtype = pulumi.Input.asOptionalInput<String>(lcCtype),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      tablespaceName = pulumi.Input.asOptionalInput<String>(tablespaceName),
-      template = pulumi.Input.asOptionalInput<String>(template);
+    this.allowConnections,
+    this.alterObjectOwnership,
+    this.connectionLimit,
+    this.encoding,
+    this.isTemplate,
+    this.lcCollate,
+    this.lcCtype,
+    this.name,
+    this.owner,
+    this.tablespaceName,
+    this.template,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,17 +90,17 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      allowConnections: map['allowConnections'] == null ? null : pulumi.Output.create<bool>(map['allowConnections'] as bool),
-      alterObjectOwnership: map['alterObjectOwnership'] == null ? null : pulumi.Output.create<bool>(map['alterObjectOwnership'] as bool),
-      connectionLimit: map['connectionLimit'] == null ? null : pulumi.Output.create<int>(map['connectionLimit'] as int),
-      encoding: map['encoding'] == null ? null : pulumi.Output.create<String>(map['encoding'] as String),
-      isTemplate: map['isTemplate'] == null ? null : pulumi.Output.create<bool>(map['isTemplate'] as bool),
-      lcCollate: map['lcCollate'] == null ? null : pulumi.Output.create<String>(map['lcCollate'] as String),
-      lcCtype: map['lcCtype'] == null ? null : pulumi.Output.create<String>(map['lcCtype'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      tablespaceName: map['tablespaceName'] == null ? null : pulumi.Output.create<String>(map['tablespaceName'] as String),
-      template: map['template'] == null ? null : pulumi.Output.create<String>(map['template'] as String),
+      allowConnections: map['allowConnections'] == null ? null : (map['allowConnections'] as bool).input(),
+      alterObjectOwnership: map['alterObjectOwnership'] == null ? null : (map['alterObjectOwnership'] as bool).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      isTemplate: map['isTemplate'] == null ? null : (map['isTemplate'] as bool).input(),
+      lcCollate: map['lcCollate'] == null ? null : (map['lcCollate'] as String).input(),
+      lcCtype: map['lcCtype'] == null ? null : (map['lcCtype'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      tablespaceName: map['tablespaceName'] == null ? null : (map['tablespaceName'] as String).input(),
+      template: map['template'] == null ? null : (map['template'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ElasticProfileResponseGuidNamingPolicy {
   /// The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ElasticProfileResponseGuidNamingPolicy].
   /// [prefix] The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
@@ -19,7 +20,7 @@ class ElasticProfileResponseGuidNamingPolicy {
 
   factory ElasticProfileResponseGuidNamingPolicy.fromMap(Map<String, dynamic> map) {
     return ElasticProfileResponseGuidNamingPolicy(
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

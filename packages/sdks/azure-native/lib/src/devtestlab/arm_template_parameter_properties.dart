@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of an Azure Resource Manager template parameter.
 class ArmTemplateParameterProperties {
   /// The name of the template parameter.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of the template parameter.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ArmTemplateParameterProperties].
   /// [name] The name of the template parameter.
@@ -25,8 +26,8 @@ class ArmTemplateParameterProperties {
 
   factory ArmTemplateParameterProperties.fromMap(Map<String, dynamic> map) {
     return ArmTemplateParameterProperties(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

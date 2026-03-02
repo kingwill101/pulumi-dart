@@ -1,52 +1,53 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDbNodesDbNode {
   /// Additional information about the planned maintenance.
-  final String additionalDetails;
-  final String arn;
+  final pulumi.Input<String> additionalDetails;
+  final pulumi.Input<String> arn;
   /// The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
-  final String backupIpId;
-  final String backupVnic2Id;
+  final pulumi.Input<String> backupIpId;
+  final pulumi.Input<String> backupVnic2Id;
   /// The OCID of the backup VNIC for the DB node.
-  final String backupVnicId;
+  final pulumi.Input<String> backupVnicId;
   /// The number of CPU cores enabled on the DB node.
-  final int cpuCoreCount;
+  final pulumi.Input<int> cpuCoreCount;
   /// The date and time when the DB node was created.
-  final String createdAt;
-  final int dbNodeStorageSize;
+  final pulumi.Input<String> createdAt;
+  final pulumi.Input<int> dbNodeStorageSize;
   /// The unique identifier of the database server that's associated with the DB node.
-  final String dbServerId;
+  final pulumi.Input<String> dbServerId;
   /// The OCID of the DB system.
-  final String dbSystemId;
+  final pulumi.Input<String> dbSystemId;
   /// The name of the fault domain where the DB node is located.
-  final String faultDomain;
+  final pulumi.Input<String> faultDomain;
   /// The OCID of the host IP address that's associated with the DB node.
-  final String hostIpId;
+  final pulumi.Input<String> hostIpId;
   /// The host name for the DB node.
-  final String hostname;
-  final String id;
+  final pulumi.Input<String> hostname;
+  final pulumi.Input<String> id;
   /// The type of maintenance the DB node is undergoing.
-  final String maintenanceType;
-  final int memorySize;
+  final pulumi.Input<String> maintenanceType;
+  final pulumi.Input<int> memorySize;
   /// The name of the OCI resource anchor for the DB node.
-  final String ociResourceAnchorName;
+  final pulumi.Input<String> ociResourceAnchorName;
   /// The OCID of the DB node.
-  final String ocid;
-  final int softwareStorageSize;
+  final pulumi.Input<String> ocid;
+  final pulumi.Input<int> softwareStorageSize;
   /// The current status of the DB node.
-  final String status;
+  final pulumi.Input<String> status;
   /// Additional information about the status of the DB node.
-  final String statusReason;
+  final pulumi.Input<String> statusReason;
   /// The end date and time of the maintenance window.
-  final String timeMaintenanceWindowEnd;
+  final pulumi.Input<String> timeMaintenanceWindowEnd;
   /// The start date and time of the maintenance window.
-  final String timeMaintenanceWindowStart;
+  final pulumi.Input<String> timeMaintenanceWindowStart;
   /// The total number of CPU cores reserved on the DB node.
-  final int totalCpuCoreCount;
-  final String vnic2Id;
+  final pulumi.Input<int> totalCpuCoreCount;
+  final pulumi.Input<String> vnic2Id;
   /// The OCID of the VNIC.
-  final String vnicId;
+  final pulumi.Input<String> vnicId;
 
   /// Creates a new [GetDbNodesDbNode].
   /// [additionalDetails] Additional information about the planned maintenance.
@@ -137,32 +138,32 @@ class GetDbNodesDbNode {
 
   factory GetDbNodesDbNode.fromMap(Map<String, dynamic> map) {
     return GetDbNodesDbNode(
-      additionalDetails: map['additionalDetails'] as String,
-      arn: map['arn'] as String,
-      backupIpId: map['backupIpId'] as String,
-      backupVnic2Id: map['backupVnic2Id'] as String,
-      backupVnicId: map['backupVnicId'] as String,
-      cpuCoreCount: map['cpuCoreCount'] as int,
-      createdAt: map['createdAt'] as String,
-      dbNodeStorageSize: map['dbNodeStorageSize'] as int,
-      dbServerId: map['dbServerId'] as String,
-      dbSystemId: map['dbSystemId'] as String,
-      faultDomain: map['faultDomain'] as String,
-      hostIpId: map['hostIpId'] as String,
-      hostname: map['hostname'] as String,
-      id: map['id'] as String,
-      maintenanceType: map['maintenanceType'] as String,
-      memorySize: map['memorySize'] as int,
-      ociResourceAnchorName: map['ociResourceAnchorName'] as String,
-      ocid: map['ocid'] as String,
-      softwareStorageSize: map['softwareStorageSize'] as int,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
-      timeMaintenanceWindowEnd: map['timeMaintenanceWindowEnd'] as String,
-      timeMaintenanceWindowStart: map['timeMaintenanceWindowStart'] as String,
-      totalCpuCoreCount: map['totalCpuCoreCount'] as int,
-      vnic2Id: map['vnic2Id'] as String,
-      vnicId: map['vnicId'] as String,
+      additionalDetails: (map['additionalDetails'] as String).input(),
+      arn: (map['arn'] as String).input(),
+      backupIpId: (map['backupIpId'] as String).input(),
+      backupVnic2Id: (map['backupVnic2Id'] as String).input(),
+      backupVnicId: (map['backupVnicId'] as String).input(),
+      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      dbNodeStorageSize: (map['dbNodeStorageSize'] as int).input(),
+      dbServerId: (map['dbServerId'] as String).input(),
+      dbSystemId: (map['dbSystemId'] as String).input(),
+      faultDomain: (map['faultDomain'] as String).input(),
+      hostIpId: (map['hostIpId'] as String).input(),
+      hostname: (map['hostname'] as String).input(),
+      id: (map['id'] as String).input(),
+      maintenanceType: (map['maintenanceType'] as String).input(),
+      memorySize: (map['memorySize'] as int).input(),
+      ociResourceAnchorName: (map['ociResourceAnchorName'] as String).input(),
+      ocid: (map['ocid'] as String).input(),
+      softwareStorageSize: (map['softwareStorageSize'] as int).input(),
+      status: (map['status'] as String).input(),
+      statusReason: (map['statusReason'] as String).input(),
+      timeMaintenanceWindowEnd: (map['timeMaintenanceWindowEnd'] as String).input(),
+      timeMaintenanceWindowStart: (map['timeMaintenanceWindowStart'] as String).input(),
+      totalCpuCoreCount: (map['totalCpuCoreCount'] as int).input(),
+      vnic2Id: (map['vnic2Id'] as String).input(),
+      vnicId: (map['vnicId'] as String).input(),
     );
   }
 }

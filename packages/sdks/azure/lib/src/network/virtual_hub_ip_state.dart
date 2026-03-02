@@ -25,19 +25,13 @@ class VirtualHubIpState {
   /// [subnetId] The ID of the Subnet that the IP will reside. Changing this forces a new resource to be created.
   /// [virtualHubId] The ID of the Virtual Hub within which this IP configuration should be created. Changing this forces a new resource to be created.
   VirtualHubIpState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateIpAddress,
-    pulumi.Output<String>? privateIpAllocationMethod,
-    pulumi.Output<String>? publicIpAddressId,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<String>? virtualHubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateIpAddress = pulumi.Input.asOptionalInput<String>(privateIpAddress),
-      privateIpAllocationMethod = pulumi.Input.asOptionalInput<String>(privateIpAllocationMethod),
-      publicIpAddressId = pulumi.Input.asOptionalInput<String>(publicIpAddressId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      virtualHubId = pulumi.Input.asOptionalInput<String>(virtualHubId);
+    this.name,
+    this.privateIpAddress,
+    this.privateIpAllocationMethod,
+    this.publicIpAddressId,
+    this.subnetId,
+    this.virtualHubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class VirtualHubIpState {
 
   factory VirtualHubIpState.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateIpAddress: map['privateIpAddress'] == null ? null : pulumi.Output.create<String>(map['privateIpAddress'] as String),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : pulumi.Output.create<String>(map['privateIpAllocationMethod'] as String),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : pulumi.Output.create<String>(map['publicIpAddressId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      virtualHubId: map['virtualHubId'] == null ? null : pulumi.Output.create<String>(map['virtualHubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
     );
   }
 }

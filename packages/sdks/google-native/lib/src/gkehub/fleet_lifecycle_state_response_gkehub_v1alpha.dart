@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// FleetLifecycleState describes the state of a Fleet resource.
 class FleetLifecycleStateResponseGkehubV1alpha {
   /// The current state of the Fleet resource.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [FleetLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the Fleet resource.
@@ -20,7 +21,7 @@ class FleetLifecycleStateResponseGkehubV1alpha {
 
   factory FleetLifecycleStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return FleetLifecycleStateResponseGkehubV1alpha(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

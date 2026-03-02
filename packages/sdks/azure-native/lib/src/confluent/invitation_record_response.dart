@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_entity_response.dart';
 
 /// Record of the invitation
 class InvitationRecordResponse {
   /// Accepted date time of the invitation
-  final String? acceptedAt;
+  final pulumi.Input<String>? acceptedAt;
   /// Auth type of the user
-  final String? authType;
+  final pulumi.Input<String>? authType;
   /// Email of the user
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Expiration date time of the invitation
-  final String? expiresAt;
+  final pulumi.Input<String>? expiresAt;
   /// Id of the invitation
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Type of account
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Metadata of the record
-  final MetadataEntityResponse? metadata;
+  final pulumi.Input<MetadataEntityResponse>? metadata;
   /// Status of the invitation
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [InvitationRecordResponse].
   /// [acceptedAt] Accepted date time of the invitation
@@ -49,21 +50,21 @@ class InvitationRecordResponse {
       'expiresAt': ?expiresAt,
       'id': ?id,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<MetadataEntityResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory InvitationRecordResponse.fromMap(Map<String, dynamic> map) {
     return InvitationRecordResponse(
-      acceptedAt: map['acceptedAt'] == null ? null : map['acceptedAt'] as String,
-      authType: map['authType'] == null ? null : map['authType'] as String,
-      email: map['email'] == null ? null : map['email'] as String,
-      expiresAt: map['expiresAt'] == null ? null : map['expiresAt'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      acceptedAt: map['acceptedAt'] == null ? null : (map['acceptedAt'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInPrincipal {
-  final String dataLakePrincipalIdentifier;
+  final pulumi.Input<String> dataLakePrincipalIdentifier;
 
   /// Creates a new [OptInPrincipal].
   /// [dataLakePrincipalIdentifier] Required.
@@ -18,7 +19,7 @@ class OptInPrincipal {
 
   factory OptInPrincipal.fromMap(Map<String, dynamic> map) {
     return OptInPrincipal(
-      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] as String,
+      dataLakePrincipalIdentifier: (map['dataLakePrincipalIdentifier'] as String).input(),
     );
   }
 }

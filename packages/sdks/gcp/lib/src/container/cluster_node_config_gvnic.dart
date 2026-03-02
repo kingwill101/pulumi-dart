@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigGvnic {
   /// Whether or not the Google Virtual NIC (gVNIC) is enabled
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterNodeConfigGvnic].
   /// [enabled] Whether or not the Google Virtual NIC (gVNIC) is enabled
@@ -19,7 +20,7 @@ class ClusterNodeConfigGvnic {
 
   factory ClusterNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigGvnic(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

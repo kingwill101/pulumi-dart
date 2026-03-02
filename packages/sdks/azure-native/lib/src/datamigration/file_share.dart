@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// File share information with Path, Username, and Password.
 class FileShare {
   /// Password credential used to connect to the share location.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The folder path for this share.
-  final String path;
+  final pulumi.Input<String> path;
   /// User name credential to connect to the share location
-  final String? userName;
+  final pulumi.Input<String>? userName;
 
   /// Creates a new [FileShare].
   /// [password] Password credential used to connect to the share location.
@@ -30,9 +31,9 @@ class FileShare {
 
   factory FileShare.fromMap(Map<String, dynamic> map) {
     return FileShare(
-      password: map['password'] == null ? null : map['password'] as String,
-      path: map['path'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      path: (map['path'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

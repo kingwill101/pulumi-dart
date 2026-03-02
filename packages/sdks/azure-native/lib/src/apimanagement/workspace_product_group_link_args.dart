@@ -28,19 +28,13 @@ class WorkspaceProductGroupLinkArgs {
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   WorkspaceProductGroupLinkArgs({
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? groupLinkId,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      groupLinkId = pulumi.Input.asOptionalInput<String>(groupLinkId),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.groupId,
+    this.groupLinkId,
+    required this.productId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkspaceProductGroupLinkArgs {
 
   factory WorkspaceProductGroupLinkArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceProductGroupLinkArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      groupLinkId: map['groupLinkId'] == null ? null : pulumi.Output.create<String>(map['groupLinkId'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      groupLinkId: map['groupLinkId'] == null ? null : (map['groupLinkId'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

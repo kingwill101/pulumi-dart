@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionForwardStickiness {
   /// The time period, in seconds, during which requests from a client should be routed to the same target group.
-  final int duration;
+  final pulumi.Input<int> duration;
   /// Indicates whether target group stickiness is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetListenerRuleActionForwardStickiness].
   /// [duration] The time period, in seconds, during which requests from a client should be routed to the same target group.
@@ -24,8 +25,8 @@ class GetListenerRuleActionForwardStickiness {
 
   factory GetListenerRuleActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionForwardStickiness(
-      duration: map['duration'] as int,
-      enabled: map['enabled'] as bool,
+      duration: (map['duration'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

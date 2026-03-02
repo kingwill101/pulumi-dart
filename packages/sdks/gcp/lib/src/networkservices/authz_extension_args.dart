@@ -76,33 +76,20 @@ class AuthzExtensionArgs {
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
   /// [wireFormat] Specifies the communication protocol used by the callout extension
   AuthzExtensionArgs({
-    required pulumi.Output<String> authority,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? failOpen,
-    pulumi.Output<List<String>>? forwardHeaders,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> loadBalancingScheme,
-    required pulumi.Output<String> location,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-    required pulumi.Output<String> timeout,
-    pulumi.Output<String>? wireFormat,
-  }) :
-      authority = pulumi.Input.asInput<String>(authority),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      failOpen = pulumi.Input.asOptionalInput<bool>(failOpen),
-      forwardHeaders = pulumi.Input.asOptionalInput<List<String>>(forwardHeaders),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      loadBalancingScheme = pulumi.Input.asInput<String>(loadBalancingScheme),
-      location = pulumi.Input.asInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service),
-      timeout = pulumi.Input.asInput<String>(timeout),
-      wireFormat = pulumi.Input.asOptionalInput<String>(wireFormat);
+    required this.authority,
+    this.description,
+    this.failOpen,
+    this.forwardHeaders,
+    this.labels,
+    required this.loadBalancingScheme,
+    required this.location,
+    this.metadata,
+    this.name,
+    this.project,
+    required this.service,
+    required this.timeout,
+    this.wireFormat,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,19 +111,19 @@ class AuthzExtensionArgs {
 
   factory AuthzExtensionArgs.fromMap(Map<String, dynamic> map) {
     return AuthzExtensionArgs(
-      authority: pulumi.Output.create<String>(map['authority'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      failOpen: map['failOpen'] == null ? null : pulumi.Output.create<bool>(map['failOpen'] as bool),
-      forwardHeaders: map['forwardHeaders'] == null ? null : pulumi.Output.create<List<String>>((map['forwardHeaders'] as List).cast<String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      loadBalancingScheme: pulumi.Output.create<String>(map['loadBalancingScheme'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
-      timeout: pulumi.Output.create<String>(map['timeout'] as String),
-      wireFormat: map['wireFormat'] == null ? null : pulumi.Output.create<String>(map['wireFormat'] as String),
+      authority: (map['authority'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
+      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      loadBalancingScheme: (map['loadBalancingScheme'] as String).input(),
+      location: (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
+      timeout: (map['timeout'] as String).input(),
+      wireFormat: map['wireFormat'] == null ? null : (map['wireFormat'] as String).input(),
     );
   }
 }

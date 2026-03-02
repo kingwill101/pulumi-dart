@@ -34,17 +34,12 @@ class DicomStoreIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   DicomStoreIamBindingState({
-    pulumi.Output<DicomStoreIamBindingCondition>? condition,
-    pulumi.Output<String>? dicomStoreId,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DicomStoreIamBindingCondition>(condition),
-      dicomStoreId = pulumi.Input.asOptionalInput<String>(dicomStoreId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.condition,
+    this.dicomStoreId,
+    this.etag,
+    this.members,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class DicomStoreIamBindingState {
 
   factory DicomStoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DicomStoreIamBindingCondition>(DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dicomStoreId: map['dicomStoreId'] == null ? null : pulumi.Output.create<String>(map['dicomStoreId'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

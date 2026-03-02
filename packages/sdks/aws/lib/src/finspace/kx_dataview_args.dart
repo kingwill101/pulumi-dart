@@ -54,31 +54,19 @@ class KxDataviewArgs {
   /// [segmentConfigurations] The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See segment_configurations below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   KxDataviewArgs({
-    required pulumi.Output<bool> autoUpdate,
-    pulumi.Output<String>? availabilityZoneId,
-    required pulumi.Output<String> azMode,
-    pulumi.Output<String>? changesetId,
-    required pulumi.Output<String> databaseName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> environmentId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? readWrite,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<KxDataviewSegmentConfiguration>>? segmentConfigurations,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      autoUpdate = pulumi.Input.asInput<bool>(autoUpdate),
-      availabilityZoneId = pulumi.Input.asOptionalInput<String>(availabilityZoneId),
-      azMode = pulumi.Input.asInput<String>(azMode),
-      changesetId = pulumi.Input.asOptionalInput<String>(changesetId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      readWrite = pulumi.Input.asOptionalInput<bool>(readWrite),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      segmentConfigurations = pulumi.Input.asOptionalInput<List<KxDataviewSegmentConfiguration>>(segmentConfigurations),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.autoUpdate,
+    this.availabilityZoneId,
+    required this.azMode,
+    this.changesetId,
+    required this.databaseName,
+    this.description,
+    required this.environmentId,
+    this.name,
+    this.readWrite,
+    this.region,
+    this.segmentConfigurations,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class KxDataviewArgs {
 
   factory KxDataviewArgs.fromMap(Map<String, dynamic> map) {
     return KxDataviewArgs(
-      autoUpdate: pulumi.Output.create<bool>(map['autoUpdate'] as bool),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : pulumi.Output.create<String>(map['availabilityZoneId'] as String),
-      azMode: pulumi.Output.create<String>(map['azMode'] as String),
-      changesetId: map['changesetId'] == null ? null : pulumi.Output.create<String>(map['changesetId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      readWrite: map['readWrite'] == null ? null : pulumi.Output.create<bool>(map['readWrite'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      segmentConfigurations: map['segmentConfigurations'] == null ? null : pulumi.Output.create<List<KxDataviewSegmentConfiguration>>(pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(map['segmentConfigurations'], (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      autoUpdate: (map['autoUpdate'] as bool).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      azMode: (map['azMode'] as String).input(),
+      changesetId: map['changesetId'] == null ? null : (map['changesetId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readWrite: map['readWrite'] == null ? null : (map['readWrite'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      segmentConfigurations: map['segmentConfigurations'] == null ? null : (pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(map['segmentConfigurations'], (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class AnalyzerState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Type that represents the zone of trust or scope for the analyzer. Valid values are `ACCOUNT`, `ACCOUNT_INTERNAL_ACCESS`, `ACCOUNT_UNUSED_ACCESS`, `ORGANIZATION`, `ORGANIZATION_INTERNAL_ACCESS`, `ORGANIZATION_UNUSED_ACCESS`. Defaults to `ACCOUNT`.
   AnalyzerState({
-    pulumi.Output<String>? analyzerName,
-    pulumi.Output<String>? arn,
-    pulumi.Output<AnalyzerConfiguration>? configuration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-  }) :
-      analyzerName = pulumi.Input.asOptionalInput<String>(analyzerName),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configuration = pulumi.Input.asOptionalInput<AnalyzerConfiguration>(configuration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.analyzerName,
+    this.arn,
+    this.configuration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class AnalyzerState {
 
   factory AnalyzerState.fromMap(Map<String, dynamic> map) {
     return AnalyzerState(
-      analyzerName: map['analyzerName'] == null ? null : pulumi.Output.create<String>(map['analyzerName'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<AnalyzerConfiguration>(AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configuration: map['configuration'] == null ? null : (AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -38,27 +38,17 @@ class GameSessionQueueState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeoutInSeconds] Maximum time a game session request can remain in the queue.
   GameSessionQueueState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? customEventData,
-    pulumi.Output<List<String>>? destinations,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notificationTarget,
-    pulumi.Output<List<GameSessionQueuePlayerLatencyPolicy>>? playerLatencyPolicies,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<int>? timeoutInSeconds,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      customEventData = pulumi.Input.asOptionalInput<String>(customEventData),
-      destinations = pulumi.Input.asOptionalInput<List<String>>(destinations),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationTarget = pulumi.Input.asOptionalInput<String>(notificationTarget),
-      playerLatencyPolicies = pulumi.Input.asOptionalInput<List<GameSessionQueuePlayerLatencyPolicy>>(playerLatencyPolicies),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeoutInSeconds = pulumi.Input.asOptionalInput<int>(timeoutInSeconds);
+    this.arn,
+    this.customEventData,
+    this.destinations,
+    this.name,
+    this.notificationTarget,
+    this.playerLatencyPolicies,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeoutInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class GameSessionQueueState {
 
   factory GameSessionQueueState.fromMap(Map<String, dynamic> map) {
     return GameSessionQueueState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      customEventData: map['customEventData'] == null ? null : pulumi.Output.create<String>(map['customEventData'] as String),
-      destinations: map['destinations'] == null ? null : pulumi.Output.create<List<String>>((map['destinations'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationTarget: map['notificationTarget'] == null ? null : pulumi.Output.create<String>(map['notificationTarget'] as String),
-      playerLatencyPolicies: map['playerLatencyPolicies'] == null ? null : pulumi.Output.create<List<GameSessionQueuePlayerLatencyPolicy>>(pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(map['playerLatencyPolicies'], (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : pulumi.Output.create<int>(map['timeoutInSeconds'] as int),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      customEventData: map['customEventData'] == null ? null : (map['customEventData'] as String).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationTarget: map['notificationTarget'] == null ? null : (map['notificationTarget'] as String).input(),
+      playerLatencyPolicies: map['playerLatencyPolicies'] == null ? null : (pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(map['playerLatencyPolicies'], (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetServiceConnectionTokenArgs {
   /// [project] Optional.
   /// [serviceConnectionTokenId] Required.
   GetServiceConnectionTokenArgs({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> serviceConnectionTokenId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceConnectionTokenId = pulumi.Input.asInput<String>(serviceConnectionTokenId);
+    required this.location,
+    this.project,
+    required this.serviceConnectionTokenId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetServiceConnectionTokenArgs {
 
   factory GetServiceConnectionTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionTokenArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceConnectionTokenId: pulumi.Output.create<String>(map['serviceConnectionTokenId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceConnectionTokenId: (map['serviceConnectionTokenId'] as String).input(),
     );
   }
 }

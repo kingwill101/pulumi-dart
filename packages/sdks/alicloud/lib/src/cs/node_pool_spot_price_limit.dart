@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolSpotPriceLimit {
   /// The type of the preemptible instance.
-  final String? instanceType;
+  final pulumi.Input<String>? instanceType;
   /// The maximum price of a single instance.
-  final String? priceLimit;
+  final pulumi.Input<String>? priceLimit;
 
   /// Creates a new [NodePoolSpotPriceLimit].
   /// [instanceType] The type of the preemptible instance.
@@ -24,8 +25,8 @@ class NodePoolSpotPriceLimit {
 
   factory NodePoolSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return NodePoolSpotPriceLimit(
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      priceLimit: map['priceLimit'] == null ? null : map['priceLimit'] as String,
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      priceLimit: map['priceLimit'] == null ? null : (map['priceLimit'] as String).input(),
     );
   }
 }

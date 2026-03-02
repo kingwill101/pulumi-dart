@@ -38,25 +38,16 @@ class ModuleState {
   /// [tags] A mapping of tags which should be assigned to the Dedicated Hardware Security Module.
   /// [zones] Specifies a list of Availability Zones in which this Dedicated Hardware Security Module should be located. Changing this forces a new Dedicated Hardware Security Module to be created.
   ModuleState({
-    pulumi.Output<String>? location,
-    pulumi.Output<ModuleManagementNetworkProfile>? managementNetworkProfile,
-    pulumi.Output<String>? name,
-    pulumi.Output<ModuleNetworkProfile>? networkProfile,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<String>? stampId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managementNetworkProfile = pulumi.Input.asOptionalInput<ModuleManagementNetworkProfile>(managementNetworkProfile),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkProfile = pulumi.Input.asOptionalInput<ModuleNetworkProfile>(networkProfile),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      stampId = pulumi.Input.asOptionalInput<String>(stampId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    this.location,
+    this.managementNetworkProfile,
+    this.name,
+    this.networkProfile,
+    this.resourceGroupName,
+    this.skuName,
+    this.stampId,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ModuleState {
 
   factory ModuleState.fromMap(Map<String, dynamic> map) {
     return ModuleState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : pulumi.Output.create<ModuleManagementNetworkProfile>(ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkProfile: map['networkProfile'] == null ? null : pulumi.Output.create<ModuleNetworkProfile>(ModuleNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      stampId: map['stampId'] == null ? null : pulumi.Output.create<String>(map['stampId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (ModuleNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      stampId: map['stampId'] == null ? null : (map['stampId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

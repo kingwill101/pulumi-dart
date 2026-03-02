@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeBalancerVpc {
   /// A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
-  final String ipv4Range;
+  final pulumi.Input<String> ipv4Range;
   /// The ID of a subnet to assign to this NodeBalancer.
-  final int subnetId;
+  final pulumi.Input<int> subnetId;
 
   /// Creates a new [GetNodeBalancerVpc].
   /// [ipv4Range] A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
@@ -24,8 +25,8 @@ class GetNodeBalancerVpc {
 
   factory GetNodeBalancerVpc.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerVpc(
-      ipv4Range: map['ipv4Range'] as String,
-      subnetId: map['subnetId'] as int,
+      ipv4Range: (map['ipv4Range'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
     );
   }
 }

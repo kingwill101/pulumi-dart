@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceNetworkingIpv4Vpc {
   /// Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
-  final bool active;
+  final pulumi.Input<bool> active;
   /// The address.
-  final String address;
+  final pulumi.Input<String> address;
   /// A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
-  final String addressRange;
+  final pulumi.Input<String> addressRange;
   /// The globally general entity identifier for the Linode configuration profile where the VPC is included.
-  final int configId;
+  final pulumi.Input<int> configId;
   /// The default gateway for this address.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The globally general API entity identifier for the Linode interface.
-  final int interfaceId;
+  final pulumi.Input<int> interfaceId;
   /// The Linode instance's ID.
-  final int linodeId;
+  final pulumi.Input<int> linodeId;
   /// The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
-  final String nat11;
+  final pulumi.Input<String> nat11;
   /// The network prefix.
-  final int prefix;
+  final pulumi.Input<int> prefix;
   /// (Filterable) The Region this address resides in.
-  final String region;
+  final pulumi.Input<String> region;
   /// The unique globally general API entity identifier for the VPC subnet.
-  final int subnetId;
+  final pulumi.Input<int> subnetId;
   /// The subnet mask.
-  final String subnetMask;
+  final pulumi.Input<String> subnetMask;
   /// The unique globally general API entity identifier for the VPC.
-  final int vpcId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetInstanceNetworkingIpv4Vpc].
   /// [active] Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
@@ -79,19 +80,19 @@ class GetInstanceNetworkingIpv4Vpc {
 
   factory GetInstanceNetworkingIpv4Vpc.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingIpv4Vpc(
-      active: map['active'] as bool,
-      address: map['address'] as String,
-      addressRange: map['addressRange'] as String,
-      configId: map['configId'] as int,
-      gateway: map['gateway'] as String,
-      interfaceId: map['interfaceId'] as int,
-      linodeId: map['linodeId'] as int,
-      nat11: map['nat11'] as String,
-      prefix: map['prefix'] as int,
-      region: map['region'] as String,
-      subnetId: map['subnetId'] as int,
-      subnetMask: map['subnetMask'] as String,
-      vpcId: map['vpcId'] as int,
+      active: (map['active'] as bool).input(),
+      address: (map['address'] as String).input(),
+      addressRange: (map['addressRange'] as String).input(),
+      configId: (map['configId'] as int).input(),
+      gateway: (map['gateway'] as String).input(),
+      interfaceId: (map['interfaceId'] as int).input(),
+      linodeId: (map['linodeId'] as int).input(),
+      nat11: (map['nat11'] as String).input(),
+      prefix: (map['prefix'] as int).input(),
+      region: (map['region'] as String).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      subnetMask: (map['subnetMask'] as String).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

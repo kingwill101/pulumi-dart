@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutboundConnectionRemoteDomainInfo {
   /// The name of the remote domain.
-  final String domainName;
+  final pulumi.Input<String> domainName;
   /// The Account ID of the owner of the remote domain.
-  final String ownerId;
+  final pulumi.Input<String> ownerId;
   /// The region of the remote domain.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [OutboundConnectionRemoteDomainInfo].
   /// [domainName] The name of the remote domain.
@@ -29,9 +30,9 @@ class OutboundConnectionRemoteDomainInfo {
 
   factory OutboundConnectionRemoteDomainInfo.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionRemoteDomainInfo(
-      domainName: map['domainName'] as String,
-      ownerId: map['ownerId'] as String,
-      region: map['region'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ownerId: (map['ownerId'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

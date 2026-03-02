@@ -9,7 +9,7 @@ class InterconnectAttachmentGroupLogicalStructure {
   /// detail. These are region names formatted like "us-central1". This
   /// will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
   /// not apply to others.
-  final List<InterconnectAttachmentGroupLogicalStructureRegion>? regions;
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegion>>? regions;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructure].
   /// [regions] (Output)
@@ -19,13 +19,13 @@ class InterconnectAttachmentGroupLogicalStructure {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'regions': ?regions == null ? null : pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegion, Map<String, dynamic>>(regions!, (value) => value.toMap()),
+      'regions': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentGroupLogicalStructureRegion>, List<Map<String, dynamic>>>(regions, (value) => pulumi.Input.encodeList<InterconnectAttachmentGroupLogicalStructureRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory InterconnectAttachmentGroupLogicalStructure.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructure(
-      regions: map['regions'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegion>(map['regions'], (value) => InterconnectAttachmentGroupLogicalStructureRegion.fromMap((value as Map).cast<String, dynamic>())),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegion>(map['regions'], (value) => InterconnectAttachmentGroupLogicalStructureRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

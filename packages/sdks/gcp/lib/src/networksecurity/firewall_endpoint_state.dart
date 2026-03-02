@@ -59,35 +59,21 @@ class FirewallEndpointState {
   /// [state] The current state of the endpoint.
   /// [updateTime] Time the firewall endpoint was updated in UTC.
   FirewallEndpointState({
-    pulumi.Output<List<String>>? associatedNetworks,
-    pulumi.Output<String>? billingProjectId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<FirewallEndpointEndpointSettings>? endpointSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<bool>? reconciling,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      associatedNetworks = pulumi.Input.asOptionalInput<List<String>>(associatedNetworks),
-      billingProjectId = pulumi.Input.asOptionalInput<String>(billingProjectId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      endpointSettings = pulumi.Input.asOptionalInput<FirewallEndpointEndpointSettings>(endpointSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      reconciling = pulumi.Input.asOptionalInput<bool>(reconciling),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.associatedNetworks,
+    this.billingProjectId,
+    this.createTime,
+    this.effectiveLabels,
+    this.endpointSettings,
+    this.labels,
+    this.location,
+    this.name,
+    this.parent,
+    this.pulumiLabels,
+    this.reconciling,
+    this.selfLink,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -110,20 +96,20 @@ class FirewallEndpointState {
 
   factory FirewallEndpointState.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointState(
-      associatedNetworks: map['associatedNetworks'] == null ? null : pulumi.Output.create<List<String>>((map['associatedNetworks'] as List).cast<String>()),
-      billingProjectId: map['billingProjectId'] == null ? null : pulumi.Output.create<String>(map['billingProjectId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      endpointSettings: map['endpointSettings'] == null ? null : pulumi.Output.create<FirewallEndpointEndpointSettings>(FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      reconciling: map['reconciling'] == null ? null : pulumi.Output.create<bool>(map['reconciling'] as bool),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      associatedNetworks: map['associatedNetworks'] == null ? null : ((map['associatedNetworks'] as List).cast<String>()).input(),
+      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

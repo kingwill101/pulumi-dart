@@ -5,7 +5,7 @@ import 'automation_triggering_rule_response.dart';
 
 /// A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
 class AutomationRuleSetResponse {
-  final List<AutomationTriggeringRuleResponse>? rules;
+  final pulumi.Input<List<AutomationTriggeringRuleResponse>>? rules;
 
   /// Creates a new [AutomationRuleSetResponse].
   /// [rules] Optional.
@@ -15,13 +15,13 @@ class AutomationRuleSetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<AutomationTriggeringRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AutomationTriggeringRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationTriggeringRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AutomationRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleSetResponse(
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(map['rules'], (value) => AutomationTriggeringRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(map['rules'], (value) => AutomationTriggeringRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

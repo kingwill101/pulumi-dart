@@ -25,17 +25,12 @@ class WorkspaceApiKeyArgs {
   /// [secondsToLive] Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
   /// [workspaceId] The ID of the workspace that the API key is valid for.
   WorkspaceApiKeyArgs({
-    required pulumi.Output<String> keyName,
-    required pulumi.Output<String> keyRole,
-    pulumi.Output<String>? region,
-    required pulumi.Output<int> secondsToLive,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      keyName = pulumi.Input.asInput<String>(keyName),
-      keyRole = pulumi.Input.asInput<String>(keyRole),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondsToLive = pulumi.Input.asInput<int>(secondsToLive),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.keyName,
+    required this.keyRole,
+    this.region,
+    required this.secondsToLive,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class WorkspaceApiKeyArgs {
 
   factory WorkspaceApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiKeyArgs(
-      keyName: pulumi.Output.create<String>(map['keyName'] as String),
-      keyRole: pulumi.Output.create<String>(map['keyRole'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secondsToLive: pulumi.Output.create<int>(map['secondsToLive'] as int),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      keyName: (map['keyName'] as String).input(),
+      keyRole: (map['keyRole'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secondsToLive: (map['secondsToLive'] as int).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

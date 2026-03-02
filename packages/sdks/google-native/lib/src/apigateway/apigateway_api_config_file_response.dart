@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A lightweight description of a file.
 class ApigatewayApiConfigFileResponse {
   /// The bytes that constitute the file.
-  final String contents;
+  final pulumi.Input<String> contents;
   /// The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [ApigatewayApiConfigFileResponse].
   /// [contents] The bytes that constitute the file.
@@ -25,8 +26,8 @@ class ApigatewayApiConfigFileResponse {
 
   factory ApigatewayApiConfigFileResponse.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigFileResponse(
-      contents: map['contents'] as String,
-      path: map['path'] as String,
+      contents: (map['contents'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

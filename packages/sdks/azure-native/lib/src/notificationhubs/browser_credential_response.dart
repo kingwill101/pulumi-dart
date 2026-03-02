@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Description of a NotificationHub BrowserCredential.
 class BrowserCredentialResponse {
   /// Gets or sets web push subject.
-  final String subject;
+  final pulumi.Input<String> subject;
   /// Gets or sets VAPID private key.
-  final String vapidPrivateKey;
+  final pulumi.Input<String> vapidPrivateKey;
   /// Gets or sets VAPID public key.
-  final String vapidPublicKey;
+  final pulumi.Input<String> vapidPublicKey;
 
   /// Creates a new [BrowserCredentialResponse].
   /// [subject] Gets or sets web push subject.
@@ -30,9 +31,9 @@ class BrowserCredentialResponse {
 
   factory BrowserCredentialResponse.fromMap(Map<String, dynamic> map) {
     return BrowserCredentialResponse(
-      subject: map['subject'] as String,
-      vapidPrivateKey: map['vapidPrivateKey'] as String,
-      vapidPublicKey: map['vapidPublicKey'] as String,
+      subject: (map['subject'] as String).input(),
+      vapidPrivateKey: (map['vapidPrivateKey'] as String).input(),
+      vapidPublicKey: (map['vapidPublicKey'] as String).input(),
     );
   }
 }

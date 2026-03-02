@@ -23,13 +23,10 @@ class GroupArgs {
   /// [name] The name of the group to be created.
   /// [userIds] A list of IDs of users to be included in the group to be created.
   GroupArgs({
-    required pulumi.Output<String> authenticationDomainId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? userIds,
-  }) :
-      authenticationDomainId = pulumi.Input.asInput<String>(authenticationDomainId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
+    required this.authenticationDomainId,
+    this.name,
+    this.userIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      authenticationDomainId: pulumi.Output.create<String>(map['authenticationDomainId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
+      authenticationDomainId: (map['authenticationDomainId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
     );
   }
 }

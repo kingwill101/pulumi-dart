@@ -48,31 +48,19 @@ class FileSystemArgs {
   /// [throughputMode] The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
   /// [zoneId] Zone Id, which is used to create file system resources to the specified zone.
   FileSystemArgs({
-    pulumi.Output<String>? dataRedundancyType,
-    pulumi.Output<String>? dedicatedClusterId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> fileSystemName,
-    pulumi.Output<int>? partitionNumber,
-    required pulumi.Output<String> protocolType,
-    pulumi.Output<int>? provisionedThroughputInMiBps,
-    required pulumi.Output<int> spaceCapacity,
-    pulumi.Output<String>? storageSetName,
-    required pulumi.Output<String> storageType,
-    pulumi.Output<String>? throughputMode,
-    pulumi.Output<String>? zoneId,
-  }) :
-      dataRedundancyType = pulumi.Input.asOptionalInput<String>(dataRedundancyType),
-      dedicatedClusterId = pulumi.Input.asOptionalInput<String>(dedicatedClusterId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemName = pulumi.Input.asInput<String>(fileSystemName),
-      partitionNumber = pulumi.Input.asOptionalInput<int>(partitionNumber),
-      protocolType = pulumi.Input.asInput<String>(protocolType),
-      provisionedThroughputInMiBps = pulumi.Input.asOptionalInput<int>(provisionedThroughputInMiBps),
-      spaceCapacity = pulumi.Input.asInput<int>(spaceCapacity),
-      storageSetName = pulumi.Input.asOptionalInput<String>(storageSetName),
-      storageType = pulumi.Input.asInput<String>(storageType),
-      throughputMode = pulumi.Input.asOptionalInput<String>(throughputMode),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.dataRedundancyType,
+    this.dedicatedClusterId,
+    this.description,
+    required this.fileSystemName,
+    this.partitionNumber,
+    required this.protocolType,
+    this.provisionedThroughputInMiBps,
+    required this.spaceCapacity,
+    this.storageSetName,
+    required this.storageType,
+    this.throughputMode,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      dataRedundancyType: map['dataRedundancyType'] == null ? null : pulumi.Output.create<String>(map['dataRedundancyType'] as String),
-      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : pulumi.Output.create<String>(map['dedicatedClusterId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemName: pulumi.Output.create<String>(map['fileSystemName'] as String),
-      partitionNumber: map['partitionNumber'] == null ? null : pulumi.Output.create<int>(map['partitionNumber'] as int),
-      protocolType: pulumi.Output.create<String>(map['protocolType'] as String),
-      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : pulumi.Output.create<int>(map['provisionedThroughputInMiBps'] as int),
-      spaceCapacity: pulumi.Output.create<int>(map['spaceCapacity'] as int),
-      storageSetName: map['storageSetName'] == null ? null : pulumi.Output.create<String>(map['storageSetName'] as String),
-      storageType: pulumi.Output.create<String>(map['storageType'] as String),
-      throughputMode: map['throughputMode'] == null ? null : pulumi.Output.create<String>(map['throughputMode'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      dataRedundancyType: map['dataRedundancyType'] == null ? null : (map['dataRedundancyType'] as String).input(),
+      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemName: (map['fileSystemName'] as String).input(),
+      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber'] as int).input(),
+      protocolType: (map['protocolType'] as String).input(),
+      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : (map['provisionedThroughputInMiBps'] as int).input(),
+      spaceCapacity: (map['spaceCapacity'] as int).input(),
+      storageSetName: map['storageSetName'] == null ? null : (map['storageSetName'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

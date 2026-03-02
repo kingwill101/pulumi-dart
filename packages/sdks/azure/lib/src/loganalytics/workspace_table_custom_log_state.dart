@@ -45,27 +45,17 @@ class WorkspaceTableCustomLogState {
   /// [totalRetentionInDays] The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   /// [workspaceId] The object ID of the Log Analytics Workspace that contains the table. Changing this forces a new resource to be created.
   WorkspaceTableCustomLogState({
-    pulumi.Output<List<WorkspaceTableCustomLogColumn>>? columns,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? plan,
-    pulumi.Output<int>? retentionInDays,
-    pulumi.Output<List<String>>? solutions,
-    pulumi.Output<List<WorkspaceTableCustomLogStandardColumn>>? standardColumns,
-    pulumi.Output<int>? totalRetentionInDays,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      columns = pulumi.Input.asOptionalInput<List<WorkspaceTableCustomLogColumn>>(columns),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      plan = pulumi.Input.asOptionalInput<String>(plan),
-      retentionInDays = pulumi.Input.asOptionalInput<int>(retentionInDays),
-      solutions = pulumi.Input.asOptionalInput<List<String>>(solutions),
-      standardColumns = pulumi.Input.asOptionalInput<List<WorkspaceTableCustomLogStandardColumn>>(standardColumns),
-      totalRetentionInDays = pulumi.Input.asOptionalInput<int>(totalRetentionInDays),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.columns,
+    this.description,
+    this.displayName,
+    this.name,
+    this.plan,
+    this.retentionInDays,
+    this.solutions,
+    this.standardColumns,
+    this.totalRetentionInDays,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,16 +74,16 @@ class WorkspaceTableCustomLogState {
 
   factory WorkspaceTableCustomLogState.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableCustomLogState(
-      columns: map['columns'] == null ? null : pulumi.Output.create<List<WorkspaceTableCustomLogColumn>>(pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(map['columns'], (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      plan: map['plan'] == null ? null : pulumi.Output.create<String>(map['plan'] as String),
-      retentionInDays: map['retentionInDays'] == null ? null : pulumi.Output.create<int>(map['retentionInDays'] as int),
-      solutions: map['solutions'] == null ? null : pulumi.Output.create<List<String>>((map['solutions'] as List).cast<String>()),
-      standardColumns: map['standardColumns'] == null ? null : pulumi.Output.create<List<WorkspaceTableCustomLogStandardColumn>>(pulumi.Input.decodeList<WorkspaceTableCustomLogStandardColumn>(map['standardColumns'], (value) => WorkspaceTableCustomLogStandardColumn.fromMap((value as Map).cast<String, dynamic>()))),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : pulumi.Output.create<int>(map['totalRetentionInDays'] as int),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(map['columns'], (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      solutions: map['solutions'] == null ? null : ((map['solutions'] as List).cast<String>()).input(),
+      standardColumns: map['standardColumns'] == null ? null : (pulumi.Input.decodeList<WorkspaceTableCustomLogStandardColumn>(map['standardColumns'], (value) => WorkspaceTableCustomLogStandardColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays'] as int).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

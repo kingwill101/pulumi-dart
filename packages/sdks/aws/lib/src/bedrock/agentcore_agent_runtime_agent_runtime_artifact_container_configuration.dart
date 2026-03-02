@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
   /// URI of the container image in Amazon ECR.
-  final String containerUri;
+  final pulumi.Input<String> containerUri;
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration].
   /// [containerUri] URI of the container image in Amazon ECR.
@@ -19,7 +20,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
 
   factory AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration(
-      containerUri: map['containerUri'] as String,
+      containerUri: (map['containerUri'] as String).input(),
     );
   }
 }

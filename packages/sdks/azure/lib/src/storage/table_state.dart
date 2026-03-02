@@ -20,15 +20,11 @@ class TableState {
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
   /// [storageAccountName] Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   TableState({
-    pulumi.Output<List<TableAcl>>? acls,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceManagerId,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      acls = pulumi.Input.asOptionalInput<List<TableAcl>>(acls),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceManagerId = pulumi.Input.asOptionalInput<String>(resourceManagerId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.acls,
+    this.name,
+    this.resourceManagerId,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      acls: map['acls'] == null ? null : pulumi.Output.create<List<TableAcl>>(pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceManagerId: map['resourceManagerId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

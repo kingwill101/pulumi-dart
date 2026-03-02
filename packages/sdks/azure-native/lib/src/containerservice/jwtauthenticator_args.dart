@@ -23,15 +23,11 @@ class JWTAuthenticatorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   JWTAuthenticatorArgs({
-    pulumi.Output<String>? jwtAuthenticatorName,
-    required pulumi.Output<JWTAuthenticatorProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      jwtAuthenticatorName = pulumi.Input.asOptionalInput<String>(jwtAuthenticatorName),
-      properties = pulumi.Input.asInput<JWTAuthenticatorProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    this.jwtAuthenticatorName,
+    required this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class JWTAuthenticatorArgs {
 
   factory JWTAuthenticatorArgs.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorArgs(
-      jwtAuthenticatorName: map['jwtAuthenticatorName'] == null ? null : pulumi.Output.create<String>(map['jwtAuthenticatorName'] as String),
-      properties: pulumi.Output.create<JWTAuthenticatorProperties>(JWTAuthenticatorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      jwtAuthenticatorName: map['jwtAuthenticatorName'] == null ? null : (map['jwtAuthenticatorName'] as String).input(),
+      properties: (JWTAuthenticatorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

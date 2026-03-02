@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'password_response.dart';
 
 class RegistryListCredentialsResultResponse {
-  final String location;
-  final List<PasswordResponse>? passwords;
-  final String username;
+  final pulumi.Input<String> location;
+  final pulumi.Input<List<PasswordResponse>>? passwords;
+  final pulumi.Input<String> username;
 
   /// Creates a new [RegistryListCredentialsResultResponse].
   /// [location] Required.
@@ -21,16 +21,16 @@ class RegistryListCredentialsResultResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'passwords': ?passwords == null ? null : pulumi.Input.encodeList<PasswordResponse, Map<String, dynamic>>(passwords!, (value) => value.toMap()),
+      'passwords': ?pulumi.Input.mapOptionalInputValue<List<PasswordResponse>, List<Map<String, dynamic>>>(passwords, (value) => pulumi.Input.encodeList<PasswordResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'username': username,
     };
   }
 
   factory RegistryListCredentialsResultResponse.fromMap(Map<String, dynamic> map) {
     return RegistryListCredentialsResultResponse(
-      location: map['location'] as String,
-      passwords: map['passwords'] == null ? null : pulumi.Input.decodeList<PasswordResponse>(map['passwords'], (value) => PasswordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      username: map['username'] as String,
+      location: (map['location'] as String).input(),
+      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<PasswordResponse>(map['passwords'], (value) => PasswordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

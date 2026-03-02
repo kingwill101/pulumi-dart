@@ -7,10 +7,10 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
   /// Transform the record by applying various field transformations.
   /// Structure is documented below.
-  final List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>? fieldTransformations;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>>? fieldTransformations;
   /// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
   /// Structure is documented below.
-  final List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>? recordSuppressions;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>>? recordSuppressions;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations].
   /// [fieldTransformations] Transform the record by applying various field transformations.
@@ -22,15 +22,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldTransformations': ?fieldTransformations == null ? null : pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation, Map<String, dynamic>>(fieldTransformations!, (value) => value.toMap()),
-      'recordSuppressions': ?recordSuppressions == null ? null : pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression, Map<String, dynamic>>(recordSuppressions!, (value) => value.toMap()),
+      'fieldTransformations': ?pulumi.Input.mapOptionalInputValue<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>, List<Map<String, dynamic>>>(fieldTransformations, (value) => pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recordSuppressions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>, List<Map<String, dynamic>>>(recordSuppressions, (value) => pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(
-      fieldTransformations: map['fieldTransformations'] == null ? null : pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>(map['fieldTransformations'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.fromMap((value as Map).cast<String, dynamic>())),
-      recordSuppressions: map['recordSuppressions'] == null ? null : pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>(map['recordSuppressions'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap((value as Map).cast<String, dynamic>())),
+      fieldTransformations: map['fieldTransformations'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>(map['fieldTransformations'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordSuppressions: map['recordSuppressions'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>(map['recordSuppressions'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

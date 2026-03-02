@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of instance tags.
 class Tags {
   /// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  final List<String>? items;
+  final pulumi.Input<List<String>>? items;
 
   /// Creates a new [Tags].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
@@ -20,7 +21,7 @@ class Tags {
 
   factory Tags.fromMap(Map<String, dynamic> map) {
     return Tags(
-      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

@@ -24,19 +24,13 @@ class ResourceSetState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   ResourceSetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ResourceSetResourceSet>>? resourceSets,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ResourceSetTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceSets = pulumi.Input.asOptionalInput<List<ResourceSetResourceSet>>(resourceSets),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ResourceSetTimeouts>(timeouts);
+    this.arn,
+    this.region,
+    this.resourceSets,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class ResourceSetState {
 
   factory ResourceSetState.fromMap(Map<String, dynamic> map) {
     return ResourceSetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceSets: map['resourceSets'] == null ? null : pulumi.Output.create<List<ResourceSetResourceSet>>(pulumi.Input.decodeList<ResourceSetResourceSet>(map['resourceSets'], (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourceSetTimeouts>(ResourceSetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceSets: map['resourceSets'] == null ? null : (pulumi.Input.decodeList<ResourceSetResourceSet>(map['resourceSets'], (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourceSetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

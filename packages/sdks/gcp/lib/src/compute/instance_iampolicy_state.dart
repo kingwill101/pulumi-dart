@@ -26,17 +26,12 @@ class InstanceIAMPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   InstanceIAMPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.etag,
+    this.instanceName,
+    this.policyData,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class InstanceIAMPolicyState {
 
   factory InstanceIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return InstanceIAMPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

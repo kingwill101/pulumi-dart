@@ -47,31 +47,19 @@ class PostureState {
   /// [state] State of the posture. Update to state field should not be triggered along with
   /// [updateTime] Time the Posture was updated in UTC.
   PostureState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parent,
-    pulumi.Output<List<PosturePolicySet>>? policySets,
-    pulumi.Output<String>? postureId,
-    pulumi.Output<bool>? reconciling,
-    pulumi.Output<String>? revisionId,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      policySets = pulumi.Input.asOptionalInput<List<PosturePolicySet>>(policySets),
-      postureId = pulumi.Input.asOptionalInput<String>(postureId),
-      reconciling = pulumi.Input.asOptionalInput<bool>(reconciling),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.description,
+    this.etag,
+    this.location,
+    this.name,
+    this.parent,
+    this.policySets,
+    this.postureId,
+    this.reconciling,
+    this.revisionId,
+    this.state,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,18 +80,18 @@ class PostureState {
 
   factory PostureState.fromMap(Map<String, dynamic> map) {
     return PostureState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
-      policySets: map['policySets'] == null ? null : pulumi.Output.create<List<PosturePolicySet>>(pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))),
-      postureId: map['postureId'] == null ? null : pulumi.Output.create<String>(map['postureId'] as String),
-      reconciling: map['reconciling'] == null ? null : pulumi.Output.create<bool>(map['reconciling'] as bool),
-      revisionId: map['revisionId'] == null ? null : pulumi.Output.create<String>(map['revisionId'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      policySets: map['policySets'] == null ? null : (pulumi.Input.decodeList<PosturePolicySet>(map['policySets'], (value) => PosturePolicySet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postureId: map['postureId'] == null ? null : (map['postureId'] as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

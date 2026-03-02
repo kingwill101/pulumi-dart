@@ -28,17 +28,12 @@ class ConnectionFunctionArgs {
   /// [publish] Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ConnectionFunctionArgs({
-    required pulumi.Output<String> connectionFunctionCode,
-    required pulumi.Output<ConnectionFunctionConnectionFunctionConfig> connectionFunctionConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publish,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      connectionFunctionCode = pulumi.Input.asInput<String>(connectionFunctionCode),
-      connectionFunctionConfig = pulumi.Input.asInput<ConnectionFunctionConnectionFunctionConfig>(connectionFunctionConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publish = pulumi.Input.asOptionalInput<bool>(publish),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.connectionFunctionCode,
+    required this.connectionFunctionConfig,
+    this.name,
+    this.publish,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class ConnectionFunctionArgs {
 
   factory ConnectionFunctionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionArgs(
-      connectionFunctionCode: pulumi.Output.create<String>(map['connectionFunctionCode'] as String),
-      connectionFunctionConfig: pulumi.Output.create<ConnectionFunctionConnectionFunctionConfig>(ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publish: map['publish'] == null ? null : pulumi.Output.create<bool>(map['publish'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      connectionFunctionCode: (map['connectionFunctionCode'] as String).input(),
+      connectionFunctionConfig: (ConnectionFunctionConnectionFunctionConfig.fromMap((map['connectionFunctionConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

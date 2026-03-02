@@ -31,21 +31,14 @@ class GetHostAccountsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [protocolName] Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
   GetHostAccountsArgs({
-    pulumi.Output<String>? hostAccountName,
-    required pulumi.Output<String> hostId,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? protocolName,
-  }) :
-      hostAccountName = pulumi.Input.asOptionalInput<String>(hostAccountName),
-      hostId = pulumi.Input.asInput<String>(hostId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      protocolName = pulumi.Input.asOptionalInput<String>(protocolName);
+    this.hostAccountName,
+    required this.hostId,
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.outputFile,
+    this.protocolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetHostAccountsArgs {
 
   factory GetHostAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostAccountsArgs(
-      hostAccountName: map['hostAccountName'] == null ? null : pulumi.Output.create<String>(map['hostAccountName'] as String),
-      hostId: pulumi.Output.create<String>(map['hostId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      protocolName: map['protocolName'] == null ? null : pulumi.Output.create<String>(map['protocolName'] as String),
+      hostAccountName: map['hostAccountName'] == null ? null : (map['hostAccountName'] as String).input(),
+      hostId: (map['hostId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      protocolName: map['protocolName'] == null ? null : (map['protocolName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_dataplex_v1_content_notebook_kernel_type.dart';
 
 /// Configuration for Notebook content.
 class GoogleCloudDataplexV1ContentNotebook {
   /// Kernel Type of the notebook.
-  final GoogleCloudDataplexV1ContentNotebookKernelType kernelType;
+  final pulumi.Input<GoogleCloudDataplexV1ContentNotebookKernelType> kernelType;
 
   /// Creates a new [GoogleCloudDataplexV1ContentNotebook].
   /// [kernelType] Kernel Type of the notebook.
@@ -15,13 +16,13 @@ class GoogleCloudDataplexV1ContentNotebook {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kernelType': kernelType.value,
+      'kernelType': pulumi.Input.mapInputValue<GoogleCloudDataplexV1ContentNotebookKernelType, String>(kernelType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDataplexV1ContentNotebook.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ContentNotebook(
-      kernelType: GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(map['kernelType'] as String),
+      kernelType: (GoogleCloudDataplexV1ContentNotebookKernelType.fromValue(map['kernelType'] as String)).input(),
     );
   }
 }

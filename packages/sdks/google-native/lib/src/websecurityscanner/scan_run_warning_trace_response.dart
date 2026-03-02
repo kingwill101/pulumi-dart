@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
 class ScanRunWarningTraceResponse {
   /// Indicates the warning code.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [ScanRunWarningTraceResponse].
   /// [code] Indicates the warning code.
@@ -20,7 +21,7 @@ class ScanRunWarningTraceResponse {
 
   factory ScanRunWarningTraceResponse.fromMap(Map<String, dynamic> map) {
     return ScanRunWarningTraceResponse(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

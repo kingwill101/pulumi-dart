@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format.
 class PkixPublicKeyResponse {
   /// Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. This may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either: * Match that value exactly. * Or be left blank, in which case it behaves exactly as though it is equal to that wrapper value.
-  final String keyId;
+  final pulumi.Input<String> keyId;
   /// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
-  final String publicKeyPem;
+  final pulumi.Input<String> publicKeyPem;
   /// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-  final String signatureAlgorithm;
+  final pulumi.Input<String> signatureAlgorithm;
 
   /// Creates a new [PkixPublicKeyResponse].
   /// [keyId] Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. This may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either: * Match that value exactly. * Or be left blank, in which case it behaves exactly as though it is equal to that wrapper value.
@@ -30,9 +31,9 @@ class PkixPublicKeyResponse {
 
   factory PkixPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeyResponse(
-      keyId: map['keyId'] as String,
-      publicKeyPem: map['publicKeyPem'] as String,
-      signatureAlgorithm: map['signatureAlgorithm'] as String,
+      keyId: (map['keyId'] as String).input(),
+      publicKeyPem: (map['publicKeyPem'] as String).input(),
+      signatureAlgorithm: (map['signatureAlgorithm'] as String).input(),
     );
   }
 }

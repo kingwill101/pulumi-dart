@@ -25,19 +25,13 @@ class KubernetesPolicyInstanceState {
   /// [parameters] The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
   /// [policyName] Policy Name
   KubernetesPolicyInstanceState({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<List<String>>? namespaces,
-    pulumi.Output<Map<String, String>>? parameters,
-    pulumi.Output<String>? policyName,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      namespaces = pulumi.Input.asOptionalInput<List<String>>(namespaces),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName);
+    this.action,
+    this.clusterId,
+    this.instanceName,
+    this.namespaces,
+    this.parameters,
+    this.policyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class KubernetesPolicyInstanceState {
 
   factory KubernetesPolicyInstanceState.fromMap(Map<String, dynamic> map) {
     return KubernetesPolicyInstanceState(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      namespaces: map['namespaces'] == null ? null : pulumi.Output.create<List<String>>((map['namespaces'] as List).cast<String>()),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
     );
   }
 }

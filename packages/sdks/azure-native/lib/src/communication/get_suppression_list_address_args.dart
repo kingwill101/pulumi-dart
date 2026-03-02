@@ -25,17 +25,12 @@ class GetSuppressionListAddressArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
   GetSuppressionListAddressArgs({
-    required pulumi.Output<String> addressId,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> emailServiceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> suppressionListName,
-  }) :
-      addressId = pulumi.Input.asInput<String>(addressId),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      emailServiceName = pulumi.Input.asInput<String>(emailServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      suppressionListName = pulumi.Input.asInput<String>(suppressionListName);
+    required this.addressId,
+    required this.domainName,
+    required this.emailServiceName,
+    required this.resourceGroupName,
+    required this.suppressionListName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSuppressionListAddressArgs {
 
   factory GetSuppressionListAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetSuppressionListAddressArgs(
-      addressId: pulumi.Output.create<String>(map['addressId'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      emailServiceName: pulumi.Output.create<String>(map['emailServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      suppressionListName: pulumi.Output.create<String>(map['suppressionListName'] as String),
+      addressId: (map['addressId'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      emailServiceName: (map['emailServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      suppressionListName: (map['suppressionListName'] as String).input(),
     );
   }
 }

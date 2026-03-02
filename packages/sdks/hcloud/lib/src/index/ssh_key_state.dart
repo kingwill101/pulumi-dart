@@ -19,15 +19,11 @@ class SshKeyState {
   /// [name] Name of the SSH Key.
   /// [publicKey] Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
   SshKeyState({
-    pulumi.Output<String>? fingerprint,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? publicKey,
-  }) :
-      fingerprint = pulumi.Input.asOptionalInput<String>(fingerprint),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicKey = pulumi.Input.asOptionalInput<String>(publicKey);
+    this.fingerprint,
+    this.labels,
+    this.name,
+    this.publicKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      fingerprint: map['fingerprint'] == null ? null : pulumi.Output.create<String>(map['fingerprint'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicKey: map['publicKey'] == null ? null : pulumi.Output.create<String>(map['publicKey'] as String),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
     );
   }
 }

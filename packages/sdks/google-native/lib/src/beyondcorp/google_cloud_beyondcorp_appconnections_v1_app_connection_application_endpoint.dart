@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ApplicationEndpoint represents a remote application endpoint.
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   /// Hostname or IP address of the remote application endpoint.
-  final String host;
+  final pulumi.Input<String> host;
   /// Port of the remote application endpoint.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint].
   /// [host] Hostname or IP address of the remote application endpoint.
@@ -25,8 +26,8 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
 
   factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint(
-      host: map['host'] as String,
-      port: map['port'] as int,
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

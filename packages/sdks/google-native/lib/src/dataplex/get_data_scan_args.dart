@@ -18,15 +18,11 @@ class GetDataScanArgs {
   /// [project] Optional.
   /// [view] Optional.
   GetDataScanArgs({
-    required pulumi.Output<String> dataScanId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? view,
-  }) :
-      dataScanId = pulumi.Input.asInput<String>(dataScanId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+    required this.dataScanId,
+    required this.location,
+    this.project,
+    this.view,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetDataScanArgs {
 
   factory GetDataScanArgs.fromMap(Map<String, dynamic> map) {
     return GetDataScanArgs(
-      dataScanId: pulumi.Output.create<String>(map['dataScanId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      dataScanId: (map['dataScanId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      view: map['view'] == null ? null : (map['view'] as String).input(),
     );
   }
 }

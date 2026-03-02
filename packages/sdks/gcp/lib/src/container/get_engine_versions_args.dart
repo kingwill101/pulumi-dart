@@ -28,13 +28,10 @@ class GetEngineVersionsArgs {
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// [versionPrefix] If provided, the provider will only return versions
   GetEngineVersionsArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? versionPrefix,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionPrefix = pulumi.Input.asOptionalInput<String>(versionPrefix);
+    this.location,
+    this.project,
+    this.versionPrefix,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,9 +43,9 @@ class GetEngineVersionsArgs {
 
   factory GetEngineVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionsArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      versionPrefix: map['versionPrefix'] == null ? null : pulumi.Output.create<String>(map['versionPrefix'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class OrgAccessTokenArgs {
   /// [name] The name for the token.
   /// [organizationName] The organization's name.
   OrgAccessTokenArgs({
-    pulumi.Output<bool>? admin,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> organizationName,
-  }) :
-      admin = pulumi.Input.asOptionalInput<bool>(admin),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asInput<String>(name),
-      organizationName = pulumi.Input.asInput<String>(organizationName);
+    this.admin,
+    this.description,
+    required this.name,
+    required this.organizationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class OrgAccessTokenArgs {
 
   factory OrgAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return OrgAccessTokenArgs(
-      admin: map['admin'] == null ? null : pulumi.Output.create<bool>(map['admin'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
+      admin: map['admin'] == null ? null : (map['admin'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
     );
   }
 }

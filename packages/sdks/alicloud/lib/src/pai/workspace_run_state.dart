@@ -22,17 +22,12 @@ class WorkspaceRunState {
   /// [sourceId] Attribute Resource field representing the source task ID
   /// [sourceType] Resource attribute fields representing the source type
   WorkspaceRunState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? experimentId,
-    pulumi.Output<String>? runName,
-    pulumi.Output<String>? sourceId,
-    pulumi.Output<String>? sourceType,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      experimentId = pulumi.Input.asOptionalInput<String>(experimentId),
-      runName = pulumi.Input.asOptionalInput<String>(runName),
-      sourceId = pulumi.Input.asOptionalInput<String>(sourceId),
-      sourceType = pulumi.Input.asOptionalInput<String>(sourceType);
+    this.createTime,
+    this.experimentId,
+    this.runName,
+    this.sourceId,
+    this.sourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class WorkspaceRunState {
 
   factory WorkspaceRunState.fromMap(Map<String, dynamic> map) {
     return WorkspaceRunState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      experimentId: map['experimentId'] == null ? null : pulumi.Output.create<String>(map['experimentId'] as String),
-      runName: map['runName'] == null ? null : pulumi.Output.create<String>(map['runName'] as String),
-      sourceId: map['sourceId'] == null ? null : pulumi.Output.create<String>(map['sourceId'] as String),
-      sourceType: map['sourceType'] == null ? null : pulumi.Output.create<String>(map['sourceType'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      experimentId: map['experimentId'] == null ? null : (map['experimentId'] as String).input(),
+      runName: map['runName'] == null ? null : (map['runName'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
     );
   }
 }

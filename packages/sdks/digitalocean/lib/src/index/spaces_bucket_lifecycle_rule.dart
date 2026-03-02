@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_bucket_lifecycle_rule_expiration.dart';
 import 'spaces_bucket_lifecycle_rule_noncurrent_version_expiration.dart';
 
 class SpacesBucketLifecycleRule {
   /// Specifies the number of days after initiating a multipart
   /// upload when the multipart upload must be completed or else Spaces will abort the upload.
-  final int? abortIncompleteMultipartUploadDays;
+  final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
   /// Specifies lifecycle rule status.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Specifies a time period after which applicable objects expire (documented below).
-  final SpacesBucketLifecycleRuleExpiration? expiration;
+  final pulumi.Input<SpacesBucketLifecycleRuleExpiration>? expiration;
   /// Unique identifier for the rule.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies when non-current object versions expire (documented below).
   ///
   /// At least one of `expiration` or `noncurrent_version_expiration` must be specified.
-  final SpacesBucketLifecycleRuleNoncurrentVersionExpiration? noncurrentVersionExpiration;
+  final pulumi.Input<SpacesBucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
   /// Object key prefix identifying one or more objects to which the rule applies.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [SpacesBucketLifecycleRule].
   /// [abortIncompleteMultipartUploadDays] Specifies the number of days after initiating a multipart
@@ -40,21 +41,21 @@ class SpacesBucketLifecycleRule {
     return <String, dynamic>{
       'abortIncompleteMultipartUploadDays': ?abortIncompleteMultipartUploadDays,
       'enabled': enabled,
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<SpacesBucketLifecycleRuleExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'id': ?id,
-      'noncurrentVersionExpiration': ?noncurrentVersionExpiration == null ? null : noncurrentVersionExpiration!.toMap(),
+      'noncurrentVersionExpiration': ?pulumi.Input.mapOptionalInputValue<SpacesBucketLifecycleRuleNoncurrentVersionExpiration, Map<String, dynamic>>(noncurrentVersionExpiration, (value) => value.toMap()),
       'prefix': ?prefix,
     };
   }
 
   factory SpacesBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : map['abortIncompleteMultipartUploadDays'] as int,
-      enabled: map['enabled'] as bool,
-      expiration: map['expiration'] == null ? null : SpacesBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : SpacesBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>()),
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays'] as int).input(),
+      enabled: (map['enabled'] as bool).input(),
+      expiration: map['expiration'] == null ? null : (SpacesBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (SpacesBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

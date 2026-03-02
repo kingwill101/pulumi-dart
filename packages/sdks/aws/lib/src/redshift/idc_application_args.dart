@@ -41,27 +41,17 @@ class IdcApplicationArgs {
   /// [serviceIntegration] Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
   /// [tags] Optional.
   IdcApplicationArgs({
-    pulumi.Output<String>? applicationType,
-    pulumi.Output<IdcApplicationAuthorizedTokenIssuer>? authorizedTokenIssuer,
-    required pulumi.Output<String> iamRoleArn,
-    required pulumi.Output<String> idcDisplayName,
-    required pulumi.Output<String> idcInstanceArn,
-    pulumi.Output<String>? identityNamespace,
-    required pulumi.Output<String> redshiftIdcApplicationName,
-    pulumi.Output<String>? region,
-    pulumi.Output<IdcApplicationServiceIntegration>? serviceIntegration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationType = pulumi.Input.asOptionalInput<String>(applicationType),
-      authorizedTokenIssuer = pulumi.Input.asOptionalInput<IdcApplicationAuthorizedTokenIssuer>(authorizedTokenIssuer),
-      iamRoleArn = pulumi.Input.asInput<String>(iamRoleArn),
-      idcDisplayName = pulumi.Input.asInput<String>(idcDisplayName),
-      idcInstanceArn = pulumi.Input.asInput<String>(idcInstanceArn),
-      identityNamespace = pulumi.Input.asOptionalInput<String>(identityNamespace),
-      redshiftIdcApplicationName = pulumi.Input.asInput<String>(redshiftIdcApplicationName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceIntegration = pulumi.Input.asOptionalInput<IdcApplicationServiceIntegration>(serviceIntegration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationType,
+    this.authorizedTokenIssuer,
+    required this.iamRoleArn,
+    required this.idcDisplayName,
+    required this.idcInstanceArn,
+    this.identityNamespace,
+    required this.redshiftIdcApplicationName,
+    this.region,
+    this.serviceIntegration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class IdcApplicationArgs {
 
   factory IdcApplicationArgs.fromMap(Map<String, dynamic> map) {
     return IdcApplicationArgs(
-      applicationType: map['applicationType'] == null ? null : pulumi.Output.create<String>(map['applicationType'] as String),
-      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : pulumi.Output.create<IdcApplicationAuthorizedTokenIssuer>(IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer'] as Map).cast<String, dynamic>())),
-      iamRoleArn: pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      idcDisplayName: pulumi.Output.create<String>(map['idcDisplayName'] as String),
-      idcInstanceArn: pulumi.Output.create<String>(map['idcInstanceArn'] as String),
-      identityNamespace: map['identityNamespace'] == null ? null : pulumi.Output.create<String>(map['identityNamespace'] as String),
-      redshiftIdcApplicationName: pulumi.Output.create<String>(map['redshiftIdcApplicationName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceIntegration: map['serviceIntegration'] == null ? null : pulumi.Output.create<IdcApplicationServiceIntegration>(IdcApplicationServiceIntegration.fromMap((map['serviceIntegration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
+      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : (IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer'] as Map).cast<String, dynamic>())).input(),
+      iamRoleArn: (map['iamRoleArn'] as String).input(),
+      idcDisplayName: (map['idcDisplayName'] as String).input(),
+      idcInstanceArn: (map['idcInstanceArn'] as String).input(),
+      identityNamespace: map['identityNamespace'] == null ? null : (map['identityNamespace'] as String).input(),
+      redshiftIdcApplicationName: (map['redshiftIdcApplicationName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceIntegration: map['serviceIntegration'] == null ? null : (IdcApplicationServiceIntegration.fromMap((map['serviceIntegration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

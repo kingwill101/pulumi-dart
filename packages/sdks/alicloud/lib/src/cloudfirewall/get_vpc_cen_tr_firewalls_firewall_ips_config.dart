@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcCenTrFirewallsFirewallIpsConfig {
   /// Basic rule switch. Value:-**1**: On-**0**: Closed state.
-  final int basicRules;
+  final pulumi.Input<int> basicRules;
   /// Virtual patch switch. Value:-**1**: On-**0**: Closed state.
-  final int enableAllPatch;
+  final pulumi.Input<int> enableAllPatch;
   /// IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
-  final int runMode;
+  final pulumi.Input<int> runMode;
 
   /// Creates a new [GetVpcCenTrFirewallsFirewallIpsConfig].
   /// [basicRules] Basic rule switch. Value:-**1**: On-**0**: Closed state.
@@ -29,9 +30,9 @@ class GetVpcCenTrFirewallsFirewallIpsConfig {
 
   factory GetVpcCenTrFirewallsFirewallIpsConfig.fromMap(Map<String, dynamic> map) {
     return GetVpcCenTrFirewallsFirewallIpsConfig(
-      basicRules: map['basicRules'] as int,
-      enableAllPatch: map['enableAllPatch'] as int,
-      runMode: map['runMode'] as int,
+      basicRules: (map['basicRules'] as int).input(),
+      enableAllPatch: (map['enableAllPatch'] as int).input(),
+      runMode: (map['runMode'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration {
   /// Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
-  final String? encryptionConflictResolutionStrategy;
+  final pulumi.Input<String>? encryptionConflictResolutionStrategy;
   /// Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
-  final String encryptionStrategy;
+  final pulumi.Input<String> encryptionStrategy;
   /// ARN of the KMS key to use for encryption when `encryption_strategy` is `CUSTOMER_MANAGED`.
-  final String? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration].
   /// [encryptionConflictResolutionStrategy] Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
@@ -29,9 +30,9 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
 
   factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration(
-      encryptionConflictResolutionStrategy: map['encryptionConflictResolutionStrategy'] == null ? null : map['encryptionConflictResolutionStrategy'] as String,
-      encryptionStrategy: map['encryptionStrategy'] as String,
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
+      encryptionConflictResolutionStrategy: map['encryptionConflictResolutionStrategy'] == null ? null : (map['encryptionConflictResolutionStrategy'] as String).input(),
+      encryptionStrategy: (map['encryptionStrategy'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
     );
   }
 }

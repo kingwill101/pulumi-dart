@@ -30,17 +30,12 @@ class BrandState {
   /// [project] The ID of the project in which the resource belongs.
   /// [supportEmail] Support email displayed on the OAuth consent screen. Can be either a
   BrandState({
-    pulumi.Output<String>? applicationTitle,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? orgInternalOnly,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? supportEmail,
-  }) :
-      applicationTitle = pulumi.Input.asOptionalInput<String>(applicationTitle),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgInternalOnly = pulumi.Input.asOptionalInput<bool>(orgInternalOnly),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      supportEmail = pulumi.Input.asOptionalInput<String>(supportEmail);
+    this.applicationTitle,
+    this.name,
+    this.orgInternalOnly,
+    this.project,
+    this.supportEmail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class BrandState {
 
   factory BrandState.fromMap(Map<String, dynamic> map) {
     return BrandState(
-      applicationTitle: map['applicationTitle'] == null ? null : pulumi.Output.create<String>(map['applicationTitle'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgInternalOnly: map['orgInternalOnly'] == null ? null : pulumi.Output.create<bool>(map['orgInternalOnly'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      supportEmail: map['supportEmail'] == null ? null : pulumi.Output.create<String>(map['supportEmail'] as String),
+      applicationTitle: map['applicationTitle'] == null ? null : (map['applicationTitle'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgInternalOnly: map['orgInternalOnly'] == null ? null : (map['orgInternalOnly'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      supportEmail: map['supportEmail'] == null ? null : (map['supportEmail'] as String).input(),
     );
   }
 }

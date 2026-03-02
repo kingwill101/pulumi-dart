@@ -19,13 +19,10 @@ class TrafficQosAssociationArgs {
   /// [instanceType] The type of the associated instance. Value: **physical connection** physical connection.
   /// [qosId] The QoS policy ID.
   TrafficQosAssociationArgs({
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    required pulumi.Output<String> qosId,
-  }) :
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      qosId = pulumi.Input.asInput<String>(qosId);
+    this.instanceId,
+    this.instanceType,
+    required this.qosId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TrafficQosAssociationArgs {
 
   factory TrafficQosAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosAssociationArgs(
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      qosId: pulumi.Output.create<String>(map['qosId'] as String),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      qosId: (map['qosId'] as String).input(),
     );
   }
 }

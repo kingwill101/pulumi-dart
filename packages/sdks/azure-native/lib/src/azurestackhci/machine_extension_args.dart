@@ -46,31 +46,19 @@ class MachineExtensionArgs {
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
   MachineExtensionArgs({
-    pulumi.Output<bool>? autoUpgradeMinorVersion,
-    pulumi.Output<String>? extensionName,
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    pulumi.Output<dynamic>? protectedSettings,
-    pulumi.Output<String>? publisher,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<dynamic>? settings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? typeHandlerVersion,
-  }) :
-      autoUpgradeMinorVersion = pulumi.Input.asOptionalInput<bool>(autoUpgradeMinorVersion),
-      extensionName = pulumi.Input.asOptionalInput<String>(extensionName),
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      protectedSettings = pulumi.Input.asOptionalInput<dynamic>(protectedSettings),
-      publisher = pulumi.Input.asOptionalInput<String>(publisher),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      settings = pulumi.Input.asOptionalInput<dynamic>(settings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typeHandlerVersion = pulumi.Input.asOptionalInput<String>(typeHandlerVersion);
+    this.autoUpgradeMinorVersion,
+    this.extensionName,
+    this.forceUpdateTag,
+    this.location,
+    required this.name,
+    this.protectedSettings,
+    this.publisher,
+    required this.resourceGroupName,
+    this.settings,
+    this.tags,
+    this.type,
+    this.typeHandlerVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class MachineExtensionArgs {
 
   factory MachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return MachineExtensionArgs(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : pulumi.Output.create<bool>(map['autoUpgradeMinorVersion'] as bool),
-      extensionName: map['extensionName'] == null ? null : pulumi.Output.create<String>(map['extensionName'] as String),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      protectedSettings: map['protectedSettings'] == null ? null : pulumi.Output.create<dynamic>(map['protectedSettings']),
-      publisher: map['publisher'] == null ? null : pulumi.Output.create<String>(map['publisher'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<dynamic>(map['settings']),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : pulumi.Output.create<String>(map['typeHandlerVersion'] as String),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

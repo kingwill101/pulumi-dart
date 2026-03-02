@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'envelope_containeranalysis_v1alpha1.dart';
 import 'in_toto_statement_containeranalysis_v1alpha1.dart';
 
 /// An occurrence describing an attestation on a resource
 class DSSEAttestationOccurrenceContaineranalysisV1alpha1 {
   /// If doing something security critical, make sure to verify the signatures in this metadata.
-  final EnvelopeContaineranalysisV1alpha1? envelope;
-  final InTotoStatementContaineranalysisV1alpha1? statement;
+  final pulumi.Input<EnvelopeContaineranalysisV1alpha1>? envelope;
+  final pulumi.Input<InTotoStatementContaineranalysisV1alpha1>? statement;
 
   /// Creates a new [DSSEAttestationOccurrenceContaineranalysisV1alpha1].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.
@@ -19,15 +20,15 @@ class DSSEAttestationOccurrenceContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'envelope': ?envelope == null ? null : envelope!.toMap(),
-      'statement': ?statement == null ? null : statement!.toMap(),
+      'envelope': ?pulumi.Input.mapOptionalInputValue<EnvelopeContaineranalysisV1alpha1, Map<String, dynamic>>(envelope, (value) => value.toMap()),
+      'statement': ?pulumi.Input.mapOptionalInputValue<InTotoStatementContaineranalysisV1alpha1, Map<String, dynamic>>(statement, (value) => value.toMap()),
     };
   }
 
   factory DSSEAttestationOccurrenceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrenceContaineranalysisV1alpha1(
-      envelope: map['envelope'] == null ? null : EnvelopeContaineranalysisV1alpha1.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
-      statement: map['statement'] == null ? null : InTotoStatementContaineranalysisV1alpha1.fromMap((map['statement'] as Map).cast<String, dynamic>()),
+      envelope: map['envelope'] == null ? null : (EnvelopeContaineranalysisV1alpha1.fromMap((map['envelope'] as Map).cast<String, dynamic>())).input(),
+      statement: map['statement'] == null ? null : (InTotoStatementContaineranalysisV1alpha1.fromMap((map['statement'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

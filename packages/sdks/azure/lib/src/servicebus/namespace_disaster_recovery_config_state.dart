@@ -31,23 +31,15 @@ class NamespaceDisasterRecoveryConfigState {
   /// [primaryNamespaceId] The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
   NamespaceDisasterRecoveryConfigState({
-    pulumi.Output<String>? aliasAuthorizationRuleId,
-    pulumi.Output<String>? defaultPrimaryKey,
-    pulumi.Output<String>? defaultSecondaryKey,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partnerNamespaceId,
-    pulumi.Output<String>? primaryConnectionStringAlias,
-    pulumi.Output<String>? primaryNamespaceId,
-    pulumi.Output<String>? secondaryConnectionStringAlias,
-  }) :
-      aliasAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(aliasAuthorizationRuleId),
-      defaultPrimaryKey = pulumi.Input.asOptionalInput<String>(defaultPrimaryKey),
-      defaultSecondaryKey = pulumi.Input.asOptionalInput<String>(defaultSecondaryKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerNamespaceId = pulumi.Input.asOptionalInput<String>(partnerNamespaceId),
-      primaryConnectionStringAlias = pulumi.Input.asOptionalInput<String>(primaryConnectionStringAlias),
-      primaryNamespaceId = pulumi.Input.asOptionalInput<String>(primaryNamespaceId),
-      secondaryConnectionStringAlias = pulumi.Input.asOptionalInput<String>(secondaryConnectionStringAlias);
+    this.aliasAuthorizationRuleId,
+    this.defaultPrimaryKey,
+    this.defaultSecondaryKey,
+    this.name,
+    this.partnerNamespaceId,
+    this.primaryConnectionStringAlias,
+    this.primaryNamespaceId,
+    this.secondaryConnectionStringAlias,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class NamespaceDisasterRecoveryConfigState {
 
   factory NamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
     return NamespaceDisasterRecoveryConfigState(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['aliasAuthorizationRuleId'] as String),
-      defaultPrimaryKey: map['defaultPrimaryKey'] == null ? null : pulumi.Output.create<String>(map['defaultPrimaryKey'] as String),
-      defaultSecondaryKey: map['defaultSecondaryKey'] == null ? null : pulumi.Output.create<String>(map['defaultSecondaryKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : pulumi.Output.create<String>(map['partnerNamespaceId'] as String),
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : pulumi.Output.create<String>(map['primaryConnectionStringAlias'] as String),
-      primaryNamespaceId: map['primaryNamespaceId'] == null ? null : pulumi.Output.create<String>(map['primaryNamespaceId'] as String),
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : pulumi.Output.create<String>(map['secondaryConnectionStringAlias'] as String),
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId'] as String).input(),
+      defaultPrimaryKey: map['defaultPrimaryKey'] == null ? null : (map['defaultPrimaryKey'] as String).input(),
+      defaultSecondaryKey: map['defaultSecondaryKey'] == null ? null : (map['defaultSecondaryKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId'] as String).input(),
+      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : (map['primaryConnectionStringAlias'] as String).input(),
+      primaryNamespaceId: map['primaryNamespaceId'] == null ? null : (map['primaryNamespaceId'] as String).input(),
+      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : (map['secondaryConnectionStringAlias'] as String).input(),
     );
   }
 }

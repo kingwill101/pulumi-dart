@@ -22,13 +22,10 @@ class GlobalSecurityIpGroupState {
   /// [globalIpList] The IP address in the whitelist template.
   /// [regionId] The region ID of the IP whitelist template.
   GlobalSecurityIpGroupState({
-    pulumi.Output<String>? globalIpGroupName,
-    pulumi.Output<String>? globalIpList,
-    pulumi.Output<String>? regionId,
-  }) :
-      globalIpGroupName = pulumi.Input.asOptionalInput<String>(globalIpGroupName),
-      globalIpList = pulumi.Input.asOptionalInput<String>(globalIpList),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId);
+    this.globalIpGroupName,
+    this.globalIpList,
+    this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GlobalSecurityIpGroupState {
 
   factory GlobalSecurityIpGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupState(
-      globalIpGroupName: map['globalIpGroupName'] == null ? null : pulumi.Output.create<String>(map['globalIpGroupName'] as String),
-      globalIpList: map['globalIpList'] == null ? null : pulumi.Output.create<String>(map['globalIpList'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
+      globalIpGroupName: map['globalIpGroupName'] == null ? null : (map['globalIpGroupName'] as String).input(),
+      globalIpList: map['globalIpList'] == null ? null : (map['globalIpList'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexDocumentMetadataConfigurationUpdateRelevance {
   /// Specifies the time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// Indicates that this field determines how "fresh" a document is. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Freshness).
-  final bool? freshness;
+  final pulumi.Input<bool>? freshness;
   /// The relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
-  final int? importance;
+  final pulumi.Input<int>? importance;
   /// Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
-  final String? rankOrder;
+  final pulumi.Input<String>? rankOrder;
   /// A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
-  final Map<String, int>? valuesImportanceMap;
+  final pulumi.Input<Map<String, int>>? valuesImportanceMap;
 
   /// Creates a new [IndexDocumentMetadataConfigurationUpdateRelevance].
   /// [duration] Specifies the time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
@@ -39,11 +40,11 @@ class IndexDocumentMetadataConfigurationUpdateRelevance {
 
   factory IndexDocumentMetadataConfigurationUpdateRelevance.fromMap(Map<String, dynamic> map) {
     return IndexDocumentMetadataConfigurationUpdateRelevance(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      freshness: map['freshness'] == null ? null : map['freshness'] as bool,
-      importance: map['importance'] == null ? null : map['importance'] as int,
-      rankOrder: map['rankOrder'] == null ? null : map['rankOrder'] as String,
-      valuesImportanceMap: map['valuesImportanceMap'] == null ? null : (map['valuesImportanceMap'] as Map).cast<String, int>(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      freshness: map['freshness'] == null ? null : (map['freshness'] as bool).input(),
+      importance: map['importance'] == null ? null : (map['importance'] as int).input(),
+      rankOrder: map['rankOrder'] == null ? null : (map['rankOrder'] as String).input(),
+      valuesImportanceMap: map['valuesImportanceMap'] == null ? null : ((map['valuesImportanceMap'] as Map).cast<String, int>()).input(),
     );
   }
 }

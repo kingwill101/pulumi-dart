@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayFrontendIpConfiguration {
   /// The ID of the Rewrite Rule Set
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the Frontend IP Configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// The Private IP Address to use for the Application Gateway.
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// The Allocation Method for the Private IP Address. Possible values are `Dynamic` and `Static`. Defaults to `Dynamic`.
-  final String? privateIpAddressAllocation;
+  final pulumi.Input<String>? privateIpAddressAllocation;
   /// The ID of the associated private link configuration.
-  final String? privateLinkConfigurationId;
+  final pulumi.Input<String>? privateLinkConfigurationId;
   /// The name of the private link configuration to use for this frontend IP configuration.
-  final String? privateLinkConfigurationName;
+  final pulumi.Input<String>? privateLinkConfigurationName;
   /// The ID of a Public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the `sku` of this Application Gateway. Please refer to the [Azure documentation for public IP addresses](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#application-gateways) for details.
-  final String? publicIpAddressId;
+  final pulumi.Input<String>? publicIpAddressId;
   /// The ID of the Subnet.
-  final String? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Creates a new [ApplicationGatewayFrontendIpConfiguration].
   /// [id] The ID of the Rewrite Rule Set
@@ -54,14 +55,14 @@ class ApplicationGatewayFrontendIpConfiguration {
 
   factory ApplicationGatewayFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendIpConfiguration(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : map['privateIpAddressAllocation'] as String,
-      privateLinkConfigurationId: map['privateLinkConfigurationId'] == null ? null : map['privateLinkConfigurationId'] as String,
-      privateLinkConfigurationName: map['privateLinkConfigurationName'] == null ? null : map['privateLinkConfigurationName'] as String,
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : map['publicIpAddressId'] as String,
-      subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation'] as String).input(),
+      privateLinkConfigurationId: map['privateLinkConfigurationId'] == null ? null : (map['privateLinkConfigurationId'] as String).input(),
+      privateLinkConfigurationName: map['privateLinkConfigurationName'] == null ? null : (map['privateLinkConfigurationName'] as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
     );
   }
 }

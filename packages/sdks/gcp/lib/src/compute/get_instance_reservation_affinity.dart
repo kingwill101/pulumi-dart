@@ -5,9 +5,9 @@ import 'get_instance_reservation_affinity_specific_reservation.dart';
 
 class GetInstanceReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final List<GetInstanceReservationAffinitySpecificReservation> specificReservations;
+  final pulumi.Input<List<GetInstanceReservationAffinitySpecificReservation>> specificReservations;
   /// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetInstanceReservationAffinity].
   /// [specificReservations] Specifies the label selector for the reservation to use.
@@ -19,15 +19,15 @@ class GetInstanceReservationAffinity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificReservations': pulumi.Input.encodeList<GetInstanceReservationAffinitySpecificReservation, Map<String, dynamic>>(specificReservations, (value) => value.toMap()),
+      'specificReservations': pulumi.Input.mapInputValue<List<GetInstanceReservationAffinitySpecificReservation>, List<Map<String, dynamic>>>(specificReservations, (value) => pulumi.Input.encodeList<GetInstanceReservationAffinitySpecificReservation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
     };
   }
 
   factory GetInstanceReservationAffinity.fromMap(Map<String, dynamic> map) {
     return GetInstanceReservationAffinity(
-      specificReservations: pulumi.Input.decodeList<GetInstanceReservationAffinitySpecificReservation>(map['specificReservations'], (value) => GetInstanceReservationAffinitySpecificReservation.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      specificReservations: (pulumi.Input.decodeList<GetInstanceReservationAffinitySpecificReservation>(map['specificReservations'], (value) => GetInstanceReservationAffinitySpecificReservation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

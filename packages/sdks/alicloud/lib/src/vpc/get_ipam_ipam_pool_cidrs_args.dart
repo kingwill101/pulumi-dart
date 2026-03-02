@@ -19,13 +19,10 @@ class GetIpamIpamPoolCidrsArgs {
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetIpamIpamPoolCidrsArgs({
-    pulumi.Output<String>? cidr,
-    required pulumi.Output<String> ipamPoolId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.cidr,
+    required this.ipamPoolId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIpamIpamPoolCidrsArgs {
 
   factory GetIpamIpamPoolCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolCidrsArgs(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

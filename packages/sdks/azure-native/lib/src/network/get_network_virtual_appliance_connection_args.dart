@@ -19,13 +19,10 @@ class GetNetworkVirtualApplianceConnectionArgs {
   /// [networkVirtualApplianceName] The name of the Network Virtual Appliance.
   /// [resourceGroupName] The name of the resource group.
   GetNetworkVirtualApplianceConnectionArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> networkVirtualApplianceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      networkVirtualApplianceName = pulumi.Input.asInput<String>(networkVirtualApplianceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionName,
+    required this.networkVirtualApplianceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNetworkVirtualApplianceConnectionArgs {
 
   factory GetNetworkVirtualApplianceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceConnectionArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      networkVirtualApplianceName: pulumi.Output.create<String>(map['networkVirtualApplianceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

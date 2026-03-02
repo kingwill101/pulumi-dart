@@ -6,20 +6,20 @@ import 'storage_account_response.dart';
 /// Describes a blob input data source that contains reference data.
 class BlobReferenceInputDataSourceResponse {
   /// Authentication Mode.
-  final String? authenticationMode;
+  final pulumi.Input<String>? authenticationMode;
   /// The name of a container within the associated Storage account. This container contains either the blob(s) to be read from or written to. Required on PUT (CreateOrReplace) requests.
-  final String? container;
+  final pulumi.Input<String>? container;
   /// The date format. Wherever {date} appears in pathPattern, the value of this property is used as the date format instead.
-  final String? dateFormat;
+  final pulumi.Input<String>? dateFormat;
   /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and example.
-  final String? pathPattern;
+  final pulumi.Input<String>? pathPattern;
   /// A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
-  final List<StorageAccountResponse>? storageAccounts;
+  final pulumi.Input<List<StorageAccountResponse>>? storageAccounts;
   /// The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
-  final String? timeFormat;
+  final pulumi.Input<String>? timeFormat;
   /// Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Storage/Blob'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [BlobReferenceInputDataSourceResponse].
   /// [authenticationMode] Authentication Mode.
@@ -45,7 +45,7 @@ class BlobReferenceInputDataSourceResponse {
       'container': ?container,
       'dateFormat': ?dateFormat,
       'pathPattern': ?pathPattern,
-      'storageAccounts': ?storageAccounts == null ? null : pulumi.Input.encodeList<StorageAccountResponse, Map<String, dynamic>>(storageAccounts!, (value) => value.toMap()),
+      'storageAccounts': ?pulumi.Input.mapOptionalInputValue<List<StorageAccountResponse>, List<Map<String, dynamic>>>(storageAccounts, (value) => pulumi.Input.encodeList<StorageAccountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeFormat': ?timeFormat,
       'type': type,
     };
@@ -53,13 +53,13 @@ class BlobReferenceInputDataSourceResponse {
 
   factory BlobReferenceInputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return BlobReferenceInputDataSourceResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : map['authenticationMode'] as String,
-      container: map['container'] == null ? null : map['container'] as String,
-      dateFormat: map['dateFormat'] == null ? null : map['dateFormat'] as String,
-      pathPattern: map['pathPattern'] == null ? null : map['pathPattern'] as String,
-      storageAccounts: map['storageAccounts'] == null ? null : pulumi.Input.decodeList<StorageAccountResponse>(map['storageAccounts'], (value) => StorageAccountResponse.fromMap((value as Map).cast<String, dynamic>())),
-      timeFormat: map['timeFormat'] == null ? null : map['timeFormat'] as String,
-      type: map['type'] as String,
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      container: map['container'] == null ? null : (map['container'] as String).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat'] as String).input(),
+      pathPattern: map['pathPattern'] == null ? null : (map['pathPattern'] as String).input(),
+      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccountResponse>(map['storageAccounts'], (value) => StorageAccountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

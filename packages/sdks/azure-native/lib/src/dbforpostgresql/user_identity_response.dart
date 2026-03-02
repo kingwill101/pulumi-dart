@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User assigned managed identity associated with a server.
 class UserIdentityResponse {
   /// Identifier of the client of the service principal associated to the user assigned managed identity.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Identifier of the object of the service principal associated to the user assigned managed identity.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
 
   /// Creates a new [UserIdentityResponse].
   /// [clientId] Identifier of the client of the service principal associated to the user assigned managed identity.
@@ -25,8 +26,8 @@ class UserIdentityResponse {
 
   factory UserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityResponse(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
     );
   }
 }

@@ -37,27 +37,17 @@ class BasicEndpointState {
   /// [endpointZoneId] The zone id of the Basic Endpoint.
   /// [status] The status of the Basic Endpoint.
   BasicEndpointState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? basicEndpointName,
-    pulumi.Output<String>? endpointAddress,
-    pulumi.Output<String>? endpointGroupId,
-    pulumi.Output<String>? endpointId,
-    pulumi.Output<String>? endpointSubAddress,
-    pulumi.Output<String>? endpointSubAddressType,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? endpointZoneId,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      basicEndpointName = pulumi.Input.asOptionalInput<String>(basicEndpointName),
-      endpointAddress = pulumi.Input.asOptionalInput<String>(endpointAddress),
-      endpointGroupId = pulumi.Input.asOptionalInput<String>(endpointGroupId),
-      endpointId = pulumi.Input.asOptionalInput<String>(endpointId),
-      endpointSubAddress = pulumi.Input.asOptionalInput<String>(endpointSubAddress),
-      endpointSubAddressType = pulumi.Input.asOptionalInput<String>(endpointSubAddressType),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      endpointZoneId = pulumi.Input.asOptionalInput<String>(endpointZoneId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.basicEndpointName,
+    this.endpointAddress,
+    this.endpointGroupId,
+    this.endpointId,
+    this.endpointSubAddress,
+    this.endpointSubAddressType,
+    this.endpointType,
+    this.endpointZoneId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class BasicEndpointState {
 
   factory BasicEndpointState.fromMap(Map<String, dynamic> map) {
     return BasicEndpointState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      basicEndpointName: map['basicEndpointName'] == null ? null : pulumi.Output.create<String>(map['basicEndpointName'] as String),
-      endpointAddress: map['endpointAddress'] == null ? null : pulumi.Output.create<String>(map['endpointAddress'] as String),
-      endpointGroupId: map['endpointGroupId'] == null ? null : pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      endpointId: map['endpointId'] == null ? null : pulumi.Output.create<String>(map['endpointId'] as String),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : pulumi.Output.create<String>(map['endpointSubAddress'] as String),
-      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : pulumi.Output.create<String>(map['endpointSubAddressType'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      endpointZoneId: map['endpointZoneId'] == null ? null : pulumi.Output.create<String>(map['endpointZoneId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      basicEndpointName: map['basicEndpointName'] == null ? null : (map['basicEndpointName'] as String).input(),
+      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress'] as String).input(),
+      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : (map['endpointSubAddressType'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointZoneId: map['endpointZoneId'] == null ? null : (map['endpointZoneId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

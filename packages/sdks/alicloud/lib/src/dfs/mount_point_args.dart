@@ -34,23 +34,15 @@ class MountPointArgs {
   /// [vpcId] The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
   /// [vswitchId] VSwitch ID, which specifies the VSwitch resource used to create the mount point.
   MountPointArgs({
-    required pulumi.Output<String> accessGroupId,
-    pulumi.Output<String>? aliasPrefix,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> networkType,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      accessGroupId = pulumi.Input.asInput<String>(accessGroupId),
-      aliasPrefix = pulumi.Input.asOptionalInput<String>(aliasPrefix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      networkType = pulumi.Input.asInput<String>(networkType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    required this.accessGroupId,
+    this.aliasPrefix,
+    this.description,
+    required this.fileSystemId,
+    required this.networkType,
+    this.status,
+    required this.vpcId,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class MountPointArgs {
 
   factory MountPointArgs.fromMap(Map<String, dynamic> map) {
     return MountPointArgs(
-      accessGroupId: pulumi.Output.create<String>(map['accessGroupId'] as String),
-      aliasPrefix: map['aliasPrefix'] == null ? null : pulumi.Output.create<String>(map['aliasPrefix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      networkType: pulumi.Output.create<String>(map['networkType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroupId: (map['accessGroupId'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      networkType: (map['networkType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

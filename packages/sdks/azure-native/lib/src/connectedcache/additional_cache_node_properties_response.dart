@@ -8,67 +8,67 @@ import 'proxy_url_configuration_response.dart';
 /// Model representing cache node for connected cache resource
 class AdditionalCacheNodePropertiesResponse {
   /// Cache node resource aggregated status code.
-  final int aggregatedStatusCode;
+  final pulumi.Input<int> aggregatedStatusCode;
   /// Cache node resource aggregated status details.
-  final String aggregatedStatusDetails;
+  final pulumi.Input<String> aggregatedStatusDetails;
   /// Cache node resource aggregated status text.
-  final String aggregatedStatusText;
+  final pulumi.Input<String> aggregatedStatusText;
   /// Auto update version that is the applied to update on mcc cache node
-  final String autoUpdateAppliedVersion;
+  final pulumi.Input<String> autoUpdateAppliedVersion;
   /// Auto update last applied date time of mcc install
-  final String autoUpdateLastAppliedDateTime;
+  final pulumi.Input<String> autoUpdateLastAppliedDateTime;
   /// Auto Update status details from the backend after applying the new version details
-  final String autoUpdateLastAppliedDetails;
+  final pulumi.Input<String> autoUpdateLastAppliedDetails;
   /// Last applied auto update state for mcc install of auto update cycle
-  final String autoUpdateLastAppliedState;
+  final pulumi.Input<String> autoUpdateLastAppliedState;
   /// Auto update last triggered date time of mcc install
-  final String autoUpdateLastTriggeredDateTime;
+  final pulumi.Input<String> autoUpdateLastTriggeredDateTime;
   /// Auto update last applied date time of mcc install
-  final String autoUpdateNextAvailableDateTime;
+  final pulumi.Input<String> autoUpdateNextAvailableDateTime;
   /// Auto update version that is the Next available version to update on mcc cache node
-  final String autoUpdateNextAvailableVersion;
+  final pulumi.Input<String> autoUpdateNextAvailableVersion;
   /// Auto update or fast update version
-  final String? autoUpdateVersion;
+  final pulumi.Input<String>? autoUpdateVersion;
   /// Cache node resource Bgp configuration.
-  final BgpConfigurationResponse? bgpConfiguration;
+  final pulumi.Input<BgpConfigurationResponse>? bgpConfiguration;
   /// issues list to return the issues as part of the additional cache node properties
-  final List<String>? cacheNodePropertiesDetailsIssuesList;
+  final pulumi.Input<List<String>>? cacheNodePropertiesDetailsIssuesList;
   /// Cache node resource state as integer.
-  final int cacheNodeState;
+  final pulumi.Input<int> cacheNodeState;
   /// Cache node resource detailed state text.
-  final String cacheNodeStateDetailedText;
+  final pulumi.Input<String> cacheNodeStateDetailedText;
   /// Cache node resource short state text.
-  final String cacheNodeStateShortText;
+  final pulumi.Input<String> cacheNodeStateShortText;
   /// Cache node resource drive configurations.
-  final List<CacheNodeDriveConfigurationResponse>? driveConfiguration;
+  final pulumi.Input<List<CacheNodeDriveConfigurationResponse>>? driveConfiguration;
   /// Cache node resource flag indicating if cache node has been physically installed or provisioned on their physical lab.
-  final bool isProvisioned;
+  final pulumi.Input<bool> isProvisioned;
   /// Cache node resource requires a proxy
-  final String? isProxyRequired;
+  final pulumi.Input<String>? isProxyRequired;
   /// Optional property #1 of Mcc response object
-  final String? optionalProperty1;
+  final pulumi.Input<String>? optionalProperty1;
   /// Optional property #2 of Mcc response object
-  final String? optionalProperty2;
+  final pulumi.Input<String>? optionalProperty2;
   /// Optional property #3 of Mcc response object
-  final String? optionalProperty3;
+  final pulumi.Input<String>? optionalProperty3;
   /// Optional property #4 of Mcc response object
-  final String? optionalProperty4;
+  final pulumi.Input<String>? optionalProperty4;
   /// Optional property #5 of Mcc response object
-  final String? optionalProperty5;
+  final pulumi.Input<String>? optionalProperty5;
   /// Operating system of the cache node
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// Cache node resource Mcc product version.
-  final String productVersion;
+  final pulumi.Input<String> productVersion;
   /// Cache node resource Mcc proxy Url
-  final String? proxyUrl;
+  final pulumi.Input<String>? proxyUrl;
   /// proxyUrl configuration of the cache node
-  final ProxyUrlConfigurationResponse? proxyUrlConfiguration;
+  final pulumi.Input<ProxyUrlConfigurationResponse>? proxyUrlConfiguration;
   /// Update Cycle Type
-  final String? updateCycleType;
+  final pulumi.Input<String>? updateCycleType;
   /// Update related information details
-  final String? updateInfoDetails;
+  final pulumi.Input<String>? updateInfoDetails;
   /// customer requested date time for mcc install of update cycle
-  final String? updateRequestedDateTime;
+  final pulumi.Input<String>? updateRequestedDateTime;
 
   /// Creates a new [AdditionalCacheNodePropertiesResponse].
   /// [aggregatedStatusCode] Cache node resource aggregated status code.
@@ -149,12 +149,12 @@ class AdditionalCacheNodePropertiesResponse {
       'autoUpdateNextAvailableDateTime': autoUpdateNextAvailableDateTime,
       'autoUpdateNextAvailableVersion': autoUpdateNextAvailableVersion,
       'autoUpdateVersion': ?autoUpdateVersion,
-      'bgpConfiguration': ?bgpConfiguration == null ? null : bgpConfiguration!.toMap(),
+      'bgpConfiguration': ?pulumi.Input.mapOptionalInputValue<BgpConfigurationResponse, Map<String, dynamic>>(bgpConfiguration, (value) => value.toMap()),
       'cacheNodePropertiesDetailsIssuesList': ?cacheNodePropertiesDetailsIssuesList,
       'cacheNodeState': cacheNodeState,
       'cacheNodeStateDetailedText': cacheNodeStateDetailedText,
       'cacheNodeStateShortText': cacheNodeStateShortText,
-      'driveConfiguration': ?driveConfiguration == null ? null : pulumi.Input.encodeList<CacheNodeDriveConfigurationResponse, Map<String, dynamic>>(driveConfiguration!, (value) => value.toMap()),
+      'driveConfiguration': ?pulumi.Input.mapOptionalInputValue<List<CacheNodeDriveConfigurationResponse>, List<Map<String, dynamic>>>(driveConfiguration, (value) => pulumi.Input.encodeList<CacheNodeDriveConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isProvisioned': isProvisioned,
       'isProxyRequired': ?isProxyRequired,
       'optionalProperty1': ?optionalProperty1,
@@ -165,7 +165,7 @@ class AdditionalCacheNodePropertiesResponse {
       'osType': ?osType,
       'productVersion': productVersion,
       'proxyUrl': ?proxyUrl,
-      'proxyUrlConfiguration': ?proxyUrlConfiguration == null ? null : proxyUrlConfiguration!.toMap(),
+      'proxyUrlConfiguration': ?pulumi.Input.mapOptionalInputValue<ProxyUrlConfigurationResponse, Map<String, dynamic>>(proxyUrlConfiguration, (value) => value.toMap()),
       'updateCycleType': ?updateCycleType,
       'updateInfoDetails': ?updateInfoDetails,
       'updateRequestedDateTime': ?updateRequestedDateTime,
@@ -174,37 +174,37 @@ class AdditionalCacheNodePropertiesResponse {
 
   factory AdditionalCacheNodePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalCacheNodePropertiesResponse(
-      aggregatedStatusCode: map['aggregatedStatusCode'] as int,
-      aggregatedStatusDetails: map['aggregatedStatusDetails'] as String,
-      aggregatedStatusText: map['aggregatedStatusText'] as String,
-      autoUpdateAppliedVersion: map['autoUpdateAppliedVersion'] as String,
-      autoUpdateLastAppliedDateTime: map['autoUpdateLastAppliedDateTime'] as String,
-      autoUpdateLastAppliedDetails: map['autoUpdateLastAppliedDetails'] as String,
-      autoUpdateLastAppliedState: map['autoUpdateLastAppliedState'] as String,
-      autoUpdateLastTriggeredDateTime: map['autoUpdateLastTriggeredDateTime'] as String,
-      autoUpdateNextAvailableDateTime: map['autoUpdateNextAvailableDateTime'] as String,
-      autoUpdateNextAvailableVersion: map['autoUpdateNextAvailableVersion'] as String,
-      autoUpdateVersion: map['autoUpdateVersion'] == null ? null : map['autoUpdateVersion'] as String,
-      bgpConfiguration: map['bgpConfiguration'] == null ? null : BgpConfigurationResponse.fromMap((map['bgpConfiguration'] as Map).cast<String, dynamic>()),
-      cacheNodePropertiesDetailsIssuesList: map['cacheNodePropertiesDetailsIssuesList'] == null ? null : (map['cacheNodePropertiesDetailsIssuesList'] as List).cast<String>(),
-      cacheNodeState: map['cacheNodeState'] as int,
-      cacheNodeStateDetailedText: map['cacheNodeStateDetailedText'] as String,
-      cacheNodeStateShortText: map['cacheNodeStateShortText'] as String,
-      driveConfiguration: map['driveConfiguration'] == null ? null : pulumi.Input.decodeList<CacheNodeDriveConfigurationResponse>(map['driveConfiguration'], (value) => CacheNodeDriveConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isProvisioned: map['isProvisioned'] as bool,
-      isProxyRequired: map['isProxyRequired'] == null ? null : map['isProxyRequired'] as String,
-      optionalProperty1: map['optionalProperty1'] == null ? null : map['optionalProperty1'] as String,
-      optionalProperty2: map['optionalProperty2'] == null ? null : map['optionalProperty2'] as String,
-      optionalProperty3: map['optionalProperty3'] == null ? null : map['optionalProperty3'] as String,
-      optionalProperty4: map['optionalProperty4'] == null ? null : map['optionalProperty4'] as String,
-      optionalProperty5: map['optionalProperty5'] == null ? null : map['optionalProperty5'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      productVersion: map['productVersion'] as String,
-      proxyUrl: map['proxyUrl'] == null ? null : map['proxyUrl'] as String,
-      proxyUrlConfiguration: map['proxyUrlConfiguration'] == null ? null : ProxyUrlConfigurationResponse.fromMap((map['proxyUrlConfiguration'] as Map).cast<String, dynamic>()),
-      updateCycleType: map['updateCycleType'] == null ? null : map['updateCycleType'] as String,
-      updateInfoDetails: map['updateInfoDetails'] == null ? null : map['updateInfoDetails'] as String,
-      updateRequestedDateTime: map['updateRequestedDateTime'] == null ? null : map['updateRequestedDateTime'] as String,
+      aggregatedStatusCode: (map['aggregatedStatusCode'] as int).input(),
+      aggregatedStatusDetails: (map['aggregatedStatusDetails'] as String).input(),
+      aggregatedStatusText: (map['aggregatedStatusText'] as String).input(),
+      autoUpdateAppliedVersion: (map['autoUpdateAppliedVersion'] as String).input(),
+      autoUpdateLastAppliedDateTime: (map['autoUpdateLastAppliedDateTime'] as String).input(),
+      autoUpdateLastAppliedDetails: (map['autoUpdateLastAppliedDetails'] as String).input(),
+      autoUpdateLastAppliedState: (map['autoUpdateLastAppliedState'] as String).input(),
+      autoUpdateLastTriggeredDateTime: (map['autoUpdateLastTriggeredDateTime'] as String).input(),
+      autoUpdateNextAvailableDateTime: (map['autoUpdateNextAvailableDateTime'] as String).input(),
+      autoUpdateNextAvailableVersion: (map['autoUpdateNextAvailableVersion'] as String).input(),
+      autoUpdateVersion: map['autoUpdateVersion'] == null ? null : (map['autoUpdateVersion'] as String).input(),
+      bgpConfiguration: map['bgpConfiguration'] == null ? null : (BgpConfigurationResponse.fromMap((map['bgpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cacheNodePropertiesDetailsIssuesList: map['cacheNodePropertiesDetailsIssuesList'] == null ? null : ((map['cacheNodePropertiesDetailsIssuesList'] as List).cast<String>()).input(),
+      cacheNodeState: (map['cacheNodeState'] as int).input(),
+      cacheNodeStateDetailedText: (map['cacheNodeStateDetailedText'] as String).input(),
+      cacheNodeStateShortText: (map['cacheNodeStateShortText'] as String).input(),
+      driveConfiguration: map['driveConfiguration'] == null ? null : (pulumi.Input.decodeList<CacheNodeDriveConfigurationResponse>(map['driveConfiguration'], (value) => CacheNodeDriveConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isProvisioned: (map['isProvisioned'] as bool).input(),
+      isProxyRequired: map['isProxyRequired'] == null ? null : (map['isProxyRequired'] as String).input(),
+      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1'] as String).input(),
+      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2'] as String).input(),
+      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3'] as String).input(),
+      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4'] as String).input(),
+      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      productVersion: (map['productVersion'] as String).input(),
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
+      proxyUrlConfiguration: map['proxyUrlConfiguration'] == null ? null : (ProxyUrlConfigurationResponse.fromMap((map['proxyUrlConfiguration'] as Map).cast<String, dynamic>())).input(),
+      updateCycleType: map['updateCycleType'] == null ? null : (map['updateCycleType'] as String).input(),
+      updateInfoDetails: map['updateInfoDetails'] == null ? null : (map['updateInfoDetails'] as String).input(),
+      updateRequestedDateTime: map['updateRequestedDateTime'] == null ? null : (map['updateRequestedDateTime'] as String).input(),
     );
   }
 }

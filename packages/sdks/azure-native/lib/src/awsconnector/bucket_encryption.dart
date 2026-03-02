@@ -6,7 +6,7 @@ import 'server_side_encryption_rule.dart';
 /// Definition of BucketEncryption
 class BucketEncryption {
   /// Specifies the default server-side-encryption configuration.
-  final List<ServerSideEncryptionRule>? serverSideEncryptionConfiguration;
+  final pulumi.Input<List<ServerSideEncryptionRule>>? serverSideEncryptionConfiguration;
 
   /// Creates a new [BucketEncryption].
   /// [serverSideEncryptionConfiguration] Specifies the default server-side-encryption configuration.
@@ -16,13 +16,13 @@ class BucketEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverSideEncryptionConfiguration': ?serverSideEncryptionConfiguration == null ? null : pulumi.Input.encodeList<ServerSideEncryptionRule, Map<String, dynamic>>(serverSideEncryptionConfiguration!, (value) => value.toMap()),
+      'serverSideEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<List<ServerSideEncryptionRule>, List<Map<String, dynamic>>>(serverSideEncryptionConfiguration, (value) => pulumi.Input.encodeList<ServerSideEncryptionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BucketEncryption.fromMap(Map<String, dynamic> map) {
     return BucketEncryption(
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : pulumi.Input.decodeList<ServerSideEncryptionRule>(map['serverSideEncryptionConfiguration'], (value) => ServerSideEncryptionRule.fromMap((value as Map).cast<String, dynamic>())),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (pulumi.Input.decodeList<ServerSideEncryptionRule>(map['serverSideEncryptionConfiguration'], (value) => ServerSideEncryptionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
 class EdgeLocationResponseNetworkmanagementV1beta1 {
   /// Name of the metropolitan area.
-  final String metropolitanArea;
+  final pulumi.Input<String> metropolitanArea;
 
   /// Creates a new [EdgeLocationResponseNetworkmanagementV1beta1].
   /// [metropolitanArea] Name of the metropolitan area.
@@ -20,7 +21,7 @@ class EdgeLocationResponseNetworkmanagementV1beta1 {
 
   factory EdgeLocationResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return EdgeLocationResponseNetworkmanagementV1beta1(
-      metropolitanArea: map['metropolitanArea'] as String,
+      metropolitanArea: (map['metropolitanArea'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetNetworkPeeringArgs {
   /// [networkPeeringId] Required.
   /// [project] Optional.
   GetNetworkPeeringArgs({
-    required pulumi.Output<String> networkPeeringId,
-    pulumi.Output<String>? project,
-  }) :
-      networkPeeringId = pulumi.Input.asInput<String>(networkPeeringId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.networkPeeringId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetNetworkPeeringArgs {
 
   factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringArgs(
-      networkPeeringId: pulumi.Output.create<String>(map['networkPeeringId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      networkPeeringId: (map['networkPeeringId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

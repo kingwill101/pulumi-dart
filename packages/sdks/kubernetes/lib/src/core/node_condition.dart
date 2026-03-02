@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NodeCondition contains condition information for a node.
 class NodeCondition {
   /// Last time we got an update on a given condition.
-  final String? lastHeartbeatTime;
+  final pulumi.Input<String>? lastHeartbeatTime;
   /// Last time the condition transit from one status to another.
-  final String? lastTransitionTime;
+  final pulumi.Input<String>? lastTransitionTime;
   /// Human readable message indicating details about last transition.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// (brief) reason for the condition's last transition.
-  final String? reason;
+  final pulumi.Input<String>? reason;
   /// Status of the condition, one of True, False, Unknown.
-  final String status;
+  final pulumi.Input<String> status;
   /// Type of node condition.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NodeCondition].
   /// [lastHeartbeatTime] Last time we got an update on a given condition.
@@ -45,12 +46,12 @@ class NodeCondition {
 
   factory NodeCondition.fromMap(Map<String, dynamic> map) {
     return NodeCondition(
-      lastHeartbeatTime: map['lastHeartbeatTime'] == null ? null : map['lastHeartbeatTime'] as String,
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      reason: map['reason'] == null ? null : map['reason'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      lastHeartbeatTime: map['lastHeartbeatTime'] == null ? null : (map['lastHeartbeatTime'] as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

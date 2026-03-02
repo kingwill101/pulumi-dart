@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetJobDefinitionRetryStrategyEvaluateOnExit {
   /// Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
-  final String action;
+  final pulumi.Input<String> action;
   /// Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job.
-  final String onExitCode;
+  final pulumi.Input<String> onExitCode;
   /// Contains a glob pattern to match against the Reason returned for a job.
-  final String onReason;
+  final pulumi.Input<String> onReason;
   /// Contains a glob pattern to match against the StatusReason returned for a job.
-  final String onStatusReason;
+  final pulumi.Input<String> onStatusReason;
 
   /// Creates a new [GetJobDefinitionRetryStrategyEvaluateOnExit].
   /// [action] Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
@@ -34,10 +35,10 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
 
   factory GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionRetryStrategyEvaluateOnExit(
-      action: map['action'] as String,
-      onExitCode: map['onExitCode'] as String,
-      onReason: map['onReason'] as String,
-      onStatusReason: map['onStatusReason'] as String,
+      action: (map['action'] as String).input(),
+      onExitCode: (map['onExitCode'] as String).input(),
+      onReason: (map['onReason'] as String).input(),
+      onStatusReason: (map['onStatusReason'] as String).input(),
     );
   }
 }

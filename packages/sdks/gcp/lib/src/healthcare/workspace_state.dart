@@ -32,19 +32,13 @@ class WorkspaceState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [settings] Settings associated with this workspace.
   WorkspaceState({
-    pulumi.Output<String>? dataset,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<WorkspaceSettings>? settings,
-  }) :
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      settings = pulumi.Input.asOptionalInput<WorkspaceSettings>(settings);
+    this.dataset,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.pulumiLabels,
+    this.settings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      settings: map['settings'] == null ? null : pulumi.Output.create<WorkspaceSettings>(WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      settings: map['settings'] == null ? null : (WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -7,13 +7,13 @@ import 'attestation_evidence_response.dart';
 /// Additional data about assignment that has Attest effect
 class StandardAssignmentPropertiesResponseAttestationData {
   /// Component item with key as applied to this standard assignment over the given scope
-  final AssignedAssessmentItemResponse? assignedAssessment;
+  final pulumi.Input<AssignedAssessmentItemResponse>? assignedAssessment;
   /// Attestation compliance date
-  final String complianceDate;
+  final pulumi.Input<String> complianceDate;
   /// Attest category of this assignment
-  final String? complianceState;
+  final pulumi.Input<String>? complianceState;
   /// Array of links to attestation evidence
-  final List<AttestationEvidenceResponse>? evidence;
+  final pulumi.Input<List<AttestationEvidenceResponse>>? evidence;
 
   /// Creates a new [StandardAssignmentPropertiesResponseAttestationData].
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope
@@ -29,19 +29,19 @@ class StandardAssignmentPropertiesResponseAttestationData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedAssessment': ?assignedAssessment == null ? null : assignedAssessment!.toMap(),
+      'assignedAssessment': ?pulumi.Input.mapOptionalInputValue<AssignedAssessmentItemResponse, Map<String, dynamic>>(assignedAssessment, (value) => value.toMap()),
       'complianceDate': complianceDate,
       'complianceState': ?complianceState,
-      'evidence': ?evidence == null ? null : pulumi.Input.encodeList<AttestationEvidenceResponse, Map<String, dynamic>>(evidence!, (value) => value.toMap()),
+      'evidence': ?pulumi.Input.mapOptionalInputValue<List<AttestationEvidenceResponse>, List<Map<String, dynamic>>>(evidence, (value) => pulumi.Input.encodeList<AttestationEvidenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StandardAssignmentPropertiesResponseAttestationData.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentPropertiesResponseAttestationData(
-      assignedAssessment: map['assignedAssessment'] == null ? null : AssignedAssessmentItemResponse.fromMap((map['assignedAssessment'] as Map).cast<String, dynamic>()),
-      complianceDate: map['complianceDate'] as String,
-      complianceState: map['complianceState'] == null ? null : map['complianceState'] as String,
-      evidence: map['evidence'] == null ? null : pulumi.Input.decodeList<AttestationEvidenceResponse>(map['evidence'], (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment'] as Map).cast<String, dynamic>())).input(),
+      complianceDate: (map['complianceDate'] as String).input(),
+      complianceState: map['complianceState'] == null ? null : (map['complianceState'] as String).input(),
+      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidenceResponse>(map['evidence'], (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class PlaywrightWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   PlaywrightWorkspaceArgs({
-    pulumi.Output<String>? localAuth,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? playwrightWorkspaceName,
-    pulumi.Output<String>? regionalAffinity,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      localAuth = pulumi.Input.asOptionalInput<String>(localAuth),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      playwrightWorkspaceName = pulumi.Input.asOptionalInput<String>(playwrightWorkspaceName),
-      regionalAffinity = pulumi.Input.asOptionalInput<String>(regionalAffinity),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.localAuth,
+    this.location,
+    this.playwrightWorkspaceName,
+    this.regionalAffinity,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class PlaywrightWorkspaceArgs {
 
   factory PlaywrightWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return PlaywrightWorkspaceArgs(
-      localAuth: map['localAuth'] == null ? null : pulumi.Output.create<String>(map['localAuth'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      playwrightWorkspaceName: map['playwrightWorkspaceName'] == null ? null : pulumi.Output.create<String>(map['playwrightWorkspaceName'] as String),
-      regionalAffinity: map['regionalAffinity'] == null ? null : pulumi.Output.create<String>(map['regionalAffinity'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      localAuth: map['localAuth'] == null ? null : (map['localAuth'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      playwrightWorkspaceName: map['playwrightWorkspaceName'] == null ? null : (map['playwrightWorkspaceName'] as String).input(),
+      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

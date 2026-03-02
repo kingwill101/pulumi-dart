@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the checks that should be made while validating the JWT Claims.
 class JwtClaimChecks {
   /// The list of the allowed client applications.
-  final List<String>? allowedClientApplications;
+  final pulumi.Input<List<String>>? allowedClientApplications;
   /// The list of the allowed groups.
-  final List<String>? allowedGroups;
+  final pulumi.Input<List<String>>? allowedGroups;
 
   /// Creates a new [JwtClaimChecks].
   /// [allowedClientApplications] The list of the allowed client applications.
@@ -25,8 +26,8 @@ class JwtClaimChecks {
 
   factory JwtClaimChecks.fromMap(Map<String, dynamic> map) {
     return JwtClaimChecks(
-      allowedClientApplications: map['allowedClientApplications'] == null ? null : (map['allowedClientApplications'] as List).cast<String>(),
-      allowedGroups: map['allowedGroups'] == null ? null : (map['allowedGroups'] as List).cast<String>(),
+      allowedClientApplications: map['allowedClientApplications'] == null ? null : ((map['allowedClientApplications'] as List).cast<String>()).input(),
+      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups'] as List).cast<String>()).input(),
     );
   }
 }

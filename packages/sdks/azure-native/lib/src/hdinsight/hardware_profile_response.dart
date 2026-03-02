@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The hardware profile.
 class HardwareProfileResponse {
   /// The size of the VM
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [HardwareProfileResponse].
   /// [vmSize] The size of the VM
@@ -20,7 +21,7 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

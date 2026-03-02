@@ -28,17 +28,12 @@ class AnalyzerArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type that represents the zone of trust or scope for the analyzer. Valid values are `ACCOUNT`, `ACCOUNT_INTERNAL_ACCESS`, `ACCOUNT_UNUSED_ACCESS`, `ORGANIZATION`, `ORGANIZATION_INTERNAL_ACCESS`, `ORGANIZATION_UNUSED_ACCESS`. Defaults to `ACCOUNT`.
   AnalyzerArgs({
-    required pulumi.Output<String> analyzerName,
-    pulumi.Output<AnalyzerConfiguration>? configuration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-  }) :
-      analyzerName = pulumi.Input.asInput<String>(analyzerName),
-      configuration = pulumi.Input.asOptionalInput<AnalyzerConfiguration>(configuration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.analyzerName,
+    this.configuration,
+    this.region,
+    this.tags,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +47,11 @@ class AnalyzerArgs {
 
   factory AnalyzerArgs.fromMap(Map<String, dynamic> map) {
     return AnalyzerArgs(
-      analyzerName: pulumi.Output.create<String>(map['analyzerName'] as String),
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<AnalyzerConfiguration>(AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      analyzerName: (map['analyzerName'] as String).input(),
+      configuration: map['configuration'] == null ? null : (AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

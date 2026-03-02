@@ -7,11 +7,11 @@ import 'update_status_response.dart';
 /// The status of a UpdateGroup.
 class UpdateGroupStatusResponse {
   /// The list of member this UpdateGroup updates.
-  final List<MemberUpdateStatusResponse> members;
+  final pulumi.Input<List<MemberUpdateStatusResponse>> members;
   /// The name of the UpdateGroup.
-  final String name;
+  final pulumi.Input<String> name;
   /// The status of the UpdateGroup.
-  final UpdateStatusResponse status;
+  final pulumi.Input<UpdateStatusResponse> status;
 
   /// Creates a new [UpdateGroupStatusResponse].
   /// [members] The list of member this UpdateGroup updates.
@@ -25,17 +25,17 @@ class UpdateGroupStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'members': pulumi.Input.encodeList<MemberUpdateStatusResponse, Map<String, dynamic>>(members, (value) => value.toMap()),
+      'members': pulumi.Input.mapInputValue<List<MemberUpdateStatusResponse>, List<Map<String, dynamic>>>(members, (value) => pulumi.Input.encodeList<MemberUpdateStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<UpdateStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory UpdateGroupStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpdateGroupStatusResponse(
-      members: pulumi.Input.decodeList<MemberUpdateStatusResponse>(map['members'], (value) => MemberUpdateStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      status: UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      members: (pulumi.Input.decodeList<MemberUpdateStatusResponse>(map['members'], (value) => MemberUpdateStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      status: (UpdateStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

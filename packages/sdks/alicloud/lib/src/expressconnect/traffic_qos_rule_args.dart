@@ -94,35 +94,21 @@ class TrafficQosRuleArgs {
   /// [srcIpv6Cidr] The QoS rule traffic matches the source IPv6 network segment.
   /// [srcPortRange] The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
   TrafficQosRuleArgs({
-    pulumi.Output<String>? dstCidr,
-    pulumi.Output<String>? dstIpv6Cidr,
-    pulumi.Output<String>? dstPortRange,
-    pulumi.Output<int>? matchDscp,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> protocol,
-    required pulumi.Output<String> qosId,
-    required pulumi.Output<String> queueId,
-    pulumi.Output<int>? remarkingDscp,
-    pulumi.Output<String>? ruleDescription,
-    pulumi.Output<String>? ruleName,
-    pulumi.Output<String>? srcCidr,
-    pulumi.Output<String>? srcIpv6Cidr,
-    pulumi.Output<String>? srcPortRange,
-  }) :
-      dstCidr = pulumi.Input.asOptionalInput<String>(dstCidr),
-      dstIpv6Cidr = pulumi.Input.asOptionalInput<String>(dstIpv6Cidr),
-      dstPortRange = pulumi.Input.asOptionalInput<String>(dstPortRange),
-      matchDscp = pulumi.Input.asOptionalInput<int>(matchDscp),
-      priority = pulumi.Input.asInput<int>(priority),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      qosId = pulumi.Input.asInput<String>(qosId),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      remarkingDscp = pulumi.Input.asOptionalInput<int>(remarkingDscp),
-      ruleDescription = pulumi.Input.asOptionalInput<String>(ruleDescription),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      srcCidr = pulumi.Input.asOptionalInput<String>(srcCidr),
-      srcIpv6Cidr = pulumi.Input.asOptionalInput<String>(srcIpv6Cidr),
-      srcPortRange = pulumi.Input.asOptionalInput<String>(srcPortRange);
+    this.dstCidr,
+    this.dstIpv6Cidr,
+    this.dstPortRange,
+    this.matchDscp,
+    required this.priority,
+    required this.protocol,
+    required this.qosId,
+    required this.queueId,
+    this.remarkingDscp,
+    this.ruleDescription,
+    this.ruleName,
+    this.srcCidr,
+    this.srcIpv6Cidr,
+    this.srcPortRange,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -145,20 +131,20 @@ class TrafficQosRuleArgs {
 
   factory TrafficQosRuleArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosRuleArgs(
-      dstCidr: map['dstCidr'] == null ? null : pulumi.Output.create<String>(map['dstCidr'] as String),
-      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : pulumi.Output.create<String>(map['dstIpv6Cidr'] as String),
-      dstPortRange: map['dstPortRange'] == null ? null : pulumi.Output.create<String>(map['dstPortRange'] as String),
-      matchDscp: map['matchDscp'] == null ? null : pulumi.Output.create<int>(map['matchDscp'] as int),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      qosId: pulumi.Output.create<String>(map['qosId'] as String),
-      queueId: pulumi.Output.create<String>(map['queueId'] as String),
-      remarkingDscp: map['remarkingDscp'] == null ? null : pulumi.Output.create<int>(map['remarkingDscp'] as int),
-      ruleDescription: map['ruleDescription'] == null ? null : pulumi.Output.create<String>(map['ruleDescription'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      srcCidr: map['srcCidr'] == null ? null : pulumi.Output.create<String>(map['srcCidr'] as String),
-      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : pulumi.Output.create<String>(map['srcIpv6Cidr'] as String),
-      srcPortRange: map['srcPortRange'] == null ? null : pulumi.Output.create<String>(map['srcPortRange'] as String),
+      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr'] as String).input(),
+      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr'] as String).input(),
+      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange'] as String).input(),
+      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      qosId: (map['qosId'] as String).input(),
+      queueId: (map['queueId'] as String).input(),
+      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp'] as int).input(),
+      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr'] as String).input(),
+      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr'] as String).input(),
+      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange'] as String).input(),
     );
   }
 }

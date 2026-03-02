@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The table configuration for the Log Analytics integration.
 class AzureMonitorTableConfigurationResponse {
   /// The name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AzureMonitorTableConfigurationResponse].
   /// [name] The name.
@@ -20,7 +21,7 @@ class AzureMonitorTableConfigurationResponse {
 
   factory AzureMonitorTableConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorTableConfigurationResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

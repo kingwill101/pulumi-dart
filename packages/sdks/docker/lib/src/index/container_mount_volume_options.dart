@@ -5,15 +5,15 @@ import 'container_mount_volume_options_label.dart';
 
 class ContainerMountVolumeOptions {
   /// Name of the driver to use to create the volume.
-  final String? driverName;
+  final pulumi.Input<String>? driverName;
   /// key/value map of driver specific options.
-  final Map<String, String>? driverOptions;
+  final pulumi.Input<Map<String, String>>? driverOptions;
   /// User-defined key/value metadata.
-  final List<ContainerMountVolumeOptionsLabel>? labels;
+  final pulumi.Input<List<ContainerMountVolumeOptionsLabel>>? labels;
   /// Populate volume with data from the target.
-  final bool? noCopy;
+  final pulumi.Input<bool>? noCopy;
   /// Path within the volume to mount. Requires docker server version 1.45 or higher.
-  final String? subpath;
+  final pulumi.Input<String>? subpath;
 
   /// Creates a new [ContainerMountVolumeOptions].
   /// [driverName] Name of the driver to use to create the volume.
@@ -33,7 +33,7 @@ class ContainerMountVolumeOptions {
     return <String, dynamic>{
       'driverName': ?driverName,
       'driverOptions': ?driverOptions,
-      'labels': ?labels == null ? null : pulumi.Input.encodeList<ContainerMountVolumeOptionsLabel, Map<String, dynamic>>(labels!, (value) => value.toMap()),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<ContainerMountVolumeOptionsLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<ContainerMountVolumeOptionsLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'noCopy': ?noCopy,
       'subpath': ?subpath,
     };
@@ -41,11 +41,11 @@ class ContainerMountVolumeOptions {
 
   factory ContainerMountVolumeOptions.fromMap(Map<String, dynamic> map) {
     return ContainerMountVolumeOptions(
-      driverName: map['driverName'] == null ? null : map['driverName'] as String,
-      driverOptions: map['driverOptions'] == null ? null : (map['driverOptions'] as Map).cast<String, String>(),
-      labels: map['labels'] == null ? null : pulumi.Input.decodeList<ContainerMountVolumeOptionsLabel>(map['labels'], (value) => ContainerMountVolumeOptionsLabel.fromMap((value as Map).cast<String, dynamic>())),
-      noCopy: map['noCopy'] == null ? null : map['noCopy'] as bool,
-      subpath: map['subpath'] == null ? null : map['subpath'] as String,
+      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
+      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ContainerMountVolumeOptionsLabel>(map['labels'], (value) => ContainerMountVolumeOptionsLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noCopy: map['noCopy'] == null ? null : (map['noCopy'] as bool).input(),
+      subpath: map['subpath'] == null ? null : (map['subpath'] as String).input(),
     );
   }
 }

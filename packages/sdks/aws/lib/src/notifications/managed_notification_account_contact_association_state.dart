@@ -13,11 +13,9 @@ class ManagedNotificationAccountContactAssociationState {
   /// [contactIdentifier] A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
   /// [managedNotificationConfigurationArn] ARN of the managed notification configuration to associate the account contact with.
   ManagedNotificationAccountContactAssociationState({
-    pulumi.Output<String>? contactIdentifier,
-    pulumi.Output<String>? managedNotificationConfigurationArn,
-  }) :
-      contactIdentifier = pulumi.Input.asOptionalInput<String>(contactIdentifier),
-      managedNotificationConfigurationArn = pulumi.Input.asOptionalInput<String>(managedNotificationConfigurationArn);
+    this.contactIdentifier,
+    this.managedNotificationConfigurationArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ManagedNotificationAccountContactAssociationState {
 
   factory ManagedNotificationAccountContactAssociationState.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAccountContactAssociationState(
-      contactIdentifier: map['contactIdentifier'] == null ? null : pulumi.Output.create<String>(map['contactIdentifier'] as String),
-      managedNotificationConfigurationArn: map['managedNotificationConfigurationArn'] == null ? null : pulumi.Output.create<String>(map['managedNotificationConfigurationArn'] as String),
+      contactIdentifier: map['contactIdentifier'] == null ? null : (map['contactIdentifier'] as String).input(),
+      managedNotificationConfigurationArn: map['managedNotificationConfigurationArn'] == null ? null : (map['managedNotificationConfigurationArn'] as String).input(),
     );
   }
 }

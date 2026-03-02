@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetColumnLevelPermissionRule {
-  final List<String> columnNames;
-  final List<String> principals;
+  final pulumi.Input<List<String>> columnNames;
+  final pulumi.Input<List<String>> principals;
 
   /// Creates a new [GetDataSetColumnLevelPermissionRule].
   /// [columnNames] Required.
@@ -22,8 +23,8 @@ class GetDataSetColumnLevelPermissionRule {
 
   factory GetDataSetColumnLevelPermissionRule.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnLevelPermissionRule(
-      columnNames: (map['columnNames'] as List).cast<String>(),
-      principals: (map['principals'] as List).cast<String>(),
+      columnNames: ((map['columnNames'] as List).cast<String>()).input(),
+      principals: ((map['principals'] as List).cast<String>()).input(),
     );
   }
 }

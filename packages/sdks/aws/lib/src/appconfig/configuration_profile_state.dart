@@ -47,33 +47,20 @@ class ConfigurationProfileState {
   /// [type] Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   /// [validators] Set of methods for validating the configuration. Maximum of 2. See Validator below for more details.
   ConfigurationProfileState({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? configurationProfileId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsKeyIdentifier,
-    pulumi.Output<String>? locationUri,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? retrievalRoleArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? type,
-    pulumi.Output<List<ConfigurationProfileValidator>>? validators,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      configurationProfileId = pulumi.Input.asOptionalInput<String>(configurationProfileId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      locationUri = pulumi.Input.asOptionalInput<String>(locationUri),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retrievalRoleArn = pulumi.Input.asOptionalInput<String>(retrievalRoleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      validators = pulumi.Input.asOptionalInput<List<ConfigurationProfileValidator>>(validators);
+    this.applicationId,
+    this.arn,
+    this.configurationProfileId,
+    this.description,
+    this.kmsKeyIdentifier,
+    this.locationUri,
+    this.name,
+    this.region,
+    this.retrievalRoleArn,
+    this.tags,
+    this.tagsAll,
+    this.type,
+    this.validators,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class ConfigurationProfileState {
 
   factory ConfigurationProfileState.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileState(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      configurationProfileId: map['configurationProfileId'] == null ? null : pulumi.Output.create<String>(map['configurationProfileId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
-      locationUri: map['locationUri'] == null ? null : pulumi.Output.create<String>(map['locationUri'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : pulumi.Output.create<String>(map['retrievalRoleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      validators: map['validators'] == null ? null : pulumi.Output.create<List<ConfigurationProfileValidator>>(pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators'], (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      configurationProfileId: map['configurationProfileId'] == null ? null : (map['configurationProfileId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retrievalRoleArn: map['retrievalRoleArn'] == null ? null : (map['retrievalRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      validators: map['validators'] == null ? null : (pulumi.Input.decodeList<ConfigurationProfileValidator>(map['validators'], (value) => ConfigurationProfileValidator.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

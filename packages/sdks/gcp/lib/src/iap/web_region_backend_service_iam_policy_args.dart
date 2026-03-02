@@ -26,15 +26,11 @@ class WebRegionBackendServiceIamPolicyArgs {
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
   WebRegionBackendServiceIamPolicyArgs({
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> webRegionBackendService,
-  }) :
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      webRegionBackendService = pulumi.Input.asInput<String>(webRegionBackendService);
+    required this.policyData,
+    this.project,
+    this.region,
+    required this.webRegionBackendService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class WebRegionBackendServiceIamPolicyArgs {
 
   factory WebRegionBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WebRegionBackendServiceIamPolicyArgs(
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      webRegionBackendService: pulumi.Output.create<String>(map['webRegionBackendService'] as String),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      webRegionBackendService: (map['webRegionBackendService'] as String).input(),
     );
   }
 }

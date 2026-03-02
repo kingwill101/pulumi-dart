@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a path configuration for a web agent.
 class AgentPathResponse {
   /// The actual path value.
-  final String path;
+  final pulumi.Input<String> path;
   /// The type of the path.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentPathResponse].
   /// [path] The actual path value.
@@ -25,8 +26,8 @@ class AgentPathResponse {
 
   factory AgentPathResponse.fromMap(Map<String, dynamic> map) {
     return AgentPathResponse(
-      path: map['path'] as String,
-      type: map['type'] as String,
+      path: (map['path'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -10,9 +10,8 @@ class OrganizationsAccessState {
   /// Creates a new [OrganizationsAccessState].
   /// [enabled] Whether to enable AWS Organizations access.
   OrganizationsAccessState({
-    pulumi.Output<bool>? enabled,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled);
+    this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class OrganizationsAccessState {
 
   factory OrganizationsAccessState.fromMap(Map<String, dynamic> map) {
     return OrganizationsAccessState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

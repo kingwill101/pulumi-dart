@@ -6,9 +6,9 @@ import 'dbsnapshot_attribute_response.dart';
 /// Definition of awsRdsDBSnapshotAttributesResult
 class AwsRdsDBSnapshotAttributesResultPropertiesResponse {
   /// <p>The list of attributes and values for the manual DB snapshot.</p>
-  final List<DBSnapshotAttributeResponse>? dbSnapshotAttributes;
+  final pulumi.Input<List<DBSnapshotAttributeResponse>>? dbSnapshotAttributes;
   /// <p>The identifier of the manual DB snapshot that the attributes apply to.</p>
-  final String? dbSnapshotIdentifier;
+  final pulumi.Input<String>? dbSnapshotIdentifier;
 
   /// Creates a new [AwsRdsDBSnapshotAttributesResultPropertiesResponse].
   /// [dbSnapshotAttributes] <p>The list of attributes and values for the manual DB snapshot.</p>
@@ -20,15 +20,15 @@ class AwsRdsDBSnapshotAttributesResultPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbSnapshotAttributes': ?dbSnapshotAttributes == null ? null : pulumi.Input.encodeList<DBSnapshotAttributeResponse, Map<String, dynamic>>(dbSnapshotAttributes!, (value) => value.toMap()),
+      'dbSnapshotAttributes': ?pulumi.Input.mapOptionalInputValue<List<DBSnapshotAttributeResponse>, List<Map<String, dynamic>>>(dbSnapshotAttributes, (value) => pulumi.Input.encodeList<DBSnapshotAttributeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dbSnapshotIdentifier': ?dbSnapshotIdentifier,
     };
   }
 
   factory AwsRdsDBSnapshotAttributesResultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsDBSnapshotAttributesResultPropertiesResponse(
-      dbSnapshotAttributes: map['dbSnapshotAttributes'] == null ? null : pulumi.Input.decodeList<DBSnapshotAttributeResponse>(map['dbSnapshotAttributes'], (value) => DBSnapshotAttributeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : map['dbSnapshotIdentifier'] as String,
+      dbSnapshotAttributes: map['dbSnapshotAttributes'] == null ? null : (pulumi.Input.decodeList<DBSnapshotAttributeResponse>(map['dbSnapshotAttributes'], (value) => DBSnapshotAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier'] as String).input(),
     );
   }
 }

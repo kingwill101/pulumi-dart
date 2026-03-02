@@ -35,23 +35,15 @@ class VpcIpamArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tier] specifies the IPAM tier. Valid options include `free` and `advanced`. Default is `advanced`.
   VpcIpamArgs({
-    pulumi.Output<bool>? cascade,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enablePrivateGua,
-    pulumi.Output<String>? meteredAccount,
-    required pulumi.Output<List<VpcIpamOperatingRegion>> operatingRegions,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tier,
-  }) :
-      cascade = pulumi.Input.asOptionalInput<bool>(cascade),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enablePrivateGua = pulumi.Input.asOptionalInput<bool>(enablePrivateGua),
-      meteredAccount = pulumi.Input.asOptionalInput<String>(meteredAccount),
-      operatingRegions = pulumi.Input.asInput<List<VpcIpamOperatingRegion>>(operatingRegions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tier = pulumi.Input.asOptionalInput<String>(tier);
+    this.cascade,
+    this.description,
+    this.enablePrivateGua,
+    this.meteredAccount,
+    required this.operatingRegions,
+    this.region,
+    this.tags,
+    this.tier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class VpcIpamArgs {
 
   factory VpcIpamArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamArgs(
-      cascade: map['cascade'] == null ? null : pulumi.Output.create<bool>(map['cascade'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enablePrivateGua: map['enablePrivateGua'] == null ? null : pulumi.Output.create<bool>(map['enablePrivateGua'] as bool),
-      meteredAccount: map['meteredAccount'] == null ? null : pulumi.Output.create<String>(map['meteredAccount'] as String),
-      operatingRegions: pulumi.Output.create<List<VpcIpamOperatingRegion>>(pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions'], (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tier: map['tier'] == null ? null : pulumi.Output.create<String>(map['tier'] as String),
+      cascade: map['cascade'] == null ? null : (map['cascade'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enablePrivateGua: map['enablePrivateGua'] == null ? null : (map['enablePrivateGua'] as bool).input(),
+      meteredAccount: map['meteredAccount'] == null ? null : (map['meteredAccount'] as String).input(),
+      operatingRegions: (pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions'], (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

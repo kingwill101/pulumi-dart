@@ -47,25 +47,16 @@ class BillingAccountSinkState {
   /// [name] The name of the logging sink.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
   BillingAccountSinkState({
-    pulumi.Output<BillingAccountSinkBigqueryOptions>? bigqueryOptions,
-    pulumi.Output<String>? billingAccount,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? destination,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<List<BillingAccountSinkExclusion>>? exclusions,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? writerIdentity,
-  }) :
-      bigqueryOptions = pulumi.Input.asOptionalInput<BillingAccountSinkBigqueryOptions>(bigqueryOptions),
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      exclusions = pulumi.Input.asOptionalInput<List<BillingAccountSinkExclusion>>(exclusions),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      writerIdentity = pulumi.Input.asOptionalInput<String>(writerIdentity);
+    this.bigqueryOptions,
+    this.billingAccount,
+    this.description,
+    this.destination,
+    this.disabled,
+    this.exclusions,
+    this.filter,
+    this.name,
+    this.writerIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,15 +74,15 @@ class BillingAccountSinkState {
 
   factory BillingAccountSinkState.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkState(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : pulumi.Output.create<BillingAccountSinkBigqueryOptions>(BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())),
-      billingAccount: map['billingAccount'] == null ? null : pulumi.Output.create<String>(map['billingAccount'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      exclusions: map['exclusions'] == null ? null : pulumi.Output.create<List<BillingAccountSinkExclusion>>(pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions'], (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      writerIdentity: map['writerIdentity'] == null ? null : pulumi.Output.create<String>(map['writerIdentity'] as String),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BillingAccountSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<BillingAccountSinkExclusion>(map['exclusions'], (value) => BillingAccountSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity'] as String).input(),
     );
   }
 }

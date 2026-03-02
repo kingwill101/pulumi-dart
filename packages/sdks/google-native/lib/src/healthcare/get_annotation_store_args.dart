@@ -18,15 +18,11 @@ class GetAnnotationStoreArgs {
   /// [location] Required.
   /// [project] Optional.
   GetAnnotationStoreArgs({
-    required pulumi.Output<String> annotationStoreId,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.annotationStoreId,
+    required this.datasetId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetAnnotationStoreArgs {
 
   factory GetAnnotationStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetAnnotationStoreArgs(
-      annotationStoreId: pulumi.Output.create<String>(map['annotationStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotationStoreId: (map['annotationStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

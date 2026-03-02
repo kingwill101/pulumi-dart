@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesSbbc {
   /// Sets the value attribute for the SBBC feature, indicating its configuration.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DomainFeaturesSbbc].
   /// [value] Sets the value attribute for the SBBC feature, indicating its configuration.
@@ -19,7 +20,7 @@ class DomainFeaturesSbbc {
 
   factory DomainFeaturesSbbc.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesSbbc(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

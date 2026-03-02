@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Expiration of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesExpiration {
   /// Duration of the role eligibility schedule in TimeSpan.
-  final String? duration;
+  final pulumi.Input<String>? duration;
   /// End DateTime of the role eligibility schedule.
-  final String? endDateTime;
+  final pulumi.Input<String>? endDateTime;
   /// Type of the role eligibility schedule expiration
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesExpiration].
   /// [duration] Duration of the role eligibility schedule in TimeSpan.
@@ -30,9 +31,9 @@ class RoleEligibilityScheduleRequestPropertiesExpiration {
 
   factory RoleEligibilityScheduleRequestPropertiesExpiration.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesExpiration(
-      duration: map['duration'] == null ? null : map['duration'] as String,
-      endDateTime: map['endDateTime'] == null ? null : map['endDateTime'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

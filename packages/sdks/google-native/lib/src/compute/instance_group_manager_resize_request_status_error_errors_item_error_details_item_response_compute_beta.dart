@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_info_response_compute_beta.dart';
 import 'help_response_compute_beta.dart';
 import 'localized_message_response_compute_beta.dart';
 import 'quota_exceeded_info_response_compute_beta.dart';
 
 class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta {
-  final ErrorInfoResponseComputeBeta errorInfo;
-  final HelpResponseComputeBeta help;
-  final LocalizedMessageResponseComputeBeta localizedMessage;
-  final QuotaExceededInfoResponseComputeBeta quotaInfo;
+  final pulumi.Input<ErrorInfoResponseComputeBeta> errorInfo;
+  final pulumi.Input<HelpResponseComputeBeta> help;
+  final pulumi.Input<LocalizedMessageResponseComputeBeta> localizedMessage;
+  final pulumi.Input<QuotaExceededInfoResponseComputeBeta> quotaInfo;
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta].
   /// [errorInfo] Required.
@@ -25,19 +26,19 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResp
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorInfo': errorInfo.toMap(),
-      'help': help.toMap(),
-      'localizedMessage': localizedMessage.toMap(),
-      'quotaInfo': quotaInfo.toMap(),
+      'errorInfo': pulumi.Input.mapInputValue<ErrorInfoResponseComputeBeta, Map<String, dynamic>>(errorInfo, (value) => value.toMap()),
+      'help': pulumi.Input.mapInputValue<HelpResponseComputeBeta, Map<String, dynamic>>(help, (value) => value.toMap()),
+      'localizedMessage': pulumi.Input.mapInputValue<LocalizedMessageResponseComputeBeta, Map<String, dynamic>>(localizedMessage, (value) => value.toMap()),
+      'quotaInfo': pulumi.Input.mapInputValue<QuotaExceededInfoResponseComputeBeta, Map<String, dynamic>>(quotaInfo, (value) => value.toMap()),
     };
   }
 
   factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta(
-      errorInfo: ErrorInfoResponseComputeBeta.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
-      help: HelpResponseComputeBeta.fromMap((map['help'] as Map).cast<String, dynamic>()),
-      localizedMessage: LocalizedMessageResponseComputeBeta.fromMap((map['localizedMessage'] as Map).cast<String, dynamic>()),
-      quotaInfo: QuotaExceededInfoResponseComputeBeta.fromMap((map['quotaInfo'] as Map).cast<String, dynamic>()),
+      errorInfo: (ErrorInfoResponseComputeBeta.fromMap((map['errorInfo'] as Map).cast<String, dynamic>())).input(),
+      help: (HelpResponseComputeBeta.fromMap((map['help'] as Map).cast<String, dynamic>())).input(),
+      localizedMessage: (LocalizedMessageResponseComputeBeta.fromMap((map['localizedMessage'] as Map).cast<String, dynamic>())).input(),
+      quotaInfo: (QuotaExceededInfoResponseComputeBeta.fromMap((map['quotaInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

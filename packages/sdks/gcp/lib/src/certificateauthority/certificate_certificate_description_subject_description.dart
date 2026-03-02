@@ -7,25 +7,25 @@ import 'certificate_certificate_description_subject_description_subject_alt_name
 class CertificateCertificateDescriptionSubjectDescription {
   /// (Output)
   /// The serial number encoded in lowercase hexadecimal.
-  final String? hexSerialNumber;
+  final pulumi.Input<String>? hexSerialNumber;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  final String? lifetime;
+  final pulumi.Input<String>? lifetime;
   /// (Output)
   /// The time at which the certificate expires.
-  final String? notAfterTime;
+  final pulumi.Input<String>? notAfterTime;
   /// (Output)
   /// The time at which the certificate becomes valid.
-  final String? notBeforeTime;
+  final pulumi.Input<String>? notBeforeTime;
   /// (Output)
   /// The subject alternative name fields.
   /// Structure is documented below.
-  final List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>? subjectAltNames;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>>? subjectAltNames;
   /// (Output)
   /// Contains distinguished name fields such as the location and organization.
   /// Structure is documented below.
-  final List<CertificateCertificateDescriptionSubjectDescriptionSubject>? subjects;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubject>>? subjects;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescription].
   /// [hexSerialNumber] (Output)
@@ -49,19 +49,19 @@ class CertificateCertificateDescriptionSubjectDescription {
       'lifetime': ?lifetime,
       'notAfterTime': ?notAfterTime,
       'notBeforeTime': ?notBeforeTime,
-      'subjectAltNames': ?subjectAltNames == null ? null : pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName, Map<String, dynamic>>(subjectAltNames!, (value) => value.toMap()),
-      'subjects': ?subjects == null ? null : pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubject, Map<String, dynamic>>(subjects!, (value) => value.toMap()),
+      'subjectAltNames': ?pulumi.Input.mapOptionalInputValue<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>, List<Map<String, dynamic>>>(subjectAltNames, (value) => pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subjects': ?pulumi.Input.mapOptionalInputValue<List<CertificateCertificateDescriptionSubjectDescriptionSubject>, List<Map<String, dynamic>>>(subjects, (value) => pulumi.Input.encodeList<CertificateCertificateDescriptionSubjectDescriptionSubject, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CertificateCertificateDescriptionSubjectDescription.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescription(
-      hexSerialNumber: map['hexSerialNumber'] == null ? null : map['hexSerialNumber'] as String,
-      lifetime: map['lifetime'] == null ? null : map['lifetime'] as String,
-      notAfterTime: map['notAfterTime'] == null ? null : map['notAfterTime'] as String,
-      notBeforeTime: map['notBeforeTime'] == null ? null : map['notBeforeTime'] as String,
-      subjectAltNames: map['subjectAltNames'] == null ? null : pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>(map['subjectAltNames'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.fromMap((value as Map).cast<String, dynamic>())),
-      subjects: map['subjects'] == null ? null : pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubject>(map['subjects'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubject.fromMap((value as Map).cast<String, dynamic>())),
+      hexSerialNumber: map['hexSerialNumber'] == null ? null : (map['hexSerialNumber'] as String).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime'] as String).input(),
+      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime'] as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>(map['subjectAltNames'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubject>(map['subjects'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubject.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

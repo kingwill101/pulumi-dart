@@ -13,9 +13,8 @@ class ListDiagnosticSettingsCategoryArgs {
   /// Creates a new [ListDiagnosticSettingsCategoryArgs].
   /// [resourceUri] The identifier of the resource.
   ListDiagnosticSettingsCategoryArgs({
-    required pulumi.Output<String> resourceUri,
-  }) :
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListDiagnosticSettingsCategoryArgs {
 
   factory ListDiagnosticSettingsCategoryArgs.fromMap(Map<String, dynamic> map) {
     return ListDiagnosticSettingsCategoryArgs(
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

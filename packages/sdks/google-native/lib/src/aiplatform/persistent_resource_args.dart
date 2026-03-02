@@ -44,29 +44,18 @@ class PersistentResourceArgs {
   /// [resourcePools] The spec of the pools of different resources.
   /// [resourceRuntimeSpec] Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
   PersistentResourceArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? network,
-    required pulumi.Output<String> persistentResourceId,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? reservedIpRanges,
-    required pulumi.Output<List<GoogleCloudAiplatformV1beta1ResourcePool>> resourcePools,
-    pulumi.Output<GoogleCloudAiplatformV1beta1ResourceRuntimeSpec>? resourceRuntimeSpec,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      persistentResourceId = pulumi.Input.asInput<String>(persistentResourceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservedIpRanges = pulumi.Input.asOptionalInput<List<String>>(reservedIpRanges),
-      resourcePools = pulumi.Input.asInput<List<GoogleCloudAiplatformV1beta1ResourcePool>>(resourcePools),
-      resourceRuntimeSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1ResourceRuntimeSpec>(resourceRuntimeSpec);
+    this.displayName,
+    this.encryptionSpec,
+    this.labels,
+    this.location,
+    this.name,
+    this.network,
+    required this.persistentResourceId,
+    this.project,
+    this.reservedIpRanges,
+    required this.resourcePools,
+    this.resourceRuntimeSpec,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class PersistentResourceArgs {
 
   factory PersistentResourceArgs.fromMap(Map<String, dynamic> map) {
     return PersistentResourceArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
-      persistentResourceId: pulumi.Output.create<String>(map['persistentResourceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : pulumi.Output.create<List<String>>((map['reservedIpRanges'] as List).cast<String>()),
-      resourcePools: pulumi.Output.create<List<GoogleCloudAiplatformV1beta1ResourcePool>>(pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePool>(map['resourcePools'], (value) => GoogleCloudAiplatformV1beta1ResourcePool.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceRuntimeSpec: map['resourceRuntimeSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1ResourceRuntimeSpec>(GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap((map['resourceRuntimeSpec'] as Map).cast<String, dynamic>())),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      persistentResourceId: (map['persistentResourceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
+      resourcePools: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePool>(map['resourcePools'], (value) => GoogleCloudAiplatformV1beta1ResourcePool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRuntimeSpec: map['resourceRuntimeSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap((map['resourceRuntimeSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

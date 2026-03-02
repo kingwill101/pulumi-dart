@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Migrating VM source information about the VM capabilities needed for some Compute Engine features.
 class VmCapabilitiesResponse {
   /// The last time OS capabilities list was updated.
-  final String lastOsCapabilitiesUpdateTime;
+  final pulumi.Input<String> lastOsCapabilitiesUpdateTime;
   /// Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
-  final List<String> osCapabilities;
+  final pulumi.Input<List<String>> osCapabilities;
 
   /// Creates a new [VmCapabilitiesResponse].
   /// [lastOsCapabilitiesUpdateTime] The last time OS capabilities list was updated.
@@ -25,8 +26,8 @@ class VmCapabilitiesResponse {
 
   factory VmCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return VmCapabilitiesResponse(
-      lastOsCapabilitiesUpdateTime: map['lastOsCapabilitiesUpdateTime'] as String,
-      osCapabilities: (map['osCapabilities'] as List).cast<String>(),
+      lastOsCapabilitiesUpdateTime: (map['lastOsCapabilitiesUpdateTime'] as String).input(),
+      osCapabilities: ((map['osCapabilities'] as List).cast<String>()).input(),
     );
   }
 }

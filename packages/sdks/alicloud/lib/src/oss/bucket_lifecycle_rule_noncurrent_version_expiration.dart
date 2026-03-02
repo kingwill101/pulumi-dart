@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLifecycleRuleNoncurrentVersionExpiration {
   /// Specifies the number of days noncurrent object versions transition.
-  final int days;
+  final pulumi.Input<int> days;
 
   /// Creates a new [BucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days noncurrent object versions transition.
@@ -19,7 +20,7 @@ class BucketLifecycleRuleNoncurrentVersionExpiration {
 
   factory BucketLifecycleRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleNoncurrentVersionExpiration(
-      days: map['days'] as int,
+      days: (map['days'] as int).input(),
     );
   }
 }

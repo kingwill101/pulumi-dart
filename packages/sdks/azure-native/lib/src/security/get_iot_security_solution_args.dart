@@ -16,11 +16,9 @@ class GetIotSecuritySolutionArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [solutionName] The name of the IoT Security solution.
   GetIotSecuritySolutionArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> solutionName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      solutionName = pulumi.Input.asInput<String>(solutionName);
+    required this.resourceGroupName,
+    required this.solutionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetIotSecuritySolutionArgs {
 
   factory GetIotSecuritySolutionArgs.fromMap(Map<String, dynamic> map) {
     return GetIotSecuritySolutionArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      solutionName: pulumi.Output.create<String>(map['solutionName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      solutionName: (map['solutionName'] as String).input(),
     );
   }
 }

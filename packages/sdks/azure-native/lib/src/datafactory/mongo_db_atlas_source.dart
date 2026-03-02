@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_db_cursor_methods_properties.dart';
 
 /// A copy activity source for a MongoDB Atlas database.
 class MongoDbAtlasSource {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// Specifies the number of documents to return in each batch of the response from MongoDB Atlas instance. In most cases, modifying the batch size will not affect the user or the application. This property's main purpose is to avoid hit the limitation of response size. Type: integer (or Expression with resultType integer).
-  final dynamic batchSize;
+  final pulumi.Input<dynamic>? batchSize;
   /// Cursor methods for Mongodb query
-  final MongoDbCursorMethodsProperties? cursorMethods;
+  final pulumi.Input<MongoDbCursorMethodsProperties>? cursorMethods;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies selection filter using query operators. To return all documents in a collection, omit this parameter or pass an empty document ({}). Type: string (or Expression with resultType string).
-  final dynamic filter;
+  final pulumi.Input<dynamic>? filter;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'MongoDbAtlasSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [MongoDbAtlasSource].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -54,7 +55,7 @@ class MongoDbAtlasSource {
     return <String, dynamic>{
       'additionalColumns': ?additionalColumns,
       'batchSize': ?batchSize,
-      'cursorMethods': ?cursorMethods == null ? null : cursorMethods!.toMap(),
+      'cursorMethods': ?pulumi.Input.mapOptionalInputValue<MongoDbCursorMethodsProperties, Map<String, dynamic>>(cursorMethods, (value) => value.toMap()),
       'disableMetricsCollection': ?disableMetricsCollection,
       'filter': ?filter,
       'maxConcurrentConnections': ?maxConcurrentConnections,
@@ -67,16 +68,16 @@ class MongoDbAtlasSource {
 
   factory MongoDbAtlasSource.fromMap(Map<String, dynamic> map) {
     return MongoDbAtlasSource(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      batchSize: map['batchSize'] == null ? null : map['batchSize'],
-      cursorMethods: map['cursorMethods'] == null ? null : MongoDbCursorMethodsProperties.fromMap((map['cursorMethods'] as Map).cast<String, dynamic>()),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      filter: map['filter'] == null ? null : map['filter'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']).input(),
+      cursorMethods: map['cursorMethods'] == null ? null : (MongoDbCursorMethodsProperties.fromMap((map['cursorMethods'] as Map).cast<String, dynamic>())).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      filter: map['filter'] == null ? null : (map['filter']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

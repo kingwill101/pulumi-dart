@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterServerlessV2ScalingConfiguration {
   /// Maximum number of Amazon DocumentDB capacity units (DCUs) for an instance in an Amazon DocumentDB Serverless cluster. Valid values are multiples of 0.5 between 1 and 256.
-  final double maxCapacity;
+  final pulumi.Input<double> maxCapacity;
   /// Minimum number of Amazon DocumentDB capacity units (DCUs) for an instance in an Amazon DocumentDB Serverless cluster. Valid values are multiples of 0.5 between 0.5 and 256.
-  final double minCapacity;
+  final pulumi.Input<double> minCapacity;
 
   /// Creates a new [ClusterServerlessV2ScalingConfiguration].
   /// [maxCapacity] Maximum number of Amazon DocumentDB capacity units (DCUs) for an instance in an Amazon DocumentDB Serverless cluster. Valid values are multiples of 0.5 between 1 and 256.
@@ -24,8 +25,8 @@ class ClusterServerlessV2ScalingConfiguration {
 
   factory ClusterServerlessV2ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterServerlessV2ScalingConfiguration(
-      maxCapacity: map['maxCapacity'] as double,
-      minCapacity: map['minCapacity'] as double,
+      maxCapacity: (map['maxCapacity'] as double).input(),
+      minCapacity: (map['minCapacity'] as double).input(),
     );
   }
 }

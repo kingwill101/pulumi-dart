@@ -28,21 +28,14 @@ class DatasetDataLakeGen2State {
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   /// [storageAccountId] The resource id of the storage account of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   DatasetDataLakeGen2State({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? filePath,
-    pulumi.Output<String>? fileSystemName,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<String>? storageAccountId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      fileSystemName = pulumi.Input.asOptionalInput<String>(fileSystemName),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId);
+    this.displayName,
+    this.filePath,
+    this.fileSystemName,
+    this.folderPath,
+    this.name,
+    this.shareId,
+    this.storageAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DatasetDataLakeGen2State {
 
   factory DatasetDataLakeGen2State.fromMap(Map<String, dynamic> map) {
     return DatasetDataLakeGen2State(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      fileSystemName: map['fileSystemName'] == null ? null : pulumi.Output.create<String>(map['fileSystemName'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
     );
   }
 }

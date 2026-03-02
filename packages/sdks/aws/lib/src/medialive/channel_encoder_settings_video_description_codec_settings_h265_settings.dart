@@ -1,83 +1,84 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_color_space_settings.dart';
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_filter_settings.dart';
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_timecode_burnin_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   /// Enables or disables adaptive quantization.
-  final String? adaptiveQuantization;
+  final pulumi.Input<String>? adaptiveQuantization;
   /// Indicates that AFD values will be written into the output stream.
-  final String? afdSignaling;
+  final pulumi.Input<String>? afdSignaling;
   /// Whether or not EML should insert an Alternative Transfer Function SEI message.
-  final String? alternativeTransferFunction;
+  final pulumi.Input<String>? alternativeTransferFunction;
   /// Average bitrate in bits/second.
-  final int bitrate;
+  final pulumi.Input<int> bitrate;
   /// Size of buffer in bits.
-  final int? bufSize;
+  final pulumi.Input<int>? bufSize;
   /// Includes color space metadata in the output.
-  final String? colorMetadata;
+  final pulumi.Input<String>? colorMetadata;
   /// Define the color metadata for the output. H265 Color Space Settings for more details.
-  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings? colorSpaceSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings>? colorSpaceSettings;
   /// Filters to apply to an encode. See H265 Filter Settings for more details.
-  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings? filterSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings>? filterSettings;
   /// Four bit AFD value to write on all frames of video in the output stream.
-  final String? fixedAfd;
-  final String? flickerAq;
+  final pulumi.Input<String>? fixedAfd;
+  final pulumi.Input<String>? flickerAq;
   /// Framerate denominator.
-  final int framerateDenominator;
+  final pulumi.Input<int> framerateDenominator;
   /// Framerate numerator.
-  final int framerateNumerator;
+  final pulumi.Input<int> framerateNumerator;
   /// Frequency of closed GOPs.
-  final int? gopClosedCadence;
+  final pulumi.Input<int>? gopClosedCadence;
   /// GOP size in units of either frames of seconds per `gop_size_units`.
-  final double? gopSize;
+  final pulumi.Input<double>? gopSize;
   /// Indicates if the `gop_size` is specified in frames or seconds.
-  final String? gopSizeUnits;
+  final pulumi.Input<String>? gopSizeUnits;
   /// H265 level.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// Amount of lookahead.
-  final String? lookAheadRateControl;
+  final pulumi.Input<String>? lookAheadRateControl;
   /// Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
-  final int? maxBitrate;
+  final pulumi.Input<int>? maxBitrate;
   /// Min interval.
-  final int? minIInterval;
+  final pulumi.Input<int>? minIInterval;
   /// Set the minimum QP.
-  final int? minQp;
+  final pulumi.Input<int>? minQp;
   /// Enables or disables motion vector over picture boundaries.
-  final String? mvOverPictureBoundaries;
+  final pulumi.Input<String>? mvOverPictureBoundaries;
   /// Enables or disables the motion vector temporal predictor.
-  final String? mvTemporalPredictor;
+  final pulumi.Input<String>? mvTemporalPredictor;
   /// Pixel Aspect Ratio denominator.
-  final int? parDenominator;
+  final pulumi.Input<int>? parDenominator;
   /// Pixel Aspect Ratio numerator.
-  final int? parNumerator;
+  final pulumi.Input<int>? parNumerator;
   /// H265 profile.
-  final String? profile;
+  final pulumi.Input<String>? profile;
   /// Controls the target quality for the video encode.
-  final int? qvbrQualityLevel;
+  final pulumi.Input<int>? qvbrQualityLevel;
   /// Rate control mode.
-  final String? rateControlMode;
+  final pulumi.Input<String>? rateControlMode;
   /// Sets the scan type of the output.
-  final String? scanType;
+  final pulumi.Input<String>? scanType;
   /// Scene change detection.
-  final String? sceneChangeDetect;
+  final pulumi.Input<String>? sceneChangeDetect;
   /// Number of slices per picture.
-  final int? slices;
+  final pulumi.Input<int>? slices;
   /// Set the H265 tier in the output.
-  final String? tier;
+  final pulumi.Input<String>? tier;
   /// Sets the height of tiles.
-  final int? tileHeight;
+  final pulumi.Input<int>? tileHeight;
   /// Enables or disables padding of tiles.
-  final String? tilePadding;
+  final pulumi.Input<String>? tilePadding;
   /// Sets the width of tiles.
-  final int? tileWidth;
+  final pulumi.Input<int>? tileWidth;
   /// Apply a burned in timecode. See H265 Timecode Burnin Settings for more details.
-  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings? timecodeBurninSettings;
+  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings>? timecodeBurninSettings;
   /// Determines how timecodes should be inserted into the video elementary stream.
-  final String? timecodeInsertion;
+  final pulumi.Input<String>? timecodeInsertion;
   /// Sets the size of the treeblock.
-  final String? treeblockSize;
+  final pulumi.Input<String>? treeblockSize;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings].
   /// [adaptiveQuantization] Enables or disables adaptive quantization.
@@ -165,8 +166,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
       'bitrate': bitrate,
       'bufSize': ?bufSize,
       'colorMetadata': ?colorMetadata,
-      'colorSpaceSettings': ?colorSpaceSettings == null ? null : colorSpaceSettings!.toMap(),
-      'filterSettings': ?filterSettings == null ? null : filterSettings!.toMap(),
+      'colorSpaceSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings, Map<String, dynamic>>(colorSpaceSettings, (value) => value.toMap()),
+      'filterSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings, Map<String, dynamic>>(filterSettings, (value) => value.toMap()),
       'fixedAfd': ?fixedAfd,
       'flickerAq': ?flickerAq,
       'framerateDenominator': framerateDenominator,
@@ -193,7 +194,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
       'tileHeight': ?tileHeight,
       'tilePadding': ?tilePadding,
       'tileWidth': ?tileWidth,
-      'timecodeBurninSettings': ?timecodeBurninSettings == null ? null : timecodeBurninSettings!.toMap(),
+      'timecodeBurninSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings, Map<String, dynamic>>(timecodeBurninSettings, (value) => value.toMap()),
       'timecodeInsertion': ?timecodeInsertion,
       'treeblockSize': ?treeblockSize,
     };
@@ -201,43 +202,43 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings(
-      adaptiveQuantization: map['adaptiveQuantization'] == null ? null : map['adaptiveQuantization'] as String,
-      afdSignaling: map['afdSignaling'] == null ? null : map['afdSignaling'] as String,
-      alternativeTransferFunction: map['alternativeTransferFunction'] == null ? null : map['alternativeTransferFunction'] as String,
-      bitrate: map['bitrate'] as int,
-      bufSize: map['bufSize'] == null ? null : map['bufSize'] as int,
-      colorMetadata: map['colorMetadata'] == null ? null : map['colorMetadata'] as String,
-      colorSpaceSettings: map['colorSpaceSettings'] == null ? null : ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap((map['colorSpaceSettings'] as Map).cast<String, dynamic>()),
-      filterSettings: map['filterSettings'] == null ? null : ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings.fromMap((map['filterSettings'] as Map).cast<String, dynamic>()),
-      fixedAfd: map['fixedAfd'] == null ? null : map['fixedAfd'] as String,
-      flickerAq: map['flickerAq'] == null ? null : map['flickerAq'] as String,
-      framerateDenominator: map['framerateDenominator'] as int,
-      framerateNumerator: map['framerateNumerator'] as int,
-      gopClosedCadence: map['gopClosedCadence'] == null ? null : map['gopClosedCadence'] as int,
-      gopSize: map['gopSize'] == null ? null : map['gopSize'] as double,
-      gopSizeUnits: map['gopSizeUnits'] == null ? null : map['gopSizeUnits'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      lookAheadRateControl: map['lookAheadRateControl'] == null ? null : map['lookAheadRateControl'] as String,
-      maxBitrate: map['maxBitrate'] == null ? null : map['maxBitrate'] as int,
-      minIInterval: map['minIInterval'] == null ? null : map['minIInterval'] as int,
-      minQp: map['minQp'] == null ? null : map['minQp'] as int,
-      mvOverPictureBoundaries: map['mvOverPictureBoundaries'] == null ? null : map['mvOverPictureBoundaries'] as String,
-      mvTemporalPredictor: map['mvTemporalPredictor'] == null ? null : map['mvTemporalPredictor'] as String,
-      parDenominator: map['parDenominator'] == null ? null : map['parDenominator'] as int,
-      parNumerator: map['parNumerator'] == null ? null : map['parNumerator'] as int,
-      profile: map['profile'] == null ? null : map['profile'] as String,
-      qvbrQualityLevel: map['qvbrQualityLevel'] == null ? null : map['qvbrQualityLevel'] as int,
-      rateControlMode: map['rateControlMode'] == null ? null : map['rateControlMode'] as String,
-      scanType: map['scanType'] == null ? null : map['scanType'] as String,
-      sceneChangeDetect: map['sceneChangeDetect'] == null ? null : map['sceneChangeDetect'] as String,
-      slices: map['slices'] == null ? null : map['slices'] as int,
-      tier: map['tier'] == null ? null : map['tier'] as String,
-      tileHeight: map['tileHeight'] == null ? null : map['tileHeight'] as int,
-      tilePadding: map['tilePadding'] == null ? null : map['tilePadding'] as String,
-      tileWidth: map['tileWidth'] == null ? null : map['tileWidth'] as int,
-      timecodeBurninSettings: map['timecodeBurninSettings'] == null ? null : ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap((map['timecodeBurninSettings'] as Map).cast<String, dynamic>()),
-      timecodeInsertion: map['timecodeInsertion'] == null ? null : map['timecodeInsertion'] as String,
-      treeblockSize: map['treeblockSize'] == null ? null : map['treeblockSize'] as String,
+      adaptiveQuantization: map['adaptiveQuantization'] == null ? null : (map['adaptiveQuantization'] as String).input(),
+      afdSignaling: map['afdSignaling'] == null ? null : (map['afdSignaling'] as String).input(),
+      alternativeTransferFunction: map['alternativeTransferFunction'] == null ? null : (map['alternativeTransferFunction'] as String).input(),
+      bitrate: (map['bitrate'] as int).input(),
+      bufSize: map['bufSize'] == null ? null : (map['bufSize'] as int).input(),
+      colorMetadata: map['colorMetadata'] == null ? null : (map['colorMetadata'] as String).input(),
+      colorSpaceSettings: map['colorSpaceSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap((map['colorSpaceSettings'] as Map).cast<String, dynamic>())).input(),
+      filterSettings: map['filterSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings.fromMap((map['filterSettings'] as Map).cast<String, dynamic>())).input(),
+      fixedAfd: map['fixedAfd'] == null ? null : (map['fixedAfd'] as String).input(),
+      flickerAq: map['flickerAq'] == null ? null : (map['flickerAq'] as String).input(),
+      framerateDenominator: (map['framerateDenominator'] as int).input(),
+      framerateNumerator: (map['framerateNumerator'] as int).input(),
+      gopClosedCadence: map['gopClosedCadence'] == null ? null : (map['gopClosedCadence'] as int).input(),
+      gopSize: map['gopSize'] == null ? null : (map['gopSize'] as double).input(),
+      gopSizeUnits: map['gopSizeUnits'] == null ? null : (map['gopSizeUnits'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      lookAheadRateControl: map['lookAheadRateControl'] == null ? null : (map['lookAheadRateControl'] as String).input(),
+      maxBitrate: map['maxBitrate'] == null ? null : (map['maxBitrate'] as int).input(),
+      minIInterval: map['minIInterval'] == null ? null : (map['minIInterval'] as int).input(),
+      minQp: map['minQp'] == null ? null : (map['minQp'] as int).input(),
+      mvOverPictureBoundaries: map['mvOverPictureBoundaries'] == null ? null : (map['mvOverPictureBoundaries'] as String).input(),
+      mvTemporalPredictor: map['mvTemporalPredictor'] == null ? null : (map['mvTemporalPredictor'] as String).input(),
+      parDenominator: map['parDenominator'] == null ? null : (map['parDenominator'] as int).input(),
+      parNumerator: map['parNumerator'] == null ? null : (map['parNumerator'] as int).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      qvbrQualityLevel: map['qvbrQualityLevel'] == null ? null : (map['qvbrQualityLevel'] as int).input(),
+      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode'] as String).input(),
+      scanType: map['scanType'] == null ? null : (map['scanType'] as String).input(),
+      sceneChangeDetect: map['sceneChangeDetect'] == null ? null : (map['sceneChangeDetect'] as String).input(),
+      slices: map['slices'] == null ? null : (map['slices'] as int).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tileHeight: map['tileHeight'] == null ? null : (map['tileHeight'] as int).input(),
+      tilePadding: map['tilePadding'] == null ? null : (map['tilePadding'] as String).input(),
+      tileWidth: map['tileWidth'] == null ? null : (map['tileWidth'] as int).input(),
+      timecodeBurninSettings: map['timecodeBurninSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap((map['timecodeBurninSettings'] as Map).cast<String, dynamic>())).input(),
+      timecodeInsertion: map['timecodeInsertion'] == null ? null : (map['timecodeInsertion'] as String).input(),
+      treeblockSize: map['treeblockSize'] == null ? null : (map['treeblockSize'] as String).input(),
     );
   }
 }

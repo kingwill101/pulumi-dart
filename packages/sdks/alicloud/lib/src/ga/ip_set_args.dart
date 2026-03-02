@@ -26,17 +26,12 @@ class IpSetArgs {
   /// [ipVersion] The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
   IpSetArgs({
-    required pulumi.Output<String> accelerateRegionId,
-    required pulumi.Output<String> acceleratorId,
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? ispType,
-  }) :
-      accelerateRegionId = pulumi.Input.asInput<String>(accelerateRegionId),
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      ispType = pulumi.Input.asOptionalInput<String>(ispType);
+    required this.accelerateRegionId,
+    required this.acceleratorId,
+    this.bandwidth,
+    this.ipVersion,
+    this.ispType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class IpSetArgs {
 
   factory IpSetArgs.fromMap(Map<String, dynamic> map) {
     return IpSetArgs(
-      accelerateRegionId: pulumi.Output.create<String>(map['accelerateRegionId'] as String),
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      ispType: map['ispType'] == null ? null : pulumi.Output.create<String>(map['ispType'] as String),
+      accelerateRegionId: (map['accelerateRegionId'] as String).input(),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
     );
   }
 }

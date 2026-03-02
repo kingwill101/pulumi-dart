@@ -26,17 +26,12 @@ class AppAttachPackageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   AppAttachPackageArgs({
-    pulumi.Output<String>? appAttachPackageName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<AppAttachPackageProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appAttachPackageName = pulumi.Input.asOptionalInput<String>(appAttachPackageName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<AppAttachPackageProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.appAttachPackageName,
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class AppAttachPackageArgs {
 
   factory AppAttachPackageArgs.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageArgs(
-      appAttachPackageName: map['appAttachPackageName'] == null ? null : pulumi.Output.create<String>(map['appAttachPackageName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<AppAttachPackageProperties>(AppAttachPackageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appAttachPackageName: map['appAttachPackageName'] == null ? null : (map['appAttachPackageName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (AppAttachPackageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

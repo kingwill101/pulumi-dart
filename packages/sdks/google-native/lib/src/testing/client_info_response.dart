@@ -6,9 +6,9 @@ import 'client_info_detail_response.dart';
 /// Information about the client which invoked the test.
 class ClientInfoResponse {
   /// The list of detailed information about client.
-  final List<ClientInfoDetailResponse> clientInfoDetails;
+  final pulumi.Input<List<ClientInfoDetailResponse>> clientInfoDetails;
   /// Client name, such as gcloud.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ClientInfoResponse].
   /// [clientInfoDetails] The list of detailed information about client.
@@ -20,15 +20,15 @@ class ClientInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientInfoDetails': pulumi.Input.encodeList<ClientInfoDetailResponse, Map<String, dynamic>>(clientInfoDetails, (value) => value.toMap()),
+      'clientInfoDetails': pulumi.Input.mapInputValue<List<ClientInfoDetailResponse>, List<Map<String, dynamic>>>(clientInfoDetails, (value) => pulumi.Input.encodeList<ClientInfoDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory ClientInfoResponse.fromMap(Map<String, dynamic> map) {
     return ClientInfoResponse(
-      clientInfoDetails: pulumi.Input.decodeList<ClientInfoDetailResponse>(map['clientInfoDetails'], (value) => ClientInfoDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      clientInfoDetails: (pulumi.Input.decodeList<ClientInfoDetailResponse>(map['clientInfoDetails'], (value) => ClientInfoDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

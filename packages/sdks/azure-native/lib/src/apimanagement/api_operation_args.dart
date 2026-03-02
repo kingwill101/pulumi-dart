@@ -49,31 +49,19 @@ class ApiOperationArgs {
   /// [templateParameters] Collection of URL template parameters.
   /// [urlTemplate] Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   ApiOperationArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> method,
-    pulumi.Output<String>? operationId,
-    pulumi.Output<String>? policies,
-    pulumi.Output<RequestContract>? request,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<ResponseContract>>? responses,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<List<ParameterContract>>? templateParameters,
-    required pulumi.Output<String> urlTemplate,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      method = pulumi.Input.asInput<String>(method),
-      operationId = pulumi.Input.asOptionalInput<String>(operationId),
-      policies = pulumi.Input.asOptionalInput<String>(policies),
-      request = pulumi.Input.asOptionalInput<RequestContract>(request),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      responses = pulumi.Input.asOptionalInput<List<ResponseContract>>(responses),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      templateParameters = pulumi.Input.asOptionalInput<List<ParameterContract>>(templateParameters),
-      urlTemplate = pulumi.Input.asInput<String>(urlTemplate);
+    required this.apiId,
+    this.description,
+    required this.displayName,
+    required this.method,
+    this.operationId,
+    this.policies,
+    this.request,
+    required this.resourceGroupName,
+    this.responses,
+    required this.serviceName,
+    this.templateParameters,
+    required this.urlTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class ApiOperationArgs {
 
   factory ApiOperationArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      method: pulumi.Output.create<String>(map['method'] as String),
-      operationId: map['operationId'] == null ? null : pulumi.Output.create<String>(map['operationId'] as String),
-      policies: map['policies'] == null ? null : pulumi.Output.create<String>(map['policies'] as String),
-      request: map['request'] == null ? null : pulumi.Output.create<RequestContract>(RequestContract.fromMap((map['request'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      responses: map['responses'] == null ? null : pulumi.Output.create<List<ResponseContract>>(pulumi.Input.decodeList<ResponseContract>(map['responses'], (value) => ResponseContract.fromMap((value as Map).cast<String, dynamic>()))),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      templateParameters: map['templateParameters'] == null ? null : pulumi.Output.create<List<ParameterContract>>(pulumi.Input.decodeList<ParameterContract>(map['templateParameters'], (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))),
-      urlTemplate: pulumi.Output.create<String>(map['urlTemplate'] as String),
+      apiId: (map['apiId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      method: (map['method'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      policies: map['policies'] == null ? null : (map['policies'] as String).input(),
+      request: map['request'] == null ? null : (RequestContract.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ResponseContract>(map['responses'], (value) => ResponseContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['templateParameters'], (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlTemplate: (map['urlTemplate'] as String).input(),
     );
   }
 }

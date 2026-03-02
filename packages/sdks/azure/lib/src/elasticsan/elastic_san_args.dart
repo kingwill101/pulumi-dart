@@ -41,23 +41,15 @@ class ElasticSanArgs {
   /// [tags] A mapping of tags which should be assigned to the Elastic SAN resource.
   /// [zones] Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
   ElasticSanArgs({
-    required pulumi.Output<int> baseSizeInTib,
-    pulumi.Output<int>? extendedSizeInTib,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<ElasticSanSku> sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? zones,
-  }) :
-      baseSizeInTib = pulumi.Input.asInput<int>(baseSizeInTib),
-      extendedSizeInTib = pulumi.Input.asOptionalInput<int>(extendedSizeInTib),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<ElasticSanSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+    required this.baseSizeInTib,
+    this.extendedSizeInTib,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    required this.sku,
+    this.tags,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,14 +66,14 @@ class ElasticSanArgs {
 
   factory ElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSanArgs(
-      baseSizeInTib: pulumi.Output.create<int>(map['baseSizeInTib'] as int),
-      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : pulumi.Output.create<int>(map['extendedSizeInTib'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<ElasticSanSku>(ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+      baseSizeInTib: (map['baseSizeInTib'] as int).input(),
+      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
     );
   }
 }

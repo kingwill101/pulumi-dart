@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionTracingConfig {
   /// Tracing parameters
-  final Map<String, String>? params;
+  final pulumi.Input<Map<String, String>>? params;
   /// The tracing protocol type. Currently, only Jaeger is supported.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [V3FunctionTracingConfig].
   /// [params] Tracing parameters
@@ -24,8 +25,8 @@ class V3FunctionTracingConfig {
 
   factory V3FunctionTracingConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionTracingConfig(
-      params: map['params'] == null ? null : (map['params'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

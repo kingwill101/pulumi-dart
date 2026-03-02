@@ -25,17 +25,12 @@ class LifecyclePolicyArgs {
   /// [paths] The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
   /// [storageType] The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
   LifecyclePolicyArgs({
-    required pulumi.Output<String> fileSystemId,
-    required pulumi.Output<String> lifecyclePolicyName,
-    required pulumi.Output<String> lifecycleRuleName,
-    required pulumi.Output<List<String>> paths,
-    required pulumi.Output<String> storageType,
-  }) :
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
-      lifecyclePolicyName = pulumi.Input.asInput<String>(lifecyclePolicyName),
-      lifecycleRuleName = pulumi.Input.asInput<String>(lifecycleRuleName),
-      paths = pulumi.Input.asInput<List<String>>(paths),
-      storageType = pulumi.Input.asInput<String>(storageType);
+    required this.fileSystemId,
+    required this.lifecyclePolicyName,
+    required this.lifecycleRuleName,
+    required this.paths,
+    required this.storageType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class LifecyclePolicyArgs {
 
   factory LifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyArgs(
-      fileSystemId: pulumi.Output.create<String>(map['fileSystemId'] as String),
-      lifecyclePolicyName: pulumi.Output.create<String>(map['lifecyclePolicyName'] as String),
-      lifecycleRuleName: pulumi.Output.create<String>(map['lifecycleRuleName'] as String),
-      paths: pulumi.Output.create<List<String>>((map['paths'] as List).cast<String>()),
-      storageType: pulumi.Output.create<String>(map['storageType'] as String),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      lifecyclePolicyName: (map['lifecyclePolicyName'] as String).input(),
+      lifecycleRuleName: (map['lifecycleRuleName'] as String).input(),
+      paths: ((map['paths'] as List).cast<String>()).input(),
+      storageType: (map['storageType'] as String).input(),
     );
   }
 }

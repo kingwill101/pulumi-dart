@@ -24,17 +24,12 @@ class PolicyArgs {
   /// [policyId] Required. The platform policy ID.
   /// [project] Optional.
   PolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<GkePolicy>? gkePolicy,
-    required pulumi.Output<String> platformId,
-    required pulumi.Output<String> policyId,
-    pulumi.Output<String>? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gkePolicy = pulumi.Input.asOptionalInput<GkePolicy>(gkePolicy),
-      platformId = pulumi.Input.asInput<String>(platformId),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.description,
+    this.gkePolicy,
+    required this.platformId,
+    required this.policyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gkePolicy: map['gkePolicy'] == null ? null : pulumi.Output.create<GkePolicy>(GkePolicy.fromMap((map['gkePolicy'] as Map).cast<String, dynamic>())),
-      platformId: pulumi.Output.create<String>(map['platformId'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gkePolicy: map['gkePolicy'] == null ? null : (GkePolicy.fromMap((map['gkePolicy'] as Map).cast<String, dynamic>())).input(),
+      platformId: (map['platformId'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

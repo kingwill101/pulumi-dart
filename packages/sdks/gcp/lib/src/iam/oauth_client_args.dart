@@ -60,27 +60,17 @@ class OauthClientArgs {
   /// [oauthClientId] Required. The ID to use for the OauthClient, which becomes the final component of
   /// [project] The ID of the project in which the resource belongs.
   OauthClientArgs({
-    required pulumi.Output<List<String>> allowedGrantTypes,
-    required pulumi.Output<List<String>> allowedRedirectUris,
-    required pulumi.Output<List<String>> allowedScopes,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> oauthClientId,
-    pulumi.Output<String>? project,
-  }) :
-      allowedGrantTypes = pulumi.Input.asInput<List<String>>(allowedGrantTypes),
-      allowedRedirectUris = pulumi.Input.asInput<List<String>>(allowedRedirectUris),
-      allowedScopes = pulumi.Input.asInput<List<String>>(allowedScopes),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      oauthClientId = pulumi.Input.asInput<String>(oauthClientId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.allowedGrantTypes,
+    required this.allowedRedirectUris,
+    required this.allowedScopes,
+    this.clientType,
+    this.description,
+    this.disabled,
+    this.displayName,
+    required this.location,
+    required this.oauthClientId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,16 +89,16 @@ class OauthClientArgs {
 
   factory OauthClientArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientArgs(
-      allowedGrantTypes: pulumi.Output.create<List<String>>((map['allowedGrantTypes'] as List).cast<String>()),
-      allowedRedirectUris: pulumi.Output.create<List<String>>((map['allowedRedirectUris'] as List).cast<String>()),
-      allowedScopes: pulumi.Output.create<List<String>>((map['allowedScopes'] as List).cast<String>()),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      oauthClientId: pulumi.Output.create<String>(map['oauthClientId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      allowedGrantTypes: ((map['allowedGrantTypes'] as List).cast<String>()).input(),
+      allowedRedirectUris: ((map['allowedRedirectUris'] as List).cast<String>()).input(),
+      allowedScopes: ((map['allowedScopes'] as List).cast<String>()).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      oauthClientId: (map['oauthClientId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

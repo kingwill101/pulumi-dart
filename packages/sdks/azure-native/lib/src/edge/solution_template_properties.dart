@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Solution Template Properties
 class SolutionTemplateProperties {
   /// List of capabilities
-  final List<String> capabilities;
+  final pulumi.Input<List<String>> capabilities;
   /// Description of Solution template
-  final String description;
+  final pulumi.Input<String> description;
   /// Flag to enable external validation
-  final bool? enableExternalValidation;
+  final pulumi.Input<bool>? enableExternalValidation;
   /// State of resource
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SolutionTemplateProperties].
   /// [capabilities] List of capabilities
@@ -35,10 +36,10 @@ class SolutionTemplateProperties {
 
   factory SolutionTemplateProperties.fromMap(Map<String, dynamic> map) {
     return SolutionTemplateProperties(
-      capabilities: (map['capabilities'] as List).cast<String>(),
-      description: map['description'] as String,
-      enableExternalValidation: map['enableExternalValidation'] == null ? null : map['enableExternalValidation'] as bool,
-      state: map['state'] == null ? null : map['state'] as String,
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation'] as bool).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

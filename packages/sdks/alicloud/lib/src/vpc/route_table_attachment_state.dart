@@ -16,13 +16,10 @@ class RouteTableAttachmentState {
   /// [status] The status of the resource.
   /// [vswitchId] The ID of the switch to bind the route table.
   RouteTableAttachmentState({
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.routeTableId,
+    this.status,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class RouteTableAttachmentState {
 
   factory RouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return RouteTableAttachmentState(
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

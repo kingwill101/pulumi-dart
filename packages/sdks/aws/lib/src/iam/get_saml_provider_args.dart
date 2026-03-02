@@ -16,11 +16,9 @@ class GetSamlProviderArgs {
   /// [arn] ARN assigned by AWS for the provider.
   /// [tags] Tags attached to the SAML provider.
   GetSamlProviderArgs({
-    required pulumi.Output<String> arn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      arn = pulumi.Input.asInput<String>(arn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.arn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSamlProviderArgs {
 
   factory GetSamlProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSamlProviderArgs(
-      arn: pulumi.Output.create<String>(map['arn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      arn: (map['arn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

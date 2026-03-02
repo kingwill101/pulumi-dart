@@ -25,17 +25,12 @@ class AccountSettingsArgs {
   /// [maintenancePolicy] The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
   /// [networkHelper] Enables network helper across all users by default for new Linodes and Linode Configs.
   AccountSettingsArgs({
-    pulumi.Output<bool>? backupsEnabled,
-    pulumi.Output<String>? interfacesForNewLinodes,
-    pulumi.Output<String>? longviewSubscription,
-    pulumi.Output<String>? maintenancePolicy,
-    pulumi.Output<bool>? networkHelper,
-  }) :
-      backupsEnabled = pulumi.Input.asOptionalInput<bool>(backupsEnabled),
-      interfacesForNewLinodes = pulumi.Input.asOptionalInput<String>(interfacesForNewLinodes),
-      longviewSubscription = pulumi.Input.asOptionalInput<String>(longviewSubscription),
-      maintenancePolicy = pulumi.Input.asOptionalInput<String>(maintenancePolicy),
-      networkHelper = pulumi.Input.asOptionalInput<bool>(networkHelper);
+    this.backupsEnabled,
+    this.interfacesForNewLinodes,
+    this.longviewSubscription,
+    this.maintenancePolicy,
+    this.networkHelper,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class AccountSettingsArgs {
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      backupsEnabled: map['backupsEnabled'] == null ? null : pulumi.Output.create<bool>(map['backupsEnabled'] as bool),
-      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : pulumi.Output.create<String>(map['interfacesForNewLinodes'] as String),
-      longviewSubscription: map['longviewSubscription'] == null ? null : pulumi.Output.create<String>(map['longviewSubscription'] as String),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : pulumi.Output.create<String>(map['maintenancePolicy'] as String),
-      networkHelper: map['networkHelper'] == null ? null : pulumi.Output.create<bool>(map['networkHelper'] as bool),
+      backupsEnabled: map['backupsEnabled'] == null ? null : (map['backupsEnabled'] as bool).input(),
+      interfacesForNewLinodes: map['interfacesForNewLinodes'] == null ? null : (map['interfacesForNewLinodes'] as String).input(),
+      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription'] as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy'] as String).input(),
+      networkHelper: map['networkHelper'] == null ? null : (map['networkHelper'] as bool).input(),
     );
   }
 }

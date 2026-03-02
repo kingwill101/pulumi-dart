@@ -16,11 +16,9 @@ class GetHciEdgeDeviceArgs {
   /// [edgeDeviceName] Name of Device
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetHciEdgeDeviceArgs({
-    required pulumi.Output<String> edgeDeviceName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      edgeDeviceName = pulumi.Input.asInput<String>(edgeDeviceName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.edgeDeviceName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHciEdgeDeviceArgs {
 
   factory GetHciEdgeDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetHciEdgeDeviceArgs(
-      edgeDeviceName: pulumi.Output.create<String>(map['edgeDeviceName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      edgeDeviceName: (map['edgeDeviceName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

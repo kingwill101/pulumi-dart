@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of NFS StorageClass
 class NfsStorageClassTypeProperties {
   /// Mounted folder permissions. Default is 0. If set as non-zero, driver will perform `chmod` after mount
-  final String? mountPermissions;
+  final pulumi.Input<String>? mountPermissions;
   /// The action to take when a NFS volume is deleted. Default is Delete
-  final String? onDelete;
+  final pulumi.Input<String>? onDelete;
   /// NFS Server
-  final String server;
+  final pulumi.Input<String> server;
   /// NFS share
-  final String share;
+  final pulumi.Input<String> share;
   /// Sub directory under share. If the sub directory doesn't exist, driver will create it
-  final String? subDir;
+  final pulumi.Input<String>? subDir;
   /// Type of a storage class
   /// Expected value is 'NFS'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [NfsStorageClassTypeProperties].
   /// [mountPermissions] Mounted folder permissions. Default is 0. If set as non-zero, driver will perform `chmod` after mount
@@ -46,12 +47,12 @@ class NfsStorageClassTypeProperties {
 
   factory NfsStorageClassTypeProperties.fromMap(Map<String, dynamic> map) {
     return NfsStorageClassTypeProperties(
-      mountPermissions: map['mountPermissions'] == null ? null : map['mountPermissions'] as String,
-      onDelete: map['onDelete'] == null ? null : map['onDelete'] as String,
-      server: map['server'] as String,
-      share: map['share'] as String,
-      subDir: map['subDir'] == null ? null : map['subDir'] as String,
-      type: map['type'] as String,
+      mountPermissions: map['mountPermissions'] == null ? null : (map['mountPermissions'] as String).input(),
+      onDelete: map['onDelete'] == null ? null : (map['onDelete'] as String).input(),
+      server: (map['server'] as String).input(),
+      share: (map['share'] as String).input(),
+      subDir: map['subDir'] == null ? null : (map['subDir'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

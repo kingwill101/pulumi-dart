@@ -26,17 +26,12 @@ class WebPubSubCustomDomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   WebPubSubCustomDomainArgs({
-    required pulumi.Output<ResourceReference> customCertificate,
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      customCertificate = pulumi.Input.asInput<ResourceReference>(customCertificate),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.customCertificate,
+    required this.domainName,
+    this.name,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class WebPubSubCustomDomainArgs {
 
   factory WebPubSubCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return WebPubSubCustomDomainArgs(
-      customCertificate: pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['customCertificate'] as Map).cast<String, dynamic>())),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      customCertificate: (ResourceReference.fromMap((map['customCertificate'] as Map).cast<String, dynamic>())).input(),
+      domainName: (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

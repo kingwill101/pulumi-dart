@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
   /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or `projects/project-id/storedInfoTypes/432452342`.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType].
   /// [name] Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
@@ -20,7 +21,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType {
 
   factory PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

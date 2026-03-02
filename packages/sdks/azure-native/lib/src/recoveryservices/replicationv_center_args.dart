@@ -26,17 +26,12 @@ class ReplicationvCenterArgs {
   /// [resourceName] The name of the recovery services vault.
   /// [vcenterName] vcenter name.
   ReplicationvCenterArgs({
-    required pulumi.Output<String> fabricName,
-    pulumi.Output<AddVCenterRequestProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? vcenterName,
-  }) :
-      fabricName = pulumi.Input.asInput<String>(fabricName),
-      properties = pulumi.Input.asOptionalInput<AddVCenterRequestProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      vcenterName = pulumi.Input.asOptionalInput<String>(vcenterName);
+    required this.fabricName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.vcenterName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ReplicationvCenterArgs {
 
   factory ReplicationvCenterArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationvCenterArgs(
-      fabricName: pulumi.Output.create<String>(map['fabricName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AddVCenterRequestProperties>(AddVCenterRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      vcenterName: map['vcenterName'] == null ? null : pulumi.Output.create<String>(map['vcenterName'] as String),
+      fabricName: (map['fabricName'] as String).input(),
+      properties: map['properties'] == null ? null : (AddVCenterRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName'] as String).input(),
     );
   }
 }

@@ -39,25 +39,16 @@ class ConnectivityConfigurationArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   ConnectivityConfigurationArgs({
-    required pulumi.Output<List<ConnectivityGroupItem>> appliesToGroups,
-    pulumi.Output<String>? configurationName,
-    required pulumi.Output<String> connectivityTopology,
-    pulumi.Output<String>? deleteExistingPeering,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<Hub>>? hubs,
-    pulumi.Output<String>? isGlobal,
-    required pulumi.Output<String> networkManagerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      appliesToGroups = pulumi.Input.asInput<List<ConnectivityGroupItem>>(appliesToGroups),
-      configurationName = pulumi.Input.asOptionalInput<String>(configurationName),
-      connectivityTopology = pulumi.Input.asInput<String>(connectivityTopology),
-      deleteExistingPeering = pulumi.Input.asOptionalInput<String>(deleteExistingPeering),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hubs = pulumi.Input.asOptionalInput<List<Hub>>(hubs),
-      isGlobal = pulumi.Input.asOptionalInput<String>(isGlobal),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.appliesToGroups,
+    this.configurationName,
+    required this.connectivityTopology,
+    this.deleteExistingPeering,
+    this.description,
+    this.hubs,
+    this.isGlobal,
+    required this.networkManagerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class ConnectivityConfigurationArgs {
 
   factory ConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityConfigurationArgs(
-      appliesToGroups: pulumi.Output.create<List<ConnectivityGroupItem>>(pulumi.Input.decodeList<ConnectivityGroupItem>(map['appliesToGroups'], (value) => ConnectivityGroupItem.fromMap((value as Map).cast<String, dynamic>()))),
-      configurationName: map['configurationName'] == null ? null : pulumi.Output.create<String>(map['configurationName'] as String),
-      connectivityTopology: pulumi.Output.create<String>(map['connectivityTopology'] as String),
-      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : pulumi.Output.create<String>(map['deleteExistingPeering'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hubs: map['hubs'] == null ? null : pulumi.Output.create<List<Hub>>(pulumi.Input.decodeList<Hub>(map['hubs'], (value) => Hub.fromMap((value as Map).cast<String, dynamic>()))),
-      isGlobal: map['isGlobal'] == null ? null : pulumi.Output.create<String>(map['isGlobal'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appliesToGroups: (pulumi.Input.decodeList<ConnectivityGroupItem>(map['appliesToGroups'], (value) => ConnectivityGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      connectivityTopology: (map['connectivityTopology'] as String).input(),
+      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : (map['deleteExistingPeering'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<Hub>(map['hubs'], (value) => Hub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

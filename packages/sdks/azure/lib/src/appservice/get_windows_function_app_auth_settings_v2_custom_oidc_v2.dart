@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsFunctionAppAuthSettingsV2CustomOidcV2 {
   /// The endpoint to make the Authorisation Request as supplied by `openid_configuration_endpoint` response.
-  final String authorisationEndpoint;
+  final pulumi.Input<String> authorisationEndpoint;
   /// The endpoint that provides the keys necessary to validate the token as supplied by `openid_configuration_endpoint` response.
-  final String certificationUri;
+  final pulumi.Input<String> certificationUri;
   /// The Client Credential Method used.
-  final String clientCredentialMethod;
+  final pulumi.Input<String> clientCredentialMethod;
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
-  final String clientSecretSettingName;
+  final pulumi.Input<String> clientSecretSettingName;
   /// The endpoint that issued the Token as supplied by `openid_configuration_endpoint` response.
-  final String issuerEndpoint;
+  final pulumi.Input<String> issuerEndpoint;
   /// The name of this Windows Function App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The name of the claim that contains the users name.
-  final String nameClaimType;
+  final pulumi.Input<String> nameClaimType;
   /// The endpoint used for OpenID Connect Discovery. For example `https://example.com/.well-known/openid-configuration`.
-  final String openidConfigurationEndpoint;
+  final pulumi.Input<String> openidConfigurationEndpoint;
   /// The list of the scopes that are requested while authenticating.
-  final List<String> scopes;
+  final pulumi.Input<List<String>> scopes;
   /// The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
 
   /// Creates a new [GetWindowsFunctionAppAuthSettingsV2CustomOidcV2].
   /// [authorisationEndpoint] The endpoint to make the Authorisation Request as supplied by `openid_configuration_endpoint` response.
@@ -69,17 +70,17 @@ class GetWindowsFunctionAppAuthSettingsV2CustomOidcV2 {
 
   factory GetWindowsFunctionAppAuthSettingsV2CustomOidcV2.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppAuthSettingsV2CustomOidcV2(
-      authorisationEndpoint: map['authorisationEndpoint'] as String,
-      certificationUri: map['certificationUri'] as String,
-      clientCredentialMethod: map['clientCredentialMethod'] as String,
-      clientId: map['clientId'] as String,
-      clientSecretSettingName: map['clientSecretSettingName'] as String,
-      issuerEndpoint: map['issuerEndpoint'] as String,
-      name: map['name'] as String,
-      nameClaimType: map['nameClaimType'] as String,
-      openidConfigurationEndpoint: map['openidConfigurationEndpoint'] as String,
-      scopes: (map['scopes'] as List).cast<String>(),
-      tokenEndpoint: map['tokenEndpoint'] as String,
+      authorisationEndpoint: (map['authorisationEndpoint'] as String).input(),
+      certificationUri: (map['certificationUri'] as String).input(),
+      clientCredentialMethod: (map['clientCredentialMethod'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
+      issuerEndpoint: (map['issuerEndpoint'] as String).input(),
+      name: (map['name'] as String).input(),
+      nameClaimType: (map['nameClaimType'] as String).input(),
+      openidConfigurationEndpoint: (map['openidConfigurationEndpoint'] as String).input(),
+      scopes: ((map['scopes'] as List).cast<String>()).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
     );
   }
 }

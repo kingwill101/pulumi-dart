@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesServiceNow {
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesServiceNow].
   /// [object] Required.
@@ -18,7 +19,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesServiceNow {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesServiceNow(
-      object: map['object'] as String,
+      object: (map['object'] as String).input(),
     );
   }
 }

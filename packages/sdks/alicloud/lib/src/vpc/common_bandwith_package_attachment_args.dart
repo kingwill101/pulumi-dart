@@ -30,17 +30,12 @@ class CommonBandwithPackageAttachmentArgs {
   /// [instanceId] The ID of the EIP that you want to query.
   /// [ipType] The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
   CommonBandwithPackageAttachmentArgs({
-    pulumi.Output<String>? bandwidthPackageBandwidth,
-    required pulumi.Output<String> bandwidthPackageId,
-    pulumi.Output<bool>? cancelCommonBandwidthPackageIpBandwidth,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? ipType,
-  }) :
-      bandwidthPackageBandwidth = pulumi.Input.asOptionalInput<String>(bandwidthPackageBandwidth),
-      bandwidthPackageId = pulumi.Input.asInput<String>(bandwidthPackageId),
-      cancelCommonBandwidthPackageIpBandwidth = pulumi.Input.asOptionalInput<bool>(cancelCommonBandwidthPackageIpBandwidth),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      ipType = pulumi.Input.asOptionalInput<String>(ipType);
+    this.bandwidthPackageBandwidth,
+    required this.bandwidthPackageId,
+    this.cancelCommonBandwidthPackageIpBandwidth,
+    required this.instanceId,
+    this.ipType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,11 +49,11 @@ class CommonBandwithPackageAttachmentArgs {
 
   factory CommonBandwithPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageAttachmentArgs(
-      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageBandwidth'] as String),
-      bandwidthPackageId: pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : pulumi.Output.create<bool>(map['cancelCommonBandwidthPackageIpBandwidth'] as bool),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      ipType: map['ipType'] == null ? null : pulumi.Output.create<String>(map['ipType'] as String),
+      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth'] as String).input(),
+      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
+      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
     );
   }
 }

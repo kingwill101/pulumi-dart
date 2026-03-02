@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detector information. By default this is not populated, unless it's specified in expandDetector
 class Detector {
   /// The detector id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The detector's parameters.'
-  final Map<String, dynamic>? parameters;
+  final pulumi.Input<Map<String, dynamic>>? parameters;
 
   /// Creates a new [Detector].
   /// [id] The detector id.
@@ -25,8 +26,8 @@ class Detector {
 
   factory Detector.fromMap(Map<String, dynamic> map) {
     return Detector(
-      id: map['id'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, dynamic>(),
+      id: (map['id'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

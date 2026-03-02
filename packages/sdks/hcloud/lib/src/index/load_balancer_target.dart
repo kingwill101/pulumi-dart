@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerTarget {
-  final int? serverId;
+  final pulumi.Input<int>? serverId;
   /// (string) Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
-  final String type;
-  final bool? usePrivateIp;
+  final pulumi.Input<String> type;
+  final pulumi.Input<bool>? usePrivateIp;
 
   /// Creates a new [LoadBalancerTarget].
   /// [serverId] Optional.
@@ -27,9 +28,9 @@ class LoadBalancerTarget {
 
   factory LoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return LoadBalancerTarget(
-      serverId: map['serverId'] == null ? null : map['serverId'] as int,
-      type: map['type'] as String,
-      usePrivateIp: map['usePrivateIp'] == null ? null : map['usePrivateIp'] as bool,
+      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      type: (map['type'] as String).input(),
+      usePrivateIp: map['usePrivateIp'] == null ? null : (map['usePrivateIp'] as bool).input(),
     );
   }
 }

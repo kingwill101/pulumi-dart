@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsNvRamSourceSsl {
   /// Specifies the verification level of the SSL connections for the backing store.
-  final String verify;
+  final pulumi.Input<String> verify;
 
   /// Creates a new [DomainOsNvRamSourceSsl].
   /// [verify] Specifies the verification level of the SSL connections for the backing store.
@@ -19,7 +20,7 @@ class DomainOsNvRamSourceSsl {
 
   factory DomainOsNvRamSourceSsl.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceSsl(
-      verify: map['verify'] as String,
+      verify: (map['verify'] as String).input(),
     );
   }
 }

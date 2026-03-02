@@ -6,24 +6,24 @@ import 'get_rules_rule_forward_ip.dart';
 
 class GetRulesRule {
   /// The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
-  final List<GetRulesRuleBindVpc> bindVpcs;
+  final pulumi.Input<List<GetRulesRuleBindVpc>> bindVpcs;
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Endpoint.
-  final String endpointId;
+  final pulumi.Input<String> endpointId;
   /// The Name of the Endpoint.
-  final String endpointName;
-  final List<GetRulesRuleForwardIp> forwardIps;
+  final pulumi.Input<String> endpointName;
+  final pulumi.Input<List<GetRulesRuleForwardIp>> forwardIps;
   /// The ID of the Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
   /// The name of the resource.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// The type of the rule.
-  final String type;
+  final pulumi.Input<String> type;
   /// The name of the forwarding zone.
-  final String zoneName;
+  final pulumi.Input<String> zoneName;
 
   /// Creates a new [GetRulesRule].
   /// [bindVpcs] The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
@@ -51,11 +51,11 @@ class GetRulesRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindVpcs': pulumi.Input.encodeList<GetRulesRuleBindVpc, Map<String, dynamic>>(bindVpcs, (value) => value.toMap()),
+      'bindVpcs': pulumi.Input.mapInputValue<List<GetRulesRuleBindVpc>, List<Map<String, dynamic>>>(bindVpcs, (value) => pulumi.Input.encodeList<GetRulesRuleBindVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
       'endpointId': endpointId,
       'endpointName': endpointName,
-      'forwardIps': pulumi.Input.encodeList<GetRulesRuleForwardIp, Map<String, dynamic>>(forwardIps, (value) => value.toMap()),
+      'forwardIps': pulumi.Input.mapInputValue<List<GetRulesRuleForwardIp>, List<Map<String, dynamic>>>(forwardIps, (value) => pulumi.Input.encodeList<GetRulesRuleForwardIp, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'ruleId': ruleId,
       'ruleName': ruleName,
@@ -66,16 +66,16 @@ class GetRulesRule {
 
   factory GetRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRulesRule(
-      bindVpcs: pulumi.Input.decodeList<GetRulesRuleBindVpc>(map['bindVpcs'], (value) => GetRulesRuleBindVpc.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      endpointId: map['endpointId'] as String,
-      endpointName: map['endpointName'] as String,
-      forwardIps: pulumi.Input.decodeList<GetRulesRuleForwardIp>(map['forwardIps'], (value) => GetRulesRuleForwardIp.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      ruleId: map['ruleId'] as String,
-      ruleName: map['ruleName'] as String,
-      type: map['type'] as String,
-      zoneName: map['zoneName'] as String,
+      bindVpcs: (pulumi.Input.decodeList<GetRulesRuleBindVpc>(map['bindVpcs'], (value) => GetRulesRuleBindVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (map['createTime'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      endpointName: (map['endpointName'] as String).input(),
+      forwardIps: (pulumi.Input.decodeList<GetRulesRuleForwardIp>(map['forwardIps'], (value) => GetRulesRuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      type: (map['type'] as String).input(),
+      zoneName: (map['zoneName'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class GetTransitRouterMulticastDomainPeerMembersArgs {
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   GetTransitRouterMulticastDomainPeerMembersArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? peerTransitRouterMulticastDomains,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? transitRouterAttachmentId,
-    required pulumi.Output<String> transitRouterMulticastDomainId,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      peerTransitRouterMulticastDomains = pulumi.Input.asOptionalInput<List<String>>(peerTransitRouterMulticastDomains),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      transitRouterAttachmentId = pulumi.Input.asOptionalInput<String>(transitRouterAttachmentId),
-      transitRouterMulticastDomainId = pulumi.Input.asInput<String>(transitRouterMulticastDomainId);
+    this.ids,
+    this.outputFile,
+    this.peerTransitRouterMulticastDomains,
+    this.resourceId,
+    this.resourceType,
+    this.transitRouterAttachmentId,
+    required this.transitRouterMulticastDomainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class GetTransitRouterMulticastDomainPeerMembersArgs {
 
   factory GetTransitRouterMulticastDomainPeerMembersArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainPeerMembersArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : pulumi.Output.create<List<String>>((map['peerTransitRouterMulticastDomains'] as List).cast<String>()),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : pulumi.Output.create<String>(map['transitRouterAttachmentId'] as String),
-      transitRouterMulticastDomainId: pulumi.Output.create<String>(map['transitRouterMulticastDomainId'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : ((map['peerTransitRouterMulticastDomains'] as List).cast<String>()).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
     );
   }
 }

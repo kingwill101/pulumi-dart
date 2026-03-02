@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PasswordResponse {
-  final String name;
-  final String value;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> value;
 
   /// Creates a new [PasswordResponse].
   /// [name] Required.
@@ -22,8 +23,8 @@ class PasswordResponse {
 
   factory PasswordResponse.fromMap(Map<String, dynamic> map) {
     return PasswordResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

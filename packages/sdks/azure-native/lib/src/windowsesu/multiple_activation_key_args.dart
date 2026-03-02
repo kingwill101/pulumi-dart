@@ -37,25 +37,16 @@ class MultipleActivationKeyArgs {
   /// [supportType] Type of support
   /// [tags] Resource tags.
   MultipleActivationKeyArgs({
-    pulumi.Output<String>? agreementNumber,
-    pulumi.Output<int>? installedServerNumber,
-    pulumi.Output<bool>? isEligible,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? multipleActivationKeyName,
-    pulumi.Output<String>? osType,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? supportType,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      agreementNumber = pulumi.Input.asOptionalInput<String>(agreementNumber),
-      installedServerNumber = pulumi.Input.asOptionalInput<int>(installedServerNumber),
-      isEligible = pulumi.Input.asOptionalInput<bool>(isEligible),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      multipleActivationKeyName = pulumi.Input.asOptionalInput<String>(multipleActivationKeyName),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      supportType = pulumi.Input.asOptionalInput<String>(supportType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.agreementNumber,
+    this.installedServerNumber,
+    this.isEligible,
+    this.location,
+    this.multipleActivationKeyName,
+    this.osType,
+    required this.resourceGroupName,
+    this.supportType,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class MultipleActivationKeyArgs {
 
   factory MultipleActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return MultipleActivationKeyArgs(
-      agreementNumber: map['agreementNumber'] == null ? null : pulumi.Output.create<String>(map['agreementNumber'] as String),
-      installedServerNumber: map['installedServerNumber'] == null ? null : pulumi.Output.create<int>(map['installedServerNumber'] as int),
-      isEligible: map['isEligible'] == null ? null : pulumi.Output.create<bool>(map['isEligible'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      multipleActivationKeyName: map['multipleActivationKeyName'] == null ? null : pulumi.Output.create<String>(map['multipleActivationKeyName'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      supportType: map['supportType'] == null ? null : pulumi.Output.create<String>(map['supportType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      agreementNumber: map['agreementNumber'] == null ? null : (map['agreementNumber'] as String).input(),
+      installedServerNumber: map['installedServerNumber'] == null ? null : (map['installedServerNumber'] as int).input(),
+      isEligible: map['isEligible'] == null ? null : (map['isEligible'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      multipleActivationKeyName: map['multipleActivationKeyName'] == null ? null : (map['multipleActivationKeyName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      supportType: map['supportType'] == null ? null : (map['supportType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

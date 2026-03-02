@@ -13,9 +13,8 @@ class GetByoipPrefixResourcesArgs {
   /// Creates a new [GetByoipPrefixResourcesArgs].
   /// [byoipPrefixUuid] The UUID of the BYOIP prefix to list addresses from.
   GetByoipPrefixResourcesArgs({
-    required pulumi.Output<String> byoipPrefixUuid,
-  }) :
-      byoipPrefixUuid = pulumi.Input.asInput<String>(byoipPrefixUuid);
+    required this.byoipPrefixUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetByoipPrefixResourcesArgs {
 
   factory GetByoipPrefixResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetByoipPrefixResourcesArgs(
-      byoipPrefixUuid: pulumi.Output.create<String>(map['byoipPrefixUuid'] as String),
+      byoipPrefixUuid: (map['byoipPrefixUuid'] as String).input(),
     );
   }
 }

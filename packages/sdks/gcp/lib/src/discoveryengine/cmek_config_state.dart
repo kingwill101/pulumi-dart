@@ -53,31 +53,19 @@ class CmekConfigState {
   /// [singleRegionKeys] Single-regional CMEKs that are required for some VAIS features.
   /// [state] The state of the CmekConfig.
   CmekConfigState({
-    pulumi.Output<String>? cmekConfigId,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<String>? kmsKeyVersion,
-    pulumi.Output<int>? lastRotationTimestampMicros,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notebooklmState,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? setDefault,
-    pulumi.Output<List<CmekConfigSingleRegionKey>>? singleRegionKeys,
-    pulumi.Output<String>? state,
-  }) :
-      cmekConfigId = pulumi.Input.asOptionalInput<String>(cmekConfigId),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      kmsKeyVersion = pulumi.Input.asOptionalInput<String>(kmsKeyVersion),
-      lastRotationTimestampMicros = pulumi.Input.asOptionalInput<int>(lastRotationTimestampMicros),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notebooklmState = pulumi.Input.asOptionalInput<String>(notebooklmState),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      setDefault = pulumi.Input.asOptionalInput<bool>(setDefault),
-      singleRegionKeys = pulumi.Input.asOptionalInput<List<CmekConfigSingleRegionKey>>(singleRegionKeys),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.cmekConfigId,
+    this.isDefault,
+    this.kmsKey,
+    this.kmsKeyVersion,
+    this.lastRotationTimestampMicros,
+    this.location,
+    this.name,
+    this.notebooklmState,
+    this.project,
+    this.setDefault,
+    this.singleRegionKeys,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,18 +86,18 @@ class CmekConfigState {
 
   factory CmekConfigState.fromMap(Map<String, dynamic> map) {
     return CmekConfigState(
-      cmekConfigId: map['cmekConfigId'] == null ? null : pulumi.Output.create<String>(map['cmekConfigId'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : pulumi.Output.create<String>(map['kmsKeyVersion'] as String),
-      lastRotationTimestampMicros: map['lastRotationTimestampMicros'] == null ? null : pulumi.Output.create<int>(map['lastRotationTimestampMicros'] as int),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notebooklmState: map['notebooklmState'] == null ? null : pulumi.Output.create<String>(map['notebooklmState'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      setDefault: map['setDefault'] == null ? null : pulumi.Output.create<bool>(map['setDefault'] as bool),
-      singleRegionKeys: map['singleRegionKeys'] == null ? null : pulumi.Output.create<List<CmekConfigSingleRegionKey>>(pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      cmekConfigId: map['cmekConfigId'] == null ? null : (map['cmekConfigId'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
+      lastRotationTimestampMicros: map['lastRotationTimestampMicros'] == null ? null : (map['lastRotationTimestampMicros'] as int).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notebooklmState: map['notebooklmState'] == null ? null : (map['notebooklmState'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      setDefault: map['setDefault'] == null ? null : (map['setDefault'] as bool).input(),
+      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

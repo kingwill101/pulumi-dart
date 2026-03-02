@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentMemoryConfigurationSessionSummaryConfiguration {
   /// Maximum number of recent session summaries to include in the agent's prompt context.
-  final int maxRecentSessions;
+  final pulumi.Input<int> maxRecentSessions;
 
   /// Creates a new [AgentAgentMemoryConfigurationSessionSummaryConfiguration].
   /// [maxRecentSessions] Maximum number of recent session summaries to include in the agent's prompt context.
@@ -19,7 +20,7 @@ class AgentAgentMemoryConfigurationSessionSummaryConfiguration {
 
   factory AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentMemoryConfigurationSessionSummaryConfiguration(
-      maxRecentSessions: map['maxRecentSessions'] as int,
+      maxRecentSessions: (map['maxRecentSessions'] as int).input(),
     );
   }
 }

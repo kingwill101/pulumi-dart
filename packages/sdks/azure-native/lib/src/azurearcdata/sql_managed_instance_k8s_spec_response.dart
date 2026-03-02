@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'k8s_scheduling_response.dart';
 import 'k8s_security_response.dart';
 import 'k8s_settings_response.dart';
@@ -7,13 +8,13 @@ import 'k8s_settings_response.dart';
 /// The kubernetes spec information.
 class SqlManagedInstanceK8sSpecResponse {
   /// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
-  final int? replicas;
+  final pulumi.Input<int>? replicas;
   /// The kubernetes scheduling information.
-  final K8sSchedulingResponse? scheduling;
+  final pulumi.Input<K8sSchedulingResponse>? scheduling;
   /// The kubernetes security information.
-  final K8sSecurityResponse? security;
+  final pulumi.Input<K8sSecurityResponse>? security;
   /// The kubernetes settings information.
-  final K8sSettingsResponse? settings;
+  final pulumi.Input<K8sSettingsResponse>? settings;
 
   /// Creates a new [SqlManagedInstanceK8sSpecResponse].
   /// [replicas] This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
@@ -30,18 +31,18 @@ class SqlManagedInstanceK8sSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'replicas': ?replicas,
-      'scheduling': ?scheduling == null ? null : scheduling!.toMap(),
-      'security': ?security == null ? null : security!.toMap(),
-      'settings': ?settings == null ? null : settings!.toMap(),
+      'scheduling': ?pulumi.Input.mapOptionalInputValue<K8sSchedulingResponse, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'security': ?pulumi.Input.mapOptionalInputValue<K8sSecurityResponse, Map<String, dynamic>>(security, (value) => value.toMap()),
+      'settings': ?pulumi.Input.mapOptionalInputValue<K8sSettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
     };
   }
 
   factory SqlManagedInstanceK8sSpecResponse.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sSpecResponse(
-      replicas: map['replicas'] == null ? null : map['replicas'] as int,
-      scheduling: map['scheduling'] == null ? null : K8sSchedulingResponse.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
-      security: map['security'] == null ? null : K8sSecurityResponse.fromMap((map['security'] as Map).cast<String, dynamic>()),
-      settings: map['settings'] == null ? null : K8sSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      scheduling: map['scheduling'] == null ? null : (K8sSchedulingResponse.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (K8sSecurityResponse.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (K8sSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

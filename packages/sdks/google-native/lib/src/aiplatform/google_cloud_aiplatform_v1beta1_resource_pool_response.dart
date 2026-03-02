@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_disk_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_machine_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_resource_pool_autoscaling_spec_response.dart';
@@ -7,15 +8,15 @@ import 'google_cloud_aiplatform_v1beta1_resource_pool_autoscaling_spec_response.
 /// Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
 class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
   /// Optional. Optional spec to configure GKE autoscaling
-  final GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse autoscalingSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse> autoscalingSpec;
   /// Optional. Disk spec for the machine in this node pool.
-  final GoogleCloudAiplatformV1beta1DiskSpecResponse diskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1DiskSpecResponse> diskSpec;
   /// Immutable. The specification of a single machine.
-  final GoogleCloudAiplatformV1beta1MachineSpecResponse machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpecResponse> machineSpec;
   /// Optional. The total number of machines to use for this resource pool.
-  final String replicaCount;
+  final pulumi.Input<String> replicaCount;
   /// The number of machines currently in use by training jobs for this resource pool. Will replace idle_replica_count.
-  final String usedReplicaCount;
+  final pulumi.Input<String> usedReplicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcePoolResponse].
   /// [autoscalingSpec] Optional. Optional spec to configure GKE autoscaling
@@ -33,9 +34,9 @@ class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingSpec': autoscalingSpec.toMap(),
-      'diskSpec': diskSpec.toMap(),
-      'machineSpec': machineSpec.toMap(),
+      'autoscalingSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse, Map<String, dynamic>>(autoscalingSpec, (value) => value.toMap()),
+      'diskSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1DiskSpecResponse, Map<String, dynamic>>(diskSpec, (value) => value.toMap()),
+      'machineSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1MachineSpecResponse, Map<String, dynamic>>(machineSpec, (value) => value.toMap()),
       'replicaCount': replicaCount,
       'usedReplicaCount': usedReplicaCount,
     };
@@ -43,11 +44,11 @@ class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
 
   factory GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcePoolResponse(
-      autoscalingSpec: GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap((map['autoscalingSpec'] as Map).cast<String, dynamic>()),
-      diskSpec: GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap((map['diskSpec'] as Map).cast<String, dynamic>()),
-      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
-      replicaCount: map['replicaCount'] as String,
-      usedReplicaCount: map['usedReplicaCount'] as String,
+      autoscalingSpec: (GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap((map['autoscalingSpec'] as Map).cast<String, dynamic>())).input(),
+      diskSpec: (GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap((map['diskSpec'] as Map).cast<String, dynamic>())).input(),
+      machineSpec: (GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
+      replicaCount: (map['replicaCount'] as String).input(),
+      usedReplicaCount: (map['usedReplicaCount'] as String).input(),
     );
   }
 }

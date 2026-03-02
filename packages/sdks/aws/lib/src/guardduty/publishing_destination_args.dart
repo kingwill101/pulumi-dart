@@ -27,17 +27,12 @@ class PublishingDestinationArgs {
   /// [kmsKeyArn] The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PublishingDestinationArgs({
-    required pulumi.Output<String> destinationArn,
-    pulumi.Output<String>? destinationType,
-    required pulumi.Output<String> detectorId,
-    required pulumi.Output<String> kmsKeyArn,
-    pulumi.Output<String>? region,
-  }) :
-      destinationArn = pulumi.Input.asInput<String>(destinationArn),
-      destinationType = pulumi.Input.asOptionalInput<String>(destinationType),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      kmsKeyArn = pulumi.Input.asInput<String>(kmsKeyArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.destinationArn,
+    this.destinationType,
+    required this.detectorId,
+    required this.kmsKeyArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class PublishingDestinationArgs {
 
   factory PublishingDestinationArgs.fromMap(Map<String, dynamic> map) {
     return PublishingDestinationArgs(
-      destinationArn: pulumi.Output.create<String>(map['destinationArn'] as String),
-      destinationType: map['destinationType'] == null ? null : pulumi.Output.create<String>(map['destinationType'] as String),
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      kmsKeyArn: pulumi.Output.create<String>(map['kmsKeyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      destinationArn: (map['destinationArn'] as String).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
+      detectorId: (map['detectorId'] as String).input(),
+      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

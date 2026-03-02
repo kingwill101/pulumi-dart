@@ -43,29 +43,18 @@ class GlossaryTermState {
   /// [termRelations] Object classifying the term relations through the following attributes:
   /// [timeouts] Optional.
   GlossaryTermState({
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? createdBy,
-    pulumi.Output<String>? domainIdentifier,
-    pulumi.Output<String>? glossaryIdentifier,
-    pulumi.Output<String>? longDescription,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? shortDescription,
-    pulumi.Output<String>? status,
-    pulumi.Output<GlossaryTermTermRelations>? termRelations,
-    pulumi.Output<GlossaryTermTimeouts>? timeouts,
-  }) :
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      domainIdentifier = pulumi.Input.asOptionalInput<String>(domainIdentifier),
-      glossaryIdentifier = pulumi.Input.asOptionalInput<String>(glossaryIdentifier),
-      longDescription = pulumi.Input.asOptionalInput<String>(longDescription),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      shortDescription = pulumi.Input.asOptionalInput<String>(shortDescription),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      termRelations = pulumi.Input.asOptionalInput<GlossaryTermTermRelations>(termRelations),
-      timeouts = pulumi.Input.asOptionalInput<GlossaryTermTimeouts>(timeouts);
+    this.createdAt,
+    this.createdBy,
+    this.domainIdentifier,
+    this.glossaryIdentifier,
+    this.longDescription,
+    this.name,
+    this.region,
+    this.shortDescription,
+    this.status,
+    this.termRelations,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GlossaryTermState {
 
   factory GlossaryTermState.fromMap(Map<String, dynamic> map) {
     return GlossaryTermState(
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      createdBy: map['createdBy'] == null ? null : pulumi.Output.create<String>(map['createdBy'] as String),
-      domainIdentifier: map['domainIdentifier'] == null ? null : pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      glossaryIdentifier: map['glossaryIdentifier'] == null ? null : pulumi.Output.create<String>(map['glossaryIdentifier'] as String),
-      longDescription: map['longDescription'] == null ? null : pulumi.Output.create<String>(map['longDescription'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      shortDescription: map['shortDescription'] == null ? null : pulumi.Output.create<String>(map['shortDescription'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      termRelations: map['termRelations'] == null ? null : pulumi.Output.create<GlossaryTermTermRelations>(GlossaryTermTermRelations.fromMap((map['termRelations'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<GlossaryTermTimeouts>(GlossaryTermTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      glossaryIdentifier: map['glossaryIdentifier'] == null ? null : (map['glossaryIdentifier'] as String).input(),
+      longDescription: map['longDescription'] == null ? null : (map['longDescription'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      termRelations: map['termRelations'] == null ? null : (GlossaryTermTermRelations.fromMap((map['termRelations'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (GlossaryTermTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

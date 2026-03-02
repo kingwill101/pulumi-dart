@@ -20,17 +20,12 @@ class GetGithubEnterpriseConfigArgs {
   /// [project] Optional.
   /// [projectId] Optional.
   GetGithubEnterpriseConfigArgs({
-    pulumi.Output<String>? configId,
-    required pulumi.Output<String> githubEnterpriseConfigId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? projectId,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      githubEnterpriseConfigId = pulumi.Input.asInput<String>(githubEnterpriseConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+    this.configId,
+    required this.githubEnterpriseConfigId,
+    required this.location,
+    this.project,
+    this.projectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetGithubEnterpriseConfigArgs {
 
   factory GetGithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGithubEnterpriseConfigArgs(
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      githubEnterpriseConfigId: pulumi.Output.create<String>(map['githubEnterpriseConfigId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      githubEnterpriseConfigId: (map['githubEnterpriseConfigId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

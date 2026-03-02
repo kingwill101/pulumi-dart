@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dicom_config_response.dart';
 import 'fhir_config_response.dart';
 import 'image_config_response.dart';
@@ -8,15 +9,15 @@ import 'text_config_response.dart';
 /// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
 class DeidentifyConfigResponse {
   /// Configures de-id of application/DICOM content.
-  final DicomConfigResponse dicom;
+  final pulumi.Input<DicomConfigResponse> dicom;
   /// Configures de-id of application/FHIR content.
-  final FhirConfigResponse fhir;
+  final pulumi.Input<FhirConfigResponse> fhir;
   /// Configures de-identification of image pixels wherever they are found in the source_dataset.
-  final ImageConfigResponse image;
+  final pulumi.Input<ImageConfigResponse> image;
   /// Configures de-identification of text wherever it is found in the source_dataset.
-  final TextConfigResponse text;
+  final pulumi.Input<TextConfigResponse> text;
   /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
-  final bool useRegionalDataProcessing;
+  final pulumi.Input<bool> useRegionalDataProcessing;
 
   /// Creates a new [DeidentifyConfigResponse].
   /// [dicom] Configures de-id of application/DICOM content.
@@ -34,21 +35,21 @@ class DeidentifyConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dicom': dicom.toMap(),
-      'fhir': fhir.toMap(),
-      'image': image.toMap(),
-      'text': text.toMap(),
+      'dicom': pulumi.Input.mapInputValue<DicomConfigResponse, Map<String, dynamic>>(dicom, (value) => value.toMap()),
+      'fhir': pulumi.Input.mapInputValue<FhirConfigResponse, Map<String, dynamic>>(fhir, (value) => value.toMap()),
+      'image': pulumi.Input.mapInputValue<ImageConfigResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'text': pulumi.Input.mapInputValue<TextConfigResponse, Map<String, dynamic>>(text, (value) => value.toMap()),
       'useRegionalDataProcessing': useRegionalDataProcessing,
     };
   }
 
   factory DeidentifyConfigResponse.fromMap(Map<String, dynamic> map) {
     return DeidentifyConfigResponse(
-      dicom: DicomConfigResponse.fromMap((map['dicom'] as Map).cast<String, dynamic>()),
-      fhir: FhirConfigResponse.fromMap((map['fhir'] as Map).cast<String, dynamic>()),
-      image: ImageConfigResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      text: TextConfigResponse.fromMap((map['text'] as Map).cast<String, dynamic>()),
-      useRegionalDataProcessing: map['useRegionalDataProcessing'] as bool,
+      dicom: (DicomConfigResponse.fromMap((map['dicom'] as Map).cast<String, dynamic>())).input(),
+      fhir: (FhirConfigResponse.fromMap((map['fhir'] as Map).cast<String, dynamic>())).input(),
+      image: (ImageConfigResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      text: (TextConfigResponse.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      useRegionalDataProcessing: (map['useRegionalDataProcessing'] as bool).input(),
     );
   }
 }

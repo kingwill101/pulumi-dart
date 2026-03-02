@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 
 /// A single record of the task status.
 class GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse {
   /// The error that occurred during the state. May be set when the state is any of the non-final state (PENDING/RUNNING/CANCELLING) or FAILED state. If the state is FAILED, the error here is final and not going to be retried. If the state is a non-final state, the error indicates a system-error being retried.
-  final GoogleRpcStatusResponseAiplatformV1beta1 error;
+  final pulumi.Input<GoogleRpcStatusResponseAiplatformV1beta1> error;
   /// The state of the task.
-  final String state;
+  final pulumi.Input<String> state;
   /// Update time of this status.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse].
   /// [error] The error that occurred during the state. May be set when the state is any of the non-final state (PENDING/RUNNING/CANCELLING) or FAILED state. If the state is FAILED, the error here is final and not going to be retried. If the state is a non-final state, the error indicates a system-error being retried.
@@ -23,7 +24,7 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': error.toMap(),
+      'error': pulumi.Input.mapInputValue<GoogleRpcStatusResponseAiplatformV1beta1, Map<String, dynamic>>(error, (value) => value.toMap()),
       'state': state,
       'updateTime': updateTime,
     };
@@ -31,9 +32,9 @@ class GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse {
 
   factory GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1PipelineTaskDetailPipelineTaskStatusResponse(
-      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      error: (GoogleRpcStatusResponseAiplatformV1beta1.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      state: (map['state'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineLoggingConfig {
   /// The minimum severity of logs that will be sent to Stackdriver/Platform
   /// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
   /// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-  final String? logSeverity;
+  final pulumi.Input<String>? logSeverity;
 
   /// Creates a new [PipelineLoggingConfig].
   /// [logSeverity] The minimum severity of logs that will be sent to Stackdriver/Platform
@@ -21,7 +22,7 @@ class PipelineLoggingConfig {
 
   factory PipelineLoggingConfig.fromMap(Map<String, dynamic> map) {
     return PipelineLoggingConfig(
-      logSeverity: map['logSeverity'] == null ? null : map['logSeverity'] as String,
+      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity'] as String).input(),
     );
   }
 }

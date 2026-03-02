@@ -23,13 +23,10 @@ class WorkspaceRootDbfsCustomerManagedKeyArgs {
   /// [keyVaultKeyId] The ID of the Key Vault Key to be used.
   /// [workspaceId] The Resource ID of the Databricks Workspace.
   WorkspaceRootDbfsCustomerManagedKeyArgs({
-    pulumi.Output<String>? keyVaultId,
-    required pulumi.Output<String> keyVaultKeyId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      keyVaultId = pulumi.Input.asOptionalInput<String>(keyVaultId),
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.keyVaultId,
+    required this.keyVaultKeyId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class WorkspaceRootDbfsCustomerManagedKeyArgs {
 
   factory WorkspaceRootDbfsCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceRootDbfsCustomerManagedKeyArgs(
-      keyVaultId: map['keyVaultId'] == null ? null : pulumi.Output.create<String>(map['keyVaultId'] as String),
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

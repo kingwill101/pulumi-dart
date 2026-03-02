@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Set the access level and network port settings for SQL Server.
 class SqlConnectivityUpdateSettingsResponse {
   /// SQL Server connectivity option.
-  final String? connectivityType;
+  final pulumi.Input<String>? connectivityType;
   /// SQL Server port.
-  final int? port;
+  final pulumi.Input<int>? port;
 
   /// Creates a new [SqlConnectivityUpdateSettingsResponse].
   /// [connectivityType] SQL Server connectivity option.
@@ -25,8 +26,8 @@ class SqlConnectivityUpdateSettingsResponse {
 
   factory SqlConnectivityUpdateSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlConnectivityUpdateSettingsResponse(
-      connectivityType: map['connectivityType'] == null ? null : map['connectivityType'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
     );
   }
 }

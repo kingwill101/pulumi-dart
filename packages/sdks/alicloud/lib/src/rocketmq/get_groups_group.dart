@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupsGroup {
   /// The name of the group.
-  final String groupName;
+  final pulumi.Input<String> groupName;
   /// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
-  final String groupType;
+  final pulumi.Input<String> groupType;
   /// The name of the group.
-  final String id;
+  final pulumi.Input<String> id;
   /// Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
-  final bool independentNaming;
+  final pulumi.Input<bool> independentNaming;
   /// ID of the ONS Instance that owns the groups.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The ID of the group owner, which is the Alibaba Cloud UID.
-  final String owner;
+  final pulumi.Input<String> owner;
   /// Remark of the group.
-  final String remark;
+  final pulumi.Input<String> remark;
   /// A map of tags assigned to the Ons instance.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetGroupsGroup].
   /// [groupName] The name of the group.
@@ -54,14 +55,14 @@ class GetGroupsGroup {
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroup(
-      groupName: map['groupName'] as String,
-      groupType: map['groupType'] as String,
-      id: map['id'] as String,
-      independentNaming: map['independentNaming'] as bool,
-      instanceId: map['instanceId'] as String,
-      owner: map['owner'] as String,
-      remark: map['remark'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      groupName: (map['groupName'] as String).input(),
+      groupType: (map['groupType'] as String).input(),
+      id: (map['id'] as String).input(),
+      independentNaming: (map['independentNaming'] as bool).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      remark: (map['remark'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

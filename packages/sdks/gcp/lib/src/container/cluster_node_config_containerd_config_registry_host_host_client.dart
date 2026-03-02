@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_node_config_containerd_config_registry_host_host_client_cert.dart';
 import 'cluster_node_config_containerd_config_registry_host_host_client_key.dart';
 
 class ClusterNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
-  final ClusterNodeConfigContainerdConfigRegistryHostHostClientCert cert;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigRegistryHostHostClientCert> cert;
   /// Configures the client private key.
-  final ClusterNodeConfigContainerdConfigRegistryHostHostClientKey? key;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigRegistryHostHostClientKey>? key;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.
@@ -19,15 +20,15 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClient {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cert': cert.toMap(),
-      'key': ?key == null ? null : key!.toMap(),
+      'cert': pulumi.Input.mapInputValue<ClusterNodeConfigContainerdConfigRegistryHostHostClientCert, Map<String, dynamic>>(cert, (value) => value.toMap()),
+      'key': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfigContainerdConfigRegistryHostHostClientKey, Map<String, dynamic>>(key, (value) => value.toMap()),
     };
   }
 
   factory ClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigRegistryHostHostClient(
-      cert: ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null ? null : ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
+      cert: (ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

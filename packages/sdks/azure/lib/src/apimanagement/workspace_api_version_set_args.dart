@@ -31,21 +31,14 @@ class WorkspaceApiVersionSetArgs {
   /// [versionQueryName] Specifies the name of the query string parameter to read from inbound requests to determine the API version.
   /// [versioningScheme] Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   WorkspaceApiVersionSetArgs({
-    required pulumi.Output<String> apiManagementWorkspaceId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? versionHeaderName,
-    pulumi.Output<String>? versionQueryName,
-    required pulumi.Output<String> versioningScheme,
-  }) :
-      apiManagementWorkspaceId = pulumi.Input.asInput<String>(apiManagementWorkspaceId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      versionHeaderName = pulumi.Input.asOptionalInput<String>(versionHeaderName),
-      versionQueryName = pulumi.Input.asOptionalInput<String>(versionQueryName),
-      versioningScheme = pulumi.Input.asInput<String>(versioningScheme);
+    required this.apiManagementWorkspaceId,
+    this.description,
+    required this.displayName,
+    this.name,
+    this.versionHeaderName,
+    this.versionQueryName,
+    required this.versioningScheme,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class WorkspaceApiVersionSetArgs {
 
   factory WorkspaceApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiVersionSetArgs(
-      apiManagementWorkspaceId: pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      versionHeaderName: map['versionHeaderName'] == null ? null : pulumi.Output.create<String>(map['versionHeaderName'] as String),
-      versionQueryName: map['versionQueryName'] == null ? null : pulumi.Output.create<String>(map['versionQueryName'] as String),
-      versioningScheme: pulumi.Output.create<String>(map['versioningScheme'] as String),
+      apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
+      versioningScheme: (map['versioningScheme'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v3_async_invoke_config_destination_config_on_failure.dart';
 import 'v3_async_invoke_config_destination_config_on_success.dart';
 
 class V3AsyncInvokeConfigDestinationConfig {
   /// Failed callback target structure See `on_failure` below.
-  final V3AsyncInvokeConfigDestinationConfigOnFailure? onFailure;
+  final pulumi.Input<V3AsyncInvokeConfigDestinationConfigOnFailure>? onFailure;
   /// Successful callback target structure See `on_success` below.
-  final V3AsyncInvokeConfigDestinationConfigOnSuccess? onSuccess;
+  final pulumi.Input<V3AsyncInvokeConfigDestinationConfigOnSuccess>? onSuccess;
 
   /// Creates a new [V3AsyncInvokeConfigDestinationConfig].
   /// [onFailure] Failed callback target structure See `on_failure` below.
@@ -19,15 +20,15 @@ class V3AsyncInvokeConfigDestinationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'onFailure': ?onFailure == null ? null : onFailure!.toMap(),
-      'onSuccess': ?onSuccess == null ? null : onSuccess!.toMap(),
+      'onFailure': ?pulumi.Input.mapOptionalInputValue<V3AsyncInvokeConfigDestinationConfigOnFailure, Map<String, dynamic>>(onFailure, (value) => value.toMap()),
+      'onSuccess': ?pulumi.Input.mapOptionalInputValue<V3AsyncInvokeConfigDestinationConfigOnSuccess, Map<String, dynamic>>(onSuccess, (value) => value.toMap()),
     };
   }
 
   factory V3AsyncInvokeConfigDestinationConfig.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>()),
-      onSuccess: map['onSuccess'] == null ? null : V3AsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>()),
+      onFailure: map['onFailure'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
+      onSuccess: map['onSuccess'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

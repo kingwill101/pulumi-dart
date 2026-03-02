@@ -38,19 +38,13 @@ class ShareNetworkArgs {
   /// [region] The region in which to obtain the V2 Shared File System client.
   /// [securityServiceIds] The list of security service IDs to associate with
   ShareNetworkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> neutronNetId,
-    required pulumi.Output<String> neutronSubnetId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityServiceIds,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      neutronNetId = pulumi.Input.asInput<String>(neutronNetId),
-      neutronSubnetId = pulumi.Input.asInput<String>(neutronSubnetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityServiceIds = pulumi.Input.asOptionalInput<List<String>>(securityServiceIds);
+    this.description,
+    this.name,
+    required this.neutronNetId,
+    required this.neutronSubnetId,
+    this.region,
+    this.securityServiceIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class ShareNetworkArgs {
 
   factory ShareNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ShareNetworkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      neutronNetId: pulumi.Output.create<String>(map['neutronNetId'] as String),
-      neutronSubnetId: pulumi.Output.create<String>(map['neutronSubnetId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityServiceIds: map['securityServiceIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityServiceIds'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      neutronNetId: (map['neutronNetId'] as String).input(),
+      neutronSubnetId: (map['neutronSubnetId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityServiceIds: map['securityServiceIds'] == null ? null : ((map['securityServiceIds'] as List).cast<String>()).input(),
     );
   }
 }

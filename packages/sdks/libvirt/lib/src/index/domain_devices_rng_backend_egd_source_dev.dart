@@ -5,9 +5,9 @@ import 'domain_devices_rng_backend_egd_source_dev_sec_label.dart';
 
 class DomainDevicesRngBackendEgdSourceDev {
   /// Specifies the path to the device file for the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final List<DomainDevicesRngBackendEgdSourceDevSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesRngBackendEgdSourceDevSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesRngBackendEgdSourceDev {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesRngBackendEgdSourceDevSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesRngBackendEgdSourceDevSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesRngBackendEgdSourceDevSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesRngBackendEgdSourceDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackendEgdSourceDev(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesRngBackendEgdSourceDevSecLabel>(map['secLabels'], (value) => DomainDevicesRngBackendEgdSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesRngBackendEgdSourceDevSecLabel>(map['secLabels'], (value) => DomainDevicesRngBackendEgdSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

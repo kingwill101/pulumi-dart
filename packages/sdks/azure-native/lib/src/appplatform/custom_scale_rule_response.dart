@@ -6,12 +6,12 @@ import 'scale_rule_auth_response.dart';
 /// Azure Spring Apps App Instance Custom scaling rule.
 class CustomScaleRuleResponse {
   /// Authentication secrets for the custom scale rule.
-  final List<ScaleRuleAuthResponse>? auth;
+  final pulumi.Input<List<ScaleRuleAuthResponse>>? auth;
   /// Metadata properties to describe custom scale rule.
-  final Map<String, String>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
   /// Type of the custom scale rule
   /// eg: azure-servicebus, redis etc.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [CustomScaleRuleResponse].
   /// [auth] Authentication secrets for the custom scale rule.
@@ -25,7 +25,7 @@ class CustomScaleRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?auth == null ? null : pulumi.Input.encodeList<ScaleRuleAuthResponse, Map<String, dynamic>>(auth!, (value) => value.toMap()),
+      'auth': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleAuthResponse>, List<Map<String, dynamic>>>(auth, (value) => pulumi.Input.encodeList<ScaleRuleAuthResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metadata': ?metadata,
       'type': ?type,
     };
@@ -33,9 +33,9 @@ class CustomScaleRuleResponse {
 
   factory CustomScaleRuleResponse.fromMap(Map<String, dynamic> map) {
     return CustomScaleRuleResponse(
-      auth: map['auth'] == null ? null : pulumi.Input.decodeList<ScaleRuleAuthResponse>(map['auth'], (value) => ScaleRuleAuthResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuthResponse>(map['auth'], (value) => ScaleRuleAuthResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

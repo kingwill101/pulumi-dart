@@ -32,21 +32,14 @@ class ConnectionArgs {
   /// [targetResourceId] The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   /// [vnetSolution] Optional.
   ConnectionArgs({
-    required pulumi.Output<String> appServiceId,
-    required pulumi.Output<ConnectionAuthentication> authentication,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<String>? name,
-    pulumi.Output<ConnectionSecretStore>? secretStore,
-    required pulumi.Output<String> targetResourceId,
-    pulumi.Output<String>? vnetSolution,
-  }) :
-      appServiceId = pulumi.Input.asInput<String>(appServiceId),
-      authentication = pulumi.Input.asInput<ConnectionAuthentication>(authentication),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      secretStore = pulumi.Input.asOptionalInput<ConnectionSecretStore>(secretStore),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId),
-      vnetSolution = pulumi.Input.asOptionalInput<String>(vnetSolution);
+    required this.appServiceId,
+    required this.authentication,
+    this.clientType,
+    this.name,
+    this.secretStore,
+    required this.targetResourceId,
+    this.vnetSolution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      appServiceId: pulumi.Output.create<String>(map['appServiceId'] as String),
-      authentication: pulumi.Output.create<ConnectionAuthentication>(ConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      secretStore: map['secretStore'] == null ? null : pulumi.Output.create<ConnectionSecretStore>(ConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
-      vnetSolution: map['vnetSolution'] == null ? null : pulumi.Output.create<String>(map['vnetSolution'] as String),
+      appServiceId: (map['appServiceId'] as String).input(),
+      authentication: (ConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      secretStore: map['secretStore'] == null ? null : (ConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution'] as String).input(),
     );
   }
 }

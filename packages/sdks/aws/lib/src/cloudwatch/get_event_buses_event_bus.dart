@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEventBusesEventBus {
   /// The ARN of the event bus.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The time the event bus was created.
-  final String creationTime;
+  final pulumi.Input<String> creationTime;
   /// The event bus description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The time the event bus was last modified.
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// The name of the event bus.
-  final String name;
+  final pulumi.Input<String> name;
   /// The permissions policy of the event bus, describing which other AWS accounts can write events to this event bus.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [GetEventBusesEventBus].
   /// [arn] The ARN of the event bus.
@@ -44,12 +45,12 @@ class GetEventBusesEventBus {
 
   factory GetEventBusesEventBus.fromMap(Map<String, dynamic> map) {
     return GetEventBusesEventBus(
-      arn: map['arn'] as String,
-      creationTime: map['creationTime'] as String,
-      description: map['description'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      name: map['name'] as String,
-      policy: map['policy'] as String,
+      arn: (map['arn'] as String).input(),
+      creationTime: (map['creationTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      name: (map['name'] as String).input(),
+      policy: (map['policy'] as String).input(),
     );
   }
 }

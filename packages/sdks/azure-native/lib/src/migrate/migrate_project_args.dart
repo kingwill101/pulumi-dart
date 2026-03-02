@@ -30,19 +30,13 @@ class MigrateProjectArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [tags] Gets or sets the tags.
   MigrateProjectArgs({
-    pulumi.Output<String>? eTag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? migrateProjectName,
-    pulumi.Output<MigrateProjectProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<MigrateProjectTags>? tags,
-  }) :
-      eTag = pulumi.Input.asOptionalInput<String>(eTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      migrateProjectName = pulumi.Input.asOptionalInput<String>(migrateProjectName),
-      properties = pulumi.Input.asOptionalInput<MigrateProjectProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<MigrateProjectTags>(tags);
+    this.eTag,
+    this.location,
+    this.migrateProjectName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class MigrateProjectArgs {
 
   factory MigrateProjectArgs.fromMap(Map<String, dynamic> map) {
     return MigrateProjectArgs(
-      eTag: map['eTag'] == null ? null : pulumi.Output.create<String>(map['eTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      migrateProjectName: map['migrateProjectName'] == null ? null : pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MigrateProjectProperties>(MigrateProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<MigrateProjectTags>(MigrateProjectTags.fromMap((map['tags'] as Map).cast<String, dynamic>())),
+      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migrateProjectName: map['migrateProjectName'] == null ? null : (map['migrateProjectName'] as String).input(),
+      properties: map['properties'] == null ? null : (MigrateProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : (MigrateProjectTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

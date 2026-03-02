@@ -47,29 +47,18 @@ class EnvironmentCertificateState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [thumbprint] The Thumbprint of the Certificate.
   EnvironmentCertificateState({
-    pulumi.Output<String>? certificateBlobBase64,
-    pulumi.Output<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault,
-    pulumi.Output<String>? certificatePassword,
-    pulumi.Output<String>? containerAppEnvironmentId,
-    pulumi.Output<String>? expirationDate,
-    pulumi.Output<String>? issueDate,
-    pulumi.Output<String>? issuer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? subjectName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? thumbprint,
-  }) :
-      certificateBlobBase64 = pulumi.Input.asOptionalInput<String>(certificateBlobBase64),
-      certificateKeyVault = pulumi.Input.asOptionalInput<EnvironmentCertificateCertificateKeyVault>(certificateKeyVault),
-      certificatePassword = pulumi.Input.asOptionalInput<String>(certificatePassword),
-      containerAppEnvironmentId = pulumi.Input.asOptionalInput<String>(containerAppEnvironmentId),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      issueDate = pulumi.Input.asOptionalInput<String>(issueDate),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subjectName = pulumi.Input.asOptionalInput<String>(subjectName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      thumbprint = pulumi.Input.asOptionalInput<String>(thumbprint);
+    this.certificateBlobBase64,
+    this.certificateKeyVault,
+    this.certificatePassword,
+    this.containerAppEnvironmentId,
+    this.expirationDate,
+    this.issueDate,
+    this.issuer,
+    this.name,
+    this.subjectName,
+    this.tags,
+    this.thumbprint,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class EnvironmentCertificateState {
 
   factory EnvironmentCertificateState.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateState(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : pulumi.Output.create<String>(map['certificateBlobBase64'] as String),
-      certificateKeyVault: map['certificateKeyVault'] == null ? null : pulumi.Output.create<EnvironmentCertificateCertificateKeyVault>(EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())),
-      certificatePassword: map['certificatePassword'] == null ? null : pulumi.Output.create<String>(map['certificatePassword'] as String),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      issueDate: map['issueDate'] == null ? null : pulumi.Output.create<String>(map['issueDate'] as String),
-      issuer: map['issuer'] == null ? null : pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subjectName: map['subjectName'] == null ? null : pulumi.Output.create<String>(map['subjectName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      thumbprint: map['thumbprint'] == null ? null : pulumi.Output.create<String>(map['thumbprint'] as String),
+      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64'] as String).input(),
+      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      issueDate: map['issueDate'] == null ? null : (map['issueDate'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
     );
   }
 }

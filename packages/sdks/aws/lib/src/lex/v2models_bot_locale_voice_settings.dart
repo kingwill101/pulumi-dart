@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2modelsBotLocaleVoiceSettings {
   /// Indicates the type of Amazon Polly voice that Amazon Lex should use for voice interaction with the user. Valid values are `standard` and `neural`. If not specified, the default is `standard`.
-  final String? engine;
+  final pulumi.Input<String>? engine;
   /// Identifier of the Amazon Polly voice to use.
-  final String voiceId;
+  final pulumi.Input<String> voiceId;
 
   /// Creates a new [V2modelsBotLocaleVoiceSettings].
   /// [engine] Indicates the type of Amazon Polly voice that Amazon Lex should use for voice interaction with the user. Valid values are `standard` and `neural`. If not specified, the default is `standard`.
@@ -24,8 +25,8 @@ class V2modelsBotLocaleVoiceSettings {
 
   factory V2modelsBotLocaleVoiceSettings.fromMap(Map<String, dynamic> map) {
     return V2modelsBotLocaleVoiceSettings(
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      voiceId: map['voiceId'] as String,
+      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      voiceId: (map['voiceId'] as String).input(),
     );
   }
 }

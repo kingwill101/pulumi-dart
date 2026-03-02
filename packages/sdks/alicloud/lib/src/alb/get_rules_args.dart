@@ -31,21 +31,14 @@ class GetRulesArgs {
   /// [ruleIds] The rule ids.
   /// [status] The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
   GetRulesArgs({
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<List<String>>? listenerIds,
-    pulumi.Output<List<String>>? loadBalancerIds,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<List<String>>? ruleIds,
-    pulumi.Output<String>? status,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      listenerIds = pulumi.Input.asOptionalInput<List<String>>(listenerIds),
-      loadBalancerIds = pulumi.Input.asOptionalInput<List<String>>(loadBalancerIds),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      ruleIds = pulumi.Input.asOptionalInput<List<String>>(ruleIds),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.ids,
+    this.listenerIds,
+    this.loadBalancerIds,
+    this.nameRegex,
+    this.outputFile,
+    this.ruleIds,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      listenerIds: map['listenerIds'] == null ? null : pulumi.Output.create<List<String>>((map['listenerIds'] as List).cast<String>()),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : pulumi.Output.create<List<String>>((map['loadBalancerIds'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      ruleIds: map['ruleIds'] == null ? null : pulumi.Output.create<List<String>>((map['ruleIds'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds'] as List).cast<String>()).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ruleIds: map['ruleIds'] == null ? null : ((map['ruleIds'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

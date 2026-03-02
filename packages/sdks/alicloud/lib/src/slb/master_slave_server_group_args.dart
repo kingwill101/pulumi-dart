@@ -23,15 +23,11 @@ class MasterSlaveServerGroupArgs {
   /// [name] Name of the master slave server group.
   /// [servers] A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
   MasterSlaveServerGroupArgs({
-    pulumi.Output<bool>? deleteProtectionValidation,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<MasterSlaveServerGroupServer>>? servers,
-  }) :
-      deleteProtectionValidation = pulumi.Input.asOptionalInput<bool>(deleteProtectionValidation),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servers = pulumi.Input.asOptionalInput<List<MasterSlaveServerGroupServer>>(servers);
+    this.deleteProtectionValidation,
+    required this.loadBalancerId,
+    this.name,
+    this.servers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class MasterSlaveServerGroupArgs {
 
   factory MasterSlaveServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return MasterSlaveServerGroupArgs(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : pulumi.Output.create<bool>(map['deleteProtectionValidation'] as bool),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servers: map['servers'] == null ? null : pulumi.Output.create<List<MasterSlaveServerGroupServer>>(pulumi.Input.decodeList<MasterSlaveServerGroupServer>(map['servers'], (value) => MasterSlaveServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<MasterSlaveServerGroupServer>(map['servers'], (value) => MasterSlaveServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

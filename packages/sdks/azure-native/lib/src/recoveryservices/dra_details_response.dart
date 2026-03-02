@@ -6,23 +6,23 @@ import 'health_error_response.dart';
 /// DRA details.
 class DraDetailsResponse {
   /// The DRA Bios Id.
-  final String biosId;
+  final pulumi.Input<String> biosId;
   /// The count of protected items which are protected in forward direction.
-  final int forwardProtectedItemCount;
+  final pulumi.Input<int> forwardProtectedItemCount;
   /// The health.
-  final String health;
+  final pulumi.Input<String> health;
   /// The health errors.
-  final List<HealthErrorResponse> healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>> healthErrors;
   /// The DRA Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// The last heartbeat received from the DRA.
-  final String lastHeartbeatUtc;
+  final pulumi.Input<String> lastHeartbeatUtc;
   /// The DRA name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The count of protected items which are protected in reverse direction.
-  final int reverseProtectedItemCount;
+  final pulumi.Input<int> reverseProtectedItemCount;
   /// The version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [DraDetailsResponse].
   /// [biosId] The DRA Bios Id.
@@ -51,7 +51,7 @@ class DraDetailsResponse {
       'biosId': biosId,
       'forwardProtectedItemCount': forwardProtectedItemCount,
       'health': health,
-      'healthErrors': pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(healthErrors, (value) => value.toMap()),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'lastHeartbeatUtc': lastHeartbeatUtc,
       'name': name,
@@ -62,15 +62,15 @@ class DraDetailsResponse {
 
   factory DraDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DraDetailsResponse(
-      biosId: map['biosId'] as String,
-      forwardProtectedItemCount: map['forwardProtectedItemCount'] as int,
-      health: map['health'] as String,
-      healthErrors: pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] as String,
-      name: map['name'] as String,
-      reverseProtectedItemCount: map['reverseProtectedItemCount'] as int,
-      version: map['version'] as String,
+      biosId: (map['biosId'] as String).input(),
+      forwardProtectedItemCount: (map['forwardProtectedItemCount'] as int).input(),
+      health: (map['health'] as String).input(),
+      healthErrors: (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      lastHeartbeatUtc: (map['lastHeartbeatUtc'] as String).input(),
+      name: (map['name'] as String).input(),
+      reverseProtectedItemCount: (map['reverseProtectedItemCount'] as int).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsDisksDiskMountInstance {
   /// A mount of time.
-  final String attachedTime;
+  final pulumi.Input<String> attachedTime;
   /// The mount point of the disk.
-  final String device;
+  final pulumi.Input<String> device;
   /// Filter the results by the specified ECS instance ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Creates a new [GetEcsDisksDiskMountInstance].
   /// [attachedTime] A mount of time.
@@ -29,9 +30,9 @@ class GetEcsDisksDiskMountInstance {
 
   factory GetEcsDisksDiskMountInstance.fromMap(Map<String, dynamic> map) {
     return GetEcsDisksDiskMountInstance(
-      attachedTime: map['attachedTime'] as String,
-      device: map['device'] as String,
-      instanceId: map['instanceId'] as String,
+      attachedTime: (map['attachedTime'] as String).input(),
+      device: (map['device'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

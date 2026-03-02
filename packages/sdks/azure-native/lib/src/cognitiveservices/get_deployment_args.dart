@@ -19,13 +19,10 @@ class GetDeploymentArgs {
   /// [deploymentName] The name of the deployment associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeploymentArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> deploymentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      deploymentName = pulumi.Input.asInput<String>(deploymentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.deploymentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDeploymentArgs {
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      deploymentName: (map['deploymentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

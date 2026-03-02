@@ -23,15 +23,11 @@ class CopyToRemoteArgs {
   /// [source] An [asset or an archive](https://www.pulumi.com/docs/concepts/assets-archives/) to upload as the source of the copy. It must be a `FileAsset`, `StringAsset`, or a `FileArchive`. The item will be copied as-is; archives like .tgz will not be unpacked. Directories are copied recursively, overwriting existing files.
   /// [triggers] Trigger replacements on changes to this input.
   CopyToRemoteArgs({
-    required pulumi.Output<Connection> connection,
-    required pulumi.Output<String> remotePath,
-    required pulumi.Output<dynamic> source,
-    pulumi.Output<List<dynamic>>? triggers,
-  }) :
-      connection = pulumi.Input.asInput<Connection>(connection),
-      remotePath = pulumi.Input.asInput<String>(remotePath),
-      source = pulumi.Input.asInput<dynamic>(source),
-      triggers = pulumi.Input.asOptionalInput<List<dynamic>>(triggers);
+    required this.connection,
+    required this.remotePath,
+    required this.source,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CopyToRemoteArgs {
 
   factory CopyToRemoteArgs.fromMap(Map<String, dynamic> map) {
     return CopyToRemoteArgs(
-      connection: pulumi.Output.create<Connection>(Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())),
-      remotePath: pulumi.Output.create<String>(map['remotePath'] as String),
-      source: pulumi.Output.create<dynamic>(map['source']),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<List<dynamic>>((map['triggers'] as List).cast<dynamic>()),
+      connection: (Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
+      remotePath: (map['remotePath'] as String).input(),
+      source: (map['source']).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
     );
   }
 }

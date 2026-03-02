@@ -38,27 +38,17 @@ class AssetArgs {
   /// [resourceSpec] Specification of the resource that is referenced by this asset.
   /// [zone] Optional.
   AssetArgs({
-    required pulumi.Output<String> assetId,
-    pulumi.Output<String>? description,
-    pulumi.Output<GoogleCloudDataplexV1AssetDiscoverySpec>? discoverySpec,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> lakeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<GoogleCloudDataplexV1AssetResourceSpec> resourceSpec,
-    pulumi.Output<String>? zone,
-  }) :
-      assetId = pulumi.Input.asInput<String>(assetId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      discoverySpec = pulumi.Input.asOptionalInput<GoogleCloudDataplexV1AssetDiscoverySpec>(discoverySpec),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceSpec = pulumi.Input.asInput<GoogleCloudDataplexV1AssetResourceSpec>(resourceSpec),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    required this.assetId,
+    this.description,
+    this.discoverySpec,
+    this.displayName,
+    this.labels,
+    required this.lakeId,
+    this.location,
+    this.project,
+    required this.resourceSpec,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class AssetArgs {
 
   factory AssetArgs.fromMap(Map<String, dynamic> map) {
     return AssetArgs(
-      assetId: pulumi.Output.create<String>(map['assetId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      discoverySpec: map['discoverySpec'] == null ? null : pulumi.Output.create<GoogleCloudDataplexV1AssetDiscoverySpec>(GoogleCloudDataplexV1AssetDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      lakeId: pulumi.Output.create<String>(map['lakeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceSpec: pulumi.Output.create<GoogleCloudDataplexV1AssetResourceSpec>(GoogleCloudDataplexV1AssetResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      assetId: (map['assetId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      discoverySpec: map['discoverySpec'] == null ? null : (GoogleCloudDataplexV1AssetDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      lakeId: (map['lakeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceSpec: (GoogleCloudDataplexV1AssetResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

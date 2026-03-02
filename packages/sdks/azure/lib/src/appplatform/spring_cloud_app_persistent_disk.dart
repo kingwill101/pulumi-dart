@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudAppPersistentDisk {
   /// Specifies the mount path of the persistent disk. Defaults to `/persistent`.
-  final String? mountPath;
+  final pulumi.Input<String>? mountPath;
   /// Specifies the size of the persistent disk in GB. Possible values are between `0` and `50`.
-  final int sizeInGb;
+  final pulumi.Input<int> sizeInGb;
 
   /// Creates a new [SpringCloudAppPersistentDisk].
   /// [mountPath] Specifies the mount path of the persistent disk. Defaults to `/persistent`.
@@ -24,8 +25,8 @@ class SpringCloudAppPersistentDisk {
 
   factory SpringCloudAppPersistentDisk.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppPersistentDisk(
-      mountPath: map['mountPath'] == null ? null : map['mountPath'] as String,
-      sizeInGb: map['sizeInGb'] as int,
+      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      sizeInGb: (map['sizeInGb'] as int).input(),
     );
   }
 }

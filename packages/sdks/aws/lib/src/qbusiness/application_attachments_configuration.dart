@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationAttachmentsConfiguration {
   /// Status information about whether file upload functionality is activated or deactivated for your end user. Valid values are `ENABLED` and `DISABLED`.
-  final String attachmentsControlMode;
+  final pulumi.Input<String> attachmentsControlMode;
 
   /// Creates a new [ApplicationAttachmentsConfiguration].
   /// [attachmentsControlMode] Status information about whether file upload functionality is activated or deactivated for your end user. Valid values are `ENABLED` and `DISABLED`.
@@ -19,7 +20,7 @@ class ApplicationAttachmentsConfiguration {
 
   factory ApplicationAttachmentsConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationAttachmentsConfiguration(
-      attachmentsControlMode: map['attachmentsControlMode'] as String,
+      attachmentsControlMode: (map['attachmentsControlMode'] as String).input(),
     );
   }
 }

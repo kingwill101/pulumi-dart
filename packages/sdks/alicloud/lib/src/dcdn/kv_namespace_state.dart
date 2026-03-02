@@ -16,13 +16,10 @@ class KvNamespaceState {
   /// [namespace] Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   /// [status] The status of the resource
   KvNamespaceState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? status,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.description,
+    this.namespace,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class KvNamespaceState {
 
   factory KvNamespaceState.fromMap(Map<String, dynamic> map) {
     return KvNamespaceState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

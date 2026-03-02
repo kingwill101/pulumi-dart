@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
 class MembershipSpecResponse {
   /// Specifies workload certificate management.
-  final String certificateManagement;
+  final pulumi.Input<String> certificateManagement;
 
   /// Creates a new [MembershipSpecResponse].
   /// [certificateManagement] Specifies workload certificate management.
@@ -20,7 +21,7 @@ class MembershipSpecResponse {
 
   factory MembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return MembershipSpecResponse(
-      certificateManagement: map['certificateManagement'] as String,
+      certificateManagement: (map['certificateManagement'] as String).input(),
     );
   }
 }

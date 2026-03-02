@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerListener {
-  final int instancePort;
-  final String instanceProtocol;
-  final int lbPort;
-  final String lbProtocol;
-  final String sslCertificateId;
+  final pulumi.Input<int> instancePort;
+  final pulumi.Input<String> instanceProtocol;
+  final pulumi.Input<int> lbPort;
+  final pulumi.Input<String> lbProtocol;
+  final pulumi.Input<String> sslCertificateId;
 
   /// Creates a new [GetLoadBalancerListener].
   /// [instancePort] Required.
@@ -34,11 +35,11 @@ class GetLoadBalancerListener {
 
   factory GetLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerListener(
-      instancePort: map['instancePort'] as int,
-      instanceProtocol: map['instanceProtocol'] as String,
-      lbPort: map['lbPort'] as int,
-      lbProtocol: map['lbProtocol'] as String,
-      sslCertificateId: map['sslCertificateId'] as String,
+      instancePort: (map['instancePort'] as int).input(),
+      instanceProtocol: (map['instanceProtocol'] as String).input(),
+      lbPort: (map['lbPort'] as int).input(),
+      lbProtocol: (map['lbProtocol'] as String).input(),
+      sslCertificateId: (map['sslCertificateId'] as String).input(),
     );
   }
 }

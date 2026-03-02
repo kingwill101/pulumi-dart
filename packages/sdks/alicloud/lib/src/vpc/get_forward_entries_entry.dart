@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetForwardEntriesEntry {
   /// The public IP address.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
   /// The public port.
-  final String externalPort;
+  final pulumi.Input<String> externalPort;
   /// The forward entry ID.
-  final String forwardEntryId;
+  final pulumi.Input<String> forwardEntryId;
   /// The name of forward entry.
-  final String forwardEntryName;
+  final pulumi.Input<String> forwardEntryName;
   /// The ID of the Forward Entry.
-  final String id;
+  final pulumi.Input<String> id;
   /// The private IP address.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
   /// The internal port.
-  final String internalPort;
+  final pulumi.Input<String> internalPort;
   /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
-  final String ipProtocol;
+  final pulumi.Input<String> ipProtocol;
   /// The forward entry name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetForwardEntriesEntry].
   /// [externalIp] The public IP address.
@@ -64,16 +65,16 @@ class GetForwardEntriesEntry {
 
   factory GetForwardEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetForwardEntriesEntry(
-      externalIp: map['externalIp'] as String,
-      externalPort: map['externalPort'] as String,
-      forwardEntryId: map['forwardEntryId'] as String,
-      forwardEntryName: map['forwardEntryName'] as String,
-      id: map['id'] as String,
-      internalIp: map['internalIp'] as String,
-      internalPort: map['internalPort'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      name: map['name'] as String,
-      status: map['status'] as String,
+      externalIp: (map['externalIp'] as String).input(),
+      externalPort: (map['externalPort'] as String).input(),
+      forwardEntryId: (map['forwardEntryId'] as String).input(),
+      forwardEntryName: (map['forwardEntryName'] as String).input(),
+      id: (map['id'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      internalPort: (map['internalPort'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      name: (map['name'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetFavoriteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   GetFavoriteArgs({
-    required pulumi.Output<String> favoriteId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      favoriteId = pulumi.Input.asInput<String>(favoriteId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.favoriteId,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFavoriteArgs {
 
   factory GetFavoriteArgs.fromMap(Map<String, dynamic> map) {
     return GetFavoriteArgs(
-      favoriteId: pulumi.Output.create<String>(map['favoriteId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      favoriteId: (map['favoriteId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

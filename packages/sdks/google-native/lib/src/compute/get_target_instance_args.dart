@@ -16,13 +16,10 @@ class GetTargetInstanceArgs {
   /// [targetInstance] Required.
   /// [zone] Required.
   GetTargetInstanceArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> targetInstance,
-    required pulumi.Output<String> zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetInstance = pulumi.Input.asInput<String>(targetInstance),
-      zone = pulumi.Input.asInput<String>(zone);
+    this.project,
+    required this.targetInstance,
+    required this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTargetInstanceArgs {
 
   factory GetTargetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetInstanceArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      targetInstance: pulumi.Output.create<String>(map['targetInstance'] as String),
-      zone: pulumi.Output.create<String>(map['zone'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      targetInstance: (map['targetInstance'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

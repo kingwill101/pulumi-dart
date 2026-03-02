@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository {
   /// Name of the container repository where the output container image is stored.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// Service in which the image is registered.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository].
   /// [repositoryName] Name of the container repository where the output container image is stored.
@@ -24,8 +25,8 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
 
   factory GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository(
-      repositoryName: map['repositoryName'] as String,
-      service: map['service'] as String,
+      repositoryName: (map['repositoryName'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

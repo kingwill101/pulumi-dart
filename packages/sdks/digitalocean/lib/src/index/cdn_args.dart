@@ -25,17 +25,12 @@ class CdnArgs {
   /// [origin] The fully qualified domain name, (FQDN) for a Space.
   /// [ttl] The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
   CdnArgs({
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<String>? certificateName,
-    pulumi.Output<String>? customDomain,
-    required pulumi.Output<String> origin,
-    pulumi.Output<int>? ttl,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      certificateName = pulumi.Input.asOptionalInput<String>(certificateName),
-      customDomain = pulumi.Input.asOptionalInput<String>(customDomain),
-      origin = pulumi.Input.asInput<String>(origin),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl);
+    this.certificateId,
+    this.certificateName,
+    this.customDomain,
+    required this.origin,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class CdnArgs {
 
   factory CdnArgs.fromMap(Map<String, dynamic> map) {
     return CdnArgs(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      certificateName: map['certificateName'] == null ? null : pulumi.Output.create<String>(map['certificateName'] as String),
-      customDomain: map['customDomain'] == null ? null : pulumi.Output.create<String>(map['customDomain'] as String),
-      origin: pulumi.Output.create<String>(map['origin'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      customDomain: map['customDomain'] == null ? null : (map['customDomain'] as String).input(),
+      origin: (map['origin'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
     );
   }
 }

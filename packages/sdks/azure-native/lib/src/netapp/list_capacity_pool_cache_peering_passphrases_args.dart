@@ -22,15 +22,11 @@ class ListCapacityPoolCachePeeringPassphrasesArgs {
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListCapacityPoolCachePeeringPassphrasesArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.cacheName,
+    required this.poolName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListCapacityPoolCachePeeringPassphrasesArgs {
 
   factory ListCapacityPoolCachePeeringPassphrasesArgs.fromMap(Map<String, dynamic> map) {
     return ListCapacityPoolCachePeeringPassphrasesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      cacheName: (map['cacheName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

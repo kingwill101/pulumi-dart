@@ -19,13 +19,10 @@ class GetCloudAccountArgs {
   /// [cloudProvider] The cloud provider of the account (aws, gcp, azure, etc)
   /// [name] The cloud account name in New Relic.
   GetCloudAccountArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> cloudProvider,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      cloudProvider = pulumi.Input.asInput<String>(cloudProvider),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    required this.cloudProvider,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetCloudAccountArgs {
 
   factory GetCloudAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudAccountArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      cloudProvider: pulumi.Output.create<String>(map['cloudProvider'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      cloudProvider: (map['cloudProvider'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

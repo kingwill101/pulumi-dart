@@ -7,7 +7,7 @@ import 'vmgallery_application_response.dart';
 /// VM/VMSS
 class ApplicationProfileResponse {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final List<VMGalleryApplicationResponse>? galleryApplications;
+  final pulumi.Input<List<VMGalleryApplicationResponse>>? galleryApplications;
 
   /// Creates a new [ApplicationProfileResponse].
   /// [galleryApplications] Specifies the gallery applications that should be made available to the VM/VMSS
@@ -17,13 +17,13 @@ class ApplicationProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'galleryApplications': ?galleryApplications == null ? null : pulumi.Input.encodeList<VMGalleryApplicationResponse, Map<String, dynamic>>(galleryApplications!, (value) => value.toMap()),
+      'galleryApplications': ?pulumi.Input.mapOptionalInputValue<List<VMGalleryApplicationResponse>, List<Map<String, dynamic>>>(galleryApplications, (value) => pulumi.Input.encodeList<VMGalleryApplicationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ApplicationProfileResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationProfileResponse(
-      galleryApplications: map['galleryApplications'] == null ? null : pulumi.Input.decodeList<VMGalleryApplicationResponse>(map['galleryApplications'], (value) => VMGalleryApplicationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      galleryApplications: map['galleryApplications'] == null ? null : (pulumi.Input.decodeList<VMGalleryApplicationResponse>(map['galleryApplications'], (value) => VMGalleryApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
   /// The domain name label for the DNS settings.
-  final String domainNameLabel;
+  final pulumi.Input<String> domainNameLabel;
   /// The idle timeout in minutes. This value must be between 4 and 30.
-  final int idleTimeout;
+  final pulumi.Input<int> idleTimeout;
   /// The name of the public IP address configuration
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration].
   /// [domainNameLabel] The domain name label for the DNS settings.
@@ -29,9 +30,9 @@ class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
 
   factory ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration(
-      domainNameLabel: map['domainNameLabel'] as String,
-      idleTimeout: map['idleTimeout'] as int,
-      name: map['name'] as String,
+      domainNameLabel: (map['domainNameLabel'] as String).input(),
+      idleTimeout: (map['idleTimeout'] as int).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

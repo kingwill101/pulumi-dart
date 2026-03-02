@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
   /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-  final List<String>? actions;
+  final pulumi.Input<List<String>>? actions;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
@@ -19,7 +20,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy(
-      actions: map['actions'] == null ? null : (map['actions'] as List).cast<String>(),
+      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
     );
   }
 }

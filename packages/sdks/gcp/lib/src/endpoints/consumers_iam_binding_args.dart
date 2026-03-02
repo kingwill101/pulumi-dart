@@ -38,17 +38,12 @@ class ConsumersIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceName] The name of the service. Used to find the parent resource to bind the IAM policy to
   ConsumersIamBindingArgs({
-    pulumi.Output<ConsumersIamBindingCondition>? condition,
-    required pulumi.Output<String> consumerProject,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-    required pulumi.Output<String> serviceName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ConsumersIamBindingCondition>(condition),
-      consumerProject = pulumi.Input.asInput<String>(consumerProject),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.condition,
+    required this.consumerProject,
+    required this.members,
+    required this.role,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class ConsumersIamBindingArgs {
 
   factory ConsumersIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ConsumersIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<ConsumersIamBindingCondition>(ConsumersIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      consumerProject: pulumi.Output.create<String>(map['consumerProject'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      condition: map['condition'] == null ? null : (ConsumersIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      consumerProject: (map['consumerProject'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

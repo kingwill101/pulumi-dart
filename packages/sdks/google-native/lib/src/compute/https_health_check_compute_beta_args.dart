@@ -45,31 +45,19 @@ class HttpsHealthCheckComputeBetaArgs {
   /// [timeoutSec] How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
   HttpsHealthCheckComputeBetaArgs({
-    pulumi.Output<int>? checkIntervalSec,
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? healthyThreshold,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? requestPath,
-    pulumi.Output<int>? timeoutSec,
-    pulumi.Output<int>? unhealthyThreshold,
-  }) :
-      checkIntervalSec = pulumi.Input.asOptionalInput<int>(checkIntervalSec),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthyThreshold = pulumi.Input.asOptionalInput<int>(healthyThreshold),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      requestPath = pulumi.Input.asOptionalInput<String>(requestPath),
-      timeoutSec = pulumi.Input.asOptionalInput<int>(timeoutSec),
-      unhealthyThreshold = pulumi.Input.asOptionalInput<int>(unhealthyThreshold);
+    this.checkIntervalSec,
+    this.description,
+    this.healthyThreshold,
+    this.host,
+    this.kind,
+    this.name,
+    this.port,
+    this.project,
+    this.requestId,
+    this.requestPath,
+    this.timeoutSec,
+    this.unhealthyThreshold,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class HttpsHealthCheckComputeBetaArgs {
 
   factory HttpsHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return HttpsHealthCheckComputeBetaArgs(
-      checkIntervalSec: map['checkIntervalSec'] == null ? null : pulumi.Output.create<int>(map['checkIntervalSec'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthyThreshold: map['healthyThreshold'] == null ? null : pulumi.Output.create<int>(map['healthyThreshold'] as int),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      requestPath: map['requestPath'] == null ? null : pulumi.Output.create<String>(map['requestPath'] as String),
-      timeoutSec: map['timeoutSec'] == null ? null : pulumi.Output.create<int>(map['timeoutSec'] as int),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : pulumi.Output.create<int>(map['unhealthyThreshold'] as int),
+      checkIntervalSec: map['checkIntervalSec'] == null ? null : (map['checkIntervalSec'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

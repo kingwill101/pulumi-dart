@@ -34,21 +34,14 @@ class AppCheckDeviceCheckConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
   AppCheckDeviceCheckConfigState({
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? keyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<bool>? privateKeySet,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? tokenTtl,
-  }) :
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      keyId = pulumi.Input.asOptionalInput<String>(keyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      privateKeySet = pulumi.Input.asOptionalInput<bool>(privateKeySet),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tokenTtl = pulumi.Input.asOptionalInput<String>(tokenTtl);
+    this.appId,
+    this.keyId,
+    this.name,
+    this.privateKey,
+    this.privateKeySet,
+    this.project,
+    this.tokenTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class AppCheckDeviceCheckConfigState {
 
   factory AppCheckDeviceCheckConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckDeviceCheckConfigState(
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      keyId: map['keyId'] == null ? null : pulumi.Output.create<String>(map['keyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      privateKeySet: map['privateKeySet'] == null ? null : pulumi.Output.create<bool>(map['privateKeySet'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tokenTtl: map['tokenTtl'] == null ? null : pulumi.Output.create<String>(map['tokenTtl'] as String),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      privateKeySet: map['privateKeySet'] == null ? null : (map['privateKeySet'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
     );
   }
 }

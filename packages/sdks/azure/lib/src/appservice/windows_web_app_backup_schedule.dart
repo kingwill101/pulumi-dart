@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppBackupSchedule {
   /// How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequency_unit` should be set to `Day`).
   ///
   /// > **Note:** Not all intervals are supported on all Windows Web App SKUs. Please refer to the official documentation for appropriate values.
-  final int frequencyInterval;
+  final pulumi.Input<int> frequencyInterval;
   /// The unit of time for how often the backup should take place. Possible values include: `Day`, `Hour`
-  final String frequencyUnit;
+  final pulumi.Input<String> frequencyUnit;
   /// Should the service keep at least one backup, regardless of age of backup. Defaults to `false`.
-  final bool? keepAtLeastOneBackup;
+  final pulumi.Input<bool>? keepAtLeastOneBackup;
   /// The time the backup was last attempted.
-  final String? lastExecutionTime;
+  final pulumi.Input<String>? lastExecutionTime;
   /// After how many days backups should be deleted. Defaults to `30`.
-  final int? retentionPeriodDays;
+  final pulumi.Input<int>? retentionPeriodDays;
   /// When the schedule should start working in RFC-3339 format.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
 
   /// Creates a new [WindowsWebAppBackupSchedule].
   /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to `7` and `frequency_unit` should be set to `Day`).
@@ -46,12 +47,12 @@ class WindowsWebAppBackupSchedule {
 
   factory WindowsWebAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppBackupSchedule(
-      frequencyInterval: map['frequencyInterval'] as int,
-      frequencyUnit: map['frequencyUnit'] as String,
-      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] == null ? null : map['keepAtLeastOneBackup'] as bool,
-      lastExecutionTime: map['lastExecutionTime'] == null ? null : map['lastExecutionTime'] as String,
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : map['retentionPeriodDays'] as int,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      frequencyInterval: (map['frequencyInterval'] as int).input(),
+      frequencyUnit: (map['frequencyUnit'] as String).input(),
+      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] == null ? null : (map['keepAtLeastOneBackup'] as bool).input(),
+      lastExecutionTime: map['lastExecutionTime'] == null ? null : (map['lastExecutionTime'] as String).input(),
+      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
     );
   }
 }

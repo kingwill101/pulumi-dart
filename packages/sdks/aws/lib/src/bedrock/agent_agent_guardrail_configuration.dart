@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentAgentGuardrailConfiguration {
   /// Unique identifier of the guardrail.
-  final String guardrailIdentifier;
+  final pulumi.Input<String> guardrailIdentifier;
   /// Version of the guardrail.
-  final String guardrailVersion;
+  final pulumi.Input<String> guardrailVersion;
 
   /// Creates a new [AgentAgentGuardrailConfiguration].
   /// [guardrailIdentifier] Unique identifier of the guardrail.
@@ -24,8 +25,8 @@ class AgentAgentGuardrailConfiguration {
 
   factory AgentAgentGuardrailConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentGuardrailConfiguration(
-      guardrailIdentifier: map['guardrailIdentifier'] as String,
-      guardrailVersion: map['guardrailVersion'] as String,
+      guardrailIdentifier: (map['guardrailIdentifier'] as String).input(),
+      guardrailVersion: (map['guardrailVersion'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Execution using a private Cloud Build pool.
 class PrivatePoolResponse {
   /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
-  final String artifactStorage;
+  final pulumi.Input<String> artifactStorage;
   /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
   /// Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`.
-  final String workerPool;
+  final pulumi.Input<String> workerPool;
 
   /// Creates a new [PrivatePoolResponse].
   /// [artifactStorage] Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -30,9 +31,9 @@ class PrivatePoolResponse {
 
   factory PrivatePoolResponse.fromMap(Map<String, dynamic> map) {
     return PrivatePoolResponse(
-      artifactStorage: map['artifactStorage'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      workerPool: map['workerPool'] as String,
+      artifactStorage: (map['artifactStorage'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      workerPool: (map['workerPool'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlStoredProcedureGetPropertiesResponseResource {
   /// Body of the Stored Procedure
-  final String? body;
+  final pulumi.Input<String>? body;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB SQL storedProcedure
-  final String id;
+  final pulumi.Input<String> id;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
 
   /// Creates a new [SqlStoredProcedureGetPropertiesResponseResource].
   /// [body] Body of the Stored Procedure
@@ -39,11 +40,11 @@ class SqlStoredProcedureGetPropertiesResponseResource {
 
   factory SqlStoredProcedureGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureGetPropertiesResponseResource(
-      body: map['body'] == null ? null : map['body'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      rid: map['rid'] as String,
-      ts: map['ts'] as double,
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      rid: (map['rid'] as String).input(),
+      ts: (map['ts'] as double).input(),
     );
   }
 }

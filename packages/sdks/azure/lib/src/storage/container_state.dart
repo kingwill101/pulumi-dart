@@ -43,27 +43,17 @@ class ContainerState {
   /// [storageAccountId] The name of the Storage Account where the Container should be created.
   /// [storageAccountName] The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
   ContainerState({
-    pulumi.Output<String>? containerAccessType,
-    pulumi.Output<String>? defaultEncryptionScope,
-    pulumi.Output<bool>? encryptionScopeOverrideEnabled,
-    pulumi.Output<bool>? hasImmutabilityPolicy,
-    pulumi.Output<bool>? hasLegalHold,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceManagerId,
-    pulumi.Output<String>? storageAccountId,
-    pulumi.Output<String>? storageAccountName,
-  }) :
-      containerAccessType = pulumi.Input.asOptionalInput<String>(containerAccessType),
-      defaultEncryptionScope = pulumi.Input.asOptionalInput<String>(defaultEncryptionScope),
-      encryptionScopeOverrideEnabled = pulumi.Input.asOptionalInput<bool>(encryptionScopeOverrideEnabled),
-      hasImmutabilityPolicy = pulumi.Input.asOptionalInput<bool>(hasImmutabilityPolicy),
-      hasLegalHold = pulumi.Input.asOptionalInput<bool>(hasLegalHold),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceManagerId = pulumi.Input.asOptionalInput<String>(resourceManagerId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      storageAccountName = pulumi.Input.asOptionalInput<String>(storageAccountName);
+    this.containerAccessType,
+    this.defaultEncryptionScope,
+    this.encryptionScopeOverrideEnabled,
+    this.hasImmutabilityPolicy,
+    this.hasLegalHold,
+    this.metadata,
+    this.name,
+    this.resourceManagerId,
+    this.storageAccountId,
+    this.storageAccountName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class ContainerState {
 
   factory ContainerState.fromMap(Map<String, dynamic> map) {
     return ContainerState(
-      containerAccessType: map['containerAccessType'] == null ? null : pulumi.Output.create<String>(map['containerAccessType'] as String),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : pulumi.Output.create<String>(map['defaultEncryptionScope'] as String),
-      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : pulumi.Output.create<bool>(map['encryptionScopeOverrideEnabled'] as bool),
-      hasImmutabilityPolicy: map['hasImmutabilityPolicy'] == null ? null : pulumi.Output.create<bool>(map['hasImmutabilityPolicy'] as bool),
-      hasLegalHold: map['hasLegalHold'] == null ? null : pulumi.Output.create<bool>(map['hasLegalHold'] as bool),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceManagerId: map['resourceManagerId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      storageAccountName: map['storageAccountName'] == null ? null : pulumi.Output.create<String>(map['storageAccountName'] as String),
+      containerAccessType: map['containerAccessType'] == null ? null : (map['containerAccessType'] as String).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
+      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : (map['encryptionScopeOverrideEnabled'] as bool).input(),
+      hasImmutabilityPolicy: map['hasImmutabilityPolicy'] == null ? null : (map['hasImmutabilityPolicy'] as bool).input(),
+      hasLegalHold: map['hasLegalHold'] == null ? null : (map['hasLegalHold'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
     );
   }
 }

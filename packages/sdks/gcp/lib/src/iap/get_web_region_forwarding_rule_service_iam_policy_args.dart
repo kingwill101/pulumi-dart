@@ -22,13 +22,10 @@ class GetWebRegionForwardingRuleServiceIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   GetWebRegionForwardingRuleServiceIamPolicyArgs({
-    required pulumi.Output<String> forwardingRuleRegionServiceName,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      forwardingRuleRegionServiceName = pulumi.Input.asInput<String>(forwardingRuleRegionServiceName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.forwardingRuleRegionServiceName,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetWebRegionForwardingRuleServiceIamPolicyArgs {
 
   factory GetWebRegionForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebRegionForwardingRuleServiceIamPolicyArgs(
-      forwardingRuleRegionServiceName: pulumi.Output.create<String>(map['forwardingRuleRegionServiceName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      forwardingRuleRegionServiceName: (map['forwardingRuleRegionServiceName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

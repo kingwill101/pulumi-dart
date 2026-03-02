@@ -29,19 +29,13 @@ class RaiPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
   RaiPolicyArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<RaiPolicyProperties> properties,
-    pulumi.Output<String>? proxyApiVersion,
-    pulumi.Output<String>? raiPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      properties = pulumi.Input.asInput<RaiPolicyProperties>(properties),
-      proxyApiVersion = pulumi.Input.asOptionalInput<String>(proxyApiVersion),
-      raiPolicyName = pulumi.Input.asOptionalInput<String>(raiPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.endpointName,
+    required this.properties,
+    this.proxyApiVersion,
+    this.raiPolicyName,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class RaiPolicyArgs {
 
   factory RaiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RaiPolicyArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      properties: pulumi.Output.create<RaiPolicyProperties>(RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : pulumi.Output.create<String>(map['proxyApiVersion'] as String),
-      raiPolicyName: map['raiPolicyName'] == null ? null : pulumi.Output.create<String>(map['raiPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      properties: (RaiPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion'] as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

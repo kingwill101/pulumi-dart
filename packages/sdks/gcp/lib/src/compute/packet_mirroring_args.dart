@@ -54,25 +54,16 @@ class PacketMirroringArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created address should reside.
   PacketMirroringArgs({
-    required pulumi.Output<PacketMirroringCollectorIlb> collectorIlb,
-    pulumi.Output<String>? description,
-    pulumi.Output<PacketMirroringFilter>? filter,
-    required pulumi.Output<PacketMirroringMirroredResources> mirroredResources,
-    pulumi.Output<String>? name,
-    required pulumi.Output<PacketMirroringNetwork> network,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      collectorIlb = pulumi.Input.asInput<PacketMirroringCollectorIlb>(collectorIlb),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<PacketMirroringFilter>(filter),
-      mirroredResources = pulumi.Input.asInput<PacketMirroringMirroredResources>(mirroredResources),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<PacketMirroringNetwork>(network),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.collectorIlb,
+    this.description,
+    this.filter,
+    required this.mirroredResources,
+    this.name,
+    required this.network,
+    this.priority,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,15 +81,15 @@ class PacketMirroringArgs {
 
   factory PacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return PacketMirroringArgs(
-      collectorIlb: pulumi.Output.create<PacketMirroringCollectorIlb>(PacketMirroringCollectorIlb.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<PacketMirroringFilter>(PacketMirroringFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      mirroredResources: pulumi.Output.create<PacketMirroringMirroredResources>(PacketMirroringMirroredResources.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      network: pulumi.Output.create<PacketMirroringNetwork>(PacketMirroringNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      collectorIlb: (PacketMirroringCollectorIlb.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      mirroredResources: (PacketMirroringMirroredResources.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      network: (PacketMirroringNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

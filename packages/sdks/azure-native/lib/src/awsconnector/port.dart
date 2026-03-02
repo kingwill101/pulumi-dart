@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Port
 class Port {
   /// Access Direction for Protocol of the Instance(inbound/outbound).
-  final String? accessDirection;
+  final pulumi.Input<String>? accessDirection;
   /// Access From Protocol of the Instance.
-  final String? accessFrom;
+  final pulumi.Input<String>? accessFrom;
   /// Access Type Protocol of the Instance.
-  final String? accessType;
+  final pulumi.Input<String>? accessType;
   /// cidr List Aliases
-  final List<String>? cidrListAliases;
+  final pulumi.Input<List<String>>? cidrListAliases;
   /// Property cidrs
-  final List<String>? cidrs;
+  final pulumi.Input<List<String>>? cidrs;
   /// CommonName for Protocol of the Instance.
-  final String? commonName;
+  final pulumi.Input<String>? commonName;
   /// From Port of the Instance.
-  final int? fromPort;
+  final pulumi.Input<int>? fromPort;
   /// IPv6 Cidrs
-  final List<String>? ipv6Cidrs;
+  final pulumi.Input<List<String>>? ipv6Cidrs;
   /// Port Protocol of the Instance.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// To Port of the Instance.
-  final int? toPort;
+  final pulumi.Input<int>? toPort;
 
   /// Creates a new [Port].
   /// [accessDirection] Access Direction for Protocol of the Instance(inbound/outbound).
@@ -65,16 +66,16 @@ class Port {
 
   factory Port.fromMap(Map<String, dynamic> map) {
     return Port(
-      accessDirection: map['accessDirection'] == null ? null : map['accessDirection'] as String,
-      accessFrom: map['accessFrom'] == null ? null : map['accessFrom'] as String,
-      accessType: map['accessType'] == null ? null : map['accessType'] as String,
-      cidrListAliases: map['cidrListAliases'] == null ? null : (map['cidrListAliases'] as List).cast<String>(),
-      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
-      fromPort: map['fromPort'] == null ? null : map['fromPort'] as int,
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : (map['ipv6Cidrs'] as List).cast<String>(),
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      toPort: map['toPort'] == null ? null : map['toPort'] as int,
+      accessDirection: map['accessDirection'] == null ? null : (map['accessDirection'] as String).input(),
+      accessFrom: map['accessFrom'] == null ? null : (map['accessFrom'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      cidrListAliases: map['cidrListAliases'] == null ? null : ((map['cidrListAliases'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

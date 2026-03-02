@@ -6,11 +6,11 @@ import 'label_class_response.dart';
 /// Label category definition
 class LabelCategoryResponse {
   /// Dictionary of label classes in this category.
-  final Map<String, LabelClassResponse>? classes;
+  final pulumi.Input<Map<String, LabelClassResponse>>? classes;
   /// Display name of the label category.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Indicates whether it is allowed to select multiple classes in this category.
-  final String? multiSelect;
+  final pulumi.Input<String>? multiSelect;
 
   /// Creates a new [LabelCategoryResponse].
   /// [classes] Dictionary of label classes in this category.
@@ -24,7 +24,7 @@ class LabelCategoryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'classes': ?classes == null ? null : pulumi.Input.encodeMapValues<LabelClassResponse, Map<String, dynamic>>(classes!, (value) => value.toMap()),
+      'classes': ?pulumi.Input.mapOptionalInputValue<Map<String, LabelClassResponse>, Map<String, Map<String, dynamic>>>(classes, (value) => pulumi.Input.encodeMapValues<LabelClassResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
       'multiSelect': ?multiSelect,
     };
@@ -32,9 +32,9 @@ class LabelCategoryResponse {
 
   factory LabelCategoryResponse.fromMap(Map<String, dynamic> map) {
     return LabelCategoryResponse(
-      classes: map['classes'] == null ? null : pulumi.Input.decodeMapValues<LabelClassResponse>(map['classes'], (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      multiSelect: map['multiSelect'] == null ? null : map['multiSelect'] as String,
+      classes: map['classes'] == null ? null : (pulumi.Input.decodeMapValues<LabelClassResponse>(map['classes'], (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      multiSelect: map['multiSelect'] == null ? null : (map['multiSelect'] as String).input(),
     );
   }
 }

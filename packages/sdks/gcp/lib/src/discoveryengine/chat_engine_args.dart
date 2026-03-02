@@ -44,25 +44,16 @@ class ChatEngineArgs {
   /// [location] Location.
   /// [project] The ID of the project in which the resource belongs.
   ChatEngineArgs({
-    required pulumi.Output<ChatEngineChatEngineConfig> chatEngineConfig,
-    required pulumi.Output<String> collectionId,
-    pulumi.Output<ChatEngineCommonConfig>? commonConfig,
-    required pulumi.Output<List<String>> dataStoreIds,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> engineId,
-    pulumi.Output<String>? industryVertical,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      chatEngineConfig = pulumi.Input.asInput<ChatEngineChatEngineConfig>(chatEngineConfig),
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      commonConfig = pulumi.Input.asOptionalInput<ChatEngineCommonConfig>(commonConfig),
-      dataStoreIds = pulumi.Input.asInput<List<String>>(dataStoreIds),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      industryVertical = pulumi.Input.asOptionalInput<String>(industryVertical),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.chatEngineConfig,
+    required this.collectionId,
+    this.commonConfig,
+    required this.dataStoreIds,
+    required this.displayName,
+    required this.engineId,
+    this.industryVertical,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,15 +71,15 @@ class ChatEngineArgs {
 
   factory ChatEngineArgs.fromMap(Map<String, dynamic> map) {
     return ChatEngineArgs(
-      chatEngineConfig: pulumi.Output.create<ChatEngineChatEngineConfig>(ChatEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())),
-      collectionId: pulumi.Output.create<String>(map['collectionId'] as String),
-      commonConfig: map['commonConfig'] == null ? null : pulumi.Output.create<ChatEngineCommonConfig>(ChatEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())),
-      dataStoreIds: pulumi.Output.create<List<String>>((map['dataStoreIds'] as List).cast<String>()),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      engineId: pulumi.Output.create<String>(map['engineId'] as String),
-      industryVertical: map['industryVertical'] == null ? null : pulumi.Output.create<String>(map['industryVertical'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      chatEngineConfig: (ChatEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())).input(),
+      collectionId: (map['collectionId'] as String).input(),
+      commonConfig: map['commonConfig'] == null ? null : (ChatEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      dataStoreIds: ((map['dataStoreIds'] as List).cast<String>()).input(),
+      displayName: (map['displayName'] as String).input(),
+      engineId: (map['engineId'] as String).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

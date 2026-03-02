@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The upgrade to apply to a ManagedCluster.
 class ManagedClusterUpgradeSpecResponse {
   /// The Kubernetes version to upgrade the member clusters to.
-  final String? kubernetesVersion;
+  final pulumi.Input<String>? kubernetesVersion;
   /// ManagedClusterUpgradeType is the type of upgrade to be applied.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedClusterUpgradeSpecResponse].
   /// [kubernetesVersion] The Kubernetes version to upgrade the member clusters to.
@@ -25,8 +26,8 @@ class ManagedClusterUpgradeSpecResponse {
 
   factory ManagedClusterUpgradeSpecResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterUpgradeSpecResponse(
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion'] as String,
-      type: map['type'] as String,
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

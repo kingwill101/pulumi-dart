@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Historical state information.
 class StateHistoryResponse {
   /// The state of the batch at this point in history.
-  final String state;
+  final pulumi.Input<String> state;
   /// Details about the state at this point in history.
-  final String stateMessage;
+  final pulumi.Input<String> stateMessage;
   /// The time when the batch entered the historical state.
-  final String stateStartTime;
+  final pulumi.Input<String> stateStartTime;
 
   /// Creates a new [StateHistoryResponse].
   /// [state] The state of the batch at this point in history.
@@ -30,9 +31,9 @@ class StateHistoryResponse {
 
   factory StateHistoryResponse.fromMap(Map<String, dynamic> map) {
     return StateHistoryResponse(
-      state: map['state'] as String,
-      stateMessage: map['stateMessage'] as String,
-      stateStartTime: map['stateStartTime'] as String,
+      state: (map['state'] as String).input(),
+      stateMessage: (map['stateMessage'] as String).input(),
+      stateStartTime: (map['stateStartTime'] as String).input(),
     );
   }
 }

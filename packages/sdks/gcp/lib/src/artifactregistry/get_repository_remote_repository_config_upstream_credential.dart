@@ -5,7 +5,7 @@ import 'get_repository_remote_repository_config_upstream_credential_username_pas
 
 class GetRepositoryRemoteRepositoryConfigUpstreamCredential {
   /// Use username and password to access the remote repository.
-  final List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential> usernamePasswordCredentials;
+  final pulumi.Input<List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential>> usernamePasswordCredentials;
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigUpstreamCredential].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
@@ -15,13 +15,13 @@ class GetRepositoryRemoteRepositoryConfigUpstreamCredential {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'usernamePasswordCredentials': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential, Map<String, dynamic>>(usernamePasswordCredentials, (value) => value.toMap()),
+      'usernamePasswordCredentials': pulumi.Input.mapInputValue<List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential>, List<Map<String, dynamic>>>(usernamePasswordCredentials, (value) => pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetRepositoryRemoteRepositoryConfigUpstreamCredential.fromMap(Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigUpstreamCredential(
-      usernamePasswordCredentials: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential>(map['usernamePasswordCredentials'], (value) => GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential.fromMap((value as Map).cast<String, dynamic>())),
+      usernamePasswordCredentials: (pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential>(map['usernamePasswordCredentials'], (value) => GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

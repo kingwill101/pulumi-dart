@@ -32,21 +32,14 @@ class DeviceFleetArgs {
   /// [roleArn] The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   DeviceFleetArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> deviceFleetName,
-    pulumi.Output<bool>? enableIotRoleAlias,
-    required pulumi.Output<DeviceFleetOutputConfig> outputConfig,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceFleetName = pulumi.Input.asInput<String>(deviceFleetName),
-      enableIotRoleAlias = pulumi.Input.asOptionalInput<bool>(enableIotRoleAlias),
-      outputConfig = pulumi.Input.asInput<DeviceFleetOutputConfig>(outputConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    required this.deviceFleetName,
+    this.enableIotRoleAlias,
+    required this.outputConfig,
+    this.region,
+    required this.roleArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DeviceFleetArgs {
 
   factory DeviceFleetArgs.fromMap(Map<String, dynamic> map) {
     return DeviceFleetArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      deviceFleetName: pulumi.Output.create<String>(map['deviceFleetName'] as String),
-      enableIotRoleAlias: map['enableIotRoleAlias'] == null ? null : pulumi.Output.create<bool>(map['enableIotRoleAlias'] as bool),
-      outputConfig: pulumi.Output.create<DeviceFleetOutputConfig>(DeviceFleetOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceFleetName: (map['deviceFleetName'] as String).input(),
+      enableIotRoleAlias: map['enableIotRoleAlias'] == null ? null : (map['enableIotRoleAlias'] as bool).input(),
+      outputConfig: (DeviceFleetOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

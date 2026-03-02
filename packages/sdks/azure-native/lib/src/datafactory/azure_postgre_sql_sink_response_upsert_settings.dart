@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Database for PostgreSQL upsert option settings
 class AzurePostgreSqlSinkResponseUpsertSettings {
   /// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  final dynamic keys;
+  final pulumi.Input<dynamic>? keys;
 
   /// Creates a new [AzurePostgreSqlSinkResponseUpsertSettings].
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
@@ -20,7 +21,7 @@ class AzurePostgreSqlSinkResponseUpsertSettings {
 
   factory AzurePostgreSqlSinkResponseUpsertSettings.fromMap(Map<String, dynamic> map) {
     return AzurePostgreSqlSinkResponseUpsertSettings(
-      keys: map['keys'] == null ? null : map['keys'],
+      keys: map['keys'] == null ? null : (map['keys']).input(),
     );
   }
 }

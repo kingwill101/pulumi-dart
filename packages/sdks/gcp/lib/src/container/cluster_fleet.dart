@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterFleet {
   /// Full resource name of the registered fleet membership of the cluster.
-  final String? membership;
+  final pulumi.Input<String>? membership;
   /// Short name of the fleet membership, for example "member-1".
-  final String? membershipId;
+  final pulumi.Input<String>? membershipId;
   /// Location of the fleet membership, for example "us-central1".
-  final String? membershipLocation;
+  final pulumi.Input<String>? membershipLocation;
   /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
-  final String? membershipType;
+  final pulumi.Input<String>? membershipType;
   /// Whether the cluster has been registered via the fleet API.
-  final bool? preRegistered;
+  final pulumi.Input<bool>? preRegistered;
   /// The name of the Fleet host project where this cluster will be registered.
-  final String? project;
+  final pulumi.Input<String>? project;
 
   /// Creates a new [ClusterFleet].
   /// [membership] Full resource name of the registered fleet membership of the cluster.
@@ -44,12 +45,12 @@ class ClusterFleet {
 
   factory ClusterFleet.fromMap(Map<String, dynamic> map) {
     return ClusterFleet(
-      membership: map['membership'] == null ? null : map['membership'] as String,
-      membershipId: map['membershipId'] == null ? null : map['membershipId'] as String,
-      membershipLocation: map['membershipLocation'] == null ? null : map['membershipLocation'] as String,
-      membershipType: map['membershipType'] == null ? null : map['membershipType'] as String,
-      preRegistered: map['preRegistered'] == null ? null : map['preRegistered'] as bool,
-      project: map['project'] == null ? null : map['project'] as String,
+      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
+      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation'] as String).input(),
+      membershipType: map['membershipType'] == null ? null : (map['membershipType'] as String).input(),
+      preRegistered: map['preRegistered'] == null ? null : (map['preRegistered'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

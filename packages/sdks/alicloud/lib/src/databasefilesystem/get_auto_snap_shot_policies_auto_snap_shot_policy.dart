@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
   /// The number of database file systems set by the automatic snapshot policy.
-  final int appliedDbfsNumber;
+  final pulumi.Input<int> appliedDbfsNumber;
   /// The creation time of the resource
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// Last modification time of automatic snapshot policy
-  final String lastModified;
+  final pulumi.Input<String> lastModified;
   /// Automatic snapshot policy ID
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// Automatic snapshot policy name
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// A collection of automatic snapshots performed on several days of the week.
-  final List<String> repeatWeekdays;
+  final pulumi.Input<List<String>> repeatWeekdays;
   /// Automatic snapshot retention days
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// Automatic snapshot policy status
-  final String status;
+  final pulumi.Input<String> status;
   /// Automatic snapshot policy status details
-  final String statusDetail;
+  final pulumi.Input<String> statusDetail;
   /// The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
-  final List<String> timePoints;
+  final pulumi.Input<List<String>> timePoints;
 
   /// Creates a new [GetAutoSnapShotPoliciesAutoSnapShotPolicy].
   /// [appliedDbfsNumber] The number of database file systems set by the automatic snapshot policy.
@@ -69,17 +70,17 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
 
   factory GetAutoSnapShotPoliciesAutoSnapShotPolicy.fromMap(Map<String, dynamic> map) {
     return GetAutoSnapShotPoliciesAutoSnapShotPolicy(
-      appliedDbfsNumber: map['appliedDbfsNumber'] as int,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      lastModified: map['lastModified'] as String,
-      policyId: map['policyId'] as String,
-      policyName: map['policyName'] as String,
-      repeatWeekdays: (map['repeatWeekdays'] as List).cast<String>(),
-      retentionDays: map['retentionDays'] as int,
-      status: map['status'] as String,
-      statusDetail: map['statusDetail'] as String,
-      timePoints: (map['timePoints'] as List).cast<String>(),
+      appliedDbfsNumber: (map['appliedDbfsNumber'] as int).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastModified: (map['lastModified'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      status: (map['status'] as String).input(),
+      statusDetail: (map['statusDetail'] as String).input(),
+      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 class AdditionalPodRangesConfigContainerV1beta1 {
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
-  final List<String>? podRangeNames;
+  final pulumi.Input<List<String>>? podRangeNames;
 
   /// Creates a new [AdditionalPodRangesConfigContainerV1beta1].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
@@ -20,7 +21,7 @@ class AdditionalPodRangesConfigContainerV1beta1 {
 
   factory AdditionalPodRangesConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfigContainerV1beta1(
-      podRangeNames: map['podRangeNames'] == null ? null : (map['podRangeNames'] as List).cast<String>(),
+      podRangeNames: map['podRangeNames'] == null ? null : ((map['podRangeNames'] as List).cast<String>()).input(),
     );
   }
 }

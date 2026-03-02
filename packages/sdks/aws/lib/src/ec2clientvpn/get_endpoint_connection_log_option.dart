@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointConnectionLogOption {
-  final String cloudwatchLogGroup;
-  final String cloudwatchLogStream;
-  final bool enabled;
+  final pulumi.Input<String> cloudwatchLogGroup;
+  final pulumi.Input<String> cloudwatchLogStream;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetEndpointConnectionLogOption].
   /// [cloudwatchLogGroup] Required.
@@ -26,9 +27,9 @@ class GetEndpointConnectionLogOption {
 
   factory GetEndpointConnectionLogOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointConnectionLogOption(
-      cloudwatchLogGroup: map['cloudwatchLogGroup'] as String,
-      cloudwatchLogStream: map['cloudwatchLogStream'] as String,
-      enabled: map['enabled'] as bool,
+      cloudwatchLogGroup: (map['cloudwatchLogGroup'] as String).input(),
+      cloudwatchLogStream: (map['cloudwatchLogStream'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

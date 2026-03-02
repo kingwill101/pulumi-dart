@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'circuit_breaker_failure_condition_response.dart';
 
 /// Rule configuration to trip the backend.
 class CircuitBreakerRuleResponse {
   /// flag to accept Retry-After header from the backend.
-  final bool? acceptRetryAfter;
+  final pulumi.Input<bool>? acceptRetryAfter;
   /// The conditions for tripping the circuit breaker.
-  final CircuitBreakerFailureConditionResponse? failureCondition;
+  final pulumi.Input<CircuitBreakerFailureConditionResponse>? failureCondition;
   /// The rule name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The duration for which the circuit will be tripped.
-  final String? tripDuration;
+  final pulumi.Input<String>? tripDuration;
 
   /// Creates a new [CircuitBreakerRuleResponse].
   /// [acceptRetryAfter] flag to accept Retry-After header from the backend.
@@ -28,7 +29,7 @@ class CircuitBreakerRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceptRetryAfter': ?acceptRetryAfter,
-      'failureCondition': ?failureCondition == null ? null : failureCondition!.toMap(),
+      'failureCondition': ?pulumi.Input.mapOptionalInputValue<CircuitBreakerFailureConditionResponse, Map<String, dynamic>>(failureCondition, (value) => value.toMap()),
       'name': ?name,
       'tripDuration': ?tripDuration,
     };
@@ -36,10 +37,10 @@ class CircuitBreakerRuleResponse {
 
   factory CircuitBreakerRuleResponse.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerRuleResponse(
-      acceptRetryAfter: map['acceptRetryAfter'] == null ? null : map['acceptRetryAfter'] as bool,
-      failureCondition: map['failureCondition'] == null ? null : CircuitBreakerFailureConditionResponse.fromMap((map['failureCondition'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      tripDuration: map['tripDuration'] == null ? null : map['tripDuration'] as String,
+      acceptRetryAfter: map['acceptRetryAfter'] == null ? null : (map['acceptRetryAfter'] as bool).input(),
+      failureCondition: map['failureCondition'] == null ? null : (CircuitBreakerFailureConditionResponse.fromMap((map['failureCondition'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tripDuration: map['tripDuration'] == null ? null : (map['tripDuration'] as String).input(),
     );
   }
 }

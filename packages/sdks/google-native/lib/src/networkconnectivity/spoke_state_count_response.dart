@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The number of spokes that are in a particular state and associated with a given hub.
 class SpokeStateCountResponse {
   /// The total number of spokes that are in this state and associated with a given hub.
-  final String count;
+  final pulumi.Input<String> count;
   /// The state of the spokes.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [SpokeStateCountResponse].
   /// [count] The total number of spokes that are in this state and associated with a given hub.
@@ -25,8 +26,8 @@ class SpokeStateCountResponse {
 
   factory SpokeStateCountResponse.fromMap(Map<String, dynamic> map) {
     return SpokeStateCountResponse(
-      count: map['count'] as String,
-      state: map['state'] as String,
+      count: (map['count'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

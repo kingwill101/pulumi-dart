@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// API OAuth2 Authentication settings details.
 class OAuth2AuthenticationSettingsContractResponse {
   /// OAuth authorization server identifier.
-  final String? authorizationServerId;
+  final pulumi.Input<String>? authorizationServerId;
   /// operations scope.
-  final String? scope;
+  final pulumi.Input<String>? scope;
 
   /// Creates a new [OAuth2AuthenticationSettingsContractResponse].
   /// [authorizationServerId] OAuth authorization server identifier.
@@ -25,8 +26,8 @@ class OAuth2AuthenticationSettingsContractResponse {
 
   factory OAuth2AuthenticationSettingsContractResponse.fromMap(Map<String, dynamic> map) {
     return OAuth2AuthenticationSettingsContractResponse(
-      authorizationServerId: map['authorizationServerId'] == null ? null : map['authorizationServerId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      authorizationServerId: map['authorizationServerId'] == null ? null : (map['authorizationServerId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

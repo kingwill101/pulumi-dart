@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorPluginCustomPlugin {
   /// The Amazon Resource Name (ARN) of the custom plugin.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// The revision of the custom plugin.
-  final int revision;
+  final pulumi.Input<int> revision;
 
   /// Creates a new [ConnectorPluginCustomPlugin].
   /// [arn] The Amazon Resource Name (ARN) of the custom plugin.
@@ -24,8 +25,8 @@ class ConnectorPluginCustomPlugin {
 
   factory ConnectorPluginCustomPlugin.fromMap(Map<String, dynamic> map) {
     return ConnectorPluginCustomPlugin(
-      arn: map['arn'] as String,
-      revision: map['revision'] as int,
+      arn: (map['arn'] as String).input(),
+      revision: (map['revision'] as int).input(),
     );
   }
 }

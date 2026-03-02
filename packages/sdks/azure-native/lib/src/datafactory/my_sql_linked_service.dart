@@ -8,52 +8,52 @@ import 'parameter_specification.dart';
 /// Linked service for MySQL data source.
 class MySqlLinkedService {
   /// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
-  final dynamic allowZeroDateTime;
+  final pulumi.Input<dynamic>? allowZeroDateTime;
   /// List of tags that can be used for describing the linked service.
-  final List<dynamic>? annotations;
+  final pulumi.Input<List<dynamic>>? annotations;
   /// The integration runtime reference.
-  final IntegrationRuntimeReference? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
   /// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
-  final dynamic connectionString;
+  final pulumi.Input<dynamic>? connectionString;
   /// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
-  final dynamic connectionTimeout;
+  final pulumi.Input<dynamic>? connectionTimeout;
   /// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
-  final dynamic convertZeroDateTime;
+  final pulumi.Input<dynamic>? convertZeroDateTime;
   /// Database name for connection. Type: string.
-  final dynamic database;
+  final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The version of the MySQL driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
-  final dynamic driverVersion;
+  final pulumi.Input<dynamic>? driverVersion;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final String? encryptedCredential;
+  final pulumi.Input<String>? encryptedCredential;
   /// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
-  final dynamic guidFormat;
+  final pulumi.Input<dynamic>? guidFormat;
   /// Parameters for linked service.
-  final Map<String, ParameterSpecification>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final AzureKeyVaultSecretReference? password;
+  final pulumi.Input<AzureKeyVaultSecretReference>? password;
   /// The port for the connection. Type: integer.
-  final dynamic port;
+  final pulumi.Input<dynamic>? port;
   /// Server name for connection. Type: string.
-  final dynamic server;
+  final pulumi.Input<dynamic>? server;
   /// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
-  final dynamic sslCert;
+  final pulumi.Input<dynamic>? sslCert;
   /// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
-  final dynamic sslKey;
+  final pulumi.Input<dynamic>? sslKey;
   /// SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
-  final dynamic sslMode;
+  final pulumi.Input<dynamic>? sslMode;
   /// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
-  final dynamic treatTinyAsBoolean;
+  final pulumi.Input<dynamic>? treatTinyAsBoolean;
   /// Type of linked service.
   /// Expected value is 'MySql'.
-  final String type;
+  final pulumi.Input<String> type;
   /// Use system trust store for connection. Type: integer. 0: enable, 1: disable.
-  final dynamic useSystemTrustStore;
+  final pulumi.Input<dynamic>? useSystemTrustStore;
   /// Username for authentication. Type: string.
-  final dynamic username;
+  final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MySqlLinkedService].
   /// [allowZeroDateTime] This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
@@ -109,7 +109,7 @@ class MySqlLinkedService {
     return <String, dynamic>{
       'allowZeroDateTime': ?allowZeroDateTime,
       'annotations': ?annotations,
-      'connectVia': ?connectVia == null ? null : connectVia!.toMap(),
+      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': ?connectionString,
       'connectionTimeout': ?connectionTimeout,
       'convertZeroDateTime': ?convertZeroDateTime,
@@ -118,8 +118,8 @@ class MySqlLinkedService {
       'driverVersion': ?driverVersion,
       'encryptedCredential': ?encryptedCredential,
       'guidFormat': ?guidFormat,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
-      'password': ?password == null ? null : password!.toMap(),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
       'port': ?port,
       'server': ?server,
       'sslCert': ?sslCert,
@@ -135,29 +135,29 @@ class MySqlLinkedService {
 
   factory MySqlLinkedService.fromMap(Map<String, dynamic> map) {
     return MySqlLinkedService(
-      allowZeroDateTime: map['allowZeroDateTime'] == null ? null : map['allowZeroDateTime'],
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
-      connectVia: map['connectVia'] == null ? null : IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>()),
-      connectionString: map['connectionString'] == null ? null : map['connectionString'],
-      connectionTimeout: map['connectionTimeout'] == null ? null : map['connectionTimeout'],
-      convertZeroDateTime: map['convertZeroDateTime'] == null ? null : map['convertZeroDateTime'],
-      database: map['database'] == null ? null : map['database'],
-      description: map['description'] == null ? null : map['description'] as String,
-      driverVersion: map['driverVersion'] == null ? null : map['driverVersion'],
-      encryptedCredential: map['encryptedCredential'] == null ? null : map['encryptedCredential'] as String,
-      guidFormat: map['guidFormat'] == null ? null : map['guidFormat'],
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      password: map['password'] == null ? null : AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'],
-      server: map['server'] == null ? null : map['server'],
-      sslCert: map['sslCert'] == null ? null : map['sslCert'],
-      sslKey: map['sslKey'] == null ? null : map['sslKey'],
-      sslMode: map['sslMode'] == null ? null : map['sslMode'],
-      treatTinyAsBoolean: map['treatTinyAsBoolean'] == null ? null : map['treatTinyAsBoolean'],
-      type: map['type'] as String,
-      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : map['useSystemTrustStore'],
-      username: map['username'] == null ? null : map['username'],
-      version: map['version'] == null ? null : map['version'] as String,
+      allowZeroDateTime: map['allowZeroDateTime'] == null ? null : (map['allowZeroDateTime']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout']).input(),
+      convertZeroDateTime: map['convertZeroDateTime'] == null ? null : (map['convertZeroDateTime']).input(),
+      database: map['database'] == null ? null : (map['database']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      guidFormat: map['guidFormat'] == null ? null : (map['guidFormat']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']).input(),
+      server: map['server'] == null ? null : (map['server']).input(),
+      sslCert: map['sslCert'] == null ? null : (map['sslCert']).input(),
+      sslKey: map['sslKey'] == null ? null : (map['sslKey']).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']).input(),
+      treatTinyAsBoolean: map['treatTinyAsBoolean'] == null ? null : (map['treatTinyAsBoolean']).input(),
+      type: (map['type'] as String).input(),
+      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : (map['useSystemTrustStore']).input(),
+      username: map['username'] == null ? null : (map['username']).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

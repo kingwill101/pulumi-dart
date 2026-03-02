@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudFormationTypeLoggingConfig {
   /// Name of the CloudWatch Log Group where CloudFormation sends error logging information when invoking the type's handlers.
-  final String logGroupName;
+  final pulumi.Input<String> logGroupName;
   /// ARN of the IAM Role CloudFormation assumes when sending error logging information to CloudWatch Logs.
-  final String logRoleArn;
+  final pulumi.Input<String> logRoleArn;
 
   /// Creates a new [GetCloudFormationTypeLoggingConfig].
   /// [logGroupName] Name of the CloudWatch Log Group where CloudFormation sends error logging information when invoking the type's handlers.
@@ -24,8 +25,8 @@ class GetCloudFormationTypeLoggingConfig {
 
   factory GetCloudFormationTypeLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GetCloudFormationTypeLoggingConfig(
-      logGroupName: map['logGroupName'] as String,
-      logRoleArn: map['logRoleArn'] as String,
+      logGroupName: (map['logGroupName'] as String).input(),
+      logRoleArn: (map['logRoleArn'] as String).input(),
     );
   }
 }

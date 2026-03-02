@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProvisionedProductsProvisionedProductParameter {
-  final String parameterKey;
-  final String parameterValue;
+  final pulumi.Input<String> parameterKey;
+  final pulumi.Input<String> parameterValue;
 
   /// Creates a new [GetProvisionedProductsProvisionedProductParameter].
   /// [parameterKey] Required.
@@ -22,8 +23,8 @@ class GetProvisionedProductsProvisionedProductParameter {
 
   factory GetProvisionedProductsProvisionedProductParameter.fromMap(Map<String, dynamic> map) {
     return GetProvisionedProductsProvisionedProductParameter(
-      parameterKey: map['parameterKey'] as String,
-      parameterValue: map['parameterValue'] as String,
+      parameterKey: (map['parameterKey'] as String).input(),
+      parameterValue: (map['parameterValue'] as String).input(),
     );
   }
 }

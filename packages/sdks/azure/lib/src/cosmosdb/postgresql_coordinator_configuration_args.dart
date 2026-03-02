@@ -19,13 +19,10 @@ class PostgresqlCoordinatorConfigurationArgs {
   /// [name] The name of the Coordinator Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   /// [value] The value of the Coordinator Configuration on Azure Cosmos DB for PostgreSQL Cluster.
   PostgresqlCoordinatorConfigurationArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> value,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      value = pulumi.Input.asInput<String>(value);
+    required this.clusterId,
+    this.name,
+    required this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class PostgresqlCoordinatorConfigurationArgs {
 
   factory PostgresqlCoordinatorConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlCoordinatorConfigurationArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

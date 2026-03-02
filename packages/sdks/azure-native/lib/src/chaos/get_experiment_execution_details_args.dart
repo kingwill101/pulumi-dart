@@ -19,13 +19,10 @@ class GetExperimentExecutionDetailsArgs {
   /// [experimentName] String that represents a Experiment resource name.
   /// [resourceGroupName] String that represents an Azure resource group.
   GetExperimentExecutionDetailsArgs({
-    required pulumi.Output<String> executionId,
-    required pulumi.Output<String> experimentName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      experimentName = pulumi.Input.asInput<String>(experimentName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.executionId,
+    required this.experimentName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExperimentExecutionDetailsArgs {
 
   factory GetExperimentExecutionDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentExecutionDetailsArgs(
-      executionId: pulumi.Output.create<String>(map['executionId'] as String),
-      experimentName: pulumi.Output.create<String>(map['experimentName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      executionId: (map['executionId'] as String).input(),
+      experimentName: (map['experimentName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

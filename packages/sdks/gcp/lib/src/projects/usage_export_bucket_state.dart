@@ -18,13 +18,10 @@ class UsageExportBucketState {
   /// [prefix] A prefix for the reports, for instance, the project name.
   /// [project] The project to set the export bucket on. If it is not provided, the provider project is used.
   UsageExportBucketState({
-    pulumi.Output<String>? bucketName,
-    pulumi.Output<String>? prefix,
-    pulumi.Output<String>? project,
-  }) :
-      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bucketName,
+    this.prefix,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class UsageExportBucketState {
 
   factory UsageExportBucketState.fromMap(Map<String, dynamic> map) {
     return UsageExportBucketState(
-      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<String>(map['prefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

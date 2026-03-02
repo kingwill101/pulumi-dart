@@ -34,23 +34,15 @@ class PublicationArgs {
   /// [publishViaPartitionRootParam] Should be option 'publish_via_partition_root' be turned on. Default to 'false'
   /// [tables] Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
   PublicationArgs({
-    pulumi.Output<bool>? allTables,
-    pulumi.Output<String>? database,
-    pulumi.Output<bool>? dropCascade,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? owner,
-    pulumi.Output<List<String>>? publishParams,
-    pulumi.Output<bool>? publishViaPartitionRootParam,
-    pulumi.Output<List<String>>? tables,
-  }) :
-      allTables = pulumi.Input.asOptionalInput<bool>(allTables),
-      database = pulumi.Input.asOptionalInput<String>(database),
-      dropCascade = pulumi.Input.asOptionalInput<bool>(dropCascade),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      publishParams = pulumi.Input.asOptionalInput<List<String>>(publishParams),
-      publishViaPartitionRootParam = pulumi.Input.asOptionalInput<bool>(publishViaPartitionRootParam),
-      tables = pulumi.Input.asOptionalInput<List<String>>(tables);
+    this.allTables,
+    this.database,
+    this.dropCascade,
+    this.name,
+    this.owner,
+    this.publishParams,
+    this.publishViaPartitionRootParam,
+    this.tables,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class PublicationArgs {
 
   factory PublicationArgs.fromMap(Map<String, dynamic> map) {
     return PublicationArgs(
-      allTables: map['allTables'] == null ? null : pulumi.Output.create<bool>(map['allTables'] as bool),
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      dropCascade: map['dropCascade'] == null ? null : pulumi.Output.create<bool>(map['dropCascade'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      publishParams: map['publishParams'] == null ? null : pulumi.Output.create<List<String>>((map['publishParams'] as List).cast<String>()),
-      publishViaPartitionRootParam: map['publishViaPartitionRootParam'] == null ? null : pulumi.Output.create<bool>(map['publishViaPartitionRootParam'] as bool),
-      tables: map['tables'] == null ? null : pulumi.Output.create<List<String>>((map['tables'] as List).cast<String>()),
+      allTables: map['allTables'] == null ? null : (map['allTables'] as bool).input(),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      publishParams: map['publishParams'] == null ? null : ((map['publishParams'] as List).cast<String>()).input(),
+      publishViaPartitionRootParam: map['publishViaPartitionRootParam'] == null ? null : (map['publishViaPartitionRootParam'] as bool).input(),
+      tables: map['tables'] == null ? null : ((map['tables'] as List).cast<String>()).input(),
     );
   }
 }

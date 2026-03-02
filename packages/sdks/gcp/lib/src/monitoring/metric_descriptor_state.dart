@@ -67,31 +67,19 @@ class MetricDescriptorState {
   /// [unit] The units in which the metric value is reported. It is only applicable if the
   /// [valueType] Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   MetricDescriptorState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<MetricDescriptorLabel>>? labels,
-    pulumi.Output<String>? launchStage,
-    pulumi.Output<MetricDescriptorMetadata>? metadata,
-    pulumi.Output<String>? metricKind,
-    pulumi.Output<List<String>>? monitoredResourceTypes,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? unit,
-    pulumi.Output<String>? valueType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<List<MetricDescriptorLabel>>(labels),
-      launchStage = pulumi.Input.asOptionalInput<String>(launchStage),
-      metadata = pulumi.Input.asOptionalInput<MetricDescriptorMetadata>(metadata),
-      metricKind = pulumi.Input.asOptionalInput<String>(metricKind),
-      monitoredResourceTypes = pulumi.Input.asOptionalInput<List<String>>(monitoredResourceTypes),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      unit = pulumi.Input.asOptionalInput<String>(unit),
-      valueType = pulumi.Input.asOptionalInput<String>(valueType);
+    this.description,
+    this.displayName,
+    this.labels,
+    this.launchStage,
+    this.metadata,
+    this.metricKind,
+    this.monitoredResourceTypes,
+    this.name,
+    this.project,
+    this.type,
+    this.unit,
+    this.valueType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,18 +100,18 @@ class MetricDescriptorState {
 
   factory MetricDescriptorState.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<MetricDescriptorLabel>>(pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels'], (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      launchStage: map['launchStage'] == null ? null : pulumi.Output.create<String>(map['launchStage'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<MetricDescriptorMetadata>(MetricDescriptorMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      metricKind: map['metricKind'] == null ? null : pulumi.Output.create<String>(map['metricKind'] as String),
-      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['monitoredResourceTypes'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      unit: map['unit'] == null ? null : pulumi.Output.create<String>(map['unit'] as String),
-      valueType: map['valueType'] == null ? null : pulumi.Output.create<String>(map['valueType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels'], (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
+      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metricKind: map['metricKind'] == null ? null : (map['metricKind'] as String).input(),
+      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : ((map['monitoredResourceTypes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
     );
   }
 }

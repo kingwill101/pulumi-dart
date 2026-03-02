@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantMetadata {
   /// Key of a metadata tag for a prompt variant.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value of a metadata tag for a prompt variant.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AgentPromptVariantMetadata].
   /// [key] Key of a metadata tag for a prompt variant.
@@ -24,8 +25,8 @@ class AgentPromptVariantMetadata {
 
   factory AgentPromptVariantMetadata.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantMetadata(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_info.dart';
 
 /// SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
 class SelfSubjectReviewStatusAuthenticationK8sIoV1beta1 {
   /// User attributes of the user making this request.
-  final UserInfo? userInfo;
+  final pulumi.Input<UserInfo>? userInfo;
 
   /// Creates a new [SelfSubjectReviewStatusAuthenticationK8sIoV1beta1].
   /// [userInfo] User attributes of the user making this request.
@@ -15,13 +16,13 @@ class SelfSubjectReviewStatusAuthenticationK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInfo': ?userInfo == null ? null : userInfo!.toMap(),
+      'userInfo': ?pulumi.Input.mapOptionalInputValue<UserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectReviewStatusAuthenticationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectReviewStatusAuthenticationK8sIoV1beta1(
-      userInfo: map['userInfo'] == null ? null : UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
+      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

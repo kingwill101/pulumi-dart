@@ -38,17 +38,12 @@ class QuotaArgs {
   /// [paymentType] Payment type. Valid values: Subscription/PayAsYouGo
   /// [subQuotaInfoLists] Secondary Quota list
   QuotaArgs({
-    required pulumi.Output<String> commodityCode,
-    pulumi.Output<String>? commodityData,
-    pulumi.Output<String>? partNickName,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<List<QuotaSubQuotaInfoList>>? subQuotaInfoLists,
-  }) :
-      commodityCode = pulumi.Input.asInput<String>(commodityCode),
-      commodityData = pulumi.Input.asOptionalInput<String>(commodityData),
-      partNickName = pulumi.Input.asOptionalInput<String>(partNickName),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      subQuotaInfoLists = pulumi.Input.asOptionalInput<List<QuotaSubQuotaInfoList>>(subQuotaInfoLists);
+    required this.commodityCode,
+    this.commodityData,
+    this.partNickName,
+    required this.paymentType,
+    this.subQuotaInfoLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,11 +57,11 @@ class QuotaArgs {
 
   factory QuotaArgs.fromMap(Map<String, dynamic> map) {
     return QuotaArgs(
-      commodityCode: pulumi.Output.create<String>(map['commodityCode'] as String),
-      commodityData: map['commodityData'] == null ? null : pulumi.Output.create<String>(map['commodityData'] as String),
-      partNickName: map['partNickName'] == null ? null : pulumi.Output.create<String>(map['partNickName'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : pulumi.Output.create<List<QuotaSubQuotaInfoList>>(pulumi.Input.decodeList<QuotaSubQuotaInfoList>(map['subQuotaInfoLists'], (value) => QuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))),
+      commodityCode: (map['commodityCode'] as String).input(),
+      commodityData: map['commodityData'] == null ? null : (map['commodityData'] as String).input(),
+      partNickName: map['partNickName'] == null ? null : (map['partNickName'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaSubQuotaInfoList>(map['subQuotaInfoLists'], (value) => QuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

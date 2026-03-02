@@ -19,13 +19,10 @@ class GetSharedPrivateLinkResourceArgs {
   /// [sharedPrivateLinkResourceName] The Shared Private Link resource name.
   /// [watcherName] The database watcher name.
   GetSharedPrivateLinkResourceArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sharedPrivateLinkResourceName,
-    required pulumi.Output<String> watcherName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sharedPrivateLinkResourceName = pulumi.Input.asInput<String>(sharedPrivateLinkResourceName),
-      watcherName = pulumi.Input.asInput<String>(watcherName);
+    required this.resourceGroupName,
+    required this.sharedPrivateLinkResourceName,
+    required this.watcherName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSharedPrivateLinkResourceArgs {
 
   factory GetSharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedPrivateLinkResourceArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sharedPrivateLinkResourceName: pulumi.Output.create<String>(map['sharedPrivateLinkResourceName'] as String),
-      watcherName: pulumi.Output.create<String>(map['watcherName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sharedPrivateLinkResourceName: (map['sharedPrivateLinkResourceName'] as String).input(),
+      watcherName: (map['watcherName'] as String).input(),
     );
   }
 }

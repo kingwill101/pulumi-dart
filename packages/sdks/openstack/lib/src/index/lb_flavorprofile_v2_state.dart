@@ -27,15 +27,11 @@ class LbFlavorprofileV2State {
   /// [providerName] The provider_name that the flavor_profile will use.
   /// [region] The region in which to obtain the V2 Networking client.
   LbFlavorprofileV2State({
-    pulumi.Output<String>? flavorData,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? providerName,
-    pulumi.Output<String>? region,
-  }) :
-      flavorData = pulumi.Input.asOptionalInput<String>(flavorData),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      providerName = pulumi.Input.asOptionalInput<String>(providerName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.flavorData,
+    this.name,
+    this.providerName,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class LbFlavorprofileV2State {
 
   factory LbFlavorprofileV2State.fromMap(Map<String, dynamic> map) {
     return LbFlavorprofileV2State(
-      flavorData: map['flavorData'] == null ? null : pulumi.Output.create<String>(map['flavorData'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      providerName: map['providerName'] == null ? null : pulumi.Output.create<String>(map['providerName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      flavorData: map['flavorData'] == null ? null : (map['flavorData'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

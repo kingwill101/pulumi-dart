@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for notification
 class NotificationSettingsResponse {
   /// The list of additional recipients
-  final List<String>? additionalRecipients;
+  final pulumi.Input<List<String>>? additionalRecipients;
   /// Should domain controller admins be notified
-  final String? notifyDcAdmins;
+  final pulumi.Input<String>? notifyDcAdmins;
   /// Should global admins be notified
-  final String? notifyGlobalAdmins;
+  final pulumi.Input<String>? notifyGlobalAdmins;
 
   /// Creates a new [NotificationSettingsResponse].
   /// [additionalRecipients] The list of additional recipients
@@ -30,9 +31,9 @@ class NotificationSettingsResponse {
 
   factory NotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NotificationSettingsResponse(
-      additionalRecipients: map['additionalRecipients'] == null ? null : (map['additionalRecipients'] as List).cast<String>(),
-      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : map['notifyDcAdmins'] as String,
-      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : map['notifyGlobalAdmins'] as String,
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
+      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins'] as String).input(),
+      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins'] as String).input(),
     );
   }
 }

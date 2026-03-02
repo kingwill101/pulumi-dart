@@ -1,67 +1,68 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMigrationJobsJob {
   /// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
-  final bool dataInitialization;
+  final pulumi.Input<bool> dataInitialization;
   /// Whether to perform incremental data migration for migration types or synchronization values include:
-  final bool dataSynchronization;
+  final pulumi.Input<bool> dataSynchronization;
   /// The Migration object, in the format of JSON strings.
-  final String dbList;
+  final pulumi.Input<String> dbList;
   /// The name of migrate the database.
-  final String destinationEndpointDataBaseName;
+  final pulumi.Input<String> destinationEndpointDataBaseName;
   /// The type of destination database.
-  final String destinationEndpointEngineName;
+  final pulumi.Input<String> destinationEndpointEngineName;
   /// The ID of destination instance.
-  final String destinationEndpointInstanceId;
+  final pulumi.Input<String> destinationEndpointInstanceId;
   /// The type of destination instance.
-  final String destinationEndpointInstanceType;
+  final pulumi.Input<String> destinationEndpointInstanceType;
   /// The ip of source endpoint.
-  final String destinationEndpointIp;
+  final pulumi.Input<String> destinationEndpointIp;
   /// The SID of Oracle database.
-  final String destinationEndpointOracleSid;
+  final pulumi.Input<String> destinationEndpointOracleSid;
   /// The port of source endpoint.
-  final String destinationEndpointPort;
+  final pulumi.Input<String> destinationEndpointPort;
   /// The region of destination instance.
-  final String destinationEndpointRegion;
+  final pulumi.Input<String> destinationEndpointRegion;
   /// The username of database account.
-  final String destinationEndpointUserName;
+  final pulumi.Input<String> destinationEndpointUserName;
   /// The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
-  final String dtsInstanceId;
+  final pulumi.Input<String> dtsInstanceId;
   /// The ID of the Migration Job.
-  final String dtsJobId;
+  final pulumi.Input<String> dtsJobId;
   /// The name of synchronization job.
-  final String dtsJobName;
+  final pulumi.Input<String> dtsJobName;
   /// The ID of the Migration Job. Its value is same as `dts_job_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The payment type of the Migration Instance.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The name of migrate the database.
-  final String sourceEndpointDatabaseName;
+  final pulumi.Input<String> sourceEndpointDatabaseName;
   /// The type of source database.
-  final String sourceEndpointEngineName;
+  final pulumi.Input<String> sourceEndpointEngineName;
   /// The ID of source instance.
-  final String sourceEndpointInstanceId;
+  final pulumi.Input<String> sourceEndpointInstanceId;
   /// The type of source instance.
-  final String sourceEndpointInstanceType;
+  final pulumi.Input<String> sourceEndpointInstanceType;
   /// The ip of source endpoint.
-  final String sourceEndpointIp;
+  final pulumi.Input<String> sourceEndpointIp;
   /// The SID of Oracle database.
-  final String sourceEndpointOracleSid;
+  final pulumi.Input<String> sourceEndpointOracleSid;
   /// The Alibaba Cloud account ID to which the source instance belongs.
-  final String sourceEndpointOwnerId;
+  final pulumi.Input<String> sourceEndpointOwnerId;
   /// The port of source endpoint.
-  final String sourceEndpointPort;
+  final pulumi.Input<String> sourceEndpointPort;
   /// The region of source instance.
-  final String sourceEndpointRegion;
+  final pulumi.Input<String> sourceEndpointRegion;
   /// The name of the role configured for the cloud account to which the source instance belongs.
-  final String sourceEndpointRole;
+  final pulumi.Input<String> sourceEndpointRole;
   /// The username of database account.
-  final String sourceEndpointUserName;
+  final pulumi.Input<String> sourceEndpointUserName;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// Whether to perform a database table structure to migrate or initialization.
-  final bool structureInitialization;
+  final pulumi.Input<bool> structureInitialization;
 
   /// Creates a new [GetMigrationJobsJob].
   /// [dataInitialization] Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
@@ -164,36 +165,36 @@ class GetMigrationJobsJob {
 
   factory GetMigrationJobsJob.fromMap(Map<String, dynamic> map) {
     return GetMigrationJobsJob(
-      dataInitialization: map['dataInitialization'] as bool,
-      dataSynchronization: map['dataSynchronization'] as bool,
-      dbList: map['dbList'] as String,
-      destinationEndpointDataBaseName: map['destinationEndpointDataBaseName'] as String,
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] as String,
-      destinationEndpointInstanceId: map['destinationEndpointInstanceId'] as String,
-      destinationEndpointInstanceType: map['destinationEndpointInstanceType'] as String,
-      destinationEndpointIp: map['destinationEndpointIp'] as String,
-      destinationEndpointOracleSid: map['destinationEndpointOracleSid'] as String,
-      destinationEndpointPort: map['destinationEndpointPort'] as String,
-      destinationEndpointRegion: map['destinationEndpointRegion'] as String,
-      destinationEndpointUserName: map['destinationEndpointUserName'] as String,
-      dtsInstanceId: map['dtsInstanceId'] as String,
-      dtsJobId: map['dtsJobId'] as String,
-      dtsJobName: map['dtsJobName'] as String,
-      id: map['id'] as String,
-      paymentType: map['paymentType'] as String,
-      sourceEndpointDatabaseName: map['sourceEndpointDatabaseName'] as String,
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] as String,
-      sourceEndpointInstanceId: map['sourceEndpointInstanceId'] as String,
-      sourceEndpointInstanceType: map['sourceEndpointInstanceType'] as String,
-      sourceEndpointIp: map['sourceEndpointIp'] as String,
-      sourceEndpointOracleSid: map['sourceEndpointOracleSid'] as String,
-      sourceEndpointOwnerId: map['sourceEndpointOwnerId'] as String,
-      sourceEndpointPort: map['sourceEndpointPort'] as String,
-      sourceEndpointRegion: map['sourceEndpointRegion'] as String,
-      sourceEndpointRole: map['sourceEndpointRole'] as String,
-      sourceEndpointUserName: map['sourceEndpointUserName'] as String,
-      status: map['status'] as String,
-      structureInitialization: map['structureInitialization'] as bool,
+      dataInitialization: (map['dataInitialization'] as bool).input(),
+      dataSynchronization: (map['dataSynchronization'] as bool).input(),
+      dbList: (map['dbList'] as String).input(),
+      destinationEndpointDataBaseName: (map['destinationEndpointDataBaseName'] as String).input(),
+      destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
+      destinationEndpointInstanceId: (map['destinationEndpointInstanceId'] as String).input(),
+      destinationEndpointInstanceType: (map['destinationEndpointInstanceType'] as String).input(),
+      destinationEndpointIp: (map['destinationEndpointIp'] as String).input(),
+      destinationEndpointOracleSid: (map['destinationEndpointOracleSid'] as String).input(),
+      destinationEndpointPort: (map['destinationEndpointPort'] as String).input(),
+      destinationEndpointRegion: (map['destinationEndpointRegion'] as String).input(),
+      destinationEndpointUserName: (map['destinationEndpointUserName'] as String).input(),
+      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
+      dtsJobId: (map['dtsJobId'] as String).input(),
+      dtsJobName: (map['dtsJobName'] as String).input(),
+      id: (map['id'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      sourceEndpointDatabaseName: (map['sourceEndpointDatabaseName'] as String).input(),
+      sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
+      sourceEndpointInstanceId: (map['sourceEndpointInstanceId'] as String).input(),
+      sourceEndpointInstanceType: (map['sourceEndpointInstanceType'] as String).input(),
+      sourceEndpointIp: (map['sourceEndpointIp'] as String).input(),
+      sourceEndpointOracleSid: (map['sourceEndpointOracleSid'] as String).input(),
+      sourceEndpointOwnerId: (map['sourceEndpointOwnerId'] as String).input(),
+      sourceEndpointPort: (map['sourceEndpointPort'] as String).input(),
+      sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
+      sourceEndpointRole: (map['sourceEndpointRole'] as String).input(),
+      sourceEndpointUserName: (map['sourceEndpointUserName'] as String).input(),
+      status: (map['status'] as String).input(),
+      structureInitialization: (map['structureInitialization'] as bool).input(),
     );
   }
 }

@@ -30,21 +30,14 @@ class VpcEndpointConnectionNotificationState {
   /// [vpcEndpointId] The ID of the VPC Endpoint to receive notifications for.
   /// [vpcEndpointServiceId] The ID of the VPC Endpoint Service to receive notifications for.
   VpcEndpointConnectionNotificationState({
-    pulumi.Output<List<String>>? connectionEvents,
-    pulumi.Output<String>? connectionNotificationArn,
-    pulumi.Output<String>? notificationType,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? vpcEndpointId,
-    pulumi.Output<String>? vpcEndpointServiceId,
-  }) :
-      connectionEvents = pulumi.Input.asOptionalInput<List<String>>(connectionEvents),
-      connectionNotificationArn = pulumi.Input.asOptionalInput<String>(connectionNotificationArn),
-      notificationType = pulumi.Input.asOptionalInput<String>(notificationType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId),
-      vpcEndpointServiceId = pulumi.Input.asOptionalInput<String>(vpcEndpointServiceId);
+    this.connectionEvents,
+    this.connectionNotificationArn,
+    this.notificationType,
+    this.region,
+    this.state,
+    this.vpcEndpointId,
+    this.vpcEndpointServiceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class VpcEndpointConnectionNotificationState {
 
   factory VpcEndpointConnectionNotificationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionNotificationState(
-      connectionEvents: map['connectionEvents'] == null ? null : pulumi.Output.create<List<String>>((map['connectionEvents'] as List).cast<String>()),
-      connectionNotificationArn: map['connectionNotificationArn'] == null ? null : pulumi.Output.create<String>(map['connectionNotificationArn'] as String),
-      notificationType: map['notificationType'] == null ? null : pulumi.Output.create<String>(map['notificationType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointServiceId'] as String),
+      connectionEvents: map['connectionEvents'] == null ? null : ((map['connectionEvents'] as List).cast<String>()).input(),
+      connectionNotificationArn: map['connectionNotificationArn'] == null ? null : (map['connectionNotificationArn'] as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : (map['vpcEndpointServiceId'] as String).input(),
     );
   }
 }

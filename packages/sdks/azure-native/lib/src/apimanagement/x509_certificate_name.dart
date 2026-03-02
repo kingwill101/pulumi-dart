@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of server X509Names.
 class X509CertificateName {
   /// Thumbprint for the Issuer of the Certificate.
-  final String? issuerCertificateThumbprint;
+  final pulumi.Input<String>? issuerCertificateThumbprint;
   /// Common Name of the Certificate.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [X509CertificateName].
   /// [issuerCertificateThumbprint] Thumbprint for the Issuer of the Certificate.
@@ -25,8 +26,8 @@ class X509CertificateName {
 
   factory X509CertificateName.fromMap(Map<String, dynamic> map) {
     return X509CertificateName(
-      issuerCertificateThumbprint: map['issuerCertificateThumbprint'] == null ? null : map['issuerCertificateThumbprint'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      issuerCertificateThumbprint: map['issuerCertificateThumbprint'] == null ? null : (map['issuerCertificateThumbprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

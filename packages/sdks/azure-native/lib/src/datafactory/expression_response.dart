@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Azure Data Factory expression definition.
 class ExpressionResponse {
   /// Expression type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Expression value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ExpressionResponse].
   /// [type] Expression type.
@@ -25,8 +26,8 @@ class ExpressionResponse {
 
   factory ExpressionResponse.fromMap(Map<String, dynamic> map) {
     return ExpressionResponse(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

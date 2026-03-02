@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of properties for control public access.
 class PublicAccessPropertiesResponse {
   /// The allowed set of subnets when access is restricted.
-  final List<String>? allowedSubnets;
+  final pulumi.Input<List<String>>? allowedSubnets;
 
   /// Creates a new [PublicAccessPropertiesResponse].
   /// [allowedSubnets] The allowed set of subnets when access is restricted.
@@ -20,7 +21,7 @@ class PublicAccessPropertiesResponse {
 
   factory PublicAccessPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PublicAccessPropertiesResponse(
-      allowedSubnets: map['allowedSubnets'] == null ? null : (map['allowedSubnets'] as List).cast<String>(),
+      allowedSubnets: map['allowedSubnets'] == null ? null : ((map['allowedSubnets'] as List).cast<String>()).input(),
     );
   }
 }

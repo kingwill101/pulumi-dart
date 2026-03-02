@@ -22,15 +22,11 @@ class GetApiToolArgs {
   /// [serviceName] The name of the API Management service.
   /// [toolId] Tool identifier within an API. Must be unique in the current API Management service instance.
   GetApiToolArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> toolId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      toolId = pulumi.Input.asInput<String>(toolId);
+    required this.apiId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.toolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApiToolArgs {
 
   factory GetApiToolArgs.fromMap(Map<String, dynamic> map) {
     return GetApiToolArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      toolId: pulumi.Output.create<String>(map['toolId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      toolId: (map['toolId'] as String).input(),
     );
   }
 }

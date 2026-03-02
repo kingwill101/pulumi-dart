@@ -6,15 +6,15 @@ import 'load_balancer_backend_response.dart';
 /// For display only. Metadata associated with a load balancer.
 class LoadBalancerInfoResponse {
   /// Type of load balancer's backend configuration.
-  final String backendType;
+  final pulumi.Input<String> backendType;
   /// Backend configuration URI.
-  final String backendUri;
+  final pulumi.Input<String> backendUri;
   /// Information for the loadbalancer backends.
-  final List<LoadBalancerBackendResponse> backends;
+  final pulumi.Input<List<LoadBalancerBackendResponse>> backends;
   /// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
-  final String healthCheckUri;
+  final pulumi.Input<String> healthCheckUri;
   /// Type of the load balancer.
-  final String loadBalancerType;
+  final pulumi.Input<String> loadBalancerType;
 
   /// Creates a new [LoadBalancerInfoResponse].
   /// [backendType] Type of load balancer's backend configuration.
@@ -34,7 +34,7 @@ class LoadBalancerInfoResponse {
     return <String, dynamic>{
       'backendType': backendType,
       'backendUri': backendUri,
-      'backends': pulumi.Input.encodeList<LoadBalancerBackendResponse, Map<String, dynamic>>(backends, (value) => value.toMap()),
+      'backends': pulumi.Input.mapInputValue<List<LoadBalancerBackendResponse>, List<Map<String, dynamic>>>(backends, (value) => pulumi.Input.encodeList<LoadBalancerBackendResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'healthCheckUri': healthCheckUri,
       'loadBalancerType': loadBalancerType,
     };
@@ -42,11 +42,11 @@ class LoadBalancerInfoResponse {
 
   factory LoadBalancerInfoResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInfoResponse(
-      backendType: map['backendType'] as String,
-      backendUri: map['backendUri'] as String,
-      backends: pulumi.Input.decodeList<LoadBalancerBackendResponse>(map['backends'], (value) => LoadBalancerBackendResponse.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckUri: map['healthCheckUri'] as String,
-      loadBalancerType: map['loadBalancerType'] as String,
+      backendType: (map['backendType'] as String).input(),
+      backendUri: (map['backendUri'] as String).input(),
+      backends: (pulumi.Input.decodeList<LoadBalancerBackendResponse>(map['backends'], (value) => LoadBalancerBackendResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthCheckUri: (map['healthCheckUri'] as String).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
     );
   }
 }

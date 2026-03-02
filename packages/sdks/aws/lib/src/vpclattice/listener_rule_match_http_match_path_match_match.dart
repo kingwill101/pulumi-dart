@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleMatchHttpMatchPathMatchMatch {
   /// Specifies an exact type match.
-  final String? exact;
+  final pulumi.Input<String>? exact;
   /// Specifies a prefix type match.
   /// Matches the value with the prefix.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatchMatch].
   /// [exact] Specifies an exact type match.
@@ -25,8 +26,8 @@ class ListenerRuleMatchHttpMatchPathMatchMatch {
 
   factory ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchPathMatchMatch(
-      exact: map['exact'] == null ? null : map['exact'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

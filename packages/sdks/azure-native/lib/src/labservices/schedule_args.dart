@@ -35,23 +35,15 @@ class ScheduleArgs {
   /// [stopAt] When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
   /// [timeZoneId] The IANA timezone id for the schedule.
   ScheduleArgs({
-    required pulumi.Output<String> labName,
-    pulumi.Output<String>? notes,
-    pulumi.Output<RecurrencePattern>? recurrencePattern,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? scheduleName,
-    pulumi.Output<String>? startAt,
-    required pulumi.Output<String> stopAt,
-    required pulumi.Output<String> timeZoneId,
-  }) :
-      labName = pulumi.Input.asInput<String>(labName),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      recurrencePattern = pulumi.Input.asOptionalInput<RecurrencePattern>(recurrencePattern),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      scheduleName = pulumi.Input.asOptionalInput<String>(scheduleName),
-      startAt = pulumi.Input.asOptionalInput<String>(startAt),
-      stopAt = pulumi.Input.asInput<String>(stopAt),
-      timeZoneId = pulumi.Input.asInput<String>(timeZoneId);
+    required this.labName,
+    this.notes,
+    this.recurrencePattern,
+    required this.resourceGroupName,
+    this.scheduleName,
+    this.startAt,
+    required this.stopAt,
+    required this.timeZoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      recurrencePattern: map['recurrencePattern'] == null ? null : pulumi.Output.create<RecurrencePattern>(RecurrencePattern.fromMap((map['recurrencePattern'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      scheduleName: map['scheduleName'] == null ? null : pulumi.Output.create<String>(map['scheduleName'] as String),
-      startAt: map['startAt'] == null ? null : pulumi.Output.create<String>(map['startAt'] as String),
-      stopAt: pulumi.Output.create<String>(map['stopAt'] as String),
-      timeZoneId: pulumi.Output.create<String>(map['timeZoneId'] as String),
+      labName: (map['labName'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      recurrencePattern: map['recurrencePattern'] == null ? null : (RecurrencePattern.fromMap((map['recurrencePattern'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
+      stopAt: (map['stopAt'] as String).input(),
+      timeZoneId: (map['timeZoneId'] as String).input(),
     );
   }
 }

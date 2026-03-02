@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of an Arc addon
 class AddonArcPropertiesResponse {
   /// Addon type
   /// Expected value is 'Arc'.
-  final String addonType;
+  final pulumi.Input<String> addonType;
   /// The state of the addon provisioning
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The VMware vCenter resource ID
-  final String? vCenter;
+  final pulumi.Input<String>? vCenter;
 
   /// Creates a new [AddonArcPropertiesResponse].
   /// [addonType] Addon type
@@ -31,9 +32,9 @@ class AddonArcPropertiesResponse {
 
   factory AddonArcPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AddonArcPropertiesResponse(
-      addonType: map['addonType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      vCenter: map['vCenter'] == null ? null : map['vCenter'] as String,
+      addonType: (map['addonType'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      vCenter: map['vCenter'] == null ? null : (map['vCenter'] as String).input(),
     );
   }
 }

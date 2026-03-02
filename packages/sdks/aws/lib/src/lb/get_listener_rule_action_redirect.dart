@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenerRuleActionRedirect {
   /// The hostname.
-  final String host;
+  final pulumi.Input<String> host;
   /// The absolute path, starting with `/`.
-  final String path;
+  final pulumi.Input<String> path;
   /// The port.
-  final String port;
+  final pulumi.Input<String> port;
   /// The protocol.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The query parameters.
-  final String query;
+  final pulumi.Input<String> query;
   /// The HTTP redirect code.
-  final String statusCode;
+  final pulumi.Input<String> statusCode;
 
   /// Creates a new [GetListenerRuleActionRedirect].
   /// [host] The hostname.
@@ -44,12 +45,12 @@ class GetListenerRuleActionRedirect {
 
   factory GetListenerRuleActionRedirect.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionRedirect(
-      host: map['host'] as String,
-      path: map['path'] as String,
-      port: map['port'] as String,
-      protocol: map['protocol'] as String,
-      query: map['query'] as String,
-      statusCode: map['statusCode'] as String,
+      host: (map['host'] as String).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      query: (map['query'] as String).input(),
+      statusCode: (map['statusCode'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class EndpointAddressArgs {
   /// [netType] Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
   /// [port] Port of the specified endpoint. Valid values: 3000 to 5999.
   EndpointAddressArgs({
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> dbClusterId,
-    required pulumi.Output<String> dbEndpointId,
-    pulumi.Output<String>? netType,
-    pulumi.Output<String>? port,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbEndpointId = pulumi.Input.asInput<String>(dbEndpointId),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionPrefix,
+    required this.dbClusterId,
+    required this.dbEndpointId,
+    this.netType,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EndpointAddressArgs {
 
   factory EndpointAddressArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAddressArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointId: pulumi.Output.create<String>(map['dbEndpointId'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbEndpointId: (map['dbEndpointId'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

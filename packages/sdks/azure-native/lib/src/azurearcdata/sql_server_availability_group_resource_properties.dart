@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'availability_group_info.dart';
 import 'sql_server_availability_group_resource_properties_databases.dart';
 import 'sql_server_availability_group_resource_properties_replicas.dart';
@@ -7,11 +8,11 @@ import 'sql_server_availability_group_resource_properties_replicas.dart';
 /// The properties of Arc Sql Server availability group resource
 class SqlServerAvailabilityGroupResourceProperties {
   /// A list of Availability Group Database Replicas.
-  final SqlServerAvailabilityGroupResourcePropertiesDatabases? databases;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabases>? databases;
   /// Availability Group Info
-  final AvailabilityGroupInfo? info;
+  final pulumi.Input<AvailabilityGroupInfo>? info;
   /// A list of Availability Group Replicas.
-  final SqlServerAvailabilityGroupResourcePropertiesReplicas? replicas;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicas>? replicas;
 
   /// Creates a new [SqlServerAvailabilityGroupResourceProperties].
   /// [databases] A list of Availability Group Database Replicas.
@@ -25,17 +26,17 @@ class SqlServerAvailabilityGroupResourceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': ?databases == null ? null : databases!.toMap(),
-      'info': ?info == null ? null : info!.toMap(),
-      'replicas': ?replicas == null ? null : replicas!.toMap(),
+      'databases': ?pulumi.Input.mapOptionalInputValue<SqlServerAvailabilityGroupResourcePropertiesDatabases, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'info': ?pulumi.Input.mapOptionalInputValue<AvailabilityGroupInfo, Map<String, dynamic>>(info, (value) => value.toMap()),
+      'replicas': ?pulumi.Input.mapOptionalInputValue<SqlServerAvailabilityGroupResourcePropertiesReplicas, Map<String, dynamic>>(replicas, (value) => value.toMap()),
     };
   }
 
   factory SqlServerAvailabilityGroupResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupResourceProperties(
-      databases: map['databases'] == null ? null : SqlServerAvailabilityGroupResourcePropertiesDatabases.fromMap((map['databases'] as Map).cast<String, dynamic>()),
-      info: map['info'] == null ? null : AvailabilityGroupInfo.fromMap((map['info'] as Map).cast<String, dynamic>()),
-      replicas: map['replicas'] == null ? null : SqlServerAvailabilityGroupResourcePropertiesReplicas.fromMap((map['replicas'] as Map).cast<String, dynamic>()),
+      databases: map['databases'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesDatabases.fromMap((map['databases'] as Map).cast<String, dynamic>())).input(),
+      info: map['info'] == null ? null : (AvailabilityGroupInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesReplicas.fromMap((map['replicas'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

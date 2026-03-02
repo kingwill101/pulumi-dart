@@ -16,11 +16,9 @@ class GetNodebalancerVpcArgs {
   /// [id] The ID of the VPC configuration.
   /// [nodebalancerId] The ID of the parent NodeBalancer of the VPC configuration.
   GetNodebalancerVpcArgs({
-    required pulumi.Output<int> id,
-    required pulumi.Output<int> nodebalancerId,
-  }) :
-      id = pulumi.Input.asInput<int>(id),
-      nodebalancerId = pulumi.Input.asInput<int>(nodebalancerId);
+    required this.id,
+    required this.nodebalancerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNodebalancerVpcArgs {
 
   factory GetNodebalancerVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerVpcArgs(
-      id: pulumi.Output.create<int>(map['id'] as int),
-      nodebalancerId: pulumi.Output.create<int>(map['nodebalancerId'] as int),
+      id: (map['id'] as int).input(),
+      nodebalancerId: (map['nodebalancerId'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkManagedServiceStsAccess {
-  final String domainName;
-  final List<String> ipv4Addresses;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<List<String>> ipv4Addresses;
   /// The status of the network resource.
-  final String status;
-  final String stsPolicyDocument;
+  final pulumi.Input<String> status;
+  final pulumi.Input<String> stsPolicyDocument;
 
   /// Creates a new [GetNetworkManagedServiceStsAccess].
   /// [domainName] Required.
@@ -31,10 +32,10 @@ class GetNetworkManagedServiceStsAccess {
 
   factory GetNetworkManagedServiceStsAccess.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagedServiceStsAccess(
-      domainName: map['domainName'] as String,
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      status: map['status'] as String,
-      stsPolicyDocument: map['stsPolicyDocument'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      stsPolicyDocument: (map['stsPolicyDocument'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainAdvancedSecurityOption {
   /// Whether node to node encryption is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Whether the internal user database is enabled.
-  final bool internalUserDatabaseEnabled;
+  final pulumi.Input<bool> internalUserDatabaseEnabled;
 
   /// Creates a new [GetDomainAdvancedSecurityOption].
   /// [enabled] Whether node to node encryption is enabled.
@@ -24,8 +25,8 @@ class GetDomainAdvancedSecurityOption {
 
   factory GetDomainAdvancedSecurityOption.fromMap(Map<String, dynamic> map) {
     return GetDomainAdvancedSecurityOption(
-      enabled: map['enabled'] as bool,
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
+      internalUserDatabaseEnabled: (map['internalUserDatabaseEnabled'] as bool).input(),
     );
   }
 }

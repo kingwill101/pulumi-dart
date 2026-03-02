@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Notebook parameter.
 class NotebookParameter {
   /// Notebook parameter type.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Notebook parameter value. Type: string (or Expression with resultType string).
-  final dynamic value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [NotebookParameter].
   /// [type] Notebook parameter type.
@@ -25,8 +26,8 @@ class NotebookParameter {
 
   factory NotebookParameter.fromMap(Map<String, dynamic> map) {
     return NotebookParameter(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'],
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value']).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationApiOauth2PermissionScope {
   /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-  final String adminConsentDescription;
+  final pulumi.Input<String> adminConsentDescription;
   /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-  final String adminConsentDisplayName;
+  final pulumi.Input<String> adminConsentDisplayName;
   /// Determines if the app role is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
-  final String type;
+  final pulumi.Input<String> type;
   /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-  final String userConsentDescription;
+  final pulumi.Input<String> userConsentDescription;
   /// Display name for the delegated permission that appears in the end user consent experience.
-  final String userConsentDisplayName;
+  final pulumi.Input<String> userConsentDisplayName;
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetApplicationApiOauth2PermissionScope].
   /// [adminConsentDescription] Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -54,14 +55,14 @@ class GetApplicationApiOauth2PermissionScope {
 
   factory GetApplicationApiOauth2PermissionScope.fromMap(Map<String, dynamic> map) {
     return GetApplicationApiOauth2PermissionScope(
-      adminConsentDescription: map['adminConsentDescription'] as String,
-      adminConsentDisplayName: map['adminConsentDisplayName'] as String,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      type: map['type'] as String,
-      userConsentDescription: map['userConsentDescription'] as String,
-      userConsentDisplayName: map['userConsentDisplayName'] as String,
-      value: map['value'] as String,
+      adminConsentDescription: (map['adminConsentDescription'] as String).input(),
+      adminConsentDisplayName: (map['adminConsentDisplayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
+      userConsentDescription: (map['userConsentDescription'] as String).input(),
+      userConsentDisplayName: (map['userConsentDisplayName'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

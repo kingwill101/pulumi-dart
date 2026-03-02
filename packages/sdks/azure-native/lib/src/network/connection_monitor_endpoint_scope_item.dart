@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the connection monitor endpoint scope item.
 class ConnectionMonitorEndpointScopeItem {
   /// The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address.
-  final String? address;
+  final pulumi.Input<String>? address;
 
   /// Creates a new [ConnectionMonitorEndpointScopeItem].
   /// [address] The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address.
@@ -20,7 +21,7 @@ class ConnectionMonitorEndpointScopeItem {
 
   factory ConnectionMonitorEndpointScopeItem.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointScopeItem(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
     );
   }
 }

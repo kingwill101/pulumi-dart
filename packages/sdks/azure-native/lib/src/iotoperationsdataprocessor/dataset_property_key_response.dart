@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Key that can be used for joining on enrich.
 class DatasetPropertyKeyResponse {
   /// Path to the input value from the message.
-  final String path;
+  final pulumi.Input<String> path;
   /// If true the property will be used as a primary key. At most one primary key can exists.
-  final bool? primaryKey;
+  final pulumi.Input<bool>? primaryKey;
 
   /// Creates a new [DatasetPropertyKeyResponse].
   /// [path] Path to the input value from the message.
@@ -25,8 +26,8 @@ class DatasetPropertyKeyResponse {
 
   factory DatasetPropertyKeyResponse.fromMap(Map<String, dynamic> map) {
     return DatasetPropertyKeyResponse(
-      path: map['path'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as bool,
+      path: (map['path'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
     );
   }
 }

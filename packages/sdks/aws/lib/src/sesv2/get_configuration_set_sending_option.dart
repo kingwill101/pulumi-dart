@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetSendingOption {
   /// Specifies whether email sending is enabled.
-  final bool sendingEnabled;
+  final pulumi.Input<bool> sendingEnabled;
 
   /// Creates a new [GetConfigurationSetSendingOption].
   /// [sendingEnabled] Specifies whether email sending is enabled.
@@ -19,7 +20,7 @@ class GetConfigurationSetSendingOption {
 
   factory GetConfigurationSetSendingOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetSendingOption(
-      sendingEnabled: map['sendingEnabled'] as bool,
+      sendingEnabled: (map['sendingEnabled'] as bool).input(),
     );
   }
 }

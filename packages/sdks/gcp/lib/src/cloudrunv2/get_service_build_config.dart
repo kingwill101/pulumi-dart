@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceBuildConfig {
   /// The base image used to build the function.
-  final String baseImage;
+  final pulumi.Input<String> baseImage;
   /// Sets whether the function will receive automatic base image updates.
-  final bool enableAutomaticUpdates;
+  final pulumi.Input<bool> enableAutomaticUpdates;
   /// User-provided build-time environment variables for the function.
-  final Map<String, String> environmentVariables;
+  final pulumi.Input<Map<String, String>> environmentVariables;
   /// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
-  final String functionTarget;
+  final pulumi.Input<String> functionTarget;
   /// Artifact Registry URI to store the built image.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
   /// The name of the Cloud Run v2 Service.
-  final String name;
+  final pulumi.Input<String> name;
   /// Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
   /// The Cloud Storage bucket URI where the function source code is located.
-  final String sourceLocation;
+  final pulumi.Input<String> sourceLocation;
   /// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
-  final String workerPool;
+  final pulumi.Input<String> workerPool;
 
   /// Creates a new [GetServiceBuildConfig].
   /// [baseImage] The base image used to build the function.
@@ -59,15 +60,15 @@ class GetServiceBuildConfig {
 
   factory GetServiceBuildConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceBuildConfig(
-      baseImage: map['baseImage'] as String,
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] as bool,
-      environmentVariables: (map['environmentVariables'] as Map).cast<String, String>(),
-      functionTarget: map['functionTarget'] as String,
-      imageUri: map['imageUri'] as String,
-      name: map['name'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      sourceLocation: map['sourceLocation'] as String,
-      workerPool: map['workerPool'] as String,
+      baseImage: (map['baseImage'] as String).input(),
+      enableAutomaticUpdates: (map['enableAutomaticUpdates'] as bool).input(),
+      environmentVariables: ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      functionTarget: (map['functionTarget'] as String).input(),
+      imageUri: (map['imageUri'] as String).input(),
+      name: (map['name'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      sourceLocation: (map['sourceLocation'] as String).input(),
+      workerPool: (map['workerPool'] as String).input(),
     );
   }
 }

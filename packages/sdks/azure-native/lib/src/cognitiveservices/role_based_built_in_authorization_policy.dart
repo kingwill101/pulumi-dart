@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Built-in role-based authorization policy.
 class RoleBasedBuiltInAuthorizationPolicy {
   /// Authorization scheme type.
   /// Expected value is 'Default'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RoleBasedBuiltInAuthorizationPolicy].
   /// [type] Authorization scheme type.
@@ -21,7 +22,7 @@ class RoleBasedBuiltInAuthorizationPolicy {
 
   factory RoleBasedBuiltInAuthorizationPolicy.fromMap(Map<String, dynamic> map) {
     return RoleBasedBuiltInAuthorizationPolicy(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

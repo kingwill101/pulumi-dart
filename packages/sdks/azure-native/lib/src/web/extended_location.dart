@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Extended Location.
 class ExtendedLocation {
   /// Name of extended location.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ExtendedLocation].
   /// [name] Name of extended location.
@@ -20,7 +21,7 @@ class ExtendedLocation {
 
   factory ExtendedLocation.fromMap(Map<String, dynamic> map) {
     return ExtendedLocation(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

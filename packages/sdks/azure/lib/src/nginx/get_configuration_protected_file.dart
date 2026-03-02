@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationProtectedFile {
   /// The base-64 encoded contents of this configuration file.
-  final String content;
+  final pulumi.Input<String> content;
   /// The hash of the contents of this configuration file prefixed by the algorithm used.
-  final String contentHash;
+  final pulumi.Input<String> contentHash;
   /// The path of this configuration file.
-  final String virtualPath;
+  final pulumi.Input<String> virtualPath;
 
   /// Creates a new [GetConfigurationProtectedFile].
   /// [content] The base-64 encoded contents of this configuration file.
@@ -29,9 +30,9 @@ class GetConfigurationProtectedFile {
 
   factory GetConfigurationProtectedFile.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProtectedFile(
-      content: map['content'] as String,
-      contentHash: map['contentHash'] as String,
-      virtualPath: map['virtualPath'] as String,
+      content: (map['content'] as String).input(),
+      contentHash: (map['contentHash'] as String).input(),
+      virtualPath: (map['virtualPath'] as String).input(),
     );
   }
 }

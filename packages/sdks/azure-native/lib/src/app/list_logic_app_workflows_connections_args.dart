@@ -19,13 +19,10 @@ class ListLogicAppWorkflowsConnectionsArgs {
   /// [logicAppName] Name of the Logic App, the extension resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListLogicAppWorkflowsConnectionsArgs({
-    required pulumi.Output<String> containerAppName,
-    required pulumi.Output<String> logicAppName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      logicAppName = pulumi.Input.asInput<String>(logicAppName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.containerAppName,
+    required this.logicAppName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListLogicAppWorkflowsConnectionsArgs {
 
   factory ListLogicAppWorkflowsConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ListLogicAppWorkflowsConnectionsArgs(
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      logicAppName: pulumi.Output.create<String>(map['logicAppName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      containerAppName: (map['containerAppName'] as String).input(),
+      logicAppName: (map['logicAppName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetAndroidMAMPolicyByNameArgs {
   /// [policyName] Unique name for the policy
   /// [select] select specific fields in entity.
   GetAndroidMAMPolicyByNameArgs({
-    required pulumi.Output<String> hostName,
-    required pulumi.Output<String> policyName,
-    pulumi.Output<String>? select,
-  }) :
-      hostName = pulumi.Input.asInput<String>(hostName),
-      policyName = pulumi.Input.asInput<String>(policyName),
-      select = pulumi.Input.asOptionalInput<String>(select);
+    required this.hostName,
+    required this.policyName,
+    this.select,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAndroidMAMPolicyByNameArgs {
 
   factory GetAndroidMAMPolicyByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetAndroidMAMPolicyByNameArgs(
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      select: map['select'] == null ? null : pulumi.Output.create<String>(map['select'] as String),
+      hostName: (map['hostName'] as String).input(),
+      policyName: (map['policyName'] as String).input(),
+      select: map['select'] == null ? null : (map['select'] as String).input(),
     );
   }
 }

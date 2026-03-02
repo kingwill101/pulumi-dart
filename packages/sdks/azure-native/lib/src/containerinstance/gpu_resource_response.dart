@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The GPU resource.
 class GpuResourceResponse {
   /// The count of the GPU resource.
-  final int count;
+  final pulumi.Input<int> count;
   /// The SKU of the GPU resource.
-  final String sku;
+  final pulumi.Input<String> sku;
 
   /// Creates a new [GpuResourceResponse].
   /// [count] The count of the GPU resource.
@@ -25,8 +26,8 @@ class GpuResourceResponse {
 
   factory GpuResourceResponse.fromMap(Map<String, dynamic> map) {
     return GpuResourceResponse(
-      count: map['count'] as int,
-      sku: map['sku'] as String,
+      count: (map['count'] as int).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

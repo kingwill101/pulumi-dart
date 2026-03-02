@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'referenced_resource.dart';
 
 /// The AzureArcK8sCluster NFVI detail.
 class AzureArcK8sClusterNFVIDetails {
   /// The reference to the custom location.
-  final ReferencedResource? customLocationReference;
+  final pulumi.Input<ReferencedResource>? customLocationReference;
   /// Name of the nfvi.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The NFVI type.
   /// Expected value is 'AzureArcKubernetes'.
-  final String nfviType;
+  final pulumi.Input<String> nfviType;
 
   /// Creates a new [AzureArcK8sClusterNFVIDetails].
   /// [customLocationReference] The reference to the custom location.
@@ -24,7 +25,7 @@ class AzureArcK8sClusterNFVIDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customLocationReference': ?customLocationReference == null ? null : customLocationReference!.toMap(),
+      'customLocationReference': ?pulumi.Input.mapOptionalInputValue<ReferencedResource, Map<String, dynamic>>(customLocationReference, (value) => value.toMap()),
       'name': ?name,
       'nfviType': nfviType,
     };
@@ -32,9 +33,9 @@ class AzureArcK8sClusterNFVIDetails {
 
   factory AzureArcK8sClusterNFVIDetails.fromMap(Map<String, dynamic> map) {
     return AzureArcK8sClusterNFVIDetails(
-      customLocationReference: map['customLocationReference'] == null ? null : ReferencedResource.fromMap((map['customLocationReference'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      nfviType: map['nfviType'] as String,
+      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResource.fromMap((map['customLocationReference'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nfviType: (map['nfviType'] as String).input(),
     );
   }
 }

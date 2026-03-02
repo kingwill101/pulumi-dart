@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPermissionPermission {
   /// Whether the grant object is a RAM role.
-  final bool? isCustom;
+  final pulumi.Input<bool>? isCustom;
   /// Whether the grant object is an entity.
-  final bool? isRamRole;
+  final pulumi.Input<bool>? isRamRole;
   /// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
   /// - `istio-admin`:  The administrator.
   /// - `istio-ops`: The administrator of the service mesh resource.
   /// - `istio-readonly`: The read only permission.
-  final String? roleName;
+  final pulumi.Input<String>? roleName;
   /// The role type. Valid Value: `custom`.
-  final String? roleType;
+  final pulumi.Input<String>? roleType;
   /// The service mesh id.
-  final String? serviceMeshId;
+  final pulumi.Input<String>? serviceMeshId;
 
   /// Creates a new [UserPermissionPermission].
   /// [isCustom] Whether the grant object is a RAM role.
@@ -42,11 +43,11 @@ class UserPermissionPermission {
 
   factory UserPermissionPermission.fromMap(Map<String, dynamic> map) {
     return UserPermissionPermission(
-      isCustom: map['isCustom'] == null ? null : map['isCustom'] as bool,
-      isRamRole: map['isRamRole'] == null ? null : map['isRamRole'] as bool,
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      roleType: map['roleType'] == null ? null : map['roleType'] as String,
-      serviceMeshId: map['serviceMeshId'] == null ? null : map['serviceMeshId'] as String,
+      isCustom: map['isCustom'] == null ? null : (map['isCustom'] as bool).input(),
+      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole'] as bool).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId'] as String).input(),
     );
   }
 }

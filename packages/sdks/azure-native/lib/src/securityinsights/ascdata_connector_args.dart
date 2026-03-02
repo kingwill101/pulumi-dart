@@ -30,19 +30,13 @@ class ASCDataConnectorArgs {
   /// [subscriptionId] The subscription id to connect to, and get the data from.
   /// [workspaceName] The name of the workspace.
   ASCDataConnectorArgs({
-    pulumi.Output<String>? dataConnectorId,
-    pulumi.Output<AlertsDataTypeOfDataConnector>? dataTypes,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? subscriptionId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      dataConnectorId = pulumi.Input.asOptionalInput<String>(dataConnectorId),
-      dataTypes = pulumi.Input.asOptionalInput<AlertsDataTypeOfDataConnector>(dataTypes),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.dataConnectorId,
+    this.dataTypes,
+    required this.kind,
+    required this.resourceGroupName,
+    this.subscriptionId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ASCDataConnectorArgs {
 
   factory ASCDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ASCDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : pulumi.Output.create<String>(map['dataConnectorId'] as String),
-      dataTypes: map['dataTypes'] == null ? null : pulumi.Output.create<AlertsDataTypeOfDataConnector>(AlertsDataTypeOfDataConnector.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : (AlertsDataTypeOfDataConnector.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

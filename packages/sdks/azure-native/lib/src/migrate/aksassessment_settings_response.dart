@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'perf_data_settings_response.dart';
 
 /// Data model of AKS Assessment Settings.
 class AKSAssessmentSettingsResponse {
   /// Gets or sets azure location.
-  final String azureLocation;
+  final pulumi.Input<String> azureLocation;
   /// Gets or sets azure VM category.
-  final String category;
+  final pulumi.Input<String> category;
   /// Gets or sets consolidation type.
-  final String consolidation;
+  final pulumi.Input<String> consolidation;
   /// Gets or sets currency.
-  final String currency;
+  final pulumi.Input<String> currency;
   /// Gets or sets discount percentage.
-  final double? discountPercentage;
+  final pulumi.Input<double>? discountPercentage;
   /// Gets or sets environment type.
-  final String environmentType;
+  final pulumi.Input<String> environmentType;
   /// Gets or sets licensing program.
-  final String licensingProgram;
+  final pulumi.Input<String> licensingProgram;
   /// Gets or sets performance data settings.
-  final PerfDataSettingsResponse? performanceData;
+  final pulumi.Input<PerfDataSettingsResponse>? performanceData;
   /// Gets or sets pricing tier.
-  final String pricingTier;
+  final pulumi.Input<String> pricingTier;
   /// Gets or sets savings options.
-  final String savingsOptions;
+  final pulumi.Input<String> savingsOptions;
   /// Gets or sets scaling factor.
-  final double? scalingFactor;
+  final pulumi.Input<double>? scalingFactor;
   /// Gets or sets sizing criteria.
-  final String sizingCriteria;
+  final pulumi.Input<String> sizingCriteria;
 
   /// Creates a new [AKSAssessmentSettingsResponse].
   /// [azureLocation] Gets or sets azure location.
@@ -66,7 +67,7 @@ class AKSAssessmentSettingsResponse {
       'discountPercentage': ?discountPercentage,
       'environmentType': environmentType,
       'licensingProgram': licensingProgram,
-      'performanceData': ?performanceData == null ? null : performanceData!.toMap(),
+      'performanceData': ?pulumi.Input.mapOptionalInputValue<PerfDataSettingsResponse, Map<String, dynamic>>(performanceData, (value) => value.toMap()),
       'pricingTier': pricingTier,
       'savingsOptions': savingsOptions,
       'scalingFactor': ?scalingFactor,
@@ -76,18 +77,18 @@ class AKSAssessmentSettingsResponse {
 
   factory AKSAssessmentSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AKSAssessmentSettingsResponse(
-      azureLocation: map['azureLocation'] as String,
-      category: map['category'] as String,
-      consolidation: map['consolidation'] as String,
-      currency: map['currency'] as String,
-      discountPercentage: map['discountPercentage'] == null ? null : map['discountPercentage'] as double,
-      environmentType: map['environmentType'] as String,
-      licensingProgram: map['licensingProgram'] as String,
-      performanceData: map['performanceData'] == null ? null : PerfDataSettingsResponse.fromMap((map['performanceData'] as Map).cast<String, dynamic>()),
-      pricingTier: map['pricingTier'] as String,
-      savingsOptions: map['savingsOptions'] as String,
-      scalingFactor: map['scalingFactor'] == null ? null : map['scalingFactor'] as double,
-      sizingCriteria: map['sizingCriteria'] as String,
+      azureLocation: (map['azureLocation'] as String).input(),
+      category: (map['category'] as String).input(),
+      consolidation: (map['consolidation'] as String).input(),
+      currency: (map['currency'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      environmentType: (map['environmentType'] as String).input(),
+      licensingProgram: (map['licensingProgram'] as String).input(),
+      performanceData: map['performanceData'] == null ? null : (PerfDataSettingsResponse.fromMap((map['performanceData'] as Map).cast<String, dynamic>())).input(),
+      pricingTier: (map['pricingTier'] as String).input(),
+      savingsOptions: (map['savingsOptions'] as String).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      sizingCriteria: (map['sizingCriteria'] as String).input(),
     );
   }
 }

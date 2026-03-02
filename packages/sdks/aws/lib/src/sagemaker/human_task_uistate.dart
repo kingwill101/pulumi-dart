@@ -26,19 +26,13 @@ class HumanTaskUIState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uiTemplate] The Liquid template for the worker user interface. See UI Template below.
   HumanTaskUIState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? humanTaskUiName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<HumanTaskUIUiTemplate>? uiTemplate,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      humanTaskUiName = pulumi.Input.asOptionalInput<String>(humanTaskUiName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      uiTemplate = pulumi.Input.asOptionalInput<HumanTaskUIUiTemplate>(uiTemplate);
+    this.arn,
+    this.humanTaskUiName,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.uiTemplate,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class HumanTaskUIState {
 
   factory HumanTaskUIState.fromMap(Map<String, dynamic> map) {
     return HumanTaskUIState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      humanTaskUiName: map['humanTaskUiName'] == null ? null : pulumi.Output.create<String>(map['humanTaskUiName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      uiTemplate: map['uiTemplate'] == null ? null : pulumi.Output.create<HumanTaskUIUiTemplate>(HumanTaskUIUiTemplate.fromMap((map['uiTemplate'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      humanTaskUiName: map['humanTaskUiName'] == null ? null : (map['humanTaskUiName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      uiTemplate: map['uiTemplate'] == null ? null : (HumanTaskUIUiTemplate.fromMap((map['uiTemplate'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

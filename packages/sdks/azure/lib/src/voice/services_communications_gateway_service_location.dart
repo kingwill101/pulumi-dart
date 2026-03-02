@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicesCommunicationsGatewayServiceLocation {
   /// Specifies the allowed source IP address or CIDR ranges for media.
-  final List<String>? allowedMediaSourceAddressPrefixes;
+  final pulumi.Input<List<String>>? allowedMediaSourceAddressPrefixes;
   /// Specifies the allowed source IP address or CIDR ranges for signaling.
-  final List<String>? allowedSignalingSourceAddressPrefixes;
+  final pulumi.Input<List<String>>? allowedSignalingSourceAddressPrefixes;
   /// IP address to use to contact the ESRP from this region.
   ///
   /// !> **Note:** The `esrp_addresses` must be specified for each `service_location` when the`e911_type` is set to `DirectToEsrp`.  The `esrp_addresses` must not be specified for each `service_location` when the`e911_type` is set to `Standard`.
-  final List<String>? esrpAddresses;
+  final pulumi.Input<List<String>>? esrpAddresses;
   /// Specifies the region in which the resources needed for Teams Calling will be deployed.
-  final String location;
+  final pulumi.Input<String> location;
   /// IP address to use to contact the operator network from this region.
-  final List<String> operatorAddresses;
+  final pulumi.Input<List<String>> operatorAddresses;
 
   /// Creates a new [ServicesCommunicationsGatewayServiceLocation].
   /// [allowedMediaSourceAddressPrefixes] Specifies the allowed source IP address or CIDR ranges for media.
@@ -41,11 +42,11 @@ class ServicesCommunicationsGatewayServiceLocation {
 
   factory ServicesCommunicationsGatewayServiceLocation.fromMap(Map<String, dynamic> map) {
     return ServicesCommunicationsGatewayServiceLocation(
-      allowedMediaSourceAddressPrefixes: map['allowedMediaSourceAddressPrefixes'] == null ? null : (map['allowedMediaSourceAddressPrefixes'] as List).cast<String>(),
-      allowedSignalingSourceAddressPrefixes: map['allowedSignalingSourceAddressPrefixes'] == null ? null : (map['allowedSignalingSourceAddressPrefixes'] as List).cast<String>(),
-      esrpAddresses: map['esrpAddresses'] == null ? null : (map['esrpAddresses'] as List).cast<String>(),
-      location: map['location'] as String,
-      operatorAddresses: (map['operatorAddresses'] as List).cast<String>(),
+      allowedMediaSourceAddressPrefixes: map['allowedMediaSourceAddressPrefixes'] == null ? null : ((map['allowedMediaSourceAddressPrefixes'] as List).cast<String>()).input(),
+      allowedSignalingSourceAddressPrefixes: map['allowedSignalingSourceAddressPrefixes'] == null ? null : ((map['allowedSignalingSourceAddressPrefixes'] as List).cast<String>()).input(),
+      esrpAddresses: map['esrpAddresses'] == null ? null : ((map['esrpAddresses'] as List).cast<String>()).input(),
+      location: (map['location'] as String).input(),
+      operatorAddresses: ((map['operatorAddresses'] as List).cast<String>()).input(),
     );
   }
 }

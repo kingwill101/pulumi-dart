@@ -22,15 +22,11 @@ class GetGalleryArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [select] The select expression to apply on the operation.
   GetGalleryArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? select,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      select = pulumi.Input.asOptionalInput<String>(select);
+    this.expand,
+    required this.galleryName,
+    required this.resourceGroupName,
+    this.select,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetGalleryArgs {
 
   factory GetGalleryArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      select: map['select'] == null ? null : pulumi.Output.create<String>(map['select'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      select: map['select'] == null ? null : (map['select'] as String).input(),
     );
   }
 }

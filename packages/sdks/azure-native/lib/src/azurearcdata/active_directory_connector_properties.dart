@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'active_directory_connector_spec.dart';
 import 'active_directory_connector_status.dart';
 import 'basic_login_information.dart';
@@ -7,11 +8,11 @@ import 'basic_login_information.dart';
 /// The properties of an Active Directory connector resource
 class ActiveDirectoryConnectorProperties {
   /// Username and password for domain service account authentication.
-  final BasicLoginInformation? domainServiceAccountLoginInformation;
+  final pulumi.Input<BasicLoginInformation>? domainServiceAccountLoginInformation;
   /// null
-  final ActiveDirectoryConnectorSpec spec;
+  final pulumi.Input<ActiveDirectoryConnectorSpec> spec;
   /// null
-  final ActiveDirectoryConnectorStatus? status;
+  final pulumi.Input<ActiveDirectoryConnectorStatus>? status;
 
   /// Creates a new [ActiveDirectoryConnectorProperties].
   /// [domainServiceAccountLoginInformation] Username and password for domain service account authentication.
@@ -25,17 +26,17 @@ class ActiveDirectoryConnectorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainServiceAccountLoginInformation': ?domainServiceAccountLoginInformation == null ? null : domainServiceAccountLoginInformation!.toMap(),
-      'spec': spec.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'domainServiceAccountLoginInformation': ?pulumi.Input.mapOptionalInputValue<BasicLoginInformation, Map<String, dynamic>>(domainServiceAccountLoginInformation, (value) => value.toMap()),
+      'spec': pulumi.Input.mapInputValue<ActiveDirectoryConnectorSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<ActiveDirectoryConnectorStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory ActiveDirectoryConnectorProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorProperties(
-      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : BasicLoginInformation.fromMap((map['domainServiceAccountLoginInformation'] as Map).cast<String, dynamic>()),
-      spec: ActiveDirectoryConnectorSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ActiveDirectoryConnectorStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      domainServiceAccountLoginInformation: map['domainServiceAccountLoginInformation'] == null ? null : (BasicLoginInformation.fromMap((map['domainServiceAccountLoginInformation'] as Map).cast<String, dynamic>())).input(),
+      spec: (ActiveDirectoryConnectorSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ActiveDirectoryConnectorStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

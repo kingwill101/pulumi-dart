@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An access config attached to the TPU worker.
 class AccessConfigResponse {
   /// An external IP address associated with the TPU worker.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
 
   /// Creates a new [AccessConfigResponse].
   /// [externalIp] An external IP address associated with the TPU worker.
@@ -20,7 +21,7 @@ class AccessConfigResponse {
 
   factory AccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return AccessConfigResponse(
-      externalIp: map['externalIp'] as String,
+      externalIp: (map['externalIp'] as String).input(),
     );
   }
 }

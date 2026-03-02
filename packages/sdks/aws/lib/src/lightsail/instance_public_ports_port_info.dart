@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstancePublicPortsPortInfo {
   /// Set of CIDR aliases that define access for a preconfigured range of IP addresses.
-  final List<String>? cidrListAliases;
+  final pulumi.Input<List<String>>? cidrListAliases;
   /// Set of IPv4 addresses or ranges of IPv4 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
-  final List<String>? cidrs;
+  final pulumi.Input<List<String>>? cidrs;
   /// First port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
-  final int fromPort;
+  final pulumi.Input<int> fromPort;
   /// Set of IPv6 addresses or ranges of IPv6 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
-  final List<String>? ipv6Cidrs;
+  final pulumi.Input<List<String>>? ipv6Cidrs;
   /// IP protocol name. Valid values: `tcp`, `all`, `udp`, `icmp`, `icmpv6`. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// Last port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
-  final int toPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [InstancePublicPortsPortInfo].
   /// [cidrListAliases] Set of CIDR aliases that define access for a preconfigured range of IP addresses.
@@ -44,12 +45,12 @@ class InstancePublicPortsPortInfo {
 
   factory InstancePublicPortsPortInfo.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsPortInfo(
-      cidrListAliases: map['cidrListAliases'] == null ? null : (map['cidrListAliases'] as List).cast<String>(),
-      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
-      fromPort: map['fromPort'] as int,
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : (map['ipv6Cidrs'] as List).cast<String>(),
-      protocol: map['protocol'] as String,
-      toPort: map['toPort'] as int,
+      cidrListAliases: map['cidrListAliases'] == null ? null : ((map['cidrListAliases'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      fromPort: (map['fromPort'] as int).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
+      protocol: (map['protocol'] as String).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

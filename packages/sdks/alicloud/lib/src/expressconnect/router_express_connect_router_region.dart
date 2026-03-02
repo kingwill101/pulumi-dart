@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouterExpressConnectRouterRegion {
   /// Representative region ID.
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// Represents the forwarding mode of the current region.
-  final String? transitMode;
+  final pulumi.Input<String>? transitMode;
 
   /// Creates a new [RouterExpressConnectRouterRegion].
   /// [regionId] Representative region ID.
@@ -24,8 +25,8 @@ class RouterExpressConnectRouterRegion {
 
   factory RouterExpressConnectRouterRegion.fromMap(Map<String, dynamic> map) {
     return RouterExpressConnectRouterRegion(
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      transitMode: map['transitMode'] == null ? null : map['transitMode'] as String,
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      transitMode: map['transitMode'] == null ? null : (map['transitMode'] as String).input(),
     );
   }
 }

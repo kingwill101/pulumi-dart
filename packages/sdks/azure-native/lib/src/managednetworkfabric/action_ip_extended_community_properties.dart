@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_extended_community_id_list.dart';
 
 /// IP Extended Community Properties.
 class ActionIpExtendedCommunityProperties {
   /// List of IP Extended Community IDs.
-  final IpExtendedCommunityIdList? add;
+  final pulumi.Input<IpExtendedCommunityIdList>? add;
   /// List of IP Extended Community IDs.
-  final IpExtendedCommunityIdList? delete;
+  final pulumi.Input<IpExtendedCommunityIdList>? delete;
   /// List of IP Extended Community IDs.
-  final IpExtendedCommunityIdList? set;
+  final pulumi.Input<IpExtendedCommunityIdList>? set;
 
   /// Creates a new [ActionIpExtendedCommunityProperties].
   /// [add] List of IP Extended Community IDs.
@@ -23,17 +24,17 @@ class ActionIpExtendedCommunityProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'add': ?add == null ? null : add!.toMap(),
-      'delete': ?delete == null ? null : delete!.toMap(),
-      'set': ?set == null ? null : set!.toMap(),
+      'add': ?pulumi.Input.mapOptionalInputValue<IpExtendedCommunityIdList, Map<String, dynamic>>(add, (value) => value.toMap()),
+      'delete': ?pulumi.Input.mapOptionalInputValue<IpExtendedCommunityIdList, Map<String, dynamic>>(delete, (value) => value.toMap()),
+      'set': ?pulumi.Input.mapOptionalInputValue<IpExtendedCommunityIdList, Map<String, dynamic>>(set, (value) => value.toMap()),
     };
   }
 
   factory ActionIpExtendedCommunityProperties.fromMap(Map<String, dynamic> map) {
     return ActionIpExtendedCommunityProperties(
-      add: map['add'] == null ? null : IpExtendedCommunityIdList.fromMap((map['add'] as Map).cast<String, dynamic>()),
-      delete: map['delete'] == null ? null : IpExtendedCommunityIdList.fromMap((map['delete'] as Map).cast<String, dynamic>()),
-      set: map['set'] == null ? null : IpExtendedCommunityIdList.fromMap((map['set'] as Map).cast<String, dynamic>()),
+      add: map['add'] == null ? null : (IpExtendedCommunityIdList.fromMap((map['add'] as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (IpExtendedCommunityIdList.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
+      set: map['set'] == null ? null : (IpExtendedCommunityIdList.fromMap((map['set'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// LinkedWorkspace specific properties.
 class LinkedWorkspaceProps {
   /// ResourceId of the link target of the linked workspace.
-  final String? linkedWorkspaceResourceId;
+  final pulumi.Input<String>? linkedWorkspaceResourceId;
   /// ResourceId of the user assigned identity for the linked workspace.
-  final String? userAssignedIdentityResourceId;
+  final pulumi.Input<String>? userAssignedIdentityResourceId;
 
   /// Creates a new [LinkedWorkspaceProps].
   /// [linkedWorkspaceResourceId] ResourceId of the link target of the linked workspace.
@@ -25,8 +26,8 @@ class LinkedWorkspaceProps {
 
   factory LinkedWorkspaceProps.fromMap(Map<String, dynamic> map) {
     return LinkedWorkspaceProps(
-      linkedWorkspaceResourceId: map['linkedWorkspaceResourceId'] == null ? null : map['linkedWorkspaceResourceId'] as String,
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : map['userAssignedIdentityResourceId'] as String,
+      linkedWorkspaceResourceId: map['linkedWorkspaceResourceId'] == null ? null : (map['linkedWorkspaceResourceId'] as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
     );
   }
 }

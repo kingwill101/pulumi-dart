@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata information used by account encryption.
 class KeyVaultMetaInfoResponse {
   /// The name of the user managed encryption key.
-  final String encryptionKeyName;
+  final pulumi.Input<String> encryptionKeyName;
   /// The version of the user managed encryption key.
-  final String encryptionKeyVersion;
+  final pulumi.Input<String> encryptionKeyVersion;
   /// The resource identifier for the user managed Key Vault being used to encrypt.
-  final String keyVaultResourceId;
+  final pulumi.Input<String> keyVaultResourceId;
 
   /// Creates a new [KeyVaultMetaInfoResponse].
   /// [encryptionKeyName] The name of the user managed encryption key.
@@ -30,9 +31,9 @@ class KeyVaultMetaInfoResponse {
 
   factory KeyVaultMetaInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultMetaInfoResponse(
-      encryptionKeyName: map['encryptionKeyName'] as String,
-      encryptionKeyVersion: map['encryptionKeyVersion'] as String,
-      keyVaultResourceId: map['keyVaultResourceId'] as String,
+      encryptionKeyName: (map['encryptionKeyName'] as String).input(),
+      encryptionKeyVersion: (map['encryptionKeyVersion'] as String).input(),
+      keyVaultResourceId: (map['keyVaultResourceId'] as String).input(),
     );
   }
 }

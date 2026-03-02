@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// IAM roles that can be assumed by an AWS service are called service roles. Service roles must include a trust policy. A service principal is an identifier that is used to grant permissions to a service.
 class ServicePrincipal {
   /// The service principal identifier.
-  final String service;
+  final pulumi.Input<String> service;
 
   /// Creates a new [ServicePrincipal].
   /// [service] The service principal identifier.
@@ -20,7 +21,7 @@ class ServicePrincipal {
 
   factory ServicePrincipal.fromMap(Map<String, dynamic> map) {
     return ServicePrincipal(
-      service: map['Service'] as String,
+      service: (map['Service'] as String).input(),
     );
   }
 }

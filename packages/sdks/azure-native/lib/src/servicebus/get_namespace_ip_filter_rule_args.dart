@@ -19,13 +19,10 @@ class GetNamespaceIpFilterRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   GetNamespaceIpFilterRuleArgs({
-    required pulumi.Output<String> ipFilterRuleName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      ipFilterRuleName = pulumi.Input.asInput<String>(ipFilterRuleName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.ipFilterRuleName,
+    required this.namespaceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamespaceIpFilterRuleArgs {
 
   factory GetNamespaceIpFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIpFilterRuleArgs(
-      ipFilterRuleName: pulumi.Output.create<String>(map['ipFilterRuleName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ipFilterRuleName: (map['ipFilterRuleName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

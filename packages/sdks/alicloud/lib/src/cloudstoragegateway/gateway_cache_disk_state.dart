@@ -28,21 +28,14 @@ class GatewayCacheDiskState {
   /// [performanceLevel] The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
   /// [status] The status of the Gateway Cache Disk.
   GatewayCacheDiskState({
-    pulumi.Output<String>? cacheDiskCategory,
-    pulumi.Output<int>? cacheDiskSizeInGb,
-    pulumi.Output<String>? cacheId,
-    pulumi.Output<String>? gatewayId,
-    pulumi.Output<String>? localFilePath,
-    pulumi.Output<String>? performanceLevel,
-    pulumi.Output<int>? status,
-  }) :
-      cacheDiskCategory = pulumi.Input.asOptionalInput<String>(cacheDiskCategory),
-      cacheDiskSizeInGb = pulumi.Input.asOptionalInput<int>(cacheDiskSizeInGb),
-      cacheId = pulumi.Input.asOptionalInput<String>(cacheId),
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      localFilePath = pulumi.Input.asOptionalInput<String>(localFilePath),
-      performanceLevel = pulumi.Input.asOptionalInput<String>(performanceLevel),
-      status = pulumi.Input.asOptionalInput<int>(status);
+    this.cacheDiskCategory,
+    this.cacheDiskSizeInGb,
+    this.cacheId,
+    this.gatewayId,
+    this.localFilePath,
+    this.performanceLevel,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class GatewayCacheDiskState {
 
   factory GatewayCacheDiskState.fromMap(Map<String, dynamic> map) {
     return GatewayCacheDiskState(
-      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : pulumi.Output.create<String>(map['cacheDiskCategory'] as String),
-      cacheDiskSizeInGb: map['cacheDiskSizeInGb'] == null ? null : pulumi.Output.create<int>(map['cacheDiskSizeInGb'] as int),
-      cacheId: map['cacheId'] == null ? null : pulumi.Output.create<String>(map['cacheId'] as String),
-      gatewayId: map['gatewayId'] == null ? null : pulumi.Output.create<String>(map['gatewayId'] as String),
-      localFilePath: map['localFilePath'] == null ? null : pulumi.Output.create<String>(map['localFilePath'] as String),
-      performanceLevel: map['performanceLevel'] == null ? null : pulumi.Output.create<String>(map['performanceLevel'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
+      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory'] as String).input(),
+      cacheDiskSizeInGb: map['cacheDiskSizeInGb'] == null ? null : (map['cacheDiskSizeInGb'] as int).input(),
+      cacheId: map['cacheId'] == null ? null : (map['cacheId'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
     );
   }
 }

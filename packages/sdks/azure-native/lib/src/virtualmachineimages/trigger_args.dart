@@ -22,15 +22,11 @@ class TriggerArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [triggerName] The name of the trigger
   TriggerArgs({
-    required pulumi.Output<String> imageTemplateName,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? triggerName,
-  }) :
-      imageTemplateName = pulumi.Input.asInput<String>(imageTemplateName),
-      kind = pulumi.Input.asInput<String>(kind),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggerName = pulumi.Input.asOptionalInput<String>(triggerName);
+    required this.imageTemplateName,
+    required this.kind,
+    required this.resourceGroupName,
+    this.triggerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      imageTemplateName: pulumi.Output.create<String>(map['imageTemplateName'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggerName: map['triggerName'] == null ? null : pulumi.Output.create<String>(map['triggerName'] as String),
+      imageTemplateName: (map['imageTemplateName'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class ApiPortalCustomDomainArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   ApiPortalCustomDomainArgs({
-    required pulumi.Output<String> apiPortalName,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<ApiPortalCustomDomainProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiPortalName = pulumi.Input.asInput<String>(apiPortalName),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      properties = pulumi.Input.asOptionalInput<ApiPortalCustomDomainProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiPortalName,
+    this.domainName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ApiPortalCustomDomainArgs {
 
   factory ApiPortalCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return ApiPortalCustomDomainArgs(
-      apiPortalName: pulumi.Output.create<String>(map['apiPortalName'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApiPortalCustomDomainProperties>(ApiPortalCustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiPortalName: (map['apiPortalName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      properties: map['properties'] == null ? null : (ApiPortalCustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

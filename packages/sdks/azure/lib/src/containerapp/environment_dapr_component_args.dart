@@ -41,25 +41,16 @@ class EnvironmentDaprComponentArgs {
   /// [secrets] A `secret` block as detailed below.
   /// [version] The version of the component.
   EnvironmentDaprComponentArgs({
-    required pulumi.Output<String> componentType,
-    required pulumi.Output<String> containerAppEnvironmentId,
-    pulumi.Output<bool>? ignoreErrors,
-    pulumi.Output<String>? initTimeout,
-    pulumi.Output<List<EnvironmentDaprComponentMetadata>>? metadatas,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? scopes,
-    pulumi.Output<List<EnvironmentDaprComponentSecret>>? secrets,
-    required pulumi.Output<String> version,
-  }) :
-      componentType = pulumi.Input.asInput<String>(componentType),
-      containerAppEnvironmentId = pulumi.Input.asInput<String>(containerAppEnvironmentId),
-      ignoreErrors = pulumi.Input.asOptionalInput<bool>(ignoreErrors),
-      initTimeout = pulumi.Input.asOptionalInput<String>(initTimeout),
-      metadatas = pulumi.Input.asOptionalInput<List<EnvironmentDaprComponentMetadata>>(metadatas),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      secrets = pulumi.Input.asOptionalInput<List<EnvironmentDaprComponentSecret>>(secrets),
-      version = pulumi.Input.asInput<String>(version);
+    required this.componentType,
+    required this.containerAppEnvironmentId,
+    this.ignoreErrors,
+    this.initTimeout,
+    this.metadatas,
+    this.name,
+    this.scopes,
+    this.secrets,
+    required this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,15 +68,15 @@ class EnvironmentDaprComponentArgs {
 
   factory EnvironmentDaprComponentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentDaprComponentArgs(
-      componentType: pulumi.Output.create<String>(map['componentType'] as String),
-      containerAppEnvironmentId: pulumi.Output.create<String>(map['containerAppEnvironmentId'] as String),
-      ignoreErrors: map['ignoreErrors'] == null ? null : pulumi.Output.create<bool>(map['ignoreErrors'] as bool),
-      initTimeout: map['initTimeout'] == null ? null : pulumi.Output.create<String>(map['initTimeout'] as String),
-      metadatas: map['metadatas'] == null ? null : pulumi.Output.create<List<EnvironmentDaprComponentMetadata>>(pulumi.Input.decodeList<EnvironmentDaprComponentMetadata>(map['metadatas'], (value) => EnvironmentDaprComponentMetadata.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
-      secrets: map['secrets'] == null ? null : pulumi.Output.create<List<EnvironmentDaprComponentSecret>>(pulumi.Input.decodeList<EnvironmentDaprComponentSecret>(map['secrets'], (value) => EnvironmentDaprComponentSecret.fromMap((value as Map).cast<String, dynamic>()))),
-      version: pulumi.Output.create<String>(map['version'] as String),
+      componentType: (map['componentType'] as String).input(),
+      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
+      ignoreErrors: map['ignoreErrors'] == null ? null : (map['ignoreErrors'] as bool).input(),
+      initTimeout: map['initTimeout'] == null ? null : (map['initTimeout'] as String).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<EnvironmentDaprComponentMetadata>(map['metadatas'], (value) => EnvironmentDaprComponentMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<EnvironmentDaprComponentSecret>(map['secrets'], (value) => EnvironmentDaprComponentSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -37,25 +37,16 @@ class ImportJobMigrationcenterV1alpha1Args {
   /// [project] Optional.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   ImportJobMigrationcenterV1alpha1Args({
-    required pulumi.Output<String> assetSource,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<GCSPayloadInfo>? gcsPayload,
-    required pulumi.Output<String> importJobId,
-    pulumi.Output<InlinePayloadInfo>? inlinePayload,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-  }) :
-      assetSource = pulumi.Input.asInput<String>(assetSource),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gcsPayload = pulumi.Input.asOptionalInput<GCSPayloadInfo>(gcsPayload),
-      importJobId = pulumi.Input.asInput<String>(importJobId),
-      inlinePayload = pulumi.Input.asOptionalInput<InlinePayloadInfo>(inlinePayload),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId);
+    required this.assetSource,
+    this.displayName,
+    this.gcsPayload,
+    required this.importJobId,
+    this.inlinePayload,
+    this.labels,
+    this.location,
+    this.project,
+    this.requestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ImportJobMigrationcenterV1alpha1Args {
 
   factory ImportJobMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ImportJobMigrationcenterV1alpha1Args(
-      assetSource: pulumi.Output.create<String>(map['assetSource'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      gcsPayload: map['gcsPayload'] == null ? null : pulumi.Output.create<GCSPayloadInfo>(GCSPayloadInfo.fromMap((map['gcsPayload'] as Map).cast<String, dynamic>())),
-      importJobId: pulumi.Output.create<String>(map['importJobId'] as String),
-      inlinePayload: map['inlinePayload'] == null ? null : pulumi.Output.create<InlinePayloadInfo>(InlinePayloadInfo.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
+      assetSource: (map['assetSource'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      gcsPayload: map['gcsPayload'] == null ? null : (GCSPayloadInfo.fromMap((map['gcsPayload'] as Map).cast<String, dynamic>())).input(),
+      importJobId: (map['importJobId'] as String).input(),
+      inlinePayload: map['inlinePayload'] == null ? null : (InlinePayloadInfo.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
     );
   }
 }

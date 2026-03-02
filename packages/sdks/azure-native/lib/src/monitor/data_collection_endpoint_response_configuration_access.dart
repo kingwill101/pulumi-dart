@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The endpoint used by clients to access their configuration.
 class DataCollectionEndpointResponseConfigurationAccess {
   /// The endpoint. This property is READ-ONLY.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [DataCollectionEndpointResponseConfigurationAccess].
   /// [endpoint] The endpoint. This property is READ-ONLY.
@@ -20,7 +21,7 @@ class DataCollectionEndpointResponseConfigurationAccess {
 
   factory DataCollectionEndpointResponseConfigurationAccess.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointResponseConfigurationAccess(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

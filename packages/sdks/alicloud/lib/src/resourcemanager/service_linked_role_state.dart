@@ -25,19 +25,13 @@ class ServiceLinkedRoleState {
   /// [roleName] The name of the role.
   /// [serviceName] The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
   ServiceLinkedRoleState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? customSuffix,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? roleId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<String>? serviceName,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      customSuffix = pulumi.Input.asOptionalInput<String>(customSuffix),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      roleId = pulumi.Input.asOptionalInput<String>(roleId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
+    this.arn,
+    this.customSuffix,
+    this.description,
+    this.roleId,
+    this.roleName,
+    this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      customSuffix: map['customSuffix'] == null ? null : pulumi.Output.create<String>(map['customSuffix'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      roleId: map['roleId'] == null ? null : pulumi.Output.create<String>(map['roleId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProjectsProjectSecurityPropertiesProjectProtection {
   /// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
-  final String exceptionPolicy;
+  final pulumi.Input<String> exceptionPolicy;
   /// Whether enabled, value:(true/false).
-  final bool protected;
+  final pulumi.Input<bool> protected;
 
   /// Creates a new [GetProjectsProjectSecurityPropertiesProjectProtection].
   /// [exceptionPolicy] Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
@@ -24,8 +25,8 @@ class GetProjectsProjectSecurityPropertiesProjectProtection {
 
   factory GetProjectsProjectSecurityPropertiesProjectProtection.fromMap(Map<String, dynamic> map) {
     return GetProjectsProjectSecurityPropertiesProjectProtection(
-      exceptionPolicy: map['exceptionPolicy'] as String,
-      protected: map['protected'] as bool,
+      exceptionPolicy: (map['exceptionPolicy'] as String).input(),
+      protected: (map['protected'] as bool).input(),
     );
   }
 }

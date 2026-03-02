@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Explicit Proxy Settings in Firewall Policy.
 class ExplicitProxy {
   /// When set to true, explicit proxy mode is enabled.
-  final bool? enableExplicitProxy;
+  final pulumi.Input<bool>? enableExplicitProxy;
   /// When set to true, pac file port and url needs to be provided.
-  final bool? enablePacFile;
+  final pulumi.Input<bool>? enablePacFile;
   /// Port number for explicit proxy http protocol, cannot be greater than 64000.
-  final int? httpPort;
+  final pulumi.Input<int>? httpPort;
   /// Port number for explicit proxy https protocol, cannot be greater than 64000.
-  final int? httpsPort;
+  final pulumi.Input<int>? httpsPort;
   /// SAS URL for PAC file.
-  final String? pacFile;
+  final pulumi.Input<String>? pacFile;
   /// Port number for firewall to serve PAC file.
-  final int? pacFilePort;
+  final pulumi.Input<int>? pacFilePort;
 
   /// Creates a new [ExplicitProxy].
   /// [enableExplicitProxy] When set to true, explicit proxy mode is enabled.
@@ -45,12 +46,12 @@ class ExplicitProxy {
 
   factory ExplicitProxy.fromMap(Map<String, dynamic> map) {
     return ExplicitProxy(
-      enableExplicitProxy: map['enableExplicitProxy'] == null ? null : map['enableExplicitProxy'] as bool,
-      enablePacFile: map['enablePacFile'] == null ? null : map['enablePacFile'] as bool,
-      httpPort: map['httpPort'] == null ? null : map['httpPort'] as int,
-      httpsPort: map['httpsPort'] == null ? null : map['httpsPort'] as int,
-      pacFile: map['pacFile'] == null ? null : map['pacFile'] as String,
-      pacFilePort: map['pacFilePort'] == null ? null : map['pacFilePort'] as int,
+      enableExplicitProxy: map['enableExplicitProxy'] == null ? null : (map['enableExplicitProxy'] as bool).input(),
+      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile'] as bool).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      pacFile: map['pacFile'] == null ? null : (map['pacFile'] as String).input(),
+      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort'] as int).input(),
     );
   }
 }

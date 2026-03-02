@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMetadata {
   /// Contains XML formatted metadata specific to the domain, enabling custom data storage within the domain.
-  final String xml;
+  final pulumi.Input<String> xml;
 
   /// Creates a new [DomainMetadata].
   /// [xml] Contains XML formatted metadata specific to the domain, enabling custom data storage within the domain.
@@ -19,7 +20,7 @@ class DomainMetadata {
 
   factory DomainMetadata.fromMap(Map<String, dynamic> map) {
     return DomainMetadata(
-      xml: map['xml'] as String,
+      xml: (map['xml'] as String).input(),
     );
   }
 }

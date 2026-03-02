@@ -18,11 +18,9 @@ class GetManagedHardwareSecurityModuleKeyArgs {
   /// [managedHsmId] Specifies the ID of the Managed Hardware Security Module instance where the Secret resides, available on the `azure.keyvault.ManagedHardwareSecurityModuleKey` Data Source / Resource.
   /// [name] Specifies the name of the Managed Hardware Security Module Key.
   GetManagedHardwareSecurityModuleKeyArgs({
-    required pulumi.Output<String> managedHsmId,
-    required pulumi.Output<String> name,
-  }) :
-      managedHsmId = pulumi.Input.asInput<String>(managedHsmId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.managedHsmId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetManagedHardwareSecurityModuleKeyArgs {
 
   factory GetManagedHardwareSecurityModuleKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleKeyArgs(
-      managedHsmId: pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      managedHsmId: (map['managedHsmId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

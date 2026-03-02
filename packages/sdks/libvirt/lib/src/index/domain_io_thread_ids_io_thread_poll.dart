@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainIoThreadIDsIoThreadPoll {
   /// Sets the policy for growing the I/O thread's polling behavior.
-  final double? grow;
+  final pulumi.Input<double>? grow;
   /// Configures the maximum polling rate for the I/O thread.
-  final double? max;
+  final pulumi.Input<double>? max;
   /// Sets the policy for shrinking the I/O thread's polling behavior.
-  final double? shrink;
+  final pulumi.Input<double>? shrink;
 
   /// Creates a new [DomainIoThreadIDsIoThreadPoll].
   /// [grow] Sets the policy for growing the I/O thread's polling behavior.
@@ -29,9 +30,9 @@ class DomainIoThreadIDsIoThreadPoll {
 
   factory DomainIoThreadIDsIoThreadPoll.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDsIoThreadPoll(
-      grow: map['grow'] == null ? null : map['grow'] as double,
-      max: map['max'] == null ? null : map['max'] as double,
-      shrink: map['shrink'] == null ? null : map['shrink'] as double,
+      grow: map['grow'] == null ? null : (map['grow'] as double).input(),
+      max: map['max'] == null ? null : (map['max'] as double).input(),
+      shrink: map['shrink'] == null ? null : (map['shrink'] as double).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_id.dart';
 
 /// The ip configurations for the private link service.
 class IPConfiguration {
   /// The name of private link IP configuration.
-  final String name;
+  final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary for the corresponding NIC.
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// The IP address.
-  final String? privateIPAddress;
+  final pulumi.Input<String>? privateIPAddress;
   /// The method that private IP address is allocated.
-  final String? privateIPAllocationMethod;
+  final pulumi.Input<String>? privateIPAllocationMethod;
   /// The subnet resource id.
-  final ResourceId? subnet;
+  final pulumi.Input<ResourceId>? subnet;
 
   /// Creates a new [IPConfiguration].
   /// [name] The name of private link IP configuration.
@@ -35,17 +36,17 @@ class IPConfiguration {
       'primary': ?primary,
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(subnet, (value) => value.toMap()),
     };
   }
 
   factory IPConfiguration.fromMap(Map<String, dynamic> map) {
     return IPConfiguration(
-      name: map['name'] as String,
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
-      subnet: map['subnet'] == null ? null : ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

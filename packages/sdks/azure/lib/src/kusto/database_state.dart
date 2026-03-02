@@ -28,21 +28,14 @@ class DatabaseState {
   /// [size] The size of the database in bytes.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
   DatabaseState({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? hotCachePeriod,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<double>? size,
-    pulumi.Output<String>? softDeletePeriod,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      hotCachePeriod = pulumi.Input.asOptionalInput<String>(hotCachePeriod),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      size = pulumi.Input.asOptionalInput<double>(size),
-      softDeletePeriod = pulumi.Input.asOptionalInput<String>(softDeletePeriod);
+    this.clusterName,
+    this.hotCachePeriod,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.size,
+    this.softDeletePeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : pulumi.Output.create<String>(map['hotCachePeriod'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      size: map['size'] == null ? null : pulumi.Output.create<double>(map['size'] as double),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : pulumi.Output.create<String>(map['softDeletePeriod'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as double).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
     );
   }
 }

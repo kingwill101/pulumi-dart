@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersClusterSoftwareInfoSoftware {
   /// The name of the service.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The internal name of the service.
-  final String name;
+  final pulumi.Input<String> name;
   /// Whether it shows.
-  final bool onlyDisplay;
+  final pulumi.Input<bool> onlyDisplay;
   /// Startup type.
-  final int startTpe;
+  final pulumi.Input<int> startTpe;
   /// Service version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetClustersClusterSoftwareInfoSoftware].
   /// [displayName] The name of the service.
@@ -39,11 +40,11 @@ class GetClustersClusterSoftwareInfoSoftware {
 
   factory GetClustersClusterSoftwareInfoSoftware.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterSoftwareInfoSoftware(
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      onlyDisplay: map['onlyDisplay'] as bool,
-      startTpe: map['startTpe'] as int,
-      version: map['version'] as String,
+      displayName: (map['displayName'] as String).input(),
+      name: (map['name'] as String).input(),
+      onlyDisplay: (map['onlyDisplay'] as bool).input(),
+      startTpe: (map['startTpe'] as int).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

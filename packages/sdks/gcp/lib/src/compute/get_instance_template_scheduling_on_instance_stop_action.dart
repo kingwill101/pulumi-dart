@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTemplateSchedulingOnInstanceStopAction {
   /// If true, the contents of any attached Local SSD disks will be discarded.
-  final bool discardLocalSsd;
+  final pulumi.Input<bool> discardLocalSsd;
 
   /// Creates a new [GetInstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
@@ -19,7 +20,7 @@ class GetInstanceTemplateSchedulingOnInstanceStopAction {
 
   factory GetInstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] as bool,
+      discardLocalSsd: (map['discardLocalSsd'] as bool).input(),
     );
   }
 }

@@ -22,17 +22,12 @@ class ApplicationSnapshotState {
   /// [snapshotCreationTimestamp] The timestamp of the application snapshot.
   /// [snapshotName] The name of the application snapshot.
   ApplicationSnapshotState({
-    pulumi.Output<String>? applicationName,
-    pulumi.Output<int>? applicationVersionId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? snapshotCreationTimestamp,
-    pulumi.Output<String>? snapshotName,
-  }) :
-      applicationName = pulumi.Input.asOptionalInput<String>(applicationName),
-      applicationVersionId = pulumi.Input.asOptionalInput<int>(applicationVersionId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotCreationTimestamp = pulumi.Input.asOptionalInput<String>(snapshotCreationTimestamp),
-      snapshotName = pulumi.Input.asOptionalInput<String>(snapshotName);
+    this.applicationName,
+    this.applicationVersionId,
+    this.region,
+    this.snapshotCreationTimestamp,
+    this.snapshotName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class ApplicationSnapshotState {
 
   factory ApplicationSnapshotState.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotState(
-      applicationName: map['applicationName'] == null ? null : pulumi.Output.create<String>(map['applicationName'] as String),
-      applicationVersionId: map['applicationVersionId'] == null ? null : pulumi.Output.create<int>(map['applicationVersionId'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotCreationTimestamp: map['snapshotCreationTimestamp'] == null ? null : pulumi.Output.create<String>(map['snapshotCreationTimestamp'] as String),
-      snapshotName: map['snapshotName'] == null ? null : pulumi.Output.create<String>(map['snapshotName'] as String),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      applicationVersionId: map['applicationVersionId'] == null ? null : (map['applicationVersionId'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotCreationTimestamp: map['snapshotCreationTimestamp'] == null ? null : (map['snapshotCreationTimestamp'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
     );
   }
 }

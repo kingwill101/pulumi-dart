@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie {
   /// List of item names (`cookies`, `headers`, or `query_strings`).
-  final List<String> items;
+  final pulumi.Input<List<String>> items;
 
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie].
   /// [items] List of item names (`cookies`, `headers`, or `query_strings`).
@@ -19,7 +20,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie 
 
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie(
-      items: (map['items'] as List).cast<String>(),
+      items: ((map['items'] as List).cast<String>()).input(),
     );
   }
 }

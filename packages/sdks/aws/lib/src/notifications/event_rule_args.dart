@@ -27,17 +27,12 @@ class EventRuleArgs {
   /// [regions] Set of AWS regions where the event rule will be applied. Each region must be between 2 and 25 characters, and match the pattern `([a-z]{1,2})-([a-z]{1,15}-)+([0-9])`.
   /// [source] Source of the event. Must be between 1 and 36 characters, and match the pattern `aws.([a-z0-9\-])+`.
   EventRuleArgs({
-    pulumi.Output<String>? eventPattern,
-    required pulumi.Output<String> eventType,
-    required pulumi.Output<String> notificationConfigurationArn,
-    required pulumi.Output<List<String>> regions,
-    required pulumi.Output<String> source,
-  }) :
-      eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
-      eventType = pulumi.Input.asInput<String>(eventType),
-      notificationConfigurationArn = pulumi.Input.asInput<String>(notificationConfigurationArn),
-      regions = pulumi.Input.asInput<List<String>>(regions),
-      source = pulumi.Input.asInput<String>(source);
+    this.eventPattern,
+    required this.eventType,
+    required this.notificationConfigurationArn,
+    required this.regions,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class EventRuleArgs {
 
   factory EventRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventRuleArgs(
-      eventPattern: map['eventPattern'] == null ? null : pulumi.Output.create<String>(map['eventPattern'] as String),
-      eventType: pulumi.Output.create<String>(map['eventType'] as String),
-      notificationConfigurationArn: pulumi.Output.create<String>(map['notificationConfigurationArn'] as String),
-      regions: pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      source: pulumi.Output.create<String>(map['source'] as String),
+      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      eventType: (map['eventType'] as String).input(),
+      notificationConfigurationArn: (map['notificationConfigurationArn'] as String).input(),
+      regions: ((map['regions'] as List).cast<String>()).input(),
+      source: (map['source'] as String).input(),
     );
   }
 }

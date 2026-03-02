@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionAccountKeyResponse {
-  final String? key;
+  final pulumi.Input<String>? key;
 
   /// Creates a new [WorkspaceConnectionAccountKeyResponse].
   /// [key] Optional.
@@ -18,7 +19,7 @@ class WorkspaceConnectionAccountKeyResponse {
 
   factory WorkspaceConnectionAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionAccountKeyResponse(
-      key: map['key'] == null ? null : map['key'] as String,
+      key: map['key'] == null ? null : (map['key'] as String).input(),
     );
   }
 }

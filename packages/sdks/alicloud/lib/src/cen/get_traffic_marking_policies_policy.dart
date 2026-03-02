@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficMarkingPoliciesPolicy {
   /// The description of the Traffic Marking Policy.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
-  final int markingDscp;
+  final pulumi.Input<int> markingDscp;
   /// The Priority of the Traffic Marking Policy.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the Traffic Marking Policy.
-  final String trafficMarkingPolicyId;
+  final pulumi.Input<String> trafficMarkingPolicyId;
   /// The name of the Traffic Marking Policy.
-  final String trafficMarkingPolicyName;
+  final pulumi.Input<String> trafficMarkingPolicyName;
   /// The ID of the transit router.
-  final String transitRouterId;
+  final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetTrafficMarkingPoliciesPolicy].
   /// [description] The description of the Traffic Marking Policy.
@@ -54,14 +55,14 @@ class GetTrafficMarkingPoliciesPolicy {
 
   factory GetTrafficMarkingPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetTrafficMarkingPoliciesPolicy(
-      description: map['description'] as String,
-      id: map['id'] as String,
-      markingDscp: map['markingDscp'] as int,
-      priority: map['priority'] as int,
-      status: map['status'] as String,
-      trafficMarkingPolicyId: map['trafficMarkingPolicyId'] as String,
-      trafficMarkingPolicyName: map['trafficMarkingPolicyName'] as String,
-      transitRouterId: map['transitRouterId'] as String,
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      markingDscp: (map['markingDscp'] as int).input(),
+      priority: (map['priority'] as int).input(),
+      status: (map['status'] as String).input(),
+      trafficMarkingPolicyId: (map['trafficMarkingPolicyId'] as String).input(),
+      trafficMarkingPolicyName: (map['trafficMarkingPolicyName'] as String).input(),
+      transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }
 }

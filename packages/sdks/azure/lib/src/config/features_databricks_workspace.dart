@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesDatabricksWorkspace {
   /// When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.
-  final bool? forceDelete;
+  final pulumi.Input<bool>? forceDelete;
 
   /// Creates a new [FeaturesDatabricksWorkspace].
   /// [forceDelete] When enabled, the managed resource group that contains the Unity Catalog data will be forcibly deleted when the workspace is destroyed, regardless of contents.
@@ -19,7 +20,7 @@ class FeaturesDatabricksWorkspace {
 
   factory FeaturesDatabricksWorkspace.fromMap(Map<String, dynamic> map) {
     return FeaturesDatabricksWorkspace(
-      forceDelete: map['forceDelete'] == null ? null : map['forceDelete'] as bool,
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
     );
   }
 }

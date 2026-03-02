@@ -53,33 +53,20 @@ class WorkflowArgs {
   /// [workflowSchema] Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
   /// [workflowVersion] Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
   WorkflowArgs({
-    pulumi.Output<WorkflowAccessControl>? accessControl,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<WorkflowIdentity>? identity,
-    pulumi.Output<String>? integrationServiceEnvironmentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? logicAppIntegrationAccountId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? parameters,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? workflowParameters,
-    pulumi.Output<String>? workflowSchema,
-    pulumi.Output<String>? workflowVersion,
-  }) :
-      accessControl = pulumi.Input.asOptionalInput<WorkflowAccessControl>(accessControl),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      identity = pulumi.Input.asOptionalInput<WorkflowIdentity>(identity),
-      integrationServiceEnvironmentId = pulumi.Input.asOptionalInput<String>(integrationServiceEnvironmentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logicAppIntegrationAccountId = pulumi.Input.asOptionalInput<String>(logicAppIntegrationAccountId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workflowParameters = pulumi.Input.asOptionalInput<Map<String, String>>(workflowParameters),
-      workflowSchema = pulumi.Input.asOptionalInput<String>(workflowSchema),
-      workflowVersion = pulumi.Input.asOptionalInput<String>(workflowVersion);
+    this.accessControl,
+    this.enabled,
+    this.identity,
+    this.integrationServiceEnvironmentId,
+    this.location,
+    this.logicAppIntegrationAccountId,
+    this.name,
+    this.parameters,
+    required this.resourceGroupName,
+    this.tags,
+    this.workflowParameters,
+    this.workflowSchema,
+    this.workflowVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      accessControl: map['accessControl'] == null ? null : pulumi.Output.create<WorkflowAccessControl>(WorkflowAccessControl.fromMap((map['accessControl'] as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      identity: map['identity'] == null ? null : pulumi.Output.create<WorkflowIdentity>(WorkflowIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : pulumi.Output.create<String>(map['integrationServiceEnvironmentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logicAppIntegrationAccountId: map['logicAppIntegrationAccountId'] == null ? null : pulumi.Output.create<String>(map['logicAppIntegrationAccountId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workflowParameters: map['workflowParameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['workflowParameters'] as Map).cast<String, String>()),
-      workflowSchema: map['workflowSchema'] == null ? null : pulumi.Output.create<String>(map['workflowSchema'] as String),
-      workflowVersion: map['workflowVersion'] == null ? null : pulumi.Output.create<String>(map['workflowVersion'] as String),
+      accessControl: map['accessControl'] == null ? null : (WorkflowAccessControl.fromMap((map['accessControl'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      identity: map['identity'] == null ? null : (WorkflowIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logicAppIntegrationAccountId: map['logicAppIntegrationAccountId'] == null ? null : (map['logicAppIntegrationAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workflowParameters: map['workflowParameters'] == null ? null : ((map['workflowParameters'] as Map).cast<String, String>()).input(),
+      workflowSchema: map['workflowSchema'] == null ? null : (map['workflowSchema'] as String).input(),
+      workflowVersion: map['workflowVersion'] == null ? null : (map['workflowVersion'] as String).input(),
     );
   }
 }

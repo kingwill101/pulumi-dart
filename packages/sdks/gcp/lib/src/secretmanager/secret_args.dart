@@ -94,33 +94,20 @@ class SecretArgs {
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
   SecretArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? expireTime,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? project,
-    required pulumi.Output<SecretReplication> replication,
-    pulumi.Output<SecretRotation>? rotation,
-    pulumi.Output<String>? secretId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<SecretTopic>>? topics,
-    pulumi.Output<String>? ttl,
-    pulumi.Output<Map<String, String>>? versionAliases,
-    pulumi.Output<String>? versionDestroyTtl,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replication = pulumi.Input.asInput<SecretReplication>(replication),
-      rotation = pulumi.Input.asOptionalInput<SecretRotation>(rotation),
-      secretId = pulumi.Input.asOptionalInput<String>(secretId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      topics = pulumi.Input.asOptionalInput<List<SecretTopic>>(topics),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl),
-      versionAliases = pulumi.Input.asOptionalInput<Map<String, String>>(versionAliases),
-      versionDestroyTtl = pulumi.Input.asOptionalInput<String>(versionDestroyTtl);
+    this.annotations,
+    this.deletionProtection,
+    this.expireTime,
+    this.labels,
+    this.project,
+    required this.replication,
+    this.rotation,
+    this.secretId,
+    this.tags,
+    this.topics,
+    this.ttl,
+    this.versionAliases,
+    this.versionDestroyTtl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -142,19 +129,19 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      expireTime: map['expireTime'] == null ? null : pulumi.Output.create<String>(map['expireTime'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      replication: pulumi.Output.create<SecretReplication>(SecretReplication.fromMap((map['replication'] as Map).cast<String, dynamic>())),
-      rotation: map['rotation'] == null ? null : pulumi.Output.create<SecretRotation>(SecretRotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())),
-      secretId: map['secretId'] == null ? null : pulumi.Output.create<String>(map['secretId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      topics: map['topics'] == null ? null : pulumi.Output.create<List<SecretTopic>>(pulumi.Input.decodeList<SecretTopic>(map['topics'], (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
-      versionAliases: map['versionAliases'] == null ? null : pulumi.Output.create<Map<String, String>>((map['versionAliases'] as Map).cast<String, String>()),
-      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : pulumi.Output.create<String>(map['versionDestroyTtl'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      replication: (SecretReplication.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
+      rotation: map['rotation'] == null ? null : (SecretRotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<SecretTopic>(map['topics'], (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as Map).cast<String, String>()).input(),
+      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : (map['versionDestroyTtl'] as String).input(),
     );
   }
 }

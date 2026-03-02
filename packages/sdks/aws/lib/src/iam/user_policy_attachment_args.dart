@@ -16,11 +16,9 @@ class UserPolicyAttachmentArgs {
   /// [policyArn] The ARN of the policy you want to apply
   /// [user] The user the policy should be applied to
   UserPolicyAttachmentArgs({
-    required pulumi.Output<String> policyArn,
-    required pulumi.Output<String> user,
-  }) :
-      policyArn = pulumi.Input.asInput<String>(policyArn),
-      user = pulumi.Input.asInput<String>(user);
+    required this.policyArn,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class UserPolicyAttachmentArgs {
 
   factory UserPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentArgs(
-      policyArn: pulumi.Output.create<String>(map['policyArn'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      policyArn: (map['policyArn'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

@@ -34,19 +34,13 @@ class GroupArgs {
   /// [name] The name of the group. Group names must be unique.
   /// [project] The ID of the project in which the resource belongs.
   GroupArgs({
-    pulumi.Output<GroupAutoAccept>? autoAccept,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> hub,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      autoAccept = pulumi.Input.asOptionalInput<GroupAutoAccept>(autoAccept),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      hub = pulumi.Input.asInput<String>(hub),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.autoAccept,
+    this.description,
+    required this.hub,
+    this.labels,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      autoAccept: map['autoAccept'] == null ? null : pulumi.Output.create<GroupAutoAccept>(GroupAutoAccept.fromMap((map['autoAccept'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      hub: pulumi.Output.create<String>(map['hub'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autoAccept: map['autoAccept'] == null ? null : (GroupAutoAccept.fromMap((map['autoAccept'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      hub: (map['hub'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

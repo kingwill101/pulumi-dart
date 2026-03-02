@@ -31,21 +31,14 @@ class RestoreTestingPlanArgs {
   /// [startWindowHours] The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   /// [tags] Optional.
   RestoreTestingPlanArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<RestoreTestingPlanRecoveryPointSelection> recoveryPointSelection,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scheduleExpression,
-    pulumi.Output<String>? scheduleExpressionTimezone,
-    pulumi.Output<int>? startWindowHours,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recoveryPointSelection = pulumi.Input.asInput<RestoreTestingPlanRecoveryPointSelection>(recoveryPointSelection),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduleExpression = pulumi.Input.asInput<String>(scheduleExpression),
-      scheduleExpressionTimezone = pulumi.Input.asOptionalInput<String>(scheduleExpressionTimezone),
-      startWindowHours = pulumi.Input.asOptionalInput<int>(startWindowHours),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    required this.recoveryPointSelection,
+    this.region,
+    required this.scheduleExpression,
+    this.scheduleExpressionTimezone,
+    this.startWindowHours,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class RestoreTestingPlanArgs {
 
   factory RestoreTestingPlanArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recoveryPointSelection: pulumi.Output.create<RestoreTestingPlanRecoveryPointSelection>(RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduleExpression: pulumi.Output.create<String>(map['scheduleExpression'] as String),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : pulumi.Output.create<String>(map['scheduleExpressionTimezone'] as String),
-      startWindowHours: map['startWindowHours'] == null ? null : pulumi.Output.create<int>(map['startWindowHours'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recoveryPointSelection: (RestoreTestingPlanRecoveryPointSelection.fromMap((map['recoveryPointSelection'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduleExpression: (map['scheduleExpression'] as String).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
+      startWindowHours: map['startWindowHours'] == null ? null : (map['startWindowHours'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

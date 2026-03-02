@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Config to process conversation.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse {
   /// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
-  final int recentSentencesCount;
+  final pulumi.Input<int> recentSentencesCount;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse].
   /// [recentSentencesCount] Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCo
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse(
-      recentSentencesCount: map['recentSentencesCount'] as int,
+      recentSentencesCount: (map['recentSentencesCount'] as int).input(),
     );
   }
 }

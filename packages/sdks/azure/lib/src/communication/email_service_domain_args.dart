@@ -25,17 +25,12 @@ class EmailServiceDomainArgs {
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   EmailServiceDomainArgs({
-    required pulumi.Output<String> domainManagement,
-    required pulumi.Output<String> emailServiceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? userEngagementTrackingEnabled,
-  }) :
-      domainManagement = pulumi.Input.asInput<String>(domainManagement),
-      emailServiceId = pulumi.Input.asInput<String>(emailServiceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userEngagementTrackingEnabled = pulumi.Input.asOptionalInput<bool>(userEngagementTrackingEnabled);
+    required this.domainManagement,
+    required this.emailServiceId,
+    this.name,
+    this.tags,
+    this.userEngagementTrackingEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class EmailServiceDomainArgs {
 
   factory EmailServiceDomainArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainArgs(
-      domainManagement: pulumi.Output.create<String>(map['domainManagement'] as String),
-      emailServiceId: pulumi.Output.create<String>(map['emailServiceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : pulumi.Output.create<bool>(map['userEngagementTrackingEnabled'] as bool),
+      domainManagement: (map['domainManagement'] as String).input(),
+      emailServiceId: (map['emailServiceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled'] as bool).input(),
     );
   }
 }

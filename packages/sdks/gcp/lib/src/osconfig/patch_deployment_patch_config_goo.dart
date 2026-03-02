@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PatchDeploymentPatchConfigGoo {
   /// goo update settings. Use this setting to override the default goo patch rules.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [PatchDeploymentPatchConfigGoo].
   /// [enabled] goo update settings. Use this setting to override the default goo patch rules.
@@ -19,7 +20,7 @@ class PatchDeploymentPatchConfigGoo {
 
   factory PatchDeploymentPatchConfigGoo.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigGoo(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

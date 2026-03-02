@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a virtual machines network configuration's DNS settings.
 class VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse {
   /// List of DNS servers IP addresses
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
 
   /// Creates a new [VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse].
   /// [dnsServers] List of DNS servers IP addresses
@@ -20,7 +21,7 @@ class VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse {
 
   factory VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse(
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
     );
   }
 }

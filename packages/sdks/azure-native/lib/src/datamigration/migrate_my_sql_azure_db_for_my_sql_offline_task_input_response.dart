@@ -7,19 +7,19 @@ import 'my_sql_connection_info_response.dart';
 /// Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
 class MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse {
   /// encrypted key for secure fields
-  final String? encryptedKeyForSecureFields;
+  final pulumi.Input<String>? encryptedKeyForSecureFields;
   /// Setting to set the source server read only
-  final bool? makeSourceServerReadOnly;
+  final pulumi.Input<bool>? makeSourceServerReadOnly;
   /// Optional parameters for fine tuning the data transfer rate during migration
-  final Map<String, String>? optionalAgentSettings;
+  final pulumi.Input<Map<String, String>>? optionalAgentSettings;
   /// Databases to migrate
-  final List<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse> selectedDatabases;
+  final pulumi.Input<List<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source MySQL
-  final MySqlConnectionInfoResponse sourceConnectionInfo;
+  final pulumi.Input<MySqlConnectionInfoResponse> sourceConnectionInfo;
   /// Parameter to specify when the migration started
-  final String? startedOn;
+  final pulumi.Input<String>? startedOn;
   /// Connection information for target Azure Database for MySQL
-  final MySqlConnectionInfoResponse targetConnectionInfo;
+  final pulumi.Input<MySqlConnectionInfoResponse> targetConnectionInfo;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse].
   /// [encryptedKeyForSecureFields] encrypted key for secure fields
@@ -44,22 +44,22 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse {
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
       'makeSourceServerReadOnly': ?makeSourceServerReadOnly,
       'optionalAgentSettings': ?optionalAgentSettings,
-      'selectedDatabases': pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse, Map<String, dynamic>>(selectedDatabases, (value) => value.toMap()),
-      'sourceConnectionInfo': sourceConnectionInfo.toMap(),
+      'selectedDatabases': pulumi.Input.mapInputValue<List<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse>, List<Map<String, dynamic>>>(selectedDatabases, (value) => pulumi.Input.encodeList<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
       'startedOn': ?startedOn,
-      'targetConnectionInfo': targetConnectionInfo.toMap(),
+      'targetConnectionInfo': pulumi.Input.mapInputValue<MySqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
   factory MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse(
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : map['encryptedKeyForSecureFields'] as String,
-      makeSourceServerReadOnly: map['makeSourceServerReadOnly'] == null ? null : map['makeSourceServerReadOnly'] as bool,
-      optionalAgentSettings: map['optionalAgentSettings'] == null ? null : (map['optionalAgentSettings'] as Map).cast<String, String>(),
-      selectedDatabases: pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceConnectionInfo: MySqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>()),
-      startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
-      targetConnectionInfo: MySqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>()),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      makeSourceServerReadOnly: map['makeSourceServerReadOnly'] == null ? null : (map['makeSourceServerReadOnly'] as bool).input(),
+      optionalAgentSettings: map['optionalAgentSettings'] == null ? null : ((map['optionalAgentSettings'] as Map).cast<String, String>()).input(),
+      selectedDatabases: (pulumi.Input.decodeList<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceConnectionInfo: (MySqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      targetConnectionInfo: (MySqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

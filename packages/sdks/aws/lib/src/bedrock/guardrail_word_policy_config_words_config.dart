@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailWordPolicyConfigWordsConfig {
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `NONE`.
-  final String? inputAction;
+  final pulumi.Input<String>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  final bool? inputEnabled;
+  final pulumi.Input<bool>? inputEnabled;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `NONE`.
-  final String? outputAction;
+  final pulumi.Input<String>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  final bool? outputEnabled;
+  final pulumi.Input<bool>? outputEnabled;
   /// The custom word text.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GuardrailWordPolicyConfigWordsConfig].
   /// [inputAction] Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `NONE`.
@@ -39,11 +40,11 @@ class GuardrailWordPolicyConfigWordsConfig {
 
   factory GuardrailWordPolicyConfigWordsConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailWordPolicyConfigWordsConfig(
-      inputAction: map['inputAction'] == null ? null : map['inputAction'] as String,
-      inputEnabled: map['inputEnabled'] == null ? null : map['inputEnabled'] as bool,
-      outputAction: map['outputAction'] == null ? null : map['outputAction'] as String,
-      outputEnabled: map['outputEnabled'] == null ? null : map['outputEnabled'] as bool,
-      text: map['text'] as String,
+      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
+      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      text: (map['text'] as String).input(),
     );
   }
 }

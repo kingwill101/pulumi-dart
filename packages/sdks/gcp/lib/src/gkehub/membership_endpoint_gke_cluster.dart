@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipEndpointGkeCluster {
-  final String resourceLink;
+  final pulumi.Input<String> resourceLink;
 
   /// Creates a new [MembershipEndpointGkeCluster].
   /// [resourceLink] Required.
@@ -18,7 +19,7 @@ class MembershipEndpointGkeCluster {
 
   factory MembershipEndpointGkeCluster.fromMap(Map<String, dynamic> map) {
     return MembershipEndpointGkeCluster(
-      resourceLink: map['resourceLink'] as String,
+      resourceLink: (map['resourceLink'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class SqlServerRegistrationArgs {
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags.
   SqlServerRegistrationArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? propertyBag,
-    pulumi.Output<String>? resourceGroup,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sqlServerRegistrationName,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      propertyBag = pulumi.Input.asOptionalInput<String>(propertyBag),
-      resourceGroup = pulumi.Input.asOptionalInput<String>(resourceGroup),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sqlServerRegistrationName = pulumi.Input.asOptionalInput<String>(sqlServerRegistrationName),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.propertyBag,
+    this.resourceGroup,
+    required this.resourceGroupName,
+    this.sqlServerRegistrationName,
+    this.subscriptionId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SqlServerRegistrationArgs {
 
   factory SqlServerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerRegistrationArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      propertyBag: map['propertyBag'] == null ? null : pulumi.Output.create<String>(map['propertyBag'] as String),
-      resourceGroup: map['resourceGroup'] == null ? null : pulumi.Output.create<String>(map['resourceGroup'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sqlServerRegistrationName: map['sqlServerRegistrationName'] == null ? null : pulumi.Output.create<String>(map['sqlServerRegistrationName'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sqlServerRegistrationName: map['sqlServerRegistrationName'] == null ? null : (map['sqlServerRegistrationName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

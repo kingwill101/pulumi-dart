@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_interface_source_udp_local.dart';
 
 class DomainDevicesInterfaceSourceUdp {
   /// Defines the UDP address for the network interface, specifying where UDP packets are sent or received.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
-  final DomainDevicesInterfaceSourceUdpLocal? local;
+  final pulumi.Input<DomainDevicesInterfaceSourceUdpLocal>? local;
   /// Defines the UDP port number for the network interface, determining the endpoint for UDP communications.
-  final double? port;
+  final pulumi.Input<double>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceUdp].
   /// [address] Defines the UDP address for the network interface, specifying where UDP packets are sent or received.
@@ -23,16 +24,16 @@ class DomainDevicesInterfaceSourceUdp {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'local': ?local == null ? null : local!.toMap(),
+      'local': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceUdpLocal, Map<String, dynamic>>(local, (value) => value.toMap()),
       'port': ?port,
     };
   }
 
   factory DomainDevicesInterfaceSourceUdp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceUdp(
-      address: map['address'] == null ? null : map['address'] as String,
-      local: map['local'] == null ? null : DomainDevicesInterfaceSourceUdpLocal.fromMap((map['local'] as Map).cast<String, dynamic>()),
-      port: map['port'] == null ? null : map['port'] as double,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      local: map['local'] == null ? null : (DomainDevicesInterfaceSourceUdpLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
     );
   }
 }

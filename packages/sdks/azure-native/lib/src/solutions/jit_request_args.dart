@@ -33,21 +33,14 @@ class JitRequestArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags
   JitRequestArgs({
-    required pulumi.Output<String> applicationResourceId,
-    required pulumi.Output<List<JitAuthorizationPolicies>> jitAuthorizationPolicies,
-    pulumi.Output<String>? jitRequestName,
-    required pulumi.Output<JitSchedulingPolicy> jitSchedulingPolicy,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationResourceId = pulumi.Input.asInput<String>(applicationResourceId),
-      jitAuthorizationPolicies = pulumi.Input.asInput<List<JitAuthorizationPolicies>>(jitAuthorizationPolicies),
-      jitRequestName = pulumi.Input.asOptionalInput<String>(jitRequestName),
-      jitSchedulingPolicy = pulumi.Input.asInput<JitSchedulingPolicy>(jitSchedulingPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.applicationResourceId,
+    required this.jitAuthorizationPolicies,
+    this.jitRequestName,
+    required this.jitSchedulingPolicy,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class JitRequestArgs {
 
   factory JitRequestArgs.fromMap(Map<String, dynamic> map) {
     return JitRequestArgs(
-      applicationResourceId: pulumi.Output.create<String>(map['applicationResourceId'] as String),
-      jitAuthorizationPolicies: pulumi.Output.create<List<JitAuthorizationPolicies>>(pulumi.Input.decodeList<JitAuthorizationPolicies>(map['jitAuthorizationPolicies'], (value) => JitAuthorizationPolicies.fromMap((value as Map).cast<String, dynamic>()))),
-      jitRequestName: map['jitRequestName'] == null ? null : pulumi.Output.create<String>(map['jitRequestName'] as String),
-      jitSchedulingPolicy: pulumi.Output.create<JitSchedulingPolicy>(JitSchedulingPolicy.fromMap((map['jitSchedulingPolicy'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationResourceId: (map['applicationResourceId'] as String).input(),
+      jitAuthorizationPolicies: (pulumi.Input.decodeList<JitAuthorizationPolicies>(map['jitAuthorizationPolicies'], (value) => JitAuthorizationPolicies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jitRequestName: map['jitRequestName'] == null ? null : (map['jitRequestName'] as String).input(),
+      jitSchedulingPolicy: (JitSchedulingPolicy.fromMap((map['jitSchedulingPolicy'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

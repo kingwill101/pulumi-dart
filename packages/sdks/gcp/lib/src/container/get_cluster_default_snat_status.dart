@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterDefaultSnatStatus {
   /// When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
 
   /// Creates a new [GetClusterDefaultSnatStatus].
   /// [disabled] When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
@@ -19,7 +20,7 @@ class GetClusterDefaultSnatStatus {
 
   factory GetClusterDefaultSnatStatus.fromMap(Map<String, dynamic> map) {
     return GetClusterDefaultSnatStatus(
-      disabled: map['disabled'] as bool,
+      disabled: (map['disabled'] as bool).input(),
     );
   }
 }

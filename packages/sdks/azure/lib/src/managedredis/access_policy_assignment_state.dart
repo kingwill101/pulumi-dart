@@ -15,11 +15,9 @@ class AccessPolicyAssignmentState {
   /// [managedRedisId] The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   /// [objectId] The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
   AccessPolicyAssignmentState({
-    pulumi.Output<String>? managedRedisId,
-    pulumi.Output<String>? objectId,
-  }) :
-      managedRedisId = pulumi.Input.asOptionalInput<String>(managedRedisId),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId);
+    this.managedRedisId,
+    this.objectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class AccessPolicyAssignmentState {
 
   factory AccessPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentState(
-      managedRedisId: map['managedRedisId'] == null ? null : pulumi.Output.create<String>(map['managedRedisId'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
+      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
     );
   }
 }

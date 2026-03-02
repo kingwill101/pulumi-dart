@@ -31,17 +31,12 @@ class ClientCertificateArgs {
   /// [status] The certificate status. Valid values: `revoked`, `active`.
   /// [validityDays] Certificate validity period.
   ClientCertificateArgs({
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? pkeyType,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> validityDays,
-  }) :
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      pkeyType = pulumi.Input.asOptionalInput<String>(pkeyType),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      validityDays = pulumi.Input.asInput<String>(validityDays);
+    this.csr,
+    this.pkeyType,
+    required this.siteId,
+    this.status,
+    required this.validityDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class ClientCertificateArgs {
 
   factory ClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ClientCertificateArgs(
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      pkeyType: map['pkeyType'] == null ? null : pulumi.Output.create<String>(map['pkeyType'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      validityDays: pulumi.Output.create<String>(map['validityDays'] as String),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      validityDays: (map['validityDays'] as String).input(),
     );
   }
 }

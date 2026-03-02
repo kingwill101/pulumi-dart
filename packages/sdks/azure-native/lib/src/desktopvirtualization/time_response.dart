@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The time for a scaling action to occur.
 class TimeResponse {
   /// The hour.
-  final int hour;
+  final pulumi.Input<int> hour;
   /// The minute.
-  final int minute;
+  final pulumi.Input<int> minute;
 
   /// Creates a new [TimeResponse].
   /// [hour] The hour.
@@ -25,8 +26,8 @@ class TimeResponse {
 
   factory TimeResponse.fromMap(Map<String, dynamic> map) {
     return TimeResponse(
-      hour: map['hour'] as int,
-      minute: map['minute'] as int,
+      hour: (map['hour'] as int).input(),
+      minute: (map['minute'] as int).input(),
     );
   }
 }

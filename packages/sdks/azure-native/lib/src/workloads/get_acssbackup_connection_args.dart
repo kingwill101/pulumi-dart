@@ -19,13 +19,10 @@ class GetACSSBackupConnectionArgs {
   /// [connectorName] The name of the connector resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetACSSBackupConnectionArgs({
-    required pulumi.Output<String> backupName,
-    required pulumi.Output<String> connectorName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      backupName = pulumi.Input.asInput<String>(backupName),
-      connectorName = pulumi.Input.asInput<String>(connectorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.backupName,
+    required this.connectorName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetACSSBackupConnectionArgs {
 
   factory GetACSSBackupConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetACSSBackupConnectionArgs(
-      backupName: pulumi.Output.create<String>(map['backupName'] as String),
-      connectorName: pulumi.Output.create<String>(map['connectorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      backupName: (map['backupName'] as String).input(),
+      connectorName: (map['connectorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

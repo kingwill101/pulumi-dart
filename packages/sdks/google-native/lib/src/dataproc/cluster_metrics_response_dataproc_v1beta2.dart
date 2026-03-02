@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 class ClusterMetricsResponseDataprocV1beta2 {
   /// The HDFS metrics.
-  final Map<String, String> hdfsMetrics;
+  final pulumi.Input<Map<String, String>> hdfsMetrics;
   /// The YARN metrics.
-  final Map<String, String> yarnMetrics;
+  final pulumi.Input<Map<String, String>> yarnMetrics;
 
   /// Creates a new [ClusterMetricsResponseDataprocV1beta2].
   /// [hdfsMetrics] The HDFS metrics.
@@ -25,8 +26,8 @@ class ClusterMetricsResponseDataprocV1beta2 {
 
   factory ClusterMetricsResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ClusterMetricsResponseDataprocV1beta2(
-      hdfsMetrics: (map['hdfsMetrics'] as Map).cast<String, String>(),
-      yarnMetrics: (map['yarnMetrics'] as Map).cast<String, String>(),
+      hdfsMetrics: ((map['hdfsMetrics'] as Map).cast<String, String>()).input(),
+      yarnMetrics: ((map['yarnMetrics'] as Map).cast<String, String>()).input(),
     );
   }
 }

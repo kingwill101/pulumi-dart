@@ -25,17 +25,12 @@ class GatewayAssociationProposalArgs {
   /// [dxGatewayOwnerAccountId] AWS Account identifier of the Direct Connect Gateway's owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GatewayAssociationProposalArgs({
-    pulumi.Output<List<String>>? allowedPrefixes,
-    required pulumi.Output<String> associatedGatewayId,
-    required pulumi.Output<String> dxGatewayId,
-    required pulumi.Output<String> dxGatewayOwnerAccountId,
-    pulumi.Output<String>? region,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associatedGatewayId = pulumi.Input.asInput<String>(associatedGatewayId),
-      dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
-      dxGatewayOwnerAccountId = pulumi.Input.asInput<String>(dxGatewayOwnerAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.allowedPrefixes,
+    required this.associatedGatewayId,
+    required this.dxGatewayId,
+    required this.dxGatewayOwnerAccountId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GatewayAssociationProposalArgs {
 
   factory GatewayAssociationProposalArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationProposalArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['allowedPrefixes'] as List).cast<String>()),
-      associatedGatewayId: pulumi.Output.create<String>(map['associatedGatewayId'] as String),
-      dxGatewayId: pulumi.Output.create<String>(map['dxGatewayId'] as String),
-      dxGatewayOwnerAccountId: pulumi.Output.create<String>(map['dxGatewayOwnerAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      associatedGatewayId: (map['associatedGatewayId'] as String).input(),
+      dxGatewayId: (map['dxGatewayId'] as String).input(),
+      dxGatewayOwnerAccountId: (map['dxGatewayOwnerAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

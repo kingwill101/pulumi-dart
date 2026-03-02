@@ -16,11 +16,9 @@ class GetStandardsControlAssociationsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityControlId] The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
   GetStandardsControlAssociationsArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> securityControlId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityControlId = pulumi.Input.asInput<String>(securityControlId);
+    this.region,
+    required this.securityControlId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStandardsControlAssociationsArgs {
 
   factory GetStandardsControlAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStandardsControlAssociationsArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityControlId: pulumi.Output.create<String>(map['securityControlId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityControlId: (map['securityControlId'] as String).input(),
     );
   }
 }

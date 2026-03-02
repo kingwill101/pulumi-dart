@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_arc_kubernetes_network_function_template.dart';
 
 /// Containerized network function network function definition version properties.
 class ContainerizedNetworkFunctionDefinitionVersion {
   /// The deployment parameters of the network function definition version.
-  final String? deployParameters;
+  final pulumi.Input<String>? deployParameters;
   /// The network function definition version description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Containerized network function template.
-  final AzureArcKubernetesNetworkFunctionTemplate? networkFunctionTemplate;
+  final pulumi.Input<AzureArcKubernetesNetworkFunctionTemplate>? networkFunctionTemplate;
   /// The network function type.
   /// Expected value is 'ContainerizedNetworkFunction'.
-  final String networkFunctionType;
+  final pulumi.Input<String> networkFunctionType;
 
   /// Creates a new [ContainerizedNetworkFunctionDefinitionVersion].
   /// [deployParameters] The deployment parameters of the network function definition version.
@@ -30,17 +31,17 @@ class ContainerizedNetworkFunctionDefinitionVersion {
     return <String, dynamic>{
       'deployParameters': ?deployParameters,
       'description': ?description,
-      'networkFunctionTemplate': ?networkFunctionTemplate == null ? null : networkFunctionTemplate!.toMap(),
+      'networkFunctionTemplate': ?pulumi.Input.mapOptionalInputValue<AzureArcKubernetesNetworkFunctionTemplate, Map<String, dynamic>>(networkFunctionTemplate, (value) => value.toMap()),
       'networkFunctionType': networkFunctionType,
     };
   }
 
   factory ContainerizedNetworkFunctionDefinitionVersion.fromMap(Map<String, dynamic> map) {
     return ContainerizedNetworkFunctionDefinitionVersion(
-      deployParameters: map['deployParameters'] == null ? null : map['deployParameters'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : AzureArcKubernetesNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>()),
-      networkFunctionType: map['networkFunctionType'] as String,
+      deployParameters: map['deployParameters'] == null ? null : (map['deployParameters'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (AzureArcKubernetesNetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
+      networkFunctionType: (map['networkFunctionType'] as String).input(),
     );
   }
 }

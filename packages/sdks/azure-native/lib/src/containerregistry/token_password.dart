@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The password that will be used for authenticating the token of a container registry.
 class TokenPassword {
   /// The creation datetime of the password.
-  final String? creationTime;
+  final pulumi.Input<String>? creationTime;
   /// The expiry datetime of the password.
-  final String? expiry;
+  final pulumi.Input<String>? expiry;
   /// The password name "password1" or "password2"
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [TokenPassword].
   /// [creationTime] The creation datetime of the password.
@@ -30,9 +31,9 @@ class TokenPassword {
 
   factory TokenPassword.fromMap(Map<String, dynamic> map) {
     return TokenPassword(
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

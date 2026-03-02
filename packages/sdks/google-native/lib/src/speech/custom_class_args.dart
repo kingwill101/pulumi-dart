@@ -24,17 +24,12 @@ class CustomClassArgs {
   /// [name] The resource name of the custom class.
   /// [project] Optional.
   CustomClassArgs({
-    required pulumi.Output<String> customClassId,
-    pulumi.Output<List<ClassItem>>? items,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      customClassId = pulumi.Input.asInput<String>(customClassId),
-      items = pulumi.Input.asOptionalInput<List<ClassItem>>(items),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.customClassId,
+    this.items,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class CustomClassArgs {
 
   factory CustomClassArgs.fromMap(Map<String, dynamic> map) {
     return CustomClassArgs(
-      customClassId: pulumi.Output.create<String>(map['customClassId'] as String),
-      items: map['items'] == null ? null : pulumi.Output.create<List<ClassItem>>(pulumi.Input.decodeList<ClassItem>(map['items'], (value) => ClassItem.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      customClassId: (map['customClassId'] as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<ClassItem>(map['items'], (value) => ClassItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

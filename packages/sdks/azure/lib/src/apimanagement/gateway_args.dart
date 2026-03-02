@@ -23,15 +23,11 @@ class GatewayArgs {
   /// [locationData] A `location_data` block as documented below.
   /// [name] The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
   GatewayArgs({
-    required pulumi.Output<String> apiManagementId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<GatewayLocationData> locationData,
-    pulumi.Output<String>? name,
-  }) :
-      apiManagementId = pulumi.Input.asInput<String>(apiManagementId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      locationData = pulumi.Input.asInput<GatewayLocationData>(locationData),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.apiManagementId,
+    this.description,
+    required this.locationData,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      apiManagementId: pulumi.Output.create<String>(map['apiManagementId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      locationData: pulumi.Output.create<GatewayLocationData>(GatewayLocationData.fromMap((map['locationData'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      apiManagementId: (map['apiManagementId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      locationData: (GatewayLocationData.fromMap((map['locationData'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

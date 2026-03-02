@@ -28,21 +28,14 @@ class SiteOriginClientCertificateState {
   /// [siteOriginClientCertificateName] The certificate name.
   /// [status] The status of the certificate.
   SiteOriginClientCertificateState({
-    pulumi.Output<String>? certificate,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? privateKey,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? siteOriginClientCertificateId,
-    pulumi.Output<String>? siteOriginClientCertificateName,
-    pulumi.Output<String>? status,
-  }) :
-      certificate = pulumi.Input.asOptionalInput<String>(certificate),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      privateKey = pulumi.Input.asOptionalInput<String>(privateKey),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      siteOriginClientCertificateId = pulumi.Input.asOptionalInput<String>(siteOriginClientCertificateId),
-      siteOriginClientCertificateName = pulumi.Input.asOptionalInput<String>(siteOriginClientCertificateName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.certificate,
+    this.createTime,
+    this.privateKey,
+    this.siteId,
+    this.siteOriginClientCertificateId,
+    this.siteOriginClientCertificateName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class SiteOriginClientCertificateState {
 
   factory SiteOriginClientCertificateState.fromMap(Map<String, dynamic> map) {
     return SiteOriginClientCertificateState(
-      certificate: map['certificate'] == null ? null : pulumi.Output.create<String>(map['certificate'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      privateKey: map['privateKey'] == null ? null : pulumi.Output.create<String>(map['privateKey'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      siteOriginClientCertificateId: map['siteOriginClientCertificateId'] == null ? null : pulumi.Output.create<String>(map['siteOriginClientCertificateId'] as String),
-      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : pulumi.Output.create<String>(map['siteOriginClientCertificateName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      siteOriginClientCertificateId: map['siteOriginClientCertificateId'] == null ? null : (map['siteOriginClientCertificateId'] as String).input(),
+      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforcePoolAccessRestrictionsAllowedService {
   /// Domain name of the service.
   /// Example: console.cloud.google
-  final String? domain;
+  final pulumi.Input<String>? domain;
 
   /// Creates a new [WorkforcePoolAccessRestrictionsAllowedService].
   /// [domain] Domain name of the service.
@@ -20,7 +21,7 @@ class WorkforcePoolAccessRestrictionsAllowedService {
 
   factory WorkforcePoolAccessRestrictionsAllowedService.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolAccessRestrictionsAllowedService(
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
     );
   }
 }

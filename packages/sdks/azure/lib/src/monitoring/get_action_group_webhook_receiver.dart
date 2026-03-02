@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_action_group_webhook_receiver_aad_auth.dart';
 
 class GetActionGroupWebhookReceiver {
-  final List<GetActionGroupWebhookReceiverAadAuth> aadAuths;
+  final pulumi.Input<List<GetActionGroupWebhookReceiverAadAuth>> aadAuths;
   /// Specifies the name of the Action Group.
-  final String name;
+  final pulumi.Input<String> name;
   /// The URI where webhooks should be sent.
-  final String serviceUri;
+  final pulumi.Input<String> serviceUri;
   /// Indicates whether to use common alert schema.
-  final bool useCommonAlertSchema;
+  final pulumi.Input<bool> useCommonAlertSchema;
 
   /// Creates a new [GetActionGroupWebhookReceiver].
   /// [aadAuths] Required.
@@ -26,7 +26,7 @@ class GetActionGroupWebhookReceiver {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aadAuths': pulumi.Input.encodeList<GetActionGroupWebhookReceiverAadAuth, Map<String, dynamic>>(aadAuths, (value) => value.toMap()),
+      'aadAuths': pulumi.Input.mapInputValue<List<GetActionGroupWebhookReceiverAadAuth>, List<Map<String, dynamic>>>(aadAuths, (value) => pulumi.Input.encodeList<GetActionGroupWebhookReceiverAadAuth, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'serviceUri': serviceUri,
       'useCommonAlertSchema': useCommonAlertSchema,
@@ -35,10 +35,10 @@ class GetActionGroupWebhookReceiver {
 
   factory GetActionGroupWebhookReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupWebhookReceiver(
-      aadAuths: pulumi.Input.decodeList<GetActionGroupWebhookReceiverAadAuth>(map['aadAuths'], (value) => GetActionGroupWebhookReceiverAadAuth.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      serviceUri: map['serviceUri'] as String,
-      useCommonAlertSchema: map['useCommonAlertSchema'] as bool,
+      aadAuths: (pulumi.Input.decodeList<GetActionGroupWebhookReceiverAadAuth>(map['aadAuths'], (value) => GetActionGroupWebhookReceiverAadAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      serviceUri: (map['serviceUri'] as String).input(),
+      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
     );
   }
 }

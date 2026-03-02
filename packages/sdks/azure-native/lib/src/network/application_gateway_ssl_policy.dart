@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Application Gateway Ssl policy.
 class ApplicationGatewaySslPolicy {
   /// Ssl cipher suites to be enabled in the specified order to application gateway.
-  final List<String>? cipherSuites;
+  final pulumi.Input<List<String>>? cipherSuites;
   /// Ssl protocols to be disabled on application gateway.
-  final List<String>? disabledSslProtocols;
+  final pulumi.Input<List<String>>? disabledSslProtocols;
   /// Minimum version of Ssl protocol to be supported on application gateway.
-  final String? minProtocolVersion;
+  final pulumi.Input<String>? minProtocolVersion;
   /// Name of Ssl predefined policy.
-  final String? policyName;
+  final pulumi.Input<String>? policyName;
   /// Type of Ssl Policy.
-  final String? policyType;
+  final pulumi.Input<String>? policyType;
 
   /// Creates a new [ApplicationGatewaySslPolicy].
   /// [cipherSuites] Ssl cipher suites to be enabled in the specified order to application gateway.
@@ -40,11 +41,11 @@ class ApplicationGatewaySslPolicy {
 
   factory ApplicationGatewaySslPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslPolicy(
-      cipherSuites: map['cipherSuites'] == null ? null : (map['cipherSuites'] as List).cast<String>(),
-      disabledSslProtocols: map['disabledSslProtocols'] == null ? null : (map['disabledSslProtocols'] as List).cast<String>(),
-      minProtocolVersion: map['minProtocolVersion'] == null ? null : map['minProtocolVersion'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
+      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites'] as List).cast<String>()).input(),
+      disabledSslProtocols: map['disabledSslProtocols'] == null ? null : ((map['disabledSslProtocols'] as List).cast<String>()).input(),
+      minProtocolVersion: map['minProtocolVersion'] == null ? null : (map['minProtocolVersion'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
     );
   }
 }

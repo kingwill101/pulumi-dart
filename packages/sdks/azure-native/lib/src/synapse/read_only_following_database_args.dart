@@ -32,21 +32,14 @@ class ReadOnlyFollowingDatabaseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   ReadOnlyFollowingDatabaseArgs({
-    pulumi.Output<String>? databaseName,
-    pulumi.Output<String>? hotCachePeriod,
-    required pulumi.Output<String> kind,
-    required pulumi.Output<String> kustoPoolName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
-      hotCachePeriod = pulumi.Input.asOptionalInput<String>(hotCachePeriod),
-      kind = pulumi.Input.asInput<String>(kind),
-      kustoPoolName = pulumi.Input.asInput<String>(kustoPoolName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.databaseName,
+    this.hotCachePeriod,
+    required this.kind,
+    required this.kustoPoolName,
+    this.location,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ReadOnlyFollowingDatabaseArgs {
 
   factory ReadOnlyFollowingDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadOnlyFollowingDatabaseArgs(
-      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : pulumi.Output.create<String>(map['hotCachePeriod'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      kustoPoolName: pulumi.Output.create<String>(map['kustoPoolName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      kustoPoolName: (map['kustoPoolName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

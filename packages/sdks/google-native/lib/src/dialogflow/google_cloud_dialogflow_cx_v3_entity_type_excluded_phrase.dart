@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// An excluded entity phrase that should not be matched.
 class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
   /// The word or phrase to be excluded.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase].
   /// [value] The word or phrase to be excluded.
@@ -20,7 +21,7 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
 
   factory GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

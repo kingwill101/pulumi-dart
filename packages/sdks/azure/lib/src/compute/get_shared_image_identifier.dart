@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSharedImageIdentifier {
   /// The Offer Name for this Shared Image.
-  final String offer;
+  final pulumi.Input<String> offer;
   /// (Optional) The Purchase Plan Publisher for this Gallery Image.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// The Name of the SKU for this Gallery Image.
-  final String sku;
+  final pulumi.Input<String> sku;
 
   /// Creates a new [GetSharedImageIdentifier].
   /// [offer] The Offer Name for this Shared Image.
@@ -29,9 +30,9 @@ class GetSharedImageIdentifier {
 
   factory GetSharedImageIdentifier.fromMap(Map<String, dynamic> map) {
     return GetSharedImageIdentifier(
-      offer: map['offer'] as String,
-      publisher: map['publisher'] as String,
-      sku: map['sku'] as String,
+      offer: (map['offer'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      sku: (map['sku'] as String).input(),
     );
   }
 }

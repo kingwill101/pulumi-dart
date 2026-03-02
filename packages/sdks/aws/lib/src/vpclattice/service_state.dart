@@ -40,27 +40,17 @@ class ServiceState {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   ServiceState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authType,
-    pulumi.Output<String>? certificateArn,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<List<ServiceDnsEntry>>? dnsEntries,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authType = pulumi.Input.asOptionalInput<String>(authType),
-      certificateArn = pulumi.Input.asOptionalInput<String>(certificateArn),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      dnsEntries = pulumi.Input.asOptionalInput<List<ServiceDnsEntry>>(dnsEntries),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.authType,
+    this.certificateArn,
+    this.customDomainName,
+    this.dnsEntries,
+    this.name,
+    this.region,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authType: map['authType'] == null ? null : pulumi.Output.create<String>(map['authType'] as String),
-      certificateArn: map['certificateArn'] == null ? null : pulumi.Output.create<String>(map['certificateArn'] as String),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      dnsEntries: map['dnsEntries'] == null ? null : pulumi.Output.create<List<ServiceDnsEntry>>(pulumi.Input.decodeList<ServiceDnsEntry>(map['dnsEntries'], (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : (pulumi.Input.decodeList<ServiceDnsEntry>(map['dnsEntries'], (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

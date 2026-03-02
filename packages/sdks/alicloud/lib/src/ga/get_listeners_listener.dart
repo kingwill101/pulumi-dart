@@ -6,23 +6,23 @@ import 'get_listeners_listener_port_range.dart';
 
 class GetListenersListener {
   /// The certificates of the listener.
-  final List<GetListenersListenerCertificate> certificates;
+  final pulumi.Input<List<GetListenersListenerCertificate>> certificates;
   /// The clientAffinity of the listener.
-  final String clientAffinity;
+  final pulumi.Input<String> clientAffinity;
   /// The description of the listener.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Listener.
-  final String id;
+  final pulumi.Input<String> id;
   /// The listenerId of the listener.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
-  final String name;
+  final pulumi.Input<String> name;
   /// The portRanges of the listener.
-  final List<GetListenersListenerPortRange> portRanges;
+  final pulumi.Input<List<GetListenersListenerPortRange>> portRanges;
   /// Type of network transport protocol monitored.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The status of the listener. Valid values: `active`, `configuring`, `creating`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetListenersListener].
   /// [certificates] The certificates of the listener.
@@ -48,13 +48,13 @@ class GetListenersListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<GetListenersListenerCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates': pulumi.Input.mapInputValue<List<GetListenersListenerCertificate>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<GetListenersListenerCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
       'clientAffinity': clientAffinity,
       'description': description,
       'id': id,
       'listenerId': listenerId,
       'name': name,
-      'portRanges': pulumi.Input.encodeList<GetListenersListenerPortRange, Map<String, dynamic>>(portRanges, (value) => value.toMap()),
+      'portRanges': pulumi.Input.mapInputValue<List<GetListenersListenerPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<GetListenersListenerPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'protocol': protocol,
       'status': status,
     };
@@ -62,15 +62,15 @@ class GetListenersListener {
 
   factory GetListenersListener.fromMap(Map<String, dynamic> map) {
     return GetListenersListener(
-      certificates: pulumi.Input.decodeList<GetListenersListenerCertificate>(map['certificates'], (value) => GetListenersListenerCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      clientAffinity: map['clientAffinity'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      name: map['name'] as String,
-      portRanges: pulumi.Input.decodeList<GetListenersListenerPortRange>(map['portRanges'], (value) => GetListenersListenerPortRange.fromMap((value as Map).cast<String, dynamic>())),
-      protocol: map['protocol'] as String,
-      status: map['status'] as String,
+      certificates: (pulumi.Input.decodeList<GetListenersListenerCertificate>(map['certificates'], (value) => GetListenersListenerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAffinity: (map['clientAffinity'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      name: (map['name'] as String).input(),
+      portRanges: (pulumi.Input.decodeList<GetListenersListenerPortRange>(map['portRanges'], (value) => GetListenersListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: (map['protocol'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

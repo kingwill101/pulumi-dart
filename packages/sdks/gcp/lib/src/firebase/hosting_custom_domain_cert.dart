@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_custom_domain_cert_verification.dart';
 
 class HostingCustomDomainCert {
@@ -8,16 +9,16 @@ class HostingCustomDomainCert {
   /// state is `PROPAGATING` and Hosting had an active cert for the domain name
   /// before, that formerly-active cert provides SSL coverage for the domain name
   /// until the current cert propagates.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The record's type, which determines what data the record contains.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// A set of ACME challenges you can add to your DNS records or existing,
   /// non-Hosting hosting provider to allow Hosting to create an SSL certificate
   /// for your domain name before you point traffic toward hosting. You can use
   /// thse challenges as part of a zero downtime transition from your old
   /// provider to Hosting.
   /// Structure is documented below.
-  final HostingCustomDomainCertVerification? verification;
+  final pulumi.Input<HostingCustomDomainCertVerification>? verification;
 
   /// Creates a new [HostingCustomDomainCert].
   /// [state] The state of the certificate. Only the `CERT_ACTIVE` and
@@ -33,15 +34,15 @@ class HostingCustomDomainCert {
     return <String, dynamic>{
       'state': ?state,
       'type': ?type,
-      'verification': ?verification == null ? null : verification!.toMap(),
+      'verification': ?pulumi.Input.mapOptionalInputValue<HostingCustomDomainCertVerification, Map<String, dynamic>>(verification, (value) => value.toMap()),
     };
   }
 
   factory HostingCustomDomainCert.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCert(
-      state: map['state'] == null ? null : map['state'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      verification: map['verification'] == null ? null : HostingCustomDomainCertVerification.fromMap((map['verification'] as Map).cast<String, dynamic>()),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      verification: map['verification'] == null ? null : (HostingCustomDomainCertVerification.fromMap((map['verification'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

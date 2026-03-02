@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
-  final int? from;
-  final int? to;
+  final pulumi.Input<int>? from;
+  final pulumi.Input<int>? to;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentAclRulePortRange].
   /// [from] Optional.
@@ -22,8 +23,8 @@ class NetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
 
   factory NetworkInsightsAnalysisReturnPathComponentAclRulePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentAclRulePortRange(
-      from: map['from'] == null ? null : map['from'] as int,
-      to: map['to'] == null ? null : map['to'] as int,
+      from: map['from'] == null ? null : (map['from'] as int).input(),
+      to: map['to'] == null ? null : (map['to'] as int).input(),
     );
   }
 }

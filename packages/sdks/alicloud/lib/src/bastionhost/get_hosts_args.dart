@@ -43,29 +43,18 @@ class GetHostsArgs {
   /// [sourceInstanceId] Specify the newly created ECS instance ID or dedicated cluster host ID.
   /// [sourceInstanceState] The source instance state.
   GetHostsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<String>? hostAddress,
-    pulumi.Output<String>? hostName,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? osType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? sourceInstanceId,
-    pulumi.Output<String>? sourceInstanceState,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      hostAddress = pulumi.Input.asOptionalInput<String>(hostAddress),
-      hostName = pulumi.Input.asOptionalInput<String>(hostName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      sourceInstanceId = pulumi.Input.asOptionalInput<String>(sourceInstanceId),
-      sourceInstanceState = pulumi.Input.asOptionalInput<String>(sourceInstanceState);
+    this.enableDetails,
+    this.hostAddress,
+    this.hostName,
+    this.ids,
+    required this.instanceId,
+    this.nameRegex,
+    this.osType,
+    this.outputFile,
+    this.source,
+    this.sourceInstanceId,
+    this.sourceInstanceState,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetHostsArgs {
 
   factory GetHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      hostAddress: map['hostAddress'] == null ? null : pulumi.Output.create<String>(map['hostAddress'] as String),
-      hostName: map['hostName'] == null ? null : pulumi.Output.create<String>(map['hostName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : pulumi.Output.create<String>(map['sourceInstanceId'] as String),
-      sourceInstanceState: map['sourceInstanceState'] == null ? null : pulumi.Output.create<String>(map['sourceInstanceState'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      hostAddress: map['hostAddress'] == null ? null : (map['hostAddress'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId'] as String).input(),
+      sourceInstanceState: map['sourceInstanceState'] == null ? null : (map['sourceInstanceState'] as String).input(),
     );
   }
 }

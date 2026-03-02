@@ -7,17 +7,17 @@ class BackendServiceFabricCluster {
   /// The client certificate resource id for the management endpoint.
   ///
   /// > **Note:** At least one of `client_certificate_thumbprint`, and `client_certificate_id` must be set.
-  final String? clientCertificateId;
+  final pulumi.Input<String>? clientCertificateId;
   /// The client certificate thumbprint for the management endpoint.
-  final String? clientCertificateThumbprint;
+  final pulumi.Input<String>? clientCertificateThumbprint;
   /// A list of cluster management endpoints.
-  final List<String> managementEndpoints;
+  final pulumi.Input<List<String>> managementEndpoints;
   /// The maximum number of retries when attempting resolve the partition.
-  final int maxPartitionResolutionRetries;
+  final pulumi.Input<int> maxPartitionResolutionRetries;
   /// A list of thumbprints of the server certificates of the Service Fabric cluster.
-  final List<String>? serverCertificateThumbprints;
+  final pulumi.Input<List<String>>? serverCertificateThumbprints;
   /// One or more `server_x509_name` blocks as documented below.
-  final List<BackendServiceFabricClusterServerX509Name>? serverX509Names;
+  final pulumi.Input<List<BackendServiceFabricClusterServerX509Name>>? serverX509Names;
 
   /// Creates a new [BackendServiceFabricCluster].
   /// [clientCertificateId] The client certificate resource id for the management endpoint.
@@ -42,18 +42,18 @@ class BackendServiceFabricCluster {
       'managementEndpoints': managementEndpoints,
       'maxPartitionResolutionRetries': maxPartitionResolutionRetries,
       'serverCertificateThumbprints': ?serverCertificateThumbprints,
-      'serverX509Names': ?serverX509Names == null ? null : pulumi.Input.encodeList<BackendServiceFabricClusterServerX509Name, Map<String, dynamic>>(serverX509Names!, (value) => value.toMap()),
+      'serverX509Names': ?pulumi.Input.mapOptionalInputValue<List<BackendServiceFabricClusterServerX509Name>, List<Map<String, dynamic>>>(serverX509Names, (value) => pulumi.Input.encodeList<BackendServiceFabricClusterServerX509Name, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BackendServiceFabricCluster.fromMap(Map<String, dynamic> map) {
     return BackendServiceFabricCluster(
-      clientCertificateId: map['clientCertificateId'] == null ? null : map['clientCertificateId'] as String,
-      clientCertificateThumbprint: map['clientCertificateThumbprint'] == null ? null : map['clientCertificateThumbprint'] as String,
-      managementEndpoints: (map['managementEndpoints'] as List).cast<String>(),
-      maxPartitionResolutionRetries: map['maxPartitionResolutionRetries'] as int,
-      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : (map['serverCertificateThumbprints'] as List).cast<String>(),
-      serverX509Names: map['serverX509Names'] == null ? null : pulumi.Input.decodeList<BackendServiceFabricClusterServerX509Name>(map['serverX509Names'], (value) => BackendServiceFabricClusterServerX509Name.fromMap((value as Map).cast<String, dynamic>())),
+      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
+      clientCertificateThumbprint: map['clientCertificateThumbprint'] == null ? null : (map['clientCertificateThumbprint'] as String).input(),
+      managementEndpoints: ((map['managementEndpoints'] as List).cast<String>()).input(),
+      maxPartitionResolutionRetries: (map['maxPartitionResolutionRetries'] as int).input(),
+      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : ((map['serverCertificateThumbprints'] as List).cast<String>()).input(),
+      serverX509Names: map['serverX509Names'] == null ? null : (pulumi.Input.decodeList<BackendServiceFabricClusterServerX509Name>(map['serverX509Names'], (value) => BackendServiceFabricClusterServerX509Name.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

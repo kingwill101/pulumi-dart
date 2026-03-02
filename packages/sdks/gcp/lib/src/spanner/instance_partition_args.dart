@@ -39,21 +39,14 @@ class InstancePartitionArgs {
   /// [processingUnits] The number of processing units allocated to this instance partition.
   /// [project] The ID of the project in which the resource belongs.
   InstancePartitionArgs({
-    required pulumi.Output<String> config,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<int>? processingUnits,
-    pulumi.Output<String>? project,
-  }) :
-      config = pulumi.Input.asInput<String>(config),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      processingUnits = pulumi.Input.asOptionalInput<int>(processingUnits),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.config,
+    required this.displayName,
+    required this.instance,
+    this.name,
+    this.nodeCount,
+    this.processingUnits,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +62,13 @@ class InstancePartitionArgs {
 
   factory InstancePartitionArgs.fromMap(Map<String, dynamic> map) {
     return InstancePartitionArgs(
-      config: pulumi.Output.create<String>(map['config'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      processingUnits: map['processingUnits'] == null ? null : pulumi.Output.create<int>(map['processingUnits'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      config: (map['config'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      instance: (map['instance'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQueryLogConfigFilter {
   /// The name of the query logging configuration.
-  final String name;
-  final List<String> values;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetQueryLogConfigFilter].
   /// [name] The name of the query logging configuration.
@@ -23,8 +24,8 @@ class GetQueryLogConfigFilter {
 
   factory GetQueryLogConfigFilter.fromMap(Map<String, dynamic> map) {
     return GetQueryLogConfigFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

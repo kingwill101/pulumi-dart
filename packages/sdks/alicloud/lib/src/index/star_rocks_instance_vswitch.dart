@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StarRocksInstanceVswitch {
   /// ID of VSwitch.
-  final String vswitchId;
+  final pulumi.Input<String> vswitchId;
   /// Zone ID of VSwitch.
-  final String? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   /// Creates a new [StarRocksInstanceVswitch].
   /// [vswitchId] ID of VSwitch.
@@ -24,8 +25,8 @@ class StarRocksInstanceVswitch {
 
   factory StarRocksInstanceVswitch.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceVswitch(
-      vswitchId: map['vswitchId'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      vswitchId: (map['vswitchId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

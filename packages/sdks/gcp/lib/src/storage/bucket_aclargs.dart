@@ -24,15 +24,11 @@ class BucketACLArgs {
   /// [predefinedAcl] The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
   BucketACLArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? defaultAcl,
-    pulumi.Output<String>? predefinedAcl,
-    pulumi.Output<List<String>>? roleEntities,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      defaultAcl = pulumi.Input.asOptionalInput<String>(defaultAcl),
-      predefinedAcl = pulumi.Input.asOptionalInput<String>(predefinedAcl),
-      roleEntities = pulumi.Input.asOptionalInput<List<String>>(roleEntities);
+    required this.bucket,
+    this.defaultAcl,
+    this.predefinedAcl,
+    this.roleEntities,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class BucketACLArgs {
 
   factory BucketACLArgs.fromMap(Map<String, dynamic> map) {
     return BucketACLArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      defaultAcl: map['defaultAcl'] == null ? null : pulumi.Output.create<String>(map['defaultAcl'] as String),
-      predefinedAcl: map['predefinedAcl'] == null ? null : pulumi.Output.create<String>(map['predefinedAcl'] as String),
-      roleEntities: map['roleEntities'] == null ? null : pulumi.Output.create<List<String>>((map['roleEntities'] as List).cast<String>()),
+      bucket: (map['bucket'] as String).input(),
+      defaultAcl: map['defaultAcl'] == null ? null : (map['defaultAcl'] as String).input(),
+      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl'] as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
     );
   }
 }

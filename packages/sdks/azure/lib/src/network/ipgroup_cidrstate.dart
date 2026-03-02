@@ -17,11 +17,9 @@ class IPGroupCIDRState {
   /// [cidr] The `CIDR` that should be added to the IP Group.
   /// [ipGroupId] The ID of the destination IP Group.
   IPGroupCIDRState({
-    pulumi.Output<String>? cidr,
-    pulumi.Output<String>? ipGroupId,
-  }) :
-      cidr = pulumi.Input.asOptionalInput<String>(cidr),
-      ipGroupId = pulumi.Input.asOptionalInput<String>(ipGroupId);
+    this.cidr,
+    this.ipGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class IPGroupCIDRState {
 
   factory IPGroupCIDRState.fromMap(Map<String, dynamic> map) {
     return IPGroupCIDRState(
-      cidr: map['cidr'] == null ? null : pulumi.Output.create<String>(map['cidr'] as String),
-      ipGroupId: map['ipGroupId'] == null ? null : pulumi.Output.create<String>(map['ipGroupId'] as String),
+      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      ipGroupId: map['ipGroupId'] == null ? null : (map['ipGroupId'] as String).input(),
     );
   }
 }

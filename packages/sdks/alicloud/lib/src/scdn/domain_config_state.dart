@@ -23,17 +23,12 @@ class DomainConfigState {
   /// [functionName] The name of the domain config.
   /// [status] The status of this resource.
   DomainConfigState({
-    pulumi.Output<String>? configId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<List<DomainConfigFunctionArg>>? functionArgs,
-    pulumi.Output<String>? functionName,
-    pulumi.Output<String>? status,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      functionArgs = pulumi.Input.asOptionalInput<List<DomainConfigFunctionArg>>(functionArgs),
-      functionName = pulumi.Input.asOptionalInput<String>(functionName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.configId,
+    this.domainName,
+    this.functionArgs,
+    this.functionName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class DomainConfigState {
 
   factory DomainConfigState.fromMap(Map<String, dynamic> map) {
     return DomainConfigState(
-      configId: map['configId'] == null ? null : pulumi.Output.create<String>(map['configId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      functionArgs: map['functionArgs'] == null ? null : pulumi.Output.create<List<DomainConfigFunctionArg>>(pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))),
-      functionName: map['functionName'] == null ? null : pulumi.Output.create<String>(map['functionName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      functionArgs: map['functionArgs'] == null ? null : (pulumi.Input.decodeList<DomainConfigFunctionArg>(map['functionArgs'], (value) => DomainConfigFunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

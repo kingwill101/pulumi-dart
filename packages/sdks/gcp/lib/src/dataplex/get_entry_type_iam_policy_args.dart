@@ -23,13 +23,10 @@ class GetEntryTypeIamPolicyArgs {
   /// [location] The location where entry type will be created in.
   /// [project] The ID of the project in which the resource belongs.
   GetEntryTypeIamPolicyArgs({
-    required pulumi.Output<String> entryTypeId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      entryTypeId = pulumi.Input.asInput<String>(entryTypeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.entryTypeId,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetEntryTypeIamPolicyArgs {
 
   factory GetEntryTypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryTypeIamPolicyArgs(
-      entryTypeId: pulumi.Output.create<String>(map['entryTypeId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      entryTypeId: (map['entryTypeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

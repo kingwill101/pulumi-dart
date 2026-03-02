@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'conditions_response.dart';
 import 'scope_response.dart';
 import 'suppression_config_response.dart';
@@ -7,26 +8,26 @@ import 'suppression_config_response.dart';
 /// Action rule with suppression configuration
 class SuppressionResponse {
   /// conditions on which alerts will be filtered
-  final ConditionsResponse? conditions;
+  final pulumi.Input<ConditionsResponse>? conditions;
   /// Creation time of action rule. Date-Time in ISO-8601 format.
-  final String createdAt;
+  final pulumi.Input<String> createdAt;
   /// Created by user name.
-  final String createdBy;
+  final pulumi.Input<String> createdBy;
   /// Description of action rule
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Last updated time of action rule. Date-Time in ISO-8601 format.
-  final String lastModifiedAt;
+  final pulumi.Input<String> lastModifiedAt;
   /// Last modified by user name.
-  final String lastModifiedBy;
+  final pulumi.Input<String> lastModifiedBy;
   /// scope on which action rule will apply
-  final ScopeResponse? scope;
+  final pulumi.Input<ScopeResponse>? scope;
   /// Indicates if the given action rule is enabled or disabled
-  final String? status;
+  final pulumi.Input<String>? status;
   /// suppression configuration for the action rule
-  final SuppressionConfigResponse suppressionConfig;
+  final pulumi.Input<SuppressionConfigResponse> suppressionConfig;
   /// Indicates type of action rule
   /// Expected value is 'Suppression'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [SuppressionResponse].
   /// [conditions] conditions on which alerts will be filtered
@@ -54,31 +55,31 @@ class SuppressionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : conditions!.toMap(),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<ConditionsResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
       'createdAt': createdAt,
       'createdBy': createdBy,
       'description': ?description,
       'lastModifiedAt': lastModifiedAt,
       'lastModifiedBy': lastModifiedBy,
-      'scope': ?scope == null ? null : scope!.toMap(),
+      'scope': ?pulumi.Input.mapOptionalInputValue<ScopeResponse, Map<String, dynamic>>(scope, (value) => value.toMap()),
       'status': ?status,
-      'suppressionConfig': suppressionConfig.toMap(),
+      'suppressionConfig': pulumi.Input.mapInputValue<SuppressionConfigResponse, Map<String, dynamic>>(suppressionConfig, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory SuppressionResponse.fromMap(Map<String, dynamic> map) {
     return SuppressionResponse(
-      conditions: map['conditions'] == null ? null : ConditionsResponse.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      lastModifiedBy: map['lastModifiedBy'] as String,
-      scope: map['scope'] == null ? null : ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
-      suppressionConfig: SuppressionConfigResponse.fromMap((map['suppressionConfig'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      conditions: map['conditions'] == null ? null : (ConditionsResponse.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
+      createdAt: (map['createdAt'] as String).input(),
+      createdBy: (map['createdBy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
+      lastModifiedBy: (map['lastModifiedBy'] as String).input(),
+      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      suppressionConfig: (SuppressionConfigResponse.fromMap((map['suppressionConfig'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

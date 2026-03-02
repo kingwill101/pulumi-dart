@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecMaintenance {
   /// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-  final bool? archive;
+  final pulumi.Input<bool>? archive;
   /// Indicates whether maintenance mode should be enabled for the app.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// A custom offline page to display when maintenance mode is enabled or the app is archived.
-  final String? offlinePageUrl;
+  final pulumi.Input<String>? offlinePageUrl;
 
   /// Creates a new [AppSpecMaintenance].
   /// [archive] Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
@@ -29,9 +30,9 @@ class AppSpecMaintenance {
 
   factory AppSpecMaintenance.fromMap(Map<String, dynamic> map) {
     return AppSpecMaintenance(
-      archive: map['archive'] == null ? null : map['archive'] as bool,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      offlinePageUrl: map['offlinePageUrl'] == null ? null : map['offlinePageUrl'] as String,
+      archive: map['archive'] == null ? null : (map['archive'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      offlinePageUrl: map['offlinePageUrl'] == null ? null : (map['offlinePageUrl'] as String).input(),
     );
   }
 }

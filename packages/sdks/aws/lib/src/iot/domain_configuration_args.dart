@@ -48,31 +48,19 @@ class DomainConfigurationArgs {
   /// [tlsConfig] An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
   /// [validationCertificateArn] The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
   DomainConfigurationArgs({
-    pulumi.Output<String>? applicationProtocol,
-    pulumi.Output<String>? authenticationType,
-    pulumi.Output<DomainConfigurationAuthorizerConfig>? authorizerConfig,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? serverCertificateArns,
-    pulumi.Output<String>? serviceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<DomainConfigurationTlsConfig>? tlsConfig,
-    pulumi.Output<String>? validationCertificateArn,
-  }) :
-      applicationProtocol = pulumi.Input.asOptionalInput<String>(applicationProtocol),
-      authenticationType = pulumi.Input.asOptionalInput<String>(authenticationType),
-      authorizerConfig = pulumi.Input.asOptionalInput<DomainConfigurationAuthorizerConfig>(authorizerConfig),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serverCertificateArns = pulumi.Input.asOptionalInput<List<String>>(serverCertificateArns),
-      serviceType = pulumi.Input.asOptionalInput<String>(serviceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tlsConfig = pulumi.Input.asOptionalInput<DomainConfigurationTlsConfig>(tlsConfig),
-      validationCertificateArn = pulumi.Input.asOptionalInput<String>(validationCertificateArn);
+    this.applicationProtocol,
+    this.authenticationType,
+    this.authorizerConfig,
+    this.domainName,
+    this.name,
+    this.region,
+    this.serverCertificateArns,
+    this.serviceType,
+    this.status,
+    this.tags,
+    this.tlsConfig,
+    this.validationCertificateArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class DomainConfigurationArgs {
 
   factory DomainConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationArgs(
-      applicationProtocol: map['applicationProtocol'] == null ? null : pulumi.Output.create<String>(map['applicationProtocol'] as String),
-      authenticationType: map['authenticationType'] == null ? null : pulumi.Output.create<String>(map['authenticationType'] as String),
-      authorizerConfig: map['authorizerConfig'] == null ? null : pulumi.Output.create<DomainConfigurationAuthorizerConfig>(DomainConfigurationAuthorizerConfig.fromMap((map['authorizerConfig'] as Map).cast<String, dynamic>())),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serverCertificateArns: map['serverCertificateArns'] == null ? null : pulumi.Output.create<List<String>>((map['serverCertificateArns'] as List).cast<String>()),
-      serviceType: map['serviceType'] == null ? null : pulumi.Output.create<String>(map['serviceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tlsConfig: map['tlsConfig'] == null ? null : pulumi.Output.create<DomainConfigurationTlsConfig>(DomainConfigurationTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())),
-      validationCertificateArn: map['validationCertificateArn'] == null ? null : pulumi.Output.create<String>(map['validationCertificateArn'] as String),
+      applicationProtocol: map['applicationProtocol'] == null ? null : (map['applicationProtocol'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      authorizerConfig: map['authorizerConfig'] == null ? null : (DomainConfigurationAuthorizerConfig.fromMap((map['authorizerConfig'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serverCertificateArns: map['serverCertificateArns'] == null ? null : ((map['serverCertificateArns'] as List).cast<String>()).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (DomainConfigurationTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      validationCertificateArn: map['validationCertificateArn'] == null ? null : (map['validationCertificateArn'] as String).input(),
     );
   }
 }

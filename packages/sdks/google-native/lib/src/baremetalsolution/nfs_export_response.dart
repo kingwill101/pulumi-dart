@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A NFS export entry.
 class NfsExportResponse {
   /// Allow dev flag in NfsShare AllowedClientsRequest.
-  final bool allowDev;
+  final pulumi.Input<bool> allowDev;
   /// Allow the setuid flag.
-  final bool allowSuid;
+  final pulumi.Input<bool> allowSuid;
   /// A CIDR range.
-  final String cidr;
+  final pulumi.Input<String> cidr;
   /// Either a single machine, identified by an ID, or a comma-separated list of machine IDs.
-  final String machineId;
+  final pulumi.Input<String> machineId;
   /// Network to use to publish the export.
-  final String networkId;
+  final pulumi.Input<String> networkId;
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
-  final bool noRootSquash;
+  final pulumi.Input<bool> noRootSquash;
   /// Export permissions.
-  final String permissions;
+  final pulumi.Input<String> permissions;
 
   /// Creates a new [NfsExportResponse].
   /// [allowDev] Allow dev flag in NfsShare AllowedClientsRequest.
@@ -50,13 +51,13 @@ class NfsExportResponse {
 
   factory NfsExportResponse.fromMap(Map<String, dynamic> map) {
     return NfsExportResponse(
-      allowDev: map['allowDev'] as bool,
-      allowSuid: map['allowSuid'] as bool,
-      cidr: map['cidr'] as String,
-      machineId: map['machineId'] as String,
-      networkId: map['networkId'] as String,
-      noRootSquash: map['noRootSquash'] as bool,
-      permissions: map['permissions'] as String,
+      allowDev: (map['allowDev'] as bool).input(),
+      allowSuid: (map['allowSuid'] as bool).input(),
+      cidr: (map['cidr'] as String).input(),
+      machineId: (map['machineId'] as String).input(),
+      networkId: (map['networkId'] as String).input(),
+      noRootSquash: (map['noRootSquash'] as bool).input(),
+      permissions: (map['permissions'] as String).input(),
     );
   }
 }

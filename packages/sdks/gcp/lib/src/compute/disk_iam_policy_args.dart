@@ -26,15 +26,11 @@ class DiskIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   DiskIamPolicyArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? zone,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.name,
+    required this.policyData,
+    this.project,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class DiskIamPolicyArgs {
 
   factory DiskIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DiskIamPolicyArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

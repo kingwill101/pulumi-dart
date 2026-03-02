@@ -51,31 +51,19 @@ class ImageRecipeArgs {
   /// [version] The semantic version of the image recipe, which specifies the version in the following format, with numeric values in each position to indicate a specific version: major.minor.patch. For example: 1.0.0.
   /// [workingDirectory] The working directory to be used during build and test workflows.
   ImageRecipeArgs({
-    pulumi.Output<Map<String, String>>? amiTags,
-    pulumi.Output<List<ImageRecipeBlockDeviceMapping>>? blockDeviceMappings,
-    required pulumi.Output<List<ImageRecipeComponent>> components,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parentImage,
-    pulumi.Output<String>? region,
-    pulumi.Output<ImageRecipeSystemsManagerAgent>? systemsManagerAgent,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? userDataBase64,
-    required pulumi.Output<String> version,
-    pulumi.Output<String>? workingDirectory,
-  }) :
-      amiTags = pulumi.Input.asOptionalInput<Map<String, String>>(amiTags),
-      blockDeviceMappings = pulumi.Input.asOptionalInput<List<ImageRecipeBlockDeviceMapping>>(blockDeviceMappings),
-      components = pulumi.Input.asInput<List<ImageRecipeComponent>>(components),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentImage = pulumi.Input.asInput<String>(parentImage),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      systemsManagerAgent = pulumi.Input.asOptionalInput<ImageRecipeSystemsManagerAgent>(systemsManagerAgent),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userDataBase64 = pulumi.Input.asOptionalInput<String>(userDataBase64),
-      version = pulumi.Input.asInput<String>(version),
-      workingDirectory = pulumi.Input.asOptionalInput<String>(workingDirectory);
+    this.amiTags,
+    this.blockDeviceMappings,
+    required this.components,
+    this.description,
+    this.name,
+    required this.parentImage,
+    this.region,
+    this.systemsManagerAgent,
+    this.tags,
+    this.userDataBase64,
+    required this.version,
+    this.workingDirectory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,18 +84,18 @@ class ImageRecipeArgs {
 
   factory ImageRecipeArgs.fromMap(Map<String, dynamic> map) {
     return ImageRecipeArgs(
-      amiTags: map['amiTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['amiTags'] as Map).cast<String, String>()),
-      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : pulumi.Output.create<List<ImageRecipeBlockDeviceMapping>>(pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(map['blockDeviceMappings'], (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      components: pulumi.Output.create<List<ImageRecipeComponent>>(pulumi.Input.decodeList<ImageRecipeComponent>(map['components'], (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentImage: pulumi.Output.create<String>(map['parentImage'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      systemsManagerAgent: map['systemsManagerAgent'] == null ? null : pulumi.Output.create<ImageRecipeSystemsManagerAgent>(ImageRecipeSystemsManagerAgent.fromMap((map['systemsManagerAgent'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userDataBase64: map['userDataBase64'] == null ? null : pulumi.Output.create<String>(map['userDataBase64'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
-      workingDirectory: map['workingDirectory'] == null ? null : pulumi.Output.create<String>(map['workingDirectory'] as String),
+      amiTags: map['amiTags'] == null ? null : ((map['amiTags'] as Map).cast<String, String>()).input(),
+      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(map['blockDeviceMappings'], (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: (pulumi.Input.decodeList<ImageRecipeComponent>(map['components'], (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentImage: (map['parentImage'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      systemsManagerAgent: map['systemsManagerAgent'] == null ? null : (ImageRecipeSystemsManagerAgent.fromMap((map['systemsManagerAgent'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userDataBase64: map['userDataBase64'] == null ? null : (map['userDataBase64'] as String).input(),
+      version: (map['version'] as String).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
     );
   }
 }

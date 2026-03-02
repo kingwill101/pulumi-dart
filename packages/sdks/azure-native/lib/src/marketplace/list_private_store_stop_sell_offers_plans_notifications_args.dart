@@ -15,11 +15,9 @@ class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
   /// [privateStoreId] The store ID - must use the tenant ID
   /// [subscriptions] Optional.
   ListPrivateStoreStopSellOffersPlansNotificationsArgs({
-    required pulumi.Output<String> privateStoreId,
-    pulumi.Output<List<String>>? subscriptions,
-  }) :
-      privateStoreId = pulumi.Input.asInput<String>(privateStoreId),
-      subscriptions = pulumi.Input.asOptionalInput<List<String>>(subscriptions);
+    required this.privateStoreId,
+    this.subscriptions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
 
   factory ListPrivateStoreStopSellOffersPlansNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreStopSellOffersPlansNotificationsArgs(
-      privateStoreId: pulumi.Output.create<String>(map['privateStoreId'] as String),
-      subscriptions: map['subscriptions'] == null ? null : pulumi.Output.create<List<String>>((map['subscriptions'] as List).cast<String>()),
+      privateStoreId: (map['privateStoreId'] as String).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
     );
   }
 }

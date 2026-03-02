@@ -16,11 +16,9 @@ class GetStorageMoverArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
   GetStorageMoverArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storageMoverName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageMoverName = pulumi.Input.asInput<String>(storageMoverName);
+    required this.resourceGroupName,
+    required this.storageMoverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStorageMoverArgs {
 
   factory GetStorageMoverArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageMoverArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageMoverName: pulumi.Output.create<String>(map['storageMoverName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageMoverName: (map['storageMoverName'] as String).input(),
     );
   }
 }

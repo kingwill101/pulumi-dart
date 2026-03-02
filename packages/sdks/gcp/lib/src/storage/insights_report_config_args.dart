@@ -42,23 +42,15 @@ class InsightsReportConfigArgs {
   /// [parquetOptions] An option for outputting inventory reports as parquet files.
   /// [project] The ID of the project in which the resource belongs.
   InsightsReportConfigArgs({
-    pulumi.Output<InsightsReportConfigCsvOptions>? csvOptions,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<InsightsReportConfigFrequencyOptions>? frequencyOptions,
-    required pulumi.Output<String> location,
-    pulumi.Output<InsightsReportConfigObjectMetadataReportOptions>? objectMetadataReportOptions,
-    pulumi.Output<Map<String, dynamic>>? parquetOptions,
-    pulumi.Output<String>? project,
-  }) :
-      csvOptions = pulumi.Input.asOptionalInput<InsightsReportConfigCsvOptions>(csvOptions),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      frequencyOptions = pulumi.Input.asOptionalInput<InsightsReportConfigFrequencyOptions>(frequencyOptions),
-      location = pulumi.Input.asInput<String>(location),
-      objectMetadataReportOptions = pulumi.Input.asOptionalInput<InsightsReportConfigObjectMetadataReportOptions>(objectMetadataReportOptions),
-      parquetOptions = pulumi.Input.asOptionalInput<Map<String, dynamic>>(parquetOptions),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.csvOptions,
+    this.displayName,
+    this.forceDestroy,
+    this.frequencyOptions,
+    required this.location,
+    this.objectMetadataReportOptions,
+    this.parquetOptions,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class InsightsReportConfigArgs {
 
   factory InsightsReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigArgs(
-      csvOptions: map['csvOptions'] == null ? null : pulumi.Output.create<InsightsReportConfigCsvOptions>(InsightsReportConfigCsvOptions.fromMap((map['csvOptions'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      frequencyOptions: map['frequencyOptions'] == null ? null : pulumi.Output.create<InsightsReportConfigFrequencyOptions>(InsightsReportConfigFrequencyOptions.fromMap((map['frequencyOptions'] as Map).cast<String, dynamic>())),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      objectMetadataReportOptions: map['objectMetadataReportOptions'] == null ? null : pulumi.Output.create<InsightsReportConfigObjectMetadataReportOptions>(InsightsReportConfigObjectMetadataReportOptions.fromMap((map['objectMetadataReportOptions'] as Map).cast<String, dynamic>())),
-      parquetOptions: map['parquetOptions'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['parquetOptions'] as Map).cast<String, dynamic>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      csvOptions: map['csvOptions'] == null ? null : (InsightsReportConfigCsvOptions.fromMap((map['csvOptions'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      frequencyOptions: map['frequencyOptions'] == null ? null : (InsightsReportConfigFrequencyOptions.fromMap((map['frequencyOptions'] as Map).cast<String, dynamic>())).input(),
+      location: (map['location'] as String).input(),
+      objectMetadataReportOptions: map['objectMetadataReportOptions'] == null ? null : (InsightsReportConfigObjectMetadataReportOptions.fromMap((map['objectMetadataReportOptions'] as Map).cast<String, dynamic>())).input(),
+      parquetOptions: map['parquetOptions'] == null ? null : ((map['parquetOptions'] as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

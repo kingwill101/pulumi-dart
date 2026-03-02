@@ -22,17 +22,12 @@ class SecureCredentialState {
   /// [lastUpdated] The time the secure credential was last updated.
   /// [value] The secure credential's value.
   SecureCredentialState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? lastUpdated,
-    pulumi.Output<String>? value,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      lastUpdated = pulumi.Input.asOptionalInput<String>(lastUpdated),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.accountId,
+    this.description,
+    this.key,
+    this.lastUpdated,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SecureCredentialState {
 
   factory SecureCredentialState.fromMap(Map<String, dynamic> map) {
     return SecureCredentialState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      lastUpdated: map['lastUpdated'] == null ? null : pulumi.Output.create<String>(map['lastUpdated'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -46,31 +46,19 @@ class MethodState {
   /// [resourceId] API resource ID
   /// [restApi] ID of the associated REST API
   MethodState({
-    pulumi.Output<bool>? apiKeyRequired,
-    pulumi.Output<String>? authorization,
-    pulumi.Output<List<String>>? authorizationScopes,
-    pulumi.Output<String>? authorizerId,
-    pulumi.Output<String>? httpMethod,
-    pulumi.Output<String>? operationName,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? requestModels,
-    pulumi.Output<Map<String, bool>>? requestParameters,
-    pulumi.Output<String>? requestValidatorId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? restApi,
-  }) :
-      apiKeyRequired = pulumi.Input.asOptionalInput<bool>(apiKeyRequired),
-      authorization = pulumi.Input.asOptionalInput<String>(authorization),
-      authorizationScopes = pulumi.Input.asOptionalInput<List<String>>(authorizationScopes),
-      authorizerId = pulumi.Input.asOptionalInput<String>(authorizerId),
-      httpMethod = pulumi.Input.asOptionalInput<String>(httpMethod),
-      operationName = pulumi.Input.asOptionalInput<String>(operationName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      requestModels = pulumi.Input.asOptionalInput<Map<String, String>>(requestModels),
-      requestParameters = pulumi.Input.asOptionalInput<Map<String, bool>>(requestParameters),
-      requestValidatorId = pulumi.Input.asOptionalInput<String>(requestValidatorId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      restApi = pulumi.Input.asOptionalInput<String>(restApi);
+    this.apiKeyRequired,
+    this.authorization,
+    this.authorizationScopes,
+    this.authorizerId,
+    this.httpMethod,
+    this.operationName,
+    this.region,
+    this.requestModels,
+    this.requestParameters,
+    this.requestValidatorId,
+    this.resourceId,
+    this.restApi,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class MethodState {
 
   factory MethodState.fromMap(Map<String, dynamic> map) {
     return MethodState(
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : pulumi.Output.create<bool>(map['apiKeyRequired'] as bool),
-      authorization: map['authorization'] == null ? null : pulumi.Output.create<String>(map['authorization'] as String),
-      authorizationScopes: map['authorizationScopes'] == null ? null : pulumi.Output.create<List<String>>((map['authorizationScopes'] as List).cast<String>()),
-      authorizerId: map['authorizerId'] == null ? null : pulumi.Output.create<String>(map['authorizerId'] as String),
-      httpMethod: map['httpMethod'] == null ? null : pulumi.Output.create<String>(map['httpMethod'] as String),
-      operationName: map['operationName'] == null ? null : pulumi.Output.create<String>(map['operationName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      requestModels: map['requestModels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['requestModels'] as Map).cast<String, String>()),
-      requestParameters: map['requestParameters'] == null ? null : pulumi.Output.create<Map<String, bool>>((map['requestParameters'] as Map).cast<String, bool>()),
-      requestValidatorId: map['requestValidatorId'] == null ? null : pulumi.Output.create<String>(map['requestValidatorId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      restApi: map['restApi'] == null ? null : pulumi.Output.create<String>(map['restApi'] as String),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
+      authorization: map['authorization'] == null ? null : (map['authorization'] as String).input(),
+      authorizationScopes: map['authorizationScopes'] == null ? null : ((map['authorizationScopes'] as List).cast<String>()).input(),
+      authorizerId: map['authorizerId'] == null ? null : (map['authorizerId'] as String).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      requestModels: map['requestModels'] == null ? null : ((map['requestModels'] as Map).cast<String, String>()).input(),
+      requestParameters: map['requestParameters'] == null ? null : ((map['requestParameters'] as Map).cast<String, bool>()).input(),
+      requestValidatorId: map['requestValidatorId'] == null ? null : (map['requestValidatorId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class CloudEndpointArgs {
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [syncGroupName] Name of Sync Group resource.
   CloudEndpointArgs({
-    pulumi.Output<String>? azureFileShareName,
-    pulumi.Output<String>? cloudEndpointName,
-    pulumi.Output<String>? friendlyName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageAccountResourceId,
-    pulumi.Output<String>? storageAccountTenantId,
-    required pulumi.Output<String> storageSyncServiceName,
-    required pulumi.Output<String> syncGroupName,
-  }) :
-      azureFileShareName = pulumi.Input.asOptionalInput<String>(azureFileShareName),
-      cloudEndpointName = pulumi.Input.asOptionalInput<String>(cloudEndpointName),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageAccountResourceId = pulumi.Input.asOptionalInput<String>(storageAccountResourceId),
-      storageAccountTenantId = pulumi.Input.asOptionalInput<String>(storageAccountTenantId),
-      storageSyncServiceName = pulumi.Input.asInput<String>(storageSyncServiceName),
-      syncGroupName = pulumi.Input.asInput<String>(syncGroupName);
+    this.azureFileShareName,
+    this.cloudEndpointName,
+    this.friendlyName,
+    required this.resourceGroupName,
+    this.storageAccountResourceId,
+    this.storageAccountTenantId,
+    required this.storageSyncServiceName,
+    required this.syncGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class CloudEndpointArgs {
 
   factory CloudEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CloudEndpointArgs(
-      azureFileShareName: map['azureFileShareName'] == null ? null : pulumi.Output.create<String>(map['azureFileShareName'] as String),
-      cloudEndpointName: map['cloudEndpointName'] == null ? null : pulumi.Output.create<String>(map['cloudEndpointName'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : pulumi.Output.create<String>(map['storageAccountResourceId'] as String),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : pulumi.Output.create<String>(map['storageAccountTenantId'] as String),
-      storageSyncServiceName: pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
-      syncGroupName: pulumi.Output.create<String>(map['syncGroupName'] as String),
+      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName'] as String).input(),
+      cloudEndpointName: map['cloudEndpointName'] == null ? null : (map['cloudEndpointName'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId'] as String).input(),
+      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
+      syncGroupName: (map['syncGroupName'] as String).input(),
     );
   }
 }

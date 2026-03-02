@@ -5,9 +5,9 @@ import 'domain_os_nv_ram_source_vhost_user_dev_sec_label.dart';
 
 class DomainOsNvRamSourceVhostUserDev {
   /// Specifies the path to the device file for the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final List<DomainOsNvRamSourceVhostUserDevSecLabel>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceVhostUserDevSecLabel>>? secLabels;
 
   /// Creates a new [DomainOsNvRamSourceVhostUserDev].
   /// [path] Specifies the path to the device file for the EGD backend.
@@ -20,14 +20,14 @@ class DomainOsNvRamSourceVhostUserDev {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainOsNvRamSourceVhostUserDevSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceVhostUserDevSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceVhostUserDevSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainOsNvRamSourceVhostUserDev.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserDev(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserDevSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVhostUserDevSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVhostUserDevSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVhostUserDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

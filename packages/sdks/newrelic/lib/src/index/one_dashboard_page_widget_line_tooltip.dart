@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OneDashboardPageWidgetLineTooltip {
   /// (Required) The tooltip display mode. Valid values are:
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [OneDashboardPageWidgetLineTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
@@ -19,7 +20,7 @@ class OneDashboardPageWidgetLineTooltip {
 
   factory OneDashboardPageWidgetLineTooltip.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLineTooltip(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

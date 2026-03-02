@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentHighAvailabilityConfig {
   /// Desired number of instances for the Environment.
-  final int desiredCapacity;
+  final pulumi.Input<int> desiredCapacity;
 
   /// Creates a new [EnvironmentHighAvailabilityConfig].
   /// [desiredCapacity] Desired number of instances for the Environment.
@@ -19,7 +20,7 @@ class EnvironmentHighAvailabilityConfig {
 
   factory EnvironmentHighAvailabilityConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentHighAvailabilityConfig(
-      desiredCapacity: map['desiredCapacity'] as int,
+      desiredCapacity: (map['desiredCapacity'] as int).input(),
     );
   }
 }

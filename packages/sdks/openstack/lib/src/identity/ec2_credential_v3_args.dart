@@ -26,13 +26,10 @@ class Ec2CredentialV3Args {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [userId] The ID of the user the EC2 credential is created for.
   Ec2CredentialV3Args({
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userId,
-  }) :
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.projectId,
+    this.region,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,9 +41,9 @@ class Ec2CredentialV3Args {
 
   factory Ec2CredentialV3Args.fromMap(Map<String, dynamic> map) {
     return Ec2CredentialV3Args(
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

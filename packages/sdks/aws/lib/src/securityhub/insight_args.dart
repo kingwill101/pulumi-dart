@@ -23,15 +23,11 @@ class InsightArgs {
   /// [name] The name of the custom insight.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InsightArgs({
-    required pulumi.Output<InsightFilters> filters,
-    required pulumi.Output<String> groupByAttribute,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asInput<InsightFilters>(filters),
-      groupByAttribute = pulumi.Input.asInput<String>(groupByAttribute),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.filters,
+    required this.groupByAttribute,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class InsightArgs {
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      filters: pulumi.Output.create<InsightFilters>(InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      groupByAttribute: pulumi.Output.create<String>(map['groupByAttribute'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: (InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      groupByAttribute: (map['groupByAttribute'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

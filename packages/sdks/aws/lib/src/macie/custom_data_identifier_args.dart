@@ -37,25 +37,16 @@ class CustomDataIdentifierArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CustomDataIdentifierArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? ignoreWords,
-    pulumi.Output<List<String>>? keywords,
-    pulumi.Output<int>? maximumMatchDistance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? regex,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ignoreWords = pulumi.Input.asOptionalInput<List<String>>(ignoreWords),
-      keywords = pulumi.Input.asOptionalInput<List<String>>(keywords),
-      maximumMatchDistance = pulumi.Input.asOptionalInput<int>(maximumMatchDistance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      regex = pulumi.Input.asOptionalInput<String>(regex),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.ignoreWords,
+    this.keywords,
+    this.maximumMatchDistance,
+    this.name,
+    this.namePrefix,
+    this.regex,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class CustomDataIdentifierArgs {
 
   factory CustomDataIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return CustomDataIdentifierArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ignoreWords: map['ignoreWords'] == null ? null : pulumi.Output.create<List<String>>((map['ignoreWords'] as List).cast<String>()),
-      keywords: map['keywords'] == null ? null : pulumi.Output.create<List<String>>((map['keywords'] as List).cast<String>()),
-      maximumMatchDistance: map['maximumMatchDistance'] == null ? null : pulumi.Output.create<int>(map['maximumMatchDistance'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      regex: map['regex'] == null ? null : pulumi.Output.create<String>(map['regex'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ignoreWords: map['ignoreWords'] == null ? null : ((map['ignoreWords'] as List).cast<String>()).input(),
+      keywords: map['keywords'] == null ? null : ((map['keywords'] as List).cast<String>()).input(),
+      maximumMatchDistance: map['maximumMatchDistance'] == null ? null : (map['maximumMatchDistance'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

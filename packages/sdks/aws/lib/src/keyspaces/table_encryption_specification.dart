@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableEncryptionSpecification {
   /// The Amazon Resource Name (ARN) of the customer managed KMS key.
-  final String? kmsKeyIdentifier;
+  final pulumi.Input<String>? kmsKeyIdentifier;
   /// The encryption option specified for the table. Valid values: `AWS_OWNED_KMS_KEY`, `CUSTOMER_MANAGED_KMS_KEY`. The default value is `AWS_OWNED_KMS_KEY`.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [TableEncryptionSpecification].
   /// [kmsKeyIdentifier] The Amazon Resource Name (ARN) of the customer managed KMS key.
@@ -24,8 +25,8 @@ class TableEncryptionSpecification {
 
   factory TableEncryptionSpecification.fromMap(Map<String, dynamic> map) {
     return TableEncryptionSpecification(
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : map['kmsKeyIdentifier'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

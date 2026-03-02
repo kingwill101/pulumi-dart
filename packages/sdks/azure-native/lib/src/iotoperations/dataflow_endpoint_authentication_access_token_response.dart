@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowEndpoint Authentication Access Token properties
 class DataflowEndpointAuthenticationAccessTokenResponse {
   /// Token secret name.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
 
   /// Creates a new [DataflowEndpointAuthenticationAccessTokenResponse].
   /// [secretRef] Token secret name.
@@ -20,7 +21,7 @@ class DataflowEndpointAuthenticationAccessTokenResponse {
 
   factory DataflowEndpointAuthenticationAccessTokenResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationAccessTokenResponse(
-      secretRef: map['secretRef'] as String,
+      secretRef: (map['secretRef'] as String).input(),
     );
   }
 }

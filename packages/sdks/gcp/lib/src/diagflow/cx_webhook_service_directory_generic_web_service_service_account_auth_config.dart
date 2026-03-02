@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
   /// The email address of the service account used to authenticate the webhook call.
@@ -8,7 +9,7 @@ class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
   /// The service account must have the **roles/iam.serviceAccountTokenCreator** role
   /// granted to the
   /// [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
 
   /// Creates a new [CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig].
   /// [serviceAccount] The email address of the service account used to authenticate the webhook call.
@@ -24,7 +25,7 @@ class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
 
   factory CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] as String,
+      serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }
 }

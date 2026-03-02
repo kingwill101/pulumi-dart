@@ -16,11 +16,9 @@ class GetStocksArgs {
   /// [gatewayClass] The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetStocksArgs({
-    pulumi.Output<String>? gatewayClass,
-    pulumi.Output<String>? outputFile,
-  }) :
-      gatewayClass = pulumi.Input.asOptionalInput<String>(gatewayClass),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.gatewayClass,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetStocksArgs {
 
   factory GetStocksArgs.fromMap(Map<String, dynamic> map) {
     return GetStocksArgs(
-      gatewayClass: map['gatewayClass'] == null ? null : pulumi.Output.create<String>(map['gatewayClass'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

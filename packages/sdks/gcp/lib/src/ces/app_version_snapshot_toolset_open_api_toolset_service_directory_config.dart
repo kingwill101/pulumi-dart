@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig {
   /// (Output)
@@ -9,7 +10,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig {
   /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
   /// Location of the service directory must be the same as the location of the
   /// app.
-  final String? service;
+  final pulumi.Input<String>? service;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig].
   /// [service] (Output)
@@ -25,7 +26,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig {
 
   factory AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig(
-      service: map['service'] == null ? null : map['service'] as String,
+      service: map['service'] == null ? null : (map['service'] as String).input(),
     );
   }
 }

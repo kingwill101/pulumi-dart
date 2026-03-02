@@ -19,13 +19,10 @@ class GetFlowArgs {
   /// [flowName] The name for the flow that is to be onboarded.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFlowArgs({
-    required pulumi.Output<String> connectionName,
-    required pulumi.Output<String> flowName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      flowName = pulumi.Input.asInput<String>(flowName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.connectionName,
+    required this.flowName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFlowArgs {
 
   factory GetFlowArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      flowName: pulumi.Output.create<String>(map['flowName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      flowName: (map['flowName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

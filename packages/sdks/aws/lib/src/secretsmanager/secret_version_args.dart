@@ -34,21 +34,14 @@ class SecretVersionArgs {
   /// [secretStringWoVersion] Used together with `secret_string_wo` to trigger an update. Increment this value when an update to `secret_string_wo` is required.
   /// [versionStages] Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
   SecretVersionArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? secretBinary,
-    required pulumi.Output<String> secretId,
-    pulumi.Output<String>? secretString,
-    pulumi.Output<String>? secretStringWo,
-    pulumi.Output<int>? secretStringWoVersion,
-    pulumi.Output<List<String>>? versionStages,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretBinary = pulumi.Input.asOptionalInput<String>(secretBinary),
-      secretId = pulumi.Input.asInput<String>(secretId),
-      secretString = pulumi.Input.asOptionalInput<String>(secretString),
-      secretStringWo = pulumi.Input.asOptionalInput<String>(secretStringWo),
-      secretStringWoVersion = pulumi.Input.asOptionalInput<int>(secretStringWoVersion),
-      versionStages = pulumi.Input.asOptionalInput<List<String>>(versionStages);
+    this.region,
+    this.secretBinary,
+    required this.secretId,
+    this.secretString,
+    this.secretStringWo,
+    this.secretStringWoVersion,
+    this.versionStages,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class SecretVersionArgs {
 
   factory SecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return SecretVersionArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretBinary: map['secretBinary'] == null ? null : pulumi.Output.create<String>(map['secretBinary'] as String),
-      secretId: pulumi.Output.create<String>(map['secretId'] as String),
-      secretString: map['secretString'] == null ? null : pulumi.Output.create<String>(map['secretString'] as String),
-      secretStringWo: map['secretStringWo'] == null ? null : pulumi.Output.create<String>(map['secretStringWo'] as String),
-      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : pulumi.Output.create<int>(map['secretStringWoVersion'] as int),
-      versionStages: map['versionStages'] == null ? null : pulumi.Output.create<List<String>>((map['versionStages'] as List).cast<String>()),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretBinary: map['secretBinary'] == null ? null : (map['secretBinary'] as String).input(),
+      secretId: (map['secretId'] as String).input(),
+      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
+      secretStringWo: map['secretStringWo'] == null ? null : (map['secretStringWo'] as String).input(),
+      secretStringWoVersion: map['secretStringWoVersion'] == null ? null : (map['secretStringWoVersion'] as int).input(),
+      versionStages: map['versionStages'] == null ? null : ((map['versionStages'] as List).cast<String>()).input(),
     );
   }
 }

@@ -33,17 +33,12 @@ class EntityTypeArgs {
   /// [kind] Indicates the kind of entity type.
   /// [project] The ID of the project in which the resource belongs.
   EntityTypeArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableFuzzyExtraction,
-    pulumi.Output<List<EntityTypeEntity>>? entities,
-    required pulumi.Output<String> kind,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableFuzzyExtraction = pulumi.Input.asOptionalInput<bool>(enableFuzzyExtraction),
-      entities = pulumi.Input.asOptionalInput<List<EntityTypeEntity>>(entities),
-      kind = pulumi.Input.asInput<String>(kind),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    this.enableFuzzyExtraction,
+    this.entities,
+    required this.kind,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class EntityTypeArgs {
 
   factory EntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntityTypeArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : pulumi.Output.create<bool>(map['enableFuzzyExtraction'] as bool),
-      entities: map['entities'] == null ? null : pulumi.Output.create<List<EntityTypeEntity>>(pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

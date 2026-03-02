@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeClusterPoolTaint {
   /// The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-  final String effect;
+  final pulumi.Input<String> effect;
   /// The Kubernetes taint key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The Kubernetes taint value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetLkeClusterPoolTaint].
   /// [effect] The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
@@ -29,9 +30,9 @@ class GetLkeClusterPoolTaint {
 
   factory GetLkeClusterPoolTaint.fromMap(Map<String, dynamic> map) {
     return GetLkeClusterPoolTaint(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

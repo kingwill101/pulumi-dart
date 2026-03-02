@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalClusterGlobalClusterMember {
   /// ARN of member DB Cluster.
-  final String? dbClusterArn;
+  final pulumi.Input<String>? dbClusterArn;
   /// Whether the member is the primary DB Cluster.
-  final bool? isWriter;
+  final pulumi.Input<bool>? isWriter;
 
   /// Creates a new [GlobalClusterGlobalClusterMember].
   /// [dbClusterArn] ARN of member DB Cluster.
@@ -24,8 +25,8 @@ class GlobalClusterGlobalClusterMember {
 
   factory GlobalClusterGlobalClusterMember.fromMap(Map<String, dynamic> map) {
     return GlobalClusterGlobalClusterMember(
-      dbClusterArn: map['dbClusterArn'] == null ? null : map['dbClusterArn'] as String,
-      isWriter: map['isWriter'] == null ? null : map['isWriter'] as bool,
+      dbClusterArn: map['dbClusterArn'] == null ? null : (map['dbClusterArn'] as String).input(),
+      isWriter: map['isWriter'] == null ? null : (map['isWriter'] as bool).input(),
     );
   }
 }

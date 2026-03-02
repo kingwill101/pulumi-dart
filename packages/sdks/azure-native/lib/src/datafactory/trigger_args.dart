@@ -23,15 +23,11 @@ class TriggerArgs {
   /// [resourceGroupName] The resource group name.
   /// [triggerName] The trigger name.
   TriggerArgs({
-    required pulumi.Output<String> factoryName,
-    required pulumi.Output<BlobEventsTrigger> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? triggerName,
-  }) :
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      properties = pulumi.Input.asInput<BlobEventsTrigger>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      triggerName = pulumi.Input.asOptionalInput<String>(triggerName);
+    required this.factoryName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.triggerName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      properties: pulumi.Output.create<BlobEventsTrigger>(BlobEventsTrigger.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      triggerName: map['triggerName'] == null ? null : pulumi.Output.create<String>(map['triggerName'] as String),
+      factoryName: (map['factoryName'] as String).input(),
+      properties: (BlobEventsTrigger.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
     );
   }
 }

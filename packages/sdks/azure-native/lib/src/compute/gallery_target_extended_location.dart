@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_images.dart';
 import 'gallery_extended_location.dart';
 
 class GalleryTargetExtendedLocation {
   /// Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
-  final EncryptionImages? encryption;
+  final pulumi.Input<EncryptionImages>? encryption;
   /// The name of the extended location.
-  final GalleryExtendedLocation? extendedLocation;
+  final pulumi.Input<GalleryExtendedLocation>? extendedLocation;
   /// The number of replicas of the Image Version to be created per extended location. This property is updatable.
-  final int? extendedLocationReplicaCount;
+  final pulumi.Input<int>? extendedLocationReplicaCount;
   /// The name of the region.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specifies the storage account type to be used to store the image. This property is not updatable.
-  final String? storageAccountType;
+  final pulumi.Input<String>? storageAccountType;
 
   /// Creates a new [GalleryTargetExtendedLocation].
   /// [encryption] Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -31,8 +32,8 @@ class GalleryTargetExtendedLocation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<EncryptionImages, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<GalleryExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'extendedLocationReplicaCount': ?extendedLocationReplicaCount,
       'name': ?name,
       'storageAccountType': ?storageAccountType,
@@ -41,11 +42,11 @@ class GalleryTargetExtendedLocation {
 
   factory GalleryTargetExtendedLocation.fromMap(Map<String, dynamic> map) {
     return GalleryTargetExtendedLocation(
-      encryption: map['encryption'] == null ? null : EncryptionImages.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      extendedLocation: map['extendedLocation'] == null ? null : GalleryExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      extendedLocationReplicaCount: map['extendedLocationReplicaCount'] == null ? null : map['extendedLocationReplicaCount'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      storageAccountType: map['storageAccountType'] == null ? null : map['storageAccountType'] as String,
+      encryption: map['encryption'] == null ? null : (EncryptionImages.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (GalleryExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocationReplicaCount: map['extendedLocationReplicaCount'] == null ? null : (map['extendedLocationReplicaCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
     );
   }
 }

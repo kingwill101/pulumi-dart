@@ -53,35 +53,21 @@ class BackupPlanState {
   /// [supportedResourceTypes] The list of all resource types to which the `BackupPlan` can be applied.
   /// [updateTime] When the `BackupPlan` was last updated.
   BackupPlanState({
-    pulumi.Output<String>? backupPlanId,
-    pulumi.Output<List<BackupPlanBackupRule>>? backupRules,
-    pulumi.Output<String>? backupVault,
-    pulumi.Output<String>? backupVaultServiceAccount,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<int>? logRetentionDays,
-    pulumi.Output<int>? maxCustomOnDemandRetentionDays,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<List<String>>? supportedResourceTypes,
-    pulumi.Output<String>? updateTime,
-  }) :
-      backupPlanId = pulumi.Input.asOptionalInput<String>(backupPlanId),
-      backupRules = pulumi.Input.asOptionalInput<List<BackupPlanBackupRule>>(backupRules),
-      backupVault = pulumi.Input.asOptionalInput<String>(backupVault),
-      backupVaultServiceAccount = pulumi.Input.asOptionalInput<String>(backupVaultServiceAccount),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      logRetentionDays = pulumi.Input.asOptionalInput<int>(logRetentionDays),
-      maxCustomOnDemandRetentionDays = pulumi.Input.asOptionalInput<int>(maxCustomOnDemandRetentionDays),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      supportedResourceTypes = pulumi.Input.asOptionalInput<List<String>>(supportedResourceTypes),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.backupPlanId,
+    this.backupRules,
+    this.backupVault,
+    this.backupVaultServiceAccount,
+    this.createTime,
+    this.description,
+    this.location,
+    this.logRetentionDays,
+    this.maxCustomOnDemandRetentionDays,
+    this.name,
+    this.project,
+    this.resourceType,
+    this.supportedResourceTypes,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class BackupPlanState {
 
   factory BackupPlanState.fromMap(Map<String, dynamic> map) {
     return BackupPlanState(
-      backupPlanId: map['backupPlanId'] == null ? null : pulumi.Output.create<String>(map['backupPlanId'] as String),
-      backupRules: map['backupRules'] == null ? null : pulumi.Output.create<List<BackupPlanBackupRule>>(pulumi.Input.decodeList<BackupPlanBackupRule>(map['backupRules'], (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>()))),
-      backupVault: map['backupVault'] == null ? null : pulumi.Output.create<String>(map['backupVault'] as String),
-      backupVaultServiceAccount: map['backupVaultServiceAccount'] == null ? null : pulumi.Output.create<String>(map['backupVaultServiceAccount'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      logRetentionDays: map['logRetentionDays'] == null ? null : pulumi.Output.create<int>(map['logRetentionDays'] as int),
-      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : pulumi.Output.create<int>(map['maxCustomOnDemandRetentionDays'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      supportedResourceTypes: map['supportedResourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedResourceTypes'] as List).cast<String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      backupPlanId: map['backupPlanId'] == null ? null : (map['backupPlanId'] as String).input(),
+      backupRules: map['backupRules'] == null ? null : (pulumi.Input.decodeList<BackupPlanBackupRule>(map['backupRules'], (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupVault: map['backupVault'] == null ? null : (map['backupVault'] as String).input(),
+      backupVaultServiceAccount: map['backupVaultServiceAccount'] == null ? null : (map['backupVaultServiceAccount'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      logRetentionDays: map['logRetentionDays'] == null ? null : (map['logRetentionDays'] as int).input(),
+      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : (map['maxCustomOnDemandRetentionDays'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      supportedResourceTypes: map['supportedResourceTypes'] == null ? null : ((map['supportedResourceTypes'] as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

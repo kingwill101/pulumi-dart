@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_access_block_configuration_response.dart';
 import 'vpc_configuration_response.dart';
 
 /// Definition of awsS3AccessPoint
 class AwsS3AccessPointPropertiesResponse {
   /// The alias of this Access Point. This alias can be used for compatibility purposes with other AWS services and third-party applications.
-  final String? alias;
+  final pulumi.Input<String>? alias;
   /// The Amazon Resource Name (ARN) of the specified accesspoint. the Amazon Resource Name (ARN) of the specified accesspoint.
-  final String? arn;
+  final pulumi.Input<String>? arn;
   /// The name of the bucket that you want to associate this Access Point with.
-  final String? bucket;
+  final pulumi.Input<String>? bucket;
   /// The AWS account ID associated with the S3 bucket associated with this access point.
-  final String? bucketAccountId;
+  final pulumi.Input<String>? bucketAccountId;
   /// The name you want to assign to this Access Point. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the access point name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Indicates whether this Access Point allows access from the public Internet. If VpcConfiguration is specified for this Access Point, then NetworkOrigin is VPC, and the Access Point doesn't allow access from the public Internet. Otherwise, NetworkOrigin is Internet, and the Access Point allows access from the public Internet, subject to the Access Point and bucket access policies.
-  final String? networkOrigin;
+  final pulumi.Input<String>? networkOrigin;
   /// The Access Point Policy you want to apply to this access point.
-  final dynamic policy;
+  final pulumi.Input<dynamic>? policy;
   /// The PublicAccessBlock configuration that you want to apply to this Access Point. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status 'The Meaning of Public' in the Amazon Simple Storage Service Developer Guide.
-  final PublicAccessBlockConfigurationResponse? publicAccessBlockConfiguration;
+  final pulumi.Input<PublicAccessBlockConfigurationResponse>? publicAccessBlockConfiguration;
   /// If you include this field, Amazon S3 restricts access to this Access Point to requests from the specified Virtual Private Cloud (VPC). The Virtual Private Cloud (VPC) configuration for a bucket access point.
-  final VpcConfigurationResponse? vpcConfiguration;
+  final pulumi.Input<VpcConfigurationResponse>? vpcConfiguration;
 
   /// Creates a new [AwsS3AccessPointPropertiesResponse].
   /// [alias] The alias of this Access Point. This alias can be used for compatibility purposes with other AWS services and third-party applications.
@@ -55,22 +56,22 @@ class AwsS3AccessPointPropertiesResponse {
       'name': ?name,
       'networkOrigin': ?networkOrigin,
       'policy': ?policy,
-      'publicAccessBlockConfiguration': ?publicAccessBlockConfiguration == null ? null : publicAccessBlockConfiguration!.toMap(),
-      'vpcConfiguration': ?vpcConfiguration == null ? null : vpcConfiguration!.toMap(),
+      'publicAccessBlockConfiguration': ?pulumi.Input.mapOptionalInputValue<PublicAccessBlockConfigurationResponse, Map<String, dynamic>>(publicAccessBlockConfiguration, (value) => value.toMap()),
+      'vpcConfiguration': ?pulumi.Input.mapOptionalInputValue<VpcConfigurationResponse, Map<String, dynamic>>(vpcConfiguration, (value) => value.toMap()),
     };
   }
 
   factory AwsS3AccessPointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3AccessPointPropertiesResponse(
-      alias: map['alias'] == null ? null : map['alias'] as String,
-      arn: map['arn'] == null ? null : map['arn'] as String,
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      bucketAccountId: map['bucketAccountId'] == null ? null : map['bucketAccountId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      networkOrigin: map['networkOrigin'] == null ? null : map['networkOrigin'] as String,
-      policy: map['policy'] == null ? null : map['policy'],
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : PublicAccessBlockConfigurationResponse.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>()),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : VpcConfigurationResponse.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>()),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (PublicAccessBlockConfigurationResponse.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (VpcConfigurationResponse.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains Properties set for the reservation.
 class AllocationResourceStatusSpecificSKUAllocationResponseComputeV1 {
   /// ID of the instance template used to populate reservation properties.
-  final String sourceInstanceTemplateId;
+  final pulumi.Input<String> sourceInstanceTemplateId;
 
   /// Creates a new [AllocationResourceStatusSpecificSKUAllocationResponseComputeV1].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate reservation properties.
@@ -20,7 +21,7 @@ class AllocationResourceStatusSpecificSKUAllocationResponseComputeV1 {
 
   factory AllocationResourceStatusSpecificSKUAllocationResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return AllocationResourceStatusSpecificSKUAllocationResponseComputeV1(
-      sourceInstanceTemplateId: map['sourceInstanceTemplateId'] as String,
+      sourceInstanceTemplateId: (map['sourceInstanceTemplateId'] as String).input(),
     );
   }
 }

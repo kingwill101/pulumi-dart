@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'osprofile_linux_configuration.dart';
 import 'osprofile_windows_configuration.dart';
 
 /// Specifies the operating system settings for the hybrid machine.
 class OSProfile {
   /// Specifies the linux configuration for update management.
-  final OSProfileLinuxConfiguration? linuxConfiguration;
+  final pulumi.Input<OSProfileLinuxConfiguration>? linuxConfiguration;
   /// Specifies the windows configuration for update management.
-  final OSProfileWindowsConfiguration? windowsConfiguration;
+  final pulumi.Input<OSProfileWindowsConfiguration>? windowsConfiguration;
 
   /// Creates a new [OSProfile].
   /// [linuxConfiguration] Specifies the linux configuration for update management.
@@ -20,15 +21,15 @@ class OSProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linuxConfiguration': ?linuxConfiguration == null ? null : linuxConfiguration!.toMap(),
-      'windowsConfiguration': ?windowsConfiguration == null ? null : windowsConfiguration!.toMap(),
+      'linuxConfiguration': ?pulumi.Input.mapOptionalInputValue<OSProfileLinuxConfiguration, Map<String, dynamic>>(linuxConfiguration, (value) => value.toMap()),
+      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<OSProfileWindowsConfiguration, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory OSProfile.fromMap(Map<String, dynamic> map) {
     return OSProfile(
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : OSProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>()),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : OSProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>()),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OSProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OSProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

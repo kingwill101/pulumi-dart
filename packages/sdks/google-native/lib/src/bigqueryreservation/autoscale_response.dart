@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Auto scaling settings.
 class AutoscaleResponse {
   /// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
-  final String currentSlots;
+  final pulumi.Input<String> currentSlots;
   /// Number of slots to be scaled when needed.
-  final String maxSlots;
+  final pulumi.Input<String> maxSlots;
 
   /// Creates a new [AutoscaleResponse].
   /// [currentSlots] The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
@@ -25,8 +26,8 @@ class AutoscaleResponse {
 
   factory AutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleResponse(
-      currentSlots: map['currentSlots'] as String,
-      maxSlots: map['maxSlots'] as String,
+      currentSlots: (map['currentSlots'] as String).input(),
+      maxSlots: (map['maxSlots'] as String).input(),
     );
   }
 }

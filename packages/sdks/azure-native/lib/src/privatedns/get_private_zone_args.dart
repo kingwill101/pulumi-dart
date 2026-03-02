@@ -16,11 +16,9 @@ class GetPrivateZoneArgs {
   /// [privateZoneName] The name of the Private DNS zone (without a terminating dot).
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetPrivateZoneArgs({
-    required pulumi.Output<String> privateZoneName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      privateZoneName = pulumi.Input.asInput<String>(privateZoneName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.privateZoneName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrivateZoneArgs {
 
   factory GetPrivateZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateZoneArgs(
-      privateZoneName: pulumi.Output.create<String>(map['privateZoneName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      privateZoneName: (map['privateZoneName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

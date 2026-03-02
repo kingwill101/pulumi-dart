@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplatePersistentVolumeClaim properties.
 class AkriConnectorTemplatePersistentVolumeClaimResponse {
   /// The name of the persistent volume claim.
-  final String claimName;
+  final pulumi.Input<String> claimName;
   /// The mount path for the persistent volume claim.
-  final String mountPath;
+  final pulumi.Input<String> mountPath;
 
   /// Creates a new [AkriConnectorTemplatePersistentVolumeClaimResponse].
   /// [claimName] The name of the persistent volume claim.
@@ -25,8 +26,8 @@ class AkriConnectorTemplatePersistentVolumeClaimResponse {
 
   factory AkriConnectorTemplatePersistentVolumeClaimResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplatePersistentVolumeClaimResponse(
-      claimName: map['claimName'] as String,
-      mountPath: map['mountPath'] as String,
+      claimName: (map['claimName'] as String).input(),
+      mountPath: (map['mountPath'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleActionFindingFieldsUpdateNote {
   /// The updated note text.
-  final String text;
+  final pulumi.Input<String> text;
   /// The principal that updated the note.
-  final String updatedBy;
+  final pulumi.Input<String> updatedBy;
 
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateNote].
   /// [text] The updated note text.
@@ -24,8 +25,8 @@ class AutomationRuleActionFindingFieldsUpdateNote {
 
   factory AutomationRuleActionFindingFieldsUpdateNote.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateNote(
-      text: map['text'] as String,
-      updatedBy: map['updatedBy'] as String,
+      text: (map['text'] as String).input(),
+      updatedBy: (map['updatedBy'] as String).input(),
     );
   }
 }

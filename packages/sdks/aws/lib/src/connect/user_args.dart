@@ -46,29 +46,18 @@ class UserArgs {
   /// [securityProfileIds] A list of identifiers for the security profiles for the user. Specify a minimum of 1 and maximum of 10 security profile ids. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
   /// [tags] Tags to apply to the user. If configured with a provider
   UserArgs({
-    pulumi.Output<String>? directoryUserId,
-    pulumi.Output<String>? hierarchyGroupId,
-    pulumi.Output<UserIdentityInfo>? identityInfo,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? password,
-    required pulumi.Output<UserPhoneConfig> phoneConfig,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routingProfileId,
-    required pulumi.Output<List<String>> securityProfileIds,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      directoryUserId = pulumi.Input.asOptionalInput<String>(directoryUserId),
-      hierarchyGroupId = pulumi.Input.asOptionalInput<String>(hierarchyGroupId),
-      identityInfo = pulumi.Input.asOptionalInput<UserIdentityInfo>(identityInfo),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      phoneConfig = pulumi.Input.asInput<UserPhoneConfig>(phoneConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingProfileId = pulumi.Input.asInput<String>(routingProfileId),
-      securityProfileIds = pulumi.Input.asInput<List<String>>(securityProfileIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.directoryUserId,
+    this.hierarchyGroupId,
+    this.identityInfo,
+    required this.instanceId,
+    this.name,
+    this.password,
+    required this.phoneConfig,
+    this.region,
+    required this.routingProfileId,
+    required this.securityProfileIds,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      directoryUserId: map['directoryUserId'] == null ? null : pulumi.Output.create<String>(map['directoryUserId'] as String),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : pulumi.Output.create<String>(map['hierarchyGroupId'] as String),
-      identityInfo: map['identityInfo'] == null ? null : pulumi.Output.create<UserIdentityInfo>(UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      phoneConfig: pulumi.Output.create<UserPhoneConfig>(UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingProfileId: pulumi.Output.create<String>(map['routingProfileId'] as String),
-      securityProfileIds: pulumi.Output.create<List<String>>((map['securityProfileIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      directoryUserId: map['directoryUserId'] == null ? null : (map['directoryUserId'] as String).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
+      identityInfo: map['identityInfo'] == null ? null : (UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      phoneConfig: (UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingProfileId: (map['routingProfileId'] as String).input(),
+      securityProfileIds: ((map['securityProfileIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
   /// [peConnectionName] Private endpoint connection name.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> migrateProjectName,
-    required pulumi.Output<String> peConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      migrateProjectName = pulumi.Input.asInput<String>(migrateProjectName),
-      peConnectionName = pulumi.Input.asInput<String>(peConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.migrateProjectName,
+    required this.peConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs(
-      migrateProjectName: pulumi.Output.create<String>(map['migrateProjectName'] as String),
-      peConnectionName: pulumi.Output.create<String>(map['peConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      migrateProjectName: (map['migrateProjectName'] as String).input(),
+      peConnectionName: (map['peConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

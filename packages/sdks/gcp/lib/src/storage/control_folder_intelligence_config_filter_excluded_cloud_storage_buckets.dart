@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
   /// List of bucket id regexes to exclude in the storage intelligence plan.
-  final List<String> bucketIdRegexes;
+  final pulumi.Input<List<String>> bucketIdRegexes;
 
   /// Creates a new [ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets].
   /// [bucketIdRegexes] List of bucket id regexes to exclude in the storage intelligence plan.
@@ -19,7 +20,7 @@ class ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
 
   factory ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets(
-      bucketIdRegexes: (map['bucketIdRegexes'] as List).cast<String>(),
+      bucketIdRegexes: ((map['bucketIdRegexes'] as List).cast<String>()).input(),
     );
   }
 }

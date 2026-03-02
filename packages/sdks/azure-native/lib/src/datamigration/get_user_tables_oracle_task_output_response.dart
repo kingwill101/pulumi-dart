@@ -7,11 +7,11 @@ import 'reportable_exception_response.dart';
 /// Output for the task that gets the list of tables contained within a provided list of Oracle schemas.
 class GetUserTablesOracleTaskOutputResponse {
   /// The schema this result is for
-  final String schemaName;
+  final pulumi.Input<String> schemaName;
   /// List of valid tables found for this schema
-  final List<DatabaseTableResponse> tables;
+  final pulumi.Input<List<DatabaseTableResponse>> tables;
   /// Validation errors associated with the task
-  final List<ReportableExceptionResponse> validationErrors;
+  final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
   /// Creates a new [GetUserTablesOracleTaskOutputResponse].
   /// [schemaName] The schema this result is for
@@ -26,16 +26,16 @@ class GetUserTablesOracleTaskOutputResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schemaName': schemaName,
-      'tables': pulumi.Input.encodeList<DatabaseTableResponse, Map<String, dynamic>>(tables, (value) => value.toMap()),
-      'validationErrors': pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(validationErrors, (value) => value.toMap()),
+      'tables': pulumi.Input.mapInputValue<List<DatabaseTableResponse>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<DatabaseTableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetUserTablesOracleTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesOracleTaskOutputResponse(
-      schemaName: map['schemaName'] as String,
-      tables: pulumi.Input.decodeList<DatabaseTableResponse>(map['tables'], (value) => DatabaseTableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      validationErrors: pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      schemaName: (map['schemaName'] as String).input(),
+      tables: (pulumi.Input.decodeList<DatabaseTableResponse>(map['tables'], (value) => DatabaseTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

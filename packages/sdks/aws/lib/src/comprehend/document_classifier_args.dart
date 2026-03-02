@@ -73,33 +73,20 @@ class DocumentClassifierArgs {
   /// [volumeKmsKeyId] KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Document Classifier resources.
   DocumentClassifierArgs({
-    required pulumi.Output<String> dataAccessRoleArn,
-    required pulumi.Output<DocumentClassifierInputDataConfig> inputDataConfig,
-    required pulumi.Output<String> languageCode,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? modelKmsKeyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<DocumentClassifierOutputDataConfig>? outputDataConfig,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? versionName,
-    pulumi.Output<String>? versionNamePrefix,
-    pulumi.Output<String>? volumeKmsKeyId,
-    pulumi.Output<DocumentClassifierVpcConfig>? vpcConfig,
-  }) :
-      dataAccessRoleArn = pulumi.Input.asInput<String>(dataAccessRoleArn),
-      inputDataConfig = pulumi.Input.asInput<DocumentClassifierInputDataConfig>(inputDataConfig),
-      languageCode = pulumi.Input.asInput<String>(languageCode),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      modelKmsKeyId = pulumi.Input.asOptionalInput<String>(modelKmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputDataConfig = pulumi.Input.asOptionalInput<DocumentClassifierOutputDataConfig>(outputDataConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName),
-      versionNamePrefix = pulumi.Input.asOptionalInput<String>(versionNamePrefix),
-      volumeKmsKeyId = pulumi.Input.asOptionalInput<String>(volumeKmsKeyId),
-      vpcConfig = pulumi.Input.asOptionalInput<DocumentClassifierVpcConfig>(vpcConfig);
+    required this.dataAccessRoleArn,
+    required this.inputDataConfig,
+    required this.languageCode,
+    this.mode,
+    this.modelKmsKeyId,
+    this.name,
+    this.outputDataConfig,
+    this.region,
+    this.tags,
+    this.versionName,
+    this.versionNamePrefix,
+    this.volumeKmsKeyId,
+    this.vpcConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -121,19 +108,19 @@ class DocumentClassifierArgs {
 
   factory DocumentClassifierArgs.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierArgs(
-      dataAccessRoleArn: pulumi.Output.create<String>(map['dataAccessRoleArn'] as String),
-      inputDataConfig: pulumi.Output.create<DocumentClassifierInputDataConfig>(DocumentClassifierInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())),
-      languageCode: pulumi.Output.create<String>(map['languageCode'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['modelKmsKeyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputDataConfig: map['outputDataConfig'] == null ? null : pulumi.Output.create<DocumentClassifierOutputDataConfig>(DocumentClassifierOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
-      versionNamePrefix: map['versionNamePrefix'] == null ? null : pulumi.Output.create<String>(map['versionNamePrefix'] as String),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : pulumi.Output.create<String>(map['volumeKmsKeyId'] as String),
-      vpcConfig: map['vpcConfig'] == null ? null : pulumi.Output.create<DocumentClassifierVpcConfig>(DocumentClassifierVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())),
+      dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
+      inputDataConfig: (DocumentClassifierInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      languageCode: (map['languageCode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : (map['modelKmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputDataConfig: map['outputDataConfig'] == null ? null : (DocumentClassifierOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      versionNamePrefix: map['versionNamePrefix'] == null ? null : (map['versionNamePrefix'] as String).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (DocumentClassifierVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

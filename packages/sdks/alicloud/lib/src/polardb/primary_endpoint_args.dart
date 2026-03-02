@@ -33,21 +33,14 @@ class PrimaryEndpointArgs {
   /// [sslAutoRotate] Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   PrimaryEndpointArgs({
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> dbClusterId,
-    pulumi.Output<String>? dbEndpointDescription,
-    pulumi.Output<String>? netType,
-    pulumi.Output<String>? port,
-    pulumi.Output<String>? sslAutoRotate,
-    pulumi.Output<String>? sslEnabled,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbEndpointDescription = pulumi.Input.asOptionalInput<String>(dbEndpointDescription),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      port = pulumi.Input.asOptionalInput<String>(port),
-      sslAutoRotate = pulumi.Input.asOptionalInput<String>(sslAutoRotate),
-      sslEnabled = pulumi.Input.asOptionalInput<String>(sslEnabled);
+    this.connectionPrefix,
+    required this.dbClusterId,
+    this.dbEndpointDescription,
+    this.netType,
+    this.port,
+    this.sslAutoRotate,
+    this.sslEnabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class PrimaryEndpointArgs {
 
   factory PrimaryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryEndpointArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : pulumi.Output.create<String>(map['dbEndpointDescription'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
-      sslAutoRotate: map['sslAutoRotate'] == null ? null : pulumi.Output.create<String>(map['sslAutoRotate'] as String),
-      sslEnabled: map['sslEnabled'] == null ? null : pulumi.Output.create<String>(map['sslEnabled'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate'] as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Approver Metadata for approvals request.
 class ApproverResponse {
   /// Action Performed by approver
-  final String? actionPerformed;
+  final pulumi.Input<String>? actionPerformed;
   /// Entra ObjectID of the approver
-  final String approverEntraId;
+  final pulumi.Input<String> approverEntraId;
   /// approval request last updated at
-  final String lastUpdatedAt;
+  final pulumi.Input<String> lastUpdatedAt;
 
   /// Creates a new [ApproverResponse].
   /// [actionPerformed] Action Performed by approver
@@ -30,9 +31,9 @@ class ApproverResponse {
 
   factory ApproverResponse.fromMap(Map<String, dynamic> map) {
     return ApproverResponse(
-      actionPerformed: map['actionPerformed'] == null ? null : map['actionPerformed'] as String,
-      approverEntraId: map['approverEntraId'] as String,
-      lastUpdatedAt: map['lastUpdatedAt'] as String,
+      actionPerformed: map['actionPerformed'] == null ? null : (map['actionPerformed'] as String).input(),
+      approverEntraId: (map['approverEntraId'] as String).input(),
+      lastUpdatedAt: (map['lastUpdatedAt'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigDataprocMetricConfigMetric {
   /// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
   ///
   /// - - -
-  final List<String>? metricOverrides;
+  final pulumi.Input<List<String>>? metricOverrides;
   /// A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
-  final String metricSource;
+  final pulumi.Input<String> metricSource;
 
   /// Creates a new [ClusterClusterConfigDataprocMetricConfigMetric].
   /// [metricOverrides] One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
@@ -26,8 +27,8 @@ class ClusterClusterConfigDataprocMetricConfigMetric {
 
   factory ClusterClusterConfigDataprocMetricConfigMetric.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigDataprocMetricConfigMetric(
-      metricOverrides: map['metricOverrides'] == null ? null : (map['metricOverrides'] as List).cast<String>(),
-      metricSource: map['metricSource'] as String,
+      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides'] as List).cast<String>()).input(),
+      metricSource: (map['metricSource'] as String).input(),
     );
   }
 }

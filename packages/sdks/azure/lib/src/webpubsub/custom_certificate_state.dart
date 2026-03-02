@@ -23,15 +23,11 @@ class CustomCertificateState {
   /// [name] The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   /// [webPubsubId] The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   CustomCertificateState({
-    pulumi.Output<String>? certificateVersion,
-    pulumi.Output<String>? customCertificateId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? webPubsubId,
-  }) :
-      certificateVersion = pulumi.Input.asOptionalInput<String>(certificateVersion),
-      customCertificateId = pulumi.Input.asOptionalInput<String>(customCertificateId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      webPubsubId = pulumi.Input.asOptionalInput<String>(webPubsubId);
+    this.certificateVersion,
+    this.customCertificateId,
+    this.name,
+    this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class CustomCertificateState {
 
   factory CustomCertificateState.fromMap(Map<String, dynamic> map) {
     return CustomCertificateState(
-      certificateVersion: map['certificateVersion'] == null ? null : pulumi.Output.create<String>(map['certificateVersion'] as String),
-      customCertificateId: map['customCertificateId'] == null ? null : pulumi.Output.create<String>(map['customCertificateId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      webPubsubId: map['webPubsubId'] == null ? null : pulumi.Output.create<String>(map['webPubsubId'] as String),
+      certificateVersion: map['certificateVersion'] == null ? null : (map['certificateVersion'] as String).input(),
+      customCertificateId: map['customCertificateId'] == null ? null : (map['customCertificateId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId'] as String).input(),
     );
   }
 }

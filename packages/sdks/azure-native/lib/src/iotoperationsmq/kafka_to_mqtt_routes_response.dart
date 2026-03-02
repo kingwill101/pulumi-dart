@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Kafka to Mqtt route properties
 class KafkaToMqttRoutesResponse {
   /// The consumer group id to use.
-  final String? consumerGroupId;
+  final pulumi.Input<String>? consumerGroupId;
   /// The kafka topic to pull from.
-  final String kafkaTopic;
+  final pulumi.Input<String> kafkaTopic;
   /// The mqtt topic to publish to.
-  final String mqttTopic;
+  final pulumi.Input<String> mqttTopic;
   /// The name of the route.
-  final String name;
+  final pulumi.Input<String> name;
   /// The qos to use for mqtt.
-  final int? qos;
+  final pulumi.Input<int>? qos;
 
   /// Creates a new [KafkaToMqttRoutesResponse].
   /// [consumerGroupId] The consumer group id to use.
@@ -40,11 +41,11 @@ class KafkaToMqttRoutesResponse {
 
   factory KafkaToMqttRoutesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaToMqttRoutesResponse(
-      consumerGroupId: map['consumerGroupId'] == null ? null : map['consumerGroupId'] as String,
-      kafkaTopic: map['kafkaTopic'] as String,
-      mqttTopic: map['mqttTopic'] as String,
-      name: map['name'] as String,
-      qos: map['qos'] == null ? null : map['qos'] as int,
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
+      kafkaTopic: (map['kafkaTopic'] as String).input(),
+      mqttTopic: (map['mqttTopic'] as String).input(),
+      name: (map['name'] as String).input(),
+      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
     );
   }
 }

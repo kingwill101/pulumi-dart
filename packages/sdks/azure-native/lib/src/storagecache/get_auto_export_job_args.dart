@@ -19,13 +19,10 @@ class GetAutoExportJobArgs {
   /// [autoExportJobName] Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAutoExportJobArgs({
-    required pulumi.Output<String> amlFilesystemName,
-    required pulumi.Output<String> autoExportJobName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      amlFilesystemName = pulumi.Input.asInput<String>(amlFilesystemName),
-      autoExportJobName = pulumi.Input.asInput<String>(autoExportJobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.amlFilesystemName,
+    required this.autoExportJobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAutoExportJobArgs {
 
   factory GetAutoExportJobArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoExportJobArgs(
-      amlFilesystemName: pulumi.Output.create<String>(map['amlFilesystemName'] as String),
-      autoExportJobName: pulumi.Output.create<String>(map['autoExportJobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      amlFilesystemName: (map['amlFilesystemName'] as String).input(),
+      autoExportJobName: (map['autoExportJobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

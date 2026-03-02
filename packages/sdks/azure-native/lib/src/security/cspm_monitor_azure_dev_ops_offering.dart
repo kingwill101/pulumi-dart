@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CSPM monitoring for AzureDevOps offering
 class CspmMonitorAzureDevOpsOffering {
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorAzureDevOps'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorAzureDevOpsOffering].
   /// [offeringType] The type of the security offering.
@@ -21,7 +22,7 @@ class CspmMonitorAzureDevOpsOffering {
 
   factory CspmMonitorAzureDevOpsOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAzureDevOpsOffering(
-      offeringType: map['offeringType'] as String,
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

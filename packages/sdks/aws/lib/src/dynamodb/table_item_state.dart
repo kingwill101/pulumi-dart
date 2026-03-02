@@ -24,17 +24,12 @@ class TableItemState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name or ARN of the table to contain the item.
   TableItemState({
-    pulumi.Output<String>? hashKey,
-    pulumi.Output<String>? item,
-    pulumi.Output<String>? rangeKey,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tableName,
-  }) :
-      hashKey = pulumi.Input.asOptionalInput<String>(hashKey),
-      item = pulumi.Input.asOptionalInput<String>(item),
-      rangeKey = pulumi.Input.asOptionalInput<String>(rangeKey),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tableName = pulumi.Input.asOptionalInput<String>(tableName);
+    this.hashKey,
+    this.item,
+    this.rangeKey,
+    this.region,
+    this.tableName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class TableItemState {
 
   factory TableItemState.fromMap(Map<String, dynamic> map) {
     return TableItemState(
-      hashKey: map['hashKey'] == null ? null : pulumi.Output.create<String>(map['hashKey'] as String),
-      item: map['item'] == null ? null : pulumi.Output.create<String>(map['item'] as String),
-      rangeKey: map['rangeKey'] == null ? null : pulumi.Output.create<String>(map['rangeKey'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tableName: map['tableName'] == null ? null : pulumi.Output.create<String>(map['tableName'] as String),
+      hashKey: map['hashKey'] == null ? null : (map['hashKey'] as String).input(),
+      item: map['item'] == null ? null : (map['item'] as String).input(),
+      rangeKey: map['rangeKey'] == null ? null : (map['rangeKey'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

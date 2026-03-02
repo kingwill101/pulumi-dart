@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertSeverityConfiguration {
   /// Severity when this condition is met.
-  final Map<String, String> evalCondition;
+  final pulumi.Input<Map<String, String>> evalCondition;
   /// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
-  final int severity;
+  final pulumi.Input<int> severity;
 
   /// Creates a new [AlertSeverityConfiguration].
   /// [evalCondition] Severity when this condition is met.
@@ -24,8 +25,8 @@ class AlertSeverityConfiguration {
 
   factory AlertSeverityConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertSeverityConfiguration(
-      evalCondition: (map['evalCondition'] as Map).cast<String, String>(),
-      severity: map['severity'] as int,
+      evalCondition: ((map['evalCondition'] as Map).cast<String, String>()).input(),
+      severity: (map['severity'] as int).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains all the information needed to mount an elastic volume
 class ElasticMountTargetPropertiesResponse {
   /// The mount target's IPv4 address, used to mount the volume
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The SMB server's Fully Qualified Domain Name, FQDN
-  final String smbServerFqdn;
+  final pulumi.Input<String> smbServerFqdn;
 
   /// Creates a new [ElasticMountTargetPropertiesResponse].
   /// [ipAddress] The mount target's IPv4 address, used to mount the volume
@@ -25,8 +26,8 @@ class ElasticMountTargetPropertiesResponse {
 
   factory ElasticMountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticMountTargetPropertiesResponse(
-      ipAddress: map['ipAddress'] as String,
-      smbServerFqdn: map['smbServerFqdn'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      smbServerFqdn: (map['smbServerFqdn'] as String).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class DefaultPrivilegesArgs {
   /// [schema] The database schema to set default privileges for this role.
   /// [withGrantOption] Permit the grant recipient to grant it to others
   DefaultPrivilegesArgs({
-    required pulumi.Output<String> database,
-    required pulumi.Output<String> objectType,
-    required pulumi.Output<String> owner,
-    required pulumi.Output<List<String>> privileges,
-    required pulumi.Output<String> role,
-    pulumi.Output<String>? schema,
-    pulumi.Output<bool>? withGrantOption,
-  }) :
-      database = pulumi.Input.asInput<String>(database),
-      objectType = pulumi.Input.asInput<String>(objectType),
-      owner = pulumi.Input.asInput<String>(owner),
-      privileges = pulumi.Input.asInput<List<String>>(privileges),
-      role = pulumi.Input.asInput<String>(role),
-      schema = pulumi.Input.asOptionalInput<String>(schema),
-      withGrantOption = pulumi.Input.asOptionalInput<bool>(withGrantOption);
+    required this.database,
+    required this.objectType,
+    required this.owner,
+    required this.privileges,
+    required this.role,
+    this.schema,
+    this.withGrantOption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DefaultPrivilegesArgs {
 
   factory DefaultPrivilegesArgs.fromMap(Map<String, dynamic> map) {
     return DefaultPrivilegesArgs(
-      database: pulumi.Output.create<String>(map['database'] as String),
-      objectType: pulumi.Output.create<String>(map['objectType'] as String),
-      owner: pulumi.Output.create<String>(map['owner'] as String),
-      privileges: pulumi.Output.create<List<String>>((map['privileges'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
-      withGrantOption: map['withGrantOption'] == null ? null : pulumi.Output.create<bool>(map['withGrantOption'] as bool),
+      database: (map['database'] as String).input(),
+      objectType: (map['objectType'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      privileges: ((map['privileges'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
     );
   }
 }

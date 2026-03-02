@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectMemberRole {
   /// Project Role Code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// project role name
-  final String? name;
+  final pulumi.Input<String>? name;
   /// project role type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ProjectMemberRole].
   /// [code] Project Role Code.
@@ -29,9 +30,9 @@ class ProjectMemberRole {
 
   factory ProjectMemberRole.fromMap(Map<String, dynamic> map) {
     return ProjectMemberRole(
-      code: map['code'] == null ? null : map['code'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

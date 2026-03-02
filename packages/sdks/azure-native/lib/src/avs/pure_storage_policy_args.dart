@@ -25,17 +25,12 @@ class PureStoragePolicyArgs {
   /// [storagePolicyName] Name of the storage policy.
   /// [storagePoolId] Azure resource ID of the Pure Storage Pool associated with the storage policy
   PureStoragePolicyArgs({
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> storagePolicyDefinition,
-    pulumi.Output<String>? storagePolicyName,
-    required pulumi.Output<String> storagePoolId,
-  }) :
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storagePolicyDefinition = pulumi.Input.asInput<String>(storagePolicyDefinition),
-      storagePolicyName = pulumi.Input.asOptionalInput<String>(storagePolicyName),
-      storagePoolId = pulumi.Input.asInput<String>(storagePoolId);
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    required this.storagePolicyDefinition,
+    this.storagePolicyName,
+    required this.storagePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class PureStoragePolicyArgs {
 
   factory PureStoragePolicyArgs.fromMap(Map<String, dynamic> map) {
     return PureStoragePolicyArgs(
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storagePolicyDefinition: pulumi.Output.create<String>(map['storagePolicyDefinition'] as String),
-      storagePolicyName: map['storagePolicyName'] == null ? null : pulumi.Output.create<String>(map['storagePolicyName'] as String),
-      storagePoolId: pulumi.Output.create<String>(map['storagePoolId'] as String),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storagePolicyDefinition: (map['storagePolicyDefinition'] as String).input(),
+      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName'] as String).input(),
+      storagePoolId: (map['storagePoolId'] as String).input(),
     );
   }
 }

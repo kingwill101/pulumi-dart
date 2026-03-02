@@ -31,21 +31,14 @@ class GroupState {
   /// [identityStoreId] The globally unique identifier for the identity store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GroupState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<List<GroupExternalId>>? externalIds,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? identityStoreId,
-    pulumi.Output<String>? region,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      externalIds = pulumi.Input.asOptionalInput<List<GroupExternalId>>(externalIds),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      identityStoreId = pulumi.Input.asOptionalInput<String>(identityStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.arn,
+    this.description,
+    this.displayName,
+    this.externalIds,
+    this.groupId,
+    this.identityStoreId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      externalIds: map['externalIds'] == null ? null : pulumi.Output.create<List<GroupExternalId>>(pulumi.Input.decodeList<GroupExternalId>(map['externalIds'], (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>()))),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      identityStoreId: map['identityStoreId'] == null ? null : pulumi.Output.create<String>(map['identityStoreId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      externalIds: map['externalIds'] == null ? null : (pulumi.Input.decodeList<GroupExternalId>(map['externalIds'], (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      identityStoreId: map['identityStoreId'] == null ? null : (map['identityStoreId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

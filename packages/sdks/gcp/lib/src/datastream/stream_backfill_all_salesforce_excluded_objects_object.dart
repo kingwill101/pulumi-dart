@@ -6,9 +6,9 @@ import 'stream_backfill_all_salesforce_excluded_objects_object_field.dart';
 class StreamBackfillAllSalesforceExcludedObjectsObject {
   /// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// Structure is documented below.
-  final List<StreamBackfillAllSalesforceExcludedObjectsObjectField>? fields;
+  final pulumi.Input<List<StreamBackfillAllSalesforceExcludedObjectsObjectField>>? fields;
   /// Name of object in Salesforce Org.
-  final String? objectName;
+  final pulumi.Input<String>? objectName;
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjectsObject].
   /// [fields] Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
@@ -20,15 +20,15 @@ class StreamBackfillAllSalesforceExcludedObjectsObject {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?fields == null ? null : pulumi.Input.encodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'fields': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllSalesforceExcludedObjectsObjectField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField, Map<String, dynamic>>(value, (value) => value.toMap())),
       'objectName': ?objectName,
     };
   }
 
   factory StreamBackfillAllSalesforceExcludedObjectsObject.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSalesforceExcludedObjectsObject(
-      fields: map['fields'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField>(map['fields'], (value) => StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap((value as Map).cast<String, dynamic>())),
-      objectName: map['objectName'] == null ? null : map['objectName'] as String,
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField>(map['fields'], (value) => StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
     );
   }
 }

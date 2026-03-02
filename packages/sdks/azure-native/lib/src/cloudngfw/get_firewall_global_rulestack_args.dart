@@ -16,11 +16,9 @@ class GetFirewallGlobalRulestackArgs {
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFirewallGlobalRulestackArgs({
-    required pulumi.Output<String> firewallName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      firewallName = pulumi.Input.asInput<String>(firewallName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.firewallName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetFirewallGlobalRulestackArgs {
 
   factory GetFirewallGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallGlobalRulestackArgs(
-      firewallName: pulumi.Output.create<String>(map['firewallName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      firewallName: (map['firewallName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

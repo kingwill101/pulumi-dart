@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secure_string_response.dart';
 
 /// SSIS package execution credential.
 class SSISExecutionCredentialResponse {
   /// Domain for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic domain;
+  final pulumi.Input<dynamic> domain;
   /// Password for windows authentication.
-  final SecureStringResponse password;
+  final pulumi.Input<SecureStringResponse> password;
   /// UseName for windows authentication. Type: string (or Expression with resultType string).
-  final dynamic userName;
+  final pulumi.Input<dynamic> userName;
 
   /// Creates a new [SSISExecutionCredentialResponse].
   /// [domain] Domain for windows authentication. Type: string (or Expression with resultType string).
@@ -24,16 +25,16 @@ class SSISExecutionCredentialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'password': password.toMap(),
+      'password': pulumi.Input.mapInputValue<SecureStringResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory SSISExecutionCredentialResponse.fromMap(Map<String, dynamic> map) {
     return SSISExecutionCredentialResponse(
-      domain: map['domain'],
-      password: SecureStringResponse.fromMap((map['password'] as Map).cast<String, dynamic>()),
-      userName: map['userName'],
+      domain: (map['domain']).input(),
+      password: (SecureStringResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      userName: (map['userName']).input(),
     );
   }
 }

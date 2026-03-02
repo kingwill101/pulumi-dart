@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
   /// Mode is the configuration for how to expose metadata to workloads running on the node.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [GetClusterNodePoolNodeConfigWorkloadMetadataConfig].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node.
@@ -19,7 +20,7 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
 
   factory GetClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigWorkloadMetadataConfig(
-      mode: map['mode'] as String,
+      mode: (map['mode'] as String).input(),
     );
   }
 }

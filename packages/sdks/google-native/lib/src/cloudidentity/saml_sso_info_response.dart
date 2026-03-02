@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details that are applicable when `sso_mode` == `SAML_SSO`.
 class SamlSsoInfoResponse {
   /// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
-  final String inboundSamlSsoProfile;
+  final pulumi.Input<String> inboundSamlSsoProfile;
 
   /// Creates a new [SamlSsoInfoResponse].
   /// [inboundSamlSsoProfile] Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
@@ -20,7 +21,7 @@ class SamlSsoInfoResponse {
 
   factory SamlSsoInfoResponse.fromMap(Map<String, dynamic> map) {
     return SamlSsoInfoResponse(
-      inboundSamlSsoProfile: map['inboundSamlSsoProfile'] as String,
+      inboundSamlSsoProfile: (map['inboundSamlSsoProfile'] as String).input(),
     );
   }
 }

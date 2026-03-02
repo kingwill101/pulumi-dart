@@ -16,11 +16,9 @@ class IgnitionArgs {
   /// [content] Ignition configuration content (JSON)
   /// [name] Name for this ignition resource
   IgnitionArgs({
-    required pulumi.Output<String> content,
-    pulumi.Output<String>? name,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.content,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class IgnitionArgs {
 
   factory IgnitionArgs.fromMap(Map<String, dynamic> map) {
     return IgnitionArgs(
-      content: pulumi.Output.create<String>(map['content'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      content: (map['content'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

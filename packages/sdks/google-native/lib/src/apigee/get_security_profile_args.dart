@@ -14,11 +14,9 @@ class GetSecurityProfileArgs {
   /// [organizationId] Required.
   /// [securityProfileId] Required.
   GetSecurityProfileArgs({
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> securityProfileId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityProfileId = pulumi.Input.asInput<String>(securityProfileId);
+    required this.organizationId,
+    required this.securityProfileId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetSecurityProfileArgs {
 
   factory GetSecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityProfileArgs(
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      securityProfileId: pulumi.Output.create<String>(map['securityProfileId'] as String),
+      organizationId: (map['organizationId'] as String).input(),
+      securityProfileId: (map['securityProfileId'] as String).input(),
     );
   }
 }

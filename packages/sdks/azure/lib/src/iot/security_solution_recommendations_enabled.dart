@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecuritySolutionRecommendationsEnabled {
   /// Is Principal Authentication enabled for the ACR repository? Defaults to `true`.
-  final bool? acrAuthentication;
+  final pulumi.Input<bool>? acrAuthentication;
   /// Is Agent send underutilized messages enabled? Defaults to `true`.
-  final bool? agentSendUnutilizedMsg;
+  final pulumi.Input<bool>? agentSendUnutilizedMsg;
   /// Is Security related system configuration issues identified? Defaults to `true`.
-  final bool? baseline;
+  final pulumi.Input<bool>? baseline;
   /// Is IoT Edge Hub memory optimized? Defaults to `true`.
-  final bool? edgeHubMemOptimize;
+  final pulumi.Input<bool>? edgeHubMemOptimize;
   /// Is logging configured for IoT Edge module? Defaults to `true`.
-  final bool? edgeLoggingOption;
+  final pulumi.Input<bool>? edgeLoggingOption;
   /// Is inconsistent module settings enabled for SecurityGroup? Defaults to `true`.
-  final bool? inconsistentModuleSettings;
+  final pulumi.Input<bool>? inconsistentModuleSettings;
   /// is Azure IoT Security agent installed? Defaults to `true`.
-  final bool? installAgent;
+  final pulumi.Input<bool>? installAgent;
   /// Is Default IP filter policy denied? Defaults to `true`.
-  final bool? ipFilterDenyAll;
+  final pulumi.Input<bool>? ipFilterDenyAll;
   /// Is IP filter rule source allowable IP range too large? Defaults to `true`.
-  final bool? ipFilterPermissiveRule;
+  final pulumi.Input<bool>? ipFilterPermissiveRule;
   /// Is any ports open on the device? Defaults to `true`.
-  final bool? openPorts;
+  final pulumi.Input<bool>? openPorts;
   /// Does firewall policy exist which allow necessary communication to/from the device? Defaults to `true`.
-  final bool? permissiveFirewallPolicy;
+  final pulumi.Input<bool>? permissiveFirewallPolicy;
   /// Is only necessary addresses or ports are permitted in? Defaults to `true`.
-  final bool? permissiveInputFirewallRules;
+  final pulumi.Input<bool>? permissiveInputFirewallRules;
   /// Is only necessary addresses or ports are permitted out? Defaults to `true`.
-  final bool? permissiveOutputFirewallRules;
+  final pulumi.Input<bool>? permissiveOutputFirewallRules;
   /// Is high level permissions are needed for the module? Defaults to `true`.
-  final bool? privilegedDockerOptions;
+  final pulumi.Input<bool>? privilegedDockerOptions;
   /// Is any credentials shared among devices? Defaults to `true`.
-  final bool? sharedCredentials;
+  final pulumi.Input<bool>? sharedCredentials;
   /// Does TLS cipher suite need to be updated? Defaults to `true`.
-  final bool? vulnerableTlsCipherSuite;
+  final pulumi.Input<bool>? vulnerableTlsCipherSuite;
 
   /// Creates a new [SecuritySolutionRecommendationsEnabled].
   /// [acrAuthentication] Is Principal Authentication enabled for the ACR repository? Defaults to `true`.
@@ -94,22 +95,22 @@ class SecuritySolutionRecommendationsEnabled {
 
   factory SecuritySolutionRecommendationsEnabled.fromMap(Map<String, dynamic> map) {
     return SecuritySolutionRecommendationsEnabled(
-      acrAuthentication: map['acrAuthentication'] == null ? null : map['acrAuthentication'] as bool,
-      agentSendUnutilizedMsg: map['agentSendUnutilizedMsg'] == null ? null : map['agentSendUnutilizedMsg'] as bool,
-      baseline: map['baseline'] == null ? null : map['baseline'] as bool,
-      edgeHubMemOptimize: map['edgeHubMemOptimize'] == null ? null : map['edgeHubMemOptimize'] as bool,
-      edgeLoggingOption: map['edgeLoggingOption'] == null ? null : map['edgeLoggingOption'] as bool,
-      inconsistentModuleSettings: map['inconsistentModuleSettings'] == null ? null : map['inconsistentModuleSettings'] as bool,
-      installAgent: map['installAgent'] == null ? null : map['installAgent'] as bool,
-      ipFilterDenyAll: map['ipFilterDenyAll'] == null ? null : map['ipFilterDenyAll'] as bool,
-      ipFilterPermissiveRule: map['ipFilterPermissiveRule'] == null ? null : map['ipFilterPermissiveRule'] as bool,
-      openPorts: map['openPorts'] == null ? null : map['openPorts'] as bool,
-      permissiveFirewallPolicy: map['permissiveFirewallPolicy'] == null ? null : map['permissiveFirewallPolicy'] as bool,
-      permissiveInputFirewallRules: map['permissiveInputFirewallRules'] == null ? null : map['permissiveInputFirewallRules'] as bool,
-      permissiveOutputFirewallRules: map['permissiveOutputFirewallRules'] == null ? null : map['permissiveOutputFirewallRules'] as bool,
-      privilegedDockerOptions: map['privilegedDockerOptions'] == null ? null : map['privilegedDockerOptions'] as bool,
-      sharedCredentials: map['sharedCredentials'] == null ? null : map['sharedCredentials'] as bool,
-      vulnerableTlsCipherSuite: map['vulnerableTlsCipherSuite'] == null ? null : map['vulnerableTlsCipherSuite'] as bool,
+      acrAuthentication: map['acrAuthentication'] == null ? null : (map['acrAuthentication'] as bool).input(),
+      agentSendUnutilizedMsg: map['agentSendUnutilizedMsg'] == null ? null : (map['agentSendUnutilizedMsg'] as bool).input(),
+      baseline: map['baseline'] == null ? null : (map['baseline'] as bool).input(),
+      edgeHubMemOptimize: map['edgeHubMemOptimize'] == null ? null : (map['edgeHubMemOptimize'] as bool).input(),
+      edgeLoggingOption: map['edgeLoggingOption'] == null ? null : (map['edgeLoggingOption'] as bool).input(),
+      inconsistentModuleSettings: map['inconsistentModuleSettings'] == null ? null : (map['inconsistentModuleSettings'] as bool).input(),
+      installAgent: map['installAgent'] == null ? null : (map['installAgent'] as bool).input(),
+      ipFilterDenyAll: map['ipFilterDenyAll'] == null ? null : (map['ipFilterDenyAll'] as bool).input(),
+      ipFilterPermissiveRule: map['ipFilterPermissiveRule'] == null ? null : (map['ipFilterPermissiveRule'] as bool).input(),
+      openPorts: map['openPorts'] == null ? null : (map['openPorts'] as bool).input(),
+      permissiveFirewallPolicy: map['permissiveFirewallPolicy'] == null ? null : (map['permissiveFirewallPolicy'] as bool).input(),
+      permissiveInputFirewallRules: map['permissiveInputFirewallRules'] == null ? null : (map['permissiveInputFirewallRules'] as bool).input(),
+      permissiveOutputFirewallRules: map['permissiveOutputFirewallRules'] == null ? null : (map['permissiveOutputFirewallRules'] as bool).input(),
+      privilegedDockerOptions: map['privilegedDockerOptions'] == null ? null : (map['privilegedDockerOptions'] as bool).input(),
+      sharedCredentials: map['sharedCredentials'] == null ? null : (map['sharedCredentials'] as bool).input(),
+      vulnerableTlsCipherSuite: map['vulnerableTlsCipherSuite'] == null ? null : (map['vulnerableTlsCipherSuite'] as bool).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Path to match for routing.
 class HttpRouteMatchPathResponse {
   /// replacement string for matched part of the Uri.
-  final String? rewrite;
+  final pulumi.Input<String>? rewrite;
   /// how to match value in the Uri
-  final String type;
+  final pulumi.Input<String> type;
   /// Uri path to match for request.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [HttpRouteMatchPathResponse].
   /// [rewrite] replacement string for matched part of the Uri.
@@ -30,9 +31,9 @@ class HttpRouteMatchPathResponse {
 
   factory HttpRouteMatchPathResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchPathResponse(
-      rewrite: map['rewrite'] == null ? null : map['rewrite'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      rewrite: map['rewrite'] == null ? null : (map['rewrite'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

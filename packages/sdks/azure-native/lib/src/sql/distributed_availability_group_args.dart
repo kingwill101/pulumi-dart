@@ -44,29 +44,18 @@ class DistributedAvailabilityGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [seedingMode] Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
   DistributedAvailabilityGroupArgs({
-    pulumi.Output<List<DistributedAvailabilityGroupDatabase>>? databases,
-    pulumi.Output<String>? distributedAvailabilityGroupName,
-    pulumi.Output<String>? failoverMode,
-    pulumi.Output<String>? instanceAvailabilityGroupName,
-    pulumi.Output<String>? instanceLinkRole,
-    required pulumi.Output<String> managedInstanceName,
-    pulumi.Output<String>? partnerAvailabilityGroupName,
-    pulumi.Output<String>? partnerEndpoint,
-    pulumi.Output<String>? replicationMode,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? seedingMode,
-  }) :
-      databases = pulumi.Input.asOptionalInput<List<DistributedAvailabilityGroupDatabase>>(databases),
-      distributedAvailabilityGroupName = pulumi.Input.asOptionalInput<String>(distributedAvailabilityGroupName),
-      failoverMode = pulumi.Input.asOptionalInput<String>(failoverMode),
-      instanceAvailabilityGroupName = pulumi.Input.asOptionalInput<String>(instanceAvailabilityGroupName),
-      instanceLinkRole = pulumi.Input.asOptionalInput<String>(instanceLinkRole),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      partnerAvailabilityGroupName = pulumi.Input.asOptionalInput<String>(partnerAvailabilityGroupName),
-      partnerEndpoint = pulumi.Input.asOptionalInput<String>(partnerEndpoint),
-      replicationMode = pulumi.Input.asOptionalInput<String>(replicationMode),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      seedingMode = pulumi.Input.asOptionalInput<String>(seedingMode);
+    this.databases,
+    this.distributedAvailabilityGroupName,
+    this.failoverMode,
+    this.instanceAvailabilityGroupName,
+    this.instanceLinkRole,
+    required this.managedInstanceName,
+    this.partnerAvailabilityGroupName,
+    this.partnerEndpoint,
+    this.replicationMode,
+    required this.resourceGroupName,
+    this.seedingMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class DistributedAvailabilityGroupArgs {
 
   factory DistributedAvailabilityGroupArgs.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupArgs(
-      databases: map['databases'] == null ? null : pulumi.Output.create<List<DistributedAvailabilityGroupDatabase>>(pulumi.Input.decodeList<DistributedAvailabilityGroupDatabase>(map['databases'], (value) => DistributedAvailabilityGroupDatabase.fromMap((value as Map).cast<String, dynamic>()))),
-      distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] == null ? null : pulumi.Output.create<String>(map['distributedAvailabilityGroupName'] as String),
-      failoverMode: map['failoverMode'] == null ? null : pulumi.Output.create<String>(map['failoverMode'] as String),
-      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : pulumi.Output.create<String>(map['instanceAvailabilityGroupName'] as String),
-      instanceLinkRole: map['instanceLinkRole'] == null ? null : pulumi.Output.create<String>(map['instanceLinkRole'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : pulumi.Output.create<String>(map['partnerAvailabilityGroupName'] as String),
-      partnerEndpoint: map['partnerEndpoint'] == null ? null : pulumi.Output.create<String>(map['partnerEndpoint'] as String),
-      replicationMode: map['replicationMode'] == null ? null : pulumi.Output.create<String>(map['replicationMode'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      seedingMode: map['seedingMode'] == null ? null : pulumi.Output.create<String>(map['seedingMode'] as String),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DistributedAvailabilityGroupDatabase>(map['databases'], (value) => DistributedAvailabilityGroupDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] == null ? null : (map['distributedAvailabilityGroupName'] as String).input(),
+      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode'] as String).input(),
+      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : (map['instanceAvailabilityGroupName'] as String).input(),
+      instanceLinkRole: map['instanceLinkRole'] == null ? null : (map['instanceLinkRole'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : (map['partnerAvailabilityGroupName'] as String).input(),
+      partnerEndpoint: map['partnerEndpoint'] == null ? null : (map['partnerEndpoint'] as String).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      seedingMode: map['seedingMode'] == null ? null : (map['seedingMode'] as String).input(),
     );
   }
 }

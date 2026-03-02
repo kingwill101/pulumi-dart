@@ -34,21 +34,14 @@ class ClientCertificateState {
   /// [status] The certificate status. Valid values: `revoked`, `active`.
   /// [validityDays] Certificate validity period.
   ClientCertificateState({
-    pulumi.Output<String>? clientCertId,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? csr,
-    pulumi.Output<String>? pkeyType,
-    pulumi.Output<String>? siteId,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? validityDays,
-  }) :
-      clientCertId = pulumi.Input.asOptionalInput<String>(clientCertId),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      csr = pulumi.Input.asOptionalInput<String>(csr),
-      pkeyType = pulumi.Input.asOptionalInput<String>(pkeyType),
-      siteId = pulumi.Input.asOptionalInput<String>(siteId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      validityDays = pulumi.Input.asOptionalInput<String>(validityDays);
+    this.clientCertId,
+    this.createTime,
+    this.csr,
+    this.pkeyType,
+    this.siteId,
+    this.status,
+    this.validityDays,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ClientCertificateState {
 
   factory ClientCertificateState.fromMap(Map<String, dynamic> map) {
     return ClientCertificateState(
-      clientCertId: map['clientCertId'] == null ? null : pulumi.Output.create<String>(map['clientCertId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      csr: map['csr'] == null ? null : pulumi.Output.create<String>(map['csr'] as String),
-      pkeyType: map['pkeyType'] == null ? null : pulumi.Output.create<String>(map['pkeyType'] as String),
-      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      validityDays: map['validityDays'] == null ? null : pulumi.Output.create<String>(map['validityDays'] as String),
+      clientCertId: map['clientCertId'] == null ? null : (map['clientCertId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
+      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      validityDays: map['validityDays'] == null ? null : (map['validityDays'] as String).input(),
     );
   }
 }

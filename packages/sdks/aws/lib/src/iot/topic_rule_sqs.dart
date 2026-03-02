@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleSqs {
   /// The URL of the Amazon SQS queue.
-  final String queueUrl;
+  final pulumi.Input<String> queueUrl;
   /// The ARN of the IAM role that grants access.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Specifies whether to use Base64 encoding.
-  final bool useBase64;
+  final pulumi.Input<bool> useBase64;
 
   /// Creates a new [TopicRuleSqs].
   /// [queueUrl] The URL of the Amazon SQS queue.
@@ -29,9 +30,9 @@ class TopicRuleSqs {
 
   factory TopicRuleSqs.fromMap(Map<String, dynamic> map) {
     return TopicRuleSqs(
-      queueUrl: map['queueUrl'] as String,
-      roleArn: map['roleArn'] as String,
-      useBase64: map['useBase64'] as bool,
+      queueUrl: (map['queueUrl'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      useBase64: (map['useBase64'] as bool).input(),
     );
   }
 }

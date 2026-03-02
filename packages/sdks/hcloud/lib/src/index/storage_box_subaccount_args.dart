@@ -32,21 +32,14 @@ class StorageBoxSubaccountArgs {
   /// [password] Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   /// [storageBoxId] ID of the Storage Box.
   StorageBoxSubaccountArgs({
-    pulumi.Output<StorageBoxSubaccountAccessSettings>? accessSettings,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> homeDirectory,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> password,
-    required pulumi.Output<int> storageBoxId,
-  }) :
-      accessSettings = pulumi.Input.asOptionalInput<StorageBoxSubaccountAccessSettings>(accessSettings),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      homeDirectory = pulumi.Input.asInput<String>(homeDirectory),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      password = pulumi.Input.asInput<String>(password),
-      storageBoxId = pulumi.Input.asInput<int>(storageBoxId);
+    this.accessSettings,
+    this.description,
+    required this.homeDirectory,
+    this.labels,
+    this.name,
+    required this.password,
+    required this.storageBoxId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class StorageBoxSubaccountArgs {
 
   factory StorageBoxSubaccountArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxSubaccountArgs(
-      accessSettings: map['accessSettings'] == null ? null : pulumi.Output.create<StorageBoxSubaccountAccessSettings>(StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      homeDirectory: pulumi.Output.create<String>(map['homeDirectory'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
-      storageBoxId: pulumi.Output.create<int>(map['storageBoxId'] as int),
+      accessSettings: map['accessSettings'] == null ? null : (StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      homeDirectory: (map['homeDirectory'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      password: (map['password'] as String).input(),
+      storageBoxId: (map['storageBoxId'] as int).input(),
     );
   }
 }

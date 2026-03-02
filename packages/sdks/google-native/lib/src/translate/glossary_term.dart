@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a single glossary term
 class GlossaryTerm {
   /// The language for this glossary term.
-  final String? languageCode;
+  final pulumi.Input<String>? languageCode;
   /// The text for the glossary term.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [GlossaryTerm].
   /// [languageCode] The language for this glossary term.
@@ -25,8 +26,8 @@ class GlossaryTerm {
 
   factory GlossaryTerm.fromMap(Map<String, dynamic> map) {
     return GlossaryTerm(
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
-      text: map['text'] == null ? null : map['text'] as String,
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

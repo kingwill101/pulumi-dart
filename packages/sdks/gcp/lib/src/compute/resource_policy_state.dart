@@ -54,27 +54,17 @@ class ResourcePolicyState {
   /// [snapshotSchedulePolicy] Policy for creating snapshots of persistent disks.
   /// [workloadPolicy] Represents the workload policy.
   ResourcePolicyState({
-    pulumi.Output<String>? description,
-    pulumi.Output<ResourcePolicyDiskConsistencyGroupPolicy>? diskConsistencyGroupPolicy,
-    pulumi.Output<ResourcePolicyGroupPlacementPolicy>? groupPlacementPolicy,
-    pulumi.Output<ResourcePolicyInstanceSchedulePolicy>? instanceSchedulePolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? selfLink,
-    pulumi.Output<ResourcePolicySnapshotSchedulePolicy>? snapshotSchedulePolicy,
-    pulumi.Output<ResourcePolicyWorkloadPolicy>? workloadPolicy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskConsistencyGroupPolicy = pulumi.Input.asOptionalInput<ResourcePolicyDiskConsistencyGroupPolicy>(diskConsistencyGroupPolicy),
-      groupPlacementPolicy = pulumi.Input.asOptionalInput<ResourcePolicyGroupPlacementPolicy>(groupPlacementPolicy),
-      instanceSchedulePolicy = pulumi.Input.asOptionalInput<ResourcePolicyInstanceSchedulePolicy>(instanceSchedulePolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      snapshotSchedulePolicy = pulumi.Input.asOptionalInput<ResourcePolicySnapshotSchedulePolicy>(snapshotSchedulePolicy),
-      workloadPolicy = pulumi.Input.asOptionalInput<ResourcePolicyWorkloadPolicy>(workloadPolicy);
+    this.description,
+    this.diskConsistencyGroupPolicy,
+    this.groupPlacementPolicy,
+    this.instanceSchedulePolicy,
+    this.name,
+    this.project,
+    this.region,
+    this.selfLink,
+    this.snapshotSchedulePolicy,
+    this.workloadPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,16 +83,16 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : pulumi.Output.create<ResourcePolicyDiskConsistencyGroupPolicy>(ResourcePolicyDiskConsistencyGroupPolicy.fromMap((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>())),
-      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : pulumi.Output.create<ResourcePolicyGroupPlacementPolicy>(ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())),
-      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : pulumi.Output.create<ResourcePolicyInstanceSchedulePolicy>(ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
-      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : pulumi.Output.create<ResourcePolicySnapshotSchedulePolicy>(ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())),
-      workloadPolicy: map['workloadPolicy'] == null ? null : pulumi.Output.create<ResourcePolicyWorkloadPolicy>(ResourcePolicyWorkloadPolicy.fromMap((map['workloadPolicy'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : (ResourcePolicyDiskConsistencyGroupPolicy.fromMap((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>())).input(),
+      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())).input(),
+      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      workloadPolicy: map['workloadPolicy'] == null ? null : (ResourcePolicyWorkloadPolicy.fromMap((map['workloadPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

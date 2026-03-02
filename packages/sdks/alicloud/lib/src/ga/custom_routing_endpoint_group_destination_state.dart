@@ -31,23 +31,15 @@ class CustomRoutingEndpointGroupDestinationState {
   /// [status] The status of the Custom Routing Endpoint Group Destination.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   CustomRoutingEndpointGroupDestinationState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? customRoutingEndpointGroupDestinationId,
-    pulumi.Output<String>? endpointGroupId,
-    pulumi.Output<int>? fromPort,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<List<String>>? protocols,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? toPort,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      customRoutingEndpointGroupDestinationId = pulumi.Input.asOptionalInput<String>(customRoutingEndpointGroupDestinationId),
-      endpointGroupId = pulumi.Input.asOptionalInput<String>(endpointGroupId),
-      fromPort = pulumi.Input.asOptionalInput<int>(fromPort),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      protocols = pulumi.Input.asOptionalInput<List<String>>(protocols),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      toPort = pulumi.Input.asOptionalInput<int>(toPort);
+    this.acceleratorId,
+    this.customRoutingEndpointGroupDestinationId,
+    this.endpointGroupId,
+    this.fromPort,
+    this.listenerId,
+    this.protocols,
+    this.status,
+    this.toPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class CustomRoutingEndpointGroupDestinationState {
 
   factory CustomRoutingEndpointGroupDestinationState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupDestinationState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      customRoutingEndpointGroupDestinationId: map['customRoutingEndpointGroupDestinationId'] == null ? null : pulumi.Output.create<String>(map['customRoutingEndpointGroupDestinationId'] as String),
-      endpointGroupId: map['endpointGroupId'] == null ? null : pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      fromPort: map['fromPort'] == null ? null : pulumi.Output.create<int>(map['fromPort'] as int),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      protocols: map['protocols'] == null ? null : pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      toPort: map['toPort'] == null ? null : pulumi.Output.create<int>(map['toPort'] as int),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      customRoutingEndpointGroupDestinationId: map['customRoutingEndpointGroupDestinationId'] == null ? null : (map['customRoutingEndpointGroupDestinationId'] as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// package shipping details
 class PackageShippingDetailsResponse {
   /// Name of the carrier.
-  final String carrierName;
+  final pulumi.Input<String> carrierName;
   /// Tracking Id of shipment.
-  final String trackingId;
+  final pulumi.Input<String> trackingId;
   /// Url where shipment can be tracked.
-  final String trackingUrl;
+  final pulumi.Input<String> trackingUrl;
 
   /// Creates a new [PackageShippingDetailsResponse].
   /// [carrierName] Name of the carrier.
@@ -30,9 +31,9 @@ class PackageShippingDetailsResponse {
 
   factory PackageShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return PackageShippingDetailsResponse(
-      carrierName: map['carrierName'] as String,
-      trackingId: map['trackingId'] as String,
-      trackingUrl: map['trackingUrl'] as String,
+      carrierName: (map['carrierName'] as String).input(),
+      trackingId: (map['trackingId'] as String).input(),
+      trackingUrl: (map['trackingUrl'] as String).input(),
     );
   }
 }

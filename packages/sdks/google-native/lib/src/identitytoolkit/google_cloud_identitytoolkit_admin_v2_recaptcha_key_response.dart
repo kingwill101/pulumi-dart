@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   /// The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
-  final String key;
+  final pulumi.Input<String> key;
   /// The client's platform type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse].
   /// [key] The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
@@ -25,8 +26,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
 
   factory GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse(
-      key: map['key'] as String,
-      type: map['type'] as String,
+      key: (map['key'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

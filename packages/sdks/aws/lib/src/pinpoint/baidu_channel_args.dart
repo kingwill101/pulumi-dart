@@ -25,17 +25,12 @@ class BaiduChannelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretKey] Platform credential Secret key from Baidu.
   BaiduChannelArgs({
-    required pulumi.Output<String> apiKey,
-    required pulumi.Output<String> applicationId,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> secretKey,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretKey = pulumi.Input.asInput<String>(secretKey);
+    required this.apiKey,
+    required this.applicationId,
+    this.enabled,
+    this.region,
+    required this.secretKey,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BaiduChannelArgs {
 
   factory BaiduChannelArgs.fromMap(Map<String, dynamic> map) {
     return BaiduChannelArgs(
-      apiKey: pulumi.Output.create<String>(map['apiKey'] as String),
-      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretKey: pulumi.Output.create<String>(map['secretKey'] as String),
+      apiKey: (map['apiKey'] as String).input(),
+      applicationId: (map['applicationId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretKey: (map['secretKey'] as String).input(),
     );
   }
 }

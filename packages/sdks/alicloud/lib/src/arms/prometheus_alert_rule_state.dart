@@ -45,31 +45,19 @@ class PrometheusAlertRuleState {
   /// [status] The status of the resource. Valid values: `0`, `1`.
   /// [type] The type of the alert rule.
   PrometheusAlertRuleState({
-    pulumi.Output<List<PrometheusAlertRuleAnnotation>>? annotations,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? dispatchRuleId,
-    pulumi.Output<String>? duration,
-    pulumi.Output<String>? expression,
-    pulumi.Output<List<PrometheusAlertRuleLabel>>? labels,
-    pulumi.Output<String>? message,
-    pulumi.Output<String>? notifyType,
-    pulumi.Output<int>? prometheusAlertRuleId,
-    pulumi.Output<String>? prometheusAlertRuleName,
-    pulumi.Output<int>? status,
-    pulumi.Output<String>? type,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<List<PrometheusAlertRuleAnnotation>>(annotations),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      dispatchRuleId = pulumi.Input.asOptionalInput<String>(dispatchRuleId),
-      duration = pulumi.Input.asOptionalInput<String>(duration),
-      expression = pulumi.Input.asOptionalInput<String>(expression),
-      labels = pulumi.Input.asOptionalInput<List<PrometheusAlertRuleLabel>>(labels),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      notifyType = pulumi.Input.asOptionalInput<String>(notifyType),
-      prometheusAlertRuleId = pulumi.Input.asOptionalInput<int>(prometheusAlertRuleId),
-      prometheusAlertRuleName = pulumi.Input.asOptionalInput<String>(prometheusAlertRuleName),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.annotations,
+    this.clusterId,
+    this.dispatchRuleId,
+    this.duration,
+    this.expression,
+    this.labels,
+    this.message,
+    this.notifyType,
+    this.prometheusAlertRuleId,
+    this.prometheusAlertRuleName,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class PrometheusAlertRuleState {
 
   factory PrometheusAlertRuleState.fromMap(Map<String, dynamic> map) {
     return PrometheusAlertRuleState(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<PrometheusAlertRuleAnnotation>>(pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations'], (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      dispatchRuleId: map['dispatchRuleId'] == null ? null : pulumi.Output.create<String>(map['dispatchRuleId'] as String),
-      duration: map['duration'] == null ? null : pulumi.Output.create<String>(map['duration'] as String),
-      expression: map['expression'] == null ? null : pulumi.Output.create<String>(map['expression'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<PrometheusAlertRuleLabel>>(pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels'], (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))),
-      message: map['message'] == null ? null : pulumi.Output.create<String>(map['message'] as String),
-      notifyType: map['notifyType'] == null ? null : pulumi.Output.create<String>(map['notifyType'] as String),
-      prometheusAlertRuleId: map['prometheusAlertRuleId'] == null ? null : pulumi.Output.create<int>(map['prometheusAlertRuleId'] as int),
-      prometheusAlertRuleName: map['prometheusAlertRuleName'] == null ? null : pulumi.Output.create<String>(map['prometheusAlertRuleName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      annotations: map['annotations'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations'], (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      dispatchRuleId: map['dispatchRuleId'] == null ? null : (map['dispatchRuleId'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels'], (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      notifyType: map['notifyType'] == null ? null : (map['notifyType'] as String).input(),
+      prometheusAlertRuleId: map['prometheusAlertRuleId'] == null ? null : (map['prometheusAlertRuleId'] as int).input(),
+      prometheusAlertRuleName: map['prometheusAlertRuleName'] == null ? null : (map['prometheusAlertRuleName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

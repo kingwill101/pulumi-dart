@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Bgp configuration of cache node
 class BgpConfiguration {
   /// Asn to ip address mapping
-  final String? asnToIpAddressMapping;
+  final pulumi.Input<String>? asnToIpAddressMapping;
 
   /// Creates a new [BgpConfiguration].
   /// [asnToIpAddressMapping] Asn to ip address mapping
@@ -20,7 +21,7 @@ class BgpConfiguration {
 
   factory BgpConfiguration.fromMap(Map<String, dynamic> map) {
     return BgpConfiguration(
-      asnToIpAddressMapping: map['asnToIpAddressMapping'] == null ? null : map['asnToIpAddressMapping'] as String,
+      asnToIpAddressMapping: map['asnToIpAddressMapping'] == null ? null : (map['asnToIpAddressMapping'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
   /// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
-  final double value;
+  final pulumi.Input<double> value;
 
   /// Creates a new [AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig].
   /// [value] Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
@@ -19,7 +20,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
 
   factory AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig(
-      value: map['value'] as double,
+      value: (map['value'] as double).input(),
     );
   }
 }

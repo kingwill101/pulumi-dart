@@ -20,13 +20,10 @@ class AgentcoreTokenVaultCmkArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tokenVaultId] Token vault ID. Defaults to `default`.
   AgentcoreTokenVaultCmkArgs({
-    required pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? tokenVaultId,
-  }) :
-      kmsConfiguration = pulumi.Input.asInput<AgentcoreTokenVaultCmkKmsConfiguration>(kmsConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tokenVaultId = pulumi.Input.asOptionalInput<String>(tokenVaultId);
+    required this.kmsConfiguration,
+    this.region,
+    this.tokenVaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class AgentcoreTokenVaultCmkArgs {
 
   factory AgentcoreTokenVaultCmkArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkArgs(
-      kmsConfiguration: pulumi.Output.create<AgentcoreTokenVaultCmkKmsConfiguration>(AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tokenVaultId: map['tokenVaultId'] == null ? null : pulumi.Output.create<String>(map['tokenVaultId'] as String),
+      kmsConfiguration: (AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tokenVaultId: map['tokenVaultId'] == null ? null : (map['tokenVaultId'] as String).input(),
     );
   }
 }

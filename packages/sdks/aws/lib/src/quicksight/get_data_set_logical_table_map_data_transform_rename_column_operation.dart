@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformRenameColumnOperation {
-  final String columnName;
-  final String newColumnName;
+  final pulumi.Input<String> columnName;
+  final pulumi.Input<String> newColumnName;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformRenameColumnOperation].
   /// [columnName] Required.
@@ -22,8 +23,8 @@ class GetDataSetLogicalTableMapDataTransformRenameColumnOperation {
 
   factory GetDataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformRenameColumnOperation(
-      columnName: map['columnName'] as String,
-      newColumnName: map['newColumnName'] as String,
+      columnName: (map['columnName'] as String).input(),
+      newColumnName: (map['newColumnName'] as String).input(),
     );
   }
 }

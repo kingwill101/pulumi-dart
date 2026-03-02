@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubSharedAccessPolicy {
   /// The name of the shared access policy.
-  final String? keyName;
+  final pulumi.Input<String>? keyName;
   /// The permissions assigned to the shared access policy.
-  final String? permissions;
+  final pulumi.Input<String>? permissions;
   /// The primary key.
-  final String? primaryKey;
+  final pulumi.Input<String>? primaryKey;
   /// The secondary key.
-  final String? secondaryKey;
+  final pulumi.Input<String>? secondaryKey;
 
   /// Creates a new [IoTHubSharedAccessPolicy].
   /// [keyName] The name of the shared access policy.
@@ -34,10 +35,10 @@ class IoTHubSharedAccessPolicy {
 
   factory IoTHubSharedAccessPolicy.fromMap(Map<String, dynamic> map) {
     return IoTHubSharedAccessPolicy(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      permissions: map['permissions'] == null ? null : map['permissions'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
     );
   }
 }

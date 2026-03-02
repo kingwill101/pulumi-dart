@@ -29,19 +29,13 @@ class IpamPoolArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   IpamPoolArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> networkManagerName,
-    pulumi.Output<String>? poolName,
-    required pulumi.Output<IpamPoolProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkManagerName = pulumi.Input.asInput<String>(networkManagerName),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      properties = pulumi.Input.asInput<IpamPoolProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.networkManagerName,
+    this.poolName,
+    required this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class IpamPoolArgs {
 
   factory IpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return IpamPoolArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      networkManagerName: pulumi.Output.create<String>(map['networkManagerName'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      properties: pulumi.Output.create<IpamPoolProperties>(IpamPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      networkManagerName: (map['networkManagerName'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      properties: (IpamPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

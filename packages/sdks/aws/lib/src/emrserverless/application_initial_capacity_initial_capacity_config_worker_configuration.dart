@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   /// The CPU requirements for every worker instance of the worker type.
-  final String cpu;
+  final pulumi.Input<String> cpu;
   /// The disk requirements for every worker instance of the worker type.
-  final String? disk;
+  final pulumi.Input<String>? disk;
   /// The memory requirements for every worker instance of the worker type.
-  final String memory;
+  final pulumi.Input<String> memory;
 
   /// Creates a new [ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration].
   /// [cpu] The CPU requirements for every worker instance of the worker type.
@@ -29,9 +30,9 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
 
   factory ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration(
-      cpu: map['cpu'] as String,
-      disk: map['disk'] == null ? null : map['disk'] as String,
-      memory: map['memory'] as String,
+      cpu: (map['cpu'] as String).input(),
+      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
+      memory: (map['memory'] as String).input(),
     );
   }
 }

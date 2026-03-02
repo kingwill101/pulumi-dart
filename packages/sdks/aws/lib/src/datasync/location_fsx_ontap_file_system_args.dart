@@ -33,19 +33,13 @@ class LocationFsxOntapFileSystemArgs {
   /// [subdirectory] Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, `share1`).
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LocationFsxOntapFileSystemArgs({
-    required pulumi.Output<LocationFsxOntapFileSystemProtocol> protocol,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> securityGroupArns,
-    required pulumi.Output<String> storageVirtualMachineArn,
-    pulumi.Output<String>? subdirectory,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      protocol = pulumi.Input.asInput<LocationFsxOntapFileSystemProtocol>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupArns = pulumi.Input.asInput<List<String>>(securityGroupArns),
-      storageVirtualMachineArn = pulumi.Input.asInput<String>(storageVirtualMachineArn),
-      subdirectory = pulumi.Input.asOptionalInput<String>(subdirectory),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.protocol,
+    this.region,
+    required this.securityGroupArns,
+    required this.storageVirtualMachineArn,
+    this.subdirectory,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class LocationFsxOntapFileSystemArgs {
 
   factory LocationFsxOntapFileSystemArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemArgs(
-      protocol: pulumi.Output.create<LocationFsxOntapFileSystemProtocol>(LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupArns: pulumi.Output.create<List<String>>((map['securityGroupArns'] as List).cast<String>()),
-      storageVirtualMachineArn: pulumi.Output.create<String>(map['storageVirtualMachineArn'] as String),
-      subdirectory: map['subdirectory'] == null ? null : pulumi.Output.create<String>(map['subdirectory'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      protocol: (LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
+      storageVirtualMachineArn: (map['storageVirtualMachineArn'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

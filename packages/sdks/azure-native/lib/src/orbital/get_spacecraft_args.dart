@@ -16,11 +16,9 @@ class GetSpacecraftArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
   GetSpacecraftArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> spacecraftName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      spacecraftName = pulumi.Input.asInput<String>(spacecraftName);
+    required this.resourceGroupName,
+    required this.spacecraftName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetSpacecraftArgs {
 
   factory GetSpacecraftArgs.fromMap(Map<String, dynamic> map) {
     return GetSpacecraftArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      spacecraftName: pulumi.Output.create<String>(map['spacecraftName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      spacecraftName: (map['spacecraftName'] as String).input(),
     );
   }
 }

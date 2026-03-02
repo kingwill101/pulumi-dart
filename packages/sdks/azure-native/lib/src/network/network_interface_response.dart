@@ -14,67 +14,67 @@ import 'sub_resource_response.dart';
 /// A network interface in a resource group.
 class NetworkInterfaceResponse {
   /// Auxiliary mode of Network Interface resource.
-  final String? auxiliaryMode;
+  final pulumi.Input<String>? auxiliaryMode;
   /// Auxiliary sku of Network Interface resource.
-  final String? auxiliarySku;
+  final pulumi.Input<String>? auxiliarySku;
   /// Whether default outbound connectivity for nic was configured or not.
-  final bool defaultOutboundConnectivityEnabled;
+  final pulumi.Input<bool> defaultOutboundConnectivityEnabled;
   /// Indicates whether to disable tcp state tracking.
-  final bool? disableTcpStateTracking;
+  final pulumi.Input<bool>? disableTcpStateTracking;
   /// The DNS settings in network interface.
-  final NetworkInterfaceDnsSettingsResponse? dnsSettings;
+  final pulumi.Input<NetworkInterfaceDnsSettingsResponse>? dnsSettings;
   /// A reference to the dscp configuration to which the network interface is linked.
-  final SubResourceResponse dscpConfiguration;
+  final pulumi.Input<SubResourceResponse> dscpConfiguration;
   /// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
-  final bool? enableAcceleratedNetworking;
+  final pulumi.Input<bool>? enableAcceleratedNetworking;
   /// Indicates whether IP forwarding is enabled on this network interface.
-  final bool? enableIPForwarding;
+  final pulumi.Input<bool>? enableIPForwarding;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// The extended location of the network interface.
-  final ExtendedLocationResponse? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
   /// A list of references to linked BareMetal resources.
-  final List<String> hostedWorkloads;
+  final pulumi.Input<List<String>> hostedWorkloads;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// A reference to the interface endpoint to which the network interface is linked.
-  final InterfaceEndpointResponse? interfaceEndpoint;
+  final pulumi.Input<InterfaceEndpointResponse>? interfaceEndpoint;
   /// A list of IPConfigurations of the network interface.
-  final List<NetworkInterfaceIPConfigurationResponse>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>>? ipConfigurations;
   /// Resource location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The MAC address of the network interface.
-  final String macAddress;
+  final pulumi.Input<String> macAddress;
   /// Migration phase of Network Interface resource.
-  final String? migrationPhase;
+  final pulumi.Input<String>? migrationPhase;
   /// Resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The reference to the NetworkSecurityGroup resource.
-  final NetworkSecurityGroupResponse? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupResponse>? networkSecurityGroup;
   /// Type of Network Interface resource.
-  final String? nicType;
+  final pulumi.Input<String>? nicType;
   /// Whether this is a primary network interface on a virtual machine.
-  final bool primary;
+  final pulumi.Input<bool> primary;
   /// A reference to the private endpoint to which the network interface is linked.
-  final PrivateEndpointResponse privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse> privateEndpoint;
   /// Privatelinkservice of the network interface resource.
-  final PrivateLinkServiceResponse? privateLinkService;
+  final pulumi.Input<PrivateLinkServiceResponse>? privateLinkService;
   /// The provisioning state of the network interface resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// The resource GUID property of the network interface resource.
-  final String resourceGuid;
+  final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// A list of TapConfigurations of the network interface.
-  final List<NetworkInterfaceTapConfigurationResponse> tapConfigurations;
+  final pulumi.Input<List<NetworkInterfaceTapConfigurationResponse>> tapConfigurations;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The reference to a virtual machine.
-  final SubResourceResponse virtualMachine;
+  final pulumi.Input<SubResourceResponse> virtualMachine;
   /// Whether the virtual machine this nic is attached to supports encryption.
-  final bool vnetEncryptionSupported;
+  final pulumi.Input<bool> vnetEncryptionSupported;
   /// WorkloadType of the NetworkInterface for BareMetal resources
-  final String? workloadType;
+  final pulumi.Input<String>? workloadType;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [auxiliaryMode] Auxiliary mode of Network Interface resource.
@@ -148,31 +148,31 @@ class NetworkInterfaceResponse {
       'auxiliarySku': ?auxiliarySku,
       'defaultOutboundConnectivityEnabled': defaultOutboundConnectivityEnabled,
       'disableTcpStateTracking': ?disableTcpStateTracking,
-      'dnsSettings': ?dnsSettings == null ? null : dnsSettings!.toMap(),
-      'dscpConfiguration': dscpConfiguration.toMap(),
+      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
+      'dscpConfiguration': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(dscpConfiguration, (value) => value.toMap()),
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
       'enableIPForwarding': ?enableIPForwarding,
       'etag': etag,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
       'hostedWorkloads': hostedWorkloads,
       'id': ?id,
-      'interfaceEndpoint': ?interfaceEndpoint == null ? null : interfaceEndpoint!.toMap(),
-      'ipConfigurations': ?ipConfigurations == null ? null : pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(ipConfigurations!, (value) => value.toMap()),
+      'interfaceEndpoint': ?pulumi.Input.mapOptionalInputValue<InterfaceEndpointResponse, Map<String, dynamic>>(interfaceEndpoint, (value) => value.toMap()),
+      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NetworkInterfaceIPConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'macAddress': macAddress,
       'migrationPhase': ?migrationPhase,
       'name': name,
-      'networkSecurityGroup': ?networkSecurityGroup == null ? null : networkSecurityGroup!.toMap(),
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NetworkSecurityGroupResponse, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
       'nicType': ?nicType,
       'primary': primary,
-      'privateEndpoint': privateEndpoint.toMap(),
-      'privateLinkService': ?privateLinkService == null ? null : privateLinkService!.toMap(),
+      'privateEndpoint': pulumi.Input.mapInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
+      'privateLinkService': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceResponse, Map<String, dynamic>>(privateLinkService, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
       'tags': ?tags,
-      'tapConfigurations': pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(tapConfigurations, (value) => value.toMap()),
+      'tapConfigurations': pulumi.Input.mapInputValue<List<NetworkInterfaceTapConfigurationResponse>, List<Map<String, dynamic>>>(tapConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
-      'virtualMachine': virtualMachine.toMap(),
+      'virtualMachine': pulumi.Input.mapInputValue<SubResourceResponse, Map<String, dynamic>>(virtualMachine, (value) => value.toMap()),
       'vnetEncryptionSupported': vnetEncryptionSupported,
       'workloadType': ?workloadType,
     };
@@ -180,37 +180,37 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : map['auxiliaryMode'] as String,
-      auxiliarySku: map['auxiliarySku'] == null ? null : map['auxiliarySku'] as String,
-      defaultOutboundConnectivityEnabled: map['defaultOutboundConnectivityEnabled'] as bool,
-      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : map['disableTcpStateTracking'] as bool,
-      dnsSettings: map['dnsSettings'] == null ? null : NetworkInterfaceDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>()),
-      dscpConfiguration: SubResourceResponse.fromMap((map['dscpConfiguration'] as Map).cast<String, dynamic>()),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : map['enableAcceleratedNetworking'] as bool,
-      enableIPForwarding: map['enableIPForwarding'] == null ? null : map['enableIPForwarding'] as bool,
-      etag: map['etag'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      hostedWorkloads: (map['hostedWorkloads'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      interfaceEndpoint: map['interfaceEndpoint'] == null ? null : InterfaceEndpointResponse.fromMap((map['interfaceEndpoint'] as Map).cast<String, dynamic>()),
-      ipConfigurations: map['ipConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
-      macAddress: map['macAddress'] as String,
-      migrationPhase: map['migrationPhase'] == null ? null : map['migrationPhase'] as String,
-      name: map['name'] as String,
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : NetworkSecurityGroupResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>()),
-      nicType: map['nicType'] == null ? null : map['nicType'] as String,
-      primary: map['primary'] as bool,
-      privateEndpoint: PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkService: map['privateLinkService'] == null ? null : PrivateLinkServiceResponse.fromMap((map['privateLinkService'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tapConfigurations: pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['tapConfigurations'], (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      virtualMachine: SubResourceResponse.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>()),
-      vnetEncryptionSupported: map['vnetEncryptionSupported'] as bool,
-      workloadType: map['workloadType'] == null ? null : map['workloadType'] as String,
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
+      defaultOutboundConnectivityEnabled: (map['defaultOutboundConnectivityEnabled'] as bool).input(),
+      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : (map['disableTcpStateTracking'] as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NetworkInterfaceDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      dscpConfiguration: (SubResourceResponse.fromMap((map['dscpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      enableIPForwarding: map['enableIPForwarding'] == null ? null : (map['enableIPForwarding'] as bool).input(),
+      etag: (map['etag'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      hostedWorkloads: ((map['hostedWorkloads'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      interfaceEndpoint: map['interfaceEndpoint'] == null ? null : (InterfaceEndpointResponse.fromMap((map['interfaceEndpoint'] as Map).cast<String, dynamic>())).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(map['ipConfigurations'], (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      migrationPhase: map['migrationPhase'] == null ? null : (map['migrationPhase'] as String).input(),
+      name: (map['name'] as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
+      primary: (map['primary'] as bool).input(),
+      privateEndpoint: (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateLinkService: map['privateLinkService'] == null ? null : (PrivateLinkServiceResponse.fromMap((map['privateLinkService'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGuid: (map['resourceGuid'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tapConfigurations: (pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['tapConfigurations'], (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: (map['type'] as String).input(),
+      virtualMachine: (SubResourceResponse.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
+      vnetEncryptionSupported: (map['vnetEncryptionSupported'] as bool).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
     );
   }
 }

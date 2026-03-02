@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityDeviceGroupAllowRule {
   /// Specifies which IP is not allowed to be connected to in current device group for inbound connection.
-  final List<String>? connectionFromIpsNotAlloweds;
+  final pulumi.Input<List<String>>? connectionFromIpsNotAlloweds;
   /// Specifies which IP is not allowed to be connected to in current device group for outbound connection.
-  final List<String>? connectionToIpsNotAlloweds;
+  final pulumi.Input<List<String>>? connectionToIpsNotAlloweds;
   /// Specifies which local user is not allowed to login in current device group.
-  final List<String>? localUsersNotAlloweds;
+  final pulumi.Input<List<String>>? localUsersNotAlloweds;
   /// Specifies which process is not allowed to be executed in current device group.
-  final List<String>? processesNotAlloweds;
+  final pulumi.Input<List<String>>? processesNotAlloweds;
 
   /// Creates a new [SecurityDeviceGroupAllowRule].
   /// [connectionFromIpsNotAlloweds] Specifies which IP is not allowed to be connected to in current device group for inbound connection.
@@ -34,10 +35,10 @@ class SecurityDeviceGroupAllowRule {
 
   factory SecurityDeviceGroupAllowRule.fromMap(Map<String, dynamic> map) {
     return SecurityDeviceGroupAllowRule(
-      connectionFromIpsNotAlloweds: map['connectionFromIpsNotAlloweds'] == null ? null : (map['connectionFromIpsNotAlloweds'] as List).cast<String>(),
-      connectionToIpsNotAlloweds: map['connectionToIpsNotAlloweds'] == null ? null : (map['connectionToIpsNotAlloweds'] as List).cast<String>(),
-      localUsersNotAlloweds: map['localUsersNotAlloweds'] == null ? null : (map['localUsersNotAlloweds'] as List).cast<String>(),
-      processesNotAlloweds: map['processesNotAlloweds'] == null ? null : (map['processesNotAlloweds'] as List).cast<String>(),
+      connectionFromIpsNotAlloweds: map['connectionFromIpsNotAlloweds'] == null ? null : ((map['connectionFromIpsNotAlloweds'] as List).cast<String>()).input(),
+      connectionToIpsNotAlloweds: map['connectionToIpsNotAlloweds'] == null ? null : ((map['connectionToIpsNotAlloweds'] as List).cast<String>()).input(),
+      localUsersNotAlloweds: map['localUsersNotAlloweds'] == null ? null : ((map['localUsersNotAlloweds'] as List).cast<String>()).input(),
+      processesNotAlloweds: map['processesNotAlloweds'] == null ? null : ((map['processesNotAlloweds'] as List).cast<String>()).input(),
     );
   }
 }

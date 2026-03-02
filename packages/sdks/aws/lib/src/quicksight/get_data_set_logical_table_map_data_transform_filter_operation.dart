@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformFilterOperation {
-  final String conditionExpression;
+  final pulumi.Input<String> conditionExpression;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformFilterOperation].
   /// [conditionExpression] Required.
@@ -18,7 +19,7 @@ class GetDataSetLogicalTableMapDataTransformFilterOperation {
 
   factory GetDataSetLogicalTableMapDataTransformFilterOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformFilterOperation(
-      conditionExpression: map['conditionExpression'] as String,
+      conditionExpression: (map['conditionExpression'] as String).input(),
     );
   }
 }

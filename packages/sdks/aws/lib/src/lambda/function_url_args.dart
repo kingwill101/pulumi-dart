@@ -31,19 +31,13 @@ class FunctionUrlArgs {
   /// [qualifier] Alias name or `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   FunctionUrlArgs({
-    required pulumi.Output<String> authorizationType,
-    pulumi.Output<FunctionUrlCors>? cors,
-    required pulumi.Output<String> functionName,
-    pulumi.Output<String>? invokeMode,
-    pulumi.Output<String>? qualifier,
-    pulumi.Output<String>? region,
-  }) :
-      authorizationType = pulumi.Input.asInput<String>(authorizationType),
-      cors = pulumi.Input.asOptionalInput<FunctionUrlCors>(cors),
-      functionName = pulumi.Input.asInput<String>(functionName),
-      invokeMode = pulumi.Input.asOptionalInput<String>(invokeMode),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.authorizationType,
+    this.cors,
+    required this.functionName,
+    this.invokeMode,
+    this.qualifier,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class FunctionUrlArgs {
 
   factory FunctionUrlArgs.fromMap(Map<String, dynamic> map) {
     return FunctionUrlArgs(
-      authorizationType: pulumi.Output.create<String>(map['authorizationType'] as String),
-      cors: map['cors'] == null ? null : pulumi.Output.create<FunctionUrlCors>(FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      invokeMode: map['invokeMode'] == null ? null : pulumi.Output.create<String>(map['invokeMode'] as String),
-      qualifier: map['qualifier'] == null ? null : pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      authorizationType: (map['authorizationType'] as String).input(),
+      cors: map['cors'] == null ? null : (FunctionUrlCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      functionName: (map['functionName'] as String).input(),
+      invokeMode: map['invokeMode'] == null ? null : (map['invokeMode'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

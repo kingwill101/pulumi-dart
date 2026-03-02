@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a scaling trigger related to an average load of a metric/resource of a partition.
 class AveragePartitionLoadScalingTrigger {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'AveragePartitionLoadTrigger'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The lower limit of the load below which a scale in operation should be performed.
-  final double lowerLoadThreshold;
+  final pulumi.Input<double> lowerLoadThreshold;
   /// The name of the metric for which usage should be tracked.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
-  final String scaleInterval;
+  final pulumi.Input<String> scaleInterval;
   /// The upper limit of the load beyond which a scale out operation should be performed.
-  final double upperLoadThreshold;
+  final pulumi.Input<double> upperLoadThreshold;
 
   /// Creates a new [AveragePartitionLoadScalingTrigger].
   /// [kind] Enumerates the ways that a service can be partitioned.
@@ -41,11 +42,11 @@ class AveragePartitionLoadScalingTrigger {
 
   factory AveragePartitionLoadScalingTrigger.fromMap(Map<String, dynamic> map) {
     return AveragePartitionLoadScalingTrigger(
-      kind: map['kind'] as String,
-      lowerLoadThreshold: map['lowerLoadThreshold'] as double,
-      metricName: map['metricName'] as String,
-      scaleInterval: map['scaleInterval'] as String,
-      upperLoadThreshold: map['upperLoadThreshold'] as double,
+      kind: (map['kind'] as String).input(),
+      lowerLoadThreshold: (map['lowerLoadThreshold'] as double).input(),
+      metricName: (map['metricName'] as String).input(),
+      scaleInterval: (map['scaleInterval'] as String).input(),
+      upperLoadThreshold: (map['upperLoadThreshold'] as double).input(),
     );
   }
 }

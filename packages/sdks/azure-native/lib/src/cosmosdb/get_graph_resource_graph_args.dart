@@ -19,13 +19,10 @@ class GetGraphResourceGraphArgs {
   /// [graphName] Cosmos DB graph resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGraphResourceGraphArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> graphName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      graphName = pulumi.Input.asInput<String>(graphName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.graphName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGraphResourceGraphArgs {
 
   factory GetGraphResourceGraphArgs.fromMap(Map<String, dynamic> map) {
     return GetGraphResourceGraphArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      graphName: pulumi.Output.create<String>(map['graphName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      graphName: (map['graphName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

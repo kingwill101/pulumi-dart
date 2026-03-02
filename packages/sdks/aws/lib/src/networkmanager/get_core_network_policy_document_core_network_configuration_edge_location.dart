@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation {
   /// ASN of the Core Network Edge in an AWS Region. By default, the ASN will be a single integer automatically assigned from `asn_ranges`
-  final String? asn;
+  final pulumi.Input<String>? asn;
   /// The local CIDR blocks for this Core Network Edge for AWS Transit Gateway Connect attachments. By default, this CIDR block will be one or more optional IPv4 and IPv6 CIDR prefixes auto-assigned from `inside_cidr_blocks`.
-  final List<String>? insideCidrBlocks;
-  final String location;
+  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<String> location;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation].
   /// [asn] ASN of the Core Network Edge in an AWS Region. By default, the ASN will be a single integer automatically assigned from `asn_ranges`
@@ -28,9 +29,9 @@ class GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation {
 
   factory GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation(
-      asn: map['asn'] == null ? null : map['asn'] as String,
-      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : (map['insideCidrBlocks'] as List).cast<String>(),
-      location: map['location'] as String,
+      asn: map['asn'] == null ? null : (map['asn'] as String).input(),
+      insideCidrBlocks: map['insideCidrBlocks'] == null ? null : ((map['insideCidrBlocks'] as List).cast<String>()).input(),
+      location: (map['location'] as String).input(),
     );
   }
 }

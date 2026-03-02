@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceVlanTag {
   /// Sets the identifier for the VLAN tag.
-  final double? id;
+  final pulumi.Input<double>? id;
   /// Configures whether the VLAN tag operates in native mode.
-  final String? nativeMode;
+  final pulumi.Input<String>? nativeMode;
 
   /// Creates a new [DomainDevicesInterfaceVlanTag].
   /// [id] Sets the identifier for the VLAN tag.
@@ -24,8 +25,8 @@ class DomainDevicesInterfaceVlanTag {
 
   factory DomainDevicesInterfaceVlanTag.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVlanTag(
-      id: map['id'] == null ? null : map['id'] as double,
-      nativeMode: map['nativeMode'] == null ? null : map['nativeMode'] as String,
+      id: map['id'] == null ? null : (map['id'] as double).input(),
+      nativeMode: map['nativeMode'] == null ? null : (map['nativeMode'] as String).input(),
     );
   }
 }

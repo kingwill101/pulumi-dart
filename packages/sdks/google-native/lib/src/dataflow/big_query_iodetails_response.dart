@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetailsResponse {
   /// Dataset accessed in the connection.
-  final String dataset;
+  final pulumi.Input<String> dataset;
   /// Project accessed in the connection.
-  final String project;
+  final pulumi.Input<String> project;
   /// Query used to access data in the connection.
-  final String query;
+  final pulumi.Input<String> query;
   /// Table accessed in the connection.
-  final String table;
+  final pulumi.Input<String> table;
 
   /// Creates a new [BigQueryIODetailsResponse].
   /// [dataset] Dataset accessed in the connection.
@@ -35,10 +36,10 @@ class BigQueryIODetailsResponse {
 
   factory BigQueryIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryIODetailsResponse(
-      dataset: map['dataset'] as String,
-      project: map['project'] as String,
-      query: map['query'] as String,
-      table: map['table'] as String,
+      dataset: (map['dataset'] as String).input(),
+      project: (map['project'] as String).input(),
+      query: (map['query'] as String).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

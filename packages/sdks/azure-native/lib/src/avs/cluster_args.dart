@@ -32,21 +32,14 @@ class ClusterArgs {
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
   ClusterArgs({
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<int>? clusterSize,
-    pulumi.Output<List<String>>? hosts,
-    required pulumi.Output<String> privateCloudName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<Sku> sku,
-    pulumi.Output<String>? vsanDatastoreName,
-  }) :
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      clusterSize = pulumi.Input.asOptionalInput<int>(clusterSize),
-      hosts = pulumi.Input.asOptionalInput<List<String>>(hosts),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asInput<Sku>(sku),
-      vsanDatastoreName = pulumi.Input.asOptionalInput<String>(vsanDatastoreName);
+    this.clusterName,
+    this.clusterSize,
+    this.hosts,
+    required this.privateCloudName,
+    required this.resourceGroupName,
+    required this.sku,
+    this.vsanDatastoreName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      clusterSize: map['clusterSize'] == null ? null : pulumi.Output.create<int>(map['clusterSize'] as int),
-      hosts: map['hosts'] == null ? null : pulumi.Output.create<List<String>>((map['hosts'] as List).cast<String>()),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : pulumi.Output.create<String>(map['vsanDatastoreName'] as String),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
     );
   }
 }

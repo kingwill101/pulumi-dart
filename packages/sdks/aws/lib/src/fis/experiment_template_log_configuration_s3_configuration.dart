@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperimentTemplateLogConfigurationS3Configuration {
   /// The name of the destination bucket.
-  final String bucketName;
+  final pulumi.Input<String> bucketName;
   /// The bucket prefix.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [ExperimentTemplateLogConfigurationS3Configuration].
   /// [bucketName] The name of the destination bucket.
@@ -24,8 +25,8 @@ class ExperimentTemplateLogConfigurationS3Configuration {
 
   factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfigurationS3Configuration(
-      bucketName: map['bucketName'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      bucketName: (map['bucketName'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

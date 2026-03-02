@@ -16,11 +16,9 @@ class BackupVaultCustomerManagedKeyArgs {
   /// [dataProtectionBackupVaultId] The ID of the Backup Vault. Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
   BackupVaultCustomerManagedKeyArgs({
-    required pulumi.Output<String> dataProtectionBackupVaultId,
-    required pulumi.Output<String> keyVaultKeyId,
-  }) :
-      dataProtectionBackupVaultId = pulumi.Input.asInput<String>(dataProtectionBackupVaultId),
-      keyVaultKeyId = pulumi.Input.asInput<String>(keyVaultKeyId);
+    required this.dataProtectionBackupVaultId,
+    required this.keyVaultKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BackupVaultCustomerManagedKeyArgs {
 
   factory BackupVaultCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultCustomerManagedKeyArgs(
-      dataProtectionBackupVaultId: pulumi.Output.create<String>(map['dataProtectionBackupVaultId'] as String),
-      keyVaultKeyId: pulumi.Output.create<String>(map['keyVaultKeyId'] as String),
+      dataProtectionBackupVaultId: (map['dataProtectionBackupVaultId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

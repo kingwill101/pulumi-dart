@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of a single variable for a Pipeline.
 class VariableSpecificationResponse {
   /// Default value of variable.
-  final dynamic defaultValue;
+  final pulumi.Input<dynamic>? defaultValue;
   /// Variable type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VariableSpecificationResponse].
   /// [defaultValue] Default value of variable.
@@ -25,8 +26,8 @@ class VariableSpecificationResponse {
 
   factory VariableSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return VariableSpecificationResponse(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'],
-      type: map['type'] as String,
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

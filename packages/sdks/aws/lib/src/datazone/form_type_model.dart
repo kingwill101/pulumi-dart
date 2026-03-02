@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FormTypeModel {
   /// Smithy document that indicates the model of the API. Must be between the lengths 1 and 100,000 and be encoded as a smithy document.
   ///
   /// The following arguments are optional:
-  final String smithy;
+  final pulumi.Input<String> smithy;
 
   /// Creates a new [FormTypeModel].
   /// [smithy] Smithy document that indicates the model of the API. Must be between the lengths 1 and 100,000 and be encoded as a smithy document.
@@ -21,7 +22,7 @@ class FormTypeModel {
 
   factory FormTypeModel.fromMap(Map<String, dynamic> map) {
     return FormTypeModel(
-      smithy: map['smithy'] as String,
+      smithy: (map['smithy'] as String).input(),
     );
   }
 }

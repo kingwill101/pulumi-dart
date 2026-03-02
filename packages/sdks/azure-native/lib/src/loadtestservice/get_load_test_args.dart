@@ -16,11 +16,9 @@ class GetLoadTestArgs {
   /// [loadTestName] Load Test name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetLoadTestArgs({
-    required pulumi.Output<String> loadTestName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      loadTestName = pulumi.Input.asInput<String>(loadTestName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.loadTestName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetLoadTestArgs {
 
   factory GetLoadTestArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadTestArgs(
-      loadTestName: pulumi.Output.create<String>(map['loadTestName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      loadTestName: (map['loadTestName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

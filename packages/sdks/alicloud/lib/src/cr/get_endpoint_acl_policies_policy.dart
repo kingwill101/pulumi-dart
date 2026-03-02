@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEndpointAclPoliciesPolicy {
   /// The description of the entry.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of endpoint.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// The IP segment that allowed to access.
-  final String entry;
+  final pulumi.Input<String> entry;
   /// The ID of the Endpoint Acl Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the CR Instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Creates a new [GetEndpointAclPoliciesPolicy].
   /// [description] The description of the entry.
@@ -39,11 +40,11 @@ class GetEndpointAclPoliciesPolicy {
 
   factory GetEndpointAclPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclPoliciesPolicy(
-      description: map['description'] as String,
-      endpointType: map['endpointType'] as String,
-      entry: map['entry'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
+      description: (map['description'] as String).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      entry: (map['entry'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

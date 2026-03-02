@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Discovery rule properties
 class DiscoveryRulePropertiesResponse {
   /// Whether to add all recommended signals to the discovered entities.
-  final String addRecommendedSignals;
+  final pulumi.Input<String> addRecommendedSignals;
   /// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
-  final String authenticationSetting;
+  final pulumi.Input<String> authenticationSetting;
   /// Date when the discovery rule was (soft-)deleted.
-  final String deletionDate;
+  final pulumi.Input<String> deletionDate;
   /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
-  final String discoverRelationships;
+  final pulumi.Input<String> discoverRelationships;
   /// Display name
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
-  final String entityName;
+  final pulumi.Input<String> entityName;
   /// Error message if the last discovery operation failed.
-  final String errorMessage;
+  final pulumi.Input<String> errorMessage;
   /// Number of discovered entities in the last discovery operation.
-  final int numberOfDiscoveredEntities;
+  final pulumi.Input<int> numberOfDiscoveredEntities;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
-  final String resourceGraphQuery;
+  final pulumi.Input<String> resourceGraphQuery;
 
   /// Creates a new [DiscoveryRulePropertiesResponse].
   /// [addRecommendedSignals] Whether to add all recommended signals to the discovered entities.
@@ -65,16 +66,16 @@ class DiscoveryRulePropertiesResponse {
 
   factory DiscoveryRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryRulePropertiesResponse(
-      addRecommendedSignals: map['addRecommendedSignals'] as String,
-      authenticationSetting: map['authenticationSetting'] as String,
-      deletionDate: map['deletionDate'] as String,
-      discoverRelationships: map['discoverRelationships'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      entityName: map['entityName'] as String,
-      errorMessage: map['errorMessage'] as String,
-      numberOfDiscoveredEntities: map['numberOfDiscoveredEntities'] as int,
-      provisioningState: map['provisioningState'] as String,
-      resourceGraphQuery: map['resourceGraphQuery'] as String,
+      addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
+      authenticationSetting: (map['authenticationSetting'] as String).input(),
+      deletionDate: (map['deletionDate'] as String).input(),
+      discoverRelationships: (map['discoverRelationships'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entityName: (map['entityName'] as String).input(),
+      errorMessage: (map['errorMessage'] as String).input(),
+      numberOfDiscoveredEntities: (map['numberOfDiscoveredEntities'] as int).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      resourceGraphQuery: (map['resourceGraphQuery'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'referenced_resource_response.dart';
 import 'vhd_image_artifact_profile_response.dart';
 
 /// Azure vhd artifact profile properties.
 class AzureCoreVhdImageArtifactProfileResponse {
   /// The reference to artifact store.
-  final ReferencedResourceResponse? artifactStore;
+  final pulumi.Input<ReferencedResourceResponse>? artifactStore;
   /// Vhd artifact profile.
-  final VhdImageArtifactProfileResponse? vhdArtifactProfile;
+  final pulumi.Input<VhdImageArtifactProfileResponse>? vhdArtifactProfile;
 
   /// Creates a new [AzureCoreVhdImageArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
@@ -20,15 +21,15 @@ class AzureCoreVhdImageArtifactProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?artifactStore == null ? null : artifactStore!.toMap(),
-      'vhdArtifactProfile': ?vhdArtifactProfile == null ? null : vhdArtifactProfile!.toMap(),
+      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
+      'vhdArtifactProfile': ?pulumi.Input.mapOptionalInputValue<VhdImageArtifactProfileResponse, Map<String, dynamic>>(vhdArtifactProfile, (value) => value.toMap()),
     };
   }
 
   factory AzureCoreVhdImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreVhdImageArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>()),
-      vhdArtifactProfile: map['vhdArtifactProfile'] == null ? null : VhdImageArtifactProfileResponse.fromMap((map['vhdArtifactProfile'] as Map).cast<String, dynamic>()),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
+      vhdArtifactProfile: map['vhdArtifactProfile'] == null ? null : (VhdImageArtifactProfileResponse.fromMap((map['vhdArtifactProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

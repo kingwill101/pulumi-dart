@@ -22,15 +22,11 @@ class DbResourceGroupArgs {
   /// [resourceGroupName] Resource group name.
   /// [roleLists] Role List
   DbResourceGroupArgs({
-    required pulumi.Output<String> dbInstanceId,
-    required pulumi.Output<String> resourceGroupConfig,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? roleLists,
-  }) :
-      dbInstanceId = pulumi.Input.asInput<String>(dbInstanceId),
-      resourceGroupConfig = pulumi.Input.asInput<String>(resourceGroupConfig),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleLists = pulumi.Input.asOptionalInput<List<String>>(roleLists);
+    required this.dbInstanceId,
+    required this.resourceGroupConfig,
+    required this.resourceGroupName,
+    this.roleLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DbResourceGroupArgs {
 
   factory DbResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DbResourceGroupArgs(
-      dbInstanceId: pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      resourceGroupConfig: pulumi.Output.create<String>(map['resourceGroupConfig'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleLists: map['roleLists'] == null ? null : pulumi.Output.create<List<String>>((map['roleLists'] as List).cast<String>()),
+      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      resourceGroupConfig: (map['resourceGroupConfig'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleLists: map['roleLists'] == null ? null : ((map['roleLists'] as List).cast<String>()).input(),
     );
   }
 }

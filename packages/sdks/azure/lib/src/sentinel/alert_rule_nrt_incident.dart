@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_nrt_incident_grouping.dart';
 
 class AlertRuleNrtIncident {
   /// Whether to create an incident from alerts triggered by this Sentinel NRT Alert Rule?
-  final bool createIncidentEnabled;
+  final pulumi.Input<bool> createIncidentEnabled;
   /// A `grouping` block as defined below.
-  final AlertRuleNrtIncidentGrouping grouping;
+  final pulumi.Input<AlertRuleNrtIncidentGrouping> grouping;
 
   /// Creates a new [AlertRuleNrtIncident].
   /// [createIncidentEnabled] Whether to create an incident from alerts triggered by this Sentinel NRT Alert Rule?
@@ -19,14 +20,14 @@ class AlertRuleNrtIncident {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createIncidentEnabled': createIncidentEnabled,
-      'grouping': grouping.toMap(),
+      'grouping': pulumi.Input.mapInputValue<AlertRuleNrtIncidentGrouping, Map<String, dynamic>>(grouping, (value) => value.toMap()),
     };
   }
 
   factory AlertRuleNrtIncident.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtIncident(
-      createIncidentEnabled: map['createIncidentEnabled'] as bool,
-      grouping: AlertRuleNrtIncidentGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>()),
+      createIncidentEnabled: (map['createIncidentEnabled'] as bool).input(),
+      grouping: (AlertRuleNrtIncidentGrouping.fromMap((map['grouping'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

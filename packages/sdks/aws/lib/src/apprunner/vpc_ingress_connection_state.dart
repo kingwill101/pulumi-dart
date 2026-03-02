@@ -35,25 +35,16 @@ class VpcIngressConnectionState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   VpcIngressConnectionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<VpcIngressConnectionIngressVpcConfiguration>? ingressVpcConfiguration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceArn,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      ingressVpcConfiguration = pulumi.Input.asOptionalInput<VpcIngressConnectionIngressVpcConfiguration>(ingressVpcConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asOptionalInput<String>(serviceArn),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.domainName,
+    this.ingressVpcConfiguration,
+    this.name,
+    this.region,
+    this.serviceArn,
+    this.status,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class VpcIngressConnectionState {
 
   factory VpcIngressConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcIngressConnectionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      ingressVpcConfiguration: map['ingressVpcConfiguration'] == null ? null : pulumi.Output.create<VpcIngressConnectionIngressVpcConfiguration>(VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceArn: map['serviceArn'] == null ? null : pulumi.Output.create<String>(map['serviceArn'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      ingressVpcConfiguration: map['ingressVpcConfiguration'] == null ? null : (VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

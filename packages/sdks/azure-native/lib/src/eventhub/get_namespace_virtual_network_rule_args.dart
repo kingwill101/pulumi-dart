@@ -19,13 +19,10 @@ class GetNamespaceVirtualNetworkRuleArgs {
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [virtualNetworkRuleName] The Virtual Network Rule name.
   GetNamespaceVirtualNetworkRuleArgs({
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> virtualNetworkRuleName,
-  }) :
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      virtualNetworkRuleName = pulumi.Input.asInput<String>(virtualNetworkRuleName);
+    required this.namespaceName,
+    required this.resourceGroupName,
+    required this.virtualNetworkRuleName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNamespaceVirtualNetworkRuleArgs {
 
   factory GetNamespaceVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceVirtualNetworkRuleArgs(
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      virtualNetworkRuleName: pulumi.Output.create<String>(map['virtualNetworkRuleName'] as String),
+      namespaceName: (map['namespaceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      virtualNetworkRuleName: (map['virtualNetworkRuleName'] as String).input(),
     );
   }
 }

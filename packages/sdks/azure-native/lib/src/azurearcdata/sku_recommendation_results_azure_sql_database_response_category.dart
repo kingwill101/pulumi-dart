@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
   /// The compute tier of the target SKU.
-  final String? computeTier;
+  final pulumi.Input<String>? computeTier;
   /// The hardware type of the target SKU.
-  final String? hardwareType;
+  final pulumi.Input<String>? hardwareType;
   /// The SQL purchasing model of the target SKU.
-  final String? sqlPurchasingModel;
+  final pulumi.Input<String>? sqlPurchasingModel;
   /// The SQL service tier of the target SKU.
-  final String? sqlServiceTier;
+  final pulumi.Input<String>? sqlServiceTier;
   /// Indicates if zone redundancy is available for the target SKU.
-  final bool? zoneRedundancyAvailable;
+  final pulumi.Input<bool>? zoneRedundancyAvailable;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponseCategory].
   /// [computeTier] The compute tier of the target SKU.
@@ -39,11 +40,11 @@ class SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
 
   factory SkuRecommendationResultsAzureSqlDatabaseResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlDatabaseResponseCategory(
-      computeTier: map['computeTier'] == null ? null : map['computeTier'] as String,
-      hardwareType: map['hardwareType'] == null ? null : map['hardwareType'] as String,
-      sqlPurchasingModel: map['sqlPurchasingModel'] == null ? null : map['sqlPurchasingModel'] as String,
-      sqlServiceTier: map['sqlServiceTier'] == null ? null : map['sqlServiceTier'] as String,
-      zoneRedundancyAvailable: map['zoneRedundancyAvailable'] == null ? null : map['zoneRedundancyAvailable'] as bool,
+      computeTier: map['computeTier'] == null ? null : (map['computeTier'] as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
+      sqlPurchasingModel: map['sqlPurchasingModel'] == null ? null : (map['sqlPurchasingModel'] as String).input(),
+      sqlServiceTier: map['sqlServiceTier'] == null ? null : (map['sqlServiceTier'] as String).input(),
+      zoneRedundancyAvailable: map['zoneRedundancyAvailable'] == null ? null : (map['zoneRedundancyAvailable'] as bool).input(),
     );
   }
 }

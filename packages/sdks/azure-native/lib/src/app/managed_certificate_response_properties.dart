@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Certificate resource specific properties
 class ManagedCertificateResponseProperties {
   /// Selected type of domain control validation for managed certificates.
-  final String? domainControlValidation;
+  final pulumi.Input<String>? domainControlValidation;
   /// Any error occurred during the certificate provision.
-  final String error;
+  final pulumi.Input<String> error;
   /// Provisioning state of the certificate.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Subject name of the certificate.
-  final String? subjectName;
+  final pulumi.Input<String>? subjectName;
   /// A TXT token used for DNS TXT domain control validation when issuing this type of managed certificates.
-  final String validationToken;
+  final pulumi.Input<String> validationToken;
 
   /// Creates a new [ManagedCertificateResponseProperties].
   /// [domainControlValidation] Selected type of domain control validation for managed certificates.
@@ -40,11 +41,11 @@ class ManagedCertificateResponseProperties {
 
   factory ManagedCertificateResponseProperties.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateResponseProperties(
-      domainControlValidation: map['domainControlValidation'] == null ? null : map['domainControlValidation'] as String,
-      error: map['error'] as String,
-      provisioningState: map['provisioningState'] as String,
-      subjectName: map['subjectName'] == null ? null : map['subjectName'] as String,
-      validationToken: map['validationToken'] as String,
+      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation'] as String).input(),
+      error: (map['error'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      validationToken: (map['validationToken'] as String).input(),
     );
   }
 }

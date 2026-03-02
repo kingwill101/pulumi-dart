@@ -30,21 +30,14 @@ class GetPrometheusAlertRulesArgs {
   /// [status] The status of the resource. Valid values: `0`, `1`.
   /// [type] The type of the alert rule.
   GetPrometheusAlertRulesArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? matchExpressions,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? status,
-    pulumi.Output<String>? type,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      matchExpressions = pulumi.Input.asOptionalInput<String>(matchExpressions),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    required this.clusterId,
+    this.ids,
+    this.matchExpressions,
+    this.nameRegex,
+    this.outputFile,
+    this.status,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class GetPrometheusAlertRulesArgs {
 
   factory GetPrometheusAlertRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetPrometheusAlertRulesArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      matchExpressions: map['matchExpressions'] == null ? null : pulumi.Output.create<String>(map['matchExpressions'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (map['matchExpressions'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

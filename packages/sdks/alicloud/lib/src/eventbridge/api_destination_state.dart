@@ -23,17 +23,12 @@ class ApiDestinationState {
   /// [description] The description of the API destination.
   /// [httpApiParameters] The parameters that are configured for the API destination. See `http_api_parameters` below.
   ApiDestinationState({
-    pulumi.Output<String>? apiDestinationName,
-    pulumi.Output<String>? connectionName,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<ApiDestinationHttpApiParameters>? httpApiParameters,
-  }) :
-      apiDestinationName = pulumi.Input.asOptionalInput<String>(apiDestinationName),
-      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpApiParameters = pulumi.Input.asOptionalInput<ApiDestinationHttpApiParameters>(httpApiParameters);
+    this.apiDestinationName,
+    this.connectionName,
+    this.createTime,
+    this.description,
+    this.httpApiParameters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class ApiDestinationState {
 
   factory ApiDestinationState.fromMap(Map<String, dynamic> map) {
     return ApiDestinationState(
-      apiDestinationName: map['apiDestinationName'] == null ? null : pulumi.Output.create<String>(map['apiDestinationName'] as String),
-      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpApiParameters: map['httpApiParameters'] == null ? null : pulumi.Output.create<ApiDestinationHttpApiParameters>(ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())),
+      apiDestinationName: map['apiDestinationName'] == null ? null : (map['apiDestinationName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpApiParameters: map['httpApiParameters'] == null ? null : (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

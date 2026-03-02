@@ -19,15 +19,11 @@ class SecurityGroupAssociationState {
   /// [securityGroupId] The ID of the security group to be associated with the VPC endpoint.
   /// [vpcEndpointId] The ID of the VPC endpoint with which the security group will be associated.
   SecurityGroupAssociationState({
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? replaceDefaultAssociation,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? vpcEndpointId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replaceDefaultAssociation = pulumi.Input.asOptionalInput<bool>(replaceDefaultAssociation),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      vpcEndpointId = pulumi.Input.asOptionalInput<String>(vpcEndpointId);
+    this.region,
+    this.replaceDefaultAssociation,
+    this.securityGroupId,
+    this.vpcEndpointId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class SecurityGroupAssociationState {
 
   factory SecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupAssociationState(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : pulumi.Output.create<bool>(map['replaceDefaultAssociation'] as bool),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : pulumi.Output.create<String>(map['vpcEndpointId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : (map['replaceDefaultAssociation'] as bool).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
     );
   }
 }

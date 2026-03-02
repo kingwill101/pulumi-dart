@@ -5,7 +5,7 @@ import 'backend_pool_item_response.dart';
 
 class BackendBaseParametersResponsePool {
   /// The list of backend entities belonging to a pool.
-  final List<BackendPoolItemResponse>? services;
+  final pulumi.Input<List<BackendPoolItemResponse>>? services;
 
   /// Creates a new [BackendBaseParametersResponsePool].
   /// [services] The list of backend entities belonging to a pool.
@@ -15,13 +15,13 @@ class BackendBaseParametersResponsePool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'services': ?services == null ? null : pulumi.Input.encodeList<BackendPoolItemResponse, Map<String, dynamic>>(services!, (value) => value.toMap()),
+      'services': ?pulumi.Input.mapOptionalInputValue<List<BackendPoolItemResponse>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<BackendPoolItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory BackendBaseParametersResponsePool.fromMap(Map<String, dynamic> map) {
     return BackendBaseParametersResponsePool(
-      services: map['services'] == null ? null : pulumi.Input.decodeList<BackendPoolItemResponse>(map['services'], (value) => BackendPoolItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<BackendPoolItemResponse>(map['services'], (value) => BackendPoolItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

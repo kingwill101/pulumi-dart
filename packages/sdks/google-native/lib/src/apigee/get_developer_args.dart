@@ -16,13 +16,10 @@ class GetDeveloperArgs {
   /// [developerId] Required.
   /// [organizationId] Required.
   GetDeveloperArgs({
-    pulumi.Output<String>? action,
-    required pulumi.Output<String> developerId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    this.action,
+    required this.developerId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetDeveloperArgs {
 
   factory GetDeveloperArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperArgs(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      developerId: pulumi.Output.create<String>(map['developerId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      developerId: (map['developerId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

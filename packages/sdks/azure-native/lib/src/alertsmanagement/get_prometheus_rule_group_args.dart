@@ -16,11 +16,9 @@ class GetPrometheusRuleGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleGroupName] The name of the rule group.
   GetPrometheusRuleGroupArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleGroupName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleGroupName = pulumi.Input.asInput<String>(ruleGroupName);
+    required this.resourceGroupName,
+    required this.ruleGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetPrometheusRuleGroupArgs {
 
   factory GetPrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPrometheusRuleGroupArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleGroupName: pulumi.Output.create<String>(map['ruleGroupName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleGroupName: (map['ruleGroupName'] as String).input(),
     );
   }
 }

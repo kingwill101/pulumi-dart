@@ -32,21 +32,14 @@ class DeploymentSettingArgs {
   /// [operationType] The intended operation for a cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DeploymentSettingArgs({
-    required pulumi.Output<List<String>> arcNodeResourceIds,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<DeploymentConfiguration> deploymentConfiguration,
-    required pulumi.Output<String> deploymentMode,
-    pulumi.Output<String>? deploymentSettingsName,
-    pulumi.Output<String>? operationType,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      arcNodeResourceIds = pulumi.Input.asInput<List<String>>(arcNodeResourceIds),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      deploymentConfiguration = pulumi.Input.asInput<DeploymentConfiguration>(deploymentConfiguration),
-      deploymentMode = pulumi.Input.asInput<String>(deploymentMode),
-      deploymentSettingsName = pulumi.Input.asOptionalInput<String>(deploymentSettingsName),
-      operationType = pulumi.Input.asOptionalInput<String>(operationType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.arcNodeResourceIds,
+    required this.clusterName,
+    required this.deploymentConfiguration,
+    required this.deploymentMode,
+    this.deploymentSettingsName,
+    this.operationType,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class DeploymentSettingArgs {
 
   factory DeploymentSettingArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingArgs(
-      arcNodeResourceIds: pulumi.Output.create<List<String>>((map['arcNodeResourceIds'] as List).cast<String>()),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      deploymentConfiguration: pulumi.Output.create<DeploymentConfiguration>(DeploymentConfiguration.fromMap((map['deploymentConfiguration'] as Map).cast<String, dynamic>())),
-      deploymentMode: pulumi.Output.create<String>(map['deploymentMode'] as String),
-      deploymentSettingsName: map['deploymentSettingsName'] == null ? null : pulumi.Output.create<String>(map['deploymentSettingsName'] as String),
-      operationType: map['operationType'] == null ? null : pulumi.Output.create<String>(map['operationType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      arcNodeResourceIds: ((map['arcNodeResourceIds'] as List).cast<String>()).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      deploymentConfiguration: (DeploymentConfiguration.fromMap((map['deploymentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      deploymentMode: (map['deploymentMode'] as String).input(),
+      deploymentSettingsName: map['deploymentSettingsName'] == null ? null : (map['deploymentSettingsName'] as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class ConsumerGroupArgs {
   /// [remark] The remark of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   ConsumerGroupArgs({
-    required pulumi.Output<String> consumerId,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? remark,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      consumerId = pulumi.Input.asInput<String>(consumerId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.consumerId,
+    this.description,
+    required this.instanceId,
+    this.remark,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumerId: pulumi.Output.create<String>(map['consumerId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      consumerId: (map['consumerId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

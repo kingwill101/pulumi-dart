@@ -19,13 +19,10 @@ class GetMongoDBResourceMongoUserDefinitionArgs {
   /// [mongoUserDefinitionId] The ID for the User Definition {dbName.userName}.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetMongoDBResourceMongoUserDefinitionArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> mongoUserDefinitionId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      mongoUserDefinitionId = pulumi.Input.asInput<String>(mongoUserDefinitionId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.mongoUserDefinitionId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetMongoDBResourceMongoUserDefinitionArgs {
 
   factory GetMongoDBResourceMongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoUserDefinitionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      mongoUserDefinitionId: pulumi.Output.create<String>(map['mongoUserDefinitionId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      mongoUserDefinitionId: (map['mongoUserDefinitionId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

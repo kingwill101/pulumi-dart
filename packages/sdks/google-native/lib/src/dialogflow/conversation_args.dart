@@ -24,17 +24,12 @@ class ConversationArgs {
   /// [location] Optional.
   /// [project] Optional.
   ConversationArgs({
-    pulumi.Output<String>? conversationId,
-    required pulumi.Output<String> conversationProfile,
-    pulumi.Output<ConversationConversationStage>? conversationStage,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      conversationId = pulumi.Input.asOptionalInput<String>(conversationId),
-      conversationProfile = pulumi.Input.asInput<String>(conversationProfile),
-      conversationStage = pulumi.Input.asOptionalInput<ConversationConversationStage>(conversationStage),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.conversationId,
+    required this.conversationProfile,
+    this.conversationStage,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ConversationArgs {
 
   factory ConversationArgs.fromMap(Map<String, dynamic> map) {
     return ConversationArgs(
-      conversationId: map['conversationId'] == null ? null : pulumi.Output.create<String>(map['conversationId'] as String),
-      conversationProfile: pulumi.Output.create<String>(map['conversationProfile'] as String),
-      conversationStage: map['conversationStage'] == null ? null : pulumi.Output.create<ConversationConversationStage>(ConversationConversationStage.fromValue(map['conversationStage'] as String)),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
+      conversationProfile: (map['conversationProfile'] as String).input(),
+      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStage.fromValue(map['conversationStage'] as String)).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

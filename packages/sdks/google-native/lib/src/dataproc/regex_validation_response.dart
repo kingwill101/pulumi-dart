@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Validation based on regular expressions.
 class RegexValidationResponse {
   /// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-  final List<String> regexes;
+  final pulumi.Input<List<String>> regexes;
 
   /// Creates a new [RegexValidationResponse].
   /// [regexes] RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
@@ -20,7 +21,7 @@ class RegexValidationResponse {
 
   factory RegexValidationResponse.fromMap(Map<String, dynamic> map) {
     return RegexValidationResponse(
-      regexes: (map['regexes'] as List).cast<String>(),
+      regexes: ((map['regexes'] as List).cast<String>()).input(),
     );
   }
 }

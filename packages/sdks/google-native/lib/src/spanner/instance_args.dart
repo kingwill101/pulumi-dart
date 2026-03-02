@@ -48,31 +48,19 @@ class InstanceArgs {
   /// [processingUnits] The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. Users can set the processing_units field to specify the target number of processing units allocated to the instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
   /// [project] Optional.
   InstanceArgs({
-    pulumi.Output<AutoscalingConfig>? autoscalingConfig,
-    required pulumi.Output<String> config,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? endpointUris,
-    pulumi.Output<FreeInstanceMetadata>? freeInstanceMetadata,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<InstanceInstanceType>? instanceType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<int>? processingUnits,
-    pulumi.Output<String>? project,
-  }) :
-      autoscalingConfig = pulumi.Input.asOptionalInput<AutoscalingConfig>(autoscalingConfig),
-      config = pulumi.Input.asInput<String>(config),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      endpointUris = pulumi.Input.asOptionalInput<List<String>>(endpointUris),
-      freeInstanceMetadata = pulumi.Input.asOptionalInput<FreeInstanceMetadata>(freeInstanceMetadata),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<InstanceInstanceType>(instanceType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      processingUnits = pulumi.Input.asOptionalInput<int>(processingUnits),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.autoscalingConfig,
+    required this.config,
+    required this.displayName,
+    this.endpointUris,
+    this.freeInstanceMetadata,
+    required this.instanceId,
+    this.instanceType,
+    this.labels,
+    this.name,
+    this.nodeCount,
+    this.processingUnits,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,18 +81,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : pulumi.Output.create<AutoscalingConfig>(AutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())),
-      config: pulumi.Output.create<String>(map['config'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      endpointUris: map['endpointUris'] == null ? null : pulumi.Output.create<List<String>>((map['endpointUris'] as List).cast<String>()),
-      freeInstanceMetadata: map['freeInstanceMetadata'] == null ? null : pulumi.Output.create<FreeInstanceMetadata>(FreeInstanceMetadata.fromMap((map['freeInstanceMetadata'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<InstanceInstanceType>(InstanceInstanceType.fromValue(map['instanceType'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      processingUnits: map['processingUnits'] == null ? null : pulumi.Output.create<int>(map['processingUnits'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      config: (map['config'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      endpointUris: map['endpointUris'] == null ? null : ((map['endpointUris'] as List).cast<String>()).input(),
+      freeInstanceMetadata: map['freeInstanceMetadata'] == null ? null : (FreeInstanceMetadata.fromMap((map['freeInstanceMetadata'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (InstanceInstanceType.fromValue(map['instanceType'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

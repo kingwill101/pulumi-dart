@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationResultConfigurationAclConfiguration {
   /// Amazon S3 canned ACL that Athena should specify when storing query results. Valid value is `BUCKET_OWNER_FULL_CONTROL`.
-  final String s3AclOption;
+  final pulumi.Input<String> s3AclOption;
 
   /// Creates a new [WorkgroupConfigurationResultConfigurationAclConfiguration].
   /// [s3AclOption] Amazon S3 canned ACL that Athena should specify when storing query results. Valid value is `BUCKET_OWNER_FULL_CONTROL`.
@@ -19,7 +20,7 @@ class WorkgroupConfigurationResultConfigurationAclConfiguration {
 
   factory WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationResultConfigurationAclConfiguration(
-      s3AclOption: map['s3AclOption'] as String,
+      s3AclOption: (map['s3AclOption'] as String).input(),
     );
   }
 }

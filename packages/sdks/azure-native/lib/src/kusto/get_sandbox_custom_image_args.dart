@@ -19,13 +19,10 @@ class GetSandboxCustomImageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sandboxCustomImageName] The name of the sandbox custom image.
   GetSandboxCustomImageArgs({
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> sandboxCustomImageName,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sandboxCustomImageName = pulumi.Input.asInput<String>(sandboxCustomImageName);
+    required this.clusterName,
+    required this.resourceGroupName,
+    required this.sandboxCustomImageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSandboxCustomImageArgs {
 
   factory GetSandboxCustomImageArgs.fromMap(Map<String, dynamic> map) {
     return GetSandboxCustomImageArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sandboxCustomImageName: pulumi.Output.create<String>(map['sandboxCustomImageName'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sandboxCustomImageName: (map['sandboxCustomImageName'] as String).input(),
     );
   }
 }

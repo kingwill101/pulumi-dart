@@ -19,13 +19,10 @@ class GetResourcesSearchAllArgs {
   /// [query] The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
   /// [scope] A scope can be a project, a folder, or an organization. The allowed value must be: organization number (such as "organizations/123"), folder number (such as "folders/1234"), project number (such as "projects/12345") or project id (such as "projects/abc")
   GetResourcesSearchAllArgs({
-    pulumi.Output<List<String>>? assetTypes,
-    pulumi.Output<String>? query,
-    required pulumi.Output<String> scope,
-  }) :
-      assetTypes = pulumi.Input.asOptionalInput<List<String>>(assetTypes),
-      query = pulumi.Input.asOptionalInput<String>(query),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.assetTypes,
+    this.query,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetResourcesSearchAllArgs {
 
   factory GetResourcesSearchAllArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesSearchAllArgs(
-      assetTypes: map['assetTypes'] == null ? null : pulumi.Output.create<List<String>>((map['assetTypes'] as List).cast<String>()),
-      query: map['query'] == null ? null : pulumi.Output.create<String>(map['query'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

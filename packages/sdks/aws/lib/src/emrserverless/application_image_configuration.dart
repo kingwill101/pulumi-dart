@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationImageConfiguration {
   /// The image URI.
-  final String imageUri;
+  final pulumi.Input<String> imageUri;
 
   /// Creates a new [ApplicationImageConfiguration].
   /// [imageUri] The image URI.
@@ -19,7 +20,7 @@ class ApplicationImageConfiguration {
 
   factory ApplicationImageConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationImageConfiguration(
-      imageUri: map['imageUri'] as String,
+      imageUri: (map['imageUri'] as String).input(),
     );
   }
 }

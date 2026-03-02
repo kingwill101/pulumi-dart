@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_accelerator_config_type.dart';
 
 /// Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
-  final String? count;
+  final pulumi.Input<String>? count;
   /// The type of accelerator to use.
-  final GoogleCloudMlV1AcceleratorConfigType? type;
+  final pulumi.Input<GoogleCloudMlV1AcceleratorConfigType>? type;
 
   /// Creates a new [GoogleCloudMlV1AcceleratorConfig].
   /// [count] The number of accelerators to attach to each machine running the job.
@@ -20,14 +21,14 @@ class GoogleCloudMlV1AcceleratorConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': ?count,
-      'type': ?type == null ? null : type!.value,
+      'type': ?pulumi.Input.mapOptionalInputValue<GoogleCloudMlV1AcceleratorConfigType, String>(type, (value) => value.value),
     };
   }
 
   factory GoogleCloudMlV1AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AcceleratorConfig(
-      count: map['count'] == null ? null : map['count'] as String,
-      type: map['type'] == null ? null : GoogleCloudMlV1AcceleratorConfigType.fromValue(map['type'] as String),
+      count: map['count'] == null ? null : (map['count'] as String).input(),
+      type: map['type'] == null ? null : (GoogleCloudMlV1AcceleratorConfigType.fromValue(map['type'] as String)).input(),
     );
   }
 }

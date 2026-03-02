@@ -16,11 +16,9 @@ class GetL2NetworkArgs {
   /// [l2NetworkName] The name of the L2 network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetL2NetworkArgs({
-    required pulumi.Output<String> l2NetworkName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      l2NetworkName = pulumi.Input.asInput<String>(l2NetworkName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.l2NetworkName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetL2NetworkArgs {
 
   factory GetL2NetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetL2NetworkArgs(
-      l2NetworkName: pulumi.Output.create<String>(map['l2NetworkName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      l2NetworkName: (map['l2NetworkName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the application rule protocol.
 class FirewallPolicyRuleConditionApplicationProtocol {
   /// Port number for the protocol, cannot be greater than 64000.
-  final int? port;
+  final pulumi.Input<int>? port;
   /// Protocol type.
-  final String? protocolType;
+  final pulumi.Input<String>? protocolType;
 
   /// Creates a new [FirewallPolicyRuleConditionApplicationProtocol].
   /// [port] Port number for the protocol, cannot be greater than 64000.
@@ -25,8 +26,8 @@ class FirewallPolicyRuleConditionApplicationProtocol {
 
   factory FirewallPolicyRuleConditionApplicationProtocol.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleConditionApplicationProtocol(
-      port: map['port'] == null ? null : map['port'] as int,
-      protocolType: map['protocolType'] == null ? null : map['protocolType'] as String,
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
     );
   }
 }

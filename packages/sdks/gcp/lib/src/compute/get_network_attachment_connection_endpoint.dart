@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkAttachmentConnectionEndpoint {
   /// The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The project id or number of the interface to which the IP was assigned.
-  final String projectIdOrNum;
+  final pulumi.Input<String> projectIdOrNum;
   /// Alias IP ranges from the same subnetwork.
-  final String secondaryIpCidrRanges;
+  final pulumi.Input<String> secondaryIpCidrRanges;
   /// The status of a connected endpoint to this network attachment.
-  final String status;
+  final pulumi.Input<String> status;
   /// The subnetwork used to assign the IP to the producer instance network interface.
-  final String subnetwork;
+  final pulumi.Input<String> subnetwork;
 
   /// Creates a new [GetNetworkAttachmentConnectionEndpoint].
   /// [ipAddress] The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
@@ -39,11 +40,11 @@ class GetNetworkAttachmentConnectionEndpoint {
 
   factory GetNetworkAttachmentConnectionEndpoint.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentConnectionEndpoint(
-      ipAddress: map['ipAddress'] as String,
-      projectIdOrNum: map['projectIdOrNum'] as String,
-      secondaryIpCidrRanges: map['secondaryIpCidrRanges'] as String,
-      status: map['status'] as String,
-      subnetwork: map['subnetwork'] as String,
+      ipAddress: (map['ipAddress'] as String).input(),
+      projectIdOrNum: (map['projectIdOrNum'] as String).input(),
+      secondaryIpCidrRanges: (map['secondaryIpCidrRanges'] as String).input(),
+      status: (map['status'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Table display options that can be reused.
 class TableDisplayOptionsResponse {
   /// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
-  final List<String> shownColumns;
+  final pulumi.Input<List<String>> shownColumns;
 
   /// Creates a new [TableDisplayOptionsResponse].
   /// [shownColumns] Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
@@ -20,7 +21,7 @@ class TableDisplayOptionsResponse {
 
   factory TableDisplayOptionsResponse.fromMap(Map<String, dynamic> map) {
     return TableDisplayOptionsResponse(
-      shownColumns: (map['shownColumns'] as List).cast<String>(),
+      shownColumns: ((map['shownColumns'] as List).cast<String>()).input(),
     );
   }
 }

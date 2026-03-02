@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_media_content_response_me
 /// The media content card for Actions on Google.
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
   /// List of media objects.
-  final List<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject> mediaObjects;
+  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>> mediaObjects;
   /// Optional. What type of media is the content (ie "audio").
-  final GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType? mediaType;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType>? mediaType;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageMediaContent].
   /// [mediaObjects] List of media objects.
@@ -21,15 +21,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mediaObjects': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject, Map<String, dynamic>>(mediaObjects, (value) => value.toMap()),
-      'mediaType': ?mediaType == null ? null : mediaType!.value,
+      'mediaObjects': pulumi.Input.mapInputValue<List<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>, List<Map<String, dynamic>>>(mediaObjects, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mediaType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType, String>(mediaType, (value) => value.value),
     };
   }
 
   factory GoogleCloudDialogflowV2beta1IntentMessageMediaContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageMediaContent(
-      mediaObjects: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>(map['mediaObjects'], (value) => GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap((value as Map).cast<String, dynamic>())),
-      mediaType: map['mediaType'] == null ? null : GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType.fromValue(map['mediaType'] as String),
+      mediaObjects: (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>(map['mediaObjects'], (value) => GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mediaType: map['mediaType'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType.fromValue(map['mediaType'] as String)).input(),
     );
   }
 }

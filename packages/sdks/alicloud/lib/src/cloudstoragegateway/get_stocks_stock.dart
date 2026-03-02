@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStocksStock {
   /// A list of available gateway class in this Zone ID.
-  final List<String> availableGatewayClasses;
+  final pulumi.Input<List<String>> availableGatewayClasses;
   /// The Zone ID.
-  final String zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetStocksStock].
   /// [availableGatewayClasses] A list of available gateway class in this Zone ID.
@@ -24,8 +25,8 @@ class GetStocksStock {
 
   factory GetStocksStock.fromMap(Map<String, dynamic> map) {
     return GetStocksStock(
-      availableGatewayClasses: (map['availableGatewayClasses'] as List).cast<String>(),
-      zoneId: map['zoneId'] as String,
+      availableGatewayClasses: ((map['availableGatewayClasses'] as List).cast<String>()).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

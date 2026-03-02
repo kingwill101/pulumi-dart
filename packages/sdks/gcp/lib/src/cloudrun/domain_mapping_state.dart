@@ -32,19 +32,13 @@ class DomainMappingState {
   /// [spec] The spec for this DomainMapping.
   /// [statuses] (Output)
   DomainMappingState({
-    pulumi.Output<String>? location,
-    pulumi.Output<DomainMappingMetadata>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<DomainMappingSpec>? spec,
-    pulumi.Output<List<DomainMappingStatus>>? statuses,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<DomainMappingMetadata>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<DomainMappingSpec>(spec),
-      statuses = pulumi.Input.asOptionalInput<List<DomainMappingStatus>>(statuses);
+    this.location,
+    this.metadata,
+    this.name,
+    this.project,
+    this.spec,
+    this.statuses,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class DomainMappingState {
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<DomainMappingMetadata>(DomainMappingMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<DomainMappingSpec>(DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())),
-      statuses: map['statuses'] == null ? null : pulumi.Output.create<List<DomainMappingStatus>>(pulumi.Input.decodeList<DomainMappingStatus>(map['statuses'], (value) => DomainMappingStatus.fromMap((value as Map).cast<String, dynamic>()))),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatus>(map['statuses'], (value) => DomainMappingStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

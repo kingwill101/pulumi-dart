@@ -29,19 +29,13 @@ class AlertConditionState {
   /// [policyId] The ID of the policy where this condition should be used.
   /// [runbookUrl] Runbook URL to display in notifications.
   AlertConditionState({
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? entityGuid,
-    pulumi.Output<String>? monitorId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-    pulumi.Output<String>? runbookUrl,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      entityGuid = pulumi.Input.asOptionalInput<String>(entityGuid),
-      monitorId = pulumi.Input.asOptionalInput<String>(monitorId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId),
-      runbookUrl = pulumi.Input.asOptionalInput<String>(runbookUrl);
+    this.enabled,
+    this.entityGuid,
+    this.monitorId,
+    this.name,
+    this.policyId,
+    this.runbookUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class AlertConditionState {
 
   factory AlertConditionState.fromMap(Map<String, dynamic> map) {
     return AlertConditionState(
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      entityGuid: map['entityGuid'] == null ? null : pulumi.Output.create<String>(map['entityGuid'] as String),
-      monitorId: map['monitorId'] == null ? null : pulumi.Output.create<String>(map['monitorId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
-      runbookUrl: map['runbookUrl'] == null ? null : pulumi.Output.create<String>(map['runbookUrl'] as String),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      entityGuid: map['entityGuid'] == null ? null : (map['entityGuid'] as String).input(),
+      monitorId: map['monitorId'] == null ? null : (map['monitorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
     );
   }
 }

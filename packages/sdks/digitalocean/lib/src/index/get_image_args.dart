@@ -24,15 +24,11 @@ class GetImageArgs {
   /// [slug] The slug of the official image.
   /// [source] Restrict the search to one of the following categories of images:
   GetImageArgs({
-    pulumi.Output<int>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? slug,
-    pulumi.Output<String>? source,
-  }) :
-      id = pulumi.Input.asOptionalInput<int>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      slug = pulumi.Input.asOptionalInput<String>(slug),
-      source = pulumi.Input.asOptionalInput<String>(source);
+    this.id,
+    this.name,
+    this.slug,
+    this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<int>(map['id'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      slug: map['slug'] == null ? null : pulumi.Output.create<String>(map['slug'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
+      id: map['id'] == null ? null : (map['id'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      slug: map['slug'] == null ? null : (map['slug'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
     );
   }
 }

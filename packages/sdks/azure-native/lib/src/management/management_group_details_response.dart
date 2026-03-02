@@ -7,19 +7,19 @@ import 'parent_group_info_response.dart';
 /// The details of a management group.
 class ManagementGroupDetailsResponse {
   /// The ancestors of the management group.
-  final List<String>? managementGroupAncestors;
+  final pulumi.Input<List<String>>? managementGroupAncestors;
   /// The ancestors of the management group displayed in reversed order, from immediate parent to the root.
-  final List<ManagementGroupPathElementResponse>? managementGroupAncestorsChain;
+  final pulumi.Input<List<ManagementGroupPathElementResponse>>? managementGroupAncestorsChain;
   /// (Optional) The ID of the parent management group.
-  final ParentGroupInfoResponse? parent;
+  final pulumi.Input<ParentGroupInfoResponse>? parent;
   /// The path from the root to the current group.
-  final List<ManagementGroupPathElementResponse>? path;
+  final pulumi.Input<List<ManagementGroupPathElementResponse>>? path;
   /// The identity of the principal or process that updated the object.
-  final String? updatedBy;
+  final pulumi.Input<String>? updatedBy;
   /// The date and time when this object was last updated.
-  final String? updatedTime;
+  final pulumi.Input<String>? updatedTime;
   /// The version number of the object.
-  final int? version;
+  final pulumi.Input<int>? version;
 
   /// Creates a new [ManagementGroupDetailsResponse].
   /// [managementGroupAncestors] The ancestors of the management group.
@@ -42,9 +42,9 @@ class ManagementGroupDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'managementGroupAncestors': ?managementGroupAncestors,
-      'managementGroupAncestorsChain': ?managementGroupAncestorsChain == null ? null : pulumi.Input.encodeList<ManagementGroupPathElementResponse, Map<String, dynamic>>(managementGroupAncestorsChain!, (value) => value.toMap()),
-      'parent': ?parent == null ? null : parent!.toMap(),
-      'path': ?path == null ? null : pulumi.Input.encodeList<ManagementGroupPathElementResponse, Map<String, dynamic>>(path!, (value) => value.toMap()),
+      'managementGroupAncestorsChain': ?pulumi.Input.mapOptionalInputValue<List<ManagementGroupPathElementResponse>, List<Map<String, dynamic>>>(managementGroupAncestorsChain, (value) => pulumi.Input.encodeList<ManagementGroupPathElementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parent': ?pulumi.Input.mapOptionalInputValue<ParentGroupInfoResponse, Map<String, dynamic>>(parent, (value) => value.toMap()),
+      'path': ?pulumi.Input.mapOptionalInputValue<List<ManagementGroupPathElementResponse>, List<Map<String, dynamic>>>(path, (value) => pulumi.Input.encodeList<ManagementGroupPathElementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updatedBy': ?updatedBy,
       'updatedTime': ?updatedTime,
       'version': ?version,
@@ -53,13 +53,13 @@ class ManagementGroupDetailsResponse {
 
   factory ManagementGroupDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ManagementGroupDetailsResponse(
-      managementGroupAncestors: map['managementGroupAncestors'] == null ? null : (map['managementGroupAncestors'] as List).cast<String>(),
-      managementGroupAncestorsChain: map['managementGroupAncestorsChain'] == null ? null : pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['managementGroupAncestorsChain'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>())),
-      parent: map['parent'] == null ? null : ParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['path'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>())),
-      updatedBy: map['updatedBy'] == null ? null : map['updatedBy'] as String,
-      updatedTime: map['updatedTime'] == null ? null : map['updatedTime'] as String,
-      version: map['version'] == null ? null : map['version'] as int,
+      managementGroupAncestors: map['managementGroupAncestors'] == null ? null : ((map['managementGroupAncestors'] as List).cast<String>()).input(),
+      managementGroupAncestorsChain: map['managementGroupAncestorsChain'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['managementGroupAncestorsChain'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (ParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['path'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updatedBy: map['updatedBy'] == null ? null : (map['updatedBy'] as String).input(),
+      updatedTime: map['updatedTime'] == null ? null : (map['updatedTime'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_eligibility_schedule_request_properties_expiration.dart';
 
 /// Schedule info of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesScheduleInfo {
   /// Expiration of the role eligibility schedule
-  final RoleEligibilityScheduleRequestPropertiesExpiration? expiration;
+  final pulumi.Input<RoleEligibilityScheduleRequestPropertiesExpiration>? expiration;
   /// Start DateTime of the role eligibility schedule.
-  final String? startDateTime;
+  final pulumi.Input<String>? startDateTime;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesScheduleInfo].
   /// [expiration] Expiration of the role eligibility schedule
@@ -19,15 +20,15 @@ class RoleEligibilityScheduleRequestPropertiesScheduleInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiration': ?expiration == null ? null : expiration!.toMap(),
+      'expiration': ?pulumi.Input.mapOptionalInputValue<RoleEligibilityScheduleRequestPropertiesExpiration, Map<String, dynamic>>(expiration, (value) => value.toMap()),
       'startDateTime': ?startDateTime,
     };
   }
 
   factory RoleEligibilityScheduleRequestPropertiesScheduleInfo.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesScheduleInfo(
-      expiration: map['expiration'] == null ? null : RoleEligibilityScheduleRequestPropertiesExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>()),
-      startDateTime: map['startDateTime'] == null ? null : map['startDateTime'] as String,
+      expiration: map['expiration'] == null ? null : (RoleEligibilityScheduleRequestPropertiesExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
     );
   }
 }

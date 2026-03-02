@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd {
   /// The name of the header to add.
-  final String headerName;
+  final pulumi.Input<String> headerName;
   /// The value of the header to add.
-  final String headerValue;
+  final pulumi.Input<String> headerValue;
   /// Whether to replace all existing headers with the same name.
-  final bool? replace;
+  final pulumi.Input<bool>? replace;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd].
   /// [headerName] The name of the header to add.
@@ -29,9 +30,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd 
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(
-      headerName: map['headerName'] as String,
-      headerValue: map['headerValue'] as String,
-      replace: map['replace'] == null ? null : map['replace'] as bool,
+      headerName: (map['headerName'] as String).input(),
+      headerValue: (map['headerValue'] as String).input(),
+      replace: map['replace'] == null ? null : (map['replace'] as bool).input(),
     );
   }
 }

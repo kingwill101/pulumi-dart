@@ -28,19 +28,13 @@ class GetCatalogTableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transactionId] The transaction ID at which to read the table contents.
   GetCatalogTableArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<String> databaseName,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? queryAsOfTime,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? transactionId,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      databaseName = pulumi.Input.asInput<String>(databaseName),
-      name = pulumi.Input.asInput<String>(name),
-      queryAsOfTime = pulumi.Input.asOptionalInput<String>(queryAsOfTime),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transactionId = pulumi.Input.asOptionalInput<int>(transactionId);
+    this.catalogId,
+    required this.databaseName,
+    required this.name,
+    this.queryAsOfTime,
+    this.region,
+    this.transactionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetCatalogTableArgs {
 
   factory GetCatalogTableArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      databaseName: pulumi.Output.create<String>(map['databaseName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      queryAsOfTime: map['queryAsOfTime'] == null ? null : pulumi.Output.create<String>(map['queryAsOfTime'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transactionId: map['transactionId'] == null ? null : pulumi.Output.create<int>(map['transactionId'] as int),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
+      queryAsOfTime: map['queryAsOfTime'] == null ? null : (map['queryAsOfTime'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transactionId: map['transactionId'] == null ? null : (map['transactionId'] as int).input(),
     );
   }
 }

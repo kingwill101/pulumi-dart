@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserSettingsToolbarConfiguration {
   /// List of toolbar items to be hidden.
-  final List<String>? hiddenToolbarItems;
+  final pulumi.Input<List<String>>? hiddenToolbarItems;
   /// Maximum display resolution that is allowed for the session.
-  final String? maxDisplayResolution;
+  final pulumi.Input<String>? maxDisplayResolution;
   /// Type of toolbar displayed during the session.
-  final String? toolbarType;
+  final pulumi.Input<String>? toolbarType;
   /// Visual mode of the toolbar.
-  final String? visualMode;
+  final pulumi.Input<String>? visualMode;
 
   /// Creates a new [UserSettingsToolbarConfiguration].
   /// [hiddenToolbarItems] List of toolbar items to be hidden.
@@ -34,10 +35,10 @@ class UserSettingsToolbarConfiguration {
 
   factory UserSettingsToolbarConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsToolbarConfiguration(
-      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : (map['hiddenToolbarItems'] as List).cast<String>(),
-      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : map['maxDisplayResolution'] as String,
-      toolbarType: map['toolbarType'] == null ? null : map['toolbarType'] as String,
-      visualMode: map['visualMode'] == null ? null : map['visualMode'] as String,
+      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : ((map['hiddenToolbarItems'] as List).cast<String>()).input(),
+      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : (map['maxDisplayResolution'] as String).input(),
+      toolbarType: map['toolbarType'] == null ? null : (map['toolbarType'] as String).input(),
+      visualMode: map['visualMode'] == null ? null : (map['visualMode'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlTriggerGetPropertiesResponseResource {
   /// Body of the Trigger
-  final String? body;
+  final pulumi.Input<String>? body;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Name of the Cosmos DB SQL trigger
-  final String id;
+  final pulumi.Input<String> id;
   /// A system generated property. A unique identifier.
-  final String rid;
+  final pulumi.Input<String> rid;
   /// The operation the trigger is associated with
-  final String? triggerOperation;
+  final pulumi.Input<String>? triggerOperation;
   /// Type of the Trigger
-  final String? triggerType;
+  final pulumi.Input<String>? triggerType;
   /// A system generated property that denotes the last updated timestamp of the resource.
-  final double ts;
+  final pulumi.Input<double> ts;
 
   /// Creates a new [SqlTriggerGetPropertiesResponseResource].
   /// [body] Body of the Trigger
@@ -49,13 +50,13 @@ class SqlTriggerGetPropertiesResponseResource {
 
   factory SqlTriggerGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlTriggerGetPropertiesResponseResource(
-      body: map['body'] == null ? null : map['body'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      rid: map['rid'] as String,
-      triggerOperation: map['triggerOperation'] == null ? null : map['triggerOperation'] as String,
-      triggerType: map['triggerType'] == null ? null : map['triggerType'] as String,
-      ts: map['ts'] as double,
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: (map['id'] as String).input(),
+      rid: (map['rid'] as String).input(),
+      triggerOperation: map['triggerOperation'] == null ? null : (map['triggerOperation'] as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      ts: (map['ts'] as double).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CSPM (Cloud security posture management) monitoring for gitlab offering
 class CspmMonitorGitLabOffering {
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorGitLab'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorGitLabOffering].
   /// [offeringType] The type of the security offering.
@@ -21,7 +22,7 @@ class CspmMonitorGitLabOffering {
 
   factory CspmMonitorGitLabOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorGitLabOffering(
-      offeringType: map['offeringType'] as String,
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

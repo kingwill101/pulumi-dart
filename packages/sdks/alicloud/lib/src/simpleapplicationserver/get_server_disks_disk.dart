@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerDisksDisk {
   /// Disk type. Possible values: `ESSD`, `SSD`.
-  final String category;
+  final pulumi.Input<String> category;
   /// The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The device name of the disk on the simple application server.
-  final String device;
+  final pulumi.Input<String> device;
   /// The first ID of the resource.
-  final String diskId;
+  final pulumi.Input<String> diskId;
   /// The name of the resource.
-  final String diskName;
+  final pulumi.Input<String> diskName;
   /// The type of the disk. Possible values: `System`, `Data`.
-  final String diskType;
+  final pulumi.Input<String> diskType;
   /// The ID of the Disk.
-  final String id;
+  final pulumi.Input<String> id;
   /// Alibaba Cloud simple application server instance ID.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The size of the disk. Unit: `GB`.
-  final int size;
+  final pulumi.Input<int> size;
   /// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetServerDisksDisk].
   /// [category] Disk type. Possible values: `ESSD`, `SSD`.
@@ -69,17 +70,17 @@ class GetServerDisksDisk {
 
   factory GetServerDisksDisk.fromMap(Map<String, dynamic> map) {
     return GetServerDisksDisk(
-      category: map['category'] as String,
-      createTime: map['createTime'] as String,
-      device: map['device'] as String,
-      diskId: map['diskId'] as String,
-      diskName: map['diskName'] as String,
-      diskType: map['diskType'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      paymentType: map['paymentType'] as String,
-      size: map['size'] as int,
-      status: map['status'] as String,
+      category: (map['category'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      device: (map['device'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
+      diskName: (map['diskName'] as String).input(),
+      diskType: (map['diskType'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      size: (map['size'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

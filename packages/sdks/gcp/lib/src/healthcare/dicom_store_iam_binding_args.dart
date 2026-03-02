@@ -34,15 +34,11 @@ class DicomStoreIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   DicomStoreIamBindingArgs({
-    pulumi.Output<DicomStoreIamBindingCondition>? condition,
-    required pulumi.Output<String> dicomStoreId,
-    required pulumi.Output<List<String>> members,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<DicomStoreIamBindingCondition>(condition),
-      dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.dicomStoreId,
+    required this.members,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,10 +51,10 @@ class DicomStoreIamBindingArgs {
 
   factory DicomStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<DicomStoreIamBindingCondition>(DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      dicomStoreId: pulumi.Output.create<String>(map['dicomStoreId'] as String),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      dicomStoreId: (map['dicomStoreId'] as String).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

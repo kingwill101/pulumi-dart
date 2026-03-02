@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceHostConfig {
   /// (Output)
   /// API hostname.
-  final String? api;
+  final pulumi.Input<String>? api;
   /// (Output)
   /// Git HTTP hostname.
-  final String? gitHttp;
+  final pulumi.Input<String>? gitHttp;
   /// (Output)
   /// Git SSH hostname.
-  final String? gitSsh;
+  final pulumi.Input<String>? gitSsh;
   /// (Output)
   /// HTML hostname.
-  final String? html;
+  final pulumi.Input<String>? html;
 
   /// Creates a new [InstanceHostConfig].
   /// [api] (Output)
@@ -38,10 +39,10 @@ class InstanceHostConfig {
 
   factory InstanceHostConfig.fromMap(Map<String, dynamic> map) {
     return InstanceHostConfig(
-      api: map['api'] == null ? null : map['api'] as String,
-      gitHttp: map['gitHttp'] == null ? null : map['gitHttp'] as String,
-      gitSsh: map['gitSsh'] == null ? null : map['gitSsh'] as String,
-      html: map['html'] == null ? null : map['html'] as String,
+      api: map['api'] == null ? null : (map['api'] as String).input(),
+      gitHttp: map['gitHttp'] == null ? null : (map['gitHttp'] as String).input(),
+      gitSsh: map['gitSsh'] == null ? null : (map['gitSsh'] as String).input(),
+      html: map['html'] == null ? null : (map['html'] as String).input(),
     );
   }
 }

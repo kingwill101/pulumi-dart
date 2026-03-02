@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The parameters to provide for the Kik channel.
 class KikChannelPropertiesResponse {
   /// Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
-  final String? apiKey;
+  final pulumi.Input<String>? apiKey;
   /// Whether this channel is enabled for the bot
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// Whether this channel is validated for the bot
-  final bool? isValidated;
+  final pulumi.Input<bool>? isValidated;
   /// The Kik user name
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [KikChannelPropertiesResponse].
   /// [apiKey] Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -35,10 +36,10 @@ class KikChannelPropertiesResponse {
 
   factory KikChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KikChannelPropertiesResponse(
-      apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
-      isEnabled: map['isEnabled'] as bool,
-      isValidated: map['isValidated'] == null ? null : map['isValidated'] as bool,
-      userName: map['userName'] as String,
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      isValidated: map['isValidated'] == null ? null : (map['isValidated'] as bool).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 envelope override settings.
 class X12EnvelopeOverrideResponse {
   /// The date format.
-  final String dateFormat;
+  final pulumi.Input<String> dateFormat;
   /// The functional identifier code.
-  final String? functionalIdentifierCode;
+  final pulumi.Input<String>? functionalIdentifierCode;
   /// The header version.
-  final String headerVersion;
+  final pulumi.Input<String> headerVersion;
   /// The message id on which this envelope settings has to be applied.
-  final String messageId;
+  final pulumi.Input<String> messageId;
   /// The protocol version on which this envelope settings has to be applied.
-  final String protocolVersion;
+  final pulumi.Input<String> protocolVersion;
   /// The receiver application id.
-  final String receiverApplicationId;
+  final pulumi.Input<String> receiverApplicationId;
   /// The responsible agency code.
-  final String responsibleAgencyCode;
+  final pulumi.Input<String> responsibleAgencyCode;
   /// The sender application id.
-  final String senderApplicationId;
+  final pulumi.Input<String> senderApplicationId;
   /// The target namespace on which this envelope settings has to be applied.
-  final String targetNamespace;
+  final pulumi.Input<String> targetNamespace;
   /// The time format.
-  final String timeFormat;
+  final pulumi.Input<String> timeFormat;
 
   /// Creates a new [X12EnvelopeOverrideResponse].
   /// [dateFormat] The date format.
@@ -65,16 +66,16 @@ class X12EnvelopeOverrideResponse {
 
   factory X12EnvelopeOverrideResponse.fromMap(Map<String, dynamic> map) {
     return X12EnvelopeOverrideResponse(
-      dateFormat: map['dateFormat'] as String,
-      functionalIdentifierCode: map['functionalIdentifierCode'] == null ? null : map['functionalIdentifierCode'] as String,
-      headerVersion: map['headerVersion'] as String,
-      messageId: map['messageId'] as String,
-      protocolVersion: map['protocolVersion'] as String,
-      receiverApplicationId: map['receiverApplicationId'] as String,
-      responsibleAgencyCode: map['responsibleAgencyCode'] as String,
-      senderApplicationId: map['senderApplicationId'] as String,
-      targetNamespace: map['targetNamespace'] as String,
-      timeFormat: map['timeFormat'] as String,
+      dateFormat: (map['dateFormat'] as String).input(),
+      functionalIdentifierCode: map['functionalIdentifierCode'] == null ? null : (map['functionalIdentifierCode'] as String).input(),
+      headerVersion: (map['headerVersion'] as String).input(),
+      messageId: (map['messageId'] as String).input(),
+      protocolVersion: (map['protocolVersion'] as String).input(),
+      receiverApplicationId: (map['receiverApplicationId'] as String).input(),
+      responsibleAgencyCode: (map['responsibleAgencyCode'] as String).input(),
+      senderApplicationId: (map['senderApplicationId'] as String).input(),
+      targetNamespace: (map['targetNamespace'] as String).input(),
+      timeFormat: (map['timeFormat'] as String).input(),
     );
   }
 }

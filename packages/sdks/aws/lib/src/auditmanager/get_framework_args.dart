@@ -18,13 +18,10 @@ class GetFrameworkArgs {
   /// [name] Name of the framework.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetFrameworkArgs({
-    required pulumi.Output<String> frameworkType,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? region,
-  }) :
-      frameworkType = pulumi.Input.asInput<String>(frameworkType),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.frameworkType,
+    required this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetFrameworkArgs {
 
   factory GetFrameworkArgs.fromMap(Map<String, dynamic> map) {
     return GetFrameworkArgs(
-      frameworkType: pulumi.Output.create<String>(map['frameworkType'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      frameworkType: (map['frameworkType'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

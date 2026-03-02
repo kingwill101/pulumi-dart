@@ -34,23 +34,15 @@ class ApiIssueAttachmentArgs {
   /// [serviceName] The name of the API Management service.
   /// [title] Filename by which the binary data will be saved.
   ApiIssueAttachmentArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? attachmentId,
-    required pulumi.Output<String> content,
-    required pulumi.Output<String> contentFormat,
-    required pulumi.Output<String> issueId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    required pulumi.Output<String> title,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      attachmentId = pulumi.Input.asOptionalInput<String>(attachmentId),
-      content = pulumi.Input.asInput<String>(content),
-      contentFormat = pulumi.Input.asInput<String>(contentFormat),
-      issueId = pulumi.Input.asInput<String>(issueId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      title = pulumi.Input.asInput<String>(title);
+    required this.apiId,
+    this.attachmentId,
+    required this.content,
+    required this.contentFormat,
+    required this.issueId,
+    required this.resourceGroupName,
+    required this.serviceName,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ApiIssueAttachmentArgs {
 
   factory ApiIssueAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueAttachmentArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      attachmentId: map['attachmentId'] == null ? null : pulumi.Output.create<String>(map['attachmentId'] as String),
-      content: pulumi.Output.create<String>(map['content'] as String),
-      contentFormat: pulumi.Output.create<String>(map['contentFormat'] as String),
-      issueId: pulumi.Output.create<String>(map['issueId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      apiId: (map['apiId'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      content: (map['content'] as String).input(),
+      contentFormat: (map['contentFormat'] as String).input(),
+      issueId: (map['issueId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

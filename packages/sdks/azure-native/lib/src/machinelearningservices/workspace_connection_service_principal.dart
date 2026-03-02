@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionServicePrincipal {
-  final String? clientId;
-  final String? clientSecret;
-  final String? tenantId;
+  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String>? tenantId;
 
   /// Creates a new [WorkspaceConnectionServicePrincipal].
   /// [clientId] Optional.
@@ -26,9 +27,9 @@ class WorkspaceConnectionServicePrincipal {
 
   factory WorkspaceConnectionServicePrincipal.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionServicePrincipal(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

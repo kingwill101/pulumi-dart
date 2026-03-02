@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkspaceWorkspaceProperty {
   /// Compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
-  final String computeTypeName;
+  final pulumi.Input<String> computeTypeName;
   /// Size of the root volume.
-  final int rootVolumeSizeGib;
+  final pulumi.Input<int> rootVolumeSizeGib;
   /// Running mode. For more information, see [Manage the WorkSpace Running Mode](https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html). Valid values are `AUTO_STOP` and `ALWAYS_ON`.
-  final String runningMode;
+  final pulumi.Input<String> runningMode;
   /// Time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
-  final int runningModeAutoStopTimeoutInMinutes;
+  final pulumi.Input<int> runningModeAutoStopTimeoutInMinutes;
   /// Size of the user storage.
-  final int userVolumeSizeGib;
+  final pulumi.Input<int> userVolumeSizeGib;
 
   /// Creates a new [GetWorkspaceWorkspaceProperty].
   /// [computeTypeName] Compute type. For more information, see [Amazon WorkSpaces Bundles](http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles). Valid values are `VALUE`, `STANDARD`, `PERFORMANCE`, `POWER`, `GRAPHICS`, `POWERPRO` and `GRAPHICSPRO`.
@@ -39,11 +40,11 @@ class GetWorkspaceWorkspaceProperty {
 
   factory GetWorkspaceWorkspaceProperty.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceWorkspaceProperty(
-      computeTypeName: map['computeTypeName'] as String,
-      rootVolumeSizeGib: map['rootVolumeSizeGib'] as int,
-      runningMode: map['runningMode'] as String,
-      runningModeAutoStopTimeoutInMinutes: map['runningModeAutoStopTimeoutInMinutes'] as int,
-      userVolumeSizeGib: map['userVolumeSizeGib'] as int,
+      computeTypeName: (map['computeTypeName'] as String).input(),
+      rootVolumeSizeGib: (map['rootVolumeSizeGib'] as int).input(),
+      runningMode: (map['runningMode'] as String).input(),
+      runningModeAutoStopTimeoutInMinutes: (map['runningModeAutoStopTimeoutInMinutes'] as int).input(),
+      userVolumeSizeGib: (map['userVolumeSizeGib'] as int).input(),
     );
   }
 }

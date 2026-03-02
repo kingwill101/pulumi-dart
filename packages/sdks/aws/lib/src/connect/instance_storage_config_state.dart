@@ -23,17 +23,12 @@ class InstanceStorageConfigState {
   /// [resourceType] A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `EMAIL_MESSAGES` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS` | `SCHEDULED_REPORTS` | `SCREEN_RECORDINGS`.
   /// [storageConfig] Specifies the storage configuration options for the Connect Instance. Documented below.
   InstanceStorageConfigState({
-    pulumi.Output<String>? associationId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<InstanceStorageConfigStorageConfig>? storageConfig,
-  }) :
-      associationId = pulumi.Input.asOptionalInput<String>(associationId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      storageConfig = pulumi.Input.asOptionalInput<InstanceStorageConfigStorageConfig>(storageConfig);
+    this.associationId,
+    this.instanceId,
+    this.region,
+    this.resourceType,
+    this.storageConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,11 +42,11 @@ class InstanceStorageConfigState {
 
   factory InstanceStorageConfigState.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigState(
-      associationId: map['associationId'] == null ? null : pulumi.Output.create<String>(map['associationId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      storageConfig: map['storageConfig'] == null ? null : pulumi.Output.create<InstanceStorageConfigStorageConfig>(InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      storageConfig: map['storageConfig'] == null ? null : (InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

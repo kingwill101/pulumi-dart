@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines load balancer backend address pool properties.
 class LBBackendAddressPoolResourceSettings {
   /// Gets or sets the backend address pool name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [LBBackendAddressPoolResourceSettings].
   /// [name] Gets or sets the backend address pool name.
@@ -20,7 +21,7 @@ class LBBackendAddressPoolResourceSettings {
 
   factory LBBackendAddressPoolResourceSettings.fromMap(Map<String, dynamic> map) {
     return LBBackendAddressPoolResourceSettings(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

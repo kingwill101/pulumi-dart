@@ -6,9 +6,9 @@ import 'get_budget_subscription_filter_not_tag.dart';
 
 class GetBudgetSubscriptionFilterNot {
   /// A `dimension` block as defined above.
-  final List<GetBudgetSubscriptionFilterNotDimension> dimensions;
+  final pulumi.Input<List<GetBudgetSubscriptionFilterNotDimension>> dimensions;
   /// A `tag` block as defined below.
-  final List<GetBudgetSubscriptionFilterNotTag> tags;
+  final pulumi.Input<List<GetBudgetSubscriptionFilterNotTag>> tags;
 
   /// Creates a new [GetBudgetSubscriptionFilterNot].
   /// [dimensions] A `dimension` block as defined above.
@@ -20,15 +20,15 @@ class GetBudgetSubscriptionFilterNot {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': pulumi.Input.encodeList<GetBudgetSubscriptionFilterNotDimension, Map<String, dynamic>>(dimensions, (value) => value.toMap()),
-      'tags': pulumi.Input.encodeList<GetBudgetSubscriptionFilterNotTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'dimensions': pulumi.Input.mapInputValue<List<GetBudgetSubscriptionFilterNotDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetBudgetSubscriptionFilterNotDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': pulumi.Input.mapInputValue<List<GetBudgetSubscriptionFilterNotTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<GetBudgetSubscriptionFilterNotTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetBudgetSubscriptionFilterNot.fromMap(Map<String, dynamic> map) {
     return GetBudgetSubscriptionFilterNot(
-      dimensions: pulumi.Input.decodeList<GetBudgetSubscriptionFilterNotDimension>(map['dimensions'], (value) => GetBudgetSubscriptionFilterNotDimension.fromMap((value as Map).cast<String, dynamic>())),
-      tags: pulumi.Input.decodeList<GetBudgetSubscriptionFilterNotTag>(map['tags'], (value) => GetBudgetSubscriptionFilterNotTag.fromMap((value as Map).cast<String, dynamic>())),
+      dimensions: (pulumi.Input.decodeList<GetBudgetSubscriptionFilterNotDimension>(map['dimensions'], (value) => GetBudgetSubscriptionFilterNotDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: (pulumi.Input.decodeList<GetBudgetSubscriptionFilterNotTag>(map['tags'], (value) => GetBudgetSubscriptionFilterNotTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

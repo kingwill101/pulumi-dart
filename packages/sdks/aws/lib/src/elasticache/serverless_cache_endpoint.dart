@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessCacheEndpoint {
   /// The DNS hostname of the cache node.
-  final String address;
+  final pulumi.Input<String> address;
   /// The port number that the cache engine is listening on. Set as integer.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [ServerlessCacheEndpoint].
   /// [address] The DNS hostname of the cache node.
@@ -24,8 +25,8 @@ class ServerlessCacheEndpoint {
 
   factory ServerlessCacheEndpoint.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheEndpoint(
-      address: map['address'] as String,
-      port: map['port'] as int,
+      address: (map['address'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

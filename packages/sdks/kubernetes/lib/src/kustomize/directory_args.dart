@@ -25,15 +25,11 @@ class DirectoryArgs {
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the Directory resource. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo:resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
   DirectoryArgs({
-    required pulumi.Output<String> directory,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? resourcePrefix,
-    pulumi.Output<bool>? skipAwait,
-  }) :
-      directory = pulumi.Input.asInput<String>(directory),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      resourcePrefix = pulumi.Input.asOptionalInput<String>(resourcePrefix),
-      skipAwait = pulumi.Input.asOptionalInput<bool>(skipAwait);
+    required this.directory,
+    this.namespace,
+    this.resourcePrefix,
+    this.skipAwait,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      directory: pulumi.Output.create<String>(map['directory'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      resourcePrefix: map['resourcePrefix'] == null ? null : pulumi.Output.create<String>(map['resourcePrefix'] as String),
-      skipAwait: map['skipAwait'] == null ? null : pulumi.Output.create<bool>(map['skipAwait'] as bool),
+      directory: (map['directory'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait'] as bool).input(),
     );
   }
 }

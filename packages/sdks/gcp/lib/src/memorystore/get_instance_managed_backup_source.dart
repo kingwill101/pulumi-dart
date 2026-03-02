@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceManagedBackupSource {
   /// Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
-  final String backup;
+  final pulumi.Input<String> backup;
 
   /// Creates a new [GetInstanceManagedBackupSource].
   /// [backup] Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
@@ -19,7 +20,7 @@ class GetInstanceManagedBackupSource {
 
   factory GetInstanceManagedBackupSource.fromMap(Map<String, dynamic> map) {
     return GetInstanceManagedBackupSource(
-      backup: map['backup'] as String,
+      backup: (map['backup'] as String).input(),
     );
   }
 }

@@ -22,13 +22,10 @@ class GetFunctionIamPolicyArgs {
   /// [location] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   GetFunctionIamPolicyArgs({
-    required pulumi.Output<String> cloudFunction,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      cloudFunction = pulumi.Input.asInput<String>(cloudFunction),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.cloudFunction,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class GetFunctionIamPolicyArgs {
 
   factory GetFunctionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionIamPolicyArgs(
-      cloudFunction: pulumi.Output.create<String>(map['cloudFunction'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      cloudFunction: (map['cloudFunction'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

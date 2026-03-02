@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Customer provides the stand-by agent scheme.
 class ManualResourcePredictionsProfile {
   /// Determines how the stand-by scheme should be provided.
   /// Expected value is 'Manual'.
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [ManualResourcePredictionsProfile].
   /// [kind] Determines how the stand-by scheme should be provided.
@@ -21,7 +22,7 @@ class ManualResourcePredictionsProfile {
 
   factory ManualResourcePredictionsProfile.fromMap(Map<String, dynamic> map) {
     return ManualResourcePredictionsProfile(
-      kind: map['kind'] as String,
+      kind: (map['kind'] as String).input(),
     );
   }
 }

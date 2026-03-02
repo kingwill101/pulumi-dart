@@ -22,15 +22,11 @@ class LicenseAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] The workspace id.
   LicenseAssociationArgs({
-    pulumi.Output<String>? grafanaToken,
-    required pulumi.Output<String> licenseType,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      grafanaToken = pulumi.Input.asOptionalInput<String>(grafanaToken),
-      licenseType = pulumi.Input.asInput<String>(licenseType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    this.grafanaToken,
+    required this.licenseType,
+    this.region,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class LicenseAssociationArgs {
 
   factory LicenseAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseAssociationArgs(
-      grafanaToken: map['grafanaToken'] == null ? null : pulumi.Output.create<String>(map['grafanaToken'] as String),
-      licenseType: pulumi.Output.create<String>(map['licenseType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      grafanaToken: map['grafanaToken'] == null ? null : (map['grafanaToken'] as String).input(),
+      licenseType: (map['licenseType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

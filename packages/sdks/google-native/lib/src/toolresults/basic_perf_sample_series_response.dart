@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encapsulates the metadata for basic sample series represented by a line chart
 class BasicPerfSampleSeriesResponse {
-  final String perfMetricType;
-  final String perfUnit;
-  final String sampleSeriesLabel;
+  final pulumi.Input<String> perfMetricType;
+  final pulumi.Input<String> perfUnit;
+  final pulumi.Input<String> sampleSeriesLabel;
 
   /// Creates a new [BasicPerfSampleSeriesResponse].
   /// [perfMetricType] Required.
@@ -27,9 +28,9 @@ class BasicPerfSampleSeriesResponse {
 
   factory BasicPerfSampleSeriesResponse.fromMap(Map<String, dynamic> map) {
     return BasicPerfSampleSeriesResponse(
-      perfMetricType: map['perfMetricType'] as String,
-      perfUnit: map['perfUnit'] as String,
-      sampleSeriesLabel: map['sampleSeriesLabel'] as String,
+      perfMetricType: (map['perfMetricType'] as String).input(),
+      perfUnit: (map['perfUnit'] as String).input(),
+      sampleSeriesLabel: (map['sampleSeriesLabel'] as String).input(),
     );
   }
 }

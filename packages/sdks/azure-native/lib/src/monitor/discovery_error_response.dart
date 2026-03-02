@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Error details for a failed discovery operation
 class DiscoveryErrorResponse {
   /// Additional context information, like resource IDs or query details
-  final List<String> context;
+  final pulumi.Input<List<String>> context;
   /// Error message
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [DiscoveryErrorResponse].
   /// [context] Additional context information, like resource IDs or query details
@@ -25,8 +26,8 @@ class DiscoveryErrorResponse {
 
   factory DiscoveryErrorResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryErrorResponse(
-      context: (map['context'] as List).cast<String>(),
-      message: map['message'] as String,
+      context: ((map['context'] as List).cast<String>()).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

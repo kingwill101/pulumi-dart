@@ -33,19 +33,13 @@ class SslNegotiationPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   SslNegotiationPolicyState({
-    pulumi.Output<List<SslNegotiationPolicyAttribute>>? attributes,
-    pulumi.Output<int>? lbPort,
-    pulumi.Output<String>? loadBalancer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? triggers,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<List<SslNegotiationPolicyAttribute>>(attributes),
-      lbPort = pulumi.Input.asOptionalInput<int>(lbPort),
-      loadBalancer = pulumi.Input.asOptionalInput<String>(loadBalancer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers);
+    this.attributes,
+    this.lbPort,
+    this.loadBalancer,
+    this.name,
+    this.region,
+    this.triggers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class SslNegotiationPolicyState {
 
   factory SslNegotiationPolicyState.fromMap(Map<String, dynamic> map) {
     return SslNegotiationPolicyState(
-      attributes: map['attributes'] == null ? null : pulumi.Output.create<List<SslNegotiationPolicyAttribute>>(pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(map['attributes'], (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))),
-      lbPort: map['lbPort'] == null ? null : pulumi.Output.create<int>(map['lbPort'] as int),
-      loadBalancer: map['loadBalancer'] == null ? null : pulumi.Output.create<String>(map['loadBalancer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      triggers: map['triggers'] == null ? null : pulumi.Output.create<Map<String, String>>((map['triggers'] as Map).cast<String, String>()),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(map['attributes'], (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lbPort: map['lbPort'] == null ? null : (map['lbPort'] as int).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (map['loadBalancer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
     );
   }
 }

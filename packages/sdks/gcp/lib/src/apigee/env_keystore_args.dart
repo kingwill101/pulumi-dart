@@ -17,11 +17,9 @@ class EnvKeystoreArgs {
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] The name of the newly created keystore.
   EnvKeystoreArgs({
-    required pulumi.Output<String> envId,
-    pulumi.Output<String>? name,
-  }) :
-      envId = pulumi.Input.asInput<String>(envId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.envId,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class EnvKeystoreArgs {
 
   factory EnvKeystoreArgs.fromMap(Map<String, dynamic> map) {
     return EnvKeystoreArgs(
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      envId: (map['envId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

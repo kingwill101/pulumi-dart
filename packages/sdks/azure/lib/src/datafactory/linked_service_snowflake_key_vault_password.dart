@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedServiceSnowflakeKeyVaultPassword {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
-  final String linkedServiceName;
+  final pulumi.Input<String> linkedServiceName;
   /// Specifies the secret name in Azure Key Vault that stores Snowflake password.
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [LinkedServiceSnowflakeKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
@@ -24,8 +25,8 @@ class LinkedServiceSnowflakeKeyVaultPassword {
 
   factory LinkedServiceSnowflakeKeyVaultPassword.fromMap(Map<String, dynamic> map) {
     return LinkedServiceSnowflakeKeyVaultPassword(
-      linkedServiceName: map['linkedServiceName'] as String,
-      secretName: map['secretName'] as String,
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

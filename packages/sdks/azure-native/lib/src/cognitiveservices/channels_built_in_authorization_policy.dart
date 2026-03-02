@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a built-in authorization policy specific to Azure Bot Service/Channels authentication.
 class ChannelsBuiltInAuthorizationPolicy {
   /// Authorization scheme type.
   /// Expected value is 'Channels'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ChannelsBuiltInAuthorizationPolicy].
   /// [type] Authorization scheme type.
@@ -21,7 +22,7 @@ class ChannelsBuiltInAuthorizationPolicy {
 
   factory ChannelsBuiltInAuthorizationPolicy.fromMap(Map<String, dynamic> map) {
     return ChannelsBuiltInAuthorizationPolicy(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

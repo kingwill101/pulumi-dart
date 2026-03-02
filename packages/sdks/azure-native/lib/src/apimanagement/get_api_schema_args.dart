@@ -22,15 +22,11 @@ class GetApiSchemaArgs {
   /// [schemaId] Schema id identifier. Must be unique in the current API Management service instance.
   /// [serviceName] The name of the API Management service.
   GetApiSchemaArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaId,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaId = pulumi.Input.asInput<String>(schemaId),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiId,
+    required this.resourceGroupName,
+    required this.schemaId,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetApiSchemaArgs {
 
   factory GetApiSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetApiSchemaArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaId: pulumi.Output.create<String>(map['schemaId'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaId: (map['schemaId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

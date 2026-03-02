@@ -21,11 +21,9 @@ class GetProjectCmekSettingsArgs {
   /// [kmsKeyName] The resource name for the configured Cloud KMS key.
   /// [project] The ID of the project.
   GetProjectCmekSettingsArgs({
-    pulumi.Output<String>? kmsKeyName,
-    required pulumi.Output<String> project,
-  }) :
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      project = pulumi.Input.asInput<String>(project);
+    this.kmsKeyName,
+    required this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,8 +34,8 @@ class GetProjectCmekSettingsArgs {
 
   factory GetProjectCmekSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectCmekSettingsArgs(
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

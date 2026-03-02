@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains all the secrets of a Disk.
 class DiskSecretResponse {
   /// Bit Locker key of the disk which can be used to unlock the disk to copy data.
-  final String bitLockerKey;
+  final pulumi.Input<String> bitLockerKey;
   /// Serial number of the assigned disk.
-  final String diskSerialNumber;
+  final pulumi.Input<String> diskSerialNumber;
 
   /// Creates a new [DiskSecretResponse].
   /// [bitLockerKey] Bit Locker key of the disk which can be used to unlock the disk to copy data.
@@ -25,8 +26,8 @@ class DiskSecretResponse {
 
   factory DiskSecretResponse.fromMap(Map<String, dynamic> map) {
     return DiskSecretResponse(
-      bitLockerKey: map['bitLockerKey'] as String,
-      diskSerialNumber: map['diskSerialNumber'] as String,
+      bitLockerKey: (map['bitLockerKey'] as String).input(),
+      diskSerialNumber: (map['diskSerialNumber'] as String).input(),
     );
   }
 }

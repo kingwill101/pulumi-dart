@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Automanage configuration profile assignment properties.
 class ConfigurationProfileAssignmentPropertiesResponse {
   /// The Automanage configurationProfile ARM Resource URI.
-  final String? configurationProfile;
+  final pulumi.Input<String>? configurationProfile;
   /// The status of onboarding, which only appears in the response.
-  final String status;
+  final pulumi.Input<String> status;
   /// The target VM resource URI
-  final String targetId;
+  final pulumi.Input<String> targetId;
 
   /// Creates a new [ConfigurationProfileAssignmentPropertiesResponse].
   /// [configurationProfile] The Automanage configurationProfile ARM Resource URI.
@@ -30,9 +31,9 @@ class ConfigurationProfileAssignmentPropertiesResponse {
 
   factory ConfigurationProfileAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileAssignmentPropertiesResponse(
-      configurationProfile: map['configurationProfile'] == null ? null : map['configurationProfile'] as String,
-      status: map['status'] as String,
-      targetId: map['targetId'] as String,
+      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile'] as String).input(),
+      status: (map['status'] as String).input(),
+      targetId: (map['targetId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The content trust policy for a container registry.
 class TrustPolicyResponse {
   /// The value that indicates whether the policy is enabled or not.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The type of trust policy.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [TrustPolicyResponse].
   /// [status] The value that indicates whether the policy is enabled or not.
@@ -25,8 +26,8 @@ class TrustPolicyResponse {
 
   factory TrustPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TrustPolicyResponse(
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

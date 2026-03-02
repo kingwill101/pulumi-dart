@@ -37,25 +37,16 @@ class ConnectivityTestNetworkmanagementV1beta1Args {
   /// [source] Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
   /// [testId] Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
   ConnectivityTestNetworkmanagementV1beta1Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<EndpointNetworkmanagementV1beta1> destination,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<String>>? relatedProjects,
-    required pulumi.Output<EndpointNetworkmanagementV1beta1> source,
-    required pulumi.Output<String> testId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<EndpointNetworkmanagementV1beta1>(destination),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      relatedProjects = pulumi.Input.asOptionalInput<List<String>>(relatedProjects),
-      source = pulumi.Input.asInput<EndpointNetworkmanagementV1beta1>(source),
-      testId = pulumi.Input.asInput<String>(testId);
+    this.description,
+    required this.destination,
+    this.labels,
+    required this.name,
+    this.project,
+    this.protocol,
+    this.relatedProjects,
+    required this.source,
+    required this.testId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ConnectivityTestNetworkmanagementV1beta1Args {
 
   factory ConnectivityTestNetworkmanagementV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestNetworkmanagementV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<EndpointNetworkmanagementV1beta1>(EndpointNetworkmanagementV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      relatedProjects: map['relatedProjects'] == null ? null : pulumi.Output.create<List<String>>((map['relatedProjects'] as List).cast<String>()),
-      source: pulumi.Output.create<EndpointNetworkmanagementV1beta1>(EndpointNetworkmanagementV1beta1.fromMap((map['source'] as Map).cast<String, dynamic>())),
-      testId: pulumi.Output.create<String>(map['testId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (EndpointNetworkmanagementV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects'] as List).cast<String>()).input(),
+      source: (EndpointNetworkmanagementV1beta1.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      testId: (map['testId'] as String).input(),
     );
   }
 }

@@ -47,29 +47,18 @@ class DataSourceArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of data source repository. For an updated list of values, refer to [Valid Values for Type](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateDataSource.html#Kendra-CreateDataSource-request-Type).
   DataSourceArgs({
-    pulumi.Output<DataSourceConfiguration>? configuration,
-    pulumi.Output<DataSourceCustomDocumentEnrichmentConfiguration>? customDocumentEnrichmentConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> type,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<DataSourceConfiguration>(configuration),
-      customDocumentEnrichmentConfiguration = pulumi.Input.asOptionalInput<DataSourceCustomDocumentEnrichmentConfiguration>(customDocumentEnrichmentConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asInput<String>(type);
+    this.configuration,
+    this.customDocumentEnrichmentConfiguration,
+    this.description,
+    required this.indexId,
+    this.languageCode,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.schedule,
+    this.tags,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,17 +78,17 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<DataSourceConfiguration>(DataSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      customDocumentEnrichmentConfiguration: map['customDocumentEnrichmentConfiguration'] == null ? null : pulumi.Output.create<DataSourceCustomDocumentEnrichmentConfiguration>(DataSourceCustomDocumentEnrichmentConfiguration.fromMap((map['customDocumentEnrichmentConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      configuration: map['configuration'] == null ? null : (DataSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      customDocumentEnrichmentConfiguration: map['customDocumentEnrichmentConfiguration'] == null ? null : (DataSourceCustomDocumentEnrichmentConfiguration.fromMap((map['customDocumentEnrichmentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

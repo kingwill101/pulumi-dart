@@ -22,17 +22,12 @@ class EnvironmentMembershipState {
   /// [userArn] The Amazon Resource Name (ARN) of the environment member you want to add.
   /// [userId] The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
   EnvironmentMembershipState({
-    pulumi.Output<String>? environmentId,
-    pulumi.Output<String>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userArn,
-    pulumi.Output<String>? userId,
-  }) :
-      environmentId = pulumi.Input.asOptionalInput<String>(environmentId),
-      permissions = pulumi.Input.asOptionalInput<String>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userArn = pulumi.Input.asOptionalInput<String>(userArn),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+    this.environmentId,
+    this.permissions,
+    this.region,
+    this.userArn,
+    this.userId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class EnvironmentMembershipState {
 
   factory EnvironmentMembershipState.fromMap(Map<String, dynamic> map) {
     return EnvironmentMembershipState(
-      environmentId: map['environmentId'] == null ? null : pulumi.Output.create<String>(map['environmentId'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<String>(map['permissions'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userArn: map['userArn'] == null ? null : pulumi.Output.create<String>(map['userArn'] as String),
-      userId: map['userId'] == null ? null : pulumi.Output.create<String>(map['userId'] as String),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userArn: map['userArn'] == null ? null : (map['userArn'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
     );
   }
 }

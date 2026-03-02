@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PhoneNumberStatus {
   /// The status message.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [PhoneNumberStatus].
   /// [message] The status message.
@@ -24,8 +25,8 @@ class PhoneNumberStatus {
 
   factory PhoneNumberStatus.fromMap(Map<String, dynamic> map) {
     return PhoneNumberStatus(
-      message: map['message'] == null ? null : map['message'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

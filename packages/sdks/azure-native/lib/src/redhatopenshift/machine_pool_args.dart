@@ -21,15 +21,11 @@ class MachinePoolArgs {
   /// [resourceName] The name of the OpenShift cluster resource.
   /// [resources] Optional.
   MachinePoolArgs({
-    pulumi.Output<String>? childResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? resources,
-  }) :
-      childResourceName = pulumi.Input.asOptionalInput<String>(childResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resources = pulumi.Input.asOptionalInput<String>(resources);
+    this.childResourceName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class MachinePoolArgs {
 
   factory MachinePoolArgs.fromMap(Map<String, dynamic> map) {
     return MachinePoolArgs(
-      childResourceName: map['childResourceName'] == null ? null : pulumi.Output.create<String>(map['childResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<String>(map['resources'] as String),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resources: map['resources'] == null ? null : (map['resources'] as String).input(),
     );
   }
 }

@@ -38,27 +38,17 @@ class SecurityProfileState {
   /// [tags] Tags to apply to the Security Profile. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   SecurityProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? organizationResourceId,
-    pulumi.Output<List<String>>? permissions,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? securityProfileId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationResourceId = pulumi.Input.asOptionalInput<String>(organizationResourceId),
-      permissions = pulumi.Input.asOptionalInput<List<String>>(permissions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityProfileId = pulumi.Input.asOptionalInput<String>(securityProfileId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.instanceId,
+    this.name,
+    this.organizationResourceId,
+    this.permissions,
+    this.region,
+    this.securityProfileId,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class SecurityProfileState {
 
   factory SecurityProfileState.fromMap(Map<String, dynamic> map) {
     return SecurityProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationResourceId: map['organizationResourceId'] == null ? null : pulumi.Output.create<String>(map['organizationResourceId'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<String>>((map['permissions'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityProfileId: map['securityProfileId'] == null ? null : pulumi.Output.create<String>(map['securityProfileId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationResourceId: map['organizationResourceId'] == null ? null : (map['organizationResourceId'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityProfileId: map['securityProfileId'] == null ? null : (map['securityProfileId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

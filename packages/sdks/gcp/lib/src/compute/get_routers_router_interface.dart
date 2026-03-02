@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRoutersRouterInterface {
-  final String ipRange;
-  final String linkedInterconnectAttachment;
-  final String linkedVpnTunnel;
-  final String name;
-  final String privateIpAddress;
-  final String redundantInterface;
-  final String subnetwork;
+  final pulumi.Input<String> ipRange;
+  final pulumi.Input<String> linkedInterconnectAttachment;
+  final pulumi.Input<String> linkedVpnTunnel;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> privateIpAddress;
+  final pulumi.Input<String> redundantInterface;
+  final pulumi.Input<String> subnetwork;
 
   /// Creates a new [GetRoutersRouterInterface].
   /// [ipRange] Required.
@@ -42,13 +43,13 @@ class GetRoutersRouterInterface {
 
   factory GetRoutersRouterInterface.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterInterface(
-      ipRange: map['ipRange'] as String,
-      linkedInterconnectAttachment: map['linkedInterconnectAttachment'] as String,
-      linkedVpnTunnel: map['linkedVpnTunnel'] as String,
-      name: map['name'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      redundantInterface: map['redundantInterface'] as String,
-      subnetwork: map['subnetwork'] as String,
+      ipRange: (map['ipRange'] as String).input(),
+      linkedInterconnectAttachment: (map['linkedInterconnectAttachment'] as String).input(),
+      linkedVpnTunnel: (map['linkedVpnTunnel'] as String).input(),
+      name: (map['name'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      redundantInterface: (map['redundantInterface'] as String).input(),
+      subnetwork: (map['subnetwork'] as String).input(),
     );
   }
 }

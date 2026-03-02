@@ -22,15 +22,11 @@ class GetPricesArgs {
   /// [product] The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   /// [resourceCode] Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
   GetPricesArgs({
-    pulumi.Output<Map<String, String>>? desireAttributes,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> product,
-    required pulumi.Output<String> resourceCode,
-  }) :
-      desireAttributes = pulumi.Input.asOptionalInput<Map<String, String>>(desireAttributes),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      product = pulumi.Input.asInput<String>(product),
-      resourceCode = pulumi.Input.asInput<String>(resourceCode);
+    this.desireAttributes,
+    this.outputFile,
+    required this.product,
+    required this.resourceCode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetPricesArgs {
 
   factory GetPricesArgs.fromMap(Map<String, dynamic> map) {
     return GetPricesArgs(
-      desireAttributes: map['desireAttributes'] == null ? null : pulumi.Output.create<Map<String, String>>((map['desireAttributes'] as Map).cast<String, String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      product: pulumi.Output.create<String>(map['product'] as String),
-      resourceCode: pulumi.Output.create<String>(map['resourceCode'] as String),
+      desireAttributes: map['desireAttributes'] == null ? null : ((map['desireAttributes'] as Map).cast<String, String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      product: (map['product'] as String).input(),
+      resourceCode: (map['resourceCode'] as String).input(),
     );
   }
 }

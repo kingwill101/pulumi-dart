@@ -25,17 +25,12 @@ class GetSecretArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
   GetSecretArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> labName,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> userName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      labName = pulumi.Input.asInput<String>(labName),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      userName = pulumi.Input.asInput<String>(userName);
+    this.expand,
+    required this.labName,
+    required this.name,
+    required this.resourceGroupName,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      labName: pulumi.Output.create<String>(map['labName'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      labName: (map['labName'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

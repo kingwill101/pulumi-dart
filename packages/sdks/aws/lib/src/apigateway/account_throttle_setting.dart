@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountThrottleSetting {
   /// Absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-  final int burstLimit;
+  final pulumi.Input<int> burstLimit;
   /// Number of times API Gateway allows the API to be called per second on average (RPS).
-  final double rateLimit;
+  final pulumi.Input<double> rateLimit;
 
   /// Creates a new [AccountThrottleSetting].
   /// [burstLimit] Absolute maximum number of times API Gateway allows the API to be called per second (RPS).
@@ -24,8 +25,8 @@ class AccountThrottleSetting {
 
   factory AccountThrottleSetting.fromMap(Map<String, dynamic> map) {
     return AccountThrottleSetting(
-      burstLimit: map['burstLimit'] as int,
-      rateLimit: map['rateLimit'] as double,
+      burstLimit: (map['burstLimit'] as int).input(),
+      rateLimit: (map['rateLimit'] as double).input(),
     );
   }
 }

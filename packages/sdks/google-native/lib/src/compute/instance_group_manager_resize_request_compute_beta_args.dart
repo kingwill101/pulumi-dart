@@ -35,25 +35,16 @@ class InstanceGroupManagerResizeRequestComputeBetaArgs {
   /// [resizeBy] The number of instances to be created by this resize request. The group's target size will be increased by this number.
   /// [zone] Optional.
   InstanceGroupManagerResizeRequestComputeBetaArgs({
-    pulumi.Output<int>? count,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceGroupManager,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<DurationComputeBeta>? requestedRunDuration,
-    pulumi.Output<int>? resizeBy,
-    pulumi.Output<String>? zone,
-  }) :
-      count = pulumi.Input.asOptionalInput<int>(count),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      requestedRunDuration = pulumi.Input.asOptionalInput<DurationComputeBeta>(requestedRunDuration),
-      resizeBy = pulumi.Input.asOptionalInput<int>(resizeBy),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+    this.count,
+    this.description,
+    required this.instanceGroupManager,
+    this.name,
+    this.project,
+    this.requestId,
+    this.requestedRunDuration,
+    this.resizeBy,
+    this.zone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class InstanceGroupManagerResizeRequestComputeBetaArgs {
 
   factory InstanceGroupManagerResizeRequestComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestComputeBetaArgs(
-      count: map['count'] == null ? null : pulumi.Output.create<int>(map['count'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceGroupManager: pulumi.Output.create<String>(map['instanceGroupManager'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      requestedRunDuration: map['requestedRunDuration'] == null ? null : pulumi.Output.create<DurationComputeBeta>(DurationComputeBeta.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())),
-      resizeBy: map['resizeBy'] == null ? null : pulumi.Output.create<int>(map['resizeBy'] as int),
-      zone: map['zone'] == null ? null : pulumi.Output.create<String>(map['zone'] as String),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceGroupManager: (map['instanceGroupManager'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestedRunDuration: map['requestedRunDuration'] == null ? null : (DurationComputeBeta.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())).input(),
+      resizeBy: map['resizeBy'] == null ? null : (map['resizeBy'] as int).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
     );
   }
 }

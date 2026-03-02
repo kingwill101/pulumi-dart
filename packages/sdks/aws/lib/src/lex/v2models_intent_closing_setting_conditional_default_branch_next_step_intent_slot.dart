@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_intent_closing_setting_conditional_default_branch_next_step_intent_slot_value.dart';
 
 class V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
-  final String mapBlockKey;
+  final pulumi.Input<String> mapBlockKey;
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
-  final String? shape;
+  final pulumi.Input<String>? shape;
   /// Configuration block for the current value of the slot. See `value`.
-  final V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue? value;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue>? value;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
@@ -24,15 +25,15 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot {
     return <String, dynamic>{
       'mapBlockKey': mapBlockKey,
       'shape': ?shape,
-      'value': ?value == null ? null : value!.toMap(),
+      'value': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue, Map<String, dynamic>>(value, (value) => value.toMap()),
     };
   }
 
   factory V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlot(
-      mapBlockKey: map['mapBlockKey'] as String,
-      shape: map['shape'] == null ? null : map['shape'] as String,
-      value: map['value'] == null ? null : V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      mapBlockKey: (map['mapBlockKey'] as String).input(),
+      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
+      value: map['value'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

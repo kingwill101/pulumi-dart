@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the private clouds governed by a network policy can access or be accessed from the internet.
 class NetworkServiceResponse {
   /// True if the service is enabled; false otherwise.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// State of the service. New values may be added to this enum when appropriate.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [NetworkServiceResponse].
   /// [enabled] True if the service is enabled; false otherwise.
@@ -25,8 +26,8 @@ class NetworkServiceResponse {
 
   factory NetworkServiceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkServiceResponse(
-      enabled: map['enabled'] as bool,
-      state: map['state'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

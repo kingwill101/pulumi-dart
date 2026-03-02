@@ -5,11 +5,11 @@ import 'vsc_mount_point_instance_vsc.dart';
 
 class VscMountPointInstance {
   /// The ID of the ECS instance to which the HDFS file system is mounted.
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// The status of the ECS instance on which the HDFS file system is mounted.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The VSC list of mounted HDFS file systems.
-  final List<VscMountPointInstanceVsc>? vscs;
+  final pulumi.Input<List<VscMountPointInstanceVsc>>? vscs;
 
   /// Creates a new [VscMountPointInstance].
   /// [instanceId] The ID of the ECS instance to which the HDFS file system is mounted.
@@ -25,15 +25,15 @@ class VscMountPointInstance {
     return <String, dynamic>{
       'instanceId': ?instanceId,
       'status': ?status,
-      'vscs': ?vscs == null ? null : pulumi.Input.encodeList<VscMountPointInstanceVsc, Map<String, dynamic>>(vscs!, (value) => value.toMap()),
+      'vscs': ?pulumi.Input.mapOptionalInputValue<List<VscMountPointInstanceVsc>, List<Map<String, dynamic>>>(vscs, (value) => pulumi.Input.encodeList<VscMountPointInstanceVsc, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory VscMountPointInstance.fromMap(Map<String, dynamic> map) {
     return VscMountPointInstance(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vscs: map['vscs'] == null ? null : pulumi.Input.decodeList<VscMountPointInstanceVsc>(map['vscs'], (value) => VscMountPointInstanceVsc.fromMap((value as Map).cast<String, dynamic>())),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vscs: map['vscs'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstanceVsc>(map['vscs'], (value) => VscMountPointInstanceVsc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -5,21 +5,21 @@ import 'get_etls_etl_configuration_sink.dart';
 
 class GetEtlsEtlConfiguration {
   /// Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
-  final int fromTime;
+  final pulumi.Input<int> fromTime;
   /// Data processing syntax type.
-  final String lang;
+  final pulumi.Input<String> lang;
   /// Source Logstore Name.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// Advanced parameter configuration.
-  final Map<String, String> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
   /// The ARN role that authorizes writing to the target Logstore.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Processing script.
-  final String script;
+  final pulumi.Input<String> script;
   /// Processing result output target list.
-  final List<GetEtlsEtlConfigurationSink> sinks;
+  final pulumi.Input<List<GetEtlsEtlConfigurationSink>> sinks;
   /// Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
-  final int toTime;
+  final pulumi.Input<int> toTime;
 
   /// Creates a new [GetEtlsEtlConfiguration].
   /// [fromTime] Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
@@ -49,21 +49,21 @@ class GetEtlsEtlConfiguration {
       'parameters': parameters,
       'roleArn': roleArn,
       'script': script,
-      'sinks': pulumi.Input.encodeList<GetEtlsEtlConfigurationSink, Map<String, dynamic>>(sinks, (value) => value.toMap()),
+      'sinks': pulumi.Input.mapInputValue<List<GetEtlsEtlConfigurationSink>, List<Map<String, dynamic>>>(sinks, (value) => pulumi.Input.encodeList<GetEtlsEtlConfigurationSink, Map<String, dynamic>>(value, (value) => value.toMap())),
       'toTime': toTime,
     };
   }
 
   factory GetEtlsEtlConfiguration.fromMap(Map<String, dynamic> map) {
     return GetEtlsEtlConfiguration(
-      fromTime: map['fromTime'] as int,
-      lang: map['lang'] as String,
-      logstore: map['logstore'] as String,
-      parameters: (map['parameters'] as Map).cast<String, String>(),
-      roleArn: map['roleArn'] as String,
-      script: map['script'] as String,
-      sinks: pulumi.Input.decodeList<GetEtlsEtlConfigurationSink>(map['sinks'], (value) => GetEtlsEtlConfigurationSink.fromMap((value as Map).cast<String, dynamic>())),
-      toTime: map['toTime'] as int,
+      fromTime: (map['fromTime'] as int).input(),
+      lang: (map['lang'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      script: (map['script'] as String).input(),
+      sinks: (pulumi.Input.decodeList<GetEtlsEtlConfigurationSink>(map['sinks'], (value) => GetEtlsEtlConfigurationSink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toTime: (map['toTime'] as int).input(),
     );
   }
 }

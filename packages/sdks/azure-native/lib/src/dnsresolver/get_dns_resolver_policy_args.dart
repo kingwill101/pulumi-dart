@@ -16,11 +16,9 @@ class GetDnsResolverPolicyArgs {
   /// [dnsResolverPolicyName] The name of the DNS resolver policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDnsResolverPolicyArgs({
-    required pulumi.Output<String> dnsResolverPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dnsResolverPolicyName = pulumi.Input.asInput<String>(dnsResolverPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dnsResolverPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDnsResolverPolicyArgs {
 
   factory GetDnsResolverPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsResolverPolicyArgs(
-      dnsResolverPolicyName: pulumi.Output.create<String>(map['dnsResolverPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

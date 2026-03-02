@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
 class GoogleCloudRetailV2alphaConditionTimeRangeResponse {
   /// End of time range. Range is inclusive.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// Start of time range. Range is inclusive.
-  final String startTime;
+  final pulumi.Input<String> startTime;
 
   /// Creates a new [GoogleCloudRetailV2alphaConditionTimeRangeResponse].
   /// [endTime] End of time range. Range is inclusive.
@@ -25,8 +26,8 @@ class GoogleCloudRetailV2alphaConditionTimeRangeResponse {
 
   factory GoogleCloudRetailV2alphaConditionTimeRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaConditionTimeRangeResponse(
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
     );
   }
 }

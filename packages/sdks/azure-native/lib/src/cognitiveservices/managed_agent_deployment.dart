@@ -7,22 +7,22 @@ import 'versioned_agent_reference.dart';
 /// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
 class ManagedAgentDeployment {
   /// Returns a flat list of agent:version deployed in this deployment.
-  final List<VersionedAgentReference>? agents;
+  final pulumi.Input<List<VersionedAgentReference>>? agents;
   /// Gets or sets the unique identifier of the deployment.
-  final String? deploymentId;
+  final pulumi.Input<String>? deploymentId;
   /// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
   /// Expected value is 'Managed'.
-  final String deploymentType;
+  final pulumi.Input<String> deploymentType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Gets or sets the display name of the deployment.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Gets or sets the supported protocol types and versions exposed by this deployment.
-  final List<AgentProtocolVersion>? protocols;
+  final pulumi.Input<List<AgentProtocolVersion>>? protocols;
   /// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ManagedAgentDeployment].
   /// [agents] Returns a flat list of agent:version deployed in this deployment.
@@ -46,12 +46,12 @@ class ManagedAgentDeployment {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agents': ?agents == null ? null : pulumi.Input.encodeList<VersionedAgentReference, Map<String, dynamic>>(agents!, (value) => value.toMap()),
+      'agents': ?pulumi.Input.mapOptionalInputValue<List<VersionedAgentReference>, List<Map<String, dynamic>>>(agents, (value) => pulumi.Input.encodeList<VersionedAgentReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deploymentId': ?deploymentId,
       'deploymentType': deploymentType,
       'description': ?description,
       'displayName': ?displayName,
-      'protocols': ?protocols == null ? null : pulumi.Input.encodeList<AgentProtocolVersion, Map<String, dynamic>>(protocols!, (value) => value.toMap()),
+      'protocols': ?pulumi.Input.mapOptionalInputValue<List<AgentProtocolVersion>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<AgentProtocolVersion, Map<String, dynamic>>(value, (value) => value.toMap())),
       'state': ?state,
       'tags': ?tags,
     };
@@ -59,14 +59,14 @@ class ManagedAgentDeployment {
 
   factory ManagedAgentDeployment.fromMap(Map<String, dynamic> map) {
     return ManagedAgentDeployment(
-      agents: map['agents'] == null ? null : pulumi.Input.decodeList<VersionedAgentReference>(map['agents'], (value) => VersionedAgentReference.fromMap((value as Map).cast<String, dynamic>())),
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
-      deploymentType: map['deploymentType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      protocols: map['protocols'] == null ? null : pulumi.Input.decodeList<AgentProtocolVersion>(map['protocols'], (value) => AgentProtocolVersion.fromMap((value as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<VersionedAgentReference>(map['agents'], (value) => VersionedAgentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      deploymentType: (map['deploymentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AgentProtocolVersion>(map['protocols'], (value) => AgentProtocolVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -30,13 +30,10 @@ class DatabaseState {
   /// [defaultCollation] The default collation to use when a table
   /// [name] The name of the database. This must be unique within
   DatabaseState({
-    pulumi.Output<String>? defaultCharacterSet,
-    pulumi.Output<String>? defaultCollation,
-    pulumi.Output<String>? name,
-  }) :
-      defaultCharacterSet = pulumi.Input.asOptionalInput<String>(defaultCharacterSet),
-      defaultCollation = pulumi.Input.asOptionalInput<String>(defaultCollation),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.defaultCharacterSet,
+    this.defaultCollation,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +45,9 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      defaultCharacterSet: map['defaultCharacterSet'] == null ? null : pulumi.Output.create<String>(map['defaultCharacterSet'] as String),
-      defaultCollation: map['defaultCollation'] == null ? null : pulumi.Output.create<String>(map['defaultCollation'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      defaultCharacterSet: map['defaultCharacterSet'] == null ? null : (map['defaultCharacterSet'] as String).input(),
+      defaultCollation: map['defaultCollation'] == null ? null : (map['defaultCollation'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

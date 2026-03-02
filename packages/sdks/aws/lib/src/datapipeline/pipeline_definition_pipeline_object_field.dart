@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineDefinitionPipelineObjectField {
   /// Field identifier.
-  final String key;
+  final pulumi.Input<String> key;
   /// Field value, expressed as the identifier of another object
-  final String? refValue;
+  final pulumi.Input<String>? refValue;
   /// Field value, expressed as a String.
-  final String? stringValue;
+  final pulumi.Input<String>? stringValue;
 
   /// Creates a new [PipelineDefinitionPipelineObjectField].
   /// [key] Field identifier.
@@ -29,9 +30,9 @@ class PipelineDefinitionPipelineObjectField {
 
   factory PipelineDefinitionPipelineObjectField.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionPipelineObjectField(
-      key: map['key'] as String,
-      refValue: map['refValue'] == null ? null : map['refValue'] as String,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      key: (map['key'] as String).input(),
+      refValue: map['refValue'] == null ? null : (map['refValue'] as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
     );
   }
 }

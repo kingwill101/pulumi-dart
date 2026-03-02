@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTopicIngestionDataSourceSettingAzureEventHub {
   /// The Azure event hub client ID to use for ingestion.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The Azure event hub to ingest data from.
-  final String eventHub;
+  final pulumi.Input<String> eventHub;
   /// The GCP service account to be used for Federated Identity authentication
   /// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
   /// role).
-  final String gcpServiceAccount;
+  final pulumi.Input<String> gcpServiceAccount;
   /// The Azure event hub namespace to ingest data from.
-  final String namespace;
+  final pulumi.Input<String> namespace;
   /// The name of the resource group within an Azure subscription.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// The Azure event hub subscription ID to use for ingestion.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
   /// The Azure event hub tenant ID to use for ingestion.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetTopicIngestionDataSourceSettingAzureEventHub].
   /// [clientId] The Azure event hub client ID to use for ingestion.
@@ -51,13 +52,13 @@ class GetTopicIngestionDataSourceSettingAzureEventHub {
 
   factory GetTopicIngestionDataSourceSettingAzureEventHub.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSettingAzureEventHub(
-      clientId: map['clientId'] as String,
-      eventHub: map['eventHub'] as String,
-      gcpServiceAccount: map['gcpServiceAccount'] as String,
-      namespace: map['namespace'] as String,
-      resourceGroup: map['resourceGroup'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      eventHub: (map['eventHub'] as String).input(),
+      gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
+      namespace: (map['namespace'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

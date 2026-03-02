@@ -19,13 +19,10 @@ class GetEventHubEventSourceArgs {
   /// [eventSourceName] The name of the Time Series Insights event source associated with the specified environment.
   /// [resourceGroupName] Name of an Azure Resource group.
   GetEventHubEventSourceArgs({
-    required pulumi.Output<String> environmentName,
-    required pulumi.Output<String> eventSourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      environmentName = pulumi.Input.asInput<String>(environmentName),
-      eventSourceName = pulumi.Input.asInput<String>(eventSourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.environmentName,
+    required this.eventSourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEventHubEventSourceArgs {
 
   factory GetEventHubEventSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetEventHubEventSourceArgs(
-      environmentName: pulumi.Output.create<String>(map['environmentName'] as String),
-      eventSourceName: pulumi.Output.create<String>(map['eventSourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      environmentName: (map['environmentName'] as String).input(),
+      eventSourceName: (map['eventSourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

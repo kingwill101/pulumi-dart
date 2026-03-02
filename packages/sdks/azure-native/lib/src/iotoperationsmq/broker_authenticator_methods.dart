@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'broker_authenticator_method_custom.dart';
 import 'broker_authenticator_method_sat.dart';
 import 'broker_authenticator_method_svid.dart';
@@ -9,15 +10,15 @@ import 'broker_authenticator_method_x509.dart';
 /// Collection of different CrdAuthenticator methods of Broker Resource. NOTE Enum - Only one method is supported for each entry.
 class BrokerAuthenticatorMethods {
   /// Custom Authentication Method.
-  final BrokerAuthenticatorMethodCustom? custom;
+  final pulumi.Input<BrokerAuthenticatorMethodCustom>? custom;
   /// Service Account Token Method.
-  final BrokerAuthenticatorMethodSat? sat;
+  final pulumi.Input<BrokerAuthenticatorMethodSat>? sat;
   /// Service Account Token Method.
-  final BrokerAuthenticatorMethodSvid? svid;
+  final pulumi.Input<BrokerAuthenticatorMethodSvid>? svid;
   /// UsernamePassword Method.
-  final BrokerAuthenticatorMethodUsernamePassword? usernamePassword;
+  final pulumi.Input<BrokerAuthenticatorMethodUsernamePassword>? usernamePassword;
   /// X509 Method.
-  final BrokerAuthenticatorMethodX509? x509;
+  final pulumi.Input<BrokerAuthenticatorMethodX509>? x509;
 
   /// Creates a new [BrokerAuthenticatorMethods].
   /// [custom] Custom Authentication Method.
@@ -35,21 +36,21 @@ class BrokerAuthenticatorMethods {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'custom': ?custom == null ? null : custom!.toMap(),
-      'sat': ?sat == null ? null : sat!.toMap(),
-      'svid': ?svid == null ? null : svid!.toMap(),
-      'usernamePassword': ?usernamePassword == null ? null : usernamePassword!.toMap(),
-      'x509': ?x509 == null ? null : x509!.toMap(),
+      'custom': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodCustom, Map<String, dynamic>>(custom, (value) => value.toMap()),
+      'sat': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodSat, Map<String, dynamic>>(sat, (value) => value.toMap()),
+      'svid': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodSvid, Map<String, dynamic>>(svid, (value) => value.toMap()),
+      'usernamePassword': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodUsernamePassword, Map<String, dynamic>>(usernamePassword, (value) => value.toMap()),
+      'x509': ?pulumi.Input.mapOptionalInputValue<BrokerAuthenticatorMethodX509, Map<String, dynamic>>(x509, (value) => value.toMap()),
     };
   }
 
   factory BrokerAuthenticatorMethods.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethods(
-      custom: map['custom'] == null ? null : BrokerAuthenticatorMethodCustom.fromMap((map['custom'] as Map).cast<String, dynamic>()),
-      sat: map['sat'] == null ? null : BrokerAuthenticatorMethodSat.fromMap((map['sat'] as Map).cast<String, dynamic>()),
-      svid: map['svid'] == null ? null : BrokerAuthenticatorMethodSvid.fromMap((map['svid'] as Map).cast<String, dynamic>()),
-      usernamePassword: map['usernamePassword'] == null ? null : BrokerAuthenticatorMethodUsernamePassword.fromMap((map['usernamePassword'] as Map).cast<String, dynamic>()),
-      x509: map['x509'] == null ? null : BrokerAuthenticatorMethodX509.fromMap((map['x509'] as Map).cast<String, dynamic>()),
+      custom: map['custom'] == null ? null : (BrokerAuthenticatorMethodCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
+      sat: map['sat'] == null ? null : (BrokerAuthenticatorMethodSat.fromMap((map['sat'] as Map).cast<String, dynamic>())).input(),
+      svid: map['svid'] == null ? null : (BrokerAuthenticatorMethodSvid.fromMap((map['svid'] as Map).cast<String, dynamic>())).input(),
+      usernamePassword: map['usernamePassword'] == null ? null : (BrokerAuthenticatorMethodUsernamePassword.fromMap((map['usernamePassword'] as Map).cast<String, dynamic>())).input(),
+      x509: map['x509'] == null ? null : (BrokerAuthenticatorMethodX509.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

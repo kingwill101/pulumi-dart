@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRulesRuleRuleActionRedirectConfig {
   /// The host name of the destination to which requests are redirected within ALB.
-  final String host;
+  final pulumi.Input<String> host;
   /// The redirect method.
-  final String httpCode;
+  final pulumi.Input<String> httpCode;
   /// The path to which requests are to be redirected within ALB.
-  final String path;
+  final pulumi.Input<String> path;
   /// The port of the destination to which requests are redirected.
-  final String port;
+  final pulumi.Input<String> port;
   /// The protocol of the requests to be redirected.
-  final String protocol;
+  final pulumi.Input<String> protocol;
   /// The query string of the request to be redirected within ALB.
-  final String query;
+  final pulumi.Input<String> query;
 
   /// Creates a new [GetRulesRuleRuleActionRedirectConfig].
   /// [host] The host name of the destination to which requests are redirected within ALB.
@@ -44,12 +45,12 @@ class GetRulesRuleRuleActionRedirectConfig {
 
   factory GetRulesRuleRuleActionRedirectConfig.fromMap(Map<String, dynamic> map) {
     return GetRulesRuleRuleActionRedirectConfig(
-      host: map['host'] as String,
-      httpCode: map['httpCode'] as String,
-      path: map['path'] as String,
-      port: map['port'] as String,
-      protocol: map['protocol'] as String,
-      query: map['query'] as String,
+      host: (map['host'] as String).input(),
+      httpCode: (map['httpCode'] as String).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as String).input(),
+      protocol: (map['protocol'] as String).input(),
+      query: (map['query'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class DomainArgs {
   /// [acceleratorId] The ID of the global acceleration instance.
   /// [domain] The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   DomainArgs({
-    required pulumi.Output<String> acceleratorId,
-    required pulumi.Output<String> domain,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      domain = pulumi.Input.asInput<String>(domain);
+    required this.acceleratorId,
+    required this.domain,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      domain: (map['domain'] as String).input(),
     );
   }
 }

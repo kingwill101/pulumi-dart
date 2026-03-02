@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'non_resource_attributes.dart';
 import 'resource_attributes.dart';
 
 /// SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set
 class SelfSubjectAccessReviewSpec {
   /// NonResourceAttributes describes information for a non-resource access request
-  final NonResourceAttributes? nonResourceAttributes;
+  final pulumi.Input<NonResourceAttributes>? nonResourceAttributes;
   /// ResourceAuthorizationAttributes describes information for a resource access request
-  final ResourceAttributes? resourceAttributes;
+  final pulumi.Input<ResourceAttributes>? resourceAttributes;
 
   /// Creates a new [SelfSubjectAccessReviewSpec].
   /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
@@ -20,15 +21,15 @@ class SelfSubjectAccessReviewSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nonResourceAttributes': ?nonResourceAttributes == null ? null : nonResourceAttributes!.toMap(),
-      'resourceAttributes': ?resourceAttributes == null ? null : resourceAttributes!.toMap(),
+      'nonResourceAttributes': ?pulumi.Input.mapOptionalInputValue<NonResourceAttributes, Map<String, dynamic>>(nonResourceAttributes, (value) => value.toMap()),
+      'resourceAttributes': ?pulumi.Input.mapOptionalInputValue<ResourceAttributes, Map<String, dynamic>>(resourceAttributes, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectAccessReviewSpec.fromMap(Map<String, dynamic> map) {
     return SelfSubjectAccessReviewSpec(
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : NonResourceAttributes.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>()),
-      resourceAttributes: map['resourceAttributes'] == null ? null : ResourceAttributes.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>()),
+      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributes.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>())).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributes.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

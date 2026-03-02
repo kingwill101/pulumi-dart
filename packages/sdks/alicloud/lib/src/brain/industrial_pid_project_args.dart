@@ -19,13 +19,10 @@ class IndustrialPidProjectArgs {
   /// [pidProjectDesc] The description of Pid Project.
   /// [pidProjectName] The name of Pid Project.
   IndustrialPidProjectArgs({
-    required pulumi.Output<String> pidOrganizationId,
-    pulumi.Output<String>? pidProjectDesc,
-    required pulumi.Output<String> pidProjectName,
-  }) :
-      pidOrganizationId = pulumi.Input.asInput<String>(pidOrganizationId),
-      pidProjectDesc = pulumi.Input.asOptionalInput<String>(pidProjectDesc),
-      pidProjectName = pulumi.Input.asInput<String>(pidProjectName);
+    required this.pidOrganizationId,
+    this.pidProjectDesc,
+    required this.pidProjectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class IndustrialPidProjectArgs {
 
   factory IndustrialPidProjectArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidProjectArgs(
-      pidOrganizationId: pulumi.Output.create<String>(map['pidOrganizationId'] as String),
-      pidProjectDesc: map['pidProjectDesc'] == null ? null : pulumi.Output.create<String>(map['pidProjectDesc'] as String),
-      pidProjectName: pulumi.Output.create<String>(map['pidProjectName'] as String),
+      pidOrganizationId: (map['pidOrganizationId'] as String).input(),
+      pidProjectDesc: map['pidProjectDesc'] == null ? null : (map['pidProjectDesc'] as String).input(),
+      pidProjectName: (map['pidProjectName'] as String).input(),
     );
   }
 }

@@ -6,16 +6,16 @@ import 'dynamic_delivery_attribute_mapping_response.dart';
 /// Information about the azure function destination for an event subscription.
 class AzureFunctionEventSubscriptionDestinationResponse {
   /// Delivery attribute details.
-  final List<DynamicDeliveryAttributeMappingResponse>? deliveryAttributeMappings;
+  final pulumi.Input<List<DynamicDeliveryAttributeMappingResponse>>? deliveryAttributeMappings;
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'AzureFunction'.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// Maximum number of events per batch.
-  final int? maxEventsPerBatch;
+  final pulumi.Input<int>? maxEventsPerBatch;
   /// Preferred batch size in Kilobytes.
-  final int? preferredBatchSizeInKilobytes;
+  final pulumi.Input<int>? preferredBatchSizeInKilobytes;
   /// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [AzureFunctionEventSubscriptionDestinationResponse].
   /// [deliveryAttributeMappings] Delivery attribute details.
@@ -33,7 +33,7 @@ class AzureFunctionEventSubscriptionDestinationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deliveryAttributeMappings': ?deliveryAttributeMappings == null ? null : pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(deliveryAttributeMappings!, (value) => value.toMap()),
+      'deliveryAttributeMappings': ?pulumi.Input.mapOptionalInputValue<List<DynamicDeliveryAttributeMappingResponse>, List<Map<String, dynamic>>>(deliveryAttributeMappings, (value) => pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endpointType': endpointType,
       'maxEventsPerBatch': ?maxEventsPerBatch,
       'preferredBatchSizeInKilobytes': ?preferredBatchSizeInKilobytes,
@@ -43,11 +43,11 @@ class AzureFunctionEventSubscriptionDestinationResponse {
 
   factory AzureFunctionEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return AzureFunctionEventSubscriptionDestinationResponse(
-      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings'], (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
-      endpointType: map['endpointType'] as String,
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : map['maxEventsPerBatch'] as int,
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : map['preferredBatchSizeInKilobytes'] as int,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings'], (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointType: (map['endpointType'] as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

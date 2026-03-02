@@ -16,11 +16,9 @@ class ActiveReceiptRuleSetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleSetName] The name of the rule set
   ActiveReceiptRuleSetArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> ruleSetName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      ruleSetName = pulumi.Input.asInput<String>(ruleSetName);
+    this.region,
+    required this.ruleSetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ActiveReceiptRuleSetArgs {
 
   factory ActiveReceiptRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return ActiveReceiptRuleSetArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      ruleSetName: pulumi.Output.create<String>(map['ruleSetName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ruleSetName: (map['ruleSetName'] as String).input(),
     );
   }
 }

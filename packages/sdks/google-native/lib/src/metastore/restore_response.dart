@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The details of a metadata restore operation.
 class RestoreResponse {
   /// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
-  final String backup;
+  final pulumi.Input<String> backup;
   /// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
-  final String backupLocation;
+  final pulumi.Input<String> backupLocation;
   /// The restore details containing the revision of the service to be restored to, in format of JSON.
-  final String details;
+  final pulumi.Input<String> details;
   /// The time when the restore ended.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// The time when the restore started.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The current state of the restore.
-  final String state;
+  final pulumi.Input<String> state;
   /// The type of restore.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RestoreResponse].
   /// [backup] The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
@@ -50,13 +51,13 @@ class RestoreResponse {
 
   factory RestoreResponse.fromMap(Map<String, dynamic> map) {
     return RestoreResponse(
-      backup: map['backup'] as String,
-      backupLocation: map['backupLocation'] as String,
-      details: map['details'] as String,
-      endTime: map['endTime'] as String,
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      backup: (map['backup'] as String).input(),
+      backupLocation: (map['backupLocation'] as String).input(),
+      details: (map['details'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      state: (map['state'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

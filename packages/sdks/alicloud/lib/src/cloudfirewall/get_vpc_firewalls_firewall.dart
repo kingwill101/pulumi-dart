@@ -6,23 +6,23 @@ import 'get_vpc_firewalls_firewall_peer_vpc.dart';
 
 class GetVpcFirewallsFirewall {
   /// Bandwidth specifications for high-speed channels. Unit: Mbps.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
-  final String connectType;
+  final pulumi.Input<String> connectType;
   /// The name of the VPC firewall instance and the value same as `vpc_firewall_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The details of the local VPC.
-  final List<GetVpcFirewallsFirewallLocalVpc> localVpcs;
+  final pulumi.Input<List<GetVpcFirewallsFirewallLocalVpc>> localVpcs;
   /// The details of the peer VPC.
-  final List<GetVpcFirewallsFirewallPeerVpc> peerVpcs;
+  final pulumi.Input<List<GetVpcFirewallsFirewallPeerVpc>> peerVpcs;
   /// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
-  final String regionStatus;
+  final pulumi.Input<String> regionStatus;
   /// The status of the resource
-  final String status;
+  final pulumi.Input<String> status;
   /// The ID of the VPC firewall instance.
-  final String vpcFirewallId;
+  final pulumi.Input<String> vpcFirewallId;
   /// The name of the VPC firewall instance.
-  final String vpcFirewallName;
+  final pulumi.Input<String> vpcFirewallName;
 
   /// Creates a new [GetVpcFirewallsFirewall].
   /// [bandwidth] Bandwidth specifications for high-speed channels. Unit: Mbps.
@@ -51,8 +51,8 @@ class GetVpcFirewallsFirewall {
       'bandwidth': bandwidth,
       'connectType': connectType,
       'id': id,
-      'localVpcs': pulumi.Input.encodeList<GetVpcFirewallsFirewallLocalVpc, Map<String, dynamic>>(localVpcs, (value) => value.toMap()),
-      'peerVpcs': pulumi.Input.encodeList<GetVpcFirewallsFirewallPeerVpc, Map<String, dynamic>>(peerVpcs, (value) => value.toMap()),
+      'localVpcs': pulumi.Input.mapInputValue<List<GetVpcFirewallsFirewallLocalVpc>, List<Map<String, dynamic>>>(localVpcs, (value) => pulumi.Input.encodeList<GetVpcFirewallsFirewallLocalVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'peerVpcs': pulumi.Input.mapInputValue<List<GetVpcFirewallsFirewallPeerVpc>, List<Map<String, dynamic>>>(peerVpcs, (value) => pulumi.Input.encodeList<GetVpcFirewallsFirewallPeerVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
       'regionStatus': regionStatus,
       'status': status,
       'vpcFirewallId': vpcFirewallId,
@@ -62,15 +62,15 @@ class GetVpcFirewallsFirewall {
 
   factory GetVpcFirewallsFirewall.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallsFirewall(
-      bandwidth: map['bandwidth'] as int,
-      connectType: map['connectType'] as String,
-      id: map['id'] as String,
-      localVpcs: pulumi.Input.decodeList<GetVpcFirewallsFirewallLocalVpc>(map['localVpcs'], (value) => GetVpcFirewallsFirewallLocalVpc.fromMap((value as Map).cast<String, dynamic>())),
-      peerVpcs: pulumi.Input.decodeList<GetVpcFirewallsFirewallPeerVpc>(map['peerVpcs'], (value) => GetVpcFirewallsFirewallPeerVpc.fromMap((value as Map).cast<String, dynamic>())),
-      regionStatus: map['regionStatus'] as String,
-      status: map['status'] as String,
-      vpcFirewallId: map['vpcFirewallId'] as String,
-      vpcFirewallName: map['vpcFirewallName'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      connectType: (map['connectType'] as String).input(),
+      id: (map['id'] as String).input(),
+      localVpcs: (pulumi.Input.decodeList<GetVpcFirewallsFirewallLocalVpc>(map['localVpcs'], (value) => GetVpcFirewallsFirewallLocalVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerVpcs: (pulumi.Input.decodeList<GetVpcFirewallsFirewallPeerVpc>(map['peerVpcs'], (value) => GetVpcFirewallsFirewallPeerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regionStatus: (map['regionStatus'] as String).input(),
+      status: (map['status'] as String).input(),
+      vpcFirewallId: (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: (map['vpcFirewallName'] as String).input(),
     );
   }
 }

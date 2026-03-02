@@ -25,17 +25,12 @@ class KeyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
   KeyArgs({
-    pulumi.Output<bool>? isActiveCMK,
-    pulumi.Output<String>? keyName,
-    pulumi.Output<String>? keyVaultUrl,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      isActiveCMK = pulumi.Input.asOptionalInput<bool>(isActiveCMK),
-      keyName = pulumi.Input.asOptionalInput<String>(keyName),
-      keyVaultUrl = pulumi.Input.asOptionalInput<String>(keyVaultUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.isActiveCMK,
+    this.keyName,
+    this.keyVaultUrl,
+    required this.resourceGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      isActiveCMK: map['isActiveCMK'] == null ? null : pulumi.Output.create<bool>(map['isActiveCMK'] as bool),
-      keyName: map['keyName'] == null ? null : pulumi.Output.create<String>(map['keyName'] as String),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : pulumi.Output.create<String>(map['keyVaultUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      isActiveCMK: map['isActiveCMK'] == null ? null : (map['isActiveCMK'] as bool).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

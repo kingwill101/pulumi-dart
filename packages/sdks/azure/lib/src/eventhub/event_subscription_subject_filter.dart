@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventSubscriptionSubjectFilter {
   /// Specifies if `subject_begins_with` and `subject_ends_with` case sensitive. This value
-  final bool? caseSensitive;
+  final pulumi.Input<bool>? caseSensitive;
   /// A string to filter events for an event subscription based on a resource path prefix.
-  final String? subjectBeginsWith;
+  final pulumi.Input<String>? subjectBeginsWith;
   /// A string to filter events for an event subscription based on a resource path suffix.
-  final String? subjectEndsWith;
+  final pulumi.Input<String>? subjectEndsWith;
 
   /// Creates a new [EventSubscriptionSubjectFilter].
   /// [caseSensitive] Specifies if `subject_begins_with` and `subject_ends_with` case sensitive. This value
@@ -29,9 +30,9 @@ class EventSubscriptionSubjectFilter {
 
   factory EventSubscriptionSubjectFilter.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionSubjectFilter(
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : map['subjectBeginsWith'] as String,
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : map['subjectEndsWith'] as String,
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
     );
   }
 }

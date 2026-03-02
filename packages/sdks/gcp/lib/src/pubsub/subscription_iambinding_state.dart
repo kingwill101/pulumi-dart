@@ -35,19 +35,13 @@ class SubscriptionIAMBindingState {
   /// [role] The role that should be applied. Only one
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
   SubscriptionIAMBindingState({
-    pulumi.Output<SubscriptionIAMBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? subscription,
-  }) :
-      condition = pulumi.Input.asOptionalInput<SubscriptionIAMBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      subscription = pulumi.Input.asOptionalInput<String>(subscription);
+    this.condition,
+    this.etag,
+    this.members,
+    this.project,
+    this.role,
+    this.subscription,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,12 +56,12 @@ class SubscriptionIAMBindingState {
 
   factory SubscriptionIAMBindingState.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<SubscriptionIAMBindingCondition>(SubscriptionIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      subscription: map['subscription'] == null ? null : pulumi.Output.create<String>(map['subscription'] as String),
+      condition: map['condition'] == null ? null : (SubscriptionIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
     );
   }
 }

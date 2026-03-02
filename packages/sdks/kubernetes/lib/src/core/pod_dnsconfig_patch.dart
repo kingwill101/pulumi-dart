@@ -6,11 +6,11 @@ import 'pod_dnsconfig_option_patch.dart';
 /// PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.
 class PodDNSConfigPatch {
   /// A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
-  final List<String>? nameservers;
+  final pulumi.Input<List<String>>? nameservers;
   /// A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
-  final List<PodDNSConfigOptionPatch>? options;
+  final pulumi.Input<List<PodDNSConfigOptionPatch>>? options;
   /// A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
-  final List<String>? searches;
+  final pulumi.Input<List<String>>? searches;
 
   /// Creates a new [PodDNSConfigPatch].
   /// [nameservers] A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
@@ -25,16 +25,16 @@ class PodDNSConfigPatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nameservers': ?nameservers,
-      'options': ?options == null ? null : pulumi.Input.encodeList<PodDNSConfigOptionPatch, Map<String, dynamic>>(options!, (value) => value.toMap()),
+      'options': ?pulumi.Input.mapOptionalInputValue<List<PodDNSConfigOptionPatch>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<PodDNSConfigOptionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'searches': ?searches,
     };
   }
 
   factory PodDNSConfigPatch.fromMap(Map<String, dynamic> map) {
     return PodDNSConfigPatch(
-      nameservers: map['nameservers'] == null ? null : (map['nameservers'] as List).cast<String>(),
-      options: map['options'] == null ? null : pulumi.Input.decodeList<PodDNSConfigOptionPatch>(map['options'], (value) => PodDNSConfigOptionPatch.fromMap((value as Map).cast<String, dynamic>())),
-      searches: map['searches'] == null ? null : (map['searches'] as List).cast<String>(),
+      nameservers: map['nameservers'] == null ? null : ((map['nameservers'] as List).cast<String>()).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<PodDNSConfigOptionPatch>(map['options'], (value) => PodDNSConfigOptionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
     );
   }
 }

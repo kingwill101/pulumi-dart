@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_logging_access_log.dart';
 
 class GetVirtualNodeSpecLogging {
-  final List<GetVirtualNodeSpecLoggingAccessLog> accessLogs;
+  final pulumi.Input<List<GetVirtualNodeSpecLoggingAccessLog>> accessLogs;
 
   /// Creates a new [GetVirtualNodeSpecLogging].
   /// [accessLogs] Required.
@@ -14,13 +14,13 @@ class GetVirtualNodeSpecLogging {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogs': pulumi.Input.encodeList<GetVirtualNodeSpecLoggingAccessLog, Map<String, dynamic>>(accessLogs, (value) => value.toMap()),
+      'accessLogs': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecLoggingAccessLog>, List<Map<String, dynamic>>>(accessLogs, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecLoggingAccessLog, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetVirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecLogging(
-      accessLogs: pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(map['accessLogs'], (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>())),
+      accessLogs: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(map['accessLogs'], (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

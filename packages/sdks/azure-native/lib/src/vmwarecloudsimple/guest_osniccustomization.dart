@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Guest OS nic customization
 class GuestOSNICCustomization {
   /// IP address allocation method
-  final String? allocation;
+  final pulumi.Input<String>? allocation;
   /// List of dns servers to use
-  final List<String>? dnsServers;
+  final pulumi.Input<List<String>>? dnsServers;
   /// Gateway addresses assigned to nic
-  final List<String>? gateway;
+  final pulumi.Input<List<String>>? gateway;
   /// Static ip address for nic
-  final String? ipAddress;
+  final pulumi.Input<String>? ipAddress;
   /// Network mask for nic
-  final String? mask;
+  final pulumi.Input<String>? mask;
   /// primary WINS server for Windows
-  final String? primaryWinsServer;
+  final pulumi.Input<String>? primaryWinsServer;
   /// secondary WINS server for Windows
-  final String? secondaryWinsServer;
+  final pulumi.Input<String>? secondaryWinsServer;
 
   /// Creates a new [GuestOSNICCustomization].
   /// [allocation] IP address allocation method
@@ -50,13 +51,13 @@ class GuestOSNICCustomization {
 
   factory GuestOSNICCustomization.fromMap(Map<String, dynamic> map) {
     return GuestOSNICCustomization(
-      allocation: map['allocation'] == null ? null : map['allocation'] as String,
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as List).cast<String>(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as List).cast<String>(),
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      mask: map['mask'] == null ? null : map['mask'] as String,
-      primaryWinsServer: map['primaryWinsServer'] == null ? null : map['primaryWinsServer'] as String,
-      secondaryWinsServer: map['secondaryWinsServer'] == null ? null : map['secondaryWinsServer'] as String,
+      allocation: map['allocation'] == null ? null : (map['allocation'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : ((map['gateway'] as List).cast<String>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
+      primaryWinsServer: map['primaryWinsServer'] == null ? null : (map['primaryWinsServer'] as String).input(),
+      secondaryWinsServer: map['secondaryWinsServer'] == null ? null : (map['secondaryWinsServer'] as String).input(),
     );
   }
 }

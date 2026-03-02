@@ -19,15 +19,11 @@ class ResolverFirewallConfigState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC that the configuration is for.
   ResolverFirewallConfigState({
-    pulumi.Output<String>? firewallFailOpen,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceId,
-  }) :
-      firewallFailOpen = pulumi.Input.asOptionalInput<String>(firewallFailOpen),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId);
+    this.firewallFailOpen,
+    this.ownerId,
+    this.region,
+    this.resourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ResolverFirewallConfigState {
 
   factory ResolverFirewallConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallConfigState(
-      firewallFailOpen: map['firewallFailOpen'] == null ? null : pulumi.Output.create<String>(map['firewallFailOpen'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
+      firewallFailOpen: map['firewallFailOpen'] == null ? null : (map['firewallFailOpen'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

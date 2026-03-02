@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAuthorityConfigSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
-  final String keyId;
+  final pulumi.Input<String> keyId;
 
   /// Creates a new [GetAuthorityConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
@@ -19,7 +20,7 @@ class GetAuthorityConfigSubjectKeyId {
 
   factory GetAuthorityConfigSubjectKeyId.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigSubjectKeyId(
-      keyId: map['keyId'] as String,
+      keyId: (map['keyId'] as String).input(),
     );
   }
 }

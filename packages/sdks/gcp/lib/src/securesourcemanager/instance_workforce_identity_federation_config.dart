@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceWorkforceIdentityFederationConfig {
   /// 'Whether Workforce Identity Federation is enabled.'
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [InstanceWorkforceIdentityFederationConfig].
   /// [enabled] 'Whether Workforce Identity Federation is enabled.'
@@ -19,7 +20,7 @@ class InstanceWorkforceIdentityFederationConfig {
 
   factory InstanceWorkforceIdentityFederationConfig.fromMap(Map<String, dynamic> map) {
     return InstanceWorkforceIdentityFederationConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

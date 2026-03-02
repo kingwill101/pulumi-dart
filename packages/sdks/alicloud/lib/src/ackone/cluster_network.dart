@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetwork {
   /// Security group to which the cluster belongs.
-  final List<String>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
   /// VpcId to which the cluster belongs.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
   /// Switch to which the cluster belongs.
-  final List<String> vswitches;
+  final pulumi.Input<List<String>> vswitches;
 
   /// Creates a new [ClusterNetwork].
   /// [securityGroupIds] Security group to which the cluster belongs.
@@ -29,9 +30,9 @@ class ClusterNetwork {
 
   factory ClusterNetwork.fromMap(Map<String, dynamic> map) {
     return ClusterNetwork(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      vpcId: map['vpcId'] as String,
-      vswitches: (map['vswitches'] as List).cast<String>(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vswitches: ((map['vswitches'] as List).cast<String>()).input(),
     );
   }
 }

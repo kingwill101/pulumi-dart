@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_sql_application_configuration_output_destination_schema.dart';
 import 'application_application_configuration_sql_application_configuration_output_kinesis_firehose_output.dart';
 import 'application_application_configuration_sql_application_configuration_output_kinesis_streams_output.dart';
@@ -7,16 +8,16 @@ import 'application_application_configuration_sql_application_configuration_outp
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
   /// Describes the data format when records are written to the destination.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema destinationSchema;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema> destinationSchema;
   /// Identifies a Kinesis Data Firehose delivery stream as the destination.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput? kinesisFirehoseOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput>? kinesisFirehoseOutput;
   /// Identifies a Kinesis data stream as the destination.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput? kinesisStreamsOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput>? kinesisStreamsOutput;
   /// Identifies a Lambda function as the destination.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput? lambdaOutput;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput>? lambdaOutput;
   /// The name of the in-application stream.
-  final String name;
-  final String? outputId;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String>? outputId;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutput].
   /// [destinationSchema] Describes the data format when records are written to the destination.
@@ -36,10 +37,10 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationSchema': destinationSchema.toMap(),
-      'kinesisFirehoseOutput': ?kinesisFirehoseOutput == null ? null : kinesisFirehoseOutput!.toMap(),
-      'kinesisStreamsOutput': ?kinesisStreamsOutput == null ? null : kinesisStreamsOutput!.toMap(),
-      'lambdaOutput': ?lambdaOutput == null ? null : lambdaOutput!.toMap(),
+      'destinationSchema': pulumi.Input.mapInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema, Map<String, dynamic>>(destinationSchema, (value) => value.toMap()),
+      'kinesisFirehoseOutput': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput, Map<String, dynamic>>(kinesisFirehoseOutput, (value) => value.toMap()),
+      'kinesisStreamsOutput': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput, Map<String, dynamic>>(kinesisStreamsOutput, (value) => value.toMap()),
+      'lambdaOutput': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput, Map<String, dynamic>>(lambdaOutput, (value) => value.toMap()),
       'name': name,
       'outputId': ?outputId,
     };
@@ -47,12 +48,12 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutput(
-      destinationSchema: ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap((map['destinationSchema'] as Map).cast<String, dynamic>()),
-      kinesisFirehoseOutput: map['kinesisFirehoseOutput'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap((map['kinesisFirehoseOutput'] as Map).cast<String, dynamic>()),
-      kinesisStreamsOutput: map['kinesisStreamsOutput'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap((map['kinesisStreamsOutput'] as Map).cast<String, dynamic>()),
-      lambdaOutput: map['lambdaOutput'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap((map['lambdaOutput'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      outputId: map['outputId'] == null ? null : map['outputId'] as String,
+      destinationSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema.fromMap((map['destinationSchema'] as Map).cast<String, dynamic>())).input(),
+      kinesisFirehoseOutput: map['kinesisFirehoseOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput.fromMap((map['kinesisFirehoseOutput'] as Map).cast<String, dynamic>())).input(),
+      kinesisStreamsOutput: map['kinesisStreamsOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput.fromMap((map['kinesisStreamsOutput'] as Map).cast<String, dynamic>())).input(),
+      lambdaOutput: map['lambdaOutput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap((map['lambdaOutput'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      outputId: map['outputId'] == null ? null : (map['outputId'] as String).input(),
     );
   }
 }

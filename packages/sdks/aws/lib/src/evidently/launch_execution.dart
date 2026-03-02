@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchExecution {
   /// The date and time that the launch ended.
-  final String? endedTime;
+  final pulumi.Input<String>? endedTime;
   /// The date and time that the launch started.
-  final String? startedTime;
+  final pulumi.Input<String>? startedTime;
 
   /// Creates a new [LaunchExecution].
   /// [endedTime] The date and time that the launch ended.
@@ -24,8 +25,8 @@ class LaunchExecution {
 
   factory LaunchExecution.fromMap(Map<String, dynamic> map) {
     return LaunchExecution(
-      endedTime: map['endedTime'] == null ? null : map['endedTime'] as String,
-      startedTime: map['startedTime'] == null ? null : map['startedTime'] as String,
+      endedTime: map['endedTime'] == null ? null : (map['endedTime'] as String).input(),
+      startedTime: map['startedTime'] == null ? null : (map['startedTime'] as String).input(),
     );
   }
 }

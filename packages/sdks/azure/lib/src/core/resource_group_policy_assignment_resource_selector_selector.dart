@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGroupPolicyAssignmentResourceSelectorSelector {
-  final List<String>? ins;
-  final String kind;
-  final List<String>? notIns;
+  final pulumi.Input<List<String>>? ins;
+  final pulumi.Input<String> kind;
+  final pulumi.Input<List<String>>? notIns;
 
   /// Creates a new [ResourceGroupPolicyAssignmentResourceSelectorSelector].
   /// [ins] Optional.
@@ -26,9 +27,9 @@ class ResourceGroupPolicyAssignmentResourceSelectorSelector {
 
   factory ResourceGroupPolicyAssignmentResourceSelectorSelector.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPolicyAssignmentResourceSelectorSelector(
-      ins: map['ins'] == null ? null : (map['ins'] as List).cast<String>(),
-      kind: map['kind'] as String,
-      notIns: map['notIns'] == null ? null : (map['notIns'] as List).cast<String>(),
+      ins: map['ins'] == null ? null : ((map['ins'] as List).cast<String>()).input(),
+      kind: (map['kind'] as String).input(),
+      notIns: map['notIns'] == null ? null : ((map['notIns'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabasePostgresqlConfigPgStatMonitorEnable {
-  final String description;
-  final bool requiresRestart;
-  final String type;
+  final pulumi.Input<String> description;
+  final pulumi.Input<bool> requiresRestart;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetDatabasePostgresqlConfigPgStatMonitorEnable].
   /// [description] Required.
@@ -26,9 +27,9 @@ class GetDatabasePostgresqlConfigPgStatMonitorEnable {
 
   factory GetDatabasePostgresqlConfigPgStatMonitorEnable.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlConfigPgStatMonitorEnable(
-      description: map['description'] as String,
-      requiresRestart: map['requiresRestart'] as bool,
-      type: map['type'] as String,
+      description: (map['description'] as String).input(),
+      requiresRestart: (map['requiresRestart'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

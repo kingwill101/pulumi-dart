@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input or output argument of a function or stored procedure.
 class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
   /// Specifies whether the argument is input or output.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// The name of the argument. A return argument of a function might not have a name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of the argument. The exact value depends on the source system and the language.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GoogleCloudDatacatalogV1RoutineSpecArgumentResponse].
   /// [mode] Specifies whether the argument is input or output.
@@ -30,9 +31,9 @@ class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
 
   factory GoogleCloudDatacatalogV1RoutineSpecArgumentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1RoutineSpecArgumentResponse(
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

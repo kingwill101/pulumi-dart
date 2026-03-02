@@ -31,21 +31,14 @@ class ApiTagDescriptionArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagDescriptionId] Tag description identifier. Used when creating tagDescription for API/Tag association. Based on API and Tag names.
   ApiTagDescriptionArgs({
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? externalDocsDescription,
-    pulumi.Output<String>? externalDocsUrl,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? tagDescriptionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalDocsDescription = pulumi.Input.asOptionalInput<String>(externalDocsDescription),
-      externalDocsUrl = pulumi.Input.asOptionalInput<String>(externalDocsUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      tagDescriptionId = pulumi.Input.asOptionalInput<String>(tagDescriptionId);
+    required this.apiId,
+    this.description,
+    this.externalDocsDescription,
+    this.externalDocsUrl,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.tagDescriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ApiTagDescriptionArgs {
 
   factory ApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalDocsDescription: map['externalDocsDescription'] == null ? null : pulumi.Output.create<String>(map['externalDocsDescription'] as String),
-      externalDocsUrl: map['externalDocsUrl'] == null ? null : pulumi.Output.create<String>(map['externalDocsUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      tagDescriptionId: map['tagDescriptionId'] == null ? null : pulumi.Output.create<String>(map['tagDescriptionId'] as String),
+      apiId: (map['apiId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalDocsDescription: map['externalDocsDescription'] == null ? null : (map['externalDocsDescription'] as String).input(),
+      externalDocsUrl: map['externalDocsUrl'] == null ? null : (map['externalDocsUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      tagDescriptionId: map['tagDescriptionId'] == null ? null : (map['tagDescriptionId'] as String).input(),
     );
   }
 }

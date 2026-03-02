@@ -28,19 +28,13 @@ class SubscriptionArgs {
   /// [sku] SKU of subscription.
   /// [type] Type of subscription.
   SubscriptionArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationId,
-    pulumi.Output<String>? seatCount,
-    required pulumi.Output<SubscriptionSku> sku,
-    required pulumi.Output<SubscriptionType> type,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      seatCount = pulumi.Input.asOptionalInput<String>(seatCount),
-      sku = pulumi.Input.asInput<SubscriptionSku>(sku),
-      type = pulumi.Input.asInput<SubscriptionType>(type);
+    this.location,
+    this.name,
+    required this.organizationId,
+    this.seatCount,
+    required this.sku,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      seatCount: map['seatCount'] == null ? null : pulumi.Output.create<String>(map['seatCount'] as String),
-      sku: pulumi.Output.create<SubscriptionSku>(SubscriptionSku.fromValue(map['sku'] as String)),
-      type: pulumi.Output.create<SubscriptionType>(SubscriptionType.fromValue(map['type'] as String)),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      seatCount: map['seatCount'] == null ? null : (map['seatCount'] as String).input(),
+      sku: (SubscriptionSku.fromValue(map['sku'] as String)).input(),
+      type: (SubscriptionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

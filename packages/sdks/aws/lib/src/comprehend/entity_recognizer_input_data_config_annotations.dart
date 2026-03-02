@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntityRecognizerInputDataConfigAnnotations {
   /// Location of training annotations.
-  final String s3Uri;
-  final String? testS3Uri;
+  final pulumi.Input<String> s3Uri;
+  final pulumi.Input<String>? testS3Uri;
 
   /// Creates a new [EntityRecognizerInputDataConfigAnnotations].
   /// [s3Uri] Location of training annotations.
@@ -23,8 +24,8 @@ class EntityRecognizerInputDataConfigAnnotations {
 
   factory EntityRecognizerInputDataConfigAnnotations.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigAnnotations(
-      s3Uri: map['s3Uri'] as String,
-      testS3Uri: map['testS3Uri'] == null ? null : map['testS3Uri'] as String,
+      s3Uri: (map['s3Uri'] as String).input(),
+      testS3Uri: map['testS3Uri'] == null ? null : (map['testS3Uri'] as String).input(),
     );
   }
 }

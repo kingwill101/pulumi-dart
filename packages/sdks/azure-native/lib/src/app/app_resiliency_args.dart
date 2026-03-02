@@ -43,25 +43,16 @@ class AppResiliencyArgs {
   /// [tcpRetryPolicy] Policy that defines tcp request retry conditions
   /// [timeoutPolicy] Policy to set request timeouts
   AppResiliencyArgs({
-    required pulumi.Output<String> appName,
-    pulumi.Output<CircuitBreakerPolicy>? circuitBreakerPolicy,
-    pulumi.Output<HttpConnectionPool>? httpConnectionPool,
-    pulumi.Output<HttpRetryPolicy>? httpRetryPolicy,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<TcpConnectionPool>? tcpConnectionPool,
-    pulumi.Output<TcpRetryPolicy>? tcpRetryPolicy,
-    pulumi.Output<TimeoutPolicy>? timeoutPolicy,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      circuitBreakerPolicy = pulumi.Input.asOptionalInput<CircuitBreakerPolicy>(circuitBreakerPolicy),
-      httpConnectionPool = pulumi.Input.asOptionalInput<HttpConnectionPool>(httpConnectionPool),
-      httpRetryPolicy = pulumi.Input.asOptionalInput<HttpRetryPolicy>(httpRetryPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tcpConnectionPool = pulumi.Input.asOptionalInput<TcpConnectionPool>(tcpConnectionPool),
-      tcpRetryPolicy = pulumi.Input.asOptionalInput<TcpRetryPolicy>(tcpRetryPolicy),
-      timeoutPolicy = pulumi.Input.asOptionalInput<TimeoutPolicy>(timeoutPolicy);
+    required this.appName,
+    this.circuitBreakerPolicy,
+    this.httpConnectionPool,
+    this.httpRetryPolicy,
+    this.name,
+    required this.resourceGroupName,
+    this.tcpConnectionPool,
+    this.tcpRetryPolicy,
+    this.timeoutPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +70,15 @@ class AppResiliencyArgs {
 
   factory AppResiliencyArgs.fromMap(Map<String, dynamic> map) {
     return AppResiliencyArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : pulumi.Output.create<CircuitBreakerPolicy>(CircuitBreakerPolicy.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>())),
-      httpConnectionPool: map['httpConnectionPool'] == null ? null : pulumi.Output.create<HttpConnectionPool>(HttpConnectionPool.fromMap((map['httpConnectionPool'] as Map).cast<String, dynamic>())),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : pulumi.Output.create<HttpRetryPolicy>(HttpRetryPolicy.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tcpConnectionPool: map['tcpConnectionPool'] == null ? null : pulumi.Output.create<TcpConnectionPool>(TcpConnectionPool.fromMap((map['tcpConnectionPool'] as Map).cast<String, dynamic>())),
-      tcpRetryPolicy: map['tcpRetryPolicy'] == null ? null : pulumi.Output.create<TcpRetryPolicy>(TcpRetryPolicy.fromMap((map['tcpRetryPolicy'] as Map).cast<String, dynamic>())),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : pulumi.Output.create<TimeoutPolicy>(TimeoutPolicy.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>())),
+      appName: (map['appName'] as String).input(),
+      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : (CircuitBreakerPolicy.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>())).input(),
+      httpConnectionPool: map['httpConnectionPool'] == null ? null : (HttpConnectionPool.fromMap((map['httpConnectionPool'] as Map).cast<String, dynamic>())).input(),
+      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : (HttpRetryPolicy.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tcpConnectionPool: map['tcpConnectionPool'] == null ? null : (TcpConnectionPool.fromMap((map['tcpConnectionPool'] as Map).cast<String, dynamic>())).input(),
+      tcpRetryPolicy: map['tcpRetryPolicy'] == null ? null : (TcpRetryPolicy.fromMap((map['tcpRetryPolicy'] as Map).cast<String, dynamic>())).input(),
+      timeoutPolicy: map['timeoutPolicy'] == null ? null : (TimeoutPolicy.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

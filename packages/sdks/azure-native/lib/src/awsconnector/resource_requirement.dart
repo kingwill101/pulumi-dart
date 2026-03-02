@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ResourceRequirement
 class ResourceRequirement {
   /// The type of resource to assign to a container. The supported values are ``GPU`` or ``InferenceAccelerator``.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value for the specified resource type. If the ``GPU`` type is used, the value is the number of physical ``GPUs`` the Amazon ECS container agent reserves for the container. The number of GPUs that's reserved for all containers in a task can't exceed the number of available GPUs on the container instance that the task is launched on. If the ``InferenceAccelerator`` type is used, the ``value`` matches the ``deviceName`` for an [InferenceAccelerator](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InferenceAccelerator.html) specified in a task definition.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [ResourceRequirement].
   /// [type] The type of resource to assign to a container. The supported values are ``GPU`` or ``InferenceAccelerator``.
@@ -25,8 +26,8 @@ class ResourceRequirement {
 
   factory ResourceRequirement.fromMap(Map<String, dynamic> map) {
     return ResourceRequirement(
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

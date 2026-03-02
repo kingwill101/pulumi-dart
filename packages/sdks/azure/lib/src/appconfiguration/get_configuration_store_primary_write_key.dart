@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationStorePrimaryWriteKey {
   /// The Connection String for this Access Key - consisting of the Endpoint, ID and Secret.
-  final String connectionString;
+  final pulumi.Input<String> connectionString;
   /// The ID of the Access Key.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Secret of the Access Key.
-  final String secret;
+  final pulumi.Input<String> secret;
 
   /// Creates a new [GetConfigurationStorePrimaryWriteKey].
   /// [connectionString] The Connection String for this Access Key - consisting of the Endpoint, ID and Secret.
@@ -29,9 +30,9 @@ class GetConfigurationStorePrimaryWriteKey {
 
   factory GetConfigurationStorePrimaryWriteKey.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStorePrimaryWriteKey(
-      connectionString: map['connectionString'] as String,
-      id: map['id'] as String,
-      secret: map['secret'] as String,
+      connectionString: (map['connectionString'] as String).input(),
+      id: (map['id'] as String).input(),
+      secret: (map['secret'] as String).input(),
     );
   }
 }

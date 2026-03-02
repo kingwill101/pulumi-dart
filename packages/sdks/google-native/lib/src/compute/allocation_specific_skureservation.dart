@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_specific_skuallocation_reserved_instance_properties.dart';
 
 /// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 class AllocationSpecificSKUReservation {
   /// Specifies the number of resources that are allocated.
-  final String? count;
+  final pulumi.Input<String>? count;
   /// The instance properties for the reservation.
-  final AllocationSpecificSKUAllocationReservedInstanceProperties? instanceProperties;
+  final pulumi.Input<AllocationSpecificSKUAllocationReservedInstanceProperties>? instanceProperties;
   /// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
-  final String? sourceInstanceTemplate;
+  final pulumi.Input<String>? sourceInstanceTemplate;
 
   /// Creates a new [AllocationSpecificSKUReservation].
   /// [count] Specifies the number of resources that are allocated.
@@ -24,16 +25,16 @@ class AllocationSpecificSKUReservation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': ?count,
-      'instanceProperties': ?instanceProperties == null ? null : instanceProperties!.toMap(),
+      'instanceProperties': ?pulumi.Input.mapOptionalInputValue<AllocationSpecificSKUAllocationReservedInstanceProperties, Map<String, dynamic>>(instanceProperties, (value) => value.toMap()),
       'sourceInstanceTemplate': ?sourceInstanceTemplate,
     };
   }
 
   factory AllocationSpecificSKUReservation.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUReservation(
-      count: map['count'] == null ? null : map['count'] as String,
-      instanceProperties: map['instanceProperties'] == null ? null : AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>()),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : map['sourceInstanceTemplate'] as String,
+      count: map['count'] == null ? null : (map['count'] as String).input(),
+      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>())).input(),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate'] as String).input(),
     );
   }
 }

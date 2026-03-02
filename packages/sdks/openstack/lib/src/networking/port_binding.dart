@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PortBinding {
   /// The ID of the host to allocate port on.
-  final String? hostId;
+  final pulumi.Input<String>? hostId;
   /// Custom data to be passed as `binding:profile`. Data
   /// must be passed as JSON.
-  final String? profile;
+  final pulumi.Input<String>? profile;
   /// A map of JSON strings containing additional
   /// details for this specific binding.
-  final Map<String, String>? vifDetails;
+  final pulumi.Input<Map<String, String>>? vifDetails;
   /// The VNIC type of the port binding.
-  final String? vifType;
+  final pulumi.Input<String>? vifType;
   /// VNIC type for the port. Can either be `direct`,
   /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
   /// Default value is `normal`. It can be updated on unbound ports only.
-  final String? vnicType;
+  final pulumi.Input<String>? vnicType;
 
   /// Creates a new [PortBinding].
   /// [hostId] The ID of the host to allocate port on.
@@ -43,11 +44,11 @@ class PortBinding {
 
   factory PortBinding.fromMap(Map<String, dynamic> map) {
     return PortBinding(
-      hostId: map['hostId'] == null ? null : map['hostId'] as String,
-      profile: map['profile'] == null ? null : map['profile'] as String,
-      vifDetails: map['vifDetails'] == null ? null : (map['vifDetails'] as Map).cast<String, String>(),
-      vifType: map['vifType'] == null ? null : map['vifType'] as String,
-      vnicType: map['vnicType'] == null ? null : map['vnicType'] as String,
+      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      vifDetails: map['vifDetails'] == null ? null : ((map['vifDetails'] as Map).cast<String, String>()).input(),
+      vifType: map['vifType'] == null ? null : (map['vifType'] as String).input(),
+      vnicType: map['vnicType'] == null ? null : (map['vnicType'] as String).input(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies information about the image to use. You can specify information about
 /// platform images, marketplace images, or virtual machine images. This element is
@@ -9,23 +10,23 @@
 class ImageReferenceResponse {
   /// Specified the community gallery image unique id for vm deployment. This can be
   /// fetched from community gallery image GET call.
-  final String? communityGalleryImageId;
+  final pulumi.Input<String>? communityGalleryImageId;
   /// Specifies in decimal numbers, the version of platform image or marketplace
   /// image used to create the virtual machine. This readonly field differs from 'version',
   /// only if the value specified in 'version' field is 'latest'.
-  final String exactVersion;
+  final pulumi.Input<String> exactVersion;
   /// Resource Id
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Specifies the offer of the platform image or marketplace image used to create
   /// the virtual machine.
-  final String? offer;
+  final pulumi.Input<String>? offer;
   /// The image publisher.
-  final String? publisher;
+  final pulumi.Input<String>? publisher;
   /// Specified the shared gallery image unique id for vm deployment. This can be
   /// fetched from shared gallery image GET call.
-  final String? sharedGalleryImageId;
+  final pulumi.Input<String>? sharedGalleryImageId;
   /// The image SKU.
-  final String? sku;
+  final pulumi.Input<String>? sku;
   /// Specifies the version of the platform image or marketplace image used to create
   /// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
   /// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
@@ -36,7 +37,7 @@ class ImageReferenceResponse {
   /// version of gallery image, just set
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
   /// in the 'id' field without version input.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [ImageReferenceResponse].
   /// [communityGalleryImageId] Specified the community gallery image unique id for vm deployment. This can be
@@ -73,14 +74,14 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : map['communityGalleryImageId'] as String,
-      exactVersion: map['exactVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      offer: map['offer'] == null ? null : map['offer'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : map['sharedGalleryImageId'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId'] as String).input(),
+      exactVersion: (map['exactVersion'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

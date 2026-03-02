@@ -32,21 +32,14 @@ class TransitHubArgs {
   /// [transitHubName] The name of the TransitHub Resource
   /// [transitOption] The TransitOption of the transitHub.
   TransitHubArgs({
-    required pulumi.Output<String> communityName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? transitHubName,
-    pulumi.Output<TransitOption>? transitOption,
-  }) :
-      communityName = pulumi.Input.asInput<String>(communityName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      transitHubName = pulumi.Input.asOptionalInput<String>(transitHubName),
-      transitOption = pulumi.Input.asOptionalInput<TransitOption>(transitOption);
+    required this.communityName,
+    this.location,
+    required this.resourceGroupName,
+    this.state,
+    this.tags,
+    this.transitHubName,
+    this.transitOption,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class TransitHubArgs {
 
   factory TransitHubArgs.fromMap(Map<String, dynamic> map) {
     return TransitHubArgs(
-      communityName: pulumi.Output.create<String>(map['communityName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      transitHubName: map['transitHubName'] == null ? null : pulumi.Output.create<String>(map['transitHubName'] as String),
-      transitOption: map['transitOption'] == null ? null : pulumi.Output.create<TransitOption>(TransitOption.fromMap((map['transitOption'] as Map).cast<String, dynamic>())),
+      communityName: (map['communityName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      transitHubName: map['transitHubName'] == null ? null : (map['transitHubName'] as String).input(),
+      transitOption: map['transitOption'] == null ? null : (TransitOption.fromMap((map['transitOption'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

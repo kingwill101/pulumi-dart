@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cosmos DB SQL storedProcedure resource object
 class SqlStoredProcedureResource {
   /// Body of the Stored Procedure
-  final String? body;
+  final pulumi.Input<String>? body;
   /// Name of the Cosmos DB SQL storedProcedure
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [SqlStoredProcedureResource].
   /// [body] Body of the Stored Procedure
@@ -25,8 +26,8 @@ class SqlStoredProcedureResource {
 
   factory SqlStoredProcedureResource.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureResource(
-      body: map['body'] == null ? null : map['body'] as String,
-      id: map['id'] as String,
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerForwardingRule {
   /// the id of the tls certificate used for ssl termination if enabled
-  final String certificateId;
+  final pulumi.Input<String> certificateId;
   /// the name of the tls certificate used for ssl termination if enabled
-  final String certificateName;
+  final pulumi.Input<String> certificateName;
   /// the port on which the load balancer instance will listen
-  final int entryPort;
+  final pulumi.Input<int> entryPort;
   /// the protocol used for traffic to the load balancer
-  final String entryProtocol;
+  final pulumi.Input<String> entryProtocol;
   /// the port on the backend Droplets to which the load balancer will send traffic
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
   /// the protocol used for traffic to the backend droplets
-  final String targetProtocol;
+  final pulumi.Input<String> targetProtocol;
   /// whether ssl encrypted traffic will be passed through to the backend droplets
-  final bool tlsPassthrough;
+  final pulumi.Input<bool> tlsPassthrough;
 
   /// Creates a new [GetLoadBalancerForwardingRule].
   /// [certificateId] the id of the tls certificate used for ssl termination if enabled
@@ -49,13 +50,13 @@ class GetLoadBalancerForwardingRule {
 
   factory GetLoadBalancerForwardingRule.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerForwardingRule(
-      certificateId: map['certificateId'] as String,
-      certificateName: map['certificateName'] as String,
-      entryPort: map['entryPort'] as int,
-      entryProtocol: map['entryProtocol'] as String,
-      targetPort: map['targetPort'] as int,
-      targetProtocol: map['targetProtocol'] as String,
-      tlsPassthrough: map['tlsPassthrough'] as bool,
+      certificateId: (map['certificateId'] as String).input(),
+      certificateName: (map['certificateName'] as String).input(),
+      entryPort: (map['entryPort'] as int).input(),
+      entryProtocol: (map['entryProtocol'] as String).input(),
+      targetPort: (map['targetPort'] as int).input(),
+      targetProtocol: (map['targetProtocol'] as String).input(),
+      tlsPassthrough: (map['tlsPassthrough'] as bool).input(),
     );
   }
 }

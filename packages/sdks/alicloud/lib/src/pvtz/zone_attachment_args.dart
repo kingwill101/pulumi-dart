@@ -26,17 +26,12 @@ class ZoneAttachmentArgs {
   /// [vpcs] See `vpcs` below.Recommend to use `vpcs`.
   /// [zoneId] The name of the Private Zone Record.
   ZoneAttachmentArgs({
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? userClientIp,
-    pulumi.Output<List<String>>? vpcIds,
-    pulumi.Output<List<ZoneAttachmentVpc>>? vpcs,
-    required pulumi.Output<String> zoneId,
-  }) :
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds),
-      vpcs = pulumi.Input.asOptionalInput<List<ZoneAttachmentVpc>>(vpcs),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.lang,
+    this.userClientIp,
+    this.vpcIds,
+    this.vpcs,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ZoneAttachmentArgs {
 
   factory ZoneAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentArgs(
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
-      vpcs: map['vpcs'] == null ? null : pulumi.Output.create<List<ZoneAttachmentVpc>>(pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs'], (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs'], (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

@@ -52,33 +52,20 @@ class V3CustomDomainState {
   /// [tlsConfig] TLS configuration information See `tls_config` below.
   /// [wafConfig] Web application firewall configuration information See `waf_config` below.
   V3CustomDomainState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<V3CustomDomainAuthConfig>? authConfig,
-    pulumi.Output<V3CustomDomainCertConfig>? certConfig,
-    pulumi.Output<V3CustomDomainCorsConfig>? corsConfig,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<V3CustomDomainRouteConfig>? routeConfig,
-    pulumi.Output<String>? subdomainCount,
-    pulumi.Output<V3CustomDomainTlsConfig>? tlsConfig,
-    pulumi.Output<V3CustomDomainWafConfig>? wafConfig,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      authConfig = pulumi.Input.asOptionalInput<V3CustomDomainAuthConfig>(authConfig),
-      certConfig = pulumi.Input.asOptionalInput<V3CustomDomainCertConfig>(certConfig),
-      corsConfig = pulumi.Input.asOptionalInput<V3CustomDomainCorsConfig>(corsConfig),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      routeConfig = pulumi.Input.asOptionalInput<V3CustomDomainRouteConfig>(routeConfig),
-      subdomainCount = pulumi.Input.asOptionalInput<String>(subdomainCount),
-      tlsConfig = pulumi.Input.asOptionalInput<V3CustomDomainTlsConfig>(tlsConfig),
-      wafConfig = pulumi.Input.asOptionalInput<V3CustomDomainWafConfig>(wafConfig);
+    this.accountId,
+    this.apiVersion,
+    this.authConfig,
+    this.certConfig,
+    this.corsConfig,
+    this.createTime,
+    this.customDomainName,
+    this.lastModifiedTime,
+    this.protocol,
+    this.routeConfig,
+    this.subdomainCount,
+    this.tlsConfig,
+    this.wafConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class V3CustomDomainState {
 
   factory V3CustomDomainState.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      authConfig: map['authConfig'] == null ? null : pulumi.Output.create<V3CustomDomainAuthConfig>(V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())),
-      certConfig: map['certConfig'] == null ? null : pulumi.Output.create<V3CustomDomainCertConfig>(V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())),
-      corsConfig: map['corsConfig'] == null ? null : pulumi.Output.create<V3CustomDomainCorsConfig>(V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      routeConfig: map['routeConfig'] == null ? null : pulumi.Output.create<V3CustomDomainRouteConfig>(V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())),
-      subdomainCount: map['subdomainCount'] == null ? null : pulumi.Output.create<String>(map['subdomainCount'] as String),
-      tlsConfig: map['tlsConfig'] == null ? null : pulumi.Output.create<V3CustomDomainTlsConfig>(V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())),
-      wafConfig: map['wafConfig'] == null ? null : pulumi.Output.create<V3CustomDomainWafConfig>(V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
+      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
+      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())).input(),
+      subdomainCount: map['subdomainCount'] == null ? null : (map['subdomainCount'] as String).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

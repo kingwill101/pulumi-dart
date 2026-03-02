@@ -13,11 +13,9 @@ class SyncGroupState {
   /// [name] The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
   /// [storageSyncId] The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
   SyncGroupState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? storageSyncId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageSyncId = pulumi.Input.asOptionalInput<String>(storageSyncId);
+    this.name,
+    this.storageSyncId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class SyncGroupState {
 
   factory SyncGroupState.fromMap(Map<String, dynamic> map) {
     return SyncGroupState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageSyncId: map['storageSyncId'] == null ? null : pulumi.Output.create<String>(map['storageSyncId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageSyncId: map['storageSyncId'] == null ? null : (map['storageSyncId'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class InferenceProfileArgs {
   /// [tags] Key-value mapping of resource tags for the inference profile.
   /// [timeouts] Optional.
   InferenceProfileArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<InferenceProfileModelSource>? modelSource,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<InferenceProfileTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      modelSource = pulumi.Input.asOptionalInput<InferenceProfileModelSource>(modelSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<InferenceProfileTimeouts>(timeouts);
+    this.description,
+    this.modelSource,
+    this.name,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class InferenceProfileArgs {
 
   factory InferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InferenceProfileArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      modelSource: map['modelSource'] == null ? null : pulumi.Output.create<InferenceProfileModelSource>(InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<InferenceProfileTimeouts>(InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      modelSource: map['modelSource'] == null ? null : (InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

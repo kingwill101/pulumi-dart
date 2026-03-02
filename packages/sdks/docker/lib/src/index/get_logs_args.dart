@@ -35,29 +35,18 @@ class GetLogsArgs {
   /// [timestamps] Optional.
   /// [until] Optional.
   GetLogsArgs({
-    pulumi.Output<bool>? details,
-    pulumi.Output<bool>? discardHeaders,
-    pulumi.Output<bool>? follow,
-    pulumi.Output<bool>? logsListStringEnabled,
-    required pulumi.Output<String> name,
-    pulumi.Output<bool>? showStderr,
-    pulumi.Output<bool>? showStdout,
-    pulumi.Output<String>? since,
-    pulumi.Output<String>? tail,
-    pulumi.Output<bool>? timestamps,
-    pulumi.Output<String>? until,
-  }) :
-      details = pulumi.Input.asOptionalInput<bool>(details),
-      discardHeaders = pulumi.Input.asOptionalInput<bool>(discardHeaders),
-      follow = pulumi.Input.asOptionalInput<bool>(follow),
-      logsListStringEnabled = pulumi.Input.asOptionalInput<bool>(logsListStringEnabled),
-      name = pulumi.Input.asInput<String>(name),
-      showStderr = pulumi.Input.asOptionalInput<bool>(showStderr),
-      showStdout = pulumi.Input.asOptionalInput<bool>(showStdout),
-      since = pulumi.Input.asOptionalInput<String>(since),
-      tail = pulumi.Input.asOptionalInput<String>(tail),
-      timestamps = pulumi.Input.asOptionalInput<bool>(timestamps),
-      until = pulumi.Input.asOptionalInput<String>(until);
+    this.details,
+    this.discardHeaders,
+    this.follow,
+    this.logsListStringEnabled,
+    required this.name,
+    this.showStderr,
+    this.showStdout,
+    this.since,
+    this.tail,
+    this.timestamps,
+    this.until,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,17 +66,17 @@ class GetLogsArgs {
 
   factory GetLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogsArgs(
-      details: map['details'] == null ? null : pulumi.Output.create<bool>(map['details'] as bool),
-      discardHeaders: map['discardHeaders'] == null ? null : pulumi.Output.create<bool>(map['discardHeaders'] as bool),
-      follow: map['follow'] == null ? null : pulumi.Output.create<bool>(map['follow'] as bool),
-      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : pulumi.Output.create<bool>(map['logsListStringEnabled'] as bool),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      showStderr: map['showStderr'] == null ? null : pulumi.Output.create<bool>(map['showStderr'] as bool),
-      showStdout: map['showStdout'] == null ? null : pulumi.Output.create<bool>(map['showStdout'] as bool),
-      since: map['since'] == null ? null : pulumi.Output.create<String>(map['since'] as String),
-      tail: map['tail'] == null ? null : pulumi.Output.create<String>(map['tail'] as String),
-      timestamps: map['timestamps'] == null ? null : pulumi.Output.create<bool>(map['timestamps'] as bool),
-      until: map['until'] == null ? null : pulumi.Output.create<String>(map['until'] as String),
+      details: map['details'] == null ? null : (map['details'] as bool).input(),
+      discardHeaders: map['discardHeaders'] == null ? null : (map['discardHeaders'] as bool).input(),
+      follow: map['follow'] == null ? null : (map['follow'] as bool).input(),
+      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : (map['logsListStringEnabled'] as bool).input(),
+      name: (map['name'] as String).input(),
+      showStderr: map['showStderr'] == null ? null : (map['showStderr'] as bool).input(),
+      showStdout: map['showStdout'] == null ? null : (map['showStdout'] as bool).input(),
+      since: map['since'] == null ? null : (map['since'] as String).input(),
+      tail: map['tail'] == null ? null : (map['tail'] as String).input(),
+      timestamps: map['timestamps'] == null ? null : (map['timestamps'] as bool).input(),
+      until: map['until'] == null ? null : (map['until'] as String).input(),
     );
   }
 }

@@ -24,15 +24,11 @@ class VpcEndpointServiceConnectionArgs {
   /// [endpointId] The endpoint ID.
   /// [serviceId] The endpoint service ID.
   VpcEndpointServiceConnectionArgs({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> endpointId,
-    required pulumi.Output<String> serviceId,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+    this.bandwidth,
+    this.dryRun,
+    required this.endpointId,
+    required this.serviceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class VpcEndpointServiceConnectionArgs {
 
   factory VpcEndpointServiceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceConnectionArgs(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
-      serviceId: pulumi.Output.create<String>(map['serviceId'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      serviceId: (map['serviceId'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_node_group_info_connectivity_info.dart';
 import 'cluster_broker_node_group_info_storage_info.dart';
 
 class ClusterBrokerNodeGroupInfo {
   /// The distribution of broker nodes across availability zones ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-model-brokerazdistribution)). Currently, the only valid value is `DEFAULT`.
-  final String? azDistribution;
+  final pulumi.Input<String>? azDistribution;
   /// A list of subnets to connect to in client VPC ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-prop-brokernodegroupinfo-clientsubnets)).
-  final List<String> clientSubnets;
+  final pulumi.Input<List<String>> clientSubnets;
   /// Information about the cluster access configuration. See broker_node_group_info connectivity_info Argument Reference below. For security reasons, you can't turn on public access while creating an MSK cluster. However, you can update an existing cluster to make it publicly accessible. You can also create a new cluster and then update it to make it publicly accessible ([documentation](https://docs.aws.amazon.com/msk/latest/developerguide/public-access.html)).
-  final ClusterBrokerNodeGroupInfoConnectivityInfo? connectivityInfo;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfo>? connectivityInfo;
   /// Specify the instance type to use for the kafka brokersE.g., kafka.m5.large. ([Pricing info](https://aws.amazon.com/msk/pricing/))
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// A list of the security groups to associate with the elastic network interfaces to control who can communicate with the cluster.
-  final List<String> securityGroups;
+  final pulumi.Input<List<String>> securityGroups;
   /// A block that contains information about storage volumes attached to MSK broker nodes. See broker_node_group_info storage_info Argument Reference below.
-  final ClusterBrokerNodeGroupInfoStorageInfo? storageInfo;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoStorageInfo>? storageInfo;
 
   /// Creates a new [ClusterBrokerNodeGroupInfo].
   /// [azDistribution] The distribution of broker nodes across availability zones ([documentation](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#clusters-model-brokerazdistribution)). Currently, the only valid value is `DEFAULT`.
@@ -37,21 +38,21 @@ class ClusterBrokerNodeGroupInfo {
     return <String, dynamic>{
       'azDistribution': ?azDistribution,
       'clientSubnets': clientSubnets,
-      'connectivityInfo': ?connectivityInfo == null ? null : connectivityInfo!.toMap(),
+      'connectivityInfo': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfoConnectivityInfo, Map<String, dynamic>>(connectivityInfo, (value) => value.toMap()),
       'instanceType': instanceType,
       'securityGroups': securityGroups,
-      'storageInfo': ?storageInfo == null ? null : storageInfo!.toMap(),
+      'storageInfo': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfoStorageInfo, Map<String, dynamic>>(storageInfo, (value) => value.toMap()),
     };
   }
 
   factory ClusterBrokerNodeGroupInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfo(
-      azDistribution: map['azDistribution'] == null ? null : map['azDistribution'] as String,
-      clientSubnets: (map['clientSubnets'] as List).cast<String>(),
-      connectivityInfo: map['connectivityInfo'] == null ? null : ClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((map['connectivityInfo'] as Map).cast<String, dynamic>()),
-      instanceType: map['instanceType'] as String,
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      storageInfo: map['storageInfo'] == null ? null : ClusterBrokerNodeGroupInfoStorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>()),
+      azDistribution: map['azDistribution'] == null ? null : (map['azDistribution'] as String).input(),
+      clientSubnets: ((map['clientSubnets'] as List).cast<String>()).input(),
+      connectivityInfo: map['connectivityInfo'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((map['connectivityInfo'] as Map).cast<String, dynamic>())).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      storageInfo: map['storageInfo'] == null ? null : (ClusterBrokerNodeGroupInfoStorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SyntheticTaskCustomPeriod {
   /// End hours, 0-24.
-  final int? endHour;
+  final pulumi.Input<int>? endHour;
   /// Starting hours, 0-24.
-  final int? startHour;
+  final pulumi.Input<int>? startHour;
 
   /// Creates a new [SyntheticTaskCustomPeriod].
   /// [endHour] End hours, 0-24.
@@ -24,8 +25,8 @@ class SyntheticTaskCustomPeriod {
 
   factory SyntheticTaskCustomPeriod.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskCustomPeriod(
-      endHour: map['endHour'] == null ? null : map['endHour'] as int,
-      startHour: map['startHour'] == null ? null : map['startHour'] as int,
+      endHour: map['endHour'] == null ? null : (map['endHour'] as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
     );
   }
 }

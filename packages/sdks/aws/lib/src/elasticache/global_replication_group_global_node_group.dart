@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalReplicationGroupGlobalNodeGroup {
   /// The ID of the global node group.
-  final String? globalNodeGroupId;
+  final pulumi.Input<String>? globalNodeGroupId;
   /// The keyspace for this node group.
-  final String? slots;
+  final pulumi.Input<String>? slots;
 
   /// Creates a new [GlobalReplicationGroupGlobalNodeGroup].
   /// [globalNodeGroupId] The ID of the global node group.
@@ -24,8 +25,8 @@ class GlobalReplicationGroupGlobalNodeGroup {
 
   factory GlobalReplicationGroupGlobalNodeGroup.fromMap(Map<String, dynamic> map) {
     return GlobalReplicationGroupGlobalNodeGroup(
-      globalNodeGroupId: map['globalNodeGroupId'] == null ? null : map['globalNodeGroupId'] as String,
-      slots: map['slots'] == null ? null : map['slots'] as String,
+      globalNodeGroupId: map['globalNodeGroupId'] == null ? null : (map['globalNodeGroupId'] as String).input(),
+      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
     );
   }
 }

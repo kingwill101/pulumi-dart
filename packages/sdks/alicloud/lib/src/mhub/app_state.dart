@@ -28,21 +28,14 @@ class AppState {
   /// [productId] The ID of the Product.
   /// [type] The type of the Product. Valid values: `Android` and `iOS`.
   AppState({
-    pulumi.Output<String>? appName,
-    pulumi.Output<String>? bundleId,
-    pulumi.Output<String>? encodedIcon,
-    pulumi.Output<String>? industryId,
-    pulumi.Output<String>? packageName,
-    pulumi.Output<String>? productId,
-    pulumi.Output<String>? type,
-  }) :
-      appName = pulumi.Input.asOptionalInput<String>(appName),
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
-      encodedIcon = pulumi.Input.asOptionalInput<String>(encodedIcon),
-      industryId = pulumi.Input.asOptionalInput<String>(industryId),
-      packageName = pulumi.Input.asOptionalInput<String>(packageName),
-      productId = pulumi.Input.asOptionalInput<String>(productId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.appName,
+    this.bundleId,
+    this.encodedIcon,
+    this.industryId,
+    this.packageName,
+    this.productId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class AppState {
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return AppState(
-      appName: map['appName'] == null ? null : pulumi.Output.create<String>(map['appName'] as String),
-      bundleId: map['bundleId'] == null ? null : pulumi.Output.create<String>(map['bundleId'] as String),
-      encodedIcon: map['encodedIcon'] == null ? null : pulumi.Output.create<String>(map['encodedIcon'] as String),
-      industryId: map['industryId'] == null ? null : pulumi.Output.create<String>(map['industryId'] as String),
-      packageName: map['packageName'] == null ? null : pulumi.Output.create<String>(map['packageName'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      encodedIcon: map['encodedIcon'] == null ? null : (map['encodedIcon'] as String).input(),
+      industryId: map['industryId'] == null ? null : (map['industryId'] as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

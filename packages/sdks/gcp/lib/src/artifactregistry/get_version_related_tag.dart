@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVersionRelatedTag {
   /// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
-  final String name;
-  final String version;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetVersionRelatedTag].
   /// [name] The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
@@ -23,8 +24,8 @@ class GetVersionRelatedTag {
 
   factory GetVersionRelatedTag.fromMap(Map<String, dynamic> map) {
     return GetVersionRelatedTag(
-      name: map['name'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

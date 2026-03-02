@@ -34,23 +34,15 @@ class SnapshotArgs {
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   /// [volumeId] The Volume ID of which to make a snapshot.
   SnapshotArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? outpostArn,
-    pulumi.Output<bool>? permanentRestore,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? storageTier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? temporaryRestoreDays,
-    required pulumi.Output<String> volumeId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      outpostArn = pulumi.Input.asOptionalInput<String>(outpostArn),
-      permanentRestore = pulumi.Input.asOptionalInput<bool>(permanentRestore),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageTier = pulumi.Input.asOptionalInput<String>(storageTier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      temporaryRestoreDays = pulumi.Input.asOptionalInput<int>(temporaryRestoreDays),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+    this.description,
+    this.outpostArn,
+    this.permanentRestore,
+    this.region,
+    this.storageTier,
+    this.tags,
+    this.temporaryRestoreDays,
+    required this.volumeId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      outpostArn: map['outpostArn'] == null ? null : pulumi.Output.create<String>(map['outpostArn'] as String),
-      permanentRestore: map['permanentRestore'] == null ? null : pulumi.Output.create<bool>(map['permanentRestore'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageTier: map['storageTier'] == null ? null : pulumi.Output.create<String>(map['storageTier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : pulumi.Output.create<int>(map['temporaryRestoreDays'] as int),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
+      volumeId: (map['volumeId'] as String).input(),
     );
   }
 }

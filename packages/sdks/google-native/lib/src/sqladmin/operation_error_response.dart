@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database instance operation error.
 class OperationErrorResponse {
   /// Identifies the specific error that occurred.
-  final String code;
+  final pulumi.Input<String> code;
   /// This is always `sql#operationError`.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Additional information about the error encountered.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [OperationErrorResponse].
   /// [code] Identifies the specific error that occurred.
@@ -30,9 +31,9 @@ class OperationErrorResponse {
 
   factory OperationErrorResponse.fromMap(Map<String, dynamic> map) {
     return OperationErrorResponse(
-      code: map['code'] as String,
-      kind: map['kind'] as String,
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

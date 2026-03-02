@@ -22,15 +22,11 @@ class GetLocalDiskArgs {
   /// [gatewayArn] ARN of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetLocalDiskArgs({
-    pulumi.Output<String>? diskNode,
-    pulumi.Output<String>? diskPath,
-    required pulumi.Output<String> gatewayArn,
-    pulumi.Output<String>? region,
-  }) :
-      diskNode = pulumi.Input.asOptionalInput<String>(diskNode),
-      diskPath = pulumi.Input.asOptionalInput<String>(diskPath),
-      gatewayArn = pulumi.Input.asInput<String>(gatewayArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.diskNode,
+    this.diskPath,
+    required this.gatewayArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetLocalDiskArgs {
 
   factory GetLocalDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalDiskArgs(
-      diskNode: map['diskNode'] == null ? null : pulumi.Output.create<String>(map['diskNode'] as String),
-      diskPath: map['diskPath'] == null ? null : pulumi.Output.create<String>(map['diskPath'] as String),
-      gatewayArn: pulumi.Output.create<String>(map['gatewayArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      diskNode: map['diskNode'] == null ? null : (map['diskNode'] as String).input(),
+      diskPath: map['diskPath'] == null ? null : (map['diskPath'] as String).input(),
+      gatewayArn: (map['gatewayArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -33,13 +33,10 @@ class DefaultPatchBaselineState {
   /// [operatingSystem] The operating system the patch baseline applies to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DefaultPatchBaselineState({
-    pulumi.Output<String>? baselineId,
-    pulumi.Output<String>? operatingSystem,
-    pulumi.Output<String>? region,
-  }) :
-      baselineId = pulumi.Input.asOptionalInput<String>(baselineId),
-      operatingSystem = pulumi.Input.asOptionalInput<String>(operatingSystem),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.baselineId,
+    this.operatingSystem,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,9 +48,9 @@ class DefaultPatchBaselineState {
 
   factory DefaultPatchBaselineState.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineState(
-      baselineId: map['baselineId'] == null ? null : pulumi.Output.create<String>(map['baselineId'] as String),
-      operatingSystem: map['operatingSystem'] == null ? null : pulumi.Output.create<String>(map['operatingSystem'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      baselineId: map['baselineId'] == null ? null : (map['baselineId'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

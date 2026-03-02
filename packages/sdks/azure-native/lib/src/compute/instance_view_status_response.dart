@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Instance view status.
 class InstanceViewStatusResponse {
   /// The status code.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The short localizable label for the status.
-  final String? displayStatus;
+  final pulumi.Input<String>? displayStatus;
   /// The level code.
-  final String? level;
+  final pulumi.Input<String>? level;
   /// The detailed status message, including for alerts and error messages.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The time of the status.
-  final String? time;
+  final pulumi.Input<String>? time;
 
   /// Creates a new [InstanceViewStatusResponse].
   /// [code] The status code.
@@ -40,11 +41,11 @@ class InstanceViewStatusResponse {
 
   factory InstanceViewStatusResponse.fromMap(Map<String, dynamic> map) {
     return InstanceViewStatusResponse(
-      code: map['code'] == null ? null : map['code'] as String,
-      displayStatus: map['displayStatus'] == null ? null : map['displayStatus'] as String,
-      level: map['level'] == null ? null : map['level'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      time: map['time'] == null ? null : map['time'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus'] as String).input(),
+      level: map['level'] == null ? null : (map['level'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      time: map['time'] == null ? null : (map['time'] as String).input(),
     );
   }
 }

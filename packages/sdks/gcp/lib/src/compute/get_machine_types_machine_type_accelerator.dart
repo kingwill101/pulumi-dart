@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMachineTypesMachineTypeAccelerator {
   /// Number of accelerator cards exposed to the guest.
-  final int guestAcceleratorCount;
+  final pulumi.Input<int> guestAcceleratorCount;
   /// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
-  final String guestAcceleratorType;
+  final pulumi.Input<String> guestAcceleratorType;
 
   /// Creates a new [GetMachineTypesMachineTypeAccelerator].
   /// [guestAcceleratorCount] Number of accelerator cards exposed to the guest.
@@ -24,8 +25,8 @@ class GetMachineTypesMachineTypeAccelerator {
 
   factory GetMachineTypesMachineTypeAccelerator.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineTypeAccelerator(
-      guestAcceleratorCount: map['guestAcceleratorCount'] as int,
-      guestAcceleratorType: map['guestAcceleratorType'] as String,
+      guestAcceleratorCount: (map['guestAcceleratorCount'] as int).input(),
+      guestAcceleratorType: (map['guestAcceleratorType'] as String).input(),
     );
   }
 }

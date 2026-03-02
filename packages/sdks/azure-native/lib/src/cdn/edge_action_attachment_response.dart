@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Edge action attachment information
 class EdgeActionAttachmentResponse {
   /// The attached resource Id
-  final String attachedResourceId;
+  final pulumi.Input<String> attachedResourceId;
   /// The edge action attachment id
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [EdgeActionAttachmentResponse].
   /// [attachedResourceId] The attached resource Id
@@ -25,8 +26,8 @@ class EdgeActionAttachmentResponse {
 
   factory EdgeActionAttachmentResponse.fromMap(Map<String, dynamic> map) {
     return EdgeActionAttachmentResponse(
-      attachedResourceId: map['attachedResourceId'] as String,
-      id: map['id'] as String,
+      attachedResourceId: (map['attachedResourceId'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

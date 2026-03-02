@@ -32,19 +32,13 @@ class PortArgs {
   /// [instanceId] The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
   /// [realServers] List of source IP addresses
   PortArgs({
-    pulumi.Output<String>? backendPort,
-    pulumi.Output<PortConfig>? config,
-    required pulumi.Output<String> frontendPort,
-    required pulumi.Output<String> frontendProtocol,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<List<String>> realServers,
-  }) :
-      backendPort = pulumi.Input.asOptionalInput<String>(backendPort),
-      config = pulumi.Input.asOptionalInput<PortConfig>(config),
-      frontendPort = pulumi.Input.asInput<String>(frontendPort),
-      frontendProtocol = pulumi.Input.asInput<String>(frontendProtocol),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      realServers = pulumi.Input.asInput<List<String>>(realServers);
+    this.backendPort,
+    this.config,
+    required this.frontendPort,
+    required this.frontendProtocol,
+    required this.instanceId,
+    required this.realServers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +53,12 @@ class PortArgs {
 
   factory PortArgs.fromMap(Map<String, dynamic> map) {
     return PortArgs(
-      backendPort: map['backendPort'] == null ? null : pulumi.Output.create<String>(map['backendPort'] as String),
-      config: map['config'] == null ? null : pulumi.Output.create<PortConfig>(PortConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      frontendPort: pulumi.Output.create<String>(map['frontendPort'] as String),
-      frontendProtocol: pulumi.Output.create<String>(map['frontendProtocol'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      realServers: pulumi.Output.create<List<String>>((map['realServers'] as List).cast<String>()),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as String).input(),
+      config: map['config'] == null ? null : (PortConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      frontendPort: (map['frontendPort'] as String).input(),
+      frontendProtocol: (map['frontendProtocol'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      realServers: ((map['realServers'] as List).cast<String>()).input(),
     );
   }
 }

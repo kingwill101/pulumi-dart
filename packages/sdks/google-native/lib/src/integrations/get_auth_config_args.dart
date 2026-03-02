@@ -18,15 +18,11 @@ class GetAuthConfigArgs {
   /// [productId] Required.
   /// [project] Optional.
   GetAuthConfigArgs({
-    required pulumi.Output<String> authConfigId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> productId,
-    pulumi.Output<String>? project,
-  }) :
-      authConfigId = pulumi.Input.asInput<String>(authConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.authConfigId,
+    required this.location,
+    required this.productId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetAuthConfigArgs {
 
   factory GetAuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthConfigArgs(
-      authConfigId: pulumi.Output.create<String>(map['authConfigId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      authConfigId: (map['authConfigId'] as String).input(),
+      location: (map['location'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

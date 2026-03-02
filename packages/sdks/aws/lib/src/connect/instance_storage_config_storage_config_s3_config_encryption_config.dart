@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
   /// The type of encryption. Valid Values: `KMS`.
-  final String encryptionType;
+  final pulumi.Input<String> encryptionType;
   /// The full ARN of the encryption key. Be sure to provide the full ARN of the encryption key, not just the ID.
-  final String keyId;
+  final pulumi.Input<String> keyId;
 
   /// Creates a new [InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig].
   /// [encryptionType] The type of encryption. Valid Values: `KMS`.
@@ -24,8 +25,8 @@ class InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig {
 
   factory InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig(
-      encryptionType: map['encryptionType'] as String,
-      keyId: map['keyId'] as String,
+      encryptionType: (map['encryptionType'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
     );
   }
 }

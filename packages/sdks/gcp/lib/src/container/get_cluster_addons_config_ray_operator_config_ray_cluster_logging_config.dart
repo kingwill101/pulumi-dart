@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig].
   /// [enabled] Required.
@@ -18,7 +19,7 @@ class GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
 
   factory GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

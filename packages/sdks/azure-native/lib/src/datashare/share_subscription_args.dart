@@ -28,19 +28,13 @@ class ShareSubscriptionArgs {
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [sourceShareLocation] Source share location.
   ShareSubscriptionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? expirationDate,
-    required pulumi.Output<String> invitationId,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? shareSubscriptionName,
-    required pulumi.Output<String> sourceShareLocation,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      invitationId = pulumi.Input.asInput<String>(invitationId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareSubscriptionName = pulumi.Input.asOptionalInput<String>(shareSubscriptionName),
-      sourceShareLocation = pulumi.Input.asInput<String>(sourceShareLocation);
+    required this.accountName,
+    this.expirationDate,
+    required this.invitationId,
+    required this.resourceGroupName,
+    this.shareSubscriptionName,
+    required this.sourceShareLocation,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ShareSubscriptionArgs {
 
   factory ShareSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ShareSubscriptionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      invitationId: pulumi.Output.create<String>(map['invitationId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareSubscriptionName: map['shareSubscriptionName'] == null ? null : pulumi.Output.create<String>(map['shareSubscriptionName'] as String),
-      sourceShareLocation: pulumi.Output.create<String>(map['sourceShareLocation'] as String),
+      accountName: (map['accountName'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      invitationId: (map['invitationId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareSubscriptionName: map['shareSubscriptionName'] == null ? null : (map['shareSubscriptionName'] as String).input(),
+      sourceShareLocation: (map['sourceShareLocation'] as String).input(),
     );
   }
 }

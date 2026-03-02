@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleCriteriaConfidence {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
-  final double? eq;
-  final double? gt;
+  final pulumi.Input<double>? eq;
+  final pulumi.Input<double>? gt;
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final double? gte;
-  final double? lt;
+  final pulumi.Input<double>? gte;
+  final pulumi.Input<double>? lt;
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final double? lte;
+  final pulumi.Input<double>? lte;
 
   /// Creates a new [AutomationRuleCriteriaConfidence].
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
@@ -37,11 +38,11 @@ class AutomationRuleCriteriaConfidence {
 
   factory AutomationRuleCriteriaConfidence.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaConfidence(
-      eq: map['eq'] == null ? null : map['eq'] as double,
-      gt: map['gt'] == null ? null : map['gt'] as double,
-      gte: map['gte'] == null ? null : map['gte'] as double,
-      lt: map['lt'] == null ? null : map['lt'] as double,
-      lte: map['lte'] == null ? null : map['lte'] as double,
+      eq: map['eq'] == null ? null : (map['eq'] as double).input(),
+      gt: map['gt'] == null ? null : (map['gt'] as double).input(),
+      gte: map['gte'] == null ? null : (map['gte'] as double).input(),
+      lt: map['lt'] == null ? null : (map['lt'] as double).input(),
+      lte: map['lte'] == null ? null : (map['lte'] as double).input(),
     );
   }
 }

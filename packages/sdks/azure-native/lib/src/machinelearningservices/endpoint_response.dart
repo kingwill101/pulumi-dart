@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the endpoint configuration for the container
 class EndpointResponse {
   /// Host IP over which the application is exposed from the container
-  final String? hostIp;
+  final pulumi.Input<String>? hostIp;
   /// Name of the Endpoint
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Protocol over which communication will happen over this endpoint
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Port over which the application is exposed from container.
-  final int? published;
+  final pulumi.Input<int>? published;
   /// Application port inside the container.
-  final int? target;
+  final pulumi.Input<int>? target;
 
   /// Creates a new [EndpointResponse].
   /// [hostIp] Host IP over which the application is exposed from the container
@@ -40,11 +41,11 @@ class EndpointResponse {
 
   factory EndpointResponse.fromMap(Map<String, dynamic> map) {
     return EndpointResponse(
-      hostIp: map['hostIp'] == null ? null : map['hostIp'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      published: map['published'] == null ? null : map['published'] as int,
-      target: map['target'] == null ? null : map['target'] as int,
+      hostIp: map['hostIp'] == null ? null : (map['hostIp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      published: map['published'] == null ? null : (map['published'] as int).input(),
+      target: map['target'] == null ? null : (map['target'] as int).input(),
     );
   }
 }

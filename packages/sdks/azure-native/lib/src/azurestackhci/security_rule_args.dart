@@ -50,33 +50,20 @@ class SecurityRuleArgs {
   /// [sourceAddressPrefixes] The CIDR or source IP ranges.
   /// [sourcePortRanges] The source port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   SecurityRuleArgs({
-    required pulumi.Output<String> access,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? destinationAddressPrefixes,
-    pulumi.Output<List<String>>? destinationPortRanges,
-    required pulumi.Output<String> direction,
-    pulumi.Output<ExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> networkSecurityGroupName,
-    required pulumi.Output<int> priority,
-    required pulumi.Output<String> protocol,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? securityRuleName,
-    pulumi.Output<List<String>>? sourceAddressPrefixes,
-    pulumi.Output<List<String>>? sourcePortRanges,
-  }) :
-      access = pulumi.Input.asInput<String>(access),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destinationAddressPrefixes = pulumi.Input.asOptionalInput<List<String>>(destinationAddressPrefixes),
-      destinationPortRanges = pulumi.Input.asOptionalInput<List<String>>(destinationPortRanges),
-      direction = pulumi.Input.asInput<String>(direction),
-      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
-      networkSecurityGroupName = pulumi.Input.asInput<String>(networkSecurityGroupName),
-      priority = pulumi.Input.asInput<int>(priority),
-      protocol = pulumi.Input.asInput<String>(protocol),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityRuleName = pulumi.Input.asOptionalInput<String>(securityRuleName),
-      sourceAddressPrefixes = pulumi.Input.asOptionalInput<List<String>>(sourceAddressPrefixes),
-      sourcePortRanges = pulumi.Input.asOptionalInput<List<String>>(sourcePortRanges);
+    required this.access,
+    this.description,
+    this.destinationAddressPrefixes,
+    this.destinationPortRanges,
+    required this.direction,
+    this.extendedLocation,
+    required this.networkSecurityGroupName,
+    required this.priority,
+    required this.protocol,
+    required this.resourceGroupName,
+    this.securityRuleName,
+    this.sourceAddressPrefixes,
+    this.sourcePortRanges,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,19 +85,19 @@ class SecurityRuleArgs {
 
   factory SecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityRuleArgs(
-      access: pulumi.Output.create<String>(map['access'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['destinationAddressPrefixes'] as List).cast<String>()),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : pulumi.Output.create<List<String>>((map['destinationPortRanges'] as List).cast<String>()),
-      direction: pulumi.Output.create<String>(map['direction'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      networkSecurityGroupName: pulumi.Output.create<String>(map['networkSecurityGroupName'] as String),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
-      protocol: pulumi.Output.create<String>(map['protocol'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityRuleName: map['securityRuleName'] == null ? null : pulumi.Output.create<String>(map['securityRuleName'] as String),
-      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['sourceAddressPrefixes'] as List).cast<String>()),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : pulumi.Output.create<List<String>>((map['sourcePortRanges'] as List).cast<String>()),
+      access: (map['access'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      networkSecurityGroupName: (map['networkSecurityGroupName'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityRuleName: map['securityRuleName'] == null ? null : (map['securityRuleName'] as String).input(),
+      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
     );
   }
 }

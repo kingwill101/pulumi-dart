@@ -44,31 +44,19 @@ class CollectorArgs {
   /// [requestId] Optional. An optional request ID to identify requests.
   /// [serviceAccount] Service Account email used to ingest data to this Collector.
   CollectorArgs({
-    pulumi.Output<int>? collectionDays,
-    required pulumi.Output<String> collectorId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? eulaUri,
-    pulumi.Output<String>? expectedAssetCount,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? serviceAccount,
-  }) :
-      collectionDays = pulumi.Input.asOptionalInput<int>(collectionDays),
-      collectorId = pulumi.Input.asInput<String>(collectorId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      eulaUri = pulumi.Input.asOptionalInput<String>(eulaUri),
-      expectedAssetCount = pulumi.Input.asOptionalInput<String>(expectedAssetCount),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
+    this.collectionDays,
+    required this.collectorId,
+    this.description,
+    this.displayName,
+    this.eulaUri,
+    this.expectedAssetCount,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    this.serviceAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: map['collectionDays'] == null ? null : pulumi.Output.create<int>(map['collectionDays'] as int),
-      collectorId: pulumi.Output.create<String>(map['collectorId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      eulaUri: map['eulaUri'] == null ? null : pulumi.Output.create<String>(map['eulaUri'] as String),
-      expectedAssetCount: map['expectedAssetCount'] == null ? null : pulumi.Output.create<String>(map['expectedAssetCount'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
+      collectionDays: map['collectionDays'] == null ? null : (map['collectionDays'] as int).input(),
+      collectorId: (map['collectorId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      eulaUri: map['eulaUri'] == null ? null : (map['eulaUri'] as String).input(),
+      expectedAssetCount: map['expectedAssetCount'] == null ? null : (map['expectedAssetCount'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
     );
   }
 }

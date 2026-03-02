@@ -210,27 +210,17 @@ class InstanceGroupArgs {
   /// [name] Human friendly name given to the instance group. Changing this forces a new resource to be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   InstanceGroupArgs({
-    pulumi.Output<String>? autoscalingPolicy,
-    pulumi.Output<String>? bidPrice,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<String>? configurationsJson,
-    pulumi.Output<List<InstanceGroupEbsConfig>>? ebsConfigs,
-    pulumi.Output<bool>? ebsOptimized,
-    pulumi.Output<int>? instanceCount,
-    required pulumi.Output<String> instanceType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      autoscalingPolicy = pulumi.Input.asOptionalInput<String>(autoscalingPolicy),
-      bidPrice = pulumi.Input.asOptionalInput<String>(bidPrice),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      configurationsJson = pulumi.Input.asOptionalInput<String>(configurationsJson),
-      ebsConfigs = pulumi.Input.asOptionalInput<List<InstanceGroupEbsConfig>>(ebsConfigs),
-      ebsOptimized = pulumi.Input.asOptionalInput<bool>(ebsOptimized),
-      instanceCount = pulumi.Input.asOptionalInput<int>(instanceCount),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.autoscalingPolicy,
+    this.bidPrice,
+    required this.clusterId,
+    this.configurationsJson,
+    this.ebsConfigs,
+    this.ebsOptimized,
+    this.instanceCount,
+    required this.instanceType,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -249,16 +239,16 @@ class InstanceGroupArgs {
 
   factory InstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : pulumi.Output.create<String>(map['autoscalingPolicy'] as String),
-      bidPrice: map['bidPrice'] == null ? null : pulumi.Output.create<String>(map['bidPrice'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      configurationsJson: map['configurationsJson'] == null ? null : pulumi.Output.create<String>(map['configurationsJson'] as String),
-      ebsConfigs: map['ebsConfigs'] == null ? null : pulumi.Output.create<List<InstanceGroupEbsConfig>>(pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs'], (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      ebsOptimized: map['ebsOptimized'] == null ? null : pulumi.Output.create<bool>(map['ebsOptimized'] as bool),
-      instanceCount: map['instanceCount'] == null ? null : pulumi.Output.create<int>(map['instanceCount'] as int),
-      instanceType: pulumi.Output.create<String>(map['instanceType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (map['autoscalingPolicy'] as String).input(),
+      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      configurationsJson: map['configurationsJson'] == null ? null : (map['configurationsJson'] as String).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs'], (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebsOptimized: map['ebsOptimized'] == null ? null : (map['ebsOptimized'] as bool).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

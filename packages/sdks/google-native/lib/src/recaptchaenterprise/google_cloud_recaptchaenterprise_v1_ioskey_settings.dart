@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_recaptchaenterprise_v1_apple_developer_id.dart';
 
 /// Settings specific to keys that can be used by iOS apps.
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Optional. If set to true, allowed_bundle_ids are not enforced.
-  final bool? allowAllBundleIds;
+  final pulumi.Input<bool>? allowAllBundleIds;
   /// Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-  final List<String>? allowedBundleIds;
+  final pulumi.Input<List<String>>? allowedBundleIds;
   /// Optional. Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
-  final GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId>? appleDeveloperId;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1IOSKeySettings].
   /// [allowAllBundleIds] Optional. If set to true, allowed_bundle_ids are not enforced.
@@ -25,15 +26,15 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
     return <String, dynamic>{
       'allowAllBundleIds': ?allowAllBundleIds,
       'allowedBundleIds': ?allowedBundleIds,
-      'appleDeveloperId': ?appleDeveloperId == null ? null : appleDeveloperId!.toMap(),
+      'appleDeveloperId': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRecaptchaenterpriseV1AppleDeveloperId, Map<String, dynamic>>(appleDeveloperId, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1IOSKeySettings(
-      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : map['allowAllBundleIds'] as bool,
-      allowedBundleIds: map['allowedBundleIds'] == null ? null : (map['allowedBundleIds'] as List).cast<String>(),
-      appleDeveloperId: map['appleDeveloperId'] == null ? null : GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromMap((map['appleDeveloperId'] as Map).cast<String, dynamic>()),
+      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : (map['allowAllBundleIds'] as bool).input(),
+      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds'] as List).cast<String>()).input(),
+      appleDeveloperId: map['appleDeveloperId'] == null ? null : (GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromMap((map['appleDeveloperId'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

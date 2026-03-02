@@ -26,15 +26,11 @@ class GetNetworkInsightsAnalysisArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   GetNetworkInsightsAnalysisArgs({
-    pulumi.Output<List<GetNetworkInsightsAnalysisFilter>>? filters,
-    pulumi.Output<String>? networkInsightsAnalysisId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetNetworkInsightsAnalysisFilter>>(filters),
-      networkInsightsAnalysisId = pulumi.Input.asOptionalInput<String>(networkInsightsAnalysisId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.filters,
+    this.networkInsightsAnalysisId,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class GetNetworkInsightsAnalysisArgs {
 
   factory GetNetworkInsightsAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetNetworkInsightsAnalysisFilter>>(pulumi.Input.decodeList<GetNetworkInsightsAnalysisFilter>(map['filters'], (value) => GetNetworkInsightsAnalysisFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      networkInsightsAnalysisId: map['networkInsightsAnalysisId'] == null ? null : pulumi.Output.create<String>(map['networkInsightsAnalysisId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNetworkInsightsAnalysisFilter>(map['filters'], (value) => GetNetworkInsightsAnalysisFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInsightsAnalysisId: map['networkInsightsAnalysisId'] == null ? null : (map['networkInsightsAnalysisId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

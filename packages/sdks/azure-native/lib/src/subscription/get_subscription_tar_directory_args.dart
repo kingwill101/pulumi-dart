@@ -13,9 +13,8 @@ class GetSubscriptionTarDirectoryArgs {
   /// Creates a new [GetSubscriptionTarDirectoryArgs].
   /// [subscriptionId] Subscription Id.
   GetSubscriptionTarDirectoryArgs({
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSubscriptionTarDirectoryArgs {
 
   factory GetSubscriptionTarDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionTarDirectoryArgs(
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

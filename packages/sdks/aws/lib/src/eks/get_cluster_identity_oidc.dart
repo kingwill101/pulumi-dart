@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterIdentityOidc {
   /// Issuer URL for the OpenID Connect identity provider.
-  final String issuer;
+  final pulumi.Input<String> issuer;
 
   /// Creates a new [GetClusterIdentityOidc].
   /// [issuer] Issuer URL for the OpenID Connect identity provider.
@@ -19,7 +20,7 @@ class GetClusterIdentityOidc {
 
   factory GetClusterIdentityOidc.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentityOidc(
-      issuer: map['issuer'] as String,
+      issuer: (map['issuer'] as String).input(),
     );
   }
 }

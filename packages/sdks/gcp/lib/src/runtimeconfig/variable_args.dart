@@ -32,17 +32,12 @@ class VariableArgs {
   /// [text] or `value` - (Required) The content to associate with the variable.
   /// [value] Optional.
   VariableArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? text,
-    pulumi.Output<String>? value,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      text = pulumi.Input.asOptionalInput<String>(text),
-      value = pulumi.Input.asOptionalInput<String>(value);
+    this.name,
+    required this.parent,
+    this.project,
+    this.text,
+    this.value,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,11 +51,11 @@ class VariableArgs {
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      text: map['text'] == null ? null : pulumi.Output.create<String>(map['text'] as String),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

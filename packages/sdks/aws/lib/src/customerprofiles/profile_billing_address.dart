@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProfileBillingAddress {
   /// The first line of a customer address.
-  final String? address1;
+  final pulumi.Input<String>? address1;
   /// The second line of a customer address.
-  final String? address2;
+  final pulumi.Input<String>? address2;
   /// The third line of a customer address.
-  final String? address3;
+  final pulumi.Input<String>? address3;
   /// The fourth line of a customer address.
-  final String? address4;
+  final pulumi.Input<String>? address4;
   /// The city in which a customer lives.
-  final String? city;
+  final pulumi.Input<String>? city;
   /// The country in which a customer lives.
-  final String? country;
+  final pulumi.Input<String>? country;
   /// The county in which a customer lives.
-  final String? county;
+  final pulumi.Input<String>? county;
   /// The postal code of a customer address.
-  final String? postalCode;
+  final pulumi.Input<String>? postalCode;
   /// The province in which a customer lives.
-  final String? province;
+  final pulumi.Input<String>? province;
   /// The state in which a customer lives.
-  final String? state;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [ProfileBillingAddress].
   /// [address1] The first line of a customer address.
@@ -64,16 +65,16 @@ class ProfileBillingAddress {
 
   factory ProfileBillingAddress.fromMap(Map<String, dynamic> map) {
     return ProfileBillingAddress(
-      address1: map['address1'] == null ? null : map['address1'] as String,
-      address2: map['address2'] == null ? null : map['address2'] as String,
-      address3: map['address3'] == null ? null : map['address3'] as String,
-      address4: map['address4'] == null ? null : map['address4'] as String,
-      city: map['city'] == null ? null : map['city'] as String,
-      country: map['country'] == null ? null : map['country'] as String,
-      county: map['county'] == null ? null : map['county'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
-      province: map['province'] == null ? null : map['province'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      address1: map['address1'] == null ? null : (map['address1'] as String).input(),
+      address2: map['address2'] == null ? null : (map['address2'] as String).input(),
+      address3: map['address3'] == null ? null : (map['address3'] as String).input(),
+      address4: map['address4'] == null ? null : (map['address4'] as String).input(),
+      city: map['city'] == null ? null : (map['city'] as String).input(),
+      country: map['country'] == null ? null : (map['country'] as String).input(),
+      county: map['county'] == null ? null : (map['county'] as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
+      province: map['province'] == null ? null : (map['province'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

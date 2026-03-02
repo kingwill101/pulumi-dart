@@ -7,13 +7,13 @@ import 'credit_dimension.dart';
 /// Credit breakdown item representing a milestone, line-item, or no-charge service
 class CreditBreakdownItem {
   /// Allocation details including currency and amount for this breakdown item
-  final Commitment? allocation;
+  final pulumi.Input<Commitment>? allocation;
   /// Key-value pairs for additional parameters and metadata
-  final List<CreditDimension>? dimensions;
+  final pulumi.Input<List<CreditDimension>>? dimensions;
   /// End DateTime in UTC.
-  final String? endAt;
+  final pulumi.Input<String>? endAt;
   /// Start DateTime.
-  final String? startAt;
+  final pulumi.Input<String>? startAt;
 
   /// Creates a new [CreditBreakdownItem].
   /// [allocation] Allocation details including currency and amount for this breakdown item
@@ -29,8 +29,8 @@ class CreditBreakdownItem {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocation': ?allocation == null ? null : allocation!.toMap(),
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<CreditDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'allocation': ?pulumi.Input.mapOptionalInputValue<Commitment, Map<String, dynamic>>(allocation, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<CreditDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<CreditDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'endAt': ?endAt,
       'startAt': ?startAt,
     };
@@ -38,10 +38,10 @@ class CreditBreakdownItem {
 
   factory CreditBreakdownItem.fromMap(Map<String, dynamic> map) {
     return CreditBreakdownItem(
-      allocation: map['allocation'] == null ? null : Commitment.fromMap((map['allocation'] as Map).cast<String, dynamic>()),
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<CreditDimension>(map['dimensions'], (value) => CreditDimension.fromMap((value as Map).cast<String, dynamic>())),
-      endAt: map['endAt'] == null ? null : map['endAt'] as String,
-      startAt: map['startAt'] == null ? null : map['startAt'] as String,
+      allocation: map['allocation'] == null ? null : (Commitment.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<CreditDimension>(map['dimensions'], (value) => CreditDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
     );
   }
 }

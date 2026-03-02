@@ -7,9 +7,9 @@ import 'summary_status_enum_value.dart';
 /// Definition of InstanceStatusSummary
 class InstanceStatusSummary {
   /// <p>The system instance health or application instance health.</p>
-  final List<InstanceStatusDetails>? details;
+  final pulumi.Input<List<InstanceStatusDetails>>? details;
   /// <p>The status.</p>
-  final SummaryStatusEnumValue? status;
+  final pulumi.Input<SummaryStatusEnumValue>? status;
 
   /// Creates a new [InstanceStatusSummary].
   /// [details] <p>The system instance health or application instance health.</p>
@@ -21,15 +21,15 @@ class InstanceStatusSummary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'details': ?details == null ? null : pulumi.Input.encodeList<InstanceStatusDetails, Map<String, dynamic>>(details!, (value) => value.toMap()),
-      'status': ?status == null ? null : status!.toMap(),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<InstanceStatusDetails>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<InstanceStatusDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'status': ?pulumi.Input.mapOptionalInputValue<SummaryStatusEnumValue, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory InstanceStatusSummary.fromMap(Map<String, dynamic> map) {
     return InstanceStatusSummary(
-      details: map['details'] == null ? null : pulumi.Input.decodeList<InstanceStatusDetails>(map['details'], (value) => InstanceStatusDetails.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : SummaryStatusEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<InstanceStatusDetails>(map['details'], (value) => InstanceStatusDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (SummaryStatusEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

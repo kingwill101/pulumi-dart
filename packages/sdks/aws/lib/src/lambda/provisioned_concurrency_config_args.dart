@@ -27,17 +27,12 @@ class ProvisionedConcurrencyConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
   ProvisionedConcurrencyConfigArgs({
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<int> provisionedConcurrentExecutions,
-    required pulumi.Output<String> qualifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? skipDestroy,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      provisionedConcurrentExecutions = pulumi.Input.asInput<int>(provisionedConcurrentExecutions),
-      qualifier = pulumi.Input.asInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+    required this.functionName,
+    required this.provisionedConcurrentExecutions,
+    required this.qualifier,
+    this.region,
+    this.skipDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class ProvisionedConcurrencyConfigArgs {
 
   factory ProvisionedConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      provisionedConcurrentExecutions: pulumi.Output.create<int>(map['provisionedConcurrentExecutions'] as int),
-      qualifier: pulumi.Output.create<String>(map['qualifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
+      functionName: (map['functionName'] as String).input(),
+      provisionedConcurrentExecutions: (map['provisionedConcurrentExecutions'] as int).input(),
+      qualifier: (map['qualifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
     );
   }
 }

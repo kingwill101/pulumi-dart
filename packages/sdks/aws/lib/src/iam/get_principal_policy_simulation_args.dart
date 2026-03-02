@@ -55,27 +55,17 @@ class GetPrincipalPolicySimulationArgs {
   /// [resourceOwnerAccountId] An AWS account ID to use for any resource ARN in `resource_arns` that doesn't include its own AWS account ID. If unspecified, the simulator will use the account ID from the `caller_arn` argument as a placeholder.
   /// [resourcePolicyJson] An IAM policy document representing the resource-level policy of all of the resources specified in `resource_arns`.
   GetPrincipalPolicySimulationArgs({
-    required pulumi.Output<List<String>> actionNames,
-    pulumi.Output<List<String>>? additionalPoliciesJsons,
-    pulumi.Output<String>? callerArn,
-    pulumi.Output<List<GetPrincipalPolicySimulationContext>>? contexts,
-    pulumi.Output<List<String>>? permissionsBoundaryPoliciesJsons,
-    required pulumi.Output<String> policySourceArn,
-    pulumi.Output<List<String>>? resourceArns,
-    pulumi.Output<String>? resourceHandlingOption,
-    pulumi.Output<String>? resourceOwnerAccountId,
-    pulumi.Output<String>? resourcePolicyJson,
-  }) :
-      actionNames = pulumi.Input.asInput<List<String>>(actionNames),
-      additionalPoliciesJsons = pulumi.Input.asOptionalInput<List<String>>(additionalPoliciesJsons),
-      callerArn = pulumi.Input.asOptionalInput<String>(callerArn),
-      contexts = pulumi.Input.asOptionalInput<List<GetPrincipalPolicySimulationContext>>(contexts),
-      permissionsBoundaryPoliciesJsons = pulumi.Input.asOptionalInput<List<String>>(permissionsBoundaryPoliciesJsons),
-      policySourceArn = pulumi.Input.asInput<String>(policySourceArn),
-      resourceArns = pulumi.Input.asOptionalInput<List<String>>(resourceArns),
-      resourceHandlingOption = pulumi.Input.asOptionalInput<String>(resourceHandlingOption),
-      resourceOwnerAccountId = pulumi.Input.asOptionalInput<String>(resourceOwnerAccountId),
-      resourcePolicyJson = pulumi.Input.asOptionalInput<String>(resourcePolicyJson);
+    required this.actionNames,
+    this.additionalPoliciesJsons,
+    this.callerArn,
+    this.contexts,
+    this.permissionsBoundaryPoliciesJsons,
+    required this.policySourceArn,
+    this.resourceArns,
+    this.resourceHandlingOption,
+    this.resourceOwnerAccountId,
+    this.resourcePolicyJson,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,16 +84,16 @@ class GetPrincipalPolicySimulationArgs {
 
   factory GetPrincipalPolicySimulationArgs.fromMap(Map<String, dynamic> map) {
     return GetPrincipalPolicySimulationArgs(
-      actionNames: pulumi.Output.create<List<String>>((map['actionNames'] as List).cast<String>()),
-      additionalPoliciesJsons: map['additionalPoliciesJsons'] == null ? null : pulumi.Output.create<List<String>>((map['additionalPoliciesJsons'] as List).cast<String>()),
-      callerArn: map['callerArn'] == null ? null : pulumi.Output.create<String>(map['callerArn'] as String),
-      contexts: map['contexts'] == null ? null : pulumi.Output.create<List<GetPrincipalPolicySimulationContext>>(pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts'], (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>()))),
-      permissionsBoundaryPoliciesJsons: map['permissionsBoundaryPoliciesJsons'] == null ? null : pulumi.Output.create<List<String>>((map['permissionsBoundaryPoliciesJsons'] as List).cast<String>()),
-      policySourceArn: pulumi.Output.create<String>(map['policySourceArn'] as String),
-      resourceArns: map['resourceArns'] == null ? null : pulumi.Output.create<List<String>>((map['resourceArns'] as List).cast<String>()),
-      resourceHandlingOption: map['resourceHandlingOption'] == null ? null : pulumi.Output.create<String>(map['resourceHandlingOption'] as String),
-      resourceOwnerAccountId: map['resourceOwnerAccountId'] == null ? null : pulumi.Output.create<String>(map['resourceOwnerAccountId'] as String),
-      resourcePolicyJson: map['resourcePolicyJson'] == null ? null : pulumi.Output.create<String>(map['resourcePolicyJson'] as String),
+      actionNames: ((map['actionNames'] as List).cast<String>()).input(),
+      additionalPoliciesJsons: map['additionalPoliciesJsons'] == null ? null : ((map['additionalPoliciesJsons'] as List).cast<String>()).input(),
+      callerArn: map['callerArn'] == null ? null : (map['callerArn'] as String).input(),
+      contexts: map['contexts'] == null ? null : (pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts'], (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissionsBoundaryPoliciesJsons: map['permissionsBoundaryPoliciesJsons'] == null ? null : ((map['permissionsBoundaryPoliciesJsons'] as List).cast<String>()).input(),
+      policySourceArn: (map['policySourceArn'] as String).input(),
+      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
+      resourceHandlingOption: map['resourceHandlingOption'] == null ? null : (map['resourceHandlingOption'] as String).input(),
+      resourceOwnerAccountId: map['resourceOwnerAccountId'] == null ? null : (map['resourceOwnerAccountId'] as String).input(),
+      resourcePolicyJson: map['resourcePolicyJson'] == null ? null : (map['resourcePolicyJson'] as String).input(),
     );
   }
 }

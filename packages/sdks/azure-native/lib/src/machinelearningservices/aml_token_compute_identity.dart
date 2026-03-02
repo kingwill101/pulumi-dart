@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AML token compute identity definition.
 class AmlTokenComputeIdentity {
   /// Monitor compute identity type enum.
   /// Expected value is 'AmlToken'.
-  final String computeIdentityType;
+  final pulumi.Input<String> computeIdentityType;
 
   /// Creates a new [AmlTokenComputeIdentity].
   /// [computeIdentityType] Monitor compute identity type enum.
@@ -21,7 +22,7 @@ class AmlTokenComputeIdentity {
 
   factory AmlTokenComputeIdentity.fromMap(Map<String, dynamic> map) {
     return AmlTokenComputeIdentity(
-      computeIdentityType: map['computeIdentityType'] as String,
+      computeIdentityType: (map['computeIdentityType'] as String).input(),
     );
   }
 }

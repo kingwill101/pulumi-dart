@@ -27,9 +27,9 @@ class CertificateSigningRequestStatus {
   /// ...
   /// -----END CERTIFICATE-----
   /// )
-  final String? certificate;
+  final pulumi.Input<String>? certificate;
   /// conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
-  final List<CertificateSigningRequestCondition>? conditions;
+  final pulumi.Input<List<CertificateSigningRequestCondition>>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatus].
   /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
@@ -42,14 +42,14 @@ class CertificateSigningRequestStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': ?certificate,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<CertificateSigningRequestCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<CertificateSigningRequestCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CertificateSigningRequestCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory CertificateSigningRequestStatus.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatus(
-      certificate: map['certificate'] == null ? null : map['certificate'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions'], (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>())),
+      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions'], (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

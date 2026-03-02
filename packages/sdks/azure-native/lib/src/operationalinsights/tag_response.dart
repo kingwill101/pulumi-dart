@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A tag of a saved search.
 class TagResponse {
   /// The tag name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The tag value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TagResponse].
   /// [name] The tag name.
@@ -25,8 +26,8 @@ class TagResponse {
 
   factory TagResponse.fromMap(Map<String, dynamic> map) {
     return TagResponse(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

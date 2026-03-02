@@ -33,21 +33,14 @@ class LedgerArgs {
   /// [resourceGroupName] The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Confidential Ledger.
   LedgerArgs({
-    required pulumi.Output<List<LedgerAzureadBasedServicePrincipal>> azureadBasedServicePrincipals,
-    pulumi.Output<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals,
-    required pulumi.Output<String> ledgerType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      azureadBasedServicePrincipals = pulumi.Input.asInput<List<LedgerAzureadBasedServicePrincipal>>(azureadBasedServicePrincipals),
-      certificateBasedSecurityPrincipals = pulumi.Input.asOptionalInput<List<LedgerCertificateBasedSecurityPrincipal>>(certificateBasedSecurityPrincipals),
-      ledgerType = pulumi.Input.asInput<String>(ledgerType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.azureadBasedServicePrincipals,
+    this.certificateBasedSecurityPrincipals,
+    required this.ledgerType,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class LedgerArgs {
 
   factory LedgerArgs.fromMap(Map<String, dynamic> map) {
     return LedgerArgs(
-      azureadBasedServicePrincipals: pulumi.Output.create<List<LedgerAzureadBasedServicePrincipal>>(pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals'], (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))),
-      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : pulumi.Output.create<List<LedgerCertificateBasedSecurityPrincipal>>(pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals'], (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))),
-      ledgerType: pulumi.Output.create<String>(map['ledgerType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      azureadBasedServicePrincipals: (pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals'], (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals'], (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ledgerType: (map['ledgerType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

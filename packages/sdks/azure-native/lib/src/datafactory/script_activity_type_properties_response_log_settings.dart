@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_location_settings_response.dart';
 
 /// Log settings of script activity.
 class ScriptActivityTypePropertiesResponseLogSettings {
   /// The destination of logs. Type: string.
-  final String logDestination;
+  final pulumi.Input<String> logDestination;
   /// Log location settings customer needs to provide when enabling log.
-  final LogLocationSettingsResponse? logLocationSettings;
+  final pulumi.Input<LogLocationSettingsResponse>? logLocationSettings;
 
   /// Creates a new [ScriptActivityTypePropertiesResponseLogSettings].
   /// [logDestination] The destination of logs. Type: string.
@@ -20,14 +21,14 @@ class ScriptActivityTypePropertiesResponseLogSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logDestination': logDestination,
-      'logLocationSettings': ?logLocationSettings == null ? null : logLocationSettings!.toMap(),
+      'logLocationSettings': ?pulumi.Input.mapOptionalInputValue<LogLocationSettingsResponse, Map<String, dynamic>>(logLocationSettings, (value) => value.toMap()),
     };
   }
 
   factory ScriptActivityTypePropertiesResponseLogSettings.fromMap(Map<String, dynamic> map) {
     return ScriptActivityTypePropertiesResponseLogSettings(
-      logDestination: map['logDestination'] as String,
-      logLocationSettings: map['logLocationSettings'] == null ? null : LogLocationSettingsResponse.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>()),
+      logDestination: (map['logDestination'] as String).input(),
+      logLocationSettings: map['logLocationSettings'] == null ? null : (LogLocationSettingsResponse.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -15,11 +15,9 @@ class GetDistributionArgs {
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   /// [tags] Optional.
   GetDistributionArgs({
-    required pulumi.Output<String> id,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      id = pulumi.Input.asInput<String>(id),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.id,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +28,8 @@ class GetDistributionArgs {
 
   factory GetDistributionArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionArgs(
-      id: pulumi.Output.create<String>(map['id'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      id: (map['id'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

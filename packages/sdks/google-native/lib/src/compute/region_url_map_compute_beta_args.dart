@@ -54,33 +54,20 @@ class RegionUrlMapComputeBetaArgs {
   /// [requestId] begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
   /// [tests] The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   RegionUrlMapComputeBetaArgs({
-    pulumi.Output<CustomErrorResponsePolicyComputeBeta>? defaultCustomErrorResponsePolicy,
-    pulumi.Output<HttpRouteActionComputeBeta>? defaultRouteAction,
-    pulumi.Output<String>? defaultService,
-    pulumi.Output<HttpRedirectActionComputeBeta>? defaultUrlRedirect,
-    pulumi.Output<String>? description,
-    pulumi.Output<HttpHeaderActionComputeBeta>? headerAction,
-    pulumi.Output<List<HostRuleComputeBeta>>? hostRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<PathMatcherComputeBeta>>? pathMatchers,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<List<UrlMapTestComputeBeta>>? tests,
-  }) :
-      defaultCustomErrorResponsePolicy = pulumi.Input.asOptionalInput<CustomErrorResponsePolicyComputeBeta>(defaultCustomErrorResponsePolicy),
-      defaultRouteAction = pulumi.Input.asOptionalInput<HttpRouteActionComputeBeta>(defaultRouteAction),
-      defaultService = pulumi.Input.asOptionalInput<String>(defaultService),
-      defaultUrlRedirect = pulumi.Input.asOptionalInput<HttpRedirectActionComputeBeta>(defaultUrlRedirect),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      headerAction = pulumi.Input.asOptionalInput<HttpHeaderActionComputeBeta>(headerAction),
-      hostRules = pulumi.Input.asOptionalInput<List<HostRuleComputeBeta>>(hostRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathMatchers = pulumi.Input.asOptionalInput<List<PathMatcherComputeBeta>>(pathMatchers),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      tests = pulumi.Input.asOptionalInput<List<UrlMapTestComputeBeta>>(tests);
+    this.defaultCustomErrorResponsePolicy,
+    this.defaultRouteAction,
+    this.defaultService,
+    this.defaultUrlRedirect,
+    this.description,
+    this.headerAction,
+    this.hostRules,
+    this.name,
+    this.pathMatchers,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.tests,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,19 +89,19 @@ class RegionUrlMapComputeBetaArgs {
 
   factory RegionUrlMapComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapComputeBetaArgs(
-      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : pulumi.Output.create<CustomErrorResponsePolicyComputeBeta>(CustomErrorResponsePolicyComputeBeta.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())),
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : pulumi.Output.create<HttpRouteActionComputeBeta>(HttpRouteActionComputeBeta.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())),
-      defaultService: map['defaultService'] == null ? null : pulumi.Output.create<String>(map['defaultService'] as String),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : pulumi.Output.create<HttpRedirectActionComputeBeta>(HttpRedirectActionComputeBeta.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      headerAction: map['headerAction'] == null ? null : pulumi.Output.create<HttpHeaderActionComputeBeta>(HttpHeaderActionComputeBeta.fromMap((map['headerAction'] as Map).cast<String, dynamic>())),
-      hostRules: map['hostRules'] == null ? null : pulumi.Output.create<List<HostRuleComputeBeta>>(pulumi.Input.decodeList<HostRuleComputeBeta>(map['hostRules'], (value) => HostRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pathMatchers: map['pathMatchers'] == null ? null : pulumi.Output.create<List<PathMatcherComputeBeta>>(pulumi.Input.decodeList<PathMatcherComputeBeta>(map['pathMatchers'], (value) => PathMatcherComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      tests: map['tests'] == null ? null : pulumi.Output.create<List<UrlMapTestComputeBeta>>(pulumi.Input.decodeList<UrlMapTestComputeBeta>(map['tests'], (value) => UrlMapTestComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
+      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicyComputeBeta.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeBeta.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeBeta.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeBeta.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<HostRuleComputeBeta>(map['hostRules'], (value) => HostRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<PathMatcherComputeBeta>(map['pathMatchers'], (value) => PathMatcherComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<UrlMapTestComputeBeta>(map['tests'], (value) => UrlMapTestComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

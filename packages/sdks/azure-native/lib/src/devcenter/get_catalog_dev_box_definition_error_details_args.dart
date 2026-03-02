@@ -22,15 +22,11 @@ class GetCatalogDevBoxDefinitionErrorDetailsArgs {
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCatalogDevBoxDefinitionErrorDetailsArgs({
-    required pulumi.Output<String> catalogName,
-    required pulumi.Output<String> devBoxDefinitionName,
-    required pulumi.Output<String> devCenterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      catalogName = pulumi.Input.asInput<String>(catalogName),
-      devBoxDefinitionName = pulumi.Input.asInput<String>(devBoxDefinitionName),
-      devCenterName = pulumi.Input.asInput<String>(devCenterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.catalogName,
+    required this.devBoxDefinitionName,
+    required this.devCenterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCatalogDevBoxDefinitionErrorDetailsArgs {
 
   factory GetCatalogDevBoxDefinitionErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogDevBoxDefinitionErrorDetailsArgs(
-      catalogName: pulumi.Output.create<String>(map['catalogName'] as String),
-      devBoxDefinitionName: pulumi.Output.create<String>(map['devBoxDefinitionName'] as String),
-      devCenterName: pulumi.Output.create<String>(map['devCenterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      catalogName: (map['catalogName'] as String).input(),
+      devBoxDefinitionName: (map['devBoxDefinitionName'] as String).input(),
+      devCenterName: (map['devCenterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

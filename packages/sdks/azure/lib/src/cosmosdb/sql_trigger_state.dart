@@ -22,17 +22,12 @@ class SqlTriggerState {
   /// [operation] The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   /// [type] Type of the Trigger. Possible values are `Pre` and `Post`.
   SqlTriggerState({
-    pulumi.Output<String>? body,
-    pulumi.Output<String>? containerId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? operation,
-    pulumi.Output<String>? type,
-  }) :
-      body = pulumi.Input.asOptionalInput<String>(body),
-      containerId = pulumi.Input.asOptionalInput<String>(containerId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operation = pulumi.Input.asOptionalInput<String>(operation),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.body,
+    this.containerId,
+    this.name,
+    this.operation,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SqlTriggerState {
 
   factory SqlTriggerState.fromMap(Map<String, dynamic> map) {
     return SqlTriggerState(
-      body: map['body'] == null ? null : pulumi.Output.create<String>(map['body'] as String),
-      containerId: map['containerId'] == null ? null : pulumi.Output.create<String>(map['containerId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operation: map['operation'] == null ? null : pulumi.Output.create<String>(map['operation'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      body: map['body'] == null ? null : (map['body'] as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

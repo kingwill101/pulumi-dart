@@ -23,11 +23,9 @@ class GetCryptoKeyLatestVersionArgs {
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [filter] The filter argument is used to add a filter query parameter that limits which type of cryptoKeyVersion is retrieved as the latest by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   GetCryptoKeyLatestVersionArgs({
-    required pulumi.Output<String> cryptoKey,
-    pulumi.Output<String>? filter,
-  }) :
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-      filter = pulumi.Input.asOptionalInput<String>(filter);
+    required this.cryptoKey,
+    this.filter,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,8 +36,8 @@ class GetCryptoKeyLatestVersionArgs {
 
   factory GetCryptoKeyLatestVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyLatestVersionArgs(
-      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
+      cryptoKey: (map['cryptoKey'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

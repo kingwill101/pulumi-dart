@@ -19,13 +19,10 @@ class GetAuthorizationServerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetAuthorizationServerArgs({
-    required pulumi.Output<String> authsid,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      authsid = pulumi.Input.asInput<String>(authsid),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.authsid,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAuthorizationServerArgs {
 
   factory GetAuthorizationServerArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationServerArgs(
-      authsid: pulumi.Output.create<String>(map['authsid'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      authsid: (map['authsid'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

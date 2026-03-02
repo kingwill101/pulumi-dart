@@ -16,11 +16,9 @@ class QueryLogArgs {
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
   QueryLogArgs({
-    required pulumi.Output<String> cloudwatchLogGroupArn,
-    required pulumi.Output<String> zoneId,
-  }) :
-      cloudwatchLogGroupArn = pulumi.Input.asInput<String>(cloudwatchLogGroupArn),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.cloudwatchLogGroupArn,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class QueryLogArgs {
 
   factory QueryLogArgs.fromMap(Map<String, dynamic> map) {
     return QueryLogArgs(
-      cloudwatchLogGroupArn: pulumi.Output.create<String>(map['cloudwatchLogGroupArn'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

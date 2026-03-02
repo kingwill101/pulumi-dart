@@ -48,19 +48,13 @@ class RegionBackendServiceIamBindingArgs {
   /// [region] The Region in which the created backend service should reside.
   /// [role] The role that should be applied. Only one
   RegionBackendServiceIamBindingArgs({
-    pulumi.Output<RegionBackendServiceIamBindingCondition>? condition,
-    required pulumi.Output<List<String>> members,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<RegionBackendServiceIamBindingCondition>(condition),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+    this.condition,
+    required this.members,
+    this.name,
+    this.project,
+    this.region,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,12 +69,12 @@ class RegionBackendServiceIamBindingArgs {
 
   factory RegionBackendServiceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceIamBindingArgs(
-      condition: map['condition'] == null ? null : pulumi.Output.create<RegionBackendServiceIamBindingCondition>(RegionBackendServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      members: pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      condition: map['condition'] == null ? null : (RegionBackendServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      members: ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

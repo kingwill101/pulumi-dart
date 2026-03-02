@@ -42,29 +42,18 @@ class VmwareNodePoolArgs {
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i).
   VmwareNodePoolArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<VmwareNodeConfig> config,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<VmwareNodePoolAutoscalingConfig>? nodePoolAutoscaling,
-    pulumi.Output<String>? onPremVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> vmwareClusterId,
-    pulumi.Output<String>? vmwareNodePoolId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      config = pulumi.Input.asInput<VmwareNodeConfig>(config),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodePoolAutoscaling = pulumi.Input.asOptionalInput<VmwareNodePoolAutoscalingConfig>(nodePoolAutoscaling),
-      onPremVersion = pulumi.Input.asOptionalInput<String>(onPremVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-      vmwareNodePoolId = pulumi.Input.asOptionalInput<String>(vmwareNodePoolId);
+    this.annotations,
+    required this.config,
+    this.displayName,
+    this.etag,
+    this.location,
+    this.name,
+    this.nodePoolAutoscaling,
+    this.onPremVersion,
+    this.project,
+    required this.vmwareClusterId,
+    this.vmwareNodePoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,17 +73,17 @@ class VmwareNodePoolArgs {
 
   factory VmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return VmwareNodePoolArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      config: pulumi.Output.create<VmwareNodeConfig>(VmwareNodeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : pulumi.Output.create<VmwareNodePoolAutoscalingConfig>(VmwareNodePoolAutoscalingConfig.fromMap((map['nodePoolAutoscaling'] as Map).cast<String, dynamic>())),
-      onPremVersion: map['onPremVersion'] == null ? null : pulumi.Output.create<String>(map['onPremVersion'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      vmwareClusterId: pulumi.Output.create<String>(map['vmwareClusterId'] as String),
-      vmwareNodePoolId: map['vmwareNodePoolId'] == null ? null : pulumi.Output.create<String>(map['vmwareNodePoolId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      config: (VmwareNodeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VmwareNodePoolAutoscalingConfig.fromMap((map['nodePoolAutoscaling'] as Map).cast<String, dynamic>())).input(),
+      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      vmwareClusterId: (map['vmwareClusterId'] as String).input(),
+      vmwareNodePoolId: map['vmwareNodePoolId'] == null ? null : (map['vmwareNodePoolId'] as String).input(),
     );
   }
 }

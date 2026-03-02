@@ -24,17 +24,12 @@ class WorkspaceCollectionArgs {
   /// [tags] Optional.
   /// [workspaceCollectionName] Power BI Embedded Workspace Collection name
   WorkspaceCollectionArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AzureSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? workspaceCollectionName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sku = pulumi.Input.asOptionalInput<AzureSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceCollectionName = pulumi.Input.asOptionalInput<String>(workspaceCollectionName);
+    this.location,
+    required this.resourceGroupName,
+    this.sku,
+    this.tags,
+    this.workspaceCollectionName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class WorkspaceCollectionArgs {
 
   factory WorkspaceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCollectionArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<AzureSku>(AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      workspaceCollectionName: map['workspaceCollectionName'] == null ? null : pulumi.Output.create<String>(map['workspaceCollectionName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sku: map['sku'] == null ? null : (AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      workspaceCollectionName: map['workspaceCollectionName'] == null ? null : (map['workspaceCollectionName'] as String).input(),
     );
   }
 }

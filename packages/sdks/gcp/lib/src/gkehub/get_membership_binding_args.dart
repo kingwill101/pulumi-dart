@@ -24,15 +24,11 @@ class GetMembershipBindingArgs {
   /// [membershipId] The ID of the membership that this binding applies to.
   /// [project] The ID of the project in which the resource belongs.
   GetMembershipBindingArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipBindingId,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipBindingId = pulumi.Input.asInput<String>(membershipBindingId),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.membershipBindingId,
+    required this.membershipId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetMembershipBindingArgs {
 
   factory GetMembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipBindingArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipBindingId: pulumi.Output.create<String>(map['membershipBindingId'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      membershipBindingId: (map['membershipBindingId'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

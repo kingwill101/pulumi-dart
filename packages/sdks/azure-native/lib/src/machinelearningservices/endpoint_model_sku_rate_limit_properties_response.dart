@@ -5,11 +5,11 @@ import 'endpoint_model_sku_rate_limit_rule_properties_response.dart';
 
 class EndpointModelSkuRateLimitPropertiesResponse {
   /// The count value of Call Rate Limit.
-  final double? count;
+  final pulumi.Input<double>? count;
   /// The renewal period in seconds of Call Rate Limit.
-  final double? renewalPeriod;
+  final pulumi.Input<double>? renewalPeriod;
   /// The call rate limit for the model.
-  final List<EndpointModelSkuRateLimitRulePropertiesResponse>? rules;
+  final pulumi.Input<List<EndpointModelSkuRateLimitRulePropertiesResponse>>? rules;
 
   /// Creates a new [EndpointModelSkuRateLimitPropertiesResponse].
   /// [count] The count value of Call Rate Limit.
@@ -25,15 +25,15 @@ class EndpointModelSkuRateLimitPropertiesResponse {
     return <String, dynamic>{
       'count': ?count,
       'renewalPeriod': ?renewalPeriod,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<EndpointModelSkuRateLimitRulePropertiesResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<EndpointModelSkuRateLimitRulePropertiesResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<EndpointModelSkuRateLimitRulePropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory EndpointModelSkuRateLimitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitPropertiesResponse(
-      count: map['count'] == null ? null : map['count'] as double,
-      renewalPeriod: map['renewalPeriod'] == null ? null : map['renewalPeriod'] as double,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePropertiesResponse>(map['rules'], (value) => EndpointModelSkuRateLimitRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      count: map['count'] == null ? null : (map['count'] as double).input(),
+      renewalPeriod: map['renewalPeriod'] == null ? null : (map['renewalPeriod'] as double).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePropertiesResponse>(map['rules'], (value) => EndpointModelSkuRateLimitRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

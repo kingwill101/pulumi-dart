@@ -19,13 +19,10 @@ class GetNspProfileArgs {
   /// [profileName] The name of the NSP profile.
   /// [resourceGroupName] The name of the resource group.
   GetNspProfileArgs({
-    required pulumi.Output<String> networkSecurityPerimeterName,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkSecurityPerimeterName = pulumi.Input.asInput<String>(networkSecurityPerimeterName),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkSecurityPerimeterName,
+    required this.profileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetNspProfileArgs {
 
   factory GetNspProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetNspProfileArgs(
-      networkSecurityPerimeterName: pulumi.Output.create<String>(map['networkSecurityPerimeterName'] as String),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

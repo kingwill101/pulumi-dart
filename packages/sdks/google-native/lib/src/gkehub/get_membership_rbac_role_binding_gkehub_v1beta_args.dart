@@ -18,15 +18,11 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
   GetMembershipRbacRoleBindingGkehubV1betaArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> membershipId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> rbacrolebindingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId);
+    required this.location,
+    required this.membershipId,
+    this.project,
+    required this.rbacrolebindingId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
 
   factory GetMembershipRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipRbacRoleBindingGkehubV1betaArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      rbacrolebindingId: pulumi.Output.create<String>(map['rbacrolebindingId'] as String),
+      location: (map['location'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
     );
   }
 }

@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPublicIpAddressPoolCidrBlocksBlock {
   /// The CIDR block.
-  final String cidrBlock;
+  final pulumi.Input<String> cidrBlock;
   /// The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Public Ip Address Pool Cidr Block.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the Vpc Public IP address pool.
-  final String publicIpAddressPoolId;
+  final pulumi.Input<String> publicIpAddressPoolId;
   /// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The number of occupied IP addresses in the CIDR block.
-  final int totalIpNum;
+  final pulumi.Input<int> totalIpNum;
   /// The total number of available IP addresses in the CIDR block.
-  final int usedIpNum;
+  final pulumi.Input<int> usedIpNum;
 
   /// Creates a new [GetPublicIpAddressPoolCidrBlocksBlock].
   /// [cidrBlock] The CIDR block.
@@ -49,13 +50,13 @@ class GetPublicIpAddressPoolCidrBlocksBlock {
 
   factory GetPublicIpAddressPoolCidrBlocksBlock.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolCidrBlocksBlock(
-      cidrBlock: map['cidrBlock'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] as String,
-      status: map['status'] as String,
-      totalIpNum: map['totalIpNum'] as int,
-      usedIpNum: map['usedIpNum'] as int,
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      publicIpAddressPoolId: (map['publicIpAddressPoolId'] as String).input(),
+      status: (map['status'] as String).input(),
+      totalIpNum: (map['totalIpNum'] as int).input(),
+      usedIpNum: (map['usedIpNum'] as int).input(),
     );
   }
 }

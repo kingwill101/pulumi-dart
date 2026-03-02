@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkforceOidcConfig {
   /// A string to string map of identifiers specific to the custom identity provider (IdP) being used.
-  final Map<String, String>? authenticationRequestExtraParams;
+  final pulumi.Input<Map<String, String>>? authenticationRequestExtraParams;
   /// The OIDC IdP authorization endpoint used to configure your private workforce.
-  final String authorizationEndpoint;
+  final pulumi.Input<String> authorizationEndpoint;
   /// The OIDC IdP client ID used to configure your private workforce.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The OIDC IdP client secret used to configure your private workforce.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
   /// The OIDC IdP issuer used to configure your private workforce.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The OIDC IdP JSON Web Key Set (Jwks) URI used to configure your private workforce.
-  final String jwksUri;
+  final pulumi.Input<String> jwksUri;
   /// The OIDC IdP logout endpoint used to configure your private workforce.
-  final String logoutEndpoint;
+  final pulumi.Input<String> logoutEndpoint;
   /// An array of string identifiers used to refer to the specific pieces of user data or claims that the client application wants to access.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The OIDC IdP token endpoint used to configure your private workforce.
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
   /// The OIDC IdP user information endpoint used to configure your private workforce.
-  final String userInfoEndpoint;
+  final pulumi.Input<String> userInfoEndpoint;
 
   /// Creates a new [WorkforceOidcConfig].
   /// [authenticationRequestExtraParams] A string to string map of identifiers specific to the custom identity provider (IdP) being used.
@@ -64,16 +65,16 @@ class WorkforceOidcConfig {
 
   factory WorkforceOidcConfig.fromMap(Map<String, dynamic> map) {
     return WorkforceOidcConfig(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      authorizationEndpoint: map['authorizationEndpoint'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      issuer: map['issuer'] as String,
-      jwksUri: map['jwksUri'] as String,
-      logoutEndpoint: map['logoutEndpoint'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] as String,
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      jwksUri: (map['jwksUri'] as String).input(),
+      logoutEndpoint: (map['logoutEndpoint'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
     );
   }
 }

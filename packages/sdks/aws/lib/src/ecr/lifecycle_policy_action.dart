@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_action_type.dart';
 
 class LifecyclePolicyAction {
   /// The type of action to take. Currently only 'expire' is supported.
-  final LifecyclePolicyActionType type;
+  final pulumi.Input<LifecyclePolicyActionType> type;
 
   /// Creates a new [LifecyclePolicyAction].
   /// [type] The type of action to take. Currently only 'expire' is supported.
@@ -14,13 +15,13 @@ class LifecyclePolicyAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': type.value,
+      'type': pulumi.Input.mapInputValue<LifecyclePolicyActionType, String>(type, (value) => value.value),
     };
   }
 
   factory LifecyclePolicyAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyAction(
-      type: LifecyclePolicyActionType.fromValue(map['type'] as String),
+      type: (LifecyclePolicyActionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

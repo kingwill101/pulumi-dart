@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObservabilityConfigurationTraceConfiguration {
   /// Implementation provider chosen for tracing App Runner services. Valid values: `AWSXRAY`.
-  final String? vendor;
+  final pulumi.Input<String>? vendor;
 
   /// Creates a new [ObservabilityConfigurationTraceConfiguration].
   /// [vendor] Implementation provider chosen for tracing App Runner services. Valid values: `AWSXRAY`.
@@ -19,7 +20,7 @@ class ObservabilityConfigurationTraceConfiguration {
 
   factory ObservabilityConfigurationTraceConfiguration.fromMap(Map<String, dynamic> map) {
     return ObservabilityConfigurationTraceConfiguration(
-      vendor: map['vendor'] == null ? null : map['vendor'] as String,
+      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Instructions for how to connect to a remote endpoint via a bastion host.
 class ProxyConnection {
   /// SSH Agent socket path. Default to environment variable SSH_AUTH_SOCK if present.
-  final String? agentSocketPath;
+  final pulumi.Input<String>? agentSocketPath;
   /// Max allowed errors on trying to dial the remote host. -1 set count to unlimited. Default value is 10.
-  final int? dialErrorLimit;
+  final pulumi.Input<int>? dialErrorLimit;
   /// The address of the bastion host to connect to.
-  final String host;
+  final pulumi.Input<String> host;
   /// The expected host key to verify the server's identity. If not provided, the host key will be ignored.
-  final String? hostKey;
+  final pulumi.Input<String>? hostKey;
   /// The password we should use for the connection to the bastion host.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// Max number of seconds for each dial attempt. 0 implies no maximum. Default value is 15 seconds.
-  final int? perDialTimeout;
+  final pulumi.Input<int>? perDialTimeout;
   /// The port of the bastion host to connect to.
-  final double? port;
+  final pulumi.Input<double>? port;
   /// The contents of an SSH key to use for the connection. This takes preference over the password if provided.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// The password to use in case the private key is encrypted.
-  final String? privateKeyPassword;
+  final pulumi.Input<String>? privateKeyPassword;
   /// The user that we should use for the connection to the bastion host.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [ProxyConnection].
   /// [agentSocketPath] SSH Agent socket path. Default to environment variable SSH_AUTH_SOCK if present.
@@ -65,16 +66,16 @@ class ProxyConnection {
 
   factory ProxyConnection.fromMap(Map<String, dynamic> map) {
     return ProxyConnection(
-      agentSocketPath: map['agentSocketPath'] == null ? null : map['agentSocketPath'] as String,
-      dialErrorLimit: map['dialErrorLimit'] == null ? null : map['dialErrorLimit'] as int,
-      host: map['host'] as String,
-      hostKey: map['hostKey'] == null ? null : map['hostKey'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      perDialTimeout: map['perDialTimeout'] == null ? null : map['perDialTimeout'] as int,
-      port: map['port'] == null ? null : map['port'] as double,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      privateKeyPassword: map['privateKeyPassword'] == null ? null : map['privateKeyPassword'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      agentSocketPath: map['agentSocketPath'] == null ? null : (map['agentSocketPath'] as String).input(),
+      dialErrorLimit: map['dialErrorLimit'] == null ? null : (map['dialErrorLimit'] as int).input(),
+      host: (map['host'] as String).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      perDialTimeout: map['perDialTimeout'] == null ? null : (map['perDialTimeout'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as double).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      privateKeyPassword: map['privateKeyPassword'] == null ? null : (map['privateKeyPassword'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

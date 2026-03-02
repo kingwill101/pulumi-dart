@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketV2ReplicationConfigurationRuleDestinationMetric {
   /// Threshold within which objects are to be replicated. The only valid value is `15`.
-  final int? minutes;
+  final pulumi.Input<int>? minutes;
   /// Status of replication metrics. Either `Enabled` or `Disabled`.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [BucketV2ReplicationConfigurationRuleDestinationMetric].
   /// [minutes] Threshold within which objects are to be replicated. The only valid value is `15`.
@@ -24,8 +25,8 @@ class BucketV2ReplicationConfigurationRuleDestinationMetric {
 
   factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleDestinationMetric(
-      minutes: map['minutes'] == null ? null : map['minutes'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

@@ -9,29 +9,29 @@ import 'get_app_template_container_volume_mount.dart';
 
 class GetAppTemplateContainer {
   /// A list of extra arguments passed to the container.
-  final List<String> args;
+  final pulumi.Input<List<String>> args;
   /// A command passed to the container to override the default. This is provided as a list of command line elements without spaces.
-  final List<String> commands;
+  final pulumi.Input<List<String>> commands;
   /// The amount of vCPU allocated to the container.
-  final double cpu;
+  final pulumi.Input<double> cpu;
   /// One or more `env` blocks as detailed below.
-  final List<GetAppTemplateContainerEnv> envs;
+  final pulumi.Input<List<GetAppTemplateContainerEnv>> envs;
   /// The amount of ephemeral storage available to the Container App.
-  final String ephemeralStorage;
+  final pulumi.Input<String> ephemeralStorage;
   /// The image to use to create the container.
-  final String image;
+  final pulumi.Input<String> image;
   /// A `liveness_probe` block as detailed below.
-  final List<GetAppTemplateContainerLivenessProbe> livenessProbes;
+  final pulumi.Input<List<GetAppTemplateContainerLivenessProbe>> livenessProbes;
   /// The amount of memory allocated to the container.
-  final String memory;
+  final pulumi.Input<String> memory;
   /// The name of the Container App.
-  final String name;
+  final pulumi.Input<String> name;
   /// A `readiness_probe` block as detailed below.
-  final List<GetAppTemplateContainerReadinessProbe> readinessProbes;
+  final pulumi.Input<List<GetAppTemplateContainerReadinessProbe>> readinessProbes;
   /// A `startup_probe` block as detailed below.
-  final List<GetAppTemplateContainerStartupProbe> startupProbes;
+  final pulumi.Input<List<GetAppTemplateContainerStartupProbe>> startupProbes;
   /// A `volume_mounts` block as detailed below.
-  final List<GetAppTemplateContainerVolumeMount> volumeMounts;
+  final pulumi.Input<List<GetAppTemplateContainerVolumeMount>> volumeMounts;
 
   /// Creates a new [GetAppTemplateContainer].
   /// [args] A list of extra arguments passed to the container.
@@ -66,32 +66,32 @@ class GetAppTemplateContainer {
       'args': args,
       'commands': commands,
       'cpu': cpu,
-      'envs': pulumi.Input.encodeList<GetAppTemplateContainerEnv, Map<String, dynamic>>(envs, (value) => value.toMap()),
+      'envs': pulumi.Input.mapInputValue<List<GetAppTemplateContainerEnv>, List<Map<String, dynamic>>>(envs, (value) => pulumi.Input.encodeList<GetAppTemplateContainerEnv, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ephemeralStorage': ephemeralStorage,
       'image': image,
-      'livenessProbes': pulumi.Input.encodeList<GetAppTemplateContainerLivenessProbe, Map<String, dynamic>>(livenessProbes, (value) => value.toMap()),
+      'livenessProbes': pulumi.Input.mapInputValue<List<GetAppTemplateContainerLivenessProbe>, List<Map<String, dynamic>>>(livenessProbes, (value) => pulumi.Input.encodeList<GetAppTemplateContainerLivenessProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
       'memory': memory,
       'name': name,
-      'readinessProbes': pulumi.Input.encodeList<GetAppTemplateContainerReadinessProbe, Map<String, dynamic>>(readinessProbes, (value) => value.toMap()),
-      'startupProbes': pulumi.Input.encodeList<GetAppTemplateContainerStartupProbe, Map<String, dynamic>>(startupProbes, (value) => value.toMap()),
-      'volumeMounts': pulumi.Input.encodeList<GetAppTemplateContainerVolumeMount, Map<String, dynamic>>(volumeMounts, (value) => value.toMap()),
+      'readinessProbes': pulumi.Input.mapInputValue<List<GetAppTemplateContainerReadinessProbe>, List<Map<String, dynamic>>>(readinessProbes, (value) => pulumi.Input.encodeList<GetAppTemplateContainerReadinessProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'startupProbes': pulumi.Input.mapInputValue<List<GetAppTemplateContainerStartupProbe>, List<Map<String, dynamic>>>(startupProbes, (value) => pulumi.Input.encodeList<GetAppTemplateContainerStartupProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeMounts': pulumi.Input.mapInputValue<List<GetAppTemplateContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<GetAppTemplateContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetAppTemplateContainer.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateContainer(
-      args: (map['args'] as List).cast<String>(),
-      commands: (map['commands'] as List).cast<String>(),
-      cpu: map['cpu'] as double,
-      envs: pulumi.Input.decodeList<GetAppTemplateContainerEnv>(map['envs'], (value) => GetAppTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>())),
-      ephemeralStorage: map['ephemeralStorage'] as String,
-      image: map['image'] as String,
-      livenessProbes: pulumi.Input.decodeList<GetAppTemplateContainerLivenessProbe>(map['livenessProbes'], (value) => GetAppTemplateContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>())),
-      memory: map['memory'] as String,
-      name: map['name'] as String,
-      readinessProbes: pulumi.Input.decodeList<GetAppTemplateContainerReadinessProbe>(map['readinessProbes'], (value) => GetAppTemplateContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>())),
-      startupProbes: pulumi.Input.decodeList<GetAppTemplateContainerStartupProbe>(map['startupProbes'], (value) => GetAppTemplateContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>())),
-      volumeMounts: pulumi.Input.decodeList<GetAppTemplateContainerVolumeMount>(map['volumeMounts'], (value) => GetAppTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>())),
+      args: ((map['args'] as List).cast<String>()).input(),
+      commands: ((map['commands'] as List).cast<String>()).input(),
+      cpu: (map['cpu'] as double).input(),
+      envs: (pulumi.Input.decodeList<GetAppTemplateContainerEnv>(map['envs'], (value) => GetAppTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ephemeralStorage: (map['ephemeralStorage'] as String).input(),
+      image: (map['image'] as String).input(),
+      livenessProbes: (pulumi.Input.decodeList<GetAppTemplateContainerLivenessProbe>(map['livenessProbes'], (value) => GetAppTemplateContainerLivenessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memory: (map['memory'] as String).input(),
+      name: (map['name'] as String).input(),
+      readinessProbes: (pulumi.Input.decodeList<GetAppTemplateContainerReadinessProbe>(map['readinessProbes'], (value) => GetAppTemplateContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startupProbes: (pulumi.Input.decodeList<GetAppTemplateContainerStartupProbe>(map['startupProbes'], (value) => GetAppTemplateContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: (pulumi.Input.decodeList<GetAppTemplateContainerVolumeMount>(map['volumeMounts'], (value) => GetAppTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchRuntimeInfoCurrentUsage {
   /// (Output)
   /// Accelerator type being used, if any.
-  final String? acceleratorType;
+  final pulumi.Input<String>? acceleratorType;
   /// (Output)
   /// Milli (one-thousandth) accelerator..
-  final String? milliAccelerator;
+  final pulumi.Input<String>? milliAccelerator;
   /// (Output)
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs).
-  final String? milliDcu;
+  final pulumi.Input<String>? milliDcu;
   /// (Output)
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
-  final String? milliDcuPremium;
+  final pulumi.Input<String>? milliDcuPremium;
   /// (Output)
   /// Shuffle Storage in gigabytes (GB).
-  final String? shuffleStorageGb;
+  final pulumi.Input<String>? shuffleStorageGb;
   /// (Output)
   /// Shuffle Storage in gigabytes (GB) charged at premium tier.
-  final String? shuffleStorageGbPremium;
+  final pulumi.Input<String>? shuffleStorageGbPremium;
   /// (Output)
   /// The timestamp of the usage snapshot.
-  final String? snapshotTime;
+  final pulumi.Input<String>? snapshotTime;
 
   /// Creates a new [BatchRuntimeInfoCurrentUsage].
   /// [acceleratorType] (Output)
@@ -56,13 +57,13 @@ class BatchRuntimeInfoCurrentUsage {
 
   factory BatchRuntimeInfoCurrentUsage.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfoCurrentUsage(
-      acceleratorType: map['acceleratorType'] == null ? null : map['acceleratorType'] as String,
-      milliAccelerator: map['milliAccelerator'] == null ? null : map['milliAccelerator'] as String,
-      milliDcu: map['milliDcu'] == null ? null : map['milliDcu'] as String,
-      milliDcuPremium: map['milliDcuPremium'] == null ? null : map['milliDcuPremium'] as String,
-      shuffleStorageGb: map['shuffleStorageGb'] == null ? null : map['shuffleStorageGb'] as String,
-      shuffleStorageGbPremium: map['shuffleStorageGbPremium'] == null ? null : map['shuffleStorageGbPremium'] as String,
-      snapshotTime: map['snapshotTime'] == null ? null : map['snapshotTime'] as String,
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      milliAccelerator: map['milliAccelerator'] == null ? null : (map['milliAccelerator'] as String).input(),
+      milliDcu: map['milliDcu'] == null ? null : (map['milliDcu'] as String).input(),
+      milliDcuPremium: map['milliDcuPremium'] == null ? null : (map['milliDcuPremium'] as String).input(),
+      shuffleStorageGb: map['shuffleStorageGb'] == null ? null : (map['shuffleStorageGb'] as String).input(),
+      shuffleStorageGbPremium: map['shuffleStorageGbPremium'] == null ? null : (map['shuffleStorageGbPremium'] as String).input(),
+      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime'] as String).input(),
     );
   }
 }

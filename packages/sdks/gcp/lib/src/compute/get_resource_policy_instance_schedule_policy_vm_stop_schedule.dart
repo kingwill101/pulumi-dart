@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
   /// Specifies the frequency for the operation, using the unix-cron format.
-  final String schedule;
+  final pulumi.Input<String> schedule;
 
   /// Creates a new [GetResourcePolicyInstanceSchedulePolicyVmStopSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
@@ -19,7 +20,7 @@ class GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
 
   factory GetResourcePolicyInstanceSchedulePolicyVmStopSchedule.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyInstanceSchedulePolicyVmStopSchedule(
-      schedule: map['schedule'] as String,
+      schedule: (map['schedule'] as String).input(),
     );
   }
 }

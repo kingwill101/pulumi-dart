@@ -34,23 +34,15 @@ class IamPolicyAssignmentState {
   /// [policyArn] ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IamPolicyAssignmentState({
-    pulumi.Output<String>? assignmentId,
-    pulumi.Output<String>? assignmentName,
-    pulumi.Output<String>? assignmentStatus,
-    pulumi.Output<String>? awsAccountId,
-    pulumi.Output<IamPolicyAssignmentIdentities>? identities,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? policyArn,
-    pulumi.Output<String>? region,
-  }) :
-      assignmentId = pulumi.Input.asOptionalInput<String>(assignmentId),
-      assignmentName = pulumi.Input.asOptionalInput<String>(assignmentName),
-      assignmentStatus = pulumi.Input.asOptionalInput<String>(assignmentStatus),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      identities = pulumi.Input.asOptionalInput<IamPolicyAssignmentIdentities>(identities),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      policyArn = pulumi.Input.asOptionalInput<String>(policyArn),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.assignmentId,
+    this.assignmentName,
+    this.assignmentStatus,
+    this.awsAccountId,
+    this.identities,
+    this.namespace,
+    this.policyArn,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class IamPolicyAssignmentState {
 
   factory IamPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return IamPolicyAssignmentState(
-      assignmentId: map['assignmentId'] == null ? null : pulumi.Output.create<String>(map['assignmentId'] as String),
-      assignmentName: map['assignmentName'] == null ? null : pulumi.Output.create<String>(map['assignmentName'] as String),
-      assignmentStatus: map['assignmentStatus'] == null ? null : pulumi.Output.create<String>(map['assignmentStatus'] as String),
-      awsAccountId: map['awsAccountId'] == null ? null : pulumi.Output.create<String>(map['awsAccountId'] as String),
-      identities: map['identities'] == null ? null : pulumi.Output.create<IamPolicyAssignmentIdentities>(IamPolicyAssignmentIdentities.fromMap((map['identities'] as Map).cast<String, dynamic>())),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      policyArn: map['policyArn'] == null ? null : pulumi.Output.create<String>(map['policyArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      assignmentId: map['assignmentId'] == null ? null : (map['assignmentId'] as String).input(),
+      assignmentName: map['assignmentName'] == null ? null : (map['assignmentName'] as String).input(),
+      assignmentStatus: map['assignmentStatus'] == null ? null : (map['assignmentStatus'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      identities: map['identities'] == null ? null : (IamPolicyAssignmentIdentities.fromMap((map['identities'] as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class GetUserArgs {
   /// [volumeGrants] Optional.
   /// [vpcGrants] Optional.
   GetUserArgs({
-    pulumi.Output<List<GetUserDatabaseGrant>>? databaseGrants,
-    pulumi.Output<List<GetUserDomainGrant>>? domainGrants,
-    pulumi.Output<List<GetUserFirewallGrant>>? firewallGrants,
-    pulumi.Output<List<GetUserImageGrant>>? imageGrants,
-    pulumi.Output<List<GetUserLinodeGrant>>? linodeGrants,
-    pulumi.Output<List<GetUserLongviewGrant>>? longviewGrants,
-    pulumi.Output<List<GetUserNodebalancerGrant>>? nodebalancerGrants,
-    pulumi.Output<List<GetUserStackscriptGrant>>? stackscriptGrants,
-    required pulumi.Output<String> username,
-    pulumi.Output<List<GetUserVolumeGrant>>? volumeGrants,
-    pulumi.Output<List<GetUserVpcGrant>>? vpcGrants,
-  }) :
-      databaseGrants = pulumi.Input.asOptionalInput<List<GetUserDatabaseGrant>>(databaseGrants),
-      domainGrants = pulumi.Input.asOptionalInput<List<GetUserDomainGrant>>(domainGrants),
-      firewallGrants = pulumi.Input.asOptionalInput<List<GetUserFirewallGrant>>(firewallGrants),
-      imageGrants = pulumi.Input.asOptionalInput<List<GetUserImageGrant>>(imageGrants),
-      linodeGrants = pulumi.Input.asOptionalInput<List<GetUserLinodeGrant>>(linodeGrants),
-      longviewGrants = pulumi.Input.asOptionalInput<List<GetUserLongviewGrant>>(longviewGrants),
-      nodebalancerGrants = pulumi.Input.asOptionalInput<List<GetUserNodebalancerGrant>>(nodebalancerGrants),
-      stackscriptGrants = pulumi.Input.asOptionalInput<List<GetUserStackscriptGrant>>(stackscriptGrants),
-      username = pulumi.Input.asInput<String>(username),
-      volumeGrants = pulumi.Input.asOptionalInput<List<GetUserVolumeGrant>>(volumeGrants),
-      vpcGrants = pulumi.Input.asOptionalInput<List<GetUserVpcGrant>>(vpcGrants);
+    this.databaseGrants,
+    this.domainGrants,
+    this.firewallGrants,
+    this.imageGrants,
+    this.linodeGrants,
+    this.longviewGrants,
+    this.nodebalancerGrants,
+    this.stackscriptGrants,
+    required this.username,
+    this.volumeGrants,
+    this.vpcGrants,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      databaseGrants: map['databaseGrants'] == null ? null : pulumi.Output.create<List<GetUserDatabaseGrant>>(pulumi.Input.decodeList<GetUserDatabaseGrant>(map['databaseGrants'], (value) => GetUserDatabaseGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      domainGrants: map['domainGrants'] == null ? null : pulumi.Output.create<List<GetUserDomainGrant>>(pulumi.Input.decodeList<GetUserDomainGrant>(map['domainGrants'], (value) => GetUserDomainGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      firewallGrants: map['firewallGrants'] == null ? null : pulumi.Output.create<List<GetUserFirewallGrant>>(pulumi.Input.decodeList<GetUserFirewallGrant>(map['firewallGrants'], (value) => GetUserFirewallGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      imageGrants: map['imageGrants'] == null ? null : pulumi.Output.create<List<GetUserImageGrant>>(pulumi.Input.decodeList<GetUserImageGrant>(map['imageGrants'], (value) => GetUserImageGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      linodeGrants: map['linodeGrants'] == null ? null : pulumi.Output.create<List<GetUserLinodeGrant>>(pulumi.Input.decodeList<GetUserLinodeGrant>(map['linodeGrants'], (value) => GetUserLinodeGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      longviewGrants: map['longviewGrants'] == null ? null : pulumi.Output.create<List<GetUserLongviewGrant>>(pulumi.Input.decodeList<GetUserLongviewGrant>(map['longviewGrants'], (value) => GetUserLongviewGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      nodebalancerGrants: map['nodebalancerGrants'] == null ? null : pulumi.Output.create<List<GetUserNodebalancerGrant>>(pulumi.Input.decodeList<GetUserNodebalancerGrant>(map['nodebalancerGrants'], (value) => GetUserNodebalancerGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      stackscriptGrants: map['stackscriptGrants'] == null ? null : pulumi.Output.create<List<GetUserStackscriptGrant>>(pulumi.Input.decodeList<GetUserStackscriptGrant>(map['stackscriptGrants'], (value) => GetUserStackscriptGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      username: pulumi.Output.create<String>(map['username'] as String),
-      volumeGrants: map['volumeGrants'] == null ? null : pulumi.Output.create<List<GetUserVolumeGrant>>(pulumi.Input.decodeList<GetUserVolumeGrant>(map['volumeGrants'], (value) => GetUserVolumeGrant.fromMap((value as Map).cast<String, dynamic>()))),
-      vpcGrants: map['vpcGrants'] == null ? null : pulumi.Output.create<List<GetUserVpcGrant>>(pulumi.Input.decodeList<GetUserVpcGrant>(map['vpcGrants'], (value) => GetUserVpcGrant.fromMap((value as Map).cast<String, dynamic>()))),
+      databaseGrants: map['databaseGrants'] == null ? null : (pulumi.Input.decodeList<GetUserDatabaseGrant>(map['databaseGrants'], (value) => GetUserDatabaseGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainGrants: map['domainGrants'] == null ? null : (pulumi.Input.decodeList<GetUserDomainGrant>(map['domainGrants'], (value) => GetUserDomainGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallGrants: map['firewallGrants'] == null ? null : (pulumi.Input.decodeList<GetUserFirewallGrant>(map['firewallGrants'], (value) => GetUserFirewallGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageGrants: map['imageGrants'] == null ? null : (pulumi.Input.decodeList<GetUserImageGrant>(map['imageGrants'], (value) => GetUserImageGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linodeGrants: map['linodeGrants'] == null ? null : (pulumi.Input.decodeList<GetUserLinodeGrant>(map['linodeGrants'], (value) => GetUserLinodeGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      longviewGrants: map['longviewGrants'] == null ? null : (pulumi.Input.decodeList<GetUserLongviewGrant>(map['longviewGrants'], (value) => GetUserLongviewGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodebalancerGrants: map['nodebalancerGrants'] == null ? null : (pulumi.Input.decodeList<GetUserNodebalancerGrant>(map['nodebalancerGrants'], (value) => GetUserNodebalancerGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackscriptGrants: map['stackscriptGrants'] == null ? null : (pulumi.Input.decodeList<GetUserStackscriptGrant>(map['stackscriptGrants'], (value) => GetUserStackscriptGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      username: (map['username'] as String).input(),
+      volumeGrants: map['volumeGrants'] == null ? null : (pulumi.Input.decodeList<GetUserVolumeGrant>(map['volumeGrants'], (value) => GetUserVolumeGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcGrants: map['vpcGrants'] == null ? null : (pulumi.Input.decodeList<GetUserVpcGrant>(map['vpcGrants'], (value) => GetUserVpcGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

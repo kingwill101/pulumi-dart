@@ -24,17 +24,12 @@ class WafRulesetArgs {
   /// [siteVersion] Optional.
   /// [status] Rule Set Status
   WafRulesetArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> phase,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-    pulumi.Output<String>? status,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      phase = pulumi.Input.asInput<String>(phase),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.name,
+    required this.phase,
+    required this.siteId,
+    this.siteVersion,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class WafRulesetArgs {
 
   factory WafRulesetArgs.fromMap(Map<String, dynamic> map) {
     return WafRulesetArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      phase: pulumi.Output.create<String>(map['phase'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      phase: (map['phase'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

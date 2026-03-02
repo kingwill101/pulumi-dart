@@ -25,17 +25,12 @@ class GetJobStepArgs {
   /// [serverName] The name of the server.
   /// [stepName] The name of the job step.
   GetJobStepArgs({
-    required pulumi.Output<String> jobAgentName,
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    required pulumi.Output<String> stepName,
-  }) :
-      jobAgentName = pulumi.Input.asInput<String>(jobAgentName),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      stepName = pulumi.Input.asInput<String>(stepName);
+    required this.jobAgentName,
+    required this.jobName,
+    required this.resourceGroupName,
+    required this.serverName,
+    required this.stepName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetJobStepArgs {
 
   factory GetJobStepArgs.fromMap(Map<String, dynamic> map) {
     return GetJobStepArgs(
-      jobAgentName: pulumi.Output.create<String>(map['jobAgentName'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      stepName: pulumi.Output.create<String>(map['stepName'] as String),
+      jobAgentName: (map['jobAgentName'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      stepName: (map['stepName'] as String).input(),
     );
   }
 }

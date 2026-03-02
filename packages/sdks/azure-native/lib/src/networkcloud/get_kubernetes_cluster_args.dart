@@ -16,11 +16,9 @@ class GetKubernetesClusterArgs {
   /// [kubernetesClusterName] The name of the Kubernetes cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetKubernetesClusterArgs({
-    required pulumi.Output<String> kubernetesClusterName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      kubernetesClusterName = pulumi.Input.asInput<String>(kubernetesClusterName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.kubernetesClusterName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetKubernetesClusterArgs {
 
   factory GetKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterArgs(
-      kubernetesClusterName: pulumi.Output.create<String>(map['kubernetesClusterName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      kubernetesClusterName: (map['kubernetesClusterName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

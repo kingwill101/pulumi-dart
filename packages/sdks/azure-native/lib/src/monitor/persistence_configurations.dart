@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Persistence options to all pipelines in the instance.
 class PersistenceConfigurations {
   /// The name of the mounted persistent volume.
-  final String persistentVolumeName;
+  final pulumi.Input<String> persistentVolumeName;
 
   /// Creates a new [PersistenceConfigurations].
   /// [persistentVolumeName] The name of the mounted persistent volume.
@@ -20,7 +21,7 @@ class PersistenceConfigurations {
 
   factory PersistenceConfigurations.fromMap(Map<String, dynamic> map) {
     return PersistenceConfigurations(
-      persistentVolumeName: map['persistentVolumeName'] as String,
+      persistentVolumeName: (map['persistentVolumeName'] as String).input(),
     );
   }
 }

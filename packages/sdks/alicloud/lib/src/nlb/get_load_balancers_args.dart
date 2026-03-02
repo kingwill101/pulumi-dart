@@ -51,35 +51,21 @@ class GetLoadBalancersArgs {
   /// [vpcIds] The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
   /// [zoneId] The name of the zone.
   GetLoadBalancersArgs({
-    pulumi.Output<String>? addressIpVersion,
-    pulumi.Output<String>? addressType,
-    pulumi.Output<String>? dnsName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? ipv6AddressType,
-    pulumi.Output<String>? loadBalancerBusinessStatus,
-    pulumi.Output<List<String>>? loadBalancerNames,
-    pulumi.Output<String>? nameRegex,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<String>>? vpcIds,
-    pulumi.Output<String>? zoneId,
-  }) :
-      addressIpVersion = pulumi.Input.asOptionalInput<String>(addressIpVersion),
-      addressType = pulumi.Input.asOptionalInput<String>(addressType),
-      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      ipv6AddressType = pulumi.Input.asOptionalInput<String>(ipv6AddressType),
-      loadBalancerBusinessStatus = pulumi.Input.asOptionalInput<String>(loadBalancerBusinessStatus),
-      loadBalancerNames = pulumi.Input.asOptionalInput<List<String>>(loadBalancerNames),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcIds = pulumi.Input.asOptionalInput<List<String>>(vpcIds),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.addressIpVersion,
+    this.addressType,
+    this.dnsName,
+    this.ids,
+    this.ipv6AddressType,
+    this.loadBalancerBusinessStatus,
+    this.loadBalancerNames,
+    this.nameRegex,
+    this.outputFile,
+    this.resourceGroupId,
+    this.status,
+    this.tags,
+    this.vpcIds,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -102,20 +88,20 @@ class GetLoadBalancersArgs {
 
   factory GetLoadBalancersArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : pulumi.Output.create<String>(map['addressIpVersion'] as String),
-      addressType: map['addressType'] == null ? null : pulumi.Output.create<String>(map['addressType'] as String),
-      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : pulumi.Output.create<String>(map['ipv6AddressType'] as String),
-      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : pulumi.Output.create<String>(map['loadBalancerBusinessStatus'] as String),
-      loadBalancerNames: map['loadBalancerNames'] == null ? null : pulumi.Output.create<List<String>>((map['loadBalancerNames'] as List).cast<String>()),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcIds: map['vpcIds'] == null ? null : pulumi.Output.create<List<String>>((map['vpcIds'] as List).cast<String>()),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType'] as String).input(),
+      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : (map['loadBalancerBusinessStatus'] as String).input(),
+      loadBalancerNames: map['loadBalancerNames'] == null ? null : ((map['loadBalancerNames'] as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

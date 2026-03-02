@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cni configuration
 class CniConfigResponse {
   /// Pod Subnet
-  final String podSubnet;
+  final pulumi.Input<String> podSubnet;
   /// Service subnet
-  final String serviceSubnet;
+  final pulumi.Input<String> serviceSubnet;
   /// Cni type
-  final String type;
+  final pulumi.Input<String> type;
   /// Cni version
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [CniConfigResponse].
   /// [podSubnet] Pod Subnet
@@ -35,10 +36,10 @@ class CniConfigResponse {
 
   factory CniConfigResponse.fromMap(Map<String, dynamic> map) {
     return CniConfigResponse(
-      podSubnet: map['podSubnet'] as String,
-      serviceSubnet: map['serviceSubnet'] as String,
-      type: map['type'] as String,
-      version: map['version'] as String,
+      podSubnet: (map['podSubnet'] as String).input(),
+      serviceSubnet: (map['serviceSubnet'] as String).input(),
+      type: (map['type'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

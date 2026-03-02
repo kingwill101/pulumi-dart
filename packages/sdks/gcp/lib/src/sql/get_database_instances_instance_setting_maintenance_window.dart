@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabaseInstancesInstanceSettingMaintenanceWindow {
   /// Day of week (1-7), starting on Monday
-  final int day;
+  final pulumi.Input<int> day;
   /// Hour of day (0-23), ignored if day not set
-  final int hour;
+  final pulumi.Input<int> hour;
   /// Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
-  final String updateTrack;
+  final pulumi.Input<String> updateTrack;
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingMaintenanceWindow].
   /// [day] Day of week (1-7), starting on Monday
@@ -29,9 +30,9 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindow {
 
   factory GetDatabaseInstancesInstanceSettingMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingMaintenanceWindow(
-      day: map['day'] as int,
-      hour: map['hour'] as int,
-      updateTrack: map['updateTrack'] as String,
+      day: (map['day'] as int).input(),
+      hour: (map['hour'] as int).input(),
+      updateTrack: (map['updateTrack'] as String).input(),
     );
   }
 }

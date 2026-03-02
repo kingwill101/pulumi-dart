@@ -26,17 +26,12 @@ class ResourceServerArgs {
   /// [scopes] A list of Authorization Scope.
   /// [userPoolId] User pool the client belongs to.
   ResourceServerArgs({
-    required pulumi.Output<String> identifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ResourceServerScope>>? scopes,
-    required pulumi.Output<String> userPoolId,
-  }) :
-      identifier = pulumi.Input.asInput<String>(identifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scopes = pulumi.Input.asOptionalInput<List<ResourceServerScope>>(scopes),
-      userPoolId = pulumi.Input.asInput<String>(userPoolId);
+    required this.identifier,
+    this.name,
+    this.region,
+    this.scopes,
+    required this.userPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ResourceServerArgs {
 
   factory ResourceServerArgs.fromMap(Map<String, dynamic> map) {
     return ResourceServerArgs(
-      identifier: pulumi.Output.create<String>(map['identifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<ResourceServerScope>>(pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))),
-      userPoolId: pulumi.Output.create<String>(map['userPoolId'] as String),
+      identifier: (map['identifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scopes: map['scopes'] == null ? null : (pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userPoolId: (map['userPoolId'] as String).input(),
     );
   }
 }

@@ -30,21 +30,14 @@ class RegistryEnterpriseRepoState {
   /// [repoType] The type of the repository. Valid values:
   /// [summary] The summary about the repository.
   RegistryEnterpriseRepoState({
-    pulumi.Output<String>? detail,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namespace,
-    pulumi.Output<String>? repoId,
-    pulumi.Output<String>? repoType,
-    pulumi.Output<String>? summary,
-  }) :
-      detail = pulumi.Input.asOptionalInput<String>(detail),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asOptionalInput<String>(namespace),
-      repoId = pulumi.Input.asOptionalInput<String>(repoId),
-      repoType = pulumi.Input.asOptionalInput<String>(repoType),
-      summary = pulumi.Input.asOptionalInput<String>(summary);
+    this.detail,
+    this.instanceId,
+    this.name,
+    this.namespace,
+    this.repoId,
+    this.repoType,
+    this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class RegistryEnterpriseRepoState {
 
   factory RegistryEnterpriseRepoState.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseRepoState(
-      detail: map['detail'] == null ? null : pulumi.Output.create<String>(map['detail'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespace: map['namespace'] == null ? null : pulumi.Output.create<String>(map['namespace'] as String),
-      repoId: map['repoId'] == null ? null : pulumi.Output.create<String>(map['repoId'] as String),
-      repoType: map['repoType'] == null ? null : pulumi.Output.create<String>(map['repoType'] as String),
-      summary: map['summary'] == null ? null : pulumi.Output.create<String>(map['summary'] as String),
+      detail: map['detail'] == null ? null : (map['detail'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      repoId: map['repoId'] == null ? null : (map['repoId'] as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
     );
   }
 }

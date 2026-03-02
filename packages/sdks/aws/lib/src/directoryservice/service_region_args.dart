@@ -29,19 +29,13 @@ class ServiceRegionArgs {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSettings] VPC information in the replicated Region. Detailed below.
   ServiceRegionArgs({
-    pulumi.Output<int>? desiredNumberOfDomainControllers,
-    required pulumi.Output<String> directoryId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> regionName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<ServiceRegionVpcSettings> vpcSettings,
-  }) :
-      desiredNumberOfDomainControllers = pulumi.Input.asOptionalInput<int>(desiredNumberOfDomainControllers),
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionName = pulumi.Input.asInput<String>(regionName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcSettings = pulumi.Input.asInput<ServiceRegionVpcSettings>(vpcSettings);
+    this.desiredNumberOfDomainControllers,
+    required this.directoryId,
+    this.region,
+    required this.regionName,
+    this.tags,
+    required this.vpcSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ServiceRegionArgs {
 
   factory ServiceRegionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceRegionArgs(
-      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : pulumi.Output.create<int>(map['desiredNumberOfDomainControllers'] as int),
-      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regionName: pulumi.Output.create<String>(map['regionName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcSettings: pulumi.Output.create<ServiceRegionVpcSettings>(ServiceRegionVpcSettings.fromMap((map['vpcSettings'] as Map).cast<String, dynamic>())),
+      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : (map['desiredNumberOfDomainControllers'] as int).input(),
+      directoryId: (map['directoryId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regionName: (map['regionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcSettings: (ServiceRegionVpcSettings.fromMap((map['vpcSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

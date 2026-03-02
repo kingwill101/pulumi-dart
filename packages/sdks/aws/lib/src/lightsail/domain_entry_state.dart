@@ -27,19 +27,13 @@ class DomainEntryState {
   /// [target] Target of the domain entry.
   /// [type] Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   DomainEntryState({
-    pulumi.Output<String>? domainName,
-    pulumi.Output<bool>? isAlias,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? target,
-    pulumi.Output<String>? type,
-  }) :
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      isAlias = pulumi.Input.asOptionalInput<bool>(isAlias),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asOptionalInput<String>(target),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.domainName,
+    this.isAlias,
+    this.name,
+    this.region,
+    this.target,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class DomainEntryState {
 
   factory DomainEntryState.fromMap(Map<String, dynamic> map) {
     return DomainEntryState(
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      isAlias: map['isAlias'] == null ? null : pulumi.Output.create<bool>(map['isAlias'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      target: map['target'] == null ? null : pulumi.Output.create<String>(map['target'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      isAlias: map['isAlias'] == null ? null : (map['isAlias'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

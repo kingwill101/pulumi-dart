@@ -52,35 +52,21 @@ class ServiceAttachmentComputeV1Args {
   /// [requestId] An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   /// [targetService] The URL of a service serving the endpoint identified by this service attachment.
   ServiceAttachmentComputeV1Args({
-    pulumi.Output<ServiceAttachmentConnectionPreferenceComputeV1>? connectionPreference,
-    pulumi.Output<List<ServiceAttachmentConsumerProjectLimitComputeV1>>? consumerAcceptLists,
-    pulumi.Output<List<String>>? consumerRejectLists,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<String>>? domainNames,
-    pulumi.Output<bool>? enableProxyProtocol,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? natSubnets,
-    pulumi.Output<String>? producerForwardingRule,
-    pulumi.Output<String>? project,
-    pulumi.Output<bool>? reconcileConnections,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<String>? targetService,
-  }) :
-      connectionPreference = pulumi.Input.asOptionalInput<ServiceAttachmentConnectionPreferenceComputeV1>(connectionPreference),
-      consumerAcceptLists = pulumi.Input.asOptionalInput<List<ServiceAttachmentConsumerProjectLimitComputeV1>>(consumerAcceptLists),
-      consumerRejectLists = pulumi.Input.asOptionalInput<List<String>>(consumerRejectLists),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainNames = pulumi.Input.asOptionalInput<List<String>>(domainNames),
-      enableProxyProtocol = pulumi.Input.asOptionalInput<bool>(enableProxyProtocol),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natSubnets = pulumi.Input.asOptionalInput<List<String>>(natSubnets),
-      producerForwardingRule = pulumi.Input.asOptionalInput<String>(producerForwardingRule),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reconcileConnections = pulumi.Input.asOptionalInput<bool>(reconcileConnections),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      targetService = pulumi.Input.asOptionalInput<String>(targetService);
+    this.connectionPreference,
+    this.consumerAcceptLists,
+    this.consumerRejectLists,
+    this.description,
+    this.domainNames,
+    this.enableProxyProtocol,
+    this.name,
+    this.natSubnets,
+    this.producerForwardingRule,
+    this.project,
+    this.reconcileConnections,
+    required this.region,
+    this.requestId,
+    this.targetService,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class ServiceAttachmentComputeV1Args {
 
   factory ServiceAttachmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentComputeV1Args(
-      connectionPreference: map['connectionPreference'] == null ? null : pulumi.Output.create<ServiceAttachmentConnectionPreferenceComputeV1>(ServiceAttachmentConnectionPreferenceComputeV1.fromValue(map['connectionPreference'] as String)),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : pulumi.Output.create<List<ServiceAttachmentConsumerProjectLimitComputeV1>>(pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitComputeV1>(map['consumerAcceptLists'], (value) => ServiceAttachmentConsumerProjectLimitComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
-      consumerRejectLists: map['consumerRejectLists'] == null ? null : pulumi.Output.create<List<String>>((map['consumerRejectLists'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainNames: map['domainNames'] == null ? null : pulumi.Output.create<List<String>>((map['domainNames'] as List).cast<String>()),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : pulumi.Output.create<bool>(map['enableProxyProtocol'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natSubnets: map['natSubnets'] == null ? null : pulumi.Output.create<List<String>>((map['natSubnets'] as List).cast<String>()),
-      producerForwardingRule: map['producerForwardingRule'] == null ? null : pulumi.Output.create<String>(map['producerForwardingRule'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      reconcileConnections: map['reconcileConnections'] == null ? null : pulumi.Output.create<bool>(map['reconcileConnections'] as bool),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      targetService: map['targetService'] == null ? null : pulumi.Output.create<String>(map['targetService'] as String),
+      connectionPreference: map['connectionPreference'] == null ? null : (ServiceAttachmentConnectionPreferenceComputeV1.fromValue(map['connectionPreference'] as String)).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitComputeV1>(map['consumerAcceptLists'], (value) => ServiceAttachmentConsumerProjectLimitComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerRejectLists: map['consumerRejectLists'] == null ? null : ((map['consumerRejectLists'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainNames: map['domainNames'] == null ? null : ((map['domainNames'] as List).cast<String>()).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natSubnets: map['natSubnets'] == null ? null : ((map['natSubnets'] as List).cast<String>()).input(),
+      producerForwardingRule: map['producerForwardingRule'] == null ? null : (map['producerForwardingRule'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      reconcileConnections: map['reconcileConnections'] == null ? null : (map['reconcileConnections'] as bool).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      targetService: map['targetService'] == null ? null : (map['targetService'] as String).input(),
     );
   }
 }

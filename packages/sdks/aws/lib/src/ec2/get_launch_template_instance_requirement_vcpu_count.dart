@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLaunchTemplateInstanceRequirementVcpuCount {
-  final int max;
-  final int min;
+  final pulumi.Input<int> max;
+  final pulumi.Input<int> min;
 
   /// Creates a new [GetLaunchTemplateInstanceRequirementVcpuCount].
   /// [max] Required.
@@ -22,8 +23,8 @@ class GetLaunchTemplateInstanceRequirementVcpuCount {
 
   factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementVcpuCount(
-      max: map['max'] as int,
-      min: map['min'] as int,
+      max: (map['max'] as int).input(),
+      min: (map['min'] as int).input(),
     );
   }
 }

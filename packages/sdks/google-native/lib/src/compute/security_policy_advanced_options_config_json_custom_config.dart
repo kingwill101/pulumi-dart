@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   /// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
-  final List<String>? contentTypes;
+  final pulumi.Input<List<String>>? contentTypes;
 
   /// Creates a new [SecurityPolicyAdvancedOptionsConfigJsonCustomConfig].
   /// [contentTypes] A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
@@ -19,7 +20,7 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
 
   factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(
-      contentTypes: map['contentTypes'] == null ? null : (map['contentTypes'] as List).cast<String>(),
+      contentTypes: map['contentTypes'] == null ? null : ((map['contentTypes'] as List).cast<String>()).input(),
     );
   }
 }

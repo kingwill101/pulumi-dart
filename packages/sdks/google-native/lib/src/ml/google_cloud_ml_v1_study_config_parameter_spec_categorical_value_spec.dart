@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   /// Must be specified if type is `CATEGORICAL`. The list of possible categories.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec].
   /// [values] Must be specified if type is `CATEGORICAL`. The list of possible categories.
@@ -19,7 +20,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

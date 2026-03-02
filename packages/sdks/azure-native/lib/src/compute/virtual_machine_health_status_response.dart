@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_view_status_response.dart';
 
 /// The health status of the VM.
 class VirtualMachineHealthStatusResponse {
   /// The health status information for the VM.
-  final InstanceViewStatusResponse status;
+  final pulumi.Input<InstanceViewStatusResponse> status;
 
   /// Creates a new [VirtualMachineHealthStatusResponse].
   /// [status] The health status information for the VM.
@@ -15,13 +16,13 @@ class VirtualMachineHealthStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': status.toMap(),
+      'status': pulumi.Input.mapInputValue<InstanceViewStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineHealthStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineHealthStatusResponse(
-      status: InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      status: (InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

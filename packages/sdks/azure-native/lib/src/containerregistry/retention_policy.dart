@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The retention policy for a container registry.
 class RetentionPolicy {
   /// The number of days to retain an untagged manifest after which it gets purged.
-  final int? days;
+  final pulumi.Input<int>? days;
   /// The value that indicates whether the policy is enabled or not.
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [RetentionPolicy].
   /// [days] The number of days to retain an untagged manifest after which it gets purged.
@@ -25,8 +26,8 @@ class RetentionPolicy {
 
   factory RetentionPolicy.fromMap(Map<String, dynamic> map) {
     return RetentionPolicy(
-      days: map['days'] == null ? null : map['days'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      days: map['days'] == null ? null : (map['days'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

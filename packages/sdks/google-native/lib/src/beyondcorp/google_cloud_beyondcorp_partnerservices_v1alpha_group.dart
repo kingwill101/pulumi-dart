@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message to capture group information
 class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
   /// The group email id
-  final String? email;
+  final pulumi.Input<String>? email;
   /// Google group id
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaGroup].
   /// [email] The group email id
@@ -25,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaGroup(
-      email: map['email'] == null ? null : map['email'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

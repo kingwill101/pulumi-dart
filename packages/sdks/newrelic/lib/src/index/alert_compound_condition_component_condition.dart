@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertCompoundConditionComponentCondition {
   /// The identifier that will be used in the compound alert condition's `trigger_expression` (e.g., 'a', 'b', 'c', 'd', 'e').
-  final String alias;
+  final pulumi.Input<String> alias;
   /// The ID of the existing alert condition to use as a component.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [AlertCompoundConditionComponentCondition].
   /// [alias] The identifier that will be used in the compound alert condition's `trigger_expression` (e.g., 'a', 'b', 'c', 'd', 'e').
@@ -24,8 +25,8 @@ class AlertCompoundConditionComponentCondition {
 
   factory AlertCompoundConditionComponentCondition.fromMap(Map<String, dynamic> map) {
     return AlertCompoundConditionComponentCondition(
-      alias: map['alias'] as String,
-      id: map['id'] as String,
+      alias: (map['alias'] as String).input(),
+      id: (map['id'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystemTopicEventSubscriptionAzureFunctionEndpoint {
   /// Specifies the ID of the Function where the Event Subscription will receive events. This must be the functions ID in format {function_app.id}/functions/{name}.
-  final String functionId;
+  final pulumi.Input<String> functionId;
   /// Maximum number of events per batch.
-  final int? maxEventsPerBatch;
+  final pulumi.Input<int>? maxEventsPerBatch;
   /// Preferred batch size in Kilobytes.
-  final int? preferredBatchSizeInKilobytes;
+  final pulumi.Input<int>? preferredBatchSizeInKilobytes;
 
   /// Creates a new [SystemTopicEventSubscriptionAzureFunctionEndpoint].
   /// [functionId] Specifies the ID of the Function where the Event Subscription will receive events. This must be the functions ID in format {function_app.id}/functions/{name}.
@@ -29,9 +30,9 @@ class SystemTopicEventSubscriptionAzureFunctionEndpoint {
 
   factory SystemTopicEventSubscriptionAzureFunctionEndpoint.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionAzureFunctionEndpoint(
-      functionId: map['functionId'] as String,
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : map['maxEventsPerBatch'] as int,
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : map['preferredBatchSizeInKilobytes'] as int,
+      functionId: (map['functionId'] as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
     );
   }
 }

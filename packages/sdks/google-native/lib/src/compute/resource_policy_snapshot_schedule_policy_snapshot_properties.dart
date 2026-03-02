@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specified snapshot properties for scheduled snapshots created by this policy.
 class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   /// Chain name that the snapshot is created in.
-  final String? chainName;
+  final pulumi.Input<String>? chainName;
   /// Indication to perform a 'guest aware' snapshot.
-  final bool? guestFlush;
+  final pulumi.Input<bool>? guestFlush;
   /// Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
   /// Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
-  final List<String>? storageLocations;
+  final pulumi.Input<List<String>>? storageLocations;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicySnapshotProperties].
   /// [chainName] Chain name that the snapshot is created in.
@@ -35,10 +36,10 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 
   factory ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicySnapshotProperties(
-      chainName: map['chainName'] == null ? null : map['chainName'] as String,
-      guestFlush: map['guestFlush'] == null ? null : map['guestFlush'] as bool,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      storageLocations: map['storageLocations'] == null ? null : (map['storageLocations'] as List).cast<String>(),
+      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
     );
   }
 }

@@ -31,21 +31,14 @@ class IntegrationRuntimeAzureArgs {
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Azure Integration Runtime to be created.
   /// [timeToLiveMin] Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
   IntegrationRuntimeAzureArgs({
-    pulumi.Output<String>? computeType,
-    pulumi.Output<int>? coreCount,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> synapseWorkspaceId,
-    pulumi.Output<int>? timeToLiveMin,
-  }) :
-      computeType = pulumi.Input.asOptionalInput<String>(computeType),
-      coreCount = pulumi.Input.asOptionalInput<int>(coreCount),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      synapseWorkspaceId = pulumi.Input.asInput<String>(synapseWorkspaceId),
-      timeToLiveMin = pulumi.Input.asOptionalInput<int>(timeToLiveMin);
+    this.computeType,
+    this.coreCount,
+    this.description,
+    this.location,
+    this.name,
+    required this.synapseWorkspaceId,
+    this.timeToLiveMin,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IntegrationRuntimeAzureArgs {
 
   factory IntegrationRuntimeAzureArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeAzureArgs(
-      computeType: map['computeType'] == null ? null : pulumi.Output.create<String>(map['computeType'] as String),
-      coreCount: map['coreCount'] == null ? null : pulumi.Output.create<int>(map['coreCount'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      synapseWorkspaceId: pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
-      timeToLiveMin: map['timeToLiveMin'] == null ? null : pulumi.Output.create<int>(map['timeToLiveMin'] as int),
+      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
+      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin'] as int).input(),
     );
   }
 }

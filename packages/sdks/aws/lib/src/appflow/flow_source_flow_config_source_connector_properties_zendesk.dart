@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
-  final String object;
+  final pulumi.Input<String> object;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesZendesk].
   /// [object] Required.
@@ -18,7 +19,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesZendesk(
-      object: map['object'] as String,
+      object: (map['object'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specification for using a Virtual Network.
 class VirtualNetworkProfileResponse {
   /// Resource id of the Virtual Network.
-  final String id;
+  final pulumi.Input<String> id;
   /// Name of the Virtual Network (read-only).
-  final String name;
+  final pulumi.Input<String> name;
   /// Subnet within the Virtual Network.
-  final String? subnet;
+  final pulumi.Input<String>? subnet;
   /// Resource type of the Virtual Network (read-only).
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [VirtualNetworkProfileResponse].
   /// [id] Resource id of the Virtual Network.
@@ -35,10 +36,10 @@ class VirtualNetworkProfileResponse {
 
   factory VirtualNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkProfileResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      subnet: map['subnet'] == null ? null : map['subnet'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

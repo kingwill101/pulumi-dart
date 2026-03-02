@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiBrandingLogo {
   /// Image URL.
-  final String? url;
+  final pulumi.Input<String>? url;
 
   /// Creates a new [WidgetConfigUiBrandingLogo].
   /// [url] Image URL.
@@ -19,7 +20,7 @@ class WidgetConfigUiBrandingLogo {
 
   factory WidgetConfigUiBrandingLogo.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBrandingLogo(
-      url: map['url'] == null ? null : map['url'] as String,
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

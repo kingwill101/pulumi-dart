@@ -37,27 +37,17 @@ class SpringCloudAppCosmosDBAssociationState {
   /// [name] Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   /// [springCloudAppId] Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   SpringCloudAppCosmosDBAssociationState({
-    pulumi.Output<String>? apiType,
-    pulumi.Output<String>? cosmosdbAccessKey,
-    pulumi.Output<String>? cosmosdbAccountId,
-    pulumi.Output<String>? cosmosdbCassandraKeyspaceName,
-    pulumi.Output<String>? cosmosdbGremlinDatabaseName,
-    pulumi.Output<String>? cosmosdbGremlinGraphName,
-    pulumi.Output<String>? cosmosdbMongoDatabaseName,
-    pulumi.Output<String>? cosmosdbSqlDatabaseName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? springCloudAppId,
-  }) :
-      apiType = pulumi.Input.asOptionalInput<String>(apiType),
-      cosmosdbAccessKey = pulumi.Input.asOptionalInput<String>(cosmosdbAccessKey),
-      cosmosdbAccountId = pulumi.Input.asOptionalInput<String>(cosmosdbAccountId),
-      cosmosdbCassandraKeyspaceName = pulumi.Input.asOptionalInput<String>(cosmosdbCassandraKeyspaceName),
-      cosmosdbGremlinDatabaseName = pulumi.Input.asOptionalInput<String>(cosmosdbGremlinDatabaseName),
-      cosmosdbGremlinGraphName = pulumi.Input.asOptionalInput<String>(cosmosdbGremlinGraphName),
-      cosmosdbMongoDatabaseName = pulumi.Input.asOptionalInput<String>(cosmosdbMongoDatabaseName),
-      cosmosdbSqlDatabaseName = pulumi.Input.asOptionalInput<String>(cosmosdbSqlDatabaseName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      springCloudAppId = pulumi.Input.asOptionalInput<String>(springCloudAppId);
+    this.apiType,
+    this.cosmosdbAccessKey,
+    this.cosmosdbAccountId,
+    this.cosmosdbCassandraKeyspaceName,
+    this.cosmosdbGremlinDatabaseName,
+    this.cosmosdbGremlinGraphName,
+    this.cosmosdbMongoDatabaseName,
+    this.cosmosdbSqlDatabaseName,
+    this.name,
+    this.springCloudAppId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class SpringCloudAppCosmosDBAssociationState {
 
   factory SpringCloudAppCosmosDBAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppCosmosDBAssociationState(
-      apiType: map['apiType'] == null ? null : pulumi.Output.create<String>(map['apiType'] as String),
-      cosmosdbAccessKey: map['cosmosdbAccessKey'] == null ? null : pulumi.Output.create<String>(map['cosmosdbAccessKey'] as String),
-      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : pulumi.Output.create<String>(map['cosmosdbAccountId'] as String),
-      cosmosdbCassandraKeyspaceName: map['cosmosdbCassandraKeyspaceName'] == null ? null : pulumi.Output.create<String>(map['cosmosdbCassandraKeyspaceName'] as String),
-      cosmosdbGremlinDatabaseName: map['cosmosdbGremlinDatabaseName'] == null ? null : pulumi.Output.create<String>(map['cosmosdbGremlinDatabaseName'] as String),
-      cosmosdbGremlinGraphName: map['cosmosdbGremlinGraphName'] == null ? null : pulumi.Output.create<String>(map['cosmosdbGremlinGraphName'] as String),
-      cosmosdbMongoDatabaseName: map['cosmosdbMongoDatabaseName'] == null ? null : pulumi.Output.create<String>(map['cosmosdbMongoDatabaseName'] as String),
-      cosmosdbSqlDatabaseName: map['cosmosdbSqlDatabaseName'] == null ? null : pulumi.Output.create<String>(map['cosmosdbSqlDatabaseName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      springCloudAppId: map['springCloudAppId'] == null ? null : pulumi.Output.create<String>(map['springCloudAppId'] as String),
+      apiType: map['apiType'] == null ? null : (map['apiType'] as String).input(),
+      cosmosdbAccessKey: map['cosmosdbAccessKey'] == null ? null : (map['cosmosdbAccessKey'] as String).input(),
+      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId'] as String).input(),
+      cosmosdbCassandraKeyspaceName: map['cosmosdbCassandraKeyspaceName'] == null ? null : (map['cosmosdbCassandraKeyspaceName'] as String).input(),
+      cosmosdbGremlinDatabaseName: map['cosmosdbGremlinDatabaseName'] == null ? null : (map['cosmosdbGremlinDatabaseName'] as String).input(),
+      cosmosdbGremlinGraphName: map['cosmosdbGremlinGraphName'] == null ? null : (map['cosmosdbGremlinGraphName'] as String).input(),
+      cosmosdbMongoDatabaseName: map['cosmosdbMongoDatabaseName'] == null ? null : (map['cosmosdbMongoDatabaseName'] as String).input(),
+      cosmosdbSqlDatabaseName: map['cosmosdbSqlDatabaseName'] == null ? null : (map['cosmosdbSqlDatabaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
     );
   }
 }

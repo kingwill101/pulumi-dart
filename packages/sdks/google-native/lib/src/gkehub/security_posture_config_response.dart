@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
 class SecurityPostureConfigResponse {
   /// Sets which mode to use for Security Posture features.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Sets which mode to use for vulnerability scanning.
-  final String vulnerabilityMode;
+  final pulumi.Input<String> vulnerabilityMode;
 
   /// Creates a new [SecurityPostureConfigResponse].
   /// [mode] Sets which mode to use for Security Posture features.
@@ -25,8 +26,8 @@ class SecurityPostureConfigResponse {
 
   factory SecurityPostureConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigResponse(
-      mode: map['mode'] as String,
-      vulnerabilityMode: map['vulnerabilityMode'] as String,
+      mode: (map['mode'] as String).input(),
+      vulnerabilityMode: (map['vulnerabilityMode'] as String).input(),
     );
   }
 }

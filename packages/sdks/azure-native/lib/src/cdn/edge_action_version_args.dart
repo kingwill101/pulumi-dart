@@ -31,21 +31,14 @@ class EdgeActionVersionArgs {
   /// [tags] Resource tags.
   /// [version] The name of the Edge Action version
   EdgeActionVersionArgs({
-    required pulumi.Output<String> deploymentType,
-    required pulumi.Output<String> edgeActionName,
-    required pulumi.Output<String> isDefaultVersion,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      deploymentType = pulumi.Input.asInput<String>(deploymentType),
-      edgeActionName = pulumi.Input.asInput<String>(edgeActionName),
-      isDefaultVersion = pulumi.Input.asInput<String>(isDefaultVersion),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    required this.deploymentType,
+    required this.edgeActionName,
+    required this.isDefaultVersion,
+    this.location,
+    required this.resourceGroupName,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class EdgeActionVersionArgs {
 
   factory EdgeActionVersionArgs.fromMap(Map<String, dynamic> map) {
     return EdgeActionVersionArgs(
-      deploymentType: pulumi.Output.create<String>(map['deploymentType'] as String),
-      edgeActionName: pulumi.Output.create<String>(map['edgeActionName'] as String),
-      isDefaultVersion: pulumi.Output.create<String>(map['isDefaultVersion'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      deploymentType: (map['deploymentType'] as String).input(),
+      edgeActionName: (map['edgeActionName'] as String).input(),
+      isDefaultVersion: (map['isDefaultVersion'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

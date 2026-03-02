@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scale and concurrency settings for the HTTP trigger.
 class FunctionsScaleAndConcurrencyResponseHttp {
   /// The maximum number of concurrent HTTP trigger invocations per instance.
-  final int? perInstanceConcurrency;
+  final pulumi.Input<int>? perInstanceConcurrency;
 
   /// Creates a new [FunctionsScaleAndConcurrencyResponseHttp].
   /// [perInstanceConcurrency] The maximum number of concurrent HTTP trigger invocations per instance.
@@ -20,7 +21,7 @@ class FunctionsScaleAndConcurrencyResponseHttp {
 
   factory FunctionsScaleAndConcurrencyResponseHttp.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrencyResponseHttp(
-      perInstanceConcurrency: map['perInstanceConcurrency'] == null ? null : map['perInstanceConcurrency'] as int,
+      perInstanceConcurrency: map['perInstanceConcurrency'] == null ? null : (map['perInstanceConcurrency'] as int).input(),
     );
   }
 }

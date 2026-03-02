@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for a storage destination.
 class StorageDestinationConfigurationResponse {
   /// The storage destination path.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [StorageDestinationConfigurationResponse].
   /// [path] The storage destination path.
@@ -20,7 +21,7 @@ class StorageDestinationConfigurationResponse {
 
   factory StorageDestinationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageDestinationConfigurationResponse(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

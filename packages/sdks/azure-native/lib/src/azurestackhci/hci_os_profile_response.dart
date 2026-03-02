@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OS configurations for HCI device.
 class HciOsProfileResponse {
   /// Version of assembly present on device
-  final String assemblyVersion;
+  final pulumi.Input<String> assemblyVersion;
   /// The boot type of the device. e.g. UEFI, Legacy etc
-  final String bootType;
+  final pulumi.Input<String> bootType;
 
   /// Creates a new [HciOsProfileResponse].
   /// [assemblyVersion] Version of assembly present on device
@@ -25,8 +26,8 @@ class HciOsProfileResponse {
 
   factory HciOsProfileResponse.fromMap(Map<String, dynamic> map) {
     return HciOsProfileResponse(
-      assemblyVersion: map['assemblyVersion'] as String,
-      bootType: map['bootType'] as String,
+      assemblyVersion: (map['assemblyVersion'] as String).input(),
+      bootType: (map['bootType'] as String).input(),
     );
   }
 }

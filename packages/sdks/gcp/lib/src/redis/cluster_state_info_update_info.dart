@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterStateInfoUpdateInfo {
   /// Target number of replica nodes per shard.
-  final int? targetReplicaCount;
+  final pulumi.Input<int>? targetReplicaCount;
   /// Target number of shards for redis cluster.
-  final int? targetShardCount;
+  final pulumi.Input<int>? targetShardCount;
 
   /// Creates a new [ClusterStateInfoUpdateInfo].
   /// [targetReplicaCount] Target number of replica nodes per shard.
@@ -24,8 +25,8 @@ class ClusterStateInfoUpdateInfo {
 
   factory ClusterStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfoUpdateInfo(
-      targetReplicaCount: map['targetReplicaCount'] == null ? null : map['targetReplicaCount'] as int,
-      targetShardCount: map['targetShardCount'] == null ? null : map['targetShardCount'] as int,
+      targetReplicaCount: map['targetReplicaCount'] == null ? null : (map['targetReplicaCount'] as int).input(),
+      targetShardCount: map['targetShardCount'] == null ? null : (map['targetShardCount'] as int).input(),
     );
   }
 }

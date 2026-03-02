@@ -26,17 +26,12 @@ class EcsPrefixListArgs {
   /// [maxEntries] The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
   /// [prefixListName] The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
   EcsPrefixListArgs({
-    required pulumi.Output<String> addressFamily,
-    pulumi.Output<String>? description,
-    required pulumi.Output<List<EcsPrefixListEntry>> entries,
-    required pulumi.Output<int> maxEntries,
-    required pulumi.Output<String> prefixListName,
-  }) :
-      addressFamily = pulumi.Input.asInput<String>(addressFamily),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      entries = pulumi.Input.asInput<List<EcsPrefixListEntry>>(entries),
-      maxEntries = pulumi.Input.asInput<int>(maxEntries),
-      prefixListName = pulumi.Input.asInput<String>(prefixListName);
+    required this.addressFamily,
+    this.description,
+    required this.entries,
+    required this.maxEntries,
+    required this.prefixListName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EcsPrefixListArgs {
 
   factory EcsPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return EcsPrefixListArgs(
-      addressFamily: pulumi.Output.create<String>(map['addressFamily'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      entries: pulumi.Output.create<List<EcsPrefixListEntry>>(pulumi.Input.decodeList<EcsPrefixListEntry>(map['entries'], (value) => EcsPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      maxEntries: pulumi.Output.create<int>(map['maxEntries'] as int),
-      prefixListName: pulumi.Output.create<String>(map['prefixListName'] as String),
+      addressFamily: (map['addressFamily'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      entries: (pulumi.Input.decodeList<EcsPrefixListEntry>(map['entries'], (value) => EcsPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxEntries: (map['maxEntries'] as int).input(),
+      prefixListName: (map['prefixListName'] as String).input(),
     );
   }
 }

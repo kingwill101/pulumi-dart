@@ -42,23 +42,15 @@ class SecGroupState {
   /// [tags] A set of string tags for the security group.
   /// [tenantId] The owner of the security group. Required if admin
   SecGroupState({
-    pulumi.Output<List<String>>? allTags,
-    pulumi.Output<bool>? deleteDefaultRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? stateful,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? tenantId,
-  }) :
-      allTags = pulumi.Input.asOptionalInput<List<String>>(allTags),
-      deleteDefaultRules = pulumi.Input.asOptionalInput<bool>(deleteDefaultRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stateful = pulumi.Input.asOptionalInput<bool>(stateful),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId);
+    this.allTags,
+    this.deleteDefaultRules,
+    this.description,
+    this.name,
+    this.region,
+    this.stateful,
+    this.tags,
+    this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,14 +67,14 @@ class SecGroupState {
 
   factory SecGroupState.fromMap(Map<String, dynamic> map) {
     return SecGroupState(
-      allTags: map['allTags'] == null ? null : pulumi.Output.create<List<String>>((map['allTags'] as List).cast<String>()),
-      deleteDefaultRules: map['deleteDefaultRules'] == null ? null : pulumi.Output.create<bool>(map['deleteDefaultRules'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stateful: map['stateful'] == null ? null : pulumi.Output.create<bool>(map['stateful'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
+      allTags: map['allTags'] == null ? null : ((map['allTags'] as List).cast<String>()).input(),
+      deleteDefaultRules: map['deleteDefaultRules'] == null ? null : (map['deleteDefaultRules'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stateful: map['stateful'] == null ? null : (map['stateful'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class GetManagedInstanceAzureADOnlyAuthenticationArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   GetManagedInstanceAzureADOnlyAuthenticationArgs({
-    required pulumi.Output<String> authenticationName,
-    required pulumi.Output<String> managedInstanceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      authenticationName = pulumi.Input.asInput<String>(authenticationName),
-      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.authenticationName,
+    required this.managedInstanceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedInstanceAzureADOnlyAuthenticationArgs {
 
   factory GetManagedInstanceAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceAzureADOnlyAuthenticationArgs(
-      authenticationName: pulumi.Output.create<String>(map['authenticationName'] as String),
-      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      authenticationName: (map['authenticationName'] as String).input(),
+      managedInstanceName: (map['managedInstanceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

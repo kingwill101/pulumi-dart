@@ -28,21 +28,14 @@ class ScheduledPreloadExecutionState {
   /// [startTime] The start time of the prefetch plan.
   /// [status] The status of the prefetch plan, including the following statuses.
   ScheduledPreloadExecutionState({
-    pulumi.Output<String>? endTime,
-    pulumi.Output<int>? interval,
-    pulumi.Output<String>? scheduledPreloadExecutionId,
-    pulumi.Output<String>? scheduledPreloadJobId,
-    pulumi.Output<int>? sliceLen,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? status,
-  }) :
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      interval = pulumi.Input.asOptionalInput<int>(interval),
-      scheduledPreloadExecutionId = pulumi.Input.asOptionalInput<String>(scheduledPreloadExecutionId),
-      scheduledPreloadJobId = pulumi.Input.asOptionalInput<String>(scheduledPreloadJobId),
-      sliceLen = pulumi.Input.asOptionalInput<int>(sliceLen),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.endTime,
+    this.interval,
+    this.scheduledPreloadExecutionId,
+    this.scheduledPreloadJobId,
+    this.sliceLen,
+    this.startTime,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ScheduledPreloadExecutionState {
 
   factory ScheduledPreloadExecutionState.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadExecutionState(
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      interval: map['interval'] == null ? null : pulumi.Output.create<int>(map['interval'] as int),
-      scheduledPreloadExecutionId: map['scheduledPreloadExecutionId'] == null ? null : pulumi.Output.create<String>(map['scheduledPreloadExecutionId'] as String),
-      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : pulumi.Output.create<String>(map['scheduledPreloadJobId'] as String),
-      sliceLen: map['sliceLen'] == null ? null : pulumi.Output.create<int>(map['sliceLen'] as int),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      scheduledPreloadExecutionId: map['scheduledPreloadExecutionId'] == null ? null : (map['scheduledPreloadExecutionId'] as String).input(),
+      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId'] as String).input(),
+      sliceLen: map['sliceLen'] == null ? null : (map['sliceLen'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

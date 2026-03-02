@@ -20,17 +20,12 @@ class GetIntentDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetIntentDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> intentId,
-    pulumi.Output<String>? languageCode,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      intentId = pulumi.Input.asInput<String>(intentId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.agentId,
+    required this.intentId,
+    this.languageCode,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetIntentDialogflowV3beta1Args {
 
   factory GetIntentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIntentDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      intentId: pulumi.Output.create<String>(map['intentId'] as String),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      agentId: (map['agentId'] as String).input(),
+      intentId: (map['intentId'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

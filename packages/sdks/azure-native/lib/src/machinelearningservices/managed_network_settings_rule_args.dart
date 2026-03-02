@@ -23,15 +23,11 @@ class ManagedNetworkSettingsRuleArgs {
   /// [ruleName] Name of the workspace managed network outbound rule
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ManagedNetworkSettingsRuleArgs({
-    required pulumi.Output<FqdnOutboundRule> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? ruleName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      properties = pulumi.Input.asInput<FqdnOutboundRule>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.properties,
+    required this.resourceGroupName,
+    this.ruleName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ManagedNetworkSettingsRuleArgs {
 
   factory ManagedNetworkSettingsRuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkSettingsRuleArgs(
-      properties: pulumi.Output.create<FqdnOutboundRule>(FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      properties: (FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

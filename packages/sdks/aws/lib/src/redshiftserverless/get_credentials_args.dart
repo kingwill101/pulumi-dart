@@ -22,15 +22,11 @@ class GetCredentialsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroupName] The name of the workgroup associated with the database.
   GetCredentialsArgs({
-    pulumi.Output<String>? dbName,
-    pulumi.Output<int>? durationSeconds,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> workgroupName,
-  }) :
-      dbName = pulumi.Input.asOptionalInput<String>(dbName),
-      durationSeconds = pulumi.Input.asOptionalInput<int>(durationSeconds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroupName = pulumi.Input.asInput<String>(workgroupName);
+    this.dbName,
+    this.durationSeconds,
+    this.region,
+    required this.workgroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetCredentialsArgs {
 
   factory GetCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialsArgs(
-      dbName: map['dbName'] == null ? null : pulumi.Output.create<String>(map['dbName'] as String),
-      durationSeconds: map['durationSeconds'] == null ? null : pulumi.Output.create<int>(map['durationSeconds'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroupName: pulumi.Output.create<String>(map['workgroupName'] as String),
+      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroupName: (map['workgroupName'] as String).input(),
     );
   }
 }

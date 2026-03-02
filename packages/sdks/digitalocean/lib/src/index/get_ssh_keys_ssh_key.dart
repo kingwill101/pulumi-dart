@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSshKeysSshKey {
   /// The fingerprint of the public key of the ssh key.
-  final String fingerprint;
+  final pulumi.Input<String> fingerprint;
   /// The ID of the ssh key.
-  final int id;
+  final pulumi.Input<int> id;
   /// The name of the ssh key.
-  final String name;
+  final pulumi.Input<String> name;
   /// The public key of the ssh key.
-  final String publicKey;
+  final pulumi.Input<String> publicKey;
 
   /// Creates a new [GetSshKeysSshKey].
   /// [fingerprint] The fingerprint of the public key of the ssh key.
@@ -34,10 +35,10 @@ class GetSshKeysSshKey {
 
   factory GetSshKeysSshKey.fromMap(Map<String, dynamic> map) {
     return GetSshKeysSshKey(
-      fingerprint: map['fingerprint'] as String,
-      id: map['id'] as int,
-      name: map['name'] as String,
-      publicKey: map['publicKey'] as String,
+      fingerprint: (map['fingerprint'] as String).input(),
+      id: (map['id'] as int).input(),
+      name: (map['name'] as String).input(),
+      publicKey: (map['publicKey'] as String).input(),
     );
   }
 }

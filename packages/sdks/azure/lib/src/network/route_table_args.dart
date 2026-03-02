@@ -31,19 +31,13 @@ class RouteTableArgs {
   /// [routes] A list of objects representing routes. Each object accepts the arguments documented below.
   /// [tags] A mapping of tags to assign to the resource.
   RouteTableArgs({
-    pulumi.Output<bool>? bgpRoutePropagationEnabled,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<RouteTableRoute>>? routes,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      bgpRoutePropagationEnabled = pulumi.Input.asOptionalInput<bool>(bgpRoutePropagationEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      routes = pulumi.Input.asOptionalInput<List<RouteTableRoute>>(routes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.bgpRoutePropagationEnabled,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.routes,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : pulumi.Output.create<bool>(map['bgpRoutePropagationEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      routes: map['routes'] == null ? null : pulumi.Output.create<List<RouteTableRoute>>(pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      bgpRoutePropagationEnabled: map['bgpRoutePropagationEnabled'] == null ? null : (map['bgpRoutePropagationEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteTableRoute>(map['routes'], (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

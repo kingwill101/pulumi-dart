@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ConnectionStatus indicates the state of the connection.
 class ConnectionStatusResponse {
   /// Description.
-  final String description;
+  final pulumi.Input<String> description;
   /// State.
-  final String state;
+  final pulumi.Input<String> state;
   /// Status provides detailed information for the state.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ConnectionStatusResponse].
   /// [description] Description.
@@ -30,9 +31,9 @@ class ConnectionStatusResponse {
 
   factory ConnectionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionStatusResponse(
-      description: map['description'] as String,
-      state: map['state'] as String,
-      status: map['status'] as String,
+      description: (map['description'] as String).input(),
+      state: (map['state'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

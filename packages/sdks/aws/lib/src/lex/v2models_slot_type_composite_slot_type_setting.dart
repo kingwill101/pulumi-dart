@@ -6,7 +6,7 @@ import 'v2models_slot_type_composite_slot_type_setting_sub_slot.dart';
 class V2modelsSlotTypeCompositeSlotTypeSetting {
   /// Sub slots in the composite slot.
   /// See `sub_slots` argument reference below.
-  final List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>? subSlots;
+  final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>>? subSlots;
 
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSetting].
   /// [subSlots] Sub slots in the composite slot.
@@ -16,13 +16,13 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subSlots': ?subSlots == null ? null : pulumi.Input.encodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot, Map<String, dynamic>>(subSlots!, (value) => value.toMap()),
+      'subSlots': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>, List<Map<String, dynamic>>>(subSlots, (value) => pulumi.Input.encodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory V2modelsSlotTypeCompositeSlotTypeSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeCompositeSlotTypeSetting(
-      subSlots: map['subSlots'] == null ? null : pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(map['subSlots'], (value) => V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap((value as Map).cast<String, dynamic>())),
+      subSlots: map['subSlots'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(map['subSlots'], (value) => V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

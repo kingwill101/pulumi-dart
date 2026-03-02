@@ -22,13 +22,10 @@ class ServiceNetworkSettingsArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The name of the service these settings apply to.
   ServiceNetworkSettingsArgs({
-    required pulumi.Output<ServiceNetworkSettingsNetworkSettings> networkSettings,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> service,
-  }) :
-      networkSettings = pulumi.Input.asInput<ServiceNetworkSettingsNetworkSettings>(networkSettings),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+    required this.networkSettings,
+    this.project,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class ServiceNetworkSettingsArgs {
 
   factory ServiceNetworkSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsArgs(
-      networkSettings: pulumi.Output.create<ServiceNetworkSettingsNetworkSettings>(ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      service: pulumi.Output.create<String>(map['service'] as String),
+      networkSettings: (ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      service: (map['service'] as String).input(),
     );
   }
 }

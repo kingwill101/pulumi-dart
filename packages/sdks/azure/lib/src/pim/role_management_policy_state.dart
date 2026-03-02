@@ -35,23 +35,15 @@ class RoleManagementPolicyState {
   /// [roleDefinitionId] The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   /// [scope] The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.
   RoleManagementPolicyState({
-    pulumi.Output<RoleManagementPolicyActivationRules>? activationRules,
-    pulumi.Output<RoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<RoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<RoleManagementPolicyNotificationRules>? notificationRules,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? scope,
-  }) :
-      activationRules = pulumi.Input.asOptionalInput<RoleManagementPolicyActivationRules>(activationRules),
-      activeAssignmentRules = pulumi.Input.asOptionalInput<RoleManagementPolicyActiveAssignmentRules>(activeAssignmentRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eligibleAssignmentRules = pulumi.Input.asOptionalInput<RoleManagementPolicyEligibleAssignmentRules>(eligibleAssignmentRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationRules = pulumi.Input.asOptionalInput<RoleManagementPolicyNotificationRules>(notificationRules),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      scope = pulumi.Input.asOptionalInput<String>(scope);
+    this.activationRules,
+    this.activeAssignmentRules,
+    this.description,
+    this.eligibleAssignmentRules,
+    this.name,
+    this.notificationRules,
+    this.roleDefinitionId,
+    this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class RoleManagementPolicyState {
 
   factory RoleManagementPolicyState.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyState(
-      activationRules: map['activationRules'] == null ? null : pulumi.Output.create<RoleManagementPolicyActivationRules>(RoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())),
-      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : pulumi.Output.create<RoleManagementPolicyActiveAssignmentRules>(RoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : pulumi.Output.create<RoleManagementPolicyEligibleAssignmentRules>(RoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationRules: map['notificationRules'] == null ? null : pulumi.Output.create<RoleManagementPolicyNotificationRules>(RoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      activationRules: map['activationRules'] == null ? null : (RoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())).input(),
+      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : (RoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : (RoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationRules: map['notificationRules'] == null ? null : (RoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
     );
   }
 }

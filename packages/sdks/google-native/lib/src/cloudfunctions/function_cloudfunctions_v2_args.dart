@@ -45,29 +45,18 @@ class FunctionCloudfunctionsV2Args {
   /// [project] Optional.
   /// [serviceConfig] Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
   FunctionCloudfunctionsV2Args({
-    pulumi.Output<BuildConfig>? buildConfig,
-    pulumi.Output<String>? description,
-    pulumi.Output<FunctionEnvironment>? environment,
-    pulumi.Output<EventTriggerCloudfunctionsV2>? eventTrigger,
-    pulumi.Output<String>? functionId,
-    pulumi.Output<String>? kmsKeyName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<ServiceConfig>? serviceConfig,
-  }) :
-      buildConfig = pulumi.Input.asOptionalInput<BuildConfig>(buildConfig),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asOptionalInput<FunctionEnvironment>(environment),
-      eventTrigger = pulumi.Input.asOptionalInput<EventTriggerCloudfunctionsV2>(eventTrigger),
-      functionId = pulumi.Input.asOptionalInput<String>(functionId),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceConfig = pulumi.Input.asOptionalInput<ServiceConfig>(serviceConfig);
+    this.buildConfig,
+    this.description,
+    this.environment,
+    this.eventTrigger,
+    this.functionId,
+    this.kmsKeyName,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.serviceConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class FunctionCloudfunctionsV2Args {
 
   factory FunctionCloudfunctionsV2Args.fromMap(Map<String, dynamic> map) {
     return FunctionCloudfunctionsV2Args(
-      buildConfig: map['buildConfig'] == null ? null : pulumi.Output.create<BuildConfig>(BuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<FunctionEnvironment>(FunctionEnvironment.fromValue(map['environment'] as String)),
-      eventTrigger: map['eventTrigger'] == null ? null : pulumi.Output.create<EventTriggerCloudfunctionsV2>(EventTriggerCloudfunctionsV2.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())),
-      functionId: map['functionId'] == null ? null : pulumi.Output.create<String>(map['functionId'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : pulumi.Output.create<String>(map['kmsKeyName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serviceConfig: map['serviceConfig'] == null ? null : pulumi.Output.create<ServiceConfig>(ServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())),
+      buildConfig: map['buildConfig'] == null ? null : (BuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : (FunctionEnvironment.fromValue(map['environment'] as String)).input(),
+      eventTrigger: map['eventTrigger'] == null ? null : (EventTriggerCloudfunctionsV2.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())).input(),
+      functionId: map['functionId'] == null ? null : (map['functionId'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (ServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

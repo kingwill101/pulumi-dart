@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReservationSubBlockHealthInfo {
   /// The number of degraded hosts in the reservation sub-block.
-  final int degradedHostCount;
+  final pulumi.Input<int> degradedHostCount;
   /// The number of degraded infrastructure (e.g. NVLink domain) in the reservation sub-block.
-  final int degradedInfraCount;
+  final pulumi.Input<int> degradedInfraCount;
   /// The health status of the reservation sub-block.
-  final String healthStatus;
+  final pulumi.Input<String> healthStatus;
   /// The number of healthy hosts in the reservation sub-block.
-  final int healthyHostCount;
+  final pulumi.Input<int> healthyHostCount;
   /// The number of healthy infrastructure (e.g. NVLink domain) in the reservation sub-block.
-  final int healthyInfraCount;
+  final pulumi.Input<int> healthyInfraCount;
 
   /// Creates a new [GetReservationSubBlockHealthInfo].
   /// [degradedHostCount] The number of degraded hosts in the reservation sub-block.
@@ -39,11 +40,11 @@ class GetReservationSubBlockHealthInfo {
 
   factory GetReservationSubBlockHealthInfo.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockHealthInfo(
-      degradedHostCount: map['degradedHostCount'] as int,
-      degradedInfraCount: map['degradedInfraCount'] as int,
-      healthStatus: map['healthStatus'] as String,
-      healthyHostCount: map['healthyHostCount'] as int,
-      healthyInfraCount: map['healthyInfraCount'] as int,
+      degradedHostCount: (map['degradedHostCount'] as int).input(),
+      degradedInfraCount: (map['degradedInfraCount'] as int).input(),
+      healthStatus: (map['healthStatus'] as String).input(),
+      healthyHostCount: (map['healthyHostCount'] as int).input(),
+      healthyInfraCount: (map['healthyInfraCount'] as int).input(),
     );
   }
 }

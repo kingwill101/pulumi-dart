@@ -45,31 +45,19 @@ class GatewayArgs {
   /// [type] The type of the gateway. Valid values: `File`, `Iscsi`.
   /// [vswitchId] The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
   GatewayArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gatewayClass,
-    required pulumi.Output<String> gatewayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<int>? publicNetworkBandwidth,
-    pulumi.Output<String>? reasonDetail,
-    pulumi.Output<String>? reasonType,
-    pulumi.Output<bool>? releaseAfterExpiration,
-    required pulumi.Output<String> storageBundleId,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayClass = pulumi.Input.asOptionalInput<String>(gatewayClass),
-      gatewayName = pulumi.Input.asInput<String>(gatewayName),
-      location = pulumi.Input.asInput<String>(location),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      publicNetworkBandwidth = pulumi.Input.asOptionalInput<int>(publicNetworkBandwidth),
-      reasonDetail = pulumi.Input.asOptionalInput<String>(reasonDetail),
-      reasonType = pulumi.Input.asOptionalInput<String>(reasonType),
-      releaseAfterExpiration = pulumi.Input.asOptionalInput<bool>(releaseAfterExpiration),
-      storageBundleId = pulumi.Input.asInput<String>(storageBundleId),
-      type = pulumi.Input.asInput<String>(type),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.description,
+    this.gatewayClass,
+    required this.gatewayName,
+    required this.location,
+    this.paymentType,
+    this.publicNetworkBandwidth,
+    this.reasonDetail,
+    this.reasonType,
+    this.releaseAfterExpiration,
+    required this.storageBundleId,
+    required this.type,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayClass: map['gatewayClass'] == null ? null : pulumi.Output.create<String>(map['gatewayClass'] as String),
-      gatewayName: pulumi.Output.create<String>(map['gatewayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : pulumi.Output.create<int>(map['publicNetworkBandwidth'] as int),
-      reasonDetail: map['reasonDetail'] == null ? null : pulumi.Output.create<String>(map['reasonDetail'] as String),
-      reasonType: map['reasonType'] == null ? null : pulumi.Output.create<String>(map['reasonType'] as String),
-      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : pulumi.Output.create<bool>(map['releaseAfterExpiration'] as bool),
-      storageBundleId: pulumi.Output.create<String>(map['storageBundleId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass'] as String).input(),
+      gatewayName: (map['gatewayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : (map['publicNetworkBandwidth'] as int).input(),
+      reasonDetail: map['reasonDetail'] == null ? null : (map['reasonDetail'] as String).input(),
+      reasonType: map['reasonType'] == null ? null : (map['reasonType'] as String).input(),
+      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : (map['releaseAfterExpiration'] as bool).input(),
+      storageBundleId: (map['storageBundleId'] as String).input(),
+      type: (map['type'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

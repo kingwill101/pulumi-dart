@@ -28,19 +28,13 @@ class WorkspaceManagerGroupArgs {
   /// [workspaceManagerGroupName] The name of the workspace manager group
   /// [workspaceName] The name of the workspace.
   WorkspaceManagerGroupArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    required pulumi.Output<List<String>> memberResourceNames,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? workspaceManagerGroupName,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      memberResourceNames = pulumi.Input.asInput<List<String>>(memberResourceNames),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workspaceManagerGroupName = pulumi.Input.asOptionalInput<String>(workspaceManagerGroupName),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.description,
+    required this.displayName,
+    required this.memberResourceNames,
+    required this.resourceGroupName,
+    this.workspaceManagerGroupName,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WorkspaceManagerGroupArgs {
 
   factory WorkspaceManagerGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerGroupArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      memberResourceNames: pulumi.Output.create<List<String>>((map['memberResourceNames'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workspaceManagerGroupName: map['workspaceManagerGroupName'] == null ? null : pulumi.Output.create<String>(map['workspaceManagerGroupName'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      memberResourceNames: ((map['memberResourceNames'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workspaceManagerGroupName: map['workspaceManagerGroupName'] == null ? null : (map['workspaceManagerGroupName'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

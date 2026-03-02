@@ -40,27 +40,17 @@ class PoolAttachmentArgs {
   /// [ratio] "Specifies the ratio weight to assign to the pool member. Valid values range from 1 through 65535. The default is 1, which means that each pool member has an equal ratio proportion.".
   /// [state] Specifies the state the pool member should be in,value can be `enabled` (or) `disabled` (or) `forced_offline`).
   PoolAttachmentArgs({
-    pulumi.Output<int>? connectionLimit,
-    pulumi.Output<String>? connectionRateLimit,
-    pulumi.Output<int>? dynamicRatio,
-    pulumi.Output<String>? fqdnAutopopulate,
-    pulumi.Output<String>? monitor,
-    required pulumi.Output<String> node,
-    required pulumi.Output<String> pool,
-    pulumi.Output<int>? priorityGroup,
-    pulumi.Output<int>? ratio,
-    pulumi.Output<String>? state,
-  }) :
-      connectionLimit = pulumi.Input.asOptionalInput<int>(connectionLimit),
-      connectionRateLimit = pulumi.Input.asOptionalInput<String>(connectionRateLimit),
-      dynamicRatio = pulumi.Input.asOptionalInput<int>(dynamicRatio),
-      fqdnAutopopulate = pulumi.Input.asOptionalInput<String>(fqdnAutopopulate),
-      monitor = pulumi.Input.asOptionalInput<String>(monitor),
-      node = pulumi.Input.asInput<String>(node),
-      pool = pulumi.Input.asInput<String>(pool),
-      priorityGroup = pulumi.Input.asOptionalInput<int>(priorityGroup),
-      ratio = pulumi.Input.asOptionalInput<int>(ratio),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.connectionLimit,
+    this.connectionRateLimit,
+    this.dynamicRatio,
+    this.fqdnAutopopulate,
+    this.monitor,
+    required this.node,
+    required this.pool,
+    this.priorityGroup,
+    this.ratio,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class PoolAttachmentArgs {
 
   factory PoolAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PoolAttachmentArgs(
-      connectionLimit: map['connectionLimit'] == null ? null : pulumi.Output.create<int>(map['connectionLimit'] as int),
-      connectionRateLimit: map['connectionRateLimit'] == null ? null : pulumi.Output.create<String>(map['connectionRateLimit'] as String),
-      dynamicRatio: map['dynamicRatio'] == null ? null : pulumi.Output.create<int>(map['dynamicRatio'] as int),
-      fqdnAutopopulate: map['fqdnAutopopulate'] == null ? null : pulumi.Output.create<String>(map['fqdnAutopopulate'] as String),
-      monitor: map['monitor'] == null ? null : pulumi.Output.create<String>(map['monitor'] as String),
-      node: pulumi.Output.create<String>(map['node'] as String),
-      pool: pulumi.Output.create<String>(map['pool'] as String),
-      priorityGroup: map['priorityGroup'] == null ? null : pulumi.Output.create<int>(map['priorityGroup'] as int),
-      ratio: map['ratio'] == null ? null : pulumi.Output.create<int>(map['ratio'] as int),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
+      connectionRateLimit: map['connectionRateLimit'] == null ? null : (map['connectionRateLimit'] as String).input(),
+      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio'] as int).input(),
+      fqdnAutopopulate: map['fqdnAutopopulate'] == null ? null : (map['fqdnAutopopulate'] as String).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
+      node: (map['node'] as String).input(),
+      pool: (map['pool'] as String).input(),
+      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup'] as int).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

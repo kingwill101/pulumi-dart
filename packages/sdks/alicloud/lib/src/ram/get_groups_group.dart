@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGroupsGroup {
   /// Comments of the group.
-  final String comments;
+  final pulumi.Input<String> comments;
   /// Name of the group.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetGroupsGroup].
   /// [comments] Comments of the group.
@@ -24,8 +25,8 @@ class GetGroupsGroup {
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroup(
-      comments: map['comments'] as String,
-      name: map['name'] as String,
+      comments: (map['comments'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

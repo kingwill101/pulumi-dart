@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of the server managing the lifecycle of volume buckets
 class BucketServerPropertiesResponse {
   /// Certificate Common Name taken from the certificate installed on the bucket server
-  final String certificateCommonName;
+  final pulumi.Input<String> certificateCommonName;
   /// The bucket server's certificate expiry date.
-  final String certificateExpiryDate;
+  final pulumi.Input<String> certificateExpiryDate;
   /// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// The bucket server's IPv4 address
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
 
   /// Creates a new [BucketServerPropertiesResponse].
   /// [certificateCommonName] Certificate Common Name taken from the certificate installed on the bucket server
@@ -35,10 +36,10 @@ class BucketServerPropertiesResponse {
 
   factory BucketServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BucketServerPropertiesResponse(
-      certificateCommonName: map['certificateCommonName'] as String,
-      certificateExpiryDate: map['certificateExpiryDate'] as String,
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      ipAddress: map['ipAddress'] as String,
+      certificateCommonName: (map['certificateCommonName'] as String).input(),
+      certificateExpiryDate: (map['certificateExpiryDate'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
     );
   }
 }

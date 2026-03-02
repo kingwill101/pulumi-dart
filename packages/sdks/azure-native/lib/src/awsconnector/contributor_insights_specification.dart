@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ContributorInsightsSpecification
 class ContributorInsightsSpecification {
   /// Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled (false).
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ContributorInsightsSpecification].
   /// [enabled] Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled (false).
@@ -20,7 +21,7 @@ class ContributorInsightsSpecification {
 
   factory ContributorInsightsSpecification.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsSpecification(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

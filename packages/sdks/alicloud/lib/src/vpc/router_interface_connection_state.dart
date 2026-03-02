@@ -24,17 +24,12 @@ class RouterInterfaceConnectionState {
   /// [oppositeRouterId] Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
   /// [oppositeRouterType] Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
   RouterInterfaceConnectionState({
-    pulumi.Output<String>? interfaceId,
-    pulumi.Output<String>? oppositeInterfaceId,
-    pulumi.Output<String>? oppositeInterfaceOwnerId,
-    pulumi.Output<String>? oppositeRouterId,
-    pulumi.Output<String>? oppositeRouterType,
-  }) :
-      interfaceId = pulumi.Input.asOptionalInput<String>(interfaceId),
-      oppositeInterfaceId = pulumi.Input.asOptionalInput<String>(oppositeInterfaceId),
-      oppositeInterfaceOwnerId = pulumi.Input.asOptionalInput<String>(oppositeInterfaceOwnerId),
-      oppositeRouterId = pulumi.Input.asOptionalInput<String>(oppositeRouterId),
-      oppositeRouterType = pulumi.Input.asOptionalInput<String>(oppositeRouterType);
+    this.interfaceId,
+    this.oppositeInterfaceId,
+    this.oppositeInterfaceOwnerId,
+    this.oppositeRouterId,
+    this.oppositeRouterType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RouterInterfaceConnectionState {
 
   factory RouterInterfaceConnectionState.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceConnectionState(
-      interfaceId: map['interfaceId'] == null ? null : pulumi.Output.create<String>(map['interfaceId'] as String),
-      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : pulumi.Output.create<String>(map['oppositeInterfaceId'] as String),
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : pulumi.Output.create<String>(map['oppositeInterfaceOwnerId'] as String),
-      oppositeRouterId: map['oppositeRouterId'] == null ? null : pulumi.Output.create<String>(map['oppositeRouterId'] as String),
-      oppositeRouterType: map['oppositeRouterType'] == null ? null : pulumi.Output.create<String>(map['oppositeRouterType'] as String),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
+      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId'] as String).input(),
+      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId'] as String).input(),
+      oppositeRouterId: map['oppositeRouterId'] == null ? null : (map['oppositeRouterId'] as String).input(),
+      oppositeRouterType: map['oppositeRouterType'] == null ? null : (map['oppositeRouterType'] as String).input(),
     );
   }
 }

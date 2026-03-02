@@ -32,23 +32,15 @@ class ParticipantArgs {
   /// [role] Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
   /// [sipRecordingMediaLabel] Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
   ParticipantArgs({
-    required pulumi.Output<String> conversationId,
-    pulumi.Output<Map<String, String>>? documentsMetadataFilters,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? obfuscatedExternalUserId,
-    pulumi.Output<String>? project,
-    pulumi.Output<ParticipantRole>? role,
-    pulumi.Output<String>? sipRecordingMediaLabel,
-  }) :
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      documentsMetadataFilters = pulumi.Input.asOptionalInput<Map<String, String>>(documentsMetadataFilters),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      obfuscatedExternalUserId = pulumi.Input.asOptionalInput<String>(obfuscatedExternalUserId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<ParticipantRole>(role),
-      sipRecordingMediaLabel = pulumi.Input.asOptionalInput<String>(sipRecordingMediaLabel);
+    required this.conversationId,
+    this.documentsMetadataFilters,
+    this.location,
+    this.name,
+    this.obfuscatedExternalUserId,
+    this.project,
+    this.role,
+    this.sipRecordingMediaLabel,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class ParticipantArgs {
 
   factory ParticipantArgs.fromMap(Map<String, dynamic> map) {
     return ParticipantArgs(
-      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
-      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['documentsMetadataFilters'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : pulumi.Output.create<String>(map['obfuscatedExternalUserId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<ParticipantRole>(ParticipantRole.fromValue(map['role'] as String)),
-      sipRecordingMediaLabel: map['sipRecordingMediaLabel'] == null ? null : pulumi.Output.create<String>(map['sipRecordingMediaLabel'] as String),
+      conversationId: (map['conversationId'] as String).input(),
+      documentsMetadataFilters: map['documentsMetadataFilters'] == null ? null : ((map['documentsMetadataFilters'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      obfuscatedExternalUserId: map['obfuscatedExternalUserId'] == null ? null : (map['obfuscatedExternalUserId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (ParticipantRole.fromValue(map['role'] as String)).input(),
+      sipRecordingMediaLabel: map['sipRecordingMediaLabel'] == null ? null : (map['sipRecordingMediaLabel'] as String).input(),
     );
   }
 }

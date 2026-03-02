@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterError {
   /// Human-friendly description of the error.
-  final String? message;
+  final pulumi.Input<String>? message;
 
   /// Creates a new [AttachedClusterError].
   /// [message] Human-friendly description of the error.
@@ -19,7 +20,7 @@ class AttachedClusterError {
 
   factory AttachedClusterError.fromMap(Map<String, dynamic> map) {
     return AttachedClusterError(
-      message: map['message'] == null ? null : map['message'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
     );
   }
 }

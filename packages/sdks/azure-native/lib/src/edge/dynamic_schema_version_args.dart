@@ -26,17 +26,12 @@ class DynamicSchemaVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
   DynamicSchemaVersionArgs({
-    required pulumi.Output<String> dynamicSchemaName,
-    pulumi.Output<String>? dynamicSchemaVersionName,
-    pulumi.Output<SchemaVersionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> schemaName,
-  }) :
-      dynamicSchemaName = pulumi.Input.asInput<String>(dynamicSchemaName),
-      dynamicSchemaVersionName = pulumi.Input.asOptionalInput<String>(dynamicSchemaVersionName),
-      properties = pulumi.Input.asOptionalInput<SchemaVersionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      schemaName = pulumi.Input.asInput<String>(schemaName);
+    required this.dynamicSchemaName,
+    this.dynamicSchemaVersionName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.schemaName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DynamicSchemaVersionArgs {
 
   factory DynamicSchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaVersionArgs(
-      dynamicSchemaName: pulumi.Output.create<String>(map['dynamicSchemaName'] as String),
-      dynamicSchemaVersionName: map['dynamicSchemaVersionName'] == null ? null : pulumi.Output.create<String>(map['dynamicSchemaVersionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<SchemaVersionProperties>(SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      schemaName: pulumi.Output.create<String>(map['schemaName'] as String),
+      dynamicSchemaName: (map['dynamicSchemaName'] as String).input(),
+      dynamicSchemaVersionName: map['dynamicSchemaVersionName'] == null ? null : (map['dynamicSchemaVersionName'] as String).input(),
+      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      schemaName: (map['schemaName'] as String).input(),
     );
   }
 }

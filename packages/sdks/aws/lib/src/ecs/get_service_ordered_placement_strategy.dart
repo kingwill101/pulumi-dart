@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceOrderedPlacementStrategy {
   /// Field to apply placement strategy against
-  final String field;
+  final pulumi.Input<String> field;
   /// Constraint type
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetServiceOrderedPlacementStrategy].
   /// [field] Field to apply placement strategy against
@@ -24,8 +25,8 @@ class GetServiceOrderedPlacementStrategy {
 
   factory GetServiceOrderedPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return GetServiceOrderedPlacementStrategy(
-      field: map['field'] as String,
-      type: map['type'] as String,
+      field: (map['field'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

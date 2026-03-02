@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies a CORS rule for the Map Account.
 class CorsRule {
   /// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
-  final List<String> allowedOrigins;
+  final pulumi.Input<List<String>> allowedOrigins;
 
   /// Creates a new [CorsRule].
   /// [allowedOrigins] Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
@@ -20,7 +21,7 @@ class CorsRule {
 
   factory CorsRule.fromMap(Map<String, dynamic> map) {
     return CorsRule(
-      allowedOrigins: (map['allowedOrigins'] as List).cast<String>(),
+      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
     );
   }
 }

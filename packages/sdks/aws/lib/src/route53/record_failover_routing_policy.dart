@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordFailoverRoutingPolicy {
   /// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [RecordFailoverRoutingPolicy].
   /// [type] `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
@@ -19,7 +20,7 @@ class RecordFailoverRoutingPolicy {
 
   factory RecordFailoverRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordFailoverRoutingPolicy(
-      type: map['type'] as String,
+      type: (map['type'] as String).input(),
     );
   }
 }

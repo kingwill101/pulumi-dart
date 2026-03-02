@@ -35,25 +35,16 @@ class WorkbookTemplateState {
   /// [tags] A mapping of tags which should be assigned to the Application Insights Workbook Template.
   /// [templateData] Valid JSON object containing workbook template payload.
   WorkbookTemplateState({
-    pulumi.Output<String>? author,
-    pulumi.Output<List<WorkbookTemplateGallery>>? galleries,
-    pulumi.Output<String>? localized,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? templateData,
-  }) :
-      author = pulumi.Input.asOptionalInput<String>(author),
-      galleries = pulumi.Input.asOptionalInput<List<WorkbookTemplateGallery>>(galleries),
-      localized = pulumi.Input.asOptionalInput<String>(localized),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateData = pulumi.Input.asOptionalInput<String>(templateData);
+    this.author,
+    this.galleries,
+    this.localized,
+    this.location,
+    this.name,
+    this.priority,
+    this.resourceGroupName,
+    this.tags,
+    this.templateData,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class WorkbookTemplateState {
 
   factory WorkbookTemplateState.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateState(
-      author: map['author'] == null ? null : pulumi.Output.create<String>(map['author'] as String),
-      galleries: map['galleries'] == null ? null : pulumi.Output.create<List<WorkbookTemplateGallery>>(pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))),
-      localized: map['localized'] == null ? null : pulumi.Output.create<String>(map['localized'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateData: map['templateData'] == null ? null : pulumi.Output.create<String>(map['templateData'] as String),
+      author: map['author'] == null ? null : (map['author'] as String).input(),
+      galleries: map['galleries'] == null ? null : (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localized: map['localized'] == null ? null : (map['localized'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateData: map['templateData'] == null ? null : (map['templateData'] as String).input(),
     );
   }
 }

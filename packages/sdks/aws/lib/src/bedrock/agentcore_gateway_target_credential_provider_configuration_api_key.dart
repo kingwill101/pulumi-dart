@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
   /// Location where the API key credential is provided. Valid values: `HEADER`, `QUERY_PARAMETER`.
-  final String? credentialLocation;
+  final pulumi.Input<String>? credentialLocation;
   /// Name of the parameter containing the API key credential.
-  final String? credentialParameterName;
+  final pulumi.Input<String>? credentialParameterName;
   /// Prefix to add to the API key credential value.
-  final String? credentialPrefix;
+  final pulumi.Input<String>? credentialPrefix;
   /// ARN of the OIDC provider for API key authentication.
-  final String providerArn;
+  final pulumi.Input<String> providerArn;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationApiKey].
   /// [credentialLocation] Location where the API key credential is provided. Valid values: `HEADER`, `QUERY_PARAMETER`.
@@ -34,10 +35,10 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
 
   factory AgentcoreGatewayTargetCredentialProviderConfigurationApiKey.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationApiKey(
-      credentialLocation: map['credentialLocation'] == null ? null : map['credentialLocation'] as String,
-      credentialParameterName: map['credentialParameterName'] == null ? null : map['credentialParameterName'] as String,
-      credentialPrefix: map['credentialPrefix'] == null ? null : map['credentialPrefix'] as String,
-      providerArn: map['providerArn'] as String,
+      credentialLocation: map['credentialLocation'] == null ? null : (map['credentialLocation'] as String).input(),
+      credentialParameterName: map['credentialParameterName'] == null ? null : (map['credentialParameterName'] as String).input(),
+      credentialPrefix: map['credentialPrefix'] == null ? null : (map['credentialPrefix'] as String).input(),
+      providerArn: (map['providerArn'] as String).input(),
     );
   }
 }

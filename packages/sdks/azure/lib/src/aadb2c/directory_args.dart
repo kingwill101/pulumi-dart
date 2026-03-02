@@ -31,21 +31,14 @@ class DirectoryArgs {
   /// [skuName] Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   /// [tags] A mapping of tags which should be assigned to the AAD B2C Directory.
   DirectoryArgs({
-    pulumi.Output<String>? countryCode,
-    required pulumi.Output<String> dataResidencyLocation,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> domainName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      countryCode = pulumi.Input.asOptionalInput<String>(countryCode),
-      dataResidencyLocation = pulumi.Input.asInput<String>(dataResidencyLocation),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      domainName = pulumi.Input.asInput<String>(domainName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.countryCode,
+    required this.dataResidencyLocation,
+    this.displayName,
+    required this.domainName,
+    required this.resourceGroupName,
+    required this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      countryCode: map['countryCode'] == null ? null : pulumi.Output.create<String>(map['countryCode'] as String),
-      dataResidencyLocation: pulumi.Output.create<String>(map['dataResidencyLocation'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      dataResidencyLocation: (map['dataResidencyLocation'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      domainName: (map['domainName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skuName: (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

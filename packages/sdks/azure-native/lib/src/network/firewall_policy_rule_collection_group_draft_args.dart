@@ -32,21 +32,14 @@ class FirewallPolicyRuleCollectionGroupDraftArgs {
   /// [ruleCollectionGroupName] The name of the FirewallPolicyRuleCollectionGroup.
   /// [ruleCollections] Group of Firewall Policy rule collections.
   FirewallPolicyRuleCollectionGroupDraftArgs({
-    required pulumi.Output<String> firewallPolicyName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? priority,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> ruleCollectionGroupName,
-    pulumi.Output<List<FirewallPolicyFilterRuleCollection>>? ruleCollections,
-  }) :
-      firewallPolicyName = pulumi.Input.asInput<String>(firewallPolicyName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      ruleCollectionGroupName = pulumi.Input.asInput<String>(ruleCollectionGroupName),
-      ruleCollections = pulumi.Input.asOptionalInput<List<FirewallPolicyFilterRuleCollection>>(ruleCollections);
+    required this.firewallPolicyName,
+    this.id,
+    this.name,
+    this.priority,
+    required this.resourceGroupName,
+    required this.ruleCollectionGroupName,
+    this.ruleCollections,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class FirewallPolicyRuleCollectionGroupDraftArgs {
 
   factory FirewallPolicyRuleCollectionGroupDraftArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupDraftArgs(
-      firewallPolicyName: pulumi.Output.create<String>(map['firewallPolicyName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      ruleCollectionGroupName: pulumi.Output.create<String>(map['ruleCollectionGroupName'] as String),
-      ruleCollections: map['ruleCollections'] == null ? null : pulumi.Output.create<List<FirewallPolicyFilterRuleCollection>>(pulumi.Input.decodeList<FirewallPolicyFilterRuleCollection>(map['ruleCollections'], (value) => FirewallPolicyFilterRuleCollection.fromMap((value as Map).cast<String, dynamic>()))),
+      firewallPolicyName: (map['firewallPolicyName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ruleCollectionGroupName: (map['ruleCollectionGroupName'] as String).input(),
+      ruleCollections: map['ruleCollections'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyFilterRuleCollection>(map['ruleCollections'], (value) => FirewallPolicyFilterRuleCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetActionGroupWebhookReceiverAadAuth {
-  final String identifierUri;
-  final String objectId;
+  final pulumi.Input<String> identifierUri;
+  final pulumi.Input<String> objectId;
   /// The Tenant ID for the subscription containing this Event Hub.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetActionGroupWebhookReceiverAadAuth].
   /// [identifierUri] Required.
@@ -27,9 +28,9 @@ class GetActionGroupWebhookReceiverAadAuth {
 
   factory GetActionGroupWebhookReceiverAadAuth.fromMap(Map<String, dynamic> map) {
     return GetActionGroupWebhookReceiverAadAuth(
-      identifierUri: map['identifierUri'] as String,
-      objectId: map['objectId'] as String,
-      tenantId: map['tenantId'] as String,
+      identifierUri: (map['identifierUri'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

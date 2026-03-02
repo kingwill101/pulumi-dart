@@ -49,31 +49,19 @@ class IntegrationAccountAgreementArgs {
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
   IntegrationAccountAgreementArgs({
-    pulumi.Output<String>? agreementName,
-    required pulumi.Output<AgreementType> agreementType,
-    required pulumi.Output<AgreementContent> content,
-    required pulumi.Output<BusinessIdentity> guestIdentity,
-    required pulumi.Output<String> guestPartner,
-    required pulumi.Output<BusinessIdentity> hostIdentity,
-    required pulumi.Output<String> hostPartner,
-    required pulumi.Output<String> integrationAccountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      agreementName = pulumi.Input.asOptionalInput<String>(agreementName),
-      agreementType = pulumi.Input.asInput<AgreementType>(agreementType),
-      content = pulumi.Input.asInput<AgreementContent>(content),
-      guestIdentity = pulumi.Input.asInput<BusinessIdentity>(guestIdentity),
-      guestPartner = pulumi.Input.asInput<String>(guestPartner),
-      hostIdentity = pulumi.Input.asInput<BusinessIdentity>(hostIdentity),
-      hostPartner = pulumi.Input.asInput<String>(hostPartner),
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.agreementName,
+    required this.agreementType,
+    required this.content,
+    required this.guestIdentity,
+    required this.guestPartner,
+    required this.hostIdentity,
+    required this.hostPartner,
+    required this.integrationAccountName,
+    this.location,
+    this.metadata,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,18 +82,18 @@ class IntegrationAccountAgreementArgs {
 
   factory IntegrationAccountAgreementArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAgreementArgs(
-      agreementName: map['agreementName'] == null ? null : pulumi.Output.create<String>(map['agreementName'] as String),
-      agreementType: pulumi.Output.create<AgreementType>(AgreementType.fromValue(map['agreementType'] as String)),
-      content: pulumi.Output.create<AgreementContent>(AgreementContent.fromMap((map['content'] as Map).cast<String, dynamic>())),
-      guestIdentity: pulumi.Output.create<BusinessIdentity>(BusinessIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())),
-      guestPartner: pulumi.Output.create<String>(map['guestPartner'] as String),
-      hostIdentity: pulumi.Output.create<BusinessIdentity>(BusinessIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())),
-      hostPartner: pulumi.Output.create<String>(map['hostPartner'] as String),
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      agreementName: map['agreementName'] == null ? null : (map['agreementName'] as String).input(),
+      agreementType: (AgreementType.fromValue(map['agreementType'] as String)).input(),
+      content: (AgreementContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      guestIdentity: (BusinessIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())).input(),
+      guestPartner: (map['guestPartner'] as String).input(),
+      hostIdentity: (BusinessIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())).input(),
+      hostPartner: (map['hostPartner'] as String).input(),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

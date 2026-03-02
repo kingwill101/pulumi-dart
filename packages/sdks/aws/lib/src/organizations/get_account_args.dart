@@ -16,11 +16,9 @@ class GetAccountArgs {
   /// [accountId] Account ID number of a delegated administrator account in the organization.
   /// [tags] Map of tags for the resource.
   GetAccountArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountId: (map['accountId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

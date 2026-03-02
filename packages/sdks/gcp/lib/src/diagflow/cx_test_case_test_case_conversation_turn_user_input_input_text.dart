@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseTestCaseConversationTurnUserInputInputText {
   /// The natural language text to be processed. Text length must not exceed 256 characters.
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInputInputText].
   /// [text] The natural language text to be processed. Text length must not exceed 256 characters.
@@ -19,7 +20,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputText {
 
   factory CxTestCaseTestCaseConversationTurnUserInputInputText.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInputInputText(
-      text: map['text'] as String,
+      text: (map['text'] as String).input(),
     );
   }
 }

@@ -17,11 +17,9 @@ class GetQuotaV2Args {
   /// [projectId] The id of the project to retrieve the quota.
   /// [region] The region in which to obtain the V2 Network client.
   GetQuotaV2Args({
-    required pulumi.Output<String> projectId,
-    pulumi.Output<String>? region,
-  }) :
-      projectId = pulumi.Input.asInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.projectId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetQuotaV2Args {
 
   factory GetQuotaV2Args.fromMap(Map<String, dynamic> map) {
     return GetQuotaV2Args(
-      projectId: pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      projectId: (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

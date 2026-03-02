@@ -19,15 +19,11 @@ class UserInGroupState {
   /// [userPoolId] The user pool ID of the user and group.
   /// [username] The username of the user to be added to the group.
   UserInGroupState({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? userPoolId,
-    pulumi.Output<String>? username,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userPoolId = pulumi.Input.asOptionalInput<String>(userPoolId),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.groupName,
+    this.region,
+    this.userPoolId,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class UserInGroupState {
 
   factory UserInGroupState.fromMap(Map<String, dynamic> map) {
     return UserInGroupState(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      userPoolId: map['userPoolId'] == null ? null : pulumi.Output.create<String>(map['userPoolId'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

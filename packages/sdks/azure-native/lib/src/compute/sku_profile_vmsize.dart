@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the VM Size.
 class SkuProfileVMSize {
   /// Specifies the name of the VM Size.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Specifies the rank (a.k.a priority) associated with the VM Size.
-  final int? rank;
+  final pulumi.Input<int>? rank;
 
   /// Creates a new [SkuProfileVMSize].
   /// [name] Specifies the name of the VM Size.
@@ -25,8 +26,8 @@ class SkuProfileVMSize {
 
   factory SkuProfileVMSize.fromMap(Map<String, dynamic> map) {
     return SkuProfileVMSize(
-      name: map['name'] == null ? null : map['name'] as String,
-      rank: map['rank'] == null ? null : map['rank'] as int,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Filter details to transfer Azure Blobs
 class BlobFilterDetailsResponse {
   /// List of full path of the blobs to be transferred.
-  final List<String>? blobPathList;
+  final pulumi.Input<List<String>>? blobPathList;
   /// Prefix list of the Azure blobs to be transferred.
-  final List<String>? blobPrefixList;
+  final pulumi.Input<List<String>>? blobPrefixList;
   /// List of blob containers to be transferred.
-  final List<String>? containerList;
+  final pulumi.Input<List<String>>? containerList;
 
   /// Creates a new [BlobFilterDetailsResponse].
   /// [blobPathList] List of full path of the blobs to be transferred.
@@ -30,9 +31,9 @@ class BlobFilterDetailsResponse {
 
   factory BlobFilterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return BlobFilterDetailsResponse(
-      blobPathList: map['blobPathList'] == null ? null : (map['blobPathList'] as List).cast<String>(),
-      blobPrefixList: map['blobPrefixList'] == null ? null : (map['blobPrefixList'] as List).cast<String>(),
-      containerList: map['containerList'] == null ? null : (map['containerList'] as List).cast<String>(),
+      blobPathList: map['blobPathList'] == null ? null : ((map['blobPathList'] as List).cast<String>()).input(),
+      blobPrefixList: map['blobPrefixList'] == null ? null : ((map['blobPrefixList'] as List).cast<String>()).input(),
+      containerList: map['containerList'] == null ? null : ((map['containerList'] as List).cast<String>()).input(),
     );
   }
 }

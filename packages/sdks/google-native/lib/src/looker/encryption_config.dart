@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Encryption configuration (i.e. CMEK).
 class EncryptionConfig {
   /// Name of the CMEK key in KMS (input parameter).
-  final String? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKeyName] Name of the CMEK key in KMS (input parameter).
@@ -20,7 +21,7 @@ class EncryptionConfig {
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
     );
   }
 }

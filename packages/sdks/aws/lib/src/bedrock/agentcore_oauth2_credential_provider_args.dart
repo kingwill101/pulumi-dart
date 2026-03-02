@@ -25,15 +25,11 @@ class AgentcoreOauth2CredentialProviderArgs {
   /// [oauth2ProviderConfig] OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AgentcoreOauth2CredentialProviderArgs({
-    required pulumi.Output<String> credentialProviderVendor,
-    pulumi.Output<String>? name,
-    pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>? oauth2ProviderConfig,
-    pulumi.Output<String>? region,
-  }) :
-      credentialProviderVendor = pulumi.Input.asInput<String>(credentialProviderVendor),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauth2ProviderConfig = pulumi.Input.asOptionalInput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>(oauth2ProviderConfig),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.credentialProviderVendor,
+    this.name,
+    this.oauth2ProviderConfig,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class AgentcoreOauth2CredentialProviderArgs {
 
   factory AgentcoreOauth2CredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderArgs(
-      credentialProviderVendor: pulumi.Output.create<String>(map['credentialProviderVendor'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : pulumi.Output.create<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>(AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      credentialProviderVendor: (map['credentialProviderVendor'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

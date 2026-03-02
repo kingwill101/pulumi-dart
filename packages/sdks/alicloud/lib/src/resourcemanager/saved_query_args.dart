@@ -19,13 +19,10 @@ class SavedQueryArgs {
   /// [expression] Query Expression.
   /// [savedQueryName] The name of the resource.
   SavedQueryArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> expression,
-    required pulumi.Output<String> savedQueryName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expression = pulumi.Input.asInput<String>(expression),
-      savedQueryName = pulumi.Input.asInput<String>(savedQueryName);
+    this.description,
+    required this.expression,
+    required this.savedQueryName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SavedQueryArgs {
 
   factory SavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return SavedQueryArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      expression: pulumi.Output.create<String>(map['expression'] as String),
-      savedQueryName: pulumi.Output.create<String>(map['savedQueryName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      expression: (map['expression'] as String).input(),
+      savedQueryName: (map['savedQueryName'] as String).input(),
     );
   }
 }

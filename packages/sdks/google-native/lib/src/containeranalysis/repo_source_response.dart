@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// RepoSource describes the location of the source in a Google Cloud Source Repository.
 class RepoSourceResponse {
   /// Name of the branch to build.
-  final String branchName;
+  final pulumi.Input<String> branchName;
   /// Explicit commit SHA to build.
-  final String commitSha;
+  final pulumi.Input<String> commitSha;
   /// ID of the project that owns the repo.
-  final String project;
+  final pulumi.Input<String> project;
   /// Name of the repo.
-  final String repoName;
+  final pulumi.Input<String> repoName;
   /// Name of the tag to build.
-  final String tagName;
+  final pulumi.Input<String> tagName;
 
   /// Creates a new [RepoSourceResponse].
   /// [branchName] Name of the branch to build.
@@ -40,11 +41,11 @@ class RepoSourceResponse {
 
   factory RepoSourceResponse.fromMap(Map<String, dynamic> map) {
     return RepoSourceResponse(
-      branchName: map['branchName'] as String,
-      commitSha: map['commitSha'] as String,
-      project: map['project'] as String,
-      repoName: map['repoName'] as String,
-      tagName: map['tagName'] as String,
+      branchName: (map['branchName'] as String).input(),
+      commitSha: (map['commitSha'] as String).input(),
+      project: (map['project'] as String).input(),
+      repoName: (map['repoName'] as String).input(),
+      tagName: (map['tagName'] as String).input(),
     );
   }
 }

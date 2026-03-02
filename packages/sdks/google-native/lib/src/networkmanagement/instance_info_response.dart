@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// For display only. Metadata associated with a Compute Engine instance.
 class InstanceInfoResponse {
   /// Name of a Compute Engine instance.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// External IP address of the network interface.
-  final String externalIp;
+  final pulumi.Input<String> externalIp;
   /// Name of the network interface of a Compute Engine instance.
-  final String interface;
+  final pulumi.Input<String> interface;
   /// Internal IP address of the network interface.
-  final String internalIp;
+  final pulumi.Input<String> internalIp;
   /// Network tags configured on the instance.
-  final List<String> networkTags;
+  final pulumi.Input<List<String>> networkTags;
   /// URI of a Compute Engine network.
-  final String networkUri;
+  final pulumi.Input<String> networkUri;
   /// Service account authorized for the instance.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
   /// URI of a Compute Engine instance.
-  final String uri;
+  final pulumi.Input<String> uri;
 
   /// Creates a new [InstanceInfoResponse].
   /// [displayName] Name of a Compute Engine instance.
@@ -55,14 +56,14 @@ class InstanceInfoResponse {
 
   factory InstanceInfoResponse.fromMap(Map<String, dynamic> map) {
     return InstanceInfoResponse(
-      displayName: map['displayName'] as String,
-      externalIp: map['externalIp'] as String,
-      interface: map['interface'] as String,
-      internalIp: map['internalIp'] as String,
-      networkTags: (map['networkTags'] as List).cast<String>(),
-      networkUri: map['networkUri'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      uri: map['uri'] as String,
+      displayName: (map['displayName'] as String).input(),
+      externalIp: (map['externalIp'] as String).input(),
+      interface: (map['interface'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      networkTags: ((map['networkTags'] as List).cast<String>()).input(),
+      networkUri: (map['networkUri'] as String).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      uri: (map['uri'] as String).input(),
     );
   }
 }

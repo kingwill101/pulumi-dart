@@ -48,29 +48,18 @@ class RoleArgs {
   /// [permissionsBoundary] ARN of the policy that is used to set the permissions boundary for the role.
   /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RoleArgs({
-    required pulumi.Output<String> assumeRolePolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceDetachPolicies,
-    pulumi.Output<List<RoleInlinePolicy>>? inlinePolicies,
-    pulumi.Output<List<String>>? managedPolicyArns,
-    pulumi.Output<int>? maxSessionDuration,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? path,
-    pulumi.Output<String>? permissionsBoundary,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      assumeRolePolicy = pulumi.Input.asInput<String>(assumeRolePolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceDetachPolicies = pulumi.Input.asOptionalInput<bool>(forceDetachPolicies),
-      inlinePolicies = pulumi.Input.asOptionalInput<List<RoleInlinePolicy>>(inlinePolicies),
-      managedPolicyArns = pulumi.Input.asOptionalInput<List<String>>(managedPolicyArns),
-      maxSessionDuration = pulumi.Input.asOptionalInput<int>(maxSessionDuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      permissionsBoundary = pulumi.Input.asOptionalInput<String>(permissionsBoundary),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.assumeRolePolicy,
+    this.description,
+    this.forceDetachPolicies,
+    this.inlinePolicies,
+    this.managedPolicyArns,
+    this.maxSessionDuration,
+    this.name,
+    this.namePrefix,
+    this.path,
+    this.permissionsBoundary,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,17 +79,17 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRolePolicy: pulumi.Output.create<String>(map['assumeRolePolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : pulumi.Output.create<bool>(map['forceDetachPolicies'] as bool),
-      inlinePolicies: map['inlinePolicies'] == null ? null : pulumi.Output.create<List<RoleInlinePolicy>>(pulumi.Input.decodeList<RoleInlinePolicy>(map['inlinePolicies'], (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : pulumi.Output.create<List<String>>((map['managedPolicyArns'] as List).cast<String>()),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : pulumi.Output.create<int>(map['maxSessionDuration'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : pulumi.Output.create<String>(map['permissionsBoundary'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      assumeRolePolicy: (map['assumeRolePolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : (map['forceDetachPolicies'] as bool).input(),
+      inlinePolicies: map['inlinePolicies'] == null ? null : (pulumi.Input.decodeList<RoleInlinePolicy>(map['inlinePolicies'], (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

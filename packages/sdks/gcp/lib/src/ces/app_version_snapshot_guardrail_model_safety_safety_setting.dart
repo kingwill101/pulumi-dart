@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// (Output)
@@ -9,7 +10,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_DANGEROUS_CONTENT
   /// HARM_CATEGORY_HARASSMENT
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
-  final String? category;
+  final pulumi.Input<String>? category;
   /// (Output)
   /// The harm block threshold.
   /// Possible values:
@@ -18,7 +19,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// BLOCK_ONLY_HIGH
   /// BLOCK_NONE
   /// OFF
-  final String? threshold;
+  final pulumi.Input<String>? threshold;
 
   /// Creates a new [AppVersionSnapshotGuardrailModelSafetySafetySetting].
   /// [category] (Output)
@@ -37,8 +38,8 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
 
   factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailModelSafetySafetySetting(
-      category: map['category'] == null ? null : map['category'] as String,
-      threshold: map['threshold'] == null ? null : map['threshold'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
     );
   }
 }

@@ -5,59 +5,59 @@ import 'get_rules_rule_compliance.dart';
 
 class GetRulesRule {
   /// The ID of the Alibaba Cloud account.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The compliance package ID.
-  final String compliancePackId;
+  final pulumi.Input<String> compliancePackId;
   /// The information about the compliance evaluations based on the rule.
-  final List<GetRulesRuleCompliance> compliances;
+  final pulumi.Input<List<GetRulesRuleCompliance>> compliances;
   /// The ARN of the Config Rule.
-  final String configRuleArn;
+  final pulumi.Input<String> configRuleArn;
   /// The ID of the Config Rule.
-  final String configRuleId;
+  final pulumi.Input<String> configRuleId;
   /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
-  final String configRuleState;
+  final pulumi.Input<String> configRuleState;
   /// (Available since v1.124.1) A list of trigger types of config rule.
-  final String configRuleTriggerTypes;
+  final pulumi.Input<String> configRuleTriggerTypes;
   /// The description of the Config Rule.
-  final String description;
+  final pulumi.Input<String> description;
   /// Event source of the Config Rule.
-  final String eventSource;
+  final pulumi.Input<String> eventSource;
   /// (Available since v1.124.1) The scope of exclude of resource ids.
-  final String excludeResourceIdsScope;
+  final pulumi.Input<String> excludeResourceIdsScope;
   /// The ID of the Config Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The input parameters of the Config Rule.
-  final Map<String, String> inputParameters;
+  final pulumi.Input<Map<String, String>> inputParameters;
   /// (Available since v1.124.1) The frequency of maximum execution.
-  final String maximumExecutionFrequency;
+  final pulumi.Input<String> maximumExecutionFrequency;
   /// the timestamp of the Config Rule modified.
-  final String modifiedTimestamp;
+  final pulumi.Input<String> modifiedTimestamp;
   /// (Available since v1.124.1) The scope of region ids.
-  final String regionIdsScope;
+  final pulumi.Input<String> regionIdsScope;
   /// (Available since v1.124.1) The scope of resource group ids.
-  final String resourceGroupIdsScope;
+  final pulumi.Input<String> resourceGroupIdsScope;
   /// (Available since v1.124.1) The scope of resource types.
-  final List<String> resourceTypesScopes;
+  final pulumi.Input<List<String>> resourceTypesScopes;
   /// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
-  final int riskLevel;
+  final pulumi.Input<int> riskLevel;
   /// The name of config rule.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// The types of the resources to be evaluated against the rule.
-  final List<String> scopeComplianceResourceTypes;
+  final pulumi.Input<List<String>> scopeComplianceResourceTypes;
   /// Rule trigger mechanism.
-  final String sourceDetailMessageType;
+  final pulumi.Input<String> sourceDetailMessageType;
   /// The identifier of the managed rule or the arn of the custom function.
-  final String sourceIdentifier;
+  final pulumi.Input<String> sourceIdentifier;
   /// Rule execution cycle.
-  final String sourceMaximumExecutionFrequency;
+  final pulumi.Input<String> sourceMaximumExecutionFrequency;
   /// The source owner of the Config Rule.
-  final String sourceOwner;
+  final pulumi.Input<String> sourceOwner;
   /// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
-  final String status;
+  final pulumi.Input<String> status;
   /// (Available since v1.124.1) The scope of tag key.
-  final String tagKeyScope;
+  final pulumi.Input<String> tagKeyScope;
   /// (Available since v1.124.1) The scope of tag value.
-  final String tagValueScope;
+  final pulumi.Input<String> tagValueScope;
 
   /// Creates a new [GetRulesRule].
   /// [accountId] The ID of the Alibaba Cloud account.
@@ -121,7 +121,7 @@ class GetRulesRule {
     return <String, dynamic>{
       'accountId': accountId,
       'compliancePackId': compliancePackId,
-      'compliances': pulumi.Input.encodeList<GetRulesRuleCompliance, Map<String, dynamic>>(compliances, (value) => value.toMap()),
+      'compliances': pulumi.Input.mapInputValue<List<GetRulesRuleCompliance>, List<Map<String, dynamic>>>(compliances, (value) => pulumi.Input.encodeList<GetRulesRuleCompliance, Map<String, dynamic>>(value, (value) => value.toMap())),
       'configRuleArn': configRuleArn,
       'configRuleId': configRuleId,
       'configRuleState': configRuleState,
@@ -151,33 +151,33 @@ class GetRulesRule {
 
   factory GetRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRulesRule(
-      accountId: map['accountId'] as String,
-      compliancePackId: map['compliancePackId'] as String,
-      compliances: pulumi.Input.decodeList<GetRulesRuleCompliance>(map['compliances'], (value) => GetRulesRuleCompliance.fromMap((value as Map).cast<String, dynamic>())),
-      configRuleArn: map['configRuleArn'] as String,
-      configRuleId: map['configRuleId'] as String,
-      configRuleState: map['configRuleState'] as String,
-      configRuleTriggerTypes: map['configRuleTriggerTypes'] as String,
-      description: map['description'] as String,
-      eventSource: map['eventSource'] as String,
-      excludeResourceIdsScope: map['excludeResourceIdsScope'] as String,
-      id: map['id'] as String,
-      inputParameters: (map['inputParameters'] as Map).cast<String, String>(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] as String,
-      modifiedTimestamp: map['modifiedTimestamp'] as String,
-      regionIdsScope: map['regionIdsScope'] as String,
-      resourceGroupIdsScope: map['resourceGroupIdsScope'] as String,
-      resourceTypesScopes: (map['resourceTypesScopes'] as List).cast<String>(),
-      riskLevel: map['riskLevel'] as int,
-      ruleName: map['ruleName'] as String,
-      scopeComplianceResourceTypes: (map['scopeComplianceResourceTypes'] as List).cast<String>(),
-      sourceDetailMessageType: map['sourceDetailMessageType'] as String,
-      sourceIdentifier: map['sourceIdentifier'] as String,
-      sourceMaximumExecutionFrequency: map['sourceMaximumExecutionFrequency'] as String,
-      sourceOwner: map['sourceOwner'] as String,
-      status: map['status'] as String,
-      tagKeyScope: map['tagKeyScope'] as String,
-      tagValueScope: map['tagValueScope'] as String,
+      accountId: (map['accountId'] as String).input(),
+      compliancePackId: (map['compliancePackId'] as String).input(),
+      compliances: (pulumi.Input.decodeList<GetRulesRuleCompliance>(map['compliances'], (value) => GetRulesRuleCompliance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configRuleArn: (map['configRuleArn'] as String).input(),
+      configRuleId: (map['configRuleId'] as String).input(),
+      configRuleState: (map['configRuleState'] as String).input(),
+      configRuleTriggerTypes: (map['configRuleTriggerTypes'] as String).input(),
+      description: (map['description'] as String).input(),
+      eventSource: (map['eventSource'] as String).input(),
+      excludeResourceIdsScope: (map['excludeResourceIdsScope'] as String).input(),
+      id: (map['id'] as String).input(),
+      inputParameters: ((map['inputParameters'] as Map).cast<String, String>()).input(),
+      maximumExecutionFrequency: (map['maximumExecutionFrequency'] as String).input(),
+      modifiedTimestamp: (map['modifiedTimestamp'] as String).input(),
+      regionIdsScope: (map['regionIdsScope'] as String).input(),
+      resourceGroupIdsScope: (map['resourceGroupIdsScope'] as String).input(),
+      resourceTypesScopes: ((map['resourceTypesScopes'] as List).cast<String>()).input(),
+      riskLevel: (map['riskLevel'] as int).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      scopeComplianceResourceTypes: ((map['scopeComplianceResourceTypes'] as List).cast<String>()).input(),
+      sourceDetailMessageType: (map['sourceDetailMessageType'] as String).input(),
+      sourceIdentifier: (map['sourceIdentifier'] as String).input(),
+      sourceMaximumExecutionFrequency: (map['sourceMaximumExecutionFrequency'] as String).input(),
+      sourceOwner: (map['sourceOwner'] as String).input(),
+      status: (map['status'] as String).input(),
+      tagKeyScope: (map['tagKeyScope'] as String).input(),
+      tagValueScope: (map['tagValueScope'] as String).input(),
     );
   }
 }

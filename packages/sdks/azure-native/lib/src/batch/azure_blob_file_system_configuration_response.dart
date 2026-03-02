@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_node_identity_reference_response.dart';
 
 /// Information used to connect to an Azure Storage Container using Blobfuse.
 class AzureBlobFileSystemConfigurationResponse {
   /// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
-  final String? accountKey;
+  final pulumi.Input<String>? accountKey;
   /// The Azure Storage Account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final String? blobfuseOptions;
+  final pulumi.Input<String>? blobfuseOptions;
   /// The Azure Blob Storage Container name.
-  final String containerName;
+  final pulumi.Input<String> containerName;
   /// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
-  final ComputeNodeIdentityReferenceResponse? identityReference;
+  final pulumi.Input<ComputeNodeIdentityReferenceResponse>? identityReference;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
-  final String relativeMountPath;
+  final pulumi.Input<String> relativeMountPath;
   /// This property is mutually exclusive with both accountKey and identity; exactly one must be specified.
-  final String? sasKey;
+  final pulumi.Input<String>? sasKey;
 
   /// Creates a new [AzureBlobFileSystemConfigurationResponse].
   /// [accountKey] This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
@@ -43,7 +44,7 @@ class AzureBlobFileSystemConfigurationResponse {
       'accountName': accountName,
       'blobfuseOptions': ?blobfuseOptions,
       'containerName': containerName,
-      'identityReference': ?identityReference == null ? null : identityReference!.toMap(),
+      'identityReference': ?pulumi.Input.mapOptionalInputValue<ComputeNodeIdentityReferenceResponse, Map<String, dynamic>>(identityReference, (value) => value.toMap()),
       'relativeMountPath': relativeMountPath,
       'sasKey': ?sasKey,
     };
@@ -51,13 +52,13 @@ class AzureBlobFileSystemConfigurationResponse {
 
   factory AzureBlobFileSystemConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobFileSystemConfigurationResponse(
-      accountKey: map['accountKey'] == null ? null : map['accountKey'] as String,
-      accountName: map['accountName'] as String,
-      blobfuseOptions: map['blobfuseOptions'] == null ? null : map['blobfuseOptions'] as String,
-      containerName: map['containerName'] as String,
-      identityReference: map['identityReference'] == null ? null : ComputeNodeIdentityReferenceResponse.fromMap((map['identityReference'] as Map).cast<String, dynamic>()),
-      relativeMountPath: map['relativeMountPath'] as String,
-      sasKey: map['sasKey'] == null ? null : map['sasKey'] as String,
+      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions'] as String).input(),
+      containerName: (map['containerName'] as String).input(),
+      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReferenceResponse.fromMap((map['identityReference'] as Map).cast<String, dynamic>())).input(),
+      relativeMountPath: (map['relativeMountPath'] as String).input(),
+      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
     );
   }
 }

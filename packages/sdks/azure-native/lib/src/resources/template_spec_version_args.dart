@@ -41,27 +41,17 @@ class TemplateSpecVersionArgs {
   /// [templateSpecVersion] The version of the Template Spec.
   /// [uiFormDefinition] The Azure Resource Manager template UI definition content.
   TemplateSpecVersionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<List<LinkedTemplateArtifact>>? linkedTemplates,
-    pulumi.Output<String>? location,
-    pulumi.Output<dynamic>? mainTemplate,
-    pulumi.Output<dynamic>? metadata,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> templateSpecName,
-    pulumi.Output<String>? templateSpecVersion,
-    pulumi.Output<dynamic>? uiFormDefinition,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      linkedTemplates = pulumi.Input.asOptionalInput<List<LinkedTemplateArtifact>>(linkedTemplates),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mainTemplate = pulumi.Input.asOptionalInput<dynamic>(mainTemplate),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      templateSpecName = pulumi.Input.asInput<String>(templateSpecName),
-      templateSpecVersion = pulumi.Input.asOptionalInput<String>(templateSpecVersion),
-      uiFormDefinition = pulumi.Input.asOptionalInput<dynamic>(uiFormDefinition);
+    this.description,
+    this.linkedTemplates,
+    this.location,
+    this.mainTemplate,
+    this.metadata,
+    required this.resourceGroupName,
+    this.tags,
+    required this.templateSpecName,
+    this.templateSpecVersion,
+    this.uiFormDefinition,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class TemplateSpecVersionArgs {
 
   factory TemplateSpecVersionArgs.fromMap(Map<String, dynamic> map) {
     return TemplateSpecVersionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      linkedTemplates: map['linkedTemplates'] == null ? null : pulumi.Output.create<List<LinkedTemplateArtifact>>(pulumi.Input.decodeList<LinkedTemplateArtifact>(map['linkedTemplates'], (value) => LinkedTemplateArtifact.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mainTemplate: map['mainTemplate'] == null ? null : pulumi.Output.create<dynamic>(map['mainTemplate']),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      templateSpecName: pulumi.Output.create<String>(map['templateSpecName'] as String),
-      templateSpecVersion: map['templateSpecVersion'] == null ? null : pulumi.Output.create<String>(map['templateSpecVersion'] as String),
-      uiFormDefinition: map['uiFormDefinition'] == null ? null : pulumi.Output.create<dynamic>(map['uiFormDefinition']),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      linkedTemplates: map['linkedTemplates'] == null ? null : (pulumi.Input.decodeList<LinkedTemplateArtifact>(map['linkedTemplates'], (value) => LinkedTemplateArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      templateSpecName: (map['templateSpecName'] as String).input(),
+      templateSpecVersion: map['templateSpecVersion'] == null ? null : (map['templateSpecVersion'] as String).input(),
+      uiFormDefinition: map['uiFormDefinition'] == null ? null : (map['uiFormDefinition']).input(),
     );
   }
 }

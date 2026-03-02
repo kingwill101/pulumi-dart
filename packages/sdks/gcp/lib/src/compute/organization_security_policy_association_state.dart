@@ -19,15 +19,11 @@ class OrganizationSecurityPolicyAssociationState {
   /// [name] The name for an association.
   /// [policyId] The security policy ID of the association.
   OrganizationSecurityPolicyAssociationState({
-    pulumi.Output<String>? attachmentId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-  }) :
-      attachmentId = pulumi.Input.asOptionalInput<String>(attachmentId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId);
+    this.attachmentId,
+    this.displayName,
+    this.name,
+    this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class OrganizationSecurityPolicyAssociationState {
 
   factory OrganizationSecurityPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationState(
-      attachmentId: map['attachmentId'] == null ? null : pulumi.Output.create<String>(map['attachmentId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
     );
   }
 }

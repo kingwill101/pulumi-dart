@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The X12 processing settings.
 class X12ProcessingSettingsResponse {
   /// The value indicating whether to convert numerical type to implied decimal.
-  final bool convertImpliedDecimal;
+  final pulumi.Input<bool> convertImpliedDecimal;
   /// The value indicating whether to create empty xml tags for trailing separators.
-  final bool createEmptyXmlTagsForTrailingSeparators;
+  final pulumi.Input<bool> createEmptyXmlTagsForTrailingSeparators;
   /// The value indicating whether to mask security information.
-  final bool maskSecurityInfo;
+  final pulumi.Input<bool> maskSecurityInfo;
   /// The value indicating whether to preserve interchange.
-  final bool preserveInterchange;
+  final pulumi.Input<bool> preserveInterchange;
   /// The value indicating whether to suspend interchange on error.
-  final bool suspendInterchangeOnError;
+  final pulumi.Input<bool> suspendInterchangeOnError;
   /// The value indicating whether to use dot as decimal separator.
-  final bool useDotAsDecimalSeparator;
+  final pulumi.Input<bool> useDotAsDecimalSeparator;
 
   /// Creates a new [X12ProcessingSettingsResponse].
   /// [convertImpliedDecimal] The value indicating whether to convert numerical type to implied decimal.
@@ -45,12 +46,12 @@ class X12ProcessingSettingsResponse {
 
   factory X12ProcessingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12ProcessingSettingsResponse(
-      convertImpliedDecimal: map['convertImpliedDecimal'] as bool,
-      createEmptyXmlTagsForTrailingSeparators: map['createEmptyXmlTagsForTrailingSeparators'] as bool,
-      maskSecurityInfo: map['maskSecurityInfo'] as bool,
-      preserveInterchange: map['preserveInterchange'] as bool,
-      suspendInterchangeOnError: map['suspendInterchangeOnError'] as bool,
-      useDotAsDecimalSeparator: map['useDotAsDecimalSeparator'] as bool,
+      convertImpliedDecimal: (map['convertImpliedDecimal'] as bool).input(),
+      createEmptyXmlTagsForTrailingSeparators: (map['createEmptyXmlTagsForTrailingSeparators'] as bool).input(),
+      maskSecurityInfo: (map['maskSecurityInfo'] as bool).input(),
+      preserveInterchange: (map['preserveInterchange'] as bool).input(),
+      suspendInterchangeOnError: (map['suspendInterchangeOnError'] as bool).input(),
+      useDotAsDecimalSeparator: (map['useDotAsDecimalSeparator'] as bool).input(),
     );
   }
 }

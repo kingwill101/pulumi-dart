@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtendedLocationOptionsResponse {
-  final String? supportedPolicy;
+  final pulumi.Input<String>? supportedPolicy;
   /// The type.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ExtendedLocationOptionsResponse].
   /// [supportedPolicy] Optional.
@@ -23,8 +24,8 @@ class ExtendedLocationOptionsResponse {
 
   factory ExtendedLocationOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationOptionsResponse(
-      supportedPolicy: map['supportedPolicy'] == null ? null : map['supportedPolicy'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      supportedPolicy: map['supportedPolicy'] == null ? null : (map['supportedPolicy'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

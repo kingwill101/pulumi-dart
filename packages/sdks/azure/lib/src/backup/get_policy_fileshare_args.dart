@@ -19,13 +19,10 @@ class GetPolicyFileshareArgs {
   /// [recoveryVaultName] Specifies the name of the Recovery Services Vault.
   /// [resourceGroupName] The name of the resource group in which the File Share Backup Policy resides.
   GetPolicyFileshareArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> recoveryVaultName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      recoveryVaultName = pulumi.Input.asInput<String>(recoveryVaultName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    required this.recoveryVaultName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPolicyFileshareArgs {
 
   factory GetPolicyFileshareArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyFileshareArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      recoveryVaultName: pulumi.Output.create<String>(map['recoveryVaultName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      recoveryVaultName: (map['recoveryVaultName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

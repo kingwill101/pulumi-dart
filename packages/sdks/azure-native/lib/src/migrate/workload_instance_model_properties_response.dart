@@ -8,34 +8,34 @@ import 'workload_instance_model_properties_response_current_job.dart';
 /// Workload instance model properties.
 class WorkloadInstanceModelPropertiesResponse {
   /// Gets or sets the allowed scenarios on the workload instance.
-  final List<String> allowedOperations;
-  final WorkloadInstanceModelPropertiesResponseCurrentJob currentJob;
+  final pulumi.Input<List<String>> allowedOperations;
+  final pulumi.Input<WorkloadInstanceModelPropertiesResponseCurrentJob> currentJob;
   /// Workload instance model custom properties.
-  final ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse? customProperties;
+  final pulumi.Input<ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse>? customProperties;
   /// Gets or sets the display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// Gets or sets the list of health errors.
-  final List<HealthErrorModelResponse> healthErrors;
+  final pulumi.Input<List<HealthErrorModelResponse>> healthErrors;
   /// Gets or sets the Last successful replication cycle time.
-  final String lastSuccessfulReplicationCycleTime;
+  final pulumi.Input<String> lastSuccessfulReplicationCycleTime;
   /// Gets or Sets the master site name.
-  final String? masterSiteName;
+  final pulumi.Input<String>? masterSiteName;
   /// Gets or sets the migrate agent id associated with the workload instance.
-  final String? migrateAgentId;
+  final pulumi.Input<String>? migrateAgentId;
   /// Gets or sets the workload instance name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Gets or sets the provisioning state of the workload instance.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Gets or sets the replication health of the workload instance.
-  final String replicationHealth;
+  final pulumi.Input<String> replicationHealth;
   /// Gets or sets the replication state of the workload instance.
-  final String replicationStatus;
+  final pulumi.Input<String> replicationStatus;
   /// Gets or sets the workload replication state description.
-  final String replicationStatusDescription;
+  final pulumi.Input<String> replicationStatusDescription;
   /// Gets or sets the source name.
-  final String? sourceName;
+  final pulumi.Input<String>? sourceName;
   /// Gets or sets the source platform.
-  final String? sourcePlatform;
+  final pulumi.Input<String>? sourcePlatform;
 
   /// Creates a new [WorkloadInstanceModelPropertiesResponse].
   /// [allowedOperations] Gets or sets the allowed scenarios on the workload instance.
@@ -74,10 +74,10 @@ class WorkloadInstanceModelPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedOperations': allowedOperations,
-      'currentJob': currentJob.toMap(),
-      'customProperties': ?customProperties == null ? null : customProperties!.toMap(),
+      'currentJob': pulumi.Input.mapInputValue<WorkloadInstanceModelPropertiesResponseCurrentJob, Map<String, dynamic>>(currentJob, (value) => value.toMap()),
+      'customProperties': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
       'displayName': ?displayName,
-      'healthErrors': pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(healthErrors, (value) => value.toMap()),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorModelResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastSuccessfulReplicationCycleTime': lastSuccessfulReplicationCycleTime,
       'masterSiteName': ?masterSiteName,
       'migrateAgentId': ?migrateAgentId,
@@ -93,21 +93,21 @@ class WorkloadInstanceModelPropertiesResponse {
 
   factory WorkloadInstanceModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceModelPropertiesResponse(
-      allowedOperations: (map['allowedOperations'] as List).cast<String>(),
-      currentJob: WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap((map['currentJob'] as Map).cast<String, dynamic>()),
-      customProperties: map['customProperties'] == null ? null : ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      healthErrors: pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastSuccessfulReplicationCycleTime: map['lastSuccessfulReplicationCycleTime'] as String,
-      masterSiteName: map['masterSiteName'] == null ? null : map['masterSiteName'] as String,
-      migrateAgentId: map['migrateAgentId'] == null ? null : map['migrateAgentId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      replicationHealth: map['replicationHealth'] as String,
-      replicationStatus: map['replicationStatus'] as String,
-      replicationStatusDescription: map['replicationStatusDescription'] as String,
-      sourceName: map['sourceName'] == null ? null : map['sourceName'] as String,
-      sourcePlatform: map['sourcePlatform'] == null ? null : map['sourcePlatform'] as String,
+      allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
+      currentJob: (WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap((map['currentJob'] as Map).cast<String, dynamic>())).input(),
+      customProperties: map['customProperties'] == null ? null : (ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastSuccessfulReplicationCycleTime: (map['lastSuccessfulReplicationCycleTime'] as String).input(),
+      masterSiteName: map['masterSiteName'] == null ? null : (map['masterSiteName'] as String).input(),
+      migrateAgentId: map['migrateAgentId'] == null ? null : (map['migrateAgentId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      replicationHealth: (map['replicationHealth'] as String).input(),
+      replicationStatus: (map['replicationStatus'] as String).input(),
+      replicationStatusDescription: (map['replicationStatusDescription'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform'] as String).input(),
     );
   }
 }

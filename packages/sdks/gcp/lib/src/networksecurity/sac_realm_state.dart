@@ -50,29 +50,18 @@ class SacRealmState {
   /// [symantecOptions] Configuration required for Symantec realms.
   /// [updateTime] Timestamp when the realm was last updated.
   SacRealmState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<SacRealmPairingKey>>? pairingKeys,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? securityService,
-    pulumi.Output<String>? state,
-    pulumi.Output<SacRealmSymantecOptions>? symantecOptions,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pairingKeys = pulumi.Input.asOptionalInput<List<SacRealmPairingKey>>(pairingKeys),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      securityService = pulumi.Input.asOptionalInput<String>(securityService),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      symantecOptions = pulumi.Input.asOptionalInput<SacRealmSymantecOptions>(symantecOptions),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.effectiveLabels,
+    this.labels,
+    this.name,
+    this.pairingKeys,
+    this.project,
+    this.pulumiLabels,
+    this.securityService,
+    this.state,
+    this.symantecOptions,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,17 +81,17 @@ class SacRealmState {
 
   factory SacRealmState.fromMap(Map<String, dynamic> map) {
     return SacRealmState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pairingKeys: map['pairingKeys'] == null ? null : pulumi.Output.create<List<SacRealmPairingKey>>(pulumi.Input.decodeList<SacRealmPairingKey>(map['pairingKeys'], (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      securityService: map['securityService'] == null ? null : pulumi.Output.create<String>(map['securityService'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      symantecOptions: map['symantecOptions'] == null ? null : pulumi.Output.create<SacRealmSymantecOptions>(SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pairingKeys: map['pairingKeys'] == null ? null : (pulumi.Input.decodeList<SacRealmPairingKey>(map['pairingKeys'], (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      securityService: map['securityService'] == null ? null : (map['securityService'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

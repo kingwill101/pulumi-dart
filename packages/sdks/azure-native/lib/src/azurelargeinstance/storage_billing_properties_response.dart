@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the billing related details of the AzureLargeStorageInstance.
 class StorageBillingPropertiesResponse {
   /// the billing mode for the storage instance
-  final String? billingMode;
+  final pulumi.Input<String>? billingMode;
   /// the SKU type that is provisioned
-  final String? sku;
+  final pulumi.Input<String>? sku;
 
   /// Creates a new [StorageBillingPropertiesResponse].
   /// [billingMode] the billing mode for the storage instance
@@ -25,8 +26,8 @@ class StorageBillingPropertiesResponse {
 
   factory StorageBillingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageBillingPropertiesResponse(
-      billingMode: map['billingMode'] == null ? null : map['billingMode'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
+      billingMode: map['billingMode'] == null ? null : (map['billingMode'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
     );
   }
 }

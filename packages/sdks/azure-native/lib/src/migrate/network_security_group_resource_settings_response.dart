@@ -7,15 +7,15 @@ import 'nsg_security_rule_response.dart';
 class NetworkSecurityGroupResourceSettingsResponse {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/networkSecurityGroups'.
-  final String resourceType;
+  final pulumi.Input<String> resourceType;
   /// Gets or sets Security rules of network security group.
-  final List<NsgSecurityRuleResponse>? securityRules;
+  final pulumi.Input<List<NsgSecurityRuleResponse>>? securityRules;
   /// Gets or sets the Resource tags.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// Gets or sets the target resource group name.
-  final String? targetResourceGroupName;
+  final pulumi.Input<String>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final String? targetResourceName;
+  final pulumi.Input<String>? targetResourceName;
 
   /// Creates a new [NetworkSecurityGroupResourceSettingsResponse].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -34,7 +34,7 @@ class NetworkSecurityGroupResourceSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resourceType': resourceType,
-      'securityRules': ?securityRules == null ? null : pulumi.Input.encodeList<NsgSecurityRuleResponse, Map<String, dynamic>>(securityRules!, (value) => value.toMap()),
+      'securityRules': ?pulumi.Input.mapOptionalInputValue<List<NsgSecurityRuleResponse>, List<Map<String, dynamic>>>(securityRules, (value) => pulumi.Input.encodeList<NsgSecurityRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
       'targetResourceGroupName': ?targetResourceGroupName,
       'targetResourceName': ?targetResourceName,
@@ -43,11 +43,11 @@ class NetworkSecurityGroupResourceSettingsResponse {
 
   factory NetworkSecurityGroupResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupResourceSettingsResponse(
-      resourceType: map['resourceType'] as String,
-      securityRules: map['securityRules'] == null ? null : pulumi.Input.decodeList<NsgSecurityRuleResponse>(map['securityRules'], (value) => NsgSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : map['targetResourceGroupName'] as String,
-      targetResourceName: map['targetResourceName'] == null ? null : map['targetResourceName'] as String,
+      resourceType: (map['resourceType'] as String).input(),
+      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<NsgSecurityRuleResponse>(map['securityRules'], (value) => NsgSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class DeploymentConfigState {
   /// [trafficRoutingConfig] A traffic_routing_config block. Traffic Routing Config is documented below.
   /// [zonalConfig] A zonal_config block. Zonal Config is documented below.
   DeploymentConfigState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? computePlatform,
-    pulumi.Output<String>? deploymentConfigId,
-    pulumi.Output<String>? deploymentConfigName,
-    pulumi.Output<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts,
-    pulumi.Output<String>? region,
-    pulumi.Output<DeploymentConfigTrafficRoutingConfig>? trafficRoutingConfig,
-    pulumi.Output<DeploymentConfigZonalConfig>? zonalConfig,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      computePlatform = pulumi.Input.asOptionalInput<String>(computePlatform),
-      deploymentConfigId = pulumi.Input.asOptionalInput<String>(deploymentConfigId),
-      deploymentConfigName = pulumi.Input.asOptionalInput<String>(deploymentConfigName),
-      minimumHealthyHosts = pulumi.Input.asOptionalInput<DeploymentConfigMinimumHealthyHosts>(minimumHealthyHosts),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      trafficRoutingConfig = pulumi.Input.asOptionalInput<DeploymentConfigTrafficRoutingConfig>(trafficRoutingConfig),
-      zonalConfig = pulumi.Input.asOptionalInput<DeploymentConfigZonalConfig>(zonalConfig);
+    this.arn,
+    this.computePlatform,
+    this.deploymentConfigId,
+    this.deploymentConfigName,
+    this.minimumHealthyHosts,
+    this.region,
+    this.trafficRoutingConfig,
+    this.zonalConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class DeploymentConfigState {
 
   factory DeploymentConfigState.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      computePlatform: map['computePlatform'] == null ? null : pulumi.Output.create<String>(map['computePlatform'] as String),
-      deploymentConfigId: map['deploymentConfigId'] == null ? null : pulumi.Output.create<String>(map['deploymentConfigId'] as String),
-      deploymentConfigName: map['deploymentConfigName'] == null ? null : pulumi.Output.create<String>(map['deploymentConfigName'] as String),
-      minimumHealthyHosts: map['minimumHealthyHosts'] == null ? null : pulumi.Output.create<DeploymentConfigMinimumHealthyHosts>(DeploymentConfigMinimumHealthyHosts.fromMap((map['minimumHealthyHosts'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      trafficRoutingConfig: map['trafficRoutingConfig'] == null ? null : pulumi.Output.create<DeploymentConfigTrafficRoutingConfig>(DeploymentConfigTrafficRoutingConfig.fromMap((map['trafficRoutingConfig'] as Map).cast<String, dynamic>())),
-      zonalConfig: map['zonalConfig'] == null ? null : pulumi.Output.create<DeploymentConfigZonalConfig>(DeploymentConfigZonalConfig.fromMap((map['zonalConfig'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      computePlatform: map['computePlatform'] == null ? null : (map['computePlatform'] as String).input(),
+      deploymentConfigId: map['deploymentConfigId'] == null ? null : (map['deploymentConfigId'] as String).input(),
+      deploymentConfigName: map['deploymentConfigName'] == null ? null : (map['deploymentConfigName'] as String).input(),
+      minimumHealthyHosts: map['minimumHealthyHosts'] == null ? null : (DeploymentConfigMinimumHealthyHosts.fromMap((map['minimumHealthyHosts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      trafficRoutingConfig: map['trafficRoutingConfig'] == null ? null : (DeploymentConfigTrafficRoutingConfig.fromMap((map['trafficRoutingConfig'] as Map).cast<String, dynamic>())).input(),
+      zonalConfig: map['zonalConfig'] == null ? null : (DeploymentConfigZonalConfig.fromMap((map['zonalConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

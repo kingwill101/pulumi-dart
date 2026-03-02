@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesRecipeUpdateStepDpkgInstallation {
   /// The id of the relevant artifact in the recipe.
-  final String artifactId;
+  final pulumi.Input<String> artifactId;
 
   /// Creates a new [GuestPoliciesRecipeUpdateStepDpkgInstallation].
   /// [artifactId] The id of the relevant artifact in the recipe.
@@ -19,7 +20,7 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallation {
 
   factory GuestPoliciesRecipeUpdateStepDpkgInstallation.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStepDpkgInstallation(
-      artifactId: map['artifactId'] as String,
+      artifactId: (map['artifactId'] as String).input(),
     );
   }
 }

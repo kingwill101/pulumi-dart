@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartnerNamespaceInboundIpRule {
   /// The action to take when the rule is matched. The only possible value is `Allow`. Defaults to `Allow`.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The IP mask (CIDR) to match on.
-  final String ipMask;
+  final pulumi.Input<String> ipMask;
 
   /// Creates a new [PartnerNamespaceInboundIpRule].
   /// [action] The action to take when the rule is matched. The only possible value is `Allow`. Defaults to `Allow`.
@@ -24,8 +25,8 @@ class PartnerNamespaceInboundIpRule {
 
   factory PartnerNamespaceInboundIpRule.fromMap(Map<String, dynamic> map) {
     return PartnerNamespaceInboundIpRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      ipMask: map['ipMask'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      ipMask: (map['ipMask'] as String).input(),
     );
   }
 }

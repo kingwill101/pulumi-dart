@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFilterCriteriaResourceTag {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
-  final String comparison;
+  final pulumi.Input<String> comparison;
   /// (Required) The key to filter on.
-  final String key;
+  final pulumi.Input<String> key;
   /// (Required) The value to filter on.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [FilterFilterCriteriaResourceTag].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
@@ -29,9 +30,9 @@ class FilterFilterCriteriaResourceTag {
 
   factory FilterFilterCriteriaResourceTag.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaResourceTag(
-      comparison: map['comparison'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      comparison: (map['comparison'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

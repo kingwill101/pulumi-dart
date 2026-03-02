@@ -11,19 +11,19 @@ import 'scg_route_response.dart';
 class SpringCloudGatewayComponentResponse {
   /// Type of the Java Component.
   /// Expected value is 'SpringCloudGateway'.
-  final String componentType;
+  final pulumi.Input<String> componentType;
   /// List of Java Components configuration properties
-  final List<JavaComponentConfigurationPropertyResponse>? configurations;
+  final pulumi.Input<List<JavaComponentConfigurationPropertyResponse>>? configurations;
   /// Java Component Ingress configurations.
-  final JavaComponentIngressResponse? ingress;
+  final pulumi.Input<JavaComponentIngressResponse>? ingress;
   /// Provisioning state of the Java Component.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Java component scaling configurations
-  final JavaComponentPropertiesResponseScale? scale;
+  final pulumi.Input<JavaComponentPropertiesResponseScale>? scale;
   /// List of Java Components that are bound to the Java component
-  final List<JavaComponentServiceBindResponse>? serviceBinds;
+  final pulumi.Input<List<JavaComponentServiceBindResponse>>? serviceBinds;
   /// Gateway route definition
-  final List<ScgRouteResponse>? springCloudGatewayRoutes;
+  final pulumi.Input<List<ScgRouteResponse>>? springCloudGatewayRoutes;
 
   /// Creates a new [SpringCloudGatewayComponentResponse].
   /// [componentType] Type of the Java Component.
@@ -46,24 +46,24 @@ class SpringCloudGatewayComponentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentType': componentType,
-      'configurations': ?configurations == null ? null : pulumi.Input.encodeList<JavaComponentConfigurationPropertyResponse, Map<String, dynamic>>(configurations!, (value) => value.toMap()),
-      'ingress': ?ingress == null ? null : ingress!.toMap(),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<JavaComponentConfigurationPropertyResponse>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<JavaComponentConfigurationPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ingress': ?pulumi.Input.mapOptionalInputValue<JavaComponentIngressResponse, Map<String, dynamic>>(ingress, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'scale': ?scale == null ? null : scale!.toMap(),
-      'serviceBinds': ?serviceBinds == null ? null : pulumi.Input.encodeList<JavaComponentServiceBindResponse, Map<String, dynamic>>(serviceBinds!, (value) => value.toMap()),
-      'springCloudGatewayRoutes': ?springCloudGatewayRoutes == null ? null : pulumi.Input.encodeList<ScgRouteResponse, Map<String, dynamic>>(springCloudGatewayRoutes!, (value) => value.toMap()),
+      'scale': ?pulumi.Input.mapOptionalInputValue<JavaComponentPropertiesResponseScale, Map<String, dynamic>>(scale, (value) => value.toMap()),
+      'serviceBinds': ?pulumi.Input.mapOptionalInputValue<List<JavaComponentServiceBindResponse>, List<Map<String, dynamic>>>(serviceBinds, (value) => pulumi.Input.encodeList<JavaComponentServiceBindResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'springCloudGatewayRoutes': ?pulumi.Input.mapOptionalInputValue<List<ScgRouteResponse>, List<Map<String, dynamic>>>(springCloudGatewayRoutes, (value) => pulumi.Input.encodeList<ScgRouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SpringCloudGatewayComponentResponse.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayComponentResponse(
-      componentType: map['componentType'] as String,
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<JavaComponentConfigurationPropertyResponse>(map['configurations'], (value) => JavaComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      ingress: map['ingress'] == null ? null : JavaComponentIngressResponse.fromMap((map['ingress'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      scale: map['scale'] == null ? null : JavaComponentPropertiesResponseScale.fromMap((map['scale'] as Map).cast<String, dynamic>()),
-      serviceBinds: map['serviceBinds'] == null ? null : pulumi.Input.decodeList<JavaComponentServiceBindResponse>(map['serviceBinds'], (value) => JavaComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())),
-      springCloudGatewayRoutes: map['springCloudGatewayRoutes'] == null ? null : pulumi.Input.decodeList<ScgRouteResponse>(map['springCloudGatewayRoutes'], (value) => ScgRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      componentType: (map['componentType'] as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<JavaComponentConfigurationPropertyResponse>(map['configurations'], (value) => JavaComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (JavaComponentIngressResponse.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      scale: map['scale'] == null ? null : (JavaComponentPropertiesResponseScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<JavaComponentServiceBindResponse>(map['serviceBinds'], (value) => JavaComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudGatewayRoutes: map['springCloudGatewayRoutes'] == null ? null : (pulumi.Input.decodeList<ScgRouteResponse>(map['springCloudGatewayRoutes'], (value) => ScgRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

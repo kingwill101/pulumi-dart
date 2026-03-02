@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Elastic Snapshot properties
 class ElasticSnapshotPropertiesResponse {
   /// Azure lifecycle management.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [ElasticSnapshotPropertiesResponse].
   /// [provisioningState] Azure lifecycle management.
@@ -20,7 +21,7 @@ class ElasticSnapshotPropertiesResponse {
 
   factory ElasticSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

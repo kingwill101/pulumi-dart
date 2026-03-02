@@ -13,9 +13,8 @@ class GetBlockedRegionsArgs {
   /// Creates a new [GetBlockedRegionsArgs].
   /// [language] The language. Valid values: `zh`, `en`, `jp`.
   GetBlockedRegionsArgs({
-    required pulumi.Output<String> language,
-  }) :
-      language = pulumi.Input.asInput<String>(language);
+    required this.language,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetBlockedRegionsArgs {
 
   factory GetBlockedRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetBlockedRegionsArgs(
-      language: pulumi.Output.create<String>(map['language'] as String),
+      language: (map['language'] as String).input(),
     );
   }
 }

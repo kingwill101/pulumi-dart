@@ -19,13 +19,10 @@ class GetRegionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [regionId] You can use specified region_id to find the region and available zones information that supports ClickHouse.
   GetRegionsArgs({
-    pulumi.Output<bool>? current,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? regionId,
-  }) :
-      current = pulumi.Input.asOptionalInput<bool>(current),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId);
+    this.current,
+    this.outputFile,
+    this.regionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      current: map['current'] == null ? null : pulumi.Output.create<bool>(map['current'] as bool),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
+      current: map['current'] == null ? null : (map['current'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
     );
   }
 }

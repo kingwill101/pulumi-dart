@@ -54,31 +54,19 @@ class QueueArgs {
   /// [queueName] The queue name.
   /// [vswitchIds] The vSwitches available for use by compute nodes in the queue.
   QueueArgs({
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<List<QueueComputeNode>>? computeNodes,
-    pulumi.Output<bool>? enableScaleIn,
-    pulumi.Output<bool>? enableScaleOut,
-    pulumi.Output<String>? hostnamePrefix,
-    pulumi.Output<String>? hostnameSuffix,
-    pulumi.Output<int>? initialCount,
-    pulumi.Output<String>? interConnect,
-    pulumi.Output<int>? maxCount,
-    pulumi.Output<int>? minCount,
-    pulumi.Output<String>? queueName,
-    pulumi.Output<List<String>>? vswitchIds,
-  }) :
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      computeNodes = pulumi.Input.asOptionalInput<List<QueueComputeNode>>(computeNodes),
-      enableScaleIn = pulumi.Input.asOptionalInput<bool>(enableScaleIn),
-      enableScaleOut = pulumi.Input.asOptionalInput<bool>(enableScaleOut),
-      hostnamePrefix = pulumi.Input.asOptionalInput<String>(hostnamePrefix),
-      hostnameSuffix = pulumi.Input.asOptionalInput<String>(hostnameSuffix),
-      initialCount = pulumi.Input.asOptionalInput<int>(initialCount),
-      interConnect = pulumi.Input.asOptionalInput<String>(interConnect),
-      maxCount = pulumi.Input.asOptionalInput<int>(maxCount),
-      minCount = pulumi.Input.asOptionalInput<int>(minCount),
-      queueName = pulumi.Input.asOptionalInput<String>(queueName),
-      vswitchIds = pulumi.Input.asOptionalInput<List<String>>(vswitchIds);
+    this.clusterId,
+    this.computeNodes,
+    this.enableScaleIn,
+    this.enableScaleOut,
+    this.hostnamePrefix,
+    this.hostnameSuffix,
+    this.initialCount,
+    this.interConnect,
+    this.maxCount,
+    this.minCount,
+    this.queueName,
+    this.vswitchIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      computeNodes: map['computeNodes'] == null ? null : pulumi.Output.create<List<QueueComputeNode>>(pulumi.Input.decodeList<QueueComputeNode>(map['computeNodes'], (value) => QueueComputeNode.fromMap((value as Map).cast<String, dynamic>()))),
-      enableScaleIn: map['enableScaleIn'] == null ? null : pulumi.Output.create<bool>(map['enableScaleIn'] as bool),
-      enableScaleOut: map['enableScaleOut'] == null ? null : pulumi.Output.create<bool>(map['enableScaleOut'] as bool),
-      hostnamePrefix: map['hostnamePrefix'] == null ? null : pulumi.Output.create<String>(map['hostnamePrefix'] as String),
-      hostnameSuffix: map['hostnameSuffix'] == null ? null : pulumi.Output.create<String>(map['hostnameSuffix'] as String),
-      initialCount: map['initialCount'] == null ? null : pulumi.Output.create<int>(map['initialCount'] as int),
-      interConnect: map['interConnect'] == null ? null : pulumi.Output.create<String>(map['interConnect'] as String),
-      maxCount: map['maxCount'] == null ? null : pulumi.Output.create<int>(map['maxCount'] as int),
-      minCount: map['minCount'] == null ? null : pulumi.Output.create<int>(map['minCount'] as int),
-      queueName: map['queueName'] == null ? null : pulumi.Output.create<String>(map['queueName'] as String),
-      vswitchIds: map['vswitchIds'] == null ? null : pulumi.Output.create<List<String>>((map['vswitchIds'] as List).cast<String>()),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      computeNodes: map['computeNodes'] == null ? null : (pulumi.Input.decodeList<QueueComputeNode>(map['computeNodes'], (value) => QueueComputeNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableScaleIn: map['enableScaleIn'] == null ? null : (map['enableScaleIn'] as bool).input(),
+      enableScaleOut: map['enableScaleOut'] == null ? null : (map['enableScaleOut'] as bool).input(),
+      hostnamePrefix: map['hostnamePrefix'] == null ? null : (map['hostnamePrefix'] as String).input(),
+      hostnameSuffix: map['hostnameSuffix'] == null ? null : (map['hostnameSuffix'] as String).input(),
+      initialCount: map['initialCount'] == null ? null : (map['initialCount'] as int).input(),
+      interConnect: map['interConnect'] == null ? null : (map['interConnect'] as String).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

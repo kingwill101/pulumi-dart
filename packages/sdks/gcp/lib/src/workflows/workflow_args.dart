@@ -71,35 +71,21 @@ class WorkflowArgs {
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition
   /// [userEnvVars] User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
   WorkflowArgs({
-    pulumi.Output<String>? callLogLevel,
-    pulumi.Output<String>? cryptoKeyName,
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? executionHistoryLevel,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceAccount,
-    pulumi.Output<String>? sourceContents,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? userEnvVars,
-  }) :
-      callLogLevel = pulumi.Input.asOptionalInput<String>(callLogLevel),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      executionHistoryLevel = pulumi.Input.asOptionalInput<String>(executionHistoryLevel),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sourceContents = pulumi.Input.asOptionalInput<String>(sourceContents),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userEnvVars = pulumi.Input.asOptionalInput<Map<String, String>>(userEnvVars);
+    this.callLogLevel,
+    this.cryptoKeyName,
+    this.deletionProtection,
+    this.description,
+    this.executionHistoryLevel,
+    this.labels,
+    this.name,
+    this.namePrefix,
+    this.project,
+    this.region,
+    this.serviceAccount,
+    this.sourceContents,
+    this.tags,
+    this.userEnvVars,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -122,20 +108,20 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      callLogLevel: map['callLogLevel'] == null ? null : pulumi.Output.create<String>(map['callLogLevel'] as String),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      executionHistoryLevel: map['executionHistoryLevel'] == null ? null : pulumi.Output.create<String>(map['executionHistoryLevel'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
-      sourceContents: map['sourceContents'] == null ? null : pulumi.Output.create<String>(map['sourceContents'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userEnvVars: map['userEnvVars'] == null ? null : pulumi.Output.create<Map<String, String>>((map['userEnvVars'] as Map).cast<String, String>()),
+      callLogLevel: map['callLogLevel'] == null ? null : (map['callLogLevel'] as String).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      executionHistoryLevel: map['executionHistoryLevel'] == null ? null : (map['executionHistoryLevel'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userEnvVars: map['userEnvVars'] == null ? null : ((map['userEnvVars'] as Map).cast<String, String>()).input(),
     );
   }
 }

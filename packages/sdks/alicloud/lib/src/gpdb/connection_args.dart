@@ -19,13 +19,10 @@ class ConnectionArgs {
   /// [instanceId] The Id of instance that can run database.
   /// [port] Internet connection port. Valid value: [3200-3999]. Default to 3306.
   ConnectionArgs({
-    pulumi.Output<String>? connectionPrefix,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? port,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionPrefix,
+    required this.instanceId,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

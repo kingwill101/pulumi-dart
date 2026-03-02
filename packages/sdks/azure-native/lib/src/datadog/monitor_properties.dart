@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'datadog_organization_properties.dart';
 import 'user_info.dart';
 
 /// Properties specific to the monitor resource.
 class MonitorProperties {
   /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
-  final DatadogOrganizationProperties? datadogOrganizationProperties;
+  final pulumi.Input<DatadogOrganizationProperties>? datadogOrganizationProperties;
   /// Flag specifying if the resource monitoring is enabled or disabled.
-  final String? monitoringStatus;
+  final pulumi.Input<String>? monitoringStatus;
   /// Includes name, email and optionally, phone number. User Information can't be null.
-  final UserInfo? userInfo;
+  final pulumi.Input<UserInfo>? userInfo;
 
   /// Creates a new [MonitorProperties].
   /// [datadogOrganizationProperties] Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
@@ -24,17 +25,17 @@ class MonitorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datadogOrganizationProperties': ?datadogOrganizationProperties == null ? null : datadogOrganizationProperties!.toMap(),
+      'datadogOrganizationProperties': ?pulumi.Input.mapOptionalInputValue<DatadogOrganizationProperties, Map<String, dynamic>>(datadogOrganizationProperties, (value) => value.toMap()),
       'monitoringStatus': ?monitoringStatus,
-      'userInfo': ?userInfo == null ? null : userInfo!.toMap(),
+      'userInfo': ?pulumi.Input.mapOptionalInputValue<UserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
     };
   }
 
   factory MonitorProperties.fromMap(Map<String, dynamic> map) {
     return MonitorProperties(
-      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : DatadogOrganizationProperties.fromMap((map['datadogOrganizationProperties'] as Map).cast<String, dynamic>()),
-      monitoringStatus: map['monitoringStatus'] == null ? null : map['monitoringStatus'] as String,
-      userInfo: map['userInfo'] == null ? null : UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
+      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : (DatadogOrganizationProperties.fromMap((map['datadogOrganizationProperties'] as Map).cast<String, dynamic>())).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

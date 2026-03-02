@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'release_properties.dart';
 
 /// The properties of an operating system.
 class OsProperties {
   /// Specify the referenced Test Base Custom Image Id if available.
-  final String? customImageId;
+  final pulumi.Input<String>? customImageId;
   /// The name of the OS.
-  final String? osName;
+  final pulumi.Input<String>? osName;
   /// The properties of the OS release.
-  final ReleaseProperties? releaseProperties;
+  final pulumi.Input<ReleaseProperties>? releaseProperties;
 
   /// Creates a new [OsProperties].
   /// [customImageId] Specify the referenced Test Base Custom Image Id if available.
@@ -25,15 +26,15 @@ class OsProperties {
     return <String, dynamic>{
       'customImageId': ?customImageId,
       'osName': ?osName,
-      'releaseProperties': ?releaseProperties == null ? null : releaseProperties!.toMap(),
+      'releaseProperties': ?pulumi.Input.mapOptionalInputValue<ReleaseProperties, Map<String, dynamic>>(releaseProperties, (value) => value.toMap()),
     };
   }
 
   factory OsProperties.fromMap(Map<String, dynamic> map) {
     return OsProperties(
-      customImageId: map['customImageId'] == null ? null : map['customImageId'] as String,
-      osName: map['osName'] == null ? null : map['osName'] as String,
-      releaseProperties: map['releaseProperties'] == null ? null : ReleaseProperties.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>()),
+      customImageId: map['customImageId'] == null ? null : (map['customImageId'] as String).input(),
+      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
+      releaseProperties: map['releaseProperties'] == null ? null : (ReleaseProperties.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

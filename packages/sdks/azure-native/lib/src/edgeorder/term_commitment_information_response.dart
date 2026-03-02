@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Term Commitment Information.
 class TermCommitmentInformationResponse {
   /// Number of Days Pending for Term Commitment
-  final int pendingDaysForTerm;
+  final pulumi.Input<int> pendingDaysForTerm;
   /// Term Commitment Type
-  final String termCommitmentType;
+  final pulumi.Input<String> termCommitmentType;
   /// Term Commitment Duration. Currently Supporting P365D, P1095D
-  final String termCommitmentTypeDuration;
+  final pulumi.Input<String> termCommitmentTypeDuration;
 
   /// Creates a new [TermCommitmentInformationResponse].
   /// [pendingDaysForTerm] Number of Days Pending for Term Commitment
@@ -30,9 +31,9 @@ class TermCommitmentInformationResponse {
 
   factory TermCommitmentInformationResponse.fromMap(Map<String, dynamic> map) {
     return TermCommitmentInformationResponse(
-      pendingDaysForTerm: map['pendingDaysForTerm'] as int,
-      termCommitmentType: map['termCommitmentType'] as String,
-      termCommitmentTypeDuration: map['termCommitmentTypeDuration'] as String,
+      pendingDaysForTerm: (map['pendingDaysForTerm'] as int).input(),
+      termCommitmentType: (map['termCommitmentType'] as String).input(),
+      termCommitmentTypeDuration: (map['termCommitmentTypeDuration'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinityResponse {
   /// Optional. Type of reservation to consume
-  final String consumeReservationType;
+  final pulumi.Input<String> consumeReservationType;
   /// Optional. Corresponds to the label key of reservation resource.
-  final String key;
+  final pulumi.Input<String> key;
   /// Optional. Corresponds to the label values of reservation resource.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [ReservationAffinityResponse].
   /// [consumeReservationType] Optional. Type of reservation to consume
@@ -30,9 +31,9 @@ class ReservationAffinityResponse {
 
   factory ReservationAffinityResponse.fromMap(Map<String, dynamic> map) {
     return ReservationAffinityResponse(
-      consumeReservationType: map['consumeReservationType'] as String,
-      key: map['key'] as String,
-      values: (map['values'] as List).cast<String>(),
+      consumeReservationType: (map['consumeReservationType'] as String).input(),
+      key: (map['key'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

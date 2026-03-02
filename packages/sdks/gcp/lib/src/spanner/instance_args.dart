@@ -66,31 +66,19 @@ class InstanceArgs {
   /// [processingUnits] Optional.
   /// [project] The ID of the project in which the resource belongs.
   InstanceArgs({
-    pulumi.Output<InstanceAutoscalingConfig>? autoscalingConfig,
-    required pulumi.Output<String> config,
-    pulumi.Output<String>? defaultBackupScheduleType,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? edition,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? numNodes,
-    pulumi.Output<int>? processingUnits,
-    pulumi.Output<String>? project,
-  }) :
-      autoscalingConfig = pulumi.Input.asOptionalInput<InstanceAutoscalingConfig>(autoscalingConfig),
-      config = pulumi.Input.asInput<String>(config),
-      defaultBackupScheduleType = pulumi.Input.asOptionalInput<String>(defaultBackupScheduleType),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      numNodes = pulumi.Input.asOptionalInput<int>(numNodes),
-      processingUnits = pulumi.Input.asOptionalInput<int>(processingUnits),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.autoscalingConfig,
+    required this.config,
+    this.defaultBackupScheduleType,
+    required this.displayName,
+    this.edition,
+    this.forceDestroy,
+    this.instanceType,
+    this.labels,
+    this.name,
+    this.numNodes,
+    this.processingUnits,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,18 +99,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : pulumi.Output.create<InstanceAutoscalingConfig>(InstanceAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())),
-      config: pulumi.Output.create<String>(map['config'] as String),
-      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : pulumi.Output.create<String>(map['defaultBackupScheduleType'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      edition: map['edition'] == null ? null : pulumi.Output.create<String>(map['edition'] as String),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      numNodes: map['numNodes'] == null ? null : pulumi.Output.create<int>(map['numNodes'] as int),
-      processingUnits: map['processingUnits'] == null ? null : pulumi.Output.create<int>(map['processingUnits'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      config: (map['config'] as String).input(),
+      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : (map['defaultBackupScheduleType'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

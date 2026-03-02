@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rbac_permission.dart';
 
 class EligibleApprover {
   /// RBAC permission that gives right to approve.
-  final RbacPermission? rbacPermission;
+  final pulumi.Input<RbacPermission>? rbacPermission;
   /// Name of the team that can approve.
-  final String? teamName;
+  final pulumi.Input<String>? teamName;
   /// Login of the user that can approve.
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [EligibleApprover].
   /// [rbacPermission] RBAC permission that gives right to approve.
@@ -22,7 +23,7 @@ class EligibleApprover {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rbacPermission': ?rbacPermission == null ? null : rbacPermission!.value,
+      'rbacPermission': ?pulumi.Input.mapOptionalInputValue<RbacPermission, String>(rbacPermission, (value) => value.value),
       'teamName': ?teamName,
       'user': ?user,
     };
@@ -30,9 +31,9 @@ class EligibleApprover {
 
   factory EligibleApprover.fromMap(Map<String, dynamic> map) {
     return EligibleApprover(
-      rbacPermission: map['rbacPermission'] == null ? null : RbacPermission.fromValue(map['rbacPermission'] as String),
-      teamName: map['teamName'] == null ? null : map['teamName'] as String,
-      user: map['user'] == null ? null : map['user'] as String,
+      rbacPermission: map['rbacPermission'] == null ? null : (RbacPermission.fromValue(map['rbacPermission'] as String)).input(),
+      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

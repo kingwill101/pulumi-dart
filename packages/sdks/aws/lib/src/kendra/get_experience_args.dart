@@ -19,13 +19,10 @@ class GetExperienceArgs {
   /// [indexId] Identifier of the index that contains the Experience.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetExperienceArgs({
-    required pulumi.Output<String> experienceId,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? region,
-  }) :
-      experienceId = pulumi.Input.asInput<String>(experienceId),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.experienceId,
+    required this.indexId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetExperienceArgs {
 
   factory GetExperienceArgs.fromMap(Map<String, dynamic> map) {
     return GetExperienceArgs(
-      experienceId: pulumi.Output.create<String>(map['experienceId'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      experienceId: (map['experienceId'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

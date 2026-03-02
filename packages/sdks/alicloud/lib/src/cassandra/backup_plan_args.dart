@@ -28,19 +28,13 @@ class BackupPlanArgs {
   /// [dataCenterId] The ID of the data center for the backup in the cluster.
   /// [retentionPeriod] The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
   BackupPlanArgs({
-    pulumi.Output<bool>? active,
-    pulumi.Output<String>? backupPeriod,
-    required pulumi.Output<String> backupTime,
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> dataCenterId,
-    pulumi.Output<int>? retentionPeriod,
-  }) :
-      active = pulumi.Input.asOptionalInput<bool>(active),
-      backupPeriod = pulumi.Input.asOptionalInput<String>(backupPeriod),
-      backupTime = pulumi.Input.asInput<String>(backupTime),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      dataCenterId = pulumi.Input.asInput<String>(dataCenterId),
-      retentionPeriod = pulumi.Input.asOptionalInput<int>(retentionPeriod);
+    this.active,
+    this.backupPeriod,
+    required this.backupTime,
+    required this.clusterId,
+    required this.dataCenterId,
+    this.retentionPeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class BackupPlanArgs {
 
   factory BackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanArgs(
-      active: map['active'] == null ? null : pulumi.Output.create<bool>(map['active'] as bool),
-      backupPeriod: map['backupPeriod'] == null ? null : pulumi.Output.create<String>(map['backupPeriod'] as String),
-      backupTime: pulumi.Output.create<String>(map['backupTime'] as String),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      dataCenterId: pulumi.Output.create<String>(map['dataCenterId'] as String),
-      retentionPeriod: map['retentionPeriod'] == null ? null : pulumi.Output.create<int>(map['retentionPeriod'] as int),
+      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      backupPeriod: map['backupPeriod'] == null ? null : (map['backupPeriod'] as String).input(),
+      backupTime: (map['backupTime'] as String).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      dataCenterId: (map['dataCenterId'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
     );
   }
 }

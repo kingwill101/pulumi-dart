@@ -26,17 +26,12 @@ class DiscoveryRuleArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   DiscoveryRuleArgs({
-    required pulumi.Output<String> azureMonitorWorkspaceName,
-    pulumi.Output<String>? discoveryRuleName,
-    required pulumi.Output<String> healthModelName,
-    pulumi.Output<ApplicationInsightsTopologyDiscoveryRuleProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      azureMonitorWorkspaceName = pulumi.Input.asInput<String>(azureMonitorWorkspaceName),
-      discoveryRuleName = pulumi.Input.asOptionalInput<String>(discoveryRuleName),
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      properties = pulumi.Input.asOptionalInput<ApplicationInsightsTopologyDiscoveryRuleProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.azureMonitorWorkspaceName,
+    this.discoveryRuleName,
+    required this.healthModelName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class DiscoveryRuleArgs {
 
   factory DiscoveryRuleArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryRuleArgs(
-      azureMonitorWorkspaceName: pulumi.Output.create<String>(map['azureMonitorWorkspaceName'] as String),
-      discoveryRuleName: map['discoveryRuleName'] == null ? null : pulumi.Output.create<String>(map['discoveryRuleName'] as String),
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ApplicationInsightsTopologyDiscoveryRuleProperties>(ApplicationInsightsTopologyDiscoveryRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
+      discoveryRuleName: map['discoveryRuleName'] == null ? null : (map['discoveryRuleName'] as String).input(),
+      healthModelName: (map['healthModelName'] as String).input(),
+      properties: map['properties'] == null ? null : (ApplicationInsightsTopologyDiscoveryRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

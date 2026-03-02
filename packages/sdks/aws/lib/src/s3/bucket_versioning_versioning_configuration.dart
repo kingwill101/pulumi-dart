@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketVersioningVersioningConfiguration {
   /// Specifies whether MFA delete is enabled in the bucket versioning configuration. Valid values: `Enabled` or `Disabled`.
-  final String? mfaDelete;
+  final pulumi.Input<String>? mfaDelete;
   /// Versioning state of the bucket. Valid values: `Enabled`, `Suspended`, or `Disabled`. `Disabled` should only be used when creating or importing resources that correspond to unversioned S3 buckets.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [BucketVersioningVersioningConfiguration].
   /// [mfaDelete] Specifies whether MFA delete is enabled in the bucket versioning configuration. Valid values: `Enabled` or `Disabled`.
@@ -24,8 +25,8 @@ class BucketVersioningVersioningConfiguration {
 
   factory BucketVersioningVersioningConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketVersioningVersioningConfiguration(
-      mfaDelete: map['mfaDelete'] == null ? null : map['mfaDelete'] as String,
-      status: map['status'] as String,
+      mfaDelete: map['mfaDelete'] == null ? null : (map['mfaDelete'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

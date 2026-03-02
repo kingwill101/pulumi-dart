@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
 class LinkedResourceResponse {
   /// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
-  final String id;
+  final pulumi.Input<String> id;
   /// A provided name which uniquely identifies the linked resource.
-  final String uniqueName;
+  final pulumi.Input<String> uniqueName;
 
   /// Creates a new [LinkedResourceResponse].
   /// [id] ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
@@ -25,8 +26,8 @@ class LinkedResourceResponse {
 
   factory LinkedResourceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedResourceResponse(
-      id: map['id'] as String,
-      uniqueName: map['uniqueName'] as String,
+      id: (map['id'] as String).input(),
+      uniqueName: (map['uniqueName'] as String).input(),
     );
   }
 }

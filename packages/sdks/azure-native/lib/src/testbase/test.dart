@@ -6,11 +6,11 @@ import 'command.dart';
 /// The definition of a Test.
 class Test {
   /// The commands used in the test.
-  final List<Command> commands;
+  final pulumi.Input<List<Command>> commands;
   /// Indicates if this test is active.It doesn't schedule test for not active Test.
-  final bool? isActive;
+  final pulumi.Input<bool>? isActive;
   /// The type of the test.
-  final String testType;
+  final pulumi.Input<String> testType;
 
   /// Creates a new [Test].
   /// [commands] The commands used in the test.
@@ -24,7 +24,7 @@ class Test {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commands': pulumi.Input.encodeList<Command, Map<String, dynamic>>(commands, (value) => value.toMap()),
+      'commands': pulumi.Input.mapInputValue<List<Command>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<Command, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isActive': ?isActive,
       'testType': testType,
     };
@@ -32,9 +32,9 @@ class Test {
 
   factory Test.fromMap(Map<String, dynamic> map) {
     return Test(
-      commands: pulumi.Input.decodeList<Command>(map['commands'], (value) => Command.fromMap((value as Map).cast<String, dynamic>())),
-      isActive: map['isActive'] == null ? null : map['isActive'] as bool,
-      testType: map['testType'] as String,
+      commands: (pulumi.Input.decodeList<Command>(map['commands'], (value) => Command.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      testType: (map['testType'] as String).input(),
     );
   }
 }

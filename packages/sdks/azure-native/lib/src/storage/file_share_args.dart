@@ -51,33 +51,20 @@ class FileShareArgs {
   /// [shareQuota] The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
   /// [signedIdentifiers] List of stored access policies specified on the share.
   FileShareArgs({
-    pulumi.Output<String>? accessTier,
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? enabledProtocols,
-    pulumi.Output<String>? expand,
-    pulumi.Output<FileSharePropertiesFileSharePaidBursting>? fileSharePaidBursting,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<int>? provisionedBandwidthMibps,
-    pulumi.Output<int>? provisionedIops,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? rootSquash,
-    pulumi.Output<String>? shareName,
-    pulumi.Output<int>? shareQuota,
-    pulumi.Output<List<SignedIdentifier>>? signedIdentifiers,
-  }) :
-      accessTier = pulumi.Input.asOptionalInput<String>(accessTier),
-      accountName = pulumi.Input.asInput<String>(accountName),
-      enabledProtocols = pulumi.Input.asOptionalInput<String>(enabledProtocols),
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      fileSharePaidBursting = pulumi.Input.asOptionalInput<FileSharePropertiesFileSharePaidBursting>(fileSharePaidBursting),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      provisionedBandwidthMibps = pulumi.Input.asOptionalInput<int>(provisionedBandwidthMibps),
-      provisionedIops = pulumi.Input.asOptionalInput<int>(provisionedIops),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rootSquash = pulumi.Input.asOptionalInput<String>(rootSquash),
-      shareName = pulumi.Input.asOptionalInput<String>(shareName),
-      shareQuota = pulumi.Input.asOptionalInput<int>(shareQuota),
-      signedIdentifiers = pulumi.Input.asOptionalInput<List<SignedIdentifier>>(signedIdentifiers);
+    this.accessTier,
+    required this.accountName,
+    this.enabledProtocols,
+    this.expand,
+    this.fileSharePaidBursting,
+    this.metadata,
+    this.provisionedBandwidthMibps,
+    this.provisionedIops,
+    required this.resourceGroupName,
+    this.rootSquash,
+    this.shareName,
+    this.shareQuota,
+    this.signedIdentifiers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class FileShareArgs {
 
   factory FileShareArgs.fromMap(Map<String, dynamic> map) {
     return FileShareArgs(
-      accessTier: map['accessTier'] == null ? null : pulumi.Output.create<String>(map['accessTier'] as String),
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      enabledProtocols: map['enabledProtocols'] == null ? null : pulumi.Output.create<String>(map['enabledProtocols'] as String),
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      fileSharePaidBursting: map['fileSharePaidBursting'] == null ? null : pulumi.Output.create<FileSharePropertiesFileSharePaidBursting>(FileSharePropertiesFileSharePaidBursting.fromMap((map['fileSharePaidBursting'] as Map).cast<String, dynamic>())),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      provisionedBandwidthMibps: map['provisionedBandwidthMibps'] == null ? null : pulumi.Output.create<int>(map['provisionedBandwidthMibps'] as int),
-      provisionedIops: map['provisionedIops'] == null ? null : pulumi.Output.create<int>(map['provisionedIops'] as int),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rootSquash: map['rootSquash'] == null ? null : pulumi.Output.create<String>(map['rootSquash'] as String),
-      shareName: map['shareName'] == null ? null : pulumi.Output.create<String>(map['shareName'] as String),
-      shareQuota: map['shareQuota'] == null ? null : pulumi.Output.create<int>(map['shareQuota'] as int),
-      signedIdentifiers: map['signedIdentifiers'] == null ? null : pulumi.Output.create<List<SignedIdentifier>>(pulumi.Input.decodeList<SignedIdentifier>(map['signedIdentifiers'], (value) => SignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      accountName: (map['accountName'] as String).input(),
+      enabledProtocols: map['enabledProtocols'] == null ? null : (map['enabledProtocols'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      fileSharePaidBursting: map['fileSharePaidBursting'] == null ? null : (FileSharePropertiesFileSharePaidBursting.fromMap((map['fileSharePaidBursting'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      provisionedBandwidthMibps: map['provisionedBandwidthMibps'] == null ? null : (map['provisionedBandwidthMibps'] as int).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      shareQuota: map['shareQuota'] == null ? null : (map['shareQuota'] as int).input(),
+      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<SignedIdentifier>(map['signedIdentifiers'], (value) => SignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

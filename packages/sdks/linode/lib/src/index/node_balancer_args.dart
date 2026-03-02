@@ -36,21 +36,14 @@ class NodeBalancerArgs {
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [vpcs] A list of VPCs to be assigned to this NodeBalancer.
   NodeBalancerArgs({
-    pulumi.Output<int>? clientConnThrottle,
-    pulumi.Output<int>? clientUdpSessThrottle,
-    pulumi.Output<int>? firewallId,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<NodeBalancerVpc>>? vpcs,
-  }) :
-      clientConnThrottle = pulumi.Input.asOptionalInput<int>(clientConnThrottle),
-      clientUdpSessThrottle = pulumi.Input.asOptionalInput<int>(clientUdpSessThrottle),
-      firewallId = pulumi.Input.asOptionalInput<int>(firewallId),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      vpcs = pulumi.Input.asOptionalInput<List<NodeBalancerVpc>>(vpcs);
+    this.clientConnThrottle,
+    this.clientUdpSessThrottle,
+    this.firewallId,
+    this.label,
+    this.region,
+    this.tags,
+    this.vpcs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class NodeBalancerArgs {
 
   factory NodeBalancerArgs.fromMap(Map<String, dynamic> map) {
     return NodeBalancerArgs(
-      clientConnThrottle: map['clientConnThrottle'] == null ? null : pulumi.Output.create<int>(map['clientConnThrottle'] as int),
-      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : pulumi.Output.create<int>(map['clientUdpSessThrottle'] as int),
-      firewallId: map['firewallId'] == null ? null : pulumi.Output.create<int>(map['firewallId'] as int),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      vpcs: map['vpcs'] == null ? null : pulumi.Output.create<List<NodeBalancerVpc>>(pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs'], (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))),
+      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle'] as int).input(),
+      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle'] as int).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs'], (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

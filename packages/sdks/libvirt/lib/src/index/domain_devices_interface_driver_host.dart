@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceDriverHost {
   /// Enables or disables checksum offloading for the host driver, optimizing how checksums are handled for network traffic on the host.
-  final String? csum;
+  final pulumi.Input<String>? csum;
   /// Configures Explicit Congestion Notification (ECN) support for the host driver, influencing traffic management strategies at the host level.
-  final String? ecn;
+  final pulumi.Input<String>? ecn;
   /// Enables or disables Generic Segmentation Offloading (GSO) for the host driver, improving performance by offloading packet segmentation.
-  final String? gso;
+  final pulumi.Input<String>? gso;
   /// Controls the usage of merged receive buffers for the host driver, optimizing how incoming packets are processed.
-  final String? mrgRxBuf;
+  final pulumi.Input<String>? mrgRxBuf;
   /// Controls TCP Segmentation Offloading (TSO) for IPv4 in the host driver, enhancing network performance by offloading packet segmentation.
-  final String? tso4;
+  final pulumi.Input<String>? tso4;
   /// Controls TCP Segmentation Offloading (TSO) for IPv6 in the host driver, enhancing network performance by offloading packet segmentation.
-  final String? tso6;
+  final pulumi.Input<String>? tso6;
   /// Enables or disables UDP Fragmentation Offloading (UFO) for the host driver, optimizing the handling of UDP packets.
-  final String? ufo;
+  final pulumi.Input<String>? ufo;
 
   /// Creates a new [DomainDevicesInterfaceDriverHost].
   /// [csum] Enables or disables checksum offloading for the host driver, optimizing how checksums are handled for network traffic on the host.
@@ -49,13 +50,13 @@ class DomainDevicesInterfaceDriverHost {
 
   factory DomainDevicesInterfaceDriverHost.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceDriverHost(
-      csum: map['csum'] == null ? null : map['csum'] as String,
-      ecn: map['ecn'] == null ? null : map['ecn'] as String,
-      gso: map['gso'] == null ? null : map['gso'] as String,
-      mrgRxBuf: map['mrgRxBuf'] == null ? null : map['mrgRxBuf'] as String,
-      tso4: map['tso4'] == null ? null : map['tso4'] as String,
-      tso6: map['tso6'] == null ? null : map['tso6'] as String,
-      ufo: map['ufo'] == null ? null : map['ufo'] as String,
+      csum: map['csum'] == null ? null : (map['csum'] as String).input(),
+      ecn: map['ecn'] == null ? null : (map['ecn'] as String).input(),
+      gso: map['gso'] == null ? null : (map['gso'] as String).input(),
+      mrgRxBuf: map['mrgRxBuf'] == null ? null : (map['mrgRxBuf'] as String).input(),
+      tso4: map['tso4'] == null ? null : (map['tso4'] as String).input(),
+      tso6: map['tso6'] == null ? null : (map['tso6'] as String).input(),
+      ufo: map['ufo'] == null ? null : (map['ufo'] as String).input(),
     );
   }
 }

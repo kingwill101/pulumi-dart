@@ -36,21 +36,14 @@ class AgentcoreApiKeyCredentialProviderState {
   /// [name] Name of the API Key credential provider. Forces replacement when changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   AgentcoreApiKeyCredentialProviderState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>? apiKeySecretArns,
-    pulumi.Output<String>? apiKeyWo,
-    pulumi.Output<int>? apiKeyWoVersion,
-    pulumi.Output<String>? credentialProviderArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      apiKeySecretArns = pulumi.Input.asOptionalInput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>(apiKeySecretArns),
-      apiKeyWo = pulumi.Input.asOptionalInput<String>(apiKeyWo),
-      apiKeyWoVersion = pulumi.Input.asOptionalInput<int>(apiKeyWoVersion),
-      credentialProviderArn = pulumi.Input.asOptionalInput<String>(credentialProviderArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.apiKey,
+    this.apiKeySecretArns,
+    this.apiKeyWo,
+    this.apiKeyWoVersion,
+    this.credentialProviderArn,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,13 +59,13 @@ class AgentcoreApiKeyCredentialProviderState {
 
   factory AgentcoreApiKeyCredentialProviderState.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      apiKeySecretArns: map['apiKeySecretArns'] == null ? null : pulumi.Output.create<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>(pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(map['apiKeySecretArns'], (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>()))),
-      apiKeyWo: map['apiKeyWo'] == null ? null : pulumi.Output.create<String>(map['apiKeyWo'] as String),
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : pulumi.Output.create<int>(map['apiKeyWoVersion'] as int),
-      credentialProviderArn: map['credentialProviderArn'] == null ? null : pulumi.Output.create<String>(map['credentialProviderArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKeySecretArns: map['apiKeySecretArns'] == null ? null : (pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(map['apiKeySecretArns'], (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as int).input(),
+      credentialProviderArn: map['credentialProviderArn'] == null ? null : (map['credentialProviderArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

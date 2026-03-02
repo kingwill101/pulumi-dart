@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'date.dart';
 
 /// Definition of a single value with generic type.
 class Value {
-  final bool? booleanValue;
-  final Date? dateValue;
-  final double? doubleValue;
-  final String? integerValue;
-  final String? stringValue;
-  final String? timestampValue;
+  final pulumi.Input<bool>? booleanValue;
+  final pulumi.Input<Date>? dateValue;
+  final pulumi.Input<double>? doubleValue;
+  final pulumi.Input<String>? integerValue;
+  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String>? timestampValue;
 
   /// Creates a new [Value].
   /// [booleanValue] Optional.
@@ -30,7 +31,7 @@ class Value {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': ?booleanValue,
-      'dateValue': ?dateValue == null ? null : dateValue!.toMap(),
+      'dateValue': ?pulumi.Input.mapOptionalInputValue<Date, Map<String, dynamic>>(dateValue, (value) => value.toMap()),
       'doubleValue': ?doubleValue,
       'integerValue': ?integerValue,
       'stringValue': ?stringValue,
@@ -40,12 +41,12 @@ class Value {
 
   factory Value.fromMap(Map<String, dynamic> map) {
     return Value(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null ? null : Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] == null ? null : map['doubleValue'] as double,
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
-      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
+      dateValue: map['dateValue'] == null ? null : (Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
     );
   }
 }

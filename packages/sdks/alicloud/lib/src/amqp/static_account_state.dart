@@ -28,21 +28,14 @@ class StaticAccountState {
   /// [secretKey] Secret key.
   /// [userName] The static username.
   StaticAccountState({
-    pulumi.Output<String>? accessKey,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? masterUid,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? secretKey,
-    pulumi.Output<String>? userName,
-  }) :
-      accessKey = pulumi.Input.asOptionalInput<String>(accessKey),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      masterUid = pulumi.Input.asOptionalInput<String>(masterUid),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      secretKey = pulumi.Input.asOptionalInput<String>(secretKey),
-      userName = pulumi.Input.asOptionalInput<String>(userName);
+    this.accessKey,
+    this.createTime,
+    this.instanceId,
+    this.masterUid,
+    this.password,
+    this.secretKey,
+    this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class StaticAccountState {
 
   factory StaticAccountState.fromMap(Map<String, dynamic> map) {
     return StaticAccountState(
-      accessKey: map['accessKey'] == null ? null : pulumi.Output.create<String>(map['accessKey'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      masterUid: map['masterUid'] == null ? null : pulumi.Output.create<String>(map['masterUid'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      secretKey: map['secretKey'] == null ? null : pulumi.Output.create<String>(map['secretKey'] as String),
-      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      masterUid: map['masterUid'] == null ? null : (map['masterUid'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
     );
   }
 }

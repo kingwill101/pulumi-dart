@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNbTypesTypePrice {
-  final double hourly;
-  final double monthly;
+  final pulumi.Input<double> hourly;
+  final pulumi.Input<double> monthly;
 
   /// Creates a new [GetNbTypesTypePrice].
   /// [hourly] Required.
@@ -22,8 +23,8 @@ class GetNbTypesTypePrice {
 
   factory GetNbTypesTypePrice.fromMap(Map<String, dynamic> map) {
     return GetNbTypesTypePrice(
-      hourly: map['hourly'] as double,
-      monthly: map['monthly'] as double,
+      hourly: (map['hourly'] as double).input(),
+      monthly: (map['monthly'] as double).input(),
     );
   }
 }

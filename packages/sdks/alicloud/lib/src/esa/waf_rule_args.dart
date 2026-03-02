@@ -28,19 +28,13 @@ class WafRuleArgs {
   /// [siteId] The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   /// [siteVersion] Optional.
   WafRuleArgs({
-    pulumi.Output<WafRuleConfig>? config,
-    required pulumi.Output<String> phase,
-    pulumi.Output<int>? rulesetId,
-    pulumi.Output<WafRuleShared>? shared,
-    required pulumi.Output<String> siteId,
-    pulumi.Output<int>? siteVersion,
-  }) :
-      config = pulumi.Input.asOptionalInput<WafRuleConfig>(config),
-      phase = pulumi.Input.asInput<String>(phase),
-      rulesetId = pulumi.Input.asOptionalInput<int>(rulesetId),
-      shared = pulumi.Input.asOptionalInput<WafRuleShared>(shared),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion);
+    this.config,
+    required this.phase,
+    this.rulesetId,
+    this.shared,
+    required this.siteId,
+    this.siteVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class WafRuleArgs {
 
   factory WafRuleArgs.fromMap(Map<String, dynamic> map) {
     return WafRuleArgs(
-      config: map['config'] == null ? null : pulumi.Output.create<WafRuleConfig>(WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      phase: pulumi.Output.create<String>(map['phase'] as String),
-      rulesetId: map['rulesetId'] == null ? null : pulumi.Output.create<int>(map['rulesetId'] as int),
-      shared: map['shared'] == null ? null : pulumi.Output.create<WafRuleShared>(WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
-      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
+      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      phase: (map['phase'] as String).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
+      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())).input(),
+      siteId: (map['siteId'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
     );
   }
 }

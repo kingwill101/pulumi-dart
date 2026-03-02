@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationConfigurationAutoEnable {
   /// Whether code repository scans are automatically enabled for new members of your Amazon Inspector organization.
-  final bool? codeRepository;
+  final pulumi.Input<bool>? codeRepository;
   /// Whether Amazon EC2 scans are automatically enabled for new members of your Amazon Inspector organization.
-  final bool ec2;
+  final pulumi.Input<bool> ec2;
   /// Whether Amazon ECR scans are automatically enabled for new members of your Amazon Inspector organization.
-  final bool ecr;
+  final pulumi.Input<bool> ecr;
   /// Whether Lambda Function scans are automatically enabled for new members of your Amazon Inspector organization.
-  final bool? lambda;
+  final pulumi.Input<bool>? lambda;
   /// Whether AWS Lambda code scans are automatically enabled for new members of your Amazon Inspector organization. **Note:** Lambda code scanning requires Lambda standard scanning to be activated. Consequently, if you are setting this argument to `true`, you must also set the `lambda` argument to `true`. See [Scanning AWS Lambda functions with Amazon Inspector](https://docs.aws.amazon.com/inspector/latest/user/scanning-lambda.html#lambda-code-scans) for more information.
-  final bool? lambdaCode;
+  final pulumi.Input<bool>? lambdaCode;
 
   /// Creates a new [OrganizationConfigurationAutoEnable].
   /// [codeRepository] Whether code repository scans are automatically enabled for new members of your Amazon Inspector organization.
@@ -39,11 +40,11 @@ class OrganizationConfigurationAutoEnable {
 
   factory OrganizationConfigurationAutoEnable.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationAutoEnable(
-      codeRepository: map['codeRepository'] == null ? null : map['codeRepository'] as bool,
-      ec2: map['ec2'] as bool,
-      ecr: map['ecr'] as bool,
-      lambda: map['lambda'] == null ? null : map['lambda'] as bool,
-      lambdaCode: map['lambdaCode'] == null ? null : map['lambdaCode'] as bool,
+      codeRepository: map['codeRepository'] == null ? null : (map['codeRepository'] as bool).input(),
+      ec2: (map['ec2'] as bool).input(),
+      ecr: (map['ecr'] as bool).input(),
+      lambda: map['lambda'] == null ? null : (map['lambda'] as bool).input(),
+      lambdaCode: map['lambdaCode'] == null ? null : (map['lambdaCode'] as bool).input(),
     );
   }
 }

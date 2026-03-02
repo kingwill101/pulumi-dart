@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPortBinding {
   /// The ID of the host, which has the allocatee port.
-  final String hostId;
+  final pulumi.Input<String> hostId;
   /// A JSON string containing the binding profile information.
-  final String profile;
+  final pulumi.Input<String> profile;
   /// A map of JSON strings containing additional details for this
   /// specific binding.
-  final Map<String, String> vifDetails;
+  final pulumi.Input<Map<String, String>> vifDetails;
   /// The VNIC type of the port binding.
-  final String vifType;
+  final pulumi.Input<String> vifType;
   /// VNIC type for the port.
-  final String vnicType;
+  final pulumi.Input<String> vnicType;
 
   /// Creates a new [GetPortBinding].
   /// [hostId] The ID of the host, which has the allocatee port.
@@ -40,11 +41,11 @@ class GetPortBinding {
 
   factory GetPortBinding.fromMap(Map<String, dynamic> map) {
     return GetPortBinding(
-      hostId: map['hostId'] as String,
-      profile: map['profile'] as String,
-      vifDetails: (map['vifDetails'] as Map).cast<String, String>(),
-      vifType: map['vifType'] as String,
-      vnicType: map['vnicType'] as String,
+      hostId: (map['hostId'] as String).input(),
+      profile: (map['profile'] as String).input(),
+      vifDetails: ((map['vifDetails'] as Map).cast<String, String>()).input(),
+      vifType: (map['vifType'] as String).input(),
+      vnicType: (map['vnicType'] as String).input(),
     );
   }
 }

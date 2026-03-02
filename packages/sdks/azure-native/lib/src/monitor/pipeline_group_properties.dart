@@ -10,17 +10,17 @@ import 'service.dart';
 /// Properties that need to be specified to create a new pipeline group instance.
 class PipelineGroupProperties {
   /// The exporters specified for a pipeline group instance.
-  final List<Exporter> exporters;
+  final pulumi.Input<List<Exporter>> exporters;
   /// Networking configurations for the pipeline group instance.
-  final List<NetworkingConfiguration>? networkingConfigurations;
+  final pulumi.Input<List<NetworkingConfiguration>>? networkingConfigurations;
   /// The processors specified for a pipeline group instance.
-  final List<Processor> processors;
+  final pulumi.Input<List<Processor>> processors;
   /// The receivers specified for a pipeline group instance.
-  final List<Receiver> receivers;
+  final pulumi.Input<List<Receiver>> receivers;
   /// Defines the amount of replicas of the pipeline group instance.
-  final int? replicas;
+  final pulumi.Input<int>? replicas;
   /// The service section for a given pipeline group instance.
-  final Service service;
+  final pulumi.Input<Service> service;
 
   /// Creates a new [PipelineGroupProperties].
   /// [exporters] The exporters specified for a pipeline group instance.
@@ -40,23 +40,23 @@ class PipelineGroupProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exporters': pulumi.Input.encodeList<Exporter, Map<String, dynamic>>(exporters, (value) => value.toMap()),
-      'networkingConfigurations': ?networkingConfigurations == null ? null : pulumi.Input.encodeList<NetworkingConfiguration, Map<String, dynamic>>(networkingConfigurations!, (value) => value.toMap()),
-      'processors': pulumi.Input.encodeList<Processor, Map<String, dynamic>>(processors, (value) => value.toMap()),
-      'receivers': pulumi.Input.encodeList<Receiver, Map<String, dynamic>>(receivers, (value) => value.toMap()),
+      'exporters': pulumi.Input.mapInputValue<List<Exporter>, List<Map<String, dynamic>>>(exporters, (value) => pulumi.Input.encodeList<Exporter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkingConfigurations': ?pulumi.Input.mapOptionalInputValue<List<NetworkingConfiguration>, List<Map<String, dynamic>>>(networkingConfigurations, (value) => pulumi.Input.encodeList<NetworkingConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'processors': pulumi.Input.mapInputValue<List<Processor>, List<Map<String, dynamic>>>(processors, (value) => pulumi.Input.encodeList<Processor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'receivers': pulumi.Input.mapInputValue<List<Receiver>, List<Map<String, dynamic>>>(receivers, (value) => pulumi.Input.encodeList<Receiver, Map<String, dynamic>>(value, (value) => value.toMap())),
       'replicas': ?replicas,
-      'service': service.toMap(),
+      'service': pulumi.Input.mapInputValue<Service, Map<String, dynamic>>(service, (value) => value.toMap()),
     };
   }
 
   factory PipelineGroupProperties.fromMap(Map<String, dynamic> map) {
     return PipelineGroupProperties(
-      exporters: pulumi.Input.decodeList<Exporter>(map['exporters'], (value) => Exporter.fromMap((value as Map).cast<String, dynamic>())),
-      networkingConfigurations: map['networkingConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkingConfiguration>(map['networkingConfigurations'], (value) => NetworkingConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      processors: pulumi.Input.decodeList<Processor>(map['processors'], (value) => Processor.fromMap((value as Map).cast<String, dynamic>())),
-      receivers: pulumi.Input.decodeList<Receiver>(map['receivers'], (value) => Receiver.fromMap((value as Map).cast<String, dynamic>())),
-      replicas: map['replicas'] == null ? null : map['replicas'] as int,
-      service: Service.fromMap((map['service'] as Map).cast<String, dynamic>()),
+      exporters: (pulumi.Input.decodeList<Exporter>(map['exporters'], (value) => Exporter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkingConfigurations: map['networkingConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkingConfiguration>(map['networkingConfigurations'], (value) => NetworkingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processors: (pulumi.Input.decodeList<Processor>(map['processors'], (value) => Processor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      receivers: (pulumi.Input.decodeList<Receiver>(map['receivers'], (value) => Receiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      service: (Service.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

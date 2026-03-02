@@ -22,13 +22,10 @@ class SecretCiphertextArgs {
   /// [cryptoKey] The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// [plaintext] The plaintext to be encrypted.
   SecretCiphertextArgs({
-    pulumi.Output<String>? additionalAuthenticatedData,
-    required pulumi.Output<String> cryptoKey,
-    required pulumi.Output<String> plaintext,
-  }) :
-      additionalAuthenticatedData = pulumi.Input.asOptionalInput<String>(additionalAuthenticatedData),
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
-      plaintext = pulumi.Input.asInput<String>(plaintext);
+    this.additionalAuthenticatedData,
+    required this.cryptoKey,
+    required this.plaintext,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class SecretCiphertextArgs {
 
   factory SecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextArgs(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : pulumi.Output.create<String>(map['additionalAuthenticatedData'] as String),
-      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
-      plaintext: pulumi.Output.create<String>(map['plaintext'] as String),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
+      cryptoKey: (map['cryptoKey'] as String).input(),
+      plaintext: (map['plaintext'] as String).input(),
     );
   }
 }

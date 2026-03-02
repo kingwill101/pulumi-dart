@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Message to capture settings for a BrowserDlpRule
 class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse {
   /// Immutable. The type of the Setting. .
-  final String type;
+  final pulumi.Input<String> type;
   /// The value of the Setting.
-  final Map<String, String> value;
+  final pulumi.Input<Map<String, String>> value;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse].
   /// [type] Immutable. The type of the Setting. .
@@ -25,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(
-      type: map['type'] as String,
-      value: (map['value'] as Map).cast<String, String>(),
+      type: (map['type'] as String).input(),
+      value: ((map['value'] as Map).cast<String, String>()).input(),
     );
   }
 }

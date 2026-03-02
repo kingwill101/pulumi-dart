@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
   /// The behavior of the exclusion end time.
-  final String endTimeBehavior;
+  final pulumi.Input<String> endTimeBehavior;
   /// The scope of automatic upgrades to restrict in the exclusion window.
-  final String scope;
+  final pulumi.Input<String> scope;
 
   /// Creates a new [GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption].
   /// [endTimeBehavior] The behavior of the exclusion end time.
@@ -24,8 +25,8 @@ class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
 
   factory GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption(
-      endTimeBehavior: map['endTimeBehavior'] as String,
-      scope: map['scope'] as String,
+      endTimeBehavior: (map['endTimeBehavior'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

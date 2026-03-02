@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
-  final String clusterType;
+  final pulumi.Input<String> clusterType;
   /// The create time of the instance.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the instance.
-  final String description;
+  final pulumi.Input<String> description;
   /// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
-  final int entityQuota;
+  final pulumi.Input<int> entityQuota;
   /// ID of the instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// Instance name.
-  final String name;
+  final pulumi.Input<String> name;
   /// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-  final String network;
+  final pulumi.Input<String> network;
   /// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
-  final List<String> networkSourceAcls;
+  final pulumi.Input<List<String>> networkSourceAcls;
   /// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
-  final List<String> networkTypeAcls;
+  final pulumi.Input<List<String>> networkTypeAcls;
   /// (Available since v1.221.0) instance policy, json string.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// (Available since v1.221.0) instance policy version.
-  final int policyVersion;
+  final pulumi.Input<int> policyVersion;
   /// (Available since v1.221.0) The resource group the instance belongs to.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
-  final String status;
+  final pulumi.Input<String> status;
   /// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
-  final int tableQuota;
+  final pulumi.Input<int> tableQuota;
   /// A map of tags assigned to the instance. It must be in the format:
   ///
   /// ```typescript
@@ -135,9 +136,9 @@ class GetInstancesInstance {
   ///           tagKey1: tagValue1
   ///           tagKey2: tagValue2
   /// ```
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The user id of the instance.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GetInstancesInstance].
   /// [clusterType] The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
@@ -198,22 +199,22 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      clusterType: map['clusterType'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      entityQuota: map['entityQuota'] as int,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkSourceAcls: (map['networkSourceAcls'] as List).cast<String>(),
-      networkTypeAcls: (map['networkTypeAcls'] as List).cast<String>(),
-      policy: map['policy'] as String,
-      policyVersion: map['policyVersion'] as int,
-      resourceGroupId: map['resourceGroupId'] as String,
-      status: map['status'] as String,
-      tableQuota: map['tableQuota'] as int,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      userId: map['userId'] as String,
+      clusterType: (map['clusterType'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      entityQuota: (map['entityQuota'] as int).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      network: (map['network'] as String).input(),
+      networkSourceAcls: ((map['networkSourceAcls'] as List).cast<String>()).input(),
+      networkTypeAcls: ((map['networkTypeAcls'] as List).cast<String>()).input(),
+      policy: (map['policy'] as String).input(),
+      policyVersion: (map['policyVersion'] as int).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      status: (map['status'] as String).input(),
+      tableQuota: (map['tableQuota'] as int).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

@@ -7,12 +7,12 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource {
   /// (Output)
   /// A DataStore resource in Vertex AI Search.
   /// Structure is documented below.
-  final List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>? dataStores;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>>? dataStores;
   /// (Output)
   /// Filter specification for the DataStore.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final String? filter;
+  final pulumi.Input<String>? filter;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource].
   /// [dataStores] (Output)
@@ -24,15 +24,15 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStores': ?dataStores == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore, Map<String, dynamic>>(dataStores!, (value) => value.toMap()),
+      'dataStores': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>, List<Map<String, dynamic>>>(dataStores, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore, Map<String, dynamic>>(value, (value) => value.toMap())),
       'filter': ?filter,
     };
   }
 
   factory AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource(
-      dataStores: map['dataStores'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>(map['dataStores'], (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap((value as Map).cast<String, dynamic>())),
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      dataStores: map['dataStores'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>(map['dataStores'], (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
     );
   }
 }

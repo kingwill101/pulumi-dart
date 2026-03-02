@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for Adaptive Protection auto-deploy feature.
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
-  final double? confidenceThreshold;
-  final int? expirationSec;
-  final double? impactedBaselineThreshold;
-  final double? loadThreshold;
+  final pulumi.Input<double>? confidenceThreshold;
+  final pulumi.Input<int>? expirationSec;
+  final pulumi.Input<double>? impactedBaselineThreshold;
+  final pulumi.Input<double>? loadThreshold;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig].
   /// [confidenceThreshold] Optional.
@@ -31,10 +32,10 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
 
   factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : map['confidenceThreshold'] as double,
-      expirationSec: map['expirationSec'] == null ? null : map['expirationSec'] as int,
-      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : map['impactedBaselineThreshold'] as double,
-      loadThreshold: map['loadThreshold'] == null ? null : map['loadThreshold'] as double,
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as double).input(),
+      expirationSec: map['expirationSec'] == null ? null : (map['expirationSec'] as int).input(),
+      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : (map['impactedBaselineThreshold'] as double).input(),
+      loadThreshold: map['loadThreshold'] == null ? null : (map['loadThreshold'] as double).input(),
     );
   }
 }

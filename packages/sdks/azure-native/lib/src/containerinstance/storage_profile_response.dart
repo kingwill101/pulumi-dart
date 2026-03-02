@@ -5,7 +5,7 @@ import 'file_share_response.dart';
 
 /// Storage profile for storage related settings of a container group profile.
 class StorageProfileResponse {
-  final List<FileShareResponse>? fileShares;
+  final pulumi.Input<List<FileShareResponse>>? fileShares;
 
   /// Creates a new [StorageProfileResponse].
   /// [fileShares] Optional.
@@ -15,13 +15,13 @@ class StorageProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fileShares': ?fileShares == null ? null : pulumi.Input.encodeList<FileShareResponse, Map<String, dynamic>>(fileShares!, (value) => value.toMap()),
+      'fileShares': ?pulumi.Input.mapOptionalInputValue<List<FileShareResponse>, List<Map<String, dynamic>>>(fileShares, (value) => pulumi.Input.encodeList<FileShareResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      fileShares: map['fileShares'] == null ? null : pulumi.Input.decodeList<FileShareResponse>(map['fileShares'], (value) => FileShareResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareResponse>(map['fileShares'], (value) => FileShareResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

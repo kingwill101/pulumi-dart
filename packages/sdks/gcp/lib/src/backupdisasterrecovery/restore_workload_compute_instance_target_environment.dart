@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceTargetEnvironment {
   /// Required. Target project for the Compute Engine instance.
-  final String project;
+  final pulumi.Input<String> project;
   /// Required. The zone of the Compute Engine instance.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [RestoreWorkloadComputeInstanceTargetEnvironment].
   /// [project] Required. Target project for the Compute Engine instance.
@@ -24,8 +25,8 @@ class RestoreWorkloadComputeInstanceTargetEnvironment {
 
   factory RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceTargetEnvironment(
-      project: map['project'] as String,
-      zone: map['zone'] as String,
+      project: (map['project'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

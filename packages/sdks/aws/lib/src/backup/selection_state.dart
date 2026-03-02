@@ -33,23 +33,15 @@ class SelectionState {
   /// [resources] An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan.
   /// [selectionTags] Tag-based conditions used to specify a set of resources to assign to a backup plan. See below for details.
   SelectionState({
-    pulumi.Output<List<SelectionCondition>>? conditions,
-    pulumi.Output<String>? iamRoleArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? notResources,
-    pulumi.Output<String>? planId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resources,
-    pulumi.Output<List<SelectionSelectionTag>>? selectionTags,
-  }) :
-      conditions = pulumi.Input.asOptionalInput<List<SelectionCondition>>(conditions),
-      iamRoleArn = pulumi.Input.asOptionalInput<String>(iamRoleArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notResources = pulumi.Input.asOptionalInput<List<String>>(notResources),
-      planId = pulumi.Input.asOptionalInput<String>(planId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      selectionTags = pulumi.Input.asOptionalInput<List<SelectionSelectionTag>>(selectionTags);
+    this.conditions,
+    this.iamRoleArn,
+    this.name,
+    this.notResources,
+    this.planId,
+    this.region,
+    this.resources,
+    this.selectionTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class SelectionState {
 
   factory SelectionState.fromMap(Map<String, dynamic> map) {
     return SelectionState(
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<SelectionCondition>>(pulumi.Input.decodeList<SelectionCondition>(map['conditions'], (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>()))),
-      iamRoleArn: map['iamRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamRoleArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notResources: map['notResources'] == null ? null : pulumi.Output.create<List<String>>((map['notResources'] as List).cast<String>()),
-      planId: map['planId'] == null ? null : pulumi.Output.create<String>(map['planId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      selectionTags: map['selectionTags'] == null ? null : pulumi.Output.create<List<SelectionSelectionTag>>(pulumi.Input.decodeList<SelectionSelectionTag>(map['selectionTags'], (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>()))),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<SelectionCondition>(map['conditions'], (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notResources: map['notResources'] == null ? null : ((map['notResources'] as List).cast<String>()).input(),
+      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      selectionTags: map['selectionTags'] == null ? null : (pulumi.Input.decodeList<SelectionSelectionTag>(map['selectionTags'], (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

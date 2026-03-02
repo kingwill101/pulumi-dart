@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterV2Addon {
   /// Customize the specific configuration information of the service component.
-  final String name;
+  final pulumi.Input<String> name;
   /// Customize the resource configuration of the service component.
-  final String? resourcesSpec;
+  final pulumi.Input<String>? resourcesSpec;
   /// Customize the service configuration of the service component.
-  final String? servicesSpec;
+  final pulumi.Input<String>? servicesSpec;
   /// Customize the service component version.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [ClusterV2Addon].
   /// [name] Customize the specific configuration information of the service component.
@@ -34,10 +35,10 @@ class ClusterV2Addon {
 
   factory ClusterV2Addon.fromMap(Map<String, dynamic> map) {
     return ClusterV2Addon(
-      name: map['name'] as String,
-      resourcesSpec: map['resourcesSpec'] == null ? null : map['resourcesSpec'] as String,
-      servicesSpec: map['servicesSpec'] == null ? null : map['servicesSpec'] as String,
-      version: map['version'] as String,
+      name: (map['name'] as String).input(),
+      resourcesSpec: map['resourcesSpec'] == null ? null : (map['resourcesSpec'] as String).input(),
+      servicesSpec: map['servicesSpec'] == null ? null : (map['servicesSpec'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

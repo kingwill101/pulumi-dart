@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMembershipAuthority {
-  final String issuer;
+  final pulumi.Input<String> issuer;
 
   /// Creates a new [GetMembershipAuthority].
   /// [issuer] Required.
@@ -18,7 +19,7 @@ class GetMembershipAuthority {
 
   factory GetMembershipAuthority.fromMap(Map<String, dynamic> map) {
     return GetMembershipAuthority(
-      issuer: map['issuer'] as String,
+      issuer: (map['issuer'] as String).input(),
     );
   }
 }

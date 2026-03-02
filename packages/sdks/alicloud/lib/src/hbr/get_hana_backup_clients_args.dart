@@ -32,23 +32,15 @@ class GetHanaBackupClientsArgs {
   /// [status] The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
   /// [vaultId] The ID of the backup vault.
   GetHanaBackupClientsArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<int>? pageNumber,
-    pulumi.Output<int>? pageSize,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> vaultId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
-      pageSize = pulumi.Input.asOptionalInput<int>(pageSize),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    this.clientId,
+    this.clusterId,
+    this.ids,
+    this.outputFile,
+    this.pageNumber,
+    this.pageSize,
+    this.status,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class GetHanaBackupClientsArgs {
 
   factory GetHanaBackupClientsArgs.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupClientsArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
-      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

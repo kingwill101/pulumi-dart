@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model representing a mapping from a container registry to the identity used to connect to it.
 class ContainerRegistryResponse {
   /// Login server of the container registry.
-  final String containerRegistryServer;
+  final pulumi.Input<String> containerRegistryServer;
   /// Resource ID of the managed identity.
-  final String identityResourceId;
+  final pulumi.Input<String> identityResourceId;
 
   /// Creates a new [ContainerRegistryResponse].
   /// [containerRegistryServer] Login server of the container registry.
@@ -25,8 +26,8 @@ class ContainerRegistryResponse {
 
   factory ContainerRegistryResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryResponse(
-      containerRegistryServer: map['containerRegistryServer'] as String,
-      identityResourceId: map['identityResourceId'] as String,
+      containerRegistryServer: (map['containerRegistryServer'] as String).input(),
+      identityResourceId: (map['identityResourceId'] as String).input(),
     );
   }
 }

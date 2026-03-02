@@ -22,15 +22,11 @@ class DatabaseKafkaSchemaRegistryArgs {
   /// [schemaType] The schema type. Available values are: avro, json, or protobuf.
   /// [subjectName] The name of the schema subject.
   DatabaseKafkaSchemaRegistryArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> schema,
-    required pulumi.Output<String> schemaType,
-    required pulumi.Output<String> subjectName,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      schema = pulumi.Input.asInput<String>(schema),
-      schemaType = pulumi.Input.asInput<String>(schemaType),
-      subjectName = pulumi.Input.asInput<String>(subjectName);
+    required this.clusterId,
+    required this.schema,
+    required this.schemaType,
+    required this.subjectName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class DatabaseKafkaSchemaRegistryArgs {
 
   factory DatabaseKafkaSchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaSchemaRegistryArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
-      schemaType: pulumi.Output.create<String>(map['schemaType'] as String),
-      subjectName: pulumi.Output.create<String>(map['subjectName'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      schemaType: (map['schemaType'] as String).input(),
+      subjectName: (map['subjectName'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the resource that is used for triggering auto scaling.
 class AutoScalingResourceMetric {
   /// Enumerates the metrics that are used for triggering auto scaling.
   /// Expected value is 'Resource'.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Name of the resource.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [AutoScalingResourceMetric].
   /// [kind] Enumerates the metrics that are used for triggering auto scaling.
@@ -26,8 +27,8 @@ class AutoScalingResourceMetric {
 
   factory AutoScalingResourceMetric.fromMap(Map<String, dynamic> map) {
     return AutoScalingResourceMetric(
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      kind: (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

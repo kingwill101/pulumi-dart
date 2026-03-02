@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the Sku.
 class AccountResponseSku {
   /// Gets or sets the sku capacity.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Gets or sets the sku name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [AccountResponseSku].
   /// [capacity] Gets or sets the sku capacity.
@@ -25,8 +26,8 @@ class AccountResponseSku {
 
   factory AccountResponseSku.fromMap(Map<String, dynamic> map) {
     return AccountResponseSku(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

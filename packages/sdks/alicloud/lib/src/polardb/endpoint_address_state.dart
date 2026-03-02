@@ -28,21 +28,14 @@ class EndpointAddressState {
   /// [netType] Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
   /// [port] Port of the specified endpoint. Valid values: 3000 to 5999.
   EndpointAddressState({
-    pulumi.Output<String>? connectionPrefix,
-    pulumi.Output<String>? connectionString,
-    pulumi.Output<String>? dbClusterId,
-    pulumi.Output<String>? dbEndpointId,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<String>? netType,
-    pulumi.Output<String>? port,
-  }) :
-      connectionPrefix = pulumi.Input.asOptionalInput<String>(connectionPrefix),
-      connectionString = pulumi.Input.asOptionalInput<String>(connectionString),
-      dbClusterId = pulumi.Input.asOptionalInput<String>(dbClusterId),
-      dbEndpointId = pulumi.Input.asOptionalInput<String>(dbEndpointId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      port = pulumi.Input.asOptionalInput<String>(port);
+    this.connectionPrefix,
+    this.connectionString,
+    this.dbClusterId,
+    this.dbEndpointId,
+    this.ipAddress,
+    this.netType,
+    this.port,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class EndpointAddressState {
 
   factory EndpointAddressState.fromMap(Map<String, dynamic> map) {
     return EndpointAddressState(
-      connectionPrefix: map['connectionPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionPrefix'] as String),
-      connectionString: map['connectionString'] == null ? null : pulumi.Output.create<String>(map['connectionString'] as String),
-      dbClusterId: map['dbClusterId'] == null ? null : pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbEndpointId: map['dbEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbEndpointId'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<String>(map['port'] as String),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
     );
   }
 }

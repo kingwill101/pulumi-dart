@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWindowsWebAppLogHttpLogAzureBlobStorage {
   /// The retention period in days.
-  final int retentionInDays;
+  final pulumi.Input<int> retentionInDays;
   /// The SAS url to the Azure Blob container.
-  final String sasUrl;
+  final pulumi.Input<String> sasUrl;
 
   /// Creates a new [GetWindowsWebAppLogHttpLogAzureBlobStorage].
   /// [retentionInDays] The retention period in days.
@@ -24,8 +25,8 @@ class GetWindowsWebAppLogHttpLogAzureBlobStorage {
 
   factory GetWindowsWebAppLogHttpLogAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLogHttpLogAzureBlobStorage(
-      retentionInDays: map['retentionInDays'] as int,
-      sasUrl: map['sasUrl'] as String,
+      retentionInDays: (map['retentionInDays'] as int).input(),
+      sasUrl: (map['sasUrl'] as String).input(),
     );
   }
 }

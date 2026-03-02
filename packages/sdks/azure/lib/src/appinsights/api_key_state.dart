@@ -24,17 +24,12 @@ class ApiKeyState {
   /// [readPermissions] Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   /// [writePermissions] Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   ApiKeyState({
-    pulumi.Output<String>? apiKey,
-    pulumi.Output<String>? applicationInsightsId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? readPermissions,
-    pulumi.Output<List<String>>? writePermissions,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      applicationInsightsId = pulumi.Input.asOptionalInput<String>(applicationInsightsId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      readPermissions = pulumi.Input.asOptionalInput<List<String>>(readPermissions),
-      writePermissions = pulumi.Input.asOptionalInput<List<String>>(writePermissions);
+    this.apiKey,
+    this.applicationInsightsId,
+    this.name,
+    this.readPermissions,
+    this.writePermissions,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiKey: map['apiKey'] == null ? null : pulumi.Output.create<String>(map['apiKey'] as String),
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : pulumi.Output.create<String>(map['applicationInsightsId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      readPermissions: map['readPermissions'] == null ? null : pulumi.Output.create<List<String>>((map['readPermissions'] as List).cast<String>()),
-      writePermissions: map['writePermissions'] == null ? null : pulumi.Output.create<List<String>>((map['writePermissions'] as List).cast<String>()),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions'] as List).cast<String>()).input(),
+      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions'] as List).cast<String>()).input(),
     );
   }
 }

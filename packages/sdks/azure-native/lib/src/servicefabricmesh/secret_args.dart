@@ -26,17 +26,12 @@ class SecretArgs {
   /// [secretResourceName] The name of the secret resource.
   /// [tags] Resource tags.
   SecretArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<SecretResourceProperties> properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? secretResourceName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asInput<SecretResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      secretResourceName = pulumi.Input.asOptionalInput<String>(secretResourceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    required this.properties,
+    required this.resourceGroupName,
+    this.secretResourceName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<SecretResourceProperties>(SecretResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      secretResourceName: map['secretResourceName'] == null ? null : pulumi.Output.create<String>(map['secretResourceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: (SecretResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      secretResourceName: map['secretResourceName'] == null ? null : (map['secretResourceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

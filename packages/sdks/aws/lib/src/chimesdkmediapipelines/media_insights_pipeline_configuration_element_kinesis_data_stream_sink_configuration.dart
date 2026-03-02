@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration {
   /// Kinesis Data Stream to deliver results.
-  final String insightsTarget;
+  final pulumi.Input<String> insightsTarget;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration].
   /// [insightsTarget] Kinesis Data Stream to deliver results.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguratio
 
   factory MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfiguration(
-      insightsTarget: map['insightsTarget'] as String,
+      insightsTarget: (map['insightsTarget'] as String).input(),
     );
   }
 }

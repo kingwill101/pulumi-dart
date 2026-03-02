@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'arm_template_artifact_profile_response.dart';
 import 'referenced_resource_response.dart';
 
 /// Azure Operator Distributed Services vhd artifact profile properties.
 class AzureOperatorNexusArmTemplateArtifactProfileResponse {
   /// The reference to artifact store.
-  final ReferencedResourceResponse? artifactStore;
+  final pulumi.Input<ReferencedResourceResponse>? artifactStore;
   /// Template artifact profile.
-  final ArmTemplateArtifactProfileResponse? templateArtifactProfile;
+  final pulumi.Input<ArmTemplateArtifactProfileResponse>? templateArtifactProfile;
 
   /// Creates a new [AzureOperatorNexusArmTemplateArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
@@ -20,15 +21,15 @@ class AzureOperatorNexusArmTemplateArtifactProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?artifactStore == null ? null : artifactStore!.toMap(),
-      'templateArtifactProfile': ?templateArtifactProfile == null ? null : templateArtifactProfile!.toMap(),
+      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
+      'templateArtifactProfile': ?pulumi.Input.mapOptionalInputValue<ArmTemplateArtifactProfileResponse, Map<String, dynamic>>(templateArtifactProfile, (value) => value.toMap()),
     };
   }
 
   factory AzureOperatorNexusArmTemplateArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusArmTemplateArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>()),
-      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : ArmTemplateArtifactProfileResponse.fromMap((map['templateArtifactProfile'] as Map).cast<String, dynamic>()),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
+      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfileResponse.fromMap((map['templateArtifactProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

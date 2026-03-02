@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sets the scheduling options for this node.
 class SchedulingConfigResponse {
   /// Defines whether the node is preemptible.
-  final bool preemptible;
+  final pulumi.Input<bool> preemptible;
   /// Whether the node is created under a reservation.
-  final bool reserved;
+  final pulumi.Input<bool> reserved;
 
   /// Creates a new [SchedulingConfigResponse].
   /// [preemptible] Defines whether the node is preemptible.
@@ -25,8 +26,8 @@ class SchedulingConfigResponse {
 
   factory SchedulingConfigResponse.fromMap(Map<String, dynamic> map) {
     return SchedulingConfigResponse(
-      preemptible: map['preemptible'] as bool,
-      reserved: map['reserved'] as bool,
+      preemptible: (map['preemptible'] as bool).input(),
+      reserved: (map['reserved'] as bool).input(),
     );
   }
 }

@@ -66,33 +66,20 @@ class VirtualMachineScaleSetExtensionArgs {
   /// [typeHandlerVersion] Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   /// [virtualMachineScaleSetId] The ID of the Virtual Machine Scale Set. Changing this forces a new resource to be created.
   VirtualMachineScaleSetExtensionArgs({
-    pulumi.Output<bool>? autoUpgradeMinorVersion,
-    pulumi.Output<bool>? automaticUpgradeEnabled,
-    pulumi.Output<bool>? failureSuppressionEnabled,
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectedSettings,
-    pulumi.Output<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>? protectedSettingsFromKeyVault,
-    pulumi.Output<List<String>>? provisionAfterExtensions,
-    required pulumi.Output<String> publisher,
-    pulumi.Output<String>? settings,
-    required pulumi.Output<String> type,
-    required pulumi.Output<String> typeHandlerVersion,
-    required pulumi.Output<String> virtualMachineScaleSetId,
-  }) :
-      autoUpgradeMinorVersion = pulumi.Input.asOptionalInput<bool>(autoUpgradeMinorVersion),
-      automaticUpgradeEnabled = pulumi.Input.asOptionalInput<bool>(automaticUpgradeEnabled),
-      failureSuppressionEnabled = pulumi.Input.asOptionalInput<bool>(failureSuppressionEnabled),
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectedSettings = pulumi.Input.asOptionalInput<String>(protectedSettings),
-      protectedSettingsFromKeyVault = pulumi.Input.asOptionalInput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>(protectedSettingsFromKeyVault),
-      provisionAfterExtensions = pulumi.Input.asOptionalInput<List<String>>(provisionAfterExtensions),
-      publisher = pulumi.Input.asInput<String>(publisher),
-      settings = pulumi.Input.asOptionalInput<String>(settings),
-      type = pulumi.Input.asInput<String>(type),
-      typeHandlerVersion = pulumi.Input.asInput<String>(typeHandlerVersion),
-      virtualMachineScaleSetId = pulumi.Input.asInput<String>(virtualMachineScaleSetId);
+    this.autoUpgradeMinorVersion,
+    this.automaticUpgradeEnabled,
+    this.failureSuppressionEnabled,
+    this.forceUpdateTag,
+    this.name,
+    this.protectedSettings,
+    this.protectedSettingsFromKeyVault,
+    this.provisionAfterExtensions,
+    required this.publisher,
+    this.settings,
+    required this.type,
+    required this.typeHandlerVersion,
+    required this.virtualMachineScaleSetId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,19 +101,19 @@ class VirtualMachineScaleSetExtensionArgs {
 
   factory VirtualMachineScaleSetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionArgs(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : pulumi.Output.create<bool>(map['autoUpgradeMinorVersion'] as bool),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : pulumi.Output.create<bool>(map['automaticUpgradeEnabled'] as bool),
-      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : pulumi.Output.create<bool>(map['failureSuppressionEnabled'] as bool),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectedSettings: map['protectedSettings'] == null ? null : pulumi.Output.create<String>(map['protectedSettings'] as String),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : pulumi.Output.create<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault>(VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : pulumi.Output.create<List<String>>((map['provisionAfterExtensions'] as List).cast<String>()),
-      publisher: pulumi.Output.create<String>(map['publisher'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<String>(map['settings'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      typeHandlerVersion: pulumi.Output.create<String>(map['typeHandlerVersion'] as String),
-      virtualMachineScaleSetId: pulumi.Output.create<String>(map['virtualMachineScaleSetId'] as String),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
+      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled'] as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      publisher: (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      type: (map['type'] as String).input(),
+      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
+      virtualMachineScaleSetId: (map['virtualMachineScaleSetId'] as String).input(),
     );
   }
 }

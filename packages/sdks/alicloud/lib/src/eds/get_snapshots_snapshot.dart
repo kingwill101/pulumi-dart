@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotsSnapshot {
   /// The time when the snapshot was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the snapshot.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the cloud desktop to which the snapshot belongs.
-  final String desktopId;
+  final pulumi.Input<String> desktopId;
   /// The ID of the Snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The progress of creating the snapshot.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The remaining time that is required to create the snapshot. Unit: seconds.
-  final int remainTime;
+  final pulumi.Input<int> remainTime;
   /// The ID of the snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The name of the snapshot.
-  final String snapshotName;
+  final pulumi.Input<String> snapshotName;
   /// The type of the snapshot.
-  final String snapshotType;
+  final pulumi.Input<String> snapshotType;
   /// The capacity of the source disk. Unit: GiB.
-  final String sourceDiskSize;
+  final pulumi.Input<String> sourceDiskSize;
   /// The type of the source disk.
-  final String sourceDiskType;
+  final pulumi.Input<String> sourceDiskType;
   /// The status of the snapshot.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetSnapshotsSnapshot].
   /// [createTime] The time when the snapshot was created.
@@ -74,18 +75,18 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      desktopId: map['desktopId'] as String,
-      id: map['id'] as String,
-      progress: map['progress'] as String,
-      remainTime: map['remainTime'] as int,
-      snapshotId: map['snapshotId'] as String,
-      snapshotName: map['snapshotName'] as String,
-      snapshotType: map['snapshotType'] as String,
-      sourceDiskSize: map['sourceDiskSize'] as String,
-      sourceDiskType: map['sourceDiskType'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      desktopId: (map['desktopId'] as String).input(),
+      id: (map['id'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      remainTime: (map['remainTime'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
+      snapshotType: (map['snapshotType'] as String).input(),
+      sourceDiskSize: (map['sourceDiskSize'] as String).input(),
+      sourceDiskType: (map['sourceDiskType'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

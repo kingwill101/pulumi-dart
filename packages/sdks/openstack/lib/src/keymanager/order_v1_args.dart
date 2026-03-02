@@ -23,13 +23,10 @@ class OrderV1Args {
   /// [region] The region in which to obtain the V1 KeyManager client.
   /// [type] The type of key to be generated. Must be one of `asymmetric`, `key`.
   OrderV1Args({
-    required pulumi.Output<OrderV1Meta> meta,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> type,
-  }) :
-      meta = pulumi.Input.asInput<OrderV1Meta>(meta),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+    required this.meta,
+    this.region,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class OrderV1Args {
 
   factory OrderV1Args.fromMap(Map<String, dynamic> map) {
     return OrderV1Args(
-      meta: pulumi.Output.create<OrderV1Meta>(OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      meta: (OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

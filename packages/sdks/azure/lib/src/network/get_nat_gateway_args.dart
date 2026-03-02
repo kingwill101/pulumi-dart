@@ -22,15 +22,11 @@ class GetNatGatewayArgs {
   /// [publicIpPrefixIds] A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
   /// [resourceGroupName] Specifies the name of the Resource Group where the NAT Gateway exists.
   GetNatGatewayArgs({
-    required pulumi.Output<String> name,
-    pulumi.Output<List<String>>? publicIpAddressIds,
-    pulumi.Output<List<String>>? publicIpPrefixIds,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      publicIpAddressIds = pulumi.Input.asOptionalInput<List<String>>(publicIpAddressIds),
-      publicIpPrefixIds = pulumi.Input.asOptionalInput<List<String>>(publicIpPrefixIds),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.name,
+    this.publicIpAddressIds,
+    this.publicIpPrefixIds,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetNatGatewayArgs {
 
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      publicIpAddressIds: map['publicIpAddressIds'] == null ? null : pulumi.Output.create<List<String>>((map['publicIpAddressIds'] as List).cast<String>()),
-      publicIpPrefixIds: map['publicIpPrefixIds'] == null ? null : pulumi.Output.create<List<String>>((map['publicIpPrefixIds'] as List).cast<String>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      name: (map['name'] as String).input(),
+      publicIpAddressIds: map['publicIpAddressIds'] == null ? null : ((map['publicIpAddressIds'] as List).cast<String>()).input(),
+      publicIpPrefixIds: map['publicIpPrefixIds'] == null ? null : ((map['publicIpPrefixIds'] as List).cast<String>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

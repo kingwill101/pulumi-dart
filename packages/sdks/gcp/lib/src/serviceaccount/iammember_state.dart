@@ -33,17 +33,12 @@ class IAMMemberState {
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
   IAMMemberState({
-    pulumi.Output<IAMMemberCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? member,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? serviceAccountId,
-  }) :
-      condition = pulumi.Input.asOptionalInput<IAMMemberCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      member = pulumi.Input.asOptionalInput<String>(member),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      serviceAccountId = pulumi.Input.asOptionalInput<String>(serviceAccountId);
+    this.condition,
+    this.etag,
+    this.member,
+    this.role,
+    this.serviceAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,11 +52,11 @@ class IAMMemberState {
 
   factory IAMMemberState.fromMap(Map<String, dynamic> map) {
     return IAMMemberState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<IAMMemberCondition>(IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      serviceAccountId: map['serviceAccountId'] == null ? null : pulumi.Output.create<String>(map['serviceAccountId'] as String),
+      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      member: map['member'] == null ? null : (map['member'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
     );
   }
 }

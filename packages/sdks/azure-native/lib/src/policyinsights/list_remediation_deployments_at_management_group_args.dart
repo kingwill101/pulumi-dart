@@ -22,15 +22,11 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
   /// [remediationName] The name of the remediation.
   /// [top] Maximum number of records to return.
   ListRemediationDeploymentsAtManagementGroupArgs({
-    required pulumi.Output<String> managementGroupId,
-    required pulumi.Output<String> managementGroupsNamespace,
-    required pulumi.Output<String> remediationName,
-    pulumi.Output<int>? top,
-  }) :
-      managementGroupId = pulumi.Input.asInput<String>(managementGroupId),
-      managementGroupsNamespace = pulumi.Input.asInput<String>(managementGroupsNamespace),
-      remediationName = pulumi.Input.asInput<String>(remediationName),
-      top = pulumi.Input.asOptionalInput<int>(top);
+    required this.managementGroupId,
+    required this.managementGroupsNamespace,
+    required this.remediationName,
+    this.top,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
 
   factory ListRemediationDeploymentsAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtManagementGroupArgs(
-      managementGroupId: pulumi.Output.create<String>(map['managementGroupId'] as String),
-      managementGroupsNamespace: pulumi.Output.create<String>(map['managementGroupsNamespace'] as String),
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
-      top: map['top'] == null ? null : pulumi.Output.create<int>(map['top'] as int),
+      managementGroupId: (map['managementGroupId'] as String).input(),
+      managementGroupsNamespace: (map['managementGroupsNamespace'] as String).input(),
+      remediationName: (map['remediationName'] as String).input(),
+      top: map['top'] == null ? null : (map['top'] as int).input(),
     );
   }
 }

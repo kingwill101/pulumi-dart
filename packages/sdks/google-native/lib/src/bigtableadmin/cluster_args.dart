@@ -38,25 +38,16 @@ class ClusterArgs {
   /// [project] Optional.
   /// [serveNodes] The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
   ClusterArgs({
-    pulumi.Output<ClusterConfig>? clusterConfig,
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<ClusterDefaultStorageType>? defaultStorageType,
-    pulumi.Output<EncryptionConfig>? encryptionConfig,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<int>? serveNodes,
-  }) :
-      clusterConfig = pulumi.Input.asOptionalInput<ClusterConfig>(clusterConfig),
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      defaultStorageType = pulumi.Input.asOptionalInput<ClusterDefaultStorageType>(defaultStorageType),
-      encryptionConfig = pulumi.Input.asOptionalInput<EncryptionConfig>(encryptionConfig),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serveNodes = pulumi.Input.asOptionalInput<int>(serveNodes);
+    this.clusterConfig,
+    required this.clusterId,
+    this.defaultStorageType,
+    this.encryptionConfig,
+    required this.instanceId,
+    this.location,
+    this.name,
+    this.project,
+    this.serveNodes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,15 +65,15 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterConfig: map['clusterConfig'] == null ? null : pulumi.Output.create<ClusterConfig>(ClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())),
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      defaultStorageType: map['defaultStorageType'] == null ? null : pulumi.Output.create<ClusterDefaultStorageType>(ClusterDefaultStorageType.fromValue(map['defaultStorageType'] as String)),
-      encryptionConfig: map['encryptionConfig'] == null ? null : pulumi.Output.create<EncryptionConfig>(EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      serveNodes: map['serveNodes'] == null ? null : pulumi.Output.create<int>(map['serveNodes'] as int),
+      clusterConfig: map['clusterConfig'] == null ? null : (ClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterId: (map['clusterId'] as String).input(),
+      defaultStorageType: map['defaultStorageType'] == null ? null : (ClusterDefaultStorageType.fromValue(map['defaultStorageType'] as String)).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      serveNodes: map['serveNodes'] == null ? null : (map['serveNodes'] as int).input(),
     );
   }
 }

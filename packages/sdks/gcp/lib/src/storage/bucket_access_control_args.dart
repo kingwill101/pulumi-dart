@@ -34,13 +34,10 @@ class BucketAccessControlArgs {
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [role] The access permission for the entity.
   BucketAccessControlArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<String> entity,
-    pulumi.Output<String>? role,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    required this.bucket,
+    required this.entity,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,9 +49,9 @@ class BucketAccessControlArgs {
 
   factory BucketAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      entity: pulumi.Output.create<String>(map['entity'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      bucket: (map['bucket'] as String).input(),
+      entity: (map['entity'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

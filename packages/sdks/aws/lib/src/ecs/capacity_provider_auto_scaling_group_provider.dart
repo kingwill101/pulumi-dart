@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_provider_auto_scaling_group_provider_managed_scaling.dart';
 
 class CapacityProviderAutoScalingGroupProvider {
   /// ARN of the associated auto scaling group.
-  final String autoScalingGroupArn;
+  final pulumi.Input<String> autoScalingGroupArn;
   /// Enables or disables a graceful shutdown of instances without disturbing workloads. Valid values are `ENABLED` and `DISABLED`. The default value is `ENABLED` when a capacity provider is created.
-  final String? managedDraining;
+  final pulumi.Input<String>? managedDraining;
   /// Configuration block defining the parameters of the auto scaling. Detailed below.
-  final CapacityProviderAutoScalingGroupProviderManagedScaling? managedScaling;
+  final pulumi.Input<CapacityProviderAutoScalingGroupProviderManagedScaling>? managedScaling;
   /// Enables or disables container-aware termination of instances in the auto scaling group when scale-in happens. Valid values are `ENABLED` and `DISABLED`.
-  final String? managedTerminationProtection;
+  final pulumi.Input<String>? managedTerminationProtection;
 
   /// Creates a new [CapacityProviderAutoScalingGroupProvider].
   /// [autoScalingGroupArn] ARN of the associated auto scaling group.
@@ -28,17 +29,17 @@ class CapacityProviderAutoScalingGroupProvider {
     return <String, dynamic>{
       'autoScalingGroupArn': autoScalingGroupArn,
       'managedDraining': ?managedDraining,
-      'managedScaling': ?managedScaling == null ? null : managedScaling!.toMap(),
+      'managedScaling': ?pulumi.Input.mapOptionalInputValue<CapacityProviderAutoScalingGroupProviderManagedScaling, Map<String, dynamic>>(managedScaling, (value) => value.toMap()),
       'managedTerminationProtection': ?managedTerminationProtection,
     };
   }
 
   factory CapacityProviderAutoScalingGroupProvider.fromMap(Map<String, dynamic> map) {
     return CapacityProviderAutoScalingGroupProvider(
-      autoScalingGroupArn: map['autoScalingGroupArn'] as String,
-      managedDraining: map['managedDraining'] == null ? null : map['managedDraining'] as String,
-      managedScaling: map['managedScaling'] == null ? null : CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap((map['managedScaling'] as Map).cast<String, dynamic>()),
-      managedTerminationProtection: map['managedTerminationProtection'] == null ? null : map['managedTerminationProtection'] as String,
+      autoScalingGroupArn: (map['autoScalingGroupArn'] as String).input(),
+      managedDraining: map['managedDraining'] == null ? null : (map['managedDraining'] as String).input(),
+      managedScaling: map['managedScaling'] == null ? null : (CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap((map['managedScaling'] as Map).cast<String, dynamic>())).input(),
+      managedTerminationProtection: map['managedTerminationProtection'] == null ? null : (map['managedTerminationProtection'] as String).input(),
     );
   }
 }

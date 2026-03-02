@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipRbacRoleBindingState {
   /// (Output)
   /// Code describes the state of a RBAC Role Binding resource.
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [MembershipRbacRoleBindingState].
   /// [code] (Output)
@@ -20,7 +21,7 @@ class MembershipRbacRoleBindingState {
 
   factory MembershipRbacRoleBindingState.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingState(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

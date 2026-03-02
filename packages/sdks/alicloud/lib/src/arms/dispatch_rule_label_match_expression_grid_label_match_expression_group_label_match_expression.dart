@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
   /// The key of the tag of the dispatch rule. Valid values:
@@ -11,13 +12,13 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
   /// * _aliyun_arms_alert_rule_id: alert rule ID
   /// * _aliyun_arms_alert_type: alert type
   /// * _aliyun_arms_alert_level: alert severity
-  final String key;
+  final pulumi.Input<String> key;
   /// The operator used in the dispatch rule. Valid values:
   /// * eq: equals to.
   /// * re: matches a regular expression.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// The value of the tag.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression].
   /// [key] The key of the tag of the dispatch rule. Valid values:
@@ -39,9 +40,9 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
 
   factory DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(Map<String, dynamic> map) {
     return DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
-      key: map['key'] as String,
-      operator: map['operator'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

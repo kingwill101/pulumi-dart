@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WatchlistEntityPopulationMechanism {
   /// Entities are added manually.
-  final Map<String, dynamic>? manual;
+  final pulumi.Input<Map<String, dynamic>>? manual;
 
   /// Creates a new [WatchlistEntityPopulationMechanism].
   /// [manual] Entities are added manually.
@@ -19,7 +20,7 @@ class WatchlistEntityPopulationMechanism {
 
   factory WatchlistEntityPopulationMechanism.fromMap(Map<String, dynamic> map) {
     return WatchlistEntityPopulationMechanism(
-      manual: map['manual'] == null ? null : (map['manual'] as Map).cast<String, dynamic>(),
+      manual: map['manual'] == null ? null : ((map['manual'] as Map).cast<String, dynamic>()).input(),
     );
   }
 }

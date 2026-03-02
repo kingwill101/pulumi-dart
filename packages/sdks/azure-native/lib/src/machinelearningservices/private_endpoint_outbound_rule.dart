@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_destination.dart';
 
 /// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 class PrivateEndpointOutboundRule {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-  final PrivateEndpointDestination? destination;
-  final List<String>? fqdns;
+  final pulumi.Input<PrivateEndpointDestination>? destination;
+  final pulumi.Input<List<String>>? fqdns;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'PrivateEndpoint'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointOutboundRule].
   /// [category] Category of a managed network Outbound Rule of a machine learning workspace.
@@ -32,7 +33,7 @@ class PrivateEndpointOutboundRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': ?category,
-      'destination': ?destination == null ? null : destination!.toMap(),
+      'destination': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'fqdns': ?fqdns,
       'status': ?status,
       'type': type,
@@ -41,11 +42,11 @@ class PrivateEndpointOutboundRule {
 
   factory PrivateEndpointOutboundRule.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointOutboundRule(
-      category: map['category'] == null ? null : map['category'] as String,
-      destination: map['destination'] == null ? null : PrivateEndpointDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      fqdns: map['fqdns'] == null ? null : (map['fqdns'] as List).cast<String>(),
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] as String,
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      destination: map['destination'] == null ? null : (PrivateEndpointDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

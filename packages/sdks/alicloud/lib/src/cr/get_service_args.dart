@@ -18,11 +18,9 @@ class GetServiceArgs {
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
   /// [password] The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
   GetServiceArgs({
-    pulumi.Output<String>? enable,
-    required pulumi.Output<String> password,
-  }) :
-      enable = pulumi.Input.asOptionalInput<String>(enable),
-      password = pulumi.Input.asInput<String>(password);
+    this.enable,
+    required this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
-      password: pulumi.Output.create<String>(map['password'] as String),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      password: (map['password'] as String).input(),
     );
   }
 }

@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointsEndpoint {
   /// The Bandwidth.
-  final int bandwidth;
+  final pulumi.Input<int> bandwidth;
   /// The status of Connection.
-  final String connectionStatus;
+  final pulumi.Input<String> connectionStatus;
   /// The status of Endpoint Business.
-  final String endpointBusinessStatus;
+  final pulumi.Input<String> endpointBusinessStatus;
   /// The description of Vpc Endpoint.
-  final String endpointDescription;
+  final pulumi.Input<String> endpointDescription;
   /// The Endpoint Domain.
-  final String endpointDomain;
+  final pulumi.Input<String> endpointDomain;
   /// The ID of the Vpc Endpoint.
-  final String endpointId;
+  final pulumi.Input<String> endpointId;
   /// The ID of the Vpc Endpoint.
-  final String id;
+  final pulumi.Input<String> id;
   /// The security group associated with the terminal node network card.
-  final List<String> securityGroupIds;
+  final pulumi.Input<List<String>> securityGroupIds;
   /// The terminal node service associated with the terminal node.
-  final String serviceId;
+  final pulumi.Input<String> serviceId;
   /// The name of the terminal node service associated with the terminal node.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
   /// The status of Vpc Endpoint.
-  final String status;
+  final pulumi.Input<String> status;
   /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// The name of Vpc Endpoint.
-  final String vpcEndpointName;
+  final pulumi.Input<String> vpcEndpointName;
   /// The private network to which the terminal node belongs..
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetVpcEndpointsEndpoint].
   /// [bandwidth] The Bandwidth.
@@ -84,20 +85,20 @@ class GetVpcEndpointsEndpoint {
 
   factory GetVpcEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointsEndpoint(
-      bandwidth: map['bandwidth'] as int,
-      connectionStatus: map['connectionStatus'] as String,
-      endpointBusinessStatus: map['endpointBusinessStatus'] as String,
-      endpointDescription: map['endpointDescription'] as String,
-      endpointDomain: map['endpointDomain'] as String,
-      endpointId: map['endpointId'] as String,
-      id: map['id'] as String,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      serviceId: map['serviceId'] as String,
-      serviceName: map['serviceName'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vpcEndpointName: map['vpcEndpointName'] as String,
-      vpcId: map['vpcId'] as String,
+      bandwidth: (map['bandwidth'] as int).input(),
+      connectionStatus: (map['connectionStatus'] as String).input(),
+      endpointBusinessStatus: (map['endpointBusinessStatus'] as String).input(),
+      endpointDescription: (map['endpointDescription'] as String).input(),
+      endpointDomain: (map['endpointDomain'] as String).input(),
+      endpointId: (map['endpointId'] as String).input(),
+      id: (map['id'] as String).input(),
+      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
+      serviceId: (map['serviceId'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcEndpointName: (map['vpcEndpointName'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

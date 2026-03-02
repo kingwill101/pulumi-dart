@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRoleManagementPolicyActiveAssignmentRule {
   /// (Boolean) Must an assignment have an expiry date.
-  final bool expirationRequired;
+  final pulumi.Input<bool> expirationRequired;
   /// (String) The maximum length of time an assignment can be valid, as an ISO8601 duration.
-  final String expireAfter;
+  final pulumi.Input<String> expireAfter;
   /// (Boolean) Is a justification required to create new assignments.
-  final bool requireJustification;
+  final pulumi.Input<bool> requireJustification;
   /// (Boolean) Is multi-factor authentication required to create new assignments.
-  final bool requireMultifactorAuthentication;
+  final pulumi.Input<bool> requireMultifactorAuthentication;
   /// (Boolean) Is ticket information required to create new assignments.
-  final bool requireTicketInfo;
+  final pulumi.Input<bool> requireTicketInfo;
 
   /// Creates a new [GetRoleManagementPolicyActiveAssignmentRule].
   /// [expirationRequired] (Boolean) Must an assignment have an expiry date.
@@ -39,11 +40,11 @@ class GetRoleManagementPolicyActiveAssignmentRule {
 
   factory GetRoleManagementPolicyActiveAssignmentRule.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyActiveAssignmentRule(
-      expirationRequired: map['expirationRequired'] as bool,
-      expireAfter: map['expireAfter'] as String,
-      requireJustification: map['requireJustification'] as bool,
-      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] as bool,
-      requireTicketInfo: map['requireTicketInfo'] as bool,
+      expirationRequired: (map['expirationRequired'] as bool).input(),
+      expireAfter: (map['expireAfter'] as String).input(),
+      requireJustification: (map['requireJustification'] as bool).input(),
+      requireMultifactorAuthentication: (map['requireMultifactorAuthentication'] as bool).input(),
+      requireTicketInfo: (map['requireTicketInfo'] as bool).input(),
     );
   }
 }

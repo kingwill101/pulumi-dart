@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_admin_manual_lb_config.dart';
 import 'bare_metal_admin_port_config.dart';
 import 'bare_metal_admin_vip_config.dart';
@@ -7,11 +8,11 @@ import 'bare_metal_admin_vip_config.dart';
 /// BareMetalAdminLoadBalancerConfig specifies the load balancer configuration.
 class BareMetalAdminLoadBalancerConfig {
   /// Manually configured load balancers.
-  final BareMetalAdminManualLbConfig? manualLbConfig;
+  final pulumi.Input<BareMetalAdminManualLbConfig>? manualLbConfig;
   /// Configures the ports that the load balancer will listen on.
-  final BareMetalAdminPortConfig? portConfig;
+  final pulumi.Input<BareMetalAdminPortConfig>? portConfig;
   /// The VIPs used by the load balancer.
-  final BareMetalAdminVipConfig? vipConfig;
+  final pulumi.Input<BareMetalAdminVipConfig>? vipConfig;
 
   /// Creates a new [BareMetalAdminLoadBalancerConfig].
   /// [manualLbConfig] Manually configured load balancers.
@@ -25,17 +26,17 @@ class BareMetalAdminLoadBalancerConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualLbConfig': ?manualLbConfig == null ? null : manualLbConfig!.toMap(),
-      'portConfig': ?portConfig == null ? null : portConfig!.toMap(),
-      'vipConfig': ?vipConfig == null ? null : vipConfig!.toMap(),
+      'manualLbConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminManualLbConfig, Map<String, dynamic>>(manualLbConfig, (value) => value.toMap()),
+      'portConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminPortConfig, Map<String, dynamic>>(portConfig, (value) => value.toMap()),
+      'vipConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminVipConfig, Map<String, dynamic>>(vipConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalAdminLoadBalancerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminLoadBalancerConfig(
-      manualLbConfig: map['manualLbConfig'] == null ? null : BareMetalAdminManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: map['portConfig'] == null ? null : BareMetalAdminPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: map['vipConfig'] == null ? null : BareMetalAdminVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      manualLbConfig: map['manualLbConfig'] == null ? null : (BareMetalAdminManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
+      portConfig: map['portConfig'] == null ? null : (BareMetalAdminPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
+      vipConfig: map['vipConfig'] == null ? null : (BareMetalAdminVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_source_trigger_properties.dart';
 
 class PipelineTriggerProperties {
   /// The source trigger properties of the pipeline.
-  final PipelineSourceTriggerProperties? sourceTrigger;
+  final pulumi.Input<PipelineSourceTriggerProperties>? sourceTrigger;
 
   /// Creates a new [PipelineTriggerProperties].
   /// [sourceTrigger] The source trigger properties of the pipeline.
@@ -14,13 +15,13 @@ class PipelineTriggerProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTrigger': ?sourceTrigger == null ? null : sourceTrigger!.toMap(),
+      'sourceTrigger': ?pulumi.Input.mapOptionalInputValue<PipelineSourceTriggerProperties, Map<String, dynamic>>(sourceTrigger, (value) => value.toMap()),
     };
   }
 
   factory PipelineTriggerProperties.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerProperties(
-      sourceTrigger: map['sourceTrigger'] == null ? null : PipelineSourceTriggerProperties.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>()),
+      sourceTrigger: map['sourceTrigger'] == null ? null : (PipelineSourceTriggerProperties.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

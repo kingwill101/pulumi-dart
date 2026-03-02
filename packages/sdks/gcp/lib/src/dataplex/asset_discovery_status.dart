@@ -5,17 +5,17 @@ import 'asset_discovery_status_stat.dart';
 
 class AssetDiscoveryStatus {
   /// The duration of the last discovery run.
-  final String? lastRunDuration;
+  final pulumi.Input<String>? lastRunDuration;
   /// The start time of the last discovery run.
-  final String? lastRunTime;
+  final pulumi.Input<String>? lastRunTime;
   /// Additional information about the current state.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Data Stats of the asset reported by discovery.
-  final List<AssetDiscoveryStatusStat>? stats;
+  final pulumi.Input<List<AssetDiscoveryStatusStat>>? stats;
   /// Output only. The time when the asset was last updated.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
 
   /// Creates a new [AssetDiscoveryStatus].
   /// [lastRunDuration] The duration of the last discovery run.
@@ -39,19 +39,19 @@ class AssetDiscoveryStatus {
       'lastRunTime': ?lastRunTime,
       'message': ?message,
       'state': ?state,
-      'stats': ?stats == null ? null : pulumi.Input.encodeList<AssetDiscoveryStatusStat, Map<String, dynamic>>(stats!, (value) => value.toMap()),
+      'stats': ?pulumi.Input.mapOptionalInputValue<List<AssetDiscoveryStatusStat>, List<Map<String, dynamic>>>(stats, (value) => pulumi.Input.encodeList<AssetDiscoveryStatusStat, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
     };
   }
 
   factory AssetDiscoveryStatus.fromMap(Map<String, dynamic> map) {
     return AssetDiscoveryStatus(
-      lastRunDuration: map['lastRunDuration'] == null ? null : map['lastRunDuration'] as String,
-      lastRunTime: map['lastRunTime'] == null ? null : map['lastRunTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      stats: map['stats'] == null ? null : pulumi.Input.decodeList<AssetDiscoveryStatusStat>(map['stats'], (value) => AssetDiscoveryStatusStat.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      lastRunDuration: map['lastRunDuration'] == null ? null : (map['lastRunDuration'] as String).input(),
+      lastRunTime: map['lastRunTime'] == null ? null : (map['lastRunTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      stats: map['stats'] == null ? null : (pulumi.Input.decodeList<AssetDiscoveryStatusStat>(map['stats'], (value) => AssetDiscoveryStatusStat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

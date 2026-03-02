@@ -16,11 +16,9 @@ class GetAssociationArgs {
   /// [associationName] The name of the association.
   /// [scope] The scope of the association.
   GetAssociationArgs({
-    required pulumi.Output<String> associationName,
-    required pulumi.Output<String> scope,
-  }) :
-      associationName = pulumi.Input.asInput<String>(associationName),
-      scope = pulumi.Input.asInput<String>(scope);
+    required this.associationName,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAssociationArgs {
 
   factory GetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetAssociationArgs(
-      associationName: pulumi.Output.create<String>(map['associationName'] as String),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      associationName: (map['associationName'] as String).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

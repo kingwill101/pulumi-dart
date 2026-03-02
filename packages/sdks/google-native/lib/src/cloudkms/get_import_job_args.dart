@@ -18,15 +18,11 @@ class GetImportJobArgs {
   /// [location] Required.
   /// [project] Optional.
   GetImportJobArgs({
-    required pulumi.Output<String> importJobId,
-    required pulumi.Output<String> keyRingId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      importJobId = pulumi.Input.asInput<String>(importJobId),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.importJobId,
+    required this.keyRingId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetImportJobArgs {
 
   factory GetImportJobArgs.fromMap(Map<String, dynamic> map) {
     return GetImportJobArgs(
-      importJobId: pulumi.Output.create<String>(map['importJobId'] as String),
-      keyRingId: pulumi.Output.create<String>(map['keyRingId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      importJobId: (map['importJobId'] as String).input(),
+      keyRingId: (map['keyRingId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

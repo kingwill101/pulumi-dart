@@ -15,13 +15,13 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'random',
           name,
-          const <String, dynamic>{},
+          const <String, pulumi.Input<dynamic>>{},
           options ?? pulumi.CustomResourceOptions(),
         );
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
   Future<ProviderTerraformConfigResult> terraformConfig() async {
-    final deployment = pulumi.Deployment.instance;
+    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;
     final result = await deployment.callWithResult<Map<String, dynamic>>(
       'pulumi:providers:random/terraformConfig',
       const <String, dynamic>{},

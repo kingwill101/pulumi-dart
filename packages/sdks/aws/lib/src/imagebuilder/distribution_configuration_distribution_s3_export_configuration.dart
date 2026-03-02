@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionS3ExportConfiguration {
   /// The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)
-  final String diskImageFormat;
+  final pulumi.Input<String> diskImageFormat;
   /// The name of the IAM role to use for exporting.
-  final String roleName;
+  final pulumi.Input<String> roleName;
   /// The name of the S3 bucket to store the exported image in. The bucket needs to exist before the export configuration is created.
-  final String s3Bucket;
+  final pulumi.Input<String> s3Bucket;
   /// The prefix for the exported image.
-  final String? s3Prefix;
+  final pulumi.Input<String>? s3Prefix;
 
   /// Creates a new [DistributionConfigurationDistributionS3ExportConfiguration].
   /// [diskImageFormat] The disk image format of the exported image (`RAW`, `VHD`, or `VMDK`)
@@ -34,10 +35,10 @@ class DistributionConfigurationDistributionS3ExportConfiguration {
 
   factory DistributionConfigurationDistributionS3ExportConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionS3ExportConfiguration(
-      diskImageFormat: map['diskImageFormat'] as String,
-      roleName: map['roleName'] as String,
-      s3Bucket: map['s3Bucket'] as String,
-      s3Prefix: map['s3Prefix'] == null ? null : map['s3Prefix'] as String,
+      diskImageFormat: (map['diskImageFormat'] as String).input(),
+      roleName: (map['roleName'] as String).input(),
+      s3Bucket: (map['s3Bucket'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
     );
   }
 }

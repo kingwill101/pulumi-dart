@@ -23,15 +23,11 @@ class GetSnapshotIdsArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restorableByUserIds] One or more AWS accounts IDs that can create volumes from the snapshot.
   GetSnapshotIdsArgs({
-    pulumi.Output<List<GetSnapshotIdsFilter>>? filters,
-    pulumi.Output<List<String>>? owners,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? restorableByUserIds,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetSnapshotIdsFilter>>(filters),
-      owners = pulumi.Input.asOptionalInput<List<String>>(owners),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restorableByUserIds = pulumi.Input.asOptionalInput<List<String>>(restorableByUserIds);
+    this.filters,
+    this.owners,
+    this.region,
+    this.restorableByUserIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class GetSnapshotIdsArgs {
 
   factory GetSnapshotIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotIdsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetSnapshotIdsFilter>>(pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters'], (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      owners: map['owners'] == null ? null : pulumi.Output.create<List<String>>((map['owners'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restorableByUserIds: map['restorableByUserIds'] == null ? null : pulumi.Output.create<List<String>>((map['restorableByUserIds'] as List).cast<String>()),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters'], (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restorableByUserIds: map['restorableByUserIds'] == null ? null : ((map['restorableByUserIds'] as List).cast<String>()).input(),
     );
   }
 }

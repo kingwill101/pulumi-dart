@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NlpVerticalFeaturizationSettingsResponse {
   /// Dataset language, useful for the text data.
-  final String? datasetLanguage;
+  final pulumi.Input<String>? datasetLanguage;
 
   /// Creates a new [NlpVerticalFeaturizationSettingsResponse].
   /// [datasetLanguage] Dataset language, useful for the text data.
@@ -19,7 +20,7 @@ class NlpVerticalFeaturizationSettingsResponse {
 
   factory NlpVerticalFeaturizationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NlpVerticalFeaturizationSettingsResponse(
-      datasetLanguage: map['datasetLanguage'] == null ? null : map['datasetLanguage'] as String,
+      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage'] as String).input(),
     );
   }
 }

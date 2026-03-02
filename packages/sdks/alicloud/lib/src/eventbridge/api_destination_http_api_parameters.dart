@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiDestinationHttpApiParameters {
   /// The endpoint of the API destination.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-  final String method;
+  final pulumi.Input<String> method;
 
   /// Creates a new [ApiDestinationHttpApiParameters].
   /// [endpoint] The endpoint of the API destination.
@@ -24,8 +25,8 @@ class ApiDestinationHttpApiParameters {
 
   factory ApiDestinationHttpApiParameters.fromMap(Map<String, dynamic> map) {
     return ApiDestinationHttpApiParameters(
-      endpoint: map['endpoint'] as String,
-      method: map['method'] as String,
+      endpoint: (map['endpoint'] as String).input(),
+      method: (map['method'] as String).input(),
     );
   }
 }

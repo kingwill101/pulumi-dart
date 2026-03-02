@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleTargetKinesisParameters {
   /// Specifies the shard to which EventBridge Scheduler sends the event. Up to 256 characters.
-  final String partitionKey;
+  final pulumi.Input<String> partitionKey;
 
   /// Creates a new [ScheduleTargetKinesisParameters].
   /// [partitionKey] Specifies the shard to which EventBridge Scheduler sends the event. Up to 256 characters.
@@ -19,7 +20,7 @@ class ScheduleTargetKinesisParameters {
 
   factory ScheduleTargetKinesisParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetKinesisParameters(
-      partitionKey: map['partitionKey'] as String,
+      partitionKey: (map['partitionKey'] as String).input(),
     );
   }
 }

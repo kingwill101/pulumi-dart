@@ -19,13 +19,10 @@ class EnablerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTypes] Type of resources to scan.
   EnablerState({
-    pulumi.Output<List<String>>? accountIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resourceTypes,
-  }) :
-      accountIds = pulumi.Input.asOptionalInput<List<String>>(accountIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTypes = pulumi.Input.asOptionalInput<List<String>>(resourceTypes);
+    this.accountIds,
+    this.region,
+    this.resourceTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnablerState {
 
   factory EnablerState.fromMap(Map<String, dynamic> map) {
     return EnablerState(
-      accountIds: map['accountIds'] == null ? null : pulumi.Output.create<List<String>>((map['accountIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypes'] as List).cast<String>()),
+      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }
 }

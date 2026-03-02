@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesAppConfiguration {
-  final bool? purgeSoftDeleteOnDestroy;
-  final bool? recoverSoftDeleted;
+  final pulumi.Input<bool>? purgeSoftDeleteOnDestroy;
+  final pulumi.Input<bool>? recoverSoftDeleted;
 
   /// Creates a new [FeaturesAppConfiguration].
   /// [purgeSoftDeleteOnDestroy] Optional.
@@ -22,8 +23,8 @@ class FeaturesAppConfiguration {
 
   factory FeaturesAppConfiguration.fromMap(Map<String, dynamic> map) {
     return FeaturesAppConfiguration(
-      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : map['purgeSoftDeleteOnDestroy'] as bool,
-      recoverSoftDeleted: map['recoverSoftDeleted'] == null ? null : map['recoverSoftDeleted'] as bool,
+      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy'] as bool).input(),
+      recoverSoftDeleted: map['recoverSoftDeleted'] == null ? null : (map['recoverSoftDeleted'] as bool).input(),
     );
   }
 }

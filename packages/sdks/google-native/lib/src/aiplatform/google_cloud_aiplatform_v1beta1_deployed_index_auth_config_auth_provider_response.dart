@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse {
   /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: `service-account-name@project-id.iam.gserviceaccount.com`
-  final List<String> allowedIssuers;
+  final pulumi.Input<List<String>> allowedIssuers;
   /// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted.
-  final List<String> audiences;
+  final pulumi.Input<List<String>> audiences;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse].
   /// [allowedIssuers] A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: `service-account-name@project-id.iam.gserviceaccount.com`
@@ -25,8 +26,8 @@ class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse {
 
   factory GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse(
-      allowedIssuers: (map['allowedIssuers'] as List).cast<String>(),
-      audiences: (map['audiences'] as List).cast<String>(),
+      allowedIssuers: ((map['allowedIssuers'] as List).cast<String>()).input(),
+      audiences: ((map['audiences'] as List).cast<String>()).input(),
     );
   }
 }

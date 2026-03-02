@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionAppSlotIdentity {
   /// Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
-  final List<String>? identityIds;
+  final pulumi.Input<List<String>>? identityIds;
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Specifies the identity type of the Function App. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you), `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field, and `SystemAssigned, UserAssigned` which assigns both a system managed identity as well as the specified user assigned identities.
   ///
   /// > **NOTE:** When `type` is set to `SystemAssigned`, The assigned `principal_id` and `tenant_id` can be retrieved after the Function App has been created. More details are available below.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FunctionAppSlotIdentity].
   /// [identityIds] Specifies a list of user managed identity ids to be assigned. Required if `type` is `UserAssigned`.
@@ -36,10 +37,10 @@ class FunctionAppSlotIdentity {
 
   factory FunctionAppSlotIdentity.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotIdentity(
-      identityIds: map['identityIds'] == null ? null : (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: map['identityIds'] == null ? null : ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

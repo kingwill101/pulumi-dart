@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry {
   /// Optional. Create time of the message entry.
-  final String? createTime;
+  final pulumi.Input<String>? createTime;
   /// Optional. The language of the text.
-  final String? languageCode;
+  final pulumi.Input<String>? languageCode;
   /// Optional. Participant role of the message.
   /// Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// Optional. Transcript content of the message.
-  final String? text;
+  final pulumi.Input<String>? text;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry].
   /// [createTime] Optional. Create time of the message entry.
@@ -35,10 +36,10 @@ class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry
 
   factory GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      text: map['text'] == null ? null : map['text'] as String,
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      text: map['text'] == null ? null : (map['text'] as String).input(),
     );
   }
 }

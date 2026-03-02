@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOrganizationPolicyRestorePolicy {
   /// May only be set to true. If set, then the default Policy is restored.
-  final bool default_;
+  final pulumi.Input<bool> default_;
 
   /// Creates a new [GetOrganizationPolicyRestorePolicy].
   /// [default_] May only be set to true. If set, then the default Policy is restored.
@@ -19,7 +20,7 @@ class GetOrganizationPolicyRestorePolicy {
 
   factory GetOrganizationPolicyRestorePolicy.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyRestorePolicy(
-      default_: map['default'] as bool,
+      default_: (map['default'] as bool).input(),
     );
   }
 }

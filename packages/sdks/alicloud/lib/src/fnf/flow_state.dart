@@ -28,21 +28,14 @@ class FlowState {
   /// [roleArn] The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   /// [type] The type of the flow. Valid values are `FDL` or `DEFAULT`.
   FlowState({
-    pulumi.Output<String>? definition,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? flowId,
-    pulumi.Output<String>? lastModifiedTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<String>? type,
-  }) :
-      definition = pulumi.Input.asOptionalInput<String>(definition),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      flowId = pulumi.Input.asOptionalInput<String>(flowId),
-      lastModifiedTime = pulumi.Input.asOptionalInput<String>(lastModifiedTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.definition,
+    this.description,
+    this.flowId,
+    this.lastModifiedTime,
+    this.name,
+    this.roleArn,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class FlowState {
 
   factory FlowState.fromMap(Map<String, dynamic> map) {
     return FlowState(
-      definition: map['definition'] == null ? null : pulumi.Output.create<String>(map['definition'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      flowId: map['flowId'] == null ? null : pulumi.Output.create<String>(map['flowId'] as String),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : pulumi.Output.create<String>(map['lastModifiedTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      flowId: map['flowId'] == null ? null : (map['flowId'] as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetNetworksArgs {
   /// Creates a new [GetNetworksArgs].
   /// [project] The name of the project.
   GetNetworksArgs({
-    pulumi.Output<String>? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetNetworksArgs {
 
   factory GetNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworksArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

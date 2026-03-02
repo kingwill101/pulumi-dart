@@ -6,19 +6,19 @@ import 'option_response.dart';
 /// Method represents a method of an API interface.
 class MethodResponse {
   /// The simple name of this method.
-  final String name;
+  final pulumi.Input<String> name;
   /// Any metadata attached to the method.
-  final List<OptionResponse> options;
+  final pulumi.Input<List<OptionResponse>> options;
   /// If true, the request is streamed.
-  final bool requestStreaming;
+  final pulumi.Input<bool> requestStreaming;
   /// A URL of the input message type.
-  final String requestTypeUrl;
+  final pulumi.Input<String> requestTypeUrl;
   /// If true, the response is streamed.
-  final bool responseStreaming;
+  final pulumi.Input<bool> responseStreaming;
   /// The URL of the output message type.
-  final String responseTypeUrl;
+  final pulumi.Input<String> responseTypeUrl;
   /// The source syntax of this method.
-  final String syntax;
+  final pulumi.Input<String> syntax;
 
   /// Creates a new [MethodResponse].
   /// [name] The simple name of this method.
@@ -41,7 +41,7 @@ class MethodResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options': pulumi.Input.mapInputValue<List<OptionResponse>, List<Map<String, dynamic>>>(options, (value) => pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestStreaming': requestStreaming,
       'requestTypeUrl': requestTypeUrl,
       'responseStreaming': responseStreaming,
@@ -52,13 +52,13 @@ class MethodResponse {
 
   factory MethodResponse.fromMap(Map<String, dynamic> map) {
     return MethodResponse(
-      name: map['name'] as String,
-      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      requestStreaming: map['requestStreaming'] as bool,
-      requestTypeUrl: map['requestTypeUrl'] as String,
-      responseStreaming: map['responseStreaming'] as bool,
-      responseTypeUrl: map['responseTypeUrl'] as String,
-      syntax: map['syntax'] as String,
+      name: (map['name'] as String).input(),
+      options: (pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestStreaming: (map['requestStreaming'] as bool).input(),
+      requestTypeUrl: (map['requestTypeUrl'] as String).input(),
+      responseStreaming: (map['responseStreaming'] as bool).input(),
+      responseTypeUrl: (map['responseTypeUrl'] as String).input(),
+      syntax: (map['syntax'] as String).input(),
     );
   }
 }

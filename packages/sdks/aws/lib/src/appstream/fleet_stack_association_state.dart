@@ -16,13 +16,10 @@ class FleetStackAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackName] Name of the stack.
   FleetStackAssociationState({
-    pulumi.Output<String>? fleetName,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? stackName,
-  }) :
-      fleetName = pulumi.Input.asOptionalInput<String>(fleetName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      stackName = pulumi.Input.asOptionalInput<String>(stackName);
+    this.fleetName,
+    this.region,
+    this.stackName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class FleetStackAssociationState {
 
   factory FleetStackAssociationState.fromMap(Map<String, dynamic> map) {
     return FleetStackAssociationState(
-      fleetName: map['fleetName'] == null ? null : pulumi.Output.create<String>(map['fleetName'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      stackName: map['stackName'] == null ? null : pulumi.Output.create<String>(map['stackName'] as String),
+      fleetName: map['fleetName'] == null ? null : (map['fleetName'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
     );
   }
 }

@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'professional_service_properties_response_term.dart';
 
 /// professionalService properties
 class ProfessionalServiceResourceResponseProperties {
   /// Whether the ProfessionalService subscription will auto renew upon term end.
-  final bool? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
   /// The billing period eg P1M,P1Y for monthly,yearly respectively
-  final String? billingPeriod;
+  final pulumi.Input<String>? billingPeriod;
   /// The created date of this resource.
-  final String created;
+  final pulumi.Input<String> created;
   /// Whether the current term is a Free Trial term
-  final bool? isFreeTrial;
+  final pulumi.Input<bool>? isFreeTrial;
   /// The last modifier date if this resource.
-  final String? lastModified;
+  final pulumi.Input<String>? lastModified;
   /// The offer id.
-  final String? offerId;
+  final pulumi.Input<String>? offerId;
   /// The metadata about the ProfessionalService subscription such as the AzureSubscriptionId and ResourceUri.
-  final Map<String, String>? paymentChannelMetadata;
+  final pulumi.Input<Map<String, String>>? paymentChannelMetadata;
   /// The Payment channel for the ProfessionalServiceSubscription.
-  final String? paymentChannelType;
+  final pulumi.Input<String>? paymentChannelType;
   /// The publisher id.
-  final String? publisherId;
+  final pulumi.Input<String>? publisherId;
   /// The quote id which the ProfessionalService will be purchase with.
-  final String? quoteId;
+  final pulumi.Input<String>? quoteId;
   /// The plan id.
-  final String? skuId;
+  final pulumi.Input<String>? skuId;
   /// The ProfessionalService Subscription Status.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The store front which initiates the purchase.
-  final String? storeFront;
+  final pulumi.Input<String>? storeFront;
   /// The current Term object.
-  final ProfessionalServicePropertiesResponseTerm? term;
+  final pulumi.Input<ProfessionalServicePropertiesResponseTerm>? term;
   /// The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  final String? termUnit;
+  final pulumi.Input<String>? termUnit;
 
   /// Creates a new [ProfessionalServiceResourceResponseProperties].
   /// [autoRenew] Whether the ProfessionalService subscription will auto renew upon term end.
@@ -84,28 +85,28 @@ class ProfessionalServiceResourceResponseProperties {
       'skuId': ?skuId,
       'status': ?status,
       'storeFront': ?storeFront,
-      'term': ?term == null ? null : term!.toMap(),
+      'term': ?pulumi.Input.mapOptionalInputValue<ProfessionalServicePropertiesResponseTerm, Map<String, dynamic>>(term, (value) => value.toMap()),
       'termUnit': ?termUnit,
     };
   }
 
   factory ProfessionalServiceResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return ProfessionalServiceResourceResponseProperties(
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
-      billingPeriod: map['billingPeriod'] == null ? null : map['billingPeriod'] as String,
-      created: map['created'] as String,
-      isFreeTrial: map['isFreeTrial'] == null ? null : map['isFreeTrial'] as bool,
-      lastModified: map['lastModified'] == null ? null : map['lastModified'] as String,
-      offerId: map['offerId'] == null ? null : map['offerId'] as String,
-      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : (map['paymentChannelMetadata'] as Map).cast<String, String>(),
-      paymentChannelType: map['paymentChannelType'] == null ? null : map['paymentChannelType'] as String,
-      publisherId: map['publisherId'] == null ? null : map['publisherId'] as String,
-      quoteId: map['quoteId'] == null ? null : map['quoteId'] as String,
-      skuId: map['skuId'] == null ? null : map['skuId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      storeFront: map['storeFront'] == null ? null : map['storeFront'] as String,
-      term: map['term'] == null ? null : ProfessionalServicePropertiesResponseTerm.fromMap((map['term'] as Map).cast<String, dynamic>()),
-      termUnit: map['termUnit'] == null ? null : map['termUnit'] as String,
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
+      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod'] as String).input(),
+      created: (map['created'] as String).input(),
+      isFreeTrial: map['isFreeTrial'] == null ? null : (map['isFreeTrial'] as bool).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
+      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata'] as Map).cast<String, String>()).input(),
+      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType'] as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
+      quoteId: map['quoteId'] == null ? null : (map['quoteId'] as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      storeFront: map['storeFront'] == null ? null : (map['storeFront'] as String).input(),
+      term: map['term'] == null ? null : (ProfessionalServicePropertiesResponseTerm.fromMap((map['term'] as Map).cast<String, dynamic>())).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
     );
   }
 }

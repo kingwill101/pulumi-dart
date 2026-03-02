@@ -16,11 +16,9 @@ class AttachmentAccepterArgs {
   /// [attachmentId] ID of the attachment.
   /// [attachmentType] Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
   AttachmentAccepterArgs({
-    required pulumi.Output<String> attachmentId,
-    required pulumi.Output<String> attachmentType,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      attachmentType = pulumi.Input.asInput<String>(attachmentType);
+    required this.attachmentId,
+    required this.attachmentType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AttachmentAccepterArgs {
 
   factory AttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentAccepterArgs(
-      attachmentId: pulumi.Output.create<String>(map['attachmentId'] as String),
-      attachmentType: pulumi.Output.create<String>(map['attachmentType'] as String),
+      attachmentId: (map['attachmentId'] as String).input(),
+      attachmentType: (map['attachmentType'] as String).input(),
     );
   }
 }

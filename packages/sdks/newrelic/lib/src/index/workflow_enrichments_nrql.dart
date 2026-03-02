@@ -5,15 +5,15 @@ import 'workflow_enrichments_nrql_configuration.dart';
 
 class WorkflowEnrichmentsNrql {
   /// Determines the New Relic account in which the workflow is created. Defaults to the account defined in the provider section.
-  final String? accountId;
+  final pulumi.Input<String>? accountId;
   /// A set of key-value pairs to represent a enrichment configuration.
-  final List<WorkflowEnrichmentsNrqlConfiguration> configurations;
+  final pulumi.Input<List<WorkflowEnrichmentsNrqlConfiguration>> configurations;
   /// Enrichment's id.
-  final String? enrichmentId;
+  final pulumi.Input<String>? enrichmentId;
   /// The name of the workflow.
-  final String name;
+  final pulumi.Input<String> name;
   /// The type of the enrichment. One of: (NRQL).
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkflowEnrichmentsNrql].
   /// [accountId] Determines the New Relic account in which the workflow is created. Defaults to the account defined in the provider section.
@@ -32,7 +32,7 @@ class WorkflowEnrichmentsNrql {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
-      'configurations': pulumi.Input.encodeList<WorkflowEnrichmentsNrqlConfiguration, Map<String, dynamic>>(configurations, (value) => value.toMap()),
+      'configurations': pulumi.Input.mapInputValue<List<WorkflowEnrichmentsNrqlConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<WorkflowEnrichmentsNrqlConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enrichmentId': ?enrichmentId,
       'name': name,
       'type': ?type,
@@ -41,11 +41,11 @@ class WorkflowEnrichmentsNrql {
 
   factory WorkflowEnrichmentsNrql.fromMap(Map<String, dynamic> map) {
     return WorkflowEnrichmentsNrql(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      configurations: pulumi.Input.decodeList<WorkflowEnrichmentsNrqlConfiguration>(map['configurations'], (value) => WorkflowEnrichmentsNrqlConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      enrichmentId: map['enrichmentId'] == null ? null : map['enrichmentId'] as String,
-      name: map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      configurations: (pulumi.Input.decodeList<WorkflowEnrichmentsNrqlConfiguration>(map['configurations'], (value) => WorkflowEnrichmentsNrqlConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enrichmentId: map['enrichmentId'] == null ? null : (map['enrichmentId'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

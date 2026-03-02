@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Detail about the webhook object.
 class WebhookResponse {
   /// A flag to instruct the backend service to rotate webhook secret.
-  final bool? rotateWebhookSecret;
+  final pulumi.Input<bool>? rotateWebhookSecret;
   /// Unique identifier for the webhook.
-  final String? webhookId;
+  final pulumi.Input<String>? webhookId;
   /// Time when the webhook secret was updated.
-  final String? webhookSecretUpdateTime;
+  final pulumi.Input<String>? webhookSecretUpdateTime;
   /// URL that gets invoked by the webhook.
-  final String? webhookUrl;
+  final pulumi.Input<String>? webhookUrl;
 
   /// Creates a new [WebhookResponse].
   /// [rotateWebhookSecret] A flag to instruct the backend service to rotate webhook secret.
@@ -35,10 +36,10 @@ class WebhookResponse {
 
   factory WebhookResponse.fromMap(Map<String, dynamic> map) {
     return WebhookResponse(
-      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : map['rotateWebhookSecret'] as bool,
-      webhookId: map['webhookId'] == null ? null : map['webhookId'] as String,
-      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : map['webhookSecretUpdateTime'] as String,
-      webhookUrl: map['webhookUrl'] == null ? null : map['webhookUrl'] as String,
+      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : (map['rotateWebhookSecret'] as bool).input(),
+      webhookId: map['webhookId'] == null ? null : (map['webhookId'] as String).input(),
+      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : (map['webhookSecretUpdateTime'] as String).input(),
+      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl'] as String).input(),
     );
   }
 }

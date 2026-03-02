@@ -41,21 +41,14 @@ class RepositoryArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryId] The ID for the Repository.
   RepositoryArgs({
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? description,
-    pulumi.Output<RepositoryInitialConfig>? initialConfig,
-    required pulumi.Output<String> instance,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      initialConfig = pulumi.Input.asOptionalInput<RepositoryInitialConfig>(initialConfig),
-      instance = pulumi.Input.asInput<String>(instance),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+    this.deletionPolicy,
+    this.description,
+    this.initialConfig,
+    required this.instance,
+    required this.location,
+    this.project,
+    required this.repositoryId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +64,13 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      initialConfig: map['initialConfig'] == null ? null : pulumi.Output.create<RepositoryInitialConfig>(RepositoryInitialConfig.fromMap((map['initialConfig'] as Map).cast<String, dynamic>())),
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig'] as Map).cast<String, dynamic>())).input(),
+      instance: (map['instance'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
     );
   }
 }

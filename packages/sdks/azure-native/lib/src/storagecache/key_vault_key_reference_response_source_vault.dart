@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a resource Id to source key vault.
 class KeyVaultKeyReferenceResponseSourceVault {
   /// Resource Id.
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [KeyVaultKeyReferenceResponseSourceVault].
   /// [id] Resource Id.
@@ -20,7 +21,7 @@ class KeyVaultKeyReferenceResponseSourceVault {
 
   factory KeyVaultKeyReferenceResponseSourceVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyReferenceResponseSourceVault(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

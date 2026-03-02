@@ -19,13 +19,10 @@ class GetSingleServerConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   GetSingleServerConfigurationArgs({
-    required pulumi.Output<String> configurationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-  }) :
-      configurationName = pulumi.Input.asInput<String>(configurationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName);
+    required this.configurationName,
+    required this.resourceGroupName,
+    required this.serverName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetSingleServerConfigurationArgs {
 
   factory GetSingleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetSingleServerConfigurationArgs(
-      configurationName: pulumi.Output.create<String>(map['configurationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
+      configurationName: (map['configurationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
     );
   }
 }

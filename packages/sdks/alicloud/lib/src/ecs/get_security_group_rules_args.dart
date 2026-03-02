@@ -28,19 +28,13 @@ class GetSecurityGroupRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policy] Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
   GetSecurityGroupRulesArgs({
-    pulumi.Output<String>? direction,
-    required pulumi.Output<String> groupId,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? nicType,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? policy,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      groupId = pulumi.Input.asInput<String>(groupId),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      nicType = pulumi.Input.asOptionalInput<String>(nicType),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      policy = pulumi.Input.asOptionalInput<String>(policy);
+    this.direction,
+    required this.groupId,
+    this.ipProtocol,
+    this.nicType,
+    this.outputFile,
+    this.policy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetSecurityGroupRulesArgs {
 
   factory GetSecurityGroupRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesArgs(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      nicType: map['nicType'] == null ? null : pulumi.Output.create<String>(map['nicType'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      groupId: (map['groupId'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

@@ -28,21 +28,14 @@ class ConsumerGroupState {
   /// [remark] The remark of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   ConsumerGroupState({
-    pulumi.Output<String>? consumerId,
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? remark,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      consumerId = pulumi.Input.asOptionalInput<String>(consumerId),
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.consumerId,
+    this.createTime,
+    this.description,
+    this.instanceId,
+    this.regionId,
+    this.remark,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      consumerId: map['consumerId'] == null ? null : pulumi.Output.create<String>(map['consumerId'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      consumerId: map['consumerId'] == null ? null : (map['consumerId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

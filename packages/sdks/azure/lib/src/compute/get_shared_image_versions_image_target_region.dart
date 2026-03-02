@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSharedImageVersionsImageTargetRegion {
   /// The Azure Region in which this Image Version exists.
-  final String name;
+  final pulumi.Input<String> name;
   /// The number of replicas of the Image Version to be created per region.
-  final int regionalReplicaCount;
+  final pulumi.Input<int> regionalReplicaCount;
   /// The storage account type for the image version.
-  final String storageAccountType;
+  final pulumi.Input<String> storageAccountType;
 
   /// Creates a new [GetSharedImageVersionsImageTargetRegion].
   /// [name] The Azure Region in which this Image Version exists.
@@ -29,9 +30,9 @@ class GetSharedImageVersionsImageTargetRegion {
 
   factory GetSharedImageVersionsImageTargetRegion.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsImageTargetRegion(
-      name: map['name'] as String,
-      regionalReplicaCount: map['regionalReplicaCount'] as int,
-      storageAccountType: map['storageAccountType'] as String,
+      name: (map['name'] as String).input(),
+      regionalReplicaCount: (map['regionalReplicaCount'] as int).input(),
+      storageAccountType: (map['storageAccountType'] as String).input(),
     );
   }
 }

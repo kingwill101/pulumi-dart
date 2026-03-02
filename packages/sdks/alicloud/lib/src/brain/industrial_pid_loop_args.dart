@@ -31,21 +31,14 @@ class IndustrialPidLoopArgs {
   /// [pidLoopType] The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   /// [pidProjectId] The pid project id.
   IndustrialPidLoopArgs({
-    required pulumi.Output<String> pidLoopConfiguration,
-    required pulumi.Output<String> pidLoopDcsType,
-    pulumi.Output<String>? pidLoopDesc,
-    required pulumi.Output<bool> pidLoopIsCrucial,
-    required pulumi.Output<String> pidLoopName,
-    required pulumi.Output<String> pidLoopType,
-    required pulumi.Output<String> pidProjectId,
-  }) :
-      pidLoopConfiguration = pulumi.Input.asInput<String>(pidLoopConfiguration),
-      pidLoopDcsType = pulumi.Input.asInput<String>(pidLoopDcsType),
-      pidLoopDesc = pulumi.Input.asOptionalInput<String>(pidLoopDesc),
-      pidLoopIsCrucial = pulumi.Input.asInput<bool>(pidLoopIsCrucial),
-      pidLoopName = pulumi.Input.asInput<String>(pidLoopName),
-      pidLoopType = pulumi.Input.asInput<String>(pidLoopType),
-      pidProjectId = pulumi.Input.asInput<String>(pidProjectId);
+    required this.pidLoopConfiguration,
+    required this.pidLoopDcsType,
+    this.pidLoopDesc,
+    required this.pidLoopIsCrucial,
+    required this.pidLoopName,
+    required this.pidLoopType,
+    required this.pidProjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class IndustrialPidLoopArgs {
 
   factory IndustrialPidLoopArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidLoopArgs(
-      pidLoopConfiguration: pulumi.Output.create<String>(map['pidLoopConfiguration'] as String),
-      pidLoopDcsType: pulumi.Output.create<String>(map['pidLoopDcsType'] as String),
-      pidLoopDesc: map['pidLoopDesc'] == null ? null : pulumi.Output.create<String>(map['pidLoopDesc'] as String),
-      pidLoopIsCrucial: pulumi.Output.create<bool>(map['pidLoopIsCrucial'] as bool),
-      pidLoopName: pulumi.Output.create<String>(map['pidLoopName'] as String),
-      pidLoopType: pulumi.Output.create<String>(map['pidLoopType'] as String),
-      pidProjectId: pulumi.Output.create<String>(map['pidProjectId'] as String),
+      pidLoopConfiguration: (map['pidLoopConfiguration'] as String).input(),
+      pidLoopDcsType: (map['pidLoopDcsType'] as String).input(),
+      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc'] as String).input(),
+      pidLoopIsCrucial: (map['pidLoopIsCrucial'] as bool).input(),
+      pidLoopName: (map['pidLoopName'] as String).input(),
+      pidLoopType: (map['pidLoopType'] as String).input(),
+      pidProjectId: (map['pidProjectId'] as String).input(),
     );
   }
 }

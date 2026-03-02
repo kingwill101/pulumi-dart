@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_test_case_test_case_conversation_turn_user_input_input.dart';
 
 class CxTestCaseTestCaseConversationTurnUserInput {
   /// Whether sentiment analysis is enabled.
-  final bool? enableSentimentAnalysis;
+  final pulumi.Input<bool>? enableSentimentAnalysis;
   /// Parameters that need to be injected into the conversation during intent detection.
-  final String? injectedParameters;
+  final pulumi.Input<String>? injectedParameters;
   /// User input. Supports text input, event input, dtmf input in the test case.
   /// Structure is documented below.
-  final CxTestCaseTestCaseConversationTurnUserInputInput? input;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInputInput>? input;
   /// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  final bool? isWebhookEnabled;
+  final pulumi.Input<bool>? isWebhookEnabled;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInput].
   /// [enableSentimentAnalysis] Whether sentiment analysis is enabled.
@@ -29,17 +30,17 @@ class CxTestCaseTestCaseConversationTurnUserInput {
     return <String, dynamic>{
       'enableSentimentAnalysis': ?enableSentimentAnalysis,
       'injectedParameters': ?injectedParameters,
-      'input': ?input == null ? null : input!.toMap(),
+      'input': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestCaseConversationTurnUserInputInput, Map<String, dynamic>>(input, (value) => value.toMap()),
       'isWebhookEnabled': ?isWebhookEnabled,
     };
   }
 
   factory CxTestCaseTestCaseConversationTurnUserInput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInput(
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : map['enableSentimentAnalysis'] as bool,
-      injectedParameters: map['injectedParameters'] == null ? null : map['injectedParameters'] as String,
-      input: map['input'] == null ? null : CxTestCaseTestCaseConversationTurnUserInputInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : map['isWebhookEnabled'] as bool,
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
+      injectedParameters: map['injectedParameters'] == null ? null : (map['injectedParameters'] as String).input(),
+      input: map['input'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : (map['isWebhookEnabled'] as bool).input(),
     );
   }
 }

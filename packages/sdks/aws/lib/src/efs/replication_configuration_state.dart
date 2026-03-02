@@ -31,21 +31,14 @@ class ReplicationConfigurationState {
   /// [sourceFileSystemId] The ID of the file system that is to be replicated.
   /// [sourceFileSystemRegion] The AWS Region in which the source Amazon EFS file system is located.
   ReplicationConfigurationState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<ReplicationConfigurationDestination>? destination,
-    pulumi.Output<String>? originalSourceFileSystemArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceFileSystemArn,
-    pulumi.Output<String>? sourceFileSystemId,
-    pulumi.Output<String>? sourceFileSystemRegion,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      destination = pulumi.Input.asOptionalInput<ReplicationConfigurationDestination>(destination),
-      originalSourceFileSystemArn = pulumi.Input.asOptionalInput<String>(originalSourceFileSystemArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceFileSystemArn = pulumi.Input.asOptionalInput<String>(sourceFileSystemArn),
-      sourceFileSystemId = pulumi.Input.asOptionalInput<String>(sourceFileSystemId),
-      sourceFileSystemRegion = pulumi.Input.asOptionalInput<String>(sourceFileSystemRegion);
+    this.creationTime,
+    this.destination,
+    this.originalSourceFileSystemArn,
+    this.region,
+    this.sourceFileSystemArn,
+    this.sourceFileSystemId,
+    this.sourceFileSystemRegion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ReplicationConfigurationState {
 
   factory ReplicationConfigurationState.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<ReplicationConfigurationDestination>(ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      originalSourceFileSystemArn: map['originalSourceFileSystemArn'] == null ? null : pulumi.Output.create<String>(map['originalSourceFileSystemArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceFileSystemArn: map['sourceFileSystemArn'] == null ? null : pulumi.Output.create<String>(map['sourceFileSystemArn'] as String),
-      sourceFileSystemId: map['sourceFileSystemId'] == null ? null : pulumi.Output.create<String>(map['sourceFileSystemId'] as String),
-      sourceFileSystemRegion: map['sourceFileSystemRegion'] == null ? null : pulumi.Output.create<String>(map['sourceFileSystemRegion'] as String),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      destination: map['destination'] == null ? null : (ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      originalSourceFileSystemArn: map['originalSourceFileSystemArn'] == null ? null : (map['originalSourceFileSystemArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceFileSystemArn: map['sourceFileSystemArn'] == null ? null : (map['sourceFileSystemArn'] as String).input(),
+      sourceFileSystemId: map['sourceFileSystemId'] == null ? null : (map['sourceFileSystemId'] as String).input(),
+      sourceFileSystemRegion: map['sourceFileSystemRegion'] == null ? null : (map['sourceFileSystemRegion'] as String).input(),
     );
   }
 }

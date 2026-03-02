@@ -39,23 +39,15 @@ class BucketWebsiteConfigurationArgs {
   /// [routingRuleDetails] JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
   /// [routingRules] List of rules that define when a redirect is applied and the redirect behavior. See below.
   BucketWebsiteConfigurationArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<BucketWebsiteConfigurationErrorDocument>? errorDocument,
-    pulumi.Output<String>? expectedBucketOwner,
-    pulumi.Output<BucketWebsiteConfigurationIndexDocument>? indexDocument,
-    pulumi.Output<BucketWebsiteConfigurationRedirectAllRequestsTo>? redirectAllRequestsTo,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routingRuleDetails,
-    pulumi.Output<List<BucketWebsiteConfigurationRoutingRule>>? routingRules,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      errorDocument = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationErrorDocument>(errorDocument),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      indexDocument = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationIndexDocument>(indexDocument),
-      redirectAllRequestsTo = pulumi.Input.asOptionalInput<BucketWebsiteConfigurationRedirectAllRequestsTo>(redirectAllRequestsTo),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routingRuleDetails = pulumi.Input.asOptionalInput<String>(routingRuleDetails),
-      routingRules = pulumi.Input.asOptionalInput<List<BucketWebsiteConfigurationRoutingRule>>(routingRules);
+    required this.bucket,
+    this.errorDocument,
+    this.expectedBucketOwner,
+    this.indexDocument,
+    this.redirectAllRequestsTo,
+    this.region,
+    this.routingRuleDetails,
+    this.routingRules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class BucketWebsiteConfigurationArgs {
 
   factory BucketWebsiteConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      errorDocument: map['errorDocument'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationErrorDocument>(BucketWebsiteConfigurationErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
-      indexDocument: map['indexDocument'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationIndexDocument>(BucketWebsiteConfigurationIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())),
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : pulumi.Output.create<BucketWebsiteConfigurationRedirectAllRequestsTo>(BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routingRuleDetails: map['routingRuleDetails'] == null ? null : pulumi.Output.create<String>(map['routingRuleDetails'] as String),
-      routingRules: map['routingRules'] == null ? null : pulumi.Output.create<List<BucketWebsiteConfigurationRoutingRule>>(pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(map['routingRules'], (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>()))),
+      bucket: (map['bucket'] as String).input(),
+      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteConfigurationErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteConfigurationIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (BucketWebsiteConfigurationRedirectAllRequestsTo.fromMap((map['redirectAllRequestsTo'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routingRuleDetails: map['routingRuleDetails'] == null ? null : (map['routingRuleDetails'] as String).input(),
+      routingRules: map['routingRules'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteConfigurationRoutingRule>(map['routingRules'], (value) => BucketWebsiteConfigurationRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

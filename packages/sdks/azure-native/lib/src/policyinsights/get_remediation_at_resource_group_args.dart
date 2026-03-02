@@ -16,11 +16,9 @@ class GetRemediationAtResourceGroupArgs {
   /// [remediationName] The name of the remediation.
   /// [resourceGroupName] Resource group name.
   GetRemediationAtResourceGroupArgs({
-    required pulumi.Output<String> remediationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      remediationName = pulumi.Input.asInput<String>(remediationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.remediationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetRemediationAtResourceGroupArgs {
 
   factory GetRemediationAtResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtResourceGroupArgs(
-      remediationName: pulumi.Output.create<String>(map['remediationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      remediationName: (map['remediationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

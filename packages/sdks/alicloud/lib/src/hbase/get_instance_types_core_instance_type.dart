@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypesCoreInstanceType {
   /// Name of the category, single or cluster.
-  final String category;
+  final pulumi.Input<String> category;
   /// Cpu size of the instance type.
-  final int cpuSize;
+  final pulumi.Input<int> cpuSize;
   /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
-  final String engine;
+  final pulumi.Input<String> engine;
   /// The hbase instance type of create hbase cluster instance.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Max count of the core instance nodes.
-  final int maxCoreCount;
+  final pulumi.Input<int> maxCoreCount;
   /// Mem size of the instance type.
-  final int memSize;
+  final pulumi.Input<int> memSize;
   /// Name of the storage type.
-  final String storageType;
+  final pulumi.Input<String> storageType;
   /// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
-  final String version;
+  final pulumi.Input<String> version;
   /// Name of zone id.
-  final String zone;
+  final pulumi.Input<String> zone;
 
   /// Creates a new [GetInstanceTypesCoreInstanceType].
   /// [category] Name of the category, single or cluster.
@@ -59,15 +60,15 @@ class GetInstanceTypesCoreInstanceType {
 
   factory GetInstanceTypesCoreInstanceType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesCoreInstanceType(
-      category: map['category'] as String,
-      cpuSize: map['cpuSize'] as int,
-      engine: map['engine'] as String,
-      instanceType: map['instanceType'] as String,
-      maxCoreCount: map['maxCoreCount'] as int,
-      memSize: map['memSize'] as int,
-      storageType: map['storageType'] as String,
-      version: map['version'] as String,
-      zone: map['zone'] as String,
+      category: (map['category'] as String).input(),
+      cpuSize: (map['cpuSize'] as int).input(),
+      engine: (map['engine'] as String).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      maxCoreCount: (map['maxCoreCount'] as int).input(),
+      memSize: (map['memSize'] as int).input(),
+      storageType: (map['storageType'] as String).input(),
+      version: (map['version'] as String).input(),
+      zone: (map['zone'] as String).input(),
     );
   }
 }

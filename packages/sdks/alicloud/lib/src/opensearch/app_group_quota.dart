@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppGroupQuota {
   /// Computing resources. Unit: LCU.
-  final int computeResource;
+  final pulumi.Input<int> computeResource;
   /// Storage Size. Unit: GB.
-  final int docSize;
+  final pulumi.Input<int> docSize;
   /// Search request. Unit: times/second.
-  final int? qps;
+  final pulumi.Input<int>? qps;
   /// Specification. Valid values:
   /// * `opensearch.share.junior`: Entry-level.
   /// * `opensearch.share.common`: Shared universal.
@@ -16,7 +17,7 @@ class AppGroupQuota {
   /// * `opensearch.private.common`: Exclusive universal type.
   /// * `opensearch.private.compute`: Exclusive computing type.
   /// * `opensearch.private.storage`: Exclusive storage type
-  final String spec;
+  final pulumi.Input<String> spec;
 
   /// Creates a new [AppGroupQuota].
   /// [computeResource] Computing resources. Unit: LCU.
@@ -41,10 +42,10 @@ class AppGroupQuota {
 
   factory AppGroupQuota.fromMap(Map<String, dynamic> map) {
     return AppGroupQuota(
-      computeResource: map['computeResource'] as int,
-      docSize: map['docSize'] as int,
-      qps: map['qps'] == null ? null : map['qps'] as int,
-      spec: map['spec'] as String,
+      computeResource: (map['computeResource'] as int).input(),
+      docSize: (map['docSize'] as int).input(),
+      qps: map['qps'] == null ? null : (map['qps'] as int).input(),
+      spec: (map['spec'] as String).input(),
     );
   }
 }

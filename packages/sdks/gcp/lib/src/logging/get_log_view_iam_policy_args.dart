@@ -24,15 +24,11 @@ class GetLogViewIamPolicyArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [parent] The parent of the resource. Used to find the parent resource to bind the IAM policy to
   GetLogViewIamPolicyArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> parent,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.bucket,
+    this.location,
+    required this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class GetLogViewIamPolicyArgs {
 
   factory GetLogViewIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLogViewIamPolicyArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      bucket: (map['bucket'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

@@ -39,27 +39,17 @@ class OauthIdpConfigArgs {
   /// [responseType] The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
   /// [tenantId] Required.
   OauthIdpConfigArgs({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? issuer,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? oauthIdpConfigId,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>? responseType,
-    required pulumi.Output<String> tenantId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauthIdpConfigId = pulumi.Input.asOptionalInput<String>(oauthIdpConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responseType = pulumi.Input.asOptionalInput<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>(responseType),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.clientId,
+    this.clientSecret,
+    this.displayName,
+    this.enabled,
+    this.issuer,
+    this.name,
+    this.oauthIdpConfigId,
+    this.project,
+    this.responseType,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class OauthIdpConfigArgs {
 
   factory OauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigArgs(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      issuer: map['issuer'] == null ? null : pulumi.Output.create<String>(map['issuer'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oauthIdpConfigId: map['oauthIdpConfigId'] == null ? null : pulumi.Output.create<String>(map['oauthIdpConfigId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responseType: map['responseType'] == null ? null : pulumi.Output.create<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>(GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap((map['responseType'] as Map).cast<String, dynamic>())),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oauthIdpConfigId: map['oauthIdpConfigId'] == null ? null : (map['oauthIdpConfigId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responseType: map['responseType'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap((map['responseType'] as Map).cast<String, dynamic>())).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

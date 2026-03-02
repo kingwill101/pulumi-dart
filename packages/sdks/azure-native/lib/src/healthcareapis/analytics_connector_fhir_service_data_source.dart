@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The FHIR service data source for Analytics Connector.
 class AnalyticsConnectorFhirServiceDataSource {
   /// The kind of FHIR Service.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// Type of data source.
   /// Expected value is 'fhirservice'.
-  final String type;
+  final pulumi.Input<String> type;
   /// The URL of FHIR service.
-  final String url;
+  final pulumi.Input<String> url;
 
   /// Creates a new [AnalyticsConnectorFhirServiceDataSource].
   /// [kind] The kind of FHIR Service.
@@ -31,9 +32,9 @@ class AnalyticsConnectorFhirServiceDataSource {
 
   factory AnalyticsConnectorFhirServiceDataSource.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorFhirServiceDataSource(
-      kind: map['kind'] as String,
-      type: map['type'] as String,
-      url: map['url'] as String,
+      kind: (map['kind'] as String).input(),
+      type: (map['type'] as String).input(),
+      url: (map['url'] as String).input(),
     );
   }
 }

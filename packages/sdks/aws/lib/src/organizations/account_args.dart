@@ -36,23 +36,15 @@ class AccountArgs {
   /// [roleName] The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the root account, allowing users in the root account to assume the role, as permitted by the root account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so the provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless `ignoreChanges` is used.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   AccountArgs({
-    pulumi.Output<bool>? closeOnDeletion,
-    pulumi.Output<bool>? createGovcloud,
-    required pulumi.Output<String> email,
-    pulumi.Output<String>? iamUserAccessToBilling,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parentId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      closeOnDeletion = pulumi.Input.asOptionalInput<bool>(closeOnDeletion),
-      createGovcloud = pulumi.Input.asOptionalInput<bool>(createGovcloud),
-      email = pulumi.Input.asInput<String>(email),
-      iamUserAccessToBilling = pulumi.Input.asOptionalInput<String>(iamUserAccessToBilling),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parentId = pulumi.Input.asOptionalInput<String>(parentId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.closeOnDeletion,
+    this.createGovcloud,
+    required this.email,
+    this.iamUserAccessToBilling,
+    this.name,
+    this.parentId,
+    this.roleName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      closeOnDeletion: map['closeOnDeletion'] == null ? null : pulumi.Output.create<bool>(map['closeOnDeletion'] as bool),
-      createGovcloud: map['createGovcloud'] == null ? null : pulumi.Output.create<bool>(map['createGovcloud'] as bool),
-      email: pulumi.Output.create<String>(map['email'] as String),
-      iamUserAccessToBilling: map['iamUserAccessToBilling'] == null ? null : pulumi.Output.create<String>(map['iamUserAccessToBilling'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parentId: map['parentId'] == null ? null : pulumi.Output.create<String>(map['parentId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      closeOnDeletion: map['closeOnDeletion'] == null ? null : (map['closeOnDeletion'] as bool).input(),
+      createGovcloud: map['createGovcloud'] == null ? null : (map['createGovcloud'] as bool).input(),
+      email: (map['email'] as String).input(),
+      iamUserAccessToBilling: map['iamUserAccessToBilling'] == null ? null : (map['iamUserAccessToBilling'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

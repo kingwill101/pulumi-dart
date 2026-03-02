@@ -46,31 +46,19 @@ class ApplicationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   ApplicationState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<ApplicationAttachmentsConfiguration>? attachmentsConfiguration,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<ApplicationEncryptionConfiguration>? encryptionConfiguration,
-    pulumi.Output<String>? iamServiceRoleArn,
-    pulumi.Output<String>? identityCenterApplicationArn,
-    pulumi.Output<String>? identityCenterInstanceArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<ApplicationTimeouts>? timeouts,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      attachmentsConfiguration = pulumi.Input.asOptionalInput<ApplicationAttachmentsConfiguration>(attachmentsConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      encryptionConfiguration = pulumi.Input.asOptionalInput<ApplicationEncryptionConfiguration>(encryptionConfiguration),
-      iamServiceRoleArn = pulumi.Input.asOptionalInput<String>(iamServiceRoleArn),
-      identityCenterApplicationArn = pulumi.Input.asOptionalInput<String>(identityCenterApplicationArn),
-      identityCenterInstanceArn = pulumi.Input.asOptionalInput<String>(identityCenterInstanceArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<ApplicationTimeouts>(timeouts);
+    this.arn,
+    this.attachmentsConfiguration,
+    this.description,
+    this.displayName,
+    this.encryptionConfiguration,
+    this.iamServiceRoleArn,
+    this.identityCenterApplicationArn,
+    this.identityCenterInstanceArn,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      attachmentsConfiguration: map['attachmentsConfiguration'] == null ? null : pulumi.Output.create<ApplicationAttachmentsConfiguration>(ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : pulumi.Output.create<ApplicationEncryptionConfiguration>(ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())),
-      iamServiceRoleArn: map['iamServiceRoleArn'] == null ? null : pulumi.Output.create<String>(map['iamServiceRoleArn'] as String),
-      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : pulumi.Output.create<String>(map['identityCenterApplicationArn'] as String),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : pulumi.Output.create<String>(map['identityCenterInstanceArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ApplicationTimeouts>(ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      attachmentsConfiguration: map['attachmentsConfiguration'] == null ? null : (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      iamServiceRoleArn: map['iamServiceRoleArn'] == null ? null : (map['iamServiceRoleArn'] as String).input(),
+      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : (map['identityCenterApplicationArn'] as String).input(),
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : (map['identityCenterInstanceArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,29 +43,18 @@ class ZonalEndpointArgs {
   /// [vpcId] The ID of ENS VPC where to use the DB.
   /// [vswitchId] The ID of ENS virtual switch where to use the DB.
   ZonalEndpointArgs({
-    pulumi.Output<String>? autoAddNewNodes,
-    required pulumi.Output<String> dbClusterId,
-    required pulumi.Output<Map<String, String>> dbClusterNodesIds,
-    pulumi.Output<String>? dbEndpointDescription,
-    pulumi.Output<Map<String, String>>? endpointConfig,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? netType,
-    pulumi.Output<List<String>>? nodesKeys,
-    pulumi.Output<String>? readWriteMode,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      autoAddNewNodes = pulumi.Input.asOptionalInput<String>(autoAddNewNodes),
-      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
-      dbClusterNodesIds = pulumi.Input.asInput<Map<String, String>>(dbClusterNodesIds),
-      dbEndpointDescription = pulumi.Input.asOptionalInput<String>(dbEndpointDescription),
-      endpointConfig = pulumi.Input.asOptionalInput<Map<String, String>>(endpointConfig),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      netType = pulumi.Input.asOptionalInput<String>(netType),
-      nodesKeys = pulumi.Input.asOptionalInput<List<String>>(nodesKeys),
-      readWriteMode = pulumi.Input.asOptionalInput<String>(readWriteMode),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.autoAddNewNodes,
+    required this.dbClusterId,
+    required this.dbClusterNodesIds,
+    this.dbEndpointDescription,
+    this.endpointConfig,
+    this.endpointType,
+    this.netType,
+    this.nodesKeys,
+    this.readWriteMode,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,17 +74,17 @@ class ZonalEndpointArgs {
 
   factory ZonalEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ZonalEndpointArgs(
-      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : pulumi.Output.create<String>(map['autoAddNewNodes'] as String),
-      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
-      dbClusterNodesIds: pulumi.Output.create<Map<String, String>>((map['dbClusterNodesIds'] as Map).cast<String, String>()),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : pulumi.Output.create<String>(map['dbEndpointDescription'] as String),
-      endpointConfig: map['endpointConfig'] == null ? null : pulumi.Output.create<Map<String, String>>((map['endpointConfig'] as Map).cast<String, String>()),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
-      nodesKeys: map['nodesKeys'] == null ? null : pulumi.Output.create<List<String>>((map['nodesKeys'] as List).cast<String>()),
-      readWriteMode: map['readWriteMode'] == null ? null : pulumi.Output.create<String>(map['readWriteMode'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      autoAddNewNodes: map['autoAddNewNodes'] == null ? null : (map['autoAddNewNodes'] as String).input(),
+      dbClusterId: (map['dbClusterId'] as String).input(),
+      dbClusterNodesIds: ((map['dbClusterNodesIds'] as Map).cast<String, String>()).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : ((map['endpointConfig'] as Map).cast<String, String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      nodesKeys: map['nodesKeys'] == null ? null : ((map['nodesKeys'] as List).cast<String>()).input(),
+      readWriteMode: map['readWriteMode'] == null ? null : (map['readWriteMode'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

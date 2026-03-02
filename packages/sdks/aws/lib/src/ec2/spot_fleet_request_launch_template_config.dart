@@ -6,9 +6,9 @@ import 'spot_fleet_request_launch_template_config_override.dart';
 
 class SpotFleetRequestLaunchTemplateConfig {
   /// Launch template specification. See Launch Template Specification below for more details.
-  final SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification launchTemplateSpecification;
+  final pulumi.Input<SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification> launchTemplateSpecification;
   /// One or more override configurations. See Overrides below for more details.
-  final List<SpotFleetRequestLaunchTemplateConfigOverride>? overrides;
+  final pulumi.Input<List<SpotFleetRequestLaunchTemplateConfigOverride>>? overrides;
 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfig].
   /// [launchTemplateSpecification] Launch template specification. See Launch Template Specification below for more details.
@@ -20,15 +20,15 @@ class SpotFleetRequestLaunchTemplateConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'launchTemplateSpecification': launchTemplateSpecification.toMap(),
-      'overrides': ?overrides == null ? null : pulumi.Input.encodeList<SpotFleetRequestLaunchTemplateConfigOverride, Map<String, dynamic>>(overrides!, (value) => value.toMap()),
+      'launchTemplateSpecification': pulumi.Input.mapInputValue<SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification, Map<String, dynamic>>(launchTemplateSpecification, (value) => value.toMap()),
+      'overrides': ?pulumi.Input.mapOptionalInputValue<List<SpotFleetRequestLaunchTemplateConfigOverride>, List<Map<String, dynamic>>>(overrides, (value) => pulumi.Input.encodeList<SpotFleetRequestLaunchTemplateConfigOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory SpotFleetRequestLaunchTemplateConfig.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfig(
-      launchTemplateSpecification: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>()),
-      overrides: map['overrides'] == null ? null : pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfigOverride>(map['overrides'], (value) => SpotFleetRequestLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>())),
+      launchTemplateSpecification: (SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfigOverride>(map['overrides'], (value) => SpotFleetRequestLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

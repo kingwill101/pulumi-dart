@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryEnterpriseInstanceInstanceEndpointDomain {
   /// Domain
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// Domain Type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [RegistryEnterpriseInstanceInstanceEndpointDomain].
   /// [domain] Domain
@@ -24,8 +25,8 @@ class RegistryEnterpriseInstanceInstanceEndpointDomain {
 
   factory RegistryEnterpriseInstanceInstanceEndpointDomain.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseInstanceInstanceEndpointDomain(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_control_slot_github_action_configuration_code_configuration.dart';
 import 'source_control_slot_github_action_configuration_container_configuration.dart';
 
 class SourceControlSlotGithubActionConfiguration {
   /// A `code_configuration` block as detailed below. Changing this forces a new resource to be created.
-  final SourceControlSlotGithubActionConfigurationCodeConfiguration? codeConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationCodeConfiguration>? codeConfiguration;
   /// A `container_configuration` block as detailed below.
-  final SourceControlSlotGithubActionConfigurationContainerConfiguration? containerConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfigurationContainerConfiguration>? containerConfiguration;
   /// Should the service generate the GitHub Action Workflow file. Defaults to `true` Changing this forces a new resource to be created.
-  final bool? generateWorkflowFile;
+  final pulumi.Input<bool>? generateWorkflowFile;
   /// Denotes this action uses a Linux base image.
-  final bool? linuxAction;
+  final pulumi.Input<bool>? linuxAction;
 
   /// Creates a new [SourceControlSlotGithubActionConfiguration].
   /// [codeConfiguration] A `code_configuration` block as detailed below. Changing this forces a new resource to be created.
@@ -27,8 +28,8 @@ class SourceControlSlotGithubActionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'codeConfiguration': ?codeConfiguration == null ? null : codeConfiguration!.toMap(),
-      'containerConfiguration': ?containerConfiguration == null ? null : containerConfiguration!.toMap(),
+      'codeConfiguration': ?pulumi.Input.mapOptionalInputValue<SourceControlSlotGithubActionConfigurationCodeConfiguration, Map<String, dynamic>>(codeConfiguration, (value) => value.toMap()),
+      'containerConfiguration': ?pulumi.Input.mapOptionalInputValue<SourceControlSlotGithubActionConfigurationContainerConfiguration, Map<String, dynamic>>(containerConfiguration, (value) => value.toMap()),
       'generateWorkflowFile': ?generateWorkflowFile,
       'linuxAction': ?linuxAction,
     };
@@ -36,10 +37,10 @@ class SourceControlSlotGithubActionConfiguration {
 
   factory SourceControlSlotGithubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return SourceControlSlotGithubActionConfiguration(
-      codeConfiguration: map['codeConfiguration'] == null ? null : SourceControlSlotGithubActionConfigurationCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>()),
-      containerConfiguration: map['containerConfiguration'] == null ? null : SourceControlSlotGithubActionConfigurationContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>()),
-      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : map['generateWorkflowFile'] as bool,
-      linuxAction: map['linuxAction'] == null ? null : map['linuxAction'] as bool,
+      codeConfiguration: map['codeConfiguration'] == null ? null : (SourceControlSlotGithubActionConfigurationCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      containerConfiguration: map['containerConfiguration'] == null ? null : (SourceControlSlotGithubActionConfigurationContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : (map['generateWorkflowFile'] as bool).input(),
+      linuxAction: map['linuxAction'] == null ? null : (map['linuxAction'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetListenersListenerCertificate {
   /// The ID of the Listener.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of the certificate.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetListenersListenerCertificate].
   /// [id] The ID of the Listener.
@@ -24,8 +25,8 @@ class GetListenersListenerCertificate {
 
   factory GetListenersListenerCertificate.fromMap(Map<String, dynamic> map) {
     return GetListenersListenerCertificate(
-      id: map['id'] as String,
-      type: map['type'] as String,
+      id: (map['id'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

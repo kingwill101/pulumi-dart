@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse {
   /// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
-  final String leafNodeEmbeddingCount;
+  final pulumi.Input<String> leafNodeEmbeddingCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse].
   /// [leafNodeEmbeddingCount] Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
@@ -19,7 +20,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigRespo
 
   factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] as String,
+      leafNodeEmbeddingCount: (map['leafNodeEmbeddingCount'] as String).input(),
     );
   }
 }

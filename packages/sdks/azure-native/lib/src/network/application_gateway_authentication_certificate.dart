@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication certificates of an application gateway.
 class ApplicationGatewayAuthenticationCertificate {
   /// Certificate public data.
-  final String? data;
+  final pulumi.Input<String>? data;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// Name of the authentication certificate that is unique within an Application Gateway.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ApplicationGatewayAuthenticationCertificate].
   /// [data] Certificate public data.
@@ -30,9 +31,9 @@ class ApplicationGatewayAuthenticationCertificate {
 
   factory ApplicationGatewayAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAuthenticationCertificate(
-      data: map['data'] == null ? null : map['data'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      data: map['data'] == null ? null : (map['data'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

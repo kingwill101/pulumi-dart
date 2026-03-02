@@ -5,31 +5,31 @@ import 'get_change_sets_set_parameter.dart';
 
 class GetChangeSetsSet {
   /// The ID of the change set.
-  final String changeSetId;
+  final pulumi.Input<String> changeSetId;
   /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
-  final String changeSetName;
+  final pulumi.Input<String> changeSetName;
   /// The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
-  final String changeSetType;
+  final pulumi.Input<String> changeSetType;
   /// The description of the change set. The description can be up to 1,024 bytes in length.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
-  final bool disableRollback;
+  final pulumi.Input<bool> disableRollback;
   /// The execution status of change set N. Maximum value of N: 5. Valid values:  UNAVAILABLE AVAILABLE EXECUTE_IN_PROGRESS EXECUTE_COMPLETE EXECUTE_FAILED OBSOLETE.
-  final String executionStatus;
+  final pulumi.Input<String> executionStatus;
   /// The ID of the Change Set.
-  final String id;
+  final pulumi.Input<String> id;
   /// Parameters.
-  final List<GetChangeSetsSetParameter> parameters;
+  final pulumi.Input<List<GetChangeSetsSetParameter>> parameters;
   /// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
-  final String stackId;
+  final pulumi.Input<String> stackId;
   /// The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
-  final String stackName;
+  final pulumi.Input<String> stackName;
   /// The status of the change set.
-  final String status;
+  final pulumi.Input<String> status;
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
-  final String templateBody;
+  final pulumi.Input<String> templateBody;
   /// Timeout In Minutes.
-  final int timeoutInMinutes;
+  final pulumi.Input<int> timeoutInMinutes;
 
   /// Creates a new [GetChangeSetsSet].
   /// [changeSetId] The ID of the change set.
@@ -70,7 +70,7 @@ class GetChangeSetsSet {
       'disableRollback': disableRollback,
       'executionStatus': executionStatus,
       'id': id,
-      'parameters': pulumi.Input.encodeList<GetChangeSetsSetParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<List<GetChangeSetsSetParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GetChangeSetsSetParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stackId': stackId,
       'stackName': stackName,
       'status': status,
@@ -81,19 +81,19 @@ class GetChangeSetsSet {
 
   factory GetChangeSetsSet.fromMap(Map<String, dynamic> map) {
     return GetChangeSetsSet(
-      changeSetId: map['changeSetId'] as String,
-      changeSetName: map['changeSetName'] as String,
-      changeSetType: map['changeSetType'] as String,
-      description: map['description'] as String,
-      disableRollback: map['disableRollback'] as bool,
-      executionStatus: map['executionStatus'] as String,
-      id: map['id'] as String,
-      parameters: pulumi.Input.decodeList<GetChangeSetsSetParameter>(map['parameters'], (value) => GetChangeSetsSetParameter.fromMap((value as Map).cast<String, dynamic>())),
-      stackId: map['stackId'] as String,
-      stackName: map['stackName'] as String,
-      status: map['status'] as String,
-      templateBody: map['templateBody'] as String,
-      timeoutInMinutes: map['timeoutInMinutes'] as int,
+      changeSetId: (map['changeSetId'] as String).input(),
+      changeSetName: (map['changeSetName'] as String).input(),
+      changeSetType: (map['changeSetType'] as String).input(),
+      description: (map['description'] as String).input(),
+      disableRollback: (map['disableRollback'] as bool).input(),
+      executionStatus: (map['executionStatus'] as String).input(),
+      id: (map['id'] as String).input(),
+      parameters: (pulumi.Input.decodeList<GetChangeSetsSetParameter>(map['parameters'], (value) => GetChangeSetsSetParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackId: (map['stackId'] as String).input(),
+      stackName: (map['stackName'] as String).input(),
+      status: (map['status'] as String).input(),
+      templateBody: (map['templateBody'] as String).input(),
+      timeoutInMinutes: (map['timeoutInMinutes'] as int).input(),
     );
   }
 }

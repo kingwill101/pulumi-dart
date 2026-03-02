@@ -25,17 +25,12 @@ class GetCapacityPoolSubvolumeArgs {
   /// [subvolumeName] The name of the subvolume.
   /// [volumeName] The name of the volume
   GetCapacityPoolSubvolumeArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> poolName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> subvolumeName,
-    required pulumi.Output<String> volumeName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      poolName = pulumi.Input.asInput<String>(poolName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      subvolumeName = pulumi.Input.asInput<String>(subvolumeName),
-      volumeName = pulumi.Input.asInput<String>(volumeName);
+    required this.accountName,
+    required this.poolName,
+    required this.resourceGroupName,
+    required this.subvolumeName,
+    required this.volumeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetCapacityPoolSubvolumeArgs {
 
   factory GetCapacityPoolSubvolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolSubvolumeArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      poolName: pulumi.Output.create<String>(map['poolName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      subvolumeName: pulumi.Output.create<String>(map['subvolumeName'] as String),
-      volumeName: pulumi.Output.create<String>(map['volumeName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      poolName: (map['poolName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      subvolumeName: (map['subvolumeName'] as String).input(),
+      volumeName: (map['volumeName'] as String).input(),
     );
   }
 }

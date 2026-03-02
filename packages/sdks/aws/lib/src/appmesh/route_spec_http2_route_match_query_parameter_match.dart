@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttp2RouteMatchQueryParameterMatch {
   /// The exact query parameter to match on.
-  final String? exact;
+  final pulumi.Input<String>? exact;
 
   /// Creates a new [RouteSpecHttp2RouteMatchQueryParameterMatch].
   /// [exact] The exact query parameter to match on.
@@ -19,7 +20,7 @@ class RouteSpecHttp2RouteMatchQueryParameterMatch {
 
   factory RouteSpecHttp2RouteMatchQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteMatchQueryParameterMatch(
-      exact: map['exact'] == null ? null : map['exact'] as String,
+      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
     );
   }
 }

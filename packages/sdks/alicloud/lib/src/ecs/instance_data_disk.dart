@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceDataDisk {
   /// The ID of the automatic snapshot policy applied to the system disk.
-  final String? autoSnapshotPolicyId;
+  final pulumi.Input<String>? autoSnapshotPolicyId;
   /// Specifies whether to enable the performance burst feature for the system disk. Valid values:
-  final bool? burstingEnabled;
+  final pulumi.Input<bool>? burstingEnabled;
   /// The category of the disk:
-  final String? category;
+  final pulumi.Input<String>? category;
   /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
-  final bool? deleteWithInstance;
+  final pulumi.Input<bool>? deleteWithInstance;
   /// The description of the data disk.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The mount point of the data disk.
-  final String? device;
+  final pulumi.Input<String>? device;
   /// Encrypted the data in this disk. Default value: `false`.
-  final bool? encrypted;
+  final pulumi.Input<bool>? encrypted;
   /// The KMS key ID corresponding to the Nth data disk.
-  final String? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
   /// The name of the data disk.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The performance level of the ESSD used as data disk:
   /// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
   /// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
   /// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
   /// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
   /// Default to `PL1`.
-  final String? performanceLevel;
+  final pulumi.Input<String>? performanceLevel;
   /// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
-  final int? provisionedIops;
+  final pulumi.Input<int>? provisionedIops;
   /// The size of the data disk.
   /// - cloud：[5, 2000]
   /// - cloud_efficiency：[20, 32768]
   /// - cloud_ssd：[20, 32768]
   /// - cloud_essd：[20, 32768]
   /// - ephemeral_ssd: [5, 800]
-  final int size;
+  final pulumi.Input<int> size;
   /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  final String? snapshotId;
+  final pulumi.Input<String>? snapshotId;
 
   /// Creates a new [InstanceDataDisk].
   /// [autoSnapshotPolicyId] The ID of the automatic snapshot policy applied to the system disk.
@@ -89,19 +90,19 @@ class InstanceDataDisk {
 
   factory InstanceDataDisk.fromMap(Map<String, dynamic> map) {
     return InstanceDataDisk(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : map['autoSnapshotPolicyId'] as String,
-      burstingEnabled: map['burstingEnabled'] == null ? null : map['burstingEnabled'] as bool,
-      category: map['category'] == null ? null : map['category'] as String,
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : map['deleteWithInstance'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      device: map['device'] == null ? null : map['device'] as String,
-      encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
-      kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      performanceLevel: map['performanceLevel'] == null ? null : map['performanceLevel'] as String,
-      provisionedIops: map['provisionedIops'] == null ? null : map['provisionedIops'] as int,
-      size: map['size'] as int,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
+      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId'] as String).input(),
+      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled'] as bool).input(),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      device: map['device'] == null ? null : (map['device'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
+      size: (map['size'] as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
     );
   }
 }

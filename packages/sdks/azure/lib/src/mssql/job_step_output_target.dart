@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobStepOutputTarget {
   /// The ID of the Elastic Job Credential to use when connecting to the output destination.
-  final String? jobCredentialId;
+  final pulumi.Input<String>? jobCredentialId;
   /// The ID of the output database.
-  final String mssqlDatabaseId;
+  final pulumi.Input<String> mssqlDatabaseId;
   /// The name of the output schema. Defaults to `dbo`.
-  final String? schemaName;
+  final pulumi.Input<String>? schemaName;
   /// The name of the output table.
-  final String tableName;
+  final pulumi.Input<String> tableName;
 
   /// Creates a new [JobStepOutputTarget].
   /// [jobCredentialId] The ID of the Elastic Job Credential to use when connecting to the output destination.
@@ -34,10 +35,10 @@ class JobStepOutputTarget {
 
   factory JobStepOutputTarget.fromMap(Map<String, dynamic> map) {
     return JobStepOutputTarget(
-      jobCredentialId: map['jobCredentialId'] == null ? null : map['jobCredentialId'] as String,
-      mssqlDatabaseId: map['mssqlDatabaseId'] as String,
-      schemaName: map['schemaName'] == null ? null : map['schemaName'] as String,
-      tableName: map['tableName'] as String,
+      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId'] as String).input(),
+      mssqlDatabaseId: (map['mssqlDatabaseId'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
     );
   }
 }

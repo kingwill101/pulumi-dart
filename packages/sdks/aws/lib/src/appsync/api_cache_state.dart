@@ -28,21 +28,14 @@ class ApiCacheState {
   /// [ttl] TTL in seconds for cache entries.
   /// [type] Cache instance type. Valid values are `SMALL`, `MEDIUM`, `LARGE`, `XLARGE`, `LARGE_2X`, `LARGE_4X`, `LARGE_8X`, `LARGE_12X`, `T2_SMALL`, `T2_MEDIUM`, `R4_LARGE`, `R4_XLARGE`, `R4_2XLARGE`, `R4_4XLARGE`, `R4_8XLARGE`.
   ApiCacheState({
-    pulumi.Output<String>? apiCachingBehavior,
-    pulumi.Output<String>? apiId,
-    pulumi.Output<bool>? atRestEncryptionEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? transitEncryptionEnabled,
-    pulumi.Output<int>? ttl,
-    pulumi.Output<String>? type,
-  }) :
-      apiCachingBehavior = pulumi.Input.asOptionalInput<String>(apiCachingBehavior),
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      atRestEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(atRestEncryptionEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      transitEncryptionEnabled = pulumi.Input.asOptionalInput<bool>(transitEncryptionEnabled),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.apiCachingBehavior,
+    this.apiId,
+    this.atRestEncryptionEnabled,
+    this.region,
+    this.transitEncryptionEnabled,
+    this.ttl,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class ApiCacheState {
 
   factory ApiCacheState.fromMap(Map<String, dynamic> map) {
     return ApiCacheState(
-      apiCachingBehavior: map['apiCachingBehavior'] == null ? null : pulumi.Output.create<String>(map['apiCachingBehavior'] as String),
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['atRestEncryptionEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : pulumi.Output.create<bool>(map['transitEncryptionEnabled'] as bool),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      apiCachingBehavior: map['apiCachingBehavior'] == null ? null : (map['apiCachingBehavior'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : (map['atRestEncryptionEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : (map['transitEncryptionEnabled'] as bool).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

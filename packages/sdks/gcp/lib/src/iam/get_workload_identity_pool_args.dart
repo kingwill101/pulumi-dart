@@ -20,11 +20,9 @@ class GetWorkloadIdentityPoolArgs {
   /// [project] The project in which the resource belongs. If it
   /// [workloadIdentityPoolId] The id of the pool which is the
   GetWorkloadIdentityPoolArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workloadIdentityPoolId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
+    this.project,
+    required this.workloadIdentityPoolId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,8 +33,8 @@ class GetWorkloadIdentityPoolArgs {
 
   factory GetWorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }
 }

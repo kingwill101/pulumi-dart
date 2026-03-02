@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationInputsSchemaRecordColumn {
   /// The Mapping reference to the data element.
-  final String? mapping;
+  final pulumi.Input<String>? mapping;
   /// Name of the column.
-  final String name;
+  final pulumi.Input<String> name;
   /// The SQL Type of the column.
-  final String sqlType;
+  final pulumi.Input<String> sqlType;
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordColumn].
   /// [mapping] The Mapping reference to the data element.
@@ -29,9 +30,9 @@ class AnalyticsApplicationInputsSchemaRecordColumn {
 
   factory AnalyticsApplicationInputsSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordColumn(
-      mapping: map['mapping'] == null ? null : map['mapping'] as String,
-      name: map['name'] as String,
-      sqlType: map['sqlType'] as String,
+      mapping: map['mapping'] == null ? null : (map['mapping'] as String).input(),
+      name: (map['name'] as String).input(),
+      sqlType: (map['sqlType'] as String).input(),
     );
   }
 }

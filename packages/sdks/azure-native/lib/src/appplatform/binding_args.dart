@@ -26,17 +26,12 @@ class BindingArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   BindingArgs({
-    required pulumi.Output<String> appName,
-    pulumi.Output<String>? bindingName,
-    pulumi.Output<BindingResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      appName = pulumi.Input.asInput<String>(appName),
-      bindingName = pulumi.Input.asOptionalInput<String>(bindingName),
-      properties = pulumi.Input.asOptionalInput<BindingResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.appName,
+    this.bindingName,
+    this.properties,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      appName: pulumi.Output.create<String>(map['appName'] as String),
-      bindingName: map['bindingName'] == null ? null : pulumi.Output.create<String>(map['bindingName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<BindingResourceProperties>(BindingResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      appName: (map['appName'] as String).input(),
+      bindingName: map['bindingName'] == null ? null : (map['bindingName'] as String).input(),
+      properties: map['properties'] == null ? null : (BindingResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

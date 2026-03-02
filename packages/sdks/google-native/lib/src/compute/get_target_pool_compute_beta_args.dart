@@ -16,13 +16,10 @@ class GetTargetPoolComputeBetaArgs {
   /// [region] Required.
   /// [targetPool] Required.
   GetTargetPoolComputeBetaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> targetPool,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      targetPool = pulumi.Input.asInput<String>(targetPool);
+    this.project,
+    required this.region,
+    required this.targetPool,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTargetPoolComputeBetaArgs {
 
   factory GetTargetPoolComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetPoolComputeBetaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      targetPool: pulumi.Output.create<String>(map['targetPool'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      targetPool: (map['targetPool'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class ApplicationAcceleratorArgs {
   /// [serviceName] The name of the Service resource.
   /// [sku] Sku of the application accelerator resource
   ApplicationAcceleratorArgs({
-    pulumi.Output<String>? applicationAcceleratorName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<Sku>? sku,
-  }) :
-      applicationAcceleratorName = pulumi.Input.asOptionalInput<String>(applicationAcceleratorName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku);
+    this.applicationAcceleratorName,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.sku,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class ApplicationAcceleratorArgs {
 
   factory ApplicationAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorArgs(
-      applicationAcceleratorName: map['applicationAcceleratorName'] == null ? null : pulumi.Output.create<String>(map['applicationAcceleratorName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      applicationAcceleratorName: map['applicationAcceleratorName'] == null ? null : (map['applicationAcceleratorName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

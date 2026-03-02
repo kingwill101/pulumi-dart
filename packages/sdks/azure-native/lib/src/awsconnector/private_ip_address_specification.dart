@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of PrivateIpAddressSpecification
 class PrivateIpAddressSpecification {
   /// Property primary
-  final bool? primary;
+  final pulumi.Input<bool>? primary;
   /// Property privateIpAddress
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
 
   /// Creates a new [PrivateIpAddressSpecification].
   /// [primary] Property primary
@@ -25,8 +26,8 @@ class PrivateIpAddressSpecification {
 
   factory PrivateIpAddressSpecification.fromMap(Map<String, dynamic> map) {
     return PrivateIpAddressSpecification(
-      primary: map['primary'] == null ? null : map['primary'] as bool,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
+      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
     );
   }
 }

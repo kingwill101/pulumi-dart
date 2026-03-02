@@ -34,21 +34,14 @@ class AssetTypeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   AssetTypeArgs({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> domainIdentifier,
-    pulumi.Output<List<AssetTypeFormsInput>>? formsInputs,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> owningProjectIdentifier,
-    pulumi.Output<String>? region,
-    pulumi.Output<AssetTypeTimeouts>? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainIdentifier = pulumi.Input.asInput<String>(domainIdentifier),
-      formsInputs = pulumi.Input.asOptionalInput<List<AssetTypeFormsInput>>(formsInputs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      owningProjectIdentifier = pulumi.Input.asInput<String>(owningProjectIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<AssetTypeTimeouts>(timeouts);
+    this.description,
+    required this.domainIdentifier,
+    this.formsInputs,
+    this.name,
+    required this.owningProjectIdentifier,
+    this.region,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class AssetTypeArgs {
 
   factory AssetTypeArgs.fromMap(Map<String, dynamic> map) {
     return AssetTypeArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      domainIdentifier: pulumi.Output.create<String>(map['domainIdentifier'] as String),
-      formsInputs: map['formsInputs'] == null ? null : pulumi.Output.create<List<AssetTypeFormsInput>>(pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs'], (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      owningProjectIdentifier: pulumi.Output.create<String>(map['owningProjectIdentifier'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AssetTypeTimeouts>(AssetTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      domainIdentifier: (map['domainIdentifier'] as String).input(),
+      formsInputs: map['formsInputs'] == null ? null : (pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs'], (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      owningProjectIdentifier: (map['owningProjectIdentifier'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (AssetTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

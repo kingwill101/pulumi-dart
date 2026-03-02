@@ -28,19 +28,13 @@ class GetSecretVersionsArgs {
   /// [secretName] The name of the secret.
   /// [versionStage] The stage of the secret version.
   GetSecretVersionsArgs({
-    pulumi.Output<bool>? enableDetails,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? includeDeprecated,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> secretName,
-    pulumi.Output<String>? versionStage,
-  }) :
-      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      includeDeprecated = pulumi.Input.asOptionalInput<String>(includeDeprecated),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      secretName = pulumi.Input.asInput<String>(secretName),
-      versionStage = pulumi.Input.asOptionalInput<String>(versionStage);
+    this.enableDetails,
+    this.ids,
+    this.includeDeprecated,
+    this.outputFile,
+    required this.secretName,
+    this.versionStage,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetSecretVersionsArgs {
 
   factory GetSecretVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsArgs(
-      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      includeDeprecated: map['includeDeprecated'] == null ? null : pulumi.Output.create<String>(map['includeDeprecated'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      secretName: pulumi.Output.create<String>(map['secretName'] as String),
-      versionStage: map['versionStage'] == null ? null : pulumi.Output.create<String>(map['versionStage'] as String),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
+      versionStage: map['versionStage'] == null ? null : (map['versionStage'] as String).input(),
     );
   }
 }

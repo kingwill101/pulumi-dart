@@ -14,11 +14,9 @@ class GetScanConfigWebsecurityscannerV1betaArgs {
   /// [project] Optional.
   /// [scanConfigId] Required.
   GetScanConfigWebsecurityscannerV1betaArgs({
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> scanConfigId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scanConfigId = pulumi.Input.asInput<String>(scanConfigId);
+    this.project,
+    required this.scanConfigId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetScanConfigWebsecurityscannerV1betaArgs {
 
   factory GetScanConfigWebsecurityscannerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigWebsecurityscannerV1betaArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      scanConfigId: pulumi.Output.create<String>(map['scanConfigId'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      scanConfigId: (map['scanConfigId'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetOverrideArgs {
   /// [organizationId] Required.
   /// [overrideId] Required.
   GetOverrideArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> overrideId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      overrideId = pulumi.Input.asInput<String>(overrideId);
+    required this.environmentId,
+    required this.organizationId,
+    required this.overrideId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetOverrideArgs {
 
   factory GetOverrideArgs.fromMap(Map<String, dynamic> map) {
     return GetOverrideArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      overrideId: pulumi.Output.create<String>(map['overrideId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      overrideId: (map['overrideId'] as String).input(),
     );
   }
 }

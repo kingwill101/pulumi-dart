@@ -65,29 +65,18 @@ class DiagnosticSettingArgs {
   /// [storageAccountId] The ID of the Storage Account where logs should be sent.
   /// [targetResourceId] The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
   DiagnosticSettingArgs({
-    pulumi.Output<List<DiagnosticSettingEnabledLog>>? enabledLogs,
-    pulumi.Output<List<DiagnosticSettingEnabledMetric>>? enabledMetrics,
-    pulumi.Output<String>? eventhubAuthorizationRuleId,
-    pulumi.Output<String>? eventhubName,
-    pulumi.Output<String>? logAnalyticsDestinationType,
-    pulumi.Output<String>? logAnalyticsWorkspaceId,
-    pulumi.Output<List<DiagnosticSettingMetric>>? metrics,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? partnerSolutionId,
-    pulumi.Output<String>? storageAccountId,
-    required pulumi.Output<String> targetResourceId,
-  }) :
-      enabledLogs = pulumi.Input.asOptionalInput<List<DiagnosticSettingEnabledLog>>(enabledLogs),
-      enabledMetrics = pulumi.Input.asOptionalInput<List<DiagnosticSettingEnabledMetric>>(enabledMetrics),
-      eventhubAuthorizationRuleId = pulumi.Input.asOptionalInput<String>(eventhubAuthorizationRuleId),
-      eventhubName = pulumi.Input.asOptionalInput<String>(eventhubName),
-      logAnalyticsDestinationType = pulumi.Input.asOptionalInput<String>(logAnalyticsDestinationType),
-      logAnalyticsWorkspaceId = pulumi.Input.asOptionalInput<String>(logAnalyticsWorkspaceId),
-      metrics = pulumi.Input.asOptionalInput<List<DiagnosticSettingMetric>>(metrics),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partnerSolutionId = pulumi.Input.asOptionalInput<String>(partnerSolutionId),
-      storageAccountId = pulumi.Input.asOptionalInput<String>(storageAccountId),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId);
+    this.enabledLogs,
+    this.enabledMetrics,
+    this.eventhubAuthorizationRuleId,
+    this.eventhubName,
+    this.logAnalyticsDestinationType,
+    this.logAnalyticsWorkspaceId,
+    this.metrics,
+    this.name,
+    this.partnerSolutionId,
+    this.storageAccountId,
+    required this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,17 +96,17 @@ class DiagnosticSettingArgs {
 
   factory DiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingArgs(
-      enabledLogs: map['enabledLogs'] == null ? null : pulumi.Output.create<List<DiagnosticSettingEnabledLog>>(pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))),
-      enabledMetrics: map['enabledMetrics'] == null ? null : pulumi.Output.create<List<DiagnosticSettingEnabledMetric>>(pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(map['enabledMetrics'], (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : pulumi.Output.create<String>(map['eventhubAuthorizationRuleId'] as String),
-      eventhubName: map['eventhubName'] == null ? null : pulumi.Output.create<String>(map['eventhubName'] as String),
-      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsDestinationType'] as String),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['logAnalyticsWorkspaceId'] as String),
-      metrics: map['metrics'] == null ? null : pulumi.Output.create<List<DiagnosticSettingMetric>>(pulumi.Input.decodeList<DiagnosticSettingMetric>(map['metrics'], (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partnerSolutionId: map['partnerSolutionId'] == null ? null : pulumi.Output.create<String>(map['partnerSolutionId'] as String),
-      storageAccountId: map['storageAccountId'] == null ? null : pulumi.Output.create<String>(map['storageAccountId'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
+      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => DiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledMetrics: map['enabledMetrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingEnabledMetric>(map['enabledMetrics'], (value) => DiagnosticSettingEnabledMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId'] as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
+      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : (map['logAnalyticsDestinationType'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<DiagnosticSettingMetric>(map['metrics'], (value) => DiagnosticSettingMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partnerSolutionId: map['partnerSolutionId'] == null ? null : (map['partnerSolutionId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }
 }

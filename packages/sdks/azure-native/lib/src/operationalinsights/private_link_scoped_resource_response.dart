@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The private link scope resource reference.
 class PrivateLinkScopedResourceResponse {
   /// The full resource Id of the private link scope resource.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
   /// The private link scope unique Identifier.
-  final String? scopeId;
+  final pulumi.Input<String>? scopeId;
 
   /// Creates a new [PrivateLinkScopedResourceResponse].
   /// [resourceId] The full resource Id of the private link scope resource.
@@ -25,8 +26,8 @@ class PrivateLinkScopedResourceResponse {
 
   factory PrivateLinkScopedResourceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      scopeId: map['scopeId'] == null ? null : map['scopeId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
     );
   }
 }

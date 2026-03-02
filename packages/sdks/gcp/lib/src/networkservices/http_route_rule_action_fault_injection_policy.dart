@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_route_rule_action_fault_injection_policy_abort.dart';
 import 'http_route_rule_action_fault_injection_policy_delay.dart';
 
 class HttpRouteRuleActionFaultInjectionPolicy {
   /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final HttpRouteRuleActionFaultInjectionPolicyAbort? abort;
+  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyAbort>? abort;
   /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final HttpRouteRuleActionFaultInjectionPolicyDelay? delay;
+  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyDelay>? delay;
 
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicy].
   /// [abort] Specification of how client requests are aborted as part of fault injection before being sent to a destination.
@@ -21,15 +22,15 @@ class HttpRouteRuleActionFaultInjectionPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort': ?abort == null ? null : abort!.toMap(),
-      'delay': ?delay == null ? null : delay!.toMap(),
+      'abort': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionFaultInjectionPolicyAbort, Map<String, dynamic>>(abort, (value) => value.toMap()),
+      'delay': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionFaultInjectionPolicyDelay, Map<String, dynamic>>(delay, (value) => value.toMap()),
     };
   }
 
   factory HttpRouteRuleActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleActionFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : HttpRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null ? null : HttpRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null ? null : (HttpRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (HttpRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

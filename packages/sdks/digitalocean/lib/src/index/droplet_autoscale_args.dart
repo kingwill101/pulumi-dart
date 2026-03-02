@@ -23,13 +23,10 @@ class DropletAutoscaleArgs {
   /// [dropletTemplate] The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// [name] The name of the Droplet Autoscale pool.
   DropletAutoscaleArgs({
-    required pulumi.Output<DropletAutoscaleConfig> config,
-    required pulumi.Output<DropletAutoscaleDropletTemplate> dropletTemplate,
-    pulumi.Output<String>? name,
-  }) :
-      config = pulumi.Input.asInput<DropletAutoscaleConfig>(config),
-      dropletTemplate = pulumi.Input.asInput<DropletAutoscaleDropletTemplate>(dropletTemplate),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.config,
+    required this.dropletTemplate,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class DropletAutoscaleArgs {
 
   factory DropletAutoscaleArgs.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleArgs(
-      config: pulumi.Output.create<DropletAutoscaleConfig>(DropletAutoscaleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
-      dropletTemplate: pulumi.Output.create<DropletAutoscaleDropletTemplate>(DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      config: (DropletAutoscaleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      dropletTemplate: (DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

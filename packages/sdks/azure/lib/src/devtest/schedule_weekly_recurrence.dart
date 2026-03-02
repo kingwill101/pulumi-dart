@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleWeeklyRecurrence {
   /// The time when the schedule takes effect.
-  final String time;
+  final pulumi.Input<String> time;
   /// A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  final List<String>? weekDays;
+  final pulumi.Input<List<String>>? weekDays;
 
   /// Creates a new [ScheduleWeeklyRecurrence].
   /// [time] The time when the schedule takes effect.
@@ -24,8 +25,8 @@ class ScheduleWeeklyRecurrence {
 
   factory ScheduleWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleWeeklyRecurrence(
-      time: map['time'] as String,
-      weekDays: map['weekDays'] == null ? null : (map['weekDays'] as List).cast<String>(),
+      time: (map['time'] as String).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetOtsBackupPlansPlanOtsDetail {
-  final List<String> tableNames;
+  final pulumi.Input<List<String>> tableNames;
 
   /// Creates a new [GetOtsBackupPlansPlanOtsDetail].
   /// [tableNames] Required.
@@ -18,7 +19,7 @@ class GetOtsBackupPlansPlanOtsDetail {
 
   factory GetOtsBackupPlansPlanOtsDetail.fromMap(Map<String, dynamic> map) {
     return GetOtsBackupPlansPlanOtsDetail(
-      tableNames: (map['tableNames'] as List).cast<String>(),
+      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
     );
   }
 }

@@ -10,25 +10,25 @@ import 'azure_cluster_control_plane_ssh_config.dart';
 
 class AzureClusterControlPlane {
   /// Optional. Configuration related to application-layer secrets encryption.
-  final AzureClusterControlPlaneDatabaseEncryption? databaseEncryption;
+  final pulumi.Input<AzureClusterControlPlaneDatabaseEncryption>? databaseEncryption;
   /// Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
-  final AzureClusterControlPlaneMainVolume? mainVolume;
+  final pulumi.Input<AzureClusterControlPlaneMainVolume>? mainVolume;
   /// Proxy configuration for outbound HTTP(S) traffic.
-  final AzureClusterControlPlaneProxyConfig? proxyConfig;
+  final pulumi.Input<AzureClusterControlPlaneProxyConfig>? proxyConfig;
   /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
-  final List<AzureClusterControlPlaneReplicaPlacement>? replicaPlacements;
+  final pulumi.Input<List<AzureClusterControlPlaneReplicaPlacement>>? replicaPlacements;
   /// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
-  final AzureClusterControlPlaneRootVolume? rootVolume;
+  final pulumi.Input<AzureClusterControlPlaneRootVolume>? rootVolume;
   /// SSH configuration for how to access the underlying control plane machines.
-  final AzureClusterControlPlaneSshConfig sshConfig;
+  final pulumi.Input<AzureClusterControlPlaneSshConfig> sshConfig;
   /// The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// Optional. A set of tags to apply to all underlying control plane Azure resources.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
-  final String version;
+  final pulumi.Input<String> version;
   /// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [AzureClusterControlPlane].
   /// [databaseEncryption] Optional. Configuration related to application-layer secrets encryption.
@@ -56,12 +56,12 @@ class AzureClusterControlPlane {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseEncryption': ?databaseEncryption == null ? null : databaseEncryption!.toMap(),
-      'mainVolume': ?mainVolume == null ? null : mainVolume!.toMap(),
-      'proxyConfig': ?proxyConfig == null ? null : proxyConfig!.toMap(),
-      'replicaPlacements': ?replicaPlacements == null ? null : pulumi.Input.encodeList<AzureClusterControlPlaneReplicaPlacement, Map<String, dynamic>>(replicaPlacements!, (value) => value.toMap()),
-      'rootVolume': ?rootVolume == null ? null : rootVolume!.toMap(),
-      'sshConfig': sshConfig.toMap(),
+      'databaseEncryption': ?pulumi.Input.mapOptionalInputValue<AzureClusterControlPlaneDatabaseEncryption, Map<String, dynamic>>(databaseEncryption, (value) => value.toMap()),
+      'mainVolume': ?pulumi.Input.mapOptionalInputValue<AzureClusterControlPlaneMainVolume, Map<String, dynamic>>(mainVolume, (value) => value.toMap()),
+      'proxyConfig': ?pulumi.Input.mapOptionalInputValue<AzureClusterControlPlaneProxyConfig, Map<String, dynamic>>(proxyConfig, (value) => value.toMap()),
+      'replicaPlacements': ?pulumi.Input.mapOptionalInputValue<List<AzureClusterControlPlaneReplicaPlacement>, List<Map<String, dynamic>>>(replicaPlacements, (value) => pulumi.Input.encodeList<AzureClusterControlPlaneReplicaPlacement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rootVolume': ?pulumi.Input.mapOptionalInputValue<AzureClusterControlPlaneRootVolume, Map<String, dynamic>>(rootVolume, (value) => value.toMap()),
+      'sshConfig': pulumi.Input.mapInputValue<AzureClusterControlPlaneSshConfig, Map<String, dynamic>>(sshConfig, (value) => value.toMap()),
       'subnetId': subnetId,
       'tags': ?tags,
       'version': version,
@@ -71,16 +71,16 @@ class AzureClusterControlPlane {
 
   factory AzureClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlane(
-      databaseEncryption: map['databaseEncryption'] == null ? null : AzureClusterControlPlaneDatabaseEncryption.fromMap((map['databaseEncryption'] as Map).cast<String, dynamic>()),
-      mainVolume: map['mainVolume'] == null ? null : AzureClusterControlPlaneMainVolume.fromMap((map['mainVolume'] as Map).cast<String, dynamic>()),
-      proxyConfig: map['proxyConfig'] == null ? null : AzureClusterControlPlaneProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>()),
-      replicaPlacements: map['replicaPlacements'] == null ? null : pulumi.Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(map['replicaPlacements'], (value) => AzureClusterControlPlaneReplicaPlacement.fromMap((value as Map).cast<String, dynamic>())),
-      rootVolume: map['rootVolume'] == null ? null : AzureClusterControlPlaneRootVolume.fromMap((map['rootVolume'] as Map).cast<String, dynamic>()),
-      sshConfig: AzureClusterControlPlaneSshConfig.fromMap((map['sshConfig'] as Map).cast<String, dynamic>()),
-      subnetId: map['subnetId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      version: map['version'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      databaseEncryption: map['databaseEncryption'] == null ? null : (AzureClusterControlPlaneDatabaseEncryption.fromMap((map['databaseEncryption'] as Map).cast<String, dynamic>())).input(),
+      mainVolume: map['mainVolume'] == null ? null : (AzureClusterControlPlaneMainVolume.fromMap((map['mainVolume'] as Map).cast<String, dynamic>())).input(),
+      proxyConfig: map['proxyConfig'] == null ? null : (AzureClusterControlPlaneProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>())).input(),
+      replicaPlacements: map['replicaPlacements'] == null ? null : (pulumi.Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(map['replicaPlacements'], (value) => AzureClusterControlPlaneReplicaPlacement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rootVolume: map['rootVolume'] == null ? null : (AzureClusterControlPlaneRootVolume.fromMap((map['rootVolume'] as Map).cast<String, dynamic>())).input(),
+      sshConfig: (AzureClusterControlPlaneSshConfig.fromMap((map['sshConfig'] as Map).cast<String, dynamic>())).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: (map['version'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
-  final String owner;
+  final pulumi.Input<String> owner;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation].
   /// [owner] Required.
@@ -18,7 +19,7 @@ class GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation {
 
   factory GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation(
-      owner: map['owner'] as String,
+      owner: (map['owner'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Looker instance OAuth login settings.
 class OAuthConfig {
   /// Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  final String? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// Creates a new [OAuthConfig].
   /// [clientId] Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
@@ -25,8 +26,8 @@ class OAuthConfig {
 
   factory OAuthConfig.fromMap(Map<String, dynamic> map) {
     return OAuthConfig(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
     );
   }
 }

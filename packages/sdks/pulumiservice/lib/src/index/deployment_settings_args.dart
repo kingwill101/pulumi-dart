@@ -42,25 +42,16 @@ class DeploymentSettingsArgs {
   /// [sourceContext] Settings related to the source of the deployment.
   /// [stack] Stack name.
   DeploymentSettingsArgs({
-    pulumi.Output<String>? agentPoolId,
-    pulumi.Output<DeploymentSettingsCacheOptions>? cacheOptions,
-    pulumi.Output<DeploymentSettingsExecutorContext>? executorContext,
-    pulumi.Output<DeploymentSettingsGithub>? github,
-    pulumi.Output<DeploymentSettingsOperationContext>? operationContext,
-    required pulumi.Output<String> organization,
-    required pulumi.Output<String> project,
-    pulumi.Output<DeploymentSettingsSourceContext>? sourceContext,
-    required pulumi.Output<String> stack,
-  }) :
-      agentPoolId = pulumi.Input.asOptionalInput<String>(agentPoolId),
-      cacheOptions = pulumi.Input.asOptionalInput<DeploymentSettingsCacheOptions>(cacheOptions),
-      executorContext = pulumi.Input.asOptionalInput<DeploymentSettingsExecutorContext>(executorContext),
-      github = pulumi.Input.asOptionalInput<DeploymentSettingsGithub>(github),
-      operationContext = pulumi.Input.asOptionalInput<DeploymentSettingsOperationContext>(operationContext),
-      organization = pulumi.Input.asInput<String>(organization),
-      project = pulumi.Input.asInput<String>(project),
-      sourceContext = pulumi.Input.asOptionalInput<DeploymentSettingsSourceContext>(sourceContext),
-      stack = pulumi.Input.asInput<String>(stack);
+    this.agentPoolId,
+    this.cacheOptions,
+    this.executorContext,
+    this.github,
+    this.operationContext,
+    required this.organization,
+    required this.project,
+    this.sourceContext,
+    required this.stack,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class DeploymentSettingsArgs {
 
   factory DeploymentSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsArgs(
-      agentPoolId: map['agentPoolId'] == null ? null : pulumi.Output.create<String>(map['agentPoolId'] as String),
-      cacheOptions: map['cacheOptions'] == null ? null : pulumi.Output.create<DeploymentSettingsCacheOptions>(DeploymentSettingsCacheOptions.fromMap((map['cacheOptions'] as Map).cast<String, dynamic>())),
-      executorContext: map['executorContext'] == null ? null : pulumi.Output.create<DeploymentSettingsExecutorContext>(DeploymentSettingsExecutorContext.fromMap((map['executorContext'] as Map).cast<String, dynamic>())),
-      github: map['github'] == null ? null : pulumi.Output.create<DeploymentSettingsGithub>(DeploymentSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>())),
-      operationContext: map['operationContext'] == null ? null : pulumi.Output.create<DeploymentSettingsOperationContext>(DeploymentSettingsOperationContext.fromMap((map['operationContext'] as Map).cast<String, dynamic>())),
-      organization: pulumi.Output.create<String>(map['organization'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      sourceContext: map['sourceContext'] == null ? null : pulumi.Output.create<DeploymentSettingsSourceContext>(DeploymentSettingsSourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())),
-      stack: pulumi.Output.create<String>(map['stack'] as String),
+      agentPoolId: map['agentPoolId'] == null ? null : (map['agentPoolId'] as String).input(),
+      cacheOptions: map['cacheOptions'] == null ? null : (DeploymentSettingsCacheOptions.fromMap((map['cacheOptions'] as Map).cast<String, dynamic>())).input(),
+      executorContext: map['executorContext'] == null ? null : (DeploymentSettingsExecutorContext.fromMap((map['executorContext'] as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (DeploymentSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
+      operationContext: map['operationContext'] == null ? null : (DeploymentSettingsOperationContext.fromMap((map['operationContext'] as Map).cast<String, dynamic>())).input(),
+      organization: (map['organization'] as String).input(),
+      project: (map['project'] as String).input(),
+      sourceContext: map['sourceContext'] == null ? null : (DeploymentSettingsSourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
+      stack: (map['stack'] as String).input(),
     );
   }
 }

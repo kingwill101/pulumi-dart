@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_spec_grpc_route_match_metadata_match.dart';
 
 class GetRouteSpecGrpcRouteMatchMetadata {
-  final bool invert;
-  final List<GetRouteSpecGrpcRouteMatchMetadataMatch> matches;
+  final pulumi.Input<bool> invert;
+  final pulumi.Input<List<GetRouteSpecGrpcRouteMatchMetadataMatch>> matches;
   /// Name of the route.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetRouteSpecGrpcRouteMatchMetadata].
   /// [invert] Required.
@@ -22,16 +22,16 @@ class GetRouteSpecGrpcRouteMatchMetadata {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'invert': invert,
-      'matches': pulumi.Input.encodeList<GetRouteSpecGrpcRouteMatchMetadataMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches': pulumi.Input.mapInputValue<List<GetRouteSpecGrpcRouteMatchMetadataMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetRouteSpecGrpcRouteMatchMetadataMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
     };
   }
 
   factory GetRouteSpecGrpcRouteMatchMetadata.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatchMetadata(
-      invert: map['invert'] as bool,
-      matches: pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(map['matches'], (value) => GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      invert: (map['invert'] as bool).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(map['matches'], (value) => GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -7,7 +7,7 @@ class GuardrailActionRespondImmediately {
   /// The canned responses for the agent to choose from. The response is chosen
   /// randomly.
   /// Structure is documented below.
-  final List<GuardrailActionRespondImmediatelyResponse> responses;
+  final pulumi.Input<List<GuardrailActionRespondImmediatelyResponse>> responses;
 
   /// Creates a new [GuardrailActionRespondImmediately].
   /// [responses] The canned responses for the agent to choose from. The response is chosen
@@ -17,13 +17,13 @@ class GuardrailActionRespondImmediately {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'responses': pulumi.Input.encodeList<GuardrailActionRespondImmediatelyResponse, Map<String, dynamic>>(responses, (value) => value.toMap()),
+      'responses': pulumi.Input.mapInputValue<List<GuardrailActionRespondImmediatelyResponse>, List<Map<String, dynamic>>>(responses, (value) => pulumi.Input.encodeList<GuardrailActionRespondImmediatelyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediately(
-      responses: pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => GuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      responses: (pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(map['responses'], (value) => GuardrailActionRespondImmediatelyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

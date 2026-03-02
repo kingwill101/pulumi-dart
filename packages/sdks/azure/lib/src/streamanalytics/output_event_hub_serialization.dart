@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutputEventHubSerialization {
   /// The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
   ///
   /// > **Note:** This is required when `type` is set to `Csv` or `Json`.
-  final String? encoding;
+  final pulumi.Input<String>? encoding;
   /// The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   ///
   /// > **Note:** This is required when `type` is set to `Csv`.
-  final String? fieldDelimiter;
+  final pulumi.Input<String>? fieldDelimiter;
   /// Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
   ///
   /// > **Note:** This is Required and can only be specified when `type` is set to `Json`.
-  final String? format;
+  final pulumi.Input<String>? format;
   /// The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv`, `Json` and `Parquet`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [OutputEventHubSerialization].
   /// [encoding] The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
@@ -40,10 +41,10 @@ class OutputEventHubSerialization {
 
   factory OutputEventHubSerialization.fromMap(Map<String, dynamic> map) {
     return OutputEventHubSerialization(
-      encoding: map['encoding'] == null ? null : map['encoding'] as String,
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : map['fieldDelimiter'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
-      type: map['type'] as String,
+      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

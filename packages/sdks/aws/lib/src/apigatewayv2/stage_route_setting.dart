@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StageRouteSetting {
   /// Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
   /// Defaults to `false`. Supported only for WebSocket APIs.
-  final bool? dataTraceEnabled;
+  final pulumi.Input<bool>? dataTraceEnabled;
   /// Whether detailed metrics are enabled for the route. Defaults to `false`.
-  final bool? detailedMetricsEnabled;
+  final pulumi.Input<bool>? detailedMetricsEnabled;
   /// Logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
   /// Valid values: `ERROR`, `INFO`, `OFF`. Defaults to `OFF`. Supported only for WebSocket APIs. This provider will only perform drift detection of its value when present in a configuration.
-  final String? loggingLevel;
+  final pulumi.Input<String>? loggingLevel;
   /// Route key.
-  final String routeKey;
+  final pulumi.Input<String> routeKey;
   /// Throttling burst limit for the route.
-  final int? throttlingBurstLimit;
+  final pulumi.Input<int>? throttlingBurstLimit;
   /// Throttling rate limit for the route.
-  final double? throttlingRateLimit;
+  final pulumi.Input<double>? throttlingRateLimit;
 
   /// Creates a new [StageRouteSetting].
   /// [dataTraceEnabled] Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
@@ -46,12 +47,12 @@ class StageRouteSetting {
 
   factory StageRouteSetting.fromMap(Map<String, dynamic> map) {
     return StageRouteSetting(
-      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : map['dataTraceEnabled'] as bool,
-      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null ? null : map['detailedMetricsEnabled'] as bool,
-      loggingLevel: map['loggingLevel'] == null ? null : map['loggingLevel'] as String,
-      routeKey: map['routeKey'] as String,
-      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : map['throttlingBurstLimit'] as int,
-      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : map['throttlingRateLimit'] as double,
+      dataTraceEnabled: map['dataTraceEnabled'] == null ? null : (map['dataTraceEnabled'] as bool).input(),
+      detailedMetricsEnabled: map['detailedMetricsEnabled'] == null ? null : (map['detailedMetricsEnabled'] as bool).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
+      routeKey: (map['routeKey'] as String).input(),
+      throttlingBurstLimit: map['throttlingBurstLimit'] == null ? null : (map['throttlingBurstLimit'] as int).input(),
+      throttlingRateLimit: map['throttlingRateLimit'] == null ? null : (map['throttlingRateLimit'] as double).input(),
     );
   }
 }

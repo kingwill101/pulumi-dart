@@ -19,13 +19,10 @@ class GetConfigurationProfileHCRPAssignmentArgs {
   /// [machineName] The name of the Arc machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetConfigurationProfileHCRPAssignmentArgs({
-    required pulumi.Output<String> configurationProfileAssignmentName,
-    required pulumi.Output<String> machineName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      configurationProfileAssignmentName = pulumi.Input.asInput<String>(configurationProfileAssignmentName),
-      machineName = pulumi.Input.asInput<String>(machineName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.configurationProfileAssignmentName,
+    required this.machineName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetConfigurationProfileHCRPAssignmentArgs {
 
   factory GetConfigurationProfileHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfileHCRPAssignmentArgs(
-      configurationProfileAssignmentName: pulumi.Output.create<String>(map['configurationProfileAssignmentName'] as String),
-      machineName: pulumi.Output.create<String>(map['machineName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      configurationProfileAssignmentName: (map['configurationProfileAssignmentName'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

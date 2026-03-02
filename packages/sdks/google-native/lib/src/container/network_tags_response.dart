@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 class NetworkTagsResponse {
   /// List of network tags.
-  final List<String> tags;
+  final pulumi.Input<List<String>> tags;
 
   /// Creates a new [NetworkTagsResponse].
   /// [tags] List of network tags.
@@ -20,7 +21,7 @@ class NetworkTagsResponse {
 
   factory NetworkTagsResponse.fromMap(Map<String, dynamic> map) {
     return NetworkTagsResponse(
-      tags: (map['tags'] as List).cast<String>(),
+      tags: ((map['tags'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterNodePoolUpgradeSettings {
   /// The amount of time in minutes to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. Unsetting this after configuring it will force a new resource to be created.
-  final int? drainTimeoutInMinutes;
+  final pulumi.Input<int>? drainTimeoutInMinutes;
   /// The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade.
-  final String? maxSurge;
+  final pulumi.Input<String>? maxSurge;
   /// The maximum number or percentage of nodes which can be unavailable during the upgrade.
   ///
   /// > **Note:** Exactly one of `max_surge` or `max_unavailable` must be specified.
-  final String? maxUnavailable;
+  final pulumi.Input<String>? maxUnavailable;
   /// The amount of time in minutes to wait after draining a node and before reimaging and moving on to next node.
-  final int? nodeSoakDurationInMinutes;
+  final pulumi.Input<int>? nodeSoakDurationInMinutes;
   /// Specifies the action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`. Unsetting this after configuring it will force a new resource to be created.
-  final String? undrainableNodeBehavior;
+  final pulumi.Input<String>? undrainableNodeBehavior;
 
   /// Creates a new [KubernetesClusterNodePoolUpgradeSettings].
   /// [drainTimeoutInMinutes] The amount of time in minutes to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. Unsetting this after configuring it will force a new resource to be created.
@@ -41,11 +42,11 @@ class KubernetesClusterNodePoolUpgradeSettings {
 
   factory KubernetesClusterNodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolUpgradeSettings(
-      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : map['drainTimeoutInMinutes'] as int,
-      maxSurge: map['maxSurge'] == null ? null : map['maxSurge'] as String,
-      maxUnavailable: map['maxUnavailable'] == null ? null : map['maxUnavailable'] as String,
-      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : map['nodeSoakDurationInMinutes'] as int,
-      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : map['undrainableNodeBehavior'] as String,
+      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : (map['drainTimeoutInMinutes'] as int).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as String).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as String).input(),
+      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : (map['nodeSoakDurationInMinutes'] as int).input(),
+      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : (map['undrainableNodeBehavior'] as String).input(),
     );
   }
 }

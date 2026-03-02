@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutingRuleConditionMatchBasePaths {
   /// List of strings of the case sensitive base path to be matched.
-  final List<String> anyOfs;
+  final pulumi.Input<List<String>> anyOfs;
 
   /// Creates a new [RoutingRuleConditionMatchBasePaths].
   /// [anyOfs] List of strings of the case sensitive base path to be matched.
@@ -19,7 +20,7 @@ class RoutingRuleConditionMatchBasePaths {
 
   factory RoutingRuleConditionMatchBasePaths.fromMap(Map<String, dynamic> map) {
     return RoutingRuleConditionMatchBasePaths(
-      anyOfs: (map['anyOfs'] as List).cast<String>(),
+      anyOfs: ((map['anyOfs'] as List).cast<String>()).input(),
     );
   }
 }

@@ -19,13 +19,10 @@ class EnterpriseWorkspaceArgs {
   /// [vpcId] The ID of the VPC.
   /// [workspaceName] The name of the Workspace.
   EnterpriseWorkspaceArgs({
-    required pulumi.Output<String> description,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      description = pulumi.Input.asInput<String>(description),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    required this.description,
+    required this.vpcId,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnterpriseWorkspaceArgs {
 
   factory EnterpriseWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseWorkspaceArgs(
-      description: pulumi.Output.create<String>(map['description'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      description: (map['description'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

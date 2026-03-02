@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of LegacyCustomOrigin
 class LegacyCustomOrigin {
   /// Property dnsName
-  final String? dnsName;
+  final pulumi.Input<String>? dnsName;
   /// Property httpPort
-  final int? httpPort;
+  final pulumi.Input<int>? httpPort;
   /// Property httpsPort
-  final int? httpsPort;
+  final pulumi.Input<int>? httpsPort;
   /// Property originProtocolPolicy
-  final String? originProtocolPolicy;
+  final pulumi.Input<String>? originProtocolPolicy;
   /// Property originSSLProtocols
-  final List<String>? originSSLProtocols;
+  final pulumi.Input<List<String>>? originSSLProtocols;
 
   /// Creates a new [LegacyCustomOrigin].
   /// [dnsName] Property dnsName
@@ -40,11 +41,11 @@ class LegacyCustomOrigin {
 
   factory LegacyCustomOrigin.fromMap(Map<String, dynamic> map) {
     return LegacyCustomOrigin(
-      dnsName: map['dnsName'] == null ? null : map['dnsName'] as String,
-      httpPort: map['httpPort'] == null ? null : map['httpPort'] as int,
-      httpsPort: map['httpsPort'] == null ? null : map['httpsPort'] as int,
-      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : map['originProtocolPolicy'] as String,
-      originSSLProtocols: map['originSSLProtocols'] == null ? null : (map['originSSLProtocols'] as List).cast<String>(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy'] as String).input(),
+      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols'] as List).cast<String>()).input(),
     );
   }
 }

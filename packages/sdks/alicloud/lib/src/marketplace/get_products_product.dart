@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProductsProduct {
   /// The Category ID of products.
-  final int categoryId;
+  final pulumi.Input<int> categoryId;
   /// The code of the product.
-  final String code;
+  final pulumi.Input<String> code;
   /// The delivery date of the product.
-  final String deliveryDate;
+  final pulumi.Input<String> deliveryDate;
   /// The delivery way of the product.
-  final String deliveryWay;
+  final pulumi.Input<String> deliveryWay;
   /// The image URL of the product.
-  final String imageUrl;
+  final pulumi.Input<String> imageUrl;
   /// The name of the product.
-  final String name;
+  final pulumi.Input<String> name;
   /// The operation system of the product.
-  final String operationSystem;
+  final pulumi.Input<String> operationSystem;
   /// The rating information of the product.
-  final String score;
+  final pulumi.Input<String> score;
   /// The short description of the product.
-  final String shortDescription;
+  final pulumi.Input<String> shortDescription;
   /// The suggested price of the product.
-  final String suggestedPrice;
+  final pulumi.Input<String> suggestedPrice;
   /// The supplier id of the product.
-  final int supplierId;
+  final pulumi.Input<int> supplierId;
   /// The supplier name of the product.
-  final String supplierName;
+  final pulumi.Input<String> supplierName;
   /// The tags of the product.
-  final String tags;
+  final pulumi.Input<String> tags;
   /// The detail page URL of the product.
-  final String targetUrl;
+  final pulumi.Input<String> targetUrl;
   /// The warranty date of the product.
-  final String warrantyDate;
+  final pulumi.Input<String> warrantyDate;
 
   /// Creates a new [GetProductsProduct].
   /// [categoryId] The Category ID of products.
@@ -89,21 +90,21 @@ class GetProductsProduct {
 
   factory GetProductsProduct.fromMap(Map<String, dynamic> map) {
     return GetProductsProduct(
-      categoryId: map['categoryId'] as int,
-      code: map['code'] as String,
-      deliveryDate: map['deliveryDate'] as String,
-      deliveryWay: map['deliveryWay'] as String,
-      imageUrl: map['imageUrl'] as String,
-      name: map['name'] as String,
-      operationSystem: map['operationSystem'] as String,
-      score: map['score'] as String,
-      shortDescription: map['shortDescription'] as String,
-      suggestedPrice: map['suggestedPrice'] as String,
-      supplierId: map['supplierId'] as int,
-      supplierName: map['supplierName'] as String,
-      tags: map['tags'] as String,
-      targetUrl: map['targetUrl'] as String,
-      warrantyDate: map['warrantyDate'] as String,
+      categoryId: (map['categoryId'] as int).input(),
+      code: (map['code'] as String).input(),
+      deliveryDate: (map['deliveryDate'] as String).input(),
+      deliveryWay: (map['deliveryWay'] as String).input(),
+      imageUrl: (map['imageUrl'] as String).input(),
+      name: (map['name'] as String).input(),
+      operationSystem: (map['operationSystem'] as String).input(),
+      score: (map['score'] as String).input(),
+      shortDescription: (map['shortDescription'] as String).input(),
+      suggestedPrice: (map['suggestedPrice'] as String).input(),
+      supplierId: (map['supplierId'] as int).input(),
+      supplierName: (map['supplierName'] as String).input(),
+      tags: (map['tags'] as String).input(),
+      targetUrl: (map['targetUrl'] as String).input(),
+      warrantyDate: (map['warrantyDate'] as String).input(),
     );
   }
 }

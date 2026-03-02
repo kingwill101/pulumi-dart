@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'expected_value_range.dart';
 
 /// Details about impacted performance metrics. Applicable for performance related impact
 class Performance {
   /// Observed value for the metric
-  final double? actual;
+  final pulumi.Input<double>? actual;
   /// Threshold value for the metric
-  final double? expected;
+  final pulumi.Input<double>? expected;
   /// Max and Min Threshold values for the metric
-  final ExpectedValueRange? expectedValueRange;
+  final pulumi.Input<ExpectedValueRange>? expectedValueRange;
   /// Name of the Metric examples:  Disk, IOPs, CPU, GPU, Memory, details can be found from /impactCategories API
-  final String? metricName;
+  final pulumi.Input<String>? metricName;
   /// Unit of the metric ex: Bytes, Percentage, Count, Seconds, Milliseconds, Bytes/Second, Count/Second, etc.., Other
-  final String? unit;
+  final pulumi.Input<String>? unit;
 
   /// Creates a new [Performance].
   /// [actual] Observed value for the metric
@@ -33,7 +34,7 @@ class Performance {
     return <String, dynamic>{
       'actual': ?actual,
       'expected': ?expected,
-      'expectedValueRange': ?expectedValueRange == null ? null : expectedValueRange!.toMap(),
+      'expectedValueRange': ?pulumi.Input.mapOptionalInputValue<ExpectedValueRange, Map<String, dynamic>>(expectedValueRange, (value) => value.toMap()),
       'metricName': ?metricName,
       'unit': ?unit,
     };
@@ -41,11 +42,11 @@ class Performance {
 
   factory Performance.fromMap(Map<String, dynamic> map) {
     return Performance(
-      actual: map['actual'] == null ? null : map['actual'] as double,
-      expected: map['expected'] == null ? null : map['expected'] as double,
-      expectedValueRange: map['expectedValueRange'] == null ? null : ExpectedValueRange.fromMap((map['expectedValueRange'] as Map).cast<String, dynamic>()),
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      actual: map['actual'] == null ? null : (map['actual'] as double).input(),
+      expected: map['expected'] == null ? null : (map['expected'] as double).input(),
+      expectedValueRange: map['expectedValueRange'] == null ? null : (ExpectedValueRange.fromMap((map['expectedValueRange'] as Map).cast<String, dynamic>())).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
     );
   }
 }

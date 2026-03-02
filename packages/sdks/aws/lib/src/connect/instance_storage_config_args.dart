@@ -23,15 +23,11 @@ class InstanceStorageConfigArgs {
   /// [resourceType] A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `EMAIL_MESSAGES` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS` | `SCHEDULED_REPORTS` | `SCREEN_RECORDINGS`.
   /// [storageConfig] Specifies the storage configuration options for the Connect Instance. Documented below.
   InstanceStorageConfigArgs({
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<InstanceStorageConfigStorageConfig> storageConfig,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      storageConfig = pulumi.Input.asInput<InstanceStorageConfigStorageConfig>(storageConfig);
+    required this.instanceId,
+    this.region,
+    required this.resourceType,
+    required this.storageConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class InstanceStorageConfigArgs {
 
   factory InstanceStorageConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      storageConfig: pulumi.Output.create<InstanceStorageConfigStorageConfig>(InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())),
+      instanceId: (map['instanceId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      storageConfig: (InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

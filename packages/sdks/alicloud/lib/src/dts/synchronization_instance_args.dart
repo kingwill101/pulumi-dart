@@ -52,35 +52,21 @@ class SynchronizationInstanceArgs {
   /// [sourceEndpointRegion] The region of source instance.
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`, `bidirectional`.
   SynchronizationInstanceArgs({
-    pulumi.Output<String>? autoPay,
-    pulumi.Output<String>? autoStart,
-    pulumi.Output<int>? computeUnit,
-    pulumi.Output<int>? databaseCount,
-    required pulumi.Output<String> destinationEndpointEngineName,
-    required pulumi.Output<String> destinationEndpointRegion,
-    pulumi.Output<String>? instanceClass,
-    pulumi.Output<int>? paymentDuration,
-    pulumi.Output<String>? paymentDurationUnit,
-    required pulumi.Output<String> paymentType,
-    pulumi.Output<int>? quantity,
-    required pulumi.Output<String> sourceEndpointEngineName,
-    required pulumi.Output<String> sourceEndpointRegion,
-    pulumi.Output<String>? syncArchitecture,
-  }) :
-      autoPay = pulumi.Input.asOptionalInput<String>(autoPay),
-      autoStart = pulumi.Input.asOptionalInput<String>(autoStart),
-      computeUnit = pulumi.Input.asOptionalInput<int>(computeUnit),
-      databaseCount = pulumi.Input.asOptionalInput<int>(databaseCount),
-      destinationEndpointEngineName = pulumi.Input.asInput<String>(destinationEndpointEngineName),
-      destinationEndpointRegion = pulumi.Input.asInput<String>(destinationEndpointRegion),
-      instanceClass = pulumi.Input.asOptionalInput<String>(instanceClass),
-      paymentDuration = pulumi.Input.asOptionalInput<int>(paymentDuration),
-      paymentDurationUnit = pulumi.Input.asOptionalInput<String>(paymentDurationUnit),
-      paymentType = pulumi.Input.asInput<String>(paymentType),
-      quantity = pulumi.Input.asOptionalInput<int>(quantity),
-      sourceEndpointEngineName = pulumi.Input.asInput<String>(sourceEndpointEngineName),
-      sourceEndpointRegion = pulumi.Input.asInput<String>(sourceEndpointRegion),
-      syncArchitecture = pulumi.Input.asOptionalInput<String>(syncArchitecture);
+    this.autoPay,
+    this.autoStart,
+    this.computeUnit,
+    this.databaseCount,
+    required this.destinationEndpointEngineName,
+    required this.destinationEndpointRegion,
+    this.instanceClass,
+    this.paymentDuration,
+    this.paymentDurationUnit,
+    required this.paymentType,
+    this.quantity,
+    required this.sourceEndpointEngineName,
+    required this.sourceEndpointRegion,
+    this.syncArchitecture,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,20 +89,20 @@ class SynchronizationInstanceArgs {
 
   factory SynchronizationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationInstanceArgs(
-      autoPay: map['autoPay'] == null ? null : pulumi.Output.create<String>(map['autoPay'] as String),
-      autoStart: map['autoStart'] == null ? null : pulumi.Output.create<String>(map['autoStart'] as String),
-      computeUnit: map['computeUnit'] == null ? null : pulumi.Output.create<int>(map['computeUnit'] as int),
-      databaseCount: map['databaseCount'] == null ? null : pulumi.Output.create<int>(map['databaseCount'] as int),
-      destinationEndpointEngineName: pulumi.Output.create<String>(map['destinationEndpointEngineName'] as String),
-      destinationEndpointRegion: pulumi.Output.create<String>(map['destinationEndpointRegion'] as String),
-      instanceClass: map['instanceClass'] == null ? null : pulumi.Output.create<String>(map['instanceClass'] as String),
-      paymentDuration: map['paymentDuration'] == null ? null : pulumi.Output.create<int>(map['paymentDuration'] as int),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : pulumi.Output.create<String>(map['paymentDurationUnit'] as String),
-      paymentType: pulumi.Output.create<String>(map['paymentType'] as String),
-      quantity: map['quantity'] == null ? null : pulumi.Output.create<int>(map['quantity'] as int),
-      sourceEndpointEngineName: pulumi.Output.create<String>(map['sourceEndpointEngineName'] as String),
-      sourceEndpointRegion: pulumi.Output.create<String>(map['sourceEndpointRegion'] as String),
-      syncArchitecture: map['syncArchitecture'] == null ? null : pulumi.Output.create<String>(map['syncArchitecture'] as String),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as String).input(),
+      autoStart: map['autoStart'] == null ? null : (map['autoStart'] as String).input(),
+      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit'] as int).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as int).input(),
+      destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
+      destinationEndpointRegion: (map['destinationEndpointRegion'] as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
+      sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
+      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture'] as String).input(),
     );
   }
 }

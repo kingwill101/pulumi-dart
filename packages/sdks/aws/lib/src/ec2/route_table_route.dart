@@ -1,37 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteTableRoute {
   /// Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
-  final String? carrierGatewayId;
+  final pulumi.Input<String>? carrierGatewayId;
   /// The CIDR block of the route.
-  final String? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
   /// The Amazon Resource Name (ARN) of a core network.
-  final String? coreNetworkArn;
+  final pulumi.Input<String>? coreNetworkArn;
   /// The ID of a managed prefix list destination of the route.
   ///
   /// One of the following target arguments must be supplied:
-  final String? destinationPrefixListId;
+  final pulumi.Input<String>? destinationPrefixListId;
   /// Identifier of a VPC Egress Only Internet Gateway.
-  final String? egressOnlyGatewayId;
+  final pulumi.Input<String>? egressOnlyGatewayId;
   /// Identifier of a VPC internet gateway, virtual private gateway, or `local`. `local` routes cannot be created but can be adopted or imported. See the example above.
-  final String? gatewayId;
+  final pulumi.Input<String>? gatewayId;
   /// The Ipv6 CIDR block of the route.
-  final String? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlock;
   /// Identifier of a Outpost local gateway.
-  final String? localGatewayId;
+  final pulumi.Input<String>? localGatewayId;
   /// Identifier of a VPC NAT gateway.
-  final String? natGatewayId;
+  final pulumi.Input<String>? natGatewayId;
   /// Identifier of an EC2 network interface.
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// Identifier of an EC2 Transit Gateway.
-  final String? transitGatewayId;
+  final pulumi.Input<String>? transitGatewayId;
   /// Identifier of a VPC Endpoint.
-  final String? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
-  final String? vpcPeeringConnectionId;
+  final pulumi.Input<String>? vpcPeeringConnectionId;
 
   /// Creates a new [RouteTableRoute].
   /// [carrierGatewayId] Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
@@ -83,19 +84,19 @@ class RouteTableRoute {
 
   factory RouteTableRoute.fromMap(Map<String, dynamic> map) {
     return RouteTableRoute(
-      carrierGatewayId: map['carrierGatewayId'] == null ? null : map['carrierGatewayId'] as String,
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : map['coreNetworkArn'] as String,
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : map['destinationPrefixListId'] as String,
-      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : map['egressOnlyGatewayId'] as String,
-      gatewayId: map['gatewayId'] == null ? null : map['gatewayId'] as String,
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
-      localGatewayId: map['localGatewayId'] == null ? null : map['localGatewayId'] as String,
-      natGatewayId: map['natGatewayId'] == null ? null : map['natGatewayId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      transitGatewayId: map['transitGatewayId'] == null ? null : map['transitGatewayId'] as String,
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : map['vpcEndpointId'] as String,
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : map['vpcPeeringConnectionId'] as String,
+      carrierGatewayId: map['carrierGatewayId'] == null ? null : (map['carrierGatewayId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
+      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : (map['destinationPrefixListId'] as String).input(),
+      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : (map['egressOnlyGatewayId'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      localGatewayId: map['localGatewayId'] == null ? null : (map['localGatewayId'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
     );
   }
 }

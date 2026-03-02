@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ForNode provides information about which nodes should consume this endpoint.
 class ForNodePatch {
   /// name represents the name of the node.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ForNodePatch].
   /// [name] name represents the name of the node.
@@ -20,7 +21,7 @@ class ForNodePatch {
 
   factory ForNodePatch.fromMap(Map<String, dynamic> map) {
     return ForNodePatch(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

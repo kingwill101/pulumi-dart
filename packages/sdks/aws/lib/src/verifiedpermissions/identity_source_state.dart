@@ -20,15 +20,11 @@ class IdentitySourceState {
   /// [principalEntityType] Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   IdentitySourceState({
-    pulumi.Output<IdentitySourceConfiguration>? configuration,
-    pulumi.Output<String>? policyStoreId,
-    pulumi.Output<String>? principalEntityType,
-    pulumi.Output<String>? region,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<IdentitySourceConfiguration>(configuration),
-      policyStoreId = pulumi.Input.asOptionalInput<String>(policyStoreId),
-      principalEntityType = pulumi.Input.asOptionalInput<String>(principalEntityType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.configuration,
+    this.policyStoreId,
+    this.principalEntityType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class IdentitySourceState {
 
   factory IdentitySourceState.fromMap(Map<String, dynamic> map) {
     return IdentitySourceState(
-      configuration: map['configuration'] == null ? null : pulumi.Output.create<IdentitySourceConfiguration>(IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      policyStoreId: map['policyStoreId'] == null ? null : pulumi.Output.create<String>(map['policyStoreId'] as String),
-      principalEntityType: map['principalEntityType'] == null ? null : pulumi.Output.create<String>(map['principalEntityType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      configuration: map['configuration'] == null ? null : (IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
+      principalEntityType: map['principalEntityType'] == null ? null : (map['principalEntityType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

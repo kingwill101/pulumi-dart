@@ -13,9 +13,8 @@ class GetUserSettingsArgs {
   /// Creates a new [GetUserSettingsArgs].
   /// [userSettingsName] The name of the user settings
   GetUserSettingsArgs({
-    required pulumi.Output<String> userSettingsName,
-  }) :
-      userSettingsName = pulumi.Input.asInput<String>(userSettingsName);
+    required this.userSettingsName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetUserSettingsArgs {
 
   factory GetUserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSettingsArgs(
-      userSettingsName: pulumi.Output.create<String>(map['userSettingsName'] as String),
+      userSettingsName: (map['userSettingsName'] as String).input(),
     );
   }
 }

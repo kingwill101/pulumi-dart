@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The CSPM monitoring for github offering
 class CspmMonitorGithubOfferingResponse {
   /// The offering description.
-  final String description;
+  final pulumi.Input<String> description;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorGithub'.
-  final String offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Creates a new [CspmMonitorGithubOfferingResponse].
   /// [description] The offering description.
@@ -26,8 +27,8 @@ class CspmMonitorGithubOfferingResponse {
 
   factory CspmMonitorGithubOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorGithubOfferingResponse(
-      description: map['description'] as String,
-      offeringType: map['offeringType'] as String,
+      description: (map['description'] as String).input(),
+      offeringType: (map['offeringType'] as String).input(),
     );
   }
 }

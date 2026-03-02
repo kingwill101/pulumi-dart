@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SharedAccessAuthorizationRule properties.
 class SharedAccessAuthorizationRulePropertiesResponse {
   /// Gets a string that describes the claim type
-  final String claimType;
+  final pulumi.Input<String> claimType;
   /// Gets a string that describes the claim value
-  final String claimValue;
+  final pulumi.Input<String> claimValue;
   /// Gets the created time for this rule
-  final String createdTime;
+  final pulumi.Input<String> createdTime;
   /// Gets a string that describes the authorization rule.
-  final String keyName;
+  final pulumi.Input<String> keyName;
   /// Gets the last modified time for this rule
-  final String modifiedTime;
+  final pulumi.Input<String> modifiedTime;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final String? primaryKey;
+  final pulumi.Input<String>? primaryKey;
   /// Gets the revision number for the rule
-  final int revision;
+  final pulumi.Input<int> revision;
   /// Gets or sets the rights associated with the rule.
-  final List<String> rights;
+  final pulumi.Input<List<String>> rights;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final String? secondaryKey;
+  final pulumi.Input<String>? secondaryKey;
 
   /// Creates a new [SharedAccessAuthorizationRulePropertiesResponse].
   /// [claimType] Gets a string that describes the claim type
@@ -62,15 +63,15 @@ class SharedAccessAuthorizationRulePropertiesResponse {
 
   factory SharedAccessAuthorizationRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedAccessAuthorizationRulePropertiesResponse(
-      claimType: map['claimType'] as String,
-      claimValue: map['claimValue'] as String,
-      createdTime: map['createdTime'] as String,
-      keyName: map['keyName'] as String,
-      modifiedTime: map['modifiedTime'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      revision: map['revision'] as int,
-      rights: (map['rights'] as List).cast<String>(),
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      claimType: (map['claimType'] as String).input(),
+      claimValue: (map['claimValue'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      keyName: (map['keyName'] as String).input(),
+      modifiedTime: (map['modifiedTime'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      revision: (map['revision'] as int).input(),
+      rights: ((map['rights'] as List).cast<String>()).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
     );
   }
 }

@@ -1,90 +1,91 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Edifact agreement envelope settings.
 class EdifactEnvelopeSettings {
   /// The application reference id.
-  final String? applicationReferenceId;
+  final pulumi.Input<String>? applicationReferenceId;
   /// The value indicating whether to apply delimiter string advice.
-  final bool applyDelimiterStringAdvice;
+  final pulumi.Input<bool> applyDelimiterStringAdvice;
   /// The communication agreement id.
-  final String? communicationAgreementId;
+  final pulumi.Input<String>? communicationAgreementId;
   /// The value indicating whether to create grouping segments.
-  final bool createGroupingSegments;
+  final pulumi.Input<bool> createGroupingSegments;
   /// The value indicating whether to enable default group headers.
-  final bool enableDefaultGroupHeaders;
+  final pulumi.Input<bool> enableDefaultGroupHeaders;
   /// The functional group id.
-  final String? functionalGroupId;
+  final pulumi.Input<String>? functionalGroupId;
   /// The group application password.
-  final String? groupApplicationPassword;
+  final pulumi.Input<String>? groupApplicationPassword;
   /// The group application receiver id.
-  final String? groupApplicationReceiverId;
+  final pulumi.Input<String>? groupApplicationReceiverId;
   /// The group application receiver qualifier.
-  final String? groupApplicationReceiverQualifier;
+  final pulumi.Input<String>? groupApplicationReceiverQualifier;
   /// The group application sender id.
-  final String? groupApplicationSenderId;
+  final pulumi.Input<String>? groupApplicationSenderId;
   /// The group application sender qualifier.
-  final String? groupApplicationSenderQualifier;
+  final pulumi.Input<String>? groupApplicationSenderQualifier;
   /// The group association assigned code.
-  final String? groupAssociationAssignedCode;
+  final pulumi.Input<String>? groupAssociationAssignedCode;
   /// The group control number lower bound.
-  final double groupControlNumberLowerBound;
+  final pulumi.Input<double> groupControlNumberLowerBound;
   /// The group control number prefix.
-  final String? groupControlNumberPrefix;
+  final pulumi.Input<String>? groupControlNumberPrefix;
   /// The group control number suffix.
-  final String? groupControlNumberSuffix;
+  final pulumi.Input<String>? groupControlNumberSuffix;
   /// The group control number upper bound.
-  final double groupControlNumberUpperBound;
+  final pulumi.Input<double> groupControlNumberUpperBound;
   /// The group controlling agency code.
-  final String? groupControllingAgencyCode;
+  final pulumi.Input<String>? groupControllingAgencyCode;
   /// The group message release.
-  final String? groupMessageRelease;
+  final pulumi.Input<String>? groupMessageRelease;
   /// The group message version.
-  final String? groupMessageVersion;
+  final pulumi.Input<String>? groupMessageVersion;
   /// The interchange control number lower bound.
-  final double interchangeControlNumberLowerBound;
+  final pulumi.Input<double> interchangeControlNumberLowerBound;
   /// The interchange control number prefix.
-  final String? interchangeControlNumberPrefix;
+  final pulumi.Input<String>? interchangeControlNumberPrefix;
   /// The interchange control number suffix.
-  final String? interchangeControlNumberSuffix;
+  final pulumi.Input<String>? interchangeControlNumberSuffix;
   /// The interchange control number upper bound.
-  final double interchangeControlNumberUpperBound;
+  final pulumi.Input<double> interchangeControlNumberUpperBound;
   /// The value indicating whether the message is a test interchange.
-  final bool isTestInterchange;
+  final pulumi.Input<bool> isTestInterchange;
   /// The value indicating whether to overwrite existing transaction set control number.
-  final bool overwriteExistingTransactionSetControlNumber;
+  final pulumi.Input<bool> overwriteExistingTransactionSetControlNumber;
   /// The processing priority code.
-  final String? processingPriorityCode;
+  final pulumi.Input<String>? processingPriorityCode;
   /// The receiver internal identification.
-  final String? receiverInternalIdentification;
+  final pulumi.Input<String>? receiverInternalIdentification;
   /// The receiver internal sub identification.
-  final String? receiverInternalSubIdentification;
+  final pulumi.Input<String>? receiverInternalSubIdentification;
   /// The receiver reverse routing address.
-  final String? receiverReverseRoutingAddress;
+  final pulumi.Input<String>? receiverReverseRoutingAddress;
   /// The recipient reference password qualifier.
-  final String? recipientReferencePasswordQualifier;
+  final pulumi.Input<String>? recipientReferencePasswordQualifier;
   /// The recipient reference password value.
-  final String? recipientReferencePasswordValue;
+  final pulumi.Input<String>? recipientReferencePasswordValue;
   /// The value indicating whether to rollover group control number.
-  final bool rolloverGroupControlNumber;
+  final pulumi.Input<bool> rolloverGroupControlNumber;
   /// The value indicating whether to rollover interchange control number.
-  final bool rolloverInterchangeControlNumber;
+  final pulumi.Input<bool> rolloverInterchangeControlNumber;
   /// The value indicating whether to rollover transaction set control number.
-  final bool rolloverTransactionSetControlNumber;
+  final pulumi.Input<bool> rolloverTransactionSetControlNumber;
   /// The sender internal identification.
-  final String? senderInternalIdentification;
+  final pulumi.Input<String>? senderInternalIdentification;
   /// The sender internal sub identification.
-  final String? senderInternalSubIdentification;
+  final pulumi.Input<String>? senderInternalSubIdentification;
   /// The sender reverse routing address.
-  final String? senderReverseRoutingAddress;
+  final pulumi.Input<String>? senderReverseRoutingAddress;
   /// The transaction set control number lower bound.
-  final double transactionSetControlNumberLowerBound;
+  final pulumi.Input<double> transactionSetControlNumberLowerBound;
   /// The transaction set control number prefix.
-  final String? transactionSetControlNumberPrefix;
+  final pulumi.Input<String>? transactionSetControlNumberPrefix;
   /// The transaction set control number suffix.
-  final String? transactionSetControlNumberSuffix;
+  final pulumi.Input<String>? transactionSetControlNumberSuffix;
   /// The transaction set control number upper bound.
-  final double transactionSetControlNumberUpperBound;
+  final pulumi.Input<double> transactionSetControlNumberUpperBound;
 
   /// Creates a new [EdifactEnvelopeSettings].
   /// [applicationReferenceId] The application reference id.
@@ -220,47 +221,47 @@ class EdifactEnvelopeSettings {
 
   factory EdifactEnvelopeSettings.fromMap(Map<String, dynamic> map) {
     return EdifactEnvelopeSettings(
-      applicationReferenceId: map['applicationReferenceId'] == null ? null : map['applicationReferenceId'] as String,
-      applyDelimiterStringAdvice: map['applyDelimiterStringAdvice'] as bool,
-      communicationAgreementId: map['communicationAgreementId'] == null ? null : map['communicationAgreementId'] as String,
-      createGroupingSegments: map['createGroupingSegments'] as bool,
-      enableDefaultGroupHeaders: map['enableDefaultGroupHeaders'] as bool,
-      functionalGroupId: map['functionalGroupId'] == null ? null : map['functionalGroupId'] as String,
-      groupApplicationPassword: map['groupApplicationPassword'] == null ? null : map['groupApplicationPassword'] as String,
-      groupApplicationReceiverId: map['groupApplicationReceiverId'] == null ? null : map['groupApplicationReceiverId'] as String,
-      groupApplicationReceiverQualifier: map['groupApplicationReceiverQualifier'] == null ? null : map['groupApplicationReceiverQualifier'] as String,
-      groupApplicationSenderId: map['groupApplicationSenderId'] == null ? null : map['groupApplicationSenderId'] as String,
-      groupApplicationSenderQualifier: map['groupApplicationSenderQualifier'] == null ? null : map['groupApplicationSenderQualifier'] as String,
-      groupAssociationAssignedCode: map['groupAssociationAssignedCode'] == null ? null : map['groupAssociationAssignedCode'] as String,
-      groupControlNumberLowerBound: map['groupControlNumberLowerBound'] as double,
-      groupControlNumberPrefix: map['groupControlNumberPrefix'] == null ? null : map['groupControlNumberPrefix'] as String,
-      groupControlNumberSuffix: map['groupControlNumberSuffix'] == null ? null : map['groupControlNumberSuffix'] as String,
-      groupControlNumberUpperBound: map['groupControlNumberUpperBound'] as double,
-      groupControllingAgencyCode: map['groupControllingAgencyCode'] == null ? null : map['groupControllingAgencyCode'] as String,
-      groupMessageRelease: map['groupMessageRelease'] == null ? null : map['groupMessageRelease'] as String,
-      groupMessageVersion: map['groupMessageVersion'] == null ? null : map['groupMessageVersion'] as String,
-      interchangeControlNumberLowerBound: map['interchangeControlNumberLowerBound'] as double,
-      interchangeControlNumberPrefix: map['interchangeControlNumberPrefix'] == null ? null : map['interchangeControlNumberPrefix'] as String,
-      interchangeControlNumberSuffix: map['interchangeControlNumberSuffix'] == null ? null : map['interchangeControlNumberSuffix'] as String,
-      interchangeControlNumberUpperBound: map['interchangeControlNumberUpperBound'] as double,
-      isTestInterchange: map['isTestInterchange'] as bool,
-      overwriteExistingTransactionSetControlNumber: map['overwriteExistingTransactionSetControlNumber'] as bool,
-      processingPriorityCode: map['processingPriorityCode'] == null ? null : map['processingPriorityCode'] as String,
-      receiverInternalIdentification: map['receiverInternalIdentification'] == null ? null : map['receiverInternalIdentification'] as String,
-      receiverInternalSubIdentification: map['receiverInternalSubIdentification'] == null ? null : map['receiverInternalSubIdentification'] as String,
-      receiverReverseRoutingAddress: map['receiverReverseRoutingAddress'] == null ? null : map['receiverReverseRoutingAddress'] as String,
-      recipientReferencePasswordQualifier: map['recipientReferencePasswordQualifier'] == null ? null : map['recipientReferencePasswordQualifier'] as String,
-      recipientReferencePasswordValue: map['recipientReferencePasswordValue'] == null ? null : map['recipientReferencePasswordValue'] as String,
-      rolloverGroupControlNumber: map['rolloverGroupControlNumber'] as bool,
-      rolloverInterchangeControlNumber: map['rolloverInterchangeControlNumber'] as bool,
-      rolloverTransactionSetControlNumber: map['rolloverTransactionSetControlNumber'] as bool,
-      senderInternalIdentification: map['senderInternalIdentification'] == null ? null : map['senderInternalIdentification'] as String,
-      senderInternalSubIdentification: map['senderInternalSubIdentification'] == null ? null : map['senderInternalSubIdentification'] as String,
-      senderReverseRoutingAddress: map['senderReverseRoutingAddress'] == null ? null : map['senderReverseRoutingAddress'] as String,
-      transactionSetControlNumberLowerBound: map['transactionSetControlNumberLowerBound'] as double,
-      transactionSetControlNumberPrefix: map['transactionSetControlNumberPrefix'] == null ? null : map['transactionSetControlNumberPrefix'] as String,
-      transactionSetControlNumberSuffix: map['transactionSetControlNumberSuffix'] == null ? null : map['transactionSetControlNumberSuffix'] as String,
-      transactionSetControlNumberUpperBound: map['transactionSetControlNumberUpperBound'] as double,
+      applicationReferenceId: map['applicationReferenceId'] == null ? null : (map['applicationReferenceId'] as String).input(),
+      applyDelimiterStringAdvice: (map['applyDelimiterStringAdvice'] as bool).input(),
+      communicationAgreementId: map['communicationAgreementId'] == null ? null : (map['communicationAgreementId'] as String).input(),
+      createGroupingSegments: (map['createGroupingSegments'] as bool).input(),
+      enableDefaultGroupHeaders: (map['enableDefaultGroupHeaders'] as bool).input(),
+      functionalGroupId: map['functionalGroupId'] == null ? null : (map['functionalGroupId'] as String).input(),
+      groupApplicationPassword: map['groupApplicationPassword'] == null ? null : (map['groupApplicationPassword'] as String).input(),
+      groupApplicationReceiverId: map['groupApplicationReceiverId'] == null ? null : (map['groupApplicationReceiverId'] as String).input(),
+      groupApplicationReceiverQualifier: map['groupApplicationReceiverQualifier'] == null ? null : (map['groupApplicationReceiverQualifier'] as String).input(),
+      groupApplicationSenderId: map['groupApplicationSenderId'] == null ? null : (map['groupApplicationSenderId'] as String).input(),
+      groupApplicationSenderQualifier: map['groupApplicationSenderQualifier'] == null ? null : (map['groupApplicationSenderQualifier'] as String).input(),
+      groupAssociationAssignedCode: map['groupAssociationAssignedCode'] == null ? null : (map['groupAssociationAssignedCode'] as String).input(),
+      groupControlNumberLowerBound: (map['groupControlNumberLowerBound'] as double).input(),
+      groupControlNumberPrefix: map['groupControlNumberPrefix'] == null ? null : (map['groupControlNumberPrefix'] as String).input(),
+      groupControlNumberSuffix: map['groupControlNumberSuffix'] == null ? null : (map['groupControlNumberSuffix'] as String).input(),
+      groupControlNumberUpperBound: (map['groupControlNumberUpperBound'] as double).input(),
+      groupControllingAgencyCode: map['groupControllingAgencyCode'] == null ? null : (map['groupControllingAgencyCode'] as String).input(),
+      groupMessageRelease: map['groupMessageRelease'] == null ? null : (map['groupMessageRelease'] as String).input(),
+      groupMessageVersion: map['groupMessageVersion'] == null ? null : (map['groupMessageVersion'] as String).input(),
+      interchangeControlNumberLowerBound: (map['interchangeControlNumberLowerBound'] as double).input(),
+      interchangeControlNumberPrefix: map['interchangeControlNumberPrefix'] == null ? null : (map['interchangeControlNumberPrefix'] as String).input(),
+      interchangeControlNumberSuffix: map['interchangeControlNumberSuffix'] == null ? null : (map['interchangeControlNumberSuffix'] as String).input(),
+      interchangeControlNumberUpperBound: (map['interchangeControlNumberUpperBound'] as double).input(),
+      isTestInterchange: (map['isTestInterchange'] as bool).input(),
+      overwriteExistingTransactionSetControlNumber: (map['overwriteExistingTransactionSetControlNumber'] as bool).input(),
+      processingPriorityCode: map['processingPriorityCode'] == null ? null : (map['processingPriorityCode'] as String).input(),
+      receiverInternalIdentification: map['receiverInternalIdentification'] == null ? null : (map['receiverInternalIdentification'] as String).input(),
+      receiverInternalSubIdentification: map['receiverInternalSubIdentification'] == null ? null : (map['receiverInternalSubIdentification'] as String).input(),
+      receiverReverseRoutingAddress: map['receiverReverseRoutingAddress'] == null ? null : (map['receiverReverseRoutingAddress'] as String).input(),
+      recipientReferencePasswordQualifier: map['recipientReferencePasswordQualifier'] == null ? null : (map['recipientReferencePasswordQualifier'] as String).input(),
+      recipientReferencePasswordValue: map['recipientReferencePasswordValue'] == null ? null : (map['recipientReferencePasswordValue'] as String).input(),
+      rolloverGroupControlNumber: (map['rolloverGroupControlNumber'] as bool).input(),
+      rolloverInterchangeControlNumber: (map['rolloverInterchangeControlNumber'] as bool).input(),
+      rolloverTransactionSetControlNumber: (map['rolloverTransactionSetControlNumber'] as bool).input(),
+      senderInternalIdentification: map['senderInternalIdentification'] == null ? null : (map['senderInternalIdentification'] as String).input(),
+      senderInternalSubIdentification: map['senderInternalSubIdentification'] == null ? null : (map['senderInternalSubIdentification'] as String).input(),
+      senderReverseRoutingAddress: map['senderReverseRoutingAddress'] == null ? null : (map['senderReverseRoutingAddress'] as String).input(),
+      transactionSetControlNumberLowerBound: (map['transactionSetControlNumberLowerBound'] as double).input(),
+      transactionSetControlNumberPrefix: map['transactionSetControlNumberPrefix'] == null ? null : (map['transactionSetControlNumberPrefix'] as String).input(),
+      transactionSetControlNumberSuffix: map['transactionSetControlNumberSuffix'] == null ? null : (map['transactionSetControlNumberSuffix'] as String).input(),
+      transactionSetControlNumberUpperBound: (map['transactionSetControlNumberUpperBound'] as double).input(),
     );
   }
 }

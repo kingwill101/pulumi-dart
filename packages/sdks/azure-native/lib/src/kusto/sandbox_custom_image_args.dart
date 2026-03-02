@@ -31,21 +31,14 @@ class SandboxCustomImageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sandboxCustomImageName] The name of the sandbox custom image.
   SandboxCustomImageArgs({
-    pulumi.Output<String>? baseImageName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> language,
-    pulumi.Output<String>? languageVersion,
-    pulumi.Output<String>? requirementsFileContent,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sandboxCustomImageName,
-  }) :
-      baseImageName = pulumi.Input.asOptionalInput<String>(baseImageName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      language = pulumi.Input.asInput<String>(language),
-      languageVersion = pulumi.Input.asOptionalInput<String>(languageVersion),
-      requirementsFileContent = pulumi.Input.asOptionalInput<String>(requirementsFileContent),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sandboxCustomImageName = pulumi.Input.asOptionalInput<String>(sandboxCustomImageName);
+    this.baseImageName,
+    required this.clusterName,
+    required this.language,
+    this.languageVersion,
+    this.requirementsFileContent,
+    required this.resourceGroupName,
+    this.sandboxCustomImageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class SandboxCustomImageArgs {
 
   factory SandboxCustomImageArgs.fromMap(Map<String, dynamic> map) {
     return SandboxCustomImageArgs(
-      baseImageName: map['baseImageName'] == null ? null : pulumi.Output.create<String>(map['baseImageName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      language: pulumi.Output.create<String>(map['language'] as String),
-      languageVersion: map['languageVersion'] == null ? null : pulumi.Output.create<String>(map['languageVersion'] as String),
-      requirementsFileContent: map['requirementsFileContent'] == null ? null : pulumi.Output.create<String>(map['requirementsFileContent'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sandboxCustomImageName: map['sandboxCustomImageName'] == null ? null : pulumi.Output.create<String>(map['sandboxCustomImageName'] as String),
+      baseImageName: map['baseImageName'] == null ? null : (map['baseImageName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      language: (map['language'] as String).input(),
+      languageVersion: map['languageVersion'] == null ? null : (map['languageVersion'] as String).input(),
+      requirementsFileContent: map['requirementsFileContent'] == null ? null : (map['requirementsFileContent'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sandboxCustomImageName: map['sandboxCustomImageName'] == null ? null : (map['sandboxCustomImageName'] as String).input(),
     );
   }
 }

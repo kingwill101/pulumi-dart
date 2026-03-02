@@ -53,27 +53,17 @@ class BgpvpnV2Args {
   /// [type] The type of the BGP VPN (either `l2` or `l3`). Changing this
   /// [vni] The globally-assigned VXLAN VNI for the BGP VPN. Changing
   BgpvpnV2Args({
-    pulumi.Output<List<String>>? exportTargets,
-    pulumi.Output<List<String>>? importTargets,
-    pulumi.Output<int>? localPref,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? routeDistinguishers,
-    pulumi.Output<List<String>>? routeTargets,
-    pulumi.Output<String>? type,
-    pulumi.Output<int>? vni,
-  }) :
-      exportTargets = pulumi.Input.asOptionalInput<List<String>>(exportTargets),
-      importTargets = pulumi.Input.asOptionalInput<List<String>>(importTargets),
-      localPref = pulumi.Input.asOptionalInput<int>(localPref),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeDistinguishers = pulumi.Input.asOptionalInput<List<String>>(routeDistinguishers),
-      routeTargets = pulumi.Input.asOptionalInput<List<String>>(routeTargets),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vni = pulumi.Input.asOptionalInput<int>(vni);
+    this.exportTargets,
+    this.importTargets,
+    this.localPref,
+    this.name,
+    this.projectId,
+    this.region,
+    this.routeDistinguishers,
+    this.routeTargets,
+    this.type,
+    this.vni,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,16 +82,16 @@ class BgpvpnV2Args {
 
   factory BgpvpnV2Args.fromMap(Map<String, dynamic> map) {
     return BgpvpnV2Args(
-      exportTargets: map['exportTargets'] == null ? null : pulumi.Output.create<List<String>>((map['exportTargets'] as List).cast<String>()),
-      importTargets: map['importTargets'] == null ? null : pulumi.Output.create<List<String>>((map['importTargets'] as List).cast<String>()),
-      localPref: map['localPref'] == null ? null : pulumi.Output.create<int>(map['localPref'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeDistinguishers: map['routeDistinguishers'] == null ? null : pulumi.Output.create<List<String>>((map['routeDistinguishers'] as List).cast<String>()),
-      routeTargets: map['routeTargets'] == null ? null : pulumi.Output.create<List<String>>((map['routeTargets'] as List).cast<String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vni: map['vni'] == null ? null : pulumi.Output.create<int>(map['vni'] as int),
+      exportTargets: map['exportTargets'] == null ? null : ((map['exportTargets'] as List).cast<String>()).input(),
+      importTargets: map['importTargets'] == null ? null : ((map['importTargets'] as List).cast<String>()).input(),
+      localPref: map['localPref'] == null ? null : (map['localPref'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeDistinguishers: map['routeDistinguishers'] == null ? null : ((map['routeDistinguishers'] as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : ((map['routeTargets'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vni: map['vni'] == null ? null : (map['vni'] as int).input(),
     );
   }
 }

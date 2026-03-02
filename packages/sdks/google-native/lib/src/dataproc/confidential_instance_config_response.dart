@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 class ConfidentialInstanceConfigResponse {
   /// Optional. Defines whether the instance should have confidential compute enabled.
-  final bool enableConfidentialCompute;
+  final pulumi.Input<bool> enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfigResponse].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.
@@ -20,7 +21,7 @@ class ConfidentialInstanceConfigResponse {
 
   factory ConfidentialInstanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfigResponse(
-      enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: (map['enableConfidentialCompute'] as bool).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class WebAppPublicCertificateSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
   WebAppPublicCertificateSlotArgs({
-    pulumi.Output<String>? blob,
-    pulumi.Output<String>? kind,
-    required pulumi.Output<String> name,
-    pulumi.Output<PublicCertificateLocation>? publicCertificateLocation,
-    pulumi.Output<String>? publicCertificateName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> slot,
-  }) :
-      blob = pulumi.Input.asOptionalInput<String>(blob),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asInput<String>(name),
-      publicCertificateLocation = pulumi.Input.asOptionalInput<PublicCertificateLocation>(publicCertificateLocation),
-      publicCertificateName = pulumi.Input.asOptionalInput<String>(publicCertificateName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      slot = pulumi.Input.asInput<String>(slot);
+    this.blob,
+    this.kind,
+    required this.name,
+    this.publicCertificateLocation,
+    this.publicCertificateName,
+    required this.resourceGroupName,
+    required this.slot,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class WebAppPublicCertificateSlotArgs {
 
   factory WebAppPublicCertificateSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppPublicCertificateSlotArgs(
-      blob: map['blob'] == null ? null : pulumi.Output.create<String>(map['blob'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : pulumi.Output.create<PublicCertificateLocation>(PublicCertificateLocation.fromValue(map['publicCertificateLocation'] as String)),
-      publicCertificateName: map['publicCertificateName'] == null ? null : pulumi.Output.create<String>(map['publicCertificateName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      slot: pulumi.Output.create<String>(map['slot'] as String),
+      blob: map['blob'] == null ? null : (map['blob'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : (PublicCertificateLocation.fromValue(map['publicCertificateLocation'] as String)).input(),
+      publicCertificateName: map['publicCertificateName'] == null ? null : (map['publicCertificateName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      slot: (map['slot'] as String).input(),
     );
   }
 }

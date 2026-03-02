@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties that define a Log Analytics Workspace.
 class LogAnalyticsWorkspacePropertiesResponse {
   /// The list of connected agents.
-  final List<String> connectedAgents;
+  final pulumi.Input<List<String>> connectedAgents;
   /// The Workspace Key.
-  final String key;
+  final pulumi.Input<String> key;
   /// The Workspace ID.
-  final String workspaceID;
+  final pulumi.Input<String> workspaceID;
 
   /// Creates a new [LogAnalyticsWorkspacePropertiesResponse].
   /// [connectedAgents] The list of connected agents.
@@ -30,9 +31,9 @@ class LogAnalyticsWorkspacePropertiesResponse {
 
   factory LogAnalyticsWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspacePropertiesResponse(
-      connectedAgents: (map['connectedAgents'] as List).cast<String>(),
-      key: map['key'] as String,
-      workspaceID: map['workspaceID'] as String,
+      connectedAgents: ((map['connectedAgents'] as List).cast<String>()).input(),
+      key: (map['key'] as String).input(),
+      workspaceID: (map['workspaceID'] as String).input(),
     );
   }
 }

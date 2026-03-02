@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Data Collection Rule and Endpoint used for ingestion by default.
 class AzureMonitorWorkspaceResponseDefaultIngestionSettings {
   /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
-  final String dataCollectionEndpointResourceId;
+  final pulumi.Input<String> dataCollectionEndpointResourceId;
   /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
-  final String dataCollectionRuleResourceId;
+  final pulumi.Input<String> dataCollectionRuleResourceId;
 
   /// Creates a new [AzureMonitorWorkspaceResponseDefaultIngestionSettings].
   /// [dataCollectionEndpointResourceId] The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
@@ -25,8 +26,8 @@ class AzureMonitorWorkspaceResponseDefaultIngestionSettings {
 
   factory AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceResponseDefaultIngestionSettings(
-      dataCollectionEndpointResourceId: map['dataCollectionEndpointResourceId'] as String,
-      dataCollectionRuleResourceId: map['dataCollectionRuleResourceId'] as String,
+      dataCollectionEndpointResourceId: (map['dataCollectionEndpointResourceId'] as String).input(),
+      dataCollectionRuleResourceId: (map['dataCollectionRuleResourceId'] as String).input(),
     );
   }
 }

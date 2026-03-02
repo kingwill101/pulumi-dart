@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeProtectionStatusResponse {
   /// The timestamp when the malware definitions were last updated.
-  final String definitionsLastUpdated;
+  final pulumi.Input<String> definitionsLastUpdated;
   /// The version of the malware definitions.
-  final String definitionsVersion;
+  final pulumi.Input<String> definitionsVersion;
   /// The timestamp of the most recently completed scan, or empty if there has never been a scan.
-  final String scanCompletedTime;
+  final pulumi.Input<String> scanCompletedTime;
   /// The timestamp of the most recently scheduled scan, or empty if no scan has been scheduled.
-  final String scanScheduledTime;
+  final pulumi.Input<String> scanScheduledTime;
   /// The timestamp of the most recently started scan, or empty if there has never been a scan.
-  final String scanStartedTime;
+  final pulumi.Input<String> scanStartedTime;
 
   /// Creates a new [RuntimeProtectionStatusResponse].
   /// [definitionsLastUpdated] The timestamp when the malware definitions were last updated.
@@ -39,11 +40,11 @@ class RuntimeProtectionStatusResponse {
 
   factory RuntimeProtectionStatusResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeProtectionStatusResponse(
-      definitionsLastUpdated: map['definitionsLastUpdated'] as String,
-      definitionsVersion: map['definitionsVersion'] as String,
-      scanCompletedTime: map['scanCompletedTime'] as String,
-      scanScheduledTime: map['scanScheduledTime'] as String,
-      scanStartedTime: map['scanStartedTime'] as String,
+      definitionsLastUpdated: (map['definitionsLastUpdated'] as String).input(),
+      definitionsVersion: (map['definitionsVersion'] as String).input(),
+      scanCompletedTime: (map['scanCompletedTime'] as String).input(),
+      scanScheduledTime: (map['scanScheduledTime'] as String).input(),
+      scanStartedTime: (map['scanStartedTime'] as String).input(),
     );
   }
 }

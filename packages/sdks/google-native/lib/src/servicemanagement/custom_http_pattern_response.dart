@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom pattern is used for defining custom HTTP verb.
 class CustomHttpPatternResponse {
   /// The name of this custom HTTP verb.
-  final String kind;
+  final pulumi.Input<String> kind;
   /// The path matched by this custom verb.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [CustomHttpPatternResponse].
   /// [kind] The name of this custom HTTP verb.
@@ -25,8 +26,8 @@ class CustomHttpPatternResponse {
 
   factory CustomHttpPatternResponse.fromMap(Map<String, dynamic> map) {
     return CustomHttpPatternResponse(
-      kind: map['kind'] as String,
-      path: map['path'] as String,
+      kind: (map['kind'] as String).input(),
+      path: (map['path'] as String).input(),
     );
   }
 }

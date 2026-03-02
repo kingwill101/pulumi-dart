@@ -16,11 +16,9 @@ class GetActivityLogAlertArgs {
   /// [activityLogAlertName] The name of the Activity Log Alert rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetActivityLogAlertArgs({
-    required pulumi.Output<String> activityLogAlertName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      activityLogAlertName = pulumi.Input.asInput<String>(activityLogAlertName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.activityLogAlertName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetActivityLogAlertArgs {
 
   factory GetActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return GetActivityLogAlertArgs(
-      activityLogAlertName: pulumi.Output.create<String>(map['activityLogAlertName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      activityLogAlertName: (map['activityLogAlertName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

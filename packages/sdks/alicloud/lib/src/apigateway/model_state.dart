@@ -19,15 +19,11 @@ class ModelState {
   /// [modelName] The name of the model.
   /// [schema] The schema of the model.
   ModelState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? modelName,
-    pulumi.Output<String>? schema,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      modelName = pulumi.Input.asOptionalInput<String>(modelName),
-      schema = pulumi.Input.asOptionalInput<String>(schema);
+    this.description,
+    this.groupId,
+    this.modelName,
+    this.schema,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      modelName: map['modelName'] == null ? null : pulumi.Output.create<String>(map['modelName'] as String),
-      schema: map['schema'] == null ? null : pulumi.Output.create<String>(map['schema'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
+      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class SynapseSparkArgs {
   /// [synapseSparkPoolId] The ID of the linked Synapse Spark Pool. Changing this forces a new Machine Learning Synapse Spark to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
   SynapseSparkArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<SynapseSparkIdentity>? identity,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> machineLearningWorkspaceId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> synapseSparkPoolId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identity = pulumi.Input.asOptionalInput<SynapseSparkIdentity>(identity),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineLearningWorkspaceId = pulumi.Input.asInput<String>(machineLearningWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      synapseSparkPoolId = pulumi.Input.asInput<String>(synapseSparkPoolId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.description,
+    this.identity,
+    this.localAuthEnabled,
+    this.location,
+    required this.machineLearningWorkspaceId,
+    this.name,
+    required this.synapseSparkPoolId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SynapseSparkArgs {
 
   factory SynapseSparkArgs.fromMap(Map<String, dynamic> map) {
     return SynapseSparkArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SynapseSparkIdentity>(SynapseSparkIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineLearningWorkspaceId: pulumi.Output.create<String>(map['machineLearningWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      synapseSparkPoolId: pulumi.Output.create<String>(map['synapseSparkPoolId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identity: map['identity'] == null ? null : (SynapseSparkIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      synapseSparkPoolId: (map['synapseSparkPoolId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -62,31 +62,19 @@ class NodeGroupArgs {
   /// [region] The region in which to obtain the V1 Container Infra
   /// [role] The role of nodes in the node group. Changing this
   NodeGroupArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<int>? dockerVolumeSize,
-    pulumi.Output<String>? flavorId,
-    pulumi.Output<String>? imageId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<int>? maxNodeCount,
-    pulumi.Output<bool>? mergeLabels,
-    pulumi.Output<int>? minNodeCount,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? nodeCount,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      dockerVolumeSize = pulumi.Input.asOptionalInput<int>(dockerVolumeSize),
-      flavorId = pulumi.Input.asOptionalInput<String>(flavorId),
-      imageId = pulumi.Input.asOptionalInput<String>(imageId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      maxNodeCount = pulumi.Input.asOptionalInput<int>(maxNodeCount),
-      mergeLabels = pulumi.Input.asOptionalInput<bool>(mergeLabels),
-      minNodeCount = pulumi.Input.asOptionalInput<int>(minNodeCount),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asOptionalInput<int>(nodeCount),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    required this.clusterId,
+    this.dockerVolumeSize,
+    this.flavorId,
+    this.imageId,
+    this.labels,
+    this.maxNodeCount,
+    this.mergeLabels,
+    this.minNodeCount,
+    this.name,
+    this.nodeCount,
+    this.region,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,18 +95,18 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      dockerVolumeSize: map['dockerVolumeSize'] == null ? null : pulumi.Output.create<int>(map['dockerVolumeSize'] as int),
-      flavorId: map['flavorId'] == null ? null : pulumi.Output.create<String>(map['flavorId'] as String),
-      imageId: map['imageId'] == null ? null : pulumi.Output.create<String>(map['imageId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      maxNodeCount: map['maxNodeCount'] == null ? null : pulumi.Output.create<int>(map['maxNodeCount'] as int),
-      mergeLabels: map['mergeLabels'] == null ? null : pulumi.Output.create<bool>(map['mergeLabels'] as bool),
-      minNodeCount: map['minNodeCount'] == null ? null : pulumi.Output.create<int>(map['minNodeCount'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: map['nodeCount'] == null ? null : pulumi.Output.create<int>(map['nodeCount'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      dockerVolumeSize: map['dockerVolumeSize'] == null ? null : (map['dockerVolumeSize'] as int).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
+      mergeLabels: map['mergeLabels'] == null ? null : (map['mergeLabels'] as bool).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

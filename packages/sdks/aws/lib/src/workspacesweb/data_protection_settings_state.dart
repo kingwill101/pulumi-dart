@@ -40,27 +40,17 @@ class DataProtectionSettingsState {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   DataProtectionSettingsState({
-    pulumi.Output<Map<String, String>>? additionalEncryptionContext,
-    pulumi.Output<List<String>>? associatedPortalArns,
-    pulumi.Output<String>? customerManagedKey,
-    pulumi.Output<String>? dataProtectionSettingsArn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<DataProtectionSettingsInlineRedactionConfiguration>? inlineRedactionConfiguration,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      associatedPortalArns = pulumi.Input.asOptionalInput<List<String>>(associatedPortalArns),
-      customerManagedKey = pulumi.Input.asOptionalInput<String>(customerManagedKey),
-      dataProtectionSettingsArn = pulumi.Input.asOptionalInput<String>(dataProtectionSettingsArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      inlineRedactionConfiguration = pulumi.Input.asOptionalInput<DataProtectionSettingsInlineRedactionConfiguration>(inlineRedactionConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.additionalEncryptionContext,
+    this.associatedPortalArns,
+    this.customerManagedKey,
+    this.dataProtectionSettingsArn,
+    this.description,
+    this.displayName,
+    this.inlineRedactionConfiguration,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class DataProtectionSettingsState {
 
   factory DataProtectionSettingsState.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalEncryptionContext'] as Map).cast<String, String>()),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : pulumi.Output.create<List<String>>((map['associatedPortalArns'] as List).cast<String>()),
-      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<String>(map['customerManagedKey'] as String),
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : pulumi.Output.create<String>(map['dataProtectionSettingsArn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : pulumi.Output.create<DataProtectionSettingsInlineRedactionConfiguration>(DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
+      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : (map['dataProtectionSettingsArn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : (DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

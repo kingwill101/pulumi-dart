@@ -30,19 +30,13 @@ class MoveCollectionArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Resource tags.
   MoveCollectionArgs({
-    pulumi.Output<Identity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? moveCollectionName,
-    pulumi.Output<MoveCollectionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<Identity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      moveCollectionName = pulumi.Input.asOptionalInput<String>(moveCollectionName),
-      properties = pulumi.Input.asOptionalInput<MoveCollectionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.location,
+    this.moveCollectionName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class MoveCollectionArgs {
 
   factory MoveCollectionArgs.fromMap(Map<String, dynamic> map) {
     return MoveCollectionArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<Identity>(Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      moveCollectionName: map['moveCollectionName'] == null ? null : pulumi.Output.create<String>(map['moveCollectionName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MoveCollectionProperties>(MoveCollectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      moveCollectionName: map['moveCollectionName'] == null ? null : (map['moveCollectionName'] as String).input(),
+      properties: map['properties'] == null ? null : (MoveCollectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

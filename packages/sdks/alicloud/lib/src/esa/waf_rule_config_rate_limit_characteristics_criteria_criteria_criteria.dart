@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
-  final String? matchType;
+  final pulumi.Input<String>? matchType;
 
   /// Creates a new [WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria].
   /// [matchType] Optional.
@@ -18,7 +19,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
 
   factory WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria(
-      matchType: map['matchType'] == null ? null : map['matchType'] as String,
+      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
     );
   }
 }

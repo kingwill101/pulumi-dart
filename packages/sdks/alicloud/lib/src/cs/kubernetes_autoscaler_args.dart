@@ -29,19 +29,13 @@ class KubernetesAutoscalerArgs {
   /// [useEcsRamRoleToken] Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
   /// [utilization] The utilization option of cluster-autoscaler.
   KubernetesAutoscalerArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<String> coolDownDuration,
-    required pulumi.Output<String> deferScaleInDuration,
-    pulumi.Output<List<KubernetesAutoscalerNodepool>>? nodepools,
-    pulumi.Output<bool>? useEcsRamRoleToken,
-    required pulumi.Output<String> utilization,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      coolDownDuration = pulumi.Input.asInput<String>(coolDownDuration),
-      deferScaleInDuration = pulumi.Input.asInput<String>(deferScaleInDuration),
-      nodepools = pulumi.Input.asOptionalInput<List<KubernetesAutoscalerNodepool>>(nodepools),
-      useEcsRamRoleToken = pulumi.Input.asOptionalInput<bool>(useEcsRamRoleToken),
-      utilization = pulumi.Input.asInput<String>(utilization);
+    required this.clusterId,
+    required this.coolDownDuration,
+    required this.deferScaleInDuration,
+    this.nodepools,
+    this.useEcsRamRoleToken,
+    required this.utilization,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class KubernetesAutoscalerArgs {
 
   factory KubernetesAutoscalerArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesAutoscalerArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      coolDownDuration: pulumi.Output.create<String>(map['coolDownDuration'] as String),
-      deferScaleInDuration: pulumi.Output.create<String>(map['deferScaleInDuration'] as String),
-      nodepools: map['nodepools'] == null ? null : pulumi.Output.create<List<KubernetesAutoscalerNodepool>>(pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools'], (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))),
-      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : pulumi.Output.create<bool>(map['useEcsRamRoleToken'] as bool),
-      utilization: pulumi.Output.create<String>(map['utilization'] as String),
+      clusterId: (map['clusterId'] as String).input(),
+      coolDownDuration: (map['coolDownDuration'] as String).input(),
+      deferScaleInDuration: (map['deferScaleInDuration'] as String).input(),
+      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools'], (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken'] as bool).input(),
+      utilization: (map['utilization'] as String).input(),
     );
   }
 }

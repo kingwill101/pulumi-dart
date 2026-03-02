@@ -19,13 +19,10 @@ class GetHybridIdentityMetadatumArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Parameter for the name of the provisioned cluster
   GetHybridIdentityMetadatumArgs({
-    required pulumi.Output<String> hybridIdentityMetadataResourceName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      hybridIdentityMetadataResourceName = pulumi.Input.asInput<String>(hybridIdentityMetadataResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.hybridIdentityMetadataResourceName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetHybridIdentityMetadatumArgs {
 
   factory GetHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridIdentityMetadatumArgs(
-      hybridIdentityMetadataResourceName: pulumi.Output.create<String>(map['hybridIdentityMetadataResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      hybridIdentityMetadataResourceName: (map['hybridIdentityMetadataResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

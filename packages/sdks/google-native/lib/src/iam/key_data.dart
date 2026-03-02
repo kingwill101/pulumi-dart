@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_data_key_spec.dart';
 
 /// Represents a public key data along with its format.
 class KeyData {
   /// The specifications for the key.
-  final KeyDataKeySpec keySpec;
+  final pulumi.Input<KeyDataKeySpec> keySpec;
 
   /// Creates a new [KeyData].
   /// [keySpec] The specifications for the key.
@@ -15,13 +16,13 @@ class KeyData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keySpec': keySpec.value,
+      'keySpec': pulumi.Input.mapInputValue<KeyDataKeySpec, String>(keySpec, (value) => value.value),
     };
   }
 
   factory KeyData.fromMap(Map<String, dynamic> map) {
     return KeyData(
-      keySpec: KeyDataKeySpec.fromValue(map['keySpec'] as String),
+      keySpec: (KeyDataKeySpec.fromValue(map['keySpec'] as String)).input(),
     );
   }
 }

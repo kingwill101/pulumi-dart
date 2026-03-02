@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_policy_log_analytics_resources_response.dart';
 
 /// Firewall Policy Insights.
 class FirewallPolicyInsightsResponse {
   /// A flag to indicate if the insights are enabled on the policy.
-  final bool? isEnabled;
+  final pulumi.Input<bool>? isEnabled;
   /// Workspaces needed to configure the Firewall Policy Insights.
-  final FirewallPolicyLogAnalyticsResourcesResponse? logAnalyticsResources;
+  final pulumi.Input<FirewallPolicyLogAnalyticsResourcesResponse>? logAnalyticsResources;
   /// Number of days the insights should be enabled on the policy.
-  final int? retentionDays;
+  final pulumi.Input<int>? retentionDays;
 
   /// Creates a new [FirewallPolicyInsightsResponse].
   /// [isEnabled] A flag to indicate if the insights are enabled on the policy.
@@ -24,16 +25,16 @@ class FirewallPolicyInsightsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isEnabled': ?isEnabled,
-      'logAnalyticsResources': ?logAnalyticsResources == null ? null : logAnalyticsResources!.toMap(),
+      'logAnalyticsResources': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyLogAnalyticsResourcesResponse, Map<String, dynamic>>(logAnalyticsResources, (value) => value.toMap()),
       'retentionDays': ?retentionDays,
     };
   }
 
   factory FirewallPolicyInsightsResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyInsightsResponse(
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
-      logAnalyticsResources: map['logAnalyticsResources'] == null ? null : FirewallPolicyLogAnalyticsResourcesResponse.fromMap((map['logAnalyticsResources'] as Map).cast<String, dynamic>()),
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      logAnalyticsResources: map['logAnalyticsResources'] == null ? null : (FirewallPolicyLogAnalyticsResourcesResponse.fromMap((map['logAnalyticsResources'] as Map).cast<String, dynamic>())).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
     );
   }
 }

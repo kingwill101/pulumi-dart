@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput {
   /// The ARN of the input Kinesis data stream to read.
-  final String resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput].
   /// [resourceArn] The ARN of the input Kinesis data stream to read.
@@ -19,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesis
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput(
-      resourceArn: map['resourceArn'] as String,
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

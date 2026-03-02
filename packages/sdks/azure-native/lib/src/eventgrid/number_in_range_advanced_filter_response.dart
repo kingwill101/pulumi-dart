@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// NumberInRange Advanced Filter.
 class NumberInRangeAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberInRange'.
-  final String operatorType;
+  final pulumi.Input<String> operatorType;
   /// The set of filter values.
-  final List<List<double>>? values;
+  final pulumi.Input<List<List<double>>>? values;
 
   /// Creates a new [NumberInRangeAdvancedFilterResponse].
   /// [key] The field/property in the event based on which you want to filter.
@@ -31,9 +32,9 @@ class NumberInRangeAdvancedFilterResponse {
 
   factory NumberInRangeAdvancedFilterResponse.fromMap(Map<String, dynamic> map) {
     return NumberInRangeAdvancedFilterResponse(
-      key: map['key'] == null ? null : map['key'] as String,
-      operatorType: map['operatorType'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<List<double>>(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      operatorType: (map['operatorType'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<List<double>>()).input(),
     );
   }
 }

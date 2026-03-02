@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edifact_one_way_agreement.dart';
 
 /// The Edifact agreement content.
 class EdifactAgreementContent {
   /// The EDIFACT one-way receive agreement.
-  final EdifactOneWayAgreement receiveAgreement;
+  final pulumi.Input<EdifactOneWayAgreement> receiveAgreement;
   /// The EDIFACT one-way send agreement.
-  final EdifactOneWayAgreement sendAgreement;
+  final pulumi.Input<EdifactOneWayAgreement> sendAgreement;
 
   /// Creates a new [EdifactAgreementContent].
   /// [receiveAgreement] The EDIFACT one-way receive agreement.
@@ -19,15 +20,15 @@ class EdifactAgreementContent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'receiveAgreement': receiveAgreement.toMap(),
-      'sendAgreement': sendAgreement.toMap(),
+      'receiveAgreement': pulumi.Input.mapInputValue<EdifactOneWayAgreement, Map<String, dynamic>>(receiveAgreement, (value) => value.toMap()),
+      'sendAgreement': pulumi.Input.mapInputValue<EdifactOneWayAgreement, Map<String, dynamic>>(sendAgreement, (value) => value.toMap()),
     };
   }
 
   factory EdifactAgreementContent.fromMap(Map<String, dynamic> map) {
     return EdifactAgreementContent(
-      receiveAgreement: EdifactOneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>()),
-      sendAgreement: EdifactOneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>()),
+      receiveAgreement: (EdifactOneWayAgreement.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>())).input(),
+      sendAgreement: (EdifactOneWayAgreement.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,19 +38,13 @@ class AttachmentArgs {
   /// [loadBalancerWeights] The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
   /// [scalingGroupId] ID of the scaling group of a scaling configuration.
   AttachmentArgs({
-    pulumi.Output<bool>? entrusted,
-    pulumi.Output<bool>? force,
-    required pulumi.Output<List<String>> instanceIds,
-    pulumi.Output<bool>? lifecycleHook,
-    pulumi.Output<List<int>>? loadBalancerWeights,
-    required pulumi.Output<String> scalingGroupId,
-  }) :
-      entrusted = pulumi.Input.asOptionalInput<bool>(entrusted),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      instanceIds = pulumi.Input.asInput<List<String>>(instanceIds),
-      lifecycleHook = pulumi.Input.asOptionalInput<bool>(lifecycleHook),
-      loadBalancerWeights = pulumi.Input.asOptionalInput<List<int>>(loadBalancerWeights),
-      scalingGroupId = pulumi.Input.asInput<String>(scalingGroupId);
+    this.entrusted,
+    this.force,
+    required this.instanceIds,
+    this.lifecycleHook,
+    this.loadBalancerWeights,
+    required this.scalingGroupId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,12 +59,12 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      entrusted: map['entrusted'] == null ? null : pulumi.Output.create<bool>(map['entrusted'] as bool),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      instanceIds: pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      lifecycleHook: map['lifecycleHook'] == null ? null : pulumi.Output.create<bool>(map['lifecycleHook'] as bool),
-      loadBalancerWeights: map['loadBalancerWeights'] == null ? null : pulumi.Output.create<List<int>>((map['loadBalancerWeights'] as List).cast<int>()),
-      scalingGroupId: pulumi.Output.create<String>(map['scalingGroupId'] as String),
+      entrusted: map['entrusted'] == null ? null : (map['entrusted'] as bool).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
+      lifecycleHook: map['lifecycleHook'] == null ? null : (map['lifecycleHook'] as bool).input(),
+      loadBalancerWeights: map['loadBalancerWeights'] == null ? null : ((map['loadBalancerWeights'] as List).cast<int>()).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
     );
   }
 }

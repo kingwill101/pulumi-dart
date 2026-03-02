@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'advanced_settings_response.dart';
 import 'broker_diagnostics_response.dart';
 import 'cardinality_response.dart';
@@ -9,19 +10,19 @@ import 'generate_resource_limits_response.dart';
 /// Broker Resource properties
 class BrokerPropertiesResponse {
   /// Advanced settings of Broker.
-  final AdvancedSettingsResponse? advanced;
+  final pulumi.Input<AdvancedSettingsResponse>? advanced;
   /// The cardinality details of the broker.
-  final CardinalityResponse? cardinality;
+  final pulumi.Input<CardinalityResponse>? cardinality;
   /// Spec defines the desired identities of Broker diagnostics settings.
-  final BrokerDiagnosticsResponse? diagnostics;
+  final pulumi.Input<BrokerDiagnosticsResponse>? diagnostics;
   /// Settings of Disk Backed Message Buffer.
-  final DiskBackedMessageBufferResponse? diskBackedMessageBuffer;
+  final pulumi.Input<DiskBackedMessageBufferResponse>? diskBackedMessageBuffer;
   /// This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
-  final GenerateResourceLimitsResponse? generateResourceLimits;
+  final pulumi.Input<GenerateResourceLimitsResponse>? generateResourceLimits;
   /// Memory profile of Broker.
-  final String? memoryProfile;
+  final pulumi.Input<String>? memoryProfile;
   /// The status of the last operation.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
 
   /// Creates a new [BrokerPropertiesResponse].
   /// [advanced] Advanced settings of Broker.
@@ -43,11 +44,11 @@ class BrokerPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advanced': ?advanced == null ? null : advanced!.toMap(),
-      'cardinality': ?cardinality == null ? null : cardinality!.toMap(),
-      'diagnostics': ?diagnostics == null ? null : diagnostics!.toMap(),
-      'diskBackedMessageBuffer': ?diskBackedMessageBuffer == null ? null : diskBackedMessageBuffer!.toMap(),
-      'generateResourceLimits': ?generateResourceLimits == null ? null : generateResourceLimits!.toMap(),
+      'advanced': ?pulumi.Input.mapOptionalInputValue<AdvancedSettingsResponse, Map<String, dynamic>>(advanced, (value) => value.toMap()),
+      'cardinality': ?pulumi.Input.mapOptionalInputValue<CardinalityResponse, Map<String, dynamic>>(cardinality, (value) => value.toMap()),
+      'diagnostics': ?pulumi.Input.mapOptionalInputValue<BrokerDiagnosticsResponse, Map<String, dynamic>>(diagnostics, (value) => value.toMap()),
+      'diskBackedMessageBuffer': ?pulumi.Input.mapOptionalInputValue<DiskBackedMessageBufferResponse, Map<String, dynamic>>(diskBackedMessageBuffer, (value) => value.toMap()),
+      'generateResourceLimits': ?pulumi.Input.mapOptionalInputValue<GenerateResourceLimitsResponse, Map<String, dynamic>>(generateResourceLimits, (value) => value.toMap()),
       'memoryProfile': ?memoryProfile,
       'provisioningState': provisioningState,
     };
@@ -55,13 +56,13 @@ class BrokerPropertiesResponse {
 
   factory BrokerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerPropertiesResponse(
-      advanced: map['advanced'] == null ? null : AdvancedSettingsResponse.fromMap((map['advanced'] as Map).cast<String, dynamic>()),
-      cardinality: map['cardinality'] == null ? null : CardinalityResponse.fromMap((map['cardinality'] as Map).cast<String, dynamic>()),
-      diagnostics: map['diagnostics'] == null ? null : BrokerDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>()),
-      diskBackedMessageBuffer: map['diskBackedMessageBuffer'] == null ? null : DiskBackedMessageBufferResponse.fromMap((map['diskBackedMessageBuffer'] as Map).cast<String, dynamic>()),
-      generateResourceLimits: map['generateResourceLimits'] == null ? null : GenerateResourceLimitsResponse.fromMap((map['generateResourceLimits'] as Map).cast<String, dynamic>()),
-      memoryProfile: map['memoryProfile'] == null ? null : map['memoryProfile'] as String,
-      provisioningState: map['provisioningState'] as String,
+      advanced: map['advanced'] == null ? null : (AdvancedSettingsResponse.fromMap((map['advanced'] as Map).cast<String, dynamic>())).input(),
+      cardinality: map['cardinality'] == null ? null : (CardinalityResponse.fromMap((map['cardinality'] as Map).cast<String, dynamic>())).input(),
+      diagnostics: map['diagnostics'] == null ? null : (BrokerDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
+      diskBackedMessageBuffer: map['diskBackedMessageBuffer'] == null ? null : (DiskBackedMessageBufferResponse.fromMap((map['diskBackedMessageBuffer'] as Map).cast<String, dynamic>())).input(),
+      generateResourceLimits: map['generateResourceLimits'] == null ? null : (GenerateResourceLimitsResponse.fromMap((map['generateResourceLimits'] as Map).cast<String, dynamic>())).input(),
+      memoryProfile: map['memoryProfile'] == null ? null : (map['memoryProfile'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
     );
   }
 }

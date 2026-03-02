@@ -38,23 +38,15 @@ class SignalRReplicaArgs {
   /// [sku] The billing information of the resource.
   /// [tags] Resource tags.
   SignalRReplicaArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? regionEndpointEnabled,
-    pulumi.Output<String>? replicaName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-    pulumi.Output<String>? resourceStopped,
-    pulumi.Output<ResourceSku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      regionEndpointEnabled = pulumi.Input.asOptionalInput<String>(regionEndpointEnabled),
-      replicaName = pulumi.Input.asOptionalInput<String>(replicaName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName),
-      resourceStopped = pulumi.Input.asOptionalInput<String>(resourceStopped),
-      sku = pulumi.Input.asOptionalInput<ResourceSku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.regionEndpointEnabled,
+    this.replicaName,
+    required this.resourceGroupName,
+    required this.resourceName,
+    this.resourceStopped,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,14 +63,14 @@ class SignalRReplicaArgs {
 
   factory SignalRReplicaArgs.fromMap(Map<String, dynamic> map) {
     return SignalRReplicaArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : pulumi.Output.create<String>(map['regionEndpointEnabled'] as String),
-      replicaName: map['replicaName'] == null ? null : pulumi.Output.create<String>(map['replicaName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceStopped: map['resourceStopped'] == null ? null : pulumi.Output.create<String>(map['resourceStopped'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<ResourceSku>(ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : (map['regionEndpointEnabled'] as String).input(),
+      replicaName: map['replicaName'] == null ? null : (map['replicaName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
+      resourceStopped: map['resourceStopped'] == null ? null : (map['resourceStopped'] as String).input(),
+      sku: map['sku'] == null ? null : (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

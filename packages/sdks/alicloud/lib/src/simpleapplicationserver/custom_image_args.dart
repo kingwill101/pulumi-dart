@@ -27,17 +27,12 @@ class CustomImageArgs {
   /// [status] The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
   /// [systemSnapshotId] The ID of the system snapshot.
   CustomImageArgs({
-    required pulumi.Output<String> customImageName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? status,
-    required pulumi.Output<String> systemSnapshotId,
-  }) :
-      customImageName = pulumi.Input.asInput<String>(customImageName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      systemSnapshotId = pulumi.Input.asInput<String>(systemSnapshotId);
+    required this.customImageName,
+    this.description,
+    required this.instanceId,
+    this.status,
+    required this.systemSnapshotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      customImageName: pulumi.Output.create<String>(map['customImageName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      systemSnapshotId: pulumi.Output.create<String>(map['systemSnapshotId'] as String),
+      customImageName: (map['customImageName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      systemSnapshotId: (map['systemSnapshotId'] as String).input(),
     );
   }
 }

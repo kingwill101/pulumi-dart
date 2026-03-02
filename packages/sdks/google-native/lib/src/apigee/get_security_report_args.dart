@@ -16,13 +16,10 @@ class GetSecurityReportArgs {
   /// [organizationId] Required.
   /// [securityReportId] Required.
   GetSecurityReportArgs({
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> organizationId,
-    required pulumi.Output<String> securityReportId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityReportId = pulumi.Input.asInput<String>(securityReportId);
+    required this.environmentId,
+    required this.organizationId,
+    required this.securityReportId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetSecurityReportArgs {
 
   factory GetSecurityReportArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityReportArgs(
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
-      securityReportId: pulumi.Output.create<String>(map['securityReportId'] as String),
+      environmentId: (map['environmentId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
+      securityReportId: (map['securityReportId'] as String).input(),
     );
   }
 }

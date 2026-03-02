@@ -38,27 +38,17 @@ class DeviceGroupState {
   /// [saveOnAutoSync] Specifies whether the configuration should be saved upon auto-sync.
   /// [type] Specifies if the device-group will be used for failover or resource syncing
   DeviceGroupState({
-    pulumi.Output<String>? autoSync,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<DeviceGroupDevice>>? devices,
-    pulumi.Output<String>? fullLoadOnSync,
-    pulumi.Output<int>? incrementalConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? networkFailover,
-    pulumi.Output<String>? partition,
-    pulumi.Output<String>? saveOnAutoSync,
-    pulumi.Output<String>? type,
-  }) :
-      autoSync = pulumi.Input.asOptionalInput<String>(autoSync),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      devices = pulumi.Input.asOptionalInput<List<DeviceGroupDevice>>(devices),
-      fullLoadOnSync = pulumi.Input.asOptionalInput<String>(fullLoadOnSync),
-      incrementalConfig = pulumi.Input.asOptionalInput<int>(incrementalConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkFailover = pulumi.Input.asOptionalInput<String>(networkFailover),
-      partition = pulumi.Input.asOptionalInput<String>(partition),
-      saveOnAutoSync = pulumi.Input.asOptionalInput<String>(saveOnAutoSync),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.autoSync,
+    this.description,
+    this.devices,
+    this.fullLoadOnSync,
+    this.incrementalConfig,
+    this.name,
+    this.networkFailover,
+    this.partition,
+    this.saveOnAutoSync,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class DeviceGroupState {
 
   factory DeviceGroupState.fromMap(Map<String, dynamic> map) {
     return DeviceGroupState(
-      autoSync: map['autoSync'] == null ? null : pulumi.Output.create<String>(map['autoSync'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      devices: map['devices'] == null ? null : pulumi.Output.create<List<DeviceGroupDevice>>(pulumi.Input.decodeList<DeviceGroupDevice>(map['devices'], (value) => DeviceGroupDevice.fromMap((value as Map).cast<String, dynamic>()))),
-      fullLoadOnSync: map['fullLoadOnSync'] == null ? null : pulumi.Output.create<String>(map['fullLoadOnSync'] as String),
-      incrementalConfig: map['incrementalConfig'] == null ? null : pulumi.Output.create<int>(map['incrementalConfig'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkFailover: map['networkFailover'] == null ? null : pulumi.Output.create<String>(map['networkFailover'] as String),
-      partition: map['partition'] == null ? null : pulumi.Output.create<String>(map['partition'] as String),
-      saveOnAutoSync: map['saveOnAutoSync'] == null ? null : pulumi.Output.create<String>(map['saveOnAutoSync'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceGroupDevice>(map['devices'], (value) => DeviceGroupDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullLoadOnSync: map['fullLoadOnSync'] == null ? null : (map['fullLoadOnSync'] as String).input(),
+      incrementalConfig: map['incrementalConfig'] == null ? null : (map['incrementalConfig'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkFailover: map['networkFailover'] == null ? null : (map['networkFailover'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      saveOnAutoSync: map['saveOnAutoSync'] == null ? null : (map['saveOnAutoSync'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

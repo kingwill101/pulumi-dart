@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_provider_profile.dart';
 import 'control_plane_endpoint_profile_control_plane_endpoint.dart';
 import 'linux_profile_properties.dart';
@@ -7,35 +8,35 @@ import 'linux_profile_properties.dart';
 /// ControlPlaneProfile - The control plane properties for the provisioned cluster.
 class ControlPlaneProfile {
   /// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
-  final List<String>? availabilityZones;
+  final pulumi.Input<List<String>>? availabilityZones;
   /// The underlying cloud infra provider properties.
-  final CloudProviderProfile? cloudProviderProfile;
+  final pulumi.Input<CloudProviderProfile>? cloudProviderProfile;
   /// API server endpoint for the control plane
-  final ControlPlaneEndpointProfileControlPlaneEndpoint? controlPlaneEndpoint;
+  final pulumi.Input<ControlPlaneEndpointProfileControlPlaneEndpoint>? controlPlaneEndpoint;
   /// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Profile for Linux VMs in the container service cluster.
-  final LinuxProfileProperties? linuxProfile;
+  final pulumi.Input<LinuxProfileProperties>? linuxProfile;
   /// The maximum number of nodes for auto-scaling
-  final int? maxCount;
+  final pulumi.Input<int>? maxCount;
   /// The maximum number of pods that can run on a node.
-  final int? maxPods;
+  final pulumi.Input<int>? maxPods;
   /// The minimum number of nodes for auto-scaling
-  final int? minCount;
+  final pulumi.Input<int>? minCount;
   /// Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
-  final String? mode;
+  final pulumi.Input<String>? mode;
   /// Unique name of the agent pool profile in the context of the subscription and resource group.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The version of node image
-  final String? nodeImageVersion;
+  final pulumi.Input<String>? nodeImageVersion;
   /// NodeLabels - Agent pool node labels to be persisted across all nodes in agent pool.
-  final Map<String, String>? nodeLabels;
+  final pulumi.Input<Map<String, String>>? nodeLabels;
   /// NodeTaints - Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
-  final List<String>? nodeTaints;
+  final pulumi.Input<List<String>>? nodeTaints;
   /// OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
-  final String? osType;
+  final pulumi.Input<String>? osType;
   /// VmSize - The size of the agent pool VMs.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [ControlPlaneProfile].
   /// [availabilityZones] AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
@@ -74,10 +75,10 @@ class ControlPlaneProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZones': ?availabilityZones,
-      'cloudProviderProfile': ?cloudProviderProfile == null ? null : cloudProviderProfile!.toMap(),
-      'controlPlaneEndpoint': ?controlPlaneEndpoint == null ? null : controlPlaneEndpoint!.toMap(),
+      'cloudProviderProfile': ?pulumi.Input.mapOptionalInputValue<CloudProviderProfile, Map<String, dynamic>>(cloudProviderProfile, (value) => value.toMap()),
+      'controlPlaneEndpoint': ?pulumi.Input.mapOptionalInputValue<ControlPlaneEndpointProfileControlPlaneEndpoint, Map<String, dynamic>>(controlPlaneEndpoint, (value) => value.toMap()),
       'count': ?count,
-      'linuxProfile': ?linuxProfile == null ? null : linuxProfile!.toMap(),
+      'linuxProfile': ?pulumi.Input.mapOptionalInputValue<LinuxProfileProperties, Map<String, dynamic>>(linuxProfile, (value) => value.toMap()),
       'maxCount': ?maxCount,
       'maxPods': ?maxPods,
       'minCount': ?minCount,
@@ -93,21 +94,21 @@ class ControlPlaneProfile {
 
   factory ControlPlaneProfile.fromMap(Map<String, dynamic> map) {
     return ControlPlaneProfile(
-      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
-      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : CloudProviderProfile.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>()),
-      controlPlaneEndpoint: map['controlPlaneEndpoint'] == null ? null : ControlPlaneEndpointProfileControlPlaneEndpoint.fromMap((map['controlPlaneEndpoint'] as Map).cast<String, dynamic>()),
-      count: map['count'] == null ? null : map['count'] as int,
-      linuxProfile: map['linuxProfile'] == null ? null : LinuxProfileProperties.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>()),
-      maxCount: map['maxCount'] == null ? null : map['maxCount'] as int,
-      maxPods: map['maxPods'] == null ? null : map['maxPods'] as int,
-      minCount: map['minCount'] == null ? null : map['minCount'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nodeImageVersion: map['nodeImageVersion'] == null ? null : map['nodeImageVersion'] as String,
-      nodeLabels: map['nodeLabels'] == null ? null : (map['nodeLabels'] as Map).cast<String, String>(),
-      nodeTaints: map['nodeTaints'] == null ? null : (map['nodeTaints'] as List).cast<String>(),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfile.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneEndpoint: map['controlPlaneEndpoint'] == null ? null : (ControlPlaneEndpointProfileControlPlaneEndpoint.fromMap((map['controlPlaneEndpoint'] as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfileProperties.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>())).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
+      maxPods: map['maxPods'] == null ? null : (map['maxPods'] as int).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeImageVersion: map['nodeImageVersion'] == null ? null : (map['nodeImageVersion'] as String).input(),
+      nodeLabels: map['nodeLabels'] == null ? null : ((map['nodeLabels'] as Map).cast<String, String>()).input(),
+      nodeTaints: map['nodeTaints'] == null ? null : ((map['nodeTaints'] as List).cast<String>()).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

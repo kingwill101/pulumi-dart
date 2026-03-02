@@ -16,11 +16,9 @@ class GetHostingChannelArgs {
   /// [channelId] The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
   /// [siteId] The ID of the site this channel belongs to.
   GetHostingChannelArgs({
-    required pulumi.Output<String> channelId,
-    required pulumi.Output<String> siteId,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      siteId = pulumi.Input.asInput<String>(siteId);
+    required this.channelId,
+    required this.siteId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHostingChannelArgs {
 
   factory GetHostingChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetHostingChannelArgs(
-      channelId: pulumi.Output.create<String>(map['channelId'] as String),
-      siteId: pulumi.Output.create<String>(map['siteId'] as String),
+      channelId: (map['channelId'] as String).input(),
+      siteId: (map['siteId'] as String).input(),
     );
   }
 }

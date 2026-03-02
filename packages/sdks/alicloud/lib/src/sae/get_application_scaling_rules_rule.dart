@@ -6,21 +6,21 @@ import 'get_application_scaling_rules_rule_scaling_rule_timer.dart';
 
 class GetApplicationScalingRulesRule {
   /// The ID of the Application.
-  final String appId;
+  final pulumi.Input<String> appId;
   /// The CreateTime of the Application Scaling Rule.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the Application Scaling Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// Whether to enable the auto scaling policy.
-  final bool scalingRuleEnable;
+  final pulumi.Input<bool> scalingRuleEnable;
   /// Monitoring indicators for elastic scaling.
-  final List<GetApplicationScalingRulesRuleScalingRuleMetric> scalingRuleMetrics;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleMetric>> scalingRuleMetrics;
   /// The name of the scaling rule.
-  final String scalingRuleName;
+  final pulumi.Input<String> scalingRuleName;
   /// Timing elastic expansion.
-  final List<GetApplicationScalingRulesRuleScalingRuleTimer> scalingRuleTimers;
+  final pulumi.Input<List<GetApplicationScalingRulesRuleScalingRuleTimer>> scalingRuleTimers;
   /// Flexible strategy type.
-  final String scalingRuleType;
+  final pulumi.Input<String> scalingRuleType;
 
   /// Creates a new [GetApplicationScalingRulesRule].
   /// [appId] The ID of the Application.
@@ -48,23 +48,23 @@ class GetApplicationScalingRulesRule {
       'createTime': createTime,
       'id': id,
       'scalingRuleEnable': scalingRuleEnable,
-      'scalingRuleMetrics': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetric, Map<String, dynamic>>(scalingRuleMetrics, (value) => value.toMap()),
+      'scalingRuleMetrics': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleMetric>, List<Map<String, dynamic>>>(scalingRuleMetrics, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scalingRuleName': scalingRuleName,
-      'scalingRuleTimers': pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleTimer, Map<String, dynamic>>(scalingRuleTimers, (value) => value.toMap()),
+      'scalingRuleTimers': pulumi.Input.mapInputValue<List<GetApplicationScalingRulesRuleScalingRuleTimer>, List<Map<String, dynamic>>>(scalingRuleTimers, (value) => pulumi.Input.encodeList<GetApplicationScalingRulesRuleScalingRuleTimer, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scalingRuleType': scalingRuleType,
     };
   }
 
   factory GetApplicationScalingRulesRule.fromMap(Map<String, dynamic> map) {
     return GetApplicationScalingRulesRule(
-      appId: map['appId'] as String,
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      scalingRuleEnable: map['scalingRuleEnable'] as bool,
-      scalingRuleMetrics: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetric>(map['scalingRuleMetrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetric.fromMap((value as Map).cast<String, dynamic>())),
-      scalingRuleName: map['scalingRuleName'] as String,
-      scalingRuleTimers: pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleTimer>(map['scalingRuleTimers'], (value) => GetApplicationScalingRulesRuleScalingRuleTimer.fromMap((value as Map).cast<String, dynamic>())),
-      scalingRuleType: map['scalingRuleType'] as String,
+      appId: (map['appId'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      scalingRuleEnable: (map['scalingRuleEnable'] as bool).input(),
+      scalingRuleMetrics: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleMetric>(map['scalingRuleMetrics'], (value) => GetApplicationScalingRulesRuleScalingRuleMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingRuleName: (map['scalingRuleName'] as String).input(),
+      scalingRuleTimers: (pulumi.Input.decodeList<GetApplicationScalingRulesRuleScalingRuleTimer>(map['scalingRuleTimers'], (value) => GetApplicationScalingRulesRuleScalingRuleTimer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingRuleType: (map['scalingRuleType'] as String).input(),
     );
   }
 }

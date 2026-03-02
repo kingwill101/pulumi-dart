@@ -28,21 +28,14 @@ class DnatEntryState {
   /// [sagId] The ID of the SAG instance.
   /// [type] The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
   DnatEntryState({
-    pulumi.Output<String>? externalIp,
-    pulumi.Output<String>? externalPort,
-    pulumi.Output<String>? internalIp,
-    pulumi.Output<String>? internalPort,
-    pulumi.Output<String>? ipProtocol,
-    pulumi.Output<String>? sagId,
-    pulumi.Output<String>? type,
-  }) :
-      externalIp = pulumi.Input.asOptionalInput<String>(externalIp),
-      externalPort = pulumi.Input.asOptionalInput<String>(externalPort),
-      internalIp = pulumi.Input.asOptionalInput<String>(internalIp),
-      internalPort = pulumi.Input.asOptionalInput<String>(internalPort),
-      ipProtocol = pulumi.Input.asOptionalInput<String>(ipProtocol),
-      sagId = pulumi.Input.asOptionalInput<String>(sagId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.externalIp,
+    this.externalPort,
+    this.internalIp,
+    this.internalPort,
+    this.ipProtocol,
+    this.sagId,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class DnatEntryState {
 
   factory DnatEntryState.fromMap(Map<String, dynamic> map) {
     return DnatEntryState(
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<String>(map['externalIp'] as String),
-      externalPort: map['externalPort'] == null ? null : pulumi.Output.create<String>(map['externalPort'] as String),
-      internalIp: map['internalIp'] == null ? null : pulumi.Output.create<String>(map['internalIp'] as String),
-      internalPort: map['internalPort'] == null ? null : pulumi.Output.create<String>(map['internalPort'] as String),
-      ipProtocol: map['ipProtocol'] == null ? null : pulumi.Output.create<String>(map['ipProtocol'] as String),
-      sagId: map['sagId'] == null ? null : pulumi.Output.create<String>(map['sagId'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

@@ -1,61 +1,62 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackupPlansPlan {
   /// The ID of the backup gateway.
-  final String backupGatewayId;
+  final pulumi.Input<String> backupGatewayId;
   /// The Backup method.
-  final String backupMethod;
+  final pulumi.Input<String> backupMethod;
   /// The backup object.
-  final String backupObjects;
+  final pulumi.Input<String> backupObjects;
   /// Full backup cycle.
-  final String backupPeriod;
+  final pulumi.Input<String> backupPeriod;
   /// The first ID of the resource.
-  final String backupPlanId;
+  final pulumi.Input<String> backupPlanId;
   /// The name of the resource.
-  final String backupPlanName;
+  final pulumi.Input<String> backupPlanName;
   /// The retention time of backup data.
-  final int backupRetentionPeriod;
+  final pulumi.Input<int> backupRetentionPeriod;
   /// The start time of full Backup.
-  final String backupStartTime;
+  final pulumi.Input<String> backupStartTime;
   /// Built-in storage type.
-  final String backupStorageType;
+  final pulumi.Input<String> backupStorageType;
   /// The UID that is backed up across Alibaba cloud accounts.
-  final String crossAliyunId;
+  final pulumi.Input<String> crossAliyunId;
   /// The name of the RAM role that is backed up across Alibaba cloud accounts.
-  final String crossRoleName;
+  final pulumi.Input<String> crossRoleName;
   /// The database type.
-  final String databaseType;
+  final pulumi.Input<String> databaseType;
   /// The storage time for conversion to archive cold standby is 365 days by default.
-  final int duplicationArchivePeriod;
+  final pulumi.Input<int> duplicationArchivePeriod;
   /// The storage time is converted to low-frequency access. The default time is 180 days.
-  final int duplicationInfrequentAccessPeriod;
+  final pulumi.Input<int> duplicationInfrequentAccessPeriod;
   /// Whether to enable incremental log Backup.
-  final bool enableBackupLog;
+  final pulumi.Input<bool> enableBackupLog;
   /// The ID of the Backup Plan.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Instance class.
-  final String instanceClass;
+  final pulumi.Input<String> instanceClass;
   /// The OSS Bucket name.
-  final String ossBucketName;
+  final pulumi.Input<String> ossBucketName;
   /// The payment type of the resource.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The name of the database.
-  final String sourceEndpointDatabaseName;
+  final pulumi.Input<String> sourceEndpointDatabaseName;
   /// The ID of the database instance.
-  final String sourceEndpointInstanceId;
+  final pulumi.Input<String> sourceEndpointInstanceId;
   /// The location of the database.
-  final String sourceEndpointInstanceType;
+  final pulumi.Input<String> sourceEndpointInstanceType;
   /// The region of the database.
-  final String sourceEndpointRegion;
+  final pulumi.Input<String> sourceEndpointRegion;
   /// The Oracle SID name.
-  final String sourceEndpointSid;
+  final pulumi.Input<String> sourceEndpointSid;
   /// The source endpoint username.
-  final String sourceEndpointUserName;
+  final pulumi.Input<String> sourceEndpointUserName;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetBackupPlansPlan].
   /// [backupGatewayId] The ID of the backup gateway.
@@ -149,33 +150,33 @@ class GetBackupPlansPlan {
 
   factory GetBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetBackupPlansPlan(
-      backupGatewayId: map['backupGatewayId'] as String,
-      backupMethod: map['backupMethod'] as String,
-      backupObjects: map['backupObjects'] as String,
-      backupPeriod: map['backupPeriod'] as String,
-      backupPlanId: map['backupPlanId'] as String,
-      backupPlanName: map['backupPlanName'] as String,
-      backupRetentionPeriod: map['backupRetentionPeriod'] as int,
-      backupStartTime: map['backupStartTime'] as String,
-      backupStorageType: map['backupStorageType'] as String,
-      crossAliyunId: map['crossAliyunId'] as String,
-      crossRoleName: map['crossRoleName'] as String,
-      databaseType: map['databaseType'] as String,
-      duplicationArchivePeriod: map['duplicationArchivePeriod'] as int,
-      duplicationInfrequentAccessPeriod: map['duplicationInfrequentAccessPeriod'] as int,
-      enableBackupLog: map['enableBackupLog'] as bool,
-      id: map['id'] as String,
-      instanceClass: map['instanceClass'] as String,
-      ossBucketName: map['ossBucketName'] as String,
-      paymentType: map['paymentType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      sourceEndpointDatabaseName: map['sourceEndpointDatabaseName'] as String,
-      sourceEndpointInstanceId: map['sourceEndpointInstanceId'] as String,
-      sourceEndpointInstanceType: map['sourceEndpointInstanceType'] as String,
-      sourceEndpointRegion: map['sourceEndpointRegion'] as String,
-      sourceEndpointSid: map['sourceEndpointSid'] as String,
-      sourceEndpointUserName: map['sourceEndpointUserName'] as String,
-      status: map['status'] as String,
+      backupGatewayId: (map['backupGatewayId'] as String).input(),
+      backupMethod: (map['backupMethod'] as String).input(),
+      backupObjects: (map['backupObjects'] as String).input(),
+      backupPeriod: (map['backupPeriod'] as String).input(),
+      backupPlanId: (map['backupPlanId'] as String).input(),
+      backupPlanName: (map['backupPlanName'] as String).input(),
+      backupRetentionPeriod: (map['backupRetentionPeriod'] as int).input(),
+      backupStartTime: (map['backupStartTime'] as String).input(),
+      backupStorageType: (map['backupStorageType'] as String).input(),
+      crossAliyunId: (map['crossAliyunId'] as String).input(),
+      crossRoleName: (map['crossRoleName'] as String).input(),
+      databaseType: (map['databaseType'] as String).input(),
+      duplicationArchivePeriod: (map['duplicationArchivePeriod'] as int).input(),
+      duplicationInfrequentAccessPeriod: (map['duplicationInfrequentAccessPeriod'] as int).input(),
+      enableBackupLog: (map['enableBackupLog'] as bool).input(),
+      id: (map['id'] as String).input(),
+      instanceClass: (map['instanceClass'] as String).input(),
+      ossBucketName: (map['ossBucketName'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      sourceEndpointDatabaseName: (map['sourceEndpointDatabaseName'] as String).input(),
+      sourceEndpointInstanceId: (map['sourceEndpointInstanceId'] as String).input(),
+      sourceEndpointInstanceType: (map['sourceEndpointInstanceType'] as String).input(),
+      sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
+      sourceEndpointSid: (map['sourceEndpointSid'] as String).input(),
+      sourceEndpointUserName: (map['sourceEndpointUserName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

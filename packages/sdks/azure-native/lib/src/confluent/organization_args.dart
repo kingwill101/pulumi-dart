@@ -34,21 +34,14 @@ class OrganizationArgs {
   /// [tags] Resource tags.
   /// [userDetail] Subscriber detail
   OrganizationArgs({
-    pulumi.Output<LinkOrganization>? linkOrganization,
-    pulumi.Output<String>? location,
-    required pulumi.Output<OfferDetail> offerDetail,
-    pulumi.Output<String>? organizationName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<UserDetail> userDetail,
-  }) :
-      linkOrganization = pulumi.Input.asOptionalInput<LinkOrganization>(linkOrganization),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      offerDetail = pulumi.Input.asInput<OfferDetail>(offerDetail),
-      organizationName = pulumi.Input.asOptionalInput<String>(organizationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      userDetail = pulumi.Input.asInput<UserDetail>(userDetail);
+    this.linkOrganization,
+    this.location,
+    required this.offerDetail,
+    this.organizationName,
+    required this.resourceGroupName,
+    this.tags,
+    required this.userDetail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      linkOrganization: map['linkOrganization'] == null ? null : pulumi.Output.create<LinkOrganization>(LinkOrganization.fromMap((map['linkOrganization'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      offerDetail: pulumi.Output.create<OfferDetail>(OfferDetail.fromMap((map['offerDetail'] as Map).cast<String, dynamic>())),
-      organizationName: map['organizationName'] == null ? null : pulumi.Output.create<String>(map['organizationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      userDetail: pulumi.Output.create<UserDetail>(UserDetail.fromMap((map['userDetail'] as Map).cast<String, dynamic>())),
+      linkOrganization: map['linkOrganization'] == null ? null : (LinkOrganization.fromMap((map['linkOrganization'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      offerDetail: (OfferDetail.fromMap((map['offerDetail'] as Map).cast<String, dynamic>())).input(),
+      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      userDetail: (UserDetail.fromMap((map['userDetail'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

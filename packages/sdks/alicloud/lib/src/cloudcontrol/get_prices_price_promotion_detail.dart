@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPricesPricePromotionDetail {
   /// Offer Description.
-  final String promotionDesc;
+  final pulumi.Input<String> promotionDesc;
   /// Offer logo.
-  final int promotionId;
+  final pulumi.Input<int> promotionId;
   /// Offer Name.
-  final String promotionName;
+  final pulumi.Input<String> promotionName;
 
   /// Creates a new [GetPricesPricePromotionDetail].
   /// [promotionDesc] Offer Description.
@@ -29,9 +30,9 @@ class GetPricesPricePromotionDetail {
 
   factory GetPricesPricePromotionDetail.fromMap(Map<String, dynamic> map) {
     return GetPricesPricePromotionDetail(
-      promotionDesc: map['promotionDesc'] as String,
-      promotionId: map['promotionId'] as int,
-      promotionName: map['promotionName'] as String,
+      promotionDesc: (map['promotionDesc'] as String).input(),
+      promotionId: (map['promotionId'] as int).input(),
+      promotionName: (map['promotionName'] as String).input(),
     );
   }
 }

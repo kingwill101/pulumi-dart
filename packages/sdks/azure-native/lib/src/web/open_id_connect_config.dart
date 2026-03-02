@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration settings of the endpoints used for the custom Open ID Connect provider.
 class OpenIdConnectConfig {
   /// The endpoint to be used to make an authorization request.
-  final String? authorizationEndpoint;
+  final pulumi.Input<String>? authorizationEndpoint;
   /// The endpoint that provides the keys necessary to validate the token.
-  final String? certificationUri;
+  final pulumi.Input<String>? certificationUri;
   /// The endpoint that issues the token.
-  final String? issuer;
+  final pulumi.Input<String>? issuer;
   /// The endpoint to be used to request a token.
-  final String? tokenEndpoint;
+  final pulumi.Input<String>? tokenEndpoint;
   /// The endpoint that contains all the configuration endpoints for the provider.
-  final String? wellKnownOpenIdConfiguration;
+  final pulumi.Input<String>? wellKnownOpenIdConfiguration;
 
   /// Creates a new [OpenIdConnectConfig].
   /// [authorizationEndpoint] The endpoint to be used to make an authorization request.
@@ -40,11 +41,11 @@ class OpenIdConnectConfig {
 
   factory OpenIdConnectConfig.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectConfig(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : map['authorizationEndpoint'] as String,
-      certificationUri: map['certificationUri'] == null ? null : map['certificationUri'] as String,
-      issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      wellKnownOpenIdConfiguration: map['wellKnownOpenIdConfiguration'] == null ? null : map['wellKnownOpenIdConfiguration'] as String,
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
+      certificationUri: map['certificationUri'] == null ? null : (map['certificationUri'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      wellKnownOpenIdConfiguration: map['wellKnownOpenIdConfiguration'] == null ? null : (map['wellKnownOpenIdConfiguration'] as String).input(),
     );
   }
 }

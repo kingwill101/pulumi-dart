@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneMemoryTuneNode {
   /// Sets the bandwidth limit for a specific memory tuning node, affecting memory access speed and performance.
-  final double bandwidth;
+  final pulumi.Input<double> bandwidth;
   /// Identifies the specific tuning node for memory adjustments, linking it to allocated memory resources.
-  final double? id;
+  final pulumi.Input<double>? id;
 
   /// Creates a new [DomainCpuTuneMemoryTuneNode].
   /// [bandwidth] Sets the bandwidth limit for a specific memory tuning node, affecting memory access speed and performance.
@@ -24,8 +25,8 @@ class DomainCpuTuneMemoryTuneNode {
 
   factory DomainCpuTuneMemoryTuneNode.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneMemoryTuneNode(
-      bandwidth: map['bandwidth'] as double,
-      id: map['id'] == null ? null : map['id'] as double,
+      bandwidth: (map['bandwidth'] as double).input(),
+      id: map['id'] == null ? null : (map['id'] as double).input(),
     );
   }
 }

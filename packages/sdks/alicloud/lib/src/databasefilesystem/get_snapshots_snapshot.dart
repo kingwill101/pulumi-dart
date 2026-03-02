@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotsSnapshot {
   /// The type of the Snapshot.
-  final String category;
+  final pulumi.Input<String> category;
   /// The creation time of the snapshot.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the snapshot.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the database file system.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The last modification time of the snapshot.
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// The progress of the snapshot.
-  final String progress;
+  final pulumi.Input<String> progress;
   /// The remaining completion time of the snapshot being created, in seconds.
-  final int remainTime;
+  final pulumi.Input<int> remainTime;
   /// The retention days of the snapshot.
-  final int retentionDays;
+  final pulumi.Input<int> retentionDays;
   /// The ID of the snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// The name of the snapshot.
-  final String snapshotName;
+  final pulumi.Input<String> snapshotName;
   /// The creation of the snapshot.
-  final String snapshotType;
+  final pulumi.Input<String> snapshotType;
   /// Source database file system capacity.
-  final int sourceFsSize;
+  final pulumi.Input<int> sourceFsSize;
   /// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetSnapshotsSnapshot].
   /// [category] The type of the Snapshot.
@@ -84,20 +85,20 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      category: map['category'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      progress: map['progress'] as String,
-      remainTime: map['remainTime'] as int,
-      retentionDays: map['retentionDays'] as int,
-      snapshotId: map['snapshotId'] as String,
-      snapshotName: map['snapshotName'] as String,
-      snapshotType: map['snapshotType'] as String,
-      sourceFsSize: map['sourceFsSize'] as int,
-      status: map['status'] as String,
+      category: (map['category'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      progress: (map['progress'] as String).input(),
+      remainTime: (map['remainTime'] as int).input(),
+      retentionDays: (map['retentionDays'] as int).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      snapshotName: (map['snapshotName'] as String).input(),
+      snapshotType: (map['snapshotType'] as String).input(),
+      sourceFsSize: (map['sourceFsSize'] as int).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

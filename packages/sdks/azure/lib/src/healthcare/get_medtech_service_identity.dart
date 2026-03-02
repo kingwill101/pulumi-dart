@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMedtechServiceIdentity {
-  final List<String> identityIds;
+  final pulumi.Input<List<String>> identityIds;
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Healthcare Med Tech Service.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Healthcare Med Tech Service.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of identity used for the Healthcare Med Tech Service. Possible values are `SystemAssigned`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetMedtechServiceIdentity].
   /// [identityIds] Required.
@@ -33,10 +34,10 @@ class GetMedtechServiceIdentity {
 
   factory GetMedtechServiceIdentity.fromMap(Map<String, dynamic> map) {
     return GetMedtechServiceIdentity(
-      identityIds: (map['identityIds'] as List).cast<String>(),
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class BucketArchiveDirectReadArgs {
   /// [bucket] The name of the bucket
   /// [enabled] Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
   BucketArchiveDirectReadArgs({
-    required pulumi.Output<String> bucket,
-    required pulumi.Output<bool> enabled,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      enabled = pulumi.Input.asInput<bool>(enabled);
+    required this.bucket,
+    required this.enabled,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class BucketArchiveDirectReadArgs {
 
   factory BucketArchiveDirectReadArgs.fromMap(Map<String, dynamic> map) {
     return BucketArchiveDirectReadArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
+      bucket: (map['bucket'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

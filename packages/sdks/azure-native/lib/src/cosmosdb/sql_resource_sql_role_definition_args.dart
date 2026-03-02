@@ -33,21 +33,14 @@ class SqlResourceSqlRoleDefinitionArgs {
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [type] Indicates whether the Role Definition was built-in or user created.
   SqlResourceSqlRoleDefinitionArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<List<String>>? assignableScopes,
-    pulumi.Output<List<Permission>>? permissions,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? roleDefinitionId,
-    pulumi.Output<String>? roleName,
-    pulumi.Output<RoleDefinitionType>? type,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      assignableScopes = pulumi.Input.asOptionalInput<List<String>>(assignableScopes),
-      permissions = pulumi.Input.asOptionalInput<List<Permission>>(permissions),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      roleDefinitionId = pulumi.Input.asOptionalInput<String>(roleDefinitionId),
-      roleName = pulumi.Input.asOptionalInput<String>(roleName),
-      type = pulumi.Input.asOptionalInput<RoleDefinitionType>(type);
+    required this.accountName,
+    this.assignableScopes,
+    this.permissions,
+    required this.resourceGroupName,
+    this.roleDefinitionId,
+    this.roleName,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class SqlResourceSqlRoleDefinitionArgs {
 
   factory SqlResourceSqlRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return SqlResourceSqlRoleDefinitionArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      assignableScopes: map['assignableScopes'] == null ? null : pulumi.Output.create<List<String>>((map['assignableScopes'] as List).cast<String>()),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<Permission>>(pulumi.Input.decodeList<Permission>(map['permissions'], (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : pulumi.Output.create<String>(map['roleDefinitionId'] as String),
-      roleName: map['roleName'] == null ? null : pulumi.Output.create<String>(map['roleName'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<RoleDefinitionType>(RoleDefinitionType.fromValue(map['type'] as String)),
+      accountName: (map['accountName'] as String).input(),
+      assignableScopes: map['assignableScopes'] == null ? null : ((map['assignableScopes'] as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<Permission>(map['permissions'], (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      type: map['type'] == null ? null : (RoleDefinitionType.fromValue(map['type'] as String)).input(),
     );
   }
 }

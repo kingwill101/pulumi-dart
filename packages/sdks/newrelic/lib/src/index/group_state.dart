@@ -20,13 +20,10 @@ class GroupState {
   /// [name] The name of the group to be created.
   /// [userIds] A list of IDs of users to be included in the group to be created.
   GroupState({
-    pulumi.Output<String>? authenticationDomainId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? userIds,
-  }) :
-      authenticationDomainId = pulumi.Input.asOptionalInput<String>(authenticationDomainId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds);
+    this.authenticationDomainId,
+    this.name,
+    this.userIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      authenticationDomainId: map['authenticationDomainId'] == null ? null : pulumi.Output.create<String>(map['authenticationDomainId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
+      authenticationDomainId: map['authenticationDomainId'] == null ? null : (map['authenticationDomainId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
     );
   }
 }

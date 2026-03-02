@@ -44,27 +44,17 @@ class ChangeDataCaptureArgs {
   /// [status] Status of the CDC as to if it is running or stopped.
   /// [targetConnectionsInfo] List of target connections that can be used as sources in the CDC.
   ChangeDataCaptureArgs({
-    pulumi.Output<bool>? allowVNetOverride,
-    pulumi.Output<String>? changeDataCaptureName,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> factoryName,
-    pulumi.Output<ChangeDataCaptureFolder>? folder,
-    required pulumi.Output<MapperPolicy> policy,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<List<MapperSourceConnectionsInfo>> sourceConnectionsInfo,
-    pulumi.Output<String>? status,
-    required pulumi.Output<List<MapperTargetConnectionsInfo>> targetConnectionsInfo,
-  }) :
-      allowVNetOverride = pulumi.Input.asOptionalInput<bool>(allowVNetOverride),
-      changeDataCaptureName = pulumi.Input.asOptionalInput<String>(changeDataCaptureName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      factoryName = pulumi.Input.asInput<String>(factoryName),
-      folder = pulumi.Input.asOptionalInput<ChangeDataCaptureFolder>(folder),
-      policy = pulumi.Input.asInput<MapperPolicy>(policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceConnectionsInfo = pulumi.Input.asInput<List<MapperSourceConnectionsInfo>>(sourceConnectionsInfo),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      targetConnectionsInfo = pulumi.Input.asInput<List<MapperTargetConnectionsInfo>>(targetConnectionsInfo);
+    this.allowVNetOverride,
+    this.changeDataCaptureName,
+    this.description,
+    required this.factoryName,
+    this.folder,
+    required this.policy,
+    required this.resourceGroupName,
+    required this.sourceConnectionsInfo,
+    this.status,
+    required this.targetConnectionsInfo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ChangeDataCaptureArgs {
 
   factory ChangeDataCaptureArgs.fromMap(Map<String, dynamic> map) {
     return ChangeDataCaptureArgs(
-      allowVNetOverride: map['allowVNetOverride'] == null ? null : pulumi.Output.create<bool>(map['allowVNetOverride'] as bool),
-      changeDataCaptureName: map['changeDataCaptureName'] == null ? null : pulumi.Output.create<String>(map['changeDataCaptureName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      factoryName: pulumi.Output.create<String>(map['factoryName'] as String),
-      folder: map['folder'] == null ? null : pulumi.Output.create<ChangeDataCaptureFolder>(ChangeDataCaptureFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())),
-      policy: pulumi.Output.create<MapperPolicy>(MapperPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceConnectionsInfo: pulumi.Output.create<List<MapperSourceConnectionsInfo>>(pulumi.Input.decodeList<MapperSourceConnectionsInfo>(map['sourceConnectionsInfo'], (value) => MapperSourceConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      targetConnectionsInfo: pulumi.Output.create<List<MapperTargetConnectionsInfo>>(pulumi.Input.decodeList<MapperTargetConnectionsInfo>(map['targetConnectionsInfo'], (value) => MapperTargetConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      allowVNetOverride: map['allowVNetOverride'] == null ? null : (map['allowVNetOverride'] as bool).input(),
+      changeDataCaptureName: map['changeDataCaptureName'] == null ? null : (map['changeDataCaptureName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      factoryName: (map['factoryName'] as String).input(),
+      folder: map['folder'] == null ? null : (ChangeDataCaptureFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      policy: (MapperPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceConnectionsInfo: (pulumi.Input.decodeList<MapperSourceConnectionsInfo>(map['sourceConnectionsInfo'], (value) => MapperSourceConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      targetConnectionsInfo: (pulumi.Input.decodeList<MapperTargetConnectionsInfo>(map['targetConnectionsInfo'], (value) => MapperTargetConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

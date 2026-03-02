@@ -36,19 +36,13 @@ class DefaultSupportedIdpConfigState {
   /// [name] The name of the DefaultSupportedIdpConfig resource
   /// [project] The ID of the project in which the resource belongs.
   DefaultSupportedIdpConfigState({
-    pulumi.Output<String>? clientId,
-    pulumi.Output<String>? clientSecret,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<String>? idpId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpId = pulumi.Input.asOptionalInput<String>(idpId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.clientId,
+    this.clientSecret,
+    this.enabled,
+    this.idpId,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class DefaultSupportedIdpConfigState {
 
   factory DefaultSupportedIdpConfigState.fromMap(Map<String, dynamic> map) {
     return DefaultSupportedIdpConfigState(
-      clientId: map['clientId'] == null ? null : pulumi.Output.create<String>(map['clientId'] as String),
-      clientSecret: map['clientSecret'] == null ? null : pulumi.Output.create<String>(map['clientSecret'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpId: map['idpId'] == null ? null : pulumi.Output.create<String>(map['idpId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpId: map['idpId'] == null ? null : (map['idpId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

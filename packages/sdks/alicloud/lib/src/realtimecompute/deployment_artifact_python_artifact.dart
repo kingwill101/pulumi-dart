@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentArtifactPythonArtifact {
   /// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
-  final List<String>? additionalDependencies;
+  final pulumi.Input<List<String>>? additionalDependencies;
   /// URL paths of dependent Python archive files
-  final List<String>? additionalPythonArchives;
+  final pulumi.Input<List<String>>? additionalPythonArchives;
   /// URL paths of dependent Python library files
-  final List<String>? additionalPythonLibraries;
+  final pulumi.Input<List<String>>? additionalPythonLibraries;
   /// Entry module for Python
-  final String? entryModule;
+  final pulumi.Input<String>? entryModule;
   /// Startup arguments
-  final String? mainArgs;
+  final pulumi.Input<String>? mainArgs;
   /// Full URL path of the Python job
-  final String? pythonArtifactUri;
+  final pulumi.Input<String>? pythonArtifactUri;
 
   /// Creates a new [DeploymentArtifactPythonArtifact].
   /// [additionalDependencies] Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
@@ -44,12 +45,12 @@ class DeploymentArtifactPythonArtifact {
 
   factory DeploymentArtifactPythonArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifactPythonArtifact(
-      additionalDependencies: map['additionalDependencies'] == null ? null : (map['additionalDependencies'] as List).cast<String>(),
-      additionalPythonArchives: map['additionalPythonArchives'] == null ? null : (map['additionalPythonArchives'] as List).cast<String>(),
-      additionalPythonLibraries: map['additionalPythonLibraries'] == null ? null : (map['additionalPythonLibraries'] as List).cast<String>(),
-      entryModule: map['entryModule'] == null ? null : map['entryModule'] as String,
-      mainArgs: map['mainArgs'] == null ? null : map['mainArgs'] as String,
-      pythonArtifactUri: map['pythonArtifactUri'] == null ? null : map['pythonArtifactUri'] as String,
+      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies'] as List).cast<String>()).input(),
+      additionalPythonArchives: map['additionalPythonArchives'] == null ? null : ((map['additionalPythonArchives'] as List).cast<String>()).input(),
+      additionalPythonLibraries: map['additionalPythonLibraries'] == null ? null : ((map['additionalPythonLibraries'] as List).cast<String>()).input(),
+      entryModule: map['entryModule'] == null ? null : (map['entryModule'] as String).input(),
+      mainArgs: map['mainArgs'] == null ? null : (map['mainArgs'] as String).input(),
+      pythonArtifactUri: map['pythonArtifactUri'] == null ? null : (map['pythonArtifactUri'] as String).input(),
     );
   }
 }

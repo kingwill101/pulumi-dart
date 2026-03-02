@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceManagedDiskIdentity {
   /// The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
-  final String? principalId;
+  final pulumi.Input<String>? principalId;
   /// The UUID of the tenant where the internal databricks storage account was created.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// The type of the internal databricks storage account.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [WorkspaceManagedDiskIdentity].
   /// [principalId] The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
@@ -29,9 +30,9 @@ class WorkspaceManagedDiskIdentity {
 
   factory WorkspaceManagedDiskIdentity.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagedDiskIdentity(
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

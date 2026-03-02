@@ -25,17 +25,12 @@ class BgpConnectionArgs {
   /// [virtualHubId] The ID of the Virtual Hub within which this Bgp connection should be created. Changing this forces a new resource to be created.
   /// [virtualNetworkConnectionId] The ID of virtual network connection.
   BgpConnectionArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> peerAsn,
-    required pulumi.Output<String> peerIp,
-    required pulumi.Output<String> virtualHubId,
-    pulumi.Output<String>? virtualNetworkConnectionId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      peerAsn = pulumi.Input.asInput<int>(peerAsn),
-      peerIp = pulumi.Input.asInput<String>(peerIp),
-      virtualHubId = pulumi.Input.asInput<String>(virtualHubId),
-      virtualNetworkConnectionId = pulumi.Input.asOptionalInput<String>(virtualNetworkConnectionId);
+    this.name,
+    required this.peerAsn,
+    required this.peerIp,
+    required this.virtualHubId,
+    this.virtualNetworkConnectionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class BgpConnectionArgs {
 
   factory BgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return BgpConnectionArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      peerAsn: pulumi.Output.create<int>(map['peerAsn'] as int),
-      peerIp: pulumi.Output.create<String>(map['peerIp'] as String),
-      virtualHubId: pulumi.Output.create<String>(map['virtualHubId'] as String),
-      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkConnectionId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      peerAsn: (map['peerAsn'] as int).input(),
+      peerIp: (map['peerIp'] as String).input(),
+      virtualHubId: (map['virtualHubId'] as String).input(),
+      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId'] as String).input(),
     );
   }
 }

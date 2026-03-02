@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterComputeConfig {
   /// Whether zonal shift is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// List of node pools for the EKS Auto Mode compute capability.
-  final List<String> nodePools;
+  final pulumi.Input<List<String>> nodePools;
   /// The ARN of the IAM Role EKS will assign to EC2 Managed Instances in your EKS Auto Mode cluster.
-  final String nodeRoleArn;
+  final pulumi.Input<String> nodeRoleArn;
 
   /// Creates a new [GetClusterComputeConfig].
   /// [enabled] Whether zonal shift is enabled.
@@ -29,9 +30,9 @@ class GetClusterComputeConfig {
 
   factory GetClusterComputeConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterComputeConfig(
-      enabled: map['enabled'] as bool,
-      nodePools: (map['nodePools'] as List).cast<String>(),
-      nodeRoleArn: map['nodeRoleArn'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      nodePools: ((map['nodePools'] as List).cast<String>()).input(),
+      nodeRoleArn: (map['nodeRoleArn'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_response.dart';
 
 /// Elastic San Pool Properties
 class ElasticSanResponse {
   /// Encryption specifies the encryption configuration for the Azure Disk pool
-  final EncryptionResponse? encryption;
+  final pulumi.Input<EncryptionResponse>? encryption;
   /// Managed resource group for the pool.
-  final String resourceGroup;
+  final pulumi.Input<String> resourceGroup;
   /// Sku name
-  final String? skuName;
+  final pulumi.Input<String>? skuName;
 
   /// Creates a new [ElasticSanResponse].
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
@@ -23,7 +24,7 @@ class ElasticSanResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'resourceGroup': resourceGroup,
       'skuName': ?skuName,
     };
@@ -31,9 +32,9 @@ class ElasticSanResponse {
 
   factory ElasticSanResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSanResponse(
-      encryption: map['encryption'] == null ? null : EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      resourceGroup: map['resourceGroup'] as String,
-      skuName: map['skuName'] == null ? null : map['skuName'] as String,
+      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
     );
   }
 }

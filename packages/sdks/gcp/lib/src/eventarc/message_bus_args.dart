@@ -46,23 +46,15 @@ class MessageBusArgs {
   /// [messageBusId] Required. The user-provided ID to be assigned to the MessageBus. It should match the
   /// [project] The ID of the project in which the resource belongs.
   MessageBusArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? cryptoKeyName,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<MessageBusLoggingConfig>? loggingConfig,
-    required pulumi.Output<String> messageBusId,
-    pulumi.Output<String>? project,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      cryptoKeyName = pulumi.Input.asOptionalInput<String>(cryptoKeyName),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      loggingConfig = pulumi.Input.asOptionalInput<MessageBusLoggingConfig>(loggingConfig),
-      messageBusId = pulumi.Input.asInput<String>(messageBusId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.annotations,
+    this.cryptoKeyName,
+    this.displayName,
+    this.labels,
+    required this.location,
+    this.loggingConfig,
+    required this.messageBusId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,14 +71,14 @@ class MessageBusArgs {
 
   factory MessageBusArgs.fromMap(Map<String, dynamic> map) {
     return MessageBusArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : pulumi.Output.create<String>(map['cryptoKeyName'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      loggingConfig: map['loggingConfig'] == null ? null : pulumi.Output.create<MessageBusLoggingConfig>(MessageBusLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())),
-      messageBusId: pulumi.Output.create<String>(map['messageBusId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (MessageBusLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      messageBusId: (map['messageBusId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

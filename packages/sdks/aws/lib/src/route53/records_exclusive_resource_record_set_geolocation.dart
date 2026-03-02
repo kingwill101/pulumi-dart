@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RecordsExclusiveResourceRecordSetGeolocation {
-  final String? continentCode;
-  final String? countryCode;
-  final String? subdivisionCode;
+  final pulumi.Input<String>? continentCode;
+  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String>? subdivisionCode;
 
   /// Creates a new [RecordsExclusiveResourceRecordSetGeolocation].
   /// [continentCode] Optional.
@@ -26,9 +27,9 @@ class RecordsExclusiveResourceRecordSetGeolocation {
 
   factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetGeolocation(
-      continentCode: map['continentCode'] == null ? null : map['continentCode'] as String,
-      countryCode: map['countryCode'] == null ? null : map['countryCode'] as String,
-      subdivisionCode: map['subdivisionCode'] == null ? null : map['subdivisionCode'] as String,
+      continentCode: map['continentCode'] == null ? null : (map['continentCode'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      subdivisionCode: map['subdivisionCode'] == null ? null : (map['subdivisionCode'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 class FilteringTagResponse {
   /// Valid actions for a filtering tag.
-  final String? action;
+  final pulumi.Input<String>? action;
   /// The name (also known as the key) of the tag.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of the tag.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [FilteringTagResponse].
   /// [action] Valid actions for a filtering tag.
@@ -30,9 +31,9 @@ class FilteringTagResponse {
 
   factory FilteringTagResponse.fromMap(Map<String, dynamic> map) {
     return FilteringTagResponse(
-      action: map['action'] == null ? null : map['action'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

@@ -31,19 +31,13 @@ class FirewallPolicyRuleCollectionGroupArgs {
   /// [networkRuleCollections] One or more `network_rule_collection` blocks as defined below.
   /// [priority] The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   FirewallPolicyRuleCollectionGroupArgs({
-    pulumi.Output<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>>? applicationRuleCollections,
-    required pulumi.Output<String> firewallPolicyId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>>? natRuleCollections,
-    pulumi.Output<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>>? networkRuleCollections,
-    required pulumi.Output<int> priority,
-  }) :
-      applicationRuleCollections = pulumi.Input.asOptionalInput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>>(applicationRuleCollections),
-      firewallPolicyId = pulumi.Input.asInput<String>(firewallPolicyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      natRuleCollections = pulumi.Input.asOptionalInput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>>(natRuleCollections),
-      networkRuleCollections = pulumi.Input.asOptionalInput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>>(networkRuleCollections),
-      priority = pulumi.Input.asInput<int>(priority);
+    this.applicationRuleCollections,
+    required this.firewallPolicyId,
+    this.name,
+    this.natRuleCollections,
+    this.networkRuleCollections,
+    required this.priority,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class FirewallPolicyRuleCollectionGroupArgs {
 
   factory FirewallPolicyRuleCollectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleCollectionGroupArgs(
-      applicationRuleCollections: map['applicationRuleCollections'] == null ? null : pulumi.Output.create<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>>(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(map['applicationRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>()))),
-      firewallPolicyId: pulumi.Output.create<String>(map['firewallPolicyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      natRuleCollections: map['natRuleCollections'] == null ? null : pulumi.Output.create<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>>(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNatRuleCollection>(map['natRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupNatRuleCollection.fromMap((value as Map).cast<String, dynamic>()))),
-      networkRuleCollections: map['networkRuleCollections'] == null ? null : pulumi.Output.create<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>>(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>(map['networkRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Output.create<int>(map['priority'] as int),
+      applicationRuleCollections: map['applicationRuleCollections'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(map['applicationRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallPolicyId: (map['firewallPolicyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      natRuleCollections: map['natRuleCollections'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNatRuleCollection>(map['natRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupNatRuleCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkRuleCollections: map['networkRuleCollections'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>(map['networkRuleCollections'], (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

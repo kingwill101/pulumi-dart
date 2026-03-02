@@ -33,21 +33,14 @@ class IntegrationServiceEnvironmentManagedApiArgs {
   /// [resourceGroup] The resource group name.
   /// [tags] The resource tags.
   IntegrationServiceEnvironmentManagedApiArgs({
-    pulumi.Output<String>? apiName,
-    pulumi.Output<IntegrationServiceEnvironmentManagedApiDeploymentParameters>? deploymentParameters,
-    pulumi.Output<ResourceReference>? integrationServiceEnvironment,
-    required pulumi.Output<String> integrationServiceEnvironmentName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroup,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      apiName = pulumi.Input.asOptionalInput<String>(apiName),
-      deploymentParameters = pulumi.Input.asOptionalInput<IntegrationServiceEnvironmentManagedApiDeploymentParameters>(deploymentParameters),
-      integrationServiceEnvironment = pulumi.Input.asOptionalInput<ResourceReference>(integrationServiceEnvironment),
-      integrationServiceEnvironmentName = pulumi.Input.asInput<String>(integrationServiceEnvironmentName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.apiName,
+    this.deploymentParameters,
+    this.integrationServiceEnvironment,
+    required this.integrationServiceEnvironmentName,
+    this.location,
+    required this.resourceGroup,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class IntegrationServiceEnvironmentManagedApiArgs {
 
   factory IntegrationServiceEnvironmentManagedApiArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentManagedApiArgs(
-      apiName: map['apiName'] == null ? null : pulumi.Output.create<String>(map['apiName'] as String),
-      deploymentParameters: map['deploymentParameters'] == null ? null : pulumi.Output.create<IntegrationServiceEnvironmentManagedApiDeploymentParameters>(IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap((map['deploymentParameters'] as Map).cast<String, dynamic>())),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())),
-      integrationServiceEnvironmentName: pulumi.Output.create<String>(map['integrationServiceEnvironmentName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
+      deploymentParameters: map['deploymentParameters'] == null ? null : (IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap((map['deploymentParameters'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentName: (map['integrationServiceEnvironmentName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

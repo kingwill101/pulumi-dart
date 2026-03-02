@@ -26,17 +26,12 @@ class RuntimeIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeName] Used to find the parent resource to bind the IAM policy to
   RuntimeIamPolicyState({
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? runtimeName,
-  }) :
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      policyData = pulumi.Input.asOptionalInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeName = pulumi.Input.asOptionalInput<String>(runtimeName);
+    this.etag,
+    this.location,
+    this.policyData,
+    this.project,
+    this.runtimeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class RuntimeIamPolicyState {
 
   factory RuntimeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RuntimeIamPolicyState(
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      policyData: map['policyData'] == null ? null : pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeName: map['runtimeName'] == null ? null : pulumi.Output.create<String>(map['runtimeName'] as String),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeName: map['runtimeName'] == null ? null : (map['runtimeName'] as String).input(),
     );
   }
 }

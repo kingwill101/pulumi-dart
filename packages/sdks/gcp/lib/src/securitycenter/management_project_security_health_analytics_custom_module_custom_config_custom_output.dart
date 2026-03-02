@@ -6,7 +6,7 @@ import 'management_project_security_health_analytics_custom_module_custom_config
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final List<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>? properties;
+  final pulumi.Input<List<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>>? properties;
 
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
@@ -16,13 +16,13 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?pulumi.Input.mapOptionalInputValue<List<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

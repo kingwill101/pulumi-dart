@@ -13,9 +13,8 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionArgs {
   /// Creates a new [GetDeploymentStacksWhatIfResultsAtSubscriptionArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   GetDeploymentStacksWhatIfResultsAtSubscriptionArgs({
-    required pulumi.Output<String> deploymentStacksWhatIfResultName,
-  }) :
-      deploymentStacksWhatIfResultName = pulumi.Input.asInput<String>(deploymentStacksWhatIfResultName);
+    required this.deploymentStacksWhatIfResultName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionArgs {
 
   factory GetDeploymentStacksWhatIfResultsAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStacksWhatIfResultsAtSubscriptionArgs(
-      deploymentStacksWhatIfResultName: pulumi.Output.create<String>(map['deploymentStacksWhatIfResultName'] as String),
+      deploymentStacksWhatIfResultName: (map['deploymentStacksWhatIfResultName'] as String).input(),
     );
   }
 }

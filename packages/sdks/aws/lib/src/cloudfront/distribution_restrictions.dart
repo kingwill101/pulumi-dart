@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_restrictions_geo_restriction.dart';
 
 class DistributionRestrictions {
-  final DistributionRestrictionsGeoRestriction geoRestriction;
+  final pulumi.Input<DistributionRestrictionsGeoRestriction> geoRestriction;
 
   /// Creates a new [DistributionRestrictions].
   /// [geoRestriction] Required.
@@ -13,13 +14,13 @@ class DistributionRestrictions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoRestriction': geoRestriction.toMap(),
+      'geoRestriction': pulumi.Input.mapInputValue<DistributionRestrictionsGeoRestriction, Map<String, dynamic>>(geoRestriction, (value) => value.toMap()),
     };
   }
 
   factory DistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return DistributionRestrictions(
-      geoRestriction: DistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>()),
+      geoRestriction: (DistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

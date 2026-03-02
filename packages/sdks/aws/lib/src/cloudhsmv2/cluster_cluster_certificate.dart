@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterCertificate {
   /// The HSM hardware certificate issued (signed) by AWS CloudHSM.
-  final String? awsHardwareCertificate;
+  final pulumi.Input<String>? awsHardwareCertificate;
   /// The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-  final String? clusterCertificate;
+  final pulumi.Input<String>? clusterCertificate;
   /// The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
-  final String? clusterCsr;
+  final pulumi.Input<String>? clusterCsr;
   /// The HSM certificate issued (signed) by the HSM hardware.
-  final String? hsmCertificate;
+  final pulumi.Input<String>? hsmCertificate;
   /// The HSM hardware certificate issued (signed) by the hardware manufacturer.
-  final String? manufacturerHardwareCertificate;
+  final pulumi.Input<String>? manufacturerHardwareCertificate;
 
   /// Creates a new [ClusterClusterCertificate].
   /// [awsHardwareCertificate] The HSM hardware certificate issued (signed) by AWS CloudHSM.
@@ -39,11 +40,11 @@ class ClusterClusterCertificate {
 
   factory ClusterClusterCertificate.fromMap(Map<String, dynamic> map) {
     return ClusterClusterCertificate(
-      awsHardwareCertificate: map['awsHardwareCertificate'] == null ? null : map['awsHardwareCertificate'] as String,
-      clusterCertificate: map['clusterCertificate'] == null ? null : map['clusterCertificate'] as String,
-      clusterCsr: map['clusterCsr'] == null ? null : map['clusterCsr'] as String,
-      hsmCertificate: map['hsmCertificate'] == null ? null : map['hsmCertificate'] as String,
-      manufacturerHardwareCertificate: map['manufacturerHardwareCertificate'] == null ? null : map['manufacturerHardwareCertificate'] as String,
+      awsHardwareCertificate: map['awsHardwareCertificate'] == null ? null : (map['awsHardwareCertificate'] as String).input(),
+      clusterCertificate: map['clusterCertificate'] == null ? null : (map['clusterCertificate'] as String).input(),
+      clusterCsr: map['clusterCsr'] == null ? null : (map['clusterCsr'] as String).input(),
+      hsmCertificate: map['hsmCertificate'] == null ? null : (map['hsmCertificate'] as String).input(),
+      manufacturerHardwareCertificate: map['manufacturerHardwareCertificate'] == null ? null : (map['manufacturerHardwareCertificate'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMetricRuleBlackListsListMetric {
   /// The name of the monitoring indicator.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
-  final String resource;
+  final pulumi.Input<String> resource;
 
   /// Creates a new [GetMetricRuleBlackListsListMetric].
   /// [metricName] The name of the monitoring indicator.
@@ -24,8 +25,8 @@ class GetMetricRuleBlackListsListMetric {
 
   factory GetMetricRuleBlackListsListMetric.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleBlackListsListMetric(
-      metricName: map['metricName'] as String,
-      resource: map['resource'] as String,
+      metricName: (map['metricName'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

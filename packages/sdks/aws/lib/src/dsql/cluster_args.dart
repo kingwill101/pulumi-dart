@@ -34,21 +34,14 @@ class ClusterArgs {
   /// [tags] Set of tags to be associated with the AWS DSQL Cluster resource.
   /// [timeouts] Optional.
   ClusterArgs({
-    pulumi.Output<bool>? deletionProtectionEnabled,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? kmsEncryptionKey,
-    pulumi.Output<ClusterMultiRegionProperties>? multiRegionProperties,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ClusterTimeouts>? timeouts,
-  }) :
-      deletionProtectionEnabled = pulumi.Input.asOptionalInput<bool>(deletionProtectionEnabled),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      kmsEncryptionKey = pulumi.Input.asOptionalInput<String>(kmsEncryptionKey),
-      multiRegionProperties = pulumi.Input.asOptionalInput<ClusterMultiRegionProperties>(multiRegionProperties),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ClusterTimeouts>(timeouts);
+    this.deletionProtectionEnabled,
+    this.forceDestroy,
+    this.kmsEncryptionKey,
+    this.multiRegionProperties,
+    this.region,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : pulumi.Output.create<bool>(map['deletionProtectionEnabled'] as bool),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : pulumi.Output.create<String>(map['kmsEncryptionKey'] as String),
-      multiRegionProperties: map['multiRegionProperties'] == null ? null : pulumi.Output.create<ClusterMultiRegionProperties>(ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ClusterTimeouts>(ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : (map['kmsEncryptionKey'] as String).input(),
+      multiRegionProperties: map['multiRegionProperties'] == null ? null : (ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

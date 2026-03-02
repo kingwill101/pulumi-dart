@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SyntheticTaskMonitorConfNetTcp {
   /// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
-  final int? connectTimes;
+  final pulumi.Input<int>? connectTimes;
   /// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
-  final int? interval;
+  final pulumi.Input<int>? interval;
   /// The target URL.
-  final String targetUrl;
+  final pulumi.Input<String> targetUrl;
   /// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-  final int? timeout;
+  final pulumi.Input<int>? timeout;
   /// Whether to enable tracert. The default is true.
-  final bool? tracertEnable;
+  final pulumi.Input<bool>? tracertEnable;
   /// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
-  final int? tracertNumMax;
+  final pulumi.Input<int>? tracertNumMax;
   /// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-  final int? tracertTimeout;
+  final pulumi.Input<int>? tracertTimeout;
 
   /// Creates a new [SyntheticTaskMonitorConfNetTcp].
   /// [connectTimes] The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
@@ -49,13 +50,13 @@ class SyntheticTaskMonitorConfNetTcp {
 
   factory SyntheticTaskMonitorConfNetTcp.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfNetTcp(
-      connectTimes: map['connectTimes'] == null ? null : map['connectTimes'] as int,
-      interval: map['interval'] == null ? null : map['interval'] as int,
-      targetUrl: map['targetUrl'] as String,
-      timeout: map['timeout'] == null ? null : map['timeout'] as int,
-      tracertEnable: map['tracertEnable'] == null ? null : map['tracertEnable'] as bool,
-      tracertNumMax: map['tracertNumMax'] == null ? null : map['tracertNumMax'] as int,
-      tracertTimeout: map['tracertTimeout'] == null ? null : map['tracertTimeout'] as int,
+      connectTimes: map['connectTimes'] == null ? null : (map['connectTimes'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      targetUrl: (map['targetUrl'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable'] as bool).input(),
+      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax'] as int).input(),
+      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout'] as int).input(),
     );
   }
 }

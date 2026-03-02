@@ -38,27 +38,17 @@ class UserProfileState {
   /// [userProfileName] The name for the User Profile.
   /// [userSettings] The user settings. See User Settings below.
   UserProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? homeEfsFileSystemUid,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? singleSignOnUserIdentifier,
-    pulumi.Output<String>? singleSignOnUserValue,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? userProfileName,
-    pulumi.Output<UserProfileUserSettings>? userSettings,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      homeEfsFileSystemUid = pulumi.Input.asOptionalInput<String>(homeEfsFileSystemUid),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      singleSignOnUserIdentifier = pulumi.Input.asOptionalInput<String>(singleSignOnUserIdentifier),
-      singleSignOnUserValue = pulumi.Input.asOptionalInput<String>(singleSignOnUserValue),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      userProfileName = pulumi.Input.asOptionalInput<String>(userProfileName),
-      userSettings = pulumi.Input.asOptionalInput<UserProfileUserSettings>(userSettings);
+    this.arn,
+    this.domainId,
+    this.homeEfsFileSystemUid,
+    this.region,
+    this.singleSignOnUserIdentifier,
+    this.singleSignOnUserValue,
+    this.tags,
+    this.tagsAll,
+    this.userProfileName,
+    this.userSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class UserProfileState {
 
   factory UserProfileState.fromMap(Map<String, dynamic> map) {
     return UserProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : pulumi.Output.create<String>(map['homeEfsFileSystemUid'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : pulumi.Output.create<String>(map['singleSignOnUserIdentifier'] as String),
-      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : pulumi.Output.create<String>(map['singleSignOnUserValue'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      userProfileName: map['userProfileName'] == null ? null : pulumi.Output.create<String>(map['userProfileName'] as String),
-      userSettings: map['userSettings'] == null ? null : pulumi.Output.create<UserProfileUserSettings>(UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : (map['homeEfsFileSystemUid'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : (map['singleSignOnUserIdentifier'] as String).input(),
+      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : (map['singleSignOnUserValue'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
+      userSettings: map['userSettings'] == null ? null : (UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

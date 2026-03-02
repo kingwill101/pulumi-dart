@@ -22,15 +22,11 @@ class GetExtensionArgs {
   /// [extensionName] The name of the machine extension.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetExtensionArgs({
-    required pulumi.Output<String> arcSettingName,
-    required pulumi.Output<String> clusterName,
-    required pulumi.Output<String> extensionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      arcSettingName = pulumi.Input.asInput<String>(arcSettingName),
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      extensionName = pulumi.Input.asInput<String>(extensionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.arcSettingName,
+    required this.clusterName,
+    required this.extensionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetExtensionArgs {
 
   factory GetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionArgs(
-      arcSettingName: pulumi.Output.create<String>(map['arcSettingName'] as String),
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      extensionName: pulumi.Output.create<String>(map['extensionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      arcSettingName: (map['arcSettingName'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

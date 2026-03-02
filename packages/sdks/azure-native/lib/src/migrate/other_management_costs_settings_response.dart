@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Other Management Costs Settings.
 class OtherManagementCostsSettingsResponse {
   /// Data Protection Cost Per Server Per Year.
-  final double dataProtectionCostPerServerPerYear;
+  final pulumi.Input<double> dataProtectionCostPerServerPerYear;
   /// Monitoring Cost Per Server Per Year.
-  final double monitoringCostPerServerPerYear;
+  final pulumi.Input<double> monitoringCostPerServerPerYear;
   /// Patching Cost Per Server Per Year.
-  final double patchingCostPerServerPerYear;
+  final pulumi.Input<double> patchingCostPerServerPerYear;
 
   /// Creates a new [OtherManagementCostsSettingsResponse].
   /// [dataProtectionCostPerServerPerYear] Data Protection Cost Per Server Per Year.
@@ -30,9 +31,9 @@ class OtherManagementCostsSettingsResponse {
 
   factory OtherManagementCostsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return OtherManagementCostsSettingsResponse(
-      dataProtectionCostPerServerPerYear: map['dataProtectionCostPerServerPerYear'] as double,
-      monitoringCostPerServerPerYear: map['monitoringCostPerServerPerYear'] as double,
-      patchingCostPerServerPerYear: map['patchingCostPerServerPerYear'] as double,
+      dataProtectionCostPerServerPerYear: (map['dataProtectionCostPerServerPerYear'] as double).input(),
+      monitoringCostPerServerPerYear: (map['monitoringCostPerServerPerYear'] as double).input(),
+      patchingCostPerServerPerYear: (map['patchingCostPerServerPerYear'] as double).input(),
     );
   }
 }

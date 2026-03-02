@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointCustomDnsConfig {
   /// The fully qualified domain name to the `private_dns_zone`.
-  final String? fqdn;
+  final pulumi.Input<String>? fqdn;
   /// A list of all IP Addresses that map to the `private_dns_zone` fqdn.
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// Creates a new [EndpointCustomDnsConfig].
   /// [fqdn] The fully qualified domain name to the `private_dns_zone`.
@@ -24,8 +25,8 @@ class EndpointCustomDnsConfig {
 
   factory EndpointCustomDnsConfig.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDnsConfig(
-      fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
     );
   }
 }

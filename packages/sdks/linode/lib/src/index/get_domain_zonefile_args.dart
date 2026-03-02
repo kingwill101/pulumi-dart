@@ -13,9 +13,8 @@ class GetDomainZonefileArgs {
   /// Creates a new [GetDomainZonefileArgs].
   /// [domainId] The associated domain's unique ID.
   GetDomainZonefileArgs({
-    required pulumi.Output<int> domainId,
-  }) :
-      domainId = pulumi.Input.asInput<int>(domainId);
+    required this.domainId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDomainZonefileArgs {
 
   factory GetDomainZonefileArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainZonefileArgs(
-      domainId: pulumi.Output.create<int>(map['domainId'] as int),
+      domainId: (map['domainId'] as int).input(),
     );
   }
 }

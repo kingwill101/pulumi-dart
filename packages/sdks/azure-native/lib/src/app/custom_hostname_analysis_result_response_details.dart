@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Detailed errors.
 class CustomHostnameAnalysisResultResponseDetails {
   /// Standardized string to programmatically identify the error.
-  final String code;
+  final pulumi.Input<String> code;
   /// Detailed error description and debugging information.
-  final String message;
+  final pulumi.Input<String> message;
   /// Detailed error description and debugging information.
-  final String target;
+  final pulumi.Input<String> target;
 
   /// Creates a new [CustomHostnameAnalysisResultResponseDetails].
   /// [code] Standardized string to programmatically identify the error.
@@ -30,9 +31,9 @@ class CustomHostnameAnalysisResultResponseDetails {
 
   factory CustomHostnameAnalysisResultResponseDetails.fromMap(Map<String, dynamic> map) {
     return CustomHostnameAnalysisResultResponseDetails(
-      code: map['code'] as String,
-      message: map['message'] as String,
-      target: map['target'] as String,
+      code: (map['code'] as String).input(),
+      message: (map['message'] as String).input(),
+      target: (map['target'] as String).input(),
     );
   }
 }

@@ -43,33 +43,20 @@ class ProbeState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] Optional.
   ProbeState({
-    pulumi.Output<String>? addressFamily,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? destination,
-    pulumi.Output<int>? destinationPort,
-    pulumi.Output<String>? monitorName,
-    pulumi.Output<int>? packetSize,
-    pulumi.Output<String>? probeId,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? sourceArn,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vpcId,
-  }) :
-      addressFamily = pulumi.Input.asOptionalInput<String>(addressFamily),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      destination = pulumi.Input.asOptionalInput<String>(destination),
-      destinationPort = pulumi.Input.asOptionalInput<int>(destinationPort),
-      monitorName = pulumi.Input.asOptionalInput<String>(monitorName),
-      packetSize = pulumi.Input.asOptionalInput<int>(packetSize),
-      probeId = pulumi.Input.asOptionalInput<String>(probeId),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceArn = pulumi.Input.asOptionalInput<String>(sourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.addressFamily,
+    this.arn,
+    this.destination,
+    this.destinationPort,
+    this.monitorName,
+    this.packetSize,
+    this.probeId,
+    this.protocol,
+    this.region,
+    this.sourceArn,
+    this.tags,
+    this.tagsAll,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,19 +78,19 @@ class ProbeState {
 
   factory ProbeState.fromMap(Map<String, dynamic> map) {
     return ProbeState(
-      addressFamily: map['addressFamily'] == null ? null : pulumi.Output.create<String>(map['addressFamily'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      destination: map['destination'] == null ? null : pulumi.Output.create<String>(map['destination'] as String),
-      destinationPort: map['destinationPort'] == null ? null : pulumi.Output.create<int>(map['destinationPort'] as int),
-      monitorName: map['monitorName'] == null ? null : pulumi.Output.create<String>(map['monitorName'] as String),
-      packetSize: map['packetSize'] == null ? null : pulumi.Output.create<int>(map['packetSize'] as int),
-      probeId: map['probeId'] == null ? null : pulumi.Output.create<String>(map['probeId'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      sourceArn: map['sourceArn'] == null ? null : pulumi.Output.create<String>(map['sourceArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
+      packetSize: map['packetSize'] == null ? null : (map['packetSize'] as int).input(),
+      probeId: map['probeId'] == null ? null : (map['probeId'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

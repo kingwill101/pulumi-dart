@@ -19,13 +19,10 @@ class TableBucketPolicyArgs {
   /// [resourcePolicy] Amazon Web Services resource-based policy document in JSON format.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this policy.
   TableBucketPolicyArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourcePolicy,
-    required pulumi.Output<String> tableBucketArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+    this.region,
+    required this.resourcePolicy,
+    required this.tableBucketArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TableBucketPolicyArgs {
 
   factory TableBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketPolicyArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourcePolicy: pulumi.Output.create<String>(map['resourcePolicy'] as String),
-      tableBucketArn: pulumi.Output.create<String>(map['tableBucketArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourcePolicy: (map['resourcePolicy'] as String).input(),
+      tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }
 }

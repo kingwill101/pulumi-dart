@@ -7,17 +7,17 @@ import 'tag_response.dart';
 /// Definition of awsNetworkFirewallFirewallPolicy
 class AwsNetworkFirewallFirewallPolicyPropertiesResponse {
   /// Property description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property firewallPolicy
-  final FirewallPolicyResponse? firewallPolicy;
+  final pulumi.Input<FirewallPolicyResponse>? firewallPolicy;
   /// A resource ARN.
-  final String? firewallPolicyArn;
+  final pulumi.Input<String>? firewallPolicyArn;
   /// Property firewallPolicyId
-  final String? firewallPolicyId;
+  final pulumi.Input<String>? firewallPolicyId;
   /// Property firewallPolicyName
-  final String? firewallPolicyName;
+  final pulumi.Input<String>? firewallPolicyName;
   /// Property tags
-  final List<TagResponse>? tags;
+  final pulumi.Input<List<TagResponse>>? tags;
 
   /// Creates a new [AwsNetworkFirewallFirewallPolicyPropertiesResponse].
   /// [description] Property description
@@ -38,22 +38,22 @@ class AwsNetworkFirewallFirewallPolicyPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'firewallPolicy': ?firewallPolicy == null ? null : firewallPolicy!.toMap(),
+      'firewallPolicy': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyResponse, Map<String, dynamic>>(firewallPolicy, (value) => value.toMap()),
       'firewallPolicyArn': ?firewallPolicyArn,
       'firewallPolicyId': ?firewallPolicyId,
       'firewallPolicyName': ?firewallPolicyName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsNetworkFirewallFirewallPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallFirewallPolicyPropertiesResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      firewallPolicy: map['firewallPolicy'] == null ? null : FirewallPolicyResponse.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>()),
-      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : map['firewallPolicyArn'] as String,
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : map['firewallPolicyId'] as String,
-      firewallPolicyName: map['firewallPolicyName'] == null ? null : map['firewallPolicyName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (FirewallPolicyResponse.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
+      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : (map['firewallPolicyArn'] as String).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
+      firewallPolicyName: map['firewallPolicyName'] == null ? null : (map['firewallPolicyName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

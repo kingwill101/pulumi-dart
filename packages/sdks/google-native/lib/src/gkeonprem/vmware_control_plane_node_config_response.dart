@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_auto_resize_config_response.dart';
 import 'vmware_control_plane_vsphere_config_response.dart';
 
 /// Specifies control plane node config for the VMware user cluster.
 class VmwareControlPlaneNodeConfigResponse {
   /// AutoResizeConfig provides auto resizing configurations.
-  final VmwareAutoResizeConfigResponse autoResizeConfig;
+  final pulumi.Input<VmwareAutoResizeConfigResponse> autoResizeConfig;
   /// The number of CPUs for each admin cluster node that serve as control planes for this VMware user cluster. (default: 4 CPUs)
-  final String cpus;
+  final pulumi.Input<String> cpus;
   /// The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory).
-  final String memory;
+  final pulumi.Input<String> memory;
   /// The number of control plane nodes for this VMware user cluster. (default: 1 replica).
-  final String replicas;
+  final pulumi.Input<String> replicas;
   /// Vsphere-specific config.
-  final VmwareControlPlaneVsphereConfigResponse vsphereConfig;
+  final pulumi.Input<VmwareControlPlaneVsphereConfigResponse> vsphereConfig;
 
   /// Creates a new [VmwareControlPlaneNodeConfigResponse].
   /// [autoResizeConfig] AutoResizeConfig provides auto resizing configurations.
@@ -32,21 +33,21 @@ class VmwareControlPlaneNodeConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoResizeConfig': autoResizeConfig.toMap(),
+      'autoResizeConfig': pulumi.Input.mapInputValue<VmwareAutoResizeConfigResponse, Map<String, dynamic>>(autoResizeConfig, (value) => value.toMap()),
       'cpus': cpus,
       'memory': memory,
       'replicas': replicas,
-      'vsphereConfig': vsphereConfig.toMap(),
+      'vsphereConfig': pulumi.Input.mapInputValue<VmwareControlPlaneVsphereConfigResponse, Map<String, dynamic>>(vsphereConfig, (value) => value.toMap()),
     };
   }
 
   factory VmwareControlPlaneNodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneNodeConfigResponse(
-      autoResizeConfig: VmwareAutoResizeConfigResponse.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>()),
-      cpus: map['cpus'] as String,
-      memory: map['memory'] as String,
-      replicas: map['replicas'] as String,
-      vsphereConfig: VmwareControlPlaneVsphereConfigResponse.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>()),
+      autoResizeConfig: (VmwareAutoResizeConfigResponse.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>())).input(),
+      cpus: (map['cpus'] as String).input(),
+      memory: (map['memory'] as String).input(),
+      replicas: (map['replicas'] as String).input(),
+      vsphereConfig: (VmwareControlPlaneVsphereConfigResponse.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

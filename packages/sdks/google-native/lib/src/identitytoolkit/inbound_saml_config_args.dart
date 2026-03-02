@@ -34,23 +34,15 @@ class InboundSamlConfigArgs {
   /// [spConfig] The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
   /// [tenantId] Required.
   InboundSamlConfigArgs({
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<GoogleCloudIdentitytoolkitAdminV2IdpConfig>? idpConfig,
-    pulumi.Output<String>? inboundSamlConfigId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<GoogleCloudIdentitytoolkitAdminV2SpConfig>? spConfig,
-    required pulumi.Output<String> tenantId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      idpConfig = pulumi.Input.asOptionalInput<GoogleCloudIdentitytoolkitAdminV2IdpConfig>(idpConfig),
-      inboundSamlConfigId = pulumi.Input.asOptionalInput<String>(inboundSamlConfigId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spConfig = pulumi.Input.asOptionalInput<GoogleCloudIdentitytoolkitAdminV2SpConfig>(spConfig),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+    this.displayName,
+    this.enabled,
+    this.idpConfig,
+    this.inboundSamlConfigId,
+    this.name,
+    this.project,
+    this.spConfig,
+    required this.tenantId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class InboundSamlConfigArgs {
 
   factory InboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      idpConfig: map['idpConfig'] == null ? null : pulumi.Output.create<GoogleCloudIdentitytoolkitAdminV2IdpConfig>(GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())),
-      inboundSamlConfigId: map['inboundSamlConfigId'] == null ? null : pulumi.Output.create<String>(map['inboundSamlConfigId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      spConfig: map['spConfig'] == null ? null : pulumi.Output.create<GoogleCloudIdentitytoolkitAdminV2SpConfig>(GoogleCloudIdentitytoolkitAdminV2SpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())),
-      tenantId: pulumi.Output.create<String>(map['tenantId'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      idpConfig: map['idpConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      inboundSamlConfigId: map['inboundSamlConfigId'] == null ? null : (map['inboundSamlConfigId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      spConfig: map['spConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2SpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

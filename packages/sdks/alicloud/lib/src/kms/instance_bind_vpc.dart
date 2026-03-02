@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceBindVpc {
   /// region id
-  final String? regionId;
+  final pulumi.Input<String>? regionId;
   /// VPC ID
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// VPC owner root user ID
-  final String? vpcOwnerId;
+  final pulumi.Input<String>? vpcOwnerId;
   /// vswitch id
-  final String? vswitchId;
+  final pulumi.Input<String>? vswitchId;
 
   /// Creates a new [InstanceBindVpc].
   /// [regionId] region id
@@ -34,10 +35,10 @@ class InstanceBindVpc {
 
   factory InstanceBindVpc.fromMap(Map<String, dynamic> map) {
     return InstanceBindVpc(
-      regionId: map['regionId'] == null ? null : map['regionId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : map['vpcOwnerId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

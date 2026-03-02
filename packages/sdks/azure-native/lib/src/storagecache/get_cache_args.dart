@@ -16,11 +16,9 @@ class GetCacheArgs {
   /// [cacheName] Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetCacheArgs({
-    required pulumi.Output<String> cacheName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      cacheName = pulumi.Input.asInput<String>(cacheName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.cacheName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCacheArgs {
 
   factory GetCacheArgs.fromMap(Map<String, dynamic> map) {
     return GetCacheArgs(
-      cacheName: pulumi.Output.create<String>(map['cacheName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      cacheName: (map['cacheName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

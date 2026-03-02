@@ -19,13 +19,10 @@ class GetServerCollectorsOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverCollectorName] Physical server collector ARM name
   GetServerCollectorsOperationArgs({
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverCollectorName,
-  }) :
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverCollectorName = pulumi.Input.asInput<String>(serverCollectorName);
+    required this.projectName,
+    required this.resourceGroupName,
+    required this.serverCollectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetServerCollectorsOperationArgs {
 
   factory GetServerCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCollectorsOperationArgs(
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverCollectorName: pulumi.Output.create<String>(map['serverCollectorName'] as String),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverCollectorName: (map['serverCollectorName'] as String).input(),
     );
   }
 }

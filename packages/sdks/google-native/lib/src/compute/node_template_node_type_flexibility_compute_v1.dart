@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeTemplateNodeTypeFlexibilityComputeV1 {
-  final String? cpus;
-  final String? localSsd;
-  final String? memory;
+  final pulumi.Input<String>? cpus;
+  final pulumi.Input<String>? localSsd;
+  final pulumi.Input<String>? memory;
 
   /// Creates a new [NodeTemplateNodeTypeFlexibilityComputeV1].
   /// [cpus] Optional.
@@ -26,9 +27,9 @@ class NodeTemplateNodeTypeFlexibilityComputeV1 {
 
   factory NodeTemplateNodeTypeFlexibilityComputeV1.fromMap(Map<String, dynamic> map) {
     return NodeTemplateNodeTypeFlexibilityComputeV1(
-      cpus: map['cpus'] == null ? null : map['cpus'] as String,
-      localSsd: map['localSsd'] == null ? null : map['localSsd'] as String,
-      memory: map['memory'] == null ? null : map['memory'] as String,
+      cpus: map['cpus'] == null ? null : (map['cpus'] as String).input(),
+      localSsd: map['localSsd'] == null ? null : (map['localSsd'] as String).input(),
+      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
     );
   }
 }

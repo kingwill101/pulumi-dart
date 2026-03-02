@@ -25,17 +25,12 @@ class GetGalleryImageVersionArgs {
   /// [galleryName] The name of the Shared Image Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGalleryImageVersionArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> galleryImageName,
-    required pulumi.Output<String> galleryImageVersionName,
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      galleryImageName = pulumi.Input.asInput<String>(galleryImageName),
-      galleryImageVersionName = pulumi.Input.asInput<String>(galleryImageVersionName),
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.galleryImageName,
+    required this.galleryImageVersionName,
+    required this.galleryName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetGalleryImageVersionArgs {
 
   factory GetGalleryImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryImageVersionArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      galleryImageName: pulumi.Output.create<String>(map['galleryImageName'] as String),
-      galleryImageVersionName: pulumi.Output.create<String>(map['galleryImageVersionName'] as String),
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      galleryImageName: (map['galleryImageName'] as String).input(),
+      galleryImageVersionName: (map['galleryImageVersionName'] as String).input(),
+      galleryName: (map['galleryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

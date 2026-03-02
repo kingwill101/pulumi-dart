@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent {
   /// ARN of the selected Network Insights Analysis.
-  final String arn;
-  final String id;
+  final pulumi.Input<String> arn;
+  final pulumi.Input<String> id;
   /// Name of the filter field. Valid values can be found in the EC2 [`DescribeNetworkInsightsAnalyses`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsAnalyses.html) API Reference.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent].
   /// [arn] ARN of the selected Network Insights Analysis.
@@ -28,9 +29,9 @@ class GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent {
 
   factory GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      arn: (map['arn'] as String).input(),
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

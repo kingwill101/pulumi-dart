@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The mapping content.
 class IotMappingPropertiesResponse {
   /// The mapping.
-  final dynamic content;
+  final pulumi.Input<dynamic>? content;
 
   /// Creates a new [IotMappingPropertiesResponse].
   /// [content] The mapping.
@@ -20,7 +21,7 @@ class IotMappingPropertiesResponse {
 
   factory IotMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IotMappingPropertiesResponse(
-      content: map['content'] == null ? null : map['content'],
+      content: map['content'] == null ? null : (map['content']).input(),
     );
   }
 }

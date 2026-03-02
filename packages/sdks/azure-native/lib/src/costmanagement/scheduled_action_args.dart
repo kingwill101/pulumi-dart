@@ -43,27 +43,17 @@ class ScheduledActionArgs {
   /// [status] Status of the scheduled action.
   /// [viewId] Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   ScheduledActionArgs({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<FileDestination>? fileDestination,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? name,
-    required pulumi.Output<NotificationProperties> notification,
-    pulumi.Output<String>? notificationEmail,
-    required pulumi.Output<ScheduleProperties> schedule,
-    pulumi.Output<String>? scope,
-    required pulumi.Output<String> status,
-    required pulumi.Output<String> viewId,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      fileDestination = pulumi.Input.asOptionalInput<FileDestination>(fileDestination),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notification = pulumi.Input.asInput<NotificationProperties>(notification),
-      notificationEmail = pulumi.Input.asOptionalInput<String>(notificationEmail),
-      schedule = pulumi.Input.asInput<ScheduleProperties>(schedule),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      status = pulumi.Input.asInput<String>(status),
-      viewId = pulumi.Input.asInput<String>(viewId);
+    required this.displayName,
+    this.fileDestination,
+    this.kind,
+    this.name,
+    required this.notification,
+    this.notificationEmail,
+    required this.schedule,
+    this.scope,
+    required this.status,
+    required this.viewId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,16 +72,16 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      fileDestination: map['fileDestination'] == null ? null : pulumi.Output.create<FileDestination>(FileDestination.fromMap((map['fileDestination'] as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notification: pulumi.Output.create<NotificationProperties>(NotificationProperties.fromMap((map['notification'] as Map).cast<String, dynamic>())),
-      notificationEmail: map['notificationEmail'] == null ? null : pulumi.Output.create<String>(map['notificationEmail'] as String),
-      schedule: pulumi.Output.create<ScheduleProperties>(ScheduleProperties.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      status: pulumi.Output.create<String>(map['status'] as String),
-      viewId: pulumi.Output.create<String>(map['viewId'] as String),
+      displayName: (map['displayName'] as String).input(),
+      fileDestination: map['fileDestination'] == null ? null : (FileDestination.fromMap((map['fileDestination'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notification: (NotificationProperties.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
+      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail'] as String).input(),
+      schedule: (ScheduleProperties.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      status: (map['status'] as String).input(),
+      viewId: (map['viewId'] as String).input(),
     );
   }
 }

@@ -22,15 +22,11 @@ class ProductGroupArgs {
   /// [productId] The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   ProductGroupArgs({
-    required pulumi.Output<String> apiManagementName,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> productId,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      apiManagementName = pulumi.Input.asInput<String>(apiManagementName),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      productId = pulumi.Input.asInput<String>(productId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.apiManagementName,
+    required this.groupName,
+    required this.productId,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ProductGroupArgs {
 
   factory ProductGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProductGroupArgs(
-      apiManagementName: pulumi.Output.create<String>(map['apiManagementName'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      productId: pulumi.Output.create<String>(map['productId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      apiManagementName: (map['apiManagementName'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      productId: (map['productId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class DelegatedAdminAccountState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [relationshipStatus] Status of this delegated admin account.
   DelegatedAdminAccountState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? relationshipStatus,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      relationshipStatus = pulumi.Input.asOptionalInput<String>(relationshipStatus);
+    this.accountId,
+    this.region,
+    this.relationshipStatus,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class DelegatedAdminAccountState {
 
   factory DelegatedAdminAccountState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      relationshipStatus: map['relationshipStatus'] == null ? null : pulumi.Output.create<String>(map['relationshipStatus'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
     );
   }
 }

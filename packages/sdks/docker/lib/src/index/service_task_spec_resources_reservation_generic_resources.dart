@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecResourcesReservationGenericResources {
   /// The Integer resources
-  final List<String>? discreteResourcesSpecs;
+  final pulumi.Input<List<String>>? discreteResourcesSpecs;
   /// The String resources
-  final List<String>? namedResourcesSpecs;
+  final pulumi.Input<List<String>>? namedResourcesSpecs;
 
   /// Creates a new [ServiceTaskSpecResourcesReservationGenericResources].
   /// [discreteResourcesSpecs] The Integer resources
@@ -24,8 +25,8 @@ class ServiceTaskSpecResourcesReservationGenericResources {
 
   factory ServiceTaskSpecResourcesReservationGenericResources.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesReservationGenericResources(
-      discreteResourcesSpecs: map['discreteResourcesSpecs'] == null ? null : (map['discreteResourcesSpecs'] as List).cast<String>(),
-      namedResourcesSpecs: map['namedResourcesSpecs'] == null ? null : (map['namedResourcesSpecs'] as List).cast<String>(),
+      discreteResourcesSpecs: map['discreteResourcesSpecs'] == null ? null : ((map['discreteResourcesSpecs'] as List).cast<String>()).input(),
+      namedResourcesSpecs: map['namedResourcesSpecs'] == null ? null : ((map['namedResourcesSpecs'] as List).cast<String>()).input(),
     );
   }
 }

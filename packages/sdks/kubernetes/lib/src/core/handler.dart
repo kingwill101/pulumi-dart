@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exec_action.dart';
 import 'httpget_action.dart';
 import 'tcpsocket_action.dart';
@@ -7,11 +8,11 @@ import 'tcpsocket_action.dart';
 /// Handler defines a specific action that should be taken
 class Handler {
   /// One and only one of the following should be specified. Exec specifies the action to take.
-  final ExecAction? exec;
+  final pulumi.Input<ExecAction>? exec;
   /// HTTPGet specifies the http request to perform.
-  final HTTPGetAction? httpGet;
+  final pulumi.Input<HTTPGetAction>? httpGet;
   /// TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-  final TCPSocketAction? tcpSocket;
+  final pulumi.Input<TCPSocketAction>? tcpSocket;
 
   /// Creates a new [Handler].
   /// [exec] One and only one of the following should be specified. Exec specifies the action to take.
@@ -25,17 +26,17 @@ class Handler {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exec': ?exec == null ? null : exec!.toMap(),
-      'httpGet': ?httpGet == null ? null : httpGet!.toMap(),
-      'tcpSocket': ?tcpSocket == null ? null : tcpSocket!.toMap(),
+      'exec': ?pulumi.Input.mapOptionalInputValue<ExecAction, Map<String, dynamic>>(exec, (value) => value.toMap()),
+      'httpGet': ?pulumi.Input.mapOptionalInputValue<HTTPGetAction, Map<String, dynamic>>(httpGet, (value) => value.toMap()),
+      'tcpSocket': ?pulumi.Input.mapOptionalInputValue<TCPSocketAction, Map<String, dynamic>>(tcpSocket, (value) => value.toMap()),
     };
   }
 
   factory Handler.fromMap(Map<String, dynamic> map) {
     return Handler(
-      exec: map['exec'] == null ? null : ExecAction.fromMap((map['exec'] as Map).cast<String, dynamic>()),
-      httpGet: map['httpGet'] == null ? null : HTTPGetAction.fromMap((map['httpGet'] as Map).cast<String, dynamic>()),
-      tcpSocket: map['tcpSocket'] == null ? null : TCPSocketAction.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>()),
+      exec: map['exec'] == null ? null : (ExecAction.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (HTTPGetAction.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketAction.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

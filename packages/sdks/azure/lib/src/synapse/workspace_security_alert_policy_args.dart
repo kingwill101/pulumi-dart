@@ -34,23 +34,15 @@ class WorkspaceSecurityAlertPolicyArgs {
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all Threat Detection audit logs.
   /// [synapseWorkspaceId] Specifies the ID of the Synapse Workspace. Changing this forces a new resource to be created.
   WorkspaceSecurityAlertPolicyArgs({
-    pulumi.Output<List<String>>? disabledAlerts,
-    pulumi.Output<bool>? emailAccountAdminsEnabled,
-    pulumi.Output<List<String>>? emailAddresses,
-    required pulumi.Output<String> policyState,
-    pulumi.Output<int>? retentionDays,
-    pulumi.Output<String>? storageAccountAccessKey,
-    pulumi.Output<String>? storageEndpoint,
-    required pulumi.Output<String> synapseWorkspaceId,
-  }) :
-      disabledAlerts = pulumi.Input.asOptionalInput<List<String>>(disabledAlerts),
-      emailAccountAdminsEnabled = pulumi.Input.asOptionalInput<bool>(emailAccountAdminsEnabled),
-      emailAddresses = pulumi.Input.asOptionalInput<List<String>>(emailAddresses),
-      policyState = pulumi.Input.asInput<String>(policyState),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      storageAccountAccessKey = pulumi.Input.asOptionalInput<String>(storageAccountAccessKey),
-      storageEndpoint = pulumi.Input.asOptionalInput<String>(storageEndpoint),
-      synapseWorkspaceId = pulumi.Input.asInput<String>(synapseWorkspaceId);
+    this.disabledAlerts,
+    this.emailAccountAdminsEnabled,
+    this.emailAddresses,
+    required this.policyState,
+    this.retentionDays,
+    this.storageAccountAccessKey,
+    this.storageEndpoint,
+    required this.synapseWorkspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class WorkspaceSecurityAlertPolicyArgs {
 
   factory WorkspaceSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceSecurityAlertPolicyArgs(
-      disabledAlerts: map['disabledAlerts'] == null ? null : pulumi.Output.create<List<String>>((map['disabledAlerts'] as List).cast<String>()),
-      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : pulumi.Output.create<bool>(map['emailAccountAdminsEnabled'] as bool),
-      emailAddresses: map['emailAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['emailAddresses'] as List).cast<String>()),
-      policyState: pulumi.Output.create<String>(map['policyState'] as String),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : pulumi.Output.create<String>(map['storageAccountAccessKey'] as String),
-      storageEndpoint: map['storageEndpoint'] == null ? null : pulumi.Output.create<String>(map['storageEndpoint'] as String),
-      synapseWorkspaceId: pulumi.Output.create<String>(map['synapseWorkspaceId'] as String),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
+      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled'] as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      policyState: (map['policyState'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );
   }
 }

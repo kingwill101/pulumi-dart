@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
   /// The ID of the Application Insights Resource.
-  final String componentId;
+  final pulumi.Input<String> componentId;
   /// The number of failed locations.
-  final int failedLocationCount;
+  final pulumi.Input<int> failedLocationCount;
   /// The ID of the Application Insights Web Test.
-  final String webTestId;
+  final pulumi.Input<String> webTestId;
 
   /// Creates a new [MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria].
   /// [componentId] The ID of the Application Insights Resource.
@@ -29,9 +30,9 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
 
   factory MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(
-      componentId: map['componentId'] as String,
-      failedLocationCount: map['failedLocationCount'] as int,
-      webTestId: map['webTestId'] as String,
+      componentId: (map['componentId'] as String).input(),
+      failedLocationCount: (map['failedLocationCount'] as int).input(),
+      webTestId: (map['webTestId'] as String).input(),
     );
   }
 }

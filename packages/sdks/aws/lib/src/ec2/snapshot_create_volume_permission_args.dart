@@ -19,13 +19,10 @@ class SnapshotCreateVolumePermissionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotId] A snapshot ID
   SnapshotCreateVolumePermissionArgs({
-    required pulumi.Output<String> accountId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> snapshotId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId);
+    required this.accountId,
+    this.region,
+    required this.snapshotId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class SnapshotCreateVolumePermissionArgs {
 
   factory SnapshotCreateVolumePermissionArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCreateVolumePermissionArgs(
-      accountId: pulumi.Output.create<String>(map['accountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      snapshotId: pulumi.Output.create<String>(map['snapshotId'] as String),
+      accountId: (map['accountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
     );
   }
 }

@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_launch_template_network_interface_connection_tracking_specification.dart';
 
 class GetLaunchTemplateNetworkInterface {
-  final String associateCarrierIpAddress;
-  final bool? associatePublicIpAddress;
-  final List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification> connectionTrackingSpecifications;
-  final bool? deleteOnTermination;
-  final String description;
-  final int deviceIndex;
-  final String interfaceType;
-  final int ipv4AddressCount;
-  final List<String> ipv4Addresses;
-  final int ipv4PrefixCount;
-  final List<String> ipv4Prefixes;
-  final int ipv6AddressCount;
-  final List<String> ipv6Addresses;
-  final int ipv6PrefixCount;
-  final List<String> ipv6Prefixes;
-  final int networkCardIndex;
-  final String networkInterfaceId;
-  final String primaryIpv6;
-  final String privateIpAddress;
-  final List<String> securityGroups;
-  final String subnetId;
+  final pulumi.Input<String> associateCarrierIpAddress;
+  final pulumi.Input<bool>? associatePublicIpAddress;
+  final pulumi.Input<List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>> connectionTrackingSpecifications;
+  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<String> description;
+  final pulumi.Input<int> deviceIndex;
+  final pulumi.Input<String> interfaceType;
+  final pulumi.Input<int> ipv4AddressCount;
+  final pulumi.Input<List<String>> ipv4Addresses;
+  final pulumi.Input<int> ipv4PrefixCount;
+  final pulumi.Input<List<String>> ipv4Prefixes;
+  final pulumi.Input<int> ipv6AddressCount;
+  final pulumi.Input<List<String>> ipv6Addresses;
+  final pulumi.Input<int> ipv6PrefixCount;
+  final pulumi.Input<List<String>> ipv6Prefixes;
+  final pulumi.Input<int> networkCardIndex;
+  final pulumi.Input<String> networkInterfaceId;
+  final pulumi.Input<String> primaryIpv6;
+  final pulumi.Input<String> privateIpAddress;
+  final pulumi.Input<List<String>> securityGroups;
+  final pulumi.Input<String> subnetId;
 
   /// Creates a new [GetLaunchTemplateNetworkInterface].
   /// [associateCarrierIpAddress] Required.
@@ -76,7 +76,7 @@ class GetLaunchTemplateNetworkInterface {
     return <String, dynamic>{
       'associateCarrierIpAddress': associateCarrierIpAddress,
       'associatePublicIpAddress': ?associatePublicIpAddress,
-      'connectionTrackingSpecifications': pulumi.Input.encodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification, Map<String, dynamic>>(connectionTrackingSpecifications, (value) => value.toMap()),
+      'connectionTrackingSpecifications': pulumi.Input.mapInputValue<List<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>, List<Map<String, dynamic>>>(connectionTrackingSpecifications, (value) => pulumi.Input.encodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deleteOnTermination': ?deleteOnTermination,
       'description': description,
       'deviceIndex': deviceIndex,
@@ -100,27 +100,27 @@ class GetLaunchTemplateNetworkInterface {
 
   factory GetLaunchTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterface(
-      associateCarrierIpAddress: map['associateCarrierIpAddress'] as String,
-      associatePublicIpAddress: map['associatePublicIpAddress'] == null ? null : map['associatePublicIpAddress'] as bool,
-      connectionTrackingSpecifications: pulumi.Input.decodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(map['connectionTrackingSpecifications'], (value) => GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap((value as Map).cast<String, dynamic>())),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
-      description: map['description'] as String,
-      deviceIndex: map['deviceIndex'] as int,
-      interfaceType: map['interfaceType'] as String,
-      ipv4AddressCount: map['ipv4AddressCount'] as int,
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      ipv4PrefixCount: map['ipv4PrefixCount'] as int,
-      ipv4Prefixes: (map['ipv4Prefixes'] as List).cast<String>(),
-      ipv6AddressCount: map['ipv6AddressCount'] as int,
-      ipv6Addresses: (map['ipv6Addresses'] as List).cast<String>(),
-      ipv6PrefixCount: map['ipv6PrefixCount'] as int,
-      ipv6Prefixes: (map['ipv6Prefixes'] as List).cast<String>(),
-      networkCardIndex: map['networkCardIndex'] as int,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      primaryIpv6: map['primaryIpv6'] as String,
-      privateIpAddress: map['privateIpAddress'] as String,
-      securityGroups: (map['securityGroups'] as List).cast<String>(),
-      subnetId: map['subnetId'] as String,
+      associateCarrierIpAddress: (map['associateCarrierIpAddress'] as String).input(),
+      associatePublicIpAddress: map['associatePublicIpAddress'] == null ? null : (map['associatePublicIpAddress'] as bool).input(),
+      connectionTrackingSpecifications: (pulumi.Input.decodeList<GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(map['connectionTrackingSpecifications'], (value) => GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      description: (map['description'] as String).input(),
+      deviceIndex: (map['deviceIndex'] as int).input(),
+      interfaceType: (map['interfaceType'] as String).input(),
+      ipv4AddressCount: (map['ipv4AddressCount'] as int).input(),
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      ipv4PrefixCount: (map['ipv4PrefixCount'] as int).input(),
+      ipv4Prefixes: ((map['ipv4Prefixes'] as List).cast<String>()).input(),
+      ipv6AddressCount: (map['ipv6AddressCount'] as int).input(),
+      ipv6Addresses: ((map['ipv6Addresses'] as List).cast<String>()).input(),
+      ipv6PrefixCount: (map['ipv6PrefixCount'] as int).input(),
+      ipv6Prefixes: ((map['ipv6Prefixes'] as List).cast<String>()).input(),
+      networkCardIndex: (map['networkCardIndex'] as int).input(),
+      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      primaryIpv6: (map['primaryIpv6'] as String).input(),
+      privateIpAddress: (map['privateIpAddress'] as String).input(),
+      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
+      subnetId: (map['subnetId'] as String).input(),
     );
   }
 }

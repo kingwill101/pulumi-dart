@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuFeature {
   /// Specifies the name of a CPU feature that is being configured or controlled.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Sets the policy for how the specified CPU feature is utilized in the domain.
-  final String? policy;
+  final pulumi.Input<String>? policy;
 
   /// Creates a new [DomainCpuFeature].
   /// [name] Specifies the name of a CPU feature that is being configured or controlled.
@@ -24,8 +25,8 @@ class DomainCpuFeature {
 
   factory DomainCpuFeature.fromMap(Map<String, dynamic> map) {
     return DomainCpuFeature(
-      name: map['name'] == null ? null : map['name'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
     );
   }
 }

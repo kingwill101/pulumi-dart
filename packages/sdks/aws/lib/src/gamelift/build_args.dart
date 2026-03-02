@@ -29,19 +29,13 @@ class BuildArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [version] Version that is associated with this build.
   BuildArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> operatingSystem,
-    pulumi.Output<String>? region,
-    required pulumi.Output<BuildStorageLocation> storageLocation,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operatingSystem = pulumi.Input.asInput<String>(operatingSystem),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      storageLocation = pulumi.Input.asInput<BuildStorageLocation>(storageLocation),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.name,
+    required this.operatingSystem,
+    this.region,
+    required this.storageLocation,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class BuildArgs {
 
   factory BuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operatingSystem: pulumi.Output.create<String>(map['operatingSystem'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      storageLocation: pulumi.Output.create<BuildStorageLocation>(BuildStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operatingSystem: (map['operatingSystem'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      storageLocation: (BuildStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

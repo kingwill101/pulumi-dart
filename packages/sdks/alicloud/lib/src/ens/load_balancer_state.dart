@@ -35,25 +35,16 @@ class LoadBalancerState {
   /// [status] The status of the SLB instance.
   /// [vswitchId] The ID of the vSwitch to which the VPC instance belongs.
   LoadBalancerState({
-    pulumi.Output<List<LoadBalancerBackendServer>>? backendServers,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? ensRegionId,
-    pulumi.Output<String>? loadBalancerName,
-    pulumi.Output<String>? loadBalancerSpec,
-    pulumi.Output<String>? networkId,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      backendServers = pulumi.Input.asOptionalInput<List<LoadBalancerBackendServer>>(backendServers),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      ensRegionId = pulumi.Input.asOptionalInput<String>(ensRegionId),
-      loadBalancerName = pulumi.Input.asOptionalInput<String>(loadBalancerName),
-      loadBalancerSpec = pulumi.Input.asOptionalInput<String>(loadBalancerSpec),
-      networkId = pulumi.Input.asOptionalInput<String>(networkId),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.backendServers,
+    this.createTime,
+    this.ensRegionId,
+    this.loadBalancerName,
+    this.loadBalancerSpec,
+    this.networkId,
+    this.paymentType,
+    this.status,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,15 +62,15 @@ class LoadBalancerState {
 
   factory LoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerState(
-      backendServers: map['backendServers'] == null ? null : pulumi.Output.create<List<LoadBalancerBackendServer>>(pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers'], (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      ensRegionId: map['ensRegionId'] == null ? null : pulumi.Output.create<String>(map['ensRegionId'] as String),
-      loadBalancerName: map['loadBalancerName'] == null ? null : pulumi.Output.create<String>(map['loadBalancerName'] as String),
-      loadBalancerSpec: map['loadBalancerSpec'] == null ? null : pulumi.Output.create<String>(map['loadBalancerSpec'] as String),
-      networkId: map['networkId'] == null ? null : pulumi.Output.create<String>(map['networkId'] as String),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers'], (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      loadBalancerSpec: map['loadBalancerSpec'] == null ? null : (map['loadBalancerSpec'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

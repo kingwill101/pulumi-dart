@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the dedicated host unutilized capacity in terms of a specific VM size.
 class DedicatedHostAllocatableVMResponse {
   /// Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
-  final double? count;
+  final pulumi.Input<double>? count;
   /// VM size in terms of which the unutilized capacity is represented.
-  final String? vmSize;
+  final pulumi.Input<String>? vmSize;
 
   /// Creates a new [DedicatedHostAllocatableVMResponse].
   /// [count] Maximum number of VMs of size vmSize that can fit in the dedicated host's remaining capacity.
@@ -25,8 +26,8 @@ class DedicatedHostAllocatableVMResponse {
 
   factory DedicatedHostAllocatableVMResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAllocatableVMResponse(
-      count: map['count'] == null ? null : map['count'] as double,
-      vmSize: map['vmSize'] == null ? null : map['vmSize'] as String,
+      count: map['count'] == null ? null : (map['count'] as double).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
     );
   }
 }

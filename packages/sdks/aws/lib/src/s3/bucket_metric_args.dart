@@ -23,15 +23,11 @@ class BucketMetricArgs {
   /// [name] Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   BucketMetricArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<BucketMetricFilter>? filter,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      filter = pulumi.Input.asOptionalInput<BucketMetricFilter>(filter),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.bucket,
+    this.filter,
+    this.name,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class BucketMetricArgs {
 
   factory BucketMetricArgs.fromMap(Map<String, dynamic> map) {
     return BucketMetricArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<BucketMetricFilter>(BucketMetricFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      bucket: (map['bucket'] as String).input(),
+      filter: map['filter'] == null ? null : (BucketMetricFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

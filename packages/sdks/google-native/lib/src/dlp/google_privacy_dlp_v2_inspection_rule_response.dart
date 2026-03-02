@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_exclusion_rule_response.dart';
 import 'google_privacy_dlp_v2_hotword_rule_response.dart';
 
 /// A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
 class GooglePrivacyDlpV2InspectionRuleResponse {
   /// Exclusion rule.
-  final GooglePrivacyDlpV2ExclusionRuleResponse exclusionRule;
+  final pulumi.Input<GooglePrivacyDlpV2ExclusionRuleResponse> exclusionRule;
   /// Hotword-based detection rule.
-  final GooglePrivacyDlpV2HotwordRuleResponse hotwordRule;
+  final pulumi.Input<GooglePrivacyDlpV2HotwordRuleResponse> hotwordRule;
 
   /// Creates a new [GooglePrivacyDlpV2InspectionRuleResponse].
   /// [exclusionRule] Exclusion rule.
@@ -20,15 +21,15 @@ class GooglePrivacyDlpV2InspectionRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusionRule': exclusionRule.toMap(),
-      'hotwordRule': hotwordRule.toMap(),
+      'exclusionRule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ExclusionRuleResponse, Map<String, dynamic>>(exclusionRule, (value) => value.toMap()),
+      'hotwordRule': pulumi.Input.mapInputValue<GooglePrivacyDlpV2HotwordRuleResponse, Map<String, dynamic>>(hotwordRule, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2InspectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRuleResponse(
-      exclusionRule: GooglePrivacyDlpV2ExclusionRuleResponse.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>()),
-      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
+      exclusionRule: (GooglePrivacyDlpV2ExclusionRuleResponse.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>())).input(),
+      hotwordRule: (GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

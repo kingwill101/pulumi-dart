@@ -10,15 +10,15 @@ import 'status_config_response.dart';
 /// Defines the asset status properties.
 class NamespaceAssetStatusResponse {
   /// Defines the asset status config properties.
-  final StatusConfigResponse config;
+  final pulumi.Input<StatusConfigResponse> config;
   /// Array of dataset statuses that describe the status of each dataset.
-  final List<NamespaceAssetStatusDatasetResponse> datasets;
+  final pulumi.Input<List<NamespaceAssetStatusDatasetResponse>> datasets;
   /// Array of event statuses that describe the status of each event.
-  final List<NamespaceAssetStatusEventResponse> events;
+  final pulumi.Input<List<NamespaceAssetStatusEventResponse>> events;
   /// Array of management group statuses that describe the status of each management group.
-  final List<NamespaceAssetStatusManagementGroupResponse> managementGroups;
+  final pulumi.Input<List<NamespaceAssetStatusManagementGroupResponse>> managementGroups;
   /// Array of stream statuses that describe the status of each stream.
-  final List<NamespaceAssetStatusStreamResponse> streams;
+  final pulumi.Input<List<NamespaceAssetStatusStreamResponse>> streams;
 
   /// Creates a new [NamespaceAssetStatusResponse].
   /// [config] Defines the asset status config properties.
@@ -36,21 +36,21 @@ class NamespaceAssetStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': config.toMap(),
-      'datasets': pulumi.Input.encodeList<NamespaceAssetStatusDatasetResponse, Map<String, dynamic>>(datasets, (value) => value.toMap()),
-      'events': pulumi.Input.encodeList<NamespaceAssetStatusEventResponse, Map<String, dynamic>>(events, (value) => value.toMap()),
-      'managementGroups': pulumi.Input.encodeList<NamespaceAssetStatusManagementGroupResponse, Map<String, dynamic>>(managementGroups, (value) => value.toMap()),
-      'streams': pulumi.Input.encodeList<NamespaceAssetStatusStreamResponse, Map<String, dynamic>>(streams, (value) => value.toMap()),
+      'config': pulumi.Input.mapInputValue<StatusConfigResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'datasets': pulumi.Input.mapInputValue<List<NamespaceAssetStatusDatasetResponse>, List<Map<String, dynamic>>>(datasets, (value) => pulumi.Input.encodeList<NamespaceAssetStatusDatasetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'events': pulumi.Input.mapInputValue<List<NamespaceAssetStatusEventResponse>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<NamespaceAssetStatusEventResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managementGroups': pulumi.Input.mapInputValue<List<NamespaceAssetStatusManagementGroupResponse>, List<Map<String, dynamic>>>(managementGroups, (value) => pulumi.Input.encodeList<NamespaceAssetStatusManagementGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'streams': pulumi.Input.mapInputValue<List<NamespaceAssetStatusStreamResponse>, List<Map<String, dynamic>>>(streams, (value) => pulumi.Input.encodeList<NamespaceAssetStatusStreamResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NamespaceAssetStatusResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceAssetStatusResponse(
-      config: StatusConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      datasets: pulumi.Input.decodeList<NamespaceAssetStatusDatasetResponse>(map['datasets'], (value) => NamespaceAssetStatusDatasetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      events: pulumi.Input.decodeList<NamespaceAssetStatusEventResponse>(map['events'], (value) => NamespaceAssetStatusEventResponse.fromMap((value as Map).cast<String, dynamic>())),
-      managementGroups: pulumi.Input.decodeList<NamespaceAssetStatusManagementGroupResponse>(map['managementGroups'], (value) => NamespaceAssetStatusManagementGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
-      streams: pulumi.Input.decodeList<NamespaceAssetStatusStreamResponse>(map['streams'], (value) => NamespaceAssetStatusStreamResponse.fromMap((value as Map).cast<String, dynamic>())),
+      config: (StatusConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      datasets: (pulumi.Input.decodeList<NamespaceAssetStatusDatasetResponse>(map['datasets'], (value) => NamespaceAssetStatusDatasetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      events: (pulumi.Input.decodeList<NamespaceAssetStatusEventResponse>(map['events'], (value) => NamespaceAssetStatusEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managementGroups: (pulumi.Input.decodeList<NamespaceAssetStatusManagementGroupResponse>(map['managementGroups'], (value) => NamespaceAssetStatusManagementGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      streams: (pulumi.Input.decodeList<NamespaceAssetStatusStreamResponse>(map['streams'], (value) => NamespaceAssetStatusStreamResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

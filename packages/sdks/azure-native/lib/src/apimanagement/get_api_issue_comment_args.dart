@@ -25,17 +25,12 @@ class GetApiIssueCommentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetApiIssueCommentArgs({
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> commentId,
-    required pulumi.Output<String> issueId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      commentId = pulumi.Input.asInput<String>(commentId),
-      issueId = pulumi.Input.asInput<String>(issueId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.apiId,
+    required this.commentId,
+    required this.issueId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetApiIssueCommentArgs {
 
   factory GetApiIssueCommentArgs.fromMap(Map<String, dynamic> map) {
     return GetApiIssueCommentArgs(
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      commentId: pulumi.Output.create<String>(map['commentId'] as String),
-      issueId: pulumi.Output.create<String>(map['issueId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      apiId: (map['apiId'] as String).input(),
+      commentId: (map['commentId'] as String).input(),
+      issueId: (map['issueId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of PrivateDnsNameOptionsOnLaunchModelProperties
 class PrivateDnsNameOptionsOnLaunchModelProperties {
   /// Property enableResourceNameDnsAAAARecord
-  final bool? enableResourceNameDnsAAAARecord;
+  final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
   /// Property enableResourceNameDnsARecord
-  final bool? enableResourceNameDnsARecord;
+  final pulumi.Input<bool>? enableResourceNameDnsARecord;
   /// Property hostnameType
-  final String? hostnameType;
+  final pulumi.Input<String>? hostnameType;
 
   /// Creates a new [PrivateDnsNameOptionsOnLaunchModelProperties].
   /// [enableResourceNameDnsAAAARecord] Property enableResourceNameDnsAAAARecord
@@ -30,9 +31,9 @@ class PrivateDnsNameOptionsOnLaunchModelProperties {
 
   factory PrivateDnsNameOptionsOnLaunchModelProperties.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNameOptionsOnLaunchModelProperties(
-      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : map['enableResourceNameDnsAAAARecord'] as bool,
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : map['enableResourceNameDnsARecord'] as bool,
-      hostnameType: map['hostnameType'] == null ? null : map['hostnameType'] as String,
+      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord'] as bool).input(),
+      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord'] as bool).input(),
+      hostnameType: map['hostnameType'] == null ? null : (map['hostnameType'] as String).input(),
     );
   }
 }

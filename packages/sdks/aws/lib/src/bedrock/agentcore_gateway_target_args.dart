@@ -35,21 +35,14 @@ class AgentcoreGatewayTargetArgs {
   /// [targetConfiguration] Configuration for the target endpoint. See `target_configuration` below.
   /// [timeouts] Optional.
   AgentcoreGatewayTargetArgs({
-    pulumi.Output<AgentcoreGatewayTargetCredentialProviderConfiguration>? credentialProviderConfiguration,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> gatewayIdentifier,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration,
-    pulumi.Output<AgentcoreGatewayTargetTimeouts>? timeouts,
-  }) :
-      credentialProviderConfiguration = pulumi.Input.asOptionalInput<AgentcoreGatewayTargetCredentialProviderConfiguration>(credentialProviderConfiguration),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayIdentifier = pulumi.Input.asInput<String>(gatewayIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetConfiguration = pulumi.Input.asInput<AgentcoreGatewayTargetTargetConfiguration>(targetConfiguration),
-      timeouts = pulumi.Input.asOptionalInput<AgentcoreGatewayTargetTimeouts>(timeouts);
+    this.credentialProviderConfiguration,
+    this.description,
+    required this.gatewayIdentifier,
+    this.name,
+    this.region,
+    required this.targetConfiguration,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +58,13 @@ class AgentcoreGatewayTargetArgs {
 
   factory AgentcoreGatewayTargetArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetArgs(
-      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : pulumi.Output.create<AgentcoreGatewayTargetCredentialProviderConfiguration>(AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayIdentifier: pulumi.Output.create<String>(map['gatewayIdentifier'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetConfiguration: pulumi.Output.create<AgentcoreGatewayTargetTargetConfiguration>(AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AgentcoreGatewayTargetTimeouts>(AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : (AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayIdentifier: (map['gatewayIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetConfiguration: (AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : (AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

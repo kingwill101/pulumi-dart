@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_standard_site_config_ip_restriction_headers.dart';
 
 class GetStandardSiteConfigIpRestriction {
   /// Does this restriction `Allow` or `Deny` access for this IP range.
-  final String action;
+  final pulumi.Input<String> action;
   /// The `headers` block for this specific `ip_restriction` as defined below.
-  final GetStandardSiteConfigIpRestrictionHeaders headers;
+  final pulumi.Input<GetStandardSiteConfigIpRestrictionHeaders> headers;
   /// The IP Address used for this IP Restriction in CIDR notation.
-  final String ipAddress;
+  final pulumi.Input<String> ipAddress;
   /// The name of the Logic App.
-  final String name;
+  final pulumi.Input<String> name;
   /// The priority for this IP Restriction. Restrictions are enforced in priority order.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The Service Tag used for this IP Restriction.
-  final String serviceTag;
+  final pulumi.Input<String> serviceTag;
   /// The Virtual Network Subnet ID used for this IP Restriction.
-  final String virtualNetworkSubnetId;
+  final pulumi.Input<String> virtualNetworkSubnetId;
 
   /// Creates a new [GetStandardSiteConfigIpRestriction].
   /// [action] Does this restriction `Allow` or `Deny` access for this IP range.
@@ -39,7 +40,7 @@ class GetStandardSiteConfigIpRestriction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'headers': headers.toMap(),
+      'headers': pulumi.Input.mapInputValue<GetStandardSiteConfigIpRestrictionHeaders, Map<String, dynamic>>(headers, (value) => value.toMap()),
       'ipAddress': ipAddress,
       'name': name,
       'priority': priority,
@@ -50,13 +51,13 @@ class GetStandardSiteConfigIpRestriction {
 
   factory GetStandardSiteConfigIpRestriction.fromMap(Map<String, dynamic> map) {
     return GetStandardSiteConfigIpRestriction(
-      action: map['action'] as String,
-      headers: GetStandardSiteConfigIpRestrictionHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>()),
-      ipAddress: map['ipAddress'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
-      serviceTag: map['serviceTag'] as String,
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] as String,
+      action: (map['action'] as String).input(),
+      headers: (GetStandardSiteConfigIpRestrictionHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
+      ipAddress: (map['ipAddress'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      serviceTag: (map['serviceTag'] as String).input(),
+      virtualNetworkSubnetId: (map['virtualNetworkSubnetId'] as String).input(),
     );
   }
 }

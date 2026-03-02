@@ -28,19 +28,13 @@ class GroupsOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [supportedAssessmentTypes] List of assessment types supported on this group.
   GroupsOperationArgs({
-    pulumi.Output<String>? groupName,
-    pulumi.Output<String>? groupType,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<List<String>>? supportedAssessmentTypes,
-  }) :
-      groupName = pulumi.Input.asOptionalInput<String>(groupName),
-      groupType = pulumi.Input.asOptionalInput<String>(groupType),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      supportedAssessmentTypes = pulumi.Input.asOptionalInput<List<String>>(supportedAssessmentTypes);
+    this.groupName,
+    this.groupType,
+    required this.projectName,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.supportedAssessmentTypes,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GroupsOperationArgs {
 
   factory GroupsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GroupsOperationArgs(
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
-      groupType: map['groupType'] == null ? null : pulumi.Output.create<String>(map['groupType'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      supportedAssessmentTypes: map['supportedAssessmentTypes'] == null ? null : pulumi.Output.create<List<String>>((map['supportedAssessmentTypes'] as List).cast<String>()),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      supportedAssessmentTypes: map['supportedAssessmentTypes'] == null ? null : ((map['supportedAssessmentTypes'] as List).cast<String>()).input(),
     );
   }
 }

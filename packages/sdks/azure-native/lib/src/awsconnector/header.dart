@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Header
 class Header {
   /// Property destination
-  final String? destination;
+  final pulumi.Input<String>? destination;
   /// Property destinationPort
-  final String? destinationPort;
+  final pulumi.Input<String>? destinationPort;
   /// Property direction
-  final String? direction;
+  final pulumi.Input<String>? direction;
   /// Property protocol
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Property source
-  final String? source;
+  final pulumi.Input<String>? source;
   /// Property sourcePort
-  final String? sourcePort;
+  final pulumi.Input<String>? sourcePort;
 
   /// Creates a new [Header].
   /// [destination] Property destination
@@ -45,12 +46,12 @@ class Header {
 
   factory Header.fromMap(Map<String, dynamic> map) {
     return Header(
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as String,
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      sourcePort: map['sourcePort'] == null ? null : map['sourcePort'] as String,
+      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort'] as String).input(),
     );
   }
 }

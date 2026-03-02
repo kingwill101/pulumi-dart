@@ -30,21 +30,14 @@ class FeatureGroupAiplatformV1beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   FeatureGroupAiplatformV1beta1Args({
-    pulumi.Output<GoogleCloudAiplatformV1beta1FeatureGroupBigQuery>? bigQuery,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> featureGroupId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      bigQuery = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1FeatureGroupBigQuery>(bigQuery),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureGroupId = pulumi.Input.asInput<String>(featureGroupId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.bigQuery,
+    this.description,
+    this.etag,
+    required this.featureGroupId,
+    this.labels,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class FeatureGroupAiplatformV1beta1Args {
 
   factory FeatureGroupAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return FeatureGroupAiplatformV1beta1Args(
-      bigQuery: map['bigQuery'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1FeatureGroupBigQuery>(GoogleCloudAiplatformV1beta1FeatureGroupBigQuery.fromMap((map['bigQuery'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      featureGroupId: pulumi.Output.create<String>(map['featureGroupId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bigQuery: map['bigQuery'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureGroupBigQuery.fromMap((map['bigQuery'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      featureGroupId: (map['featureGroupId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

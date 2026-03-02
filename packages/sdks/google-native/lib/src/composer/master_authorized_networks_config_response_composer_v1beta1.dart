@@ -6,9 +6,9 @@ import 'cidr_block_response_composer_v1beta1.dart';
 /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 class MasterAuthorizedNetworksConfigResponseComposerV1beta1 {
   /// Up to 50 external networks that could access Kubernetes master through HTTPS.
-  final List<CidrBlockResponseComposerV1beta1> cidrBlocks;
+  final pulumi.Input<List<CidrBlockResponseComposerV1beta1>> cidrBlocks;
   /// Whether or not master authorized networks feature is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [MasterAuthorizedNetworksConfigResponseComposerV1beta1].
   /// [cidrBlocks] Up to 50 external networks that could access Kubernetes master through HTTPS.
@@ -20,15 +20,15 @@ class MasterAuthorizedNetworksConfigResponseComposerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': pulumi.Input.encodeList<CidrBlockResponseComposerV1beta1, Map<String, dynamic>>(cidrBlocks, (value) => value.toMap()),
+      'cidrBlocks': pulumi.Input.mapInputValue<List<CidrBlockResponseComposerV1beta1>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<CidrBlockResponseComposerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enabled': enabled,
     };
   }
 
   factory MasterAuthorizedNetworksConfigResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigResponseComposerV1beta1(
-      cidrBlocks: pulumi.Input.decodeList<CidrBlockResponseComposerV1beta1>(map['cidrBlocks'], (value) => CidrBlockResponseComposerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
-      enabled: map['enabled'] as bool,
+      cidrBlocks: (pulumi.Input.decodeList<CidrBlockResponseComposerV1beta1>(map['cidrBlocks'], (value) => CidrBlockResponseComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

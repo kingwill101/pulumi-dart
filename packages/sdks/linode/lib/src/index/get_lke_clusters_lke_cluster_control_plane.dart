@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLkeClustersLkeClusterControlPlane {
   /// Enables audit logs on the cluster's control plane.
-  final bool auditLogsEnabled;
+  final pulumi.Input<bool> auditLogsEnabled;
   /// Whether High Availability is enabled for the cluster Control Plane.
-  final bool highAvailability;
+  final pulumi.Input<bool> highAvailability;
 
   /// Creates a new [GetLkeClustersLkeClusterControlPlane].
   /// [auditLogsEnabled] Enables audit logs on the cluster's control plane.
@@ -24,8 +25,8 @@ class GetLkeClustersLkeClusterControlPlane {
 
   factory GetLkeClustersLkeClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return GetLkeClustersLkeClusterControlPlane(
-      auditLogsEnabled: map['auditLogsEnabled'] as bool,
-      highAvailability: map['highAvailability'] as bool,
+      auditLogsEnabled: (map['auditLogsEnabled'] as bool).input(),
+      highAvailability: (map['highAvailability'] as bool).input(),
     );
   }
 }

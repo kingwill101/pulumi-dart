@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JsonWebKey {
   /// The "alg" (algorithm) parameter identifies the algorithm intended for
@@ -7,19 +8,19 @@ class JsonWebKey {
   /// IANA "JSON Web Signature and Encryption Algorithms" registry
   /// established by [JWA] or be a value that contains a Collision-
   /// Resistant Name.
-  final String? alg;
+  final pulumi.Input<String>? alg;
   /// The "crv" (curve) parameter identifies the curve type
-  final String? crv;
+  final pulumi.Input<String>? crv;
   /// RSA private exponent or ECC private key
-  final String? d;
+  final pulumi.Input<String>? d;
   /// RSA Private Key Parameter
-  final String? dp;
+  final pulumi.Input<String>? dp;
   /// RSA Private Key Parameter
-  final String? dq;
+  final pulumi.Input<String>? dq;
   /// RSA public exponent, in Base64
-  final String? e;
+  final pulumi.Input<String>? e;
   /// Symmetric key
-  final String? k;
+  final pulumi.Input<String>? k;
   /// The "kid" (key ID) parameter is used to match a specific key.  This
   /// is used, for instance, to choose among a set of keys within a JWK Set
   /// during key rollover.  The structure of the "kid" value is
@@ -29,28 +30,28 @@ class JsonWebKey {
   /// they have different "kty" (key type) values but are considered to be
   /// equivalent alternatives by the application using them.)  The "kid"
   /// value is a case-sensitive string.
-  final String? kid;
+  final pulumi.Input<String>? kid;
   /// The "kty" (key type) parameter identifies the cryptographic algorithm
   /// family used with the key, such as "RSA" or "EC". "kty" values should
   /// either be registered in the IANA "JSON Web Key Types" registry
   /// established by [JWA] or be a value that contains a Collision-
   /// Resistant Name.  The "kty" value is a case-sensitive string.
-  final String kty;
+  final pulumi.Input<String> kty;
   /// RSA modulus, in Base64
-  final String? n;
+  final pulumi.Input<String>? n;
   /// RSA secret prime
-  final String? p;
+  final pulumi.Input<String>? p;
   /// RSA secret prime, with p < q
-  final String? q;
+  final pulumi.Input<String>? q;
   /// RSA Private Key Parameter
-  final String? qi;
+  final pulumi.Input<String>? qi;
   /// Use ("public key use") identifies the intended use of
   /// the public key. The "use" parameter is employed to indicate whether
   /// a public key is used for encrypting data or verifying the signature
   /// on data. Values are commonly "sig" (signature) or "enc" (encryption).
-  final String? use;
+  final pulumi.Input<String>? use;
   /// X coordinate for the Elliptic Curve point
-  final String? x;
+  final pulumi.Input<String>? x;
   /// The "x5c" (X.509 certificate chain) parameter contains a chain of one
   /// or more PKIX certificates [RFC5280].  The certificate chain is
   /// represented as a JSON array of certificate value strings.  Each
@@ -58,9 +59,9 @@ class JsonWebKey {
   /// not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
   /// The PKIX certificate containing the key value MUST be the first
   /// certificate.
-  final List<String>? x5C;
+  final pulumi.Input<List<String>>? x5C;
   /// Y coordinate for the Elliptic Curve point
-  final String? y;
+  final pulumi.Input<String>? y;
 
   /// Creates a new [JsonWebKey].
   /// [alg] The "alg" (algorithm) parameter identifies the algorithm intended for
@@ -124,23 +125,23 @@ class JsonWebKey {
 
   factory JsonWebKey.fromMap(Map<String, dynamic> map) {
     return JsonWebKey(
-      alg: map['alg'] == null ? null : map['alg'] as String,
-      crv: map['crv'] == null ? null : map['crv'] as String,
-      d: map['d'] == null ? null : map['d'] as String,
-      dp: map['dp'] == null ? null : map['dp'] as String,
-      dq: map['dq'] == null ? null : map['dq'] as String,
-      e: map['e'] == null ? null : map['e'] as String,
-      k: map['k'] == null ? null : map['k'] as String,
-      kid: map['kid'] == null ? null : map['kid'] as String,
-      kty: map['kty'] as String,
-      n: map['n'] == null ? null : map['n'] as String,
-      p: map['p'] == null ? null : map['p'] as String,
-      q: map['q'] == null ? null : map['q'] as String,
-      qi: map['qi'] == null ? null : map['qi'] as String,
-      use: map['use'] == null ? null : map['use'] as String,
-      x: map['x'] == null ? null : map['x'] as String,
-      x5C: map['x5C'] == null ? null : (map['x5C'] as List).cast<String>(),
-      y: map['y'] == null ? null : map['y'] as String,
+      alg: map['alg'] == null ? null : (map['alg'] as String).input(),
+      crv: map['crv'] == null ? null : (map['crv'] as String).input(),
+      d: map['d'] == null ? null : (map['d'] as String).input(),
+      dp: map['dp'] == null ? null : (map['dp'] as String).input(),
+      dq: map['dq'] == null ? null : (map['dq'] as String).input(),
+      e: map['e'] == null ? null : (map['e'] as String).input(),
+      k: map['k'] == null ? null : (map['k'] as String).input(),
+      kid: map['kid'] == null ? null : (map['kid'] as String).input(),
+      kty: (map['kty'] as String).input(),
+      n: map['n'] == null ? null : (map['n'] as String).input(),
+      p: map['p'] == null ? null : (map['p'] as String).input(),
+      q: map['q'] == null ? null : (map['q'] as String).input(),
+      qi: map['qi'] == null ? null : (map['qi'] as String).input(),
+      use: map['use'] == null ? null : (map['use'] as String).input(),
+      x: map['x'] == null ? null : (map['x'] as String).input(),
+      x5C: map['x5C'] == null ? null : ((map['x5C'] as List).cast<String>()).input(),
+      y: map['y'] == null ? null : (map['y'] as String).input(),
     );
   }
 }

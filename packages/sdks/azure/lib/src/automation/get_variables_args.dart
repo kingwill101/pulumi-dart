@@ -13,9 +13,8 @@ class GetVariablesArgs {
   /// Creates a new [GetVariablesArgs].
   /// [automationAccountId] The resource ID of the automation account.
   GetVariablesArgs({
-    required pulumi.Output<String> automationAccountId,
-  }) :
-      automationAccountId = pulumi.Input.asInput<String>(automationAccountId);
+    required this.automationAccountId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetVariablesArgs {
 
   factory GetVariablesArgs.fromMap(Map<String, dynamic> map) {
     return GetVariablesArgs(
-      automationAccountId: pulumi.Output.create<String>(map['automationAccountId'] as String),
+      automationAccountId: (map['automationAccountId'] as String).input(),
     );
   }
 }

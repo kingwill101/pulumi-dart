@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A ShareSynchronization data transfer object.
 class ShareSynchronizationResponse {
   /// Email of the user who created the synchronization
-  final String? consumerEmail;
+  final pulumi.Input<String>? consumerEmail;
   /// Name of the user who created the synchronization
-  final String? consumerName;
+  final pulumi.Input<String>? consumerName;
   /// Tenant name of the consumer who created the synchronization
-  final String? consumerTenantName;
+  final pulumi.Input<String>? consumerTenantName;
   /// synchronization duration
-  final int? durationMs;
+  final pulumi.Input<int>? durationMs;
   /// End time of synchronization
-  final String? endTime;
+  final pulumi.Input<String>? endTime;
   /// message of synchronization
-  final String? message;
+  final pulumi.Input<String>? message;
   /// start time of synchronization
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// Raw Status
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Synchronization id
-  final String? synchronizationId;
+  final pulumi.Input<String>? synchronizationId;
   /// Synchronization mode
-  final String synchronizationMode;
+  final pulumi.Input<String> synchronizationMode;
 
   /// Creates a new [ShareSynchronizationResponse].
   /// [consumerEmail] Email of the user who created the synchronization
@@ -65,16 +66,16 @@ class ShareSynchronizationResponse {
 
   factory ShareSynchronizationResponse.fromMap(Map<String, dynamic> map) {
     return ShareSynchronizationResponse(
-      consumerEmail: map['consumerEmail'] == null ? null : map['consumerEmail'] as String,
-      consumerName: map['consumerName'] == null ? null : map['consumerName'] as String,
-      consumerTenantName: map['consumerTenantName'] == null ? null : map['consumerTenantName'] as String,
-      durationMs: map['durationMs'] == null ? null : map['durationMs'] as int,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      synchronizationId: map['synchronizationId'] == null ? null : map['synchronizationId'] as String,
-      synchronizationMode: map['synchronizationMode'] as String,
+      consumerEmail: map['consumerEmail'] == null ? null : (map['consumerEmail'] as String).input(),
+      consumerName: map['consumerName'] == null ? null : (map['consumerName'] as String).input(),
+      consumerTenantName: map['consumerTenantName'] == null ? null : (map['consumerTenantName'] as String).input(),
+      durationMs: map['durationMs'] == null ? null : (map['durationMs'] as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      synchronizationId: map['synchronizationId'] == null ? null : (map['synchronizationId'] as String).input(),
+      synchronizationMode: (map['synchronizationMode'] as String).input(),
     );
   }
 }

@@ -21,15 +21,11 @@ class ServicePrincipalDelegatedPermissionGrantState {
   /// [servicePrincipalObjectId] The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
   /// [userObjectId] The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
   ServicePrincipalDelegatedPermissionGrantState({
-    pulumi.Output<List<String>>? claimValues,
-    pulumi.Output<String>? resourceServicePrincipalObjectId,
-    pulumi.Output<String>? servicePrincipalObjectId,
-    pulumi.Output<String>? userObjectId,
-  }) :
-      claimValues = pulumi.Input.asOptionalInput<List<String>>(claimValues),
-      resourceServicePrincipalObjectId = pulumi.Input.asOptionalInput<String>(resourceServicePrincipalObjectId),
-      servicePrincipalObjectId = pulumi.Input.asOptionalInput<String>(servicePrincipalObjectId),
-      userObjectId = pulumi.Input.asOptionalInput<String>(userObjectId);
+    this.claimValues,
+    this.resourceServicePrincipalObjectId,
+    this.servicePrincipalObjectId,
+    this.userObjectId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class ServicePrincipalDelegatedPermissionGrantState {
 
   factory ServicePrincipalDelegatedPermissionGrantState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDelegatedPermissionGrantState(
-      claimValues: map['claimValues'] == null ? null : pulumi.Output.create<List<String>>((map['claimValues'] as List).cast<String>()),
-      resourceServicePrincipalObjectId: map['resourceServicePrincipalObjectId'] == null ? null : pulumi.Output.create<String>(map['resourceServicePrincipalObjectId'] as String),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : pulumi.Output.create<String>(map['servicePrincipalObjectId'] as String),
-      userObjectId: map['userObjectId'] == null ? null : pulumi.Output.create<String>(map['userObjectId'] as String),
+      claimValues: map['claimValues'] == null ? null : ((map['claimValues'] as List).cast<String>()).input(),
+      resourceServicePrincipalObjectId: map['resourceServicePrincipalObjectId'] == null ? null : (map['resourceServicePrincipalObjectId'] as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
+      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId'] as String).input(),
     );
   }
 }

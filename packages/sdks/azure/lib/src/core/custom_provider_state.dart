@@ -31,21 +31,14 @@ class CustomProviderState {
   /// [tags] A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   /// [validations] Any number of `validation` block as defined below.
   CustomProviderState({
-    pulumi.Output<List<CustomProviderAction>>? actions,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<List<CustomProviderResourceType>>? resourceTypes,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<CustomProviderValidation>>? validations,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<CustomProviderAction>>(actions),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      resourceTypes = pulumi.Input.asOptionalInput<List<CustomProviderResourceType>>(resourceTypes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validations = pulumi.Input.asOptionalInput<List<CustomProviderValidation>>(validations);
+    this.actions,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.resourceTypes,
+    this.tags,
+    this.validations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class CustomProviderState {
 
   factory CustomProviderState.fromMap(Map<String, dynamic> map) {
     return CustomProviderState(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<CustomProviderAction>>(pulumi.Input.decodeList<CustomProviderAction>(map['actions'], (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<CustomProviderResourceType>>(pulumi.Input.decodeList<CustomProviderResourceType>(map['resourceTypes'], (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validations: map['validations'] == null ? null : pulumi.Output.create<List<CustomProviderValidation>>(pulumi.Input.decodeList<CustomProviderValidation>(map['validations'], (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>()))),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomProviderAction>(map['actions'], (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomProviderResourceType>(map['resourceTypes'], (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomProviderValidation>(map['validations'], (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

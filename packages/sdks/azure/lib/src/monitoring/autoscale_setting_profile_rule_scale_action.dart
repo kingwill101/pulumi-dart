@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingProfileRuleScaleAction {
   /// The amount of time to wait since the last scaling action before this action occurs. Must be between 1 minute and 1 week and formatted as a ISO 8601 string.
-  final String cooldown;
+  final pulumi.Input<String> cooldown;
   /// The scale direction. Possible values are `Increase` and `Decrease`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The type of action that should occur. Possible values are `ChangeCount`, `ExactCount`, `PercentChangeCount` and `ServiceAllowedNextValue`.
-  final String type;
+  final pulumi.Input<String> type;
   /// The number of instances involved in the scaling action.
-  final int value;
+  final pulumi.Input<int> value;
 
   /// Creates a new [AutoscaleSettingProfileRuleScaleAction].
   /// [cooldown] The amount of time to wait since the last scaling action before this action occurs. Must be between 1 minute and 1 week and formatted as a ISO 8601 string.
@@ -34,10 +35,10 @@ class AutoscaleSettingProfileRuleScaleAction {
 
   factory AutoscaleSettingProfileRuleScaleAction.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRuleScaleAction(
-      cooldown: map['cooldown'] as String,
-      direction: map['direction'] as String,
-      type: map['type'] as String,
-      value: map['value'] as int,
+      cooldown: (map['cooldown'] as String).input(),
+      direction: (map['direction'] as String).input(),
+      type: (map['type'] as String).input(),
+      value: (map['value'] as int).input(),
     );
   }
 }

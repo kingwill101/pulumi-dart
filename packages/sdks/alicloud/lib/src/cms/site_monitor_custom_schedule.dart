@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SiteMonitorCustomSchedule {
   /// The days in a week.
-  final List<int>? days;
+  final pulumi.Input<List<int>>? days;
   /// The end time of the detection. Unit: hours.
-  final int? endHour;
+  final pulumi.Input<int>? endHour;
   /// The start time of the detection. Unit: hours.
-  final int? startHour;
+  final pulumi.Input<int>? startHour;
   /// The time zone of the detection.
-  final String? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Creates a new [SiteMonitorCustomSchedule].
   /// [days] The days in a week.
@@ -34,10 +35,10 @@ class SiteMonitorCustomSchedule {
 
   factory SiteMonitorCustomSchedule.fromMap(Map<String, dynamic> map) {
     return SiteMonitorCustomSchedule(
-      days: map['days'] == null ? null : (map['days'] as List).cast<int>(),
-      endHour: map['endHour'] == null ? null : map['endHour'] as int,
-      startHour: map['startHour'] == null ? null : map['startHour'] as int,
-      timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
+      days: map['days'] == null ? null : ((map['days'] as List).cast<int>()).input(),
+      endHour: map['endHour'] == null ? null : (map['endHour'] as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

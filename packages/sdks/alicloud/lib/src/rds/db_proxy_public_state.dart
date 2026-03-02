@@ -22,17 +22,12 @@ class DbProxyPublicState {
   /// [dbProxyEndpointId] Database proxy connection address ID.
   /// [dbProxyNewConnectStringPort] The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
   DbProxyPublicState({
-    pulumi.Output<String>? connectionStringPrefix,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? dbProxyConnectionStringNetType,
-    pulumi.Output<String>? dbProxyEndpointId,
-    pulumi.Output<String>? dbProxyNewConnectStringPort,
-  }) :
-      connectionStringPrefix = pulumi.Input.asOptionalInput<String>(connectionStringPrefix),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      dbProxyConnectionStringNetType = pulumi.Input.asOptionalInput<String>(dbProxyConnectionStringNetType),
-      dbProxyEndpointId = pulumi.Input.asOptionalInput<String>(dbProxyEndpointId),
-      dbProxyNewConnectStringPort = pulumi.Input.asOptionalInput<String>(dbProxyNewConnectStringPort);
+    this.connectionStringPrefix,
+    this.dbInstanceId,
+    this.dbProxyConnectionStringNetType,
+    this.dbProxyEndpointId,
+    this.dbProxyNewConnectStringPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class DbProxyPublicState {
 
   factory DbProxyPublicState.fromMap(Map<String, dynamic> map) {
     return DbProxyPublicState(
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      dbProxyConnectionStringNetType: map['dbProxyConnectionStringNetType'] == null ? null : pulumi.Output.create<String>(map['dbProxyConnectionStringNetType'] as String),
-      dbProxyEndpointId: map['dbProxyEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbProxyEndpointId'] as String),
-      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : pulumi.Output.create<String>(map['dbProxyNewConnectStringPort'] as String),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      dbProxyConnectionStringNetType: map['dbProxyConnectionStringNetType'] == null ? null : (map['dbProxyConnectionStringNetType'] as String).input(),
+      dbProxyEndpointId: map['dbProxyEndpointId'] == null ? null : (map['dbProxyEndpointId'] as String).input(),
+      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort'] as String).input(),
     );
   }
 }

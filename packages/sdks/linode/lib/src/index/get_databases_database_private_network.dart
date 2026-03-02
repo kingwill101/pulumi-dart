@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDatabasesDatabasePrivateNetwork {
   /// If true, clients outside of the VPC can connect to the database using a public IP address.
-  final bool publicAccess;
+  final pulumi.Input<bool> publicAccess;
   /// The ID of the VPC subnet to restrict access to this database using.
-  final int subnetId;
+  final pulumi.Input<int> subnetId;
   /// The ID of the virtual private cloud (VPC) to restrict access to this database using.
-  final int vpcId;
+  final pulumi.Input<int> vpcId;
 
   /// Creates a new [GetDatabasesDatabasePrivateNetwork].
   /// [publicAccess] If true, clients outside of the VPC can connect to the database using a public IP address.
@@ -29,9 +30,9 @@ class GetDatabasesDatabasePrivateNetwork {
 
   factory GetDatabasesDatabasePrivateNetwork.fromMap(Map<String, dynamic> map) {
     return GetDatabasesDatabasePrivateNetwork(
-      publicAccess: map['publicAccess'] as bool,
-      subnetId: map['subnetId'] as int,
-      vpcId: map['vpcId'] as int,
+      publicAccess: (map['publicAccess'] as bool).input(),
+      subnetId: (map['subnetId'] as int).input(),
+      vpcId: (map['vpcId'] as int).input(),
     );
   }
 }

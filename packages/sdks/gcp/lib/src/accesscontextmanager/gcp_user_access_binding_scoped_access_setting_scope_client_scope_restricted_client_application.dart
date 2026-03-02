@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
   /// The OAuth client ID of the application.
-  final String? clientId;
+  final pulumi.Input<String>? clientId;
   /// The name of the application. Example: "Cloud Console"
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication].
   /// [clientId] The OAuth client ID of the application.
@@ -24,8 +25,8 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
 
   factory GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

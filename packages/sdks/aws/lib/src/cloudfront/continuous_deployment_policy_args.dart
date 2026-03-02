@@ -21,13 +21,10 @@ class ContinuousDeploymentPolicyArgs {
   /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
   /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
   ContinuousDeploymentPolicyArgs({
-    required pulumi.Output<bool> enabled,
-    required pulumi.Output<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames,
-    pulumi.Output<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig,
-  }) :
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      stagingDistributionDnsNames = pulumi.Input.asInput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(stagingDistributionDnsNames),
-      trafficConfig = pulumi.Input.asOptionalInput<ContinuousDeploymentPolicyTrafficConfig>(trafficConfig);
+    required this.enabled,
+    required this.stagingDistributionDnsNames,
+    this.trafficConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class ContinuousDeploymentPolicyArgs {
 
   factory ContinuousDeploymentPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyArgs(
-      enabled: pulumi.Output.create<bool>(map['enabled'] as bool),
-      stagingDistributionDnsNames: pulumi.Output.create<ContinuousDeploymentPolicyStagingDistributionDnsNames>(ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames'] as Map).cast<String, dynamic>())),
-      trafficConfig: map['trafficConfig'] == null ? null : pulumi.Output.create<ContinuousDeploymentPolicyTrafficConfig>(ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig'] as Map).cast<String, dynamic>())),
+      enabled: (map['enabled'] as bool).input(),
+      stagingDistributionDnsNames: (ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames'] as Map).cast<String, dynamic>())).input(),
+      trafficConfig: map['trafficConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

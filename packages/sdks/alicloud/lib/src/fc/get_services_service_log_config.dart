@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServicesServiceLogConfig {
   /// Log Service store name.
-  final String logstore;
+  final pulumi.Input<String> logstore;
   /// Log Service project name.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GetServicesServiceLogConfig].
   /// [logstore] Log Service store name.
@@ -24,8 +25,8 @@ class GetServicesServiceLogConfig {
 
   factory GetServicesServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return GetServicesServiceLogConfig(
-      logstore: map['logstore'] as String,
-      project: map['project'] as String,
+      logstore: (map['logstore'] as String).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

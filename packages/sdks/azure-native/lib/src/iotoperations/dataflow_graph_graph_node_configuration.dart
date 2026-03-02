@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowGraph graph node configuration.
 class DataflowGraphGraphNodeConfiguration {
   /// Key of the configuration.
-  final String key;
+  final pulumi.Input<String> key;
   /// Value of the configuration.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [DataflowGraphGraphNodeConfiguration].
   /// [key] Key of the configuration.
@@ -25,8 +26,8 @@ class DataflowGraphGraphNodeConfiguration {
 
   factory DataflowGraphGraphNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return DataflowGraphGraphNodeConfiguration(
-      key: map['key'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -10,21 +10,21 @@ import 'windows_security_context_options.dart';
 /// PodSecurityContext holds pod-level security attributes and common container settings. Some fields are also present in container.securityContext.  Field values of container.securityContext take precedence over field values of PodSecurityContext.
 class PodSecurityContext {
   /// appArmorProfile is the AppArmor options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-  final AppArmorProfile? appArmorProfile;
+  final pulumi.Input<AppArmorProfile>? appArmorProfile;
   /// A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:
   ///
   /// 1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----
   ///
   /// If unset, the Kubelet will not modify the ownership and permissions of any volume. Note that this field cannot be set when spec.os.name is windows.
-  final int? fsGroup;
+  final pulumi.Input<int>? fsGroup;
   /// fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are "OnRootMismatch" and "Always". If not specified, "Always" is used. Note that this field cannot be set when spec.os.name is windows.
-  final String? fsGroupChangePolicy;
+  final pulumi.Input<String>? fsGroupChangePolicy;
   /// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows.
-  final int? runAsGroup;
+  final pulumi.Input<int>? runAsGroup;
   /// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-  final bool? runAsNonRoot;
+  final pulumi.Input<bool>? runAsNonRoot;
   /// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows.
-  final int? runAsUser;
+  final pulumi.Input<int>? runAsUser;
   /// seLinuxChangePolicy defines how the container's SELinux label is applied to all volumes used by the Pod. It has no effect on nodes that do not support SELinux or to volumes does not support SELinux. Valid values are "MountOption" and "Recursive".
   ///
   /// "Recursive" means relabeling of all files on all Pod volumes by the container runtime. This may be slow for large volumes, but allows mixing privileged and unprivileged Pods sharing the same volume on the same node.
@@ -36,19 +36,19 @@ class PodSecurityContext {
   /// This field affects only Pods that have SELinux label set, either in PodSecurityContext or in SecurityContext of all containers.
   ///
   /// All Pods that use the same volume should use the same seLinuxChangePolicy, otherwise some pods can get stuck in ContainerCreating state. Note that this field cannot be set when spec.os.name is windows.
-  final String? seLinuxChangePolicy;
+  final pulumi.Input<String>? seLinuxChangePolicy;
   /// The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows.
-  final SELinuxOptions? seLinuxOptions;
+  final pulumi.Input<SELinuxOptions>? seLinuxOptions;
   /// The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
-  final SeccompProfile? seccompProfile;
+  final pulumi.Input<SeccompProfile>? seccompProfile;
   /// A list of groups applied to the first process run in each container, in addition to the container's primary GID and fsGroup (if specified).  If the SupplementalGroupsPolicy feature is enabled, the supplementalGroupsPolicy field determines whether these are in addition to or instead of any group memberships defined in the container image. If unspecified, no additional groups are added, though group memberships defined in the container image may still be used, depending on the supplementalGroupsPolicy field. Note that this field cannot be set when spec.os.name is windows.
-  final List<int>? supplementalGroups;
+  final pulumi.Input<List<int>>? supplementalGroups;
   /// Defines how supplemental groups of the first container processes are calculated. Valid values are "Merge" and "Strict". If not specified, "Merge" is used. (Alpha) Using the field requires the SupplementalGroupsPolicy feature gate to be enabled and the container runtime must implement support for this feature. Note that this field cannot be set when spec.os.name is windows.
-  final String? supplementalGroupsPolicy;
+  final pulumi.Input<String>? supplementalGroupsPolicy;
   /// Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows.
-  final List<Sysctl>? sysctls;
+  final pulumi.Input<List<Sysctl>>? sysctls;
   /// The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.
-  final WindowsSecurityContextOptions? windowsOptions;
+  final pulumi.Input<WindowsSecurityContextOptions>? windowsOptions;
 
   /// Creates a new [PodSecurityContext].
   /// [appArmorProfile] appArmorProfile is the AppArmor options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
@@ -82,37 +82,37 @@ class PodSecurityContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appArmorProfile': ?appArmorProfile == null ? null : appArmorProfile!.toMap(),
+      'appArmorProfile': ?pulumi.Input.mapOptionalInputValue<AppArmorProfile, Map<String, dynamic>>(appArmorProfile, (value) => value.toMap()),
       'fsGroup': ?fsGroup,
       'fsGroupChangePolicy': ?fsGroupChangePolicy,
       'runAsGroup': ?runAsGroup,
       'runAsNonRoot': ?runAsNonRoot,
       'runAsUser': ?runAsUser,
       'seLinuxChangePolicy': ?seLinuxChangePolicy,
-      'seLinuxOptions': ?seLinuxOptions == null ? null : seLinuxOptions!.toMap(),
-      'seccompProfile': ?seccompProfile == null ? null : seccompProfile!.toMap(),
+      'seLinuxOptions': ?pulumi.Input.mapOptionalInputValue<SELinuxOptions, Map<String, dynamic>>(seLinuxOptions, (value) => value.toMap()),
+      'seccompProfile': ?pulumi.Input.mapOptionalInputValue<SeccompProfile, Map<String, dynamic>>(seccompProfile, (value) => value.toMap()),
       'supplementalGroups': ?supplementalGroups,
       'supplementalGroupsPolicy': ?supplementalGroupsPolicy,
-      'sysctls': ?sysctls == null ? null : pulumi.Input.encodeList<Sysctl, Map<String, dynamic>>(sysctls!, (value) => value.toMap()),
-      'windowsOptions': ?windowsOptions == null ? null : windowsOptions!.toMap(),
+      'sysctls': ?pulumi.Input.mapOptionalInputValue<List<Sysctl>, List<Map<String, dynamic>>>(sysctls, (value) => pulumi.Input.encodeList<Sysctl, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'windowsOptions': ?pulumi.Input.mapOptionalInputValue<WindowsSecurityContextOptions, Map<String, dynamic>>(windowsOptions, (value) => value.toMap()),
     };
   }
 
   factory PodSecurityContext.fromMap(Map<String, dynamic> map) {
     return PodSecurityContext(
-      appArmorProfile: map['appArmorProfile'] == null ? null : AppArmorProfile.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>()),
-      fsGroup: map['fsGroup'] == null ? null : map['fsGroup'] as int,
-      fsGroupChangePolicy: map['fsGroupChangePolicy'] == null ? null : map['fsGroupChangePolicy'] as String,
-      runAsGroup: map['runAsGroup'] == null ? null : map['runAsGroup'] as int,
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : map['runAsNonRoot'] as bool,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
-      seLinuxChangePolicy: map['seLinuxChangePolicy'] == null ? null : map['seLinuxChangePolicy'] as String,
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>()),
-      seccompProfile: map['seccompProfile'] == null ? null : SeccompProfile.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>()),
-      supplementalGroups: map['supplementalGroups'] == null ? null : (map['supplementalGroups'] as List).cast<int>(),
-      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : map['supplementalGroupsPolicy'] as String,
-      sysctls: map['sysctls'] == null ? null : pulumi.Input.decodeList<Sysctl>(map['sysctls'], (value) => Sysctl.fromMap((value as Map).cast<String, dynamic>())),
-      windowsOptions: map['windowsOptions'] == null ? null : WindowsSecurityContextOptions.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>()),
+      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfile.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>())).input(),
+      fsGroup: map['fsGroup'] == null ? null : (map['fsGroup'] as int).input(),
+      fsGroupChangePolicy: map['fsGroupChangePolicy'] == null ? null : (map['fsGroupChangePolicy'] as String).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      seLinuxChangePolicy: map['seLinuxChangePolicy'] == null ? null : (map['seLinuxChangePolicy'] as String).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfile.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>())).input(),
+      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups'] as List).cast<int>()).input(),
+      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy'] as String).input(),
+      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<Sysctl>(map['sysctls'], (value) => Sysctl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptions.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents an Azure resource group.
 class ResourceGroupValueResponse {
   /// Location of the resource group.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// Name of the resource group.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ResourceGroupValueResponse].
   /// [location] Location of the resource group.
@@ -25,8 +26,8 @@ class ResourceGroupValueResponse {
 
   factory ResourceGroupValueResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupValueResponse(
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

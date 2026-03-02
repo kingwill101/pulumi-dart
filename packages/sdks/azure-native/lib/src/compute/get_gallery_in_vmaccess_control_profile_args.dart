@@ -19,13 +19,10 @@ class GetGalleryInVMAccessControlProfileArgs {
   /// [inVMAccessControlProfileName] The name of the gallery inVMAccessControlProfile to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGalleryInVMAccessControlProfileArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> inVMAccessControlProfileName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      inVMAccessControlProfileName = pulumi.Input.asInput<String>(inVMAccessControlProfileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.galleryName,
+    required this.inVMAccessControlProfileName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetGalleryInVMAccessControlProfileArgs {
 
   factory GetGalleryInVMAccessControlProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryInVMAccessControlProfileArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      inVMAccessControlProfileName: pulumi.Output.create<String>(map['inVMAccessControlProfileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      galleryName: (map['galleryName'] as String).input(),
+      inVMAccessControlProfileName: (map['inVMAccessControlProfileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionOriginS3OriginConfig {
   /// The CloudFront origin access identity to associate with the origin.
-  final String originAccessIdentity;
+  final pulumi.Input<String> originAccessIdentity;
 
   /// Creates a new [DistributionOriginS3OriginConfig].
   /// [originAccessIdentity] The CloudFront origin access identity to associate with the origin.
@@ -19,7 +20,7 @@ class DistributionOriginS3OriginConfig {
 
   factory DistributionOriginS3OriginConfig.fromMap(Map<String, dynamic> map) {
     return DistributionOriginS3OriginConfig(
-      originAccessIdentity: map['originAccessIdentity'] as String,
+      originAccessIdentity: (map['originAccessIdentity'] as String).input(),
     );
   }
 }

@@ -35,23 +35,15 @@ class FilterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags that you want to add to the Filter resource. A tag consists of a key and a value. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   FilterArgs({
-    required pulumi.Output<String> action,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> detectorId,
-    required pulumi.Output<FilterFindingCriteria> findingCriteria,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> rank,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      findingCriteria = pulumi.Input.asInput<FilterFindingCriteria>(findingCriteria),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      rank = pulumi.Input.asInput<int>(rank),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.action,
+    this.description,
+    required this.detectorId,
+    required this.findingCriteria,
+    this.name,
+    required this.rank,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class FilterArgs {
 
   factory FilterArgs.fromMap(Map<String, dynamic> map) {
     return FilterArgs(
-      action: pulumi.Output.create<String>(map['action'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      detectorId: pulumi.Output.create<String>(map['detectorId'] as String),
-      findingCriteria: pulumi.Output.create<FilterFindingCriteria>(FilterFindingCriteria.fromMap((map['findingCriteria'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      rank: pulumi.Output.create<int>(map['rank'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      action: (map['action'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      detectorId: (map['detectorId'] as String).input(),
+      findingCriteria: (FilterFindingCriteria.fromMap((map['findingCriteria'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      rank: (map['rank'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

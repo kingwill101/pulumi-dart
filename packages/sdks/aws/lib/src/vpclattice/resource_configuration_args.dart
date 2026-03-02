@@ -52,33 +52,20 @@ class ResourceConfigurationArgs {
   /// [timeouts] Optional.
   /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
   ResourceConfigurationArgs({
-    pulumi.Output<bool>? allowAssociationToShareableServiceNetwork,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<String>? domainVerificationId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? portRanges,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<String>? region,
-    pulumi.Output<ResourceConfigurationResourceConfigurationDefinition>? resourceConfigurationDefinition,
-    pulumi.Output<String>? resourceConfigurationGroupId,
-    pulumi.Output<String>? resourceGatewayIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ResourceConfigurationTimeouts>? timeouts,
-    pulumi.Output<String>? type,
-  }) :
-      allowAssociationToShareableServiceNetwork = pulumi.Input.asOptionalInput<bool>(allowAssociationToShareableServiceNetwork),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      domainVerificationId = pulumi.Input.asOptionalInput<String>(domainVerificationId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      portRanges = pulumi.Input.asOptionalInput<List<String>>(portRanges),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceConfigurationDefinition = pulumi.Input.asOptionalInput<ResourceConfigurationResourceConfigurationDefinition>(resourceConfigurationDefinition),
-      resourceConfigurationGroupId = pulumi.Input.asOptionalInput<String>(resourceConfigurationGroupId),
-      resourceGatewayIdentifier = pulumi.Input.asOptionalInput<String>(resourceGatewayIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ResourceConfigurationTimeouts>(timeouts),
-      type = pulumi.Input.asOptionalInput<String>(type);
+    this.allowAssociationToShareableServiceNetwork,
+    this.customDomainName,
+    this.domainVerificationId,
+    this.name,
+    this.portRanges,
+    this.protocol,
+    this.region,
+    this.resourceConfigurationDefinition,
+    this.resourceConfigurationGroupId,
+    this.resourceGatewayIdentifier,
+    this.tags,
+    this.timeouts,
+    this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,19 +87,19 @@ class ResourceConfigurationArgs {
 
   factory ResourceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationArgs(
-      allowAssociationToShareableServiceNetwork: map['allowAssociationToShareableServiceNetwork'] == null ? null : pulumi.Output.create<bool>(map['allowAssociationToShareableServiceNetwork'] as bool),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      domainVerificationId: map['domainVerificationId'] == null ? null : pulumi.Output.create<String>(map['domainVerificationId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      portRanges: map['portRanges'] == null ? null : pulumi.Output.create<List<String>>((map['portRanges'] as List).cast<String>()),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceConfigurationDefinition: map['resourceConfigurationDefinition'] == null ? null : pulumi.Output.create<ResourceConfigurationResourceConfigurationDefinition>(ResourceConfigurationResourceConfigurationDefinition.fromMap((map['resourceConfigurationDefinition'] as Map).cast<String, dynamic>())),
-      resourceConfigurationGroupId: map['resourceConfigurationGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceConfigurationGroupId'] as String),
-      resourceGatewayIdentifier: map['resourceGatewayIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceGatewayIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ResourceConfigurationTimeouts>(ResourceConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      allowAssociationToShareableServiceNetwork: map['allowAssociationToShareableServiceNetwork'] == null ? null : (map['allowAssociationToShareableServiceNetwork'] as bool).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      domainVerificationId: map['domainVerificationId'] == null ? null : (map['domainVerificationId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      portRanges: map['portRanges'] == null ? null : ((map['portRanges'] as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceConfigurationDefinition: map['resourceConfigurationDefinition'] == null ? null : (ResourceConfigurationResourceConfigurationDefinition.fromMap((map['resourceConfigurationDefinition'] as Map).cast<String, dynamic>())).input(),
+      resourceConfigurationGroupId: map['resourceConfigurationGroupId'] == null ? null : (map['resourceConfigurationGroupId'] as String).input(),
+      resourceGatewayIdentifier: map['resourceGatewayIdentifier'] == null ? null : (map['resourceGatewayIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ResourceConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

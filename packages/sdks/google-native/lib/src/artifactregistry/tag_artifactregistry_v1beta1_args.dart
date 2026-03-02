@@ -27,21 +27,14 @@ class TagArtifactregistryV1beta1Args {
   /// [tagId] The tag id to use for this repository.
   /// [version] The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
   TagArtifactregistryV1beta1Args({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> packageId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> repositoryId,
-    pulumi.Output<String>? tagId,
-    pulumi.Output<String>? version,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      packageId = pulumi.Input.asInput<String>(packageId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      tagId = pulumi.Input.asOptionalInput<String>(tagId),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.location,
+    this.name,
+    required this.packageId,
+    this.project,
+    required this.repositoryId,
+    this.tagId,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,13 +50,13 @@ class TagArtifactregistryV1beta1Args {
 
   factory TagArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TagArtifactregistryV1beta1Args(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      packageId: pulumi.Output.create<String>(map['packageId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
-      tagId: map['tagId'] == null ? null : pulumi.Output.create<String>(map['tagId'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      packageId: (map['packageId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      repositoryId: (map['repositoryId'] as String).input(),
+      tagId: map['tagId'] == null ? null : (map['tagId'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

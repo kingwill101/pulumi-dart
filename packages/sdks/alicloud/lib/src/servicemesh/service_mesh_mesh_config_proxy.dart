@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceMeshMeshConfigProxy {
   /// Cluster domain name
-  final String? clusterDomain;
+  final pulumi.Input<String>? clusterDomain;
   /// Sidecar injector Pods on the throttle
-  final String? limitCpu;
+  final pulumi.Input<String>? limitCpu;
   /// Sidecar injector Pods on the throttle
-  final String? limitMemory;
+  final pulumi.Input<String>? limitMemory;
   /// Sidecar injector Pods on the requested resource
-  final String? requestCpu;
+  final pulumi.Input<String>? requestCpu;
   /// Sidecar injector Pods on the requested resource
-  final String? requestMemory;
+  final pulumi.Input<String>? requestMemory;
 
   /// Creates a new [ServiceMeshMeshConfigProxy].
   /// [clusterDomain] Cluster domain name
@@ -39,11 +40,11 @@ class ServiceMeshMeshConfigProxy {
 
   factory ServiceMeshMeshConfigProxy.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigProxy(
-      clusterDomain: map['clusterDomain'] == null ? null : map['clusterDomain'] as String,
-      limitCpu: map['limitCpu'] == null ? null : map['limitCpu'] as String,
-      limitMemory: map['limitMemory'] == null ? null : map['limitMemory'] as String,
-      requestCpu: map['requestCpu'] == null ? null : map['requestCpu'] as String,
-      requestMemory: map['requestMemory'] == null ? null : map['requestMemory'] as String,
+      clusterDomain: map['clusterDomain'] == null ? null : (map['clusterDomain'] as String).input(),
+      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu'] as String).input(),
+      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory'] as String).input(),
+      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu'] as String).input(),
+      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory'] as String).input(),
     );
   }
 }

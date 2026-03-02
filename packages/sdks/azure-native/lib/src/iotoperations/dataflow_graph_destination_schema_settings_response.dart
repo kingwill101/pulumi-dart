@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// DataflowGraph destination node output schema settings.
 class DataflowGraphDestinationSchemaSettingsResponse {
   /// Reference to the schema that describes the output of the transformation.
-  final String? schemaRef;
+  final pulumi.Input<String>? schemaRef;
   /// The format of the output data.
-  final String serializationFormat;
+  final pulumi.Input<String> serializationFormat;
 
   /// Creates a new [DataflowGraphDestinationSchemaSettingsResponse].
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
@@ -25,8 +26,8 @@ class DataflowGraphDestinationSchemaSettingsResponse {
 
   factory DataflowGraphDestinationSchemaSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphDestinationSchemaSettingsResponse(
-      schemaRef: map['schemaRef'] == null ? null : map['schemaRef'] as String,
-      serializationFormat: map['serializationFormat'] as String,
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
+      serializationFormat: (map['serializationFormat'] as String).input(),
     );
   }
 }

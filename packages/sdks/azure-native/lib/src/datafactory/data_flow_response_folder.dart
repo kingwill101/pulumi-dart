@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
 class DataFlowResponseFolder {
   /// The name of the folder that this data flow is in.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [DataFlowResponseFolder].
   /// [name] The name of the folder that this data flow is in.
@@ -20,7 +21,7 @@ class DataFlowResponseFolder {
 
   factory DataFlowResponseFolder.fromMap(Map<String, dynamic> map) {
     return DataFlowResponseFolder(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

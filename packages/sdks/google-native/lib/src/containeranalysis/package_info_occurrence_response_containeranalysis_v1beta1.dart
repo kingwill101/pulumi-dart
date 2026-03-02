@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_response_containeranalysis_v1beta1.dart';
 
 /// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
 class PackageInfoOccurrenceResponseContaineranalysisV1beta1 {
   /// A place for the SPDX file creator to record any general comments about the package being described
-  final String comment;
+  final pulumi.Input<String> comment;
   /// Provide the actual file name of the package, or path of the directory being treated as a package
-  final String filename;
+  final pulumi.Input<String> filename;
   /// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-  final String homePage;
+  final pulumi.Input<String> homePage;
   /// package or alternative values, if the governing license cannot be determined
-  final LicenseResponseContaineranalysisV1beta1 licenseConcluded;
+  final pulumi.Input<LicenseResponseContaineranalysisV1beta1> licenseConcluded;
   /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
-  final String packageType;
+  final pulumi.Input<String> packageType;
   /// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
-  final String sourceInfo;
+  final pulumi.Input<String> sourceInfo;
   /// A short description of the package
-  final String summaryDescription;
+  final pulumi.Input<String> summaryDescription;
   /// Identify the full name of the package as given by the Package Originator
-  final String title;
+  final pulumi.Input<String> title;
   /// Identify the version of the package
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [PackageInfoOccurrenceResponseContaineranalysisV1beta1].
   /// [comment] A place for the SPDX file creator to record any general comments about the package being described
@@ -50,7 +51,7 @@ class PackageInfoOccurrenceResponseContaineranalysisV1beta1 {
       'comment': comment,
       'filename': filename,
       'homePage': homePage,
-      'licenseConcluded': licenseConcluded.toMap(),
+      'licenseConcluded': pulumi.Input.mapInputValue<LicenseResponseContaineranalysisV1beta1, Map<String, dynamic>>(licenseConcluded, (value) => value.toMap()),
       'packageType': packageType,
       'sourceInfo': sourceInfo,
       'summaryDescription': summaryDescription,
@@ -61,15 +62,15 @@ class PackageInfoOccurrenceResponseContaineranalysisV1beta1 {
 
   factory PackageInfoOccurrenceResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return PackageInfoOccurrenceResponseContaineranalysisV1beta1(
-      comment: map['comment'] as String,
-      filename: map['filename'] as String,
-      homePage: map['homePage'] as String,
-      licenseConcluded: LicenseResponseContaineranalysisV1beta1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>()),
-      packageType: map['packageType'] as String,
-      sourceInfo: map['sourceInfo'] as String,
-      summaryDescription: map['summaryDescription'] as String,
-      title: map['title'] as String,
-      version: map['version'] as String,
+      comment: (map['comment'] as String).input(),
+      filename: (map['filename'] as String).input(),
+      homePage: (map['homePage'] as String).input(),
+      licenseConcluded: (LicenseResponseContaineranalysisV1beta1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>())).input(),
+      packageType: (map['packageType'] as String).input(),
+      sourceInfo: (map['sourceInfo'] as String).input(),
+      summaryDescription: (map['summaryDescription'] as String).input(),
+      title: (map['title'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

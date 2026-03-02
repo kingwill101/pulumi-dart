@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreMemoryStrategyConfigurationExtraction {
   /// Additional text to append to the model prompt for extraction processing.
-  final String appendToPrompt;
+  final pulumi.Input<String> appendToPrompt;
   /// ID of the foundation model to use for extraction processing.
-  final String modelId;
+  final pulumi.Input<String> modelId;
 
   /// Creates a new [AgentcoreMemoryStrategyConfigurationExtraction].
   /// [appendToPrompt] Additional text to append to the model prompt for extraction processing.
@@ -24,8 +25,8 @@ class AgentcoreMemoryStrategyConfigurationExtraction {
 
   factory AgentcoreMemoryStrategyConfigurationExtraction.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfigurationExtraction(
-      appendToPrompt: map['appendToPrompt'] as String,
-      modelId: map['modelId'] as String,
+      appendToPrompt: (map['appendToPrompt'] as String).input(),
+      modelId: (map['modelId'] as String).input(),
     );
   }
 }

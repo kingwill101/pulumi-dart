@@ -25,17 +25,12 @@ class MigrationConfigArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetNamespace] Existing premium Namespace ARM Id name which has no entities, will be used for migration
   MigrationConfigArgs({
-    pulumi.Output<String>? configName,
-    required pulumi.Output<String> namespaceName,
-    required pulumi.Output<String> postMigrationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetNamespace,
-  }) :
-      configName = pulumi.Input.asOptionalInput<String>(configName),
-      namespaceName = pulumi.Input.asInput<String>(namespaceName),
-      postMigrationName = pulumi.Input.asInput<String>(postMigrationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetNamespace = pulumi.Input.asInput<String>(targetNamespace);
+    this.configName,
+    required this.namespaceName,
+    required this.postMigrationName,
+    required this.resourceGroupName,
+    required this.targetNamespace,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class MigrationConfigArgs {
 
   factory MigrationConfigArgs.fromMap(Map<String, dynamic> map) {
     return MigrationConfigArgs(
-      configName: map['configName'] == null ? null : pulumi.Output.create<String>(map['configName'] as String),
-      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
-      postMigrationName: pulumi.Output.create<String>(map['postMigrationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetNamespace: pulumi.Output.create<String>(map['targetNamespace'] as String),
+      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
+      namespaceName: (map['namespaceName'] as String).input(),
+      postMigrationName: (map['postMigrationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetNamespace: (map['targetNamespace'] as String).input(),
     );
   }
 }

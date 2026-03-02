@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ElasticInferenceAcceleratorAssociation
 class ElasticInferenceAcceleratorAssociationResponse {
   /// <p> The Amazon Resource Name (ARN) of the elastic inference accelerator. </p>
-  final String? elasticInferenceAcceleratorArn;
+  final pulumi.Input<String>? elasticInferenceAcceleratorArn;
   /// <p> The ID of the association. </p>
-  final String? elasticInferenceAcceleratorAssociationId;
+  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationId;
   /// <p> The state of the elastic inference accelerator. </p>
-  final String? elasticInferenceAcceleratorAssociationState;
+  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationState;
   /// <p> The time at which the elastic inference accelerator is associated with an instance. </p>
-  final String? elasticInferenceAcceleratorAssociationTime;
+  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationTime;
 
   /// Creates a new [ElasticInferenceAcceleratorAssociationResponse].
   /// [elasticInferenceAcceleratorArn] <p> The Amazon Resource Name (ARN) of the elastic inference accelerator. </p>
@@ -35,10 +36,10 @@ class ElasticInferenceAcceleratorAssociationResponse {
 
   factory ElasticInferenceAcceleratorAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ElasticInferenceAcceleratorAssociationResponse(
-      elasticInferenceAcceleratorArn: map['elasticInferenceAcceleratorArn'] == null ? null : map['elasticInferenceAcceleratorArn'] as String,
-      elasticInferenceAcceleratorAssociationId: map['elasticInferenceAcceleratorAssociationId'] == null ? null : map['elasticInferenceAcceleratorAssociationId'] as String,
-      elasticInferenceAcceleratorAssociationState: map['elasticInferenceAcceleratorAssociationState'] == null ? null : map['elasticInferenceAcceleratorAssociationState'] as String,
-      elasticInferenceAcceleratorAssociationTime: map['elasticInferenceAcceleratorAssociationTime'] == null ? null : map['elasticInferenceAcceleratorAssociationTime'] as String,
+      elasticInferenceAcceleratorArn: map['elasticInferenceAcceleratorArn'] == null ? null : (map['elasticInferenceAcceleratorArn'] as String).input(),
+      elasticInferenceAcceleratorAssociationId: map['elasticInferenceAcceleratorAssociationId'] == null ? null : (map['elasticInferenceAcceleratorAssociationId'] as String).input(),
+      elasticInferenceAcceleratorAssociationState: map['elasticInferenceAcceleratorAssociationState'] == null ? null : (map['elasticInferenceAcceleratorAssociationState'] as String).input(),
+      elasticInferenceAcceleratorAssociationTime: map['elasticInferenceAcceleratorAssociationTime'] == null ? null : (map['elasticInferenceAcceleratorAssociationTime'] as String).input(),
     );
   }
 }

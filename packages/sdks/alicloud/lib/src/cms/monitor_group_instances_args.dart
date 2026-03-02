@@ -17,11 +17,9 @@ class MonitorGroupInstancesArgs {
   /// [groupId] The id of Cms Group.
   /// [instances] Instance information added to the Cms Group. See `instances` below.
   MonitorGroupInstancesArgs({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<List<MonitorGroupInstancesInstance>> instances,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      instances = pulumi.Input.asInput<List<MonitorGroupInstancesInstance>>(instances);
+    required this.groupId,
+    required this.instances,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class MonitorGroupInstancesArgs {
 
   factory MonitorGroupInstancesArgs.fromMap(Map<String, dynamic> map) {
     return MonitorGroupInstancesArgs(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      instances: pulumi.Output.create<List<MonitorGroupInstancesInstance>>(pulumi.Input.decodeList<MonitorGroupInstancesInstance>(map['instances'], (value) => MonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>()))),
+      groupId: (map['groupId'] as String).input(),
+      instances: (pulumi.Input.decodeList<MonitorGroupInstancesInstance>(map['instances'], (value) => MonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

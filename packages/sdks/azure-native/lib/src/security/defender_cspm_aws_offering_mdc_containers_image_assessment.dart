@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The Microsoft Defender container image assessment configuration
 class DefenderCspmAwsOfferingMdcContainersImageAssessment {
   /// The cloud role ARN in AWS for this feature
-  final String? cloudRoleArn;
+  final pulumi.Input<String>? cloudRoleArn;
   /// Is Microsoft Defender container image assessment enabled
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Creates a new [DefenderCspmAwsOfferingMdcContainersImageAssessment].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
@@ -25,8 +26,8 @@ class DefenderCspmAwsOfferingMdcContainersImageAssessment {
 
   factory DefenderCspmAwsOfferingMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingMdcContainersImageAssessment(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : map['cloudRoleArn'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
     );
   }
 }

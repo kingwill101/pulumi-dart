@@ -5,9 +5,9 @@ import 'domain_devices_disk_mirror_backing_store_source_reservations_source_pipe
 
 class DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final List<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

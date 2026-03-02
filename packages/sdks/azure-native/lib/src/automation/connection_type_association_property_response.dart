@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The connection type property associated with the entity.
 class ConnectionTypeAssociationPropertyResponse {
   /// Gets or sets the name of the connection type.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [ConnectionTypeAssociationPropertyResponse].
   /// [name] Gets or sets the name of the connection type.
@@ -20,7 +21,7 @@ class ConnectionTypeAssociationPropertyResponse {
 
   factory ConnectionTypeAssociationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeAssociationPropertyResponse(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

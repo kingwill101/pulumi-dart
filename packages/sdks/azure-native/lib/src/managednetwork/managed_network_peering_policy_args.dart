@@ -26,17 +26,12 @@ class ManagedNetworkPeeringPolicyArgs {
   /// [properties] Gets or sets the properties of a Managed Network Policy
   /// [resourceGroupName] The name of the resource group.
   ManagedNetworkPeeringPolicyArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> managedNetworkName,
-    pulumi.Output<String>? managedNetworkPeeringPolicyName,
-    pulumi.Output<ManagedNetworkPeeringPolicyProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedNetworkName = pulumi.Input.asInput<String>(managedNetworkName),
-      managedNetworkPeeringPolicyName = pulumi.Input.asOptionalInput<String>(managedNetworkPeeringPolicyName),
-      properties = pulumi.Input.asOptionalInput<ManagedNetworkPeeringPolicyProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.location,
+    required this.managedNetworkName,
+    this.managedNetworkPeeringPolicyName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagedNetworkPeeringPolicyArgs {
 
   factory ManagedNetworkPeeringPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedNetworkName: pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      managedNetworkPeeringPolicyName: map['managedNetworkPeeringPolicyName'] == null ? null : pulumi.Output.create<String>(map['managedNetworkPeeringPolicyName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ManagedNetworkPeeringPolicyProperties>(ManagedNetworkPeeringPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedNetworkName: (map['managedNetworkName'] as String).input(),
+      managedNetworkPeeringPolicyName: map['managedNetworkPeeringPolicyName'] == null ? null : (map['managedNetworkPeeringPolicyName'] as String).input(),
+      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

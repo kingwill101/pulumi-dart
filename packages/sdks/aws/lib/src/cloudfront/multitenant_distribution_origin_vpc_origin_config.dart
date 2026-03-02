@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MultitenantDistributionOriginVpcOriginConfig {
   /// Custom keep-alive timeout, in seconds. By default, CloudFront uses a default timeout. Default: 5.
-  final int? originKeepaliveTimeout;
+  final pulumi.Input<int>? originKeepaliveTimeout;
   /// Custom read timeout, in seconds. By default, CloudFront uses a default timeout. Default: 30.
-  final int? originReadTimeout;
+  final pulumi.Input<int>? originReadTimeout;
   /// ID of the VPC origin that you want CloudFront to route requests to.
-  final String vpcOriginId;
+  final pulumi.Input<String> vpcOriginId;
 
   /// Creates a new [MultitenantDistributionOriginVpcOriginConfig].
   /// [originKeepaliveTimeout] Custom keep-alive timeout, in seconds. By default, CloudFront uses a default timeout. Default: 5.
@@ -29,9 +30,9 @@ class MultitenantDistributionOriginVpcOriginConfig {
 
   factory MultitenantDistributionOriginVpcOriginConfig.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginVpcOriginConfig(
-      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : map['originKeepaliveTimeout'] as int,
-      originReadTimeout: map['originReadTimeout'] == null ? null : map['originReadTimeout'] as int,
-      vpcOriginId: map['vpcOriginId'] as String,
+      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout'] as int).input(),
+      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout'] as int).input(),
+      vpcOriginId: (map['vpcOriginId'] as String).input(),
     );
   }
 }

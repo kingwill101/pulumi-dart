@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeGroupUpdateConfig {
-  final int maxUnavailable;
-  final int maxUnavailablePercentage;
-  final String updateStrategy;
+  final pulumi.Input<int> maxUnavailable;
+  final pulumi.Input<int> maxUnavailablePercentage;
+  final pulumi.Input<String> updateStrategy;
 
   /// Creates a new [GetNodeGroupUpdateConfig].
   /// [maxUnavailable] Required.
@@ -26,9 +27,9 @@ class GetNodeGroupUpdateConfig {
 
   factory GetNodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupUpdateConfig(
-      maxUnavailable: map['maxUnavailable'] as int,
-      maxUnavailablePercentage: map['maxUnavailablePercentage'] as int,
-      updateStrategy: map['updateStrategy'] as String,
+      maxUnavailable: (map['maxUnavailable'] as int).input(),
+      maxUnavailablePercentage: (map['maxUnavailablePercentage'] as int).input(),
+      updateStrategy: (map['updateStrategy'] as String).input(),
     );
   }
 }

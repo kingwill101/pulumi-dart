@@ -16,11 +16,9 @@ class GetL3IsolationDomainArgs {
   /// [l3IsolationDomainName] Name of the L3 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetL3IsolationDomainArgs({
-    required pulumi.Output<String> l3IsolationDomainName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      l3IsolationDomainName = pulumi.Input.asInput<String>(l3IsolationDomainName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.l3IsolationDomainName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetL3IsolationDomainArgs {
 
   factory GetL3IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetL3IsolationDomainArgs(
-      l3IsolationDomainName: pulumi.Output.create<String>(map['l3IsolationDomainName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      l3IsolationDomainName: (map['l3IsolationDomainName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

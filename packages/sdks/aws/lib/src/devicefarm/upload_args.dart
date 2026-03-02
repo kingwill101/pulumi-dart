@@ -25,17 +25,12 @@ class UploadArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
   UploadArgs({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> projectArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> type,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      projectArn = pulumi.Input.asInput<String>(projectArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+    this.contentType,
+    this.name,
+    required this.projectArn,
+    this.region,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class UploadArgs {
 
   factory UploadArgs.fromMap(Map<String, dynamic> map) {
     return UploadArgs(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      projectArn: pulumi.Output.create<String>(map['projectArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      projectArn: (map['projectArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

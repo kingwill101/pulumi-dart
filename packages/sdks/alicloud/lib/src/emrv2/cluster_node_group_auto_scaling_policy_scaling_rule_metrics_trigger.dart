@@ -6,17 +6,17 @@ import 'cluster_node_group_auto_scaling_policy_scaling_rule_metrics_trigger_time
 
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
   /// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
-  final String? conditionLogicOperator;
+  final pulumi.Input<String>? conditionLogicOperator;
   /// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
-  final List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>? conditions;
+  final pulumi.Input<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>>? conditions;
   /// The time of cool down interval for this scaling rule specific metrics trigger.
-  final int? coolDownInterval;
+  final pulumi.Input<int>? coolDownInterval;
   /// The evaluation count for this scaling rule specific metrics trigger.
-  final int evaluationCount;
+  final pulumi.Input<int> evaluationCount;
   /// The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
-  final List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>? timeConstraints;
+  final pulumi.Input<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>>? timeConstraints;
   /// The time window for this scaling rule specific metrics trigger.
-  final int timeWindow;
+  final pulumi.Input<int> timeWindow;
 
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger].
   /// [conditionLogicOperator] The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
@@ -37,22 +37,22 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'conditionLogicOperator': ?conditionLogicOperator,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'coolDownInterval': ?coolDownInterval,
       'evaluationCount': evaluationCount,
-      'timeConstraints': ?timeConstraints == null ? null : pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint, Map<String, dynamic>>(timeConstraints!, (value) => value.toMap()),
+      'timeConstraints': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>, List<Map<String, dynamic>>>(timeConstraints, (value) => pulumi.Input.encodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'timeWindow': timeWindow,
     };
   }
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger(
-      conditionLogicOperator: map['conditionLogicOperator'] == null ? null : map['conditionLogicOperator'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>(map['conditions'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition.fromMap((value as Map).cast<String, dynamic>())),
-      coolDownInterval: map['coolDownInterval'] == null ? null : map['coolDownInterval'] as int,
-      evaluationCount: map['evaluationCount'] as int,
-      timeConstraints: map['timeConstraints'] == null ? null : pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>(map['timeConstraints'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      timeWindow: map['timeWindow'] as int,
+      conditionLogicOperator: map['conditionLogicOperator'] == null ? null : (map['conditionLogicOperator'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>(map['conditions'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      coolDownInterval: map['coolDownInterval'] == null ? null : (map['coolDownInterval'] as int).input(),
+      evaluationCount: (map['evaluationCount'] as int).input(),
+      timeConstraints: map['timeConstraints'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>(map['timeConstraints'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeWindow: (map['timeWindow'] as int).input(),
     );
   }
 }

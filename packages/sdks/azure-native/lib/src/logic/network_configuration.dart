@@ -7,11 +7,11 @@ import 'resource_reference.dart';
 /// The network configuration.
 class NetworkConfiguration {
   /// The access endpoint.
-  final IntegrationServiceEnvironmentAccessEndpoint? accessEndpoint;
+  final pulumi.Input<IntegrationServiceEnvironmentAccessEndpoint>? accessEndpoint;
   /// The subnets.
-  final List<ResourceReference>? subnets;
+  final pulumi.Input<List<ResourceReference>>? subnets;
   /// Gets the virtual network address space.
-  final String? virtualNetworkAddressSpace;
+  final pulumi.Input<String>? virtualNetworkAddressSpace;
 
   /// Creates a new [NetworkConfiguration].
   /// [accessEndpoint] The access endpoint.
@@ -25,17 +25,17 @@ class NetworkConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessEndpoint': ?accessEndpoint == null ? null : accessEndpoint!.toMap(),
-      'subnets': ?subnets == null ? null : pulumi.Input.encodeList<ResourceReference, Map<String, dynamic>>(subnets!, (value) => value.toMap()),
+      'accessEndpoint': ?pulumi.Input.mapOptionalInputValue<IntegrationServiceEnvironmentAccessEndpoint, Map<String, dynamic>>(accessEndpoint, (value) => value.toMap()),
+      'subnets': ?pulumi.Input.mapOptionalInputValue<List<ResourceReference>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<ResourceReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'virtualNetworkAddressSpace': ?virtualNetworkAddressSpace,
     };
   }
 
   factory NetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConfiguration(
-      accessEndpoint: map['accessEndpoint'] == null ? null : IntegrationServiceEnvironmentAccessEndpoint.fromMap((map['accessEndpoint'] as Map).cast<String, dynamic>()),
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<ResourceReference>(map['subnets'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>())),
-      virtualNetworkAddressSpace: map['virtualNetworkAddressSpace'] == null ? null : map['virtualNetworkAddressSpace'] as String,
+      accessEndpoint: map['accessEndpoint'] == null ? null : (IntegrationServiceEnvironmentAccessEndpoint.fromMap((map['accessEndpoint'] as Map).cast<String, dynamic>())).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['subnets'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkAddressSpace: map['virtualNetworkAddressSpace'] == null ? null : (map['virtualNetworkAddressSpace'] as String).input(),
     );
   }
 }

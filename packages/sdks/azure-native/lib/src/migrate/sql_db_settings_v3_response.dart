@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// SQL database assessment settings V3.
 class SqlDbSettingsV3Response {
   /// Gets or sets the azure SQL compute tier.
-  final String? azureSqlComputeTier;
+  final pulumi.Input<String>? azureSqlComputeTier;
   /// Gets or sets the azure PAAS SQL instance type.
-  final String? azureSqlDataBaseType;
+  final pulumi.Input<String>? azureSqlDataBaseType;
   /// Gets or sets the azure SQL purchase model.
-  final String? azureSqlPurchaseModel;
+  final pulumi.Input<String>? azureSqlPurchaseModel;
   /// Gets or sets the azure SQL service tier.
-  final String? azureSqlServiceTier;
+  final pulumi.Input<String>? azureSqlServiceTier;
 
   /// Creates a new [SqlDbSettingsV3Response].
   /// [azureSqlComputeTier] Gets or sets the azure SQL compute tier.
@@ -35,10 +36,10 @@ class SqlDbSettingsV3Response {
 
   factory SqlDbSettingsV3Response.fromMap(Map<String, dynamic> map) {
     return SqlDbSettingsV3Response(
-      azureSqlComputeTier: map['azureSqlComputeTier'] == null ? null : map['azureSqlComputeTier'] as String,
-      azureSqlDataBaseType: map['azureSqlDataBaseType'] == null ? null : map['azureSqlDataBaseType'] as String,
-      azureSqlPurchaseModel: map['azureSqlPurchaseModel'] == null ? null : map['azureSqlPurchaseModel'] as String,
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : map['azureSqlServiceTier'] as String,
+      azureSqlComputeTier: map['azureSqlComputeTier'] == null ? null : (map['azureSqlComputeTier'] as String).input(),
+      azureSqlDataBaseType: map['azureSqlDataBaseType'] == null ? null : (map['azureSqlDataBaseType'] as String).input(),
+      azureSqlPurchaseModel: map['azureSqlPurchaseModel'] == null ? null : (map['azureSqlPurchaseModel'] as String).input(),
+      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier'] as String).input(),
     );
   }
 }

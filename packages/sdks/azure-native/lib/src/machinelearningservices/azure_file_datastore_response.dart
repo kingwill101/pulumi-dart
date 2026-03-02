@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_key_datastore_credentials_response.dart';
 
 /// Azure File datastore configuration.
 class AzureFileDatastoreResponse {
   /// [Required] Storage account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// [Required] Account credentials.
-  final AccountKeyDatastoreCredentialsResponse credentials;
+  final pulumi.Input<AccountKeyDatastoreCredentialsResponse> credentials;
   /// Enum to determine the datastore contents type.
   /// Expected value is 'AzureFile'.
-  final String datastoreType;
+  final pulumi.Input<String> datastoreType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Azure cloud endpoint for the storage account.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// [Required] The name of the Azure file share that the datastore points to.
-  final String fileShareName;
+  final pulumi.Input<String> fileShareName;
   /// Readonly property to indicate if datastore is the workspace default datastore
-  final bool isDefault;
+  final pulumi.Input<bool> isDefault;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Protocol used to communicate with the storage account.
-  final String? protocol;
+  final pulumi.Input<String>? protocol;
   /// Azure Resource Group name
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final String? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
   /// Azure Subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AzureFileDatastoreResponse].
   /// [accountName] [Required] Storage account name.
@@ -65,7 +66,7 @@ class AzureFileDatastoreResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': accountName,
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<AccountKeyDatastoreCredentialsResponse, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'datastoreType': datastoreType,
       'description': ?description,
       'endpoint': ?endpoint,
@@ -82,19 +83,19 @@ class AzureFileDatastoreResponse {
 
   factory AzureFileDatastoreResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileDatastoreResponse(
-      accountName: map['accountName'] as String,
-      credentials: AccountKeyDatastoreCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      datastoreType: map['datastoreType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      fileShareName: map['fileShareName'] as String,
-      isDefault: map['isDefault'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : map['serviceDataAccessAuthIdentity'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      accountName: (map['accountName'] as String).input(),
+      credentials: (AccountKeyDatastoreCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      datastoreType: (map['datastoreType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      fileShareName: (map['fileShareName'] as String).input(),
+      isDefault: (map['isDefault'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

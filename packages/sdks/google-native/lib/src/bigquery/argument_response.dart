@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_sql_data_type_response.dart';
 
 /// Input/output argument of a function or a stored procedure.
 class ArgumentResponse {
   /// Optional. Defaults to FIXED_TYPE.
-  final String argumentKind;
+  final pulumi.Input<String> argumentKind;
   /// Required unless argument_kind = ANY_TYPE.
-  final StandardSqlDataTypeResponse dataType;
+  final pulumi.Input<StandardSqlDataTypeResponse> dataType;
   /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
-  final bool isAggregate;
+  final pulumi.Input<bool> isAggregate;
   /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-  final String mode;
+  final pulumi.Input<String> mode;
   /// Optional. The name of this argument. Can be absent for function return argument.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ArgumentResponse].
   /// [argumentKind] Optional. Defaults to FIXED_TYPE.
@@ -32,7 +33,7 @@ class ArgumentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'argumentKind': argumentKind,
-      'dataType': dataType.toMap(),
+      'dataType': pulumi.Input.mapInputValue<StandardSqlDataTypeResponse, Map<String, dynamic>>(dataType, (value) => value.toMap()),
       'isAggregate': isAggregate,
       'mode': mode,
       'name': name,
@@ -41,11 +42,11 @@ class ArgumentResponse {
 
   factory ArgumentResponse.fromMap(Map<String, dynamic> map) {
     return ArgumentResponse(
-      argumentKind: map['argumentKind'] as String,
-      dataType: StandardSqlDataTypeResponse.fromMap((map['dataType'] as Map).cast<String, dynamic>()),
-      isAggregate: map['isAggregate'] as bool,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
+      argumentKind: (map['argumentKind'] as String).input(),
+      dataType: (StandardSqlDataTypeResponse.fromMap((map['dataType'] as Map).cast<String, dynamic>())).input(),
+      isAggregate: (map['isAggregate'] as bool).input(),
+      mode: (map['mode'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

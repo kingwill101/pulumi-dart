@@ -29,21 +29,14 @@ class DatasetBlobStorageState {
   /// [name] The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [storageAccount] A `storage_account` block as defined below. Changing this forces a new resource to be created.
   DatasetBlobStorageState({
-    pulumi.Output<String>? containerName,
-    pulumi.Output<String>? dataShareId,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? filePath,
-    pulumi.Output<String>? folderPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<DatasetBlobStorageStorageAccount>? storageAccount,
-  }) :
-      containerName = pulumi.Input.asOptionalInput<String>(containerName),
-      dataShareId = pulumi.Input.asOptionalInput<String>(dataShareId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      filePath = pulumi.Input.asOptionalInput<String>(filePath),
-      folderPath = pulumi.Input.asOptionalInput<String>(folderPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccount = pulumi.Input.asOptionalInput<DatasetBlobStorageStorageAccount>(storageAccount);
+    this.containerName,
+    this.dataShareId,
+    this.displayName,
+    this.filePath,
+    this.folderPath,
+    this.name,
+    this.storageAccount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +52,13 @@ class DatasetBlobStorageState {
 
   factory DatasetBlobStorageState.fromMap(Map<String, dynamic> map) {
     return DatasetBlobStorageState(
-      containerName: map['containerName'] == null ? null : pulumi.Output.create<String>(map['containerName'] as String),
-      dataShareId: map['dataShareId'] == null ? null : pulumi.Output.create<String>(map['dataShareId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      filePath: map['filePath'] == null ? null : pulumi.Output.create<String>(map['filePath'] as String),
-      folderPath: map['folderPath'] == null ? null : pulumi.Output.create<String>(map['folderPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccount: map['storageAccount'] == null ? null : pulumi.Output.create<DatasetBlobStorageStorageAccount>(DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())),
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      dataShareId: map['dataShareId'] == null ? null : (map['dataShareId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

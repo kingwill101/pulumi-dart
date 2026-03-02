@@ -16,11 +16,9 @@ class DrtAccessRoleArnAssociationArgs {
   /// [roleArn] The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
   /// [timeouts] Optional.
   DrtAccessRoleArnAssociationArgs({
-    required pulumi.Output<String> roleArn,
-    pulumi.Output<DrtAccessRoleArnAssociationTimeouts>? timeouts,
-  }) :
-      roleArn = pulumi.Input.asInput<String>(roleArn),
-      timeouts = pulumi.Input.asOptionalInput<DrtAccessRoleArnAssociationTimeouts>(timeouts);
+    required this.roleArn,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class DrtAccessRoleArnAssociationArgs {
 
   factory DrtAccessRoleArnAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DrtAccessRoleArnAssociationArgs(
-      roleArn: pulumi.Output.create<String>(map['roleArn'] as String),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<DrtAccessRoleArnAssociationTimeouts>(DrtAccessRoleArnAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      roleArn: (map['roleArn'] as String).input(),
+      timeouts: map['timeouts'] == null ? null : (DrtAccessRoleArnAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

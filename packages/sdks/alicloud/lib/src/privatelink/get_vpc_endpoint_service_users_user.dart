@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcEndpointServiceUsersUser {
   /// The ID of the Vpc Endpoint Service User.
-  final String id;
+  final pulumi.Input<String> id;
   /// The Id of Ram User.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [GetVpcEndpointServiceUsersUser].
   /// [id] The ID of the Vpc Endpoint Service User.
@@ -24,8 +25,8 @@ class GetVpcEndpointServiceUsersUser {
 
   factory GetVpcEndpointServiceUsersUser.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceUsersUser(
-      id: map['id'] as String,
-      userId: map['userId'] as String,
+      id: (map['id'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

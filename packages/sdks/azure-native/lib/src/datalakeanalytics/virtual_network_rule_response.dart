@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Data Lake Analytics  VirtualNetwork Rule information.
 class VirtualNetworkRuleResponse {
   /// The resource identifier.
-  final String id;
+  final pulumi.Input<String> id;
   /// The resource name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The resource identifier for the subnet
-  final String subnetId;
+  final pulumi.Input<String> subnetId;
   /// The resource type.
-  final String type;
+  final pulumi.Input<String> type;
   /// The current state of the VirtualNetwork Rule
-  final String virtualNetworkRuleState;
+  final pulumi.Input<String> virtualNetworkRuleState;
 
   /// Creates a new [VirtualNetworkRuleResponse].
   /// [id] The resource identifier.
@@ -40,11 +41,11 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      subnetId: map['subnetId'] as String,
-      type: map['type'] as String,
-      virtualNetworkRuleState: map['virtualNetworkRuleState'] as String,
+      id: (map['id'] as String).input(),
+      name: (map['name'] as String).input(),
+      subnetId: (map['subnetId'] as String).input(),
+      type: (map['type'] as String).input(),
+      virtualNetworkRuleState: (map['virtualNetworkRuleState'] as String).input(),
     );
   }
 }

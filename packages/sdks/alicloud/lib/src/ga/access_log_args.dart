@@ -28,19 +28,13 @@ class AccessLogArgs {
   /// [slsProjectName] The name of the Log Service project.
   /// [slsRegionId] The region ID of the Log Service project.
   AccessLogArgs({
-    required pulumi.Output<String> acceleratorId,
-    required pulumi.Output<String> endpointGroupId,
-    required pulumi.Output<String> listenerId,
-    required pulumi.Output<String> slsLogStoreName,
-    required pulumi.Output<String> slsProjectName,
-    required pulumi.Output<String> slsRegionId,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      endpointGroupId = pulumi.Input.asInput<String>(endpointGroupId),
-      listenerId = pulumi.Input.asInput<String>(listenerId),
-      slsLogStoreName = pulumi.Input.asInput<String>(slsLogStoreName),
-      slsProjectName = pulumi.Input.asInput<String>(slsProjectName),
-      slsRegionId = pulumi.Input.asInput<String>(slsRegionId);
+    required this.acceleratorId,
+    required this.endpointGroupId,
+    required this.listenerId,
+    required this.slsLogStoreName,
+    required this.slsProjectName,
+    required this.slsRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class AccessLogArgs {
 
   factory AccessLogArgs.fromMap(Map<String, dynamic> map) {
     return AccessLogArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      endpointGroupId: pulumi.Output.create<String>(map['endpointGroupId'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
-      slsLogStoreName: pulumi.Output.create<String>(map['slsLogStoreName'] as String),
-      slsProjectName: pulumi.Output.create<String>(map['slsProjectName'] as String),
-      slsRegionId: pulumi.Output.create<String>(map['slsRegionId'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      endpointGroupId: (map['endpointGroupId'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      slsLogStoreName: (map['slsLogStoreName'] as String).input(),
+      slsProjectName: (map['slsProjectName'] as String).input(),
+      slsRegionId: (map['slsRegionId'] as String).input(),
     );
   }
 }

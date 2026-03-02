@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The validation results. There's validation on package when it's created or updated.
 class PackageValidationResultResponse {
   /// Error information.
-  final List<String> errors;
+  final pulumi.Input<List<String>> errors;
   /// Indicates whether the package passed the validation.
-  final bool isValid;
+  final pulumi.Input<bool> isValid;
   /// Validation name.
-  final String validationName;
+  final pulumi.Input<String> validationName;
 
   /// Creates a new [PackageValidationResultResponse].
   /// [errors] Error information.
@@ -30,9 +31,9 @@ class PackageValidationResultResponse {
 
   factory PackageValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return PackageValidationResultResponse(
-      errors: (map['errors'] as List).cast<String>(),
-      isValid: map['isValid'] as bool,
-      validationName: map['validationName'] as String,
+      errors: ((map['errors'] as List).cast<String>()).input(),
+      isValid: (map['isValid'] as bool).input(),
+      validationName: (map['validationName'] as String).input(),
     );
   }
 }

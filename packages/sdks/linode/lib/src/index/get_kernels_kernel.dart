@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKernelsKernel {
   /// The architecture of this Kernel.
-  final String architecture;
+  final pulumi.Input<String> architecture;
   /// The date on which this Kernel was built.
-  final String built;
+  final pulumi.Input<String> built;
   /// Whether or not this Kernel is deprecated.
-  final bool deprecated;
+  final pulumi.Input<bool> deprecated;
   /// The unique ID of this Kernel.
-  final String id;
+  final pulumi.Input<String> id;
   /// If this Kernel is suitable for KVM Linodes.
-  final bool kvm;
+  final pulumi.Input<bool> kvm;
   /// The friendly name of this Kernel.
-  final String label;
+  final pulumi.Input<String> label;
   /// If this Kernel is suitable for paravirtualized operations.
-  final bool pvops;
+  final pulumi.Input<bool> pvops;
   /// Linux Kernel version
-  final String version;
+  final pulumi.Input<String> version;
   /// If this Kernel is suitable for Xen Linodes.
-  final bool xen;
+  final pulumi.Input<bool> xen;
 
   /// Creates a new [GetKernelsKernel].
   /// [architecture] The architecture of this Kernel.
@@ -59,15 +60,15 @@ class GetKernelsKernel {
 
   factory GetKernelsKernel.fromMap(Map<String, dynamic> map) {
     return GetKernelsKernel(
-      architecture: map['architecture'] as String,
-      built: map['built'] as String,
-      deprecated: map['deprecated'] as bool,
-      id: map['id'] as String,
-      kvm: map['kvm'] as bool,
-      label: map['label'] as String,
-      pvops: map['pvops'] as bool,
-      version: map['version'] as String,
-      xen: map['xen'] as bool,
+      architecture: (map['architecture'] as String).input(),
+      built: (map['built'] as String).input(),
+      deprecated: (map['deprecated'] as bool).input(),
+      id: (map['id'] as String).input(),
+      kvm: (map['kvm'] as bool).input(),
+      label: (map['label'] as String).input(),
+      pvops: (map['pvops'] as bool).input(),
+      version: (map['version'] as String).input(),
+      xen: (map['xen'] as bool).input(),
     );
   }
 }

@@ -25,17 +25,12 @@ class GetHostEcsLevelInfosArgs {
   /// [storageType] The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
   /// [zoneId] The ID of the zone in the region.
   GetHostEcsLevelInfosArgs({
-    required pulumi.Output<String> dbType,
-    pulumi.Output<String>? imageCategory,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> storageType,
-    required pulumi.Output<String> zoneId,
-  }) :
-      dbType = pulumi.Input.asInput<String>(dbType),
-      imageCategory = pulumi.Input.asOptionalInput<String>(imageCategory),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      storageType = pulumi.Input.asInput<String>(storageType),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    required this.dbType,
+    this.imageCategory,
+    this.outputFile,
+    required this.storageType,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetHostEcsLevelInfosArgs {
 
   factory GetHostEcsLevelInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetHostEcsLevelInfosArgs(
-      dbType: pulumi.Output.create<String>(map['dbType'] as String),
-      imageCategory: map['imageCategory'] == null ? null : pulumi.Output.create<String>(map['imageCategory'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      storageType: pulumi.Output.create<String>(map['storageType'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      dbType: (map['dbType'] as String).input(),
+      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      storageType: (map['storageType'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

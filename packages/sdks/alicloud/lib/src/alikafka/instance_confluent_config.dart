@@ -1,43 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceConfluentConfig {
   /// The number of CPU cores of Connect.
-  final int? connectCu;
+  final pulumi.Input<int>? connectCu;
   /// The number of replicas of Connect.
-  final int? connectReplica;
+  final pulumi.Input<int>? connectReplica;
   /// The number of CPU cores of Control Center.
-  final int? controlCenterCu;
+  final pulumi.Input<int>? controlCenterCu;
   /// The number of replicas of Control Center.
-  final int? controlCenterReplica;
+  final pulumi.Input<int>? controlCenterReplica;
   /// The disk capacity of Control Center.
-  final int? controlCenterStorage;
+  final pulumi.Input<int>? controlCenterStorage;
   /// The number of CPU cores of the Kafka broker.
-  final int? kafkaCu;
+  final pulumi.Input<int>? kafkaCu;
   /// The number of replicas of the Kafka broker.
-  final int? kafkaReplica;
+  final pulumi.Input<int>? kafkaReplica;
   /// The number of CPU cores of Kafka Rest Proxy.
-  final int? kafkaRestProxyCu;
+  final pulumi.Input<int>? kafkaRestProxyCu;
   /// The number of replicas of Kafka Rest Proxy.
-  final int? kafkaRestProxyReplica;
+  final pulumi.Input<int>? kafkaRestProxyReplica;
   /// The disk capacity of the Kafka broker.
-  final int? kafkaStorage;
+  final pulumi.Input<int>? kafkaStorage;
   /// The number of CPU cores of ksqlDB.
-  final int? ksqlCu;
+  final pulumi.Input<int>? ksqlCu;
   /// The number of replicas of ksqlDB.
-  final int? ksqlReplica;
+  final pulumi.Input<int>? ksqlReplica;
   /// The disk capacity of ksqlDB.
-  final int? ksqlStorage;
+  final pulumi.Input<int>? ksqlStorage;
   /// The number of CPU cores of Schema Registry.
-  final int? schemaRegistryCu;
+  final pulumi.Input<int>? schemaRegistryCu;
   /// The number of replicas of Schema Registry.
-  final int? schemaRegistryReplica;
+  final pulumi.Input<int>? schemaRegistryReplica;
   /// The number of CPU cores of ZooKeeper.
-  final int? zookeeperCu;
+  final pulumi.Input<int>? zookeeperCu;
   /// The number of replicas of ZooKeeper.
-  final int? zookeeperReplica;
+  final pulumi.Input<int>? zookeeperReplica;
   /// The disk capacity of ZooKeeper.
-  final int? zookeeperStorage;
+  final pulumi.Input<int>? zookeeperStorage;
 
   /// Creates a new [InstanceConfluentConfig].
   /// [connectCu] The number of CPU cores of Connect.
@@ -104,24 +105,24 @@ class InstanceConfluentConfig {
 
   factory InstanceConfluentConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfluentConfig(
-      connectCu: map['connectCu'] == null ? null : map['connectCu'] as int,
-      connectReplica: map['connectReplica'] == null ? null : map['connectReplica'] as int,
-      controlCenterCu: map['controlCenterCu'] == null ? null : map['controlCenterCu'] as int,
-      controlCenterReplica: map['controlCenterReplica'] == null ? null : map['controlCenterReplica'] as int,
-      controlCenterStorage: map['controlCenterStorage'] == null ? null : map['controlCenterStorage'] as int,
-      kafkaCu: map['kafkaCu'] == null ? null : map['kafkaCu'] as int,
-      kafkaReplica: map['kafkaReplica'] == null ? null : map['kafkaReplica'] as int,
-      kafkaRestProxyCu: map['kafkaRestProxyCu'] == null ? null : map['kafkaRestProxyCu'] as int,
-      kafkaRestProxyReplica: map['kafkaRestProxyReplica'] == null ? null : map['kafkaRestProxyReplica'] as int,
-      kafkaStorage: map['kafkaStorage'] == null ? null : map['kafkaStorage'] as int,
-      ksqlCu: map['ksqlCu'] == null ? null : map['ksqlCu'] as int,
-      ksqlReplica: map['ksqlReplica'] == null ? null : map['ksqlReplica'] as int,
-      ksqlStorage: map['ksqlStorage'] == null ? null : map['ksqlStorage'] as int,
-      schemaRegistryCu: map['schemaRegistryCu'] == null ? null : map['schemaRegistryCu'] as int,
-      schemaRegistryReplica: map['schemaRegistryReplica'] == null ? null : map['schemaRegistryReplica'] as int,
-      zookeeperCu: map['zookeeperCu'] == null ? null : map['zookeeperCu'] as int,
-      zookeeperReplica: map['zookeeperReplica'] == null ? null : map['zookeeperReplica'] as int,
-      zookeeperStorage: map['zookeeperStorage'] == null ? null : map['zookeeperStorage'] as int,
+      connectCu: map['connectCu'] == null ? null : (map['connectCu'] as int).input(),
+      connectReplica: map['connectReplica'] == null ? null : (map['connectReplica'] as int).input(),
+      controlCenterCu: map['controlCenterCu'] == null ? null : (map['controlCenterCu'] as int).input(),
+      controlCenterReplica: map['controlCenterReplica'] == null ? null : (map['controlCenterReplica'] as int).input(),
+      controlCenterStorage: map['controlCenterStorage'] == null ? null : (map['controlCenterStorage'] as int).input(),
+      kafkaCu: map['kafkaCu'] == null ? null : (map['kafkaCu'] as int).input(),
+      kafkaReplica: map['kafkaReplica'] == null ? null : (map['kafkaReplica'] as int).input(),
+      kafkaRestProxyCu: map['kafkaRestProxyCu'] == null ? null : (map['kafkaRestProxyCu'] as int).input(),
+      kafkaRestProxyReplica: map['kafkaRestProxyReplica'] == null ? null : (map['kafkaRestProxyReplica'] as int).input(),
+      kafkaStorage: map['kafkaStorage'] == null ? null : (map['kafkaStorage'] as int).input(),
+      ksqlCu: map['ksqlCu'] == null ? null : (map['ksqlCu'] as int).input(),
+      ksqlReplica: map['ksqlReplica'] == null ? null : (map['ksqlReplica'] as int).input(),
+      ksqlStorage: map['ksqlStorage'] == null ? null : (map['ksqlStorage'] as int).input(),
+      schemaRegistryCu: map['schemaRegistryCu'] == null ? null : (map['schemaRegistryCu'] as int).input(),
+      schemaRegistryReplica: map['schemaRegistryReplica'] == null ? null : (map['schemaRegistryReplica'] as int).input(),
+      zookeeperCu: map['zookeeperCu'] == null ? null : (map['zookeeperCu'] as int).input(),
+      zookeeperReplica: map['zookeeperReplica'] == null ? null : (map['zookeeperReplica'] as int).input(),
+      zookeeperStorage: map['zookeeperStorage'] == null ? null : (map['zookeeperStorage'] as int).input(),
     );
   }
 }

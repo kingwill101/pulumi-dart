@@ -16,11 +16,9 @@ class GetServicePrincipalArgs {
   /// [region] Region you'd like the SPN for. Defaults to the Region set in the provider configuration.
   /// [serviceName] Name of the service you want to generate a Service Principal Name for.
   GetServicePrincipalArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> serviceName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    this.region,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetServicePrincipalArgs {
 
   factory GetServicePrincipalArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

@@ -48,35 +48,21 @@ class AppAuthorizationState {
   /// [timeouts] Optional.
   /// [updatedAt] Optional.
   AppAuthorizationState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? appBundleArn,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? authType,
-    pulumi.Output<String>? authUrl,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<AppAuthorizationCredential>? credential,
-    pulumi.Output<String>? persona,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<List<AppAuthorizationTenant>>? tenants,
-    pulumi.Output<AppAuthorizationTimeouts>? timeouts,
-    pulumi.Output<String>? updatedAt,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      appBundleArn = pulumi.Input.asOptionalInput<String>(appBundleArn),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      authType = pulumi.Input.asOptionalInput<String>(authType),
-      authUrl = pulumi.Input.asOptionalInput<String>(authUrl),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      credential = pulumi.Input.asOptionalInput<AppAuthorizationCredential>(credential),
-      persona = pulumi.Input.asOptionalInput<String>(persona),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      tenants = pulumi.Input.asOptionalInput<List<AppAuthorizationTenant>>(tenants),
-      timeouts = pulumi.Input.asOptionalInput<AppAuthorizationTimeouts>(timeouts),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt);
+    this.app,
+    this.appBundleArn,
+    this.arn,
+    this.authType,
+    this.authUrl,
+    this.createdAt,
+    this.credential,
+    this.persona,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.tenants,
+    this.timeouts,
+    this.updatedAt,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,20 +85,20 @@ class AppAuthorizationState {
 
   factory AppAuthorizationState.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      appBundleArn: map['appBundleArn'] == null ? null : pulumi.Output.create<String>(map['appBundleArn'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      authType: map['authType'] == null ? null : pulumi.Output.create<String>(map['authType'] as String),
-      authUrl: map['authUrl'] == null ? null : pulumi.Output.create<String>(map['authUrl'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      credential: map['credential'] == null ? null : pulumi.Output.create<AppAuthorizationCredential>(AppAuthorizationCredential.fromMap((map['credential'] as Map).cast<String, dynamic>())),
-      persona: map['persona'] == null ? null : pulumi.Output.create<String>(map['persona'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      tenants: map['tenants'] == null ? null : pulumi.Output.create<List<AppAuthorizationTenant>>(pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants'], (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<AppAuthorizationTimeouts>(AppAuthorizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      authUrl: map['authUrl'] == null ? null : (map['authUrl'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      credential: map['credential'] == null ? null : (AppAuthorizationCredential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      persona: map['persona'] == null ? null : (map['persona'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      tenants: map['tenants'] == null ? null : (pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants'], (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : (AppAuthorizationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties related to CMK
 class CmkProfileResponse {
   /// URI of Key in AKV
-  final String keyUri;
+  final pulumi.Input<String> keyUri;
 
   /// Creates a new [CmkProfileResponse].
   /// [keyUri] URI of Key in AKV
@@ -20,7 +21,7 @@ class CmkProfileResponse {
 
   factory CmkProfileResponse.fromMap(Map<String, dynamic> map) {
     return CmkProfileResponse(
-      keyUri: map['keyUri'] as String,
+      keyUri: (map['keyUri'] as String).input(),
     );
   }
 }

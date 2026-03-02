@@ -25,17 +25,12 @@ class VaultLockConfigurationArgs {
   /// [minRetentionDays] The minimum retention period that the vault retains its recovery points.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   VaultLockConfigurationArgs({
-    required pulumi.Output<String> backupVaultName,
-    pulumi.Output<int>? changeableForDays,
-    pulumi.Output<int>? maxRetentionDays,
-    pulumi.Output<int>? minRetentionDays,
-    pulumi.Output<String>? region,
-  }) :
-      backupVaultName = pulumi.Input.asInput<String>(backupVaultName),
-      changeableForDays = pulumi.Input.asOptionalInput<int>(changeableForDays),
-      maxRetentionDays = pulumi.Input.asOptionalInput<int>(maxRetentionDays),
-      minRetentionDays = pulumi.Input.asOptionalInput<int>(minRetentionDays),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.backupVaultName,
+    this.changeableForDays,
+    this.maxRetentionDays,
+    this.minRetentionDays,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class VaultLockConfigurationArgs {
 
   factory VaultLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VaultLockConfigurationArgs(
-      backupVaultName: pulumi.Output.create<String>(map['backupVaultName'] as String),
-      changeableForDays: map['changeableForDays'] == null ? null : pulumi.Output.create<int>(map['changeableForDays'] as int),
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : pulumi.Output.create<int>(map['maxRetentionDays'] as int),
-      minRetentionDays: map['minRetentionDays'] == null ? null : pulumi.Output.create<int>(map['minRetentionDays'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      backupVaultName: (map['backupVaultName'] as String).input(),
+      changeableForDays: map['changeableForDays'] == null ? null : (map['changeableForDays'] as int).input(),
+      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays'] as int).input(),
+      minRetentionDays: map['minRetentionDays'] == null ? null : (map['minRetentionDays'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Drive configuration for cache node
 class CacheNodeDriveConfigurationResponse {
   /// corresponding nginx cache number. Valid cache numbers are 1 - 20
-  final int? cacheNumber;
+  final pulumi.Input<int>? cacheNumber;
   /// full binding for corresponding nginx cache drive
-  final String? nginxMapping;
+  final pulumi.Input<String>? nginxMapping;
   /// physical path location of the folder used for caching content
-  final String? physicalPath;
+  final pulumi.Input<String>? physicalPath;
   /// physical size of the drive used for caching content
-  final int? sizeInGb;
+  final pulumi.Input<int>? sizeInGb;
 
   /// Creates a new [CacheNodeDriveConfigurationResponse].
   /// [cacheNumber] corresponding nginx cache number. Valid cache numbers are 1 - 20
@@ -35,10 +36,10 @@ class CacheNodeDriveConfigurationResponse {
 
   factory CacheNodeDriveConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeDriveConfigurationResponse(
-      cacheNumber: map['cacheNumber'] == null ? null : map['cacheNumber'] as int,
-      nginxMapping: map['nginxMapping'] == null ? null : map['nginxMapping'] as String,
-      physicalPath: map['physicalPath'] == null ? null : map['physicalPath'] as String,
-      sizeInGb: map['sizeInGb'] == null ? null : map['sizeInGb'] as int,
+      cacheNumber: map['cacheNumber'] == null ? null : (map['cacheNumber'] as int).input(),
+      nginxMapping: map['nginxMapping'] == null ? null : (map['nginxMapping'] as String).input(),
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as int).input(),
     );
   }
 }

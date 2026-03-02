@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Information of community gallery if current gallery is shared to community
 class CommunityGalleryInfoResponse {
   /// Contains info about whether community gallery sharing is enabled.
-  final bool communityGalleryEnabled;
+  final pulumi.Input<bool> communityGalleryEnabled;
   /// End-user license agreement for community gallery image.
-  final String? eula;
+  final pulumi.Input<String>? eula;
   /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
-  final String? publicNamePrefix;
+  final pulumi.Input<String>? publicNamePrefix;
   /// Community gallery public name list.
-  final List<String> publicNames;
+  final pulumi.Input<List<String>> publicNames;
   /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
-  final String? publisherContact;
+  final pulumi.Input<String>? publisherContact;
   /// The link to the publisher website. Visible to all users.
-  final String? publisherUri;
+  final pulumi.Input<String>? publisherUri;
 
   /// Creates a new [CommunityGalleryInfoResponse].
   /// [communityGalleryEnabled] Contains info about whether community gallery sharing is enabled.
@@ -45,12 +46,12 @@ class CommunityGalleryInfoResponse {
 
   factory CommunityGalleryInfoResponse.fromMap(Map<String, dynamic> map) {
     return CommunityGalleryInfoResponse(
-      communityGalleryEnabled: map['communityGalleryEnabled'] as bool,
-      eula: map['eula'] == null ? null : map['eula'] as String,
-      publicNamePrefix: map['publicNamePrefix'] == null ? null : map['publicNamePrefix'] as String,
-      publicNames: (map['publicNames'] as List).cast<String>(),
-      publisherContact: map['publisherContact'] == null ? null : map['publisherContact'] as String,
-      publisherUri: map['publisherUri'] == null ? null : map['publisherUri'] as String,
+      communityGalleryEnabled: (map['communityGalleryEnabled'] as bool).input(),
+      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      publicNamePrefix: map['publicNamePrefix'] == null ? null : (map['publicNamePrefix'] as String).input(),
+      publicNames: ((map['publicNames'] as List).cast<String>()).input(),
+      publisherContact: map['publisherContact'] == null ? null : (map['publisherContact'] as String).input(),
+      publisherUri: map['publisherUri'] == null ? null : (map['publisherUri'] as String).input(),
     );
   }
 }

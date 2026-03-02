@@ -13,11 +13,9 @@ class PrivateSrvNetworkAddressState {
   /// [dbInstanceId] The instance ID.
   /// [privateSrvConnectionStringUri] Private network SRV highly available connection address
   PrivateSrvNetworkAddressState({
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? privateSrvConnectionStringUri,
-  }) :
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      privateSrvConnectionStringUri = pulumi.Input.asOptionalInput<String>(privateSrvConnectionStringUri);
+    this.dbInstanceId,
+    this.privateSrvConnectionStringUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class PrivateSrvNetworkAddressState {
 
   factory PrivateSrvNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PrivateSrvNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      privateSrvConnectionStringUri: map['privateSrvConnectionStringUri'] == null ? null : pulumi.Output.create<String>(map['privateSrvConnectionStringUri'] as String),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      privateSrvConnectionStringUri: map['privateSrvConnectionStringUri'] == null ? null : (map['privateSrvConnectionStringUri'] as String).input(),
     );
   }
 }

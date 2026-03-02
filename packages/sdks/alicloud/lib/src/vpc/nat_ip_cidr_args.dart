@@ -25,17 +25,12 @@ class NatIpCidrArgs {
   /// [natIpCidrDescription] The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
   /// [natIpCidrName] The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
   NatIpCidrArgs({
-    pulumi.Output<bool>? dryRun,
-    required pulumi.Output<String> natGatewayId,
-    pulumi.Output<String>? natIpCidr,
-    pulumi.Output<String>? natIpCidrDescription,
-    pulumi.Output<String>? natIpCidrName,
-  }) :
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      natIpCidr = pulumi.Input.asOptionalInput<String>(natIpCidr),
-      natIpCidrDescription = pulumi.Input.asOptionalInput<String>(natIpCidrDescription),
-      natIpCidrName = pulumi.Input.asOptionalInput<String>(natIpCidrName);
+    this.dryRun,
+    required this.natGatewayId,
+    this.natIpCidr,
+    this.natIpCidrDescription,
+    this.natIpCidrName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class NatIpCidrArgs {
 
   factory NatIpCidrArgs.fromMap(Map<String, dynamic> map) {
     return NatIpCidrArgs(
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      natIpCidr: map['natIpCidr'] == null ? null : pulumi.Output.create<String>(map['natIpCidr'] as String),
-      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : pulumi.Output.create<String>(map['natIpCidrDescription'] as String),
-      natIpCidrName: map['natIpCidrName'] == null ? null : pulumi.Output.create<String>(map['natIpCidrName'] as String),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
+      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription'] as String).input(),
+      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName'] as String).input(),
     );
   }
 }

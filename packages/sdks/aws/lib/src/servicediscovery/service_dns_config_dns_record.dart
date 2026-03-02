@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDnsConfigDnsRecord {
   /// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
-  final int ttl;
+  final pulumi.Input<int> ttl;
   /// The type of the resource, which indicates the value that Amazon Route 53 returns in response to DNS queries. Valid Values: A, AAAA, SRV, CNAME
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceDnsConfigDnsRecord].
   /// [ttl] The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
@@ -24,8 +25,8 @@ class ServiceDnsConfigDnsRecord {
 
   factory ServiceDnsConfigDnsRecord.fromMap(Map<String, dynamic> map) {
     return ServiceDnsConfigDnsRecord(
-      ttl: map['ttl'] as int,
-      type: map['type'] as String,
+      ttl: (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

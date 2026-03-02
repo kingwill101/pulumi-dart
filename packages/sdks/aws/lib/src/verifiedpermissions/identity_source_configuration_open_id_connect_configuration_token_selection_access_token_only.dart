@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly {
   /// The access token aud claim values that you want to accept in your policy store.
-  final List<String>? audiences;
+  final pulumi.Input<List<String>>? audiences;
   /// The claim that determines the principal in OIDC access tokens.
-  final String? principalIdClaim;
+  final pulumi.Input<String>? principalIdClaim;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly].
   /// [audiences] The access token aud claim values that you want to accept in your policy store.
@@ -24,8 +25,8 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessT
 
   factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly(
-      audiences: map['audiences'] == null ? null : (map['audiences'] as List).cast<String>(),
-      principalIdClaim: map['principalIdClaim'] == null ? null : map['principalIdClaim'] as String,
+      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
+      principalIdClaim: map['principalIdClaim'] == null ? null : (map['principalIdClaim'] as String).input(),
     );
   }
 }

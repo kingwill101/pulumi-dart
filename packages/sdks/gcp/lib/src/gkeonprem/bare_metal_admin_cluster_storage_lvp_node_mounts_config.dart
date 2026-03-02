@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterStorageLvpNodeMountsConfig {
   /// The host machine path.
-  final String path;
+  final pulumi.Input<String> path;
   /// The StorageClass name that PVs will be created with.
-  final String storageClass;
+  final pulumi.Input<String> storageClass;
 
   /// Creates a new [BareMetalAdminClusterStorageLvpNodeMountsConfig].
   /// [path] The host machine path.
@@ -24,8 +25,8 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfig {
 
   factory BareMetalAdminClusterStorageLvpNodeMountsConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorageLvpNodeMountsConfig(
-      path: map['path'] as String,
-      storageClass: map['storageClass'] as String,
+      path: (map['path'] as String).input(),
+      storageClass: (map['storageClass'] as String).input(),
     );
   }
 }

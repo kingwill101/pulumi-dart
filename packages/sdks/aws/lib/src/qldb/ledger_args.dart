@@ -28,19 +28,13 @@ class LedgerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   LedgerArgs({
-    pulumi.Output<bool>? deletionProtection,
-    pulumi.Output<String>? kmsKey,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> permissionsMode,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      kmsKey = pulumi.Input.asOptionalInput<String>(kmsKey),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      permissionsMode = pulumi.Input.asInput<String>(permissionsMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.deletionProtection,
+    this.kmsKey,
+    this.name,
+    required this.permissionsMode,
+    this.region,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class LedgerArgs {
 
   factory LedgerArgs.fromMap(Map<String, dynamic> map) {
     return LedgerArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
-      kmsKey: map['kmsKey'] == null ? null : pulumi.Output.create<String>(map['kmsKey'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      permissionsMode: pulumi.Output.create<String>(map['permissionsMode'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      permissionsMode: (map['permissionsMode'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

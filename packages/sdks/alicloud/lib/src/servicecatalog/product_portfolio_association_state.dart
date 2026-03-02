@@ -13,11 +13,9 @@ class ProductPortfolioAssociationState {
   /// [portfolioId] Product Portfolio ID
   /// [productId] Product ID
   ProductPortfolioAssociationState({
-    pulumi.Output<String>? portfolioId,
-    pulumi.Output<String>? productId,
-  }) :
-      portfolioId = pulumi.Input.asOptionalInput<String>(portfolioId),
-      productId = pulumi.Input.asOptionalInput<String>(productId);
+    this.portfolioId,
+    this.productId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ProductPortfolioAssociationState {
 
   factory ProductPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return ProductPortfolioAssociationState(
-      portfolioId: map['portfolioId'] == null ? null : pulumi.Output.create<String>(map['portfolioId'] as String),
-      productId: map['productId'] == null ? null : pulumi.Output.create<String>(map['productId'] as String),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
     );
   }
 }

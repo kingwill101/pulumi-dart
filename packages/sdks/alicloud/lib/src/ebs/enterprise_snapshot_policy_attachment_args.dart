@@ -16,11 +16,9 @@ class EnterpriseSnapshotPolicyAttachmentArgs {
   /// [diskId] Cloud Disk ID.
   /// [policyId] the enterprise snapshot policy id.
   EnterpriseSnapshotPolicyAttachmentArgs({
-    pulumi.Output<String>? diskId,
-    required pulumi.Output<String> policyId,
-  }) :
-      diskId = pulumi.Input.asOptionalInput<String>(diskId),
-      policyId = pulumi.Input.asInput<String>(policyId);
+    this.diskId,
+    required this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class EnterpriseSnapshotPolicyAttachmentArgs {
 
   factory EnterpriseSnapshotPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyAttachmentArgs(
-      diskId: map['diskId'] == null ? null : pulumi.Output.create<String>(map['diskId'] as String),
-      policyId: pulumi.Output.create<String>(map['policyId'] as String),
+      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Dump flag definition.
 class DumpFlag {
   /// The name of the flag
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The value of the flag.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DumpFlag].
   /// [name] The name of the flag
@@ -25,8 +26,8 @@ class DumpFlag {
 
   factory DumpFlag.fromMap(Map<String, dynamic> map) {
     return DumpFlag(
-      name: map['name'] == null ? null : map['name'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

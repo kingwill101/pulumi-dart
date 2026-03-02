@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.
-  final String? dataprocMetastoreService;
+  final pulumi.Input<String>? dataprocMetastoreService;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.
@@ -19,7 +20,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
 
   factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(
-      dataprocMetastoreService: map['dataprocMetastoreService'] == null ? null : map['dataprocMetastoreService'] as String,
+      dataprocMetastoreService: map['dataprocMetastoreService'] == null ? null : (map['dataprocMetastoreService'] as String).input(),
     );
   }
 }

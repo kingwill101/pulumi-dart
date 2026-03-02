@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHoneypotImagesImage {
   /// The name of the honeypot image display.
-  final String honeypotImageDisplayName;
+  final pulumi.Input<String> honeypotImageDisplayName;
   /// The image ID of the honeypot.
-  final String honeypotImageId;
+  final pulumi.Input<String> honeypotImageId;
   /// Honeypot mirror name.
-  final String honeypotImageName;
+  final pulumi.Input<String> honeypotImageName;
   /// Honeypot mirror type.
-  final String honeypotImageType;
+  final pulumi.Input<String> honeypotImageType;
   /// Honeypot Mirror version.
-  final String honeypotImageVersion;
+  final pulumi.Input<String> honeypotImageVersion;
   /// The image ID of the honeypot.The value is the same as `honeypot_image_id`.
-  final String id;
+  final pulumi.Input<String> id;
   /// Ports supported by honeypots. In JSON format. Contains the following fields:-**log_type**: log type-**proto**: Support Protocol-**description**: description-**ports**: supports Port collection-**port_str**: supports port strings-**type**: type
-  final String multiports;
+  final pulumi.Input<String> multiports;
   /// Honeypot-supported protocols.
-  final String proto;
+  final pulumi.Input<String> proto;
   /// Honeypot service port.
-  final String servicePort;
+  final pulumi.Input<String> servicePort;
   /// Honeypot configuration parameter template.
-  final String template;
+  final pulumi.Input<String> template;
 
   /// Creates a new [GetHoneypotImagesImage].
   /// [honeypotImageDisplayName] The name of the honeypot image display.
@@ -64,16 +65,16 @@ class GetHoneypotImagesImage {
 
   factory GetHoneypotImagesImage.fromMap(Map<String, dynamic> map) {
     return GetHoneypotImagesImage(
-      honeypotImageDisplayName: map['honeypotImageDisplayName'] as String,
-      honeypotImageId: map['honeypotImageId'] as String,
-      honeypotImageName: map['honeypotImageName'] as String,
-      honeypotImageType: map['honeypotImageType'] as String,
-      honeypotImageVersion: map['honeypotImageVersion'] as String,
-      id: map['id'] as String,
-      multiports: map['multiports'] as String,
-      proto: map['proto'] as String,
-      servicePort: map['servicePort'] as String,
-      template: map['template'] as String,
+      honeypotImageDisplayName: (map['honeypotImageDisplayName'] as String).input(),
+      honeypotImageId: (map['honeypotImageId'] as String).input(),
+      honeypotImageName: (map['honeypotImageName'] as String).input(),
+      honeypotImageType: (map['honeypotImageType'] as String).input(),
+      honeypotImageVersion: (map['honeypotImageVersion'] as String).input(),
+      id: (map['id'] as String).input(),
+      multiports: (map['multiports'] as String).input(),
+      proto: (map['proto'] as String).input(),
+      servicePort: (map['servicePort'] as String).input(),
+      template: (map['template'] as String).input(),
     );
   }
 }

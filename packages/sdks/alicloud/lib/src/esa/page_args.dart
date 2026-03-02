@@ -22,15 +22,11 @@ class PageArgs {
   /// [description] The description of the custom error page.
   /// [pageName] The name of the custom response page.
   PageArgs({
-    pulumi.Output<String>? content,
-    required pulumi.Output<String> contentType,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> pageName,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentType = pulumi.Input.asInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      pageName = pulumi.Input.asInput<String>(pageName);
+    this.content,
+    required this.contentType,
+    this.description,
+    required this.pageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PageArgs {
 
   factory PageArgs.fromMap(Map<String, dynamic> map) {
     return PageArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentType: pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      pageName: pulumi.Output.create<String>(map['pageName'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentType: (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      pageName: (map['pageName'] as String).input(),
     );
   }
 }

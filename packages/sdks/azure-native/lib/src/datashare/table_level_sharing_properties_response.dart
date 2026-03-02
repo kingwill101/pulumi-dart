@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Table level sharing properties dto for kusto data set properties
 class TableLevelSharingPropertiesResponse {
   /// External tables to be excluded in the data set
-  final List<String>? externalTablesToExclude;
+  final pulumi.Input<List<String>>? externalTablesToExclude;
   /// External tables to be included in the data set
-  final List<String>? externalTablesToInclude;
+  final pulumi.Input<List<String>>? externalTablesToInclude;
   /// Materialized views to be excluded in the data set
-  final List<String>? materializedViewsToExclude;
+  final pulumi.Input<List<String>>? materializedViewsToExclude;
   /// Materialized views to be included in the data set
-  final List<String>? materializedViewsToInclude;
+  final pulumi.Input<List<String>>? materializedViewsToInclude;
   /// Tables to be excluded in the data set
-  final List<String>? tablesToExclude;
+  final pulumi.Input<List<String>>? tablesToExclude;
   /// Tables to be included in the data set
-  final List<String>? tablesToInclude;
+  final pulumi.Input<List<String>>? tablesToInclude;
 
   /// Creates a new [TableLevelSharingPropertiesResponse].
   /// [externalTablesToExclude] External tables to be excluded in the data set
@@ -45,12 +46,12 @@ class TableLevelSharingPropertiesResponse {
 
   factory TableLevelSharingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TableLevelSharingPropertiesResponse(
-      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : (map['externalTablesToExclude'] as List).cast<String>(),
-      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : (map['externalTablesToInclude'] as List).cast<String>(),
-      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : (map['materializedViewsToExclude'] as List).cast<String>(),
-      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : (map['materializedViewsToInclude'] as List).cast<String>(),
-      tablesToExclude: map['tablesToExclude'] == null ? null : (map['tablesToExclude'] as List).cast<String>(),
-      tablesToInclude: map['tablesToInclude'] == null ? null : (map['tablesToInclude'] as List).cast<String>(),
+      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : ((map['externalTablesToExclude'] as List).cast<String>()).input(),
+      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : ((map['externalTablesToInclude'] as List).cast<String>()).input(),
+      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : ((map['materializedViewsToExclude'] as List).cast<String>()).input(),
+      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : ((map['materializedViewsToInclude'] as List).cast<String>()).input(),
+      tablesToExclude: map['tablesToExclude'] == null ? null : ((map['tablesToExclude'] as List).cast<String>()).input(),
+      tablesToInclude: map['tablesToInclude'] == null ? null : ((map['tablesToInclude'] as List).cast<String>()).input(),
     );
   }
 }

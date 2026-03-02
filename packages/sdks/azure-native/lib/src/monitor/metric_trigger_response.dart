@@ -6,29 +6,29 @@ import 'scale_rule_metric_dimension_response.dart';
 /// The trigger that results in a scaling action.
 class MetricTriggerResponse {
   /// List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
-  final List<ScaleRuleMetricDimensionResponse>? dimensions;
+  final pulumi.Input<List<ScaleRuleMetricDimensionResponse>>? dimensions;
   /// a value indicating whether metric should divide per instance.
-  final bool? dividePerInstance;
+  final pulumi.Input<bool>? dividePerInstance;
   /// the name of the metric that defines what the rule monitors.
-  final String metricName;
+  final pulumi.Input<String> metricName;
   /// the namespace of the metric that defines what the rule monitors.
-  final String? metricNamespace;
+  final pulumi.Input<String>? metricNamespace;
   /// the location of the resource the rule monitors.
-  final String? metricResourceLocation;
+  final pulumi.Input<String>? metricResourceLocation;
   /// the resource identifier of the resource the rule monitors.
-  final String metricResourceUri;
+  final pulumi.Input<String> metricResourceUri;
   /// the operator that is used to compare the metric data and the threshold.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// the metric statistic type. How the metrics from multiple instances are combined.
-  final String statistic;
+  final pulumi.Input<String> statistic;
   /// the threshold of the metric that triggers the scale action.
-  final double threshold;
+  final pulumi.Input<double> threshold;
   /// time aggregation type. How the data that is collected should be combined over time. The default value is Average.
-  final String timeAggregation;
+  final pulumi.Input<String> timeAggregation;
   /// the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
-  final String timeGrain;
+  final pulumi.Input<String> timeGrain;
   /// the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
-  final String timeWindow;
+  final pulumi.Input<String> timeWindow;
 
   /// Creates a new [MetricTriggerResponse].
   /// [dimensions] List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
@@ -60,7 +60,7 @@ class MetricTriggerResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<ScaleRuleMetricDimensionResponse, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<ScaleRuleMetricDimensionResponse>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<ScaleRuleMetricDimensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dividePerInstance': ?dividePerInstance,
       'metricName': metricName,
       'metricNamespace': ?metricNamespace,
@@ -77,18 +77,18 @@ class MetricTriggerResponse {
 
   factory MetricTriggerResponse.fromMap(Map<String, dynamic> map) {
     return MetricTriggerResponse(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<ScaleRuleMetricDimensionResponse>(map['dimensions'], (value) => ScaleRuleMetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dividePerInstance: map['dividePerInstance'] == null ? null : map['dividePerInstance'] as bool,
-      metricName: map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] == null ? null : map['metricNamespace'] as String,
-      metricResourceLocation: map['metricResourceLocation'] == null ? null : map['metricResourceLocation'] as String,
-      metricResourceUri: map['metricResourceUri'] as String,
-      operator: map['operator'] as String,
-      statistic: map['statistic'] as String,
-      threshold: map['threshold'] as double,
-      timeAggregation: map['timeAggregation'] as String,
-      timeGrain: map['timeGrain'] as String,
-      timeWindow: map['timeWindow'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScaleRuleMetricDimensionResponse>(map['dimensions'], (value) => ScaleRuleMetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dividePerInstance: map['dividePerInstance'] == null ? null : (map['dividePerInstance'] as bool).input(),
+      metricName: (map['metricName'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      metricResourceLocation: map['metricResourceLocation'] == null ? null : (map['metricResourceLocation'] as String).input(),
+      metricResourceUri: (map['metricResourceUri'] as String).input(),
+      operator: (map['operator'] as String).input(),
+      statistic: (map['statistic'] as String).input(),
+      threshold: (map['threshold'] as double).input(),
+      timeAggregation: (map['timeAggregation'] as String).input(),
+      timeGrain: (map['timeGrain'] as String).input(),
+      timeWindow: (map['timeWindow'] as String).input(),
     );
   }
 }

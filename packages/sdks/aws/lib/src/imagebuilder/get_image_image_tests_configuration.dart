@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImageImageTestsConfiguration {
   /// Whether image tests are enabled.
-  final bool imageTestsEnabled;
+  final pulumi.Input<bool> imageTestsEnabled;
   /// Number of minutes before image tests time out.
-  final int timeoutMinutes;
+  final pulumi.Input<int> timeoutMinutes;
 
   /// Creates a new [GetImageImageTestsConfiguration].
   /// [imageTestsEnabled] Whether image tests are enabled.
@@ -24,8 +25,8 @@ class GetImageImageTestsConfiguration {
 
   factory GetImageImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImageImageTestsConfiguration(
-      imageTestsEnabled: map['imageTestsEnabled'] as bool,
-      timeoutMinutes: map['timeoutMinutes'] as int,
+      imageTestsEnabled: (map['imageTestsEnabled'] as bool).input(),
+      timeoutMinutes: (map['timeoutMinutes'] as int).input(),
     );
   }
 }

@@ -13,9 +13,8 @@ class GetSourceControlTokenArgs {
   /// Creates a new [GetSourceControlTokenArgs].
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   GetSourceControlTokenArgs({
-    required pulumi.Output<String> type,
-  }) :
-      type = pulumi.Input.asInput<String>(type);
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSourceControlTokenArgs {
 
   factory GetSourceControlTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceControlTokenArgs(
-      type: pulumi.Output.create<String>(map['type'] as String),
+      type: (map['type'] as String).input(),
     );
   }
 }

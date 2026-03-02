@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration {
   /// Rule name.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration].
   /// [ruleName] Rule name.
@@ -19,7 +20,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetec
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration(
-      ruleName: map['ruleName'] as String,
+      ruleName: (map['ruleName'] as String).input(),
     );
   }
 }

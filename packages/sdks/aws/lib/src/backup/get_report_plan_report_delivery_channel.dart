@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReportPlanReportDeliveryChannel {
   /// List of the format of your reports: CSV, JSON, or both.
-  final List<String> formats;
+  final pulumi.Input<List<String>> formats;
   /// Unique name of the S3 bucket that receives your reports.
-  final String s3BucketName;
+  final pulumi.Input<String> s3BucketName;
   /// Prefix for where Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path: s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.
-  final String s3KeyPrefix;
+  final pulumi.Input<String> s3KeyPrefix;
 
   /// Creates a new [GetReportPlanReportDeliveryChannel].
   /// [formats] List of the format of your reports: CSV, JSON, or both.
@@ -29,9 +30,9 @@ class GetReportPlanReportDeliveryChannel {
 
   factory GetReportPlanReportDeliveryChannel.fromMap(Map<String, dynamic> map) {
     return GetReportPlanReportDeliveryChannel(
-      formats: (map['formats'] as List).cast<String>(),
-      s3BucketName: map['s3BucketName'] as String,
-      s3KeyPrefix: map['s3KeyPrefix'] as String,
+      formats: ((map['formats'] as List).cast<String>()).input(),
+      s3BucketName: (map['s3BucketName'] as String).input(),
+      s3KeyPrefix: (map['s3KeyPrefix'] as String).input(),
     );
   }
 }

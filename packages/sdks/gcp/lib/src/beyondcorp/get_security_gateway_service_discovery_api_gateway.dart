@@ -5,7 +5,7 @@ import 'get_security_gateway_service_discovery_api_gateway_resource_override.dar
 
 class GetSecurityGatewayServiceDiscoveryApiGateway {
   /// Enables fetching resource model updates to alter service behavior per Chrome profile.
-  final List<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride> resourceOverrides;
+  final pulumi.Input<List<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride>> resourceOverrides;
 
   /// Creates a new [GetSecurityGatewayServiceDiscoveryApiGateway].
   /// [resourceOverrides] Enables fetching resource model updates to alter service behavior per Chrome profile.
@@ -15,13 +15,13 @@ class GetSecurityGatewayServiceDiscoveryApiGateway {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceOverrides': pulumi.Input.encodeList<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride, Map<String, dynamic>>(resourceOverrides, (value) => value.toMap()),
+      'resourceOverrides': pulumi.Input.mapInputValue<List<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride>, List<Map<String, dynamic>>>(resourceOverrides, (value) => pulumi.Input.encodeList<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetSecurityGatewayServiceDiscoveryApiGateway.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayServiceDiscoveryApiGateway(
-      resourceOverrides: pulumi.Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride>(map['resourceOverrides'], (value) => GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap((value as Map).cast<String, dynamic>())),
+      resourceOverrides: (pulumi.Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride>(map['resourceOverrides'], (value) => GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

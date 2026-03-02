@@ -22,15 +22,11 @@ class AdditionalCertificateArgs {
   /// [domain] The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
   /// [listenerId] The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
   AdditionalCertificateArgs({
-    required pulumi.Output<String> acceleratorId,
-    required pulumi.Output<String> certificateId,
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> listenerId,
-  }) :
-      acceleratorId = pulumi.Input.asInput<String>(acceleratorId),
-      certificateId = pulumi.Input.asInput<String>(certificateId),
-      domain = pulumi.Input.asInput<String>(domain),
-      listenerId = pulumi.Input.asInput<String>(listenerId);
+    required this.acceleratorId,
+    required this.certificateId,
+    required this.domain,
+    required this.listenerId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class AdditionalCertificateArgs {
 
   factory AdditionalCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AdditionalCertificateArgs(
-      acceleratorId: pulumi.Output.create<String>(map['acceleratorId'] as String),
-      certificateId: pulumi.Output.create<String>(map['certificateId'] as String),
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      listenerId: pulumi.Output.create<String>(map['listenerId'] as String),
+      acceleratorId: (map['acceleratorId'] as String).input(),
+      certificateId: (map['certificateId'] as String).input(),
+      domain: (map['domain'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
     );
   }
 }

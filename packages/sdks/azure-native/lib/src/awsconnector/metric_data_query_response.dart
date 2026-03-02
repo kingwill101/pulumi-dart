@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_stat_response.dart';
 
 /// Definition of MetricDataQuery
 class MetricDataQueryResponse {
   /// The ID of the account where the metrics are located, if this is a cross-account alarm.
-  final String? accountId;
+  final pulumi.Input<String>? accountId;
   /// The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the ``Id`` of the other metrics to refer to those metrics, and can also use the ``Id`` of other expressions to use the result of those expressions. For more information about metric math expressions, see [Metric Math Syntax and Functions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax) in the *User Guide*. Within each MetricDataQuery object, you must specify either ``Expression`` or ``MetricStat`` but not both.
-  final String? expression;
+  final pulumi.Input<String>? expression;
   /// A short name used to tie this object to the results in the response. This name must be unique within a single call to ``GetMetricData``. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents. If the metric or expression is shown in a CW dashboard widget, the label is shown. If ``Label`` is omitted, CW generates a default.
-  final String? label;
+  final pulumi.Input<String>? label;
   /// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data. Within one MetricDataQuery object, you must specify either ``Expression`` or ``MetricStat`` but not both. This structure defines the metric to be returned, along with the statistics, period, and units.  ``MetricStat`` is a property of the [MetricDataQuery](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudwatch-alarm-metricdataquery.html) property type.
-  final MetricStatResponse? metricStat;
+  final pulumi.Input<MetricStatResponse>? metricStat;
   /// The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period can be as short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that are collected at intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are those metrics stored by a ``PutMetricData`` operation that includes a ``StorageResolution of 1 second``.
-  final int? period;
+  final pulumi.Input<int>? period;
   /// This option indicates whether to return the timestamps and raw data values of this metric. When you create an alarm based on a metric math expression, specify ``True`` for this value for only the one math expression that the alarm is based on. You must specify ``False`` for ``ReturnData`` for all the other metrics and expressions used in the alarm. This field is required.
-  final bool? returnData;
+  final pulumi.Input<bool>? returnData;
 
   /// Creates a new [MetricDataQueryResponse].
   /// [accountId] The ID of the account where the metrics are located, if this is a cross-account alarm.
@@ -43,7 +44,7 @@ class MetricDataQueryResponse {
       'expression': ?expression,
       'id': ?id,
       'label': ?label,
-      'metricStat': ?metricStat == null ? null : metricStat!.toMap(),
+      'metricStat': ?pulumi.Input.mapOptionalInputValue<MetricStatResponse, Map<String, dynamic>>(metricStat, (value) => value.toMap()),
       'period': ?period,
       'returnData': ?returnData,
     };
@@ -51,13 +52,13 @@ class MetricDataQueryResponse {
 
   factory MetricDataQueryResponse.fromMap(Map<String, dynamic> map) {
     return MetricDataQueryResponse(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      expression: map['expression'] == null ? null : map['expression'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
-      metricStat: map['metricStat'] == null ? null : MetricStatResponse.fromMap((map['metricStat'] as Map).cast<String, dynamic>()),
-      period: map['period'] == null ? null : map['period'] as int,
-      returnData: map['returnData'] == null ? null : map['returnData'] as bool,
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      metricStat: map['metricStat'] == null ? null : (MetricStatResponse.fromMap((map['metricStat'] as Map).cast<String, dynamic>())).input(),
+      period: map['period'] == null ? null : (map['period'] as int).input(),
+      returnData: map['returnData'] == null ? null : (map['returnData'] as bool).input(),
     );
   }
 }

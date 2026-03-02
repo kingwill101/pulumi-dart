@@ -16,11 +16,9 @@ class GetL2ConnectionArgs {
   /// [l2ConnectionName] L2 Connection name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetL2ConnectionArgs({
-    required pulumi.Output<String> l2ConnectionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      l2ConnectionName = pulumi.Input.asInput<String>(l2ConnectionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.l2ConnectionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetL2ConnectionArgs {
 
   factory GetL2ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetL2ConnectionArgs(
-      l2ConnectionName: pulumi.Output.create<String>(map['l2ConnectionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      l2ConnectionName: (map['l2ConnectionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

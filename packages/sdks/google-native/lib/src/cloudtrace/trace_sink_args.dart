@@ -19,13 +19,10 @@ class TraceSinkArgs {
   /// [outputConfig] The export destination.
   /// [project] Optional.
   TraceSinkArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<OutputConfig> outputConfig,
-    pulumi.Output<String>? project,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      outputConfig = pulumi.Input.asInput<OutputConfig>(outputConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.name,
+    required this.outputConfig,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TraceSinkArgs {
 
   factory TraceSinkArgs.fromMap(Map<String, dynamic> map) {
     return TraceSinkArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      outputConfig: pulumi.Output.create<OutputConfig>(OutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      outputConfig: (OutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

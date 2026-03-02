@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource group lock option during move.
 class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse {
   /// The action verb that will be blocked when the resource group is locked during move.
-  final String? blockActionVerb;
+  final pulumi.Input<String>? blockActionVerb;
 
   /// Creates a new [ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse].
   /// [blockActionVerb] The action verb that will be blocked when the resource group is locked during move.
@@ -20,7 +21,7 @@ class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveRespons
 
   factory ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse(
-      blockActionVerb: map['blockActionVerb'] == null ? null : map['blockActionVerb'] as String,
+      blockActionVerb: map['blockActionVerb'] == null ? null : (map['blockActionVerb'] as String).input(),
     );
   }
 }

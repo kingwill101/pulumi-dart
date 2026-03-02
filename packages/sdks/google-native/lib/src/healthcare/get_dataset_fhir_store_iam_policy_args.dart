@@ -20,17 +20,12 @@ class GetDatasetFhirStoreIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   GetDatasetFhirStoreIamPolicyArgs({
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> fhirStoreId,
-    required pulumi.Output<String> location,
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      fhirStoreId = pulumi.Input.asInput<String>(fhirStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.datasetId,
+    required this.fhirStoreId,
+    required this.location,
+    this.optionsRequestedPolicyVersion,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetDatasetFhirStoreIamPolicyArgs {
 
   factory GetDatasetFhirStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetFhirStoreIamPolicyArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      fhirStoreId: pulumi.Output.create<String>(map['fhirStoreId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      fhirStoreId: (map['fhirStoreId'] as String).input(),
+      location: (map['location'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

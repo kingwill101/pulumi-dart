@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskSourceNetworkKnownHosts {
   /// Specifies the path to the file containing known hosts for the network storage.
-  final String path;
+  final pulumi.Input<String> path;
 
   /// Creates a new [DomainDevicesDiskSourceNetworkKnownHosts].
   /// [path] Specifies the path to the file containing known hosts for the network storage.
@@ -19,7 +20,7 @@ class DomainDevicesDiskSourceNetworkKnownHosts {
 
   factory DomainDevicesDiskSourceNetworkKnownHosts.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceNetworkKnownHosts(
-      path: map['path'] as String,
+      path: (map['path'] as String).input(),
     );
   }
 }

@@ -31,23 +31,15 @@ class BasicEndpointGroupState {
   /// [endpointType] The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
   /// [status] The status of the Basic Endpoint Group.
   BasicEndpointGroupState({
-    pulumi.Output<String>? acceleratorId,
-    pulumi.Output<String>? basicEndpointGroupName,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? endpointAddress,
-    pulumi.Output<String>? endpointGroupRegion,
-    pulumi.Output<String>? endpointSubAddress,
-    pulumi.Output<String>? endpointType,
-    pulumi.Output<String>? status,
-  }) :
-      acceleratorId = pulumi.Input.asOptionalInput<String>(acceleratorId),
-      basicEndpointGroupName = pulumi.Input.asOptionalInput<String>(basicEndpointGroupName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      endpointAddress = pulumi.Input.asOptionalInput<String>(endpointAddress),
-      endpointGroupRegion = pulumi.Input.asOptionalInput<String>(endpointGroupRegion),
-      endpointSubAddress = pulumi.Input.asOptionalInput<String>(endpointSubAddress),
-      endpointType = pulumi.Input.asOptionalInput<String>(endpointType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.acceleratorId,
+    this.basicEndpointGroupName,
+    this.description,
+    this.endpointAddress,
+    this.endpointGroupRegion,
+    this.endpointSubAddress,
+    this.endpointType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class BasicEndpointGroupState {
 
   factory BasicEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return BasicEndpointGroupState(
-      acceleratorId: map['acceleratorId'] == null ? null : pulumi.Output.create<String>(map['acceleratorId'] as String),
-      basicEndpointGroupName: map['basicEndpointGroupName'] == null ? null : pulumi.Output.create<String>(map['basicEndpointGroupName'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      endpointAddress: map['endpointAddress'] == null ? null : pulumi.Output.create<String>(map['endpointAddress'] as String),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : pulumi.Output.create<String>(map['endpointGroupRegion'] as String),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : pulumi.Output.create<String>(map['endpointSubAddress'] as String),
-      endpointType: map['endpointType'] == null ? null : pulumi.Output.create<String>(map['endpointType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
+      basicEndpointGroupName: map['basicEndpointGroupName'] == null ? null : (map['basicEndpointGroupName'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress'] as String).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
+      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

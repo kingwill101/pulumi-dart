@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authorization in an ExpressRouteCircuit resource.
 class ExpressRouteCircuitAuthorizationResponse {
   /// The authorization key.
-  final String? authorizationKey;
+  final pulumi.Input<String>? authorizationKey;
   /// The authorization use status.
-  final String? authorizationUseStatus;
+  final pulumi.Input<String>? authorizationUseStatus;
   /// The reference to the ExpressRoute connection resource using the authorization.
-  final String connectionResourceUri;
+  final pulumi.Input<String> connectionResourceUri;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final pulumi.Input<String> etag;
   /// Resource ID.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The provisioning state of the authorization resource.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Type of the resource.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExpressRouteCircuitAuthorizationResponse].
   /// [authorizationKey] The authorization key.
@@ -55,14 +56,14 @@ class ExpressRouteCircuitAuthorizationResponse {
 
   factory ExpressRouteCircuitAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationResponse(
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : map['authorizationUseStatus'] as String,
-      connectionResourceUri: map['connectionResourceUri'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
+      connectionResourceUri: (map['connectionResourceUri'] as String).input(),
+      etag: (map['etag'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_glb_settings_cdn.dart';
 
 class LoadBalancerGlbSettings {
   /// CDN configuration supporting the following:
-  final LoadBalancerGlbSettingsCdn? cdn;
+  final pulumi.Input<LoadBalancerGlbSettingsCdn>? cdn;
   /// fail-over threshold
-  final int? failoverThreshold;
+  final pulumi.Input<int>? failoverThreshold;
   /// region priority map
-  final Map<String, int>? regionPriorities;
+  final pulumi.Input<Map<String, int>>? regionPriorities;
   /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
-  final int targetPort;
+  final pulumi.Input<int> targetPort;
   /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
-  final String targetProtocol;
+  final pulumi.Input<String> targetProtocol;
 
   /// Creates a new [LoadBalancerGlbSettings].
   /// [cdn] CDN configuration supporting the following:
@@ -30,7 +31,7 @@ class LoadBalancerGlbSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cdn': ?cdn == null ? null : cdn!.toMap(),
+      'cdn': ?pulumi.Input.mapOptionalInputValue<LoadBalancerGlbSettingsCdn, Map<String, dynamic>>(cdn, (value) => value.toMap()),
       'failoverThreshold': ?failoverThreshold,
       'regionPriorities': ?regionPriorities,
       'targetPort': targetPort,
@@ -40,11 +41,11 @@ class LoadBalancerGlbSettings {
 
   factory LoadBalancerGlbSettings.fromMap(Map<String, dynamic> map) {
     return LoadBalancerGlbSettings(
-      cdn: map['cdn'] == null ? null : LoadBalancerGlbSettingsCdn.fromMap((map['cdn'] as Map).cast<String, dynamic>()),
-      failoverThreshold: map['failoverThreshold'] == null ? null : map['failoverThreshold'] as int,
-      regionPriorities: map['regionPriorities'] == null ? null : (map['regionPriorities'] as Map).cast<String, int>(),
-      targetPort: map['targetPort'] as int,
-      targetProtocol: map['targetProtocol'] as String,
+      cdn: map['cdn'] == null ? null : (LoadBalancerGlbSettingsCdn.fromMap((map['cdn'] as Map).cast<String, dynamic>())).input(),
+      failoverThreshold: map['failoverThreshold'] == null ? null : (map['failoverThreshold'] as int).input(),
+      regionPriorities: map['regionPriorities'] == null ? null : ((map['regionPriorities'] as Map).cast<String, int>()).input(),
+      targetPort: (map['targetPort'] as int).input(),
+      targetProtocol: (map['targetProtocol'] as String).input(),
     );
   }
 }

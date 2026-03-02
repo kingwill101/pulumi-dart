@@ -13,9 +13,8 @@ class GetDatabaseCaArgs {
   /// Creates a new [GetDatabaseCaArgs].
   /// [clusterId] The ID of the source database cluster.
   GetDatabaseCaArgs({
-    required pulumi.Output<String> clusterId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId);
+    required this.clusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetDatabaseCaArgs {
 
   factory GetDatabaseCaArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseCaArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
+      clusterId: (map['clusterId'] as String).input(),
     );
   }
 }

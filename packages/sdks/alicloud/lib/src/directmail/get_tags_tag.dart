@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsTag {
   /// The ID of the tag.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the tag.
-  final String tagId;
+  final pulumi.Input<String> tagId;
   /// The name of the tag.
-  final String tagName;
+  final pulumi.Input<String> tagName;
 
   /// Creates a new [GetTagsTag].
   /// [id] The ID of the tag.
@@ -29,9 +30,9 @@ class GetTagsTag {
 
   factory GetTagsTag.fromMap(Map<String, dynamic> map) {
     return GetTagsTag(
-      id: map['id'] as String,
-      tagId: map['tagId'] as String,
-      tagName: map['tagName'] as String,
+      id: (map['id'] as String).input(),
+      tagId: (map['tagId'] as String).input(),
+      tagName: (map['tagName'] as String).input(),
     );
   }
 }

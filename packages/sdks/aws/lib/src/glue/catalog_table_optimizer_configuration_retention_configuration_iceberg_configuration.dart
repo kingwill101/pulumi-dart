@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration {
   /// If set to `false`, snapshots are only deleted from table metadata, and the underlying data and metadata files are not deleted. Defaults to `false`.
-  final bool? cleanExpiredFiles;
+  final pulumi.Input<bool>? cleanExpiredFiles;
   /// The number of Iceberg snapshots to retain within the retention period. Defaults to `1` or the corresponding Iceberg table configuration field if it exists.
-  final int? numberOfSnapshotsToRetain;
+  final pulumi.Input<int>? numberOfSnapshotsToRetain;
   /// Interval in hours between retention job runs. Defaults to `24`.
-  final int? runRateInHours;
+  final pulumi.Input<int>? runRateInHours;
   /// The number of days to retain the Iceberg snapshots. Defaults to `5`, or the corresponding Iceberg table configuration field if it exists.
-  final int? snapshotRetentionPeriodInDays;
+  final pulumi.Input<int>? snapshotRetentionPeriodInDays;
 
   /// Creates a new [CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration].
   /// [cleanExpiredFiles] If set to `false`, snapshots are only deleted from table metadata, and the underlying data and metadata files are not deleted. Defaults to `false`.
@@ -34,10 +35,10 @@ class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfigurati
 
   factory CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration(
-      cleanExpiredFiles: map['cleanExpiredFiles'] == null ? null : map['cleanExpiredFiles'] as bool,
-      numberOfSnapshotsToRetain: map['numberOfSnapshotsToRetain'] == null ? null : map['numberOfSnapshotsToRetain'] as int,
-      runRateInHours: map['runRateInHours'] == null ? null : map['runRateInHours'] as int,
-      snapshotRetentionPeriodInDays: map['snapshotRetentionPeriodInDays'] == null ? null : map['snapshotRetentionPeriodInDays'] as int,
+      cleanExpiredFiles: map['cleanExpiredFiles'] == null ? null : (map['cleanExpiredFiles'] as bool).input(),
+      numberOfSnapshotsToRetain: map['numberOfSnapshotsToRetain'] == null ? null : (map['numberOfSnapshotsToRetain'] as int).input(),
+      runRateInHours: map['runRateInHours'] == null ? null : (map['runRateInHours'] as int).input(),
+      snapshotRetentionPeriodInDays: map['snapshotRetentionPeriodInDays'] == null ? null : (map['snapshotRetentionPeriodInDays'] as int).input(),
     );
   }
 }

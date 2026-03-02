@@ -7,21 +7,21 @@ import 'sku_capacity_response.dart';
 /// Description of a SKU for a scalable resource.
 class SkuDescriptionResponse {
   /// Capabilities of the SKU, e.g., is traffic manager enabled?
-  final List<CapabilityResponse>? capabilities;
+  final pulumi.Input<List<CapabilityResponse>>? capabilities;
   /// Current number of instances assigned to the resource.
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Family code of the resource SKU.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// Locations of the SKU.
-  final List<String>? locations;
+  final pulumi.Input<List<String>>? locations;
   /// Name of the resource SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Size specifier of the resource SKU.
-  final String? size;
+  final pulumi.Input<String>? size;
   /// Min, max, and default scale values of the SKU.
-  final SkuCapacityResponse? skuCapacity;
+  final pulumi.Input<SkuCapacityResponse>? skuCapacity;
   /// Service tier of the resource SKU.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [SkuDescriptionResponse].
   /// [capabilities] Capabilities of the SKU, e.g., is traffic manager enabled?
@@ -45,27 +45,27 @@ class SkuDescriptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capabilities': ?capabilities == null ? null : pulumi.Input.encodeList<CapabilityResponse, Map<String, dynamic>>(capabilities!, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<List<CapabilityResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<CapabilityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'capacity': ?capacity,
       'family': ?family,
       'locations': ?locations,
       'name': ?name,
       'size': ?size,
-      'skuCapacity': ?skuCapacity == null ? null : skuCapacity!.toMap(),
+      'skuCapacity': ?pulumi.Input.mapOptionalInputValue<SkuCapacityResponse, Map<String, dynamic>>(skuCapacity, (value) => value.toMap()),
       'tier': ?tier,
     };
   }
 
   factory SkuDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return SkuDescriptionResponse(
-      capabilities: map['capabilities'] == null ? null : pulumi.Input.decodeList<CapabilityResponse>(map['capabilities'], (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      family: map['family'] == null ? null : map['family'] as String,
-      locations: map['locations'] == null ? null : (map['locations'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      size: map['size'] == null ? null : map['size'] as String,
-      skuCapacity: map['skuCapacity'] == null ? null : SkuCapacityResponse.fromMap((map['skuCapacity'] as Map).cast<String, dynamic>()),
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<CapabilityResponse>(map['capabilities'], (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      skuCapacity: map['skuCapacity'] == null ? null : (SkuCapacityResponse.fromMap((map['skuCapacity'] as Map).cast<String, dynamic>())).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

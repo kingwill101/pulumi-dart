@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'location_fsx_ontap_file_system_protocol_smb_mount_options.dart';
 
 class LocationFsxOntapFileSystemProtocolSmb {
   /// Fully qualified domain name of the Microsoft Active Directory (AD) that your storage virtual machine belongs to.
-  final String? domain;
+  final pulumi.Input<String>? domain;
   /// Mount options that are available for DataSync to access an SMB location. See SMB Mount Options below.
-  final LocationFsxOntapFileSystemProtocolSmbMountOptions mountOptions;
+  final pulumi.Input<LocationFsxOntapFileSystemProtocolSmbMountOptions> mountOptions;
   /// Password of a user who has permission to access your SVM.
-  final String password;
+  final pulumi.Input<String> password;
   /// Username that can mount the location and access the files, folders, and metadata that you need in the SVM.
-  final String user;
+  final pulumi.Input<String> user;
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolSmb].
   /// [domain] Fully qualified domain name of the Microsoft Active Directory (AD) that your storage virtual machine belongs to.
@@ -27,7 +28,7 @@ class LocationFsxOntapFileSystemProtocolSmb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': ?domain,
-      'mountOptions': mountOptions.toMap(),
+      'mountOptions': pulumi.Input.mapInputValue<LocationFsxOntapFileSystemProtocolSmbMountOptions, Map<String, dynamic>>(mountOptions, (value) => value.toMap()),
       'password': password,
       'user': user,
     };
@@ -35,10 +36,10 @@ class LocationFsxOntapFileSystemProtocolSmb {
 
   factory LocationFsxOntapFileSystemProtocolSmb.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolSmb(
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      mountOptions: LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>()),
-      password: map['password'] as String,
-      user: map['user'] as String,
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      mountOptions: (LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      password: (map['password'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

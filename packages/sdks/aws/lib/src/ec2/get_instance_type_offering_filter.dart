@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeOfferingFilter {
   /// Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-  final String name;
+  final pulumi.Input<String> name;
   /// List of one or more values for the filter.
-  final List<String> values;
+  final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetInstanceTypeOfferingFilter].
   /// [name] Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
@@ -24,8 +25,8 @@ class GetInstanceTypeOfferingFilter {
 
   factory GetInstanceTypeOfferingFilter.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingFilter(
-      name: map['name'] as String,
-      values: (map['values'] as List).cast<String>(),
+      name: (map['name'] as String).input(),
+      values: ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceControlledEgressConfig {
   /// List of fully qualified domain names to be added to the allowlist for
   /// outbound traffic.
-  final List<String>? egressFqdns;
+  final pulumi.Input<List<String>>? egressFqdns;
   /// Whether the Looker Marketplace is enabled.
-  final bool? marketplaceEnabled;
+  final pulumi.Input<bool>? marketplaceEnabled;
 
   /// Creates a new [InstanceControlledEgressConfig].
   /// [egressFqdns] List of fully qualified domain names to be added to the allowlist for
@@ -25,8 +26,8 @@ class InstanceControlledEgressConfig {
 
   factory InstanceControlledEgressConfig.fromMap(Map<String, dynamic> map) {
     return InstanceControlledEgressConfig(
-      egressFqdns: map['egressFqdns'] == null ? null : (map['egressFqdns'] as List).cast<String>(),
-      marketplaceEnabled: map['marketplaceEnabled'] == null ? null : map['marketplaceEnabled'] as bool,
+      egressFqdns: map['egressFqdns'] == null ? null : ((map['egressFqdns'] as List).cast<String>()).input(),
+      marketplaceEnabled: map['marketplaceEnabled'] == null ? null : (map['marketplaceEnabled'] as bool).input(),
     );
   }
 }

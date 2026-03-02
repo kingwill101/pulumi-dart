@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MembershipBindingState {
   /// (Output)
   /// Code describes the state of a MembershipBinding resource.
-  final String? code;
+  final pulumi.Input<String>? code;
 
   /// Creates a new [MembershipBindingState].
   /// [code] (Output)
@@ -20,7 +21,7 @@ class MembershipBindingState {
 
   factory MembershipBindingState.fromMap(Map<String, dynamic> map) {
     return MembershipBindingState(
-      code: map['code'] == null ? null : map['code'] as String,
+      code: map['code'] == null ? null : (map['code'] as String).input(),
     );
   }
 }

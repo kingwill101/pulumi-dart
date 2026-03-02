@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetSecurityStatus {
   /// Additional information about the current state.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Output only. The time when the asset was last updated.
-  final String? updateTime;
+  final pulumi.Input<String>? updateTime;
 
   /// Creates a new [AssetSecurityStatus].
   /// [message] Additional information about the current state.
@@ -29,9 +30,9 @@ class AssetSecurityStatus {
 
   factory AssetSecurityStatus.fromMap(Map<String, dynamic> map) {
     return AssetSecurityStatus(
-      message: map['message'] == null ? null : map['message'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceZkConnAddr {
   /// The Phoenix address.
-  final String? connAddr;
+  final pulumi.Input<String>? connAddr;
   /// The number of the port over which Phoenix connects to the instance.
-  final String? connAddrPort;
+  final pulumi.Input<String>? connAddrPort;
   /// The type of the network. Valid values:
-  final String? netType;
+  final pulumi.Input<String>? netType;
 
   /// Creates a new [InstanceZkConnAddr].
   /// [connAddr] The Phoenix address.
@@ -29,9 +30,9 @@ class InstanceZkConnAddr {
 
   factory InstanceZkConnAddr.fromMap(Map<String, dynamic> map) {
     return InstanceZkConnAddr(
-      connAddr: map['connAddr'] == null ? null : map['connAddr'] as String,
-      connAddrPort: map['connAddrPort'] == null ? null : map['connAddrPort'] as String,
-      netType: map['netType'] == null ? null : map['netType'] as String,
+      connAddr: map['connAddr'] == null ? null : (map['connAddr'] as String).input(),
+      connAddrPort: map['connAddrPort'] == null ? null : (map['connAddrPort'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
     );
   }
 }

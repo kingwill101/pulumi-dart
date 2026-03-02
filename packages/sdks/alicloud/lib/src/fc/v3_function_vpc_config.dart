@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionVpcConfig {
   /// Security group ID
-  final String? securityGroupId;
+  final pulumi.Input<String>? securityGroupId;
   /// VPC network ID
-  final String? vpcId;
+  final pulumi.Input<String>? vpcId;
   /// Switch List
-  final List<String>? vswitchIds;
+  final pulumi.Input<List<String>>? vswitchIds;
 
   /// Creates a new [V3FunctionVpcConfig].
   /// [securityGroupId] Security group ID
@@ -29,9 +30,9 @@ class V3FunctionVpcConfig {
 
   factory V3FunctionVpcConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionVpcConfig(
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchIds: map['vswitchIds'] == null ? null : (map['vswitchIds'] as List).cast<String>(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
     );
   }
 }

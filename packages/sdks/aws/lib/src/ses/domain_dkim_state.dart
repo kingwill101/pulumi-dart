@@ -21,13 +21,10 @@ class DomainDkimState {
   /// [domain] Verified domain name to generate DKIM tokens for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DomainDkimState({
-    pulumi.Output<List<String>>? dkimTokens,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? region,
-  }) :
-      dkimTokens = pulumi.Input.asOptionalInput<List<String>>(dkimTokens),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.dkimTokens,
+    this.domain,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class DomainDkimState {
 
   factory DomainDkimState.fromMap(Map<String, dynamic> map) {
     return DomainDkimState(
-      dkimTokens: map['dkimTokens'] == null ? null : pulumi.Output.create<List<String>>((map['dkimTokens'] as List).cast<String>()),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      dkimTokens: map['dkimTokens'] == null ? null : ((map['dkimTokens'] as List).cast<String>()).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

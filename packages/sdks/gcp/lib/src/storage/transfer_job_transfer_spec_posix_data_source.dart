@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobTransferSpecPosixDataSource {
   /// Root directory path to the filesystem.
-  final String rootDirectory;
+  final pulumi.Input<String> rootDirectory;
 
   /// Creates a new [TransferJobTransferSpecPosixDataSource].
   /// [rootDirectory] Root directory path to the filesystem.
@@ -19,7 +20,7 @@ class TransferJobTransferSpecPosixDataSource {
 
   factory TransferJobTransferSpecPosixDataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecPosixDataSource(
-      rootDirectory: map['rootDirectory'] as String,
+      rootDirectory: (map['rootDirectory'] as String).input(),
     );
   }
 }

@@ -34,23 +34,15 @@ class BudgetManagementGroupState {
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   /// [timePeriod] A `time_period` block as defined below.
   BudgetManagementGroupState({
-    pulumi.Output<double>? amount,
-    pulumi.Output<String>? etag,
-    pulumi.Output<BudgetManagementGroupFilter>? filter,
-    pulumi.Output<String>? managementGroupId,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<BudgetManagementGroupNotification>>? notifications,
-    pulumi.Output<String>? timeGrain,
-    pulumi.Output<BudgetManagementGroupTimePeriod>? timePeriod,
-  }) :
-      amount = pulumi.Input.asOptionalInput<double>(amount),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      filter = pulumi.Input.asOptionalInput<BudgetManagementGroupFilter>(filter),
-      managementGroupId = pulumi.Input.asOptionalInput<String>(managementGroupId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notifications = pulumi.Input.asOptionalInput<List<BudgetManagementGroupNotification>>(notifications),
-      timeGrain = pulumi.Input.asOptionalInput<String>(timeGrain),
-      timePeriod = pulumi.Input.asOptionalInput<BudgetManagementGroupTimePeriod>(timePeriod);
+    this.amount,
+    this.etag,
+    this.filter,
+    this.managementGroupId,
+    this.name,
+    this.notifications,
+    this.timeGrain,
+    this.timePeriod,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class BudgetManagementGroupState {
 
   factory BudgetManagementGroupState.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupState(
-      amount: map['amount'] == null ? null : pulumi.Output.create<double>(map['amount'] as double),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<BudgetManagementGroupFilter>(BudgetManagementGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
-      managementGroupId: map['managementGroupId'] == null ? null : pulumi.Output.create<String>(map['managementGroupId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notifications: map['notifications'] == null ? null : pulumi.Output.create<List<BudgetManagementGroupNotification>>(pulumi.Input.decodeList<BudgetManagementGroupNotification>(map['notifications'], (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>()))),
-      timeGrain: map['timeGrain'] == null ? null : pulumi.Output.create<String>(map['timeGrain'] as String),
-      timePeriod: map['timePeriod'] == null ? null : pulumi.Output.create<BudgetManagementGroupTimePeriod>(BudgetManagementGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())),
+      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      filter: map['filter'] == null ? null : (BudgetManagementGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupNotification>(map['notifications'], (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
+      timePeriod: map['timePeriod'] == null ? null : (BudgetManagementGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

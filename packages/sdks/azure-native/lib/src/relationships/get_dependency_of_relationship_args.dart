@@ -16,11 +16,9 @@ class GetDependencyOfRelationshipArgs {
   /// [name] Name of dependencyOf relationship.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   GetDependencyOfRelationshipArgs({
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    required this.name,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDependencyOfRelationshipArgs {
 
   factory GetDependencyOfRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return GetDependencyOfRelationshipArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      name: (map['name'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

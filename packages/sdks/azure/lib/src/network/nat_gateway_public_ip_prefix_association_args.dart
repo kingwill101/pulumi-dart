@@ -16,11 +16,9 @@ class NatGatewayPublicIpPrefixAssociationArgs {
   /// [natGatewayId] The ID of the NAT Gateway. Changing this forces a new resource to be created.
   /// [publicIpPrefixId] The ID of the Public IP Prefix which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
   NatGatewayPublicIpPrefixAssociationArgs({
-    required pulumi.Output<String> natGatewayId,
-    required pulumi.Output<String> publicIpPrefixId,
-  }) :
-      natGatewayId = pulumi.Input.asInput<String>(natGatewayId),
-      publicIpPrefixId = pulumi.Input.asInput<String>(publicIpPrefixId);
+    required this.natGatewayId,
+    required this.publicIpPrefixId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class NatGatewayPublicIpPrefixAssociationArgs {
 
   factory NatGatewayPublicIpPrefixAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayPublicIpPrefixAssociationArgs(
-      natGatewayId: pulumi.Output.create<String>(map['natGatewayId'] as String),
-      publicIpPrefixId: pulumi.Output.create<String>(map['publicIpPrefixId'] as String),
+      natGatewayId: (map['natGatewayId'] as String).input(),
+      publicIpPrefixId: (map['publicIpPrefixId'] as String).input(),
     );
   }
 }

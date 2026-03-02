@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseThreatDetectionPolicy {
   /// Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
-  final List<String>? disabledAlerts;
+  final pulumi.Input<List<String>>? disabledAlerts;
   /// Should the account administrators be emailed when this alert is triggered? Possible values are `Enabled` or `Disabled`. Defaults to `Disabled`.
-  final String? emailAccountAdmins;
+  final pulumi.Input<String>? emailAccountAdmins;
   /// A list of email addresses which alerts should be sent to.
-  final List<String>? emailAddresses;
+  final pulumi.Input<List<String>>? emailAddresses;
   /// Specifies the number of days to keep in the Threat Detection audit logs.
-  final int? retentionDays;
+  final pulumi.Input<int>? retentionDays;
   /// The State of the Policy. Possible values are `Enabled` or `Disabled`. Defaults to `Disabled`.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
-  final String? storageAccountAccessKey;
+  final pulumi.Input<String>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
-  final String? storageEndpoint;
+  final pulumi.Input<String>? storageEndpoint;
 
   /// Creates a new [DatabaseThreatDetectionPolicy].
   /// [disabledAlerts] Specifies a list of alerts which should be disabled. Possible values include `Access_Anomaly`, `Sql_Injection` and `Sql_Injection_Vulnerability`.
@@ -49,13 +50,13 @@ class DatabaseThreatDetectionPolicy {
 
   factory DatabaseThreatDetectionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseThreatDetectionPolicy(
-      disabledAlerts: map['disabledAlerts'] == null ? null : (map['disabledAlerts'] as List).cast<String>(),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : map['emailAccountAdmins'] as String,
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
-      state: map['state'] == null ? null : map['state'] as String,
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : map['storageAccountAccessKey'] as String,
-      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint'] as String,
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins'] as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
     );
   }
 }

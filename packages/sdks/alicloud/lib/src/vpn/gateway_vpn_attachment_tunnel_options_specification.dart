@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_vpn_attachment_tunnel_options_specification_tunnel_bgp_config.dart';
 import 'gateway_vpn_attachment_tunnel_options_specification_tunnel_ike_config.dart';
 import 'gateway_vpn_attachment_tunnel_options_specification_tunnel_ipsec_config.dart';
@@ -8,34 +9,34 @@ class GatewayVpnAttachmentTunnelOptionsSpecification {
   /// The ID of the user gateway associated with the tunnel.
   ///
   /// > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
-  final String customerGatewayId;
+  final pulumi.Input<String> customerGatewayId;
   /// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
-  final bool? enableDpd;
+  final pulumi.Input<bool>? enableDpd;
   /// Whether the NAT crossing function is enabled for the tunnel. Value:
-  final bool? enableNatTraversal;
+  final pulumi.Input<bool>? enableNatTraversal;
   /// The local internet IP in Tunnel.
-  final String? internetIp;
+  final pulumi.Input<String>? internetIp;
   /// The role of Tunnel.
-  final String? role;
+  final pulumi.Input<String>? role;
   /// The state of Tunnel.
-  final String? state;
+  final pulumi.Input<String>? state;
   /// The negotiation status of Tunnel.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// Add the BGP configuration for the tunnel.
   ///
   /// > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
   /// See `tunnel_bgp_config` below.
-  final GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig? tunnelBgpConfig;
+  final pulumi.Input<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig>? tunnelBgpConfig;
   /// The tunnel ID of IPsec-VPN connection.
-  final String? tunnelId;
+  final pulumi.Input<String>? tunnelId;
   /// Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
-  final GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig? tunnelIkeConfig;
+  final pulumi.Input<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig>? tunnelIkeConfig;
   /// The order in which the tunnel was created.
-  final int tunnelIndex;
+  final pulumi.Input<int> tunnelIndex;
   /// Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
-  final GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig? tunnelIpsecConfig;
+  final pulumi.Input<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig>? tunnelIpsecConfig;
   /// The zoneNo of tunnel.
-  final String? zoneNo;
+  final pulumi.Input<String>? zoneNo;
 
   /// Creates a new [GatewayVpnAttachmentTunnelOptionsSpecification].
   /// [customerGatewayId] The ID of the user gateway associated with the tunnel.
@@ -76,30 +77,30 @@ class GatewayVpnAttachmentTunnelOptionsSpecification {
       'role': ?role,
       'state': ?state,
       'status': ?status,
-      'tunnelBgpConfig': ?tunnelBgpConfig == null ? null : tunnelBgpConfig!.toMap(),
+      'tunnelBgpConfig': ?pulumi.Input.mapOptionalInputValue<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig, Map<String, dynamic>>(tunnelBgpConfig, (value) => value.toMap()),
       'tunnelId': ?tunnelId,
-      'tunnelIkeConfig': ?tunnelIkeConfig == null ? null : tunnelIkeConfig!.toMap(),
+      'tunnelIkeConfig': ?pulumi.Input.mapOptionalInputValue<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig, Map<String, dynamic>>(tunnelIkeConfig, (value) => value.toMap()),
       'tunnelIndex': tunnelIndex,
-      'tunnelIpsecConfig': ?tunnelIpsecConfig == null ? null : tunnelIpsecConfig!.toMap(),
+      'tunnelIpsecConfig': ?pulumi.Input.mapOptionalInputValue<GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig, Map<String, dynamic>>(tunnelIpsecConfig, (value) => value.toMap()),
       'zoneNo': ?zoneNo,
     };
   }
 
   factory GatewayVpnAttachmentTunnelOptionsSpecification.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentTunnelOptionsSpecification(
-      customerGatewayId: map['customerGatewayId'] as String,
-      enableDpd: map['enableDpd'] == null ? null : map['enableDpd'] as bool,
-      enableNatTraversal: map['enableNatTraversal'] == null ? null : map['enableNatTraversal'] as bool,
-      internetIp: map['internetIp'] == null ? null : map['internetIp'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>()),
-      tunnelId: map['tunnelId'] == null ? null : map['tunnelId'] as String,
-      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>()),
-      tunnelIndex: map['tunnelIndex'] as int,
-      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>()),
-      zoneNo: map['zoneNo'] == null ? null : map['zoneNo'] as String,
+      customerGatewayId: (map['customerGatewayId'] as String).input(),
+      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd'] as bool).input(),
+      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal'] as bool).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId'] as String).input(),
+      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>())).input(),
+      tunnelIndex: (map['tunnelIndex'] as int).input(),
+      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>())).input(),
+      zoneNo: map['zoneNo'] == null ? null : (map['zoneNo'] as String).input(),
     );
   }
 }

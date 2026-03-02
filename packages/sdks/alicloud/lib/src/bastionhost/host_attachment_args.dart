@@ -19,13 +19,10 @@ class HostAttachmentArgs {
   /// [hostId] Specified to be part of a host group of host ID.
   /// [instanceId] The bastion host instance id.
   HostAttachmentArgs({
-    required pulumi.Output<String> hostGroupId,
-    required pulumi.Output<String> hostId,
-    required pulumi.Output<String> instanceId,
-  }) :
-      hostGroupId = pulumi.Input.asInput<String>(hostGroupId),
-      hostId = pulumi.Input.asInput<String>(hostId),
-      instanceId = pulumi.Input.asInput<String>(instanceId);
+    required this.hostGroupId,
+    required this.hostId,
+    required this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HostAttachmentArgs {
 
   factory HostAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HostAttachmentArgs(
-      hostGroupId: pulumi.Output.create<String>(map['hostGroupId'] as String),
-      hostId: pulumi.Output.create<String>(map['hostId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      hostGroupId: (map['hostGroupId'] as String).input(),
+      hostId: (map['hostId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
     );
   }
 }

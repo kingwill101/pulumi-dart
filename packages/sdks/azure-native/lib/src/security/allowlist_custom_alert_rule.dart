@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
 class AllowlistCustomAlertRule {
   /// The values to allow. The format of the values depends on the rule type.
-  final List<String> allowlistValues;
+  final pulumi.Input<List<String>> allowlistValues;
   /// Status of the custom alert.
-  final bool isEnabled;
+  final pulumi.Input<bool> isEnabled;
   /// The type of the custom alert rule.
   /// Expected value is 'AllowlistCustomAlertRule'.
-  final String ruleType;
+  final pulumi.Input<String> ruleType;
 
   /// Creates a new [AllowlistCustomAlertRule].
   /// [allowlistValues] The values to allow. The format of the values depends on the rule type.
@@ -31,9 +32,9 @@ class AllowlistCustomAlertRule {
 
   factory AllowlistCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return AllowlistCustomAlertRule(
-      allowlistValues: (map['allowlistValues'] as List).cast<String>(),
-      isEnabled: map['isEnabled'] as bool,
-      ruleType: map['ruleType'] as String,
+      allowlistValues: ((map['allowlistValues'] as List).cast<String>()).input(),
+      isEnabled: (map['isEnabled'] as bool).input(),
+      ruleType: (map['ruleType'] as String).input(),
     );
   }
 }

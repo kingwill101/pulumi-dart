@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudBuilderStack {
   /// Specifies the ID of the ClusterStack.
-  final String id;
+  final pulumi.Input<String> id;
   /// Specifies the version of the ClusterStack
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [SpringCloudBuilderStack].
   /// [id] Specifies the ID of the ClusterStack.
@@ -24,8 +25,8 @@ class SpringCloudBuilderStack {
 
   factory SpringCloudBuilderStack.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderStack(
-      id: map['id'] as String,
-      version: map['version'] as String,
+      id: (map['id'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCatalogTableTargetTable {
   /// ID of the Glue Catalog and database where the table metadata resides. If omitted, this defaults to the current AWS Account ID.
-  final String catalogId;
+  final pulumi.Input<String> catalogId;
   /// Name of the metadata database where the table metadata resides.
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Name of the table.
-  final String name;
+  final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final String region;
+  final pulumi.Input<String> region;
 
   /// Creates a new [GetCatalogTableTargetTable].
   /// [catalogId] ID of the Glue Catalog and database where the table metadata resides. If omitted, this defaults to the current AWS Account ID.
@@ -34,10 +35,10 @@ class GetCatalogTableTargetTable {
 
   factory GetCatalogTableTargetTable.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableTargetTable(
-      catalogId: map['catalogId'] as String,
-      databaseName: map['databaseName'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      catalogId: (map['catalogId'] as String).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      name: (map['name'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

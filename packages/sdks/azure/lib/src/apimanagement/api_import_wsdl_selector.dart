@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiImportWsdlSelector {
   /// The name of endpoint (port) to import from WSDL.
-  final String endpointName;
+  final pulumi.Input<String> endpointName;
   /// The name of service to import from WSDL.
-  final String serviceName;
+  final pulumi.Input<String> serviceName;
 
   /// Creates a new [ApiImportWsdlSelector].
   /// [endpointName] The name of endpoint (port) to import from WSDL.
@@ -24,8 +25,8 @@ class ApiImportWsdlSelector {
 
   factory ApiImportWsdlSelector.fromMap(Map<String, dynamic> map) {
     return ApiImportWsdlSelector(
-      endpointName: map['endpointName'] as String,
-      serviceName: map['serviceName'] as String,
+      endpointName: (map['endpointName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

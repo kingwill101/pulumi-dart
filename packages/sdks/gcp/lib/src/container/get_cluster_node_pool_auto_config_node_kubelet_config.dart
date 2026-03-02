@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodePoolAutoConfigNodeKubeletConfig {
   /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
-  final String insecureKubeletReadonlyPortEnabled;
+  final pulumi.Input<String> insecureKubeletReadonlyPortEnabled;
 
   /// Creates a new [GetClusterNodePoolAutoConfigNodeKubeletConfig].
   /// [insecureKubeletReadonlyPortEnabled] Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -19,7 +20,7 @@ class GetClusterNodePoolAutoConfigNodeKubeletConfig {
 
   factory GetClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigNodeKubeletConfig(
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] as String,
+      insecureKubeletReadonlyPortEnabled: (map['insecureKubeletReadonlyPortEnabled'] as String).input(),
     );
   }
 }

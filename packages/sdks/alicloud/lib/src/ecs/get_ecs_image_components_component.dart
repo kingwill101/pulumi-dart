@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetEcsImageComponentsComponent {
   /// The type of the image component.
-  final String componentType;
+  final pulumi.Input<String> componentType;
   /// The content of the image component.
-  final String content;
+  final pulumi.Input<String> content;
   /// The time when the image component was created.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The description of the image component.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ID of the Image Component.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the image component.
-  final String imageComponentId;
+  final pulumi.Input<String> imageComponentId;
   /// The name of the image component.
-  final String imageComponentName;
+  final pulumi.Input<String> imageComponentName;
   /// The type of the image component.
-  final String owner;
+  final pulumi.Input<String> owner;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The operating system type supported by the image component.
-  final String systemType;
+  final pulumi.Input<String> systemType;
   /// List of label key-value pairs.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [GetEcsImageComponentsComponent].
   /// [componentType] The type of the image component.
@@ -69,17 +70,17 @@ class GetEcsImageComponentsComponent {
 
   factory GetEcsImageComponentsComponent.fromMap(Map<String, dynamic> map) {
     return GetEcsImageComponentsComponent(
-      componentType: map['componentType'] as String,
-      content: map['content'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      imageComponentId: map['imageComponentId'] as String,
-      imageComponentName: map['imageComponentName'] as String,
-      owner: map['owner'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      systemType: map['systemType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      componentType: (map['componentType'] as String).input(),
+      content: (map['content'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      id: (map['id'] as String).input(),
+      imageComponentId: (map['imageComponentId'] as String).input(),
+      imageComponentName: (map['imageComponentName'] as String).input(),
+      owner: (map['owner'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      systemType: (map['systemType'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

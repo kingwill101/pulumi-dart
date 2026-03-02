@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionEndpointsApiService {
   /// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
@@ -8,16 +9,16 @@ class FlexibleAppVersionEndpointsApiService {
   /// and is required in this case.
   /// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
   /// the configuration ID. In this case, configId must be omitted.
-  final String? configId;
+  final pulumi.Input<String>? configId;
   /// Enable or disable trace sampling. By default, this is set to false for enabled.
-  final bool? disableTraceSampling;
+  final pulumi.Input<bool>? disableTraceSampling;
   /// Endpoints service name which is the name of the "service" resource in the Service Management API.
   /// For example "myapi.endpoints.myproject.cloud.goog"
-  final String name;
+  final pulumi.Input<String> name;
   /// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
   /// Default value is `FIXED`.
   /// Possible values are: `FIXED`, `MANAGED`.
-  final String? rolloutStrategy;
+  final pulumi.Input<String>? rolloutStrategy;
 
   /// Creates a new [FlexibleAppVersionEndpointsApiService].
   /// [configId] Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
@@ -42,10 +43,10 @@ class FlexibleAppVersionEndpointsApiService {
 
   factory FlexibleAppVersionEndpointsApiService.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionEndpointsApiService(
-      configId: map['configId'] == null ? null : map['configId'] as String,
-      disableTraceSampling: map['disableTraceSampling'] == null ? null : map['disableTraceSampling'] as bool,
-      name: map['name'] as String,
-      rolloutStrategy: map['rolloutStrategy'] == null ? null : map['rolloutStrategy'] as String,
+      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling'] as bool).input(),
+      name: (map['name'] as String).input(),
+      rolloutStrategy: map['rolloutStrategy'] == null ? null : (map['rolloutStrategy'] as String).input(),
     );
   }
 }

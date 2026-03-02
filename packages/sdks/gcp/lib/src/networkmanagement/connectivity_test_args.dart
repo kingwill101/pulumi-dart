@@ -62,27 +62,17 @@ class ConnectivityTestArgs {
   /// [roundTrip] Whether run analysis for the return path from destination to source.
   /// [source] Required. Source specification of the Connectivity Test.
   ConnectivityTestArgs({
-    pulumi.Output<bool>? bypassFirewallChecks,
-    pulumi.Output<String>? description,
-    required pulumi.Output<ConnectivityTestDestination> destination,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? protocol,
-    pulumi.Output<List<String>>? relatedProjects,
-    pulumi.Output<bool>? roundTrip,
-    required pulumi.Output<ConnectivityTestSource> source,
-  }) :
-      bypassFirewallChecks = pulumi.Input.asOptionalInput<bool>(bypassFirewallChecks),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      destination = pulumi.Input.asInput<ConnectivityTestDestination>(destination),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      protocol = pulumi.Input.asOptionalInput<String>(protocol),
-      relatedProjects = pulumi.Input.asOptionalInput<List<String>>(relatedProjects),
-      roundTrip = pulumi.Input.asOptionalInput<bool>(roundTrip),
-      source = pulumi.Input.asInput<ConnectivityTestSource>(source);
+    this.bypassFirewallChecks,
+    this.description,
+    required this.destination,
+    this.labels,
+    this.name,
+    this.project,
+    this.protocol,
+    this.relatedProjects,
+    this.roundTrip,
+    required this.source,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,16 +91,16 @@ class ConnectivityTestArgs {
 
   factory ConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestArgs(
-      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : pulumi.Output.create<bool>(map['bypassFirewallChecks'] as bool),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      destination: pulumi.Output.create<ConnectivityTestDestination>(ConnectivityTestDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
-      relatedProjects: map['relatedProjects'] == null ? null : pulumi.Output.create<List<String>>((map['relatedProjects'] as List).cast<String>()),
-      roundTrip: map['roundTrip'] == null ? null : pulumi.Output.create<bool>(map['roundTrip'] as bool),
-      source: pulumi.Output.create<ConnectivityTestSource>(ConnectivityTestSource.fromMap((map['source'] as Map).cast<String, dynamic>())),
+      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : (map['bypassFirewallChecks'] as bool).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destination: (ConnectivityTestDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects'] as List).cast<String>()).input(),
+      roundTrip: map['roundTrip'] == null ? null : (map['roundTrip'] as bool).input(),
+      source: (ConnectivityTestSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

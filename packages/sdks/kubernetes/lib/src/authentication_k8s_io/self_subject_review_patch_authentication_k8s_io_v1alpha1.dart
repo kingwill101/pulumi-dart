@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../meta/object_meta_patch.dart';
 import 'self_subject_review_status_patch_authentication_k8s_io_v1alpha1.dart';
 
 /// SelfSubjectReview contains the user information that the kube-apiserver has about the user making this request. When using impersonation, users will receive the user info of the user being impersonated.
 class SelfSubjectReviewPatchAuthenticationK8sIoV1alpha1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-  final String? apiVersion;
+  final pulumi.Input<String>? apiVersion;
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-  final ObjectMetaPatch? metadata;
+  final pulumi.Input<ObjectMetaPatch>? metadata;
   /// Status is filled in by the server with the user attributes.
-  final SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1? status;
+  final pulumi.Input<SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1>? status;
 
   /// Creates a new [SelfSubjectReviewPatchAuthenticationK8sIoV1alpha1].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -30,17 +31,17 @@ class SelfSubjectReviewPatchAuthenticationK8sIoV1alpha1 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
-      'status': ?status == null ? null : status!.toMap(),
+      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
   }
 
   factory SelfSubjectReviewPatchAuthenticationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectReviewPatchAuthenticationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : map['apiVersion'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

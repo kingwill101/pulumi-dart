@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantGenAiResourceAgent {
   /// ARN of the agent with which to use the prompt.
-  final String agentIdentifier;
+  final pulumi.Input<String> agentIdentifier;
 
   /// Creates a new [AgentPromptVariantGenAiResourceAgent].
   /// [agentIdentifier] ARN of the agent with which to use the prompt.
@@ -19,7 +20,7 @@ class AgentPromptVariantGenAiResourceAgent {
 
   factory AgentPromptVariantGenAiResourceAgent.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantGenAiResourceAgent(
-      agentIdentifier: map['agentIdentifier'] as String,
+      agentIdentifier: (map['agentIdentifier'] as String).input(),
     );
   }
 }

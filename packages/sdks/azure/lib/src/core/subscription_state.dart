@@ -32,21 +32,14 @@ class SubscriptionState {
   /// [tenantId] The ID of the Tenant to which the subscription belongs.
   /// [workload] The workload type of the Subscription. Possible values are `Production` (default) and `DevTest`. Changing this forces a new Subscription to be created.
   SubscriptionState({
-    pulumi.Output<String>? alias,
-    pulumi.Output<String>? billingScopeId,
-    pulumi.Output<String>? subscriptionId,
-    pulumi.Output<String>? subscriptionName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? tenantId,
-    pulumi.Output<String>? workload,
-  }) :
-      alias = pulumi.Input.asOptionalInput<String>(alias),
-      billingScopeId = pulumi.Input.asOptionalInput<String>(billingScopeId),
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId),
-      subscriptionName = pulumi.Input.asOptionalInput<String>(subscriptionName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenantId = pulumi.Input.asOptionalInput<String>(tenantId),
-      workload = pulumi.Input.asOptionalInput<String>(workload);
+    this.alias,
+    this.billingScopeId,
+    this.subscriptionId,
+    this.subscriptionName,
+    this.tags,
+    this.tenantId,
+    this.workload,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      alias: map['alias'] == null ? null : pulumi.Output.create<String>(map['alias'] as String),
-      billingScopeId: map['billingScopeId'] == null ? null : pulumi.Output.create<String>(map['billingScopeId'] as String),
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
-      subscriptionName: map['subscriptionName'] == null ? null : pulumi.Output.create<String>(map['subscriptionName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tenantId: map['tenantId'] == null ? null : pulumi.Output.create<String>(map['tenantId'] as String),
-      workload: map['workload'] == null ? null : pulumi.Output.create<String>(map['workload'] as String),
+      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
     );
   }
 }

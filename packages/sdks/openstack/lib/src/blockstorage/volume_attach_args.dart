@@ -54,31 +54,19 @@ class VolumeAttachArgs {
   /// [wwnn] A wwnn name. Used for Fibre Channel connections.
   /// [wwpns] An array of wwpn strings. Used for Fibre Channel
   VolumeAttachArgs({
-    pulumi.Output<String>? attachMode,
-    pulumi.Output<String>? device,
-    required pulumi.Output<String> hostName,
-    pulumi.Output<String>? initiator,
-    pulumi.Output<String>? ipAddress,
-    pulumi.Output<bool>? multipath,
-    pulumi.Output<String>? osType,
-    pulumi.Output<String>? platform,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> volumeId,
-    pulumi.Output<String>? wwnn,
-    pulumi.Output<List<String>>? wwpns,
-  }) :
-      attachMode = pulumi.Input.asOptionalInput<String>(attachMode),
-      device = pulumi.Input.asOptionalInput<String>(device),
-      hostName = pulumi.Input.asInput<String>(hostName),
-      initiator = pulumi.Input.asOptionalInput<String>(initiator),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      multipath = pulumi.Input.asOptionalInput<bool>(multipath),
-      osType = pulumi.Input.asOptionalInput<String>(osType),
-      platform = pulumi.Input.asOptionalInput<String>(platform),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      volumeId = pulumi.Input.asInput<String>(volumeId),
-      wwnn = pulumi.Input.asOptionalInput<String>(wwnn),
-      wwpns = pulumi.Input.asOptionalInput<List<String>>(wwpns);
+    this.attachMode,
+    this.device,
+    required this.hostName,
+    this.initiator,
+    this.ipAddress,
+    this.multipath,
+    this.osType,
+    this.platform,
+    this.region,
+    required this.volumeId,
+    this.wwnn,
+    this.wwpns,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,18 +87,18 @@ class VolumeAttachArgs {
 
   factory VolumeAttachArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachArgs(
-      attachMode: map['attachMode'] == null ? null : pulumi.Output.create<String>(map['attachMode'] as String),
-      device: map['device'] == null ? null : pulumi.Output.create<String>(map['device'] as String),
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      initiator: map['initiator'] == null ? null : pulumi.Output.create<String>(map['initiator'] as String),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
-      multipath: map['multipath'] == null ? null : pulumi.Output.create<bool>(map['multipath'] as bool),
-      osType: map['osType'] == null ? null : pulumi.Output.create<String>(map['osType'] as String),
-      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      volumeId: pulumi.Output.create<String>(map['volumeId'] as String),
-      wwnn: map['wwnn'] == null ? null : pulumi.Output.create<String>(map['wwnn'] as String),
-      wwpns: map['wwpns'] == null ? null : pulumi.Output.create<List<String>>((map['wwpns'] as List).cast<String>()),
+      attachMode: map['attachMode'] == null ? null : (map['attachMode'] as String).input(),
+      device: map['device'] == null ? null : (map['device'] as String).input(),
+      hostName: (map['hostName'] as String).input(),
+      initiator: map['initiator'] == null ? null : (map['initiator'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      multipath: map['multipath'] == null ? null : (map['multipath'] as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      volumeId: (map['volumeId'] as String).input(),
+      wwnn: map['wwnn'] == null ? null : (map['wwnn'] as String).input(),
+      wwpns: map['wwpns'] == null ? null : ((map['wwpns'] as List).cast<String>()).input(),
     );
   }
 }

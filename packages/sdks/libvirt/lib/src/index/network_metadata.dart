@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkMetadata {
   /// Configures XML-based metadata for the network.
-  final String xml;
+  final pulumi.Input<String> xml;
 
   /// Creates a new [NetworkMetadata].
   /// [xml] Configures XML-based metadata for the network.
@@ -19,7 +20,7 @@ class NetworkMetadata {
 
   factory NetworkMetadata.fromMap(Map<String, dynamic> map) {
     return NetworkMetadata(
-      xml: map['xml'] as String,
+      xml: (map['xml'] as String).input(),
     );
   }
 }

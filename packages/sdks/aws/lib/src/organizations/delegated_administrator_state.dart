@@ -34,25 +34,16 @@ class DelegatedAdministratorState {
   /// [servicePrincipal] The service principal of the AWS service for which you want to make the member account a delegated administrator.
   /// [status] The status of the delegated administrator's account in the organization.
   DelegatedAdministratorState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? delegationEnabledDate,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? joinedMethod,
-    pulumi.Output<String>? joinedTimestamp,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? servicePrincipal,
-    pulumi.Output<String>? status,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      delegationEnabledDate = pulumi.Input.asOptionalInput<String>(delegationEnabledDate),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      joinedMethod = pulumi.Input.asOptionalInput<String>(joinedMethod),
-      joinedTimestamp = pulumi.Input.asOptionalInput<String>(joinedTimestamp),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      servicePrincipal = pulumi.Input.asOptionalInput<String>(servicePrincipal),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.accountId,
+    this.arn,
+    this.delegationEnabledDate,
+    this.email,
+    this.joinedMethod,
+    this.joinedTimestamp,
+    this.name,
+    this.servicePrincipal,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class DelegatedAdministratorState {
 
   factory DelegatedAdministratorState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      delegationEnabledDate: map['delegationEnabledDate'] == null ? null : pulumi.Output.create<String>(map['delegationEnabledDate'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      joinedMethod: map['joinedMethod'] == null ? null : pulumi.Output.create<String>(map['joinedMethod'] as String),
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : pulumi.Output.create<String>(map['joinedTimestamp'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      servicePrincipal: map['servicePrincipal'] == null ? null : pulumi.Output.create<String>(map['servicePrincipal'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      delegationEnabledDate: map['delegationEnabledDate'] == null ? null : (map['delegationEnabledDate'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod'] as String).input(),
+      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

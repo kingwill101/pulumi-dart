@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CassandraError {
   /// Additional information about the error.
-  final String? additionalErrorInfo;
+  final pulumi.Input<String>? additionalErrorInfo;
   /// The code of error that occurred.
-  final String? code;
+  final pulumi.Input<String>? code;
   /// The message of the error.
-  final String? message;
+  final pulumi.Input<String>? message;
   /// The target resource of the error.
-  final String? target;
+  final pulumi.Input<String>? target;
 
   /// Creates a new [CassandraError].
   /// [additionalErrorInfo] Additional information about the error.
@@ -34,10 +35,10 @@ class CassandraError {
 
   factory CassandraError.fromMap(Map<String, dynamic> map) {
     return CassandraError(
-      additionalErrorInfo: map['additionalErrorInfo'] == null ? null : map['additionalErrorInfo'] as String,
-      code: map['code'] == null ? null : map['code'] as String,
-      message: map['message'] == null ? null : map['message'] as String,
-      target: map['target'] == null ? null : map['target'] as String,
+      additionalErrorInfo: map['additionalErrorInfo'] == null ? null : (map['additionalErrorInfo'] as String).input(),
+      code: map['code'] == null ? null : (map['code'] as String).input(),
+      message: map['message'] == null ? null : (map['message'] as String).input(),
+      target: map['target'] == null ? null : (map['target'] as String).input(),
     );
   }
 }

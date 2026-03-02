@@ -7,19 +7,19 @@ class GetInstanceMaintenancePolicy {
   /// Output only. The time when the policy was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Optional. Description of what this policy is for.
   /// Create/Update methods return INVALID_ARGUMENT if the
   /// length is greater than 512.
-  final String description;
+  final pulumi.Input<String> description;
   /// Output only. The time when the policy was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
   /// Optional. Maintenance window that is applied to resources covered by this policy.
   /// Minimum 1. For the current version, the maximum number
   /// of weekly_window is expected to be one.
-  final List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
+  final pulumi.Input<List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow>> weeklyMaintenanceWindows;
 
   /// Creates a new [GetInstanceMaintenancePolicy].
   /// [createTime] Output only. The time when the policy was created.
@@ -38,16 +38,16 @@ class GetInstanceMaintenancePolicy {
       'createTime': createTime,
       'description': description,
       'updateTime': updateTime,
-      'weeklyMaintenanceWindows': pulumi.Input.encodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow, Map<String, dynamic>>(weeklyMaintenanceWindows, (value) => value.toMap()),
+      'weeklyMaintenanceWindows': pulumi.Input.mapInputValue<List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow>, List<Map<String, dynamic>>>(weeklyMaintenanceWindows, (value) => pulumi.Input.encodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetInstanceMaintenancePolicy(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      updateTime: map['updateTime'] as String,
-      weeklyMaintenanceWindows: pulumi.Input.decodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow>(map['weeklyMaintenanceWindows'], (value) => GetInstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
+      createTime: (map['createTime'] as String).input(),
+      description: (map['description'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      weeklyMaintenanceWindows: (pulumi.Input.decodeList<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow>(map['weeklyMaintenanceWindows'], (value) => GetInstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

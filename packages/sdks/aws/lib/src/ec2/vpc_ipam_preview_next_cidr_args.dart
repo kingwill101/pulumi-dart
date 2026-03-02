@@ -22,15 +22,11 @@ class VpcIpamPreviewNextCidrArgs {
   /// [netmaskLength] The netmask length of the CIDR you would like to preview from the IPAM pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   VpcIpamPreviewNextCidrArgs({
-    pulumi.Output<List<String>>? disallowedCidrs,
-    required pulumi.Output<String> ipamPoolId,
-    pulumi.Output<int>? netmaskLength,
-    pulumi.Output<String>? region,
-  }) :
-      disallowedCidrs = pulumi.Input.asOptionalInput<List<String>>(disallowedCidrs),
-      ipamPoolId = pulumi.Input.asInput<String>(ipamPoolId),
-      netmaskLength = pulumi.Input.asOptionalInput<int>(netmaskLength),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.disallowedCidrs,
+    required this.ipamPoolId,
+    this.netmaskLength,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class VpcIpamPreviewNextCidrArgs {
 
   factory VpcIpamPreviewNextCidrArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPreviewNextCidrArgs(
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : pulumi.Output.create<List<String>>((map['disallowedCidrs'] as List).cast<String>()),
-      ipamPoolId: pulumi.Output.create<String>(map['ipamPoolId'] as String),
-      netmaskLength: map['netmaskLength'] == null ? null : pulumi.Output.create<int>(map['netmaskLength'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      disallowedCidrs: map['disallowedCidrs'] == null ? null : ((map['disallowedCidrs'] as List).cast<String>()).input(),
+      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

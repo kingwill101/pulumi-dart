@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterComputeConfig {
   /// Request to enable or disable the compute capability on your EKS Auto Mode cluster. If the compute capability is enabled, EKS Auto Mode will create and delete EC2 Managed Instances in your Amazon Web Services account.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// Configuration for node pools that defines the compute resources for your EKS Auto Mode cluster. Valid options are `general-purpose` and `system`.
-  final List<String>? nodePools;
+  final pulumi.Input<List<String>>? nodePools;
   /// The ARN of the IAM Role EKS will assign to EC2 Managed Instances in your EKS Auto Mode cluster. This value cannot be changed after the compute capability of EKS Auto Mode is enabled..
-  final String? nodeRoleArn;
+  final pulumi.Input<String>? nodeRoleArn;
 
   /// Creates a new [ClusterComputeConfig].
   /// [enabled] Request to enable or disable the compute capability on your EKS Auto Mode cluster. If the compute capability is enabled, EKS Auto Mode will create and delete EC2 Managed Instances in your Amazon Web Services account.
@@ -29,9 +30,9 @@ class ClusterComputeConfig {
 
   factory ClusterComputeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterComputeConfig(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      nodePools: map['nodePools'] == null ? null : (map['nodePools'] as List).cast<String>(),
-      nodeRoleArn: map['nodeRoleArn'] == null ? null : map['nodeRoleArn'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      nodePools: map['nodePools'] == null ? null : ((map['nodePools'] as List).cast<String>()).input(),
+      nodeRoleArn: map['nodeRoleArn'] == null ? null : (map['nodeRoleArn'] as String).input(),
     );
   }
 }

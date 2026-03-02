@@ -29,19 +29,13 @@ class GetResourcesArgs {
   /// [resourceTypeFilters] Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
   /// [tagFilters] Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
   GetResourcesArgs({
-    pulumi.Output<bool>? excludeCompliantResources,
-    pulumi.Output<bool>? includeComplianceDetails,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resourceArnLists,
-    pulumi.Output<List<String>>? resourceTypeFilters,
-    pulumi.Output<List<GetResourcesTagFilter>>? tagFilters,
-  }) :
-      excludeCompliantResources = pulumi.Input.asOptionalInput<bool>(excludeCompliantResources),
-      includeComplianceDetails = pulumi.Input.asOptionalInput<bool>(includeComplianceDetails),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArnLists = pulumi.Input.asOptionalInput<List<String>>(resourceArnLists),
-      resourceTypeFilters = pulumi.Input.asOptionalInput<List<String>>(resourceTypeFilters),
-      tagFilters = pulumi.Input.asOptionalInput<List<GetResourcesTagFilter>>(tagFilters);
+    this.excludeCompliantResources,
+    this.includeComplianceDetails,
+    this.region,
+    this.resourceArnLists,
+    this.resourceTypeFilters,
+    this.tagFilters,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class GetResourcesArgs {
 
   factory GetResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesArgs(
-      excludeCompliantResources: map['excludeCompliantResources'] == null ? null : pulumi.Output.create<bool>(map['excludeCompliantResources'] as bool),
-      includeComplianceDetails: map['includeComplianceDetails'] == null ? null : pulumi.Output.create<bool>(map['includeComplianceDetails'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArnLists: map['resourceArnLists'] == null ? null : pulumi.Output.create<List<String>>((map['resourceArnLists'] as List).cast<String>()),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : pulumi.Output.create<List<String>>((map['resourceTypeFilters'] as List).cast<String>()),
-      tagFilters: map['tagFilters'] == null ? null : pulumi.Output.create<List<GetResourcesTagFilter>>(pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters'], (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      excludeCompliantResources: map['excludeCompliantResources'] == null ? null : (map['excludeCompliantResources'] as bool).input(),
+      includeComplianceDetails: map['includeComplianceDetails'] == null ? null : (map['includeComplianceDetails'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArnLists: map['resourceArnLists'] == null ? null : ((map['resourceArnLists'] as List).cast<String>()).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters'], (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

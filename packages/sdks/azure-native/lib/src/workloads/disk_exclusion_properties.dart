@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the disk exclusion properties for virtual machine backup.
 class DiskExclusionProperties {
   /// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
-  final List<int> diskLunList;
+  final pulumi.Input<List<int>> diskLunList;
   /// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
-  final bool isInclusionList;
+  final pulumi.Input<bool> isInclusionList;
 
   /// Creates a new [DiskExclusionProperties].
   /// [diskLunList] List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
@@ -25,8 +26,8 @@ class DiskExclusionProperties {
 
   factory DiskExclusionProperties.fromMap(Map<String, dynamic> map) {
     return DiskExclusionProperties(
-      diskLunList: (map['diskLunList'] as List).cast<int>(),
-      isInclusionList: map['isInclusionList'] as bool,
+      diskLunList: ((map['diskLunList'] as List).cast<int>()).input(),
+      isInclusionList: (map['isInclusionList'] as bool).input(),
     );
   }
 }

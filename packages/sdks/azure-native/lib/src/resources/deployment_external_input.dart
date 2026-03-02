@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Deployment external input for parameterization.
 class DeploymentExternalInput {
   /// External input value.
-  final dynamic value;
+  final pulumi.Input<dynamic> value;
 
   /// Creates a new [DeploymentExternalInput].
   /// [value] External input value.
@@ -20,7 +21,7 @@ class DeploymentExternalInput {
 
   factory DeploymentExternalInput.fromMap(Map<String, dynamic> map) {
     return DeploymentExternalInput(
-      value: map['value'],
+      value: (map['value']).input(),
     );
   }
 }

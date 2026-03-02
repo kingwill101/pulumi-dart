@@ -34,23 +34,15 @@ class GetLogtailConfigsArgs {
   /// [projectName] Project name
   /// [size] The number of rows per page set for a pagination query. The maximum value is 500.
   GetLogtailConfigsArgs({
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> logstoreName,
-    pulumi.Output<String>? logtailConfigName,
-    pulumi.Output<String>? nameRegex,
-    required pulumi.Output<int> offset,
-    pulumi.Output<String>? outputFile,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<int> size,
-  }) :
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      logstoreName = pulumi.Input.asInput<String>(logstoreName),
-      logtailConfigName = pulumi.Input.asOptionalInput<String>(logtailConfigName),
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      offset = pulumi.Input.asInput<int>(offset),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      size = pulumi.Input.asInput<int>(size);
+    this.ids,
+    required this.logstoreName,
+    this.logtailConfigName,
+    this.nameRegex,
+    required this.offset,
+    this.outputFile,
+    required this.projectName,
+    required this.size,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class GetLogtailConfigsArgs {
 
   factory GetLogtailConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogtailConfigsArgs(
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      logstoreName: pulumi.Output.create<String>(map['logstoreName'] as String),
-      logtailConfigName: map['logtailConfigName'] == null ? null : pulumi.Output.create<String>(map['logtailConfigName'] as String),
-      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
-      offset: pulumi.Output.create<int>(map['offset'] as int),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      size: pulumi.Output.create<int>(map['size'] as int),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      logstoreName: (map['logstoreName'] as String).input(),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      offset: (map['offset'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      size: (map['size'] as int).input(),
     );
   }
 }

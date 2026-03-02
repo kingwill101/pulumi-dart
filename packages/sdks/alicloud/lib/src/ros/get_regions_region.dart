@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionsRegion {
   /// The name of the region.
-  final String localName;
+  final pulumi.Input<String> localName;
   /// The endpoint of the region.
-  final String regionEndpoint;
+  final pulumi.Input<String> regionEndpoint;
   /// The ID of the region.
-  final String regionId;
+  final pulumi.Input<String> regionId;
 
   /// Creates a new [GetRegionsRegion].
   /// [localName] The name of the region.
@@ -29,9 +30,9 @@ class GetRegionsRegion {
 
   factory GetRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetRegionsRegion(
-      localName: map['localName'] as String,
-      regionEndpoint: map['regionEndpoint'] as String,
-      regionId: map['regionId'] as String,
+      localName: (map['localName'] as String).input(),
+      regionEndpoint: (map['regionEndpoint'] as String).input(),
+      regionId: (map['regionId'] as String).input(),
     );
   }
 }

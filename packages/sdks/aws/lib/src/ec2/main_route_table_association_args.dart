@@ -20,13 +20,10 @@ class MainRouteTableAssociationArgs {
   /// [routeTableId] The ID of the Route Table to set as the new
   /// [vpcId] The ID of the VPC whose main route table should be set
   MainRouteTableAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> routeTableId,
-    required pulumi.Output<String> vpcId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+    this.region,
+    required this.routeTableId,
+    required this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class MainRouteTableAssociationArgs {
 
   factory MainRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MainRouteTableAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTableId: pulumi.Output.create<String>(map['routeTableId'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTableId: (map['routeTableId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

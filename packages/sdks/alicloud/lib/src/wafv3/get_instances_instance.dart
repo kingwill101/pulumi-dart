@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// The creation time of the resource.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The ID of the resource.
-  final String id;
+  final pulumi.Input<String> id;
   /// The first ID of the resource.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetInstancesInstance].
   /// [createTime] The creation time of the resource.
@@ -34,10 +35,10 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      status: map['status'] as String,
+      createTime: (map['createTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

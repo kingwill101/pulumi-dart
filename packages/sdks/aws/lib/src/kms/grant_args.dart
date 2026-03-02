@@ -39,25 +39,16 @@ class GrantArgs {
   /// [retireOnDelete] If set to false (the default) the grants will be revoked upon deletion, and if set to true the grants will try to be retired upon deletion. Note that retiring grants requires special permissions, hence why we default to revoking grants.
   /// [retiringPrincipal] The principal that is given permission to retire the grant by using RetireGrant operation in ARN format. Note that due to eventual consistency issues around IAM principals, the providers's state may not always be refreshed to reflect what is true in AWS.
   GrantArgs({
-    pulumi.Output<List<GrantConstraint>>? constraints,
-    pulumi.Output<List<String>>? grantCreationTokens,
-    required pulumi.Output<String> granteePrincipal,
-    required pulumi.Output<String> keyId,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> operations,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? retireOnDelete,
-    pulumi.Output<String>? retiringPrincipal,
-  }) :
-      constraints = pulumi.Input.asOptionalInput<List<GrantConstraint>>(constraints),
-      grantCreationTokens = pulumi.Input.asOptionalInput<List<String>>(grantCreationTokens),
-      granteePrincipal = pulumi.Input.asInput<String>(granteePrincipal),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      operations = pulumi.Input.asInput<List<String>>(operations),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retireOnDelete = pulumi.Input.asOptionalInput<bool>(retireOnDelete),
-      retiringPrincipal = pulumi.Input.asOptionalInput<String>(retiringPrincipal);
+    this.constraints,
+    this.grantCreationTokens,
+    required this.granteePrincipal,
+    required this.keyId,
+    this.name,
+    required this.operations,
+    this.region,
+    this.retireOnDelete,
+    this.retiringPrincipal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,15 +66,15 @@ class GrantArgs {
 
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
-      constraints: map['constraints'] == null ? null : pulumi.Output.create<List<GrantConstraint>>(pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))),
-      grantCreationTokens: map['grantCreationTokens'] == null ? null : pulumi.Output.create<List<String>>((map['grantCreationTokens'] as List).cast<String>()),
-      granteePrincipal: pulumi.Output.create<String>(map['granteePrincipal'] as String),
-      keyId: pulumi.Output.create<String>(map['keyId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      operations: pulumi.Output.create<List<String>>((map['operations'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retireOnDelete: map['retireOnDelete'] == null ? null : pulumi.Output.create<bool>(map['retireOnDelete'] as bool),
-      retiringPrincipal: map['retiringPrincipal'] == null ? null : pulumi.Output.create<String>(map['retiringPrincipal'] as String),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grantCreationTokens: map['grantCreationTokens'] == null ? null : ((map['grantCreationTokens'] as List).cast<String>()).input(),
+      granteePrincipal: (map['granteePrincipal'] as String).input(),
+      keyId: (map['keyId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      operations: ((map['operations'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retireOnDelete: map['retireOnDelete'] == null ? null : (map['retireOnDelete'] as bool).input(),
+      retiringPrincipal: map['retiringPrincipal'] == null ? null : (map['retiringPrincipal'] as String).input(),
     );
   }
 }

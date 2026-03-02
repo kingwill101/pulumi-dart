@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed identity profile for the identity binding.
 class IdentityBindingManagedIdentityProfileResponse {
   /// The client ID of the managed identity.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The object ID of the managed identity.
-  final String objectId;
+  final pulumi.Input<String> objectId;
   /// The resource ID of the managed identity.
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
   /// The tenant ID of the managed identity.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [IdentityBindingManagedIdentityProfileResponse].
   /// [clientId] The client ID of the managed identity.
@@ -35,10 +36,10 @@ class IdentityBindingManagedIdentityProfileResponse {
 
   factory IdentityBindingManagedIdentityProfileResponse.fromMap(Map<String, dynamic> map) {
     return IdentityBindingManagedIdentityProfileResponse(
-      clientId: map['clientId'] as String,
-      objectId: map['objectId'] as String,
-      resourceId: map['resourceId'] as String,
-      tenantId: map['tenantId'] as String,
+      clientId: (map['clientId'] as String).input(),
+      objectId: (map['objectId'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

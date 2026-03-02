@@ -19,13 +19,10 @@ class GetPolicyRestrictionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   GetPolicyRestrictionArgs({
-    required pulumi.Output<String> policyRestrictionId,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      policyRestrictionId = pulumi.Input.asInput<String>(policyRestrictionId),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.policyRestrictionId,
+    required this.resourceGroupName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPolicyRestrictionArgs {
 
   factory GetPolicyRestrictionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyRestrictionArgs(
-      policyRestrictionId: pulumi.Output.create<String>(map['policyRestrictionId'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      policyRestrictionId: (map['policyRestrictionId'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

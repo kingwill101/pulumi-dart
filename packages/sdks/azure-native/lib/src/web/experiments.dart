@@ -6,7 +6,7 @@ import 'ramp_up_rule.dart';
 /// Routing rules in production experiments.
 class Experiments {
   /// List of ramp-up rules.
-  final List<RampUpRule>? rampUpRules;
+  final pulumi.Input<List<RampUpRule>>? rampUpRules;
 
   /// Creates a new [Experiments].
   /// [rampUpRules] List of ramp-up rules.
@@ -16,13 +16,13 @@ class Experiments {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rampUpRules': ?rampUpRules == null ? null : pulumi.Input.encodeList<RampUpRule, Map<String, dynamic>>(rampUpRules!, (value) => value.toMap()),
+      'rampUpRules': ?pulumi.Input.mapOptionalInputValue<List<RampUpRule>, List<Map<String, dynamic>>>(rampUpRules, (value) => pulumi.Input.encodeList<RampUpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory Experiments.fromMap(Map<String, dynamic> map) {
     return Experiments(
-      rampUpRules: map['rampUpRules'] == null ? null : pulumi.Input.decodeList<RampUpRule>(map['rampUpRules'], (value) => RampUpRule.fromMap((value as Map).cast<String, dynamic>())),
+      rampUpRules: map['rampUpRules'] == null ? null : (pulumi.Input.decodeList<RampUpRule>(map['rampUpRules'], (value) => RampUpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -51,33 +51,20 @@ class ActivityCustomEntityQueryArgs {
   /// [title] The entity query title
   /// [workspaceName] The name of the workspace.
   ActivityCustomEntityQueryArgs({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<Map<String, List<String>>>? entitiesFilter,
-    pulumi.Output<String>? entityQueryId,
-    pulumi.Output<String>? inputEntityType,
-    required pulumi.Output<String> kind,
-    pulumi.Output<ActivityEntityQueriesPropertiesQueryDefinitions>? queryDefinitions,
-    pulumi.Output<List<List<String>>>? requiredInputFieldsSets,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? templateName,
-    pulumi.Output<String>? title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      entitiesFilter = pulumi.Input.asOptionalInput<Map<String, List<String>>>(entitiesFilter),
-      entityQueryId = pulumi.Input.asOptionalInput<String>(entityQueryId),
-      inputEntityType = pulumi.Input.asOptionalInput<String>(inputEntityType),
-      kind = pulumi.Input.asInput<String>(kind),
-      queryDefinitions = pulumi.Input.asOptionalInput<ActivityEntityQueriesPropertiesQueryDefinitions>(queryDefinitions),
-      requiredInputFieldsSets = pulumi.Input.asOptionalInput<List<List<String>>>(requiredInputFieldsSets),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      templateName = pulumi.Input.asOptionalInput<String>(templateName),
-      title = pulumi.Input.asOptionalInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.content,
+    this.description,
+    this.enabled,
+    this.entitiesFilter,
+    this.entityQueryId,
+    this.inputEntityType,
+    required this.kind,
+    this.queryDefinitions,
+    this.requiredInputFieldsSets,
+    required this.resourceGroupName,
+    this.templateName,
+    this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -99,19 +86,19 @@ class ActivityCustomEntityQueryArgs {
 
   factory ActivityCustomEntityQueryArgs.fromMap(Map<String, dynamic> map) {
     return ActivityCustomEntityQueryArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      entitiesFilter: map['entitiesFilter'] == null ? null : pulumi.Output.create<Map<String, List<String>>>((map['entitiesFilter'] as Map).cast<String, List<String>>()),
-      entityQueryId: map['entityQueryId'] == null ? null : pulumi.Output.create<String>(map['entityQueryId'] as String),
-      inputEntityType: map['inputEntityType'] == null ? null : pulumi.Output.create<String>(map['inputEntityType'] as String),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      queryDefinitions: map['queryDefinitions'] == null ? null : pulumi.Output.create<ActivityEntityQueriesPropertiesQueryDefinitions>(ActivityEntityQueriesPropertiesQueryDefinitions.fromMap((map['queryDefinitions'] as Map).cast<String, dynamic>())),
-      requiredInputFieldsSets: map['requiredInputFieldsSets'] == null ? null : pulumi.Output.create<List<List<String>>>((map['requiredInputFieldsSets'] as List).cast<List<String>>()),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      templateName: map['templateName'] == null ? null : pulumi.Output.create<String>(map['templateName'] as String),
-      title: map['title'] == null ? null : pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      entitiesFilter: map['entitiesFilter'] == null ? null : ((map['entitiesFilter'] as Map).cast<String, List<String>>()).input(),
+      entityQueryId: map['entityQueryId'] == null ? null : (map['entityQueryId'] as String).input(),
+      inputEntityType: map['inputEntityType'] == null ? null : (map['inputEntityType'] as String).input(),
+      kind: (map['kind'] as String).input(),
+      queryDefinitions: map['queryDefinitions'] == null ? null : (ActivityEntityQueriesPropertiesQueryDefinitions.fromMap((map['queryDefinitions'] as Map).cast<String, dynamic>())).input(),
+      requiredInputFieldsSets: map['requiredInputFieldsSets'] == null ? null : ((map['requiredInputFieldsSets'] as List).cast<List<String>>()).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

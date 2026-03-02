@@ -9,33 +9,33 @@ import 'network_interface_response.dart';
 /// Details for creation of a VM that migrated data disks will be attached to.
 class DisksMigrationVmTargetDefaultsResponse {
   /// Optional. Additional licenses to assign to the VM.
-  final List<String> additionalLicenses;
+  final pulumi.Input<List<String>> additionalLicenses;
   /// Optional. Details of the boot disk of the VM.
-  final BootDiskDefaultsResponse bootDiskDefaults;
+  final pulumi.Input<BootDiskDefaultsResponse> bootDiskDefaults;
   /// Optional. Compute instance scheduling information (if empty default is used).
-  final ComputeSchedulingResponse computeScheduling;
+  final pulumi.Input<ComputeSchedulingResponse> computeScheduling;
   /// Optional. The encryption to apply to the VM.
-  final EncryptionResponse encryption;
+  final pulumi.Input<EncryptionResponse> encryption;
   /// Optional. The hostname to assign to the VM.
-  final String hostname;
+  final pulumi.Input<String> hostname;
   /// Optional. A map of labels to associate with the VM.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// The machine type to create the VM with.
-  final String machineType;
+  final pulumi.Input<String> machineType;
   /// Optional. The machine type series to create the VM with. For presentation only.
-  final String machineTypeSeries;
+  final pulumi.Input<String> machineTypeSeries;
   /// Optional. The metadata key/value pairs to assign to the VM.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// Optional. NICs to attach to the VM.
-  final List<NetworkInterfaceResponse> networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>> networkInterfaces;
   /// Optional. A list of network tags to associate with the VM.
-  final List<String> networkTags;
+  final pulumi.Input<List<String>> networkTags;
   /// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
-  final bool secureBoot;
+  final pulumi.Input<bool> secureBoot;
   /// Optional. The service account to associate the VM with.
-  final String serviceAccount;
+  final pulumi.Input<String> serviceAccount;
   /// The name of the VM to create.
-  final String vmName;
+  final pulumi.Input<String> vmName;
 
   /// Creates a new [DisksMigrationVmTargetDefaultsResponse].
   /// [additionalLicenses] Optional. Additional licenses to assign to the VM.
@@ -72,15 +72,15 @@ class DisksMigrationVmTargetDefaultsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalLicenses': additionalLicenses,
-      'bootDiskDefaults': bootDiskDefaults.toMap(),
-      'computeScheduling': computeScheduling.toMap(),
-      'encryption': encryption.toMap(),
+      'bootDiskDefaults': pulumi.Input.mapInputValue<BootDiskDefaultsResponse, Map<String, dynamic>>(bootDiskDefaults, (value) => value.toMap()),
+      'computeScheduling': pulumi.Input.mapInputValue<ComputeSchedulingResponse, Map<String, dynamic>>(computeScheduling, (value) => value.toMap()),
+      'encryption': pulumi.Input.mapInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'hostname': hostname,
       'labels': labels,
       'machineType': machineType,
       'machineTypeSeries': machineTypeSeries,
       'metadata': metadata,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces': pulumi.Input.mapInputValue<List<NetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkTags': networkTags,
       'secureBoot': secureBoot,
       'serviceAccount': serviceAccount,
@@ -90,20 +90,20 @@ class DisksMigrationVmTargetDefaultsResponse {
 
   factory DisksMigrationVmTargetDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return DisksMigrationVmTargetDefaultsResponse(
-      additionalLicenses: (map['additionalLicenses'] as List).cast<String>(),
-      bootDiskDefaults: BootDiskDefaultsResponse.fromMap((map['bootDiskDefaults'] as Map).cast<String, dynamic>()),
-      computeScheduling: ComputeSchedulingResponse.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>()),
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      hostname: map['hostname'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineType: map['machineType'] as String,
-      machineTypeSeries: map['machineTypeSeries'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      networkTags: (map['networkTags'] as List).cast<String>(),
-      secureBoot: map['secureBoot'] as bool,
-      serviceAccount: map['serviceAccount'] as String,
-      vmName: map['vmName'] as String,
+      additionalLicenses: ((map['additionalLicenses'] as List).cast<String>()).input(),
+      bootDiskDefaults: (BootDiskDefaultsResponse.fromMap((map['bootDiskDefaults'] as Map).cast<String, dynamic>())).input(),
+      computeScheduling: (ComputeSchedulingResponse.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>())).input(),
+      encryption: (EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      hostname: (map['hostname'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      machineType: (map['machineType'] as String).input(),
+      machineTypeSeries: (map['machineTypeSeries'] as String).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkTags: ((map['networkTags'] as List).cast<String>()).input(),
+      secureBoot: (map['secureBoot'] as bool).input(),
+      serviceAccount: (map['serviceAccount'] as String).input(),
+      vmName: (map['vmName'] as String).input(),
     );
   }
 }

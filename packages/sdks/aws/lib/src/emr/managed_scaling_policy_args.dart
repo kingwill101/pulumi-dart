@@ -26,17 +26,12 @@ class ManagedScalingPolicyArgs {
   /// [scalingStrategy] Specifies the scaling strategy. When set to `ADVANCED`, the `utilization_performance_index` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
   /// [utilizationPerformanceIndex] Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scaling_strategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
   ManagedScalingPolicyArgs({
-    required pulumi.Output<String> clusterId,
-    required pulumi.Output<List<ManagedScalingPolicyComputeLimit>> computeLimits,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scalingStrategy,
-    pulumi.Output<int>? utilizationPerformanceIndex,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      computeLimits = pulumi.Input.asInput<List<ManagedScalingPolicyComputeLimit>>(computeLimits),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingStrategy = pulumi.Input.asOptionalInput<String>(scalingStrategy),
-      utilizationPerformanceIndex = pulumi.Input.asOptionalInput<int>(utilizationPerformanceIndex);
+    required this.clusterId,
+    required this.computeLimits,
+    this.region,
+    this.scalingStrategy,
+    this.utilizationPerformanceIndex,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class ManagedScalingPolicyArgs {
 
   factory ManagedScalingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      computeLimits: pulumi.Output.create<List<ManagedScalingPolicyComputeLimit>>(pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(map['computeLimits'], (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingStrategy: map['scalingStrategy'] == null ? null : pulumi.Output.create<String>(map['scalingStrategy'] as String),
-      utilizationPerformanceIndex: map['utilizationPerformanceIndex'] == null ? null : pulumi.Output.create<int>(map['utilizationPerformanceIndex'] as int),
+      clusterId: (map['clusterId'] as String).input(),
+      computeLimits: (pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(map['computeLimits'], (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingStrategy: map['scalingStrategy'] == null ? null : (map['scalingStrategy'] as String).input(),
+      utilizationPerformanceIndex: map['utilizationPerformanceIndex'] == null ? null : (map['utilizationPerformanceIndex'] as int).input(),
     );
   }
 }

@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationFsxOntapFileSystemProtocolNfsMountOptions {
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolNfsMountOptions].
   /// [version] Optional.
@@ -18,7 +19,7 @@ class LocationFsxOntapFileSystemProtocolNfsMountOptions {
 
   factory LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolNfsMountOptions(
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

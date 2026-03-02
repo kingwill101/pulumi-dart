@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceTypeInstanceDisk {
-  final int count;
-  final int size;
-  final String type;
+  final pulumi.Input<int> count;
+  final pulumi.Input<int> size;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetInstanceTypeInstanceDisk].
   /// [count] Required.
@@ -26,9 +27,9 @@ class GetInstanceTypeInstanceDisk {
 
   factory GetInstanceTypeInstanceDisk.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeInstanceDisk(
-      count: map['count'] as int,
-      size: map['size'] as int,
-      type: map['type'] as String,
+      count: (map['count'] as int).input(),
+      size: (map['size'] as int).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

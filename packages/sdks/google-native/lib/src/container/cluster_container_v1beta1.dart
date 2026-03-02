@@ -301,7 +301,7 @@ class ClusterContainerV1beta1 extends pulumi.CustomResource {
   /// See for more details:
   /// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
   Future<ClusterGetKubeconfigContainerV1beta1Result> getKubeconfig() async {
-    final deployment = pulumi.Deployment.instance;
+    final deployment = pulumi.DeploymentImpl.instance as pulumi.DeploymentImpl;
     final result = await deployment.callWithResult<Map<String, dynamic>>(
       'google-native:container/v1beta1:Cluster/getKubeconfig',
       const <String, dynamic>{},

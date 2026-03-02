@@ -24,19 +24,13 @@ class CloneJobArgs {
   /// [requestId] A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [sourceId] Required.
   CloneJobArgs({
-    required pulumi.Output<String> cloneJobId,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> migratingVmId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> sourceId,
-  }) :
-      cloneJobId = pulumi.Input.asInput<String>(cloneJobId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      sourceId = pulumi.Input.asInput<String>(sourceId);
+    required this.cloneJobId,
+    this.location,
+    required this.migratingVmId,
+    this.project,
+    this.requestId,
+    required this.sourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +45,12 @@ class CloneJobArgs {
 
   factory CloneJobArgs.fromMap(Map<String, dynamic> map) {
     return CloneJobArgs(
-      cloneJobId: pulumi.Output.create<String>(map['cloneJobId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      migratingVmId: pulumi.Output.create<String>(map['migratingVmId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      sourceId: pulumi.Output.create<String>(map['sourceId'] as String),
+      cloneJobId: (map['cloneJobId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      migratingVmId: (map['migratingVmId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      sourceId: (map['sourceId'] as String).input(),
     );
   }
 }

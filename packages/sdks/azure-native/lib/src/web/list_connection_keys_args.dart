@@ -37,25 +37,16 @@ class ListConnectionKeysArgs {
   /// [type] Resource type
   /// [validityTimeSpan] time span for how long the keys will be valid
   ListConnectionKeysArgs({
-    required pulumi.Output<String> connectionName,
-    pulumi.Output<String>? id,
-    pulumi.Output<String>? kind,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? validityTimeSpan,
-  }) :
-      connectionName = pulumi.Input.asInput<String>(connectionName),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      validityTimeSpan = pulumi.Input.asOptionalInput<String>(validityTimeSpan);
+    required this.connectionName,
+    this.id,
+    this.kind,
+    this.location,
+    this.name,
+    required this.resourceGroupName,
+    this.tags,
+    this.type,
+    this.validityTimeSpan,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class ListConnectionKeysArgs {
 
   factory ListConnectionKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectionKeysArgs(
-      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      validityTimeSpan: map['validityTimeSpan'] == null ? null : pulumi.Output.create<String>(map['validityTimeSpan'] as String),
+      connectionName: (map['connectionName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      validityTimeSpan: map['validityTimeSpan'] == null ? null : (map['validityTimeSpan'] as String).input(),
     );
   }
 }

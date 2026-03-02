@@ -19,13 +19,10 @@ class GetRegistryEndpointArgs {
   /// [registryEndpointName] Name of RegistryEndpoint resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetRegistryEndpointArgs({
-    required pulumi.Output<String> instanceName,
-    required pulumi.Output<String> registryEndpointName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      registryEndpointName = pulumi.Input.asInput<String>(registryEndpointName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.instanceName,
+    required this.registryEndpointName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRegistryEndpointArgs {
 
   factory GetRegistryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryEndpointArgs(
-      instanceName: pulumi.Output.create<String>(map['instanceName'] as String),
-      registryEndpointName: pulumi.Output.create<String>(map['registryEndpointName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      instanceName: (map['instanceName'] as String).input(),
+      registryEndpointName: (map['registryEndpointName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

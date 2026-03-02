@@ -44,29 +44,18 @@ class PolicyExemptionArgs {
   /// [resourceSelectors] The resource selector list to filter policies by resource properties.
   /// [scope] The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   PolicyExemptionArgs({
-    pulumi.Output<String>? assignmentScopeValidation,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> exemptionCategory,
-    pulumi.Output<String>? expiresOn,
-    pulumi.Output<dynamic>? metadata,
-    required pulumi.Output<String> policyAssignmentId,
-    pulumi.Output<List<String>>? policyDefinitionReferenceIds,
-    pulumi.Output<String>? policyExemptionName,
-    pulumi.Output<List<ResourceSelector>>? resourceSelectors,
-    required pulumi.Output<String> scope,
-  }) :
-      assignmentScopeValidation = pulumi.Input.asOptionalInput<String>(assignmentScopeValidation),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      exemptionCategory = pulumi.Input.asInput<String>(exemptionCategory),
-      expiresOn = pulumi.Input.asOptionalInput<String>(expiresOn),
-      metadata = pulumi.Input.asOptionalInput<dynamic>(metadata),
-      policyAssignmentId = pulumi.Input.asInput<String>(policyAssignmentId),
-      policyDefinitionReferenceIds = pulumi.Input.asOptionalInput<List<String>>(policyDefinitionReferenceIds),
-      policyExemptionName = pulumi.Input.asOptionalInput<String>(policyExemptionName),
-      resourceSelectors = pulumi.Input.asOptionalInput<List<ResourceSelector>>(resourceSelectors),
-      scope = pulumi.Input.asInput<String>(scope);
+    this.assignmentScopeValidation,
+    this.description,
+    this.displayName,
+    required this.exemptionCategory,
+    this.expiresOn,
+    this.metadata,
+    required this.policyAssignmentId,
+    this.policyDefinitionReferenceIds,
+    this.policyExemptionName,
+    this.resourceSelectors,
+    required this.scope,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class PolicyExemptionArgs {
 
   factory PolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyExemptionArgs(
-      assignmentScopeValidation: map['assignmentScopeValidation'] == null ? null : pulumi.Output.create<String>(map['assignmentScopeValidation'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      exemptionCategory: pulumi.Output.create<String>(map['exemptionCategory'] as String),
-      expiresOn: map['expiresOn'] == null ? null : pulumi.Output.create<String>(map['expiresOn'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<dynamic>(map['metadata']),
-      policyAssignmentId: pulumi.Output.create<String>(map['policyAssignmentId'] as String),
-      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : pulumi.Output.create<List<String>>((map['policyDefinitionReferenceIds'] as List).cast<String>()),
-      policyExemptionName: map['policyExemptionName'] == null ? null : pulumi.Output.create<String>(map['policyExemptionName'] as String),
-      resourceSelectors: map['resourceSelectors'] == null ? null : pulumi.Output.create<List<ResourceSelector>>(pulumi.Input.decodeList<ResourceSelector>(map['resourceSelectors'], (value) => ResourceSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      scope: pulumi.Output.create<String>(map['scope'] as String),
+      assignmentScopeValidation: map['assignmentScopeValidation'] == null ? null : (map['assignmentScopeValidation'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      exemptionCategory: (map['exemptionCategory'] as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      policyAssignmentId: (map['policyAssignmentId'] as String).input(),
+      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds'] as List).cast<String>()).input(),
+      policyExemptionName: map['policyExemptionName'] == null ? null : (map['policyExemptionName'] as String).input(),
+      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<ResourceSelector>(map['resourceSelectors'], (value) => ResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scope: (map['scope'] as String).input(),
     );
   }
 }

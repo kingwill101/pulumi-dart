@@ -31,17 +31,12 @@ class ReleaseChannelSettingArgs {
   /// [releaseChannel] Release channel to be used.
   /// [releaseChannelSettingId] Id of the Release Channel Setting.
   ReleaseChannelSettingArgs({
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? releaseChannel,
-    required pulumi.Output<String> releaseChannelSettingId,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseChannel = pulumi.Input.asOptionalInput<String>(releaseChannel),
-      releaseChannelSettingId = pulumi.Input.asInput<String>(releaseChannelSettingId);
+    this.labels,
+    required this.location,
+    this.project,
+    this.releaseChannel,
+    required this.releaseChannelSettingId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class ReleaseChannelSettingArgs {
 
   factory ReleaseChannelSettingArgs.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelSettingArgs(
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      releaseChannel: map['releaseChannel'] == null ? null : pulumi.Output.create<String>(map['releaseChannel'] as String),
-      releaseChannelSettingId: pulumi.Output.create<String>(map['releaseChannelSettingId'] as String),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel'] as String).input(),
+      releaseChannelSettingId: (map['releaseChannelSettingId'] as String).input(),
     );
   }
 }

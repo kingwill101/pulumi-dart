@@ -30,21 +30,14 @@ class SavedQueryArgs {
   /// [v1Id] Required.
   /// [v1Id1] Required.
   SavedQueryArgs({
-    pulumi.Output<QueryContent>? content,
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> savedQueryId,
-    required pulumi.Output<String> v1Id,
-    required pulumi.Output<String> v1Id1,
-  }) :
-      content = pulumi.Input.asOptionalInput<QueryContent>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
-      v1Id = pulumi.Input.asInput<String>(v1Id),
-      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+    this.content,
+    this.description,
+    this.labels,
+    this.name,
+    required this.savedQueryId,
+    required this.v1Id,
+    required this.v1Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,13 +53,13 @@ class SavedQueryArgs {
 
   factory SavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return SavedQueryArgs(
-      content: map['content'] == null ? null : pulumi.Output.create<QueryContent>(QueryContent.fromMap((map['content'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      savedQueryId: pulumi.Output.create<String>(map['savedQueryId'] as String),
-      v1Id: pulumi.Output.create<String>(map['v1Id'] as String),
-      v1Id1: pulumi.Output.create<String>(map['v1Id1'] as String),
+      content: map['content'] == null ? null : (QueryContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      savedQueryId: (map['savedQueryId'] as String).input(),
+      v1Id: (map['v1Id'] as String).input(),
+      v1Id1: (map['v1Id1'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class PageState {
   /// [description] The description of the custom error page.
   /// [pageName] The name of the custom response page.
   PageState({
-    pulumi.Output<String>? content,
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? pageName,
-  }) :
-      content = pulumi.Input.asOptionalInput<String>(content),
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      pageName = pulumi.Input.asOptionalInput<String>(pageName);
+    this.content,
+    this.contentType,
+    this.description,
+    this.pageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class PageState {
 
   factory PageState.fromMap(Map<String, dynamic> map) {
     return PageState(
-      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      pageName: map['pageName'] == null ? null : pulumi.Output.create<String>(map['pageName'] as String),
+      content: map['content'] == null ? null : (map['content'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      pageName: map['pageName'] == null ? null : (map['pageName'] as String).input(),
     );
   }
 }

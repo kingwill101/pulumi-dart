@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'redshift_unload_settings.dart';
 
 /// A copy activity source for Amazon Redshift Source.
 class AmazonRedshiftSource {
   /// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-  final dynamic additionalColumns;
+  final pulumi.Input<dynamic>? additionalColumns;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-  final dynamic disableMetricsCollection;
+  final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-  final dynamic maxConcurrentConnections;
+  final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Database query. Type: string (or Expression with resultType string).
-  final dynamic query;
+  final pulumi.Input<dynamic>? query;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic queryTimeout;
+  final pulumi.Input<dynamic>? queryTimeout;
   /// The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then copied into the targeted sink from the interim S3.
-  final RedshiftUnloadSettings? redshiftUnloadSettings;
+  final pulumi.Input<RedshiftUnloadSettings>? redshiftUnloadSettings;
   /// Source retry count. Type: integer (or Expression with resultType integer).
-  final dynamic sourceRetryCount;
+  final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final dynamic sourceRetryWait;
+  final pulumi.Input<dynamic>? sourceRetryWait;
   /// Copy source type.
   /// Expected value is 'AmazonRedshiftSource'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AmazonRedshiftSource].
   /// [additionalColumns] Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -53,7 +54,7 @@ class AmazonRedshiftSource {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'query': ?query,
       'queryTimeout': ?queryTimeout,
-      'redshiftUnloadSettings': ?redshiftUnloadSettings == null ? null : redshiftUnloadSettings!.toMap(),
+      'redshiftUnloadSettings': ?pulumi.Input.mapOptionalInputValue<RedshiftUnloadSettings, Map<String, dynamic>>(redshiftUnloadSettings, (value) => value.toMap()),
       'sourceRetryCount': ?sourceRetryCount,
       'sourceRetryWait': ?sourceRetryWait,
       'type': type,
@@ -62,15 +63,15 @@ class AmazonRedshiftSource {
 
   factory AmazonRedshiftSource.fromMap(Map<String, dynamic> map) {
     return AmazonRedshiftSource(
-      additionalColumns: map['additionalColumns'] == null ? null : map['additionalColumns'],
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : map['disableMetricsCollection'],
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : map['maxConcurrentConnections'],
-      query: map['query'] == null ? null : map['query'],
-      queryTimeout: map['queryTimeout'] == null ? null : map['queryTimeout'],
-      redshiftUnloadSettings: map['redshiftUnloadSettings'] == null ? null : RedshiftUnloadSettings.fromMap((map['redshiftUnloadSettings'] as Map).cast<String, dynamic>()),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : map['sourceRetryCount'],
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : map['sourceRetryWait'],
-      type: map['type'] as String,
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
+      query: map['query'] == null ? null : (map['query']).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
+      redshiftUnloadSettings: map['redshiftUnloadSettings'] == null ? null : (RedshiftUnloadSettings.fromMap((map['redshiftUnloadSettings'] as Map).cast<String, dynamic>())).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

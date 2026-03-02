@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Secret to be added to volume.
 class SecretVolumeItemResponse {
   /// Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Name of the Container App secret from which to pull the secret value.
-  final String? secretRef;
+  final pulumi.Input<String>? secretRef;
 
   /// Creates a new [SecretVolumeItemResponse].
   /// [path] Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
@@ -25,8 +26,8 @@ class SecretVolumeItemResponse {
 
   factory SecretVolumeItemResponse.fromMap(Map<String, dynamic> map) {
     return SecretVolumeItemResponse(
-      path: map['path'] == null ? null : map['path'] as String,
-      secretRef: map['secretRef'] == null ? null : map['secretRef'] as String,
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
     );
   }
 }

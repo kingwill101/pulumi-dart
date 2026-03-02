@@ -40,25 +40,16 @@ class TypeProviderArgs {
   /// [options] Options to apply when handling any resources in this service.
   /// [project] Optional.
   TypeProviderArgs({
-    pulumi.Output<List<CollectionOverride>>? collectionOverrides,
-    pulumi.Output<Credential>? credential,
-    pulumi.Output<List<String>>? customCertificateAuthorityRoots,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? descriptorUrl,
-    pulumi.Output<List<TypeProviderLabelEntry>>? labels,
-    pulumi.Output<String>? name,
-    pulumi.Output<Options>? options,
-    pulumi.Output<String>? project,
-  }) :
-      collectionOverrides = pulumi.Input.asOptionalInput<List<CollectionOverride>>(collectionOverrides),
-      credential = pulumi.Input.asOptionalInput<Credential>(credential),
-      customCertificateAuthorityRoots = pulumi.Input.asOptionalInput<List<String>>(customCertificateAuthorityRoots),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      descriptorUrl = pulumi.Input.asOptionalInput<String>(descriptorUrl),
-      labels = pulumi.Input.asOptionalInput<List<TypeProviderLabelEntry>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      options = pulumi.Input.asOptionalInput<Options>(options),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.collectionOverrides,
+    this.credential,
+    this.customCertificateAuthorityRoots,
+    this.description,
+    this.descriptorUrl,
+    this.labels,
+    this.name,
+    this.options,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,15 +67,15 @@ class TypeProviderArgs {
 
   factory TypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return TypeProviderArgs(
-      collectionOverrides: map['collectionOverrides'] == null ? null : pulumi.Output.create<List<CollectionOverride>>(pulumi.Input.decodeList<CollectionOverride>(map['collectionOverrides'], (value) => CollectionOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      credential: map['credential'] == null ? null : pulumi.Output.create<Credential>(Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())),
-      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : pulumi.Output.create<List<String>>((map['customCertificateAuthorityRoots'] as List).cast<String>()),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      descriptorUrl: map['descriptorUrl'] == null ? null : pulumi.Output.create<String>(map['descriptorUrl'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<List<TypeProviderLabelEntry>>(pulumi.Input.decodeList<TypeProviderLabelEntry>(map['labels'], (value) => TypeProviderLabelEntry.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      options: map['options'] == null ? null : pulumi.Output.create<Options>(Options.fromMap((map['options'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      collectionOverrides: map['collectionOverrides'] == null ? null : (pulumi.Input.decodeList<CollectionOverride>(map['collectionOverrides'], (value) => CollectionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credential: map['credential'] == null ? null : (Credential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
+      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : ((map['customCertificateAuthorityRoots'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      descriptorUrl: map['descriptorUrl'] == null ? null : (map['descriptorUrl'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<TypeProviderLabelEntry>(map['labels'], (value) => TypeProviderLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      options: map['options'] == null ? null : (Options.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -27,15 +27,11 @@ class GetInstancesArgs {
   /// [instanceTags] Map of tags, each pair of which must
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetInstancesArgs({
-    pulumi.Output<List<GetInstancesFilter>>? filters,
-    pulumi.Output<List<String>>? instanceStateNames,
-    pulumi.Output<Map<String, String>>? instanceTags,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetInstancesFilter>>(filters),
-      instanceStateNames = pulumi.Input.asOptionalInput<List<String>>(instanceStateNames),
-      instanceTags = pulumi.Input.asOptionalInput<Map<String, String>>(instanceTags),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.instanceStateNames,
+    this.instanceTags,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,10 +44,10 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetInstancesFilter>>(pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      instanceStateNames: map['instanceStateNames'] == null ? null : pulumi.Output.create<List<String>>((map['instanceStateNames'] as List).cast<String>()),
-      instanceTags: map['instanceTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['instanceTags'] as Map).cast<String, String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceStateNames: map['instanceStateNames'] == null ? null : ((map['instanceStateNames'] as List).cast<String>()).input(),
+      instanceTags: map['instanceTags'] == null ? null : ((map['instanceTags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

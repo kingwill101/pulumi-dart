@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Device Update account integration with IoT Hub settings.
 class IotHubSettings {
   /// IoTHub resource ID
-  final String resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Creates a new [IotHubSettings].
   /// [resourceId] IoTHub resource ID
@@ -20,7 +21,7 @@ class IotHubSettings {
 
   factory IotHubSettings.fromMap(Map<String, dynamic> map) {
     return IotHubSettings(
-      resourceId: map['resourceId'] as String,
+      resourceId: (map['resourceId'] as String).input(),
     );
   }
 }

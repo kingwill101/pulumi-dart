@@ -29,17 +29,12 @@ class AiFeatureOnlineStoreFeatureviewIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   AiFeatureOnlineStoreFeatureviewIamPolicyArgs({
-    required pulumi.Output<String> featureOnlineStore,
-    required pulumi.Output<String> featureView,
-    required pulumi.Output<String> policyData,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-  }) :
-      featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
-      featureView = pulumi.Input.asInput<String>(featureView),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.featureOnlineStore,
+    required this.featureView,
+    required this.policyData,
+    this.project,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +48,11 @@ class AiFeatureOnlineStoreFeatureviewIamPolicyArgs {
 
   factory AiFeatureOnlineStoreFeatureviewIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewIamPolicyArgs(
-      featureOnlineStore: pulumi.Output.create<String>(map['featureOnlineStore'] as String),
-      featureView: pulumi.Output.create<String>(map['featureView'] as String),
-      policyData: pulumi.Output.create<String>(map['policyData'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      featureOnlineStore: (map['featureOnlineStore'] as String).input(),
+      featureView: (map['featureView'] as String).input(),
+      policyData: (map['policyData'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

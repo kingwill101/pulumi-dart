@@ -45,29 +45,18 @@ class ApplicationArgs {
   /// [startApplication] Whether to start or stop the application.
   /// [tags] A map of tags to assign to the application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   ApplicationArgs({
-    pulumi.Output<ApplicationApplicationConfiguration>? applicationConfiguration,
-    pulumi.Output<String>? applicationMode,
-    pulumi.Output<ApplicationCloudwatchLoggingOptions>? cloudwatchLoggingOptions,
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? forceStop,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> runtimeEnvironment,
-    required pulumi.Output<String> serviceExecutionRole,
-    pulumi.Output<bool>? startApplication,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      applicationConfiguration = pulumi.Input.asOptionalInput<ApplicationApplicationConfiguration>(applicationConfiguration),
-      applicationMode = pulumi.Input.asOptionalInput<String>(applicationMode),
-      cloudwatchLoggingOptions = pulumi.Input.asOptionalInput<ApplicationCloudwatchLoggingOptions>(cloudwatchLoggingOptions),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      forceStop = pulumi.Input.asOptionalInput<bool>(forceStop),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      runtimeEnvironment = pulumi.Input.asInput<String>(runtimeEnvironment),
-      serviceExecutionRole = pulumi.Input.asInput<String>(serviceExecutionRole),
-      startApplication = pulumi.Input.asOptionalInput<bool>(startApplication),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.applicationConfiguration,
+    this.applicationMode,
+    this.cloudwatchLoggingOptions,
+    this.description,
+    this.forceStop,
+    this.name,
+    this.region,
+    required this.runtimeEnvironment,
+    required this.serviceExecutionRole,
+    this.startApplication,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +76,17 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationConfiguration: map['applicationConfiguration'] == null ? null : pulumi.Output.create<ApplicationApplicationConfiguration>(ApplicationApplicationConfiguration.fromMap((map['applicationConfiguration'] as Map).cast<String, dynamic>())),
-      applicationMode: map['applicationMode'] == null ? null : pulumi.Output.create<String>(map['applicationMode'] as String),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : pulumi.Output.create<ApplicationCloudwatchLoggingOptions>(ApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      forceStop: map['forceStop'] == null ? null : pulumi.Output.create<bool>(map['forceStop'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      runtimeEnvironment: pulumi.Output.create<String>(map['runtimeEnvironment'] as String),
-      serviceExecutionRole: pulumi.Output.create<String>(map['serviceExecutionRole'] as String),
-      startApplication: map['startApplication'] == null ? null : pulumi.Output.create<bool>(map['startApplication'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      applicationConfiguration: map['applicationConfiguration'] == null ? null : (ApplicationApplicationConfiguration.fromMap((map['applicationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      applicationMode: map['applicationMode'] == null ? null : (map['applicationMode'] as String).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (ApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      runtimeEnvironment: (map['runtimeEnvironment'] as String).input(),
+      serviceExecutionRole: (map['serviceExecutionRole'] as String).input(),
+      startApplication: map['startApplication'] == null ? null : (map['startApplication'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

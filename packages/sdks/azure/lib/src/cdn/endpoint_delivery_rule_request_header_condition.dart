@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRequestHeaderCondition {
   /// List of header values. This is required if `operator` is not `Any`.
-  final List<String>? matchValues;
+  final pulumi.Input<List<String>>? matchValues;
   /// Defaults to `false`.
-  final bool? negateCondition;
+  final pulumi.Input<bool>? negateCondition;
   /// Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
-  final String operator;
+  final pulumi.Input<String> operator;
   /// Header name.
-  final String selector;
+  final pulumi.Input<String> selector;
   /// A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  final List<String>? transforms;
+  final pulumi.Input<List<String>>? transforms;
 
   /// Creates a new [EndpointDeliveryRuleRequestHeaderCondition].
   /// [matchValues] List of header values. This is required if `operator` is not `Any`.
@@ -39,11 +40,11 @@ class EndpointDeliveryRuleRequestHeaderCondition {
 
   factory EndpointDeliveryRuleRequestHeaderCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleRequestHeaderCondition(
-      matchValues: map['matchValues'] == null ? null : (map['matchValues'] as List).cast<String>(),
-      negateCondition: map['negateCondition'] == null ? null : map['negateCondition'] as bool,
-      operator: map['operator'] as String,
-      selector: map['selector'] as String,
-      transforms: map['transforms'] == null ? null : (map['transforms'] as List).cast<String>(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      operator: (map['operator'] as String).input(),
+      selector: (map['selector'] as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
     );
   }
 }

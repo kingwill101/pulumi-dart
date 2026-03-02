@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// network controller config for SDN Integration to deploy AzureStackHCI Cluster.
 class NetworkControllerResponse {
   /// macAddressPoolStart of network controller used for SDN Integration.
-  final String? macAddressPoolStart;
+  final pulumi.Input<String>? macAddressPoolStart;
   /// macAddressPoolStop of network controller used for SDN Integration.
-  final String? macAddressPoolStop;
+  final pulumi.Input<String>? macAddressPoolStop;
   /// NetworkVirtualizationEnabled of network controller used for SDN Integration.
-  final bool? networkVirtualizationEnabled;
+  final pulumi.Input<bool>? networkVirtualizationEnabled;
 
   /// Creates a new [NetworkControllerResponse].
   /// [macAddressPoolStart] macAddressPoolStart of network controller used for SDN Integration.
@@ -30,9 +31,9 @@ class NetworkControllerResponse {
 
   factory NetworkControllerResponse.fromMap(Map<String, dynamic> map) {
     return NetworkControllerResponse(
-      macAddressPoolStart: map['macAddressPoolStart'] == null ? null : map['macAddressPoolStart'] as String,
-      macAddressPoolStop: map['macAddressPoolStop'] == null ? null : map['macAddressPoolStop'] as String,
-      networkVirtualizationEnabled: map['networkVirtualizationEnabled'] == null ? null : map['networkVirtualizationEnabled'] as bool,
+      macAddressPoolStart: map['macAddressPoolStart'] == null ? null : (map['macAddressPoolStart'] as String).input(),
+      macAddressPoolStop: map['macAddressPoolStop'] == null ? null : (map['macAddressPoolStop'] as String).input(),
+      networkVirtualizationEnabled: map['networkVirtualizationEnabled'] == null ? null : (map['networkVirtualizationEnabled'] as bool).input(),
     );
   }
 }

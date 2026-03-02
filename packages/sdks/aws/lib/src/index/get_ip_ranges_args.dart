@@ -30,15 +30,11 @@ class GetIpRangesArgs {
   /// [services] Filter IP ranges by services. Valid items are `amazon`
   /// [url] Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
   GetIpRangesArgs({
-    pulumi.Output<String>? id,
-    pulumi.Output<List<String>>? regions,
-    required pulumi.Output<List<String>> services,
-    pulumi.Output<String>? url,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
-      regions = pulumi.Input.asOptionalInput<List<String>>(regions),
-      services = pulumi.Input.asInput<List<String>>(services),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.id,
+    this.regions,
+    required this.services,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +47,10 @@ class GetIpRangesArgs {
 
   factory GetIpRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpRangesArgs(
-      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
-      regions: map['regions'] == null ? null : pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
-      services: pulumi.Output.create<List<String>>((map['services'] as List).cast<String>()),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      services: ((map['services'] as List).cast<String>()).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
   /// Whether BGP function is turned on.
-  final String? bgpStatus;
-  final String? localAsn;
-  final String? localBgpIp;
+  final pulumi.Input<String>? bgpStatus;
+  final pulumi.Input<String>? localAsn;
+  final pulumi.Input<String>? localBgpIp;
   /// Peer asn.
-  final String? peerAsn;
+  final pulumi.Input<String>? peerAsn;
   /// Peer bgp ip.
-  final String? peerBgpIp;
-  final String? tunnelCidr;
+  final pulumi.Input<String>? peerBgpIp;
+  final pulumi.Input<String>? tunnelCidr;
 
   /// Creates a new [ConnectionTunnelOptionsSpecificationTunnelBgpConfig].
   /// [bgpStatus] Whether BGP function is turned on.
@@ -41,12 +42,12 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
 
   factory ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecificationTunnelBgpConfig(
-      bgpStatus: map['bgpStatus'] == null ? null : map['bgpStatus'] as String,
-      localAsn: map['localAsn'] == null ? null : map['localAsn'] as String,
-      localBgpIp: map['localBgpIp'] == null ? null : map['localBgpIp'] as String,
-      peerAsn: map['peerAsn'] == null ? null : map['peerAsn'] as String,
-      peerBgpIp: map['peerBgpIp'] == null ? null : map['peerBgpIp'] as String,
-      tunnelCidr: map['tunnelCidr'] == null ? null : map['tunnelCidr'] as String,
+      bgpStatus: map['bgpStatus'] == null ? null : (map['bgpStatus'] as String).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as String).input(),
+      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as String).input(),
+      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp'] as String).input(),
+      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr'] as String).input(),
     );
   }
 }

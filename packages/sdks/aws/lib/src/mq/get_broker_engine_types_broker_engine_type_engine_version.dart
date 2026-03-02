@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
   /// Name of the engine version.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetBrokerEngineTypesBrokerEngineTypeEngineVersion].
   /// [name] Name of the engine version.
@@ -19,7 +20,7 @@ class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
 
   factory GetBrokerEngineTypesBrokerEngineTypeEngineVersion.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesBrokerEngineTypeEngineVersion(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

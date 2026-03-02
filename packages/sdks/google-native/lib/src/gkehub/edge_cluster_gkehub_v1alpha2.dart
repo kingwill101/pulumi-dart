@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// EdgeCluster contains information specific to Google Edge Clusters.
 class EdgeClusterGkehubV1alpha2 {
   /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  final String? resourceLink;
+  final pulumi.Input<String>? resourceLink;
 
   /// Creates a new [EdgeClusterGkehubV1alpha2].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -20,7 +21,7 @@ class EdgeClusterGkehubV1alpha2 {
 
   factory EdgeClusterGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return EdgeClusterGkehubV1alpha2(
-      resourceLink: map['resourceLink'] == null ? null : map['resourceLink'] as String,
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
     );
   }
 }

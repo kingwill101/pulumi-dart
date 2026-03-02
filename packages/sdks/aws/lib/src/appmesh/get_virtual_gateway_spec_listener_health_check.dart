@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVirtualGatewaySpecListenerHealthCheck {
-  final int healthyThreshold;
-  final int intervalMillis;
-  final String path;
-  final int port;
-  final String protocol;
-  final int timeoutMillis;
-  final int unhealthyThreshold;
+  final pulumi.Input<int> healthyThreshold;
+  final pulumi.Input<int> intervalMillis;
+  final pulumi.Input<String> path;
+  final pulumi.Input<int> port;
+  final pulumi.Input<String> protocol;
+  final pulumi.Input<int> timeoutMillis;
+  final pulumi.Input<int> unhealthyThreshold;
 
   /// Creates a new [GetVirtualGatewaySpecListenerHealthCheck].
   /// [healthyThreshold] Required.
@@ -42,13 +43,13 @@ class GetVirtualGatewaySpecListenerHealthCheck {
 
   factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerHealthCheck(
-      healthyThreshold: map['healthyThreshold'] as int,
-      intervalMillis: map['intervalMillis'] as int,
-      path: map['path'] as String,
-      port: map['port'] as int,
-      protocol: map['protocol'] as String,
-      timeoutMillis: map['timeoutMillis'] as int,
-      unhealthyThreshold: map['unhealthyThreshold'] as int,
+      healthyThreshold: (map['healthyThreshold'] as int).input(),
+      intervalMillis: (map['intervalMillis'] as int).input(),
+      path: (map['path'] as String).input(),
+      port: (map['port'] as int).input(),
+      protocol: (map['protocol'] as String).input(),
+      timeoutMillis: (map['timeoutMillis'] as int).input(),
+      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
     );
   }
 }

@@ -40,27 +40,17 @@ class FargateProfileState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   FargateProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? fargateProfileName,
-    pulumi.Output<String>? podExecutionRoleArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<FargateProfileSelector>>? selectors,
-    pulumi.Output<String>? status,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      fargateProfileName = pulumi.Input.asOptionalInput<String>(fargateProfileName),
-      podExecutionRoleArn = pulumi.Input.asOptionalInput<String>(podExecutionRoleArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selectors = pulumi.Input.asOptionalInput<List<FargateProfileSelector>>(selectors),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.clusterName,
+    this.fargateProfileName,
+    this.podExecutionRoleArn,
+    this.region,
+    this.selectors,
+    this.status,
+    this.subnetIds,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class FargateProfileState {
 
   factory FargateProfileState.fromMap(Map<String, dynamic> map) {
     return FargateProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      fargateProfileName: map['fargateProfileName'] == null ? null : pulumi.Output.create<String>(map['fargateProfileName'] as String),
-      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : pulumi.Output.create<String>(map['podExecutionRoleArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      selectors: map['selectors'] == null ? null : pulumi.Output.create<List<FargateProfileSelector>>(pulumi.Input.decodeList<FargateProfileSelector>(map['selectors'], (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      fargateProfileName: map['fargateProfileName'] == null ? null : (map['fargateProfileName'] as String).input(),
+      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : (map['podExecutionRoleArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<FargateProfileSelector>(map['selectors'], (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

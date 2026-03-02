@@ -27,17 +27,12 @@ class AiLogicPromptTemplateArgs {
   /// [templateId] The unique ID of the PromptTemplate, which is the final component of the
   /// [templateString] The DotPrompt raw template string.
   AiLogicPromptTemplateArgs({
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> templateId,
-    required pulumi.Output<String> templateString,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      templateString = pulumi.Input.asInput<String>(templateString);
+    this.displayName,
+    required this.location,
+    this.project,
+    required this.templateId,
+    required this.templateString,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class AiLogicPromptTemplateArgs {
 
   factory AiLogicPromptTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateArgs(
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      templateId: pulumi.Output.create<String>(map['templateId'] as String),
-      templateString: pulumi.Output.create<String>(map['templateString'] as String),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      templateId: (map['templateId'] as String).input(),
+      templateString: (map['templateString'] as String).input(),
     );
   }
 }

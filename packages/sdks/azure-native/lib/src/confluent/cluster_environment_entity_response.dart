@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The environment to which cluster belongs
 class ClusterEnvironmentEntityResponse {
   /// Environment of the referred resource
-  final String? environment;
+  final pulumi.Input<String>? environment;
   /// ID of the referred resource
-  final String? id;
+  final pulumi.Input<String>? id;
   /// API URL for accessing or modifying the referred object
-  final String? related;
+  final pulumi.Input<String>? related;
   /// CRN reference to the referred resource
-  final String? resourceName;
+  final pulumi.Input<String>? resourceName;
 
   /// Creates a new [ClusterEnvironmentEntityResponse].
   /// [environment] Environment of the referred resource
@@ -35,10 +36,10 @@ class ClusterEnvironmentEntityResponse {
 
   factory ClusterEnvironmentEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterEnvironmentEntityResponse(
-      environment: map['environment'] == null ? null : map['environment'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      related: map['related'] == null ? null : map['related'] as String,
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      related: map['related'] == null ? null : (map['related'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
     );
   }
 }

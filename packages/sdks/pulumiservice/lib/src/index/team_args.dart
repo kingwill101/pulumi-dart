@@ -31,21 +31,14 @@ class TeamArgs {
   /// [organizationName] The name of the Pulumi organization the team belongs to.
   /// [teamType] The type of team. Must be either `pulumi` or `github`.
   TeamArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<double>? githubTeamId,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> organizationName,
-    required pulumi.Output<String> teamType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      githubTeamId = pulumi.Input.asOptionalInput<double>(githubTeamId),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationName = pulumi.Input.asInput<String>(organizationName),
-      teamType = pulumi.Input.asInput<String>(teamType);
+    this.description,
+    this.displayName,
+    this.githubTeamId,
+    this.members,
+    this.name,
+    required this.organizationName,
+    required this.teamType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class TeamArgs {
 
   factory TeamArgs.fromMap(Map<String, dynamic> map) {
     return TeamArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      githubTeamId: map['githubTeamId'] == null ? null : pulumi.Output.create<double>(map['githubTeamId'] as double),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      organizationName: pulumi.Output.create<String>(map['organizationName'] as String),
-      teamType: pulumi.Output.create<String>(map['teamType'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      githubTeamId: map['githubTeamId'] == null ? null : (map['githubTeamId'] as double).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      organizationName: (map['organizationName'] as String).input(),
+      teamType: (map['teamType'] as String).input(),
     );
   }
 }

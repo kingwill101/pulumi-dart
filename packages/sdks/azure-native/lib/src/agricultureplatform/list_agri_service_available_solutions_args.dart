@@ -16,11 +16,9 @@ class ListAgriServiceAvailableSolutionsArgs {
   /// [agriServiceResourceName] The name of the AgriService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   ListAgriServiceAvailableSolutionsArgs({
-    required pulumi.Output<String> agriServiceResourceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      agriServiceResourceName = pulumi.Input.asInput<String>(agriServiceResourceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.agriServiceResourceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class ListAgriServiceAvailableSolutionsArgs {
 
   factory ListAgriServiceAvailableSolutionsArgs.fromMap(Map<String, dynamic> map) {
     return ListAgriServiceAvailableSolutionsArgs(
-      agriServiceResourceName: pulumi.Output.create<String>(map['agriServiceResourceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      agriServiceResourceName: (map['agriServiceResourceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

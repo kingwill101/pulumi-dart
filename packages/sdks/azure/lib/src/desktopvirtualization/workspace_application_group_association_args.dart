@@ -16,11 +16,9 @@ class WorkspaceApplicationGroupAssociationArgs {
   /// [applicationGroupId] The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   /// [workspaceId] The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   WorkspaceApplicationGroupAssociationArgs({
-    required pulumi.Output<String> applicationGroupId,
-    required pulumi.Output<String> workspaceId,
-  }) :
-      applicationGroupId = pulumi.Input.asInput<String>(applicationGroupId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+    required this.applicationGroupId,
+    required this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class WorkspaceApplicationGroupAssociationArgs {
 
   factory WorkspaceApplicationGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApplicationGroupAssociationArgs(
-      applicationGroupId: pulumi.Output.create<String>(map['applicationGroupId'] as String),
-      workspaceId: pulumi.Output.create<String>(map['workspaceId'] as String),
+      applicationGroupId: (map['applicationGroupId'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class PublicNetworkState {
   /// [instanceId] Instance ID
   /// [status] Instance status, returns:_EXPANDING`: Capacity-based cloud storage is being expanded._version_transing`: The minor version is being upgraded._CHANGING`: The specification is being upgraded or downgraded._SWITCHING`:SSL is being changed._OPENING`: The data subscription function is being activated._TRANSFER`: migrates data to the database._CREATING`: in the production disaster recovery instance._RECOVERING`: The backup is being restored._IMPORTING`: Data is being imported._MODIFYING`: The network is being changed._SWITCHING`: The internal network and the external network are being switched._CREATING`: creates a network link._DELETING`: deletes a network link.
   PublicNetworkState({
-    pulumi.Output<int>? enablePublicNetwork,
-    pulumi.Output<String>? engineType,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? status,
-  }) :
-      enablePublicNetwork = pulumi.Input.asOptionalInput<int>(enablePublicNetwork),
-      engineType = pulumi.Input.asOptionalInput<String>(engineType),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.enablePublicNetwork,
+    this.engineType,
+    this.instanceId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class PublicNetworkState {
 
   factory PublicNetworkState.fromMap(Map<String, dynamic> map) {
     return PublicNetworkState(
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : pulumi.Output.create<int>(map['enablePublicNetwork'] as int),
-      engineType: map['engineType'] == null ? null : pulumi.Output.create<String>(map['engineType'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as int).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

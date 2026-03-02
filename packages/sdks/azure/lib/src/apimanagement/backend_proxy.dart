@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendProxy {
   /// The password to connect to the proxy server.
-  final String? password;
+  final pulumi.Input<String>? password;
   /// The URL of the proxy server.
-  final String url;
+  final pulumi.Input<String> url;
   /// The username to connect to the proxy server.
-  final String username;
+  final pulumi.Input<String> username;
 
   /// Creates a new [BackendProxy].
   /// [password] The password to connect to the proxy server.
@@ -29,9 +30,9 @@ class BackendProxy {
 
   factory BackendProxy.fromMap(Map<String, dynamic> map) {
     return BackendProxy(
-      password: map['password'] == null ? null : map['password'] as String,
-      url: map['url'] as String,
-      username: map['username'] as String,
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      url: (map['url'] as String).input(),
+      username: (map['username'] as String).input(),
     );
   }
 }

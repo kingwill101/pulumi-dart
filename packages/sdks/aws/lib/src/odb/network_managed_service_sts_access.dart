@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagedServiceStsAccess {
-  final String domainName;
-  final List<String> ipv4Addresses;
+  final pulumi.Input<String> domainName;
+  final pulumi.Input<List<String>> ipv4Addresses;
   /// The status of the network resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// Specifies the endpoint policy for STS access from the ODB network.
-  final String stsPolicyDocument;
+  final pulumi.Input<String> stsPolicyDocument;
 
   /// Creates a new [NetworkManagedServiceStsAccess].
   /// [domainName] Required.
@@ -32,10 +33,10 @@ class NetworkManagedServiceStsAccess {
 
   factory NetworkManagedServiceStsAccess.fromMap(Map<String, dynamic> map) {
     return NetworkManagedServiceStsAccess(
-      domainName: map['domainName'] as String,
-      ipv4Addresses: (map['ipv4Addresses'] as List).cast<String>(),
-      status: map['status'] as String,
-      stsPolicyDocument: map['stsPolicyDocument'] as String,
+      domainName: (map['domainName'] as String).input(),
+      ipv4Addresses: ((map['ipv4Addresses'] as List).cast<String>()).input(),
+      status: (map['status'] as String).input(),
+      stsPolicyDocument: (map['stsPolicyDocument'] as String).input(),
     );
   }
 }

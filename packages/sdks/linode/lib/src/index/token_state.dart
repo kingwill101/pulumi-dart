@@ -22,17 +22,12 @@ class TokenState {
   /// [scopes] The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
   /// [token] The token used to access the API.
   TokenState({
-    pulumi.Output<String>? created,
-    pulumi.Output<String>? expiry,
-    pulumi.Output<String>? label,
-    pulumi.Output<String>? scopes,
-    pulumi.Output<String>? token,
-  }) :
-      created = pulumi.Input.asOptionalInput<String>(created),
-      expiry = pulumi.Input.asOptionalInput<String>(expiry),
-      label = pulumi.Input.asOptionalInput<String>(label),
-      scopes = pulumi.Input.asOptionalInput<String>(scopes),
-      token = pulumi.Input.asOptionalInput<String>(token);
+    this.created,
+    this.expiry,
+    this.label,
+    this.scopes,
+    this.token,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class TokenState {
 
   factory TokenState.fromMap(Map<String, dynamic> map) {
     return TokenState(
-      created: map['created'] == null ? null : pulumi.Output.create<String>(map['created'] as String),
-      expiry: map['expiry'] == null ? null : pulumi.Output.create<String>(map['expiry'] as String),
-      label: map['label'] == null ? null : pulumi.Output.create<String>(map['label'] as String),
-      scopes: map['scopes'] == null ? null : pulumi.Output.create<String>(map['scopes'] as String),
-      token: map['token'] == null ? null : pulumi.Output.create<String>(map['token'] as String),
+      created: map['created'] == null ? null : (map['created'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      label: map['label'] == null ? null : (map['label'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

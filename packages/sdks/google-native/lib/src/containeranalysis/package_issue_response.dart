@@ -7,25 +7,25 @@ import 'version_response.dart';
 /// A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).
 class PackageIssueResponse {
   /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.
-  final String affectedCpeUri;
+  final pulumi.Input<String> affectedCpeUri;
   /// The package this vulnerability was found in.
-  final String affectedPackage;
+  final pulumi.Input<String> affectedPackage;
   /// The version of the package that is installed on the resource affected by this vulnerability.
-  final VersionResponse affectedVersion;
+  final pulumi.Input<VersionResponse> affectedVersion;
   /// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
-  final String effectiveSeverity;
+  final pulumi.Input<String> effectiveSeverity;
   /// The location at which this package was found.
-  final List<GrafeasV1FileLocationResponse> fileLocation;
+  final pulumi.Input<List<GrafeasV1FileLocationResponse>> fileLocation;
   /// Whether a fix is available for this package.
-  final bool fixAvailable;
+  final pulumi.Input<bool> fixAvailable;
   /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
-  final String fixedCpeUri;
+  final pulumi.Input<String> fixedCpeUri;
   /// The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
-  final String fixedPackage;
+  final pulumi.Input<String> fixedPackage;
   /// The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
-  final VersionResponse fixedVersion;
+  final pulumi.Input<VersionResponse> fixedVersion;
   /// The type of package (e.g. OS, MAVEN, GO).
-  final String packageType;
+  final pulumi.Input<String> packageType;
 
   /// Creates a new [PackageIssueResponse].
   /// [affectedCpeUri] The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.
@@ -55,29 +55,29 @@ class PackageIssueResponse {
     return <String, dynamic>{
       'affectedCpeUri': affectedCpeUri,
       'affectedPackage': affectedPackage,
-      'affectedVersion': affectedVersion.toMap(),
+      'affectedVersion': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(affectedVersion, (value) => value.toMap()),
       'effectiveSeverity': effectiveSeverity,
-      'fileLocation': pulumi.Input.encodeList<GrafeasV1FileLocationResponse, Map<String, dynamic>>(fileLocation, (value) => value.toMap()),
+      'fileLocation': pulumi.Input.mapInputValue<List<GrafeasV1FileLocationResponse>, List<Map<String, dynamic>>>(fileLocation, (value) => pulumi.Input.encodeList<GrafeasV1FileLocationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'fixAvailable': fixAvailable,
       'fixedCpeUri': fixedCpeUri,
       'fixedPackage': fixedPackage,
-      'fixedVersion': fixedVersion.toMap(),
+      'fixedVersion': pulumi.Input.mapInputValue<VersionResponse, Map<String, dynamic>>(fixedVersion, (value) => value.toMap()),
       'packageType': packageType,
     };
   }
 
   factory PackageIssueResponse.fromMap(Map<String, dynamic> map) {
     return PackageIssueResponse(
-      affectedCpeUri: map['affectedCpeUri'] as String,
-      affectedPackage: map['affectedPackage'] as String,
-      affectedVersion: VersionResponse.fromMap((map['affectedVersion'] as Map).cast<String, dynamic>()),
-      effectiveSeverity: map['effectiveSeverity'] as String,
-      fileLocation: pulumi.Input.decodeList<GrafeasV1FileLocationResponse>(map['fileLocation'], (value) => GrafeasV1FileLocationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      fixAvailable: map['fixAvailable'] as bool,
-      fixedCpeUri: map['fixedCpeUri'] as String,
-      fixedPackage: map['fixedPackage'] as String,
-      fixedVersion: VersionResponse.fromMap((map['fixedVersion'] as Map).cast<String, dynamic>()),
-      packageType: map['packageType'] as String,
+      affectedCpeUri: (map['affectedCpeUri'] as String).input(),
+      affectedPackage: (map['affectedPackage'] as String).input(),
+      affectedVersion: (VersionResponse.fromMap((map['affectedVersion'] as Map).cast<String, dynamic>())).input(),
+      effectiveSeverity: (map['effectiveSeverity'] as String).input(),
+      fileLocation: (pulumi.Input.decodeList<GrafeasV1FileLocationResponse>(map['fileLocation'], (value) => GrafeasV1FileLocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fixAvailable: (map['fixAvailable'] as bool).input(),
+      fixedCpeUri: (map['fixedCpeUri'] as String).input(),
+      fixedPackage: (map['fixedPackage'] as String).input(),
+      fixedVersion: (VersionResponse.fromMap((map['fixedVersion'] as Map).cast<String, dynamic>())).input(),
+      packageType: (map['packageType'] as String).input(),
     );
   }
 }

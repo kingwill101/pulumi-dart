@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The JIT authorization policies.
 class JitAuthorizationPolicies {
   /// The the principal id that will be granted JIT access.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The role definition id that will be granted to the Principal.
-  final String roleDefinitionId;
+  final pulumi.Input<String> roleDefinitionId;
 
   /// Creates a new [JitAuthorizationPolicies].
   /// [principalId] The the principal id that will be granted JIT access.
@@ -25,8 +26,8 @@ class JitAuthorizationPolicies {
 
   factory JitAuthorizationPolicies.fromMap(Map<String, dynamic> map) {
     return JitAuthorizationPolicies(
-      principalId: map['principalId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] as String,
+      principalId: (map['principalId'] as String).input(),
+      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }
 }

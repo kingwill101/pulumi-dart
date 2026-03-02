@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesAutoscalerNodepool {
   /// The scaling group id of the groups configured for cluster-autoscaler.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The labels for the nodes in scaling group.
-  final String? labels;
+  final pulumi.Input<String>? labels;
   /// The taints for the nodes in scaling group.
-  final String? taints;
+  final pulumi.Input<String>? taints;
 
   /// Creates a new [KubernetesAutoscalerNodepool].
   /// [id] The scaling group id of the groups configured for cluster-autoscaler.
@@ -29,9 +30,9 @@ class KubernetesAutoscalerNodepool {
 
   factory KubernetesAutoscalerNodepool.fromMap(Map<String, dynamic> map) {
     return KubernetesAutoscalerNodepool(
-      id: map['id'] == null ? null : map['id'] as String,
-      labels: map['labels'] == null ? null : map['labels'] as String,
-      taints: map['taints'] == null ? null : map['taints'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      labels: map['labels'] == null ? null : (map['labels'] as String).input(),
+      taints: map['taints'] == null ? null : (map['taints'] as String).input(),
     );
   }
 }

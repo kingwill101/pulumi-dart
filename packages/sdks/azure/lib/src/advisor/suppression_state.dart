@@ -22,17 +22,12 @@ class SuppressionState {
   /// [suppressionId] The GUID of the suppression.
   /// [ttl] A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   SuppressionState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? recommendationId,
-    pulumi.Output<String>? resourceId,
-    pulumi.Output<String>? suppressionId,
-    pulumi.Output<String>? ttl,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      recommendationId = pulumi.Input.asOptionalInput<String>(recommendationId),
-      resourceId = pulumi.Input.asOptionalInput<String>(resourceId),
-      suppressionId = pulumi.Input.asOptionalInput<String>(suppressionId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+    this.name,
+    this.recommendationId,
+    this.resourceId,
+    this.suppressionId,
+    this.ttl,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class SuppressionState {
 
   factory SuppressionState.fromMap(Map<String, dynamic> map) {
     return SuppressionState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      recommendationId: map['recommendationId'] == null ? null : pulumi.Output.create<String>(map['recommendationId'] as String),
-      resourceId: map['resourceId'] == null ? null : pulumi.Output.create<String>(map['resourceId'] as String),
-      suppressionId: map['suppressionId'] == null ? null : pulumi.Output.create<String>(map['suppressionId'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<String>(map['ttl'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      suppressionId: map['suppressionId'] == null ? null : (map['suppressionId'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
     );
   }
 }

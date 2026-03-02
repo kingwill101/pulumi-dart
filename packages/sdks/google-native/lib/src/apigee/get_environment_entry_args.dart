@@ -18,15 +18,11 @@ class GetEnvironmentEntryArgs {
   /// [keyvaluemapId] Required.
   /// [organizationId] Required.
   GetEnvironmentEntryArgs({
-    required pulumi.Output<String> entryId,
-    required pulumi.Output<String> environmentId,
-    required pulumi.Output<String> keyvaluemapId,
-    required pulumi.Output<String> organizationId,
-  }) :
-      entryId = pulumi.Input.asInput<String>(entryId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+    required this.entryId,
+    required this.environmentId,
+    required this.keyvaluemapId,
+    required this.organizationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetEnvironmentEntryArgs {
 
   factory GetEnvironmentEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentEntryArgs(
-      entryId: pulumi.Output.create<String>(map['entryId'] as String),
-      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
-      keyvaluemapId: pulumi.Output.create<String>(map['keyvaluemapId'] as String),
-      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+      entryId: (map['entryId'] as String).input(),
+      environmentId: (map['environmentId'] as String).input(),
+      keyvaluemapId: (map['keyvaluemapId'] as String).input(),
+      organizationId: (map['organizationId'] as String).input(),
     );
   }
 }

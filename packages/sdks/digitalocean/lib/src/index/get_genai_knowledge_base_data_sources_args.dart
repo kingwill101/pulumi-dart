@@ -12,9 +12,8 @@ class GetGenaiKnowledgeBaseDataSourcesArgs {
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesArgs].
   /// [knowledgeBaseUuid] Required.
   GetGenaiKnowledgeBaseDataSourcesArgs({
-    required pulumi.Output<String> knowledgeBaseUuid,
-  }) :
-      knowledgeBaseUuid = pulumi.Input.asInput<String>(knowledgeBaseUuid);
+    required this.knowledgeBaseUuid,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,7 +23,7 @@ class GetGenaiKnowledgeBaseDataSourcesArgs {
 
   factory GetGenaiKnowledgeBaseDataSourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseDataSourcesArgs(
-      knowledgeBaseUuid: pulumi.Output.create<String>(map['knowledgeBaseUuid'] as String),
+      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
     );
   }
 }

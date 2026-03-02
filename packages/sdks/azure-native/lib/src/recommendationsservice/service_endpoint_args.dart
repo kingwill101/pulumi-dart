@@ -29,19 +29,13 @@ class ServiceEndpointArgs {
   /// [serviceEndpointName] The name of the ServiceEndpoint resource.
   /// [tags] Resource tags.
   ServiceEndpointArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<String>? location,
-    pulumi.Output<ServiceEndpointResourceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serviceEndpointName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<ServiceEndpointResourceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceEndpointName = pulumi.Input.asOptionalInput<String>(serviceEndpointName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.serviceEndpointName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ServiceEndpointArgs {
 
   factory ServiceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<ServiceEndpointResourceProperties>(ServiceEndpointResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceEndpointName: map['serviceEndpointName'] == null ? null : pulumi.Output.create<String>(map['serviceEndpointName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (ServiceEndpointResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceEndpointName: map['serviceEndpointName'] == null ? null : (map['serviceEndpointName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -43,31 +43,19 @@ class DatabaseLogsinkRsyslogState {
   /// [structuredData] Content of the structured data block for RFC5424 messages.
   /// [tls] Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
   DatabaseLogsinkRsyslogState({
-    pulumi.Output<String>? caCert,
-    pulumi.Output<String>? clientCert,
-    pulumi.Output<String>? clientKey,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? format,
-    pulumi.Output<String>? logline,
-    pulumi.Output<String>? logsinkId,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? server,
-    pulumi.Output<String>? structuredData,
-    pulumi.Output<bool>? tls,
-  }) :
-      caCert = pulumi.Input.asOptionalInput<String>(caCert),
-      clientCert = pulumi.Input.asOptionalInput<String>(clientCert),
-      clientKey = pulumi.Input.asOptionalInput<String>(clientKey),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      format = pulumi.Input.asOptionalInput<String>(format),
-      logline = pulumi.Input.asOptionalInput<String>(logline),
-      logsinkId = pulumi.Input.asOptionalInput<String>(logsinkId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      server = pulumi.Input.asOptionalInput<String>(server),
-      structuredData = pulumi.Input.asOptionalInput<String>(structuredData),
-      tls = pulumi.Input.asOptionalInput<bool>(tls);
+    this.caCert,
+    this.clientCert,
+    this.clientKey,
+    this.clusterId,
+    this.format,
+    this.logline,
+    this.logsinkId,
+    this.name,
+    this.port,
+    this.server,
+    this.structuredData,
+    this.tls,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,18 +76,18 @@ class DatabaseLogsinkRsyslogState {
 
   factory DatabaseLogsinkRsyslogState.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkRsyslogState(
-      caCert: map['caCert'] == null ? null : pulumi.Output.create<String>(map['caCert'] as String),
-      clientCert: map['clientCert'] == null ? null : pulumi.Output.create<String>(map['clientCert'] as String),
-      clientKey: map['clientKey'] == null ? null : pulumi.Output.create<String>(map['clientKey'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
-      logline: map['logline'] == null ? null : pulumi.Output.create<String>(map['logline'] as String),
-      logsinkId: map['logsinkId'] == null ? null : pulumi.Output.create<String>(map['logsinkId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
-      structuredData: map['structuredData'] == null ? null : pulumi.Output.create<String>(map['structuredData'] as String),
-      tls: map['tls'] == null ? null : pulumi.Output.create<bool>(map['tls'] as bool),
+      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      format: map['format'] == null ? null : (map['format'] as String).input(),
+      logline: map['logline'] == null ? null : (map['logline'] as String).input(),
+      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      server: map['server'] == null ? null : (map['server'] as String).input(),
+      structuredData: map['structuredData'] == null ? null : (map['structuredData'] as String).input(),
+      tls: map['tls'] == null ? null : (map['tls'] as bool).input(),
     );
   }
 }

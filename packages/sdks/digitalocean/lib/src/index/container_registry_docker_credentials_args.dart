@@ -19,13 +19,10 @@ class ContainerRegistryDockerCredentialsArgs {
   /// [registryName] The name of the container registry.
   /// [write] Allow for write access to the container registry. Defaults to false.
   ContainerRegistryDockerCredentialsArgs({
-    pulumi.Output<int>? expirySeconds,
-    required pulumi.Output<String> registryName,
-    pulumi.Output<bool>? write,
-  }) :
-      expirySeconds = pulumi.Input.asOptionalInput<int>(expirySeconds),
-      registryName = pulumi.Input.asInput<String>(registryName),
-      write = pulumi.Input.asOptionalInput<bool>(write);
+    this.expirySeconds,
+    required this.registryName,
+    this.write,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ContainerRegistryDockerCredentialsArgs {
 
   factory ContainerRegistryDockerCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryDockerCredentialsArgs(
-      expirySeconds: map['expirySeconds'] == null ? null : pulumi.Output.create<int>(map['expirySeconds'] as int),
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      write: map['write'] == null ? null : pulumi.Output.create<bool>(map['write'] as bool),
+      expirySeconds: map['expirySeconds'] == null ? null : (map['expirySeconds'] as int).input(),
+      registryName: (map['registryName'] as String).input(),
+      write: map['write'] == null ? null : (map['write'] as bool).input(),
     );
   }
 }

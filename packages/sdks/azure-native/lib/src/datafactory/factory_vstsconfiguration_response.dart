@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Factory's VSTS repo information.
 class FactoryVSTSConfigurationResponse {
   /// Account name.
-  final String accountName;
+  final pulumi.Input<String> accountName;
   /// Collaboration branch.
-  final String collaborationBranch;
+  final pulumi.Input<String> collaborationBranch;
   /// Disable manual publish operation in ADF studio to favor automated publish.
-  final bool? disablePublish;
+  final pulumi.Input<bool>? disablePublish;
   /// Last commit id.
-  final String? lastCommitId;
+  final pulumi.Input<String>? lastCommitId;
   /// VSTS project name.
-  final String projectName;
+  final pulumi.Input<String> projectName;
   /// Repository name.
-  final String repositoryName;
+  final pulumi.Input<String> repositoryName;
   /// Root folder.
-  final String rootFolder;
+  final pulumi.Input<String> rootFolder;
   /// VSTS tenant id.
-  final String? tenantId;
+  final pulumi.Input<String>? tenantId;
   /// Type of repo configuration.
   /// Expected value is 'FactoryVSTSConfiguration'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FactoryVSTSConfigurationResponse].
   /// [accountName] Account name.
@@ -61,15 +62,15 @@ class FactoryVSTSConfigurationResponse {
 
   factory FactoryVSTSConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FactoryVSTSConfigurationResponse(
-      accountName: map['accountName'] as String,
-      collaborationBranch: map['collaborationBranch'] as String,
-      disablePublish: map['disablePublish'] == null ? null : map['disablePublish'] as bool,
-      lastCommitId: map['lastCommitId'] == null ? null : map['lastCommitId'] as String,
-      projectName: map['projectName'] as String,
-      repositoryName: map['repositoryName'] as String,
-      rootFolder: map['rootFolder'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
-      type: map['type'] as String,
+      accountName: (map['accountName'] as String).input(),
+      collaborationBranch: (map['collaborationBranch'] as String).input(),
+      disablePublish: map['disablePublish'] == null ? null : (map['disablePublish'] as bool).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      rootFolder: (map['rootFolder'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

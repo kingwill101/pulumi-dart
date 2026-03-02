@@ -18,15 +18,11 @@ class GetRoutineArgs {
   /// [readMask] Optional.
   /// [routineId] Required.
   GetRoutineArgs({
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? readMask,
-    required pulumi.Output<String> routineId,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask),
-      routineId = pulumi.Input.asInput<String>(routineId);
+    required this.datasetId,
+    this.project,
+    this.readMask,
+    required this.routineId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetRoutineArgs {
 
   factory GetRoutineArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutineArgs(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      readMask: map['readMask'] == null ? null : pulumi.Output.create<String>(map['readMask'] as String),
-      routineId: pulumi.Output.create<String>(map['routineId'] as String),
+      datasetId: (map['datasetId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
+      routineId: (map['routineId'] as String).input(),
     );
   }
 }

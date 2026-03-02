@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_storage_configuration_mongo_db_atlas_configuration.dart';
 import 'agent_knowledge_base_storage_configuration_neptune_analytics_configuration.dart';
 import 'agent_knowledge_base_storage_configuration_opensearch_managed_cluster_configuration.dart';
@@ -11,23 +12,23 @@ import 'agent_knowledge_base_storage_configuration_s3_vectors_configuration.dart
 
 class AgentKnowledgeBaseStorageConfiguration {
   /// The storage configuration of the knowledge base in MongoDB Atlas. See `mongo_db_atlas_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration? mongoDbAtlasConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration>? mongoDbAtlasConfiguration;
   /// The storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptune_analytics_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration? neptuneAnalyticsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration>? neptuneAnalyticsConfiguration;
   /// The storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearch_managed_cluster_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration? opensearchManagedClusterConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration>? opensearchManagedClusterConfiguration;
   /// The storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearch_serverless_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration? opensearchServerlessConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration>? opensearchServerlessConfiguration;
   /// The storage configuration of the knowledge base in Pinecone. See `pinecone_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationPineconeConfiguration? pineconeConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfiguration>? pineconeConfiguration;
   /// Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rds_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationRdsConfiguration? rdsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRdsConfiguration>? rdsConfiguration;
   /// The storage configuration of the knowledge base in Redis Enterprise Cloud. See `redis_enterprise_cloud_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration? redisEnterpriseCloudConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration>? redisEnterpriseCloudConfiguration;
   /// The storage configuration of the knowledge base in Amazon S3 Vectors. See `s3_vectors_configuration` block for details.
-  final AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration? s3VectorsConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration>? s3VectorsConfiguration;
   /// Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfiguration].
   /// [mongoDbAtlasConfiguration] The storage configuration of the knowledge base in MongoDB Atlas. See `mongo_db_atlas_configuration` block for details.
@@ -53,29 +54,29 @@ class AgentKnowledgeBaseStorageConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mongoDbAtlasConfiguration': ?mongoDbAtlasConfiguration == null ? null : mongoDbAtlasConfiguration!.toMap(),
-      'neptuneAnalyticsConfiguration': ?neptuneAnalyticsConfiguration == null ? null : neptuneAnalyticsConfiguration!.toMap(),
-      'opensearchManagedClusterConfiguration': ?opensearchManagedClusterConfiguration == null ? null : opensearchManagedClusterConfiguration!.toMap(),
-      'opensearchServerlessConfiguration': ?opensearchServerlessConfiguration == null ? null : opensearchServerlessConfiguration!.toMap(),
-      'pineconeConfiguration': ?pineconeConfiguration == null ? null : pineconeConfiguration!.toMap(),
-      'rdsConfiguration': ?rdsConfiguration == null ? null : rdsConfiguration!.toMap(),
-      'redisEnterpriseCloudConfiguration': ?redisEnterpriseCloudConfiguration == null ? null : redisEnterpriseCloudConfiguration!.toMap(),
-      's3VectorsConfiguration': ?s3VectorsConfiguration == null ? null : s3VectorsConfiguration!.toMap(),
+      'mongoDbAtlasConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration, Map<String, dynamic>>(mongoDbAtlasConfiguration, (value) => value.toMap()),
+      'neptuneAnalyticsConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration, Map<String, dynamic>>(neptuneAnalyticsConfiguration, (value) => value.toMap()),
+      'opensearchManagedClusterConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration, Map<String, dynamic>>(opensearchManagedClusterConfiguration, (value) => value.toMap()),
+      'opensearchServerlessConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration, Map<String, dynamic>>(opensearchServerlessConfiguration, (value) => value.toMap()),
+      'pineconeConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationPineconeConfiguration, Map<String, dynamic>>(pineconeConfiguration, (value) => value.toMap()),
+      'rdsConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationRdsConfiguration, Map<String, dynamic>>(rdsConfiguration, (value) => value.toMap()),
+      'redisEnterpriseCloudConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration, Map<String, dynamic>>(redisEnterpriseCloudConfiguration, (value) => value.toMap()),
+      's3VectorsConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration, Map<String, dynamic>>(s3VectorsConfiguration, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory AgentKnowledgeBaseStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfiguration(
-      mongoDbAtlasConfiguration: map['mongoDbAtlasConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration.fromMap((map['mongoDbAtlasConfiguration'] as Map).cast<String, dynamic>()),
-      neptuneAnalyticsConfiguration: map['neptuneAnalyticsConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap((map['neptuneAnalyticsConfiguration'] as Map).cast<String, dynamic>()),
-      opensearchManagedClusterConfiguration: map['opensearchManagedClusterConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap((map['opensearchManagedClusterConfiguration'] as Map).cast<String, dynamic>()),
-      opensearchServerlessConfiguration: map['opensearchServerlessConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap((map['opensearchServerlessConfiguration'] as Map).cast<String, dynamic>()),
-      pineconeConfiguration: map['pineconeConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationPineconeConfiguration.fromMap((map['pineconeConfiguration'] as Map).cast<String, dynamic>()),
-      rdsConfiguration: map['rdsConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap((map['rdsConfiguration'] as Map).cast<String, dynamic>()),
-      redisEnterpriseCloudConfiguration: map['redisEnterpriseCloudConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap((map['redisEnterpriseCloudConfiguration'] as Map).cast<String, dynamic>()),
-      s3VectorsConfiguration: map['s3VectorsConfiguration'] == null ? null : AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap((map['s3VectorsConfiguration'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      mongoDbAtlasConfiguration: map['mongoDbAtlasConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration.fromMap((map['mongoDbAtlasConfiguration'] as Map).cast<String, dynamic>())).input(),
+      neptuneAnalyticsConfiguration: map['neptuneAnalyticsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap((map['neptuneAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      opensearchManagedClusterConfiguration: map['opensearchManagedClusterConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap((map['opensearchManagedClusterConfiguration'] as Map).cast<String, dynamic>())).input(),
+      opensearchServerlessConfiguration: map['opensearchServerlessConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap((map['opensearchServerlessConfiguration'] as Map).cast<String, dynamic>())).input(),
+      pineconeConfiguration: map['pineconeConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationPineconeConfiguration.fromMap((map['pineconeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      rdsConfiguration: map['rdsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap((map['rdsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      redisEnterpriseCloudConfiguration: map['redisEnterpriseCloudConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap((map['redisEnterpriseCloudConfiguration'] as Map).cast<String, dynamic>())).input(),
+      s3VectorsConfiguration: map['s3VectorsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap((map['s3VectorsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

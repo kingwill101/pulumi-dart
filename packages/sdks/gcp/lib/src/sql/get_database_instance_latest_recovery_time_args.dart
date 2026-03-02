@@ -18,13 +18,10 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceInstanceDeletionTime] Optional.
   GetDatabaseInstanceLatestRecoveryTimeArgs({
-    required pulumi.Output<String> instance,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceInstanceDeletionTime,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceInstanceDeletionTime = pulumi.Input.asOptionalInput<String>(sourceInstanceDeletionTime);
+    required this.instance,
+    this.project,
+    this.sourceInstanceDeletionTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +33,9 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
 
   factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceLatestRecoveryTimeArgs(
-      instance: pulumi.Output.create<String>(map['instance'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : pulumi.Output.create<String>(map['sourceInstanceDeletionTime'] as String),
+      instance: (map['instance'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : (map['sourceInstanceDeletionTime'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection.
 class RemotePrivateEndpointConnectionResponse {
   /// ARM resource ID of the Private Endpoint. This may belong to different subscription and resource group than a Notification Hubs namespace.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [RemotePrivateEndpointConnectionResponse].
   /// [id] ARM resource ID of the Private Endpoint. This may belong to different subscription and resource group than a Notification Hubs namespace.
@@ -20,7 +21,7 @@ class RemotePrivateEndpointConnectionResponse {
 
   factory RemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnectionResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

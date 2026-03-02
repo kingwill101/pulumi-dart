@@ -40,29 +40,18 @@ class PermissionState {
   /// [timeouts] Optional.
   /// [version] The version of the permission associated with this resource share.
   PermissionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<bool>? defaultVersion,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyTemplate,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceType,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<PermissionTimeouts>? timeouts,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      defaultVersion = pulumi.Input.asOptionalInput<bool>(defaultVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyTemplate = pulumi.Input.asOptionalInput<String>(policyTemplate),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asOptionalInput<String>(resourceType),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      timeouts = pulumi.Input.asOptionalInput<PermissionTimeouts>(timeouts),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.defaultVersion,
+    this.name,
+    this.policyTemplate,
+    this.region,
+    this.resourceType,
+    this.status,
+    this.tags,
+    this.tagsAll,
+    this.timeouts,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class PermissionState {
 
   factory PermissionState.fromMap(Map<String, dynamic> map) {
     return PermissionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      defaultVersion: map['defaultVersion'] == null ? null : pulumi.Output.create<bool>(map['defaultVersion'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyTemplate: map['policyTemplate'] == null ? null : pulumi.Output.create<String>(map['policyTemplate'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceType: map['resourceType'] == null ? null : pulumi.Output.create<String>(map['resourceType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<PermissionTimeouts>(PermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyTemplate: map['policyTemplate'] == null ? null : (map['policyTemplate'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (PermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

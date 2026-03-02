@@ -19,13 +19,10 @@ class GetEntitlementArgs {
   /// [location] The region of the Entitlement resource.
   /// [parent] The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
   GetEntitlementArgs({
-    pulumi.Output<String>? entitlementId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? parent,
-  }) :
-      entitlementId = pulumi.Input.asOptionalInput<String>(entitlementId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.entitlementId,
+    this.location,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      entitlementId: map['entitlementId'] == null ? null : pulumi.Output.create<String>(map['entitlementId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

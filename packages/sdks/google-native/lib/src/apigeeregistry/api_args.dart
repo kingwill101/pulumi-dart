@@ -41,29 +41,18 @@ class ApiArgs {
   /// [recommendedDeployment] The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
   /// [recommendedVersion] The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
   ApiArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> apiId,
-    pulumi.Output<String>? availability,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? recommendedDeployment,
-    pulumi.Output<String>? recommendedVersion,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      apiId = pulumi.Input.asInput<String>(apiId),
-      availability = pulumi.Input.asOptionalInput<String>(availability),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      recommendedDeployment = pulumi.Input.asOptionalInput<String>(recommendedDeployment),
-      recommendedVersion = pulumi.Input.asOptionalInput<String>(recommendedVersion);
+    this.annotations,
+    required this.apiId,
+    this.availability,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.recommendedDeployment,
+    this.recommendedVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      availability: map['availability'] == null ? null : pulumi.Output.create<String>(map['availability'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      recommendedDeployment: map['recommendedDeployment'] == null ? null : pulumi.Output.create<String>(map['recommendedDeployment'] as String),
-      recommendedVersion: map['recommendedVersion'] == null ? null : pulumi.Output.create<String>(map['recommendedVersion'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      apiId: (map['apiId'] as String).input(),
+      availability: map['availability'] == null ? null : (map['availability'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      recommendedDeployment: map['recommendedDeployment'] == null ? null : (map['recommendedDeployment'] as String).input(),
+      recommendedVersion: map['recommendedVersion'] == null ? null : (map['recommendedVersion'] as String).input(),
     );
   }
 }

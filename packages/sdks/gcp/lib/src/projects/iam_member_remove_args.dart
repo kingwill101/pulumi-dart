@@ -24,13 +24,10 @@ class IamMemberRemoveArgs {
   /// [project] The project id of the target project.
   /// [role] The target role that should be removed.
   IamMemberRemoveArgs({
-    required pulumi.Output<String> member,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> role,
-  }) :
-      member = pulumi.Input.asInput<String>(member),
-      project = pulumi.Input.asInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+    required this.member,
+    required this.project,
+    required this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +39,9 @@ class IamMemberRemoveArgs {
 
   factory IamMemberRemoveArgs.fromMap(Map<String, dynamic> map) {
     return IamMemberRemoveArgs(
-      member: pulumi.Output.create<String>(map['member'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      role: pulumi.Output.create<String>(map['role'] as String),
+      member: (map['member'] as String).input(),
+      project: (map['project'] as String).input(),
+      role: (map['role'] as String).input(),
     );
   }
 }

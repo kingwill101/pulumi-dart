@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties describing the software upgrade state of the cache.
 class CacheUpgradeStatusResponse {
   /// Version string of the firmware currently installed on this cache.
-  final String currentFirmwareVersion;
+  final pulumi.Input<String> currentFirmwareVersion;
   /// Time at which the pending firmware update will automatically be installed on the cache.
-  final String firmwareUpdateDeadline;
+  final pulumi.Input<String> firmwareUpdateDeadline;
   /// True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
-  final String firmwareUpdateStatus;
+  final pulumi.Input<String> firmwareUpdateStatus;
   /// Time of the last successful firmware update.
-  final String lastFirmwareUpdate;
+  final pulumi.Input<String> lastFirmwareUpdate;
   /// When firmwareUpdateAvailable is true, this field holds the version string for the update.
-  final String pendingFirmwareVersion;
+  final pulumi.Input<String> pendingFirmwareVersion;
 
   /// Creates a new [CacheUpgradeStatusResponse].
   /// [currentFirmwareVersion] Version string of the firmware currently installed on this cache.
@@ -40,11 +41,11 @@ class CacheUpgradeStatusResponse {
 
   factory CacheUpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
     return CacheUpgradeStatusResponse(
-      currentFirmwareVersion: map['currentFirmwareVersion'] as String,
-      firmwareUpdateDeadline: map['firmwareUpdateDeadline'] as String,
-      firmwareUpdateStatus: map['firmwareUpdateStatus'] as String,
-      lastFirmwareUpdate: map['lastFirmwareUpdate'] as String,
-      pendingFirmwareVersion: map['pendingFirmwareVersion'] as String,
+      currentFirmwareVersion: (map['currentFirmwareVersion'] as String).input(),
+      firmwareUpdateDeadline: (map['firmwareUpdateDeadline'] as String).input(),
+      firmwareUpdateStatus: (map['firmwareUpdateStatus'] as String).input(),
+      lastFirmwareUpdate: (map['lastFirmwareUpdate'] as String).input(),
+      pendingFirmwareVersion: (map['pendingFirmwareVersion'] as String).input(),
     );
   }
 }

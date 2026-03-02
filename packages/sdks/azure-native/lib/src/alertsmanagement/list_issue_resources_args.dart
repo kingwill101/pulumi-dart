@@ -19,13 +19,10 @@ class ListIssueResourcesArgs {
   /// [issueName] The name of the IssueResource
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   ListIssueResourcesArgs({
-    pulumi.Output<String>? filter,
-    required pulumi.Output<String> issueName,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      issueName = pulumi.Input.asInput<String>(issueName),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.filter,
+    required this.issueName,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListIssueResourcesArgs {
 
   factory ListIssueResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesArgs(
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      issueName: pulumi.Output.create<String>(map['issueName'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      issueName: (map['issueName'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

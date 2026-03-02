@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerMinimumLoadBalancerCapacity {
   /// The number of capacity units.
-  final int capacityUnits;
+  final pulumi.Input<int> capacityUnits;
 
   /// Creates a new [LoadBalancerMinimumLoadBalancerCapacity].
   /// [capacityUnits] The number of capacity units.
@@ -19,7 +20,7 @@ class LoadBalancerMinimumLoadBalancerCapacity {
 
   factory LoadBalancerMinimumLoadBalancerCapacity.fromMap(Map<String, dynamic> map) {
     return LoadBalancerMinimumLoadBalancerCapacity(
-      capacityUnits: map['capacityUnits'] as int,
+      capacityUnits: (map['capacityUnits'] as int).input(),
     );
   }
 }

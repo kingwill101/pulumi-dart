@@ -57,33 +57,20 @@ class AccountConnectorState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Output only. The timestamp when the userConnection was updated.
   AccountConnectorState({
-    pulumi.Output<String>? accountConnectorId,
-    pulumi.Output<Map<String, String>>? annotations,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<Map<String, String>>? effectiveAnnotations,
-    pulumi.Output<Map<String, String>>? effectiveLabels,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? oauthStartUri,
-    pulumi.Output<String>? project,
-    pulumi.Output<AccountConnectorProviderOauthConfig>? providerOauthConfig,
-    pulumi.Output<Map<String, String>>? pulumiLabels,
-    pulumi.Output<String>? updateTime,
-  }) :
-      accountConnectorId = pulumi.Input.asOptionalInput<String>(accountConnectorId),
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      effectiveAnnotations = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveAnnotations),
-      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauthStartUri = pulumi.Input.asOptionalInput<String>(oauthStartUri),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providerOauthConfig = pulumi.Input.asOptionalInput<AccountConnectorProviderOauthConfig>(providerOauthConfig),
-      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.accountConnectorId,
+    this.annotations,
+    this.createTime,
+    this.effectiveAnnotations,
+    this.effectiveLabels,
+    this.labels,
+    this.location,
+    this.name,
+    this.oauthStartUri,
+    this.project,
+    this.providerOauthConfig,
+    this.pulumiLabels,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,19 +92,19 @@ class AccountConnectorState {
 
   factory AccountConnectorState.fromMap(Map<String, dynamic> map) {
     return AccountConnectorState(
-      accountConnectorId: map['accountConnectorId'] == null ? null : pulumi.Output.create<String>(map['accountConnectorId'] as String),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveAnnotations'] as Map).cast<String, String>()),
-      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      oauthStartUri: map['oauthStartUri'] == null ? null : pulumi.Output.create<String>(map['oauthStartUri'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      providerOauthConfig: map['providerOauthConfig'] == null ? null : pulumi.Output.create<AccountConnectorProviderOauthConfig>(AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig'] as Map).cast<String, dynamic>())),
-      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      accountConnectorId: map['accountConnectorId'] == null ? null : (map['accountConnectorId'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      oauthStartUri: map['oauthStartUri'] == null ? null : (map['oauthStartUri'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      providerOauthConfig: map['providerOauthConfig'] == null ? null : (AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig'] as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

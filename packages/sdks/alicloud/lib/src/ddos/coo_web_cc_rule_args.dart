@@ -22,13 +22,10 @@ class CooWebCcRuleArgs {
   /// [name] Rule name.
   /// [ruleDetail] Rule details.   See `rule_detail` below.
   CooWebCcRuleArgs({
-    required pulumi.Output<String> domain,
-    pulumi.Output<String>? name,
-    required pulumi.Output<CooWebCcRuleRuleDetail> ruleDetail,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ruleDetail = pulumi.Input.asInput<CooWebCcRuleRuleDetail>(ruleDetail);
+    required this.domain,
+    this.name,
+    required this.ruleDetail,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,9 +37,9 @@ class CooWebCcRuleArgs {
 
   factory CooWebCcRuleArgs.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      ruleDetail: pulumi.Output.create<CooWebCcRuleRuleDetail>(CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())),
+      domain: (map['domain'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ruleDetail: (CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

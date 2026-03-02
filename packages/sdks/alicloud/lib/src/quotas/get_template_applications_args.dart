@@ -28,19 +28,13 @@ class GetTemplateApplicationsArgs {
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
   GetTemplateApplicationsArgs({
-    pulumi.Output<String>? batchQuotaApplicationId,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? productCode,
-    pulumi.Output<String>? quotaActionCode,
-    pulumi.Output<String>? quotaCategory,
-  }) :
-      batchQuotaApplicationId = pulumi.Input.asOptionalInput<String>(batchQuotaApplicationId),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      productCode = pulumi.Input.asOptionalInput<String>(productCode),
-      quotaActionCode = pulumi.Input.asOptionalInput<String>(quotaActionCode),
-      quotaCategory = pulumi.Input.asOptionalInput<String>(quotaCategory);
+    this.batchQuotaApplicationId,
+    this.ids,
+    this.outputFile,
+    this.productCode,
+    this.quotaActionCode,
+    this.quotaCategory,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetTemplateApplicationsArgs {
 
   factory GetTemplateApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsArgs(
-      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : pulumi.Output.create<String>(map['batchQuotaApplicationId'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      productCode: map['productCode'] == null ? null : pulumi.Output.create<String>(map['productCode'] as String),
-      quotaActionCode: map['quotaActionCode'] == null ? null : pulumi.Output.create<String>(map['quotaActionCode'] as String),
-      quotaCategory: map['quotaCategory'] == null ? null : pulumi.Output.create<String>(map['quotaCategory'] as String),
+      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : (map['batchQuotaApplicationId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
     );
   }
 }

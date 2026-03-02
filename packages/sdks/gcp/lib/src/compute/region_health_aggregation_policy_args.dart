@@ -65,21 +65,14 @@ class RegionHealthAggregationPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the health aggregation policy resides.
   RegionHealthAggregationPolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<int>? healthyPercentThreshold,
-    pulumi.Output<int>? minHealthyThreshold,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      healthyPercentThreshold = pulumi.Input.asOptionalInput<int>(healthyPercentThreshold),
-      minHealthyThreshold = pulumi.Input.asOptionalInput<int>(minHealthyThreshold),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+    this.description,
+    this.healthyPercentThreshold,
+    this.minHealthyThreshold,
+    this.name,
+    this.policyType,
+    this.project,
+    required this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,13 +88,13 @@ class RegionHealthAggregationPolicyArgs {
 
   factory RegionHealthAggregationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : pulumi.Output.create<int>(map['healthyPercentThreshold'] as int),
-      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : pulumi.Output.create<int>(map['minHealthyThreshold'] as int),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold'] as int).input(),
+      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold'] as int).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
     );
   }
 }

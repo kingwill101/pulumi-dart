@@ -16,11 +16,9 @@ class GetNetworkPacketBrokerArgs {
   /// [networkPacketBrokerName] Name of the Network Packet Broker.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetNetworkPacketBrokerArgs({
-    required pulumi.Output<String> networkPacketBrokerName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      networkPacketBrokerName = pulumi.Input.asInput<String>(networkPacketBrokerName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.networkPacketBrokerName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetNetworkPacketBrokerArgs {
 
   factory GetNetworkPacketBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPacketBrokerArgs(
-      networkPacketBrokerName: pulumi.Output.create<String>(map['networkPacketBrokerName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      networkPacketBrokerName: (map['networkPacketBrokerName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

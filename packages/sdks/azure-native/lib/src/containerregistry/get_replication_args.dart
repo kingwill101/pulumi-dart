@@ -19,13 +19,10 @@ class GetReplicationArgs {
   /// [replicationName] The name of the replication.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetReplicationArgs({
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> replicationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      registryName = pulumi.Input.asInput<String>(registryName),
-      replicationName = pulumi.Input.asInput<String>(replicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.registryName,
+    required this.replicationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetReplicationArgs {
 
   factory GetReplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationArgs(
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      replicationName: pulumi.Output.create<String>(map['replicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      registryName: (map['registryName'] as String).input(),
+      replicationName: (map['replicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

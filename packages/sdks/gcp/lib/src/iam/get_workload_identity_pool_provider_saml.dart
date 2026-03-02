@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetWorkloadIdentityPoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
-  final String idpMetadataXml;
+  final pulumi.Input<String> idpMetadataXml;
 
   /// Creates a new [GetWorkloadIdentityPoolProviderSaml].
   /// [idpMetadataXml] SAML Identity provider configuration metadata xml doc.
@@ -19,7 +20,7 @@ class GetWorkloadIdentityPoolProviderSaml {
 
   factory GetWorkloadIdentityPoolProviderSaml.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderSaml(
-      idpMetadataXml: map['idpMetadataXml'] as String,
+      idpMetadataXml: (map['idpMetadataXml'] as String).input(),
     );
   }
 }

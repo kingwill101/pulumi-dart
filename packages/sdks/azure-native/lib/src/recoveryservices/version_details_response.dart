@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Version related details.
 class VersionDetailsResponse {
   /// Version expiry date.
-  final String? expiryDate;
+  final pulumi.Input<String>? expiryDate;
   /// A value indicating whether security update required.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The agent version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [VersionDetailsResponse].
   /// [expiryDate] Version expiry date.
@@ -30,9 +31,9 @@ class VersionDetailsResponse {
 
   factory VersionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VersionDetailsResponse(
-      expiryDate: map['expiryDate'] == null ? null : map['expiryDate'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

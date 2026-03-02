@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// PriorityLevelConfigurationReference contains information that points to the "request-priority" being used.
 class PriorityLevelConfigurationReference {
   /// `name` is the name of the priority level configuration being referenced Required.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [PriorityLevelConfigurationReference].
   /// [name] `name` is the name of the priority level configuration being referenced Required.
@@ -20,7 +21,7 @@ class PriorityLevelConfigurationReference {
 
   factory PriorityLevelConfigurationReference.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationReference(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class IRuleArgs {
   /// [irule] Body of the iRule
   /// [name] Name of the iRule
   IRuleArgs({
-    required pulumi.Output<String> irule,
-    required pulumi.Output<String> name,
-  }) :
-      irule = pulumi.Input.asInput<String>(irule),
-      name = pulumi.Input.asInput<String>(name);
+    required this.irule,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class IRuleArgs {
 
   factory IRuleArgs.fromMap(Map<String, dynamic> map) {
     return IRuleArgs(
-      irule: pulumi.Output.create<String>(map['irule'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      irule: (map['irule'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class NetappVolumeAttachmentArgs {
   /// [netappVolumeId] The netapp file volume for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to connect to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   /// [vmwareClusterId] The vmware cluster for this Azure VMware Solution Private Cloud Netapp File Volume Attachment to associated to. Changing this forces a new Azure VMware Solution Private Cloud Netapp File Volume Attachment to be created.
   NetappVolumeAttachmentArgs({
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> netappVolumeId,
-    required pulumi.Output<String> vmwareClusterId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      netappVolumeId = pulumi.Input.asInput<String>(netappVolumeId),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId);
+    this.name,
+    required this.netappVolumeId,
+    required this.vmwareClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class NetappVolumeAttachmentArgs {
 
   factory NetappVolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetappVolumeAttachmentArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      netappVolumeId: pulumi.Output.create<String>(map['netappVolumeId'] as String),
-      vmwareClusterId: pulumi.Output.create<String>(map['vmwareClusterId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      netappVolumeId: (map['netappVolumeId'] as String).input(),
+      vmwareClusterId: (map['vmwareClusterId'] as String).input(),
     );
   }
 }

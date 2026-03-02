@@ -37,25 +37,16 @@ class AppGatewayArgs {
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [type] The type of network connectivity used by the AppGateway.
   AppGatewayArgs({
-    pulumi.Output<String>? appGatewayId,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<AppGatewayHostType> hostType,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<AppGatewayType> type,
-  }) :
-      appGatewayId = pulumi.Input.asOptionalInput<String>(appGatewayId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      hostType = pulumi.Input.asInput<AppGatewayHostType>(hostType),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      type = pulumi.Input.asInput<AppGatewayType>(type);
+    this.appGatewayId,
+    this.displayName,
+    required this.hostType,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.requestId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,15 +64,15 @@ class AppGatewayArgs {
 
   factory AppGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AppGatewayArgs(
-      appGatewayId: map['appGatewayId'] == null ? null : pulumi.Output.create<String>(map['appGatewayId'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      hostType: pulumi.Output.create<AppGatewayHostType>(AppGatewayHostType.fromValue(map['hostType'] as String)),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      type: pulumi.Output.create<AppGatewayType>(AppGatewayType.fromValue(map['type'] as String)),
+      appGatewayId: map['appGatewayId'] == null ? null : (map['appGatewayId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      hostType: (AppGatewayHostType.fromValue(map['hostType'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      type: (AppGatewayType.fromValue(map['type'] as String)).input(),
     );
   }
 }

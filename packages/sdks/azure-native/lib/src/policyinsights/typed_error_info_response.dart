@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Scenario specific error details.
 class TypedErrorInfoResponse {
   /// The scenario specific error details.
-  final dynamic info;
+  final pulumi.Input<dynamic> info;
   /// The type of included error details.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [TypedErrorInfoResponse].
   /// [info] The scenario specific error details.
@@ -25,8 +26,8 @@ class TypedErrorInfoResponse {
 
   factory TypedErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return TypedErrorInfoResponse(
-      info: map['info'],
-      type: map['type'] as String,
+      info: (map['info']).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

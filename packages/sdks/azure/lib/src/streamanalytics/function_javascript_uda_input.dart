@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionJavascriptUdaInput {
   /// Is this input parameter a configuration parameter? Defaults to `false`.
-  final bool? configurationParameter;
+  final pulumi.Input<bool>? configurationParameter;
   /// The input data type of this JavaScript Function. Possible values include `any`, `array`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [FunctionJavascriptUdaInput].
   /// [configurationParameter] Is this input parameter a configuration parameter? Defaults to `false`.
@@ -24,8 +25,8 @@ class FunctionJavascriptUdaInput {
 
   factory FunctionJavascriptUdaInput.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaInput(
-      configurationParameter: map['configurationParameter'] == null ? null : map['configurationParameter'] as bool,
-      type: map['type'] as String,
+      configurationParameter: map['configurationParameter'] == null ? null : (map['configurationParameter'] as bool).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

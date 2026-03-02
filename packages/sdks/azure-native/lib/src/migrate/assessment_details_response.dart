@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Assessment details class.
 class AssessmentDetailsResponse {
   /// Confidence Rating in Percentage.
-  final double confidenceRatingInPercentage;
+  final pulumi.Input<double> confidenceRatingInPercentage;
   /// Date and Time when assessment was created.
-  final String createdTimestamp;
+  final pulumi.Input<String> createdTimestamp;
   /// Last time when rates were queried.
-  final String pricesTimestamp;
+  final pulumi.Input<String> pricesTimestamp;
   /// Whether assessment is in valid state and all machines have been assessed.
-  final String status;
+  final pulumi.Input<String> status;
   /// Date and Time when assessment was last updated.
-  final String updatedTimestamp;
+  final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [AssessmentDetailsResponse].
   /// [confidenceRatingInPercentage] Confidence Rating in Percentage.
@@ -40,11 +41,11 @@ class AssessmentDetailsResponse {
 
   factory AssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentDetailsResponse(
-      confidenceRatingInPercentage: map['confidenceRatingInPercentage'] as double,
-      createdTimestamp: map['createdTimestamp'] as String,
-      pricesTimestamp: map['pricesTimestamp'] as String,
-      status: map['status'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      confidenceRatingInPercentage: (map['confidenceRatingInPercentage'] as double).input(),
+      createdTimestamp: (map['createdTimestamp'] as String).input(),
+      pricesTimestamp: (map['pricesTimestamp'] as String).input(),
+      status: (map['status'] as String).input(),
+      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }
 }

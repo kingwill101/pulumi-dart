@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NestServiceInstanceCommodity {
   /// Length of purchase.
-  final int? payPeriod;
+  final pulumi.Input<int>? payPeriod;
   /// Duration unit. Valid values: `Year`, `Month`, `Day`.
-  final String? payPeriodUnit;
+  final pulumi.Input<String>? payPeriodUnit;
 
   /// Creates a new [NestServiceInstanceCommodity].
   /// [payPeriod] Length of purchase.
@@ -24,8 +25,8 @@ class NestServiceInstanceCommodity {
 
   factory NestServiceInstanceCommodity.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceCommodity(
-      payPeriod: map['payPeriod'] == null ? null : map['payPeriod'] as int,
-      payPeriodUnit: map['payPeriodUnit'] == null ? null : map['payPeriodUnit'] as String,
+      payPeriod: map['payPeriod'] == null ? null : (map['payPeriod'] as int).input(),
+      payPeriodUnit: map['payPeriodUnit'] == null ? null : (map['payPeriodUnit'] as String).input(),
     );
   }
 }

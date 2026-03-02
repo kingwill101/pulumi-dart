@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventConnectionAuthParametersOauthOauthHttpParametersQueryString {
   /// Specified whether the value is secret.
-  final bool? isValueSecret;
+  final pulumi.Input<bool>? isValueSecret;
   /// The key for the parameter.
-  final String? key;
+  final pulumi.Input<String>? key;
   /// The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [EventConnectionAuthParametersOauthOauthHttpParametersQueryString].
   /// [isValueSecret] Specified whether the value is secret.
@@ -29,9 +30,9 @@ class EventConnectionAuthParametersOauthOauthHttpParametersQueryString {
 
   factory EventConnectionAuthParametersOauthOauthHttpParametersQueryString.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersOauthOauthHttpParametersQueryString(
-      isValueSecret: map['isValueSecret'] == null ? null : map['isValueSecret'] as bool,
-      key: map['key'] == null ? null : map['key'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      isValueSecret: map['isValueSecret'] == null ? null : (map['isValueSecret'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

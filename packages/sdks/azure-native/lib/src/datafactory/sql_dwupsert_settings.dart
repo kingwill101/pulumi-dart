@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Sql DW upsert option settings
 class SqlDWUpsertSettings {
   /// Schema name for interim table. Type: string (or Expression with resultType string).
-  final dynamic interimSchemaName;
+  final pulumi.Input<dynamic>? interimSchemaName;
   /// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  final dynamic keys;
+  final pulumi.Input<dynamic>? keys;
 
   /// Creates a new [SqlDWUpsertSettings].
   /// [interimSchemaName] Schema name for interim table. Type: string (or Expression with resultType string).
@@ -25,8 +26,8 @@ class SqlDWUpsertSettings {
 
   factory SqlDWUpsertSettings.fromMap(Map<String, dynamic> map) {
     return SqlDWUpsertSettings(
-      interimSchemaName: map['interimSchemaName'] == null ? null : map['interimSchemaName'],
-      keys: map['keys'] == null ? null : map['keys'],
+      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']).input(),
+      keys: map['keys'] == null ? null : (map['keys']).input(),
     );
   }
 }

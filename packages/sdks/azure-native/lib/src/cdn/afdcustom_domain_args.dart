@@ -36,23 +36,15 @@ class AFDCustomDomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tlsSettings] The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   AFDCustomDomainArgs({
-    pulumi.Output<ResourceReference>? azureDnsZone,
-    pulumi.Output<String>? customDomainName,
-    pulumi.Output<Map<String, String>>? extendedProperties,
-    required pulumi.Output<String> hostName,
-    pulumi.Output<ResourceReference>? preValidatedCustomDomainResourceId,
-    required pulumi.Output<String> profileName,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<AFDDomainHttpsParameters>? tlsSettings,
-  }) :
-      azureDnsZone = pulumi.Input.asOptionalInput<ResourceReference>(azureDnsZone),
-      customDomainName = pulumi.Input.asOptionalInput<String>(customDomainName),
-      extendedProperties = pulumi.Input.asOptionalInput<Map<String, String>>(extendedProperties),
-      hostName = pulumi.Input.asInput<String>(hostName),
-      preValidatedCustomDomainResourceId = pulumi.Input.asOptionalInput<ResourceReference>(preValidatedCustomDomainResourceId),
-      profileName = pulumi.Input.asInput<String>(profileName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tlsSettings = pulumi.Input.asOptionalInput<AFDDomainHttpsParameters>(tlsSettings);
+    this.azureDnsZone,
+    this.customDomainName,
+    this.extendedProperties,
+    required this.hostName,
+    this.preValidatedCustomDomainResourceId,
+    required this.profileName,
+    required this.resourceGroupName,
+    this.tlsSettings,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class AFDCustomDomainArgs {
 
   factory AFDCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return AFDCustomDomainArgs(
-      azureDnsZone: map['azureDnsZone'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['azureDnsZone'] as Map).cast<String, dynamic>())),
-      customDomainName: map['customDomainName'] == null ? null : pulumi.Output.create<String>(map['customDomainName'] as String),
-      extendedProperties: map['extendedProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['extendedProperties'] as Map).cast<String, String>()),
-      hostName: pulumi.Output.create<String>(map['hostName'] as String),
-      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : pulumi.Output.create<ResourceReference>(ResourceReference.fromMap((map['preValidatedCustomDomainResourceId'] as Map).cast<String, dynamic>())),
-      profileName: pulumi.Output.create<String>(map['profileName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tlsSettings: map['tlsSettings'] == null ? null : pulumi.Output.create<AFDDomainHttpsParameters>(AFDDomainHttpsParameters.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>())),
+      azureDnsZone: map['azureDnsZone'] == null ? null : (ResourceReference.fromMap((map['azureDnsZone'] as Map).cast<String, dynamic>())).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, String>()).input(),
+      hostName: (map['hostName'] as String).input(),
+      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : (ResourceReference.fromMap((map['preValidatedCustomDomainResourceId'] as Map).cast<String, dynamic>())).input(),
+      profileName: (map['profileName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tlsSettings: map['tlsSettings'] == null ? null : (AFDDomainHttpsParameters.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

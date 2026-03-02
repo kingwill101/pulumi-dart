@@ -50,31 +50,19 @@ class ShareArgs {
   /// [shareStatus] Current status of the share.
   /// [userAccessRights] Mapping of users and corresponding access rights on the share (required for SMB protocol).
   ShareArgs({
-    required pulumi.Output<String> accessProtocol,
-    pulumi.Output<AzureContainerInfo>? azureContainerInfo,
-    pulumi.Output<List<ClientAccessRight>>? clientAccessRights,
-    pulumi.Output<String>? dataPolicy,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> deviceName,
-    required pulumi.Output<String> monitoringStatus,
-    pulumi.Output<String>? name,
-    pulumi.Output<RefreshDetails>? refreshDetails,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> shareStatus,
-    pulumi.Output<List<UserAccessRight>>? userAccessRights,
-  }) :
-      accessProtocol = pulumi.Input.asInput<String>(accessProtocol),
-      azureContainerInfo = pulumi.Input.asOptionalInput<AzureContainerInfo>(azureContainerInfo),
-      clientAccessRights = pulumi.Input.asOptionalInput<List<ClientAccessRight>>(clientAccessRights),
-      dataPolicy = pulumi.Input.asOptionalInput<String>(dataPolicy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceName = pulumi.Input.asInput<String>(deviceName),
-      monitoringStatus = pulumi.Input.asInput<String>(monitoringStatus),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      refreshDetails = pulumi.Input.asOptionalInput<RefreshDetails>(refreshDetails),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareStatus = pulumi.Input.asInput<String>(shareStatus),
-      userAccessRights = pulumi.Input.asOptionalInput<List<UserAccessRight>>(userAccessRights);
+    required this.accessProtocol,
+    this.azureContainerInfo,
+    this.clientAccessRights,
+    this.dataPolicy,
+    this.description,
+    required this.deviceName,
+    required this.monitoringStatus,
+    this.name,
+    this.refreshDetails,
+    required this.resourceGroupName,
+    required this.shareStatus,
+    this.userAccessRights,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,18 +83,18 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      accessProtocol: pulumi.Output.create<String>(map['accessProtocol'] as String),
-      azureContainerInfo: map['azureContainerInfo'] == null ? null : pulumi.Output.create<AzureContainerInfo>(AzureContainerInfo.fromMap((map['azureContainerInfo'] as Map).cast<String, dynamic>())),
-      clientAccessRights: map['clientAccessRights'] == null ? null : pulumi.Output.create<List<ClientAccessRight>>(pulumi.Input.decodeList<ClientAccessRight>(map['clientAccessRights'], (value) => ClientAccessRight.fromMap((value as Map).cast<String, dynamic>()))),
-      dataPolicy: map['dataPolicy'] == null ? null : pulumi.Output.create<String>(map['dataPolicy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      deviceName: pulumi.Output.create<String>(map['deviceName'] as String),
-      monitoringStatus: pulumi.Output.create<String>(map['monitoringStatus'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      refreshDetails: map['refreshDetails'] == null ? null : pulumi.Output.create<RefreshDetails>(RefreshDetails.fromMap((map['refreshDetails'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareStatus: pulumi.Output.create<String>(map['shareStatus'] as String),
-      userAccessRights: map['userAccessRights'] == null ? null : pulumi.Output.create<List<UserAccessRight>>(pulumi.Input.decodeList<UserAccessRight>(map['userAccessRights'], (value) => UserAccessRight.fromMap((value as Map).cast<String, dynamic>()))),
+      accessProtocol: (map['accessProtocol'] as String).input(),
+      azureContainerInfo: map['azureContainerInfo'] == null ? null : (AzureContainerInfo.fromMap((map['azureContainerInfo'] as Map).cast<String, dynamic>())).input(),
+      clientAccessRights: map['clientAccessRights'] == null ? null : (pulumi.Input.decodeList<ClientAccessRight>(map['clientAccessRights'], (value) => ClientAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataPolicy: map['dataPolicy'] == null ? null : (map['dataPolicy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      monitoringStatus: (map['monitoringStatus'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      refreshDetails: map['refreshDetails'] == null ? null : (RefreshDetails.fromMap((map['refreshDetails'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareStatus: (map['shareStatus'] as String).input(),
+      userAccessRights: map['userAccessRights'] == null ? null : (pulumi.Input.decodeList<UserAccessRight>(map['userAccessRights'], (value) => UserAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

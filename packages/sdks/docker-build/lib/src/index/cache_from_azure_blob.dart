@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CacheFromAzureBlob {
   /// Base URL of the storage account.
-  final String? accountUrl;
+  final pulumi.Input<String>? accountUrl;
   /// The name of the cache image.
-  final String name;
+  final pulumi.Input<String> name;
   /// Blob storage account key.
-  final String? secretAccessKey;
+  final pulumi.Input<String>? secretAccessKey;
 
   /// Creates a new [CacheFromAzureBlob].
   /// [accountUrl] Base URL of the storage account.
@@ -29,9 +30,9 @@ class CacheFromAzureBlob {
 
   factory CacheFromAzureBlob.fromMap(Map<String, dynamic> map) {
     return CacheFromAzureBlob(
-      accountUrl: map['accountUrl'] == null ? null : map['accountUrl'] as String,
-      name: map['name'] as String,
-      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
+      name: (map['name'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
     );
   }
 }

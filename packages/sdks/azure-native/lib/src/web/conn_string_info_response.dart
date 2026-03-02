@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Database connection string information.
 class ConnStringInfoResponse {
   /// Connection string value.
-  final String? connectionString;
+  final pulumi.Input<String>? connectionString;
   /// Name of connection string.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Type of database.
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [ConnStringInfoResponse].
   /// [connectionString] Connection string value.
@@ -30,9 +31,9 @@ class ConnStringInfoResponse {
 
   factory ConnStringInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnStringInfoResponse(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

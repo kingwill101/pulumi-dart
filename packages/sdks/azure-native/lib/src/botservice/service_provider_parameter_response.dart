@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_provider_parameter_metadata_response.dart';
 
 /// Extra Parameters specific to each Service Provider
 class ServiceProviderParameterResponse {
   /// Default Name for the Service Provider
-  final String default_;
+  final pulumi.Input<String> default_;
   /// Description of the Service Provider
-  final String description;
+  final pulumi.Input<String> description;
   /// Display Name of the Service Provider
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Help Url for the  Service Provider
-  final String helpUrl;
+  final pulumi.Input<String> helpUrl;
   /// Meta data for the Service Provider
-  final ServiceProviderParameterMetadataResponse metadata;
+  final pulumi.Input<ServiceProviderParameterMetadataResponse> metadata;
   /// Name of the Service Provider
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of the Service Provider
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ServiceProviderParameterResponse].
   /// [default_] Default Name for the Service Provider
@@ -43,7 +44,7 @@ class ServiceProviderParameterResponse {
       'description': description,
       'displayName': displayName,
       'helpUrl': helpUrl,
-      'metadata': metadata.toMap(),
+      'metadata': pulumi.Input.mapInputValue<ServiceProviderParameterMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'name': name,
       'type': type,
     };
@@ -51,13 +52,13 @@ class ServiceProviderParameterResponse {
 
   factory ServiceProviderParameterResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderParameterResponse(
-      default_: map['default'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      helpUrl: map['helpUrl'] as String,
-      metadata: ServiceProviderParameterMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      type: map['type'] as String,
+      default_: (map['default'] as String).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      helpUrl: (map['helpUrl'] as String).input(),
+      metadata: (ServiceProviderParameterMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

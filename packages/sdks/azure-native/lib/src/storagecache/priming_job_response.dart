@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A priming job instance.
 class PrimingJobResponse {
   /// The job details or error information if any.
-  final String primingJobDetails;
+  final pulumi.Input<String> primingJobDetails;
   /// The unique identifier of the priming job.
-  final String primingJobId;
+  final pulumi.Input<String> primingJobId;
   /// The priming job name.
-  final String primingJobName;
+  final pulumi.Input<String> primingJobName;
   /// The current progress of the priming job, as a percentage.
-  final double primingJobPercentComplete;
+  final pulumi.Input<double> primingJobPercentComplete;
   /// The state of the priming operation.
-  final String primingJobState;
+  final pulumi.Input<String> primingJobState;
   /// The status code of the priming job.
-  final String primingJobStatus;
+  final pulumi.Input<String> primingJobStatus;
 
   /// Creates a new [PrimingJobResponse].
   /// [primingJobDetails] The job details or error information if any.
@@ -45,12 +46,12 @@ class PrimingJobResponse {
 
   factory PrimingJobResponse.fromMap(Map<String, dynamic> map) {
     return PrimingJobResponse(
-      primingJobDetails: map['primingJobDetails'] as String,
-      primingJobId: map['primingJobId'] as String,
-      primingJobName: map['primingJobName'] as String,
-      primingJobPercentComplete: map['primingJobPercentComplete'] as double,
-      primingJobState: map['primingJobState'] as String,
-      primingJobStatus: map['primingJobStatus'] as String,
+      primingJobDetails: (map['primingJobDetails'] as String).input(),
+      primingJobId: (map['primingJobId'] as String).input(),
+      primingJobName: (map['primingJobName'] as String).input(),
+      primingJobPercentComplete: (map['primingJobPercentComplete'] as double).input(),
+      primingJobState: (map['primingJobState'] as String).input(),
+      primingJobStatus: (map['primingJobStatus'] as String).input(),
     );
   }
 }

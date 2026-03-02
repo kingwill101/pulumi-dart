@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anthos_observability_feature_spec_response_gkehub_v1beta.dart';
 import 'cluster_upgrade_fleet_spec_response_gkehub_v1beta.dart';
 import 'fleet_observability_feature_spec_response_gkehub_v1beta.dart';
@@ -8,15 +9,15 @@ import 'multi_cluster_ingress_feature_spec_response_gkehub_v1beta.dart';
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpecResponseGkehubV1beta {
   /// Anthos Observability spec
-  final AnthosObservabilityFeatureSpecResponseGkehubV1beta anthosobservability;
+  final pulumi.Input<AnthosObservabilityFeatureSpecResponseGkehubV1beta> anthosobservability;
   /// Appdevexperience specific spec.
-  final Map<String, dynamic> appdevexperience;
+  final pulumi.Input<Map<String, dynamic>> appdevexperience;
   /// ClusterUpgrade (fleet-based) feature spec.
-  final ClusterUpgradeFleetSpecResponseGkehubV1beta clusterupgrade;
+  final pulumi.Input<ClusterUpgradeFleetSpecResponseGkehubV1beta> clusterupgrade;
   /// FleetObservability feature spec.
-  final FleetObservabilityFeatureSpecResponseGkehubV1beta fleetobservability;
+  final pulumi.Input<FleetObservabilityFeatureSpecResponseGkehubV1beta> fleetobservability;
   /// Multicluster Ingress-specific spec.
-  final MultiClusterIngressFeatureSpecResponseGkehubV1beta multiclusteringress;
+  final pulumi.Input<MultiClusterIngressFeatureSpecResponseGkehubV1beta> multiclusteringress;
 
   /// Creates a new [CommonFeatureSpecResponseGkehubV1beta].
   /// [anthosobservability] Anthos Observability spec
@@ -34,21 +35,21 @@ class CommonFeatureSpecResponseGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'anthosobservability': anthosobservability.toMap(),
+      'anthosobservability': pulumi.Input.mapInputValue<AnthosObservabilityFeatureSpecResponseGkehubV1beta, Map<String, dynamic>>(anthosobservability, (value) => value.toMap()),
       'appdevexperience': appdevexperience,
-      'clusterupgrade': clusterupgrade.toMap(),
-      'fleetobservability': fleetobservability.toMap(),
-      'multiclusteringress': multiclusteringress.toMap(),
+      'clusterupgrade': pulumi.Input.mapInputValue<ClusterUpgradeFleetSpecResponseGkehubV1beta, Map<String, dynamic>>(clusterupgrade, (value) => value.toMap()),
+      'fleetobservability': pulumi.Input.mapInputValue<FleetObservabilityFeatureSpecResponseGkehubV1beta, Map<String, dynamic>>(fleetobservability, (value) => value.toMap()),
+      'multiclusteringress': pulumi.Input.mapInputValue<MultiClusterIngressFeatureSpecResponseGkehubV1beta, Map<String, dynamic>>(multiclusteringress, (value) => value.toMap()),
     };
   }
 
   factory CommonFeatureSpecResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpecResponseGkehubV1beta(
-      anthosobservability: AnthosObservabilityFeatureSpecResponseGkehubV1beta.fromMap((map['anthosobservability'] as Map).cast<String, dynamic>()),
-      appdevexperience: (map['appdevexperience'] as Map).cast<String, dynamic>(),
-      clusterupgrade: ClusterUpgradeFleetSpecResponseGkehubV1beta.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>()),
-      fleetobservability: FleetObservabilityFeatureSpecResponseGkehubV1beta.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>()),
-      multiclusteringress: MultiClusterIngressFeatureSpecResponseGkehubV1beta.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>()),
+      anthosobservability: (AnthosObservabilityFeatureSpecResponseGkehubV1beta.fromMap((map['anthosobservability'] as Map).cast<String, dynamic>())).input(),
+      appdevexperience: ((map['appdevexperience'] as Map).cast<String, dynamic>()).input(),
+      clusterupgrade: (ClusterUpgradeFleetSpecResponseGkehubV1beta.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>())).input(),
+      fleetobservability: (FleetObservabilityFeatureSpecResponseGkehubV1beta.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>())).input(),
+      multiclusteringress: (MultiClusterIngressFeatureSpecResponseGkehubV1beta.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

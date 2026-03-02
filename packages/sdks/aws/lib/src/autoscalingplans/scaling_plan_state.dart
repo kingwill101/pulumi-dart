@@ -24,17 +24,12 @@ class ScalingPlanState {
   /// [scalingInstructions] Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
   /// [scalingPlanVersion] The version number of the scaling plan. This value is always 1.
   ScalingPlanState({
-    pulumi.Output<ScalingPlanApplicationSource>? applicationSource,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<ScalingPlanScalingInstruction>>? scalingInstructions,
-    pulumi.Output<int>? scalingPlanVersion,
-  }) :
-      applicationSource = pulumi.Input.asOptionalInput<ScalingPlanApplicationSource>(applicationSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scalingInstructions = pulumi.Input.asOptionalInput<List<ScalingPlanScalingInstruction>>(scalingInstructions),
-      scalingPlanVersion = pulumi.Input.asOptionalInput<int>(scalingPlanVersion);
+    this.applicationSource,
+    this.name,
+    this.region,
+    this.scalingInstructions,
+    this.scalingPlanVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ScalingPlanState {
 
   factory ScalingPlanState.fromMap(Map<String, dynamic> map) {
     return ScalingPlanState(
-      applicationSource: map['applicationSource'] == null ? null : pulumi.Output.create<ScalingPlanApplicationSource>(ScalingPlanApplicationSource.fromMap((map['applicationSource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scalingInstructions: map['scalingInstructions'] == null ? null : pulumi.Output.create<List<ScalingPlanScalingInstruction>>(pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions'], (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))),
-      scalingPlanVersion: map['scalingPlanVersion'] == null ? null : pulumi.Output.create<int>(map['scalingPlanVersion'] as int),
+      applicationSource: map['applicationSource'] == null ? null : (ScalingPlanApplicationSource.fromMap((map['applicationSource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scalingInstructions: map['scalingInstructions'] == null ? null : (pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions'], (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingPlanVersion: map['scalingPlanVersion'] == null ? null : (map['scalingPlanVersion'] as int).input(),
     );
   }
 }

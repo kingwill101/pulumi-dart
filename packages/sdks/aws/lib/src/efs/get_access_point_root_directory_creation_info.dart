@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessPointRootDirectoryCreationInfo {
   /// POSIX owner group ID
-  final int ownerGid;
+  final pulumi.Input<int> ownerGid;
   /// POSIX owner user ID
-  final int ownerUid;
+  final pulumi.Input<int> ownerUid;
   /// POSIX permissions mode
-  final String permissions;
+  final pulumi.Input<String> permissions;
 
   /// Creates a new [GetAccessPointRootDirectoryCreationInfo].
   /// [ownerGid] POSIX owner group ID
@@ -29,9 +30,9 @@ class GetAccessPointRootDirectoryCreationInfo {
 
   factory GetAccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectoryCreationInfo(
-      ownerGid: map['ownerGid'] as int,
-      ownerUid: map['ownerUid'] as int,
-      permissions: map['permissions'] as String,
+      ownerGid: (map['ownerGid'] as int).input(),
+      ownerUid: (map['ownerUid'] as int).input(),
+      permissions: (map['permissions'] as String).input(),
     );
   }
 }

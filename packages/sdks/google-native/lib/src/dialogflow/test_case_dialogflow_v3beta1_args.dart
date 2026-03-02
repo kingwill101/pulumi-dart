@@ -40,27 +40,17 @@ class TestCaseDialogflowV3beta1Args {
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
   TestCaseDialogflowV3beta1Args({
-    required pulumi.Output<String> agentId,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1TestCaseResult>? lastTestResult,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notes,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>? testCaseConversationTurns,
-    pulumi.Output<GoogleCloudDialogflowCxV3beta1TestConfig>? testConfig,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      lastTestResult = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1TestCaseResult>(lastTestResult),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notes = pulumi.Input.asOptionalInput<String>(notes),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      testCaseConversationTurns = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>(testCaseConversationTurns),
-      testConfig = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1TestConfig>(testConfig);
+    required this.agentId,
+    required this.displayName,
+    this.lastTestResult,
+    this.location,
+    this.name,
+    this.notes,
+    this.project,
+    this.tags,
+    this.testCaseConversationTurns,
+    this.testConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class TestCaseDialogflowV3beta1Args {
 
   factory TestCaseDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return TestCaseDialogflowV3beta1Args(
-      agentId: pulumi.Output.create<String>(map['agentId'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      lastTestResult: map['lastTestResult'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1TestCaseResult>(GoogleCloudDialogflowCxV3beta1TestCaseResult.fromMap((map['lastTestResult'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : pulumi.Output.create<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(map['testCaseConversationTurns'], (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))),
-      testConfig: map['testConfig'] == null ? null : pulumi.Output.create<GoogleCloudDialogflowCxV3beta1TestConfig>(GoogleCloudDialogflowCxV3beta1TestConfig.fromMap((map['testConfig'] as Map).cast<String, dynamic>())),
+      agentId: (map['agentId'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      lastTestResult: map['lastTestResult'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestCaseResult.fromMap((map['lastTestResult'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(map['testCaseConversationTurns'], (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testConfig: map['testConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestConfig.fromMap((map['testConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

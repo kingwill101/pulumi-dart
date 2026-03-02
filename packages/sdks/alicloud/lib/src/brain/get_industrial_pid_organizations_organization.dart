@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndustrialPidOrganizationsOrganization {
   /// The ID of the Pid Organization.
-  final String id;
+  final pulumi.Input<String> id;
   /// The parent organization id.
-  final String parentPidOrganizationId;
+  final pulumi.Input<String> parentPidOrganizationId;
   /// The organization id.
-  final String pidOrganizationId;
+  final pulumi.Input<String> pidOrganizationId;
   /// The organization level.
-  final int pidOrganizationLevel;
+  final pulumi.Input<int> pidOrganizationLevel;
   /// The organization name.
-  final String pidOrganizationName;
+  final pulumi.Input<String> pidOrganizationName;
 
   /// Creates a new [GetIndustrialPidOrganizationsOrganization].
   /// [id] The ID of the Pid Organization.
@@ -39,11 +40,11 @@ class GetIndustrialPidOrganizationsOrganization {
 
   factory GetIndustrialPidOrganizationsOrganization.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidOrganizationsOrganization(
-      id: map['id'] as String,
-      parentPidOrganizationId: map['parentPidOrganizationId'] as String,
-      pidOrganizationId: map['pidOrganizationId'] as String,
-      pidOrganizationLevel: map['pidOrganizationLevel'] as int,
-      pidOrganizationName: map['pidOrganizationName'] as String,
+      id: (map['id'] as String).input(),
+      parentPidOrganizationId: (map['parentPidOrganizationId'] as String).input(),
+      pidOrganizationId: (map['pidOrganizationId'] as String).input(),
+      pidOrganizationLevel: (map['pidOrganizationLevel'] as int).input(),
+      pidOrganizationName: (map['pidOrganizationName'] as String).input(),
     );
   }
 }

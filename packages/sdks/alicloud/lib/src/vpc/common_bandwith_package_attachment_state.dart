@@ -30,19 +30,13 @@ class CommonBandwithPackageAttachmentState {
   /// [ipType] The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
   /// [status] The status of the Internet Shared Bandwidth instance.
   CommonBandwithPackageAttachmentState({
-    pulumi.Output<String>? bandwidthPackageBandwidth,
-    pulumi.Output<String>? bandwidthPackageId,
-    pulumi.Output<bool>? cancelCommonBandwidthPackageIpBandwidth,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? ipType,
-    pulumi.Output<String>? status,
-  }) :
-      bandwidthPackageBandwidth = pulumi.Input.asOptionalInput<String>(bandwidthPackageBandwidth),
-      bandwidthPackageId = pulumi.Input.asOptionalInput<String>(bandwidthPackageId),
-      cancelCommonBandwidthPackageIpBandwidth = pulumi.Input.asOptionalInput<bool>(cancelCommonBandwidthPackageIpBandwidth),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      ipType = pulumi.Input.asOptionalInput<String>(ipType),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.bandwidthPackageBandwidth,
+    this.bandwidthPackageId,
+    this.cancelCommonBandwidthPackageIpBandwidth,
+    this.instanceId,
+    this.ipType,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class CommonBandwithPackageAttachmentState {
 
   factory CommonBandwithPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageAttachmentState(
-      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageBandwidth'] as String),
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : pulumi.Output.create<String>(map['bandwidthPackageId'] as String),
-      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : pulumi.Output.create<bool>(map['cancelCommonBandwidthPackageIpBandwidth'] as bool),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      ipType: map['ipType'] == null ? null : pulumi.Output.create<String>(map['ipType'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth'] as String).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
+      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth'] as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

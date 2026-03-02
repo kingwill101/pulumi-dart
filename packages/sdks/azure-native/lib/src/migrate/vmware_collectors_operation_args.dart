@@ -29,19 +29,13 @@ class VmwareCollectorsOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmWareCollectorName] VMware collector ARM name
   VmwareCollectorsOperationArgs({
-    pulumi.Output<CollectorAgentPropertiesBase>? agentProperties,
-    pulumi.Output<String>? discoverySiteId,
-    required pulumi.Output<String> projectName,
-    pulumi.Output<String>? provisioningState,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? vmWareCollectorName,
-  }) :
-      agentProperties = pulumi.Input.asOptionalInput<CollectorAgentPropertiesBase>(agentProperties),
-      discoverySiteId = pulumi.Input.asOptionalInput<String>(discoverySiteId),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      provisioningState = pulumi.Input.asOptionalInput<String>(provisioningState),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      vmWareCollectorName = pulumi.Input.asOptionalInput<String>(vmWareCollectorName);
+    this.agentProperties,
+    this.discoverySiteId,
+    required this.projectName,
+    this.provisioningState,
+    required this.resourceGroupName,
+    this.vmWareCollectorName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class VmwareCollectorsOperationArgs {
 
   factory VmwareCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return VmwareCollectorsOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : pulumi.Output.create<CollectorAgentPropertiesBase>(CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())),
-      discoverySiteId: map['discoverySiteId'] == null ? null : pulumi.Output.create<String>(map['discoverySiteId'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      provisioningState: map['provisioningState'] == null ? null : pulumi.Output.create<String>(map['provisioningState'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      vmWareCollectorName: map['vmWareCollectorName'] == null ? null : pulumi.Output.create<String>(map['vmWareCollectorName'] as String),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      vmWareCollectorName: map['vmWareCollectorName'] == null ? null : (map['vmWareCollectorName'] as String).input(),
     );
   }
 }

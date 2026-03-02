@@ -7,9 +7,9 @@ import 'discovered_outbound_endpoints_response.dart';
 /// Connection endpoint URL a device can use to connect to a service.
 class DiscoveredMessagingEndpointsResponse {
   /// Set of endpoints to connect to the device.
-  final Map<String, DiscoveredInboundEndpointsResponse>? inbound;
+  final pulumi.Input<Map<String, DiscoveredInboundEndpointsResponse>>? inbound;
   /// Set of endpoints a device can connect to.
-  final DiscoveredOutboundEndpointsResponse? outbound;
+  final pulumi.Input<DiscoveredOutboundEndpointsResponse>? outbound;
 
   /// Creates a new [DiscoveredMessagingEndpointsResponse].
   /// [inbound] Set of endpoints to connect to the device.
@@ -21,15 +21,15 @@ class DiscoveredMessagingEndpointsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inbound': ?inbound == null ? null : pulumi.Input.encodeMapValues<DiscoveredInboundEndpointsResponse, Map<String, dynamic>>(inbound!, (value) => value.toMap()),
-      'outbound': ?outbound == null ? null : outbound!.toMap(),
+      'inbound': ?pulumi.Input.mapOptionalInputValue<Map<String, DiscoveredInboundEndpointsResponse>, Map<String, Map<String, dynamic>>>(inbound, (value) => pulumi.Input.encodeMapValues<DiscoveredInboundEndpointsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outbound': ?pulumi.Input.mapOptionalInputValue<DiscoveredOutboundEndpointsResponse, Map<String, dynamic>>(outbound, (value) => value.toMap()),
     };
   }
 
   factory DiscoveredMessagingEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredMessagingEndpointsResponse(
-      inbound: map['inbound'] == null ? null : pulumi.Input.decodeMapValues<DiscoveredInboundEndpointsResponse>(map['inbound'], (value) => DiscoveredInboundEndpointsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      outbound: map['outbound'] == null ? null : DiscoveredOutboundEndpointsResponse.fromMap((map['outbound'] as Map).cast<String, dynamic>()),
+      inbound: map['inbound'] == null ? null : (pulumi.Input.decodeMapValues<DiscoveredInboundEndpointsResponse>(map['inbound'], (value) => DiscoveredInboundEndpointsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outbound: map['outbound'] == null ? null : (DiscoveredOutboundEndpointsResponse.fromMap((map['outbound'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

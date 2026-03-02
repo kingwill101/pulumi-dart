@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
 class AdditionalNodeNetworkConfigContainerV1beta1 {
   /// Name of the VPC where the additional interface belongs
-  final String? network;
+  final pulumi.Input<String>? network;
   /// Name of the subnetwork where the additional interface belongs
-  final String? subnetwork;
+  final pulumi.Input<String>? subnetwork;
 
   /// Creates a new [AdditionalNodeNetworkConfigContainerV1beta1].
   /// [network] Name of the VPC where the additional interface belongs
@@ -25,8 +26,8 @@ class AdditionalNodeNetworkConfigContainerV1beta1 {
 
   factory AdditionalNodeNetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdditionalNodeNetworkConfigContainerV1beta1(
-      network: map['network'] == null ? null : map['network'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
+      network: map['network'] == null ? null : (map['network'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
     );
   }
 }

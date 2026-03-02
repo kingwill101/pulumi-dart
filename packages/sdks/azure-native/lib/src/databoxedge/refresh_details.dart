@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Fields for tracking refresh job on the share or container.
 class RefreshDetails {
   /// Indicates the relative path of the error xml for the last refresh job on this particular share or container, if any. This could be a failed job or a successful job.
-  final String? errorManifestFile;
+  final pulumi.Input<String>? errorManifestFile;
   /// If a refresh job is currently in progress on this share or container, this field indicates the ARM resource ID of that job. The field is empty if no job is in progress.
-  final String? inProgressRefreshJobId;
+  final pulumi.Input<String>? inProgressRefreshJobId;
   /// Indicates the completed time for the last refresh job on this particular share or container, if any.This could be a failed job or a successful job.
-  final String? lastCompletedRefreshJobTimeInUTC;
+  final pulumi.Input<String>? lastCompletedRefreshJobTimeInUTC;
   /// Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job.
-  final String? lastJob;
+  final pulumi.Input<String>? lastJob;
 
   /// Creates a new [RefreshDetails].
   /// [errorManifestFile] Indicates the relative path of the error xml for the last refresh job on this particular share or container, if any. This could be a failed job or a successful job.
@@ -35,10 +36,10 @@ class RefreshDetails {
 
   factory RefreshDetails.fromMap(Map<String, dynamic> map) {
     return RefreshDetails(
-      errorManifestFile: map['errorManifestFile'] == null ? null : map['errorManifestFile'] as String,
-      inProgressRefreshJobId: map['inProgressRefreshJobId'] == null ? null : map['inProgressRefreshJobId'] as String,
-      lastCompletedRefreshJobTimeInUTC: map['lastCompletedRefreshJobTimeInUTC'] == null ? null : map['lastCompletedRefreshJobTimeInUTC'] as String,
-      lastJob: map['lastJob'] == null ? null : map['lastJob'] as String,
+      errorManifestFile: map['errorManifestFile'] == null ? null : (map['errorManifestFile'] as String).input(),
+      inProgressRefreshJobId: map['inProgressRefreshJobId'] == null ? null : (map['inProgressRefreshJobId'] as String).input(),
+      lastCompletedRefreshJobTimeInUTC: map['lastCompletedRefreshJobTimeInUTC'] == null ? null : (map['lastCompletedRefreshJobTimeInUTC'] as String).input(),
+      lastJob: map['lastJob'] == null ? null : (map['lastJob'] as String).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class RepoArgs {
   /// [size] The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
   /// [url] URL to clone the repository from Google Cloud Source Repositories. Read-only field.
   RepoArgs({
-    pulumi.Output<MirrorConfig>? mirrorConfig,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<Map<String, String>>? pubsubConfigs,
-    pulumi.Output<String>? size,
-    pulumi.Output<String>? url,
-  }) :
-      mirrorConfig = pulumi.Input.asOptionalInput<MirrorConfig>(mirrorConfig),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubConfigs = pulumi.Input.asOptionalInput<Map<String, String>>(pubsubConfigs),
-      size = pulumi.Input.asOptionalInput<String>(size),
-      url = pulumi.Input.asOptionalInput<String>(url);
+    this.mirrorConfig,
+    this.name,
+    this.project,
+    this.pubsubConfigs,
+    this.size,
+    this.url,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class RepoArgs {
 
   factory RepoArgs.fromMap(Map<String, dynamic> map) {
     return RepoArgs(
-      mirrorConfig: map['mirrorConfig'] == null ? null : pulumi.Output.create<MirrorConfig>(MirrorConfig.fromMap((map['mirrorConfig'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pubsubConfigs'] as Map).cast<String, String>()),
-      size: map['size'] == null ? null : pulumi.Output.create<String>(map['size'] as String),
-      url: map['url'] == null ? null : pulumi.Output.create<String>(map['url'] as String),
+      mirrorConfig: map['mirrorConfig'] == null ? null : (MirrorConfig.fromMap((map['mirrorConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : ((map['pubsubConfigs'] as Map).cast<String, String>()).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authorization-related information used by Cloud Audit Logging.
 class AuthorizationLoggingOptionsResponseGameservicesV1beta {
   /// The type of the permission that was checked.
-  final String permissionType;
+  final pulumi.Input<String> permissionType;
 
   /// Creates a new [AuthorizationLoggingOptionsResponseGameservicesV1beta].
   /// [permissionType] The type of the permission that was checked.
@@ -20,7 +21,7 @@ class AuthorizationLoggingOptionsResponseGameservicesV1beta {
 
   factory AuthorizationLoggingOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptionsResponseGameservicesV1beta(
-      permissionType: map['permissionType'] as String,
+      permissionType: (map['permissionType'] as String).input(),
     );
   }
 }

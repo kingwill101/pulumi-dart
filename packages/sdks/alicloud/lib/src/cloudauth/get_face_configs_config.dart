@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFaceConfigsConfig {
   /// Scene name.
-  final String bizName;
+  final pulumi.Input<String> bizName;
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
-  final String bizType;
+  final pulumi.Input<String> bizType;
   /// The Update Time.
-  final String gmtUpdated;
+  final pulumi.Input<String> gmtUpdated;
 
   /// Creates a new [GetFaceConfigsConfig].
   /// [bizName] Scene name.
@@ -29,9 +30,9 @@ class GetFaceConfigsConfig {
 
   factory GetFaceConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetFaceConfigsConfig(
-      bizName: map['bizName'] as String,
-      bizType: map['bizType'] as String,
-      gmtUpdated: map['gmtUpdated'] as String,
+      bizName: (map['bizName'] as String).input(),
+      bizType: (map['bizType'] as String).input(),
+      gmtUpdated: (map['gmtUpdated'] as String).input(),
     );
   }
 }

@@ -30,19 +30,13 @@ class DnsDomainArgs {
   /// [resourceGroupId] The Id of resource group which the dns domain belongs.
   /// [tags] A mapping of tags to assign to the resource.
   DnsDomainArgs({
-    required pulumi.Output<String> domainName,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? lang,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.domainName,
+    this.groupId,
+    this.lang,
+    this.remark,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class DnsDomainArgs {
 
   factory DnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return DnsDomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      domainName: (map['domainName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

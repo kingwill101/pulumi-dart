@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackAccessEndpoint {
   /// Type of the interface endpoint.
   /// See the [`AccessEndpoint` AWS API documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html) for valid values.
-  final String endpointType;
+  final pulumi.Input<String> endpointType;
   /// ID of the VPC in which the interface endpoint is used.
-  final String? vpceId;
+  final pulumi.Input<String>? vpceId;
 
   /// Creates a new [StackAccessEndpoint].
   /// [endpointType] Type of the interface endpoint.
@@ -25,8 +26,8 @@ class StackAccessEndpoint {
 
   factory StackAccessEndpoint.fromMap(Map<String, dynamic> map) {
     return StackAccessEndpoint(
-      endpointType: map['endpointType'] as String,
-      vpceId: map['vpceId'] == null ? null : map['vpceId'] as String,
+      endpointType: (map['endpointType'] as String).input(),
+      vpceId: map['vpceId'] == null ? null : (map['vpceId'] as String).input(),
     );
   }
 }

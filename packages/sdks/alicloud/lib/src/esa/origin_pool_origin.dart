@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_pool_origin_auth_conf.dart';
 
 class OriginPoolOrigin {
   /// Origin Address.
-  final String? address;
+  final pulumi.Input<String>? address;
   /// The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
-  final OriginPoolOriginAuthConf? authConf;
+  final pulumi.Input<OriginPoolOriginAuthConf>? authConf;
   /// Whether the source station is enabled:
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// The request header that is sent when returning to the source. Only Host is supported.
-  final String? header;
+  final pulumi.Input<String>? header;
   /// Origin Name.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Origin ID.
-  final int? originId;
+  final pulumi.Input<int>? originId;
   /// Source station type:
   /// ip_domain: ip or domain name type origin station;
   /// - `OSS`:OSS address source station;
   /// - `S3`:AWS S3 Source station.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// Weight, 0-100.
-  final int? weight;
+  final pulumi.Input<int>? weight;
 
   /// Creates a new [OriginPoolOrigin].
   /// [address] Origin Address.
@@ -46,7 +47,7 @@ class OriginPoolOrigin {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
-      'authConf': ?authConf == null ? null : authConf!.toMap(),
+      'authConf': ?pulumi.Input.mapOptionalInputValue<OriginPoolOriginAuthConf, Map<String, dynamic>>(authConf, (value) => value.toMap()),
       'enabled': ?enabled,
       'header': ?header,
       'name': ?name,
@@ -58,14 +59,14 @@ class OriginPoolOrigin {
 
   factory OriginPoolOrigin.fromMap(Map<String, dynamic> map) {
     return OriginPoolOrigin(
-      address: map['address'] == null ? null : map['address'] as String,
-      authConf: map['authConf'] == null ? null : OriginPoolOriginAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      header: map['header'] == null ? null : map['header'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      originId: map['originId'] == null ? null : map['originId'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      authConf: map['authConf'] == null ? null : (OriginPoolOriginAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      header: map['header'] == null ? null : (map['header'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      originId: map['originId'] == null ? null : (map['originId'] as int).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
     );
   }
 }

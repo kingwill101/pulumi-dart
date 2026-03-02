@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Emission policy destination properties.
 class EmissionPolicyDestination {
   /// Emission destination type.
-  final String? destinationType;
+  final pulumi.Input<String>? destinationType;
 
   /// Creates a new [EmissionPolicyDestination].
   /// [destinationType] Emission destination type.
@@ -20,7 +21,7 @@ class EmissionPolicyDestination {
 
   factory EmissionPolicyDestination.fromMap(Map<String, dynamic> map) {
     return EmissionPolicyDestination(
-      destinationType: map['destinationType'] == null ? null : map['destinationType'] as String,
+      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
     );
   }
 }

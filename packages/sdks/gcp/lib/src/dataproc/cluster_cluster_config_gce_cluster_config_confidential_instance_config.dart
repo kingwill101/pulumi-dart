@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
   /// Defines whether the instance should have confidential compute enabled.
-  final bool? enableConfidentialCompute;
+  final pulumi.Input<bool>? enableConfidentialCompute;
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
@@ -19,7 +20,7 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
 
   factory ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
     );
   }
 }

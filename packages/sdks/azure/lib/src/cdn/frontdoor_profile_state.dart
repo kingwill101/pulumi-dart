@@ -35,23 +35,15 @@ class FrontdoorProfileState {
   /// [skuName] Specifies the SKU for this Front Door Profile. Possible values include `Standard_AzureFrontDoor` and `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   /// [tags] Specifies a mapping of tags to assign to the resource.
   FrontdoorProfileState({
-    pulumi.Output<FrontdoorProfileIdentity>? identity,
-    pulumi.Output<List<FrontdoorProfileLogScrubbingRule>>? logScrubbingRules,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? resourceGuid,
-    pulumi.Output<int>? responseTimeoutSeconds,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      identity = pulumi.Input.asOptionalInput<FrontdoorProfileIdentity>(identity),
-      logScrubbingRules = pulumi.Input.asOptionalInput<List<FrontdoorProfileLogScrubbingRule>>(logScrubbingRules),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      resourceGuid = pulumi.Input.asOptionalInput<String>(resourceGuid),
-      responseTimeoutSeconds = pulumi.Input.asOptionalInput<int>(responseTimeoutSeconds),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.identity,
+    this.logScrubbingRules,
+    this.name,
+    this.resourceGroupName,
+    this.resourceGuid,
+    this.responseTimeoutSeconds,
+    this.skuName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class FrontdoorProfileState {
 
   factory FrontdoorProfileState.fromMap(Map<String, dynamic> map) {
     return FrontdoorProfileState(
-      identity: map['identity'] == null ? null : pulumi.Output.create<FrontdoorProfileIdentity>(FrontdoorProfileIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      logScrubbingRules: map['logScrubbingRules'] == null ? null : pulumi.Output.create<List<FrontdoorProfileLogScrubbingRule>>(pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules'], (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceGuid: map['resourceGuid'] == null ? null : pulumi.Output.create<String>(map['resourceGuid'] as String),
-      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : pulumi.Output.create<int>(map['responseTimeoutSeconds'] as int),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      identity: map['identity'] == null ? null : (FrontdoorProfileIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      logScrubbingRules: map['logScrubbingRules'] == null ? null : (pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules'], (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid'] as String).input(),
+      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds'] as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

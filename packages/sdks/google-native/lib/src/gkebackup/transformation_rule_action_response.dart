@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
 class TransformationRuleActionResponse {
   /// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
-  final String fromPath;
+  final pulumi.Input<String> fromPath;
   /// op specifies the operation to perform.
-  final String op;
+  final pulumi.Input<String> op;
   /// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
-  final String path;
+  final pulumi.Input<String> path;
   /// Optional. A string that specifies the desired value in string format to use for transformation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [TransformationRuleActionResponse].
   /// [fromPath] Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
@@ -35,10 +36,10 @@ class TransformationRuleActionResponse {
 
   factory TransformationRuleActionResponse.fromMap(Map<String, dynamic> map) {
     return TransformationRuleActionResponse(
-      fromPath: map['fromPath'] as String,
-      op: map['op'] as String,
-      path: map['path'] as String,
-      value: map['value'] as String,
+      fromPath: (map['fromPath'] as String).input(),
+      op: (map['op'] as String).input(),
+      path: (map['path'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableView {
   /// A query that BigQuery executes when the view is referenced.
-  final String query;
+  final pulumi.Input<String> query;
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   /// If set to `false`, the view will use BigQuery's standard SQL. If set to
   /// `true`, the view will use BigQuery's legacy SQL. If unset, the API will
@@ -11,7 +12,7 @@ class TableView {
   /// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
   /// > **Note**: Starting in provider version `7.0.0`, no default value is
   /// provided for this field unless explicitly set in the configuration.
-  final bool? useLegacySql;
+  final pulumi.Input<bool>? useLegacySql;
 
   /// Creates a new [TableView].
   /// [query] A query that BigQuery executes when the view is referenced.
@@ -30,8 +31,8 @@ class TableView {
 
   factory TableView.fromMap(Map<String, dynamic> map) {
     return TableView(
-      query: map['query'] as String,
-      useLegacySql: map['useLegacySql'] == null ? null : map['useLegacySql'] as bool,
+      query: (map['query'] as String).input(),
+      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql'] as bool).input(),
     );
   }
 }

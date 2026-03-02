@@ -20,15 +20,11 @@ class PermissionsBoundaryAttachmentState {
   /// [permissionsBoundary] The permissions boundary policy. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PermissionsBoundaryAttachmentState({
-    pulumi.Output<String>? instanceArn,
-    pulumi.Output<String>? permissionSetArn,
-    pulumi.Output<PermissionsBoundaryAttachmentPermissionsBoundary>? permissionsBoundary,
-    pulumi.Output<String>? region,
-  }) :
-      instanceArn = pulumi.Input.asOptionalInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asOptionalInput<String>(permissionSetArn),
-      permissionsBoundary = pulumi.Input.asOptionalInput<PermissionsBoundaryAttachmentPermissionsBoundary>(permissionsBoundary),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.instanceArn,
+    this.permissionSetArn,
+    this.permissionsBoundary,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +37,10 @@ class PermissionsBoundaryAttachmentState {
 
   factory PermissionsBoundaryAttachmentState.fromMap(Map<String, dynamic> map) {
     return PermissionsBoundaryAttachmentState(
-      instanceArn: map['instanceArn'] == null ? null : pulumi.Output.create<String>(map['instanceArn'] as String),
-      permissionSetArn: map['permissionSetArn'] == null ? null : pulumi.Output.create<String>(map['permissionSetArn'] as String),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : pulumi.Output.create<PermissionsBoundaryAttachmentPermissionsBoundary>(PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : (PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

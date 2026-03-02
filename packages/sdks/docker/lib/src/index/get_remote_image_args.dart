@@ -13,9 +13,8 @@ class GetRemoteImageArgs {
   /// Creates a new [GetRemoteImageArgs].
   /// [name] The name of the Docker image, including any tags or SHA256 repo digests.
   GetRemoteImageArgs({
-    required pulumi.Output<String> name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetRemoteImageArgs {
 
   factory GetRemoteImageArgs.fromMap(Map<String, dynamic> map) {
     return GetRemoteImageArgs(
-      name: pulumi.Output.create<String>(map['name'] as String),
+      name: (map['name'] as String).input(),
     );
   }
 }

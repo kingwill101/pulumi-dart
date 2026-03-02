@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A dashboard part metadata.
 class DashboardPartMetadataResponse {
   /// Inputs to dashboard part.
-  final List<dynamic>? inputs;
+  final pulumi.Input<List<dynamic>>? inputs;
   /// Settings of dashboard part.
-  final Map<String, dynamic>? settings;
+  final pulumi.Input<Map<String, dynamic>>? settings;
   /// The type of dashboard part.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [DashboardPartMetadataResponse].
   /// [inputs] Inputs to dashboard part.
@@ -30,9 +31,9 @@ class DashboardPartMetadataResponse {
 
   factory DashboardPartMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPartMetadataResponse(
-      inputs: map['inputs'] == null ? null : (map['inputs'] as List).cast<dynamic>(),
-      settings: map['settings'] == null ? null : (map['settings'] as Map).cast<String, dynamic>(),
-      type: map['type'] as String,
+      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<dynamic>()).input(),
+      settings: map['settings'] == null ? null : ((map['settings'] as Map).cast<String, dynamic>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -46,27 +46,17 @@ class LinkerArgs {
   /// [targetService] The target service properties
   /// [vNetSolution] The VNet solution.
   LinkerArgs({
-    pulumi.Output<AccessKeyInfoBase>? authInfo,
-    pulumi.Output<String>? clientType,
-    pulumi.Output<ConfigurationInfo>? configurationInfo,
-    pulumi.Output<String>? linkerName,
-    pulumi.Output<PublicNetworkSolution>? publicNetworkSolution,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? scope,
-    pulumi.Output<SecretStore>? secretStore,
-    pulumi.Output<AzureResource>? targetService,
-    pulumi.Output<VNetSolution>? vNetSolution,
-  }) :
-      authInfo = pulumi.Input.asOptionalInput<AccessKeyInfoBase>(authInfo),
-      clientType = pulumi.Input.asOptionalInput<String>(clientType),
-      configurationInfo = pulumi.Input.asOptionalInput<ConfigurationInfo>(configurationInfo),
-      linkerName = pulumi.Input.asOptionalInput<String>(linkerName),
-      publicNetworkSolution = pulumi.Input.asOptionalInput<PublicNetworkSolution>(publicNetworkSolution),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      secretStore = pulumi.Input.asOptionalInput<SecretStore>(secretStore),
-      targetService = pulumi.Input.asOptionalInput<AzureResource>(targetService),
-      vNetSolution = pulumi.Input.asOptionalInput<VNetSolution>(vNetSolution);
+    this.authInfo,
+    this.clientType,
+    this.configurationInfo,
+    this.linkerName,
+    this.publicNetworkSolution,
+    required this.resourceUri,
+    this.scope,
+    this.secretStore,
+    this.targetService,
+    this.vNetSolution,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class LinkerArgs {
 
   factory LinkerArgs.fromMap(Map<String, dynamic> map) {
     return LinkerArgs(
-      authInfo: map['authInfo'] == null ? null : pulumi.Output.create<AccessKeyInfoBase>(AccessKeyInfoBase.fromMap((map['authInfo'] as Map).cast<String, dynamic>())),
-      clientType: map['clientType'] == null ? null : pulumi.Output.create<String>(map['clientType'] as String),
-      configurationInfo: map['configurationInfo'] == null ? null : pulumi.Output.create<ConfigurationInfo>(ConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())),
-      linkerName: map['linkerName'] == null ? null : pulumi.Output.create<String>(map['linkerName'] as String),
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : pulumi.Output.create<PublicNetworkSolution>(PublicNetworkSolution.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      secretStore: map['secretStore'] == null ? null : pulumi.Output.create<SecretStore>(SecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())),
-      targetService: map['targetService'] == null ? null : pulumi.Output.create<AzureResource>(AzureResource.fromMap((map['targetService'] as Map).cast<String, dynamic>())),
-      vNetSolution: map['vNetSolution'] == null ? null : pulumi.Output.create<VNetSolution>(VNetSolution.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())),
+      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBase.fromMap((map['authInfo'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())).input(),
+      linkerName: map['linkerName'] == null ? null : (map['linkerName'] as String).input(),
+      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolution.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      targetService: map['targetService'] == null ? null : (AzureResource.fromMap((map['targetService'] as Map).cast<String, dynamic>())).input(),
+      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolution.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

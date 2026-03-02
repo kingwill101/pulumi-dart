@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkPoolSparkConfig {
   /// The contents of a spark configuration.
-  final String content;
+  final pulumi.Input<String> content;
   /// The name of the file where the spark configuration `content` will be stored.
-  final String filename;
+  final pulumi.Input<String> filename;
 
   /// Creates a new [SparkPoolSparkConfig].
   /// [content] The contents of a spark configuration.
@@ -24,8 +25,8 @@ class SparkPoolSparkConfig {
 
   factory SparkPoolSparkConfig.fromMap(Map<String, dynamic> map) {
     return SparkPoolSparkConfig(
-      content: map['content'] as String,
-      filename: map['filename'] as String,
+      content: (map['content'] as String).input(),
+      filename: (map['filename'] as String).input(),
     );
   }
 }

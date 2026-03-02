@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication for working with service bus or storage account.
 class GenericBlobSbsAuthModel {
   /// Credentials for service bus namespace, keyvault uri for access key
-  final Map<String, String>? credentialsConfig;
+  final pulumi.Input<Map<String, String>>? credentialsConfig;
   /// Credentials for storage account, keyvault uri for access key
-  final Map<String, String>? storageAccountCredentialsConfig;
+  final pulumi.Input<Map<String, String>>? storageAccountCredentialsConfig;
   /// Type of paging
   /// Expected value is 'ServiceBus'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GenericBlobSbsAuthModel].
   /// [credentialsConfig] Credentials for service bus namespace, keyvault uri for access key
@@ -31,9 +32,9 @@ class GenericBlobSbsAuthModel {
 
   factory GenericBlobSbsAuthModel.fromMap(Map<String, dynamic> map) {
     return GenericBlobSbsAuthModel(
-      credentialsConfig: map['credentialsConfig'] == null ? null : (map['credentialsConfig'] as Map).cast<String, String>(),
-      storageAccountCredentialsConfig: map['storageAccountCredentialsConfig'] == null ? null : (map['storageAccountCredentialsConfig'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      credentialsConfig: map['credentialsConfig'] == null ? null : ((map['credentialsConfig'] as Map).cast<String, String>()).input(),
+      storageAccountCredentialsConfig: map['storageAccountCredentialsConfig'] == null ? null : ((map['storageAccountCredentialsConfig'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

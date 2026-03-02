@@ -46,29 +46,18 @@ class ExtensionState {
   /// [type] Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new Hybrid Compute Machine Extension to be created.
   /// [typeHandlerVersion] Specifies the version of the script handler.
   ExtensionState({
-    pulumi.Output<String>? arcMachineId,
-    pulumi.Output<bool>? automaticUpgradeEnabled,
-    pulumi.Output<String>? forceUpdateTag,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? protectedSettings,
-    pulumi.Output<String>? publisher,
-    pulumi.Output<String>? settings,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? type,
-    pulumi.Output<String>? typeHandlerVersion,
-  }) :
-      arcMachineId = pulumi.Input.asOptionalInput<String>(arcMachineId),
-      automaticUpgradeEnabled = pulumi.Input.asOptionalInput<bool>(automaticUpgradeEnabled),
-      forceUpdateTag = pulumi.Input.asOptionalInput<String>(forceUpdateTag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      protectedSettings = pulumi.Input.asOptionalInput<String>(protectedSettings),
-      publisher = pulumi.Input.asOptionalInput<String>(publisher),
-      settings = pulumi.Input.asOptionalInput<String>(settings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      typeHandlerVersion = pulumi.Input.asOptionalInput<String>(typeHandlerVersion);
+    this.arcMachineId,
+    this.automaticUpgradeEnabled,
+    this.forceUpdateTag,
+    this.location,
+    this.name,
+    this.protectedSettings,
+    this.publisher,
+    this.settings,
+    this.tags,
+    this.type,
+    this.typeHandlerVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,17 +77,17 @@ class ExtensionState {
 
   factory ExtensionState.fromMap(Map<String, dynamic> map) {
     return ExtensionState(
-      arcMachineId: map['arcMachineId'] == null ? null : pulumi.Output.create<String>(map['arcMachineId'] as String),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : pulumi.Output.create<bool>(map['automaticUpgradeEnabled'] as bool),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : pulumi.Output.create<String>(map['forceUpdateTag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      protectedSettings: map['protectedSettings'] == null ? null : pulumi.Output.create<String>(map['protectedSettings'] as String),
-      publisher: map['publisher'] == null ? null : pulumi.Output.create<String>(map['publisher'] as String),
-      settings: map['settings'] == null ? null : pulumi.Output.create<String>(map['settings'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : pulumi.Output.create<String>(map['typeHandlerVersion'] as String),
+      arcMachineId: map['arcMachineId'] == null ? null : (map['arcMachineId'] as String).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

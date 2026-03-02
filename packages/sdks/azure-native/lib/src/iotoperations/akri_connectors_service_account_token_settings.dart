@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorsServiceAccountTokenSettings properties.
 class AkriConnectorsServiceAccountTokenSettings {
   /// The audience for the service account token.
-  final String audience;
+  final pulumi.Input<String> audience;
 
   /// Creates a new [AkriConnectorsServiceAccountTokenSettings].
   /// [audience] The audience for the service account token.
@@ -20,7 +21,7 @@ class AkriConnectorsServiceAccountTokenSettings {
 
   factory AkriConnectorsServiceAccountTokenSettings.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsServiceAccountTokenSettings(
-      audience: map['audience'] as String,
+      audience: (map['audience'] as String).input(),
     );
   }
 }

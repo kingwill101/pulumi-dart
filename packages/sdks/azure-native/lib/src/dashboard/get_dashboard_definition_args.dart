@@ -19,13 +19,10 @@ class GetDashboardDefinitionArgs {
   /// [definitionName] The name of the Dashboard Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDashboardDefinitionArgs({
-    required pulumi.Output<String> dashboardName,
-    required pulumi.Output<String> definitionName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      dashboardName = pulumi.Input.asInput<String>(dashboardName),
-      definitionName = pulumi.Input.asInput<String>(definitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.dashboardName,
+    required this.definitionName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetDashboardDefinitionArgs {
 
   factory GetDashboardDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDashboardDefinitionArgs(
-      dashboardName: pulumi.Output.create<String>(map['dashboardName'] as String),
-      definitionName: pulumi.Output.create<String>(map['definitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      dashboardName: (map['dashboardName'] as String).input(),
+      definitionName: (map['definitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

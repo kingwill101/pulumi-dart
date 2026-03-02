@@ -7,11 +7,11 @@ import 'rule_option.dart';
 /// Definition of StatefulRule
 class StatefulRule {
   /// Property action
-  final String? action;
+  final pulumi.Input<String>? action;
   /// Property header
-  final Header? header;
+  final pulumi.Input<Header>? header;
   /// Property ruleOptions
-  final List<RuleOption>? ruleOptions;
+  final pulumi.Input<List<RuleOption>>? ruleOptions;
 
   /// Creates a new [StatefulRule].
   /// [action] Property action
@@ -26,16 +26,16 @@ class StatefulRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'header': ?header == null ? null : header!.toMap(),
-      'ruleOptions': ?ruleOptions == null ? null : pulumi.Input.encodeList<RuleOption, Map<String, dynamic>>(ruleOptions!, (value) => value.toMap()),
+      'header': ?pulumi.Input.mapOptionalInputValue<Header, Map<String, dynamic>>(header, (value) => value.toMap()),
+      'ruleOptions': ?pulumi.Input.mapOptionalInputValue<List<RuleOption>, List<Map<String, dynamic>>>(ruleOptions, (value) => pulumi.Input.encodeList<RuleOption, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory StatefulRule.fromMap(Map<String, dynamic> map) {
     return StatefulRule(
-      action: map['action'] == null ? null : map['action'] as String,
-      header: map['header'] == null ? null : Header.fromMap((map['header'] as Map).cast<String, dynamic>()),
-      ruleOptions: map['ruleOptions'] == null ? null : pulumi.Input.decodeList<RuleOption>(map['ruleOptions'], (value) => RuleOption.fromMap((value as Map).cast<String, dynamic>())),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      header: map['header'] == null ? null : (Header.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      ruleOptions: map['ruleOptions'] == null ? null : (pulumi.Input.decodeList<RuleOption>(map['ruleOptions'], (value) => RuleOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

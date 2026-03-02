@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsDataCacheConfig {
   /// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
-  final bool? dataCacheEnabled;
+  final pulumi.Input<bool>? dataCacheEnabled;
 
   /// Creates a new [DatabaseInstanceSettingsDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
@@ -19,7 +20,7 @@ class DatabaseInstanceSettingsDataCacheConfig {
 
   factory DatabaseInstanceSettingsDataCacheConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsDataCacheConfig(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : map['dataCacheEnabled'] as bool,
+      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled'] as bool).input(),
     );
   }
 }

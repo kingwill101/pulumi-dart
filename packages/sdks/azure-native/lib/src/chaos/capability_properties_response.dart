@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model that represents the Capability properties model.
 class CapabilityPropertiesResponse {
   /// Localized string of the description.
-  final String description;
+  final pulumi.Input<String> description;
   /// URL to retrieve JSON schema of the Capability parameters.
-  final String parametersSchema;
+  final pulumi.Input<String> parametersSchema;
   /// String of the Publisher that this Capability extends.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// String of the Target Type that this Capability extends.
-  final String targetType;
+  final pulumi.Input<String> targetType;
   /// String of the URN for this Capability Type.
-  final String urn;
+  final pulumi.Input<String> urn;
 
   /// Creates a new [CapabilityPropertiesResponse].
   /// [description] Localized string of the description.
@@ -40,11 +41,11 @@ class CapabilityPropertiesResponse {
 
   factory CapabilityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityPropertiesResponse(
-      description: map['description'] as String,
-      parametersSchema: map['parametersSchema'] as String,
-      publisher: map['publisher'] as String,
-      targetType: map['targetType'] as String,
-      urn: map['urn'] as String,
+      description: (map['description'] as String).input(),
+      parametersSchema: (map['parametersSchema'] as String).input(),
+      publisher: (map['publisher'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
+      urn: (map['urn'] as String).input(),
     );
   }
 }

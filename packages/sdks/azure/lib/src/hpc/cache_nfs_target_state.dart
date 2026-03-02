@@ -32,23 +32,15 @@ class CacheNfsTargetState {
   /// [verificationTimerInSeconds] The amount of time the cache waits before it checks the back-end storage for file updates. Possible values are between `1` and `31536000`.
   /// [writeBackTimerInSeconds] The amount of time the cache waits after the last file change before it copies the changed file to back-end storage. Possible values are between `1` and `31536000`.
   CacheNfsTargetState({
-    pulumi.Output<String>? cacheName,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<CacheNfsTargetNamespaceJunction>>? namespaceJunctions,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? targetHostName,
-    pulumi.Output<String>? usageModel,
-    pulumi.Output<int>? verificationTimerInSeconds,
-    pulumi.Output<int>? writeBackTimerInSeconds,
-  }) :
-      cacheName = pulumi.Input.asOptionalInput<String>(cacheName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespaceJunctions = pulumi.Input.asOptionalInput<List<CacheNfsTargetNamespaceJunction>>(namespaceJunctions),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      targetHostName = pulumi.Input.asOptionalInput<String>(targetHostName),
-      usageModel = pulumi.Input.asOptionalInput<String>(usageModel),
-      verificationTimerInSeconds = pulumi.Input.asOptionalInput<int>(verificationTimerInSeconds),
-      writeBackTimerInSeconds = pulumi.Input.asOptionalInput<int>(writeBackTimerInSeconds);
+    this.cacheName,
+    this.name,
+    this.namespaceJunctions,
+    this.resourceGroupName,
+    this.targetHostName,
+    this.usageModel,
+    this.verificationTimerInSeconds,
+    this.writeBackTimerInSeconds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class CacheNfsTargetState {
 
   factory CacheNfsTargetState.fromMap(Map<String, dynamic> map) {
     return CacheNfsTargetState(
-      cacheName: map['cacheName'] == null ? null : pulumi.Output.create<String>(map['cacheName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namespaceJunctions: map['namespaceJunctions'] == null ? null : pulumi.Output.create<List<CacheNfsTargetNamespaceJunction>>(pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(map['namespaceJunctions'], (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetHostName: map['targetHostName'] == null ? null : pulumi.Output.create<String>(map['targetHostName'] as String),
-      usageModel: map['usageModel'] == null ? null : pulumi.Output.create<String>(map['usageModel'] as String),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : pulumi.Output.create<int>(map['verificationTimerInSeconds'] as int),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : pulumi.Output.create<int>(map['writeBackTimerInSeconds'] as int),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namespaceJunctions: map['namespaceJunctions'] == null ? null : (pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(map['namespaceJunctions'], (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      targetHostName: map['targetHostName'] == null ? null : (map['targetHostName'] as String).input(),
+      usageModel: map['usageModel'] == null ? null : (map['usageModel'] as String).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
     );
   }
 }

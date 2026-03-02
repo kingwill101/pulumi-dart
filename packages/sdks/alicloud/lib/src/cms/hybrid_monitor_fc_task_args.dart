@@ -19,13 +19,10 @@ class HybridMonitorFcTaskArgs {
   /// [targetUserId] The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
   /// [yarmConfig] The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
   HybridMonitorFcTaskArgs({
-    required pulumi.Output<String> namespace,
-    pulumi.Output<String>? targetUserId,
-    required pulumi.Output<String> yarmConfig,
-  }) :
-      namespace = pulumi.Input.asInput<String>(namespace),
-      targetUserId = pulumi.Input.asOptionalInput<String>(targetUserId),
-      yarmConfig = pulumi.Input.asInput<String>(yarmConfig);
+    required this.namespace,
+    this.targetUserId,
+    required this.yarmConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class HybridMonitorFcTaskArgs {
 
   factory HybridMonitorFcTaskArgs.fromMap(Map<String, dynamic> map) {
     return HybridMonitorFcTaskArgs(
-      namespace: pulumi.Output.create<String>(map['namespace'] as String),
-      targetUserId: map['targetUserId'] == null ? null : pulumi.Output.create<String>(map['targetUserId'] as String),
-      yarmConfig: pulumi.Output.create<String>(map['yarmConfig'] as String),
+      namespace: (map['namespace'] as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
+      yarmConfig: (map['yarmConfig'] as String).input(),
     );
   }
 }

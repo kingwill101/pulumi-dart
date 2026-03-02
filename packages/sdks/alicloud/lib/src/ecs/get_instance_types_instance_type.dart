@@ -1,46 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_types_instance_type_burstable_instance.dart';
 import 'get_instance_types_instance_type_gpu.dart';
 import 'get_instance_types_instance_type_local_storage.dart';
 
 class GetInstanceTypesInstanceType {
   /// List of availability zones that support the instance type.
-  final List<String> availabilityZones;
+  final pulumi.Input<List<String>> availabilityZones;
   /// The burstable instance attribution.
-  final GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
+  final pulumi.Input<GetInstanceTypesInstanceTypeBurstableInstance> burstableInstance;
   /// Filter the results to a specific number of cpu cores.
-  final int cpuCoreCount;
+  final pulumi.Input<int> cpuCoreCount;
   /// Filter the result whose network interface number is no more than `eni_amount`.
-  final int eniAmount;
+  final pulumi.Input<int> eniAmount;
   /// (Available since v1.239.0) The maximum number of IPv6 addresses per ENI.
-  final int eniIpv6AddressQuantity;
+  final pulumi.Input<int> eniIpv6AddressQuantity;
   /// (Available since v1.239.0) The maximum number of IPv4 addresses per ENI.
-  final int eniPrivateIpAddressQuantity;
+  final pulumi.Input<int> eniPrivateIpAddressQuantity;
   /// (Available since v1.239.0) The maximum number of ENIs per instance.
-  final int eniQuantity;
+  final pulumi.Input<int> eniQuantity;
   /// The instance type family.
-  final String family;
+  final pulumi.Input<String> family;
   /// The GPU attribution of an instance type:
-  final GetInstanceTypesInstanceTypeGpu gpu;
+  final pulumi.Input<GetInstanceTypesInstanceTypeGpu> gpu;
   /// ID of the instance type.
-  final String id;
+  final pulumi.Input<String> id;
   /// Local storage of an instance type.
-  final GetInstanceTypesInstanceTypeLocalStorage localStorage;
+  final pulumi.Input<GetInstanceTypesInstanceTypeLocalStorage> localStorage;
   /// (Available since v1.239.0) The maximum number of queues per ENI, including primary and secondary ENIs.
-  final int maximumQueueNumberPerEni;
+  final pulumi.Input<int> maximumQueueNumberPerEni;
   /// Filter the results to a specific memory size in GB.
-  final double memorySize;
+  final pulumi.Input<double> memorySize;
   /// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol.
-  final String nvmeSupport;
+  final pulumi.Input<String> nvmeSupport;
   /// The price of instance type. **Note:** `price` takes effect only if `sorted_by` is set to `Price`.
-  final String price;
+  final pulumi.Input<String> price;
   /// (Available since v1.239.0) The default number of queues per primary ENI.
-  final int primaryEniQueueNumber;
+  final pulumi.Input<int> primaryEniQueueNumber;
   /// (Available since v1.239.0) The default number of queues per secondary ENI.
-  final int secondaryEniQueueNumber;
+  final pulumi.Input<int> secondaryEniQueueNumber;
   /// (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
-  final int totalEniQueueQuantity;
+  final pulumi.Input<int> totalEniQueueQuantity;
 
   /// Creates a new [GetInstanceTypesInstanceType].
   /// [availabilityZones] List of availability zones that support the instance type.
@@ -85,16 +86,16 @@ class GetInstanceTypesInstanceType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZones': availabilityZones,
-      'burstableInstance': burstableInstance.toMap(),
+      'burstableInstance': pulumi.Input.mapInputValue<GetInstanceTypesInstanceTypeBurstableInstance, Map<String, dynamic>>(burstableInstance, (value) => value.toMap()),
       'cpuCoreCount': cpuCoreCount,
       'eniAmount': eniAmount,
       'eniIpv6AddressQuantity': eniIpv6AddressQuantity,
       'eniPrivateIpAddressQuantity': eniPrivateIpAddressQuantity,
       'eniQuantity': eniQuantity,
       'family': family,
-      'gpu': gpu.toMap(),
+      'gpu': pulumi.Input.mapInputValue<GetInstanceTypesInstanceTypeGpu, Map<String, dynamic>>(gpu, (value) => value.toMap()),
       'id': id,
-      'localStorage': localStorage.toMap(),
+      'localStorage': pulumi.Input.mapInputValue<GetInstanceTypesInstanceTypeLocalStorage, Map<String, dynamic>>(localStorage, (value) => value.toMap()),
       'maximumQueueNumberPerEni': maximumQueueNumberPerEni,
       'memorySize': memorySize,
       'nvmeSupport': nvmeSupport,
@@ -107,24 +108,24 @@ class GetInstanceTypesInstanceType {
 
   factory GetInstanceTypesInstanceType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesInstanceType(
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      burstableInstance: GetInstanceTypesInstanceTypeBurstableInstance.fromMap((map['burstableInstance'] as Map).cast<String, dynamic>()),
-      cpuCoreCount: map['cpuCoreCount'] as int,
-      eniAmount: map['eniAmount'] as int,
-      eniIpv6AddressQuantity: map['eniIpv6AddressQuantity'] as int,
-      eniPrivateIpAddressQuantity: map['eniPrivateIpAddressQuantity'] as int,
-      eniQuantity: map['eniQuantity'] as int,
-      family: map['family'] as String,
-      gpu: GetInstanceTypesInstanceTypeGpu.fromMap((map['gpu'] as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      localStorage: GetInstanceTypesInstanceTypeLocalStorage.fromMap((map['localStorage'] as Map).cast<String, dynamic>()),
-      maximumQueueNumberPerEni: map['maximumQueueNumberPerEni'] as int,
-      memorySize: map['memorySize'] as double,
-      nvmeSupport: map['nvmeSupport'] as String,
-      price: map['price'] as String,
-      primaryEniQueueNumber: map['primaryEniQueueNumber'] as int,
-      secondaryEniQueueNumber: map['secondaryEniQueueNumber'] as int,
-      totalEniQueueQuantity: map['totalEniQueueQuantity'] as int,
+      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
+      burstableInstance: (GetInstanceTypesInstanceTypeBurstableInstance.fromMap((map['burstableInstance'] as Map).cast<String, dynamic>())).input(),
+      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
+      eniAmount: (map['eniAmount'] as int).input(),
+      eniIpv6AddressQuantity: (map['eniIpv6AddressQuantity'] as int).input(),
+      eniPrivateIpAddressQuantity: (map['eniPrivateIpAddressQuantity'] as int).input(),
+      eniQuantity: (map['eniQuantity'] as int).input(),
+      family: (map['family'] as String).input(),
+      gpu: (GetInstanceTypesInstanceTypeGpu.fromMap((map['gpu'] as Map).cast<String, dynamic>())).input(),
+      id: (map['id'] as String).input(),
+      localStorage: (GetInstanceTypesInstanceTypeLocalStorage.fromMap((map['localStorage'] as Map).cast<String, dynamic>())).input(),
+      maximumQueueNumberPerEni: (map['maximumQueueNumberPerEni'] as int).input(),
+      memorySize: (map['memorySize'] as double).input(),
+      nvmeSupport: (map['nvmeSupport'] as String).input(),
+      price: (map['price'] as String).input(),
+      primaryEniQueueNumber: (map['primaryEniQueueNumber'] as int).input(),
+      secondaryEniQueueNumber: (map['secondaryEniQueueNumber'] as int).input(),
+      totalEniQueueQuantity: (map['totalEniQueueQuantity'] as int).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleEvaluationMode {
   /// The mode of an evaluation.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [RuleEvaluationMode].
   /// [mode] The mode of an evaluation.
@@ -19,7 +20,7 @@ class RuleEvaluationMode {
 
   factory RuleEvaluationMode.fromMap(Map<String, dynamic> map) {
     return RuleEvaluationMode(
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

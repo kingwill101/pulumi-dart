@@ -34,25 +34,16 @@ class ExperimentAiplatformV1beta1Args {
   /// [tensorboardExperimentId] Required. The ID to use for the Tensorboard experiment, which becomes the final component of the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
   /// [tensorboardId] Required.
   ExperimentAiplatformV1beta1Args({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? etag,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? source,
-    required pulumi.Output<String> tensorboardExperimentId,
-    required pulumi.Output<String> tensorboardId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      tensorboardExperimentId = pulumi.Input.asInput<String>(tensorboardExperimentId),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.project,
+    this.source,
+    required this.tensorboardExperimentId,
+    required this.tensorboardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ExperimentAiplatformV1beta1Args {
 
   factory ExperimentAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ExperimentAiplatformV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      tensorboardExperimentId: pulumi.Output.create<String>(map['tensorboardExperimentId'] as String),
-      tensorboardId: pulumi.Output.create<String>(map['tensorboardId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      tensorboardExperimentId: (map['tensorboardExperimentId'] as String).input(),
+      tensorboardId: (map['tensorboardId'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of EphemeralStorage
 class EphemeralStorageResponse {
   /// The size of the function's ``/tmp`` directory.
-  final int? size;
+  final pulumi.Input<int>? size;
   /// The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
-  final int? sizeInGiB;
+  final pulumi.Input<int>? sizeInGiB;
 
   /// Creates a new [EphemeralStorageResponse].
   /// [size] The size of the function's ``/tmp`` directory.
@@ -25,8 +26,8 @@ class EphemeralStorageResponse {
 
   factory EphemeralStorageResponse.fromMap(Map<String, dynamic> map) {
     return EphemeralStorageResponse(
-      size: map['size'] == null ? null : map['size'] as int,
-      sizeInGiB: map['sizeInGiB'] == null ? null : map['sizeInGiB'] as int,
+      size: map['size'] == null ? null : (map['size'] as int).input(),
+      sizeInGiB: map['sizeInGiB'] == null ? null : (map['sizeInGiB'] as int).input(),
     );
   }
 }

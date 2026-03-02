@@ -16,13 +16,10 @@ class GetIndexFirestoreV1beta1Args {
   /// [indexId] Required.
   /// [project] Optional.
   GetIndexFirestoreV1beta1Args({
-    required pulumi.Output<String> databaseId,
-    required pulumi.Output<String> indexId,
-    pulumi.Output<String>? project,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.databaseId,
+    required this.indexId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetIndexFirestoreV1beta1Args {
 
   factory GetIndexFirestoreV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIndexFirestoreV1beta1Args(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      indexId: pulumi.Output.create<String>(map['indexId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      databaseId: (map['databaseId'] as String).input(),
+      indexId: (map['indexId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -49,33 +49,20 @@ class NetworkPeeringArgs {
   /// [requestId] Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   NetworkPeeringArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? exchangeSubnetRoutes,
-    pulumi.Output<bool>? exportCustomRoutes,
-    pulumi.Output<bool>? exportCustomRoutesWithPublicIp,
-    pulumi.Output<bool>? importCustomRoutes,
-    pulumi.Output<bool>? importCustomRoutesWithPublicIp,
-    required pulumi.Output<String> networkPeeringId,
-    pulumi.Output<int>? peerMtu,
-    required pulumi.Output<String> peerNetwork,
-    required pulumi.Output<NetworkPeeringPeerNetworkType> peerNetworkType,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? requestId,
-    required pulumi.Output<String> vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      exchangeSubnetRoutes = pulumi.Input.asOptionalInput<bool>(exchangeSubnetRoutes),
-      exportCustomRoutes = pulumi.Input.asOptionalInput<bool>(exportCustomRoutes),
-      exportCustomRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(exportCustomRoutesWithPublicIp),
-      importCustomRoutes = pulumi.Input.asOptionalInput<bool>(importCustomRoutes),
-      importCustomRoutesWithPublicIp = pulumi.Input.asOptionalInput<bool>(importCustomRoutesWithPublicIp),
-      networkPeeringId = pulumi.Input.asInput<String>(networkPeeringId),
-      peerMtu = pulumi.Input.asOptionalInput<int>(peerMtu),
-      peerNetwork = pulumi.Input.asInput<String>(peerNetwork),
-      peerNetworkType = pulumi.Input.asInput<NetworkPeeringPeerNetworkType>(peerNetworkType),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
+    this.description,
+    this.exchangeSubnetRoutes,
+    this.exportCustomRoutes,
+    this.exportCustomRoutesWithPublicIp,
+    this.importCustomRoutes,
+    this.importCustomRoutesWithPublicIp,
+    required this.networkPeeringId,
+    this.peerMtu,
+    required this.peerNetwork,
+    required this.peerNetworkType,
+    this.project,
+    this.requestId,
+    required this.vmwareEngineNetwork,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      exchangeSubnetRoutes: map['exchangeSubnetRoutes'] == null ? null : pulumi.Output.create<bool>(map['exchangeSubnetRoutes'] as bool),
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['exportCustomRoutes'] as bool),
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['exportCustomRoutesWithPublicIp'] as bool),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : pulumi.Output.create<bool>(map['importCustomRoutes'] as bool),
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : pulumi.Output.create<bool>(map['importCustomRoutesWithPublicIp'] as bool),
-      networkPeeringId: pulumi.Output.create<String>(map['networkPeeringId'] as String),
-      peerMtu: map['peerMtu'] == null ? null : pulumi.Output.create<int>(map['peerMtu'] as int),
-      peerNetwork: pulumi.Output.create<String>(map['peerNetwork'] as String),
-      peerNetworkType: pulumi.Output.create<NetworkPeeringPeerNetworkType>(NetworkPeeringPeerNetworkType.fromValue(map['peerNetworkType'] as String)),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      vmwareEngineNetwork: pulumi.Output.create<String>(map['vmwareEngineNetwork'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      exchangeSubnetRoutes: map['exchangeSubnetRoutes'] == null ? null : (map['exchangeSubnetRoutes'] as bool).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp'] as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp'] as bool).input(),
+      networkPeeringId: (map['networkPeeringId'] as String).input(),
+      peerMtu: map['peerMtu'] == null ? null : (map['peerMtu'] as int).input(),
+      peerNetwork: (map['peerNetwork'] as String).input(),
+      peerNetworkType: (NetworkPeeringPeerNetworkType.fromValue(map['peerNetworkType'] as String)).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Station Connection Properties.
 class StationConnectionPropertiesResponse {
   /// Connection keepalive idle time in seconds
-  final int? keepaliveIdleTime;
+  final pulumi.Input<int>? keepaliveIdleTime;
   /// Probe count, default value is 10
-  final int? probeCount;
+  final pulumi.Input<int>? probeCount;
   /// Probe interval in seconds, default value is 60
-  final int? probeInterval;
+  final pulumi.Input<int>? probeInterval;
 
   /// Creates a new [StationConnectionPropertiesResponse].
   /// [keepaliveIdleTime] Connection keepalive idle time in seconds
@@ -30,9 +31,9 @@ class StationConnectionPropertiesResponse {
 
   factory StationConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StationConnectionPropertiesResponse(
-      keepaliveIdleTime: map['keepaliveIdleTime'] == null ? null : map['keepaliveIdleTime'] as int,
-      probeCount: map['probeCount'] == null ? null : map['probeCount'] as int,
-      probeInterval: map['probeInterval'] == null ? null : map['probeInterval'] as int,
+      keepaliveIdleTime: map['keepaliveIdleTime'] == null ? null : (map['keepaliveIdleTime'] as int).input(),
+      probeCount: map['probeCount'] == null ? null : (map['probeCount'] as int).input(),
+      probeInterval: map['probeInterval'] == null ? null : (map['probeInterval'] as int).input(),
     );
   }
 }

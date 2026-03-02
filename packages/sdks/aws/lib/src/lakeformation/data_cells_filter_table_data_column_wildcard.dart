@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataCellsFilterTableDataColumnWildcard {
   /// (Optional) Excludes column names. Any column with this name will be excluded.
-  final List<String>? excludedColumnNames;
+  final pulumi.Input<List<String>>? excludedColumnNames;
 
   /// Creates a new [DataCellsFilterTableDataColumnWildcard].
   /// [excludedColumnNames] (Optional) Excludes column names. Any column with this name will be excluded.
@@ -19,7 +20,7 @@ class DataCellsFilterTableDataColumnWildcard {
 
   factory DataCellsFilterTableDataColumnWildcard.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : (map['excludedColumnNames'] as List).cast<String>(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
     );
   }
 }

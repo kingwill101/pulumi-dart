@@ -72,33 +72,20 @@ class JobState {
   /// [state] State of the job.
   /// [timeZone] Specifies the time zone to be used in interpreting schedule.
   JobState({
-    pulumi.Output<JobAppEngineHttpTarget>? appEngineHttpTarget,
-    pulumi.Output<String>? attemptDeadline,
-    pulumi.Output<String>? description,
-    pulumi.Output<JobHttpTarget>? httpTarget,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? paused,
-    pulumi.Output<String>? project,
-    pulumi.Output<JobPubsubTarget>? pubsubTarget,
-    pulumi.Output<String>? region,
-    pulumi.Output<JobRetryConfig>? retryConfig,
-    pulumi.Output<String>? schedule,
-    pulumi.Output<String>? state,
-    pulumi.Output<String>? timeZone,
-  }) :
-      appEngineHttpTarget = pulumi.Input.asOptionalInput<JobAppEngineHttpTarget>(appEngineHttpTarget),
-      attemptDeadline = pulumi.Input.asOptionalInput<String>(attemptDeadline),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      httpTarget = pulumi.Input.asOptionalInput<JobHttpTarget>(httpTarget),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      paused = pulumi.Input.asOptionalInput<bool>(paused),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pubsubTarget = pulumi.Input.asOptionalInput<JobPubsubTarget>(pubsubTarget),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retryConfig = pulumi.Input.asOptionalInput<JobRetryConfig>(retryConfig),
-      schedule = pulumi.Input.asOptionalInput<String>(schedule),
-      state = pulumi.Input.asOptionalInput<String>(state),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    this.appEngineHttpTarget,
+    this.attemptDeadline,
+    this.description,
+    this.httpTarget,
+    this.name,
+    this.paused,
+    this.project,
+    this.pubsubTarget,
+    this.region,
+    this.retryConfig,
+    this.schedule,
+    this.state,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -120,19 +107,19 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : pulumi.Output.create<JobAppEngineHttpTarget>(JobAppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())),
-      attemptDeadline: map['attemptDeadline'] == null ? null : pulumi.Output.create<String>(map['attemptDeadline'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      httpTarget: map['httpTarget'] == null ? null : pulumi.Output.create<JobHttpTarget>(JobHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      paused: map['paused'] == null ? null : pulumi.Output.create<bool>(map['paused'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      pubsubTarget: map['pubsubTarget'] == null ? null : pulumi.Output.create<JobPubsubTarget>(JobPubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      retryConfig: map['retryConfig'] == null ? null : pulumi.Output.create<JobRetryConfig>(JobRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())),
-      schedule: map['schedule'] == null ? null : pulumi.Output.create<String>(map['schedule'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (JobAppEngineHttpTarget.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
+      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (JobHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pubsubTarget: map['pubsubTarget'] == null ? null : (JobPubsubTarget.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      retryConfig: map['retryConfig'] == null ? null : (JobRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

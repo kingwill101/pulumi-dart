@@ -30,19 +30,13 @@ class ConditionalAccessPolicyState {
   /// [sessionControls] A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
   /// [state] Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   ConditionalAccessPolicyState({
-    pulumi.Output<ConditionalAccessPolicyConditions>? conditions,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<ConditionalAccessPolicyGrantControls>? grantControls,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<ConditionalAccessPolicySessionControls>? sessionControls,
-    pulumi.Output<String>? state,
-  }) :
-      conditions = pulumi.Input.asOptionalInput<ConditionalAccessPolicyConditions>(conditions),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      grantControls = pulumi.Input.asOptionalInput<ConditionalAccessPolicyGrantControls>(grantControls),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      sessionControls = pulumi.Input.asOptionalInput<ConditionalAccessPolicySessionControls>(sessionControls),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    this.conditions,
+    this.displayName,
+    this.grantControls,
+    this.objectId,
+    this.sessionControls,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class ConditionalAccessPolicyState {
 
   factory ConditionalAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyState(
-      conditions: map['conditions'] == null ? null : pulumi.Output.create<ConditionalAccessPolicyConditions>(ConditionalAccessPolicyConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      grantControls: map['grantControls'] == null ? null : pulumi.Output.create<ConditionalAccessPolicyGrantControls>(ConditionalAccessPolicyGrantControls.fromMap((map['grantControls'] as Map).cast<String, dynamic>())),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      sessionControls: map['sessionControls'] == null ? null : pulumi.Output.create<ConditionalAccessPolicySessionControls>(ConditionalAccessPolicySessionControls.fromMap((map['sessionControls'] as Map).cast<String, dynamic>())),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      conditions: map['conditions'] == null ? null : (ConditionalAccessPolicyConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      grantControls: map['grantControls'] == null ? null : (ConditionalAccessPolicyGrantControls.fromMap((map['grantControls'] as Map).cast<String, dynamic>())).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      sessionControls: map['sessionControls'] == null ? null : (ConditionalAccessPolicySessionControls.fromMap((map['sessionControls'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassifierGrokClassifier {
   /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
-  final String classification;
+  final pulumi.Input<String> classification;
   /// Custom grok patterns used by this classifier.
-  final String? customPatterns;
+  final pulumi.Input<String>? customPatterns;
   /// The grok pattern used by this classifier.
-  final String grokPattern;
+  final pulumi.Input<String> grokPattern;
 
   /// Creates a new [ClassifierGrokClassifier].
   /// [classification] An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
@@ -29,9 +30,9 @@ class ClassifierGrokClassifier {
 
   factory ClassifierGrokClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierGrokClassifier(
-      classification: map['classification'] as String,
-      customPatterns: map['customPatterns'] == null ? null : map['customPatterns'] as String,
-      grokPattern: map['grokPattern'] as String,
+      classification: (map['classification'] as String).input(),
+      customPatterns: map['customPatterns'] == null ? null : (map['customPatterns'] as String).input(),
+      grokPattern: (map['grokPattern'] as String).input(),
     );
   }
 }

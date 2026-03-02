@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetStorageBoxSnapshotStats {
   /// Current storage requirements of the Snapshot in bytes.
-  final int size;
+  final pulumi.Input<int> size;
   /// Size of the compressed file system contained in the Snapshot in bytes.
-  final int sizeFilesystem;
+  final pulumi.Input<int> sizeFilesystem;
 
   /// Creates a new [GetStorageBoxSnapshotStats].
   /// [size] Current storage requirements of the Snapshot in bytes.
@@ -24,8 +25,8 @@ class GetStorageBoxSnapshotStats {
 
   factory GetStorageBoxSnapshotStats.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotStats(
-      size: map['size'] as int,
-      sizeFilesystem: map['sizeFilesystem'] as int,
+      size: (map['size'] as int).input(),
+      sizeFilesystem: (map['sizeFilesystem'] as int).input(),
     );
   }
 }

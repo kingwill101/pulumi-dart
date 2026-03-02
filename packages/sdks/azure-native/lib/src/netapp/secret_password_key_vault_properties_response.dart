@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of key vault to get the secrets for password.
 class SecretPasswordKeyVaultPropertiesResponse {
   /// The Uri of KeyVault.
-  final String keyVaultUri;
+  final pulumi.Input<String> keyVaultUri;
   /// The name of KeyVault password secret.
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [SecretPasswordKeyVaultPropertiesResponse].
   /// [keyVaultUri] The Uri of KeyVault.
@@ -25,8 +26,8 @@ class SecretPasswordKeyVaultPropertiesResponse {
 
   factory SecretPasswordKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretPasswordKeyVaultPropertiesResponse(
-      keyVaultUri: map['keyVaultUri'] as String,
-      secretName: map['secretName'] as String,
+      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

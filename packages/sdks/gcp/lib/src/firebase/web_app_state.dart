@@ -32,21 +32,14 @@ class WebAppState {
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] The ID of the project in which the resource belongs.
   WebAppState({
-    pulumi.Output<String>? apiKeyId,
-    pulumi.Output<String>? appId,
-    pulumi.Output<List<String>>? appUrls,
-    pulumi.Output<String>? deletionPolicy,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      apiKeyId = pulumi.Input.asOptionalInput<String>(apiKeyId),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      appUrls = pulumi.Input.asOptionalInput<List<String>>(appUrls),
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.apiKeyId,
+    this.appId,
+    this.appUrls,
+    this.deletionPolicy,
+    this.displayName,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class WebAppState {
 
   factory WebAppState.fromMap(Map<String, dynamic> map) {
     return WebAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : pulumi.Output.create<String>(map['apiKeyId'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      appUrls: map['appUrls'] == null ? null : pulumi.Output.create<List<String>>((map['appUrls'] as List).cast<String>()),
-      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      appUrls: map['appUrls'] == null ? null : ((map['appUrls'] as List).cast<String>()).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

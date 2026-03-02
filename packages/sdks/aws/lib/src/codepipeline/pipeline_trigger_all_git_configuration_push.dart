@@ -7,11 +7,11 @@ import 'pipeline_trigger_all_git_configuration_push_tag.dart';
 
 class PipelineTriggerAllGitConfigurationPush {
   /// The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
-  final List<PipelineTriggerAllGitConfigurationPushBranch>? branches;
+  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushBranch>>? branches;
   /// The field that specifies to filter on file paths for the push trigger configuration. A `file_paths` block is documented below.
-  final List<PipelineTriggerAllGitConfigurationPushFilePath>? filePaths;
+  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushFilePath>>? filePaths;
   /// The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
-  final List<PipelineTriggerAllGitConfigurationPushTag>? tags;
+  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPushTag>>? tags;
 
   /// Creates a new [PipelineTriggerAllGitConfigurationPush].
   /// [branches] The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
@@ -25,17 +25,17 @@ class PipelineTriggerAllGitConfigurationPush {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'branches': ?branches == null ? null : pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushBranch, Map<String, dynamic>>(branches!, (value) => value.toMap()),
-      'filePaths': ?filePaths == null ? null : pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushFilePath, Map<String, dynamic>>(filePaths!, (value) => value.toMap()),
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'branches': ?pulumi.Input.mapOptionalInputValue<List<PipelineTriggerAllGitConfigurationPushBranch>, List<Map<String, dynamic>>>(branches, (value) => pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushBranch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filePaths': ?pulumi.Input.mapOptionalInputValue<List<PipelineTriggerAllGitConfigurationPushFilePath>, List<Map<String, dynamic>>>(filePaths, (value) => pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushFilePath, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<PipelineTriggerAllGitConfigurationPushTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<PipelineTriggerAllGitConfigurationPushTag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PipelineTriggerAllGitConfigurationPush.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerAllGitConfigurationPush(
-      branches: map['branches'] == null ? null : pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushBranch>(map['branches'], (value) => PipelineTriggerAllGitConfigurationPushBranch.fromMap((value as Map).cast<String, dynamic>())),
-      filePaths: map['filePaths'] == null ? null : pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushFilePath>(map['filePaths'], (value) => PipelineTriggerAllGitConfigurationPushFilePath.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushTag>(map['tags'], (value) => PipelineTriggerAllGitConfigurationPushTag.fromMap((value as Map).cast<String, dynamic>())),
+      branches: map['branches'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushBranch>(map['branches'], (value) => PipelineTriggerAllGitConfigurationPushBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filePaths: map['filePaths'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushFilePath>(map['filePaths'], (value) => PipelineTriggerAllGitConfigurationPushFilePath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPushTag>(map['tags'], (value) => PipelineTriggerAllGitConfigurationPushTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

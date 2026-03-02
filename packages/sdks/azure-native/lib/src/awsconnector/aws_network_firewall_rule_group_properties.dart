@@ -7,21 +7,21 @@ import 'tag.dart';
 /// Definition of awsNetworkFirewallRuleGroup
 class AwsNetworkFirewallRuleGroupProperties {
   /// Property capacity
-  final int? capacity;
+  final pulumi.Input<int>? capacity;
   /// Property description
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Property ruleGroup
-  final RuleGroup? ruleGroup;
+  final pulumi.Input<RuleGroup>? ruleGroup;
   /// A resource ARN.
-  final String? ruleGroupArn;
+  final pulumi.Input<String>? ruleGroupArn;
   /// Property ruleGroupId
-  final String? ruleGroupId;
+  final pulumi.Input<String>? ruleGroupId;
   /// Property ruleGroupName
-  final String? ruleGroupName;
+  final pulumi.Input<String>? ruleGroupName;
   /// Property tags
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
   /// Property type
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [AwsNetworkFirewallRuleGroupProperties].
   /// [capacity] Property capacity
@@ -47,25 +47,25 @@ class AwsNetworkFirewallRuleGroupProperties {
     return <String, dynamic>{
       'capacity': ?capacity,
       'description': ?description,
-      'ruleGroup': ?ruleGroup == null ? null : ruleGroup!.toMap(),
+      'ruleGroup': ?pulumi.Input.mapOptionalInputValue<RuleGroup, Map<String, dynamic>>(ruleGroup, (value) => value.toMap()),
       'ruleGroupArn': ?ruleGroupArn,
       'ruleGroupId': ?ruleGroupId,
       'ruleGroupName': ?ruleGroupName,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': ?type,
     };
   }
 
   factory AwsNetworkFirewallRuleGroupProperties.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallRuleGroupProperties(
-      capacity: map['capacity'] == null ? null : map['capacity'] as int,
-      description: map['description'] == null ? null : map['description'] as String,
-      ruleGroup: map['ruleGroup'] == null ? null : RuleGroup.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>()),
-      ruleGroupArn: map['ruleGroupArn'] == null ? null : map['ruleGroupArn'] as String,
-      ruleGroupId: map['ruleGroupId'] == null ? null : map['ruleGroupId'] as String,
-      ruleGroupName: map['ruleGroupName'] == null ? null : map['ruleGroupName'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] == null ? null : map['type'] as String,
+      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ruleGroup: map['ruleGroup'] == null ? null : (RuleGroup.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>())).input(),
+      ruleGroupArn: map['ruleGroupArn'] == null ? null : (map['ruleGroupArn'] as String).input(),
+      ruleGroupId: map['ruleGroupId'] == null ? null : (map['ruleGroupId'] as String).input(),
+      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

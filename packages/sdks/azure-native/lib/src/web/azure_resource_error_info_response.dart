@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The azure resource error info.
 class AzureResourceErrorInfoResponse {
   /// The error code.
-  final String code;
+  final pulumi.Input<String> code;
   /// The error details.
-  final List<AzureResourceErrorInfoResponse>? details;
+  final pulumi.Input<List<AzureResourceErrorInfoResponse>>? details;
   /// The error message.
-  final String message;
+  final pulumi.Input<String> message;
 
   /// Creates a new [AzureResourceErrorInfoResponse].
   /// [code] The error code.
@@ -24,16 +24,16 @@ class AzureResourceErrorInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'details': ?details == null ? null : pulumi.Input.encodeList<AzureResourceErrorInfoResponse, Map<String, dynamic>>(details!, (value) => value.toMap()),
+      'details': ?pulumi.Input.mapOptionalInputValue<List<AzureResourceErrorInfoResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<AzureResourceErrorInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'message': message,
     };
   }
 
   factory AzureResourceErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceErrorInfoResponse(
-      code: map['code'] as String,
-      details: map['details'] == null ? null : pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(map['details'], (value) => AzureResourceErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      message: map['message'] as String,
+      code: (map['code'] as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(map['details'], (value) => AzureResourceErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: (map['message'] as String).input(),
     );
   }
 }

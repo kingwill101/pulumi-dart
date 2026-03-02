@@ -22,15 +22,11 @@ class GetSqlAssessmentV2OperationArgs {
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetSqlAssessmentV2OperationArgs({
-    required pulumi.Output<String> assessmentName,
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      assessmentName = pulumi.Input.asInput<String>(assessmentName),
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.assessmentName,
+    required this.groupName,
+    required this.projectName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetSqlAssessmentV2OperationArgs {
 
   factory GetSqlAssessmentV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlAssessmentV2OperationArgs(
-      assessmentName: pulumi.Output.create<String>(map['assessmentName'] as String),
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      assessmentName: (map['assessmentName'] as String).input(),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTenantAccess {
   /// Is access to the Management API enabled (presumably "for this Tenant")?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Primary access key for the tenant access information contract.
-  final String primaryKey;
+  final pulumi.Input<String> primaryKey;
   /// Secondary access key for the tenant access information contract.
-  final String secondaryKey;
+  final pulumi.Input<String> secondaryKey;
   /// The ID of the Tenant which has access to this API Management instance.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetServiceTenantAccess].
   /// [enabled] Is access to the Management API enabled (presumably "for this Tenant")?
@@ -34,10 +35,10 @@ class GetServiceTenantAccess {
 
   factory GetServiceTenantAccess.fromMap(Map<String, dynamic> map) {
     return GetServiceTenantAccess(
-      enabled: map['enabled'] as bool,
-      primaryKey: map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] as String,
-      tenantId: map['tenantId'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      primaryKey: (map['primaryKey'] as String).input(),
+      secondaryKey: (map['secondaryKey'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
     );
   }
 }

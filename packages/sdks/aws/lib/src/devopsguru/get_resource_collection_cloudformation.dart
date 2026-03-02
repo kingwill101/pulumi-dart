@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetResourceCollectionCloudformation {
   /// Array of the names of the AWS CloudFormation stacks.
-  final List<String> stackNames;
+  final pulumi.Input<List<String>> stackNames;
 
   /// Creates a new [GetResourceCollectionCloudformation].
   /// [stackNames] Array of the names of the AWS CloudFormation stacks.
@@ -19,7 +20,7 @@ class GetResourceCollectionCloudformation {
 
   factory GetResourceCollectionCloudformation.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionCloudformation(
-      stackNames: (map['stackNames'] as List).cast<String>(),
+      stackNames: ((map['stackNames'] as List).cast<String>()).input(),
     );
   }
 }

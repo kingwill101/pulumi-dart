@@ -25,19 +25,13 @@ class NamedQueryState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] Workgroup to which the query belongs. Defaults to `primary`
   NamedQueryState({
-    pulumi.Output<String>? database,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? query,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? workgroup,
-  }) :
-      database = pulumi.Input.asOptionalInput<String>(database),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      query = pulumi.Input.asOptionalInput<String>(query),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      workgroup = pulumi.Input.asOptionalInput<String>(workgroup);
+    this.database,
+    this.description,
+    this.name,
+    this.query,
+    this.region,
+    this.workgroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class NamedQueryState {
 
   factory NamedQueryState.fromMap(Map<String, dynamic> map) {
     return NamedQueryState(
-      database: map['database'] == null ? null : pulumi.Output.create<String>(map['database'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      query: map['query'] == null ? null : pulumi.Output.create<String>(map['query'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      workgroup: map['workgroup'] == null ? null : pulumi.Output.create<String>(map['workgroup'] as String),
+      database: map['database'] == null ? null : (map['database'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      query: map['query'] == null ? null : (map['query'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
     );
   }
 }

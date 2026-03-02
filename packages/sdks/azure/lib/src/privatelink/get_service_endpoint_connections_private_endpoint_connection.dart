@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceEndpointConnectionsPrivateEndpointConnection {
   /// A message indicating if changes on the service provider require any updates or not.
-  final String actionRequired;
+  final pulumi.Input<String> actionRequired;
   /// The resource id of the private link service connection between the private link service and the private link endpoint.
-  final String connectionId;
+  final pulumi.Input<String> connectionId;
   /// The name of the connection between the private link service and the private link endpoint.
-  final String connectionName;
+  final pulumi.Input<String> connectionName;
   /// The request for approval message or the reason for rejection message.
-  final String description;
+  final pulumi.Input<String> description;
   /// The resource id of the private link endpoint.
-  final String privateEndpointId;
+  final pulumi.Input<String> privateEndpointId;
   /// The name of the private link endpoint.
-  final String privateEndpointName;
+  final pulumi.Input<String> privateEndpointName;
   /// Indicates the state of the connection between the private link service and the private link endpoint, possible values are `Pending`, `Approved` or `Rejected`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetServiceEndpointConnectionsPrivateEndpointConnection].
   /// [actionRequired] A message indicating if changes on the service provider require any updates or not.
@@ -49,13 +50,13 @@ class GetServiceEndpointConnectionsPrivateEndpointConnection {
 
   factory GetServiceEndpointConnectionsPrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointConnectionsPrivateEndpointConnection(
-      actionRequired: map['actionRequired'] as String,
-      connectionId: map['connectionId'] as String,
-      connectionName: map['connectionName'] as String,
-      description: map['description'] as String,
-      privateEndpointId: map['privateEndpointId'] as String,
-      privateEndpointName: map['privateEndpointName'] as String,
-      status: map['status'] as String,
+      actionRequired: (map['actionRequired'] as String).input(),
+      connectionId: (map['connectionId'] as String).input(),
+      connectionName: (map['connectionName'] as String).input(),
+      description: (map['description'] as String).input(),
+      privateEndpointId: (map['privateEndpointId'] as String).input(),
+      privateEndpointName: (map['privateEndpointName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

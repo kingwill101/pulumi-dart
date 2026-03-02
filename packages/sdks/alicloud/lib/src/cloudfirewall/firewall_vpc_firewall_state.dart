@@ -39,27 +39,17 @@ class FirewallVpcFirewallState {
   /// [vpcFirewallId] The ID of the VPC firewall instance.
   /// [vpcFirewallName] The name of the VPC firewall instance.
   FirewallVpcFirewallState({
-    pulumi.Output<int>? bandwidth,
-    pulumi.Output<String>? connectType,
-    pulumi.Output<String>? lang,
-    pulumi.Output<FirewallVpcFirewallLocalVpc>? localVpc,
-    pulumi.Output<String>? memberUid,
-    pulumi.Output<FirewallVpcFirewallPeerVpc>? peerVpc,
-    pulumi.Output<String>? regionStatus,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcFirewallId,
-    pulumi.Output<String>? vpcFirewallName,
-  }) :
-      bandwidth = pulumi.Input.asOptionalInput<int>(bandwidth),
-      connectType = pulumi.Input.asOptionalInput<String>(connectType),
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      localVpc = pulumi.Input.asOptionalInput<FirewallVpcFirewallLocalVpc>(localVpc),
-      memberUid = pulumi.Input.asOptionalInput<String>(memberUid),
-      peerVpc = pulumi.Input.asOptionalInput<FirewallVpcFirewallPeerVpc>(peerVpc),
-      regionStatus = pulumi.Input.asOptionalInput<String>(regionStatus),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcFirewallId = pulumi.Input.asOptionalInput<String>(vpcFirewallId),
-      vpcFirewallName = pulumi.Input.asOptionalInput<String>(vpcFirewallName);
+    this.bandwidth,
+    this.connectType,
+    this.lang,
+    this.localVpc,
+    this.memberUid,
+    this.peerVpc,
+    this.regionStatus,
+    this.status,
+    this.vpcFirewallId,
+    this.vpcFirewallName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class FirewallVpcFirewallState {
 
   factory FirewallVpcFirewallState.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallState(
-      bandwidth: map['bandwidth'] == null ? null : pulumi.Output.create<int>(map['bandwidth'] as int),
-      connectType: map['connectType'] == null ? null : pulumi.Output.create<String>(map['connectType'] as String),
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      localVpc: map['localVpc'] == null ? null : pulumi.Output.create<FirewallVpcFirewallLocalVpc>(FirewallVpcFirewallLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())),
-      memberUid: map['memberUid'] == null ? null : pulumi.Output.create<String>(map['memberUid'] as String),
-      peerVpc: map['peerVpc'] == null ? null : pulumi.Output.create<FirewallVpcFirewallPeerVpc>(FirewallVpcFirewallPeerVpc.fromMap((map['peerVpc'] as Map).cast<String, dynamic>())),
-      regionStatus: map['regionStatus'] == null ? null : pulumi.Output.create<String>(map['regionStatus'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallId'] as String),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : pulumi.Output.create<String>(map['vpcFirewallName'] as String),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
+      connectType: map['connectType'] == null ? null : (map['connectType'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      localVpc: map['localVpc'] == null ? null : (FirewallVpcFirewallLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      peerVpc: map['peerVpc'] == null ? null : (FirewallVpcFirewallPeerVpc.fromMap((map['peerVpc'] as Map).cast<String, dynamic>())).input(),
+      regionStatus: map['regionStatus'] == null ? null : (map['regionStatus'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
     );
   }
 }

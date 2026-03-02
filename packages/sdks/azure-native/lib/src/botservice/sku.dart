@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SKU of the cognitive services account.
 class Sku {
   /// The sku name
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [Sku].
   /// [name] The sku name
@@ -20,7 +21,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

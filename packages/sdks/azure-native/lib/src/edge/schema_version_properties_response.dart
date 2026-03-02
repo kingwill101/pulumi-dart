@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema Version Properties
 class SchemaVersionPropertiesResponse {
   /// Provisioning state of resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Value of schema version
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SchemaVersionPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
@@ -25,8 +26,8 @@ class SchemaVersionPropertiesResponse {
 
   factory SchemaVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchemaVersionPropertiesResponse(
-      provisioningState: map['provisioningState'] as String,
-      value: map['value'] as String,
+      provisioningState: (map['provisioningState'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

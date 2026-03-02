@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The retention details of the MT.
 class RetentionVolumeResponse {
   /// The volume capacity.
-  final double? capacityInBytes;
+  final pulumi.Input<double>? capacityInBytes;
   /// The free space available in this volume.
-  final double? freeSpaceInBytes;
+  final pulumi.Input<double>? freeSpaceInBytes;
   /// The threshold percentage.
-  final int? thresholdPercentage;
+  final pulumi.Input<int>? thresholdPercentage;
   /// The volume name.
-  final String? volumeName;
+  final pulumi.Input<String>? volumeName;
 
   /// Creates a new [RetentionVolumeResponse].
   /// [capacityInBytes] The volume capacity.
@@ -35,10 +36,10 @@ class RetentionVolumeResponse {
 
   factory RetentionVolumeResponse.fromMap(Map<String, dynamic> map) {
     return RetentionVolumeResponse(
-      capacityInBytes: map['capacityInBytes'] == null ? null : map['capacityInBytes'] as double,
-      freeSpaceInBytes: map['freeSpaceInBytes'] == null ? null : map['freeSpaceInBytes'] as double,
-      thresholdPercentage: map['thresholdPercentage'] == null ? null : map['thresholdPercentage'] as int,
-      volumeName: map['volumeName'] == null ? null : map['volumeName'] as String,
+      capacityInBytes: map['capacityInBytes'] == null ? null : (map['capacityInBytes'] as double).input(),
+      freeSpaceInBytes: map['freeSpaceInBytes'] == null ? null : (map['freeSpaceInBytes'] as double).input(),
+      thresholdPercentage: map['thresholdPercentage'] == null ? null : (map['thresholdPercentage'] as int).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
     );
   }
 }

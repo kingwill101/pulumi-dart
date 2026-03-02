@@ -38,27 +38,17 @@ class DomainState {
   /// [status] The status of the domain name.
   /// [tags] The tags. You can specify up to 20 tags.
   DomainState({
-    pulumi.Output<String>? accessType,
-    pulumi.Output<String>? cname,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? domainId,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<DomainListen>? listen,
-    pulumi.Output<DomainRedirect>? redirect,
-    pulumi.Output<String>? resourceManagerResourceGroupId,
-    pulumi.Output<int>? status,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessType = pulumi.Input.asOptionalInput<String>(accessType),
-      cname = pulumi.Input.asOptionalInput<String>(cname),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      domainId = pulumi.Input.asOptionalInput<String>(domainId),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      listen = pulumi.Input.asOptionalInput<DomainListen>(listen),
-      redirect = pulumi.Input.asOptionalInput<DomainRedirect>(redirect),
-      resourceManagerResourceGroupId = pulumi.Input.asOptionalInput<String>(resourceManagerResourceGroupId),
-      status = pulumi.Input.asOptionalInput<int>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessType,
+    this.cname,
+    this.domain,
+    this.domainId,
+    this.instanceId,
+    this.listen,
+    this.redirect,
+    this.resourceManagerResourceGroupId,
+    this.status,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,16 +67,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      accessType: map['accessType'] == null ? null : pulumi.Output.create<String>(map['accessType'] as String),
-      cname: map['cname'] == null ? null : pulumi.Output.create<String>(map['cname'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      domainId: map['domainId'] == null ? null : pulumi.Output.create<String>(map['domainId'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      listen: map['listen'] == null ? null : pulumi.Output.create<DomainListen>(DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())),
-      redirect: map['redirect'] == null ? null : pulumi.Output.create<DomainRedirect>(DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceManagerResourceGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<int>(map['status'] as int),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      listen: map['listen'] == null ? null : (DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

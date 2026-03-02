@@ -8,13 +8,13 @@ import 'function_output.dart';
 /// The properties that are associated with a scalar function.
 class ScalarFunctionProperties {
   /// The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
-  final AzureMachineLearningWebServiceFunctionBinding? binding;
-  final List<FunctionInput>? inputs;
+  final pulumi.Input<AzureMachineLearningWebServiceFunctionBinding>? binding;
+  final pulumi.Input<List<FunctionInput>>? inputs;
   /// Describes the output of a function.
-  final FunctionOutput? output;
+  final pulumi.Input<FunctionOutput>? output;
   /// Indicates the type of function.
   /// Expected value is 'Scalar'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ScalarFunctionProperties].
   /// [binding] The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
@@ -30,19 +30,19 @@ class ScalarFunctionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binding': ?binding == null ? null : binding!.toMap(),
-      'inputs': ?inputs == null ? null : pulumi.Input.encodeList<FunctionInput, Map<String, dynamic>>(inputs!, (value) => value.toMap()),
-      'output': ?output == null ? null : output!.toMap(),
+      'binding': ?pulumi.Input.mapOptionalInputValue<AzureMachineLearningWebServiceFunctionBinding, Map<String, dynamic>>(binding, (value) => value.toMap()),
+      'inputs': ?pulumi.Input.mapOptionalInputValue<List<FunctionInput>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<FunctionInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'output': ?pulumi.Input.mapOptionalInputValue<FunctionOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ScalarFunctionProperties.fromMap(Map<String, dynamic> map) {
     return ScalarFunctionProperties(
-      binding: map['binding'] == null ? null : AzureMachineLearningWebServiceFunctionBinding.fromMap((map['binding'] as Map).cast<String, dynamic>()),
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<FunctionInput>(map['inputs'], (value) => FunctionInput.fromMap((value as Map).cast<String, dynamic>())),
-      output: map['output'] == null ? null : FunctionOutput.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBinding.fromMap((map['binding'] as Map).cast<String, dynamic>())).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInput>(map['inputs'], (value) => FunctionInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (FunctionOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

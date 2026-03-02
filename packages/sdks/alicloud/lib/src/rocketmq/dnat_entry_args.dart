@@ -31,21 +31,14 @@ class DnatEntryArgs {
   /// [sagId] The ID of the SAG instance.
   /// [type] The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
   DnatEntryArgs({
-    pulumi.Output<String>? externalIp,
-    required pulumi.Output<String> externalPort,
-    required pulumi.Output<String> internalIp,
-    required pulumi.Output<String> internalPort,
-    required pulumi.Output<String> ipProtocol,
-    required pulumi.Output<String> sagId,
-    required pulumi.Output<String> type,
-  }) :
-      externalIp = pulumi.Input.asOptionalInput<String>(externalIp),
-      externalPort = pulumi.Input.asInput<String>(externalPort),
-      internalIp = pulumi.Input.asInput<String>(internalIp),
-      internalPort = pulumi.Input.asInput<String>(internalPort),
-      ipProtocol = pulumi.Input.asInput<String>(ipProtocol),
-      sagId = pulumi.Input.asInput<String>(sagId),
-      type = pulumi.Input.asInput<String>(type);
+    this.externalIp,
+    required this.externalPort,
+    required this.internalIp,
+    required this.internalPort,
+    required this.ipProtocol,
+    required this.sagId,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class DnatEntryArgs {
 
   factory DnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return DnatEntryArgs(
-      externalIp: map['externalIp'] == null ? null : pulumi.Output.create<String>(map['externalIp'] as String),
-      externalPort: pulumi.Output.create<String>(map['externalPort'] as String),
-      internalIp: pulumi.Output.create<String>(map['internalIp'] as String),
-      internalPort: pulumi.Output.create<String>(map['internalPort'] as String),
-      ipProtocol: pulumi.Output.create<String>(map['ipProtocol'] as String),
-      sagId: pulumi.Output.create<String>(map['sagId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalPort: (map['externalPort'] as String).input(),
+      internalIp: (map['internalIp'] as String).input(),
+      internalPort: (map['internalPort'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      sagId: (map['sagId'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

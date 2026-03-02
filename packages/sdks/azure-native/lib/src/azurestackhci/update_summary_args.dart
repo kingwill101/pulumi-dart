@@ -46,31 +46,19 @@ class UpdateSummaryArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [state] Overall update state of the stamp.
   UpdateSummaryArgs({
-    required pulumi.Output<String> clusterName,
-    pulumi.Output<String>? currentOemVersion,
-    pulumi.Output<String>? currentSbeVersion,
-    pulumi.Output<String>? currentVersion,
-    pulumi.Output<String>? hardwareModel,
-    pulumi.Output<String>? healthCheckDate,
-    pulumi.Output<String>? lastChecked,
-    pulumi.Output<String>? lastUpdated,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? oemFamily,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? state,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      currentOemVersion = pulumi.Input.asOptionalInput<String>(currentOemVersion),
-      currentSbeVersion = pulumi.Input.asOptionalInput<String>(currentSbeVersion),
-      currentVersion = pulumi.Input.asOptionalInput<String>(currentVersion),
-      hardwareModel = pulumi.Input.asOptionalInput<String>(hardwareModel),
-      healthCheckDate = pulumi.Input.asOptionalInput<String>(healthCheckDate),
-      lastChecked = pulumi.Input.asOptionalInput<String>(lastChecked),
-      lastUpdated = pulumi.Input.asOptionalInput<String>(lastUpdated),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      oemFamily = pulumi.Input.asOptionalInput<String>(oemFamily),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      state = pulumi.Input.asOptionalInput<String>(state);
+    required this.clusterName,
+    this.currentOemVersion,
+    this.currentSbeVersion,
+    this.currentVersion,
+    this.hardwareModel,
+    this.healthCheckDate,
+    this.lastChecked,
+    this.lastUpdated,
+    this.location,
+    this.oemFamily,
+    required this.resourceGroupName,
+    this.state,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class UpdateSummaryArgs {
 
   factory UpdateSummaryArgs.fromMap(Map<String, dynamic> map) {
     return UpdateSummaryArgs(
-      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
-      currentOemVersion: map['currentOemVersion'] == null ? null : pulumi.Output.create<String>(map['currentOemVersion'] as String),
-      currentSbeVersion: map['currentSbeVersion'] == null ? null : pulumi.Output.create<String>(map['currentSbeVersion'] as String),
-      currentVersion: map['currentVersion'] == null ? null : pulumi.Output.create<String>(map['currentVersion'] as String),
-      hardwareModel: map['hardwareModel'] == null ? null : pulumi.Output.create<String>(map['hardwareModel'] as String),
-      healthCheckDate: map['healthCheckDate'] == null ? null : pulumi.Output.create<String>(map['healthCheckDate'] as String),
-      lastChecked: map['lastChecked'] == null ? null : pulumi.Output.create<String>(map['lastChecked'] as String),
-      lastUpdated: map['lastUpdated'] == null ? null : pulumi.Output.create<String>(map['lastUpdated'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      oemFamily: map['oemFamily'] == null ? null : pulumi.Output.create<String>(map['oemFamily'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      state: map['state'] == null ? null : pulumi.Output.create<String>(map['state'] as String),
+      clusterName: (map['clusterName'] as String).input(),
+      currentOemVersion: map['currentOemVersion'] == null ? null : (map['currentOemVersion'] as String).input(),
+      currentSbeVersion: map['currentSbeVersion'] == null ? null : (map['currentSbeVersion'] as String).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
+      hardwareModel: map['hardwareModel'] == null ? null : (map['hardwareModel'] as String).input(),
+      healthCheckDate: map['healthCheckDate'] == null ? null : (map['healthCheckDate'] as String).input(),
+      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked'] as String).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      oemFamily: map['oemFamily'] == null ? null : (map['oemFamily'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

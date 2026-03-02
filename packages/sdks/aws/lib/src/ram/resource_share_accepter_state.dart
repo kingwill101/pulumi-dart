@@ -34,25 +34,16 @@ class ResourceShareAccepterState {
   /// [shareName] The name of the resource share.
   /// [status] The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
   ResourceShareAccepterState({
-    pulumi.Output<String>? invitationArn,
-    pulumi.Output<String>? receiverAccountId,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? resources,
-    pulumi.Output<String>? senderAccountId,
-    pulumi.Output<String>? shareArn,
-    pulumi.Output<String>? shareId,
-    pulumi.Output<String>? shareName,
-    pulumi.Output<String>? status,
-  }) :
-      invitationArn = pulumi.Input.asOptionalInput<String>(invitationArn),
-      receiverAccountId = pulumi.Input.asOptionalInput<String>(receiverAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources),
-      senderAccountId = pulumi.Input.asOptionalInput<String>(senderAccountId),
-      shareArn = pulumi.Input.asOptionalInput<String>(shareArn),
-      shareId = pulumi.Input.asOptionalInput<String>(shareId),
-      shareName = pulumi.Input.asOptionalInput<String>(shareName),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.invitationArn,
+    this.receiverAccountId,
+    this.region,
+    this.resources,
+    this.senderAccountId,
+    this.shareArn,
+    this.shareId,
+    this.shareName,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,15 +61,15 @@ class ResourceShareAccepterState {
 
   factory ResourceShareAccepterState.fromMap(Map<String, dynamic> map) {
     return ResourceShareAccepterState(
-      invitationArn: map['invitationArn'] == null ? null : pulumi.Output.create<String>(map['invitationArn'] as String),
-      receiverAccountId: map['receiverAccountId'] == null ? null : pulumi.Output.create<String>(map['receiverAccountId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
-      senderAccountId: map['senderAccountId'] == null ? null : pulumi.Output.create<String>(map['senderAccountId'] as String),
-      shareArn: map['shareArn'] == null ? null : pulumi.Output.create<String>(map['shareArn'] as String),
-      shareId: map['shareId'] == null ? null : pulumi.Output.create<String>(map['shareId'] as String),
-      shareName: map['shareName'] == null ? null : pulumi.Output.create<String>(map['shareName'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      invitationArn: map['invitationArn'] == null ? null : (map['invitationArn'] as String).input(),
+      receiverAccountId: map['receiverAccountId'] == null ? null : (map['receiverAccountId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      senderAccountId: map['senderAccountId'] == null ? null : (map['senderAccountId'] as String).input(),
+      shareArn: map['shareArn'] == null ? null : (map['shareArn'] as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

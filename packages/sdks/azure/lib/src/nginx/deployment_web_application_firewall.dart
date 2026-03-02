@@ -5,9 +5,9 @@ import 'deployment_web_application_firewall_status.dart';
 
 class DeploymentWebApplicationFirewall {
   /// Whether WAF is enabled/disabled for this NGINX Deployment.
-  final bool activationStateEnabled;
+  final pulumi.Input<bool> activationStateEnabled;
   /// A `status` block as defined below.
-  final List<DeploymentWebApplicationFirewallStatus>? statuses;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatus>>? statuses;
 
   /// Creates a new [DeploymentWebApplicationFirewall].
   /// [activationStateEnabled] Whether WAF is enabled/disabled for this NGINX Deployment.
@@ -20,14 +20,14 @@ class DeploymentWebApplicationFirewall {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activationStateEnabled': activationStateEnabled,
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatus, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+      'statuses': ?pulumi.Input.mapOptionalInputValue<List<DeploymentWebApplicationFirewallStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<DeploymentWebApplicationFirewallStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DeploymentWebApplicationFirewall.fromMap(Map<String, dynamic> map) {
     return DeploymentWebApplicationFirewall(
-      activationStateEnabled: map['activationStateEnabled'] as bool,
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatus>(map['statuses'], (value) => DeploymentWebApplicationFirewallStatus.fromMap((value as Map).cast<String, dynamic>())),
+      activationStateEnabled: (map['activationStateEnabled'] as bool).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DeploymentWebApplicationFirewallStatus>(map['statuses'], (value) => DeploymentWebApplicationFirewallStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

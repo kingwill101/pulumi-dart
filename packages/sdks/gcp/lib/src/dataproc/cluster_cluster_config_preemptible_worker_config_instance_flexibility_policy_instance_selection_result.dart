@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
   /// Full machine-type names, e.g. "n1-standard-16".
-  final String? machineType;
+  final pulumi.Input<String>? machineType;
   /// Number of VM provisioned with the machine_type.
-  final int? vmCount;
+  final pulumi.Input<int>? vmCount;
 
   /// Creates a new [ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult].
   /// [machineType] Full machine-type names, e.g. "n1-standard-16".
@@ -24,8 +25,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      vmCount: map['vmCount'] == null ? null : map['vmCount'] as int,
+      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
     );
   }
 }

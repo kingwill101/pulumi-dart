@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ImageVolumeSource represents a image volume resource.
 class ImageVolumeSourcePatch {
   /// Policy for pulling OCI objects. Possible values are: Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails. Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present. IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
-  final String? pullPolicy;
+  final pulumi.Input<String>? pullPolicy;
   /// Required: Image or artifact reference to be used. Behaves in the same way as pod.spec.containers[*].image. Pull secrets will be assembled in the same way as for the container image by looking up node credentials, SA image pull secrets, and pod spec image pull secrets. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets.
-  final String? reference;
+  final pulumi.Input<String>? reference;
 
   /// Creates a new [ImageVolumeSourcePatch].
   /// [pullPolicy] Policy for pulling OCI objects. Possible values are: Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails. Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present. IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
@@ -25,8 +26,8 @@ class ImageVolumeSourcePatch {
 
   factory ImageVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return ImageVolumeSourcePatch(
-      pullPolicy: map['pullPolicy'] == null ? null : map['pullPolicy'] as String,
-      reference: map['reference'] == null ? null : map['reference'] as String,
+      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
     );
   }
 }

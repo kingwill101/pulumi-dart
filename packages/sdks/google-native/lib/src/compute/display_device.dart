@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A set of Display Device options
 class DisplayDevice {
   /// Defines whether the instance has Display enabled.
-  final bool? enableDisplay;
+  final pulumi.Input<bool>? enableDisplay;
 
   /// Creates a new [DisplayDevice].
   /// [enableDisplay] Defines whether the instance has Display enabled.
@@ -20,7 +21,7 @@ class DisplayDevice {
 
   factory DisplayDevice.fromMap(Map<String, dynamic> map) {
     return DisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : map['enableDisplay'] as bool,
+      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay'] as bool).input(),
     );
   }
 }

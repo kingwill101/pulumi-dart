@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fabric_option_bproperties_response.dart';
 import 'vpn_configuration_properties_response_option_aproperties.dart';
 
 /// Network and credential configuration currently applied on terminal server.
 class VpnConfigurationPropertiesResponse {
   /// Administrative state of the resource.
-  final String administrativeState;
+  final pulumi.Input<String> administrativeState;
   /// ARM Resource ID of the Network To Network Interconnect.
-  final String? networkToNetworkInterconnectId;
+  final pulumi.Input<String>? networkToNetworkInterconnectId;
   /// option A properties
-  final VpnConfigurationPropertiesResponseOptionAProperties? optionAProperties;
+  final pulumi.Input<VpnConfigurationPropertiesResponseOptionAProperties>? optionAProperties;
   /// option B properties
-  final FabricOptionBPropertiesResponse? optionBProperties;
+  final pulumi.Input<FabricOptionBPropertiesResponse>? optionBProperties;
   /// Peering option list.
-  final String peeringOption;
+  final pulumi.Input<String> peeringOption;
 
   /// Creates a new [VpnConfigurationPropertiesResponse].
   /// [administrativeState] Administrative state of the resource.
@@ -34,19 +35,19 @@ class VpnConfigurationPropertiesResponse {
     return <String, dynamic>{
       'administrativeState': administrativeState,
       'networkToNetworkInterconnectId': ?networkToNetworkInterconnectId,
-      'optionAProperties': ?optionAProperties == null ? null : optionAProperties!.toMap(),
-      'optionBProperties': ?optionBProperties == null ? null : optionBProperties!.toMap(),
+      'optionAProperties': ?pulumi.Input.mapOptionalInputValue<VpnConfigurationPropertiesResponseOptionAProperties, Map<String, dynamic>>(optionAProperties, (value) => value.toMap()),
+      'optionBProperties': ?pulumi.Input.mapOptionalInputValue<FabricOptionBPropertiesResponse, Map<String, dynamic>>(optionBProperties, (value) => value.toMap()),
       'peeringOption': peeringOption,
     };
   }
 
   factory VpnConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationPropertiesResponse(
-      administrativeState: map['administrativeState'] as String,
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : map['networkToNetworkInterconnectId'] as String,
-      optionAProperties: map['optionAProperties'] == null ? null : VpnConfigurationPropertiesResponseOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>()),
-      optionBProperties: map['optionBProperties'] == null ? null : FabricOptionBPropertiesResponse.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>()),
-      peeringOption: map['peeringOption'] as String,
+      administrativeState: (map['administrativeState'] as String).input(),
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesResponseOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBPropertiesResponse.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      peeringOption: (map['peeringOption'] as String).input(),
     );
   }
 }

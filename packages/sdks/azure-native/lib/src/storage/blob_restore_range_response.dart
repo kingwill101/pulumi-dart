@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Blob range
 class BlobRestoreRangeResponse {
   /// Blob end range. This is exclusive. Empty means account end.
-  final String endRange;
+  final pulumi.Input<String> endRange;
   /// Blob start range. This is inclusive. Empty means account start.
-  final String startRange;
+  final pulumi.Input<String> startRange;
 
   /// Creates a new [BlobRestoreRangeResponse].
   /// [endRange] Blob end range. This is exclusive. Empty means account end.
@@ -25,8 +26,8 @@ class BlobRestoreRangeResponse {
 
   factory BlobRestoreRangeResponse.fromMap(Map<String, dynamic> map) {
     return BlobRestoreRangeResponse(
-      endRange: map['endRange'] as String,
-      startRange: map['startRange'] as String,
+      endRange: (map['endRange'] as String).input(),
+      startRange: (map['startRange'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Range used to validate longs and ints.
 class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse {
   /// The inclusive maximum of the acceptable range.
-  final String max;
+  final pulumi.Input<String> max;
   /// The inclusive minimum of the acceptable range.
-  final String min;
+  final pulumi.Input<String> min;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse].
   /// [max] The inclusive maximum of the acceptable range.
@@ -25,8 +26,8 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRangeResponse(
-      max: map['max'] as String,
-      min: map['min'] as String,
+      max: (map['max'] as String).input(),
+      min: (map['min'] as String).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class GetMeshNetworkservicesV1beta1Args {
   /// [meshId] Required.
   /// [project] Optional.
   GetMeshNetworkservicesV1beta1Args({
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> meshId,
-    pulumi.Output<String>? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      meshId = pulumi.Input.asInput<String>(meshId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.location,
+    required this.meshId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetMeshNetworkservicesV1beta1Args {
 
   factory GetMeshNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetMeshNetworkservicesV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      meshId: pulumi.Output.create<String>(map['meshId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      location: (map['location'] as String).input(),
+      meshId: (map['meshId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTopology {
   /// Sets the number of CPU clusters configured within the domain.
-  final double? clusters;
+  final pulumi.Input<double>? clusters;
   /// Configures the number of cores allocated to each CPU within the domain topology.
-  final double? cores;
+  final pulumi.Input<double>? cores;
   /// Specifies the number of dies configured for the CPUs within the domain topology.
-  final double? dies;
+  final pulumi.Input<double>? dies;
   /// Configures the number of CPU sockets defined in the domain's CPU topology.
-  final double? sockets;
+  final pulumi.Input<double>? sockets;
   /// Sets the number of threads associated with each core in the CPU topology.
-  final double? threads;
+  final pulumi.Input<double>? threads;
 
   /// Creates a new [DomainCpuTopology].
   /// [clusters] Sets the number of CPU clusters configured within the domain.
@@ -39,11 +40,11 @@ class DomainCpuTopology {
 
   factory DomainCpuTopology.fromMap(Map<String, dynamic> map) {
     return DomainCpuTopology(
-      clusters: map['clusters'] == null ? null : map['clusters'] as double,
-      cores: map['cores'] == null ? null : map['cores'] as double,
-      dies: map['dies'] == null ? null : map['dies'] as double,
-      sockets: map['sockets'] == null ? null : map['sockets'] as double,
-      threads: map['threads'] == null ? null : map['threads'] as double,
+      clusters: map['clusters'] == null ? null : (map['clusters'] as double).input(),
+      cores: map['cores'] == null ? null : (map['cores'] as double).input(),
+      dies: map['dies'] == null ? null : (map['dies'] as double).input(),
+      sockets: map['sockets'] == null ? null : (map['sockets'] as double).input(),
+      threads: map['threads'] == null ? null : (map['threads'] as double).input(),
     );
   }
 }

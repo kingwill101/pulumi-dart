@@ -1,29 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleActionAuthenticateOidc {
   /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
-  final Map<String, String>? authenticationRequestExtraParams;
+  final pulumi.Input<Map<String, String>>? authenticationRequestExtraParams;
   /// The authorization endpoint of the IdP.
-  final String authorizationEndpoint;
+  final pulumi.Input<String> authorizationEndpoint;
   /// The OAuth 2.0 client identifier.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The OAuth 2.0 client secret.
-  final String clientSecret;
+  final pulumi.Input<String> clientSecret;
   /// The OIDC issuer identifier of the IdP.
-  final String issuer;
+  final pulumi.Input<String> issuer;
   /// The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
-  final String? onUnauthenticatedRequest;
+  final pulumi.Input<String>? onUnauthenticatedRequest;
   /// The set of user claims to be requested from the IdP.
-  final String? scope;
+  final pulumi.Input<String>? scope;
   /// The name of the cookie used to maintain session information.
-  final String? sessionCookieName;
+  final pulumi.Input<String>? sessionCookieName;
   /// The maximum duration of the authentication session, in seconds.
-  final int? sessionTimeout;
+  final pulumi.Input<int>? sessionTimeout;
   /// The token endpoint of the IdP.
-  final String tokenEndpoint;
+  final pulumi.Input<String> tokenEndpoint;
   /// The user info endpoint of the IdP.
-  final String userInfoEndpoint;
+  final pulumi.Input<String> userInfoEndpoint;
 
   /// Creates a new [ListenerRuleActionAuthenticateOidc].
   /// [authenticationRequestExtraParams] The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
@@ -69,17 +70,17 @@ class ListenerRuleActionAuthenticateOidc {
 
   factory ListenerRuleActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionAuthenticateOidc(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
-      authorizationEndpoint: map['authorizationEndpoint'] as String,
-      clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] as String,
-      issuer: map['issuer'] as String,
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : map['onUnauthenticatedRequest'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      sessionCookieName: map['sessionCookieName'] == null ? null : map['sessionCookieName'] as String,
-      sessionTimeout: map['sessionTimeout'] == null ? null : map['sessionTimeout'] as int,
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      userInfoEndpoint: map['userInfoEndpoint'] as String,
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
+      authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      clientSecret: (map['clientSecret'] as String).input(),
+      issuer: (map['issuer'] as String).input(),
+      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName'] as String).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
+      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
     );
   }
 }

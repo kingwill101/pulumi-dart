@@ -16,11 +16,9 @@ class GetDeidServiceArgs {
   /// [deidServiceName] The name of the deid service
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetDeidServiceArgs({
-    required pulumi.Output<String> deidServiceName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      deidServiceName = pulumi.Input.asInput<String>(deidServiceName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.deidServiceName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetDeidServiceArgs {
 
   factory GetDeidServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeidServiceArgs(
-      deidServiceName: pulumi.Output.create<String>(map['deidServiceName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      deidServiceName: (map['deidServiceName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

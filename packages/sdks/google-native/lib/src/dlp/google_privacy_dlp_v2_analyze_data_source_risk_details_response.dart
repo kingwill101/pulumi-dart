@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_privacy_dlp_v2_big_query_table_response.dart';
 import 'google_privacy_dlp_v2_categorical_stats_result_response.dart';
 import 'google_privacy_dlp_v2_delta_presence_estimation_result_response.dart';
@@ -13,23 +14,23 @@ import 'google_privacy_dlp_v2_requested_risk_analysis_options_response.dart';
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
   /// Categorical stats result
-  final GooglePrivacyDlpV2CategoricalStatsResultResponse categoricalStatsResult;
+  final pulumi.Input<GooglePrivacyDlpV2CategoricalStatsResultResponse> categoricalStatsResult;
   /// Delta-presence result
-  final GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse deltaPresenceEstimationResult;
+  final pulumi.Input<GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse> deltaPresenceEstimationResult;
   /// K-anonymity result
-  final GooglePrivacyDlpV2KAnonymityResultResponse kAnonymityResult;
+  final pulumi.Input<GooglePrivacyDlpV2KAnonymityResultResponse> kAnonymityResult;
   /// K-map result
-  final GooglePrivacyDlpV2KMapEstimationResultResponse kMapEstimationResult;
+  final pulumi.Input<GooglePrivacyDlpV2KMapEstimationResultResponse> kMapEstimationResult;
   /// L-divesity result
-  final GooglePrivacyDlpV2LDiversityResultResponse lDiversityResult;
+  final pulumi.Input<GooglePrivacyDlpV2LDiversityResultResponse> lDiversityResult;
   /// Numerical stats result
-  final GooglePrivacyDlpV2NumericalStatsResultResponse numericalStatsResult;
+  final pulumi.Input<GooglePrivacyDlpV2NumericalStatsResultResponse> numericalStatsResult;
   /// The configuration used for this job.
-  final GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse requestedOptions;
+  final pulumi.Input<GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse> requestedOptions;
   /// Privacy metric to compute.
-  final GooglePrivacyDlpV2PrivacyMetricResponse requestedPrivacyMetric;
+  final pulumi.Input<GooglePrivacyDlpV2PrivacyMetricResponse> requestedPrivacyMetric;
   /// Input dataset to compute metrics over.
-  final GooglePrivacyDlpV2BigQueryTableResponse requestedSourceTable;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryTableResponse> requestedSourceTable;
 
   /// Creates a new [GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse].
   /// [categoricalStatsResult] Categorical stats result
@@ -55,29 +56,29 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categoricalStatsResult': categoricalStatsResult.toMap(),
-      'deltaPresenceEstimationResult': deltaPresenceEstimationResult.toMap(),
-      'kAnonymityResult': kAnonymityResult.toMap(),
-      'kMapEstimationResult': kMapEstimationResult.toMap(),
-      'lDiversityResult': lDiversityResult.toMap(),
-      'numericalStatsResult': numericalStatsResult.toMap(),
-      'requestedOptions': requestedOptions.toMap(),
-      'requestedPrivacyMetric': requestedPrivacyMetric.toMap(),
-      'requestedSourceTable': requestedSourceTable.toMap(),
+      'categoricalStatsResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CategoricalStatsResultResponse, Map<String, dynamic>>(categoricalStatsResult, (value) => value.toMap()),
+      'deltaPresenceEstimationResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse, Map<String, dynamic>>(deltaPresenceEstimationResult, (value) => value.toMap()),
+      'kAnonymityResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2KAnonymityResultResponse, Map<String, dynamic>>(kAnonymityResult, (value) => value.toMap()),
+      'kMapEstimationResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2KMapEstimationResultResponse, Map<String, dynamic>>(kMapEstimationResult, (value) => value.toMap()),
+      'lDiversityResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2LDiversityResultResponse, Map<String, dynamic>>(lDiversityResult, (value) => value.toMap()),
+      'numericalStatsResult': pulumi.Input.mapInputValue<GooglePrivacyDlpV2NumericalStatsResultResponse, Map<String, dynamic>>(numericalStatsResult, (value) => value.toMap()),
+      'requestedOptions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse, Map<String, dynamic>>(requestedOptions, (value) => value.toMap()),
+      'requestedPrivacyMetric': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PrivacyMetricResponse, Map<String, dynamic>>(requestedPrivacyMetric, (value) => value.toMap()),
+      'requestedSourceTable': pulumi.Input.mapInputValue<GooglePrivacyDlpV2BigQueryTableResponse, Map<String, dynamic>>(requestedSourceTable, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse(
-      categoricalStatsResult: GooglePrivacyDlpV2CategoricalStatsResultResponse.fromMap((map['categoricalStatsResult'] as Map).cast<String, dynamic>()),
-      deltaPresenceEstimationResult: GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.fromMap((map['deltaPresenceEstimationResult'] as Map).cast<String, dynamic>()),
-      kAnonymityResult: GooglePrivacyDlpV2KAnonymityResultResponse.fromMap((map['kAnonymityResult'] as Map).cast<String, dynamic>()),
-      kMapEstimationResult: GooglePrivacyDlpV2KMapEstimationResultResponse.fromMap((map['kMapEstimationResult'] as Map).cast<String, dynamic>()),
-      lDiversityResult: GooglePrivacyDlpV2LDiversityResultResponse.fromMap((map['lDiversityResult'] as Map).cast<String, dynamic>()),
-      numericalStatsResult: GooglePrivacyDlpV2NumericalStatsResultResponse.fromMap((map['numericalStatsResult'] as Map).cast<String, dynamic>()),
-      requestedOptions: GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>()),
-      requestedPrivacyMetric: GooglePrivacyDlpV2PrivacyMetricResponse.fromMap((map['requestedPrivacyMetric'] as Map).cast<String, dynamic>()),
-      requestedSourceTable: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['requestedSourceTable'] as Map).cast<String, dynamic>()),
+      categoricalStatsResult: (GooglePrivacyDlpV2CategoricalStatsResultResponse.fromMap((map['categoricalStatsResult'] as Map).cast<String, dynamic>())).input(),
+      deltaPresenceEstimationResult: (GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.fromMap((map['deltaPresenceEstimationResult'] as Map).cast<String, dynamic>())).input(),
+      kAnonymityResult: (GooglePrivacyDlpV2KAnonymityResultResponse.fromMap((map['kAnonymityResult'] as Map).cast<String, dynamic>())).input(),
+      kMapEstimationResult: (GooglePrivacyDlpV2KMapEstimationResultResponse.fromMap((map['kMapEstimationResult'] as Map).cast<String, dynamic>())).input(),
+      lDiversityResult: (GooglePrivacyDlpV2LDiversityResultResponse.fromMap((map['lDiversityResult'] as Map).cast<String, dynamic>())).input(),
+      numericalStatsResult: (GooglePrivacyDlpV2NumericalStatsResultResponse.fromMap((map['numericalStatsResult'] as Map).cast<String, dynamic>())).input(),
+      requestedOptions: (GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>())).input(),
+      requestedPrivacyMetric: (GooglePrivacyDlpV2PrivacyMetricResponse.fromMap((map['requestedPrivacyMetric'] as Map).cast<String, dynamic>())).input(),
+      requestedSourceTable: (GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['requestedSourceTable'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

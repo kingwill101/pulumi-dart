@@ -21,13 +21,10 @@ class GetParameterVersionArgs {
   /// [parameterVersionId] The version of the parameter to get.
   /// [project] The project for retrieving the Parameter Version. If it's not specified,
   GetParameterVersionArgs({
-    required pulumi.Output<String> parameter,
-    required pulumi.Output<String> parameterVersionId,
-    pulumi.Output<String>? project,
-  }) :
-      parameter = pulumi.Input.asInput<String>(parameter),
-      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.parameter,
+    required this.parameterVersionId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class GetParameterVersionArgs {
 
   factory GetParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterVersionArgs(
-      parameter: pulumi.Output.create<String>(map['parameter'] as String),
-      parameterVersionId: pulumi.Output.create<String>(map['parameterVersionId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      parameter: (map['parameter'] as String).input(),
+      parameterVersionId: (map['parameterVersionId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

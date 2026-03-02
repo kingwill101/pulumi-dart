@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleRuleLabel {
   /// Label string.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [WebAclRuleRuleLabel].
   /// [name] Label string.
@@ -19,7 +20,7 @@ class WebAclRuleRuleLabel {
 
   factory WebAclRuleRuleLabel.fromMap(Map<String, dynamic> map) {
     return WebAclRuleRuleLabel(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

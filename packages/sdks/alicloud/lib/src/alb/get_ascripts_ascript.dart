@@ -5,25 +5,25 @@ import 'get_ascripts_ascript_ext_attribute.dart';
 
 class GetAscriptsAscript {
   /// Script identification.
-  final String ascriptId;
+  final pulumi.Input<String> ascriptId;
   /// Script name.
-  final String ascriptName;
+  final pulumi.Input<String> ascriptName;
   /// Whether scripts are enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// Whether extension parameters are enabled.
-  final bool extAttributeEnabled;
+  final pulumi.Input<bool> extAttributeEnabled;
   /// Extended attribute list.
-  final List<GetAscriptsAscriptExtAttribute> extAttributes;
-  final String id;
+  final pulumi.Input<List<GetAscriptsAscriptExtAttribute>> extAttributes;
+  final pulumi.Input<String> id;
   /// Listener ID of script attribution
-  final String listenerId;
-  final String loadBalancerId;
+  final pulumi.Input<String> listenerId;
+  final pulumi.Input<String> loadBalancerId;
   /// Script execution location.
-  final String position;
+  final pulumi.Input<String> position;
   /// Script content.
-  final String scriptContent;
+  final pulumi.Input<String> scriptContent;
   /// Script status.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetAscriptsAscript].
   /// [ascriptId] Script identification.
@@ -57,7 +57,7 @@ class GetAscriptsAscript {
       'ascriptName': ascriptName,
       'enabled': enabled,
       'extAttributeEnabled': extAttributeEnabled,
-      'extAttributes': pulumi.Input.encodeList<GetAscriptsAscriptExtAttribute, Map<String, dynamic>>(extAttributes, (value) => value.toMap()),
+      'extAttributes': pulumi.Input.mapInputValue<List<GetAscriptsAscriptExtAttribute>, List<Map<String, dynamic>>>(extAttributes, (value) => pulumi.Input.encodeList<GetAscriptsAscriptExtAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': id,
       'listenerId': listenerId,
       'loadBalancerId': loadBalancerId,
@@ -69,17 +69,17 @@ class GetAscriptsAscript {
 
   factory GetAscriptsAscript.fromMap(Map<String, dynamic> map) {
     return GetAscriptsAscript(
-      ascriptId: map['ascriptId'] as String,
-      ascriptName: map['ascriptName'] as String,
-      enabled: map['enabled'] as bool,
-      extAttributeEnabled: map['extAttributeEnabled'] as bool,
-      extAttributes: pulumi.Input.decodeList<GetAscriptsAscriptExtAttribute>(map['extAttributes'], (value) => GetAscriptsAscriptExtAttribute.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      loadBalancerId: map['loadBalancerId'] as String,
-      position: map['position'] as String,
-      scriptContent: map['scriptContent'] as String,
-      status: map['status'] as String,
+      ascriptId: (map['ascriptId'] as String).input(),
+      ascriptName: (map['ascriptName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      extAttributeEnabled: (map['extAttributeEnabled'] as bool).input(),
+      extAttributes: (pulumi.Input.decodeList<GetAscriptsAscriptExtAttribute>(map['extAttributes'], (value) => GetAscriptsAscriptExtAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      position: (map['position'] as String).input(),
+      scriptContent: (map['scriptContent'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

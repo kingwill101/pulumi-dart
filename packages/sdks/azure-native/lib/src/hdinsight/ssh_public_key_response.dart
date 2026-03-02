@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The SSH public key for the cluster nodes.
 class SshPublicKeyResponse {
   /// The certificate for SSH.
-  final String? certificateData;
+  final pulumi.Input<String>? certificateData;
 
   /// Creates a new [SshPublicKeyResponse].
   /// [certificateData] The certificate for SSH.
@@ -20,7 +21,7 @@ class SshPublicKeyResponse {
 
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
-      certificateData: map['certificateData'] == null ? null : map['certificateData'] as String,
+      certificateData: map['certificateData'] == null ? null : (map['certificateData'] as String).input(),
     );
   }
 }

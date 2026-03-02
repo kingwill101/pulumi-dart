@@ -33,21 +33,14 @@ class ViewArgs {
   /// [scope] The root ARN of the account, an organizational unit (OU), or an organization ARN. If left empty, the default is account.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ViewArgs({
-    pulumi.Output<bool>? defaultView,
-    pulumi.Output<ViewFilters>? filters,
-    pulumi.Output<List<ViewIncludedProperty>>? includedProperties,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? scope,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultView = pulumi.Input.asOptionalInput<bool>(defaultView),
-      filters = pulumi.Input.asOptionalInput<ViewFilters>(filters),
-      includedProperties = pulumi.Input.asOptionalInput<List<ViewIncludedProperty>>(includedProperties),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scope = pulumi.Input.asOptionalInput<String>(scope),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.defaultView,
+    this.filters,
+    this.includedProperties,
+    this.name,
+    this.region,
+    this.scope,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      defaultView: map['defaultView'] == null ? null : pulumi.Output.create<bool>(map['defaultView'] as bool),
-      filters: map['filters'] == null ? null : pulumi.Output.create<ViewFilters>(ViewFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())),
-      includedProperties: map['includedProperties'] == null ? null : pulumi.Output.create<List<ViewIncludedProperty>>(pulumi.Input.decodeList<ViewIncludedProperty>(map['includedProperties'], (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultView: map['defaultView'] == null ? null : (map['defaultView'] as bool).input(),
+      filters: map['filters'] == null ? null : (ViewFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      includedProperties: map['includedProperties'] == null ? null : (pulumi.Input.decodeList<ViewIncludedProperty>(map['includedProperties'], (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

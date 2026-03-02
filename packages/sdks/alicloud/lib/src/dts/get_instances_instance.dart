@@ -1,34 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstance {
   /// Instance creation time
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The target database engine type.
-  final String destinationEndpointEngineName;
+  final pulumi.Input<String> destinationEndpointEngineName;
   /// The destination instance region.
-  final String destinationRegion;
+  final pulumi.Input<String> destinationRegion;
   /// The ID of the subscription instance.
-  final String dtsInstanceId;
+  final pulumi.Input<String> dtsInstanceId;
   /// The ID of the instance.
-  final String id;
+  final pulumi.Input<String> id;
   /// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
-  final String instanceClass;
-  final String instanceName;
+  final pulumi.Input<String> instanceClass;
+  final pulumi.Input<String> instanceName;
   /// The payment type of the resource.
-  final String paymentType;
+  final pulumi.Input<String> paymentType;
   /// Resource Group ID
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// Source instance database engine type.
-  final String sourceEndpointEngineName;
+  final pulumi.Input<String> sourceEndpointEngineName;
   /// The source instance region.
-  final String sourceRegion;
+  final pulumi.Input<String> sourceRegion;
   /// Instance status.
-  final String status;
+  final pulumi.Input<String> status;
   /// The tag value corresponding to the tag key.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
   /// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetInstancesInstance].
   /// [createTime] Instance creation time
@@ -83,20 +84,20 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createTime: map['createTime'] as String,
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] as String,
-      destinationRegion: map['destinationRegion'] as String,
-      dtsInstanceId: map['dtsInstanceId'] as String,
-      id: map['id'] as String,
-      instanceClass: map['instanceClass'] as String,
-      instanceName: map['instanceName'] as String,
-      paymentType: map['paymentType'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] as String,
-      sourceRegion: map['sourceRegion'] as String,
-      status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      createTime: (map['createTime'] as String).input(),
+      destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
+      destinationRegion: (map['destinationRegion'] as String).input(),
+      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceClass: (map['instanceClass'] as String).input(),
+      instanceName: (map['instanceName'] as String).input(),
+      paymentType: (map['paymentType'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
+      sourceRegion: (map['sourceRegion'] as String).input(),
+      status: (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

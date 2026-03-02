@@ -7,37 +7,37 @@ import 'widget_config_ui_settings_generative_answer_config.dart';
 class WidgetConfigUiSettings {
   /// Per data store configuration.
   /// Structure is documented below.
-  final List<WidgetConfigUiSettingsDataStoreUiConfig>? dataStoreUiConfigs;
+  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfig>>? dataStoreUiConfigs;
   /// The default ordering for search results if specified.
   /// Used to set SearchRequest#orderBy on applicable requests.
-  final String? defaultSearchRequestOrderBy;
+  final pulumi.Input<String>? defaultSearchRequestOrderBy;
   /// If set to true, the widget will not collect user events.
-  final bool? disableUserEventsCollection;
+  final pulumi.Input<bool>? disableUserEventsCollection;
   /// Whether or not to enable autocomplete.
-  final bool? enableAutocomplete;
+  final pulumi.Input<bool>? enableAutocomplete;
   /// If set to true, the widget will enable the create agent button.
-  final bool? enableCreateAgentButton;
+  final pulumi.Input<bool>? enableCreateAgentButton;
   /// If set to true, the widget will enable people search.
-  final bool? enablePeopleSearch;
+  final pulumi.Input<bool>? enablePeopleSearch;
   /// Turn on or off collecting the search result quality feedback from end users.
-  final bool? enableQualityFeedback;
+  final pulumi.Input<bool>? enableQualityFeedback;
   /// Whether to enable safe search.
-  final bool? enableSafeSearch;
+  final pulumi.Input<bool>? enableSafeSearch;
   /// Whether to enable search-as-you-type behavior for the search widget.
-  final bool? enableSearchAsYouType;
+  final pulumi.Input<bool>? enableSearchAsYouType;
   /// If set to true, the widget will enable visual content summary on applicable
   /// search requests. Only used by healthcare search.
-  final bool? enableVisualContentSummary;
+  final pulumi.Input<bool>? enableVisualContentSummary;
   /// Describes generative answer configuration.
   /// Structure is documented below.
-  final WidgetConfigUiSettingsGenerativeAnswerConfig? generativeAnswerConfig;
+  final pulumi.Input<WidgetConfigUiSettingsGenerativeAnswerConfig>? generativeAnswerConfig;
   /// Describes widget (or web app) interaction type
   /// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
-  final String? interactionType;
+  final pulumi.Input<String>? interactionType;
   /// Controls whether result extract is display and how (snippet or extractive answer).
   /// Default to no result if unspecified.
   /// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
-  final String? resultDescriptionType;
+  final pulumi.Input<String>? resultDescriptionType;
 
   /// Creates a new [WidgetConfigUiSettings].
   /// [dataStoreUiConfigs] Per data store configuration.
@@ -71,7 +71,7 @@ class WidgetConfigUiSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataStoreUiConfigs': ?dataStoreUiConfigs == null ? null : pulumi.Input.encodeList<WidgetConfigUiSettingsDataStoreUiConfig, Map<String, dynamic>>(dataStoreUiConfigs!, (value) => value.toMap()),
+      'dataStoreUiConfigs': ?pulumi.Input.mapOptionalInputValue<List<WidgetConfigUiSettingsDataStoreUiConfig>, List<Map<String, dynamic>>>(dataStoreUiConfigs, (value) => pulumi.Input.encodeList<WidgetConfigUiSettingsDataStoreUiConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultSearchRequestOrderBy': ?defaultSearchRequestOrderBy,
       'disableUserEventsCollection': ?disableUserEventsCollection,
       'enableAutocomplete': ?enableAutocomplete,
@@ -81,7 +81,7 @@ class WidgetConfigUiSettings {
       'enableSafeSearch': ?enableSafeSearch,
       'enableSearchAsYouType': ?enableSearchAsYouType,
       'enableVisualContentSummary': ?enableVisualContentSummary,
-      'generativeAnswerConfig': ?generativeAnswerConfig == null ? null : generativeAnswerConfig!.toMap(),
+      'generativeAnswerConfig': ?pulumi.Input.mapOptionalInputValue<WidgetConfigUiSettingsGenerativeAnswerConfig, Map<String, dynamic>>(generativeAnswerConfig, (value) => value.toMap()),
       'interactionType': ?interactionType,
       'resultDescriptionType': ?resultDescriptionType,
     };
@@ -89,19 +89,19 @@ class WidgetConfigUiSettings {
 
   factory WidgetConfigUiSettings.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettings(
-      dataStoreUiConfigs: map['dataStoreUiConfigs'] == null ? null : pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(map['dataStoreUiConfigs'], (value) => WidgetConfigUiSettingsDataStoreUiConfig.fromMap((value as Map).cast<String, dynamic>())),
-      defaultSearchRequestOrderBy: map['defaultSearchRequestOrderBy'] == null ? null : map['defaultSearchRequestOrderBy'] as String,
-      disableUserEventsCollection: map['disableUserEventsCollection'] == null ? null : map['disableUserEventsCollection'] as bool,
-      enableAutocomplete: map['enableAutocomplete'] == null ? null : map['enableAutocomplete'] as bool,
-      enableCreateAgentButton: map['enableCreateAgentButton'] == null ? null : map['enableCreateAgentButton'] as bool,
-      enablePeopleSearch: map['enablePeopleSearch'] == null ? null : map['enablePeopleSearch'] as bool,
-      enableQualityFeedback: map['enableQualityFeedback'] == null ? null : map['enableQualityFeedback'] as bool,
-      enableSafeSearch: map['enableSafeSearch'] == null ? null : map['enableSafeSearch'] as bool,
-      enableSearchAsYouType: map['enableSearchAsYouType'] == null ? null : map['enableSearchAsYouType'] as bool,
-      enableVisualContentSummary: map['enableVisualContentSummary'] == null ? null : map['enableVisualContentSummary'] as bool,
-      generativeAnswerConfig: map['generativeAnswerConfig'] == null ? null : WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap((map['generativeAnswerConfig'] as Map).cast<String, dynamic>()),
-      interactionType: map['interactionType'] == null ? null : map['interactionType'] as String,
-      resultDescriptionType: map['resultDescriptionType'] == null ? null : map['resultDescriptionType'] as String,
+      dataStoreUiConfigs: map['dataStoreUiConfigs'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(map['dataStoreUiConfigs'], (value) => WidgetConfigUiSettingsDataStoreUiConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSearchRequestOrderBy: map['defaultSearchRequestOrderBy'] == null ? null : (map['defaultSearchRequestOrderBy'] as String).input(),
+      disableUserEventsCollection: map['disableUserEventsCollection'] == null ? null : (map['disableUserEventsCollection'] as bool).input(),
+      enableAutocomplete: map['enableAutocomplete'] == null ? null : (map['enableAutocomplete'] as bool).input(),
+      enableCreateAgentButton: map['enableCreateAgentButton'] == null ? null : (map['enableCreateAgentButton'] as bool).input(),
+      enablePeopleSearch: map['enablePeopleSearch'] == null ? null : (map['enablePeopleSearch'] as bool).input(),
+      enableQualityFeedback: map['enableQualityFeedback'] == null ? null : (map['enableQualityFeedback'] as bool).input(),
+      enableSafeSearch: map['enableSafeSearch'] == null ? null : (map['enableSafeSearch'] as bool).input(),
+      enableSearchAsYouType: map['enableSearchAsYouType'] == null ? null : (map['enableSearchAsYouType'] as bool).input(),
+      enableVisualContentSummary: map['enableVisualContentSummary'] == null ? null : (map['enableVisualContentSummary'] as bool).input(),
+      generativeAnswerConfig: map['generativeAnswerConfig'] == null ? null : (WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap((map['generativeAnswerConfig'] as Map).cast<String, dynamic>())).input(),
+      interactionType: map['interactionType'] == null ? null : (map['interactionType'] as String).input(),
+      resultDescriptionType: map['resultDescriptionType'] == null ? null : (map['resultDescriptionType'] as String).input(),
     );
   }
 }

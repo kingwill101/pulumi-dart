@@ -26,15 +26,11 @@ class IcebergCatalogArgs {
   /// [name] The name of the IcebergCatalog. Format:
   /// [project] The ID of the project in which the resource belongs.
   IcebergCatalogArgs({
-    required pulumi.Output<String> catalogType,
-    pulumi.Output<String>? credentialMode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      catalogType = pulumi.Input.asInput<String>(catalogType),
-      credentialMode = pulumi.Input.asOptionalInput<String>(credentialMode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.catalogType,
+    this.credentialMode,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +43,10 @@ class IcebergCatalogArgs {
 
   factory IcebergCatalogArgs.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogArgs(
-      catalogType: pulumi.Output.create<String>(map['catalogType'] as String),
-      credentialMode: map['credentialMode'] == null ? null : pulumi.Output.create<String>(map['credentialMode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      catalogType: (map['catalogType'] as String).input(),
+      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallsFirewallRule {
-  final String? description;
-  final List<String>? destinationIps;
-  final String direction;
-  final String? port;
-  final String? protocol;
-  final List<String>? sourceIps;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<List<String>>? destinationIps;
+  final pulumi.Input<String> direction;
+  final pulumi.Input<String>? port;
+  final pulumi.Input<String>? protocol;
+  final pulumi.Input<List<String>>? sourceIps;
 
   /// Creates a new [GetFirewallsFirewallRule].
   /// [description] Optional.
@@ -38,12 +39,12 @@ class GetFirewallsFirewallRule {
 
   factory GetFirewallsFirewallRule.fromMap(Map<String, dynamic> map) {
     return GetFirewallsFirewallRule(
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationIps: map['destinationIps'] == null ? null : (map['destinationIps'] as List).cast<String>(),
-      direction: map['direction'] as String,
-      port: map['port'] == null ? null : map['port'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      sourceIps: map['sourceIps'] == null ? null : (map['sourceIps'] as List).cast<String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      destinationIps: map['destinationIps'] == null ? null : ((map['destinationIps'] as List).cast<String>()).input(),
+      direction: (map['direction'] as String).input(),
+      port: map['port'] == null ? null : (map['port'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps'] as List).cast<String>()).input(),
     );
   }
 }

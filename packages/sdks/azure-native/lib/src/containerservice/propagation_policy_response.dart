@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'placement_profile_response.dart';
 
 /// The propagation to be used for provisioning the namespace among the fleet.
 class PropagationPolicyResponse {
   /// The profile to be used for propagation via placement.
-  final PlacementProfileResponse? placementProfile;
+  final pulumi.Input<PlacementProfileResponse>? placementProfile;
   /// The type of the policy to be used. Default is Placement.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [PropagationPolicyResponse].
   /// [placementProfile] The profile to be used for propagation via placement.
@@ -19,15 +20,15 @@ class PropagationPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'placementProfile': ?placementProfile == null ? null : placementProfile!.toMap(),
+      'placementProfile': ?pulumi.Input.mapOptionalInputValue<PlacementProfileResponse, Map<String, dynamic>>(placementProfile, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory PropagationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PropagationPolicyResponse(
-      placementProfile: map['placementProfile'] == null ? null : PlacementProfileResponse.fromMap((map['placementProfile'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      placementProfile: map['placementProfile'] == null ? null : (PlacementProfileResponse.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

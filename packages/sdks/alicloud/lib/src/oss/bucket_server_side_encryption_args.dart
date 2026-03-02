@@ -22,15 +22,11 @@ class BucketServerSideEncryptionArgs {
   /// [kmsMasterKeyId] The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
   /// [sseAlgorithm] The server-side encryption method. Valid Values: KMS, AES256.
   BucketServerSideEncryptionArgs({
-    required pulumi.Output<String> bucket,
-    pulumi.Output<String>? kmsDataEncryption,
-    pulumi.Output<String>? kmsMasterKeyId,
-    required pulumi.Output<String> sseAlgorithm,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      kmsDataEncryption = pulumi.Input.asOptionalInput<String>(kmsDataEncryption),
-      kmsMasterKeyId = pulumi.Input.asOptionalInput<String>(kmsMasterKeyId),
-      sseAlgorithm = pulumi.Input.asInput<String>(sseAlgorithm);
+    required this.bucket,
+    this.kmsDataEncryption,
+    this.kmsMasterKeyId,
+    required this.sseAlgorithm,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class BucketServerSideEncryptionArgs {
 
   factory BucketServerSideEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionArgs(
-      bucket: pulumi.Output.create<String>(map['bucket'] as String),
-      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : pulumi.Output.create<String>(map['kmsDataEncryption'] as String),
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsMasterKeyId'] as String),
-      sseAlgorithm: pulumi.Output.create<String>(map['sseAlgorithm'] as String),
+      bucket: (map['bucket'] as String).input(),
+      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption'] as String).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
+      sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }
 }

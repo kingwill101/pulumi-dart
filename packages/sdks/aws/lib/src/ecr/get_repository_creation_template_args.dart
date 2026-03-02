@@ -19,13 +19,10 @@ class GetRepositoryCreationTemplateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTags] A map of tags to assign to any created repositories.
   GetRepositoryCreationTemplateArgs({
-    required pulumi.Output<String> prefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? resourceTags,
-  }) :
-      prefix = pulumi.Input.asInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTags = pulumi.Input.asOptionalInput<Map<String, String>>(resourceTags);
+    required this.prefix,
+    this.region,
+    this.resourceTags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRepositoryCreationTemplateArgs {
 
   factory GetRepositoryCreationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCreationTemplateArgs(
-      prefix: pulumi.Output.create<String>(map['prefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceTags: map['resourceTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['resourceTags'] as Map).cast<String, String>()),
+      prefix: (map['prefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,24 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Tables that will be included and excluded in the follower database
 class TableLevelSharingPropertiesResponse {
   /// List of external tables to exclude from the follower database
-  final List<String>? externalTablesToExclude;
+  final pulumi.Input<List<String>>? externalTablesToExclude;
   /// List of external tables to include in the follower database
-  final List<String>? externalTablesToInclude;
+  final pulumi.Input<List<String>>? externalTablesToInclude;
   /// List of functions to exclude from the follower database
-  final List<String>? functionsToExclude;
+  final pulumi.Input<List<String>>? functionsToExclude;
   /// List of functions to include in the follower database
-  final List<String>? functionsToInclude;
+  final pulumi.Input<List<String>>? functionsToInclude;
   /// List of materialized views to exclude from the follower database
-  final List<String>? materializedViewsToExclude;
+  final pulumi.Input<List<String>>? materializedViewsToExclude;
   /// List of materialized views to include in the follower database
-  final List<String>? materializedViewsToInclude;
+  final pulumi.Input<List<String>>? materializedViewsToInclude;
   /// List of tables to exclude from the follower database
-  final List<String>? tablesToExclude;
+  final pulumi.Input<List<String>>? tablesToExclude;
   /// List of tables to include in the follower database
-  final List<String>? tablesToInclude;
+  final pulumi.Input<List<String>>? tablesToInclude;
 
   /// Creates a new [TableLevelSharingPropertiesResponse].
   /// [externalTablesToExclude] List of external tables to exclude from the follower database
@@ -55,14 +56,14 @@ class TableLevelSharingPropertiesResponse {
 
   factory TableLevelSharingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TableLevelSharingPropertiesResponse(
-      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : (map['externalTablesToExclude'] as List).cast<String>(),
-      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : (map['externalTablesToInclude'] as List).cast<String>(),
-      functionsToExclude: map['functionsToExclude'] == null ? null : (map['functionsToExclude'] as List).cast<String>(),
-      functionsToInclude: map['functionsToInclude'] == null ? null : (map['functionsToInclude'] as List).cast<String>(),
-      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : (map['materializedViewsToExclude'] as List).cast<String>(),
-      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : (map['materializedViewsToInclude'] as List).cast<String>(),
-      tablesToExclude: map['tablesToExclude'] == null ? null : (map['tablesToExclude'] as List).cast<String>(),
-      tablesToInclude: map['tablesToInclude'] == null ? null : (map['tablesToInclude'] as List).cast<String>(),
+      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : ((map['externalTablesToExclude'] as List).cast<String>()).input(),
+      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : ((map['externalTablesToInclude'] as List).cast<String>()).input(),
+      functionsToExclude: map['functionsToExclude'] == null ? null : ((map['functionsToExclude'] as List).cast<String>()).input(),
+      functionsToInclude: map['functionsToInclude'] == null ? null : ((map['functionsToInclude'] as List).cast<String>()).input(),
+      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : ((map['materializedViewsToExclude'] as List).cast<String>()).input(),
+      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : ((map['materializedViewsToInclude'] as List).cast<String>()).input(),
+      tablesToExclude: map['tablesToExclude'] == null ? null : ((map['tablesToExclude'] as List).cast<String>()).input(),
+      tablesToInclude: map['tablesToInclude'] == null ? null : ((map['tablesToInclude'] as List).cast<String>()).input(),
     );
   }
 }

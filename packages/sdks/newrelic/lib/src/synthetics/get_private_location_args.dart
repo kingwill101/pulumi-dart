@@ -19,13 +19,10 @@ class GetPrivateLocationArgs {
   /// [keys] The key of the private location.
   /// [name] The name of the Synthetics monitor private location.
   GetPrivateLocationArgs({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<List<String>>? keys,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      keys = pulumi.Input.asOptionalInput<List<String>>(keys),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    this.keys,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetPrivateLocationArgs {
 
   factory GetPrivateLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLocationArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      keys: map['keys'] == null ? null : pulumi.Output.create<List<String>>((map['keys'] as List).cast<String>()),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

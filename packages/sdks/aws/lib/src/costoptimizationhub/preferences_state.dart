@@ -13,11 +13,9 @@ class PreferencesState {
   /// [memberAccountDiscountVisibility] Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   /// [savingsEstimationMode] Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
   PreferencesState({
-    pulumi.Output<String>? memberAccountDiscountVisibility,
-    pulumi.Output<String>? savingsEstimationMode,
-  }) :
-      memberAccountDiscountVisibility = pulumi.Input.asOptionalInput<String>(memberAccountDiscountVisibility),
-      savingsEstimationMode = pulumi.Input.asOptionalInput<String>(savingsEstimationMode);
+    this.memberAccountDiscountVisibility,
+    this.savingsEstimationMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class PreferencesState {
 
   factory PreferencesState.fromMap(Map<String, dynamic> map) {
     return PreferencesState(
-      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : pulumi.Output.create<String>(map['memberAccountDiscountVisibility'] as String),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : pulumi.Output.create<String>(map['savingsEstimationMode'] as String),
+      memberAccountDiscountVisibility: map['memberAccountDiscountVisibility'] == null ? null : (map['memberAccountDiscountVisibility'] as String).input(),
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : (map['savingsEstimationMode'] as String).input(),
     );
   }
 }

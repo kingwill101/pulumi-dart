@@ -24,17 +24,12 @@ class RoutingControlState {
   /// [name] The name describing the routing control.
   /// [status] Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   RoutingControlState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? clusterArn,
-    pulumi.Output<String>? controlPanelArn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? status,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      clusterArn = pulumi.Input.asOptionalInput<String>(clusterArn),
-      controlPanelArn = pulumi.Input.asOptionalInput<String>(controlPanelArn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.arn,
+    this.clusterArn,
+    this.controlPanelArn,
+    this.name,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RoutingControlState {
 
   factory RoutingControlState.fromMap(Map<String, dynamic> map) {
     return RoutingControlState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      clusterArn: map['clusterArn'] == null ? null : pulumi.Output.create<String>(map['clusterArn'] as String),
-      controlPanelArn: map['controlPanelArn'] == null ? null : pulumi.Output.create<String>(map['controlPanelArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
+      controlPanelArn: map['controlPanelArn'] == null ? null : (map['controlPanelArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

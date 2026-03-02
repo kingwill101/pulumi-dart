@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRateBasedStatementForwardedIpConfig {
   /// The match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
-  final String fallbackBehavior;
+  final pulumi.Input<String> fallbackBehavior;
   /// The name of the HTTP header to use for the IP address.
-  final String headerName;
+  final pulumi.Input<String> headerName;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementForwardedIpConfig].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
@@ -24,8 +25,8 @@ class RuleGroupRuleStatementRateBasedStatementForwardedIpConfig {
 
   factory RuleGroupRuleStatementRateBasedStatementForwardedIpConfig.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementForwardedIpConfig(
-      fallbackBehavior: map['fallbackBehavior'] as String,
-      headerName: map['headerName'] as String,
+      fallbackBehavior: (map['fallbackBehavior'] as String).input(),
+      headerName: (map['headerName'] as String).input(),
     );
   }
 }

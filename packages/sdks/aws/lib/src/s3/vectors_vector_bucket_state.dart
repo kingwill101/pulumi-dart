@@ -34,23 +34,15 @@ class VectorsVectorBucketState {
   /// [vectorBucketArn] ARN of the vector bucket.
   /// [vectorBucketName] Name of the vector bucket.
   VectorsVectorBucketState({
-    pulumi.Output<String>? creationTime,
-    pulumi.Output<List<VectorsVectorBucketEncryptionConfiguration>>? encryptionConfigurations,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? vectorBucketArn,
-    pulumi.Output<String>? vectorBucketName,
-  }) :
-      creationTime = pulumi.Input.asOptionalInput<String>(creationTime),
-      encryptionConfigurations = pulumi.Input.asOptionalInput<List<VectorsVectorBucketEncryptionConfiguration>>(encryptionConfigurations),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      vectorBucketArn = pulumi.Input.asOptionalInput<String>(vectorBucketArn),
-      vectorBucketName = pulumi.Input.asOptionalInput<String>(vectorBucketName);
+    this.creationTime,
+    this.encryptionConfigurations,
+    this.forceDestroy,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.vectorBucketArn,
+    this.vectorBucketName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class VectorsVectorBucketState {
 
   factory VectorsVectorBucketState.fromMap(Map<String, dynamic> map) {
     return VectorsVectorBucketState(
-      creationTime: map['creationTime'] == null ? null : pulumi.Output.create<String>(map['creationTime'] as String),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : pulumi.Output.create<List<VectorsVectorBucketEncryptionConfiguration>>(pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : pulumi.Output.create<String>(map['vectorBucketArn'] as String),
-      vectorBucketName: map['vectorBucketName'] == null ? null : pulumi.Output.create<String>(map['vectorBucketName'] as String),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<VectorsVectorBucketEncryptionConfiguration>(map['encryptionConfigurations'], (value) => VectorsVectorBucketEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      vectorBucketArn: map['vectorBucketArn'] == null ? null : (map['vectorBucketArn'] as String).input(),
+      vectorBucketName: map['vectorBucketName'] == null ? null : (map['vectorBucketName'] as String).input(),
     );
   }
 }

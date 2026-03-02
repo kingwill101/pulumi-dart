@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
   /// The commit SHA to read repository with. If unset, the file will be read at HEAD.
-  final String? commitSha;
+  final pulumi.Input<String>? commitSha;
   /// The resource name of the Dataform Repository.
-  final String dataformRepositoryResourceName;
+  final pulumi.Input<String> dataformRepositoryResourceName;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource].
   /// [commitSha] The commit SHA to read repository with. If unset, the file will be read at HEAD.
@@ -24,8 +25,8 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
 
   factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource(
-      commitSha: map['commitSha'] == null ? null : map['commitSha'] as String,
-      dataformRepositoryResourceName: map['dataformRepositoryResourceName'] as String,
+      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
+      dataformRepositoryResourceName: (map['dataformRepositoryResourceName'] as String).input(),
     );
   }
 }

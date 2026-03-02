@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'additional_cache_node_properties_response.dart';
 import 'cache_node_entity_response.dart';
 import 'error_detail_response.dart';
@@ -7,21 +8,21 @@ import 'error_detail_response.dart';
 /// Model representing an Mcc cache node connectedCache resource
 class CacheNodePropertyResponse {
   /// Mcc cache node resource additional properties.
-  final AdditionalCacheNodePropertiesResponse? additionalCacheNodeProperties;
+  final pulumi.Input<AdditionalCacheNodePropertiesResponse>? additionalCacheNodeProperties;
   /// Mcc cache node resource (cache node entity).
-  final CacheNodeEntityResponse? cacheNode;
+  final pulumi.Input<CacheNodeEntityResponse>? cacheNode;
   /// Mcc response error details.
-  final ErrorDetailResponse? error;
+  final pulumi.Input<ErrorDetailResponse>? error;
   /// The provisioned state of the resource
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// HTTP error status code.
-  final String status;
+  final pulumi.Input<String> status;
   /// Mcc response status code.
-  final String? statusCode;
+  final pulumi.Input<String>? statusCode;
   /// Mcc response status details for retrieving response inner details.
-  final String? statusDetails;
+  final pulumi.Input<String>? statusDetails;
   /// Mcc response status text as string for retrieving status details.
-  final String? statusText;
+  final pulumi.Input<String>? statusText;
 
   /// Creates a new [CacheNodePropertyResponse].
   /// [additionalCacheNodeProperties] Mcc cache node resource additional properties.
@@ -45,9 +46,9 @@ class CacheNodePropertyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCacheNodeProperties': ?additionalCacheNodeProperties == null ? null : additionalCacheNodeProperties!.toMap(),
-      'cacheNode': ?cacheNode == null ? null : cacheNode!.toMap(),
-      'error': ?error == null ? null : error!.toMap(),
+      'additionalCacheNodeProperties': ?pulumi.Input.mapOptionalInputValue<AdditionalCacheNodePropertiesResponse, Map<String, dynamic>>(additionalCacheNodeProperties, (value) => value.toMap()),
+      'cacheNode': ?pulumi.Input.mapOptionalInputValue<CacheNodeEntityResponse, Map<String, dynamic>>(cacheNode, (value) => value.toMap()),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'status': status,
       'statusCode': ?statusCode,
@@ -58,14 +59,14 @@ class CacheNodePropertyResponse {
 
   factory CacheNodePropertyResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodePropertyResponse(
-      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : AdditionalCacheNodePropertiesResponse.fromMap((map['additionalCacheNodeProperties'] as Map).cast<String, dynamic>()),
-      cacheNode: map['cacheNode'] == null ? null : CacheNodeEntityResponse.fromMap((map['cacheNode'] as Map).cast<String, dynamic>()),
-      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      statusCode: map['statusCode'] == null ? null : map['statusCode'] as String,
-      statusDetails: map['statusDetails'] == null ? null : map['statusDetails'] as String,
-      statusText: map['statusText'] == null ? null : map['statusText'] as String,
+      additionalCacheNodeProperties: map['additionalCacheNodeProperties'] == null ? null : (AdditionalCacheNodePropertiesResponse.fromMap((map['additionalCacheNodeProperties'] as Map).cast<String, dynamic>())).input(),
+      cacheNode: map['cacheNode'] == null ? null : (CacheNodeEntityResponse.fromMap((map['cacheNode'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      status: (map['status'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'error_detail_response.dart';
 /// Arc extension installed on edge device.
 class ExtensionResponse {
   /// Error details while installing Arc extension.
-  final List<ErrorDetailResponse> errorDetails;
+  final pulumi.Input<List<ErrorDetailResponse>> errorDetails;
   /// Arc extension name installed on edge device.
-  final String extensionName;
+  final pulumi.Input<String> extensionName;
   /// Arc Extension Azure resource id.
-  final String extensionResourceId;
+  final pulumi.Input<String> extensionResourceId;
   /// Extension managed by user or Azure.
-  final String managedBy;
+  final pulumi.Input<String> managedBy;
   /// Arc extension state from arc machine extension.
-  final String state;
+  final pulumi.Input<String> state;
   /// Extension version installed.
-  final String typeHandlerVersion;
+  final pulumi.Input<String> typeHandlerVersion;
 
   /// Creates a new [ExtensionResponse].
   /// [errorDetails] Error details while installing Arc extension.
@@ -36,7 +36,7 @@ class ExtensionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetails': pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(errorDetails, (value) => value.toMap()),
+      'errorDetails': pulumi.Input.mapInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'extensionName': extensionName,
       'extensionResourceId': extensionResourceId,
       'managedBy': managedBy,
@@ -47,12 +47,12 @@ class ExtensionResponse {
 
   factory ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionResponse(
-      errorDetails: pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      extensionName: map['extensionName'] as String,
-      extensionResourceId: map['extensionResourceId'] as String,
-      managedBy: map['managedBy'] as String,
-      state: map['state'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] as String,
+      errorDetails: (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensionName: (map['extensionName'] as String).input(),
+      extensionResourceId: (map['extensionResourceId'] as String).input(),
+      managedBy: (map['managedBy'] as String).input(),
+      state: (map['state'] as String).input(),
+      typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

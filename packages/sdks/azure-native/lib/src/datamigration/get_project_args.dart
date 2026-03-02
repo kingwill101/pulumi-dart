@@ -19,13 +19,10 @@ class GetProjectArgs {
   /// [projectName] Name of the project
   /// [serviceName] Name of the service
   GetProjectArgs({
-    required pulumi.Output<String> groupName,
-    required pulumi.Output<String> projectName,
-    required pulumi.Output<String> serviceName,
-  }) :
-      groupName = pulumi.Input.asInput<String>(groupName),
-      projectName = pulumi.Input.asInput<String>(projectName),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+    required this.groupName,
+    required this.projectName,
+    required this.serviceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetProjectArgs {
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      groupName: pulumi.Output.create<String>(map['groupName'] as String),
-      projectName: pulumi.Output.create<String>(map['projectName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
+      groupName: (map['groupName'] as String).input(),
+      projectName: (map['projectName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
     );
   }
 }

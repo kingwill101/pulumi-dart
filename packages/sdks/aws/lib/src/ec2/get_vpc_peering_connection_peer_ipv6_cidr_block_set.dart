@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcPeeringConnectionPeerIpv6CidrBlockSet {
-  final String ipv6CidrBlock;
+  final pulumi.Input<String> ipv6CidrBlock;
 
   /// Creates a new [GetVpcPeeringConnectionPeerIpv6CidrBlockSet].
   /// [ipv6CidrBlock] Required.
@@ -18,7 +19,7 @@ class GetVpcPeeringConnectionPeerIpv6CidrBlockSet {
 
   factory GetVpcPeeringConnectionPeerIpv6CidrBlockSet.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringConnectionPeerIpv6CidrBlockSet(
-      ipv6CidrBlock: map['ipv6CidrBlock'] as String,
+      ipv6CidrBlock: (map['ipv6CidrBlock'] as String).input(),
     );
   }
 }

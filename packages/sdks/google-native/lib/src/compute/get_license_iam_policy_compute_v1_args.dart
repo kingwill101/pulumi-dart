@@ -16,13 +16,10 @@ class GetLicenseIamPolicyComputeV1Args {
   /// [project] Optional.
   /// [resource] Required.
   GetLicenseIamPolicyComputeV1Args({
-    pulumi.Output<int>? optionsRequestedPolicyVersion,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> resource,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource);
+    this.optionsRequestedPolicyVersion,
+    this.project,
+    required this.resource,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetLicenseIamPolicyComputeV1Args {
 
   factory GetLicenseIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetLicenseIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : pulumi.Output.create<int>(map['optionsRequestedPolicyVersion'] as int),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      resource: pulumi.Output.create<String>(map['resource'] as String),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

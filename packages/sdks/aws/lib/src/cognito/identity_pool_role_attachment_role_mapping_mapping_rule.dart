@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityPoolRoleAttachmentRoleMappingMappingRule {
   /// The claim name that must be present in the token, for example, "isAdmin" or "paid".
-  final String claim;
+  final pulumi.Input<String> claim;
   /// The match condition that specifies how closely the claim value in the IdP token must match Value.
-  final String matchType;
+  final pulumi.Input<String> matchType;
   /// The role ARN.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// A brief string that the claim must match, for example, "paid" or "yes".
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [IdentityPoolRoleAttachmentRoleMappingMappingRule].
   /// [claim] The claim name that must be present in the token, for example, "isAdmin" or "paid".
@@ -34,10 +35,10 @@ class IdentityPoolRoleAttachmentRoleMappingMappingRule {
 
   factory IdentityPoolRoleAttachmentRoleMappingMappingRule.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentRoleMappingMappingRule(
-      claim: map['claim'] as String,
-      matchType: map['matchType'] as String,
-      roleArn: map['roleArn'] as String,
-      value: map['value'] as String,
+      claim: (map['claim'] as String).input(),
+      matchType: (map['matchType'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

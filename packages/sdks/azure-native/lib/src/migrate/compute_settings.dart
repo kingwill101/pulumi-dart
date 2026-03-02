@@ -9,19 +9,19 @@ import 'windows_server_licensing_settings.dart';
 /// Compute settings.
 class ComputeSettings {
   /// Hyperthread core to memory ratio.
-  final double hyperthreadCoreToMemoryRatio;
+  final pulumi.Input<double> hyperthreadCoreToMemoryRatio;
   /// Compute Price.
-  final double price;
+  final pulumi.Input<double> price;
   /// Linux Rhel Server licensing settings.
-  final LinuxServerLicensingSettings rhelLinuxServerLicensing;
+  final pulumi.Input<LinuxServerLicensingSettings> rhelLinuxServerLicensing;
   /// SQL Server licensing settings.
-  final List<SqlServerLicensingSettings> sqlServerLicensing;
+  final pulumi.Input<List<SqlServerLicensingSettings>> sqlServerLicensing;
   /// Linux Suse Server licensing settings.
-  final LinuxServerLicensingSettings suseLinuxServerLicensing;
+  final pulumi.Input<LinuxServerLicensingSettings> suseLinuxServerLicensing;
   /// Virtualization software settings.
-  final VirtualizationSoftwareSettings virtualizationSoftwareSettings;
+  final pulumi.Input<VirtualizationSoftwareSettings> virtualizationSoftwareSettings;
   /// Windows Server licensing settings.
-  final WindowsServerLicensingSettings windowsServerLicensing;
+  final pulumi.Input<WindowsServerLicensingSettings> windowsServerLicensing;
 
   /// Creates a new [ComputeSettings].
   /// [hyperthreadCoreToMemoryRatio] Hyperthread core to memory ratio.
@@ -45,23 +45,23 @@ class ComputeSettings {
     return <String, dynamic>{
       'hyperthreadCoreToMemoryRatio': hyperthreadCoreToMemoryRatio,
       'price': price,
-      'rhelLinuxServerLicensing': rhelLinuxServerLicensing.toMap(),
-      'sqlServerLicensing': pulumi.Input.encodeList<SqlServerLicensingSettings, Map<String, dynamic>>(sqlServerLicensing, (value) => value.toMap()),
-      'suseLinuxServerLicensing': suseLinuxServerLicensing.toMap(),
-      'virtualizationSoftwareSettings': virtualizationSoftwareSettings.toMap(),
-      'windowsServerLicensing': windowsServerLicensing.toMap(),
+      'rhelLinuxServerLicensing': pulumi.Input.mapInputValue<LinuxServerLicensingSettings, Map<String, dynamic>>(rhelLinuxServerLicensing, (value) => value.toMap()),
+      'sqlServerLicensing': pulumi.Input.mapInputValue<List<SqlServerLicensingSettings>, List<Map<String, dynamic>>>(sqlServerLicensing, (value) => pulumi.Input.encodeList<SqlServerLicensingSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'suseLinuxServerLicensing': pulumi.Input.mapInputValue<LinuxServerLicensingSettings, Map<String, dynamic>>(suseLinuxServerLicensing, (value) => value.toMap()),
+      'virtualizationSoftwareSettings': pulumi.Input.mapInputValue<VirtualizationSoftwareSettings, Map<String, dynamic>>(virtualizationSoftwareSettings, (value) => value.toMap()),
+      'windowsServerLicensing': pulumi.Input.mapInputValue<WindowsServerLicensingSettings, Map<String, dynamic>>(windowsServerLicensing, (value) => value.toMap()),
     };
   }
 
   factory ComputeSettings.fromMap(Map<String, dynamic> map) {
     return ComputeSettings(
-      hyperthreadCoreToMemoryRatio: map['hyperthreadCoreToMemoryRatio'] as double,
-      price: map['price'] as double,
-      rhelLinuxServerLicensing: LinuxServerLicensingSettings.fromMap((map['rhelLinuxServerLicensing'] as Map).cast<String, dynamic>()),
-      sqlServerLicensing: pulumi.Input.decodeList<SqlServerLicensingSettings>(map['sqlServerLicensing'], (value) => SqlServerLicensingSettings.fromMap((value as Map).cast<String, dynamic>())),
-      suseLinuxServerLicensing: LinuxServerLicensingSettings.fromMap((map['suseLinuxServerLicensing'] as Map).cast<String, dynamic>()),
-      virtualizationSoftwareSettings: VirtualizationSoftwareSettings.fromMap((map['virtualizationSoftwareSettings'] as Map).cast<String, dynamic>()),
-      windowsServerLicensing: WindowsServerLicensingSettings.fromMap((map['windowsServerLicensing'] as Map).cast<String, dynamic>()),
+      hyperthreadCoreToMemoryRatio: (map['hyperthreadCoreToMemoryRatio'] as double).input(),
+      price: (map['price'] as double).input(),
+      rhelLinuxServerLicensing: (LinuxServerLicensingSettings.fromMap((map['rhelLinuxServerLicensing'] as Map).cast<String, dynamic>())).input(),
+      sqlServerLicensing: (pulumi.Input.decodeList<SqlServerLicensingSettings>(map['sqlServerLicensing'], (value) => SqlServerLicensingSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      suseLinuxServerLicensing: (LinuxServerLicensingSettings.fromMap((map['suseLinuxServerLicensing'] as Map).cast<String, dynamic>())).input(),
+      virtualizationSoftwareSettings: (VirtualizationSoftwareSettings.fromMap((map['virtualizationSoftwareSettings'] as Map).cast<String, dynamic>())).input(),
+      windowsServerLicensing: (WindowsServerLicensingSettings.fromMap((map['windowsServerLicensing'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

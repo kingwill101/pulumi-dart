@@ -19,13 +19,10 @@ class TargetArgs {
   /// [targetResourceId] Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
   /// [targetType] The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
   TargetArgs({
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> targetResourceId,
-    required pulumi.Output<String> targetType,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      targetResourceId = pulumi.Input.asInput<String>(targetResourceId),
-      targetType = pulumi.Input.asInput<String>(targetType);
+    this.location,
+    required this.targetResourceId,
+    required this.targetType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      targetResourceId: pulumi.Output.create<String>(map['targetResourceId'] as String),
-      targetType: pulumi.Output.create<String>(map['targetType'] as String),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      targetResourceId: (map['targetResourceId'] as String).input(),
+      targetType: (map['targetType'] as String).input(),
     );
   }
 }

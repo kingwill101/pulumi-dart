@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionCostManagementViewDatasetSorting {
   /// Direction of sort. Possible values are `Ascending` and `Descending`.
-  final String direction;
+  final pulumi.Input<String> direction;
   /// The name of the column to sort.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [SubscriptionCostManagementViewDatasetSorting].
   /// [direction] Direction of sort. Possible values are `Ascending` and `Descending`.
@@ -24,8 +25,8 @@ class SubscriptionCostManagementViewDatasetSorting {
 
   factory SubscriptionCostManagementViewDatasetSorting.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewDatasetSorting(
-      direction: map['direction'] as String,
-      name: map['name'] as String,
+      direction: (map['direction'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

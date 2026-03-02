@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A representation of a Datastore kind.
 class GooglePrivacyDlpV2KindExpressionResponse {
   /// The name of the kind.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GooglePrivacyDlpV2KindExpressionResponse].
   /// [name] The name of the kind.
@@ -20,7 +21,7 @@ class GooglePrivacyDlpV2KindExpressionResponse {
 
   factory GooglePrivacyDlpV2KindExpressionResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KindExpressionResponse(
-      name: map['name'] as String,
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// X509 Certificate Authentication properties.
 class X509ManualCertificateResponse {
   /// Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name, not the secret itself.
-  final String secretRef;
+  final pulumi.Input<String> secretRef;
 
   /// Creates a new [X509ManualCertificateResponse].
   /// [secretRef] Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name, not the secret itself.
@@ -20,7 +21,7 @@ class X509ManualCertificateResponse {
 
   factory X509ManualCertificateResponse.fromMap(Map<String, dynamic> map) {
     return X509ManualCertificateResponse(
-      secretRef: map['secretRef'] as String,
+      secretRef: (map['secretRef'] as String).input(),
     );
   }
 }

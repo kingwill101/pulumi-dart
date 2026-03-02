@@ -41,27 +41,17 @@ class ScheduledActionArgs {
   /// [startTime] Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   /// [timezone] Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `start_time` and `end_time`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
   ScheduledActionArgs({
-    pulumi.Output<String>? endTime,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> scalableDimension,
-    required pulumi.Output<ScheduledActionScalableTargetAction> scalableTargetAction,
-    required pulumi.Output<String> schedule,
-    required pulumi.Output<String> serviceNamespace,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timezone,
-  }) :
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      scalableDimension = pulumi.Input.asInput<String>(scalableDimension),
-      scalableTargetAction = pulumi.Input.asInput<ScheduledActionScalableTargetAction>(scalableTargetAction),
-      schedule = pulumi.Input.asInput<String>(schedule),
-      serviceNamespace = pulumi.Input.asInput<String>(serviceNamespace),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timezone = pulumi.Input.asOptionalInput<String>(timezone);
+    this.endTime,
+    this.name,
+    this.region,
+    required this.resourceId,
+    required this.scalableDimension,
+    required this.scalableTargetAction,
+    required this.schedule,
+    required this.serviceNamespace,
+    this.startTime,
+    this.timezone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      scalableDimension: pulumi.Output.create<String>(map['scalableDimension'] as String),
-      scalableTargetAction: pulumi.Output.create<ScheduledActionScalableTargetAction>(ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())),
-      schedule: pulumi.Output.create<String>(map['schedule'] as String),
-      serviceNamespace: pulumi.Output.create<String>(map['serviceNamespace'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timezone: map['timezone'] == null ? null : pulumi.Output.create<String>(map['timezone'] as String),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      scalableDimension: (map['scalableDimension'] as String).input(),
+      scalableTargetAction: (ScheduledActionScalableTargetAction.fromMap((map['scalableTargetAction'] as Map).cast<String, dynamic>())).input(),
+      schedule: (map['schedule'] as String).input(),
+      serviceNamespace: (map['serviceNamespace'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPointPosixUser {
   /// The ID of the Posix user group.
-  final int? posixGroupId;
+  final pulumi.Input<int>? posixGroupId;
   /// The ID of the second user group.
-  final List<int>? posixSecondaryGroupIds;
+  final pulumi.Input<List<int>>? posixSecondaryGroupIds;
   /// The Posix user ID.
-  final int? posixUserId;
+  final pulumi.Input<int>? posixUserId;
 
   /// Creates a new [AccessPointPosixUser].
   /// [posixGroupId] The ID of the Posix user group.
@@ -29,9 +30,9 @@ class AccessPointPosixUser {
 
   factory AccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return AccessPointPosixUser(
-      posixGroupId: map['posixGroupId'] == null ? null : map['posixGroupId'] as int,
-      posixSecondaryGroupIds: map['posixSecondaryGroupIds'] == null ? null : (map['posixSecondaryGroupIds'] as List).cast<int>(),
-      posixUserId: map['posixUserId'] == null ? null : map['posixUserId'] as int,
+      posixGroupId: map['posixGroupId'] == null ? null : (map['posixGroupId'] as int).input(),
+      posixSecondaryGroupIds: map['posixSecondaryGroupIds'] == null ? null : ((map['posixSecondaryGroupIds'] as List).cast<int>()).input(),
+      posixUserId: map['posixUserId'] == null ? null : (map['posixUserId'] as int).input(),
     );
   }
 }

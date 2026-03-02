@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the partition scheme of a singleton-partitioned, or non-partitioned service.
 class SingletonPartitionSchemeResponse {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'Singleton'.
-  final String partitionScheme;
+  final pulumi.Input<String> partitionScheme;
 
   /// Creates a new [SingletonPartitionSchemeResponse].
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
@@ -21,7 +22,7 @@ class SingletonPartitionSchemeResponse {
 
   factory SingletonPartitionSchemeResponse.fromMap(Map<String, dynamic> map) {
     return SingletonPartitionSchemeResponse(
-      partitionScheme: map['partitionScheme'] as String,
+      partitionScheme: (map['partitionScheme'] as String).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleRateLimitOptionsThresholdResponse {
   /// Number of HTTP(S) requests for calculating the threshold.
-  final int count;
+  final pulumi.Input<int> count;
   /// Interval over which the threshold is computed.
-  final int intervalSec;
+  final pulumi.Input<int> intervalSec;
 
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsThresholdResponse].
   /// [count] Number of HTTP(S) requests for calculating the threshold.
@@ -24,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsThresholdResponse {
 
   factory SecurityPolicyRuleRateLimitOptionsThresholdResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsThresholdResponse(
-      count: map['count'] as int,
-      intervalSec: map['intervalSec'] as int,
+      count: (map['count'] as int).input(),
+      intervalSec: (map['intervalSec'] as int).input(),
     );
   }
 }

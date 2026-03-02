@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
 class KubernetesMetadataResponse {
   /// Kubernetes API server version string as reported by `/version`.
-  final String kubernetesApiServerVersion;
+  final pulumi.Input<String> kubernetesApiServerVersion;
   /// The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
-  final int memoryMb;
+  final pulumi.Input<int> memoryMb;
   /// Node count as reported by Kubernetes nodes resources.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
-  final String nodeProviderId;
+  final pulumi.Input<String> nodeProviderId;
   /// The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
   /// vCPU count as reported by Kubernetes nodes resources.
-  final int vcpuCount;
+  final pulumi.Input<int> vcpuCount;
 
   /// Creates a new [KubernetesMetadataResponse].
   /// [kubernetesApiServerVersion] Kubernetes API server version string as reported by `/version`.
@@ -45,12 +46,12 @@ class KubernetesMetadataResponse {
 
   factory KubernetesMetadataResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesMetadataResponse(
-      kubernetesApiServerVersion: map['kubernetesApiServerVersion'] as String,
-      memoryMb: map['memoryMb'] as int,
-      nodeCount: map['nodeCount'] as int,
-      nodeProviderId: map['nodeProviderId'] as String,
-      updateTime: map['updateTime'] as String,
-      vcpuCount: map['vcpuCount'] as int,
+      kubernetesApiServerVersion: (map['kubernetesApiServerVersion'] as String).input(),
+      memoryMb: (map['memoryMb'] as int).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      nodeProviderId: (map['nodeProviderId'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
+      vcpuCount: (map['vcpuCount'] as int).input(),
     );
   }
 }

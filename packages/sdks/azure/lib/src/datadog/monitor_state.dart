@@ -40,27 +40,17 @@ class MonitorState {
   /// [tags] A mapping of tags which should be assigned to the Datadog Monitor.
   /// [user] A `user` block as defined below.
   MonitorState({
-    pulumi.Output<MonitorDatadogOrganization>? datadogOrganization,
-    pulumi.Output<MonitorIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? marketplaceSubscriptionStatus,
-    pulumi.Output<bool>? monitoringEnabled,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? skuName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<MonitorUser>? user,
-  }) :
-      datadogOrganization = pulumi.Input.asOptionalInput<MonitorDatadogOrganization>(datadogOrganization),
-      identity = pulumi.Input.asOptionalInput<MonitorIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      marketplaceSubscriptionStatus = pulumi.Input.asOptionalInput<String>(marketplaceSubscriptionStatus),
-      monitoringEnabled = pulumi.Input.asOptionalInput<bool>(monitoringEnabled),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      skuName = pulumi.Input.asOptionalInput<String>(skuName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      user = pulumi.Input.asOptionalInput<MonitorUser>(user);
+    this.datadogOrganization,
+    this.identity,
+    this.location,
+    this.marketplaceSubscriptionStatus,
+    this.monitoringEnabled,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      datadogOrganization: map['datadogOrganization'] == null ? null : pulumi.Output.create<MonitorDatadogOrganization>(MonitorDatadogOrganization.fromMap((map['datadogOrganization'] as Map).cast<String, dynamic>())),
-      identity: map['identity'] == null ? null : pulumi.Output.create<MonitorIdentity>(MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : pulumi.Output.create<String>(map['marketplaceSubscriptionStatus'] as String),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : pulumi.Output.create<bool>(map['monitoringEnabled'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      user: map['user'] == null ? null : pulumi.Output.create<MonitorUser>(MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())),
+      datadogOrganization: map['datadogOrganization'] == null ? null : (MonitorDatadogOrganization.fromMap((map['datadogOrganization'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus'] as String).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      user: map['user'] == null ? null : (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

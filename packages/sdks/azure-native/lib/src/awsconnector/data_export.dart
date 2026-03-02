@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'destination.dart';
 
 /// Definition of DataExport
 class DataExport {
   /// The place to store the data for an analysis. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
-  final Destination? destination;
+  final pulumi.Input<Destination>? destination;
   /// The version of the output schema to use when exporting data. Must be ``V_1``.
-  final String? outputSchemaVersion;
+  final pulumi.Input<String>? outputSchemaVersion;
 
   /// Creates a new [DataExport].
   /// [destination] The place to store the data for an analysis. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
@@ -19,15 +20,15 @@ class DataExport {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': ?destination == null ? null : destination!.toMap(),
+      'destination': ?pulumi.Input.mapOptionalInputValue<Destination, Map<String, dynamic>>(destination, (value) => value.toMap()),
       'outputSchemaVersion': ?outputSchemaVersion,
     };
   }
 
   factory DataExport.fromMap(Map<String, dynamic> map) {
     return DataExport(
-      destination: map['destination'] == null ? null : Destination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : map['outputSchemaVersion'] as String,
+      destination: map['destination'] == null ? null : (Destination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : (map['outputSchemaVersion'] as String).input(),
     );
   }
 }

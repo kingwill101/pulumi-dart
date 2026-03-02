@@ -41,29 +41,18 @@ class TriggerCustomEventState {
   /// [subjectBeginsWith] The pattern that event subject starts with for trigger to fire.
   /// [subjectEndsWith] The pattern that event subject ends with for trigger to fire.
   TriggerCustomEventState({
-    pulumi.Output<bool>? activated,
-    pulumi.Output<Map<String, String>>? additionalProperties,
-    pulumi.Output<List<String>>? annotations,
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? eventgridTopicId,
-    pulumi.Output<List<String>>? events,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<TriggerCustomEventPipeline>>? pipelines,
-    pulumi.Output<String>? subjectBeginsWith,
-    pulumi.Output<String>? subjectEndsWith,
-  }) :
-      activated = pulumi.Input.asOptionalInput<bool>(activated),
-      additionalProperties = pulumi.Input.asOptionalInput<Map<String, String>>(additionalProperties),
-      annotations = pulumi.Input.asOptionalInput<List<String>>(annotations),
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventgridTopicId = pulumi.Input.asOptionalInput<String>(eventgridTopicId),
-      events = pulumi.Input.asOptionalInput<List<String>>(events),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pipelines = pulumi.Input.asOptionalInput<List<TriggerCustomEventPipeline>>(pipelines),
-      subjectBeginsWith = pulumi.Input.asOptionalInput<String>(subjectBeginsWith),
-      subjectEndsWith = pulumi.Input.asOptionalInput<String>(subjectEndsWith);
+    this.activated,
+    this.additionalProperties,
+    this.annotations,
+    this.dataFactoryId,
+    this.description,
+    this.eventgridTopicId,
+    this.events,
+    this.name,
+    this.pipelines,
+    this.subjectBeginsWith,
+    this.subjectEndsWith,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,17 +72,17 @@ class TriggerCustomEventState {
 
   factory TriggerCustomEventState.fromMap(Map<String, dynamic> map) {
     return TriggerCustomEventState(
-      activated: map['activated'] == null ? null : pulumi.Output.create<bool>(map['activated'] as bool),
-      additionalProperties: map['additionalProperties'] == null ? null : pulumi.Output.create<Map<String, String>>((map['additionalProperties'] as Map).cast<String, String>()),
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<List<String>>((map['annotations'] as List).cast<String>()),
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      eventgridTopicId: map['eventgridTopicId'] == null ? null : pulumi.Output.create<String>(map['eventgridTopicId'] as String),
-      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      pipelines: map['pipelines'] == null ? null : pulumi.Output.create<List<TriggerCustomEventPipeline>>(pulumi.Input.decodeList<TriggerCustomEventPipeline>(map['pipelines'], (value) => TriggerCustomEventPipeline.fromMap((value as Map).cast<String, dynamic>()))),
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : pulumi.Output.create<String>(map['subjectBeginsWith'] as String),
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : pulumi.Output.create<String>(map['subjectEndsWith'] as String),
+      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      eventgridTopicId: map['eventgridTopicId'] == null ? null : (map['eventgridTopicId'] as String).input(),
+      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerCustomEventPipeline>(map['pipelines'], (value) => TriggerCustomEventPipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
     );
   }
 }

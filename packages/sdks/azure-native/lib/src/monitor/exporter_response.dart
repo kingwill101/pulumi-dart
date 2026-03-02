@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_monitor_workspace_logs_exporter_response.dart';
 import 'tcp_exporter_response.dart';
 
 /// Exporter Info.
 class ExporterResponse {
   /// Azure Monitor Workspace Logs specific configurations.
-  final AzureMonitorWorkspaceLogsExporterResponse? azureMonitorWorkspaceLogs;
+  final pulumi.Input<AzureMonitorWorkspaceLogsExporterResponse>? azureMonitorWorkspaceLogs;
   /// The name of exporter.
-  final String name;
+  final pulumi.Input<String> name;
   /// TCP based exporter. Used for pipelineGroup exporter.
-  final TcpExporterResponse? tcp;
+  final pulumi.Input<TcpExporterResponse>? tcp;
   /// The type of exporter.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExporterResponse].
   /// [azureMonitorWorkspaceLogs] Azure Monitor Workspace Logs specific configurations.
@@ -28,19 +29,19 @@ class ExporterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureMonitorWorkspaceLogs': ?azureMonitorWorkspaceLogs == null ? null : azureMonitorWorkspaceLogs!.toMap(),
+      'azureMonitorWorkspaceLogs': ?pulumi.Input.mapOptionalInputValue<AzureMonitorWorkspaceLogsExporterResponse, Map<String, dynamic>>(azureMonitorWorkspaceLogs, (value) => value.toMap()),
       'name': name,
-      'tcp': ?tcp == null ? null : tcp!.toMap(),
+      'tcp': ?pulumi.Input.mapOptionalInputValue<TcpExporterResponse, Map<String, dynamic>>(tcp, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory ExporterResponse.fromMap(Map<String, dynamic> map) {
     return ExporterResponse(
-      azureMonitorWorkspaceLogs: map['azureMonitorWorkspaceLogs'] == null ? null : AzureMonitorWorkspaceLogsExporterResponse.fromMap((map['azureMonitorWorkspaceLogs'] as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      tcp: map['tcp'] == null ? null : TcpExporterResponse.fromMap((map['tcp'] as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureMonitorWorkspaceLogs: map['azureMonitorWorkspaceLogs'] == null ? null : (AzureMonitorWorkspaceLogsExporterResponse.fromMap((map['azureMonitorWorkspaceLogs'] as Map).cast<String, dynamic>())).input(),
+      name: (map['name'] as String).input(),
+      tcp: map['tcp'] == null ? null : (TcpExporterResponse.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

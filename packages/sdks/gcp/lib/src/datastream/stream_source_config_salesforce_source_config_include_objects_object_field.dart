@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
   /// Field name.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField].
   /// [name] Field name.
@@ -19,7 +20,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
 
   factory StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField(
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

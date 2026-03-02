@@ -5,19 +5,19 @@ import 'cis_benchmark_response.dart';
 import 'compliance_version_response.dart';
 
 class ComplianceNoteResponse {
-  final CisBenchmarkResponse cisBenchmark;
+  final pulumi.Input<CisBenchmarkResponse> cisBenchmark;
   /// A description about this compliance check.
-  final String description;
+  final pulumi.Input<String> description;
   /// A rationale for the existence of this compliance check.
-  final String rationale;
+  final pulumi.Input<String> rationale;
   /// A description of remediation steps if the compliance check fails.
-  final String remediation;
+  final pulumi.Input<String> remediation;
   /// Serialized scan instructions with a predefined format.
-  final String scanInstructions;
+  final pulumi.Input<String> scanInstructions;
   /// The title that identifies this compliance check.
-  final String title;
+  final pulumi.Input<String> title;
   /// The OS and config versions the benchmark applies to.
-  final List<ComplianceVersionResponse> version;
+  final pulumi.Input<List<ComplianceVersionResponse>> version;
 
   /// Creates a new [ComplianceNoteResponse].
   /// [cisBenchmark] Required.
@@ -39,25 +39,25 @@ class ComplianceNoteResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cisBenchmark': cisBenchmark.toMap(),
+      'cisBenchmark': pulumi.Input.mapInputValue<CisBenchmarkResponse, Map<String, dynamic>>(cisBenchmark, (value) => value.toMap()),
       'description': description,
       'rationale': rationale,
       'remediation': remediation,
       'scanInstructions': scanInstructions,
       'title': title,
-      'version': pulumi.Input.encodeList<ComplianceVersionResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
+      'version': pulumi.Input.mapInputValue<List<ComplianceVersionResponse>, List<Map<String, dynamic>>>(version, (value) => pulumi.Input.encodeList<ComplianceVersionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory ComplianceNoteResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceNoteResponse(
-      cisBenchmark: CisBenchmarkResponse.fromMap((map['cisBenchmark'] as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      rationale: map['rationale'] as String,
-      remediation: map['remediation'] as String,
-      scanInstructions: map['scanInstructions'] as String,
-      title: map['title'] as String,
-      version: pulumi.Input.decodeList<ComplianceVersionResponse>(map['version'], (value) => ComplianceVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      cisBenchmark: (CisBenchmarkResponse.fromMap((map['cisBenchmark'] as Map).cast<String, dynamic>())).input(),
+      description: (map['description'] as String).input(),
+      rationale: (map['rationale'] as String).input(),
+      remediation: (map['remediation'] as String).input(),
+      scanInstructions: (map['scanInstructions'] as String).input(),
+      title: (map['title'] as String).input(),
+      version: (pulumi.Input.decodeList<ComplianceVersionResponse>(map['version'], (value) => ComplianceVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

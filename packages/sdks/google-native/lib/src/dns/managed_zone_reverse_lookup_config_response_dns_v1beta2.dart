@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZoneReverseLookupConfigResponseDnsV1beta2 {
-  final String kind;
+  final pulumi.Input<String> kind;
 
   /// Creates a new [ManagedZoneReverseLookupConfigResponseDnsV1beta2].
   /// [kind] Required.
@@ -18,7 +19,7 @@ class ManagedZoneReverseLookupConfigResponseDnsV1beta2 {
 
   factory ManagedZoneReverseLookupConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneReverseLookupConfigResponseDnsV1beta2(
-      kind: map['kind'] as String,
+      kind: (map['kind'] as String).input(),
     );
   }
 }

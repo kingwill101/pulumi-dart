@@ -5,7 +5,7 @@ import 'get_insights_dataset_config_exclude_cloud_storage_bucket_cloud_storage_b
 
 class GetInsightsDatasetConfigExcludeCloudStorageBucket {
   /// The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
-  final List<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket> cloudStorageBuckets;
+  final pulumi.Input<List<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket>> cloudStorageBuckets;
 
   /// Creates a new [GetInsightsDatasetConfigExcludeCloudStorageBucket].
   /// [cloudStorageBuckets] The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
@@ -15,13 +15,13 @@ class GetInsightsDatasetConfigExcludeCloudStorageBucket {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStorageBuckets': pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket, Map<String, dynamic>>(cloudStorageBuckets, (value) => value.toMap()),
+      'cloudStorageBuckets': pulumi.Input.mapInputValue<List<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket>, List<Map<String, dynamic>>>(cloudStorageBuckets, (value) => pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigExcludeCloudStorageBucket(
-      cloudStorageBuckets: pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket>(map['cloudStorageBuckets'], (value) => GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
+      cloudStorageBuckets: (pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket>(map['cloudStorageBuckets'], (value) => GetInsightsDatasetConfigExcludeCloudStorageBucketCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

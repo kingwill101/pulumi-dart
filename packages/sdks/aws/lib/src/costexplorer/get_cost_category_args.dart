@@ -16,11 +16,9 @@ class GetCostCategoryArgs {
   /// [costCategoryArn] Unique name for the Cost Category.
   /// [tags] Configuration block for the specific `Tag` to use for `Expression`. See below.
   GetCostCategoryArgs({
-    required pulumi.Output<String> costCategoryArn,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      costCategoryArn = pulumi.Input.asInput<String>(costCategoryArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.costCategoryArn,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetCostCategoryArgs {
 
   factory GetCostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryArgs(
-      costCategoryArn: pulumi.Output.create<String>(map['costCategoryArn'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      costCategoryArn: (map['costCategoryArn'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

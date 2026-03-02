@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ExpressRouteLink Mac Security Configuration.
 class ExpressRouteLinkMacSecConfig {
   /// Keyvault Secret Identifier URL containing Mac security CAK key.
-  final String? cakSecretIdentifier;
+  final pulumi.Input<String>? cakSecretIdentifier;
   /// Mac security cipher.
-  final String? cipher;
+  final pulumi.Input<String>? cipher;
   /// Keyvault Secret Identifier URL containing Mac security CKN key.
-  final String? cknSecretIdentifier;
+  final pulumi.Input<String>? cknSecretIdentifier;
   /// Sci mode enabled/disabled.
-  final String? sciState;
+  final pulumi.Input<String>? sciState;
 
   /// Creates a new [ExpressRouteLinkMacSecConfig].
   /// [cakSecretIdentifier] Keyvault Secret Identifier URL containing Mac security CAK key.
@@ -35,10 +36,10 @@ class ExpressRouteLinkMacSecConfig {
 
   factory ExpressRouteLinkMacSecConfig.fromMap(Map<String, dynamic> map) {
     return ExpressRouteLinkMacSecConfig(
-      cakSecretIdentifier: map['cakSecretIdentifier'] == null ? null : map['cakSecretIdentifier'] as String,
-      cipher: map['cipher'] == null ? null : map['cipher'] as String,
-      cknSecretIdentifier: map['cknSecretIdentifier'] == null ? null : map['cknSecretIdentifier'] as String,
-      sciState: map['sciState'] == null ? null : map['sciState'] as String,
+      cakSecretIdentifier: map['cakSecretIdentifier'] == null ? null : (map['cakSecretIdentifier'] as String).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
+      cknSecretIdentifier: map['cknSecretIdentifier'] == null ? null : (map['cknSecretIdentifier'] as String).input(),
+      sciState: map['sciState'] == null ? null : (map['sciState'] as String).input(),
     );
   }
 }

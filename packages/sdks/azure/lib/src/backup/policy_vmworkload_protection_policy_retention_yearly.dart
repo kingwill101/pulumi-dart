@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMWorkloadProtectionPolicyRetentionYearly {
   /// The number of yearly backups to keep. Possible values are between `1` and `99`
-  final int count;
+  final pulumi.Input<int> count;
   /// The retention schedule format type for yearly retention policy. Possible values are `Daily` and `Weekly`.
-  final String formatType;
+  final pulumi.Input<String> formatType;
   /// The monthday backups to retain. Possible values are between `0` and `28`.
-  final List<int>? monthdays;
+  final pulumi.Input<List<int>>? monthdays;
   /// The months of the year to retain backups of. Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`.
-  final List<String> months;
+  final pulumi.Input<List<String>> months;
   /// The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-  final List<String>? weekdays;
+  final pulumi.Input<List<String>>? weekdays;
   /// The weeks of the month to retain backups of. Possible values are `First`, `Second`, `Third`, `Fourth`, `Last`.
-  final List<String>? weeks;
+  final pulumi.Input<List<String>>? weeks;
 
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionYearly].
   /// [count] The number of yearly backups to keep. Possible values are between `1` and `99`
@@ -44,12 +45,12 @@ class PolicyVMWorkloadProtectionPolicyRetentionYearly {
 
   factory PolicyVMWorkloadProtectionPolicyRetentionYearly.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyRetentionYearly(
-      count: map['count'] as int,
-      formatType: map['formatType'] as String,
-      monthdays: map['monthdays'] == null ? null : (map['monthdays'] as List).cast<int>(),
-      months: (map['months'] as List).cast<String>(),
-      weekdays: map['weekdays'] == null ? null : (map['weekdays'] as List).cast<String>(),
-      weeks: map['weeks'] == null ? null : (map['weeks'] as List).cast<String>(),
+      count: (map['count'] as int).input(),
+      formatType: (map['formatType'] as String).input(),
+      monthdays: map['monthdays'] == null ? null : ((map['monthdays'] as List).cast<int>()).input(),
+      months: ((map['months'] as List).cast<String>()).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
+      weeks: map['weeks'] == null ? null : ((map['weeks'] as List).cast<String>()).input(),
     );
   }
 }

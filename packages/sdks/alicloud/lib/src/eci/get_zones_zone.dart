@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZonesZone {
   /// The endpoint of the region.
-  final String regionEndpoint;
+  final pulumi.Input<String> regionEndpoint;
   /// The list of available zone ids.
-  final List<String> zoneIds;
+  final pulumi.Input<List<String>> zoneIds;
 
   /// Creates a new [GetZonesZone].
   /// [regionEndpoint] The endpoint of the region.
@@ -24,8 +25,8 @@ class GetZonesZone {
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
     return GetZonesZone(
-      regionEndpoint: map['regionEndpoint'] as String,
-      zoneIds: (map['zoneIds'] as List).cast<String>(),
+      regionEndpoint: (map['regionEndpoint'] as String).input(),
+      zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -45,33 +45,20 @@ class SpecArgs {
   /// [sourceUri] The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
   /// [versionId] Required.
   SpecArgs({
-    pulumi.Output<Map<String, String>>? annotations,
-    required pulumi.Output<String> apiId,
-    required pulumi.Output<String> apiSpecId,
-    pulumi.Output<String>? contents,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filename,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mimeType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? sourceUri,
-    required pulumi.Output<String> versionId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      apiId = pulumi.Input.asInput<String>(apiId),
-      apiSpecId = pulumi.Input.asInput<String>(apiSpecId),
-      contents = pulumi.Input.asOptionalInput<String>(contents),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filename = pulumi.Input.asOptionalInput<String>(filename),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mimeType = pulumi.Input.asOptionalInput<String>(mimeType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceUri = pulumi.Input.asOptionalInput<String>(sourceUri),
-      versionId = pulumi.Input.asInput<String>(versionId);
+    this.annotations,
+    required this.apiId,
+    required this.apiSpecId,
+    this.contents,
+    this.description,
+    this.filename,
+    this.labels,
+    this.location,
+    this.mimeType,
+    this.name,
+    this.project,
+    this.sourceUri,
+    required this.versionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,19 +80,19 @@ class SpecArgs {
 
   factory SpecArgs.fromMap(Map<String, dynamic> map) {
     return SpecArgs(
-      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
-      apiId: pulumi.Output.create<String>(map['apiId'] as String),
-      apiSpecId: pulumi.Output.create<String>(map['apiSpecId'] as String),
-      contents: map['contents'] == null ? null : pulumi.Output.create<String>(map['contents'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filename: map['filename'] == null ? null : pulumi.Output.create<String>(map['filename'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mimeType: map['mimeType'] == null ? null : pulumi.Output.create<String>(map['mimeType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      sourceUri: map['sourceUri'] == null ? null : pulumi.Output.create<String>(map['sourceUri'] as String),
-      versionId: pulumi.Output.create<String>(map['versionId'] as String),
+      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      apiId: (map['apiId'] as String).input(),
+      apiSpecId: (map['apiSpecId'] as String).input(),
+      contents: map['contents'] == null ? null : (map['contents'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
+      versionId: (map['versionId'] as String).input(),
     );
   }
 }

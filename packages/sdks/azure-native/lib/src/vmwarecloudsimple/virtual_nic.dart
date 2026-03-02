@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guest_osniccustomization.dart';
 import 'nictype.dart';
 import 'virtual_network.dart';
@@ -7,19 +8,19 @@ import 'virtual_network.dart';
 /// Virtual NIC model
 class VirtualNic {
   /// guest OS customization for nic
-  final GuestOSNICCustomization? customization;
+  final pulumi.Input<GuestOSNICCustomization>? customization;
   /// NIC ip address
-  final List<String>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
   /// NIC MAC address
-  final String? macAddress;
+  final pulumi.Input<String>? macAddress;
   /// Virtual Network
-  final VirtualNetwork network;
+  final pulumi.Input<VirtualNetwork> network;
   /// NIC type
-  final NICType nicType;
+  final pulumi.Input<NICType> nicType;
   /// Is NIC powered on/off on boot
-  final bool? powerOnBoot;
+  final pulumi.Input<bool>? powerOnBoot;
   /// NIC id
-  final String? virtualNicId;
+  final pulumi.Input<String>? virtualNicId;
 
   /// Creates a new [VirtualNic].
   /// [customization] guest OS customization for nic
@@ -41,11 +42,11 @@ class VirtualNic {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customization': ?customization == null ? null : customization!.toMap(),
+      'customization': ?pulumi.Input.mapOptionalInputValue<GuestOSNICCustomization, Map<String, dynamic>>(customization, (value) => value.toMap()),
       'ipAddresses': ?ipAddresses,
       'macAddress': ?macAddress,
-      'network': network.toMap(),
-      'nicType': nicType.value,
+      'network': pulumi.Input.mapInputValue<VirtualNetwork, Map<String, dynamic>>(network, (value) => value.toMap()),
+      'nicType': pulumi.Input.mapInputValue<NICType, String>(nicType, (value) => value.value),
       'powerOnBoot': ?powerOnBoot,
       'virtualNicId': ?virtualNicId,
     };
@@ -53,13 +54,13 @@ class VirtualNic {
 
   factory VirtualNic.fromMap(Map<String, dynamic> map) {
     return VirtualNic(
-      customization: map['customization'] == null ? null : GuestOSNICCustomization.fromMap((map['customization'] as Map).cast<String, dynamic>()),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      macAddress: map['macAddress'] == null ? null : map['macAddress'] as String,
-      network: VirtualNetwork.fromMap((map['network'] as Map).cast<String, dynamic>()),
-      nicType: NICType.fromValue(map['nicType'] as String),
-      powerOnBoot: map['powerOnBoot'] == null ? null : map['powerOnBoot'] as bool,
-      virtualNicId: map['virtualNicId'] == null ? null : map['virtualNicId'] as String,
+      customization: map['customization'] == null ? null : (GuestOSNICCustomization.fromMap((map['customization'] as Map).cast<String, dynamic>())).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      network: (VirtualNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      nicType: (NICType.fromValue(map['nicType'] as String)).input(),
+      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot'] as bool).input(),
+      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId'] as String).input(),
     );
   }
 }

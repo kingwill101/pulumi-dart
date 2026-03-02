@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LkeClusterControlPlaneAclAddress {
   /// A set of individual ipv4 addresses or CIDRs to ALLOW.
-  final List<String>? ipv4s;
+  final pulumi.Input<List<String>>? ipv4s;
   /// A set of individual ipv6 addresses or CIDRs to ALLOW.
-  final List<String>? ipv6s;
+  final pulumi.Input<List<String>>? ipv6s;
 
   /// Creates a new [LkeClusterControlPlaneAclAddress].
   /// [ipv4s] A set of individual ipv4 addresses or CIDRs to ALLOW.
@@ -24,8 +25,8 @@ class LkeClusterControlPlaneAclAddress {
 
   factory LkeClusterControlPlaneAclAddress.fromMap(Map<String, dynamic> map) {
     return LkeClusterControlPlaneAclAddress(
-      ipv4s: map['ipv4s'] == null ? null : (map['ipv4s'] as List).cast<String>(),
-      ipv6s: map['ipv6s'] == null ? null : (map['ipv6s'] as List).cast<String>(),
+      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s'] as List).cast<String>()).input(),
+      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s'] as List).cast<String>()).input(),
     );
   }
 }

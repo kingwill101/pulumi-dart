@@ -28,19 +28,13 @@ class GetAccessRulesArgs {
   /// [sourceCidrIp] Filter results by a specific SourceCidrIp.
   /// [userAccess] Filter results by a specific UserAccess.
   GetAccessRulesArgs({
-    required pulumi.Output<String> accessGroupName,
-    pulumi.Output<List<String>>? ids,
-    pulumi.Output<String>? outputFile,
-    pulumi.Output<String>? rwAccess,
-    pulumi.Output<String>? sourceCidrIp,
-    pulumi.Output<String>? userAccess,
-  }) :
-      accessGroupName = pulumi.Input.asInput<String>(accessGroupName),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
-      rwAccess = pulumi.Input.asOptionalInput<String>(rwAccess),
-      sourceCidrIp = pulumi.Input.asOptionalInput<String>(sourceCidrIp),
-      userAccess = pulumi.Input.asOptionalInput<String>(userAccess);
+    required this.accessGroupName,
+    this.ids,
+    this.outputFile,
+    this.rwAccess,
+    this.sourceCidrIp,
+    this.userAccess,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class GetAccessRulesArgs {
 
   factory GetAccessRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesArgs(
-      accessGroupName: pulumi.Output.create<String>(map['accessGroupName'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
-      rwAccess: map['rwAccess'] == null ? null : pulumi.Output.create<String>(map['rwAccess'] as String),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : pulumi.Output.create<String>(map['sourceCidrIp'] as String),
-      userAccess: map['userAccess'] == null ? null : pulumi.Output.create<String>(map['userAccess'] as String),
+      accessGroupName: (map['accessGroupName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      rwAccess: map['rwAccess'] == null ? null : (map['rwAccess'] as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
+      userAccess: map['userAccess'] == null ? null : (map['userAccess'] as String).input(),
     );
   }
 }

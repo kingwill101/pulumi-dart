@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableEncryptionConfiguration {
   /// The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the gcp.bigquery.getDefaultServiceAccount datasource and the gcp.kms.CryptoKeyIAMBinding resource.
-  final String kmsKeyName;
+  final pulumi.Input<String> kmsKeyName;
   /// The self link or full name of the kms key version used to encrypt this table.
-  final String kmsKeyVersion;
+  final pulumi.Input<String> kmsKeyVersion;
 
   /// Creates a new [GetTableEncryptionConfiguration].
   /// [kmsKeyName] The self link or full name of a key which should be used to encrypt this table. Note that the default bigquery service account will need to have encrypt/decrypt permissions on this key - you may want to see the gcp.bigquery.getDefaultServiceAccount datasource and the gcp.kms.CryptoKeyIAMBinding resource.
@@ -24,8 +25,8 @@ class GetTableEncryptionConfiguration {
 
   factory GetTableEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTableEncryptionConfiguration(
-      kmsKeyName: map['kmsKeyName'] as String,
-      kmsKeyVersion: map['kmsKeyVersion'] as String,
+      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyVersion: (map['kmsKeyVersion'] as String).input(),
     );
   }
 }

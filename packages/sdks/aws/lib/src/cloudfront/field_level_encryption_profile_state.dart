@@ -26,19 +26,13 @@ class FieldLevelEncryptionProfileState {
   /// [etag] The current version of the Field Level Encryption Profile. For example: `E2QWRUHAPOMQZL`.
   /// [name] The name of the Field Level Encryption Profile.
   FieldLevelEncryptionProfileState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? callerReference,
-    pulumi.Output<String>? comment,
-    pulumi.Output<FieldLevelEncryptionProfileEncryptionEntities>? encryptionEntities,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? name,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      callerReference = pulumi.Input.asOptionalInput<String>(callerReference),
-      comment = pulumi.Input.asOptionalInput<String>(comment),
-      encryptionEntities = pulumi.Input.asOptionalInput<FieldLevelEncryptionProfileEncryptionEntities>(encryptionEntities),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.arn,
+    this.callerReference,
+    this.comment,
+    this.encryptionEntities,
+    this.etag,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class FieldLevelEncryptionProfileState {
 
   factory FieldLevelEncryptionProfileState.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      callerReference: map['callerReference'] == null ? null : pulumi.Output.create<String>(map['callerReference'] as String),
-      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
-      encryptionEntities: map['encryptionEntities'] == null ? null : pulumi.Output.create<FieldLevelEncryptionProfileEncryptionEntities>(FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      encryptionEntities: map['encryptionEntities'] == null ? null : (FieldLevelEncryptionProfileEncryptionEntities.fromMap((map['encryptionEntities'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

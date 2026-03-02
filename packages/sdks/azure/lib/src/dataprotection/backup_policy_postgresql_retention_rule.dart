@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_postgresql_retention_rule_criteria.dart';
 
 class BackupPolicyPostgresqlRetentionRule {
   /// A `criteria` block as defined below. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final BackupPolicyPostgresqlRetentionRuleCriteria criteria;
+  final pulumi.Input<BackupPolicyPostgresqlRetentionRuleCriteria> criteria;
   /// Duration after which the backup is deleted. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final String duration;
+  final pulumi.Input<String> duration;
   /// The name which should be used for this retention rule. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final int priority;
+  final pulumi.Input<int> priority;
 
   /// Creates a new [BackupPolicyPostgresqlRetentionRule].
   /// [criteria] A `criteria` block as defined below. Changing this forces a new Backup Policy PostgreSQL to be created.
@@ -26,7 +27,7 @@ class BackupPolicyPostgresqlRetentionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'criteria': criteria.toMap(),
+      'criteria': pulumi.Input.mapInputValue<BackupPolicyPostgresqlRetentionRuleCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
       'duration': duration,
       'name': name,
       'priority': priority,
@@ -35,10 +36,10 @@ class BackupPolicyPostgresqlRetentionRule {
 
   factory BackupPolicyPostgresqlRetentionRule.fromMap(Map<String, dynamic> map) {
     return BackupPolicyPostgresqlRetentionRule(
-      criteria: BackupPolicyPostgresqlRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>()),
-      duration: map['duration'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
+      criteria: (BackupPolicyPostgresqlRetentionRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      duration: (map['duration'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
     );
   }
 }

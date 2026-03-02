@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HadoopClusterComponentVersion {
   /// The version of Hadoop which should be used for this HDInsight Hadoop Cluster. Changing this forces a new resource to be created.
-  final String hadoop;
+  final pulumi.Input<String> hadoop;
 
   /// Creates a new [HadoopClusterComponentVersion].
   /// [hadoop] The version of Hadoop which should be used for this HDInsight Hadoop Cluster. Changing this forces a new resource to be created.
@@ -19,7 +20,7 @@ class HadoopClusterComponentVersion {
 
   factory HadoopClusterComponentVersion.fromMap(Map<String, dynamic> map) {
     return HadoopClusterComponentVersion(
-      hadoop: map['hadoop'] as String,
+      hadoop: (map['hadoop'] as String).input(),
     );
   }
 }

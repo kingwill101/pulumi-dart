@@ -55,33 +55,20 @@ class ExampleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when the example was last updated.
   ExampleState({
-    pulumi.Output<String>? app,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? entryAgent,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? exampleId,
-    pulumi.Output<bool>? invalid,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<ExampleMessage>>? messages,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? updateTime,
-  }) :
-      app = pulumi.Input.asOptionalInput<String>(app),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      entryAgent = pulumi.Input.asOptionalInput<String>(entryAgent),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      exampleId = pulumi.Input.asOptionalInput<String>(exampleId),
-      invalid = pulumi.Input.asOptionalInput<bool>(invalid),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      messages = pulumi.Input.asOptionalInput<List<ExampleMessage>>(messages),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.app,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.entryAgent,
+    this.etag,
+    this.exampleId,
+    this.invalid,
+    this.location,
+    this.messages,
+    this.name,
+    this.project,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,19 +90,19 @@ class ExampleState {
 
   factory ExampleState.fromMap(Map<String, dynamic> map) {
     return ExampleState(
-      app: map['app'] == null ? null : pulumi.Output.create<String>(map['app'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      entryAgent: map['entryAgent'] == null ? null : pulumi.Output.create<String>(map['entryAgent'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      exampleId: map['exampleId'] == null ? null : pulumi.Output.create<String>(map['exampleId'] as String),
-      invalid: map['invalid'] == null ? null : pulumi.Output.create<bool>(map['invalid'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      messages: map['messages'] == null ? null : pulumi.Output.create<List<ExampleMessage>>(pulumi.Input.decodeList<ExampleMessage>(map['messages'], (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      app: map['app'] == null ? null : (map['app'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      exampleId: map['exampleId'] == null ? null : (map['exampleId'] as String).input(),
+      invalid: map['invalid'] == null ? null : (map['invalid'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ExampleMessage>(map['messages'], (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

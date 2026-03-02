@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Mcc cache node resource install script properties.
 class CacheNodeInstallPropertiesResponse {
   /// Mcc cache node resource Id.
-  final String? cacheNodeId;
+  final pulumi.Input<String>? cacheNodeId;
   /// Mcc customer resource Id.
-  final String? customerId;
+  final pulumi.Input<String>? customerId;
   /// Mcc primary account key. Internal to Mcc.
-  final String primaryAccountKey;
+  final pulumi.Input<String> primaryAccountKey;
   /// Mcc Iot Central temporary device registration key, used once.
-  final String registrationKey;
+  final pulumi.Input<String> registrationKey;
   /// Mcc secondary account key. Internal to Mcc.
-  final String secondaryAccountKey;
+  final pulumi.Input<String> secondaryAccountKey;
 
   /// Creates a new [CacheNodeInstallPropertiesResponse].
   /// [cacheNodeId] Mcc cache node resource Id.
@@ -40,11 +41,11 @@ class CacheNodeInstallPropertiesResponse {
 
   factory CacheNodeInstallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeInstallPropertiesResponse(
-      cacheNodeId: map['cacheNodeId'] == null ? null : map['cacheNodeId'] as String,
-      customerId: map['customerId'] == null ? null : map['customerId'] as String,
-      primaryAccountKey: map['primaryAccountKey'] as String,
-      registrationKey: map['registrationKey'] as String,
-      secondaryAccountKey: map['secondaryAccountKey'] as String,
+      cacheNodeId: map['cacheNodeId'] == null ? null : (map['cacheNodeId'] as String).input(),
+      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
+      primaryAccountKey: (map['primaryAccountKey'] as String).input(),
+      registrationKey: (map['registrationKey'] as String).input(),
+      secondaryAccountKey: (map['secondaryAccountKey'] as String).input(),
     );
   }
 }

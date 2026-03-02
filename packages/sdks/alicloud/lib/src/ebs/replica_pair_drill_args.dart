@@ -13,9 +13,8 @@ class ReplicaPairDrillArgs {
   /// Creates a new [ReplicaPairDrillArgs].
   /// [pairId] Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
   ReplicaPairDrillArgs({
-    required pulumi.Output<String> pairId,
-  }) :
-      pairId = pulumi.Input.asInput<String>(pairId);
+    required this.pairId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ReplicaPairDrillArgs {
 
   factory ReplicaPairDrillArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaPairDrillArgs(
-      pairId: pulumi.Output.create<String>(map['pairId'] as String),
+      pairId: (map['pairId'] as String).input(),
     );
   }
 }

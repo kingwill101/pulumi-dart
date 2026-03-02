@@ -31,21 +31,14 @@ class ApplicationResourceArgs {
   /// [resourceType] The type of the application resource.
   /// [spaceName] The name of the space
   ApplicationResourceArgs({
-    required pulumi.Output<String> applicationName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceId,
-    pulumi.Output<String>? resourceKind,
-    pulumi.Output<String>? resourceName,
-    required pulumi.Output<String> resourceType,
-    required pulumi.Output<String> spaceName,
-  }) :
-      applicationName = pulumi.Input.asInput<String>(applicationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      resourceKind = pulumi.Input.asOptionalInput<String>(resourceKind),
-      resourceName = pulumi.Input.asOptionalInput<String>(resourceName),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      spaceName = pulumi.Input.asInput<String>(spaceName);
+    required this.applicationName,
+    required this.resourceGroupName,
+    required this.resourceId,
+    this.resourceKind,
+    this.resourceName,
+    required this.resourceType,
+    required this.spaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class ApplicationResourceArgs {
 
   factory ApplicationResourceArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationResourceArgs(
-      applicationName: pulumi.Output.create<String>(map['applicationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      resourceKind: map['resourceKind'] == null ? null : pulumi.Output.create<String>(map['resourceKind'] as String),
-      resourceName: map['resourceName'] == null ? null : pulumi.Output.create<String>(map['resourceName'] as String),
-      resourceType: pulumi.Output.create<String>(map['resourceType'] as String),
-      spaceName: pulumi.Output.create<String>(map['spaceName'] as String),
+      applicationName: (map['applicationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceId: (map['resourceId'] as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceType: (map['resourceType'] as String).input(),
+      spaceName: (map['spaceName'] as String).input(),
     );
   }
 }

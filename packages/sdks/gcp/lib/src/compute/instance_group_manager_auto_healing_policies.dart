@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerAutoHealingPolicies {
   /// The health check resource that signals autohealing.
-  final String healthCheck;
+  final pulumi.Input<String> healthCheck;
   /// The number of seconds that the managed instance group waits before
   /// it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
-  final int initialDelaySec;
+  final pulumi.Input<int> initialDelaySec;
 
   /// Creates a new [InstanceGroupManagerAutoHealingPolicies].
   /// [healthCheck] The health check resource that signals autohealing.
@@ -25,8 +26,8 @@ class InstanceGroupManagerAutoHealingPolicies {
 
   factory InstanceGroupManagerAutoHealingPolicies.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicies(
-      healthCheck: map['healthCheck'] as String,
-      initialDelaySec: map['initialDelaySec'] as int,
+      healthCheck: (map['healthCheck'] as String).input(),
+      initialDelaySec: (map['initialDelaySec'] as int).input(),
     );
   }
 }

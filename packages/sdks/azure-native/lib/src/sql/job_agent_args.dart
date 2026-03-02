@@ -36,23 +36,15 @@ class JobAgentArgs {
   /// [sku] The name and tier of the SKU.
   /// [tags] Resource tags.
   JobAgentArgs({
-    required pulumi.Output<String> databaseId,
-    pulumi.Output<JobAgentIdentity>? identity,
-    pulumi.Output<String>? jobAgentName,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serverName,
-    pulumi.Output<Sku>? sku,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      identity = pulumi.Input.asOptionalInput<JobAgentIdentity>(identity),
-      jobAgentName = pulumi.Input.asOptionalInput<String>(jobAgentName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverName = pulumi.Input.asInput<String>(serverName),
-      sku = pulumi.Input.asOptionalInput<Sku>(sku),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.databaseId,
+    this.identity,
+    this.jobAgentName,
+    this.location,
+    required this.resourceGroupName,
+    required this.serverName,
+    this.sku,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,14 +61,14 @@ class JobAgentArgs {
 
   factory JobAgentArgs.fromMap(Map<String, dynamic> map) {
     return JobAgentArgs(
-      databaseId: pulumi.Output.create<String>(map['databaseId'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<JobAgentIdentity>(JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      jobAgentName: map['jobAgentName'] == null ? null : pulumi.Output.create<String>(map['jobAgentName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverName: pulumi.Output.create<String>(map['serverName'] as String),
-      sku: map['sku'] == null ? null : pulumi.Output.create<Sku>(Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      databaseId: (map['databaseId'] as String).input(),
+      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      jobAgentName: map['jobAgentName'] == null ? null : (map['jobAgentName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

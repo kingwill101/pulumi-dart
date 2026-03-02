@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNewCertificateConfig {
   /// The ID of the certificate. It takes effect only when CertType = cas.
-  final String? certId;
+  final pulumi.Input<String>? certId;
   /// Certificate name, only flyer names are supported.
-  final String? certName;
+  final pulumi.Input<String>? certName;
   /// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
-  final String? certRegion;
+  final pulumi.Input<String>? certRegion;
   /// Certificate type. Value:
   /// - **upload**: upload certificate.
   /// - **cas**: Cloud Shield certificate.
   /// - **free**: free certificate.
   /// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
-  final String? certType;
+  final pulumi.Input<String>? certType;
   /// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
-  final String? privateKey;
+  final pulumi.Input<String>? privateKey;
   /// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
-  final String? serverCertificate;
+  final pulumi.Input<String>? serverCertificate;
   /// Whether the HTTPS certificate is enabled. Value:
   /// - **on**(default): enabled.
   /// - **off** : not enabled.
-  final String? serverCertificateStatus;
+  final pulumi.Input<String>? serverCertificateStatus;
 
   /// Creates a new [DomainNewCertificateConfig].
   /// [certId] The ID of the certificate. It takes effect only when CertType = cas.
@@ -55,13 +56,13 @@ class DomainNewCertificateConfig {
 
   factory DomainNewCertificateConfig.fromMap(Map<String, dynamic> map) {
     return DomainNewCertificateConfig(
-      certId: map['certId'] == null ? null : map['certId'] as String,
-      certName: map['certName'] == null ? null : map['certName'] as String,
-      certRegion: map['certRegion'] == null ? null : map['certRegion'] as String,
-      certType: map['certType'] == null ? null : map['certType'] as String,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
-      serverCertificate: map['serverCertificate'] == null ? null : map['serverCertificate'] as String,
-      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : map['serverCertificateStatus'] as String,
+      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
+      certRegion: map['certRegion'] == null ? null : (map['certRegion'] as String).input(),
+      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus'] as String).input(),
     );
   }
 }

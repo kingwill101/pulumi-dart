@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccessPointsPointAccessPointFeatureModel {
   /// The Access Point Properties.
-  final String featureKey;
+  final pulumi.Input<String> featureKey;
   /// The Access Point Characteristic Value.
-  final String featureValue;
+  final pulumi.Input<String> featureValue;
 
   /// Creates a new [GetAccessPointsPointAccessPointFeatureModel].
   /// [featureKey] The Access Point Properties.
@@ -24,8 +25,8 @@ class GetAccessPointsPointAccessPointFeatureModel {
 
   factory GetAccessPointsPointAccessPointFeatureModel.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsPointAccessPointFeatureModel(
-      featureKey: map['featureKey'] as String,
-      featureValue: map['featureValue'] as String,
+      featureKey: (map['featureKey'] as String).input(),
+      featureValue: (map['featureValue'] as String).input(),
     );
   }
 }

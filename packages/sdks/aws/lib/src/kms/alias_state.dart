@@ -26,19 +26,13 @@ class AliasState {
   /// [targetKeyArn] The Amazon Resource Name (ARN) of the target key identifier.
   /// [targetKeyId] Identifier for the key for which the alias is for, can be either an ARN or key_id.
   AliasState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? namePrefix,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetKeyArn,
-    pulumi.Output<String>? targetKeyId,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetKeyArn = pulumi.Input.asOptionalInput<String>(targetKeyArn),
-      targetKeyId = pulumi.Input.asOptionalInput<String>(targetKeyId);
+    this.arn,
+    this.name,
+    this.namePrefix,
+    this.region,
+    this.targetKeyArn,
+    this.targetKeyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetKeyArn: map['targetKeyArn'] == null ? null : pulumi.Output.create<String>(map['targetKeyArn'] as String),
-      targetKeyId: map['targetKeyId'] == null ? null : pulumi.Output.create<String>(map['targetKeyId'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetKeyArn: map['targetKeyArn'] == null ? null : (map['targetKeyArn'] as String).input(),
+      targetKeyId: map['targetKeyId'] == null ? null : (map['targetKeyId'] as String).input(),
     );
   }
 }

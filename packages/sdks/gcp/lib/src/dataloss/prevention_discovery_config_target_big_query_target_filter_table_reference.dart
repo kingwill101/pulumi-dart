@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   /// Dataset ID of the table.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// Name of the table.
-  final String tableId;
+  final pulumi.Input<String> tableId;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference].
   /// [datasetId] Dataset ID of the table.
@@ -24,8 +25,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference(
-      datasetId: map['datasetId'] as String,
-      tableId: map['tableId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      tableId: (map['tableId'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBackendServiceCustomMetric {
   /// If true, the metric data is not used for load balancing.
-  final bool dryRun;
+  final pulumi.Input<bool> dryRun;
   /// The name of the Backend Service.
   ///
   /// - - -
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [GetBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
@@ -26,8 +27,8 @@ class GetBackendServiceCustomMetric {
 
   factory GetBackendServiceCustomMetric.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceCustomMetric(
-      dryRun: map['dryRun'] as bool,
-      name: map['name'] as String,
+      dryRun: (map['dryRun'] as bool).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

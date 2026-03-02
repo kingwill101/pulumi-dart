@@ -19,13 +19,10 @@ class WebAclAssociationArgs {
   /// [resourceArn] The Amazon Resource Name (ARN) of the resource to associate with the web ACL. This must be an ARN of an Application Load Balancer, an Amazon API Gateway stage (REST only, HTTP is unsupported), an Amazon Cognito User Pool, an Amazon AppSync GraphQL API, an Amazon App Runner service, or an Amazon Verified Access instance.
   /// [webAclArn] The Amazon Resource Name (ARN) of the Web ACL that you want to associate with the resource.
   WebAclAssociationArgs({
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> resourceArn,
-    required pulumi.Output<String> webAclArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      webAclArn = pulumi.Input.asInput<String>(webAclArn);
+    this.region,
+    required this.resourceArn,
+    required this.webAclArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class WebAclAssociationArgs {
 
   factory WebAclAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
-      webAclArn: pulumi.Output.create<String>(map['webAclArn'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
+      webAclArn: (map['webAclArn'] as String).input(),
     );
   }
 }

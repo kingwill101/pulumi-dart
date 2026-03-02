@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A static site user provided function.
 class StaticSiteUserProvidedFunctionAppResponse {
   /// The date and time on which the function app was registered with the static site.
-  final String createdOn;
+  final pulumi.Input<String> createdOn;
   /// The region of the function app registered with the static site
-  final String? functionAppRegion;
+  final pulumi.Input<String>? functionAppRegion;
   /// The resource id of the function app registered with the static site
-  final String? functionAppResourceId;
+  final pulumi.Input<String>? functionAppResourceId;
   /// Resource Id.
-  final String id;
+  final pulumi.Input<String> id;
   /// Kind of resource.
-  final String? kind;
+  final pulumi.Input<String>? kind;
   /// Resource Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Resource type.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [StaticSiteUserProvidedFunctionAppResponse].
   /// [createdOn] The date and time on which the function app was registered with the static site.
@@ -50,13 +51,13 @@ class StaticSiteUserProvidedFunctionAppResponse {
 
   factory StaticSiteUserProvidedFunctionAppResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteUserProvidedFunctionAppResponse(
-      createdOn: map['createdOn'] as String,
-      functionAppRegion: map['functionAppRegion'] == null ? null : map['functionAppRegion'] as String,
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : map['functionAppResourceId'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      createdOn: (map['createdOn'] as String).input(),
+      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion'] as String).input(),
+      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId'] as String).input(),
+      id: (map['id'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      name: (map['name'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

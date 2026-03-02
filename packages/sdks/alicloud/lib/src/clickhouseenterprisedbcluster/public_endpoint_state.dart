@@ -17,13 +17,10 @@ class PublicEndpointState {
   /// [dbInstanceId] The cluster ID.
   /// [netType] Network type of the connection address. Valid values:
   PublicEndpointState({
-    pulumi.Output<String>? connectionStringPrefix,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? netType,
-  }) :
-      connectionStringPrefix = pulumi.Input.asOptionalInput<String>(connectionStringPrefix),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      netType = pulumi.Input.asOptionalInput<String>(netType);
+    this.connectionStringPrefix,
+    this.dbInstanceId,
+    this.netType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +32,9 @@ class PublicEndpointState {
 
   factory PublicEndpointState.fromMap(Map<String, dynamic> map) {
     return PublicEndpointState(
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : pulumi.Output.create<String>(map['connectionStringPrefix'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      netType: map['netType'] == null ? null : pulumi.Output.create<String>(map['netType'] as String),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
     );
   }
 }

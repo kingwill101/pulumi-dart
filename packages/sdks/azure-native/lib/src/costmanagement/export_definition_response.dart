@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'export_dataset_response.dart';
 import 'export_time_period_response.dart';
 
 /// The definition of an export.
 class ExportDefinitionResponse {
   /// The definition for data in the export.
-  final ExportDatasetResponse? dataSet;
+  final pulumi.Input<ExportDatasetResponse>? dataSet;
   /// Has time period for pulling data for the export.
-  final ExportTimePeriodResponse? timePeriod;
+  final pulumi.Input<ExportTimePeriodResponse>? timePeriod;
   /// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-  final String timeframe;
+  final pulumi.Input<String> timeframe;
   /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ExportDefinitionResponse].
   /// [dataSet] The definition for data in the export.
@@ -28,8 +29,8 @@ class ExportDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSet': ?dataSet == null ? null : dataSet!.toMap(),
-      'timePeriod': ?timePeriod == null ? null : timePeriod!.toMap(),
+      'dataSet': ?pulumi.Input.mapOptionalInputValue<ExportDatasetResponse, Map<String, dynamic>>(dataSet, (value) => value.toMap()),
+      'timePeriod': ?pulumi.Input.mapOptionalInputValue<ExportTimePeriodResponse, Map<String, dynamic>>(timePeriod, (value) => value.toMap()),
       'timeframe': timeframe,
       'type': type,
     };
@@ -37,10 +38,10 @@ class ExportDefinitionResponse {
 
   factory ExportDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ExportDefinitionResponse(
-      dataSet: map['dataSet'] == null ? null : ExportDatasetResponse.fromMap((map['dataSet'] as Map).cast<String, dynamic>()),
-      timePeriod: map['timePeriod'] == null ? null : ExportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>()),
-      timeframe: map['timeframe'] as String,
-      type: map['type'] as String,
+      dataSet: map['dataSet'] == null ? null : (ExportDatasetResponse.fromMap((map['dataSet'] as Map).cast<String, dynamic>())).input(),
+      timePeriod: map['timePeriod'] == null ? null : (ExportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      timeframe: (map['timeframe'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

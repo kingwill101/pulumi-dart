@@ -7,13 +7,13 @@ import 'get_job_definition_eks_property_pod_property_volume_secret.dart';
 
 class GetJobDefinitionEksPropertyPodPropertyVolume {
   /// Specifies the configuration of a Kubernetes emptyDir volume.
-  final List<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir> emptyDirs;
+  final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>> emptyDirs;
   /// The path for the device on the host container instance.
-  final List<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath> hostPaths;
+  final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>> hostPaths;
   /// The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies the configuration of a Kubernetes secret volume.
-  final List<GetJobDefinitionEksPropertyPodPropertyVolumeSecret> secrets;
+  final pulumi.Input<List<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>> secrets;
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyVolume].
   /// [emptyDirs] Specifies the configuration of a Kubernetes emptyDir volume.
@@ -29,19 +29,19 @@ class GetJobDefinitionEksPropertyPodPropertyVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emptyDirs': pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir, Map<String, dynamic>>(emptyDirs, (value) => value.toMap()),
-      'hostPaths': pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath, Map<String, dynamic>>(hostPaths, (value) => value.toMap()),
+      'emptyDirs': pulumi.Input.mapInputValue<List<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>, List<Map<String, dynamic>>>(emptyDirs, (value) => pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hostPaths': pulumi.Input.mapInputValue<List<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>, List<Map<String, dynamic>>>(hostPaths, (value) => pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
-      'secrets': pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets': pulumi.Input.mapInputValue<List<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetJobDefinitionEksPropertyPodPropertyVolume.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodPropertyVolume(
-      emptyDirs: pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>(map['emptyDirs'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir.fromMap((value as Map).cast<String, dynamic>())),
-      hostPaths: pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>(map['hostPaths'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      secrets: pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>(map['secrets'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeSecret.fromMap((value as Map).cast<String, dynamic>())),
+      emptyDirs: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir>(map['emptyDirs'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeEmptyDir.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostPaths: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeHostPath>(map['hostPaths'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeHostPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      secrets: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolumeSecret>(map['secrets'], (value) => GetJobDefinitionEksPropertyPodPropertyVolumeSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

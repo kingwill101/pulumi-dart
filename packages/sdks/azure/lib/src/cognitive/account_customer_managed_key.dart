@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountCustomerManagedKey {
   /// The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the Cognitive Account.
   ///
   /// > **Note:** When `project_management_enabled` is set to `true`, removing this block forces a new resource to be created.
-  final String? identityClientId;
+  final pulumi.Input<String>? identityClientId;
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Cognitive Account.
-  final String keyVaultKeyId;
+  final pulumi.Input<String> keyVaultKeyId;
 
   /// Creates a new [AccountCustomerManagedKey].
   /// [identityClientId] The Client ID of the User Assigned Identity that has access to the key. This property only needs to be specified when there're multiple identities attached to the Cognitive Account.
@@ -26,8 +27,8 @@ class AccountCustomerManagedKey {
 
   factory AccountCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return AccountCustomerManagedKey(
-      identityClientId: map['identityClientId'] == null ? null : map['identityClientId'] as String,
-      keyVaultKeyId: map['keyVaultKeyId'] as String,
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }
 }

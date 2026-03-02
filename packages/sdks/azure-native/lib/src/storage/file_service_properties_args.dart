@@ -31,19 +31,13 @@ class FileServicePropertiesArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [shareDeleteRetentionPolicy] The file service properties for share soft delete.
   FileServicePropertiesArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<CorsRules>? cors,
-    pulumi.Output<String>? fileServicesName,
-    pulumi.Output<ProtocolSettings>? protocolSettings,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<DeleteRetentionPolicy>? shareDeleteRetentionPolicy,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      cors = pulumi.Input.asOptionalInput<CorsRules>(cors),
-      fileServicesName = pulumi.Input.asOptionalInput<String>(fileServicesName),
-      protocolSettings = pulumi.Input.asOptionalInput<ProtocolSettings>(protocolSettings),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      shareDeleteRetentionPolicy = pulumi.Input.asOptionalInput<DeleteRetentionPolicy>(shareDeleteRetentionPolicy);
+    required this.accountName,
+    this.cors,
+    this.fileServicesName,
+    this.protocolSettings,
+    required this.resourceGroupName,
+    this.shareDeleteRetentionPolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class FileServicePropertiesArgs {
 
   factory FileServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return FileServicePropertiesArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      cors: map['cors'] == null ? null : pulumi.Output.create<CorsRules>(CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())),
-      fileServicesName: map['fileServicesName'] == null ? null : pulumi.Output.create<String>(map['fileServicesName'] as String),
-      protocolSettings: map['protocolSettings'] == null ? null : pulumi.Output.create<ProtocolSettings>(ProtocolSettings.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : pulumi.Output.create<DeleteRetentionPolicy>(DeleteRetentionPolicy.fromMap((map['shareDeleteRetentionPolicy'] as Map).cast<String, dynamic>())),
+      accountName: (map['accountName'] as String).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      fileServicesName: map['fileServicesName'] == null ? null : (map['fileServicesName'] as String).input(),
+      protocolSettings: map['protocolSettings'] == null ? null : (ProtocolSettings.fromMap((map['protocolSettings'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      shareDeleteRetentionPolicy: map['shareDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['shareDeleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

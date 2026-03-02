@@ -36,17 +36,12 @@ class WorkloadIdentityPoolNamespaceArgs {
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
   /// [workloadIdentityPoolNamespaceId] The ID to use for the namespace. This value must:
   WorkloadIdentityPoolNamespaceArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<bool>? disabled,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> workloadIdentityPoolId,
-    required pulumi.Output<String> workloadIdentityPoolNamespaceId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId),
-      workloadIdentityPoolNamespaceId = pulumi.Input.asInput<String>(workloadIdentityPoolNamespaceId);
+    this.description,
+    this.disabled,
+    this.project,
+    required this.workloadIdentityPoolId,
+    required this.workloadIdentityPoolNamespaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,11 +55,11 @@ class WorkloadIdentityPoolNamespaceArgs {
 
   factory WorkloadIdentityPoolNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      disabled: map['disabled'] == null ? null : pulumi.Output.create<bool>(map['disabled'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      workloadIdentityPoolId: pulumi.Output.create<String>(map['workloadIdentityPoolId'] as String),
-      workloadIdentityPoolNamespaceId: pulumi.Output.create<String>(map['workloadIdentityPoolNamespaceId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
+      workloadIdentityPoolNamespaceId: (map['workloadIdentityPoolNamespaceId'] as String).input(),
     );
   }
 }

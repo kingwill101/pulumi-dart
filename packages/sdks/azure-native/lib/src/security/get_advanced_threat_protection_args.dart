@@ -16,11 +16,9 @@ class GetAdvancedThreatProtectionArgs {
   /// [resourceId] The identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
   GetAdvancedThreatProtectionArgs({
-    required pulumi.Output<String> resourceId,
-    required pulumi.Output<String> settingName,
-  }) :
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      settingName = pulumi.Input.asInput<String>(settingName);
+    required this.resourceId,
+    required this.settingName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAdvancedThreatProtectionArgs {
 
   factory GetAdvancedThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetAdvancedThreatProtectionArgs(
-      resourceId: pulumi.Output.create<String>(map['resourceId'] as String),
-      settingName: pulumi.Output.create<String>(map['settingName'] as String),
+      resourceId: (map['resourceId'] as String).input(),
+      settingName: (map['settingName'] as String).input(),
     );
   }
 }

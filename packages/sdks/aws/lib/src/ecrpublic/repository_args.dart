@@ -25,17 +25,12 @@ class RepositoryArgs {
   /// [repositoryName] Name of the repository.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   RepositoryArgs({
-    pulumi.Output<RepositoryCatalogData>? catalogData,
-    pulumi.Output<bool>? forceDestroy,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> repositoryName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      catalogData = pulumi.Input.asOptionalInput<RepositoryCatalogData>(catalogData),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.catalogData,
+    this.forceDestroy,
+    this.region,
+    required this.repositoryName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      catalogData: map['catalogData'] == null ? null : pulumi.Output.create<RepositoryCatalogData>(RepositoryCatalogData.fromMap((map['catalogData'] as Map).cast<String, dynamic>())),
-      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      repositoryName: pulumi.Output.create<String>(map['repositoryName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      catalogData: map['catalogData'] == null ? null : (RepositoryCatalogData.fromMap((map['catalogData'] as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      repositoryName: (map['repositoryName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

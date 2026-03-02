@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPendingChange {
-  final int? dropletId;
-  final bool? removing;
+  final pulumi.Input<int>? dropletId;
+  final pulumi.Input<bool>? removing;
   /// A status string indicating the current state of the Firewall.
   /// This can be "waiting", "succeeded", or "failed".
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [FirewallPendingChange].
   /// [dropletId] Optional.
@@ -28,9 +29,9 @@ class FirewallPendingChange {
 
   factory FirewallPendingChange.fromMap(Map<String, dynamic> map) {
     return FirewallPendingChange(
-      dropletId: map['dropletId'] == null ? null : map['dropletId'] as int,
-      removing: map['removing'] == null ? null : map['removing'] as bool,
-      status: map['status'] == null ? null : map['status'] as String,
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      removing: map['removing'] == null ? null : (map['removing'] as bool).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

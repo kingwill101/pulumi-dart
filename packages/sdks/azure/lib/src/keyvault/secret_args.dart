@@ -42,25 +42,16 @@ class SecretArgs {
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [valueWoVersion] An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
   SecretArgs({
-    pulumi.Output<String>? contentType,
-    pulumi.Output<String>? expirationDate,
-    required pulumi.Output<String> keyVaultId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? notBeforeDate,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? value,
-    pulumi.Output<String>? valueWo,
-    pulumi.Output<int>? valueWoVersion,
-  }) :
-      contentType = pulumi.Input.asOptionalInput<String>(contentType),
-      expirationDate = pulumi.Input.asOptionalInput<String>(expirationDate),
-      keyVaultId = pulumi.Input.asInput<String>(keyVaultId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notBeforeDate = pulumi.Input.asOptionalInput<String>(notBeforeDate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      value = pulumi.Input.asOptionalInput<String>(value),
-      valueWo = pulumi.Input.asOptionalInput<String>(valueWo),
-      valueWoVersion = pulumi.Input.asOptionalInput<int>(valueWoVersion);
+    this.contentType,
+    this.expirationDate,
+    required this.keyVaultId,
+    this.name,
+    this.notBeforeDate,
+    this.tags,
+    this.value,
+    this.valueWo,
+    this.valueWoVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,15 +69,15 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      contentType: map['contentType'] == null ? null : pulumi.Output.create<String>(map['contentType'] as String),
-      expirationDate: map['expirationDate'] == null ? null : pulumi.Output.create<String>(map['expirationDate'] as String),
-      keyVaultId: pulumi.Output.create<String>(map['keyVaultId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notBeforeDate: map['notBeforeDate'] == null ? null : pulumi.Output.create<String>(map['notBeforeDate'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
-      valueWo: map['valueWo'] == null ? null : pulumi.Output.create<String>(map['valueWo'] as String),
-      valueWoVersion: map['valueWoVersion'] == null ? null : pulumi.Output.create<int>(map['valueWoVersion'] as int),
+      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      keyVaultId: (map['keyVaultId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
+      valueWo: map['valueWo'] == null ? null : (map['valueWo'] as String).input(),
+      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion'] as int).input(),
     );
   }
 }

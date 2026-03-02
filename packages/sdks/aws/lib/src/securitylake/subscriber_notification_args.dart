@@ -20,13 +20,10 @@ class SubscriberNotificationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subscriberId] The subscriber ID for the notification subscription.
   SubscriberNotificationArgs({
-    required pulumi.Output<SubscriberNotificationConfiguration> configuration,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> subscriberId,
-  }) :
-      configuration = pulumi.Input.asInput<SubscriberNotificationConfiguration>(configuration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subscriberId = pulumi.Input.asInput<String>(subscriberId);
+    required this.configuration,
+    this.region,
+    required this.subscriberId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SubscriberNotificationArgs {
 
   factory SubscriberNotificationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationArgs(
-      configuration: pulumi.Output.create<SubscriberNotificationConfiguration>(SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      subscriberId: pulumi.Output.create<String>(map['subscriberId'] as String),
+      configuration: (SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      subscriberId: (map['subscriberId'] as String).input(),
     );
   }
 }

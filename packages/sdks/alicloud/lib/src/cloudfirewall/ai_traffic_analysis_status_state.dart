@@ -10,9 +10,8 @@ class AiTrafficAnalysisStatusState {
   /// Creates a new [AiTrafficAnalysisStatusState].
   /// [status] Status
   AiTrafficAnalysisStatusState({
-    pulumi.Output<String>? status,
-  }) :
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -22,7 +21,7 @@ class AiTrafficAnalysisStatusState {
 
   factory AiTrafficAnalysisStatusState.fromMap(Map<String, dynamic> map) {
     return AiTrafficAnalysisStatusState(
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

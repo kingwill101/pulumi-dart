@@ -44,27 +44,17 @@ class ScheduleArgs {
   /// [startTime] The date and time for the recurring schedule to start, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
   /// [timeZone] Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
   ScheduleArgs({
-    required pulumi.Output<String> autoscalingGroupName,
-    pulumi.Output<int>? desiredCapacity,
-    pulumi.Output<String>? endTime,
-    pulumi.Output<int>? maxSize,
-    pulumi.Output<int>? minSize,
-    pulumi.Output<String>? recurrence,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> scheduledActionName,
-    pulumi.Output<String>? startTime,
-    pulumi.Output<String>? timeZone,
-  }) :
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      desiredCapacity = pulumi.Input.asOptionalInput<int>(desiredCapacity),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      maxSize = pulumi.Input.asOptionalInput<int>(maxSize),
-      minSize = pulumi.Input.asOptionalInput<int>(minSize),
-      recurrence = pulumi.Input.asOptionalInput<String>(recurrence),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      scheduledActionName = pulumi.Input.asInput<String>(scheduledActionName),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+    required this.autoscalingGroupName,
+    this.desiredCapacity,
+    this.endTime,
+    this.maxSize,
+    this.minSize,
+    this.recurrence,
+    this.region,
+    required this.scheduledActionName,
+    this.startTime,
+    this.timeZone,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      autoscalingGroupName: pulumi.Output.create<String>(map['autoscalingGroupName'] as String),
-      desiredCapacity: map['desiredCapacity'] == null ? null : pulumi.Output.create<int>(map['desiredCapacity'] as int),
-      endTime: map['endTime'] == null ? null : pulumi.Output.create<String>(map['endTime'] as String),
-      maxSize: map['maxSize'] == null ? null : pulumi.Output.create<int>(map['maxSize'] as int),
-      minSize: map['minSize'] == null ? null : pulumi.Output.create<int>(map['minSize'] as int),
-      recurrence: map['recurrence'] == null ? null : pulumi.Output.create<String>(map['recurrence'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      scheduledActionName: pulumi.Output.create<String>(map['scheduledActionName'] as String),
-      startTime: map['startTime'] == null ? null : pulumi.Output.create<String>(map['startTime'] as String),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
+      autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
+      desiredCapacity: map['desiredCapacity'] == null ? null : (map['desiredCapacity'] as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
+      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
+      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      scheduledActionName: (map['scheduledActionName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
     );
   }
 }

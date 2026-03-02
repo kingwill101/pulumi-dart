@@ -16,11 +16,9 @@ class GetTargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetName] Name of the target
   GetTargetArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> targetName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      targetName = pulumi.Input.asInput<String>(targetName);
+    required this.resourceGroupName,
+    required this.targetName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetTargetArgs {
 
   factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      targetName: (map['targetName'] as String).input(),
     );
   }
 }

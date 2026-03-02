@@ -6,11 +6,11 @@ import 'vmware_host_ip_response.dart';
 /// Represents a collection of IP addresses to assign to nodes.
 class VmwareIpBlockResponse {
   /// The network gateway used by the VMware user cluster.
-  final String gateway;
+  final pulumi.Input<String> gateway;
   /// The node's network configurations used by the VMware user cluster.
-  final List<VmwareHostIpResponse> ips;
+  final pulumi.Input<List<VmwareHostIpResponse>> ips;
   /// The netmask used by the VMware user cluster.
-  final String netmask;
+  final pulumi.Input<String> netmask;
 
   /// Creates a new [VmwareIpBlockResponse].
   /// [gateway] The network gateway used by the VMware user cluster.
@@ -25,16 +25,16 @@ class VmwareIpBlockResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gateway': gateway,
-      'ips': pulumi.Input.encodeList<VmwareHostIpResponse, Map<String, dynamic>>(ips, (value) => value.toMap()),
+      'ips': pulumi.Input.mapInputValue<List<VmwareHostIpResponse>, List<Map<String, dynamic>>>(ips, (value) => pulumi.Input.encodeList<VmwareHostIpResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'netmask': netmask,
     };
   }
 
   factory VmwareIpBlockResponse.fromMap(Map<String, dynamic> map) {
     return VmwareIpBlockResponse(
-      gateway: map['gateway'] as String,
-      ips: pulumi.Input.decodeList<VmwareHostIpResponse>(map['ips'], (value) => VmwareHostIpResponse.fromMap((value as Map).cast<String, dynamic>())),
-      netmask: map['netmask'] as String,
+      gateway: (map['gateway'] as String).input(),
+      ips: (pulumi.Input.decodeList<VmwareHostIpResponse>(map['ips'], (value) => VmwareHostIpResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      netmask: (map['netmask'] as String).input(),
     );
   }
 }

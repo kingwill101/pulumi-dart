@@ -32,23 +32,15 @@ class MetadataSchemaArgs {
   /// [schemaType] The type of the MetadataSchema. This is a property that identifies which metadata types will use the MetadataSchema.
   /// [schemaVersion] The version of the MetadataSchema. The version's format must match the following regular expression: `^[0-9]+.+.+$`, which would allow to order/compare different versions. Example: 1.0.0, 1.0.1, etc.
   MetadataSchemaArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? metadataSchemaId,
-    required pulumi.Output<String> metadataStoreId,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> schema,
-    pulumi.Output<MetadataSchemaSchemaType>? schemaType,
-    pulumi.Output<String>? schemaVersion,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      metadataSchemaId = pulumi.Input.asOptionalInput<String>(metadataSchemaId),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schema = pulumi.Input.asInput<String>(schema),
-      schemaType = pulumi.Input.asOptionalInput<MetadataSchemaSchemaType>(schemaType),
-      schemaVersion = pulumi.Input.asOptionalInput<String>(schemaVersion);
+    this.description,
+    this.location,
+    this.metadataSchemaId,
+    required this.metadataStoreId,
+    this.project,
+    required this.schema,
+    this.schemaType,
+    this.schemaVersion,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,14 +57,14 @@ class MetadataSchemaArgs {
 
   factory MetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      metadataSchemaId: map['metadataSchemaId'] == null ? null : pulumi.Output.create<String>(map['metadataSchemaId'] as String),
-      metadataStoreId: pulumi.Output.create<String>(map['metadataStoreId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      schema: pulumi.Output.create<String>(map['schema'] as String),
-      schemaType: map['schemaType'] == null ? null : pulumi.Output.create<MetadataSchemaSchemaType>(MetadataSchemaSchemaType.fromValue(map['schemaType'] as String)),
-      schemaVersion: map['schemaVersion'] == null ? null : pulumi.Output.create<String>(map['schemaVersion'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      metadataSchemaId: map['metadataSchemaId'] == null ? null : (map['metadataSchemaId'] as String).input(),
+      metadataStoreId: (map['metadataStoreId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      schema: (map['schema'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (MetadataSchemaSchemaType.fromValue(map['schemaType'] as String)).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
     );
   }
 }

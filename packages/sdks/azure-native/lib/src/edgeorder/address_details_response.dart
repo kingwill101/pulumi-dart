@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_properties_response.dart';
 
 /// Address details for an order item.
 class AddressDetailsResponse {
   /// Customer address and contact details.
-  final AddressPropertiesResponse forwardAddress;
+  final pulumi.Input<AddressPropertiesResponse> forwardAddress;
   /// Return shipping address.
-  final AddressPropertiesResponse returnAddress;
+  final pulumi.Input<AddressPropertiesResponse> returnAddress;
 
   /// Creates a new [AddressDetailsResponse].
   /// [forwardAddress] Customer address and contact details.
@@ -19,15 +20,15 @@ class AddressDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardAddress': forwardAddress.toMap(),
-      'returnAddress': returnAddress.toMap(),
+      'forwardAddress': pulumi.Input.mapInputValue<AddressPropertiesResponse, Map<String, dynamic>>(forwardAddress, (value) => value.toMap()),
+      'returnAddress': pulumi.Input.mapInputValue<AddressPropertiesResponse, Map<String, dynamic>>(returnAddress, (value) => value.toMap()),
     };
   }
 
   factory AddressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AddressDetailsResponse(
-      forwardAddress: AddressPropertiesResponse.fromMap((map['forwardAddress'] as Map).cast<String, dynamic>()),
-      returnAddress: AddressPropertiesResponse.fromMap((map['returnAddress'] as Map).cast<String, dynamic>()),
+      forwardAddress: (AddressPropertiesResponse.fromMap((map['forwardAddress'] as Map).cast<String, dynamic>())).input(),
+      returnAddress: (AddressPropertiesResponse.fromMap((map['returnAddress'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

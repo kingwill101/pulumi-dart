@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeGroupAutoscalingPolicy {
   /// Maximum size of the node group. Set to a value less than or equal
   /// to 100 and greater than or equal to min-nodes.
-  final int? maxNodes;
+  final pulumi.Input<int>? maxNodes;
   /// Minimum size of the node group. Must be less
   /// than or equal to max-nodes. The default value is 0.
-  final int? minNodes;
+  final pulumi.Input<int>? minNodes;
   /// The autoscaling mode. Set to one of the following:
   /// - OFF: Disables the autoscaler.
   /// - ON: Enables scaling in and scaling out.
@@ -15,7 +16,7 @@ class NodeGroupAutoscalingPolicy {
   /// You must use this mode if your node groups are configured to
   /// restart their hosted VMs on minimal servers.
   /// Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
-  final String? mode;
+  final pulumi.Input<String>? mode;
 
   /// Creates a new [NodeGroupAutoscalingPolicy].
   /// [maxNodes] Maximum size of the node group. Set to a value less than or equal
@@ -37,9 +38,9 @@ class NodeGroupAutoscalingPolicy {
 
   factory NodeGroupAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicy(
-      maxNodes: map['maxNodes'] == null ? null : map['maxNodes'] as int,
-      minNodes: map['minNodes'] == null ? null : map['minNodes'] as int,
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
     );
   }
 }

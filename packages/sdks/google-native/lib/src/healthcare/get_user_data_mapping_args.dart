@@ -20,17 +20,12 @@ class GetUserDataMappingArgs {
   /// [project] Optional.
   /// [userDataMappingId] Required.
   GetUserDataMappingArgs({
-    required pulumi.Output<String> consentStoreId,
-    required pulumi.Output<String> datasetId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> userDataMappingId,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userDataMappingId = pulumi.Input.asInput<String>(userDataMappingId);
+    required this.consentStoreId,
+    required this.datasetId,
+    required this.location,
+    this.project,
+    required this.userDataMappingId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetUserDataMappingArgs {
 
   factory GetUserDataMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetUserDataMappingArgs(
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      userDataMappingId: pulumi.Output.create<String>(map['userDataMappingId'] as String),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      userDataMappingId: (map['userDataMappingId'] as String).input(),
     );
   }
 }

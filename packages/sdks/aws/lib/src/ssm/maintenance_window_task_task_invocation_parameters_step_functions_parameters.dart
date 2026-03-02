@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   /// The inputs for the STEP_FUNCTION task.
-  final String? input;
+  final pulumi.Input<String>? input;
   /// The name of the STEP_FUNCTION task.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters].
   /// [input] The inputs for the STEP_FUNCTION task.
@@ -24,8 +25,8 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters(
-      input: map['input'] == null ? null : map['input'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      input: map['input'] == null ? null : (map['input'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

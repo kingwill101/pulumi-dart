@@ -32,21 +32,14 @@ class GalleryScriptVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   GalleryScriptVersionArgs({
-    required pulumi.Output<String> galleryName,
-    required pulumi.Output<String> galleryScriptName,
-    pulumi.Output<String>? galleryScriptVersionName,
-    pulumi.Output<String>? location,
-    pulumi.Output<GalleryScriptVersionProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      galleryName = pulumi.Input.asInput<String>(galleryName),
-      galleryScriptName = pulumi.Input.asInput<String>(galleryScriptName),
-      galleryScriptVersionName = pulumi.Input.asOptionalInput<String>(galleryScriptVersionName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<GalleryScriptVersionProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.galleryName,
+    required this.galleryScriptName,
+    this.galleryScriptVersionName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class GalleryScriptVersionArgs {
 
   factory GalleryScriptVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionArgs(
-      galleryName: pulumi.Output.create<String>(map['galleryName'] as String),
-      galleryScriptName: pulumi.Output.create<String>(map['galleryScriptName'] as String),
-      galleryScriptVersionName: map['galleryScriptVersionName'] == null ? null : pulumi.Output.create<String>(map['galleryScriptVersionName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<GalleryScriptVersionProperties>(GalleryScriptVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      galleryName: (map['galleryName'] as String).input(),
+      galleryScriptName: (map['galleryScriptName'] as String).input(),
+      galleryScriptVersionName: map['galleryScriptVersionName'] == null ? null : (map['galleryScriptVersionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (GalleryScriptVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStatusResponseProvisioningStatus {
   /// The ID of the operation performed on the virtual machine
-  final String? operationId;
+  final pulumi.Input<String>? operationId;
   /// The status of the operation performed on the virtual machine [Succeeded, Failed, InProgress]
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [VirtualMachineStatusResponseProvisioningStatus].
   /// [operationId] The ID of the operation performed on the virtual machine
@@ -24,8 +25,8 @@ class VirtualMachineStatusResponseProvisioningStatus {
 
   factory VirtualMachineStatusResponseProvisioningStatus.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStatusResponseProvisioningStatus(
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

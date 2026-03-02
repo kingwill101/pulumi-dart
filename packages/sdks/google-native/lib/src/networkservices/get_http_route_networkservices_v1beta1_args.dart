@@ -16,13 +16,10 @@ class GetHttpRouteNetworkservicesV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   GetHttpRouteNetworkservicesV1beta1Args({
-    required pulumi.Output<String> httpRouteId,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-  }) :
-      httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.httpRouteId,
+    required this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetHttpRouteNetworkservicesV1beta1Args {
 
   factory GetHttpRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetHttpRouteNetworkservicesV1beta1Args(
-      httpRouteId: pulumi.Output.create<String>(map['httpRouteId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      httpRouteId: (map['httpRouteId'] as String).input(),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

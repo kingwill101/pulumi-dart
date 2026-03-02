@@ -52,29 +52,18 @@ class QuotaV2State {
   /// [subnet] Quota value for subnets. Changing
   /// [subnetpool] Quota value for subnetpools.
   QuotaV2State({
-    pulumi.Output<int>? floatingip,
-    pulumi.Output<int>? network,
-    pulumi.Output<int>? port,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<int>? rbacPolicy,
-    pulumi.Output<String>? region,
-    pulumi.Output<int>? router,
-    pulumi.Output<int>? securityGroup,
-    pulumi.Output<int>? securityGroupRule,
-    pulumi.Output<int>? subnet,
-    pulumi.Output<int>? subnetpool,
-  }) :
-      floatingip = pulumi.Input.asOptionalInput<int>(floatingip),
-      network = pulumi.Input.asOptionalInput<int>(network),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      rbacPolicy = pulumi.Input.asOptionalInput<int>(rbacPolicy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      router = pulumi.Input.asOptionalInput<int>(router),
-      securityGroup = pulumi.Input.asOptionalInput<int>(securityGroup),
-      securityGroupRule = pulumi.Input.asOptionalInput<int>(securityGroupRule),
-      subnet = pulumi.Input.asOptionalInput<int>(subnet),
-      subnetpool = pulumi.Input.asOptionalInput<int>(subnetpool);
+    this.floatingip,
+    this.network,
+    this.port,
+    this.projectId,
+    this.rbacPolicy,
+    this.region,
+    this.router,
+    this.securityGroup,
+    this.securityGroupRule,
+    this.subnet,
+    this.subnetpool,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,17 +83,17 @@ class QuotaV2State {
 
   factory QuotaV2State.fromMap(Map<String, dynamic> map) {
     return QuotaV2State(
-      floatingip: map['floatingip'] == null ? null : pulumi.Output.create<int>(map['floatingip'] as int),
-      network: map['network'] == null ? null : pulumi.Output.create<int>(map['network'] as int),
-      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      rbacPolicy: map['rbacPolicy'] == null ? null : pulumi.Output.create<int>(map['rbacPolicy'] as int),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      router: map['router'] == null ? null : pulumi.Output.create<int>(map['router'] as int),
-      securityGroup: map['securityGroup'] == null ? null : pulumi.Output.create<int>(map['securityGroup'] as int),
-      securityGroupRule: map['securityGroupRule'] == null ? null : pulumi.Output.create<int>(map['securityGroupRule'] as int),
-      subnet: map['subnet'] == null ? null : pulumi.Output.create<int>(map['subnet'] as int),
-      subnetpool: map['subnetpool'] == null ? null : pulumi.Output.create<int>(map['subnetpool'] as int),
+      floatingip: map['floatingip'] == null ? null : (map['floatingip'] as int).input(),
+      network: map['network'] == null ? null : (map['network'] as int).input(),
+      port: map['port'] == null ? null : (map['port'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      rbacPolicy: map['rbacPolicy'] == null ? null : (map['rbacPolicy'] as int).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      router: map['router'] == null ? null : (map['router'] as int).input(),
+      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup'] as int).input(),
+      securityGroupRule: map['securityGroupRule'] == null ? null : (map['securityGroupRule'] as int).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet'] as int).input(),
+      subnetpool: map['subnetpool'] == null ? null : (map['subnetpool'] as int).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
   /// The port will be used for VServer Group backend server.
-  final int port;
+  final pulumi.Input<int> port;
   /// ID of VServer Group.
-  final String vserverGroupId;
+  final pulumi.Input<String> vserverGroupId;
   /// The weight of an ECS instance attached to the VServer Group.
-  final int weight;
+  final pulumi.Input<int> weight;
 
   /// Creates a new [ScalingGroupVServerGroupsVserverGroupVserverAttribute].
   /// [port] The port will be used for VServer Group backend server.
@@ -29,9 +30,9 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
 
   factory ScalingGroupVServerGroupsVserverGroupVserverAttribute.fromMap(Map<String, dynamic> map) {
     return ScalingGroupVServerGroupsVserverGroupVserverAttribute(
-      port: map['port'] as int,
-      vserverGroupId: map['vserverGroupId'] as String,
-      weight: map['weight'] as int,
+      port: (map['port'] as int).input(),
+      vserverGroupId: (map['vserverGroupId'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

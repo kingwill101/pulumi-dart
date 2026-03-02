@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
 
 /// This is used to represent the various nodes of the distributed container.
 class DistributedNodesInfoResponse {
   /// Error Details if the Status is non-success.
-  final ErrorDetailResponse? errorDetail;
+  final pulumi.Input<ErrorDetailResponse>? errorDetail;
   /// Name of the node under a distributed container.
-  final String? nodeName;
+  final pulumi.Input<String>? nodeName;
   /// ARM resource id of the node
-  final String? sourceResourceId;
+  final pulumi.Input<String>? sourceResourceId;
   /// Status of this Node.
   /// Failed | Succeeded
-  final String? status;
+  final pulumi.Input<String>? status;
 
   /// Creates a new [DistributedNodesInfoResponse].
   /// [errorDetail] Error Details if the Status is non-success.
@@ -28,7 +29,7 @@ class DistributedNodesInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetail': ?errorDetail == null ? null : errorDetail!.toMap(),
+      'errorDetail': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(errorDetail, (value) => value.toMap()),
       'nodeName': ?nodeName,
       'sourceResourceId': ?sourceResourceId,
       'status': ?status,
@@ -37,10 +38,10 @@ class DistributedNodesInfoResponse {
 
   factory DistributedNodesInfoResponse.fromMap(Map<String, dynamic> map) {
     return DistributedNodesInfoResponse(
-      errorDetail: map['errorDetail'] == null ? null : ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>()),
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

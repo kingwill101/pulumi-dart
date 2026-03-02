@@ -5,12 +5,12 @@ import 'posture_policy_set_policy.dart';
 
 class PosturePolicySet {
   /// Description of the policy set.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// List of security policy
   /// Structure is documented below.
-  final List<PosturePolicySetPolicy> policies;
+  final pulumi.Input<List<PosturePolicySetPolicy>> policies;
   /// ID of the policy set.
-  final String policySetId;
+  final pulumi.Input<String> policySetId;
 
   /// Creates a new [PosturePolicySet].
   /// [description] Description of the policy set.
@@ -25,16 +25,16 @@ class PosturePolicySet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'policies': pulumi.Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies': pulumi.Input.mapInputValue<List<PosturePolicySetPolicy>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'policySetId': policySetId,
     };
   }
 
   factory PosturePolicySet.fromMap(Map<String, dynamic> map) {
     return PosturePolicySet(
-      description: map['description'] == null ? null : map['description'] as String,
-      policies: pulumi.Input.decodeList<PosturePolicySetPolicy>(map['policies'], (value) => PosturePolicySetPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      policySetId: map['policySetId'] as String,
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      policies: (pulumi.Input.decodeList<PosturePolicySetPolicy>(map['policies'], (value) => PosturePolicySetPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policySetId: (map['policySetId'] as String).input(),
     );
   }
 }

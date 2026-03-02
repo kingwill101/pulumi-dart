@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetHoursOfOperationConfigEndTime {
   /// Hour of opening.
-  final int hours;
+  final pulumi.Input<int> hours;
   /// Minute of opening.
-  final int minutes;
+  final pulumi.Input<int> minutes;
 
   /// Creates a new [GetHoursOfOperationConfigEndTime].
   /// [hours] Hour of opening.
@@ -24,8 +25,8 @@ class GetHoursOfOperationConfigEndTime {
 
   factory GetHoursOfOperationConfigEndTime.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationConfigEndTime(
-      hours: map['hours'] as int,
-      minutes: map['minutes'] as int,
+      hours: (map['hours'] as int).input(),
+      minutes: (map['minutes'] as int).input(),
     );
   }
 }

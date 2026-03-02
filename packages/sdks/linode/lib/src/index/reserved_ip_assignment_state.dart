@@ -44,31 +44,19 @@ class ReservedIpAssignmentState {
   /// [type] The type of IP address.
   /// [vpcNat11s] Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
   ReservedIpAssignmentState({
-    pulumi.Output<String>? address,
-    pulumi.Output<bool>? applyImmediately,
-    pulumi.Output<String>? gateway,
-    pulumi.Output<int>? linodeId,
-    pulumi.Output<int>? prefix,
-    pulumi.Output<bool>? public,
-    pulumi.Output<String>? rdns,
-    pulumi.Output<String>? region,
-    pulumi.Output<bool>? reserved,
-    pulumi.Output<String>? subnetMask,
-    pulumi.Output<String>? type,
-    pulumi.Output<List<ReservedIpAssignmentVpcNat11>>? vpcNat11s,
-  }) :
-      address = pulumi.Input.asOptionalInput<String>(address),
-      applyImmediately = pulumi.Input.asOptionalInput<bool>(applyImmediately),
-      gateway = pulumi.Input.asOptionalInput<String>(gateway),
-      linodeId = pulumi.Input.asOptionalInput<int>(linodeId),
-      prefix = pulumi.Input.asOptionalInput<int>(prefix),
-      public = pulumi.Input.asOptionalInput<bool>(public),
-      rdns = pulumi.Input.asOptionalInput<String>(rdns),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      reserved = pulumi.Input.asOptionalInput<bool>(reserved),
-      subnetMask = pulumi.Input.asOptionalInput<String>(subnetMask),
-      type = pulumi.Input.asOptionalInput<String>(type),
-      vpcNat11s = pulumi.Input.asOptionalInput<List<ReservedIpAssignmentVpcNat11>>(vpcNat11s);
+    this.address,
+    this.applyImmediately,
+    this.gateway,
+    this.linodeId,
+    this.prefix,
+    this.public,
+    this.rdns,
+    this.region,
+    this.reserved,
+    this.subnetMask,
+    this.type,
+    this.vpcNat11s,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,18 +77,18 @@ class ReservedIpAssignmentState {
 
   factory ReservedIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservedIpAssignmentState(
-      address: map['address'] == null ? null : pulumi.Output.create<String>(map['address'] as String),
-      applyImmediately: map['applyImmediately'] == null ? null : pulumi.Output.create<bool>(map['applyImmediately'] as bool),
-      gateway: map['gateway'] == null ? null : pulumi.Output.create<String>(map['gateway'] as String),
-      linodeId: map['linodeId'] == null ? null : pulumi.Output.create<int>(map['linodeId'] as int),
-      prefix: map['prefix'] == null ? null : pulumi.Output.create<int>(map['prefix'] as int),
-      public: map['public'] == null ? null : pulumi.Output.create<bool>(map['public'] as bool),
-      rdns: map['rdns'] == null ? null : pulumi.Output.create<String>(map['rdns'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      reserved: map['reserved'] == null ? null : pulumi.Output.create<bool>(map['reserved'] as bool),
-      subnetMask: map['subnetMask'] == null ? null : pulumi.Output.create<String>(map['subnetMask'] as String),
-      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
-      vpcNat11s: map['vpcNat11s'] == null ? null : pulumi.Output.create<List<ReservedIpAssignmentVpcNat11>>(pulumi.Input.decodeList<ReservedIpAssignmentVpcNat11>(map['vpcNat11s'], (value) => ReservedIpAssignmentVpcNat11.fromMap((value as Map).cast<String, dynamic>()))),
+      address: map['address'] == null ? null : (map['address'] as String).input(),
+      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately'] as bool).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as int).input(),
+      public: map['public'] == null ? null : (map['public'] as bool).input(),
+      rdns: map['rdns'] == null ? null : (map['rdns'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      vpcNat11s: map['vpcNat11s'] == null ? null : (pulumi.Input.decodeList<ReservedIpAssignmentVpcNat11>(map['vpcNat11s'], (value) => ReservedIpAssignmentVpcNat11.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

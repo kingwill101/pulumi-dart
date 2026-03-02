@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
   /// The dtmf digits.
-  final String? digits;
+  final pulumi.Input<String>? digits;
   /// The finish digit (if any).
-  final String? finishDigit;
+  final pulumi.Input<String>? finishDigit;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnUserInputInputDtmf].
   /// [digits] The dtmf digits.
@@ -24,8 +25,8 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
 
   factory CxTestCaseLastTestResultConversationTurnUserInputInputDtmf.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnUserInputInputDtmf(
-      digits: map['digits'] == null ? null : map['digits'] as String,
-      finishDigit: map['finishDigit'] == null ? null : map['finishDigit'] as String,
+      digits: map['digits'] == null ? null : (map['digits'] as String).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
     );
   }
 }

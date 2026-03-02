@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The device state, as reported by the device.
 class DeviceStateResponse {
   /// The device state data.
-  final String binaryData;
+  final pulumi.Input<String> binaryData;
   /// [Output only] The time at which this state version was updated in Cloud IoT Core.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [DeviceStateResponse].
   /// [binaryData] The device state data.
@@ -25,8 +26,8 @@ class DeviceStateResponse {
 
   factory DeviceStateResponse.fromMap(Map<String, dynamic> map) {
     return DeviceStateResponse(
-      binaryData: map['binaryData'] as String,
-      updateTime: map['updateTime'] as String,
+      binaryData: (map['binaryData'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

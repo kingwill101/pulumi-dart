@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryDefaultDataset {
   /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
-  final String datasetId;
+  final pulumi.Input<String> datasetId;
   /// The ID of the project containing this table.
-  final String? projectId;
+  final pulumi.Input<String>? projectId;
 
   /// Creates a new [JobQueryDefaultDataset].
   /// [datasetId] The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
@@ -25,8 +26,8 @@ class JobQueryDefaultDataset {
 
   factory JobQueryDefaultDataset.fromMap(Map<String, dynamic> map) {
     return JobQueryDefaultDataset(
-      datasetId: map['datasetId'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      datasetId: (map['datasetId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
     );
   }
 }

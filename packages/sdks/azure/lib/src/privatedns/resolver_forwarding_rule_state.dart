@@ -26,19 +26,13 @@ class ResolverForwardingRuleState {
   /// [name] Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
   /// [targetDnsServers] Can be specified multiple times to define multiple target DNS servers. Each `target_dns_servers` block as defined below.
   ResolverForwardingRuleState({
-    pulumi.Output<String>? dnsForwardingRulesetId,
-    pulumi.Output<String>? domainName,
-    pulumi.Output<bool>? enabled,
-    pulumi.Output<Map<String, String>>? metadata,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<ResolverForwardingRuleTargetDnsServer>>? targetDnsServers,
-  }) :
-      dnsForwardingRulesetId = pulumi.Input.asOptionalInput<String>(dnsForwardingRulesetId),
-      domainName = pulumi.Input.asOptionalInput<String>(domainName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      metadata = pulumi.Input.asOptionalInput<Map<String, String>>(metadata),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      targetDnsServers = pulumi.Input.asOptionalInput<List<ResolverForwardingRuleTargetDnsServer>>(targetDnsServers);
+    this.dnsForwardingRulesetId,
+    this.domainName,
+    this.enabled,
+    this.metadata,
+    this.name,
+    this.targetDnsServers,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,12 +47,12 @@ class ResolverForwardingRuleState {
 
   factory ResolverForwardingRuleState.fromMap(Map<String, dynamic> map) {
     return ResolverForwardingRuleState(
-      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : pulumi.Output.create<String>(map['dnsForwardingRulesetId'] as String),
-      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
-      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<Map<String, String>>((map['metadata'] as Map).cast<String, String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      targetDnsServers: map['targetDnsServers'] == null ? null : pulumi.Output.create<List<ResolverForwardingRuleTargetDnsServer>>(pulumi.Input.decodeList<ResolverForwardingRuleTargetDnsServer>(map['targetDnsServers'], (value) => ResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))),
+      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      targetDnsServers: map['targetDnsServers'] == null ? null : (pulumi.Input.decodeList<ResolverForwardingRuleTargetDnsServer>(map['targetDnsServers'], (value) => ResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

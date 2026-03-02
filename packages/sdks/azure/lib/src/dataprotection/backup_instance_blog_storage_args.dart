@@ -30,19 +30,13 @@ class BackupInstanceBlogStorageArgs {
   /// [storageAccountId] The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.
   BackupInstanceBlogStorageArgs({
-    required pulumi.Output<String> backupPolicyId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? storageAccountContainerNames,
-    required pulumi.Output<String> storageAccountId,
-    required pulumi.Output<String> vaultId,
-  }) :
-      backupPolicyId = pulumi.Input.asInput<String>(backupPolicyId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      storageAccountContainerNames = pulumi.Input.asOptionalInput<List<String>>(storageAccountContainerNames),
-      storageAccountId = pulumi.Input.asInput<String>(storageAccountId),
-      vaultId = pulumi.Input.asInput<String>(vaultId);
+    required this.backupPolicyId,
+    this.location,
+    this.name,
+    this.storageAccountContainerNames,
+    required this.storageAccountId,
+    required this.vaultId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,12 +51,12 @@ class BackupInstanceBlogStorageArgs {
 
   factory BackupInstanceBlogStorageArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceBlogStorageArgs(
-      backupPolicyId: pulumi.Output.create<String>(map['backupPolicyId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : pulumi.Output.create<List<String>>((map['storageAccountContainerNames'] as List).cast<String>()),
-      storageAccountId: pulumi.Output.create<String>(map['storageAccountId'] as String),
-      vaultId: pulumi.Output.create<String>(map['vaultId'] as String),
+      backupPolicyId: (map['backupPolicyId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames'] as List).cast<String>()).input(),
+      storageAccountId: (map['storageAccountId'] as String).input(),
+      vaultId: (map['vaultId'] as String).input(),
     );
   }
 }

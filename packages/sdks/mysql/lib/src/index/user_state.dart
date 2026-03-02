@@ -27,19 +27,13 @@ class UserState {
   /// [tlsOption] An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
   /// [user] The name of the user.
   UserState({
-    pulumi.Output<String>? authPlugin,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? password,
-    pulumi.Output<String>? plaintextPassword,
-    pulumi.Output<String>? tlsOption,
-    pulumi.Output<String>? user,
-  }) :
-      authPlugin = pulumi.Input.asOptionalInput<String>(authPlugin),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      plaintextPassword = pulumi.Input.asOptionalInput<String>(plaintextPassword),
-      tlsOption = pulumi.Input.asOptionalInput<String>(tlsOption),
-      user = pulumi.Input.asOptionalInput<String>(user);
+    this.authPlugin,
+    this.host,
+    this.password,
+    this.plaintextPassword,
+    this.tlsOption,
+    this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      authPlugin: map['authPlugin'] == null ? null : pulumi.Output.create<String>(map['authPlugin'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
-      plaintextPassword: map['plaintextPassword'] == null ? null : pulumi.Output.create<String>(map['plaintextPassword'] as String),
-      tlsOption: map['tlsOption'] == null ? null : pulumi.Output.create<String>(map['tlsOption'] as String),
-      user: map['user'] == null ? null : pulumi.Output.create<String>(map['user'] as String),
+      authPlugin: map['authPlugin'] == null ? null : (map['authPlugin'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
+      plaintextPassword: map['plaintextPassword'] == null ? null : (map['plaintextPassword'] as String).input(),
+      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption'] as String).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

@@ -19,15 +19,11 @@ class ListenerAdditionalCertificateAttachmentState {
   /// [listenerId] The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   /// [status] The status of the resource
   ListenerAdditionalCertificateAttachmentState({
-    pulumi.Output<String>? certificateId,
-    pulumi.Output<bool>? dryRun,
-    pulumi.Output<String>? listenerId,
-    pulumi.Output<String>? status,
-  }) :
-      certificateId = pulumi.Input.asOptionalInput<String>(certificateId),
-      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
-      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.certificateId,
+    this.dryRun,
+    this.listenerId,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class ListenerAdditionalCertificateAttachmentState {
 
   factory ListenerAdditionalCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentState(
-      certificateId: map['certificateId'] == null ? null : pulumi.Output.create<String>(map['certificateId'] as String),
-      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
-      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

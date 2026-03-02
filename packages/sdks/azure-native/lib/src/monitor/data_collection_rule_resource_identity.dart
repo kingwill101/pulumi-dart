@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed service identity of the resource.
 class DataCollectionRuleResourceIdentity {
   /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-  final String type;
+  final pulumi.Input<String> type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  final List<String>? userAssignedIdentities;
+  final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [DataCollectionRuleResourceIdentity].
   /// [type] Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -25,8 +26,8 @@ class DataCollectionRuleResourceIdentity {
 
   factory DataCollectionRuleResourceIdentity.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleResourceIdentity(
-      type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (map['userAssignedIdentities'] as List).cast<String>(),
+      type: (map['type'] as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
     );
   }
 }

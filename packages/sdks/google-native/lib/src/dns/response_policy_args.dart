@@ -34,23 +34,15 @@ class ResponsePolicyArgs {
   /// [project] Optional.
   /// [responsePolicyName] User assigned name for this Response Policy.
   ResponsePolicyArgs({
-    pulumi.Output<String>? clientOperationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ResponsePolicyGKEClusterDnsV1beta2>>? gkeClusters,
-    pulumi.Output<String>? kind,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<List<ResponsePolicyNetworkDnsV1beta2>>? networks,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? responsePolicyName,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gkeClusters = pulumi.Input.asOptionalInput<List<ResponsePolicyGKEClusterDnsV1beta2>>(gkeClusters),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      networks = pulumi.Input.asOptionalInput<List<ResponsePolicyNetworkDnsV1beta2>>(networks),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responsePolicyName = pulumi.Input.asOptionalInput<String>(responsePolicyName);
+    this.clientOperationId,
+    this.description,
+    this.gkeClusters,
+    this.kind,
+    this.labels,
+    this.networks,
+    this.project,
+    this.responsePolicyName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ResponsePolicyArgs {
 
   factory ResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gkeClusters: map['gkeClusters'] == null ? null : pulumi.Output.create<List<ResponsePolicyGKEClusterDnsV1beta2>>(pulumi.Input.decodeList<ResponsePolicyGKEClusterDnsV1beta2>(map['gkeClusters'], (value) => ResponsePolicyGKEClusterDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      networks: map['networks'] == null ? null : pulumi.Output.create<List<ResponsePolicyNetworkDnsV1beta2>>(pulumi.Input.decodeList<ResponsePolicyNetworkDnsV1beta2>(map['networks'], (value) => ResponsePolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      responsePolicyName: map['responsePolicyName'] == null ? null : pulumi.Output.create<String>(map['responsePolicyName'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGKEClusterDnsV1beta2>(map['gkeClusters'], (value) => ResponsePolicyGKEClusterDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetworkDnsV1beta2>(map['networks'], (value) => ResponsePolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      responsePolicyName: map['responsePolicyName'] == null ? null : (map['responsePolicyName'] as String).input(),
     );
   }
 }

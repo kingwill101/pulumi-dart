@@ -31,23 +31,15 @@ class AccessLogSubscriptionState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   AccessLogSubscriptionState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? destinationArn,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? resourceArn,
-    pulumi.Output<String>? resourceIdentifier,
-    pulumi.Output<String>? serviceNetworkLogType,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      destinationArn = pulumi.Input.asOptionalInput<String>(destinationArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn),
-      resourceIdentifier = pulumi.Input.asOptionalInput<String>(resourceIdentifier),
-      serviceNetworkLogType = pulumi.Input.asOptionalInput<String>(serviceNetworkLogType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.destinationArn,
+    this.region,
+    this.resourceArn,
+    this.resourceIdentifier,
+    this.serviceNetworkLogType,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class AccessLogSubscriptionState {
 
   factory AccessLogSubscriptionState.fromMap(Map<String, dynamic> map) {
     return AccessLogSubscriptionState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      destinationArn: map['destinationArn'] == null ? null : pulumi.Output.create<String>(map['destinationArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      resourceArn: map['resourceArn'] == null ? null : pulumi.Output.create<String>(map['resourceArn'] as String),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : pulumi.Output.create<String>(map['resourceIdentifier'] as String),
-      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : pulumi.Output.create<String>(map['serviceNetworkLogType'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
+      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : (map['serviceNetworkLogType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

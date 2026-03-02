@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_spec_listener_tls_validation_subject_alternative_names_match.dart';
 
 class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
   /// Criteria for determining a SAN's match.
-  final VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch match;
+  final pulumi.Input<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch> match;
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
@@ -14,13 +15,13 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'match': match.toMap(),
+      'match': pulumi.Input.mapInputValue<VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames(
-      match: VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>()),
+      match: (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

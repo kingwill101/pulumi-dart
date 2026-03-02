@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
 class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
   /// Reason why the feature is in this status.
-  final String reason;
+  final pulumi.Input<String> reason;
   /// Status of the condition, one of True, False, Unknown.
-  final String status;
+  final pulumi.Input<String> status;
   /// Type of the condition, for example, "ready".
-  final String type;
+  final pulumi.Input<String> type;
   /// Last timestamp the condition was updated.
-  final String updateTime;
+  final pulumi.Input<String> updateTime;
 
   /// Creates a new [ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta].
   /// [reason] Reason why the feature is in this status.
@@ -35,10 +36,10 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
 
   factory ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta(
-      reason: map['reason'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
-      updateTime: map['updateTime'] as String,
+      reason: (map['reason'] as String).input(),
+      status: (map['status'] as String).input(),
+      type: (map['type'] as String).input(),
+      updateTime: (map['updateTime'] as String).input(),
     );
   }
 }

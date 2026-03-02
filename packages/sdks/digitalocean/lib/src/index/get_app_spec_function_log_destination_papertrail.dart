@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecFunctionLogDestinationPapertrail {
   /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
 
   /// Creates a new [GetAppSpecFunctionLogDestinationPapertrail].
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
@@ -19,7 +20,7 @@ class GetAppSpecFunctionLogDestinationPapertrail {
 
   factory GetAppSpecFunctionLogDestinationPapertrail.fromMap(Map<String, dynamic> map) {
     return GetAppSpecFunctionLogDestinationPapertrail(
-      endpoint: map['endpoint'] as String,
+      endpoint: (map['endpoint'] as String).input(),
     );
   }
 }

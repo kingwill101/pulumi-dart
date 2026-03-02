@@ -31,19 +31,13 @@ class ContainerAppsSourceControlArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlName] Name of the Container App SourceControl.
   ContainerAppsSourceControlArgs({
-    pulumi.Output<String>? branch,
-    required pulumi.Output<String> containerAppName,
-    pulumi.Output<GithubActionConfiguration>? githubActionConfiguration,
-    pulumi.Output<String>? repoUrl,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? sourceControlName,
-  }) :
-      branch = pulumi.Input.asOptionalInput<String>(branch),
-      containerAppName = pulumi.Input.asInput<String>(containerAppName),
-      githubActionConfiguration = pulumi.Input.asOptionalInput<GithubActionConfiguration>(githubActionConfiguration),
-      repoUrl = pulumi.Input.asOptionalInput<String>(repoUrl),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      sourceControlName = pulumi.Input.asOptionalInput<String>(sourceControlName);
+    this.branch,
+    required this.containerAppName,
+    this.githubActionConfiguration,
+    this.repoUrl,
+    required this.resourceGroupName,
+    this.sourceControlName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,12 +52,12 @@ class ContainerAppsSourceControlArgs {
 
   factory ContainerAppsSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsSourceControlArgs(
-      branch: map['branch'] == null ? null : pulumi.Output.create<String>(map['branch'] as String),
-      containerAppName: pulumi.Output.create<String>(map['containerAppName'] as String),
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : pulumi.Output.create<GithubActionConfiguration>(GithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())),
-      repoUrl: map['repoUrl'] == null ? null : pulumi.Output.create<String>(map['repoUrl'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sourceControlName: map['sourceControlName'] == null ? null : pulumi.Output.create<String>(map['sourceControlName'] as String),
+      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      containerAppName: (map['containerAppName'] as String).input(),
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (GithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName'] as String).input(),
     );
   }
 }

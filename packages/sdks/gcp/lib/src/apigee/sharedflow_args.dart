@@ -23,15 +23,11 @@ class SharedflowArgs {
   /// [name] The ID of the shared flow.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
   SharedflowArgs({
-    required pulumi.Output<String> configBundle,
-    pulumi.Output<String>? detectMd5hash,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> orgId,
-  }) :
-      configBundle = pulumi.Input.asInput<String>(configBundle),
-      detectMd5hash = pulumi.Input.asOptionalInput<String>(detectMd5hash),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asInput<String>(orgId);
+    required this.configBundle,
+    this.detectMd5hash,
+    this.name,
+    required this.orgId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class SharedflowArgs {
 
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
-      configBundle: pulumi.Output.create<String>(map['configBundle'] as String),
-      detectMd5hash: map['detectMd5hash'] == null ? null : pulumi.Output.create<String>(map['detectMd5hash'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
+      configBundle: (map['configBundle'] as String).input(),
+      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
     );
   }
 }

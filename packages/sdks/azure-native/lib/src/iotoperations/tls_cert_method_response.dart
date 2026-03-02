@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cert_manager_certificate_spec_response.dart';
 import 'x509_manual_certificate_response.dart';
 
 /// Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 class TlsCertMethodResponse {
   /// Option 1 - Automatic TLS server certificate management with cert-manager.
-  final CertManagerCertificateSpecResponse? certManagerCertificateSpec;
+  final pulumi.Input<CertManagerCertificateSpecResponse>? certManagerCertificateSpec;
   /// Option 2 - Manual TLS server certificate management through a defined secret.
-  final X509ManualCertificateResponse? manual;
+  final pulumi.Input<X509ManualCertificateResponse>? manual;
   /// Mode of TLS server certificate management.
-  final String mode;
+  final pulumi.Input<String> mode;
 
   /// Creates a new [TlsCertMethodResponse].
   /// [certManagerCertificateSpec] Option 1 - Automatic TLS server certificate management with cert-manager.
@@ -24,17 +25,17 @@ class TlsCertMethodResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certManagerCertificateSpec': ?certManagerCertificateSpec == null ? null : certManagerCertificateSpec!.toMap(),
-      'manual': ?manual == null ? null : manual!.toMap(),
+      'certManagerCertificateSpec': ?pulumi.Input.mapOptionalInputValue<CertManagerCertificateSpecResponse, Map<String, dynamic>>(certManagerCertificateSpec, (value) => value.toMap()),
+      'manual': ?pulumi.Input.mapOptionalInputValue<X509ManualCertificateResponse, Map<String, dynamic>>(manual, (value) => value.toMap()),
       'mode': mode,
     };
   }
 
   factory TlsCertMethodResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertMethodResponse(
-      certManagerCertificateSpec: map['certManagerCertificateSpec'] == null ? null : CertManagerCertificateSpecResponse.fromMap((map['certManagerCertificateSpec'] as Map).cast<String, dynamic>()),
-      manual: map['manual'] == null ? null : X509ManualCertificateResponse.fromMap((map['manual'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] as String,
+      certManagerCertificateSpec: map['certManagerCertificateSpec'] == null ? null : (CertManagerCertificateSpecResponse.fromMap((map['certManagerCertificateSpec'] as Map).cast<String, dynamic>())).input(),
+      manual: map['manual'] == null ? null : (X509ManualCertificateResponse.fromMap((map['manual'] as Map).cast<String, dynamic>())).input(),
+      mode: (map['mode'] as String).input(),
     );
   }
 }

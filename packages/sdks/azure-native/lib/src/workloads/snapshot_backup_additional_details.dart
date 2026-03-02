@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_managed_identity_details.dart';
 
 /// Snapshot Backup related fields for WorkloadType SAP Hana system
 class SnapshotBackupAdditionalDetails {
   /// Instant RP details for the snapshot.
-  final String? instantRPDetails;
+  final pulumi.Input<String>? instantRPDetails;
   /// Retention range for instant Rp in days.
-  final int? instantRpRetentionRangeInDays;
+  final pulumi.Input<int>? instantRpRetentionRangeInDays;
   /// User Assigned managed identity details used for snapshot policy.
-  final UserAssignedManagedIdentityDetails? userAssignedManagedIdentityDetails;
+  final pulumi.Input<UserAssignedManagedIdentityDetails>? userAssignedManagedIdentityDetails;
 
   /// Creates a new [SnapshotBackupAdditionalDetails].
   /// [instantRPDetails] Instant RP details for the snapshot.
@@ -25,15 +26,15 @@ class SnapshotBackupAdditionalDetails {
     return <String, dynamic>{
       'instantRPDetails': ?instantRPDetails,
       'instantRpRetentionRangeInDays': ?instantRpRetentionRangeInDays,
-      'userAssignedManagedIdentityDetails': ?userAssignedManagedIdentityDetails == null ? null : userAssignedManagedIdentityDetails!.toMap(),
+      'userAssignedManagedIdentityDetails': ?pulumi.Input.mapOptionalInputValue<UserAssignedManagedIdentityDetails, Map<String, dynamic>>(userAssignedManagedIdentityDetails, (value) => value.toMap()),
     };
   }
 
   factory SnapshotBackupAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return SnapshotBackupAdditionalDetails(
-      instantRPDetails: map['instantRPDetails'] == null ? null : map['instantRPDetails'] as String,
-      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : map['instantRpRetentionRangeInDays'] as int,
-      userAssignedManagedIdentityDetails: map['userAssignedManagedIdentityDetails'] == null ? null : UserAssignedManagedIdentityDetails.fromMap((map['userAssignedManagedIdentityDetails'] as Map).cast<String, dynamic>()),
+      instantRPDetails: map['instantRPDetails'] == null ? null : (map['instantRPDetails'] as String).input(),
+      instantRpRetentionRangeInDays: map['instantRpRetentionRangeInDays'] == null ? null : (map['instantRpRetentionRangeInDays'] as int).input(),
+      userAssignedManagedIdentityDetails: map['userAssignedManagedIdentityDetails'] == null ? null : (UserAssignedManagedIdentityDetails.fromMap((map['userAssignedManagedIdentityDetails'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

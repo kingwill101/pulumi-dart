@@ -23,13 +23,10 @@ class ResourceDirectoryArgs {
   /// [memberDeletionStatus] The status of the member deletion feature. Valid values:
   /// [status] ScpStatus
   ResourceDirectoryArgs({
-    pulumi.Output<String>? memberAccountDisplayNameSyncStatus,
-    pulumi.Output<String>? memberDeletionStatus,
-    pulumi.Output<String>? status,
-  }) :
-      memberAccountDisplayNameSyncStatus = pulumi.Input.asOptionalInput<String>(memberAccountDisplayNameSyncStatus),
-      memberDeletionStatus = pulumi.Input.asOptionalInput<String>(memberDeletionStatus),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    this.memberAccountDisplayNameSyncStatus,
+    this.memberDeletionStatus,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class ResourceDirectoryArgs {
 
   factory ResourceDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDirectoryArgs(
-      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : pulumi.Output.create<String>(map['memberAccountDisplayNameSyncStatus'] as String),
-      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : pulumi.Output.create<String>(map['memberDeletionStatus'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus'] as String).input(),
+      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

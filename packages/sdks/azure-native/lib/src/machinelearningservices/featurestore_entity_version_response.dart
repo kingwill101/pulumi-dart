@@ -6,21 +6,21 @@ import 'index_column_response.dart';
 /// DTO object representing feature entity version
 class FeaturestoreEntityVersionResponse {
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Specifies index columns
-  final List<IndexColumnResponse>? indexColumns;
+  final pulumi.Input<List<IndexColumnResponse>>? indexColumns;
   /// If the name version are system generated (anonymous registration).
-  final bool? isAnonymous;
+  final pulumi.Input<bool>? isAnonymous;
   /// Is the asset archived?
-  final bool? isArchived;
+  final pulumi.Input<bool>? isArchived;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Provisioning state for the featurestore entity version.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Specifies the asset stage
-  final String? stage;
+  final pulumi.Input<String>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [FeaturestoreEntityVersionResponse].
   /// [description] The asset description text.
@@ -45,7 +45,7 @@ class FeaturestoreEntityVersionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'indexColumns': ?indexColumns == null ? null : pulumi.Input.encodeList<IndexColumnResponse, Map<String, dynamic>>(indexColumns!, (value) => value.toMap()),
+      'indexColumns': ?pulumi.Input.mapOptionalInputValue<List<IndexColumnResponse>, List<Map<String, dynamic>>>(indexColumns, (value) => pulumi.Input.encodeList<IndexColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'isAnonymous': ?isAnonymous,
       'isArchived': ?isArchived,
       'properties': ?properties,
@@ -57,14 +57,14 @@ class FeaturestoreEntityVersionResponse {
 
   factory FeaturestoreEntityVersionResponse.fromMap(Map<String, dynamic> map) {
     return FeaturestoreEntityVersionResponse(
-      description: map['description'] == null ? null : map['description'] as String,
-      indexColumns: map['indexColumns'] == null ? null : pulumi.Input.decodeList<IndexColumnResponse>(map['indexColumns'], (value) => IndexColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      isAnonymous: map['isAnonymous'] == null ? null : map['isAnonymous'] as bool,
-      isArchived: map['isArchived'] == null ? null : map['isArchived'] as bool,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      provisioningState: map['provisioningState'] as String,
-      stage: map['stage'] == null ? null : map['stage'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      indexColumns: map['indexColumns'] == null ? null : (pulumi.Input.decodeList<IndexColumnResponse>(map['indexColumns'], (value) => IndexColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

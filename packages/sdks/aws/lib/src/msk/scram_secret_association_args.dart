@@ -19,13 +19,10 @@ class ScramSecretAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArnLists] List of AWS Secrets Manager secret ARNs.
   ScramSecretAssociationArgs({
-    required pulumi.Output<String> clusterArn,
-    pulumi.Output<String>? region,
-    required pulumi.Output<List<String>> secretArnLists,
-  }) :
-      clusterArn = pulumi.Input.asInput<String>(clusterArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretArnLists = pulumi.Input.asInput<List<String>>(secretArnLists);
+    required this.clusterArn,
+    this.region,
+    required this.secretArnLists,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ScramSecretAssociationArgs {
 
   factory ScramSecretAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ScramSecretAssociationArgs(
-      clusterArn: pulumi.Output.create<String>(map['clusterArn'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      secretArnLists: pulumi.Output.create<List<String>>((map['secretArnLists'] as List).cast<String>()),
+      clusterArn: (map['clusterArn'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      secretArnLists: ((map['secretArnLists'] as List).cast<String>()).input(),
     );
   }
 }

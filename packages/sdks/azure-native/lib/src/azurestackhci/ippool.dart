@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes IPPool
 class IPPool {
   /// End of the IP address pool
-  final String? end;
+  final pulumi.Input<String>? end;
   /// Type of the IP Pool [vm, vippool]
-  final String? ipPoolType;
+  final pulumi.Input<String>? ipPoolType;
   /// Name of the IP-Pool
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Start of the IP address pool
-  final String? start;
+  final pulumi.Input<String>? start;
 
   /// Creates a new [IPPool].
   /// [end] End of the IP address pool
@@ -35,10 +36,10 @@ class IPPool {
 
   factory IPPool.fromMap(Map<String, dynamic> map) {
     return IPPool(
-      end: map['end'] == null ? null : map['end'] as String,
-      ipPoolType: map['ipPoolType'] == null ? null : map['ipPoolType'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      start: map['start'] == null ? null : map['start'] as String,
+      end: map['end'] == null ? null : (map['end'] as String).input(),
+      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      start: map['start'] == null ? null : (map['start'] as String).input(),
     );
   }
 }

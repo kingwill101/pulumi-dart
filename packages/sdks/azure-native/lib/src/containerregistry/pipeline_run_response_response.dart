@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'export_pipeline_target_properties_response.dart';
 import 'import_pipeline_source_properties_response.dart';
 import 'pipeline_trigger_descriptor_response.dart';
@@ -8,25 +9,25 @@ import 'progress_properties_response.dart';
 /// The response properties returned for a pipeline run.
 class PipelineRunResponseResponse {
   /// The digest of the tar used to transfer the artifacts.
-  final String? catalogDigest;
+  final pulumi.Input<String>? catalogDigest;
   /// The time the pipeline run finished.
-  final String? finishTime;
+  final pulumi.Input<String>? finishTime;
   /// The artifacts imported in the pipeline run.
-  final List<String>? importedArtifacts;
+  final pulumi.Input<List<String>>? importedArtifacts;
   /// The detailed error message for the pipeline run in the case of failure.
-  final String? pipelineRunErrorMessage;
+  final pulumi.Input<String>? pipelineRunErrorMessage;
   /// The current progress of the copy operation.
-  final ProgressPropertiesResponse? progress;
+  final pulumi.Input<ProgressPropertiesResponse>? progress;
   /// The source of the pipeline run.
-  final ImportPipelineSourcePropertiesResponse? source;
+  final pulumi.Input<ImportPipelineSourcePropertiesResponse>? source;
   /// The time the pipeline run started.
-  final String? startTime;
+  final pulumi.Input<String>? startTime;
   /// The current status of the pipeline run.
-  final String? status;
+  final pulumi.Input<String>? status;
   /// The target of the pipeline run.
-  final ExportPipelineTargetPropertiesResponse? target;
+  final pulumi.Input<ExportPipelineTargetPropertiesResponse>? target;
   /// The trigger that caused the pipeline run.
-  final PipelineTriggerDescriptorResponse? trigger;
+  final pulumi.Input<PipelineTriggerDescriptorResponse>? trigger;
 
   /// Creates a new [PipelineRunResponseResponse].
   /// [catalogDigest] The digest of the tar used to transfer the artifacts.
@@ -58,27 +59,27 @@ class PipelineRunResponseResponse {
       'finishTime': ?finishTime,
       'importedArtifacts': ?importedArtifacts,
       'pipelineRunErrorMessage': ?pipelineRunErrorMessage,
-      'progress': ?progress == null ? null : progress!.toMap(),
-      'source': ?source == null ? null : source!.toMap(),
+      'progress': ?pulumi.Input.mapOptionalInputValue<ProgressPropertiesResponse, Map<String, dynamic>>(progress, (value) => value.toMap()),
+      'source': ?pulumi.Input.mapOptionalInputValue<ImportPipelineSourcePropertiesResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
       'startTime': ?startTime,
       'status': ?status,
-      'target': ?target == null ? null : target!.toMap(),
-      'trigger': ?trigger == null ? null : trigger!.toMap(),
+      'target': ?pulumi.Input.mapOptionalInputValue<ExportPipelineTargetPropertiesResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'trigger': ?pulumi.Input.mapOptionalInputValue<PipelineTriggerDescriptorResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
     };
   }
 
   factory PipelineRunResponseResponse.fromMap(Map<String, dynamic> map) {
     return PipelineRunResponseResponse(
-      catalogDigest: map['catalogDigest'] == null ? null : map['catalogDigest'] as String,
-      finishTime: map['finishTime'] == null ? null : map['finishTime'] as String,
-      importedArtifacts: map['importedArtifacts'] == null ? null : (map['importedArtifacts'] as List).cast<String>(),
-      pipelineRunErrorMessage: map['pipelineRunErrorMessage'] == null ? null : map['pipelineRunErrorMessage'] as String,
-      progress: map['progress'] == null ? null : ProgressPropertiesResponse.fromMap((map['progress'] as Map).cast<String, dynamic>()),
-      source: map['source'] == null ? null : ImportPipelineSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      target: map['target'] == null ? null : ExportPipelineTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),
-      trigger: map['trigger'] == null ? null : PipelineTriggerDescriptorResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>()),
+      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest'] as String).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
+      importedArtifacts: map['importedArtifacts'] == null ? null : ((map['importedArtifacts'] as List).cast<String>()).input(),
+      pipelineRunErrorMessage: map['pipelineRunErrorMessage'] == null ? null : (map['pipelineRunErrorMessage'] as String).input(),
+      progress: map['progress'] == null ? null : (ProgressPropertiesResponse.fromMap((map['progress'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (ImportPipelineSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      target: map['target'] == null ? null : (ExportPipelineTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (PipelineTriggerDescriptorResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

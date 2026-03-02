@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupNamedPort {
   /// The name which the port will be mapped to.
-  final String name;
+  final pulumi.Input<String> name;
   /// The port number to map the name to.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [InstanceGroupNamedPort].
   /// [name] The name which the port will be mapped to.
@@ -24,8 +25,8 @@ class InstanceGroupNamedPort {
 
   factory InstanceGroupNamedPort.fromMap(Map<String, dynamic> map) {
     return InstanceGroupNamedPort(
-      name: map['name'] as String,
-      port: map['port'] as int,
+      name: (map['name'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

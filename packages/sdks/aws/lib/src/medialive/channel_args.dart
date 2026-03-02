@@ -61,35 +61,21 @@ class ChannelArgs {
   /// [tags] A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpc] Settings for the VPC outputs. See VPC for more details.
   ChannelArgs({
-    pulumi.Output<ChannelCdiInputSpecification>? cdiInputSpecification,
-    required pulumi.Output<String> channelClass,
-    required pulumi.Output<List<ChannelDestination>> destinations,
-    required pulumi.Output<ChannelEncoderSettings> encoderSettings,
-    required pulumi.Output<List<ChannelInputAttachment>> inputAttachments,
-    required pulumi.Output<ChannelInputSpecification> inputSpecification,
-    pulumi.Output<String>? logLevel,
-    pulumi.Output<ChannelMaintenance>? maintenance,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-    pulumi.Output<bool>? startChannel,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<ChannelVpc>? vpc,
-  }) :
-      cdiInputSpecification = pulumi.Input.asOptionalInput<ChannelCdiInputSpecification>(cdiInputSpecification),
-      channelClass = pulumi.Input.asInput<String>(channelClass),
-      destinations = pulumi.Input.asInput<List<ChannelDestination>>(destinations),
-      encoderSettings = pulumi.Input.asInput<ChannelEncoderSettings>(encoderSettings),
-      inputAttachments = pulumi.Input.asInput<List<ChannelInputAttachment>>(inputAttachments),
-      inputSpecification = pulumi.Input.asInput<ChannelInputSpecification>(inputSpecification),
-      logLevel = pulumi.Input.asOptionalInput<String>(logLevel),
-      maintenance = pulumi.Input.asOptionalInput<ChannelMaintenance>(maintenance),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn),
-      startChannel = pulumi.Input.asOptionalInput<bool>(startChannel),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpc = pulumi.Input.asOptionalInput<ChannelVpc>(vpc);
+    this.cdiInputSpecification,
+    required this.channelClass,
+    required this.destinations,
+    required this.encoderSettings,
+    required this.inputAttachments,
+    required this.inputSpecification,
+    this.logLevel,
+    this.maintenance,
+    this.name,
+    this.region,
+    this.roleArn,
+    this.startChannel,
+    this.tags,
+    this.vpc,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,20 +98,20 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      cdiInputSpecification: map['cdiInputSpecification'] == null ? null : pulumi.Output.create<ChannelCdiInputSpecification>(ChannelCdiInputSpecification.fromMap((map['cdiInputSpecification'] as Map).cast<String, dynamic>())),
-      channelClass: pulumi.Output.create<String>(map['channelClass'] as String),
-      destinations: pulumi.Output.create<List<ChannelDestination>>(pulumi.Input.decodeList<ChannelDestination>(map['destinations'], (value) => ChannelDestination.fromMap((value as Map).cast<String, dynamic>()))),
-      encoderSettings: pulumi.Output.create<ChannelEncoderSettings>(ChannelEncoderSettings.fromMap((map['encoderSettings'] as Map).cast<String, dynamic>())),
-      inputAttachments: pulumi.Output.create<List<ChannelInputAttachment>>(pulumi.Input.decodeList<ChannelInputAttachment>(map['inputAttachments'], (value) => ChannelInputAttachment.fromMap((value as Map).cast<String, dynamic>()))),
-      inputSpecification: pulumi.Output.create<ChannelInputSpecification>(ChannelInputSpecification.fromMap((map['inputSpecification'] as Map).cast<String, dynamic>())),
-      logLevel: map['logLevel'] == null ? null : pulumi.Output.create<String>(map['logLevel'] as String),
-      maintenance: map['maintenance'] == null ? null : pulumi.Output.create<ChannelMaintenance>(ChannelMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
-      startChannel: map['startChannel'] == null ? null : pulumi.Output.create<bool>(map['startChannel'] as bool),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<ChannelVpc>(ChannelVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())),
+      cdiInputSpecification: map['cdiInputSpecification'] == null ? null : (ChannelCdiInputSpecification.fromMap((map['cdiInputSpecification'] as Map).cast<String, dynamic>())).input(),
+      channelClass: (map['channelClass'] as String).input(),
+      destinations: (pulumi.Input.decodeList<ChannelDestination>(map['destinations'], (value) => ChannelDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encoderSettings: (ChannelEncoderSettings.fromMap((map['encoderSettings'] as Map).cast<String, dynamic>())).input(),
+      inputAttachments: (pulumi.Input.decodeList<ChannelInputAttachment>(map['inputAttachments'], (value) => ChannelInputAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputSpecification: (ChannelInputSpecification.fromMap((map['inputSpecification'] as Map).cast<String, dynamic>())).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      maintenance: map['maintenance'] == null ? null : (ChannelMaintenance.fromMap((map['maintenance'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      startChannel: map['startChannel'] == null ? null : (map['startChannel'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpc: map['vpc'] == null ? null : (ChannelVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

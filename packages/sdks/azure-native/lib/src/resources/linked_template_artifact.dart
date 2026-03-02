@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template.
 class LinkedTemplateArtifact {
   /// A filesystem safe relative path of the artifact.
-  final String path;
+  final pulumi.Input<String> path;
   /// The Azure Resource Manager template.
-  final dynamic template;
+  final pulumi.Input<dynamic> template;
 
   /// Creates a new [LinkedTemplateArtifact].
   /// [path] A filesystem safe relative path of the artifact.
@@ -25,8 +26,8 @@ class LinkedTemplateArtifact {
 
   factory LinkedTemplateArtifact.fromMap(Map<String, dynamic> map) {
     return LinkedTemplateArtifact(
-      path: map['path'] as String,
-      template: map['template'],
+      path: (map['path'] as String).input(),
+      template: (map['template']).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionFlexibleRuntimeSettings {
   /// Operating System of the application runtime.
-  final String? operatingSystem;
+  final pulumi.Input<String>? operatingSystem;
   /// The runtime version of an App Engine flexible application.
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
 
   /// Creates a new [FlexibleAppVersionFlexibleRuntimeSettings].
   /// [operatingSystem] Operating System of the application runtime.
@@ -24,8 +25,8 @@ class FlexibleAppVersionFlexibleRuntimeSettings {
 
   factory FlexibleAppVersionFlexibleRuntimeSettings.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionFlexibleRuntimeSettings(
-      operatingSystem: map['operatingSystem'] == null ? null : map['operatingSystem'] as String,
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
     );
   }
 }

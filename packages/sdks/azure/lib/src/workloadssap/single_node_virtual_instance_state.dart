@@ -45,31 +45,19 @@ class SingleNodeVirtualInstanceState {
   /// [singleServerConfiguration] A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   SingleNodeVirtualInstanceState({
-    pulumi.Output<String>? appLocation,
-    pulumi.Output<String>? environment,
-    pulumi.Output<SingleNodeVirtualInstanceIdentity>? identity,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? managedResourceGroupName,
-    pulumi.Output<String>? managedResourcesNetworkAccessType,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? sapFqdn,
-    pulumi.Output<String>? sapProduct,
-    pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration>? singleServerConfiguration,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      appLocation = pulumi.Input.asOptionalInput<String>(appLocation),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      identity = pulumi.Input.asOptionalInput<SingleNodeVirtualInstanceIdentity>(identity),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      managedResourceGroupName = pulumi.Input.asOptionalInput<String>(managedResourceGroupName),
-      managedResourcesNetworkAccessType = pulumi.Input.asOptionalInput<String>(managedResourcesNetworkAccessType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      sapFqdn = pulumi.Input.asOptionalInput<String>(sapFqdn),
-      sapProduct = pulumi.Input.asOptionalInput<String>(sapProduct),
-      singleServerConfiguration = pulumi.Input.asOptionalInput<SingleNodeVirtualInstanceSingleServerConfiguration>(singleServerConfiguration),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.appLocation,
+    this.environment,
+    this.identity,
+    this.location,
+    this.managedResourceGroupName,
+    this.managedResourcesNetworkAccessType,
+    this.name,
+    this.resourceGroupName,
+    this.sapFqdn,
+    this.sapProduct,
+    this.singleServerConfiguration,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,18 +78,18 @@ class SingleNodeVirtualInstanceState {
 
   factory SingleNodeVirtualInstanceState.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceState(
-      appLocation: map['appLocation'] == null ? null : pulumi.Output.create<String>(map['appLocation'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<SingleNodeVirtualInstanceIdentity>(SingleNodeVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : pulumi.Output.create<String>(map['managedResourceGroupName'] as String),
-      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : pulumi.Output.create<String>(map['managedResourcesNetworkAccessType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      sapFqdn: map['sapFqdn'] == null ? null : pulumi.Output.create<String>(map['sapFqdn'] as String),
-      sapProduct: map['sapProduct'] == null ? null : pulumi.Output.create<String>(map['sapProduct'] as String),
-      singleServerConfiguration: map['singleServerConfiguration'] == null ? null : pulumi.Output.create<SingleNodeVirtualInstanceSingleServerConfiguration>(SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((map['singleServerConfiguration'] as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      identity: map['identity'] == null ? null : (SingleNodeVirtualInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
+      managedResourcesNetworkAccessType: map['managedResourcesNetworkAccessType'] == null ? null : (map['managedResourcesNetworkAccessType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn'] as String).input(),
+      sapProduct: map['sapProduct'] == null ? null : (map['sapProduct'] as String).input(),
+      singleServerConfiguration: map['singleServerConfiguration'] == null ? null : (SingleNodeVirtualInstanceSingleServerConfiguration.fromMap((map['singleServerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

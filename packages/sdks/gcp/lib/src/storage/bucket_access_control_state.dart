@@ -37,17 +37,12 @@ class BucketAccessControlState {
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [role] The access permission for the entity.
   BucketAccessControlState({
-    pulumi.Output<String>? bucket,
-    pulumi.Output<String>? domain,
-    pulumi.Output<String>? email,
-    pulumi.Output<String>? entity,
-    pulumi.Output<String>? role,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      role = pulumi.Input.asOptionalInput<String>(role);
+    this.bucket,
+    this.domain,
+    this.email,
+    this.entity,
+    this.role,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,11 +56,11 @@ class BucketAccessControlState {
 
   factory BucketAccessControlState.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlState(
-      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
-      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
-      email: map['email'] == null ? null : pulumi.Output.create<String>(map['email'] as String),
-      entity: map['entity'] == null ? null : pulumi.Output.create<String>(map['entity'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      email: map['email'] == null ? null : (map['email'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
     );
   }
 }

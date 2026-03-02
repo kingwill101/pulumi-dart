@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v3_function_instance_lifecycle_config_initializer.dart';
 import 'v3_function_instance_lifecycle_config_pre_stop.dart';
 
 class V3FunctionInstanceLifecycleConfig {
   /// Initializer handler method configuration See `initializer` below.
-  final V3FunctionInstanceLifecycleConfigInitializer? initializer;
+  final pulumi.Input<V3FunctionInstanceLifecycleConfigInitializer>? initializer;
   /// PreStop handler method configuration See `pre_stop` below.
-  final V3FunctionInstanceLifecycleConfigPreStop? preStop;
+  final pulumi.Input<V3FunctionInstanceLifecycleConfigPreStop>? preStop;
 
   /// Creates a new [V3FunctionInstanceLifecycleConfig].
   /// [initializer] Initializer handler method configuration See `initializer` below.
@@ -19,15 +20,15 @@ class V3FunctionInstanceLifecycleConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initializer': ?initializer == null ? null : initializer!.toMap(),
-      'preStop': ?preStop == null ? null : preStop!.toMap(),
+      'initializer': ?pulumi.Input.mapOptionalInputValue<V3FunctionInstanceLifecycleConfigInitializer, Map<String, dynamic>>(initializer, (value) => value.toMap()),
+      'preStop': ?pulumi.Input.mapOptionalInputValue<V3FunctionInstanceLifecycleConfigPreStop, Map<String, dynamic>>(preStop, (value) => value.toMap()),
     };
   }
 
   factory V3FunctionInstanceLifecycleConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionInstanceLifecycleConfig(
-      initializer: map['initializer'] == null ? null : V3FunctionInstanceLifecycleConfigInitializer.fromMap((map['initializer'] as Map).cast<String, dynamic>()),
-      preStop: map['preStop'] == null ? null : V3FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop'] as Map).cast<String, dynamic>()),
+      initializer: map['initializer'] == null ? null : (V3FunctionInstanceLifecycleConfigInitializer.fromMap((map['initializer'] as Map).cast<String, dynamic>())).input(),
+      preStop: map['preStop'] == null ? null : (V3FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

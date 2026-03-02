@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_armor_profile.dart';
 import 'capabilities.dart';
 import 'seccomp_profile.dart';
@@ -9,29 +10,29 @@ import 'windows_security_context_options.dart';
 /// SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.
 class SecurityContext {
   /// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows.
-  final bool? allowPrivilegeEscalation;
+  final pulumi.Input<bool>? allowPrivilegeEscalation;
   /// appArmorProfile is the AppArmor options to use by this container. If set, this profile overrides the pod's appArmorProfile. Note that this field cannot be set when spec.os.name is windows.
-  final AppArmorProfile? appArmorProfile;
+  final pulumi.Input<AppArmorProfile>? appArmorProfile;
   /// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
-  final Capabilities? capabilities;
+  final pulumi.Input<Capabilities>? capabilities;
   /// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.
-  final bool? privileged;
+  final pulumi.Input<bool>? privileged;
   /// procMount denotes the type of proc mount to use for the containers. The default value is Default which uses the container runtime defaults for readonly paths and masked paths. This requires the ProcMountType feature flag to be enabled. Note that this field cannot be set when spec.os.name is windows.
-  final String? procMount;
+  final pulumi.Input<String>? procMount;
   /// Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows.
-  final bool? readOnlyRootFilesystem;
+  final pulumi.Input<bool>? readOnlyRootFilesystem;
   /// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.
-  final int? runAsGroup;
+  final pulumi.Input<int>? runAsGroup;
   /// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
-  final bool? runAsNonRoot;
+  final pulumi.Input<bool>? runAsNonRoot;
   /// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.
-  final int? runAsUser;
+  final pulumi.Input<int>? runAsUser;
   /// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.
-  final SELinuxOptions? seLinuxOptions;
+  final pulumi.Input<SELinuxOptions>? seLinuxOptions;
   /// The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.
-  final SeccompProfile? seccompProfile;
+  final pulumi.Input<SeccompProfile>? seccompProfile;
   /// The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.
-  final WindowsSecurityContextOptions? windowsOptions;
+  final pulumi.Input<WindowsSecurityContextOptions>? windowsOptions;
 
   /// Creates a new [SecurityContext].
   /// [allowPrivilegeEscalation] AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows.
@@ -64,34 +65,34 @@ class SecurityContext {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowPrivilegeEscalation': ?allowPrivilegeEscalation,
-      'appArmorProfile': ?appArmorProfile == null ? null : appArmorProfile!.toMap(),
-      'capabilities': ?capabilities == null ? null : capabilities!.toMap(),
+      'appArmorProfile': ?pulumi.Input.mapOptionalInputValue<AppArmorProfile, Map<String, dynamic>>(appArmorProfile, (value) => value.toMap()),
+      'capabilities': ?pulumi.Input.mapOptionalInputValue<Capabilities, Map<String, dynamic>>(capabilities, (value) => value.toMap()),
       'privileged': ?privileged,
       'procMount': ?procMount,
       'readOnlyRootFilesystem': ?readOnlyRootFilesystem,
       'runAsGroup': ?runAsGroup,
       'runAsNonRoot': ?runAsNonRoot,
       'runAsUser': ?runAsUser,
-      'seLinuxOptions': ?seLinuxOptions == null ? null : seLinuxOptions!.toMap(),
-      'seccompProfile': ?seccompProfile == null ? null : seccompProfile!.toMap(),
-      'windowsOptions': ?windowsOptions == null ? null : windowsOptions!.toMap(),
+      'seLinuxOptions': ?pulumi.Input.mapOptionalInputValue<SELinuxOptions, Map<String, dynamic>>(seLinuxOptions, (value) => value.toMap()),
+      'seccompProfile': ?pulumi.Input.mapOptionalInputValue<SeccompProfile, Map<String, dynamic>>(seccompProfile, (value) => value.toMap()),
+      'windowsOptions': ?pulumi.Input.mapOptionalInputValue<WindowsSecurityContextOptions, Map<String, dynamic>>(windowsOptions, (value) => value.toMap()),
     };
   }
 
   factory SecurityContext.fromMap(Map<String, dynamic> map) {
     return SecurityContext(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : map['allowPrivilegeEscalation'] as bool,
-      appArmorProfile: map['appArmorProfile'] == null ? null : AppArmorProfile.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>()),
-      capabilities: map['capabilities'] == null ? null : Capabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>()),
-      privileged: map['privileged'] == null ? null : map['privileged'] as bool,
-      procMount: map['procMount'] == null ? null : map['procMount'] as String,
-      readOnlyRootFilesystem: map['readOnlyRootFilesystem'] == null ? null : map['readOnlyRootFilesystem'] as bool,
-      runAsGroup: map['runAsGroup'] == null ? null : map['runAsGroup'] as int,
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : map['runAsNonRoot'] as bool,
-      runAsUser: map['runAsUser'] == null ? null : map['runAsUser'] as int,
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>()),
-      seccompProfile: map['seccompProfile'] == null ? null : SeccompProfile.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>()),
-      windowsOptions: map['windowsOptions'] == null ? null : WindowsSecurityContextOptions.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>()),
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
+      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfile.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>())).input(),
+      capabilities: map['capabilities'] == null ? null : (Capabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      procMount: map['procMount'] == null ? null : (map['procMount'] as String).input(),
+      readOnlyRootFilesystem: map['readOnlyRootFilesystem'] == null ? null : (map['readOnlyRootFilesystem'] as bool).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfile.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>())).input(),
+      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptions.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

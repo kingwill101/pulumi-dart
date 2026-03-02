@@ -34,23 +34,15 @@ class ListFeaturesetVersionMaterializationJobsArgs {
   /// [version] Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   ListFeaturesetVersionMaterializationJobsArgs({
-    pulumi.Output<String>? featureWindowEnd,
-    pulumi.Output<String>? featureWindowStart,
-    pulumi.Output<String>? filters,
-    required pulumi.Output<String> name,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? skip,
-    required pulumi.Output<String> version,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      featureWindowEnd = pulumi.Input.asOptionalInput<String>(featureWindowEnd),
-      featureWindowStart = pulumi.Input.asOptionalInput<String>(featureWindowStart),
-      filters = pulumi.Input.asOptionalInput<String>(filters),
-      name = pulumi.Input.asInput<String>(name),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      skip = pulumi.Input.asOptionalInput<String>(skip),
-      version = pulumi.Input.asInput<String>(version),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.featureWindowEnd,
+    this.featureWindowStart,
+    this.filters,
+    required this.name,
+    required this.resourceGroupName,
+    this.skip,
+    required this.version,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class ListFeaturesetVersionMaterializationJobsArgs {
 
   factory ListFeaturesetVersionMaterializationJobsArgs.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionMaterializationJobsArgs(
-      featureWindowEnd: map['featureWindowEnd'] == null ? null : pulumi.Output.create<String>(map['featureWindowEnd'] as String),
-      featureWindowStart: map['featureWindowStart'] == null ? null : pulumi.Output.create<String>(map['featureWindowStart'] as String),
-      filters: map['filters'] == null ? null : pulumi.Output.create<String>(map['filters'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      skip: map['skip'] == null ? null : pulumi.Output.create<String>(map['skip'] as String),
-      version: pulumi.Output.create<String>(map['version'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd'] as String).input(),
+      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart'] as String).input(),
+      filters: map['filters'] == null ? null : (map['filters'] as String).input(),
+      name: (map['name'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
+      version: (map['version'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

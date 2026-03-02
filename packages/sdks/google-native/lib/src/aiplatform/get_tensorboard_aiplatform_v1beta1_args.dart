@@ -16,13 +16,10 @@ class GetTensorboardAiplatformV1beta1Args {
   /// [project] Optional.
   /// [tensorboardId] Required.
   GetTensorboardAiplatformV1beta1Args({
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> tensorboardId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+    required this.location,
+    this.project,
+    required this.tensorboardId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetTensorboardAiplatformV1beta1Args {
 
   factory GetTensorboardAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTensorboardAiplatformV1beta1Args(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      tensorboardId: pulumi.Output.create<String>(map['tensorboardId'] as String),
+      location: (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      tensorboardId: (map['tensorboardId'] as String).input(),
     );
   }
 }

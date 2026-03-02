@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardNatAddress {
   /// Sets the ending address for the NAT range.
-  final String end;
+  final pulumi.Input<String> end;
   /// Specifies the starting address for the NAT range.
-  final String start;
+  final pulumi.Input<String> start;
 
   /// Creates a new [NetworkForwardNatAddress].
   /// [end] Sets the ending address for the NAT range.
@@ -24,8 +25,8 @@ class NetworkForwardNatAddress {
 
   factory NetworkForwardNatAddress.fromMap(Map<String, dynamic> map) {
     return NetworkForwardNatAddress(
-      end: map['end'] as String,
-      start: map['start'] as String,
+      end: (map['end'] as String).input(),
+      start: (map['start'] as String).input(),
     );
   }
 }

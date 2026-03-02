@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterAuthenticationCertificate {
   /// The certificate's CN.
-  final String? commonName;
+  final pulumi.Input<String>? commonName;
   /// The thumbprint of the certificate.
-  final String thumbprint;
+  final pulumi.Input<String> thumbprint;
   /// The type of the certificate. Can be `AdminClient` or `ReadOnlyClient`.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [ManagedClusterAuthenticationCertificate].
   /// [commonName] The certificate's CN.
@@ -29,9 +30,9 @@ class ManagedClusterAuthenticationCertificate {
 
   factory ManagedClusterAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAuthenticationCertificate(
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
+      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      thumbprint: (map['thumbprint'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

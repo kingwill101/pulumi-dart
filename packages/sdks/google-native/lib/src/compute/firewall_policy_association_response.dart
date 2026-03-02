@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyAssociationResponse {
   /// The target that the firewall policy is attached to.
-  final String attachmentTarget;
+  final pulumi.Input<String> attachmentTarget;
   /// Deprecated, please use short name instead. The display name of the firewall policy of the association.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// The firewall policy ID of the association.
-  final String firewallPolicyId;
+  final pulumi.Input<String> firewallPolicyId;
   /// The name for an association.
-  final String name;
+  final pulumi.Input<String> name;
   /// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The short name of the firewall policy of the association.
-  final String shortName;
+  final pulumi.Input<String> shortName;
 
   /// Creates a new [FirewallPolicyAssociationResponse].
   /// [attachmentTarget] The target that the firewall policy is attached to.
@@ -44,12 +45,12 @@ class FirewallPolicyAssociationResponse {
 
   factory FirewallPolicyAssociationResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociationResponse(
-      attachmentTarget: map['attachmentTarget'] as String,
-      displayName: map['displayName'] as String,
-      firewallPolicyId: map['firewallPolicyId'] as String,
-      name: map['name'] as String,
-      priority: map['priority'] as int,
-      shortName: map['shortName'] as String,
+      attachmentTarget: (map['attachmentTarget'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      firewallPolicyId: (map['firewallPolicyId'] as String).input(),
+      name: (map['name'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      shortName: (map['shortName'] as String).input(),
     );
   }
 }

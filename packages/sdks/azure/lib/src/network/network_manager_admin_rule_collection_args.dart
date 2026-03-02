@@ -22,15 +22,11 @@ class NetworkManagerAdminRuleCollectionArgs {
   /// [networkGroupIds] A list of Network Group ID which this Network Manager Admin Rule Collection applies to.
   /// [securityAdminConfigurationId] Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Admin Rule Collection to be created.
   NetworkManagerAdminRuleCollectionArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<List<String>> networkGroupIds,
-    required pulumi.Output<String> securityAdminConfigurationId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkGroupIds = pulumi.Input.asInput<List<String>>(networkGroupIds),
-      securityAdminConfigurationId = pulumi.Input.asInput<String>(securityAdminConfigurationId);
+    this.description,
+    this.name,
+    required this.networkGroupIds,
+    required this.securityAdminConfigurationId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkManagerAdminRuleCollectionArgs {
 
   factory NetworkManagerAdminRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerAdminRuleCollectionArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkGroupIds: pulumi.Output.create<List<String>>((map['networkGroupIds'] as List).cast<String>()),
-      securityAdminConfigurationId: pulumi.Output.create<String>(map['securityAdminConfigurationId'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkGroupIds: ((map['networkGroupIds'] as List).cast<String>()).input(),
+      securityAdminConfigurationId: (map['securityAdminConfigurationId'] as String).input(),
     );
   }
 }

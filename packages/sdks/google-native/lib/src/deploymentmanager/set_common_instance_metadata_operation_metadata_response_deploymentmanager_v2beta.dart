@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2beta {
   /// The client operation id.
-  final String clientOperationId;
+  final pulumi.Input<String> clientOperationId;
   /// Status information per location (location name is key). Example key: zones/us-central1-a
-  final Map<String, String> perLocationOperations;
+  final pulumi.Input<Map<String, String>> perLocationOperations;
 
   /// Creates a new [SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2beta].
   /// [clientOperationId] The client operation id.
@@ -24,8 +25,8 @@ class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2beta 
 
   factory SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2beta(
-      clientOperationId: map['clientOperationId'] as String,
-      perLocationOperations: (map['perLocationOperations'] as Map).cast<String, String>(),
+      clientOperationId: (map['clientOperationId'] as String).input(),
+      perLocationOperations: ((map['perLocationOperations'] as Map).cast<String, String>()).input(),
     );
   }
 }

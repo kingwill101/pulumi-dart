@@ -33,21 +33,14 @@ class ServiceNetworkVpcAssociationArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcIdentifier] The ID of the VPC.
   ServiceNetworkVpcAssociationArgs({
-    pulumi.Output<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions,
-    pulumi.Output<bool>? privateDnsEnabled,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    required pulumi.Output<String> serviceNetworkIdentifier,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vpcIdentifier,
-  }) :
-      dnsOptions = pulumi.Input.asOptionalInput<ServiceNetworkVpcAssociationDnsOptions>(dnsOptions),
-      privateDnsEnabled = pulumi.Input.asOptionalInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      serviceNetworkIdentifier = pulumi.Input.asInput<String>(serviceNetworkIdentifier),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcIdentifier = pulumi.Input.asInput<String>(vpcIdentifier);
+    this.dnsOptions,
+    this.privateDnsEnabled,
+    this.region,
+    this.securityGroupIds,
+    required this.serviceNetworkIdentifier,
+    this.tags,
+    required this.vpcIdentifier,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class ServiceNetworkVpcAssociationArgs {
 
   factory ServiceNetworkVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationArgs(
-      dnsOptions: map['dnsOptions'] == null ? null : pulumi.Output.create<ServiceNetworkVpcAssociationDnsOptions>(ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : pulumi.Output.create<bool>(map['privateDnsEnabled'] as bool),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      serviceNetworkIdentifier: pulumi.Output.create<String>(map['serviceNetworkIdentifier'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcIdentifier: pulumi.Output.create<String>(map['vpcIdentifier'] as String),
+      dnsOptions: map['dnsOptions'] == null ? null : (ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcIdentifier: (map['vpcIdentifier'] as String).input(),
     );
   }
 }

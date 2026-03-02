@@ -49,19 +49,13 @@ class V2ProjectSccBigQueryExportArgs {
   /// [location] location Id is provided by organization. If not provided, Use global as default.
   /// [project] The ID of the project in which the resource belongs.
   V2ProjectSccBigQueryExportArgs({
-    required pulumi.Output<String> bigQueryExportId,
-    pulumi.Output<String>? dataset,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? filter,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? project,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      dataset = pulumi.Input.asOptionalInput<String>(dataset),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      filter = pulumi.Input.asOptionalInput<String>(filter),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.bigQueryExportId,
+    this.dataset,
+    this.description,
+    this.filter,
+    this.location,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,12 +70,12 @@ class V2ProjectSccBigQueryExportArgs {
 
   factory V2ProjectSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2ProjectSccBigQueryExportArgs(
-      bigQueryExportId: pulumi.Output.create<String>(map['bigQueryExportId'] as String),
-      dataset: map['dataset'] == null ? null : pulumi.Output.create<String>(map['dataset'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      filter: map['filter'] == null ? null : pulumi.Output.create<String>(map['filter'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      bigQueryExportId: (map['bigQueryExportId'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

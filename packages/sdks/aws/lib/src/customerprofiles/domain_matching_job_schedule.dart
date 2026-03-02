@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMatchingJobSchedule {
   /// The day when the Identity Resolution Job should run every week.
-  final String dayOfTheWeek;
+  final pulumi.Input<String> dayOfTheWeek;
   /// The time when the Identity Resolution Job should run every week.
-  final String time;
+  final pulumi.Input<String> time;
 
   /// Creates a new [DomainMatchingJobSchedule].
   /// [dayOfTheWeek] The day when the Identity Resolution Job should run every week.
@@ -24,8 +25,8 @@ class DomainMatchingJobSchedule {
 
   factory DomainMatchingJobSchedule.fromMap(Map<String, dynamic> map) {
     return DomainMatchingJobSchedule(
-      dayOfTheWeek: map['dayOfTheWeek'] as String,
-      time: map['time'] as String,
+      dayOfTheWeek: (map['dayOfTheWeek'] as String).input(),
+      time: (map['time'] as String).input(),
     );
   }
 }

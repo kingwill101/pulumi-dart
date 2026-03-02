@@ -19,13 +19,10 @@ class GetComputePolicyArgs {
   /// [computePolicyName] The name of the compute policy to retrieve.
   /// [resourceGroupName] The name of the Azure resource group.
   GetComputePolicyArgs({
-    required pulumi.Output<String> accountName,
-    required pulumi.Output<String> computePolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      computePolicyName = pulumi.Input.asInput<String>(computePolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.accountName,
+    required this.computePolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetComputePolicyArgs {
 
   factory GetComputePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetComputePolicyArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      computePolicyName: pulumi.Output.create<String>(map['computePolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      accountName: (map['accountName'] as String).input(),
+      computePolicyName: (map['computePolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

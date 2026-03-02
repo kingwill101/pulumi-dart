@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_level_objective_time_window.dart';
 
 class ServiceLevelObjective {
   /// The description of the SLI.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// A short name for the SLI that will help anyone understand what it is about.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The target of the objective, valid values between `0` and `100`. Up to 5 decimals accepted.
-  final double target;
+  final pulumi.Input<double> target;
   /// Time window is the period of the objective.
-  final ServiceLevelObjectiveTimeWindow timeWindow;
+  final pulumi.Input<ServiceLevelObjectiveTimeWindow> timeWindow;
 
   /// Creates a new [ServiceLevelObjective].
   /// [description] The description of the SLI.
@@ -29,16 +30,16 @@ class ServiceLevelObjective {
       'description': ?description,
       'name': ?name,
       'target': target,
-      'timeWindow': timeWindow.toMap(),
+      'timeWindow': pulumi.Input.mapInputValue<ServiceLevelObjectiveTimeWindow, Map<String, dynamic>>(timeWindow, (value) => value.toMap()),
     };
   }
 
   factory ServiceLevelObjective.fromMap(Map<String, dynamic> map) {
     return ServiceLevelObjective(
-      description: map['description'] == null ? null : map['description'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      target: map['target'] as double,
-      timeWindow: ServiceLevelObjectiveTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      target: (map['target'] as double).input(),
+      timeWindow: (ServiceLevelObjectiveTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'database_instance_settings_connection_pool_config_flag.dart';
 
 class DatabaseInstanceSettingsConnectionPoolConfig {
   /// True if the manager connection pooling configuration is enabled.
-  final bool? connectionPoolingEnabled;
+  final pulumi.Input<bool>? connectionPoolingEnabled;
   /// List of connection pool configuration flags
-  final List<DatabaseInstanceSettingsConnectionPoolConfigFlag>? flags;
+  final pulumi.Input<List<DatabaseInstanceSettingsConnectionPoolConfigFlag>>? flags;
 
   /// Creates a new [DatabaseInstanceSettingsConnectionPoolConfig].
   /// [connectionPoolingEnabled] True if the manager connection pooling configuration is enabled.
@@ -20,14 +20,14 @@ class DatabaseInstanceSettingsConnectionPoolConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionPoolingEnabled': ?connectionPoolingEnabled,
-      'flags': ?flags == null ? null : pulumi.Input.encodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag, Map<String, dynamic>>(flags!, (value) => value.toMap()),
+      'flags': ?pulumi.Input.mapOptionalInputValue<List<DatabaseInstanceSettingsConnectionPoolConfigFlag>, List<Map<String, dynamic>>>(flags, (value) => pulumi.Input.encodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DatabaseInstanceSettingsConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsConnectionPoolConfig(
-      connectionPoolingEnabled: map['connectionPoolingEnabled'] == null ? null : map['connectionPoolingEnabled'] as bool,
-      flags: map['flags'] == null ? null : pulumi.Input.decodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag>(map['flags'], (value) => DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap((value as Map).cast<String, dynamic>())),
+      connectionPoolingEnabled: map['connectionPoolingEnabled'] == null ? null : (map['connectionPoolingEnabled'] as bool).input(),
+      flags: map['flags'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsConnectionPoolConfigFlag>(map['flags'], (value) => DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

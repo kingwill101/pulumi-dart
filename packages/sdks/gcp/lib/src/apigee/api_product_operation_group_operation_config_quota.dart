@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProductOperationGroupOperationConfigQuota {
   /// Required. Time interval over which the number of request messages is calculated.
-  final String? interval;
+  final pulumi.Input<String>? interval;
   /// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
-  final String? limit;
+  final pulumi.Input<String>? limit;
   /// Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-  final String? timeUnit;
+  final pulumi.Input<String>? timeUnit;
 
   /// Creates a new [ApiProductOperationGroupOperationConfigQuota].
   /// [interval] Required. Time interval over which the number of request messages is calculated.
@@ -29,9 +30,9 @@ class ApiProductOperationGroupOperationConfigQuota {
 
   factory ApiProductOperationGroupOperationConfigQuota.fromMap(Map<String, dynamic> map) {
     return ApiProductOperationGroupOperationConfigQuota(
-      interval: map['interval'] == null ? null : map['interval'] as String,
-      limit: map['limit'] == null ? null : map['limit'] as String,
-      timeUnit: map['timeUnit'] == null ? null : map['timeUnit'] as String,
+      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
     );
   }
 }

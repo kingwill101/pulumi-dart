@@ -55,35 +55,21 @@ class ComputeClusterArgs {
   /// [vmPriority] The priority of the VM. Changing this forces a new Machine Learning Compute Cluster to be created. Accepted values are `Dedicated` and `LowPriority`.
   /// [vmSize] The size of the VM. Changing this forces a new Machine Learning Compute Cluster to be created.
   ComputeClusterArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<ComputeClusterIdentity>? identity,
-    pulumi.Output<bool>? localAuthEnabled,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> machineLearningWorkspaceId,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? nodePublicIpEnabled,
-    required pulumi.Output<ComputeClusterScaleSettings> scaleSettings,
-    pulumi.Output<ComputeClusterSsh>? ssh,
-    pulumi.Output<bool>? sshPublicAccessEnabled,
-    pulumi.Output<String>? subnetResourceId,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> vmPriority,
-    required pulumi.Output<String> vmSize,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      identity = pulumi.Input.asOptionalInput<ComputeClusterIdentity>(identity),
-      localAuthEnabled = pulumi.Input.asOptionalInput<bool>(localAuthEnabled),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineLearningWorkspaceId = pulumi.Input.asInput<String>(machineLearningWorkspaceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodePublicIpEnabled = pulumi.Input.asOptionalInput<bool>(nodePublicIpEnabled),
-      scaleSettings = pulumi.Input.asInput<ComputeClusterScaleSettings>(scaleSettings),
-      ssh = pulumi.Input.asOptionalInput<ComputeClusterSsh>(ssh),
-      sshPublicAccessEnabled = pulumi.Input.asOptionalInput<bool>(sshPublicAccessEnabled),
-      subnetResourceId = pulumi.Input.asOptionalInput<String>(subnetResourceId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vmPriority = pulumi.Input.asInput<String>(vmPriority),
-      vmSize = pulumi.Input.asInput<String>(vmSize);
+    this.description,
+    this.identity,
+    this.localAuthEnabled,
+    this.location,
+    required this.machineLearningWorkspaceId,
+    this.name,
+    this.nodePublicIpEnabled,
+    required this.scaleSettings,
+    this.ssh,
+    this.sshPublicAccessEnabled,
+    this.subnetResourceId,
+    this.tags,
+    required this.vmPriority,
+    required this.vmSize,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,20 +92,20 @@ class ComputeClusterArgs {
 
   factory ComputeClusterArgs.fromMap(Map<String, dynamic> map) {
     return ComputeClusterArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ComputeClusterIdentity>(ComputeClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : pulumi.Output.create<bool>(map['localAuthEnabled'] as bool),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      machineLearningWorkspaceId: pulumi.Output.create<String>(map['machineLearningWorkspaceId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : pulumi.Output.create<bool>(map['nodePublicIpEnabled'] as bool),
-      scaleSettings: pulumi.Output.create<ComputeClusterScaleSettings>(ComputeClusterScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())),
-      ssh: map['ssh'] == null ? null : pulumi.Output.create<ComputeClusterSsh>(ComputeClusterSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())),
-      sshPublicAccessEnabled: map['sshPublicAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['sshPublicAccessEnabled'] as bool),
-      subnetResourceId: map['subnetResourceId'] == null ? null : pulumi.Output.create<String>(map['subnetResourceId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vmPriority: pulumi.Output.create<String>(map['vmPriority'] as String),
-      vmSize: pulumi.Output.create<String>(map['vmSize'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      identity: map['identity'] == null ? null : (ComputeClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled'] as bool).input(),
+      scaleSettings: (ComputeClusterScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
+      ssh: map['ssh'] == null ? null : (ComputeClusterSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      sshPublicAccessEnabled: map['sshPublicAccessEnabled'] == null ? null : (map['sshPublicAccessEnabled'] as bool).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vmPriority: (map['vmPriority'] as String).input(),
+      vmSize: (map['vmSize'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 class MultiClusterIngressFeatureSpec {
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  final String? configMembership;
+  final pulumi.Input<String>? configMembership;
 
   /// Creates a new [MultiClusterIngressFeatureSpec].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -20,7 +21,7 @@ class MultiClusterIngressFeatureSpec {
 
   factory MultiClusterIngressFeatureSpec.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpec(
-      configMembership: map['configMembership'] == null ? null : map['configMembership'] as String,
+      configMembership: map['configMembership'] == null ? null : (map['configMembership'] as String).input(),
     );
   }
 }

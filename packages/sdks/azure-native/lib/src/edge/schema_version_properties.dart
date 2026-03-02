@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Schema Version Properties
 class SchemaVersionProperties {
   /// Value of schema version
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [SchemaVersionProperties].
   /// [value] Value of schema version
@@ -20,7 +21,7 @@ class SchemaVersionProperties {
 
   factory SchemaVersionProperties.fromMap(Map<String, dynamic> map) {
     return SchemaVersionProperties(
-      value: map['value'] as String,
+      value: (map['value'] as String).input(),
     );
   }
 }

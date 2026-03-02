@@ -34,23 +34,15 @@ class FeatureMembershipState {
   /// [policycontroller] Policy Controller-specific spec. Structure is documented below.
   /// [project] The project of the feature
   FeatureMembershipState({
-    pulumi.Output<FeatureMembershipConfigmanagement>? configmanagement,
-    pulumi.Output<String>? feature,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? membership,
-    pulumi.Output<String>? membershipLocation,
-    pulumi.Output<FeatureMembershipMesh>? mesh,
-    pulumi.Output<FeatureMembershipPolicycontroller>? policycontroller,
-    pulumi.Output<String>? project,
-  }) :
-      configmanagement = pulumi.Input.asOptionalInput<FeatureMembershipConfigmanagement>(configmanagement),
-      feature = pulumi.Input.asOptionalInput<String>(feature),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membership = pulumi.Input.asOptionalInput<String>(membership),
-      membershipLocation = pulumi.Input.asOptionalInput<String>(membershipLocation),
-      mesh = pulumi.Input.asOptionalInput<FeatureMembershipMesh>(mesh),
-      policycontroller = pulumi.Input.asOptionalInput<FeatureMembershipPolicycontroller>(policycontroller),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    this.configmanagement,
+    this.feature,
+    this.location,
+    this.membership,
+    this.membershipLocation,
+    this.mesh,
+    this.policycontroller,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,14 +59,14 @@ class FeatureMembershipState {
 
   factory FeatureMembershipState.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipState(
-      configmanagement: map['configmanagement'] == null ? null : pulumi.Output.create<FeatureMembershipConfigmanagement>(FeatureMembershipConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())),
-      feature: map['feature'] == null ? null : pulumi.Output.create<String>(map['feature'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      membership: map['membership'] == null ? null : pulumi.Output.create<String>(map['membership'] as String),
-      membershipLocation: map['membershipLocation'] == null ? null : pulumi.Output.create<String>(map['membershipLocation'] as String),
-      mesh: map['mesh'] == null ? null : pulumi.Output.create<FeatureMembershipMesh>(FeatureMembershipMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>())),
-      policycontroller: map['policycontroller'] == null ? null : pulumi.Output.create<FeatureMembershipPolicycontroller>(FeatureMembershipPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      configmanagement: map['configmanagement'] == null ? null : (FeatureMembershipConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
+      feature: map['feature'] == null ? null : (map['feature'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation'] as String).input(),
+      mesh: map['mesh'] == null ? null : (FeatureMembershipMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (FeatureMembershipPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

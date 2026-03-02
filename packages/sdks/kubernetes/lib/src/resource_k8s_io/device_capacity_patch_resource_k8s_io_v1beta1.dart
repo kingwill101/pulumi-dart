@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_request_policy_patch_resource_k8s_io_v1beta1.dart';
 
 /// DeviceCapacity describes a quantity associated with a device.
@@ -9,11 +10,11 @@ class DeviceCapacityPatchResourceK8sIoV1beta1 {
   /// The Device must have allowMultipleAllocations set to true in order to set a requestPolicy.
   ///
   /// If unset, capacity requests are unconstrained: requests can consume any amount of capacity, as long as the total consumed across all allocations does not exceed the device's defined capacity. If request is also unset, default is the full capacity value.
-  final CapacityRequestPolicyPatchResourceK8sIoV1beta1? requestPolicy;
+  final pulumi.Input<CapacityRequestPolicyPatchResourceK8sIoV1beta1>? requestPolicy;
   /// Value defines how much of a certain capacity that device has.
   ///
   /// This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value.
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [DeviceCapacityPatchResourceK8sIoV1beta1].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
@@ -25,15 +26,15 @@ class DeviceCapacityPatchResourceK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestPolicy': ?requestPolicy == null ? null : requestPolicy!.toMap(),
+      'requestPolicy': ?pulumi.Input.mapOptionalInputValue<CapacityRequestPolicyPatchResourceK8sIoV1beta1, Map<String, dynamic>>(requestPolicy, (value) => value.toMap()),
       'value': ?value,
     };
   }
 
   factory DeviceCapacityPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceCapacityPatchResourceK8sIoV1beta1(
-      requestPolicy: map['requestPolicy'] == null ? null : CapacityRequestPolicyPatchResourceK8sIoV1beta1.fromMap((map['requestPolicy'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : map['value'] as String,
+      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyPatchResourceK8sIoV1beta1.fromMap((map['requestPolicy'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

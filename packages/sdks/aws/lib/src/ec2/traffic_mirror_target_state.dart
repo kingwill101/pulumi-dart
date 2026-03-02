@@ -36,25 +36,16 @@ class TrafficMirrorTargetState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   TrafficMirrorTargetState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? gatewayLoadBalancerEndpointId,
-    pulumi.Output<String>? networkInterfaceId,
-    pulumi.Output<String>? networkLoadBalancerArn,
-    pulumi.Output<String>? ownerId,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gatewayLoadBalancerEndpointId = pulumi.Input.asOptionalInput<String>(gatewayLoadBalancerEndpointId),
-      networkInterfaceId = pulumi.Input.asOptionalInput<String>(networkInterfaceId),
-      networkLoadBalancerArn = pulumi.Input.asOptionalInput<String>(networkLoadBalancerArn),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+    this.arn,
+    this.description,
+    this.gatewayLoadBalancerEndpointId,
+    this.networkInterfaceId,
+    this.networkLoadBalancerArn,
+    this.ownerId,
+    this.region,
+    this.tags,
+    this.tagsAll,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +63,15 @@ class TrafficMirrorTargetState {
 
   factory TrafficMirrorTargetState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorTargetState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : pulumi.Output.create<String>(map['gatewayLoadBalancerEndpointId'] as String),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : pulumi.Output.create<String>(map['networkInterfaceId'] as String),
-      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : pulumi.Output.create<String>(map['networkLoadBalancerArn'] as String),
-      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      gatewayLoadBalancerEndpointId: map['gatewayLoadBalancerEndpointId'] == null ? null : (map['gatewayLoadBalancerEndpointId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkLoadBalancerArn: map['networkLoadBalancerArn'] == null ? null : (map['networkLoadBalancerArn'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class GetDatabaseMysqlBackupsArgs {
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`created`)
   GetDatabaseMysqlBackupsArgs({
-    required pulumi.Output<int> databaseId,
-    pulumi.Output<List<GetDatabaseMysqlBackupsFilter>>? filters,
-    pulumi.Output<bool>? latest,
-    pulumi.Output<String>? order,
-    pulumi.Output<String>? orderBy,
-  }) :
-      databaseId = pulumi.Input.asInput<int>(databaseId),
-      filters = pulumi.Input.asOptionalInput<List<GetDatabaseMysqlBackupsFilter>>(filters),
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      order = pulumi.Input.asOptionalInput<String>(order),
-      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+    required this.databaseId,
+    this.filters,
+    this.latest,
+    this.order,
+    this.orderBy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class GetDatabaseMysqlBackupsArgs {
 
   factory GetDatabaseMysqlBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlBackupsArgs(
-      databaseId: pulumi.Output.create<int>(map['databaseId'] as int),
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetDatabaseMysqlBackupsFilter>>(pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters'], (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      latest: map['latest'] == null ? null : pulumi.Output.create<bool>(map['latest'] as bool),
-      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
-      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+      databaseId: (map['databaseId'] as int).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters'], (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      order: map['order'] == null ? null : (map['order'] as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
     );
   }
 }

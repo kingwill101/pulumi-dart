@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// AkriConnectorTemplateBucketizedAllocation properties.
 class AkriConnectorTemplateBucketizedAllocationResponse {
   /// The bucketized allocation of AEPs for connectors.
-  final int bucketSize;
+  final pulumi.Input<int> bucketSize;
   /// AkriConnectorTemplateAllocationPolicy properties.
   /// Expected value is 'Bucketized'.
-  final String policy;
+  final pulumi.Input<String> policy;
 
   /// Creates a new [AkriConnectorTemplateBucketizedAllocationResponse].
   /// [bucketSize] The bucketized allocation of AEPs for connectors.
@@ -26,8 +27,8 @@ class AkriConnectorTemplateBucketizedAllocationResponse {
 
   factory AkriConnectorTemplateBucketizedAllocationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateBucketizedAllocationResponse(
-      bucketSize: map['bucketSize'] as int,
-      policy: map['policy'] as String,
+      bucketSize: (map['bucketSize'] as int).input(),
+      policy: (map['policy'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSharesDataShare {
   /// ARN (Amazon Resource Name) of the data share.
-  final String dataShareArn;
+  final pulumi.Input<String> dataShareArn;
   /// Identifier of a datashare to show its managing entity.
-  final String managedBy;
+  final pulumi.Input<String> managedBy;
   /// ARN (Amazon Resource Name) of the producer.
-  final String producerArn;
+  final pulumi.Input<String> producerArn;
 
   /// Creates a new [GetDataSharesDataShare].
   /// [dataShareArn] ARN (Amazon Resource Name) of the data share.
@@ -29,9 +30,9 @@ class GetDataSharesDataShare {
 
   factory GetDataSharesDataShare.fromMap(Map<String, dynamic> map) {
     return GetDataSharesDataShare(
-      dataShareArn: map['dataShareArn'] as String,
-      managedBy: map['managedBy'] as String,
-      producerArn: map['producerArn'] as String,
+      dataShareArn: (map['dataShareArn'] as String).input(),
+      managedBy: (map['managedBy'] as String).input(),
+      producerArn: (map['producerArn'] as String).input(),
     );
   }
 }

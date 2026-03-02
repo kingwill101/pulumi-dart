@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Policy assignments created for managing services.
 class PolicyAssignmentPropertiesResponse {
   /// Policy initiative assignment ID.
-  final String policyInitiativeAssignmentId;
+  final pulumi.Input<String> policyInitiativeAssignmentId;
 
   /// Creates a new [PolicyAssignmentPropertiesResponse].
   /// [policyInitiativeAssignmentId] Policy initiative assignment ID.
@@ -20,7 +21,7 @@ class PolicyAssignmentPropertiesResponse {
 
   factory PolicyAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponse(
-      policyInitiativeAssignmentId: map['policyInitiativeAssignmentId'] as String,
+      policyInitiativeAssignmentId: (map['policyInitiativeAssignmentId'] as String).input(),
     );
   }
 }

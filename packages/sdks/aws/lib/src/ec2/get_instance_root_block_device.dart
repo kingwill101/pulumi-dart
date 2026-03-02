@@ -1,25 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceRootBlockDevice {
   /// If the root block device will be deleted on termination.
-  final bool deleteOnTermination;
+  final pulumi.Input<bool> deleteOnTermination;
   /// Physical name of the device.
-  final String deviceName;
+  final pulumi.Input<String> deviceName;
   /// If the EBS volume is encrypted.
-  final bool encrypted;
+  final pulumi.Input<bool> encrypted;
   /// `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
-  final int iops;
-  final String kmsKeyId;
+  final pulumi.Input<int> iops;
+  final pulumi.Input<String> kmsKeyId;
   /// Map of tags assigned to the Instance.
-  final Map<String, String> tags;
+  final pulumi.Input<Map<String, String>> tags;
   /// Throughput of the volume, in MiB/s.
-  final int throughput;
-  final String volumeId;
+  final pulumi.Input<int> throughput;
+  final pulumi.Input<String> volumeId;
   /// Size of the volume, in GiB.
-  final int volumeSize;
+  final pulumi.Input<int> volumeSize;
   /// Type of the volume.
-  final String volumeType;
+  final pulumi.Input<String> volumeType;
 
   /// Creates a new [GetInstanceRootBlockDevice].
   /// [deleteOnTermination] If the root block device will be deleted on termination.
@@ -62,16 +63,16 @@ class GetInstanceRootBlockDevice {
 
   factory GetInstanceRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceRootBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] as bool,
-      deviceName: map['deviceName'] as String,
-      encrypted: map['encrypted'] as bool,
-      iops: map['iops'] as int,
-      kmsKeyId: map['kmsKeyId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      throughput: map['throughput'] as int,
-      volumeId: map['volumeId'] as String,
-      volumeSize: map['volumeSize'] as int,
-      volumeType: map['volumeType'] as String,
+      deleteOnTermination: (map['deleteOnTermination'] as bool).input(),
+      deviceName: (map['deviceName'] as String).input(),
+      encrypted: (map['encrypted'] as bool).input(),
+      iops: (map['iops'] as int).input(),
+      kmsKeyId: (map['kmsKeyId'] as String).input(),
+      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      throughput: (map['throughput'] as int).input(),
+      volumeId: (map['volumeId'] as String).input(),
+      volumeSize: (map['volumeSize'] as int).input(),
+      volumeType: (map['volumeType'] as String).input(),
     );
   }
 }

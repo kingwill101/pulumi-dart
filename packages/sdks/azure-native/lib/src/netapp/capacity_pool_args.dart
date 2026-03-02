@@ -40,27 +40,17 @@ class CapacityPoolArgs {
   /// [size] Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
   /// [tags] Resource tags.
   CapacityPoolArgs({
-    required pulumi.Output<String> accountName,
-    pulumi.Output<bool>? coolAccess,
-    pulumi.Output<String>? encryptionType,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? poolName,
-    pulumi.Output<String>? qosType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceLevel,
-    required pulumi.Output<double> size,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accountName = pulumi.Input.asInput<String>(accountName),
-      coolAccess = pulumi.Input.asOptionalInput<bool>(coolAccess),
-      encryptionType = pulumi.Input.asOptionalInput<String>(encryptionType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      poolName = pulumi.Input.asOptionalInput<String>(poolName),
-      qosType = pulumi.Input.asOptionalInput<String>(qosType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceLevel = pulumi.Input.asInput<String>(serviceLevel),
-      size = pulumi.Input.asInput<double>(size),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.accountName,
+    this.coolAccess,
+    this.encryptionType,
+    this.location,
+    this.poolName,
+    this.qosType,
+    required this.resourceGroupName,
+    required this.serviceLevel,
+    required this.size,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,16 +69,16 @@ class CapacityPoolArgs {
 
   factory CapacityPoolArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolArgs(
-      accountName: pulumi.Output.create<String>(map['accountName'] as String),
-      coolAccess: map['coolAccess'] == null ? null : pulumi.Output.create<bool>(map['coolAccess'] as bool),
-      encryptionType: map['encryptionType'] == null ? null : pulumi.Output.create<String>(map['encryptionType'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
-      qosType: map['qosType'] == null ? null : pulumi.Output.create<String>(map['qosType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceLevel: pulumi.Output.create<String>(map['serviceLevel'] as String),
-      size: pulumi.Output.create<double>(map['size'] as double),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accountName: (map['accountName'] as String).input(),
+      coolAccess: map['coolAccess'] == null ? null : (map['coolAccess'] as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceLevel: (map['serviceLevel'] as String).input(),
+      size: (map['size'] as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

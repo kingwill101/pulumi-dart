@@ -17,11 +17,9 @@ class GetLicenseGrantsArgs {
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetLicenseGrantsArgs({
-    pulumi.Output<List<GetLicenseGrantsFilter>>? filters,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetLicenseGrantsFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetLicenseGrantsArgs {
 
   factory GetLicenseGrantsArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseGrantsArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetLicenseGrantsFilter>>(pulumi.Input.decodeList<GetLicenseGrantsFilter>(map['filters'], (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLicenseGrantsFilter>(map['filters'], (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

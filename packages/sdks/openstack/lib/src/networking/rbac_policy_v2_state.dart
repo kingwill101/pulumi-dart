@@ -33,19 +33,13 @@ class RbacPolicyV2State {
   /// [region] The region in which to obtain the V2 networking client.
   /// [targetTenant] The ID of the tenant to which the RBAC policy
   RbacPolicyV2State({
-    pulumi.Output<String>? action,
-    pulumi.Output<String>? objectId,
-    pulumi.Output<String>? objectType,
-    pulumi.Output<String>? projectId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? targetTenant,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      objectId = pulumi.Input.asOptionalInput<String>(objectId),
-      objectType = pulumi.Input.asOptionalInput<String>(objectType),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetTenant = pulumi.Input.asOptionalInput<String>(targetTenant);
+    this.action,
+    this.objectId,
+    this.objectType,
+    this.projectId,
+    this.region,
+    this.targetTenant,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,12 +54,12 @@ class RbacPolicyV2State {
 
   factory RbacPolicyV2State.fromMap(Map<String, dynamic> map) {
     return RbacPolicyV2State(
-      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
-      objectId: map['objectId'] == null ? null : pulumi.Output.create<String>(map['objectId'] as String),
-      objectType: map['objectType'] == null ? null : pulumi.Output.create<String>(map['objectType'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      targetTenant: map['targetTenant'] == null ? null : pulumi.Output.create<String>(map['targetTenant'] as String),
+      action: map['action'] == null ? null : (map['action'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
     );
   }
 }

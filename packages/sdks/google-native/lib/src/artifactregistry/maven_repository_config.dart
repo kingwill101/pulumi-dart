@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maven_repository_config_version_policy.dart';
 
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfig {
   /// The repository with this flag will allow publishing the same snapshot versions.
-  final bool? allowSnapshotOverwrites;
+  final pulumi.Input<bool>? allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept.
-  final MavenRepositoryConfigVersionPolicy? versionPolicy;
+  final pulumi.Input<MavenRepositoryConfigVersionPolicy>? versionPolicy;
 
   /// Creates a new [MavenRepositoryConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.
@@ -20,14 +21,14 @@ class MavenRepositoryConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowSnapshotOverwrites': ?allowSnapshotOverwrites,
-      'versionPolicy': ?versionPolicy == null ? null : versionPolicy!.value,
+      'versionPolicy': ?pulumi.Input.mapOptionalInputValue<MavenRepositoryConfigVersionPolicy, String>(versionPolicy, (value) => value.value),
     };
   }
 
   factory MavenRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return MavenRepositoryConfig(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : map['allowSnapshotOverwrites'] as bool,
-      versionPolicy: map['versionPolicy'] == null ? null : MavenRepositoryConfigVersionPolicy.fromValue(map['versionPolicy'] as String),
+      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : (map['allowSnapshotOverwrites'] as bool).input(),
+      versionPolicy: map['versionPolicy'] == null ? null : (MavenRepositoryConfigVersionPolicy.fromValue(map['versionPolicy'] as String)).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class StorageSyncServiceArgs {
   /// [tags] Resource tags.
   /// [useIdentity] Use Identity authorization when customer have finished setup RBAC permissions.
   StorageSyncServiceArgs({
-    pulumi.Output<ManagedServiceIdentity>? identity,
-    pulumi.Output<String>? incomingTrafficPolicy,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? storageSyncServiceName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? useIdentity,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedServiceIdentity>(identity),
-      incomingTrafficPolicy = pulumi.Input.asOptionalInput<String>(incomingTrafficPolicy),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      storageSyncServiceName = pulumi.Input.asOptionalInput<String>(storageSyncServiceName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      useIdentity = pulumi.Input.asOptionalInput<bool>(useIdentity);
+    this.identity,
+    this.incomingTrafficPolicy,
+    this.location,
+    required this.resourceGroupName,
+    this.storageSyncServiceName,
+    this.tags,
+    this.useIdentity,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class StorageSyncServiceArgs {
 
   factory StorageSyncServiceArgs.fromMap(Map<String, dynamic> map) {
     return StorageSyncServiceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedServiceIdentity>(ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : pulumi.Output.create<String>(map['incomingTrafficPolicy'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      storageSyncServiceName: map['storageSyncServiceName'] == null ? null : pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      useIdentity: map['useIdentity'] == null ? null : pulumi.Output.create<bool>(map['useIdentity'] as bool),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      storageSyncServiceName: map['storageSyncServiceName'] == null ? null : (map['storageSyncServiceName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      useIdentity: map['useIdentity'] == null ? null : (map['useIdentity'] as bool).input(),
     );
   }
 }

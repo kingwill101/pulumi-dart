@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_web_app_slot_auth_settings_active_directory.dart';
 import 'linux_web_app_slot_auth_settings_facebook.dart';
 import 'linux_web_app_slot_auth_settings_github.dart';
@@ -9,39 +10,39 @@ import 'linux_web_app_slot_auth_settings_twitter.dart';
 
 class LinuxWebAppSlotAuthSettings {
   /// An `active_directory` block as defined above.
-  final LinuxWebAppSlotAuthSettingsActiveDirectory? activeDirectory;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsActiveDirectory>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
-  final Map<String, String>? additionalLoginParameters;
+  final pulumi.Input<Map<String, String>>? additionalLoginParameters;
   /// Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Linux Web App.
-  final List<String>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `BuiltInAuthenticationProviderAzureActiveDirectory`, `BuiltInAuthenticationProviderFacebook`, `BuiltInAuthenticationProviderGoogle`, `BuiltInAuthenticationProviderMicrosoftAccount`, `BuiltInAuthenticationProviderTwitter`, `BuiltInAuthenticationProviderGithub`
   ///
   /// > **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticated_client_action` is set to "RedirectToLoginPage".
-  final String? defaultProvider;
+  final pulumi.Input<String>? defaultProvider;
   /// Should the Authentication / Authorization feature be enabled for the Linux Web App?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// A `facebook` block as defined below.
-  final LinuxWebAppSlotAuthSettingsFacebook? facebook;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsFacebook>? facebook;
   /// A `github` block as defined below.
-  final LinuxWebAppSlotAuthSettingsGithub? github;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsGithub>? github;
   /// A `google` block as defined below.
-  final LinuxWebAppSlotAuthSettingsGoogle? google;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsGoogle>? google;
   /// The OpenID Connect Issuer URI that represents the entity that issues access tokens for this Linux Web App.
   ///
   /// > **Note:** When using Azure Active Directory, this value is the URI of the directory tenant, e.g. <https://sts.windows.net/{tenant-guid}/>.
-  final String? issuer;
+  final pulumi.Input<String>? issuer;
   /// A `microsoft` block as defined below.
-  final LinuxWebAppSlotAuthSettingsMicrosoft? microsoft;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsMicrosoft>? microsoft;
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the Linux Web App.
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
-  final double? tokenRefreshExtensionHours;
+  final pulumi.Input<double>? tokenRefreshExtensionHours;
   /// Should the Linux Web App durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
-  final bool? tokenStoreEnabled;
+  final pulumi.Input<bool>? tokenStoreEnabled;
   /// A `twitter` block as defined below.
-  final LinuxWebAppSlotAuthSettingsTwitter? twitter;
+  final pulumi.Input<LinuxWebAppSlotAuthSettingsTwitter>? twitter;
   /// The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
-  final String? unauthenticatedClientAction;
+  final pulumi.Input<String>? unauthenticatedClientAction;
 
   /// Creates a new [LinuxWebAppSlotAuthSettings].
   /// [activeDirectory] An `active_directory` block as defined above.
@@ -79,41 +80,41 @@ class LinuxWebAppSlotAuthSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory': ?activeDirectory == null ? null : activeDirectory!.toMap(),
+      'activeDirectory': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsActiveDirectory, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
       'additionalLoginParameters': ?additionalLoginParameters,
       'allowedExternalRedirectUrls': ?allowedExternalRedirectUrls,
       'defaultProvider': ?defaultProvider,
       'enabled': enabled,
-      'facebook': ?facebook == null ? null : facebook!.toMap(),
-      'github': ?github == null ? null : github!.toMap(),
-      'google': ?google == null ? null : google!.toMap(),
+      'facebook': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsFacebook, Map<String, dynamic>>(facebook, (value) => value.toMap()),
+      'github': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsGithub, Map<String, dynamic>>(github, (value) => value.toMap()),
+      'google': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsGoogle, Map<String, dynamic>>(google, (value) => value.toMap()),
       'issuer': ?issuer,
-      'microsoft': ?microsoft == null ? null : microsoft!.toMap(),
+      'microsoft': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsMicrosoft, Map<String, dynamic>>(microsoft, (value) => value.toMap()),
       'runtimeVersion': ?runtimeVersion,
       'tokenRefreshExtensionHours': ?tokenRefreshExtensionHours,
       'tokenStoreEnabled': ?tokenStoreEnabled,
-      'twitter': ?twitter == null ? null : twitter!.toMap(),
+      'twitter': ?pulumi.Input.mapOptionalInputValue<LinuxWebAppSlotAuthSettingsTwitter, Map<String, dynamic>>(twitter, (value) => value.toMap()),
       'unauthenticatedClientAction': ?unauthenticatedClientAction,
     };
   }
 
   factory LinuxWebAppSlotAuthSettings.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotAuthSettings(
-      activeDirectory: map['activeDirectory'] == null ? null : LinuxWebAppSlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>()),
-      additionalLoginParameters: map['additionalLoginParameters'] == null ? null : (map['additionalLoginParameters'] as Map).cast<String, String>(),
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : (map['allowedExternalRedirectUrls'] as List).cast<String>(),
-      defaultProvider: map['defaultProvider'] == null ? null : map['defaultProvider'] as String,
-      enabled: map['enabled'] as bool,
-      facebook: map['facebook'] == null ? null : LinuxWebAppSlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>()),
-      github: map['github'] == null ? null : LinuxWebAppSlotAuthSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>()),
-      google: map['google'] == null ? null : LinuxWebAppSlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>()),
-      issuer: map['issuer'] == null ? null : map['issuer'] as String,
-      microsoft: map['microsoft'] == null ? null : LinuxWebAppSlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>()),
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : map['tokenRefreshExtensionHours'] as double,
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : map['tokenStoreEnabled'] as bool,
-      twitter: map['twitter'] == null ? null : LinuxWebAppSlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>()),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : map['unauthenticatedClientAction'] as String,
+      activeDirectory: map['activeDirectory'] == null ? null : (LinuxWebAppSlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
+      additionalLoginParameters: map['additionalLoginParameters'] == null ? null : ((map['additionalLoginParameters'] as Map).cast<String, String>()).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
+      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      facebook: map['facebook'] == null ? null : (LinuxWebAppSlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (LinuxWebAppSlotAuthSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (LinuxWebAppSlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      microsoft: map['microsoft'] == null ? null : (LinuxWebAppSlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours'] as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
+      twitter: map['twitter'] == null ? null : (LinuxWebAppSlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction'] as String).input(),
     );
   }
 }

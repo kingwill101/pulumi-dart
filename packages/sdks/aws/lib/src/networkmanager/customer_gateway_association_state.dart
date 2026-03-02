@@ -21,15 +21,11 @@ class CustomerGatewayAssociationState {
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
   CustomerGatewayAssociationState({
-    pulumi.Output<String>? customerGatewayArn,
-    pulumi.Output<String>? deviceId,
-    pulumi.Output<String>? globalNetworkId,
-    pulumi.Output<String>? linkId,
-  }) :
-      customerGatewayArn = pulumi.Input.asOptionalInput<String>(customerGatewayArn),
-      deviceId = pulumi.Input.asOptionalInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asOptionalInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asOptionalInput<String>(linkId);
+    this.customerGatewayArn,
+    this.deviceId,
+    this.globalNetworkId,
+    this.linkId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +38,10 @@ class CustomerGatewayAssociationState {
 
   factory CustomerGatewayAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayAssociationState(
-      customerGatewayArn: map['customerGatewayArn'] == null ? null : pulumi.Output.create<String>(map['customerGatewayArn'] as String),
-      deviceId: map['deviceId'] == null ? null : pulumi.Output.create<String>(map['deviceId'] as String),
-      globalNetworkId: map['globalNetworkId'] == null ? null : pulumi.Output.create<String>(map['globalNetworkId'] as String),
-      linkId: map['linkId'] == null ? null : pulumi.Output.create<String>(map['linkId'] as String),
+      customerGatewayArn: map['customerGatewayArn'] == null ? null : (map['customerGatewayArn'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The linked integration runtime information.
 class LinkedIntegrationRuntimeResponse {
   /// The creating time of the linked integration runtime.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// The location of the data factory for which the linked integration runtime belong to.
-  final String dataFactoryLocation;
+  final pulumi.Input<String> dataFactoryLocation;
   /// The name of the data factory for which the linked integration runtime belong to.
-  final String dataFactoryName;
+  final pulumi.Input<String> dataFactoryName;
   /// The name of the linked integration runtime.
-  final String name;
+  final pulumi.Input<String> name;
   /// The subscription ID for which the linked integration runtime belong to.
-  final String subscriptionId;
+  final pulumi.Input<String> subscriptionId;
 
   /// Creates a new [LinkedIntegrationRuntimeResponse].
   /// [createTime] The creating time of the linked integration runtime.
@@ -40,11 +41,11 @@ class LinkedIntegrationRuntimeResponse {
 
   factory LinkedIntegrationRuntimeResponse.fromMap(Map<String, dynamic> map) {
     return LinkedIntegrationRuntimeResponse(
-      createTime: map['createTime'] as String,
-      dataFactoryLocation: map['dataFactoryLocation'] as String,
-      dataFactoryName: map['dataFactoryName'] as String,
-      name: map['name'] as String,
-      subscriptionId: map['subscriptionId'] as String,
+      createTime: (map['createTime'] as String).input(),
+      dataFactoryLocation: (map['dataFactoryLocation'] as String).input(),
+      dataFactoryName: (map['dataFactoryName'] as String).input(),
+      name: (map['name'] as String).input(),
+      subscriptionId: (map['subscriptionId'] as String).input(),
     );
   }
 }

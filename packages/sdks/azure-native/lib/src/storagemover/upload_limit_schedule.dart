@@ -6,7 +6,7 @@ import 'upload_limit_weekly_recurrence.dart';
 /// The WAN-link upload limit schedule. Overlapping recurrences are not allowed.
 class UploadLimitSchedule {
   /// The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-  final List<UploadLimitWeeklyRecurrence>? weeklyRecurrences;
+  final pulumi.Input<List<UploadLimitWeeklyRecurrence>>? weeklyRecurrences;
 
   /// Creates a new [UploadLimitSchedule].
   /// [weeklyRecurrences] The set of weekly repeating recurrences of the WAN-link upload limit schedule.
@@ -16,13 +16,13 @@ class UploadLimitSchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weeklyRecurrences': ?weeklyRecurrences == null ? null : pulumi.Input.encodeList<UploadLimitWeeklyRecurrence, Map<String, dynamic>>(weeklyRecurrences!, (value) => value.toMap()),
+      'weeklyRecurrences': ?pulumi.Input.mapOptionalInputValue<List<UploadLimitWeeklyRecurrence>, List<Map<String, dynamic>>>(weeklyRecurrences, (value) => pulumi.Input.encodeList<UploadLimitWeeklyRecurrence, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory UploadLimitSchedule.fromMap(Map<String, dynamic> map) {
     return UploadLimitSchedule(
-      weeklyRecurrences: map['weeklyRecurrences'] == null ? null : pulumi.Input.decodeList<UploadLimitWeeklyRecurrence>(map['weeklyRecurrences'], (value) => UploadLimitWeeklyRecurrence.fromMap((value as Map).cast<String, dynamic>())),
+      weeklyRecurrences: map['weeklyRecurrences'] == null ? null : (pulumi.Input.decodeList<UploadLimitWeeklyRecurrence>(map['weeklyRecurrences'], (value) => UploadLimitWeeklyRecurrence.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodePoolNodeConfigConfidentialNodes {
   /// Defines the type of technology used
   /// by the confidential node.
-  final String? confidentialInstanceType;
+  final pulumi.Input<String>? confidentialInstanceType;
   /// Enable Confidential GKE Nodes for this cluster, to
   /// enforce encryption of data in-use.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterNodePoolNodeConfigConfidentialNodes].
   /// [confidentialInstanceType] Defines the type of technology used
@@ -26,8 +27,8 @@ class ClusterNodePoolNodeConfigConfidentialNodes {
 
   factory ClusterNodePoolNodeConfigConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigConfidentialNodes(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : map['confidentialInstanceType'] as String,
-      enabled: map['enabled'] as bool,
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Specifies the return address information for the job.
 class ReturnAddress {
   /// The city name to use when returning the drives.
-  final String city;
+  final pulumi.Input<String> city;
   /// The country or region to use when returning the drives.
-  final String countryOrRegion;
+  final pulumi.Input<String> countryOrRegion;
   /// Email address of the recipient of the returned drives.
-  final String email;
+  final pulumi.Input<String> email;
   /// Phone number of the recipient of the returned drives.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// The postal code to use when returning the drives.
-  final String postalCode;
+  final pulumi.Input<String> postalCode;
   /// The name of the recipient who will receive the hard drives when they are returned.
-  final String recipientName;
+  final pulumi.Input<String> recipientName;
   /// The state or province to use when returning the drives.
-  final String? stateOrProvince;
+  final pulumi.Input<String>? stateOrProvince;
   /// The first line of the street address to use when returning the drives.
-  final String streetAddress1;
+  final pulumi.Input<String> streetAddress1;
   /// The second line of the street address to use when returning the drives.
-  final String? streetAddress2;
+  final pulumi.Input<String>? streetAddress2;
 
   /// Creates a new [ReturnAddress].
   /// [city] The city name to use when returning the drives.
@@ -60,15 +61,15 @@ class ReturnAddress {
 
   factory ReturnAddress.fromMap(Map<String, dynamic> map) {
     return ReturnAddress(
-      city: map['city'] as String,
-      countryOrRegion: map['countryOrRegion'] as String,
-      email: map['email'] as String,
-      phone: map['phone'] as String,
-      postalCode: map['postalCode'] as String,
-      recipientName: map['recipientName'] as String,
-      stateOrProvince: map['stateOrProvince'] == null ? null : map['stateOrProvince'] as String,
-      streetAddress1: map['streetAddress1'] as String,
-      streetAddress2: map['streetAddress2'] == null ? null : map['streetAddress2'] as String,
+      city: (map['city'] as String).input(),
+      countryOrRegion: (map['countryOrRegion'] as String).input(),
+      email: (map['email'] as String).input(),
+      phone: (map['phone'] as String).input(),
+      postalCode: (map['postalCode'] as String).input(),
+      recipientName: (map['recipientName'] as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
+      streetAddress1: (map['streetAddress1'] as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
     );
   }
 }

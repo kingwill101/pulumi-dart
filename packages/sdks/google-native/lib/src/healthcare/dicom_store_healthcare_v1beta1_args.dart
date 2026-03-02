@@ -33,23 +33,15 @@ class DicomStoreHealthcareV1beta1Args {
   /// [project] Optional.
   /// [streamConfigs] Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
   DicomStoreHealthcareV1beta1Args({
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? dicomStoreId,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<NotificationConfigHealthcareV1beta1>? notificationConfig,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>>? streamConfigs,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      dicomStoreId = pulumi.Input.asOptionalInput<String>(dicomStoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      notificationConfig = pulumi.Input.asOptionalInput<NotificationConfigHealthcareV1beta1>(notificationConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      streamConfigs = pulumi.Input.asOptionalInput<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>>(streamConfigs);
+    required this.datasetId,
+    this.dicomStoreId,
+    this.labels,
+    this.location,
+    this.name,
+    this.notificationConfig,
+    this.project,
+    this.streamConfigs,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +58,14 @@ class DicomStoreHealthcareV1beta1Args {
 
   factory DicomStoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DicomStoreHealthcareV1beta1Args(
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      dicomStoreId: map['dicomStoreId'] == null ? null : pulumi.Output.create<String>(map['dicomStoreId'] as String),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      notificationConfig: map['notificationConfig'] == null ? null : pulumi.Output.create<NotificationConfigHealthcareV1beta1>(NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      streamConfigs: map['streamConfigs'] == null ? null : pulumi.Output.create<List<GoogleCloudHealthcareV1beta1DicomStreamConfig>>(pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(map['streamConfigs'], (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      datasetId: (map['datasetId'] as String).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(map['streamConfigs'], (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,19 +28,13 @@ class ProjectArgs {
   /// [purpose] the purpose of the project, (Default: "Web Application")
   /// [resources] a list of uniform resource names (URNs) for the resources associated with the project
   ProjectArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? environment,
-    pulumi.Output<bool>? isDefault,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? purpose,
-    pulumi.Output<List<String>>? resources,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      isDefault = pulumi.Input.asOptionalInput<bool>(isDefault),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      purpose = pulumi.Input.asOptionalInput<String>(purpose),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources);
+    this.description,
+    this.environment,
+    this.isDefault,
+    this.name,
+    this.purpose,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environment: map['environment'] == null ? null : pulumi.Output.create<String>(map['environment'] as String),
-      isDefault: map['isDefault'] == null ? null : pulumi.Output.create<bool>(map['isDefault'] as bool),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      purpose: map['purpose'] == null ? null : pulumi.Output.create<String>(map['purpose'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
     );
   }
 }

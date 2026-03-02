@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainConfigurationAuthorizerConfig {
   /// A Boolean that specifies whether the domain configuration's authorization service can be overridden.
-  final bool? allowAuthorizerOverride;
+  final pulumi.Input<bool>? allowAuthorizerOverride;
   /// The name of the authorization service for a domain configuration.
-  final String? defaultAuthorizerName;
+  final pulumi.Input<String>? defaultAuthorizerName;
 
   /// Creates a new [DomainConfigurationAuthorizerConfig].
   /// [allowAuthorizerOverride] A Boolean that specifies whether the domain configuration's authorization service can be overridden.
@@ -24,8 +25,8 @@ class DomainConfigurationAuthorizerConfig {
 
   factory DomainConfigurationAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationAuthorizerConfig(
-      allowAuthorizerOverride: map['allowAuthorizerOverride'] == null ? null : map['allowAuthorizerOverride'] as bool,
-      defaultAuthorizerName: map['defaultAuthorizerName'] == null ? null : map['defaultAuthorizerName'] as String,
+      allowAuthorizerOverride: map['allowAuthorizerOverride'] == null ? null : (map['allowAuthorizerOverride'] as bool).input(),
+      defaultAuthorizerName: map['defaultAuthorizerName'] == null ? null : (map['defaultAuthorizerName'] as String).input(),
     );
   }
 }

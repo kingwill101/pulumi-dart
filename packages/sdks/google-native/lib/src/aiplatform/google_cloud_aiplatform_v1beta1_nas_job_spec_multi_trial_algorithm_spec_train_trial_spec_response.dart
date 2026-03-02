@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_custom_job_spec_response.dart';
 
 /// Represent spec for train trials.
 class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse {
   /// Frequency of search trials to start train stage. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
-  final int frequency;
+  final pulumi.Input<int> frequency;
   /// The maximum number of trials to run in parallel.
-  final int maxParallelTrialCount;
+  final pulumi.Input<int> maxParallelTrialCount;
   /// The spec of a train trial job. The same spec applies to all train trials.
-  final GoogleCloudAiplatformV1beta1CustomJobSpecResponse trainTrialJobSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1CustomJobSpecResponse> trainTrialJobSpec;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse].
   /// [frequency] Frequency of search trials to start train stage. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
@@ -25,15 +26,15 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpe
     return <String, dynamic>{
       'frequency': frequency,
       'maxParallelTrialCount': maxParallelTrialCount,
-      'trainTrialJobSpec': trainTrialJobSpec.toMap(),
+      'trainTrialJobSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1CustomJobSpecResponse, Map<String, dynamic>>(trainTrialJobSpec, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpecResponse(
-      frequency: map['frequency'] as int,
-      maxParallelTrialCount: map['maxParallelTrialCount'] as int,
-      trainTrialJobSpec: GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((map['trainTrialJobSpec'] as Map).cast<String, dynamic>()),
+      frequency: (map['frequency'] as int).input(),
+      maxParallelTrialCount: (map['maxParallelTrialCount'] as int).input(),
+      trainTrialJobSpec: (GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((map['trainTrialJobSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

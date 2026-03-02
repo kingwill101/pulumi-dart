@@ -22,15 +22,11 @@ class ApiDeploymentArgs {
   /// [proxyId] The Apigee API associated with the Apigee API deployment.
   /// [revision] The revision of the API proxy to be deployed.
   ApiDeploymentArgs({
-    required pulumi.Output<String> environment,
-    required pulumi.Output<String> orgId,
-    required pulumi.Output<String> proxyId,
-    required pulumi.Output<String> revision,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      proxyId = pulumi.Input.asInput<String>(proxyId),
-      revision = pulumi.Input.asInput<String>(revision);
+    required this.environment,
+    required this.orgId,
+    required this.proxyId,
+    required this.revision,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class ApiDeploymentArgs {
 
   factory ApiDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentArgs(
-      environment: pulumi.Output.create<String>(map['environment'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
-      proxyId: pulumi.Output.create<String>(map['proxyId'] as String),
-      revision: pulumi.Output.create<String>(map['revision'] as String),
+      environment: (map['environment'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
+      proxyId: (map['proxyId'] as String).input(),
+      revision: (map['revision'] as String).input(),
     );
   }
 }

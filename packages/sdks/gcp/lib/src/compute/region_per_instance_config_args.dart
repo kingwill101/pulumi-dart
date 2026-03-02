@@ -53,25 +53,16 @@ class RegionPerInstanceConfigArgs {
   /// [removeInstanceOnDestroy] When true, deleting this config will immediately remove the underlying instance.
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
   RegionPerInstanceConfigArgs({
-    pulumi.Output<String>? minimalAction,
-    pulumi.Output<String>? mostDisruptiveAllowedAction,
-    pulumi.Output<String>? name,
-    pulumi.Output<RegionPerInstanceConfigPreservedState>? preservedState,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> regionInstanceGroupManager,
-    pulumi.Output<bool>? removeInstanceOnDestroy,
-    pulumi.Output<bool>? removeInstanceStateOnDestroy,
-  }) :
-      minimalAction = pulumi.Input.asOptionalInput<String>(minimalAction),
-      mostDisruptiveAllowedAction = pulumi.Input.asOptionalInput<String>(mostDisruptiveAllowedAction),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preservedState = pulumi.Input.asOptionalInput<RegionPerInstanceConfigPreservedState>(preservedState),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionInstanceGroupManager = pulumi.Input.asInput<String>(regionInstanceGroupManager),
-      removeInstanceOnDestroy = pulumi.Input.asOptionalInput<bool>(removeInstanceOnDestroy),
-      removeInstanceStateOnDestroy = pulumi.Input.asOptionalInput<bool>(removeInstanceStateOnDestroy);
+    this.minimalAction,
+    this.mostDisruptiveAllowedAction,
+    this.name,
+    this.preservedState,
+    this.project,
+    this.region,
+    required this.regionInstanceGroupManager,
+    this.removeInstanceOnDestroy,
+    this.removeInstanceStateOnDestroy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,15 +80,15 @@ class RegionPerInstanceConfigArgs {
 
   factory RegionPerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigArgs(
-      minimalAction: map['minimalAction'] == null ? null : pulumi.Output.create<String>(map['minimalAction'] as String),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : pulumi.Output.create<String>(map['mostDisruptiveAllowedAction'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      preservedState: map['preservedState'] == null ? null : pulumi.Output.create<RegionPerInstanceConfigPreservedState>(RegionPerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      regionInstanceGroupManager: pulumi.Output.create<String>(map['regionInstanceGroupManager'] as String),
-      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['removeInstanceOnDestroy'] as bool),
-      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : pulumi.Output.create<bool>(map['removeInstanceStateOnDestroy'] as bool),
+      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction'] as String).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      preservedState: map['preservedState'] == null ? null : (RegionPerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      regionInstanceGroupManager: (map['regionInstanceGroupManager'] as String).input(),
+      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy'] as bool).input(),
+      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy'] as bool).input(),
     );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
   /// The execution entry of the callback method, which is similar to the request handler.
-  final String handler;
+  final pulumi.Input<String> handler;
   /// The maximum running time of the function, in seconds.
-  final int timeout;
+  final pulumi.Input<int> timeout;
 
   /// Creates a new [GetV3FunctionsFunctionInstanceLifecycleConfigPreStop].
   /// [handler] The execution entry of the callback method, which is similar to the request handler.
@@ -24,8 +25,8 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
 
   factory GetV3FunctionsFunctionInstanceLifecycleConfigPreStop.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionInstanceLifecycleConfigPreStop(
-      handler: map['handler'] as String,
-      timeout: map['timeout'] as int,
+      handler: (map['handler'] as String).input(),
+      timeout: (map['timeout'] as int).input(),
     );
   }
 }

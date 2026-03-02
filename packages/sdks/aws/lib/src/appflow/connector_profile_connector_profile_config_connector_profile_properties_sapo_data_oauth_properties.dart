@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties {
   /// The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
-  final String authCodeUrl;
+  final pulumi.Input<String> authCodeUrl;
   /// The OAuth scopes required for OAuth type authentication.
-  final List<String> oauthScopes;
-  final String tokenUrl;
+  final pulumi.Input<List<String>> oauthScopes;
+  final pulumi.Input<String> tokenUrl;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties].
   /// [authCodeUrl] The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
@@ -28,9 +29,9 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties(
-      authCodeUrl: map['authCodeUrl'] as String,
-      oauthScopes: (map['oauthScopes'] as List).cast<String>(),
-      tokenUrl: map['tokenUrl'] as String,
+      authCodeUrl: (map['authCodeUrl'] as String).input(),
+      oauthScopes: ((map['oauthScopes'] as List).cast<String>()).input(),
+      tokenUrl: (map['tokenUrl'] as String).input(),
     );
   }
 }

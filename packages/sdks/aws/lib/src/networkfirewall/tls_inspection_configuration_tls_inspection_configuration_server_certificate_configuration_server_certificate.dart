@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate {
   /// ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.
-  final String? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate].
   /// [resourceArn] ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.
@@ -19,7 +20,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate(
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
     );
   }
 }

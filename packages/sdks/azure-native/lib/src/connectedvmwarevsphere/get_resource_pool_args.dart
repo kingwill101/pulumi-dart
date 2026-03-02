@@ -16,11 +16,9 @@ class GetResourcePoolArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [resourcePoolName] Name of the resourcePool.
   GetResourcePoolArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourcePoolName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourcePoolName = pulumi.Input.asInput<String>(resourcePoolName);
+    required this.resourceGroupName,
+    required this.resourcePoolName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetResourcePoolArgs {
 
   factory GetResourcePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcePoolArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourcePoolName: pulumi.Output.create<String>(map['resourcePoolName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourcePoolName: (map['resourcePoolName'] as String).input(),
     );
   }
 }

@@ -48,33 +48,20 @@ class AccessPointState {
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The vSwitch ID.
   AccessPointState({
-    pulumi.Output<String>? accessGroup,
-    pulumi.Output<String>? accessPointId,
-    pulumi.Output<String>? accessPointName,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<bool>? enabledRam,
-    pulumi.Output<String>? fileSystemId,
-    pulumi.Output<AccessPointPosixUser>? posixUser,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? rootPath,
-    pulumi.Output<AccessPointRootPathPermission>? rootPathPermission,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? vpcId,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      accessGroup = pulumi.Input.asOptionalInput<String>(accessGroup),
-      accessPointId = pulumi.Input.asOptionalInput<String>(accessPointId),
-      accessPointName = pulumi.Input.asOptionalInput<String>(accessPointName),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      enabledRam = pulumi.Input.asOptionalInput<bool>(enabledRam),
-      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
-      posixUser = pulumi.Input.asOptionalInput<AccessPointPosixUser>(posixUser),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      rootPath = pulumi.Input.asOptionalInput<String>(rootPath),
-      rootPathPermission = pulumi.Input.asOptionalInput<AccessPointRootPathPermission>(rootPathPermission),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.accessGroup,
+    this.accessPointId,
+    this.accessPointName,
+    this.createTime,
+    this.enabledRam,
+    this.fileSystemId,
+    this.posixUser,
+    this.regionId,
+    this.rootPath,
+    this.rootPathPermission,
+    this.status,
+    this.vpcId,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -96,19 +83,19 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      accessGroup: map['accessGroup'] == null ? null : pulumi.Output.create<String>(map['accessGroup'] as String),
-      accessPointId: map['accessPointId'] == null ? null : pulumi.Output.create<String>(map['accessPointId'] as String),
-      accessPointName: map['accessPointName'] == null ? null : pulumi.Output.create<String>(map['accessPointName'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      enabledRam: map['enabledRam'] == null ? null : pulumi.Output.create<bool>(map['enabledRam'] as bool),
-      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
-      posixUser: map['posixUser'] == null ? null : pulumi.Output.create<AccessPointPosixUser>(AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      rootPath: map['rootPath'] == null ? null : pulumi.Output.create<String>(map['rootPath'] as String),
-      rootPathPermission: map['rootPathPermission'] == null ? null : pulumi.Output.create<AccessPointRootPathPermission>(AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      accessGroup: map['accessGroup'] == null ? null : (map['accessGroup'] as String).input(),
+      accessPointId: map['accessPointId'] == null ? null : (map['accessPointId'] as String).input(),
+      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam'] as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

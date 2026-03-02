@@ -44,27 +44,17 @@ class VpnSiteArgs {
   /// [tags] A mapping of tags which should be assigned to the VPN Site.
   /// [virtualWanId] The ID of the Virtual Wan where this VPN site resides in. Changing this forces a new VPN Site to be created.
   VpnSiteArgs({
-    pulumi.Output<List<String>>? addressCidrs,
-    pulumi.Output<String>? deviceModel,
-    pulumi.Output<String>? deviceVendor,
-    pulumi.Output<List<VpnSiteLink>>? links,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<VpnSiteO365Policy>? o365Policy,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualWanId,
-  }) :
-      addressCidrs = pulumi.Input.asOptionalInput<List<String>>(addressCidrs),
-      deviceModel = pulumi.Input.asOptionalInput<String>(deviceModel),
-      deviceVendor = pulumi.Input.asOptionalInput<String>(deviceVendor),
-      links = pulumi.Input.asOptionalInput<List<VpnSiteLink>>(links),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      o365Policy = pulumi.Input.asOptionalInput<VpnSiteO365Policy>(o365Policy),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualWanId = pulumi.Input.asInput<String>(virtualWanId);
+    this.addressCidrs,
+    this.deviceModel,
+    this.deviceVendor,
+    this.links,
+    this.location,
+    this.name,
+    this.o365Policy,
+    required this.resourceGroupName,
+    this.tags,
+    required this.virtualWanId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,16 +73,16 @@ class VpnSiteArgs {
 
   factory VpnSiteArgs.fromMap(Map<String, dynamic> map) {
     return VpnSiteArgs(
-      addressCidrs: map['addressCidrs'] == null ? null : pulumi.Output.create<List<String>>((map['addressCidrs'] as List).cast<String>()),
-      deviceModel: map['deviceModel'] == null ? null : pulumi.Output.create<String>(map['deviceModel'] as String),
-      deviceVendor: map['deviceVendor'] == null ? null : pulumi.Output.create<String>(map['deviceVendor'] as String),
-      links: map['links'] == null ? null : pulumi.Output.create<List<VpnSiteLink>>(pulumi.Input.decodeList<VpnSiteLink>(map['links'], (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      o365Policy: map['o365Policy'] == null ? null : pulumi.Output.create<VpnSiteO365Policy>(VpnSiteO365Policy.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualWanId: pulumi.Output.create<String>(map['virtualWanId'] as String),
+      addressCidrs: map['addressCidrs'] == null ? null : ((map['addressCidrs'] as List).cast<String>()).input(),
+      deviceModel: map['deviceModel'] == null ? null : (map['deviceModel'] as String).input(),
+      deviceVendor: map['deviceVendor'] == null ? null : (map['deviceVendor'] as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<VpnSiteLink>(map['links'], (value) => VpnSiteLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      o365Policy: map['o365Policy'] == null ? null : (VpnSiteO365Policy.fromMap((map['o365Policy'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualWanId: (map['virtualWanId'] as String).input(),
     );
   }
 }

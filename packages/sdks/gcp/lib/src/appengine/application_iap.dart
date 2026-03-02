@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationIap {
   /// (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
   /// (default is false)
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// OAuth2 client ID to use for the authentication flow.
-  final String oauth2ClientId;
+  final pulumi.Input<String> oauth2ClientId;
   /// OAuth2 client secret to use for the authentication flow.
   /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-  final String oauth2ClientSecret;
+  final pulumi.Input<String> oauth2ClientSecret;
   /// Hex-encoded SHA-256 hash of the client secret.
-  final String? oauth2ClientSecretSha256;
+  final pulumi.Input<String>? oauth2ClientSecretSha256;
 
   /// Creates a new [ApplicationIap].
   /// [enabled] (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
@@ -36,10 +37,10 @@ class ApplicationIap {
 
   factory ApplicationIap.fromMap(Map<String, dynamic> map) {
     return ApplicationIap(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      oauth2ClientId: map['oauth2ClientId'] as String,
-      oauth2ClientSecret: map['oauth2ClientSecret'] as String,
-      oauth2ClientSecretSha256: map['oauth2ClientSecretSha256'] == null ? null : map['oauth2ClientSecretSha256'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      oauth2ClientId: (map['oauth2ClientId'] as String).input(),
+      oauth2ClientSecret: (map['oauth2ClientSecret'] as String).input(),
+      oauth2ClientSecretSha256: map['oauth2ClientSecretSha256'] == null ? null : (map['oauth2ClientSecretSha256'] as String).input(),
     );
   }
 }

@@ -27,19 +27,13 @@ class ServerlessVpcEndpointState {
   /// [timeouts] Optional.
   /// [vpcId] ID of the VPC from which you'll access OpenSearch Serverless.
   ServerlessVpcEndpointState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<List<String>>? securityGroupIds,
-    pulumi.Output<List<String>>? subnetIds,
-    pulumi.Output<ServerlessVpcEndpointTimeouts>? timeouts,
-    pulumi.Output<String>? vpcId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      timeouts = pulumi.Input.asOptionalInput<ServerlessVpcEndpointTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.name,
+    this.region,
+    this.securityGroupIds,
+    this.subnetIds,
+    this.timeouts,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,12 +48,12 @@ class ServerlessVpcEndpointState {
 
   factory ServerlessVpcEndpointState.fromMap(Map<String, dynamic> map) {
     return ServerlessVpcEndpointState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ServerlessVpcEndpointTimeouts>(ServerlessVpcEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (ServerlessVpcEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

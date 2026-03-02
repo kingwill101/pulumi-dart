@@ -23,13 +23,10 @@ class GetTaxonomyIamPolicyArgs {
   /// [region] Taxonomy location region.
   /// [taxonomy] Used to find the parent resource to bind the IAM policy to
   GetTaxonomyIamPolicyArgs({
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> taxonomy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      taxonomy = pulumi.Input.asInput<String>(taxonomy);
+    this.project,
+    this.region,
+    required this.taxonomy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +38,9 @@ class GetTaxonomyIamPolicyArgs {
 
   factory GetTaxonomyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyIamPolicyArgs(
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      taxonomy: pulumi.Output.create<String>(map['taxonomy'] as String),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      taxonomy: (map['taxonomy'] as String).input(),
     );
   }
 }

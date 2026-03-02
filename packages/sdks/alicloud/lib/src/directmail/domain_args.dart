@@ -13,9 +13,8 @@ class DomainArgs {
   /// Creates a new [DomainArgs].
   /// [domainName] Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
   DomainArgs({
-    required pulumi.Output<String> domainName,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName);
+    required this.domainName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      domainName: pulumi.Output.create<String>(map['domainName'] as String),
+      domainName: (map['domainName'] as String).input(),
     );
   }
 }

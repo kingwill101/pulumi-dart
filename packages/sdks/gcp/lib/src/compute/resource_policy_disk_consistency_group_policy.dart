@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourcePolicyDiskConsistencyGroupPolicy {
   /// Enable disk consistency on the resource policy.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Creates a new [ResourcePolicyDiskConsistencyGroupPolicy].
   /// [enabled] Enable disk consistency on the resource policy.
@@ -19,7 +20,7 @@ class ResourcePolicyDiskConsistencyGroupPolicy {
 
   factory ResourcePolicyDiskConsistencyGroupPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyDiskConsistencyGroupPolicy(
-      enabled: map['enabled'] as bool,
+      enabled: (map['enabled'] as bool).input(),
     );
   }
 }

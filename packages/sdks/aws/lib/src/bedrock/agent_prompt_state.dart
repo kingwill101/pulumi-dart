@@ -46,31 +46,19 @@ class AgentPromptState {
   /// [variants] A list of objects, each containing details about a variant of the prompt. See Variant for more information.
   /// [version] Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
   AgentPromptState({
-    pulumi.Output<String>? arn,
-    pulumi.Output<String>? createdAt,
-    pulumi.Output<String>? customerEncryptionKeyArn,
-    pulumi.Output<String>? defaultVariant,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<Map<String, String>>? tagsAll,
-    pulumi.Output<String>? updatedAt,
-    pulumi.Output<List<AgentPromptVariant>>? variants,
-    pulumi.Output<String>? version,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      createdAt = pulumi.Input.asOptionalInput<String>(createdAt),
-      customerEncryptionKeyArn = pulumi.Input.asOptionalInput<String>(customerEncryptionKeyArn),
-      defaultVariant = pulumi.Input.asOptionalInput<String>(defaultVariant),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
-      updatedAt = pulumi.Input.asOptionalInput<String>(updatedAt),
-      variants = pulumi.Input.asOptionalInput<List<AgentPromptVariant>>(variants),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.arn,
+    this.createdAt,
+    this.customerEncryptionKeyArn,
+    this.defaultVariant,
+    this.description,
+    this.name,
+    this.region,
+    this.tags,
+    this.tagsAll,
+    this.updatedAt,
+    this.variants,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,18 +79,18 @@ class AgentPromptState {
 
   factory AgentPromptState.fromMap(Map<String, dynamic> map) {
     return AgentPromptState(
-      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
-      createdAt: map['createdAt'] == null ? null : pulumi.Output.create<String>(map['createdAt'] as String),
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : pulumi.Output.create<String>(map['customerEncryptionKeyArn'] as String),
-      defaultVariant: map['defaultVariant'] == null ? null : pulumi.Output.create<String>(map['defaultVariant'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
-      updatedAt: map['updatedAt'] == null ? null : pulumi.Output.create<String>(map['updatedAt'] as String),
-      variants: map['variants'] == null ? null : pulumi.Output.create<List<AgentPromptVariant>>(pulumi.Input.decodeList<AgentPromptVariant>(map['variants'], (value) => AgentPromptVariant.fromMap((value as Map).cast<String, dynamic>()))),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : (map['customerEncryptionKeyArn'] as String).input(),
+      defaultVariant: map['defaultVariant'] == null ? null : (map['defaultVariant'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      variants: map['variants'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariant>(map['variants'], (value) => AgentPromptVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

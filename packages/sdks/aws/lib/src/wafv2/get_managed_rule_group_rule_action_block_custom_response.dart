@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_block_custom_response_response_header.dart';
 
 class GetManagedRuleGroupRuleActionBlockCustomResponse {
-  final String customResponseBodyKey;
-  final int responseCode;
-  final List<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader> responseHeaders;
+  final pulumi.Input<String> customResponseBodyKey;
+  final pulumi.Input<int> responseCode;
+  final pulumi.Input<List<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>> responseHeaders;
 
   /// Creates a new [GetManagedRuleGroupRuleActionBlockCustomResponse].
   /// [customResponseBodyKey] Required.
@@ -22,15 +22,15 @@ class GetManagedRuleGroupRuleActionBlockCustomResponse {
     return <String, dynamic>{
       'customResponseBodyKey': customResponseBodyKey,
       'responseCode': responseCode,
-      'responseHeaders': pulumi.Input.encodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader, Map<String, dynamic>>(responseHeaders, (value) => value.toMap()),
+      'responseHeaders': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>, List<Map<String, dynamic>>>(responseHeaders, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] as String,
-      responseCode: map['responseCode'] as int,
-      responseHeaders: pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>())),
+      customResponseBodyKey: (map['customResponseBodyKey'] as String).input(),
+      responseCode: (map['responseCode'] as int).input(),
+      responseHeaders: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class EcsAutoSnapshotPolicyAttachmentArgs {
   /// [autoSnapshotPolicyId] The ID of the automatic snapshot policy that is applied to the cloud disk.
   /// [diskId] The ID of the disk.
   EcsAutoSnapshotPolicyAttachmentArgs({
-    required pulumi.Output<String> autoSnapshotPolicyId,
-    required pulumi.Output<String> diskId,
-  }) :
-      autoSnapshotPolicyId = pulumi.Input.asInput<String>(autoSnapshotPolicyId),
-      diskId = pulumi.Input.asInput<String>(diskId);
+    required this.autoSnapshotPolicyId,
+    required this.diskId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class EcsAutoSnapshotPolicyAttachmentArgs {
 
   factory EcsAutoSnapshotPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EcsAutoSnapshotPolicyAttachmentArgs(
-      autoSnapshotPolicyId: pulumi.Output.create<String>(map['autoSnapshotPolicyId'] as String),
-      diskId: pulumi.Output.create<String>(map['diskId'] as String),
+      autoSnapshotPolicyId: (map['autoSnapshotPolicyId'] as String).input(),
+      diskId: (map['diskId'] as String).input(),
     );
   }
 }

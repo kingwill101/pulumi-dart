@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription {
-  final String text;
+  final pulumi.Input<String> text;
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription].
   /// [text] Required.
@@ -18,7 +19,7 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescripti
 
   factory GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription(
-      text: map['text'] as String,
+      text: (map['text'] as String).input(),
     );
   }
 }

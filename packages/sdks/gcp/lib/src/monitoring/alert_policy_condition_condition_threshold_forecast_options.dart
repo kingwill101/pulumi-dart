@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPolicyConditionConditionThresholdForecastOptions {
   /// The length of time into the future to forecast
@@ -8,7 +9,7 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
   /// threshold, and the violation is observed in all
   /// forecasts made for the Configured `duration`,
   /// then the timeseries is considered to be failing.
-  final String forecastHorizon;
+  final pulumi.Input<String> forecastHorizon;
 
   /// Creates a new [AlertPolicyConditionConditionThresholdForecastOptions].
   /// [forecastHorizon] The length of time into the future to forecast
@@ -24,7 +25,7 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
 
   factory AlertPolicyConditionConditionThresholdForecastOptions.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdForecastOptions(
-      forecastHorizon: map['forecastHorizon'] as String,
+      forecastHorizon: (map['forecastHorizon'] as String).input(),
     );
   }
 }

@@ -21,13 +21,10 @@ class RoutingControlArgs {
   /// [controlPanelArn] ARN of the control panel in which this routing control will reside.
   /// [name] The name describing the routing control.
   RoutingControlArgs({
-    required pulumi.Output<String> clusterArn,
-    pulumi.Output<String>? controlPanelArn,
-    pulumi.Output<String>? name,
-  }) :
-      clusterArn = pulumi.Input.asInput<String>(clusterArn),
-      controlPanelArn = pulumi.Input.asOptionalInput<String>(controlPanelArn),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    required this.clusterArn,
+    this.controlPanelArn,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class RoutingControlArgs {
 
   factory RoutingControlArgs.fromMap(Map<String, dynamic> map) {
     return RoutingControlArgs(
-      clusterArn: pulumi.Output.create<String>(map['clusterArn'] as String),
-      controlPanelArn: map['controlPanelArn'] == null ? null : pulumi.Output.create<String>(map['controlPanelArn'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      clusterArn: (map['clusterArn'] as String).input(),
+      controlPanelArn: map['controlPanelArn'] == null ? null : (map['controlPanelArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

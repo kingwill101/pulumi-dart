@@ -13,9 +13,8 @@ class GetAccessReviewScheduleDefinitionByIdArgs {
   /// Creates a new [GetAccessReviewScheduleDefinitionByIdArgs].
   /// [scheduleDefinitionId] The id of the access review schedule definition.
   GetAccessReviewScheduleDefinitionByIdArgs({
-    required pulumi.Output<String> scheduleDefinitionId,
-  }) :
-      scheduleDefinitionId = pulumi.Input.asInput<String>(scheduleDefinitionId);
+    required this.scheduleDefinitionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetAccessReviewScheduleDefinitionByIdArgs {
 
   factory GetAccessReviewScheduleDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessReviewScheduleDefinitionByIdArgs(
-      scheduleDefinitionId: pulumi.Output.create<String>(map['scheduleDefinitionId'] as String),
+      scheduleDefinitionId: (map['scheduleDefinitionId'] as String).input(),
     );
   }
 }

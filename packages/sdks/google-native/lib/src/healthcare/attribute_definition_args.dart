@@ -40,29 +40,18 @@ class AttributeDefinitionArgs {
   /// [name] Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
   /// [project] Optional.
   AttributeDefinitionArgs({
-    required pulumi.Output<List<String>> allowedValues,
-    required pulumi.Output<String> attributeDefinitionId,
-    required pulumi.Output<AttributeDefinitionCategory> category,
-    pulumi.Output<List<String>>? consentDefaultValues,
-    required pulumi.Output<String> consentStoreId,
-    pulumi.Output<String>? dataMappingDefaultValue,
-    required pulumi.Output<String> datasetId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      allowedValues = pulumi.Input.asInput<List<String>>(allowedValues),
-      attributeDefinitionId = pulumi.Input.asInput<String>(attributeDefinitionId),
-      category = pulumi.Input.asInput<AttributeDefinitionCategory>(category),
-      consentDefaultValues = pulumi.Input.asOptionalInput<List<String>>(consentDefaultValues),
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      dataMappingDefaultValue = pulumi.Input.asOptionalInput<String>(dataMappingDefaultValue),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.allowedValues,
+    required this.attributeDefinitionId,
+    required this.category,
+    this.consentDefaultValues,
+    required this.consentStoreId,
+    this.dataMappingDefaultValue,
+    required this.datasetId,
+    this.description,
+    this.location,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,17 +71,17 @@ class AttributeDefinitionArgs {
 
   factory AttributeDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return AttributeDefinitionArgs(
-      allowedValues: pulumi.Output.create<List<String>>((map['allowedValues'] as List).cast<String>()),
-      attributeDefinitionId: pulumi.Output.create<String>(map['attributeDefinitionId'] as String),
-      category: pulumi.Output.create<AttributeDefinitionCategory>(AttributeDefinitionCategory.fromValue(map['category'] as String)),
-      consentDefaultValues: map['consentDefaultValues'] == null ? null : pulumi.Output.create<List<String>>((map['consentDefaultValues'] as List).cast<String>()),
-      consentStoreId: pulumi.Output.create<String>(map['consentStoreId'] as String),
-      dataMappingDefaultValue: map['dataMappingDefaultValue'] == null ? null : pulumi.Output.create<String>(map['dataMappingDefaultValue'] as String),
-      datasetId: pulumi.Output.create<String>(map['datasetId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      allowedValues: ((map['allowedValues'] as List).cast<String>()).input(),
+      attributeDefinitionId: (map['attributeDefinitionId'] as String).input(),
+      category: (AttributeDefinitionCategory.fromValue(map['category'] as String)).input(),
+      consentDefaultValues: map['consentDefaultValues'] == null ? null : ((map['consentDefaultValues'] as List).cast<String>()).input(),
+      consentStoreId: (map['consentStoreId'] as String).input(),
+      dataMappingDefaultValue: map['dataMappingDefaultValue'] == null ? null : (map['dataMappingDefaultValue'] as String).input(),
+      datasetId: (map['datasetId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

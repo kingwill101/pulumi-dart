@@ -7,23 +7,23 @@ import 'vminfo_response.dart';
 
 class AssignmentReportResponse {
   /// Configuration details of the guest configuration assignment.
-  final AssignmentInfoResponse? assignment;
+  final pulumi.Input<AssignmentInfoResponse>? assignment;
   /// A value indicating compliance status of the machine for the assigned guest configuration.
-  final String complianceStatus;
+  final pulumi.Input<String> complianceStatus;
   /// End date and time of the guest configuration assignment compliance status check.
-  final String endTime;
+  final pulumi.Input<String> endTime;
   /// ARM resource id of the report for the guest configuration assignment.
-  final String id;
+  final pulumi.Input<String> id;
   /// Type of report, Consistency or Initial
-  final String operationType;
+  final pulumi.Input<String> operationType;
   /// GUID that identifies the guest configuration assignment report under a subscription, resource group.
-  final String reportId;
+  final pulumi.Input<String> reportId;
   /// The list of resources for which guest configuration assignment compliance is checked.
-  final List<AssignmentReportResourceResponse>? resources;
+  final pulumi.Input<List<AssignmentReportResourceResponse>>? resources;
   /// Start date and time of the guest configuration assignment compliance status check.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// Information about the VM.
-  final VMInfoResponse? vm;
+  final pulumi.Input<VMInfoResponse>? vm;
 
   /// Creates a new [AssignmentReportResponse].
   /// [assignment] Configuration details of the guest configuration assignment.
@@ -49,29 +49,29 @@ class AssignmentReportResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignment': ?assignment == null ? null : assignment!.toMap(),
+      'assignment': ?pulumi.Input.mapOptionalInputValue<AssignmentInfoResponse, Map<String, dynamic>>(assignment, (value) => value.toMap()),
       'complianceStatus': complianceStatus,
       'endTime': endTime,
       'id': id,
       'operationType': operationType,
       'reportId': reportId,
-      'resources': ?resources == null ? null : pulumi.Input.encodeList<AssignmentReportResourceResponse, Map<String, dynamic>>(resources!, (value) => value.toMap()),
+      'resources': ?pulumi.Input.mapOptionalInputValue<List<AssignmentReportResourceResponse>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<AssignmentReportResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'startTime': startTime,
-      'vm': ?vm == null ? null : vm!.toMap(),
+      'vm': ?pulumi.Input.mapOptionalInputValue<VMInfoResponse, Map<String, dynamic>>(vm, (value) => value.toMap()),
     };
   }
 
   factory AssignmentReportResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentReportResponse(
-      assignment: map['assignment'] == null ? null : AssignmentInfoResponse.fromMap((map['assignment'] as Map).cast<String, dynamic>()),
-      complianceStatus: map['complianceStatus'] as String,
-      endTime: map['endTime'] as String,
-      id: map['id'] as String,
-      operationType: map['operationType'] as String,
-      reportId: map['reportId'] as String,
-      resources: map['resources'] == null ? null : pulumi.Input.decodeList<AssignmentReportResourceResponse>(map['resources'], (value) => AssignmentReportResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] as String,
-      vm: map['vm'] == null ? null : VMInfoResponse.fromMap((map['vm'] as Map).cast<String, dynamic>()),
+      assignment: map['assignment'] == null ? null : (AssignmentInfoResponse.fromMap((map['assignment'] as Map).cast<String, dynamic>())).input(),
+      complianceStatus: (map['complianceStatus'] as String).input(),
+      endTime: (map['endTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      operationType: (map['operationType'] as String).input(),
+      reportId: (map['reportId'] as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<AssignmentReportResourceResponse>(map['resources'], (value) => AssignmentReportResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTime: (map['startTime'] as String).input(),
+      vm: map['vm'] == null ? null : (VMInfoResponse.fromMap((map['vm'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

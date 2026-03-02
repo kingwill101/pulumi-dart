@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpSetIpSetDescriptor {
   /// The string like IPV4 or IPV6.
-  final String type;
+  final pulumi.Input<String> type;
   /// The CIDR notation.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [IpSetIpSetDescriptor].
   /// [type] The string like IPV4 or IPV6.
@@ -24,8 +25,8 @@ class IpSetIpSetDescriptor {
 
   factory IpSetIpSetDescriptor.fromMap(Map<String, dynamic> map) {
     return IpSetIpSetDescriptor(
-      type: map['type'] as String,
-      value: map['value'] as String,
+      type: (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

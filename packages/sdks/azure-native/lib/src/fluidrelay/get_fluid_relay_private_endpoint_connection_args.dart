@@ -19,13 +19,10 @@ class GetFluidRelayPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroup] The resource group containing the resource.
   GetFluidRelayPrivateEndpointConnectionArgs({
-    required pulumi.Output<String> fluidRelayServerName,
-    required pulumi.Output<String> privateEndpointConnectionName,
-    required pulumi.Output<String> resourceGroup,
-  }) :
-      fluidRelayServerName = pulumi.Input.asInput<String>(fluidRelayServerName),
-      privateEndpointConnectionName = pulumi.Input.asInput<String>(privateEndpointConnectionName),
-      resourceGroup = pulumi.Input.asInput<String>(resourceGroup);
+    required this.fluidRelayServerName,
+    required this.privateEndpointConnectionName,
+    required this.resourceGroup,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFluidRelayPrivateEndpointConnectionArgs {
 
   factory GetFluidRelayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetFluidRelayPrivateEndpointConnectionArgs(
-      fluidRelayServerName: pulumi.Output.create<String>(map['fluidRelayServerName'] as String),
-      privateEndpointConnectionName: pulumi.Output.create<String>(map['privateEndpointConnectionName'] as String),
-      resourceGroup: pulumi.Output.create<String>(map['resourceGroup'] as String),
+      fluidRelayServerName: (map['fluidRelayServerName'] as String).input(),
+      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
+      resourceGroup: (map['resourceGroup'] as String).input(),
     );
   }
 }

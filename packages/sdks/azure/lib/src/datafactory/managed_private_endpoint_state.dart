@@ -24,17 +24,12 @@ class ManagedPrivateEndpointState {
   /// [subresourceName] Specifies the sub resource name which the Data Factory Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ManagedPrivateEndpointState({
-    pulumi.Output<String>? dataFactoryId,
-    pulumi.Output<List<String>>? fqdns,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? subresourceName,
-    pulumi.Output<String>? targetResourceId,
-  }) :
-      dataFactoryId = pulumi.Input.asOptionalInput<String>(dataFactoryId),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      subresourceName = pulumi.Input.asOptionalInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId);
+    this.dataFactoryId,
+    this.fqdns,
+    this.name,
+    this.subresourceName,
+    this.targetResourceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      dataFactoryId: map['dataFactoryId'] == null ? null : pulumi.Output.create<String>(map['dataFactoryId'] as String),
-      fqdns: map['fqdns'] == null ? null : pulumi.Output.create<List<String>>((map['fqdns'] as List).cast<String>()),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      subresourceName: map['subresourceName'] == null ? null : pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
     );
   }
 }

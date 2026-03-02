@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerGroupHostAlias {
   /// The information about the host.
-  final List<String>? hostnames;
+  final pulumi.Input<List<String>>? hostnames;
   /// The IP address of the host.
-  final String? ip;
+  final pulumi.Input<String>? ip;
 
   /// Creates a new [ContainerGroupHostAlias].
   /// [hostnames] The information about the host.
@@ -24,8 +25,8 @@ class ContainerGroupHostAlias {
 
   factory ContainerGroupHostAlias.fromMap(Map<String, dynamic> map) {
     return ContainerGroupHostAlias(
-      hostnames: map['hostnames'] == null ? null : (map['hostnames'] as List).cast<String>(),
-      ip: map['ip'] == null ? null : map['ip'] as String,
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
     );
   }
 }

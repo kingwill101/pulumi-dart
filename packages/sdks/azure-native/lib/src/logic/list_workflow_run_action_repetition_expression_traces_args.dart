@@ -25,17 +25,12 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
   /// [runName] The workflow run name.
   /// [workflowName] The workflow name.
   ListWorkflowRunActionRepetitionExpressionTracesArgs({
-    required pulumi.Output<String> actionName,
-    required pulumi.Output<String> repetitionName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runName,
-    required pulumi.Output<String> workflowName,
-  }) :
-      actionName = pulumi.Input.asInput<String>(actionName),
-      repetitionName = pulumi.Input.asInput<String>(repetitionName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runName = pulumi.Input.asInput<String>(runName),
-      workflowName = pulumi.Input.asInput<String>(workflowName);
+    required this.actionName,
+    required this.repetitionName,
+    required this.resourceGroupName,
+    required this.runName,
+    required this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
 
   factory ListWorkflowRunActionRepetitionExpressionTracesArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowRunActionRepetitionExpressionTracesArgs(
-      actionName: pulumi.Output.create<String>(map['actionName'] as String),
-      repetitionName: pulumi.Output.create<String>(map['repetitionName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runName: pulumi.Output.create<String>(map['runName'] as String),
-      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+      actionName: (map['actionName'] as String).input(),
+      repetitionName: (map['repetitionName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runName: (map['runName'] as String).input(),
+      workflowName: (map['workflowName'] as String).input(),
     );
   }
 }

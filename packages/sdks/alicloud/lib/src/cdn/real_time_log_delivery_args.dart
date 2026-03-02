@@ -31,17 +31,12 @@ class RealTimeLogDeliveryArgs {
   /// [slsRegion] The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
   /// [status] Resource attribute fields that represent the status of the resource.
   RealTimeLogDeliveryArgs({
-    required pulumi.Output<String> domain,
-    required pulumi.Output<String> logstore,
-    required pulumi.Output<String> project,
-    required pulumi.Output<String> slsRegion,
-    pulumi.Output<String>? status,
-  }) :
-      domain = pulumi.Input.asInput<String>(domain),
-      logstore = pulumi.Input.asInput<String>(logstore),
-      project = pulumi.Input.asInput<String>(project),
-      slsRegion = pulumi.Input.asInput<String>(slsRegion),
-      status = pulumi.Input.asOptionalInput<String>(status);
+    required this.domain,
+    required this.logstore,
+    required this.project,
+    required this.slsRegion,
+    this.status,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,11 +50,11 @@ class RealTimeLogDeliveryArgs {
 
   factory RealTimeLogDeliveryArgs.fromMap(Map<String, dynamic> map) {
     return RealTimeLogDeliveryArgs(
-      domain: pulumi.Output.create<String>(map['domain'] as String),
-      logstore: pulumi.Output.create<String>(map['logstore'] as String),
-      project: pulumi.Output.create<String>(map['project'] as String),
-      slsRegion: pulumi.Output.create<String>(map['slsRegion'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      domain: (map['domain'] as String).input(),
+      logstore: (map['logstore'] as String).input(),
+      project: (map['project'] as String).input(),
+      slsRegion: (map['slsRegion'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
     );
   }
 }

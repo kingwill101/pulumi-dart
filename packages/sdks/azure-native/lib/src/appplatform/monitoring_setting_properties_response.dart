@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_insights_agent_versions_response.dart';
 import 'error_response.dart';
 
 /// Monitoring Setting properties payload
 class MonitoringSettingPropertiesResponse {
   /// Indicates the versions of application insight agent
-  final ApplicationInsightsAgentVersionsResponse? appInsightsAgentVersions;
+  final pulumi.Input<ApplicationInsightsAgentVersionsResponse>? appInsightsAgentVersions;
   /// Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
-  final String? appInsightsInstrumentationKey;
+  final pulumi.Input<String>? appInsightsInstrumentationKey;
   /// Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
-  final double? appInsightsSamplingRate;
+  final pulumi.Input<double>? appInsightsSamplingRate;
   /// Error when apply Monitoring Setting changes.
-  final ErrorResponse? error;
+  final pulumi.Input<ErrorResponse>? error;
   /// State of the Monitoring Setting.
-  final String provisioningState;
+  final pulumi.Input<String> provisioningState;
   /// Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
-  final bool? traceEnabled;
+  final pulumi.Input<bool>? traceEnabled;
 
   /// Creates a new [MonitoringSettingPropertiesResponse].
   /// [appInsightsAgentVersions] Indicates the versions of application insight agent
@@ -36,10 +37,10 @@ class MonitoringSettingPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appInsightsAgentVersions': ?appInsightsAgentVersions == null ? null : appInsightsAgentVersions!.toMap(),
+      'appInsightsAgentVersions': ?pulumi.Input.mapOptionalInputValue<ApplicationInsightsAgentVersionsResponse, Map<String, dynamic>>(appInsightsAgentVersions, (value) => value.toMap()),
       'appInsightsInstrumentationKey': ?appInsightsInstrumentationKey,
       'appInsightsSamplingRate': ?appInsightsSamplingRate,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?pulumi.Input.mapOptionalInputValue<ErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'traceEnabled': ?traceEnabled,
     };
@@ -47,12 +48,12 @@ class MonitoringSettingPropertiesResponse {
 
   factory MonitoringSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingPropertiesResponse(
-      appInsightsAgentVersions: map['appInsightsAgentVersions'] == null ? null : ApplicationInsightsAgentVersionsResponse.fromMap((map['appInsightsAgentVersions'] as Map).cast<String, dynamic>()),
-      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : map['appInsightsInstrumentationKey'] as String,
-      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : map['appInsightsSamplingRate'] as double,
-      error: map['error'] == null ? null : ErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      traceEnabled: map['traceEnabled'] == null ? null : map['traceEnabled'] as bool,
+      appInsightsAgentVersions: map['appInsightsAgentVersions'] == null ? null : (ApplicationInsightsAgentVersionsResponse.fromMap((map['appInsightsAgentVersions'] as Map).cast<String, dynamic>())).input(),
+      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : (map['appInsightsInstrumentationKey'] as String).input(),
+      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : (map['appInsightsSamplingRate'] as double).input(),
+      error: map['error'] == null ? null : (ErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: (map['provisioningState'] as String).input(),
+      traceEnabled: map['traceEnabled'] == null ? null : (map['traceEnabled'] as bool).input(),
     );
   }
 }

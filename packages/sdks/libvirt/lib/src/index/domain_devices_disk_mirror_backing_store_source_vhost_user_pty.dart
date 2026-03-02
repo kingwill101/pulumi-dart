@@ -5,9 +5,9 @@ import 'domain_devices_disk_mirror_backing_store_source_vhost_user_pty_sec_label
 
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty {
   /// Sets the path for the PTY source in the EGD backend.
-  final String path;
+  final pulumi.Input<String> path;
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel>>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty].
   /// [path] Sets the path for the PTY source in the EGD backend.
@@ -20,14 +20,14 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'path': path,
-      'secLabels': ?secLabels == null ? null : pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel, Map<String, dynamic>>(secLabels!, (value) => value.toMap()),
+      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserPty(
-      path: map['path'] as String,
-      secLabels: map['secLabels'] == null ? null : pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel.fromMap((value as Map).cast<String, dynamic>())),
+      path: (map['path'] as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPtySecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

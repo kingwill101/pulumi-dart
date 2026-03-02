@@ -6,9 +6,9 @@ import 'oracle_column_response.dart';
 /// Oracle table.
 class OracleTableResponse {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-  final List<OracleColumnResponse> oracleColumns;
+  final pulumi.Input<List<OracleColumnResponse>> oracleColumns;
   /// Table name.
-  final String table;
+  final pulumi.Input<String> table;
 
   /// Creates a new [OracleTableResponse].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
@@ -20,15 +20,15 @@ class OracleTableResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleColumns': pulumi.Input.encodeList<OracleColumnResponse, Map<String, dynamic>>(oracleColumns, (value) => value.toMap()),
+      'oracleColumns': pulumi.Input.mapInputValue<List<OracleColumnResponse>, List<Map<String, dynamic>>>(oracleColumns, (value) => pulumi.Input.encodeList<OracleColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'table': table,
     };
   }
 
   factory OracleTableResponse.fromMap(Map<String, dynamic> map) {
     return OracleTableResponse(
-      oracleColumns: pulumi.Input.decodeList<OracleColumnResponse>(map['oracleColumns'], (value) => OracleColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      table: map['table'] as String,
+      oracleColumns: (pulumi.Input.decodeList<OracleColumnResponse>(map['oracleColumns'], (value) => OracleColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      table: (map['table'] as String).input(),
     );
   }
 }

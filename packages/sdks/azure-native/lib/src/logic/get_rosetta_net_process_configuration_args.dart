@@ -19,13 +19,10 @@ class GetRosettaNetProcessConfigurationArgs {
   /// [resourceGroupName] The resource group name.
   /// [rosettaNetProcessConfigurationName] The integration account RosettaNetProcessConfiguration name.
   GetRosettaNetProcessConfigurationArgs({
-    required pulumi.Output<String> integrationAccountName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> rosettaNetProcessConfigurationName,
-  }) :
-      integrationAccountName = pulumi.Input.asInput<String>(integrationAccountName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      rosettaNetProcessConfigurationName = pulumi.Input.asInput<String>(rosettaNetProcessConfigurationName);
+    required this.integrationAccountName,
+    required this.resourceGroupName,
+    required this.rosettaNetProcessConfigurationName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetRosettaNetProcessConfigurationArgs {
 
   factory GetRosettaNetProcessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetRosettaNetProcessConfigurationArgs(
-      integrationAccountName: pulumi.Output.create<String>(map['integrationAccountName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      rosettaNetProcessConfigurationName: pulumi.Output.create<String>(map['rosettaNetProcessConfigurationName'] as String),
+      integrationAccountName: (map['integrationAccountName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      rosettaNetProcessConfigurationName: (map['rosettaNetProcessConfigurationName'] as String).input(),
     );
   }
 }

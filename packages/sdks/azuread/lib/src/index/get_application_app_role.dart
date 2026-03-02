@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationAppRole {
   /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
-  final List<String> allowedMemberTypes;
+  final pulumi.Input<List<String>> allowedMemberTypes;
   /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
-  final String description;
+  final pulumi.Input<String> description;
   /// Specifies the display name of the application.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Determines if the app role is enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
-  final String id;
+  final pulumi.Input<String> id;
   /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetApplicationAppRole].
   /// [allowedMemberTypes] Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
@@ -44,12 +45,12 @@ class GetApplicationAppRole {
 
   factory GetApplicationAppRole.fromMap(Map<String, dynamic> map) {
     return GetApplicationAppRole(
-      allowedMemberTypes: (map['allowedMemberTypes'] as List).cast<String>(),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      value: map['value'] as String,
+      allowedMemberTypes: ((map['allowedMemberTypes'] as List).cast<String>()).input(),
+      description: (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      enabled: (map['enabled'] as bool).input(),
+      id: (map['id'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

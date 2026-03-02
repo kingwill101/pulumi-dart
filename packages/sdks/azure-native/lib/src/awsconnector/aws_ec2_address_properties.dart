@@ -7,33 +7,33 @@ import 'tag.dart';
 /// Definition of awsEc2Address
 class AwsEc2AddressProperties {
   /// <p>The ID representing the allocation of the address.</p>
-  final String? allocationId;
+  final pulumi.Input<String>? allocationId;
   /// <p>The ID representing the association of the address with an instance.</p>
-  final String? associationId;
+  final pulumi.Input<String>? associationId;
   /// <p>The carrier IP address associated. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance). </p>
-  final String? carrierIp;
+  final pulumi.Input<String>? carrierIp;
   /// <p>The customer-owned IP address.</p>
-  final String? customerOwnedIp;
+  final pulumi.Input<String>? customerOwnedIp;
   /// <p>The ID of the customer-owned address pool.</p>
-  final String? customerOwnedIpv4Pool;
+  final pulumi.Input<String>? customerOwnedIpv4Pool;
   /// <p>The network (<code>vpc</code>).</p>
-  final DomainTypeEnumValue? domain;
+  final pulumi.Input<DomainTypeEnumValue>? domain;
   /// <p>The ID of the instance that the address is associated with (if any).</p>
-  final String? instanceId;
+  final pulumi.Input<String>? instanceId;
   /// <p>The name of the unique set of Availability Zones, Local Zones, or Wavelength Zones from which Amazon Web Services advertises IP addresses.</p>
-  final String? networkBorderGroup;
+  final pulumi.Input<String>? networkBorderGroup;
   /// <p>The ID of the network interface.</p>
-  final String? networkInterfaceId;
+  final pulumi.Input<String>? networkInterfaceId;
   /// <p>The ID of the Amazon Web Services account that owns the network interface.</p>
-  final String? networkInterfaceOwnerId;
+  final pulumi.Input<String>? networkInterfaceOwnerId;
   /// <p>The private IP address associated with the Elastic IP address.</p>
-  final String? privateIpAddress;
+  final pulumi.Input<String>? privateIpAddress;
   /// <p>The Elastic IP address.</p>
-  final String? publicIp;
+  final pulumi.Input<String>? publicIp;
   /// <p>The ID of an address pool.</p>
-  final String? publicIpv4Pool;
+  final pulumi.Input<String>? publicIpv4Pool;
   /// <p>Any tags assigned to the Elastic IP address.</p>
-  final List<Tag>? tags;
+  final pulumi.Input<List<Tag>>? tags;
 
   /// Creates a new [AwsEc2AddressProperties].
   /// [allocationId] <p>The ID representing the allocation of the address.</p>
@@ -74,7 +74,7 @@ class AwsEc2AddressProperties {
       'carrierIp': ?carrierIp,
       'customerOwnedIp': ?customerOwnedIp,
       'customerOwnedIpv4Pool': ?customerOwnedIpv4Pool,
-      'domain': ?domain == null ? null : domain!.toMap(),
+      'domain': ?pulumi.Input.mapOptionalInputValue<DomainTypeEnumValue, Map<String, dynamic>>(domain, (value) => value.toMap()),
       'instanceId': ?instanceId,
       'networkBorderGroup': ?networkBorderGroup,
       'networkInterfaceId': ?networkInterfaceId,
@@ -82,26 +82,26 @@ class AwsEc2AddressProperties {
       'privateIpAddress': ?privateIpAddress,
       'publicIp': ?publicIp,
       'publicIpv4Pool': ?publicIpv4Pool,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<Tag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory AwsEc2AddressProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2AddressProperties(
-      allocationId: map['allocationId'] == null ? null : map['allocationId'] as String,
-      associationId: map['associationId'] == null ? null : map['associationId'] as String,
-      carrierIp: map['carrierIp'] == null ? null : map['carrierIp'] as String,
-      customerOwnedIp: map['customerOwnedIp'] == null ? null : map['customerOwnedIp'] as String,
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : map['customerOwnedIpv4Pool'] as String,
-      domain: map['domain'] == null ? null : DomainTypeEnumValue.fromMap((map['domain'] as Map).cast<String, dynamic>()),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      networkBorderGroup: map['networkBorderGroup'] == null ? null : map['networkBorderGroup'] as String,
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      networkInterfaceOwnerId: map['networkInterfaceOwnerId'] == null ? null : map['networkInterfaceOwnerId'] as String,
-      privateIpAddress: map['privateIpAddress'] == null ? null : map['privateIpAddress'] as String,
-      publicIp: map['publicIp'] == null ? null : map['publicIp'] as String,
-      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : map['publicIpv4Pool'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>())),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
+      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp'] as String).input(),
+      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp'] as String).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
+      domain: map['domain'] == null ? null : (DomainTypeEnumValue.fromMap((map['domain'] as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      networkBorderGroup: map['networkBorderGroup'] == null ? null : (map['networkBorderGroup'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkInterfaceOwnerId: map['networkInterfaceOwnerId'] == null ? null : (map['networkInterfaceOwnerId'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
+      publicIpv4Pool: map['publicIpv4Pool'] == null ? null : (map['publicIpv4Pool'] as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -44,21 +44,14 @@ class RuntimeIamBindingState {
   /// [role] The role that should be applied. Only one
   /// [runtimeName] Used to find the parent resource to bind the IAM policy to
   RuntimeIamBindingState({
-    pulumi.Output<RuntimeIamBindingCondition>? condition,
-    pulumi.Output<String>? etag,
-    pulumi.Output<String>? location,
-    pulumi.Output<List<String>>? members,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? role,
-    pulumi.Output<String>? runtimeName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<RuntimeIamBindingCondition>(condition),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asOptionalInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      runtimeName = pulumi.Input.asOptionalInput<String>(runtimeName);
+    this.condition,
+    this.etag,
+    this.location,
+    this.members,
+    this.project,
+    this.role,
+    this.runtimeName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -74,13 +67,13 @@ class RuntimeIamBindingState {
 
   factory RuntimeIamBindingState.fromMap(Map<String, dynamic> map) {
     return RuntimeIamBindingState(
-      condition: map['condition'] == null ? null : pulumi.Output.create<RuntimeIamBindingCondition>(RuntimeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      runtimeName: map['runtimeName'] == null ? null : pulumi.Output.create<String>(map['runtimeName'] as String),
+      condition: map['condition'] == null ? null : (RuntimeIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      runtimeName: map['runtimeName'] == null ? null : (map['runtimeName'] as String).input(),
     );
   }
 }

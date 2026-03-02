@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_configuration_extract_response.dart';
 import 'job_configuration_load_response.dart';
 import 'job_configuration_query_response.dart';
@@ -7,21 +8,21 @@ import 'job_configuration_table_copy_response.dart';
 
 class JobConfigurationResponse {
   /// [Pick one] Copies a table.
-  final JobConfigurationTableCopyResponse copy;
+  final pulumi.Input<JobConfigurationTableCopyResponse> copy;
   /// [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
-  final bool dryRun;
+  final pulumi.Input<bool> dryRun;
   /// [Pick one] Configures an extract job.
-  final JobConfigurationExtractResponse extract;
+  final pulumi.Input<JobConfigurationExtractResponse> extract;
   /// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-  final String jobTimeoutMs;
+  final pulumi.Input<String> jobTimeoutMs;
   /// The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-  final String jobType;
+  final pulumi.Input<String> jobType;
   /// The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-  final Map<String, String> labels;
+  final pulumi.Input<Map<String, String>> labels;
   /// [Pick one] Configures a load job.
-  final JobConfigurationLoadResponse load;
+  final pulumi.Input<JobConfigurationLoadResponse> load;
   /// [Pick one] Configures a query job.
-  final JobConfigurationQueryResponse query;
+  final pulumi.Input<JobConfigurationQueryResponse> query;
 
   /// Creates a new [JobConfigurationResponse].
   /// [copy] [Pick one] Copies a table.
@@ -45,27 +46,27 @@ class JobConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'copy': copy.toMap(),
+      'copy': pulumi.Input.mapInputValue<JobConfigurationTableCopyResponse, Map<String, dynamic>>(copy, (value) => value.toMap()),
       'dryRun': dryRun,
-      'extract': extract.toMap(),
+      'extract': pulumi.Input.mapInputValue<JobConfigurationExtractResponse, Map<String, dynamic>>(extract, (value) => value.toMap()),
       'jobTimeoutMs': jobTimeoutMs,
       'jobType': jobType,
       'labels': labels,
-      'load': load.toMap(),
-      'query': query.toMap(),
+      'load': pulumi.Input.mapInputValue<JobConfigurationLoadResponse, Map<String, dynamic>>(load, (value) => value.toMap()),
+      'query': pulumi.Input.mapInputValue<JobConfigurationQueryResponse, Map<String, dynamic>>(query, (value) => value.toMap()),
     };
   }
 
   factory JobConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return JobConfigurationResponse(
-      copy: JobConfigurationTableCopyResponse.fromMap((map['copy'] as Map).cast<String, dynamic>()),
-      dryRun: map['dryRun'] as bool,
-      extract: JobConfigurationExtractResponse.fromMap((map['extract'] as Map).cast<String, dynamic>()),
-      jobTimeoutMs: map['jobTimeoutMs'] as String,
-      jobType: map['jobType'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      load: JobConfigurationLoadResponse.fromMap((map['load'] as Map).cast<String, dynamic>()),
-      query: JobConfigurationQueryResponse.fromMap((map['query'] as Map).cast<String, dynamic>()),
+      copy: (JobConfigurationTableCopyResponse.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
+      dryRun: (map['dryRun'] as bool).input(),
+      extract: (JobConfigurationExtractResponse.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
+      jobTimeoutMs: (map['jobTimeoutMs'] as String).input(),
+      jobType: (map['jobType'] as String).input(),
+      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      load: (JobConfigurationLoadResponse.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
+      query: (JobConfigurationQueryResponse.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

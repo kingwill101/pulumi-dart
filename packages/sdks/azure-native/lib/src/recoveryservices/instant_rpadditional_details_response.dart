@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstantRPAdditionalDetailsResponse {
-  final String? azureBackupRGNamePrefix;
-  final String? azureBackupRGNameSuffix;
+  final pulumi.Input<String>? azureBackupRGNamePrefix;
+  final pulumi.Input<String>? azureBackupRGNameSuffix;
 
   /// Creates a new [InstantRPAdditionalDetailsResponse].
   /// [azureBackupRGNamePrefix] Optional.
@@ -22,8 +23,8 @@ class InstantRPAdditionalDetailsResponse {
 
   factory InstantRPAdditionalDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InstantRPAdditionalDetailsResponse(
-      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : map['azureBackupRGNamePrefix'] as String,
-      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : map['azureBackupRGNameSuffix'] as String,
+      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : (map['azureBackupRGNamePrefix'] as String).input(),
+      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : (map['azureBackupRGNameSuffix'] as String).input(),
     );
   }
 }

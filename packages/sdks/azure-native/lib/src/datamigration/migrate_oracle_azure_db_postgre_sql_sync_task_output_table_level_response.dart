@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse {
   /// Number of applied deletes
-  final double cdcDeleteCounter;
+  final pulumi.Input<double> cdcDeleteCounter;
   /// Number of applied inserts
-  final double cdcInsertCounter;
+  final pulumi.Input<double> cdcInsertCounter;
   /// Number of applied updates
-  final double cdcUpdateCounter;
+  final pulumi.Input<double> cdcUpdateCounter;
   /// Number of data errors occurred
-  final double dataErrorsCounter;
+  final pulumi.Input<double> dataErrorsCounter;
   /// Name of the database
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// Full load end time
-  final String fullLoadEndedOn;
+  final pulumi.Input<String> fullLoadEndedOn;
   /// Estimate to finish full load
-  final String fullLoadEstFinishTime;
+  final pulumi.Input<String> fullLoadEstFinishTime;
   /// Full load start time
-  final String fullLoadStartedOn;
+  final pulumi.Input<String> fullLoadStartedOn;
   /// Number of rows applied in full load
-  final double fullLoadTotalRows;
+  final pulumi.Input<double> fullLoadTotalRows;
   /// Result identifier
-  final String id;
+  final pulumi.Input<String> id;
   /// Last modified time on target
-  final String lastModifiedTime;
+  final pulumi.Input<String> lastModifiedTime;
   /// Result type
   /// Expected value is 'TableLevelOutput'.
-  final String resultType;
+  final pulumi.Input<String> resultType;
   /// Current state of the table migration
-  final String state;
+  final pulumi.Input<String> state;
   /// Name of the table
-  final String tableName;
+  final pulumi.Input<String> tableName;
   /// Total number of applied changes
-  final double totalChangesApplied;
+  final pulumi.Input<double> totalChangesApplied;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse].
   /// [cdcDeleteCounter] Number of applied deletes
@@ -90,21 +91,21 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse {
 
   factory MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponse(
-      cdcDeleteCounter: map['cdcDeleteCounter'] as double,
-      cdcInsertCounter: map['cdcInsertCounter'] as double,
-      cdcUpdateCounter: map['cdcUpdateCounter'] as double,
-      dataErrorsCounter: map['dataErrorsCounter'] as double,
-      databaseName: map['databaseName'] as String,
-      fullLoadEndedOn: map['fullLoadEndedOn'] as String,
-      fullLoadEstFinishTime: map['fullLoadEstFinishTime'] as String,
-      fullLoadStartedOn: map['fullLoadStartedOn'] as String,
-      fullLoadTotalRows: map['fullLoadTotalRows'] as double,
-      id: map['id'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      resultType: map['resultType'] as String,
-      state: map['state'] as String,
-      tableName: map['tableName'] as String,
-      totalChangesApplied: map['totalChangesApplied'] as double,
+      cdcDeleteCounter: (map['cdcDeleteCounter'] as double).input(),
+      cdcInsertCounter: (map['cdcInsertCounter'] as double).input(),
+      cdcUpdateCounter: (map['cdcUpdateCounter'] as double).input(),
+      dataErrorsCounter: (map['dataErrorsCounter'] as double).input(),
+      databaseName: (map['databaseName'] as String).input(),
+      fullLoadEndedOn: (map['fullLoadEndedOn'] as String).input(),
+      fullLoadEstFinishTime: (map['fullLoadEstFinishTime'] as String).input(),
+      fullLoadStartedOn: (map['fullLoadStartedOn'] as String).input(),
+      fullLoadTotalRows: (map['fullLoadTotalRows'] as double).input(),
+      id: (map['id'] as String).input(),
+      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
+      resultType: (map['resultType'] as String).input(),
+      state: (map['state'] as String).input(),
+      tableName: (map['tableName'] as String).input(),
+      totalChangesApplied: (map['totalChangesApplied'] as double).input(),
     );
   }
 }

@@ -16,11 +16,9 @@ class GetHealthModelArgs {
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetHealthModelArgs({
-    required pulumi.Output<String> healthModelName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      healthModelName = pulumi.Input.asInput<String>(healthModelName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.healthModelName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHealthModelArgs {
 
   factory GetHealthModelArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthModelArgs(
-      healthModelName: pulumi.Output.create<String>(map['healthModelName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      healthModelName: (map['healthModelName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

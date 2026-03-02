@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_metadata_configuration_metadata_configuration_inventory_table_configuration_encryption_configuration.dart';
 
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration {
   /// Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
-  final String configurationState;
+  final pulumi.Input<String> configurationState;
   /// Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration? encryptionConfiguration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration>? encryptionConfiguration;
   /// Inventory table ARN.
-  final String? tableArn;
+  final pulumi.Input<String>? tableArn;
   /// Inventory table name.
-  final String? tableName;
+  final pulumi.Input<String>? tableName;
 
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration].
   /// [configurationState] Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
@@ -27,7 +28,7 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationState': configurationState,
-      'encryptionConfiguration': ?encryptionConfiguration == null ? null : encryptionConfiguration!.toMap(),
+      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
       'tableArn': ?tableArn,
       'tableName': ?tableName,
     };
@@ -35,10 +36,10 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
 
   factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration(
-      configurationState: map['configurationState'] as String,
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
-      tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      configurationState: (map['configurationState'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
     );
   }
 }

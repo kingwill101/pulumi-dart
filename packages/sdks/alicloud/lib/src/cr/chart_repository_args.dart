@@ -25,17 +25,12 @@ class ChartRepositoryArgs {
   /// [repoType] The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   /// [summary] The summary about the repository.
   ChartRepositoryArgs({
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> repoName,
-    required pulumi.Output<String> repoNamespaceName,
-    pulumi.Output<String>? repoType,
-    pulumi.Output<String>? summary,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      repoName = pulumi.Input.asInput<String>(repoName),
-      repoNamespaceName = pulumi.Input.asInput<String>(repoNamespaceName),
-      repoType = pulumi.Input.asOptionalInput<String>(repoType),
-      summary = pulumi.Input.asOptionalInput<String>(summary);
+    required this.instanceId,
+    required this.repoName,
+    required this.repoNamespaceName,
+    this.repoType,
+    this.summary,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class ChartRepositoryArgs {
 
   factory ChartRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return ChartRepositoryArgs(
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      repoName: pulumi.Output.create<String>(map['repoName'] as String),
-      repoNamespaceName: pulumi.Output.create<String>(map['repoNamespaceName'] as String),
-      repoType: map['repoType'] == null ? null : pulumi.Output.create<String>(map['repoType'] as String),
-      summary: map['summary'] == null ? null : pulumi.Output.create<String>(map['summary'] as String),
+      instanceId: (map['instanceId'] as String).input(),
+      repoName: (map['repoName'] as String).input(),
+      repoNamespaceName: (map['repoNamespaceName'] as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
     );
   }
 }

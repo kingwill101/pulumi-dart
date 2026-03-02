@@ -28,19 +28,13 @@ class SecurityConnectorApplicationArgs {
   /// [securityConnectorName] The security connector name.
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
   SecurityConnectorApplicationArgs({
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> securityConnectorName,
-    required pulumi.Output<String> sourceResourceType,
-  }) :
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      securityConnectorName = pulumi.Input.asInput<String>(securityConnectorName),
-      sourceResourceType = pulumi.Input.asInput<String>(sourceResourceType);
+    this.applicationId,
+    this.description,
+    this.displayName,
+    required this.resourceGroupName,
+    required this.securityConnectorName,
+    required this.sourceResourceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +49,12 @@ class SecurityConnectorApplicationArgs {
 
   factory SecurityConnectorApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConnectorApplicationArgs(
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      securityConnectorName: pulumi.Output.create<String>(map['securityConnectorName'] as String),
-      sourceResourceType: pulumi.Output.create<String>(map['sourceResourceType'] as String),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      securityConnectorName: (map['securityConnectorName'] as String).input(),
+      sourceResourceType: (map['sourceResourceType'] as String).input(),
     );
   }
 }

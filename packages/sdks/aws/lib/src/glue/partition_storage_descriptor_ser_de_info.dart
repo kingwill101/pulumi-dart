@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartitionStorageDescriptorSerDeInfo {
   /// Name of the SerDe.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// A map of initialization parameters for the SerDe, in key-value form.
-  final Map<String, String>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
   /// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
-  final String? serializationLibrary;
+  final pulumi.Input<String>? serializationLibrary;
 
   /// Creates a new [PartitionStorageDescriptorSerDeInfo].
   /// [name] Name of the SerDe.
@@ -29,9 +30,9 @@ class PartitionStorageDescriptorSerDeInfo {
 
   factory PartitionStorageDescriptorSerDeInfo.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptorSerDeInfo(
-      name: map['name'] == null ? null : map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      serializationLibrary: map['serializationLibrary'] == null ? null : map['serializationLibrary'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      serializationLibrary: map['serializationLibrary'] == null ? null : (map['serializationLibrary'] as String).input(),
     );
   }
 }

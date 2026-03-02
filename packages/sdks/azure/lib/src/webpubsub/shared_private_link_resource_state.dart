@@ -29,19 +29,13 @@ class SharedPrivateLinkResourceState {
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   /// [webPubsubId] Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
   SharedPrivateLinkResourceState({
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? requestMessage,
-    pulumi.Output<String>? status,
-    pulumi.Output<String>? subresourceName,
-    pulumi.Output<String>? targetResourceId,
-    pulumi.Output<String>? webPubsubId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      requestMessage = pulumi.Input.asOptionalInput<String>(requestMessage),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      subresourceName = pulumi.Input.asOptionalInput<String>(subresourceName),
-      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
-      webPubsubId = pulumi.Input.asOptionalInput<String>(webPubsubId);
+    this.name,
+    this.requestMessage,
+    this.status,
+    this.subresourceName,
+    this.targetResourceId,
+    this.webPubsubId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class SharedPrivateLinkResourceState {
 
   factory SharedPrivateLinkResourceState.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceState(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      requestMessage: map['requestMessage'] == null ? null : pulumi.Output.create<String>(map['requestMessage'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      subresourceName: map['subresourceName'] == null ? null : pulumi.Output.create<String>(map['subresourceName'] as String),
-      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
-      webPubsubId: map['webPubsubId'] == null ? null : pulumi.Output.create<String>(map['webPubsubId'] as String),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId'] as String).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Contains SKU in an ExpressRouteCircuit.
 class ExpressRouteCircuitSku {
   /// The family of the SKU.
-  final String? family;
+  final pulumi.Input<String>? family;
   /// The name of the SKU.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// The tier of the SKU.
-  final String? tier;
+  final pulumi.Input<String>? tier;
 
   /// Creates a new [ExpressRouteCircuitSku].
   /// [family] The family of the SKU.
@@ -30,9 +31,9 @@ class ExpressRouteCircuitSku {
 
   factory ExpressRouteCircuitSku.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitSku(
-      family: map['family'] == null ? null : map['family'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      family: map['family'] == null ? null : (map['family'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
     );
   }
 }

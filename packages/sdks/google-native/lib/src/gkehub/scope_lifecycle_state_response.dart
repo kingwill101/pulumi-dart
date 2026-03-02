@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ScopeLifecycleState describes the state of a Scope resource.
 class ScopeLifecycleStateResponse {
   /// The current state of the scope resource.
-  final String code;
+  final pulumi.Input<String> code;
 
   /// Creates a new [ScopeLifecycleStateResponse].
   /// [code] The current state of the scope resource.
@@ -20,7 +21,7 @@ class ScopeLifecycleStateResponse {
 
   factory ScopeLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
     return ScopeLifecycleStateResponse(
-      code: map['code'] as String,
+      code: (map['code'] as String).input(),
     );
   }
 }

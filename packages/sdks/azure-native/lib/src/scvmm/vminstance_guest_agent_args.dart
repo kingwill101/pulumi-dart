@@ -24,15 +24,11 @@ class VMInstanceGuestAgentArgs {
   /// [provisioningAction] Gets or sets the guest agent provisioning action.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   VMInstanceGuestAgentArgs({
-    pulumi.Output<GuestCredential>? credentials,
-    pulumi.Output<HttpProxyConfiguration>? httpProxyConfig,
-    pulumi.Output<String>? provisioningAction,
-    required pulumi.Output<String> resourceUri,
-  }) :
-      credentials = pulumi.Input.asOptionalInput<GuestCredential>(credentials),
-      httpProxyConfig = pulumi.Input.asOptionalInput<HttpProxyConfiguration>(httpProxyConfig),
-      provisioningAction = pulumi.Input.asOptionalInput<String>(provisioningAction),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+    this.credentials,
+    this.httpProxyConfig,
+    this.provisioningAction,
+    required this.resourceUri,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class VMInstanceGuestAgentArgs {
 
   factory VMInstanceGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return VMInstanceGuestAgentArgs(
-      credentials: map['credentials'] == null ? null : pulumi.Output.create<GuestCredential>(GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : pulumi.Output.create<HttpProxyConfiguration>(HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())),
-      provisioningAction: map['provisioningAction'] == null ? null : pulumi.Output.create<String>(map['provisioningAction'] as String),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
     );
   }
 }

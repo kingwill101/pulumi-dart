@@ -19,13 +19,10 @@ class GetManagedNetworkPeeringPolicyArgs {
   /// [managedNetworkPeeringPolicyName] The name of the Managed Network Peering Policy.
   /// [resourceGroupName] The name of the resource group.
   GetManagedNetworkPeeringPolicyArgs({
-    required pulumi.Output<String> managedNetworkName,
-    required pulumi.Output<String> managedNetworkPeeringPolicyName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      managedNetworkName = pulumi.Input.asInput<String>(managedNetworkName),
-      managedNetworkPeeringPolicyName = pulumi.Input.asInput<String>(managedNetworkPeeringPolicyName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.managedNetworkName,
+    required this.managedNetworkPeeringPolicyName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetManagedNetworkPeeringPolicyArgs {
 
   factory GetManagedNetworkPeeringPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedNetworkPeeringPolicyArgs(
-      managedNetworkName: pulumi.Output.create<String>(map['managedNetworkName'] as String),
-      managedNetworkPeeringPolicyName: pulumi.Output.create<String>(map['managedNetworkPeeringPolicyName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      managedNetworkName: (map['managedNetworkName'] as String).input(),
+      managedNetworkPeeringPolicyName: (map['managedNetworkPeeringPolicyName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

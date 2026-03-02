@@ -49,33 +49,20 @@ class RegisteredServerArgs {
   /// [serverRole] Registered Server serverRole
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   RegisteredServerArgs({
-    pulumi.Output<String>? agentVersion,
-    pulumi.Output<String>? applicationId,
-    pulumi.Output<String>? clusterId,
-    pulumi.Output<String>? clusterName,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<bool>? identity,
-    pulumi.Output<String>? lastHeartBeat,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? serverCertificate,
-    pulumi.Output<String>? serverId,
-    pulumi.Output<String>? serverOSVersion,
-    pulumi.Output<String>? serverRole,
-    required pulumi.Output<String> storageSyncServiceName,
-  }) :
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
-      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
-      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      identity = pulumi.Input.asOptionalInput<bool>(identity),
-      lastHeartBeat = pulumi.Input.asOptionalInput<String>(lastHeartBeat),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serverCertificate = pulumi.Input.asOptionalInput<String>(serverCertificate),
-      serverId = pulumi.Input.asOptionalInput<String>(serverId),
-      serverOSVersion = pulumi.Input.asOptionalInput<String>(serverOSVersion),
-      serverRole = pulumi.Input.asOptionalInput<String>(serverRole),
-      storageSyncServiceName = pulumi.Input.asInput<String>(storageSyncServiceName);
+    this.agentVersion,
+    this.applicationId,
+    this.clusterId,
+    this.clusterName,
+    this.friendlyName,
+    this.identity,
+    this.lastHeartBeat,
+    required this.resourceGroupName,
+    this.serverCertificate,
+    this.serverId,
+    this.serverOSVersion,
+    this.serverRole,
+    required this.storageSyncServiceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,19 +84,19 @@ class RegisteredServerArgs {
 
   factory RegisteredServerArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredServerArgs(
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
-      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
-      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<bool>(map['identity'] as bool),
-      lastHeartBeat: map['lastHeartBeat'] == null ? null : pulumi.Output.create<String>(map['lastHeartBeat'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serverCertificate: map['serverCertificate'] == null ? null : pulumi.Output.create<String>(map['serverCertificate'] as String),
-      serverId: map['serverId'] == null ? null : pulumi.Output.create<String>(map['serverId'] as String),
-      serverOSVersion: map['serverOSVersion'] == null ? null : pulumi.Output.create<String>(map['serverOSVersion'] as String),
-      serverRole: map['serverRole'] == null ? null : pulumi.Output.create<String>(map['serverRole'] as String),
-      storageSyncServiceName: pulumi.Output.create<String>(map['storageSyncServiceName'] as String),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity'] as bool).input(),
+      lastHeartBeat: map['lastHeartBeat'] == null ? null : (map['lastHeartBeat'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      serverOSVersion: map['serverOSVersion'] == null ? null : (map['serverOSVersion'] as String).input(),
+      serverRole: map['serverRole'] == null ? null : (map['serverRole'] as String).input(),
+      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
     );
   }
 }

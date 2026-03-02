@@ -41,27 +41,17 @@ class ResourcePolicyArgs {
   /// [snapshotSchedulePolicy] Resource policy for persistent disks for creating snapshots.
   /// [vmMaintenancePolicy] Resource policy applicable to VMs for infrastructure maintenance.
   ResourcePolicyArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<Map<String, dynamic>>? diskConsistencyGroupPolicy,
-    pulumi.Output<ResourcePolicyGroupPlacementPolicy>? groupPlacementPolicy,
-    pulumi.Output<ResourcePolicyInstanceSchedulePolicy>? instanceSchedulePolicy,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> region,
-    pulumi.Output<String>? requestId,
-    pulumi.Output<ResourcePolicySnapshotSchedulePolicy>? snapshotSchedulePolicy,
-    pulumi.Output<ResourcePolicyVmMaintenancePolicy>? vmMaintenancePolicy,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskConsistencyGroupPolicy = pulumi.Input.asOptionalInput<Map<String, dynamic>>(diskConsistencyGroupPolicy),
-      groupPlacementPolicy = pulumi.Input.asOptionalInput<ResourcePolicyGroupPlacementPolicy>(groupPlacementPolicy),
-      instanceSchedulePolicy = pulumi.Input.asOptionalInput<ResourcePolicyInstanceSchedulePolicy>(instanceSchedulePolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      snapshotSchedulePolicy = pulumi.Input.asOptionalInput<ResourcePolicySnapshotSchedulePolicy>(snapshotSchedulePolicy),
-      vmMaintenancePolicy = pulumi.Input.asOptionalInput<ResourcePolicyVmMaintenancePolicy>(vmMaintenancePolicy);
+    this.description,
+    this.diskConsistencyGroupPolicy,
+    this.groupPlacementPolicy,
+    this.instanceSchedulePolicy,
+    this.name,
+    this.project,
+    required this.region,
+    this.requestId,
+    this.snapshotSchedulePolicy,
+    this.vmMaintenancePolicy,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,16 +70,16 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : pulumi.Output.create<Map<String, dynamic>>((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>()),
-      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : pulumi.Output.create<ResourcePolicyGroupPlacementPolicy>(ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())),
-      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : pulumi.Output.create<ResourcePolicyInstanceSchedulePolicy>(ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      requestId: map['requestId'] == null ? null : pulumi.Output.create<String>(map['requestId'] as String),
-      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : pulumi.Output.create<ResourcePolicySnapshotSchedulePolicy>(ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())),
-      vmMaintenancePolicy: map['vmMaintenancePolicy'] == null ? null : pulumi.Output.create<ResourcePolicyVmMaintenancePolicy>(ResourcePolicyVmMaintenancePolicy.fromMap((map['vmMaintenancePolicy'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      diskConsistencyGroupPolicy: map['diskConsistencyGroupPolicy'] == null ? null : ((map['diskConsistencyGroupPolicy'] as Map).cast<String, dynamic>()).input(),
+      groupPlacementPolicy: map['groupPlacementPolicy'] == null ? null : (ResourcePolicyGroupPlacementPolicy.fromMap((map['groupPlacementPolicy'] as Map).cast<String, dynamic>())).input(),
+      instanceSchedulePolicy: map['instanceSchedulePolicy'] == null ? null : (ResourcePolicyInstanceSchedulePolicy.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      region: (map['region'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      snapshotSchedulePolicy: map['snapshotSchedulePolicy'] == null ? null : (ResourcePolicySnapshotSchedulePolicy.fromMap((map['snapshotSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      vmMaintenancePolicy: map['vmMaintenancePolicy'] == null ? null : (ResourcePolicyVmMaintenancePolicy.fromMap((map['vmMaintenancePolicy'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

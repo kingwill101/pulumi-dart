@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of NotebookInstanceStatusEnumValue
 class NotebookInstanceStatusEnumValue {
   /// Property value
-  final String? value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [NotebookInstanceStatusEnumValue].
   /// [value] Property value
@@ -20,7 +21,7 @@ class NotebookInstanceStatusEnumValue {
 
   factory NotebookInstanceStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceStatusEnumValue(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : (map['value'] as String).input(),
     );
   }
 }

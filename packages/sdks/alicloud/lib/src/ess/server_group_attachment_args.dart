@@ -29,19 +29,13 @@ class ServerGroupAttachmentArgs {
   /// [type] The type of server group N. Valid values: ALB, NLB.
   /// [weight] The weight of an ECS instance attached to the Server Group.
   ServerGroupAttachmentArgs({
-    pulumi.Output<bool>? forceAttach,
-    required pulumi.Output<int> port,
-    required pulumi.Output<String> scalingGroupId,
-    required pulumi.Output<String> serverGroupId,
-    required pulumi.Output<String> type,
-    required pulumi.Output<int> weight,
-  }) :
-      forceAttach = pulumi.Input.asOptionalInput<bool>(forceAttach),
-      port = pulumi.Input.asInput<int>(port),
-      scalingGroupId = pulumi.Input.asInput<String>(scalingGroupId),
-      serverGroupId = pulumi.Input.asInput<String>(serverGroupId),
-      type = pulumi.Input.asInput<String>(type),
-      weight = pulumi.Input.asInput<int>(weight);
+    this.forceAttach,
+    required this.port,
+    required this.scalingGroupId,
+    required this.serverGroupId,
+    required this.type,
+    required this.weight,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,12 +50,12 @@ class ServerGroupAttachmentArgs {
 
   factory ServerGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupAttachmentArgs(
-      forceAttach: map['forceAttach'] == null ? null : pulumi.Output.create<bool>(map['forceAttach'] as bool),
-      port: pulumi.Output.create<int>(map['port'] as int),
-      scalingGroupId: pulumi.Output.create<String>(map['scalingGroupId'] as String),
-      serverGroupId: pulumi.Output.create<String>(map['serverGroupId'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      weight: pulumi.Output.create<int>(map['weight'] as int),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
+      port: (map['port'] as int).input(),
+      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      serverGroupId: (map['serverGroupId'] as String).input(),
+      type: (map['type'] as String).input(),
+      weight: (map['weight'] as int).input(),
     );
   }
 }

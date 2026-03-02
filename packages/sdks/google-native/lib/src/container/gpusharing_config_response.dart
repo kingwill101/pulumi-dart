@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
 class GPUSharingConfigResponse {
   /// The type of GPU sharing strategy to enable on the GPU node.
-  final String gpuSharingStrategy;
+  final pulumi.Input<String> gpuSharingStrategy;
   /// The max number of containers that can share a physical GPU.
-  final String maxSharedClientsPerGpu;
+  final pulumi.Input<String> maxSharedClientsPerGpu;
 
   /// Creates a new [GPUSharingConfigResponse].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node.
@@ -25,8 +26,8 @@ class GPUSharingConfigResponse {
 
   factory GPUSharingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GPUSharingConfigResponse(
-      gpuSharingStrategy: map['gpuSharingStrategy'] as String,
-      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] as String,
+      gpuSharingStrategy: (map['gpuSharingStrategy'] as String).input(),
+      maxSharedClientsPerGpu: (map['maxSharedClientsPerGpu'] as String).input(),
     );
   }
 }

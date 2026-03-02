@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Cluster node details.
 class ClusterNodeResponse {
   /// Number of physical cores on the cluster node.
-  final double coreCount;
+  final pulumi.Input<double> coreCount;
   /// Edge Hardware Center Resource Id
-  final String ehcResourceId;
+  final pulumi.Input<String> ehcResourceId;
   /// Id of the node in the cluster.
-  final double id;
+  final pulumi.Input<double> id;
   /// Most recent licensing timestamp.
-  final String lastLicensingTimestamp;
+  final pulumi.Input<String> lastLicensingTimestamp;
   /// Manufacturer of the cluster node hardware.
-  final String manufacturer;
+  final pulumi.Input<String> manufacturer;
   /// Total available memory on the cluster node (in GiB).
-  final double memoryInGiB;
+  final pulumi.Input<double> memoryInGiB;
   /// Model name of the cluster node hardware.
-  final String model;
+  final pulumi.Input<String> model;
   /// Name of the cluster node.
-  final String name;
+  final pulumi.Input<String> name;
   /// Type of the cluster node hardware.
-  final String nodeType;
+  final pulumi.Input<String> nodeType;
   /// OEM activation status of the node.
-  final String oemActivation;
+  final pulumi.Input<String> oemActivation;
   /// Display version of the operating system running on the cluster node.
-  final String osDisplayVersion;
+  final pulumi.Input<String> osDisplayVersion;
   /// Operating system running on the cluster node.
-  final String osName;
+  final pulumi.Input<String> osName;
   /// Version of the operating system running on the cluster node.
-  final String osVersion;
+  final pulumi.Input<String> osVersion;
   /// Immutable id of the cluster node.
-  final String serialNumber;
+  final pulumi.Input<String> serialNumber;
   /// State of Windows Server Subscription.
-  final String windowsServerSubscription;
+  final pulumi.Input<String> windowsServerSubscription;
 
   /// Creates a new [ClusterNodeResponse].
   /// [coreCount] Number of physical cores on the cluster node.
@@ -90,21 +91,21 @@ class ClusterNodeResponse {
 
   factory ClusterNodeResponse.fromMap(Map<String, dynamic> map) {
     return ClusterNodeResponse(
-      coreCount: map['coreCount'] as double,
-      ehcResourceId: map['ehcResourceId'] as String,
-      id: map['id'] as double,
-      lastLicensingTimestamp: map['lastLicensingTimestamp'] as String,
-      manufacturer: map['manufacturer'] as String,
-      memoryInGiB: map['memoryInGiB'] as double,
-      model: map['model'] as String,
-      name: map['name'] as String,
-      nodeType: map['nodeType'] as String,
-      oemActivation: map['oemActivation'] as String,
-      osDisplayVersion: map['osDisplayVersion'] as String,
-      osName: map['osName'] as String,
-      osVersion: map['osVersion'] as String,
-      serialNumber: map['serialNumber'] as String,
-      windowsServerSubscription: map['windowsServerSubscription'] as String,
+      coreCount: (map['coreCount'] as double).input(),
+      ehcResourceId: (map['ehcResourceId'] as String).input(),
+      id: (map['id'] as double).input(),
+      lastLicensingTimestamp: (map['lastLicensingTimestamp'] as String).input(),
+      manufacturer: (map['manufacturer'] as String).input(),
+      memoryInGiB: (map['memoryInGiB'] as double).input(),
+      model: (map['model'] as String).input(),
+      name: (map['name'] as String).input(),
+      nodeType: (map['nodeType'] as String).input(),
+      oemActivation: (map['oemActivation'] as String).input(),
+      osDisplayVersion: (map['osDisplayVersion'] as String).input(),
+      osName: (map['osName'] as String).input(),
+      osVersion: (map['osVersion'] as String).input(),
+      serialNumber: (map['serialNumber'] as String).input(),
+      windowsServerSubscription: (map['windowsServerSubscription'] as String).input(),
     );
   }
 }

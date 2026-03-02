@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetApplicationPublicClient {
   /// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-  final List<String> redirectUris;
+  final pulumi.Input<List<String>> redirectUris;
 
   /// Creates a new [GetApplicationPublicClient].
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
@@ -19,7 +20,7 @@ class GetApplicationPublicClient {
 
   factory GetApplicationPublicClient.fromMap(Map<String, dynamic> map) {
     return GetApplicationPublicClient(
-      redirectUris: (map['redirectUris'] as List).cast<String>(),
+      redirectUris: ((map['redirectUris'] as List).cast<String>()).input(),
     );
   }
 }

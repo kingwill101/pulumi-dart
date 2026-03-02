@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// InfraStorageProfile - List of infra storage profiles for the provisioned cluster
 class CloudProviderProfileInfraStorageProfile {
   /// Reference to azure resource corresponding to the new HybridAKSStorage object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/storageSpaces/{storageSpaceName}
-  final List<String>? storageSpaceIds;
+  final pulumi.Input<List<String>>? storageSpaceIds;
 
   /// Creates a new [CloudProviderProfileInfraStorageProfile].
   /// [storageSpaceIds] Reference to azure resource corresponding to the new HybridAKSStorage object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/storageSpaces/{storageSpaceName}
@@ -20,7 +21,7 @@ class CloudProviderProfileInfraStorageProfile {
 
   factory CloudProviderProfileInfraStorageProfile.fromMap(Map<String, dynamic> map) {
     return CloudProviderProfileInfraStorageProfile(
-      storageSpaceIds: map['storageSpaceIds'] == null ? null : (map['storageSpaceIds'] as List).cast<String>(),
+      storageSpaceIds: map['storageSpaceIds'] == null ? null : ((map['storageSpaceIds'] as List).cast<String>()).input(),
     );
   }
 }

@@ -34,21 +34,14 @@ class GetEndpointArgs {
   /// [serviceName] The service name of the endpoint.
   /// [serviceType] The service type of the endpoint.
   GetEndpointArgs({
-    pulumi.Output<String>? endpointRegion,
-    pulumi.Output<String>? interface,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? serviceId,
-    pulumi.Output<String>? serviceName,
-    pulumi.Output<String>? serviceType,
-  }) :
-      endpointRegion = pulumi.Input.asOptionalInput<String>(endpointRegion),
-      interface = pulumi.Input.asOptionalInput<String>(interface),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceId = pulumi.Input.asOptionalInput<String>(serviceId),
-      serviceName = pulumi.Input.asOptionalInput<String>(serviceName),
-      serviceType = pulumi.Input.asOptionalInput<String>(serviceType);
+    this.endpointRegion,
+    this.interface,
+    this.name,
+    this.region,
+    this.serviceId,
+    this.serviceName,
+    this.serviceType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointRegion: map['endpointRegion'] == null ? null : pulumi.Output.create<String>(map['endpointRegion'] as String),
-      interface: map['interface'] == null ? null : pulumi.Output.create<String>(map['interface'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      serviceId: map['serviceId'] == null ? null : pulumi.Output.create<String>(map['serviceId'] as String),
-      serviceName: map['serviceName'] == null ? null : pulumi.Output.create<String>(map['serviceName'] as String),
-      serviceType: map['serviceType'] == null ? null : pulumi.Output.create<String>(map['serviceType'] as String),
+      endpointRegion: map['endpointRegion'] == null ? null : (map['endpointRegion'] as String).input(),
+      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
     );
   }
 }

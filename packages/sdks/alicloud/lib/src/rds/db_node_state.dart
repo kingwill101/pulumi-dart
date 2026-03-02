@@ -25,19 +25,13 @@ class DbNodeState {
   /// [nodeRole] The role of node.
   /// [zoneId] The zone ID of the node.
   DbNodeState({
-    pulumi.Output<String>? classCode,
-    pulumi.Output<String>? dbInstanceId,
-    pulumi.Output<String>? nodeId,
-    pulumi.Output<String>? nodeRegionId,
-    pulumi.Output<String>? nodeRole,
-    pulumi.Output<String>? zoneId,
-  }) :
-      classCode = pulumi.Input.asOptionalInput<String>(classCode),
-      dbInstanceId = pulumi.Input.asOptionalInput<String>(dbInstanceId),
-      nodeId = pulumi.Input.asOptionalInput<String>(nodeId),
-      nodeRegionId = pulumi.Input.asOptionalInput<String>(nodeRegionId),
-      nodeRole = pulumi.Input.asOptionalInput<String>(nodeRole),
-      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+    this.classCode,
+    this.dbInstanceId,
+    this.nodeId,
+    this.nodeRegionId,
+    this.nodeRole,
+    this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class DbNodeState {
 
   factory DbNodeState.fromMap(Map<String, dynamic> map) {
     return DbNodeState(
-      classCode: map['classCode'] == null ? null : pulumi.Output.create<String>(map['classCode'] as String),
-      dbInstanceId: map['dbInstanceId'] == null ? null : pulumi.Output.create<String>(map['dbInstanceId'] as String),
-      nodeId: map['nodeId'] == null ? null : pulumi.Output.create<String>(map['nodeId'] as String),
-      nodeRegionId: map['nodeRegionId'] == null ? null : pulumi.Output.create<String>(map['nodeRegionId'] as String),
-      nodeRole: map['nodeRole'] == null ? null : pulumi.Output.create<String>(map['nodeRole'] as String),
-      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+      classCode: map['classCode'] == null ? null : (map['classCode'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeRegionId: map['nodeRegionId'] == null ? null : (map['nodeRegionId'] as String).input(),
+      nodeRole: map['nodeRole'] == null ? null : (map['nodeRole'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
     );
   }
 }

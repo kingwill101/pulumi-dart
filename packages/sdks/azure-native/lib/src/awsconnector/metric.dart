@@ -6,11 +6,11 @@ import 'dimension.dart';
 /// Definition of Metric
 class Metric {
   /// The metric dimensions that you want to be used for the metric that the alarm will watch.
-  final List<Dimension>? dimensions;
+  final pulumi.Input<List<Dimension>>? dimensions;
   /// The name of the metric that you want the alarm to watch. This is a required field.
-  final String? metricName;
+  final pulumi.Input<String>? metricName;
   /// The namespace of the metric that the alarm will watch.
-  final String? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Creates a new [Metric].
   /// [dimensions] The metric dimensions that you want to be used for the metric that the alarm will watch.
@@ -24,7 +24,7 @@ class Metric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<Dimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<Dimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<Dimension, Map<String, dynamic>>(value, (value) => value.toMap())),
       'metricName': ?metricName,
       'namespace': ?namespace,
     };
@@ -32,9 +32,9 @@ class Metric {
 
   factory Metric.fromMap(Map<String, dynamic> map) {
     return Metric(
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
     );
   }
 }

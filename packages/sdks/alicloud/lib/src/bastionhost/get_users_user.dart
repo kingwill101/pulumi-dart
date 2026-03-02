@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUsersUser {
   /// Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
-  final String comment;
+  final pulumi.Input<String> comment;
   /// Specify the New Created the User's Display Name. Supports up to 128 Characters.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Specify the New User's Mailbox.
-  final String email;
+  final pulumi.Input<String> email;
   /// The ID of the User.
-  final String id;
+  final pulumi.Input<String> id;
   /// You Want to Query the User the Bastion Host ID of.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// Specify the New of the User That Created a Different Mobile Phone Number from Your.
-  final String mobile;
+  final pulumi.Input<String> mobile;
   /// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
-  final String mobileCountryCode;
+  final pulumi.Input<String> mobileCountryCode;
   /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
-  final String source;
+  final pulumi.Input<String> source;
   /// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-  final String sourceUserId;
+  final pulumi.Input<String> sourceUserId;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The User ID.
-  final String userId;
+  final pulumi.Input<String> userId;
   /// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
-  final String userName;
+  final pulumi.Input<String> userName;
 
   /// Creates a new [GetUsersUser].
   /// [comment] Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
@@ -74,18 +75,18 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      comment: map['comment'] as String,
-      displayName: map['displayName'] as String,
-      email: map['email'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      mobile: map['mobile'] as String,
-      mobileCountryCode: map['mobileCountryCode'] as String,
-      source: map['source'] as String,
-      sourceUserId: map['sourceUserId'] as String,
-      status: map['status'] as String,
-      userId: map['userId'] as String,
-      userName: map['userName'] as String,
+      comment: (map['comment'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      email: (map['email'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      mobile: (map['mobile'] as String).input(),
+      mobileCountryCode: (map['mobileCountryCode'] as String).input(),
+      source: (map['source'] as String).input(),
+      sourceUserId: (map['sourceUserId'] as String).input(),
+      status: (map['status'] as String).input(),
+      userId: (map['userId'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -44,29 +44,18 @@ class ZoneRecordArgs {
   /// [value] The value of the Private Zone Record.
   /// [zoneId] The name of the Private Zone Record.
   ZoneRecordArgs({
-    pulumi.Output<String>? lang,
-    pulumi.Output<int>? priority,
-    pulumi.Output<String>? remark,
-    pulumi.Output<String>? resourceRecord,
-    pulumi.Output<String>? rr,
-    pulumi.Output<String>? status,
-    pulumi.Output<int>? ttl,
-    required pulumi.Output<String> type,
-    pulumi.Output<String>? userClientIp,
-    required pulumi.Output<String> value,
-    required pulumi.Output<String> zoneId,
-  }) :
-      lang = pulumi.Input.asOptionalInput<String>(lang),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      remark = pulumi.Input.asOptionalInput<String>(remark),
-      resourceRecord = pulumi.Input.asOptionalInput<String>(resourceRecord),
-      rr = pulumi.Input.asOptionalInput<String>(rr),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      ttl = pulumi.Input.asOptionalInput<int>(ttl),
-      type = pulumi.Input.asInput<String>(type),
-      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp),
-      value = pulumi.Input.asInput<String>(value),
-      zoneId = pulumi.Input.asInput<String>(zoneId);
+    this.lang,
+    this.priority,
+    this.remark,
+    this.resourceRecord,
+    this.rr,
+    this.status,
+    this.ttl,
+    required this.type,
+    this.userClientIp,
+    required this.value,
+    required this.zoneId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,17 +75,17 @@ class ZoneRecordArgs {
 
   factory ZoneRecordArgs.fromMap(Map<String, dynamic> map) {
     return ZoneRecordArgs(
-      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
-      remark: map['remark'] == null ? null : pulumi.Output.create<String>(map['remark'] as String),
-      resourceRecord: map['resourceRecord'] == null ? null : pulumi.Output.create<String>(map['resourceRecord'] as String),
-      rr: map['rr'] == null ? null : pulumi.Output.create<String>(map['rr'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      ttl: map['ttl'] == null ? null : pulumi.Output.create<int>(map['ttl'] as int),
-      type: pulumi.Output.create<String>(map['type'] as String),
-      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
-      value: pulumi.Output.create<String>(map['value'] as String),
-      zoneId: pulumi.Output.create<String>(map['zoneId'] as String),
+      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      resourceRecord: map['resourceRecord'] == null ? null : (map['resourceRecord'] as String).input(),
+      rr: map['rr'] == null ? null : (map['rr'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      type: (map['type'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      value: (map['value'] as String).input(),
+      zoneId: (map['zoneId'] as String).input(),
     );
   }
 }

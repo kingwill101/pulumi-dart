@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstancesInstanceIpWhitelist {
   /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
-  final String ipGroupAttribute;
+  final pulumi.Input<String> ipGroupAttribute;
   /// IP whitelist group name
-  final String ipGroupName;
+  final pulumi.Input<String> ipGroupName;
   /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
-  final String securityIpList;
+  final pulumi.Input<String> securityIpList;
 
   /// Creates a new [GetInstancesInstanceIpWhitelist].
   /// [ipGroupAttribute] The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -29,9 +30,9 @@ class GetInstancesInstanceIpWhitelist {
 
   factory GetInstancesInstanceIpWhitelist.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceIpWhitelist(
-      ipGroupAttribute: map['ipGroupAttribute'] as String,
-      ipGroupName: map['ipGroupName'] as String,
-      securityIpList: map['securityIpList'] as String,
+      ipGroupAttribute: (map['ipGroupAttribute'] as String).input(),
+      ipGroupName: (map['ipGroupName'] as String).input(),
+      securityIpList: (map['securityIpList'] as String).input(),
     );
   }
 }

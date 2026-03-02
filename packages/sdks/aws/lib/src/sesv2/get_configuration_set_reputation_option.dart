@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetReputationOption {
   /// The date and time (in Unix time) when the reputation metrics were last given a fresh start.
-  final String lastFreshStart;
+  final pulumi.Input<String> lastFreshStart;
   /// Specifies whether tracking of reputation metrics is enabled.
-  final bool reputationMetricsEnabled;
+  final pulumi.Input<bool> reputationMetricsEnabled;
 
   /// Creates a new [GetConfigurationSetReputationOption].
   /// [lastFreshStart] The date and time (in Unix time) when the reputation metrics were last given a fresh start.
@@ -24,8 +25,8 @@ class GetConfigurationSetReputationOption {
 
   factory GetConfigurationSetReputationOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetReputationOption(
-      lastFreshStart: map['lastFreshStart'] as String,
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] as bool,
+      lastFreshStart: (map['lastFreshStart'] as String).input(),
+      reputationMetricsEnabled: (map['reputationMetricsEnabled'] as bool).input(),
     );
   }
 }

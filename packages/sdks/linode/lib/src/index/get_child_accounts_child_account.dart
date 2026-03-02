@@ -1,39 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetChildAccountsChildAccount {
   /// When this account was first activated
-  final String activeSince;
+  final pulumi.Input<String> activeSince;
   /// First line of this Account's billing address.
-  final String address1;
+  final pulumi.Input<String> address1;
   /// Second line of this Account's billing address.
-  final String address2;
+  final pulumi.Input<String> address2;
   /// This Account's balance, in US dollars.
-  final double balance;
+  final pulumi.Input<double> balance;
   /// A set containing all the capabilities of this Account.
-  final List<String> capabilities;
+  final pulumi.Input<List<String>> capabilities;
   /// The city for this Account's billing address.
-  final String city;
+  final pulumi.Input<String> city;
   /// The company name associated with this Account.
-  final String company;
+  final pulumi.Input<String> company;
   /// The two-letter country code of this Account's billing address.
-  final String country;
+  final pulumi.Input<String> country;
   /// The email address for this Account, for account management communications, and may be used for other communications as configured.
-  final String email;
+  final pulumi.Input<String> email;
   /// The unique ID of this Account.
-  final String euuid;
+  final pulumi.Input<String> euuid;
   /// The first name of the person associated with this Account.
-  final String firstName;
+  final pulumi.Input<String> firstName;
   /// The Email of the Account.
-  final String id;
+  final pulumi.Input<String> id;
   /// The last name of the person associated with this Account.
-  final String lastName;
+  final pulumi.Input<String> lastName;
   /// The phone number associated with this Account.
-  final String phone;
+  final pulumi.Input<String> phone;
   /// If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-  final String state;
+  final pulumi.Input<String> state;
   /// The zip code of this Account's billing address.
-  final String zip;
+  final pulumi.Input<String> zip;
 
   /// Creates a new [GetChildAccountsChildAccount].
   /// [activeSince] When this account was first activated
@@ -94,22 +95,22 @@ class GetChildAccountsChildAccount {
 
   factory GetChildAccountsChildAccount.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsChildAccount(
-      activeSince: map['activeSince'] as String,
-      address1: map['address1'] as String,
-      address2: map['address2'] as String,
-      balance: map['balance'] as double,
-      capabilities: (map['capabilities'] as List).cast<String>(),
-      city: map['city'] as String,
-      company: map['company'] as String,
-      country: map['country'] as String,
-      email: map['email'] as String,
-      euuid: map['euuid'] as String,
-      firstName: map['firstName'] as String,
-      id: map['id'] as String,
-      lastName: map['lastName'] as String,
-      phone: map['phone'] as String,
-      state: map['state'] as String,
-      zip: map['zip'] as String,
+      activeSince: (map['activeSince'] as String).input(),
+      address1: (map['address1'] as String).input(),
+      address2: (map['address2'] as String).input(),
+      balance: (map['balance'] as double).input(),
+      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
+      city: (map['city'] as String).input(),
+      company: (map['company'] as String).input(),
+      country: (map['country'] as String).input(),
+      email: (map['email'] as String).input(),
+      euuid: (map['euuid'] as String).input(),
+      firstName: (map['firstName'] as String).input(),
+      id: (map['id'] as String).input(),
+      lastName: (map['lastName'] as String).input(),
+      phone: (map['phone'] as String).input(),
+      state: (map['state'] as String).input(),
+      zip: (map['zip'] as String).input(),
     );
   }
 }

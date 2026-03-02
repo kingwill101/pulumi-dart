@@ -26,17 +26,12 @@ class MongoClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   MongoClusterArgs({
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? mongoClusterName,
-    pulumi.Output<MongoClusterProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mongoClusterName = pulumi.Input.asOptionalInput<String>(mongoClusterName),
-      properties = pulumi.Input.asOptionalInput<MongoClusterProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.location,
+    this.mongoClusterName,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class MongoClusterArgs {
 
   factory MongoClusterArgs.fromMap(Map<String, dynamic> map) {
     return MongoClusterArgs(
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      mongoClusterName: map['mongoClusterName'] == null ? null : pulumi.Output.create<String>(map['mongoClusterName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MongoClusterProperties>(MongoClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      mongoClusterName: map['mongoClusterName'] == null ? null : (map['mongoClusterName'] as String).input(),
+      properties: map['properties'] == null ? null : (MongoClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

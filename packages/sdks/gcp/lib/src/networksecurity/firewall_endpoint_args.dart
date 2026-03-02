@@ -34,19 +34,13 @@ class FirewallEndpointArgs {
   /// [name] The name of the firewall endpoint resource.
   /// [parent] The name of the parent this firewall endpoint belongs to.
   FirewallEndpointArgs({
-    required pulumi.Output<String> billingProjectId,
-    pulumi.Output<FirewallEndpointEndpointSettings>? endpointSettings,
-    pulumi.Output<Map<String, String>>? labels,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-  }) :
-      billingProjectId = pulumi.Input.asInput<String>(billingProjectId),
-      endpointSettings = pulumi.Input.asOptionalInput<FirewallEndpointEndpointSettings>(endpointSettings),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent);
+    required this.billingProjectId,
+    this.endpointSettings,
+    this.labels,
+    required this.location,
+    this.name,
+    required this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,12 +55,12 @@ class FirewallEndpointArgs {
 
   factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointArgs(
-      billingProjectId: pulumi.Output.create<String>(map['billingProjectId'] as String),
-      endpointSettings: map['endpointSettings'] == null ? null : pulumi.Output.create<FirewallEndpointEndpointSettings>(FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
+      billingProjectId: (map['billingProjectId'] as String).input(),
+      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
     );
   }
 }

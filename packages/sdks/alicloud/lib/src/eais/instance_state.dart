@@ -47,33 +47,20 @@ class InstanceState {
   /// [tags] The tags.
   /// [vswitchId] Switch ID.
   InstanceState({
-    pulumi.Output<String>? category,
-    pulumi.Output<String>? createTime,
-    pulumi.Output<List<InstanceEnvironmentVar>>? environmentVars,
-    pulumi.Output<bool>? force,
-    pulumi.Output<String>? image,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? regionId,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? securityGroupId,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vswitchId,
-  }) :
-      category = pulumi.Input.asOptionalInput<String>(category),
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      environmentVars = pulumi.Input.asOptionalInput<List<InstanceEnvironmentVar>>(environmentVars),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      image = pulumi.Input.asOptionalInput<String>(image),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      regionId = pulumi.Input.asOptionalInput<String>(regionId),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      securityGroupId = pulumi.Input.asOptionalInput<String>(securityGroupId),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vswitchId = pulumi.Input.asOptionalInput<String>(vswitchId);
+    this.category,
+    this.createTime,
+    this.environmentVars,
+    this.force,
+    this.image,
+    this.instanceName,
+    this.instanceType,
+    this.regionId,
+    this.resourceGroupId,
+    this.securityGroupId,
+    this.status,
+    this.tags,
+    this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      environmentVars: map['environmentVars'] == null ? null : pulumi.Output.create<List<InstanceEnvironmentVar>>(pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars'], (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))),
-      force: map['force'] == null ? null : pulumi.Output.create<bool>(map['force'] as bool),
-      image: map['image'] == null ? null : pulumi.Output.create<String>(map['image'] as String),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      securityGroupId: map['securityGroupId'] == null ? null : pulumi.Output.create<String>(map['securityGroupId'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vswitchId: map['vswitchId'] == null ? null : pulumi.Output.create<String>(map['vswitchId'] as String),
+      category: map['category'] == null ? null : (map['category'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars'], (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
     );
   }
 }

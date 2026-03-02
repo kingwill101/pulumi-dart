@@ -42,31 +42,19 @@ class TimeSeriesAiplatformV1beta1Args {
   /// [tensorboardTimeSeriesId] Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}"
   /// [valueType] Immutable. Type of TensorboardTimeSeries value.
   TimeSeriesAiplatformV1beta1Args({
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<String>? etag,
-    required pulumi.Output<String> experimentId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? pluginData,
-    pulumi.Output<String>? pluginName,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> runId,
-    required pulumi.Output<String> tensorboardId,
-    pulumi.Output<String>? tensorboardTimeSeriesId,
-    required pulumi.Output<TimeSeriesValueTypeAiplatformV1beta1> valueType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      pluginData = pulumi.Input.asOptionalInput<String>(pluginData),
-      pluginName = pulumi.Input.asOptionalInput<String>(pluginName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
-      tensorboardTimeSeriesId = pulumi.Input.asOptionalInput<String>(tensorboardTimeSeriesId),
-      valueType = pulumi.Input.asInput<TimeSeriesValueTypeAiplatformV1beta1>(valueType);
+    this.description,
+    required this.displayName,
+    this.etag,
+    required this.experimentId,
+    this.location,
+    this.pluginData,
+    this.pluginName,
+    this.project,
+    required this.runId,
+    required this.tensorboardId,
+    this.tensorboardTimeSeriesId,
+    required this.valueType,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,18 +75,18 @@ class TimeSeriesAiplatformV1beta1Args {
 
   factory TimeSeriesAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TimeSeriesAiplatformV1beta1Args(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
-      experimentId: pulumi.Output.create<String>(map['experimentId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      pluginData: map['pluginData'] == null ? null : pulumi.Output.create<String>(map['pluginData'] as String),
-      pluginName: map['pluginName'] == null ? null : pulumi.Output.create<String>(map['pluginName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runId: pulumi.Output.create<String>(map['runId'] as String),
-      tensorboardId: pulumi.Output.create<String>(map['tensorboardId'] as String),
-      tensorboardTimeSeriesId: map['tensorboardTimeSeriesId'] == null ? null : pulumi.Output.create<String>(map['tensorboardTimeSeriesId'] as String),
-      valueType: pulumi.Output.create<TimeSeriesValueTypeAiplatformV1beta1>(TimeSeriesValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      experimentId: (map['experimentId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      pluginData: map['pluginData'] == null ? null : (map['pluginData'] as String).input(),
+      pluginName: map['pluginName'] == null ? null : (map['pluginName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runId: (map['runId'] as String).input(),
+      tensorboardId: (map['tensorboardId'] as String).input(),
+      tensorboardTimeSeriesId: map['tensorboardTimeSeriesId'] == null ? null : (map['tensorboardTimeSeriesId'] as String).input(),
+      valueType: (TimeSeriesValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)).input(),
     );
   }
 }

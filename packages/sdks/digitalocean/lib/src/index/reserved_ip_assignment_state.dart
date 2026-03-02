@@ -13,11 +13,9 @@ class ReservedIpAssignmentState {
   /// [dropletId] The ID of Droplet that the reserved IP will be assigned to.
   /// [ipAddress] The reserved IP to assign to the Droplet.
   ReservedIpAssignmentState({
-    pulumi.Output<int>? dropletId,
-    pulumi.Output<String>? ipAddress,
-  }) :
-      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress);
+    this.dropletId,
+    this.ipAddress,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,8 +26,8 @@ class ReservedIpAssignmentState {
 
   factory ReservedIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservedIpAssignmentState(
-      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
-      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// - Email message content.
-  final String emailMessage;
+  final pulumi.Input<String> emailMessage;
   /// - Email message subject.
-  final String emailSubject;
+  final pulumi.Input<String> emailSubject;
   /// - SMS message content.
-  final String smsMessage;
+  final pulumi.Input<String> smsMessage;
 
   /// Creates a new [GetUserPoolAdminCreateUserConfigInviteMessageTemplate].
   /// [emailMessage] - Email message content.
@@ -29,9 +30,9 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
 
   factory GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfigInviteMessageTemplate(
-      emailMessage: map['emailMessage'] as String,
-      emailSubject: map['emailSubject'] as String,
-      smsMessage: map['smsMessage'] as String,
+      emailMessage: (map['emailMessage'] as String).input(),
+      emailSubject: (map['emailSubject'] as String).input(),
+      smsMessage: (map['smsMessage'] as String).input(),
     );
   }
 }

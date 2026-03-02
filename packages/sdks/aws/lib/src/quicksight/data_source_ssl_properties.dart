@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceSslProperties {
   /// A Boolean option to control whether SSL should be disabled.
-  final bool disableSsl;
+  final pulumi.Input<bool> disableSsl;
 
   /// Creates a new [DataSourceSslProperties].
   /// [disableSsl] A Boolean option to control whether SSL should be disabled.
@@ -19,7 +20,7 @@ class DataSourceSslProperties {
 
   factory DataSourceSslProperties.fromMap(Map<String, dynamic> map) {
     return DataSourceSslProperties(
-      disableSsl: map['disableSsl'] as bool,
+      disableSsl: (map['disableSsl'] as bool).input(),
     );
   }
 }

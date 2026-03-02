@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference {
-  final int priority;
-  final String resourceArn;
+  final pulumi.Input<int> priority;
+  final pulumi.Input<String> resourceArn;
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference].
   /// [priority] Required.
@@ -22,8 +23,8 @@ class GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference {
 
   factory GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference(
-      priority: map['priority'] as int,
-      resourceArn: map['resourceArn'] as String,
+      priority: (map['priority'] as int).input(),
+      resourceArn: (map['resourceArn'] as String).input(),
     );
   }
 }

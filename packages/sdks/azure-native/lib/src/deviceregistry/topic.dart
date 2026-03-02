@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Object that describes the topic information.
 class Topic {
   /// The topic path for messages published to an MQTT broker.
-  final String path;
+  final pulumi.Input<String> path;
   /// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-  final String? retain;
+  final pulumi.Input<String>? retain;
 
   /// Creates a new [Topic].
   /// [path] The topic path for messages published to an MQTT broker.
@@ -25,8 +26,8 @@ class Topic {
 
   factory Topic.fromMap(Map<String, dynamic> map) {
     return Topic(
-      path: map['path'] as String,
-      retain: map['retain'] == null ? null : map['retain'] as String,
+      path: (map['path'] as String).input(),
+      retain: map['retain'] == null ? null : (map['retain'] as String).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class MaliciousFileWhitelistConfigArgs {
   /// [targetType] The type of target in effect on behalf of the resource.
   /// [targetValue] Represents the specific value of the target type in effect for the resource.
   MaliciousFileWhitelistConfigArgs({
-    pulumi.Output<String>? eventName,
-    pulumi.Output<String>? field,
-    pulumi.Output<String>? fieldValue,
-    pulumi.Output<String>? operator,
-    pulumi.Output<String>? source,
-    pulumi.Output<String>? targetType,
-    pulumi.Output<String>? targetValue,
-  }) :
-      eventName = pulumi.Input.asOptionalInput<String>(eventName),
-      field = pulumi.Input.asOptionalInput<String>(field),
-      fieldValue = pulumi.Input.asOptionalInput<String>(fieldValue),
-      operator = pulumi.Input.asOptionalInput<String>(operator),
-      source = pulumi.Input.asOptionalInput<String>(source),
-      targetType = pulumi.Input.asOptionalInput<String>(targetType),
-      targetValue = pulumi.Input.asOptionalInput<String>(targetValue);
+    this.eventName,
+    this.field,
+    this.fieldValue,
+    this.operator,
+    this.source,
+    this.targetType,
+    this.targetValue,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class MaliciousFileWhitelistConfigArgs {
 
   factory MaliciousFileWhitelistConfigArgs.fromMap(Map<String, dynamic> map) {
     return MaliciousFileWhitelistConfigArgs(
-      eventName: map['eventName'] == null ? null : pulumi.Output.create<String>(map['eventName'] as String),
-      field: map['field'] == null ? null : pulumi.Output.create<String>(map['field'] as String),
-      fieldValue: map['fieldValue'] == null ? null : pulumi.Output.create<String>(map['fieldValue'] as String),
-      operator: map['operator'] == null ? null : pulumi.Output.create<String>(map['operator'] as String),
-      source: map['source'] == null ? null : pulumi.Output.create<String>(map['source'] as String),
-      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
-      targetValue: map['targetValue'] == null ? null : pulumi.Output.create<String>(map['targetValue'] as String),
+      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
+      field: map['field'] == null ? null : (map['field'] as String).input(),
+      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      source: map['source'] == null ? null : (map['source'] as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as String).input(),
     );
   }
 }

@@ -27,17 +27,12 @@ class DatabaseKafkaTopicArgs {
   /// [partitionCount] The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
   /// [replicationFactor] The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
   DatabaseKafkaTopicArgs({
-    required pulumi.Output<String> clusterId,
-    pulumi.Output<List<DatabaseKafkaTopicConfig>>? configs,
-    pulumi.Output<String>? name,
-    pulumi.Output<int>? partitionCount,
-    pulumi.Output<int>? replicationFactor,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      configs = pulumi.Input.asOptionalInput<List<DatabaseKafkaTopicConfig>>(configs),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionCount = pulumi.Input.asOptionalInput<int>(partitionCount),
-      replicationFactor = pulumi.Input.asOptionalInput<int>(replicationFactor);
+    required this.clusterId,
+    this.configs,
+    this.name,
+    this.partitionCount,
+    this.replicationFactor,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class DatabaseKafkaTopicArgs {
 
   factory DatabaseKafkaTopicArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaTopicArgs(
-      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
-      configs: map['configs'] == null ? null : pulumi.Output.create<List<DatabaseKafkaTopicConfig>>(pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs'], (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      partitionCount: map['partitionCount'] == null ? null : pulumi.Output.create<int>(map['partitionCount'] as int),
-      replicationFactor: map['replicationFactor'] == null ? null : pulumi.Output.create<int>(map['replicationFactor'] as int),
+      clusterId: (map['clusterId'] as String).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs'], (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as int).input(),
     );
   }
 }

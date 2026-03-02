@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'example_message_chunk_tool_call_toolset_tool.dart';
 
 class ExampleMessageChunkToolCall {
   /// The input parameters and values for the tool in JSON object format.
-  final String? args;
+  final pulumi.Input<String>? args;
   /// (Output)
   /// Display name of the tool.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// The unique identifier of the tool call. If populated, the client should
   /// return the execution result with the matching ID in
   /// ToolResponse.
-  final String? id;
+  final pulumi.Input<String>? id;
   /// The name of the tool to execute.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final String? tool;
+  final pulumi.Input<String>? tool;
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final ExampleMessageChunkToolCallToolsetTool? toolsetTool;
+  final pulumi.Input<ExampleMessageChunkToolCallToolsetTool>? toolsetTool;
 
   /// Creates a new [ExampleMessageChunkToolCall].
   /// [args] The input parameters and values for the tool in JSON object format.
@@ -39,17 +40,17 @@ class ExampleMessageChunkToolCall {
       'displayName': ?displayName,
       'id': ?id,
       'tool': ?tool,
-      'toolsetTool': ?toolsetTool == null ? null : toolsetTool!.toMap(),
+      'toolsetTool': ?pulumi.Input.mapOptionalInputValue<ExampleMessageChunkToolCallToolsetTool, Map<String, dynamic>>(toolsetTool, (value) => value.toMap()),
     };
   }
 
   factory ExampleMessageChunkToolCall.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkToolCall(
-      args: map['args'] == null ? null : map['args'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      tool: map['tool'] == null ? null : map['tool'] as String,
-      toolsetTool: map['toolsetTool'] == null ? null : ExampleMessageChunkToolCallToolsetTool.fromMap((map['toolsetTool'] as Map).cast<String, dynamic>()),
+      args: map['args'] == null ? null : (map['args'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      id: map['id'] == null ? null : (map['id'] as String).input(),
+      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
+      toolsetTool: map['toolsetTool'] == null ? null : (ExampleMessageChunkToolCallToolsetTool.fromMap((map['toolsetTool'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

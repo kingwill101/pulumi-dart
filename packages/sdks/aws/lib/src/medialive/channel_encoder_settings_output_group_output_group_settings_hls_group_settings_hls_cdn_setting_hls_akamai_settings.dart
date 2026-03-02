@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings {
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final int? connectionRetryInterval;
-  final int? filecacheDuration;
-  final String? httpTransferMode;
+  final pulumi.Input<int>? connectionRetryInterval;
+  final pulumi.Input<int>? filecacheDuration;
+  final pulumi.Input<String>? httpTransferMode;
   /// Number of retry attempts.
-  final int? numRetries;
+  final pulumi.Input<int>? numRetries;
   /// Number of seconds to wait until a restart is initiated.
-  final int? restartDelay;
-  final String? salt;
-  final String? token;
+  final pulumi.Input<int>? restartDelay;
+  final pulumi.Input<String>? salt;
+  final pulumi.Input<String>? token;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings].
   /// [connectionRetryInterval] Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
@@ -45,13 +46,13 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings(
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : map['connectionRetryInterval'] as int,
-      filecacheDuration: map['filecacheDuration'] == null ? null : map['filecacheDuration'] as int,
-      httpTransferMode: map['httpTransferMode'] == null ? null : map['httpTransferMode'] as String,
-      numRetries: map['numRetries'] == null ? null : map['numRetries'] as int,
-      restartDelay: map['restartDelay'] == null ? null : map['restartDelay'] as int,
-      salt: map['salt'] == null ? null : map['salt'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
+      filecacheDuration: map['filecacheDuration'] == null ? null : (map['filecacheDuration'] as int).input(),
+      httpTransferMode: map['httpTransferMode'] == null ? null : (map['httpTransferMode'] as String).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
+      restartDelay: map['restartDelay'] == null ? null : (map['restartDelay'] as int).input(),
+      salt: map['salt'] == null ? null : (map['salt'] as String).input(),
+      token: map['token'] == null ? null : (map['token'] as String).input(),
     );
   }
 }

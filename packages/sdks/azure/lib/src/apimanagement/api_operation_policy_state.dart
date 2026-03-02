@@ -25,19 +25,13 @@ class ApiOperationPolicyState {
   /// [xmlContent] The XML Content for this Policy.
   /// [xmlLink] A link to a Policy XML Document, which must be publicly available.
   ApiOperationPolicyState({
-    pulumi.Output<String>? apiManagementName,
-    pulumi.Output<String>? apiName,
-    pulumi.Output<String>? operationId,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? xmlContent,
-    pulumi.Output<String>? xmlLink,
-  }) :
-      apiManagementName = pulumi.Input.asOptionalInput<String>(apiManagementName),
-      apiName = pulumi.Input.asOptionalInput<String>(apiName),
-      operationId = pulumi.Input.asOptionalInput<String>(operationId),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      xmlContent = pulumi.Input.asOptionalInput<String>(xmlContent),
-      xmlLink = pulumi.Input.asOptionalInput<String>(xmlLink);
+    this.apiManagementName,
+    this.apiName,
+    this.operationId,
+    this.resourceGroupName,
+    this.xmlContent,
+    this.xmlLink,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class ApiOperationPolicyState {
 
   factory ApiOperationPolicyState.fromMap(Map<String, dynamic> map) {
     return ApiOperationPolicyState(
-      apiManagementName: map['apiManagementName'] == null ? null : pulumi.Output.create<String>(map['apiManagementName'] as String),
-      apiName: map['apiName'] == null ? null : pulumi.Output.create<String>(map['apiName'] as String),
-      operationId: map['operationId'] == null ? null : pulumi.Output.create<String>(map['operationId'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      xmlContent: map['xmlContent'] == null ? null : pulumi.Output.create<String>(map['xmlContent'] as String),
-      xmlLink: map['xmlLink'] == null ? null : pulumi.Output.create<String>(map['xmlLink'] as String),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
     );
   }
 }

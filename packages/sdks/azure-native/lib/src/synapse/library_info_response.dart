@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Library/package information of a Big Data pool powered by Apache Spark
 class LibraryInfoResponse {
   /// Storage blob container name.
-  final String? containerName;
+  final pulumi.Input<String>? containerName;
   /// Creator Id of the library/package.
-  final String creatorId;
+  final pulumi.Input<String> creatorId;
   /// Name of the library.
-  final String? name;
+  final pulumi.Input<String>? name;
   /// Storage blob path of library.
-  final String? path;
+  final pulumi.Input<String>? path;
   /// Provisioning status of the library/package.
-  final String provisioningStatus;
+  final pulumi.Input<String> provisioningStatus;
   /// Type of the library.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The last update time of the library.
-  final String uploadedTimestamp;
+  final pulumi.Input<String> uploadedTimestamp;
 
   /// Creates a new [LibraryInfoResponse].
   /// [containerName] Storage blob container name.
@@ -50,13 +51,13 @@ class LibraryInfoResponse {
 
   factory LibraryInfoResponse.fromMap(Map<String, dynamic> map) {
     return LibraryInfoResponse(
-      containerName: map['containerName'] == null ? null : map['containerName'] as String,
-      creatorId: map['creatorId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
-      provisioningStatus: map['provisioningStatus'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      uploadedTimestamp: map['uploadedTimestamp'] as String,
+      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      creatorId: (map['creatorId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      provisioningStatus: (map['provisioningStatus'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      uploadedTimestamp: (map['uploadedTimestamp'] as String).input(),
     );
   }
 }

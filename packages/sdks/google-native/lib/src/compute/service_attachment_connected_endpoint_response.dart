@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Output Only] A connection connected to this service attachment.
 class ServiceAttachmentConnectedEndpointResponse {
   /// The url of the consumer network.
-  final String consumerNetwork;
+  final pulumi.Input<String> consumerNetwork;
   /// The url of a connected endpoint.
-  final String endpoint;
+  final pulumi.Input<String> endpoint;
   /// The PSC connection id of the connected endpoint.
-  final String pscConnectionId;
+  final pulumi.Input<String> pscConnectionId;
   /// The status of a connected endpoint to this service attachment.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [ServiceAttachmentConnectedEndpointResponse].
   /// [consumerNetwork] The url of the consumer network.
@@ -35,10 +36,10 @@ class ServiceAttachmentConnectedEndpointResponse {
 
   factory ServiceAttachmentConnectedEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConnectedEndpointResponse(
-      consumerNetwork: map['consumerNetwork'] as String,
-      endpoint: map['endpoint'] as String,
-      pscConnectionId: map['pscConnectionId'] as String,
-      status: map['status'] as String,
+      consumerNetwork: (map['consumerNetwork'] as String).input(),
+      endpoint: (map['endpoint'] as String).input(),
+      pscConnectionId: (map['pscConnectionId'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

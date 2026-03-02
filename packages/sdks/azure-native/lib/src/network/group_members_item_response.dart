@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// GroupMembers Item.
 class GroupMembersItemResponse {
   /// Resource Id.
-  final String? resourceId;
+  final pulumi.Input<String>? resourceId;
 
   /// Creates a new [GroupMembersItemResponse].
   /// [resourceId] Resource Id.
@@ -20,7 +21,7 @@ class GroupMembersItemResponse {
 
   factory GroupMembersItemResponse.fromMap(Map<String, dynamic> map) {
     return GroupMembersItemResponse(
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
     );
   }
 }

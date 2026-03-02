@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedServiceSftpKeyVaultPrivateKeyContentBase64 {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
-  final String linkedServiceName;
+  final pulumi.Input<String> linkedServiceName;
   /// Specifies the name of the secret containing the Base64 encoded SSH private key.
-  final String secretName;
+  final pulumi.Input<String> secretName;
 
   /// Creates a new [LinkedServiceSftpKeyVaultPrivateKeyContentBase64].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
@@ -24,8 +25,8 @@ class LinkedServiceSftpKeyVaultPrivateKeyContentBase64 {
 
   factory LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap(Map<String, dynamic> map) {
     return LinkedServiceSftpKeyVaultPrivateKeyContentBase64(
-      linkedServiceName: map['linkedServiceName'] as String,
-      secretName: map['secretName'] as String,
+      linkedServiceName: (map['linkedServiceName'] as String).input(),
+      secretName: (map['secretName'] as String).input(),
     );
   }
 }

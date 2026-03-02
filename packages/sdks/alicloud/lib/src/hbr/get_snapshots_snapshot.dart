@@ -1,60 +1,61 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSnapshotsSnapshot {
   /// The actual data volume of the snapshot. Unit byte.
-  final String actualBytes;
+  final pulumi.Input<String> actualBytes;
   /// The actual number of items in the snapshot. (Currently only file backup is available).
-  final String actualItems;
+  final pulumi.Input<String> actualItems;
   /// Backup type. Possible values: `COMPLETE` (full backup).
-  final String backupType;
+  final pulumi.Input<String> backupType;
   /// The name of OSS bucket.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// The incremental amount of backup data. Unit byte.
-  final String bytesDone;
+  final pulumi.Input<String> bytesDone;
   /// The total amount of data sources. Unit byte.
-  final String bytesTotal;
+  final pulumi.Input<String> bytesTotal;
   /// The ID of ECS backup client.
-  final String clientId;
+  final pulumi.Input<String> clientId;
   /// The time when the snapshot completed. UNIX time in seconds.
-  final String completeTime;
+  final pulumi.Input<String> completeTime;
   /// File System Creation Time of Nas. Unix Time Seconds.
-  final String createTime;
+  final pulumi.Input<String> createTime;
   /// Snapshot creation time. UNIX time in seconds.
-  final String createdTime;
-  final String errorFile;
+  final pulumi.Input<String> createdTime;
+  final pulumi.Input<String> errorFile;
   /// The ID of NAS File system.
-  final String fileSystemId;
+  final pulumi.Input<String> fileSystemId;
   /// The ID of the Snapshot.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of ECS instance.
-  final String instanceId;
+  final pulumi.Input<String> instanceId;
   /// The number of backup items. (Currently only file backup is available).
-  final String itemsDone;
+  final pulumi.Input<String> itemsDone;
   /// The total number of data source items. (Currently only file backup is available).
-  final String itemsTotal;
+  final pulumi.Input<String> itemsTotal;
   /// The job ID of backup task.
-  final String jobId;
+  final pulumi.Input<String> jobId;
   /// The hashcode of parent backup snapshot.
-  final String parentSnapshotHash;
+  final pulumi.Input<String> parentSnapshotHash;
   /// Backup Path.
-  final String path;
+  final pulumi.Input<String> path;
   /// Backup file prefix.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// The number of days to keep.
-  final String retention;
+  final pulumi.Input<String> retention;
   /// The hashcode of Snapshot.
-  final String snapshotHash;
+  final pulumi.Input<String> snapshotHash;
   /// The ID of the Snapshot.
-  final String snapshotId;
+  final pulumi.Input<String> snapshotId;
   /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
-  final String sourceType;
+  final pulumi.Input<String> sourceType;
   /// The start time of the snapshot. UNIX time in seconds.
-  final String startTime;
+  final pulumi.Input<String> startTime;
   /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
-  final String status;
+  final pulumi.Input<String> status;
   /// The update time of snapshot. UNIX time in seconds.
-  final String updatedTime;
+  final pulumi.Input<String> updatedTime;
 
   /// Creates a new [GetSnapshotsSnapshot].
   /// [actualBytes] The actual data volume of the snapshot. Unit byte.
@@ -148,33 +149,33 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      actualBytes: map['actualBytes'] as String,
-      actualItems: map['actualItems'] as String,
-      backupType: map['backupType'] as String,
-      bucket: map['bucket'] as String,
-      bytesDone: map['bytesDone'] as String,
-      bytesTotal: map['bytesTotal'] as String,
-      clientId: map['clientId'] as String,
-      completeTime: map['completeTime'] as String,
-      createTime: map['createTime'] as String,
-      createdTime: map['createdTime'] as String,
-      errorFile: map['errorFile'] as String,
-      fileSystemId: map['fileSystemId'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      itemsDone: map['itemsDone'] as String,
-      itemsTotal: map['itemsTotal'] as String,
-      jobId: map['jobId'] as String,
-      parentSnapshotHash: map['parentSnapshotHash'] as String,
-      path: map['path'] as String,
-      prefix: map['prefix'] as String,
-      retention: map['retention'] as String,
-      snapshotHash: map['snapshotHash'] as String,
-      snapshotId: map['snapshotId'] as String,
-      sourceType: map['sourceType'] as String,
-      startTime: map['startTime'] as String,
-      status: map['status'] as String,
-      updatedTime: map['updatedTime'] as String,
+      actualBytes: (map['actualBytes'] as String).input(),
+      actualItems: (map['actualItems'] as String).input(),
+      backupType: (map['backupType'] as String).input(),
+      bucket: (map['bucket'] as String).input(),
+      bytesDone: (map['bytesDone'] as String).input(),
+      bytesTotal: (map['bytesTotal'] as String).input(),
+      clientId: (map['clientId'] as String).input(),
+      completeTime: (map['completeTime'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      createdTime: (map['createdTime'] as String).input(),
+      errorFile: (map['errorFile'] as String).input(),
+      fileSystemId: (map['fileSystemId'] as String).input(),
+      id: (map['id'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      itemsDone: (map['itemsDone'] as String).input(),
+      itemsTotal: (map['itemsTotal'] as String).input(),
+      jobId: (map['jobId'] as String).input(),
+      parentSnapshotHash: (map['parentSnapshotHash'] as String).input(),
+      path: (map['path'] as String).input(),
+      prefix: (map['prefix'] as String).input(),
+      retention: (map['retention'] as String).input(),
+      snapshotHash: (map['snapshotHash'] as String).input(),
+      snapshotId: (map['snapshotId'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
+      startTime: (map['startTime'] as String).input(),
+      status: (map['status'] as String).input(),
+      updatedTime: (map['updatedTime'] as String).input(),
     );
   }
 }

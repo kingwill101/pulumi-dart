@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The registrar associated with this domain
 class EnrichmentDomainWhoisRegistrarDetailsResponse {
   /// This registrar's abuse contact email
-  final String? abuseContactEmail;
+  final pulumi.Input<String>? abuseContactEmail;
   /// This registrar's abuse contact phone number
-  final String? abuseContactPhone;
+  final pulumi.Input<String>? abuseContactPhone;
   /// This registrar's Internet Assigned Numbers Authority id
-  final String? ianaId;
+  final pulumi.Input<String>? ianaId;
   /// The name of this registrar
-  final String? name;
+  final pulumi.Input<String>? name;
   /// This registrar's URL
-  final String? url;
+  final pulumi.Input<String>? url;
   /// The hostname of this registrar's whois server
-  final String? whoisServer;
+  final pulumi.Input<String>? whoisServer;
 
   /// Creates a new [EnrichmentDomainWhoisRegistrarDetailsResponse].
   /// [abuseContactEmail] This registrar's abuse contact email
@@ -45,12 +46,12 @@ class EnrichmentDomainWhoisRegistrarDetailsResponse {
 
   factory EnrichmentDomainWhoisRegistrarDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisRegistrarDetailsResponse(
-      abuseContactEmail: map['abuseContactEmail'] == null ? null : map['abuseContactEmail'] as String,
-      abuseContactPhone: map['abuseContactPhone'] == null ? null : map['abuseContactPhone'] as String,
-      ianaId: map['ianaId'] == null ? null : map['ianaId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
-      whoisServer: map['whoisServer'] == null ? null : map['whoisServer'] as String,
+      abuseContactEmail: map['abuseContactEmail'] == null ? null : (map['abuseContactEmail'] as String).input(),
+      abuseContactPhone: map['abuseContactPhone'] == null ? null : (map['abuseContactPhone'] as String).input(),
+      ianaId: map['ianaId'] == null ? null : (map['ianaId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      url: map['url'] == null ? null : (map['url'] as String).input(),
+      whoisServer: map['whoisServer'] == null ? null : (map['whoisServer'] as String).input(),
     );
   }
 }

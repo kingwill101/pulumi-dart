@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertifiateCertificate {
   /// The base64-encoded certificate contents.
-  final String contents;
+  final pulumi.Input<String> contents;
   /// The password associated with the certificate.
   ///
   /// > **NOTE:** A PEM certificate is already base64 encoded. To successfully import, the `contents` property should include a PEM encoded X509 certificate and a private_key in pkcs8 format. There should only be linux style `\n` line endings and the whole block should have the PEM begin/end blocks around the certificate data and the private key data.
@@ -26,7 +27,7 @@ class CertifiateCertificate {
   /// d29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQKd29ybGQK
   /// -----END PRIVATE KEY-----
   /// ```
-  final String? password;
+  final pulumi.Input<String>? password;
 
   /// Creates a new [CertifiateCertificate].
   /// [contents] The base64-encoded certificate contents.
@@ -45,8 +46,8 @@ class CertifiateCertificate {
 
   factory CertifiateCertificate.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificate(
-      contents: map['contents'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
+      contents: (map['contents'] as String).input(),
+      password: map['password'] == null ? null : (map['password'] as String).input(),
     );
   }
 }

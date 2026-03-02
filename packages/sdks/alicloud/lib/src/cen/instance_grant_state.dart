@@ -16,13 +16,10 @@ class InstanceGrantState {
   /// [cenOwnerId] The owner UID of the  CEN which the child instance granted to.
   /// [childInstanceId] The ID of the child instance to grant.
   InstanceGrantState({
-    pulumi.Output<String>? cenId,
-    pulumi.Output<String>? cenOwnerId,
-    pulumi.Output<String>? childInstanceId,
-  }) :
-      cenId = pulumi.Input.asOptionalInput<String>(cenId),
-      cenOwnerId = pulumi.Input.asOptionalInput<String>(cenOwnerId),
-      childInstanceId = pulumi.Input.asOptionalInput<String>(childInstanceId);
+    this.cenId,
+    this.cenOwnerId,
+    this.childInstanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class InstanceGrantState {
 
   factory InstanceGrantState.fromMap(Map<String, dynamic> map) {
     return InstanceGrantState(
-      cenId: map['cenId'] == null ? null : pulumi.Output.create<String>(map['cenId'] as String),
-      cenOwnerId: map['cenOwnerId'] == null ? null : pulumi.Output.create<String>(map['cenOwnerId'] as String),
-      childInstanceId: map['childInstanceId'] == null ? null : pulumi.Output.create<String>(map['childInstanceId'] as String),
+      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
     );
   }
 }

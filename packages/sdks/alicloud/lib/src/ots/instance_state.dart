@@ -45,23 +45,15 @@ class InstanceState {
   /// [resourceGroupId] The resource group the instance belongs to.
   /// [tags] A mapping of tags to assign to the instance.
   InstanceState({
-    pulumi.Output<String>? accessedBy,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? networkSourceAcls,
-    pulumi.Output<List<String>>? networkTypeAcls,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      accessedBy = pulumi.Input.asOptionalInput<String>(accessedBy),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networkSourceAcls = pulumi.Input.asOptionalInput<List<String>>(networkSourceAcls),
-      networkTypeAcls = pulumi.Input.asOptionalInput<List<String>>(networkTypeAcls),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.accessedBy,
+    this.description,
+    this.instanceType,
+    this.name,
+    this.networkSourceAcls,
+    this.networkTypeAcls,
+    this.resourceGroupId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,14 +70,14 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      accessedBy: map['accessedBy'] == null ? null : pulumi.Output.create<String>(map['accessedBy'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      networkSourceAcls: map['networkSourceAcls'] == null ? null : pulumi.Output.create<List<String>>((map['networkSourceAcls'] as List).cast<String>()),
-      networkTypeAcls: map['networkTypeAcls'] == null ? null : pulumi.Output.create<List<String>>((map['networkTypeAcls'] as List).cast<String>()),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      accessedBy: map['accessedBy'] == null ? null : (map['accessedBy'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      networkSourceAcls: map['networkSourceAcls'] == null ? null : ((map['networkSourceAcls'] as List).cast<String>()).input(),
+      networkTypeAcls: map['networkTypeAcls'] == null ? null : ((map['networkTypeAcls'] as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

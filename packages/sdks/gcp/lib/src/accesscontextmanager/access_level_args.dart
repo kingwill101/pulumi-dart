@@ -36,19 +36,13 @@ class AccessLevelArgs {
   /// [parent] The AccessPolicy this AccessLevel lives in.
   /// [title] Human readable title. Must be unique within the Policy.
   AccessLevelArgs({
-    pulumi.Output<AccessLevelBasic>? basic,
-    pulumi.Output<AccessLevelCustom>? custom,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? name,
-    required pulumi.Output<String> parent,
-    required pulumi.Output<String> title,
-  }) :
-      basic = pulumi.Input.asOptionalInput<AccessLevelBasic>(basic),
-      custom = pulumi.Input.asOptionalInput<AccessLevelCustom>(custom),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      title = pulumi.Input.asInput<String>(title);
+    this.basic,
+    this.custom,
+    this.description,
+    this.name,
+    required this.parent,
+    required this.title,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,12 +57,12 @@ class AccessLevelArgs {
 
   factory AccessLevelArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelArgs(
-      basic: map['basic'] == null ? null : pulumi.Output.create<AccessLevelBasic>(AccessLevelBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())),
-      custom: map['custom'] == null ? null : pulumi.Output.create<AccessLevelCustom>(AccessLevelCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parent: pulumi.Output.create<String>(map['parent'] as String),
-      title: pulumi.Output.create<String>(map['title'] as String),
+      basic: map['basic'] == null ? null : (AccessLevelBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (AccessLevelCustom.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parent: (map['parent'] as String).input(),
+      title: (map['title'] as String).input(),
     );
   }
 }

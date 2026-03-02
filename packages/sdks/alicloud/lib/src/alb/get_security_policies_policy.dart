@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSecurityPoliciesPolicy {
   /// The supported cipher suites, which are determined by the TLS protocol version.
-  final List<String> ciphers;
+  final pulumi.Input<List<String>> ciphers;
   /// The ID of the Security Policy.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the resource group.
-  final String resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
   /// The first ID of the resource.
-  final String securityPolicyId;
+  final pulumi.Input<String> securityPolicyId;
   /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
-  final String securityPolicyName;
+  final pulumi.Input<String> securityPolicyName;
   /// The status of the resource.
-  final String status;
+  final pulumi.Input<String> status;
   /// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  final List<String> tlsVersions;
+  final pulumi.Input<List<String>> tlsVersions;
 
   /// Creates a new [GetSecurityPoliciesPolicy].
   /// [ciphers] The supported cipher suites, which are determined by the TLS protocol version.
@@ -49,13 +50,13 @@ class GetSecurityPoliciesPolicy {
 
   factory GetSecurityPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetSecurityPoliciesPolicy(
-      ciphers: (map['ciphers'] as List).cast<String>(),
-      id: map['id'] as String,
-      resourceGroupId: map['resourceGroupId'] as String,
-      securityPolicyId: map['securityPolicyId'] as String,
-      securityPolicyName: map['securityPolicyName'] as String,
-      status: map['status'] as String,
-      tlsVersions: (map['tlsVersions'] as List).cast<String>(),
+      ciphers: ((map['ciphers'] as List).cast<String>()).input(),
+      id: (map['id'] as String).input(),
+      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      securityPolicyId: (map['securityPolicyId'] as String).input(),
+      securityPolicyName: (map['securityPolicyName'] as String).input(),
+      status: (map['status'] as String).input(),
+      tlsVersions: ((map['tlsVersions'] as List).cast<String>()).input(),
     );
   }
 }

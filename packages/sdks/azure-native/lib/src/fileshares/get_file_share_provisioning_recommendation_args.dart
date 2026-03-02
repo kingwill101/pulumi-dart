@@ -17,11 +17,9 @@ class GetFileShareProvisioningRecommendationArgs {
   /// [location] The name of the Azure region.
   /// [properties] The properties of the file share provisioning recommendation input.
   GetFileShareProvisioningRecommendationArgs({
-    required pulumi.Output<String> location,
-    required pulumi.Output<FileShareProvisioningRecommendationInput> properties,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      properties = pulumi.Input.asInput<FileShareProvisioningRecommendationInput>(properties);
+    required this.location,
+    required this.properties,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetFileShareProvisioningRecommendationArgs {
 
   factory GetFileShareProvisioningRecommendationArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareProvisioningRecommendationArgs(
-      location: pulumi.Output.create<String>(map['location'] as String),
-      properties: pulumi.Output.create<FileShareProvisioningRecommendationInput>(FileShareProvisioningRecommendationInput.fromMap((map['properties'] as Map).cast<String, dynamic>())),
+      location: (map['location'] as String).input(),
+      properties: (FileShareProvisioningRecommendationInput.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

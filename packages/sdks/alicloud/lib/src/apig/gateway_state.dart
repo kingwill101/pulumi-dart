@@ -57,35 +57,21 @@ class GatewayState {
   /// [zoneConfig] Availability Zone Configuration See `zone_config` below.
   /// [zones] The List of zones associated with the Gateway. See `zones` below.
   GatewayState({
-    pulumi.Output<int>? createTime,
-    pulumi.Output<String>? gatewayName,
-    pulumi.Output<String>? gatewayType,
-    pulumi.Output<GatewayLogConfig>? logConfig,
-    pulumi.Output<GatewayNetworkAccessConfig>? networkAccessConfig,
-    pulumi.Output<String>? paymentType,
-    pulumi.Output<String>? resourceGroupId,
-    pulumi.Output<String>? spec,
-    pulumi.Output<String>? status,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<GatewayVpc>? vpc,
-    pulumi.Output<GatewayVswitch>? vswitch,
-    pulumi.Output<GatewayZoneConfig>? zoneConfig,
-    pulumi.Output<List<GatewayZone>>? zones,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<int>(createTime),
-      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
-      gatewayType = pulumi.Input.asOptionalInput<String>(gatewayType),
-      logConfig = pulumi.Input.asOptionalInput<GatewayLogConfig>(logConfig),
-      networkAccessConfig = pulumi.Input.asOptionalInput<GatewayNetworkAccessConfig>(networkAccessConfig),
-      paymentType = pulumi.Input.asOptionalInput<String>(paymentType),
-      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
-      spec = pulumi.Input.asOptionalInput<String>(spec),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpc = pulumi.Input.asOptionalInput<GatewayVpc>(vpc),
-      vswitch = pulumi.Input.asOptionalInput<GatewayVswitch>(vswitch),
-      zoneConfig = pulumi.Input.asOptionalInput<GatewayZoneConfig>(zoneConfig),
-      zones = pulumi.Input.asOptionalInput<List<GatewayZone>>(zones);
+    this.createTime,
+    this.gatewayName,
+    this.gatewayType,
+    this.logConfig,
+    this.networkAccessConfig,
+    this.paymentType,
+    this.resourceGroupId,
+    this.spec,
+    this.status,
+    this.tags,
+    this.vpc,
+    this.vswitch,
+    this.zoneConfig,
+    this.zones,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -108,20 +94,20 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<int>(map['createTime'] as int),
-      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
-      gatewayType: map['gatewayType'] == null ? null : pulumi.Output.create<String>(map['gatewayType'] as String),
-      logConfig: map['logConfig'] == null ? null : pulumi.Output.create<GatewayLogConfig>(GatewayLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())),
-      networkAccessConfig: map['networkAccessConfig'] == null ? null : pulumi.Output.create<GatewayNetworkAccessConfig>(GatewayNetworkAccessConfig.fromMap((map['networkAccessConfig'] as Map).cast<String, dynamic>())),
-      paymentType: map['paymentType'] == null ? null : pulumi.Output.create<String>(map['paymentType'] as String),
-      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
-      spec: map['spec'] == null ? null : pulumi.Output.create<String>(map['spec'] as String),
-      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpc: map['vpc'] == null ? null : pulumi.Output.create<GatewayVpc>(GatewayVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())),
-      vswitch: map['vswitch'] == null ? null : pulumi.Output.create<GatewayVswitch>(GatewayVswitch.fromMap((map['vswitch'] as Map).cast<String, dynamic>())),
-      zoneConfig: map['zoneConfig'] == null ? null : pulumi.Output.create<GatewayZoneConfig>(GatewayZoneConfig.fromMap((map['zoneConfig'] as Map).cast<String, dynamic>())),
-      zones: map['zones'] == null ? null : pulumi.Output.create<List<GatewayZone>>(pulumi.Input.decodeList<GatewayZone>(map['zones'], (value) => GatewayZone.fromMap((value as Map).cast<String, dynamic>()))),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
+      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType'] as String).input(),
+      logConfig: map['logConfig'] == null ? null : (GatewayLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      networkAccessConfig: map['networkAccessConfig'] == null ? null : (GatewayNetworkAccessConfig.fromMap((map['networkAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpc: map['vpc'] == null ? null : (GatewayVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      vswitch: map['vswitch'] == null ? null : (GatewayVswitch.fromMap((map['vswitch'] as Map).cast<String, dynamic>())).input(),
+      zoneConfig: map['zoneConfig'] == null ? null : (GatewayZoneConfig.fromMap((map['zoneConfig'] as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<GatewayZone>(map['zones'], (value) => GatewayZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

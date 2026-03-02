@@ -17,45 +17,45 @@ import 'get_environment_config_workloads_config.dart';
 class GetEnvironmentConfig {
   /// The URI of the Apache Airflow Web UI hosted within the
   /// environment.
-  final String airflowUri;
+  final pulumi.Input<String> airflowUri;
   /// The Cloud Storage prefix of the DAGs for the environment.
-  final String dagGcsPrefix;
+  final pulumi.Input<String> dagGcsPrefix;
   /// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
-  final List<GetEnvironmentConfigDataRetentionConfig> dataRetentionConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigDataRetentionConfig>> dataRetentionConfigs;
   /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigDatabaseConfig>> databaseConfigs;
   /// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
-  final bool enablePrivateBuildsOnly;
+  final pulumi.Input<bool> enablePrivateBuildsOnly;
   /// Optional. If true, a private Composer environment will be created.
-  final bool enablePrivateEnvironment;
+  final pulumi.Input<bool> enablePrivateEnvironment;
   /// The encryption options for the Composer environment and its dependencies.
-  final List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigEncryptionConfig>> encryptionConfigs;
   /// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final String environmentSize;
+  final pulumi.Input<String> environmentSize;
   /// The Kubernetes Engine cluster used to run the environment.
-  final String gkeCluster;
+  final pulumi.Input<String> gkeCluster;
   /// The configuration for Cloud Composer maintenance window.
-  final List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows;
+  final pulumi.Input<List<GetEnvironmentConfigMaintenanceWindow>> maintenanceWindows;
   /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
-  final List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigMasterAuthorizedNetworksConfig>> masterAuthorizedNetworksConfigs;
   /// The configuration used for the Kubernetes Engine cluster.
-  final List<GetEnvironmentConfigNodeConfig> nodeConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigNodeConfig>> nodeConfigs;
   /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final int nodeCount;
+  final pulumi.Input<int> nodeCount;
   /// The configuration used for the Private IP Cloud Composer environment.
-  final List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigPrivateEnvironmentConfig>> privateEnvironmentConfigs;
   /// The recovery configuration settings for the Cloud Composer environment
-  final List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigRecoveryConfig>> recoveryConfigs;
   /// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
-  final String resilienceMode;
+  final pulumi.Input<String> resilienceMode;
   /// The configuration settings for software inside the environment.
-  final List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigSoftwareConfig>> softwareConfigs;
   /// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigWebServerConfig>> webServerConfigs;
   /// Network-level access control policy for the Airflow web server.
-  final List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
+  final pulumi.Input<List<GetEnvironmentConfigWebServerNetworkAccessControl>> webServerNetworkAccessControls;
   /// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs;
+  final pulumi.Input<List<GetEnvironmentConfigWorkloadsConfig>> workloadsConfigs;
 
   /// Creates a new [GetEnvironmentConfig].
   /// [airflowUri] The URI of the Apache Airflow Web UI hosted within the
@@ -105,49 +105,49 @@ class GetEnvironmentConfig {
     return <String, dynamic>{
       'airflowUri': airflowUri,
       'dagGcsPrefix': dagGcsPrefix,
-      'dataRetentionConfigs': pulumi.Input.encodeList<GetEnvironmentConfigDataRetentionConfig, Map<String, dynamic>>(dataRetentionConfigs, (value) => value.toMap()),
-      'databaseConfigs': pulumi.Input.encodeList<GetEnvironmentConfigDatabaseConfig, Map<String, dynamic>>(databaseConfigs, (value) => value.toMap()),
+      'dataRetentionConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigDataRetentionConfig>, List<Map<String, dynamic>>>(dataRetentionConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigDataRetentionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'databaseConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigDatabaseConfig>, List<Map<String, dynamic>>>(databaseConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigDatabaseConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enablePrivateBuildsOnly': enablePrivateBuildsOnly,
       'enablePrivateEnvironment': enablePrivateEnvironment,
-      'encryptionConfigs': pulumi.Input.encodeList<GetEnvironmentConfigEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
+      'encryptionConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigEncryptionConfig>, List<Map<String, dynamic>>>(encryptionConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigEncryptionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'environmentSize': environmentSize,
       'gkeCluster': gkeCluster,
-      'maintenanceWindows': pulumi.Input.encodeList<GetEnvironmentConfigMaintenanceWindow, Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap()),
-      'masterAuthorizedNetworksConfigs': pulumi.Input.encodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfig, Map<String, dynamic>>(masterAuthorizedNetworksConfigs, (value) => value.toMap()),
-      'nodeConfigs': pulumi.Input.encodeList<GetEnvironmentConfigNodeConfig, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
+      'maintenanceWindows': pulumi.Input.mapInputValue<List<GetEnvironmentConfigMaintenanceWindow>, List<Map<String, dynamic>>>(maintenanceWindows, (value) => pulumi.Input.encodeList<GetEnvironmentConfigMaintenanceWindow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'masterAuthorizedNetworksConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigMasterAuthorizedNetworksConfig>, List<Map<String, dynamic>>>(masterAuthorizedNetworksConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigNodeConfig>, List<Map<String, dynamic>>>(nodeConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'nodeCount': nodeCount,
-      'privateEnvironmentConfigs': pulumi.Input.encodeList<GetEnvironmentConfigPrivateEnvironmentConfig, Map<String, dynamic>>(privateEnvironmentConfigs, (value) => value.toMap()),
-      'recoveryConfigs': pulumi.Input.encodeList<GetEnvironmentConfigRecoveryConfig, Map<String, dynamic>>(recoveryConfigs, (value) => value.toMap()),
+      'privateEnvironmentConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigPrivateEnvironmentConfig>, List<Map<String, dynamic>>>(privateEnvironmentConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigPrivateEnvironmentConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recoveryConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigRecoveryConfig>, List<Map<String, dynamic>>>(recoveryConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigRecoveryConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resilienceMode': resilienceMode,
-      'softwareConfigs': pulumi.Input.encodeList<GetEnvironmentConfigSoftwareConfig, Map<String, dynamic>>(softwareConfigs, (value) => value.toMap()),
-      'webServerConfigs': pulumi.Input.encodeList<GetEnvironmentConfigWebServerConfig, Map<String, dynamic>>(webServerConfigs, (value) => value.toMap()),
-      'webServerNetworkAccessControls': pulumi.Input.encodeList<GetEnvironmentConfigWebServerNetworkAccessControl, Map<String, dynamic>>(webServerNetworkAccessControls, (value) => value.toMap()),
-      'workloadsConfigs': pulumi.Input.encodeList<GetEnvironmentConfigWorkloadsConfig, Map<String, dynamic>>(workloadsConfigs, (value) => value.toMap()),
+      'softwareConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigSoftwareConfig>, List<Map<String, dynamic>>>(softwareConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigSoftwareConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'webServerConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigWebServerConfig>, List<Map<String, dynamic>>>(webServerConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigWebServerConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'webServerNetworkAccessControls': pulumi.Input.mapInputValue<List<GetEnvironmentConfigWebServerNetworkAccessControl>, List<Map<String, dynamic>>>(webServerNetworkAccessControls, (value) => pulumi.Input.encodeList<GetEnvironmentConfigWebServerNetworkAccessControl, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workloadsConfigs': pulumi.Input.mapInputValue<List<GetEnvironmentConfigWorkloadsConfig>, List<Map<String, dynamic>>>(workloadsConfigs, (value) => pulumi.Input.encodeList<GetEnvironmentConfigWorkloadsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfig(
-      airflowUri: map['airflowUri'] as String,
-      dagGcsPrefix: map['dagGcsPrefix'] as String,
-      dataRetentionConfigs: pulumi.Input.decodeList<GetEnvironmentConfigDataRetentionConfig>(map['dataRetentionConfigs'], (value) => GetEnvironmentConfigDataRetentionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      databaseConfigs: pulumi.Input.decodeList<GetEnvironmentConfigDatabaseConfig>(map['databaseConfigs'], (value) => GetEnvironmentConfigDatabaseConfig.fromMap((value as Map).cast<String, dynamic>())),
-      enablePrivateBuildsOnly: map['enablePrivateBuildsOnly'] as bool,
-      enablePrivateEnvironment: map['enablePrivateEnvironment'] as bool,
-      encryptionConfigs: pulumi.Input.decodeList<GetEnvironmentConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetEnvironmentConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      environmentSize: map['environmentSize'] as String,
-      gkeCluster: map['gkeCluster'] as String,
-      maintenanceWindows: pulumi.Input.decodeList<GetEnvironmentConfigMaintenanceWindow>(map['maintenanceWindows'], (value) => GetEnvironmentConfigMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
-      masterAuthorizedNetworksConfigs: pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfig>(map['masterAuthorizedNetworksConfigs'], (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodeConfigs: pulumi.Input.decodeList<GetEnvironmentConfigNodeConfig>(map['nodeConfigs'], (value) => GetEnvironmentConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodeCount: map['nodeCount'] as int,
-      privateEnvironmentConfigs: pulumi.Input.decodeList<GetEnvironmentConfigPrivateEnvironmentConfig>(map['privateEnvironmentConfigs'], (value) => GetEnvironmentConfigPrivateEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>())),
-      recoveryConfigs: pulumi.Input.decodeList<GetEnvironmentConfigRecoveryConfig>(map['recoveryConfigs'], (value) => GetEnvironmentConfigRecoveryConfig.fromMap((value as Map).cast<String, dynamic>())),
-      resilienceMode: map['resilienceMode'] as String,
-      softwareConfigs: pulumi.Input.decodeList<GetEnvironmentConfigSoftwareConfig>(map['softwareConfigs'], (value) => GetEnvironmentConfigSoftwareConfig.fromMap((value as Map).cast<String, dynamic>())),
-      webServerConfigs: pulumi.Input.decodeList<GetEnvironmentConfigWebServerConfig>(map['webServerConfigs'], (value) => GetEnvironmentConfigWebServerConfig.fromMap((value as Map).cast<String, dynamic>())),
-      webServerNetworkAccessControls: pulumi.Input.decodeList<GetEnvironmentConfigWebServerNetworkAccessControl>(map['webServerNetworkAccessControls'], (value) => GetEnvironmentConfigWebServerNetworkAccessControl.fromMap((value as Map).cast<String, dynamic>())),
-      workloadsConfigs: pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfig>(map['workloadsConfigs'], (value) => GetEnvironmentConfigWorkloadsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      airflowUri: (map['airflowUri'] as String).input(),
+      dagGcsPrefix: (map['dagGcsPrefix'] as String).input(),
+      dataRetentionConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigDataRetentionConfig>(map['dataRetentionConfigs'], (value) => GetEnvironmentConfigDataRetentionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigDatabaseConfig>(map['databaseConfigs'], (value) => GetEnvironmentConfigDatabaseConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enablePrivateBuildsOnly: (map['enablePrivateBuildsOnly'] as bool).input(),
+      enablePrivateEnvironment: (map['enablePrivateEnvironment'] as bool).input(),
+      encryptionConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetEnvironmentConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentSize: (map['environmentSize'] as String).input(),
+      gkeCluster: (map['gkeCluster'] as String).input(),
+      maintenanceWindows: (pulumi.Input.decodeList<GetEnvironmentConfigMaintenanceWindow>(map['maintenanceWindows'], (value) => GetEnvironmentConfigMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      masterAuthorizedNetworksConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfig>(map['masterAuthorizedNetworksConfigs'], (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigNodeConfig>(map['nodeConfigs'], (value) => GetEnvironmentConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      privateEnvironmentConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigPrivateEnvironmentConfig>(map['privateEnvironmentConfigs'], (value) => GetEnvironmentConfigPrivateEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigRecoveryConfig>(map['recoveryConfigs'], (value) => GetEnvironmentConfigRecoveryConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resilienceMode: (map['resilienceMode'] as String).input(),
+      softwareConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigSoftwareConfig>(map['softwareConfigs'], (value) => GetEnvironmentConfigSoftwareConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webServerConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigWebServerConfig>(map['webServerConfigs'], (value) => GetEnvironmentConfigWebServerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webServerNetworkAccessControls: (pulumi.Input.decodeList<GetEnvironmentConfigWebServerNetworkAccessControl>(map['webServerNetworkAccessControls'], (value) => GetEnvironmentConfigWebServerNetworkAccessControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workloadsConfigs: (pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfig>(map['workloadsConfigs'], (value) => GetEnvironmentConfigWorkloadsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

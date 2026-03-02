@@ -12,51 +12,51 @@ import 'service_task_spec_container_spec_secret.dart';
 
 class ServiceTaskSpecContainerSpec {
   /// Arguments to the command
-  final List<String>? args;
+  final pulumi.Input<List<String>>? args;
   /// List of Linux capabilities to add to the container
-  final List<String>? capAdds;
+  final pulumi.Input<List<String>>? capAdds;
   /// List of Linux capabilities to drop from the container
-  final List<String>? capDrops;
+  final pulumi.Input<List<String>>? capDrops;
   /// The command/entrypoint to be run in the image. According to the [docker cli](https://github.com/docker/cli/blob/v20.10.7/cli/command/service/opts.go#L705) the override of the entrypoint is also passed to the `command` property and there is no `entrypoint` attribute in the `ContainerSpec` of the service.
-  final List<String>? commands;
+  final pulumi.Input<List<String>>? commands;
   /// References to zero or more configs that will be exposed to the service
-  final List<ServiceTaskSpecContainerSpecConfig>? configs;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecConfig>>? configs;
   /// The working directory for commands to run in
-  final String? dir;
+  final pulumi.Input<String>? dir;
   /// Specification for DNS related configurations in resolver configuration file (`resolv.conf`)
-  final ServiceTaskSpecContainerSpecDnsConfig? dnsConfig;
+  final pulumi.Input<ServiceTaskSpecContainerSpecDnsConfig>? dnsConfig;
   /// A list of environment variables in the form VAR="value"
-  final Map<String, String>? env;
+  final pulumi.Input<Map<String, String>>? env;
   /// A list of additional groups that the container process will run as
-  final List<String>? groups;
+  final pulumi.Input<List<String>>? groups;
   /// A test to perform to check that the container is healthy. It works in the same way, and has the same default values, as the HEALTHCHECK Dockerfile instruction set by the service's Docker image. Your Compose file can override the values set in the Dockerfile.
-  final ServiceTaskSpecContainerSpecHealthcheck? healthcheck;
+  final pulumi.Input<ServiceTaskSpecContainerSpecHealthcheck>? healthcheck;
   /// The hostname to use for the container, as a valid RFC 1123 hostname
-  final String? hostname;
+  final pulumi.Input<String>? hostname;
   /// A list of hostname/IP mappings to add to the container's hosts file
-  final List<ServiceTaskSpecContainerSpecHost>? hosts;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecHost>>? hosts;
   /// The image name to use for the containers of the service, like `nginx:1.17.6`. Also use the data-source or resource of `docker.RemoteImage` with the `repo_digest` or `docker.RegistryImage` with the `name` attribute for this, as shown in the examples.
-  final String image;
+  final pulumi.Input<String> image;
   /// Isolation technology of the containers running the service. (Windows only). Defaults to `default`.
-  final String? isolation;
+  final pulumi.Input<String>? isolation;
   /// User-defined key/value metadata
-  final List<ServiceTaskSpecContainerSpecLabel>? labels;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecLabel>>? labels;
   /// Specification for mounts to be added to containers created as part of the service
-  final List<ServiceTaskSpecContainerSpecMount>? mounts;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecMount>>? mounts;
   /// Security options for the container
-  final ServiceTaskSpecContainerSpecPrivileges? privileges;
+  final pulumi.Input<ServiceTaskSpecContainerSpecPrivileges>? privileges;
   /// Mount the container's root filesystem as read only
-  final bool? readOnly;
+  final pulumi.Input<bool>? readOnly;
   /// References to zero or more secrets that will be exposed to the service
-  final List<ServiceTaskSpecContainerSpecSecret>? secrets;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecSecret>>? secrets;
   /// Amount of time to wait for the container to terminate before forcefully removing it (ms|s|m|h). If not specified or '0s' the destroy will not check if all tasks/containers of the service terminate.
-  final String? stopGracePeriod;
+  final pulumi.Input<String>? stopGracePeriod;
   /// Signal to stop the container
-  final String? stopSignal;
+  final pulumi.Input<String>? stopSignal;
   /// Sysctls config (Linux only)
-  final Map<String, String>? sysctl;
+  final pulumi.Input<Map<String, String>>? sysctl;
   /// The user inside the container
-  final String? user;
+  final pulumi.Input<String>? user;
 
   /// Creates a new [ServiceTaskSpecContainerSpec].
   /// [args] Arguments to the command
@@ -114,21 +114,21 @@ class ServiceTaskSpecContainerSpec {
       'capAdds': ?capAdds,
       'capDrops': ?capDrops,
       'commands': ?commands,
-      'configs': ?configs == null ? null : pulumi.Input.encodeList<ServiceTaskSpecContainerSpecConfig, Map<String, dynamic>>(configs!, (value) => value.toMap()),
+      'configs': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecConfig>, List<Map<String, dynamic>>>(configs, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dir': ?dir,
-      'dnsConfig': ?dnsConfig == null ? null : dnsConfig!.toMap(),
+      'dnsConfig': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecDnsConfig, Map<String, dynamic>>(dnsConfig, (value) => value.toMap()),
       'env': ?env,
       'groups': ?groups,
-      'healthcheck': ?healthcheck == null ? null : healthcheck!.toMap(),
+      'healthcheck': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecHealthcheck, Map<String, dynamic>>(healthcheck, (value) => value.toMap()),
       'hostname': ?hostname,
-      'hosts': ?hosts == null ? null : pulumi.Input.encodeList<ServiceTaskSpecContainerSpecHost, Map<String, dynamic>>(hosts!, (value) => value.toMap()),
+      'hosts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecHost>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecHost, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': image,
       'isolation': ?isolation,
-      'labels': ?labels == null ? null : pulumi.Input.encodeList<ServiceTaskSpecContainerSpecLabel, Map<String, dynamic>>(labels!, (value) => value.toMap()),
-      'mounts': ?mounts == null ? null : pulumi.Input.encodeList<ServiceTaskSpecContainerSpecMount, Map<String, dynamic>>(mounts!, (value) => value.toMap()),
-      'privileges': ?privileges == null ? null : privileges!.toMap(),
+      'labels': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mounts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecMount>, List<Map<String, dynamic>>>(mounts, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privileges': ?pulumi.Input.mapOptionalInputValue<ServiceTaskSpecContainerSpecPrivileges, Map<String, dynamic>>(privileges, (value) => value.toMap()),
       'readOnly': ?readOnly,
-      'secrets': ?secrets == null ? null : pulumi.Input.encodeList<ServiceTaskSpecContainerSpecSecret, Map<String, dynamic>>(secrets!, (value) => value.toMap()),
+      'secrets': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
       'stopGracePeriod': ?stopGracePeriod,
       'stopSignal': ?stopSignal,
       'sysctl': ?sysctl,
@@ -138,29 +138,29 @@ class ServiceTaskSpecContainerSpec {
 
   factory ServiceTaskSpecContainerSpec.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpec(
-      args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      capAdds: map['capAdds'] == null ? null : (map['capAdds'] as List).cast<String>(),
-      capDrops: map['capDrops'] == null ? null : (map['capDrops'] as List).cast<String>(),
-      commands: map['commands'] == null ? null : (map['commands'] as List).cast<String>(),
-      configs: map['configs'] == null ? null : pulumi.Input.decodeList<ServiceTaskSpecContainerSpecConfig>(map['configs'], (value) => ServiceTaskSpecContainerSpecConfig.fromMap((value as Map).cast<String, dynamic>())),
-      dir: map['dir'] == null ? null : map['dir'] as String,
-      dnsConfig: map['dnsConfig'] == null ? null : ServiceTaskSpecContainerSpecDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>()),
-      env: map['env'] == null ? null : (map['env'] as Map).cast<String, String>(),
-      groups: map['groups'] == null ? null : (map['groups'] as List).cast<String>(),
-      healthcheck: map['healthcheck'] == null ? null : ServiceTaskSpecContainerSpecHealthcheck.fromMap((map['healthcheck'] as Map).cast<String, dynamic>()),
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      hosts: map['hosts'] == null ? null : pulumi.Input.decodeList<ServiceTaskSpecContainerSpecHost>(map['hosts'], (value) => ServiceTaskSpecContainerSpecHost.fromMap((value as Map).cast<String, dynamic>())),
-      image: map['image'] as String,
-      isolation: map['isolation'] == null ? null : map['isolation'] as String,
-      labels: map['labels'] == null ? null : pulumi.Input.decodeList<ServiceTaskSpecContainerSpecLabel>(map['labels'], (value) => ServiceTaskSpecContainerSpecLabel.fromMap((value as Map).cast<String, dynamic>())),
-      mounts: map['mounts'] == null ? null : pulumi.Input.decodeList<ServiceTaskSpecContainerSpecMount>(map['mounts'], (value) => ServiceTaskSpecContainerSpecMount.fromMap((value as Map).cast<String, dynamic>())),
-      privileges: map['privileges'] == null ? null : ServiceTaskSpecContainerSpecPrivileges.fromMap((map['privileges'] as Map).cast<String, dynamic>()),
-      readOnly: map['readOnly'] == null ? null : map['readOnly'] as bool,
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<ServiceTaskSpecContainerSpecSecret>(map['secrets'], (value) => ServiceTaskSpecContainerSpecSecret.fromMap((value as Map).cast<String, dynamic>())),
-      stopGracePeriod: map['stopGracePeriod'] == null ? null : map['stopGracePeriod'] as String,
-      stopSignal: map['stopSignal'] == null ? null : map['stopSignal'] as String,
-      sysctl: map['sysctl'] == null ? null : (map['sysctl'] as Map).cast<String, String>(),
-      user: map['user'] == null ? null : map['user'] as String,
+      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      capAdds: map['capAdds'] == null ? null : ((map['capAdds'] as List).cast<String>()).input(),
+      capDrops: map['capDrops'] == null ? null : ((map['capDrops'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecConfig>(map['configs'], (value) => ServiceTaskSpecContainerSpecConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (ServiceTaskSpecContainerSpecDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
+      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      healthcheck: map['healthcheck'] == null ? null : (ServiceTaskSpecContainerSpecHealthcheck.fromMap((map['healthcheck'] as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecHost>(map['hosts'], (value) => ServiceTaskSpecContainerSpecHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: (map['image'] as String).input(),
+      isolation: map['isolation'] == null ? null : (map['isolation'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecLabel>(map['labels'], (value) => ServiceTaskSpecContainerSpecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mounts: map['mounts'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecMount>(map['mounts'], (value) => ServiceTaskSpecContainerSpecMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privileges: map['privileges'] == null ? null : (ServiceTaskSpecContainerSpecPrivileges.fromMap((map['privileges'] as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecSecret>(map['secrets'], (value) => ServiceTaskSpecContainerSpecSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stopGracePeriod: map['stopGracePeriod'] == null ? null : (map['stopGracePeriod'] as String).input(),
+      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal'] as String).input(),
+      sysctl: map['sysctl'] == null ? null : ((map['sysctl'] as Map).cast<String, String>()).input(),
+      user: map['user'] == null ? null : (map['user'] as String).input(),
     );
   }
 }

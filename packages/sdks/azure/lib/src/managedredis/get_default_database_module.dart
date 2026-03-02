@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDefaultDatabaseModule {
   /// The configuration options for the module.
-  final String args;
+  final pulumi.Input<String> args;
   /// The name of the Managed Redis instance.
-  final String name;
+  final pulumi.Input<String> name;
   /// The version of the module.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [GetDefaultDatabaseModule].
   /// [args] The configuration options for the module.
@@ -29,9 +30,9 @@ class GetDefaultDatabaseModule {
 
   factory GetDefaultDatabaseModule.fromMap(Map<String, dynamic> map) {
     return GetDefaultDatabaseModule(
-      args: map['args'] as String,
-      name: map['name'] as String,
-      version: map['version'] as String,
+      args: (map['args'] as String).input(),
+      name: (map['name'] as String).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

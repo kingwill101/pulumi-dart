@@ -35,23 +35,15 @@ class SessionTemplateArgs {
   /// [project] Optional.
   /// [runtimeConfig] Optional. Runtime configuration for session execution.
   SessionTemplateArgs({
-    pulumi.Output<String>? description,
-    pulumi.Output<EnvironmentConfig>? environmentConfig,
-    pulumi.Output<JupyterConfig>? jupyterSession,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-    pulumi.Output<RuntimeConfig>? runtimeConfig,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      environmentConfig = pulumi.Input.asOptionalInput<EnvironmentConfig>(environmentConfig),
-      jupyterSession = pulumi.Input.asOptionalInput<JupyterConfig>(jupyterSession),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeConfig = pulumi.Input.asOptionalInput<RuntimeConfig>(runtimeConfig);
+    this.description,
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.location,
+    this.name,
+    this.project,
+    this.runtimeConfig,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,14 +60,14 @@ class SessionTemplateArgs {
 
   factory SessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return SessionTemplateArgs(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      environmentConfig: map['environmentConfig'] == null ? null : pulumi.Output.create<EnvironmentConfig>(EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())),
-      jupyterSession: map['jupyterSession'] == null ? null : pulumi.Output.create<JupyterConfig>(JupyterConfig.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      runtimeConfig: map['runtimeConfig'] == null ? null : pulumi.Output.create<RuntimeConfig>(RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
+      jupyterSession: map['jupyterSession'] == null ? null : (JupyterConfig.fromMap((map['jupyterSession'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'modeling_input_data.dart';
 
 /// Modeling resource properties.
 class ModelingResourceProperties {
   /// Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
-  final String? features;
+  final pulumi.Input<String>? features;
   /// Modeling frequency controls the modeling compute frequency.
-  final String? frequency;
+  final pulumi.Input<String>? frequency;
   /// The configuration to raw CDM data to be used as Modeling resource input.
-  final ModelingInputData? inputData;
+  final pulumi.Input<ModelingInputData>? inputData;
   /// Modeling size controls the maximum supported input data size.
-  final String? size;
+  final pulumi.Input<String>? size;
 
   /// Creates a new [ModelingResourceProperties].
   /// [features] Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
@@ -29,17 +30,17 @@ class ModelingResourceProperties {
     return <String, dynamic>{
       'features': ?features,
       'frequency': ?frequency,
-      'inputData': ?inputData == null ? null : inputData!.toMap(),
+      'inputData': ?pulumi.Input.mapOptionalInputValue<ModelingInputData, Map<String, dynamic>>(inputData, (value) => value.toMap()),
       'size': ?size,
     };
   }
 
   factory ModelingResourceProperties.fromMap(Map<String, dynamic> map) {
     return ModelingResourceProperties(
-      features: map['features'] == null ? null : map['features'] as String,
-      frequency: map['frequency'] == null ? null : map['frequency'] as String,
-      inputData: map['inputData'] == null ? null : ModelingInputData.fromMap((map['inputData'] as Map).cast<String, dynamic>()),
-      size: map['size'] == null ? null : map['size'] as String,
+      features: map['features'] == null ? null : (map['features'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
+      inputData: map['inputData'] == null ? null : (ModelingInputData.fromMap((map['inputData'] as Map).cast<String, dynamic>())).input(),
+      size: map['size'] == null ? null : (map['size'] as String).input(),
     );
   }
 }

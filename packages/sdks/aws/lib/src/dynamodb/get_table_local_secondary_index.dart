@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableLocalSecondaryIndex {
   /// Name of the DynamoDB table.
-  final String name;
-  final List<String> nonKeyAttributes;
-  final String projectionType;
-  final String rangeKey;
+  final pulumi.Input<String> name;
+  final pulumi.Input<List<String>> nonKeyAttributes;
+  final pulumi.Input<String> projectionType;
+  final pulumi.Input<String> rangeKey;
 
   /// Creates a new [GetTableLocalSecondaryIndex].
   /// [name] Name of the DynamoDB table.
@@ -31,10 +32,10 @@ class GetTableLocalSecondaryIndex {
 
   factory GetTableLocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GetTableLocalSecondaryIndex(
-      name: map['name'] as String,
-      nonKeyAttributes: (map['nonKeyAttributes'] as List).cast<String>(),
-      projectionType: map['projectionType'] as String,
-      rangeKey: map['rangeKey'] as String,
+      name: (map['name'] as String).input(),
+      nonKeyAttributes: ((map['nonKeyAttributes'] as List).cast<String>()).input(),
+      projectionType: (map['projectionType'] as String).input(),
+      rangeKey: (map['rangeKey'] as String).input(),
     );
   }
 }

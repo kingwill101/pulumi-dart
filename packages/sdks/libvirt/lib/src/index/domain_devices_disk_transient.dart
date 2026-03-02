@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskTransient {
   /// Indicates if the transient disk device shares backing storage with other devices.
-  final String? shareBacking;
+  final pulumi.Input<String>? shareBacking;
 
   /// Creates a new [DomainDevicesDiskTransient].
   /// [shareBacking] Indicates if the transient disk device shares backing storage with other devices.
@@ -19,7 +20,7 @@ class DomainDevicesDiskTransient {
 
   factory DomainDevicesDiskTransient.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskTransient(
-      shareBacking: map['shareBacking'] == null ? null : map['shareBacking'] as String,
+      shareBacking: map['shareBacking'] == null ? null : (map['shareBacking'] as String).input(),
     );
   }
 }

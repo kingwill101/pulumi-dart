@@ -37,27 +37,17 @@ class ApplicationState {
   /// [path] The file path location of the app on the Virtual Desktop OS.
   /// [showInPortal] Specifies whether to show the RemoteApp program in the RD Web Access server.
   ApplicationState({
-    pulumi.Output<String>? applicationGroupId,
-    pulumi.Output<String>? commandLineArgumentPolicy,
-    pulumi.Output<String>? commandLineArguments,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? friendlyName,
-    pulumi.Output<int>? iconIndex,
-    pulumi.Output<String>? iconPath,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? path,
-    pulumi.Output<bool>? showInPortal,
-  }) :
-      applicationGroupId = pulumi.Input.asOptionalInput<String>(applicationGroupId),
-      commandLineArgumentPolicy = pulumi.Input.asOptionalInput<String>(commandLineArgumentPolicy),
-      commandLineArguments = pulumi.Input.asOptionalInput<String>(commandLineArguments),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      friendlyName = pulumi.Input.asOptionalInput<String>(friendlyName),
-      iconIndex = pulumi.Input.asOptionalInput<int>(iconIndex),
-      iconPath = pulumi.Input.asOptionalInput<String>(iconPath),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      path = pulumi.Input.asOptionalInput<String>(path),
-      showInPortal = pulumi.Input.asOptionalInput<bool>(showInPortal);
+    this.applicationGroupId,
+    this.commandLineArgumentPolicy,
+    this.commandLineArguments,
+    this.description,
+    this.friendlyName,
+    this.iconIndex,
+    this.iconPath,
+    this.name,
+    this.path,
+    this.showInPortal,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,16 +66,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationGroupId: map['applicationGroupId'] == null ? null : pulumi.Output.create<String>(map['applicationGroupId'] as String),
-      commandLineArgumentPolicy: map['commandLineArgumentPolicy'] == null ? null : pulumi.Output.create<String>(map['commandLineArgumentPolicy'] as String),
-      commandLineArguments: map['commandLineArguments'] == null ? null : pulumi.Output.create<String>(map['commandLineArguments'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      friendlyName: map['friendlyName'] == null ? null : pulumi.Output.create<String>(map['friendlyName'] as String),
-      iconIndex: map['iconIndex'] == null ? null : pulumi.Output.create<int>(map['iconIndex'] as int),
-      iconPath: map['iconPath'] == null ? null : pulumi.Output.create<String>(map['iconPath'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      path: map['path'] == null ? null : pulumi.Output.create<String>(map['path'] as String),
-      showInPortal: map['showInPortal'] == null ? null : pulumi.Output.create<bool>(map['showInPortal'] as bool),
+      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId'] as String).input(),
+      commandLineArgumentPolicy: map['commandLineArgumentPolicy'] == null ? null : (map['commandLineArgumentPolicy'] as String).input(),
+      commandLineArguments: map['commandLineArguments'] == null ? null : (map['commandLineArguments'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      iconIndex: map['iconIndex'] == null ? null : (map['iconIndex'] as int).input(),
+      iconPath: map['iconPath'] == null ? null : (map['iconPath'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      showInPortal: map['showInPortal'] == null ? null : (map['showInPortal'] as bool).input(),
     );
   }
 }

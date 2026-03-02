@@ -16,11 +16,9 @@ class GetObfuscationExpressionArgs {
   /// [accountId] The account id associated with the obfuscation expression. If left empty will default to account ID specified in provider level configuration.
   /// [name] Name of expression.
   GetObfuscationExpressionArgs({
-    pulumi.Output<String>? accountId,
-    required pulumi.Output<String> name,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      name = pulumi.Input.asInput<String>(name);
+    this.accountId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetObfuscationExpressionArgs {
 
   factory GetObfuscationExpressionArgs.fromMap(Map<String, dynamic> map) {
     return GetObfuscationExpressionArgs(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SnapshotOptions
 class SnapshotOptions {
   /// <p>The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is <code>0</code> hours.</p>
-  final int? automatedSnapshotStartHour;
+  final pulumi.Input<int>? automatedSnapshotStartHour;
 
   /// Creates a new [SnapshotOptions].
   /// [automatedSnapshotStartHour] <p>The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is <code>0</code> hours.</p>
@@ -20,7 +21,7 @@ class SnapshotOptions {
 
   factory SnapshotOptions.fromMap(Map<String, dynamic> map) {
     return SnapshotOptions(
-      automatedSnapshotStartHour: map['automatedSnapshotStartHour'] == null ? null : map['automatedSnapshotStartHour'] as int,
+      automatedSnapshotStartHour: map['automatedSnapshotStartHour'] == null ? null : (map['automatedSnapshotStartHour'] as int).input(),
     );
   }
 }

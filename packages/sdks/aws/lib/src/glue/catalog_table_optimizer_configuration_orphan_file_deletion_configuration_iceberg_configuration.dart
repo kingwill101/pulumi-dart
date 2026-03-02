@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration {
   /// Specifies a directory in which to look for files. You may choose a sub-directory rather than the top-level table location. Defaults to the table's location.
-  final String? location;
+  final pulumi.Input<String>? location;
   /// The number of days that orphan files should be retained before file deletion. Defaults to `3`.
-  final int? orphanFileRetentionPeriodInDays;
+  final pulumi.Input<int>? orphanFileRetentionPeriodInDays;
   /// interval in hours between orphan file deletion job runs. Defaults to `24`.
-  final int? runRateInHours;
+  final pulumi.Input<int>? runRateInHours;
 
   /// Creates a new [CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration].
   /// [location] Specifies a directory in which to look for files. You may choose a sub-directory rather than the top-level table location. Defaults to the table's location.
@@ -29,9 +30,9 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergCo
 
   factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration(
-      location: map['location'] == null ? null : map['location'] as String,
-      orphanFileRetentionPeriodInDays: map['orphanFileRetentionPeriodInDays'] == null ? null : map['orphanFileRetentionPeriodInDays'] as int,
-      runRateInHours: map['runRateInHours'] == null ? null : map['runRateInHours'] as int,
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      orphanFileRetentionPeriodInDays: map['orphanFileRetentionPeriodInDays'] == null ? null : (map['orphanFileRetentionPeriodInDays'] as int).input(),
+      runRateInHours: map['runRateInHours'] == null ? null : (map['runRateInHours'] as int).input(),
     );
   }
 }

@@ -16,13 +16,10 @@ class BackupPolicyState {
   /// [backupTime] Backup time, in the format of HH:mmZ- HH:mm Z.
   /// [instanceId] The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   BackupPolicyState({
-    pulumi.Output<List<String>>? backupPeriods,
-    pulumi.Output<String>? backupTime,
-    pulumi.Output<String>? instanceId,
-  }) :
-      backupPeriods = pulumi.Input.asOptionalInput<List<String>>(backupPeriods),
-      backupTime = pulumi.Input.asOptionalInput<String>(backupTime),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId);
+    this.backupPeriods,
+    this.backupTime,
+    this.instanceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPeriods: map['backupPeriods'] == null ? null : pulumi.Output.create<List<String>>((map['backupPeriods'] as List).cast<String>()),
-      backupTime: map['backupTime'] == null ? null : pulumi.Output.create<String>(map['backupTime'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
+      backupPeriods: map['backupPeriods'] == null ? null : ((map['backupPeriods'] as List).cast<String>()).input(),
+      backupTime: map['backupTime'] == null ? null : (map['backupTime'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
     );
   }
 }

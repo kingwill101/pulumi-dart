@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryGroupRepository {
   /// Required. The Git branch pattern used for indexing in RE2 syntax.
   /// See https://github.com/google/re2/wiki/syntax for syntax.
-  final String branchPattern;
+  final pulumi.Input<String> branchPattern;
   /// Required. The DeveloperConnect repository full resource name, relative resource name
   /// or resource URL to be indexed.
-  final String resource;
+  final pulumi.Input<String> resource;
 
   /// Creates a new [RepositoryGroupRepository].
   /// [branchPattern] Required. The Git branch pattern used for indexing in RE2 syntax.
@@ -26,8 +27,8 @@ class RepositoryGroupRepository {
 
   factory RepositoryGroupRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupRepository(
-      branchPattern: map['branchPattern'] as String,
-      resource: map['resource'] as String,
+      branchPattern: (map['branchPattern'] as String).input(),
+      resource: (map['resource'] as String).input(),
     );
   }
 }

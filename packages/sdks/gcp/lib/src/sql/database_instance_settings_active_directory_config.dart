@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsActiveDirectoryConfig {
   /// The domain name for the active directory (e.g., mydomain.com).
   /// Can only be used with SQL Server.
-  final String domain;
+  final pulumi.Input<String> domain;
 
   /// Creates a new [DatabaseInstanceSettingsActiveDirectoryConfig].
   /// [domain] The domain name for the active directory (e.g., mydomain.com).
@@ -20,7 +21,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfig {
 
   factory DatabaseInstanceSettingsActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsActiveDirectoryConfig(
-      domain: map['domain'] as String,
+      domain: (map['domain'] as String).input(),
     );
   }
 }

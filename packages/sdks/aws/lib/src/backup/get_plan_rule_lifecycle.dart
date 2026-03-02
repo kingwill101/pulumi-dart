@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanRuleLifecycle {
-  final int coldStorageAfter;
-  final int deleteAfter;
-  final bool optInToArchiveForSupportedResources;
+  final pulumi.Input<int> coldStorageAfter;
+  final pulumi.Input<int> deleteAfter;
+  final pulumi.Input<bool> optInToArchiveForSupportedResources;
 
   /// Creates a new [GetPlanRuleLifecycle].
   /// [coldStorageAfter] Required.
@@ -26,9 +27,9 @@ class GetPlanRuleLifecycle {
 
   factory GetPlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleLifecycle(
-      coldStorageAfter: map['coldStorageAfter'] as int,
-      deleteAfter: map['deleteAfter'] as int,
-      optInToArchiveForSupportedResources: map['optInToArchiveForSupportedResources'] as bool,
+      coldStorageAfter: (map['coldStorageAfter'] as int).input(),
+      deleteAfter: (map['deleteAfter'] as int).input(),
+      optInToArchiveForSupportedResources: (map['optInToArchiveForSupportedResources'] as bool).input(),
     );
   }
 }

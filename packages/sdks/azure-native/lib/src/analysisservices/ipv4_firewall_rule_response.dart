@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The detail of firewall rule.
 class IPv4FirewallRuleResponse {
   /// The rule name.
-  final String? firewallRuleName;
+  final pulumi.Input<String>? firewallRuleName;
   /// The end range of IPv4.
-  final String? rangeEnd;
+  final pulumi.Input<String>? rangeEnd;
   /// The start range of IPv4.
-  final String? rangeStart;
+  final pulumi.Input<String>? rangeStart;
 
   /// Creates a new [IPv4FirewallRuleResponse].
   /// [firewallRuleName] The rule name.
@@ -30,9 +31,9 @@ class IPv4FirewallRuleResponse {
 
   factory IPv4FirewallRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPv4FirewallRuleResponse(
-      firewallRuleName: map['firewallRuleName'] == null ? null : map['firewallRuleName'] as String,
-      rangeEnd: map['rangeEnd'] == null ? null : map['rangeEnd'] as String,
-      rangeStart: map['rangeStart'] == null ? null : map['rangeStart'] as String,
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd'] as String).input(),
+      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart'] as String).input(),
     );
   }
 }

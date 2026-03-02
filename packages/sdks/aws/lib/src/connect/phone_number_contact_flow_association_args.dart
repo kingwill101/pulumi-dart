@@ -22,15 +22,11 @@ class PhoneNumberContactFlowAssociationArgs {
   /// [phoneNumberId] Phone number ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PhoneNumberContactFlowAssociationArgs({
-    required pulumi.Output<String> contactFlowId,
-    required pulumi.Output<String> instanceId,
-    required pulumi.Output<String> phoneNumberId,
-    pulumi.Output<String>? region,
-  }) :
-      contactFlowId = pulumi.Input.asInput<String>(contactFlowId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      phoneNumberId = pulumi.Input.asInput<String>(phoneNumberId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    required this.contactFlowId,
+    required this.instanceId,
+    required this.phoneNumberId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class PhoneNumberContactFlowAssociationArgs {
 
   factory PhoneNumberContactFlowAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PhoneNumberContactFlowAssociationArgs(
-      contactFlowId: pulumi.Output.create<String>(map['contactFlowId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      phoneNumberId: pulumi.Output.create<String>(map['phoneNumberId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      contactFlowId: (map['contactFlowId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      phoneNumberId: (map['phoneNumberId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

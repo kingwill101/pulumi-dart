@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertConfigurationSinkEventStore {
   /// Open.
-  final bool? enabled;
+  final pulumi.Input<bool>? enabled;
   /// SLS service endpoint.
-  final String? endpoint;
+  final pulumi.Input<String>? endpoint;
   /// Event Library Name.
-  final String? eventStore;
+  final pulumi.Input<String>? eventStore;
   /// Project Name.
-  final String? project;
+  final pulumi.Input<String>? project;
   /// Roles used to write alarm data to the event Library.
-  final String? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   /// Creates a new [AlertConfigurationSinkEventStore].
   /// [enabled] Open.
@@ -39,11 +40,11 @@ class AlertConfigurationSinkEventStore {
 
   factory AlertConfigurationSinkEventStore.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSinkEventStore(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      endpoint: map['endpoint'] == null ? null : map['endpoint'] as String,
-      eventStore: map['eventStore'] == null ? null : map['eventStore'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      eventStore: map['eventStore'] == null ? null : (map['eventStore'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

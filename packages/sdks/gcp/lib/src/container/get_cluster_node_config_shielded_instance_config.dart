@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterNodeConfigShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
-  final bool enableIntegrityMonitoring;
+  final pulumi.Input<bool> enableIntegrityMonitoring;
   /// Defines whether the instance has Secure Boot enabled.
-  final bool enableSecureBoot;
+  final pulumi.Input<bool> enableSecureBoot;
 
   /// Creates a new [GetClusterNodeConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
@@ -24,8 +25,8 @@ class GetClusterNodeConfigShieldedInstanceConfig {
 
   factory GetClusterNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: (map['enableIntegrityMonitoring'] as bool).input(),
+      enableSecureBoot: (map['enableSecureBoot'] as bool).input(),
     );
   }
 }

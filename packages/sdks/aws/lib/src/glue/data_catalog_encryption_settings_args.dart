@@ -20,13 +20,10 @@ class DataCatalogEncryptionSettingsArgs {
   /// [dataCatalogEncryptionSettings] The security configuration to set. see Data Catalog Encryption Settings.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   DataCatalogEncryptionSettingsArgs({
-    pulumi.Output<String>? catalogId,
-    required pulumi.Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings> dataCatalogEncryptionSettings,
-    pulumi.Output<String>? region,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      dataCatalogEncryptionSettings = pulumi.Input.asInput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(dataCatalogEncryptionSettings),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.catalogId,
+    required this.dataCatalogEncryptionSettings,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class DataCatalogEncryptionSettingsArgs {
 
   factory DataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsArgs(
-      catalogId: map['catalogId'] == null ? null : pulumi.Output.create<String>(map['catalogId'] as String),
-      dataCatalogEncryptionSettings: pulumi.Output.create<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>(DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      dataCatalogEncryptionSettings: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

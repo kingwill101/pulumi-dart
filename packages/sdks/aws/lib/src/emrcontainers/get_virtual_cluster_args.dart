@@ -19,13 +19,10 @@ class GetVirtualClusterArgs {
   /// [tags] Key-value mapping of resource tags.
   /// [virtualClusterId] ID of the cluster.
   GetVirtualClusterArgs({
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? tags,
-    required pulumi.Output<String> virtualClusterId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualClusterId = pulumi.Input.asInput<String>(virtualClusterId);
+    this.region,
+    this.tags,
+    required this.virtualClusterId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetVirtualClusterArgs {
 
   factory GetVirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterArgs(
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      virtualClusterId: pulumi.Output.create<String>(map['virtualClusterId'] as String),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      virtualClusterId: (map['virtualClusterId'] as String).input(),
     );
   }
 }

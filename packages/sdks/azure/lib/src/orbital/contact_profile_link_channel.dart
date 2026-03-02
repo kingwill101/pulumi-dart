@@ -5,17 +5,17 @@ import 'contact_profile_link_channel_end_point.dart';
 
 class ContactProfileLinkChannel {
   /// Bandwidth in MHz.
-  final double bandwidthMhz;
+  final pulumi.Input<double> bandwidthMhz;
   /// Center frequency in MHz.
-  final double centerFrequencyMhz;
+  final pulumi.Input<double> centerFrequencyMhz;
   /// Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
-  final String? demodulationConfiguration;
+  final pulumi.Input<String>? demodulationConfiguration;
   /// Customer End point to store/retrieve data during a contact. An `end_point` block as defined below.
-  final List<ContactProfileLinkChannelEndPoint> endPoints;
+  final pulumi.Input<List<ContactProfileLinkChannelEndPoint>> endPoints;
   /// Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  final String? modulationConfiguration;
+  final pulumi.Input<String>? modulationConfiguration;
   /// Name of the channel.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [ContactProfileLinkChannel].
   /// [bandwidthMhz] Bandwidth in MHz.
@@ -38,7 +38,7 @@ class ContactProfileLinkChannel {
       'bandwidthMhz': bandwidthMhz,
       'centerFrequencyMhz': centerFrequencyMhz,
       'demodulationConfiguration': ?demodulationConfiguration,
-      'endPoints': pulumi.Input.encodeList<ContactProfileLinkChannelEndPoint, Map<String, dynamic>>(endPoints, (value) => value.toMap()),
+      'endPoints': pulumi.Input.mapInputValue<List<ContactProfileLinkChannelEndPoint>, List<Map<String, dynamic>>>(endPoints, (value) => pulumi.Input.encodeList<ContactProfileLinkChannelEndPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'modulationConfiguration': ?modulationConfiguration,
       'name': name,
     };
@@ -46,12 +46,12 @@ class ContactProfileLinkChannel {
 
   factory ContactProfileLinkChannel.fromMap(Map<String, dynamic> map) {
     return ContactProfileLinkChannel(
-      bandwidthMhz: map['bandwidthMhz'] as double,
-      centerFrequencyMhz: map['centerFrequencyMhz'] as double,
-      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : map['demodulationConfiguration'] as String,
-      endPoints: pulumi.Input.decodeList<ContactProfileLinkChannelEndPoint>(map['endPoints'], (value) => ContactProfileLinkChannelEndPoint.fromMap((value as Map).cast<String, dynamic>())),
-      modulationConfiguration: map['modulationConfiguration'] == null ? null : map['modulationConfiguration'] as String,
-      name: map['name'] as String,
+      bandwidthMhz: (map['bandwidthMhz'] as double).input(),
+      centerFrequencyMhz: (map['centerFrequencyMhz'] as double).input(),
+      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration'] as String).input(),
+      endPoints: (pulumi.Input.decodeList<ContactProfileLinkChannelEndPoint>(map['endPoints'], (value) => ContactProfileLinkChannelEndPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

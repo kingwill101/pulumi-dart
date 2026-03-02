@@ -19,13 +19,10 @@ class GetIpAllocationArgs {
   /// [ipAllocationName] The name of the IpAllocation.
   /// [resourceGroupName] The name of the resource group.
   GetIpAllocationArgs({
-    pulumi.Output<String>? expand,
-    required pulumi.Output<String> ipAllocationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      expand = pulumi.Input.asOptionalInput<String>(expand),
-      ipAllocationName = pulumi.Input.asInput<String>(ipAllocationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.expand,
+    required this.ipAllocationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIpAllocationArgs {
 
   factory GetIpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return GetIpAllocationArgs(
-      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
-      ipAllocationName: pulumi.Output.create<String>(map['ipAllocationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      ipAllocationName: (map['ipAllocationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

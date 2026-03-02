@@ -16,11 +16,9 @@ class GetGroundStationArgs {
   /// [groundStationName] Ground Station name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetGroundStationArgs({
-    required pulumi.Output<String> groundStationName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      groundStationName = pulumi.Input.asInput<String>(groundStationName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.groundStationName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetGroundStationArgs {
 
   factory GetGroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GetGroundStationArgs(
-      groundStationName: pulumi.Output.create<String>(map['groundStationName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      groundStationName: (map['groundStationName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

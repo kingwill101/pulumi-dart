@@ -5,9 +5,9 @@ import 'distribution_policy_zone_configuration_response.dart';
 
 class DistributionPolicyResponse {
   /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
-  final String targetShape;
+  final pulumi.Input<String> targetShape;
   /// Zones where the regional managed instance group will create and manage its instances.
-  final List<DistributionPolicyZoneConfigurationResponse> zones;
+  final pulumi.Input<List<DistributionPolicyZoneConfigurationResponse>> zones;
 
   /// Creates a new [DistributionPolicyResponse].
   /// [targetShape] The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
@@ -20,14 +20,14 @@ class DistributionPolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'targetShape': targetShape,
-      'zones': pulumi.Input.encodeList<DistributionPolicyZoneConfigurationResponse, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.mapInputValue<List<DistributionPolicyZoneConfigurationResponse>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<DistributionPolicyZoneConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory DistributionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return DistributionPolicyResponse(
-      targetShape: map['targetShape'] as String,
-      zones: pulumi.Input.decodeList<DistributionPolicyZoneConfigurationResponse>(map['zones'], (value) => DistributionPolicyZoneConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      targetShape: (map['targetShape'] as String).input(),
+      zones: (pulumi.Input.decodeList<DistributionPolicyZoneConfigurationResponse>(map['zones'], (value) => DistributionPolicyZoneConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

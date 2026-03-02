@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WatchlistWatchlistUserPreferences {
   /// Optional. Whether the watchlist is pinned on the dashboard.
-  final bool? pinned;
+  final pulumi.Input<bool>? pinned;
 
   /// Creates a new [WatchlistWatchlistUserPreferences].
   /// [pinned] Optional. Whether the watchlist is pinned on the dashboard.
@@ -19,7 +20,7 @@ class WatchlistWatchlistUserPreferences {
 
   factory WatchlistWatchlistUserPreferences.fromMap(Map<String, dynamic> map) {
     return WatchlistWatchlistUserPreferences(
-      pinned: map['pinned'] == null ? null : map['pinned'] as bool,
+      pinned: map['pinned'] == null ? null : (map['pinned'] as bool).input(),
     );
   }
 }

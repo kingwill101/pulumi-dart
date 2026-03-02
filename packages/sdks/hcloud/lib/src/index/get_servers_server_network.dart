@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServersServerNetwork {
-  final List<String> aliasIps;
-  final String ip;
-  final String macAddress;
-  final int networkId;
+  final pulumi.Input<List<String>> aliasIps;
+  final pulumi.Input<String> ip;
+  final pulumi.Input<String> macAddress;
+  final pulumi.Input<int> networkId;
 
   /// Creates a new [GetServersServerNetwork].
   /// [aliasIps] Required.
@@ -30,10 +31,10 @@ class GetServersServerNetwork {
 
   factory GetServersServerNetwork.fromMap(Map<String, dynamic> map) {
     return GetServersServerNetwork(
-      aliasIps: (map['aliasIps'] as List).cast<String>(),
-      ip: map['ip'] as String,
-      macAddress: map['macAddress'] as String,
-      networkId: map['networkId'] as int,
+      aliasIps: ((map['aliasIps'] as List).cast<String>()).input(),
+      ip: (map['ip'] as String).input(),
+      macAddress: (map['macAddress'] as String).input(),
+      networkId: (map['networkId'] as int).input(),
     );
   }
 }

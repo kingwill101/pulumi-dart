@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parameters used for restore operations
 class MongoClusterRestoreParameters {
   /// UTC point in time to restore a mongo cluster
-  final String? pointInTimeUTC;
+  final pulumi.Input<String>? pointInTimeUTC;
   /// Resource ID to locate the source cluster to restore
-  final String? sourceResourceId;
+  final pulumi.Input<String>? sourceResourceId;
 
   /// Creates a new [MongoClusterRestoreParameters].
   /// [pointInTimeUTC] UTC point in time to restore a mongo cluster
@@ -25,8 +26,8 @@ class MongoClusterRestoreParameters {
 
   factory MongoClusterRestoreParameters.fromMap(Map<String, dynamic> map) {
     return MongoClusterRestoreParameters(
-      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : map['pointInTimeUTC'] as String,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
+      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : (map['pointInTimeUTC'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
     );
   }
 }

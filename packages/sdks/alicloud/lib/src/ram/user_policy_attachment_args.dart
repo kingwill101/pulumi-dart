@@ -21,13 +21,10 @@ class UserPolicyAttachmentArgs {
   /// [policyType] Permission policy type.
   /// [userName] The name of the RAM user.
   UserPolicyAttachmentArgs({
-    required pulumi.Output<String> policyName,
-    required pulumi.Output<String> policyType,
-    required pulumi.Output<String> userName,
-  }) :
-      policyName = pulumi.Input.asInput<String>(policyName),
-      policyType = pulumi.Input.asInput<String>(policyType),
-      userName = pulumi.Input.asInput<String>(userName);
+    required this.policyName,
+    required this.policyType,
+    required this.userName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,9 +36,9 @@ class UserPolicyAttachmentArgs {
 
   factory UserPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentArgs(
-      policyName: pulumi.Output.create<String>(map['policyName'] as String),
-      policyType: pulumi.Output.create<String>(map['policyType'] as String),
-      userName: pulumi.Output.create<String>(map['userName'] as String),
+      policyName: (map['policyName'] as String).input(),
+      policyType: (map['policyType'] as String).input(),
+      userName: (map['userName'] as String).input(),
     );
   }
 }

@@ -20,17 +20,12 @@ class GetResourceRecordSetDnsV1beta2Args {
   /// [project] Optional.
   /// [type] Required.
   GetResourceRecordSetDnsV1beta2Args({
-    pulumi.Output<String>? clientOperationId,
-    required pulumi.Output<String> managedZone,
-    required pulumi.Output<String> name,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> type,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asInput<String>(type);
+    this.clientOperationId,
+    required this.managedZone,
+    required this.name,
+    this.project,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +39,11 @@ class GetResourceRecordSetDnsV1beta2Args {
 
   factory GetResourceRecordSetDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetResourceRecordSetDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
-      managedZone: pulumi.Output.create<String>(map['managedZone'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      managedZone: (map['managedZone'] as String).input(),
+      name: (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

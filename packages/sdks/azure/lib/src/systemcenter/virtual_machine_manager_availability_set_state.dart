@@ -25,19 +25,13 @@ class VirtualMachineManagerAvailabilitySetState {
   /// [systemCenterVirtualMachineManagerServerId] The ID of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Availability Set.
   VirtualMachineManagerAvailabilitySetState({
-    pulumi.Output<String>? customLocationId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<String>? systemCenterVirtualMachineManagerServerId,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      customLocationId = pulumi.Input.asOptionalInput<String>(customLocationId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      systemCenterVirtualMachineManagerServerId = pulumi.Input.asOptionalInput<String>(systemCenterVirtualMachineManagerServerId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.customLocationId,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.systemCenterVirtualMachineManagerServerId,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class VirtualMachineManagerAvailabilitySetState {
 
   factory VirtualMachineManagerAvailabilitySetState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerAvailabilitySetState(
-      customLocationId: map['customLocationId'] == null ? null : pulumi.Output.create<String>(map['customLocationId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      systemCenterVirtualMachineManagerServerId: map['systemCenterVirtualMachineManagerServerId'] == null ? null : pulumi.Output.create<String>(map['systemCenterVirtualMachineManagerServerId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      systemCenterVirtualMachineManagerServerId: map['systemCenterVirtualMachineManagerServerId'] == null ? null : (map['systemCenterVirtualMachineManagerServerId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

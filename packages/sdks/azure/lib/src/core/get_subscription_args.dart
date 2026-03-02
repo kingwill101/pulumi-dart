@@ -13,9 +13,8 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [subscriptionId] Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
   GetSubscriptionArgs({
-    pulumi.Output<String>? subscriptionId,
-  }) :
-      subscriptionId = pulumi.Input.asOptionalInput<String>(subscriptionId);
+    this.subscriptionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      subscriptionId: map['subscriptionId'] == null ? null : pulumi.Output.create<String>(map['subscriptionId'] as String),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
     );
   }
 }

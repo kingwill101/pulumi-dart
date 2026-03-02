@@ -19,13 +19,10 @@ class EnvironmentTypeArgs {
   /// [name] Specifies the name of this Dev Center Environment Type. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Environment Type.
   EnvironmentTypeArgs({
-    required pulumi.Output<String> devCenterId,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      devCenterId = pulumi.Input.asInput<String>(devCenterId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    required this.devCenterId,
+    this.name,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class EnvironmentTypeArgs {
 
   factory EnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeArgs(
-      devCenterId: pulumi.Output.create<String>(map['devCenterId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      devCenterId: (map['devCenterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

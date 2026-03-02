@@ -16,11 +16,9 @@ class GetHyperVSiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
   GetHyperVSiteArgs({
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> siteName,
-  }) :
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      siteName = pulumi.Input.asInput<String>(siteName);
+    required this.resourceGroupName,
+    required this.siteName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetHyperVSiteArgs {
 
   factory GetHyperVSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetHyperVSiteArgs(
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      siteName: pulumi.Output.create<String>(map['siteName'] as String),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      siteName: (map['siteName'] as String).input(),
     );
   }
 }

@@ -14,11 +14,9 @@ class GetMembershipCloudidentityV1beta1Args {
   /// [groupId] Required.
   /// [membershipId] Required.
   GetMembershipCloudidentityV1beta1Args({
-    required pulumi.Output<String> groupId,
-    required pulumi.Output<String> membershipId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      membershipId = pulumi.Input.asInput<String>(membershipId);
+    required this.groupId,
+    required this.membershipId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetMembershipCloudidentityV1beta1Args {
 
   factory GetMembershipCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetMembershipCloudidentityV1beta1Args(
-      groupId: pulumi.Output.create<String>(map['groupId'] as String),
-      membershipId: pulumi.Output.create<String>(map['membershipId'] as String),
+      groupId: (map['groupId'] as String).input(),
+      membershipId: (map['membershipId'] as String).input(),
     );
   }
 }

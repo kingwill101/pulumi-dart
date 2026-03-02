@@ -5,8 +5,8 @@ import 'get_gateway_route_spec_grpc_route_action.dart';
 import 'get_gateway_route_spec_grpc_route_match.dart';
 
 class GetGatewayRouteSpecGrpcRoute {
-  final List<GetGatewayRouteSpecGrpcRouteAction> actions;
-  final List<GetGatewayRouteSpecGrpcRouteMatch> matches;
+  final pulumi.Input<List<GetGatewayRouteSpecGrpcRouteAction>> actions;
+  final pulumi.Input<List<GetGatewayRouteSpecGrpcRouteMatch>> matches;
 
   /// Creates a new [GetGatewayRouteSpecGrpcRoute].
   /// [actions] Required.
@@ -18,15 +18,15 @@ class GetGatewayRouteSpecGrpcRoute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'matches': pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'actions': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecGrpcRouteAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'matches': pulumi.Input.mapInputValue<List<GetGatewayRouteSpecGrpcRouteMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory GetGatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRoute(
-      actions: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(map['actions'], (value) => GetGatewayRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>())),
-      matches: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>())),
+      actions: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(map['actions'], (value) => GetGatewayRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed-On-Behalf-Of broker resource. This resource is created by the Resource Provider to manage some resources on behalf of the user.
 class MoboBrokerResourceResponse {
   /// Resource identifier of a Managed-On-Behalf-Of broker resource
-  final String? id;
+  final pulumi.Input<String>? id;
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource identifier of a Managed-On-Behalf-Of broker resource
@@ -20,7 +21,7 @@ class MoboBrokerResourceResponse {
 
   factory MoboBrokerResourceResponse.fromMap(Map<String, dynamic> map) {
     return MoboBrokerResourceResponse(
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : (map['id'] as String).input(),
     );
   }
 }

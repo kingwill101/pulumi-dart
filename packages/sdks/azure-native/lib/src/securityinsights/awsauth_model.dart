@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Model for API authentication with AWS.
 class AWSAuthModel {
   /// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-  final String? externalId;
+  final pulumi.Input<String>? externalId;
   /// AWS STS assume role ARN
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
   /// Type of paging
   /// Expected value is 'AWS'.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [AWSAuthModel].
   /// [externalId] AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
@@ -31,9 +32,9 @@ class AWSAuthModel {
 
   factory AWSAuthModel.fromMap(Map<String, dynamic> map) {
     return AWSAuthModel(
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
-      roleArn: map['roleArn'] as String,
-      type: map['type'] as String,
+      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRepositoryDockerConfig {
   /// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
-  final bool immutableTags;
+  final pulumi.Input<bool> immutableTags;
 
   /// Creates a new [GetRepositoryDockerConfig].
   /// [immutableTags] The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
@@ -19,7 +20,7 @@ class GetRepositoryDockerConfig {
 
   factory GetRepositoryDockerConfig.fromMap(Map<String, dynamic> map) {
     return GetRepositoryDockerConfig(
-      immutableTags: map['immutableTags'] as bool,
+      immutableTags: (map['immutableTags'] as bool).input(),
     );
   }
 }

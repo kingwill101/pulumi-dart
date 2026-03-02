@@ -1,42 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_availability_group_static_iplistener_properties_response.dart';
 
 /// The specifications of the availability group state
 class AvailabilityGroupInfoResponse {
   /// Preferred location for performing backups on the availability databases in this availability group.
-  final String automatedBackupPreferenceDescription;
+  final pulumi.Input<String> automatedBackupPreferenceDescription;
   /// Specifies whether this is a basic availability group.
-  final bool? basicFeatures;
+  final pulumi.Input<bool>? basicFeatures;
   /// SQL Server availability group cluster type description
-  final String clusterTypeDescription;
+  final pulumi.Input<String> clusterTypeDescription;
   /// Specifies whether the availability group supports failover for database health conditions.
-  final bool? dbFailover;
+  final pulumi.Input<bool>? dbFailover;
   /// Specifies whether DTC support has been enabled for this availability group.
-  final bool? dtcSupport;
+  final pulumi.Input<bool>? dtcSupport;
   /// User-defined failure condition level under which an automatic failover must be triggered.
-  final int? failureConditionLevel;
+  final pulumi.Input<int>? failureConditionLevel;
   /// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
-  final int? healthCheckTimeout;
+  final pulumi.Input<int>? healthCheckTimeout;
   /// SQL Server availability group contained system databases.
-  final bool? isContained;
+  final pulumi.Input<bool>? isContained;
   /// Specifies whether this is a distributed availability group.
-  final bool? isDistributed;
+  final pulumi.Input<bool>? isDistributed;
   /// The listener for the sql server availability group
-  final SqlAvailabilityGroupStaticIPListenerPropertiesResponse? listener;
+  final pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesResponse>? listener;
   /// Indicates the recovery health of the primary replica.
-  final String primaryRecoveryHealthDescription;
+  final pulumi.Input<String> primaryRecoveryHealthDescription;
   /// Name of the server instance that is hosting the current primary replica.
-  final String primaryReplica;
-  final String replicationPartnerType;
+  final pulumi.Input<String> primaryReplica;
+  final pulumi.Input<String> replicationPartnerType;
   /// The number of secondary replicas that must be in a synchronized state for a commit to complete.
-  final int? requiredSynchronizedSecondariesToCommit;
+  final pulumi.Input<int>? requiredSynchronizedSecondariesToCommit;
   /// Indicates the recovery health of a secondary replica.
-  final String secondaryRecoveryHealthDescription;
+  final pulumi.Input<String> secondaryRecoveryHealthDescription;
   /// Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
-  final String synchronizationHealthDescription;
+  final pulumi.Input<String> synchronizationHealthDescription;
   /// SQL Server availability group current version.
-  final int version;
+  final pulumi.Input<int> version;
 
   /// Creates a new [AvailabilityGroupInfoResponse].
   /// [automatedBackupPreferenceDescription] Preferred location for performing backups on the availability databases in this availability group.
@@ -87,7 +88,7 @@ class AvailabilityGroupInfoResponse {
       'healthCheckTimeout': ?healthCheckTimeout,
       'isContained': ?isContained,
       'isDistributed': ?isDistributed,
-      'listener': ?listener == null ? null : listener!.toMap(),
+      'listener': ?pulumi.Input.mapOptionalInputValue<SqlAvailabilityGroupStaticIPListenerPropertiesResponse, Map<String, dynamic>>(listener, (value) => value.toMap()),
       'primaryRecoveryHealthDescription': primaryRecoveryHealthDescription,
       'primaryReplica': primaryReplica,
       'replicationPartnerType': replicationPartnerType,
@@ -100,23 +101,23 @@ class AvailabilityGroupInfoResponse {
 
   factory AvailabilityGroupInfoResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupInfoResponse(
-      automatedBackupPreferenceDescription: map['automatedBackupPreferenceDescription'] as String,
-      basicFeatures: map['basicFeatures'] == null ? null : map['basicFeatures'] as bool,
-      clusterTypeDescription: map['clusterTypeDescription'] as String,
-      dbFailover: map['dbFailover'] == null ? null : map['dbFailover'] as bool,
-      dtcSupport: map['dtcSupport'] == null ? null : map['dtcSupport'] as bool,
-      failureConditionLevel: map['failureConditionLevel'] == null ? null : map['failureConditionLevel'] as int,
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : map['healthCheckTimeout'] as int,
-      isContained: map['isContained'] == null ? null : map['isContained'] as bool,
-      isDistributed: map['isDistributed'] == null ? null : map['isDistributed'] as bool,
-      listener: map['listener'] == null ? null : SqlAvailabilityGroupStaticIPListenerPropertiesResponse.fromMap((map['listener'] as Map).cast<String, dynamic>()),
-      primaryRecoveryHealthDescription: map['primaryRecoveryHealthDescription'] as String,
-      primaryReplica: map['primaryReplica'] as String,
-      replicationPartnerType: map['replicationPartnerType'] as String,
-      requiredSynchronizedSecondariesToCommit: map['requiredSynchronizedSecondariesToCommit'] == null ? null : map['requiredSynchronizedSecondariesToCommit'] as int,
-      secondaryRecoveryHealthDescription: map['secondaryRecoveryHealthDescription'] as String,
-      synchronizationHealthDescription: map['synchronizationHealthDescription'] as String,
-      version: map['version'] as int,
+      automatedBackupPreferenceDescription: (map['automatedBackupPreferenceDescription'] as String).input(),
+      basicFeatures: map['basicFeatures'] == null ? null : (map['basicFeatures'] as bool).input(),
+      clusterTypeDescription: (map['clusterTypeDescription'] as String).input(),
+      dbFailover: map['dbFailover'] == null ? null : (map['dbFailover'] as bool).input(),
+      dtcSupport: map['dtcSupport'] == null ? null : (map['dtcSupport'] as bool).input(),
+      failureConditionLevel: map['failureConditionLevel'] == null ? null : (map['failureConditionLevel'] as int).input(),
+      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout'] as int).input(),
+      isContained: map['isContained'] == null ? null : (map['isContained'] as bool).input(),
+      isDistributed: map['isDistributed'] == null ? null : (map['isDistributed'] as bool).input(),
+      listener: map['listener'] == null ? null : (SqlAvailabilityGroupStaticIPListenerPropertiesResponse.fromMap((map['listener'] as Map).cast<String, dynamic>())).input(),
+      primaryRecoveryHealthDescription: (map['primaryRecoveryHealthDescription'] as String).input(),
+      primaryReplica: (map['primaryReplica'] as String).input(),
+      replicationPartnerType: (map['replicationPartnerType'] as String).input(),
+      requiredSynchronizedSecondariesToCommit: map['requiredSynchronizedSecondariesToCommit'] == null ? null : (map['requiredSynchronizedSecondariesToCommit'] as int).input(),
+      secondaryRecoveryHealthDescription: (map['secondaryRecoveryHealthDescription'] as String).input(),
+      synchronizationHealthDescription: (map['synchronizationHealthDescription'] as String).input(),
+      version: (map['version'] as int).input(),
     );
   }
 }

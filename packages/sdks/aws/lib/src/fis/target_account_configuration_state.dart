@@ -24,17 +24,12 @@ class TargetAccountConfigurationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM Role for the target account.
   TargetAccountConfigurationState({
-    pulumi.Output<String>? accountId,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? experimentTemplateId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? roleArn,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      experimentTemplateId = pulumi.Input.asOptionalInput<String>(experimentTemplateId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+    this.accountId,
+    this.description,
+    this.experimentTemplateId,
+    this.region,
+    this.roleArn,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class TargetAccountConfigurationState {
 
   factory TargetAccountConfigurationState.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationState(
-      accountId: map['accountId'] == null ? null : pulumi.Output.create<String>(map['accountId'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      experimentTemplateId: map['experimentTemplateId'] == null ? null : pulumi.Output.create<String>(map['experimentTemplateId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      roleArn: map['roleArn'] == null ? null : pulumi.Output.create<String>(map['roleArn'] as String),
+      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      experimentTemplateId: map['experimentTemplateId'] == null ? null : (map['experimentTemplateId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
     );
   }
 }

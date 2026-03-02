@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectorySelfServicePermission {
   /// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
-  final bool changeComputeType;
+  final pulumi.Input<bool> changeComputeType;
   /// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
-  final bool increaseVolumeSize;
+  final pulumi.Input<bool> increaseVolumeSize;
   /// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
-  final bool rebuildWorkspace;
+  final pulumi.Input<bool> rebuildWorkspace;
   /// Whether WorkSpaces directory users can restart their workspace.
-  final bool restartWorkspace;
+  final pulumi.Input<bool> restartWorkspace;
   /// Whether WorkSpaces directory users can switch the running mode of their workspace.
-  final bool switchRunningMode;
+  final pulumi.Input<bool> switchRunningMode;
 
   /// Creates a new [GetDirectorySelfServicePermission].
   /// [changeComputeType] Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
@@ -39,11 +40,11 @@ class GetDirectorySelfServicePermission {
 
   factory GetDirectorySelfServicePermission.fromMap(Map<String, dynamic> map) {
     return GetDirectorySelfServicePermission(
-      changeComputeType: map['changeComputeType'] as bool,
-      increaseVolumeSize: map['increaseVolumeSize'] as bool,
-      rebuildWorkspace: map['rebuildWorkspace'] as bool,
-      restartWorkspace: map['restartWorkspace'] as bool,
-      switchRunningMode: map['switchRunningMode'] as bool,
+      changeComputeType: (map['changeComputeType'] as bool).input(),
+      increaseVolumeSize: (map['increaseVolumeSize'] as bool).input(),
+      rebuildWorkspace: (map['rebuildWorkspace'] as bool).input(),
+      restartWorkspace: (map['restartWorkspace'] as bool).input(),
+      switchRunningMode: (map['switchRunningMode'] as bool).input(),
     );
   }
 }

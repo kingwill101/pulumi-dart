@@ -1,27 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_apigee_v1_tls_info_common_name.dart';
 
 /// TLS configuration information for virtual hosts and TargetServers.
 class GoogleCloudApigeeV1TlsInfo {
   /// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
-  final List<String>? ciphers;
+  final pulumi.Input<List<String>>? ciphers;
   /// Optional. Enables two-way TLS.
-  final bool? clientAuthEnabled;
+  final pulumi.Input<bool>? clientAuthEnabled;
   /// The TLS Common Name of the certificate.
-  final GoogleCloudApigeeV1TlsInfoCommonName? commonName;
+  final pulumi.Input<GoogleCloudApigeeV1TlsInfoCommonName>? commonName;
   /// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
-  final bool? ignoreValidationErrors;
+  final pulumi.Input<bool>? ignoreValidationErrors;
   /// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
-  final String? keyAlias;
+  final pulumi.Input<String>? keyAlias;
   /// Required if `client_auth_enabled` is true. The resource ID of the keystore.
-  final String? keyStore;
+  final pulumi.Input<String>? keyStore;
   /// The TLS versioins to be used.
-  final List<String>? protocols;
+  final pulumi.Input<List<String>>? protocols;
   /// The resource ID of the truststore.
-  final String? trustStore;
+  final pulumi.Input<String>? trustStore;
 
   /// Creates a new [GoogleCloudApigeeV1TlsInfo].
   /// [ciphers] The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
@@ -49,7 +50,7 @@ class GoogleCloudApigeeV1TlsInfo {
     return <String, dynamic>{
       'ciphers': ?ciphers,
       'clientAuthEnabled': ?clientAuthEnabled,
-      'commonName': ?commonName == null ? null : commonName!.toMap(),
+      'commonName': ?pulumi.Input.mapOptionalInputValue<GoogleCloudApigeeV1TlsInfoCommonName, Map<String, dynamic>>(commonName, (value) => value.toMap()),
       'enabled': enabled,
       'ignoreValidationErrors': ?ignoreValidationErrors,
       'keyAlias': ?keyAlias,
@@ -61,15 +62,15 @@ class GoogleCloudApigeeV1TlsInfo {
 
   factory GoogleCloudApigeeV1TlsInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TlsInfo(
-      ciphers: map['ciphers'] == null ? null : (map['ciphers'] as List).cast<String>(),
-      clientAuthEnabled: map['clientAuthEnabled'] == null ? null : map['clientAuthEnabled'] as bool,
-      commonName: map['commonName'] == null ? null : GoogleCloudApigeeV1TlsInfoCommonName.fromMap((map['commonName'] as Map).cast<String, dynamic>()),
-      enabled: map['enabled'] as bool,
-      ignoreValidationErrors: map['ignoreValidationErrors'] == null ? null : map['ignoreValidationErrors'] as bool,
-      keyAlias: map['keyAlias'] == null ? null : map['keyAlias'] as String,
-      keyStore: map['keyStore'] == null ? null : map['keyStore'] as String,
-      protocols: map['protocols'] == null ? null : (map['protocols'] as List).cast<String>(),
-      trustStore: map['trustStore'] == null ? null : map['trustStore'] as String,
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
+      clientAuthEnabled: map['clientAuthEnabled'] == null ? null : (map['clientAuthEnabled'] as bool).input(),
+      commonName: map['commonName'] == null ? null : (GoogleCloudApigeeV1TlsInfoCommonName.fromMap((map['commonName'] as Map).cast<String, dynamic>())).input(),
+      enabled: (map['enabled'] as bool).input(),
+      ignoreValidationErrors: map['ignoreValidationErrors'] == null ? null : (map['ignoreValidationErrors'] as bool).input(),
+      keyAlias: map['keyAlias'] == null ? null : (map['keyAlias'] as String).input(),
+      keyStore: map['keyStore'] == null ? null : (map['keyStore'] as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
+      trustStore: map['trustStore'] == null ? null : (map['trustStore'] as String).input(),
     );
   }
 }

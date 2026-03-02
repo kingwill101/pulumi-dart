@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
   /// Whether shrinkage is prohibited.
-  final bool? disabled;
+  final pulumi.Input<bool>? disabled;
   /// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-  final int? stabilizationWindowSeconds;
+  final pulumi.Input<int>? stabilizationWindowSeconds;
   /// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-  final int? step;
+  final pulumi.Input<int>? step;
 
   /// Creates a new [ApplicationScalingRuleScalingRuleMetricScaleDownRules].
   /// [disabled] Whether shrinkage is prohibited.
@@ -29,9 +30,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 
   factory ApplicationScalingRuleScalingRuleMetricScaleDownRules.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleMetricScaleDownRules(
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : map['stabilizationWindowSeconds'] as int,
-      step: map['step'] == null ? null : map['step'] as int,
+      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds'] as int).input(),
+      step: map['step'] == null ? null : (map['step'] as int).input(),
     );
   }
 }

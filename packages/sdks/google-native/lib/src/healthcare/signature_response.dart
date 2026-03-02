@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_response.dart';
 
 /// User signature.
 class SignatureResponse {
   /// Optional. An image of the user's signature.
-  final ImageResponse image;
+  final pulumi.Input<ImageResponse> image;
   /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
-  final Map<String, String> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
   /// Optional. Timestamp of the signature.
-  final String signatureTime;
+  final pulumi.Input<String> signatureTime;
   /// User's UUID provided by the client.
-  final String userId;
+  final pulumi.Input<String> userId;
 
   /// Creates a new [SignatureResponse].
   /// [image] Optional. An image of the user's signature.
@@ -27,7 +28,7 @@ class SignatureResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'image': image.toMap(),
+      'image': pulumi.Input.mapInputValue<ImageResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
       'metadata': metadata,
       'signatureTime': signatureTime,
       'userId': userId,
@@ -36,10 +37,10 @@ class SignatureResponse {
 
   factory SignatureResponse.fromMap(Map<String, dynamic> map) {
     return SignatureResponse(
-      image: ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      signatureTime: map['signatureTime'] as String,
-      userId: map['userId'] as String,
+      image: (ImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
+      signatureTime: (map['signatureTime'] as String).input(),
+      userId: (map['userId'] as String).input(),
     );
   }
 }

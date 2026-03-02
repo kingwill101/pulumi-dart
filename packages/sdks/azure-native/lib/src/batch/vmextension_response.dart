@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The configuration for virtual machine extensions.
 class VMExtensionResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final bool? autoUpgradeMinorVersion;
+  final pulumi.Input<bool>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-  final bool? enableAutomaticUpgrade;
+  final pulumi.Input<bool>? enableAutomaticUpgrade;
   /// The name of the virtual machine extension.
-  final String name;
+  final pulumi.Input<String> name;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-  final dynamic protectedSettings;
+  final pulumi.Input<dynamic>? protectedSettings;
   /// Collection of extension names after which this extension needs to be provisioned.
-  final List<String>? provisionAfterExtensions;
+  final pulumi.Input<List<String>>? provisionAfterExtensions;
   /// The name of the extension handler publisher.
-  final String publisher;
+  final pulumi.Input<String> publisher;
   /// JSON formatted public settings for the extension.
-  final dynamic settings;
+  final pulumi.Input<dynamic>? settings;
   /// The type of the extensions.
-  final String type;
+  final pulumi.Input<String> type;
   /// The version of script handler.
-  final String? typeHandlerVersion;
+  final pulumi.Input<String>? typeHandlerVersion;
 
   /// Creates a new [VMExtensionResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
@@ -60,15 +61,15 @@ class VMExtensionResponse {
 
   factory VMExtensionResponse.fromMap(Map<String, dynamic> map) {
     return VMExtensionResponse(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions'] as List).cast<String>(),
-      publisher: map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
-      type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      name: (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      publisher: (map['publisher'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      type: (map['type'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
     );
   }
 }

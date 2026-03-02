@@ -16,13 +16,10 @@ class GetInstanceBackupIamPolicyArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   GetInstanceBackupIamPolicyArgs({
-    required pulumi.Output<String> backupId,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backupId,
+    required this.instanceId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class GetInstanceBackupIamPolicyArgs {
 
   factory GetInstanceBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceBackupIamPolicyArgs(
-      backupId: pulumi.Output.create<String>(map['backupId'] as String),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backupId: (map['backupId'] as String).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

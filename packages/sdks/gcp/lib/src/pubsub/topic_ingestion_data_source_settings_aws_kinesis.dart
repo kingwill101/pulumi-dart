@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicIngestionDataSourceSettingsAwsKinesis {
   /// AWS role ARN to be used for Federated Identity authentication with
   /// Kinesis. Check the Pub/Sub docs for how to set up this role and the
   /// required permissions that need to be attached to it.
-  final String awsRoleArn;
+  final pulumi.Input<String> awsRoleArn;
   /// The Kinesis consumer ARN to used for ingestion in
   /// Enhanced Fan-Out mode. The consumer must be already
   /// created and ready to be used.
-  final String consumerArn;
+  final pulumi.Input<String> consumerArn;
   /// The GCP service account to be used for Federated Identity authentication
   /// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
   /// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
   /// equals to this service account number.
-  final String gcpServiceAccount;
+  final pulumi.Input<String> gcpServiceAccount;
   /// The Kinesis stream ARN to ingest data from.
-  final String streamArn;
+  final pulumi.Input<String> streamArn;
 
   /// Creates a new [TopicIngestionDataSourceSettingsAwsKinesis].
   /// [awsRoleArn] AWS role ARN to be used for Federated Identity authentication with
@@ -41,10 +42,10 @@ class TopicIngestionDataSourceSettingsAwsKinesis {
 
   factory TopicIngestionDataSourceSettingsAwsKinesis.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsAwsKinesis(
-      awsRoleArn: map['awsRoleArn'] as String,
-      consumerArn: map['consumerArn'] as String,
-      gcpServiceAccount: map['gcpServiceAccount'] as String,
-      streamArn: map['streamArn'] as String,
+      awsRoleArn: (map['awsRoleArn'] as String).input(),
+      consumerArn: (map['consumerArn'] as String).input(),
+      gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
+      streamArn: (map['streamArn'] as String).input(),
     );
   }
 }

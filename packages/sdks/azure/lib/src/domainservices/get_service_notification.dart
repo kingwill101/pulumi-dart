@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceNotification {
   /// A list of additional email addresses to notify when there are alerts in the managed domain.
-  final List<String> additionalRecipients;
+  final pulumi.Input<List<String>> additionalRecipients;
   /// Whethermembers of the _AAD DC Administrators_ group are notified when there are alerts in the managed domain.
-  final bool notifyDcAdmins;
+  final pulumi.Input<bool> notifyDcAdmins;
   /// Whether all Global Administrators are notified when there are alerts in the managed domain.
-  final bool notifyGlobalAdmins;
+  final pulumi.Input<bool> notifyGlobalAdmins;
 
   /// Creates a new [GetServiceNotification].
   /// [additionalRecipients] A list of additional email addresses to notify when there are alerts in the managed domain.
@@ -29,9 +30,9 @@ class GetServiceNotification {
 
   factory GetServiceNotification.fromMap(Map<String, dynamic> map) {
     return GetServiceNotification(
-      additionalRecipients: (map['additionalRecipients'] as List).cast<String>(),
-      notifyDcAdmins: map['notifyDcAdmins'] as bool,
-      notifyGlobalAdmins: map['notifyGlobalAdmins'] as bool,
+      additionalRecipients: ((map['additionalRecipients'] as List).cast<String>()).input(),
+      notifyDcAdmins: (map['notifyDcAdmins'] as bool).input(),
+      notifyGlobalAdmins: (map['notifyGlobalAdmins'] as bool).input(),
     );
   }
 }

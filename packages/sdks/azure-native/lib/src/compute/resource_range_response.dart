@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes the resource range.
 class ResourceRangeResponse {
   /// The maximum number of the resource.
-  final int? max;
+  final pulumi.Input<int>? max;
   /// The minimum number of the resource.
-  final int? min;
+  final pulumi.Input<int>? min;
 
   /// Creates a new [ResourceRangeResponse].
   /// [max] The maximum number of the resource.
@@ -25,8 +26,8 @@ class ResourceRangeResponse {
 
   factory ResourceRangeResponse.fromMap(Map<String, dynamic> map) {
     return ResourceRangeResponse(
-      max: map['max'] == null ? null : map['max'] as int,
-      min: map['min'] == null ? null : map['min'] as int,
+      max: map['max'] == null ? null : (map['max'] as int).input(),
+      min: map['min'] == null ? null : (map['min'] as int).input(),
     );
   }
 }

@@ -32,21 +32,14 @@ class GetRouteTableArgs {
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Route Table.
   /// [vpcId] ID of the VPC that the desired Route Table belongs to.
   GetRouteTableArgs({
-    pulumi.Output<List<GetRouteTableFilter>>? filters,
-    pulumi.Output<String>? gatewayId,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? routeTableId,
-    pulumi.Output<String>? subnetId,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<String>? vpcId,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetRouteTableFilter>>(filters),
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+    this.filters,
+    this.gatewayId,
+    this.region,
+    this.routeTableId,
+    this.subnetId,
+    this.tags,
+    this.vpcId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +55,13 @@ class GetRouteTableArgs {
 
   factory GetRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetRouteTableFilter>>(pulumi.Input.decodeList<GetRouteTableFilter>(map['filters'], (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      gatewayId: map['gatewayId'] == null ? null : pulumi.Output.create<String>(map['gatewayId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
-      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRouteTableFilter>(map['filters'], (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
     );
   }
 }

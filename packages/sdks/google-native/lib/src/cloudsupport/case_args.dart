@@ -53,35 +53,21 @@ class CaseArgs {
   /// [v2Id] Required.
   /// [v2Id1] Required.
   CaseArgs({
-    pulumi.Output<CaseClassification>? classification,
-    pulumi.Output<String>? contactEmail,
-    pulumi.Output<Actor>? creator,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<bool>? escalated,
-    pulumi.Output<String>? languageCode,
-    pulumi.Output<String>? name,
-    pulumi.Output<CasePriority>? priority,
-    pulumi.Output<List<String>>? subscriberEmailAddresses,
-    pulumi.Output<bool>? testCase,
-    pulumi.Output<String>? timeZone,
-    required pulumi.Output<String> v2Id,
-    required pulumi.Output<String> v2Id1,
-  }) :
-      classification = pulumi.Input.asOptionalInput<CaseClassification>(classification),
-      contactEmail = pulumi.Input.asOptionalInput<String>(contactEmail),
-      creator = pulumi.Input.asOptionalInput<Actor>(creator),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      escalated = pulumi.Input.asOptionalInput<bool>(escalated),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<CasePriority>(priority),
-      subscriberEmailAddresses = pulumi.Input.asOptionalInput<List<String>>(subscriberEmailAddresses),
-      testCase = pulumi.Input.asOptionalInput<bool>(testCase),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      v2Id = pulumi.Input.asInput<String>(v2Id),
-      v2Id1 = pulumi.Input.asInput<String>(v2Id1);
+    this.classification,
+    this.contactEmail,
+    this.creator,
+    this.description,
+    this.displayName,
+    this.escalated,
+    this.languageCode,
+    this.name,
+    this.priority,
+    this.subscriberEmailAddresses,
+    this.testCase,
+    this.timeZone,
+    required this.v2Id,
+    required this.v2Id1,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,20 +90,20 @@ class CaseArgs {
 
   factory CaseArgs.fromMap(Map<String, dynamic> map) {
     return CaseArgs(
-      classification: map['classification'] == null ? null : pulumi.Output.create<CaseClassification>(CaseClassification.fromMap((map['classification'] as Map).cast<String, dynamic>())),
-      contactEmail: map['contactEmail'] == null ? null : pulumi.Output.create<String>(map['contactEmail'] as String),
-      creator: map['creator'] == null ? null : pulumi.Output.create<Actor>(Actor.fromMap((map['creator'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      escalated: map['escalated'] == null ? null : pulumi.Output.create<bool>(map['escalated'] as bool),
-      languageCode: map['languageCode'] == null ? null : pulumi.Output.create<String>(map['languageCode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      priority: map['priority'] == null ? null : pulumi.Output.create<CasePriority>(CasePriority.fromValue(map['priority'] as String)),
-      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : pulumi.Output.create<List<String>>((map['subscriberEmailAddresses'] as List).cast<String>()),
-      testCase: map['testCase'] == null ? null : pulumi.Output.create<bool>(map['testCase'] as bool),
-      timeZone: map['timeZone'] == null ? null : pulumi.Output.create<String>(map['timeZone'] as String),
-      v2Id: pulumi.Output.create<String>(map['v2Id'] as String),
-      v2Id1: pulumi.Output.create<String>(map['v2Id1'] as String),
+      classification: map['classification'] == null ? null : (CaseClassification.fromMap((map['classification'] as Map).cast<String, dynamic>())).input(),
+      contactEmail: map['contactEmail'] == null ? null : (map['contactEmail'] as String).input(),
+      creator: map['creator'] == null ? null : (Actor.fromMap((map['creator'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      escalated: map['escalated'] == null ? null : (map['escalated'] as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      priority: map['priority'] == null ? null : (CasePriority.fromValue(map['priority'] as String)).input(),
+      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : ((map['subscriberEmailAddresses'] as List).cast<String>()).input(),
+      testCase: map['testCase'] == null ? null : (map['testCase'] as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      v2Id: (map['v2Id'] as String).input(),
+      v2Id1: (map['v2Id1'] as String).input(),
     );
   }
 }

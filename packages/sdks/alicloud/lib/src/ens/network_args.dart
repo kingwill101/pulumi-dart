@@ -22,15 +22,11 @@ class NetworkArgs {
   /// [ensRegionId] Ens node IDExample value: cn-beijing-telecom.
   /// [networkName] Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
   NetworkArgs({
-    required pulumi.Output<String> cidrBlock,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> ensRegionId,
-    pulumi.Output<String>? networkName,
-  }) :
-      cidrBlock = pulumi.Input.asInput<String>(cidrBlock),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      ensRegionId = pulumi.Input.asInput<String>(ensRegionId),
-      networkName = pulumi.Input.asOptionalInput<String>(networkName);
+    required this.cidrBlock,
+    this.description,
+    required this.ensRegionId,
+    this.networkName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      cidrBlock: pulumi.Output.create<String>(map['cidrBlock'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      ensRegionId: pulumi.Output.create<String>(map['ensRegionId'] as String),
-      networkName: map['networkName'] == null ? null : pulumi.Output.create<String>(map['networkName'] as String),
+      cidrBlock: (map['cidrBlock'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      ensRegionId: (map['ensRegionId'] as String).input(),
+      networkName: map['networkName'] == null ? null : (map['networkName'] as String).input(),
     );
   }
 }

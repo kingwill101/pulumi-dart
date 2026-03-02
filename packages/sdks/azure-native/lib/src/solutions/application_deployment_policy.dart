@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Managed application deployment policy.
 class ApplicationDeploymentPolicy {
   /// The managed application deployment mode.
-  final String deploymentMode;
+  final pulumi.Input<String> deploymentMode;
 
   /// Creates a new [ApplicationDeploymentPolicy].
   /// [deploymentMode] The managed application deployment mode.
@@ -20,7 +21,7 @@ class ApplicationDeploymentPolicy {
 
   factory ApplicationDeploymentPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationDeploymentPolicy(
-      deploymentMode: map['deploymentMode'] as String,
+      deploymentMode: (map['deploymentMode'] as String).input(),
     );
   }
 }

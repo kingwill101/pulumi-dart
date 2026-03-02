@@ -34,17 +34,12 @@ class AutoSnapshotPolicyArgs {
   /// [retentionDays] The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
   /// [timePoints] The point in time at which an auto snapshot is created.
   AutoSnapshotPolicyArgs({
-    pulumi.Output<String>? autoSnapshotPolicyName,
-    pulumi.Output<String>? fileSystemType,
-    required pulumi.Output<List<String>> repeatWeekdays,
-    pulumi.Output<int>? retentionDays,
-    required pulumi.Output<List<String>> timePoints,
-  }) :
-      autoSnapshotPolicyName = pulumi.Input.asOptionalInput<String>(autoSnapshotPolicyName),
-      fileSystemType = pulumi.Input.asOptionalInput<String>(fileSystemType),
-      repeatWeekdays = pulumi.Input.asInput<List<String>>(repeatWeekdays),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays),
-      timePoints = pulumi.Input.asInput<List<String>>(timePoints);
+    this.autoSnapshotPolicyName,
+    this.fileSystemType,
+    required this.repeatWeekdays,
+    this.retentionDays,
+    required this.timePoints,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,11 +53,11 @@ class AutoSnapshotPolicyArgs {
 
   factory AutoSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyArgs(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : pulumi.Output.create<String>(map['autoSnapshotPolicyName'] as String),
-      fileSystemType: map['fileSystemType'] == null ? null : pulumi.Output.create<String>(map['fileSystemType'] as String),
-      repeatWeekdays: pulumi.Output.create<List<String>>((map['repeatWeekdays'] as List).cast<String>()),
-      retentionDays: map['retentionDays'] == null ? null : pulumi.Output.create<int>(map['retentionDays'] as int),
-      timePoints: pulumi.Output.create<List<String>>((map['timePoints'] as List).cast<String>()),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }
 }

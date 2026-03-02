@@ -18,15 +18,11 @@ class GetExternalAccessRuleArgs {
   /// [networkPolicyId] Required.
   /// [project] Optional.
   GetExternalAccessRuleArgs({
-    required pulumi.Output<String> externalAccessRuleId,
-    required pulumi.Output<String> location,
-    required pulumi.Output<String> networkPolicyId,
-    pulumi.Output<String>? project,
-  }) :
-      externalAccessRuleId = pulumi.Input.asInput<String>(externalAccessRuleId),
-      location = pulumi.Input.asInput<String>(location),
-      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.externalAccessRuleId,
+    required this.location,
+    required this.networkPolicyId,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +35,10 @@ class GetExternalAccessRuleArgs {
 
   factory GetExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalAccessRuleArgs(
-      externalAccessRuleId: pulumi.Output.create<String>(map['externalAccessRuleId'] as String),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      networkPolicyId: pulumi.Output.create<String>(map['networkPolicyId'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      externalAccessRuleId: (map['externalAccessRuleId'] as String).input(),
+      location: (map['location'] as String).input(),
+      networkPolicyId: (map['networkPolicyId'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

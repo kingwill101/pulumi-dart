@@ -16,13 +16,10 @@ class HyperVReplicationPolicyAssociationState {
   /// [name] The name of the replication policy association. Changing this forces a new association to be created.
   /// [policyId] The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
   HyperVReplicationPolicyAssociationState({
-    pulumi.Output<String>? hypervSiteId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? policyId,
-  }) :
-      hypervSiteId = pulumi.Input.asOptionalInput<String>(hypervSiteId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyId = pulumi.Input.asOptionalInput<String>(policyId);
+    this.hypervSiteId,
+    this.name,
+    this.policyId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,9 +31,9 @@ class HyperVReplicationPolicyAssociationState {
 
   factory HyperVReplicationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyAssociationState(
-      hypervSiteId: map['hypervSiteId'] == null ? null : pulumi.Output.create<String>(map['hypervSiteId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      policyId: map['policyId'] == null ? null : pulumi.Output.create<String>(map['policyId'] as String),
+      hypervSiteId: map['hypervSiteId'] == null ? null : (map['hypervSiteId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
     );
   }
 }

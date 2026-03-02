@@ -23,15 +23,11 @@ class AddonArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   AddonArgs({
-    pulumi.Output<String>? addonName,
-    required pulumi.Output<String> privateCloudName,
-    pulumi.Output<AddonArcProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      addonName = pulumi.Input.asOptionalInput<String>(addonName),
-      privateCloudName = pulumi.Input.asInput<String>(privateCloudName),
-      properties = pulumi.Input.asOptionalInput<AddonArcProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    this.addonName,
+    required this.privateCloudName,
+    this.properties,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class AddonArgs {
 
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
-      addonName: map['addonName'] == null ? null : pulumi.Output.create<String>(map['addonName'] as String),
-      privateCloudName: pulumi.Output.create<String>(map['privateCloudName'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<AddonArcProperties>(AddonArcProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
+      privateCloudName: (map['privateCloudName'] as String).input(),
+      properties: map['properties'] == null ? null : (AddonArcProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

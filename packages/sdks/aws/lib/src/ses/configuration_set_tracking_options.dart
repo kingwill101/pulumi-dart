@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetTrackingOptions {
   /// Custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
-  final String? customRedirectDomain;
+  final pulumi.Input<String>? customRedirectDomain;
 
   /// Creates a new [ConfigurationSetTrackingOptions].
   /// [customRedirectDomain] Custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
@@ -19,7 +20,7 @@ class ConfigurationSetTrackingOptions {
 
   factory ConfigurationSetTrackingOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetTrackingOptions(
-      customRedirectDomain: map['customRedirectDomain'] == null ? null : map['customRedirectDomain'] as String,
+      customRedirectDomain: map['customRedirectDomain'] == null ? null : (map['customRedirectDomain'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
   /// (Optional)
-  final int? registryBurst;
+  final pulumi.Input<int>? registryBurst;
   /// (Optional)
-  final int? registryPullQps;
+  final pulumi.Input<int>? registryPullQps;
   /// (Optional)
-  final bool? serializeImagePullsDisabled;
+  final pulumi.Input<bool>? serializeImagePullsDisabled;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig].
   /// [registryBurst] (Optional)
@@ -29,9 +30,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(
-      registryBurst: map['registryBurst'] == null ? null : map['registryBurst'] as int,
-      registryPullQps: map['registryPullQps'] == null ? null : map['registryPullQps'] as int,
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : map['serializeImagePullsDisabled'] as bool,
+      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst'] as int).input(),
+      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps'] as int).input(),
+      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled'] as bool).input(),
     );
   }
 }

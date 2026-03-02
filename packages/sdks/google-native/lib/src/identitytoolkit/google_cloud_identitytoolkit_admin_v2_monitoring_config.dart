@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_identitytoolkit_admin_v2_request_logging.dart';
 
 /// Configuration related to monitoring project activity.
 class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
   /// Configuration for logging requests made to this project to Stackdriver Logging
-  final GoogleCloudIdentitytoolkitAdminV2RequestLogging? requestLogging;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RequestLogging>? requestLogging;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2MonitoringConfig].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging
@@ -15,13 +16,13 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestLogging': ?requestLogging == null ? null : requestLogging!.toMap(),
+      'requestLogging': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2RequestLogging, Map<String, dynamic>>(requestLogging, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2MonitoringConfig(
-      requestLogging: map['requestLogging'] == null ? null : GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>()),
+      requestLogging: map['requestLogging'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

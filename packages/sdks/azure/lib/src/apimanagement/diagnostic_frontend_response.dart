@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_frontend_response_data_masking.dart';
 
 class DiagnosticFrontendResponse {
   /// Number of payload bytes to log (up to 8192).
-  final int? bodyBytes;
+  final pulumi.Input<int>? bodyBytes;
   /// A `data_masking` block as defined below.
-  final DiagnosticFrontendResponseDataMasking? dataMasking;
+  final pulumi.Input<DiagnosticFrontendResponseDataMasking>? dataMasking;
   /// Specifies a list of headers to log.
-  final List<String>? headersToLogs;
+  final pulumi.Input<List<String>>? headersToLogs;
 
   /// Creates a new [DiagnosticFrontendResponse].
   /// [bodyBytes] Number of payload bytes to log (up to 8192).
@@ -23,16 +24,16 @@ class DiagnosticFrontendResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bodyBytes': ?bodyBytes,
-      'dataMasking': ?dataMasking == null ? null : dataMasking!.toMap(),
+      'dataMasking': ?pulumi.Input.mapOptionalInputValue<DiagnosticFrontendResponseDataMasking, Map<String, dynamic>>(dataMasking, (value) => value.toMap()),
       'headersToLogs': ?headersToLogs,
     };
   }
 
   factory DiagnosticFrontendResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticFrontendResponse(
-      bodyBytes: map['bodyBytes'] == null ? null : map['bodyBytes'] as int,
-      dataMasking: map['dataMasking'] == null ? null : DiagnosticFrontendResponseDataMasking.fromMap((map['dataMasking'] as Map).cast<String, dynamic>()),
-      headersToLogs: map['headersToLogs'] == null ? null : (map['headersToLogs'] as List).cast<String>(),
+      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes'] as int).input(),
+      dataMasking: map['dataMasking'] == null ? null : (DiagnosticFrontendResponseDataMasking.fromMap((map['dataMasking'] as Map).cast<String, dynamic>())).input(),
+      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs'] as List).cast<String>()).input(),
     );
   }
 }

@@ -20,13 +20,10 @@ class SchemaReferenceArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [schemaReferenceName] The name of the SchemaReference
   SchemaReferenceArgs({
-    pulumi.Output<SchemaReferenceProperties>? properties,
-    required pulumi.Output<String> resourceUri,
-    pulumi.Output<String>? schemaReferenceName,
-  }) :
-      properties = pulumi.Input.asOptionalInput<SchemaReferenceProperties>(properties),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri),
-      schemaReferenceName = pulumi.Input.asOptionalInput<String>(schemaReferenceName);
+    this.properties,
+    required this.resourceUri,
+    this.schemaReferenceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class SchemaReferenceArgs {
 
   factory SchemaReferenceArgs.fromMap(Map<String, dynamic> map) {
     return SchemaReferenceArgs(
-      properties: map['properties'] == null ? null : pulumi.Output.create<SchemaReferenceProperties>(SchemaReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
-      schemaReferenceName: map['schemaReferenceName'] == null ? null : pulumi.Output.create<String>(map['schemaReferenceName'] as String),
+      properties: map['properties'] == null ? null : (SchemaReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceUri: (map['resourceUri'] as String).input(),
+      schemaReferenceName: map['schemaReferenceName'] == null ? null : (map['schemaReferenceName'] as String).input(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'get_instance_storage_config_storage_config_kinesis_video_stream_config_e
 
 class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
   /// The encryption configuration. Documented below.
-  final List<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig> encryptionConfigs;
+  final pulumi.Input<List<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>> encryptionConfigs;
   /// The prefix of the video stream. Minimum length of `1`. Maximum length of `128`. When read from the state, the value returned is `<prefix>-connect-<connect_instance_alias>-contact-` since the API appends additional details to the `prefix`.
-  final String prefix;
+  final pulumi.Input<String> prefix;
   /// The number of hours to retain the data in a data store associated with the stream. Minimum value of `0`. Maximum value of `87600`. A value of `0` indicates that the stream does not persist data.
-  final int retentionPeriodHours;
+  final pulumi.Input<int> retentionPeriodHours;
 
   /// Creates a new [GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig].
   /// [encryptionConfigs] The encryption configuration. Documented below.
@@ -23,7 +23,7 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionConfigs': pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
+      'encryptionConfigs': pulumi.Input.mapInputValue<List<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>, List<Map<String, dynamic>>>(encryptionConfigs, (value) => pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'prefix': prefix,
       'retentionPeriodHours': retentionPeriodHours,
     };
@@ -31,9 +31,9 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
 
   factory GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig(
-      encryptionConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
-      prefix: map['prefix'] as String,
-      retentionPeriodHours: map['retentionPeriodHours'] as int,
+      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefix: (map['prefix'] as String).input(),
+      retentionPeriodHours: (map['retentionPeriodHours'] as int).input(),
     );
   }
 }

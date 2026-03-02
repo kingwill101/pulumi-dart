@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_lens_configuration_storage_lens_configuration_data_export_s3_bucket_destination_encryption.dart';
 
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination {
   /// The account ID of the owner of the S3 Storage Lens metrics export bucket.
-  final String accountId;
+  final pulumi.Input<String> accountId;
   /// The Amazon Resource Name (ARN) of the bucket.
-  final String arn;
+  final pulumi.Input<String> arn;
   /// Encryption of the metrics exports in this bucket. See Encryption below for more details.
-  final StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption? encryption;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption>? encryption;
   /// The export format. Valid values: `CSV`, `Parquet`.
-  final String format;
+  final pulumi.Input<String> format;
   /// The schema version of the export file. Valid values: `V_1`.
-  final String outputSchemaVersion;
+  final pulumi.Input<String> outputSchemaVersion;
   /// The prefix of the destination bucket where the metrics export will be delivered.
-  final String? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination].
   /// [accountId] The account ID of the owner of the S3 Storage Lens metrics export bucket.
@@ -36,7 +37,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
     return <String, dynamic>{
       'accountId': accountId,
       'arn': arn,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'format': format,
       'outputSchemaVersion': outputSchemaVersion,
       'prefix': ?prefix,
@@ -45,12 +46,12 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
 
   factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination(
-      accountId: map['accountId'] as String,
-      arn: map['arn'] as String,
-      encryption: map['encryption'] == null ? null : StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      format: map['format'] as String,
-      outputSchemaVersion: map['outputSchemaVersion'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      accountId: (map['accountId'] as String).input(),
+      arn: (map['arn'] as String).input(),
+      encryption: map['encryption'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      format: (map['format'] as String).input(),
+      outputSchemaVersion: (map['outputSchemaVersion'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
     );
   }
 }

@@ -1,17 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeFqdn {
   /// The FQDN node's address family.
-  final String? addressFamily;
+  final pulumi.Input<String>? addressFamily;
   /// Specifies if the node should scale to the IP address set returned by DNS.
-  final String autopopulate;
+  final pulumi.Input<String> autopopulate;
   /// The number of attempts to resolve a domain name.
-  final int downinterval;
+  final pulumi.Input<int> downinterval;
   /// The amount of time before sending the next DNS query.
-  final String interval;
+  final pulumi.Input<String> interval;
   /// Name of the node.
-  final String? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a new [GetNodeFqdn].
   /// [addressFamily] The FQDN node's address family.
@@ -39,11 +40,11 @@ class GetNodeFqdn {
 
   factory GetNodeFqdn.fromMap(Map<String, dynamic> map) {
     return GetNodeFqdn(
-      addressFamily: map['addressFamily'] == null ? null : map['addressFamily'] as String,
-      autopopulate: map['autopopulate'] as String,
-      downinterval: map['downinterval'] as int,
-      interval: map['interval'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
+      autopopulate: (map['autopopulate'] as String).input(),
+      downinterval: (map['downinterval'] as int).input(),
+      interval: (map['interval'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

@@ -26,17 +26,12 @@ class EndpointArgs {
   /// [vpcId] The VPC ID.
   /// [vpcRegionId] The Region of the VPC.
   EndpointArgs({
-    required pulumi.Output<String> endpointName,
-    required pulumi.Output<List<EndpointIpConfig>> ipConfigs,
-    required pulumi.Output<String> securityGroupId,
-    required pulumi.Output<String> vpcId,
-    required pulumi.Output<String> vpcRegionId,
-  }) :
-      endpointName = pulumi.Input.asInput<String>(endpointName),
-      ipConfigs = pulumi.Input.asInput<List<EndpointIpConfig>>(ipConfigs),
-      securityGroupId = pulumi.Input.asInput<String>(securityGroupId),
-      vpcId = pulumi.Input.asInput<String>(vpcId),
-      vpcRegionId = pulumi.Input.asInput<String>(vpcRegionId);
+    required this.endpointName,
+    required this.ipConfigs,
+    required this.securityGroupId,
+    required this.vpcId,
+    required this.vpcRegionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,11 +45,11 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
-      ipConfigs: pulumi.Output.create<List<EndpointIpConfig>>(pulumi.Input.decodeList<EndpointIpConfig>(map['ipConfigs'], (value) => EndpointIpConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      securityGroupId: pulumi.Output.create<String>(map['securityGroupId'] as String),
-      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
-      vpcRegionId: pulumi.Output.create<String>(map['vpcRegionId'] as String),
+      endpointName: (map['endpointName'] as String).input(),
+      ipConfigs: (pulumi.Input.decodeList<EndpointIpConfig>(map['ipConfigs'], (value) => EndpointIpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityGroupId: (map['securityGroupId'] as String).input(),
+      vpcId: (map['vpcId'] as String).input(),
+      vpcRegionId: (map['vpcRegionId'] as String).input(),
     );
   }
 }

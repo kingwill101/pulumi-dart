@@ -53,33 +53,20 @@ class ApiArgs {
   /// [title] API title.
   /// [workspaceName] The name of the workspace.
   ApiArgs({
-    pulumi.Output<String>? apiName,
-    pulumi.Output<List<Contact>>? contacts,
-    pulumi.Output<dynamic>? customProperties,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<ExternalDocumentation>>? externalDocumentation,
-    required pulumi.Output<String> kind,
-    pulumi.Output<License>? license,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> serviceName,
-    pulumi.Output<String>? summary,
-    pulumi.Output<TermsOfService>? termsOfService,
-    required pulumi.Output<String> title,
-    required pulumi.Output<String> workspaceName,
-  }) :
-      apiName = pulumi.Input.asOptionalInput<String>(apiName),
-      contacts = pulumi.Input.asOptionalInput<List<Contact>>(contacts),
-      customProperties = pulumi.Input.asOptionalInput<dynamic>(customProperties),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      externalDocumentation = pulumi.Input.asOptionalInput<List<ExternalDocumentation>>(externalDocumentation),
-      kind = pulumi.Input.asInput<String>(kind),
-      license = pulumi.Input.asOptionalInput<License>(license),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      summary = pulumi.Input.asOptionalInput<String>(summary),
-      termsOfService = pulumi.Input.asOptionalInput<TermsOfService>(termsOfService),
-      title = pulumi.Input.asInput<String>(title),
-      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+    this.apiName,
+    this.contacts,
+    this.customProperties,
+    this.description,
+    this.externalDocumentation,
+    required this.kind,
+    this.license,
+    required this.resourceGroupName,
+    required this.serviceName,
+    this.summary,
+    this.termsOfService,
+    required this.title,
+    required this.workspaceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,19 +88,19 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiName: map['apiName'] == null ? null : pulumi.Output.create<String>(map['apiName'] as String),
-      contacts: map['contacts'] == null ? null : pulumi.Output.create<List<Contact>>(pulumi.Input.decodeList<Contact>(map['contacts'], (value) => Contact.fromMap((value as Map).cast<String, dynamic>()))),
-      customProperties: map['customProperties'] == null ? null : pulumi.Output.create<dynamic>(map['customProperties']),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      externalDocumentation: map['externalDocumentation'] == null ? null : pulumi.Output.create<List<ExternalDocumentation>>(pulumi.Input.decodeList<ExternalDocumentation>(map['externalDocumentation'], (value) => ExternalDocumentation.fromMap((value as Map).cast<String, dynamic>()))),
-      kind: pulumi.Output.create<String>(map['kind'] as String),
-      license: map['license'] == null ? null : pulumi.Output.create<License>(License.fromMap((map['license'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      serviceName: pulumi.Output.create<String>(map['serviceName'] as String),
-      summary: map['summary'] == null ? null : pulumi.Output.create<String>(map['summary'] as String),
-      termsOfService: map['termsOfService'] == null ? null : pulumi.Output.create<TermsOfService>(TermsOfService.fromMap((map['termsOfService'] as Map).cast<String, dynamic>())),
-      title: pulumi.Output.create<String>(map['title'] as String),
-      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
+      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<Contact>(map['contacts'], (value) => Contact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      externalDocumentation: map['externalDocumentation'] == null ? null : (pulumi.Input.decodeList<ExternalDocumentation>(map['externalDocumentation'], (value) => ExternalDocumentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: (map['kind'] as String).input(),
+      license: map['license'] == null ? null : (License.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      serviceName: (map['serviceName'] as String).input(),
+      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      termsOfService: map['termsOfService'] == null ? null : (TermsOfService.fromMap((map['termsOfService'] as Map).cast<String, dynamic>())).input(),
+      title: (map['title'] as String).input(),
+      workspaceName: (map['workspaceName'] as String).input(),
     );
   }
 }

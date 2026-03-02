@@ -25,15 +25,11 @@ class TrustStoreArgs {
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   TrustStoreArgs({
-    required pulumi.Output<TrustStoreCaCertificatesBundleSource> caCertificatesBundleSource,
-    pulumi.Output<String>? name,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<TrustStoreTimeouts>? timeouts,
-  }) :
-      caCertificatesBundleSource = pulumi.Input.asInput<TrustStoreCaCertificatesBundleSource>(caCertificatesBundleSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<TrustStoreTimeouts>(timeouts);
+    required this.caCertificatesBundleSource,
+    this.name,
+    this.tags,
+    this.timeouts,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class TrustStoreArgs {
 
   factory TrustStoreArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreArgs(
-      caCertificatesBundleSource: pulumi.Output.create<TrustStoreCaCertificatesBundleSource>(TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource'] as Map).cast<String, dynamic>())),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<TrustStoreTimeouts>(TrustStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      caCertificatesBundleSource: (TrustStoreCaCertificatesBundleSource.fromMap((map['caCertificatesBundleSource'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (TrustStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

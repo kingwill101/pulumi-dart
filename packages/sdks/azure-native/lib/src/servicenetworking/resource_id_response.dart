@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Resource ID definition used by parent to reference child resources.
 class ResourceIdResponse {
   /// Resource ID of child resource.
-  final String id;
+  final pulumi.Input<String> id;
 
   /// Creates a new [ResourceIdResponse].
   /// [id] Resource ID of child resource.
@@ -20,7 +21,7 @@ class ResourceIdResponse {
 
   factory ResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdResponse(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }

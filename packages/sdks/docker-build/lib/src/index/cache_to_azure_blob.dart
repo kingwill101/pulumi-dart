@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_mode.dart';
 
 class CacheToAzureBlob {
   /// Base URL of the storage account.
-  final String? accountUrl;
+  final pulumi.Input<String>? accountUrl;
   /// Ignore errors caused by failed cache exports.
-  final bool? ignoreError;
+  final pulumi.Input<bool>? ignoreError;
   /// The cache mode to use. Defaults to `min`.
-  final CacheMode? mode;
+  final pulumi.Input<CacheMode>? mode;
   /// The name of the cache image.
-  final String name;
+  final pulumi.Input<String> name;
   /// Blob storage account key.
-  final String? secretAccessKey;
+  final pulumi.Input<String>? secretAccessKey;
 
   /// Creates a new [CacheToAzureBlob].
   /// [accountUrl] Base URL of the storage account.
@@ -32,7 +33,7 @@ class CacheToAzureBlob {
     return <String, dynamic>{
       'accountUrl': ?accountUrl,
       'ignoreError': ?ignoreError,
-      'mode': ?mode == null ? null : mode!.value,
+      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(mode, (value) => value.value),
       'name': name,
       'secretAccessKey': ?secretAccessKey,
     };
@@ -40,11 +41,11 @@ class CacheToAzureBlob {
 
   factory CacheToAzureBlob.fromMap(Map<String, dynamic> map) {
     return CacheToAzureBlob(
-      accountUrl: map['accountUrl'] == null ? null : map['accountUrl'] as String,
-      ignoreError: map['ignoreError'] == null ? null : map['ignoreError'] as bool,
-      mode: map['mode'] == null ? null : CacheMode.fromValue(map['mode'] as String),
-      name: map['name'] as String,
-      secretAccessKey: map['secretAccessKey'] == null ? null : map['secretAccessKey'] as String,
+      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl'] as String).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
+      name: (map['name'] as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
     );
   }
 }

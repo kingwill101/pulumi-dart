@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MatchConditionAdmissionregistrationK8sIoV1alpha1 {
   /// Expression represents the expression which will be evaluated by CEL. Must evaluate to bool. CEL expressions have access to the contents of the AdmissionRequest and Authorizer, organized into CEL variables:
@@ -11,11 +12,11 @@ class MatchConditionAdmissionregistrationK8sIoV1alpha1 {
   /// Documentation on CEL: https://kubernetes.io/docs/reference/using-api/cel/
   ///
   /// Required.
-  final String expression;
+  final pulumi.Input<String> expression;
   /// Name is an identifier for this match condition, used for strategic merging of MatchConditions, as well as providing an identifier for logging purposes. A good name should be descriptive of the associated expression. Name must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')
   ///
   /// Required.
-  final String name;
+  final pulumi.Input<String> name;
 
   /// Creates a new [MatchConditionAdmissionregistrationK8sIoV1alpha1].
   /// [expression] Expression represents the expression which will be evaluated by CEL. Must evaluate to bool. CEL expressions have access to the contents of the AdmissionRequest and Authorizer, organized into CEL variables:
@@ -34,8 +35,8 @@ class MatchConditionAdmissionregistrationK8sIoV1alpha1 {
 
   factory MatchConditionAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return MatchConditionAdmissionregistrationK8sIoV1alpha1(
-      expression: map['expression'] as String,
-      name: map['name'] as String,
+      expression: (map['expression'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

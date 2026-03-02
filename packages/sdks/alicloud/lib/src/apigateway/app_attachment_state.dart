@@ -19,15 +19,11 @@ class AppAttachmentState {
   /// [groupId] The group that the api belongs to.
   /// [stageName] Stage that the app apply to access.
   AppAttachmentState({
-    pulumi.Output<String>? apiId,
-    pulumi.Output<String>? appId,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? stageName,
-  }) :
-      apiId = pulumi.Input.asOptionalInput<String>(apiId),
-      appId = pulumi.Input.asOptionalInput<String>(appId),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName);
+    this.apiId,
+    this.appId,
+    this.groupId,
+    this.stageName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class AppAttachmentState {
 
   factory AppAttachmentState.fromMap(Map<String, dynamic> map) {
     return AppAttachmentState(
-      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
-      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      stageName: map['stageName'] == null ? null : pulumi.Output.create<String>(map['stageName'] as String),
+      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
     );
   }
 }

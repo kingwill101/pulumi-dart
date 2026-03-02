@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'url_path_match_condition_parameters.dart';
 
 /// Defines the UrlPath condition for the delivery rule.
 class DeliveryRuleUrlPathCondition {
   /// Request variable to compare with.
   /// Expected value is 'UrlPath'.
-  final String name;
+  final pulumi.Input<String> name;
   /// Defines the parameters for the condition.
-  final UrlPathMatchConditionParameters parameters;
+  final pulumi.Input<UrlPathMatchConditionParameters> parameters;
 
   /// Creates a new [DeliveryRuleUrlPathCondition].
   /// [name] Request variable to compare with.
@@ -21,14 +22,14 @@ class DeliveryRuleUrlPathCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': parameters.toMap(),
+      'parameters': pulumi.Input.mapInputValue<UrlPathMatchConditionParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
     };
   }
 
   factory DeliveryRuleUrlPathCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryRuleUrlPathCondition(
-      name: map['name'] as String,
-      parameters: UrlPathMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      name: (map['name'] as String).input(),
+      parameters: (UrlPathMatchConditionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_details.dart';
 import 'user_info.dart';
 
 /// Properties specific to the monitor resource.
 class MonitorProperties {
   /// Flag to determine if User API Key has to be generated and shared.
-  final bool? generateApiKey;
+  final pulumi.Input<bool>? generateApiKey;
   /// Flag specifying if the resource monitoring is enabled or disabled.
-  final String? monitoringStatus;
+  final pulumi.Input<String>? monitoringStatus;
   /// Plan details of the monitor resource.
-  final PlanDetails? planDetails;
+  final pulumi.Input<PlanDetails>? planDetails;
   /// Provisioning state of the monitor resource.
-  final String? provisioningState;
+  final pulumi.Input<String>? provisioningState;
   /// Status of Azure Subscription where Marketplace SaaS is located.
-  final String? saaSAzureSubscriptionStatus;
+  final pulumi.Input<String>? saaSAzureSubscriptionStatus;
   /// A unique identifier associated with the campaign.
-  final String? sourceCampaignId;
+  final pulumi.Input<String>? sourceCampaignId;
   /// Name of the marketing campaign.
-  final String? sourceCampaignName;
+  final pulumi.Input<String>? sourceCampaignName;
   /// State of the Azure Subscription containing the monitor resource
-  final String? subscriptionState;
+  final pulumi.Input<String>? subscriptionState;
   /// User information.
-  final UserInfo? userInfo;
+  final pulumi.Input<UserInfo>? userInfo;
   /// Version of elastic of the monitor resource
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [MonitorProperties].
   /// [generateApiKey] Flag to determine if User API Key has to be generated and shared.
@@ -54,29 +55,29 @@ class MonitorProperties {
     return <String, dynamic>{
       'generateApiKey': ?generateApiKey,
       'monitoringStatus': ?monitoringStatus,
-      'planDetails': ?planDetails == null ? null : planDetails!.toMap(),
+      'planDetails': ?pulumi.Input.mapOptionalInputValue<PlanDetails, Map<String, dynamic>>(planDetails, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'saaSAzureSubscriptionStatus': ?saaSAzureSubscriptionStatus,
       'sourceCampaignId': ?sourceCampaignId,
       'sourceCampaignName': ?sourceCampaignName,
       'subscriptionState': ?subscriptionState,
-      'userInfo': ?userInfo == null ? null : userInfo!.toMap(),
+      'userInfo': ?pulumi.Input.mapOptionalInputValue<UserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory MonitorProperties.fromMap(Map<String, dynamic> map) {
     return MonitorProperties(
-      generateApiKey: map['generateApiKey'] == null ? null : map['generateApiKey'] as bool,
-      monitoringStatus: map['monitoringStatus'] == null ? null : map['monitoringStatus'] as String,
-      planDetails: map['planDetails'] == null ? null : PlanDetails.fromMap((map['planDetails'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : map['saaSAzureSubscriptionStatus'] as String,
-      sourceCampaignId: map['sourceCampaignId'] == null ? null : map['sourceCampaignId'] as String,
-      sourceCampaignName: map['sourceCampaignName'] == null ? null : map['sourceCampaignName'] as String,
-      subscriptionState: map['subscriptionState'] == null ? null : map['subscriptionState'] as String,
-      userInfo: map['userInfo'] == null ? null : UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      generateApiKey: map['generateApiKey'] == null ? null : (map['generateApiKey'] as bool).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
+      planDetails: map['planDetails'] == null ? null : (PlanDetails.fromMap((map['planDetails'] as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      saaSAzureSubscriptionStatus: map['saaSAzureSubscriptionStatus'] == null ? null : (map['saaSAzureSubscriptionStatus'] as String).input(),
+      sourceCampaignId: map['sourceCampaignId'] == null ? null : (map['sourceCampaignId'] as String).input(),
+      sourceCampaignName: map['sourceCampaignName'] == null ? null : (map['sourceCampaignName'] as String).input(),
+      subscriptionState: map['subscriptionState'] == null ? null : (map['subscriptionState'] as String).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

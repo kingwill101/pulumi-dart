@@ -59,25 +59,16 @@ class SaslAclState {
   /// [instanceId] The instance ID.
   /// [username] The user name.
   SaslAclState({
-    pulumi.Output<String>? aclOperationType,
-    pulumi.Output<String>? aclOperationTypes,
-    pulumi.Output<String>? aclPermissionType,
-    pulumi.Output<String>? aclResourceName,
-    pulumi.Output<String>? aclResourcePatternType,
-    pulumi.Output<String>? aclResourceType,
-    pulumi.Output<String>? host,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? username,
-  }) :
-      aclOperationType = pulumi.Input.asOptionalInput<String>(aclOperationType),
-      aclOperationTypes = pulumi.Input.asOptionalInput<String>(aclOperationTypes),
-      aclPermissionType = pulumi.Input.asOptionalInput<String>(aclPermissionType),
-      aclResourceName = pulumi.Input.asOptionalInput<String>(aclResourceName),
-      aclResourcePatternType = pulumi.Input.asOptionalInput<String>(aclResourcePatternType),
-      aclResourceType = pulumi.Input.asOptionalInput<String>(aclResourceType),
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      username = pulumi.Input.asOptionalInput<String>(username);
+    this.aclOperationType,
+    this.aclOperationTypes,
+    this.aclPermissionType,
+    this.aclResourceName,
+    this.aclResourcePatternType,
+    this.aclResourceType,
+    this.host,
+    this.instanceId,
+    this.username,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,15 +86,15 @@ class SaslAclState {
 
   factory SaslAclState.fromMap(Map<String, dynamic> map) {
     return SaslAclState(
-      aclOperationType: map['aclOperationType'] == null ? null : pulumi.Output.create<String>(map['aclOperationType'] as String),
-      aclOperationTypes: map['aclOperationTypes'] == null ? null : pulumi.Output.create<String>(map['aclOperationTypes'] as String),
-      aclPermissionType: map['aclPermissionType'] == null ? null : pulumi.Output.create<String>(map['aclPermissionType'] as String),
-      aclResourceName: map['aclResourceName'] == null ? null : pulumi.Output.create<String>(map['aclResourceName'] as String),
-      aclResourcePatternType: map['aclResourcePatternType'] == null ? null : pulumi.Output.create<String>(map['aclResourcePatternType'] as String),
-      aclResourceType: map['aclResourceType'] == null ? null : pulumi.Output.create<String>(map['aclResourceType'] as String),
-      host: map['host'] == null ? null : pulumi.Output.create<String>(map['host'] as String),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      username: map['username'] == null ? null : pulumi.Output.create<String>(map['username'] as String),
+      aclOperationType: map['aclOperationType'] == null ? null : (map['aclOperationType'] as String).input(),
+      aclOperationTypes: map['aclOperationTypes'] == null ? null : (map['aclOperationTypes'] as String).input(),
+      aclPermissionType: map['aclPermissionType'] == null ? null : (map['aclPermissionType'] as String).input(),
+      aclResourceName: map['aclResourceName'] == null ? null : (map['aclResourceName'] as String).input(),
+      aclResourcePatternType: map['aclResourcePatternType'] == null ? null : (map['aclResourcePatternType'] as String).input(),
+      aclResourceType: map['aclResourceType'] == null ? null : (map['aclResourceType'] as String).input(),
+      host: map['host'] == null ? null : (map['host'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

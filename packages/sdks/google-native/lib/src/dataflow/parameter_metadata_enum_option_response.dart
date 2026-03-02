@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ParameterMetadataEnumOption specifies the option shown in the enum form.
 class ParameterMetadataEnumOptionResponse {
   /// Optional. The description to display for the enum option.
-  final String description;
+  final pulumi.Input<String> description;
   /// Optional. The label to display for the enum option.
-  final String label;
+  final pulumi.Input<String> label;
   /// The value of the enum option.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ParameterMetadataEnumOptionResponse].
   /// [description] Optional. The description to display for the enum option.
@@ -30,9 +31,9 @@ class ParameterMetadataEnumOptionResponse {
 
   factory ParameterMetadataEnumOptionResponse.fromMap(Map<String, dynamic> map) {
     return ParameterMetadataEnumOptionResponse(
-      description: map['description'] as String,
-      label: map['label'] as String,
-      value: map['value'] as String,
+      description: (map['description'] as String).input(),
+      label: (map['label'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

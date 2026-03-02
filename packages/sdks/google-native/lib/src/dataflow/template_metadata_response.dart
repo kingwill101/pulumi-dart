@@ -6,11 +6,11 @@ import 'parameter_metadata_response.dart';
 /// Metadata describing a template.
 class TemplateMetadataResponse {
   /// Optional. A description of the template.
-  final String description;
+  final pulumi.Input<String> description;
   /// The name of the template.
-  final String name;
+  final pulumi.Input<String> name;
   /// The parameters for the template.
-  final List<ParameterMetadataResponse> parameters;
+  final pulumi.Input<List<ParameterMetadataResponse>> parameters;
 
   /// Creates a new [TemplateMetadataResponse].
   /// [description] Optional. A description of the template.
@@ -26,15 +26,15 @@ class TemplateMetadataResponse {
     return <String, dynamic>{
       'description': description,
       'name': name,
-      'parameters': pulumi.Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters': pulumi.Input.mapInputValue<List<ParameterMetadataResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ParameterMetadataResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory TemplateMetadataResponse.fromMap(Map<String, dynamic> map) {
     return TemplateMetadataResponse(
-      description: map['description'] as String,
-      name: map['name'] as String,
-      parameters: pulumi.Input.decodeList<ParameterMetadataResponse>(map['parameters'], (value) => ParameterMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: (map['description'] as String).input(),
+      name: (map['name'] as String).input(),
+      parameters: (pulumi.Input.decodeList<ParameterMetadataResponse>(map['parameters'], (value) => ParameterMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

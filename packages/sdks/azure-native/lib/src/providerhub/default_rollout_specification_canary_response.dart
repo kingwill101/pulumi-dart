@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The canary traffic region configuration.
 class DefaultRolloutSpecificationCanaryResponse {
   /// The regions.
-  final List<String>? regions;
+  final pulumi.Input<List<String>>? regions;
   /// The skip regions.
-  final List<String>? skipRegions;
+  final pulumi.Input<List<String>>? skipRegions;
 
   /// Creates a new [DefaultRolloutSpecificationCanaryResponse].
   /// [regions] The regions.
@@ -25,8 +26,8 @@ class DefaultRolloutSpecificationCanaryResponse {
 
   factory DefaultRolloutSpecificationCanaryResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationCanaryResponse(
-      regions: map['regions'] == null ? null : (map['regions'] as List).cast<String>(),
-      skipRegions: map['skipRegions'] == null ? null : (map['skipRegions'] as List).cast<String>(),
+      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      skipRegions: map['skipRegions'] == null ? null : ((map['skipRegions'] as List).cast<String>()).input(),
     );
   }
 }

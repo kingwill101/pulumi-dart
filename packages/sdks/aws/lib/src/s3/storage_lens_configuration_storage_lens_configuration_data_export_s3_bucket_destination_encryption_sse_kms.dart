@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms {
   /// KMS key ARN.
-  final String keyId;
+  final pulumi.Input<String> keyId;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms].
   /// [keyId] KMS key ARN.
@@ -19,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
 
   factory StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryptionSseKms(
-      keyId: map['keyId'] as String,
+      keyId: (map['keyId'] as String).input(),
     );
   }
 }

@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryTimelineSampleResponse {
   /// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
-  final String activeUnits;
+  final pulumi.Input<String> activeUnits;
   /// Total parallel units of work completed by this query.
-  final String completedUnits;
+  final pulumi.Input<String> completedUnits;
   /// Milliseconds elapsed since the start of query execution.
-  final String elapsedMs;
+  final pulumi.Input<String> elapsedMs;
   /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
-  final String estimatedRunnableUnits;
+  final pulumi.Input<String> estimatedRunnableUnits;
   /// Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
-  final String pendingUnits;
+  final pulumi.Input<String> pendingUnits;
   /// Cumulative slot-ms consumed by the query.
-  final String totalSlotMs;
+  final pulumi.Input<String> totalSlotMs;
 
   /// Creates a new [QueryTimelineSampleResponse].
   /// [activeUnits] Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
@@ -44,12 +45,12 @@ class QueryTimelineSampleResponse {
 
   factory QueryTimelineSampleResponse.fromMap(Map<String, dynamic> map) {
     return QueryTimelineSampleResponse(
-      activeUnits: map['activeUnits'] as String,
-      completedUnits: map['completedUnits'] as String,
-      elapsedMs: map['elapsedMs'] as String,
-      estimatedRunnableUnits: map['estimatedRunnableUnits'] as String,
-      pendingUnits: map['pendingUnits'] as String,
-      totalSlotMs: map['totalSlotMs'] as String,
+      activeUnits: (map['activeUnits'] as String).input(),
+      completedUnits: (map['completedUnits'] as String).input(),
+      elapsedMs: (map['elapsedMs'] as String).input(),
+      estimatedRunnableUnits: (map['estimatedRunnableUnits'] as String).input(),
+      pendingUnits: (map['pendingUnits'] as String).input(),
+      totalSlotMs: (map['totalSlotMs'] as String).input(),
     );
   }
 }

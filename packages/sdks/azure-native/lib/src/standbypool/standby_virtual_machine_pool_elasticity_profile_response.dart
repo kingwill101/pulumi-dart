@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the elasticity profile.
 class StandbyVirtualMachinePoolElasticityProfileResponse {
   /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
-  final double maxReadyCapacity;
+  final pulumi.Input<double> maxReadyCapacity;
   /// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-  final double? minReadyCapacity;
+  final pulumi.Input<double>? minReadyCapacity;
 
   /// Creates a new [StandbyVirtualMachinePoolElasticityProfileResponse].
   /// [maxReadyCapacity] Specifies the maximum number of virtual machines in the standby virtual machine pool.
@@ -25,8 +26,8 @@ class StandbyVirtualMachinePoolElasticityProfileResponse {
 
   factory StandbyVirtualMachinePoolElasticityProfileResponse.fromMap(Map<String, dynamic> map) {
     return StandbyVirtualMachinePoolElasticityProfileResponse(
-      maxReadyCapacity: map['maxReadyCapacity'] as double,
-      minReadyCapacity: map['minReadyCapacity'] == null ? null : map['minReadyCapacity'] as double,
+      maxReadyCapacity: (map['maxReadyCapacity'] as double).input(),
+      minReadyCapacity: map['minReadyCapacity'] == null ? null : (map['minReadyCapacity'] as double).input(),
     );
   }
 }

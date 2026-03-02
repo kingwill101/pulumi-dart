@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig {
   /// Request header name to send to the staging distribution. The header must contain the prefix `aws-cf-cd-`.
-  final String header;
+  final pulumi.Input<String> header;
   /// Request header value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig].
   /// [header] Request header name to send to the staging distribution. The header must contain the prefix `aws-cf-cd-`.
@@ -24,8 +25,8 @@ class ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig {
 
   factory ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig(
-      header: map['header'] as String,
-      value: map['value'] as String,
+      header: (map['header'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

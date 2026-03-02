@@ -27,17 +27,12 @@ class TransferAcceptState {
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneTransferRequestId] The ID of the zone transfer request.
   TransferAcceptState({
-    pulumi.Output<bool>? disableStatusCheck,
-    pulumi.Output<String>? key,
-    pulumi.Output<String>? region,
-    pulumi.Output<Map<String, String>>? valueSpecs,
-    pulumi.Output<String>? zoneTransferRequestId,
-  }) :
-      disableStatusCheck = pulumi.Input.asOptionalInput<bool>(disableStatusCheck),
-      key = pulumi.Input.asOptionalInput<String>(key),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      valueSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(valueSpecs),
-      zoneTransferRequestId = pulumi.Input.asOptionalInput<String>(zoneTransferRequestId);
+    this.disableStatusCheck,
+    this.key,
+    this.region,
+    this.valueSpecs,
+    this.zoneTransferRequestId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,11 +46,11 @@ class TransferAcceptState {
 
   factory TransferAcceptState.fromMap(Map<String, dynamic> map) {
     return TransferAcceptState(
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : pulumi.Output.create<bool>(map['disableStatusCheck'] as bool),
-      key: map['key'] == null ? null : pulumi.Output.create<String>(map['key'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      valueSpecs: map['valueSpecs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['valueSpecs'] as Map).cast<String, String>()),
-      zoneTransferRequestId: map['zoneTransferRequestId'] == null ? null : pulumi.Output.create<String>(map['zoneTransferRequestId'] as String),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
+      key: map['key'] == null ? null : (map['key'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      zoneTransferRequestId: map['zoneTransferRequestId'] == null ? null : (map['zoneTransferRequestId'] as String).input(),
     );
   }
 }

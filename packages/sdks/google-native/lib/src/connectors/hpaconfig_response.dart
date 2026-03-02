@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Autoscaling config for connector deployment system metrics.
 class HPAConfigResponse {
   /// Percent CPU utilization where HPA triggers autoscaling.
-  final String cpuUtilizationThreshold;
+  final pulumi.Input<String> cpuUtilizationThreshold;
   /// Percent Memory utilization where HPA triggers autoscaling.
-  final String memoryUtilizationThreshold;
+  final pulumi.Input<String> memoryUtilizationThreshold;
 
   /// Creates a new [HPAConfigResponse].
   /// [cpuUtilizationThreshold] Percent CPU utilization where HPA triggers autoscaling.
@@ -25,8 +26,8 @@ class HPAConfigResponse {
 
   factory HPAConfigResponse.fromMap(Map<String, dynamic> map) {
     return HPAConfigResponse(
-      cpuUtilizationThreshold: map['cpuUtilizationThreshold'] as String,
-      memoryUtilizationThreshold: map['memoryUtilizationThreshold'] as String,
+      cpuUtilizationThreshold: (map['cpuUtilizationThreshold'] as String).input(),
+      memoryUtilizationThreshold: (map['memoryUtilizationThreshold'] as String).input(),
     );
   }
 }

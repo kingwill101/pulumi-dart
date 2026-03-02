@@ -18,11 +18,9 @@ class GetAckServiceArgs {
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
   /// [type] Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
   GetAckServiceArgs({
-    pulumi.Output<String>? enable,
-    required pulumi.Output<String> type,
-  }) :
-      enable = pulumi.Input.asOptionalInput<String>(enable),
-      type = pulumi.Input.asInput<String>(type);
+    this.enable,
+    required this.type,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetAckServiceArgs {
 
   factory GetAckServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetAckServiceArgs(
-      enable: map['enable'] == null ? null : pulumi.Output.create<String>(map['enable'] as String),
-      type: pulumi.Output.create<String>(map['type'] as String),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

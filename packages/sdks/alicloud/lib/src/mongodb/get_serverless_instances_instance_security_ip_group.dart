@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServerlessInstancesInstanceSecurityIpGroup {
   /// The attribute of the IP whitelist. This parameter is empty by default.
-  final String securityIpGroupAttribute;
+  final pulumi.Input<String> securityIpGroupAttribute;
   /// The name of the IP whitelist.
-  final String securityIpGroupName;
+  final pulumi.Input<String> securityIpGroupName;
   /// The IP addresses in the whitelist.
-  final String securityIpList;
+  final pulumi.Input<String> securityIpList;
 
   /// Creates a new [GetServerlessInstancesInstanceSecurityIpGroup].
   /// [securityIpGroupAttribute] The attribute of the IP whitelist. This parameter is empty by default.
@@ -29,9 +30,9 @@ class GetServerlessInstancesInstanceSecurityIpGroup {
 
   factory GetServerlessInstancesInstanceSecurityIpGroup.fromMap(Map<String, dynamic> map) {
     return GetServerlessInstancesInstanceSecurityIpGroup(
-      securityIpGroupAttribute: map['securityIpGroupAttribute'] as String,
-      securityIpGroupName: map['securityIpGroupName'] as String,
-      securityIpList: map['securityIpList'] as String,
+      securityIpGroupAttribute: (map['securityIpGroupAttribute'] as String).input(),
+      securityIpGroupName: (map['securityIpGroupName'] as String).input(),
+      securityIpList: (map['securityIpList'] as String).input(),
     );
   }
 }

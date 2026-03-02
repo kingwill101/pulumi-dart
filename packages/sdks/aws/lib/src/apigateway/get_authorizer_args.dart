@@ -19,13 +19,10 @@ class GetAuthorizerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated REST API.
   GetAuthorizerArgs({
-    required pulumi.Output<String> authorizerId,
-    pulumi.Output<String>? region,
-    required pulumi.Output<String> restApiId,
-  }) :
-      authorizerId = pulumi.Input.asInput<String>(authorizerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApiId = pulumi.Input.asInput<String>(restApiId);
+    required this.authorizerId,
+    this.region,
+    required this.restApiId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAuthorizerArgs {
 
   factory GetAuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizerArgs(
-      authorizerId: pulumi.Output.create<String>(map['authorizerId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      restApiId: pulumi.Output.create<String>(map['restApiId'] as String),
+      authorizerId: (map['authorizerId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      restApiId: (map['restApiId'] as String).input(),
     );
   }
 }

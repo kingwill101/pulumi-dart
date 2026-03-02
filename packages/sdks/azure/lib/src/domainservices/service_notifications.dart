@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceNotifications {
   /// A list of additional email addresses to notify when there are alerts in the managed domain.
-  final List<String>? additionalRecipients;
+  final pulumi.Input<List<String>>? additionalRecipients;
   /// Whether to notify members of the _AAD DC Administrators_ group when there are alerts in the managed domain.
-  final bool? notifyDcAdmins;
+  final pulumi.Input<bool>? notifyDcAdmins;
   /// Whether to notify all Global Administrators when there are alerts in the managed domain.
-  final bool? notifyGlobalAdmins;
+  final pulumi.Input<bool>? notifyGlobalAdmins;
 
   /// Creates a new [ServiceNotifications].
   /// [additionalRecipients] A list of additional email addresses to notify when there are alerts in the managed domain.
@@ -29,9 +30,9 @@ class ServiceNotifications {
 
   factory ServiceNotifications.fromMap(Map<String, dynamic> map) {
     return ServiceNotifications(
-      additionalRecipients: map['additionalRecipients'] == null ? null : (map['additionalRecipients'] as List).cast<String>(),
-      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : map['notifyDcAdmins'] as bool,
-      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : map['notifyGlobalAdmins'] as bool,
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
+      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins'] as bool).input(),
+      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins'] as bool).input(),
     );
   }
 }

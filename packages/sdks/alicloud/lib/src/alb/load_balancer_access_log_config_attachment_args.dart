@@ -19,13 +19,10 @@ class LoadBalancerAccessLogConfigAttachmentArgs {
   /// [logProject] The log items shipped by the access log.
   /// [logStore] Logstore for log delivery.
   LoadBalancerAccessLogConfigAttachmentArgs({
-    required pulumi.Output<String> loadBalancerId,
-    required pulumi.Output<String> logProject,
-    required pulumi.Output<String> logStore,
-  }) :
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      logProject = pulumi.Input.asInput<String>(logProject),
-      logStore = pulumi.Input.asInput<String>(logStore);
+    required this.loadBalancerId,
+    required this.logProject,
+    required this.logStore,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class LoadBalancerAccessLogConfigAttachmentArgs {
 
   factory LoadBalancerAccessLogConfigAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogConfigAttachmentArgs(
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      logProject: pulumi.Output.create<String>(map['logProject'] as String),
-      logStore: pulumi.Output.create<String>(map['logStore'] as String),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      logProject: (map['logProject'] as String).input(),
+      logStore: (map['logStore'] as String).input(),
     );
   }
 }

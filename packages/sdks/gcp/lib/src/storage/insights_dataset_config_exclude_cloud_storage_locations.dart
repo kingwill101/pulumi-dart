@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsDatasetConfigExcludeCloudStorageLocations {
   /// The list of cloud storage locations to exclude in the DatasetConfig.
-  final List<String> locations;
+  final pulumi.Input<List<String>> locations;
 
   /// Creates a new [InsightsDatasetConfigExcludeCloudStorageLocations].
   /// [locations] The list of cloud storage locations to exclude in the DatasetConfig.
@@ -19,7 +20,7 @@ class InsightsDatasetConfigExcludeCloudStorageLocations {
 
   factory InsightsDatasetConfigExcludeCloudStorageLocations.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigExcludeCloudStorageLocations(
-      locations: (map['locations'] as List).cast<String>(),
+      locations: ((map['locations'] as List).cast<String>()).input(),
     );
   }
 }

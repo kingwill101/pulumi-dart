@@ -1,21 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
   /// The cidrip of security rules.
-  final String cidrIp;
+  final pulumi.Input<String> cidrIp;
   /// The description of security rules.
-  final String description;
+  final pulumi.Input<String> description;
   /// The ip protocol of security rules.
-  final String ipProtocol;
+  final pulumi.Input<String> ipProtocol;
   /// The policy of security rules.
-  final String policy;
+  final pulumi.Input<String> policy;
   /// The port range of security rules.
-  final String portRange;
+  final pulumi.Input<String> portRange;
   /// The priority of security rules.
-  final String priority;
+  final pulumi.Input<String> priority;
   /// The type of security rules.
-  final String type;
+  final pulumi.Input<String> type;
 
   /// Creates a new [GetPolicyGroupsGroupAuthorizeSecurityPolicyRule].
   /// [cidrIp] The cidrip of security rules.
@@ -49,13 +50,13 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
 
   factory GetPolicyGroupsGroupAuthorizeSecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetPolicyGroupsGroupAuthorizeSecurityPolicyRule(
-      cidrIp: map['cidrIp'] as String,
-      description: map['description'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      policy: map['policy'] as String,
-      portRange: map['portRange'] as String,
-      priority: map['priority'] as String,
-      type: map['type'] as String,
+      cidrIp: (map['cidrIp'] as String).input(),
+      description: (map['description'] as String).input(),
+      ipProtocol: (map['ipProtocol'] as String).input(),
+      policy: (map['policy'] as String).input(),
+      portRange: (map['portRange'] as String).input(),
+      priority: (map['priority'] as String).input(),
+      type: (map['type'] as String).input(),
     );
   }
 }

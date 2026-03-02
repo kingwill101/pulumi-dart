@@ -19,15 +19,11 @@ class GroupState {
   /// [groupId] The GroupId of the group.
   /// [groupName] The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
   GroupState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? directoryId,
-    pulumi.Output<String>? groupId,
-    pulumi.Output<String>? groupName,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      groupId = pulumi.Input.asOptionalInput<String>(groupId),
-      groupName = pulumi.Input.asOptionalInput<String>(groupName);
+    this.description,
+    this.directoryId,
+    this.groupId,
+    this.groupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +36,10 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      directoryId: map['directoryId'] == null ? null : pulumi.Output.create<String>(map['directoryId'] as String),
-      groupId: map['groupId'] == null ? null : pulumi.Output.create<String>(map['groupId'] as String),
-      groupName: map['groupName'] == null ? null : pulumi.Output.create<String>(map['groupName'] as String),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
     );
   }
 }

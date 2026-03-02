@@ -17,11 +17,9 @@ class AiCacheConfigArgs {
   /// [disableCache] If set to true, disables GenAI caching. Otherwise caching is enabled.
   /// [project] The ID of the project in which the resource belongs.
   AiCacheConfigArgs({
-    required pulumi.Output<bool> disableCache,
-    pulumi.Output<String>? project,
-  }) :
-      disableCache = pulumi.Input.asInput<bool>(disableCache),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.disableCache,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class AiCacheConfigArgs {
 
   factory AiCacheConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiCacheConfigArgs(
-      disableCache: pulumi.Output.create<bool>(map['disableCache'] as bool),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      disableCache: (map['disableCache'] as bool).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

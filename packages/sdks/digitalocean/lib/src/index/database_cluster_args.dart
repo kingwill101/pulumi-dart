@@ -54,35 +54,21 @@ class DatabaseClusterArgs {
   /// [tags] A list of tag names to be applied to the database cluster.
   /// [version] Engine version used by the cluster (ex. `14` for PostgreSQL 14).
   DatabaseClusterArgs({
-    pulumi.Output<DatabaseClusterBackupRestore>? backupRestore,
-    required pulumi.Output<String> engine,
-    pulumi.Output<String>? evictionPolicy,
-    pulumi.Output<List<DatabaseClusterMaintenanceWindow>>? maintenanceWindows,
-    pulumi.Output<String>? name,
-    required pulumi.Output<int> nodeCount,
-    pulumi.Output<String>? privateNetworkUuid,
-    pulumi.Output<String>? projectId,
-    required pulumi.Output<String> region,
-    required pulumi.Output<String> size,
-    pulumi.Output<String>? sqlMode,
-    pulumi.Output<String>? storageSizeMib,
-    pulumi.Output<List<String>>? tags,
-    pulumi.Output<String>? version,
-  }) :
-      backupRestore = pulumi.Input.asOptionalInput<DatabaseClusterBackupRestore>(backupRestore),
-      engine = pulumi.Input.asInput<String>(engine),
-      evictionPolicy = pulumi.Input.asOptionalInput<String>(evictionPolicy),
-      maintenanceWindows = pulumi.Input.asOptionalInput<List<DatabaseClusterMaintenanceWindow>>(maintenanceWindows),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      nodeCount = pulumi.Input.asInput<int>(nodeCount),
-      privateNetworkUuid = pulumi.Input.asOptionalInput<String>(privateNetworkUuid),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      region = pulumi.Input.asInput<String>(region),
-      size = pulumi.Input.asInput<String>(size),
-      sqlMode = pulumi.Input.asOptionalInput<String>(sqlMode),
-      storageSizeMib = pulumi.Input.asOptionalInput<String>(storageSizeMib),
-      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.backupRestore,
+    required this.engine,
+    this.evictionPolicy,
+    this.maintenanceWindows,
+    this.name,
+    required this.nodeCount,
+    this.privateNetworkUuid,
+    this.projectId,
+    required this.region,
+    required this.size,
+    this.sqlMode,
+    this.storageSizeMib,
+    this.tags,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,20 +91,20 @@ class DatabaseClusterArgs {
 
   factory DatabaseClusterArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterArgs(
-      backupRestore: map['backupRestore'] == null ? null : pulumi.Output.create<DatabaseClusterBackupRestore>(DatabaseClusterBackupRestore.fromMap((map['backupRestore'] as Map).cast<String, dynamic>())),
-      engine: pulumi.Output.create<String>(map['engine'] as String),
-      evictionPolicy: map['evictionPolicy'] == null ? null : pulumi.Output.create<String>(map['evictionPolicy'] as String),
-      maintenanceWindows: map['maintenanceWindows'] == null ? null : pulumi.Output.create<List<DatabaseClusterMaintenanceWindow>>(pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(map['maintenanceWindows'], (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      nodeCount: pulumi.Output.create<int>(map['nodeCount'] as int),
-      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : pulumi.Output.create<String>(map['privateNetworkUuid'] as String),
-      projectId: map['projectId'] == null ? null : pulumi.Output.create<String>(map['projectId'] as String),
-      region: pulumi.Output.create<String>(map['region'] as String),
-      size: pulumi.Output.create<String>(map['size'] as String),
-      sqlMode: map['sqlMode'] == null ? null : pulumi.Output.create<String>(map['sqlMode'] as String),
-      storageSizeMib: map['storageSizeMib'] == null ? null : pulumi.Output.create<String>(map['storageSizeMib'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      backupRestore: map['backupRestore'] == null ? null : (DatabaseClusterBackupRestore.fromMap((map['backupRestore'] as Map).cast<String, dynamic>())).input(),
+      engine: (map['engine'] as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(map['maintenanceWindows'], (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      nodeCount: (map['nodeCount'] as int).input(),
+      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      region: (map['region'] as String).input(),
+      size: (map['size'] as String).input(),
+      sqlMode: map['sqlMode'] == null ? null : (map['sqlMode'] as String).input(),
+      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

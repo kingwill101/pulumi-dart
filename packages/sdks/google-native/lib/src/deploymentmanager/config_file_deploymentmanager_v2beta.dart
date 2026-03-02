@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigFileDeploymentmanagerV2beta {
   /// The contents of the file.
-  final String? content;
+  final pulumi.Input<String>? content;
 
   /// Creates a new [ConfigFileDeploymentmanagerV2beta].
   /// [content] The contents of the file.
@@ -19,7 +20,7 @@ class ConfigFileDeploymentmanagerV2beta {
 
   factory ConfigFileDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ConfigFileDeploymentmanagerV2beta(
-      content: map['content'] == null ? null : map['content'] as String,
+      content: map['content'] == null ? null : (map['content'] as String).input(),
     );
   }
 }

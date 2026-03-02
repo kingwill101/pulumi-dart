@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterNodePoolTaint {
   /// How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
-  final String effect;
+  final pulumi.Input<String> effect;
   /// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-  final String key;
+  final pulumi.Input<String> key;
   /// An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [GetKubernetesClusterNodePoolTaint].
   /// [effect] How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
@@ -29,9 +30,9 @@ class GetKubernetesClusterNodePoolTaint {
 
   factory GetKubernetesClusterNodePoolTaint.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNodePoolTaint(
-      effect: map['effect'] as String,
-      key: map['key'] as String,
-      value: map['value'] as String,
+      effect: (map['effect'] as String).input(),
+      key: (map['key'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

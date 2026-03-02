@@ -39,27 +39,17 @@ class DefinitionState {
   /// [policyType] The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
   /// [roleDefinitionIds] A list of role definition id extracted from `policy_rule` required for remediation.
   DefinitionState({
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? managementGroupId,
-    pulumi.Output<String>? metadata,
-    pulumi.Output<String>? mode,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? parameters,
-    pulumi.Output<String>? policyRule,
-    pulumi.Output<String>? policyType,
-    pulumi.Output<List<String>>? roleDefinitionIds,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      managementGroupId = pulumi.Input.asOptionalInput<String>(managementGroupId),
-      metadata = pulumi.Input.asOptionalInput<String>(metadata),
-      mode = pulumi.Input.asOptionalInput<String>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parameters = pulumi.Input.asOptionalInput<String>(parameters),
-      policyRule = pulumi.Input.asOptionalInput<String>(policyRule),
-      policyType = pulumi.Input.asOptionalInput<String>(policyType),
-      roleDefinitionIds = pulumi.Input.asOptionalInput<List<String>>(roleDefinitionIds);
+    this.description,
+    this.displayName,
+    this.managementGroupId,
+    this.metadata,
+    this.mode,
+    this.name,
+    this.parameters,
+    this.policyRule,
+    this.policyType,
+    this.roleDefinitionIds,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,16 +68,16 @@ class DefinitionState {
 
   factory DefinitionState.fromMap(Map<String, dynamic> map) {
     return DefinitionState(
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      managementGroupId: map['managementGroupId'] == null ? null : pulumi.Output.create<String>(map['managementGroupId'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<String>(map['metadata'] as String),
-      mode: map['mode'] == null ? null : pulumi.Output.create<String>(map['mode'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      parameters: map['parameters'] == null ? null : pulumi.Output.create<String>(map['parameters'] as String),
-      policyRule: map['policyRule'] == null ? null : pulumi.Output.create<String>(map['policyRule'] as String),
-      policyType: map['policyType'] == null ? null : pulumi.Output.create<String>(map['policyType'] as String),
-      roleDefinitionIds: map['roleDefinitionIds'] == null ? null : pulumi.Output.create<List<String>>((map['roleDefinitionIds'] as List).cast<String>()),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      policyRule: map['policyRule'] == null ? null : (map['policyRule'] as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      roleDefinitionIds: map['roleDefinitionIds'] == null ? null : ((map['roleDefinitionIds'] as List).cast<String>()).input(),
     );
   }
 }

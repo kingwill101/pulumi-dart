@@ -22,15 +22,11 @@ class SshPublicKeyArgs {
   /// [project] The project ID of the Google Cloud Platform project.
   /// [user] The user email.
   SshPublicKeyArgs({
-    pulumi.Output<String>? expirationTimeUsec,
-    required pulumi.Output<String> key,
-    pulumi.Output<String>? project,
-    required pulumi.Output<String> user,
-  }) :
-      expirationTimeUsec = pulumi.Input.asOptionalInput<String>(expirationTimeUsec),
-      key = pulumi.Input.asInput<String>(key),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      user = pulumi.Input.asInput<String>(user);
+    this.expirationTimeUsec,
+    required this.key,
+    this.project,
+    required this.user,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : pulumi.Output.create<String>(map['expirationTimeUsec'] as String),
-      key: pulumi.Output.create<String>(map['key'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      user: pulumi.Output.create<String>(map['user'] as String),
+      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec'] as String).input(),
+      key: (map['key'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      user: (map['user'] as String).input(),
     );
   }
 }

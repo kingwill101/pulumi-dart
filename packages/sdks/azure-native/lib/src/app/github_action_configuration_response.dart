@@ -8,25 +8,25 @@ import 'registry_info_response.dart';
 /// Configuration properties that define the mutable settings of a Container App SourceControl
 class GithubActionConfigurationResponse {
   /// AzureCredentials configurations.
-  final AzureCredentialsResponse? azureCredentials;
+  final pulumi.Input<AzureCredentialsResponse>? azureCredentials;
   /// List of environment variables to be passed to the build.
-  final List<EnvironmentVariableResponse>? buildEnvironmentVariables;
+  final pulumi.Input<List<EnvironmentVariableResponse>>? buildEnvironmentVariables;
   /// Context path
-  final String? contextPath;
+  final pulumi.Input<String>? contextPath;
   /// Dockerfile path
-  final String? dockerfilePath;
+  final pulumi.Input<String>? dockerfilePath;
   /// Image name
-  final String? image;
+  final pulumi.Input<String>? image;
   /// Operation system
-  final String? os;
+  final pulumi.Input<String>? os;
   /// Code or Image
-  final String? publishType;
+  final pulumi.Input<String>? publishType;
   /// Registry configurations.
-  final RegistryInfoResponse? registryInfo;
+  final pulumi.Input<RegistryInfoResponse>? registryInfo;
   /// Runtime stack
-  final String? runtimeStack;
+  final pulumi.Input<String>? runtimeStack;
   /// Runtime version
-  final String? runtimeVersion;
+  final pulumi.Input<String>? runtimeVersion;
 
   /// Creates a new [GithubActionConfigurationResponse].
   /// [azureCredentials] AzureCredentials configurations.
@@ -54,14 +54,14 @@ class GithubActionConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureCredentials': ?azureCredentials == null ? null : azureCredentials!.toMap(),
-      'buildEnvironmentVariables': ?buildEnvironmentVariables == null ? null : pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(buildEnvironmentVariables!, (value) => value.toMap()),
+      'azureCredentials': ?pulumi.Input.mapOptionalInputValue<AzureCredentialsResponse, Map<String, dynamic>>(azureCredentials, (value) => value.toMap()),
+      'buildEnvironmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariableResponse>, List<Map<String, dynamic>>>(buildEnvironmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'contextPath': ?contextPath,
       'dockerfilePath': ?dockerfilePath,
       'image': ?image,
       'os': ?os,
       'publishType': ?publishType,
-      'registryInfo': ?registryInfo == null ? null : registryInfo!.toMap(),
+      'registryInfo': ?pulumi.Input.mapOptionalInputValue<RegistryInfoResponse, Map<String, dynamic>>(registryInfo, (value) => value.toMap()),
       'runtimeStack': ?runtimeStack,
       'runtimeVersion': ?runtimeVersion,
     };
@@ -69,16 +69,16 @@ class GithubActionConfigurationResponse {
 
   factory GithubActionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GithubActionConfigurationResponse(
-      azureCredentials: map['azureCredentials'] == null ? null : AzureCredentialsResponse.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>()),
-      buildEnvironmentVariables: map['buildEnvironmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['buildEnvironmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      contextPath: map['contextPath'] == null ? null : map['contextPath'] as String,
-      dockerfilePath: map['dockerfilePath'] == null ? null : map['dockerfilePath'] as String,
-      image: map['image'] == null ? null : map['image'] as String,
-      os: map['os'] == null ? null : map['os'] as String,
-      publishType: map['publishType'] == null ? null : map['publishType'] as String,
-      registryInfo: map['registryInfo'] == null ? null : RegistryInfoResponse.fromMap((map['registryInfo'] as Map).cast<String, dynamic>()),
-      runtimeStack: map['runtimeStack'] == null ? null : map['runtimeStack'] as String,
-      runtimeVersion: map['runtimeVersion'] == null ? null : map['runtimeVersion'] as String,
+      azureCredentials: map['azureCredentials'] == null ? null : (AzureCredentialsResponse.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>())).input(),
+      buildEnvironmentVariables: map['buildEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['buildEnvironmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      dockerfilePath: map['dockerfilePath'] == null ? null : (map['dockerfilePath'] as String).input(),
+      image: map['image'] == null ? null : (map['image'] as String).input(),
+      os: map['os'] == null ? null : (map['os'] as String).input(),
+      publishType: map['publishType'] == null ? null : (map['publishType'] as String).input(),
+      registryInfo: map['registryInfo'] == null ? null : (RegistryInfoResponse.fromMap((map['registryInfo'] as Map).cast<String, dynamic>())).input(),
+      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
     );
   }
 }

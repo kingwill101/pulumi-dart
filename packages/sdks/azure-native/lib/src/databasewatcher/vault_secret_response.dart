@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The vault specific details required if using SQL authentication to connect to a target.
 class VaultSecretResponse {
   /// The Azure resource ID of the Key Vault instance storing database authentication secrets.
-  final String? akvResourceId;
+  final pulumi.Input<String>? akvResourceId;
   /// The path to the Key Vault secret storing the password for authentication to a target.
-  final String? akvTargetPassword;
+  final pulumi.Input<String>? akvTargetPassword;
   /// The path to the Key Vault secret storing the login name (aka user name, aka account name) for authentication to a target.
-  final String? akvTargetUser;
+  final pulumi.Input<String>? akvTargetUser;
 
   /// Creates a new [VaultSecretResponse].
   /// [akvResourceId] The Azure resource ID of the Key Vault instance storing database authentication secrets.
@@ -30,9 +31,9 @@ class VaultSecretResponse {
 
   factory VaultSecretResponse.fromMap(Map<String, dynamic> map) {
     return VaultSecretResponse(
-      akvResourceId: map['akvResourceId'] == null ? null : map['akvResourceId'] as String,
-      akvTargetPassword: map['akvTargetPassword'] == null ? null : map['akvTargetPassword'] as String,
-      akvTargetUser: map['akvTargetUser'] == null ? null : map['akvTargetUser'] as String,
+      akvResourceId: map['akvResourceId'] == null ? null : (map['akvResourceId'] as String).input(),
+      akvTargetPassword: map['akvTargetPassword'] == null ? null : (map['akvTargetPassword'] as String).input(),
+      akvTargetUser: map['akvTargetUser'] == null ? null : (map['akvTargetUser'] as String).input(),
     );
   }
 }

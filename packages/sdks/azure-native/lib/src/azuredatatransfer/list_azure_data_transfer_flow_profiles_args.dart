@@ -13,9 +13,8 @@ class ListAzureDataTransferFlowProfilesArgs {
   /// Creates a new [ListAzureDataTransferFlowProfilesArgs].
   /// [pipeline] The name of the pipeline for which to retrieve associated FlowProfiles.
   ListAzureDataTransferFlowProfilesArgs({
-    pulumi.Output<String>? pipeline,
-  }) :
-      pipeline = pulumi.Input.asOptionalInput<String>(pipeline);
+    this.pipeline,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +24,7 @@ class ListAzureDataTransferFlowProfilesArgs {
 
   factory ListAzureDataTransferFlowProfilesArgs.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferFlowProfilesArgs(
-      pipeline: map['pipeline'] == null ? null : pulumi.Output.create<String>(map['pipeline'] as String),
+      pipeline: map['pipeline'] == null ? null : (map['pipeline'] as String).input(),
     );
   }
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFrontdoorCustomDomainTl {
   /// The Resource ID of the Front Door Secret.
-  final String cdnFrontdoorSecretId;
+  final pulumi.Input<String> cdnFrontdoorSecretId;
   /// The SSL certificate type.
-  final String certificateType;
+  final pulumi.Input<String> certificateType;
   /// The TLS protocol version that will be used for Https connections.
-  final String minimumTlsVersion;
+  final pulumi.Input<String> minimumTlsVersion;
 
   /// Creates a new [GetFrontdoorCustomDomainTl].
   /// [cdnFrontdoorSecretId] The Resource ID of the Front Door Secret.
@@ -29,9 +30,9 @@ class GetFrontdoorCustomDomainTl {
 
   factory GetFrontdoorCustomDomainTl.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorCustomDomainTl(
-      cdnFrontdoorSecretId: map['cdnFrontdoorSecretId'] as String,
-      certificateType: map['certificateType'] as String,
-      minimumTlsVersion: map['minimumTlsVersion'] as String,
+      cdnFrontdoorSecretId: (map['cdnFrontdoorSecretId'] as String).input(),
+      certificateType: (map['certificateType'] as String).input(),
+      minimumTlsVersion: (map['minimumTlsVersion'] as String).input(),
     );
   }
 }

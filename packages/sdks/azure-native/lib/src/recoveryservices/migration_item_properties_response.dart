@@ -9,45 +9,45 @@ import 'vmware_cbt_migration_details_response.dart';
 /// Migration item properties.
 class MigrationItemPropertiesResponse {
   /// The allowed operations on the migration item based on the current migration state of the item.
-  final List<String> allowedOperations;
+  final pulumi.Input<List<String>> allowedOperations;
   /// The critical past job details.
-  final List<CriticalJobHistoryDetailsResponse> criticalJobHistory;
+  final pulumi.Input<List<CriticalJobHistoryDetailsResponse>> criticalJobHistory;
   /// The current job details.
-  final CurrentJobDetailsResponse currentJob;
+  final pulumi.Input<CurrentJobDetailsResponse> currentJob;
   /// The correlation Id for events associated with this migration item.
-  final String eventCorrelationId;
+  final pulumi.Input<String> eventCorrelationId;
   /// The consolidated health.
-  final String health;
+  final pulumi.Input<String> health;
   /// The list of health errors.
-  final List<HealthErrorResponse> healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>> healthErrors;
   /// The status of the last migration.
-  final String lastMigrationStatus;
+  final pulumi.Input<String> lastMigrationStatus;
   /// The last migration time.
-  final String lastMigrationTime;
+  final pulumi.Input<String> lastMigrationTime;
   /// The status of the last test migration.
-  final String lastTestMigrationStatus;
+  final pulumi.Input<String> lastTestMigrationStatus;
   /// The last test migration time.
-  final String lastTestMigrationTime;
+  final pulumi.Input<String> lastTestMigrationTime;
   /// The on-premise virtual machine name.
-  final String machineName;
+  final pulumi.Input<String> machineName;
   /// The migration status.
-  final String migrationState;
+  final pulumi.Input<String> migrationState;
   /// The migration state description.
-  final String migrationStateDescription;
+  final pulumi.Input<String> migrationStateDescription;
   /// The name of policy governing this item.
-  final String policyFriendlyName;
+  final pulumi.Input<String> policyFriendlyName;
   /// The ARM Id of policy governing this item.
-  final String policyId;
+  final pulumi.Input<String> policyId;
   /// The migration provider custom settings.
-  final VMwareCbtMigrationDetailsResponse? providerSpecificDetails;
+  final pulumi.Input<VMwareCbtMigrationDetailsResponse>? providerSpecificDetails;
   /// The recovery services provider ARM Id.
-  final String recoveryServicesProviderId;
+  final pulumi.Input<String> recoveryServicesProviderId;
   /// The replication status.
-  final String replicationStatus;
+  final pulumi.Input<String> replicationStatus;
   /// The test migrate state.
-  final String testMigrateState;
+  final pulumi.Input<String> testMigrateState;
   /// The test migrate state description.
-  final String testMigrateStateDescription;
+  final pulumi.Input<String> testMigrateStateDescription;
 
   /// Creates a new [MigrationItemPropertiesResponse].
   /// [allowedOperations] The allowed operations on the migration item based on the current migration state of the item.
@@ -96,11 +96,11 @@ class MigrationItemPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedOperations': allowedOperations,
-      'criticalJobHistory': pulumi.Input.encodeList<CriticalJobHistoryDetailsResponse, Map<String, dynamic>>(criticalJobHistory, (value) => value.toMap()),
-      'currentJob': currentJob.toMap(),
+      'criticalJobHistory': pulumi.Input.mapInputValue<List<CriticalJobHistoryDetailsResponse>, List<Map<String, dynamic>>>(criticalJobHistory, (value) => pulumi.Input.encodeList<CriticalJobHistoryDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'currentJob': pulumi.Input.mapInputValue<CurrentJobDetailsResponse, Map<String, dynamic>>(currentJob, (value) => value.toMap()),
       'eventCorrelationId': eventCorrelationId,
       'health': health,
-      'healthErrors': pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(healthErrors, (value) => value.toMap()),
+      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastMigrationStatus': lastMigrationStatus,
       'lastMigrationTime': lastMigrationTime,
       'lastTestMigrationStatus': lastTestMigrationStatus,
@@ -110,7 +110,7 @@ class MigrationItemPropertiesResponse {
       'migrationStateDescription': migrationStateDescription,
       'policyFriendlyName': policyFriendlyName,
       'policyId': policyId,
-      'providerSpecificDetails': ?providerSpecificDetails == null ? null : providerSpecificDetails!.toMap(),
+      'providerSpecificDetails': ?pulumi.Input.mapOptionalInputValue<VMwareCbtMigrationDetailsResponse, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
       'recoveryServicesProviderId': recoveryServicesProviderId,
       'replicationStatus': replicationStatus,
       'testMigrateState': testMigrateState,
@@ -120,26 +120,26 @@ class MigrationItemPropertiesResponse {
 
   factory MigrationItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrationItemPropertiesResponse(
-      allowedOperations: (map['allowedOperations'] as List).cast<String>(),
-      criticalJobHistory: pulumi.Input.decodeList<CriticalJobHistoryDetailsResponse>(map['criticalJobHistory'], (value) => CriticalJobHistoryDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      currentJob: CurrentJobDetailsResponse.fromMap((map['currentJob'] as Map).cast<String, dynamic>()),
-      eventCorrelationId: map['eventCorrelationId'] as String,
-      health: map['health'] as String,
-      healthErrors: pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastMigrationStatus: map['lastMigrationStatus'] as String,
-      lastMigrationTime: map['lastMigrationTime'] as String,
-      lastTestMigrationStatus: map['lastTestMigrationStatus'] as String,
-      lastTestMigrationTime: map['lastTestMigrationTime'] as String,
-      machineName: map['machineName'] as String,
-      migrationState: map['migrationState'] as String,
-      migrationStateDescription: map['migrationStateDescription'] as String,
-      policyFriendlyName: map['policyFriendlyName'] as String,
-      policyId: map['policyId'] as String,
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : VMwareCbtMigrationDetailsResponse.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>()),
-      recoveryServicesProviderId: map['recoveryServicesProviderId'] as String,
-      replicationStatus: map['replicationStatus'] as String,
-      testMigrateState: map['testMigrateState'] as String,
-      testMigrateStateDescription: map['testMigrateStateDescription'] as String,
+      allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
+      criticalJobHistory: (pulumi.Input.decodeList<CriticalJobHistoryDetailsResponse>(map['criticalJobHistory'], (value) => CriticalJobHistoryDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentJob: (CurrentJobDetailsResponse.fromMap((map['currentJob'] as Map).cast<String, dynamic>())).input(),
+      eventCorrelationId: (map['eventCorrelationId'] as String).input(),
+      health: (map['health'] as String).input(),
+      healthErrors: (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastMigrationStatus: (map['lastMigrationStatus'] as String).input(),
+      lastMigrationTime: (map['lastMigrationTime'] as String).input(),
+      lastTestMigrationStatus: (map['lastTestMigrationStatus'] as String).input(),
+      lastTestMigrationTime: (map['lastTestMigrationTime'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      migrationState: (map['migrationState'] as String).input(),
+      migrationStateDescription: (map['migrationStateDescription'] as String).input(),
+      policyFriendlyName: (map['policyFriendlyName'] as String).input(),
+      policyId: (map['policyId'] as String).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (VMwareCbtMigrationDetailsResponse.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      recoveryServicesProviderId: (map['recoveryServicesProviderId'] as String).input(),
+      replicationStatus: (map['replicationStatus'] as String).input(),
+      testMigrateState: (map['testMigrateState'] as String).input(),
+      testMigrateStateDescription: (map['testMigrateStateDescription'] as String).input(),
     );
   }
 }

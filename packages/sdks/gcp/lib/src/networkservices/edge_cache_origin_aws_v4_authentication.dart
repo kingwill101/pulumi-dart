@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EdgeCacheOriginAwsV4Authentication {
   /// The access key ID your origin uses to identify the key.
-  final String accessKeyId;
+  final pulumi.Input<String> accessKeyId;
   /// The name of the AWS region that your origin is in.
-  final String originRegion;
+  final pulumi.Input<String> originRegion;
   /// The Secret Manager secret version of the secret access key used by your origin.
   ///
   /// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
-  final String secretAccessKeyVersion;
+  final pulumi.Input<String> secretAccessKeyVersion;
 
   /// Creates a new [EdgeCacheOriginAwsV4Authentication].
   /// [accessKeyId] The access key ID your origin uses to identify the key.
@@ -31,9 +32,9 @@ class EdgeCacheOriginAwsV4Authentication {
 
   factory EdgeCacheOriginAwsV4Authentication.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginAwsV4Authentication(
-      accessKeyId: map['accessKeyId'] as String,
-      originRegion: map['originRegion'] as String,
-      secretAccessKeyVersion: map['secretAccessKeyVersion'] as String,
+      accessKeyId: (map['accessKeyId'] as String).input(),
+      originRegion: (map['originRegion'] as String).input(),
+      secretAccessKeyVersion: (map['secretAccessKeyVersion'] as String).input(),
     );
   }
 }

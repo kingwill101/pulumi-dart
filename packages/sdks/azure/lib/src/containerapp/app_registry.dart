@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppRegistry {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   ///
   /// > **Note:** The Resource ID must be of a User Assigned Managed identity defined in an `identity` block.
-  final String? identity;
+  final pulumi.Input<String>? identity;
   /// The name of the Secret Reference containing the password value for this user on the Container Registry, `username` must also be supplied.
-  final String? passwordSecretName;
+  final pulumi.Input<String>? passwordSecretName;
   /// The hostname for the Container Registry.
   ///
   /// The authentication details must also be supplied, `identity` and `username`/`password_secret_name` are mutually exclusive.
-  final String server;
+  final pulumi.Input<String> server;
   /// The username to use for this Container Registry, `password_secret_name` must also be supplied..
-  final String? username;
+  final pulumi.Input<String>? username;
 
   /// Creates a new [AppRegistry].
   /// [identity] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
@@ -38,10 +39,10 @@ class AppRegistry {
 
   factory AppRegistry.fromMap(Map<String, dynamic> map) {
     return AppRegistry(
-      identity: map['identity'] == null ? null : map['identity'] as String,
-      passwordSecretName: map['passwordSecretName'] == null ? null : map['passwordSecretName'] as String,
-      server: map['server'] as String,
-      username: map['username'] == null ? null : map['username'] as String,
+      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      passwordSecretName: map['passwordSecretName'] == null ? null : (map['passwordSecretName'] as String).input(),
+      server: (map['server'] as String).input(),
+      username: map['username'] == null ? null : (map['username'] as String).input(),
     );
   }
 }

@@ -23,15 +23,11 @@ class WorkflowArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workflowName] Name of the workflow
   WorkflowArgs({
-    required pulumi.Output<String> contextName,
-    pulumi.Output<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? workflowName,
-  }) :
-      contextName = pulumi.Input.asInput<String>(contextName),
-      extendedLocation = pulumi.Input.asOptionalInput<AzureResourceManagerCommonTypesExtendedLocation>(extendedLocation),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      workflowName = pulumi.Input.asOptionalInput<String>(workflowName);
+    required this.contextName,
+    this.extendedLocation,
+    required this.resourceGroupName,
+    this.workflowName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      contextName: pulumi.Output.create<String>(map['contextName'] as String),
-      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<AzureResourceManagerCommonTypesExtendedLocation>(AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      workflowName: map['workflowName'] == null ? null : pulumi.Output.create<String>(map['workflowName'] as String),
+      contextName: (map['contextName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
     );
   }
 }

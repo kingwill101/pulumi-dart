@@ -5,9 +5,9 @@ import 'pipeline_stage_before_entry_condition_rule.dart';
 
 class PipelineStageBeforeEntryCondition {
   /// The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
-  final String? result;
+  final pulumi.Input<String>? result;
   /// The rules that make up the condition. Defined as a `rule` block below.
-  final List<PipelineStageBeforeEntryConditionRule> rules;
+  final pulumi.Input<List<PipelineStageBeforeEntryConditionRule>> rules;
 
   /// Creates a new [PipelineStageBeforeEntryCondition].
   /// [result] The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
@@ -20,14 +20,14 @@ class PipelineStageBeforeEntryCondition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'result': ?result,
-      'rules': pulumi.Input.encodeList<PipelineStageBeforeEntryConditionRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.mapInputValue<List<PipelineStageBeforeEntryConditionRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<PipelineStageBeforeEntryConditionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory PipelineStageBeforeEntryCondition.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryCondition(
-      result: map['result'] == null ? null : map['result'] as String,
-      rules: pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(map['rules'], (value) => PipelineStageBeforeEntryConditionRule.fromMap((value as Map).cast<String, dynamic>())),
+      result: map['result'] == null ? null : (map['result'] as String).input(),
+      rules: (pulumi.Input.decodeList<PipelineStageBeforeEntryConditionRule>(map['rules'], (value) => PipelineStageBeforeEntryConditionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

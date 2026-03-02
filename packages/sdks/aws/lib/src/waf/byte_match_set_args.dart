@@ -19,11 +19,9 @@ class ByteMatchSetArgs {
   /// [byteMatchTuples] Specifies the bytes (typically a string that corresponds
   /// [name] The name or description of the Byte Match Set.
   ByteMatchSetArgs({
-    pulumi.Output<List<ByteMatchSetByteMatchTuple>>? byteMatchTuples,
-    pulumi.Output<String>? name,
-  }) :
-      byteMatchTuples = pulumi.Input.asOptionalInput<List<ByteMatchSetByteMatchTuple>>(byteMatchTuples),
-      name = pulumi.Input.asOptionalInput<String>(name);
+    this.byteMatchTuples,
+    this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,8 +32,8 @@ class ByteMatchSetArgs {
 
   factory ByteMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetArgs(
-      byteMatchTuples: map['byteMatchTuples'] == null ? null : pulumi.Output.create<List<ByteMatchSetByteMatchTuple>>(pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples'], (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      byteMatchTuples: map['byteMatchTuples'] == null ? null : (pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples'], (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
     );
   }
 }

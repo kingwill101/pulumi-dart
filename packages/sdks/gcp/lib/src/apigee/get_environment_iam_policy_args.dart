@@ -18,11 +18,9 @@ class GetEnvironmentIamPolicyArgs {
   /// [envId] Used to find the parent resource to bind the IAM policy to
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   GetEnvironmentIamPolicyArgs({
-    required pulumi.Output<String> envId,
-    required pulumi.Output<String> orgId,
-  }) :
-      envId = pulumi.Input.asInput<String>(envId),
-      orgId = pulumi.Input.asInput<String>(orgId);
+    required this.envId,
+    required this.orgId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,8 @@ class GetEnvironmentIamPolicyArgs {
 
   factory GetEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentIamPolicyArgs(
-      envId: pulumi.Output.create<String>(map['envId'] as String),
-      orgId: pulumi.Output.create<String>(map['orgId'] as String),
+      envId: (map['envId'] as String).input(),
+      orgId: (map['orgId'] as String).input(),
     );
   }
 }

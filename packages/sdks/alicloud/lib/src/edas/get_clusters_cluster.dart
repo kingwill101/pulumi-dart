@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClustersCluster {
   /// The ID of the cluster that you want to create the application.
-  final String clusterId;
+  final pulumi.Input<String> clusterId;
   /// The name of the cluster.
-  final String clusterName;
+  final pulumi.Input<String> clusterName;
   /// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
-  final int clusterType;
+  final pulumi.Input<int> clusterType;
   /// The total number of CPUs in the cluster.
-  final int cpu;
+  final pulumi.Input<int> cpu;
   /// The number of used CPUs in the cluster.
-  final int cpuUsed;
+  final pulumi.Input<int> cpuUsed;
   /// Cluster's creation time.
-  final int createTime;
+  final pulumi.Input<int> createTime;
   /// The total amount of memory in the cluser. Unit: MB.
-  final int mem;
+  final pulumi.Input<int> mem;
   /// The amount of used memory in the cluser. Unit: MB.
-  final int memUsed;
+  final pulumi.Input<int> memUsed;
   /// The network type of the cluster. Valid values: 1: classic network. 2: VPC.
-  final int networkMode;
+  final pulumi.Input<int> networkMode;
   /// The number of the Elastic Compute Service (ECS) instances that are deployed to the cluster.
-  final int nodeNum;
+  final pulumi.Input<int> nodeNum;
   /// The ID of the namespace the application belongs to.
-  final String regionId;
+  final pulumi.Input<String> regionId;
   /// The time when the cluster was last updated.
-  final int updateTime;
+  final pulumi.Input<int> updateTime;
   /// The ID of the Virtual Private Cloud (VPC) for the cluster.
-  final String vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetClustersCluster].
   /// [clusterId] The ID of the cluster that you want to create the application.
@@ -79,19 +80,19 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      clusterId: map['clusterId'] as String,
-      clusterName: map['clusterName'] as String,
-      clusterType: map['clusterType'] as int,
-      cpu: map['cpu'] as int,
-      cpuUsed: map['cpuUsed'] as int,
-      createTime: map['createTime'] as int,
-      mem: map['mem'] as int,
-      memUsed: map['memUsed'] as int,
-      networkMode: map['networkMode'] as int,
-      nodeNum: map['nodeNum'] as int,
-      regionId: map['regionId'] as String,
-      updateTime: map['updateTime'] as int,
-      vpcId: map['vpcId'] as String,
+      clusterId: (map['clusterId'] as String).input(),
+      clusterName: (map['clusterName'] as String).input(),
+      clusterType: (map['clusterType'] as int).input(),
+      cpu: (map['cpu'] as int).input(),
+      cpuUsed: (map['cpuUsed'] as int).input(),
+      createTime: (map['createTime'] as int).input(),
+      mem: (map['mem'] as int).input(),
+      memUsed: (map['memUsed'] as int).input(),
+      networkMode: (map['networkMode'] as int).input(),
+      nodeNum: (map['nodeNum'] as int).input(),
+      regionId: (map['regionId'] as String).input(),
+      updateTime: (map['updateTime'] as int).input(),
+      vpcId: (map['vpcId'] as String).input(),
     );
   }
 }

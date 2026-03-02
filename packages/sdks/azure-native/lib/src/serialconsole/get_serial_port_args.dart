@@ -25,17 +25,12 @@ class GetSerialPortArgs {
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [serialPort] The name of the serial port to connect to.
   GetSerialPortArgs({
-    required pulumi.Output<String> parentResource,
-    required pulumi.Output<String> parentResourceType,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceProviderNamespace,
-    required pulumi.Output<String> serialPort,
-  }) :
-      parentResource = pulumi.Input.asInput<String>(parentResource),
-      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceProviderNamespace = pulumi.Input.asInput<String>(resourceProviderNamespace),
-      serialPort = pulumi.Input.asInput<String>(serialPort);
+    required this.parentResource,
+    required this.parentResourceType,
+    required this.resourceGroupName,
+    required this.resourceProviderNamespace,
+    required this.serialPort,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,11 +44,11 @@ class GetSerialPortArgs {
 
   factory GetSerialPortArgs.fromMap(Map<String, dynamic> map) {
     return GetSerialPortArgs(
-      parentResource: pulumi.Output.create<String>(map['parentResource'] as String),
-      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceProviderNamespace: pulumi.Output.create<String>(map['resourceProviderNamespace'] as String),
-      serialPort: pulumi.Output.create<String>(map['serialPort'] as String),
+      parentResource: (map['parentResource'] as String).input(),
+      parentResourceType: (map['parentResourceType'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceProviderNamespace: (map['resourceProviderNamespace'] as String).input(),
+      serialPort: (map['serialPort'] as String).input(),
     );
   }
 }

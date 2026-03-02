@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_action.dart';
 import 'lifecycle_policy_selection.dart';
 
 /// Represents a rule in an ECR lifecycle policy.
 class LifecyclePolicyRule {
   /// The action to take when the rule is triggered.
-  final LifecyclePolicyAction action;
+  final pulumi.Input<LifecyclePolicyAction> action;
   /// A description of the rule.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The priority of the rule, must be unique within the policy.
-  final int rulePriority;
+  final pulumi.Input<int> rulePriority;
   /// The selection criteria for the rule.
-  final LifecyclePolicySelection selection;
+  final pulumi.Input<LifecyclePolicySelection> selection;
 
   /// Creates a new [LifecyclePolicyRule].
   /// [action] The action to take when the rule is triggered.
@@ -28,19 +29,19 @@ class LifecyclePolicyRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
+      'action': pulumi.Input.mapInputValue<LifecyclePolicyAction, Map<String, dynamic>>(action, (value) => value.toMap()),
       'description': ?description,
       'rulePriority': rulePriority,
-      'selection': selection.toMap(),
+      'selection': pulumi.Input.mapInputValue<LifecyclePolicySelection, Map<String, dynamic>>(selection, (value) => value.toMap()),
     };
   }
 
   factory LifecyclePolicyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyRule(
-      action: LifecyclePolicyAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      rulePriority: map['rulePriority'] as int,
-      selection: LifecyclePolicySelection.fromMap((map['selection'] as Map).cast<String, dynamic>()),
+      action: (LifecyclePolicyAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      rulePriority: (map['rulePriority'] as int).input(),
+      selection: (LifecyclePolicySelection.fromMap((map['selection'] as Map).cast<String, dynamic>())).input(),
     );
   }
 }

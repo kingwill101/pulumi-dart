@@ -1,69 +1,70 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSynchronizationJobsJob {
   /// Start time in Unix timestamp format.
-  final String checkpoint;
-  final String createTime;
+  final pulumi.Input<String> checkpoint;
+  final pulumi.Input<String> createTime;
   /// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
-  final bool dataInitialization;
+  final pulumi.Input<bool> dataInitialization;
   /// Whether to perform incremental data migration for migration types or synchronization.
-  final bool dataSynchronization;
+  final pulumi.Input<bool> dataSynchronization;
   /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
-  final String dbList;
+  final pulumi.Input<String> dbList;
   /// The name of migrate the database.
-  final String destinationEndpointDataBaseName;
+  final pulumi.Input<String> destinationEndpointDataBaseName;
   /// The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
-  final String destinationEndpointEngineName;
+  final pulumi.Input<String> destinationEndpointEngineName;
   /// The ID of destination instance.
-  final String destinationEndpointInstanceId;
+  final pulumi.Input<String> destinationEndpointInstanceId;
   /// The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
-  final String destinationEndpointInstanceType;
+  final pulumi.Input<String> destinationEndpointInstanceType;
   /// The ip of source endpoint.
-  final String destinationEndpointIp;
+  final pulumi.Input<String> destinationEndpointIp;
   /// The SID of Oracle database.
-  final String destinationEndpointOracleSid;
+  final pulumi.Input<String> destinationEndpointOracleSid;
   /// The port of source endpoint.
-  final String destinationEndpointPort;
+  final pulumi.Input<String> destinationEndpointPort;
   /// The region of destination instance.
-  final String destinationEndpointRegion;
+  final pulumi.Input<String> destinationEndpointRegion;
   /// The username of database account.
-  final String destinationEndpointUserName;
-  final String dtsInstanceId;
-  final String dtsJobId;
+  final pulumi.Input<String> destinationEndpointUserName;
+  final pulumi.Input<String> dtsInstanceId;
+  final pulumi.Input<String> dtsJobId;
   /// The name of synchronization job.
-  final String dtsJobName;
-  final String expireTime;
+  final pulumi.Input<String> dtsJobName;
+  final pulumi.Input<String> expireTime;
   /// The ID of synchronizing instance. It's the ID of resource `alicloud.dts.SynchronizationInstance`.
-  final String id;
+  final pulumi.Input<String> id;
   /// The name of migrate the database.
-  final String sourceEndpointDatabaseName;
+  final pulumi.Input<String> sourceEndpointDatabaseName;
   /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
-  final String sourceEndpointEngineName;
+  final pulumi.Input<String> sourceEndpointEngineName;
   /// The ID of source instance.
-  final String sourceEndpointInstanceId;
+  final pulumi.Input<String> sourceEndpointInstanceId;
   /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
-  final String sourceEndpointInstanceType;
+  final pulumi.Input<String> sourceEndpointInstanceType;
   /// The ip of source endpoint.
-  final String sourceEndpointIp;
+  final pulumi.Input<String> sourceEndpointIp;
   /// The SID of Oracle database.
-  final String sourceEndpointOracleSid;
+  final pulumi.Input<String> sourceEndpointOracleSid;
   /// The Alibaba Cloud account ID to which the source instance belongs.
-  final String sourceEndpointOwnerId;
+  final pulumi.Input<String> sourceEndpointOwnerId;
   /// The port of source endpoint.
-  final String sourceEndpointPort;
+  final pulumi.Input<String> sourceEndpointPort;
   /// The region of source instance.
-  final String sourceEndpointRegion;
+  final pulumi.Input<String> sourceEndpointRegion;
   /// The name of the role configured for the cloud account to which the source instance belongs.
-  final String sourceEndpointRole;
+  final pulumi.Input<String> sourceEndpointRole;
   /// The username of database account.
-  final String sourceEndpointUserName;
+  final pulumi.Input<String> sourceEndpointUserName;
   /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
-  final String status;
+  final pulumi.Input<String> status;
   /// Whether to perform a database table structure to migrate or initialization values include:
-  final bool structureInitialization;
+  final pulumi.Input<bool> structureInitialization;
   /// Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
-  final String synchronizationDirection;
+  final pulumi.Input<String> synchronizationDirection;
 
   /// Creates a new [GetSynchronizationJobsJob].
   /// [checkpoint] Start time in Unix timestamp format.
@@ -175,39 +176,39 @@ class GetSynchronizationJobsJob {
 
   factory GetSynchronizationJobsJob.fromMap(Map<String, dynamic> map) {
     return GetSynchronizationJobsJob(
-      checkpoint: map['checkpoint'] as String,
-      createTime: map['createTime'] as String,
-      dataInitialization: map['dataInitialization'] as bool,
-      dataSynchronization: map['dataSynchronization'] as bool,
-      dbList: map['dbList'] as String,
-      destinationEndpointDataBaseName: map['destinationEndpointDataBaseName'] as String,
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] as String,
-      destinationEndpointInstanceId: map['destinationEndpointInstanceId'] as String,
-      destinationEndpointInstanceType: map['destinationEndpointInstanceType'] as String,
-      destinationEndpointIp: map['destinationEndpointIp'] as String,
-      destinationEndpointOracleSid: map['destinationEndpointOracleSid'] as String,
-      destinationEndpointPort: map['destinationEndpointPort'] as String,
-      destinationEndpointRegion: map['destinationEndpointRegion'] as String,
-      destinationEndpointUserName: map['destinationEndpointUserName'] as String,
-      dtsInstanceId: map['dtsInstanceId'] as String,
-      dtsJobId: map['dtsJobId'] as String,
-      dtsJobName: map['dtsJobName'] as String,
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      sourceEndpointDatabaseName: map['sourceEndpointDatabaseName'] as String,
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] as String,
-      sourceEndpointInstanceId: map['sourceEndpointInstanceId'] as String,
-      sourceEndpointInstanceType: map['sourceEndpointInstanceType'] as String,
-      sourceEndpointIp: map['sourceEndpointIp'] as String,
-      sourceEndpointOracleSid: map['sourceEndpointOracleSid'] as String,
-      sourceEndpointOwnerId: map['sourceEndpointOwnerId'] as String,
-      sourceEndpointPort: map['sourceEndpointPort'] as String,
-      sourceEndpointRegion: map['sourceEndpointRegion'] as String,
-      sourceEndpointRole: map['sourceEndpointRole'] as String,
-      sourceEndpointUserName: map['sourceEndpointUserName'] as String,
-      status: map['status'] as String,
-      structureInitialization: map['structureInitialization'] as bool,
-      synchronizationDirection: map['synchronizationDirection'] as String,
+      checkpoint: (map['checkpoint'] as String).input(),
+      createTime: (map['createTime'] as String).input(),
+      dataInitialization: (map['dataInitialization'] as bool).input(),
+      dataSynchronization: (map['dataSynchronization'] as bool).input(),
+      dbList: (map['dbList'] as String).input(),
+      destinationEndpointDataBaseName: (map['destinationEndpointDataBaseName'] as String).input(),
+      destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
+      destinationEndpointInstanceId: (map['destinationEndpointInstanceId'] as String).input(),
+      destinationEndpointInstanceType: (map['destinationEndpointInstanceType'] as String).input(),
+      destinationEndpointIp: (map['destinationEndpointIp'] as String).input(),
+      destinationEndpointOracleSid: (map['destinationEndpointOracleSid'] as String).input(),
+      destinationEndpointPort: (map['destinationEndpointPort'] as String).input(),
+      destinationEndpointRegion: (map['destinationEndpointRegion'] as String).input(),
+      destinationEndpointUserName: (map['destinationEndpointUserName'] as String).input(),
+      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
+      dtsJobId: (map['dtsJobId'] as String).input(),
+      dtsJobName: (map['dtsJobName'] as String).input(),
+      expireTime: (map['expireTime'] as String).input(),
+      id: (map['id'] as String).input(),
+      sourceEndpointDatabaseName: (map['sourceEndpointDatabaseName'] as String).input(),
+      sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
+      sourceEndpointInstanceId: (map['sourceEndpointInstanceId'] as String).input(),
+      sourceEndpointInstanceType: (map['sourceEndpointInstanceType'] as String).input(),
+      sourceEndpointIp: (map['sourceEndpointIp'] as String).input(),
+      sourceEndpointOracleSid: (map['sourceEndpointOracleSid'] as String).input(),
+      sourceEndpointOwnerId: (map['sourceEndpointOwnerId'] as String).input(),
+      sourceEndpointPort: (map['sourceEndpointPort'] as String).input(),
+      sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
+      sourceEndpointRole: (map['sourceEndpointRole'] as String).input(),
+      sourceEndpointUserName: (map['sourceEndpointUserName'] as String).input(),
+      status: (map['status'] as String).input(),
+      structureInitialization: (map['structureInitialization'] as bool).input(),
+      synchronizationDirection: (map['synchronizationDirection'] as String).input(),
     );
   }
 }

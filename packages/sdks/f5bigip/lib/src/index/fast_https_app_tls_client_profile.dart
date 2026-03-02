@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FastHttpsAppTlsClientProfile {
   /// Name of existing BIG-IP SSL certificate to be used for FAST-Generated TLS Server Profile.
-  final String tlsCertName;
+  final pulumi.Input<String> tlsCertName;
   /// Name of existing BIG-IP SSL Key to be used for FAST-Generated TLS Server Profile.
-  final String tlsKeyName;
+  final pulumi.Input<String> tlsKeyName;
 
   /// Creates a new [FastHttpsAppTlsClientProfile].
   /// [tlsCertName] Name of existing BIG-IP SSL certificate to be used for FAST-Generated TLS Server Profile.
@@ -24,8 +25,8 @@ class FastHttpsAppTlsClientProfile {
 
   factory FastHttpsAppTlsClientProfile.fromMap(Map<String, dynamic> map) {
     return FastHttpsAppTlsClientProfile(
-      tlsCertName: map['tlsCertName'] as String,
-      tlsKeyName: map['tlsKeyName'] as String,
+      tlsCertName: (map['tlsCertName'] as String).input(),
+      tlsKeyName: (map['tlsKeyName'] as String).input(),
     );
   }
 }

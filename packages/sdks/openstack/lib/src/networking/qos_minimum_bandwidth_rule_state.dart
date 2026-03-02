@@ -23,15 +23,11 @@ class QosMinimumBandwidthRuleState {
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
   /// [region] The region in which to obtain the V2 Networking client.
   QosMinimumBandwidthRuleState({
-    pulumi.Output<String>? direction,
-    pulumi.Output<int>? minKbps,
-    pulumi.Output<String>? qosPolicyId,
-    pulumi.Output<String>? region,
-  }) :
-      direction = pulumi.Input.asOptionalInput<String>(direction),
-      minKbps = pulumi.Input.asOptionalInput<int>(minKbps),
-      qosPolicyId = pulumi.Input.asOptionalInput<String>(qosPolicyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.direction,
+    this.minKbps,
+    this.qosPolicyId,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +40,10 @@ class QosMinimumBandwidthRuleState {
 
   factory QosMinimumBandwidthRuleState.fromMap(Map<String, dynamic> map) {
     return QosMinimumBandwidthRuleState(
-      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
-      minKbps: map['minKbps'] == null ? null : pulumi.Output.create<int>(map['minKbps'] as int),
-      qosPolicyId: map['qosPolicyId'] == null ? null : pulumi.Output.create<String>(map['qosPolicyId'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      minKbps: map['minKbps'] == null ? null : (map['minKbps'] as int).input(),
+      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

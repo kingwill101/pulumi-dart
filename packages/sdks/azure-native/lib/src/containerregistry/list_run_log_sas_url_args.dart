@@ -19,13 +19,10 @@ class ListRunLogSasUrlArgs {
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [runId] The run ID.
   ListRunLogSasUrlArgs({
-    required pulumi.Output<String> registryName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> runId,
-  }) :
-      registryName = pulumi.Input.asInput<String>(registryName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      runId = pulumi.Input.asInput<String>(runId);
+    required this.registryName,
+    required this.resourceGroupName,
+    required this.runId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class ListRunLogSasUrlArgs {
 
   factory ListRunLogSasUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListRunLogSasUrlArgs(
-      registryName: pulumi.Output.create<String>(map['registryName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      runId: pulumi.Output.create<String>(map['runId'] as String),
+      registryName: (map['registryName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      runId: (map['runId'] as String).input(),
     );
   }
 }

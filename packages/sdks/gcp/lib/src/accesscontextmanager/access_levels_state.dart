@@ -16,11 +16,9 @@ class AccessLevelsState {
   /// [accessLevels] The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// [parent] The AccessPolicy this AccessLevel lives in.
   AccessLevelsState({
-    pulumi.Output<List<AccessLevelsAccessLevel>>? accessLevels,
-    pulumi.Output<String>? parent,
-  }) :
-      accessLevels = pulumi.Input.asOptionalInput<List<AccessLevelsAccessLevel>>(accessLevels),
-      parent = pulumi.Input.asOptionalInput<String>(parent);
+    this.accessLevels,
+    this.parent,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class AccessLevelsState {
 
   factory AccessLevelsState.fromMap(Map<String, dynamic> map) {
     return AccessLevelsState(
-      accessLevels: map['accessLevels'] == null ? null : pulumi.Output.create<List<AccessLevelsAccessLevel>>(pulumi.Input.decodeList<AccessLevelsAccessLevel>(map['accessLevels'], (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>()))),
-      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      accessLevels: map['accessLevels'] == null ? null : (pulumi.Input.decodeList<AccessLevelsAccessLevel>(map['accessLevels'], (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
     );
   }
 }

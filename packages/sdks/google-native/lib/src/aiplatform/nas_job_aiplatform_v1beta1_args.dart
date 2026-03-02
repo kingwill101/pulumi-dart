@@ -31,21 +31,14 @@ class NasJobAiplatformV1beta1Args {
   /// [nasJobSpec] The specification of a NasJob.
   /// [project] Optional.
   NasJobAiplatformV1beta1Args({
-    required pulumi.Output<String> displayName,
-    pulumi.Output<bool>? enableRestrictedImageTraining,
-    pulumi.Output<GoogleCloudAiplatformV1beta1EncryptionSpec>? encryptionSpec,
-    pulumi.Output<Map<String, String>>? labels,
-    pulumi.Output<String>? location,
-    required pulumi.Output<GoogleCloudAiplatformV1beta1NasJobSpec> nasJobSpec,
-    pulumi.Output<String>? project,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableRestrictedImageTraining = pulumi.Input.asOptionalInput<bool>(enableRestrictedImageTraining),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1beta1EncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      nasJobSpec = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1NasJobSpec>(nasJobSpec),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.displayName,
+    this.enableRestrictedImageTraining,
+    this.encryptionSpec,
+    this.labels,
+    this.location,
+    required this.nasJobSpec,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class NasJobAiplatformV1beta1Args {
 
   factory NasJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return NasJobAiplatformV1beta1Args(
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      enableRestrictedImageTraining: map['enableRestrictedImageTraining'] == null ? null : pulumi.Output.create<bool>(map['enableRestrictedImageTraining'] as bool),
-      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1beta1EncryptionSpec>(GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
-      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      nasJobSpec: pulumi.Output.create<GoogleCloudAiplatformV1beta1NasJobSpec>(GoogleCloudAiplatformV1beta1NasJobSpec.fromMap((map['nasJobSpec'] as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      displayName: (map['displayName'] as String).input(),
+      enableRestrictedImageTraining: map['enableRestrictedImageTraining'] == null ? null : (map['enableRestrictedImageTraining'] as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      nasJobSpec: (GoogleCloudAiplatformV1beta1NasJobSpec.fromMap((map['nasJobSpec'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

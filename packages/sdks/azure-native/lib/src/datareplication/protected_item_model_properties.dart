@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hyper_vto_az_stack_hciprotected_item_model_custom_properties.dart';
 
 /// Protected item model properties.
 class ProtectedItemModelProperties {
   /// Protected item model custom properties.
-  final HyperVToAzStackHCIProtectedItemModelCustomProperties customProperties;
+  final pulumi.Input<HyperVToAzStackHCIProtectedItemModelCustomProperties> customProperties;
   /// Gets or sets the policy name.
-  final String policyName;
+  final pulumi.Input<String> policyName;
   /// Gets or sets the replication extension name.
-  final String replicationExtensionName;
+  final pulumi.Input<String> replicationExtensionName;
 
   /// Creates a new [ProtectedItemModelProperties].
   /// [customProperties] Protected item model custom properties.
@@ -23,7 +24,7 @@ class ProtectedItemModelProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customProperties': customProperties.toMap(),
+      'customProperties': pulumi.Input.mapInputValue<HyperVToAzStackHCIProtectedItemModelCustomProperties, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
       'policyName': policyName,
       'replicationExtensionName': replicationExtensionName,
     };
@@ -31,9 +32,9 @@ class ProtectedItemModelProperties {
 
   factory ProtectedItemModelProperties.fromMap(Map<String, dynamic> map) {
     return ProtectedItemModelProperties(
-      customProperties: HyperVToAzStackHCIProtectedItemModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>()),
-      policyName: map['policyName'] as String,
-      replicationExtensionName: map['replicationExtensionName'] as String,
+      customProperties: (HyperVToAzStackHCIProtectedItemModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      policyName: (map['policyName'] as String).input(),
+      replicationExtensionName: (map['replicationExtensionName'] as String).input(),
     );
   }
 }

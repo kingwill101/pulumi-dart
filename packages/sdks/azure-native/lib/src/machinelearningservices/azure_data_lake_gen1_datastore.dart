@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_key_datastore_credentials.dart';
 
 /// Azure Data Lake Gen1 datastore configuration.
 class AzureDataLakeGen1Datastore {
   /// [Required] Account credentials.
-  final AccountKeyDatastoreCredentials credentials;
+  final pulumi.Input<AccountKeyDatastoreCredentials> credentials;
   /// Enum to determine the datastore contents type.
   /// Expected value is 'AzureDataLakeGen1'.
-  final String datastoreType;
+  final pulumi.Input<String> datastoreType;
   /// The asset description text.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// The asset property dictionary.
-  final Map<String, String>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
   /// Azure Resource Group name
-  final String? resourceGroup;
+  final pulumi.Input<String>? resourceGroup;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final String? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
   /// [Required] Azure Data Lake store name.
-  final String storeName;
+  final pulumi.Input<String> storeName;
   /// Azure Subscription Id
-  final String? subscriptionId;
+  final pulumi.Input<String>? subscriptionId;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final Map<String, String>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [AzureDataLakeGen1Datastore].
   /// [credentials] [Required] Account credentials.
@@ -48,7 +49,7 @@ class AzureDataLakeGen1Datastore {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentials': credentials.toMap(),
+      'credentials': pulumi.Input.mapInputValue<AccountKeyDatastoreCredentials, Map<String, dynamic>>(credentials, (value) => value.toMap()),
       'datastoreType': datastoreType,
       'description': ?description,
       'properties': ?properties,
@@ -62,15 +63,15 @@ class AzureDataLakeGen1Datastore {
 
   factory AzureDataLakeGen1Datastore.fromMap(Map<String, dynamic> map) {
     return AzureDataLakeGen1Datastore(
-      credentials: AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      datastoreType: map['datastoreType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : map['serviceDataAccessAuthIdentity'] as String,
-      storeName: map['storeName'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      credentials: (AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      datastoreType: (map['datastoreType'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      storeName: (map['storeName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

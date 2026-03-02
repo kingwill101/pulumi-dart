@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppTemplateContainerStartupProbeHeader {
   /// The HTTP Header Name.
-  final String name;
+  final pulumi.Input<String> name;
   /// The HTTP Header value.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [AppTemplateContainerStartupProbeHeader].
   /// [name] The HTTP Header Name.
@@ -24,8 +25,8 @@ class AppTemplateContainerStartupProbeHeader {
 
   factory AppTemplateContainerStartupProbeHeader.fromMap(Map<String, dynamic> map) {
     return AppTemplateContainerStartupProbeHeader(
-      name: map['name'] as String,
-      value: map['value'] as String,
+      name: (map['name'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a Sampling Algorithm that generates values based on previous values
 class BayesianSamplingAlgorithmResponse {
   /// Expected value is 'Bayesian'.
-  final String samplingAlgorithmType;
+  final pulumi.Input<String> samplingAlgorithmType;
 
   /// Creates a new [BayesianSamplingAlgorithmResponse].
   /// [samplingAlgorithmType] Expected value is 'Bayesian'.
@@ -20,7 +21,7 @@ class BayesianSamplingAlgorithmResponse {
 
   factory BayesianSamplingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return BayesianSamplingAlgorithmResponse(
-      samplingAlgorithmType: map['samplingAlgorithmType'] as String,
+      samplingAlgorithmType: (map['samplingAlgorithmType'] as String).input(),
     );
   }
 }

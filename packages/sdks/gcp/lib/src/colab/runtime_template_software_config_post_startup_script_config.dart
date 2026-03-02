@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
   /// Post startup script to run after runtime is started.
-  final String? postStartupScript;
+  final pulumi.Input<String>? postStartupScript;
   /// Post startup script behavior that defines download and execution behavior.
   /// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
-  final String? postStartupScriptBehavior;
+  final pulumi.Input<String>? postStartupScriptBehavior;
   /// Post startup script url to download. Example: https://bucket/script.sh.
-  final String? postStartupScriptUrl;
+  final pulumi.Input<String>? postStartupScriptUrl;
 
   /// Creates a new [RuntimeTemplateSoftwareConfigPostStartupScriptConfig].
   /// [postStartupScript] Post startup script to run after runtime is started.
@@ -30,9 +31,9 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
 
   factory RuntimeTemplateSoftwareConfigPostStartupScriptConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateSoftwareConfigPostStartupScriptConfig(
-      postStartupScript: map['postStartupScript'] == null ? null : map['postStartupScript'] as String,
-      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : map['postStartupScriptBehavior'] as String,
-      postStartupScriptUrl: map['postStartupScriptUrl'] == null ? null : map['postStartupScriptUrl'] as String,
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
+      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : (map['postStartupScriptBehavior'] as String).input(),
+      postStartupScriptUrl: map['postStartupScriptUrl'] == null ? null : (map['postStartupScriptUrl'] as String).input(),
     );
   }
 }

@@ -6,23 +6,23 @@ import 'get_rules_rule_rule_condition.dart';
 
 class GetRulesRule {
   /// The ID of the Rule.
-  final String id;
+  final pulumi.Input<String> id;
   /// The ID of the listener to which the forwarding rule belongs.
-  final String listenerId;
+  final pulumi.Input<String> listenerId;
   /// The ID of the Application Load Balancer (ALB) instance to which the forwarding rule belongs.
-  final String loadBalancerId;
+  final pulumi.Input<String> loadBalancerId;
   /// The priority of the rule.
-  final int priority;
+  final pulumi.Input<int> priority;
   /// The actions of the forwarding rules.
-  final List<GetRulesRuleRuleAction> ruleActions;
+  final pulumi.Input<List<GetRulesRuleRuleAction>> ruleActions;
   /// The conditions of the forwarding rule.
-  final List<GetRulesRuleRuleCondition> ruleConditions;
+  final pulumi.Input<List<GetRulesRuleRuleCondition>> ruleConditions;
   /// The ID of the Rule.
-  final String ruleId;
+  final pulumi.Input<String> ruleId;
   /// The name of the forwarding rule.
-  final String ruleName;
+  final pulumi.Input<String> ruleName;
   /// The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
-  final String status;
+  final pulumi.Input<String> status;
 
   /// Creates a new [GetRulesRule].
   /// [id] The ID of the Rule.
@@ -52,8 +52,8 @@ class GetRulesRule {
       'listenerId': listenerId,
       'loadBalancerId': loadBalancerId,
       'priority': priority,
-      'ruleActions': pulumi.Input.encodeList<GetRulesRuleRuleAction, Map<String, dynamic>>(ruleActions, (value) => value.toMap()),
-      'ruleConditions': pulumi.Input.encodeList<GetRulesRuleRuleCondition, Map<String, dynamic>>(ruleConditions, (value) => value.toMap()),
+      'ruleActions': pulumi.Input.mapInputValue<List<GetRulesRuleRuleAction>, List<Map<String, dynamic>>>(ruleActions, (value) => pulumi.Input.encodeList<GetRulesRuleRuleAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleConditions': pulumi.Input.mapInputValue<List<GetRulesRuleRuleCondition>, List<Map<String, dynamic>>>(ruleConditions, (value) => pulumi.Input.encodeList<GetRulesRuleRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ruleId': ruleId,
       'ruleName': ruleName,
       'status': status,
@@ -62,15 +62,15 @@ class GetRulesRule {
 
   factory GetRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRulesRule(
-      id: map['id'] as String,
-      listenerId: map['listenerId'] as String,
-      loadBalancerId: map['loadBalancerId'] as String,
-      priority: map['priority'] as int,
-      ruleActions: pulumi.Input.decodeList<GetRulesRuleRuleAction>(map['ruleActions'], (value) => GetRulesRuleRuleAction.fromMap((value as Map).cast<String, dynamic>())),
-      ruleConditions: pulumi.Input.decodeList<GetRulesRuleRuleCondition>(map['ruleConditions'], (value) => GetRulesRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>())),
-      ruleId: map['ruleId'] as String,
-      ruleName: map['ruleName'] as String,
-      status: map['status'] as String,
+      id: (map['id'] as String).input(),
+      listenerId: (map['listenerId'] as String).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      priority: (map['priority'] as int).input(),
+      ruleActions: (pulumi.Input.decodeList<GetRulesRuleRuleAction>(map['ruleActions'], (value) => GetRulesRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: (pulumi.Input.decodeList<GetRulesRuleRuleCondition>(map['ruleConditions'], (value) => GetRulesRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleId: (map['ruleId'] as String).input(),
+      ruleName: (map['ruleName'] as String).input(),
+      status: (map['status'] as String).input(),
     );
   }
 }

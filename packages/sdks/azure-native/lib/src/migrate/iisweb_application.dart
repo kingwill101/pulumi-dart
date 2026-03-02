@@ -14,39 +14,39 @@ import 'web_application_framework.dart';
 /// IISWeb application.
 class IISWebApplication {
   /// Gets or sets the web application id.
-  final String? applicationId;
+  final pulumi.Input<String>? applicationId;
   /// Gets or sets the web application name.
-  final String? applicationName;
+  final pulumi.Input<String>? applicationName;
   /// Gets or sets application scratch path.
-  final String? applicationScratchPath;
+  final pulumi.Input<String>? applicationScratchPath;
   /// Gets or sets the list of applications for the IIS web site.
-  final List<IISApplicationDetails>? applications;
+  final pulumi.Input<List<IISApplicationDetails>>? applications;
   /// Gets or sets the bindings for the application.
-  final List<Binding>? bindings;
+  final pulumi.Input<List<Binding>>? bindings;
   /// Gets or sets application configuration.
-  final List<WebApplicationConfiguration>? configurations;
+  final pulumi.Input<List<WebApplicationConfiguration>>? configurations;
   /// Gets or sets application directories.
-  final List<WebApplicationDirectory>? directories;
+  final pulumi.Input<List<WebApplicationDirectory>>? directories;
   /// Gets or sets the discovered frameworks of application.
-  final List<WebApplicationFramework>? discoveredFrameworks;
+  final pulumi.Input<List<WebApplicationFramework>>? discoveredFrameworks;
   /// Gets or sets the display name.
-  final String? displayName;
+  final pulumi.Input<String>? displayName;
   /// IISWeb server.
-  final IISWebServer? iisWebServer;
+  final pulumi.Input<IISWebServer>? iisWebServer;
   /// Resource Requirements.
-  final ResourceRequirements? limits;
+  final pulumi.Input<ResourceRequirements>? limits;
   /// Second level entity for virtual directories.
-  final DirectoryPath? path;
+  final pulumi.Input<DirectoryPath>? path;
   /// Framework specific data for a web application.
-  final WebApplicationFramework? primaryFramework;
+  final pulumi.Input<WebApplicationFramework>? primaryFramework;
   /// Resource Requirements.
-  final ResourceRequirements? requests;
+  final pulumi.Input<ResourceRequirements>? requests;
   /// Gets or sets the list of application units for the web site.
-  final List<IISVirtualApplicationDetails>? virtualApplications;
+  final pulumi.Input<List<IISVirtualApplicationDetails>>? virtualApplications;
   /// Gets or sets the web server id.
-  final String? webServerId;
+  final pulumi.Input<String>? webServerId;
   /// Gets or sets the web server name.
-  final String? webServerName;
+  final pulumi.Input<String>? webServerName;
 
   /// Creates a new [IISWebApplication].
   /// [applicationId] Gets or sets the web application id.
@@ -91,18 +91,18 @@ class IISWebApplication {
       'applicationId': ?applicationId,
       'applicationName': ?applicationName,
       'applicationScratchPath': ?applicationScratchPath,
-      'applications': ?applications == null ? null : pulumi.Input.encodeList<IISApplicationDetails, Map<String, dynamic>>(applications!, (value) => value.toMap()),
-      'bindings': ?bindings == null ? null : pulumi.Input.encodeList<Binding, Map<String, dynamic>>(bindings!, (value) => value.toMap()),
-      'configurations': ?configurations == null ? null : pulumi.Input.encodeList<WebApplicationConfiguration, Map<String, dynamic>>(configurations!, (value) => value.toMap()),
-      'directories': ?directories == null ? null : pulumi.Input.encodeList<WebApplicationDirectory, Map<String, dynamic>>(directories!, (value) => value.toMap()),
-      'discoveredFrameworks': ?discoveredFrameworks == null ? null : pulumi.Input.encodeList<WebApplicationFramework, Map<String, dynamic>>(discoveredFrameworks!, (value) => value.toMap()),
+      'applications': ?pulumi.Input.mapOptionalInputValue<List<IISApplicationDetails>, List<Map<String, dynamic>>>(applications, (value) => pulumi.Input.encodeList<IISApplicationDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bindings': ?pulumi.Input.mapOptionalInputValue<List<Binding>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<Binding, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<WebApplicationConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'directories': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationDirectory>, List<Map<String, dynamic>>>(directories, (value) => pulumi.Input.encodeList<WebApplicationDirectory, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'discoveredFrameworks': ?pulumi.Input.mapOptionalInputValue<List<WebApplicationFramework>, List<Map<String, dynamic>>>(discoveredFrameworks, (value) => pulumi.Input.encodeList<WebApplicationFramework, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
-      'iisWebServer': ?iisWebServer == null ? null : iisWebServer!.toMap(),
-      'limits': ?limits == null ? null : limits!.toMap(),
-      'path': ?path == null ? null : path!.toMap(),
-      'primaryFramework': ?primaryFramework == null ? null : primaryFramework!.toMap(),
-      'requests': ?requests == null ? null : requests!.toMap(),
-      'virtualApplications': ?virtualApplications == null ? null : pulumi.Input.encodeList<IISVirtualApplicationDetails, Map<String, dynamic>>(virtualApplications!, (value) => value.toMap()),
+      'iisWebServer': ?pulumi.Input.mapOptionalInputValue<IISWebServer, Map<String, dynamic>>(iisWebServer, (value) => value.toMap()),
+      'limits': ?pulumi.Input.mapOptionalInputValue<ResourceRequirements, Map<String, dynamic>>(limits, (value) => value.toMap()),
+      'path': ?pulumi.Input.mapOptionalInputValue<DirectoryPath, Map<String, dynamic>>(path, (value) => value.toMap()),
+      'primaryFramework': ?pulumi.Input.mapOptionalInputValue<WebApplicationFramework, Map<String, dynamic>>(primaryFramework, (value) => value.toMap()),
+      'requests': ?pulumi.Input.mapOptionalInputValue<ResourceRequirements, Map<String, dynamic>>(requests, (value) => value.toMap()),
+      'virtualApplications': ?pulumi.Input.mapOptionalInputValue<List<IISVirtualApplicationDetails>, List<Map<String, dynamic>>>(virtualApplications, (value) => pulumi.Input.encodeList<IISVirtualApplicationDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
       'webServerId': ?webServerId,
       'webServerName': ?webServerName,
     };
@@ -110,23 +110,23 @@ class IISWebApplication {
 
   factory IISWebApplication.fromMap(Map<String, dynamic> map) {
     return IISWebApplication(
-      applicationId: map['applicationId'] == null ? null : map['applicationId'] as String,
-      applicationName: map['applicationName'] == null ? null : map['applicationName'] as String,
-      applicationScratchPath: map['applicationScratchPath'] == null ? null : map['applicationScratchPath'] as String,
-      applications: map['applications'] == null ? null : pulumi.Input.decodeList<IISApplicationDetails>(map['applications'], (value) => IISApplicationDetails.fromMap((value as Map).cast<String, dynamic>())),
-      bindings: map['bindings'] == null ? null : pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>())),
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<WebApplicationConfiguration>(map['configurations'], (value) => WebApplicationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      directories: map['directories'] == null ? null : pulumi.Input.decodeList<WebApplicationDirectory>(map['directories'], (value) => WebApplicationDirectory.fromMap((value as Map).cast<String, dynamic>())),
-      discoveredFrameworks: map['discoveredFrameworks'] == null ? null : pulumi.Input.decodeList<WebApplicationFramework>(map['discoveredFrameworks'], (value) => WebApplicationFramework.fromMap((value as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      iisWebServer: map['iisWebServer'] == null ? null : IISWebServer.fromMap((map['iisWebServer'] as Map).cast<String, dynamic>()),
-      limits: map['limits'] == null ? null : ResourceRequirements.fromMap((map['limits'] as Map).cast<String, dynamic>()),
-      path: map['path'] == null ? null : DirectoryPath.fromMap((map['path'] as Map).cast<String, dynamic>()),
-      primaryFramework: map['primaryFramework'] == null ? null : WebApplicationFramework.fromMap((map['primaryFramework'] as Map).cast<String, dynamic>()),
-      requests: map['requests'] == null ? null : ResourceRequirements.fromMap((map['requests'] as Map).cast<String, dynamic>()),
-      virtualApplications: map['virtualApplications'] == null ? null : pulumi.Input.decodeList<IISVirtualApplicationDetails>(map['virtualApplications'], (value) => IISVirtualApplicationDetails.fromMap((value as Map).cast<String, dynamic>())),
-      webServerId: map['webServerId'] == null ? null : map['webServerId'] as String,
-      webServerName: map['webServerName'] == null ? null : map['webServerName'] as String,
+      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      applicationScratchPath: map['applicationScratchPath'] == null ? null : (map['applicationScratchPath'] as String).input(),
+      applications: map['applications'] == null ? null : (pulumi.Input.decodeList<IISApplicationDetails>(map['applications'], (value) => IISApplicationDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<WebApplicationConfiguration>(map['configurations'], (value) => WebApplicationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<WebApplicationDirectory>(map['directories'], (value) => WebApplicationDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discoveredFrameworks: map['discoveredFrameworks'] == null ? null : (pulumi.Input.decodeList<WebApplicationFramework>(map['discoveredFrameworks'], (value) => WebApplicationFramework.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      iisWebServer: map['iisWebServer'] == null ? null : (IISWebServer.fromMap((map['iisWebServer'] as Map).cast<String, dynamic>())).input(),
+      limits: map['limits'] == null ? null : (ResourceRequirements.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (DirectoryPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
+      primaryFramework: map['primaryFramework'] == null ? null : (WebApplicationFramework.fromMap((map['primaryFramework'] as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : (ResourceRequirements.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
+      virtualApplications: map['virtualApplications'] == null ? null : (pulumi.Input.decodeList<IISVirtualApplicationDetails>(map['virtualApplications'], (value) => IISVirtualApplicationDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webServerId: map['webServerId'] == null ? null : (map['webServerId'] as String).input(),
+      webServerName: map['webServerName'] == null ? null : (map['webServerName'] as String).input(),
     );
   }
 }

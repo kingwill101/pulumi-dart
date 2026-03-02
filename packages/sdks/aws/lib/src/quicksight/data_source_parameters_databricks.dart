@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersDatabricks {
   /// The host name of the Databricks data source.
-  final String host;
+  final pulumi.Input<String> host;
   /// The port for the Databricks data source.
-  final int port;
+  final pulumi.Input<int> port;
   /// The HTTP path of the Databricks data source.
-  final String sqlEndpointPath;
+  final pulumi.Input<String> sqlEndpointPath;
 
   /// Creates a new [DataSourceParametersDatabricks].
   /// [host] The host name of the Databricks data source.
@@ -29,9 +30,9 @@ class DataSourceParametersDatabricks {
 
   factory DataSourceParametersDatabricks.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersDatabricks(
-      host: map['host'] as String,
-      port: map['port'] as int,
-      sqlEndpointPath: map['sqlEndpointPath'] as String,
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
+      sqlEndpointPath: (map['sqlEndpointPath'] as String).input(),
     );
   }
 }

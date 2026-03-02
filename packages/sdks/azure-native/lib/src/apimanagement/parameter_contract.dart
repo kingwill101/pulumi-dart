@@ -6,23 +6,23 @@ import 'parameter_example_contract.dart';
 /// Operation parameters details.
 class ParameterContract {
   /// Default parameter value.
-  final String? defaultValue;
+  final pulumi.Input<String>? defaultValue;
   /// Parameter description.
-  final String? description;
+  final pulumi.Input<String>? description;
   /// Exampled defined for the parameter.
-  final Map<String, ParameterExampleContract>? examples;
+  final pulumi.Input<Map<String, ParameterExampleContract>>? examples;
   /// Parameter name.
-  final String name;
+  final pulumi.Input<String> name;
   /// Specifies whether parameter is required or not.
-  final bool? required;
+  final pulumi.Input<bool>? required;
   /// Schema identifier.
-  final String? schemaId;
+  final pulumi.Input<String>? schemaId;
   /// Parameter type.
-  final String type;
+  final pulumi.Input<String> type;
   /// Type name defined by the schema.
-  final String? typeName;
+  final pulumi.Input<String>? typeName;
   /// Parameter values.
-  final List<String>? values;
+  final pulumi.Input<List<String>>? values;
 
   /// Creates a new [ParameterContract].
   /// [defaultValue] Default parameter value.
@@ -50,7 +50,7 @@ class ParameterContract {
     return <String, dynamic>{
       'defaultValue': ?defaultValue,
       'description': ?description,
-      'examples': ?examples == null ? null : pulumi.Input.encodeMapValues<ParameterExampleContract, Map<String, dynamic>>(examples!, (value) => value.toMap()),
+      'examples': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterExampleContract>, Map<String, Map<String, dynamic>>>(examples, (value) => pulumi.Input.encodeMapValues<ParameterExampleContract, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'required': ?required,
       'schemaId': ?schemaId,
@@ -62,15 +62,15 @@ class ParameterContract {
 
   factory ParameterContract.fromMap(Map<String, dynamic> map) {
     return ParameterContract(
-      defaultValue: map['defaultValue'] == null ? null : map['defaultValue'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      examples: map['examples'] == null ? null : pulumi.Input.decodeMapValues<ParameterExampleContract>(map['examples'], (value) => ParameterExampleContract.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      required: map['required'] == null ? null : map['required'] as bool,
-      schemaId: map['schemaId'] == null ? null : map['schemaId'] as String,
-      type: map['type'] as String,
-      typeName: map['typeName'] == null ? null : map['typeName'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      examples: map['examples'] == null ? null : (pulumi.Input.decodeMapValues<ParameterExampleContract>(map['examples'], (value) => ParameterExampleContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: (map['name'] as String).input(),
+      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      type: (map['type'] as String).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
+      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
     );
   }
 }

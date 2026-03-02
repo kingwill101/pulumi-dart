@@ -17,11 +17,9 @@ class GetAttestorIamPolicyArgs {
   /// [attestor] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   GetAttestorIamPolicyArgs({
-    required pulumi.Output<String> attestor,
-    pulumi.Output<String>? project,
-  }) :
-      attestor = pulumi.Input.asInput<String>(attestor),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.attestor,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +30,8 @@ class GetAttestorIamPolicyArgs {
 
   factory GetAttestorIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyArgs(
-      attestor: pulumi.Output.create<String>(map['attestor'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      attestor: (map['attestor'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

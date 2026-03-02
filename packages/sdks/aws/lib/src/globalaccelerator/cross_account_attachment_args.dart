@@ -25,15 +25,11 @@ class CrossAccountAttachmentArgs {
   /// [resources] List of resources to be associated with the accelerator.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   CrossAccountAttachmentArgs({
-    pulumi.Output<String>? name,
-    pulumi.Output<List<String>>? principals,
-    pulumi.Output<List<CrossAccountAttachmentResource>>? resources,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      principals = pulumi.Input.asOptionalInput<List<String>>(principals),
-      resources = pulumi.Input.asOptionalInput<List<CrossAccountAttachmentResource>>(resources),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.name,
+    this.principals,
+    this.resources,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class CrossAccountAttachmentArgs {
 
   factory CrossAccountAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return CrossAccountAttachmentArgs(
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      principals: map['principals'] == null ? null : pulumi.Output.create<List<String>>((map['principals'] as List).cast<String>()),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<CrossAccountAttachmentResource>>(pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources'], (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<CrossAccountAttachmentResource>(map['resources'], (value) => CrossAccountAttachmentResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

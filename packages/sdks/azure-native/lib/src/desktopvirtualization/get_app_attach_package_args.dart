@@ -16,11 +16,9 @@ class GetAppAttachPackageArgs {
   /// [appAttachPackageName] The name of the App Attach package
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetAppAttachPackageArgs({
-    required pulumi.Output<String> appAttachPackageName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      appAttachPackageName = pulumi.Input.asInput<String>(appAttachPackageName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.appAttachPackageName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetAppAttachPackageArgs {
 
   factory GetAppAttachPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetAppAttachPackageArgs(
-      appAttachPackageName: pulumi.Output.create<String>(map['appAttachPackageName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      appAttachPackageName: (map['appAttachPackageName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

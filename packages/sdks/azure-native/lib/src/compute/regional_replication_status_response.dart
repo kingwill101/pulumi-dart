@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// This is the regional replication status.
 class RegionalReplicationStatusResponse {
   /// The details of the replication status.
-  final String details;
+  final pulumi.Input<String> details;
   /// It indicates progress of the replication job.
-  final int progress;
+  final pulumi.Input<int> progress;
   /// The region to which the gallery image version is being replicated to.
-  final String region;
+  final pulumi.Input<String> region;
   /// This is the regional replication state.
-  final String state;
+  final pulumi.Input<String> state;
 
   /// Creates a new [RegionalReplicationStatusResponse].
   /// [details] The details of the replication status.
@@ -35,10 +36,10 @@ class RegionalReplicationStatusResponse {
 
   factory RegionalReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalReplicationStatusResponse(
-      details: map['details'] as String,
-      progress: map['progress'] as int,
-      region: map['region'] as String,
-      state: map['state'] as String,
+      details: (map['details'] as String).input(),
+      progress: (map['progress'] as int).input(),
+      region: (map['region'] as String).input(),
+      state: (map['state'] as String).input(),
     );
   }
 }

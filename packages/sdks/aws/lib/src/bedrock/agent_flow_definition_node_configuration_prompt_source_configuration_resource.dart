@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource {
   /// The Amazon Resource Name (ARN) of the prompt from Prompt management.
-  final String promptArn;
+  final pulumi.Input<String> promptArn;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource].
   /// [promptArn] The Amazon Resource Name (ARN) of the prompt from Prompt management.
@@ -19,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource {
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource(
-      promptArn: map['promptArn'] as String,
+      promptArn: (map['promptArn'] as String).input(),
     );
   }
 }

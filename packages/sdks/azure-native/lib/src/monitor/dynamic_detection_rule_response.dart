@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// ML-based evaluation rule for a signal definition
 class DynamicDetectionRuleResponse {
   /// Threshold direction
-  final String dynamicThresholdDirection;
+  final pulumi.Input<String> dynamicThresholdDirection;
   /// ML model to use for dynamic thresholds
-  final String dynamicThresholdModel;
+  final pulumi.Input<String> dynamicThresholdModel;
   /// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
-  final double modelSensitivity;
+  final pulumi.Input<double> modelSensitivity;
   /// Start time of the training in UTC.
-  final String? trainingStartTime;
+  final pulumi.Input<String>? trainingStartTime;
 
   /// Creates a new [DynamicDetectionRuleResponse].
   /// [dynamicThresholdDirection] Threshold direction
@@ -35,10 +36,10 @@ class DynamicDetectionRuleResponse {
 
   factory DynamicDetectionRuleResponse.fromMap(Map<String, dynamic> map) {
     return DynamicDetectionRuleResponse(
-      dynamicThresholdDirection: map['dynamicThresholdDirection'] as String,
-      dynamicThresholdModel: map['dynamicThresholdModel'] as String,
-      modelSensitivity: map['modelSensitivity'] as double,
-      trainingStartTime: map['trainingStartTime'] == null ? null : map['trainingStartTime'] as String,
+      dynamicThresholdDirection: (map['dynamicThresholdDirection'] as String).input(),
+      dynamicThresholdModel: (map['dynamicThresholdModel'] as String).input(),
+      modelSensitivity: (map['modelSensitivity'] as double).input(),
+      trainingStartTime: map['trainingStartTime'] == null ? null : (map['trainingStartTime'] as String).input(),
     );
   }
 }

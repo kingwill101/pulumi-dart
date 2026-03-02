@@ -25,19 +25,13 @@ class PolicyState {
   /// [policyName] Policy Name.
   /// [resources] The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   PolicyState({
-    pulumi.Output<String>? accessControlRules,
-    pulumi.Output<String>? description,
-    pulumi.Output<String>? kmsInstanceId,
-    pulumi.Output<List<String>>? permissions,
-    pulumi.Output<String>? policyName,
-    pulumi.Output<List<String>>? resources,
-  }) :
-      accessControlRules = pulumi.Input.asOptionalInput<String>(accessControlRules),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsInstanceId = pulumi.Input.asOptionalInput<String>(kmsInstanceId),
-      permissions = pulumi.Input.asOptionalInput<List<String>>(permissions),
-      policyName = pulumi.Input.asOptionalInput<String>(policyName),
-      resources = pulumi.Input.asOptionalInput<List<String>>(resources);
+    this.accessControlRules,
+    this.description,
+    this.kmsInstanceId,
+    this.permissions,
+    this.policyName,
+    this.resources,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +46,12 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      accessControlRules: map['accessControlRules'] == null ? null : pulumi.Output.create<String>(map['accessControlRules'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      kmsInstanceId: map['kmsInstanceId'] == null ? null : pulumi.Output.create<String>(map['kmsInstanceId'] as String),
-      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<String>>((map['permissions'] as List).cast<String>()),
-      policyName: map['policyName'] == null ? null : pulumi.Output.create<String>(map['policyName'] as String),
-      resources: map['resources'] == null ? null : pulumi.Output.create<List<String>>((map['resources'] as List).cast<String>()),
+      accessControlRules: map['accessControlRules'] == null ? null : (map['accessControlRules'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      kmsInstanceId: map['kmsInstanceId'] == null ? null : (map['kmsInstanceId'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
     );
   }
 }

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_advanced_options_config_json_custom_config_response_compute_v1.dart';
 
 class SecurityPolicyAdvancedOptionsConfigResponseComputeV1 {
   /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
-  final SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1 jsonCustomConfig;
-  final String jsonParsing;
-  final String logLevel;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1> jsonCustomConfig;
+  final pulumi.Input<String> jsonParsing;
+  final pulumi.Input<String> logLevel;
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  final List<String> userIpRequestHeaders;
+  final pulumi.Input<List<String>> userIpRequestHeaders;
 
   /// Creates a new [SecurityPolicyAdvancedOptionsConfigResponseComputeV1].
   /// [jsonCustomConfig] Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
@@ -24,7 +25,7 @@ class SecurityPolicyAdvancedOptionsConfigResponseComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsonCustomConfig': jsonCustomConfig.toMap(),
+      'jsonCustomConfig': pulumi.Input.mapInputValue<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1, Map<String, dynamic>>(jsonCustomConfig, (value) => value.toMap()),
       'jsonParsing': jsonParsing,
       'logLevel': logLevel,
       'userIpRequestHeaders': userIpRequestHeaders,
@@ -33,10 +34,10 @@ class SecurityPolicyAdvancedOptionsConfigResponseComputeV1 {
 
   factory SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfigResponseComputeV1(
-      jsonCustomConfig: SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>()),
-      jsonParsing: map['jsonParsing'] as String,
-      logLevel: map['logLevel'] as String,
-      userIpRequestHeaders: (map['userIpRequestHeaders'] as List).cast<String>(),
+      jsonCustomConfig: (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>())).input(),
+      jsonParsing: (map['jsonParsing'] as String).input(),
+      logLevel: (map['logLevel'] as String).input(),
+      userIpRequestHeaders: ((map['userIpRequestHeaders'] as List).cast<String>()).input(),
     );
   }
 }

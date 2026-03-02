@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration of Open Telemetry logs
 class LogsConfiguration {
   /// Open telemetry logs destinations
-  final List<String>? destinations;
+  final pulumi.Input<List<String>>? destinations;
 
   /// Creates a new [LogsConfiguration].
   /// [destinations] Open telemetry logs destinations
@@ -20,7 +21,7 @@ class LogsConfiguration {
 
   factory LogsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogsConfiguration(
-      destinations: map['destinations'] == null ? null : (map['destinations'] as List).cast<String>(),
+      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
     );
   }
 }

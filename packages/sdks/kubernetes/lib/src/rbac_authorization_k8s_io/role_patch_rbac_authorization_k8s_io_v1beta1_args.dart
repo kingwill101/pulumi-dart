@@ -24,15 +24,11 @@ class RolePatchRbacAuthorizationK8sIoV1beta1Args {
   /// [metadata] Standard object's metadata.
   /// [rules] Rules holds all the PolicyRules for this Role
   RolePatchRbacAuthorizationK8sIoV1beta1Args({
-    pulumi.Output<String>? apiVersion,
-    pulumi.Output<String>? kind,
-    pulumi.Output<ObjectMetaPatch>? metadata,
-    pulumi.Output<List<PolicyRulePatchRbacAuthorizationK8sIoV1beta1>>? rules,
-  }) :
-      apiVersion = pulumi.Input.asOptionalInput<String>(apiVersion),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      metadata = pulumi.Input.asOptionalInput<ObjectMetaPatch>(metadata),
-      rules = pulumi.Input.asOptionalInput<List<PolicyRulePatchRbacAuthorizationK8sIoV1beta1>>(rules);
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.rules,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +41,10 @@ class RolePatchRbacAuthorizationK8sIoV1beta1Args {
 
   factory RolePatchRbacAuthorizationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return RolePatchRbacAuthorizationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : pulumi.Output.create<String>(map['apiVersion'] as String),
-      kind: map['kind'] == null ? null : pulumi.Output.create<String>(map['kind'] as String),
-      metadata: map['metadata'] == null ? null : pulumi.Output.create<ObjectMetaPatch>(ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Output.create<List<PolicyRulePatchRbacAuthorizationK8sIoV1beta1>>(pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1beta1>(map['rules'], (value) => PolicyRulePatchRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulePatchRbacAuthorizationK8sIoV1beta1>(map['rules'], (value) => PolicyRulePatchRbacAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Trigger based on status code.
 class StatusCodesBasedTrigger {
   /// Request Count.
-  final int? count;
+  final pulumi.Input<int>? count;
   /// Request Path
-  final String? path;
+  final pulumi.Input<String>? path;
   /// HTTP status code.
-  final int? status;
+  final pulumi.Input<int>? status;
   /// Request Sub Status.
-  final int? subStatus;
+  final pulumi.Input<int>? subStatus;
   /// Time interval.
-  final String? timeInterval;
+  final pulumi.Input<String>? timeInterval;
   /// Win32 error code.
-  final int? win32Status;
+  final pulumi.Input<int>? win32Status;
 
   /// Creates a new [StatusCodesBasedTrigger].
   /// [count] Request Count.
@@ -45,12 +46,12 @@ class StatusCodesBasedTrigger {
 
   factory StatusCodesBasedTrigger.fromMap(Map<String, dynamic> map) {
     return StatusCodesBasedTrigger(
-      count: map['count'] == null ? null : map['count'] as int,
-      path: map['path'] == null ? null : map['path'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
-      subStatus: map['subStatus'] == null ? null : map['subStatus'] as int,
-      timeInterval: map['timeInterval'] == null ? null : map['timeInterval'] as String,
-      win32Status: map['win32Status'] == null ? null : map['win32Status'] as int,
+      count: map['count'] == null ? null : (map['count'] as int).input(),
+      path: map['path'] == null ? null : (map['path'] as String).input(),
+      status: map['status'] == null ? null : (map['status'] as int).input(),
+      subStatus: map['subStatus'] == null ? null : (map['subStatus'] as int).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as String).input(),
+      win32Status: map['win32Status'] == null ? null : (map['win32Status'] as int).input(),
     );
   }
 }

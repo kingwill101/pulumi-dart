@@ -6,11 +6,11 @@ import 'script_activity_parameter_response.dart';
 /// Script block of scripts.
 class ScriptActivityScriptBlockResponse {
   /// Array of script parameters. Type: array.
-  final List<ScriptActivityParameterResponse>? parameters;
+  final pulumi.Input<List<ScriptActivityParameterResponse>>? parameters;
   /// The query text. Type: string (or Expression with resultType string).
-  final dynamic text;
+  final pulumi.Input<dynamic> text;
   /// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
-  final dynamic type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ScriptActivityScriptBlockResponse].
   /// [parameters] Array of script parameters. Type: array.
@@ -24,7 +24,7 @@ class ScriptActivityScriptBlockResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ScriptActivityParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ScriptActivityParameterResponse>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ScriptActivityParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'text': text,
       'type': type,
     };
@@ -32,9 +32,9 @@ class ScriptActivityScriptBlockResponse {
 
   factory ScriptActivityScriptBlockResponse.fromMap(Map<String, dynamic> map) {
     return ScriptActivityScriptBlockResponse(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ScriptActivityParameterResponse>(map['parameters'], (value) => ScriptActivityParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      text: map['text'],
-      type: map['type'],
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ScriptActivityParameterResponse>(map['parameters'], (value) => ScriptActivityParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      text: (map['text']).input(),
+      type: (map['type']).input(),
     );
   }
 }

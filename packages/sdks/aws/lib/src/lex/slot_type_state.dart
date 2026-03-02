@@ -46,27 +46,17 @@ class SlotTypeState {
   /// [valueSelectionStrategy] Determines the slot resolution strategy that Amazon Lex
   /// [version] The version of the slot type.
   SlotTypeState({
-    pulumi.Output<String>? checksum,
-    pulumi.Output<bool>? createVersion,
-    pulumi.Output<String>? createdDate,
-    pulumi.Output<String>? description,
-    pulumi.Output<List<SlotTypeEnumerationValue>>? enumerationValues,
-    pulumi.Output<String>? lastUpdatedDate,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? valueSelectionStrategy,
-    pulumi.Output<String>? version,
-  }) :
-      checksum = pulumi.Input.asOptionalInput<String>(checksum),
-      createVersion = pulumi.Input.asOptionalInput<bool>(createVersion),
-      createdDate = pulumi.Input.asOptionalInput<String>(createdDate),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enumerationValues = pulumi.Input.asOptionalInput<List<SlotTypeEnumerationValue>>(enumerationValues),
-      lastUpdatedDate = pulumi.Input.asOptionalInput<String>(lastUpdatedDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      valueSelectionStrategy = pulumi.Input.asOptionalInput<String>(valueSelectionStrategy),
-      version = pulumi.Input.asOptionalInput<String>(version);
+    this.checksum,
+    this.createVersion,
+    this.createdDate,
+    this.description,
+    this.enumerationValues,
+    this.lastUpdatedDate,
+    this.name,
+    this.region,
+    this.valueSelectionStrategy,
+    this.version,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,16 +75,16 @@ class SlotTypeState {
 
   factory SlotTypeState.fromMap(Map<String, dynamic> map) {
     return SlotTypeState(
-      checksum: map['checksum'] == null ? null : pulumi.Output.create<String>(map['checksum'] as String),
-      createVersion: map['createVersion'] == null ? null : pulumi.Output.create<bool>(map['createVersion'] as bool),
-      createdDate: map['createdDate'] == null ? null : pulumi.Output.create<String>(map['createdDate'] as String),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      enumerationValues: map['enumerationValues'] == null ? null : pulumi.Output.create<List<SlotTypeEnumerationValue>>(pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))),
-      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : pulumi.Output.create<String>(map['lastUpdatedDate'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : pulumi.Output.create<String>(map['valueSelectionStrategy'] as String),
-      version: map['version'] == null ? null : pulumi.Output.create<String>(map['version'] as String),
+      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
+      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      enumerationValues: map['enumerationValues'] == null ? null : (pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : (map['lastUpdatedDate'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : (map['valueSelectionStrategy'] as String).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

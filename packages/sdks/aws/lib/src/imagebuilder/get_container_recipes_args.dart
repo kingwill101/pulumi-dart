@@ -20,13 +20,10 @@ class GetContainerRecipesArgs {
   /// [owner] Owner of the container recipes. Valid values are `Self`, `Shared`, `Amazon` and `ThirdParty`. Defaults to `Self`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   GetContainerRecipesArgs({
-    pulumi.Output<List<GetContainerRecipesFilter>>? filters,
-    pulumi.Output<String>? owner,
-    pulumi.Output<String>? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetContainerRecipesFilter>>(filters),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.filters,
+    this.owner,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +35,9 @@ class GetContainerRecipesArgs {
 
   factory GetContainerRecipesArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipesArgs(
-      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetContainerRecipesFilter>>(pulumi.Input.decodeList<GetContainerRecipesFilter>(map['filters'], (value) => GetContainerRecipesFilter.fromMap((value as Map).cast<String, dynamic>()))),
-      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetContainerRecipesFilter>(map['filters'], (value) => GetContainerRecipesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

@@ -33,21 +33,14 @@ class InstanceArgs {
   /// [tags] Resource tags.
   /// [validationMode] Validation mode for the SCOM managed instance
   InstanceArgs({
-    pulumi.Output<ManagedIdentity>? identity,
-    pulumi.Output<String>? instanceName,
-    pulumi.Output<String>? location,
-    pulumi.Output<MonitoringInstanceProperties>? properties,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<bool>? validationMode,
-  }) :
-      identity = pulumi.Input.asOptionalInput<ManagedIdentity>(identity),
-      instanceName = pulumi.Input.asOptionalInput<String>(instanceName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      properties = pulumi.Input.asOptionalInput<MonitoringInstanceProperties>(properties),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validationMode = pulumi.Input.asOptionalInput<bool>(validationMode);
+    this.identity,
+    this.instanceName,
+    this.location,
+    this.properties,
+    required this.resourceGroupName,
+    this.tags,
+    this.validationMode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,13 +56,13 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedIdentity>(ManagedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      instanceName: map['instanceName'] == null ? null : pulumi.Output.create<String>(map['instanceName'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      properties: map['properties'] == null ? null : pulumi.Output.create<MonitoringInstanceProperties>(MonitoringInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validationMode: map['validationMode'] == null ? null : pulumi.Output.create<bool>(map['validationMode'] as bool),
+      identity: map['identity'] == null ? null : (ManagedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      properties: map['properties'] == null ? null : (MonitoringInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validationMode: map['validationMode'] == null ? null : (map['validationMode'] as bool).input(),
     );
   }
 }

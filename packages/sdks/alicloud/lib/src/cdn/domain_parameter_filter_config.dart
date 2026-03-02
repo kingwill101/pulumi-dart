@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainParameterFilterConfig {
-  final String? enable;
-  final List<String>? hashKeyArgs;
+  final pulumi.Input<String>? enable;
+  final pulumi.Input<List<String>>? hashKeyArgs;
 
   /// Creates a new [DomainParameterFilterConfig].
   /// [enable] Optional.
@@ -22,8 +23,8 @@ class DomainParameterFilterConfig {
 
   factory DomainParameterFilterConfig.fromMap(Map<String, dynamic> map) {
     return DomainParameterFilterConfig(
-      enable: map['enable'] == null ? null : map['enable'] as String,
-      hashKeyArgs: map['hashKeyArgs'] == null ? null : (map['hashKeyArgs'] as List).cast<String>(),
+      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      hashKeyArgs: map['hashKeyArgs'] == null ? null : ((map['hashKeyArgs'] as List).cast<String>()).input(),
     );
   }
 }

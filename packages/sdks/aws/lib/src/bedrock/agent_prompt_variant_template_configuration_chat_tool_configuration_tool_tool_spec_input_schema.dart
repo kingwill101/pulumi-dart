@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema {
   /// A JSON object defining the input schema for the tool.
-  final String? json;
+  final pulumi.Input<String>? json;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema].
   /// [json] A JSON object defining the input schema for the tool.
@@ -19,7 +20,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecIn
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema(
-      json: map['json'] == null ? null : map['json'] as String,
+      json: map['json'] == null ? null : (map['json'] as String).input(),
     );
   }
 }

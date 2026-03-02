@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_tool_connector_spec_action_entity_operation.dart';
 
 class CxToolConnectorSpecAction {
   /// ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
-  final String? connectionActionId;
+  final pulumi.Input<String>? connectionActionId;
   /// Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
   /// Structure is documented below.
-  final CxToolConnectorSpecActionEntityOperation? entityOperation;
+  final pulumi.Input<CxToolConnectorSpecActionEntityOperation>? entityOperation;
   /// Entity fields to use as inputs for the operation.
   /// If no fields are specified, all fields of the Entity will be used.
-  final List<String>? inputFields;
+  final pulumi.Input<List<String>>? inputFields;
   /// Entity fields to return from the operation.
   /// If no fields are specified, all fields of the Entity will be returned.
-  final List<String>? outputFields;
+  final pulumi.Input<List<String>>? outputFields;
 
   /// Creates a new [CxToolConnectorSpecAction].
   /// [connectionActionId] ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
@@ -30,7 +31,7 @@ class CxToolConnectorSpecAction {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionActionId': ?connectionActionId,
-      'entityOperation': ?entityOperation == null ? null : entityOperation!.toMap(),
+      'entityOperation': ?pulumi.Input.mapOptionalInputValue<CxToolConnectorSpecActionEntityOperation, Map<String, dynamic>>(entityOperation, (value) => value.toMap()),
       'inputFields': ?inputFields,
       'outputFields': ?outputFields,
     };
@@ -38,10 +39,10 @@ class CxToolConnectorSpecAction {
 
   factory CxToolConnectorSpecAction.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpecAction(
-      connectionActionId: map['connectionActionId'] == null ? null : map['connectionActionId'] as String,
-      entityOperation: map['entityOperation'] == null ? null : CxToolConnectorSpecActionEntityOperation.fromMap((map['entityOperation'] as Map).cast<String, dynamic>()),
-      inputFields: map['inputFields'] == null ? null : (map['inputFields'] as List).cast<String>(),
-      outputFields: map['outputFields'] == null ? null : (map['outputFields'] as List).cast<String>(),
+      connectionActionId: map['connectionActionId'] == null ? null : (map['connectionActionId'] as String).input(),
+      entityOperation: map['entityOperation'] == null ? null : (CxToolConnectorSpecActionEntityOperation.fromMap((map['entityOperation'] as Map).cast<String, dynamic>())).input(),
+      inputFields: map['inputFields'] == null ? null : ((map['inputFields'] as List).cast<String>()).input(),
+      outputFields: map['outputFields'] == null ? null : ((map['outputFields'] as List).cast<String>()).input(),
     );
   }
 }

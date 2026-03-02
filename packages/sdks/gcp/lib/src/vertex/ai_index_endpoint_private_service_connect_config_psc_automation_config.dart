@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
   /// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
-  final String network;
+  final pulumi.Input<String> network;
   /// Project id used to create forwarding rule.
-  final String projectId;
+  final pulumi.Input<String> projectId;
 
   /// Creates a new [AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig].
   /// [network] The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
@@ -24,8 +25,8 @@ class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
 
   factory AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig(
-      network: map['network'] as String,
-      projectId: map['projectId'] as String,
+      network: (map['network'] as String).input(),
+      projectId: (map['projectId'] as String).input(),
     );
   }
 }

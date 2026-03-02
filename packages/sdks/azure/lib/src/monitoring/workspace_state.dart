@@ -31,23 +31,15 @@ class WorkspaceState {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Azure Monitor Workspace should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Monitor Workspace.
   WorkspaceState({
-    pulumi.Output<String>? defaultDataCollectionEndpointId,
-    pulumi.Output<String>? defaultDataCollectionRuleId,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<bool>? publicNetworkAccessEnabled,
-    pulumi.Output<String>? queryEndpoint,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-  }) :
-      defaultDataCollectionEndpointId = pulumi.Input.asOptionalInput<String>(defaultDataCollectionEndpointId),
-      defaultDataCollectionRuleId = pulumi.Input.asOptionalInput<String>(defaultDataCollectionRuleId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      publicNetworkAccessEnabled = pulumi.Input.asOptionalInput<bool>(publicNetworkAccessEnabled),
-      queryEndpoint = pulumi.Input.asOptionalInput<String>(queryEndpoint),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+    this.defaultDataCollectionEndpointId,
+    this.defaultDataCollectionRuleId,
+    this.location,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.queryEndpoint,
+    this.resourceGroupName,
+    this.tags,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,14 +56,14 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      defaultDataCollectionEndpointId: map['defaultDataCollectionEndpointId'] == null ? null : pulumi.Output.create<String>(map['defaultDataCollectionEndpointId'] as String),
-      defaultDataCollectionRuleId: map['defaultDataCollectionRuleId'] == null ? null : pulumi.Output.create<String>(map['defaultDataCollectionRuleId'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : pulumi.Output.create<bool>(map['publicNetworkAccessEnabled'] as bool),
-      queryEndpoint: map['queryEndpoint'] == null ? null : pulumi.Output.create<String>(map['queryEndpoint'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      defaultDataCollectionEndpointId: map['defaultDataCollectionEndpointId'] == null ? null : (map['defaultDataCollectionEndpointId'] as String).input(),
+      defaultDataCollectionRuleId: map['defaultDataCollectionRuleId'] == null ? null : (map['defaultDataCollectionRuleId'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      queryEndpoint: map['queryEndpoint'] == null ? null : (map['queryEndpoint'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Project summary.
 class ProjectSummaryResponse {
   /// Extended summary.
-  final Map<String, String>? extendedSummary;
+  final pulumi.Input<Map<String, String>>? extendedSummary;
   /// Instance type.
-  final String instanceType;
+  final pulumi.Input<String> instanceType;
   /// Last summary refresh time.
-  final String? lastSummaryRefreshedTime;
+  final pulumi.Input<String>? lastSummaryRefreshedTime;
   /// Refresh summary state.
-  final String? refreshSummaryState;
+  final pulumi.Input<String>? refreshSummaryState;
 
   /// Creates a new [ProjectSummaryResponse].
   /// [extendedSummary] Extended summary.
@@ -35,10 +36,10 @@ class ProjectSummaryResponse {
 
   factory ProjectSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ProjectSummaryResponse(
-      extendedSummary: map['extendedSummary'] == null ? null : (map['extendedSummary'] as Map).cast<String, String>(),
-      instanceType: map['instanceType'] as String,
-      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : map['lastSummaryRefreshedTime'] as String,
-      refreshSummaryState: map['refreshSummaryState'] == null ? null : map['refreshSummaryState'] as String,
+      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary'] as Map).cast<String, String>()).input(),
+      instanceType: (map['instanceType'] as String).input(),
+      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime'] as String).input(),
+      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState'] as String).input(),
     );
   }
 }

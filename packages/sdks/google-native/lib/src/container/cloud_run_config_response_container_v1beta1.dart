@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Configuration options for the Cloud Run feature.
 class CloudRunConfigResponseContainerV1beta1 {
   /// Whether Cloud Run addon is enabled for this cluster.
-  final bool disabled;
+  final pulumi.Input<bool> disabled;
   /// Which load balancer type is installed for Cloud Run.
-  final String loadBalancerType;
+  final pulumi.Input<String> loadBalancerType;
 
   /// Creates a new [CloudRunConfigResponseContainerV1beta1].
   /// [disabled] Whether Cloud Run addon is enabled for this cluster.
@@ -25,8 +26,8 @@ class CloudRunConfigResponseContainerV1beta1 {
 
   factory CloudRunConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRunConfigResponseContainerV1beta1(
-      disabled: map['disabled'] as bool,
-      loadBalancerType: map['loadBalancerType'] as String,
+      disabled: (map['disabled'] as bool).input(),
+      loadBalancerType: (map['loadBalancerType'] as String).input(),
     );
   }
 }

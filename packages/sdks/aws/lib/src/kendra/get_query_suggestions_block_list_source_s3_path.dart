@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetQuerySuggestionsBlockListSourceS3Path {
   /// Name of the S3 bucket that contains the file.
-  final String bucket;
+  final pulumi.Input<String> bucket;
   /// Name of the file.
-  final String key;
+  final pulumi.Input<String> key;
 
   /// Creates a new [GetQuerySuggestionsBlockListSourceS3Path].
   /// [bucket] Name of the S3 bucket that contains the file.
@@ -24,8 +25,8 @@ class GetQuerySuggestionsBlockListSourceS3Path {
 
   factory GetQuerySuggestionsBlockListSourceS3Path.fromMap(Map<String, dynamic> map) {
     return GetQuerySuggestionsBlockListSourceS3Path(
-      bucket: map['bucket'] as String,
-      key: map['key'] as String,
+      bucket: (map['bucket'] as String).input(),
+      key: (map['key'] as String).input(),
     );
   }
 }

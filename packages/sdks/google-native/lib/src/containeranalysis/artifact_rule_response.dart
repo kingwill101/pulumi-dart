@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an object to declare an in-toto artifact rule
 class ArtifactRuleResponse {
-  final List<String> artifactRule;
+  final pulumi.Input<List<String>> artifactRule;
 
   /// Creates a new [ArtifactRuleResponse].
   /// [artifactRule] Required.
@@ -19,7 +20,7 @@ class ArtifactRuleResponse {
 
   factory ArtifactRuleResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactRuleResponse(
-      artifactRule: (map['artifactRule'] as List).cast<String>(),
+      artifactRule: ((map['artifactRule'] as List).cast<String>()).input(),
     );
   }
 }

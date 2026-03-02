@@ -5,13 +5,13 @@ import 'notification_endpoint.dart';
 
 class NotificationRegistrationProperties {
   /// The included events.
-  final List<String>? includedEvents;
+  final pulumi.Input<List<String>>? includedEvents;
   /// The message scope.
-  final String? messageScope;
+  final pulumi.Input<String>? messageScope;
   /// The notification endpoints.
-  final List<NotificationEndpoint>? notificationEndpoints;
+  final pulumi.Input<List<NotificationEndpoint>>? notificationEndpoints;
   /// The notification mode.
-  final String? notificationMode;
+  final pulumi.Input<String>? notificationMode;
 
   /// Creates a new [NotificationRegistrationProperties].
   /// [includedEvents] The included events.
@@ -29,17 +29,17 @@ class NotificationRegistrationProperties {
     return <String, dynamic>{
       'includedEvents': ?includedEvents,
       'messageScope': ?messageScope,
-      'notificationEndpoints': ?notificationEndpoints == null ? null : pulumi.Input.encodeList<NotificationEndpoint, Map<String, dynamic>>(notificationEndpoints!, (value) => value.toMap()),
+      'notificationEndpoints': ?pulumi.Input.mapOptionalInputValue<List<NotificationEndpoint>, List<Map<String, dynamic>>>(notificationEndpoints, (value) => pulumi.Input.encodeList<NotificationEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'notificationMode': ?notificationMode,
     };
   }
 
   factory NotificationRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return NotificationRegistrationProperties(
-      includedEvents: map['includedEvents'] == null ? null : (map['includedEvents'] as List).cast<String>(),
-      messageScope: map['messageScope'] == null ? null : map['messageScope'] as String,
-      notificationEndpoints: map['notificationEndpoints'] == null ? null : pulumi.Input.decodeList<NotificationEndpoint>(map['notificationEndpoints'], (value) => NotificationEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      notificationMode: map['notificationMode'] == null ? null : map['notificationMode'] as String,
+      includedEvents: map['includedEvents'] == null ? null : ((map['includedEvents'] as List).cast<String>()).input(),
+      messageScope: map['messageScope'] == null ? null : (map['messageScope'] as String).input(),
+      notificationEndpoints: map['notificationEndpoints'] == null ? null : (pulumi.Input.decodeList<NotificationEndpoint>(map['notificationEndpoints'], (value) => NotificationEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationMode: map['notificationMode'] == null ? null : (map['notificationMode'] as String).input(),
     );
   }
 }

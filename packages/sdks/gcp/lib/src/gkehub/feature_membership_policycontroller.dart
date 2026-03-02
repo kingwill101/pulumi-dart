@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_membership_policycontroller_policy_controller_hub_config.dart';
 
 class FeatureMembershipPolicycontroller {
   /// Policy Controller configuration for the cluster. Structure is documented below.
-  final FeatureMembershipPolicycontrollerPolicyControllerHubConfig policyControllerHubConfig;
+  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfig> policyControllerHubConfig;
   /// Version of Policy Controller to install. Defaults to the latest version.
-  final String? version;
+  final pulumi.Input<String>? version;
 
   /// Creates a new [FeatureMembershipPolicycontroller].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster. Structure is documented below.
@@ -18,15 +19,15 @@ class FeatureMembershipPolicycontroller {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig': policyControllerHubConfig.toMap(),
+      'policyControllerHubConfig': pulumi.Input.mapInputValue<FeatureMembershipPolicycontrollerPolicyControllerHubConfig, Map<String, dynamic>>(policyControllerHubConfig, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory FeatureMembershipPolicycontroller.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontroller(
-      policyControllerHubConfig: FeatureMembershipPolicycontrollerPolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      policyControllerHubConfig: (FeatureMembershipPolicycontrollerPolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version'] as String).input(),
     );
   }
 }

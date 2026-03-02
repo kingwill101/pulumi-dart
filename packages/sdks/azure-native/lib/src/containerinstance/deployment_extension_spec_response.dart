@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Extension sidecars to be added to the deployment.
 class DeploymentExtensionSpecResponse {
   /// Type of extension to be added.
-  final String extensionType;
+  final pulumi.Input<String> extensionType;
   /// Name of the extension.
-  final String name;
+  final pulumi.Input<String> name;
   /// Protected settings for the extension.
-  final dynamic protectedSettings;
+  final pulumi.Input<dynamic>? protectedSettings;
   /// Settings for the extension.
-  final dynamic settings;
+  final pulumi.Input<dynamic>? settings;
   /// Version of the extension being used.
-  final String version;
+  final pulumi.Input<String> version;
 
   /// Creates a new [DeploymentExtensionSpecResponse].
   /// [extensionType] Type of extension to be added.
@@ -40,11 +41,11 @@ class DeploymentExtensionSpecResponse {
 
   factory DeploymentExtensionSpecResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionSpecResponse(
-      extensionType: map['extensionType'] as String,
-      name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
-      settings: map['settings'] == null ? null : map['settings'],
-      version: map['version'] as String,
+      extensionType: (map['extensionType'] as String).input(),
+      name: (map['name'] as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
+      settings: map['settings'] == null ? null : (map['settings']).input(),
+      version: (map['version'] as String).input(),
     );
   }
 }

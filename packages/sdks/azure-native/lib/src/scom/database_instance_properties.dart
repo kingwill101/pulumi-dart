@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties of database instance
 class DatabaseInstanceProperties {
   /// Resource Id of existing database instance
-  final String? databaseInstanceId;
+  final pulumi.Input<String>? databaseInstanceId;
 
   /// Creates a new [DatabaseInstanceProperties].
   /// [databaseInstanceId] Resource Id of existing database instance
@@ -20,7 +21,7 @@ class DatabaseInstanceProperties {
 
   factory DatabaseInstanceProperties.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceProperties(
-      databaseInstanceId: map['databaseInstanceId'] == null ? null : map['databaseInstanceId'] as String,
+      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId'] as String).input(),
     );
   }
 }

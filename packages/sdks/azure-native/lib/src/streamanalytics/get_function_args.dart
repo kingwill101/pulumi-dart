@@ -19,13 +19,10 @@ class GetFunctionArgs {
   /// [jobName] The name of the streaming job.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   GetFunctionArgs({
-    required pulumi.Output<String> functionName,
-    required pulumi.Output<String> jobName,
-    required pulumi.Output<String> resourceGroupName,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      jobName = pulumi.Input.asInput<String>(jobName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+    required this.functionName,
+    required this.jobName,
+    required this.resourceGroupName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetFunctionArgs {
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionArgs(
-      functionName: pulumi.Output.create<String>(map['functionName'] as String),
-      jobName: pulumi.Output.create<String>(map['jobName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      functionName: (map['functionName'] as String).input(),
+      jobName: (map['jobName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }
 }

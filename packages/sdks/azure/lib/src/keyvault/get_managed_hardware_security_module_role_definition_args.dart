@@ -16,11 +16,9 @@ class GetManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// [managedHsmId] The ID of the Key Vault Managed Hardware Security Module.
   /// [name] The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition.
   GetManagedHardwareSecurityModuleRoleDefinitionArgs({
-    required pulumi.Output<String> managedHsmId,
-    required pulumi.Output<String> name,
-  }) :
-      managedHsmId = pulumi.Input.asInput<String>(managedHsmId),
-      name = pulumi.Input.asInput<String>(name);
+    required this.managedHsmId,
+    required this.name,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +29,8 @@ class GetManagedHardwareSecurityModuleRoleDefinitionArgs {
 
   factory GetManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleRoleDefinitionArgs(
-      managedHsmId: pulumi.Output.create<String>(map['managedHsmId'] as String),
-      name: pulumi.Output.create<String>(map['name'] as String),
+      managedHsmId: (map['managedHsmId'] as String).input(),
+      name: (map['name'] as String).input(),
     );
   }
 }

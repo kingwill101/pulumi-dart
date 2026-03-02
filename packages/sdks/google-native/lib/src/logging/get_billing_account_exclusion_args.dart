@@ -14,11 +14,9 @@ class GetBillingAccountExclusionArgs {
   /// [billingAccountId] Required.
   /// [exclusionId] Required.
   GetBillingAccountExclusionArgs({
-    required pulumi.Output<String> billingAccountId,
-    required pulumi.Output<String> exclusionId,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      exclusionId = pulumi.Input.asInput<String>(exclusionId);
+    required this.billingAccountId,
+    required this.exclusionId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +27,8 @@ class GetBillingAccountExclusionArgs {
 
   factory GetBillingAccountExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountExclusionArgs(
-      billingAccountId: pulumi.Output.create<String>(map['billingAccountId'] as String),
-      exclusionId: pulumi.Output.create<String>(map['exclusionId'] as String),
+      billingAccountId: (map['billingAccountId'] as String).input(),
+      exclusionId: (map['exclusionId'] as String).input(),
     );
   }
 }

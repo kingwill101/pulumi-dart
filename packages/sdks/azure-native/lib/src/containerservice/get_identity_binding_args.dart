@@ -19,13 +19,10 @@ class GetIdentityBindingArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   GetIdentityBindingArgs({
-    required pulumi.Output<String> identityBindingName,
-    required pulumi.Output<String> resourceGroupName,
-    required pulumi.Output<String> resourceName,
-  }) :
-      identityBindingName = pulumi.Input.asInput<String>(identityBindingName),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceName = pulumi.Input.asInput<String>(resourceName);
+    required this.identityBindingName,
+    required this.resourceGroupName,
+    required this.resourceName,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetIdentityBindingArgs {
 
   factory GetIdentityBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetIdentityBindingArgs(
-      identityBindingName: pulumi.Output.create<String>(map['identityBindingName'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      identityBindingName: (map['identityBindingName'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceName: (map['resourceName'] as String).input(),
     );
   }
 }

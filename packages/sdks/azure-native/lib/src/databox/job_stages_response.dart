@@ -6,17 +6,17 @@ import 'job_delay_details_response.dart';
 /// Job stages.
 class JobStagesResponse {
   /// Delay information for the job stages.
-  final List<JobDelayDetailsResponse> delayInformation;
+  final pulumi.Input<List<JobDelayDetailsResponse>> delayInformation;
   /// Display name of the job stage.
-  final String displayName;
+  final pulumi.Input<String> displayName;
   /// Job Stage Details
-  final dynamic jobStageDetails;
+  final pulumi.Input<dynamic> jobStageDetails;
   /// Name of the job stage.
-  final String stageName;
+  final pulumi.Input<String> stageName;
   /// Status of the job stage.
-  final String stageStatus;
+  final pulumi.Input<String> stageStatus;
   /// Time for the job stage in UTC ISO 8601 format.
-  final String stageTime;
+  final pulumi.Input<String> stageTime;
 
   /// Creates a new [JobStagesResponse].
   /// [delayInformation] Delay information for the job stages.
@@ -36,7 +36,7 @@ class JobStagesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'delayInformation': pulumi.Input.encodeList<JobDelayDetailsResponse, Map<String, dynamic>>(delayInformation, (value) => value.toMap()),
+      'delayInformation': pulumi.Input.mapInputValue<List<JobDelayDetailsResponse>, List<Map<String, dynamic>>>(delayInformation, (value) => pulumi.Input.encodeList<JobDelayDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': displayName,
       'jobStageDetails': jobStageDetails,
       'stageName': stageName,
@@ -47,12 +47,12 @@ class JobStagesResponse {
 
   factory JobStagesResponse.fromMap(Map<String, dynamic> map) {
     return JobStagesResponse(
-      delayInformation: pulumi.Input.decodeList<JobDelayDetailsResponse>(map['delayInformation'], (value) => JobDelayDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] as String,
-      jobStageDetails: map['jobStageDetails'],
-      stageName: map['stageName'] as String,
-      stageStatus: map['stageStatus'] as String,
-      stageTime: map['stageTime'] as String,
+      delayInformation: (pulumi.Input.decodeList<JobDelayDetailsResponse>(map['delayInformation'], (value) => JobDelayDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (map['displayName'] as String).input(),
+      jobStageDetails: (map['jobStageDetails']).input(),
+      stageName: (map['stageName'] as String).input(),
+      stageStatus: (map['stageStatus'] as String).input(),
+      stageTime: (map['stageTime'] as String).input(),
     );
   }
 }

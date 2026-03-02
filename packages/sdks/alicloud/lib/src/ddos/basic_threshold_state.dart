@@ -28,21 +28,14 @@ class BasicThresholdState {
   /// [maxPps] The maximum number of messages cleaning threshold. Unit: pps.
   /// [pps] The current message number cleaning threshold. Unit: pps.
   BasicThresholdState({
-    pulumi.Output<int>? bps,
-    pulumi.Output<String>? instanceId,
-    pulumi.Output<String>? instanceType,
-    pulumi.Output<String>? internetIp,
-    pulumi.Output<int>? maxBps,
-    pulumi.Output<int>? maxPps,
-    pulumi.Output<int>? pps,
-  }) :
-      bps = pulumi.Input.asOptionalInput<int>(bps),
-      instanceId = pulumi.Input.asOptionalInput<String>(instanceId),
-      instanceType = pulumi.Input.asOptionalInput<String>(instanceType),
-      internetIp = pulumi.Input.asOptionalInput<String>(internetIp),
-      maxBps = pulumi.Input.asOptionalInput<int>(maxBps),
-      maxPps = pulumi.Input.asOptionalInput<int>(maxPps),
-      pps = pulumi.Input.asOptionalInput<int>(pps);
+    this.bps,
+    this.instanceId,
+    this.instanceType,
+    this.internetIp,
+    this.maxBps,
+    this.maxPps,
+    this.pps,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +51,13 @@ class BasicThresholdState {
 
   factory BasicThresholdState.fromMap(Map<String, dynamic> map) {
     return BasicThresholdState(
-      bps: map['bps'] == null ? null : pulumi.Output.create<int>(map['bps'] as int),
-      instanceId: map['instanceId'] == null ? null : pulumi.Output.create<String>(map['instanceId'] as String),
-      instanceType: map['instanceType'] == null ? null : pulumi.Output.create<String>(map['instanceType'] as String),
-      internetIp: map['internetIp'] == null ? null : pulumi.Output.create<String>(map['internetIp'] as String),
-      maxBps: map['maxBps'] == null ? null : pulumi.Output.create<int>(map['maxBps'] as int),
-      maxPps: map['maxPps'] == null ? null : pulumi.Output.create<int>(map['maxPps'] as int),
-      pps: map['pps'] == null ? null : pulumi.Output.create<int>(map['pps'] as int),
+      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
+      maxBps: map['maxBps'] == null ? null : (map['maxBps'] as int).input(),
+      maxPps: map['maxPps'] == null ? null : (map['maxPps'] as int).input(),
+      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
     );
   }
 }

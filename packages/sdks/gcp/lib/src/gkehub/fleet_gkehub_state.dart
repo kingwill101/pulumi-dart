@@ -39,23 +39,15 @@ class FleetGkehubState {
   /// [uid] Google-generated UUID for this resource. This is unique across all
   /// [updateTime] The time the fleet was last updated, in RFC3339 text format.
   FleetGkehubState({
-    pulumi.Output<String>? createTime,
-    pulumi.Output<FleetDefaultClusterConfig>? defaultClusterConfig,
-    pulumi.Output<String>? deleteTime,
-    pulumi.Output<String>? displayName,
-    pulumi.Output<String>? project,
-    pulumi.Output<List<FleetState>>? states,
-    pulumi.Output<String>? uid,
-    pulumi.Output<String>? updateTime,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      defaultClusterConfig = pulumi.Input.asOptionalInput<FleetDefaultClusterConfig>(defaultClusterConfig),
-      deleteTime = pulumi.Input.asOptionalInput<String>(deleteTime),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      states = pulumi.Input.asOptionalInput<List<FleetState>>(states),
-      uid = pulumi.Input.asOptionalInput<String>(uid),
-      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+    this.createTime,
+    this.defaultClusterConfig,
+    this.deleteTime,
+    this.displayName,
+    this.project,
+    this.states,
+    this.uid,
+    this.updateTime,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,14 +64,14 @@ class FleetGkehubState {
 
   factory FleetGkehubState.fromMap(Map<String, dynamic> map) {
     return FleetGkehubState(
-      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
-      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : pulumi.Output.create<FleetDefaultClusterConfig>(FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())),
-      deleteTime: map['deleteTime'] == null ? null : pulumi.Output.create<String>(map['deleteTime'] as String),
-      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      states: map['states'] == null ? null : pulumi.Output.create<List<FleetState>>(pulumi.Input.decodeList<FleetState>(map['states'], (value) => FleetState.fromMap((value as Map).cast<String, dynamic>()))),
-      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
-      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : (FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FleetState>(map['states'], (value) => FleetState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
     );
   }
 }

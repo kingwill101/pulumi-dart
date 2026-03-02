@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Windows patching is performed using the Windows Update Agent.
 class WindowsUpdateSettingsResponseOsconfigV1beta {
   /// Only apply updates of these windows update classifications. If empty, all updates are applied.
-  final List<String> classifications;
+  final pulumi.Input<List<String>> classifications;
   /// List of KBs to exclude from update.
-  final List<String> excludes;
+  final pulumi.Input<List<String>> excludes;
   /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-  final List<String> exclusivePatches;
+  final pulumi.Input<List<String>> exclusivePatches;
 
   /// Creates a new [WindowsUpdateSettingsResponseOsconfigV1beta].
   /// [classifications] Only apply updates of these windows update classifications. If empty, all updates are applied.
@@ -30,9 +31,9 @@ class WindowsUpdateSettingsResponseOsconfigV1beta {
 
   factory WindowsUpdateSettingsResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateSettingsResponseOsconfigV1beta(
-      classifications: (map['classifications'] as List).cast<String>(),
-      excludes: (map['excludes'] as List).cast<String>(),
-      exclusivePatches: (map['exclusivePatches'] as List).cast<String>(),
+      classifications: ((map['classifications'] as List).cast<String>()).input(),
+      excludes: ((map['excludes'] as List).cast<String>()).input(),
+      exclusivePatches: ((map['exclusivePatches'] as List).cast<String>()).input(),
     );
   }
 }

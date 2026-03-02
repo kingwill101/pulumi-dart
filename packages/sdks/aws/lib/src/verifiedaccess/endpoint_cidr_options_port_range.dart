@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointCidrOptionsPortRange {
-  final int fromPort;
-  final int toPort;
+  final pulumi.Input<int> fromPort;
+  final pulumi.Input<int> toPort;
 
   /// Creates a new [EndpointCidrOptionsPortRange].
   /// [fromPort] Required.
@@ -22,8 +23,8 @@ class EndpointCidrOptionsPortRange {
 
   factory EndpointCidrOptionsPortRange.fromMap(Map<String, dynamic> map) {
     return EndpointCidrOptionsPortRange(
-      fromPort: map['fromPort'] as int,
-      toPort: map['toPort'] as int,
+      fromPort: (map['fromPort'] as int).input(),
+      toPort: (map['toPort'] as int).input(),
     );
   }
 }

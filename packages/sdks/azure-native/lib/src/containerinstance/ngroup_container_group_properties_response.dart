@@ -8,11 +8,11 @@ import 'ngroup_cgproperty_volume_response.dart';
 /// Container Group properties which can be set while creating or updating the NGroups.
 class NGroupContainerGroupPropertiesResponse {
   /// Contains information about Container which can be set while creating or updating the NGroups.
-  final List<NGroupCGPropertyContainerResponse>? containers;
+  final pulumi.Input<List<NGroupCGPropertyContainerResponse>>? containers;
   /// Contains information about Virtual Network Subnet ARM Resource
-  final List<ContainerGroupSubnetIdResponse>? subnetIds;
+  final pulumi.Input<List<ContainerGroupSubnetIdResponse>>? subnetIds;
   /// Contains information about the volumes that can be mounted by Containers in the Container Groups.
-  final List<NGroupCGPropertyVolumeResponse>? volumes;
+  final pulumi.Input<List<NGroupCGPropertyVolumeResponse>>? volumes;
 
   /// Creates a new [NGroupContainerGroupPropertiesResponse].
   /// [containers] Contains information about Container which can be set while creating or updating the NGroups.
@@ -26,17 +26,17 @@ class NGroupContainerGroupPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': ?containers == null ? null : pulumi.Input.encodeList<NGroupCGPropertyContainerResponse, Map<String, dynamic>>(containers!, (value) => value.toMap()),
-      'subnetIds': ?subnetIds == null ? null : pulumi.Input.encodeList<ContainerGroupSubnetIdResponse, Map<String, dynamic>>(subnetIds!, (value) => value.toMap()),
-      'volumes': ?volumes == null ? null : pulumi.Input.encodeList<NGroupCGPropertyVolumeResponse, Map<String, dynamic>>(volumes!, (value) => value.toMap()),
+      'containers': ?pulumi.Input.mapOptionalInputValue<List<NGroupCGPropertyContainerResponse>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<NGroupCGPropertyContainerResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetIds': ?pulumi.Input.mapOptionalInputValue<List<ContainerGroupSubnetIdResponse>, List<Map<String, dynamic>>>(subnetIds, (value) => pulumi.Input.encodeList<ContainerGroupSubnetIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes': ?pulumi.Input.mapOptionalInputValue<List<NGroupCGPropertyVolumeResponse>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<NGroupCGPropertyVolumeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
   factory NGroupContainerGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NGroupContainerGroupPropertiesResponse(
-      containers: map['containers'] == null ? null : pulumi.Input.decodeList<NGroupCGPropertyContainerResponse>(map['containers'], (value) => NGroupCGPropertyContainerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subnetIds: map['subnetIds'] == null ? null : pulumi.Input.decodeList<ContainerGroupSubnetIdResponse>(map['subnetIds'], (value) => ContainerGroupSubnetIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      volumes: map['volumes'] == null ? null : pulumi.Input.decodeList<NGroupCGPropertyVolumeResponse>(map['volumes'], (value) => NGroupCGPropertyVolumeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyContainerResponse>(map['containers'], (value) => NGroupCGPropertyContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSubnetIdResponse>(map['subnetIds'], (value) => ContainerGroupSubnetIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<NGroupCGPropertyVolumeResponse>(map['volumes'], (value) => NGroupCGPropertyVolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

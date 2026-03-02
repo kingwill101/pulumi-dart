@@ -19,13 +19,10 @@ class GetAttachmentsArgs {
   /// [loadBalancerId] ID of the SLB with attachments.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetAttachmentsArgs({
-    pulumi.Output<List<String>>? instanceIds,
-    required pulumi.Output<String> loadBalancerId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      instanceIds = pulumi.Input.asOptionalInput<List<String>>(instanceIds),
-      loadBalancerId = pulumi.Input.asInput<String>(loadBalancerId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    this.instanceIds,
+    required this.loadBalancerId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +34,9 @@ class GetAttachmentsArgs {
 
   factory GetAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsArgs(
-      instanceIds: map['instanceIds'] == null ? null : pulumi.Output.create<List<String>>((map['instanceIds'] as List).cast<String>()),
-      loadBalancerId: pulumi.Output.create<String>(map['loadBalancerId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }

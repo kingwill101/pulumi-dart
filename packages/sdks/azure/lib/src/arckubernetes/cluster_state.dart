@@ -47,33 +47,20 @@ class ClusterState {
   /// [totalCoreCount] Number of CPU cores present in the cluster resource.
   /// [totalNodeCount] Number of nodes present in the cluster resource.
   ClusterState({
-    pulumi.Output<String>? agentPublicKeyCertificate,
-    pulumi.Output<String>? agentVersion,
-    pulumi.Output<String>? distribution,
-    pulumi.Output<ClusterIdentity>? identity,
-    pulumi.Output<String>? infrastructure,
-    pulumi.Output<String>? kubernetesVersion,
-    pulumi.Output<String>? location,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? offering,
-    pulumi.Output<String>? resourceGroupName,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<int>? totalCoreCount,
-    pulumi.Output<int>? totalNodeCount,
-  }) :
-      agentPublicKeyCertificate = pulumi.Input.asOptionalInput<String>(agentPublicKeyCertificate),
-      agentVersion = pulumi.Input.asOptionalInput<String>(agentVersion),
-      distribution = pulumi.Input.asOptionalInput<String>(distribution),
-      identity = pulumi.Input.asOptionalInput<ClusterIdentity>(identity),
-      infrastructure = pulumi.Input.asOptionalInput<String>(infrastructure),
-      kubernetesVersion = pulumi.Input.asOptionalInput<String>(kubernetesVersion),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      offering = pulumi.Input.asOptionalInput<String>(offering),
-      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      totalCoreCount = pulumi.Input.asOptionalInput<int>(totalCoreCount),
-      totalNodeCount = pulumi.Input.asOptionalInput<int>(totalNodeCount);
+    this.agentPublicKeyCertificate,
+    this.agentVersion,
+    this.distribution,
+    this.identity,
+    this.infrastructure,
+    this.kubernetesVersion,
+    this.location,
+    this.name,
+    this.offering,
+    this.resourceGroupName,
+    this.tags,
+    this.totalCoreCount,
+    this.totalNodeCount,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,19 +82,19 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      agentPublicKeyCertificate: map['agentPublicKeyCertificate'] == null ? null : pulumi.Output.create<String>(map['agentPublicKeyCertificate'] as String),
-      agentVersion: map['agentVersion'] == null ? null : pulumi.Output.create<String>(map['agentVersion'] as String),
-      distribution: map['distribution'] == null ? null : pulumi.Output.create<String>(map['distribution'] as String),
-      identity: map['identity'] == null ? null : pulumi.Output.create<ClusterIdentity>(ClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
-      infrastructure: map['infrastructure'] == null ? null : pulumi.Output.create<String>(map['infrastructure'] as String),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : pulumi.Output.create<String>(map['kubernetesVersion'] as String),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      offering: map['offering'] == null ? null : pulumi.Output.create<String>(map['offering'] as String),
-      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      totalCoreCount: map['totalCoreCount'] == null ? null : pulumi.Output.create<int>(map['totalCoreCount'] as int),
-      totalNodeCount: map['totalNodeCount'] == null ? null : pulumi.Output.create<int>(map['totalNodeCount'] as int),
+      agentPublicKeyCertificate: map['agentPublicKeyCertificate'] == null ? null : (map['agentPublicKeyCertificate'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
+      identity: map['identity'] == null ? null : (ClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      offering: map['offering'] == null ? null : (map['offering'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount'] as int).input(),
+      totalNodeCount: map['totalNodeCount'] == null ? null : (map['totalNodeCount'] as int).input(),
     );
   }
 }

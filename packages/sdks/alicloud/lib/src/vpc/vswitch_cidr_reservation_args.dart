@@ -31,21 +31,14 @@ class VswitchCidrReservationArgs {
   /// [vswitchCidrReservationName] The name of the resource.
   /// [vswitchId] The Id of the switch instance.
   VswitchCidrReservationArgs({
-    pulumi.Output<String>? cidrReservationCidr,
-    pulumi.Output<String>? cidrReservationDescription,
-    pulumi.Output<String>? cidrReservationMask,
-    pulumi.Output<String>? cidrReservationType,
-    pulumi.Output<String>? ipVersion,
-    pulumi.Output<String>? vswitchCidrReservationName,
-    required pulumi.Output<String> vswitchId,
-  }) :
-      cidrReservationCidr = pulumi.Input.asOptionalInput<String>(cidrReservationCidr),
-      cidrReservationDescription = pulumi.Input.asOptionalInput<String>(cidrReservationDescription),
-      cidrReservationMask = pulumi.Input.asOptionalInput<String>(cidrReservationMask),
-      cidrReservationType = pulumi.Input.asOptionalInput<String>(cidrReservationType),
-      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
-      vswitchCidrReservationName = pulumi.Input.asOptionalInput<String>(vswitchCidrReservationName),
-      vswitchId = pulumi.Input.asInput<String>(vswitchId);
+    this.cidrReservationCidr,
+    this.cidrReservationDescription,
+    this.cidrReservationMask,
+    this.cidrReservationType,
+    this.ipVersion,
+    this.vswitchCidrReservationName,
+    required this.vswitchId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,13 +54,13 @@ class VswitchCidrReservationArgs {
 
   factory VswitchCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return VswitchCidrReservationArgs(
-      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : pulumi.Output.create<String>(map['cidrReservationCidr'] as String),
-      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : pulumi.Output.create<String>(map['cidrReservationDescription'] as String),
-      cidrReservationMask: map['cidrReservationMask'] == null ? null : pulumi.Output.create<String>(map['cidrReservationMask'] as String),
-      cidrReservationType: map['cidrReservationType'] == null ? null : pulumi.Output.create<String>(map['cidrReservationType'] as String),
-      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
-      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : pulumi.Output.create<String>(map['vswitchCidrReservationName'] as String),
-      vswitchId: pulumi.Output.create<String>(map['vswitchId'] as String),
+      cidrReservationCidr: map['cidrReservationCidr'] == null ? null : (map['cidrReservationCidr'] as String).input(),
+      cidrReservationDescription: map['cidrReservationDescription'] == null ? null : (map['cidrReservationDescription'] as String).input(),
+      cidrReservationMask: map['cidrReservationMask'] == null ? null : (map['cidrReservationMask'] as String).input(),
+      cidrReservationType: map['cidrReservationType'] == null ? null : (map['cidrReservationType'] as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
+      vswitchCidrReservationName: map['vswitchCidrReservationName'] == null ? null : (map['vswitchCidrReservationName'] as String).input(),
+      vswitchId: (map['vswitchId'] as String).input(),
     );
   }
 }

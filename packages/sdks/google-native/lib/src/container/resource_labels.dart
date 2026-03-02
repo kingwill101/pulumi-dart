@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
 class ResourceLabels {
   /// Map of node label keys and node label values.
-  final Map<String, String>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Creates a new [ResourceLabels].
   /// [labels] Map of node label keys and node label values.
@@ -20,7 +21,7 @@ class ResourceLabels {
 
   factory ResourceLabels.fromMap(Map<String, dynamic> map) {
     return ResourceLabels(
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
     );
   }
 }

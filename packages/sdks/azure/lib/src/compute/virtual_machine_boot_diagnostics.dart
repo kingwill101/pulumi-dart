@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineBootDiagnostics {
   /// Should Boot Diagnostics be enabled for this Virtual Machine?
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files.
   ///
   /// > **NOTE:** This needs to be the root of a Storage Account and not a Storage Container.
-  final String storageUri;
+  final pulumi.Input<String> storageUri;
 
   /// Creates a new [VirtualMachineBootDiagnostics].
   /// [enabled] Should Boot Diagnostics be enabled for this Virtual Machine?
@@ -26,8 +27,8 @@ class VirtualMachineBootDiagnostics {
 
   factory VirtualMachineBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return VirtualMachineBootDiagnostics(
-      enabled: map['enabled'] as bool,
-      storageUri: map['storageUri'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      storageUri: (map['storageUri'] as String).input(),
     );
   }
 }

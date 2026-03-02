@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceMeshesMeshMeshConfigAccessLog {
   /// Whether to enable CNI.
-  final bool enabled;
+  final pulumi.Input<bool> enabled;
   /// The Service grid audit that to the project.
-  final String project;
+  final pulumi.Input<String> project;
 
   /// Creates a new [GetServiceMeshesMeshMeshConfigAccessLog].
   /// [enabled] Whether to enable CNI.
@@ -24,8 +25,8 @@ class GetServiceMeshesMeshMeshConfigAccessLog {
 
   factory GetServiceMeshesMeshMeshConfigAccessLog.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfigAccessLog(
-      enabled: map['enabled'] as bool,
-      project: map['project'] as String,
+      enabled: (map['enabled'] as bool).input(),
+      project: (map['project'] as String).input(),
     );
   }
 }

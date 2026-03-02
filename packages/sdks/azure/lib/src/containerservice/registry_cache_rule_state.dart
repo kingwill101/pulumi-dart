@@ -22,17 +22,12 @@ class RegistryCacheRuleState {
   /// [sourceRepo] The name of the source repository path. Changing this forces a new resource to be created.
   /// [targetRepo] The name of the new repository path to store artifacts. Changing this forces a new resource to be created.
   RegistryCacheRuleState({
-    pulumi.Output<String>? containerRegistryId,
-    pulumi.Output<String>? credentialSetId,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? sourceRepo,
-    pulumi.Output<String>? targetRepo,
-  }) :
-      containerRegistryId = pulumi.Input.asOptionalInput<String>(containerRegistryId),
-      credentialSetId = pulumi.Input.asOptionalInput<String>(credentialSetId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      sourceRepo = pulumi.Input.asOptionalInput<String>(sourceRepo),
-      targetRepo = pulumi.Input.asOptionalInput<String>(targetRepo);
+    this.containerRegistryId,
+    this.credentialSetId,
+    this.name,
+    this.sourceRepo,
+    this.targetRepo,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +41,11 @@ class RegistryCacheRuleState {
 
   factory RegistryCacheRuleState.fromMap(Map<String, dynamic> map) {
     return RegistryCacheRuleState(
-      containerRegistryId: map['containerRegistryId'] == null ? null : pulumi.Output.create<String>(map['containerRegistryId'] as String),
-      credentialSetId: map['credentialSetId'] == null ? null : pulumi.Output.create<String>(map['credentialSetId'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      sourceRepo: map['sourceRepo'] == null ? null : pulumi.Output.create<String>(map['sourceRepo'] as String),
-      targetRepo: map['targetRepo'] == null ? null : pulumi.Output.create<String>(map['targetRepo'] as String),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
+      credentialSetId: map['credentialSetId'] == null ? null : (map['credentialSetId'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      sourceRepo: map['sourceRepo'] == null ? null : (map['sourceRepo'] as String).input(),
+      targetRepo: map['targetRepo'] == null ? null : (map['targetRepo'] as String).input(),
     );
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionRegisteredFeaturesResponse {
-  final String? name;
-  final String? state;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? state;
 
   /// Creates a new [SubscriptionRegisteredFeaturesResponse].
   /// [name] Optional.
@@ -22,8 +23,8 @@ class SubscriptionRegisteredFeaturesResponse {
 
   factory SubscriptionRegisteredFeaturesResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionRegisteredFeaturesResponse(
-      name: map['name'] == null ? null : map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      state: map['state'] == null ? null : (map['state'] as String).input(),
     );
   }
 }

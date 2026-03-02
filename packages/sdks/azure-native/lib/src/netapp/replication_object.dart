@@ -1,19 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'remote_path.dart';
 
 /// Replication properties
 class ReplicationObject {
   /// Indicates whether the local volume is the source or destination for the Volume Replication
-  final String? endpointType;
+  final pulumi.Input<String>? endpointType;
   /// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-  final RemotePath? remotePath;
+  final pulumi.Input<RemotePath>? remotePath;
   /// The remote region for the other end of the Volume Replication.
-  final String? remoteVolumeRegion;
+  final pulumi.Input<String>? remoteVolumeRegion;
   /// The resource ID of the remote volume. Required for cross region and cross zone replication
-  final String? remoteVolumeResourceId;
+  final pulumi.Input<String>? remoteVolumeResourceId;
   /// Schedule
-  final String? replicationSchedule;
+  final pulumi.Input<String>? replicationSchedule;
 
   /// Creates a new [ReplicationObject].
   /// [endpointType] Indicates whether the local volume is the source or destination for the Volume Replication
@@ -32,7 +33,7 @@ class ReplicationObject {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpointType': ?endpointType,
-      'remotePath': ?remotePath == null ? null : remotePath!.toMap(),
+      'remotePath': ?pulumi.Input.mapOptionalInputValue<RemotePath, Map<String, dynamic>>(remotePath, (value) => value.toMap()),
       'remoteVolumeRegion': ?remoteVolumeRegion,
       'remoteVolumeResourceId': ?remoteVolumeResourceId,
       'replicationSchedule': ?replicationSchedule,
@@ -41,11 +42,11 @@ class ReplicationObject {
 
   factory ReplicationObject.fromMap(Map<String, dynamic> map) {
     return ReplicationObject(
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
-      remotePath: map['remotePath'] == null ? null : RemotePath.fromMap((map['remotePath'] as Map).cast<String, dynamic>()),
-      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : map['remoteVolumeRegion'] as String,
-      remoteVolumeResourceId: map['remoteVolumeResourceId'] == null ? null : map['remoteVolumeResourceId'] as String,
-      replicationSchedule: map['replicationSchedule'] == null ? null : map['replicationSchedule'] as String,
+      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      remotePath: map['remotePath'] == null ? null : (RemotePath.fromMap((map['remotePath'] as Map).cast<String, dynamic>())).input(),
+      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion'] as String).input(),
+      remoteVolumeResourceId: map['remoteVolumeResourceId'] == null ? null : (map['remoteVolumeResourceId'] as String).input(),
+      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule'] as String).input(),
     );
   }
 }

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketActionResponse {
   /// Not supported by Cloud Run.
-  final String host;
+  final pulumi.Input<String> host;
   /// Port number to access on the container. Number must be in the range 1 to 65535.
-  final int port;
+  final pulumi.Input<int> port;
 
   /// Creates a new [TCPSocketActionResponse].
   /// [host] Not supported by Cloud Run.
@@ -25,8 +26,8 @@ class TCPSocketActionResponse {
 
   factory TCPSocketActionResponse.fromMap(Map<String, dynamic> map) {
     return TCPSocketActionResponse(
-      host: map['host'] as String,
-      port: map['port'] as int,
+      host: (map['host'] as String).input(),
+      port: (map['port'] as int).input(),
     );
   }
 }

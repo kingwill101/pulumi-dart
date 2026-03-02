@@ -25,15 +25,11 @@ class BackendServiceSignedUrlKeyArgs {
   /// [name] Name of the signed URL key.
   /// [project] The ID of the project in which the resource belongs.
   BackendServiceSignedUrlKeyArgs({
-    required pulumi.Output<String> backendService,
-    required pulumi.Output<String> keyValue,
-    pulumi.Output<String>? name,
-    pulumi.Output<String>? project,
-  }) :
-      backendService = pulumi.Input.asInput<String>(backendService),
-      keyValue = pulumi.Input.asInput<String>(keyValue),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+    required this.backendService,
+    required this.keyValue,
+    this.name,
+    this.project,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +42,10 @@ class BackendServiceSignedUrlKeyArgs {
 
   factory BackendServiceSignedUrlKeyArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceSignedUrlKeyArgs(
-      backendService: pulumi.Output.create<String>(map['backendService'] as String),
-      keyValue: pulumi.Output.create<String>(map['keyValue'] as String),
-      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      backendService: (map['backendService'] as String).input(),
+      keyValue: (map['keyValue'] as String).input(),
+      name: map['name'] == null ? null : (map['name'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
     );
   }
 }

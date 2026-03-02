@@ -34,21 +34,14 @@ class CustomResourceProviderArgs {
   /// [tags] Resource tags
   /// [validations] A list of validations to run on the custom resource provider's requests.
   CustomResourceProviderArgs({
-    pulumi.Output<List<CustomRPActionRouteDefinition>>? actions,
-    pulumi.Output<String>? location,
-    required pulumi.Output<String> resourceGroupName,
-    pulumi.Output<String>? resourceProviderName,
-    pulumi.Output<List<CustomRPResourceTypeRouteDefinition>>? resourceTypes,
-    pulumi.Output<Map<String, String>>? tags,
-    pulumi.Output<List<CustomRPValidations>>? validations,
-  }) :
-      actions = pulumi.Input.asOptionalInput<List<CustomRPActionRouteDefinition>>(actions),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
-      resourceProviderName = pulumi.Input.asOptionalInput<String>(resourceProviderName),
-      resourceTypes = pulumi.Input.asOptionalInput<List<CustomRPResourceTypeRouteDefinition>>(resourceTypes),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      validations = pulumi.Input.asOptionalInput<List<CustomRPValidations>>(validations);
+    this.actions,
+    this.location,
+    required this.resourceGroupName,
+    this.resourceProviderName,
+    this.resourceTypes,
+    this.tags,
+    this.validations,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,13 +57,13 @@ class CustomResourceProviderArgs {
 
   factory CustomResourceProviderArgs.fromMap(Map<String, dynamic> map) {
     return CustomResourceProviderArgs(
-      actions: map['actions'] == null ? null : pulumi.Output.create<List<CustomRPActionRouteDefinition>>(pulumi.Input.decodeList<CustomRPActionRouteDefinition>(map['actions'], (value) => CustomRPActionRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
-      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
-      resourceProviderName: map['resourceProviderName'] == null ? null : pulumi.Output.create<String>(map['resourceProviderName'] as String),
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Output.create<List<CustomRPResourceTypeRouteDefinition>>(pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinition>(map['resourceTypes'], (value) => CustomRPResourceTypeRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))),
-      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
-      validations: map['validations'] == null ? null : pulumi.Output.create<List<CustomRPValidations>>(pulumi.Input.decodeList<CustomRPValidations>(map['validations'], (value) => CustomRPValidations.fromMap((value as Map).cast<String, dynamic>()))),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomRPActionRouteDefinition>(map['actions'], (value) => CustomRPActionRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location'] as String).input(),
+      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceProviderName: map['resourceProviderName'] == null ? null : (map['resourceProviderName'] as String).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinition>(map['resourceTypes'], (value) => CustomRPResourceTypeRouteDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomRPValidations>(map['validations'], (value) => CustomRPValidations.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

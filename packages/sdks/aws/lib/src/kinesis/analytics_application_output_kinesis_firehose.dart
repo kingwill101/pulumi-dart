@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationOutputKinesisFirehose {
   /// The ARN of the Kinesis Firehose delivery stream.
-  final String resourceArn;
+  final pulumi.Input<String> resourceArn;
   /// The ARN of the IAM Role used to access the stream.
-  final String roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Creates a new [AnalyticsApplicationOutputKinesisFirehose].
   /// [resourceArn] The ARN of the Kinesis Firehose delivery stream.
@@ -24,8 +25,8 @@ class AnalyticsApplicationOutputKinesisFirehose {
 
   factory AnalyticsApplicationOutputKinesisFirehose.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationOutputKinesisFirehose(
-      resourceArn: map['resourceArn'] as String,
-      roleArn: map['roleArn'] as String,
+      resourceArn: (map['resourceArn'] as String).input(),
+      roleArn: (map['roleArn'] as String).input(),
     );
   }
 }

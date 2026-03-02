@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Execution policy for an activity.
 class RetryPolicy {
   /// Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
-  final dynamic count;
+  final pulumi.Input<dynamic>? count;
   /// Interval between retries in seconds. Default is 30.
-  final int? intervalInSeconds;
+  final pulumi.Input<int>? intervalInSeconds;
 
   /// Creates a new [RetryPolicy].
   /// [count] Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -25,8 +26,8 @@ class RetryPolicy {
 
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
-      count: map['count'] == null ? null : map['count'],
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as int,
+      count: map['count'] == null ? null : (map['count']).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
     );
   }
 }

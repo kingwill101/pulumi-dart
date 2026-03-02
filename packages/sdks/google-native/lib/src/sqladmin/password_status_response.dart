@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Read-only password status.
 class PasswordStatusResponse {
   /// If true, user does not have login privileges.
-  final bool locked;
+  final pulumi.Input<bool> locked;
   /// The expiration time of the current password.
-  final String passwordExpirationTime;
+  final pulumi.Input<String> passwordExpirationTime;
 
   /// Creates a new [PasswordStatusResponse].
   /// [locked] If true, user does not have login privileges.
@@ -25,8 +26,8 @@ class PasswordStatusResponse {
 
   factory PasswordStatusResponse.fromMap(Map<String, dynamic> map) {
     return PasswordStatusResponse(
-      locked: map['locked'] as bool,
-      passwordExpirationTime: map['passwordExpirationTime'] as String,
+      locked: (map['locked'] as bool).input(),
+      passwordExpirationTime: (map['passwordExpirationTime'] as String).input(),
     );
   }
 }

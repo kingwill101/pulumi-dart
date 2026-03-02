@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The properties describing private cloud availability zone distribution
 class AvailabilityPropertiesResponse {
   /// The secondary availability zone for the private cloud
-  final int? secondaryZone;
+  final pulumi.Input<int>? secondaryZone;
   /// The availability strategy for the private cloud
-  final String? strategy;
+  final pulumi.Input<String>? strategy;
   /// The primary availability zone for the private cloud
-  final int? zone;
+  final pulumi.Input<int>? zone;
 
   /// Creates a new [AvailabilityPropertiesResponse].
   /// [secondaryZone] The secondary availability zone for the private cloud
@@ -30,9 +31,9 @@ class AvailabilityPropertiesResponse {
 
   factory AvailabilityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityPropertiesResponse(
-      secondaryZone: map['secondaryZone'] == null ? null : map['secondaryZone'] as int,
-      strategy: map['strategy'] == null ? null : map['strategy'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as int,
+      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone'] as int).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone'] as int).input(),
     );
   }
 }

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a lab's announcement banner
 class LabAnnouncementProperties {
   /// Is the lab announcement active/enabled at this time?
-  final String? enabled;
+  final pulumi.Input<String>? enabled;
   /// The time at which the announcement expires (null for never)
-  final String? expirationDate;
+  final pulumi.Input<String>? expirationDate;
   /// Has this announcement expired?
-  final bool? expired;
+  final pulumi.Input<bool>? expired;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final String? markdown;
+  final pulumi.Input<String>? markdown;
   /// The plain text title for the lab announcement
-  final String? title;
+  final pulumi.Input<String>? title;
 
   /// Creates a new [LabAnnouncementProperties].
   /// [enabled] Is the lab announcement active/enabled at this time?
@@ -40,11 +41,11 @@ class LabAnnouncementProperties {
 
   factory LabAnnouncementProperties.fromMap(Map<String, dynamic> map) {
     return LabAnnouncementProperties(
-      enabled: map['enabled'] == null ? null : map['enabled'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
-      expired: map['expired'] == null ? null : map['expired'] as bool,
-      markdown: map['markdown'] == null ? null : map['markdown'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
+      markdown: map['markdown'] == null ? null : (map['markdown'] as String).input(),
+      title: map['title'] == null ? null : (map['title'] as String).input(),
     );
   }
 }

@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The settings that will be leveraged for SAP HANA source partitioning.
 class SapHanaPartitionSettings {
   /// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  final dynamic partitionColumnName;
+  final pulumi.Input<dynamic>? partitionColumnName;
 
   /// Creates a new [SapHanaPartitionSettings].
   /// [partitionColumnName] The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
@@ -20,7 +21,7 @@ class SapHanaPartitionSettings {
 
   factory SapHanaPartitionSettings.fromMap(Map<String, dynamic> map) {
     return SapHanaPartitionSettings(
-      partitionColumnName: map['partitionColumnName'] == null ? null : map['partitionColumnName'],
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
     );
   }
 }

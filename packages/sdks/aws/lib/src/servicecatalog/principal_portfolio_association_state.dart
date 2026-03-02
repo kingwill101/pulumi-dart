@@ -24,17 +24,12 @@ class PrincipalPortfolioAssociationState {
   /// [principalType] Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   PrincipalPortfolioAssociationState({
-    pulumi.Output<String>? acceptLanguage,
-    pulumi.Output<String>? portfolioId,
-    pulumi.Output<String>? principalArn,
-    pulumi.Output<String>? principalType,
-    pulumi.Output<String>? region,
-  }) :
-      acceptLanguage = pulumi.Input.asOptionalInput<String>(acceptLanguage),
-      portfolioId = pulumi.Input.asOptionalInput<String>(portfolioId),
-      principalArn = pulumi.Input.asOptionalInput<String>(principalArn),
-      principalType = pulumi.Input.asOptionalInput<String>(principalType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+    this.acceptLanguage,
+    this.portfolioId,
+    this.principalArn,
+    this.principalType,
+    this.region,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class PrincipalPortfolioAssociationState {
 
   factory PrincipalPortfolioAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : pulumi.Output.create<String>(map['acceptLanguage'] as String),
-      portfolioId: map['portfolioId'] == null ? null : pulumi.Output.create<String>(map['portfolioId'] as String),
-      principalArn: map['principalArn'] == null ? null : pulumi.Output.create<String>(map['principalArn'] as String),
-      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
     );
   }
 }

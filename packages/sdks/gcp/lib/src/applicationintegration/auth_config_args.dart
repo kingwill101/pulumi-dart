@@ -45,25 +45,16 @@ class AuthConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [visibility] The visibility of the auth config.
   AuthConfigArgs({
-    pulumi.Output<AuthConfigClientCertificate>? clientCertificate,
-    pulumi.Output<AuthConfigDecryptedCredential>? decryptedCredential,
-    pulumi.Output<String>? description,
-    required pulumi.Output<String> displayName,
-    pulumi.Output<List<String>>? expiryNotificationDurations,
-    required pulumi.Output<String> location,
-    pulumi.Output<String>? overrideValidTime,
-    pulumi.Output<String>? project,
-    pulumi.Output<String>? visibility,
-  }) :
-      clientCertificate = pulumi.Input.asOptionalInput<AuthConfigClientCertificate>(clientCertificate),
-      decryptedCredential = pulumi.Input.asOptionalInput<AuthConfigDecryptedCredential>(decryptedCredential),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      expiryNotificationDurations = pulumi.Input.asOptionalInput<List<String>>(expiryNotificationDurations),
-      location = pulumi.Input.asInput<String>(location),
-      overrideValidTime = pulumi.Input.asOptionalInput<String>(overrideValidTime),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      visibility = pulumi.Input.asOptionalInput<String>(visibility);
+    this.clientCertificate,
+    this.decryptedCredential,
+    this.description,
+    required this.displayName,
+    this.expiryNotificationDurations,
+    required this.location,
+    this.overrideValidTime,
+    this.project,
+    this.visibility,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,15 +72,15 @@ class AuthConfigArgs {
 
   factory AuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuthConfigArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : pulumi.Output.create<AuthConfigClientCertificate>(AuthConfigClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())),
-      decryptedCredential: map['decryptedCredential'] == null ? null : pulumi.Output.create<AuthConfigDecryptedCredential>(AuthConfigDecryptedCredential.fromMap((map['decryptedCredential'] as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
-      displayName: pulumi.Output.create<String>(map['displayName'] as String),
-      expiryNotificationDurations: map['expiryNotificationDurations'] == null ? null : pulumi.Output.create<List<String>>((map['expiryNotificationDurations'] as List).cast<String>()),
-      location: pulumi.Output.create<String>(map['location'] as String),
-      overrideValidTime: map['overrideValidTime'] == null ? null : pulumi.Output.create<String>(map['overrideValidTime'] as String),
-      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
-      visibility: map['visibility'] == null ? null : pulumi.Output.create<String>(map['visibility'] as String),
+      clientCertificate: map['clientCertificate'] == null ? null : (AuthConfigClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      decryptedCredential: map['decryptedCredential'] == null ? null : (AuthConfigDecryptedCredential.fromMap((map['decryptedCredential'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description'] as String).input(),
+      displayName: (map['displayName'] as String).input(),
+      expiryNotificationDurations: map['expiryNotificationDurations'] == null ? null : ((map['expiryNotificationDurations'] as List).cast<String>()).input(),
+      location: (map['location'] as String).input(),
+      overrideValidTime: map['overrideValidTime'] == null ? null : (map['overrideValidTime'] as String).input(),
+      project: map['project'] == null ? null : (map['project'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
     );
   }
 }

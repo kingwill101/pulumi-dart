@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventEventAttribute {
   /// The name of the attribute.
-  final String key;
+  final pulumi.Input<String> key;
   /// Specify the type for the attribute value. This is useful when passing integer or float values to Insights. Allowed values are string, int, or float. Defaults to string.
-  final String? type;
+  final pulumi.Input<String>? type;
   /// The value of the attribute.
-  final String value;
+  final pulumi.Input<String> value;
 
   /// Creates a new [EventEventAttribute].
   /// [key] The name of the attribute.
@@ -29,9 +30,9 @@ class EventEventAttribute {
 
   factory EventEventAttribute.fromMap(Map<String, dynamic> map) {
     return EventEventAttribute(
-      key: map['key'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      value: map['value'] as String,
+      key: (map['key'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
+      value: (map['value'] as String).input(),
     );
   }
 }

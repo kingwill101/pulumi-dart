@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
   /// Number of characters after the finding to consider.
-  final int? windowAfter;
+  final pulumi.Input<int>? windowAfter;
   /// Number of characters before the finding to consider.
-  final int? windowBefore;
+  final pulumi.Input<int>? windowBefore;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity].
   /// [windowAfter] Number of characters after the finding to consider.
@@ -24,8 +25,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(
-      windowAfter: map['windowAfter'] == null ? null : map['windowAfter'] as int,
-      windowBefore: map['windowBefore'] == null ? null : map['windowBefore'] as int,
+      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter'] as int).input(),
+      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore'] as int).input(),
     );
   }
 }

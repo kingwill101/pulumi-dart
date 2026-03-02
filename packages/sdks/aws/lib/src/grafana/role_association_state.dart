@@ -24,17 +24,12 @@ class RoleAssociationState {
   /// [userIds] The AWS SSO user ids to be assigned the role given in `role`.
   /// [workspaceId] The workspace id.
   RoleAssociationState({
-    pulumi.Output<List<String>>? groupIds,
-    pulumi.Output<String>? region,
-    pulumi.Output<String>? role,
-    pulumi.Output<List<String>>? userIds,
-    pulumi.Output<String>? workspaceId,
-  }) :
-      groupIds = pulumi.Input.asOptionalInput<List<String>>(groupIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      userIds = pulumi.Input.asOptionalInput<List<String>>(userIds),
-      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+    this.groupIds,
+    this.region,
+    this.role,
+    this.userIds,
+    this.workspaceId,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +43,11 @@ class RoleAssociationState {
 
   factory RoleAssociationState.fromMap(Map<String, dynamic> map) {
     return RoleAssociationState(
-      groupIds: map['groupIds'] == null ? null : pulumi.Output.create<List<String>>((map['groupIds'] as List).cast<String>()),
-      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
-      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
-      userIds: map['userIds'] == null ? null : pulumi.Output.create<List<String>>((map['userIds'] as List).cast<String>()),
-      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region'] as String).input(),
+      role: map['role'] == null ? null : (map['role'] as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
     );
   }
 }

@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Details of the On Premise Sql resource that was assessed
 class OnPremiseSqlResourceDetailsResponse {
   /// The Sql database name installed on the machine
-  final String databaseName;
+  final pulumi.Input<String> databaseName;
   /// The name of the machine
-  final String machineName;
+  final pulumi.Input<String> machineName;
   /// The Sql server name installed on the machine
-  final String serverName;
+  final pulumi.Input<String> serverName;
   /// The platform where the assessed resource resides
   /// Expected value is 'OnPremiseSql'.
-  final String source;
+  final pulumi.Input<String> source;
   /// The oms agent Id installed on the machine
-  final String sourceComputerId;
+  final pulumi.Input<String> sourceComputerId;
   /// The unique Id of the machine
-  final String vmuuid;
+  final pulumi.Input<String> vmuuid;
   /// Azure resource Id of the workspace the machine is attached to
-  final String workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   /// Creates a new [OnPremiseSqlResourceDetailsResponse].
   /// [databaseName] The Sql database name installed on the machine
@@ -51,13 +52,13 @@ class OnPremiseSqlResourceDetailsResponse {
 
   factory OnPremiseSqlResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OnPremiseSqlResourceDetailsResponse(
-      databaseName: map['databaseName'] as String,
-      machineName: map['machineName'] as String,
-      serverName: map['serverName'] as String,
-      source: map['source'] as String,
-      sourceComputerId: map['sourceComputerId'] as String,
-      vmuuid: map['vmuuid'] as String,
-      workspaceId: map['workspaceId'] as String,
+      databaseName: (map['databaseName'] as String).input(),
+      machineName: (map['machineName'] as String).input(),
+      serverName: (map['serverName'] as String).input(),
+      source: (map['source'] as String).input(),
+      sourceComputerId: (map['sourceComputerId'] as String).input(),
+      vmuuid: (map['vmuuid'] as String).input(),
+      workspaceId: (map['workspaceId'] as String).input(),
     );
   }
 }

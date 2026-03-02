@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratorIdentityResponse {
   /// The principal id of the system assigned identity which is used by orchestrator.
-  final String principalId;
+  final pulumi.Input<String> principalId;
   /// The tenant id of the system assigned identity which is used by orchestrator.
-  final String tenantId;
+  final pulumi.Input<String> tenantId;
   /// The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
-  final String? type;
+  final pulumi.Input<String>? type;
 
   /// Creates a new [OrchestratorIdentityResponse].
   /// [principalId] The principal id of the system assigned identity which is used by orchestrator.
@@ -29,9 +30,9 @@ class OrchestratorIdentityResponse {
 
   factory OrchestratorIdentityResponse.fromMap(Map<String, dynamic> map) {
     return OrchestratorIdentityResponse(
-      principalId: map['principalId'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      principalId: (map['principalId'] as String).input(),
+      tenantId: (map['tenantId'] as String).input(),
+      type: map['type'] == null ? null : (map['type'] as String).input(),
     );
   }
 }

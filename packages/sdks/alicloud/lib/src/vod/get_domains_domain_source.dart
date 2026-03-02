@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDomainsDomainSource {
-  final String sourceContent;
-  final String sourcePort;
-  final String sourcePriority;
-  final String sourceType;
+  final pulumi.Input<String> sourceContent;
+  final pulumi.Input<String> sourcePort;
+  final pulumi.Input<String> sourcePriority;
+  final pulumi.Input<String> sourceType;
 
   /// Creates a new [GetDomainsDomainSource].
   /// [sourceContent] Required.
@@ -30,10 +31,10 @@ class GetDomainsDomainSource {
 
   factory GetDomainsDomainSource.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomainSource(
-      sourceContent: map['sourceContent'] as String,
-      sourcePort: map['sourcePort'] as String,
-      sourcePriority: map['sourcePriority'] as String,
-      sourceType: map['sourceType'] as String,
+      sourceContent: (map['sourceContent'] as String).input(),
+      sourcePort: (map['sourcePort'] as String).input(),
+      sourcePriority: (map['sourcePriority'] as String).input(),
+      sourceType: (map['sourceType'] as String).input(),
     );
   }
 }

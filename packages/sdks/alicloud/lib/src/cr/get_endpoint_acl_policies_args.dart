@@ -22,15 +22,11 @@ class GetEndpointAclPoliciesArgs {
   /// [instanceId] The ID of the CR Instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetEndpointAclPoliciesArgs({
-    required pulumi.Output<String> endpointType,
-    pulumi.Output<List<String>>? ids,
-    required pulumi.Output<String> instanceId,
-    pulumi.Output<String>? outputFile,
-  }) :
-      endpointType = pulumi.Input.asInput<String>(endpointType),
-      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+    required this.endpointType,
+    this.ids,
+    required this.instanceId,
+    this.outputFile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +39,10 @@ class GetEndpointAclPoliciesArgs {
 
   factory GetEndpointAclPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclPoliciesArgs(
-      endpointType: pulumi.Output.create<String>(map['endpointType'] as String),
-      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
-      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
-      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      endpointType: (map['endpointType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      instanceId: (map['instanceId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
     );
   }
 }
